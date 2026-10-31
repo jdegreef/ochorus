@@ -1508,6 +1508,10 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _CCEL + "sermons17/sermons17.xli.html",
     ),
+    # Unpublished (2026-10): a caricatured "Massa" dialect anecdote sits at its
+    # heart. Kept here and in the fixture (is_published false) so the text can
+    # be revisited. seed_sermons never unpublishes a live row (is_published is
+    # create-only), so the live row is unticked in the admin.
     SermonEntry(
         "healing-for-the-wounded",
         "Healing for the Wounded",
@@ -1803,5 +1807,107 @@ SERMONS: list[SermonEntry] = [
         "charles-h-spurgeon",
         "ccel",
         _CCEL + "sermons03/sermons03.xlix.html",
+    ),
+    # Alexander Maclaren, third batch: warm expositions from *Expositions of
+    # Holy Scripture* — comfort, prayer, the Christian life — screened with
+    # `screen_sermons`; judgment-centred titles left on the shelf. *The Fruit of
+    # the Spirit* (iicor_tim.ii.ii.viii) was dropped: its epigraph carries no
+    # scripRef link, so `extract` took an in-body reference as the masthead end
+    # and lost the first eight paragraphs.
+    SermonEntry(
+        "the-secret-of-immortal-youth", "The Secret of Immortal Youth", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xlix.html", scripture_ref="Isaiah 40:30-31",
+    ),
+    SermonEntry(
+        "the-writing-on-gods-hands", "The Writing on God's Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.iv.html", scripture_ref="Isaiah 49:16",
+    ),
+    SermonEntry(
+        "the-hiding-place", "The Hiding-Place", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxxiv.html", scripture_ref="Isaiah 32:2",
+    ),
+    SermonEntry(
+        "the-call-to-the-thirsty", "The Call to the Thirsty", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxiv.html", scripture_ref="Isaiah 55:1-13",
+    ),
+    SermonEntry(
+        "the-shepherd-king-of-israel", "The Shepherd King of Israel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xi.html", scripture_ref="Psalm 23:1-6",
+    ),
+    SermonEntry(
+        "into-thy-hands", "Into Thy Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xx.html", scripture_ref="Psalm 31:5",
+    ),
+    SermonEntry(
+        "the-encamping-angel", "The Encamping Angel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxiv.html", scripture_ref="Psalm 34:7",
+    ),
+    SermonEntry(
+        "the-fixed-heart", "The Fixed Heart", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.vi.html", scripture_ref="Psalm 57:7",
+    ),
+    SermonEntry(
+        "looking-to-the-hills", "Looking to the Hills", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxxviii.html", scripture_ref="Psalm 121:1-2",
+    ),
+    SermonEntry(
+        "the-true-vine", "The True Vine", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.ii.html", scripture_ref="John 15:1-4",
+    ),
+    SermonEntry(
+        "christs-friends", "Christ's Friends", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.vi.html", scripture_ref="John 15:14-17",
+    ),
+    SermonEntry(
+        "sorrow-turned-into-joy", "Sorrow Turned into Joy", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xv.html", scripture_ref="John 16:20-22",
+    ),
+    SermonEntry(
+        "the-praying-christ", "The Praying Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.ii.xliv.html", scripture_ref="Luke 11:1",
+    ),
+    SermonEntry(
+        "the-prodigal-and-his-father", "The Prodigal and His Father", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.iii.ix.html", scripture_ref="Luke 15:11-24",
+    ),
+    SermonEntry(
+        "rejoice-evermore", "Rejoice Evermore", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.iii.i.iii.html", scripture_ref="Philippians 4:4",
+    ),
+    # John Henry Newman — his first sermons on the shelf, from *Parochial and
+    # Plain Sermons* VII–VIII (Gutenberg; newmanreader.org's text is under
+    # copyright). Practical holiness only: the volumes' sermons on baptism,
+    # church order and "the old paths" are left out. Each volume heads its
+    # sermons "SERMON VIII." at h2 (the contents repeat it at h4) and prints the
+    # title as the first paragraph, which the importer drops. Read in full and
+    # dropped for tone: *The Lapse of Time* (judgment its thrust), *Mental
+    # Prayer* (closes on hell for careless youth), *The Season of Epiphany* and
+    # *The Crucifixion* (bound to their day; the latter chides those who keep
+    # no Good Friday), *The Yoke of Christ*, *The Duty of Self-Denial*, *Doing
+    # Glory to God in Pursuits of the World* and *Love of Religion, a New
+    # Nature* (asides against "enthusiasts", "faith alone" and Dissenters).
+    SermonEntry(
+        "temporal-advantages", "Temporal Advantages", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON V.", section_level="h2", scripture_ref="1 Timothy 6:7-8",
+    ),
+    SermonEntry(
+        "religion-pleasant-to-the-religious", "Religion Pleasant to the Religious", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON XIV.", section_level="h2", scripture_ref="Psalm 34:8",
+    ),
+    SermonEntry(
+        "divine-calls", "Divine Calls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON II.", section_level="h2", scripture_ref="1 Samuel 3:10",
+    ),
+    SermonEntry(
+        "jeremiah-a-lesson-for-the-disappointed", "Jeremiah, a Lesson for the Disappointed", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON IX.", section_level="h2", scripture_ref="Jeremiah 1:8",
+    ),
+    SermonEntry(
+        "the-shepherd-of-our-souls", "The Shepherd of Our Souls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVI.", section_level="h2", scripture_ref="John 10:11",
+    ),
+    SermonEntry(
+        "religious-joy", "Religious Joy", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVII.", section_level="h2", scripture_ref="Luke 2:10-11",
     ),
 ]
