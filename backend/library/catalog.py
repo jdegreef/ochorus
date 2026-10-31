@@ -665,6 +665,72 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "polycarp": AuthorEntry(
+        slug="polycarp",
+        name="Polycarp of Smyrna",
+        birth_year=69,
+        death_year=155,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Polycarp of Smyrna (c. 69–c. 155) was bishop of Smyrna, remembered by tradition as a hearer of the apostle John."
+        ),
+    ),
+    "hermas": AuthorEntry(
+        slug="hermas",
+        name="Hermas",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hermas (fl. c. 140) was a Christian of Rome and a former slave who wrote The Shepherd, a book of visions, commandments and parables calling believers to repentance and an undivided heart."
+        ),
+    ),
+    "theophilus-of-antioch": AuthorEntry(
+        slug="theophilus-of-antioch",
+        name="Theophilus of Antioch",
+        birth_year=None,
+        death_year=183,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Theophilus of Antioch (died c. 183) was a second-century bishop of Antioch in Syria, a pagan who came to faith by reading the Hebrew prophets."
+        ),
+    ),
+    "hippolytus-of-rome": AuthorEntry(
+        slug="hippolytus-of-rome",
+        name="Hippolytus of Rome",
+        birth_year=170,
+        death_year=235,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hippolytus of Rome (c. 170–c. 235) was a Greek-speaking presbyter and theologian of the Roman church whose clash with Bishops Zephyrinus and Callistus led later historians to call him the first antipope."
+        ),
+    ),
+    "jerome": AuthorEntry(
+        slug="jerome",
+        name="Jerome",
+        birth_year=342,
+        death_year=420,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
+    "william-wilberforce": AuthorEntry(
+        slug="william-wilberforce",
+        name="William Wilberforce",
+        birth_year=1759,
+        death_year=1833,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Wilberforce (1759–1833) was an English evangelical politician who led the parliamentary campaign that abolished the British slave trade in 1807."
+        ),
+    ),
     "samuel-rutherford": AuthorEntry(
         slug="samuel-rutherford",
         name="Samuel Rutherford",
@@ -1265,6 +1331,86 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
+    # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
+    # death — Roberts and Donaldson's ANF translation (1885), public domain,
+    # extracted from anf01 by its stem. group_parts: each work is a chapter,
+    # its short chapters subheads; the editors' introductory notes are left out.
+    BookEntry("epistle-and-martyrdom-of-polycarp", "The Epistle and Martyrdom of Polycarp",
+              "polycarp", "ccel", "schaff/anf01", part="iv", group_parts=True, keep=("iv.ii", "iv.iv"),
+              subtitle="Translated by Alexander Roberts and James Donaldson", cover_color="#5c4a3e"),
+    # The Shepherd of Hermas (c. 100–150) — F. Crombie's ANF translation (1885),
+    # public domain, extracted from anf02 by its stem: the five Visions, twelve
+    # Commandments and ten Similitudes, one chapter each. The editors'
+    # introductory note and Elucidations are left out.
+    BookEntry("the-shepherd-of-hermas", "The Shepherd of Hermas", "hermas",
+              "ccel", "schaff/anf02", part="ii",
+              subtitle="Translated by F. Crombie", cover_color="#3e5c3e"),
+    # Theophilus of Antioch's To Autolycus (c. 180) — Marcus Dods's ANF
+    # translation (1885), public domain, extracted from anf02 by its stem.
+    # group_parts: each of the three Books is a chapter, its short chapters
+    # subheads; the editors' introductory note is left out.
+    BookEntry("to-autolycus", "To Autolycus", "theophilus-of-antioch",
+              "ccel", "schaff/anf02", part="iv.ii", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5c3e4a"),
+    # Hippolytus's Refutation of All Heresies (c. 222–235) — J. H. MacMahon's
+    # ANF translation (1886), public domain, extracted from anf05 by its stem.
+    # group_parts: each surviving Book is a chapter (Books II and III are
+    # lost), its short chapters subheads.
+    BookEntry("refutation-of-all-heresies", "The Refutation of All Heresies", "hippolytus-of-rome",
+              "ccel", "schaff/anf05", part="iii.iii", group_parts=True,
+              subtitle="Translated by J. H. MacMahon", cover_color="#4a4a5c"),
+    # The Letters of St. Jerome (370–419) — W. H. Fremantle, G. Lewis and
+    # W. G. Martley's NPNF translation (1893), public domain, extracted from
+    # npnf206 by its stem: the letters in Vallarsi's numbering, including some
+    # written to Jerome, each with the translators' summary as its first lines.
+    BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
+              "ccel", "schaff/npnf206", part="v",
+              subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
+    # Clement of Alexandria's The Instructor (Paedagogus, c. 198) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem. group_parts: each of the three Books is a chapter, its short
+    # chapters subheads.
+    BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
+              subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
+    # Augustine's Ten Homilies on the First Epistle of John (c. 407) — H. Browne's
+    # translation as revised by Joseph H. Myers in NPNF (1888), public domain,
+    # extracted from npnf107 by its stem: his prologue and the ten homilies.
+    # The editor's introduction and the passages from other works that the
+    # volume appends on single verses are left out.
+    BookEntry("homilies-on-the-first-epistle-of-john", "Homilies on the First Epistle of John",
+              "augustine-of-hippo", "ccel", "schaff/npnf107", part="iv",
+              subtitle="Translated by H. Browne", cover_color="#2e4a5c"),
+    # Luther's Table Talk (Gutenberg #9841) — selections from Captain Henry
+    # Bell's English translation (1652) of Aurifaber's Tischreden, public
+    # domain. Built from a reshaped copy of the PG HTML: one <h2> per topic,
+    # each saying a subhead; the editor's introduction and Bell's
+    # narrative and parliamentary order are left out.
+    BookEntry("table-talk", "Table Talk", "martin-luther",
+              "gutenberg", "9841",
+              subtitle="Translated by Henry Bell", cover_color="#5c4a2e"),
+    # Parochial and Plain Sermons, Volume VII (Gutenberg #24256) — eighteen of
+    # the sermons Newman preached as vicar of St Mary's, Oxford (1834–1843),
+    # in the Rivingtons edition. Built from a reshaped copy of the PG HTML
+    # (one <h2> per sermon, titled from its own title line).
+    BookEntry("parochial-and-plain-sermons-vii", "Parochial and Plain Sermons, Volume VII",
+              "john-henry-newman", "gutenberg", "24256", cover_color="#3e3e5c"),
+    # A Practical View of Christianity (1797, Gutenberg #25709, from the Dublin
+    # printing of the same year) — Wilberforce's appeal to the nominal Christians
+    # of his class. Built from a reshaped copy of the PG HTML: the Introduction
+    # and seven chapters, titled from his Contents; the index and footnotes are
+    # left out.
+    BookEntry("a-practical-view-of-christianity", "A Practical View of Christianity",
+              "william-wilberforce", "gutenberg", "25709",
+              subtitle="Of the Prevailing Religious System of Professed Christians Contrasted with Real Christianity",
+              cover_color="#2e3e5c"),
     # Letters of Samuel Rutherford (Gutenberg #42557) — Andrew A. Bonar's
     # edition (third edition, Religious Tract Society): all 365 letters in his
     # chronological order. Built from a reshaped copy of the PG HTML: one <h2>
