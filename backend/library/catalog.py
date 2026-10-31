@@ -610,6 +610,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Irenaeus of Lyons (c. 130–c. 202) was a Greek bishop of Lyons in Roman Gaul who as a boy had heard Polycarp of Smyrna."
         ),
     ),
+    "origen-of-alexandria": AuthorEntry(
+        slug="origen-of-alexandria",
+        name="Origen of Alexandria",
+        birth_year=185,
+        death_year=253,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Origen of Alexandria (c. 185–c. 253) was an Alexandrian teacher, preacher and biblical scholar, one of the most influential and most debated theologians of the early Church."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1130,6 +1141,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("against-heresies", "Against Heresies", "irenaeus-of-lyons",
               "ccel", "schaff/anf01", part="ix", group_parts=True,
               subtitle="Translated by Alexander Roberts and W. H. Rambaut", cover_color="#4a3b5c"),
+    # Origen's On First Principles (De Principiis, c. 220–230) — Frederick
+    # Crombie's ANF translation (1885), public domain, extracted from anf04 by
+    # its stem. group_parts: Origen's Preface and each of the four Books is a
+    # chapter. Where ANF prints a passage twice, from Rufinus's Latin and from
+    # the surviving Greek, the Greek is kept.
+    BookEntry("on-first-principles", "On First Principles", "origen-of-alexandria",
+              "ccel", "schaff/anf04", part="vi.v", group_parts=True,
+              subtitle="Translated by Frederick Crombie", cover_color="#3e5a4a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
