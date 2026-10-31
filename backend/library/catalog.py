@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "william-guthrie": AuthorEntry(
+        slug="william-guthrie",
+        name="William Guthrie",
+        birth_year=1620,
+        death_year=1665,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Guthrie (1620–1665) was a Scottish Covenanter minister, the first minister of Fenwick in Ayrshire, deprived in 1664 for refusing episcopacy."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,14 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # William Guthrie's The Christian's Great Interest (1658) — CCEL's
+    # guthrie/interest2: the trial of a saving interest in Christ (Part I) and
+    # the way to attain it (Part II); the prefatory essay, memoir and epistle
+    # are later editors' or the printer's, not the work.
+    BookEntry("the-christians-great-interest", "The Christian's Great Interest", "william-guthrie",
+              "ccel", "guthrie/interest2",
+              cover_color="#3e4a3a",
+              skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
