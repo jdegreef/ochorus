@@ -3964,6 +3964,18 @@
 				556
 			]
 		},
+		"ar/a-call-to-the-unconverted": {
+			"ground": "69719e51839779416974e4ecb99cac48b3228d82b638d4705479dce428e423a2",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/absolute-surrender": {
 			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
 			"style": "devotional",
