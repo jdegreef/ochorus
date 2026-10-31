@@ -1,7 +1,7 @@
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=William_Wilberforce
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Thomas_Brooks_(Puritan)
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Edward_Fisher_(theologian)
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Samuel_Rutherford
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=John_Flavel
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=The_Marrow_of_Modern_Divinity
-https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|name&format=json&redirects=1&titles=William_Wilberforce|Thomas_Brooks_(Puritan)|Edward_Fisher_(theologian)|Samuel_Rutherford|John_Flavel
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Thomas_Boston
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=William_Guthrie_(minister)
+https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|name&format=json&redirects=1&titles=Thomas_Boston|William_Guthrie_(minister)
+https://upload.wikimedia.org/wikipedia/commons/e/eb/William_wilberforce.jpg
+https://upload.wikimedia.org/wikipedia/commons/a/a3/Samuel_Rutherford_St._Andrews.jpg
+https://upload.wikimedia.org/wikipedia/commons/9/94/John_flavel.PNG
+https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata|size&format=json&titles=File:William_wilberforce.jpg|File:Samuel_Rutherford_St._Andrews.jpg|File:John_flavel.PNG
