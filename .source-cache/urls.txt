@@ -1,3 +1,5 @@
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Origen
-https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&piprop=original|name&format=json&redirects=1&titles=Irenaeus|Origen|Eusebius|Lactantius|Marcus_Minucius_Felix
-https://en.wikipedia.org/w/api.php?action=query&prop=images&imlimit=60&format=json&redirects=1&titles=Irenaeus|Origen|Eusebius|Lactantius|Marcus_Minucius_Felix
+https://upload.wikimedia.org/wikipedia/commons/7/70/Eusebius_of_Caesarea_Rabbula_Gospels_Icon.jpg
+https://upload.wikimedia.org/wikipedia/commons/3/38/Saint_irenee_saint_irenee.jpg
+https://upload.wikimedia.org/wikipedia/commons/5/5c/Lactantius.jpg
+https://upload.wikimedia.org/wikipedia/commons/c/c7/Origen3.jpg
+https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata|size&format=json&titles=File:Eusebius_of_Caesarea_Rabbula_Gospels_Icon.jpg|File:Saint_irenee_saint_irenee.jpg|File:Lactantius.jpg|File:Origen3.jpg|File:Saint_Irenaeus_icon.jpg
