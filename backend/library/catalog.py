@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "hippolytus-of-rome": AuthorEntry(
+        slug="hippolytus-of-rome",
+        name="Hippolytus of Rome",
+        birth_year=170,
+        death_year=235,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hippolytus of Rome (c. 170–c. 235) was a Greek-speaking presbyter and theologian of the Roman church whose clash with Bishops Zephyrinus and Callistus led later historians to call him the first antipope."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,13 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Hippolytus's Refutation of All Heresies (c. 222–235) — J. H. MacMahon's
+    # ANF translation (1886), public domain, extracted from anf05 by its stem.
+    # group_parts: each surviving Book is a chapter (Books II and III are
+    # lost), its short chapters subheads.
+    BookEntry("refutation-of-all-heresies", "The Refutation of All Heresies", "hippolytus-of-rome",
+              "ccel", "schaff/anf05", part="iii.iii", group_parts=True,
+              subtitle="Translated by J. H. MacMahon", cover_color="#4a4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
