@@ -447,6 +447,27 @@ def extract_archive_sermon(entry: SermonEntry) -> str:
     return clean_fragment("".join(blocks))
 
 
+def extract_entry(entry: SermonEntry) -> tuple[str, str, datetime.date | None]:
+    """(body_html, scripture_ref, preached_on) for one catalog entry, from its source.
+
+    Only CCEL parses a reference and date from the page; the catalog's overrides
+    are applied by the caller. Shared by the importer and ``screen_sermons``.
+    """
+    if entry.source == "gutenberg":
+        url = (
+            "https://www.gutenberg.org/cache/epub/"
+            f"{entry.source_ref}/pg{entry.source_ref}-images.html"
+        )
+        return extract_gutenberg_section(fetch(url), entry.section, entry.section_level), "", None
+    if entry.source == "web":
+        return extract_web_sermon(fetch_web(entry.source_ref), entry.title, entry.body_starts), "", None
+    if entry.source == "archive":
+        return extract_archive_sermon(entry), "", None
+    if entry.source == "sermonindex":
+        return extract_sermonindex(fetch_web(entry.source_ref), entry.title), "", None
+    return extract(fetch(entry.source_ref), strip_service_notes=True)
+
+
 class Command(BaseCommand):
     help = "Import sermons from CCEL, Gutenberg, the web, and SermonIndex."
 
@@ -479,30 +500,7 @@ class Command(BaseCommand):
         self.stdout.write(f"→ {entry.title}  ({entry.source}:{entry.source_ref})")
         try:
             time.sleep(DELAY)
-            if entry.source == "gutenberg":
-                url = (
-                    "https://www.gutenberg.org/cache/epub/"
-                    f"{entry.source_ref}/pg{entry.source_ref}-images.html"
-                )
-                body = extract_gutenberg_section(
-                    fetch(url), entry.section, entry.section_level
-                )
-                scripture_ref, preached_on = "", None
-            elif entry.source == "web":
-                body = extract_web_sermon(
-                    fetch_web(entry.source_ref), entry.title, entry.body_starts
-                )
-                scripture_ref, preached_on = "", None
-            elif entry.source == "archive":
-                body = extract_archive_sermon(entry)
-                scripture_ref, preached_on = "", None
-            elif entry.source == "sermonindex":
-                body = extract_sermonindex(fetch_web(entry.source_ref), entry.title)
-                scripture_ref, preached_on = "", None
-            else:
-                body, scripture_ref, preached_on = extract(
-                    fetch(entry.source_ref), strip_service_notes=True
-                )
+            body, scripture_ref, preached_on = extract_entry(entry)
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  fetch failed: {exc}"))
             return
