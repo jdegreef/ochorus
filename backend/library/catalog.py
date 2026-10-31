@@ -599,6 +599,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "lactantius": AuthorEntry(
+        slug="lactantius",
+        name="Lactantius",
+        birth_year=250,
+        death_year=325,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1123,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Lactantius's Divine Institutes (c. 303–311) — William Fletcher's ANF
+    # translation (1886), public domain, extracted from anf07 by its stem.
+    # group_parts: each of the seven Books is a chapter, its short chapters
+    # subheads. The Epitome that follows it in the volume is left out.
+    BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
+              "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
+              subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
