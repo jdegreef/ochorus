@@ -71,6 +71,7 @@ _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 _NEWTON = "https://ccel.org/ccel/newton/"
 _MACLAREN = "https://ccel.org/ccel/maclaren/"
+_NPNF106 = "https://ccel.org/ccel/schaff/npnf106/"
 # SermonIndex speaker pages — one transcript per page. Full URL is
 # _SI + "<speaker-slug>/<sermon-slug>/".
 _SI = "https://sermonindex.net/speakers/"
@@ -1909,5 +1910,131 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "religious-joy", "Religious Joy", "john-henry-newman", "gutenberg", "24284",
         section="SERMON XVII.", section_level="h2", scripture_ref="Luke 2:10-11",
+    ),
+    # Batch 4 toward 400 (2026-11): warm sermons from authors already on the
+    # shelf, screened with `screen_sermons` and read in full against the tone
+    # rubric (sermon-import skill). John Newton, more of *Messiah* (the
+    # "Opposition to Messiah" sermons left out).
+    SermonEntry(
+        "the-great-shepherd", "The Great Shepherd", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xv.html", scripture_ref="Isaiah 40:11",
+    ),
+    SermonEntry(
+        "messiahs-easy-yoke", "Messiah's Easy Yoke", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xvii.html", scripture_ref="Matthew 11:29-30",
+    ),
+    SermonEntry(
+        "the-angels-message-and-song", "The Angel's Message and Song", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xii.html", scripture_ref="Luke 2:8-14",
+    ),
+    SermonEntry(
+        "messiah-suffering-and-wounded-for-us", "Messiah Suffering and Wounded for Us", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xxi.html", scripture_ref="Isaiah 53:4-5",
+    ),
+    SermonEntry(
+        "the-lord-is-risen-indeed", "The Lord Is Risen Indeed", "john-newton", "ccel",
+        _NEWTON + "messiah2/messiah2.xvi.html", scripture_ref="1 Corinthians 15:20",
+    ),
+    SermonEntry(
+        "the-intercession-of-christ", "The Intercession of Christ", "john-newton", "ccel",
+        _NEWTON + "messiah2/messiah2.xxiii.html", scripture_ref="Romans 8:34",
+    ),
+    SermonEntry(
+        "death-swallowed-up-in-victory", "Death Swallowed Up in Victory", "john-newton", "ccel",
+        _NEWTON + "messiah2/messiah2.xix.html", scripture_ref="1 Corinthians 15:54",
+    ),
+    # Robert Murray M"Cheyne, from SermonIndex"s printed text (no Bible
+    # reference there, so each is set here). *Children Called to Christ* is a
+    # 152-word poem there, not a sermon.
+    SermonEntry(
+        "adoption", "Adoption", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/adoption/",
+    ),
+    SermonEntry(
+        "grieve-not-the-holy-spirit", "Grieve Not the Holy Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/grieve-not-the-holy-spirit/",
+    ),
+    SermonEntry(
+        "the-spirit-committed-to-god", "The Spirit Committed to God", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-spirit-commited-to-god/",
+    ),
+    SermonEntry(
+        "the-lords-dealings-with-his-people", "The Lord's Dealings with His People", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-lords-dealings-with-his-people/",
+    ),
+    SermonEntry(
+        "melting-the-betrayer", "Melting the Betrayer", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/melting-the-betrayer/",
+    ),
+    SermonEntry(
+        "thanksgiving-obtains-the-spirit", "Thanksgiving Obtains the Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/thanksgiving-obtains-the-spirit/",
+    ),
+    SermonEntry(
+        "faiths-view-of-christ", "Faith's View of Christ", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/faiths-view-of-christ/",
+    ),
+    # Horatius Bonar, more of *Family Sermons* (single scan; see archive_ocr).
+    # Only sermons complete in one part: the volume prints several as pairs.
+    # *Christ the Healer* is suffixed: A. B. Simpson's book holds the slug.
+    SermonEntry(
+        "bethlehem-and-its-good-news", "Bethlehem and Its Good News", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="The Word was made flesh", body_starts="There was nothing great about Bethlehem", ends_before="SERMON II.", scripture_ref="John 1:14",
+    ),
+    SermonEntry(
+        "nazareth-and-its-good-news", "Nazareth and Its Good News", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="acceptable year of the Lord", body_starts="It is as a", ends_before="THE MANIFESTED LIFE", scripture_ref="Luke 4:19",
+    ),
+    SermonEntry(
+        "christ-the-healer-bonar", "Christ the Healer", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="If I may but touch his garment", body_starts="Here, we may say", ends_before="CHRIST THE CLEANSER", scripture_ref="Matthew 9:21",
+    ),
+    SermonEntry(
+        "christ-the-cleanser", "Christ the Cleanser", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He that is washed needeth not", body_starts="This washing of the disciples", ends_before="SERMON XIII.", scripture_ref="John 13:10",
+    ),
+    SermonEntry(
+        "bethany-and-its-feast", "Bethany and Its Feast", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Then Jesus, six days before the passover", body_starts="We find ourselves here at Bethany", ends_before="SERMON XLIV.", scripture_ref="John 12:1-3",
+    ),
+    SermonEntry(
+        "the-mortal-and-the-immortal", "The Mortal and the Immortal", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Neither can they die any more", body_starts="Ours is a dying world", ends_before="LONGINGS FOR THE LAND", scripture_ref="Luke 20:36",
+    ),
+    SermonEntry(
+        "the-divine-banquet", "The Divine Banquet", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He shall eat the bread of his God", body_starts="It is not easy to say whether", ends_before="SERMON XLIII.", scripture_ref="Leviticus 21:22",
+    ),
+    # Augustine, his first sermons on the shelf: *Sermons on Selected Lessons of
+    # the New Testament* (NPNF 1st series vol. 6, R. G. MacMullen's 1888
+    # translation, CCEL). Pastoral Gospel sermons only — those headed against
+    # the Donatists, Arians or Pelagians are left out.
+    SermonEntry(
+        "the-boat-in-the-storm", "The Boat in the Storm", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xxvii.html", scripture_ref="Matthew 14:24",
+    ),
+    SermonEntry(
+        "peter-on-the-waves", "Peter on the Waves", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xxviii.html", scripture_ref="Matthew 14:25-31",
+    ),
+    SermonEntry(
+        "martha-and-mary", "Martha and Mary", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.lv.html", scripture_ref="Luke 10:38-42",
+    ),
+    SermonEntry(
+        "the-friend-at-midnight", "The Friend at Midnight", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.lvii.html", scripture_ref="Luke 11:5-13",
+    ),
+    SermonEntry(
+        "men-ought-always-to-pray", "Men Ought Always to Pray", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.lxvii.html", scripture_ref="Luke 18:1",
+    ),
+    SermonEntry(
+        "asking-in-christs-name", "Asking in Christ's Name", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xcvii.html", scripture_ref="John 16:24",
+    ),
+    SermonEntry(
+        "ask-and-it-shall-be-given", "Ask, and It Shall Be Given", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xiii.html", scripture_ref="Matthew 7:7",
     ),
 ]
