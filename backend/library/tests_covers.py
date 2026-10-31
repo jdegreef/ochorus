@@ -493,6 +493,26 @@ class CuratedArtTests(TestCase):
                 )
             seen.setdefault(key, slug)
 
+    def test_no_painter_is_on_more_than_three_works(self):
+        """At most three works per painter — `coverWall.PAINTER_CAP`, which the
+        admin cover wall only FLAGGED. A flag is advice, and advice drifted: by
+        2026-10-15 George Inness was on seven covers, enough that a shelf of
+        American landscapes read as one man's catalogue. Four of them were
+        re-picked on 2026-10-30 and the cap became this gate. The cap counts
+        `CURATED` and `CURATED_GROUND` together, as the wall does; painters
+        whose name a collection spells two ways count apart, which errs toward
+        passing, not failing."""
+        import re
+        from collections import Counter
+        from pathlib import Path
+
+        from library.curated_art import CURATED, CURATED_GROUND
+
+        wall = (Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "coverWall.ts").read_text()
+        cap = int(re.search(r"PAINTER_CAP = (\d+)", wall).group(1))
+        works = Counter(art.artist for art in {**CURATED, **CURATED_GROUND}.values())
+        over = {artist: n for artist, n in works.items() if n > cap}
+        self.assertEqual(over, {}, f"a painter is on more than {cap} works — re-pick one")
 
     def test_the_three_cover_tiers_answer_the_two_questions_differently(self):
         """The tier predicates, exercised on a member of each.
