@@ -164,6 +164,7 @@ TOPICS = [
         "chief of sinners.",
         [
             "a-call-to-the-unconverted",
+            "a-practical-view-of-christianity",
             "the-rise-and-progress-of-religion-in-the-soul",
             "around-the-wicket-gate",
             "grace-abounding",

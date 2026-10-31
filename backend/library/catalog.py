@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "william-wilberforce": AuthorEntry(
+        slug="william-wilberforce",
+        name="William Wilberforce",
+        birth_year=1759,
+        death_year=1833,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Wilberforce (1759–1833) was an English evangelical politician who led the parliamentary campaign that abolished the British slave trade in 1807."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,15 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # A Practical View of Christianity (1797, Gutenberg #25709, from the Dublin
+    # printing of the same year) — Wilberforce's appeal to the nominal Christians
+    # of his class. Built from a reshaped copy of the PG HTML: the Introduction
+    # and seven chapters, titled from his Contents; the index and footnotes are
+    # left out.
+    BookEntry("a-practical-view-of-christianity", "A Practical View of Christianity",
+              "william-wilberforce", "gutenberg", "25709",
+              subtitle="Of the Prevailing Religious System of Professed Christians Contrasted with Real Christianity",
+              cover_color="#2e3e5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
