@@ -197,7 +197,10 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'lord-teach-us-to-pray-2': null,
 	'talks-to-the-farmer': null,
 	'the-masters-indwelling': null,
-	'the-person-and-work-of-the-holy-spirit': null
+	'the-person-and-work-of-the-holy-spirit': null,
+	// Drawn storybook ground (2026-10-30, curated_art.ORIGINAL_GROUND): framed,
+	// not Spurgeon's band.
+	'talks-to-the-farmer-children': null
 };
 
 /**

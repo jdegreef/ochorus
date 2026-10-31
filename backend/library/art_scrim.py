@@ -181,6 +181,7 @@ ART_SCRIM: dict[str, float] = {
     "stepping-stones-2": 0.90,
     "susanna-wesley-clarke": 0.70,
     "talks-to-the-farmer": 0.60,
+    "talks-to-the-farmer-children": 0.30,
     "tell-me-the-story-1": 0.80,
     "tell-me-the-story-2": 0.75,
     "tell-me-the-story-3": 0.75,

@@ -135,8 +135,6 @@ DESIGNED: dict[str, str] = {
         "f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     "/covers/talks-to-the-farmer.jpg":
         "120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
-    "/covers/talks-to-the-farmer-children.jpg":
-        "bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
     "/covers/talks-to-the-farmer-teens.jpg":
         "476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     "/covers/the-christians-secret-of-a-happy-life-4.jpg":
@@ -475,12 +473,9 @@ DERIVED_GROUND: dict[str, Ground] = {
     # Green seedling leaves rising out of a dark ground, from under the subtitle
     # to above the wordmark; 0.10 clears the hairline frame (~0.03) and crops in
     # far enough that the leaves fill Spurgeon's `band` window, which the foot
-    # centres them in.
-    "talks-to-the-farmer-children": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
-        source="bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
-    ),
-    # The teens cover is pixel-identical to the children's below ~0.60 (only
-    # the "FOR TEENS" line above the band differs), so the same crop.
+    # centres them in. (The children's edition wore a pixel-identical designed
+    # cover and this same crop until 2026-10-30; it now has a drawn ground of
+    # its own, `curated_art.ORIGINAL_GROUND`, so the two can be told apart.)
     "talks-to-the-farmer-teens": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
         source="476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     ),

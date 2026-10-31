@@ -30,8 +30,9 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
 - **Curation rule** (top of `sermon_catalog.py`): themed to the library's
   readers — prayer, comfort in trial, assurance and grace, warm evangelistic
   appeal. A readable dozen or two per author; never bulk-import a volume.
-- **Read every pick in full before shipping it**, and drop any that carry a
-  demeaning passage about a people (the Simpson batch dropped a Jews-and-money
+- **Read every pick in full before shipping it** (the question-writers do
+  this; have them report it), and drop any that carry a demeaning passage
+  about a people (the Simpson batch dropped a Jews-and-money
   trope; Spurgeon batch 2 dropped *The Sin of Unbelief* for the "unbelief made
   the Jew murder Christ and wander" passage), or are bound to an occasion (a
   building-fund or Hospital-Sunday collection appeal, a farewell).
@@ -207,6 +208,12 @@ most of the noise mechanically.
   pair into HTML space (escape `&<>`, turn `\n\n` into `</p><p>`) and check the
   whole list applies once and idempotently before writing it to
   `BODY_CORRECTIONS`.
+- **Anchor a pair that deletes or moves punctuation on a tag.**
+  `tests_english_audit.LineBreakHyphenTests.test_the_fixture_is_clean` runs
+  the corrections over `body_text` as well as `body_html`. So an unanchored
+  pair (`". But then"` → `"But then"`, meant for a stray stop opening a
+  paragraph) also rewrites "cometh. But then" in the plain text. Write it as
+  `"<p>. But then"`.
 - **Write pairs against the RAW import, not the settled fixture.** The
   line-break hyphen rule in `apply_body_corrections` runs after the declared
   pairs, so a pair written against settled "believing-it" never matches the raw
@@ -310,8 +317,13 @@ cd ../frontend && npx vitest run src/lib/sermonCards.test.ts
 ```
 
 A new sermon with audit findings left standing needs its baseline pinned
-(`audit_english --update-baseline`, whole corpus); a clean batch leaves the
-baseline alone. The PR body names the picks, what was screened out and why,
+(`audit_english --update-baseline`, whole corpus). Keep the command's whole
+rewrite, not just your own lines: `word-fusion` is judged against the
+library's vocabulary, so new sermons can clear another work's pinned finding,
+and the ratchet's fixed-point test expects the file to record that. A clean
+batch can still move the baseline this way. If you ever hand-edit the file,
+never write it from a script that can fail halfway — `open(p, "w")` truncates
+before the dump runs. The PR body names the picks, what was screened out and why,
 and the repairs. Run `/simplify` and `/code-review` if the importer changed.
 
 ## Ledger

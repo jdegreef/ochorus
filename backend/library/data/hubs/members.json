@@ -18,7 +18,15 @@
         "john-chrysostom",
         "augustine-of-hippo",
         "john-cassian",
-        "gregory-the-great"
+        "gregory-the-great",
+        "cyril-of-jerusalem",
+        "boethius",
+        "basil-of-caesarea",
+        "gregory-of-nazianzus",
+        "justin-martyr",
+        "clement-of-alexandria",
+        "gregory-of-nyssa",
+        "tertullian"
       ]
     },
     {
@@ -33,7 +41,9 @@
         "brother-lawrence",
         "jeanne-guyon",
         "william-law",
-        "francis-de-sales"
+        "francis-de-sales",
+        "catherine-of-siena",
+        "ignatius-of-loyola"
       ]
     },
     {
@@ -239,7 +249,10 @@
         "gladys-aylward",
         "derek-prince",
         "john-stott",
-        "helen-roseveare"
+        "helen-roseveare",
+        "jeremy-taylor",
+        "philip-doddridge",
+        "john-henry-newman"
       ]
     },
     {
@@ -251,7 +264,8 @@
         "david-livingstone",
         "george-macdonald",
         "alexander-maclaren",
-        "mary-slessor"
+        "mary-slessor",
+        "henry-scougal"
       ]
     },
     {
@@ -275,7 +289,10 @@
         "gregory-the-great",
         "anselm-of-canterbury",
         "teresa-of-avila",
-        "corrie-ten-boom"
+        "corrie-ten-boom",
+        "catherine-of-siena",
+        "ignatius-of-loyola",
+        "boethius"
       ]
     },
     {
@@ -387,7 +404,9 @@
         "athanasius-of-alexandria",
         "monica-of-hippo",
         "augustine-of-hippo",
-        "josephine-bakhita"
+        "josephine-bakhita",
+        "clement-of-alexandria",
+        "tertullian"
       ]
     },
     {
@@ -404,7 +423,12 @@
         "dora-yu",
         "mary-stone",
         "sadhu-sundar-singh",
-        "watchman-nee"
+        "watchman-nee",
+        "cyril-of-jerusalem",
+        "basil-of-caesarea",
+        "gregory-of-nazianzus",
+        "justin-martyr",
+        "gregory-of-nyssa"
       ]
     }
   ]

@@ -29,6 +29,7 @@ import html
 import io
 import json
 import logging
+import re
 import uuid
 import zipfile
 from dataclasses import dataclass, field
@@ -84,6 +85,9 @@ STRINGS = {
         "questions_teens": "Questions to think about",
         "answers_young": "Notes for grown-ups",
         "answers_teens": "One way to answer",
+        # Any other book's chapter questions, answered in the open beneath each
+        # one, as the reader shows them (messages sermon_questions_title).
+        "questions_reflect": "Questions for reflection",
         # The one-page biography after "About Ochorus", before the contents.
         "author_title": "About the Author",
         "full_bio": "Read the full biography at",
@@ -141,8 +145,8 @@ class ExportChapter:
     order: int
     title: str
     body: str  # well-formed XHTML fragment
-    # ``(question, answer)`` pairs a young-reader edition ends the chapter
-    # with (``Chapter.study_questions``); empty everywhere else.
+    # ``(question, answer)`` pairs the chapter ends with
+    # (``Chapter.study_questions``); empty when it has none.
     questions: tuple[tuple[str, str], ...] = ()
 
 
@@ -169,6 +173,9 @@ class Edition:
     # their `<img src>` was rewritten to ("illustrations/<slug>/<name>.jpg") —
     # the same path inside the EPUB's OEBPS/ and beside the print page.
     images: dict[str, Cover] = field(default_factory=dict)
+    # Whose voice the chapter questions speak in (``question_voice``), decided
+    # once per book rather than per chapter.
+    question_voice: str = "reflect"
 
     @property
     def identifier(self) -> str:
@@ -420,6 +427,7 @@ def build_edition(book: Book) -> Edition:
         bio=_bio_paragraphs(author_bio(book)),
         url=book_url(book),
         images=images,
+        question_voice=question_voice(book),
     )
 
 
@@ -427,14 +435,43 @@ def _e(text) -> str:
     return html.escape(str(text), quote=True)
 
 
+_TRAILING_PAREN = re.compile(r"\S\s*\([^()]+\)$")
+
+
+def question_voice(book: Book) -> str:
+    """Whose voice a book's chapter questions speak in: "teens", "young" or
+    "reflect" — the reader's own rule (``edition.ts``: ``splitEdition`` then
+    ``childrensReading``). An edition is a retelling only when BOTH its slug
+    suffix and a trailing "(…)" in its title (in any language) say so, so
+    Watts's Divine Songs for Children is not one; a book in a young readers'
+    series speaks to children too; any other book reads like the sermon page.
+    """
+    from .serializers import AUDIENCE_EDITION_SUFFIX
+
+    retold = bool(_TRAILING_PAREN.search(book.title.strip()))
+    if retold and book.slug.endswith(AUDIENCE_EDITION_SUFFIX["teens"]):
+        return "teens"
+    if (retold and book.slug.endswith(AUDIENCE_EDITION_SUFFIX["young_readers"])) or (
+        getattr(book.series, "audience", "") == "young_readers"
+    ):
+        return "young"
+    return "reflect"
+
+
 def _talk(ed: Edition, ch: ExportChapter) -> str:
-    """A young-reader chapter's questions and, apart, their answers — or "".
-    The teens editions' voice where the slug says teens, else the children's
-    (the reader picks the same way, ``splitEdition``)."""
+    """A chapter's questions and answers in the edition's voice — or "".
+    The children's and teens' voices ask first and answer apart, under their
+    own headings; "reflect" sets each answer beneath its question.
+    """
     if not ch.questions:
         return ""
-    voice = "teens" if ed.book.slug.endswith("-teens") else "young"
-    s = ed.strings
+    s, voice = ed.strings, ed.question_voice
+    if voice == "reflect":
+        return (
+            f'<div class="talk"><h2>{_e(s["questions_reflect"])}</h2><ol class="reflect">'
+            + "".join(f'<li><p>{_e(q)}</p><p class="answer">{_e(a)}</p></li>' for q, a in ch.questions)
+            + "</ol></div>"
+        )
     return (
         f'<div class="talk"><h2>{_e(s[f"questions_{voice}"])}</h2><ol>'
         + "".join(f"<li>{_e(q)}</li>" for q, _ in ch.questions)
@@ -591,6 +628,8 @@ nav li { margin: 0.4em 0; }
 .talk li { margin-bottom: 0.4em; }
 .talk h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
 .talk .answers { font-size: 0.9em; }
+.talk .reflect p { margin: 0 0 0.3em; }
+.talk .reflect .answer { font-size: 0.9em; }
 figure { margin: 1.5em 0; text-align: center; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 90vh; height: auto; }
 figcaption { font-style: italic; font-size: 0.9em; margin-top: 0.5em; text-indent: 0; }
@@ -778,6 +817,8 @@ blockquote p { text-indent: 0; }
 .talk li { margin: 0 0 1.5mm; }
 .talk h3 { font-size: 10pt; margin: 4mm 0 2mm; break-after: avoid; }
 .talk .answers { font-size: 9.5pt; color: #333; }
+.talk .reflect p { margin: 0 0 1mm; text-indent: 0; }
+.talk .reflect .answer { font-size: 9.5pt; color: #333; }
 figure { margin: 5mm 0; text-align: center; break-inside: avoid; }
 figure img { max-width: 100%; max-height: 150mm; width: auto; height: auto; }
 figcaption { font-style: italic; font-size: 9.5pt; margin-top: 2mm; text-align: center; }

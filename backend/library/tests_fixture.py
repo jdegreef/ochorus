@@ -1116,7 +1116,7 @@ class ChapterQuestionsShapeTests(SimpleTestCase):
                         f"{path.name} ch.{c['order']}",
                         count=(2, 5),
                     )
-        self.assertGreaterEqual(books, 10)  # the ten young-reader editions
+        self.assertGreaterEqual(books, 10)  # the young-reader editions, and a few adult books
 
     def test_family_devotions_read_only_chapters_that_ask(self):
         # Each card promises "three questions to talk about together", so every

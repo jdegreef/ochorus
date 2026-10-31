@@ -1766,6 +1766,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A sailing ship heading into a golden dawn with a boy at the bow: the "
         "ship that freed Ajayi in 1822.",
     ),
+    "talks-to-the-farmer-children": Original(
+        "f25ab4e8c971fac995b0b6efe58140994b11c94f9224cd9c4e6cb55f8fa14f13",
+        "Young Readers 'Storybook': a child sowing seed across a ploughed field "
+        "at dawn (\"The Sower\", \"The Grain That Grows\" in the children's "
+        "retelling), low in the frame under a deep sky. Until 2026-10-30 this "
+        "edition wore the same photograph as the teens', and the two could not "
+        "be told apart. Drawn by "
+        "scripts/original_grounds/talks_to_the_farmer_children.py.",
+    ),
     "the-practice-of-the-presence-of-god-children": Original(
         "c6fe226bfbb1791ceab0ff3b24edf9fed555fc2393c807ba7d945d1dbba85af8",
         "A monastery kitchen, light through an arched window, a little cake "

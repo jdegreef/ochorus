@@ -76,6 +76,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'samuel-ajayi-crowther-a-life-teens': 0.070,
 	'school-of-prayer': 0.040,
 	'st-francis-of-assisi': 0.110,
+	'talks-to-the-farmer-children': 0.085,
 	'tell-me-the-story-3': 0.080,
 	'tell-me-the-story-4': 0.110,
 	'tell-me-the-story-9': 0.110,

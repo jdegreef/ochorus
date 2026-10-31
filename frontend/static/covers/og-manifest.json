@@ -544,6 +544,37 @@
 			"bar": 0,
 			"caps": false
 		},
+		"am/amanda-smith-autobiography": {
+			"ground": "5058893d3312afb341e0b29823b4d78727366e00ae0a305e8a3c2822895d0bc1",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 298, 500, 380],
+					[115, 369, 485, 451]
+				],
+				"subtitle": [
+					[81, 525, 519, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				547
+			]
+		},
 		"am/amanda-smith-autobiography-children": {
 			"ground": "c939c7980985ee774d953fd7da54804d312bb55c9b207931f1fd891149fb6339",
 			"style": "revival",
@@ -1171,6 +1202,37 @@
 			"middle": [
 				313,
 				481
+			]
+		},
+		"am/finney-memoirs": {
+			"ground": "86f7dab55c9004bb822d8b664e7e0016a5e2eab1171debe2bdfbc42424654f63",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[100, 298, 500, 380],
+					[79, 369, 521, 451]
+				],
+				"subtitle": [
+					[246, 525, 354, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				547
 			]
 		},
 		"am/first-epistle-of-clement": {
@@ -2692,6 +2754,37 @@
 			"bar": 0,
 			"caps": false
 		},
+		"am/selected-sermons-whitefield": {
+			"ground": "924ca77061efdd6090d9db7a1982bd83efeb732823372b13a729e6a17a6bb805",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[104, 282, 496, 350],
+					[92, 349, 508, 417]
+				],
+				"subtitle": [
+					[208, 483, 392, 511]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				283,
+				512
+			]
+		},
 		"am/separation-and-service": {
 			"ground": "39d6e8ff1249d02fec49f9b301ceb480cc64d53635b0cee687e5dadd2698e990",
 			"style": "revival",
@@ -2701,6 +2794,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false
+		},
+		"am/sermons-on-several-occasions": {
+			"ground": "53d0fb67f33bfa8a1c9a802520f6fb41bf252cbe06001aae2e5f100db35a67e5",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
 			"bar": 0,
 			"caps": false
 		},
@@ -2815,16 +2920,32 @@
 			]
 		},
 		"am/talks-to-the-farmer-children": {
-			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
-			"style": "revival",
+			"ground": "bcc8c1533a055c33fa45aea1400ec0e1e1c73017f13dec10cc117a43efb7974e",
+			"style": "young",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[130, 310, 470, 385],
+					[108, 371, 492, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/talks-to-the-farmer-teens": {
 			"ground": "1037d0b5a13b37f556612057efeb1ebd8f6dc75186e5fe1bfeb21c93bca2b703",
@@ -3777,6 +3898,18 @@
 			"scrim": 1,
 			"layout": "split/oxblood",
 			"bar": 0.105,
+			"caps": false
+		},
+		"apologia-pro-vita-sua": {
+			"ground": "0815d2cd3f3003d2c5806de5f6e001af4f506f748db113564fb0f9b28d6745be",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"ar/absolute-surrender": {
@@ -5470,6 +5603,18 @@
 				482
 			]
 		},
+		"catechetical-lectures": {
+			"ground": "cc13ab1b8172ef6353fd30d157db53a4c0479778711ccac604d6170b5ea7302f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
@@ -5860,6 +6005,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/teal",
+			"bar": 0,
+			"caps": false
+		},
+		"dialogue-with-trypho": {
+			"ground": "16bbd5f82367d3c8f8a65dbb6e13f7d3f016678204737b9ce642de88d936b7ff",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -8596,16 +8753,32 @@
 			]
 		},
 		"es/talks-to-the-farmer-children": {
-			"ground": "508a85bc8b19c88b040015885be7a896fc803564551f7859909b5ce75930bd10",
-			"style": "revival",
+			"ground": "ed397ac5bd3c75ab9cb02f11cacf6f243b8f78b7343c4b2cd462d63936609d79",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[54, 310, 546, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/talks-to-the-farmer-teens": {
 			"ground": "d9f7ddefb97d78288c4de96cb52734706cb26c7e336bb6b3a4d12e1389689f3b",
@@ -9356,6 +9529,18 @@
 				173,
 				427
 			]
+		},
+		"exhortation-to-the-heathen": {
+			"ground": "934a95657e1a915ae6dd73c36235dbb36fb3b26b366b43b6c4c6053b6e688979",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"expository-thoughts-on-matthew": {
 			"ground": "716ea464f43e380c4d7f8955d6db98ec720045ff78249c26cca78f25caa47ff6",
@@ -12628,16 +12813,33 @@
 			]
 		},
 		"fr/talks-to-the-farmer-children": {
-			"ground": "c7a64a886612bbc63752808a29793e9a4c059feb4a5c950fee7288f495c9162e",
-			"style": "revival",
+			"ground": "c5adf17455c22218dcd577b8b9b2be82e6b0dd26ce7b0d56ebd123414e2f93ef",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[103, 280, 497, 355],
+					[100, 341, 500, 416],
+					[153, 402, 447, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"fr/talks-to-the-farmer-teens": {
 			"ground": "6d04e0737f0cc29178702b5c26255dfc65c693b0a8266a485bb2ccbe4ffb0b79",
@@ -14949,6 +15151,18 @@
 				444
 			]
 		},
+		"holy-dying": {
+			"ground": "441b5963f84b205c32637ac389cc9b927a38d3a66968f9f84dd8f2815575b888",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"holy-in-christ": {
 			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
 			"style": "devotional",
@@ -14958,6 +15172,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
+		"holy-living": {
+			"ground": "02b7ef39662515c217dfdbae14e37bf36c20fc4052088899be9b19aff3004634",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -17513,16 +17739,32 @@
 			]
 		},
 		"ko/talks-to-the-farmer-children": {
-			"ground": "6c33550d0708329bd9bc647ee430ff7ced1bea7faeda2c103d826bb4d07178a6",
-			"style": "revival",
+			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
+			"style": "young",
 			"volume": null,
 			"script": "korean",
 			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[84, 310, 516, 385],
+					[94, 371, 506, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"ko/the-bruised-reed": {
 			"ground": "f961292f90fb97e39dc369cccc14c9d75ef0aa44a53b33aab370375e3e01189a",
@@ -20008,6 +20250,18 @@
 				484
 			]
 		},
+		"on-the-holy-spirit": {
+			"ground": "1eec2062548c6bf4706646f4e042078052beda54546415f67e9273c4c00a6cea",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"on-the-incarnation": {
 			"ground": "256edd288ca5af1ca9bd7c1b4df6aae6fbeff421ab403ad41892505180c3d7fb",
 			"style": "inscriptional",
@@ -22085,16 +22339,33 @@
 			]
 		},
 		"pt/talks-to-the-farmer-children": {
-			"ground": "1109076400b25cdd9e68b17ef205055e02ea9fc9c63895a754cf63a698e14935",
-			"style": "revival",
+			"ground": "a2365254e20e166dee33d818166e6681b67fad52f603d12ad48a4e599a0cf7e6",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[104, 280, 496, 355],
+					[162, 341, 438, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"pt/talks-to-the-farmer-teens": {
 			"ground": "3a2b34b17f6710281b07da1748cafe1f08f4b33b8740c19eb0973f08343526f3",
@@ -25118,16 +25389,33 @@
 			]
 		},
 		"sw/talks-to-the-farmer-children": {
-			"ground": "362dbe72d25bfdf8106ed35e571578f621d26e926d4a9b1b2ee014d6e4ef669a",
-			"style": "revival",
+			"ground": "28b43a019610345e2b6e72d9cfed524f5a68adaf7e72f770c0f5e64a76131274",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[131, 280, 469, 355],
+					[151, 341, 449, 416],
+					[129, 402, 471, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"sw/talks-to-the-farmer-teens": {
 			"ground": "bf04365e9ba5d619927697ac58c5f8f42f5f0e21501e772f5cbb281f7755cb74",
@@ -25699,6 +25987,34 @@
 				525
 			]
 		},
+		"talks-to-the-farmer-children": {
+			"ground": "b84a52188ad81b8a188803fbb1d81a64aac24dae049b7efd628199fff20314b8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[52, 310, 548, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"tell-me-the-story-1": {
 			"ground": "d07e976fcb9c6a7e6358f97d734ae2896d4c81fc821a585685108cda775347d8",
 			"style": "young",
@@ -25993,6 +26309,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"the-apology-of-tertullian": {
+			"ground": "6901b260e05e1e39f3c3878ad5ceea73d4a3e525b4fed19de5302d92bcb83612",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-big-story": {
 			"ground": "96d49b04afc3f00fe739f4078febd9a07f3418543fb9f1c193f919bf02bccd94",
 			"style": "originals",
@@ -26210,9 +26538,45 @@
 			"bar": 0.1,
 			"caps": false
 		},
+		"the-consolation-of-philosophy": {
+			"ground": "816293f964a88910507b18d34c2da43819761af8fbabc90b08c1902830fbeb47",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-death-of-death-in-the-death-of-christ": {
 			"ground": "e2b41421babe1b9af2da092f6d5714bdf4c9fcb47f938c626653da880465bde6",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"the-dialogue-of-catherine-of-siena": {
+			"ground": "27c31a61010f46ddbbf277c580d489af3c0e5554afb59a5762ae9c6d4314fb42",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"the-epistles-of-cyprian": {
+			"ground": "a136b5a1cda1bed78826914d713ce3e68eb4503a885f3af4ace2f487e542ef89",
+			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
@@ -26232,6 +26596,18 @@
 			"scrim": 1,
 			"layout": "fade/rust",
 			"bar": 0.11,
+			"caps": false
+		},
+		"the-first-apology": {
+			"ground": "0fbe195a28c0a17699bae61059ead2b3c367d3f279b1c15b005928e59916e59f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"the-fourfold-gospel": {
@@ -26364,6 +26740,30 @@
 		"the-grace-and-duty-of-being-spiritually-minded": {
 			"ground": "95a48a2ec3e1bc5adfc18fd924cd19b43cea1da9290848346091f1e86034227e",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"the-great-catechism": {
+			"ground": "4f7c29ccdd99c3c13b9e6e65ce5b2825843bb5b5ef170b738814f3365ac56b02",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"the-hexaemeron": {
+			"ground": "0b3b65e381c973bf24b2f847d7051b95bb9747e21db6f64ea06419a0d9637f23",
+			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
@@ -26514,6 +26914,18 @@
 				355,
 				439
 			]
+		},
+		"the-life-of-god-in-the-soul-of-man": {
+			"ground": "2d17585e59124ae6276f99e9fb721615f039ce6d6b11185e7f6938013b8a61f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
@@ -26781,6 +27193,18 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "cb6042bb60d366f6ac5e6358a0943beab82b44228702f8672510140f81211cf9",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-saint-and-his-saviour": {
 			"ground": "ecbb592e7c3c8e50f18b610eaa8798e56b6cf6804a3afd9096bc7a81293ad071",
 			"style": "revival",
@@ -26843,6 +27267,30 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
+		"the-spiritual-exercises": {
+			"ground": "22c0e58b0257d9435aa9d2af20e623f1ba49f146d5715ecd257b1fd275d1fc38",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"the-theological-orations": {
+			"ground": "62f9943892393a483c13b7401c0dc697aa79088e3ab74c2b72242e94e18f37ca",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -27097,6 +27545,18 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04,
+			"caps": false
+		},
+		"treatise-on-the-love-of-god": {
+			"ground": "f50d7a7f53f524c32e0a2308ce67fe4d44049482576751b2a557bb3ab224e5f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"treatises-of-cyprian": {
@@ -29023,16 +29483,33 @@
 			]
 		},
 		"vi/talks-to-the-farmer-children": {
-			"ground": "a9e06352ea5078890754a521c26b4663474ce8e3e3313ef1cfd8eb35f150b55a",
-			"style": "revival",
+			"ground": "f0144abc340df0f2982dac2736b3d4f12d58723e8c3fcf2b972c77772e02d293",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
+			"scrim": 0.3,
+			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[151, 280, 449, 355],
+					[126, 341, 474, 416],
+					[113, 402, 487, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"vi/the-bruised-reed": {
 			"ground": "a4799c092856e7608157865b379e5df2c99670ebadad3918aa38400f61911b77",
