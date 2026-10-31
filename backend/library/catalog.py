@@ -1112,6 +1112,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Gregory of Nyssa's On the Making of Man (379) — H. A. Wilson's NPNF
+    # translation (1893), public domain, extracted from npnf205 by its stem:
+    # the dedication to his brother Peter and thirty chapters completing
+    # Basil's Hexaemeron with the creation of man, under the translator's
+    # headings (summary_titles keeps each one's lead clause).
+    BookEntry("on-the-making-of-man", "On the Making of Man", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="x.ii.ii", summary_titles=True,
+              subtitle="Translated by H. A. Wilson", cover_color="#4a5c2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

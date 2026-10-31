@@ -520,6 +520,7 @@ TOPICS = [
             "on-the-incarnation",
             "the-theological-orations",
             "the-great-catechism",
+            "on-the-making-of-man",
             "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
