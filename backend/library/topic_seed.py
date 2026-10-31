@@ -364,6 +364,7 @@ TOPICS = [
             "first-epistle-of-clement",
             "exhortation-to-the-heathen",
             "who-is-the-rich-man-that-shall-be-saved",
+            "the-instructor",
             "epistles-of-ignatius",
             "the-first-apology",
             "dialogue-with-trypho",
