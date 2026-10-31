@@ -1,5 +1,7 @@
-https://upload.wikimedia.org/wikipedia/commons/7/70/Eusebius_of_Caesarea_Rabbula_Gospels_Icon.jpg
-https://upload.wikimedia.org/wikipedia/commons/3/38/Saint_irenee_saint_irenee.jpg
-https://upload.wikimedia.org/wikipedia/commons/5/5c/Lactantius.jpg
-https://upload.wikimedia.org/wikipedia/commons/c/c7/Origen3.jpg
-https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata|size&format=json&titles=File:Eusebius_of_Caesarea_Rabbula_Gospels_Icon.jpg|File:Saint_irenee_saint_irenee.jpg|File:Lactantius.jpg|File:Origen3.jpg|File:Saint_Irenaeus_icon.jpg
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Polycarp
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Hermas_(writer)
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Theophilus_of_Antioch
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Hippolytus_of_Rome
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Jerome
+https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=The_Shepherd_of_Hermas
+https://en.wikipedia.org/w/api.php?action=query&prop=pageimages|images&piprop=original|name&imlimit=40&format=json&redirects=1&titles=Polycarp|Hermas_(writer)|Theophilus_of_Antioch|Hippolytus_of_Rome|Jerome
