@@ -27,6 +27,8 @@
         "clement-of-alexandria",
         "gregory-of-nyssa",
         "tertullian",
+        "irenaeus-of-lyons",
+        "origen-of-alexandria",
         "eusebius-of-caesarea"
       ]
     },
@@ -306,7 +308,8 @@
         "brother-lawrence",
         "blaise-pascal",
         "jeanne-guyon",
-        "francis-de-sales"
+        "francis-de-sales",
+        "irenaeus-of-lyons"
       ]
     },
     {
@@ -407,7 +410,8 @@
         "augustine-of-hippo",
         "josephine-bakhita",
         "clement-of-alexandria",
-        "tertullian"
+        "tertullian",
+        "origen-of-alexandria"
       ]
     },
     {

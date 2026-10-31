@@ -270,6 +270,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 4
   },
+  "on-first-principles": {
+   "orphan-close-quote": 2
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
   },
