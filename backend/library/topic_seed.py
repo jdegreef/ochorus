@@ -40,6 +40,7 @@ TOPICS = [
             "lord-teach-us-to-pray-2",
             "prevailing-prayer",
             "how-to-pray",
+            "tertullian-on-prayer",
             "answers-to-prayer",
             "men-of-prayer-2",
             "possibilities-of-prayer",

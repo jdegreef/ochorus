@@ -26780,6 +26780,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"tertullian-on-prayer": {
+			"ground": "486dd5dcdf9325c22bf39e637e0a9424bf1fec9bb1a88b5142f2f63410bb913e",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-apology-of-tertullian": {
 			"ground": "3fc291f97773c101ee31b260abc3018c6fda3eb51e20040ba2bc1a9cd6017780",
 			"style": "inscriptional",
