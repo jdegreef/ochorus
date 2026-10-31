@@ -130,6 +130,7 @@ TOPICS = [
             "union-and-communion",
             "men-who-moved-heaven",
             "evangelization-of-the-world",
+            "in-darkest-england-and-the-way-out",
             "key-teachings-of-dwight-l-moody",
             "key-teachings-of-charles-finney",
         ],
