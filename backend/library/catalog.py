@@ -1254,6 +1254,14 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # John Bunyan's The Jerusalem Sinner Saved (1688) — Gutenberg #3270, from
+    # the 1845 Thomas Nelson edition: his last treatise, on Luke 24:47, that
+    # Christ would have mercy offered first to the biggest sinners. One
+    # continuous discourse in the source; the chapters follow its own heads
+    # (the text, the observation, six reasons, eleven uses, the day of grace).
+    BookEntry("the-jerusalem-sinner-saved", "The Jerusalem Sinner Saved", "john-bunyan",
+              "gutenberg", "3270", subtitle="Or, Good News for the Vilest of Men",
+              cover_color="#4a2e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

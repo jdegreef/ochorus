@@ -27582,6 +27582,18 @@
 				515
 			]
 		},
+		"the-jerusalem-sinner-saved": {
+			"ground": "f248ca7b8a8b699800c70f3a37bf60b0cc6de63d249d3c94cf2e23ea68be69b9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",

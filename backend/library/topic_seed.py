@@ -167,6 +167,7 @@ TOPICS = [
             "the-rise-and-progress-of-religion-in-the-soul",
             "around-the-wicket-gate",
             "grace-abounding",
+            "the-jerusalem-sinner-saved",
             "how-i-became-a-christian",
             "how-to-bring-men-to-christ",
             "key-teachings-of-dwight-l-moody",
