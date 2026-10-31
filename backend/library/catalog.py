@@ -1206,6 +1206,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-octavius", "The Octavius", "minucius-felix",
               "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
               subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
+    # Clement of Alexandria's Who Is the Rich Man That Shall Be Saved? (c. 200)
+    # — William Wilson's ANF translation (1885), public domain, extracted from
+    # anf02 by its stem: a homily on Mark 10:17–31, ending with the story of
+    # St John and the young robber.
+    BookEntry("who-is-the-rich-man-that-shall-be-saved", "Who Is the Rich Man That Shall Be Saved?",
+              "clement-of-alexandria", "ccel", "schaff/anf02", part="vi.v", keep=("vi.v",),
+              subtitle="Translated by William Wilson", cover_color="#6b5a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
