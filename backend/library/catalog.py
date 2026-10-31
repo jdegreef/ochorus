@@ -599,6 +599,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "irenaeus-of-lyons": AuthorEntry(
+        slug="irenaeus-of-lyons",
+        name="Irenaeus of Lyons",
+        birth_year=130,
+        death_year=202,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Irenaeus of Lyons (c. 130–c. 202) was a Greek bishop of Lyons in Roman Gaul who as a boy had heard Polycarp of Smyrna."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1123,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Irenaeus's Against Heresies (c. 180) — Alexander Roberts and W. H.
+    # Rambaut's ANF translation (1885), public domain, extracted from anf01 by
+    # its stem. group_parts: each of the five Books is a chapter, its short
+    # chapters subheads; the editor's note, Elucidation and fragments are left out.
+    BookEntry("against-heresies", "Against Heresies", "irenaeus-of-lyons",
+              "ccel", "schaff/anf01", part="ix", group_parts=True,
+              subtitle="Translated by Alexander Roberts and W. H. Rambaut", cover_color="#4a3b5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
