@@ -186,6 +186,10 @@
 			"content": "004bf5d6b3db17b89625d5584e43b3e45cbac1cd622f5fdc4e1ecc64f72ae368",
 			"art": "d2cfa1486c576fafffe1223e02bc035e2a6bf629ace50f8e2fbbb58155ec109b"
 		},
+		"christs-friends": {
+			"content": "7c1f03d327ddcdade6158f96cd6f269c1468fd4e2e1e927596424b45b811ffca",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"christs-messages-to-the-church": {
 			"content": "5fa5b95ccd585e5c356d9f6514e6051e2f792d2aacdcc12a33af554a0ff01ec1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -245,6 +249,10 @@
 		"dealing-with-anxious-souls": {
 			"content": "dbf1422d31a3f9481c3424faa803016414cbe6f7b1de22c0aa29c81a7dac02dd",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"divine-calls": {
+			"content": "bdbf5830f6866880515ecb37db19025ac30d297c03972d51df9699afc8271784",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"do-you-pray": {
 			"content": "6aff1b578ab1189b0149b8ca7276e18683c63eeef5a625f02a363d0fee93cb86",
@@ -482,9 +490,17 @@
 			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"into-thy-hands": {
+			"content": "f56a329636ef62d13fb86d50fa394c5ec92368018331394f4f4a2161021078c7",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"jephthah-or-the-faith-that-leads-to-faithfulness": {
 			"content": "9579c8c0e4667a5399d457261ffcb9d4656a070504b0a9294231766d05d2f085",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"jeremiah-a-lesson-for-the-disappointed": {
+			"content": "d67d4adf096d47df13c77cf25fed852581ac53931c3178b28308088bf09b6152",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"jesus-on-prayer": {
 			"content": "e89a9ff634995a82b4f09efcc03315e0419d8d4fd8c2e7f326350d7f93193ece",
@@ -504,6 +520,10 @@
 		},
 		"living-or-dead": {
 			"content": "d4dba771c9095904f1d84419a94a006da4b7dd3ba221331477d98d120c7a9a23",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"looking-to-the-hills": {
+			"content": "c62b1417829b806481290e8f45507e4d1d3a32a27942e674e35e37ca0ce8a940",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"looking-unto-jesus": {
@@ -642,6 +662,18 @@
 			"content": "693a7efb8c2d3eb227a919c8d1d0fe7a0a6cae455abc647174e843cc19f00a8d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"rejoice-evermore": {
+			"content": "5ae9771cdc1604fcd33853dd8483a93615120841a567d863470924d202e617f9",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"religion-pleasant-to-the-religious": {
+			"content": "13418bba16b1b3fd0881d3f300a37ad7484082b521db4107c30df362788788ee",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"religious-joy": {
+			"content": "e1a3e41110499a80b923eaf8b2cf2c7b0f9d79944658761042036be240ce861e",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"rest": {
 			"content": "2145408f8568cd5babd836a0b7d28273d3e733445d3ed82be65d36aacf95c373",
 			"art": "507ce58f3ce91b3c00236b94b1da144963f0e1fbf5db8590eefed221dba33bec"
@@ -706,6 +738,10 @@
 			"content": "179653a5f74bce38ff00fcc5bbd3316a7f4c2c729099220744729bd542a26b9d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"sorrow-turned-into-joy": {
+			"content": "cfab9e6d0e759782dd2bb2ebc492329babb4a70110474fdfc51db76969a29e82",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"spiritual-growth": {
 			"content": "56420cb853dbf1e1f76ece033e22559a4f314314231b78c766f8ac94ed05a5f9",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -717,6 +753,10 @@
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
 			"art": "27663481d9b759296ff4996cabf2ee9fb38eb8a959631b59f7146a84414eb867"
+		},
+		"temporal-advantages": {
+			"content": "48673a3072c386762e7e62a4366b6cb28d4af97010c86c549b5aa811568d8c3c",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"thanksgiving-sermon-abolition-of-the-slave-trade": {
 			"content": "05f8094576dc1c743409b77fe43ee3ddb8ddc88ea5cc4062ad2fb1d64261ad8b",
@@ -752,6 +792,10 @@
 		},
 		"the-burden-bearing-god": {
 			"content": "80b8da5cec8171ae4f1d71ea35555e94cad3cb67b6704b0462e2e7cee177a9f5",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-call-to-the-thirsty": {
+			"content": "4f4bbcf13f39f60da2097ccc76e1fd7c8a5c5b93d26329cba1787504932db549",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-christian-pilgrim": {
@@ -810,6 +854,10 @@
 			"content": "38fe826661d5299881cc71b00f153ed09169de7330b0b7d0d38fa2875d2482b3",
 			"art": "0dcfebb5bf6d3f3e1f89fd1b2aebd4b074253d5197dc08c657b2126887ae7dfd"
 		},
+		"the-encamping-angel": {
+			"content": "7d4b644879c6c818b2a27e71500d379f9d587508537851c1fd05c09f9c591be1",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"the-excellency-of-christ": {
 			"content": "a034b11ca72592b1ad2c77cc6dc4e9d8a1eab11a876024078a85d39e711b6057",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -817,6 +865,10 @@
 		"the-expulsive-power-of-a-new-affection": {
 			"content": "e283f5fc7d25c331a1977654b9a7cb705b5c5c6ae74a1880f9b5adc9ac8debbf",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-fixed-heart": {
+			"content": "b98233dd26b4cff969e177cb9af0bec86b2485ae36b50bca404998c17bd73321",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-gift-of-faith": {
 			"content": "35406361e4c2ac8b16d882c5c185d2d88beb6e2c71064f4b772ef67b1d31e071",
@@ -849,6 +901,10 @@
 		"the-hidden-life-of-faith": {
 			"content": "f40fda89e76d35783d8db0bad89deae99bfa1b4b18a1c4a032d9dc73ad9f5c3c",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-hiding-place": {
+			"content": "a6b738d2fd0d5bf1ac3f2eb59a5a82c0df29c2494d5a1b333c3a2fffbaee8498",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-holy-ghost": {
 			"content": "c8a212a00453bbd403977e1139f5384fe7310ec320df944bfedc08caa5d64ed7",
@@ -950,6 +1006,10 @@
 			"content": "07fc37cd55aa9f840721bc19d820fbec40cdfd822518cc6786a7b9ca2f87ff38",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-praying-christ": {
+			"content": "278491bd2b6dbd052ccbac87cc7449394ba16133bd7f482fdf9327fa1493c3c2",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-precious-atonement": {
 			"content": "0043574a268646daff35d77b05c03c3f92d7853927be60465b787b3c5bff57df",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -957,6 +1017,10 @@
 		"the-prodigal-and-his-brother": {
 			"content": "2198efd6773e1ac263dbccafaa8a7164f39af2ffbcb6287dde42677dc26b4b76",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-prodigal-and-his-father": {
+			"content": "d303e0da8a9d340e4b73a04398e859d80e30b7c4fa1061ed47277ed72b14ace5",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-ravens-cry": {
 			"content": "daa26fb3232004840cba6054a8a867b2423c518bbf58f5d039e238f892c8ff02",
@@ -986,6 +1050,10 @@
 			"content": "f596ba2a769c57bbe61e3b0af94526c2a914f4b9383681efc9a036c0d01de3e4",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-secret-of-immortal-youth": {
+			"content": "09b9589fb8f1cdd6ab1c7a5d6b2f8a183a399cd6a51b576b3a81259b82ab99ca",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-secret-of-tranquillity": {
 			"content": "4b8211af294f58355838aa23f28d4ccdda245ddf170044a6de748733221f2c67",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -993,6 +1061,14 @@
 		"the-shameful-sufferer": {
 			"content": "c4920478df3841636ce1bbb71391dc4c6d0f034f782ef88a4f6c888fc99e575b",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-shepherd-king-of-israel": {
+			"content": "3b9706898ba7cd0ffe32ad5351a182d6b4362bd214a5abcd3512332a9becdc87",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-shepherd-of-our-souls": {
+			"content": "f4b2aad7481b717b5c4c92ae7078916b1dc0004c9c6d2435032ad7b856b5be13",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-sin-of-murmuring": {
 			"content": "6e6c3a6892e99e06e1fa56bc5c1ea75450a5c0b128e9e629e2d711846a226bc0",
@@ -1050,6 +1126,10 @@
 			"content": "d3451a7c0e34c51bab9cda3a279e970360a584272b75f6603cef42d0de267aaa",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"the-true-vine": {
+			"content": "70d479db868379a44e4105da71b21b26ede6b9eb7e410987ac88afa7ebb097c1",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-uplifted-christ": {
 			"content": "2f442d0f877e641809c4c46ac94a676dbfd6150658988dcbf364c5248ab7ea37",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -1085,6 +1165,10 @@
 		"the-wrath-of-god": {
 			"content": "26213828544d813e96c7deb30318b008a9ae217db9be6bba71e7db0d243a0361",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"the-writing-on-gods-hands": {
+			"content": "4192d8c4f98df923ce1871d4331a6925b5e2348c9ac8fb222b52ee99bbea0063",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"thirsting-for-god": {
 			"content": "2f2c297ae2c67f1dabcbbd44bf7119fef75c4a12b741557c1ed6be93d8bed0dc",
