@@ -1254,6 +1254,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Andrew Murray's The Two Covenants (1898) — CCEL's murray/covenants: the
+    # old covenant and the new, and the life of the believer under the second.
+    BookEntry("the-two-covenants", "The Two Covenants", "andrew-murray",
+              "ccel", "murray/covenants", subtitle="And the Second Blessing",
+              cover_color="#2e4a5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
