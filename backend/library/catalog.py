@@ -599,6 +599,61 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "irenaeus-of-lyons": AuthorEntry(
+        slug="irenaeus-of-lyons",
+        name="Irenaeus of Lyons",
+        birth_year=130,
+        death_year=202,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Irenaeus of Lyons (c. 130–c. 202) was a Greek bishop of Lyons in Roman Gaul who as a boy had heard Polycarp of Smyrna."
+        ),
+    ),
+    "origen-of-alexandria": AuthorEntry(
+        slug="origen-of-alexandria",
+        name="Origen of Alexandria",
+        birth_year=185,
+        death_year=253,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Origen of Alexandria (c. 185–c. 253) was an Alexandrian teacher, preacher and biblical scholar, one of the most influential and most debated theologians of the early Church."
+        ),
+    ),
+    "eusebius-of-caesarea": AuthorEntry(
+        slug="eusebius-of-caesarea",
+        name="Eusebius of Caesarea",
+        birth_year=260,
+        death_year=339,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Eusebius of Caesarea (c. 260–339) was a bishop and scholar of Palestine, the pupil of the martyr Pamphilus and the father of church history."
+        ),
+    ),
+    "lactantius": AuthorEntry(
+        slug="lactantius",
+        name="Lactantius",
+        birth_year=250,
+        death_year=325,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
+        ),
+    ),
+    "minucius-felix": AuthorEntry(
+        slug="minucius-felix",
+        name="Minucius Felix",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1167,45 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Irenaeus's Against Heresies (c. 180) — Alexander Roberts and W. H.
+    # Rambaut's ANF translation (1885), public domain, extracted from anf01 by
+    # its stem. group_parts: each of the five Books is a chapter, its short
+    # chapters subheads; the editor's note, Elucidation and fragments are left out.
+    BookEntry("against-heresies", "Against Heresies", "irenaeus-of-lyons",
+              "ccel", "schaff/anf01", part="ix", group_parts=True,
+              subtitle="Translated by Alexander Roberts and W. H. Rambaut", cover_color="#4a3b5c"),
+    # Origen's On First Principles (De Principiis, c. 220–230) — Frederick
+    # Crombie's ANF translation (1885), public domain, extracted from anf04 by
+    # its stem. group_parts: Origen's Preface and each of the four Books is a
+    # chapter. Where ANF prints a passage twice, from Rufinus's Latin and from
+    # the surviving Greek, the Greek is kept.
+    BookEntry("on-first-principles", "On First Principles", "origen-of-alexandria",
+              "ccel", "schaff/anf04", part="vi.v", group_parts=True,
+              subtitle="Translated by Frederick Crombie", cover_color="#3e5a4a"),
+    # Eusebius's Church History (c. 325) — Arthur Cushman McGiffert's NPNF
+    # translation (1890), public domain, extracted from npnf201 by its stem.
+    # group_parts: each of the ten Books is a chapter, its short chapters
+    # subheads. McGiffert's prolegomena, the testimonies and his supplementary
+    # tables are left out; the Martyrs of Palestine, which ANF prints between
+    # Books VIII and IX, is kept as Eusebius's own appendix to Book VIII.
+    BookEntry("church-history", "The Church History", "eusebius-of-caesarea",
+              "ccel", "schaff/npnf201", part="iii", group_parts=True,
+              subtitle="Translated by Arthur Cushman McGiffert", cover_color="#5c4a2e"),
+    # Lactantius's Divine Institutes (c. 303–311) — William Fletcher's ANF
+    # translation (1886), public domain, extracted from anf07 by its stem.
+    # group_parts: each of the seven Books is a chapter, its short chapters
+    # subheads. The Epitome that follows it in the volume is left out.
+    BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
+              "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
+              subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
+    # The Octavius of Minucius Felix (c. 200–235) — Robert Ernest Wallis's ANF
+    # translation (1885), public domain, extracted from anf04 by its stem: a
+    # dialogue at Ostia between the pagan Caecilius and the Christian Octavius,
+    # in forty-one short chapters. Each is titled from the translator's
+    # "Argument" (summary_titles keeps its lead clause).
+    BookEntry("the-octavius", "The Octavius", "minucius-felix",
+              "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
     # Clement of Alexandria's Who Is the Rich Man That Shall Be Saved? (c. 200)
     # — William Wilson's ANF translation (1885), public domain, extracted from
     # anf02 by its stem: a homily on Mark 10:17–31, ending with the story of
