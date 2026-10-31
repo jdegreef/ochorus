@@ -132,6 +132,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
 	'mary-stone': '50% 0%', // Burton 1918 plate, caption cropped off; face at ~30%
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
+	'origen-of-alexandria': '50% 25%', // 12th-c. manuscript drawing labelled ORIGENES; face at ~30% of a 0.95 crop
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
 	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
