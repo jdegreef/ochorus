@@ -83,36 +83,9 @@ DISPUTED_NOTE = (
     "as here, set apart and in brackets."
 )
 
-#: The New Testament books; the rest are Hebrew (`data/hbo/`).
-NEW_TESTAMENT = {
-    "MAT",
-    "MRK",
-    "LUK",
-    "JHN",
-    "ACT",
-    "ROM",
-    "1CO",
-    "2CO",
-    "GAL",
-    "EPH",
-    "PHP",
-    "COL",
-    "1TH",
-    "2TH",
-    "1TI",
-    "2TI",
-    "TIT",
-    "PHM",
-    "HEB",
-    "JAS",
-    "1PE",
-    "2PE",
-    "1JN",
-    "2JN",
-    "3JN",
-    "JUD",
-    "REV",
-}
+#: Matthew's place in OWB's canonical book order (`data/books.json`): it and
+#: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
+FIRST_NT_INDEX = 39
 
 _SPAN = re.compile(r"\{\{([a-z_]+):([^{}]*)\}\}")
 _VERSE = re.compile(r"\\v (\d+) ?")
@@ -199,9 +172,16 @@ class Source:
             if headings.exists()
             else {}
         )
-        self.name = json.loads((root / "data" / "books.json").read_text("utf-8"))[
-            "books"
-        ][code][LANGUAGE]
+        books = json.loads((root / "data" / "books.json").read_text("utf-8"))["books"]
+        self.name = books[code][LANGUAGE]
+        self.greek = list(books).index(code) >= FIRST_NT_INDEX
+        # Records carry the SOURCE text's numbering. Where the Hebrew numbers a
+        # book's verses differently from English Bibles (Malachi 4 is Hebrew
+        # 3:19-24), grouping by it would mis-cut the chapters; refuse until the
+        # book is mapped through data/versification.json.
+        renumbered = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
+        if any(vid.startswith(f"{code}.") for vid in renumbered):
+            raise CommandError(f"{code} is numbered differently in English; chapters would not match")
         self.commit = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
             capture_output=True,
@@ -217,7 +197,7 @@ class Source:
         return out
 
     def _words(self, chapter: int) -> list[dict]:
-        folder = "grc" if self.code in NEW_TESTAMENT else "hbo"
+        folder = "grc" if self.greek else "hbo"
         path = self.root / "data" / folder / f"{self.code}.{chapter}.json"
         if not path.exists():
             return []
@@ -291,7 +271,8 @@ class Source:
         first, last = next(
             (a, b)
             for a, b in DISPUTED
-            if verse_key(a) <= verse_key(record["refs"][0]) <= verse_key(b)
+            if a.startswith(f"{self.code}.")
+            and verse_key(a) <= verse_key(record["refs"][0]) <= verse_key(b)
         )
         (c1, v1), (c2, v2) = verse_key(first), verse_key(last)
         span = f"{c1}:{v1}–" + (str(v2) if c1 == c2 else f"{c2}:{v2}")
@@ -361,7 +342,7 @@ class Command(BaseCommand):
             "description": meta["description"],
             "qa": meta["qa"],
             "cover_color": meta["cover_color"],
-            "source_url": f"{SITE}/",
+            "source_url": f"{SITE}/read/#{source.code.lower()}",
             "attribution": (
                 f"Scripture from the Open Word Bible ({SITE}), English, Balanced level, "
                 f"commit {source.commit[:12]}: dedicated to the public domain under CC0 1.0. "
