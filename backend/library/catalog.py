@@ -1254,6 +1254,14 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Luther's Table Talk (Gutenberg #9841) — selections from Captain Henry
+    # Bell's English translation (1652) of Aurifaber's Tischreden, public
+    # domain. Built from a reshaped copy of the PG HTML: one <h2> per topic,
+    # each saying a subhead; the editor's introduction and Bell's
+    # narrative and parliamentary order are left out.
+    BookEntry("table-talk", "Table Talk", "martin-luther",
+              "gutenberg", "9841",
+              subtitle="Translated by Henry Bell", cover_color="#5c4a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

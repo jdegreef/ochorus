@@ -181,6 +181,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "table-talk",
             "apologia-pro-vita-sua",
             "the-idea-of-a-university",
             "the-consolation-of-philosophy",
