@@ -396,6 +396,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 8
   },
+  "tertullian-on-prayer": {
+   "lost-paragraphing": 3
+  },
   "the-apology-of-tertullian": {
    "lost-paragraphing": 37
   },

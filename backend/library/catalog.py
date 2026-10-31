@@ -1112,6 +1112,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Tertullian's On Prayer (c. 198–203) — S. Thelwall's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem: the oldest
+    # surviving exposition of the Lord's Prayer, then counsel on the manner of
+    # praying, in twenty-nine short chapters.
+    BookEntry("tertullian-on-prayer", "On Prayer", "tertullian",
+              "ccel", "schaff/anf03", part="vi.iv",
+              subtitle="Translated by S. Thelwall", cover_color="#2e5c4a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
