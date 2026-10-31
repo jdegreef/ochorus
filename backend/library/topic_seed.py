@@ -853,6 +853,7 @@ TOPIC_SERMONS = {
         "prayer-answered-love-nourished",
         "waiting-only-upon-god",
         "the-cry-for-revival",
+        "the-praying-christ",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -884,6 +885,11 @@ TOPIC_SERMONS = {
         "thirsting-for-god",
         "the-expulsive-power-of-a-new-affection",
         "lovest-thou-me",
+        "the-fixed-heart",
+        "the-true-vine",
+        "christs-friends",
+        "rejoice-evermore",
+        "religious-joy",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -914,7 +920,6 @@ TOPIC_SERMONS = {
         "grace-abounding",
         "more-than-conquerors",
         "a-faithful-friend",
-        "healing-for-the-wounded",
         "mr-fearing-comforted",
         "consolation-in-christ",
         "loves-logic",
@@ -932,6 +937,15 @@ TOPIC_SERMONS = {
         "spiritual-peace",
         "one-antidote-for-many-ills",
         "the-treasure-of-grace",
+        "the-writing-on-gods-hands",
+        "the-hiding-place",
+        "the-shepherd-king-of-israel",
+        "into-thy-hands",
+        "the-encamping-angel",
+        "looking-to-the-hills",
+        "sorrow-turned-into-joy",
+        "jeremiah-a-lesson-for-the-disappointed",
+        "the-shepherd-of-our-souls",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -966,6 +980,12 @@ TOPIC_SERMONS = {
         "faith-in-an-unseen-christ",
         "fear-not",
         "as-thy-days-so-shall-thy-strength-be",
+        "the-shepherd-king-of-israel",
+        "into-thy-hands",
+        "the-fixed-heart",
+        "looking-to-the-hills",
+        "divine-calls",
+        "jeremiah-a-lesson-for-the-disappointed",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -1006,6 +1026,9 @@ TOPIC_SERMONS = {
         "the-vain-wish",
         "salvation-to-the-uttermost",
         "the-new-heart",
+        "the-call-to-the-thirsty",
+        "the-prodigal-and-his-father",
+        "divine-calls",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1021,6 +1044,8 @@ TOPIC_SERMONS = {
         "victory",
         "the-power-of-sorrow",
         "the-expulsive-power-of-a-new-affection",
+        "temporal-advantages",
+        "religion-pleasant-to-the-religious",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -1044,6 +1069,7 @@ TOPIC_SERMONS = {
         "the-power-of-stillness",
         "the-power-of-feeble-faith",
         "under-the-shepherds-care",
+        "the-secret-of-immortal-youth",
     ],
 }
 
