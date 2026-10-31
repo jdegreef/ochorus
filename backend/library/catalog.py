@@ -599,6 +599,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "william-booth": AuthorEntry(
+        slug="william-booth",
+        name="William Booth",
+        birth_year=1829,
+        death_year=1912,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1123,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # In Darkest England and the Way Out (1890, Gutenberg #475) — Booth's survey
+    # of London's "submerged tenth" and the Salvation Army's scheme to raise
+    # them: City, Farm and Over-Sea Colonies. Built from a reshaped copy of the
+    # PG HTML (one <h2> per chapter, titled from its Contents; the transcription's
+    # "#" restored to "£"; the Appendix of documents left out).
+    BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
+              "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
