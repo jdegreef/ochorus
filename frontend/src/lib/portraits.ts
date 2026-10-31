@@ -99,6 +99,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'jeremy-taylor': '50% 0%', // Eddis copy of the Bodleian oil; face at ~22% of a 0.80 plate
+	'jerome': '50% 15%', // Stom painting (17th c.) cropped to the head; face at ~25%
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
 	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
