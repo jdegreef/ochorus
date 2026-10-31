@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "hermas": AuthorEntry(
+        slug="hermas",
+        name="Hermas",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hermas (fl. c. 140) was a Christian of Rome and a former slave who wrote The Shepherd, a book of visions, commandments and parables calling believers to repentance and an undivided heart."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,13 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # The Shepherd of Hermas (c. 100–150) — F. Crombie's ANF translation (1885),
+    # public domain, extracted from anf02 by its stem: the five Visions, twelve
+    # Commandments and ten Similitudes, one chapter each. The editors'
+    # introductory note and Elucidations are left out.
+    BookEntry("the-shepherd-of-hermas", "The Shepherd of Hermas", "hermas",
+              "ccel", "schaff/anf02", part="ii",
+              subtitle="Translated by F. Crombie", cover_color="#3e5c3e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
