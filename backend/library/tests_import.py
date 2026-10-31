@@ -1055,6 +1055,25 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         )
         self.assertEqual(extract_gutenberg_section(page, "Sermon"), "<p>Body.</p>")
 
+    def test_a_numbered_sermon_loses_its_title_line_and_footnotes(self):
+        """Newman's *Parochial and Plain Sermons* (PG 24256) heads each sermon
+        "SERMON VIII." and prints the title as the first paragraph, with plain
+        "[n]" footnotes trailing the sermon. The title goes (the page shows the
+        catalog's), so the text after it is the epigraph; the notes and their
+        markers go too."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h2>SERMON XVII.</h2><p>Religious Joy.[1]</p>"
+            '<p>"Fear not."—Luke ii. 10.</p><p>Joy to the world[2] indeed.</p>'
+            "<p>[1] Preached on Christmas Day.</p><p>[2] Ps. xcviii.</p>"
+            "<h2>SERMON XVIII.</h2></body></html>"
+        )
+        self.assertEqual(
+            extract_gutenberg_section(page, "SERMON XVII.", "h2", "Religious Joy"),
+            '<blockquote>"Fear not."—Luke ii. 10.</blockquote><p>Joy to the world indeed.</p>',
+        )
+
     def test_a_line_break_separates_heading_words(self):
         from library.management.commands.import_sermons import extract_gutenberg_section
 

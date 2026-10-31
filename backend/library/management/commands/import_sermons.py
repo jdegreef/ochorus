@@ -95,7 +95,9 @@ def _norm_heading(text: str) -> str:
     ).replace("”", '"').casefold()
 
 
-def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
+def extract_gutenberg_section(
+    html: str, section: str, level: str = "", title: str = ""
+) -> str:
     """Return the body of one heading-delimited sermon from a Gutenberg edition.
 
     Collects paragraph-level elements between the matching heading and the next
@@ -153,17 +155,45 @@ def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
             continue
         parts.append(str(el))
 
+    parts = _drop_footnotes(parts)
+    # A volume that heads each sermon with its number only ("SERMON VIII.",
+    # Newman's *Parochial and Plain Sermons*, PG 24256) prints the title as the
+    # first paragraph; the page shows the catalog title already.
+    first = subtitles
+    if (
+        title
+        and first < len(parts)
+        and _norm_heading(re.sub(r"<[^>]+>", "", parts[first])) == _norm_heading(title)
+    ):
+        del parts[first]
+
     # The first paragraph is usually the scripture epigraph in quotes — after
     # any display-line subtitle. Only those: a real heading in the source still
     # ends the search, as PG 57109's `<h2>J. Hudson Taylor</h2>` byline does,
     # so its John 4:10 text stays the `<p>` every edition shipped with.
-    first = subtitles
     if first < len(parts) and parts[first].startswith("<p"):
         first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
         if first_text.startswith(QUOTES):
             inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())
             parts[first] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
+
+
+_FOOTNOTE = re.compile(r"^<p[^>]*>\s*\[\d+\]")
+_FOOTNOTE_MARK = re.compile(r"\[\d+\]")
+
+
+def _drop_footnotes(parts: list[str]) -> list[str]:
+    """Drop an edition's trailing ``[n] …`` footnote paragraphs and their
+    markers in the text. Newman's are verse references and the day a sermon was
+    preached — nothing a reader misses, and a bare "[3]" mid-sentence links
+    nowhere. Untouched when the sermon ends on no such run."""
+    end = len(parts)
+    while end and _FOOTNOTE.match(parts[end - 1]):
+        end -= 1
+    if end == len(parts):
+        return parts
+    return [_FOOTNOTE_MARK.sub("", p) for p in parts[:end]]
 
 
 def parse_preached_on(text: str) -> datetime.date | None:
@@ -458,7 +488,8 @@ def extract_entry(entry: SermonEntry) -> tuple[str, str, datetime.date | None]:
             "https://www.gutenberg.org/cache/epub/"
             f"{entry.source_ref}/pg{entry.source_ref}-images.html"
         )
-        return extract_gutenberg_section(fetch(url), entry.section, entry.section_level), "", None
+        body = extract_gutenberg_section(fetch(url), entry.section, entry.section_level, entry.title)
+        return body, "", None
     if entry.source == "web":
         return extract_web_sermon(fetch_web(entry.source_ref), entry.title, entry.body_starts), "", None
     if entry.source == "archive":
