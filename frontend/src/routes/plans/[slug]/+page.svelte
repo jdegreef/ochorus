@@ -107,6 +107,19 @@
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));
 	const doneSet = $derived(new Set(planProgress.doneDays(plan.slug)));
 	const doneCount = $derived(doneSet.size);
+	/** The day the reader has just marked read here, which the garden grows
+	 *  into flower — only a tap on this page, never progress synced in. Held
+	 *  just long enough for the grow to play (sprout included), then let go,
+	 *  so a sync or a later render draws rather than grows. */
+	let justRead = $state<number | null>(null);
+	const GROW_MS = 3000;
+	let growTimer: ReturnType<typeof setTimeout> | undefined;
+	function grewDay(day: number) {
+		justRead = day;
+		clearTimeout(growTimer);
+		growTimer = setTimeout(() => (justRead = null), GROW_MS);
+	}
+	$effect(() => () => clearTimeout(growTimer));
 	const daysLeft = $derived(Math.max(0, plan.day_count - doneCount));
 	/** Words still to read across the days not yet marked done. */
 	const wordsLeft = $derived(
@@ -123,6 +136,7 @@
 	$effect(() => {
 		void plan.slug;
 		openAt = untrack(() => next);
+		justRead = null; // a tap on the last plan opened grows nothing on this one
 	});
 	// "Day 5 of 31 · 27 days left · 4 hr 11 min left" — the read card's eyebrow.
 	const progressLine = $derived(
@@ -381,6 +395,7 @@
 									dayCount={plan.day_count}
 									done={doneSet}
 									{next}
+									grow={justRead}
 									hue={planMeta(plan.slug).accent}
 									label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
 								/>
@@ -392,7 +407,12 @@
 							{started ? t('plans.continue') : t('plans.start')}
 						</a>
 						{#if started}
-							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
+							<button type="button" class="btn btn-ghost" onclick={() => {
+									if (next === null) return;
+									grewDay(next);
+									planProgress.markDone(plan.slug, next);
+								}}
+							>
 								{t('plans.markDone')}
 							</button>
 						{/if}
@@ -623,7 +643,10 @@
 				>
 					<button
 						type="button"
-						onclick={() => planProgress.toggleDone(plan.slug, d.day)}
+						onclick={() => {
+							if (!done) grewDay(d.day);
+							planProgress.toggleDone(plan.slug, d.day);
+						}}
 						aria-pressed={done}
 						aria-label={markLabel}
 						title={done ? t('plans.dayDoneNum').replace('%n%', String(d.day)) : markLabel}
