@@ -232,6 +232,9 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 4
   },
+  "joy-and-peace-in-believing": {
+   "space-before-punct": 3
+  },
   "justification-by-grace": {
    "orphan-close-quote": 1
   },
@@ -550,8 +553,17 @@
   "the-life-of-god-in-the-soul-of-man": {
    "orphan-close-quote": 1
   },
+  "the-light-of-the-world-maclaren": {
+   "space-before-punct": 2
+  },
   "the-lord-is-risen-indeed": {
    "space-before-punct": 5
+  },
+  "the-love-of-the-departing-christ": {
+   "space-before-punct": 6
+  },
+  "the-love-that-constrains": {
+   "space-before-punct": 2
   },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
@@ -584,6 +596,9 @@
   "the-praying-christ": {
    "space-before-punct": 1
   },
+  "the-rest-giver": {
+   "space-before-punct": 2
+  },
   "the-rise-and-progress-of-religion-in-the-soul": {
    "orphan-close-quote": 1
   },
@@ -611,6 +626,9 @@
   "the-sinners-friend": {
    "space-before-punct": 2
   },
+  "the-sources-of-hope": {
+   "space-before-punct": 2
+  },
   "the-theological-orations": {
    "orphan-close-quote": 1
   },
@@ -621,9 +639,15 @@
   "the-way-to-god": {
    "space-before-punct": 12
   },
+  "the-wearied-christ": {
+   "space-before-punct": 2
+  },
   "the-witness-of-the-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
+  },
+  "the-witness-of-the-spirit-maclaren": {
+   "space-before-punct": 2
   },
   "the-writing-on-gods-hands": {
    "space-before-punct": 2
@@ -648,6 +672,9 @@
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
+  },
+  "what-proves-gods-love": {
+   "space-before-punct": 2
   },
   "what-the-bible-teaches": {
    "orphan-close-quote": 3
