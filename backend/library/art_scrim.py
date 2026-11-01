@@ -88,7 +88,7 @@ ART_SCRIM: dict[str, float] = {
     "homilies-on-romans": 0.85,
     "how-i-became-a-christian": 0.80,
     "how-to-succeed-in-the-christian-life-teens": 0.30,
-    "humility-2": 0.95,
+    "humility-2": 0.90,
     "hurlbuts-life-of-christ": 0.70,
     "indwelling-sin-in-believers": 0.50,
     "institutes-of-the-christian-religion": 0.95,
