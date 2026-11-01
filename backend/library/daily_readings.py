@@ -210,18 +210,24 @@ def _index_key(book) -> str:
     return f"daily-index:{book.pk}"
 
 
-def _months(book, version: tuple[str, int], months) -> dict[int, list[Entry]]:
+def _months(
+    book, version: tuple[str, int], months, fresh: dict[int, list[Entry]] | None = None
+) -> dict[int, list[Entry]]:
     """``month_entries`` for ``months`` of ``book``, through the edition's one
     cache key: ONE read, the missing months parsed, ONE write if any were.
     (LocMem unpickles the whole edition on every get, so reading it once per
-    month cost a year's index twelve times over.)"""
+    month cost a year's index twelve times over.) ``fresh`` months, parsed by
+    the caller from a body it just read, replace whatever was cached. The one
+    place the cache is written."""
     cached = cache.get(_index_key(book))
     index = cached[1] if cached is not None and cached[0] == version else {}
-    missing = [m for m in months if m not in index]
-    if missing:
+    fresh = fresh or {}
+    missing = [m for m in months if m not in index and m not in fresh]
+    if missing or fresh:
         spec = DATED_BOOKS[book.slug]
         index = {
             **index,
+            **fresh,
             **{m: month_entries(blocks(month_body(book, m)), spec) for m in missing},
         }
         cache.set(_index_key(book), (version, index), timeout=None)
@@ -243,6 +249,16 @@ def year_entries(book, version: tuple[str, int]) -> list[tuple[int, Entry]]:
     devotional plan's days in order."""
     index = _months(book, version, range(1, 13))
     return [(m, e) for m in range(1, 13) for e in index[m]]
+
+
+def entry_on(book, entry_date: str, version: tuple[str, int]) -> Entry | None:
+    """The entry dated exactly ``entry_date`` ("MM-DD") — a plan day's, which
+    the seed took from a real entry, so it needs no fallback. None if gone."""
+    when = parse_date(entry_date)
+    if when is None:
+        return None
+    month, day = when
+    return next((e for e in month_index(book, month, version) if e.day == day), None)
 
 
 def find_entry(book, month: int, day: int, version: tuple[str, int]) -> tuple[int, Entry] | None:
@@ -269,9 +285,7 @@ def find_day(book, month: int, day: int, version: tuple[str, int]) -> tuple[int,
     m, cached = found
     els = blocks(month_body(book, m))
     fresh = month_entries(els, DATED_BOOKS[book.slug])
-    cached_index = cache.get(_index_key(book))
-    if cached_index is not None and cached_index[0] == version:
-        cache.set(_index_key(book), (version, {**cached_index[1], m: fresh}), timeout=None)
+    _months(book, version, [m], fresh={m: fresh})
     entry = next((e for e in fresh if e.day == cached.day), None)
     if entry is None:  # the cached index was stale; it is fresh now
         return None

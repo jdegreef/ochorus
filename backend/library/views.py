@@ -630,11 +630,15 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     serializer_class = PlanListSerializer
 
     def get_queryset(self):
-        return _plan_cards(_language(self.request))
+        # Once per request: the card context and list() both read it, and the
+        # year-long devotionals put some 2,500 days into its prefetch.
+        if not hasattr(self, "_plans"):
+            self._plans = list(_plan_cards(_language(self.request)))
+        return self._plans
 
     def get_serializer_context(self):
         ctx = super().get_serializer_context()
-        ctx.update(_plan_card_context(list(self.get_queryset()), _language(self.request)))
+        ctx.update(_plan_card_context(self.get_queryset(), _language(self.request)))
         return ctx
 
 

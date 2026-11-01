@@ -170,16 +170,12 @@ def _reading_title(day: PlanDay, language: str) -> str:
 
 def _entry_title(day: PlanDay, language: str) -> str:
     """A year-long devotional day's title (``Entry.title``), found exactly as
-    the plan page finds it — the seeded date is always a real entry."""
+    the plan page finds it."""
     from library import daily_readings
 
     book = Book.objects.filter(slug=day.book_slug, language=language).first()
-    when = daily_readings.parse_date(day.entry_date)
-    if book is None or when is None:
-        return ""
-    month, d = when
-    entries = daily_readings.month_index(book, month, daily_readings.content_version())
-    return next((e.title for e in entries if e.day == d), "")
+    entry = book and daily_readings.entry_on(book, day.entry_date, daily_readings.content_version())
+    return entry.title if entry else ""
 
 
 def day_path(plan: Plan, day: PlanDay) -> str:

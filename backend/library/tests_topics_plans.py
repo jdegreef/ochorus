@@ -263,6 +263,8 @@ class PlanTests(TestCase):
         """On a live DB every older plan already exists, so this run creates
         only the new one — which must not take sort_order 0 and head the shelf."""
         Plan.objects.create(slug="older", language="en", title="Older", sort_order=40)
+        # A year-long devotional, in its band at the foot of the shelf.
+        Plan.objects.create(slug="a-year", language="en", title="Year", sort_order=100_000)
         book = Book.objects.create(
             author=Author.objects.get(slug="am"), slug="newcomer", language="en", title="N"
         )
@@ -270,7 +272,9 @@ class PlanTests(TestCase):
         launch = [("newcomer-plan", "newcomer", "N", "n")]
         with patch("library.management.commands.seed_plans.LAUNCH_PLANS", launch):
             call_command("seed_plans", verbosity=0)
-        self.assertGreater(Plan.objects.get(slug="newcomer-plan").sort_order, 40)
+        new = Plan.objects.get(slug="newcomer-plan").sort_order
+        # After the journeys, still above the devotionals.
+        self.assertTrue(40 < new < 100_000, new)
 
     def test_seed_plans_leaves_an_existing_untranslated_row_alone(self):
         """A row created before this guard keeps its prose; deleting a published

@@ -21,6 +21,7 @@ from emails.plan_reminders import _reading_title, day_path
 
 from . import daily_readings
 from .daily_readings import DATED_BOOKS, DatedBook, blocks, month_entries, parse_date
+from .management.commands.seed_plans import DAILY_SORT_BASE
 from .models import Author, Book, Chapter, Plan, PlanDay
 from .plan_seed import DAILY_PLANS
 from .quote_blocks import served_block_texts
@@ -255,9 +256,9 @@ class DailyPlanTests(_DatedBooks, TestCase):
             [(d.day, d.chapter_order, d.entry_date) for d in (days[0], days[58], days[59])],
             [(1, 1, "01-01"), (59, 2, "02-28"), (60, 3, "03-01")],
         )
-        # After the shelf, not ahead of it: a new plan on a live DB once got
-        # the run's own count, 0.
+        # In the devotionals' own band at the foot of the shelf.
         self.assertGreater(plan.sort_order, older.sort_order)
+        self.assertEqual(plan.sort_order, DAILY_SORT_BASE)  # first of DAILY_PLANS
         self.seed()  # idempotent
         self.assertEqual(Plan.objects.filter(slug="days-of-heaven-upon-earth-year").count(), 1)
 

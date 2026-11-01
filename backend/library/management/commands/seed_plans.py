@@ -24,6 +24,10 @@ from library.plan_seed import (
 )
 from library.plan_translations import plan_translations
 
+#: Where the year-long devotional plans sort: below every journey (see
+#: _seed_daily). Far above any journey's number, which counts up from 0.
+DAILY_SORT_BASE = 100_000
+
 
 def _prose(slug, lang, en_title, en_description):
     """Localized (title, description) for a plan, or None if there is none.
@@ -124,19 +128,22 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         self._retire()
-        # Every plan this run creates sorts after every plan already on the
-        # shelf, in seed order. The seed used to number from the plans created
-        # in this run alone — 0 on a live database, where every older plan is
-        # already there — which put each new plan at the head of the shelf.
-        top = Plan.objects.aggregate(top=Max("sort_order"))["top"]
+        # Every journey this run creates sorts after every journey already on
+        # the shelf, in seed order. The seed used to number from the plans
+        # created in this run alone — 0 on a live database, where every older
+        # plan is already there — which put each new plan at the head of it.
+        top = (
+            Plan.objects.filter(sort_order__lt=DAILY_SORT_BASE)
+            .aggregate(top=Max("sort_order"))["top"]
+        )
         self._next_sort = 0 if top is None else top + 1
-        # Year-long devotionals last: a different shape of plan, and seven of
-        # them would otherwise head the shelf above the journeys.
         created = self._seed_launch() + self._seed_curated() + self._seed_daily()
         if not created:
             self.stdout.write("Plans already seeded (or source books missing).")
 
-    def _create_plan(self, slug, lang, title, description, days: list[dict]) -> None:
+    def _create_plan(
+        self, slug, lang, title, description, days: list[dict], sort_order=None
+    ) -> None:
         """One plan row and its days (``PlanDay`` field dicts, day 1 first), as
         one unit: a crash between the two would otherwise leave a
         permanently-empty plan (see _reconcile_existing)."""
@@ -146,12 +153,13 @@ class Command(BaseCommand):
                 language=lang,
                 title=title,
                 description=description,
-                sort_order=self._next_sort,
+                sort_order=self._next_sort if sort_order is None else sort_order,
             )
             PlanDay.objects.bulk_create(
                 [PlanDay(plan=plan, day=i + 1, **day) for i, day in enumerate(days)]
             )
-        self._next_sort += 1
+        if sort_order is None:
+            self._next_sort += 1
 
     def _editions_needing(self, slug, book_slug, title, description):
         """Each published edition of ``book_slug`` that still needs plan
@@ -195,10 +203,15 @@ class Command(BaseCommand):
 
     def _seed_daily(self):
         """The year-long devotional plans: one per published edition, a day per
-        dated entry (``daily_readings.year_entries``), January first."""
+        dated entry (``daily_readings.year_entries``), January first.
+
+        Their own band at the foot of the shelf (``DAILY_SORT_BASE`` + their
+        place in DAILY_PLANS, the same in every language): a different shape
+        of plan, which seven of would otherwise head the journeys — and a
+        journey added later still sorts above them."""
         created = 0
         version = daily_readings.content_version()
-        for slug, book_slug, title, description in DAILY_PLANS:
+        for position, (slug, book_slug, title, description) in enumerate(DAILY_PLANS):
             for book, t, d in self._editions_needing(slug, book_slug, title, description):
                 entries = daily_readings.year_entries(book, version)
                 if not entries:
@@ -222,6 +235,7 @@ class Command(BaseCommand):
                         }
                         for month, entry in entries
                     ],
+                    sort_order=DAILY_SORT_BASE + position,
                 )
                 created += 1
                 self.stdout.write(
