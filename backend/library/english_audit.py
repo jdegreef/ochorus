@@ -203,9 +203,11 @@ FUSION_HEADS = frozenset({
 #: `nodes` is `no`+`des` once the French `des` crosses COMMON_MIN — which de
 #: Sales' Treatise on the Love of God, quoting French titles, takes it to — but
 #: it is the plain plural ("the lymph nodes of her neck", Stepping Stones).
+#: `socii` (Latin, in Owen's Communion with God) is `so`+`cii` once the
+#: numeral `cii` (Letter CII, Psalm cii) crosses COMMON_MIN.
 FUSION_EXEMPT = frozenset({
     "anothers", "nodes", "nomad", "nomen", "nosing", "noway", "noways", "solet",
-    "solos", "sounder", "washer",
+    "socii", "solos", "sounder", "washer",
 })
 #: A tail must reach this many uses across the English library to count as a word.
 COMMON_MIN = 20
