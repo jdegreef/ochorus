@@ -28601,6 +28601,18 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"to-autolycus": {
+			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",
 			"style": "press",
