@@ -107,6 +107,32 @@ def strip_particle(word: str) -> str:
     return word
 
 
+def query_tokens(q: str) -> list[tuple[bool, str]]:
+    """``q`` as ``(negated, word)`` pairs, in the websearch reading of it.
+
+    Tokens are ``\\w`` runs only, and a minus excludes only at the start of a
+    whitespace-separated chunk, as in websearch: "Spurgeon-like" is two words to
+    match, not "Spurgeon -like". "OR" comes through as a word; callers treat it.
+    """
+    return [
+        (chunk.startswith("-") and i == 0, word)
+        for chunk in q.split()
+        for i, word in enumerate(_WORD.findall(chunk))
+    ]
+
+
+def positive_words(q: str, language: str) -> list[str]:
+    """The words of ``q`` a match is made OF: no exclusions, no "OR".
+
+    In a prefix language each loses a trailing particle exactly as the query
+    does (prefix_tsquery), so they name what the matched text actually holds.
+    """
+    words = [w for negated, w in query_tokens(q) if not negated and w.upper() != "OR"]
+    if language in PREFIX_LANGUAGES:
+        words = [strip_particle(w) for w in words]
+    return words
+
+
 def prefix_tsquery(q: str) -> str:
     """A raw tsquery for ``q``: each word a prefix, ANDed ('' if no words).
 
@@ -116,14 +142,7 @@ def prefix_tsquery(q: str) -> str:
     terms: list[str] = []
     joins: list[str] = []
     pending_or = False
-    # A minus excludes only at the start of a whitespace-separated chunk, as in
-    # websearch: "Spurgeon-like" is two words to match, not "Spurgeon -like".
-    tokens = [
-        (chunk.startswith("-") and i == 0, word)
-        for chunk in q.split()
-        for i, word in enumerate(_WORD.findall(chunk))
-    ]
-    for negate, word in tokens:
+    for negate, word in query_tokens(q):
         if word.upper() == "OR" and not negate:
             pending_or = bool(terms)
             continue
