@@ -607,6 +607,36 @@ def _plan_cards(language: str):
     )
 
 
+def plan_entry_index(plans, books):
+    """``{(book_slug, "MM-DD"): reading}`` for every year-long devotional day
+    (``PlanDay.entry_date``) — the entry companion of ``plan_chapter_index``.
+
+    Such a day reads one dated entry, not its whole month chapter, so its
+    title, length and opening verse are the entry's (``daily_readings``), read
+    through that module's month cache. ``books`` is ``plan_book_index``'s.
+    Here, not in the serializers: the parser's imports must stay out of their
+    graph (library/daily_books.py).
+    """
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.entry_date}
+    if not slugs:
+        return {}
+    version = daily_readings.content_version()
+    index = {}
+    for slug in slugs:
+        book = books.get(slug)
+        if book is None:
+            continue
+        for month, e in daily_readings.year_entries(book, version):
+            index[(slug, daily_readings.format_date(month, e.day))] = {
+                "title": e.title,
+                "book_title": book.title,
+                "word_count": e.words,
+                "opening": e.excerpt,
+            }
+    return index
+
+
+
 def _plan_card_context(plans, language: str) -> dict:
     """Resolve every plan's chapters and books ONCE for the page.
 
@@ -614,10 +644,12 @@ def _plan_card_context(plans, language: str) -> dict:
     and each of those used to fetch its own rows — three queries per plan.
     The same pattern BookListView uses for topic chips.
     """
+    books = plan_book_index(plans, language)
     return {
         "plan_chapters": plan_chapter_index(plans, language),
-        "plan_books": plan_book_index(plans, language),
+        "plan_books": books,
         "plan_articles": plan_article_index(plans, language),
+        "plan_entries": plan_entry_index(plans, books),
     }
 
 
@@ -627,11 +659,15 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     serializer_class = PlanListSerializer
 
     def get_queryset(self):
-        return _plan_cards(_language(self.request))
+        # Once per request: the card context and list() both read it, and the
+        # year-long devotionals put some 2,500 days into its prefetch.
+        if not hasattr(self, "_plans"):
+            self._plans = list(_plan_cards(_language(self.request)))
+        return self._plans
 
     def get_serializer_context(self):
         ctx = super().get_serializer_context()
-        ctx.update(_plan_card_context(list(self.get_queryset()), _language(self.request)))
+        ctx.update(_plan_card_context(self.get_queryset(), _language(self.request)))
         return ctx
 
 
@@ -639,13 +675,17 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = PlanDetailSerializer
 
     def get_object(self):
-        return get_object_or_404(
-            Plan.objects.filter(is_published=True)
-            .annotate(num_days=Count("days"))
-            .prefetch_related("days"),
-            slug=self.kwargs["slug"],
-            language=_language(self.request),
-        )
+        # Once per request: retrieve() and get_serializer_context() both ask,
+        # and a year-long devotional's plan carries 366 days to prefetch.
+        if not hasattr(self, "_plan"):
+            self._plan = get_object_or_404(
+                Plan.objects.filter(is_published=True)
+                .annotate(num_days=Count("days"))
+                .prefetch_related("days"),
+                slug=self.kwargs["slug"],
+                language=_language(self.request),
+            )
+        return self._plan
 
     def get_serializer_context(self):
         """One index for all four consumers on this page.
@@ -661,6 +701,7 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         )
         ctx["plan_books"] = plan_book_index([plan], plan.language)
         ctx["plan_articles"] = plan_article_index([plan], plan.language)
+        ctx["plan_entries"] = plan_entry_index([plan], ctx["plan_books"])
         return ctx
 
 

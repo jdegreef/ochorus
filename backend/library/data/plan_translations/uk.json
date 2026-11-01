@@ -79,5 +79,13 @@
       "None of the three source books has a uk edition yet, so seed_plans will not create this row today. The prose ships ahead so the book that completes the set cannot publish an English-titled plan (#819). Whoever translates the-way-to-god into uk should title it «Шлях до Бога» to match this card, or adjust this entry in the same PR.",
       "AI-drafted, awaiting native review."
     ]
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Рік із книгою «Думки для тихої години»",
+    "description": "Збірка коротких читань Д. Л. Муді на весь рік: вірш із Писання і кілька рядків від проповідників та письменників, яких він любив. Почніть будь-якого дня: перший день — це читання на 1 січня, а кожен наступний день бере наступне. Одна хвилина на день."
+  },
+  "cheque-book-year": {
+    "title": "Рік із книгою «Чекова книжка банку віри»",
+    "description": "Щоденні обітниці Чарльза Сперджена: одна Божа обітниця на кожен день року з коротким словом про те, як прийняти її вірою. Почніть будь-якого дня: перший день — це читання на 1 січня, а кожен наступний день бере наступне. Одна-дві хвилини на день."
   }
 }

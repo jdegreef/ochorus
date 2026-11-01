@@ -1604,5 +1604,6 @@
   "daily_in_context": "책에서 읽기",
   "daily_missing_day": "이 책에는 이 날짜의 읽기가 없어 전날의 읽기를 보여 드립니다.",
   "daily_choose_date": "날짜 선택",
-  "daily_none": "이 언어로 된 매일 읽기가 아직 없습니다."
+  "daily_none": "이 언어로 된 매일 읽기가 아직 없습니다.",
+  "daily_follow_plan": "또는 일 년 읽기 계획으로 따라가기"
 }
