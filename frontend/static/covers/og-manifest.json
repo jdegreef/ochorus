@@ -25901,6 +25901,40 @@
 				478
 			]
 		},
+		"sw/epistles-of-ignatius": {
+			"ground": "268cd11aa830981c2a3bfffc1e228de24b7dbd6067c3159ae29b2fa39aef45f6",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[130, 258, 470, 320],
+					[125, 304, 475, 366],
+					[141, 349, 459, 411],
+					[120, 395, 480, 457]
+				],
+				"subtitle": [
+					[133, 486, 467, 507],
+					[113, 507, 487, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
+			]
+		},
 		"sw/faithful-with-little": {
 			"ground": "52287c62c7ca4082d93b73982497f90b242dcbedb24ffe7702403e721ce0e543",
 			"style": "originals",
