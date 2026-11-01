@@ -1309,6 +1309,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Thomas Watson's The Lord's Prayer (1692) — CCEL's watson/prayer: the
+    # preface and six petitions, the third part of his Body of Practical Divinity.
+    BookEntry("the-lords-prayer", "The Lord's Prayer", "thomas-watson",
+              "ccel", "watson/prayer", skip=("Title Page", "Contents"), cover_color="#3e4a3a"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

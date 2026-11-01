@@ -28964,6 +28964,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"the-lords-prayer": {
+			"ground": "fd8f5792d9534e213a2df8fbb72184fd72eba7d67d702d4b8747655024f0b6b9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-masters-indwelling": {
 			"ground": "2758f94ea09201f1dd1f197da2891e43242defc49a36bc4c69da5e6815bb6f97",
 			"style": "devotional",

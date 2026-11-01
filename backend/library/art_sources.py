@@ -176,6 +176,7 @@ ART_SOURCES: dict[str, str] = {
     "the-journal-of-john-wesley": "cma-122340@0.50",
     "the-life-of-god-in-the-soul-of-man": "met-436830@0.50",
     "the-life-of-trust": "cma-150047@0.50",
+    "the-lords-prayer": "met-436535@0.60~0.04",
     "the-normal-christian-life": "met-437191@0.50",
     "the-octavius": "met-435749@0.50",
     "the-pursuit-of-god": "aic-68388@0.38",

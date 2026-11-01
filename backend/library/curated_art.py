@@ -1394,6 +1394,10 @@ CURATED: dict[str, Artwork] = {
         focus=0.0,
         inset=0.06,
     ),
+    "the-lords-prayer": Artwork(
+        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889", "A ripe wheat field under a moving sky: daily bread standing in the field, asked for one day at a time.",
+        focus=0.60, inset=0.045,
+    ),
 }
 
 
