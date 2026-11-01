@@ -872,6 +872,8 @@ TOPIC_SERMONS = {
         "the-delays-of-love",
         "the-intercessor",
         "the-heavenly-workers-and-the-earthly-watchers",
+        "our-knocking",
+        "the-search-that-always-finds",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -926,6 +928,10 @@ TOPIC_SERMONS = {
         "the-satisfier-of-all-desires",
         "it-is-the-lord",
         "how-to-say-thank-you",
+        "the-dew-and-the-plants",
+        "at-the-bush",
+        "when-the-oil-flows",
+        "what-life-may-be-made",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -1003,6 +1009,11 @@ TOPIC_SERMONS = {
         "the-joy-bringer",
         "strength-in-weakness",
         "the-toiling-christ",
+        "christ-in-the-covenant",
+        "the-second-beatitude",
+        "the-peace-bringer-in-the-spiritual-world",
+        "the-peaceable-fruits-of-sorrows-rightly-borne",
+        "elijahs-weakness-and-its-cure",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -1058,6 +1069,11 @@ TOPIC_SERMONS = {
         "our-strong-city",
         "the-way",
         "the-rivers-of-god",
+        "the-eagle-and-its-brood",
+        "holding-fast-and-held-fast",
+        "caleb-a-green-old-age",
+        "brave-encouragements",
+        "heroic-faith",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -1109,6 +1125,8 @@ TOPIC_SERMONS = {
         "what-proves-gods-love",
         "the-rest-giver",
         "the-way",
+        "the-child-prophet",
+        "gods-requirements-and-gods-gift",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1128,6 +1146,10 @@ TOPIC_SERMONS = {
         "religion-pleasant-to-the-religious",
         "christ-the-cleanser",
         "the-love-that-constrains",
+        "keeping-and-kept",
+        "the-first-beatitude",
+        "a-young-mans-best-counsellor",
+        "gods-requirements-and-gods-gift",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -1153,6 +1175,7 @@ TOPIC_SERMONS = {
         "the-love-that-constrains",
         "the-gift-that-brings-all-gifts",
         "the-intercessor",
+        "christ-in-the-covenant",
     ],
     "soar-like-the-eagle": [
         "rest",
