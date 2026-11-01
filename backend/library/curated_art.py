@@ -1437,6 +1437,16 @@ CURATED: dict[str, Artwork] = {
         "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
         focus=0.25,
     ),
+    "the-jerusalem-sinner-saved": Artwork(
+        "met", 437590, "Salomon van Ruysdael", "View of the Town of Alkmaar", "",
+        "A town seen across the fields, its great church rising over the roofs: the gospel was to be preached first in the city that crucified Christ, \"beginning at Jerusalem\".",
+        focus=0.30,
+    ),
+    "the-upper-room": Artwork(
+        "met", 435793, "British Painter", "Tottenham Church", "",
+        "An English parish church among its trees: Ryle's last collection gathers plain sermons he preached to such congregations across a long ministry.",
+        focus=0.50,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,

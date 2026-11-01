@@ -29304,6 +29304,18 @@
 				484
 			]
 		},
+		"the-jerusalem-sinner-saved": {
+			"ground": "3e5eda4d8e69a6da14c2d1bf23d305adf51565aa88a4acd759333d71827d63f9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",
@@ -29915,6 +29927,34 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"the-upper-room": {
+			"ground": "4f6d0c397d3911fcbfdfdefbb82fda997a034dc5834265c190e97d5db76673e1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[125, 307, 475, 404],
+					[202, 390, 398, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
 			]
 		},
 		"the-way-to-god": {

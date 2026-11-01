@@ -1496,6 +1496,19 @@ BOOKS: list[BookEntry] = [
               "ccel", "guthrie/interest2",
               cover_color="#3e4a3a",
               skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
+    # John Bunyan's The Jerusalem Sinner Saved (1688) — Gutenberg #3270, from
+    # the 1845 Thomas Nelson edition: his last treatise, on Luke 24:47, that
+    # Christ would have mercy offered first to the biggest sinners. One
+    # continuous discourse in the source; the chapters follow its own heads
+    # (the text, the observation, six reasons, eleven uses, the day of grace).
+    BookEntry("the-jerusalem-sinner-saved", "The Jerusalem Sinner Saved", "john-bunyan",
+              "gutenberg", "3270", subtitle="Or, Good News for the Vilest of Men",
+              cover_color="#4a2e2e"),
+    # J. C. Ryle's The Upper Room (1888) — CCEL's ryle/upper_room: his
+    # collected sermons and addresses, "being a few truths for the times".
+    BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
+              "ccel", "ryle/upper_room", group_parts=True,
+              cover_color="#3a3e5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
