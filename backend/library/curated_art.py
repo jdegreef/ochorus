@@ -1432,6 +1432,34 @@ CURATED: dict[str, Artwork] = {
         "cma", 150021, "Pierre Jean Boquet", "Pollard Willow", "after 1804",
         "A gnarled, cut-back willow still putting out green, with a herdsman resting in its shade: Boston's crook in the lot, of God's making and borne in patience.",
     ),
+    "the-christians-great-interest": Artwork(
+        "cma", 173657, "James M. Hart", "Morning in New England", "1873",
+        "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
+        focus=0.25,
+    ),
+    "the-jerusalem-sinner-saved": Artwork(
+        "met", 437590, "Salomon van Ruysdael", "View of the Town of Alkmaar", "",
+        "A town seen across the fields, its great church rising over the roofs: the gospel was to be preached first in the city that crucified Christ, \"beginning at Jerusalem\".",
+        focus=0.30,
+    ),
+    "the-upper-room": Artwork(
+        "met", 435793, "British Painter", "Tottenham Church", "",
+        "An English parish church among its trees: Ryle's last collection gathers plain sermons he preached to such congregations across a long ministry.",
+        focus=0.50,
+    ),
+    "the-art-of-divine-contentment": Artwork(
+        "cma", 122345, "Meindert Hobbema", "A Cottage in the Woods", "c. 1662",
+        "A modest cottage and a sandy road under great trees: the contentment Watson teaches is learned in whatever state God sets a person.",
+    ),
+    "treatise-on-grace": Artwork(
+        "cma", 173632, "Hendrik Dirk Kruseman van Elten", "Landscape near Granby, Connecticut", "1870s",
+        "The Connecticut valley in autumn: Edwards's own country, where he preached at Northampton and wrote of the grace that makes a new creature.",
+    ),
+    "the-two-covenants": Artwork(
+        "met", 435877, "Paul Cézanne", "Mont Sainte-Victoire and the Viaduct of the Arc River Valley", "1882–85",
+        "A mountain and the viaduct that crosses the valley below it: Murray's two covenants, the old that could only fail and the new sealed in Christ.",
+        focus=0.45,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
@@ -1439,6 +1467,18 @@ CURATED: dict[str, Artwork] = {
     "the-deeper-christian-life": Artwork(
         "met", 461186, "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)", "Hudson River Scene", "1830–50", "A still river lying deep between mountains: the quiet depth Murray calls the believer into.",
         focus=0.10, inset=0.01,
+    ),
+    "the-school-of-obedience": Artwork(
+        "met", 10786, "Asher Brown Durand", "The Beeches", "1845", "A worn path under great beeches, walked toward the light: obedience as a road learned step by step.",
+        focus=0.50, inset=0.01,
+    ),
+    "the-lords-prayer": Artwork(
+        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889", "A ripe wheat field under a moving sky: daily bread standing in the field, asked for one day at a time.",
+        focus=0.60, inset=0.045,
+    ),
+    "the-beatitudes": Artwork(
+        "met", 437431, "Auguste Renoir", "Hills around the Bay of Moulin Huet, Guernsey", "1883", "A green hillside falling to a quiet bay: the slope above the water where the Beatitudes were first spoken.",
+        focus=0.20, inset=0.04,
     ),
 }
 

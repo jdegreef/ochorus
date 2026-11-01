@@ -478,6 +478,13 @@
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4
   },
+  "the-art-of-divine-contentment": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
+  "the-beatitudes": {
+   "orphan-close-quote": 1
+  },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2
@@ -496,6 +503,9 @@
   },
   "the-christian-temper-supernatural-and-divine": {
    "space-before-punct": 2
+  },
+  "the-christians-great-interest": {
+   "orphan-close-quote": 9
   },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23
@@ -604,6 +614,9 @@
   "the-lord-is-risen-indeed": {
    "space-before-punct": 5
   },
+  "the-lords-prayer": {
+   "orphan-close-quote": 1
+  },
   "the-love-of-the-departing-christ": {
    "space-before-punct": 6
   },
@@ -687,6 +700,9 @@
   },
   "the-toiling-christ": {
    "space-before-punct": 2
+  },
+  "the-two-covenants": {
+   "orphan-close-quote": 1
   },
   "the-use-of-money": {
    "orphan-close-quote": 2,

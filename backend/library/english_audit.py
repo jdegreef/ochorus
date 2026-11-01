@@ -203,11 +203,14 @@ FUSION_HEADS = frozenset({
 #: `nodes` is `no`+`des` once the French `des` crosses COMMON_MIN — which de
 #: Sales' Treatise on the Love of God, quoting French titles, takes it to — but
 #: it is the plain plural ("the lymph nodes of her neck", Stepping Stones).
-#: `towing` is `to`+`wing`, but the disciples are "towing the net full of fish"
-#: (John 21:8, the Open Word Bible).
+#: "anaesthetic" (an+aesthetic) and "towing" (to+wing) are real words whose
+#: tails crossed COMMON_MIN when The Upper Room added "aesthetic" and "wing"
+#: (and the disciples are "towing the net full of fish", John 21:8).
+#: `socii` (Latin, in Owen's Communion with God) is `so`+`cii` once the
+#: numeral `cii` (Letter CII, Psalm cii) crosses COMMON_MIN.
 FUSION_EXEMPT = frozenset({
-    "anothers", "nodes", "nomad", "nomen", "nosing", "noway", "noways", "solet",
-    "solos", "sounder", "towing", "washer",
+    "anaesthetic", "anothers", "nodes", "nomad", "nomen", "nosing", "noway",
+    "noways", "socii", "solet", "solos", "sounder", "towing", "washer",
 })
 #: A tail must reach this many uses across the English library to count as a word.
 COMMON_MIN = 20

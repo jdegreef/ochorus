@@ -775,6 +775,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Thomas Boston (1676–1732) was a Scottish Presbyterian minister of Simprin and Ettrick, author of Human Nature in its Fourfold State and a leader of the Marrow Men."
         ),
     ),
+    "william-guthrie": AuthorEntry(
+        slug="william-guthrie",
+        name="William Guthrie",
+        birth_year=1620,
+        death_year=1665,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Guthrie (1620–1665) was a Scottish Covenanter minister, the first minister of Fenwick in Ayrshire, deprived in 1664 for refusing episcopacy."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1372,6 +1383,17 @@ BOOKS: list[BookEntry] = [
     # seven addresses and a closing word on consecration.
     BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",
               "ccel", "murray/deeper", skip=("Title Page",), cover_color="#2e3e4a"),
+    # Andrew Murray's The School of Obedience (1898) — CCEL's murray/obedience.
+    BookEntry("the-school-of-obedience", "The School of Obedience", "andrew-murray",
+              "ccel", "murray/obedience", skip=("Title Page",), cover_color="#3a4a3e"),
+    # Thomas Watson's The Lord's Prayer (1692) — CCEL's watson/prayer: the
+    # preface and six petitions, the third part of his Body of Practical Divinity.
+    BookEntry("the-lords-prayer", "The Lord's Prayer", "thomas-watson",
+              "ccel", "watson/prayer", skip=("Title Page", "Contents"), cover_color="#3e4a3a"),
+    # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
+    # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
+    BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",
+              "ccel", "watson/beatitudes", skip=("Title Page",), cover_color="#4a3a2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,
@@ -1481,6 +1503,42 @@ BOOKS: list[BookEntry] = [
               "archive", "crookinlotordisp00bost",
               subtitle="The Sovereignty and Wisdom of God in the Afflictions of Men Displayed",
               cover_color="#4a3e2e"),
+    # William Guthrie's The Christian's Great Interest (1658) — CCEL's
+    # guthrie/interest2: the trial of a saving interest in Christ (Part I) and
+    # the way to attain it (Part II); the prefatory essay, memoir and epistle
+    # are later editors' or the printer's, not the work.
+    BookEntry("the-christians-great-interest", "The Christian's Great Interest", "william-guthrie",
+              "ccel", "guthrie/interest2",
+              cover_color="#3e4a3a",
+              skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
+    # John Bunyan's The Jerusalem Sinner Saved (1688) — Gutenberg #3270, from
+    # the 1845 Thomas Nelson edition: his last treatise, on Luke 24:47, that
+    # Christ would have mercy offered first to the biggest sinners. One
+    # continuous discourse in the source; the chapters follow its own heads
+    # (the text, the observation, six reasons, eleven uses, the day of grace).
+    BookEntry("the-jerusalem-sinner-saved", "The Jerusalem Sinner Saved", "john-bunyan",
+              "gutenberg", "3270", subtitle="Or, Good News for the Vilest of Men",
+              cover_color="#4a2e2e"),
+    # J. C. Ryle's The Upper Room (1888) — CCEL's ryle/upper_room: his
+    # collected sermons and addresses, "being a few truths for the times".
+    BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
+              "ccel", "ryle/upper_room", group_parts=True,
+              cover_color="#3a3e5a"),
+    # Thomas Watson's The Art of Divine Contentment (1653) — CCEL's
+    # watson/contentment: his treatise on Philippians 4:11, "I have learned, in
+    # whatsoever state I am, therewith to be content".
+    BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
+              "ccel", "watson/contentment", cover_color="#5a4a2e"),
+    # Jonathan Edwards's Treatise on Grace (published 1865 from his
+    # manuscripts) — CCEL's edwards/treatiseongrace: that saving grace differs
+    # from common grace in nature and kind, and is divine love itself.
+    BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
+              "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
+    # Andrew Murray's The Two Covenants (1898) — CCEL's murray/covenants: the
+    # old covenant and the new, and the life of the believer under the second.
+    BookEntry("the-two-covenants", "The Two Covenants", "andrew-murray",
+              "ccel", "murray/covenants", subtitle="And the Second Blessing",
+              cover_color="#2e4a5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

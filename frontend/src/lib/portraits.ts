@@ -169,6 +169,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
+	'william-guthrie': '50% 19%', // Men of the Covenant drawing cropped to head and ruff
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
