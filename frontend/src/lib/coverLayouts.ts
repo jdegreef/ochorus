@@ -118,6 +118,9 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * new volume cannot slip back into its author's layout.
  */
 export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
+	// Augustine's rail holds two sideways lines; this title runs to three, so it
+	// wears the framed composition instead.
+	'homilies-on-the-first-epistle-of-john': null,
 	// Chesterton's `fade` and MacDonald's `wash` pale the upper half for a drawn
 	// Original; these six now wear museum paintings, shown whole (Batch 32).
 	orthodoxy: null,
