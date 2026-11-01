@@ -15964,6 +15964,38 @@
 				486
 			]
 		},
+		"homilies-on-the-first-epistle-of-john": {
+			"ground": "c68f98e793fc8ff9e76351738c75005c5752f33e30b44b0e7a850a729dc82eba",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[110, 102, 490, 131]
+				],
+				"title": [
+					[119, 292, 481, 354],
+					[164, 337, 436, 399],
+					[68, 383, 532, 445]
+				],
+				"subtitle": [
+					[137, 473, 463, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
@@ -23114,6 +23146,37 @@
 			"bar": 0,
 			"caps": false
 		},
+		"pt/mortification-of-sin": {
+			"ground": "0ca5bd9846e7bb491eecf1d28d0b10c962a9de8ba3a18cca1f4209f3c0a51ebb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[87, 307, 513, 380],
+					[71, 367, 529, 440]
+				],
+				"subtitle": [
+					[66, 492, 534, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"pt/necessity-of-prayer": {
 			"ground": "cf1a899516e2ce4905c3e25bc3731a178c3fae29d0996ad825ef07c4824cfd6a",
 			"style": "devotional",
@@ -23156,6 +23219,18 @@
 				320,
 				475
 			]
+		},
+		"pt/on-the-incarnation": {
+			"ground": "b9357101244b71141e776f55a0d38234864cea295039c3d641dcca2cf354a170",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false
 		},
 		"pt/pandita-ramabai-a-life-children": {
 			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
@@ -25480,6 +25555,18 @@
 				482
 			]
 		},
+		"sw/all-things-for-good": {
+			"ground": "51d5839de3cf4031df506ba0e79762aa28c9a752e6273203ad9e9bf8f9becb00",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/amanda-smith-autobiography": {
 			"ground": "abb18118f1f6452ac8a3e89e2d1b51b165df6e64577de89defa3ea4db4123ec9",
 			"style": "revival",
@@ -26102,6 +26189,18 @@
 				501
 			]
 		},
+		"sw/grace-abounding": {
+			"ground": "c6c6b02cbbd6881d7f172d9965e2953bd52d75c0fba4bc612331646a16032c15",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/growing-in-wisdom": {
 			"ground": "2ba31897414b044c561f714f4dc2a2a2f711c4fa614d995ac88fe86e62f09c74",
 			"style": "originals",
@@ -26474,6 +26573,49 @@
 			"bar": 0,
 			"caps": false
 		},
+		"sw/mortification-of-sin": {
+			"ground": "20b69a8949204fa172bae2b39081b5c42b40981485c301d5f11a5a499f24cd3f",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[102, 307, 498, 380],
+					[70, 367, 530, 440]
+				],
+				"subtitle": [
+					[103, 492, 497, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
+		"sw/necessity-of-prayer": {
+			"ground": "d4a81f3b0a1f25f4faaf49b5c102cbfa02a623f9248d61561f2f497f12983e0b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false
+		},
 		"sw/on-loving-god": {
 			"ground": "8a31409490afb763bb14900c33a63516cd445e3ffc88d76e31e8ec55c97f4942",
 			"style": "inscriptional",
@@ -26504,6 +26646,18 @@
 				311,
 				484
 			]
+		},
+		"sw/on-the-incarnation": {
+			"ground": "3cf94e9a87a70660ba11a86ad14c323b3eaf4f98c9fed27a56cc34c4797fe260",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false
 		},
 		"sw/pandita-ramabai-a-life-children": {
 			"ground": "082a0ae07be505929fd1a78b8c106405d703880cf2dbcade8ceacc7b33ba9928",
@@ -26691,6 +26845,18 @@
 				299,
 				496
 			]
+		},
+		"sw/purpose-in-prayer": {
+			"ground": "9b04d934b37c5b9a47d6eda123418b76edc2687a7b34e3e6631d5ba0bc14d91c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
 		},
 		"sw/revival-lectures": {
 			"ground": "26ff9dff8abe93ca52c12099dd0e26aabb0a3da5aad22a6f29570d3db3433b43",
@@ -27086,6 +27252,37 @@
 			"middle": [
 				243,
 				552
+			]
+		},
+		"sw/the-bruised-reed": {
+			"ground": "b427f6e4081efca7ae1b61811e89d1494813d521e66fda44e3d3951632955105",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[200, 303, 400, 381],
+					[131, 367, 469, 445]
+				],
+				"subtitle": [
+					[142, 497, 458, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				277,
+				518
 			]
 		},
 		"sw/the-christians-secret-of-a-happy-life-4": {
@@ -30686,6 +30883,18 @@
 				318,
 				477
 			]
+		},
+		"uk/union-and-communion": {
+			"ground": "9ee27bd435a970064702ddf6e794ad3695fcc7f938d46fdc9580b47c4d2949b9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false
 		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",

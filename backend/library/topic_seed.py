@@ -183,6 +183,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "homilies-on-the-first-epistle-of-john",
             "apologia-pro-vita-sua",
             "the-idea-of-a-university",
             "the-consolation-of-philosophy",
