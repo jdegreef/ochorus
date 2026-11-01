@@ -91,6 +91,7 @@ ART_SOURCES: dict[str, str] = {
     "large-catechism": "met-438417@0.40",
     "lectures-to-my-students": "aic-110541@0.30",
     "lectures-to-my-students-second-series": "aic-103139@0.45",
+    "lectures-to-professing-christians": "met-10768@0.60~0.01",
     "letters-and-minor-works": "met-437311@0.50",
     "letters-of-jerome": "met-926221@0.50~0.04",
     "letters-of-samuel-rutherford": "cma-141640@0.60",

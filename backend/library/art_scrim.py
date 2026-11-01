@@ -148,6 +148,7 @@ ART_SCRIM: dict[str, float] = {
     "key-teachings-of-watchman-nee": 0.30,
     "knots-untied": 0.70,
     "large-catechism": 0.45,
+    "lectures-to-professing-christians": 0.95,
     "letters-and-minor-works": 0.90,
     "letters-of-jerome": 0.75,
     "letters-of-samuel-rutherford": 0.70,

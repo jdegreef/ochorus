@@ -19270,6 +19270,35 @@
 			"bar": 0,
 			"caps": false
 		},
+		"lectures-to-professing-christians": {
+			"ground": "c7ed99f5c31d8fc66d50eaad44bb139d4eb6f5132cdcabe842460fcfb9c7c4e0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[155, 293, 445, 369],
+					[163, 359, 437, 435],
+					[164, 424, 436, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house",
