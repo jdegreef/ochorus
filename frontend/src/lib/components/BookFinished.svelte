@@ -162,8 +162,9 @@
 				</span>
 			</a>
 		{/if}
-		<!-- The seals this finish pressed (a first finish, a writer's third…). -->
-		<SealsEarned slug={book.slug} {celebrate} />
+		<!-- The seals this finish pressed (a first finish, a writer's third…),
+		     stamped down while the leaves fall: the arrival, and only then. -->
+		<SealsEarned slug={book.slug} stamp={leavesFalling} />
 		<div class="mt-6 flex flex-wrap justify-center gap-2">
 			<ShareButton url={shareUrl} title={book.title} showLabel />
 			<BookDownloadMenu {book} />
