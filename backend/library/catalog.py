@@ -269,6 +269,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "one of the most published allegories in the English language."
         ),
     ),
+    "hannah-whitall-smith": AuthorEntry(
+        slug="hannah-whitall-smith",
+        name="Hannah Whitall Smith",
+        birth_year=1832,
+        death_year=1911,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hannah Whitall Smith (1832–1911) was a Quaker-born speaker and writer of the Holiness movement, author of The Christian's Secret of a Happy Life."
+        ),
+    ),
     "thomas-watson": AuthorEntry(
         slug="thomas-watson",
         name="Thomas Watson",
@@ -1309,6 +1320,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Hannah Whitall Smith's Old Testament Types and Teachings — CCEL's
+    # smith_hw/types: Bible readings on the types of the Old Testament.
+    BookEntry("old-testament-types-and-teachings", "Old Testament Types and Teachings", "hannah-whitall-smith",
+              "ccel", "smith_hw/types", skip=("Title Page",), cover_color="#4a4a2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

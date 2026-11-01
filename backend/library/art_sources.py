@@ -104,6 +104,7 @@ ART_SOURCES: dict[str, str] = {
     "necessity-of-prayer": "met-439344@0.32",
     "of-temptation": "met-436827@0.50",
     "old-paths": "met-436441@0.50",
+    "old-testament-types-and-teachings": "met-10508@0.40~0.01",
     "on-christian-doctrine": "met-437468@0.20",
     "on-first-principles": "met-441379@0.50",
     "on-loving-god": "cma-128371@0.50",

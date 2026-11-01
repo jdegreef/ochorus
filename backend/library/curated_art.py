@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "old-testament-types-and-teachings": Artwork(
+        "met", 10508, "Samuel Colman", "The Hill of the Alhambra, Granada", "1865", "A walled citadel on a sun-baked hill above a dusty road and an old bridge: the city-on-a-hill country of the Old Testament.",
+        focus=0.40, inset=0.01,
+    ),
 }
 
 
