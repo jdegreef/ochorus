@@ -11,6 +11,7 @@ from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
 from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
+from .daily_books import DATED_BOOKS
 from .export_policy import is_exportable
 from .hubs import Hubs
 from .leader_guides import guide_for
@@ -1783,6 +1784,12 @@ class BookDetailSerializer(BookListSerializer):
     # Whether a printable leader's guide exists for this edition
     # (library/leader_guides.py) — the book page links to /books/<slug>/guide.
     has_leader_guide = serializers.SerializerMethodField()
+    # A year-long devotional read by the calendar (library/daily_readings.py):
+    # the book page offers today's reading, /today/<slug>/.
+    daily = serializers.SerializerMethodField()
+
+    def get_daily(self, obj) -> bool:
+        return obj.slug in DATED_BOOKS
 
     def get_has_leader_guide(self, obj) -> bool:
         return guide_for(obj.slug, obj.language) is not None
@@ -1882,6 +1889,7 @@ class BookDetailSerializer(BookListSerializer):
             "featured_people", "author_quote_count", "guides", "series",
             "epub_url", "meta_description", "public_domain", "ages",
             "has_leader_guide",
+            "daily",
         ]
 
     def get_public_domain(self, obj) -> bool:

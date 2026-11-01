@@ -14,6 +14,8 @@ from .views import (
     BookListView,
     ChapterBatchView,
     ChapterDetailView,
+    DailyReadingView,
+    DailyShelfView,
     HubListView,
     LanguageListView,
     OriginalsView,
@@ -103,6 +105,12 @@ urlpatterns = [
     path("articles/<slug:slug>/", ArticleDetailView.as_view(), name="article-detail"),
     path("books/<slug:slug>/", BookDetailView.as_view(), name="book-detail"),
     path("books/<slug:slug>/guide/", BookGuideView.as_view(), name="book-guide"),
+    path(
+        "books/<slug:slug>/daily/<str:date>/",
+        DailyReadingView.as_view(),
+        name="book-daily",
+    ),
+    path("daily/<str:date>/", DailyShelfView.as_view(), name="daily-shelf"),
     path(
         "books/<slug:slug>/download.epub",
         BookEpubView.as_view(),
