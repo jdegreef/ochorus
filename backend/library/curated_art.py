@@ -1331,6 +1331,67 @@ CURATED: dict[str, Artwork] = {
         "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
         "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
     ),
+    # ── Batch 31 · two more that landed on plates as the gate went in ─────────
+    "to-autolycus": Artwork(
+        "met", 438634, "Jules Coignet", "View of Beirut", "1844",
+        "A white town above a calm sea on the Syrian coast near Antioch, under a wide clear sky: Theophilus's own shore, and the creation he asks his friend to see whole.",
+        focus=0.60, inset=0.02,
+    ),
+    "refutation-of-all-heresies": Artwork(
+        "met", 10500, "Thomas Cole", "A View near Tivoli (Morning)", "1832",
+        "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
+        focus=0.75,
+    ),
+    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
+    "gospel-of-john": Artwork(
+        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
+        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
+        focus=0.4,
+        inset=0.03,
+    ),
+    # ── Batch 33 · the stacked October/November imports ─────────────────────
+    "letters-of-jerome": Artwork(
+        "met", 926221, "Antoine-Alphonse Montfort", "Cedars of Lebanon", "1837",
+        "The cedars of Lebanon on the mountains above the Holy Land: Jerome wrote these letters from Bethlehem, where he settled to translate the Scriptures.",
+        inset=0.04,
+    ),
+    "the-instructor": Artwork(
+        "met", 441364, "Jean-Léon Gérôme", "Study of Palm Trees", "1855/56",
+        "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
+        focus=0.45,
+    ),
+    "against-marcion": Artwork(
+        "cma", 149665, "Arnold Böcklin", "Ruin by the Sea", "1881",
+        "A ruined building on a sea cliff under a storm: Tertullian takes Marcion's system apart and shows the one God, maker of sea and sky, still standing.",
+        focus=0.0,
+        inset=0.06,
+    ),
+    "homilies-on-the-first-epistle-of-john": Artwork(
+        "cma", 148312, "William Stanley Haseltine", "Capri", "1869",
+        "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
+        focus=0.62,
+    ),
+    "table-talk": Artwork(
+        "met", 435646, "Bernardo Bellotto", "Pirna: The Obertor from the South", "mid-1750s",
+        "A Saxon town gate in Luther's own country: the Table Talk was gathered by students at his table in Wittenberg, a short way down the Elbe.",
+        focus=0.65,
+        inset=0.04,
+    ),
+    "parochial-and-plain-sermons-vii": Artwork(
+        "met", 436832, "Philips Koninck", "Wide River Landscape", "ca. 1648–49",
+        "A distant spire across a wide river country under storm cloud: Newman's sermons on the shortness of life and the world as the Christian's enemy, preached from the pulpit of St Mary's, Oxford.",
+    ),
+    "a-practical-view-of-christianity": Artwork(
+        "met", 437643, "Samuel Scott", "The Building of Westminster Bridge", "",
+        "Westminster on the Thames: Wilberforce wrote his Practical View for the fashionable London he moved in as a member of Parliament.",
+        focus=0.60,
+        inset=0.02,
+    ),
+    "letters-of-samuel-rutherford": Artwork(
+        "cma", 141640, "William Bradford", "Labrador Coast", "c. 1860",
+        "A cold northern shore under a heavy sky: most of Rutherford's letters were written from banishment in Aberdeen, far from his flock at Anwoth.",
+        focus=0.60,
+    ),
 }
 
 

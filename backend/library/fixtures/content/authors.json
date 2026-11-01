@@ -9335,6 +9335,22 @@
   {
     "model": "library.author",
     "fields": {
+      "slug": "open-word-bible",
+      "name": "Open Word Bible",
+      "bio": "",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": null,
+      "death_year": null,
+      "original_language": "en",
+      "is_imprint": true,
+      "created_at": "2026-10-30T12:00:00.000Z",
+      "same_as": []
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
       "slug": "jerome",
       "name": "Jerome",
       "bio": "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible. From his monastery at Bethlehem he wrote letters of counsel, controversy and grief that bring his age vividly to life.",
