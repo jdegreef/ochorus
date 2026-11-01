@@ -2017,6 +2017,12 @@ SERMONS: list[SermonEntry] = [
     # slugs, and an import would have written over their sermons. Dropped:
     # Bonar's *Self or Christ* (ends on "the undying worm") and *The Church's
     # Amen* (the last sermon in the book; the archive slice ran into another).
+    # Read in full and dropped for tone: Maclaren's *Guidance in the Way* (an
+    # anti-Catholic aside), *The Lost Sheep and the Seeking Shepherd* ("people
+    # with narrow foreheads"), *Tempest and Trust* (a "Jewish characteristic"),
+    # *Access into Grace* (Calvinism and "the liberties of Europe"); Bonar's
+    # *Christ and the New Creation* (a paragraph of hell) and *Longings for the
+    # Land* (closes "shall be damned").
     SermonEntry(
         "the-wearied-christ", "The Wearied Christ", "alexander-maclaren", "ccel",
         _MACLAREN + "john1/john1.ii.xxii.html", scripture_ref="John 4:6",
@@ -2044,10 +2050,6 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-absent-present-christ", "The Absent Present Christ", "alexander-maclaren", "ccel",
         _MACLAREN + "john1/john1.ii.lxxii.html", scripture_ref="John 14:18-19",
-    ),
-    SermonEntry(
-        "access-into-grace", "Access into Grace", "alexander-maclaren", "ccel",
-        _MACLAREN + "rom_cor/rom_cor.ii.x.html", scripture_ref="Romans 5:2",
     ),
     SermonEntry(
         "the-sources-of-hope", "The Sources of Hope", "alexander-maclaren", "ccel",
@@ -2090,33 +2092,11 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "matt2/matt2.ii.xviii.html", scripture_ref="Matthew 11:28-29",
     ),
     SermonEntry(
-        "the-lost-sheep-and-the-seeking-shepherd", "The Lost Sheep and the Seeking Shepherd", "alexander-maclaren", "ccel",
-        _MACLAREN + "matt2/matt2.iii.iv.html", scripture_ref="Matthew 18:12",
-    ),
-    SermonEntry(
         "jehovah-jireh", "Jehovah-Jireh", "alexander-maclaren", "ccel",
         _MACLAREN + "gen_num/gen_num.ii.i.xxix.html", scripture_ref="Genesis 22:14",
     ),
     SermonEntry(
-        "guidance-in-the-way", "Guidance in the Way", "alexander-maclaren", "ccel",
-        _MACLAREN + "gen_num/gen_num.ii.i.xxx.html", scripture_ref="Genesis 24:27",
-    ),
-    SermonEntry(
         "the-guiding-pillar", "The Guiding Pillar", "alexander-maclaren", "ccel",
         _MACLAREN + "gen_num/gen_num.iii.iv.ii.html", scripture_ref="Numbers 9:16",
-    ),
-    SermonEntry(
-        "tempest-and-trust", "Tempest and Trust", "alexander-maclaren", "ccel",
-        _MACLAREN + "acts/acts.iii.xlix.html", scripture_ref="Acts 27:13-26",
-    ),
-    SermonEntry(
-        "longings-for-the-land", "Longings for the Land", "horatius-bonar", "archive",
-        "familysermons00bona", text_starts="And I besought the Lord at that time", body_starts="The scene here lies in",
-        ends_before="CHRIST AND THE NEW CREATION", scripture_ref="Deuteronomy 3:23-29",
-    ),
-    SermonEntry(
-        "christ-and-the-new-creation", "Christ and the New Creation", "horatius-bonar", "archive",
-        "familysermons00bona", text_starts="If any man (one) be in Christ", body_starts="It is usual to make this affirmation",
-        ends_before="APOSTOLIC SIGHS", scripture_ref="2 Corinthians 5:17",
     ),
 ]
