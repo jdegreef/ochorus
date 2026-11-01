@@ -237,6 +237,7 @@ ART_SCRIM: dict[str, float] = {
     "the-book-of-pastoral-rule": 0.65,
     "the-bruised-reed": 0.85,
     "the-bruised-reed-teens": 0.30,
+    "the-christians-great-interest": 0.90,
     "the-christians-secret-of-a-happy-life-4": 0.45,
     "the-consolation-of-philosophy": 0.85,
     "the-crook-in-the-lot": 0.80,

@@ -1432,6 +1432,11 @@ CURATED: dict[str, Artwork] = {
         "cma", 150021, "Pierre Jean Boquet", "Pollard Willow", "after 1804",
         "A gnarled, cut-back willow still putting out green, with a herdsman resting in its shade: Boston's crook in the lot, of God's making and borne in patience.",
     ),
+    "the-christians-great-interest": Artwork(
+        "cma", 173657, "James M. Hart", "Morning in New England", "1873",
+        "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
+        focus=0.25,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,

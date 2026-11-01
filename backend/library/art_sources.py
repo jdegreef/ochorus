@@ -159,6 +159,7 @@ ART_SOURCES: dict[str, str] = {
     "the-apology-of-tertullian": "cma-145309@0.50",
     "the-book-of-pastoral-rule": "met-437042@0.50",
     "the-bruised-reed": "cma-140341@0.50",
+    "the-christians-great-interest": "cma-173657@0.25",
     "the-city-of-god": "cma-150353@0.10",
     "the-consolation-of-philosophy": "met-437973@0.50",
     "the-crook-in-the-lot": "cma-150021@0.50",

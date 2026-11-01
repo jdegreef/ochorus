@@ -775,6 +775,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Thomas Boston (1676–1732) was a Scottish Presbyterian minister of Simprin and Ettrick, author of Human Nature in its Fourfold State and a leader of the Marrow Men."
         ),
     ),
+    "william-guthrie": AuthorEntry(
+        slug="william-guthrie",
+        name="William Guthrie",
+        birth_year=1620,
+        death_year=1665,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Guthrie (1620–1665) was a Scottish Covenanter minister, the first minister of Fenwick in Ayrshire, deprived in 1664 for refusing episcopacy."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1477,6 +1488,14 @@ BOOKS: list[BookEntry] = [
               "archive", "crookinlotordisp00bost",
               subtitle="The Sovereignty and Wisdom of God in the Afflictions of Men Displayed",
               cover_color="#4a3e2e"),
+    # William Guthrie's The Christian's Great Interest (1658) — CCEL's
+    # guthrie/interest2: the trial of a saving interest in Christ (Part I) and
+    # the way to attain it (Part II); the prefatory essay, memoir and epistle
+    # are later editors' or the printer's, not the work.
+    BookEntry("the-christians-great-interest", "The Christian's Great Interest", "william-guthrie",
+              "ccel", "guthrie/interest2",
+              cover_color="#3e4a3a",
+              skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
