@@ -92,6 +92,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-glowstone-bargain': 0.110,
 	'the-hill-of-cinders': 0.110,
 	'the-holy-war': 0.030,
+	'the-idea-of-a-university': 0.040,
 	'the-imitation-of-christ-teens': 0.110,
 	'the-practice-of-the-presence-of-god-teens': 0.110,
 	'the-practice-of-the-presence-of-god': 0.110,
