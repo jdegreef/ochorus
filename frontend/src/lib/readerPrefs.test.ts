@@ -17,6 +17,7 @@ let readerPrefs: typeof import('./readerPrefs.svelte').readerPrefs;
 const innerWidth = window.innerWidth;
 beforeEach(async () => {
 	localStorage.clear();
+	document.documentElement.removeAttribute('data-candle');
 	vi.resetModules();
 	({ readerPrefs } = await import('./readerPrefs.svelte'));
 });
@@ -68,12 +69,14 @@ describe('readerPrefs store', () => {
 		readerPrefs.setFont('dyslexic');
 		readerPrefs.setMeasure('wide');
 		readerPrefs.setTapToScroll(true);
+		readerPrefs.setCandlelight(true);
 		readerPrefs.setPreferModern(true);
 		readerPrefs.reset();
 		expect(readerPrefs.scale).toBe(1);
 		expect(readerPrefs.font).toBe('serif');
 		expect(readerPrefs.measure).toBe('normal');
 		expect(readerPrefs.tapToScroll).toBe(false);
+		expect(readerPrefs.candlelight).toBe(false);
 		expect(readerPrefs.preferModern).toBe(false);
 		expect(stored().scale).toBe(1);
 		expect(stored().font).toBe('serif');
@@ -83,6 +86,25 @@ describe('readerPrefs store', () => {
 		expect(readerPrefs.tapToScroll).toBe(false);
 		readerPrefs.setTapToScroll(true);
 		expect(stored().tapToScroll).toBe(true);
+	});
+
+	it('persists candlelight (off by default) and marks <html> for the glow', () => {
+		const lit = () => document.documentElement.hasAttribute('data-candle');
+		expect(readerPrefs.candlelight).toBe(false);
+		expect(lit()).toBe(false);
+		readerPrefs.setCandlelight(true);
+		expect(readerPrefs.candlelight).toBe(true);
+		expect(stored().candlelight).toBe(true);
+		expect(lit()).toBe(true);
+		readerPrefs.reset();
+		expect(lit()).toBe(false);
+	});
+
+	it('reads candlelight back on load and lights <html> with it', () => {
+		localStorage.setItem(KEY, JSON.stringify({ candlelight: true }));
+		readerPrefs.init();
+		expect(readerPrefs.candlelight).toBe(true);
+		expect(document.documentElement.hasAttribute('data-candle')).toBe(true);
 	});
 
 	it('persists the prefer-Modern-English default (off by default)', () => {

@@ -185,6 +185,9 @@
      toast, skip        PWA toasts; the skip link above everything
    Local stacking inside one component (1–10) can stay numeric. */
 :root {
+	/* Candlelight's glow: over a reading page's own layers (page-turn mode's
+	   opaque page is 5, its edge buttons 6), under every piece of chrome. */
+	--z-glow: 7;
 	--z-pinned: 20;
 	--z-popover: 30;
 	--z-chrome: 40;
@@ -1968,6 +1971,38 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	}
 }
 
+/* CANDLELIGHT (a reader pref, Lamplight only; $lib/readerPrefs sets
+   `data-candle`): a warm pool of light at the top of any
+   page with reading text — chapters, sermons, a life, which hold
+   `data-reading` ($lib/presenceFlag) — as from a candle just above it. A plain see-through gradient, not a blend mode, and still once it
+   has faded in, so it costs nothing as the page scrolls. Its heart sits
+   6.5rem down — clear of a reading page's top bar (3.5rem), which would hide
+   it — and --z-glow places it; it never takes a tap. */
+:root[data-theme='dark'][data-candle][data-reading] body::before {
+	content: '';
+	position: fixed;
+	inset: 0 0 auto;
+	height: 80vh;
+	z-index: var(--z-glow);
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 80% 55% at 50% 6.5rem,
+		rgb(255 176 92 / 0.22),
+		rgb(255 150 60 / 0.08) 45%,
+		transparent 78%
+	);
+}
+@media (prefers-reduced-motion: no-preference) {
+	:root[data-theme='dark'][data-candle][data-reading] body::before {
+		animation: candle-in 1.2s ease-out;
+	}
+}
+@keyframes candle-in {
+	from {
+		opacity: 0;
+	}
+}
+
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
    default — a dotted underline in the accent tint — tappable to open the
    scripture popover (see ScripturePopover.svelte). */
@@ -2107,6 +2142,10 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	.paged-backdrop,
 	.scripture-pop,
 	.define-pop {
+		display: none !important;
+	}
+	/* Candlelight's glow is screen light, not ink. */
+	:root[data-candle] body::before {
 		display: none !important;
 	}
 

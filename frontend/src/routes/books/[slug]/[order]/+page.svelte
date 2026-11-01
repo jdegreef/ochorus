@@ -8,6 +8,7 @@
 	import { childrensReading, splitEdition } from '$lib/edition';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
 	import { chapterSeedTag } from '$lib/chapterSeed';
@@ -91,6 +92,9 @@
 	import QandA from '$lib/components/QandA.svelte';
 	import { midBook } from '$lib/midBook.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
+
+	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
+	$effect(() => holdFlag(document.documentElement, READING_FLAG));
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
