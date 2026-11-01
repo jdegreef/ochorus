@@ -358,6 +358,9 @@ export interface BookDetail extends BookSummary {
 	 * behind this build omits it.
 	 */
 	daily?: boolean;
+	/** This devotional's year-long plan in this language (plan_seed.DAILY_PLANS),
+	 *  or "". Optional so an API running behind this build omits it. */
+	daily_plan?: string;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1222,6 +1225,10 @@ export interface PlanDay {
 	chapter_order: number | null;
 	/** Optional: an API predating article days omits it (rolling-deploy skew). */
 	article_slug?: string;
+	/** A year-long devotional's day: the one dated entry ("MM-DD") it reads out
+	 *  of `chapter_order`'s month chapter — on the book's day page, not the
+	 *  chapter. "" (or absent, from an older API) on every other day. */
+	entry_date?: string;
 	book_title: string;
 	chapter_title: string;
 	word_count: number;

@@ -35,8 +35,9 @@
 		slug: string;
 		day: number;
 		dayCount: number;
-		/** What the end of the chapter shows when this card doesn't. */
-		otherwise: Snippet;
+		/** What the end of the chapter shows when this card doesn't (nothing,
+		 *  if omitted). */
+		otherwise?: Snippet;
 	} = $props();
 
 	const t = i18n.t;
@@ -96,7 +97,7 @@
 		{/if}
 	</aside>
 {:else}
-	{@render otherwise()}
+	{@render otherwise?.()}
 {/if}
 
 <style>

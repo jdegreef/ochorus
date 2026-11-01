@@ -2678,20 +2678,14 @@ class PlanTranslationCoverageTests(SimpleTestCase):
                 )
 
     def test_every_creatable_plan_row_has_its_own_prose(self):
-        from library.management.commands.seed_plans import (
-            CURATED_PLANS,
-            LAUNCH_PLANS,
-        )
-        from library.plan_seed import plan_sources
+        from library.plan_seed import all_plan_sources
         from library.plan_translations import plan_translations
 
-        # (plan slug, the works it needs) for both plan kinds.
-        needs = [(p[0], [("book", p[1])]) for p in LAUNCH_PLANS]
-        for p in CURATED_PLANS:
-            books, articles = plan_sources(p[3])
-            needs.append(
-                (p[0], [("book", b) for b in books] + [("article", a) for a in articles])
-            )
+        # (plan slug, the works it needs) for every plan kind.
+        needs = [
+            (slug, [("book", b) for b in books] + [("article", a) for a in articles])
+            for slug, (books, articles) in all_plan_sources().items()
+        ]
 
         missing = sorted(
             f"{language}/{slug}"
@@ -3202,9 +3196,9 @@ class PlanTranslationFileTests(SimpleTestCase):
         self.assertEqual(bad, [], "\n".join(bad))
 
     def test_every_slug_names_a_real_plan(self):
-        from library.management.commands.seed_plans import CURATED_PLANS, LAUNCH_PLANS
+        from library.plan_seed import all_plan_sources
 
-        known = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        known = set(all_plan_sources())
         bad = [
             f"{lang}.json:{slug}"
             for lang, entries in self.raw.items()
@@ -3214,7 +3208,7 @@ class PlanTranslationFileTests(SimpleTestCase):
         self.assertEqual(
             bad,
             [],
-            "These entries name no plan in LAUNCH_PLANS or CURATED_PLANS, so "
+            "These entries name no plan in plan_seed (all_plan_sources), so "
             "seed_plans will never look them up and the prose is dead:\n  "
             + "\n  ".join(bad),
         )
