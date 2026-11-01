@@ -24,6 +24,7 @@
 		saveProgressPercent,
 		markReached,
 		getProgressRecord,
+		isFirstVisit,
 		offerFinish
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
@@ -1083,6 +1084,14 @@
 		listen.init();
 	});
 
+	/** This chapter is opened for the first time: its drop cap inks in. */
+	let inkIn = $state(false);
+	// Hydrating a prerendered chapter, its initial is already on screen: inking
+	// it in now would blank a painted letter and redraw it. Seen once, as the
+	// page script starts (only then is the server's chapter body in the DOM
+	// before this instance has rendered), and spent on the first chapter.
+	let hydratedBody = browser && document.querySelector('[data-chapter-body]') !== null;
+
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
 	$effect(() => {
 		const s = slug;
@@ -1133,6 +1142,10 @@
 		clearTimeout(syncTimer);
 		syncOffer = null;
 		const localRecord = getProgressRecord(s);
+		// The first time the reader comes this far, the chapter's initial inks
+		// in (app.css, `.ink-in`); a return to it, or a jump to a passage, does not.
+		inkIn = !hydratedBody && !deliberateJump && isFirstVisit(localRecord, order);
+		hydratedBody = false;
 		syncAsk =
 			!deliberateJump && !syncDismissed.has(s)
 				? { slug: s, order, language, local: localRecord }
@@ -2134,7 +2147,7 @@
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" class:story={childrens} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(chapter.body_html)}</div>
+		<div class="reading" class:story={childrens} class:ink-in={inkIn} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(chapter.body_html)}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an

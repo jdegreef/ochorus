@@ -1929,6 +1929,40 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--ornament) 75%, transparent);
 }
 
+/* INK-IN: the first time a reader opens a chapter (the chapter route sets
+   `.ink-in`; a return, a jump to a passage or a hydrated first load does not),
+   its initial soaks into the page — up out of a soft haze of its own ink,
+   sharpening, the gilt edge settling last. Once per chapter element.
+
+   Browsers will not animate a ::first-letter (Chromium ignores the animation
+   outright), so the paragraph animates a registered number, --ink, 0 → 1, and
+   the letter — which inherits it — mixes its colour and shadows by it. Where
+   @property is missing the number does not tween and the letter simply
+   appears, then reads the var()'s fallback of 1; the resting rule above never
+   reads --ink, so a still page is the same in every browser. Opt-in under no-preference: the global reduced-motion
+   rule keeps delays, which would hold the letter blank before it blinks in. */
+@property --ink {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+	article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type {
+		animation: ink-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s backwards;
+	}
+	:is(article:not(.paged) .reading.ink-in:not(.no-initial)) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+		color: color-mix(in srgb, var(--initial) calc(var(--ink, 1) * 100%), transparent);
+		text-shadow:
+			0.035em 0.035em 0 color-mix(in srgb, var(--ornament) calc(var(--ink, 1) * 75%), transparent),
+			0 0 calc((1 - var(--ink, 1)) * 0.4em) color-mix(in srgb, var(--initial) calc((1 - var(--ink, 1)) * 90%), transparent);
+	}
+}
+@keyframes ink-in {
+	from {
+		--ink: 0;
+	}
+}
+
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
    default — a dotted underline in the accent tint — tappable to open the
    scripture popover (see ScripturePopover.svelte). */

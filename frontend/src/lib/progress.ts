@@ -120,6 +120,16 @@ export function saveProgress(
 }
 
 /**
+ * Whether opening chapter `order` is the first time the reader has come this
+ * far — no place in the work yet, or past the furthest chapter reached. Read
+ * from the record as it was BEFORE this visit's saveProgress. A chapter they
+ * have been in before, or turned back to, is a return, not an arrival.
+ */
+export function isFirstVisit(rec: Pick<ProgressRecord, 'order' | 'furthest'> | null, order: number): boolean {
+	return rec == null || order > furthestOf(rec);
+}
+
+/**
  * The reader got to the end of chapter `order`: it now counts as reached, even
  * if they arrived by jumping ahead. A no-op unless that moves the furthest.
  */
