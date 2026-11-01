@@ -2009,4 +2009,114 @@ SERMONS: list[SermonEntry] = [
         "asking-in-christs-name", "Asking in Christ's Name", "augustine-of-hippo", "ccel",
         _NPNF106 + "npnf106.vii.xcvii.html", scripture_ref="John 16:24",
     ),
+    # Batch 5 toward 400 (2026-11): more of Maclaren's *Expositions* (John,
+    # Romans–Corinthians, Mark, Matthew, Genesis–Numbers, Acts), warm titles only,
+    # and Bonar's remaining single-part *Family Sermons* (*Christ and the World*
+    # and *The Three Witnesses* passed over as set against "the world").
+    # Two Maclaren titles are suffixed: Lloyd-Jones and Wesley hold the plain
+    # slugs, and an import would have written over their sermons. Dropped:
+    # Bonar's *Self or Christ* (ends on "the undying worm") and *The Church's
+    # Amen* (the last sermon in the book; the archive slice ran into another).
+    SermonEntry(
+        "the-wearied-christ", "The Wearied Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxii.html", scripture_ref="John 4:6",
+    ),
+    SermonEntry(
+        "the-springing-fountain", "The Springing Fountain", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxv.html", scripture_ref="John 4:14",
+    ),
+    SermonEntry(
+        "the-light-of-the-world-maclaren", "The Light of the World", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxxvi.html", scripture_ref="John 8:12",
+    ),
+    SermonEntry(
+        "the-delays-of-love", "The Delays of Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xliv.html", scripture_ref="John 11:5-6",
+    ),
+    SermonEntry(
+        "the-love-of-the-departing-christ", "The Love of the Departing Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lv.html", scripture_ref="John 13:1",
+    ),
+    SermonEntry(
+        "many-mansions", "Many Mansions", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxv.html", scripture_ref="John 14:2",
+    ),
+    SermonEntry(
+        "the-absent-present-christ", "The Absent Present Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxxii.html", scripture_ref="John 14:18-19",
+    ),
+    SermonEntry(
+        "access-into-grace", "Access into Grace", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.x.html", scripture_ref="Romans 5:2",
+    ),
+    SermonEntry(
+        "the-sources-of-hope", "The Sources of Hope", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xi.html", scripture_ref="Romans 5:2-4",
+    ),
+    SermonEntry(
+        "what-proves-gods-love", "What Proves God's Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xiii.html", scripture_ref="Romans 5:8",
+    ),
+    SermonEntry(
+        "the-witness-of-the-spirit-maclaren", "The Witness of the Spirit", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xviii.html", scripture_ref="Romans 8:16",
+    ),
+    SermonEntry(
+        "joy-and-peace-in-believing", "Joy and Peace in Believing", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xlii.html", scripture_ref="Romans 15:13",
+    ),
+    SermonEntry(
+        "looking-at-the-unseen", "Looking at the Unseen", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.iv.vi.html", scripture_ref="2 Corinthians 4:18",
+    ),
+    SermonEntry(
+        "the-love-that-constrains", "The Love that Constrains", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.iv.xi.html", scripture_ref="2 Corinthians 5:14",
+    ),
+    SermonEntry(
+        "christs-touch", "Christ's Touch", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.vii.html", scripture_ref="Mark 1:41",
+    ),
+    SermonEntry(
+        "the-secret-of-gladness", "The Secret of Gladness", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.x.html", scripture_ref="Mark 2:19",
+    ),
+    SermonEntry(
+        "the-looks-of-jesus", "The Looks of Jesus", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.xxvii.html", scripture_ref="Mark 5:32",
+    ),
+    SermonEntry(
+        "the-rest-giver", "The Rest Giver", "alexander-maclaren", "ccel",
+        _MACLAREN + "matt2/matt2.ii.xviii.html", scripture_ref="Matthew 11:28-29",
+    ),
+    SermonEntry(
+        "the-lost-sheep-and-the-seeking-shepherd", "The Lost Sheep and the Seeking Shepherd", "alexander-maclaren", "ccel",
+        _MACLAREN + "matt2/matt2.iii.iv.html", scripture_ref="Matthew 18:12",
+    ),
+    SermonEntry(
+        "jehovah-jireh", "Jehovah-Jireh", "alexander-maclaren", "ccel",
+        _MACLAREN + "gen_num/gen_num.ii.i.xxix.html", scripture_ref="Genesis 22:14",
+    ),
+    SermonEntry(
+        "guidance-in-the-way", "Guidance in the Way", "alexander-maclaren", "ccel",
+        _MACLAREN + "gen_num/gen_num.ii.i.xxx.html", scripture_ref="Genesis 24:27",
+    ),
+    SermonEntry(
+        "the-guiding-pillar", "The Guiding Pillar", "alexander-maclaren", "ccel",
+        _MACLAREN + "gen_num/gen_num.iii.iv.ii.html", scripture_ref="Numbers 9:16",
+    ),
+    SermonEntry(
+        "tempest-and-trust", "Tempest and Trust", "alexander-maclaren", "ccel",
+        _MACLAREN + "acts/acts.iii.xlix.html", scripture_ref="Acts 27:13-26",
+    ),
+    SermonEntry(
+        "longings-for-the-land", "Longings for the Land", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="And I besought the Lord at that time", body_starts="The scene here lies in",
+        ends_before="CHRIST AND THE NEW CREATION", scripture_ref="Deuteronomy 3:23-29",
+    ),
+    SermonEntry(
+        "christ-and-the-new-creation", "Christ and the New Creation", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="If any man (one) be in Christ", body_starts="It is usual to make this affirmation",
+        ends_before="APOSTOLIC SIGHS", scripture_ref="2 Corinthians 5:17",
+    ),
 ]
