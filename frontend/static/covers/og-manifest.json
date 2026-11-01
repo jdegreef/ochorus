@@ -28788,6 +28788,18 @@
 				524
 			]
 		},
+		"the-deeper-christian-life": {
+			"ground": "68374f6704ddd45197ee5b20c0de1777abfb3c2acaebe37a573e6effde636ce9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.095,
+			"caps": false
+		},
 		"the-dialogue-of-catherine-of-siena": {
 			"ground": "103a05452579a03d9cab6045681d666fed72fd50cb83d2ef4f57c39a74abec08",
 			"style": "inscriptional",

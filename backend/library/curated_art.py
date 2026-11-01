@@ -1464,6 +1464,10 @@ CURATED: dict[str, Artwork] = {
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
     ),
+    "the-deeper-christian-life": Artwork(
+        "met", 461186, "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)", "Hudson River Scene", "1830–50", "A still river lying deep between mountains: the quiet depth Murray calls the believer into.",
+        focus=0.10, inset=0.01,
+    ),
     "the-school-of-obedience": Artwork(
         "met", 10786, "Asher Brown Durand", "The Beeches", "1845", "A worn path under great beeches, walked toward the light: obedience as a road learned step by step.",
         focus=0.50, inset=0.01,

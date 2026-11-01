@@ -1379,6 +1379,10 @@ BOOKS: list[BookEntry] = [
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
               "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Andrew Murray's The Deeper Christian Life (1895) — CCEL's murray/deeper:
+    # seven addresses and a closing word on consecration.
+    BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",
+              "ccel", "murray/deeper", skip=("Title Page",), cover_color="#2e3e4a"),
     # Andrew Murray's The School of Obedience (1898) — CCEL's murray/obedience.
     BookEntry("the-school-of-obedience", "The School of Obedience", "andrew-murray",
               "ccel", "murray/obedience", skip=("Title Page",), cover_color="#3a4a3e"),
