@@ -94,6 +94,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
+    "horatius-bonar": AuthorEntry(
+        slug="horatius-bonar",
+        name="Horatius Bonar",
+        birth_year=1808,
+        death_year=1889,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer of the Free Church, at Kelso and then in Edinburgh."
+        ),
+    ),
     "charles-h-spurgeon": AuthorEntry(
         slug="charles-h-spurgeon",
         name="Charles H. Spurgeon",
@@ -267,17 +278,6 @@ AUTHORS: dict[str, AuthorEntry] = {
             "was imprisoned for more than a decade for preaching without a "
             "licence. During that confinement he wrote The Pilgrim's Progress, "
             "one of the most published allegories in the English language."
-        ),
-    ),
-    "horatius-bonar": AuthorEntry(
-        slug="horatius-bonar",
-        name="Horatius Bonar",
-        birth_year=1808,
-        death_year=1889,
-        # The author page carries the full bio (authors.json); this stub is
-        # create-only and never overwrites it.
-        bio=(
-            "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer of the Free Church, at Kelso and then in Edinburgh."
         ),
     ),
     "thomas-watson": AuthorEntry(
@@ -729,6 +729,61 @@ AUTHORS: dict[str, AuthorEntry] = {
         # create-only and never overwrites it.
         bio=(
             "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
+    "william-wilberforce": AuthorEntry(
+        slug="william-wilberforce",
+        name="William Wilberforce",
+        birth_year=1759,
+        death_year=1833,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Wilberforce (1759–1833) was an English evangelical politician who led the parliamentary campaign that abolished the British slave trade in 1807."
+        ),
+    ),
+    "samuel-rutherford": AuthorEntry(
+        slug="samuel-rutherford",
+        name="Samuel Rutherford",
+        birth_year=1600,
+        death_year=1661,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Samuel Rutherford (c. 1600–1661) was a Scottish Presbyterian minister of Anwoth, a professor at St Andrews and a commissioner to the Westminster Assembly."
+        ),
+    ),
+    "john-flavel": AuthorEntry(
+        slug="john-flavel",
+        name="John Flavel",
+        birth_year=1627,
+        death_year=1691,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Flavel (c. 1627–1691) was an English Puritan minister of Dartmouth in Devon, ejected in 1662 and long forced to preach in secret."
+        ),
+    ),
+    "thomas-boston": AuthorEntry(
+        slug="thomas-boston",
+        name="Thomas Boston",
+        birth_year=1676,
+        death_year=1732,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Thomas Boston (1676–1732) was a Scottish Presbyterian minister of Simprin and Ettrick, author of Human Nature in its Fourfold State and a leader of the Marrow Men."
+        ),
+    ),
+    "william-guthrie": AuthorEntry(
+        slug="william-guthrie",
+        name="William Guthrie",
+        birth_year=1620,
+        death_year=1665,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Guthrie (1620–1665) was a Scottish Covenanter minister, the first minister of Fenwick in Ayrshire, deprived in 1664 for refusing episcopacy."
         ),
     ),
     "teresa-of-avila": AuthorEntry(
@@ -1320,6 +1375,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Horatius Bonar's God's Way of Peace (1862) — CCEL's bonar/peace: a book
+    # for the anxious, in twelve short chapters.
+    BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
+              "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
     # Horatius Bonar's The Rent Veil (1875) — CCEL's bonar/rentveil: twelve
     # chapters on the veil of the tabernacle, rent at the cross.
     BookEntry("the-rent-veil", "The Rent Veil", "horatius-bonar",
@@ -1381,6 +1440,79 @@ BOOKS: list[BookEntry] = [
     BookEntry("homilies-on-the-first-epistle-of-john", "Homilies on the First Epistle of John",
               "augustine-of-hippo", "ccel", "schaff/npnf107", part="iv",
               subtitle="Translated by H. Browne", cover_color="#2e4a5c"),
+    # Luther's Table Talk (Gutenberg #9841) — selections from Captain Henry
+    # Bell's English translation (1652) of Aurifaber's Tischreden, public
+    # domain. Built from a reshaped copy of the PG HTML: one <h2> per topic,
+    # each saying a subhead; the editor's introduction and Bell's
+    # narrative and parliamentary order are left out.
+    BookEntry("table-talk", "Table Talk", "martin-luther",
+              "gutenberg", "9841",
+              subtitle="Translated by Henry Bell", cover_color="#5c4a2e"),
+    # Parochial and Plain Sermons, Volume VII (Gutenberg #24256) — eighteen of
+    # the sermons Newman preached as vicar of St Mary's, Oxford (1834–1843),
+    # in the Rivingtons edition. Built from a reshaped copy of the PG HTML
+    # (one <h2> per sermon, titled from its own title line).
+    BookEntry("parochial-and-plain-sermons-vii", "Parochial and Plain Sermons, Volume VII",
+              "john-henry-newman", "gutenberg", "24256", cover_color="#3e3e5c"),
+    # A Practical View of Christianity (1797, Gutenberg #25709, from the Dublin
+    # printing of the same year) — Wilberforce's appeal to the nominal Christians
+    # of his class. Built from a reshaped copy of the PG HTML: the Introduction
+    # and seven chapters, titled from his Contents; the index and footnotes are
+    # left out.
+    BookEntry("a-practical-view-of-christianity", "A Practical View of Christianity",
+              "william-wilberforce", "gutenberg", "25709",
+              subtitle="Of the Prevailing Religious System of Professed Christians Contrasted with Real Christianity",
+              cover_color="#2e3e5c"),
+    # Letters of Samuel Rutherford (Gutenberg #42557) — Andrew A. Bonar's
+    # edition (third edition, Religious Tract Society): all 365 letters in his
+    # chronological order. Built from a reshaped copy of the PG HTML: one <h2>
+    # per letter titled "Letter N: To …", Bonar's topical heading kept as the
+    # first line; his preface, sketch, indexes, glossary, notices of each
+    # correspondent and the footnote marks are left out.
+    BookEntry("letters-of-samuel-rutherford", "Letters of Samuel Rutherford",
+              "samuel-rutherford", "gutenberg", "42557",
+              subtitle="Edited by Andrew A. Bonar", cover_color="#3e2e5c"),
+    # John Flavel's The Method of Grace (1681) — CCEL's flavel/grace: the
+    # epistles dedicatory and to the reader and thirty-five sermons on how the
+    # Spirit applies Christ's redemption to the soul, each titled "Sermon N"
+    # with a short form of Flavel's own heading.
+    BookEntry("the-method-of-grace", "The Method of Grace", "john-flavel",
+              "ccel", "flavel/grace",
+              subtitle="In the Holy Spirit’s Applying to the Souls of Men the Eternal Redemption Contrived by the Father and Accomplished by the Son",
+              cover_color="#5c3e2e"),
+    # Thomas Boston's The Crook in the Lot (1737, posthumous): his sermons on
+    # Ecclesiastes 7:13, Proverbs 16:19 and 1 Peter 5:6 on bearing the
+    # afflictions God appoints. CCEL's boston/crook is an unattributed
+    # modernised rewording, so the text is built from three archive.org scans —
+    # the 1852 printing (this ref) as base, the 1839 and Nisbet's 1832 as
+    # voters — by word-level majority vote, then proofread against all three.
+    # The chapters follow the six heads of the work (three propositions on the
+    # first text, one doctrine on the second, two on the third).
+    BookEntry("the-crook-in-the-lot", "The Crook in the Lot", "thomas-boston",
+              "archive", "crookinlotordisp00bost",
+              subtitle="The Sovereignty and Wisdom of God in the Afflictions of Men Displayed",
+              cover_color="#4a3e2e"),
+    # William Guthrie's The Christian's Great Interest (1658) — CCEL's
+    # guthrie/interest2: the trial of a saving interest in Christ (Part I) and
+    # the way to attain it (Part II); the prefatory essay, memoir and epistle
+    # are later editors' or the printer's, not the work.
+    BookEntry("the-christians-great-interest", "The Christian's Great Interest", "william-guthrie",
+              "ccel", "guthrie/interest2",
+              cover_color="#3e4a3a",
+              skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
+    # John Bunyan's The Jerusalem Sinner Saved (1688) — Gutenberg #3270, from
+    # the 1845 Thomas Nelson edition: his last treatise, on Luke 24:47, that
+    # Christ would have mercy offered first to the biggest sinners. One
+    # continuous discourse in the source; the chapters follow its own heads
+    # (the text, the observation, six reasons, eleven uses, the day of grace).
+    BookEntry("the-jerusalem-sinner-saved", "The Jerusalem Sinner Saved", "john-bunyan",
+              "gutenberg", "3270", subtitle="Or, Good News for the Vilest of Men",
+              cover_color="#4a2e2e"),
+    # J. C. Ryle's The Upper Room (1888) — CCEL's ryle/upper_room: his
+    # collected sermons and addresses, "being a few truths for the times".
+    BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
+              "ccel", "ryle/upper_room", group_parts=True,
+              cover_color="#3a3e5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

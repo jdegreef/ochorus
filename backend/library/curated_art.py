@@ -1399,6 +1399,58 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "table-talk": Artwork(
+        "met", 435646, "Bernardo Bellotto", "Pirna: The Obertor from the South", "mid-1750s",
+        "A Saxon town gate in Luther's own country: the Table Talk was gathered by students at his table in Wittenberg, a short way down the Elbe.",
+        focus=0.65,
+        inset=0.04,
+    ),
+    "parochial-and-plain-sermons-vii": Artwork(
+        "met", 438954, "Johan Christian Dahl", "Mother and Child by the Sea", "1830",
+        "A mother and child on a dark shore watching a boat under the moon: \"The night is dark, and I am far from home\" — Newman's \"Lead, Kindly Light\", written at sea in the years of these sermons at St Mary's, Oxford.",
+        focus=0.4,
+        inset=0.06,
+    ),
+    "a-practical-view-of-christianity": Artwork(
+        "met", 437643, "Samuel Scott", "The Building of Westminster Bridge", "",
+        "Westminster on the Thames: Wilberforce wrote his Practical View for the fashionable London he moved in as a member of Parliament.",
+        focus=0.60,
+        inset=0.02,
+    ),
+    "letters-of-samuel-rutherford": Artwork(
+        "cma", 141640, "William Bradford", "Labrador Coast", "c. 1860",
+        "A cold northern shore under a heavy sky: most of Rutherford's letters were written from banishment in Aberdeen, far from his flock at Anwoth.",
+        focus=0.60,
+    ),
+    "the-method-of-grace": Artwork(
+        "met", 437852, "Joseph Mallord William Turner", "Saltash with the Water Ferry, Cornwall", "1811",
+        "A ferry crossing on a West Country estuary: Flavel preached in Dartmouth, on the Devon coast just across the water from Cornwall.",
+        focus=0.45,
+        inset=0.02,
+    ),
+    "the-crook-in-the-lot": Artwork(
+        "cma", 150021, "Pierre Jean Boquet", "Pollard Willow", "after 1804",
+        "A gnarled, cut-back willow still putting out green, with a herdsman resting in its shade: Boston's crook in the lot, of God's making and borne in patience.",
+    ),
+    "the-christians-great-interest": Artwork(
+        "cma", 173657, "James M. Hart", "Morning in New England", "1873",
+        "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
+        focus=0.25,
+    ),
+    "the-jerusalem-sinner-saved": Artwork(
+        "met", 437590, "Salomon van Ruysdael", "View of the Town of Alkmaar", "",
+        "A town seen across the fields, its great church rising over the roofs: the gospel was to be preached first in the city that crucified Christ, \"beginning at Jerusalem\".",
+        focus=0.30,
+    ),
+    "the-upper-room": Artwork(
+        "met", 435793, "British Painter", "Tottenham Church", "",
+        "An English parish church among its trees: Ryle's last collection gathers plain sermons he preached to such congregations across a long ministry.",
+        focus=0.50,
+    ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
     "the-rent-veil": Artwork(
         "met", 441769, "Joseph Wright (Wright of Derby)", "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming", "1779", "Cloud torn open over an ancient tomb and the light pouring through: the veil rent and the way into the holiest laid open.",
         focus=0.90, inset=0.01,
