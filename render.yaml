@@ -345,7 +345,7 @@ services:
         - backend/library/data/leader_guides/**
         # Which books are read by the calendar: the book page bakes the
         # "Today's reading" button from it.
-        - backend/library/daily_readings.py
+        - backend/library/daily_books.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

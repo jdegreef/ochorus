@@ -46,29 +46,7 @@ from datetime import date
 from bs4 import BeautifulSoup
 from django.core.cache import cache
 
-
-@dataclass(frozen=True)
-class DatedBook:
-    #: The tag a day's date marker is.
-    marker: str = "h3"
-    #: The order of the January chapter.
-    first_month: int = 1
-    #: Each day's title is an all-bold paragraph rather than a heading tag.
-    bold_titles: bool = False
-
-
-#: The books read by the calendar, by slug — every language edition of each.
-#: The book page bakes ``slug in DATED_BOOKS`` (its "Today's reading" button),
-#: which is why this module is a content root (content_sources.json).
-DATED_BOOKS: dict[str, DatedBook] = {
-    "days-of-heaven-upon-earth": DatedBook(),
-    "morning-by-morning": DatedBook(),
-    "evening-by-evening": DatedBook(),
-    "our-daily-walk": DatedBook(bold_titles=True),
-    "thoughts-for-the-quiet-hour": DatedBook(),
-    "diary-of-an-old-soul": DatedBook(),
-    "cheque-book": DatedBook("p", first_month=2),
-}
+from .daily_books import DATED_BOOKS, DatedBook
 
 #: A date marker is a line, not a paragraph; past this it is prose.
 _MARKER_MAX = 40

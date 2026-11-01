@@ -11,7 +11,7 @@ from .alternate_titles import alternate_titles
 from .contemporize import MODERN_LANGUAGE
 from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
-from .daily_readings import DATED_BOOKS
+from .daily_books import DATED_BOOKS
 from .export_policy import is_exportable
 from .hubs import Hubs
 from .leader_guides import guide_for
