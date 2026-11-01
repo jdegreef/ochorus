@@ -33135,6 +33135,18 @@
 				313,
 				482
 			]
+		},
+		"working-for-god": {
+			"ground": "a0fe3bc0f031f11d06ad68f03001af0c229cd409ef8762f77ba173aab6d573d2",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
 		}
 	}
 }

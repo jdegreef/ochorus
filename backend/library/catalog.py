@@ -1386,6 +1386,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Andrew Murray's Working for God! (1901) — CCEL's murray/working: a
+    # companion to Waiting on God, thirty-one short meditations on good works.
+    BookEntry("working-for-god", "Working for God!", "andrew-murray",
+              "ccel", "murray/working", skip=("Title Page",), cover_color="#3e3a2a"),
     # Charles G. Finney's Lectures to Professing Christians (1837) — CCEL's
     # finney/toprofessingchristians: twenty-three lectures from New York.
     BookEntry("lectures-to-professing-christians", "Lectures to Professing Christians", "charles-finney",

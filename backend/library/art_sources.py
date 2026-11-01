@@ -225,4 +225,5 @@ ART_SOURCES: dict[str, str] = {
     "what-the-bible-teaches": "met-10154@0.50",
     "who-is-the-rich-man-that-shall-be-saved": "met-435906@0.50",
     "with-and-without-christ": "cma-662050@0.50",
+    "working-for-god": "met-11053@0.15~0.01",
 }
