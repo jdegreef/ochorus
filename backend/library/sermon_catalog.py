@@ -1509,10 +1509,9 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _CCEL + "sermons17/sermons17.xli.html",
     ),
-    # Unpublished (2026-10): a caricatured "Massa" dialect anecdote sits at its
-    # heart. Kept here and in the fixture (is_published false) so the text can
-    # be revisited. seed_sermons never unpublishes a live row (is_published is
-    # create-only), so the live row is unticked in the admin.
+    # Its closing appeal quotes an enslaved man in minstrel dialect ("Massa, I
+    # fall flat on de promise"). Unpublished 2026-10, then republished
+    # unedited on the founder's decision (2026-11).
     SermonEntry(
         "healing-for-the-wounded",
         "Healing for the Wounded",
@@ -2098,5 +2097,98 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-guiding-pillar", "The Guiding Pillar", "alexander-maclaren", "ccel",
         _MACLAREN + "gen_num/gen_num.iii.iv.ii.html", scripture_ref="Numbers 9:16",
+    ),
+    # Batch 6 toward 400 (2026-11): more of Maclaren's *Expositions* — Psalms,
+    # Isaiah, John, Romans–Corinthians, the later Epistles, Mark — warm titles
+    # only, screened and read in full against the tone rubric. Read and dropped:
+    # nine, each for one aside or its close — on Jews (*Give Me to Drink*, *As I
+    # Have Loved*, *The Well-Spring of Salvation*), Roman Catholics (*Continual
+    # Prayer and Its Effects*), Islam (*The Warrior Peace*), other religions
+    # (*God's Yea; Man's Amen*), "the gipsy strain" (*Happy Pilgrims*), the
+    # Turkish government (*A Soul Gazing on God*), and a close on "outer
+    # darkness" (*What Men Find Beneath the Wings of God*).
+    SermonEntry(
+        "waiting-and-singing", "Waiting and Singing", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.vii.html", scripture_ref="Psalm 59:9",
+    ),
+    SermonEntry(
+        "blessed-trust", "Blessed Trust", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xvii.html", scripture_ref="Psalm 84:12",
+    ),
+    SermonEntry(
+        "continual-sunshine", "Continual Sunshine", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xx.html", scripture_ref="Psalm 89:15",
+    ),
+    SermonEntry(
+        "the-sheltering-wing", "The Sheltering Wing", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxii.html", scripture_ref="Psalm 91:4",
+    ),
+    SermonEntry(
+        "the-habitation-of-the-soul", "The Habitation of the Soul", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxiii.html", scripture_ref="Psalm 91:9-10",
+    ),
+    SermonEntry(
+        "the-satisfier-of-all-desires", "The Satisfier of All Desires", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xliv.html", scripture_ref="Psalm 145:16",
+    ),
+    SermonEntry(
+        "hid-in-light", "Hid in Light", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxii.html", scripture_ref="Psalm 31:20",
+    ),
+    SermonEntry(
+        "the-city-and-river-of-god", "The City and River of God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxxvi.html", scripture_ref="Psalm 46:4-7",
+    ),
+    SermonEntry(
+        "the-rivers-of-god", "The Rivers of God", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxxvii.html", scripture_ref="Isaiah 33:21",
+    ),
+    SermonEntry(
+        "the-joy-bringer", "The Joy-Bringer", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxi.html", scripture_ref="Isaiah 61:3",
+    ),
+    SermonEntry(
+        "our-strong-city", "Our Strong City", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxi.html", scripture_ref="Isaiah 26:1-2",
+    ),
+    SermonEntry(
+        "the-way", "The Way", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxvii.html", scripture_ref="John 14:4-7",
+    ),
+    SermonEntry(
+        "abiding-in-love", "Abiding in Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.iv.html", scripture_ref="John 15:9-11",
+    ),
+    SermonEntry(
+        "our-ally", "Our Ally", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.ix.html", scripture_ref="John 15:26-27",
+    ),
+    SermonEntry(
+        "the-intercessor", "The Intercessor", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xxi.html", scripture_ref="John 17:1-19",
+    ),
+    SermonEntry(
+        "it-is-the-lord", "It Is the Lord!", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xliii.html", scripture_ref="John 21:7",
+    ),
+    SermonEntry(
+        "the-gift-that-brings-all-gifts", "The Gift That Brings All Gifts", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xxiv.html", scripture_ref="Romans 8:32",
+    ),
+    SermonEntry(
+        "strength-in-weakness", "Strength in Weakness", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.ii.i.x.html", scripture_ref="2 Corinthians 12:8-9",
+    ),
+    SermonEntry(
+        "how-to-say-thank-you", "How to Say 'Thank You'", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.iii.i.vii.html", scripture_ref="Philippians 4:10-14",
+    ),
+    SermonEntry(
+        "the-toiling-christ", "The Toiling Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.xxi.html", scripture_ref="Mark 4:36-38",
+    ),
+    SermonEntry(
+        "the-heavenly-workers-and-the-earthly-watchers", "The Heavenly Workers and the Earthly Watchers", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxii.html", scripture_ref="Isaiah 62:1",
     ),
 ]

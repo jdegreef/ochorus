@@ -204,7 +204,8 @@ FUSION_HEADS = frozenset({
 #: Sales' Treatise on the Love of God, quoting French titles, takes it to — but
 #: it is the plain plural ("the lymph nodes of her neck", Stepping Stones).
 #: "anaesthetic" (an+aesthetic) and "towing" (to+wing) are real words whose
-#: tails crossed COMMON_MIN when The Upper Room added "aesthetic" and "wing".
+#: tails crossed COMMON_MIN when The Upper Room added "aesthetic" and "wing"
+#: (and the disciples are "towing the net full of fish", John 21:8).
 #: `socii` (Latin, in Owen's Communion with God) is `so`+`cii` once the
 #: numeral `cii` (Letter CII, Psalm cii) crosses COMMON_MIN.
 FUSION_EXEMPT = frozenset({

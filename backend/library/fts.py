@@ -2,7 +2,12 @@
 
 ``Chapter.search_vector`` and ``Sermon.search_vector`` are tsvector columns,
 GIN-indexed (migration 0041), so search reads are index lookups instead of
-building ``to_tsvector`` over every row's body at query time. The stored
+building ``to_tsvector`` over every row's body at query time. ``Book``, ``Plan``
+and ``Article`` carry the same (migration 0207): they are per-language rows, so
+one stored vector per row is exactly what any reader's query is matched against.
+Authors and topics don't — their prose for a non-English reader lives in a
+side table and the config follows the reader, so one stored column can't serve
+every language; they are small enough to build per query. The stored
 vector bakes in exactly the fields the old query-time SearchVector used —
 including the related book title and author name — so recall and ranking are
 unchanged ("wesley prayer" still matches Wesley's chapters by author name).
@@ -152,8 +157,11 @@ def search_query(q: str, language: str):
 
 # Same weights as the old query-time vectors in search._search_postgres:
 # chapter = title A + book title A + author B + body C;
-# sermon = title A + author B + scripture_ref B + body C.
-# Both alias the updated table ``t`` so scope clauses ({extra}) are shared.
+# sermon = title A + author B + scripture_ref B + body C;
+# book = title A + subtitle A + author B + description C;
+# plan = title A + description C;
+# article = h1 A + meta_title A + description C.
+# All alias the updated table ``t`` so scope clauses ({extra}) are shared.
 _CHAPTER_SQL = """
 UPDATE library_chapter AS t
 SET search_vector =
@@ -176,6 +184,47 @@ SET search_vector =
 FROM library_author AS a
 WHERE a.id = t.author_id AND t.language = %(language)s{extra}
 """
+
+_BOOK_SQL = """
+UPDATE library_book AS t
+SET search_vector =
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.title, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.subtitle, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(a.name, '')), 'B') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.description, '')), 'C')
+FROM library_author AS a
+WHERE a.id = t.author_id AND t.language = %(language)s{extra}
+"""
+
+_PLAN_SQL = """
+UPDATE library_plan AS t
+SET search_vector =
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.title, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.description, '')), 'C')
+WHERE t.language = %(language)s{extra}
+"""
+
+_ARTICLE_SQL = """
+UPDATE library_article AS t
+SET search_vector =
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.h1, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.meta_title, '')), 'A') ||
+    setweight(to_tsvector(%(config)s::regconfig, coalesce(t.description, '')), 'C')
+WHERE t.language = %(language)s{extra}
+"""
+
+# Every stored vector: kind -> (template, table holding the language column).
+# What backfill walks, and what search matches against a stored column (its
+# STORED is derived from these keys). Chapters carry no language of their own;
+# it lives on Book.
+_STORED = {
+    "chapter": (_CHAPTER_SQL, "library_book"),
+    "sermon": (_SERMON_SQL, "library_sermon"),
+    "book": (_BOOK_SQL, "library_book"),
+    "plan": (_PLAN_SQL, "library_plan"),
+    "article": (_ARTICLE_SQL, "library_article"),
+}
+STORED_KINDS = frozenset(_STORED)
 
 
 def _refresh(template: str, language: str, extra: str = "", **params) -> int:
@@ -203,6 +252,15 @@ def refresh_sermon(sermon) -> None:
     _refresh(_SERMON_SQL, sermon.language, " AND t.id = %(id)s", id=sermon.pk)
 
 
+def refresh_row(kind: str, row) -> None:
+    """Recompute one book's, plan's or article's own vector (from its save()).
+
+    Each is a per-language row with its titling text, so this is one small
+    UPDATE; chapters and sermons keep their own functions above.
+    """
+    _refresh(_STORED[kind][0], row.language, " AND t.id = %(id)s", id=row.pk)
+
+
 def refresh_book_chapters(book) -> None:
     """Recompute a book's chapters' vectors (called from Book.save).
 
@@ -215,9 +273,9 @@ def refresh_book_chapters(book) -> None:
 
 
 def refresh_author_works(author) -> None:
-    """Recompute an author's chapters' + sermons' vectors (Author.save).
+    """Recompute an author's books', chapters' + sermons' vectors (Author.save).
 
-    The author name is baked into both; their works may span languages, so
+    The author name is baked into all three; their works may span languages, so
     refresh per language (each language's rows use its own config).
     """
     if connection.vendor != "postgresql":
@@ -229,9 +287,10 @@ def refresh_author_works(author) -> None:
     # re-running the corpus-wide UPDATE N times.
     author_books = Book.objects.filter(author=author).order_by()
     for language in author_books.values_list("language", flat=True).distinct():
-        _refresh(
-            _CHAPTER_SQL, language, " AND a.id = %(author_id)s", author_id=author.pk
-        )
+        for template in (_CHAPTER_SQL, _BOOK_SQL):
+            _refresh(
+                template, language, " AND a.id = %(author_id)s", author_id=author.pk
+            )
     author_sermons = Sermon.objects.filter(author=author).order_by()
     for language in author_sermons.values_list("language", flat=True).distinct():
         _refresh(
@@ -239,27 +298,23 @@ def refresh_author_works(author) -> None:
         )
 
 
-def backfill(only_null: bool = True) -> tuple[int, int]:
-    """Populate stored vectors; returns (chapters, sermons) rows updated.
+def backfill(only_null: bool = True) -> dict[str, int]:
+    """Populate stored vectors; returns rows updated per kind (see ``_STORED``).
 
     ``only_null=True`` (the release step) touches only rows loaddata created
     with no vector — idempotent and cheap on a healthy database. ``--all``
     rebuilds everything (after a save-bypassing bulk rename).
     """
     if connection.vendor != "postgresql":
-        return (0, 0)
+        return dict.fromkeys(_STORED, 0)
     extra = " AND t.search_vector IS NULL" if only_null else ""
-    counts = []
+    counts = {}
     # Languages via raw SQL, not the ORM: migration 0041 calls this, and live
     # models there would drag post-0041 columns (e.g. Meta ordering fields)
     # into a query that replays against the 0041-era schema on a fresh chain.
-    # Chapters carry no language column of their own — it lives on Book.
-    for template, language_table in (
-        (_CHAPTER_SQL, "library_book"),
-        (_SERMON_SQL, "library_sermon"),
-    ):
+    for kind, (template, language_table) in _STORED.items():
         with connection.cursor() as cursor:
             cursor.execute(f"SELECT DISTINCT language FROM {language_table}")
             languages = [row[0] for row in cursor.fetchall()]
-        counts.append(sum(_refresh(template, lang, extra) for lang in languages))
-    return (counts[0], counts[1])
+        counts[kind] = sum(_refresh(template, lang, extra) for lang in languages)
+    return counts

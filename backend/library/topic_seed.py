@@ -164,6 +164,7 @@ TOPICS = [
         "pleading with the unconverted, and the testimony of grace found by the "
         "chief of sinners.",
         [
+            "gospel-of-john",
             "a-call-to-the-unconverted",
             "a-practical-view-of-christianity",
             "the-rise-and-progress-of-religion-in-the-soul",
@@ -876,6 +877,8 @@ TOPIC_SERMONS = {
         "the-praying-christ",
         "asking-in-christs-name",
         "the-delays-of-love",
+        "the-intercessor",
+        "the-heavenly-workers-and-the-earthly-watchers",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -887,6 +890,7 @@ TOPIC_SERMONS = {
         "thanksgiving-obtains-the-spirit",
         "the-absent-present-christ",
         "the-witness-of-the-spirit-maclaren",
+        "our-ally",
     ],
     "deeper-life": [
         "himself",
@@ -924,6 +928,11 @@ TOPIC_SERMONS = {
         "the-absent-present-christ",
         "joy-and-peace-in-believing",
         "the-secret-of-gladness",
+        "continual-sunshine",
+        "abiding-in-love",
+        "the-satisfier-of-all-desires",
+        "it-is-the-lord",
+        "how-to-say-thank-you",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -954,6 +963,7 @@ TOPIC_SERMONS = {
         "grace-abounding",
         "more-than-conquerors",
         "a-faithful-friend",
+        "healing-for-the-wounded",
         "mr-fearing-comforted",
         "consolation-in-christ",
         "loves-logic",
@@ -993,6 +1003,13 @@ TOPIC_SERMONS = {
         "christs-touch",
         "the-looks-of-jesus",
         "the-rest-giver",
+        "waiting-and-singing",
+        "hid-in-light",
+        "the-sheltering-wing",
+        "the-habitation-of-the-soul",
+        "the-joy-bringer",
+        "strength-in-weakness",
+        "the-toiling-christ",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -1007,6 +1024,7 @@ TOPIC_SERMONS = {
         "true-wisdom",
         "the-cry-for-revival",
         "thanksgiving-obtains-the-spirit",
+        "the-heavenly-workers-and-the-earthly-watchers",
     ],
     "faith-and-guidance": [
         "the-possibilities-of-faith",
@@ -1042,6 +1060,11 @@ TOPIC_SERMONS = {
         "looking-at-the-unseen",
         "jehovah-jireh",
         "the-guiding-pillar",
+        "blessed-trust",
+        "the-city-and-river-of-god",
+        "our-strong-city",
+        "the-way",
+        "the-rivers-of-god",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -1092,6 +1115,7 @@ TOPIC_SERMONS = {
         "the-light-of-the-world-maclaren",
         "what-proves-gods-love",
         "the-rest-giver",
+        "the-way",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1134,6 +1158,8 @@ TOPIC_SERMONS = {
         "the-love-of-the-departing-christ",
         "what-proves-gods-love",
         "the-love-that-constrains",
+        "the-gift-that-brings-all-gifts",
+        "the-intercessor",
     ],
     "soar-like-the-eagle": [
         "rest",
