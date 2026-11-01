@@ -1509,6 +1509,11 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
               "ccel", "ryle/upper_room", group_parts=True,
               cover_color="#3a3e5a"),
+    # Thomas Watson's The Art of Divine Contentment (1653) — CCEL's
+    # watson/contentment: his treatise on Philippians 4:11, "I have learned, in
+    # whatsoever state I am, therewith to be content".
+    BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
+              "ccel", "watson/contentment", cover_color="#5a4a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

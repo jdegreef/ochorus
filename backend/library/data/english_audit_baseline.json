@@ -478,6 +478,10 @@
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4
   },
+  "the-art-of-divine-contentment": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2

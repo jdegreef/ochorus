@@ -1447,6 +1447,10 @@ CURATED: dict[str, Artwork] = {
         "An English parish church among its trees: Ryle's last collection gathers plain sermons he preached to such congregations across a long ministry.",
         focus=0.50,
     ),
+    "the-art-of-divine-contentment": Artwork(
+        "cma", 122345, "Meindert Hobbema", "A Cottage in the Woods", "c. 1662",
+        "A modest cottage and a sandy road under great trees: the contentment Watson teaches is learned in whatever state God sets a person.",
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
