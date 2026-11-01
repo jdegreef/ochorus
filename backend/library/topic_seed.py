@@ -938,6 +938,7 @@ TOPIC_SERMONS = {
         "grace-abounding",
         "more-than-conquerors",
         "a-faithful-friend",
+        "healing-for-the-wounded",
         "mr-fearing-comforted",
         "consolation-in-christ",
         "loves-logic",
