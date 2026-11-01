@@ -482,6 +482,9 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 2
   },
+  "the-beatitudes": {
+   "orphan-close-quote": 1
+  },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2

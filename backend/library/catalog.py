@@ -1379,6 +1379,10 @@ BOOKS: list[BookEntry] = [
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
               "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
+    # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
+    BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",
+              "ccel", "watson/beatitudes", skip=("Title Page",), cover_color="#4a3a2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

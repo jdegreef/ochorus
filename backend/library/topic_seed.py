@@ -283,6 +283,7 @@ TOPICS = [
             "communion-with-god",
             "the-glory-of-christ",
             "all-things-for-good",
+            "the-beatitudes",
             "the-art-of-divine-contentment",
             "ten-commandments",
             "a-body-of-divinity",
