@@ -28451,6 +28451,30 @@
 				455
 			]
 		},
+		"the-art-of-divine-contentment": {
+			"ground": "15c667334b9bb282a8ce2a818f546857bc7581634a5e0b48acfc6627feffedbe",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
+		"the-beatitudes": {
+			"ground": "5b6d5bf44c4f313b515056f5363f85d978d611e6bb7132fa51f3dbdc8e8ba095",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-big-story": {
 			"ground": "96d49b04afc3f00fe739f4078febd9a07f3418543fb9f1c193f919bf02bccd94",
 			"style": "originals",
@@ -28791,6 +28815,18 @@
 				271,
 				524
 			]
+		},
+		"the-deeper-christian-life": {
+			"ground": "68374f6704ddd45197ee5b20c0de1777abfb3c2acaebe37a573e6effde636ce9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.095,
+			"caps": false
 		},
 		"the-dialogue-of-catherine-of-siena": {
 			"ground": "103a05452579a03d9cab6045681d666fed72fd50cb83d2ef4f57c39a74abec08",
@@ -29423,6 +29459,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"the-lords-prayer": {
+			"ground": "fd8f5792d9534e213a2df8fbb72184fd72eba7d67d702d4b8747655024f0b6b9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-masters-indwelling": {
 			"ground": "2758f94ea09201f1dd1f197da2891e43242defc49a36bc4c69da5e6815bb6f97",
 			"style": "devotional",
@@ -29739,6 +29787,33 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"the-rent-veil": {
+			"ground": "4a1756d9dafa1fbb9b9ba1ae309291f6008f154f2466db7708593ec978237b20",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[80, 348, 520, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
+		},
 		"the-rise-and-progress-of-religion-in-the-soul": {
 			"ground": "821dec503d7961656ff3102e8b4836219097be12b7bfdeb219b9acb37fea1c7e",
 			"style": "enlightenment",
@@ -29790,6 +29865,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
+		"the-school-of-obedience": {
+			"ground": "d1c04b6cec75251edf031011abe2edd67b4731e525365b6ebcee879ba734804a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
 			"bar": 0,
 			"caps": false
 		},
@@ -29928,6 +30015,18 @@
 				285,
 				510
 			]
+		},
+		"the-two-covenants": {
+			"ground": "438a6d0ff70501009056f9b58a38d2b32743e66b3e506df399e39f0df748e725",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
 		},
 		"the-unselfishness-of-god": {
 			"ground": "bbd8e249362f95f77cd7dee6f05b8854cde88800e2d2c99a400f882073363bc0",
@@ -30239,6 +30338,18 @@
 				315,
 				480
 			]
+		},
+		"treatise-on-grace": {
+			"ground": "d6b53b4250ac2410bd69234d546abbd076347855d0a45e794f0abb9fee3b2496",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",
