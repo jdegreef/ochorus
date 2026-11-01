@@ -765,6 +765,36 @@ class CopyrightBlockedTests(SimpleTestCase):
         )
 
 
+class NoPublishedPlateTests(SimpleTestCase):
+    """No published edition wears a flat generated plate (`/covers/…/<slug>.svg`).
+
+    The plate was the placeholder look: a colour gradient and an emblem. By
+    Batch 30 (2026-11-01) every published book had been levelled up to a
+    painting, a drawn original or a designed cover, but imports kept landing
+    new plates because nothing said no. A new book now gets its painting in the
+    same PR (`scripts/paint_covers.py <slug>` works on a fresh fixture with an
+    empty `cover_url`; see the `level-up-cover` skill). An unpublished row may
+    keep its plate until it ships.
+    """
+
+    def test_no_published_book_wears_a_plate(self):
+        plates = sorted(
+            f"{f.get('slug')}.{f.get('language')}"
+            for rows in files_by_path().values()
+            for row in rows
+            if row.get("model") == "library.book"
+            and (f := row.get("fields", {})).get("is_published", True)
+            and (f.get("cover_url") or "").endswith(".svg")
+        )
+        self.assertEqual(
+            plates,
+            [],
+            "these published editions still wear a flat plate cover — paint "
+            "them (`scripts/paint_covers.py <slug>`, the level-up-cover skill) "
+            "or leave them is_published: false until they have art",
+        )
+
+
 class SermonPermissionCreditTests(SimpleTestCase):
     """A by-permission sermon carries its English credit into every translation.
 

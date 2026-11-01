@@ -21,7 +21,7 @@ from rest_framework.views import APIView
 from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
 
-from . import book_export
+from . import book_export, daily_readings
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
 from .export_policy import EXPORT_EDITIONS, is_exportable
@@ -90,6 +90,7 @@ from .serializers import (
     _edition_base_slug,
     _edition_family,
     _is_retold,
+    _link_scripture,
     _retold_bases,
     article_lead_book_map,
     article_topic_map,
@@ -1121,6 +1122,73 @@ class BookGuideView(PublicContentCacheMixin, APIView):
                 "weeks": weeks,
             }
         )
+
+
+def _daily_date(date: str) -> tuple[int, int]:
+    parsed = daily_readings.parse_date(date)
+    if parsed is None:
+        raise Http404("Not a calendar date (MM-DD)")
+    return parsed
+
+
+class DailyReadingView(PublicContentCacheMixin, APIView):
+    """One day of a year-long devotional (/today/<slug>/): the entry for
+    ``date`` (``MM-DD``) in this edition, or the nearest one before it when the
+    book has none for that date (see ``daily_readings``).
+
+    The date is the CLIENT's: "today" is the reader's local calendar day, and a
+    date in the URL keeps every response cacheable. 404 for a book that is not
+    read by the calendar, or that this language does not publish.
+    """
+
+    def get(self, request, slug, date):
+        requested = _daily_date(date)
+        if slug not in daily_readings.DATED_BOOKS:
+            raise Http404("Not a dated book")
+        language = _language(request)
+        book = get_object_or_404(_book_shelf(language), slug=slug)
+        found = daily_readings.find_day(book, *requested, daily_readings.content_version())
+        if found is None:
+            raise Http404("No entry on or shortly before this date")
+        month, entry, html = found
+        # From the date ASKED, not the one shown: on 29 February in a 365-day
+        # book (shown: the 28th) "next" is 1 March, not the 29th again.
+        prev, nxt = daily_readings.neighbours(*requested)
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        return Response(
+            {
+                "book": BookListSerializer(book, context=ctx).data,
+                **daily_readings.entry_payload(month, entry, requested, slug),
+                # Scripture linked on the one entry shown, not its whole month.
+                "html": _link_scripture(html),
+                "prev": prev,
+                "next": nxt,
+            }
+        )
+
+
+class DailyShelfView(PublicContentCacheMixin, APIView):
+    """Today across the dated books: one card per devotional this language
+    publishes, each with its entry for ``date`` — the home page's Today shelf.
+    No bodies: a card links into the day page."""
+
+    def get(self, request, date):
+        requested = _daily_date(date)
+        language = _language(request)
+        books = list(_book_shelf(language).filter(slug__in=daily_readings.DATED_BOOKS))
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        cards = BookListSerializer(books, many=True, context=ctx).data
+        version = daily_readings.content_version()
+        readings = []
+        for book, card in zip(books, cards, strict=True):
+            found = daily_readings.find_entry(book, *requested, version)
+            if found is None:
+                continue
+            month, entry = found
+            readings.append(
+                {"book": card, **daily_readings.entry_payload(month, entry, requested, book.slug)}
+            )
+        return Response({"readings": readings})
 
 
 #: A ladder rung's name for each audience's edition suffix.

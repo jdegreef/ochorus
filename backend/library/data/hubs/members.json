@@ -33,7 +33,9 @@
         "lactantius",
         "minucius-felix",
         "polycarp",
-        "hermas"
+        "hermas",
+        "theophilus-of-antioch",
+        "hippolytus-of-rome"
       ]
     },
     {
@@ -301,7 +303,8 @@
         "ignatius-of-loyola",
         "boethius",
         "minucius-felix",
-        "hermas"
+        "hermas",
+        "hippolytus-of-rome"
       ]
     },
     {
@@ -442,7 +445,8 @@
         "justin-martyr",
         "gregory-of-nyssa",
         "eusebius-of-caesarea",
-        "polycarp"
+        "polycarp",
+        "theophilus-of-antioch"
       ]
     }
   ]

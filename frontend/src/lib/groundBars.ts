@@ -100,6 +100,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-pursuit-of-god-teens': 0.110,
 	'the-reformed-pastor': 0.040,
 	'the-secret-of-guidance-teens': 0.110,
+	'the-shepherd-of-hermas': 0.030,
 	'the-unselfishness-of-god': 0.110,
 	'the-way-to-god-teens': 0.110,
 	'they-were-young-1': 0.110,
