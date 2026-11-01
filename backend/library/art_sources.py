@@ -150,6 +150,7 @@ ART_SOURCES: dict[str, str] = {
     "ten-commandments": "met-359021@0.50",
     "tertullian-on-prayer": "met-441933@0.50",
     "the-apology-of-tertullian": "cma-145309@0.50",
+    "the-beatitudes": "met-437431@0.20~0.04",
     "the-book-of-pastoral-rule": "met-437042@0.50",
     "the-bruised-reed": "cma-140341@0.50",
     "the-city-of-god": "cma-150353@0.10",

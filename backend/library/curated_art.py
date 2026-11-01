@@ -1388,6 +1388,10 @@ CURATED: dict[str, Artwork] = {
         "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
         focus=0.45,
     ),
+    "the-beatitudes": Artwork(
+        "met", 437431, "Auguste Renoir", "Hills around the Bay of Moulin Huet, Guernsey", "1883", "A green hillside falling to a quiet bay: the slope above the water where the Beatitudes were first spoken.",
+        focus=0.20, inset=0.04,
+    ),
 }
 
 

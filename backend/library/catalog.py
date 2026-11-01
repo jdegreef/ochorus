@@ -1309,6 +1309,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
+    # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
+    BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",
+              "ccel", "watson/beatitudes", skip=("Title Page",), cover_color="#4a3a2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

@@ -273,6 +273,7 @@ TOPICS = [
             "communion-with-god",
             "the-glory-of-christ",
             "all-things-for-good",
+            "the-beatitudes",
             "ten-commandments",
             "a-body-of-divinity",
             "a-call-to-the-unconverted",
