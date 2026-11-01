@@ -3,6 +3,8 @@ import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { PLANS_KEY as KEY } from './reading-schema';
 import { applyPlanMoves } from './planMoves';
+import { planDayPath } from './editionHref';
+import type { PlanDetail } from './library-public';
 
 /**
  * Reading-plan progress: which plans the reader started and which days they've
@@ -115,3 +117,21 @@ class PlanProgress {
 }
 
 export const planProgress = new PlanProgress();
+
+/**
+ * Mark a plan day done and return where the reader goes next: the next undone
+ * day's reading, or the plan page when none is left (unlocalized). The one
+ * "Mark day done" every reading surface — chapter, article, a devotional's day
+ * page — calls, so they cannot disagree about what comes after.
+ */
+export function completePlanDay(
+	plan: Pick<PlanDetail, 'slug' | 'day_count' | 'days'>,
+	day: number,
+	/** Open a next chapter's Modern edition — carrying on in it. */
+	stayModern = false
+): string {
+	planProgress.markDone(plan.slug, day);
+	const next = planProgress.nextDay(plan.slug, plan.day_count);
+	const entry = next && plan.days.find((d) => d.day === next);
+	return entry ? planDayPath(plan.slug, entry, stayModern) : `/plans/${plan.slug}`;
+}

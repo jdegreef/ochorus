@@ -111,6 +111,8 @@ DEFAULTED_OK = {
     ("library.article", "source_type"),
     # Blank on every book-chapter plan day (migration 0173 added article days).
     ("library.planday", "article_slug"),
+    # Blank on every chapter and article day; only seeded devotional days set it.
+    ("library.planday", "entry_date"),
 }
 
 # (model, field) pairs that dumpdata materializes but whose default is NOT

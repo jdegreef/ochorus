@@ -263,7 +263,7 @@
 	</div>
 {/snippet}
 
-<div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
+<div class="cover-edge relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
 		<!-- The placeholder sits UNDER the image, not instead of it: an image
 		     paints the moment it decodes and covers it, with no script involved.
@@ -355,6 +355,18 @@
 </div>
 
 <style>
+	/* On the paper themes a pale cover (Murray's wash, Chesterton's fade, the
+	   floral girls' series — 50 of 358 English covers start within 1.15:1 of the
+	   page) dissolved into the page under shadow-sm alone. A warm hairline holds
+	   its edge and a soft lift sets it on the shelf. Lamplight keeps shadow-sm:
+	   there every cover is lighter than the page. */
+	:global(:root[data-theme='light']) .cover-edge,
+	:global(:root[data-theme='sepia']) .cover-edge {
+		box-shadow:
+			0 0 0 1px rgb(60 45 30 / 0.14),
+			0 1px 2px rgb(0 0 0 / 0.06),
+			0 6px 14px -6px rgb(60 45 30 / 0.28);
+	}
 	.cover-spine {
 		position: absolute;
 		inset: 0;

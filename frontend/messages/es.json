@@ -1604,5 +1604,6 @@
   "daily_in_context": "Leer en el libro",
   "daily_missing_day": "Este libro no tiene lectura para esta fecha; aquí está la del día anterior.",
   "daily_choose_date": "Elegir una fecha",
-  "daily_none": "Todavía no hay lecturas diarias en este idioma."
+  "daily_none": "Todavía no hay lecturas diarias en este idioma.",
+  "daily_follow_plan": "O sígalo como un plan de un año"
 }

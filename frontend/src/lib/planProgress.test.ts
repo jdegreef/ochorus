@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { planProgress } from './planProgress.svelte';
+import { completePlanDay, planProgress } from './planProgress.svelte';
 
 beforeEach(() => localStorage.clear());
 
@@ -56,5 +56,29 @@ describe('planProgress store', () => {
 		const started = planProgress.started();
 		expect(new Set(started.map((s) => s.slug))).toEqual(new Set(['a', 'b']));
 		expect(started.find((s) => s.slug === 'b')?.doneCount).toBe(2);
+	});
+});
+
+describe('completePlanDay', () => {
+	const plan = {
+		slug: 'year',
+		day_count: 3,
+		days: [1, 2, 3].map((day) => ({
+			day,
+			book_slug: 'days-of-heaven-upon-earth',
+			chapter_order: 1,
+			entry_date: `01-0${day}`,
+			book_title: '',
+			chapter_title: '',
+			word_count: 0
+		}))
+	};
+
+	it('marks the day and goes on to the next undone one', () => {
+		expect(completePlanDay(plan, 1)).toBe('/today/days-of-heaven-upon-earth/?d=01-02&plan=year&day=2');
+		expect(planProgress.isDone('year', 1)).toBe(true);
+		planProgress.markDone('year', 2);
+		// Day 2 is already done, so finishing day 3 skips nothing: back to the plan.
+		expect(completePlanDay(plan, 3)).toBe('/plans/year');
 	});
 });

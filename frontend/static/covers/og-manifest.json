@@ -23281,6 +23281,18 @@
 				475
 			]
 		},
+		"pt/on-the-incarnation": {
+			"ground": "b9357101244b71141e776f55a0d38234864cea295039c3d641dcca2cf354a170",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false
+		},
 		"pt/pandita-ramabai-a-life-children": {
 			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
 			"style": "young",
@@ -26151,6 +26163,40 @@
 			"middle": [
 				292,
 				503
+			]
+		},
+		"sw/first-epistle-of-clement": {
+			"ground": "9e6c831f58a66b4f6b8f3208934d8cc04117262a99c127e442ee934f51d6d779",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[139, 258, 461, 320],
+					[137, 304, 463, 366],
+					[106, 349, 494, 411],
+					[117, 395, 483, 457]
+				],
+				"subtitle": [
+					[172, 486, 428, 507],
+					[173, 507, 427, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
 			]
 		},
 		"sw/gleanings-among-the-sheaves": {
@@ -30886,6 +30932,18 @@
 				318,
 				477
 			]
+		},
+		"uk/union-and-communion": {
+			"ground": "9ee27bd435a970064702ddf6e794ad3695fcc7f938d46fdc9580b47c4d2949b9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false
 		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",

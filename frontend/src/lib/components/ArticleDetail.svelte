@@ -4,7 +4,8 @@
 	import { goto } from '$app/navigation';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { getPlan, type Article, type ArticleRelated, type PlanDetail } from '$lib/library-public';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { completePlanDay } from '$lib/planProgress.svelte';
+	import PlanDayStrip from '$lib/components/PlanDayStrip.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitSrcset } from '$lib/portraits';
@@ -12,7 +13,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { shareCard, shareImage } from '$lib/coverArt';
-	import { editionHref, planDayPath } from '$lib/editionHref';
+	import { editionHref } from '$lib/editionHref';
 	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
@@ -108,12 +109,8 @@
 	);
 
 	/** Mark today done, then continue: the next day's reading, or the plan page. */
-	function completePlanDay() {
-		if (!plan || !planDay) return;
-		planProgress.markDone(plan.slug, planDay);
-		const next = planProgress.nextDay(plan.slug, plan.day_count);
-		const entry = next && plan.days.find((d) => d.day === next);
-		goto(localizeHref(entry ? planDayPath(plan.slug, entry) : `/plans/${plan.slug}`));
+	function completeDay() {
+		if (plan && planDay) goto(localizeHref(completePlanDay(plan, planDay)));
 	}
 
 	// --- SEO -------------------------------------------------------------------
@@ -248,30 +245,11 @@
 	</nav>
 {/snippet}
 
-<!-- The plan strip, as the chapter reader's: above the article, and again where
-     it ends — the end is where a day is finished. -->
-{#snippet planStrip(p: PlanDetail, day: number)}
-	<div
-		class="my-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
-	>
-		<div class="min-w-0">
-			<a href={localizeHref(`/plans/${p.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
-				{p.title}
-			</a>
-			<span class="text-small text-muted">{t('plans.day')} {day} {t('plans.of')} {p.day_count}</span>
-		</div>
-		{#if planProgress.isDone(p.slug, day)}
-			<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
-		{:else}
-			<button class="btn btn-sm btn-primary" onclick={completePlanDay}>{t('plans.markDone')}</button>
-		{/if}
-	</div>
-{/snippet}
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/articles" />
-	{#if plan && planDay}{@render planStrip(plan, planDay)}{/if}
+	{#if plan && planDay}<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="my-6" />{/if}
 
 	<!-- The prose column answers to the reader's text settings (the A a popover:
 	     measure, size, face, leading), exactly as the sermon page and the author
@@ -373,7 +351,7 @@
 				finishOnEnd
 			/>
 
-			{#if plan && planDay}{@render planStrip(plan, planDay)}{/if}
+			{#if plan && planDay}<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="my-6" />{/if}
 
 			<!-- "Read it in full": the classic the article was written to send you
 			     to, at the moment you have finished reading about it. (It sat
