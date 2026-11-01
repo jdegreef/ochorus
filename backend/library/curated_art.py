@@ -1331,6 +1331,115 @@ CURATED: dict[str, Artwork] = {
         "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
         "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
     ),
+    # ── Batch 32 · six adult classics move from drawn Originals to paintings ──
+    "orthodoxy": Artwork(
+        "cma", 125234, "Claude Monet", "Low Tide at Pourville, near Dieppe, 1882", "1882",
+        "White cliffs over a shining sea: the yachtsman of the opening chapter who sets out for a new island and lands, without knowing it, on England.",
+    ),
+    "heretics": Artwork(
+        "met", 436209, "Gerrit Dou", "An Evening School", "ca. 1655–57",
+        "A circle of faces round one candle at night: Chesterton's case that every man argues from a creed, and had better know which.",
+        inset=0.16,
+    ),
+    "the-everlasting-man": Artwork(
+        "met", 436570, "El Greco (Domenikos Theotokopoulos)", "The Adoration of the Shepherds", "ca. 1605–10",
+        "Shepherds kneeling at night in the stable-cave: \"The God in the Cave\", the hinge of the book.",
+    ),
+    "phantastes": Artwork(
+        "met", 437655, "Georges Seurat", "The Forest at Pontaubert", "1881",
+        "A wood shot through with green light: the trees that grow round Anodos's bed as his room becomes Fairy Land.",
+    ),
+    "unspoken-sermons": Artwork(
+        "met", 436832, "Philips Koninck", "Wide River Landscape", "ca. 1648–49",
+        "Heavy cloud over a wide country with light breaking on the land below, as the drawn Original had it over MacDonald's Aberdeenshire hills.",
+        inset=0.04,
+    ),
+    "diary-of-an-old-soul": Artwork(
+        "met", 436839, "Georges de La Tour", "The Penitent Magdalen", "ca. 1640",
+        "One woman alone with a candle at night: a daily book of verse prayers written in grief.",
+        inset=0.06,
+    ),
+    # ── Batch 31 · two more that landed on plates as the gate went in ─────────
+    "to-autolycus": Artwork(
+        "met", 438634, "Jules Coignet", "View of Beirut", "1844",
+        "A white town above a calm sea on the Syrian coast near Antioch, under a wide clear sky: Theophilus's own shore, and the creation he asks his friend to see whole.",
+        focus=0.60, inset=0.02,
+    ),
+    "refutation-of-all-heresies": Artwork(
+        "met", 10500, "Thomas Cole", "A View near Tivoli (Morning)", "1832",
+        "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
+        focus=0.75,
+    ),
+    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
+    "gospel-of-john": Artwork(
+        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
+        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
+        focus=0.4,
+        inset=0.03,
+    ),
+    # ── Batch 33 · the stacked October/November imports ─────────────────────
+    "letters-of-jerome": Artwork(
+        "met", 926221, "Antoine-Alphonse Montfort", "Cedars of Lebanon", "1837",
+        "The cedars of Lebanon on the mountains above the Holy Land: Jerome wrote these letters from Bethlehem, where he settled to translate the Scriptures.",
+        inset=0.04,
+    ),
+    "the-instructor": Artwork(
+        "met", 441364, "Jean-Léon Gérôme", "Study of Palm Trees", "1855/56",
+        "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
+        focus=0.45,
+    ),
+    "against-marcion": Artwork(
+        "cma", 149665, "Arnold Böcklin", "Ruin by the Sea", "1881",
+        "A ruined building on a sea cliff under a storm: Tertullian takes Marcion's system apart and shows the one God, maker of sea and sky, still standing.",
+        focus=0.0,
+        inset=0.06,
+    ),
+    "homilies-on-the-first-epistle-of-john": Artwork(
+        "cma", 148312, "William Stanley Haseltine", "Capri", "1869",
+        "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
+        focus=0.62,
+    ),
+    "table-talk": Artwork(
+        "met", 435646, "Bernardo Bellotto", "Pirna: The Obertor from the South", "mid-1750s",
+        "A Saxon town gate in Luther's own country: the Table Talk was gathered by students at his table in Wittenberg, a short way down the Elbe.",
+        focus=0.65,
+        inset=0.04,
+    ),
+    "parochial-and-plain-sermons-vii": Artwork(
+        "met", 436832, "Philips Koninck", "Wide River Landscape", "ca. 1648–49",
+        "A distant spire across a wide river country under storm cloud: Newman's sermons on the shortness of life and the world as the Christian's enemy, preached from the pulpit of St Mary's, Oxford.",
+    ),
+    "a-practical-view-of-christianity": Artwork(
+        "met", 437643, "Samuel Scott", "The Building of Westminster Bridge", "",
+        "Westminster on the Thames: Wilberforce wrote his Practical View for the fashionable London he moved in as a member of Parliament.",
+        focus=0.60,
+        inset=0.02,
+    ),
+    "letters-of-samuel-rutherford": Artwork(
+        "cma", 141640, "William Bradford", "Labrador Coast", "c. 1860",
+        "A cold northern shore under a heavy sky: most of Rutherford's letters were written from banishment in Aberdeen, far from his flock at Anwoth.",
+        focus=0.60,
+    ),
+    "the-method-of-grace": Artwork(
+        "met", 437852, "Joseph Mallord William Turner", "Saltash with the Water Ferry, Cornwall", "1811",
+        "A ferry crossing on a West Country estuary: Flavel preached in Dartmouth, on the Devon coast just across the water from Cornwall.",
+        focus=0.45,
+        inset=0.02,
+    ),
+    "the-crook-in-the-lot": Artwork(
+        "cma", 150021, "Pierre Jean Boquet", "Pollard Willow", "after 1804",
+        "A gnarled, cut-back willow still putting out green, with a herdsman resting in its shade: Boston's crook in the lot, of God's making and borne in patience.",
+    ),
+    "the-christians-great-interest": Artwork(
+        "cma", 173657, "James M. Hart", "Morning in New England", "1873",
+        "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
+        focus=0.25,
+    ),
+    "the-jerusalem-sinner-saved": Artwork(
+        "met", 437590, "Salomon van Ruysdael", "View of the Town of Alkmaar", "",
+        "A town seen across the fields, its great church rising over the roofs: the gospel was to be preached first in the city that crucified Christ, \"beginning at Jerusalem\".",
+        focus=0.30,
+    ),
 }
 
 
@@ -2059,53 +2168,23 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # The adult classics the museum sources could not reach from the session
     # (2026-10-09): painterly nocturnes and dawns, one true image from each
     # book, fractal-noise sky and displaced ridges in inline SVG, rendered like
-    # the sets above. A CURATED painting for any of these is a two-line diff.
-    "orthodoxy": Original(
-        "0de4c0bde58c2a183630a8c16c3242c614f9fd734af28b6c2cdb3e18eadcd295",
-        "A yacht at dawn bearing down on white cliffs: the yachtsman of the "
-        "opening chapter who sets out for a new island and discovers England.",
-    ),
-    "heretics": Original(
-        "64a2e42b63ceab31746c923ffbbfa4a87051cca2e7f081f77664ed1c1dc0efbb",
-        "One gas lamp burning in a dark street between tall houses: the lamp- "
-        "post the crowd pulls down in the first chapter.",
-    ),
+    # the sets above. A CURATED painting for any of these is a two-line diff
+    # (the Chesterton and MacDonald six moved to CURATED, Batch 32, 2026-11-01).
     "st-francis-of-assisi": Original(
         "020e6196d8c00277370e45a62cc0f2230d52773e58142516b6670d3e2a9911bb",
         "Assisi on its Umbrian hillside at dusk, the basilica and bell tower "
         "above the olive trees, birds wheeling over the slope.",
-    ),
-    "the-everlasting-man": Original(
-        "d8804be5b5e53b6ede8f699fa6208e275a23c690e73aec7823c5748d70695ff6",
-        "A starry night seen from deep inside a cave, firelight on the floor "
-        "and a painted beast on the wall: the first painter and the cave at "
-        "Bethlehem.",
     ),
     "at-the-back-of-the-north-wind": Original(
         "af68a7cae6060b62f3b9e4967c068335e9690fc8da50c33518d6abd1dbb0ef2e",
         "Wind streaming across a starry sky over London roofs, a lit hayloft "
         "window in the coachman's mews where Diamond slept.",
     ),
-    "diary-of-an-old-soul": Original(
-        "439ceeb93837f8b79e38bc447180de0a09a627e28878aa7c4d8b98e75a419fbe",
-        "A lamp in a window at dusk with the year's last leaves on the tree "
-        "outside: a daily book of verse written in grief.",
-    ),
-    "phantastes": Original(
-        "26a496b16b8f050190dcf305bc10a46ab5f8fb9681e8b28ce72783f474b61ede",
-        "A moonlit beech wood with a stream running out of it, fireflies among "
-        "the trunks: Anodos's room becoming Fairy Land.",
-    ),
     "the-princess-and-the-goblin": Original(
         "d90798fbdfb7d71188497468aa29a89a77be3740c9e6e2d47ee4295c63268d7d",
         "Irene's great house on the mountainside under the moon, the "
         "grandmother's lamp in the topmost tower window, the goblin mountain "
         "dark below.",
-    ),
-    "unspoken-sermons": Original(
-        "98c705c6fb83efc9c54fb6f7905830edf2643a66d9fe5ed5fd6d90d898a06e43",
-        "Light breaking through heavy cloud over the Aberdeenshire hills of "
-        "MacDonald's boyhood.",
     ),
     "paradise-lost": Original(
         "6e43910a8d81748b8c588b9f26049a7c283921ee47329be52c91a5795baef0db",

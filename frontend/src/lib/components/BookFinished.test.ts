@@ -120,6 +120,14 @@ describe('BookFinished', () => {
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 		await settle();
 		expect(target.querySelectorAll('.leaf-shower i').length).toBeGreaterThan(0);
+		// …and the seal this finish earned (First Finish) stamps down with them,
+		await settle();
+		expect(target.querySelector('.seal-mark.earned.stamp')).not.toBeNull();
+		// only while they fall: once the last leaf lands it just sits there.
+		target.querySelectorAll('.leaf-shower i').forEach((leaf) => leaf.dispatchEvent(new Event('animationend')));
+		flushSync();
+		expect(target.querySelector('.seal-mark.earned')).not.toBeNull();
+		expect(target.querySelector('.seal-mark.stamp')).toBeNull();
 	});
 
 	it('never for a book finished before', async () => {
@@ -127,6 +135,9 @@ describe('BookFinished', () => {
 		await show(false);
 		expect(target.querySelector('#finished-heading')).not.toBeNull();
 		expect(target.querySelector('.leaf-shower')).toBeNull();
+		await settle();
+		expect(target.querySelector('.seal-mark.earned')).not.toBeNull(); // shown, not stamped
+		expect(target.querySelector('.seal-mark.stamp')).toBeNull();
 	});
 
 	it("counts the year's finished books and offers the ways on", async () => {
