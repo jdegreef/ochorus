@@ -647,6 +647,7 @@ INK_DARK = frozenset({
     "sons-of-the-king-1",
     "sons-of-the-king-2",
     "sons-of-the-king-3",
+    "soar-like-the-eagle-3",
 })
 
 #: `--cover-ink-dark` in `cover-type.css`.
@@ -669,6 +670,22 @@ DARK_INK_BOXES = (
     ("subtitle", (60, 474, 540, 566), 0.90, AUTHOR_MIN_CONTRAST),
     ("mark", (232, 662, 368, 748), 0.95, 3.0),
 )
+
+#: A dark-ink work whose words do not sit where Daughters' and Sons' do, by
+#: slug. Same shape and bars as `DARK_INK_BOXES`; the column is the union of
+#: every edition's glyphs, measured on the composed twins.
+DARK_INK_BOXES_BY_SLUG = {
+    # Measured 2026-10-30 over en, am, ar, es, fr, hi, lg, pt, sw. The title
+    # runs nearly frame to frame in English and Hindi; the subtitle (fr, lg,
+    # pt, sw, hi) crosses the pines, which `Ground.glow` pales to carry it.
+    "soar-like-the-eagle-3": (
+        ("byline", (165, 104, 428, 130), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (45, 265, 555, 446), 1.0, TITLE_MIN),
+        ("rule", (230, 435, 370, 508), 0.8, 3.0),
+        ("subtitle", (78, 462, 526, 548), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (230, 660, 370, 750), 0.95, 3.0),
+    ),
+}
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.

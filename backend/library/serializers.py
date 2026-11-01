@@ -2156,7 +2156,9 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
-            # The young-reader editions' "Talk about it" (``Chapter``); [] elsewhere.
+            # The chapter's answered questions (``Chapter``): a young-reader
+            # edition's "Talk about it", any other book's "Questions for
+            # reflection"; [] when it has none.
             "study_questions",
         ]
 

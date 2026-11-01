@@ -103,5 +103,19 @@
   "note": [
    "Two-book plan backed by the vi editions of the-god-of-all-comfort («Đức Chúa Trời Ban Mọi Sự Yên Ủi», new this batch) and he-holds-my-tomorrows («Đấng Nắm Giữ Ngày Mai Của Tôi», already shipped). Ships with the Level 1 books batch 4 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Smith edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are; “Đức Chúa Trời ban mọi sự yên ủi” is Cadman's 2 Cô-rinh-tô 1:3, the verse that titles the book. The description echoes Evans's title in lower case (“Đấng nắm giữ ngày mai của chúng ta”, “our tomorrows” as the English card has it) rather than quoting it. “In the fire” = trong lò lửa (Đa-ni-ên 3's furnace image, as ar «في الأتون»)."
   ]
+ },
+ "power-from-on-high": {
+  "title": "Quyền phép từ trên cao: Đức Thánh Linh",
+  "description": "Bốn tuần cùng R. A. Torrey về đời sống đầy dẫy Đức Thánh Linh: trước hết là phép báp-têm bằng Đức Thánh Linh và quyền năng mà phép ấy đem lại cho sự phục vụ, rồi đến phần nghiên cứu đầy đủ hơn về Thân Vị và công việc của Đức Thánh Linh, Đấng ngự trong mỗi người tin.",
+  "note": [
+   "Two-book plan backed by the vi editions of baptism-with-the-holy-spirit («Phép Báp-têm Bằng Đức Thánh Linh», already shipped) and the-person-and-work-of-the-holy-spirit («Thân Vị và Công Việc của Đức Thánh Linh», new this batch). Ships with the Level 1 books batch 5 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The description echoes both titles in lower case (“phép báp-têm bằng Đức Thánh Linh”, “Thân Vị và công việc của Đức Thánh Linh”) rather than quoting them; “Thân Vị” (Person) is the new edition's own word. The title is Cadman's Lu-ca 24:49 “quyền phép từ trên cao”, the wording both Torrey editions quote; “power for service” = quyền năng … cho sự phục vụ as the baptism edition has it. Sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "Con đường của khách hành hương",
+  "description": "Con đường về nhà, qua ba tác phẩm kinh điển. Charles Spurgeon gặp người đang tìm kiếm nơi cửa hẹp, ngụ ngôn bất hủ của John Bunyan theo chân khách hành hương suốt chặng đường đến Thành Thiên Thượng, và chính lời làm chứng của Bunyan cho thấy ân điển dư dật cho kẻ đứng đầu các tội nhân.",
+  "note": [
+   "Three-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», already shipped), pilgrims-progress («Thiên Lộ Lịch Trình», new this batch) and grace-abounding («Ân Điển Dư Dật cho Kẻ Đứng Đầu Các Tội Nhân», already shipped). Ships with the Level 1 books batch 5 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Spurgeon and Bunyan-testimony titles in lower case (“cửa hẹp”, “ân điển dư dật cho kẻ đứng đầu các tội nhân”) rather than quoting them, and does not name «Thiên Lộ Lịch Trình». “Khách hành hương” and “Thành Thiên Thượng” are the words the new full pilgrims-progress edition uses (the children's edition, and the family-devotions plan, say “lữ khách” / “Thành Thiên Quốc”); “the chief of sinners” = kẻ đứng đầu các tội nhân as that edition's title has it. Sentence case as the shipped vi plan titles are."
+  ]
  }
 }

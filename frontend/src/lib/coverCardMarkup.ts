@@ -60,6 +60,8 @@ export interface CoverCardBook {
 	/** Framed type in dark ink over a pale ground, from `coverLayouts.inkDarkFor`.
 	 *  Painting only. */
 	dark?: boolean;
+	/** A title set in small capitals, from `coverStyles.smallCapsFor`. */
+	caps?: boolean;
 }
 
 /**
@@ -126,6 +128,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	const fit = titleFit(book.title);
 	if (fit) classes.push(fit);
 	if (book.art && book.top) classes.push('type-top');
+	if (book.caps) classes.push('caps-small');
 	const lang = escapeHtml(book.lang);
 	// The byline takes NO `lang`, matching the component: an author's name is
 	// one row for every edition, so it is Latin on an Arabic cover too, and
