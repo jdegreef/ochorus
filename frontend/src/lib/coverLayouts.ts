@@ -118,6 +118,14 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * new volume cannot slip back into its author's layout.
  */
 export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
+	// Chesterton's `fade` and MacDonald's `wash` pale the upper half for a drawn
+	// Original; these six now wear museum paintings, shown whole (Batch 32).
+	orthodoxy: null,
+	heretics: null,
+	'the-everlasting-man': null,
+	phantastes: null,
+	'unspoken-sermons': null,
+	'diary-of-an-old-soul': null,
 	'key-teachings-of-a-b-simpson': null,
 	'key-teachings-of-jonathan-edwards': null,
 	'key-teachings-of-richard-baxter': null,
@@ -174,6 +182,18 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'the-pursuit-of-god-teens': null,
 	'the-secret-of-guidance-teens': null,
 	'the-way-to-god-teens': null,
+	// Young-reader editions whose TRANSLATIONS wear a ground cropped from the
+	// English designed cover (designed_covers.DERIVED_GROUND): framed with their
+	// edition line like the English, not the adult author's band, panel or rail
+	// (es « El progreso del peregrino (para jóvenes) » on Bunyan's band, am
+	// « ወደ ኋላ መለስ ብሎ ማየት (ለወጣቶች) » up Hudson Taylor's rail, 2026-11-01).
+	'a-retrospect-children': null,
+	'a-retrospect-teens': null,
+	'pilgrims-progress-children': null,
+	'pilgrims-progress-teens': null,
+	'talks-to-the-farmer-teens': null,
+	'the-life-of-trust-children': null,
+	'the-life-of-trust-teens': null,
 	// TYPE_TOP paintings (2026-10-29): held framed, so their type is set from
 	// the top, whatever layout their author may wear later.
 	'christ-the-healer': null,
