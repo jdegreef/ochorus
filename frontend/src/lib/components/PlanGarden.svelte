@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
-
 	/**
 	 * A reading plan's progress as a garden: a plant for every day, in the
 	 * plan's own hue (PLAN_META). A day read is in flower, today's reading is a
@@ -10,9 +8,9 @@
 	 * A long plan shows the stretch around today (WINDOW days) rather than a
 	 * row of plants too small to see; the label still counts the whole plan.
 	 *
-	 * A day marked read while the garden is on screen grows into flower (stem,
-	 * leaves, then the bloom) and the next day's sprout comes up after it; the
-	 * garden as it was on arrival is simply drawn, so a visit never replays.
+	 * The day the reader has just marked read (`grow`, set by the page that took
+	 * the tap) grows into flower — stem, leaves, then the bloom — and the sprout
+	 * after it comes up. Everything else, progress synced in included, is drawn.
 	 *
 	 * One image to assistive tech: `label` says the progress in words ("Humility
 	 * in 12 Days: 4 of 12 days"), the drawing is decoration. The row runs in
@@ -22,6 +20,7 @@
 		dayCount,
 		done,
 		next,
+		grow = null,
 		hue,
 		label
 	}: {
@@ -30,6 +29,8 @@
 		done: Set<number>;
 		/** Today's reading, or null once every day is read. */
 		next: number | null;
+		/** The day just marked read, to grow in; null draws the garden as it is. */
+		grow?: number | null;
 		/** The plan's accent (planMeta). */
 		hue: string;
 		label: string;
@@ -48,11 +49,10 @@
 	const stateOf = (d: number): 'flower' | 'sprout' | 'seed' =>
 		done.has(d) ? 'flower' : d === next ? 'sprout' : 'seed';
 
-	// The garden as it stood when it was drawn: anything that changes after
-	// that happened in front of the reader, and grows in.
-	const arrived = untrack(() => ({ done: new Set(done), next }));
+	// The flower just read, and the sprout that came up past it (not one an
+	// earlier, still-unread day keeps).
 	const grows = (d: number, s: 'flower' | 'sprout' | 'seed') =>
-		s === 'flower' ? !arrived.done.has(d) : s === 'sprout' && d !== arrived.next;
+		grow !== null && (s === 'flower' ? d === grow : s === 'sprout' && d > grow);
 </script>
 
 <div class="garden" role="img" aria-label={label} style:--plan-hue={hue}>
@@ -99,6 +99,8 @@
 	}
 	.leaf {
 		fill: var(--plan-hue);
+		transform-box: fill-box;
+		transform-origin: 50% 100%;
 	}
 	/* The flower in the ornament metal (gold; silver in the cool palettes),
 	   so a finished day catches the eye the way the gilt does elsewhere. */
@@ -107,6 +109,11 @@
 	}
 	.heart {
 		fill: color-mix(in srgb, var(--ornament) 45%, black);
+	}
+	.bloom,
+	.heart {
+		transform-box: fill-box;
+		transform-origin: center;
 	}
 	.seed {
 		fill: var(--border-strong);
@@ -122,24 +129,12 @@
 	}
 	/* Growing in: the stem draws up, the leaves open, then the bloom (and its
 	   heart) opens. A sprout that comes up beside a new flower waits for it.
-	   Every step fills backwards, so the resting frame is the plant as drawn;
+	   Every step fills backwards, so the resting frame is the plant as drawn
+	   (the stem's dash lives only in its keyframes, as Fleuron's trace does);
 	   opt-in under no-preference, as the global reduced-motion rule keeps
 	   delays and would leave a gap where the plant blinks in late. */
-	.leaf,
-	.bloom,
-	.heart {
-		transform-box: fill-box;
-	}
-	.leaf {
-		transform-origin: 50% 100%;
-	}
-	.bloom,
-	.heart {
-		transform-origin: center;
-	}
 	@media (prefers-reduced-motion: no-preference) {
 		.grow .stem {
-			stroke-dasharray: 1;
 			animation: garden-stem 0.6s ease-out var(--grow-delay, 0s) backwards;
 		}
 		.grow .leaf {
@@ -157,7 +152,12 @@
 	}
 	@keyframes garden-stem {
 		from {
+			stroke-dasharray: 1;
 			stroke-dashoffset: 1;
+		}
+		to {
+			stroke-dasharray: 1;
+			stroke-dashoffset: 0;
 		}
 	}
 	@keyframes garden-open {

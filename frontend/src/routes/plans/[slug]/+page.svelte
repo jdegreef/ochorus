@@ -107,6 +107,9 @@
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));
 	const doneSet = $derived(new Set(planProgress.doneDays(plan.slug)));
 	const doneCount = $derived(doneSet.size);
+	/** The day the reader has just marked read here, which the garden grows
+	 *  into flower — only a tap on this page, never progress synced in. */
+	let justRead = $state<number | null>(null);
 	const daysLeft = $derived(Math.max(0, plan.day_count - doneCount));
 	/** Words still to read across the days not yet marked done. */
 	const wordsLeft = $derived(
@@ -381,6 +384,7 @@
 									dayCount={plan.day_count}
 									done={doneSet}
 									{next}
+									grow={justRead}
 									hue={planMeta(plan.slug).accent}
 									label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
 								/>
@@ -392,7 +396,11 @@
 							{started ? t('plans.continue') : t('plans.start')}
 						</a>
 						{#if started}
-							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
+							<button type="button" class="btn btn-ghost" onclick={() => {
+									justRead = next;
+									planProgress.markDone(plan.slug, next!);
+								}}
+							>
 								{t('plans.markDone')}
 							</button>
 						{/if}
@@ -623,7 +631,10 @@
 				>
 					<button
 						type="button"
-						onclick={() => planProgress.toggleDone(plan.slug, d.day)}
+						onclick={() => {
+							justRead = done ? null : d.day;
+							planProgress.toggleDone(plan.slug, d.day);
+						}}
 						aria-pressed={done}
 						aria-label={markLabel}
 						title={done ? t('plans.dayDoneNum').replace('%n%', String(d.day)) : markLabel}
