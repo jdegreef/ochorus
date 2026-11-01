@@ -20,6 +20,9 @@
   "a-serious-call": {
    "space-before-punct": 9
   },
+  "abiding-in-love": {
+   "space-before-punct": 2
+  },
   "against-eutropius": {
    "lost-paragraphing": 1
   },
@@ -53,6 +56,9 @@
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 5
+  },
+  "blessed-trust": {
+   "space-before-punct": 2
   },
   "bondage-of-the-will": {
    "orphan-close-quote": 2
@@ -98,6 +104,9 @@
   "concerning-lowliness-of-mind": {
    "lost-paragraphing": 1,
    "orphan-close-quote": 1
+  },
+  "continual-sunshine": {
+   "space-before-punct": 2
   },
   "dialogue-with-trypho": {
    "anachronism": 1,
@@ -463,6 +472,9 @@
   "the-circumcision-of-the-heart": {
    "space-before-punct": 1
   },
+  "the-city-and-river-of-god": {
+   "space-before-punct": 4
+  },
   "the-city-of-god": {
    "orphan-close-quote": 3,
    "space-before-punct": 10,
@@ -510,6 +522,9 @@
   "the-great-catechism": {
    "lost-paragraphing": 28
   },
+  "the-heavenly-workers-and-the-earthly-watchers": {
+   "space-before-punct": 2
+  },
   "the-hexaemeron": {
    "orphan-close-quote": 2
   },
@@ -533,6 +548,9 @@
   "the-journal-of-john-wesley": {
    "hyphen-space": 1,
    "orphan-close-quote": 2
+  },
+  "the-joy-bringer": {
+   "space-before-punct": 2
   },
   "the-joy-of-the-lord": {
    "space-before-punct": 1
@@ -595,6 +613,9 @@
   "the-saints-everlasting-rest": {
    "lost-paragraphing": 5
   },
+  "the-satisfier-of-all-desires": {
+   "space-before-punct": 2
+  },
   "the-school-of-faith": {
    "space-before-punct": 4
   },
@@ -618,6 +639,9 @@
   },
   "the-theological-orations": {
    "orphan-close-quote": 1
+  },
+  "the-toiling-christ": {
+   "space-before-punct": 2
   },
   "the-use-of-money": {
    "orphan-close-quote": 2,
@@ -656,6 +680,9 @@
   },
   "unspoken-sermons": {
    "word-fusion": 2
+  },
+  "waiting-and-singing": {
+   "space-before-punct": 4
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1

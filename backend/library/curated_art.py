@@ -1331,6 +1331,34 @@ CURATED: dict[str, Artwork] = {
         "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
         "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
     ),
+    # ── Batch 32 · six adult classics move from drawn Originals to paintings ──
+    "orthodoxy": Artwork(
+        "cma", 125234, "Claude Monet", "Low Tide at Pourville, near Dieppe, 1882", "1882",
+        "White cliffs over a shining sea: the yachtsman of the opening chapter who sets out for a new island and lands, without knowing it, on England.",
+    ),
+    "heretics": Artwork(
+        "met", 436209, "Gerrit Dou", "An Evening School", "ca. 1655–57",
+        "A circle of faces round one candle at night: Chesterton's case that every man argues from a creed, and had better know which.",
+        inset=0.16,
+    ),
+    "the-everlasting-man": Artwork(
+        "met", 436570, "El Greco (Domenikos Theotokopoulos)", "The Adoration of the Shepherds", "ca. 1605–10",
+        "Shepherds kneeling at night in the stable-cave: \"The God in the Cave\", the hinge of the book.",
+    ),
+    "phantastes": Artwork(
+        "met", 437655, "Georges Seurat", "The Forest at Pontaubert", "1881",
+        "A wood shot through with green light: the trees that grow round Anodos's bed as his room becomes Fairy Land.",
+    ),
+    "unspoken-sermons": Artwork(
+        "met", 436832, "Philips Koninck", "Wide River Landscape", "ca. 1648–49",
+        "Heavy cloud over a wide country with light breaking on the land below, as the drawn Original had it over MacDonald's Aberdeenshire hills.",
+        inset=0.04,
+    ),
+    "diary-of-an-old-soul": Artwork(
+        "met", 436839, "Georges de La Tour", "The Penitent Magdalen", "ca. 1640",
+        "One woman alone with a candle at night: a daily book of verse prayers written in grief.",
+        inset=0.06,
+    ),
     # ── Batch 31 · two more that landed on plates as the gate went in ─────────
     "to-autolycus": Artwork(
         "met", 438634, "Jules Coignet", "View of Beirut", "1844",
@@ -2094,53 +2122,23 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # The adult classics the museum sources could not reach from the session
     # (2026-10-09): painterly nocturnes and dawns, one true image from each
     # book, fractal-noise sky and displaced ridges in inline SVG, rendered like
-    # the sets above. A CURATED painting for any of these is a two-line diff.
-    "orthodoxy": Original(
-        "0de4c0bde58c2a183630a8c16c3242c614f9fd734af28b6c2cdb3e18eadcd295",
-        "A yacht at dawn bearing down on white cliffs: the yachtsman of the "
-        "opening chapter who sets out for a new island and discovers England.",
-    ),
-    "heretics": Original(
-        "64a2e42b63ceab31746c923ffbbfa4a87051cca2e7f081f77664ed1c1dc0efbb",
-        "One gas lamp burning in a dark street between tall houses: the lamp- "
-        "post the crowd pulls down in the first chapter.",
-    ),
+    # the sets above. A CURATED painting for any of these is a two-line diff
+    # (the Chesterton and MacDonald six moved to CURATED, Batch 32, 2026-11-01).
     "st-francis-of-assisi": Original(
         "020e6196d8c00277370e45a62cc0f2230d52773e58142516b6670d3e2a9911bb",
         "Assisi on its Umbrian hillside at dusk, the basilica and bell tower "
         "above the olive trees, birds wheeling over the slope.",
-    ),
-    "the-everlasting-man": Original(
-        "d8804be5b5e53b6ede8f699fa6208e275a23c690e73aec7823c5748d70695ff6",
-        "A starry night seen from deep inside a cave, firelight on the floor "
-        "and a painted beast on the wall: the first painter and the cave at "
-        "Bethlehem.",
     ),
     "at-the-back-of-the-north-wind": Original(
         "af68a7cae6060b62f3b9e4967c068335e9690fc8da50c33518d6abd1dbb0ef2e",
         "Wind streaming across a starry sky over London roofs, a lit hayloft "
         "window in the coachman's mews where Diamond slept.",
     ),
-    "diary-of-an-old-soul": Original(
-        "439ceeb93837f8b79e38bc447180de0a09a627e28878aa7c4d8b98e75a419fbe",
-        "A lamp in a window at dusk with the year's last leaves on the tree "
-        "outside: a daily book of verse written in grief.",
-    ),
-    "phantastes": Original(
-        "26a496b16b8f050190dcf305bc10a46ab5f8fb9681e8b28ce72783f474b61ede",
-        "A moonlit beech wood with a stream running out of it, fireflies among "
-        "the trunks: Anodos's room becoming Fairy Land.",
-    ),
     "the-princess-and-the-goblin": Original(
         "d90798fbdfb7d71188497468aa29a89a77be3740c9e6e2d47ee4295c63268d7d",
         "Irene's great house on the mountainside under the moon, the "
         "grandmother's lamp in the topmost tower window, the goblin mountain "
         "dark below.",
-    ),
-    "unspoken-sermons": Original(
-        "98c705c6fb83efc9c54fb6f7905830edf2643a66d9fe5ed5fd6d90d898a06e43",
-        "Light breaking through heavy cloud over the Aberdeenshire hills of "
-        "MacDonald's boyhood.",
     ),
     "paradise-lost": Original(
         "6e43910a8d81748b8c588b9f26049a7c283921ee47329be52c91a5795baef0db",
