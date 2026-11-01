@@ -99,6 +99,9 @@ class Entry:
     label: str
     heading: str
     excerpt: str
+    #: The words the day page shows (heading and body) — a plan day's
+    #: reading time.
+    words: int = 0
 
 
 def _tidy_heading(text: str) -> str:
@@ -154,6 +157,7 @@ def month_entries(els: list, spec: DatedBook) -> list[Entry]:
                 label=texts[start],
                 heading=heading,
                 excerpt=_excerpt(texts[first]) if first is not None else "",
+                words=sum(len(texts[i].split()) for i in range(start + 1, end)),
             )
         )
     return entries
@@ -219,6 +223,22 @@ def month_index(book, month: int, version: tuple[str, int]) -> list[Entry]:
 def _days_back(month: int, day: int, to_month: int, to_day: int) -> int:
     """Days from (to_month, to_day) forward to (month, day), round the year."""
     return (date(_LEAP, month, day) - date(_LEAP, to_month, to_day)).days % 366
+
+
+def year_entries(book, version: tuple[str, int] | None = None) -> list[tuple[int, Entry]]:
+    """Every dated entry of ``book``, January first, as (month, entry) — a
+    devotional plan's days in order. Through the month cache when ``version``
+    is given; the seed, which runs once, reads the bodies directly."""
+    spec = DATED_BOOKS[book.slug]
+    return [
+        (m, e)
+        for m in range(1, 13)
+        for e in (
+            month_index(book, m, version)
+            if version is not None
+            else month_entries(blocks(month_body(book, m)), spec)
+        )
+    ]
 
 
 def find_entry(book, month: int, day: int, version: tuple[str, int]) -> tuple[int, Entry] | None:

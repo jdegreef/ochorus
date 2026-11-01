@@ -132,11 +132,11 @@ class ParsingTests(SimpleTestCase):
         self.assertEqual(daily_readings.neighbours(3, 1), ("02-29", "03-02"))
 
 
-class DailyApiTests(TestCase):
-    DAY = "/api/library/books/{}/daily/{}/?language={}"
-    SHELF = "/api/library/daily/{}/?language={}"
+class _DatedBooks:
+    """A dated book in the test DB: twelve month chapters, a marker a day."""
 
     def setUp(self):
+        super().setUp()
         self.author = Author.objects.create(slug="a-b-simpson", name="A. B. Simpson")
 
     def book(self, slug="days-of-heaven-upon-earth", language="en", *, missing=frozenset({(2, 29)})):
@@ -152,6 +152,11 @@ class DailyApiTests(TestCase):
                 body_html=_month_body(d for d in range(1, last + 1) if (month, d) not in missing),
             )
         return book
+
+
+class DailyApiTests(_DatedBooks, TestCase):
+    DAY = "/api/library/books/{}/daily/{}/?language={}"
+    SHELF = "/api/library/daily/{}/?language={}"
 
     def test_the_day_page(self):
         self.book()
@@ -215,3 +220,72 @@ class DailyApiTests(TestCase):
         detail = "/api/library/books/{}/?language=en"
         self.assertTrue(self.client.get(detail.format("days-of-heaven-upon-earth")).json()["daily"])
         self.assertFalse(self.client.get(detail.format("the-fourfold-gospel")).json()["daily"])
+
+
+class DailyPlanTests(_DatedBooks, TestCase):
+    """The year-long plans (plan_seed.DAILY_PLANS): seeded a day per dated entry,
+    served with the entry's own title and length, and linked to the day page."""
+
+    PLAN = "/api/library/plans/days-of-heaven-upon-earth-year/?language=en"
+
+    def seed(self):
+        from django.core.management import call_command
+
+        call_command("seed_plans", verbosity=0)
+
+    def test_the_seed_makes_a_day_per_entry_january_first_sorted_last(self):
+        from .models import Plan
+
+        older = Plan.objects.create(slug="older", language="en", title="Older", sort_order=40)
+        self.book()
+        self.seed()
+        plan = Plan.objects.get(slug="days-of-heaven-upon-earth-year", language="en")
+        days = list(plan.days.all())
+        self.assertEqual(len(days), 365)  # the fixture's year: no 29 February
+        self.assertEqual(
+            [(d.day, d.chapter_order, d.entry_date) for d in (days[0], days[58], days[59])],
+            [(1, 1, "01-01"), (59, 2, "02-28"), (60, 3, "03-01")],
+        )
+        # After the shelf, not ahead of it: the other seeds number from the
+        # plans created in the same run, which on a live DB is 0.
+        self.assertGreater(plan.sort_order, older.sort_order)
+        self.seed()  # idempotent
+        self.assertEqual(Plan.objects.filter(slug="days-of-heaven-upon-earth-year").count(), 1)
+
+    def test_a_day_reads_its_entry_not_the_month(self):
+        self.book()
+        self.seed()
+        data = self.client.get(self.PLAN).json()
+        first = data["days"][0]
+        self.assertEqual(
+            (first["entry_date"], first["chapter_title"], first["word_count"]),
+            ("01-01", "January 1", 6),  # "Text for day 1. More 1."
+        )
+        # The plan's length is its entries', not 365 months'.
+        self.assertEqual(data["total_words"], 6 * 365)
+        self.assertEqual(data["day_one"]["chapter_title"], "January 1")
+
+    def test_the_book_names_its_plan_where_the_edition_has_one(self):
+        self.book()
+        detail = "/api/library/books/days-of-heaven-upon-earth/?language=en"
+        self.assertEqual(self.client.get(detail).json()["daily_plan"], "")
+        self.seed()
+        self.assertEqual(
+            self.client.get(detail).json()["daily_plan"], "days-of-heaven-upon-earth-year"
+        )
+
+    def test_the_reminder_email_links_the_day_page(self):
+        from emails.plan_reminders import _reading_title, day_path
+
+        from .models import Plan
+
+        self.book()
+        self.seed()
+        plan = Plan.objects.get(slug="days-of-heaven-upon-earth-year", language="en")
+        day = plan.days.get(day=32)
+        self.assertEqual(
+            day_path(plan, day),
+            "today/days-of-heaven-upon-earth/?d=02-01&plan=days-of-heaven-upon-earth-year&day=32",
+        )
+        # The helper's months all say "January"; 1 February's line is "January 1".
+        self.assertEqual(_reading_title(day, "en"), "January 1")

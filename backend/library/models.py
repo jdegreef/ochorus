@@ -1254,7 +1254,8 @@ class PlanDayManager(models.Manager):
 
 
 class PlanDay(models.Model):
-    """One day's reading: a book chapter OR an article, never both.
+    """One day's reading: a book chapter OR an article, never both — or, in a
+    year-long devotional's plan, one dated entry of a month chapter.
 
     Both are soft references in the plan's own language (see ``Plan``). A book
     day sets ``book_slug`` + ``chapter_order``; an article day sets
@@ -1268,6 +1269,10 @@ class PlanDay(models.Model):
     book_slug = models.SlugField(max_length=160, blank=True, default="")
     chapter_order = models.PositiveIntegerField(null=True, blank=True)
     article_slug = models.SlugField(max_length=180, blank=True, default="")
+    # A year-long devotional's day (library/daily_readings): the one dated
+    # entry, as "MM-DD", that this day reads out of ``chapter_order``'s month
+    # chapter. Blank on every other day, which reads the whole chapter.
+    entry_date = models.CharField(max_length=5, blank=True, default="")
 
     objects = PlanDayManager()
 

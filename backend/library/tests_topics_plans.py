@@ -297,9 +297,9 @@ class RetiredPlanTests(TestCase):
     """``RETIRED_PLANS`` and the progress move that goes with it agree."""
 
     def test_a_retired_slug_never_returns_and_names_live_successors(self):
-        from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, RETIRED_PLANS
+        from library.plan_seed import RETIRED_PLANS, all_plan_sources
 
-        live = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        live = set(all_plan_sources())
         self.assertEqual(sorted(set(RETIRED_PLANS) & live), [])
         self.assertEqual(
             sorted(s for succ in RETIRED_PLANS.values() for s in succ if s not in live), []

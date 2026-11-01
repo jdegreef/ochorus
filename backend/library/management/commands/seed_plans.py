@@ -9,11 +9,14 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.db.models import Max
 
+from library import daily_readings
 from library.localization import is_english_edition
 from library.models import Article, Book, Plan, PlanDay
 from library.plan_seed import (
     CURATED_PLANS,
+    DAILY_PLANS,
     LAUNCH_PLANS,
     RETIRED_PLANS,
     plan_items,
@@ -168,9 +171,68 @@ class Command(BaseCommand):
                 )
 
         created += self._seed_curated(created)
+        # Last: a year-long devotional is a different shape of plan, and seven
+        # of them would otherwise head the shelf above the journeys.
+        created += self._seed_daily()
 
         if not created:
             self.stdout.write("Plans already seeded (or source books missing).")
+
+    def _seed_daily(self):
+        """Create the year-long devotional plans: one per published edition,
+        a day per dated entry (``daily_readings.year_entries``), January first.
+
+        Sorted after every plan already on the shelf. The other seeds number
+        from the plans created in THIS run, which on a live database — every
+        older plan already there — is 0, and would put these at the top."""
+        sort_base = (Plan.objects.aggregate(top=Max("sort_order"))["top"] or 0) + 1
+        created = 0
+        for slug, book_slug, title, description in DAILY_PLANS:
+            for book in Book.objects.filter(slug=book_slug, is_published=True):
+                prose = _prose(slug, book.language, title, description)
+                if prose is None:
+                    self._report_untranslated(slug, book.language)
+                    continue
+                t, d = prose
+                if self._reconcile_existing(slug, book.language, t, d):
+                    continue
+                entries = daily_readings.year_entries(book)
+                if not entries:
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"Plan {slug} ({book.language}): the edition has no dated "
+                            "entries; no plan row created."
+                        )
+                    )
+                    continue
+                with transaction.atomic():
+                    plan = Plan.objects.create(
+                        slug=slug,
+                        language=book.language,
+                        title=t,
+                        description=d,
+                        sort_order=sort_base + created,
+                    )
+                    PlanDay.objects.bulk_create(
+                        [
+                            PlanDay(
+                                plan=plan,
+                                day=i + 1,
+                                book_slug=book_slug,
+                                chapter_order=daily_readings.chapter_order(book_slug, month),
+                                entry_date=daily_readings.format_date(month, entry.day),
+                            )
+                            for i, (month, entry) in enumerate(entries)
+                        ]
+                    )
+                created += 1
+                self.stdout.write(
+                    self.style.SUCCESS(
+                        f"Created devotional plan {slug} ({book.language}) with "
+                        f"{len(entries)} days."
+                    )
+                )
+        return created
 
     def _seed_curated(self, sort_base):
         """Create curated plans — several books, and articles — once per

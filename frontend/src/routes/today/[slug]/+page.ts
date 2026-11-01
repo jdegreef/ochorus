@@ -1,4 +1,4 @@
-import { getDailyReading } from '$lib/library-public';
+import { getDailyReading, getPlan } from '$lib/library-public';
 import { dateKey, isDateKey } from '$lib/dailyDate';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
@@ -14,7 +14,15 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 	const today = dateKey(new Date());
 	const asked = url.searchParams.get('d');
 	const date = isDateKey(asked) ? asked : today;
-	// No English fallback: a language without this devotional is a 404.
-	const reading = await orNotFound(() => getDailyReading(params.slug, date, getLang(), fetch));
-	return { reading, today };
+	// A year-long plan's day (?plan=<slug>&day=<n>, from planDayPath): the same
+	// entry, read as Day N of the plan. A plan that fails to load just leaves
+	// the calendar page, rather than no page.
+	const planSlug = url.searchParams.get('plan');
+	const planDay = Number(url.searchParams.get('day')) || 0;
+	const [reading, plan] = await Promise.all([
+		// No English fallback: a language without this devotional is a 404.
+		orNotFound(() => getDailyReading(params.slug, date, getLang(), fetch)),
+		planSlug && planDay ? getPlan(planSlug, getLang(), fetch).catch(() => null) : null
+	]);
+	return { reading, today, plan, planDay: plan ? planDay : 0 };
 };

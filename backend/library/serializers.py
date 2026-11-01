@@ -33,9 +33,13 @@ from .models import (
     TopicBook,
 )
 from .opening import opening_candidate_orders, opening_excerpt
+from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
 from .scripture_graph import treated_passages
+
+#: A dated book's slug → its year-long plan's slug.
+DAILY_PLAN_FOR_BOOK = {book: plan for plan, book, *_ in DAILY_PLANS}
 
 
 def _link_scripture(body_html: str, links: dict[str, str] | None = None) -> str:
@@ -1791,6 +1795,17 @@ class BookDetailSerializer(BookListSerializer):
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
 
+    # The slug of this devotional's year-long plan where this edition has one
+    # (plan_seed.DAILY_PLANS), else "" — the page offers to follow it.
+    daily_plan = serializers.SerializerMethodField()
+
+    def get_daily_plan(self, obj) -> str:
+        slug = DAILY_PLAN_FOR_BOOK.get(obj.slug)
+        if not slug:
+            return ""
+        published = Plan.objects.filter(slug=slug, language=obj.language, is_published=True)
+        return slug if published.exists() else ""
+
     def get_has_leader_guide(self, obj) -> bool:
         return guide_for(obj.slug, obj.language) is not None
 
@@ -1890,6 +1905,7 @@ class BookDetailSerializer(BookListSerializer):
             "epub_url", "meta_description", "public_domain", "ages",
             "has_leader_guide",
             "daily",
+            "daily_plan",
         ]
 
     def get_public_domain(self, obj) -> bool:
@@ -2274,9 +2290,16 @@ class PlanListSerializer(serializers.ModelSerializer):
             self.context["plan_articles"] = index
         return index
 
+    def _entries(self, obj):
+        index = self.context.get("plan_entries")
+        if index is None:
+            index = plan_entry_index([obj], self._books(obj))
+            self.context["plan_entries"] = index
+        return index
+
     def _reading(self, obj, day):
         """A day's ``{title, book_title, word_count}``, or None if unresolved."""
-        return _plan_reading(day, self._chapters(obj), self._articles(obj))
+        return _plan_reading(day, self._chapters(obj), self._articles(obj), self._entries(obj))
 
     def get_total_words(self, obj):
         return sum(
@@ -2369,6 +2392,37 @@ def plan_article_index(plans, language):
     }
 
 
+def plan_entry_index(plans, books):
+    """``{(book_slug, "MM-DD"): reading}`` for every year-long devotional day
+    (``PlanDay.entry_date``) — the entry companion of ``plan_chapter_index``.
+
+    Such a day reads one dated entry, not its whole month chapter, so its
+    title, length and opening verse are the entry's (``daily_readings``), read
+    through that module's month cache. ``books`` is ``plan_book_index``'s.
+    """
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.entry_date}
+    if not slugs:
+        return {}
+    # Local: the parser pulls in ingest and search, which must stay out of this
+    # module's import graph (see library/daily_books.py).
+    from . import daily_readings
+
+    version = daily_readings.content_version()
+    index = {}
+    for slug in slugs:
+        book = books.get(slug)
+        if book is None:
+            continue
+        for month, e in daily_readings.year_entries(book, version):
+            index[(slug, daily_readings.format_date(month, e.day))] = {
+                "title": f"{e.label} — {e.heading}" if e.heading else e.label,
+                "book_title": book.title,
+                "word_count": e.words,
+                "opening": e.excerpt,
+            }
+    return index
+
+
 # A devotional's chapter titles carry the BOOK's own day ("Day 13 — Where You
 # Go"), which disagrees with the plan's day as soon as a book opens on an
 # introduction — the plan shows "Day 14 of 96" over "Day 13 — …". Right in the
@@ -2385,11 +2439,13 @@ def plan_day_title(title):
     return _PLAN_DAY_PREFIX.sub("", title)
 
 
-def _plan_reading(day, chapters, articles):
+def _plan_reading(day, chapters, articles, entries):
     """What one plan day reads — ``{title, book_title, word_count}`` — from the
     prebuilt indexes, or None when it doesn't resolve in this language. The one
-    place that knows a day is a chapter or an article, so the card fields and
-    the day list cannot disagree about it."""
+    place that knows a day is a chapter, a devotional's entry or an article, so
+    the card fields and the day list cannot disagree about it."""
+    if day.entry_date:
+        return entries.get((day.book_slug, day.entry_date))
     if day.article_slug:
         a = articles.get(day.article_slug)
         return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
@@ -2432,7 +2488,9 @@ def _plan_covers(plan, books, limit=5):
 class PlanDaySerializer(serializers.ModelSerializer):
     """One day's reading, enriched with display titles for the linked chapter —
     or, on an article day (``article_slug`` set, ``book_slug`` empty and
-    ``chapter_order`` null), the article's headline as ``chapter_title``."""
+    ``chapter_order`` null), the article's headline as ``chapter_title``. A
+    year-long devotional's day sets ``entry_date`` ("MM-DD"): it reads that one
+    entry of its month chapter, and the titles and length are the entry's."""
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
@@ -2447,8 +2505,8 @@ class PlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanDay
         fields = [
-            "day", "book_slug", "chapter_order", "article_slug", "book_title",
-            "chapter_title", "word_count", "has_modern_edition", "key_verse",
+            "day", "book_slug", "chapter_order", "article_slug", "entry_date",
+            "book_title", "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 

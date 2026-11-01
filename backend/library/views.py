@@ -99,6 +99,7 @@ from .serializers import (
     plan_article_index,
     plan_book_index,
     plan_chapter_index,
+    plan_entry_index,
     sermon_topic_map,
 )
 
@@ -614,10 +615,12 @@ def _plan_card_context(plans, language: str) -> dict:
     and each of those used to fetch its own rows — three queries per plan.
     The same pattern BookListView uses for topic chips.
     """
+    books = plan_book_index(plans, language)
     return {
         "plan_chapters": plan_chapter_index(plans, language),
-        "plan_books": plan_book_index(plans, language),
+        "plan_books": books,
         "plan_articles": plan_article_index(plans, language),
+        "plan_entries": plan_entry_index(plans, books),
     }
 
 
@@ -661,6 +664,7 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         )
         ctx["plan_books"] = plan_book_index([plan], plan.language)
         ctx["plan_articles"] = plan_article_index([plan], plan.language)
+        ctx["plan_entries"] = plan_entry_index([plan], ctx["plan_books"])
         return ctx
 
 
