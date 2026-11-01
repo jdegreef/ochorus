@@ -722,6 +722,104 @@ class StoredSearchVectorTests(TestCase):
         )
 
 
+@skipUnless(connection.vendor == "postgresql", "SearchHeadline snippets are Postgres-only")
+class SnippetWindowTests(TestCase):
+    """Snippets are cut from a window around the match point (search._Snippet),
+    not ts_headline over the whole body — and still mark every query word."""
+
+    # Far past the window, so a snippet found here proves the window moved.
+    FILLER = "<p>" + "And the people went on their way to the city. " * 600 + "</p>"
+
+    def setUp(self):
+        author = Author.objects.create(slug="j-c-ryle", name="J. C. Ryle")
+        self.book = Book.objects.create(author=author, slug="holiness", language="en",
+                                        title="Holiness")
+
+    def chapter(self, order, body_html):
+        return Chapter.objects.create(book=self.book, order=order, title=f"Chapter {order}",
+                                      body_html=body_html)
+
+    def snippet(self, q):
+        [hit] = [h for h in search_library(q, "en") if h["type"] == "chapter"]
+        return hit["snippet"]
+
+    def test_a_match_deep_in_a_long_body_is_highlighted(self):
+        self.chapter(1, self.FILLER + "<p>Prayer is the breath of the soul.</p>")
+        self.assertIn("⟦Prayer⟧ is the breath", self.snippet("prayer"))
+
+    def test_the_window_is_found_by_the_stem(self):
+        self.chapter(1, self.FILLER + "<p>He runs the race set before him.</p>")
+        self.assertIn("⟦runs⟧", self.snippet("running"))
+
+    def test_a_word_whose_stem_is_not_its_prefix_is_found_as_typed(self):
+        # english stems "holy" to "holi", which never occurs in the text.
+        self.chapter(1, self.FILLER + "<p>Be ye holy, for I am holy.</p>")
+        self.assertIn("⟦holy⟧", self.snippet("holy"))
+
+    def test_the_window_starts_at_a_word_not_inside_one(self):
+        # "lord" occurs early inside "landlord"; the real match is far past it.
+        self.chapter(1, "<p>The landlord came.</p>" + self.FILLER
+                     + "<p>The Lord is my shepherd.</p>")
+        self.assertIn("⟦Lord⟧ is my shepherd", self.snippet("lord"))
+
+    def test_a_window_holding_the_whole_query_is_used(self):
+        # "Christ" is early and alone; the point (where BOTH words have first
+        # appeared) is at "Faith", and the window there holds the whole query.
+        self.chapter(1, "<p>Christ alone.</p>" + self.FILLER
+                     + "<p>Faith in Christ unites the soul to him.</p>")
+        snippet = self.snippet("faith christ")
+        self.assertIn("⟦Faith⟧ in ⟦Christ⟧", snippet)
+
+    def test_a_window_without_the_whole_query_falls_back_to_the_body(self):
+        # Each word first appears alone, far apart, so the window at the point
+        # holds only "Christ"; the passage satisfying the query is further on,
+        # and only the whole-body headline finds it.
+        self.chapter(1, "<p>Faith.</p>" + self.FILLER + "<p>Christ.</p>" + self.FILLER
+                     + "<p>Faith in Christ unites the soul to him.</p>")
+        self.assertIn("⟦Faith⟧ in ⟦Christ⟧", self.snippet("faith christ"))
+
+    def test_a_late_form_of_a_word_does_not_move_the_window(self):
+        # "holy" is early, its stem's other form ("holiness") late: the point is
+        # each word's EARLIEST form, so the early passage serves.
+        self.chapter(1, "<p>Be holy. The Spirit came.</p>" + self.FILLER
+                     + "<p>Holiness.</p>")
+        self.assertIn("⟦holy⟧. The ⟦Spirit⟧", self.snippet("holy spirit"))
+
+    def test_the_window_holds_whole_words_only(self):
+        # The window starts mid-filler; its first, cut word must not show.
+        self.chapter(1, self.FILLER + "<p>Prayer is the breath of the soul.</p>")
+        first = self.snippet("prayer").lstrip("…").split()[0]
+        self.assertIn(first, {"And", "the", "people", "went", "on", "their", "way",
+                              "to", "city.", "⟦Prayer⟧"})
+
+    def test_a_body_without_the_words_still_gets_a_snippet(self):
+        # Matched through the author's name only: no first match, whole body.
+        self.chapter(1, "<p>Holiness is the image of God in the soul.</p>")
+        self.assertIn("Holiness is the image", self.snippet("ryle"))
+
+
+class PositiveWordsTests(SimpleTestCase):
+    """The words a snippet window looks for (fts.positive_words): read with the
+    same tokeniser as the query itself, so the two can't disagree."""
+
+    def test_exclusions_and_or_are_not_looked_for(self):
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("joy OR peace or love -sin", "en"),
+                         ["joy", "peace", "love"])
+
+    def test_punctuation_splits_words_as_the_query_does(self):
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("Spurgeon-like, faith.", "en"),
+                         ["Spurgeon", "like", "faith"])
+
+    def test_korean_words_lose_a_particle_as_the_query_does(self):
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("은혜를, 받는", "ko"), ["은혜", "받는"])
+
+
 class SermonBookFacetTests(TestCase):
     def test_scripture_book_derivation(self):
         from .scripture import book_of

@@ -62,6 +62,76 @@ LAUNCH_PLANS = [
 ]
 
 
+# Year-long devotionals read as plans (library/daily_books): day N is the
+# book's Nth dated entry, so day 1 is the reading for 1 January whenever the
+# reader begins, and the plan has as many days as the book has entries (365 or
+# 366 — 364 in Thoughts for the Quiet Hour, which lacks two dates). Each day
+# reads ONE entry of its month chapter (``PlanDay.entry_date``), on the book's
+# day page rather than the whole month. The book page's own "Today's reading"
+# still follows the calendar; this is the self-paced way through.
+#   (plan slug, book slug, title, description)
+_BEGIN = (
+    "Begin on any day: day one is the reading for 1 January, and each day "
+    "after takes the next."
+)
+DAILY_PLANS = [
+    (
+        "days-of-heaven-upon-earth-year",
+        "days-of-heaven-upon-earth",
+        "A Year with Days of Heaven upon Earth",
+        "A. B. Simpson's year of daily devotions: a verse and a short meditation "
+        f"on the fullness of Christ for every day. {_BEGIN} A minute or two a day.",
+    ),
+    (
+        "morning-by-morning-year",
+        "morning-by-morning",
+        "A Year of Morning by Morning",
+        "Charles Spurgeon's morning readings for the whole year: a text of "
+        f"Scripture and a warm meditation to begin each day. {_BEGIN} Two "
+        "minutes a day.",
+    ),
+    (
+        "evening-by-evening-year",
+        "evening-by-evening",
+        "A Year of Evening by Evening",
+        "Spurgeon's companion to Morning by Morning: a text and a meditation to "
+        f"close each day of the year. {_BEGIN} Two minutes an evening.",
+    ),
+    (
+        "our-daily-walk-year",
+        "our-daily-walk",
+        "A Year of Our Daily Walk",
+        "F. B. Meyer's readings for every day of the year: a short, titled "
+        "meditation and its Scripture on walking with God through ordinary "
+        f"days. {_BEGIN} Two or three minutes a day.",
+    ),
+    (
+        "thoughts-for-the-quiet-hour-year",
+        "thoughts-for-the-quiet-hour",
+        "A Year of Thoughts for the Quiet Hour",
+        "D. L. Moody's gathering of short readings for the whole year: a verse "
+        f"and a few lines from the preachers and writers he loved. {_BEGIN} "
+        "A minute a day.",
+    ),
+    (
+        "diary-of-an-old-soul-year",
+        "diary-of-an-old-soul",
+        "A Year with The Diary of an Old Soul",
+        "George MacDonald's book of prayers in verse: one seven-line stanza for "
+        f"each day of the year. {_BEGIN} A minute to read, and the day to "
+        "carry it.",
+    ),
+    (
+        "cheque-book-year",
+        "cheque-book",
+        "A Year with the Cheque Book of the Bank of Faith",
+        "Charles Spurgeon's daily promises: one promise of God for each day of "
+        f"the year, with a short word on taking it by faith. {_BEGIN} A minute "
+        "or two a day.",
+    ),
+]
+
+
 def article(slug: str) -> tuple:
     """A curated-plan item: one day reading this article."""
     return ("article", slug)
@@ -619,7 +689,7 @@ CURATED_PLANS = [
 # heart) is carried to the successor plan(s) by a migration (reading 0032 for
 # the series plans below) and, for progress, on the device by
 # ``frontend/src/lib/planMoves.ts``. A retired slug may never
-# return to LAUNCH_PLANS / CURATED_PLANS (``tests_topics_plans`` checks), so a
+# return to LAUNCH_PLANS / DAILY_PLANS / CURATED_PLANS (``tests_topics_plans`` checks), so a
 # stale device that syncs its old day numbers onto one ticks nothing.
 #   {retired slug: (successor plan slugs)}
 RETIRED_PLANS = {
@@ -650,8 +720,8 @@ RETIRED_PLANS = {
 
 
 def all_plan_sources() -> dict[str, tuple[list[str], list[str]]]:
-    """Every plan slug → the (book slugs, article slugs) it needs, launch and
-    curated alike: what ``seed_plans`` waits on before building it anywhere."""
-    sources = {slug: ([book], []) for slug, book, *_ in LAUNCH_PLANS}
+    """Every plan slug → the (book slugs, article slugs) it needs, launch,
+    devotional and curated alike: what ``seed_plans`` waits on before building it anywhere."""
+    sources = {slug: ([book], []) for slug, book, *_ in LAUNCH_PLANS + DAILY_PLANS}
     sources.update({slug: plan_sources(items) for slug, _title, _desc, items in CURATED_PLANS})
     return sources

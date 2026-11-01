@@ -1,0 +1,2524 @@
+{
+ "kind": "book",
+ "slug": "union-and-communion",
+ "language": "uk",
+ "job_issue": 6904,
+ "references": [
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 7:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbs 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 28
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Song of Songs 1:1",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 John 1:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "1 John 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "1 John 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 49
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 64
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "Song of Songs 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 72
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Song of Songs 1:9",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Song of Songs 1:9",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "Song of Songs 1:11",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Song of Songs 1:11",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Song of Songs 1:13",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Song of Songs 1:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 107
+  },
+  {
+   "reference": "Song of Songs 1:14",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Song of Songs 1:14",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Song of Songs 1:5",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 115
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 116
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 117
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Song of Songs 1:16",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Song of Songs 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 127
+  },
+  {
+   "reference": "Song of Songs 1:17",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Song of Songs 1:17",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Song of Songs 2:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 130
+  },
+  {
+   "reference": "Song of Songs 2:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 133
+  },
+  {
+   "reference": "Song of Songs 2:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 134
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 137
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 138
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 139
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 142
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 143
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 145
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 147
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 148
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 150
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 151
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 152
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 153
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 159
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 159
+  },
+  {
+   "reference": "Hebrews 2:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 164
+  },
+  {
+   "reference": "Psalms 45:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 165
+  },
+  {
+   "reference": "Psalms 45:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 166
+  },
+  {
+   "reference": "Psalms 45:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 167
+  },
+  {
+   "reference": "Psalms 45:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 169
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "2 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 171
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 172
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 173
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 174
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 175
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 178
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 179
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 181
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 182
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 183
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 186
+  },
+  {
+   "reference": "Song of Songs 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 187
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 189
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 191
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 194
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 201
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 202
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 205
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 206
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 209
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 212
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 213
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 218
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 219
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 221
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 222
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 223
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 224
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 226
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 227
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 228
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 229
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 230
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 231
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 232
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 236
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 237
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 239
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 240
+  },
+  {
+   "reference": "Psalms 84:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 242
+  },
+  {
+   "reference": "Psalms 84:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 243
+  },
+  {
+   "reference": "Psalms 84:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 244
+  },
+  {
+   "reference": "Psalms 84:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 245
+  },
+  {
+   "reference": "Psalms 84:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 246
+  },
+  {
+   "reference": "Psalms 84:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 247
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 248
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 249
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 250
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 252
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 253
+  },
+  {
+   "reference": "Psalms 84:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 254
+  },
+  {
+   "reference": "Psalms 84:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 255
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 268
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 269
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 270
+  },
+  {
+   "reference": "Song of Songs 3:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 272
+  },
+  {
+   "reference": "Song of Songs 3:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 273
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 275
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "self_rendered",
+   "block_index": 277
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 278
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 279
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 280
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 281
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 282
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 283
+  },
+  {
+   "reference": "Psalms 45:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 284
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 286
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 287
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 288
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 290
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 291
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 292
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 293
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 295
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 296
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 297
+  },
+  {
+   "reference": "Song of Songs 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 298
+  },
+  {
+   "reference": "Song of Songs 4:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 299
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 303
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 304
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 305
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 307
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 308
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 310
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 311
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 312
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 313
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 314
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 317
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 318
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 319
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 320
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 321
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 323
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 324
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 326
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 327
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 328
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 329
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 330
+  },
+  {
+   "reference": "Song of Songs 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 331
+  },
+  {
+   "reference": "Song of Songs 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 332
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 333
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 334
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 335
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 337
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 338
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 342
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 343
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 344
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 347
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 348
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 349
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 350
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 353
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 354
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 369
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 370
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 371
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 372
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 373
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 374
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 376
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 377
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 378
+  },
+  {
+   "reference": "John 5:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 379
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 380
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 382
+  },
+  {
+   "reference": "Song of Songs 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 384
+  },
+  {
+   "reference": "Song of Songs 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 385
+  },
+  {
+   "reference": "Song of Songs 5:4",
+   "status": "self_rendered",
+   "block_index": 388
+  },
+  {
+   "reference": "Song of Songs 5:4",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 391
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 392
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 393
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 394
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 395
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 396
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 397
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 400
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 401
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 403
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 405
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 406
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 407
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 408
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 409
+  },
+  {
+   "reference": "Proverbs 1:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 410
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 411
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 412
+  },
+  {
+   "reference": "Song of Songs 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 415
+  },
+  {
+   "reference": "Song of Songs 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 416
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 418
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 419
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 420
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 421
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 423
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 424
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 426
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 427
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 428
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "self_rendered",
+   "block_index": 429
+  },
+  {
+   "reference": "Revelation 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Revelation 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Revelation 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Song of Songs 5:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Song of Songs 5:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Song of Songs 5:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 430
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 431
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 432
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 433
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 434
+  },
+  {
+   "reference": "Song of Songs 6:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 436
+  },
+  {
+   "reference": "Song of Songs 6:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 437
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "self_rendered",
+   "block_index": 439
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 440
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 441
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 442
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 445
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 447
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 449
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 450
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 451
+  },
+  {
+   "reference": "Song of Songs 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 453
+  },
+  {
+   "reference": "Song of Songs 6:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 454
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 455
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 456
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 457
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 458
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 459
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 460
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 463
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 469
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 470
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 471
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 472
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 473
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 474
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 475
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 475
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 479
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 481
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 481
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 483
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "self_rendered",
+   "block_index": 485
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 486
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 487
+  },
+  {
+   "reference": "Isaiah 1:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 487
+  },
+  {
+   "reference": "Song of Songs 7:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 487
+  },
+  {
+   "reference": "Song of Songs 7:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 487
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "self_rendered",
+   "block_index": 488
+  },
+  {
+   "reference": "Song of Songs 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 489
+  },
+  {
+   "reference": "Song of Songs 7:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 490
+  },
+  {
+   "reference": "Psalms 92:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 492
+  },
+  {
+   "reference": "Psalms 92:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 493
+  },
+  {
+   "reference": "Psalms 92:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 494
+  },
+  {
+   "reference": "Psalms 92:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 495
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 496
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 497
+  },
+  {
+   "reference": "Psalms 92:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 499
+  },
+  {
+   "reference": "Psalms 92:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 500
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 502
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 502
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 528
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 529
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 530
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 531
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 532
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 534
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 535
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 536
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 538
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 540
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 541
+  },
+  {
+   "reference": "Song of Songs 7:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 543
+  },
+  {
+   "reference": "Song of Songs 7:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 544
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 546
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 547
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 548
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 550
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 552
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 553
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 554
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 555
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 557
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 558
+  },
+  {
+   "reference": "Song of Songs 8:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 560
+  },
+  {
+   "reference": "Song of Songs 8:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 561
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 580
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 581
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 582
+  },
+  {
+   "reference": "John 8:58",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 584
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "self_rendered",
+   "block_index": 585
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 586
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 589
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 590
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 592
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "self_rendered",
+   "block_index": 593
+  },
+  {
+   "reference": "Psalms 118:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 594
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 597
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 599
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 600
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 601
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 602
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 603
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 603
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 603
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 603
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 603
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 605
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 607
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 608
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 609
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 611
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 613
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 614
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 615
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 616
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 617
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 617
+  },
+  {
+   "reference": "Deuteronomy 33:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 618
+  },
+  {
+   "reference": "Song of Songs 8:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 618
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 620
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 621
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 622
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 623
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 624
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 625
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 628
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 629
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 630
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 633
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 635
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 637
+  },
+  {
+   "reference": "Revelation 7:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 640
+  },
+  {
+   "reference": "Revelation 7:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 640
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 641
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "block_index": 643
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 649
+  },
+  {
+   "reference": "Philippians 3:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 649
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 649
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 649
+  },
+  {
+   "reference": "Revelation 7:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 649
+  },
+  {
+   "reference": "Hebrews 9:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 650
+  }
+ ]
+}
