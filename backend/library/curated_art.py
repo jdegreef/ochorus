@@ -1437,6 +1437,10 @@ CURATED: dict[str, Artwork] = {
         "Morning over quiet farmland: Guthrie wrote for the plain country people of his Ayrshire parish at Fenwick.",
         focus=0.25,
     ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
 }
 
 
