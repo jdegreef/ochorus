@@ -1118,7 +1118,7 @@ class ChapterQuestionsShapeTests(SimpleTestCase):
                         f"{path.name} ch.{c['order']}",
                         count=(2, 5),
                     )
-        self.assertGreaterEqual(books, 10)  # the ten young-reader editions
+        self.assertGreaterEqual(books, 10)  # the young-reader editions, and a few adult books
 
     def test_family_devotions_read_only_chapters_that_ask(self):
         # Each card promises "three questions to talk about together", so every
@@ -1841,7 +1841,12 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
-        from library.covers import DARK_INK, DARK_INK_BOXES, INK_DARK
+        from library.covers import (
+            DARK_INK,
+            DARK_INK_BOXES,
+            DARK_INK_BOXES_BY_SLUG,
+            INK_DARK,
+        )
 
         self.assertTrue(DARK_INK_BOXES, "covers.DARK_INK_BOXES is empty")
 
@@ -1859,7 +1864,7 @@ class CoverAssetTests(SimpleTestCase):
             path = art_dir / f"{slug}.jpg"
             self.assertTrue(path.exists(), f"{slug}: no ground at covers/art/")
             plate = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-            for name, box, opacity, bar in DARK_INK_BOXES:
+            for name, box, opacity, bar in DARK_INK_BOXES_BY_SLUG.get(slug, DARK_INK_BOXES):
                 worst = 1e9
                 for px in plate.crop(box).getdata():
                     ink = tuple(round(d * opacity + c * (1 - opacity)) for d, c in zip(DARK_INK, px, strict=True))
@@ -2162,9 +2167,10 @@ class CoverAssetTests(SimpleTestCase):
             slug, language, cover = f["slug"], f.get("language"), _cover(f)
             if slug not in CURATED_GROUND:
                 continue
-            wants = (
-                DESIGNED_BY_SLUG[slug] if is_english_edition(language) else art_url(slug)[0]
-            )
+            # ENGLISH_ON_GROUND: a designed cover too small to keep, so English
+            # wears the painting as well (humility-2, 2026-11-01).
+            english_designed = is_english_edition(language) and slug not in ENGLISH_ON_GROUND
+            wants = DESIGNED_BY_SLUG[slug] if english_designed else art_url(slug)[0]
             if cover != wants:
                 wrong.append((slug, language, cover, wants))
         self.assertEqual(

@@ -599,6 +599,83 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "irenaeus-of-lyons": AuthorEntry(
+        slug="irenaeus-of-lyons",
+        name="Irenaeus of Lyons",
+        birth_year=130,
+        death_year=202,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Irenaeus of Lyons (c. 130–c. 202) was a Greek bishop of Lyons in Roman Gaul who as a boy had heard Polycarp of Smyrna."
+        ),
+    ),
+    "origen-of-alexandria": AuthorEntry(
+        slug="origen-of-alexandria",
+        name="Origen of Alexandria",
+        birth_year=185,
+        death_year=253,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Origen of Alexandria (c. 185–c. 253) was an Alexandrian teacher, preacher and biblical scholar, one of the most influential and most debated theologians of the early Church."
+        ),
+    ),
+    "eusebius-of-caesarea": AuthorEntry(
+        slug="eusebius-of-caesarea",
+        name="Eusebius of Caesarea",
+        birth_year=260,
+        death_year=339,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Eusebius of Caesarea (c. 260–339) was a bishop and scholar of Palestine, the pupil of the martyr Pamphilus and the father of church history."
+        ),
+    ),
+    "lactantius": AuthorEntry(
+        slug="lactantius",
+        name="Lactantius",
+        birth_year=250,
+        death_year=325,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
+        ),
+    ),
+    "minucius-felix": AuthorEntry(
+        slug="minucius-felix",
+        name="Minucius Felix",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin."
+        ),
+    ),
+    "william-booth": AuthorEntry(
+        slug="william-booth",
+        name="William Booth",
+        birth_year=1829,
+        death_year=1912,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
+        ),
+    ),
+    "polycarp": AuthorEntry(
+        slug="polycarp",
+        name="Polycarp of Smyrna",
+        birth_year=69,
+        death_year=155,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Polycarp of Smyrna (c. 69–c. 155) was bishop of Smyrna, remembered by tradition as a hearer of the apostle John."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1189,90 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Irenaeus's Against Heresies (c. 180) — Alexander Roberts and W. H.
+    # Rambaut's ANF translation (1885), public domain, extracted from anf01 by
+    # its stem. group_parts: each of the five Books is a chapter, its short
+    # chapters subheads; the editor's note, Elucidation and fragments are left out.
+    BookEntry("against-heresies", "Against Heresies", "irenaeus-of-lyons",
+              "ccel", "schaff/anf01", part="ix", group_parts=True,
+              subtitle="Translated by Alexander Roberts and W. H. Rambaut", cover_color="#4a3b5c"),
+    # Origen's On First Principles (De Principiis, c. 220–230) — Frederick
+    # Crombie's ANF translation (1885), public domain, extracted from anf04 by
+    # its stem. group_parts: Origen's Preface and each of the four Books is a
+    # chapter. Where ANF prints a passage twice, from Rufinus's Latin and from
+    # the surviving Greek, the Greek is kept.
+    BookEntry("on-first-principles", "On First Principles", "origen-of-alexandria",
+              "ccel", "schaff/anf04", part="vi.v", group_parts=True,
+              subtitle="Translated by Frederick Crombie", cover_color="#3e5a4a"),
+    # Eusebius's Church History (c. 325) — Arthur Cushman McGiffert's NPNF
+    # translation (1890), public domain, extracted from npnf201 by its stem.
+    # group_parts: each of the ten Books is a chapter, its short chapters
+    # subheads. McGiffert's prolegomena, the testimonies and his supplementary
+    # tables are left out; the Martyrs of Palestine, which ANF prints between
+    # Books VIII and IX, is kept as Eusebius's own appendix to Book VIII.
+    BookEntry("church-history", "The Church History", "eusebius-of-caesarea",
+              "ccel", "schaff/npnf201", part="iii", group_parts=True,
+              subtitle="Translated by Arthur Cushman McGiffert", cover_color="#5c4a2e"),
+    # Lactantius's Divine Institutes (c. 303–311) — William Fletcher's ANF
+    # translation (1886), public domain, extracted from anf07 by its stem.
+    # group_parts: each of the seven Books is a chapter, its short chapters
+    # subheads. The Epitome that follows it in the volume is left out.
+    BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
+              "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
+              subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
+    # The Octavius of Minucius Felix (c. 200–235) — Robert Ernest Wallis's ANF
+    # translation (1885), public domain, extracted from anf04 by its stem: a
+    # dialogue at Ostia between the pagan Caecilius and the Christian Octavius,
+    # in forty-one short chapters. Each is titled from the translator's
+    # "Argument" (summary_titles keeps its lead clause).
+    BookEntry("the-octavius", "The Octavius", "minucius-felix",
+              "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
+    # Clement of Alexandria's Who Is the Rich Man That Shall Be Saved? (c. 200)
+    # — William Wilson's ANF translation (1885), public domain, extracted from
+    # anf02 by its stem: a homily on Mark 10:17–31, ending with the story of
+    # St John and the young robber.
+    BookEntry("who-is-the-rich-man-that-shall-be-saved", "Who Is the Rich Man That Shall Be Saved?",
+              "clement-of-alexandria", "ccel", "schaff/anf02", part="vi.v", keep=("vi.v",),
+              subtitle="Translated by William Wilson", cover_color="#6b5a2e"),
+    # Tertullian's On Prayer (c. 198–203) — S. Thelwall's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem: the oldest
+    # surviving exposition of the Lord's Prayer, then counsel on the manner of
+    # praying, in twenty-nine short chapters.
+    BookEntry("tertullian-on-prayer", "On Prayer", "tertullian",
+              "ccel", "schaff/anf03", part="vi.iv",
+              subtitle="Translated by S. Thelwall", cover_color="#2e5c4a"),
+    # Gregory of Nyssa's On the Making of Man (379) — H. A. Wilson's NPNF
+    # translation (1893), public domain, extracted from npnf205 by its stem:
+    # the dedication to his brother Peter and thirty chapters completing
+    # Basil's Hexaemeron with the creation of man, under the translator's
+    # headings (summary_titles keeps each one's lead clause).
+    BookEntry("on-the-making-of-man", "On the Making of Man", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="x.ii.ii", summary_titles=True,
+              subtitle="Translated by H. A. Wilson", cover_color="#4a5c2e"),
+    # The Idea of a University (1852–1858, Gutenberg #24526) — Newman's
+    # nine Discourses on University Teaching and ten Lectures on University
+    # Subjects, with his Preface. Built from a reshaped copy of the PG HTML
+    # (one <h2> per Discourse or Lecture, his numbered sections kept as § marks;
+    # the contents, index and the two short notes to Part II left out).
+    BookEntry("the-idea-of-a-university", "The Idea of a University", "john-henry-newman",
+              "gutenberg", "24526",
+              subtitle="Defined and Illustrated", cover_color="#2e3e5c"),
+    # In Darkest England and the Way Out (1890, Gutenberg #475) — Booth's survey
+    # of London's "submerged tenth" and the Salvation Army's scheme to raise
+    # them: City, Farm and Over-Sea Colonies. Built from a reshaped copy of the
+    # PG HTML (one <h2> per chapter, titled from its Contents; the transcription's
+    # "#" restored to "£"; the Appendix of documents left out).
+    BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
+              "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
+    # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
+    # death — Roberts and Donaldson's ANF translation (1885), public domain,
+    # extracted from anf01 by its stem. group_parts: each work is a chapter,
+    # its short chapters subheads; the editors' introductory notes are left out.
+    BookEntry("epistle-and-martyrdom-of-polycarp", "The Epistle and Martyrdom of Polycarp",
+              "polycarp", "ccel", "schaff/anf01", part="iv", group_parts=True, keep=("iv.ii", "iv.iv"),
+              subtitle="Translated by Alexander Roberts and James Donaldson", cover_color="#5c4a3e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

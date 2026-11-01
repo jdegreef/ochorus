@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from './coverLayouts';
-import { coverStyleFor, scriptOf, volumeNumeral } from './coverStyles';
+import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
@@ -70,6 +70,7 @@ type Twin = {
 	style: string;
 	volume?: string | null;
 	layout?: string;
+	caps?: boolean;
 	rows?: Record<string, number[][]>;
 	middle?: number[];
 };
@@ -119,6 +120,7 @@ const needTwins = once(() => {
 				art,
 				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
+				caps: smallCapsFor(f.slug),
 				layout: (() => {
 					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug, f.title) : null;
 					return layoutKey(
@@ -276,6 +278,18 @@ describe('the og twins were drawn in the style the table names now', () => {
 			.filter((b) => recorded[b.key] && (recorded[b.key].volume ?? null) !== b.volume)
 			.map((b) => `${b.key}: drawn as ${recorded[b.key].volume ?? null}, now ${b.volume}`);
 		expect(stale, 'a series changed but its share cards did not — run `npm run og:covers`').toEqual(
+			[]
+		);
+	});
+
+	it('sets every card in small capitals as the table does', () => {
+		// Like the numeral, a table no other digest sees: a book added to
+		// `TITLE_SMALL_CAPS` would otherwise keep a card in lower case.
+		const recorded = manifest();
+		const stale = needTwins()
+			.filter((b) => recorded[b.key] && (recorded[b.key].caps ?? false) !== b.caps)
+			.map((b) => `${b.key}: drawn with caps ${recorded[b.key].caps ?? false}, now ${b.caps}`);
+		expect(stale, 'a title changed case but its share cards did not — run `npm run og:covers`').toEqual(
 			[]
 		);
 	});

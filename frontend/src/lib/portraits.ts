@@ -68,6 +68,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'elisabeth-elliot': '50% 20%', // Ochorus scene (writing by lamplight), figure from behind, no face
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
+	'eusebius-of-caesarea': '50% 10%', // Rabbula Gospels (586) figure cropped to the bust; face at ~22%
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
@@ -91,6 +92,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'ignatius-of-loyola': '50% 30%', // 16th-c. head-and-shoulders oil; face at ~45% of a 0.83 plate — 45% cut the crown
+	'irenaeus-of-lyons': '50% 10%', // stained glass (Bégule, 1901) cropped to the bust; face at ~20% of a 0.68 crop
 	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert
 	'j-c-ryle': '50% 0%', // 1888 photograph: bust, face high at ~30% of a 0.70 plate
 	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo
@@ -122,6 +124,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'krupabai-satthianadhan': '50% 0%', // The Sketch, 1895; face at ~30% of a 0.75 plate
+	'lactantius': '50% 20%', // 4th-c. wall painting (probable likeness); face at ~30% of a 0.75 crop
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
@@ -132,10 +135,12 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
 	'mary-stone': '50% 0%', // Burton 1918 plate, caption cropped off; face at ~30%
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
+	'origen-of-alexandria': '50% 25%', // 12th-c. manuscript drawing labelled ORIGENES; face at ~30% of a 0.95 crop
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
 	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
+	'polycarp': '50% 10%', // Orthodox fresco cropped to the bust; face at ~25% of a 0.97 crop
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
 	'richard-allen': '50% 37%',

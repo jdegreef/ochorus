@@ -124,7 +124,7 @@ import { coverTitle } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
-import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
+import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
 
@@ -287,6 +287,8 @@ function needTwins() {
 		.map((b) => ({ ...b, top: b.art && typeTopFor(b.slug, b.layout) }))
 		// Dark ink over a pale ground (Sons and Daughters of the King).
 		.map((b) => ({ ...b, dark: b.art && inkDarkFor(b.slug, b.layout) }))
+		// A title in small capitals — the component's call.
+		.map((b) => ({ ...b, caps: smallCapsFor(b.slug) }))
 		.filter((b) => hasTwin(b.cover));
 }
 
@@ -660,7 +662,8 @@ html,body{margin:0}
 			scrim: book.scrim,
 			layout: book.layout,
 			top: book.top,
-			dark: book.dark
+			dark: book.dark,
+			caps: book.caps
 		},
 		LOCKUP
 	)}
@@ -808,6 +811,8 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              series rather than left out, because the skip is lenient about
  *              an ABSENT field: a book that joined a series would otherwise
  *              find no recorded value to disagree with, and keep its old card.
+ *   `caps`   — a title in small capitals (`coverStyles.smallCapsFor`). Written
+ *              as false rather than left out, for `volume`'s reason.
  *
  * Add a field to `coverPage`'s call and it belongs here too, or the first card
  * that needs it will be skipped.
@@ -822,7 +827,8 @@ function made(book, groundBytes) {
 		art: book.art,
 		scrim: book.scrim,
 		layout: layoutKey(book.layout, book.top, book.dark),
-		bar: book.bar
+		bar: book.bar,
+		caps: book.caps
 	};
 }
 
