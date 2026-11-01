@@ -174,7 +174,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'pandita-ramabai-a-life-children': 0.70,
 	'pandita-ramabai-a-life-teens': 0.35,
 	'paradise-lost': 0.30,
-	'parochial-and-plain-sermons-vii': 0.80,
+	'parochial-and-plain-sermons-vii': 0.85,
 	'pensees': 0.35,
 	'pensees-teens': 0.30,
 	'phantastes': 0.80,
