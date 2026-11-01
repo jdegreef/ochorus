@@ -88,6 +88,38 @@
 				476
 			]
 		},
+		"a-practical-view-of-christianity": {
+			"ground": "5c44018fe06cdf1a916ab0df36d8c28112f6d4f88dd548c43448c918c468c059",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[93, 102, 507, 131]
+				],
+				"title": [
+					[91, 275, 509, 338],
+					[110, 337, 490, 400]
+				],
+				"subtitle": [
+					[54, 463, 546, 491],
+					[70, 491, 530, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
+			]
+		},
 		"a-retrospect": {
 			"ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
 			"style": "revival",
@@ -14515,6 +14547,34 @@
 				501
 			]
 		},
+		"gods-way-of-peace": {
+			"ground": "64d50f33b4e795d82325765060b73f5d3fc9d5a0e2dbfb34023cbbc8e12109a8",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[157, 321, 443, 403],
+					[184, 391, 416, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"gospel-of-john": {
 			"ground": "0019607f856c4418dab3b8e9a561fd1826162f10043718fec483d8d61576b928",
 			"style": "house",
@@ -19314,6 +19374,37 @@
 				472
 			]
 		},
+		"letters-of-samuel-rutherford": {
+			"ground": "c855df4aa5c1adca0d67b13befca5a36c3b132e1591fbfb80363474184d0dd84",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[108, 102, 492, 131]
+				],
+				"title": [
+					[91, 307, 509, 380],
+					[164, 367, 436, 440]
+				],
+				"subtitle": [
+					[127, 492, 473, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
@@ -21325,6 +21416,34 @@
 				444
 			]
 		},
+		"old-testament-types-and-teachings": {
+			"ground": "e477b4945571118d04549cff7ae73d2bdf0e75fbc87e730a426cd41211c24575",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[114, 290, 486, 372],
+					[42, 362, 558, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
 		"on-christian-doctrine": {
 			"ground": "27bb087eae72568afeb3a6bf3aae533e7ded9cb540d0c118fe31ac22b98ba021",
 			"style": "inscriptional",
@@ -21719,6 +21838,35 @@
 			"middle": [
 				303,
 				492
+			]
+		},
+		"parochial-and-plain-sermons-vii": {
+			"ground": "0acaabe694c1f630967ad2563bb2a9d0d23eefeb1dcda5c779c29ff893432ac2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[121, 293, 479, 369],
+					[103, 359, 497, 435],
+					[157, 424, 443, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
 			]
 		},
 		"pensees": {
@@ -25436,6 +25584,18 @@
 				492
 			]
 		},
+		"sw/a-call-to-the-unconverted": {
+			"ground": "8ac292db22f142e7d66c4d7102b0658c294fbb9dd09a18cc1753ec55aebcd3a2",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/a-retrospect": {
 			"ground": "43e5f6630703a436be821c55bc98cd0f07750c6e7501d6ff97c755f5199d1d04",
 			"style": "revival",
@@ -26218,6 +26378,18 @@
 				501
 			]
 		},
+		"sw/grace-abounding": {
+			"ground": "c6c6b02cbbd6881d7f172d9965e2953bd52d75c0fba4bc612331646a16032c15",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/growing-in-wisdom": {
 			"ground": "2ba31897414b044c561f714f4dc2a2a2f711c4fa614d995ac88fe86e62f09c74",
 			"style": "originals",
@@ -26589,6 +26761,37 @@
 			"layout": "wash/sage",
 			"bar": 0,
 			"caps": false
+		},
+		"sw/mortification-of-sin": {
+			"ground": "20b69a8949204fa172bae2b39081b5c42b40981485c301d5f11a5a499f24cd3f",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[102, 307, 498, 380],
+					[70, 367, 530, 440]
+				],
+				"subtitle": [
+					[103, 492, 497, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
 		},
 		"sw/necessity-of-prayer": {
 			"ground": "d4a81f3b0a1f25f4faaf49b5c102cbfa02a623f9248d61561f2f497f12983e0b",
@@ -27837,6 +28040,36 @@
 				556
 			]
 		},
+		"table-talk": {
+			"ground": "fdb8a1617f5e510bcb31dfab8204bf06e5d1fbb81bb16c2af2b9b80f0b8f6110",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[137, 327, 463, 420]
+				],
+				"subtitle": [
+					[132, 471, 468, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				303,
+				492
+			]
+		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
 			"style": "revival",
@@ -28247,6 +28480,30 @@
 				455
 			]
 		},
+		"the-art-of-divine-contentment": {
+			"ground": "15c667334b9bb282a8ce2a818f546857bc7581634a5e0b48acfc6627feffedbe",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
+		"the-beatitudes": {
+			"ground": "5b6d5bf44c4f313b515056f5363f85d978d611e6bb7132fa51f3dbdc8e8ba095",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-big-story": {
 			"ground": "96d49b04afc3f00fe739f4078febd9a07f3418543fb9f1c193f919bf02bccd94",
 			"style": "originals",
@@ -28423,6 +28680,34 @@
 				482
 			]
 		},
+		"the-christians-great-interest": {
+			"ground": "2e52c41447e19bd618a05a1b23aae97d0e3b00585bf5d2a01a4b1f1f6232a309",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[119, 330, 482, 403],
+					[132, 389, 468, 462]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				304,
+				491
+			]
+		},
 		"the-christians-secret-of-a-happy-life-4": {
 			"ground": "72d5f8585f6346a1096f1eb7236838f0ce03e62daf09247af192fedb1e31aedd",
 			"style": "devotional",
@@ -28495,6 +28780,38 @@
 				472
 			]
 		},
+		"the-crook-in-the-lot": {
+			"ground": "621ca5ae02dff617829c5340e6cf09d46c5deb958e897869afb3bb3a1c707b56",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[152, 102, 448, 131]
+				],
+				"title": [
+					[158, 292, 442, 370],
+					[172, 356, 428, 434]
+				],
+				"subtitle": [
+					[65, 487, 535, 508],
+					[65, 508, 535, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
+			]
+		},
 		"the-death-of-death-in-the-death-of-christ": {
 			"ground": "8c3a549dfb025d0081510298f6f7dd4c30eb06a8f871a6c47b78068ac4737e61",
 			"style": "press",
@@ -28527,6 +28844,18 @@
 				271,
 				524
 			]
+		},
+		"the-deeper-christian-life": {
+			"ground": "68374f6704ddd45197ee5b20c0de1777abfb3c2acaebe37a573e6effde636ce9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.095,
+			"caps": false
 		},
 		"the-dialogue-of-catherine-of-siena": {
 			"ground": "103a05452579a03d9cab6045681d666fed72fd50cb83d2ef4f57c39a74abec08",
@@ -28588,6 +28917,34 @@
 			"middle": [
 				320,
 				475
+			]
+		},
+		"the-dominion-of-sin-and-grace": {
+			"ground": "34b78661d3978ded1c9bde7a506cecd661445e399ce01f0e8da9fa57cb2cccc4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[124, 330, 476, 403],
+					[105, 389, 495, 462]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				304,
+				491
 			]
 		},
 		"the-epistles-of-cyprian": {
@@ -29068,6 +29425,18 @@
 				484
 			]
 		},
+		"the-jerusalem-sinner-saved": {
+			"ground": "3e5eda4d8e69a6da14c2d1bf23d305adf51565aa88a4acd759333d71827d63f9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",
@@ -29147,6 +29516,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"the-lords-prayer": {
+			"ground": "fd8f5792d9534e213a2df8fbb72184fd72eba7d67d702d4b8747655024f0b6b9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-masters-indwelling": {
 			"ground": "2758f94ea09201f1dd1f197da2891e43242defc49a36bc4c69da5e6815bb6f97",
 			"style": "devotional",
@@ -29173,6 +29554,38 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"the-method-of-grace": {
+			"ground": "e9aaf4de1f848ab34c3c451abc753e5483d21966bd71afa779d6c6d743ced7bd",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[138, 292, 462, 370],
+					[189, 356, 411, 434]
+				],
+				"subtitle": [
+					[65, 487, 535, 508],
+					[53, 508, 547, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
 			]
 		},
 		"the-normal-christian-life": {
@@ -29431,6 +29844,33 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"the-rent-veil": {
+			"ground": "4a1756d9dafa1fbb9b9ba1ae309291f6008f154f2466db7708593ec978237b20",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[80, 348, 520, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
+		},
 		"the-rise-and-progress-of-religion-in-the-soul": {
 			"ground": "821dec503d7961656ff3102e8b4836219097be12b7bfdeb219b9acb37fea1c7e",
 			"style": "enlightenment",
@@ -29482,6 +29922,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
+		"the-school-of-obedience": {
+			"ground": "d1c04b6cec75251edf031011abe2edd67b4731e525365b6ebcee879ba734804a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
 			"bar": 0,
 			"caps": false
 		},
@@ -29621,6 +30073,18 @@
 				510
 			]
 		},
+		"the-two-covenants": {
+			"ground": "438a6d0ff70501009056f9b58a38d2b32743e66b3e506df399e39f0df748e725",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
 		"the-unselfishness-of-god": {
 			"ground": "bbd8e249362f95f77cd7dee6f05b8854cde88800e2d2c99a400f882073363bc0",
 			"style": "devotional",
@@ -29647,6 +30111,34 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"the-upper-room": {
+			"ground": "4f6d0c397d3911fcbfdfdefbb82fda997a034dc5834265c190e97d5db76673e1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[125, 307, 475, 404],
+					[202, 390, 398, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
 			]
 		},
 		"the-way-to-god": {
@@ -29903,6 +30395,18 @@
 				315,
 				480
 			]
+		},
+		"treatise-on-grace": {
+			"ground": "d6b53b4250ac2410bd69234d546abbd076347855d0a45e794f0abb9fee3b2496",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",
