@@ -110,6 +110,13 @@ class Artwork(NamedTuple):
     #: painting's recipe (object and focus, `crop_recipe`) is recorded in
     #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
+    #: How much of the photograph to cut from EVERY edge before cropping, as a
+    #: fraction of that side. Some collections photograph a canvas with a black
+    #: mat or the frame's lip around it (Michel's plowed field, Met 437079), and
+    #: a 3:4 crop of the full photograph keeps that band down the plate's top
+    #: and bottom. Default 0, which is every entry cut before this existed;
+    #: only a non-zero inset enters `crop_recipe`, so their recipes stand.
+    inset: float = 0.0
 
 
 def crop_recipe(art: Artwork) -> str:
@@ -121,7 +128,8 @@ def crop_recipe(art: Artwork) -> str:
     to a different artwork, or moving its ``focus``, redraws it rather than
     leaving the old picture under the new credit.
     """
-    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    recipe = f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    return f"{recipe}~{art.inset:.2f}" if art.inset else recipe
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -1279,6 +1287,12 @@ CURATED: dict[str, Artwork] = {
         "met", 437471, "Hubert Robert", "Aqueduct in Ruins", "",
         "A Roman aqueduct still carrying the land's life after its empire passed: Eusebius tells how the church grew across that world, from the apostles to Constantine.",
     ),
+    "faithful-with-little": Artwork(
+        "met", 437079, "Georges Michel", "Landscape with a Plowed Field and a Village", "probably after 1827",
+        "A worked field and a small village under a vast storm-lit sky: ordinary, faithful labour done under heaven, the little that God's servants are asked to keep well.",
+        focus=0.55,
+        inset=0.07,
+    ),
 }
 
 
@@ -1479,14 +1493,6 @@ ORIGINAL_GROUND: dict[str, Original] = {
     "brave-for-god-4": Original(
         "a5c690a89c4784a4e108cf74d6cc6d857a2fffe7a855582d746777728d92c343",
         "Snowy mountains under cobalt: pines, a snowfield and a small red cabin.",
-    ),
-    "faithful-with-little": Original(
-        "90f3d2aba984ada532676e998b4cc1d431a9826a2789fb1e7d63e9393f647158",
-        "The widow's two small coins (Mark 12:42, in the book's introduction), "
-        "low in a pool of warm light on the deep green the book's plate wore: "
-        "the little that was faithfully given. Drawn by "
-        "scripts/original_grounds/faithful_with_little.py; the type is set from "
-        "the top, so the coins sit under the subtitle and over the mark.",
     ),
     "growing-in-wisdom": Original(
         "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
