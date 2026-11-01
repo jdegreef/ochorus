@@ -58,6 +58,7 @@ ART_SOURCES: dict[str, str] = {
     "freedom-of-the-will": "met-11319@0.50",
     "george-muller-of-bristol": "aic-152437@0.50",
     "gleanings-among-the-sheaves": "met-437097@0.50",
+    "gospel-of-john": "met-438380@0.40~0.03",
     "grace-abounding": "met-437549@0.50",
     "holiness": "met-437941@0.50",
     "holy-dying": "met-437520@0.50",
