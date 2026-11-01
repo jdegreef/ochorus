@@ -44,6 +44,9 @@
   "as-thy-days-so-shall-thy-strength-be": {
    "word-fusion": 1
   },
+  "asking-in-christs-name": {
+   "lost-paragraphing": 1
+  },
   "at-the-masters-feet": {
    "space-before-punct": 2
   },
@@ -271,6 +274,9 @@
   "men-of-prayer-2": {
    "space-before-punct": 1
   },
+  "messiah-suffering-and-wounded-for-us": {
+   "space-before-punct": 7
+  },
   "morning-by-morning": {
    "space-before-punct": 1,
    "word-fusion": 1
@@ -433,6 +439,9 @@
   "tertullian-on-prayer": {
    "lost-paragraphing": 3
   },
+  "the-angels-message-and-song": {
+   "space-before-punct": 2
+  },
   "the-apology-of-tertullian": {
    "lost-paragraphing": 37
   },
@@ -537,6 +546,9 @@
   },
   "the-life-of-god-in-the-soul-of-man": {
    "orphan-close-quote": 1
+  },
+  "the-lord-is-risen-indeed": {
+   "space-before-punct": 5
   },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
