@@ -365,7 +365,6 @@ TOPICS = [
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistle-and-martyrdom-of-polycarp",
-            "epistle-and-martyrdom-of-polycarp",
             "the-shepherd-of-hermas",
             "to-autolycus",
             "refutation-of-all-heresies",

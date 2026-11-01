@@ -68,6 +68,7 @@ ART_SOURCES: dict[str, str] = {
     "how-to-bring-men-to-christ": "met-436012@0.50",
     "how-to-pray": "cma-159270@0.50",
     "how-to-succeed-in-the-christian-life": "met-437436@0.50",
+    "humility-2": "met-459122@0.50",
     "hurlbuts-life-of-christ": "aic-16439@0.50",
     "indwelling-sin-in-believers": "cma-126243@0.50",
     "institutes-of-the-christian-religion": "cma-141168@0.50",
