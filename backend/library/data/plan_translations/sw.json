@@ -226,5 +226,17 @@
     "note": [
       "The title quotes the shipped sw edition («Mwaminifu Katika Mambo Madogo») verbatim; the themes reuse its titles («Vyote Ni Mali ya Mungu», «Moyo nyuma ya pochi», «Hazina inayodumu»). Written with the plan (2026-10)."
     ]
+  },
+  "days-of-heaven-upon-earth-year": {
+    "title": "Mwaka Mmoja na Siku za Mbinguni Hapa Duniani",
+    "description": "Mwaka wa ibada za kila siku wa A. B. Simpson: mstari mmoja na tafakari fupi kuhusu utimilifu wa Kristo kwa kila siku. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja au mbili kwa siku."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Mwaka Mmoja wa Mawazo kwa Saa ya Utulivu",
+    "description": "Mkusanyiko wa D. L. Moody wa masomo mafupi kwa mwaka mzima: mstari mmoja na maneno machache ya wahubiri na waandishi aliowapenda. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja kwa siku."
+  },
+  "cheque-book-year": {
+    "title": "Mwaka Mmoja na Kitabu cha Hundi cha Benki ya Imani",
+    "description": "Ahadi za kila siku za Charles Spurgeon: ahadi moja ya Mungu kwa kila siku ya mwaka, pamoja na neno fupi la jinsi ya kuipokea kwa imani. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja au mbili kwa siku."
   }
 }
