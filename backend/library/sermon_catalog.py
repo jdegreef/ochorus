@@ -2191,4 +2191,108 @@ SERMONS: list[SermonEntry] = [
         "the-heavenly-workers-and-the-earthly-watchers", "The Heavenly Workers and the Earthly Watchers", "alexander-maclaren", "ccel",
         _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxii.html", scripture_ref="Isaiah 62:1",
     ),
+    # Batch 7 toward 400 (2026-11): Spurgeon's printed *New Park Street Pulpit*
+    # (1856–61) comfort and faith sermons, and Maclaren's Ezekiel–Matthew,
+    # 2 Kings–Ecclesiastes and Deuteronomy–Kings volumes; warm titles only.
+    # The 1860–61 Spurgeon picks (*Love to Jesus*, *Trust in God*, *The Shield of
+    # Faith*, *Bread for the Hungry*, *The Fullness of Christ Received*) were
+    # CCEL's modernised transcription (archaisms 3–15 per 10k, no -eth) and left.
+    # Read in full and dropped for tone, 17 of 30, each for an aside or its
+    # close: polemic against Arminians, Wesleyans, free-will preaching, heretics
+    # or denominations (*The Beatific Vision*, *The Plea of Faith*, *The Fainting
+    # Warrior*, *God in the Covenant*, *Weak Hands and Feeble Knees*, *Plenteous
+    # Redemption*); against Rome (*Our Father*, *God and His Saints*); on Jews or
+    # "heathen" (*The Third Beatitude*, *God the Joy-Bringer*, *The Fatherhood of
+    # God*, *Anxious Care*, *The River of Life*); "Red Indians" (*Shod for the
+    # Road*); closes on judgment or hell (*All Things Are Yours*, *The Afterwards
+    # and Our Hope*, *A Sense of Pardoned Sin*). The Spurgeon of 1856–59 fails
+    # the rubric far more often than Maclaren. A top-up of 12 Maclaren followed;
+    # six of those were dropped too ("Oriental craft", "wild Arabs", imperial
+    # mission, "pestilent old Jewish error", the Rabbis' "rubbish", communism).
+    # Two more were added to reach 400; *A Prophet's Strange Providers* ("the
+    # prejudices of Israel") was dropped from that final three.
+    SermonEntry(
+        "the-dew-and-the-plants", "The Dew and the Plants", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.iv.vii.html", scripture_ref="Hosea 14:5-6",
+    ),
+    SermonEntry(
+        "the-second-beatitude", "The Second Beatitude", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xvi.html", scripture_ref="Matthew 5:4",
+    ),
+    SermonEntry(
+        "our-knocking", "Our Knocking", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xlvi.html", scripture_ref="Matthew 7:7",
+    ),
+    SermonEntry(
+        "the-peace-bringer-in-the-spiritual-world", "The Peace-Bringer in the Spiritual World", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.lvii.html", scripture_ref="Matthew 8:28-34",
+    ),
+    SermonEntry(
+        "the-search-that-always-finds", "The Search that Always Finds", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.vi.html", scripture_ref="2 Chronicles 15:15",
+    ),
+    SermonEntry(
+        "holding-fast-and-held-fast", "Holding Fast and Held Fast", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.xi.html", scripture_ref="2 Chronicles 20:20",
+    ),
+    SermonEntry(
+        "keeping-and-kept", "Keeping and Kept", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.viii.html", scripture_ref="Proverbs 4:23",
+    ),
+    SermonEntry(
+        "the-peaceable-fruits-of-sorrows-rightly-borne", "The Peaceable Fruits of Sorrows Rightly Borne", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.viii.ii.html", scripture_ref="Job 5:17-27",
+    ),
+    SermonEntry(
+        "the-eagle-and-its-brood", "The Eagle and Its Brood", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.ii.viii.html", scripture_ref="Deuteronomy 32:11",
+    ),
+    SermonEntry(
+        "caleb-a-green-old-age", "Caleb—A Green Old Age", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.iii.xii.html", scripture_ref="Joshua 14:6-14",
+    ),
+    SermonEntry(
+        "elijahs-weakness-and-its-cure", "Elijah's Weakness, and Its Cure", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iii.xix.html", scripture_ref="1 Kings 19:1-18",
+    ),
+    SermonEntry(
+        "christ-in-the-covenant", "Christ in the Covenant", "charles-h-spurgeon", "ccel",
+        _CCEL + "sermons02/sermons02.xlix.html",
+    ),
+    SermonEntry(
+        "the-first-beatitude", "The First Beatitude", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xv.html", scripture_ref="Matthew 5:3",
+    ),
+    SermonEntry(
+        "brave-encouragements", "Brave Encouragements", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.x.ii.html", scripture_ref="Haggai 2:1-9",
+    ),
+    SermonEntry(
+        "what-life-may-be-made", "What Life May Be Made", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.viii.vi.html", scripture_ref="Job 22:26-29",
+    ),
+    SermonEntry(
+        "heroic-faith", "Heroic Faith", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.v.vi.html", scripture_ref="Ezra 8:22-23",
+    ),
+    SermonEntry(
+        "at-the-bush", "At the Bush", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.ii.xii.html", scripture_ref="Deuteronomy 33:16",
+    ),
+    SermonEntry(
+        "when-the-oil-flows", "When the Oil Flows", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iv.v.html", scripture_ref="2 Kings 4:6",
+    ),
+    SermonEntry(
+        "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
+    ),
+    SermonEntry(
+        "a-young-mans-best-counsellor", "A Young Man's Best Counsellor", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.i.html", scripture_ref="Proverbs 1:1-19",
+    ),
+    SermonEntry(
+        "gods-requirements-and-gods-gift", "God's Requirements and God's Gift", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.v.html", scripture_ref="Micah 6:8",
+    ),
 ]
