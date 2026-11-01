@@ -21756,13 +21756,13 @@
 			]
 		},
 		"parochial-and-plain-sermons-vii": {
-			"ground": "99976beec1428b8ff352a0c35eec7056c2e630b518bfb7f13d31e939d5a22eec",
+			"ground": "0acaabe694c1f630967ad2563bb2a9d0d23eefeb1dcda5c779c29ff893432ac2",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
