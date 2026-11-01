@@ -2209,6 +2209,8 @@ SERMONS: list[SermonEntry] = [
     # the rubric far more often than Maclaren. A top-up of 12 Maclaren followed;
     # six of those were dropped too ("Oriental craft", "wild Arabs", imperial
     # mission, "pestilent old Jewish error", the Rabbis' "rubbish", communism).
+    # Two more were added to reach 400; *A Prophet's Strange Providers* ("the
+    # prejudices of Israel") was dropped from that final three.
     SermonEntry(
         "the-dew-and-the-plants", "The Dew and the Plants", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.ii.iv.vii.html", scripture_ref="Hosea 14:5-6",
@@ -2284,10 +2286,6 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
         _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
-    ),
-    SermonEntry(
-        "a-prophets-strange-providers", "A Prophet's Strange Providers", "alexander-maclaren", "ccel",
-        _MACLAREN + "deut/deut.iii.iii.xv.html", scripture_ref="1 Kings 17:1-16",
     ),
     SermonEntry(
         "a-young-mans-best-counsellor", "A Young Man's Best Counsellor", "alexander-maclaren", "ccel",

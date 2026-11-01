@@ -1117,6 +1117,7 @@ TOPIC_SERMONS = {
         "the-rest-giver",
         "the-way",
         "the-child-prophet",
+        "gods-requirements-and-gods-gift",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1138,6 +1139,8 @@ TOPIC_SERMONS = {
         "the-love-that-constrains",
         "keeping-and-kept",
         "the-first-beatitude",
+        "a-young-mans-best-counsellor",
+        "gods-requirements-and-gods-gift",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",

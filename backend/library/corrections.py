@@ -20690,3 +20690,13 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Batch 7, the last two Maclaren sermons to 400: keying slips, raw import.
+for _slug, _pairs in {
+    "gods-requirements-and-gods-gift": [
+        ('—God ‘requires of me. The blessed sun', '—God ‘requires’ of me. The blessed sun'),
+        ('to ask, ‘Lord I what wilt Thou', 'to ask, ‘Lord! what wilt Thou'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
