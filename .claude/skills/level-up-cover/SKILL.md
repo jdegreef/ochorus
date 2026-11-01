@@ -547,6 +547,8 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 - **Order for a NEW book's original ground (Tell Me the Story 8–9, 10-14):** `build_cover_assets` reads the committed FIXTURES (`book_editions()`), not the DB — serialize the book's fixture FIRST or it writes 0 variants for the new slug. Then `tune_art_scrim`: a full run once silently omitted the new slug — always `grep <slug> library/art_scrim.py` after, and if missing run `tune_art_scrim.py <slug>`. Only THEN `npm run og:covers` (the twin bakes the scrim; drawing it before the tune leaves a stale twin). Set `cover_url` straight to `/covers/art/<slug>.jpg` in the build command — no plate, so no svg to delete.
 
 ## Done so far
+**Batch 30 (#6936, 2026-11-01) painted the last published plates.** `tests_fixture.NoPublishedPlateTests`
+now fails any published edition on a `.svg` plate, so a new import ships with its painting.
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
 Van Gogh → Courbet so his two 1889 cypress Van Goghs no longer pair; wash/sage kept),
