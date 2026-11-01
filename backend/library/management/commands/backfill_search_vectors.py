@@ -1,6 +1,7 @@
 """Fill stored search vectors that fixture loads left NULL.
 
-loaddata bypasses Chapter.save()/Sermon.save() (the same gap backfill_body_text
+Covers every stored vector in library/fts.py (chapters, sermons, books, plans,
+articles). loaddata bypasses Chapter.save()/Sermon.save() (the same gap backfill_body_text
 covers for body_text), so a freshly seeded database has NULL search_vector on
 every row. This runs on every deploy (release step) and is a cheap no-op when
 nothing is missing. ``--all`` rebuilds every vector — needed only after an
@@ -19,7 +20,7 @@ from library import fts
 
 
 class Command(BaseCommand):
-    help = "Populate NULL chapter/sermon search vectors (--all rebuilds every row)."
+    help = "Populate NULL stored search vectors (--all rebuilds every row)."
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -32,9 +33,6 @@ class Command(BaseCommand):
         if connection.vendor != "postgresql":
             self.stdout.write("SQLite: search vectors unused, nothing to do.")
             return
-        chapters, sermons = fts.backfill(only_null=not opts["all"])
-        self.stdout.write(
-            self.style.SUCCESS(
-                f"Search vectors filled: {chapters} chapters, {sermons} sermons."
-            )
-        )
+        counts = fts.backfill(only_null=not opts["all"])
+        filled = ", ".join(f"{n} {kind}s" for kind, n in counts.items())
+        self.stdout.write(self.style.SUCCESS(f"Search vectors filled: {filled}."))

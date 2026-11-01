@@ -522,16 +522,143 @@ class StoredSearchVectorTests(TestCase):
         self.assertIsNotNone(self.sermon.search_vector)
 
     def test_gin_indexes_exist(self):
+        expected = {
+            f"library_{table}_search_vector_gin"
+            for table in ("chapter", "sermon", "book", "plan", "article")
+        }
         with connection.cursor() as cur:
             cur.execute(
-                "SELECT indexname FROM pg_indexes WHERE indexname IN "
-                "('library_chapter_search_vector_gin', 'library_sermon_search_vector_gin')"
+                "SELECT indexname FROM pg_indexes WHERE indexname = ANY(%s)",
+                [list(expected)],
             )
             names = {row[0] for row in cur.fetchall()}
-        self.assertEqual(
-            names,
-            {"library_chapter_search_vector_gin", "library_sermon_search_vector_gin"},
+        self.assertEqual(names, expected)
+
+    # --- Books, plans, articles (migration 0207) ------------------------------
+
+    def _hits(self, q, kind, language="en"):
+        return [h for h in self._search(q, language) if h["type"] == kind]
+
+    def test_entity_vectors_are_populated_on_save(self):
+        plan = Plan.objects.create(slug="p", language="en", title="Perfect Love")
+        article = Article.objects.create(
+            slug="a", language="en", h1="On Perfect Love", body_html="<p>x</p>"
         )
+        for model, pk in ((Book, self.book.pk), (Plan, plan.pk), (Article, article.pk)):
+            vector = model.objects.filter(pk=pk).values_list("search_vector", flat=True).get()
+            self.assertIsNotNone(vector, model.__name__)
+
+    def test_stored_entity_vectors_equal_the_query_time_ones(self):
+        # The stored vectors replace ones search built per request; recall and
+        # ranking stay unchanged only while the two are the same tsvector. This
+        # pins fts's SQL to the SearchVector expressions it replaced.
+        from django.contrib.postgres.search import SearchVector
+
+        Plan.objects.create(slug="p", language="fr", title="Amour parfait",
+                            description="Un mois avec Wesley.")
+        Article.objects.create(slug="a", language="es", h1="Sobre el amor",
+                               meta_title="Amor perfecto", description="Una guía.",
+                               body_html="<p>x</p>")
+        self.book.subtitle = "As Believed and Taught"
+        self.book.description = "Wesley's account of entire sanctification."
+        self.book.save()
+
+        def sv(field, weight, config):
+            return SearchVector(field, weight=weight, config=config)
+
+        cases = {
+            Book: lambda c: sv("title", "A", c) + sv("subtitle", "A", c)
+            + sv("author__name", "B", c) + sv("description", "C", c),
+            Plan: lambda c: sv("title", "A", c) + sv("description", "C", c),
+            Article: lambda c: sv("h1", "A", c) + sv("meta_title", "A", c)
+            + sv("description", "C", c),
+        }
+        from .fts import config_for
+
+        for model, vector in cases.items():
+            for row in model.objects.all():
+                stored, built = (
+                    model.objects.filter(pk=row.pk)
+                    .annotate(built=vector(config_for(row.language)))
+                    .values_list("search_vector", "built")
+                    .get()
+                )
+                self.assertEqual(stored, built, f"{model.__name__} {row.slug}")
+
+    def test_book_vector_follows_a_description_edit(self):
+        self.assertFalse(self._hits("sanctification", "book"))
+        self.book.description = "On entire sanctification."
+        self.book.save()
+        self.assertTrue(self._hits("sanctification", "book"))
+
+    def test_scoped_save_of_an_unrelated_field_keeps_the_vector(self):
+        # A cover or sort-order save writes only that column: with the vector
+        # deferred by the manager it can't put a stale one back, and the
+        # skipped refresh can't blank it.
+        book = Book.objects.get(pk=self.book.pk)
+        book.sort_order = 7
+        book.save(update_fields=["sort_order"])
+        self.assertTrue(self._hits("perfection", "book"))
+
+    def test_author_rename_cascades_into_book_vectors(self):
+        self.author.name = "Juan Wesley"
+        self.author.save()
+        self.assertTrue(self._hits("juan", "book"))
+
+    def test_backfill_fills_entity_rows_loaded_without_save(self):
+        # bulk_create bypasses save(), like loaddata does on deploy.
+        Plan.objects.bulk_create([Plan(slug="zeal", language="en", title="Zeal")])
+        self.assertFalse(self._hits("zeal", "plan"))
+        call_command("backfill_search_vectors", verbosity=0)
+        self.assertTrue(self._hits("zeal", "plan"))
+
+    def test_book_rows_leave_the_vector_out_unless_asked(self):
+        # Books are loaded whole across the site; the vector is read only in SQL.
+        from django.test.utils import CaptureQueriesContext
+
+        with CaptureQueriesContext(connection) as ctx:
+            list(Book.objects.all())
+            list(Plan.objects.all())
+            list(Article.objects.all())
+            # A lazy FK load goes through the BASE manager, not `objects`.
+            Chapter.objects.only("book_id").get(pk=self.chapter.pk).book  # noqa: B018
+            # The reader's main endpoint, which joins its book via select_related.
+            res = APIClient().get(f"/api/library/books/{self.book.slug}/chapters/1/")
+        self.assertEqual(res.status_code, 200)
+        for query in ctx.captured_queries:
+            self.assertNotIn("search_vector", query["sql"])
+
+    # --- Index use ------------------------------------------------------------
+
+    def test_stored_vector_matches_never_scan_every_chapter(self):
+        # The planner prices a sequential scan by the heap alone, not the
+        # TOASTed vectors beside it, and so preferred scanning every chapter to
+        # using the GIN index. _index_scans is what overrides that. (Which index
+        # wins depends on the table's size: on this near-empty one the planner
+        # may go through book_id instead — either is fine; the full scan isn't.)
+        from .fts import search_query
+
+        matched = search_module._base_querysets("en")["chapter"].filter(
+            search_vector=search_query("prayer", "en")
+        )
+        sql, params = matched.query.sql_with_params()
+        with search_module._index_scans(), connection.cursor() as cur:
+            cur.execute("EXPLAIN " + sql, params)
+            plan = "\n".join(row[0] for row in cur.fetchall())
+        self.assertNotIn("Seq Scan on library_chapter", plan)
+
+    def test_index_scans_restores_the_setting(self):
+        def seqscan():
+            with connection.cursor() as cur:
+                cur.execute("SELECT current_setting('enable_seqscan')")
+                return cur.fetchone()[0]
+
+        before = seqscan()
+        with search_module._index_scans():
+            self.assertEqual(seqscan(), "off")
+        # The test runs inside a transaction, where SET LOCAL would otherwise
+        # outlive the block — exactly the case the restore exists for.
+        self.assertEqual(seqscan(), before)
 
     def test_author_name_baked_into_passage_vectors(self):
         # Recall parity with the old query-time vector: an author-name term
@@ -1312,6 +1439,83 @@ class SearchClickTests(TestCase):
         self.assertEqual(
             list(SearchClickLog.objects.values_list("query", flat=True)), ["humility"]
         )
+
+
+_REAL_SEARCH_CACHE = {
+    **settings.CACHES,
+    "search": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "search-tests",
+    },
+}
+
+
+@override_settings(CACHES=_REAL_SEARCH_CACHE)
+class SearchMemoTests(TestCase):
+    """Search answers are memoised per worker (library.search.memoized).
+
+    The suite runs on a dummy "search" cache so no test sees another's answer;
+    this class opts back in to a real one to prove the memo is wired.
+    """
+
+    def setUp(self):
+        from django.core.cache import caches
+
+        caches["search"].clear()
+        self.client = APIClient()
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        book = Book.objects.create(author=author, slug="humility", language="en",
+                                   title="Humility")
+        Chapter.objects.create(book=book, order=1, title="One",
+                               body_html="<p>Humility is the root of every grace.</p>")
+
+    def get(self, **params):
+        return self.client.get("/api/library/search/", {"language": "en", **params})
+
+    def counting(self, name):
+        from . import views
+
+        return patch.object(views, name, wraps=getattr(views, name))
+
+    def test_a_repeated_query_is_answered_from_the_memo(self):
+        with self.counting("search_library") as engine, self.counting("count_by_type") as counter:
+            first = self.get(q="humility").json()
+            second = self.get(q="humility").json()
+        self.assertEqual(first, second)
+        self.assertEqual((engine.call_count, counter.call_count), (1, 1))
+
+    def test_each_request_is_still_logged(self):
+        # The popular-searches report counts readers, not computations.
+        self.get(q="humility")
+        self.get(q="humility")
+        self.assertEqual(SearchQueryLog.objects.filter(query="humility").count(), 2)
+
+    def test_a_content_change_through_the_api_misses_the_memo(self):
+        from .models import ContentRevision
+
+        with self.counting("search_library") as engine:
+            self.get(q="humility")
+            ContentRevision.bump()
+            self.get(q="humility")
+        self.assertEqual(engine.call_count, 2)
+
+    def test_language_scope_and_paging_are_part_of_the_key(self):
+        with self.counting("search_library") as engine, self.counting("page_by_type") as pager:
+            self.get(q="humility")
+            self.get(q="humility", language="fr")
+            self.get(q="humility", **{"in": "author:andrew-murray"})
+            self.get(q="humility", type="chapter")
+            self.get(q="humility", type="chapter", offset=20)
+            self.get(q="humility", type="chapter", sort="title")
+        self.assertEqual((engine.call_count, pager.call_count), (3, 3))
+
+    def test_no_suggestion_is_remembered_too(self):
+        # "Did you mean" runs a full-vocabulary scan on a miss; a miss with no
+        # suggestion is the answer most worth not recomputing.
+        with self.counting("suggest") as suggester:
+            self.get(q="zzzzqqq")
+            self.get(q="zzzzqqq")
+        self.assertEqual(suggester.call_count, 1)
 
 
 class SearchThrottleTests(TestCase):
