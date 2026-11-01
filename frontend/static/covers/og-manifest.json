@@ -31489,6 +31489,18 @@
 				559
 			]
 		},
+		"vi/a-call-to-the-unconverted": {
+			"ground": "60149bc16560b89a77bbbca1d9fd826cde5447aa4b2dac217636d43f44f7708a",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/a-retrospect": {
 			"ground": "b5be54d822cb3a6c0bb246b9c27f3d51cb88bb698ec4c9f75adfd0c1540ddf56",
 			"style": "revival",
@@ -31528,6 +31540,18 @@
 				275,
 				519
 			]
+		},
+		"vi/absolute-surrender": {
+			"ground": "5ac32bedaef6917ef40339ac607fa725ff75bdd700ef67eece459f1afa1db9c1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
 		},
 		"vi/all-of-grace": {
 			"ground": "1bf0833cffe0cbd33cca408baad357186151113c2dc3aec0c882ba94b2dda85b",
@@ -31812,6 +31836,18 @@
 				313,
 				482
 			]
+		},
+		"vi/confessions": {
+			"ground": "aaf976f27cb642df82eb5eca3b8cf5a0fedfe1f87426f0bccd74c565e4bd60c7",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false
 		},
 		"vi/divine-healing": {
 			"ground": "e7cfde1dd6f0f093a5a5554b0282e6a0fc296579fb3b1af394c233e595e4c6ea",
@@ -32844,6 +32880,18 @@
 				290,
 				505
 			]
+		},
+		"vi/the-way-to-god": {
+			"ground": "382eedbe5a7b52037bee2027dcc827c2f9d56b6f1d5075fc6f93f7cf560ca0cd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0,
+			"caps": false
 		},
 		"vi/true-vine": {
 			"ground": "128b8534466b56fce047270220f3ae596ad269dae0ee99cec7accf7a3b29a752",
