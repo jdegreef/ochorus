@@ -15,9 +15,11 @@
 	 * writer's third, the era that completed the set. Never a pop-up mid-
 	 * chapter; this is the end of the book, where an arrival is already marked.
 	 * Each names its way onward. Nothing shows when the book earned none, or
-	 * when the reader has switched seals off.
+	 * when the reader has switched seals off. While `stamp` holds — the arrival
+	 * moment, which BookFinished marks with its falling leaves — the seals press
+	 * down into place one after another; a look back just shows them.
 	 */
-	let { slug }: { slug: string } = $props();
+	let { slug, stamp = false }: { slug: string; stamp?: boolean } = $props();
 	const t = i18n.t;
 
 	let seals = $state<Seal[]>([]);
@@ -38,10 +40,10 @@
 
 {#if sealsPref.on && seals.length}
 	<div class="mt-6 flex flex-col items-stretch gap-3">
-		{#each seals as seal (seal.key)}
+		{#each seals as seal, i (seal.key)}
 			{@const next = sealNext(seal)}
 			<div class="seal-earned">
-				<SealMark id={seal.id} state="earned" size="4.5rem" />
+				<SealMark id={seal.id} state="earned" size="4.5rem" {stamp} delay="{0.2 + i * 0.35}s" />
 				<div class="min-w-0 text-start">
 					<p class="eyebrow text-gold">{t('seals.new')}</p>
 					<p class="font-display text-h3">{sealName(seal)}</p>
