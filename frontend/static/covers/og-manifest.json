@@ -26102,6 +26102,38 @@
 				534
 			]
 		},
+		"sw/rooted-3": {
+			"ground": "e96973fc8b81db3814b91346b8a4476fec271ca32554406fdb6072e472ce8ab3",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 273, 310, 317],
+					[135, 348, 465, 423]
+				],
+				"subtitle": [
+					[93, 478, 507, 506],
+					[130, 506, 470, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"sw/samuel-ajayi-crowther-a-life-children": {
 			"ground": "159430fa139ffb97373d01dae46532bdacce4deaa5ca8b5ea4b9155a375133a0",
 			"style": "young",
