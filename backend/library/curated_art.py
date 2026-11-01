@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "lectures-to-professing-christians": Artwork(
+        "met", 10768, "Thomas Doughty", "On the Hudson", "1830–35", "The Hudson valley in Finney's own decade: the New York country his lectures were preached to.",
+        focus=0.60, inset=0.01,
+    ),
 }
 
 

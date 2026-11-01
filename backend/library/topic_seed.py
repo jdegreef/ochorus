@@ -221,6 +221,7 @@ TOPICS = [
             "plain-account-christian-perfection",
             "godliness",
             "holiness",
+            "lectures-to-professing-christians",
             "holy-living",
             "holy-dying",
             "expository-thoughts-on-matthew",

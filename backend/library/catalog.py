@@ -1309,6 +1309,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Charles G. Finney's Lectures to Professing Christians (1837) — CCEL's
+    # finney/toprofessingchristians: twenty-three lectures from New York.
+    BookEntry("lectures-to-professing-christians", "Lectures to Professing Christians", "charles-finney",
+              "ccel", "finney/toprofessingchristians", skip=("PUBLISHER'S NOTICE.",), cover_color="#4a3e2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,
