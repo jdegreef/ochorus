@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
-	isFirstVisit,
+	isNewGround,
 	saveProgress,
 	bookProgressReader,
 	saveScrollAnchor,
@@ -269,19 +269,19 @@ describe('the furthest chapter reached (review bug #14)', () => {
 	});
 });
 
-describe('a chapter opened for the first time', () => {
+describe('new ground: a chapter past the furthest reached', () => {
 	it('is any chapter of a work with no place yet', () => {
-		expect(isFirstVisit(null, 1)).toBe(true);
-		expect(isFirstVisit(null, 7)).toBe(true);
+		expect(isNewGround(null, 1)).toBe(true);
+		expect(isNewGround(null, 7)).toBe(true);
 	});
 
-	it('is a chapter past the furthest reached, never one already read or turned back to', () => {
+	it('is a chapter past the furthest, never the furthest or one behind it', () => {
 		const rec = { order: 3, furthest: 5 };
-		expect(isFirstVisit(rec, 6)).toBe(true);
-		expect(isFirstVisit(rec, 5)).toBe(false);
-		expect(isFirstVisit(rec, 2)).toBe(false);
+		expect(isNewGround(rec, 6)).toBe(true);
+		expect(isNewGround(rec, 5)).toBe(false);
+		expect(isNewGround(rec, 2)).toBe(false);
 		// A record from before `furthest` existed reads its order as the furthest.
-		expect(isFirstVisit({ order: 4 }, 4)).toBe(false);
-		expect(isFirstVisit({ order: 4 }, 5)).toBe(true);
+		expect(isNewGround({ order: 4 }, 4)).toBe(false);
+		expect(isNewGround({ order: 4 }, 5)).toBe(true);
 	});
 });

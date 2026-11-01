@@ -24,7 +24,7 @@
 		saveProgressPercent,
 		markReached,
 		getProgressRecord,
-		isFirstVisit,
+		isNewGround,
 		offerFinish
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
@@ -1084,13 +1084,8 @@
 		listen.init();
 	});
 
-	/** This chapter is opened for the first time: its drop cap inks in. */
+	/** The reader has come this far for the first time: the drop cap inks in. */
 	let inkIn = $state(false);
-	// Hydrating a prerendered chapter, its initial is already on screen: inking
-	// it in now would blank a painted letter and redraw it. Seen once, as the
-	// page script starts (only then is the server's chapter body in the DOM
-	// before this instance has rendered), and spent on the first chapter.
-	let hydratedBody = browser && document.querySelector('[data-chapter-body]') !== null;
 
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
 	$effect(() => {
@@ -1142,10 +1137,10 @@
 		clearTimeout(syncTimer);
 		syncOffer = null;
 		const localRecord = getProgressRecord(s);
-		// The first time the reader comes this far, the chapter's initial inks
-		// in (app.css, `.ink-in`); a return to it, or a jump to a passage, does not.
-		inkIn = !hydratedBody && !deliberateJump && isFirstVisit(localRecord, order);
-		hydratedBody = false;
+		// New ground: the chapter's initial inks in (app.css, `.ink-in`). Not on
+		// the page the visit entered on, whose initial a prerender has already
+		// painted, nor on a return or a jump to a passage.
+		inkIn = !midBook.landing && !deliberateJump && isNewGround(localRecord, order);
 		syncAsk =
 			!deliberateJump && !syncDismissed.has(s)
 				? { slug: s, order, language, local: localRecord }
