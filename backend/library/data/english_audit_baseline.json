@@ -191,8 +191,7 @@
   },
   "holiness": {
    "orphan-close-quote": 2,
-   "space-before-punct": 4,
-   "word-fusion": 1
+   "space-before-punct": 4
   },
   "holy-dying": {
    "lost-paragraphing": 4
@@ -564,6 +563,10 @@
    "orphan-close-quote": 29,
    "run-together": 4,
    "space-before-punct": 1
+  },
+  "the-instructor": {
+   "orphan-close-quote": 3,
+   "word-fusion": 2
   },
   "the-journal-of-john-wesley": {
    "hyphen-space": 1,

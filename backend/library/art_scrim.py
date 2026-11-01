@@ -248,6 +248,7 @@ ART_SCRIM: dict[str, float] = {
     "the-idea-of-a-university": 0.70,
     "the-imitation-of-christ": 0.75,
     "the-imitation-of-christ-teens": 0.30,
+    "the-instructor": 0.30,
     "the-key-in-my-hand": 0.90,
     "the-life-of-god-in-the-soul-of-man": 0.90,
     "the-life-of-trust-children": 0.30,

@@ -1345,6 +1345,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
               "ccel", "schaff/npnf206", part="v",
               subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
+    # Clement of Alexandria's The Instructor (Paedagogus, c. 198) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem. group_parts: each of the three Books is a chapter, its short
+    # chapters subheads.
+    BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
+              subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

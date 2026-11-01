@@ -1383,6 +1383,11 @@ CURATED: dict[str, Artwork] = {
         "The cedars of Lebanon on the mountains above the Holy Land: Jerome wrote these letters from Bethlehem, where he settled to translate the Scriptures.",
         inset=0.04,
     ),
+    "the-instructor": Artwork(
+        "met", 441364, "Jean-Léon Gérôme", "Study of Palm Trees", "1855/56",
+        "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
+        focus=0.45,
+    ),
 }
 
 

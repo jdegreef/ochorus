@@ -171,6 +171,7 @@ ART_SOURCES: dict[str, str] = {
     "the-idea-of-a-university": "met-439122@0.50",
     "the-imitation-of-christ": "cma-150354@0.50",
     "the-inner-chamber": "met-440726@0.50",
+    "the-instructor": "met-441364@0.45",
     "the-journal-of-john-wesley": "cma-122340@0.50",
     "the-life-of-god-in-the-soul-of-man": "met-436830@0.50",
     "the-life-of-trust": "cma-150047@0.50",
