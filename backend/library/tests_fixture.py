@@ -2165,9 +2165,10 @@ class CoverAssetTests(SimpleTestCase):
             slug, language, cover = f["slug"], f.get("language"), _cover(f)
             if slug not in CURATED_GROUND:
                 continue
-            wants = (
-                DESIGNED_BY_SLUG[slug] if is_english_edition(language) else art_url(slug)[0]
-            )
+            # ENGLISH_ON_GROUND: a designed cover too small to keep, so English
+            # wears the painting as well (humility-2, 2026-11-01).
+            english_designed = is_english_edition(language) and slug not in ENGLISH_ON_GROUND
+            wants = DESIGNED_BY_SLUG[slug] if english_designed else art_url(slug)[0]
             if cover != wants:
                 wrong.append((slug, language, cover, wants))
         self.assertEqual(
