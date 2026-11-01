@@ -255,6 +255,10 @@ prerendered pages reference it.
 - **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
   the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
   is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
+- **A scan too small to fill 600×800 is refused** (`_crop_3x4` raises "too small …
+  without enlarging it", 2026-11-01). It means the collection served a thumbnail (the
+  Met's `primaryImageSmall` fallback, CMA's `web` size) or an `inset` cut a small scan
+  smaller. Pick another painting or a larger scan — don't lower the bar.
 - **Met image CDN needs a User-Agent**: `curl` without `-A "Mozilla/5.0"` on
   `images.metmuseum.org` saves a ~1.3 KB error body named `.jpg`.
 - **A cover that looks bad may be the AUTHOR LAYOUT, not the art.** Check
