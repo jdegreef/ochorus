@@ -23875,6 +23875,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"refutation-of-all-heresies": {
+			"ground": "c9f39e184f830d40652fbd3ac887237bf76eae71c79f89c4eddb75bf550b29ac",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
 			"style": "enlightenment",
