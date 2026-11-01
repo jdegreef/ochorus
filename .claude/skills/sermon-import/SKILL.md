@@ -30,12 +30,26 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
 - **Curation rule** (top of `sermon_catalog.py`): themed to the library's
   readers — prayer, comfort in trial, assurance and grace, warm evangelistic
   appeal. A readable dozen or two per author; never bulk-import a volume.
-- **Read every pick in full before shipping it** (the question-writers do
-  this; have them report it), and drop any that carry a demeaning passage
-  about a people (the Simpson batch dropped a Jews-and-money
-  trope; Spurgeon batch 2 dropped *The Sin of Unbelief* for the "unbelief made
-  the Jew murder Christ and wander" passage), or are bound to an occasion (a
-  building-fund or Hospital-Sunday collection appeal, a farewell).
+- **Tone: warm, not combative** (founder steer, 2026-10-30). Skip a sermon
+  whose thrust is wrath or hellfire, polemic against other Christians
+  (anti-Catholic, anti-Arminian, Dissent-versus-establishment, "enthusiasts"),
+  anything about other religions or peoples (Jews, Islam, "heathen" or
+  cannibal caricature, dialect anecdotes), politics, or an occasion (a
+  building fund, a collection, a farewell, a walk through one season's
+  Prayer Book readings). Titles screen out the obvious ones before import.
+  Everything else is judged by the question-writers, who read every word and
+  rate each sermon **none / passing / central**, quoting any passing sentence.
+  Drop "central"; judge "passing" on the quoted sentence. A closing section
+  counts as central even when the rest is warm: Newman's *Mental Prayer* ends
+  on a long warning of hell to careless young people. Earlier drops: the
+  Simpson batch's Jews-and-money trope; *The Sin of Unbelief* ("unbelief made
+  the Jew murder Christ and wander"); Moody's *The Blood* and *Results of True
+  Repentance*; *Healing for the Wounded*, which shipped and was then
+  unpublished for a "Massa" dialect anecdote.
+- **Unpublishing a shipped sermon** takes three steps. Set `is_published` to
+  false in its fixture (fresh databases), drop it from `TOPIC_SERMONS`, and
+  untick it in the Django admin. `is_published` is create-only in
+  `seed_sermons`, so no deploy reaches the live row.
 - **Collision checks** — a slug is shared across languages and must be new:
   `ls backend/library/fixtures/content/sermons/<slug>.*`. Then check the sermon
   isn't already a CHAPTER of a book — Spurgeon's are gathered in
@@ -53,28 +67,56 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
 - **Check the TEXT, not just the titles.** Authors reworked sermons into
   books under new titles: Ryle's *Let Any Man Come* (The Upper Room) is
   *Holiness* ch. 18 word for word, and a quarter of *The Good Way* is *Old
-  Paths* ch. 15. Index every 10-word run of the English library (books and
-  sermons) and measure each candidate against it; anything over a few percent
-  is the same text. Shared Scripture alone scores 0–2%.
+  Paths* ch. 15. `screen_sermons` (below) measures this.
 
-  ```python
-  # in a Django shell over the scratch DB: share of each new sermon's 10-grams
-  # that already occur somewhere in the English fixture
-  import json, glob, re, collections
-  from library.models import Sermon
-  N = 10
-  toks = lambda t: re.findall(r"[a-z]+", t.lower())
-  idx = collections.defaultdict(set)
-  for f in glob.glob('library/fixtures/content/books/*.en.json') + glob.glob('library/fixtures/content/sermons/*.en.json'):
-      for r in json.load(open(f)):
-          w = toks(r['fields'].get('body_text') or '')
-          for i in range(len(w) - N):
-              idx[' '.join(w[i:i + N])].add(f.split('/')[-1] + '#' + str(r['fields'].get('order', '')))
-  for s in Sermon.objects.all():
-      w = toks(s.body_text); grams = [' '.join(w[i:i + N]) for i in range(0, len(w) - N, N)]
-      hits = collections.Counter(l for g in grams for l in idx.get(g, ()) if not l.startswith(s.slug + '.'))
-      print(s.slug, [(l, round(100 * n / len(grams))) for l, n in hits.most_common(2)])
-  ```
+### Screen candidates: `screen_sermons`
+
+Add the candidates' `SermonEntry` rows, then:
+
+```bash
+uv run python manage.py screen_sermons            # every entry with no fixture yet
+uv run python manage.py screen_sermons slug-a …   # or just these
+```
+
+Nothing is written. Each sermon gets one line: reference, date, words,
+archaisms and -eth verbs per 10,000 words, page splits, the library work
+sharing most of its wording (10-word runs over every English book and sermon),
+and the last words. Flags mark the traps below
+(`library/sermon_screen.py` says which batch fell into each one):
+`modernised?`, `page-splits`, `overlaps <work>`, `short`, `slug taken`,
+`ends on furniture`. All candidates are fetched first, and the index records
+only the word runs they contain: 21 sermons screen in under 40 seconds.
+
+A flag is a question, not a verdict:
+
+- **`modernised?` misfires on preachers who quote little Scripture.**
+  Maclaren's *The Fixed Heart* and Newman's *Religious Joy* read 8–48
+  archaisms per 10,000 words with no -eth verbs in their printed text. Check
+  the quotations: the real thing still says "unto" and "hath", and keeps
+  British spellings ("labour", not "labor").
+- **`overlaps` can be the passage, not the sermon.** CCEL prints the whole
+  reading above some Maclaren expositions. *The Prodigal and His Father*
+  scored 13% against *Old Paths* because both quote Luke 15:11–24. Look at the
+  shared runs before dropping a sermon.
+- **The screen can't see a wrong start.** Print each body's first 300
+  characters after import (step 3). CCEL's `extract` takes the first scripRef
+  link in the leading blocks as the end of the masthead. Maclaren's
+  *Galatians* volume (`iicor_tim`) prints its epigraph with no link, so
+  *The Fruit of the Spirit* lost its first eight paragraphs to an in-body
+  reference.
+
+### Newman: Gutenberg, not newmanreader.org
+
+newmanreader.org's transcriptions carry "Copyright © 2007 … All rights
+reserved", so take *Parochial and Plain Sermons* from Gutenberg (vol. VII is
+PG 24256, vol. VIII is PG 24284). Each sermon is headed "SERMON VIII." at
+`h2`, and the contents repeat it at `h4`, so set `section="SERMON VIII."` and
+`section_level="h2"`. The title is printed as the first paragraph;
+`extract_gutenberg_section` drops it when it matches the catalog title (a note
+mark on it, "Religious Joy.[1]", is ignored). The `[n]` notes stay at the foot
+with their marks, as `archive_ocr` sets footnotes. Some of them say when the
+sermon was preached ("For Christmas Day."). Gutenberg gives no reference, so set
+`scripture_ref`.
 
 ### SermonIndex: some authors' texts are modernised rewrites
 
@@ -333,3 +375,15 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
 - 2026-10-29 — Middle tier batch 1: M'Cheyne ×3 (SermonIndex), Ryle ×3 (CCEL
   *The Upper Room*), Maclaren ×4 (CCEL *Expositions*), Moody ×2 (PG 33015).
   264 → 276.
+- 2026-10-31 — Maclaren ×15 (CCEL *Expositions*) and Newman ×6 (PG 24256 /
+  24284 *Parochial and Plain Sermons*, his first sermons on the shelf), screened
+  with the new `screen_sermons` and the stricter tone rubric. *Healing for the
+  Wounded* unpublished.
+- 2026-11-01 — Batch 4: Newton ×4 (*Messiah*), M'Cheyne ×5 (SermonIndex), Bonar ×6
+  (*Family Sermons* OCR), Augustine ×3 (NPNF1-06, his first sermons), 322 → 340.
+  Ten of 28 candidates dropped on the readers' tone ratings: closing damnation
+  appeals, attacks on Pelagians and other heretics, a Leo X "lucrative fable" jab.
+  Newton's split drop caps and "—— O ——" ornament are now mended across his
+  whole *Messiah* shelf. SermonIndex's M'Cheyne sometimes renders em dashes as
+  bare hyphens ("Christ-if you are"); a dropped sermon needed 50 dash pairs,
+  so check for it before choosing more.

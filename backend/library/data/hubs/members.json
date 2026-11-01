@@ -32,6 +32,8 @@
         "eusebius-of-caesarea",
         "lactantius",
         "minucius-felix",
+        "polycarp",
+        "hermas",
         "theophilus-of-antioch"
       ]
     },
@@ -299,7 +301,8 @@
         "catherine-of-siena",
         "ignatius-of-loyola",
         "boethius",
-        "minucius-felix"
+        "minucius-felix",
+        "hermas"
       ]
     },
     {
@@ -440,6 +443,7 @@
         "justin-martyr",
         "gregory-of-nyssa",
         "eusebius-of-caesarea",
+        "polycarp",
         "theophilus-of-antioch"
       ]
     }
