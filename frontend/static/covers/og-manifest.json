@@ -23480,6 +23480,39 @@
 				556
 			]
 		},
+		"pt/they-were-young-2": {
+			"ground": "71b7f780f97576f9a4c994edaede9731f385f25c63545cb92ebb8ef98f671fcc",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 236, 311, 280],
+					[149, 314, 451, 390],
+					[197, 380, 403, 456]
+				],
+				"subtitle": [
+					[138, 514, 462, 542],
+					[151, 542, 449, 570]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				224,
+				570
+			]
+		},
 		"pt/things-as-they-are": {
 			"ground": "5780c763cad07fb9109345c4a41430c76b274c7a8190b96ac8e52a207b1b8fc9",
 			"style": "devotional",
