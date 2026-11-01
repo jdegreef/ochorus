@@ -29913,6 +29913,18 @@
 				510
 			]
 		},
+		"the-two-covenants": {
+			"ground": "438a6d0ff70501009056f9b58a38d2b32743e66b3e506df399e39f0df748e725",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
 		"the-unselfishness-of-god": {
 			"ground": "bbd8e249362f95f77cd7dee6f05b8854cde88800e2d2c99a400f882073363bc0",
 			"style": "devotional",

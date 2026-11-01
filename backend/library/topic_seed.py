@@ -304,6 +304,7 @@ TOPICS = [
         "the life that flows from no other source than staying near him.",
         [
             "abide-in-christ",
+            "the-two-covenants",
             "true-vine",
             "holy-in-christ",
             "absolute-surrender",

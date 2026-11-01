@@ -1519,6 +1519,11 @@ BOOKS: list[BookEntry] = [
     # from common grace in nature and kind, and is divine love itself.
     BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
               "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
+    # Andrew Murray's The Two Covenants (1898) — CCEL's murray/covenants: the
+    # old covenant and the new, and the life of the believer under the second.
+    BookEntry("the-two-covenants", "The Two Covenants", "andrew-murray",
+              "ccel", "murray/covenants", subtitle="And the Second Blessing",
+              cover_color="#2e4a5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

@@ -198,6 +198,7 @@ ART_SOURCES: dict[str, str] = {
     "the-soul-winner": "aic-111746@0.90",
     "the-spiritual-exercises": "cma-143772@0.50",
     "the-theological-orations": "cma-84371@0.50",
+    "the-two-covenants": "met-435877@0.45",
     "the-upper-room": "met-435793@0.50",
     "the-way-to-god": "met-436652@0.50",
     "things-as-they-are": "aic-76571@0.60",

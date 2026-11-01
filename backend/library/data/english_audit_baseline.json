@@ -692,6 +692,9 @@
   "the-toiling-christ": {
    "space-before-punct": 2
   },
+  "the-two-covenants": {
+   "orphan-close-quote": 1
+  },
   "the-use-of-money": {
    "orphan-close-quote": 2,
    "space-before-punct": 2
