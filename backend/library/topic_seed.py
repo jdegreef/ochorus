@@ -100,6 +100,7 @@ TOPICS = [
         "for the weary.",
         [
             "all-of-grace",
+            "gods-way-of-peace",
             "the-god-of-all-comfort",
             "the-unselfishness-of-god",
             "he-holds-my-tomorrows",

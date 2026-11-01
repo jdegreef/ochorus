@@ -14515,6 +14515,34 @@
 				501
 			]
 		},
+		"gods-way-of-peace": {
+			"ground": "64d50f33b4e795d82325765060b73f5d3fc9d5a0e2dbfb34023cbbc8e12109a8",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[157, 321, 443, 403],
+					[184, 391, 416, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"gospel-of-john": {
 			"ground": "0019607f856c4418dab3b8e9a561fd1826162f10043718fec483d8d61576b928",
 			"style": "house",
@@ -25406,6 +25434,18 @@
 				303,
 				492
 			]
+		},
+		"sw/a-call-to-the-unconverted": {
+			"ground": "8ac292db22f142e7d66c4d7102b0658c294fbb9dd09a18cc1753ec55aebcd3a2",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
 		},
 		"sw/a-retrospect": {
 			"ground": "43e5f6630703a436be821c55bc98cd0f07750c6e7501d6ff97c755f5199d1d04",

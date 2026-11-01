@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
     "the-lords-prayer": Artwork(
         "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889", "A ripe wheat field under a moving sky: daily bread standing in the field, asked for one day at a time.",
         focus=0.60, inset=0.045,
