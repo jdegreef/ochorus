@@ -379,3 +379,11 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   24284 *Parochial and Plain Sermons*, his first sermons on the shelf), screened
   with the new `screen_sermons` and the stricter tone rubric. *Healing for the
   Wounded* unpublished.
+- 2026-11-01 — Batch 4: Newton ×4 (*Messiah*), M'Cheyne ×5 (SermonIndex), Bonar ×6
+  (*Family Sermons* OCR), Augustine ×3 (NPNF1-06, his first sermons), 322 → 340.
+  Ten of 28 candidates dropped on the readers' tone ratings: closing damnation
+  appeals, attacks on Pelagians and other heretics, a Leo X "lucrative fable" jab.
+  Newton's split drop caps and "—— O ——" ornament are now mended across his
+  whole *Messiah* shelf. SermonIndex's M'Cheyne sometimes renders em dashes as
+  bare hyphens ("Christ-if you are"); a dropped sermon needed 50 dash pairs,
+  so check for it before choosing more.
