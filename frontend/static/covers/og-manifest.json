@@ -88,6 +88,38 @@
 				476
 			]
 		},
+		"a-practical-view-of-christianity": {
+			"ground": "5c44018fe06cdf1a916ab0df36d8c28112f6d4f88dd548c43448c918c468c059",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[93, 102, 507, 131]
+				],
+				"title": [
+					[91, 275, 509, 338],
+					[110, 337, 490, 400]
+				],
+				"subtitle": [
+					[54, 463, 546, 491],
+					[70, 491, 530, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
+			]
+		},
 		"a-retrospect": {
 			"ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
 			"style": "revival",
@@ -19313,6 +19345,37 @@
 				472
 			]
 		},
+		"letters-of-samuel-rutherford": {
+			"ground": "c855df4aa5c1adca0d67b13befca5a36c3b132e1591fbfb80363474184d0dd84",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[108, 102, 492, 131]
+				],
+				"title": [
+					[91, 307, 509, 380],
+					[164, 367, 436, 440]
+				],
+				"subtitle": [
+					[127, 492, 473, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
@@ -21718,6 +21781,35 @@
 			"middle": [
 				303,
 				492
+			]
+		},
+		"parochial-and-plain-sermons-vii": {
+			"ground": "0acaabe694c1f630967ad2563bb2a9d0d23eefeb1dcda5c779c29ff893432ac2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[121, 293, 479, 369],
+					[103, 359, 497, 435],
+					[157, 424, 443, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
 			]
 		},
 		"pensees": {
@@ -27891,6 +27983,36 @@
 				556
 			]
 		},
+		"table-talk": {
+			"ground": "fdb8a1617f5e510bcb31dfab8204bf06e5d1fbb81bb16c2af2b9b80f0b8f6110",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[137, 327, 463, 420]
+				],
+				"subtitle": [
+					[132, 471, 468, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				303,
+				492
+			]
+		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
 			"style": "revival",
@@ -28301,6 +28423,18 @@
 				455
 			]
 		},
+		"the-art-of-divine-contentment": {
+			"ground": "15c667334b9bb282a8ce2a818f546857bc7581634a5e0b48acfc6627feffedbe",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"the-beatitudes": {
 			"ground": "5b6d5bf44c4f313b515056f5363f85d978d611e6bb7132fa51f3dbdc8e8ba095",
 			"style": "press",
@@ -28489,6 +28623,34 @@
 				482
 			]
 		},
+		"the-christians-great-interest": {
+			"ground": "2e52c41447e19bd618a05a1b23aae97d0e3b00585bf5d2a01a4b1f1f6232a309",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[119, 330, 482, 403],
+					[132, 389, 468, 462]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				304,
+				491
+			]
+		},
 		"the-christians-secret-of-a-happy-life-4": {
 			"ground": "72d5f8585f6346a1096f1eb7236838f0ce03e62daf09247af192fedb1e31aedd",
 			"style": "devotional",
@@ -28559,6 +28721,38 @@
 			"middle": [
 				323,
 				472
+			]
+		},
+		"the-crook-in-the-lot": {
+			"ground": "621ca5ae02dff617829c5340e6cf09d46c5deb958e897869afb3bb3a1c707b56",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[152, 102, 448, 131]
+				],
+				"title": [
+					[158, 292, 442, 370],
+					[172, 356, 428, 434]
+				],
+				"subtitle": [
+					[65, 487, 535, 508],
+					[65, 508, 535, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
 			]
 		},
 		"the-death-of-death-in-the-death-of-christ": {
@@ -29134,6 +29328,18 @@
 				484
 			]
 		},
+		"the-jerusalem-sinner-saved": {
+			"ground": "3e5eda4d8e69a6da14c2d1bf23d305adf51565aa88a4acd759333d71827d63f9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",
@@ -29239,6 +29445,38 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"the-method-of-grace": {
+			"ground": "e9aaf4de1f848ab34c3c451abc753e5483d21966bd71afa779d6c6d743ced7bd",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[138, 292, 462, 370],
+					[189, 356, 411, 434]
+				],
+				"subtitle": [
+					[65, 487, 535, 508],
+					[53, 508, 547, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
 			]
 		},
 		"the-normal-christian-life": {
@@ -29687,6 +29925,18 @@
 				510
 			]
 		},
+		"the-two-covenants": {
+			"ground": "438a6d0ff70501009056f9b58a38d2b32743e66b3e506df399e39f0df748e725",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
 		"the-unselfishness-of-god": {
 			"ground": "bbd8e249362f95f77cd7dee6f05b8854cde88800e2d2c99a400f882073363bc0",
 			"style": "devotional",
@@ -29713,6 +29963,34 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"the-upper-room": {
+			"ground": "4f6d0c397d3911fcbfdfdefbb82fda997a034dc5834265c190e97d5db76673e1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[125, 307, 475, 404],
+					[202, 390, 398, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
 			]
 		},
 		"the-way-to-god": {
@@ -29969,6 +30247,18 @@
 				315,
 				480
 			]
+		},
+		"treatise-on-grace": {
+			"ground": "d6b53b4250ac2410bd69234d546abbd076347855d0a45e794f0abb9fee3b2496",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",

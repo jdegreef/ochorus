@@ -283,6 +283,10 @@
    "lost-paragraphing": 4,
    "orphan-close-quote": 2
   },
+  "letters-of-samuel-rutherford": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
+  },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
   },
@@ -305,8 +309,7 @@
    "space-before-punct": 7
   },
   "morning-by-morning": {
-   "space-before-punct": 1,
-   "word-fusion": 1
+   "space-before-punct": 1
   },
   "mortification-of-sin": {
    "space-before-punct": 1
@@ -475,6 +478,10 @@
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4
   },
+  "the-art-of-divine-contentment": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
   "the-beatitudes": {
    "orphan-close-quote": 1
   },
@@ -496,6 +503,9 @@
   },
   "the-christian-temper-supernatural-and-divine": {
    "space-before-punct": 2
+  },
+  "the-christians-great-interest": {
+   "orphan-close-quote": 9
   },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23
@@ -612,7 +622,9 @@
    "space-before-punct": 11
   },
   "the-method-of-grace": {
-   "lost-paragraphing": 1
+   "lost-paragraphing": 1,
+   "space-before-punct": 3,
+   "word-fusion": 1
   },
   "the-normal-christian-life": {
    "orphan-close-quote": 2
@@ -683,6 +695,9 @@
   "the-toiling-christ": {
    "space-before-punct": 2
   },
+  "the-two-covenants": {
+   "orphan-close-quote": 1
+  },
   "the-use-of-money": {
    "orphan-close-quote": 2,
    "space-before-punct": 2
@@ -719,7 +734,7 @@
    "space-before-punct": 9
   },
   "unspoken-sermons": {
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "waiting-and-singing": {
    "space-before-punct": 4
