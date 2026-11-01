@@ -469,6 +469,19 @@ CACHES = {
         ),
         "LOCATION": "throttle",
     },
+    # Memoised search responses (library.search.memoized). Their own alias so a
+    # burst of distinct queries evicts other searches, not the shelves and
+    # rosters sharing "default" (LocMemCache culls at MAX_ENTRIES). An entry is
+    # one response, ~20 KB at most, so this bounds it near 10 MB per worker.
+    "search": {
+        "BACKEND": (
+            "django.core.cache.backends.dummy.DummyCache"
+            if _TESTING
+            else "django.core.cache.backends.locmem.LocMemCache"
+        ),
+        "LOCATION": "search",
+        "OPTIONS": {"MAX_ENTRIES": 500},
+    },
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

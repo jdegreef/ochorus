@@ -36,6 +36,7 @@ from .languages import entry as language_entry
 from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
+    QUOTE_SOURCE_UNSERVED,
     SERMON_CARD_DEFER,
     Article,
     Author,
@@ -60,6 +61,7 @@ from .search import (
     PAGE_SIZE,
     SORTS,
     count_by_type,
+    memoized,
     page_by_type,
     parse_scope,
     scope_entry,
@@ -345,7 +347,10 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
 #: Chapter columns the chapter payload never reads. body_text and search_vector
 #: are each about the size of the body, so loading them tripled what a chapter
 #: request held in memory.
-_CHAPTER_UNSERVED = ("body_text", "search_vector", "citations_indexed_at")
+# book__search_vector: select_related joins past Book's deferring manager.
+_CHAPTER_UNSERVED = (
+    "body_text", "search_vector", "citations_indexed_at", "book__search_vector"
+)
 
 
 class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
@@ -1600,8 +1605,19 @@ class SearchView(APIView):
                 page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
             return Response(page)
 
-        results = search_library(searched, language, scope)
-        counts, capped = count_by_type(searched, language, scope)
+        # Memoised as one unit: the counts describe the list, so they must come
+        # from the same moment. Logging below still runs per request — the
+        # popular-searches report counts readers, not computations.
+        results, counts, capped = memoized(
+            "merged",
+            lambda: (
+                search_library(searched, language, scope),
+                *count_by_type(searched, language, scope),
+            ),
+            searched,
+            language,
+            scope,
+        )
         if best:
             if all(hit_key(h) != hit_key(best) for h in results):
                 # Not one of the text matches: count it, so its group's total
@@ -1635,7 +1651,7 @@ class SearchView(APIView):
         # to a second empty page. Inside a scope, empty usually means "not
         # here", and the way out is to widen the search, not to respell it.
         if not results and not scope:
-            hint = suggest(q, language)
+            hint = memoized("suggest", lambda: suggest(q, language), q, language)
             if hint:
                 payload["suggestion"] = hint
         # Anonymous analytics (admin "what do readers search for / not find").
@@ -1675,8 +1691,18 @@ class SearchView(APIView):
             "type": kind,
             "sort": sort,
             "offset": offset,
-            "results": page_by_type(
-                q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+            "results": memoized(
+                "page",
+                lambda: page_by_type(
+                    q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+                ),
+                q,
+                language,
+                kind,
+                offset,
+                limit,
+                sort,
+                scope,
             ),
         }
 
@@ -1915,9 +1941,9 @@ class QuotePageView(APIView):
         if writer is None:
             raise Http404("No such author.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -1975,9 +2001,9 @@ class QuoteTopicDetailView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = list(
-            Quote.objects.filter(reviewed=True, topics=t).select_related(
-                "author", "chapter__book", "sermon"
-            )
+            Quote.objects.filter(reviewed=True, topics=t)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         if not rows:
             raise Http404("No published quotes on this topic.")
@@ -2023,9 +2049,9 @@ class QuoteAuthorTopicView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True, topics=t).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True, topics=t)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -2235,9 +2261,7 @@ def _short_quotes():
         .annotate(chars=Length("text"))
         .filter(chars__lte=FEATURED_MAX_CHARS)
         .select_related("author", "chapter__book", "sermon")
-        # The card needs titles and slugs, never the bodies they sit in.
-        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
-               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+        .defer(*QUOTE_SOURCE_UNSERVED)
     )
 
 
@@ -2357,8 +2381,10 @@ class QuoteResolveView(APIView):
         # Cap the batch so a malformed client can't ask for the whole table in
         # one request; a reader's saved shelf is far under this.
         wanted = [s for s in slugs if isinstance(s, str)][:200]
-        rows = Quote.objects.filter(slug__in=wanted, reviewed=True).select_related(
-            "author", "chapter__book", "sermon"
+        rows = (
+            Quote.objects.filter(slug__in=wanted, reviewed=True)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         by_slug = {q.slug: _quote_card_payload(q) for q in rows}
         # Preserve the caller's order — favorites arrive most-recent-first, and
@@ -2441,6 +2467,7 @@ class ScriptureGraphView(APIView):
             c.pk: c
             for c in chapters.filter(pk__in=[r["chapter_id"] for r in rows])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {
@@ -2642,6 +2669,7 @@ class ScriptureBookView(APIView):
             for c in english_chapters()
             .filter(pk__in=[r["chapter_id"] for r in cites])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {

@@ -58,6 +58,10 @@
 			"content": "61e50c2bfaec5b5733f1d593543e382f92263575b2c1050386b26909e967b886",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"abiding-in-love": {
+			"content": "f8c3048e168f8df50ae1600c495fa379187b51bfbc798af17e8ad9ca6ea7b3b4",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"adaptation-of-measures": {
 			"content": "c10658c5e8006c0b9be9841c4b54f3f51f0904da5651e8c75c2f76732b5fe44b",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -137,6 +141,10 @@
 		"blessed-prosperity": {
 			"content": "97e34c7d1ef753ee4365e081fb32a516c2a6ed7f5ab22b6be85fe84692b561bd",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"blessed-trust": {
+			"content": "f9bf3290fe807529a89dbe92314e0fdbbd2fca6e7eba9fc9f538542192578bcc",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"bochim-or-the-cause-of-spiritual-failure": {
 			"content": "5d3fedf587c6213022e56206565a31f3798b0eb24470a3b825697b1a3746108e",
@@ -269,6 +277,10 @@
 		"consolation-proportionate-to-spiritual-sufferings": {
 			"content": "f59fe165f83f47d5bcacb851cb6872466fa299fe7520add4738f37abbc6b3415",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"continual-sunshine": {
+			"content": "b31c21be143d43b019c047a91f64ac3603e28a06a902b0c3aaefe20d66606441",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"counterfeits": {
 			"content": "fe543ecdc6956203efc8b0027fea89a345b576782797e282263f93d828870831",
@@ -442,6 +454,10 @@
 			"content": "d6c35f87fdf609421985781de1296ebe66419d1cac690929167254ade475167b",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"hid-in-light": {
+			"content": "303e3a837b124c129914de8841ffbbc42f26f76da80d4a7076abe6928f2c378e",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"himself": {
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
 			"art": "49e519d54171de841d63a6d5d2a5c1393930d7ceb46e3b624a45fc2f95cc8b26"
@@ -486,6 +502,10 @@
 			"content": "d7eb10b39d81af577912ef12f1c240f5189613515db8b0b9984fa8c1ffdceabb",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"how-to-say-thank-you": {
+			"content": "b20559964322ceca578862734d9b01c31ac1c12e67895e923cb3530c1a577e1f",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"how-to-work-for-god-with-success": {
 			"content": "597202b28773762b443936ab399172b78966bd57a4016a6152300c687627b025",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -525,6 +545,10 @@
 		"into-thy-hands": {
 			"content": "f56a329636ef62d13fb86d50fa394c5ec92368018331394f4f4a2161021078c7",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"it-is-the-lord": {
+			"content": "27682ba3a5692057df9d1ec91d15f2c1bdadbf084d56991dd841b8cd46a38e2c",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"jehovah-jireh": {
 			"content": "b5a1270ee90e2eddc12d94fc6dbf547ea2d740caf4b6bdc99802e2d323603725",
@@ -650,6 +674,10 @@
 			"content": "62710b90e588c80fa066287579e8d51e2c25b0c8be02ea98793a8bc31ae54287",
 			"art": "4caaeadaab543089607332a692b2e401719774acf416db170242f75548fd809e"
 		},
+		"our-ally": {
+			"content": "429ddca3876c5c107207051fae7f96d34c0834f9ed6e34b9e13d6706ce329198",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"our-duty-to-israel": {
 			"content": "d4119a1cd575d6e9a958e0d03ff1965e0332d297ff831390f3913071a2f5e9e7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -657,6 +685,10 @@
 		"our-kinsman-redeemer": {
 			"content": "778aadf805ccdaa1aa39a20334ffebdb1c02c6034be8de4b3ac3956f09c610a6",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"our-strong-city": {
+			"content": "7b7221c6fbb13c6943ac38fee522486ae13813b00a0ec57765e2bfc9d1673a9b",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"partnership-with-god": {
 			"content": "970e6edc192dc3b10f1f59cca748c4a7f88001a253cf6a9b8eaa527a060e63c7",
@@ -814,6 +846,10 @@
 			"content": "daf7643cf791880a23469565511bfcae5e9fc82beb9fc8d68a609ddd3138f510",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"strength-in-weakness": {
+			"content": "eaa2568ce4a96ea200b36c6e921394591a50ecb10f9e623ce99c3ea78241ef35",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
 			"art": "27663481d9b759296ff4996cabf2ee9fb38eb8a959631b59f7146a84414eb867"
@@ -884,6 +920,10 @@
 		},
 		"the-circumcision-of-the-heart": {
 			"content": "debd804716411924f2d799fd38d3c96753b89f33dbf7fc30bad5ba65ac9ff9f8",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-city-and-river-of-god": {
+			"content": "8f9f0d2f657accc99061143e16f7cf3eed78b43279272a299f72a82895be9a7e",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-cloud-of-witnesses": {
@@ -958,6 +998,10 @@
 			"content": "35406361e4c2ac8b16d882c5c185d2d88beb6e2c71064f4b772ef67b1d31e071",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-gift-that-brings-all-gifts": {
+			"content": "794ad95c3df3d3a21e243057e3b537045d3f761feffb2a615188becc9b8c37d8",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-goal-of-faith": {
 			"content": "ca373dc97c9eaa596ecdd47dd659f431f4a392c7e5cd6ae7a2d925a9d4d6b416",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -984,6 +1028,14 @@
 		},
 		"the-guiding-pillar": {
 			"content": "c4ea9cd348a749380420fc9f90e387313cdc9192755f63be5b8087f4399fbfc8",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-habitation-of-the-soul": {
+			"content": "6b12b27753afd8516862a414b704e0928430097a8cf1e5cb461728ff9e8f13c1",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-heavenly-workers-and-the-earthly-watchers": {
+			"content": "10e220aba50dd5f6c75ea8c2e34dc87f847670d9fb8e374271e60d9c4e8fb939",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-hidden-life-of-faith": {
@@ -1013,6 +1065,14 @@
 		"the-infinite-god": {
 			"content": "5f83b2872b736a63356b90144ca0f66d4787f233ef36a8e846dbea4e1c62dcd6",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-intercessor": {
+			"content": "e070022e5a9d40665baa6194f5a7505933f42618de6c157012c0a90a69959ba7",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-joy-bringer": {
+			"content": "6f435f179ca06542e5dd6ccdbd4522b93c80dbde3c8062b764edb891c57297a4",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-joy-of-the-lord": {
 			"content": "d665ba1a39187725dc30fbf887d76afbc50eb649e6f56f4b1408383669a7b9f0",
@@ -1154,9 +1214,17 @@
 			"content": "df3cb57a423182a27e18a8b09059daa7b49ec84eb9f953f5df66c60ac7d526fc",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-rivers-of-god": {
+			"content": "41e5e6e8a6958543ad927999f551255c1b4360911f2b249ad526d38f1cb9f299",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-salt-of-the-earth": {
 			"content": "f1921ca96eb2df304bc7410957458f45f3cb6f6c696ec4d6688cc5856bece7ae",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-satisfier-of-all-desires": {
+			"content": "64e4dbb3bf17ac6ea2109413c7f216a9a84f62cf44e74fb4e353ffa5ee20eff8",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-saviours-tears-over-the-lost": {
 			"content": "ef14d566ff0da9d859381ae411d71e84048ba4c8484326ad64c7020c12eb389b",
@@ -1185,6 +1253,10 @@
 		"the-shameful-sufferer": {
 			"content": "c4920478df3841636ce1bbb71391dc4c6d0f034f782ef88a4f6c888fc99e575b",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-sheltering-wing": {
+			"content": "0a24e49d2cd60d3f5e32a1b646bfb2f2752ffe58c4ff3f2d9fb17bd846cf4908",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-shepherd-king-of-israel": {
 			"content": "3b9706898ba7cd0ffe32ad5351a182d6b4362bd214a5abcd3512332a9becdc87",
@@ -1242,6 +1314,10 @@
 			"content": "716df6ad29e427eccd4faf225930cee8e6674c7cb1dd6e9c14490ac12b60e400",
 			"art": "35179a56b2621ec03c2603b685f736e78ab9241c5e731a706eff9a103a633bf9"
 		},
+		"the-toiling-christ": {
+			"content": "1162eb2b1d0037619d178a661654a69106f5d2b36a70681c6d318405f324b450",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-training-of-children": {
 			"content": "ed60a17b69c7ab14b2d3bbcc49e468b8f378e7a0c99638335650868ae76c548c",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -1277,6 +1353,10 @@
 		"the-vain-wish": {
 			"content": "e18dad70e5dccfb348c2c54895820f0ac72f4c2fd21d30712847e9be641c3a04",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-way": {
+			"content": "df305c28c1297f27820ca4cebfdf16dad56020c25ce7e158eb5fd288648bd812",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-way-of-salvation": {
 			"content": "151b76b0c1604949d091d01f48c00420054529381befbe652eec80cf109ac49b",
@@ -1365,6 +1445,10 @@
 		"victory-over-death": {
 			"content": "3687f831f844a216db6ef50d63be957b7706986f62ad2d29256cb02970da5f84",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"waiting-and-singing": {
+			"content": "4e92bdd7c65f02116947081db8681b4b6a4c89cfb3d8ed20bf812799357041bb",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"waiting-only-upon-god": {
 			"content": "273ac690063a4c82b4fa8804d5e8c089b8b44042fe9e03944739e1000265a79e",
