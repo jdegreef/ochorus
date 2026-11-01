@@ -622,6 +622,7 @@ TOPICS = [
         [
             "mortification-of-sin",
             "indwelling-sin-in-believers",
+            "the-dominion-of-sin-and-grace",
             "religious-affections",
             "purity-of-heart",
             "of-temptation",

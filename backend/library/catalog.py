@@ -1386,6 +1386,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # John Owen's A Treatise of the Dominion of Sin and Grace (1688) — CCEL's
+    # owen/sin_grace, Goold's edition: on Romans 6:14.
+    BookEntry("the-dominion-of-sin-and-grace", "The Dominion of Sin and Grace", "john-owen",
+              "ccel", "owen/sin_grace", cover_color="#3a2e4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Horatius Bonar's God's Way of Peace (1862) — CCEL's bonar/peace: a book
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",

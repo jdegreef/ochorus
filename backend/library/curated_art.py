@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "the-dominion-of-sin-and-grace": Artwork(
+        "met", 438950, "Eugène Isabey", "A Storm off the Normandy Coast", "probably 1850s", "A black storm over breaking sea, torn by a bar of red light: sin's dominion broken open by grace.",
+        focus=0.50, inset=0.02,
+    ),
     "table-talk": Artwork(
         "met", 435646, "Bernardo Bellotto", "Pirna: The Obertor from the South", "mid-1750s",
         "A Saxon town gate in Luther's own country: the Table Talk was gathered by students at his table in Wittenberg, a short way down the Elbe.",
