@@ -61,5 +61,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="plan", name="search_vector", field=_vector_field()
         ),
+        # base_manager_name, so a lazy FK load defers the new column too
+        # (models._DeferredVectorManager). State only — no SQL.
+        migrations.AlterModelOptions(
+            name="article",
+            options={"base_manager_name": "objects", "ordering": ["sort_order", "h1"]},
+        ),
+        migrations.AlterModelOptions(
+            name="book",
+            options={"base_manager_name": "objects", "ordering": ["sort_order", "title"]},
+        ),
+        migrations.AlterModelOptions(
+            name="plan",
+            options={"base_manager_name": "objects", "ordering": ["sort_order", "title"]},
+        ),
         migrations.RunPython(forwards, backwards),
     ]

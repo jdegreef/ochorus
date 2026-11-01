@@ -213,15 +213,18 @@ SET search_vector =
 WHERE t.language = %(language)s{extra}
 """
 
-# (template, table holding the language column) for every stored vector — what
-# backfill walks. Chapters carry no language of their own; it lives on Book.
+# Every stored vector: kind -> (template, table holding the language column).
+# What backfill walks, and what search matches against a stored column (its
+# STORED is derived from these keys). Chapters carry no language of their own;
+# it lives on Book.
 _STORED = {
-    "chapters": (_CHAPTER_SQL, "library_book"),
-    "sermons": (_SERMON_SQL, "library_sermon"),
-    "books": (_BOOK_SQL, "library_book"),
-    "plans": (_PLAN_SQL, "library_plan"),
-    "articles": (_ARTICLE_SQL, "library_article"),
+    "chapter": (_CHAPTER_SQL, "library_book"),
+    "sermon": (_SERMON_SQL, "library_sermon"),
+    "book": (_BOOK_SQL, "library_book"),
+    "plan": (_PLAN_SQL, "library_plan"),
+    "article": (_ARTICLE_SQL, "library_article"),
 }
+STORED_KINDS = frozenset(_STORED)
 
 
 def _refresh(template: str, language: str, extra: str = "", **params) -> int:
@@ -249,19 +252,13 @@ def refresh_sermon(sermon) -> None:
     _refresh(_SERMON_SQL, sermon.language, " AND t.id = %(id)s", id=sermon.pk)
 
 
-def refresh_book(book) -> None:
-    """Recompute one book's own vector (called from Book.save) — one small row."""
-    _refresh(_BOOK_SQL, book.language, " AND t.id = %(id)s", id=book.pk)
+def refresh_row(kind: str, row) -> None:
+    """Recompute one book's, plan's or article's own vector (from its save()).
 
-
-def refresh_plan(plan) -> None:
-    """Recompute one plan's vector (called from Plan.save)."""
-    _refresh(_PLAN_SQL, plan.language, " AND t.id = %(id)s", id=plan.pk)
-
-
-def refresh_article(article) -> None:
-    """Recompute one article's vector (called from Article.save)."""
-    _refresh(_ARTICLE_SQL, article.language, " AND t.id = %(id)s", id=article.pk)
+    Each is a per-language row with its titling text, so this is one small
+    UPDATE; chapters and sermons keep their own functions above.
+    """
+    _refresh(_STORED[kind][0], row.language, " AND t.id = %(id)s", id=row.pk)
 
 
 def refresh_book_chapters(book) -> None:

@@ -18,7 +18,6 @@ are plain text either way; the client escapes them and renders the markers as
 from __future__ import annotations
 
 import difflib
-import hashlib
 import re
 from contextlib import contextmanager, nullcontext
 
@@ -29,7 +28,7 @@ from django.db.models.functions import Coalesce
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import config_for, search_query
+from .fts import STORED_KINDS, config_for, search_query
 from .models import (
     Article,
     Author,
@@ -83,36 +82,21 @@ COUNT_CEILING = 200
 HL_START = "⟦"
 HL_END = "⟧"
 
-# How long a memoised answer may outlive the content it was computed from. The
-# key carries ContentRevision, so an API-borne change (an import publish, a review
-# approval) is seen on the very next search, and a deploy starts every worker on
-# an empty cache; this bounds the one route neither covers, a raw edit in the
-# Django admin or the SQL editor.
+# How long a memoised answer may outlive a change ContentRevision can't see.
 MEMO_SECONDS = 10 * 60
 
 
 def memoized(name: str, compute, *key):
-    """``compute()``, remembered per worker for ``MEMO_SECONDS``.
+    """``compute()``, remembered per worker until content changes.
 
     Search answers are a pure function of the query and the content, and the
     same few queries are most of the traffic — so the second reader to type
     "prayer" shouldn't pay for the first one's index scans. ``key`` is whatever
-    the answer depends on beyond the content revision. Hashed, because a query
-    is arbitrary reader text and cache keys have a length and character budget.
+    the answer depends on beyond the content revision.
     """
-    from django.core.cache import caches
+    from .invalidation import revision_cached
 
-    from .models import ContentRevision
-
-    raw = repr((name, ContentRevision.current(), *key))
-    cache_key = "search:" + hashlib.sha256(raw.encode()).hexdigest()
-    store = caches["search"]
-    hit = store.get(cache_key)
-    if hit is not None:
-        return hit
-    value = compute()
-    store.set(cache_key, value, MEMO_SECONDS)
-    return value
+    return revision_cached("search", f"search:{name}", compute, *key, timeout=MEMO_SECONDS)
 
 
 _SPACE = re.compile(r"\s")
@@ -251,9 +235,9 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
     than the results is worse than no count at all. ``scope`` narrows all three
     together for the same reason.
     """
-    # The hits read body_text (snippets) and never body_html or the vectors —
-    # which the queries reference in SQL without needing them loaded — so those
-    # stay in the database rather than crossing the wire for every result.
+    # No hit reads body_html or a vector (the queries name the vectors in SQL
+    # without loading them), so those stay in the database. body_text stays
+    # loaded for the SQLite and "show more" snippets, built in Python.
     chapters = (
         Chapter.objects.filter(book__is_published=True, book__language=language)
         .select_related("book", "book__author")
@@ -324,20 +308,25 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
     return _scoped(out, scope) if scope else out
 
 
+#: The kinds whose vectors are big enough to be TOASTed — see _index_scans.
+TOASTED = frozenset({"chapter", "sermon"})
+
+
 @contextmanager
 def _index_scans():
-    """Steer Postgres off sequential scans for the stored-vector queries inside.
+    """Steer Postgres off sequential scans for the TOASTED kinds' queries inside.
 
-    The stored vectors are TOASTed: library_chapter's heap is ~20 MB, its
-    vectors ~750 MB beside it, and the planner prices a sequential scan by the
-    heap alone. So for any common word it chose to scan every chapter in every
-    language — detoasting each vector to test it — over the GIN index that
-    answers the same match in a few milliseconds (measured on the fixture:
-    "prayer" 560 ms -> 49 ms ranked, 615 ms -> 12 ms counted).
+    library_chapter's heap is ~20 MB and its vectors ~750 MB beside it, and the
+    planner prices a sequential scan by the heap alone. So for any common word
+    it chose to scan every chapter in every language — detoasting each vector
+    to test it — over the GIN index that answers the same match in a few
+    milliseconds (measured on the fixture: "prayer" 560 ms -> 49 ms ranked,
+    615 ms -> 12 ms counted).
 
-    Only for the STORED kinds. Authors and topics have no vector index, and
-    with sequential scans penalised the planner walks them through other
-    indexes instead — measured ten times slower — so their queries stay out.
+    Only for those tables. Elsewhere a sequential scan is often the right plan:
+    the entity vectors are small, and authors and topics have no vector index
+    at all — with sequential scans penalised the planner walked them through
+    other indexes instead, measured ten times slower.
 
     SET LOCAL needs a transaction, so this opens one; it is also what keeps the
     setting from leaking to the next request on a pooled connection. If the
@@ -346,6 +335,9 @@ def _index_scans():
     if connection.vendor != "postgresql":
         yield
         return
+    # Inside a caller's transaction (a test, an atomic view) SET LOCAL lasts
+    # until the OUTERMOST one ends, so it must be put back; otherwise COMMIT does.
+    nested = connection.in_atomic_block
     with transaction.atomic(), connection.cursor() as cursor:
         cursor.execute(
             "SELECT current_setting('enable_seqscan'),"
@@ -353,10 +345,8 @@ def _index_scans():
         )
         previous = cursor.fetchone()[0]
         yield
-        # Restored rather than left to COMMIT, for a caller already inside a
-        # transaction (a test, an atomic view): SET LOCAL lasts until the
-        # OUTERMOST transaction ends, not this block.
-        cursor.execute("SELECT set_config('enable_seqscan', %s, true)", [previous])
+        if nested:
+            cursor.execute("SELECT set_config('enable_seqscan', %s, true)", [previous])
 
 
 def search_library(q: str, language: str, scope=None) -> list[dict]:
@@ -428,11 +418,11 @@ def _search_postgres(ctx, qs):
     # spelled out inline here, which is how the topic vector came to be wrong on
     # THIS path — the one readers actually hit — while a fix elsewhere would
     # have looked complete.
-    def ranked(kind):
+    def ranked(kind, *tiebreak):
         return (
             _match(kind, ctx, qs[kind])
             .annotate(rank=SearchRank(_pg_vector(kind, config, ctx.language), query))
-            .order_by("-rank")
+            .order_by("-rank", *tiebreak)
         )
 
     def entity(kind, builder):
@@ -441,9 +431,9 @@ def _search_postgres(ctx, qs):
 
     def passages(kind, builder, *tiebreak):
         # The snippet is SearchHeadline over body_text, computed in SQL on the
-        # capped rows only — so body_text itself never needs to be loaded.
+        # capped rows only — so on this path body_text is never loaded.
         rows = (
-            ranked(kind)
+            ranked(kind, *tiebreak)
             .defer("body_text")
             .annotate(
                 headline=SearchHeadline(
@@ -455,18 +445,17 @@ def _search_postgres(ctx, qs):
                     max_words=40,
                     min_words=20,
                 )
-            )
-            .order_by("-rank", *tiebreak)[: CAPS[kind]]
+            )[: CAPS[kind]]
         )
         return [(float(r.rank), builder(r, snippet=r.headline)) for r in rows]
 
     pairs: list[tuple[float, dict]] = []
     pairs += entity("author", _author_hit)
+    pairs += entity("book", _book_hit)
     pairs += entity("topic", _topic_hit)
+    pairs += entity("plan", _plan_hit)
+    pairs += entity("article", _article_hit)
     with _index_scans():
-        pairs += entity("book", _book_hit)
-        pairs += entity("plan", _plan_hit)
-        pairs += entity("article", _article_hit)
         pairs += passages("chapter", _chapter_hit, "book__sort_order", "order")
         pairs += passages("sermon", _sermon_hit, "sort_order")
 
@@ -646,7 +635,7 @@ def _topic_localized(language: str):
 #: instead of one rebuilt from the raw columns on every request. Authors and
 #: topics are the exceptions: one row serves every language, and the reader's
 #: language picks both the prose and the FTS config — see library/fts.py.
-STORED = frozenset({"book", "plan", "article", "chapter", "sermon"})
+STORED = STORED_KINDS
 
 
 def _pg_vector(kind: str, config: str, language: str):
@@ -682,11 +671,11 @@ def _match(kind: str, ctx, qs):
         matched = qs.filter(_lite_q(kind, ctx.q))
         return matched.distinct() if kind == "topic" else matched
 
-    config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
     if kind in STORED:
         return qs.filter(search_vector=query)
-    return qs.annotate(search=_pg_vector(kind, config, ctx.language)).filter(search=query)
+    vector = _pg_vector(kind, config_for(ctx.language), ctx.language)
+    return qs.annotate(search=vector).filter(search=query)
 
 
 #: Ordering per type per sort mode. "relevance" isn't here: on Postgres it is the
@@ -737,16 +726,20 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     capped: dict[str, bool] = {}
     querysets = _base_querysets(language, scope)
 
-    def count(kinds):
-        for kind in kinds:
-            n = _match(kind, ctx, querysets[kind]).values("pk")[:COUNT_CEILING].count()
-            if n:
-                counts[kind] = n
-                capped[kind] = n >= COUNT_CEILING
+    def tally(kind):
+        n = _match(kind, ctx, querysets[kind]).values("pk")[:COUNT_CEILING].count()
+        if n:
+            counts[kind] = n
+            capped[kind] = n >= COUNT_CEILING
 
-    count(k for k in querysets if k not in STORED)
+    # In _base_querysets' order either way, so the totals serialise stably.
+    for kind in querysets:
+        if kind not in TOASTED:
+            tally(kind)
     with _index_scans():
-        count(k for k in querysets if k in STORED)
+        for kind in querysets:
+            if kind in TOASTED:
+                tally(kind)
     # "scripture" is intentionally uncounted: it has no queryset, and a reference
     # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
     # lands on the single loaded row exactly. Counting it would mean re-running
@@ -800,7 +793,7 @@ def page_by_type(
     else:
         qs = qs.order_by(*_ORDER[kind]["natural"])
 
-    with _index_scans() if kind in STORED else nullcontext():
+    with _index_scans() if kind in TOASTED else nullcontext():
         return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
 
 

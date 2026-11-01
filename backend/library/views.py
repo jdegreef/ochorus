@@ -345,7 +345,10 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
 #: Chapter columns the chapter payload never reads. body_text and search_vector
 #: are each about the size of the body, so loading them tripled what a chapter
 #: request held in memory.
-_CHAPTER_UNSERVED = ("body_text", "search_vector", "citations_indexed_at")
+# book__search_vector: select_related joins past Book's deferring manager.
+_CHAPTER_UNSERVED = (
+    "body_text", "search_vector", "citations_indexed_at", "book__search_vector"
+)
 
 
 class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
@@ -1579,9 +1582,7 @@ class SearchView(APIView):
         # to a second empty page. Inside a scope, empty usually means "not
         # here", and the way out is to widen the search, not to respell it.
         if not results and not scope:
-            # `or ""`: the memo can't store None (it reads as a miss), and "no
-            # suggestion" is exactly the answer worth remembering for a miss.
-            hint = memoized("suggest", lambda: suggest(q, language) or "", q, language)
+            hint = memoized("suggest", lambda: suggest(q, language), q, language)
             if hint:
                 payload["suggestion"] = hint
         # Anonymous analytics (admin "what do readers search for / not find").
@@ -2193,6 +2194,7 @@ def _short_quotes():
         .select_related("author", "chapter__book", "sermon")
         # The card needs titles and slugs, never the bodies they sit in.
         .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+               "chapter__book__search_vector",
                "sermon__body_html", "sermon__body_text", "sermon__search_vector")
     )
 
@@ -2397,6 +2399,7 @@ class ScriptureGraphView(APIView):
             c.pk: c
             for c in chapters.filter(pk__in=[r["chapter_id"] for r in rows])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {
@@ -2598,6 +2601,7 @@ class ScriptureBookView(APIView):
             for c in english_chapters()
             .filter(pk__in=[r["chapter_id"] for r in cites])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {

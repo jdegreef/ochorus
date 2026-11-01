@@ -566,10 +566,28 @@ class _DeferredVectorManager(models.Manager):
     doesn't need it loaded. Deferred also means ``save()`` on a loaded row
     writes only the loaded fields, so it can never put a stale vector back over
     the one fts refreshed.
+
+    Each model names this its ``base_manager_name`` too, so a lazy FK load
+    (``chapter.book``, ``day.plan``) defers it as well. A ``select_related``
+    JOIN uses no manager at all: those sites say ``defer("book__search_vector")``
+    themselves.
     """
 
     def get_queryset(self):
         return super().get_queryset().defer("search_vector")
+
+
+def _touches(kwargs, fields) -> bool:
+    """Whether a save() with these kwargs can change any of ``fields``."""
+    update_fields = kwargs.get("update_fields")
+    return update_fields is None or not set(fields).isdisjoint(update_fields)
+
+
+#: What each stored entity vector reads (library/fts.py) — the fields whose save
+#: must refresh it. A book's also reads its author's name (Author.save ripples).
+_BOOK_VECTOR_FIELDS = ("title", "subtitle", "description", "language", "author", "author_id")
+_PLAN_VECTOR_FIELDS = ("title", "description", "language")
+_ARTICLE_VECTOR_FIELDS = ("h1", "meta_title", "description", "language")
 
 
 class BookManager(_DeferredVectorManager):
@@ -609,8 +627,7 @@ class Book(models.Model):
     cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
-    # Derived from title, subtitle, the author's name and description (+ the FTS config for ``language``) by save() and
-    # backfill_search_vectors; GIN-indexed in migration 0207. See library/fts.py.
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     # One line that sells the story rather than the cover ("Amy Carmichael
     # refused to make missions sound nice. This is what she actually saw in
@@ -693,6 +710,7 @@ class Book(models.Model):
     objects = BookManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "title"]
         constraints = [
             models.UniqueConstraint(
@@ -745,24 +763,22 @@ class Book(models.Model):
         # into its chapters' search vectors (library/fts.py) — a retitle must
         # ripple. Compare against the stored row first so unrelated edits
         # (covers, sort order) don't re-tokenise the whole book; on create the
-        # refresh matches zero chapter rows, so it's free either way. The book's
-        # OWN vector also reads subtitle + description, and is one small row.
-        ripple_fields = ("title", "language", "author_id")
-        own_fields = (*ripple_fields, "subtitle", "description")
+        # refresh matches zero chapter rows, so it's free either way.
         update_fields = kwargs.get("update_fields")
-        touched = update_fields is None or not {*own_fields, "author"}.isdisjoint(
-            update_fields
-        )
-        ripple = own = touched
-        if touched and self.pk:
-            old = Book.objects.filter(pk=self.pk).values_list(*own_fields).first()
-            new = tuple(getattr(self, f) for f in own_fields)
-            if old is not None:
-                own = old != new
-                ripple = old[: len(ripple_fields)] != new[: len(ripple_fields)]
+        ripple = update_fields is None or not {
+            "title", "language", "author", "author_id"
+        }.isdisjoint(update_fields)
+        if ripple and self.pk:
+            old = (
+                Book.objects.filter(pk=self.pk)
+                .values_list("title", "language", "author_id")
+                .first()
+            )
+            ripple = old != (self.title, self.language, self.author_id)
         super().save(*args, **kwargs)
-        if own:
-            fts.refresh_book(self)
+        # The book's OWN vector is one small row, so no comparison first.
+        if _touches(kwargs, _BOOK_VECTOR_FIELDS):
+            fts.refresh_row("book", self)
         if ripple:
             fts.refresh_book_chapters(self)
 
@@ -1076,8 +1092,7 @@ class Article(models.Model):
     # The standfirst: a short summary shown under the H1 and reused as the meta
     # description. Like Book.description, one field serves the page and the crawl.
     description = models.TextField(blank=True)
-    # Derived from h1, meta_title and description (+ the FTS config for ``language``) by save() and
-    # backfill_search_vectors; GIN-indexed in migration 0207. See library/fts.py.
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     # The article body as cleaned, structured HTML. Carries pull-quotes and
     # internal links, so it is sanitized with the RICH (bio) profile, not the
@@ -1133,6 +1148,7 @@ class Article(models.Model):
     objects = ArticleManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "h1"]
         constraints = [
             models.UniqueConstraint(
@@ -1170,7 +1186,8 @@ class Article(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["word_count"]
         super().save(*args, **kwargs)
-        fts.refresh_article(self)
+        if _touches(kwargs, _ARTICLE_VECTOR_FIELDS):
+            fts.refresh_row("article", self)
 
 
 class PlanManager(_DeferredVectorManager):
@@ -1191,8 +1208,7 @@ class Plan(models.Model):
     language = models.CharField(max_length=10, default="en")
     title = models.CharField(max_length=300)
     description = models.TextField(blank=True)
-    # Derived from title and description (+ the FTS config for ``language``) by save() and
-    # backfill_search_vectors; GIN-indexed in migration 0207. See library/fts.py.
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
@@ -1203,6 +1219,7 @@ class Plan(models.Model):
     objects = PlanManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "title"]
         constraints = [
             models.UniqueConstraint(
@@ -1220,7 +1237,8 @@ class Plan(models.Model):
     def save(self, *args, **kwargs):
         _require_title(self, kwargs)
         super().save(*args, **kwargs)
-        fts.refresh_plan(self)
+        if _touches(kwargs, _PLAN_VECTOR_FIELDS):
+            fts.refresh_row("plan", self)
 
 
 class PlanDayManager(models.Manager):

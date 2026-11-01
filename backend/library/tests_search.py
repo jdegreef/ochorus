@@ -620,6 +620,11 @@ class StoredSearchVectorTests(TestCase):
             list(Book.objects.all())
             list(Plan.objects.all())
             list(Article.objects.all())
+            # A lazy FK load goes through the BASE manager, not `objects`.
+            Chapter.objects.only("book_id").get(pk=self.chapter.pk).book  # noqa: B018
+            # The reader's main endpoint, which joins its book via select_related.
+            res = APIClient().get(f"/api/library/books/{self.book.slug}/chapters/1/")
+        self.assertEqual(res.status_code, 200)
         for query in ctx.captured_queries:
             self.assertNotIn("search_vector", query["sql"])
 

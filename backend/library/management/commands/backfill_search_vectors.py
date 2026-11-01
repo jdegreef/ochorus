@@ -34,5 +34,5 @@ class Command(BaseCommand):
             self.stdout.write("SQLite: search vectors unused, nothing to do.")
             return
         counts = fts.backfill(only_null=not opts["all"])
-        filled = ", ".join(f"{n} {kind}" for kind, n in counts.items())
+        filled = ", ".join(f"{n} {kind}s" for kind, n in counts.items())
         self.stdout.write(self.style.SUCCESS(f"Search vectors filled: {filled}."))
