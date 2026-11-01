@@ -1326,6 +1326,11 @@ CURATED: dict[str, Artwork] = {
         "met", 435906, "Claude Lorrain (Claude Gellée)", "Pastoral Landscape: The Roman Campagna", "ca. 1639",
         "A rich and settled country in golden light: Clement asks what the young ruler's command means for a Christian who owns such land.",
     ),
+    # ── Batch 31 · the import that landed as the no-plate gate went in ─────────
+    "the-shepherd-of-hermas": Artwork(
+        "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
+        "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
+    ),
 }
 
 

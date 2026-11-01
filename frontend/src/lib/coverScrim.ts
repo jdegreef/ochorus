@@ -242,6 +242,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-rise-and-progress-of-religion-in-the-soul': 0.55,
 	'the-secret-of-guidance': 0.60,
 	'the-secret-of-guidance-teens': 0.30,
+	'the-shepherd-of-hermas': 0.50,
 	'the-spiritual-exercises': 0.75,
 	'the-theological-orations': 0.95,
 	'the-unselfishness-of-god': 0.95,
