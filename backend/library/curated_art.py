@@ -1411,6 +1411,12 @@ CURATED: dict[str, Artwork] = {
         focus=0.4,
         inset=0.06,
     ),
+    "a-practical-view-of-christianity": Artwork(
+        "met", 437643, "Samuel Scott", "The Building of Westminster Bridge", "",
+        "Westminster on the Thames: Wilberforce wrote his Practical View for the fashionable London he moved in as a member of Parliament.",
+        focus=0.60,
+        inset=0.02,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,

@@ -169,6 +169,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'william-wilberforce': '50% 0%', // Hickel oil cropped to the half-length; face high in a 0.84 crop
 	'yona-kanamuzeyi': '50% 23%', // Ochorus scene (writing his diary by lamplight, head bowed), figure from behind, no face
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate

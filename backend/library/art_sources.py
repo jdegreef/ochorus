@@ -12,6 +12,7 @@ ART_SOURCES: dict[str, str] = {
     "a-body-of-divinity": "cma-145450@0.50",
     "a-brand-plucked-from-the-fire": "cma-173181@0.50",
     "a-call-to-the-unconverted": "met-436653@0.50",
+    "a-practical-view-of-christianity": "met-437643@0.60~0.02",
     "a-retrospect": "cma-149613@0.50",
     "a-serious-call": "cma-141166@0.50",
     "a-short-and-easy-method-of-prayer": "cma-148968@0.50",

@@ -19,6 +19,7 @@ that draw a cover; `coverScrim.test.ts` fails if the two drift.
 ART_SCRIM: dict[str, float] = {
     "a-brand-plucked-from-the-fire": 0.90,
     "a-hidden-fire": 0.70,
+    "a-practical-view-of-christianity": 0.60,
     "a-retrospect-children": 0.30,
     "a-retrospect-teens": 0.30,
     "a-serious-call": 0.65,
