@@ -87,3 +87,23 @@ def flush_deploy() -> golive.DeployResult | None:
     if not has_undeployed_changes():
         return None
     return _fire_deploy(ContentRevision.load().revision, force=True)
+
+
+def revision_cached(alias: str, name: str, compute, *key, timeout: int):
+    """``compute()``, cached in ``caches[alias]`` until content changes.
+
+    The read side of this module's channel: ``ContentRevision`` is in the key,
+    so a change made through ``mark_content_changed`` misses on the very next
+    call, and ``timeout`` bounds what the revision can't see (a raw edit in the
+    Django admin or the SQL editor). ``key`` is whatever the answer depends on
+    beyond the content; it is hashed, so arbitrary reader text (a search query)
+    fits a cache key's length and character budget. ``None`` is cached like any
+    other answer.
+    """
+    from hashlib import sha256
+
+    from django.core.cache import caches
+
+    raw = repr((ContentRevision.current(), *key))
+    cache_key = f"{name}:{sha256(raw.encode()).hexdigest()}"
+    return caches[alias].get_or_set(cache_key, compute, timeout)

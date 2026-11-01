@@ -99,9 +99,6 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 1
   },
-  "david-livingstone-a-life": {
-   "word-fusion": 1
-  },
   "dialogue-with-trypho": {
    "anachronism": 1,
    "lost-paragraphing": 48,
@@ -204,9 +201,6 @@
   },
   "if": {
    "space-before-punct": 5
-  },
-  "in-darkest-england-and-the-way-out": {
-   "word-fusion": 1
   },
   "indwelling-sin-in-believers": {
    "lost-paragraphing": 1
