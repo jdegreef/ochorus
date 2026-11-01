@@ -347,5 +347,26 @@
 			{@render plateType(false)}
 		</div>
 	{/if}
+	<!-- The spine: a book's left edge in shade, so a shelf of covers reads as a
+	     shelf of books. Here and not in `cover-type.css`, because it belongs to
+	     the cover as the site shows it: share cards and downloads are flat
+	     prints of the face and must not carry it. -->
+	<div class="cover-spine" aria-hidden="true"></div>
 </div>
+
+<style>
+	.cover-spine {
+		position: absolute;
+		inset: 0;
+		z-index: 5;
+		pointer-events: none;
+		background: linear-gradient(
+			90deg,
+			rgb(0 0 0 / 0.38) 0,
+			rgb(255 255 255 / 0.1) 1.6%,
+			rgb(0 0 0 / 0.12) 3.2%,
+			transparent 7%
+		);
+	}
+</style>
 

@@ -26,7 +26,13 @@
         "justin-martyr",
         "clement-of-alexandria",
         "gregory-of-nyssa",
-        "tertullian"
+        "tertullian",
+        "irenaeus-of-lyons",
+        "origen-of-alexandria",
+        "eusebius-of-caesarea",
+        "lactantius",
+        "minucius-felix",
+        "polycarp"
       ]
     },
     {
@@ -292,7 +298,8 @@
         "corrie-ten-boom",
         "catherine-of-siena",
         "ignatius-of-loyola",
-        "boethius"
+        "boethius",
+        "minucius-felix"
       ]
     },
     {
@@ -305,7 +312,8 @@
         "brother-lawrence",
         "blaise-pascal",
         "jeanne-guyon",
-        "francis-de-sales"
+        "francis-de-sales",
+        "irenaeus-of-lyons"
       ]
     },
     {
@@ -406,7 +414,9 @@
         "augustine-of-hippo",
         "josephine-bakhita",
         "clement-of-alexandria",
-        "tertullian"
+        "tertullian",
+        "origen-of-alexandria",
+        "lactantius"
       ]
     },
     {
@@ -428,7 +438,9 @@
         "basil-of-caesarea",
         "gregory-of-nazianzus",
         "justin-martyr",
-        "gregory-of-nyssa"
+        "gregory-of-nyssa",
+        "eusebius-of-caesarea",
+        "polycarp"
       ]
     }
   ]

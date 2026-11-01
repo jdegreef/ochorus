@@ -578,8 +578,11 @@ Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 
 (J. Martin, Hackert, H. Robert). Batch 27 (2026-10-29, Met + Cleveland) took the last
 fourteen painted plates: Owen ×2, Torrey ×2, Murray, Moody, Bunyan, Baxter, Watson, Calvin,
 Teresa, Anselm, Gregory, Wheatley. The Original `faithful-with-little` (5 langs) then got
-a drawn ORIGINAL_GROUND (the widow's two coins; `original_grounds/faithful_with_little.py`),
-so NO published book wears a plate — until the next day's imports brought 30 more
+a drawn ORIGINAL_GROUND (the widow's two coins), since replaced (2026-10-31) by a CURATED
+painting, Georges Michel's plowed field (Met 437079). That photograph keeps a black mat and
+the canvas's brown lip round the picture: `Artwork.inset` (0.07) cuts it off every side
+before the 3:4 crop; check a new painting's EDGES at 1:1 for the same band.
+After Batch 27 NO published book wore a plate — until the next day's imports brought 30 more
 (Batch 28, 2026-10-31: the Fathers, Owen ×4, Taylor ×2, de Sales ×2, Chrysostom ×2, Justin ×2,
 Calvin, Newman, Wesley's Journal, Doddridge, Scougal, Loyola, Ryle). `import_ochorus` and
 the add-a-book flow still land books on plates, so this tier refills; that is why there is

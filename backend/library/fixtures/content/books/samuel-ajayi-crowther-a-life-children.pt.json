@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "samuel-ajayi-crowther-a-life-children",
+  "language": "pt",
+  "title": "Samuel Ajayi Crowther (Para Crianças)",
+  "subtitle": "",
+  "cover_byline": "Samuel Ajayi Crowther",
+  "description": "A história verdadeira de Ajayi, um menino iorubá que foi capturado por invasores, vendido muitas e muitas vezes e libertado de um navio negreiro por marinheiros britânicos, e que cresceu para dar ao seu povo a Bíblia na sua própria língua e para se tornar o primeiro bispo africano da Igreja Anglicana. Esta edição para crianças reconta a vida dele em capítulos curtos, feitos para ler em voz alta: um versículo da Bíblia, uma parte da história, uma coisa que ela significa para você e uma oração curta, com perguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "Sobre o que é Samuel Ajayi Crowther (Para Crianças)?",
+    "answer": "É uma versão para crianças da biografia completa de Samuel Ajayi Crowther. Conta como um menino chamado Ajayi foi tirado da sua casa, no que hoje é a Nigéria, e vendido como escravo, como ele foi libertado e conheceu Jesus, e como passou a vida levando as boas-novas de volta ao seu próprio povo, na sua própria língua."
+   },
+   {
+    "question": "Quem foi Samuel Ajayi Crowther?",
+    "answer": "Um homem iorubá que viveu há cerca de duzentos anos. Quando era menino, foi vendido como escravo e depois libertado pela marinha britânica. Ele se tornou professor, explorador do grande rio Níger, líder da equipe que traduziu a Bíblia para a língua iorubá e, em 1864, o primeiro bispo africano da Igreja Anglicana."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Cada capítulo é curto e feito para ler em voz alta. Começa com um versículo da Bíblia, conta uma parte da história de Ajayi, mostra uma coisa simples que ela significa para você e termina com uma oração curta. Depois vêm três perguntas, para conversar juntos."
+   },
+   {
+    "question": "Este livro é triste demais para crianças?",
+    "answer": "Algumas partes são tristes, porque ser capturado e vendido foi uma coisa terrível, e o livro não finge que não foi assim. Mas conta essas coisas com delicadeza, para crianças, e é antes de tudo a história de como Deus cuidou de Ajayi, lhe devolveu a mãe e usou a vida dele para fazer muito bem."
+   },
+   {
+    "question": "As histórias são verdadeiras?",
+    "answer": "Sim. Elas vêm das próprias cartas e diários de Samuel Crowther e das pessoas que o conheceram. Algumas histórias foram lembradas pela família dele muito tempo depois, e o livro diz isso quando as conta."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças, para um adulto ler em voz alta ou para uma criança mais velha ler sozinha. Há também uma edição para adolescentes e a biografia completa para leitores mais velhos."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, da biografia Samuel Ajayi Crowther, da Ochorus, da série Retratos de Coragem. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/art/samuel-ajayi-crowther-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 138,
+  "is_published": true,
+  "created_at": "2026-11-01T00:00:00Z",
+  "updated_at": "2026-11-01T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "O menino de Osogun",
+  "body_html": "<blockquote>“Os teus olhos viram o meu corpo. No teu livro foram todos escritos, os dias que foram ordenados para mim, quando ainda não havia nenhum deles.” — do Salmo 139</blockquote> <p>Há muito tempo, por volta do ano de 1807, nasceu um menino numa cidade chamada Osogun. Osogun fica na terra dos iorubás, no país que hoje chamamos de Nigéria. A família dele lhe deu o nome de Ajayi.</p> <p>Osogun era uma cidade grande e movimentada. Tinha uma cerca alta de madeira em toda a volta, com seis portões. As casas eram de barro, com telhados altos, e as famílias moravam bem pertinho umas das outras, em volta de pátios abertos. O pai de Ajayi era tecelão e agricultor. Ajayi tinha um irmão mais velho e várias irmãs, e muitas tias e primos ali perto.</p> <p>A família dele se lembrava de que ele era o líder de um grupo de uns quarenta meninos que trabalhavam juntos nas roças. Anos depois, ele adorava contar isso aos seus próprios filhos: eles cavavam com a enxada os montes de terra para o inhame e depois se sentavam na sombra, rindo dos meninos que tinham sido mais lentos do que ele!</p> <p>Ajayi nunca tinha visto o mar, nem um grande rio, nem um homem branco. Ele não conhecia Jesus. A família dele orava aos antigos deuses iorubás. Ele nunca poderia ter imaginado o que a sua vida iria se tornar.</p> <p>Mas Deus sabia. A Bíblia diz que Deus viu cada um de nós antes de nascermos, e que todos os dias da nossa vida foram escritos no livro dele. Deus via Ajayi brincando em Osogun. E Deus vê você também, onde quer que você esteja.</p> <p><em>Querido Deus, obrigado porque tu me conheceste antes de eu nascer. Obrigado porque todos os dias da minha vida estão nas tuas mãos. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where was Ajayi born?",
+    "answer": "In the town of Osogun, in the Yoruba country of what is now Nigeria, about the year 1807."
+   },
+   {
+    "question": "What did Ajayi like to do with the other boys?",
+    "answer": "His family remembered that he led a club of about forty boys who worked on the farms together, hoeing the heaps of earth for the yams."
+   },
+   {
+    "question": "What does the Bible verse say God knows about you?",
+    "answer": "That God saw you before you were born, and that every day of your life is written in his book. He knows you and looks after you."
+   }
+  ],
+  "body_text": "“Os teus olhos viram o meu corpo. No teu livro foram todos escritos, os dias que foram ordenados para mim, quando ainda não havia nenhum deles.” — do Salmo 139 Há muito tempo, por volta do ano de 1807, nasceu um menino numa cidade chamada Osogun. Osogun fica na terra dos iorubás, no país que hoje chamamos de Nigéria. A família dele lhe deu o nome de Ajayi. Osogun era uma cidade grande e movimentada. Tinha uma cerca alta de madeira em toda a volta, com seis portões. As casas eram de barro, com telhados altos, e as famílias moravam bem pertinho umas das outras, em volta de pátios abertos. O pai de Ajayi era tecelão e agricultor. Ajayi tinha um irmão mais velho e várias irmãs, e muitas tias e primos ali perto. A família dele se lembrava de que ele era o líder de um grupo de uns quarenta meninos que trabalhavam juntos nas roças. Anos depois, ele adorava contar isso aos seus próprios filhos: eles cavavam com a enxada os montes de terra para o inhame e depois se sentavam na sombra, rindo dos meninos que tinham sido mais lentos do que ele! Ajayi nunca tinha visto o mar, nem um grande rio, nem um homem branco. Ele não conhecia Jesus. A família dele orava aos antigos deuses iorubás. Ele nunca poderia ter imaginado o que a sua vida iria se tornar. Mas Deus sabia. A Bíblia diz que Deus viu cada um de nós antes de nascermos, e que todos os dias da nossa vida foram escritos no livro dele. Deus via Ajayi brincando em Osogun. E Deus vê você também, onde quer que você esteja. Querido Deus, obrigado porque tu me conheceste antes de eu nascer. Obrigado porque todos os dias da minha vida estão nas tuas mãos. Amém.",
+  "word_count": 304
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "O dia em que os invasores chegaram",
+  "body_html": "<blockquote>“Quanto a vocês, vocês planejaram o mal contra mim, mas Deus o planejou para o bem.” — de Gênesis 50</blockquote> <p>Quando Ajayi tinha uns treze anos, havia guerra por toda a terra dos iorubás. Bandos de invasores iam de cidade em cidade, capturando pessoas para vender como escravos.</p> <p>Numa bela manhã de 1821, a família de Ajayi estava preparando o café da manhã. De repente, a notícia correu por Osogun: o inimigo está chegando! Os invasores cercaram a cidade. Depois de algumas horas de luta, eles conseguiram entrar.</p> <p>Todo mundo correu. As mães carregavam os seus bebês e puxavam os filhos pelo meio dos arbustos cheios de espinhos. Ajayi tinha um arco e cinco flechas, mas perdeu o arco no meio dos espinhos. O pai dele veio dizer a todos que fugissem. Foi a última vez que Ajayi viu o pai.</p> <p>Os invasores pegaram Ajayi, a mãe dele, as suas duas irmãs e um primo. Puseram uma corda no pescoço de cada um e os levaram embora, amarrados uns aos outros. Enquanto saíam da cidade em chamas, Ajayi viu a avó no meio da multidão, só por alguns minutos. Depois ela sumiu.</p> <p>Muitos anos depois, quando Ajayi já era adulto, ele chamou aquele de “o dia infeliz, mas abençoado”. Foi infeliz, porque ele perdeu a sua casa e a sua família. Mas ele também o chamou de abençoado, porque foi o primeiro passo de um longo caminho que o levaria até Jesus.</p> <p>Às vezes acontecem coisas muito tristes. Deus não diz que essas coisas são boas. Mas Deus pode estar trabalhando até no dia mais triste, tirando dele algo de bom de maneiras que ainda não conseguimos ver.</p> <p><em>Querido Deus, quando acontecerem coisas tristes, me ajuda a lembrar que tu continuas comigo. Obrigado porque tu podes tirar coisas boas dos dias difíceis. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to Osogun when Ajayi was about thirteen?",
+    "answer": "Raiders surrounded the town, broke in, and caught many people, including Ajayi, his mother and his sisters, to sell as slaves."
+   },
+   {
+    "question": "Why did Ajayi call it “the unhappy, but blessed day”?",
+    "answer": "It was unhappy because he lost his home and family. It was blessed because it began the long road that led him to Jesus."
+   },
+   {
+    "question": "Can you think of a hard time when God was still with you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God does not call sad things good, but he stays with us and can bring good out of them."
+   }
+  ],
+  "body_text": "“Quanto a vocês, vocês planejaram o mal contra mim, mas Deus o planejou para o bem.” — de Gênesis 50 Quando Ajayi tinha uns treze anos, havia guerra por toda a terra dos iorubás. Bandos de invasores iam de cidade em cidade, capturando pessoas para vender como escravos. Numa bela manhã de 1821, a família de Ajayi estava preparando o café da manhã. De repente, a notícia correu por Osogun: o inimigo está chegando! Os invasores cercaram a cidade. Depois de algumas horas de luta, eles conseguiram entrar. Todo mundo correu. As mães carregavam os seus bebês e puxavam os filhos pelo meio dos arbustos cheios de espinhos. Ajayi tinha um arco e cinco flechas, mas perdeu o arco no meio dos espinhos. O pai dele veio dizer a todos que fugissem. Foi a última vez que Ajayi viu o pai. Os invasores pegaram Ajayi, a mãe dele, as suas duas irmãs e um primo. Puseram uma corda no pescoço de cada um e os levaram embora, amarrados uns aos outros. Enquanto saíam da cidade em chamas, Ajayi viu a avó no meio da multidão, só por alguns minutos. Depois ela sumiu. Muitos anos depois, quando Ajayi já era adulto, ele chamou aquele de “o dia infeliz, mas abençoado”. Foi infeliz, porque ele perdeu a sua casa e a sua família. Mas ele também o chamou de abençoado, porque foi o primeiro passo de um longo caminho que o levaria até Jesus. Às vezes acontecem coisas muito tristes. Deus não diz que essas coisas são boas. Mas Deus pode estar trabalhando até no dia mais triste, tirando dele algo de bom de maneiras que ainda não conseguimos ver. Querido Deus, quando acontecerem coisas tristes, me ajuda a lembrar que tu continuas comigo. Obrigado porque tu podes tirar coisas boas dos dias difíceis. Amém.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Vendido de novo, e de novo",
+  "body_html": "<blockquote>“E não nos deixes cair em tentação, mas livra-nos do maligno.” — de Mateus 6</blockquote> <p>Na manhã seguinte, os invasores repartiram os prisioneiros entre si. Ajayi foi dado ao chefe e depois trocado por um cavalo! Mas o cavalo não prestava, e por isso Ajayi foi devolvido. Por um tempo, ele ficou na mesma cidade que a mãe e a irmãzinha bebê, e podia visitá-las.</p> <p>Então, numa noite, Ajayi foi acorrentado com outros prisioneiros, para ser levado ao mercado de manhã. Ele passou a noite inteira acordado. Ao amanhecer, eles partiram, e ele achou que passaram bem em frente à casa onde estava a mãe dele. Ele não teve coragem de chamá-la. Pensou que nunca mais a veria.</p> <p>Ajayi foi vendido de novo, e de novo, e de novo. Ao todo, ele foi vendido ou trocado umas seis vezes, por coisas como pano, fumo e rum. A cada vez, era levado para mais longe de casa, para o meio de gente que falava de um jeito diferente do dele.</p> <p>Ele ficou tão triste que parou de comer e adoeceu. Por fim, chegou à beira de uma grande lagoa. Ele nunca tinha visto tanta água! Ela o deixou apavorado. Ele foi levado de canoa para o outro lado, à noite, até uma cidade chamada Lagos, aonde chegavam os navios negreiros.</p> <p>Anos depois, Ajayi relembrou aqueles meses escuros. Ele viu que Deus tinha cuidado dele o tempo todo, mesmo antes de ele saber o nome de Deus. Ele disse que Deus o tinha “livrado do mal”, como na oração que Jesus nos ensinou, muito antes de ele mesmo fazer essa oração.</p> <p>Deus cuida de você também, mesmo nos dias em que você se sente sozinho.</p> <p><em>Querido Deus, obrigado porque tu cuidas de mim mesmo quando eu me sinto sozinho. Por favor, me protege e me livra do mal. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "How many times was Ajayi sold or traded?",
+    "answer": "About six times. Once he was even traded for a horse, which was sent back because it was no good."
+   },
+   {
+    "question": "Why was Ajayi afraid when he came to the lagoon?",
+    "answer": "He had never seen so much water before, and he knew he was being taken towards the place where slave ships came."
+   },
+   {
+    "question": "What did Ajayi see later about those dark months?",
+    "answer": "That God had been watching over him and delivering him from evil the whole time, even before he knew God."
+   }
+  ],
+  "body_text": "“E não nos deixes cair em tentação, mas livra-nos do maligno.” — de Mateus 6 Na manhã seguinte, os invasores repartiram os prisioneiros entre si. Ajayi foi dado ao chefe e depois trocado por um cavalo! Mas o cavalo não prestava, e por isso Ajayi foi devolvido. Por um tempo, ele ficou na mesma cidade que a mãe e a irmãzinha bebê, e podia visitá-las. Então, numa noite, Ajayi foi acorrentado com outros prisioneiros, para ser levado ao mercado de manhã. Ele passou a noite inteira acordado. Ao amanhecer, eles partiram, e ele achou que passaram bem em frente à casa onde estava a mãe dele. Ele não teve coragem de chamá-la. Pensou que nunca mais a veria. Ajayi foi vendido de novo, e de novo, e de novo. Ao todo, ele foi vendido ou trocado umas seis vezes, por coisas como pano, fumo e rum. A cada vez, era levado para mais longe de casa, para o meio de gente que falava de um jeito diferente do dele. Ele ficou tão triste que parou de comer e adoeceu. Por fim, chegou à beira de uma grande lagoa. Ele nunca tinha visto tanta água! Ela o deixou apavorado. Ele foi levado de canoa para o outro lado, à noite, até uma cidade chamada Lagos, aonde chegavam os navios negreiros. Anos depois, Ajayi relembrou aqueles meses escuros. Ele viu que Deus tinha cuidado dele o tempo todo, mesmo antes de ele saber o nome de Deus. Ele disse que Deus o tinha “livrado do mal”, como na oração que Jesus nos ensinou, muito antes de ele mesmo fazer essa oração. Deus cuida de você também, mesmo nos dias em que você se sente sozinho. Querido Deus, obrigado porque tu cuidas de mim mesmo quando eu me sinto sozinho. Por favor, me protege e me livra do mal. Amém.",
+  "word_count": 307
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "O navio que foi detido",
+  "body_html": "<blockquote>“A nossa alma escapou como um pássaro do laço do passarinheiro. O laço quebrou-se, e nós escapamos.” — do Salmo 124</blockquote> <p>Em Lagos, Ajayi foi comprado por traficantes de escravos portugueses. Ele ficou preso com outros meninos e homens num quarto escuro, sem janelas, acorrentados uns aos outros pelo pescoço. Eles esperaram ali por quase quatro meses.</p> <p>Por fim, numa noite, eles foram levados para um navio. Havia 187 pessoas espremidas lá dentro. O navio ia atravessar o oceano até as Américas, onde os escravos eram obrigados a trabalhar em grandes fazendas.</p> <p>Mas naquela mesma noite, dois navios de guerra britânicos chegaram e detiveram o navio negreiro! Naquele tempo, a marinha britânica navegava para cima e para baixo pela costa da África para deter os navios negreiros e libertar as pessoas. Os navios se chamavam Myrmidon e Iphigenia. Era 7 de abril de 1822.</p> <p>Ajayi e cinco amigos foram levados para o Myrmidon. Lá eles viram uma coisa assustadora: carne de pele branca pendurada e fileiras de bolas redondas de ferro no convés. Os meninos acharam que os marinheiros tinham comido os outros prisioneiros e que as bolas eram as cabeças deles! Mas, quando olharam de perto, a carne era de um porco, e as bolas eram só balas de canhão. Ajayi riu disso pelo resto da vida.</p> <p>Os marinheiros foram bondosos. Deram comida e roupas aos meninos. Depois de uns dois meses e meio no mar, o navio os levou até Serra Leoa, um lugar onde as pessoas resgatadas podiam viver em liberdade. As pessoas de lá lhes disseram: “Vocês estão livres!” E, bem depressa, eles acreditaram.</p> <p>Jesus também veio para libertar as pessoas. Ele disse que veio “para proclamar libertação aos cativos”. Ajayi foi libertado de um navio negreiro. Um dia, ele iria conhecer uma liberdade ainda maior.</p> <p><em>Querido Jesus, obrigado porque tu vieste para libertar as pessoas. Obrigado pelas pessoas que ajudam quem está em apuros. Me ajuda a ser uma delas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who stopped the slave ship?",
+    "answer": "Two British warships, the Myrmidon and the Iphigenia, on 7 April 1822."
+   },
+   {
+    "question": "What did the boys think when they saw the pig and the cannonballs?",
+    "answer": "They were afraid the sailors had eaten the other prisoners and that the cannonballs were their heads. Then they found it was only a pig, and the balls were iron."
+   },
+   {
+    "question": "Who is someone you could help this week?",
+    "answer": "Any answer is good. The sailors helped people who could not help themselves, and Jesus came to set people free. We can help others too."
+   }
+  ],
+  "body_text": "“A nossa alma escapou como um pássaro do laço do passarinheiro. O laço quebrou-se, e nós escapamos.” — do Salmo 124 Em Lagos, Ajayi foi comprado por traficantes de escravos portugueses. Ele ficou preso com outros meninos e homens num quarto escuro, sem janelas, acorrentados uns aos outros pelo pescoço. Eles esperaram ali por quase quatro meses. Por fim, numa noite, eles foram levados para um navio. Havia 187 pessoas espremidas lá dentro. O navio ia atravessar o oceano até as Américas, onde os escravos eram obrigados a trabalhar em grandes fazendas. Mas naquela mesma noite, dois navios de guerra britânicos chegaram e detiveram o navio negreiro! Naquele tempo, a marinha britânica navegava para cima e para baixo pela costa da África para deter os navios negreiros e libertar as pessoas. Os navios se chamavam Myrmidon e Iphigenia. Era 7 de abril de 1822. Ajayi e cinco amigos foram levados para o Myrmidon. Lá eles viram uma coisa assustadora: carne de pele branca pendurada e fileiras de bolas redondas de ferro no convés. Os meninos acharam que os marinheiros tinham comido os outros prisioneiros e que as bolas eram as cabeças deles! Mas, quando olharam de perto, a carne era de um porco, e as bolas eram só balas de canhão. Ajayi riu disso pelo resto da vida. Os marinheiros foram bondosos. Deram comida e roupas aos meninos. Depois de uns dois meses e meio no mar, o navio os levou até Serra Leoa, um lugar onde as pessoas resgatadas podiam viver em liberdade. As pessoas de lá lhes disseram: “Vocês estão livres!” E, bem depressa, eles acreditaram. Jesus também veio para libertar as pessoas. Ele disse que veio “para proclamar libertação aos cativos”. Ajayi foi libertado de um navio negreiro. Um dia, ele iria conhecer uma liberdade ainda maior. Querido Jesus, obrigado porque tu vieste para libertar as pessoas. Obrigado pelas pessoas que ajudam quem está em apuros. Me ajuda a ser uma delas. Amém.",
+  "word_count": 326
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "Um nome novo",
+  "body_html": "<blockquote>“Se alguém está em Cristo, é uma nova criação. As coisas antigas já passaram. Eis que, todas as coisas se tornaram novas.” — de 2 Coríntios 5</blockquote> <p>Em Serra Leoa, Ajayi foi mandado para uma aldeia chamada Bathurst. Ele morava na casa de um missionário, o senhor Davey, e da sua esposa. Toda noite, a senhora Davey lhe dava aula por meia hora.</p> <p>Ajayi aprendia muito depressa. Depois de só seis meses, ele já conseguia ler o Novo Testamento! Logo ele virou monitor, o que queria dizer que ajudava a ensinar as crianças menores. Ele recebia sete pence e meio por mês. Assim que aprendia alguma coisa, já queria ensinar aos outros.</p> <p>Na escola e na igreja, Ajayi ouviu falar de Jesus. Mais tarde, ele disse que “o Senhor quis abrir o meu coração”. Ele entendeu que tinha feito coisas erradas e precisava do perdão de Deus, e quis o perdão que Jesus dá. No dia 11 de dezembro de 1825, ele foi batizado.</p> <p>No batismo, ele recebeu um nome novo: Samuel Crowther. Era o nome de um pastor de Londres. A senhora Davey tinha sido professora da escola dominical na igreja dele, e foi ela quem escolheu esse nome para o menino. Mas Samuel nunca se esqueceu do seu nome iorubá. A vida inteira, ele assinou Samuel Ajayi Crowther.</p> <p>Em Bathurst também havia uma menina chamada Asano. Ela tinha sido resgatada de outro navio negreiro e ia à mesma escola. Anos depois, em 1829, Samuel e Asano se casaram. Eles ficaram casados por cinquenta e um anos e tiveram seis filhos.</p> <p>Quando você pertence a Jesus, você fica novo por dentro. Mas você continua sendo você! Deus não joga fora a pessoa que ele criou. Ele faz você novo.</p> <p><em>Querido Jesus, por favor, abre o meu coração para te ouvir, como tu abriste o coração de Samuel. Obrigado porque tu me perdoas e me fazes novo. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "How quickly did Ajayi learn to read?",
+    "answer": "After only six months in Sierra Leone he could read the New Testament, and he was soon helping to teach the younger children."
+   },
+   {
+    "question": "What new name did Ajayi take when he was baptised?",
+    "answer": "Samuel Crowther, the name of a minister in London. But he kept his Yoruba name too, and signed himself Samuel Ajayi Crowther."
+   },
+   {
+    "question": "What does it mean to become a “new person” in Jesus?",
+    "answer": "Jesus forgives us and changes us on the inside, but we are still the person God made. Samuel was made new, but he was still Ajayi."
+   }
+  ],
+  "body_text": "“Se alguém está em Cristo, é uma nova criação. As coisas antigas já passaram. Eis que, todas as coisas se tornaram novas.” — de 2 Coríntios 5 Em Serra Leoa, Ajayi foi mandado para uma aldeia chamada Bathurst. Ele morava na casa de um missionário, o senhor Davey, e da sua esposa. Toda noite, a senhora Davey lhe dava aula por meia hora. Ajayi aprendia muito depressa. Depois de só seis meses, ele já conseguia ler o Novo Testamento! Logo ele virou monitor, o que queria dizer que ajudava a ensinar as crianças menores. Ele recebia sete pence e meio por mês. Assim que aprendia alguma coisa, já queria ensinar aos outros. Na escola e na igreja, Ajayi ouviu falar de Jesus. Mais tarde, ele disse que “o Senhor quis abrir o meu coração”. Ele entendeu que tinha feito coisas erradas e precisava do perdão de Deus, e quis o perdão que Jesus dá. No dia 11 de dezembro de 1825, ele foi batizado. No batismo, ele recebeu um nome novo: Samuel Crowther. Era o nome de um pastor de Londres. A senhora Davey tinha sido professora da escola dominical na igreja dele, e foi ela quem escolheu esse nome para o menino. Mas Samuel nunca se esqueceu do seu nome iorubá. A vida inteira, ele assinou Samuel Ajayi Crowther. Em Bathurst também havia uma menina chamada Asano. Ela tinha sido resgatada de outro navio negreiro e ia à mesma escola. Anos depois, em 1829, Samuel e Asano se casaram. Eles ficaram casados por cinquenta e um anos e tiveram seis filhos. Quando você pertence a Jesus, você fica novo por dentro. Mas você continua sendo você! Deus não joga fora a pessoa que ele criou. Ele faz você novo. Querido Jesus, por favor, abre o meu coração para te ouvir, como tu abriste o coração de Samuel. Obrigado porque tu me perdoas e me fazes novo. Amém.",
+  "word_count": 318
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "Os próprios filhos da África",
+  "body_html": "<blockquote>“E serão minhas testemunhas em Jerusalém, em toda a Judeia e Samaria, e até os confins da terra.” — de Atos 1</blockquote> <p>Samuel cresceu e se tornou professor. Ele foi o primeiríssimo aluno de uma faculdade nova em Serra Leoa chamada Fourah Bay. Ele começou a escrever palavras em iorubá, a língua da sua infância.</p> <p>Em 1841, o governo britânico mandou três navios a vapor subirem o grande rio Níger, até bem dentro da África. Eles queriam acabar com o tráfico de escravos e contar as boas-novas de Jesus. Samuel foi com eles como missionário.</p> <p>No rio, começou uma febre terrível. Quase todos os europeus ficaram doentes, e muitos deles morreram. Mas a maioria dos africanos que estavam nos navios continuou com saúde.</p> <p>Samuel escreveu uma carta aos missionários em Londres. Ele disse que quem mais ajudaria a África seriam os “seus próprios filhos”. Ele queria dizer que os africanos conseguiam viver em lugares onde os europeus ficavam doentes, e sabiam falar as línguas do povo. Eles deviam ser preparados e enviados para contar ao seu próprio povo sobre Jesus.</p> <p>Dois anos depois, em 1843, Samuel foi ordenado pastor da Igreja da Inglaterra, em Londres. Quando voltou para casa, em Serra Leoa, ele pregou numa igreja lotada. Muita gente nunca tinha visto um pastor africano! Então ele fez uma coisa nova: celebrou um culto em iorubá. Ele disse que, ali de pé, se sentia como um bebê aprendendo a falar a sua própria língua.</p> <p>Jesus disse aos seus amigos que falassem dele às pessoas, começando pela cidade onde eles estavam. Você não precisa viajar para longe para fazer isso. Você pode começar com as pessoas que estão perto de você.</p> <p><em>Querido Jesus, me ajuda a falar de ti às pessoas que estão perto de mim, começando bem aqui, onde eu estou. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened on the Niger River in 1841?",
+    "answer": "A terrible fever broke out and many of the Europeans died, but most of the Africans stayed well."
+   },
+   {
+    "question": "What did Samuel mean when he said Africa would be helped by “her own children”?",
+    "answer": "That Africans should be trained and sent to tell their own people about Jesus, in their own languages."
+   },
+   {
+    "question": "Who is someone near you that you could tell about Jesus?",
+    "answer": "Any answer is good. Jesus told his friends to start telling about him at home, and so can we."
+   }
+  ],
+  "body_text": "“E serão minhas testemunhas em Jerusalém, em toda a Judeia e Samaria, e até os confins da terra.” — de Atos 1 Samuel cresceu e se tornou professor. Ele foi o primeiríssimo aluno de uma faculdade nova em Serra Leoa chamada Fourah Bay. Ele começou a escrever palavras em iorubá, a língua da sua infância. Em 1841, o governo britânico mandou três navios a vapor subirem o grande rio Níger, até bem dentro da África. Eles queriam acabar com o tráfico de escravos e contar as boas-novas de Jesus. Samuel foi com eles como missionário. No rio, começou uma febre terrível. Quase todos os europeus ficaram doentes, e muitos deles morreram. Mas a maioria dos africanos que estavam nos navios continuou com saúde. Samuel escreveu uma carta aos missionários em Londres. Ele disse que quem mais ajudaria a África seriam os “seus próprios filhos”. Ele queria dizer que os africanos conseguiam viver em lugares onde os europeus ficavam doentes, e sabiam falar as línguas do povo. Eles deviam ser preparados e enviados para contar ao seu próprio povo sobre Jesus. Dois anos depois, em 1843, Samuel foi ordenado pastor da Igreja da Inglaterra, em Londres. Quando voltou para casa, em Serra Leoa, ele pregou numa igreja lotada. Muita gente nunca tinha visto um pastor africano! Então ele fez uma coisa nova: celebrou um culto em iorubá. Ele disse que, ali de pé, se sentia como um bebê aprendendo a falar a sua própria língua. Jesus disse aos seus amigos que falassem dele às pessoas, começando pela cidade onde eles estavam. Você não precisa viajar para longe para fazer isso. Você pode começar com as pessoas que estão perto de você. Querido Jesus, me ajuda a falar de ti às pessoas que estão perto de mim, começando bem aqui, onde eu estou. Amém.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "“Mãe!”",
+  "body_html": "<blockquote>“Tu ajudas a vítima e o órfão.” — do Salmo 10</blockquote> <p>Em 1846, Samuel foi morar em Abeokuta, uma cidade nova na terra dos iorubás. Ele estava lá para começar uma igreja e uma escola. Era a primeira vez, desde menino, que ele morava no meio do seu próprio povo.</p> <p>Fazia menos de três semanas que ele estava lá quando alguém trouxe uma notícia incrível. A mãe dele estava viva! Ela morava com as irmãs dele numa cidade ali perto. Samuel mandou buscá-la na mesma hora.</p> <p>No dia 21 de agosto de 1846, a mãe dele chegou. Naquela manhã, Samuel tinha lido um versículo da Bíblia: “Tu ajudas a vítima e o órfão.” Ele disse que nunca tinha sentido tanto como aquilo era verdade quanto naquele dia.</p> <p>Quando a mãe o viu, ela tremeu. Não conseguia acreditar no que estava vendo. Os dois se abraçaram e ficaram se olhando em silêncio, enquanto lágrimas grandes rolavam pelo rosto magro dela. Ela o chamou pelos apelidos carinhosos que a avó usava com ele quando ele era pequeno. Fazia vinte e cinco anos que eles tinham sido separados.</p> <p>A mãe de Samuel tinha tido uma vida muito difícil. Ela tinha sido escrava durante muitos daqueles anos. Agora ela veio morar com o filho. Ela ia à igreja e aprendeu sobre Jesus. Em 1848, ela foi batizada e recebeu o nome de Hannah. Quando Samuel lhe contou que o seu trabalho muitas vezes o levaria para longe, ela disse: “Você não é mais meu filho, mas o servo de Deus.” Ela queria que ele fosse servir a Deus sem se preocupar com ela.</p> <p>Deus não se esqueceu de Samuel, e não se esqueceu da mãe de Samuel. Ele também não se esquece de você.</p> <p><em>Querido Deus, obrigado pela minha família. Obrigado porque tu nunca te esqueces de mim, e porque ajudas as pessoas que estão sozinhas ou que perderam alguém que amam. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "How long had Samuel and his mother been apart?",
+    "answer": "About twenty-five years. They were separated when Samuel was sold away, and found each other again in 1846."
+   },
+   {
+    "question": "What Bible verse did Samuel read on the day his mother came?",
+    "answer": "“You are the helper of the fatherless,” from Psalm 10. He said he had never felt it was so true as on that day."
+   },
+   {
+    "question": "What did his mother say when he told her he would often be away?",
+    "answer": "“You are no longer my son, but the servant of God.” She wanted him to do God’s work without worrying about her."
+   }
+  ],
+  "body_text": "“Tu ajudas a vítima e o órfão.” — do Salmo 10 Em 1846, Samuel foi morar em Abeokuta, uma cidade nova na terra dos iorubás. Ele estava lá para começar uma igreja e uma escola. Era a primeira vez, desde menino, que ele morava no meio do seu próprio povo. Fazia menos de três semanas que ele estava lá quando alguém trouxe uma notícia incrível. A mãe dele estava viva! Ela morava com as irmãs dele numa cidade ali perto. Samuel mandou buscá-la na mesma hora. No dia 21 de agosto de 1846, a mãe dele chegou. Naquela manhã, Samuel tinha lido um versículo da Bíblia: “Tu ajudas a vítima e o órfão.” Ele disse que nunca tinha sentido tanto como aquilo era verdade quanto naquele dia. Quando a mãe o viu, ela tremeu. Não conseguia acreditar no que estava vendo. Os dois se abraçaram e ficaram se olhando em silêncio, enquanto lágrimas grandes rolavam pelo rosto magro dela. Ela o chamou pelos apelidos carinhosos que a avó usava com ele quando ele era pequeno. Fazia vinte e cinco anos que eles tinham sido separados. A mãe de Samuel tinha tido uma vida muito difícil. Ela tinha sido escrava durante muitos daqueles anos. Agora ela veio morar com o filho. Ela ia à igreja e aprendeu sobre Jesus. Em 1848, ela foi batizada e recebeu o nome de Hannah. Quando Samuel lhe contou que o seu trabalho muitas vezes o levaria para longe, ela disse: “Você não é mais meu filho, mas o servo de Deus.” Ela queria que ele fosse servir a Deus sem se preocupar com ela. Deus não se esqueceu de Samuel, e não se esqueceu da mãe de Samuel. Ele também não se esquece de você. Querido Deus, obrigado pela minha família. Obrigado porque tu nunca te esqueces de mim, e porque ajudas as pessoas que estão sozinhas ou que perderam alguém que amam. Amém.",
+  "word_count": 319
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "O Pai-Nosso à luz de velas",
+  "body_html": "<blockquote>“Como é que os ouvimos, cada um na nossa própria língua materna?” — de Atos 2</blockquote> <p>Quando Samuel nasceu, quase ninguém tinha escrito o iorubá. As pessoas conheciam provérbios, histórias e cantigas maravilhosas, mas guardavam tudo isso na memória.</p> <p>Samuel queria que o seu povo pudesse ler a palavra de Deus na sua própria língua. Então ele escreveu palavras em iorubá e fez um livro para ensinar a língua. Junto com outros missionários, ele descobriu como escrevê-la. E começou a traduzir a Bíblia para o iorubá.</p> <p>Uma equipe inteira levou mais de quarenta anos. Samuel fez a maior parte. Em 1884, a Bíblia inteira finalmente saiu em iorubá! As pessoas podiam ler sobre Jesus na língua que falavam em casa.</p> <p>Em 1851, Samuel visitou a Inglaterra. Numa noite, ele foi ao Castelo de Windsor para conversar com o príncipe Alberto sobre a África. Enquanto eles olhavam uns mapas, uma senhora entrou na sala sem fazer barulho, vestida de um jeito bem simples. No começo, Samuel não sabia quem ela era. Era a rainha Vitória!</p> <p>Quando a lamparina apagou, a própria Rainha acendeu as velas. Então alguém pediu que Samuel dissesse alguma coisa em iorubá. Ele disse um provérbio iorubá e depois fez a oração do Pai-Nosso em iorubá. A Rainha disse que soava “suave e melodioso”.</p> <p>No dia de Pentecostes, pessoas de muitos países ouviram falar de Deus nas suas próprias línguas. Deus ama todas as línguas. Ele quer que todos os povos ouçam falar de Jesus com as palavras que entendem melhor.</p> <p><em>Pai nosso, que estás nos céus, obrigado porque tu entendes todas as línguas do mundo. Obrigado pelas pessoas que ajudam os outros a ler a Bíblia com as suas próprias palavras. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Samuel want to write Yoruba down?",
+    "answer": "So that his people could read God’s word in the language they spoke at home."
+   },
+   {
+    "question": "What did Samuel say to Queen Victoria in Yoruba?",
+    "answer": "A Yoruba proverb, and then the Lord’s Prayer. The Queen said it sounded “soft and melodious.”"
+   },
+   {
+    "question": "Why does God want people to hear about him in their own language?",
+    "answer": "Because God loves every language and every people, and we understand best in the words we grew up with."
+   }
+  ],
+  "body_text": "“Como é que os ouvimos, cada um na nossa própria língua materna?” — de Atos 2 Quando Samuel nasceu, quase ninguém tinha escrito o iorubá. As pessoas conheciam provérbios, histórias e cantigas maravilhosas, mas guardavam tudo isso na memória. Samuel queria que o seu povo pudesse ler a palavra de Deus na sua própria língua. Então ele escreveu palavras em iorubá e fez um livro para ensinar a língua. Junto com outros missionários, ele descobriu como escrevê-la. E começou a traduzir a Bíblia para o iorubá. Uma equipe inteira levou mais de quarenta anos. Samuel fez a maior parte. Em 1884, a Bíblia inteira finalmente saiu em iorubá! As pessoas podiam ler sobre Jesus na língua que falavam em casa. Em 1851, Samuel visitou a Inglaterra. Numa noite, ele foi ao Castelo de Windsor para conversar com o príncipe Alberto sobre a África. Enquanto eles olhavam uns mapas, uma senhora entrou na sala sem fazer barulho, vestida de um jeito bem simples. No começo, Samuel não sabia quem ela era. Era a rainha Vitória! Quando a lamparina apagou, a própria Rainha acendeu as velas. Então alguém pediu que Samuel dissesse alguma coisa em iorubá. Ele disse um provérbio iorubá e depois fez a oração do Pai-Nosso em iorubá. A Rainha disse que soava “suave e melodioso”. No dia de Pentecostes, pessoas de muitos países ouviram falar de Deus nas suas próprias línguas. Deus ama todas as línguas. Ele quer que todos os povos ouçam falar de Jesus com as palavras que entendem melhor. Pai nosso, que estás nos céus, obrigado porque tu entendes todas as línguas do mundo. Obrigado pelas pessoas que ajudam os outros a ler a Bíblia com as suas próprias palavras. Amém.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "Um ano ao lado do naufrágio",
+  "body_html": "<blockquote>“Somos pressionados de todos os lados, mas não esmagados; perplexos, mas não desesperados; perseguidos, mas não desamparados; abatidos, mas não destruídos.” — de 2 Coríntios 4</blockquote> <p>Samuel subiu o rio Níger muitas e muitas vezes, para falar de Jesus às pessoas que moravam nas suas margens. Em 1854, ele foi num pequeno navio a vapor chamado Pleiad. Depois de mais de cem dias no rio, ninguém tinha morrido! Samuel disse: “Não a nós, mas a Deus damos louvor.”</p> <p>Em 1857, ele subiu o rio mais uma vez, num navio chamado Dayspring. No caminho, deixou dois ajudantes africanos na cidade de Onitsha, para começarem uma igreja ali. Depois o Dayspring subiu até bem longe, rio acima.</p> <p>No dia 7 de outubro de 1857, perto de uma cidade chamada Jebba, o navio bateu numas pedras e virou! Algumas pessoas vieram em canoas para ajudar, e todos chegaram em segurança à margem. Ninguém se machucou. Mas o navio não pôde ser salvo.</p> <p>Cinquenta pessoas tiveram de acampar ao lado do rio por um ano inteiro, esperando outro navio chegar. Samuel fazia orações toda manhã e toda noite na sua tenda feita de esteiras, e deixava os doentes descansarem ali. Uma noite, um leopardo entrou no acampamento! Samuel riu e confessou: “Eu não sou bom de tiro.”</p> <p>Ele não desperdiçou aquele ano. Fez amizade com as pessoas que moravam por perto. Aprendeu a língua delas, chamada nupe, e começou a escrevê-la. O povo ficou admirado ao ver as suas próprias palavras escritas no papel.</p> <p>Quando as coisas dão errado, é fácil desistir. Mas Samuel continuou confiando em Deus e continuou trabalhando. Deus pode usar até os nossos piores dias.</p> <p><em>Querido Deus, quando as coisas derem errado, me ajuda a não desistir. Me ajuda a confiar em ti e a continuar fazendo o bem. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to the ship called the Dayspring?",
+    "answer": "It hit rocks near Jebba and tipped over. Everyone got safely to shore, but the ship could not be saved."
+   },
+   {
+    "question": "What did Samuel do during the year beside the river?",
+    "answer": "He held prayers, cared for the sick, made friends with the people nearby, and began to write down their language, Nupe."
+   },
+   {
+    "question": "What is something hard that you could keep going with, like Samuel did?",
+    "answer": "Any honest answer is good. Samuel kept trusting God and kept working even when everything went wrong."
+   }
+  ],
+  "body_text": "“Somos pressionados de todos os lados, mas não esmagados; perplexos, mas não desesperados; perseguidos, mas não desamparados; abatidos, mas não destruídos.” — de 2 Coríntios 4 Samuel subiu o rio Níger muitas e muitas vezes, para falar de Jesus às pessoas que moravam nas suas margens. Em 1854, ele foi num pequeno navio a vapor chamado Pleiad. Depois de mais de cem dias no rio, ninguém tinha morrido! Samuel disse: “Não a nós, mas a Deus damos louvor.” Em 1857, ele subiu o rio mais uma vez, num navio chamado Dayspring. No caminho, deixou dois ajudantes africanos na cidade de Onitsha, para começarem uma igreja ali. Depois o Dayspring subiu até bem longe, rio acima. No dia 7 de outubro de 1857, perto de uma cidade chamada Jebba, o navio bateu numas pedras e virou! Algumas pessoas vieram em canoas para ajudar, e todos chegaram em segurança à margem. Ninguém se machucou. Mas o navio não pôde ser salvo. Cinquenta pessoas tiveram de acampar ao lado do rio por um ano inteiro, esperando outro navio chegar. Samuel fazia orações toda manhã e toda noite na sua tenda feita de esteiras, e deixava os doentes descansarem ali. Uma noite, um leopardo entrou no acampamento! Samuel riu e confessou: “Eu não sou bom de tiro.” Ele não desperdiçou aquele ano. Fez amizade com as pessoas que moravam por perto. Aprendeu a língua delas, chamada nupe, e começou a escrevê-la. O povo ficou admirado ao ver as suas próprias palavras escritas no papel. Quando as coisas dão errado, é fácil desistir. Mas Samuel continuou confiando em Deus e continuou trabalhando. Deus pode usar até os nossos piores dias. Querido Deus, quando as coisas derem errado, me ajuda a não desistir. Me ajuda a confiar em ti e a continuar fazendo o bem. Amém.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "“Eu não sou digno”",
+  "body_html": "<blockquote>“Ele levanta o pobre do pó e ergue o necessitado do monte de cinzas, para fazê-los assentar-se com os príncipes.” — de 1 Samuel 2</blockquote> <p>Os missionários em Londres decidiram que as igrejas ao longo do Níger precisavam de um bispo, um líder para todas as igrejas e todos os pastores. Decidiram também que o bispo devia ser africano. E escolheram Samuel.</p> <p>A família dele se lembrava de que Samuel não queria ser bispo de jeito nenhum. “Eu não sou digno”, ele disse. Ele queria continuar sendo um servo humilde. Mas por fim ele aceitou, dizendo: “Ele é o SENHOR. Que ele faça o que lhe parecer bem.”</p> <p>No dia 29 de junho de 1864, na grande catedral de Cantuária, na Inglaterra, Samuel Ajayi Crowther foi consagrado o primeiro bispo africano da Igreja Anglicana. O menino que tinha sido vendido como escravo agora era bispo!</p> <p>Uma senhora idosa foi à cerimônia. Contam que, quando ela encontrou outra pessoa sentada no seu lugar, não quis sair dali. Ela disse que tinha todo o direito àquele lugar, porque tinha ensinado o alfabeto ao novo bispo! Era a senhora Davey, a professora dele em Bathurst, que agora se chamava senhora Weeks.</p> <p>Ser bispo não deixou Samuel orgulhoso. Ele pedia que as pessoas não o chamassem de “Meu Senhor”. Se só houvesse uma cadeira numa sala e um professor entrasse, o bispo se levantava e dava a cadeira para o professor.</p> <p>Deus gosta de levantar as pessoas humildes. Você não precisa ser importante para ser usado por Deus. Você só precisa dizer sim a ele.</p> <p><em>Querido Deus, por favor, me faz humilde como Samuel. Me ajuda a colocar os outros em primeiro lugar e a dizer sim a tudo o que tu me pedires. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Samuel say when he was asked to be a bishop?",
+    "answer": "“I am not worthy.” He wanted to stay a humble servant, but at last he agreed to do what God wanted."
+   },
+   {
+    "question": "Who was the old lady at the cathedral?",
+    "answer": "Mrs. Weeks, who had been Mrs. Davey, his teacher at Bathurst. She said she had a right to her seat because she had taught him the alphabet."
+   },
+   {
+    "question": "How did Samuel show that being a bishop did not make him proud?",
+    "answer": "He asked people not to call him “My Lord,” and he would give his own chair to a schoolteacher."
+   }
+  ],
+  "body_text": "“Ele levanta o pobre do pó e ergue o necessitado do monte de cinzas, para fazê-los assentar-se com os príncipes.” — de 1 Samuel 2 Os missionários em Londres decidiram que as igrejas ao longo do Níger precisavam de um bispo, um líder para todas as igrejas e todos os pastores. Decidiram também que o bispo devia ser africano. E escolheram Samuel. A família dele se lembrava de que Samuel não queria ser bispo de jeito nenhum. “Eu não sou digno”, ele disse. Ele queria continuar sendo um servo humilde. Mas por fim ele aceitou, dizendo: “Ele é o SENHOR. Que ele faça o que lhe parecer bem.” No dia 29 de junho de 1864, na grande catedral de Cantuária, na Inglaterra, Samuel Ajayi Crowther foi consagrado o primeiro bispo africano da Igreja Anglicana. O menino que tinha sido vendido como escravo agora era bispo! Uma senhora idosa foi à cerimônia. Contam que, quando ela encontrou outra pessoa sentada no seu lugar, não quis sair dali. Ela disse que tinha todo o direito àquele lugar, porque tinha ensinado o alfabeto ao novo bispo! Era a senhora Davey, a professora dele em Bathurst, que agora se chamava senhora Weeks. Ser bispo não deixou Samuel orgulhoso. Ele pedia que as pessoas não o chamassem de “Meu Senhor”. Se só houvesse uma cadeira numa sala e um professor entrasse, o bispo se levantava e dava a cadeira para o professor. Deus gosta de levantar as pessoas humildes. Você não precisa ser importante para ser usado por Deus. Você só precisa dizer sim a ele. Querido Deus, por favor, me faz humilde como Samuel. Me ajuda a colocar os outros em primeiro lugar e a dizer sim a tudo o que tu me pedires. Amém.",
+  "word_count": 291
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "A bondade dos escravos",
+  "body_html": "<blockquote>“Os corvos lhe traziam pão e carne pela manhã, e pão e carne à tarde.” — de 1 Reis 17</blockquote> <p>Em 1867, o bispo Crowther estava subindo o rio no seu próprio barquinho, com o filho Dandeson. Eles pararam para visitar um chefe chamado Abokko, que Samuel conhecia havia anos.</p> <p>Mas Abokko achava que o bispo era dono dos grandes navios de comércio e que era muito rico. Ele tomou o barco, pegou todas as coisas deles e os manteve presos. Não ia deixá-los ir embora, a não ser que pagassem por eles uma pilha enorme de mercadorias.</p> <p>Na primeira noite, eles tiveram de dormir no chão úmido, sem nada para comer. Um dos escravos do chefe teve pena deles e deu a Samuel o seu próprio pano para servir de cobertor. Um barqueiro lhe deu a sua túnica para servir de travesseiro, e Samuel a deu para Dandeson. Durante dias, o chefe quase não lhes deu comida. Mas os escravos da casa repartiam escondido a sua própria comida com eles. Samuel disse a Dandeson que aqueles escravos bondosos eram como os corvos que Deus mandou para alimentar Elias.</p> <p>No domingo, Samuel não tinha Bíblia, porque Abokko tinha pegado todas as coisas dele. Então ele e Dandeson recitaram juntos versículos da Bíblia de memória. Depois Samuel foi, cheio de coragem, até o chefe e pediu a sua Bíblia, porque era o dia em que o povo de Deus se reúne para orar. O chefe a devolveu!</p> <p>Ofereceram a Dandeson a chance de ficar livre sozinho, mas ele não quis deixar o pai. Depois de muitos dias, chegou um navio a vapor, e os prisioneiros fugiram para ele. Mas um homem corajoso chamado senhor Fell, que tinha vindo ajudá-los, foi atingido por uma flecha e morreu. Samuel ficou muito triste. Ele disse que preferia ter morrido no lugar dele.</p> <p>Deus cuidou de Samuel por meio da bondade de escravos pobres. Até uma pequena bondade pode ser a resposta de Deus à oração de alguém.</p> <p><em>Querido Deus, obrigado porque tu cuidas do teu povo, mesmo nos lugares difíceis. Me ajuda a ser bondoso com as pessoas que estão em apuros, como os escravos que alimentaram Samuel. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Chief Abokko keep the bishop prisoner?",
+    "answer": "He thought the bishop owned the trading ships and was rich, so he wanted a huge payment before he would let him go."
+   },
+   {
+    "question": "Who fed Samuel and Dandeson when they were prisoners?",
+    "answer": "The chief’s slaves shared their own food with them in secret. Samuel said they were like the ravens God sent to feed Elijah."
+   },
+   {
+    "question": "What small kindness could you show someone this week?",
+    "answer": "Any answer is good. A small kindness, like sharing food or a blanket, can be God’s answer to someone’s prayer."
+   }
+  ],
+  "body_text": "“Os corvos lhe traziam pão e carne pela manhã, e pão e carne à tarde.” — de 1 Reis 17 Em 1867, o bispo Crowther estava subindo o rio no seu próprio barquinho, com o filho Dandeson. Eles pararam para visitar um chefe chamado Abokko, que Samuel conhecia havia anos. Mas Abokko achava que o bispo era dono dos grandes navios de comércio e que era muito rico. Ele tomou o barco, pegou todas as coisas deles e os manteve presos. Não ia deixá-los ir embora, a não ser que pagassem por eles uma pilha enorme de mercadorias. Na primeira noite, eles tiveram de dormir no chão úmido, sem nada para comer. Um dos escravos do chefe teve pena deles e deu a Samuel o seu próprio pano para servir de cobertor. Um barqueiro lhe deu a sua túnica para servir de travesseiro, e Samuel a deu para Dandeson. Durante dias, o chefe quase não lhes deu comida. Mas os escravos da casa repartiam escondido a sua própria comida com eles. Samuel disse a Dandeson que aqueles escravos bondosos eram como os corvos que Deus mandou para alimentar Elias. No domingo, Samuel não tinha Bíblia, porque Abokko tinha pegado todas as coisas dele. Então ele e Dandeson recitaram juntos versículos da Bíblia de memória. Depois Samuel foi, cheio de coragem, até o chefe e pediu a sua Bíblia, porque era o dia em que o povo de Deus se reúne para orar. O chefe a devolveu! Ofereceram a Dandeson a chance de ficar livre sozinho, mas ele não quis deixar o pai. Depois de muitos dias, chegou um navio a vapor, e os prisioneiros fugiram para ele. Mas um homem corajoso chamado senhor Fell, que tinha vindo ajudá-los, foi atingido por uma flecha e morreu. Samuel ficou muito triste. Ele disse que preferia ter morrido no lugar dele. Deus cuidou de Samuel por meio da bondade de escravos pobres. Até uma pequena bondade pode ser a resposta de Deus à oração de alguém. Querido Deus, obrigado porque tu cuidas do teu povo, mesmo nos lugares difíceis. Me ajuda a ser bondoso com as pessoas que estão em apuros, como os escravos que alimentaram Samuel. Amém.",
+  "word_count": 365
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "Boa noite",
+  "body_html": "<blockquote>“Em paz me deitarei e também dormirei, pois só tu, SENHOR, me fazes viver em segurança.” — do Salmo 4</blockquote> <p>À noite, os filhos de Samuel adoravam sentar em volta dele para ouvir as suas histórias. A favorita deles era a dos seus primeiros sapatos. Quando ele era estudante, ganhou umas botas pesadas do exército, mas nunca tinha usado sapatos antes! Ele não conseguia dar nem um passo. Então se segurou na parede e foi andando em volta do quarto, dando voltas e mais voltas, até conseguir se soltar. Durante meses, ele levava os sapatos na mão até a igreja e só os calçava na porta. Quando contava essa história, ele a imitava, e as crianças batiam palmas e gritavam.</p> <p>Quando Samuel ficou velho, aconteceram coisas tristes. Em 1880, a sua querida esposa, Asano, morreu. Depois, alguns jovens missionários da Inglaterra chegaram ao Níger. Eles não confiavam nos pastores africanos e tiraram o trabalho de alguns deles, até do próprio filho de Samuel, sem ouvir o velho bispo. Não foi justo, e isso magoou muito Samuel. Muitos anos depois, a Igreja da Inglaterra disse: “Foi errado.” Mas Samuel não gritou nem revidou. Ele continuou amando e servindo.</p> <p>Em 1891, ele ficou doente e foi ficar com a filha Abigail, em Lagos. Na última noite do ano, à meia-noite, Abigail o cobriu na cama e disse: “Boa noite, pai.” Ele respondeu: “Boa noite.” Pouco tempo depois, ele foi para casa, para estar com Jesus.</p> <p>O menino que tinha sido vendido como escravo ajudou a levar as boas-novas de Jesus ao seu povo. Hoje há muitos milhões de cristãos na Nigéria, e eles leem a Bíblia em iorubá, igbo e muitas outras línguas.</p> <p>Samuel confiou em Deus a vida inteira, nos dias felizes e nos dias tristes. Bem no fim, ele pôde dizer “Boa noite” em paz, porque sabia que estava seguro com Deus.</p> <p><em>Querido Deus, obrigado por Samuel Ajayi Crowther e por tudo o que tu fizeste por meio da vida dele. Me ajuda a confiar em ti nos dias felizes e nos dias tristes, e a saber que eu estou sempre seguro contigo. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was the funny story about Samuel’s first shoes?",
+    "answer": "He had never worn shoes, so when he was given heavy boots he could not walk. He held on to the wall and walked round the room until he could let go."
+   },
+   {
+    "question": "What did Samuel do when people treated him unfairly?",
+    "answer": "He did not shout or fight back. He went on loving and serving. Many years later, the Church of England said that what happened to him was wrong."
+   },
+   {
+    "question": "What were Samuel’s last words?",
+    "answer": "“Good night.” He said it to his daughter Abigail, in peace, because he knew he was safe with God."
+   }
+  ],
+  "body_text": "“Em paz me deitarei e também dormirei, pois só tu, SENHOR, me fazes viver em segurança.” — do Salmo 4 À noite, os filhos de Samuel adoravam sentar em volta dele para ouvir as suas histórias. A favorita deles era a dos seus primeiros sapatos. Quando ele era estudante, ganhou umas botas pesadas do exército, mas nunca tinha usado sapatos antes! Ele não conseguia dar nem um passo. Então se segurou na parede e foi andando em volta do quarto, dando voltas e mais voltas, até conseguir se soltar. Durante meses, ele levava os sapatos na mão até a igreja e só os calçava na porta. Quando contava essa história, ele a imitava, e as crianças batiam palmas e gritavam. Quando Samuel ficou velho, aconteceram coisas tristes. Em 1880, a sua querida esposa, Asano, morreu. Depois, alguns jovens missionários da Inglaterra chegaram ao Níger. Eles não confiavam nos pastores africanos e tiraram o trabalho de alguns deles, até do próprio filho de Samuel, sem ouvir o velho bispo. Não foi justo, e isso magoou muito Samuel. Muitos anos depois, a Igreja da Inglaterra disse: “Foi errado.” Mas Samuel não gritou nem revidou. Ele continuou amando e servindo. Em 1891, ele ficou doente e foi ficar com a filha Abigail, em Lagos. Na última noite do ano, à meia-noite, Abigail o cobriu na cama e disse: “Boa noite, pai.” Ele respondeu: “Boa noite.” Pouco tempo depois, ele foi para casa, para estar com Jesus. O menino que tinha sido vendido como escravo ajudou a levar as boas-novas de Jesus ao seu povo. Hoje há muitos milhões de cristãos na Nigéria, e eles leem a Bíblia em iorubá, igbo e muitas outras línguas. Samuel confiou em Deus a vida inteira, nos dias felizes e nos dias tristes. Bem no fim, ele pôde dizer “Boa noite” em paz, porque sabia que estava seguro com Deus. Querido Deus, obrigado por Samuel Ajayi Crowther e por tudo o que tu fizeste por meio da vida dele. Me ajuda a confiar em ti nos dias felizes e nos dias tristes, e a saber que eu estou sempre seguro contigo. Amém.",
+  "word_count": 354
+ }
+}
+]

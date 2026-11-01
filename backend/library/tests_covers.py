@@ -403,6 +403,9 @@ class CuratedArtTests(TestCase):
                 # nothing anywhere would have failed.
                 self.assertGreaterEqual(art.focus, 0.0, "focus is a fraction of the overflow")
                 self.assertLessEqual(art.focus, 1.0, "focus is a fraction of the overflow")
+                # An inset of half a side or more leaves nothing to crop.
+                self.assertGreaterEqual(art.inset, 0.0, "inset is a fraction of each side")
+                self.assertLess(art.inset, 0.25, "inset trims a mat, not the painting")
 
     def test_focus_moves_the_crop_window_along_the_overflowing_axis(self):
         """`focus` has to change PIXELS, not just be stored.
@@ -441,6 +444,40 @@ class CuratedArtTests(TestCase):
             self.assertGreater(seen[0.0][0], seen[0.0][2], "focus=0 should take the LEFT (red) end")
             self.assertGreater(seen[1.0][2], seen[1.0][0], "focus=1 should take the RIGHT (blue) end")
             self.assertNotEqual(seen[0.0], seen[1.0], "focus changed nothing at all")
+        finally:
+            for path in written:
+                path.unlink(missing_ok=True)
+
+    def test_inset_cuts_the_mat_off_every_side(self):
+        """`inset` has to remove a black mat the photograph carries, not just
+        be stored — and an entry without one must keep its old recipe."""
+        from PIL import Image
+
+        from library.curated_art import Artwork, crop_recipe
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        art = Artwork("met", 1, "a", "t", "y", "w")
+        self.assertEqual(crop_recipe(art), "met-1@0.50", "a zero inset must not move old recipes")
+        self.assertEqual(crop_recipe(art._replace(inset=0.05)), "met-1@0.50~0.05")
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        # A 3:4 grey painting inside a 10% black mat on every side.
+        source = Image.new("RGB", (750, 1000), (0, 0, 0))
+        source.paste(Image.new("RGB", (600, 800), (150, 150, 150)), (75, 100))
+        written = []
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                src = Path(td) / "s.png"
+                source.save(src)
+                plain = _crop_3x4(src, "inset-selftest", 0.5)
+                trimmed = _crop_3x4(src, "inset-selftest", 0.5, 0.1)
+                written += [plain, trimmed]
+                self.assertNotEqual(plain, trimmed, "inset must be in the cache key")
+                with Image.open(plain) as im:
+                    self.assertLess(max(im.getpixel((300, 2))), 30, "the mat is there without inset")
+                with Image.open(trimmed) as im:
+                    for xy in ((2, 2), (300, 2), (300, 797), (597, 400)):
+                        self.assertGreater(min(im.getpixel(xy)), 100, f"mat left at {xy}")
         finally:
             for path in written:
                 path.unlink(missing_ok=True)
@@ -548,7 +585,7 @@ class CuratedArtTests(TestCase):
             for slug, shared, keeps in (
                 ("waiting-on-god", True, False),        # CURATED
                 ("the-secret-of-guidance", True, True),  # DERIVED_GROUND
-                ("humility-2", True, False),            # ENGLISH_ON_GROUND
+                ("godliness", True, False),             # ENGLISH_ON_GROUND
                 ("a-designed-work", True, True),        # CURATED_GROUND
                 ("a-work-in-no-tier-at-all", False, False),
             ):

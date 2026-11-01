@@ -71,6 +71,7 @@ _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 _NEWTON = "https://ccel.org/ccel/newton/"
 _MACLAREN = "https://ccel.org/ccel/maclaren/"
+_NPNF106 = "https://ccel.org/ccel/schaff/npnf106/"
 # SermonIndex speaker pages — one transcript per page. Full URL is
 # _SI + "<speaker-slug>/<sermon-slug>/".
 _SI = "https://sermonindex.net/speakers/"
@@ -1508,6 +1509,10 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _CCEL + "sermons17/sermons17.xli.html",
     ),
+    # Unpublished (2026-10): a caricatured "Massa" dialect anecdote sits at its
+    # heart. Kept here and in the fixture (is_published false) so the text can
+    # be revisited. seed_sermons never unpublishes a live row (is_published is
+    # create-only), so the live row is unticked in the admin.
     SermonEntry(
         "healing-for-the-wounded",
         "Healing for the Wounded",
@@ -1803,5 +1808,205 @@ SERMONS: list[SermonEntry] = [
         "charles-h-spurgeon",
         "ccel",
         _CCEL + "sermons03/sermons03.xlix.html",
+    ),
+    # Alexander Maclaren, third batch: warm expositions from *Expositions of
+    # Holy Scripture* — comfort, prayer, the Christian life — screened with
+    # `screen_sermons`; judgment-centred titles left on the shelf. *The Fruit of
+    # the Spirit* (iicor_tim.ii.ii.viii) was dropped: its epigraph carries no
+    # scripRef link, so `extract` took an in-body reference as the masthead end
+    # and lost the first eight paragraphs.
+    SermonEntry(
+        "the-secret-of-immortal-youth", "The Secret of Immortal Youth", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xlix.html", scripture_ref="Isaiah 40:30-31",
+    ),
+    SermonEntry(
+        "the-writing-on-gods-hands", "The Writing on God's Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.iv.html", scripture_ref="Isaiah 49:16",
+    ),
+    SermonEntry(
+        "the-hiding-place", "The Hiding-Place", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxxiv.html", scripture_ref="Isaiah 32:2",
+    ),
+    SermonEntry(
+        "the-call-to-the-thirsty", "The Call to the Thirsty", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxiv.html", scripture_ref="Isaiah 55:1-13",
+    ),
+    SermonEntry(
+        "the-shepherd-king-of-israel", "The Shepherd King of Israel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xi.html", scripture_ref="Psalm 23:1-6",
+    ),
+    SermonEntry(
+        "into-thy-hands", "Into Thy Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xx.html", scripture_ref="Psalm 31:5",
+    ),
+    SermonEntry(
+        "the-encamping-angel", "The Encamping Angel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxiv.html", scripture_ref="Psalm 34:7",
+    ),
+    SermonEntry(
+        "the-fixed-heart", "The Fixed Heart", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.vi.html", scripture_ref="Psalm 57:7",
+    ),
+    SermonEntry(
+        "looking-to-the-hills", "Looking to the Hills", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxxviii.html", scripture_ref="Psalm 121:1-2",
+    ),
+    SermonEntry(
+        "the-true-vine", "The True Vine", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.ii.html", scripture_ref="John 15:1-4",
+    ),
+    SermonEntry(
+        "christs-friends", "Christ's Friends", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.vi.html", scripture_ref="John 15:14-17",
+    ),
+    SermonEntry(
+        "sorrow-turned-into-joy", "Sorrow Turned into Joy", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xv.html", scripture_ref="John 16:20-22",
+    ),
+    SermonEntry(
+        "the-praying-christ", "The Praying Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.ii.xliv.html", scripture_ref="Luke 11:1",
+    ),
+    SermonEntry(
+        "the-prodigal-and-his-father", "The Prodigal and His Father", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.iii.ix.html", scripture_ref="Luke 15:11-24",
+    ),
+    SermonEntry(
+        "rejoice-evermore", "Rejoice Evermore", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.iii.i.iii.html", scripture_ref="Philippians 4:4",
+    ),
+    # John Henry Newman — his first sermons on the shelf, from *Parochial and
+    # Plain Sermons* VII–VIII (Gutenberg; newmanreader.org's text is under
+    # copyright). Practical holiness only: the volumes' sermons on baptism,
+    # church order and "the old paths" are left out. Each volume heads its
+    # sermons "SERMON VIII." at h2 (the contents repeat it at h4) and prints the
+    # title as the first paragraph, which the importer drops. Read in full and
+    # dropped for tone: *The Lapse of Time* (judgment its thrust), *Mental
+    # Prayer* (closes on hell for careless youth), *The Season of Epiphany* and
+    # *The Crucifixion* (bound to their day; the latter chides those who keep
+    # no Good Friday), *The Yoke of Christ*, *The Duty of Self-Denial*, *Doing
+    # Glory to God in Pursuits of the World* and *Love of Religion, a New
+    # Nature* (asides against "enthusiasts", "faith alone" and Dissenters).
+    SermonEntry(
+        "temporal-advantages", "Temporal Advantages", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON V.", section_level="h2", scripture_ref="1 Timothy 6:7-8",
+    ),
+    SermonEntry(
+        "religion-pleasant-to-the-religious", "Religion Pleasant to the Religious", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON XIV.", section_level="h2", scripture_ref="Psalm 34:8",
+    ),
+    SermonEntry(
+        "divine-calls", "Divine Calls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON II.", section_level="h2", scripture_ref="1 Samuel 3:10",
+    ),
+    SermonEntry(
+        "jeremiah-a-lesson-for-the-disappointed", "Jeremiah, a Lesson for the Disappointed", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON IX.", section_level="h2", scripture_ref="Jeremiah 1:8",
+    ),
+    SermonEntry(
+        "the-shepherd-of-our-souls", "The Shepherd of Our Souls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVI.", section_level="h2", scripture_ref="John 10:11",
+    ),
+    SermonEntry(
+        "religious-joy", "Religious Joy", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVII.", section_level="h2", scripture_ref="Luke 2:10-11",
+    ),
+    # Batch 4 toward 400 (2026-11): warm sermons from authors already on the
+    # shelf, screened with `screen_sermons` and read in full against the tone
+    # rubric (sermon-import skill). John Newton, more of *Messiah* (the
+    # "Opposition to Messiah" sermons left out). Read and dropped: *The Great
+    # Shepherd* (ends denouncing idle clergy, with Leo X's "lucrative fable"),
+    # *The Intercession of Christ* and *Death Swallowed Up in Victory* (close on
+    # damnation; the latter also attacks universalism).
+    SermonEntry(
+        "messiahs-easy-yoke", "Messiah's Easy Yoke", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xvii.html", scripture_ref="Matthew 11:29-30",
+    ),
+    SermonEntry(
+        "the-angels-message-and-song", "The Angel's Message and Song", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xii.html", scripture_ref="Luke 2:8-14",
+    ),
+    SermonEntry(
+        "messiah-suffering-and-wounded-for-us", "Messiah Suffering and Wounded for Us", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xxi.html", scripture_ref="Isaiah 53:4-5",
+    ),
+    SermonEntry(
+        "the-lord-is-risen-indeed", "The Lord Is Risen Indeed", "john-newton", "ccel",
+        _NEWTON + "messiah2/messiah2.xvi.html", scripture_ref="1 Corinthians 15:20",
+    ),
+    # Robert Murray M"Cheyne, from SermonIndex"s printed text (no Bible
+    # reference there, so each is set here). *Children Called to Christ* is a
+    # 152-word poem there, not a sermon. Read and dropped for tone: *Melting the
+    # Betrayer* (a warning to unworthy communicants throughout) and *Faith's
+    # View of Christ* ("many of you are going to hell").
+    SermonEntry(
+        "adoption", "Adoption", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/adoption/", scripture_ref="1 John 3:1",
+    ),
+    SermonEntry(
+        "grieve-not-the-holy-spirit", "Grieve Not the Holy Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/grieve-not-the-holy-spirit/", scripture_ref="Ephesians 4:30",
+    ),
+    SermonEntry(
+        "the-spirit-committed-to-god", "The Spirit Committed to God", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-spirit-commited-to-god/", scripture_ref="Psalm 31:5",
+    ),
+    SermonEntry(
+        "the-lords-dealings-with-his-people", "The Lord's Dealings with His People", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-lords-dealings-with-his-people/", scripture_ref="Isaiah 46:3-4",
+    ),
+    SermonEntry(
+        "thanksgiving-obtains-the-spirit", "Thanksgiving Obtains the Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/thanksgiving-obtains-the-spirit/", scripture_ref="2 Chronicles 5:13-14",
+    ),
+    # Horatius Bonar, more of *Family Sermons* (single scan; see archive_ocr).
+    # Only sermons complete in one part: the volume prints several as pairs.
+    # *Christ the Healer* is suffixed: A. B. Simpson's book holds the slug.
+    # *Nazareth and Its Good News* was dropped (grace "transformed into
+    # vengeance"; "the worst specimens of Israel").
+    SermonEntry(
+        "bethlehem-and-its-good-news", "Bethlehem and Its Good News", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="The Word was made flesh", body_starts="There was nothing great about Bethlehem", ends_before="SERMON II.", scripture_ref="John 1:14",
+    ),
+    SermonEntry(
+        "christ-the-healer-bonar", "Christ the Healer", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="If I may but touch his garment", body_starts="Here, we may say", ends_before="CHRIST THE CLEANSER", scripture_ref="Matthew 9:21",
+    ),
+    SermonEntry(
+        "christ-the-cleanser", "Christ the Cleanser", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He that is washed needeth not", body_starts="This washing of the disciples", ends_before="SERMON XIII.", scripture_ref="John 13:10",
+    ),
+    SermonEntry(
+        "bethany-and-its-feast", "Bethany and Its Feast", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Then Jesus, six days before the passover", body_starts="We find ourselves here at Bethany", ends_before="SERMON XLIV.", scripture_ref="John 12:1-3",
+    ),
+    SermonEntry(
+        "the-mortal-and-the-immortal", "The Mortal and the Immortal", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Neither can they die any more", body_starts="Ours is a dying world", ends_before="LONGINGS FOR THE LAND", scripture_ref="Luke 20:36",
+    ),
+    SermonEntry(
+        "the-divine-banquet", "The Divine Banquet", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He shall eat the bread of his God", body_starts="It is not easy to say whether", ends_before="SERMON XLIII.", scripture_ref="Leviticus 21:22",
+    ),
+    # Augustine, his first sermons on the shelf: *Sermons on Selected Lessons of
+    # the New Testament* (NPNF 1st series vol. 6, R. G. MacMullen's 1888
+    # translation, CCEL). Pastoral Gospel sermons only — those headed against
+    # the Donatists, Arians or Pelagians are left out, and four more were read
+    # and dropped: *The Boat in the Storm* (a section against docetic
+    # heretics), *Men Ought Always to Pray* and *Ask, and It Shall Be Given*
+    # (against the Pelagians; the latter closes on an alms appeal), and *The
+    # Friend at Midnight* (its last third answers pagan critics of the sack of
+    # Rome).
+    SermonEntry(
+        "peter-on-the-waves", "Peter on the Waves", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xxviii.html", scripture_ref="Matthew 14:25-31",
+    ),
+    SermonEntry(
+        "martha-and-mary", "Martha and Mary", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.lv.html", scripture_ref="Luke 10:38-42",
+    ),
+    SermonEntry(
+        "asking-in-christs-name", "Asking in Christ's Name", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xcvii.html", scripture_ref="John 16:24",
     ),
 ]

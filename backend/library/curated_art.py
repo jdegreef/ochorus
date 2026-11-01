@@ -110,6 +110,13 @@ class Artwork(NamedTuple):
     #: painting's recipe (object and focus, `crop_recipe`) is recorded in
     #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
+    #: How much of the photograph to cut from EVERY edge before cropping, as a
+    #: fraction of that side. Some collections photograph a canvas with a black
+    #: mat or the frame's lip around it (Michel's plowed field, Met 437079), and
+    #: a 3:4 crop of the full photograph keeps that band down the plate's top
+    #: and bottom. Default 0, which is every entry cut before this existed;
+    #: only a non-zero inset enters `crop_recipe`, so their recipes stand.
+    inset: float = 0.0
 
 
 def crop_recipe(art: Artwork) -> str:
@@ -121,7 +128,8 @@ def crop_recipe(art: Artwork) -> str:
     to a different artwork, or moving its ``focus``, redraws it rather than
     leaving the old picture under the new credit.
     """
-    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    recipe = f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    return f"{recipe}~{art.inset:.2f}" if art.inset else recipe
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -1266,6 +1274,25 @@ CURATED: dict[str, Artwork] = {
         "met", 436193, "Narcisse-Virgile Diaz de la Peña", "The Edge of the Woods", "1872",
         "A way out of the wood into the light: Doddridge's book follows the soul from awakening to maturity, step by step.",
     ),
+    # ── Batch 29 · three Fathers imported 2026-10-31 ─────────────────────────
+    "against-heresies": Artwork(
+        "cma", 135173, "Paul Cezanne", "The Brook", "c. 1895–1900",
+        "A clear stream under green trees in southern France: Irenaeus, bishop of Lyon, answered the Gnostic systems with the one living tradition handed down from the apostles.",
+    ),
+    "on-first-principles": Artwork(
+        "met", 441379, "Peder Balke", "The North Cape by Moonlight", "1848",
+        "Light breaking through cloud over dark water — Origen's first principles begin from God, the Light by whom everything else is seen.",
+    ),
+    "church-history": Artwork(
+        "met", 437471, "Hubert Robert", "Aqueduct in Ruins", "",
+        "A Roman aqueduct still carrying the land's life after its empire passed: Eusebius tells how the church grew across that world, from the apostles to Constantine.",
+    ),
+    "faithful-with-little": Artwork(
+        "met", 437079, "Georges Michel", "Landscape with a Plowed Field and a Village", "probably after 1827",
+        "A worked field and a small village under a vast storm-lit sky: ordinary, faithful labour done under heaven, the little that God's servants are asked to keep well.",
+        focus=0.55,
+        inset=0.07,
+    ),
 }
 
 
@@ -1316,6 +1343,13 @@ CURATED_GROUND: dict[str, Artwork] = {
         "his own lodgings. The book is about the ordinary private room rather "
         "than a sanctuary, and so is the picture — which is also why it is not "
         "the church interior on `the-reformed-pastor`.",
+    ),
+    "humility-2": Artwork(
+        "met", 459122, "Paul-Désiré Trouillebert", "A Pond near Nangis", "1880–95",
+        "A still pond, a moored boat, low trees under a quiet sky: the lowliest "
+        "of places, painted without any drama. Murray calls humility the beauty "
+        "of holiness, and finds it in the low place. Replaced the crop of the "
+        "designed cover, which stretched a strip of a 443px raster into bands.",
     ),
     "prayer-the-pulse-of-life": Artwork(
         "met", 11113, "Winslow Homer", "Cannon Rock", "1895",
@@ -1466,14 +1500,6 @@ ORIGINAL_GROUND: dict[str, Original] = {
     "brave-for-god-4": Original(
         "a5c690a89c4784a4e108cf74d6cc6d857a2fffe7a855582d746777728d92c343",
         "Snowy mountains under cobalt: pines, a snowfield and a small red cabin.",
-    ),
-    "faithful-with-little": Original(
-        "90f3d2aba984ada532676e998b4cc1d431a9826a2789fb1e7d63e9393f647158",
-        "The widow's two small coins (Mark 12:42, in the book's introduction), "
-        "low in a pool of warm light on the deep green the book's plate wore: "
-        "the little that was faithfully given. Drawn by "
-        "scripts/original_grounds/faithful_with_little.py; the type is set from "
-        "the top, so the coins sit under the subtitle and over the mark.",
     ),
     "growing-in-wisdom": Original(
         "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",

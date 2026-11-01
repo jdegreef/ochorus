@@ -136,10 +136,14 @@ def source_html(book_id: str, cache: Path) -> str:
     return html
 
 
-def extract(kind: str, html: str, section: str) -> list[tuple[str, str]]:
+_SERMON = {s.slug: s for s in SERMONS}
+
+
+def extract(kind: str, html: str, section: str, slug: str) -> list[tuple[str, str]]:
     if kind == "book":
         return extract_chapters(html)
-    return [(section, extract_gutenberg_section(html, section))]
+    entry = _SERMON[slug]
+    return [(section, extract_gutenberg_section(html, section, entry.section_level, entry.title))]
 
 
 # How many preceding WORDS to carry as a probe. A recovered run is often a
@@ -234,8 +238,8 @@ def audit_rule(rule: str, selected: list, cache: Path) -> int:
             continue
 
         with unqualified(rule):
-            old = extract(kind, html, section)
-        new = extract(kind, html, section)
+            old = extract(kind, html, section, slug)
+        new = extract(kind, html, section, slug)
 
         if len(old) != len(new):
             # The predicate must not change how the book DIVIDES — only what a

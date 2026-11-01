@@ -372,9 +372,6 @@ DERIVED_GROUND: dict[str, Ground] = {
     "he-holds-my-tomorrows": Ground(0.40, 0.915, 0.02, 1.10, sky=0.20, foot=0.04,
         source="ecc94170eec003af3df0a6cd7de73321f752a18120abba82b96f6e77c8eaf433",
     ),
-    "humility-2": Ground(0.38, 0.80, 0.11, 1.20,
-        source="d1a0e7653d874c4df65e1a37e4963724028584faa66ce51d69892acdfa6cc997",
-    ),
     # Below the rule at 0.594 there is only 18% of the cover left, which at the
     # usual inset came out five parts blur to one part picture; the wide inset
     # crops IN to the cross's stem. At 0.22 that landed the sharp band at a
@@ -601,6 +598,10 @@ DESIGNED_BY_SLUG: dict[str, str] = {
 #: source ``build_derived_grounds`` cuts the ground from, and replacing it with
 #: a real high-resolution original later is still the two-line diff (and
 #: dropping the work from this set puts English back on it).
+#:
+#: `humility-2` sits here too but wears a museum painting
+#: (`curated_art.CURATED_GROUND`) rather than its crop, which stretched a strip
+#: of the 443px original into visible banding (2026-11-01).
 #:
 #: Left on their designed covers: ``baptism-with-the-holy-spirit`` and
 #: ``prayer-the-pulse-of-life`` (their designed file IS the English twin path,

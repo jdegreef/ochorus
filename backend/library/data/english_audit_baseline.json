@@ -40,6 +40,9 @@
   "as-thy-days-so-shall-thy-strength-be": {
    "word-fusion": 1
   },
+  "asking-in-christs-name": {
+   "lost-paragraphing": 1
+  },
   "at-the-masters-feet": {
    "space-before-punct": 2
   },
@@ -68,6 +71,9 @@
   "christs-peace": {
    "word-fusion": 1
   },
+  "church-history": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -93,6 +99,9 @@
    "anachronism": 1,
    "lost-paragraphing": 48,
    "orphan-close-quote": 1
+  },
+  "divine-calls": {
+   "space-before-punct": 2
   },
   "divine-healing": {
    "orphan-close-quote": 3,
@@ -187,6 +196,9 @@
   "if": {
    "space-before-punct": 5
   },
+  "in-darkest-england-and-the-way-out": {
+   "word-fusion": 1
+  },
   "indwelling-sin-in-believers": {
    "lost-paragraphing": 1
   },
@@ -194,6 +206,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 5,
    "stray-parens": 1
+  },
+  "into-thy-hands": {
+   "space-before-punct": 6
   },
   "introduction-to-the-devout-life": {
    "lost-paragraphing": 1
@@ -246,6 +261,9 @@
   "men-of-prayer-2": {
    "space-before-punct": 1
   },
+  "messiah-suffering-and-wounded-for-us": {
+   "space-before-punct": 7
+  },
   "morning-by-morning": {
    "space-before-punct": 1,
    "word-fusion": 1
@@ -263,6 +281,9 @@
   "on-christian-doctrine": {
    "orphan-close-quote": 1,
    "space-before-punct": 4
+  },
+  "on-first-principles": {
+   "orphan-close-quote": 2
   },
   "on-loving-god": {
    "lost-paragraphing": 2
@@ -298,9 +319,6 @@
    "hyphen-space": 1,
    "word-fusion": 1
   },
-  "pensees": {
-   "word-fusion": 1
-  },
   "pilgrims-progress": {
    "run-together": 1,
    "space-before-punct": 2
@@ -330,15 +348,18 @@
   "proslogium-monologium-cur-deus-homo": {
    "orphan-close-quote": 1
   },
-  "provincial-letters": {
-   "word-fusion": 1
-  },
   "purity-of-heart": {
    "orphan-close-quote": 1,
    "run-together": 1
   },
   "reality-and-religion": {
    "space-before-punct": 2
+  },
+  "rejoice-evermore": {
+   "space-before-punct": 2
+  },
+  "religion-pleasant-to-the-religious": {
+   "space-before-punct": 8
   },
   "religious-affections": {
    "orphan-close-quote": 6,
@@ -373,6 +394,9 @@
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
   },
+  "sorrow-turned-into-joy": {
+   "space-before-punct": 1
+  },
   "spurgeon-on-prayer": {
    "lost-paragraphing": 1,
    "orphan-close-quote": 4
@@ -389,9 +413,18 @@
    "hyphen-space": 1,
    "word-fusion": 1
   },
+  "temporal-advantages": {
+   "space-before-punct": 2
+  },
   "ten-commandments": {
    "orphan-close-quote": 1,
    "space-before-punct": 8
+  },
+  "tertullian-on-prayer": {
+   "lost-paragraphing": 3
+  },
+  "the-angels-message-and-song": {
+   "space-before-punct": 2
   },
   "the-apology-of-tertullian": {
    "lost-paragraphing": 37
@@ -438,6 +471,9 @@
   },
   "the-dialogue-of-catherine-of-siena": {
    "lost-paragraphing": 30
+  },
+  "the-divine-institutes": {
+   "word-fusion": 2
   },
   "the-dying-thief": {
    "word-fusion": 1
@@ -492,6 +528,9 @@
   "the-life-of-god-in-the-soul-of-man": {
    "orphan-close-quote": 1
   },
+  "the-lord-is-risen-indeed": {
+   "space-before-punct": 5
+  },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
    "space-before-punct": 11
@@ -501,6 +540,9 @@
   },
   "the-normal-christian-life": {
    "orphan-close-quote": 2
+  },
+  "the-octavius": {
+   "lost-paragraphing": 26
   },
   "the-person-and-work-of-the-holy-spirit": {
    "orphan-close-quote": 4
@@ -516,6 +558,9 @@
   },
   "the-practical-hope-of-the-lords-coming": {
    "space-before-punct": 2
+  },
+  "the-praying-christ": {
+   "space-before-punct": 1
   },
   "the-rise-and-progress-of-religion-in-the-soul": {
    "orphan-close-quote": 1
@@ -555,6 +600,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 1
   },
+  "the-writing-on-gods-hands": {
+   "space-before-punct": 2
+  },
   "till-he-come": {
    "orphan-close-quote": 4,
    "space-before-punct": 8
@@ -578,6 +626,9 @@
   },
   "what-the-bible-teaches": {
    "orphan-close-quote": 3
+  },
+  "who-is-the-rich-man-that-shall-be-saved": {
+   "orphan-close-quote": 1
   },
   "with-and-without-christ": {
    "space-before-punct": 6
