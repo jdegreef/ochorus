@@ -1301,11 +1301,14 @@ into the catalog. Instead:
   which indents the top-level list and every sibling fixture does not);
   `scripts/normalize_quotes.py <slug>` then `manage.py rederive_body_text
   --write` (early CCEL volumes mix straight + curly quotes, tripping a
-  `tests_fixture` gate); `manage.py generate_covers <slug>` then
-  `cd frontend && npm run og:covers` for the required raster twin. The house
-  cover's emblem comes from the book's TOPIC (`topic_seed.py` +
-  `covers.emblem_for_book`) — add the slug to the fitting topic to get an emblem
-  (and the right shelf) rather than a blank ground.
+  `tests_fixture` gate); then give it a **painted cover** — pick a
+  public-domain painting and run `scripts/paint_covers.py <slug>` (the
+  `level-up-cover` skill; it works on a fresh fixture with an empty `cover_url`
+  and draws the og twin). A published book may NOT ship on a flat plate
+  (`/covers/<slug>.svg`): `tests_fixture.NoPublishedPlateTests` fails it
+  (2026-11-01, once the last plates were painted). `generate_covers` plates are
+  only for rows still `is_published: false`. Still add the slug to the fitting
+  topic in `topic_seed.py` for the right shelf.
 - **Faithful vs. defect:** early sermons (New Park Street era) genuinely run
   long paragraphs and use running multi-paragraph quotes — `lost-paragraphing`
   and `orphan-close-quote` on them are FALSE positives; baseline them with
