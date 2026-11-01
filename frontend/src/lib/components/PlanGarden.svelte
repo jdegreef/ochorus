@@ -126,6 +126,9 @@
 			transparent 70%
 		);
 		border-radius: 999px;
+		background-position: center;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
 	}
 	/* Growing in: the stem draws up, the leaves open, then the bloom (and its
 	   heart) opens. A sprout that comes up beside a new flower waits for it.
@@ -146,8 +149,10 @@
 		.grow .heart {
 			animation: garden-open 0.35s ease-out calc(var(--grow-delay, 0s) + 1.1s) backwards;
 		}
+		/* …and its halo opens with it, not around an empty spot. */
 		.today.grow {
 			--grow-delay: 1.2s;
+			animation: garden-halo 0.5s ease-out var(--grow-delay) backwards;
 		}
 	}
 	@keyframes garden-stem {
@@ -158,6 +163,11 @@
 		to {
 			stroke-dasharray: 1;
 			stroke-dashoffset: 0;
+		}
+	}
+	@keyframes garden-halo {
+		from {
+			background-size: 0% 0%;
 		}
 	}
 	@keyframes garden-open {

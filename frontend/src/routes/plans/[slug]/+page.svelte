@@ -108,8 +108,18 @@
 	const doneSet = $derived(new Set(planProgress.doneDays(plan.slug)));
 	const doneCount = $derived(doneSet.size);
 	/** The day the reader has just marked read here, which the garden grows
-	 *  into flower — only a tap on this page, never progress synced in. */
+	 *  into flower — only a tap on this page, never progress synced in. Held
+	 *  just long enough for the grow to play (sprout included), then let go,
+	 *  so a sync or a later render draws rather than grows. */
 	let justRead = $state<number | null>(null);
+	const GROW_MS = 3000;
+	let growTimer: ReturnType<typeof setTimeout> | undefined;
+	function grewDay(day: number) {
+		justRead = day;
+		clearTimeout(growTimer);
+		growTimer = setTimeout(() => (justRead = null), GROW_MS);
+	}
+	$effect(() => () => clearTimeout(growTimer));
 	const daysLeft = $derived(Math.max(0, plan.day_count - doneCount));
 	/** Words still to read across the days not yet marked done. */
 	const wordsLeft = $derived(
@@ -126,6 +136,7 @@
 	$effect(() => {
 		void plan.slug;
 		openAt = untrack(() => next);
+		justRead = null; // a tap on the last plan opened grows nothing on this one
 	});
 	// "Day 5 of 31 · 27 days left · 4 hr 11 min left" — the read card's eyebrow.
 	const progressLine = $derived(
@@ -397,8 +408,9 @@
 						</a>
 						{#if started}
 							<button type="button" class="btn btn-ghost" onclick={() => {
-									justRead = next;
-									planProgress.markDone(plan.slug, next!);
+									if (next === null) return;
+									grewDay(next);
+									planProgress.markDone(plan.slug, next);
 								}}
 							>
 								{t('plans.markDone')}
@@ -632,7 +644,7 @@
 					<button
 						type="button"
 						onclick={() => {
-							justRead = done ? null : d.day;
+							if (!done) grewDay(d.day);
 							planProgress.toggleDone(plan.slug, d.day);
 						}}
 						aria-pressed={done}
