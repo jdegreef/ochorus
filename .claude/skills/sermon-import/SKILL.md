@@ -387,3 +387,12 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   whole *Messiah* shelf. SermonIndex's M'Cheyne sometimes renders em dashes as
   bare hyphens ("Christ-if you are"); a dropped sermon needed 50 dash pairs,
   so check for it before choosing more.
+- 2026-11-01 — Batch 5: Maclaren ×19 (*Expositions*: John, Romans–Corinthians,
+  Mark, Matthew, Genesis–Numbers), 340 → 359. Six of 25 dropped on tone, all
+  for a single aside or closing paragraph. Two Maclaren titles collided with
+  shipped sermons (Lloyd-Jones's *The Light of the World*, Wesley's *The
+  Witness of the Spirit*); the import would have overwritten them, and
+  `screen_sermons` read their fixtures as "already imported". Suffix the slug
+  (`-maclaren`); `tests_import.SermonCatalogSlugTests` now fails on a repeat.
+  Bonar's last sermon (*The Church's Amen*) can't be sliced: its `ends_before`
+  is the book's end, and the slice ran into the first sermon.
