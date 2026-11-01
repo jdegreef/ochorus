@@ -1460,6 +1460,10 @@ CURATED: dict[str, Artwork] = {
         "A mountain and the viaduct that crosses the valley below it: Murray's two covenants, the old that could only fail and the new sealed in Christ.",
         focus=0.45,
     ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
 }
 
 
