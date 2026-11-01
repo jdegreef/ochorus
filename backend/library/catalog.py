@@ -1361,6 +1361,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("against-marcion", "Against Marcion", "tertullian",
               "ccel", "schaff/anf03", part="v.iv", group_parts=True,
               subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
+    # Augustine's Ten Homilies on the First Epistle of John (c. 407) — H. Browne's
+    # translation as revised by Joseph H. Myers in NPNF (1888), public domain,
+    # extracted from npnf107 by its stem: his prologue and the ten homilies.
+    # The editor's introduction and the passages from other works that the
+    # volume appends on single verses are left out.
+    BookEntry("homilies-on-the-first-epistle-of-john", "Homilies on the First Epistle of John",
+              "augustine-of-hippo", "ccel", "schaff/npnf107", part="iv",
+              subtitle="Translated by H. Browne", cover_color="#2e4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

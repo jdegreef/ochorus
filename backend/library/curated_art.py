@@ -1394,6 +1394,11 @@ CURATED: dict[str, Artwork] = {
         focus=0.0,
         inset=0.06,
     ),
+    "homilies-on-the-first-epistle-of-john": Artwork(
+        "cma", 148312, "William Stanley Haseltine", "Capri", "1869",
+        "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
+        focus=0.62,
+    ),
     "the-school-of-obedience": Artwork(
         "met", 10786, "Asher Brown Durand", "The Beeches", "1845", "A worn path under great beeches, walked toward the light: obedience as a road learned step by step.",
         focus=0.50, inset=0.01,
