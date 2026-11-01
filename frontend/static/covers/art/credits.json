@@ -293,6 +293,12 @@
 		"year": "ca. 1874",
 		"credit": "Jean-François Millet, “Haystacks: Autumn” (ca. 1874). The Metropolitan Museum of Art, Open Access."
 	},
+	"gospel-of-john": {
+		"artist": "Salomon van Ruysdael",
+		"title": "Fishing Boats on a River",
+		"year": "early 1660s",
+		"credit": "Salomon van Ruysdael, “Fishing Boats on a River” (early 1660s). The Metropolitan Museum of Art, Open Access."
+	},
 	"grace-abounding": {
 		"artist": "Jacob van Ruisdael",
 		"title": "Wheat Fields",
@@ -454,6 +460,12 @@
 		"title": "Rue de l'Epicerie, Rouen (Effect of Sunlight)",
 		"year": "1898",
 		"credit": "Camille Pissarro, “Rue de l'Epicerie, Rouen (Effect of Sunlight)” (1898). The Metropolitan Museum of Art, Open Access."
+	},
+	"letters-of-jerome": {
+		"artist": "Antoine-Alphonse Montfort",
+		"title": "Cedars of Lebanon",
+		"year": "1837",
+		"credit": "Antoine-Alphonse Montfort, “Cedars of Lebanon” (1837). The Metropolitan Museum of Art, Open Access."
 	},
 	"life-and-diary-of-david-brainerd": {
 		"artist": "Worthington Whittredge",
@@ -700,6 +712,12 @@
 		"title": "Lake Fucino and the Abruzzi Mountains",
 		"year": "ca. 1789",
 		"credit": "Joseph Bidauld, “Lake Fucino and the Abruzzi Mountains” (ca. 1789). The Metropolitan Museum of Art, Open Access."
+	},
+	"refutation-of-all-heresies": {
+		"artist": "Thomas Cole",
+		"title": "A View near Tivoli (Morning)",
+		"year": "1832",
+		"credit": "Thomas Cole, “A View near Tivoli (Morning)” (1832). The Metropolitan Museum of Art, Open Access."
 	},
 	"religious-affections": {
 		"artist": "Claude Lorrain (Claude Gellée)",
@@ -1030,6 +1048,12 @@
 		"title": "Sunset after a Storm on the Coast of Sicily",
 		"year": "1853",
 		"credit": "Andreas Achenbach, “Sunset after a Storm on the Coast of Sicily” (1853). The Metropolitan Museum of Art, Open Access."
+	},
+	"to-autolycus": {
+		"artist": "Jules Coignet",
+		"title": "View of Beirut",
+		"year": "1844",
+		"credit": "Jules Coignet, “View of Beirut” (1844). The Metropolitan Museum of Art, Open Access."
 	},
 	"treatise-on-the-love-of-god": {
 		"artist": "Jean-Léon Gérôme",
