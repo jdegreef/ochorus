@@ -1309,6 +1309,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Andrew Murray's Working for God! (1901) — CCEL's murray/working: a
+    # companion to Waiting on God, thirty-one short meditations on good works.
+    BookEntry("working-for-god", "Working for God!", "andrew-murray",
+              "ccel", "murray/working", skip=("Title Page",), cover_color="#3e3a2a"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

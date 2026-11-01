@@ -302,6 +302,7 @@ TOPICS = [
             "union-and-communion",
             "the-bruised-reed",
             "key-teachings-of-andrew-murray",
+            "working-for-god",
             "key-teachings-of-hudson-taylor",
             "the-saint-and-his-saviour",
         ],

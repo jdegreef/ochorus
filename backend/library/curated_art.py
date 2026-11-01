@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "working-for-god": Artwork(
+        "met", 11053, "Martin Johnson Heade", "Newburyport Meadows", "ca. 1876–81", "Haystacks gathered on a broad green meadow under breaking cloud: fruitful labour, the harvest brought in.",
+        focus=0.15, inset=0.015,
+    ),
 }
 
 
