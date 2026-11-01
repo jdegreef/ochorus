@@ -2206,7 +2206,9 @@ SERMONS: list[SermonEntry] = [
     # God*, *Anxious Care*, *The River of Life*); "Red Indians" (*Shod for the
     # Road*); closes on judgment or hell (*All Things Are Yours*, *The Afterwards
     # and Our Hope*, *A Sense of Pardoned Sin*). The Spurgeon of 1856–59 fails
-    # the rubric far more often than Maclaren; a top-up of Maclaren follows.
+    # the rubric far more often than Maclaren. A top-up of 12 Maclaren followed;
+    # six of those were dropped too ("Oriental craft", "wild Arabs", imperial
+    # mission, "pestilent old Jewish error", the Rabbis' "rubbish", communism).
     SermonEntry(
         "the-dew-and-the-plants", "The Dew and the Plants", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.ii.iv.vii.html", scripture_ref="Hosea 14:5-6",
@@ -2260,28 +2262,8 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "ezek_matt1/ezek_matt1.iii.xv.html", scripture_ref="Matthew 5:3",
     ),
     SermonEntry(
-        "a-dew-from-the-lord", "A Dew from the Lord", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.iv.html", scripture_ref="Micah 5:7",
-    ),
-    SermonEntry(
-        "the-cry-for-bread", "The Cry for Bread", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xxxvi.html", scripture_ref="Matthew 6:11",
-    ),
-    SermonEntry(
-        "the-healing-christ", "The Healing Christ", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.liii.html", scripture_ref="Matthew 8:17",
-    ),
-    SermonEntry(
-        "the-faith-which-christ-praises", "The Faith Which Christ Praises", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.li.html", scripture_ref="Matthew 8:8-9",
-    ),
-    SermonEntry(
         "brave-encouragements", "Brave Encouragements", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.ii.x.ii.html", scripture_ref="Haggai 2:1-9",
-    ),
-    SermonEntry(
-        "the-secret-of-victory", "The Secret of Victory", "alexander-maclaren", "ccel",
-        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.iii.html", scripture_ref="2 Chronicles 13:18",
     ),
     SermonEntry(
         "what-life-may-be-made", "What Life May Be Made", "alexander-maclaren", "ccel",
@@ -2302,9 +2284,5 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
         _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
-    ),
-    SermonEntry(
-        "jonathan-the-pattern-of-friendship", "Jonathan, the Pattern of Friendship", "alexander-maclaren", "ccel",
-        _MACLAREN + "deut/deut.ii.vi.xiii.html", scripture_ref="1 Samuel 20:1-13",
     ),
 ]
