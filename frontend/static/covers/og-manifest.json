@@ -25407,6 +25407,18 @@
 				492
 			]
 		},
+		"sw/a-call-to-the-unconverted": {
+			"ground": "8ac292db22f142e7d66c4d7102b0658c294fbb9dd09a18cc1753ec55aebcd3a2",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/a-retrospect": {
 			"ground": "43e5f6630703a436be821c55bc98cd0f07750c6e7501d6ff97c755f5199d1d04",
 			"style": "revival",
