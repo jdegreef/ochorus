@@ -448,6 +448,7 @@ class _Snippet(Func):
 
     A word is looked for as its stem AND as typed, at a word start: "running"
     finds "runs" through "run", while "holy" (stem "holi") is found as typed.
+    The window is trimmed to whole words at both edges.
     One scalar subquery per row, so the point is found once; Postgres postpones
     it past the ORDER BY ... LIMIT, so only the capped rows pay for it.
     """
@@ -473,25 +474,35 @@ class _Snippet(Func):
         word = r"regexp_replace(word, '([.^$*+?()\[\]{}|\\])', '\\\1', 'g')"
         at = self._AT[connection.pg_version >= 150000].format(body=body, word=word)
         options = f"StartSel={HL_START}, StopSel={HL_END}, MaxWords=40, MinWords=20"
+        before, width = SNIPPET_BEFORE, SNIPPET_WINDOW
         sql = (
             f"(SELECT CASE WHEN to_tsvector(%s::regconfig, w.text) @@ {query}"
             f" THEN ts_headline(%s::regconfig, w.text, {query}, %s)"
             f" ELSE ts_headline(%s::regconfig, {body}, {query}, %s) END"
-            f" FROM (SELECT max({at}) AS at FROM ("
-            "   SELECT unnest(tsvector_to_array(to_tsvector(%s::regconfig, %s)))"
-            "   UNION SELECT unnest(%s::text[])"
-            " ) AS words(word)) AS m,"
-            f" LATERAL (SELECT substr({body}, greatest(1, m.at - {SNIPPET_BEFORE}), {SNIPPET_WINDOW}) AS text) AS w)"
+            # The point: each typed word's EARLIEST form (stem or as typed),
+            # then the latest of those — a late "holiness" must not move the
+            # window past an early "holy".
+            f" FROM (SELECT max(first) AS at FROM ("
+            f"   SELECT min({at}) AS first FROM unnest(%s::text[]) AS typed(given),"
+            "   LATERAL (SELECT unnest(tsvector_to_array(to_tsvector(%s::regconfig, typed.given)))"
+            "            UNION SELECT lower(typed.given)) AS forms(word)"
+            "   GROUP BY typed.given) AS per_word) AS m,"
+            f" LATERAL (SELECT greatest(1, m.at - {before}) AS start,"
+            f"          substr({body}, greatest(1, m.at - {before}), {width}) AS raw) AS r,"
+            # Whole words only: a cut word at either edge would show as a
+            # fragment ("ndlord came"), or as a false match ("faith" of
+            # "faithfulness") that the @@ test would believe.
+            " LATERAL (SELECT CASE WHEN length(r.raw) < "
+            f"{width} THEN t.text ELSE regexp_replace(t.text, '\\s+\\S*$', '') END AS text"
+            "          FROM (SELECT CASE WHEN r.start > 1"
+            "                THEN regexp_replace(r.raw, '^\\S*\\s+', '') ELSE r.raw END AS text) AS t) AS w)"
         )
-        typed = " ".join(self.words)
-        lowered = [w.lower() for w in self.words]
         params = (
             self.config, *query_p,                       # to_tsvector(window) @@ query
             self.config, *query_p, options,              # window headline
             self.config, *body_p, *query_p, options,     # whole-body headline
-            *body_p,                                     # inside {at}
-            self.config, typed, lowered,                 # the words
-            *body_p,                                     # substr(body, ...)
+            *body_p, list(self.words), self.config,      # the point
+            *body_p,                                     # the window
         )
         return sql, params
 

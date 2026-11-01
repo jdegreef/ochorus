@@ -762,14 +762,35 @@ class SnippetWindowTests(TestCase):
                      + "<p>The Lord is my shepherd.</p>")
         self.assertIn("⟦Lord⟧ is my shepherd", self.snippet("lord"))
 
-    def test_a_window_with_no_span_for_the_whole_query_falls_back(self):
-        # The first query word is early and alone; the phrase that satisfies the
-        # whole query is far past the window. The whole body is searched for it.
+    def test_a_window_holding_the_whole_query_is_used(self):
+        # "Christ" is early and alone; the point (where BOTH words have first
+        # appeared) is at "Faith", and the window there holds the whole query.
         self.chapter(1, "<p>Christ alone.</p>" + self.FILLER
                      + "<p>Faith in Christ unites the soul to him.</p>")
         snippet = self.snippet("faith christ")
-        self.assertIn("⟦Faith⟧", snippet)
-        self.assertIn("⟦Christ⟧", snippet)
+        self.assertIn("⟦Faith⟧ in ⟦Christ⟧", snippet)
+
+    def test_a_window_without_the_whole_query_falls_back_to_the_body(self):
+        # Each word first appears alone, far apart, so the window at the point
+        # holds only "Christ"; the passage satisfying the query is further on,
+        # and only the whole-body headline finds it.
+        self.chapter(1, "<p>Faith.</p>" + self.FILLER + "<p>Christ.</p>" + self.FILLER
+                     + "<p>Faith in Christ unites the soul to him.</p>")
+        self.assertIn("⟦Faith⟧ in ⟦Christ⟧", self.snippet("faith christ"))
+
+    def test_a_late_form_of_a_word_does_not_move_the_window(self):
+        # "holy" is early, its stem's other form ("holiness") late: the point is
+        # each word's EARLIEST form, so the early passage serves.
+        self.chapter(1, "<p>Be holy. The Spirit came.</p>" + self.FILLER
+                     + "<p>Holiness.</p>")
+        self.assertIn("⟦holy⟧. The ⟦Spirit⟧", self.snippet("holy spirit"))
+
+    def test_the_window_holds_whole_words_only(self):
+        # The window starts mid-filler; its first, cut word must not show.
+        self.chapter(1, self.FILLER + "<p>Prayer is the breath of the soul.</p>")
+        first = self.snippet("prayer").lstrip("…").split()[0]
+        self.assertIn(first, {"And", "the", "people", "went", "on", "their", "way",
+                              "to", "city.", "⟦Prayer⟧"})
 
     def test_a_body_without_the_words_still_gets_a_snippet(self):
         # Matched through the author's name only: no first match, whole body.
