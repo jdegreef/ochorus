@@ -170,6 +170,7 @@ ART_SCRIM: dict[str, float] = {
     "mortification-of-sin-teens": 0.30,
     "of-temptation": 0.85,
     "old-paths": 0.70,
+    "old-testament-types-and-teachings": 0.55,
     "on-first-principles": 0.85,
     "on-loving-god": 0.65,
     "on-the-holy-spirit": 0.85,

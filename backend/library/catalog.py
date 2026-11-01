@@ -94,6 +94,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
+    "hannah-whitall-smith": AuthorEntry(
+        slug="hannah-whitall-smith",
+        name="Hannah Whitall Smith",
+        birth_year=1832,
+        death_year=1911,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hannah Whitall Smith (1832–1911) was a Quaker-born speaker and writer of the Holiness movement, author of The Christian's Secret of a Happy Life."
+        ),
+    ),
     "horatius-bonar": AuthorEntry(
         slug="horatius-bonar",
         name="Horatius Bonar",
@@ -1379,6 +1390,10 @@ BOOKS: list[BookEntry] = [
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
               "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Hannah Whitall Smith's Old Testament Types and Teachings — CCEL's
+    # smith_hw/types: Bible readings on the types of the Old Testament.
+    BookEntry("old-testament-types-and-teachings", "Old Testament Types and Teachings", "hannah-whitall-smith",
+              "ccel", "smith_hw/types", skip=("Title Page",), cover_color="#4a4a2e"),
     # Horatius Bonar's The Rent Veil (1875) — CCEL's bonar/rentveil: twelve
     # chapters on the veil of the tabernacle, rent at the cross.
     BookEntry("the-rent-veil", "The Rent Veil", "horatius-bonar",

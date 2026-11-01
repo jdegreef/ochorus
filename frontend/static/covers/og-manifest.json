@@ -21387,6 +21387,34 @@
 				444
 			]
 		},
+		"old-testament-types-and-teachings": {
+			"ground": "e477b4945571118d04549cff7ae73d2bdf0e75fbc87e730a426cd41211c24575",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[114, 290, 486, 372],
+					[42, 362, 558, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
 		"on-christian-doctrine": {
 			"ground": "27bb087eae72568afeb3a6bf3aae533e7ded9cb540d0c118fe31ac22b98ba021",
 			"style": "inscriptional",

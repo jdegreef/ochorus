@@ -86,6 +86,7 @@ TOPICS = [
             "key-teachings-of-watchman-nee",
             "key-teachings-of-a-b-simpson",
             "key-teachings-of-hannah-whitall-smith",
+            "old-testament-types-and-teachings",
             "key-teachings-of-frederick-brotherton-meyer",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",

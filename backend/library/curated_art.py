@@ -1464,6 +1464,10 @@ CURATED: dict[str, Artwork] = {
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
     ),
+    "old-testament-types-and-teachings": Artwork(
+        "met", 10508, "Samuel Colman", "The Hill of the Alhambra, Granada", "1865", "A walled citadel on a sun-baked hill above a dusty road and an old bridge: the city-on-a-hill country of the Old Testament.",
+        focus=0.40, inset=0.01,
+    ),
     "the-rent-veil": Artwork(
         "met", 441769, "Joseph Wright (Wright of Derby)", "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming", "1779", "Cloud torn open over an ancient tomb and the light pouring through: the veil rent and the way into the holiest laid open.",
         focus=0.90, inset=0.01,
