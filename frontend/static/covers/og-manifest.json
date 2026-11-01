@@ -26486,6 +26486,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"sw/necessity-of-prayer": {
+			"ground": "d4a81f3b0a1f25f4faaf49b5c102cbfa02a623f9248d61561f2f497f12983e0b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false
+		},
 		"sw/on-loving-god": {
 			"ground": "8a31409490afb763bb14900c33a63516cd445e3ffc88d76e31e8ec55c97f4942",
 			"style": "inscriptional",
