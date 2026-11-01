@@ -107,6 +107,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-flavel': '50% 0%', // Hopwood engraving cropped to the bust; face high in a 0.80 crop
 	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
 	'john-henry-newman': '50% 15%', // 1887 photograph: the face sits high in a half-length

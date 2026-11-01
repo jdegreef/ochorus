@@ -275,6 +275,7 @@ TOPICS = [
             "grace-abounding",
             "the-bruised-reed",
             "letters-of-samuel-rutherford",
+            "the-method-of-grace",
             "mortification-of-sin",
             "communion-with-god",
             "the-glory-of-christ",

@@ -254,6 +254,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-life-of-trust-children': 0.30,
 	'the-life-of-trust-teens': 0.30,
 	'the-masters-indwelling': 0.55,
+	'the-method-of-grace': 0.85,
 	'the-normal-christian-life': 0.50,
 	'the-octavius': 0.75,
 	'the-person-and-work-of-the-holy-spirit': 0.95,

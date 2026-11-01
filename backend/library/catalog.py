@@ -753,6 +753,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Samuel Rutherford (c. 1600–1661) was a Scottish Presbyterian minister of Anwoth, a professor at St Andrews and a commissioner to the Westminster Assembly."
         ),
     ),
+    "john-flavel": AuthorEntry(
+        slug="john-flavel",
+        name="John Flavel",
+        birth_year=1627,
+        death_year=1691,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Flavel (c. 1627–1691) was an English Puritan minister of Dartmouth in Devon, ejected in 1662 and long forced to preach in secret."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1435,6 +1446,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("letters-of-samuel-rutherford", "Letters of Samuel Rutherford",
               "samuel-rutherford", "gutenberg", "42557",
               subtitle="Edited by Andrew A. Bonar", cover_color="#3e2e5c"),
+    # John Flavel's The Method of Grace (1681) — CCEL's flavel/grace: the
+    # epistles dedicatory and to the reader and thirty-five sermons on how the
+    # Spirit applies Christ's redemption to the soul, each titled "Sermon N"
+    # with a short form of Flavel's own heading.
+    BookEntry("the-method-of-grace", "The Method of Grace", "john-flavel",
+              "ccel", "flavel/grace",
+              subtitle="In the Holy Spirit’s Applying to the Souls of Men the Eternal Redemption Contrived by the Father and Accomplished by the Son",
+              cover_color="#5c3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

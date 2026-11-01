@@ -612,7 +612,9 @@
    "space-before-punct": 11
   },
   "the-method-of-grace": {
-   "lost-paragraphing": 1
+   "lost-paragraphing": 1,
+   "space-before-punct": 3,
+   "word-fusion": 1
   },
   "the-normal-christian-life": {
    "orphan-close-quote": 2

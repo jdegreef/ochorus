@@ -1422,6 +1422,12 @@ CURATED: dict[str, Artwork] = {
         "A cold northern shore under a heavy sky: most of Rutherford's letters were written from banishment in Aberdeen, far from his flock at Anwoth.",
         focus=0.60,
     ),
+    "the-method-of-grace": Artwork(
+        "met", 437852, "Joseph Mallord William Turner", "Saltash with the Water Ferry, Cornwall", "1811",
+        "A ferry crossing on a West Country estuary: Flavel preached in Dartmouth, on the Devon coast just across the water from Cornwall.",
+        focus=0.45,
+        inset=0.02,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
