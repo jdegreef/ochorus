@@ -6357,16 +6357,37 @@
 			"caps": false
 		},
 		"epistle-and-martyrdom-of-polycarp": {
-			"ground": "addf2899cc33843bea493ccb3adfb976e46b4d9ee8b3137eee2b2c370800104a",
+			"ground": "d61f08869a80efd4136fd5fdbe32c75364e52ec4fa653184a5968a01e32ad77d",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[105, 102, 495, 131]
+				],
+				"title": [
+					[65, 281, 535, 343],
+					[127, 327, 473, 389],
+					[117, 372, 483, 434]
+				],
+				"subtitle": [
+					[134, 463, 466, 484],
+					[104, 484, 496, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"epistles-of-ignatius": {
 			"ground": "b259b71e9d1b30cebac05e16d3cd2658956c26a2174dbf900e8cf0667b9362e4",
@@ -15694,16 +15715,32 @@
 			"caps": false
 		},
 		"in-darkest-england-and-the-way-out": {
-			"ground": "9f1efaa3bc5228a0d815ffe9e2cec0efff2f87c91305eb38606501a4101dedc1",
+			"ground": "01abad4c02da328d98c28e971bacf60d4a91e51cf47402c358f7b8feca07a489",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.35,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[50, 326, 550, 402],
+					[88, 391, 512, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"indwelling-sin-in-believers": {
 			"ground": "c29bddbdfb71b5421118d1c87ba9370d428ddc15a1be3e6056081adddb8e3a34",
@@ -20842,16 +20879,35 @@
 			"caps": false
 		},
 		"on-the-making-of-man": {
-			"ground": "efc6bd1d563f563de164f40947c9130cee9c12b629eeb0883690243df4376569",
+			"ground": "614182cda2274ed36a07f4da641dba765b1dbca5642ec334f76c2be324bd49fc",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[128, 102, 472, 131]
+				],
+				"title": [
+					[55, 311, 545, 377],
+					[183, 360, 417, 426]
+				],
+				"subtitle": [
+					[126, 454, 474, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				320,
+				475
+			]
 		},
 		"on-the-priesthood": {
 			"ground": "42cfbd3d4c95cb963945b041de8f5138c28c6f8044f95b451d7711531e37d372",
@@ -22837,6 +22893,38 @@
 				534
 			]
 		},
+		"pt/rooted-3": {
+			"ground": "272ac54d3b450c5b876f1553c591b215709356c1ceecb6773215bb49808f4a2b",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 273, 310, 317],
+					[160, 348, 440, 423]
+				],
+				"subtitle": [
+					[71, 478, 529, 506],
+					[113, 506, 487, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"pt/rooted-4": {
 			"ground": "1c3e443b49f6c4d1b0cddf796ed861d7c38b01749585bb008663a8ad72475dfe",
 			"style": "young",
@@ -23431,6 +23519,38 @@
 			"layout": "wash/ochre",
 			"bar": 0,
 			"caps": false
+		},
+		"pt/they-were-young-1": {
+			"ground": "20d7ff84d7d84a40079c7207fd7353a1583cc0a4110507decae68c1ea9ef35dc",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[149, 328, 451, 404],
+					[197, 394, 403, 470]
+				],
+				"subtitle": [
+					[73, 528, 527, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"pt/things-as-they-are": {
 			"ground": "5780c763cad07fb9109345c4a41430c76b274c7a8190b96ac8e52a207b1b8fc9",
@@ -26989,16 +27109,34 @@
 			"caps": false
 		},
 		"tertullian-on-prayer": {
-			"ground": "486dd5dcdf9325c22bf39e637e0a9424bf1fec9bb1a88b5142f2f63410bb913e",
+			"ground": "44a5253d063f6239f01c7b315bbc6681e991fbbe7210c04ac42040aa8ca0336f",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[191, 102, 409, 131]
+				],
+				"title": [
+					[79, 324, 521, 414]
+				],
+				"subtitle": [
+					[128, 438, 472, 459]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				336,
+				459
+			]
 		},
 		"the-apology-of-tertullian": {
 			"ground": "3fc291f97773c101ee31b260abc3018c6fda3eb51e20040ba2bc1a9cd6017780",
@@ -27355,16 +27493,35 @@
 			]
 		},
 		"the-divine-institutes": {
-			"ground": "7787a7dbf8b474b04f0ab9a8516a2c219b13dff46b69365373540dc28d549af1",
+			"ground": "755c344a2a8e4654de5c9f168b27e6bc4c798e7132f1e1c129e2b6a9afcb6b94",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[191, 102, 409, 131]
+				],
+				"title": [
+					[130, 311, 470, 377],
+					[136, 360, 464, 426]
+				],
+				"subtitle": [
+					[89, 454, 511, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				320,
+				475
+			]
 		},
 		"the-epistles-of-cyprian": {
 			"ground": "f8836f911c61691cba45d9860c221868f6784d6d599ff8775bf17890fe8b5c49",
@@ -27707,16 +27864,35 @@
 			"caps": false
 		},
 		"the-idea-of-a-university": {
-			"ground": "2f8b97ea5924660ddd1a18cbb237ccc7a3ece42c83ca35970665844a0e89ad49",
+			"ground": "a571bedbafc69ccce64d38428121b3d50abd92a274a37bc32990fbf8f2b70959",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[144, 299, 456, 381],
+					[134, 370, 466, 452]
+				],
+				"subtitle": [
+					[139, 525, 461, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
 		},
 		"the-imitation-of-christ": {
 			"ground": "6a70cd9985a4ad6de6e946a0aacf9740b431aa940bc84cfc49d70b38912fbf8a",
@@ -27938,16 +28114,34 @@
 			]
 		},
 		"the-octavius": {
-			"ground": "074ed4f183398f267aeccbfe1dab49a47788820051aae5536a0146d2fcc0e88e",
+			"ground": "8b3857988a50222c1f44f57677fd597492899bcaaf46f387800569e531eb5e3e",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[156, 102, 444, 131]
+				],
+				"title": [
+					[69, 342, 531, 432]
+				],
+				"subtitle": [
+					[119, 452, 481, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"the-person-and-work-of-the-holy-spirit": {
 			"ground": "bea52b2bbcea5b9c340d70987b211df26801f69caf41300118bd403e8a0c95b6",
@@ -28231,16 +28425,35 @@
 			]
 		},
 		"the-shepherd-of-hermas": {
-			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"ground": "14d6a49941e8184a04db791a2231f8a31930db3e9397ee6f8836d3f935a566f9",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[229, 102, 371, 131]
+				],
+				"title": [
+					[92, 314, 508, 390],
+					[144, 385, 456, 461]
+				],
+				"subtitle": [
+					[170, 481, 430, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
@@ -31110,16 +31323,36 @@
 			"caps": false
 		},
 		"who-is-the-rich-man-that-shall-be-saved": {
-			"ground": "a1ceaed16c251dbd21a7453e5b9f489dbbdd5c3fe5d3445eecab7c1f6a0f24d4",
+			"ground": "a66773bbce0fc0db980793feadf4cfd5b189926caa4e3fb9074c0d18f87f463a",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.6,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[73, 102, 527, 131]
+				],
+				"title": [
+					[135, 292, 465, 354],
+					[79, 337, 521, 399],
+					[69, 383, 531, 445]
+				],
+				"subtitle": [
+					[103, 473, 497, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
 		},
 		"with-and-without-christ": {
 			"ground": "d324e4f159e72f4e3c6a4e19c07e8c87bb0e2f9198bbec5b5d965e5a606be063",

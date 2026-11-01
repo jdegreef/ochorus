@@ -1293,6 +1293,44 @@ CURATED: dict[str, Artwork] = {
         focus=0.55,
         inset=0.07,
     ),
+    # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
+    "epistle-and-martyrdom-of-polycarp": Artwork(
+        "cma", 122351, "Joseph Mallord William Turner", "The Burning of the Houses of Lords and Commons, 16 October 1834", "1835",
+        "Fire over the water and a crowd watching from the far bank: the aged bishop of Smyrna was burned before the city, and the church that watched wrote down his last prayer.",
+    ),
+    "in-darkest-england-and-the-way-out": Artwork(
+        "cma", 140428, "Walter Greaves", "Gray and Silver:  A Nocturne", "c. 1880–1900",
+        "The Thames at night in Booth's own decades: the dark London his book set out to lead its poorest out of.",
+    ),
+    "on-the-making-of-man": Artwork(
+        "met", 436229, "Gaspard Dughet", "Imaginary Landscape", "",
+        "A whole ordered world of hill, wood and water: Gregory of Nyssa's treatise on the creation of man completes his brother Basil's sermons on the six days.",
+    ),
+    "tertullian-on-prayer": Artwork(
+        "met", 441933, "Vilhelm Hammershøi", "Moonlight, Strandgade 30", "1900–1906",
+        "An empty room, the door shut and moonlight through the window — \"enter into thy closet\", the place Tertullian's short treatise on the Lord's Prayer begins.",
+    ),
+    "the-divine-institutes": Artwork(
+        "met", 435756, "Sébastien Bourdon", "A Classical Landscape", "probably 1660s",
+        "Temples in a Roman landscape: Lactantius, tutor to Constantine's son, set out the faith for the educated pagans of that world.",
+    ),
+    "the-idea-of-a-university": Artwork(
+        "met", 439122, "Carl Gustav Carus", "Gothic Windows in the Ruins of the Monastery at Oybin", "ca. 1828",
+        "A Gothic window opening onto light: Newman's university is learning in the old collegiate tradition, open to the whole of knowledge.",
+    ),
+    "the-octavius": Artwork(
+        "met", 435749, "Eugène Boudin", "On the Beach at Trouville", "1863",
+        "People walking along a shore: the Octavius is a conversation held strolling on the beach at Ostia, between a Christian and a pagan friend.",
+    ),
+    "who-is-the-rich-man-that-shall-be-saved": Artwork(
+        "met", 435906, "Claude Lorrain (Claude Gellée)", "Pastoral Landscape: The Roman Campagna", "ca. 1639",
+        "A rich and settled country in golden light: Clement asks what the young ruler's command means for a Christian who owns such land.",
+    ),
+    # ── Batch 31 · the import that landed as the no-plate gate went in ─────────
+    "the-shepherd-of-hermas": Artwork(
+        "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
+        "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
+    ),
 }
 
 
