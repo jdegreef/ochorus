@@ -1594,5 +1594,15 @@
   "together_counted": "Bạn đang được tính trong tổng số của nhóm",
   "together_count_stop": "Đừng tính tôi nữa",
   "together_count_me": "Tính tôi vào tổng số",
-  "together_count_sign_in_join": "Đăng nhập để được tính vào tổng số của nhóm"
+  "together_count_sign_in_join": "Đăng nhập để được tính vào tổng số của nhóm",
+  "daily_title": "Hôm nay trong các sách tĩnh nguyện",
+  "daily_subtitle": "Một bài đọc cho mỗi ngày trong năm, từ các sách tĩnh nguyện kinh điển",
+  "daily_see_all": "Tất cả bài đọc hôm nay",
+  "daily_prev_day": "Ngày trước",
+  "daily_next_day": "Ngày sau",
+  "daily_back_to_today": "Trở về hôm nay",
+  "daily_in_context": "Đọc trong sách",
+  "daily_missing_day": "Sách này không có bài đọc cho ngày này, nên đây là bài của ngày trước đó.",
+  "daily_choose_date": "Chọn ngày",
+  "daily_none": "Chưa có bài đọc hằng ngày bằng ngôn ngữ này."
 }
