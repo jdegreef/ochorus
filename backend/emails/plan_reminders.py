@@ -33,7 +33,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from django.utils import timezone
 
-from library.models import Article, Chapter, Plan, PlanDay
+from library.models import Article, Book, Chapter, Plan, PlanDay
 from reading.models import PlanProgress, PlanSchedule, ReadingDay
 
 from . import links
@@ -153,7 +153,9 @@ def in_window(remind_at: str, local_now: datetime) -> bool:
 
 
 def _reading_title(day: PlanDay, language: str) -> str:
-    if day.article_slug:
+    if day.kind == "entry":
+        return _entry_title(day, language)
+    if day.kind == "article":
         article = Article.objects.filter(slug=day.article_slug, language=language).only("h1").first()
         return article.h1 if article else ""
     chapter = (
@@ -166,12 +168,25 @@ def _reading_title(day: PlanDay, language: str) -> str:
     return chapter.title if chapter else ""
 
 
+def _entry_title(day: PlanDay, language: str) -> str:
+    """A year-long devotional day's title (``Entry.title``), found exactly as
+    the plan page finds it."""
+    from library import daily_readings
+
+    book = Book.objects.filter(slug=day.book_slug, language=language).first()
+    entry = book and daily_readings.entry_on(book, day.entry_date, daily_readings.content_version())
+    return entry.title if entry else ""
+
+
 def day_path(plan: Plan, day: PlanDay) -> str:
     """The reader-site path for a plan day — the email twin of the frontend's
-    ``planDayPath``: the chapter (or article) with ``?plan=&day=`` so the page
-    shows the plan's day bar and "mark day done"."""
+    ``planDayPath``: the chapter (or article, or a devotional's day page) with
+    ``?plan=&day=`` so the page shows the plan's day bar and "mark day done"."""
     query = f"?plan={plan.slug}&day={day.day}"
-    if day.article_slug:
+    if day.kind == "entry":
+        # One dated entry, on the book's day page — not its whole month.
+        return links.localized(f"today/{day.book_slug}/?d={day.entry_date}&{query[1:]}", plan.language)
+    if day.kind == "article":
         return links.localized(f"articles/{day.article_slug}/{query}", plan.language)
     return links.localized(f"books/{day.book_slug}/{day.chapter_order or 1}/{query}", plan.language)
 
