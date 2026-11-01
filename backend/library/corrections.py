@@ -20502,3 +20502,58 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Maclaren, batch 5 (2026-11): keying slips the question-writers found reading
+# every word, written against the raw import. *The Witness of the Spirit*'s
+# epigraph is Romans 8:16, which the edition heads "viii. 18".
+for _slug, _pairs in {
+    "the-wearied-christ": [
+        ('as a tired man flings Himself down anywhere', 'as a tired man flings himself down anywhere'),
+    ],
+    "the-springing-fountain": [
+        ('its goal, which is at the same time its course', 'its goal, which is at the same time its source'),
+    ],
+    "the-light-of-the-world-maclaren": [
+        ('And whenever It lifted itself up', 'And whenever it lifted itself up'),
+    ],
+    "the-delays-of-love": [
+        ('and no answer has come, It is part', 'and no answer has come. It is part'),
+    ],
+    "many-mansions": [
+        ('and, for the rest, if we I needed to have heard more', 'and, for the rest, if we needed to have heard more'),
+        ('which will enfold themselves in their majesty', 'which will unfold themselves in their majesty'),
+    ],
+    "the-absent-present-christ": [
+        ('the work ‘saw Him no more,’', 'the world ‘saw Him no more,’'),
+    ],
+    "the-sources-of-hope": [
+        ('emotion should he excited by', 'emotion should be excited by'),
+    ],
+    "what-proves-gods-love": [
+        ('according to the Scriptures’ ?', 'according to the Scriptures’?'),
+    ],
+    "the-witness-of-the-spirit-maclaren": [
+        ('—ROMANS viii. 18.', '—ROMANS viii. 16.'),
+    ],
+    "the-love-that-constrains": [
+        ('put it out into the sunshine, If you want', 'put it out into the sunshine. If you want'),
+    ],
+    "christs-touch": [
+        ('<p>Behold the servant of the Lord’ might', '<p>‘Behold the servant of the Lord’ might'),
+        ('which came hope—bringing to the leper', 'which came hope-bringing to the leper'),
+        ('Just as He touches the leper and in unpolluted', 'Just as He touches the leper and is unpolluted'),
+        ('nor shrink from them With repugnance', 'nor shrink from them with repugnance'),
+    ],
+    "the-secret-of-gladness": [
+        ('the joy of the Bride-groom’s presence.', 'the joy of the Bridegroom’s presence.'),
+    ],
+    "the-looks-of-jesus": [
+        ('out here on the verge of the crowd-how can I', 'out here on the verge of the crowd—how can I'),
+        ('The fact of a miracle if nothing.', 'The fact of a miracle is nothing.'),
+    ],
+    "the-rest-giver": [
+        ('is His authority, So to', 'is His authority. So to'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
