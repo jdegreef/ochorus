@@ -44,8 +44,9 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
   on a long warning of hell to careless young people. Earlier drops: the
   Simpson batch's Jews-and-money trope; *The Sin of Unbelief* ("unbelief made
   the Jew murder Christ and wander"); Moody's *The Blood* and *Results of True
-  Repentance*; *Healing for the Wounded*, which shipped and was then
-  unpublished for a "Massa" dialect anecdote.
+  Repentance*. *Healing for the Wounded* (a "Massa" dialect line in its
+  closing appeal) was unpublished, then republished unedited on the
+  founder's decision: a passing line in an otherwise warm sermon is his call.
 - **Unpublishing a shipped sermon** takes three steps. Set `is_published` to
   false in its fixture (fresh databases), drop it from `TOPIC_SERMONS`, and
   untick it in the Django admin. `is_published` is create-only in
@@ -396,3 +397,9 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   (`-maclaren`); `tests_import.SermonCatalogSlugTests` now fails on a repeat.
   Bonar's last sermon (*The Church's Amen*) can't be sliced: its `ends_before`
   is the book's end, and the slice ran into the first sermon.
+- 2026-11-01 — Batch 6: Maclaren ×21 (*Expositions*: Psalms, Isaiah, John,
+  Romans–Corinthians, Philippians, Mark), 359 → 380. Nine of 30 dropped, each
+  for one aside or its close: the Victorian asides are the cost of a Maclaren
+  batch (Jews, Rome, Islam, "the gipsy strain", the Turkish government). Some
+  readers put a closing comma or stop inside the quotation marks; move it
+  outside when the text runs on, so the quote stays verbatim.

@@ -461,6 +461,17 @@ def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0) -> Pa
             dx, dy = round(im.width * inset), round(im.height * inset)
             im = im.crop((dx, dy, im.width - dx, im.height - dy))
         scale = max(W / im.width, H / im.height)
+        if scale > 1:
+            # Never ENLARGE a scan to fill the plate: an upscaled painting is
+            # soft on every phone, and nothing downstream can tell. It happens
+            # when a collection only serves a thumbnail (the Met's
+            # `primaryImageSmall` fallback, CMA's `web` size) or an `inset`
+            # cuts a small scan smaller. Pick another painting, or find a
+            # larger scan of this one.
+            raise CommandError(
+                f"{key}: the source is {im.width}x{im.height} after its inset, "
+                f"too small to fill a {W}x{H} cover without enlarging it."
+            )
         im = im.resize(
             (max(W, round(im.width * scale)), max(H, round(im.height * scale))),
             Image.LANCZOS,
