@@ -20557,3 +20557,67 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Maclaren, batch 6 (2026-11): keying slips the question-writers found reading
+# every word, written against the raw import (pronoun-case changes left as printed;
+# *The Satisfier of All Desires* loses the volume's closing "END OF VOL. II.").
+for _slug, _pairs in {
+    "blessed-trust": [
+        ('’Shield’ here is the designation', '‘Shield’ here is the designation'),
+    ],
+    "the-habitation-of-the-soul": [
+        ('we get up yonder and ’see all the way', 'we get up yonder and ‘see all the way'),
+    ],
+    "hid-in-light": [
+        ('‘Thou shall hide them in the secret of Thy presence', '‘Thou shalt hide them in the secret of Thy presence'),
+    ],
+    "the-rivers-of-god": [
+        ('Jerusalem of his day might he to the Israelite', 'Jerusalem of his day might be to the Israelite'),
+        ('in the closing hook of Scripture', 'in the closing book of Scripture'),
+    ],
+    "the-joy-bringer": [
+        ('external circumstances.’ Though the fig-tree', 'external circumstances. ‘Though the fig-tree'),
+        ('opposite categories of good— evil;', 'opposite categories of good—evil;'),
+        ('fulfilled expectations— disappointed hopes, Put them', 'fulfilled expectations—disappointed hopes. Put them'),
+        ('see half-done work ‘;', 'see half-done work’;'),
+    ],
+    "our-strong-city": [
+        ('awful, noble, solemn, religions, because', 'awful, noble, solemn, religious, because'),
+        ('We, like a handrail on the stair.', 'We like a handrail on the stair.'),
+        ('psalm, answers,’ He that hath', 'psalm, answers, ‘He that hath'),
+        ('foul things born In the darkness', 'foul things born in the darkness'),
+    ],
+    "abiding-in-love": [
+        ('continue ye In My love', 'continue ye in My love'),
+    ],
+    "our-ally": [
+        ('‘But when the Comforter Is come,', '‘But when the Comforter is come,'),
+    ],
+    "the-intercessor": [
+        ('three main points in these verses-the petition', 'three main points in these verses—the petition'),
+        ('impelled Him to Intercede, both', 'impelled Him to intercede, both'),
+    ],
+    "it-is-the-lord": [
+        ('they only love Him who know that He loves them,', 'they only love Him who know that He loves them.'),
+        ('conviction, ‘It is the Lord! should guide us', 'conviction, ‘It is the Lord!’ should guide us'),
+        ('natural capacity— let it keep', 'natural capacity—let it keep'),
+        ('fail to behold Him, ‘It is the Lord!’ is written', 'fail to behold Him. ‘It is the Lord!’ is written'),
+        ('fullness of God, Not for the handful', 'fullness of God. Not for the handful'),
+    ],
+    "the-toiling-christ": [
+        ('in the ship. . .. And He', 'in the ship. . . . And He'),
+        ('we read of this ‘The multitude', 'we read of this: ‘The multitude'),
+    ],
+    "the-heavenly-workers-and-the-earthly-watchers": [
+        ('but, in the accordance with the genius', 'but, in accordance with the genius'),
+        ('fairly extended to designated not to some', 'fairly extended to designate not to some'),
+        ('turn from His wickedness', 'turn from his wickedness'),
+        ('let our voice rise like a fountain night and day’ before God— even', 'let our voice ‘rise like a fountain night and day’ before God—even'),
+        ('as it is heaven?', 'as it is in heaven?'),
+    ],
+    "the-satisfier-of-all-desires": [
+        ('<p>END OF VOL. II.</p>', ''),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
