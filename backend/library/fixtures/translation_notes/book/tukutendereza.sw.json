@@ -1,0 +1,78 @@
+{
+  "kind": "book",
+  "slug": "tukutendereza",
+  "language": "sw",
+  "job_issue": 5183,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 41
+    },
+    {
+      "reference": "Ephesians 5:14",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 102
+    },
+    {
+      "reference": "Romans 1:16",
+      "status": "mined",
+      "source_file": "women-who-moved-heaven-2.sw.json",
+      "block_index": 125
+    },
+    {
+      "reference": "James 5:16",
+      "status": "mined",
+      "source_file": "rise-up-men-of-god-2.sw.json",
+      "block_index": 154
+    },
+    {
+      "reference": "Philippians 1:21",
+      "status": "mined",
+      "source_file": "days-of-heaven-upon-earth.sw.json",
+      "block_index": 177
+    },
+    {
+      "reference": "Matthew 5:44",
+      "status": "self_rendered",
+      "block_index": 201
+    },
+    {
+      "reference": "Revelation 12:11",
+      "status": "self_rendered",
+      "block_index": 225
+    },
+    {
+      "reference": "1 Timothy 4:12",
+      "status": "self_rendered",
+      "block_index": 249
+    },
+    {
+      "reference": "Galatians 3:28",
+      "status": "mined",
+      "source_file": "men-who-tended-the-flock-2.sw.json",
+      "block_index": 271
+    },
+    {
+      "reference": "John 1:29",
+      "status": "mined",
+      "source_file": "talks-to-the-farmer.sw.json",
+      "block_index": 295
+    },
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 295
+    },
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 322
+    }
+  ]
+}

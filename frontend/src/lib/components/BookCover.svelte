@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
-	import { isLongTitle } from '$lib/coverCardMarkup';
+	import { isLongTitle, titleFit } from '$lib/coverCardMarkup';
 	import { coverTitle } from '$lib/coverTitle';
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
-	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
+	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
@@ -212,7 +212,9 @@
 			`style-${style}`,
 			script && `script-${script}`,
 			isLongTitle(setTitle) && 'long-title',
-			isArt && typeTopFor(book.slug, layout) && 'type-top'
+			titleFit(setTitle),
+			isArt && typeTopFor(book.slug, layout) && 'type-top',
+			smallCapsFor(book.slug) && 'caps-small'
 		]}
 		{...blockDir}
 	>
@@ -261,7 +263,7 @@
 	</div>
 {/snippet}
 
-<div class="relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
+<div class="cover-edge relative aspect-[3/4] w-full overflow-hidden {rounded} shadow-sm">
 	{#if book.cover_url && !failed}
 		<!-- The placeholder sits UNDER the image, not instead of it: an image
 		     paints the moment it decodes and covers it, with no script involved.
@@ -345,5 +347,38 @@
 			{@render plateType(false)}
 		</div>
 	{/if}
+	<!-- The spine: a book's left edge in shade, so a shelf of covers reads as a
+	     shelf of books. Here and not in `cover-type.css`, because it belongs to
+	     the cover as the site shows it: share cards and downloads are flat
+	     prints of the face and must not carry it. -->
+	<div class="cover-spine" aria-hidden="true"></div>
 </div>
+
+<style>
+	/* On the paper themes a pale cover (Murray's wash, Chesterton's fade, the
+	   floral girls' series — 50 of 358 English covers start within 1.15:1 of the
+	   page) dissolved into the page under shadow-sm alone. A warm hairline holds
+	   its edge and a soft lift sets it on the shelf. Lamplight keeps shadow-sm:
+	   there every cover is lighter than the page. */
+	:global(:root[data-theme='light']) .cover-edge,
+	:global(:root[data-theme='sepia']) .cover-edge {
+		box-shadow:
+			0 0 0 1px rgb(60 45 30 / 0.14),
+			0 1px 2px rgb(0 0 0 / 0.06),
+			0 6px 14px -6px rgb(60 45 30 / 0.28);
+	}
+	.cover-spine {
+		position: absolute;
+		inset: 0;
+		z-index: 5;
+		pointer-events: none;
+		background: linear-gradient(
+			90deg,
+			rgb(0 0 0 / 0.38) 0,
+			rgb(255 255 255 / 0.1) 1.6%,
+			rgb(0 0 0 / 0.12) 3.2%,
+			transparent 7%
+		);
+	}
+</style>
 

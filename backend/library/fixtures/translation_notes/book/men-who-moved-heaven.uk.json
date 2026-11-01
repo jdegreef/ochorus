@@ -1,0 +1,536 @@
+{
+ "kind": "book",
+ "slug": "men-who-moved-heaven",
+ "language": "uk",
+ "job_issue": 5187,
+ "pull_request": null,
+ "note": [
+  "Scripture is Kulish 1905 (ukr_pan), pasted by script; the English cites the NIV, and each label now reads «пер. Куліша»; Hebrews is cited as Євреїв. Where the English quotes part of a verse the Ukrainian is cut to the same span. Kulish’s Ps 62:8 has no “for God is our refuge” clause, so it is quoted as Kulish has it.",
+  "AI-translated (job #5187) in parallel chapters, then reconciled: one form per name and term (Столичний табернакль, Китайська внутрішня місія, котельня, ототожнення); section headings Хто він був / Його головне вчення про молитву / Молитва. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "block_index": 78,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "block_index": 89,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 3:21",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "block_index": 101,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 102,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 9:1",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "block_index": 105,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "mined",
+   "block_index": 116,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "block_index": 119,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "block_index": 121,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 134,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 143,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "block_index": 147,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "block_index": 148,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 149
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 156
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 164
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 166,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "block_index": 167,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "block_index": 168,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "block_index": 169,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "block_index": 170,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 172
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "mined",
+   "block_index": 180,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 182,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 183
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "self_rendered",
+   "block_index": 184
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 186
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "self_rendered",
+   "block_index": 187
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "block_index": 165,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "block_index": 197,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 198
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "block_index": 199,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "self_rendered",
+   "block_index": 203
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "mined",
+   "block_index": 204,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 205,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 3:20-21",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 207
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "block_index": 210,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 213
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "self_rendered",
+   "block_index": 215
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 219,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "block_index": 223,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "block_index": 224,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "block_index": 226,
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain"
+  }
+ ]
+}

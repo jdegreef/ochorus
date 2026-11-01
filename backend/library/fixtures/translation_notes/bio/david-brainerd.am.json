@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "david-brainerd",
+ "language": "am",
+ "job_issue": 4237,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

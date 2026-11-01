@@ -94,6 +94,28 @@ AUTHORS: dict[str, AuthorEntry] = {
             "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
+    "hannah-whitall-smith": AuthorEntry(
+        slug="hannah-whitall-smith",
+        name="Hannah Whitall Smith",
+        birth_year=1832,
+        death_year=1911,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hannah Whitall Smith (1832–1911) was a Quaker-born speaker and writer of the Holiness movement, author of The Christian's Secret of a Happy Life."
+        ),
+    ),
+    "horatius-bonar": AuthorEntry(
+        slug="horatius-bonar",
+        name="Horatius Bonar",
+        birth_year=1808,
+        death_year=1889,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer of the Free Church, at Kelso and then in Edinburgh."
+        ),
+    ),
     "charles-h-spurgeon": AuthorEntry(
         slug="charles-h-spurgeon",
         name="Charles H. Spurgeon",
@@ -356,6 +378,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "and very largely settled how the church confesses Christ."
         ),
     ),
+    "anselm-of-canterbury": AuthorEntry(
+        slug="anselm-of-canterbury",
+        name="Anselm of Canterbury",
+        birth_year=1033,
+        death_year=1109,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Anselm of Canterbury (1033–1109) was a monk of Bec who became an unwilling archbishop and was exiled twice for refusing to treat the church's offices as the king's property."
+        ),
+    ),
     "john-chrysostom": AuthorEntry(
         slug="john-chrysostom",
         name="John Chrysostom",
@@ -365,6 +398,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Archbishop of Constantinople and the greatest preacher of the "
             "ancient church, named golden-mouthed by later generations, who "
             "died on a forced march into exile."
+        ),
+    ),
+    "gregory-the-great": AuthorEntry(
+        slug="gregory-the-great",
+        name="Gregory the Great",
+        birth_year=540,
+        death_year=604,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory the Great (c.540–604) was Prefect of Rome who renounced the city’s highest civil office to become a monk, and the reluctant pope who wrote the West’s most influential manual of pastoral ministry, the Pastoral Rule."
         ),
     ),
     "richard-sibbes": AuthorEntry(
@@ -399,6 +443,369 @@ AUTHORS: dict[str, AuthorEntry] = {
             "monastery outside Zwolle, copying manuscripts and teaching "
             "novices. For those young men he wrote The Imitation of Christ, "
             "after the Bible the most widely read Christian book ever written."
+        ),
+    ),
+    "francis-de-sales": AuthorEntry(
+        slug="francis-de-sales",
+        name="Francis de Sales",
+        birth_year=1567,
+        death_year=1622,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Francis de Sales (1567–1622) was a Savoyard priest and Bishop of Geneva, a see whose city he could never enter, remembered for his patience and gentleness."
+        ),
+    ),
+    "catherine-of-siena": AuthorEntry(
+        slug="catherine-of-siena",
+        name="Catherine of Siena",
+        birth_year=1347,
+        death_year=1380,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Catherine of Siena (1347–1380) was an Italian mystic and Dominican laywoman who nursed the sick, counselled popes, and urged Gregory XI to return from Avignon to Rome."
+        ),
+    ),
+    "jeremy-taylor": AuthorEntry(
+        slug="jeremy-taylor",
+        name="Jeremy Taylor",
+        birth_year=1613,
+        death_year=1667,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jeremy Taylor (1613–1667) was an English Anglican priest, Royalist chaplain and bishop, called the “Shakespeare of Divines” for his prose."
+        ),
+    ),
+    "henry-scougal": AuthorEntry(
+        slug="henry-scougal",
+        name="Henry Scougal",
+        birth_year=1650,
+        death_year=1678,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Henry Scougal (1650–1678) was a Scottish minister and Professor of Divinity at King’s College, Aberdeen, who died of consumption at about twenty-eight."
+        ),
+    ),
+    "philip-doddridge": AuthorEntry(
+        slug="philip-doddridge",
+        name="Philip Doddridge",
+        birth_year=1702,
+        death_year=1751,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Philip Doddridge (1702–1751) was an English Congregationalist minister, tutor and hymn-writer who led a Dissenting academy at Northampton."
+        ),
+    ),
+    "cyril-of-jerusalem": AuthorEntry(
+        slug="cyril-of-jerusalem",
+        name="Cyril of Jerusalem",
+        birth_year=313,
+        death_year=386,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Cyril of Jerusalem (313–386) was bishop of Jerusalem and the teacher behind the Catechetical Lectures, the only complete course of instruction for new Christians to survive from the early church."
+        ),
+    ),
+    "ignatius-of-loyola": AuthorEntry(
+        slug="ignatius-of-loyola",
+        name="Ignatius of Loyola",
+        birth_year=1491,
+        death_year=1556,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Ignatius of Loyola (1491–1556) was a Basque soldier who, after a cannonball shattered his leg at Pamplona, turned to God and founded the Society of Jesus."
+        ),
+    ),
+    "boethius": AuthorEntry(
+        slug="boethius",
+        name="Boethius",
+        birth_year=480,
+        death_year=524,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Boethius (c."
+        ),
+    ),
+    "basil-of-caesarea": AuthorEntry(
+        slug="basil-of-caesarea",
+        name="Basil of Caesarea",
+        birth_year=330,
+        death_year=379,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Basil of Caesarea (330–379) was the archbishop of Caesarea in Cappadocia remembered as Basil the Great, a founder of Eastern monastic life and one of the Cappadocian Fathers."
+        ),
+    ),
+    "gregory-of-nazianzus": AuthorEntry(
+        slug="gregory-of-nazianzus",
+        name="Gregory of Nazianzus",
+        birth_year=329,
+        death_year=390,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory of Nazianzus (c."
+        ),
+    ),
+    "cyprian-of-carthage": AuthorEntry(
+        slug="cyprian-of-carthage",
+        name="Cyprian of Carthage",
+        birth_year=200,
+        death_year=258,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Cyprian of Carthage (c. 200–258) was a celebrated North African rhetorician who was converted in middle age, gave away his fortune, and was made bishop within two years."
+        ),
+    ),
+    "justin-martyr": AuthorEntry(
+        slug="justin-martyr",
+        name="Justin Martyr",
+        birth_year=100,
+        death_year=165,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Justin Martyr (c. 100–165) was a Greek-speaking philosopher from Samaria who found in Christ the “true philosophy” after years in the schools."
+        ),
+    ),
+    "clement-of-alexandria": AuthorEntry(
+        slug="clement-of-alexandria",
+        name="Clement of Alexandria",
+        birth_year=150,
+        death_year=215,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Clement of Alexandria (c. 150–c. 215) was a convert from paganism who studied under Pantaenus and taught the faith in Alexandria until the persecution of 202 drove him away."
+        ),
+    ),
+    "gregory-of-nyssa": AuthorEntry(
+        slug="gregory-of-nyssa",
+        name="Gregory of Nyssa",
+        birth_year=335,
+        death_year=394,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory of Nyssa (c. 335–c. 394) was bishop of Nyssa in Cappadocia and one of the three Cappadocian Fathers, with his brother Basil and Gregory of Nazianzus."
+        ),
+    ),
+    "tertullian": AuthorEntry(
+        slug="tertullian",
+        name="Tertullian",
+        birth_year=155,
+        death_year=220,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Tertullian (c. 155–c. 220) was a Christian writer of Carthage, the first to produce a large body of Christian work in Latin."
+        ),
+    ),
+    "john-henry-newman": AuthorEntry(
+        slug="john-henry-newman",
+        name="John Henry Newman",
+        birth_year=1801,
+        death_year=1890,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
+        ),
+    ),
+    "irenaeus-of-lyons": AuthorEntry(
+        slug="irenaeus-of-lyons",
+        name="Irenaeus of Lyons",
+        birth_year=130,
+        death_year=202,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Irenaeus of Lyons (c. 130–c. 202) was a Greek bishop of Lyons in Roman Gaul who as a boy had heard Polycarp of Smyrna."
+        ),
+    ),
+    "origen-of-alexandria": AuthorEntry(
+        slug="origen-of-alexandria",
+        name="Origen of Alexandria",
+        birth_year=185,
+        death_year=253,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Origen of Alexandria (c. 185–c. 253) was an Alexandrian teacher, preacher and biblical scholar, one of the most influential and most debated theologians of the early Church."
+        ),
+    ),
+    "eusebius-of-caesarea": AuthorEntry(
+        slug="eusebius-of-caesarea",
+        name="Eusebius of Caesarea",
+        birth_year=260,
+        death_year=339,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Eusebius of Caesarea (c. 260–339) was a bishop and scholar of Palestine, the pupil of the martyr Pamphilus and the father of church history."
+        ),
+    ),
+    "lactantius": AuthorEntry(
+        slug="lactantius",
+        name="Lactantius",
+        birth_year=250,
+        death_year=325,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
+        ),
+    ),
+    "minucius-felix": AuthorEntry(
+        slug="minucius-felix",
+        name="Minucius Felix",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin."
+        ),
+    ),
+    "william-booth": AuthorEntry(
+        slug="william-booth",
+        name="William Booth",
+        birth_year=1829,
+        death_year=1912,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
+        ),
+    ),
+    "polycarp": AuthorEntry(
+        slug="polycarp",
+        name="Polycarp of Smyrna",
+        birth_year=69,
+        death_year=155,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Polycarp of Smyrna (c. 69–c. 155) was bishop of Smyrna, remembered by tradition as a hearer of the apostle John."
+        ),
+    ),
+    "hermas": AuthorEntry(
+        slug="hermas",
+        name="Hermas",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hermas (fl. c. 140) was a Christian of Rome and a former slave who wrote The Shepherd, a book of visions, commandments and parables calling believers to repentance and an undivided heart."
+        ),
+    ),
+    "theophilus-of-antioch": AuthorEntry(
+        slug="theophilus-of-antioch",
+        name="Theophilus of Antioch",
+        birth_year=None,
+        death_year=183,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Theophilus of Antioch (died c. 183) was a second-century bishop of Antioch in Syria, a pagan who came to faith by reading the Hebrew prophets."
+        ),
+    ),
+    "hippolytus-of-rome": AuthorEntry(
+        slug="hippolytus-of-rome",
+        name="Hippolytus of Rome",
+        birth_year=170,
+        death_year=235,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hippolytus of Rome (c. 170–c. 235) was a Greek-speaking presbyter and theologian of the Roman church whose clash with Bishops Zephyrinus and Callistus led later historians to call him the first antipope."
+        ),
+    ),
+    "jerome": AuthorEntry(
+        slug="jerome",
+        name="Jerome",
+        birth_year=342,
+        death_year=420,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
+    "william-wilberforce": AuthorEntry(
+        slug="william-wilberforce",
+        name="William Wilberforce",
+        birth_year=1759,
+        death_year=1833,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Wilberforce (1759–1833) was an English evangelical politician who led the parliamentary campaign that abolished the British slave trade in 1807."
+        ),
+    ),
+    "samuel-rutherford": AuthorEntry(
+        slug="samuel-rutherford",
+        name="Samuel Rutherford",
+        birth_year=1600,
+        death_year=1661,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Samuel Rutherford (c. 1600–1661) was a Scottish Presbyterian minister of Anwoth, a professor at St Andrews and a commissioner to the Westminster Assembly."
+        ),
+    ),
+    "john-flavel": AuthorEntry(
+        slug="john-flavel",
+        name="John Flavel",
+        birth_year=1627,
+        death_year=1691,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Flavel (c. 1627–1691) was an English Puritan minister of Dartmouth in Devon, ejected in 1662 and long forced to preach in secret."
+        ),
+    ),
+    "thomas-boston": AuthorEntry(
+        slug="thomas-boston",
+        name="Thomas Boston",
+        birth_year=1676,
+        death_year=1732,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Thomas Boston (1676–1732) was a Scottish Presbyterian minister of Simprin and Ettrick, author of Human Nature in its Fourfold State and a leader of the Marrow Men."
+        ),
+    ),
+    "william-guthrie": AuthorEntry(
+        slug="william-guthrie",
+        name="William Guthrie",
+        birth_year=1620,
+        death_year=1665,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "William Guthrie (1620–1665) was a Scottish Covenanter minister, the first minister of Fenwick in Ayrshire, deprived in 1664 for refusing episcopacy."
+        ),
+    ),
+    "teresa-of-avila": AuthorEntry(
+        slug="teresa-of-avila",
+        name="Teresa of Ávila",
+        birth_year=1515,
+        death_year=1582,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Teresa of Ávila (1515–1582) was a Spanish Carmelite nun, mystic and reformer who taught that prayer is “an intimate sharing between friends.” She founded the reformed Discalced Carmelites, wrote The Interior Castle, and in 1970 became the first woman named a Doctor of the Church."
         ),
     ),
     "e-m-bounds": AuthorEntry(
@@ -734,13 +1141,474 @@ BOOKS: list[BookEntry] = [
     BookEntry("plain-account-christian-perfection", "A Plain Account of Christian Perfection",
               "john-wesley", "ccel", "wesley/perfection",
               subtitle="As Believed and Taught by John Wesley", cover_color="#58786a"),
+    # Wesley's Journal in Percy Livingstone Parker's abridgment (New York:
+    # Revell, 1903), from CCEL (part="vi": Parker's note, the introduction,
+    # appreciation and sketch are left out). group_parts: one chapter per
+    # Parker chapter, his headings as subheads.
+    BookEntry("the-journal-of-john-wesley", "The Journal of John Wesley", "john-wesley",
+              "ccel", "wesley/journal", part="vi", group_parts=True,
+              subtitle="Abridged by Percy Livingstone Parker", cover_color="#3b4a3a"),
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
+    # The Stanbrook Benedictines' translation (1921, revised edition), public
+    # domain. group_parts: each Mansion's short chapters read as one chapter; the
+    # editor's introduction and his note before VI.iii are left out.
+    # Francis de Sales' Introduction to the Devout Life (1609) — the public-
+    # domain English translation on CCEL.
+    # Francis de Sales' Treatise on the Love of God (1616) — Henry Benedict
+    # Mackey's translation (1884), public domain, from CCEL, one chapter per
+    # Book. Mackey's introduction is the translator's, so it is left out.
+    BookEntry("treatise-on-the-love-of-god", "Treatise on the Love of God", "francis-de-sales",
+              "ccel", "desales/love", subtitle="Translated by Henry Benedict Mackey",
+              cover_color="#6b3a4a", group_parts=True,
+              skip=("Cover Page", "Frontispiece", "Translator's Introduction",
+                    "Table of Contents")),
+    BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
+              "francis-de-sales", "ccel", "desales/devout_life",
+              cover_color="#4a5d3a"),
+    # Catherine of Siena's Dialogue (1378) — Algar Thorold's translation, in
+    # its abridged edition of 1907, public domain. Thorold's introduction on
+    # her life and times is his essay, not her book, so it is left out.
+    BookEntry("the-dialogue-of-catherine-of-siena", "The Dialogue", "catherine-of-siena",
+              "ccel", "catherine/dialog", subtitle="Translated by Algar Thorold",
+              cover_color="#6b2d2d", skip=("INTRODUCTION",)),
+    # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
+    # edition's nineteenth-century "Sketch of the Life and Times" is the
+    # editor's, not Taylor's, so it is left out.
+    # Jeremy Taylor's Holy Dying (1651), the companion to Holy Living, public
+    # domain, from CCEL: the dedication and one chapter per Section.
+    BookEntry("holy-dying", "The Rule and Exercises of Holy Dying", "jeremy-taylor",
+              "ccel", "taylor/holy_dying", cover_color="#2f3a4a"),
+    BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
+              "ccel", "taylor/holy_living", cover_color="#3d4a5c",
+              skip=("A Sketch of the Life and Times of Bishop Taylor.",),
+              # Divider pages that carry prose: the dedication and Chapter I's
+              # introduction, Section III's opening, the introductions to
+              # Chapters III and IV, and Chapter IV's Section I on faith.
+              keep=("iii", "iii.iii", "v", "vi", "vi.vi")),
+    # Henry Scougal's Life of God in the Soul of Man (1677), public domain,
+    # from CCEL.
+    BookEntry("the-life-of-god-in-the-soul-of-man", "The Life of God in the Soul of Man",
+              "henry-scougal", "ccel", "scougal/life", cover_color="#5a4a2f"),
+    # Philip Doddridge's Rise and Progress of Religion in the Soul (1745),
+    # public domain, from CCEL.
+    BookEntry("the-rise-and-progress-of-religion-in-the-soul",
+              "The Rise and Progress of Religion in the Soul", "philip-doddridge",
+              "ccel", "doddridge/rise", cover_color="#2f4f4f"),
+    # Cyril of Jerusalem's Catechetical Lectures (c. 350) — E. H. Gifford's
+    # NPNF translation (1894), public domain, extracted from npnf207 by its
+    # stem. Gifford's introduction is his own essay, so it is left out.
+    BookEntry("catechetical-lectures", "The Catechetical Lectures", "cyril-of-jerusalem",
+              "ccel", "schaff/npnf207", part="ii",
+              subtitle="Translated by Edwin Hamilton Gifford", cover_color="#4a3b2a",
+              skip=("Preface.", "Life of S. Cyril.", "Catechetical Instruction.",
+                    "Special Preparation for Baptism.", "Ceremonies of Baptism and Chrism.",
+                    "Eucharistic Rites.\xa0 Liturgy.", "Effects of Baptism and of Chrism.",
+                    "Eucharistic Doctrine.", "Place of S. Cyril's Lectures.",
+                    "The Time and Arrangement of S. Cyril's Lectures.",
+                    "The Creed of Jerusalem:\xa0 Doctrine of the Holy Trinity.",
+                    "S. Cyril's Writings.")),
+    # Ignatius of Loyola's Spiritual Exercises (1548) — Elder Mullan's
+    # translation from the Spanish Autograph (1914), public domain, from
+    # CCEL, one chapter per part (the Weeks, the Methods of Prayer, the
+    # Rules). Mullan's preface and notes, the Latin approbations and Paul
+    # III's bull are the edition's apparatus, so they are left out.
+    BookEntry("the-spiritual-exercises", "The Spiritual Exercises", "ignatius-of-loyola",
+              "ccel", "ignatius/exercises", subtitle="Translated by Elder Mullan",
+              cover_color="#5c3a2e", group_parts=True,
+              skip=("APPROBATION OF THE LATIN TEXTS", "VULGATE VERSION", "LITERAL VERSION",
+                    "PAUL III, POPE FOR A PERPETUAL REMEMBRANCE", "PREFACE", "CONTENTS",
+                    "GENERAL NOTE", "PRAYER")),
+    # Boethius' Consolation of Philosophy (524) — W. V. Cooper's translation
+    # (Dent, 1902), public domain, from CCEL. The editor's notes, appendix
+    # and chronology are left out.
+    BookEntry("the-consolation-of-philosophy", "The Consolation of Philosophy", "boethius",
+              "ccel", "boethius/consolation", subtitle="Translated by W. V. Cooper",
+              cover_color="#3b3b52",
+              skip=("A Note on the Translation", "Appendix", "Editorial Note",
+                    "Chronological Table")),
+    # Basil the Great's On the Holy Spirit (375) — Blomfield Jackson's NPNF
+    # translation (1895), public domain, extracted from npnf208 by its stem.
+    # Jackson's preface is his own, so it is left out.
+    # Basil the Great's Hexaemeron (c. 370), nine homilies on the six days of
+    # creation — Blomfield Jackson's NPNF translation (1895), public domain,
+    # extracted from npnf208 by its stem. Jackson's introduction is his own.
+    BookEntry("the-hexaemeron", "The Hexaemeron", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="viii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#3a5a3a",
+              skip=("Introduction.",)),
+    BookEntry("on-the-holy-spirit", "On the Holy Spirit", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="vii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
+              summary_titles=True, skip=("Preface.",)),
+    # Gregory of Nazianzus' five Theological Orations (380) — Browne and
+    # Swallow's NPNF translation (1894), public domain, extracted from
+    # npnf207's Select Orations. The volume's other orations, the editors'
+    # prolegomena and their introduction to these five are left out.
+    BookEntry("the-theological-orations", "The Theological Orations", "gregory-of-nazianzus",
+              "ccel", "schaff/npnf207", part="iii",
+              subtitle="Translated by Charles Gordon Browne and James Edward Swallow",
+              cover_color="#4b3a5c",
+              skip=("The Life.", "The Writings.", "Literature.",
+                    "On Easter and His Reluctance.",
+                    "In Defence of His Flight to Pontus, and His Return, After His Ordination "
+                    "to the Priesthood, with an Exposition of the Character of the Priestly Office.",
+                    "To Those Who Had Invited Him, and Not Come to Receive Him.",
+                    "Panegyric on His Brother S. Cæsarius.", "On his Sister Gorgonia.",
+                    "To His Father, When He Had Entrusted to Him the Care of the Church of Nazianzus.",
+                    "On His Father's Silence, Because of the Plague of Hail.",
+                    "On the Death of His Father.", "On the Great Athanasius, Bishop of Alexandria.",
+                    "Introduction to the 'Theological' Orations.",
+                    "Against The Arians, and Concerning Himself.", "On the Arrival of the Egyptians.",
+                    "On the Words of the Gospel, 'When Jesus Had Finished These Sayings,' "
+                    "Etc.--S. Matt. xix. 1.",
+                    "On the Theophany, or Birthday of Christ.", "Oration on the Holy Lights.",
+                    "The Oration on Holy Baptism.", "On Pentecost.",
+                    "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
+                    "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
+                    "The Second Oration on Easter.")),
+    # The Epistles of Cyprian (c. 248–258) — Robert Ernest Wallis's ANF
+    # translation (1886), public domain, extracted from anf05 by its stem:
+    # Cyprian's letters, with those written to him, in the ANF numbering.
+    BookEntry("the-epistles-of-cyprian", "The Epistles of Cyprian", "cyprian-of-carthage",
+              "ccel", "schaff/anf05", part="iv.iv",
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#4a2e2e"),
+    # Justin Martyr's First Apology (c. 155) — Marcus Dods and George Reith's
+    # ANF translation (1885), public domain, extracted from anf01 by its stem.
+    BookEntry("the-first-apology", "The First Apology", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.ii",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#5a3e2b"),
+    # Clement of Alexandria's Exhortation to the Heathen (c. 195) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem.
+    BookEntry("exhortation-to-the-heathen", "Exhortation to the Heathen", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.ii",
+              subtitle="Translated by William Wilson", cover_color="#5c4a2a"),
+    # Gregory of Nyssa's Great Catechism (c. 385) — William Moore and Henry
+    # Austin Wilson's NPNF translation (1893), public domain, extracted from
+    # npnf205 by its stem.
+    BookEntry("the-great-catechism", "The Great Catechism", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="xi.ii",
+              subtitle="Translated by William Moore and Henry Austin Wilson",
+              cover_color="#3e3a5c", summary_titles=True),
+    # Tertullian's Apology (197) — S. Thelwall's ANF translation (1885),
+    # public domain, extracted from anf03 by its stem.
+    BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
+              "ccel", "schaff/anf03", part="iv.iii",
+              subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
+    # Justin's Dialogue with Trypho (c. 160) — the same ANF translation,
+    # extracted from anf01 by its stem.
+    BookEntry("dialogue-with-trypho", "Dialogue with Trypho", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.iv",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#3d4a5c"),
+    # Apologia Pro Vita Sua (1864, Gutenberg #19690): Newman's answer to Charles
+    # Kingsley, the history of his religious opinions up to his reception into
+    # the Catholic Church in 1845, with the 1864 Appendix answering each charge.
+    # Built from a reshaped copy of the PG HTML (one <h2> per Part and
+    # Appendix item; the editor's Introduction and the seven footnotes left out).
+    BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
+              "gutenberg", "19690",
+              subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Irenaeus's Against Heresies (c. 180) — Alexander Roberts and W. H.
+    # Rambaut's ANF translation (1885), public domain, extracted from anf01 by
+    # its stem. group_parts: each of the five Books is a chapter, its short
+    # chapters subheads; the editor's note, Elucidation and fragments are left out.
+    BookEntry("against-heresies", "Against Heresies", "irenaeus-of-lyons",
+              "ccel", "schaff/anf01", part="ix", group_parts=True,
+              subtitle="Translated by Alexander Roberts and W. H. Rambaut", cover_color="#4a3b5c"),
+    # Origen's On First Principles (De Principiis, c. 220–230) — Frederick
+    # Crombie's ANF translation (1885), public domain, extracted from anf04 by
+    # its stem. group_parts: Origen's Preface and each of the four Books is a
+    # chapter. Where ANF prints a passage twice, from Rufinus's Latin and from
+    # the surviving Greek, the Greek is kept.
+    BookEntry("on-first-principles", "On First Principles", "origen-of-alexandria",
+              "ccel", "schaff/anf04", part="vi.v", group_parts=True,
+              subtitle="Translated by Frederick Crombie", cover_color="#3e5a4a"),
+    # Eusebius's Church History (c. 325) — Arthur Cushman McGiffert's NPNF
+    # translation (1890), public domain, extracted from npnf201 by its stem.
+    # group_parts: each of the ten Books is a chapter, its short chapters
+    # subheads. McGiffert's prolegomena, the testimonies and his supplementary
+    # tables are left out; the Martyrs of Palestine, which ANF prints between
+    # Books VIII and IX, is kept as Eusebius's own appendix to Book VIII.
+    BookEntry("church-history", "The Church History", "eusebius-of-caesarea",
+              "ccel", "schaff/npnf201", part="iii", group_parts=True,
+              subtitle="Translated by Arthur Cushman McGiffert", cover_color="#5c4a2e"),
+    # Lactantius's Divine Institutes (c. 303–311) — William Fletcher's ANF
+    # translation (1886), public domain, extracted from anf07 by its stem.
+    # group_parts: each of the seven Books is a chapter, its short chapters
+    # subheads. The Epitome that follows it in the volume is left out.
+    BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
+              "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
+              subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
+    # The Octavius of Minucius Felix (c. 200–235) — Robert Ernest Wallis's ANF
+    # translation (1885), public domain, extracted from anf04 by its stem: a
+    # dialogue at Ostia between the pagan Caecilius and the Christian Octavius,
+    # in forty-one short chapters. Each is titled from the translator's
+    # "Argument" (summary_titles keeps its lead clause).
+    BookEntry("the-octavius", "The Octavius", "minucius-felix",
+              "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
+    # Clement of Alexandria's Who Is the Rich Man That Shall Be Saved? (c. 200)
+    # — William Wilson's ANF translation (1885), public domain, extracted from
+    # anf02 by its stem: a homily on Mark 10:17–31, ending with the story of
+    # St John and the young robber.
+    BookEntry("who-is-the-rich-man-that-shall-be-saved", "Who Is the Rich Man That Shall Be Saved?",
+              "clement-of-alexandria", "ccel", "schaff/anf02", part="vi.v", keep=("vi.v",),
+              subtitle="Translated by William Wilson", cover_color="#6b5a2e"),
+    # Tertullian's On Prayer (c. 198–203) — S. Thelwall's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem: the oldest
+    # surviving exposition of the Lord's Prayer, then counsel on the manner of
+    # praying, in twenty-nine short chapters.
+    BookEntry("tertullian-on-prayer", "On Prayer", "tertullian",
+              "ccel", "schaff/anf03", part="vi.iv",
+              subtitle="Translated by S. Thelwall", cover_color="#2e5c4a"),
+    # Gregory of Nyssa's On the Making of Man (379) — H. A. Wilson's NPNF
+    # translation (1893), public domain, extracted from npnf205 by its stem:
+    # the dedication to his brother Peter and thirty chapters completing
+    # Basil's Hexaemeron with the creation of man, under the translator's
+    # headings (summary_titles keeps each one's lead clause).
+    BookEntry("on-the-making-of-man", "On the Making of Man", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="x.ii.ii", summary_titles=True,
+              subtitle="Translated by H. A. Wilson", cover_color="#4a5c2e"),
+    # The Idea of a University (1852–1858, Gutenberg #24526) — Newman's
+    # nine Discourses on University Teaching and ten Lectures on University
+    # Subjects, with his Preface. Built from a reshaped copy of the PG HTML
+    # (one <h2> per Discourse or Lecture, his numbered sections kept as § marks;
+    # the contents, index and the two short notes to Part II left out).
+    BookEntry("the-idea-of-a-university", "The Idea of a University", "john-henry-newman",
+              "gutenberg", "24526",
+              subtitle="Defined and Illustrated", cover_color="#2e3e5c"),
+    # In Darkest England and the Way Out (1890, Gutenberg #475) — Booth's survey
+    # of London's "submerged tenth" and the Salvation Army's scheme to raise
+    # them: City, Farm and Over-Sea Colonies. Built from a reshaped copy of the
+    # PG HTML (one <h2> per chapter, titled from its Contents; the transcription's
+    # "#" restored to "£"; the Appendix of documents left out).
+    BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
+              "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Andrew Murray's Working for God! (1901) — CCEL's murray/working: a
+    # companion to Waiting on God, thirty-one short meditations on good works.
+    BookEntry("working-for-god", "Working for God!", "andrew-murray",
+              "ccel", "murray/working", skip=("Title Page",), cover_color="#3e3a2a"),
+    # Charles G. Finney's Lectures to Professing Christians (1837) — CCEL's
+    # finney/toprofessingchristians: twenty-three lectures from New York.
+    BookEntry("lectures-to-professing-christians", "Lectures to Professing Christians", "charles-finney",
+              "ccel", "finney/toprofessingchristians", skip=("PUBLISHER'S NOTICE.",), cover_color="#4a3e2e"),
+    # John Owen's A Treatise of the Dominion of Sin and Grace (1688) — CCEL's
+    # owen/sin_grace, Goold's edition: on Romans 6:14.
+    BookEntry("the-dominion-of-sin-and-grace", "The Dominion of Sin and Grace", "john-owen",
+              "ccel", "owen/sin_grace", cover_color="#3a2e4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
+    # Horatius Bonar's God's Way of Peace (1862) — CCEL's bonar/peace: a book
+    # for the anxious, in twelve short chapters.
+    BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
+              "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Hannah Whitall Smith's Old Testament Types and Teachings — CCEL's
+    # smith_hw/types: Bible readings on the types of the Old Testament.
+    BookEntry("old-testament-types-and-teachings", "Old Testament Types and Teachings", "hannah-whitall-smith",
+              "ccel", "smith_hw/types", skip=("Title Page",), cover_color="#4a4a2e"),
+    # Horatius Bonar's The Rent Veil (1875) — CCEL's bonar/rentveil: twelve
+    # chapters on the veil of the tabernacle, rent at the cross.
+    BookEntry("the-rent-veil", "The Rent Veil", "horatius-bonar",
+              "ccel", "bonar/rentveil", skip=("Title Page",), cover_color="#4a2e2e"),
+    # Andrew Murray's The Deeper Christian Life (1895) — CCEL's murray/deeper:
+    # seven addresses and a closing word on consecration.
+    BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",
+              "ccel", "murray/deeper", skip=("Title Page",), cover_color="#2e3e4a"),
+    # Andrew Murray's The School of Obedience (1898) — CCEL's murray/obedience.
+    BookEntry("the-school-of-obedience", "The School of Obedience", "andrew-murray",
+              "ccel", "murray/obedience", skip=("Title Page",), cover_color="#3a4a3e"),
+    # Thomas Watson's The Lord's Prayer (1692) — CCEL's watson/prayer: the
+    # preface and six petitions, the third part of his Body of Practical Divinity.
+    BookEntry("the-lords-prayer", "The Lord's Prayer", "thomas-watson",
+              "ccel", "watson/prayer", skip=("Title Page", "Contents"), cover_color="#3e4a3a"),
+    # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
+    # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
+    BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",
+              "ccel", "watson/beatitudes", skip=("Title Page",), cover_color="#4a3a2e"),
+    # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
+    # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
+    # death — Roberts and Donaldson's ANF translation (1885), public domain,
+    # extracted from anf01 by its stem. group_parts: each work is a chapter,
+    # its short chapters subheads; the editors' introductory notes are left out.
+    BookEntry("epistle-and-martyrdom-of-polycarp", "The Epistle and Martyrdom of Polycarp",
+              "polycarp", "ccel", "schaff/anf01", part="iv", group_parts=True, keep=("iv.ii", "iv.iv"),
+              subtitle="Translated by Alexander Roberts and James Donaldson", cover_color="#5c4a3e"),
+    # The Shepherd of Hermas (c. 100–150) — F. Crombie's ANF translation (1885),
+    # public domain, extracted from anf02 by its stem: the five Visions, twelve
+    # Commandments and ten Similitudes, one chapter each. The editors'
+    # introductory note and Elucidations are left out.
+    BookEntry("the-shepherd-of-hermas", "The Shepherd of Hermas", "hermas",
+              "ccel", "schaff/anf02", part="ii",
+              subtitle="Translated by F. Crombie", cover_color="#3e5c3e"),
+    # Theophilus of Antioch's To Autolycus (c. 180) — Marcus Dods's ANF
+    # translation (1885), public domain, extracted from anf02 by its stem.
+    # group_parts: each of the three Books is a chapter, its short chapters
+    # subheads; the editors' introductory note is left out.
+    BookEntry("to-autolycus", "To Autolycus", "theophilus-of-antioch",
+              "ccel", "schaff/anf02", part="iv.ii", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5c3e4a"),
+    # Hippolytus's Refutation of All Heresies (c. 222–235) — J. H. MacMahon's
+    # ANF translation (1886), public domain, extracted from anf05 by its stem.
+    # group_parts: each surviving Book is a chapter (Books II and III are
+    # lost), its short chapters subheads.
+    BookEntry("refutation-of-all-heresies", "The Refutation of All Heresies", "hippolytus-of-rome",
+              "ccel", "schaff/anf05", part="iii.iii", group_parts=True,
+              subtitle="Translated by J. H. MacMahon", cover_color="#4a4a5c"),
+    # The Letters of St. Jerome (370–419) — W. H. Fremantle, G. Lewis and
+    # W. G. Martley's NPNF translation (1893), public domain, extracted from
+    # npnf206 by its stem: the letters in Vallarsi's numbering, including some
+    # written to Jerome, each with the translators' summary as its first lines.
+    BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
+              "ccel", "schaff/npnf206", part="v",
+              subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
+    # Clement of Alexandria's The Instructor (Paedagogus, c. 198) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem. group_parts: each of the three Books is a chapter, its short
+    # chapters subheads.
+    BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
+              subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
+    # Augustine's Ten Homilies on the First Epistle of John (c. 407) — H. Browne's
+    # translation as revised by Joseph H. Myers in NPNF (1888), public domain,
+    # extracted from npnf107 by its stem: his prologue and the ten homilies.
+    # The editor's introduction and the passages from other works that the
+    # volume appends on single verses are left out.
+    BookEntry("homilies-on-the-first-epistle-of-john", "Homilies on the First Epistle of John",
+              "augustine-of-hippo", "ccel", "schaff/npnf107", part="iv",
+              subtitle="Translated by H. Browne", cover_color="#2e4a5c"),
+    # Luther's Table Talk (Gutenberg #9841) — selections from Captain Henry
+    # Bell's English translation (1652) of Aurifaber's Tischreden, public
+    # domain. Built from a reshaped copy of the PG HTML: one <h2> per topic,
+    # each saying a subhead; the editor's introduction and Bell's
+    # narrative and parliamentary order are left out.
+    BookEntry("table-talk", "Table Talk", "martin-luther",
+              "gutenberg", "9841",
+              subtitle="Translated by Henry Bell", cover_color="#5c4a2e"),
+    # Parochial and Plain Sermons, Volume VII (Gutenberg #24256) — eighteen of
+    # the sermons Newman preached as vicar of St Mary's, Oxford (1834–1843),
+    # in the Rivingtons edition. Built from a reshaped copy of the PG HTML
+    # (one <h2> per sermon, titled from its own title line).
+    BookEntry("parochial-and-plain-sermons-vii", "Parochial and Plain Sermons, Volume VII",
+              "john-henry-newman", "gutenberg", "24256", cover_color="#3e3e5c"),
+    # A Practical View of Christianity (1797, Gutenberg #25709, from the Dublin
+    # printing of the same year) — Wilberforce's appeal to the nominal Christians
+    # of his class. Built from a reshaped copy of the PG HTML: the Introduction
+    # and seven chapters, titled from his Contents; the index and footnotes are
+    # left out.
+    BookEntry("a-practical-view-of-christianity", "A Practical View of Christianity",
+              "william-wilberforce", "gutenberg", "25709",
+              subtitle="Of the Prevailing Religious System of Professed Christians Contrasted with Real Christianity",
+              cover_color="#2e3e5c"),
+    # Letters of Samuel Rutherford (Gutenberg #42557) — Andrew A. Bonar's
+    # edition (third edition, Religious Tract Society): all 365 letters in his
+    # chronological order. Built from a reshaped copy of the PG HTML: one <h2>
+    # per letter titled "Letter N: To …", Bonar's topical heading kept as the
+    # first line; his preface, sketch, indexes, glossary, notices of each
+    # correspondent and the footnote marks are left out.
+    BookEntry("letters-of-samuel-rutherford", "Letters of Samuel Rutherford",
+              "samuel-rutherford", "gutenberg", "42557",
+              subtitle="Edited by Andrew A. Bonar", cover_color="#3e2e5c"),
+    # John Flavel's The Method of Grace (1681) — CCEL's flavel/grace: the
+    # epistles dedicatory and to the reader and thirty-five sermons on how the
+    # Spirit applies Christ's redemption to the soul, each titled "Sermon N"
+    # with a short form of Flavel's own heading.
+    BookEntry("the-method-of-grace", "The Method of Grace", "john-flavel",
+              "ccel", "flavel/grace",
+              subtitle="In the Holy Spirit’s Applying to the Souls of Men the Eternal Redemption Contrived by the Father and Accomplished by the Son",
+              cover_color="#5c3e2e"),
+    # Thomas Boston's The Crook in the Lot (1737, posthumous): his sermons on
+    # Ecclesiastes 7:13, Proverbs 16:19 and 1 Peter 5:6 on bearing the
+    # afflictions God appoints. CCEL's boston/crook is an unattributed
+    # modernised rewording, so the text is built from three archive.org scans —
+    # the 1852 printing (this ref) as base, the 1839 and Nisbet's 1832 as
+    # voters — by word-level majority vote, then proofread against all three.
+    # The chapters follow the six heads of the work (three propositions on the
+    # first text, one doctrine on the second, two on the third).
+    BookEntry("the-crook-in-the-lot", "The Crook in the Lot", "thomas-boston",
+              "archive", "crookinlotordisp00bost",
+              subtitle="The Sovereignty and Wisdom of God in the Afflictions of Men Displayed",
+              cover_color="#4a3e2e"),
+    # William Guthrie's The Christian's Great Interest (1658) — CCEL's
+    # guthrie/interest2: the trial of a saving interest in Christ (Part I) and
+    # the way to attain it (Part II); the prefatory essay, memoir and epistle
+    # are later editors' or the printer's, not the work.
+    BookEntry("the-christians-great-interest", "The Christian's Great Interest", "william-guthrie",
+              "ccel", "guthrie/interest2",
+              cover_color="#3e4a3a",
+              skip=("Title Page", "Prefatory Material", "Introductory Essay", "Memoirs of the Rev. William Guthrie", "To the Reader", "Indexes")),
+    # John Bunyan's The Jerusalem Sinner Saved (1688) — Gutenberg #3270, from
+    # the 1845 Thomas Nelson edition: his last treatise, on Luke 24:47, that
+    # Christ would have mercy offered first to the biggest sinners. One
+    # continuous discourse in the source; the chapters follow its own heads
+    # (the text, the observation, six reasons, eleven uses, the day of grace).
+    BookEntry("the-jerusalem-sinner-saved", "The Jerusalem Sinner Saved", "john-bunyan",
+              "gutenberg", "3270", subtitle="Or, Good News for the Vilest of Men",
+              cover_color="#4a2e2e"),
+    # J. C. Ryle's The Upper Room (1888) — CCEL's ryle/upper_room: his
+    # collected sermons and addresses, "being a few truths for the times".
+    BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
+              "ccel", "ryle/upper_room", group_parts=True,
+              cover_color="#3a3e5a"),
+    # Thomas Watson's The Art of Divine Contentment (1653) — CCEL's
+    # watson/contentment: his treatise on Philippians 4:11, "I have learned, in
+    # whatsoever state I am, therewith to be content".
+    BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
+              "ccel", "watson/contentment", cover_color="#5a4a2e"),
+    # Jonathan Edwards's Treatise on Grace (published 1865 from his
+    # manuscripts) — CCEL's edwards/treatiseongrace: that saving grace differs
+    # from common grace in nature and kind, and is divine love itself.
+    BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
+              "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
+    # Andrew Murray's The Two Covenants (1898) — CCEL's murray/covenants: the
+    # old covenant and the new, and the life of the believer under the second.
+    BookEntry("the-two-covenants", "The Two Covenants", "andrew-murray",
+              "ccel", "murray/covenants", subtitle="And the Second Blessing",
+              cover_color="#2e4a5a"),
+    BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
+              "ccel", "teresa/castle2",
+              subtitle="Or the Mansions",
+              cover_color="#5e3d52", group_parts=True,
+              skip=("Title Page", "Note", "Introduction",
+                    "Introductory Note to Chapter III by the Editor")),
+    # Anselm's three great works and the Gaunilo exchange in Sidney Norton
+    # Deane's translation (Open Court, 1903), from CCEL (anselm/basic_works).
+    # Deane's introduction (after Weber), criticisms and bibliography are left
+    # out. The fixture regroups CCEL's one-page chapters into readable ones.
+    BookEntry("proslogium-monologium-cur-deus-homo",
+              "Proslogium, Monologium and Cur Deus Homo", "anselm-of-canterbury",
+              "ccel", "anselm/basic_works",
+              subtitle="Translated by Sidney Norton Deane", cover_color="#3d4f5e",
+              skip=("Title Page", "Anselm's Philosophy (After Weber.)",
+                    "Criticisms of Anselm's Ontological Argument for the Being of God",
+                    "Bibliography")),
     BookEntry("the-imitation-of-christ", "The Imitation of Christ", "thomas-a-kempis",
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
               cover_color="#3d3a6e"),
+    # The Grace and Duty of Being Spiritually Minded (1681), Goold's Works
+    # vol. 7, from CCEL. Goold's prefatory note and analysis are left out; the
+    # fixture gives each chapter a short title and sets Owen's full heading in
+    # italics as its argument.
+    BookEntry("the-grace-and-duty-of-being-spiritually-minded",
+              "The Grace and Duty of Being Spiritually Minded", "john-owen",
+              "ccel", "owen/spirituallyminded",
+              subtitle="Declared and Practically Improved",
+              cover_color="#2f4a4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
+    # The City of God — Marcus Dods's translation (NPNF first series, vol. 2,
+    # 1887), public domain, extracted from npnf102 by its stem. group_parts:
+    # each of the twenty-two Books is a chapter, its short chapters subheads.
+    BookEntry("the-city-of-god", "The City of God", "augustine-of-hippo",
+              "ccel", "schaff/npnf102", part="iv", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5a3e2b",
+              skip=("Translator’s Preface",)),
     # CCEL's `augustine/confessions` is Outler's 1955 translation — still in
     # copyright, hosted there by permission. `augustine/confess` is Pusey's
     # 1838 translation, public domain. group_parts: the 278 leaf sections are
@@ -750,6 +1618,11 @@ BOOKS: list[BookEntry] = [
               "ccel", "augustine/confess",
               subtitle="Translated by Edward B. Pusey",
               cover_color="#5c4033", group_parts=True),
+    # Gregory the Great's Book of Pastoral Rule — James Barmby's NPNF
+    # translation (1895), public domain, extracted from npnf212 by its stem.
+    BookEntry("the-book-of-pastoral-rule", "The Book of Pastoral Rule", "gregory-the-great",
+              "ccel", "schaff/npnf212", part="iii.iv",
+              subtitle="Translated by James Barmby", cover_color="#4f4a2e"),
     # The Enchiridion (Handbook on Faith, Hope, and Love) — the NPNF public-
     # domain translation (J. F. Shaw), extracted from Schaff's npnf103 volume by
     # its section stem (part="iv.ii"); CCEL's standalone augustine/enchiridion is
@@ -757,6 +1630,34 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # Chrysostom's ninety Homilies on Matthew, in the Oxford Library of the
+    # Fathers translation revised by M. B. Riddle (NPNF first series, vol. 10,
+    # 1888), from npnf110 by its stem. The editors' preface and introductory
+    # essay are left out; the fixture titles each homily by its text.
+    BookEntry("homilies-on-matthew", "Homilies on Matthew", "john-chrysostom",
+              "ccel", "schaff/npnf110", part="iii",
+              subtitle="Homilies on the Gospel of St. Matthew", cover_color="#4e3d2c",
+              skip=("Title Page.", "Preface to the Oxford Edition.", "Introductory Essay.",
+                    "Introduction.", "The Place of Chrysostom in the History of Exegesis.",
+                    "Extent and Character of Chrysostom's Exegetical Labors.")),
+    # On the Trinity, in Arthur West Haddan's translation (1873, NPNF), from
+    # Schaff's npnf103 volume (part="iv.i"). One chapter per book; Shedd's
+    # introductory essay and Haddan's preface are the editors', not Augustine's.
+    # The fixture titles each book "Book I: …" from Schaff's summary of it.
+    BookEntry("on-the-trinity", "On the Trinity", "augustine-of-hippo",
+              "ccel", "schaff/npnf103", part="iv.i",
+              subtitle="Translated by Arthur West Haddan", cover_color="#4b4a6b",
+              group_parts=True, skip=("Introductory Essay.", "Translator’s Preface.")),
+    # On Christian Doctrine in J. F. Shaw's translation, from Schaff's npnf102
+    # volume (part="v"), one chapter per book. CCEL's standalone
+    # augustine/doctrine has the same text but a broken TOC that scrambles the
+    # chapters. Schaff's introductory note and the contents are left out. Each
+    # book's "Argument" sits on its part page, which group_parts skips, so the
+    # fixture sets it in italics at the head of the book.
+    BookEntry("on-christian-doctrine", "On Christian Doctrine", "augustine-of-hippo",
+              "ccel", "schaff/npnf102", part="v",
+              subtitle="Translated by J. F. Shaw", cover_color="#5d4a2f", group_parts=True,
+              skip=("Introductory Note by the Editor", "Contents of Christian Doctrine")),
     # The Schaff sets publish a whole volume under one work path, so these three
     # are addressed by `part` — the work's section-stem prefix inside the
     # volume's TOC. See BookEntry.part for why there is no per-work URL to use
@@ -767,12 +1668,30 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf109", part="iv",
               subtitle="Six Books on the Pastoral Office",
               cover_color="#6b4a2f"),
+    # Chrysostom's Homilies on Romans, in the Oxford Library of the Fathers
+    # translation revised by George B. Stevens (NPNF first series, vol. 11,
+    # 1889), extracted from npnf111 by its stem. The editor's preface is left
+    # out; the fixture writes each homily's text reference out in full.
+    BookEntry("homilies-on-romans", "Homilies on Romans", "john-chrysostom",
+              "ccel", "schaff/npnf111", part="vii",
+              subtitle="Homilies on the Epistle of St. Paul to the Romans",
+              cover_color="#5a4a2e",
+              skip=("Preface to Homilies on Romans.",)),
     # summary_titles: Schaff heads each section with a precis of its argument
     # rather than a title — 57 of them here, averaging 232 characters.
     BookEntry("on-the-incarnation", "On the Incarnation", "athanasius-of-alexandria",
               "ccel", "schaff/npnf204", part="vii.ii",
               subtitle="Translated by Archibald Robertson",
               cover_color="#2f5d62", summary_titles=True),
+    # Athanasius's four Discourses Against the Arians in Newman's translation,
+    # revised by Archibald Robertson (NPNF second series, vol. 4, 1892), from
+    # npnf204 by its stem. The editor's introduction and excursuses are left
+    # out; the fixture titles each chapter by its Discourse and its argument.
+    BookEntry("against-the-arians", "Against the Arians", "athanasius-of-alexandria",
+              "ccel", "schaff/npnf204", part="xxi.ii",
+              subtitle="Four Discourses", cover_color="#3e4a5e",
+              skip=("Excursus B. On §22 (Note 3).",
+                    "Excursus C. Introductory to the Fourth Discourse against the Arians.")),
     BookEntry("life-of-antony", "The Life of Antony", "athanasius-of-alexandria",
               "ccel", "schaff/npnf204", part="xvi.ii",
               subtitle="The Life That Began Christian Monasticism",
@@ -842,6 +1761,14 @@ BOOKS: list[BookEntry] = [
               "john-owen", "ccel", "owen/mort",
               subtitle="On Killing Sin by the Spirit",
               cover_color="#5b2333"),
+    # Of Temptation (1658), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; CCEL titles the chapters "Chapter I." only, so the
+    # fixture gives each a title from its own argument.
+    BookEntry("of-temptation", "Of Temptation", "john-owen",
+              "ccel", "owen/temptation",
+              subtitle="The Nature and Power of It; the Danger of Entering into It; and the Means of Preventing That Danger",
+              cover_color="#4a2f3a",
+              skip=("Title page.", "Prefatory note.")),
     # Of Communion with God the Father, Son, and Holy Ghost (1657), in Goold's
     # edition of the Works (CCEL owen/communion). part="i" leaves out the
     # separate Vindication that follows it; Goold's prefatory note and analysis
@@ -852,6 +1779,31 @@ BOOKS: list[BookEntry] = [
               cover_color="#2f4f6f",
               skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
               keep=("i.vii.iii",)),
+    # Indwelling Sin (1667), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; the fixture gives each chapter a short title and sets
+    # Owen's full heading in italics as its argument.
+    BookEntry("indwelling-sin-in-believers", "Indwelling Sin in Believers", "john-owen",
+              "ccel", "owen/indwellingsin",
+              subtitle="The Nature, Power, Deceit, and Prevalency of the Remainders of Indwelling Sin",
+              cover_color="#3e3a2a",
+              skip=("Title page.", "Prefatory note.", "Title.")),
+    # Meditations and Discourses on the Glory of Christ (1684) and the second
+    # part published after Owen's death (1691), in Goold's edition of the Works
+    # (CCEL owen/glory). Goold's prefatory note and the 1691 publisher's
+    # preface to the second part are not Owen's.
+    BookEntry("the-glory-of-christ", "The Glory of Christ", "john-owen",
+              "ccel", "owen/glory",
+              subtitle="Meditations and Discourses on the Glory of Christ",
+              cover_color="#6b4e1f",
+              skip=("Title page.", "Prefatory note.", "Original preface.")),
+    # Goold's edition (Works, vol. 10, 1852). His prefatory note and analysis
+    # are left out; the fixture groups the chapters by Owen's four books.
+    BookEntry("the-death-of-death-in-the-death-of-christ",
+              "The Death of Death in the Death of Christ", "john-owen",
+              "ccel", "owen/deathofdeath",
+              subtitle="A Treatise of the Redemption and Reconciliation That Is in the Blood of Christ",
+              cover_color="#5b2a2a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
@@ -909,6 +1861,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("holiness", "Holiness", "j-c-ryle", "ccel", "ryle/holiness",
               subtitle="Its Nature, Hindrances, Difficulties, and Roots",
               cover_color="#6b2d3a"),
+    # The first volume of Ryle's Expository Thoughts on the Gospels (1856),
+    # from CCEL. group_parts: one chapter per chapter of Matthew, its passages
+    # as subheads.
+    BookEntry("expository-thoughts-on-matthew", "Expository Thoughts on Matthew", "j-c-ryle",
+              "ccel", "ryle/matthew", group_parts=True,
+              subtitle="For Family and Private Use", cover_color="#4b3a2b",
+              skip=("Title Page",)),
     # Thomas Watson's A Body of Divinity (1692), sermons on the Westminster
     # Shorter Catechism, with the memoir C. H. Spurgeon compiled for his
     # edition (CCEL). Its companions, The Ten Commandments and The Lord's
@@ -931,6 +1890,19 @@ BOOKS: list[BookEntry] = [
               subtitle="Translated by Henry Cole",
               cover_color="#4a3328", group_parts=True,
               skip=("Preface by Henry Atherton",)),
+    # The Ninety-five Theses and the three treatises of 1520 (To the Christian
+    # Nobility, Christian Liberty, the Babylonish Captivity) in Wace and
+    # Buchheim's translation (1883), from CCEL. The editors' two introductory
+    # essays and their advertisement are theirs, not Luther's. The fixture
+    # regroups CCEL's leaves by treatise ("To the Christian Nobility: The Three
+    # Walls …"), so a re-import must be regrouped the same way.
+    BookEntry("first-principles-of-the-reformation", "First Principles of the Reformation",
+              "martin-luther", "ccel", "luther/first_prin",
+              subtitle="The Ninety-five Theses and the Three Primary Works",
+              cover_color="#5a2e2e",
+              skip=("Title Page", "Advertisement", "Contents",
+                    "I. On the Primary Principles of Luther’ Life and Teaching.",
+                    "II. The Political Course of the Reformation in Germany (1517-1546.)")),
     # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
     # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
     # corrections.py restores the Greek CCEL carries in a legacy font encoding.
@@ -949,6 +1921,14 @@ BOOKS: list[BookEntry] = [
                     "Table II. Of Hebrew Words Explained.",
                     "Table III. Of Greek Words Explained.",
                     "General Index of Chapters.")),
+    # Calvin's Commentary on Romans in John Owen's translation (Calvin
+    # Translation Society, 1849), from CCEL. group_parts: one chapter per
+    # chapter of Romans, its passages as subheads. Owen's preface and his new
+    # translation of the epistle are the translator's, not Calvin's.
+    BookEntry("commentary-on-romans", "Commentary on Romans", "john-calvin",
+              "ccel", "calvin/calcom38", group_parts=True,
+              subtitle="Translated by John Owen", cover_color="#4a3b2a",
+              skip=("Translator's Preface", "Translation of Romans")),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

@@ -1,0 +1,342 @@
+{
+ "kind": "sermon",
+ "slug": "homily-on-the-paralytic",
+ "language": "fr",
+ "job_issue": 6267,
+ "references": [
+  {
+   "reference": "John 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:31-32",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Sirach 2:1-4",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 25:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "John 5:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 8:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 9:1-2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 7:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 15:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Chronicles 6:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 40:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "John 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "John 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Mark 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 9:4-5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 8:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 8:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 9:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Timothy 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 6:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 6:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 12:36",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

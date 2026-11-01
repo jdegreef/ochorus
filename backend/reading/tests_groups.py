@@ -2,6 +2,7 @@
 count that could be turned back into what one person did (``reading.groups``)."""
 
 from datetime import UTC, datetime, timedelta
+from unittest import mock
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -14,6 +15,10 @@ from reading.models import PlanProgress, ReadingGroup, ReadingGroupMember
 
 User = get_user_model()
 PLAN = "school-of-prayer"
+#: Read once, at import, and pinned as the server's date for every test below
+#: (`setUp`). Left to the clock, a run that crossed midnight UTC set up a
+#: group on one date and asked the view about it on the next, so "Day 4" moved
+#: under the test (CI, 2026-10-31 00:05 UTC: `None != 5`).
 TODAY = datetime.now(UTC).date()
 #: A daily group three days in: today is Day 4.
 START = TODAY - timedelta(days=3)
@@ -31,6 +36,9 @@ def _reader(n: int):
 
 class ReadingGroupTests(TestCase):
     def setUp(self):
+        clock = mock.patch("reading.views._utc_today", return_value=TODAY)
+        clock.start()
+        self.addCleanup(clock.stop)
         plan = Plan.objects.create(slug=PLAN, title="With Christ in the School of Prayer")
         PlanDay.objects.bulk_create(
             PlanDay(plan=plan, day=d, book_slug="school-of-prayer", chapter_order=d) for d in range(1, 11)

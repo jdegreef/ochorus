@@ -1,0 +1,214 @@
+{
+ "kind": "sermon",
+ "slug": "intercession-every-christians-duty",
+ "language": "fr",
+ "job_issue": 6261,
+ "references": [
+  {
+   "reference": "Acts 9:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 67:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Mark 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Numbers 12:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Daniel 10:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Psalm 106:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 39
+  },
+  {
+   "reference": "Philippians 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "1 Thessalonians 5:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 42
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

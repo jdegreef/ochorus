@@ -18,7 +18,25 @@
         "john-chrysostom",
         "augustine-of-hippo",
         "john-cassian",
-        "gregory-the-great"
+        "gregory-the-great",
+        "cyril-of-jerusalem",
+        "boethius",
+        "basil-of-caesarea",
+        "gregory-of-nazianzus",
+        "justin-martyr",
+        "clement-of-alexandria",
+        "gregory-of-nyssa",
+        "tertullian",
+        "irenaeus-of-lyons",
+        "origen-of-alexandria",
+        "eusebius-of-caesarea",
+        "lactantius",
+        "minucius-felix",
+        "polycarp",
+        "hermas",
+        "theophilus-of-antioch",
+        "hippolytus-of-rome",
+        "jerome"
       ]
     },
     {
@@ -32,7 +50,10 @@
         "teresa-of-avila",
         "brother-lawrence",
         "jeanne-guyon",
-        "william-law"
+        "william-law",
+        "francis-de-sales",
+        "catherine-of-siena",
+        "ignatius-of-loyola"
       ]
     },
     {
@@ -43,7 +64,8 @@
         "richard-baxter",
         "john-owen",
         "thomas-watson",
-        "john-bunyan"
+        "john-bunyan",
+        "john-flavel"
       ]
     },
     {
@@ -96,7 +118,10 @@
         "arthur-t-pierson",
         "john-hyde",
         "martyn-lloyd-jones",
-        "timothy-keller"
+        "timothy-keller",
+        "samuel-rutherford",
+        "thomas-boston",
+        "william-guthrie"
       ]
     },
     {
@@ -109,7 +134,8 @@
         "erica-sabiti",
         "festo-kivengere",
         "john-stott",
-        "janani-luwum"
+        "janani-luwum",
+        "william-wilberforce"
       ]
     },
     {
@@ -238,7 +264,12 @@
         "gladys-aylward",
         "derek-prince",
         "john-stott",
-        "helen-roseveare"
+        "helen-roseveare",
+        "jeremy-taylor",
+        "philip-doddridge",
+        "john-henry-newman",
+        "william-wilberforce",
+        "john-flavel"
       ]
     },
     {
@@ -250,7 +281,11 @@
         "david-livingstone",
         "george-macdonald",
         "alexander-maclaren",
-        "mary-slessor"
+        "mary-slessor",
+        "henry-scougal",
+        "samuel-rutherford",
+        "thomas-boston",
+        "william-guthrie"
       ]
     },
     {
@@ -274,7 +309,14 @@
         "gregory-the-great",
         "anselm-of-canterbury",
         "teresa-of-avila",
-        "corrie-ten-boom"
+        "corrie-ten-boom",
+        "catherine-of-siena",
+        "ignatius-of-loyola",
+        "boethius",
+        "minucius-felix",
+        "hermas",
+        "hippolytus-of-rome",
+        "jerome"
       ]
     },
     {
@@ -286,7 +328,9 @@
         "john-calvin",
         "brother-lawrence",
         "blaise-pascal",
-        "jeanne-guyon"
+        "jeanne-guyon",
+        "francis-de-sales",
+        "irenaeus-of-lyons"
       ]
     },
     {
@@ -385,7 +429,11 @@
         "athanasius-of-alexandria",
         "monica-of-hippo",
         "augustine-of-hippo",
-        "josephine-bakhita"
+        "josephine-bakhita",
+        "clement-of-alexandria",
+        "tertullian",
+        "origen-of-alexandria",
+        "lactantius"
       ]
     },
     {
@@ -402,7 +450,15 @@
         "dora-yu",
         "mary-stone",
         "sadhu-sundar-singh",
-        "watchman-nee"
+        "watchman-nee",
+        "cyril-of-jerusalem",
+        "basil-of-caesarea",
+        "gregory-of-nazianzus",
+        "justin-martyr",
+        "gregory-of-nyssa",
+        "eusebius-of-caesarea",
+        "polycarp",
+        "theophilus-of-antioch"
       ]
     }
   ]

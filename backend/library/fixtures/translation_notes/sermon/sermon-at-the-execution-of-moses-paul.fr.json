@@ -1,0 +1,96 @@
+{
+  "kind": "sermon",
+  "slug": "sermon-at-the-execution-of-moses-paul",
+  "language": "fr",
+  "job_issue": 6286,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Romans 6:23",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 4
+    },
+    {
+      "reference": "John 1:11",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Isaiah 5:20",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "John 3:19",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "John 3:20",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "Psalm 58:4",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 20
+    },
+    {
+      "reference": "Romans 5:12",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 24
+    },
+    {
+      "reference": "Genesis 3:17",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 24
+    },
+    {
+      "reference": "Genesis 2:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 26
+    },
+    {
+      "reference": "Genesis 2:17",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 26
+    },
+    {
+      "reference": "Ephesians 2:1",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Genesis 32:10",
+      "status": "self_rendered",
+      "block_index": 38
+    },
+    {
+      "reference": "John 3:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 38
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 38
+    },
+    {
+      "reference": "Genesis 9:6",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 42
+    }
+  ]
+}

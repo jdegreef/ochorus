@@ -194,6 +194,7 @@
   "reader_layout_scroll": "Okuseerula",
   "reader_layout_page": "Olupapula",
   "reader_tap_scroll": "Nyiga okweyongerayo",
+  "reader_candlelight": "Ekitangaala ky'omumuli",
   "reader_search": "Noonya mu kitabo",
   "reader_search_placeholder": "Noonya mu kitabo kino…",
   "search_indexing": "Tutegeka okunoonya…",
@@ -1594,5 +1595,16 @@
   "together_counted": "Obalibwa mu muwendo gw’ekibiina",
   "together_count_stop": "Lekera awo okumbala",
   "together_count_me": "Mbala mu muwendo",
-  "together_count_sign_in_join": "Yingira obalibwe mu muwendo gw’ekibiina"
+  "together_count_sign_in_join": "Yingira obalibwe mu muwendo gw’ekibiina",
+  "daily_title": "Leero mu bitabo by’okusinza",
+  "daily_subtitle": "Ekisomebwa kya buli lunaku mu mwaka, okuva mu bitabo by’okusinza eby’edda",
+  "daily_see_all": "Ebisomebwa byonna ebya leero",
+  "daily_prev_day": "Olunaku oluyise",
+  "daily_next_day": "Olunaku oluddako",
+  "daily_back_to_today": "Ddayo ku leero",
+  "daily_in_context": "Soma mu kitabu",
+  "daily_missing_day": "Ekitabo kino tekirina kisomebwa kya lunaku luno, kale kino kye kya lunaku olwasooka.",
+  "daily_choose_date": "Londa olunaku",
+  "daily_none": "Tewannaba kubaawo bisomebwa bya buli lunaku mu lulimi luno.",
+  "daily_follow_plan": "Oba kigoberere ng’enteekateeka ey’omwaka gumu"
 }

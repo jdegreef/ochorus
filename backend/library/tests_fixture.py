@@ -79,6 +79,7 @@ from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
     DESIGNED_BY_SLUG,
+    ENGLISH_ON_GROUND,
     digest,
 )
 from library.ingest import (
@@ -614,9 +615,11 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_books import BOOK_FIELDS
         from library.models import Book
 
+        # search_vector is derived by save() (library/fts.py), like a chapter's.
         expected = self._content_fields(
             Book,
-            exclude={"id", "author", "series", "slug", "language", "created_at", "updated_at"},
+            exclude={"id", "author", "series", "slug", "language", "created_at",
+                     "updated_at", "search_vector"},
         )
         self.assertEqual(set(BOOK_FIELDS), expected)
 
@@ -759,6 +762,36 @@ class CopyrightBlockedTests(SimpleTestCase):
             "these editions of a copyright-blocked work are published — set "
             "is_published: false (corrections.COPYRIGHT_BLOCKED_SLUGS; no "
             "translation of these may ship without the rights holder's permission)",
+        )
+
+
+class NoPublishedPlateTests(SimpleTestCase):
+    """No published edition wears a flat generated plate (`/covers/…/<slug>.svg`).
+
+    The plate was the placeholder look: a colour gradient and an emblem. By
+    Batch 30 (2026-11-01) every published book had been levelled up to a
+    painting, a drawn original or a designed cover, but imports kept landing
+    new plates because nothing said no. A new book now gets its painting in the
+    same PR (`scripts/paint_covers.py <slug>` works on a fresh fixture with an
+    empty `cover_url`; see the `level-up-cover` skill). An unpublished row may
+    keep its plate until it ships.
+    """
+
+    def test_no_published_book_wears_a_plate(self):
+        plates = sorted(
+            f"{f.get('slug')}.{f.get('language')}"
+            for rows in files_by_path().values()
+            for row in rows
+            if row.get("model") == "library.book"
+            and (f := row.get("fields", {})).get("is_published", True)
+            and (f.get("cover_url") or "").endswith(".svg")
+        )
+        self.assertEqual(
+            plates,
+            [],
+            "these published editions still wear a flat plate cover — paint "
+            "them (`scripts/paint_covers.py <slug>`, the level-up-cover skill) "
+            "or leave them is_published: false until they have art",
         )
 
 
@@ -1115,7 +1148,7 @@ class ChapterQuestionsShapeTests(SimpleTestCase):
                         f"{path.name} ch.{c['order']}",
                         count=(2, 5),
                     )
-        self.assertGreaterEqual(books, 10)  # the ten young-reader editions
+        self.assertGreaterEqual(books, 10)  # the young-reader editions, and a few adult books
 
     def test_family_devotions_read_only_chapters_that_ask(self):
         # Each card promises "three questions to talk about together", so every
@@ -1838,7 +1871,12 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
-        from library.covers import DARK_INK, DARK_INK_BOXES, INK_DARK
+        from library.covers import (
+            DARK_INK,
+            DARK_INK_BOXES,
+            DARK_INK_BOXES_BY_SLUG,
+            INK_DARK,
+        )
 
         self.assertTrue(DARK_INK_BOXES, "covers.DARK_INK_BOXES is empty")
 
@@ -1856,7 +1894,7 @@ class CoverAssetTests(SimpleTestCase):
             path = art_dir / f"{slug}.jpg"
             self.assertTrue(path.exists(), f"{slug}: no ground at covers/art/")
             plate = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-            for name, box, opacity, bar in DARK_INK_BOXES:
+            for name, box, opacity, bar in DARK_INK_BOXES_BY_SLUG.get(slug, DARK_INK_BOXES):
                 worst = 1e9
                 for px in plate.crop(box).getdata():
                     ink = tuple(round(d * opacity + c * (1 - opacity)) for d, c in zip(DARK_INK, px, strict=True))
@@ -1960,7 +1998,8 @@ class CoverAssetTests(SimpleTestCase):
         — that edition is a coloured slab again while its siblings carry the
         photograph. And if the ENGLISH row were ever repointed at the ground, the
         work would silently lose the hand-made cover this whole tier was built to
-        preserve.
+        preserve — unless it is in `ENGLISH_ON_GROUND`, the deliberate list of
+        designed covers too small to keep, whose English wears the ground too.
         """
         # `test_cover_files_exist` would also catch a missing ground, but only
         # once a row points at it. This catches the state in between — added to
@@ -1980,10 +2019,12 @@ class CoverAssetTests(SimpleTestCase):
             if slug not in DERIVED_GROUND:
                 continue
             # The Modern English edition is English too, so it keeps the
-            # designed file rather than the wordless ground.
+            # designed file rather than the wordless ground — unless the work
+            # is in ENGLISH_ON_GROUND, whose designed file survives only at
+            # thumbnail size and whose English wears the ground too.
             expected = (
                 DESIGNED_BY_SLUG[slug]
-                if is_english_edition(f["language"])
+                if is_english_edition(f["language"]) and slug not in ENGLISH_ON_GROUND
                 else art_url(slug)[0]
             )
             if _cover(f) != expected:
@@ -1991,7 +2032,8 @@ class CoverAssetTests(SimpleTestCase):
         self.assertEqual(
             wrong, [],
             "a derived-ground work wearing the wrong cover — English wears the "
-            "designed file, every other language wears /covers/art/<slug>.jpg "
+            "designed file (the ground, for ENGLISH_ON_GROUND), every other "
+            "language wears /covers/art/<slug>.jpg "
             "(run `uv run python scripts/localize_covers.py`)",
         )
 
@@ -2155,9 +2197,10 @@ class CoverAssetTests(SimpleTestCase):
             slug, language, cover = f["slug"], f.get("language"), _cover(f)
             if slug not in CURATED_GROUND:
                 continue
-            wants = (
-                DESIGNED_BY_SLUG[slug] if is_english_edition(language) else art_url(slug)[0]
-            )
+            # ENGLISH_ON_GROUND: a designed cover too small to keep, so English
+            # wears the painting as well (humility-2, 2026-11-01).
+            english_designed = is_english_edition(language) and slug not in ENGLISH_ON_GROUND
+            wants = DESIGNED_BY_SLUG[slug] if english_designed else art_url(slug)[0]
             if cover != wants:
                 wrong.append((slug, language, cover, wants))
         self.assertEqual(
@@ -2635,20 +2678,14 @@ class PlanTranslationCoverageTests(SimpleTestCase):
                 )
 
     def test_every_creatable_plan_row_has_its_own_prose(self):
-        from library.management.commands.seed_plans import (
-            CURATED_PLANS,
-            LAUNCH_PLANS,
-        )
-        from library.plan_seed import plan_sources
+        from library.plan_seed import all_plan_sources
         from library.plan_translations import plan_translations
 
-        # (plan slug, the works it needs) for both plan kinds.
-        needs = [(p[0], [("book", p[1])]) for p in LAUNCH_PLANS]
-        for p in CURATED_PLANS:
-            books, articles = plan_sources(p[3])
-            needs.append(
-                (p[0], [("book", b) for b in books] + [("article", a) for a in articles])
-            )
+        # (plan slug, the works it needs) for every plan kind.
+        needs = [
+            (slug, [("book", b) for b in books] + [("article", a) for a in articles])
+            for slug, (books, articles) in all_plan_sources().items()
+        ]
 
         missing = sorted(
             f"{language}/{slug}"
@@ -3159,9 +3196,9 @@ class PlanTranslationFileTests(SimpleTestCase):
         self.assertEqual(bad, [], "\n".join(bad))
 
     def test_every_slug_names_a_real_plan(self):
-        from library.management.commands.seed_plans import CURATED_PLANS, LAUNCH_PLANS
+        from library.plan_seed import all_plan_sources
 
-        known = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        known = set(all_plan_sources())
         bad = [
             f"{lang}.json:{slug}"
             for lang, entries in self.raw.items()
@@ -3171,7 +3208,7 @@ class PlanTranslationFileTests(SimpleTestCase):
         self.assertEqual(
             bad,
             [],
-            "These entries name no plan in LAUNCH_PLANS or CURATED_PLANS, so "
+            "These entries name no plan in plan_seed (all_plan_sources), so "
             "seed_plans will never look them up and the prose is dead:\n  "
             + "\n  ".join(bad),
         )

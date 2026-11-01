@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "a-hidden-fire",
+ "language": "lg",
+ "job_issue": 2808,
+ "references": [],
+ "note": [
+  "A Hidden Fire quotes no scripture verbatim; its Bible allusions (Exodus 33:18, Psalm 63:1, 2 Corinthians 12:2 and 12:8, Philippians 3:12, Acts 2:4, 1 John 1:7, Luke 14:28) are paraphrase in the English and are rendered as prose using OLCB vocabulary, so there are no mined rows.",
+  "Names follow the shipped lg corpus (tukutendereza.lg, the simeon-nsibambi lg bio): Simeon Nsibambi, Eva Bakaluba, Blasio Kigozi, Joe Church, Gahini, Namirembe, Abalokole, Okuzuukuka kw’Afirika ey’Obuvanjuba.",
+  "This book (like tukutendereza.en) says Nsibambi led his younger brother Blasio Kigozi to faith; the shipped tukutendereza.lg appears to say the reverse (‘yamuleeta mu kukkiriza’) and may want checking.",
+  "AI-translated (job #2808); tag sequence identical to the English per chapter; awaiting native review."
+ ]
+}

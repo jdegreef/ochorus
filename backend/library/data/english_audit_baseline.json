@@ -20,8 +20,18 @@
   "a-serious-call": {
    "space-before-punct": 9
   },
+  "abiding-in-love": {
+   "space-before-punct": 2
+  },
   "against-eutropius": {
    "lost-paragraphing": 1
+  },
+  "against-marcion": {
+   "lost-paragraphing": 2,
+   "orphan-close-quote": 8
+  },
+  "against-the-arians": {
+   "lost-paragraphing": 21
   },
   "all-things-for-good": {
    "orphan-close-quote": 2,
@@ -34,6 +44,15 @@
   "are-you-forgiven": {
    "orphan-close-quote": 2
   },
+  "as-thy-days-so-shall-thy-strength-be": {
+   "word-fusion": 1
+  },
+  "asking-in-christs-name": {
+   "lost-paragraphing": 1
+  },
+  "at-the-bush": {
+   "space-before-punct": 1
+  },
   "at-the-masters-feet": {
    "space-before-punct": 2
   },
@@ -41,14 +60,26 @@
    "orphan-close-quote": 1,
    "space-before-punct": 5
   },
+  "blessed-trust": {
+   "space-before-punct": 2
+  },
   "bondage-of-the-will": {
    "orphan-close-quote": 2
+  },
+  "brave-encouragements": {
+   "space-before-punct": 2
+  },
+  "caleb-a-green-old-age": {
+   "space-before-punct": 1
   },
   "catholic-spirit": {
    "space-before-punct": 2
   },
   "cheque-book": {
    "space-before-punct": 1
+  },
+  "christ-in-the-covenant": {
+   "orphan-close-quote": 1
   },
   "christ-precious-to-believers": {
    "space-before-punct": 1
@@ -58,6 +89,12 @@
   },
   "christian-charity": {
    "orphan-close-quote": 1
+  },
+  "christs-peace": {
+   "word-fusion": 1
+  },
+  "church-history": {
+   "orphan-close-quote": 3
   },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
@@ -70,6 +107,9 @@
   "comfort-for-the-desponding": {
    "orphan-close-quote": 2
   },
+  "commentary-on-romans": {
+   "orphan-close-quote": 1
+  },
   "communion-with-god": {
    "orphan-close-quote": 1
   },
@@ -77,12 +117,23 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 1
   },
-  "david-livingstone-a-life": {
-   "word-fusion": 1
+  "continual-sunshine": {
+   "space-before-punct": 2
+  },
+  "dialogue-with-trypho": {
+   "anachronism": 1,
+   "lost-paragraphing": 48,
+   "orphan-close-quote": 1
+  },
+  "divine-calls": {
+   "space-before-punct": 2
   },
   "divine-healing": {
    "orphan-close-quote": 3,
    "space-before-punct": 11
+  },
+  "elijahs-weakness-and-its-cure": {
+   "space-before-punct": 2
   },
   "enchiridion": {
    "orphan-close-quote": 2
@@ -92,6 +143,13 @@
   },
   "ever-increasing-faith": {
    "orphan-close-quote": 2
+  },
+  "exhortation-to-the-heathen": {
+   "space-before-punct": 5,
+   "word-fusion": 1
+  },
+  "expository-thoughts-on-matthew": {
+   "orphan-close-quote": 13
   },
   "faith-and-assurance": {
    "space-before-punct": 2
@@ -103,8 +161,7 @@
    "lost-paragraphing": 1
   },
   "foxes-book-of-martyrs": {
-   "hyphen-space": 1,
-   "word-fusion": 1
+   "hyphen-space": 1
   },
   "free-grace": {
    "orphan-close-quote": 1
@@ -123,6 +180,9 @@
   "godliness": {
    "space-before-punct": 9
   },
+  "gods-way-of-peace": {
+   "orphan-close-quote": 7
+  },
   "grace-abounding": {
    "space-before-punct": 9,
    "word-fusion": 1
@@ -130,13 +190,30 @@
   "grace-for-grace-2": {
    "space-before-punct": 6
   },
+  "heroic-faith": {
+   "space-before-punct": 4
+  },
   "himself": {
    "space-before-punct": 1
   },
   "holiness": {
    "orphan-close-quote": 2,
-   "space-before-punct": 4,
+   "space-before-punct": 4
+  },
+  "holy-dying": {
+   "lost-paragraphing": 4
+  },
+  "homilies-on-matthew": {
+   "orphan-close-quote": 11,
    "word-fusion": 1
+  },
+  "homilies-on-romans": {
+   "lost-paragraphing": 3,
+   "orphan-close-quote": 3
+  },
+  "homilies-on-the-first-epistle-of-john": {
+   "lost-paragraphing": 6,
+   "orphan-close-quote": 2
   },
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1
@@ -155,10 +232,19 @@
   "if": {
    "space-before-punct": 5
   },
+  "indwelling-sin-in-believers": {
+   "lost-paragraphing": 1
+  },
   "institutes-of-the-christian-religion": {
    "orphan-close-quote": 1,
    "space-before-punct": 5,
    "stray-parens": 1
+  },
+  "into-thy-hands": {
+   "space-before-punct": 6
+  },
+  "introduction-to-the-devout-life": {
+   "lost-paragraphing": 1
   },
   "jesus-himself-2": {
    "space-before-punct": 2
@@ -170,8 +256,14 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 4
   },
+  "joy-and-peace-in-believing": {
+   "space-before-punct": 3
+  },
   "justification-by-grace": {
    "orphan-close-quote": 1
+  },
+  "large-catechism": {
+   "hyphen-space": 2
   },
   "lectures-to-my-students": {
    "orphan-close-quote": 1,
@@ -186,6 +278,14 @@
   },
   "letters-and-minor-works": {
    "space-before-punct": 1
+  },
+  "letters-of-jerome": {
+   "lost-paragraphing": 4,
+   "orphan-close-quote": 2
+  },
+  "letters-of-samuel-rutherford": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
   },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
@@ -205,9 +305,11 @@
   "men-of-prayer-2": {
    "space-before-punct": 1
   },
+  "messiah-suffering-and-wounded-for-us": {
+   "space-before-punct": 7
+  },
   "morning-by-morning": {
-   "space-before-punct": 1,
-   "word-fusion": 1
+   "space-before-punct": 1
   },
   "mortification-of-sin": {
    "space-before-punct": 1
@@ -219,8 +321,21 @@
   "no-one-can-harm-the-man-who-does-not-injure-himself": {
    "lost-paragraphing": 1
   },
+  "old-testament-types-and-teachings": {
+   "orphan-close-quote": 6
+  },
+  "on-christian-doctrine": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 4
+  },
+  "on-first-principles": {
+   "orphan-close-quote": 2
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
+  },
+  "on-the-holy-spirit": {
+   "lost-paragraphing": 12
   },
   "on-the-incarnation": {
    "space-before-punct": 2
@@ -228,11 +343,17 @@
   "on-the-priesthood": {
    "lost-paragraphing": 1
   },
+  "on-the-trinity": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
+  "one-antidote-for-many-ills": {
+   "orphan-close-quote": 1
+  },
   "our-daily-walk": {
    "hyphen-space": 1,
    "orphan-close-quote": 8,
-   "space-before-punct": 7,
-   "word-fusion": 1
+   "space-before-punct": 7
   },
   "our-duty-to-israel": {
    "orphan-close-quote": 1
@@ -242,9 +363,6 @@
   },
   "paradise-lost": {
    "hyphen-space": 1,
-   "word-fusion": 1
-  },
-  "pensees": {
    "word-fusion": 1
   },
   "pilgrims-progress": {
@@ -273,8 +391,8 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
-  "provincial-letters": {
-   "word-fusion": 1
+  "proslogium-monologium-cur-deus-homo": {
+   "orphan-close-quote": 1
   },
   "purity-of-heart": {
    "orphan-close-quote": 1,
@@ -282,6 +400,15 @@
   },
   "reality-and-religion": {
    "space-before-punct": 2
+  },
+  "refutation-of-all-heresies": {
+   "word-fusion": 1
+  },
+  "rejoice-evermore": {
+   "space-before-punct": 2
+  },
+  "religion-pleasant-to-the-religious": {
+   "space-before-punct": 8
   },
   "religious-affections": {
    "orphan-close-quote": 6,
@@ -298,10 +425,10 @@
    "space-before-punct": 11
   },
   "selected-sermons-whitefield": {
-   "hyphen-space": 2,
+   "hyphen-space": 1,
    "lost-paragraphing": 2,
    "orphan-close-quote": 14,
-   "space-before-punct": 15,
+   "space-before-punct": 12,
    "welded-footnote": 5
   },
   "sermons-on-several-occasions": {
@@ -315,6 +442,9 @@
   },
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
+  },
+  "sorrow-turned-into-joy": {
+   "space-before-punct": 1
   },
   "spurgeon-on-prayer": {
    "lost-paragraphing": 1,
@@ -332,12 +462,31 @@
    "hyphen-space": 1,
    "word-fusion": 1
   },
+  "temporal-advantages": {
+   "space-before-punct": 2
+  },
   "ten-commandments": {
    "orphan-close-quote": 1,
    "space-before-punct": 8
   },
+  "tertullian-on-prayer": {
+   "lost-paragraphing": 3
+  },
+  "the-angels-message-and-song": {
+   "space-before-punct": 2
+  },
+  "the-apology-of-tertullian": {
+   "lost-paragraphing": 37
+  },
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4
+  },
+  "the-art-of-divine-contentment": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
+  "the-beatitudes": {
+   "orphan-close-quote": 1
   },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
@@ -346,11 +495,20 @@
   "the-boundless-sufficiency": {
    "space-before-punct": 2
   },
+  "the-burden-bearing-god": {
+   "space-before-punct": 4
+  },
+  "the-child-prophet": {
+   "space-before-punct": 4
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
   },
   "the-christian-temper-supernatural-and-divine": {
    "space-before-punct": 2
+  },
+  "the-christians-great-interest": {
+   "orphan-close-quote": 9
   },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23
@@ -358,15 +516,52 @@
   "the-circumcision-of-the-heart": {
    "space-before-punct": 1
   },
+  "the-city-and-river-of-god": {
+   "space-before-punct": 4
+  },
+  "the-city-of-god": {
+   "orphan-close-quote": 3,
+   "space-before-punct": 10,
+   "word-fusion": 2
+  },
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
   },
+  "the-consolation-of-philosophy": {
+   "space-before-punct": 3
+  },
+  "the-death-of-death-in-the-death-of-christ": {
+   "lost-paragraphing": 2,
+   "word-fusion": 1
+  },
+  "the-deeper-christian-life": {
+   "orphan-close-quote": 3
+  },
+  "the-dew-and-the-plants": {
+   "space-before-punct": 3
+  },
+  "the-dialogue-of-catherine-of-siena": {
+   "lost-paragraphing": 30
+  },
+  "the-divine-institutes": {
+   "word-fusion": 2
+  },
   "the-dying-thief": {
+   "word-fusion": 1
+  },
+  "the-epistles-of-cyprian": {
+   "lost-paragraphing": 1,
    "word-fusion": 1
   },
   "the-everlasting-man": {
    "lost-paragraphing": 3,
    "word-fusion": 4
+  },
+  "the-first-apology": {
+   "lost-paragraphing": 13
+  },
+  "the-first-beatitude": {
+   "space-before-punct": 6
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -376,6 +571,15 @@
   },
   "the-gospel-of-healing": {
    "space-before-punct": 13
+  },
+  "the-great-catechism": {
+   "lost-paragraphing": 28
+  },
+  "the-heavenly-workers-and-the-earthly-watchers": {
+   "space-before-punct": 2
+  },
+  "the-hexaemeron": {
+   "orphan-close-quote": 2
   },
   "the-imitation-of-christ": {
    "orphan-close-quote": 4,
@@ -390,18 +594,52 @@
    "run-together": 4,
    "space-before-punct": 1
   },
+  "the-instructor": {
+   "orphan-close-quote": 3,
+   "word-fusion": 2
+  },
+  "the-journal-of-john-wesley": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 2
+  },
+  "the-joy-bringer": {
+   "space-before-punct": 2
+  },
   "the-joy-of-the-lord": {
    "space-before-punct": 1
+  },
+  "the-life-of-god-in-the-soul-of-man": {
+   "orphan-close-quote": 1
+  },
+  "the-light-of-the-world-maclaren": {
+   "space-before-punct": 2
+  },
+  "the-lord-is-risen-indeed": {
+   "space-before-punct": 5
+  },
+  "the-lords-prayer": {
+   "orphan-close-quote": 1
+  },
+  "the-love-of-the-departing-christ": {
+   "space-before-punct": 6
+  },
+  "the-love-that-constrains": {
+   "space-before-punct": 2
   },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
    "space-before-punct": 11
   },
   "the-method-of-grace": {
-   "lost-paragraphing": 1
+   "lost-paragraphing": 1,
+   "space-before-punct": 3,
+   "word-fusion": 1
   },
   "the-normal-christian-life": {
    "orphan-close-quote": 2
+  },
+  "the-octavius": {
+   "lost-paragraphing": 26
   },
   "the-person-and-work-of-the-holy-spirit": {
    "orphan-close-quote": 4
@@ -418,8 +656,23 @@
   "the-practical-hope-of-the-lords-coming": {
    "space-before-punct": 2
   },
+  "the-praying-christ": {
+   "space-before-punct": 1
+  },
+  "the-rest-giver": {
+   "space-before-punct": 2
+  },
+  "the-rise-and-progress-of-religion-in-the-soul": {
+   "orphan-close-quote": 1
+  },
   "the-saint-and-his-saviour": {
    "orphan-close-quote": 1
+  },
+  "the-saints-everlasting-rest": {
+   "lost-paragraphing": 5
+  },
+  "the-satisfier-of-all-desires": {
+   "space-before-punct": 2
   },
   "the-school-of-faith": {
    "space-before-punct": 4
@@ -427,15 +680,32 @@
   "the-scripture-way-of-salvation": {
    "space-before-punct": 1
   },
+  "the-search-that-always-finds": {
+   "space-before-punct": 4
+  },
   "the-secret-of-guidance": {
-   "space-before-punct": 12,
-   "word-fusion": 1
+   "space-before-punct": 12
   },
   "the-secret-of-tranquillity": {
    "space-before-punct": 2
   },
+  "the-shepherd-of-hermas": {
+   "lost-paragraphing": 6
+  },
   "the-sinners-friend": {
    "space-before-punct": 2
+  },
+  "the-sources-of-hope": {
+   "space-before-punct": 2
+  },
+  "the-theological-orations": {
+   "orphan-close-quote": 1
+  },
+  "the-toiling-christ": {
+   "space-before-punct": 2
+  },
+  "the-two-covenants": {
+   "orphan-close-quote": 1
   },
   "the-use-of-money": {
    "orphan-close-quote": 2,
@@ -444,9 +714,18 @@
   "the-way-to-god": {
    "space-before-punct": 12
   },
+  "the-wearied-christ": {
+   "space-before-punct": 2
+  },
   "the-witness-of-the-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
+  },
+  "the-witness-of-the-spirit-maclaren": {
+   "space-before-punct": 2
+  },
+  "the-writing-on-gods-hands": {
+   "space-before-punct": 2
   },
   "till-he-come": {
    "orphan-close-quote": 4,
@@ -464,16 +743,37 @@
    "space-before-punct": 9
   },
   "unspoken-sermons": {
-   "word-fusion": 2
+   "word-fusion": 1
+  },
+  "waiting-and-singing": {
+   "space-before-punct": 4
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
+  },
+  "what-life-may-be-made": {
+   "space-before-punct": 2
+  },
+  "what-proves-gods-love": {
+   "space-before-punct": 2
+  },
+  "what-the-bible-teaches": {
+   "orphan-close-quote": 3
+  },
+  "when-the-oil-flows": {
+   "space-before-punct": 2
+  },
+  "who-is-the-rich-man-that-shall-be-saved": {
+   "orphan-close-quote": 1
   },
   "with-and-without-christ": {
    "space-before-punct": 6
   },
   "women-who-moved-heaven-2": {
    "space-before-punct": 1
+  },
+  "working-for-god": {
+   "space-before-punct": 4
   }
  }
 }

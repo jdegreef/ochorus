@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (every published book is now painted — see "Done so far"; new books and unpublished plates still use this). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -211,6 +211,12 @@ prerendered pages reference it.
   `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
   container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
 
+- **Rebasing a CSS change picks up STALE twins silently** (title fit, 2026-10-29). After a
+  `cover-type.css` change redraws every twin, a rebase over sibling PRs brings in THEIR new
+  twins, drawn with the old CSS — and the merged manifest's `css` digest is yours, so
+  `og:covers` calls them unchanged and nothing fails. After the rebase, delete every twin
+  `git diff --name-only <old-base> <new-base> -- 'frontend/static/covers/**/*.png'` lists,
+  re-run `og:covers`, the tuner and `og:covers` again, and re-copy `export_covers`.
 - **The `fonts` digest also moves with local `node_modules`** (a fontsource version
   differing from the last committer's), same symptom: every twin redrawn. Same cure —
   keep the manifest (its new `fonts` value, so the NEXT run doesn't repeat it) + your
@@ -249,6 +255,10 @@ prerendered pages reference it.
 - **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
   the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
   is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
+- **A scan too small to fill 600×800 is refused** (`_crop_3x4` raises "too small …
+  without enlarging it", 2026-11-01). It means the collection served a thumbnail (the
+  Met's `primaryImageSmall` fallback, CMA's `web` size) or an `inset` cut a small scan
+  smaller. Pick another painting or a larger scan — don't lower the bar.
 - **Met image CDN needs a User-Agent**: `curl` without `-A "Mozilla/5.0"` on
   `images.metmuseum.org` saves a ~1.3 KB error body named `.jpg`.
 - **A cover that looks bad may be the AUTHOR LAYOUT, not the art.** Check
@@ -349,6 +359,19 @@ prerendered pages reference it.
   mid-tone, bright elements above the title or below the lowest subtitle, clear of
   the mark box.
 
+- **Wikimedia can refuse a cloud session's shared egress outright** (Batch 26,
+  2026-10-27): Commons/Wikidata `api.php` answered 429 for 25+ minutes straight, and
+  `build_curated_covers` re-verifies EVERY listed `wikidata` entry live on each run — so
+  one throttled item stops the whole `paint_covers` call at stage 2, and stage 4 then
+  refuses while any CURATED ground is missing. Source from Met/Cleveland in a cloud
+  session (no throttle seen), or land the Wikidata picks from a machine Wikimedia lets
+  through. SPARQL (`query.wikidata.org`) kept answering and is fine for *searching*.
+- **Playwright's browser build ≠ the container's** — `og:covers` dies "Executable doesn't
+  exist at …chromium_headless_shell-NNNN" in a cloud container whose pre-installed build
+  is older. Don't `npx playwright install` there: point a scratch
+  `PLAYWRIGHT_BROWSERS_PATH` at symlinks named for the wanted build
+  (`chromium_headless_shell-NNNN -> /opt/pw-browsers/chromium_headless_shell-MMMM`), then
+  run `paint_covers`'s remaining stages by hand (`covers:bars`, `og:covers`, tune, `og:covers`).
 - **`tune_art_scrim` re-tunes OTHER books whose ground has drifted.** It re-measures
   every `covers/art/*.jpg`, so a book whose committed value no longer matches its
   measurement changes too (seen 2026-10-13: `he-holds-my-tomorrows` 0.70→0.65), and the
@@ -528,6 +551,8 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 - **Order for a NEW book's original ground (Tell Me the Story 8–9, 10-14):** `build_cover_assets` reads the committed FIXTURES (`book_editions()`), not the DB — serialize the book's fixture FIRST or it writes 0 variants for the new slug. Then `tune_art_scrim`: a full run once silently omitted the new slug — always `grep <slug> library/art_scrim.py` after, and if missing run `tune_art_scrim.py <slug>`. Only THEN `npm run og:covers` (the twin bakes the scrim; drawing it before the tune leaves a stale twin). Set `cover_url` straight to `/covers/art/<slug>.jpg` in the build command — no plate, so no svg to delete.
 
 ## Done so far
+**Batch 30 (#6936, 2026-11-01) painted the last published plates.** `tests_fixture.NoPublishedPlateTests`
+now fails any published edition on a `.svg` plate, so a new import ships with its painting.
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
 Van Gogh → Courbet so his two 1889 cypress Van Goghs no longer pair; wash/sage kept),
@@ -554,6 +579,29 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
+Batch 26 (2026-10-27, Met + Cleveland): Luther ×4 (Leypold, Dahl, Friedrich, his pupil
+Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 on his rail
+(J. Martin, Hackert, H. Robert). Batch 27 (2026-10-29, Met + Cleveland) took the last
+fourteen painted plates: Owen ×2, Torrey ×2, Murray, Moody, Bunyan, Baxter, Watson, Calvin,
+Teresa, Anselm, Gregory, Wheatley. The Original `faithful-with-little` (5 langs) then got
+a drawn ORIGINAL_GROUND (the widow's two coins), since replaced (2026-10-31) by a CURATED
+painting, Georges Michel's plowed field (Met 437079). That photograph keeps a black mat and
+the canvas's brown lip round the picture: `Artwork.inset` (0.07) cuts it off every side
+before the 3:4 crop; check a new painting's EDGES at 1:1 for the same band.
+After Batch 27 NO published book wore a plate — until the next day's imports brought 30 more
+(Batch 28, 2026-10-31: the Fathers, Owen ×4, Taylor ×2, de Sales ×2, Chrysostom ×2, Justin ×2,
+Calvin, Newman, Wesley's Journal, Doddridge, Scougal, Loyola, Ryle). `import_ochorus` and
+the add-a-book flow still land books on plates, so this tier refills; that is why there is
+no "no published plate" gate. Check the census (`cover_url` ending `.svg`,
+`is_published`) at the start of every run. And build the slug list from the batch's own
+block: a regex over everything after a batch marker also catches `CURATED_GROUND` below
+it, `paint_covers` then refuses, and a cleanup loop over that list deleted
+`prayer-the-pulse-of-life.png`, a DESIGNED cover (restored from git; the digest gate
+would have failed the build). Never `rm` a twin path without asking `is_designed`. In a cloud container (root), headless Chromium needs
+`--no-sandbox`: point `CHROME` at a scratch wrapper that adds it, never edit the script.
+A diagonal (Torrey) shows only the UPPER third of the ground — pick for the sky or
+summits (Bierstadt), not for a subject at the foot. And check a still life's corners
+for the painter's signature: Preyer's sat bottom-right until `focus` cropped it off.
 Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
 #2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
 bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).

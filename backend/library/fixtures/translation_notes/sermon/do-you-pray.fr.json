@@ -1,0 +1,309 @@
+{
+ "kind": "sermon",
+ "slug": "do-you-pray",
+ "language": "fr",
+ "job_issue": 6272,
+ "references": [
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 14:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Proverbs 14:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 59
+  },
+  {
+   "reference": "James 5:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 70
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "Acts 8:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 83
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 83
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 83
+  },
+  {
+   "reference": "Matthew 25:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 84
+  },
+  {
+   "reference": "Revelation 6:16",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 91
+  },
+  {
+   "reference": "Psalm 119:113",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 97
+  },
+  {
+   "reference": "Ecclesiastes 5:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Job 40:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 98
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 101
+  },
+  {
+   "reference": "Daniel 9:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 103
+  },
+  {
+   "reference": "Psalm 119:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 104
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Joshua 7:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalm 81:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 109
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

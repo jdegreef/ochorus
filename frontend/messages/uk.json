@@ -194,6 +194,7 @@
   "reader_layout_scroll": "Прокручування",
   "reader_layout_page": "Сторінки",
   "reader_tap_scroll": "Торкніться, щоб гортати",
+  "reader_candlelight": "Світло свічки",
   "reader_search": "Пошук у книзі",
   "reader_search_placeholder": "Шукати в цій книзі…",
   "search_indexing": "Готуємо пошук…",
@@ -1594,5 +1595,16 @@
   "together_counted": "Вас враховано в підсумках групи",
   "together_count_stop": "Не рахувати мене",
   "together_count_me": "Рахувати мене в підсумках",
-  "together_count_sign_in_join": "Увійдіть, щоб вас рахували в підсумках групи"
+  "together_count_sign_in_join": "Увійдіть, щоб вас рахували в підсумках групи",
+  "daily_title": "Сьогодні в щоденних читаннях",
+  "daily_subtitle": "Читання на кожен день року з класичних книг для щоденних роздумів",
+  "daily_see_all": "Усі читання на сьогодні",
+  "daily_prev_day": "Попередній день",
+  "daily_next_day": "Наступний день",
+  "daily_back_to_today": "Повернутися до сьогодні",
+  "daily_in_context": "Читати в книзі",
+  "daily_missing_day": "У цій книзі немає читання на цю дату, тож ось читання попереднього дня.",
+  "daily_choose_date": "Вибрати дату",
+  "daily_none": "Цією мовою ще немає щоденних читань.",
+  "daily_follow_plan": "Або читайте її як річний план"
 }

@@ -1,0 +1,607 @@
+{
+ "kind": "book",
+ "slug": "on-the-incarnation",
+ "language": "pt",
+ "job_issue": 6877,
+ "references": [
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 19:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 19:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 19:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Genesis 2:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Genesis 2:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 11:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 82:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalms 82:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 1:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 1:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 15:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "1 Timothy 6:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 2:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 1:25",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 45
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Ephesians 3:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Peter 2:22",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 51
+  },
+  {
+   "reference": "John 10:37",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 54
+  },
+  {
+   "reference": "John 10:38",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 54
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "Hebrews 2:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 60
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Acts 26:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 69
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Luke 10:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalms 24:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Luke 8:28",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 96
+  },
+  {
+   "reference": "Mark 1:24",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 96
+  },
+  {
+   "reference": "Isaiah 19:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Isaiah 8:4",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Matthew 1:23",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Matthew 2:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Numbers 24:17",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Numbers 24:5",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Numbers 24:6",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Numbers 24:7",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Isaiah 53:9",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Deuteronomy 28:66",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Jeremiah 11:19",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalms 22:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalms 22:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalms 22:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Romans 15:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Deuteronomy 28:66",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Isaiah 53:8",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Isaiah 35:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Isaiah 35:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Isaiah 35:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Isaiah 35:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Isaiah 65:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "John 9:32",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "John 9:33",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Romans 10:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Romans 10:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Daniel 9:24",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 117
+  },
+  {
+   "reference": "Daniel 9:25",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 117
+  },
+  {
+   "reference": "Genesis 49:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 120
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Matthew 11:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 120
+  },
+  {
+   "reference": "Psalms 107:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 120
+  },
+  {
+   "reference": "Psalms 118:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 120
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 126
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "Isaiah 2:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 156
+  },
+  {
+   "reference": "1 Corinthians 2:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 159
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 165
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 16:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 24:42",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 26:64",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 168
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 171
+  }
+ ]
+}

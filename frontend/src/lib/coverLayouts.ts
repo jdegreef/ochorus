@@ -118,6 +118,17 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * new volume cannot slip back into its author's layout.
  */
 export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
+	// Augustine's rail holds two sideways lines; this title runs to three, so it
+	// wears the framed composition instead.
+	'homilies-on-the-first-epistle-of-john': null,
+	// Chesterton's `fade` and MacDonald's `wash` pale the upper half for a drawn
+	// Original; these six now wear museum paintings, shown whole (Batch 32).
+	orthodoxy: null,
+	heretics: null,
+	'the-everlasting-man': null,
+	phantastes: null,
+	'unspoken-sermons': null,
+	'diary-of-an-old-soul': null,
 	'key-teachings-of-a-b-simpson': null,
 	'key-teachings-of-jonathan-edwards': null,
 	'key-teachings-of-richard-baxter': null,
@@ -173,7 +184,46 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'the-practice-of-the-presence-of-god-teens': null,
 	'the-pursuit-of-god-teens': null,
 	'the-secret-of-guidance-teens': null,
-	'the-way-to-god-teens': null
+	'the-way-to-god-teens': null,
+	// Young-reader editions whose TRANSLATIONS wear a ground cropped from the
+	// English designed cover (designed_covers.DERIVED_GROUND): framed with their
+	// edition line like the English, not the adult author's band, panel or rail
+	// (es « El progreso del peregrino (para jóvenes) » on Bunyan's band, am
+	// « ወደ ኋላ መለስ ብሎ ማየት (ለወጣቶች) » up Hudson Taylor's rail, 2026-11-01).
+	'a-retrospect-children': null,
+	'a-retrospect-teens': null,
+	'pilgrims-progress-children': null,
+	'pilgrims-progress-teens': null,
+	'talks-to-the-farmer-teens': null,
+	'the-life-of-trust-children': null,
+	'the-life-of-trust-teens': null,
+	// TYPE_TOP paintings (2026-10-29): held framed, so their type is set from
+	// the top, whatever layout their author may wear later.
+	'christ-the-healer': null,
+	'evangelization-of-the-world': null,
+	'ever-increasing-faith': null,
+	'first-principles-of-the-reformation': null,
+	'holiness': null,
+	'interior-castle': null,
+	'large-catechism': null,
+	'old-paths': null,
+	'practical-religion': null,
+	'religious-experience-and-journal': null,
+	'the-normal-christian-life': null,
+	'the-pursuit-of-god': null,
+	'things-as-they-are': null,
+	// Photographs from designed covers, worn in English since 2026-10-29
+	// (designed_covers.ENGLISH_ON_GROUND): framed like the designed covers they
+	// came from — the author's wash, band or diagonal fades or crops a photograph.
+	'humility-2': null,
+	'jesus-himself-2': null,
+	'lord-teach-us-to-pray-2': null,
+	'talks-to-the-farmer': null,
+	'the-masters-indwelling': null,
+	'the-person-and-work-of-the-holy-spirit': null,
+	// Drawn storybook ground (2026-10-30, curated_art.ORIGINAL_GROUND): framed,
+	// not Spurgeon's band.
+	'talks-to-the-farmer-children': null
 };
 
 /**
@@ -225,7 +275,23 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-c-s-lewis',
 	'key-teachings-of-george-macdonald',
 	'key-teachings-of-g-k-chesterton',
-	'key-teachings-of-elisabeth-elliot'
+	'key-teachings-of-elisabeth-elliot',
+	// Paintings whose subject stands in the middle of the cover and whose sky
+	// above it is calm: set from the top, the title leaves the subject clear
+	// (measured, then judged on the composed cover, 2026-10-29).
+	'christ-the-healer',
+	'evangelization-of-the-world',
+	'ever-increasing-faith',
+	'first-principles-of-the-reformation',
+	'holiness',
+	'interior-castle',
+	'large-catechism',
+	'old-paths',
+	'practical-religion',
+	'religious-experience-and-journal',
+	'the-normal-christian-life',
+	'the-pursuit-of-god',
+	'things-as-they-are'
 ]);
 
 /**
@@ -246,7 +312,11 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	'daughters-of-the-king-3',
 	'sons-of-the-king-1',
 	'sons-of-the-king-2',
-	'sons-of-the-king-3'
+	'sons-of-the-king-3',
+	// A sunset photograph whose sun stands where the title goes: its ground is
+	// drawn with the sun at full strength and a glow over the words
+	// (`designed_covers.DERIVED_GROUND`), so the type reads dark against light.
+	'soar-like-the-eagle-3'
 ]);
 
 /** Is this painted book set in dark ink? Never under a layout. */

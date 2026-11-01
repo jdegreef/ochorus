@@ -1,0 +1,239 @@
+{
+ "kind": "sermon",
+ "slug": "christ-crucified",
+ "language": "fr",
+ "job_issue": 6257,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:23-24",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 14:12",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:23-24",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 4:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 23:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 27:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 1:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts 9:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "John 20:16",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 20:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Matthew 22:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Acts 26:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Job 19:26",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 23:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 52
+  },
+  {
+   "reference": "Proverbs 1:4",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Ecclesiastes 11:9",
+   "status": "self_rendered",
+   "block_index": 66
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

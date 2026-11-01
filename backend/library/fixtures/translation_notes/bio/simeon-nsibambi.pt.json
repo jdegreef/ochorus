@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "simeon-nsibambi",
+ "language": "pt",
+ "job_issue": 5296,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

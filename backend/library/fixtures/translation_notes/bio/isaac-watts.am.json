@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "isaac-watts",
+ "language": "am",
+ "job_issue": 4240,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Jeremiah 12:1",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Hebrews 11:4",
+   "status": "self_rendered",
+   "block_index": 41
+  }
+ ]
+}

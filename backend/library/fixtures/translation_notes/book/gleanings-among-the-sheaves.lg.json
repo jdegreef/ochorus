@@ -1,0 +1,1326 @@
+{
+ "kind": "book",
+ "slug": "gleanings-among-the-sheaves",
+ "language": "lg",
+ "job_issue": 5126,
+ "references": [
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 13:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 3
+  },
+  {
+   "reference": "James 5:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 3
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalms 119:50",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 34:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Kings 17:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Kings 17:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Kings 17:9",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:25",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 13
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalms 107:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 18
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Peter 1:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 26
+  },
+  {
+   "reference": "Exodus 30:13",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 33
+  },
+  {
+   "reference": "Job 42:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 33
+  },
+  {
+   "reference": "Psalms 30:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 33
+  },
+  {
+   "reference": "2 Corinthians 1:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 35
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "2 Samuel 23:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 45
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 46
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Isaiah 51:9",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Psalms 46:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 47
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 48
+  },
+  {
+   "reference": "Zechariah 13:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 50
+  },
+  {
+   "reference": "Exodus 10:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 52
+  },
+  {
+   "reference": "Psalms 34:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 52
+  },
+  {
+   "reference": "Hosea 6:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 54
+  },
+  {
+   "reference": "Revelation 3:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 54
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 56
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 56
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 57
+  },
+  {
+   "reference": "Psalms 94:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 63
+  },
+  {
+   "reference": "Acts 14:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 65
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 69
+  },
+  {
+   "reference": "2 Timothy 2:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 69
+  },
+  {
+   "reference": "Acts 14:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 69
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 69
+  },
+  {
+   "reference": "1 Samuel 17:45",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 71
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 71
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Jude 1:3",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 12:3",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 73
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 75
+  },
+  {
+   "reference": "Exodus 10:26",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalms 139:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalms 92:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 75
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 80
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 85
+  },
+  {
+   "reference": "Psalms 115:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 85
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 86
+  },
+  {
+   "reference": "Isaiah 28:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 91
+  },
+  {
+   "reference": "Psalms 45:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 93
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 98
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 98
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 108
+  },
+  {
+   "reference": "Song of Songs 5:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 109
+  },
+  {
+   "reference": "Song of Songs 5:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 109
+  },
+  {
+   "reference": "Song of Songs 5:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 109
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 116
+  },
+  {
+   "reference": "1 John 3:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 118
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 118
+  },
+  {
+   "reference": "1 Timothy 5:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 118
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 120
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 123
+  },
+  {
+   "reference": "John 19:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 123
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Song of Songs 1:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 129
+  },
+  {
+   "reference": "Romans 9:23",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Isaiah 12:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 135
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 137
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 137
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 139
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 142
+  },
+  {
+   "reference": "Luke 14:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 142
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 142
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 149
+  },
+  {
+   "reference": "Psalms 34:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 149
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 155
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 155
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 155
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 157
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 159
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 161
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 165
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 165
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 171
+  },
+  {
+   "reference": "Psalms 87:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 171
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 174
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 176
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 180
+  },
+  {
+   "reference": "Psalms 110:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 180
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 182
+  },
+  {
+   "reference": "2 Samuel 23:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 188
+  },
+  {
+   "reference": "Psalms 103:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 188
+  },
+  {
+   "reference": "Psalms 103:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 188
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 190
+  },
+  {
+   "reference": "Habakkuk 3:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 192
+  },
+  {
+   "reference": "Habakkuk 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 192
+  },
+  {
+   "reference": "Psalms 21:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 194
+  },
+  {
+   "reference": "1 Peter 1:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 196
+  },
+  {
+   "reference": "1 Peter 1:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 196
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 196
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 196
+  },
+  {
+   "reference": "1 Peter 1:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 197
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 197
+  },
+  {
+   "reference": "1 Peter 1:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 198
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 200
+  },
+  {
+   "reference": "1 Samuel 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 212
+  },
+  {
+   "reference": "Genesis 48:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 212
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 212
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 215
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 215
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 219
+  },
+  {
+   "reference": "Isaiah 1:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 219
+  },
+  {
+   "reference": "Isaiah 1:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 219
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 221
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 223
+  },
+  {
+   "reference": "James 2:5",
+   "status": "self_rendered",
+   "block_index": 223
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 223
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 223
+  },
+  {
+   "reference": "Galatians 6:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 225
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 225
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 225
+  },
+  {
+   "reference": "Revelation 22:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 225
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "block_index": 229
+  },
+  {
+   "reference": "1 Peter 2:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 231
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 231
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 234
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 234
+  },
+  {
+   "reference": "1 Peter 2:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 236
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 236
+  },
+  {
+   "reference": "John 21:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 236
+  },
+  {
+   "reference": "Matthew 26:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 236
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 236
+  },
+  {
+   "reference": "Job 34:32",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 238
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 246
+  },
+  {
+   "reference": "Ecclesiastes 2:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 246
+  },
+  {
+   "reference": "Psalms 77:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 249
+  },
+  {
+   "reference": "Romans 11:20",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 251
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Mark 14:38",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 30:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 30:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 251
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 253
+  },
+  {
+   "reference": "Luke 10:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 253
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 253
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 266
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 266
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 266
+  },
+  {
+   "reference": "Psalms 77:10",
+   "status": "self_rendered",
+   "block_index": 268
+  },
+  {
+   "reference": "Song of Songs 7:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 268
+  },
+  {
+   "reference": "Nahum 1:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 270
+  },
+  {
+   "reference": "Deuteronomy 11:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 272
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 272
+  },
+  {
+   "reference": "Numbers 13:30",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 272
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 275
+  },
+  {
+   "reference": "Psalms 103:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 275
+  },
+  {
+   "reference": "Psalms 22:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 275
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 275
+  },
+  {
+   "reference": "Psalms 69:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 275
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "self_rendered",
+   "block_index": 280
+  },
+  {
+   "reference": "Isaiah 48:18",
+   "status": "self_rendered",
+   "block_index": 280
+  },
+  {
+   "reference": "John 14:22",
+   "status": "self_rendered",
+   "block_index": 280
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 280
+  },
+  {
+   "reference": "2 Corinthians 5:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 284
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 284
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 284
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 284
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 287
+  },
+  {
+   "reference": "1 Peter 1:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 289
+  },
+  {
+   "reference": "Colossians 1:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 289
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 289
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 289
+  },
+  {
+   "reference": "Job 21:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 291
+  },
+  {
+   "reference": "Psalms 13:3",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 291
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 293
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 293
+  },
+  {
+   "reference": "Deuteronomy 3:25",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 293
+  },
+  {
+   "reference": "Mark 8:36",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 300
+  },
+  {
+   "reference": "Matthew 13:42",
+   "status": "self_rendered",
+   "block_index": 300
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 302
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 302
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Revelation 3:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 302
+  },
+  {
+   "reference": "Ecclesiastes 7:6",
+   "status": "self_rendered",
+   "block_index": 315
+  },
+  {
+   "reference": "Job 19:28",
+   "status": "self_rendered",
+   "block_index": 315
+  },
+  {
+   "reference": "Psalms 103:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 319
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 321
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 323
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered",
+   "block_index": 325
+  },
+  {
+   "reference": "Psalms 107:23",
+   "status": "self_rendered",
+   "block_index": 332
+  },
+  {
+   "reference": "Psalms 107:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 332
+  },
+  {
+   "reference": "Romans 5:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 332
+  },
+  {
+   "reference": "Colossians 1:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 337
+  },
+  {
+   "reference": "Revelation 3:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 339
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 340
+  },
+  {
+   "reference": "Exodus 10:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 341
+  },
+  {
+   "reference": "1 John 5:19",
+   "status": "self_rendered",
+   "block_index": 343
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 343
+  },
+  {
+   "reference": "Philippians 3:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa",
+   "block_index": 343
+  }
+ ]
+}

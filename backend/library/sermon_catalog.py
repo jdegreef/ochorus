@@ -31,15 +31,23 @@ class SermonEntry:
     slug: str
     title: str
     author_slug: str  # canonical DB author slug (see AuthorListView / fixture)
-    source: str  # "ccel" | "gutenberg" | "web" | "sermonindex"
-    source_ref: str  # ccel/web/sermonindex: full URL of the page; gutenberg: ebook id
+    source: str  # "ccel" | "gutenberg" | "web" | "sermonindex" | "archive"
+    # ccel/web/sermonindex: full URL of the page; gutenberg: ebook id;
+    # archive: the archive.org identifier of the primary scan
+    source_ref: str
     section: str = ""  # gutenberg: the heading text of the sermon, at any level
     # gutenberg: the heading tag ("h1".."h4") to match, when `section` names
     # more than one heading (a volume titled after one of its studies).
     section_level: str = ""
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
-    body_starts: str = ""  # web: literal text the sermon's first paragraph starts with
+    body_starts: str = ""  # web/archive: literal text the sermon's first paragraph starts with
+    # archive (see library.archive_ocr): the words its Bible text begins with,
+    # the heading that follows the sermon, and other scans of the same edition
+    # to cross-check the OCR against.
+    text_starts: str = ""
+    ends_before: str = ""
+    alt_scans: tuple[str, ...] = ()
 
 
 # Authors that sermons may introduce before any of their books exist in the
@@ -63,6 +71,7 @@ _WHITEFIELD = "https://ccel.org/ccel/whitefield/sermons/"
 _EDWARDS = "https://ccel.org/ccel/edwards/sermons/"
 _NEWTON = "https://ccel.org/ccel/newton/"
 _MACLAREN = "https://ccel.org/ccel/maclaren/"
+_NPNF106 = "https://ccel.org/ccel/schaff/npnf106/"
 # SermonIndex speaker pages — one transcript per page. Full URL is
 # _SI + "<speaker-slug>/<sermon-slug>/".
 _SI = "https://sermonindex.net/speakers/"
@@ -1448,5 +1457,842 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "sinning-and-repenting", "Sinning and Repenting", "a-b-simpson", "sermonindex",
         _SI + "ab-simpson/sinning-and-repenting/", scripture_ref="Judges 2:14-19",
+    ),
+    # Spurgeon, batch 2 — the Pulpit as printed, with the Authorised Version he
+    # quoted. Most CCEL sermons from about 1862 on are a later digital text that
+    # modernised his Scripture ("all you that labor") and splits paragraphs at
+    # page breaks, so every pick was screened by KJV-archaism density first (see
+    # build_spirit_anthology). Sermons already gathered in Spurgeon on Prayer or
+    # Spurgeon on the Holy Spirit (The Throne of Grace, The Comforter, …) are
+    # left to those books. The Sin of Unbelief (No. 3) was read and dropped: it
+    # bids the hearer tell every Jew he meets that unbelief made him "murder
+    # Christ" and a homeless wanderer.
+    SermonEntry(
+        "a-faithful-friend",
+        "A Faithful Friend",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xiv.html",
+    ),
+    SermonEntry(
+        "prayer-the-forerunner-of-mercy",
+        "Prayer—the Forerunner of Mercy",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxii.html",
+    ),
+    SermonEntry(
+        "looking-unto-jesus",
+        "Looking Unto Jesus",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xxxi.html",
+    ),
+    SermonEntry(
+        "come-and-welcome",
+        "Come and Welcome",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.liv.html",
+    ),
+    SermonEntry(
+        "the-blood-of-the-everlasting-covenant",
+        "The Blood of the Everlasting Covenant",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.lii.html",
+    ),
+    SermonEntry(
+        "loves-logic",
+        "Love's Logic",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons17/sermons17.xli.html",
+    ),
+    # Its closing appeal quotes an enslaved man in minstrel dialect ("Massa, I
+    # fall flat on de promise"). Unpublished 2026-10, then republished
+    # unedited on the founder's decision (2026-11).
+    SermonEntry(
+        "healing-for-the-wounded",
+        "Healing for the Wounded",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.l.html",
+    ),
+    SermonEntry(
+        "a-simple-sermon-for-seeking-souls",
+        "A Simple Sermon for Seeking Souls",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxiv.html",
+    ),
+    SermonEntry(
+        "waiting-only-upon-god",
+        "Waiting Only Upon God",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxvii.html",
+    ),
+    SermonEntry(
+        "a-lecture-for-little-faith",
+        "A Lecture for Little-Faith",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xli.html",
+    ),
+    SermonEntry(
+        "prayer-answered-love-nourished",
+        "Prayer Answered, Love Nourished",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.xvii.html",
+    ),
+    SermonEntry(
+        "mr-fearing-comforted",
+        "Mr. Fearing Comforted",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.xxiii.html",
+    ),
+    SermonEntry(
+        "consolation-in-christ",
+        "Consolation in Christ",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons07/sermons07.i.html",
+    ),
+    # Middle tier, batch 1 — three each for M'Cheyne, Ryle, Maclaren and Moody,
+    # checked against their books for overlap (Maclaren has a fourth). Moody's two
+    # are from The Overcoming Life (PG 33015); two more were read and dropped —
+    # Wondrous Love's "The Blood" for the Jews' "honour of killing the Christian's
+    # God", and "Results of True Repentance" for a quoted illustration that makes
+    # Black skin the picture of sin; Ryle's are
+    # sermons he revised for The Upper Room (1888) — not "Let Any Man Come", which
+    # is Holiness ch. 18 again, nor "The Good Way" (a quarter is Old Paths ch. 15);
+    # M'Cheyne's are SermonIndex transcriptions of the 1840s printed text
+    # (KJV-dense, unlike its modernised Davies and Winslow pages).
+    SermonEntry(
+        "true-wisdom", "True Wisdom", "dwight-l-moody", "gutenberg", "33015",
+        section="TRUE WISDOM.",
+        scripture_ref="Daniel 12:3",
+    ),
+    SermonEntry(
+        "humility", "Humility", "dwight-l-moody", "gutenberg", "33015",
+        section="HUMILITY.",
+        scripture_ref="Matthew 11:29",
+    ),
+    SermonEntry(
+        "victory", "Victory", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.x.html",
+    ),
+    SermonEntry(
+        "to-whom", "To Whom?", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.xiii.html",
+    ),
+    SermonEntry(
+        "without-clouds", "Without Clouds", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.xvi.html",
+        scripture_ref="2 Samuel 23:4-5",
+    ),
+    SermonEntry(
+        "the-burden-bearing-god", "The Burden-Bearing God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xi.html", scripture_ref="Psalm 68:19",
+    ),
+    SermonEntry(
+        "thirsting-for-god", "Thirsting for God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxxii.html",
+        scripture_ref="Psalm 42:2",
+    ),
+    SermonEntry(
+        "let-us-have-peace", "Let Us Have Peace", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.ix.html",
+        scripture_ref="Romans 5:1",
+    ),
+    SermonEntry(
+        "christs-peace", "Christ's Peace", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxxvi.html", scripture_ref="John 14:27",
+    ),
+    SermonEntry(
+        "believers-not-ashamed", "Believers Not Ashamed", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/believers-not-ashamed/",
+        scripture_ref="Romans 1:15-17",
+    ),
+    SermonEntry(
+        "the-saviours-tears-over-the-lost", "The Saviour's Tears over the Lost",
+        "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-saviours-tears-over-the-lost/",
+        scripture_ref="Luke 19:41-42",
+    ),
+    SermonEntry(
+        "the-cry-for-revival", "The Cry for Revival", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-cry-for-revival/",
+        scripture_ref="Psalm 85:6",
+    ),
+    # New preachers, batch 1. F. W. Robertson from Gutenberg; Samuel Davies,
+    # Thomas Chalmers and Horatius Bonar from archive.org scans of the printed
+    # editions, since the only clean-looking copies online are modernised
+    # rewrites (SermonIndex's Davies quotes the NIV). The OCR is cleaned and
+    # cross-checked against other scans of the same edition (see
+    # library.archive_ocr): Davies, Sermons, vol. 1 (New York, 1864); Chalmers,
+    # Sermons and Discourses, vol. 2 (New York, 1844) — the St John's Church
+    # sermons; Bonar, Family Sermons (New York, 1863), one scan only.
+    SermonEntry(
+        "the-prodigal-and-his-brother", "The Prodigal and His Brother",
+        "frederick-w-robertson", "gutenberg", "16645",
+        section="XX. Preached February 21, 1853. THE PRODIGAL AND HIS BROTHER.",
+        scripture_ref="Luke 15:11-32", preached_on="1853-02-21",
+    ),
+    SermonEntry(
+        "victory-over-death", "Victory over Death", "frederick-w-robertson", "gutenberg", "16645",
+        section="XVII. Preached May 16, 1852. VICTORY OVER DEATH.",
+        scripture_ref="1 Corinthians 15:56-57", preached_on="1852-05-16",
+    ),
+    SermonEntry(
+        "the-power-of-sorrow", "The Power of Sorrow", "frederick-w-robertson", "gutenberg", "16645",
+        section="VIII. Preached June 30, 1850. THE POWER OF SORROW.",
+        scripture_ref="2 Corinthians 7:10", preached_on="1850-06-30",
+    ),
+    SermonEntry(
+        "sinners-entreated-to-be-reconciled-to-god", "Sinners Entreated to Be Reconciled to God",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="Now then we are ambassadors", body_starts="To preside in the solemnities",
+        ends_before="SERMON IV.", scripture_ref="2 Corinthians 5:20",
+    ),
+    SermonEntry(
+        "making-light-of-christ", "The Nature and Danger of Making Light of Christ",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="But they made light of it", body_starts="There is not one of us in this assembly",
+        ends_before="SERMON VIII.", scripture_ref="Matthew 22:5",
+    ),
+    SermonEntry(
+        "the-compassion-of-christ-to-weak-believers", "The Compassion of Christ to Weak Believers",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="A bruised reed shall he not break", body_starts="The Lord Jesus possesses all those virtues",
+        ends_before="SERMON IX.", scripture_ref="Matthew 12:20",
+    ),
+    SermonEntry(
+        "the-expulsive-power-of-a-new-affection", "The Expulsive Power of a New Affection",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="neither the things that are in the world", body_starts="There are two ways",
+        ends_before="SERMON III.", scripture_ref="1 John 2:15",
+    ),
+    SermonEntry(
+        "the-sure-warrant-of-a-believers-hope", "The Sure Warrant of a Believer's Hope",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="we were reconciled to God by the death", body_starts="St. Paul, who, by the way",
+        ends_before="SERMON IV.", scripture_ref="Romans 5:10",
+    ),
+    SermonEntry(
+        "the-transitory-nature-of-visible-things", "The Transitory Nature of Visible Things",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="are temporal", body_starts="The assertion that the things which are seen",
+        ends_before="SERMON VI.", scripture_ref="2 Corinthians 4:18",
+    ),
+    SermonEntry(
+        "faith-in-an-unseen-christ", "Faith in an Unseen Christ", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Blessed are they that have not seen",
+        body_starts="Here is another", ends_before="CONSECRATION BY BLOOD", scripture_ref="John 20:29",
+    ),
+    SermonEntry(
+        "a-present-saviour", "A Present Saviour", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="And knew not that it was Jesus",
+        body_starts="When Jesus comes the second time", ends_before="SERMON XXIX.",
+        scripture_ref="John 20:14",
+    ),
+    SermonEntry(
+        "the-vain-wish", "The Vain Wish", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="die the death of the righteous, and let my last end",
+        body_starts="We must not lose sight of the place", ends_before="SERMON XLVIII.",
+        scripture_ref="Numbers 23:10",
+    ),
+    # Spurgeon, batch 3 — the Pulpit as printed (1855–1860), screened as batch 2
+    # was: KJV-archaism density, no page-split damage, and text overlap with the
+    # library (Comfort Proclaimed and The Christian's Heaviness are 10–13%
+    # Gleanings among the Sheaves). Pages that end in a publisher's notice (The
+    # God of the Aged, Light at Evening Time) were passed over. Read and dropped:
+    # The God of Peace, which closes on the Tabernacle building fund, and The
+    # Meek and Lowly One, whose opening illustration caricatures Islam as spread
+    # by "decapitation or impalement"; A Mighty Saviour, whose main proof paints a
+    # "South Sea Islander" as a cannibal "very little removed from the brute";
+    # and Love's Commendation, for an anecdote told in caricatured Black dialect.
+    SermonEntry(
+        "consolation-proportionate-to-spiritual-sufferings",
+        "Consolation Proportionate to Spiritual Sufferings",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.xii.html",
+    ),
+    SermonEntry(
+        "the-desire-of-the-soul-in-spiritual-darkness",
+        "The Desire of the Soul in Spiritual Darkness",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.xxx.html",
+    ),
+    SermonEntry(
+        "salvation-to-the-uttermost",
+        "Salvation to the Uttermost",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons02/sermons02.xxx.html",
+    ),
+    SermonEntry(
+        "lovest-thou-me",
+        "Lovest Thou Me?",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xi.html",
+    ),
+    SermonEntry(
+        "heavenly-rest",
+        "Heavenly Rest",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxvii.html",
+    ),
+    SermonEntry(
+        "christ-lifted-up",
+        "Christ Lifted Up",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxiii.html",
+    ),
+    SermonEntry(
+        "fear-not",
+        "Fear Not",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xlviii.html",
+    ),
+    SermonEntry(
+        "as-thy-days-so-shall-thy-strength-be",
+        "As Thy Days, So Shall Thy Strength Be",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xlvi.html",
+    ),
+    SermonEntry(
+        "the-new-heart",
+        "The New Heart",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xlviii.html",
+    ),
+    SermonEntry(
+        "spiritual-peace",
+        "Spiritual Peace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons06/sermons06.xiv.html",
+    ),
+    SermonEntry(
+        "one-antidote-for-many-ills",
+        "One Antidote for Many Ills",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.lix.html",
+        # The Pulpit prints "Psalm 80:10"; the words are verse 19.
+        scripture_ref="Psalm 80:19",
+    ),
+    SermonEntry(
+        "the-treasure-of-grace",
+        "The Treasure of Grace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons06/sermons06.x.html",
+    ),
+    SermonEntry(
+        "thy-redeemer",
+        "Thy Redeemer",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xlix.html",
+    ),
+    # Alexander Maclaren, third batch: warm expositions from *Expositions of
+    # Holy Scripture* — comfort, prayer, the Christian life — screened with
+    # `screen_sermons`; judgment-centred titles left on the shelf. *The Fruit of
+    # the Spirit* (iicor_tim.ii.ii.viii) was dropped: its epigraph carries no
+    # scripRef link, so `extract` took an in-body reference as the masthead end
+    # and lost the first eight paragraphs.
+    SermonEntry(
+        "the-secret-of-immortal-youth", "The Secret of Immortal Youth", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xlix.html", scripture_ref="Isaiah 40:30-31",
+    ),
+    SermonEntry(
+        "the-writing-on-gods-hands", "The Writing on God's Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.iv.html", scripture_ref="Isaiah 49:16",
+    ),
+    SermonEntry(
+        "the-hiding-place", "The Hiding-Place", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxxiv.html", scripture_ref="Isaiah 32:2",
+    ),
+    SermonEntry(
+        "the-call-to-the-thirsty", "The Call to the Thirsty", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxiv.html", scripture_ref="Isaiah 55:1-13",
+    ),
+    SermonEntry(
+        "the-shepherd-king-of-israel", "The Shepherd King of Israel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xi.html", scripture_ref="Psalm 23:1-6",
+    ),
+    SermonEntry(
+        "into-thy-hands", "Into Thy Hands", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xx.html", scripture_ref="Psalm 31:5",
+    ),
+    SermonEntry(
+        "the-encamping-angel", "The Encamping Angel", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxiv.html", scripture_ref="Psalm 34:7",
+    ),
+    SermonEntry(
+        "the-fixed-heart", "The Fixed Heart", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.vi.html", scripture_ref="Psalm 57:7",
+    ),
+    SermonEntry(
+        "looking-to-the-hills", "Looking to the Hills", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxxviii.html", scripture_ref="Psalm 121:1-2",
+    ),
+    SermonEntry(
+        "the-true-vine", "The True Vine", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.ii.html", scripture_ref="John 15:1-4",
+    ),
+    SermonEntry(
+        "christs-friends", "Christ's Friends", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.vi.html", scripture_ref="John 15:14-17",
+    ),
+    SermonEntry(
+        "sorrow-turned-into-joy", "Sorrow Turned into Joy", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xv.html", scripture_ref="John 16:20-22",
+    ),
+    SermonEntry(
+        "the-praying-christ", "The Praying Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.ii.xliv.html", scripture_ref="Luke 11:1",
+    ),
+    SermonEntry(
+        "the-prodigal-and-his-father", "The Prodigal and His Father", "alexander-maclaren", "ccel",
+        _MACLAREN + "luke/luke.iii.ix.html", scripture_ref="Luke 15:11-24",
+    ),
+    SermonEntry(
+        "rejoice-evermore", "Rejoice Evermore", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.iii.i.iii.html", scripture_ref="Philippians 4:4",
+    ),
+    # John Henry Newman — his first sermons on the shelf, from *Parochial and
+    # Plain Sermons* VII–VIII (Gutenberg; newmanreader.org's text is under
+    # copyright). Practical holiness only: the volumes' sermons on baptism,
+    # church order and "the old paths" are left out. Each volume heads its
+    # sermons "SERMON VIII." at h2 (the contents repeat it at h4) and prints the
+    # title as the first paragraph, which the importer drops. Read in full and
+    # dropped for tone: *The Lapse of Time* (judgment its thrust), *Mental
+    # Prayer* (closes on hell for careless youth), *The Season of Epiphany* and
+    # *The Crucifixion* (bound to their day; the latter chides those who keep
+    # no Good Friday), *The Yoke of Christ*, *The Duty of Self-Denial*, *Doing
+    # Glory to God in Pursuits of the World* and *Love of Religion, a New
+    # Nature* (asides against "enthusiasts", "faith alone" and Dissenters).
+    SermonEntry(
+        "temporal-advantages", "Temporal Advantages", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON V.", section_level="h2", scripture_ref="1 Timothy 6:7-8",
+    ),
+    SermonEntry(
+        "religion-pleasant-to-the-religious", "Religion Pleasant to the Religious", "john-henry-newman", "gutenberg", "24256",
+        section="SERMON XIV.", section_level="h2", scripture_ref="Psalm 34:8",
+    ),
+    SermonEntry(
+        "divine-calls", "Divine Calls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON II.", section_level="h2", scripture_ref="1 Samuel 3:10",
+    ),
+    SermonEntry(
+        "jeremiah-a-lesson-for-the-disappointed", "Jeremiah, a Lesson for the Disappointed", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON IX.", section_level="h2", scripture_ref="Jeremiah 1:8",
+    ),
+    SermonEntry(
+        "the-shepherd-of-our-souls", "The Shepherd of Our Souls", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVI.", section_level="h2", scripture_ref="John 10:11",
+    ),
+    SermonEntry(
+        "religious-joy", "Religious Joy", "john-henry-newman", "gutenberg", "24284",
+        section="SERMON XVII.", section_level="h2", scripture_ref="Luke 2:10-11",
+    ),
+    # Batch 4 toward 400 (2026-11): warm sermons from authors already on the
+    # shelf, screened with `screen_sermons` and read in full against the tone
+    # rubric (sermon-import skill). John Newton, more of *Messiah* (the
+    # "Opposition to Messiah" sermons left out). Read and dropped: *The Great
+    # Shepherd* (ends denouncing idle clergy, with Leo X's "lucrative fable"),
+    # *The Intercession of Christ* and *Death Swallowed Up in Victory* (close on
+    # damnation; the latter also attacks universalism).
+    SermonEntry(
+        "messiahs-easy-yoke", "Messiah's Easy Yoke", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xvii.html", scripture_ref="Matthew 11:29-30",
+    ),
+    SermonEntry(
+        "the-angels-message-and-song", "The Angel's Message and Song", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xii.html", scripture_ref="Luke 2:8-14",
+    ),
+    SermonEntry(
+        "messiah-suffering-and-wounded-for-us", "Messiah Suffering and Wounded for Us", "john-newton", "ccel",
+        _NEWTON + "messiah1/messiah1.xxi.html", scripture_ref="Isaiah 53:4-5",
+    ),
+    SermonEntry(
+        "the-lord-is-risen-indeed", "The Lord Is Risen Indeed", "john-newton", "ccel",
+        _NEWTON + "messiah2/messiah2.xvi.html", scripture_ref="1 Corinthians 15:20",
+    ),
+    # Robert Murray M"Cheyne, from SermonIndex"s printed text (no Bible
+    # reference there, so each is set here). *Children Called to Christ* is a
+    # 152-word poem there, not a sermon. Read and dropped for tone: *Melting the
+    # Betrayer* (a warning to unworthy communicants throughout) and *Faith's
+    # View of Christ* ("many of you are going to hell").
+    SermonEntry(
+        "adoption", "Adoption", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/adoption/", scripture_ref="1 John 3:1",
+    ),
+    SermonEntry(
+        "grieve-not-the-holy-spirit", "Grieve Not the Holy Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/grieve-not-the-holy-spirit/", scripture_ref="Ephesians 4:30",
+    ),
+    SermonEntry(
+        "the-spirit-committed-to-god", "The Spirit Committed to God", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-spirit-commited-to-god/", scripture_ref="Psalm 31:5",
+    ),
+    SermonEntry(
+        "the-lords-dealings-with-his-people", "The Lord's Dealings with His People", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-lords-dealings-with-his-people/", scripture_ref="Isaiah 46:3-4",
+    ),
+    SermonEntry(
+        "thanksgiving-obtains-the-spirit", "Thanksgiving Obtains the Spirit", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/thanksgiving-obtains-the-spirit/", scripture_ref="2 Chronicles 5:13-14",
+    ),
+    # Horatius Bonar, more of *Family Sermons* (single scan; see archive_ocr).
+    # Only sermons complete in one part: the volume prints several as pairs.
+    # *Christ the Healer* is suffixed: A. B. Simpson's book holds the slug.
+    # *Nazareth and Its Good News* was dropped (grace "transformed into
+    # vengeance"; "the worst specimens of Israel").
+    SermonEntry(
+        "bethlehem-and-its-good-news", "Bethlehem and Its Good News", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="The Word was made flesh", body_starts="There was nothing great about Bethlehem", ends_before="SERMON II.", scripture_ref="John 1:14",
+    ),
+    SermonEntry(
+        "christ-the-healer-bonar", "Christ the Healer", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="If I may but touch his garment", body_starts="Here, we may say", ends_before="CHRIST THE CLEANSER", scripture_ref="Matthew 9:21",
+    ),
+    SermonEntry(
+        "christ-the-cleanser", "Christ the Cleanser", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He that is washed needeth not", body_starts="This washing of the disciples", ends_before="SERMON XIII.", scripture_ref="John 13:10",
+    ),
+    SermonEntry(
+        "bethany-and-its-feast", "Bethany and Its Feast", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Then Jesus, six days before the passover", body_starts="We find ourselves here at Bethany", ends_before="SERMON XLIV.", scripture_ref="John 12:1-3",
+    ),
+    SermonEntry(
+        "the-mortal-and-the-immortal", "The Mortal and the Immortal", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="Neither can they die any more", body_starts="Ours is a dying world", ends_before="LONGINGS FOR THE LAND", scripture_ref="Luke 20:36",
+    ),
+    SermonEntry(
+        "the-divine-banquet", "The Divine Banquet", "horatius-bonar", "archive",
+        "familysermons00bona", text_starts="He shall eat the bread of his God", body_starts="It is not easy to say whether", ends_before="SERMON XLIII.", scripture_ref="Leviticus 21:22",
+    ),
+    # Augustine, his first sermons on the shelf: *Sermons on Selected Lessons of
+    # the New Testament* (NPNF 1st series vol. 6, R. G. MacMullen's 1888
+    # translation, CCEL). Pastoral Gospel sermons only — those headed against
+    # the Donatists, Arians or Pelagians are left out, and four more were read
+    # and dropped: *The Boat in the Storm* (a section against docetic
+    # heretics), *Men Ought Always to Pray* and *Ask, and It Shall Be Given*
+    # (against the Pelagians; the latter closes on an alms appeal), and *The
+    # Friend at Midnight* (its last third answers pagan critics of the sack of
+    # Rome).
+    SermonEntry(
+        "peter-on-the-waves", "Peter on the Waves", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xxviii.html", scripture_ref="Matthew 14:25-31",
+    ),
+    SermonEntry(
+        "martha-and-mary", "Martha and Mary", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.lv.html", scripture_ref="Luke 10:38-42",
+    ),
+    SermonEntry(
+        "asking-in-christs-name", "Asking in Christ's Name", "augustine-of-hippo", "ccel",
+        _NPNF106 + "npnf106.vii.xcvii.html", scripture_ref="John 16:24",
+    ),
+    # Batch 5 toward 400 (2026-11): more of Maclaren's *Expositions* (John,
+    # Romans–Corinthians, Mark, Matthew, Genesis–Numbers, Acts), warm titles only,
+    # and Bonar's remaining single-part *Family Sermons* (*Christ and the World*
+    # and *The Three Witnesses* passed over as set against "the world").
+    # Two Maclaren titles are suffixed: Lloyd-Jones and Wesley hold the plain
+    # slugs, and an import would have written over their sermons. Dropped:
+    # Bonar's *Self or Christ* (ends on "the undying worm") and *The Church's
+    # Amen* (the last sermon in the book; the archive slice ran into another).
+    # Read in full and dropped for tone: Maclaren's *Guidance in the Way* (an
+    # anti-Catholic aside), *The Lost Sheep and the Seeking Shepherd* ("people
+    # with narrow foreheads"), *Tempest and Trust* (a "Jewish characteristic"),
+    # *Access into Grace* (Calvinism and "the liberties of Europe"); Bonar's
+    # *Christ and the New Creation* (a paragraph of hell) and *Longings for the
+    # Land* (closes "shall be damned").
+    SermonEntry(
+        "the-wearied-christ", "The Wearied Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxii.html", scripture_ref="John 4:6",
+    ),
+    SermonEntry(
+        "the-springing-fountain", "The Springing Fountain", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxv.html", scripture_ref="John 4:14",
+    ),
+    SermonEntry(
+        "the-light-of-the-world-maclaren", "The Light of the World", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xxxvi.html", scripture_ref="John 8:12",
+    ),
+    SermonEntry(
+        "the-delays-of-love", "The Delays of Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.xliv.html", scripture_ref="John 11:5-6",
+    ),
+    SermonEntry(
+        "the-love-of-the-departing-christ", "The Love of the Departing Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lv.html", scripture_ref="John 13:1",
+    ),
+    SermonEntry(
+        "many-mansions", "Many Mansions", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxv.html", scripture_ref="John 14:2",
+    ),
+    SermonEntry(
+        "the-absent-present-christ", "The Absent Present Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxxii.html", scripture_ref="John 14:18-19",
+    ),
+    SermonEntry(
+        "the-sources-of-hope", "The Sources of Hope", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xi.html", scripture_ref="Romans 5:2-4",
+    ),
+    SermonEntry(
+        "what-proves-gods-love", "What Proves God's Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xiii.html", scripture_ref="Romans 5:8",
+    ),
+    SermonEntry(
+        "the-witness-of-the-spirit-maclaren", "The Witness of the Spirit", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xviii.html", scripture_ref="Romans 8:16",
+    ),
+    SermonEntry(
+        "joy-and-peace-in-believing", "Joy and Peace in Believing", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xlii.html", scripture_ref="Romans 15:13",
+    ),
+    SermonEntry(
+        "looking-at-the-unseen", "Looking at the Unseen", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.iv.vi.html", scripture_ref="2 Corinthians 4:18",
+    ),
+    SermonEntry(
+        "the-love-that-constrains", "The Love that Constrains", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.iv.xi.html", scripture_ref="2 Corinthians 5:14",
+    ),
+    SermonEntry(
+        "christs-touch", "Christ's Touch", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.vii.html", scripture_ref="Mark 1:41",
+    ),
+    SermonEntry(
+        "the-secret-of-gladness", "The Secret of Gladness", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.x.html", scripture_ref="Mark 2:19",
+    ),
+    SermonEntry(
+        "the-looks-of-jesus", "The Looks of Jesus", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.xxvii.html", scripture_ref="Mark 5:32",
+    ),
+    SermonEntry(
+        "the-rest-giver", "The Rest Giver", "alexander-maclaren", "ccel",
+        _MACLAREN + "matt2/matt2.ii.xviii.html", scripture_ref="Matthew 11:28-29",
+    ),
+    SermonEntry(
+        "jehovah-jireh", "Jehovah-Jireh", "alexander-maclaren", "ccel",
+        _MACLAREN + "gen_num/gen_num.ii.i.xxix.html", scripture_ref="Genesis 22:14",
+    ),
+    SermonEntry(
+        "the-guiding-pillar", "The Guiding Pillar", "alexander-maclaren", "ccel",
+        _MACLAREN + "gen_num/gen_num.iii.iv.ii.html", scripture_ref="Numbers 9:16",
+    ),
+    # Batch 6 toward 400 (2026-11): more of Maclaren's *Expositions* — Psalms,
+    # Isaiah, John, Romans–Corinthians, the later Epistles, Mark — warm titles
+    # only, screened and read in full against the tone rubric. Read and dropped:
+    # nine, each for one aside or its close — on Jews (*Give Me to Drink*, *As I
+    # Have Loved*, *The Well-Spring of Salvation*), Roman Catholics (*Continual
+    # Prayer and Its Effects*), Islam (*The Warrior Peace*), other religions
+    # (*God's Yea; Man's Amen*), "the gipsy strain" (*Happy Pilgrims*), the
+    # Turkish government (*A Soul Gazing on God*), and a close on "outer
+    # darkness" (*What Men Find Beneath the Wings of God*).
+    SermonEntry(
+        "waiting-and-singing", "Waiting and Singing", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.vii.html", scripture_ref="Psalm 59:9",
+    ),
+    SermonEntry(
+        "blessed-trust", "Blessed Trust", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xvii.html", scripture_ref="Psalm 84:12",
+    ),
+    SermonEntry(
+        "continual-sunshine", "Continual Sunshine", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xx.html", scripture_ref="Psalm 89:15",
+    ),
+    SermonEntry(
+        "the-sheltering-wing", "The Sheltering Wing", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxii.html", scripture_ref="Psalm 91:4",
+    ),
+    SermonEntry(
+        "the-habitation-of-the-soul", "The Habitation of the Soul", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xxiii.html", scripture_ref="Psalm 91:9-10",
+    ),
+    SermonEntry(
+        "the-satisfier-of-all-desires", "The Satisfier of All Desires", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xliv.html", scripture_ref="Psalm 145:16",
+    ),
+    SermonEntry(
+        "hid-in-light", "Hid in Light", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxii.html", scripture_ref="Psalm 31:20",
+    ),
+    SermonEntry(
+        "the-city-and-river-of-god", "The City and River of God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxxvi.html", scripture_ref="Psalm 46:4-7",
+    ),
+    SermonEntry(
+        "the-rivers-of-god", "The Rivers of God", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxxvii.html", scripture_ref="Isaiah 33:21",
+    ),
+    SermonEntry(
+        "the-joy-bringer", "The Joy-Bringer", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxi.html", scripture_ref="Isaiah 61:3",
+    ),
+    SermonEntry(
+        "our-strong-city", "Our Strong City", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.i.xxi.html", scripture_ref="Isaiah 26:1-2",
+    ),
+    SermonEntry(
+        "the-way", "The Way", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxvii.html", scripture_ref="John 14:4-7",
+    ),
+    SermonEntry(
+        "abiding-in-love", "Abiding in Love", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.iv.html", scripture_ref="John 15:9-11",
+    ),
+    SermonEntry(
+        "our-ally", "Our Ally", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.ix.html", scripture_ref="John 15:26-27",
+    ),
+    SermonEntry(
+        "the-intercessor", "The Intercessor", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xxi.html", scripture_ref="John 17:1-19",
+    ),
+    SermonEntry(
+        "it-is-the-lord", "It Is the Lord!", "alexander-maclaren", "ccel",
+        _MACLAREN + "john2/john2.ii.xliii.html", scripture_ref="John 21:7",
+    ),
+    SermonEntry(
+        "the-gift-that-brings-all-gifts", "The Gift That Brings All Gifts", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.xxiv.html", scripture_ref="Romans 8:32",
+    ),
+    SermonEntry(
+        "strength-in-weakness", "Strength in Weakness", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.ii.i.x.html", scripture_ref="2 Corinthians 12:8-9",
+    ),
+    SermonEntry(
+        "how-to-say-thank-you", "How to Say 'Thank You'", "alexander-maclaren", "ccel",
+        _MACLAREN + "iicor_tim/iicor_tim.iii.i.vii.html", scripture_ref="Philippians 4:10-14",
+    ),
+    SermonEntry(
+        "the-toiling-christ", "The Toiling Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "mark/mark.ii.xxi.html", scripture_ref="Mark 4:36-38",
+    ),
+    SermonEntry(
+        "the-heavenly-workers-and-the-earthly-watchers", "The Heavenly Workers and the Earthly Watchers", "alexander-maclaren", "ccel",
+        _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxii.html", scripture_ref="Isaiah 62:1",
+    ),
+    # Batch 7 toward 400 (2026-11): Spurgeon's printed *New Park Street Pulpit*
+    # (1856–61) comfort and faith sermons, and Maclaren's Ezekiel–Matthew,
+    # 2 Kings–Ecclesiastes and Deuteronomy–Kings volumes; warm titles only.
+    # The 1860–61 Spurgeon picks (*Love to Jesus*, *Trust in God*, *The Shield of
+    # Faith*, *Bread for the Hungry*, *The Fullness of Christ Received*) were
+    # CCEL's modernised transcription (archaisms 3–15 per 10k, no -eth) and left.
+    # Read in full and dropped for tone, 17 of 30, each for an aside or its
+    # close: polemic against Arminians, Wesleyans, free-will preaching, heretics
+    # or denominations (*The Beatific Vision*, *The Plea of Faith*, *The Fainting
+    # Warrior*, *God in the Covenant*, *Weak Hands and Feeble Knees*, *Plenteous
+    # Redemption*); against Rome (*Our Father*, *God and His Saints*); on Jews or
+    # "heathen" (*The Third Beatitude*, *God the Joy-Bringer*, *The Fatherhood of
+    # God*, *Anxious Care*, *The River of Life*); "Red Indians" (*Shod for the
+    # Road*); closes on judgment or hell (*All Things Are Yours*, *The Afterwards
+    # and Our Hope*, *A Sense of Pardoned Sin*). The Spurgeon of 1856–59 fails
+    # the rubric far more often than Maclaren. A top-up of 12 Maclaren followed;
+    # six of those were dropped too ("Oriental craft", "wild Arabs", imperial
+    # mission, "pestilent old Jewish error", the Rabbis' "rubbish", communism).
+    # Two more were added to reach 400; *A Prophet's Strange Providers* ("the
+    # prejudices of Israel") was dropped from that final three.
+    SermonEntry(
+        "the-dew-and-the-plants", "The Dew and the Plants", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.iv.vii.html", scripture_ref="Hosea 14:5-6",
+    ),
+    SermonEntry(
+        "the-second-beatitude", "The Second Beatitude", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xvi.html", scripture_ref="Matthew 5:4",
+    ),
+    SermonEntry(
+        "our-knocking", "Our Knocking", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xlvi.html", scripture_ref="Matthew 7:7",
+    ),
+    SermonEntry(
+        "the-peace-bringer-in-the-spiritual-world", "The Peace-Bringer in the Spiritual World", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.lvii.html", scripture_ref="Matthew 8:28-34",
+    ),
+    SermonEntry(
+        "the-search-that-always-finds", "The Search that Always Finds", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.vi.html", scripture_ref="2 Chronicles 15:15",
+    ),
+    SermonEntry(
+        "holding-fast-and-held-fast", "Holding Fast and Held Fast", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.xi.html", scripture_ref="2 Chronicles 20:20",
+    ),
+    SermonEntry(
+        "keeping-and-kept", "Keeping and Kept", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.viii.html", scripture_ref="Proverbs 4:23",
+    ),
+    SermonEntry(
+        "the-peaceable-fruits-of-sorrows-rightly-borne", "The Peaceable Fruits of Sorrows Rightly Borne", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.viii.ii.html", scripture_ref="Job 5:17-27",
+    ),
+    SermonEntry(
+        "the-eagle-and-its-brood", "The Eagle and Its Brood", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.ii.viii.html", scripture_ref="Deuteronomy 32:11",
+    ),
+    SermonEntry(
+        "caleb-a-green-old-age", "Caleb—A Green Old Age", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.iii.xii.html", scripture_ref="Joshua 14:6-14",
+    ),
+    SermonEntry(
+        "elijahs-weakness-and-its-cure", "Elijah's Weakness, and Its Cure", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iii.xix.html", scripture_ref="1 Kings 19:1-18",
+    ),
+    SermonEntry(
+        "christ-in-the-covenant", "Christ in the Covenant", "charles-h-spurgeon", "ccel",
+        _CCEL + "sermons02/sermons02.xlix.html",
+    ),
+    SermonEntry(
+        "the-first-beatitude", "The First Beatitude", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xv.html", scripture_ref="Matthew 5:3",
+    ),
+    SermonEntry(
+        "brave-encouragements", "Brave Encouragements", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.x.ii.html", scripture_ref="Haggai 2:1-9",
+    ),
+    SermonEntry(
+        "what-life-may-be-made", "What Life May Be Made", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.viii.vi.html", scripture_ref="Job 22:26-29",
+    ),
+    SermonEntry(
+        "heroic-faith", "Heroic Faith", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.v.vi.html", scripture_ref="Ezra 8:22-23",
+    ),
+    SermonEntry(
+        "at-the-bush", "At the Bush", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.ii.xii.html", scripture_ref="Deuteronomy 33:16",
+    ),
+    SermonEntry(
+        "when-the-oil-flows", "When the Oil Flows", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iv.v.html", scripture_ref="2 Kings 4:6",
+    ),
+    SermonEntry(
+        "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
+    ),
+    SermonEntry(
+        "a-young-mans-best-counsellor", "A Young Man's Best Counsellor", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.i.html", scripture_ref="Proverbs 1:1-19",
+    ),
+    SermonEntry(
+        "gods-requirements-and-gods-gift", "God's Requirements and God's Gift", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.v.html", scripture_ref="Micah 6:8",
     ),
 ]

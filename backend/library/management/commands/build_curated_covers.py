@@ -419,7 +419,7 @@ def _artwork_image(art: Artwork) -> Path:
     return raw
 
 
-def _crop_3x4(src: Path, key: str, focus: float = 0.5) -> Path:
+def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0) -> Path:
     """Scale the artwork to COVER the 3:4 plate, then crop the overflow away.
 
     WHERE the crop is taken from is the artwork's own to say: `Artwork.focus`
@@ -448,14 +448,30 @@ def _crop_3x4(src: Path, key: str, focus: float = 0.5) -> Path:
     # `focus` is IN THE CACHE KEY. It changes the pixels, and the cache is
     # consulted before anything is drawn — leave it out and re-running after
     # adjusting a crop hands back the old one, silently, forever.
-    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}.jpg"
+    # `inset` likewise, when there is one.
+    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}{f'~{inset:.2f}' if inset else ''}.jpg"
     if out.exists():
         return out
     with Image.open(src) as im:
         # RGB explicitly: the collections serve the odd CMYK TIFF-derived JPEG
         # and a palettised PNG, and neither can be written as a JPEG as-is.
         im = im.convert("RGB")
+        if inset:
+            # Cut the mat / frame lip off every side first (`Artwork.inset`).
+            dx, dy = round(im.width * inset), round(im.height * inset)
+            im = im.crop((dx, dy, im.width - dx, im.height - dy))
         scale = max(W / im.width, H / im.height)
+        if scale > 1:
+            # Never ENLARGE a scan to fill the plate: an upscaled painting is
+            # soft on every phone, and nothing downstream can tell. It happens
+            # when a collection only serves a thumbnail (the Met's
+            # `primaryImageSmall` fallback, CMA's `web` size) or an `inset`
+            # cuts a small scan smaller. Pick another painting, or find a
+            # larger scan of this one.
+            raise CommandError(
+                f"{key}: the source is {im.width}x{im.height} after its inset, "
+                f"too small to fill a {W}x{H} cover without enlarging it."
+            )
         im = im.resize(
             (max(W, round(im.width * scale)), max(H, round(im.height * scale))),
             Image.LANCZOS,
@@ -536,7 +552,7 @@ class Command(BaseCommand):
             dest = COVERS_DIR / rel
             recipe = crop_recipe(art)
             keep = dest.exists() and not opts["force"] and ART_SOURCES.get(slug) == recipe
-            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus)
+            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus, art.inset)
 
             # ONE painting per work, with no type in it. Every language points at
             # this file and BookCover draws the title over it, so the reader

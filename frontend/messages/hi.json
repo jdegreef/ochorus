@@ -194,6 +194,7 @@
   "reader_layout_scroll": "स्क्रॉल",
   "reader_layout_page": "पृष्ठ",
   "reader_tap_scroll": "नीचे जाने के लिए टैप करें",
+  "reader_candlelight": "मोमबत्ती की रोशनी",
   "reader_search": "पुस्तक में खोजें",
   "reader_search_placeholder": "इस पुस्तक में खोजें…",
   "search_indexing": "खोज तैयार हो रही है…",
@@ -1594,5 +1595,16 @@
   "together_counted": "आप समूह की कुल संख्या में गिने जा रहे हैं",
   "together_count_stop": "मुझे गिनना बंद करें",
   "together_count_me": "मुझे कुल संख्या में गिनें",
-  "together_count_sign_in_join": "समूह की कुल संख्या में गिने जाने के लिए साइन इन करें"
+  "together_count_sign_in_join": "समूह की कुल संख्या में गिने जाने के लिए साइन इन करें",
+  "daily_title": "आज भक्ति-पुस्तकों में",
+  "daily_subtitle": "क्लासिक भक्ति-पुस्तकों से, वर्ष के हर दिन के लिए एक पाठ",
+  "daily_see_all": "आज के सभी पाठ",
+  "daily_prev_day": "पिछला दिन",
+  "daily_next_day": "अगला दिन",
+  "daily_back_to_today": "आज पर लौटें",
+  "daily_in_context": "पुस्तक में पढ़ें",
+  "daily_missing_day": "इस पुस्तक में इस तारीख़ का कोई पाठ नहीं है, इसलिए उससे पहले के दिन का पाठ यह है।",
+  "daily_choose_date": "तारीख़ चुनें",
+  "daily_none": "इस भाषा में अभी कोई दैनिक पाठ नहीं हैं।",
+  "daily_follow_plan": "या इसे एक वर्ष की योजना के रूप में पढ़ें"
 }

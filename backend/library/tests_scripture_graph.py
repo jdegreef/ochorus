@@ -212,6 +212,26 @@ class ChapterScriptureRowTests(TestCase):
         with self.assertNumQueries(1):
             pages_for(["Romans 8:28", "John 3:16", "Psalm 23:1", "Obadiah 1:3"])
 
+    def test_a_book_the_bibles_do_not_carry_gets_no_page(self):
+        """Cited past both floors, but the apocrypha have no text to show.
+
+        `qualifying_pages` never builds such a page, so a chip or inline link
+        to it is a 404 — Gregory's Pastoral Rule cites Ecclesiasticus 32 three
+        times, and the prerender failed on exactly that link.
+        """
+        from django.core.management import call_command
+
+        from .scripture_graph import pages_for
+
+        for i in range(VERSE_FLOOR + 1):
+            cite(self.book, 200 + i, "Ecclesiasticus 32:1")
+        call_command("index_citations", "--all", verbosity=0)
+        self.assertEqual(pages_for(["Ecclesiasticus 32:1"]), {"Ecclesiasticus 32:1": None})
+        for path in ("ecclesiasticus/32/", "ecclesiasticus/32/1/"):
+            with self.subTest(path=path):
+                res = self.client.get(f"/api/library/scripture/{path}")
+                self.assertEqual(res.status_code, 404)
+
     def test_a_translated_chapter_has_no_row(self):
         # Citations parse against English book names, and the pages they would
         # point at are English. A Spanish chapter with a stray English string

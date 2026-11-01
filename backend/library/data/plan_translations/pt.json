@@ -109,5 +109,80 @@
    "Job #5238 (epistles-of-ignatius → pt) adds this prose because the book backs the plan. Inácio de Antioquia and «no caminho do martírio» match the shipped pt edition of Ignatius (title «As Epístolas de Inácio e a história de sua vida», subtitle «Sete cartas no caminho do martírio»). The row cannot appear yet: first-epistle-of-clement and on-the-incarnation are not in Portuguese; whichever lands last brings the card live, and its translator should check that «A Encarnação do Verbo» matches that edition's title."
   ],
   "title": "Vozes da Igreja primitiva"
+ },
+ "anchored-two-months": {
+  "description": "Dois meses com Deus para leitores de 13 a 17 anos: os dois livros de Ancorados — «É verdade? Quem sou eu?» e «A vida real» —, uma devoção por dia sobre as perguntas sinceras da fé, quem você é em Cristo e como seguir Jesus em meio à preocupação, às telas, às amizades, à vida em casa e ao luto. Cada dia termina com a indicação de um capítulo de um clássico.",
+  "note": [
+   "Job #5695. AI-drafted ahead of the books; awaiting native review. anchored-1 and anchored-2 are not yet in pt, so seed_plans creates the (anchored-two-months, pt) row only once both are published here; their pt book jobs never write this shared file. The series name «Ancorados» and the two book descriptions («É verdade? Quem sou eu?», «A vida real») are translated here, as in the fr prose — align them with the pt editions when those ship."
+  ],
+  "title": "Ancorados: Dois Meses com Deus para Adolescentes"
+ },
+ "brave-for-god-24-true-stories": {
+  "description": "Três semanas e meia de histórias verdadeiras para jovens leitores, uma por dia: os quatro livros de Corajosos por Deus, vinte e quatro pessoas comuns de todas as partes do mundo que confiaram em Deus e foram feitas corajosas.",
+  "note": [
+   "Job #5696. AI-drafted ahead of the books; awaiting native review. brave-for-god and brave-for-god-2 are in pt; brave-for-god-3 and brave-for-god-4 are not yet, so seed_plans creates the (brave-for-god-24-true-stories, pt) row only once all four are published here. The series name follows the shipped pt editions («Corajosos por Deus», «Corajosos por Deus: Livro Dois»)."
+  ],
+  "title": "Corajosos por Deus: 24 Histórias Verdadeiras"
+ },
+ "waiting-on-god-trust": {
+  "title": "Esperando em Deus: uma vida de confiança",
+  "description": "Dez semanas na escola da confiança. Andrew Murray ensina a disciplina diária de esperar em Deus, F. B. Meyer revela o segredo de ser guiado por ele, e a assombrosa vida de fé de George Müller mostra o que essa confiança recebe.",
+  "note": [
+   "Queue job #5680: «A Vida de Confiança» completes this plan in pt (with «Esperando em Deus» and «O Segredo da Orientação Divina», both already live), so seed_plans creates the (waiting-on-god-trust, pt) row on the deploy that ships this PR. Title opens with the shipped pt title of its first book."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "O Coração Puritano",
+  "description": "Oito semanas com três mestres da vida interior. Richard Sibbes cuida da cana esmagada, John Owen trava guerra contra o pecado que ainda habita em nós, e Thomas Watson apoia toda a luta na promessa de que todas as coisas cooperam para o bem.",
+  "note": [
+   "Queue job #5705. «A Cana Esmagada» (the-bruised-reed) and «Todas as Coisas para o Bem» (all-things-for-good) are live in pt; mortification-of-sin is not yet, so seed_plans will not create the (the-puritan-heart, pt) row until it lands. Its translator should check this prose against that edition's title. «cooperam para o bem» echoes the Bíblia Livre / common pt wording of Rm 8:28."
+  ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "Devocionais em família: o menino de Osogun",
+  "description": "Doze noites de devocionais em família de cinco minutos com Samuel Ajayi Crowther, o menino iorubá vendido como escravo que cresceu e deu ao seu povo a Bíblia em sua própria língua. Leiam em voz alta um capítulo curto: o navio negreiro detido no mar, o dia em que ele reencontrou a mãe, o Pai-Nosso em iorubá para a Rainha e os escravos bondosos que o alimentaram quando ele era prisioneiro. Cada um termina com uma oração e três perguntas para conversarem juntos.",
+  "note": [
+   "Job #5697. AI-drafted ahead of the book; awaiting native review. samuel-ajayi-crowther-a-life-children is not yet in Portuguese, so seed_plans creates the (family-devotions-boy-from-osogun, pt) row only once it is published here; its pt book job never needs to write this shared file. The title follows the house pattern of «Devocionais em família: a jornada do peregrino»; Osogun and «iorubá» follow the pt corpus. Like the English, it describes the book rather than quoting its title."
+  ]
+ },
+ "they-were-young-two-weeks": {
+  "title": "Eles Eram Jovens: Duas Semanas de Histórias Verdadeiras",
+  "description": "Duas semanas de histórias verdadeiras para leitores de 13 a 17 anos: os dois livros de Eles Eram Jovens — Chamados e Provados —, uma vida por dia, de Spurgeon numa nevasca e Richard Allen em Delaware a Patrício, Perpétua e os Mártires de Uganda, cada uma terminando com perguntas para refletir.",
+  "note": [
+   "Job #5703. AI-drafted ahead of the books; awaiting native review. they-were-young-1 and they-were-young-2 are not yet in Portuguese, so seed_plans creates the (they-were-young-two-weeks, pt) row only once both are published here. The series name «Eles Eram Jovens» and the book names «Chamados» / «Provados» are translated here from the English (Called / Tested) — align them with the pt editions' titles when those ship. Patrício, Perpétua, Richard Allen, «nevasca» and «Mártires de Uganda» follow the pt corpus."
+  ]
+ },
+ "rooted-three-months-books-1-3": {
+  "title": "Enraizados: Três Meses com Deus — Livros 1–3",
+  "description": "Três meses com Deus para leitores de 9 a 12 anos: os três primeiros livros de Enraizados — Plantados, Seguindo Jesus e Dando Fruto —, uma devoção curta por dia sobre quem Deus é e as boas-novas de Jesus, caminhando com Ele da manjedoura ao túmulo vazio e cultivando o fruto do Espírito.",
+  "note": [
+   "Job #5704. AI-drafted; awaiting native review. rooted-1 and rooted-2 are in Portuguese; rooted-3 is not, so seed_plans creates the (rooted-three-months-books-1-3, pt) row only once it is published here. «Enraizados», «Plantados» and «Seguindo Jesus» and the phrase «da manjedoura ao túmulo vazio» follow the shipped pt editions (rooted-1.pt, rooted-2.pt); «Dando Fruto» for Book 3 (Growing Fruit) is translated here — align it with rooted-3.pt's subtitle when that ships."
+  ]
+ },
+ "new-to-the-faith": {
+  "title": "Novo na Fé",
+  "description": "Cinco semanas e meia para quem está apenas começando com Cristo. Charles Spurgeon vem ao seu encontro em «Junto à Porta Estreita» com a ajuda mais simples que existe para confiar em Jesus; depois R. A. Torrey, escrevendo para novos crentes, mostra como começar bem — a certeza da salvação, o Espírito Santo, a igreja, a Bíblia, a oração e o testemunho. Artigos curtos ao longo do caminho respondem às perguntas que todo novo cristão faz: o que é o evangelho, por que Jesus morreu, o que significam o batismo e a Ceia do Senhor, e como continuar crescendo.",
+  "note": [
+   "Queue job #5698. AI-drafted; awaiting native review. «Junto à Porta Estreita» is the shipped pt title of around-the-wicket-gate. how-to-succeed-in-the-christian-life has no pt edition yet, so seed_plans will not create the (new-to-the-faith, pt) row until it ships; its translator should check this prose against that edition's title."
+  ]
+ },
+ "faithful-with-little": {
+  "title": "Fiel no pouco: o dinheiro e o coração",
+  "description": "Três semanas com o que a Bíblia inteira diz sobre o dinheiro, um capítulo curto por dia. Tudo pertence a Deus; o coração por trás da carteira; o trabalho honesto, o planejamento e as dívidas; dar como Deus dá; e um tesouro que dura, com John Wesley, George Müller, Charles Spurgeon e A. W. Tozer ao longo do caminho. Cada dia termina com algo para praticar, e os trinta versículos-chave do livro oferecem um mês de leitura como complemento.",
+  "note": [
+   "The title quotes the shipped pt edition («Fiel no pouco») verbatim; the themes reuse its titles («Tudo pertence a Deus», «O coração por trás da carteira», «Um tesouro que dura»). Written with the plan (2026-10)."
+  ]
+ },
+ "days-of-heaven-upon-earth-year": {
+  "title": "Um ano com Dias de Céu na Terra",
+  "description": "O ano de devocionais diários de A. B. Simpson: um versículo e uma breve meditação sobre a plenitude de Cristo para cada dia. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Um ou dois minutos por dia."
+ },
+ "thoughts-for-the-quiet-hour-year": {
+  "title": "Um ano de Pensamentos para a Hora Tranquila",
+  "description": "A coletânea de leituras breves de D. L. Moody para o ano inteiro: um versículo e algumas linhas dos pregadores e escritores que ele amava. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Um minuto por dia."
+ },
+ "cheque-book-year": {
+  "title": "Um ano com O Livro de Cheques do Banco da Fé",
+  "description": "As promessas diárias de Charles Spurgeon: uma promessa de Deus para cada dia do ano, com uma breve palavra sobre como recebê-la pela fé. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Um ou dois minutos por dia."
  }
 }

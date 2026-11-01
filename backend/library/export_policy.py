@@ -185,6 +185,13 @@ EXPORT_PILOT = frozenset({
     ("watchman-nee-a-life-teens", "en"),
     ("real-questions-2", "en"),
     ("real-questions-3", "en"),
+    # Faithful With Little and its first four translations. An Ochorus Original;
+    # Scripture is the Open Word Bible (CC0), credited in each attribution.
+    ("faithful-with-little", "en"),
+    ("faithful-with-little", "es"),
+    ("faithful-with-little", "fr"),
+    ("faithful-with-little", "pt"),
+    ("faithful-with-little", "sw"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices

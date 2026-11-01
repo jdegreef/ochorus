@@ -9,7 +9,7 @@
 	import { loginHref } from '$lib/loginHref';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
+	import { theme, THEME_OPTIONS, DEFAULT_PREF } from '$lib/theme.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
 	import {
 		readerPrefs,
@@ -241,7 +241,7 @@
 		clearTimeout(resetTimer);
 		resetConfirm = false;
 		readerPrefs.reset();
-		theme.set('system');
+		theme.set(DEFAULT_PREF);
 		siteFont.set('house');
 		palette.set('parchment');
 	}

@@ -1,0 +1,291 @@
+{
+ "kind": "book",
+ "slug": "lord-teach-us-to-pray-2",
+ "language": "vi",
+ "job_issue": 6178,
+ "pull_request": null,
+ "note": [
+  "Scripture is Cadman’s Kinh Thánh (1925), pasted by script; John 4:23-24 follows Cadman’s bằng tâm thần và lẽ thật. The English marks some of Murray’s quotations with straight apostrophe entities; those places are mirrored as they stand.",
+  "AI-translated (job #6178); reader address bạn. The English source has several slips (e.g. “you cannot glorify” for can, “insincerity” for in sincerity, “For thy is the kingdom”), translated by their evident sense. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Job 36:22",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 4:22",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 4:21",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:33",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "John 7:37-38",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "John 16:7",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Galatians 4:6",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:17",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Matthew 6:10-13",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 11:27",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 17:26",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 76
+  }
+ ]
+}

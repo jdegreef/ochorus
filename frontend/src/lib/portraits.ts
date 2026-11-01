@@ -36,24 +36,29 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'arthur-t-pierson': '50% 10%', // 1886 engraving (Many Infallible Proofs); face at ~25% of a 0.77 plate
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
+	'basil-of-caesarea': '50% 0%', // 11th-c. mosaic, Hagia Sophia, Kiev, cropped to the bust; head at ~25% of a 0.82 plate
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
 	'bill-bright': '50% 5%', // 1980 bust photo; face at ~34% of a 0.75 plate
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
 	'blasio-kigozi': '50% 19%', // Ochorus scene (preaching on the hillside), figure from behind, no face
+	'boethius': '50% 0%', // 12th-c. manuscript drawing, cropped to the seated figure; head at ~25% of a 0.93 plate
 	'brother-lawrence': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'catherine-ferguson': '50% 0%', // Lossing 1855 engraving (from an 1850 daguerreotype); face at ~25% of a 0.75 plate
+	'catherine-of-siena': '50% 0%', // Tiepolo oil (c. 1746), oval plate; face at ~30% of a 0.78 plate
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
 	'christmas-evans': '50% 25%', // 1859 engraved frontispiece; face at ~40% of a 0.75 plate
+	'clement-of-alexandria': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~25% of a 0.78 plate
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'corrie-ten-boom': '50% 0%', // 1921 photo, hat; face at ~27% of a 0.63 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
+	'cyril-of-jerusalem': '50% 0%', // 14th-c. fresco icon, cropped to the figure; head at ~22% of a 0.80 plate
 	'david-brainerd': '50% 0%',
 	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
 	'derek-prince': '50% 5%', // studio bust; face at ~29% of a 0.71 plate
@@ -63,10 +68,12 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'elisabeth-elliot': '50% 20%', // Ochorus scene (writing by lamplight), figure from behind, no face
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
+	'eusebius-of-caesarea': '50% 10%', // Rabbula Gospels (586) figure cropped to the bust; face at ~22%
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
+	'francis-de-sales': '50% 0%', // Bussy-Rabutin portrait, cropped to the bust; face at ~33% of a 0.80 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
 	'gareth-evans': '50% 45%', // square source
@@ -75,17 +82,24 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'george-muller': '50% 37%',
 	'george-whitefield': '50% 0%',
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
+	'gregory-of-nazianzus': '50% 0%', // Chora fresco, cropped to the bust; head at ~18% of a 0.80 plate
+	'gregory-of-nyssa': '50% 0%', // 14th-c. icon, cropped to the bust; head at ~20% of a 0.93 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
+	'henry-scougal': '50% 0%', // University of Aberdeen oil; face at ~32% of a 0.84 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
+	'ignatius-of-loyola': '50% 30%', // 16th-c. head-and-shoulders oil; face at ~45% of a 0.83 plate — 45% cut the crown
+	'irenaeus-of-lyons': '50% 10%', // stained glass (Bégule, 1901) cropped to the bust; face at ~20% of a 0.68 crop
 	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert
 	'j-c-ryle': '50% 0%', // 1888 photograph: bust, face high at ~30% of a 0.70 plate
 	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
+	'jeremy-taylor': '50% 0%', // Eddis copy of the Bodleian oil; face at ~22% of a 0.80 plate
+	'jerome': '50% 15%', // Stom painting (17th c.) cropped to the head; face at ~25%
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
 	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
@@ -93,8 +107,10 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-flavel': '50% 0%', // Hopwood engraving cropped to the bust; face high in a 0.80 crop
 	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
+	'john-henry-newman': '50% 15%', // 1887 photograph: the face sits high in a half-length
 	'john-hyde': '50% 20%', // studio bust; face at ~40% of a 0.86 plate
 	'john-milton': '50% 30%', // c. 1629 portrait; face at ~40% of a 0.80 plate
 	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate
@@ -106,9 +122,11 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'josephine-bakhita': '50% 21%', // studio photo cropped to a bust; face at ~39% of a 0.75 plate
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'julian-of-norwich': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
+	'justin-martyr': '50% 0%', // Theophanes the Cretan icon (1545), cropped to the bust; head at ~20% of a 0.82 plate
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'krupabai-satthianadhan': '50% 0%', // The Sketch, 1895; face at ~30% of a 0.75 plate
+	'lactantius': '50% 20%', // 4th-c. wall painting (probable likeness); face at ~30% of a 0.75 crop
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
@@ -119,9 +137,12 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
 	'mary-stone': '50% 0%', // Burton 1918 plate, caption cropped off; face at ~30%
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
+	'origen-of-alexandria': '50% 25%', // 12th-c. manuscript drawing labelled ORIGENES; face at ~30% of a 0.95 crop
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
+	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
+	'polycarp': '50% 10%', // Orthodox fresco cropped to the bust; face at ~25% of a 0.97 crop
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
 	'richard-allen': '50% 37%',
@@ -131,12 +152,16 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'sadhu-sundar-singh': '50% 2%', // 1922 Uppsala photo cropped to a bust; face at ~34% of a 0.75 plate
 	'samson-occom': '50% 0%', // 18th-c. portrait engraving (repr. 1899); face at ~34% of a 0.75 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'samuel-rutherford': '50% 21%', // St Andrews oil cropped to the bust, contrast lifted
 	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
+	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
+	'theophilus-of-antioch': '50% 15%', // Cave engraving (17th c.) cropped to the bust; face at ~25%
 	'thomas-a-kempis': '50% 0%',
+	'thomas-boston': '50% 0%', // engraved oval cropped to the bust; face high in a 0.81 crop
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
 	'tiyo-soga': '50% 0%', // carte-de-visite photo; face at ~27% of a 0.75 plate
@@ -144,9 +169,11 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
+	'william-guthrie': '50% 19%', // Men of the Covenant drawing cropped to head and ruff
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'william-wilberforce': '50% 0%', // Hickel oil cropped to the half-length; face high in a 0.84 crop
 	'yona-kanamuzeyi': '50% 23%', // Ochorus scene (writing his diary by lamplight, head bowed), figure from behind, no face
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate

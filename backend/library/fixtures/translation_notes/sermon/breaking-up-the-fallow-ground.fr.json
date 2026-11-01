@@ -1,0 +1,49 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "fr",
+ "job_issue": 6263,
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 13:8",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "John 8:11",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "2 Thessalonians 2:7",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered",
+   "block_index": 55
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

@@ -72,8 +72,9 @@ describe('planEmail', () => {
 	});
 
 	it('lets a choice older than 15 minutes lapse, and drops it', () => {
-		const asked = Date.now();
 		askForPlanEmail('humility', 'plan_start', '06:30');
+		// After the ask, so the held stamp can't be later than this.
+		const asked = Date.now();
 		expect(applyHeldPlanEmail(asked + HOLD_MS + 1)).toBeNull();
 		expect(schedules.set).not.toHaveBeenCalled();
 		expect(applyHeldPlanEmail(asked)).toBeNull();

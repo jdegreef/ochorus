@@ -10,6 +10,7 @@ import fitz  # PyMuPDF
 from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
+from library import archive_ocr
 from library import upload_import as ui
 from library.catalog import AUTHORS, BOOKS
 from library.ingest import is_front_matter, upsert_book
@@ -558,6 +559,50 @@ class FlatMarkerTitleTests(TestCase):
         self.assertFalse(self._flat(""))
 
 
+class CcelSermonTrailerTests(TestCase):
+    """The Pulpit's order-of-service notes after a sermon are not the sermon.
+
+    From about 1870 a CCEL Spurgeon page ends "PORTION OF SCRIPTURE READ BEFORE
+    SERMON—John 4:1-5." (sometimes with an exposition and "HYMNS FROM 'OUR OWN
+    HYMN BOOK'—…"), then an empty paragraph; *Love's Logic* shipped its reading
+    list as the last line. The anthology builders keep that line, so the strip
+    is the sermon importer's opt-in.
+    """
+
+    def _page(self, tail):
+        return (
+            '<div id="theText"><div class="book-content"><h1>Love\'s Logic</h1>'
+            "<p>A Sermon</p>"
+            '<p>“We love him.”—<a class="scripRef">1 John 4:19</a></p>'
+            "<p>THIS is a great doctrinal truth.</p>"
+            f"<p>God bless you. Amen.</p>{tail}</div></div>"
+        )
+
+    def _body(self, tail, strip=True):
+        from library.management.commands.import_sermons import extract
+
+        return extract(self._page(tail), strip_service_notes=strip)[0]
+
+    def test_trailing_service_notes_and_spacers_are_dropped(self):
+        body = self._body(
+            "<p>PORTION OF\u00a0SCRIPTURE READ BEFORE SERMON—John 4:1-5.</p>"
+            "<p>EXPOSITION BY C. H. SPURGEON: JOHN 4.</p><p>Verse 1. Jesus knew.</p>"
+            "<p>HYMNS FROM “OUR OWN HYMN BOOK”—34, 742.</p><p></p>"
+        )
+        self.assertTrue(body.endswith("<p>God bless you. Amen.</p>"), body)
+
+    def test_the_phrase_far_from_the_end_is_kept(self):
+        body = self._body(
+            "<p>PORTIONS OF SCRIPTURE READ BEFORE SERMON are no sermon.</p>"
+            + "<p>More of the sermon.</p>" * 6
+        )
+        self.assertIn("PORTIONS OF SCRIPTURE READ BEFORE SERMON are no sermon.", body)
+
+    def test_the_anthology_default_keeps_the_reading_line(self):
+        body = self._body("<p>PORTION OF SCRIPTURE READ BEFORE SERMON—John 4.</p>", strip=False)
+        self.assertIn("PORTION OF SCRIPTURE READ BEFORE SERMON", body)
+
+
 class CcelLeadingHeadingTests(TestCase):
     """CCEL chapters whose heading is set as consecutive one-line paragraphs.
 
@@ -1009,6 +1054,27 @@ class GutenbergDisplayLineTests(SimpleTestCase):
             "<h3>Next</h3></body></html>"
         )
         self.assertEqual(extract_gutenberg_section(page, "Sermon"), "<p>Body.</p>")
+
+    def test_a_numbered_sermon_loses_its_title_line_but_keeps_its_notes(self):
+        """Newman's *Parochial and Plain Sermons* (PG 24256) heads each sermon
+        "SERMON VIII." and prints the title as the first paragraph. The title
+        goes (the page shows the catalog's), so the text after it is the
+        epigraph. The notes stay at the foot with their marks, as archive_ocr
+        sets them — but the one marked on the title line would point at
+        nothing, so it goes with the title."""
+        from library.management.commands.import_sermons import extract_gutenberg_section
+
+        page = (
+            "<html><body><h2>SERMON XVII.</h2><p>Religious Joy.[1]</p>"
+            '<p>"Fear not."—Luke ii. 10.</p><p>Joy to the world[2] indeed.</p>'
+            "<p>[1] For Christmas Day.</p><p>[2] Ps. xcviii.</p>"
+            "<h2>SERMON XVIII.</h2></body></html>"
+        )
+        self.assertEqual(
+            extract_gutenberg_section(page, "SERMON XVII.", "h2", "Religious Joy"),
+            '<blockquote>"Fear not."—Luke ii. 10.</blockquote><p>Joy to the world[2] indeed.</p>'
+            "<p>[2] Ps. xcviii.</p>",
+        )
 
     def test_a_line_break_separates_heading_words(self):
         from library.management.commands.import_sermons import extract_gutenberg_section
@@ -2280,3 +2346,129 @@ class GutenbergBackMatterTests(SimpleTestCase):
         for title in ("The Transcriber of the Law", "Transcriber's Notebook"):
             with self.subTest(title=title):
                 self.assertFalse(is_front_matter(title))
+
+
+class ArchiveOcrTests(SimpleTestCase):
+    """`library.archive_ocr`: archive.org djvu text back into a sermon.
+
+    Each case is a defect the 1844/1863/1864 scans actually carry.
+    """
+
+    PAGE = (
+        "SERMON  III. \n\n"
+        "SINNERS    ENTREATED    TO    BE    RECONCILED    TO    GOD. \n\n"
+        "2  COR.  v.  20. — Now  then  we  are  ambassadors  for  Christ, \n"
+        "as  though  God  did  beseech  you  by  us. \n\n"
+        "To  preside  in  the  solemnities  of  public  worship,  this  is  a  pro- \n"
+        "vince  of  the  most  tremendous  importance ;  and  every  man \n\n"
+        "SINNERS    ENTREATED   TO    BE    RECONCILED    TO    GOD.     137 \n\n"
+        "must  tremble  at  the  thought  ?* \n"
+        "* This  is  the  most  literal  translation. \n\n"
+        "SERMON  IV. \n"
+    )
+
+    def _clean(self, page, title=""):
+        return archive_ocr.clean(
+            archive_ocr.slice_sermon(page, "Now then we are", "To preside in", "SERMON IV."), title
+        )
+
+    def test_slice_skips_the_contents_entry_and_starts_at_the_verse(self):
+        contents = "CONTENTS\n\n2 COR. v. 20. — Now then we are ambassadors ... 137\n\nSERMON IV.\n\n"
+        out = archive_ocr.slice_sermon(contents + self.PAGE, "Now then we are", "To preside in", "SERMON IV.")
+        self.assertTrue(out.startswith("2  COR."), out[:40])
+        self.assertNotIn("CONTENTS", out)
+
+    def test_page_furniture_goes_and_the_split_paragraph_rejoins(self):
+        paras = self._clean(self.PAGE)
+        self.assertEqual(paras[0], "2 COR. v. 20. — Now then we are ambassadors for Christ, as though God did beseech you by us.")
+        # "pro- / vince" rejoined; " ;" closed up; the running head and page number
+        # between "every man" and "must tremble" gone, and the paragraph whole.
+        self.assertEqual(
+            paras[1],
+            "To preside in the solemnities of public worship, this is a province of the most "
+            "tremendous importance; and every man must tremble at the thought?*",
+        )
+
+    def test_a_footnote_leaves_the_text_and_follows_it(self):
+        paras = self._clean(self.PAGE)
+        self.assertEqual(paras[-1], "* This is the most literal translation.")
+        self.assertEqual(len(paras), 3)
+
+    def test_a_real_compound_keeps_its_hyphen(self):
+        self.assertEqual(archive_ocr._join("the sin-", "killers of"), "the sin-killers of")
+
+    def test_quote_marks_seat_against_their_words(self):
+        _tidy = archive_ocr._tidy
+        self.assertEqual(_tidy('another " beatitude "in addition'), 'another "beatitude" in addition')
+        self.assertEqual(_tidy('the dead.\'\' But'), 'the dead." But')
+        # An odd count runs on from another paragraph; leave it alone.
+        self.assertEqual(_tidy('"Not closed here'), '"Not closed here')
+
+    def test_reconcile_takes_the_real_word_from_another_scan(self):
+        reconcile = archive_ocr.reconcile
+        primary = ["we are ambassadors for Christy as though God did beseech you"]
+        other = ["we are ambassadors for Christ, as though God did beseech you"]
+        self.assertEqual(reconcile(primary, [other]), ["we are ambassadors for Christ, as though God did beseech you"])
+
+    def test_reconcile_mends_a_word_split_at_a_column_edge(self):
+        reconcile = archive_ocr.reconcile
+        primary = ["lying in the depths of ungo lliness and sin"]
+        other = ["lying in the depths of ungodliness and sin"]
+        self.assertEqual(reconcile(primary, [other]), ["lying in the depths of ungodliness and sin"])
+
+    def test_reconcile_keeps_the_primary_where_both_readings_are_words(self):
+        reconcile = archive_ocr.reconcile
+        self.assertEqual(reconcile(["he said unto them"], [["be said unto them"]]), ["he said unto them"])
+
+    def test_sermon_paragraphs_splits_the_bible_text_from_the_sermon(self):
+        head, paras = archive_ocr.sermon_paragraphs(
+            [self.PAGE], "Now then we are", "To preside in", "SERMON IV."
+        )
+        self.assertTrue(head.startswith("2 COR. v. 20. — Now then"), head)
+        self.assertTrue(paras[0].startswith("To preside in"))
+        with self.assertRaises(archive_ocr.SliceError):
+            archive_ocr.sermon_paragraphs([self.PAGE], "Now then we are", "Nowhere here", "SERMON IV.")
+
+    def test_a_clean_joined_word_is_not_split_by_another_scan(self):
+        self.assertEqual(
+            archive_ocr.reconcile(["he gave himself for us"], [["he gave him self for us"]]),
+            ["he gave himself for us"],
+        )
+
+    def test_a_paragraphs_first_word_is_cross_checked_too(self):
+        primary = ["Before this.", "Tlie Lord said unto them all."]
+        other = ["Before this.", "The Lord said unto them all."]
+        self.assertEqual(archive_ocr.reconcile(primary, [other])[1], "The Lord said unto them all.")
+
+    def test_a_ligature_does_not_shift_the_slice(self):
+        page = "ﬁrst ﬂock ﬁeld\n\n" + self.PAGE
+        out = archive_ocr.slice_sermon(page, "Now then we are", "To preside in", "SERMON IV.")
+        self.assertTrue(out.rstrip().endswith("translation."), out[-60:])
+
+    def test_an_asterism_is_not_a_footnote(self):
+        self.assertEqual(archive_ocr.clean("Text here.\n\n* * *\n\nMore text."), ["Text here.", "More text."])
+
+    def test_a_division_number_is_kept_and_a_folio_dropped(self):
+        self.assertEqual(archive_ocr.clean("II.\n\nThe second head.\n\n137\n\nxii"), ["II.", "The second head."])
+
+    def test_a_corrector_scan_that_misses_a_marker_is_left_out(self):
+        head, paras = archive_ocr.sermon_paragraphs(
+            [self.PAGE, "nothing of the sort"], "Now then we are", "To preside in", "SERMON IV."
+        )
+        self.assertTrue(paras[0].startswith("To preside in"))
+
+
+class SermonCatalogSlugTests(SimpleTestCase):
+    """A sermon is keyed by (slug, language), so two catalog entries sharing a
+    slug make `import_sermons` overwrite one preacher's sermon with another's —
+    batch 5's Maclaren *The Light of the World* would have replaced Lloyd-Jones's.
+    `screen_sermons` cannot see it either: it reads an existing fixture as the
+    entry's own import."""
+
+    def test_every_catalog_slug_is_unique(self):
+        from collections import Counter
+
+        from library.sermon_catalog import SERMONS
+
+        repeated = sorted(slug for slug, n in Counter(e.slug for e in SERMONS).items() if n > 1)
+        self.assertEqual(repeated, [], f"sermon slug(s) used twice in SERMONS: {repeated}")

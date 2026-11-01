@@ -1,0 +1,73 @@
+{
+  "kind": "sermon",
+  "slug": "the-infinite-god",
+  "language": "fr",
+  "job_issue": 6276,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Psalm 147:5",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "John 17:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 9
+    },
+    {
+      "reference": "1 Corinthians 2:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 12
+    },
+    {
+      "reference": "1 Corinthians 2:10",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 12
+    },
+    {
+      "reference": "1 Corinthians 2:11",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 13
+    },
+    {
+      "reference": "1 Corinthians 2:11",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "Jeremiah 31:3",
+      "status": "self_rendered",
+      "block_index": 98
+    },
+    {
+      "reference": "Romans 5:20",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 105
+    },
+    {
+      "reference": "Romans 5:20",
+      "status": "self_rendered",
+      "block_index": 114
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 123
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 124
+    }
+  ]
+}

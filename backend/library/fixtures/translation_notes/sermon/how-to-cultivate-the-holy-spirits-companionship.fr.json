@@ -1,0 +1,76 @@
+{
+  "kind": "sermon",
+  "slug": "how-to-cultivate-the-holy-spirits-companionship",
+  "language": "fr",
+  "job_issue": 6277,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 14:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "John 14:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "John 14:17",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "John 14:18",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 1
+    },
+    {
+      "reference": "Amos 3:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 42
+    },
+    {
+      "reference": "Amos 3:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 42
+    },
+    {
+      "reference": "Amos 3:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 43
+    },
+    {
+      "reference": "Isaiah 60:13",
+      "status": "self_rendered",
+      "block_index": 56
+    },
+    {
+      "reference": "Genesis 5:24",
+      "status": "self_rendered",
+      "block_index": 61
+    },
+    {
+      "reference": "1 Peter 3:4",
+      "status": "self_rendered",
+      "block_index": 69
+    },
+    {
+      "reference": "Matthew 19:6",
+      "status": "self_rendered",
+      "block_index": 77
+    },
+    {
+      "reference": "Psalm 104:16",
+      "status": "self_rendered",
+      "block_index": 87
+    }
+  ]
+}

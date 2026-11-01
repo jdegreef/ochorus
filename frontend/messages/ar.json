@@ -194,6 +194,7 @@
   "reader_layout_scroll": "تمرير",
   "reader_layout_page": "صفحة",
   "reader_tap_scroll": "اضغط للانتقال للأسفل",
+  "reader_candlelight": "ضوء الشموع",
   "reader_search": "بحث في الكتاب",
   "reader_search_placeholder": "ابحث في هذا الكتاب…",
   "search_indexing": "جارٍ تجهيز البحث…",
@@ -1594,5 +1595,16 @@
   "together_counted": "أنت محسوب في إجماليات المجموعة",
   "together_count_stop": "توقّف عن حسابي",
   "together_count_me": "احسبني في الإجماليات",
-  "together_count_sign_in_join": "سجّل الدخول لتُحسب في إجماليات المجموعة"
+  "together_count_sign_in_join": "سجّل الدخول لتُحسب في إجماليات المجموعة",
+  "daily_title": "اليوم في كتب التأمل",
+  "daily_subtitle": "قراءة لكل يوم من أيام السنة، من كتب التأمل الكلاسيكية",
+  "daily_see_all": "كل قراءات اليوم",
+  "daily_prev_day": "اليوم السابق",
+  "daily_next_day": "اليوم التالي",
+  "daily_back_to_today": "العودة إلى اليوم",
+  "daily_in_context": "اقرأ في الكتاب",
+  "daily_missing_day": "لا يحتوي هذا الكتاب على قراءة لهذا التاريخ، وهذه قراءة اليوم الذي قبله.",
+  "daily_choose_date": "اختر تاريخًا",
+  "daily_none": "لا توجد قراءات يومية بهذه اللغة بعد.",
+  "daily_follow_plan": "أو تابِعه خطةً لسنة كاملة"
 }

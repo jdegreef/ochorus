@@ -26,5 +26,103 @@
    "Job #6187 (waiting-on-god → vi) adds this prose because the book backs the plan. «Trông Đợi Đức Chúa Trời» is the shipped vi title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Vietnamese; whichever lands last brings the card live, and its translator should check the title here against that edition."
   ],
   "title": "Trông Đợi Đức Chúa Trời: Một Đời Sống Tin Cậy"
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "Lớn lên trong sự khôn ngoan qua 18 ngày",
+  "description": "Cẩm nang của James DeGreef dành cho học sinh, sinh viên — mỗi ngày một bài đọc ngắn, trong mười tám ngày. Từ việc khám phá mục đích đời mình cho đến việc xây dựng một khải tượng cho tương lai, mỗi ngày kết hợp lời khuyên thiết thực với một câu Kinh Thánh, một suy ngẫm và một lời cầu nguyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of growing-in-wisdom (book title «Lớn Lên Trong Sự Khôn Ngoan»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the edition's own title (sentence case, as the shipped vi plan titles are) so the plan card and the book agree; “students” = học sinh, sinh viên (school and university), since the book addresses both."
+  ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "Can Đảm Vì Đức Chúa Trời: 24 câu chuyện có thật",
+  "description": "Ba tuần rưỡi với những câu chuyện có thật dành cho bạn đọc nhỏ tuổi, mỗi ngày một chuyện: trọn bốn quyển Can Đảm Vì Đức Chúa Trời, hai mươi bốn con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
+  "note": [
+   "Four-book plan backed by the vi editions of brave-for-god, brave-for-god-2, -3 and -4 (titles «Can Đảm Vì Đức Chúa Trời», «…: Quyển Hai/Ba/Bốn»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The series title is quoted exactly as the shipped edition spells it (title case) in both the plan title and the description; “bạn đọc nhỏ tuổi” matches the site's young-readers string."
+  ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "Tĩnh nguyện gia đình: Hành trình của người lữ khách",
+  "description": "Những giờ tĩnh nguyện gia đình dài năm phút dành cho các em và những người lớn đọc cùng các em, khoảng ba tuần rưỡi buổi tối. Hãy đọc to một chương ngắn: trước hết là người lữ khách của Bunyan trên đường đến Thành Thiên Quốc, rồi đến những bức tranh từ nông trại của Spurgeon. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Plan backed by the vi editions of pilgrims-progress-children («Thiên Lộ Lịch Trình (Cho thiếu nhi)») and talks-to-the-farmer-children («Trò Chuyện Với Nhà Nông (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title, only the authors; “lữ khách”, “Thành Thiên Quốc” and “nông trại” are the words those vi editions use. “Family devotions” = tĩnh nguyện gia đình (the site's vi strings use tĩnh nguyện for devotions)."
+  ]
+ },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "Tĩnh nguyện gia đình: Những người hùng đã tin cậy Đức Chúa Trời",
+  "description": "Năm tuần tĩnh nguyện gia đình, mỗi tối năm phút: những câu chuyện có thật về ba con người đã tin cậy Đức Chúa Trời trong mọi điều, mỗi tối đọc to một chương ngắn — George Müller và các trẻ mồ côi của ông, Hudson Taylor trên đường đến Trung Quốc, và Amanda Smith, sinh ra trong cảnh nô lệ, người đã cầu xin một đôi giày. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Plan backed by the vi editions of the-life-of-trust-children («Cuộc Đời Tin Cậy (Cho thiếu nhi)»), a-retrospect-children («Hồi Tưởng (Cho thiếu nhi)») and amanda-smith-autobiography-children («Câu Chuyện Của Amanda Smith (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names people, not book titles; Trung Quốc, trẻ mồ côi, sinh ra trong cảnh nô lệ and đôi giày follow those editions' wording."
+  ]
+ },
+ "family-devotions-talking-with-god": {
+  "title": "Tĩnh nguyện gia đình: Nói chuyện với Đức Chúa Trời suốt ngày",
+  "description": "Mười hai buổi tối tĩnh nguyện gia đình, mỗi tối năm phút, cùng Thầy Lawrence, người phụ bếp vụng về đã học cách nói chuyện với Đức Chúa Trời giữa nồi niêu xoong chảo. Hãy đọc to một chương ngắn: một cái cây trơ trụi giữa mùa đông đã đưa anh đến với Đức Chúa Trời ra sao, anh đã làm mọi việc vì tình yêu dành cho Đức Chúa Trời thế nào, và anh đã làm gì khi mắc lỗi. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of the-practice-of-the-presence-of-god-children («Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title; “Thầy Lawrence”, “nói chuyện với Đức Chúa Trời”, the bare winter tree (“Cái cây giữa mùa đông”, ch. 2) and the pronoun “anh” for the young Lawrence all follow that edition."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "Nền tảng của sự cầu nguyện",
+  "description": "Bốn tuần đặt nền tảng cho sự cầu nguyện cùng ba người dẫn đường: Andrew Murray về cách chính Chúa dạy chúng ta cầu nguyện, D. L. Moody về sự cầu nguyện đắc thắng, và Hannah Buyinza về sự cầu nguyện như nhịp đập hằng ngày của đời sống Cơ Đốc.",
+  "note": [
+   "Three-book plan backed by the vi editions of lord-teach-us-to-pray-2 («Lạy Chúa, Xin Dạy Chúng Tôi Cầu Nguyện»), prevailing-prayer («Sự Cầu Nguyện Đắc Thắng», new this batch) and prayer-the-pulse-of-life («Cầu Nguyện – Nhịp Đập Của Sự Sống»). Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card quotes no title verbatim but echoes them: “sự cầu nguyện đắc thắng” is the prevailing-prayer edition's wording and “nhịp đập” follows Buyinza's vi title. “Foundations” = nền tảng, sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "new-to-the-faith": {
+  "title": "Mới tin Chúa",
+  "description": "Năm tuần rưỡi dành cho bất cứ ai vừa mới bắt đầu bước đi với Đấng Christ. Charles Spurgeon gặp bạn nơi cửa hẹp với sự giúp đỡ giản dị nhất để tin cậy Chúa Giê-xu; rồi R. A. Torrey, viết cho những người mới tin, chỉ cho bạn cách khởi đầu đúng đắn — sự bảo đảm về sự cứu rỗi, Đức Thánh Linh, Hội Thánh, Kinh Thánh, sự cầu nguyện và việc làm chứng. Những bài viết ngắn dọc đường giải đáp những câu hỏi mà mọi Cơ Đốc nhân mới đều thắc mắc: Phúc Âm là gì, vì sao Chúa Giê-xu chết, phép báp-têm và Tiệc Thánh có ý nghĩa gì, và làm thế nào để tiếp tục lớn lên.",
+  "note": [
+   "Plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp») and how-to-succeed-in-the-christian-life («Làm Thế Nào Để Thành Công Trong Đời Sống Cơ Đốc»), both new this batch, plus the vi articles. Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names authors, not book titles; “cửa hẹp” (wicket gate) follows Spurgeon's vi title, “khởi đầu đúng đắn” and “sự bảo đảm về sự cứu rỗi” are Torrey's vi chapter titles 1 and 3, and Phúc Âm / phép báp-têm / Tiệc Thánh match the vi articles' own headings."
+  ]
+ },
+ "first-steps-for-teens": {
+  "title": "Bước đầu: Đức tin dành cho tuổi thiếu niên",
+  "description": "Những bước đầu tiên đi cùng Chúa Giê-xu, dành cho bạn đọc tuổi thiếu niên. Charles Spurgeon gặp bạn nơi cửa hẹp với sự giúp đỡ giản dị nhất cho bất cứ ai đang tìm đường đến với Đấng Christ; rồi những câu chuyện có thật về những người nam và nữ đã hiến dâng tất cả cho Ngài cho thấy đời sống ấy sẽ trở nên thế nào — hai quyển sách ngắn trong khoảng ba tuần.",
+  "note": [
+   "Two-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», new this batch) and men-and-women-who-gave-everything-2 («Những Người Nam Và Nữ Đã Hiến Dâng Tất Cả»). Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the second title in lower case (“những người nam và nữ đã hiến dâng tất cả”) rather than quoting it; “teens” = thiếu niên, as the vi “(Cho thiếu niên)” edition suffix has it."
+  ]
+ },
+ "praying-men": {
+  "title": "Những người cầu nguyện: Trường cầu nguyện cùng E. M. Bounds",
+  "description": "Bảy tuần trong lò lửa của sự cầu thay cùng vị sứ đồ vĩ đại của sự cầu nguyện. E. M. Bounds bắt đầu từ chính nhu cầu quyền năng của nhà giảng đạo, rồi mở ra mục đích khiến sự cầu nguyện được đắc thắng, và sự cần thiết khiến cầu nguyện trở thành công việc trọn vẹn của đời sống Cơ Đốc nhân.",
+  "note": [
+   "Three-book plan backed by the vi editions of power-through-prayer («Quyền Năng Bởi Sự Cầu Nguyện»), purpose-in-prayer («Mục Đích Trong Sự Cầu Nguyện», new this batch) and necessity-of-prayer («Sự Cần Thiết Của Sự Cầu Nguyện»). Ships with the Level 1 books batch 3 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card quotes no title verbatim but echoes all three in lower case (“quyền năng”, “mục đích”, “sự cần thiết”); “preacher” = nhà giảng đạo and “prevail” = đắc thắng, the words the vi Bounds editions use. “School of prayer” = trường cầu nguyện, as in the shipped plan «31 ngày trong trường cầu nguyện»; sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "Tấm lòng Thanh giáo",
+  "description": "Tám tuần cùng ba bậc thầy của đời sống bề trong. Richard Sibbes băng bó cây sậy bị giập, John Owen tranh chiến với tội lỗi vẫn còn ở trong lòng, và Thomas Watson đặt trọn cuộc tranh chiến ấy trên lời hứa rằng mọi sự hiệp lại làm ích.",
+  "note": [
+   "Three-book plan backed by the vi editions of the-bruised-reed («Cây Sậy Bị Giập»), mortification-of-sin («Về Việc Làm Chết Tội Lỗi Trong Người Tin») and all-things-for-good («Mọi Sự Hiệp Lại Làm Ích»), all new this batch. Ships with the Level 1 books batch 3 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Sibbes and Watson titles in lower case (“cây sậy bị giập”, “mọi sự hiệp lại làm ích”, Cadman's Ê-sai 42:3 and Rô-ma 8:28 wording as those editions use it); Owen's title is paraphrased (“tranh chiến với tội lỗi vẫn còn ở trong lòng”) rather than quoted. Puritan = Thanh giáo per the vi conventions; “inner life” = đời sống bề trong."
+  ]
+ },
+ "faith-in-the-fire": {
+  "title": "Đức Chúa Trời Ban Mọi Sự Yên Ủi: Đức tin trong lò lửa",
+  "description": "Dành cho những ngày khó cầu nguyện. Hannah Whitall Smith nói về Đức Chúa Trời ban mọi sự yên ủi, và Gareth Evans nói về sự tin cậy Đấng nắm giữ ngày mai của chúng ta — năm tuần bước vào sự bình an vững vàng khi cuộc sống đầy bất trắc.",
+  "note": [
+   "Two-book plan backed by the vi editions of the-god-of-all-comfort («Đức Chúa Trời Ban Mọi Sự Yên Ủi», new this batch) and he-holds-my-tomorrows («Đấng Nắm Giữ Ngày Mai Của Tôi», already shipped). Ships with the Level 1 books batch 4 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Smith edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are; “Đức Chúa Trời ban mọi sự yên ủi” is Cadman's 2 Cô-rinh-tô 1:3, the verse that titles the book. The description echoes Evans's title in lower case (“Đấng nắm giữ ngày mai của chúng ta”, “our tomorrows” as the English card has it) rather than quoting it. “In the fire” = trong lò lửa (Đa-ni-ên 3's furnace image, as ar «في الأتون»)."
+  ]
+ },
+ "power-from-on-high": {
+  "title": "Quyền phép từ trên cao: Đức Thánh Linh",
+  "description": "Bốn tuần cùng R. A. Torrey về đời sống đầy dẫy Đức Thánh Linh: trước hết là phép báp-têm bằng Đức Thánh Linh và quyền năng mà phép ấy đem lại cho sự phục vụ, rồi đến phần nghiên cứu đầy đủ hơn về Thân Vị và công việc của Đức Thánh Linh, Đấng ngự trong mỗi người tin.",
+  "note": [
+   "Two-book plan backed by the vi editions of baptism-with-the-holy-spirit («Phép Báp-têm Bằng Đức Thánh Linh», already shipped) and the-person-and-work-of-the-holy-spirit («Thân Vị và Công Việc của Đức Thánh Linh», new this batch). Ships with the Level 1 books batch 5 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The description echoes both titles in lower case (“phép báp-têm bằng Đức Thánh Linh”, “Thân Vị và công việc của Đức Thánh Linh”) rather than quoting them; “Thân Vị” (Person) is the new edition's own word. The title is Cadman's Lu-ca 24:49 “quyền phép từ trên cao”, the wording both Torrey editions quote; “power for service” = quyền năng … cho sự phục vụ as the baptism edition has it. Sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "Con đường của khách hành hương",
+  "description": "Con đường về nhà, qua ba tác phẩm kinh điển. Charles Spurgeon gặp người đang tìm kiếm nơi cửa hẹp, ngụ ngôn bất hủ của John Bunyan theo chân khách hành hương suốt chặng đường đến Thành Thiên Thượng, và chính lời làm chứng của Bunyan cho thấy ân điển dư dật cho kẻ đứng đầu các tội nhân.",
+  "note": [
+   "Three-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», already shipped), pilgrims-progress («Thiên Lộ Lịch Trình», new this batch) and grace-abounding («Ân Điển Dư Dật cho Kẻ Đứng Đầu Các Tội Nhân», already shipped). Ships with the Level 1 books batch 5 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Spurgeon and Bunyan-testimony titles in lower case (“cửa hẹp”, “ân điển dư dật cho kẻ đứng đầu các tội nhân”) rather than quoting them, and does not name «Thiên Lộ Lịch Trình». “Khách hành hương” and “Thành Thiên Thượng” are the words the new full pilgrims-progress edition uses (the children's edition, and the family-devotions plan, say “lữ khách” / “Thành Thiên Quốc”); “the chief of sinners” = kẻ đứng đầu các tội nhân as that edition's title has it. Sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "grace-for-every-sinner": {
+  "title": "Con Đường Đến Với Đức Chúa Trời: Ân điển cho mọi tội nhân",
+  "description": "Một tháng với tin lành xưa nhất. Lời kêu gọi dịu dàng của Richard Baxter gửi những người chưa hoán cải, D. L. Moody về con đường đến với Đức Chúa Trời, và Tất Cả Bởi Ân Điển của Charles Spurgeon — những lời chỉ dẫn giản dị nhất về cách một tội nhân được cứu, và làm sao để biết chắc điều ấy.",
+  "note": [
+   "Three-book plan backed by the vi editions of a-call-to-the-unconverted («Lời Kêu Gọi Những Người Chưa Hoán Cải», new this batch), the-way-to-god («Con Đường Đến Với Đức Chúa Trời», new this batch) and all-of-grace («Tất Cả Bởi Ân Điển», already shipped). Ships with the Level 1 books batch 6 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Moody edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are. The description quotes Spurgeon's title verbatim, echoes Baxter's in lower case (“lời kêu gọi … gửi những người chưa hoán cải”) and Moody's as “con đường đến với Đức Chúa Trời”; “the oldest good news” = tin lành xưa nhất (lower case, the good news rather than the Protestant church name)."
+  ]
  }
 }

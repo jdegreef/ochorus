@@ -1,4 +1,5 @@
-"""`Chapter.study_questions` — the young-reader editions' "Talk about it".
+"""`Chapter.study_questions` — a chapter's answered questions ("Talk about it"
+in a young-reader edition, "Questions for reflection" elsewhere).
 
 Pinned here: the seed upserts the field from the fixture and leaves a chapter
 alone when its fixture row carries no key, and the chapter API serves it. The

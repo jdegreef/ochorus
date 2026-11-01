@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "vi",
+  "title": "Cuộc Đời Tin Cậy (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "George Müller đã chăm sóc hàng ngàn trẻ mồ côi ở nước Anh, và ông làm điều đó bằng cách không xin ai ngoài Đức Chúa Trời để có tiền bạc, thức ăn và sự giúp đỡ ông cần — và bằng sự cầu nguyện. Ấn bản dành cho thiếu nhi này kể lại câu chuyện có thật về cuộc đời ông qua những chương ngắn, để đọc to cho các em nghe: một câu Kinh Thánh, một câu chuyện về lời cầu nguyện được Đức Chúa Trời đáp lời, một điều câu chuyện ấy có ý nghĩa cho con, và một lời cầu nguyện ngắn.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Sách Cuộc Đời Tin Cậy (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi kể lại câu chuyện cuộc đời do chính George Müller viết. Ông Müller đã chăm sóc hàng ngàn trẻ mồ côi ở nước Anh, và thay vì xin tiền người ta, ông xin Đức Chúa Trời — và Đức Chúa Trời đã chu cấp hết lần này đến lần khác. Mỗi chương ngắn kể một câu chuyện có thật về một lời cầu nguyện được Đức Chúa Trời đáp lời."
+   },
+   {
+    "question": "George Müller là ai?",
+    "answer": "Ông là một người sống ở nước Anh từ lâu lắm rồi, đã xây những mái nhà chăm sóc hàng ngàn trẻ mồ côi — những em bé không có cha mẹ. Ông quyết định không bao giờ xin ai ngoài Đức Chúa Trời những gì các em cần, và ông ghi lại cách Đức Chúa Trời đáp lời cầu nguyện của mình để người khác cũng tin cậy Đức Chúa Trời."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một câu chuyện có thật trong cuộc đời George Müller, cho thấy một điều đơn sơ mà câu chuyện ấy có ý nghĩa cho con, và kết thúc bằng một lời cầu nguyện ngắn."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi — để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc. Cuốn tự truyện đầy đủ hơn của George Müller, Cuộc Đời Tin Cậy, cũng có sẵn cho người đọc lớn tuổi hơn."
+   },
+   {
+    "question": "Điều chính mà sách này dạy là gì?",
+    "answer": "Rằng Đức Chúa Trời nghe và đáp lời cầu nguyện, và chúng ta có thể tin cậy Ngài sẽ ban cho những gì chúng ta thật sự cần. Cuộc đời George Müller là một câu chuyện có thật thật dài về việc xin Đức Chúa Trời giúp đỡ và thấy Ngài chu cấp, để các em cũng học biết tin cậy Ngài."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Các câu chuyện được kể lại đơn giản cho thiếu nhi, nhưng đều lấy từ chính lời George Müller thuật lại cuộc đời mình — những mái nhà mồ côi có thật mà ông đã xây, và những lời cầu nguyện có thật mà Đức Chúa Trời đã đáp lời, được ông ghi lại ngay khi chúng xảy ra."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn The Life of Trust (Cuộc Đời Tin Cậy) của George Müller, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Đồng xu trong chiếc giày",
+  "body_html": "<blockquote>“Chúng ta thảy đều như chiên đi lạc” — trích Ê-sai 53</blockquote> <p>Con có tin không: người đã chăm sóc hàng ngàn trẻ mồ côi lại từng là một cậu bé ăn cắp? Thật đấy. Tên ông là George Müller, và lúc còn nhỏ, cậu bé ấy chẳng ngoan chút nào.</p> <p>George hay lấy tiền không phải của mình. Một hôm, cha cậu muốn biết George có ăn cắp tiền không. Ông đếm một số tiền, để lại trong phòng rồi đi ra ngoài, xem có bị mất đồng nào không.</p> <p>George ở lại một mình với số tiền đó. Và cậu đã làm gì? Cậu lấy một ít — rồi giấu một đồng xu dưới bàn chân, bên trong chiếc giày! Nhưng khi cha cậu quay về đếm lại, thì tiền đã mất. Người ta lục soát George, và kìa, đồng xu đang nằm trốn trong chiếc giày của cậu.</p> <p>George không dừng lại ở đó. Lớn thêm một chút, cậu nói dối, tiêu cả những khoản tiền mình không có, cho đến một ngày, khi mới mười sáu tuổi, cậu còn bị bỏ tù một thời gian.</p> <p>Vậy tại sao câu chuyện có thật về ông lại bắt đầu bằng tất cả những điều sai trái ông đã làm? Vì nhờ vậy mà phần còn lại thật tuyệt vời. Đức Chúa Trời vẫn chưa xong công việc của Ngài nơi George. Đức Chúa Trời có thể lấy một cậu bé nói dối và ăn cắp, thay đổi cậu hoàn toàn — và một ngày kia dùng cậu để giúp đỡ nhiều trẻ em hơn số George có thể đếm được.</p> <p>Vì thế, nếu con đã làm những điều sai, đừng bao giờ nghĩ rằng con quá tệ đến nỗi Đức Chúa Trời không thể thay đổi con. Không ai như vậy cả. Đức Chúa Trời rất thích thay đổi lòng người.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài có thể thay đổi bất cứ ai, kể cả con. Xin làm cho lòng con tốt lành và trong sạch. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cậu bé George đã giấu đồng xu lấy của cha ở đâu?",
+    "answer": "Cậu giấu nó dưới bàn chân, bên trong chiếc giày. Khi cha cậu đếm lại tiền và lục soát cậu, người ta tìm thấy đồng xu ở đó."
+   },
+   {
+    "question": "Tại sao câu chuyện của George lại bắt đầu bằng tất cả những điều sai trái cậu đã làm?",
+    "answer": "Vì nhờ vậy mà phần còn lại thật tuyệt vời: Đức Chúa Trời vẫn chưa xong công việc của Ngài nơi George, và Đức Chúa Trời có thể thay đổi hoàn toàn một cậu bé nói dối và ăn cắp."
+   },
+   {
+    "question": "Con đã bao giờ thấy mình quá hư nên Đức Chúa Trời không thể yêu con chưa? Câu chuyện của George nói gì về điều đó?",
+    "answer": "Ý chính của chương này: không ai quá tệ đến nỗi Đức Chúa Trời không thể thay đổi. Đức Chúa Trời rất thích thay đổi lòng người, và Ngài có thể làm cho lòng chúng ta tốt lành và trong sạch."
+   }
+  ],
+  "body_text": "“Chúng ta thảy đều như chiên đi lạc” — trích Ê-sai 53 Con có tin không: người đã chăm sóc hàng ngàn trẻ mồ côi lại từng là một cậu bé ăn cắp? Thật đấy. Tên ông là George Müller, và lúc còn nhỏ, cậu bé ấy chẳng ngoan chút nào. George hay lấy tiền không phải của mình. Một hôm, cha cậu muốn biết George có ăn cắp tiền không. Ông đếm một số tiền, để lại trong phòng rồi đi ra ngoài, xem có bị mất đồng nào không. George ở lại một mình với số tiền đó. Và cậu đã làm gì? Cậu lấy một ít — rồi giấu một đồng xu dưới bàn chân, bên trong chiếc giày! Nhưng khi cha cậu quay về đếm lại, thì tiền đã mất. Người ta lục soát George, và kìa, đồng xu đang nằm trốn trong chiếc giày của cậu. George không dừng lại ở đó. Lớn thêm một chút, cậu nói dối, tiêu cả những khoản tiền mình không có, cho đến một ngày, khi mới mười sáu tuổi, cậu còn bị bỏ tù một thời gian. Vậy tại sao câu chuyện có thật về ông lại bắt đầu bằng tất cả những điều sai trái ông đã làm? Vì nhờ vậy mà phần còn lại thật tuyệt vời. Đức Chúa Trời vẫn chưa xong công việc của Ngài nơi George. Đức Chúa Trời có thể lấy một cậu bé nói dối và ăn cắp, thay đổi cậu hoàn toàn — và một ngày kia dùng cậu để giúp đỡ nhiều trẻ em hơn số George có thể đếm được. Vì thế, nếu con đã làm những điều sai, đừng bao giờ nghĩ rằng con quá tệ đến nỗi Đức Chúa Trời không thể thay đổi con. Không ai như vậy cả. Đức Chúa Trời rất thích thay đổi lòng người. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài có thể thay đổi bất cứ ai, kể cả con. Xin làm cho lòng con tốt lành và trong sạch. A-men.",
+  "word_count": 343
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Cánh cửa rộng mở",
+  "body_html": "<blockquote>“Khi còn ở đàng xa, cha nó thấy thì động lòng thương xót, chạy ra ôm lấy cổ mà hôn.” — trích Lu-ca 15</blockquote> <p>Một tối thứ Bảy, khi George đã là một chàng thanh niên, người bạn của ông dẫn ông đến một ngôi nhà, nơi có mấy Cơ Đốc nhân đang nhóm lại. George thấy ngại ngùng. Ông chưa từng đến một nơi nào như thế.</p> <p>Bên trong, mọi người cùng nhau đọc Kinh Thánh, rồi hát, và rồi một chuyện xảy ra mà George không bao giờ quên. Một người quỳ gối xuống để cầu nguyện. George chưa từng thấy ai quỳ gối cầu nguyện — chính ông cũng chưa bao giờ quỳ gối mà cầu nguyện. Điều đó làm ông xúc động tận sâu trong lòng.</p> <p>Người chủ nhà tốt bụng nhận ra George thấy lạc lõng. Vì vậy ông nói một câu thật dễ thương: “Anh cứ đến đây bao nhiêu lần tùy thích. Nhà tôi và lòng tôi luôn mở rộng cho anh.”</p> <p>Tối hôm đó George về nhà — và thay vì thấy trống rỗng, bứt rứt như mọi khi, ông nằm xuống giường lòng bình an và vui vẻ. Một điều hoàn toàn mới đã bắt đầu trong ông. Sau này ông nói đó là bước ngoặt của cả cuộc đời mình. Đó là đêm George trở về với Đức Chúa Trời.</p> <p>Đức Chúa Trời giống như người tốt bụng đứng ở cửa ấy, nhưng còn tốt lành hơn rất, rất nhiều. Dù con đã đi lạc xa Ngài đến đâu, lòng Ngài vẫn mở rộng cho con. Con không cần phải ngoan cho đủ trước. Con chỉ cần đến thôi.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì lòng Ngài luôn mở rộng cho con. Con muốn đến với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ở nhà của các Cơ Đốc nhân, George đã thấy điều gì mà trước đó ông chưa từng thấy?",
+    "answer": "Một người quỳ gối xuống để cầu nguyện. George chưa từng thấy ai quỳ gối cầu nguyện, và điều đó làm ông xúc động tận đáy lòng."
+   },
+   {
+    "question": "Người chủ nhà đã nói với George những lời tử tế nào?",
+    "answer": "Ông nói: “Anh cứ đến đây bao nhiêu lần tùy thích. Nhà tôi và lòng tôi luôn mở rộng cho anh.” George về nhà lòng bình an và vui vẻ."
+   },
+   {
+    "question": "Con có phải ngoan cho đủ rồi mới được đến với Đức Chúa Trời không?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời giống như người tốt bụng đứng ở cửa ấy, nhưng còn tốt lành hơn nhiều. Lòng Ngài mở rộng cho con, và con chỉ cần đến thôi."
+   }
+  ],
+  "body_text": "“Khi còn ở đàng xa, cha nó thấy thì động lòng thương xót, chạy ra ôm lấy cổ mà hôn.” — trích Lu-ca 15 Một tối thứ Bảy, khi George đã là một chàng thanh niên, người bạn của ông dẫn ông đến một ngôi nhà, nơi có mấy Cơ Đốc nhân đang nhóm lại. George thấy ngại ngùng. Ông chưa từng đến một nơi nào như thế. Bên trong, mọi người cùng nhau đọc Kinh Thánh, rồi hát, và rồi một chuyện xảy ra mà George không bao giờ quên. Một người quỳ gối xuống để cầu nguyện. George chưa từng thấy ai quỳ gối cầu nguyện — chính ông cũng chưa bao giờ quỳ gối mà cầu nguyện. Điều đó làm ông xúc động tận sâu trong lòng. Người chủ nhà tốt bụng nhận ra George thấy lạc lõng. Vì vậy ông nói một câu thật dễ thương: “Anh cứ đến đây bao nhiêu lần tùy thích. Nhà tôi và lòng tôi luôn mở rộng cho anh.” Tối hôm đó George về nhà — và thay vì thấy trống rỗng, bứt rứt như mọi khi, ông nằm xuống giường lòng bình an và vui vẻ. Một điều hoàn toàn mới đã bắt đầu trong ông. Sau này ông nói đó là bước ngoặt của cả cuộc đời mình. Đó là đêm George trở về với Đức Chúa Trời. Đức Chúa Trời giống như người tốt bụng đứng ở cửa ấy, nhưng còn tốt lành hơn rất, rất nhiều. Dù con đã đi lạc xa Ngài đến đâu, lòng Ngài vẫn mở rộng cho con. Con không cần phải ngoan cho đủ trước. Con chỉ cần đến thôi. Lạy Đức Chúa Trời, cảm ơn Ngài vì lòng Ngài luôn mở rộng cho con. Con muốn đến với Ngài. A-men.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Cầu nguyện đến khi bạn bè rơi lệ",
+  "body_html": "<blockquote>“Cầu nguyện cho nhau” — trích Gia-cơ 5</blockquote> <p>Giờ đây George rất vui vì được biết Đức Chúa Trời, nên ông muốn bạn bè mình cũng được vui như vậy. Ông bèn kể hết cho hai người bạn cũ nghe.</p> <p>Nhưng họ chỉ nhún vai. “Bọn mình đâu thấy mình là người có tội,” họ nói. “Bọn mình đâu thấy mình đã làm gì cần được tha thứ.”</p> <p>George có thể làm gì đây? Ông không thể làm cho họ hiểu. Vì vậy ông làm điều duy nhất ông nghĩ ra được — ông cầu nguyện. Ngay tại đó, ông quỳ gối xuống và xin Đức Chúa Trời cho hai người bạn thấy sự thật về lòng của chính họ. Rồi ông đi vào phòng ngủ và tiếp tục cầu nguyện cho họ.</p> <p>Và khi George quay ra — hai người bạn đang khóc. Cả hai người luôn! Đức Chúa Trời đã làm được điều George không làm được. Họ nói với ông rằng giờ đây họ biết mình là người có tội, và họ cũng cần Đức Chúa Trời.</p> <p>George đang học một điều mà ông sẽ dùng suốt cả đời mình: <strong>khi tự mình không thể thay đổi một điều gì, chúng ta có thể cầu nguyện, và Đức Chúa Trời thì làm được.</strong></p> <p>Có ai mà con ước gì họ biết Đức Chúa Trời không — một người bạn, anh chị em, hay một người trong gia đình? Con không cần phải bắt họ tin. Con có thể làm như George đã làm. Con có thể cầu nguyện cho họ, và phần còn lại để Đức Chúa Trời lo.</p> <p><em>Lạy Đức Chúa Trời, xin giúp những người con yêu thương được biết Ngài. Con không làm được, nhưng Ngài làm được. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hai người bạn của George đã nói gì khi ông kể cho họ nghe về Đức Chúa Trời?",
+    "answer": "Họ nhún vai và nói rằng họ không thấy mình là người có tội, cũng không thấy mình đã làm gì cần được tha thứ."
+   },
+   {
+    "question": "George đã làm gì khi không thể làm cho bạn mình hiểu?",
+    "answer": "Ông quỳ gối cầu nguyện cho họ, rồi tiếp tục cầu nguyện trong phòng ngủ. Khi ông quay ra, cả hai người bạn đang khóc và nói rằng họ cũng cần Đức Chúa Trời."
+   },
+   {
+    "question": "Có ai mà con ước gì họ biết Đức Chúa Trời không? Chúng ta có thể làm gì cho họ?",
+    "answer": "Ý chính của chương này: chúng ta không cần phải bắt ai tin. Khi tự mình không thể thay đổi một điều gì, chúng ta có thể cầu nguyện, và Đức Chúa Trời thì làm được."
+   }
+  ],
+  "body_text": "“Cầu nguyện cho nhau” — trích Gia-cơ 5 Giờ đây George rất vui vì được biết Đức Chúa Trời, nên ông muốn bạn bè mình cũng được vui như vậy. Ông bèn kể hết cho hai người bạn cũ nghe. Nhưng họ chỉ nhún vai. “Bọn mình đâu thấy mình là người có tội,” họ nói. “Bọn mình đâu thấy mình đã làm gì cần được tha thứ.” George có thể làm gì đây? Ông không thể làm cho họ hiểu. Vì vậy ông làm điều duy nhất ông nghĩ ra được — ông cầu nguyện. Ngay tại đó, ông quỳ gối xuống và xin Đức Chúa Trời cho hai người bạn thấy sự thật về lòng của chính họ. Rồi ông đi vào phòng ngủ và tiếp tục cầu nguyện cho họ. Và khi George quay ra — hai người bạn đang khóc. Cả hai người luôn! Đức Chúa Trời đã làm được điều George không làm được. Họ nói với ông rằng giờ đây họ biết mình là người có tội, và họ cũng cần Đức Chúa Trời. George đang học một điều mà ông sẽ dùng suốt cả đời mình: khi tự mình không thể thay đổi một điều gì, chúng ta có thể cầu nguyện, và Đức Chúa Trời thì làm được. Có ai mà con ước gì họ biết Đức Chúa Trời không — một người bạn, anh chị em, hay một người trong gia đình? Con không cần phải bắt họ tin. Con có thể làm như George đã làm. Con có thể cầu nguyện cho họ, và phần còn lại để Đức Chúa Trời lo. Lạy Đức Chúa Trời, xin giúp những người con yêu thương được biết Ngài. Con không làm được, nhưng Ngài làm được. A-men.",
+  "word_count": 295
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Không nhận lương nữa, chỉ trông cậy Đức Chúa Trời",
+  "body_html": "<blockquote>“Đức Chúa Trời tôi sẽ làm cho đầy đủ mọi sự cần dùng của anh em” — trích Phi-líp 4</blockquote> <p>Khi George lớn lên, ông trở thành một nhà truyền đạo, và Hội Thánh trả lương cho ông, giống như người ta đi làm được trả lương vậy. Nhưng George có một ý tưởng rất lạ. Ông quyết định thôi không nhận lương nữa!</p> <p>Thay vào đó, ông sẽ tin cậy Đức Chúa Trời chu cấp. Ông đặt một chiếc hộp nhỏ trên tường nhà thờ, để ai muốn thì có thể dâng — nhưng ông đặt ra một luật lệ chắc chắn: ông sẽ không bao giờ xin tiền một người nào cả. Ông chỉ xin <em>Đức Chúa Trời</em> mà thôi. Nếu có điều gì cần, ông sẽ thưa với Đức Chúa Trời, chứ không nói với ai khác.</p> <p>Nghe hơi đáng sợ phải không con? Và chẳng bao lâu sau, điều đó bị thử thách. Vợ chồng George gần như hết sạch tiền — chỉ còn vài đồng xu. Vì thế họ làm đúng điều họ đã hứa: họ quỳ gối xuống và thưa với Đức Chúa Trời.</p> <p>Vài giờ sau, một bà đến gõ cửa và hỏi: “Ông bà có cần tiền không?” Bà đưa cho họ một ít — và đây là phần tuyệt vời nhất. Bà nói Đức Chúa Trời đã đặt vào lòng bà ý muốn dâng số tiền ấy từ hai tuần trước! Đức Chúa Trời đã bắt đầu câu trả lời trước cả khi George cầu nguyện. Mà George chưa hề nói với bà rằng họ đang thiếu thốn. Chỉ có Đức Chúa Trời biết mà thôi.</p> <p>Đức Chúa Trời biết rõ con cần gì trước cả khi con cầu xin Ngài. Con có thể thưa với Ngài về bất cứ điều gì, và tin cậy Ngài sẽ chăm sóc con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài đã biết con cần gì rồi. Xin giúp con tin cậy Ngài và thưa với Ngài mọi điều. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sau khi thôi nhận lương, George đặt ra luật lệ chắc chắn nào về tiền bạc?",
+    "answer": "Ông sẽ không bao giờ xin tiền một người nào cả. Ông chỉ xin Đức Chúa Trời và không nói nhu cầu của mình với ai khác."
+   },
+   {
+    "question": "Điều gì thật tuyệt vời về người phụ nữ mang tiền đến gõ cửa?",
+    "answer": "Bà nói Đức Chúa Trời đã đặt vào lòng bà ý muốn dâng tiền từ hai tuần trước, vậy là Đức Chúa Trời đã bắt đầu câu trả lời trước cả khi George cầu nguyện. George chưa hề nói với bà về sự thiếu thốn của họ."
+   },
+   {
+    "question": "Hôm nay con có thể thưa với Đức Chúa Trời về những điều gì?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời biết rõ con cần gì trước khi con cầu xin. Con có thể thưa với Ngài về bất cứ điều gì và tin cậy Ngài sẽ chăm sóc con."
+   }
+  ],
+  "body_text": "“Đức Chúa Trời tôi sẽ làm cho đầy đủ mọi sự cần dùng của anh em” — trích Phi-líp 4 Khi George lớn lên, ông trở thành một nhà truyền đạo, và Hội Thánh trả lương cho ông, giống như người ta đi làm được trả lương vậy. Nhưng George có một ý tưởng rất lạ. Ông quyết định thôi không nhận lương nữa! Thay vào đó, ông sẽ tin cậy Đức Chúa Trời chu cấp. Ông đặt một chiếc hộp nhỏ trên tường nhà thờ, để ai muốn thì có thể dâng — nhưng ông đặt ra một luật lệ chắc chắn: ông sẽ không bao giờ xin tiền một người nào cả. Ông chỉ xin Đức Chúa Trời mà thôi. Nếu có điều gì cần, ông sẽ thưa với Đức Chúa Trời, chứ không nói với ai khác. Nghe hơi đáng sợ phải không con? Và chẳng bao lâu sau, điều đó bị thử thách. Vợ chồng George gần như hết sạch tiền — chỉ còn vài đồng xu. Vì thế họ làm đúng điều họ đã hứa: họ quỳ gối xuống và thưa với Đức Chúa Trời. Vài giờ sau, một bà đến gõ cửa và hỏi: “Ông bà có cần tiền không?” Bà đưa cho họ một ít — và đây là phần tuyệt vời nhất. Bà nói Đức Chúa Trời đã đặt vào lòng bà ý muốn dâng số tiền ấy từ hai tuần trước! Đức Chúa Trời đã bắt đầu câu trả lời trước cả khi George cầu nguyện. Mà George chưa hề nói với bà rằng họ đang thiếu thốn. Chỉ có Đức Chúa Trời biết mà thôi. Đức Chúa Trời biết rõ con cần gì trước cả khi con cầu xin Ngài. Con có thể thưa với Ngài về bất cứ điều gì, và tin cậy Ngài sẽ chăm sóc con. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài đã biết con cần gì rồi. Xin giúp con tin cậy Ngài và thưa với Ngài mọi điều. A-men.",
+  "word_count": 337
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Tiếng gõ cửa",
+  "body_html": "<blockquote>“Xin cho chúng tôi hôm nay đồ ăn đủ ngày” — trích Ma-thi-ơ 6</blockquote> <p>Một Chúa Nhật nọ, vợ chồng George chỉ còn lại vài đồng xu cuối cùng. Trong nhà chỉ có vừa đủ bánh mì cho ngày hôm đó, và không có tiền mua thêm cho bữa tối.</p> <p>Vì vậy George cầu nguyện. Ông không cầu nguyện bằng những lời hoa mỹ. Ông xin Đức Chúa Trời thật đơn sơ, rằng xin Ngài gửi cho họ một ít bánh mì cho bữa tối — bánh mì thật, đặt trên bàn ăn, ngay trong ngày hôm đó.</p> <p>Và đây là điều đã xảy ra. <strong>Trong khi George vẫn còn đang cầu nguyện</strong> — trước cả khi ông cầu nguyện xong — thì có tiếng gõ cửa!</p> <p>Một bà nghèo đang đứng ở đó. Bà mang đến một phần bữa ăn của chính mình để chia sẻ, cùng một ít tiền của một người bạn nghèo khác. Và chiều hôm đó, bà lại quay trở lại, lần này mang theo một ổ bánh mì thật to.</p> <p>Đức Chúa Trời đã nghe. Thật ra, Đức Chúa Trời đã sai bà lên đường mang bánh đến trước khi George cầu xin xong. Câu trả lời đã trên đường đến ngay trong lúc ông vẫn còn quỳ gối.</p> <p>Khi Chúa Giê-xu dạy chúng ta cầu nguyện, Ngài bảo chúng ta xin “đồ ăn đủ ngày” — những thứ chúng ta cần cho mỗi ngày. George tin lời ấy thật lòng, và Đức Chúa Trời đã chăm sóc ông. Con cũng có thể xin Đức Chúa Trời những điều bình thường mà con cần. Ngài quan tâm đến tất cả, kể cả bánh mì cho bữa tối.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài quan tâm đến cả những điều nhỏ bé, thường ngày. Xin ban cho con những gì con cần hôm nay. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chúa Nhật hôm ấy, George đã xin Đức Chúa Trời một điều đơn sơ nào?",
+    "answer": "Ông xin Đức Chúa Trời gửi cho họ một ít bánh mì cho bữa tối, vì trong nhà chỉ có vừa đủ cho ngày hôm đó và không có tiền mua thêm."
+   },
+   {
+    "question": "Điều gì đã xảy ra trong khi George vẫn còn đang cầu nguyện?",
+    "answer": "Có tiếng gõ cửa. Một bà nghèo mang đến một phần bữa ăn của mình cùng một ít tiền, rồi sau đó lại quay lại với một ổ bánh mì thật to."
+   },
+   {
+    "question": "Đức Chúa Trời có quan tâm đến những điều bình thường như bữa tối của chúng ta không? Con có thể xin Ngài điều gì?",
+    "answer": "Ý chính của chương này: Chúa Giê-xu dạy chúng ta xin “đồ ăn đủ ngày.” Đức Chúa Trời quan tâm đến tất cả, kể cả bánh mì cho bữa tối, nên chúng ta có thể xin Ngài những nhu cầu hằng ngày."
+   }
+  ],
+  "body_text": "“Xin cho chúng tôi hôm nay đồ ăn đủ ngày” — trích Ma-thi-ơ 6 Một Chúa Nhật nọ, vợ chồng George chỉ còn lại vài đồng xu cuối cùng. Trong nhà chỉ có vừa đủ bánh mì cho ngày hôm đó, và không có tiền mua thêm cho bữa tối. Vì vậy George cầu nguyện. Ông không cầu nguyện bằng những lời hoa mỹ. Ông xin Đức Chúa Trời thật đơn sơ, rằng xin Ngài gửi cho họ một ít bánh mì cho bữa tối — bánh mì thật, đặt trên bàn ăn, ngay trong ngày hôm đó. Và đây là điều đã xảy ra. Trong khi George vẫn còn đang cầu nguyện — trước cả khi ông cầu nguyện xong — thì có tiếng gõ cửa! Một bà nghèo đang đứng ở đó. Bà mang đến một phần bữa ăn của chính mình để chia sẻ, cùng một ít tiền của một người bạn nghèo khác. Và chiều hôm đó, bà lại quay trở lại, lần này mang theo một ổ bánh mì thật to. Đức Chúa Trời đã nghe. Thật ra, Đức Chúa Trời đã sai bà lên đường mang bánh đến trước khi George cầu xin xong. Câu trả lời đã trên đường đến ngay trong lúc ông vẫn còn quỳ gối. Khi Chúa Giê-xu dạy chúng ta cầu nguyện, Ngài bảo chúng ta xin “đồ ăn đủ ngày” — những thứ chúng ta cần cho mỗi ngày. George tin lời ấy thật lòng, và Đức Chúa Trời đã chăm sóc ông. Con cũng có thể xin Đức Chúa Trời những điều bình thường mà con cần. Ngài quan tâm đến tất cả, kể cả bánh mì cho bữa tối. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài quan tâm đến cả những điều nhỏ bé, thường ngày. Xin ban cho con những gì con cần hôm nay. A-men.",
+  "word_count": 313
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Hãy mở miệng cho rộng",
+  "body_html": "<blockquote>“Hãy mở miệng ngươi cho rộng, thì Ta sẽ làm cho đầy.” — trích Thi Thiên 81</blockquote> <p>Một ngày kia George đọc về một người sống từ lâu lắm rồi, đã xây một mái nhà cho trẻ mồ côi — những em bé không có cha mẹ — chỉ bằng cách tin cậy Đức Chúa Trời. Và một ý tưởng lớn bắt đầu nảy nở trong lòng George. Nếu chính <em>ông</em> cũng mở một mái nhà cho trẻ mồ côi thì sao?</p> <p>George cầu nguyện mãi về điều đó. Ông còn xin Đức Chúa Trời cất ý tưởng ấy đi nếu nó không đến từ Ngài. Rồi khi đọc Kinh Thánh, ông gặp những lời này: “Hãy mở miệng ngươi cho rộng, thì Ta sẽ làm cho đầy.” Như thể Đức Chúa Trời đang nói: “George ơi, hãy xin Ta những điều lớn lao. Ta làm được.”</p> <p>Vì thế George xin Đức Chúa Trời ba điều lớn: một ngôi nhà cho các em, một số tiền lớn, và những người tốt bụng để chăm sóc các em.</p> <p>Rồi ông chờ xem Đức Chúa Trời sẽ làm gì. Món quà đầu tiên chỉ là một đồng shilling — một đồng xu nhỏ. Ngày hôm sau, có người gửi đến một cái tủ quần áo lớn. Rồi một bà xin đến giúp. Rồi một cặp vợ chồng xin chăm sóc các em mà không nhận đồng lương nào cả.</p> <p>Từng chút một, Đức Chúa Trời đáp ứng mọi nhu cầu. Và vào một ngày mùa xuân, mái nhà mồ côi mở cửa — với mười bảy em nhỏ sống trong đó!</p> <p>George không làm tất cả những điều này để tỏ ra mình giỏi giang. Ông làm vậy để mọi người có thể tận mắt thấy rằng <strong>Đức Chúa Trời có thật, và Đức Chúa Trời vẫn nghe lời cầu nguyện.</strong></p> <p><em>Lạy Đức Chúa Trời, Ngài đủ lớn lao để làm được mọi điều. Xin giúp con mang đến cho Ngài những ước mong lớn nhất của con, và tin cậy Ngài về những điều ấy. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sau khi đọc về một người sống từ lâu lắm rồi, ý tưởng lớn nào đã nảy nở trong lòng George?",
+    "answer": "Mở một mái nhà cho trẻ mồ côi, những em bé không có cha mẹ, chỉ bằng cách tin cậy Đức Chúa Trời như người ấy đã làm."
+   },
+   {
+    "question": "George đã xin Đức Chúa Trời ba điều lớn nào?",
+    "answer": "Một ngôi nhà cho các em, một số tiền lớn, và những người tốt bụng để chăm sóc các em. Từng chút một, Đức Chúa Trời đáp ứng mọi nhu cầu, và mười bảy em nhỏ đã dọn vào ở."
+   },
+   {
+    "question": "Con có ước mong lớn nào có thể mang đến cho Đức Chúa Trời?",
+    "answer": "Ý chính của chương này: “Hãy mở miệng ngươi cho rộng, thì Ta sẽ làm cho đầy” có nghĩa là Đức Chúa Trời đủ lớn lao để làm được mọi điều, nên chúng ta có thể mang đến cho Ngài những ước mong lớn nhất và tin cậy Ngài."
+   }
+  ],
+  "body_text": "“Hãy mở miệng ngươi cho rộng, thì Ta sẽ làm cho đầy.” — trích Thi Thiên 81 Một ngày kia George đọc về một người sống từ lâu lắm rồi, đã xây một mái nhà cho trẻ mồ côi — những em bé không có cha mẹ — chỉ bằng cách tin cậy Đức Chúa Trời. Và một ý tưởng lớn bắt đầu nảy nở trong lòng George. Nếu chính ông cũng mở một mái nhà cho trẻ mồ côi thì sao? George cầu nguyện mãi về điều đó. Ông còn xin Đức Chúa Trời cất ý tưởng ấy đi nếu nó không đến từ Ngài. Rồi khi đọc Kinh Thánh, ông gặp những lời này: “Hãy mở miệng ngươi cho rộng, thì Ta sẽ làm cho đầy.” Như thể Đức Chúa Trời đang nói: “George ơi, hãy xin Ta những điều lớn lao. Ta làm được.” Vì thế George xin Đức Chúa Trời ba điều lớn: một ngôi nhà cho các em, một số tiền lớn, và những người tốt bụng để chăm sóc các em. Rồi ông chờ xem Đức Chúa Trời sẽ làm gì. Món quà đầu tiên chỉ là một đồng shilling — một đồng xu nhỏ. Ngày hôm sau, có người gửi đến một cái tủ quần áo lớn. Rồi một bà xin đến giúp. Rồi một cặp vợ chồng xin chăm sóc các em mà không nhận đồng lương nào cả. Từng chút một, Đức Chúa Trời đáp ứng mọi nhu cầu. Và vào một ngày mùa xuân, mái nhà mồ côi mở cửa — với mười bảy em nhỏ sống trong đó! George không làm tất cả những điều này để tỏ ra mình giỏi giang. Ông làm vậy để mọi người có thể tận mắt thấy rằng Đức Chúa Trời có thật, và Đức Chúa Trời vẫn nghe lời cầu nguyện. Lạy Đức Chúa Trời, Ngài đủ lớn lao để làm được mọi điều. Xin giúp con mang đến cho Ngài những ước mong lớn nhất của con, và tin cậy Ngài về những điều ấy. A-men.",
+  "word_count": 345
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Cô gái đã dâng tất cả",
+  "body_html": "<blockquote>“Đức Chúa Trời yêu kẻ dâng của cách vui lòng.” — trích 2 Cô-rinh-tô 9</blockquote> <p>Một trong những món quà đẹp nhất mà các em mồ côi từng nhận được đến từ một cô gái nghèo làm nghề may quần áo. Mỗi tuần cô chỉ kiếm được vài đồng xu, vậy mà cô chưa bao giờ than phiền lần nào.</p> <p>Rồi một ngày kia cô được nhận một số tiền của riêng mình — khá nhiều tiền. Nào, nếu là con, con sẽ làm gì với một món bất ngờ như thế? Mua quần áo mới thật đẹp? Giữ hết cho riêng mình thật cẩn thận?</p> <p>Đây là điều cô đã làm. Trước hết cô trả hết những món nợ cũ. Rồi cô biếu mẹ một phần. Và rồi cô mang một món quà lớn — một trăm bảng Anh! — đến cho George, để giúp các em mồ côi.</p> <p>George ngạc nhiên đến nỗi ông hỏi đi hỏi lại cô, để chắc chắn rằng cô thật sự muốn dâng nhiều như vậy. Và cô trả lời bằng những lời đáng ghi nhớ: “Chúa Giê-xu đã đổ giọt máu cuối cùng của Ngài vì tôi. Lẽ nào tôi lại không dâng cho Ngài chừng này?”</p> <p>Và con biết không — cô giữ kín mọi chuyện. Cô vẫn mặc những bộ quần áo cũ đơn sơ như trước, và quay về với công việc may vá, chăm chỉ như mọi khi, ngay cả khi cô đang lặng lẽ dâng đi rất nhiều.</p> <p>Cô yêu Chúa Giê-xu, nên việc dâng hiến làm cô vui, chứ không làm cô buồn. Con không cần phải giàu mới trở thành người biết cho đi. Con chỉ cần có một tấm lòng biết yêu thương. Con có thể cho điều gì — một cách lặng lẽ, vui vẻ — cho một người đang cần?</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài đã ban Chúa Giê-xu cho con. Xin làm cho con thành một người vui vẻ cho đi trong thầm lặng, như cô gái tốt bụng ấy. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cô gái làm nghề may quần áo đã làm gì với số tiền cô được nhận?",
+    "answer": "Cô trả hết những món nợ cũ, biếu mẹ một phần, và mang một trăm bảng Anh đến cho George để giúp các em mồ côi."
+   },
+   {
+    "question": "Tại sao cô nói rằng mình muốn dâng nhiều như vậy?",
+    "answer": "Cô nói: “Chúa Giê-xu đã đổ giọt máu cuối cùng của Ngài vì tôi. Lẽ nào tôi lại không dâng cho Ngài chừng này?” Cô yêu Chúa Giê-xu, nên việc dâng hiến làm cô vui."
+   },
+   {
+    "question": "Con có thể cho điều gì, một cách lặng lẽ và vui vẻ, cho một người đang cần?",
+    "answer": "Ý chính của chương này: con không cần phải giàu mới trở thành người biết cho đi, chỉ cần có một tấm lòng yêu thương. Cô gái ấy đã giữ kín việc mình dâng hiến và dâng cách vui lòng."
+   }
+  ],
+  "body_text": "“Đức Chúa Trời yêu kẻ dâng của cách vui lòng.” — trích 2 Cô-rinh-tô 9 Một trong những món quà đẹp nhất mà các em mồ côi từng nhận được đến từ một cô gái nghèo làm nghề may quần áo. Mỗi tuần cô chỉ kiếm được vài đồng xu, vậy mà cô chưa bao giờ than phiền lần nào. Rồi một ngày kia cô được nhận một số tiền của riêng mình — khá nhiều tiền. Nào, nếu là con, con sẽ làm gì với một món bất ngờ như thế? Mua quần áo mới thật đẹp? Giữ hết cho riêng mình thật cẩn thận? Đây là điều cô đã làm. Trước hết cô trả hết những món nợ cũ. Rồi cô biếu mẹ một phần. Và rồi cô mang một món quà lớn — một trăm bảng Anh! — đến cho George, để giúp các em mồ côi. George ngạc nhiên đến nỗi ông hỏi đi hỏi lại cô, để chắc chắn rằng cô thật sự muốn dâng nhiều như vậy. Và cô trả lời bằng những lời đáng ghi nhớ: “Chúa Giê-xu đã đổ giọt máu cuối cùng của Ngài vì tôi. Lẽ nào tôi lại không dâng cho Ngài chừng này?” Và con biết không — cô giữ kín mọi chuyện. Cô vẫn mặc những bộ quần áo cũ đơn sơ như trước, và quay về với công việc may vá, chăm chỉ như mọi khi, ngay cả khi cô đang lặng lẽ dâng đi rất nhiều. Cô yêu Chúa Giê-xu, nên việc dâng hiến làm cô vui, chứ không làm cô buồn. Con không cần phải giàu mới trở thành người biết cho đi. Con chỉ cần có một tấm lòng biết yêu thương. Con có thể cho điều gì — một cách lặng lẽ, vui vẻ — cho một người đang cần? Lạy Đức Chúa Trời, cảm ơn Ngài đã ban Chúa Giê-xu cho con. Xin làm cho con thành một người vui vẻ cho đi trong thầm lặng, như cô gái tốt bụng ấy. A-men.",
+  "word_count": 342
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Món quà của bác thợ bánh",
+  "body_html": "<blockquote>“Cha kẻ mồ côi” — trích Thi Thiên 68</blockquote> <p>Càng ngày càng có thêm nhiều trẻ mồ côi đến sống với George, nên càng ngày càng có thêm nhiều miệng ăn. Và có những lúc thức ăn gần như hết sạch.</p> <p>Có một buổi sáng thật khó khăn. Chỉ còn đủ thức ăn cho đúng một ngày đó thôi. Người phụ nữ tốt bụng nấu ăn cho các bé trai chỉ còn lại hai đồng xu nhỏ, và bà đứng đó phân vân: nên tiêu chúng để mua bánh mì, hay mua thịt? Không đủ để mua cả hai.</p> <p>Và ngay lúc đó — cốc, cốc — bác thợ bánh đến gõ cửa. Nhưng bác không đến để lấy tiền. Bác đến để <em>tặng.</em> Bác để lại ba ổ bánh mì to, mới nướng, làm quà, thế thôi!</p> <p>Khi nhìn lại tất cả những ngày ấy, George nhận ra một điều. Ông viết xuống để khỏi quên: <strong>sự giúp đỡ luôn đến trước khi các em thật sự bị đói.</strong> Đức Chúa Trời chưa một lần nào để các em phải nhịn đói. Ngài chưa bao giờ đến trễ.</p> <p>Kinh Thánh gọi Đức Chúa Trời là “Cha kẻ mồ côi” — nghĩa là Đức Chúa Trời giống như một người cha hiền lành, yêu thương đối với những em bé không có cha. Các em mồ côi ấy không có cha ruột. Nhưng các em có một Người Cha tốt nhất, trông chừng từng bữa ăn một.</p> <p>Đức Chúa Trời cũng là Người Cha tốt lành của con nữa. Ngài thấy con cần gì, và Ngài không bao giờ đến trễ.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài là Người Cha yêu thương, không bao giờ quên con. Xin giúp con tin rằng Ngài luôn đến đúng lúc. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao sáng hôm đó bà đầu bếp lại lo lắng?",
+    "answer": "Chỉ còn thức ăn cho ngày hôm đó, và bà chỉ còn hai đồng xu nhỏ. Bà phân vân nên mua bánh mì hay mua thịt, vì không đủ tiền để mua cả hai."
+   },
+   {
+    "question": "Bác thợ bánh đã mang đến gì, và tại sao đó là một điều bất ngờ?",
+    "answer": "Bác không đến để lấy tiền mà đến để tặng. Bác để lại ba ổ bánh mì to, mới nướng, làm quà."
+   },
+   {
+    "question": "Đức Chúa Trời là “Cha kẻ mồ côi” nghĩa là gì? Ngài là Người Cha của con như thế nào?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời giống như một người cha hiền lành, yêu thương. Ngài thấy con cần gì, Ngài không bao giờ quên con, và Ngài không bao giờ đến trễ."
+   }
+  ],
+  "body_text": "“Cha kẻ mồ côi” — trích Thi Thiên 68 Càng ngày càng có thêm nhiều trẻ mồ côi đến sống với George, nên càng ngày càng có thêm nhiều miệng ăn. Và có những lúc thức ăn gần như hết sạch. Có một buổi sáng thật khó khăn. Chỉ còn đủ thức ăn cho đúng một ngày đó thôi. Người phụ nữ tốt bụng nấu ăn cho các bé trai chỉ còn lại hai đồng xu nhỏ, và bà đứng đó phân vân: nên tiêu chúng để mua bánh mì, hay mua thịt? Không đủ để mua cả hai. Và ngay lúc đó — cốc, cốc — bác thợ bánh đến gõ cửa. Nhưng bác không đến để lấy tiền. Bác đến để tặng. Bác để lại ba ổ bánh mì to, mới nướng, làm quà, thế thôi! Khi nhìn lại tất cả những ngày ấy, George nhận ra một điều. Ông viết xuống để khỏi quên: sự giúp đỡ luôn đến trước khi các em thật sự bị đói. Đức Chúa Trời chưa một lần nào để các em phải nhịn đói. Ngài chưa bao giờ đến trễ. Kinh Thánh gọi Đức Chúa Trời là “Cha kẻ mồ côi” — nghĩa là Đức Chúa Trời giống như một người cha hiền lành, yêu thương đối với những em bé không có cha. Các em mồ côi ấy không có cha ruột. Nhưng các em có một Người Cha tốt nhất, trông chừng từng bữa ăn một. Đức Chúa Trời cũng là Người Cha tốt lành của con nữa. Ngài thấy con cần gì, và Ngài không bao giờ đến trễ. Lạy Đức Chúa Trời, cảm ơn Ngài là Người Cha yêu thương, không bao giờ quên con. Xin giúp con tin rằng Ngài luôn đến đúng lúc. A-men.",
+  "word_count": 299
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Ba bao khoai tây",
+  "body_html": "<blockquote>“Ta sẽ nhậm lời họ trước khi kêu cầu ta” — trích Ê-sai 65</blockquote> <p>Lại có một buổi sáng khác, trong nhà gần như chẳng còn gì, mà cần khá nhiều tiền mới đủ nuôi tất cả các em. Vì thế George làm điều ông vẫn luôn làm. Ông đi cầu nguyện.</p> <p>Và trong khi ông vẫn còn đang cầu nguyện — lúc đó khoảng mười giờ sáng — một người đàn ông đến cửa báo tin. Một quý bà đã đặt mua <strong>trọn ba bao khoai tây</strong> để gửi đến các mái nhà mồ côi!</p> <p>Ba bao khoai tây to, đến đúng ngay lúc cần. George nói không thể nào chúng đến vào một lúc thích hợp hơn thế được.</p> <p>Những chuyện như vậy cứ xảy ra hết lần này đến lần khác. Có lần, George gặp một người đàn ông ngoài phố, người ấy đưa tiền cho ông để giúp các em mồ côi — và George nhận ra rằng nếu ông đi ngang qua đó trễ chỉ nửa phút thôi, ông đã hoàn toàn lỡ mất người ấy! Nhưng ông không trễ nửa phút. Đức Chúa Trời đã sắp đặt thời điểm thật hoàn hảo.</p> <p>Thật tuyệt vời phải không con? Đức Chúa Trời không chỉ gửi đến điều chúng ta cần. Ngài gửi đến đúng ngay phút cần — có khi trong lúc chúng ta vẫn còn đang cầu nguyện, có khi ngay trước khi chúng ta đi ngang qua. Ngài không bao giờ vội vàng, và Ngài cũng không bao giờ đến quá trễ.</p> <p>Không có điều gì quá nhỏ đến nỗi Đức Chúa Trời không sắp đặt. Ngài quan tâm đến từng chi tiết trong ngày của con, đến từng phút một.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài biết thời điểm hoàn hảo cho mọi điều. Xin giúp con biết chờ đợi Ngài và không lo lắng. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã đến cửa trong khi George đang cầu nguyện lúc khoảng mười giờ sáng?",
+    "answer": "Một lời nhắn rằng một quý bà đã đặt mua trọn ba bao khoai tây để gửi đến các mái nhà mồ côi, đến đúng ngay lúc cần."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra khi George gặp một người đàn ông ngoài phố?",
+    "answer": "Người ấy đưa tiền cho ông để giúp các em mồ côi. Nếu George đi ngang qua đó trễ chỉ nửa phút thôi, ông đã lỡ mất người ấy."
+   },
+   {
+    "question": "Có điều gì quá nhỏ đến nỗi Đức Chúa Trời không lo đến không? Chúng ta có thể thôi lo lắng về điều gì?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời gửi đến điều chúng ta cần vào đúng ngay phút cần. Không có gì quá nhỏ đối với Ngài, nên chúng ta có thể chờ đợi Ngài và không lo lắng."
+   }
+  ],
+  "body_text": "“Ta sẽ nhậm lời họ trước khi kêu cầu ta” — trích Ê-sai 65 Lại có một buổi sáng khác, trong nhà gần như chẳng còn gì, mà cần khá nhiều tiền mới đủ nuôi tất cả các em. Vì thế George làm điều ông vẫn luôn làm. Ông đi cầu nguyện. Và trong khi ông vẫn còn đang cầu nguyện — lúc đó khoảng mười giờ sáng — một người đàn ông đến cửa báo tin. Một quý bà đã đặt mua trọn ba bao khoai tây để gửi đến các mái nhà mồ côi! Ba bao khoai tây to, đến đúng ngay lúc cần. George nói không thể nào chúng đến vào một lúc thích hợp hơn thế được. Những chuyện như vậy cứ xảy ra hết lần này đến lần khác. Có lần, George gặp một người đàn ông ngoài phố, người ấy đưa tiền cho ông để giúp các em mồ côi — và George nhận ra rằng nếu ông đi ngang qua đó trễ chỉ nửa phút thôi, ông đã hoàn toàn lỡ mất người ấy! Nhưng ông không trễ nửa phút. Đức Chúa Trời đã sắp đặt thời điểm thật hoàn hảo. Thật tuyệt vời phải không con? Đức Chúa Trời không chỉ gửi đến điều chúng ta cần. Ngài gửi đến đúng ngay phút cần — có khi trong lúc chúng ta vẫn còn đang cầu nguyện, có khi ngay trước khi chúng ta đi ngang qua. Ngài không bao giờ vội vàng, và Ngài cũng không bao giờ đến quá trễ. Không có điều gì quá nhỏ đến nỗi Đức Chúa Trời không sắp đặt. Ngài quan tâm đến từng chi tiết trong ngày của con, đến từng phút một. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài biết thời điểm hoàn hảo cho mọi điều. Xin giúp con biết chờ đợi Ngài và không lo lắng. A-men.",
+  "word_count": 317
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Sữa cho bữa sáng",
+  "body_html": "<blockquote>“Người nào tìm cầu Đức Giê-hô-va chẳng thiếu của tốt gì.” — trích Thi Thiên 34</blockquote> <p>Sáng nào các em mồ côi cũng có cùng một bữa sáng vui vẻ: cháo yến mạch nóng ăn với sữa. Nhưng sữa thì phải tốn tiền — và có một buổi tối gần như chẳng còn đồng nào.</p> <p>Sáng sớm hôm sau, trước tám giờ, người giao sữa sẽ đến, mà lại không có tiền trả cho bác, cũng không có sữa cho món cháo của các em. Biết phải làm sao đây?</p> <p>Vì vậy tối hôm đó, lúc sáu giờ, George và hai người phụ giúp cùng nhau quỳ gối xuống, xin Đức Chúa Trời gửi đến điều cần thiết trước khi trời sáng.</p> <p>Họ <strong>vừa mới đứng dậy</strong> thì một lá thư đến. Bên trong là một món quà cho các em mồ côi! Người tốt bụng gửi thư còn viết kèm một điều thật tuyệt vời: “Tôi rất thích gửi những món quà nhỏ này. Chúng thường đến đúng ngay lúc cần.”</p> <p>Bà ấy chẳng hề biết gì về chuyện sữa, về buổi sáng hôm sau, hay về chiếc ví trống rỗng. Nhưng Đức Chúa Trời biết. Và Ngài đã cho lá thư của bà lên đường từ trước, để nó đến đúng vào buổi tối cần đến nó — kịp có sữa cho buổi sáng.</p> <p>Đức Chúa Trời rất thích đáp lời những lời cầu nguyện như thế: cầu nguyện buổi tối, được đáp lời trước khi mặt trời mọc. Khi con tìm cầu Đức Chúa Trời và tin cậy Ngài, con sẽ không thiếu những điều tốt lành mà con thật sự cần.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài đáp lời cầu nguyện, kể cả trước khi trời sáng. Con sẽ tin cậy Ngài về ngày mai. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao tối hôm đó George và những người phụ giúp cần phải cầu nguyện?",
+    "answer": "Gần như không còn sữa, và sáng sớm hôm sau người giao sữa sẽ đến mà không có tiền trả cho món cháo của các em."
+   },
+   {
+    "question": "Điều gì đã đến ngay sau khi họ vừa đứng dậy?",
+    "answer": "Một lá thư có món quà cho các em mồ côi. Người gửi viết: “Tôi rất thích gửi những món quà nhỏ này. Chúng thường đến đúng ngay lúc cần.”"
+   },
+   {
+    "question": "Tối nay, trước khi trời sáng, con có thể tin cậy Đức Chúa Trời về điều gì?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời rất thích đáp lời cầu nguyện, kể cả trước khi mặt trời mọc. Những ai tìm cầu Ngài sẽ không thiếu những điều tốt lành mà họ thật sự cần."
+   }
+  ],
+  "body_text": "“Người nào tìm cầu Đức Giê-hô-va chẳng thiếu của tốt gì.” — trích Thi Thiên 34 Sáng nào các em mồ côi cũng có cùng một bữa sáng vui vẻ: cháo yến mạch nóng ăn với sữa. Nhưng sữa thì phải tốn tiền — và có một buổi tối gần như chẳng còn đồng nào. Sáng sớm hôm sau, trước tám giờ, người giao sữa sẽ đến, mà lại không có tiền trả cho bác, cũng không có sữa cho món cháo của các em. Biết phải làm sao đây? Vì vậy tối hôm đó, lúc sáu giờ, George và hai người phụ giúp cùng nhau quỳ gối xuống, xin Đức Chúa Trời gửi đến điều cần thiết trước khi trời sáng. Họ vừa mới đứng dậy thì một lá thư đến. Bên trong là một món quà cho các em mồ côi! Người tốt bụng gửi thư còn viết kèm một điều thật tuyệt vời: “Tôi rất thích gửi những món quà nhỏ này. Chúng thường đến đúng ngay lúc cần.” Bà ấy chẳng hề biết gì về chuyện sữa, về buổi sáng hôm sau, hay về chiếc ví trống rỗng. Nhưng Đức Chúa Trời biết. Và Ngài đã cho lá thư của bà lên đường từ trước, để nó đến đúng vào buổi tối cần đến nó — kịp có sữa cho buổi sáng. Đức Chúa Trời rất thích đáp lời những lời cầu nguyện như thế: cầu nguyện buổi tối, được đáp lời trước khi mặt trời mọc. Khi con tìm cầu Đức Chúa Trời và tin cậy Ngài, con sẽ không thiếu những điều tốt lành mà con thật sự cần. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài đáp lời cầu nguyện, kể cả trước khi trời sáng. Con sẽ tin cậy Ngài về ngày mai. A-men.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Ngân hàng không bao giờ vỡ nợ",
+  "body_html": "<blockquote>Hãy “chứa của cải ở trên trời,” là nơi chẳng có gì bị mất. — trích Ma-thi-ơ 6</blockquote> <p>Một ngày kia có mấy vị khách đến thăm mái nhà mồ côi của các bé trai. Họ rất ngạc nhiên vì các em được chăm sóc chu đáo đến thế. Nhưng họ cũng hơi thắc mắc.</p> <p>“Hẳn là,” một quý bà nói, “ở đây không thể lo cho tất cả những việc này nếu không có một khoản tiền lớn để dành trong ngân hàng. Chắc hẳn phải có một quỹ dự trữ kha khá.”</p> <p>Và một quý ông hỏi người phụ nữ trông coi mái nhà: “Bà có để dành được một khoản tiền kha khá không?”</p> <p>Sự thật là lúc ấy gần như chẳng còn đồng nào. Nhưng con hãy nghe câu trả lời thật đẹp mà bà đã nói: “Tiền của chúng tôi được gửi trong một ngân hàng không bao giờ vỡ nợ.”</p> <p>Bà muốn nói gì vậy? Bà muốn nói đến <strong>chính Đức Chúa Trời.</strong> Những ngân hàng bình thường có thể hết tiền. Nhưng Đức Chúa Trời không bao giờ cạn, và Đức Chúa Trời không bao giờ để con dân Ngài thất vọng. Ngài là ngân hàng của họ — ngân hàng duy nhất trên cả thế giới không bao giờ, không bao giờ vỡ nợ.</p> <p>Quý bà kia cảm động đến rơi nước mắt. Và khi các vị khách ra về, quý ông đã dâng năm bảng Anh — số tiền đến đúng vào lúc George không còn lấy một đồng xu nào.</p> <p>Con cũng có thể cất giữ kho báu của mình ở chính nơi an toàn đó. Tiền bạc có thể bị mất hoặc tiêu hết, nhưng những việc tốt con làm cho Đức Chúa Trời, và lòng tin cậy của con nơi Ngài, được cất giữ ở một nơi không gì có thể làm hỏng được.</p> <p><em>Lạy Đức Chúa Trời, Ngài không bao giờ cạn và không bao giờ thất hứa. Xin giúp con giữ kho báu của mình an toàn nơi Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Các vị khách nghĩ rằng mái nhà mồ côi chắc hẳn phải có gì?",
+    "answer": "Họ nghĩ chắc hẳn phải có một khoản tiền lớn để dành trong ngân hàng, một quỹ dự trữ kha khá."
+   },
+   {
+    "question": "Người phụ nữ muốn nói gì khi nói đến “một ngân hàng không bao giờ vỡ nợ”?",
+    "answer": "Bà muốn nói đến chính Đức Chúa Trời. Những ngân hàng bình thường có thể hết tiền, nhưng Đức Chúa Trời không bao giờ cạn và không bao giờ để con dân Ngài thất vọng."
+   },
+   {
+    "question": "Có những kho báu nào không bao giờ bị mất?",
+    "answer": "Ý chính của chương này: tiền bạc có thể bị mất hoặc tiêu hết, nhưng những việc tốt con làm cho Đức Chúa Trời và lòng tin cậy của con nơi Ngài được cất giữ ở nơi không gì có thể làm hỏng được."
+   }
+  ],
+  "body_text": "Hãy “chứa của cải ở trên trời,” là nơi chẳng có gì bị mất. — trích Ma-thi-ơ 6 Một ngày kia có mấy vị khách đến thăm mái nhà mồ côi của các bé trai. Họ rất ngạc nhiên vì các em được chăm sóc chu đáo đến thế. Nhưng họ cũng hơi thắc mắc. “Hẳn là,” một quý bà nói, “ở đây không thể lo cho tất cả những việc này nếu không có một khoản tiền lớn để dành trong ngân hàng. Chắc hẳn phải có một quỹ dự trữ kha khá.” Và một quý ông hỏi người phụ nữ trông coi mái nhà: “Bà có để dành được một khoản tiền kha khá không?” Sự thật là lúc ấy gần như chẳng còn đồng nào. Nhưng con hãy nghe câu trả lời thật đẹp mà bà đã nói: “Tiền của chúng tôi được gửi trong một ngân hàng không bao giờ vỡ nợ.” Bà muốn nói gì vậy? Bà muốn nói đến chính Đức Chúa Trời. Những ngân hàng bình thường có thể hết tiền. Nhưng Đức Chúa Trời không bao giờ cạn, và Đức Chúa Trời không bao giờ để con dân Ngài thất vọng. Ngài là ngân hàng của họ — ngân hàng duy nhất trên cả thế giới không bao giờ, không bao giờ vỡ nợ. Quý bà kia cảm động đến rơi nước mắt. Và khi các vị khách ra về, quý ông đã dâng năm bảng Anh — số tiền đến đúng vào lúc George không còn lấy một đồng xu nào. Con cũng có thể cất giữ kho báu của mình ở chính nơi an toàn đó. Tiền bạc có thể bị mất hoặc tiêu hết, nhưng những việc tốt con làm cho Đức Chúa Trời, và lòng tin cậy của con nơi Ngài, được cất giữ ở một nơi không gì có thể làm hỏng được. Lạy Đức Chúa Trời, Ngài không bao giờ cạn và không bao giờ thất hứa. Xin giúp con giữ kho báu của mình an toàn nơi Ngài. A-men.",
+  "word_count": 344
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Ngôi nhà trên đồi, được xây bằng lời cầu nguyện",
+  "body_html": "<blockquote>“Sự nhịn nhục phải làm trọn việc nó” — trích Gia-cơ 1</blockquote> <p>Các mái nhà mồ côi trở nên đông đúc và bận rộn đến nỗi George quyết định làm một việc thật lớn: xây một ngôi nhà thật to ở vùng quê, đủ rộng cho <em>ba trăm</em> em nhỏ. Và ông sẽ trả mọi chi phí theo cách ông vẫn luôn làm — chỉ bằng sự cầu nguyện.</p> <p>Một ngôi nhà khổng lồ thì tốn một số tiền khổng lồ. Vì thế George bắt đầu cầu nguyện cho việc ấy, ngày này qua ngày khác. Và vào ngày cầu nguyện thứ ba mươi sáu, một món quà một ngàn bảng Anh đã đến! Đó là một số tiền tuyệt vời — vậy mà George vẫn thấy bình thản như thể có ai vừa đưa cho ông một đồng xu nhỏ, vì lúc ấy ông đã hoàn toàn trông đợi Đức Chúa Trời đáp lời.</p> <p>Rồi một người chuyên vẽ bản thiết kế nhà — một người George chưa từng gặp mặt — đã ngỏ ý thiết kế cả ngôi nhà và trông coi việc xây dựng mà không lấy tiền!</p> <p>Tiếp theo, George cần đất. Ông nghe nói có một cánh đồng đẹp trên một ngọn đồi tên là Ashley Down. Nhưng tối đầu tiên, tìm khắp nơi cũng không gặp được ông chủ đất. George không buồn bực; ông cảm thấy Đức Chúa Trời có lý do của Ngài. Và ông đã đúng. Ngay đêm hôm đó, ông chủ đất thức giấc lúc ba giờ sáng và không sao ngủ lại được — đầu óc ông cứ nghĩ mãi về cánh đồng ấy. Ông quyết định rằng nếu George muốn mua, ông sẽ bán — và với giá thấp hơn rất nhiều so với dự định!</p> <p>Thế là George mua được cánh đồng lớn, và theo thời gian, những ngôi nhà to lớn mọc lên trên ngọn đồi ấy, đầy ắp hàng trăm, hàng trăm em mồ côi vui vẻ, được ăn no — từng viên gạch đều được xây bằng lời cầu nguyện.</p> <p>Đức Chúa Trời có thể làm nhiều hơn những gì chúng ta dám mơ. Hãy cứ cầu nguyện, cứ chờ đợi, và xem Ngài có thể xây dựng nên điều gì.</p> <p><em>Lạy Đức Chúa Trời, Ngài có thể làm những việc thật lớn lao. Xin dạy con cứ cầu nguyện và kiên nhẫn chờ đợi Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "George định trả tiền cho ngôi nhà lớn dành cho ba trăm em nhỏ bằng cách nào?",
+    "answer": "Theo cách ông vẫn luôn làm, chỉ bằng sự cầu nguyện. Vào ngày cầu nguyện thứ ba mươi sáu, một món quà một ngàn bảng Anh đã đến."
+   },
+   {
+    "question": "Tại sao ông chủ cánh đồng trên Ashley Down quyết định bán đất?",
+    "answer": "Ông thức giấc lúc ba giờ sáng, đầu óc cứ nghĩ mãi về cánh đồng ấy, và quyết định bán cho George với giá thấp hơn rất nhiều so với dự định."
+   },
+   {
+    "question": "Chúng ta có thể cứ cầu nguyện về điều gì, dù phải chờ đợi?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời có thể làm nhiều hơn những gì chúng ta dám mơ. Hãy cứ cầu nguyện, kiên nhẫn chờ đợi, và xem Ngài có thể xây dựng nên điều gì."
+   }
+  ],
+  "body_text": "“Sự nhịn nhục phải làm trọn việc nó” — trích Gia-cơ 1 Các mái nhà mồ côi trở nên đông đúc và bận rộn đến nỗi George quyết định làm một việc thật lớn: xây một ngôi nhà thật to ở vùng quê, đủ rộng cho ba trăm em nhỏ. Và ông sẽ trả mọi chi phí theo cách ông vẫn luôn làm — chỉ bằng sự cầu nguyện. Một ngôi nhà khổng lồ thì tốn một số tiền khổng lồ. Vì thế George bắt đầu cầu nguyện cho việc ấy, ngày này qua ngày khác. Và vào ngày cầu nguyện thứ ba mươi sáu, một món quà một ngàn bảng Anh đã đến! Đó là một số tiền tuyệt vời — vậy mà George vẫn thấy bình thản như thể có ai vừa đưa cho ông một đồng xu nhỏ, vì lúc ấy ông đã hoàn toàn trông đợi Đức Chúa Trời đáp lời. Rồi một người chuyên vẽ bản thiết kế nhà — một người George chưa từng gặp mặt — đã ngỏ ý thiết kế cả ngôi nhà và trông coi việc xây dựng mà không lấy tiền! Tiếp theo, George cần đất. Ông nghe nói có một cánh đồng đẹp trên một ngọn đồi tên là Ashley Down. Nhưng tối đầu tiên, tìm khắp nơi cũng không gặp được ông chủ đất. George không buồn bực; ông cảm thấy Đức Chúa Trời có lý do của Ngài. Và ông đã đúng. Ngay đêm hôm đó, ông chủ đất thức giấc lúc ba giờ sáng và không sao ngủ lại được — đầu óc ông cứ nghĩ mãi về cánh đồng ấy. Ông quyết định rằng nếu George muốn mua, ông sẽ bán — và với giá thấp hơn rất nhiều so với dự định! Thế là George mua được cánh đồng lớn, và theo thời gian, những ngôi nhà to lớn mọc lên trên ngọn đồi ấy, đầy ắp hàng trăm, hàng trăm em mồ côi vui vẻ, được ăn no — từng viên gạch đều được xây bằng lời cầu nguyện. Đức Chúa Trời có thể làm nhiều hơn những gì chúng ta dám mơ. Hãy cứ cầu nguyện, cứ chờ đợi, và xem Ngài có thể xây dựng nên điều gì. Lạy Đức Chúa Trời, Ngài có thể làm những việc thật lớn lao. Xin dạy con cứ cầu nguyện và kiên nhẫn chờ đợi Ngài. A-men.",
+  "word_count": 403
+ }
+}
+]

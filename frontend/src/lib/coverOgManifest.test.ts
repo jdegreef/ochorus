@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from './coverLayouts';
-import { coverStyleFor, scriptOf, volumeNumeral } from './coverStyles';
+import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
@@ -70,6 +70,7 @@ type Twin = {
 	style: string;
 	volume?: string | null;
 	layout?: string;
+	caps?: boolean;
 	rows?: Record<string, number[][]>;
 	middle?: number[];
 };
@@ -119,6 +120,7 @@ const needTwins = once(() => {
 				art,
 				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
+				caps: smallCapsFor(f.slug),
 				layout: (() => {
 					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug, f.title) : null;
 					return layoutKey(
@@ -204,6 +206,10 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(half, 'run `cd frontend && npm run og:covers`').toEqual([]);
 	});
 
+	// The first test to call `needTwins()` pays for reading every book fixture,
+	// and that read grows with the library: it sat at ~4.9s locally against
+	// vitest's 5s default and timed out on loaded CI runners. A content PR
+	// should not be able to fail this gate by adding one more book.
 	it('covers every edition that needs a twin, and none that does not', () => {
 		const recorded = new Set(Object.keys(manifest()));
 		const wanted = new Set(needTwins().map((b) => b.key));
@@ -217,7 +223,7 @@ describe('the og twins were drawn in the style the table names now', () => {
 			'a twin for an edition that no longer needs one — it has designed artwork ' +
 				'now, or it is gone. Re-run `npm run og:covers` and delete the orphan png.'
 		).toEqual([]);
-	});
+	}, 30_000);
 
 	it('gives every translated edition a card of its own', () => {
 		// The gate above would pass on a library that had no translations at all.
@@ -272,6 +278,18 @@ describe('the og twins were drawn in the style the table names now', () => {
 			.filter((b) => recorded[b.key] && (recorded[b.key].volume ?? null) !== b.volume)
 			.map((b) => `${b.key}: drawn as ${recorded[b.key].volume ?? null}, now ${b.volume}`);
 		expect(stale, 'a series changed but its share cards did not — run `npm run og:covers`').toEqual(
+			[]
+		);
+	});
+
+	it('sets every card in small capitals as the table does', () => {
+		// Like the numeral, a table no other digest sees: a book added to
+		// `TITLE_SMALL_CAPS` would otherwise keep a card in lower case.
+		const recorded = manifest();
+		const stale = needTwins()
+			.filter((b) => recorded[b.key] && (recorded[b.key].caps ?? false) !== b.caps)
+			.map((b) => `${b.key}: drawn with caps ${recorded[b.key].caps ?? false}, now ${b.caps}`);
+		expect(stale, 'a title changed case but its share cards did not — run `npm run og:covers`').toEqual(
 			[]
 		);
 	});

@@ -2863,3 +2863,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   ENGLISH pair anchors on (back-to-back display lines anchor on each other, so mirror
   the English list order). Prove it: strip every block, `restore_dropped_blocks`, and
   compare to your body byte for byte.
+- **Level 1 books, tranche 1 (vi/ko, 19 short books, 2026-10-24) — what a book batch needs
+  beyond the text.** (1) **Series names per language**: a volume in a series
+  (`brave-for-god`, `straight-talk` for the -teens editions) fails
+  `SeriesMembershipTests` until `content/series.json` carries a `library.seriestranslation`
+  row for that language. (2) **Young-reader suffixes**: vi `(Cho thiếu nhi)` / `(Cho thiếu
+  niên)`, ko `(어린이용)` / `(청소년용)`. The longer vi `(Dành cho thiếu nhi)` broke
+  `coverLayouts.test.ts` "the rail": a rail-layout author's title must stay ≤28
+  characters. (3) **Plans completed by the batch** need their prose in the same PR (five
+  per language here); compute them from `plan_seed.all_plan_sources()` against the
+  editions you are adding. (4) **og:covers in a fresh container**: Playwright wants a
+  newer headless shell than `/opt/pw-browsers` has; point `PLAYWRIGHT_BROWSERS_PATH` at a
+  scratch dir with `chromium_headless_shell-<rev>/chrome-headless-shell-linux64/
+  chrome-headless-shell` symlinked to the installed `headless_shell`. Adding ko titles in
+  new cover styles changes the shared Hangul font digest of EVERY ko twin; keep main's
+  existing ko PNGs (drawn by CI's browser) and commit only the manifest's new digests.
+  (5) `normalize_quotes.py` rewrites `body_html` only: re-derive `body_text` /
+  `word_count` after it.

@@ -71,6 +71,17 @@
 	$effect(() => {
 		record = getProgressRecord(book.slug);
 	});
+	// A dated devotional's read card names today, not its January chapter —
+	// the reader's local date, so only once in the browser (the page is
+	// prerendered; the build would bake the day it ran).
+	let todayLabel = $state('');
+	// Reset for every book: the page instance is reused across client-side
+	// navigation, so an ordinary book must not inherit a devotional's date.
+	$effect(() => {
+		todayLabel = book.daily
+			? new Date().toLocaleDateString(contentLang(book.language), { day: 'numeric', month: 'long' })
+			: '';
+	});
 	const inEdition = (order: number) => book.chapters.some((c) => c.order === order);
 	const furthest = $derived(record ? furthestOf(record) : null);
 	// The other chapter worth a link beside Continue: the one last opened, when
@@ -713,7 +724,9 @@
 									class="px-1.5 opacity-50">·</span
 								><span class="text-muted">{t('book.noAccount')}</span>
 							</p>
-							{#if book.chapters[0]}
+							{#if todayLabel}
+								<p class="read-card-title">{todayLabel}</p>
+							{:else if book.chapters[0]}
 								<p class="read-card-title" dir="auto">
 									{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
 								</p>
@@ -721,7 +734,20 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						<a href={readHref(readOrder)} class="btn btn-primary">{readLabel}</a>
+						{#if book.daily}
+							<!-- A year-long devotional is read by the calendar: today's
+							     entry is the main way in, the book from its start the
+							     second (library/daily_readings). -->
+							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary">{t('plans.todaysReading')}</a>
+						{/if}
+						<a href={readHref(readOrder)} class="btn {book.daily ? 'btn-ghost' : 'btn-primary'}">{readLabel}</a>
+						{#if book.daily_plan}
+							<!-- The self-paced way through: day one is 1 January's
+							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
+							<a href={localizeHref(`/plans/${book.daily_plan}/`)} class="text-small text-accent hover:underline"
+								>{t('daily.followPlan')}</a
+							>
+						{/if}
 						{#if otherPlace}
 							<a href={readHref(otherPlace.order)} class="text-small text-accent hover:underline"
 								>{otherPlace.label.replace('%n%', String(otherPlace.order))}</a

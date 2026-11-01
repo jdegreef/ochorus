@@ -577,6 +577,32 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "key-teachings"
+  ],
+  "language": "pt",
+  "title": "Os ensinamentos essenciais",
+  "description": "Guias breves e fiéis da Ochorus ao coração do ensino de um autor clássico: cada capítulo termina com perguntas e uma oração, e conduz o leitor aos próprios livros do autor.",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "hi",
+  "title": "मुख्य शिक्षाएँ",
+  "description": "Ochorus की छोटी और विश्वसनीय मार्गदर्शिकाएँ, जो किसी एक क्लासिक लेखक की शिक्षा के मूल तक ले जाती हैं — हर अध्याय प्रश्नों और एक प्रार्थना के साथ समाप्त होता है, और पाठक को स्वयं लेखक की पुस्तकों की ओर ले जाता है।",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "anchored"
   ],
   "language": "fr",
@@ -662,6 +688,97 @@
   "description": "Devocionais de trinta dias para leitores de 9 a 12 anos, um livro de cada vez: um versículo, o que ele significa, uma pergunta para pensar, uma coisa para experimentar e uma oração.",
   "created_at": "2026-10-24T00:00:00Z",
   "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "vi",
+  "title": "Bám Rễ – 30 Ngày Với Đức Chúa Trời Dành Cho Thiếu Nhi",
+  "description": "Sách tĩnh nguyện ba mươi ngày cho các em từ 9 đến 12 tuổi, mỗi lần một quyển: một câu Kinh Thánh, ý nghĩa của câu ấy, một câu hỏi để suy nghĩ, một việc để thực hành và một lời cầu nguyện.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "ko",
+  "title": "뿌리내림 – 어린이를 위한 하나님과 함께하는 30일",
+  "description": "9세에서 12세 독자를 위한 30일 묵상집으로, 한 권씩 읽습니다. 성경 구절 하나, 그 뜻, 생각해 볼 질문, 실천해 볼 일, 그리고 기도가 담겨 있습니다.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "vi",
+  "title": "Can Đảm Vì Đức Chúa Trời",
+  "description": "Những câu chuyện có thật về đức tin dành cho bạn đọc nhỏ tuổi: những con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "ko",
+  "title": "하나님을 위해 용감하게",
+  "description": "어린 독자들을 위한 믿음의 실화예요. 세계 곳곳에서 하나님을 신뢰하고 용감해진 평범한 사람들의 이야기를 담았어요.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "vi",
+  "title": "Nói Thẳng Nói Thật",
+  "description": "Những tác phẩm kinh điển Cơ Đốc và những cuộc đời có thật được kể lại cho bạn đọc tuổi thiếu niên, thẳng thắn và bằng lời lẽ giản dị: người hành hương của Bunyan trên đường đến Thành Thiên Thượng, những lời nói thẳng của Spurgeon từ nông trại, và những người nam người nữ đã đặt cược tất cả nơi Đức Chúa Trời.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "ko",
+  "title": "솔직한 이야기",
+  "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
+  ],
+  "language": "pt",
+  "title": "Eles Eram Jovens",
+  "description": "Histórias verdadeiras, para leitores de 13 a 17 anos, de pessoas cuja fé começou, ou foi provada, antes de se tornarem adultas — contadas por inteiro, com as próprias palavras delas quando as temos, e com perguntas para refletir.",
+  "created_at": "2026-11-01T00:00:00Z",
+  "updated_at": "2026-11-01T00:00:00Z"
  }
 }
 ]

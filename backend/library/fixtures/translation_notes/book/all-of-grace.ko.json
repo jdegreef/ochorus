@@ -1,0 +1,1409 @@
+{
+ "kind": "book",
+ "slug": "all-of-grace",
+ "language": "ko",
+ "job_issue": 6174,
+ "pull_request": null,
+ "note": [
+  "Scripture is 개역 (kor_old), pasted by script where Spurgeon quotes the KJV. Where 개역 wording departs from his point the verse is kept and flagged (Ezek 11:19, 36:26; Rom 5:6; John 3:15; Acts 5:31; Gen 49:4; Zech 3:8; 1 John 5:18); where it cannot carry it at all his own wording is rendered (Isa 19:20 “a Saviour, and a great one”; Deut 33:25 shoes of iron; Heb 9:12). The source text of Rom 8:30 has a stray space (의롭 다), kept as data.",
+  "AI-translated (job #6174) in parallel chapters, then reconciled for one form per term (경건치 않은 자, 보혜사, 성도의 견인). English slips noted: “with him” for “with men”; a capitalised “Thy” addressed to the soul; an unopened quotation of 1 Cor 1:8. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Hebrews 3:7-8",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ecclesiastes 7:20",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 9:13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 15:4-8",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 5:45",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 8:30",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 51:4",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Isaiah 38:17",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Jeremiah 50:20",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Psalm 103:12",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Isaiah 43:25",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Psalm 103:10",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Matthew 12:31",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 7:48",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Job 5:9",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Numbers 21:9",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "John 3:18",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 3:21-26",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Romans 3:21-26",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Peter 3:18",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Psalm 90:11",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Job 41:5",
+   "status": "mined",
+   "block_index": 61,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 John 3:5",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "John 19:34",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "2 Samuel 23:5",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Jeremiah 13:23",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Luke 1:37",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Mark 10:27",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Ezekiel 11:19",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Romans 11:29",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "2 Peter 2:22",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Titus 2:11-12",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Titus 1:2",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 136:1",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Lamentations 3:22",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "1 Corinthians 12:3",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "John 6:44",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Mark 5:27-30",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Psalm 9:10",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Isaiah 55:3",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Isaiah 11:2",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Corinthians 5:19",
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "John 3:18",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "1 John 5:9",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Daniel 9:24",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "1 Corinthians 15:4",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Psalm 98:9",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Mark 9:7",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "John 3:36",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "John 3:36",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "block_index": 97,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Genesis 8:22",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "John 20:29",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "John 20:29",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "2 Peter 1:11",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Psalm 138:6",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "mined",
+   "block_index": 113,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Luke 10:34",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Psalm 76:5",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "block_index": 123,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Ephesians 2:4-5",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 125
+  },
+  {
+   "reference": "Isaiah 12:2",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "John 14:16",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 8:44",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Matthew 12:31",
+   "status": "self_rendered",
+   "block_index": 142
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 11:21",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Matthew 26:56",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "block_index": 155
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 156
+  },
+  {
+   "reference": "John 4:39",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 158,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "block_index": 161,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 164,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "mined",
+   "block_index": 166,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "block_index": 168,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "block_index": 171,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Psalm 127:1",
+   "status": "self_rendered",
+   "block_index": 172
+  },
+  {
+   "reference": "Daniel 5:23",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Matthew 13:55",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "Ephesians 1:21",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "Acts 5:30-31",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Isaiah 19:20",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "John 5:21",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "Revelation 3:7",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "Esther 4:11",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "self_rendered",
+   "block_index": 182
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "self_rendered",
+   "block_index": 188
+  },
+  {
+   "reference": "Mark 10:9",
+   "status": "self_rendered",
+   "block_index": 188
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "1 Kings 3:25",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 191
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 195
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "1 Kings 7:21",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "John 1:47",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 203
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "block_index": 205,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Ezekiel 18:4",
+   "status": "self_rendered",
+   "block_index": 206
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 207
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "self_rendered",
+   "block_index": 207
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 207
+  },
+  {
+   "reference": "Matthew 26:74-75",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Acts 16:26",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Exodus 17:6",
+   "status": "self_rendered",
+   "block_index": 209
+  },
+  {
+   "reference": "Matthew 27:25",
+   "status": "self_rendered",
+   "block_index": 210
+  },
+  {
+   "reference": "Psalm 81:11",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "block_index": 211,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Luke 22:62",
+   "status": "self_rendered",
+   "block_index": 222
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "self_rendered",
+   "block_index": 224
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "self_rendered",
+   "block_index": 225
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "block_index": 228,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "block_index": 228,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Kings 10:16-17",
+   "status": "self_rendered",
+   "block_index": 229
+  },
+  {
+   "reference": "1 Corinthians 1:4",
+   "status": "mined",
+   "block_index": 229,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Corinthians 1:5",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "self_rendered",
+   "block_index": 231
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "Zechariah 3:8",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "self_rendered",
+   "block_index": 234
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "self_rendered",
+   "block_index": 234
+  },
+  {
+   "reference": "2 Peter 2:7-8",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "Isaiah 9:12",
+   "status": "self_rendered",
+   "block_index": 236
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "self_rendered",
+   "block_index": 236
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Genesis 49:4",
+   "status": "self_rendered",
+   "block_index": 238
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "self_rendered",
+   "block_index": 238
+  },
+  {
+   "reference": "Colossians 2:7",
+   "status": "self_rendered",
+   "block_index": 238
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "self_rendered",
+   "block_index": 238
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "self_rendered",
+   "block_index": 239
+  },
+  {
+   "reference": "John 14:19",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "block_index": 240,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Job 17:9",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Jude 1:1",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Malachi 3:17",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Hebrews 9:12",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "James 1:27",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "self_rendered",
+   "block_index": 242
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "mined",
+   "block_index": 242,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "self_rendered",
+   "block_index": 242
+  },
+  {
+   "reference": "1 John 5:18",
+   "status": "self_rendered",
+   "block_index": 242
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "Revelation 20:11",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "block_index": 249,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "self_rendered",
+   "block_index": 253
+  },
+  {
+   "reference": "Romans 11:29",
+   "status": "mined",
+   "block_index": 253,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Romans 8:30",
+   "status": "self_rendered",
+   "block_index": 253
+  },
+  {
+   "reference": "Matthew 22:14",
+   "status": "mined",
+   "block_index": 253,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Isaiah 41:9",
+   "status": "mined",
+   "block_index": 253,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "self_rendered",
+   "block_index": 257
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "self_rendered",
+   "block_index": 257
+  },
+  {
+   "reference": "Revelation 20:11",
+   "status": "self_rendered",
+   "block_index": 258
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "block_index": 261
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "block_index": 261
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "block_index": 263
+  }
+ ]
+}

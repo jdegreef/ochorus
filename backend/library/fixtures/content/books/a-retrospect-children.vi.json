@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-children",
+  "language": "vi",
+  "title": "Hồi Tưởng (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Hudson Taylor đã rời nước Anh để đem tin lành về Chúa Giê-xu đến vùng nội địa Trung Quốc, tin cậy Đức Chúa Trời trong mọi điều mình cần. Ấn bản dành cho thiếu nhi này kể lại câu chuyện có thật về cuộc đời ông qua những chương ngắn, được viết để đọc to cho các em nghe: một câu Kinh Thánh, một cuộc phiêu lưu hay một lời cầu nguyện được nhậm, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Hồi Tưởng (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là ấn bản dành cho thiếu nhi kể lại câu chuyện cuộc đời do chính Hudson Taylor viết. Taylor đã vượt biển từ nước Anh đến Trung Quốc để kể cho người ta nghe về Chúa Giê-xu, và ông tin cậy Đức Chúa Trời sẽ ban cho mọi điều ông cần dọc đường. Mỗi chương ngắn kể một cuộc phiêu lưu có thật hay một lời cầu nguyện được nhậm trong cuộc đời ông."
+   },
+   {
+    "question": "Hudson Taylor là ai?",
+    "answer": "Một người Anh từ rất lâu trước đây đã trở thành giáo sĩ ở Trung Quốc, và đã lập nên một hội truyền giáo sai nhiều người đi sâu vào nội địa để kể cho người ta nghe về Chúa Giê-xu. Ông nổi tiếng vì đã tin cậy Đức Chúa Trời về thức ăn, tiền bạc và sự an toàn của mình, và vì đã mặc quần áo Trung Quốc để có thể đến gần những người ông thương yêu."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương mở đầu bằng một câu Kinh Thánh, kể một câu chuyện có thật trong cuộc đời Hudson Taylor, cho thấy một điều đơn giản câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi — để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn tự đọc. Cuốn tự truyện đầy đủ hơn của Hudson Taylor, Hồi Tưởng (A Retrospect), cũng có sẵn cho những bạn đọc lớn tuổi hơn."
+   },
+   {
+    "question": "Điều chính yếu mà cuốn sách dạy là gì?",
+    "answer": "Rằng ai theo Đức Chúa Trời cũng có thể hoàn toàn tin cậy Ngài — về tiền bạc, về sự an toàn, và về mọi sự giúp đỡ. Cuộc đời Hudson Taylor là một cuộc phiêu lưu có thật của việc cầu xin Đức Chúa Trời rồi nhìn xem Ngài chu cấp, để các em cũng học biết tin cậy Ngài."
+   },
+   {
+    "question": "Những câu chuyện này có thật không?",
+    "answer": "Có. Các câu chuyện được kể lại một cách đơn giản cho thiếu nhi, nhưng đều lấy từ chính lời Hudson Taylor kể về cuộc đời mình — chuyến hải hành có thật, những lời cầu nguyện được nhậm có thật, và những bước khởi đầu có thật của công cuộc truyền giáo của ông ở Trung Quốc."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại dành cho bạn đọc nhỏ tuổi của Ochorus, dựa theo cuốn Hồi Tưởng (A Retrospect) của Hudson Taylor, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/a-retrospect-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Cuốn Sách Nhỏ Trong Chiếc Giỏ",
+  "body_html": "<blockquote>“Mọi việc đã được trọn.” — trích Giăng 19</blockquote> <p>Khi Hudson Taylor khoảng mười lăm tuổi, có một buổi chiều dài và trống trải, cậu chẳng có việc gì để làm. Mẹ cậu đang đi thăm bạn bè ở một nơi rất xa. Hudson đi lang thang vào phòng sách của cha, tìm một thứ gì đó — bất cứ thứ gì — để đọc, và từ trong một chiếc giỏ nhỏ đựng những tập sách mỏng, cậu rút ra một cuốn sách nhỏ nói về Phúc Âm.</p> <p>“Mình sẽ chỉ đọc phần câu chuyện thôi,” cậu nghĩ, “còn phần giảng đạo ở cuối thì bỏ qua.”</p> <p>Nhưng khi cậu đọc, có mấy chữ như nhảy vọt ra trước mắt cậu: “công việc Đấng Christ đã làm trọn.” Rồi trong trí cậu hiện lên lời Chúa Giê-xu đã phán trên thập tự giá: “Mọi việc đã được trọn.” Bỗng nhiên Hudson hiểu ra. Chúa Giê-xu đã trả xong cho mọi tội lỗi của cậu rồi — trọn vẹn, một lần là đủ cả. Chẳng còn gì để Hudson phải tự mình làm cho xứng đáng hay thêm vào nữa. Điều duy nhất cậu cần làm là nói lời cảm ơn và nhận lấy.</p> <p>Thế là ngay tại đó, một mình trong một nhà kho cũ yên tĩnh, nơi cậu đã đến để đọc sách, Hudson quỳ xuống và dâng cuộc đời mình cho Chúa Giê-xu.</p> <p>Đây là tin lành mà Hudson đã tìm thấy, và tin lành ấy cũng dành cho con nữa: khi Chúa Giê-xu phán “Mọi việc đã được trọn,” Ngài thật có ý như vậy. Con không cần phải ngoan cho đủ thì mới được Đức Chúa Trời yêu thương. Chúa Giê-xu đã làm xong mọi việc rồi. Con chỉ cần nhận lấy, như nhận một món quà.</p> <p><em>Lạy Chúa Giê-xu yêu dấu, cảm ơn Ngài vì Ngài đã làm trọn công việc cứu con trên thập tự giá. Con xin hết lòng nhận lấy món quà của Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson đã tìm thấy gì trong chiếc giỏ nhỏ ở phòng sách của cha?",
+    "answer": "Một cuốn sách nhỏ nói về Phúc Âm. Cậu định chỉ đọc phần câu chuyện rồi bỏ qua “phần giảng đạo” ở cuối."
+   },
+   {
+    "question": "Lời nào Chúa Giê-xu phán trên thập tự giá đã hiện lên trong trí Hudson, và cậu đã hiểu ra điều gì?",
+    "answer": "“Mọi việc đã được trọn.” Cậu hiểu rằng Chúa Giê-xu đã trả xong cho mọi tội lỗi của cậu, nên chẳng còn gì để cậu phải tự mình làm cho xứng đáng hay thêm vào nữa."
+   },
+   {
+    "question": "Cùng trò chuyện: Con có nghĩ mình phải ngoan cho đủ thì Đức Chúa Trời mới yêu con không?",
+    "answer": "Điều chương này muốn nói: con không cần phải làm gì để được Đức Chúa Trời yêu thương. Chúa Giê-xu đã làm xong mọi việc rồi; chúng ta chỉ cần nhận lấy, như nhận một món quà."
+   }
+  ],
+  "body_text": "“Mọi việc đã được trọn.” — trích Giăng 19 Khi Hudson Taylor khoảng mười lăm tuổi, có một buổi chiều dài và trống trải, cậu chẳng có việc gì để làm. Mẹ cậu đang đi thăm bạn bè ở một nơi rất xa. Hudson đi lang thang vào phòng sách của cha, tìm một thứ gì đó — bất cứ thứ gì — để đọc, và từ trong một chiếc giỏ nhỏ đựng những tập sách mỏng, cậu rút ra một cuốn sách nhỏ nói về Phúc Âm. “Mình sẽ chỉ đọc phần câu chuyện thôi,” cậu nghĩ, “còn phần giảng đạo ở cuối thì bỏ qua.” Nhưng khi cậu đọc, có mấy chữ như nhảy vọt ra trước mắt cậu: “công việc Đấng Christ đã làm trọn.” Rồi trong trí cậu hiện lên lời Chúa Giê-xu đã phán trên thập tự giá: “Mọi việc đã được trọn.” Bỗng nhiên Hudson hiểu ra. Chúa Giê-xu đã trả xong cho mọi tội lỗi của cậu rồi — trọn vẹn, một lần là đủ cả. Chẳng còn gì để Hudson phải tự mình làm cho xứng đáng hay thêm vào nữa. Điều duy nhất cậu cần làm là nói lời cảm ơn và nhận lấy. Thế là ngay tại đó, một mình trong một nhà kho cũ yên tĩnh, nơi cậu đã đến để đọc sách, Hudson quỳ xuống và dâng cuộc đời mình cho Chúa Giê-xu. Đây là tin lành mà Hudson đã tìm thấy, và tin lành ấy cũng dành cho con nữa: khi Chúa Giê-xu phán “Mọi việc đã được trọn,” Ngài thật có ý như vậy. Con không cần phải ngoan cho đủ thì mới được Đức Chúa Trời yêu thương. Chúa Giê-xu đã làm xong mọi việc rồi. Con chỉ cần nhận lấy, như nhận một món quà. Lạy Chúa Giê-xu yêu dấu, cảm ơn Ngài vì Ngài đã làm trọn công việc cứu con trên thập tự giá. Con xin hết lòng nhận lấy món quà của Ngài. A-men.",
+  "word_count": 333
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Cánh Cửa Khóa Trái Của Mẹ",
+  "body_html": "<blockquote>“Người công bình lấy lòng sốt sắng cầu nguyện, thật có linh nghiệm nhiều.” — trích Gia-cơ 5</blockquote> <p>Bây giờ đến phần kỳ diệu nhất. Đúng vào lúc Hudson đang đọc cuốn sách nhỏ ấy, thì ở một nơi xa thật xa, có một chuyện khác đang xảy ra.</p> <p>Mẹ cậu, khi đang đi thăm bạn bè cách nhà nhiều dặm, bỗng thấy mình nhất định phải cầu nguyện cho con trai. Bà đi lên phòng, vặn chìa khóa để không ai làm phiền, rồi cầu nguyện — cầu nguyện mãi — suốt nhiều giờ liền. Bà cứ cầu nguyện cho đến khi tận sâu trong lòng bà thấy chắc chắn rằng Đức Chúa Trời đã nghe, và Hudson giờ đây đã được an toàn trong tay Đức Chúa Trời. Lúc ấy bà thôi cầu xin và bắt đầu cảm tạ Ngài.</p> <p>Hai tuần sau, bà về đến nhà. Hudson chạy ùa ra đón mẹ, nóng lòng muốn kể tin vui tuyệt vời của mình. Nhưng cậu chưa kịp nói gì, mẹ đã mỉm cười bảo: “Mẹ biết rồi, con trai của mẹ. Mẹ đã vui mừng suốt hai tuần lễ nay rồi!” Chính Đức Chúa Trời đã cho bà biết, và bà chưa hề kể với ai.</p> <p>Về sau, Hudson tìm thấy cuốn nhật ký nhỏ của Amelia, em gái cậu. Trong đó cô bé đã viết rằng mình sẽ cầu nguyện cho anh trai mỗi một ngày, cho đến khi anh đến với Đức Chúa Trời. Và đúng một tháng sau đó, cậu đã đến với Ngài.</p> <p>Có thể ngay lúc này, ở đâu đó, có ai đang cầu nguyện cho con — và Đức Chúa Trời nghe từng lời cầu nguyện ấy. Con cũng có thể cầu nguyện như vậy cho những người con thương yêu. Đức Chúa Trời thật sự lắng nghe.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì những người đang cầu nguyện cho con. Xin giúp con trung tín cầu nguyện cho những người con thương yêu. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mẹ của Hudson đã làm gì khi đang đi thăm bạn bè ở nơi xa?",
+    "answer": "Bà khóa cửa phòng lại và cầu nguyện cho Hudson suốt nhiều giờ, cho đến khi bà thấy chắc chắn rằng Đức Chúa Trời đã nghe. Lúc ấy bà thôi cầu xin và bắt đầu cảm tạ Ngài."
+   },
+   {
+    "question": "Khi Hudson chạy đến kể tin vui, mẹ cậu đã nói gì?",
+    "answer": "“Mẹ biết rồi, con trai của mẹ. Mẹ đã vui mừng suốt hai tuần lễ nay rồi!” Chính Đức Chúa Trời đã cho bà biết. (Amelia, em gái cậu, cũng đã cầu nguyện cho cậu mỗi ngày.)"
+   },
+   {
+    "question": "Cùng trò chuyện: Con có thể cầu nguyện cho ai, giống như mẹ và em gái của Hudson đã cầu nguyện cho cậu?",
+    "answer": "Điều chương này muốn nói: có thể ngay lúc này có ai đang cầu nguyện cho con, và con cũng có thể trung tín cầu nguyện cho những người con thương yêu, vì Đức Chúa Trời thật sự lắng nghe."
+   }
+  ],
+  "body_text": "“Người công bình lấy lòng sốt sắng cầu nguyện, thật có linh nghiệm nhiều.” — trích Gia-cơ 5 Bây giờ đến phần kỳ diệu nhất. Đúng vào lúc Hudson đang đọc cuốn sách nhỏ ấy, thì ở một nơi xa thật xa, có một chuyện khác đang xảy ra. Mẹ cậu, khi đang đi thăm bạn bè cách nhà nhiều dặm, bỗng thấy mình nhất định phải cầu nguyện cho con trai. Bà đi lên phòng, vặn chìa khóa để không ai làm phiền, rồi cầu nguyện — cầu nguyện mãi — suốt nhiều giờ liền. Bà cứ cầu nguyện cho đến khi tận sâu trong lòng bà thấy chắc chắn rằng Đức Chúa Trời đã nghe, và Hudson giờ đây đã được an toàn trong tay Đức Chúa Trời. Lúc ấy bà thôi cầu xin và bắt đầu cảm tạ Ngài. Hai tuần sau, bà về đến nhà. Hudson chạy ùa ra đón mẹ, nóng lòng muốn kể tin vui tuyệt vời của mình. Nhưng cậu chưa kịp nói gì, mẹ đã mỉm cười bảo: “Mẹ biết rồi, con trai của mẹ. Mẹ đã vui mừng suốt hai tuần lễ nay rồi!” Chính Đức Chúa Trời đã cho bà biết, và bà chưa hề kể với ai. Về sau, Hudson tìm thấy cuốn nhật ký nhỏ của Amelia, em gái cậu. Trong đó cô bé đã viết rằng mình sẽ cầu nguyện cho anh trai mỗi một ngày, cho đến khi anh đến với Đức Chúa Trời. Và đúng một tháng sau đó, cậu đã đến với Ngài. Có thể ngay lúc này, ở đâu đó, có ai đang cầu nguyện cho con — và Đức Chúa Trời nghe từng lời cầu nguyện ấy. Con cũng có thể cầu nguyện như vậy cho những người con thương yêu. Đức Chúa Trời thật sự lắng nghe. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì những người đang cầu nguyện cho con. Xin giúp con trung tín cầu nguyện cho những người con thương yêu. A-men.",
+  "word_count": 337
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Đồng Nửa Crown Cuối Cùng",
+  "body_html": "<blockquote>“Ai xin của ngươi, hãy cho.” — trích Ma-thi-ơ 5</blockquote> <p>Hudson muốn trở thành giáo sĩ ở đất nước Trung Quốc xa xôi, nơi anh sẽ phải tin cậy Đức Chúa Trời trong mọi sự. Vì vậy anh quyết định bắt đầu tập tin cậy Đức Chúa Trời ngay từ bây giờ.</p> <p>Một đêm nọ, trên đời anh chỉ còn lại đúng một đồng tiền — một đồng nửa crown duy nhất. Tối hôm ấy, đã khuya, có một người đàn ông nghèo đến van nài anh hãy đến cầu nguyện cho vợ ông, vì bà đang ốm rất nặng. Trong căn phòng trống trơn, lạnh lẽo của họ, Hudson thấy mấy đứa trẻ đang đói, một người mẹ với đứa con mới sinh bé xíu, và chẳng có chút gì để ăn cả.</p> <p>Hudson muốn giúp họ — nhưng nếu đưa cho họ đồng tiền duy nhất ấy, thì chính anh sẽ chẳng còn gì! Anh cố nói với họ về một Người Cha yêu thương ở trên trời, nhưng lời nói cứ nghẹn lại. Làm sao anh có thể nói về sự chăm sóc của Đức Chúa Trời trong khi tay vẫn nắm chặt đồng tiền cuối cùng? Thế là anh hít một hơi thật sâu và trao cho gia đình nghèo ấy trọn đồng nửa crown của mình. Ngay lập tức, niềm vui lại tràn ngập lòng anh, và anh vừa đi về nhà vừa hát.</p> <p>Ngay sáng hôm sau, bác đưa thư mang đến một lá thư. Bên trong có một đôi găng tay — và từ trong đôi găng rơi ra một đồng tiền lớn gấp bốn lần số tiền Hudson đã cho đi! “Tuyệt quá!” Hudson bật cười. Đức Chúa Trời đã trả lại cho anh nhiều hơn rất nhiều so với những gì anh đã buông tay.</p> <p>Con chẳng bao giờ cho nhiều hơn được Đức Chúa Trời. Khi con chia sẻ những gì mình có với người đang cần, con có thể tin cậy rằng Người Cha yêu thương sẽ chăm sóc con.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con vui lòng cho đi, ngay cả khi điều đó thật khó, và tin cậy rằng Ngài sẽ chăm sóc con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Hudson cho đi đồng tiền cuối cùng của mình?",
+    "answer": "Một gia đình nghèo chẳng có chút gì để ăn. Anh không thể nói về sự chăm sóc của Đức Chúa Trời trong khi tay vẫn nắm chặt đồng tiền cuối cùng, nên anh đã trao cho họ trọn đồng nửa crown."
+   },
+   {
+    "question": "Sáng hôm sau, bưu điện đã mang đến gì?",
+    "answer": "Một lá thư có đôi găng tay bên trong, và từ đó rơi ra một đồng tiền lớn gấp bốn lần số tiền Hudson đã cho đi."
+   },
+   {
+    "question": "Cùng trò chuyện: Có khi nào con thấy khó chia sẻ một món đồ không? Điều gì có thể giúp con?",
+    "answer": "Điều chương này muốn nói: con chẳng bao giờ cho nhiều hơn được Đức Chúa Trời. Khi con chia sẻ với người đang cần, con có thể tin cậy rằng Người Cha yêu thương sẽ chăm sóc con."
+   }
+  ],
+  "body_text": "“Ai xin của ngươi, hãy cho.” — trích Ma-thi-ơ 5 Hudson muốn trở thành giáo sĩ ở đất nước Trung Quốc xa xôi, nơi anh sẽ phải tin cậy Đức Chúa Trời trong mọi sự. Vì vậy anh quyết định bắt đầu tập tin cậy Đức Chúa Trời ngay từ bây giờ. Một đêm nọ, trên đời anh chỉ còn lại đúng một đồng tiền — một đồng nửa crown duy nhất. Tối hôm ấy, đã khuya, có một người đàn ông nghèo đến van nài anh hãy đến cầu nguyện cho vợ ông, vì bà đang ốm rất nặng. Trong căn phòng trống trơn, lạnh lẽo của họ, Hudson thấy mấy đứa trẻ đang đói, một người mẹ với đứa con mới sinh bé xíu, và chẳng có chút gì để ăn cả. Hudson muốn giúp họ — nhưng nếu đưa cho họ đồng tiền duy nhất ấy, thì chính anh sẽ chẳng còn gì! Anh cố nói với họ về một Người Cha yêu thương ở trên trời, nhưng lời nói cứ nghẹn lại. Làm sao anh có thể nói về sự chăm sóc của Đức Chúa Trời trong khi tay vẫn nắm chặt đồng tiền cuối cùng? Thế là anh hít một hơi thật sâu và trao cho gia đình nghèo ấy trọn đồng nửa crown của mình. Ngay lập tức, niềm vui lại tràn ngập lòng anh, và anh vừa đi về nhà vừa hát. Ngay sáng hôm sau, bác đưa thư mang đến một lá thư. Bên trong có một đôi găng tay — và từ trong đôi găng rơi ra một đồng tiền lớn gấp bốn lần số tiền Hudson đã cho đi! “Tuyệt quá!” Hudson bật cười. Đức Chúa Trời đã trả lại cho anh nhiều hơn rất nhiều so với những gì anh đã buông tay. Con chẳng bao giờ cho nhiều hơn được Đức Chúa Trời. Khi con chia sẻ những gì mình có với người đang cần, con có thể tin cậy rằng Người Cha yêu thương sẽ chăm sóc con. Lạy Đức Chúa Trời yêu dấu, xin giúp con vui lòng cho đi, ngay cả khi điều đó thật khó, và tin cậy rằng Ngài sẽ chăm sóc con. A-men.",
+  "word_count": 371
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Tiền Công Bị Quên",
+  "body_html": "<blockquote>“Cha các ngươi biết các ngươi cần sự gì trước khi chưa xin Ngài.” — trích Ma-thi-ơ 6</blockquote> <p>Hudson làm việc cho một ông bác sĩ rất bận rộn, và ông trả tiền công cho anh. Nhưng Hudson muốn tập tin cậy Đức Chúa Trời nhiều hơn nữa. Vì vậy anh đặt ra một kế hoạch: khi đến ngày lãnh lương, anh sẽ <em>không</em> nhắc ông bác sĩ. Thay vào đó, anh sẽ xin Đức Chúa Trời nhắc ông.</p> <p>Ngày lãnh lương đến rồi qua — và ông bác sĩ, vốn rất hay quên, đã quên mất. Hudson chẳng nói gì với ông, nhưng anh kể hết mọi điều cho Đức Chúa Trời, còn tiền của anh thì cứ vơi dần, vơi dần.</p> <p>Rồi một hôm, ông bác sĩ bỗng hỏi: “À này, Taylor — chẳng phải lại đến kỳ lãnh lương của cậu rồi sao?” Tim Hudson nhảy lên một cái! Nhưng rồi ông bác sĩ sực nhớ mình vừa gửi hết số tiền dư vào ngân hàng. Ôi trời. Hudson vẫn im lặng và vẫn tiếp tục cầu nguyện.</p> <p>Khuya tối thứ Bảy hôm ấy — khoảng mười giờ — ông bác sĩ quay lại phòng, miệng cười khúc khích. Một trong những bệnh nhân giàu nhất của ông vừa đến vào giờ kỳ lạ ấy để trả tiền khám bệnh! Ông bác sĩ đưa số tiền cho Hudson và bảo: “Cậu cứ cầm lấy mấy đồng này đi.”</p> <p>Đức Chúa Trời đã làm điều đó — Ngài lặng lẽ thúc giục người khác, vào đúng lúc, mà Hudson chẳng phải xin ai ngoài Đức Chúa Trời.</p> <p>Không phải lúc nào con cũng phải tự mình lo liệu mọi việc, hay nài nỉ người khác cho những gì con cần. Cha của con ở trên trời đã biết rồi, và Ngài có thể sắp đặt mọi việc theo những cách con chẳng bao giờ ngờ tới. Hãy xin Ngài.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài đã biết những gì con cần. Xin giúp con đem điều đó đến với Ngài trước tiên, và tin cậy vào thời điểm của Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson đã có kế hoạch gì khi đến ngày lãnh lương?",
+    "answer": "Anh sẽ không nhắc ông bác sĩ hay quên. Thay vào đó, anh sẽ xin Đức Chúa Trời nhắc ông."
+   },
+   {
+    "question": "Cuối cùng Hudson đã nhận được tiền như thế nào?",
+    "answer": "Khuya tối thứ Bảy, một bệnh nhân giàu có đến trả tiền khám bệnh, và ông bác sĩ đưa số tiền ấy cho Hudson mà bảo: “Cậu cứ cầm lấy mấy đồng này đi.”"
+   },
+   {
+    "question": "Cùng trò chuyện: Khi cần một điều gì, con xin ai trước tiên?",
+    "answer": "Điều chương này muốn nói: Cha của con ở trên trời đã biết những gì con cần, và Ngài có thể sắp đặt mọi việc theo những cách con chẳng bao giờ ngờ tới. Hãy đem điều đó đến với Ngài trước tiên và tin cậy vào thời điểm của Ngài."
+   }
+  ],
+  "body_text": "“Cha các ngươi biết các ngươi cần sự gì trước khi chưa xin Ngài.” — trích Ma-thi-ơ 6 Hudson làm việc cho một ông bác sĩ rất bận rộn, và ông trả tiền công cho anh. Nhưng Hudson muốn tập tin cậy Đức Chúa Trời nhiều hơn nữa. Vì vậy anh đặt ra một kế hoạch: khi đến ngày lãnh lương, anh sẽ không nhắc ông bác sĩ. Thay vào đó, anh sẽ xin Đức Chúa Trời nhắc ông. Ngày lãnh lương đến rồi qua — và ông bác sĩ, vốn rất hay quên, đã quên mất. Hudson chẳng nói gì với ông, nhưng anh kể hết mọi điều cho Đức Chúa Trời, còn tiền của anh thì cứ vơi dần, vơi dần. Rồi một hôm, ông bác sĩ bỗng hỏi: “À này, Taylor — chẳng phải lại đến kỳ lãnh lương của cậu rồi sao?” Tim Hudson nhảy lên một cái! Nhưng rồi ông bác sĩ sực nhớ mình vừa gửi hết số tiền dư vào ngân hàng. Ôi trời. Hudson vẫn im lặng và vẫn tiếp tục cầu nguyện. Khuya tối thứ Bảy hôm ấy — khoảng mười giờ — ông bác sĩ quay lại phòng, miệng cười khúc khích. Một trong những bệnh nhân giàu nhất của ông vừa đến vào giờ kỳ lạ ấy để trả tiền khám bệnh! Ông bác sĩ đưa số tiền cho Hudson và bảo: “Cậu cứ cầm lấy mấy đồng này đi.” Đức Chúa Trời đã làm điều đó — Ngài lặng lẽ thúc giục người khác, vào đúng lúc, mà Hudson chẳng phải xin ai ngoài Đức Chúa Trời. Không phải lúc nào con cũng phải tự mình lo liệu mọi việc, hay nài nỉ người khác cho những gì con cần. Cha của con ở trên trời đã biết rồi, và Ngài có thể sắp đặt mọi việc theo những cách con chẳng bao giờ ngờ tới. Hãy xin Ngài. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài đã biết những gì con cần. Xin giúp con đem điều đó đến với Ngài trước tiên, và tin cậy vào thời điểm của Ngài. A-men.",
+  "word_count": 358
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "“Anh Sẽ Không Chết”",
+  "body_html": "<blockquote>“Tôi sẽ chẳng chết đâu, nhưng được sống” và thuật lại những việc Chúa đã làm. — trích Thi Thiên 118</blockquote> <p>Trong thời gian học làm bác sĩ ở Luân Đôn, Hudson rất nghèo, và thường chỉ sống bằng bánh mì đen với nước lã. Một buổi tối, anh bị kim đâm vào ngón tay, nhưng anh chẳng để ý gì. Thế nhưng ngày hôm sau, trong lúc anh đang phụ giúp một công việc y khoa khó khăn và nguy hiểm, vết đứt nhỏ ấy đã để một chứng bệnh nặng lọt vào người, và Hudson ốm nặng khủng khiếp.</p> <p>Ông bác sĩ trưởng nhìn anh với vẻ mặt nghiêm trọng và nói: “Cậu coi như đã chết rồi.”</p> <p>Con đoán xem ý nghĩ đầu tiên của Hudson là gì? Không phải là sợ hãi cho bản thân mình. Mà là buồn vì giờ đây có lẽ anh sẽ chẳng bao giờ được đến Trung Quốc! Nhưng rồi một niềm tin chắc sâu xa và bình an phủ xuống lòng anh: “Tôi còn có việc phải làm ở Trung Quốc, và tôi sẽ không chết.”</p> <p>Anh không có tiền để thuê xe ngựa, nên dù yếu ớt như thế, anh vẫn chậm chạp tìm đường về nhà, lúc thì đi xe buýt, lúc thì đi bộ. Hai người đàn ông khác bị nhiễm cùng chứng bệnh ấy vào cùng lúc đều đã qua đời. Nhưng Hudson thì sống. Đức Chúa Trời đã gìn giữ anh — vì Đức Chúa Trời vẫn còn công việc cho anh làm ở nơi xa xôi bên Trung Quốc.</p> <p>Đức Chúa Trời có một chương trình cho cuộc đời con, và Ngài sẽ chăm sóc con cho đến khi chương trình ấy được hoàn tất. Con được an toàn trong tay Ngài.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì cuộc đời con ở trong tay Ngài và Ngài có những chương trình tốt lành dành cho con. Xin giúp con tin cậy Ngài, dù có chuyện gì xảy đến. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Hudson bị ốm nặng như vậy?",
+    "answer": "Anh bị kim đâm vào ngón tay, rồi ngày hôm sau, trong lúc làm một công việc y khoa nguy hiểm, vết đứt nhỏ ấy đã để một chứng bệnh nặng lọt vào người."
+   },
+   {
+    "question": "Khi ông bác sĩ nói “Cậu coi như đã chết rồi,” ý nghĩ đầu tiên của Hudson là gì?",
+    "answer": "Không phải là sợ hãi cho bản thân, mà là buồn vì có lẽ anh sẽ chẳng bao giờ được đến Trung Quốc. Rồi anh thấy bình an và chắc chắn: “Tôi còn có việc phải làm ở Trung Quốc, và tôi sẽ không chết.”"
+   },
+   {
+    "question": "Cùng trò chuyện: Con cảm thấy thế nào khi biết cuộc đời mình ở trong tay Đức Chúa Trời?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời có một chương trình cho cuộc đời con và Ngài sẽ chăm sóc con cho đến khi chương trình ấy được hoàn tất. Con được an toàn trong tay Ngài."
+   }
+  ],
+  "body_text": "“Tôi sẽ chẳng chết đâu, nhưng được sống” và thuật lại những việc Chúa đã làm. — trích Thi Thiên 118 Trong thời gian học làm bác sĩ ở Luân Đôn, Hudson rất nghèo, và thường chỉ sống bằng bánh mì đen với nước lã. Một buổi tối, anh bị kim đâm vào ngón tay, nhưng anh chẳng để ý gì. Thế nhưng ngày hôm sau, trong lúc anh đang phụ giúp một công việc y khoa khó khăn và nguy hiểm, vết đứt nhỏ ấy đã để một chứng bệnh nặng lọt vào người, và Hudson ốm nặng khủng khiếp. Ông bác sĩ trưởng nhìn anh với vẻ mặt nghiêm trọng và nói: “Cậu coi như đã chết rồi.” Con đoán xem ý nghĩ đầu tiên của Hudson là gì? Không phải là sợ hãi cho bản thân mình. Mà là buồn vì giờ đây có lẽ anh sẽ chẳng bao giờ được đến Trung Quốc! Nhưng rồi một niềm tin chắc sâu xa và bình an phủ xuống lòng anh: “Tôi còn có việc phải làm ở Trung Quốc, và tôi sẽ không chết.” Anh không có tiền để thuê xe ngựa, nên dù yếu ớt như thế, anh vẫn chậm chạp tìm đường về nhà, lúc thì đi xe buýt, lúc thì đi bộ. Hai người đàn ông khác bị nhiễm cùng chứng bệnh ấy vào cùng lúc đều đã qua đời. Nhưng Hudson thì sống. Đức Chúa Trời đã gìn giữ anh — vì Đức Chúa Trời vẫn còn công việc cho anh làm ở nơi xa xôi bên Trung Quốc. Đức Chúa Trời có một chương trình cho cuộc đời con, và Ngài sẽ chăm sóc con cho đến khi chương trình ấy được hoàn tất. Con được an toàn trong tay Ngài. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì cuộc đời con ở trong tay Ngài và Ngài có những chương trình tốt lành dành cho con. Xin giúp con tin cậy Ngài, dù có chuyện gì xảy đến. A-men.",
+  "word_count": 339
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Cơn Bão Bên Ghềnh Đá",
+  "body_html": "<blockquote>“Ngài ngừng bão tố,” và dẫn họ vào bến họ hằng mong ước. — trích Thi Thiên 107</blockquote> <p>Cuối cùng, ngày trọng đại cũng đến. Hudson bước lên một chiếc thuyền buồm đi Trung Quốc. Mẹ anh đến tiễn, bà sửa soạn lại chiếc giường nhỏ hẹp của anh và cầu nguyện với anh một lần cuối. Khi con tàu rời bến, tiếng khóc đau buồn của mẹ “xuyên qua lòng tôi như một lưỡi dao,” Hudson kể lại. Nhưng anh đang đi đến nơi Đức Chúa Trời đã kêu gọi anh.</p> <p>Rồi tai họa ập đến. Một trận cuồng phong dữ dội nổi lên và giữ chân con tàu suốt mười hai ngày đầy bão tố. Một tối Chúa Nhật, gió đẩy con tàu thẳng về phía một bờ biển lởm chởm đá — gần hơn, gần hơn nữa, cho đến khi con tàu gần như chạm được vào những tảng đá. Dường như mọi sự sắp chấm dứt.</p> <p>Ông thuyền trưởng, cũng là người yêu mến Đức Chúa Trời, quay sang Hudson và nói: “Bây giờ chúng ta không sống nổi nửa giờ nữa đâu. Còn sự kêu gọi hầu việc Chúa ở Trung Quốc của cậu thì sao?” Hudson đáp rằng anh thà ở đây, vâng lời Đức Chúa Trời, hơn là ở bất cứ nơi nào khác — và anh vẫn tin rằng mình sẽ đến được Trung Quốc.</p> <p>Vài phút sau, ông thuyền trưởng vội vã quay lại và reo lên: “Gió đổi chiều rồi! Chúng ta có thể ra khỏi vịnh!” Và họ đã ra được. Những ghềnh đá bị bỏ lại phía sau, an toàn.</p> <p>Ngay giữa một cơn bão đáng sợ, con vẫn có thể bình an khi biết mình đang ở đúng nơi Đức Chúa Trời muốn. Ngài là Chúa của gió và sóng.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, khi cuộc sống giống như một cơn bão, xin giúp con giữ được sự bình an, vì biết rằng Ngài ở cùng con và Ngài nắm quyền trên mọi sự. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Con tàu đã gặp nguy hiểm gì trong cơn bão?",
+    "answer": "Một trận cuồng phong dữ dội giữ chân con tàu suốt mười hai ngày, và một tối Chúa Nhật, gió đẩy con tàu suýt va vào những ghềnh đá."
+   },
+   {
+    "question": "Khi dường như mọi sự sắp chấm dứt, Hudson đã nói gì với ông thuyền trưởng?",
+    "answer": "Rằng anh thà ở đó, vâng lời Đức Chúa Trời, hơn là ở bất cứ nơi nào khác, và anh vẫn tin rằng mình sẽ đến được Trung Quốc. Chẳng bao lâu sau, gió đổi chiều và họ ra khỏi vịnh."
+   },
+   {
+    "question": "Cùng trò chuyện: Khi con sợ hãi, điều gì giúp con thấy bình an?",
+    "answer": "Điều chương này muốn nói: ngay giữa một cơn bão đáng sợ, con vẫn có thể bình an khi biết mình đang ở đúng nơi Đức Chúa Trời muốn, vì Ngài là Chúa của gió và sóng."
+   }
+  ],
+  "body_text": "“Ngài ngừng bão tố,” và dẫn họ vào bến họ hằng mong ước. — trích Thi Thiên 107 Cuối cùng, ngày trọng đại cũng đến. Hudson bước lên một chiếc thuyền buồm đi Trung Quốc. Mẹ anh đến tiễn, bà sửa soạn lại chiếc giường nhỏ hẹp của anh và cầu nguyện với anh một lần cuối. Khi con tàu rời bến, tiếng khóc đau buồn của mẹ “xuyên qua lòng tôi như một lưỡi dao,” Hudson kể lại. Nhưng anh đang đi đến nơi Đức Chúa Trời đã kêu gọi anh. Rồi tai họa ập đến. Một trận cuồng phong dữ dội nổi lên và giữ chân con tàu suốt mười hai ngày đầy bão tố. Một tối Chúa Nhật, gió đẩy con tàu thẳng về phía một bờ biển lởm chởm đá — gần hơn, gần hơn nữa, cho đến khi con tàu gần như chạm được vào những tảng đá. Dường như mọi sự sắp chấm dứt. Ông thuyền trưởng, cũng là người yêu mến Đức Chúa Trời, quay sang Hudson và nói: “Bây giờ chúng ta không sống nổi nửa giờ nữa đâu. Còn sự kêu gọi hầu việc Chúa ở Trung Quốc của cậu thì sao?” Hudson đáp rằng anh thà ở đây, vâng lời Đức Chúa Trời, hơn là ở bất cứ nơi nào khác — và anh vẫn tin rằng mình sẽ đến được Trung Quốc. Vài phút sau, ông thuyền trưởng vội vã quay lại và reo lên: “Gió đổi chiều rồi! Chúng ta có thể ra khỏi vịnh!” Và họ đã ra được. Những ghềnh đá bị bỏ lại phía sau, an toàn. Ngay giữa một cơn bão đáng sợ, con vẫn có thể bình an khi biết mình đang ở đúng nơi Đức Chúa Trời muốn. Ngài là Chúa của gió và sóng. Lạy Đức Chúa Trời yêu dấu, khi cuộc sống giống như một cơn bão, xin giúp con giữ được sự bình an, vì biết rằng Ngài ở cùng con và Ngài nắm quyền trên mọi sự. A-men.",
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Cầu Xin Một Cơn Gió",
+  "body_html": "<blockquote>“Hãy kêu cầu ta, ta sẽ trả lời cho.” — trích Giê-rê-mi 33</blockquote> <p>Cũng trong chuyến hải hành dài ấy, một mối nguy khác lại đến — ngược hẳn với một cơn bão. Con tàu đến một nơi <em>hoàn toàn không có gió.</em> Những cánh buồm rủ xuống, và một dòng hải lưu mạnh đang từ từ kéo con tàu về phía những ghềnh đá ngầm nguy hiểm, trong khi trên bờ biển gần đó có những đống lửa đang cháy.</p> <p>Các thủy thủ thử đủ mọi cách để xoay hướng con tàu, nhưng chẳng cách nào hiệu quả. Cuối cùng, ông thuyền trưởng buồn bã nói: “Chúng ta chỉ còn biết chờ xem chuyện gì sẽ xảy ra thôi.”</p> <p>“Không,” Hudson nói. “Còn một việc chúng ta chưa làm.” Anh tìm những người khác trên tàu cũng yêu mến Đức Chúa Trời — vỏn vẹn bốn người, kể cả anh — và xin mỗi người hãy đi cầu nguyện xin một cơn gió.</p> <p>Hudson cầu nguyện một lời ngắn, và anh tin chắc Đức Chúa Trời sẽ trả lời đến nỗi anh đi lên boong tàu, xin một viên sĩ quan khó tính hãy chuẩn bị sẵn những cánh buồm. Viên sĩ quan nhếch mép chế giễu: “Tôi thà <em>thấy</em> gió còn hơn là nghe nói về gió!” Nhưng ngay khi ông ta đang nói — kìa, nhìn xem! — cánh buồm trên cùng bắt đầu phấp phới. Một làn gió đang đến! Chẳng mấy chốc, con tàu đã lướt đi thật nhanh và an toàn, xa khỏi những ghềnh đá.</p> <p>Có khi chúng ta thử đủ mọi cách, trừ điều quan trọng nhất. Khi con không biết phải làm gì nữa, hãy nhớ lời của Hudson: “Còn một việc chúng ta chưa làm.” Hãy cầu nguyện. Đức Chúa Trời rất thích trả lời.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con cầu nguyện trước tiên, chứ không phải sau cùng. Cảm ơn Ngài vì Ngài nghe con và trả lời con vào đúng lúc. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lần này trên chuyến hải hành đã có chuyện gì không ổn?",
+    "answer": "Hoàn toàn không có gió, và một dòng hải lưu mạnh đang kéo con tàu về phía những ghềnh đá ngầm nguy hiểm."
+   },
+   {
+    "question": "“Một việc chúng ta chưa làm” là việc gì?",
+    "answer": "Cầu nguyện. Hudson xin bốn người trên tàu yêu mến Đức Chúa Trời hãy cầu nguyện xin một cơn gió, và chẳng bao lâu sau, cánh buồm trên cùng bắt đầu phấp phới."
+   },
+   {
+    "question": "Cùng trò chuyện: Khi gặp khó khăn, con thường cầu nguyện trước tiên hay sau cùng?",
+    "answer": "Điều chương này muốn nói: có khi chúng ta thử đủ mọi cách, trừ điều quan trọng nhất. Khi con không biết phải làm gì nữa, hãy cầu nguyện. Đức Chúa Trời rất thích trả lời."
+   }
+  ],
+  "body_text": "“Hãy kêu cầu ta, ta sẽ trả lời cho.” — trích Giê-rê-mi 33 Cũng trong chuyến hải hành dài ấy, một mối nguy khác lại đến — ngược hẳn với một cơn bão. Con tàu đến một nơi hoàn toàn không có gió. Những cánh buồm rủ xuống, và một dòng hải lưu mạnh đang từ từ kéo con tàu về phía những ghềnh đá ngầm nguy hiểm, trong khi trên bờ biển gần đó có những đống lửa đang cháy. Các thủy thủ thử đủ mọi cách để xoay hướng con tàu, nhưng chẳng cách nào hiệu quả. Cuối cùng, ông thuyền trưởng buồn bã nói: “Chúng ta chỉ còn biết chờ xem chuyện gì sẽ xảy ra thôi.” “Không,” Hudson nói. “Còn một việc chúng ta chưa làm.” Anh tìm những người khác trên tàu cũng yêu mến Đức Chúa Trời — vỏn vẹn bốn người, kể cả anh — và xin mỗi người hãy đi cầu nguyện xin một cơn gió. Hudson cầu nguyện một lời ngắn, và anh tin chắc Đức Chúa Trời sẽ trả lời đến nỗi anh đi lên boong tàu, xin một viên sĩ quan khó tính hãy chuẩn bị sẵn những cánh buồm. Viên sĩ quan nhếch mép chế giễu: “Tôi thà thấy gió còn hơn là nghe nói về gió!” Nhưng ngay khi ông ta đang nói — kìa, nhìn xem! — cánh buồm trên cùng bắt đầu phấp phới. Một làn gió đang đến! Chẳng mấy chốc, con tàu đã lướt đi thật nhanh và an toàn, xa khỏi những ghềnh đá. Có khi chúng ta thử đủ mọi cách, trừ điều quan trọng nhất. Khi con không biết phải làm gì nữa, hãy nhớ lời của Hudson: “Còn một việc chúng ta chưa làm.” Hãy cầu nguyện. Đức Chúa Trời rất thích trả lời. Lạy Đức Chúa Trời yêu dấu, xin giúp con cầu nguyện trước tiên, chứ không phải sau cùng. Cảm ơn Ngài vì Ngài nghe con và trả lời con vào đúng lúc. A-men.",
+  "word_count": 338
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Ăn Mặc Giống Những Người Mình Thương",
+  "body_html": "<blockquote>“Tôi đã trở nên mọi cách cho mọi người, để cứu chuộc được một vài người.” — trích 1 Cô-rinh-tô 9</blockquote> <p>Khi Hudson đến Trung Quốc, anh muốn người dân ở đó lắng nghe tin lành của anh về Chúa Giê-xu. Nhưng có một vấn đề: trông anh khác họ quá! Trong bộ quần áo kiểu Anh, anh bị cả đám đông bám theo, chỉ trỏ, cười nhạo, thậm chí còn gọi anh bằng những tên xấu xí. Giữa bao nhiêu tiếng chế giễu như thế, thật khó để ai nghe được anh nói.</p> <p>Vì vậy Hudson đã làm một việc rất táo bạo. Anh quyết định ăn mặc giống như người Trung Quốc, và anh còn cạo tóc, để kiểu tóc giống hệt họ. Bây giờ, khi anh đi qua một thị trấn, người ta không còn nhìn chằm chằm và chế nhạo nữa. Họ yên lặng lắng nghe, thậm chí còn mời anh vào nhà mình.</p> <p>Hudson có một người bạn là ông Burns, ông vẫn còn mặc quần áo kiểu Anh. Ông Burns để ý thấy Hudson thì có những đám đông hiền hòa, thân thiện, còn chính ông thì bị những cậu bé hỗn hào, hay chế giễu bám theo. Sau khi quan sát chuyện ấy được vài tuần, ông Burns cũng mặc quần áo Trung Quốc luôn!</p> <p>Hudson thay đổi cách ăn mặc không phải vì anh bị bắt buộc. Anh làm vậy vì tình yêu thương — anh sẵn lòng từ bỏ sự thoải mái và sĩ diện của mình, để người ta chịu lắng nghe và nhận biết Chúa Giê-xu.</p> <p>Tình yêu thương là như thế. Tình yêu thương nghĩ đến người khác trước. Có cách nào con có thể từ bỏ một điều nhỏ — như muốn mình luôn đúng, muốn được đứng đầu, hay muốn được thoải mái — để giúp một người khác cảm thấy mình được đón tiếp không?</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin làm cho con sẵn lòng từ bỏ sự thoải mái của mình vì tình yêu thương, để người khác có thể thấy lòng nhân từ của Ngài nơi con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lúc đầu, vì sao người ta ở Trung Quốc lại cười nhạo Hudson?",
+    "answer": "Trong bộ quần áo kiểu Anh, trông anh khác họ quá, nên cả đám đông bám theo anh, chỉ trỏ, cười nhạo và gọi anh bằng những tên xấu xí."
+   },
+   {
+    "question": "Điều gì đã thay đổi khi Hudson ăn mặc giống người Trung Quốc?",
+    "answer": "Người ta không còn nhìn chằm chằm và chế nhạo nữa. Họ yên lặng lắng nghe và mời anh vào nhà, và chẳng bao lâu sau, ông Burns, bạn của anh, cũng mặc quần áo Trung Quốc."
+   },
+   {
+    "question": "Cùng trò chuyện: Con có thể từ bỏ một điều nhỏ để giúp một người khác cảm thấy mình được đón tiếp không?",
+    "answer": "Điều chương này muốn nói: Hudson làm vậy vì tình yêu thương. Tình yêu thương nghĩ đến người khác trước và sẵn lòng từ bỏ sự thoải mái hay sĩ diện, như muốn mình luôn đúng hay muốn được đứng đầu."
+   }
+  ],
+  "body_text": "“Tôi đã trở nên mọi cách cho mọi người, để cứu chuộc được một vài người.” — trích 1 Cô-rinh-tô 9 Khi Hudson đến Trung Quốc, anh muốn người dân ở đó lắng nghe tin lành của anh về Chúa Giê-xu. Nhưng có một vấn đề: trông anh khác họ quá! Trong bộ quần áo kiểu Anh, anh bị cả đám đông bám theo, chỉ trỏ, cười nhạo, thậm chí còn gọi anh bằng những tên xấu xí. Giữa bao nhiêu tiếng chế giễu như thế, thật khó để ai nghe được anh nói. Vì vậy Hudson đã làm một việc rất táo bạo. Anh quyết định ăn mặc giống như người Trung Quốc, và anh còn cạo tóc, để kiểu tóc giống hệt họ. Bây giờ, khi anh đi qua một thị trấn, người ta không còn nhìn chằm chằm và chế nhạo nữa. Họ yên lặng lắng nghe, thậm chí còn mời anh vào nhà mình. Hudson có một người bạn là ông Burns, ông vẫn còn mặc quần áo kiểu Anh. Ông Burns để ý thấy Hudson thì có những đám đông hiền hòa, thân thiện, còn chính ông thì bị những cậu bé hỗn hào, hay chế giễu bám theo. Sau khi quan sát chuyện ấy được vài tuần, ông Burns cũng mặc quần áo Trung Quốc luôn! Hudson thay đổi cách ăn mặc không phải vì anh bị bắt buộc. Anh làm vậy vì tình yêu thương — anh sẵn lòng từ bỏ sự thoải mái và sĩ diện của mình, để người ta chịu lắng nghe và nhận biết Chúa Giê-xu. Tình yêu thương là như thế. Tình yêu thương nghĩ đến người khác trước. Có cách nào con có thể từ bỏ một điều nhỏ — như muốn mình luôn đúng, muốn được đứng đầu, hay muốn được thoải mái — để giúp một người khác cảm thấy mình được đón tiếp không? Lạy Đức Chúa Trời yêu dấu, xin làm cho con sẵn lòng từ bỏ sự thoải mái của mình vì tình yêu thương, để người khác có thể thấy lòng nhân từ của Ngài nơi con. A-men.",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Đêm Trên Bậc Thềm Ngôi Đền",
+  "body_html": "<blockquote>“Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu.” — trích Hê-bơ-rơ 13</blockquote> <p>Một ngày kia, chính người đầy tớ của Hudson bỏ trốn — và mang theo toàn bộ hành lý của anh! Bỗng chốc Hudson gần như chẳng còn gì, ở một nơi xa lạ, cách nhà rất xa. Chân đau nhức, người mệt lả, anh tìm khắp nơi một chỗ để ngủ, nhưng chẳng ai chịu cho anh vào.</p> <p>Cuối cùng, anh nằm xuống trên những bậc thềm bằng đá lạnh lẽo trước một ngôi đền đã khóa cửa, nhét chút tiền ít ỏi của mình xuống dưới đầu làm gối. Trong bóng tối, một người ăn xin rón rén lại gần, mong lấy trộm của anh. Hudson khẽ hỏi: “Ông muốn gì?” — và người ấy lặng lẽ bỏ đi. Rồi thêm mấy người đàn ông khác kéo đến vây quanh chân anh, giả vờ rằng họ chỉ muốn ngồi cho anh có bạn.</p> <p>Hudson không bị lừa, và anh cũng không hề một mình. “Tôi thờ phượng Đức Chúa Trời,” anh nói với họ. “Ngài là Cha tôi, và tôi tin cậy Ngài.” Để giữ mình tỉnh thức và an toàn, anh hát thánh ca, đọc to các câu Kinh Thánh, và cầu nguyện — cho đến khi mấy người đàn ông chán quá, bỏ đi hết trước khi trời sáng.</p> <p>Suốt đêm tối tăm, đáng sợ ấy, Đức Chúa Trời vẫn canh giữ Hudson, đúng như Ngài đã hứa: “Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu.”</p> <p>Khi con cảm thấy cô đơn, hay khi mọi chuyện trở nên không ổn và con sợ hãi, hãy nhớ: Đức Chúa Trời ở ngay bên cạnh con, ngay cả trong bóng tối. Ngài đã hứa sẽ không bao giờ lìa bỏ con.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài không bao giờ lìa bỏ con, ngay cả trong những lúc tối tăm và đáng sợ. Xin giúp con tin cậy rằng Ngài luôn ở gần bên. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Hudson phải ngủ trên bậc thềm ngôi đền?",
+    "answer": "Người đầy tớ của anh bỏ trốn và mang theo toàn bộ hành lý của anh, mà chẳng ai chịu cho anh vào ngủ qua đêm."
+   },
+   {
+    "question": "Hudson đã giữ mình an toàn trước những người đàn ông muốn lấy trộm của anh như thế nào?",
+    "answer": "Anh thức suốt đêm, hát thánh ca, đọc to các câu Kinh Thánh và cầu nguyện, cho đến khi mấy người đàn ông chán quá và bỏ đi hết trước khi trời sáng."
+   },
+   {
+    "question": "Cùng trò chuyện: Khi con cảm thấy cô đơn hay sợ hãi trong bóng tối, con có thể nhớ điều gì?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời ở ngay bên cạnh con, ngay cả trong bóng tối. Ngài đã hứa: “Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu.”"
+   }
+  ],
+  "body_text": "“Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu.” — trích Hê-bơ-rơ 13 Một ngày kia, chính người đầy tớ của Hudson bỏ trốn — và mang theo toàn bộ hành lý của anh! Bỗng chốc Hudson gần như chẳng còn gì, ở một nơi xa lạ, cách nhà rất xa. Chân đau nhức, người mệt lả, anh tìm khắp nơi một chỗ để ngủ, nhưng chẳng ai chịu cho anh vào. Cuối cùng, anh nằm xuống trên những bậc thềm bằng đá lạnh lẽo trước một ngôi đền đã khóa cửa, nhét chút tiền ít ỏi của mình xuống dưới đầu làm gối. Trong bóng tối, một người ăn xin rón rén lại gần, mong lấy trộm của anh. Hudson khẽ hỏi: “Ông muốn gì?” — và người ấy lặng lẽ bỏ đi. Rồi thêm mấy người đàn ông khác kéo đến vây quanh chân anh, giả vờ rằng họ chỉ muốn ngồi cho anh có bạn. Hudson không bị lừa, và anh cũng không hề một mình. “Tôi thờ phượng Đức Chúa Trời,” anh nói với họ. “Ngài là Cha tôi, và tôi tin cậy Ngài.” Để giữ mình tỉnh thức và an toàn, anh hát thánh ca, đọc to các câu Kinh Thánh, và cầu nguyện — cho đến khi mấy người đàn ông chán quá, bỏ đi hết trước khi trời sáng. Suốt đêm tối tăm, đáng sợ ấy, Đức Chúa Trời vẫn canh giữ Hudson, đúng như Ngài đã hứa: “Ta sẽ chẳng lìa ngươi đâu, chẳng bỏ ngươi đâu.” Khi con cảm thấy cô đơn, hay khi mọi chuyện trở nên không ổn và con sợ hãi, hãy nhớ: Đức Chúa Trời ở ngay bên cạnh con, ngay cả trong bóng tối. Ngài đã hứa sẽ không bao giờ lìa bỏ con. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài không bao giờ lìa bỏ con, ngay cả trong những lúc tối tăm và đáng sợ. Xin giúp con tin cậy rằng Ngài luôn ở gần bên. A-men.",
+  "word_count": 338
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Tha Thứ Cho Kẻ Trộm",
+  "body_html": "<blockquote>“Hãy tha thứ, người sẽ tha thứ mình.” — trích Lu-ca 6</blockquote> <p>Chẳng bao lâu sau, Hudson phát hiện ra một điều thật buồn lòng: chính người đầy tớ của anh đã bày mưu và lấy trộm mọi thứ anh có ở Trung Quốc — những món đồ trị giá khoảng bốn mươi bảng Anh, một số tiền rất lớn.</p> <p>Hudson có thể cho người bắt kẻ trộm và trừng phạt hắn. Việc ấy thật dễ dàng, và cũng chẳng ai trách anh. Nhưng người đầy tớ này là người mà Hudson đã cầu nguyện cho. Và Hudson nhớ lại lời dạy của Chúa Giê-xu — chính những lời mà có lần họ đã cùng nhau đọc — về việc đừng lấy điều ác trả điều ác.</p> <p>Vì vậy Hudson đã có một lựa chọn khiến người ta ngạc nhiên. Anh quyết định rằng linh hồn của người ấy quý giá hơn rất nhiều so với một đống đồ bị lấy trộm. Thay vì trừng phạt, Hudson viết cho kẻ trộm một lá thư đầy tử tế, nài xin người ấy hãy ăn năn và tin cậy Chúa Giê-xu.</p> <p>Và đây là một kết thúc thật đẹp: một người bạn ở bên nước Anh, vui mừng khi nghe Hudson đã tha thứ cho kẻ trộm, đã gửi cho anh một món quà — một tấm chi phiếu đúng bốn mươi bảng Anh, bằng đúng số tiền anh đã mất. Đó là món quà đầu tiên trong rất nhiều món quà mà người bạn ấy gửi cho anh.</p> <p>Tha thứ cho người đã làm mình đau là một trong những việc khó nhất và can đảm nhất mà con có thể làm. Nhưng đó chính là điều Chúa Giê-xu đã làm cho chúng ta, và Đức Chúa Trời chăm sóc những ai biết tha thứ.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, khi có ai làm con đau, xin giúp con tha thứ như Chúa Giê-xu đã tha thứ cho con. Mọi điều còn lại con xin giao cho Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai đã lấy trộm mọi thứ Hudson có ở Trung Quốc?",
+    "answer": "Chính người đầy tớ của anh, một người mà Hudson đã cầu nguyện cho. Những món đồ ấy trị giá khoảng bốn mươi bảng Anh."
+   },
+   {
+    "question": "Thay vì cho người trừng phạt kẻ trộm, Hudson đã làm gì?",
+    "answer": "Anh viết cho kẻ trộm một lá thư đầy tử tế, nài xin người ấy hãy ăn năn và tin cậy Chúa Giê-xu. Về sau, một người bạn gửi cho anh đúng bốn mươi bảng Anh."
+   },
+   {
+    "question": "Cùng trò chuyện: Vì sao tha thứ cho người đã làm mình đau lại khó đến thế?",
+    "answer": "Điều chương này muốn nói: tha thứ là một trong những việc khó nhất và can đảm nhất mà con có thể làm, nhưng đó chính là điều Chúa Giê-xu đã làm cho chúng ta, và Đức Chúa Trời chăm sóc những ai biết tha thứ."
+   }
+  ],
+  "body_text": "“Hãy tha thứ, người sẽ tha thứ mình.” — trích Lu-ca 6 Chẳng bao lâu sau, Hudson phát hiện ra một điều thật buồn lòng: chính người đầy tớ của anh đã bày mưu và lấy trộm mọi thứ anh có ở Trung Quốc — những món đồ trị giá khoảng bốn mươi bảng Anh, một số tiền rất lớn. Hudson có thể cho người bắt kẻ trộm và trừng phạt hắn. Việc ấy thật dễ dàng, và cũng chẳng ai trách anh. Nhưng người đầy tớ này là người mà Hudson đã cầu nguyện cho. Và Hudson nhớ lại lời dạy của Chúa Giê-xu — chính những lời mà có lần họ đã cùng nhau đọc — về việc đừng lấy điều ác trả điều ác. Vì vậy Hudson đã có một lựa chọn khiến người ta ngạc nhiên. Anh quyết định rằng linh hồn của người ấy quý giá hơn rất nhiều so với một đống đồ bị lấy trộm. Thay vì trừng phạt, Hudson viết cho kẻ trộm một lá thư đầy tử tế, nài xin người ấy hãy ăn năn và tin cậy Chúa Giê-xu. Và đây là một kết thúc thật đẹp: một người bạn ở bên nước Anh, vui mừng khi nghe Hudson đã tha thứ cho kẻ trộm, đã gửi cho anh một món quà — một tấm chi phiếu đúng bốn mươi bảng Anh, bằng đúng số tiền anh đã mất. Đó là món quà đầu tiên trong rất nhiều món quà mà người bạn ấy gửi cho anh. Tha thứ cho người đã làm mình đau là một trong những việc khó nhất và can đảm nhất mà con có thể làm. Nhưng đó chính là điều Chúa Giê-xu đã làm cho chúng ta, và Đức Chúa Trời chăm sóc những ai biết tha thứ. Lạy Đức Chúa Trời yêu dấu, khi có ai làm con đau, xin giúp con tha thứ như Chúa Giê-xu đã tha thứ cho con. Mọi điều còn lại con xin giao cho Ngài. A-men.",
+  "word_count": 339
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Một Đồng Tiền Cuối Cùng Và Một Cốc Ca Cao",
+  "body_html": "<blockquote>“Đức Chúa Trời sẽ sắm sẵn.” — trích Sáng Thế Ký 22</blockquote> <p>Ở thành Ninh Ba, Hudson và người bạn của anh là ông Jones mỗi ngày đều nấu bữa sáng cho khoảng bảy mươi người nghèo. Trên tường nhà họ treo hai tấm bảng nhỏ để nhắc họ nhớ ai là Đấng chu cấp cho mọi việc ấy. Một tấm ghi: “Đức Giê-hô-va đã cứu giúp chúng tôi đến bây giờ.” Tấm kia ghi: “Đức Chúa Trời sẽ sắm sẵn.”</p> <p>Một buổi sáng, họ chỉ còn lại một đồng tiền nhỏ xíu — chưa đáng giá bằng một xu. Họ quyết định đem cái lò sưởi bằng sắt đi bán để mua thức ăn. Nhưng khi lên đường, họ thấy cây cầu bắc qua sông đã bị nước cuốn trôi trong đêm! Chiếc đò ngang nhỏ lấy hai đồng tiền, mà họ chỉ có một. Thế là họ đành quay về nhà, hai bàn tay trắng.</p> <p>Về đến nhà, họ tìm thấy một gói ca cao nhỏ. Họ pha ca cao với nước nóng rồi uống, và cốc ca cao cho họ vừa đủ sức để tiếp tục. Rồi — trong khi họ vẫn còn đang quỳ gối cầu nguyện — một lá thư từ nước Anh gửi đến. Bên trong có tiền, do một người bạn ở thật xa gửi, người ấy hoàn toàn không biết số tiền ấy cần đến thế nào ngay sáng hôm đó.</p> <p>Đức Chúa Trời không gửi tiền đến sớm hơn một ngày. Nhưng Ngài cũng không gửi đến muộn dù chỉ một khoảnh khắc. Lời “Đức Chúa Trời sẽ sắm sẵn” hóa ra hoàn toàn đúng.</p> <p>Đức Chúa Trời ban cho chúng ta những gì mình cần cho hôm nay, vào đúng lúc chúng ta cần. Con cũng có thể tin cậy Ngài cho “đồ ăn đủ ngày” của mình.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài ban cho con đúng những gì con cần, vào đúng lúc. Xin giúp con tin cậy Ngài từng ngày một. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Hudson và ông Jones không bán được cái lò sưởi?",
+    "answer": "Cây cầu đã bị nước cuốn trôi trong đêm, còn đò ngang thì lấy hai đồng tiền. Họ chỉ có một, nên đành quay về nhà."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra trong khi họ vẫn còn đang quỳ gối cầu nguyện?",
+    "answer": "Một lá thư từ nước Anh gửi đến, bên trong có tiền, do một người bạn gửi, người ấy hoàn toàn không biết số tiền ấy cần đến thế nào ngay sáng hôm đó."
+   },
+   {
+    "question": "Cùng trò chuyện: Lời “Đức Chúa Trời sẽ sắm sẵn” có ý nghĩa gì cho gia đình mình hôm nay?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời ban cho chúng ta những gì mình cần cho hôm nay, vào đúng lúc chúng ta cần, không quá sớm cũng không quá muộn. Chúng ta có thể tin cậy Ngài từng ngày một."
+   }
+  ],
+  "body_text": "“Đức Chúa Trời sẽ sắm sẵn.” — trích Sáng Thế Ký 22 Ở thành Ninh Ba, Hudson và người bạn của anh là ông Jones mỗi ngày đều nấu bữa sáng cho khoảng bảy mươi người nghèo. Trên tường nhà họ treo hai tấm bảng nhỏ để nhắc họ nhớ ai là Đấng chu cấp cho mọi việc ấy. Một tấm ghi: “Đức Giê-hô-va đã cứu giúp chúng tôi đến bây giờ.” Tấm kia ghi: “Đức Chúa Trời sẽ sắm sẵn.” Một buổi sáng, họ chỉ còn lại một đồng tiền nhỏ xíu — chưa đáng giá bằng một xu. Họ quyết định đem cái lò sưởi bằng sắt đi bán để mua thức ăn. Nhưng khi lên đường, họ thấy cây cầu bắc qua sông đã bị nước cuốn trôi trong đêm! Chiếc đò ngang nhỏ lấy hai đồng tiền, mà họ chỉ có một. Thế là họ đành quay về nhà, hai bàn tay trắng. Về đến nhà, họ tìm thấy một gói ca cao nhỏ. Họ pha ca cao với nước nóng rồi uống, và cốc ca cao cho họ vừa đủ sức để tiếp tục. Rồi — trong khi họ vẫn còn đang quỳ gối cầu nguyện — một lá thư từ nước Anh gửi đến. Bên trong có tiền, do một người bạn ở thật xa gửi, người ấy hoàn toàn không biết số tiền ấy cần đến thế nào ngay sáng hôm đó. Đức Chúa Trời không gửi tiền đến sớm hơn một ngày. Nhưng Ngài cũng không gửi đến muộn dù chỉ một khoảnh khắc. Lời “Đức Chúa Trời sẽ sắm sẵn” hóa ra hoàn toàn đúng. Đức Chúa Trời ban cho chúng ta những gì mình cần cho hôm nay, vào đúng lúc chúng ta cần. Con cũng có thể tin cậy Ngài cho “đồ ăn đủ ngày” của mình. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài ban cho con đúng những gì con cần, vào đúng lúc. Xin giúp con tin cậy Ngài từng ngày một. A-men.",
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Hai Chữ Trên Bãi Cát",
+  "body_html": "<blockquote>“Hãy cầu xin chủ mùa gặt sai con gặt đến trong mùa mình.” — trích Ma-thi-ơ 9</blockquote> <p>Nhiều năm sau, Hudson trở về nước Anh, kiệt sức và đau yếu. Một hôm, ông đứng nhìn một tấm bản đồ Trung Quốc thật lớn. Ông nghĩ đến hàng triệu, hàng triệu người đang sống sâu trong nội địa, xa bờ biển, những người chưa từng một lần được nghe về Chúa Giê-xu — và lòng ông gần như tan nát.</p> <p>Hudson biết điều cần có là gì: thêm nhiều người làm việc, thật nhiều người, để đi đến kể cho những người ấy nghe tin lành. Nhưng ông sợ không dám xin Đức Chúa Trời ban họ cho mình — vì nếu Đức Chúa Trời sai họ đến, Hudson sẽ phải lo cho tất cả họ! Nỗi lo ấy dường như quá lớn.</p> <p>Một ngày Chúa Nhật, tại một thị trấn tên là Brighton, ông chẳng thể nào ngồi yên trong nhà thờ giữa một nghìn người đang sống thoải mái. Vì vậy ông đi ra một mình, bước xuống bãi biển đầy cát. Ở đó, trong lúc sóng cứ cuồn cuộn vỗ vào bờ, cuối cùng ông đã thôi sợ hãi và giao trọn công việc lớn lao ấy cho Đức Chúa Trời.</p> <p>Rồi ông cầu nguyện một lời cầu nguyện táo bạo và rõ ràng: ông xin Đức Chúa Trời ban <strong>hai mươi bốn bạn đồng lao</strong> để đi đến những vùng ở Trung Quốc chưa hề có một giáo sĩ nào. Ông còn viết lời cầu nguyện ấy vào lề cuốn Kinh Thánh ông mang theo. Rồi ông về nhà, và lần đầu tiên sau nhiều tháng, lòng ông tràn đầy bình an.</p> <p>Lời cầu nguyện trên bãi biển ấy là khởi đầu của một hội truyền giáo lớn, về sau đã sai hàng trăm người đi vào Trung Quốc.</p> <p>Khi con thôi sợ hãi và trao nỗi lo lớn nhất của mình cho Đức Chúa Trời, Ngài sẽ ban cho con sự bình an — và Ngài có thể làm nhiều hơn cả những gì con từng mơ ước. Vậy đừng ngại xin Ngài những điều lớn lao.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con thôi sợ hãi và trao những nỗi lo lớn nhất của con cho Ngài. Cảm ơn Ngài vì Ngài có thể làm những việc lớn lao. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Hudson cảm thấy buồn đến thế khi nhìn tấm bản đồ lớn của Trung Quốc?",
+    "answer": "Ông nghĩ đến hàng triệu người ở sâu trong nội địa, những người chưa từng một lần được nghe về Chúa Giê-xu."
+   },
+   {
+    "question": "Hudson đã cầu xin điều gì trên bãi biển ở Brighton?",
+    "answer": "Ông giao trọn công việc lớn lao ấy cho Đức Chúa Trời và xin hai mươi bốn người làm việc cho những vùng ở Trung Quốc chưa có giáo sĩ nào. Ông viết lời cầu nguyện ấy vào lề cuốn Kinh Thánh của mình."
+   },
+   {
+    "question": "Cùng trò chuyện: Nỗi lo lớn nào con có thể trao cho Đức Chúa Trời?",
+    "answer": "Điều chương này muốn nói: khi con thôi sợ hãi và trao nỗi lo lớn nhất của mình cho Đức Chúa Trời, Ngài sẽ ban cho con sự bình an và có thể làm nhiều hơn cả những gì con từng mơ ước. Đừng ngại xin Ngài những điều lớn lao."
+   }
+  ],
+  "body_text": "“Hãy cầu xin chủ mùa gặt sai con gặt đến trong mùa mình.” — trích Ma-thi-ơ 9 Nhiều năm sau, Hudson trở về nước Anh, kiệt sức và đau yếu. Một hôm, ông đứng nhìn một tấm bản đồ Trung Quốc thật lớn. Ông nghĩ đến hàng triệu, hàng triệu người đang sống sâu trong nội địa, xa bờ biển, những người chưa từng một lần được nghe về Chúa Giê-xu — và lòng ông gần như tan nát. Hudson biết điều cần có là gì: thêm nhiều người làm việc, thật nhiều người, để đi đến kể cho những người ấy nghe tin lành. Nhưng ông sợ không dám xin Đức Chúa Trời ban họ cho mình — vì nếu Đức Chúa Trời sai họ đến, Hudson sẽ phải lo cho tất cả họ! Nỗi lo ấy dường như quá lớn. Một ngày Chúa Nhật, tại một thị trấn tên là Brighton, ông chẳng thể nào ngồi yên trong nhà thờ giữa một nghìn người đang sống thoải mái. Vì vậy ông đi ra một mình, bước xuống bãi biển đầy cát. Ở đó, trong lúc sóng cứ cuồn cuộn vỗ vào bờ, cuối cùng ông đã thôi sợ hãi và giao trọn công việc lớn lao ấy cho Đức Chúa Trời. Rồi ông cầu nguyện một lời cầu nguyện táo bạo và rõ ràng: ông xin Đức Chúa Trời ban hai mươi bốn bạn đồng lao để đi đến những vùng ở Trung Quốc chưa hề có một giáo sĩ nào. Ông còn viết lời cầu nguyện ấy vào lề cuốn Kinh Thánh ông mang theo. Rồi ông về nhà, và lần đầu tiên sau nhiều tháng, lòng ông tràn đầy bình an. Lời cầu nguyện trên bãi biển ấy là khởi đầu của một hội truyền giáo lớn, về sau đã sai hàng trăm người đi vào Trung Quốc. Khi con thôi sợ hãi và trao nỗi lo lớn nhất của mình cho Đức Chúa Trời, Ngài sẽ ban cho con sự bình an — và Ngài có thể làm nhiều hơn cả những gì con từng mơ ước. Vậy đừng ngại xin Ngài những điều lớn lao. Lạy Đức Chúa Trời yêu dấu, xin giúp con thôi sợ hãi và trao những nỗi lo lớn nhất của con cho Ngài. Cảm ơn Ngài vì Ngài có thể làm những việc lớn lao. A-men.",
+  "word_count": 397
+ }
+}
+]

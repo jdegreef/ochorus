@@ -19,15 +19,26 @@ from __future__ import annotations
 
 import difflib
 import re
+from contextlib import contextmanager, nullcontext
 
-from django.db import connection
-from django.db.models import Exists, F, OuterRef, Q, Subquery, TextField, Value
+from django.db import connection, transaction
+from django.db.models import (
+    Exists,
+    F,
+    Func,
+    OuterRef,
+    Q,
+    Subquery,
+    TextField,
+    Value,
+)
 from django.db.models.functions import Coalesce
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import config_for, search_query
+from .fts import STORED_KINDS, config_for, positive_words, search_query
+from .http_cache import MAX_AGE
 from .models import (
     Article,
     Author,
@@ -81,11 +92,38 @@ COUNT_CEILING = 200
 HL_START = "⟦"
 HL_END = "⟧"
 
+# The span of a passage a snippet is cut from (see _Snippet): characters
+# kept before the match point, and in all. A headline is at most forty words,
+# about 250 characters; the rest is room for ts_headline to choose a denser
+# passage than the first one. Measured on the fixture, 2,400 cost no more than
+# 1,200 and left fewer snippets differing from the whole-body choice.
+SNIPPET_BEFORE = 800
+SNIPPET_WINDOW = 2400
+
+# How long a memoised answer may outlive a change ContentRevision can't see —
+# an edit in the Django admin, which bumps nothing. The public API's own
+# freshness promise (http_cache.MAX_AGE: an admin's change reaches readers in
+# about a minute), so a takedown is no slower to leave search than any page.
+MEMO_SECONDS = MAX_AGE
+
+
+def memoized(name: str, compute, *key):
+    """``compute()``, remembered per worker until content changes.
+
+    Search answers are a pure function of the query and the content, and the
+    same few queries are most of the traffic — so the second reader to type
+    "prayer" shouldn't pay for the first one's index scans. ``key`` is whatever
+    the answer depends on beyond the content revision.
+    """
+    from .invalidation import revision_cached
+
+    return revision_cached("search", f"search:{name}", compute, *key, timeout=MEMO_SECONDS)
+
 
 _SPACE = re.compile(r"\s")
 
 
-def _to_word_end(text: str, end: int, floor: int) -> str:
+def to_word_end(text: str, end: int, floor: int) -> str:
     """``text[:end]`` backed off to the last whole word (never below ``floor``),
     without a trailing ",;:" or space before the "…" that follows it."""
     if end < len(text) and not text[end].isspace():
@@ -108,7 +146,7 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     if idx == -1:
         if len(text) <= radius * 2:
             return text
-        return _to_word_end(text, radius * 2, 0) + "…"
+        return to_word_end(text, radius * 2, 0) + "…"
     start = max(0, idx - radius)
     end = min(len(text), idx + len(query) + radius)
     # Cut on word boundaries: "…erywhere who desire" reads as a typo.
@@ -117,7 +155,7 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
         start = space.end() if space else idx
     prefix = "…" if start > 0 else ""
     suffix = "…" if end < len(text) else ""
-    excerpt = _to_word_end(text, end, idx + len(query))[start:] if suffix else text[start:end]
+    excerpt = to_word_end(text, end, idx + len(query))[start:] if suffix else text[start:end]
     pattern = re.compile(re.escape(query), re.IGNORECASE)
     excerpt = pattern.sub(lambda m: f"{HL_START}{m.group(0)}{HL_END}", excerpt)
     return f"{prefix}{excerpt}{suffix}"
@@ -218,12 +256,19 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
     than the results is worse than no count at all. ``scope`` narrows all three
     together for the same reason.
     """
-    chapters = Chapter.objects.filter(
-        book__is_published=True, book__language=language
-    ).select_related("book", "book__author")
-    sermons = Sermon.objects.filter(
-        is_published=True, language=language
-    ).select_related("author")
+    # No hit reads body_html or a vector (the queries name the vectors in SQL
+    # without loading them), so those stay in the database. body_text stays
+    # loaded for the SQLite and "show more" snippets, built in Python.
+    chapters = (
+        Chapter.objects.filter(book__is_published=True, book__language=language)
+        .select_related("book", "book__author")
+        .defer("body_html", "search_vector", "book__search_vector")
+    )
+    sermons = (
+        Sermon.objects.filter(is_published=True, language=language)
+        .select_related("author")
+        .defer("body_html", "search_vector")
+    )
     books = Book.objects.filter(is_published=True, language=language).select_related(
         "author"
     )
@@ -259,13 +304,17 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
     # mirroring the biographies roster (no ghost authors from unpublished drafts).
     # Imprints are excluded as the roster excludes them: a house byline is not a
     # person, and its books are still found as books (its shelf is /originals).
+    # Exists() rather than a join + DISTINCT: the join fanned each author out to
+    # one row per book and sermon (~1,600 rows for 148 authors), and DISTINCT
+    # then sorted on every column — the query-time vector included, so each
+    # bio was re-tokenised once per work. That was half a second per keystroke.
+    published = {"author": OuterRef("pk"), "is_published": True, "language": language}
     authors = (
         Author.objects.filter(is_imprint=False)
         .filter(
-            Q(books__is_published=True, books__language=language)
-            | Q(sermons__is_published=True, sermons__language=language)
+            Exists(Book.objects.filter(**published))
+            | Exists(Sermon.objects.filter(**published))
         )
-        .distinct()
         .prefetch_related("translations")
     )
     out = {
@@ -278,6 +327,47 @@ def _base_querysets(language: str, scope: tuple[str, str] | None = None) -> dict
         "sermon": sermons,
     }
     return _scoped(out, scope) if scope else out
+
+
+#: The kinds whose vectors are big enough to be TOASTed — see _index_scans.
+TOASTED = frozenset({"chapter", "sermon"})
+
+
+@contextmanager
+def _index_scans():
+    """Steer Postgres off sequential scans for the TOASTED kinds' queries inside.
+
+    library_chapter's heap is ~20 MB and its vectors ~750 MB beside it, and the
+    planner prices a sequential scan by the heap alone. So for any common word
+    it chose to scan every chapter in every language — detoasting each vector
+    to test it — over the GIN index that answers the same match in a few
+    milliseconds (measured on the fixture: "prayer" 560 ms -> 49 ms ranked,
+    615 ms -> 12 ms counted).
+
+    Only for those tables. Elsewhere a sequential scan is often the right plan:
+    the entity vectors are small, and authors and topics have no vector index
+    at all — with sequential scans penalised the planner walked them through
+    other indexes instead, measured ten times slower.
+
+    SET LOCAL needs a transaction, so this opens one; it is also what keeps the
+    setting from leaking to the next request on a pooled connection. If the
+    body raises, rolling the atomic block back reverts the setting with it.
+    """
+    if connection.vendor != "postgresql":
+        yield
+        return
+    # Inside a caller's transaction (a test, an atomic view) SET LOCAL lasts
+    # until the OUTERMOST one ends, so it must be put back; otherwise COMMIT does.
+    nested = connection.in_atomic_block
+    with transaction.atomic(), connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT current_setting('enable_seqscan'),"
+            " set_config('enable_seqscan', 'off', true)"
+        )
+        previous = cursor.fetchone()[0]
+        yield
+        if nested:
+            cursor.execute("SELECT set_config('enable_seqscan', %s, true)", [previous])
 
 
 def search_library(q: str, language: str, scope=None) -> list[dict]:
@@ -338,73 +428,129 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
-def _search_postgres(ctx, qs):
-    from django.contrib.postgres.search import SearchHeadline, SearchRank
+class _Snippet(Func):
+    """A passage's highlighted snippet: ts_headline over a window, not the body.
 
-    authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, articles = qs["plan"], qs["article"]
-    chapters, sermons = qs["chapter"], qs["sermon"]
+    ts_headline's cost is parsing its whole input, and a chapter runs to tens of
+    thousands of characters: twenty of them were ~120 ms of every search, for a
+    snippet of forty words. So it parses SNIPPET_WINDOW characters around the
+    point where every query word has first appeared — the latest of their first
+    occurrences, since any passage satisfying the whole query ends at or after
+    it — and the whole body only where that window can't serve:
+
+    * no point: no query word occurs literally (the row matched through its
+      title or author, or a word's form is neither the typed word nor its stem);
+    * or the window doesn't itself satisfy the query (``@@``): the words met
+      once, apart, and the passage the query wants lies elsewhere.
+
+    The second test is the query's own, so it knows OR, exclusions, phrases and
+    Korean prefixes; a snippet is never cut from text the query doesn't match.
+
+    A word is looked for as its stem AND as typed, at a word start: "running"
+    finds "runs" through "run", while "holy" (stem "holi") is found as typed.
+    The window is trimmed to whole words at both edges.
+    One scalar subquery per row, so the point is found once; Postgres postpones
+    it past the ORDER BY ... LIMIT, so only the capped rows pay for it.
+    """
+
+    output_field = TextField()
+
+    #: Where a word first starts in ``body``, as 1-based char position, else NULL.
+    #: regexp_instr from Postgres 15; before it, the length of what precedes it.
+    _AT = {
+        True: "NULLIF(regexp_instr({body}, '\\m' || {word}, 1, 1, 0, 'i'), 0)",
+        False: "length(substring(lower({body}) from '^(.*?)\\m' || {word})) + 1",
+    }
+
+    def __init__(self, body, query, config: str, words: list[str]):
+        super().__init__(body, query)
+        self.config, self.words = config, words
+
+    def as_sql(self, compiler, connection, **extra):
+        (body, body_p), (query, query_p) = (
+            compiler.compile(e) for e in self.get_source_expressions()
+        )
+        # Lexemes may hold regex metacharacters (to_tsvector keeps "e.g", "c++").
+        word = r"regexp_replace(word, '([.^$*+?()\[\]{}|\\])', '\\\1', 'g')"
+        at = self._AT[connection.pg_version >= 150000].format(body=body, word=word)
+        options = f"StartSel={HL_START}, StopSel={HL_END}, MaxWords=40, MinWords=20"
+        before, width = SNIPPET_BEFORE, SNIPPET_WINDOW
+        sql = (
+            f"(SELECT CASE WHEN to_tsvector(%s::regconfig, w.text) @@ {query}"
+            f" THEN ts_headline(%s::regconfig, w.text, {query}, %s)"
+            f" ELSE ts_headline(%s::regconfig, {body}, {query}, %s) END"
+            # The point: each typed word's EARLIEST form (stem or as typed),
+            # then the latest of those — a late "holiness" must not move the
+            # window past an early "holy".
+            f" FROM (SELECT max(first) AS at FROM ("
+            f"   SELECT min({at}) AS first FROM unnest(%s::text[]) AS typed(given),"
+            "   LATERAL (SELECT unnest(tsvector_to_array(to_tsvector(%s::regconfig, typed.given)))"
+            "            UNION SELECT lower(typed.given)) AS forms(word)"
+            "   GROUP BY typed.given) AS per_word) AS m,"
+            f" LATERAL (SELECT greatest(1, m.at - {before}) AS start,"
+            f"          substr({body}, greatest(1, m.at - {before}), {width}) AS raw) AS r,"
+            # Whole words only: a cut word at either edge would show as a
+            # fragment ("ndlord came"), or as a false match ("faith" of
+            # "faithfulness") that the @@ test would believe.
+            " LATERAL (SELECT CASE WHEN length(r.raw) < "
+            f"{width} THEN t.text ELSE regexp_replace(t.text, '\\s+\\S*$', '') END AS text"
+            "          FROM (SELECT CASE WHEN r.start > 1"
+            "                THEN regexp_replace(r.raw, '^\\S*\\s+', '') ELSE r.raw END AS text) AS t) AS w)"
+        )
+        params = (
+            self.config, *query_p,                       # to_tsvector(window) @@ query
+            self.config, *query_p, options,              # window headline
+            self.config, *body_p, *query_p, options,     # whole-body headline
+            *body_p, list(self.words), self.config,      # the point
+            *body_p,                                     # the window
+        )
+        return sql, params
+
+
+def _search_postgres(ctx, qs):
+    from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
 
-    def headline(field):
-        return SearchHeadline(
-            field,
-            query,
-            config=config,
-            start_sel=HL_START,
-            stop_sel=HL_END,
-            max_words=40,
-            min_words=20,
+    # One definition of what each type matches against, shared with
+    # count_by_type and page_by_type through _match and _pg_vector. These were
+    # spelled out inline here, which is how the topic vector came to be wrong on
+    # THIS path — the one readers actually hit — while a fix elsewhere would
+    # have looked complete.
+    def ranked(kind, *tiebreak):
+        return (
+            _match(kind, ctx, qs[kind])
+            .annotate(rank=SearchRank(_pg_vector(kind, config, ctx.language), query))
+            .order_by("-rank", *tiebreak)
         )
 
-    def entity(qs, vector, builder, kind):
-        rows = (
-            qs.annotate(search=vector, rank=SearchRank(vector, query))
-            .filter(search=query)
-            .order_by("-rank")[: CAPS[kind]]
-        )
+    def entity(kind, builder):
+        rows = ranked(kind)[: CAPS[kind]]
         return [(float(r.rank) * ENTITY_BOOST, builder(r, ctx)) for r in rows]
 
+    snippet = _Snippet(
+        F("body_text"), query, config, positive_words(ctx.q, ctx.language)
+    )
+
+    def passages(kind, builder, *tiebreak):
+        # Computed in SQL on the capped rows only, so body_text is never loaded.
+        rows = (
+            ranked(kind, *tiebreak)
+            .defer("body_text")
+            .annotate(headline=snippet)[: CAPS[kind]]
+        )
+        return [(float(r.rank), builder(r, snippet=r.headline)) for r in rows]
+
     pairs: list[tuple[float, dict]] = []
-
-    # One definition of what each entity type matches against, shared with
-    # _match and _pg_rank_order. These four were spelled out inline here, which
-    # is how the topic vector came to be wrong on THIS path — the one readers
-    # actually hit — while a fix elsewhere would have looked complete.
-    def vector(kind):
-        return _pg_vector(kind, config, ctx.language)
-
-    pairs += entity(authors, vector("author"), _author_hit, "author")
-    pairs += entity(books, vector("book"), _book_hit, "book")
-    pairs += entity(topics, vector("topic"), _topic_hit, "topic")
-    pairs += entity(plans, vector("plan"), _plan_hit, "plan")
-    pairs += entity(articles, vector("article"), _article_hit, "article")
-
-    # Chapters and sermons match against their STORED vector (GIN-indexed,
-    # populated by library/fts.py with the same fields + weights the old
-    # query-time vector used) — an index lookup instead of re-tokenising
-    # every body on every keystroke.
-    chapter_rows = (
-        chapters.filter(search_vector=query)
-        .annotate(
-            rank=SearchRank(F("search_vector"), query),
-            headline=headline("body_text"),
-        )
-        .order_by("-rank", "book__sort_order", "order")[: CAPS["chapter"]]
-    )
-    pairs += [(float(c.rank), _chapter_hit(c, snippet=c.headline)) for c in chapter_rows]
-
-    sermon_rows = (
-        sermons.filter(search_vector=query)
-        .annotate(
-            rank=SearchRank(F("search_vector"), query),
-            headline=headline("body_text"),
-        )
-        .order_by("-rank", "sort_order")[: CAPS["sermon"]]
-    )
-    pairs += [(float(s.rank), _sermon_hit(s, snippet=s.headline)) for s in sermon_rows]
+    pairs += entity("author", _author_hit)
+    pairs += entity("book", _book_hit)
+    pairs += entity("topic", _topic_hit)
+    pairs += entity("plan", _plan_hit)
+    pairs += entity("article", _article_hit)
+    with _index_scans():
+        pairs += passages("chapter", _chapter_hit, "book__sort_order", "order")
+        pairs += passages("sermon", _sermon_hit, "sort_order")
 
     pairs.sort(key=lambda pair: pair[0], reverse=True)
     return [hit for _, hit in pairs[:MAX_RESULTS]]
@@ -577,26 +723,26 @@ def _topic_localized(language: str):
     return localized("title"), localized("description")
 
 
-def _pg_vector(kind: str, config: str, language: str):
-    """The weighted vector an ENTITY type matches against.
+#: Types matched against a stored, GIN-indexed ``search_vector`` column (kept by
+#: library/fts.py, with the same fields and weights the query-time vectors had)
+#: instead of one rebuilt from the raw columns on every request. Authors and
+#: topics are the exceptions: one row serves every language, and the reader's
+#: language picks both the prose and the FTS config — see library/fts.py.
+STORED = STORED_KINDS
 
-    Chapters and sermons are absent on purpose — they match their stored,
-    GIN-indexed ``search_vector`` rather than a vector rebuilt per query.
-    """
+
+def _pg_vector(kind: str, config: str, language: str):
+    """The weighted vector a type matches against — stored where it can be."""
     from django.contrib.postgres.search import SearchVector
+
+    if kind in STORED:
+        return F("search_vector")
 
     def sv(field, weight):
         return SearchVector(field, weight=weight, config=config)
 
     if kind == "author":
         return sv("name", "A") + sv("bio", "C")
-    if kind == "book":
-        return (
-            sv("title", "A")
-            + sv("subtitle", "A")
-            + sv("author__name", "B")
-            + sv("description", "C")
-        )
     if kind == "topic":
         # Topics are ONE row plus a TopicTranslation side-table, so `title` and
         # `description` are the ENGLISH columns whatever language was asked for.
@@ -609,18 +755,7 @@ def _pg_vector(kind: str, config: str, language: str):
             SearchVector(title, weight="A", config=config)
             + SearchVector(description, weight="C", config=config)
         )
-    if kind == "article":
-        # Articles are the SEO layer: they carry no author FK and no stored
-        # body vector (no body_text on the model), so — like a book — they
-        # match on their OWN titling. h1 is the display headline, meta_title
-        # the keyword-led <title> (blank on most rows, so it simply adds
-        # nothing), and description the standfirst. Per-language rows, so these
-        # columns already hold the queried language's prose.
-        return sv("h1", "A") + sv("meta_title", "A") + sv("description", "C")
-    # Plans need no such treatment: they are per-language ROWS (unique(slug,
-    # language)) and the queryset is already filtered to one language, so these
-    # columns hold that language's prose.
-    return sv("title", "A") + sv("description", "C")
+    raise ValueError(f"no query-time vector for {kind!r}")
 
 
 def _match(kind: str, ctx, qs):
@@ -629,11 +764,11 @@ def _match(kind: str, ctx, qs):
         matched = qs.filter(_lite_q(kind, ctx.q))
         return matched.distinct() if kind == "topic" else matched
 
-    config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
-    if kind in ("chapter", "sermon"):
+    if kind in STORED:
         return qs.filter(search_vector=query)
-    return qs.annotate(search=_pg_vector(kind, config, ctx.language)).filter(search=query)
+    vector = _pg_vector(kind, config_for(ctx.language), ctx.language)
+    return qs.annotate(search=vector).filter(search=query)
 
 
 #: Ordering per type per sort mode. "relevance" isn't here: on Postgres it is the
@@ -682,11 +817,22 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     ctx = _Ctx(q=q, language=language)
     counts: dict[str, int] = {}
     capped: dict[str, bool] = {}
-    for kind, qs in _base_querysets(language, scope).items():
-        n = _match(kind, ctx, qs).values("pk")[:COUNT_CEILING].count()
+    querysets = _base_querysets(language, scope)
+
+    def tally(kind):
+        n = _match(kind, ctx, querysets[kind]).values("pk")[:COUNT_CEILING].count()
         if n:
             counts[kind] = n
             capped[kind] = n >= COUNT_CEILING
+
+    # In _base_querysets' order either way, so the totals serialise stably.
+    for kind in querysets:
+        if kind not in TOASTED:
+            tally(kind)
+    with _index_scans():
+        for kind in querysets:
+            if kind in TOASTED:
+                tally(kind)
     # "scripture" is intentionally uncounted: it has no queryset, and a reference
     # resolves to 0-or-1 page, so the frontend's `totals[type] ?? loaded` fallback
     # lands on the single loaded row exactly. Counting it would mean re-running
@@ -699,11 +845,7 @@ def _pg_rank_order(kind, ctx, qs):
 
     config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
-    vector = (
-        F("search_vector")
-        if kind in ("chapter", "sermon")
-        else _pg_vector(kind, config, ctx.language)
-    )
+    vector = _pg_vector(kind, config, ctx.language)
     return qs.annotate(rank=SearchRank(vector, query)).order_by(
         "-rank", *_ORDER[kind]["natural"]
     )
@@ -744,7 +886,8 @@ def page_by_type(
     else:
         qs = qs.order_by(*_ORDER[kind]["natural"])
 
-    return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
+    with _index_scans() if kind in TOASTED else nullcontext():
+        return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
 
 
 def _hit_for(kind: str, row, ctx) -> dict:
@@ -1012,7 +1155,7 @@ def _scripture_chapter_hits(q, chapters):
         c.pk: c
         for c in Chapter.objects.filter(pk__in=[w["chapter_id"] for w in winners])
         .select_related("book__author")
-        .defer("body_html", "search_vector")
+        .defer("body_html", "search_vector", "book__search_vector")
     }
     return [
         _chapter_hit(

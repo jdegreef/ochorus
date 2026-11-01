@@ -9,7 +9,8 @@ import { setStatusBar } from './platform';
  *
  * `preference` is what the reader chose and what we persist: `system` follows
  * the OS (`prefers-color-scheme`, live), while `light` / `dark` / `sepia` pin a
- * fixed look. `current` is the resolved theme actually written to
+ * fixed look. A reader who has chosen nothing gets `light` (DEFAULT_PREF) —
+ * the house look is paper, even on a dark-mode device; System is opt-in. `current` is the resolved theme actually written to
  * `data-theme` — always one of light / dark / sepia. The boot script in
  * app.html applies the same resolution before hydration to avoid a flash; keep
  * the two in step.
@@ -22,6 +23,8 @@ export type ThemePref = 'system' | 'light' | 'dark' | 'sepia';
 export type ThemeApplied = 'light' | 'dark' | 'sepia';
 
 const PREFS: readonly ThemePref[] = ['system', 'light', 'dark', 'sepia'];
+/** What a reader who has chosen nothing gets. Mirrored in the app.html boot script. */
+export const DEFAULT_PREF: ThemePref = 'light';
 
 /** Every theme choice with its label key and icon, in display order
  *  (lightest to darkest after System) — Settings, the header's quick
@@ -45,12 +48,12 @@ const THEME_COLOR: Record<ThemeApplied, string> = {
  *  legacy name for the light theme (old profiles/localStorage may hold it). */
 export function normalizePref(v: string | null | undefined): ThemePref {
 	if (v === 'paper') return 'light';
-	return (PREFS as readonly string[]).includes(v ?? '') ? (v as ThemePref) : 'system';
+	return (PREFS as readonly string[]).includes(v ?? '') ? (v as ThemePref) : DEFAULT_PREF;
 }
 
 class Theme {
 	/** The reader's stored choice; 'system' tracks the OS. */
-	preference = $state<ThemePref>('system');
+	preference = $state<ThemePref>(DEFAULT_PREF);
 	/** The resolved theme currently applied (what `data-theme` is set to). */
 	current = $state<ThemeApplied>('light');
 	#mql: MediaQueryList | null = null;

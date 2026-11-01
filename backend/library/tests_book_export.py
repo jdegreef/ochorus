@@ -19,7 +19,7 @@ from django.test import TestCase, override_settings
 from lxml import etree
 
 from . import book_export, export_policy
-from .models import Author, Book, Chapter
+from .models import Author, Book, Chapter, Series
 
 PILOT = frozenset({("pilot-book", "en")})
 
@@ -65,6 +65,9 @@ class EpubTests(TestCase):
                 etree.fromstring(z.read(name))  # raises if not well-formed
 
     def test_a_chapter_ends_with_its_questions_then_their_answers(self):
+        # A young readers' book (its series says so) asks first, answers apart.
+        series = Series.objects.create(slug="stories", title="Stories", audience="young_readers")
+        Book.objects.filter(pk=self.book.pk).update(series=series)
         Chapter.objects.filter(order=1).update(
             study_questions=[{"question": "Why run?", "answer": "To reach the <light>."}]
         )
@@ -79,9 +82,36 @@ class EpubTests(TestCase):
         printed = book_export.render_print_html(book_export.build_edition(self.book))
         self.assertEqual(printed.count('<div class="talk">'), 1)
 
+    def test_the_voice_follows_the_readers_rule(self):
+        # Slug suffix AND a trailing "(…)" in any language; a series for young
+        # readers; else reflection — so a lookalike title is not a retelling.
+        def voice(slug, title, audience=""):
+            series = mock.Mock(audience=audience) if audience else None
+            return book_export.question_voice(mock.Mock(slug=slug, title=title, series=series))
+
+        self.assertEqual(voice("a-retrospect-children", "Rétrospective (Pour enfants)"), "young")
+        self.assertEqual(voice("c-s-lewis-a-life-children", "C. S. Lewis (Para niños)"), "young")
+        self.assertEqual(voice("all-of-grace-teens", "Tout par grâce (Pour ados)"), "teens")
+        self.assertEqual(voice("divine-songs-for-children", "Divine Songs for Children"), "reflect")
+        self.assertEqual(voice("rooted-1", "Rooted – Book 1", "young_readers"), "young")
+        self.assertEqual(voice("faithful-with-little", "Faithful with Little"), "reflect")
+
+    def test_any_other_book_answers_beneath_each_question(self):
+        # An adult book reads like the sermon page: "Questions for reflection",
+        # each answer straight after its question, not a children's heading.
+        Chapter.objects.filter(order=1).update(
+            study_questions=[{"question": "Why give?", "answer": "Because He gave."}]
+        )
+        printed = book_export.render_print_html(book_export.build_edition(self.book))
+        self.assertIn("Questions for reflection", printed)
+        self.assertNotIn("Talk about it together", printed)
+        self.assertNotIn("Notes for grown-ups", printed)
+        talk = printed[printed.index('<div class="talk">'):]
+        self.assertLess(talk.index("Why give?"), talk.index("Because He gave."))
+
     def test_a_teens_edition_speaks_to_the_reader(self):
         Chapter.objects.filter(order=1).update(study_questions=[{"question": "Q?", "answer": "A."}])
-        Book.objects.filter(pk=self.book.pk).update(slug="pilot-book-teens")
+        Book.objects.filter(pk=self.book.pk).update(slug="pilot-book-teens", title="Pilot (For Teens)")
         ed = book_export.build_edition(Book.objects.get(pk=self.book.pk))
         printed = book_export.render_print_html(ed)
         self.assertIn("Questions to think about", printed)

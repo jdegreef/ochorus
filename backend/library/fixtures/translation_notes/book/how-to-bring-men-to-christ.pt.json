@@ -1,0 +1,322 @@
+{
+ "kind": "book",
+ "slug": "how-to-bring-men-to-christ",
+ "language": "pt",
+ "job_issue": 5236,
+ "pull_request": null,
+ "note": [
+  "Scripture is the Bíblia Livre para o Mundo (por_bpm), pasted by script; references use the full Portuguese book name with chapter.verse. John 3:36 reads desobedece ao Filho where Torrey has “believeth not”; Luke 12:5 has Geena. English slips noted: 2 John v. 10 for 1 John 5:10 and John ii. 1-2 for 1 John 2:1-2 (digits kept), “endured” for endued.",
+  "AI-translated (job #5236) in parallel chapters, then reconciled: interessado (inquirer), obreiro, reunião posterior, Palavra de Deus, Batismo do Espírito Santo. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Luke 22:32",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 9:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 130:3",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 22:37-38",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 8:34",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 3:36",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 53:5-6",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 15:3-4",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 18:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Deuteronomy 4:30",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Amos 4:12",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Acts 20:31",
+   "status": "mined",
+   "block_index": 119,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Acts 1:5",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Acts 1:5",
+   "status": "mined",
+   "block_index": 132,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "Acts 2:39",
+   "status": "mined",
+   "block_index": 137,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "block_index": 140,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "mined",
+   "block_index": 141,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "block_index": 143,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "James 1:6-7",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  }
+ ]
+}

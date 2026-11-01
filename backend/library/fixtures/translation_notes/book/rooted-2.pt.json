@@ -1,0 +1,1259 @@
+{
+ "kind": "book",
+ "slug": "rooted-2",
+ "language": "pt",
+ "job_issue": 3606,
+ "references": [
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 38
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 41
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 2:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Luke 2:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 48
+  },
+  {
+   "reference": "Luke 2:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 54
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 63
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Luke 2:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 67
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 68
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "Matthew 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "Matthew 2:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "Matthew 2:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 86
+  },
+  {
+   "reference": "Matthew 2:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Matthew 2:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 88
+  },
+  {
+   "reference": "Luke 2:46",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 2:47",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 2:49",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 2:48",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 2:49",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 118
+  },
+  {
+   "reference": "Matthew 3:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 131
+  },
+  {
+   "reference": "Matthew 3:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 135
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 136
+  },
+  {
+   "reference": "Matthew 4:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Matthew 4:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 146
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 151
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 153
+  },
+  {
+   "reference": "Mark 1:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Mark 1:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 163
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 167
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 169
+  },
+  {
+   "reference": "Mark 1:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 170
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 172
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 178
+  },
+  {
+   "reference": "John 2:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 180
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 185
+  },
+  {
+   "reference": "John 2:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 186
+  },
+  {
+   "reference": "John 2:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 186
+  },
+  {
+   "reference": "John 2:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 188
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 190
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 192
+  },
+  {
+   "reference": "John 3:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "John 3:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 195
+  },
+  {
+   "reference": "John 3:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 200
+  },
+  {
+   "reference": "John 3:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 201
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 203
+  },
+  {
+   "reference": "John 4:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 210
+  },
+  {
+   "reference": "John 4:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 214
+  },
+  {
+   "reference": "John 4:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 215
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 216
+  },
+  {
+   "reference": "John 4:29",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 219
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 225
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 225
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 225
+  },
+  {
+   "reference": "Mark 4:35",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 228
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 231
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 232
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 233
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 234
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 239
+  },
+  {
+   "reference": "John 6:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 242
+  },
+  {
+   "reference": "John 6:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 242
+  },
+  {
+   "reference": "John 6:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 242
+  },
+  {
+   "reference": "John 6:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 246
+  },
+  {
+   "reference": "John 6:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 247
+  },
+  {
+   "reference": "John 6:11",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 248
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 256
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 256
+  },
+  {
+   "reference": "Matthew 14:31",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 256
+  },
+  {
+   "reference": "Matthew 14:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 260
+  },
+  {
+   "reference": "Matthew 14:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 261
+  },
+  {
+   "reference": "Matthew 14:28",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 262
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "self_rendered",
+   "block_index": 263
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 265
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 270
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 275
+  },
+  {
+   "reference": "Mark 10:52",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 275
+  },
+  {
+   "reference": "Mark 10:47",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 279
+  },
+  {
+   "reference": "Mark 10:48",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 280
+  },
+  {
+   "reference": "Mark 10:49",
+   "status": "self_rendered",
+   "block_index": 281
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 282
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 283
+  },
+  {
+   "reference": "Mark 10:52",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 283
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 286
+  },
+  {
+   "reference": "Mark 10:51",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 289
+  },
+  {
+   "reference": "Mark 10:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 293
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 293
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 299
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 302
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 309
+  },
+  {
+   "reference": "John 11:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 309
+  },
+  {
+   "reference": "John 11:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 312
+  },
+  {
+   "reference": "John 11:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 314
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 315
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 316
+  },
+  {
+   "reference": "John 11:43",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 317
+  },
+  {
+   "reference": "John 11:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 321
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 325
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 331
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 332
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 333
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 334
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 335
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 336
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 337
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 344
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 344
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 344
+  },
+  {
+   "reference": "Matthew 5:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 348
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 349
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 350
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 352
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 353
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 359
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 364
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 365
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 367
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 368
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Luke 15:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 375
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 378
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "self_rendered",
+   "block_index": 380
+  },
+  {
+   "reference": "Luke 15:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 381
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 382
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 392
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 396
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 397
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 399
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 400
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 402
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 408
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 408
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 411
+  },
+  {
+   "reference": "Luke 10:29",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 411
+  },
+  {
+   "reference": "Luke 10:33",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 416
+  },
+  {
+   "reference": "Luke 10:35",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 416
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 417
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 417
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 424
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 426
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 432
+  },
+  {
+   "reference": "Luke 19:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 434
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 435
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 436
+  },
+  {
+   "reference": "Luke 19:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 436
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 443
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 21:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 451
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 459
+  },
+  {
+   "reference": "John 13:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 459
+  },
+  {
+   "reference": "John 13:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 467
+  },
+  {
+   "reference": "John 13:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 467
+  },
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 468
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 468
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 475
+  },
+  {
+   "reference": "John 19:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 480
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 481
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 482
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 484
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 487
+  },
+  {
+   "reference": "Matthew 28:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 491
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 491
+  },
+  {
+   "reference": "Matthew 28:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 498
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 498
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 500
+  },
+  {
+   "reference": "Matthew 28:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 501
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 504
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 508
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 508
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 512
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 512
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 514
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 517
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 518
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 524
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 526
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "self_rendered",
+   "block_index": 527
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 528
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 535
+  },
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 537
+  }
+ ],
+ "note": [
+  "Every day’s key verse (blockquote) and every quoted fragment is the Bíblia Livre para o Mundo (porbrbsl, the ebible mirror’s por_bpm USFM) copied by script; the citation drops (BSB). Where the Bíblia Livre nests its own “ ” inside the outer quotation they are set as ‘ ’, as in Book 1. Rows are measured: mined only where a Bíblia Livre span of the cited verse appears in that block.",
+  "Where the Bíblia Livre differs from the BSB the English teaches from, the verse is kept and the explanation follows it: John 1:1 «o Verbo» (glossed as ‘palavra’); Mark 1:17 «Vinde após mim» is three words, not two; John 2:11 «princípio de seus sinais»; Luke 2:52 «graça diante de Deus e dos homens» (glossed); Matthew 5:3–9 «bem-aventurados», «mansos»; Matthew 5:15 «candeia» (glossed); John 19:30 «Está consumado» is two words, not three; Matthew 28:20’s closing «Amém» is left out of the blockquote. The introduction’s parents’ note names the Bíblia Livre instead of the BSB.",
+  "AI-translated (job #3606) by fan-out over 4 translators against one brief matching Book 1 (reader você, prayers tu); tag sequence identical to the English per chapter; awaiting native review."
+ ]
+}

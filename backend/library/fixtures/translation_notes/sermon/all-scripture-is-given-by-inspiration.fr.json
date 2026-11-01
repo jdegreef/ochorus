@@ -1,0 +1,90 @@
+{
+ "kind": "sermon",
+ "slug": "all-scripture-is-given-by-inspiration",
+ "language": "fr",
+ "job_issue": 6266,
+ "references": [
+  {
+   "reference": "2 Timothy 3:16-17",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Timothy 3:16-17",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Titus 2:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 14:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 14:25",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "self_rendered",
+   "block_index": 33
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

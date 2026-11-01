@@ -21,7 +21,7 @@ from rest_framework.views import APIView
 from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
 
-from . import book_export
+from . import book_export, daily_readings
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
 from .export_policy import EXPORT_EDITIONS, is_exportable
@@ -36,6 +36,7 @@ from .languages import entry as language_entry
 from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
+    QUOTE_SOURCE_UNSERVED,
     SERMON_CARD_DEFER,
     Article,
     Author,
@@ -60,6 +61,7 @@ from .search import (
     PAGE_SIZE,
     SORTS,
     count_by_type,
+    memoized,
     page_by_type,
     parse_scope,
     scope_entry,
@@ -88,6 +90,7 @@ from .serializers import (
     _edition_base_slug,
     _edition_family,
     _is_retold,
+    _link_scripture,
     _retold_bases,
     article_lead_book_map,
     article_topic_map,
@@ -344,7 +347,10 @@ class BookDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
 #: Chapter columns the chapter payload never reads. body_text and search_vector
 #: are each about the size of the body, so loading them tripled what a chapter
 #: request held in memory.
-_CHAPTER_UNSERVED = ("body_text", "search_vector", "citations_indexed_at")
+# book__search_vector: select_related joins past Book's deferring manager.
+_CHAPTER_UNSERVED = (
+    "body_text", "search_vector", "citations_indexed_at", "book__search_vector"
+)
 
 
 class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
@@ -601,6 +607,36 @@ def _plan_cards(language: str):
     )
 
 
+def plan_entry_index(plans, books):
+    """``{(book_slug, "MM-DD"): reading}`` for every year-long devotional day
+    (``PlanDay.entry_date``) — the entry companion of ``plan_chapter_index``.
+
+    Such a day reads one dated entry, not its whole month chapter, so its
+    title, length and opening verse are the entry's (``daily_readings``), read
+    through that module's month cache. ``books`` is ``plan_book_index``'s.
+    Here, not in the serializers: the parser's imports must stay out of their
+    graph (library/daily_books.py).
+    """
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.entry_date}
+    if not slugs:
+        return {}
+    version = daily_readings.content_version()
+    index = {}
+    for slug in slugs:
+        book = books.get(slug)
+        if book is None:
+            continue
+        for month, e in daily_readings.year_entries(book, version):
+            index[(slug, daily_readings.format_date(month, e.day))] = {
+                "title": e.title,
+                "book_title": book.title,
+                "word_count": e.words,
+                "opening": e.excerpt,
+            }
+    return index
+
+
+
 def _plan_card_context(plans, language: str) -> dict:
     """Resolve every plan's chapters and books ONCE for the page.
 
@@ -608,10 +644,12 @@ def _plan_card_context(plans, language: str) -> dict:
     and each of those used to fetch its own rows — three queries per plan.
     The same pattern BookListView uses for topic chips.
     """
+    books = plan_book_index(plans, language)
     return {
         "plan_chapters": plan_chapter_index(plans, language),
-        "plan_books": plan_book_index(plans, language),
+        "plan_books": books,
         "plan_articles": plan_article_index(plans, language),
+        "plan_entries": plan_entry_index(plans, books),
     }
 
 
@@ -621,11 +659,15 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     serializer_class = PlanListSerializer
 
     def get_queryset(self):
-        return _plan_cards(_language(self.request))
+        # Once per request: the card context and list() both read it, and the
+        # year-long devotionals put some 2,500 days into its prefetch.
+        if not hasattr(self, "_plans"):
+            self._plans = list(_plan_cards(_language(self.request)))
+        return self._plans
 
     def get_serializer_context(self):
         ctx = super().get_serializer_context()
-        ctx.update(_plan_card_context(list(self.get_queryset()), _language(self.request)))
+        ctx.update(_plan_card_context(self.get_queryset(), _language(self.request)))
         return ctx
 
 
@@ -633,13 +675,17 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = PlanDetailSerializer
 
     def get_object(self):
-        return get_object_or_404(
-            Plan.objects.filter(is_published=True)
-            .annotate(num_days=Count("days"))
-            .prefetch_related("days"),
-            slug=self.kwargs["slug"],
-            language=_language(self.request),
-        )
+        # Once per request: retrieve() and get_serializer_context() both ask,
+        # and a year-long devotional's plan carries 366 days to prefetch.
+        if not hasattr(self, "_plan"):
+            self._plan = get_object_or_404(
+                Plan.objects.filter(is_published=True)
+                .annotate(num_days=Count("days"))
+                .prefetch_related("days"),
+                slug=self.kwargs["slug"],
+                language=_language(self.request),
+            )
+        return self._plan
 
     def get_serializer_context(self):
         """One index for all four consumers on this page.
@@ -655,6 +701,7 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         )
         ctx["plan_books"] = plan_book_index([plan], plan.language)
         ctx["plan_articles"] = plan_article_index([plan], plan.language)
+        ctx["plan_entries"] = plan_entry_index([plan], ctx["plan_books"])
         return ctx
 
 
@@ -1118,6 +1165,73 @@ class BookGuideView(PublicContentCacheMixin, APIView):
         )
 
 
+def _daily_date(date: str) -> tuple[int, int]:
+    parsed = daily_readings.parse_date(date)
+    if parsed is None:
+        raise Http404("Not a calendar date (MM-DD)")
+    return parsed
+
+
+class DailyReadingView(PublicContentCacheMixin, APIView):
+    """One day of a year-long devotional (/today/<slug>/): the entry for
+    ``date`` (``MM-DD``) in this edition, or the nearest one before it when the
+    book has none for that date (see ``daily_readings``).
+
+    The date is the CLIENT's: "today" is the reader's local calendar day, and a
+    date in the URL keeps every response cacheable. 404 for a book that is not
+    read by the calendar, or that this language does not publish.
+    """
+
+    def get(self, request, slug, date):
+        requested = _daily_date(date)
+        if slug not in daily_readings.DATED_BOOKS:
+            raise Http404("Not a dated book")
+        language = _language(request)
+        book = get_object_or_404(_book_shelf(language), slug=slug)
+        found = daily_readings.find_day(book, *requested, daily_readings.content_version())
+        if found is None:
+            raise Http404("No entry on or shortly before this date")
+        month, entry, html = found
+        # From the date ASKED, not the one shown: on 29 February in a 365-day
+        # book (shown: the 28th) "next" is 1 March, not the 29th again.
+        prev, nxt = daily_readings.neighbours(*requested)
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        return Response(
+            {
+                "book": BookListSerializer(book, context=ctx).data,
+                **daily_readings.entry_payload(month, entry, requested, slug),
+                # Scripture linked on the one entry shown, not its whole month.
+                "html": _link_scripture(html),
+                "prev": prev,
+                "next": nxt,
+            }
+        )
+
+
+class DailyShelfView(PublicContentCacheMixin, APIView):
+    """Today across the dated books: one card per devotional this language
+    publishes, each with its entry for ``date`` — the home page's Today shelf.
+    No bodies: a card links into the day page."""
+
+    def get(self, request, date):
+        requested = _daily_date(date)
+        language = _language(request)
+        books = list(_book_shelf(language).filter(slug__in=daily_readings.DATED_BOOKS))
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        cards = BookListSerializer(books, many=True, context=ctx).data
+        version = daily_readings.content_version()
+        readings = []
+        for book, card in zip(books, cards, strict=True):
+            found = daily_readings.find_entry(book, *requested, version)
+            if found is None:
+                continue
+            month, entry = found
+            readings.append(
+                {"book": card, **daily_readings.entry_payload(month, entry, requested, book.slug)}
+            )
+        return Response({"readings": readings})
+
+
 #: A ladder rung's name for each audience's edition suffix.
 _EDITION_RUNG = {"young_readers": "children", "teens": "teens"}
 
@@ -1532,8 +1646,19 @@ class SearchView(APIView):
                 page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
             return Response(page)
 
-        results = search_library(searched, language, scope)
-        counts, capped = count_by_type(searched, language, scope)
+        # Memoised as one unit: the counts describe the list, so they must come
+        # from the same moment. Logging below still runs per request — the
+        # popular-searches report counts readers, not computations.
+        results, counts, capped = memoized(
+            "merged",
+            lambda: (
+                search_library(searched, language, scope),
+                *count_by_type(searched, language, scope),
+            ),
+            searched,
+            language,
+            scope,
+        )
         if best:
             if all(hit_key(h) != hit_key(best) for h in results):
                 # Not one of the text matches: count it, so its group's total
@@ -1567,7 +1692,7 @@ class SearchView(APIView):
         # to a second empty page. Inside a scope, empty usually means "not
         # here", and the way out is to widen the search, not to respell it.
         if not results and not scope:
-            hint = suggest(q, language)
+            hint = memoized("suggest", lambda: suggest(q, language), q, language)
             if hint:
                 payload["suggestion"] = hint
         # Anonymous analytics (admin "what do readers search for / not find").
@@ -1607,8 +1732,18 @@ class SearchView(APIView):
             "type": kind,
             "sort": sort,
             "offset": offset,
-            "results": page_by_type(
-                q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+            "results": memoized(
+                "page",
+                lambda: page_by_type(
+                    q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+                ),
+                q,
+                language,
+                kind,
+                offset,
+                limit,
+                sort,
+                scope,
             ),
         }
 
@@ -1847,9 +1982,9 @@ class QuotePageView(APIView):
         if writer is None:
             raise Http404("No such author.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -1907,9 +2042,9 @@ class QuoteTopicDetailView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = list(
-            Quote.objects.filter(reviewed=True, topics=t).select_related(
-                "author", "chapter__book", "sermon"
-            )
+            Quote.objects.filter(reviewed=True, topics=t)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         if not rows:
             raise Http404("No published quotes on this topic.")
@@ -1955,9 +2090,9 @@ class QuoteAuthorTopicView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True, topics=t).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True, topics=t)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -2167,9 +2302,7 @@ def _short_quotes():
         .annotate(chars=Length("text"))
         .filter(chars__lte=FEATURED_MAX_CHARS)
         .select_related("author", "chapter__book", "sermon")
-        # The card needs titles and slugs, never the bodies they sit in.
-        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
-               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+        .defer(*QUOTE_SOURCE_UNSERVED)
     )
 
 
@@ -2289,8 +2422,10 @@ class QuoteResolveView(APIView):
         # Cap the batch so a malformed client can't ask for the whole table in
         # one request; a reader's saved shelf is far under this.
         wanted = [s for s in slugs if isinstance(s, str)][:200]
-        rows = Quote.objects.filter(slug__in=wanted, reviewed=True).select_related(
-            "author", "chapter__book", "sermon"
+        rows = (
+            Quote.objects.filter(slug__in=wanted, reviewed=True)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         by_slug = {q.slug: _quote_card_payload(q) for q in rows}
         # Preserve the caller's order — favorites arrive most-recent-first, and
@@ -2337,6 +2472,9 @@ class ScriptureGraphView(APIView):
             reference_label,
             verse_ids_for,
         )
+        from .scripture_graph import (
+            verse_text as graph_verse_text,
+        )
         from .search import fallback_snippet
 
         target = book_from_slug(book)
@@ -2354,6 +2492,10 @@ class ScriptureGraphView(APIView):
         floor = _scripture_floor(verse)
         if len(rows) < floor:
             raise Http404("Too few citations for a page.")
+        # And the text rule, as `qualifying_pages` applies it: no page for a
+        # book the bundled Bibles don't carry (the apocrypha).
+        if not graph_verse_text(ids[0]):
+            raise Http404("No Bible text for this reference.")
 
         # The TRUE number of citing chapters, taken before the cap. Reporting
         # len(passages) here would have said "40" for a passage 113 chapters
@@ -2366,6 +2508,7 @@ class ScriptureGraphView(APIView):
             c.pk: c
             for c in chapters.filter(pk__in=[r["chapter_id"] for r in rows])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {
@@ -2567,6 +2710,7 @@ class ScriptureBookView(APIView):
             for c in english_chapters()
             .filter(pk__in=[r["chapter_id"] for r in cites])
             .select_related("book__author")
+            .defer("book__search_vector")
         }
         passages = [
             {

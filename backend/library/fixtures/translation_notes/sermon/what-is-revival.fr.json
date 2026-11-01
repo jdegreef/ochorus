@@ -1,0 +1,32 @@
+{
+  "kind": "sermon",
+  "slug": "what-is-revival",
+  "language": "fr",
+  "job_issue": 6278,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Isaiah 6:5",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 8
+    },
+    {
+      "reference": "Luke 18:13",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 11
+    },
+    {
+      "reference": "John 3:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 14
+    },
+    {
+      "reference": "Acts 2:12",
+      "status": "self_rendered",
+      "block_index": 31
+    }
+  ]
+}

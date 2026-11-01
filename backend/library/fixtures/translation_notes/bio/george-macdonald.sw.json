@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "george-macdonald",
+ "language": "sw",
+ "job_issue": 5174,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Matthew 5:26",
+   "status": "self_rendered",
+   "block_index": 17
+  }
+ ]
+}

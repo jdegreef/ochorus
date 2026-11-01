@@ -198,5 +198,64 @@
    "AI-drafted; awaiting native review. pilgrims-progress.am (queue job #3714) completes this curated plan's three-book set in Amharic (around-the-wicket-gate.am and grace-abounding.am already ship), so seed_plans now creates the am row and PlanTranslationCoverageTests demands this prose; it ships in the same PR as the book.",
    "The card quotes the three shipped am book titles verbatim: around-the-wicket-gate «በጠባቧ በር አጠገብ» (which also carries the English 'at the wicket gate'), pilgrims-progress «የመንገደኛው ጉዞ», grace-abounding «ለኃጢአተኞች አለቃ የበዛ ጸጋ» (which carries 'the grace that abounded to the chief of sinners'). The title «የመንገደኛው መንገድ» echoes the pilgrims-progress title's «የመንገደኛው». Names as on the am book pages (ቻርልስ ስፐርጀን, ጆን ባንየን); «ሰማያዊቱ ከተማ» as in the am Bunyan editions."
   ]
+ },
+ "waiting-on-god-trust": {
+  "title": "እግዚአብሔርን መጠበቅ፦ የመታመን ሕይወት",
+  "description": "በመታመን ትምህርት ቤት ውስጥ አሥር ሳምንታት። አንድሩ መሪ እግዚአብሔርን የመጠበቅን የዕለት ልማድ ያስተምራል፤ ኤፍ. ቢ. ማየር በእርሱ የመመራትን ምሥጢር ይገልጣል፤ የጆርጅ ሙለር አስደናቂ የእምነት ሕይወትም እንዲህ ያለው መታመን የሚቀበለውን ያሳያል።",
+  "note": [
+   "Queue job #3708: «የመታመን ሕይወት» completes this plan in am (with «እግዚአብሔርን መጠበቅ» and «የመመራት ምሥጢር», both already live), so seed_plans creates the (waiting-on-god-trust, am) row on the deploy that ships this PR. Title opens with the shipped am title of its first book and closes with the third's. AI-drafted; awaiting native review."
+  ]
+ },
+ "send-the-fire": {
+  "title": "እሳቱን ላክ፦ ስለ መነቃቃት መጸለይ",
+  "description": "መነቃቃት እንዴት እንደሚመጣ፥ በጸሎትስ እንዴት እንደሚወርድ። ቻርልስ ፊኒ ስለ መነቃቃት ሁኔታዎች የሰጣቸው ትምህርቶች፤ አር. ኤ. ቶሪ ኃይል ስለሚሰጠው በመንፈስ ቅዱስ መጠመቅ፤ እግዚአብሔርም በጆናታን ኤድዋርድስ ዘመን ኒው ኢንግላንድን ያናወጠባቸው ስብከቶች።",
+  "note": [
+   "Queue job #3705: «ስለ ሃይማኖታዊ መነቃቃት የተሰጡ ትምህርቶች» completes this plan in am (with «በመንፈስ ቅዱስ መጠመቅ» and «የጆናታን ኤድዋርድስ የተመረጡ ስብከቶች», both already live), so seed_plans creates the (send-the-fire, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
+  ]
+ },
+ "everything-for-christ": {
+  "title": "ሁሉን ለክርስቶስ፦ የፈሰሰ ሕይወት",
+  "description": "በፍጹም ልብ ራስን መስጠት ምን ያስከፍላል? ምንስ ፍሬ ያፈራል? የዴቪድ ብሬነርድ ልብን የሚመረምር የሚስዮናዊነት ማስታወሻ፥ ቀጥሎም ስለ ወንጌል ሲሉ ሁሉን የሰጡ ወንዶችና ሴቶች ታሪኮች — ጥሪውን በመለሱ ሕይወቶች የተነገረ ራስን የመቀደስ ጥሪ።",
+  "note": [
+   "Queue job #3711: «የዴቪድ ብሬነርድ ሕይወትና ማስታወሻ» completes this plan in am (with «ሁሉን የሰጡ ወንዶችና ሴቶች», already live), so seed_plans creates the (everything-for-christ, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
+  ]
+ },
+ "pursuit-of-holiness": {
+  "title": "ቅድስናን መከተል",
+  "description": "ፈጽሞ የጌታ ስለ መሆን የዘጠኝ ሳምንታት ንባብ። አንድሪው መሬይ ቅድስናችንን ከቅዱሱ ጋር ካለን አንድነት ጋር ያያይዘዋል፤ ዊልያም ሎው በየዕለቱ በእያንዳንዱ ተራ ሰዓት ለአምልኮታዊ ሕይወት ይጠራናል፤ ጆን ዌስሊም ክርስቲያናዊ ፍጽምና ምን እንደ ሆነና ምን እንዳልሆነ በግልጽ ያስረዳል።",
+  "note": [
+   "Queue job #3779: «ለአምልኮታዊና ለቅዱስ ሕይወት የቀረበ ከባድ ጥሪ» completes this plan in am (with «በክርስቶስ ቅዱሳን» and «ስለ ክርስቲያናዊ ፍጽምና ግልጽ ማብራሪያ», both already live), so seed_plans creates the (pursuit-of-holiness, am) row on the deploy that ships this PR. «ቅድስናን መከተል» echoes Hebrews 12:14 («ቅድስናንም ተከታተሉ»). AI-drafted; awaiting native review."
+  ]
+ },
+ "women-of-faith": {
+  "title": "የእምነት ሴቶች",
+  "description": "ከሦስት ልዩ ሴቶች ጋር የሚደረግ ረዘም ያለ ጉዞ። ሃና ዊታል ስሚዝ የደስተኛ ሕይወትን ምሥጢር ትገልጣለች፤ የአማንዳ ቤሪ ስሚዝና የጁልያ ኤ. ጄ. ፉት የሕይወት ታሪኮች ደግሞ — በአሥራ ዘጠነኛው መቶ ክፍለ ዘመን ወንጌልን በዓለም ዙሪያ የሰበኩ ሁለት ጥቁር ሴቶች — ያንን ምሥጢር በታላቅ ዋጋ ሲኖር ያሳያሉ።",
+  "note": [
+   "AI-drafted; awaiting native review. Added with amanda-smith-autobiography.am («አማንዳ ስሚዝ፦ የሕይወት ታሪክ»), which completes the set — the-christians-secret-of-a-happy-life-4.am («የክርስቲያን የደስተኛ ሕይወት ምሥጢር») and a-brand-plucked-from-the-fire.am («ከእሳት የተነጠቀ ትንታግ») were already live — so seed_plans creates the (women-of-faith, am) row on the deploy that ships this PR."
+  ]
+ },
+ "days-of-heaven-upon-earth-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የሰማይ ቀናት በምድር ላይ",
+  "description": "የኤ. ቢ. ሲምፕሰን የዓመት ዕለታዊ ንባቦች፦ ለእያንዳንዱ ቀን አንድ ጥቅስና ስለ ክርስቶስ ሙላት አጭር ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ወይም ሁለት ደቂቃ።"
+ },
+ "morning-by-morning-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ማለዳ ማለዳ",
+  "description": "የቻርልስ ስፐርጀን የዓመቱ ሙሉ የማለዳ ንባቦች፦ ቀኑን ለመጀመር አንድ የመጽሐፍ ቅዱስ ቃልና ሞቅ ያለ ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን ሁለት ደቂቃ ያህል።"
+ },
+ "evening-by-evening-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ምሽት በምሽት",
+  "description": "የ«ማለዳ ማለዳ» ተጓዳኝ የሆነው የስፐርጀን መጽሐፍ፦ የዓመቱን እያንዳንዱን ቀን ለመዝጋት አንድ ቃልና ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በየምሽቱ ሁለት ደቂቃ ያህል።"
+ },
+ "our-daily-walk-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የዕለት ተዕለት ጉዟችን",
+  "description": "የኤፍ. ቢ. ማየር ለዓመቱ ለእያንዳንዱ ቀን የሚሆኑ ንባቦች፦ በተራ ቀናት ከእግዚአብሔር ጋር ስለ መሄድ አጭር ርዕስ ያለው ማሰላሰልና ጥቅሱ። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን ሁለት ወይም ሦስት ደቂቃ።"
+ },
+ "thoughts-for-the-quiet-hour-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ለጸጥታ ሰዓት የሚሆኑ አሳቦች",
+  "description": "ዲ. ኤል. ሙዲ ለዓመቱ ሙሉ የሰበሰባቸው አጫጭር ንባቦች፦ አንድ ጥቅስና እርሱ ከሚወዳቸው ሰባኪዎችና ጸሐፊዎች ጥቂት መስመሮች። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ደቂቃ ያህል።"
+ },
+ "cheque-book-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የእምነት ባንክ የቼክ ደብተር",
+  "description": "የቻርልስ ስፐርጀን ዕለታዊ ተስፋዎች፦ ለዓመቱ ለእያንዳንዱ ቀን አንድ የእግዚአብሔር ተስፋ፣ በእምነት እንዴት እንደሚቀበሉት ከሚያሳይ አጭር ቃል ጋር። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ወይም ሁለት ደቂቃ።"
  }
 }

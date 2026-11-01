@@ -351,12 +351,13 @@
 .cover-type.type-top .middle {
 	margin: 7cqw 0 auto;
 }
-/* And one title size for the set, a step under the imprint's own, so every
-   volume's title holds to three lines above the tree — Edwards' ran to four at
-   the imprint size and put the subtitle on the crown. Doubled class to outrank
-   `.style-*` recipes; `.long-title` (later in the file, same weight) still
-   steps a genuinely long title down past this. */
-.cover-type.type-top.type-top .title {
+/* And one title size for the Key Teachings set (the imprint's style), a step
+   under the imprint's own, so every volume's title holds to three lines above
+   the tree — Edwards' ran to four at the imprint size and put the subtitle on
+   the crown. Three classes to outrank `.style-*` recipes; `.long-title` (later
+   in the file, same weight) still steps a genuinely long title down past this.
+   Any other TYPE_TOP book keeps its own recipe's size. */
+.cover-type.type-top.style-originals .title {
 	font-size: 8.6cqw;
 }
 
@@ -798,6 +799,12 @@
 		font-size: 10.45cqw;
 		letter-spacing: 0.005em;
 	}
+	/* A title in small capitals over its recipe (`coverStyles.TITLE_SMALL_CAPS`):
+	   the face's own small caps where it cuts them, given a little air. */
+	.cover-type.caps-small .title {
+		font-variant-caps: small-caps;
+		letter-spacing: 0.02em;
+	}
 	/* The Fell types, cut in the 1670s and used by the Oxford press — the metal
 	   Bunyan and Baxter were actually printed in. Deliberately irregular; that
 	   is the face, not a rendering fault. */
@@ -1073,6 +1080,11 @@
 .cover-plate.over-art.ink-dark .cover-type.style-young .rule {
 	background: radial-gradient(circle, rgb(35 26 36 / 0.75) 0 0.8cqw, transparent 0.9cqw) 0 50% /
 		3cqw 1.8cqw repeat-x;
+}
+/* The devotional quatrefoil is drawn white; on a pale ground it is darkened to
+   the ink's grey rather than redrawn, so the recipe keeps its one ornament. */
+.cover-plate.over-art.ink-dark .cover-type.style-devotional .rule {
+	filter: brightness(0.14);
 }
 
 /* ═══ LAYOUTS ═════════════════════════════════════════════════════════════════
@@ -1483,4 +1495,39 @@
    settles ties, and the container query adds no specificity. */
 .cover-type.long-title.long-title .title {
 	font-size: 8cqw;
+}
+
+/* A SHORT title set up from its recipe's size (`titleFit`, coverCardMarkup.ts):
+   "Holiness" no longer sits at the size "The Saints' Everlasting Rest" needs,
+   lost in a field of painting. `zoom` rather than a font-size, so each recipe's
+   and script's own size is what grows, and the box still fits the frame (the
+   title wraps inside it). Framed paintings only: a layout sizes its own type,
+   and the imprint's, the young readers' and the lettered recipes are already
+   set large on purpose. */
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-short:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.45;
+}
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-mid:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.28;
+}
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-roomy:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.08;
+}
+
+/* ═══ THUMBNAIL ═══════════════════════════════════════════════════════════════
+   Below 110px wide — a list row (48px), an author's rail (64px), a small shelf
+   (96px) — the byline, subtitle, ornament and wordmark are each a few pixels
+   tall: they cannot be read and only crowd the one word that can. So a
+   thumbnail is the painting and its title, set a step larger. Every share card
+   and the downloads are drawn at 600px and never reach this rule. */
+@container (max-width: 110px) {
+	.cover-type .byline,
+	.cover-type .subtitle,
+	.cover-type .rule,
+	.cover-type .brandmark {
+		display: none;
+	}
+	.cover-type:not(.long-title) .title {
+		zoom: 1.25;
+	}
 }

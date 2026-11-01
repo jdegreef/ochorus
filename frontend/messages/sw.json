@@ -194,6 +194,7 @@
   "reader_layout_scroll": "Kusogeza",
   "reader_layout_page": "Ukurasa",
   "reader_tap_scroll": "Gusa ili kuendelea",
+  "reader_candlelight": "Mwanga wa mshumaa",
   "reader_search": "Tafuta kitabuni",
   "reader_search_placeholder": "Tafuta katika kitabu hiki…",
   "search_indexing": "Inaandaa utafutaji…",
@@ -1594,5 +1595,16 @@
   "together_counted": "Unahesabiwa katika jumla za kikundi",
   "together_count_stop": "Acha kunihesabu",
   "together_count_me": "Nihesabu katika jumla",
-  "together_count_sign_in_join": "Ingia ili uhesabiwe katika jumla za kikundi"
+  "together_count_sign_in_join": "Ingia ili uhesabiwe katika jumla za kikundi",
+  "daily_title": "Leo katika vitabu vya ibada",
+  "daily_subtitle": "Somo kwa kila siku ya mwaka, kutoka vitabu vya ibada vya kale",
+  "daily_see_all": "Masomo yote ya leo",
+  "daily_prev_day": "Siku iliyopita",
+  "daily_next_day": "Siku inayofuata",
+  "daily_back_to_today": "Rudi leo",
+  "daily_in_context": "Soma ndani ya kitabu",
+  "daily_missing_day": "Kitabu hiki hakina somo la tarehe hii, kwa hiyo hili ni la siku iliyotangulia.",
+  "daily_choose_date": "Chagua tarehe",
+  "daily_none": "Bado hakuna masomo ya kila siku katika lugha hii.",
+  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima"
 }

@@ -403,6 +403,9 @@ class CuratedArtTests(TestCase):
                 # nothing anywhere would have failed.
                 self.assertGreaterEqual(art.focus, 0.0, "focus is a fraction of the overflow")
                 self.assertLessEqual(art.focus, 1.0, "focus is a fraction of the overflow")
+                # An inset of half a side or more leaves nothing to crop.
+                self.assertGreaterEqual(art.inset, 0.0, "inset is a fraction of each side")
+                self.assertLess(art.inset, 0.25, "inset trims a mat, not the painting")
 
     def test_focus_moves_the_crop_window_along_the_overflowing_axis(self):
         """`focus` has to change PIXELS, not just be stored.
@@ -441,6 +444,55 @@ class CuratedArtTests(TestCase):
             self.assertGreater(seen[0.0][0], seen[0.0][2], "focus=0 should take the LEFT (red) end")
             self.assertGreater(seen[1.0][2], seen[1.0][0], "focus=1 should take the RIGHT (blue) end")
             self.assertNotEqual(seen[0.0], seen[1.0], "focus changed nothing at all")
+        finally:
+            for path in written:
+                path.unlink(missing_ok=True)
+
+    def test_a_scan_too_small_for_the_plate_is_refused(self):
+        """A thumbnail-sized scan must not be enlarged into a soft cover."""
+        from django.core.management.base import CommandError
+        from PIL import Image
+
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory() as td:
+            src = Path(td) / "s.png"
+            Image.new("RGB", (900, 700), (90, 90, 90)).save(src)
+            with self.assertRaisesRegex(CommandError, "too small"):
+                _crop_3x4(src, "small-selftest", 0.5)
+        self.assertFalse(any(CACHE.glob("small-selftest.*")), "nothing is cached")
+
+    def test_inset_cuts_the_mat_off_every_side(self):
+        """`inset` has to remove a black mat the photograph carries, not just
+        be stored — and an entry without one must keep its old recipe."""
+        from PIL import Image
+
+        from library.curated_art import Artwork, crop_recipe
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        art = Artwork("met", 1, "a", "t", "y", "w")
+        self.assertEqual(crop_recipe(art), "met-1@0.50", "a zero inset must not move old recipes")
+        self.assertEqual(crop_recipe(art._replace(inset=0.05)), "met-1@0.50~0.05")
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        # A 3:4 grey painting inside a 10% black mat on every side.
+        source = Image.new("RGB", (750, 1000), (0, 0, 0))
+        source.paste(Image.new("RGB", (600, 800), (150, 150, 150)), (75, 100))
+        written = []
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                src = Path(td) / "s.png"
+                source.save(src)
+                plain = _crop_3x4(src, "inset-selftest", 0.5)
+                trimmed = _crop_3x4(src, "inset-selftest", 0.5, 0.1)
+                written += [plain, trimmed]
+                self.assertNotEqual(plain, trimmed, "inset must be in the cache key")
+                with Image.open(plain) as im:
+                    self.assertLess(max(im.getpixel((300, 2))), 30, "the mat is there without inset")
+                with Image.open(trimmed) as im:
+                    for xy in ((2, 2), (300, 2), (300, 797), (597, 400)):
+                        self.assertGreater(min(im.getpixel(xy)), 100, f"mat left at {xy}")
         finally:
             for path in written:
                 path.unlink(missing_ok=True)
@@ -493,6 +545,26 @@ class CuratedArtTests(TestCase):
                 )
             seen.setdefault(key, slug)
 
+    def test_no_painter_is_on_more_than_three_works(self):
+        """At most three works per painter — `coverWall.PAINTER_CAP`, which the
+        admin cover wall only FLAGGED. A flag is advice, and advice drifted: by
+        2026-10-15 George Inness was on seven covers, enough that a shelf of
+        American landscapes read as one man's catalogue. Four of them were
+        re-picked on 2026-10-30 and the cap became this gate. The cap counts
+        `CURATED` and `CURATED_GROUND` together, as the wall does; painters
+        whose name a collection spells two ways count apart, which errs toward
+        passing, not failing."""
+        import re
+        from collections import Counter
+        from pathlib import Path
+
+        from library.curated_art import CURATED, CURATED_GROUND
+
+        wall = (Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "coverWall.ts").read_text()
+        cap = int(re.search(r"PAINTER_CAP = (\d+)", wall).group(1))
+        works = Counter(art.artist for art in {**CURATED, **CURATED_GROUND}.values())
+        over = {artist: n for artist, n in works.items() if n > cap}
+        self.assertEqual(over, {}, f"a painter is on more than {cap} works — re-pick one")
 
     def test_the_three_cover_tiers_answer_the_two_questions_differently(self):
         """The tier predicates, exercised on a member of each.
@@ -527,7 +599,8 @@ class CuratedArtTests(TestCase):
         with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
             for slug, shared, keeps in (
                 ("waiting-on-god", True, False),        # CURATED
-                ("humility-2", True, True),             # DERIVED_GROUND
+                ("the-secret-of-guidance", True, True),  # DERIVED_GROUND
+                ("godliness", True, False),             # ENGLISH_ON_GROUND
                 ("a-designed-work", True, True),        # CURATED_GROUND
                 ("a-work-in-no-tier-at-all", False, False),
             ):

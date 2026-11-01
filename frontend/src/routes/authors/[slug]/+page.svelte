@@ -45,10 +45,17 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { onMount } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { allProgress, isFinished } from '$lib/progress';
 	import type { BookSummary } from '$lib/library-public';
+
+	// A page of reading text is open — here, only with a life to read (the
+	// reader's Aa mounts on the same condition). app.css CANDLELIGHT.
+	$effect(() => {
+		if (author.bio_html) return holdFlag(document.documentElement, READING_FLAG);
+	});
 
 	const t = i18n.t;
 

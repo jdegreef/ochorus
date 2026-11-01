@@ -1,0 +1,127 @@
+{
+  "kind": "sermon",
+  "slug": "i-keep-a-quiet-heart",
+  "language": "fr",
+  "job_issue": 6281,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Mark 4:35",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 14
+    },
+    {
+      "reference": "Mark 4:36",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 15
+    },
+    {
+      "reference": "Mark 4:37",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 15
+    },
+    {
+      "reference": "Mark 4:38",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "Mark 4:38",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 17
+    },
+    {
+      "reference": "Mark 4:39",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 17
+    },
+    {
+      "reference": "Mark 4:39",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "Mark 4:40",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "Mark 4:41",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 18
+    },
+    {
+      "reference": "Mark 4:41",
+      "status": "self_rendered",
+      "block_index": 19
+    },
+    {
+      "reference": "Mark 4:38",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 20
+    },
+    {
+      "reference": "1 Kings 19:12",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "Hebrews 13:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 68
+    },
+    {
+      "reference": "Deuteronomy 33:27",
+      "status": "self_rendered",
+      "block_index": 69
+    },
+    {
+      "reference": "Genesis 50:20",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 75
+    },
+    {
+      "reference": "Luke 11:2",
+      "status": "self_rendered",
+      "block_index": 87
+    },
+    {
+      "reference": "Matthew 6:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 87
+    },
+    {
+      "reference": "Mark 4:38",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "Mark 4:39",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "Jeremiah 31:3",
+      "status": "self_rendered",
+      "block_index": 68
+    },
+    {
+      "reference": "Daniel 3:18",
+      "status": "self_rendered",
+      "block_index": 78
+    }
+  ]
+}

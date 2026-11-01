@@ -1,0 +1,88 @@
+{
+  "kind": "sermon",
+  "slug": "hearts-set-on-pilgrimage",
+  "language": "fr",
+  "job_issue": 6282,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Romans 8:28",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 14
+    },
+    {
+      "reference": "Romans 8:29",
+      "status": "self_rendered",
+      "block_index": 15
+    },
+    {
+      "reference": "Job 10:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 20
+    },
+    {
+      "reference": "Job 10:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 20
+    },
+    {
+      "reference": "Job 10:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 21
+    },
+    {
+      "reference": "Psalm 77:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 21
+    },
+    {
+      "reference": "Psalm 77:10",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 21
+    },
+    {
+      "reference": "1 Peter 4:12",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 40
+    },
+    {
+      "reference": "Psalm 84:7",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 50
+    },
+    {
+      "reference": "Hebrews 5:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 77
+    },
+    {
+      "reference": "Hebrews 11:13",
+      "status": "self_rendered",
+      "block_index": 19
+    },
+    {
+      "reference": "1 Peter 4:12",
+      "status": "self_rendered",
+      "block_index": 41
+    },
+    {
+      "reference": "Psalm 126:5",
+      "status": "self_rendered",
+      "block_index": 93
+    },
+    {
+      "reference": "Psalm 22:7",
+      "status": "self_rendered",
+      "block_index": 81
+    }
+  ]
+}

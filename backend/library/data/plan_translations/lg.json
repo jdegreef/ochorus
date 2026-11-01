@@ -81,5 +81,59 @@
     "note": [
       "Job #3149 (book:school-of-prayer -> lg) adds the plan's only source book, so its prose ships in the same PR (PlanTranslationCoverageTests); this also covers job #5291. The title quotes the shipped book title «Wamu ne Kristo mu Ssomero ly’Okusaba» (as cited in ministry-of-intercession.lg) and the lessons' refrain ‘Mukama, tuyigirize okusaba’. AI-drafted, unreviewed."
     ]
+  },
+  "voices-of-the-early-church": {
+    "title": "Amaloboozi g'Ekkanisa ey'Edda",
+    "description": "Ebyasa ebisooka eby'Obukristaayo mu bigambo byabwe bennyini. Clement ow'e Ruumi awandiika ng'ali mu kkanisa ey'e Ruumi ng'omulembe gw'abatume bennyini gukyaliwo, Ignatius ow'e Antiyokiya aweereza ebbaluwa ze ng'ali mu kkubo erimutwala okuttibwa olw'okukkiriza, ne Athanasius ow'e Alegezanderiya annyonnyola omutima gw'okukkiriza — lwaki Katonda yennyini yafuuka omuntu — mu kitabo kye ku Kufuuka Omuntu kw'Omwana wa Katonda. Ebisomwa ebimpi buli lunaku okumala emyezi nga ena.",
+    "note": [
+      "Job #3049. AI-drafted ahead of the books; awaiting native review. None of first-epistle-of-clement, epistles-of-ignatius or on-the-incarnation is in Luganda yet, so seed_plans creates the (voices-of-the-early-church, lg) row only once all three are published here; their lg book jobs never need to write this shared file. Place names follow the OLCB (Ruumi, Antiyokiya, Alegezanderiya; Acts 28:16, 11:26, 18:24); Athanasius and Ignatius follow the lg corpus. «On the Incarnation» is described, not quoted as a title — align it with the lg edition's title when that ships."
+    ]
+  },
+  "send-the-fire": {
+    "title": "Weereza Omuliro: Okusabira Okuzuukusibwa",
+    "description": "Engeri okuzuukusibwa gye kujja, n'engeri y'okukusaba kukke. Charles Finney mu misomo gye ku ebyo okuzuukusibwa bye kwetaaga, R. A. Torrey ku kubatizibwa n'Omwoyo Omutukuvu okukuwa amaanyi, n'obubaka Katonda bwe yakozesa okukankanya New England mu biseera bya Jonathan Edwards.",
+    "note": [
+      "Job #3052. AI-drafted ahead of the books; awaiting native review. Only baptism-with-the-holy-spirit is in Luganda («Okubatizibwa n'Omwoyo Omutukuvu», whose wording the description follows); revival-lectures and selected-sermons-edwards are not, so seed_plans creates the (send-the-fire, lg) row only once both are published here. «okuzuukusibwa» for revival is the commoner of the two lg corpus terms (41× against 38× «okudda obuggya»); Finney, Jonathan Edwards and New England follow the lg corpus."
+    ]
+  },
+  "the-pilgrims-way": {
+    "title": "Ekkubo ly'Omutambuze",
+    "description": "Ekkubo eriddayo ewaka, mu bitabo bisatu eby'edda. Charles Spurgeon asisinkana omunoonyi ku mulyango omufunda, olugero lwa John Bunyan olutaggwaawo — «Olugendo lw'Omutambuze» — lugoberera omutambuze olugendo lwonna okutuuka mu Kibuga eky'Omu Ggulu, n'obujulirwa bwa Bunyan bwennyini bulaga ekisa ekyayitirira eri asinga aboonoonyi bonna.",
+    "note": [
+      "Queue job #3053. AI-drafted; awaiting native review. «Olugendo lw'Omutambuze» quotes the shipped lg title of pilgrims-progress, and the plan title echoes it. around-the-wicket-gate and grace-abounding have no lg edition yet, so seed_plans will not create the (the-pilgrims-way, lg) row until both ship; their translators should check this prose against those titles."
+    ]
+  },
+  "the-puritan-heart": {
+    "title": "Omutima gw'Abapuritani",
+    "description": "Wiiki munaana n'abayigiriza basatu ab'obulamu obw'omunda. Richard Sibbes asiba olumuli olubetense, John Owen alwanyisa ekibi ekikyabeera mu ffe, ne Thomas Watson ateeka olutalo lwonna ku kisuubizo nti ebintu byonna bikolera wamu olw'obulungi.",
+    "note": [
+      "Queue job #3050. AI-drafted; awaiting native review. «olumuli olubetense» echoes Isaiah 42:3 / Matthew 12:20, and «ebintu byonna bikolera wamu olw'obulungi» Romans 8:28. None of the three source books (the-bruised-reed, mortification-of-sin, all-things-for-good) has an lg edition yet, so seed_plans will not create the (the-puritan-heart, lg) row until all three ship; their translators should check this prose against those titles."
+    ]
+  },
+  "praying-men": {
+    "title": "Abasajja Abasaba: Essomero ly'Okusaba ne E. M. Bounds",
+    "description": "Wiiki musanvu mu kyokero ky'okwegayirira wamu n'omutume omukulu ow'okusaba. E. M. Bounds atandika n'obwetaavu bw'omubuulizi bwennyini obw'amaanyi, oluvannyuma n'annyonnyola ekigendererwa ekifuula okusaba okuwangula, n'obwetaavu obukufuula omulimu gwonna ogw'obulamu obw'Ekikristaayo.",
+    "note": [
+      "Queue job #3048. AI-drafted; awaiting native review. «amaanyi» echoes the shipped lg title of power-through-prayer («Amaanyi Agava mu Kusaba»). purpose-in-prayer and necessity-of-prayer have no lg edition yet, so seed_plans will not create the (praying-men, lg) row until both ship; their translators should check this prose against those titles."
+    ]
+  },
+  "first-steps-for-teens": {
+    "title": "Okutandika: Okukkiriza eri Abavubuka",
+    "description": "Olugendo olusooka ne Yesu, eri abasomi abavubuka. Charles Spurgeon akusisinkana ku mulyango n'obuyambi obusingayo obwangu eri buli anoonya ekkubo erigenda eri Kristo; oluvannyuma emboozi ez'amazima ez'abasajja n'abakazi abaamuwaayo byonna ziraga obulamu obwo kye bufuuka — ebitabo bibiri ebimpi mu wiiki nga ssatu.",
+    "note": [
+      "Queue job #2852. AI-drafted; awaiting native review. Neither source book (around-the-wicket-gate, men-and-women-who-gave-everything-2) has an lg edition yet, so seed_plans will not create the (first-steps-for-teens, lg) row until both ship; their translators should check this prose against those titles."
+    ]
+  },
+  "days-of-heaven-upon-earth-year": {
+    "title": "Omwaka Gumu: Ennaku ez’Eggulu ku Nsi",
+    "description": "Omwaka gwa A. B. Simpson ogw’okusinza okwa buli lunaku: olunyiriri lumu n’okufumiitiriza okumpi ku bujjuvu bwa Kristo ku buli lunaku. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Omwaka Gumu: Ebirowoozo by’Essaawa ey’Akasirise",
+    "description": "Ebisomebwa ebimpi D. L. Moody bye yakuŋŋaanya eby’omwaka gwonna: olunyiriri lumu n’ebigambo bitono okuva mu babuulizi n’abawandiisi be yali ayagala. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu buli lunaku."
+  },
+  "cheque-book-year": {
+    "title": "Omwaka Gumu: Ekitabo kya Cheeki eky’Ebbanka y’Okukkiriza",
+    "description": "Ebisuubizo bya Charles Spurgeon ebya buli lunaku: ekisuubizo kimu ekya Katonda ku buli lunaku lw’omwaka, n’ekigambo ekimpi ku ngeri y’okukifunamu olw’okukkiriza. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
   }
 }

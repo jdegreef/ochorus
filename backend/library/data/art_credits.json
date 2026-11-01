@@ -1,15 +1,27 @@
 {
+	"a-body-of-divinity": {
+		"artist": "Emanuel de Witte",
+		"title": "Interior of a Church",
+		"year": "c. 1680",
+		"credit": "Emanuel de Witte, “Interior of a Church” (c. 1680). The Cleveland Museum of Art, CC0."
+	},
 	"a-brand-plucked-from-the-fire": {
-		"artist": "George Inness",
-		"title": "Sunny Autumn Day",
-		"year": "1892",
-		"credit": "George Inness, “Sunny Autumn Day” (1892). The Cleveland Museum of Art, CC0."
+		"artist": "William Hart",
+		"title": "Autumn Scene in the Adirondacks",
+		"year": "1877",
+		"credit": "William Hart, “Autumn Scene in the Adirondacks” (1877). The Cleveland Museum of Art, CC0."
 	},
 	"a-call-to-the-unconverted": {
 		"artist": "Meyndert Hobbema",
 		"title": "Woodland Road",
 		"year": "ca. 1670",
 		"credit": "Meyndert Hobbema, “Woodland Road” (ca. 1670). The Metropolitan Museum of Art, Open Access."
+	},
+	"a-practical-view-of-christianity": {
+		"artist": "Samuel Scott",
+		"title": "The Building of Westminster Bridge",
+		"year": "",
+		"credit": "Samuel Scott, “The Building of Westminster Bridge” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"a-retrospect": {
 		"artist": "Chen Hongshou",
@@ -29,11 +41,35 @@
 		"year": "1841",
 		"credit": "Célestin François Nanteuil, “In the Forest” (1841). The Cleveland Museum of Art, CC0."
 	},
+	"abide-in-christ": {
+		"artist": "Emilie Preyer",
+		"title": "Still Life with Fruit",
+		"year": "1873",
+		"credit": "Emilie Preyer, “Still Life with Fruit” (1873). The Cleveland Museum of Art, CC0."
+	},
 	"absolute-surrender": {
 		"artist": "Vincent van Gogh",
 		"title": "Cypresses",
 		"year": "1889",
 		"credit": "Vincent van Gogh, “Cypresses” (1889). The Metropolitan Museum of Art, Open Access."
+	},
+	"against-heresies": {
+		"artist": "Paul Cezanne",
+		"title": "The Brook",
+		"year": "c. 1895–1900",
+		"credit": "Paul Cezanne, “The Brook” (c. 1895–1900). The Cleveland Museum of Art, CC0."
+	},
+	"against-marcion": {
+		"artist": "Arnold Böcklin",
+		"title": "Ruin by the Sea",
+		"year": "1881",
+		"credit": "Arnold Böcklin, “Ruin by the Sea” (1881). The Cleveland Museum of Art, CC0."
+	},
+	"against-the-arians": {
+		"artist": "Constantin Hansen",
+		"title": "Columns of the Temple of Neptune at Paestum",
+		"year": "1838",
+		"credit": "Constantin Hansen, “Columns of the Temple of Neptune at Paestum” (1838). The Metropolitan Museum of Art, Open Access."
 	},
 	"all-of-grace": {
 		"artist": "Simon Denis",
@@ -65,6 +101,12 @@
 		"year": "probably ca. 1625–30",
 		"credit": "Georg Flegel, “Still Life” (probably ca. 1625–30). The Metropolitan Museum of Art, Open Access."
 	},
+	"apologia-pro-vita-sua": {
+		"artist": "Jan van Goyen",
+		"title": "River View with a Village Church",
+		"year": "",
+		"credit": "Jan van Goyen, “River View with a Village Church” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"around-the-wicket-gate": {
 		"artist": "Jan van Goyen",
 		"title": "The Pelkus Gate near Utrecht",
@@ -76,6 +118,18 @@
 		"title": "The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance",
 		"year": "1863 or 1866",
 		"credit": "Samuel Bourne, “The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance” (1863 or 1866). The Cleveland Museum of Art, CC0."
+	},
+	"bondage-of-the-will": {
+		"artist": "Julius von Leypold",
+		"title": "Wanderer in the Storm",
+		"year": "1835",
+		"credit": "Julius von Leypold, “Wanderer in the Storm” (1835). The Metropolitan Museum of Art, Open Access."
+	},
+	"catechetical-lectures": {
+		"artist": "Jules Dupré",
+		"title": "Cows Crossing a Ford",
+		"year": "1836",
+		"credit": "Jules Dupré, “Cows Crossing a Ford” (1836). The Metropolitan Museum of Art, Open Access."
 	},
 	"cheque-book": {
 		"artist": "Joseph Anton Koch",
@@ -89,11 +143,29 @@
 		"year": "1863",
 		"credit": "Albert Bierstadt, “Mountain Brook” (1863). The Art Institute of Chicago, CC0."
 	},
+	"church-history": {
+		"artist": "Hubert Robert",
+		"title": "Aqueduct in Ruins",
+		"year": "",
+		"credit": "Hubert Robert, “Aqueduct in Ruins” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"come-ye-children": {
 		"artist": "Constant Troyon",
 		"title": "The Road to Market",
 		"year": "1858–59",
 		"credit": "Constant Troyon, “The Road to Market” (1858–59). The Art Institute of Chicago, CC0."
+	},
+	"commentary-on-romans": {
+		"artist": "Narcisse Diaz de la Peña",
+		"title": "Path Near the Pond of Vipers, Fontainebleau Forest",
+		"year": "c. 1860s",
+		"credit": "Narcisse Diaz de la Peña, “Path Near the Pond of Vipers, Fontainebleau Forest” (c. 1860s). The Cleveland Museum of Art, CC0."
+	},
+	"communion-with-god": {
+		"artist": "Thomas Doughty",
+		"title": "View of a Lake",
+		"year": "c. 1830s",
+		"credit": "Thomas Doughty, “View of a Lake” (c. 1830s). The Cleveland Museum of Art, CC0."
 	},
 	"confessions": {
 		"artist": "Théodore Géricault",
@@ -113,6 +185,18 @@
 		"year": "1860",
 		"credit": "Frederic Edwin Church, “Twilight in the Wilderness” (1860). The Cleveland Museum of Art, CC0."
 	},
+	"dialogue-with-trypho": {
+		"artist": "Pieter de Molijn",
+		"title": "Landscape with a Cottage",
+		"year": "1629",
+		"credit": "Pieter de Molijn, “Landscape with a Cottage” (1629). The Metropolitan Museum of Art, Open Access."
+	},
+	"diary-of-an-old-soul": {
+		"artist": "Georges de La Tour",
+		"title": "The Penitent Magdalen",
+		"year": "ca. 1640",
+		"credit": "Georges de La Tour, “The Penitent Magdalen” (ca. 1640). The Metropolitan Museum of Art, Open Access."
+	},
 	"divine-healing": {
 		"artist": "Théodore Rousseau",
 		"title": "A River in a Meadow",
@@ -130,6 +214,12 @@
 		"title": "Ruins in a Rocky Landscape",
 		"year": "c. 1640",
 		"credit": "Salvator Rosa, “Ruins in a Rocky Landscape” (c. 1640). The Cleveland Museum of Art, CC0."
+	},
+	"epistle-and-martyrdom-of-polycarp": {
+		"artist": "Joseph Mallord William Turner",
+		"title": "The Burning of the Houses of Lords and Commons, 16 October 1834",
+		"year": "1835",
+		"credit": "Joseph Mallord William Turner, “The Burning of the Houses of Lords and Commons, 16 October 1834” (1835). The Cleveland Museum of Art, CC0."
 	},
 	"epistles-of-ignatius": {
 		"artist": "Hubert Robert",
@@ -161,6 +251,24 @@
 		"year": "c. 1774",
 		"credit": "Richard Wilson, “Cader Idris, with the Mawddach River” (c. 1774). The Cleveland Museum of Art, CC0."
 	},
+	"exhortation-to-the-heathen": {
+		"artist": "Nicolas Poussin",
+		"title": "Blind Orion Searching for the Rising Sun",
+		"year": "1658",
+		"credit": "Nicolas Poussin, “Blind Orion Searching for the Rising Sun” (1658). The Metropolitan Museum of Art, Open Access."
+	},
+	"expository-thoughts-on-matthew": {
+		"artist": "Patrick Nasmyth",
+		"title": "Near Penshurst, Kent",
+		"year": "1828",
+		"credit": "Patrick Nasmyth, “Near Penshurst, Kent” (1828). The Metropolitan Museum of Art, Open Access."
+	},
+	"faithful-with-little": {
+		"artist": "Georges Michel",
+		"title": "Landscape with a Plowed Field and a Village",
+		"year": "probably after 1827",
+		"credit": "Georges Michel, “Landscape with a Plowed Field and a Village” (probably after 1827). The Metropolitan Museum of Art, Open Access."
+	},
 	"finney-memoirs": {
 		"artist": "Sanford Robinson Gifford",
 		"title": "Mist Rising at Sunset in the Catskills",
@@ -172,6 +280,12 @@
 		"title": "Harbor of Boston, with the City in the Distance",
 		"year": "c. 1846–1847",
 		"credit": "Fitz Henry Lane, “Harbor of Boston, with the City in the Distance” (c. 1846–1847). The Cleveland Museum of Art, CC0."
+	},
+	"first-principles-of-the-reformation": {
+		"artist": "Johan Christian Dahl",
+		"title": "Copenhagen Harbor by Moonlight",
+		"year": "1846",
+		"credit": "Johan Christian Dahl, “Copenhagen Harbor by Moonlight” (1846). The Metropolitan Museum of Art, Open Access."
 	},
 	"foxes-book-of-martyrs": {
 		"artist": "Jacob van Ruisdael",
@@ -197,17 +311,71 @@
 		"year": "ca. 1874",
 		"credit": "Jean-François Millet, “Haystacks: Autumn” (ca. 1874). The Metropolitan Museum of Art, Open Access."
 	},
+	"gods-way-of-peace": {
+		"artist": "Johan Thomas Lundbye",
+		"title": "An Evening beside Lake Arresø",
+		"year": "ca. 1837",
+		"credit": "Johan Thomas Lundbye, “An Evening beside Lake Arresø” (ca. 1837). The Metropolitan Museum of Art, Open Access."
+	},
+	"gospel-of-john": {
+		"artist": "Salomon van Ruysdael",
+		"title": "Fishing Boats on a River",
+		"year": "early 1660s",
+		"credit": "Salomon van Ruysdael, “Fishing Boats on a River” (early 1660s). The Metropolitan Museum of Art, Open Access."
+	},
 	"grace-abounding": {
 		"artist": "Jacob van Ruisdael",
 		"title": "Wheat Fields",
 		"year": "ca. 1670",
 		"credit": "Jacob van Ruisdael, “Wheat Fields” (ca. 1670). The Metropolitan Museum of Art, Open Access."
 	},
+	"heretics": {
+		"artist": "Gerrit Dou",
+		"title": "An Evening School",
+		"year": "ca. 1655–57",
+		"credit": "Gerrit Dou, “An Evening School” (ca. 1655–57). The Metropolitan Museum of Art, Open Access."
+	},
+	"holiness": {
+		"artist": "Richard Wilson",
+		"title": "Lake Nemi and Genzano from the Terrace of the Capuchin Monastery",
+		"year": "ca. 1756–57",
+		"credit": "Richard Wilson, “Lake Nemi and Genzano from the Terrace of the Capuchin Monastery” (ca. 1756–57). The Metropolitan Museum of Art, Open Access."
+	},
+	"holy-dying": {
+		"artist": "Théodore Rousseau",
+		"title": "Sunset near Arbonne",
+		"year": "ca. 1860–65",
+		"credit": "Théodore Rousseau, “Sunset near Arbonne” (ca. 1860–65). The Metropolitan Museum of Art, Open Access."
+	},
 	"holy-in-christ": {
 		"artist": "Gustave Courbet",
 		"title": "An Alpine Scene",
 		"year": "1874",
 		"credit": "Gustave Courbet, “An Alpine Scene” (1874). The Art Institute of Chicago, CC0."
+	},
+	"holy-living": {
+		"artist": "Théodore Rousseau",
+		"title": "The Edge of the Woods at Monts-Girard, Fontainebleau Forest",
+		"year": "1852–54",
+		"credit": "Théodore Rousseau, “The Edge of the Woods at Monts-Girard, Fontainebleau Forest” (1852–54). The Metropolitan Museum of Art, Open Access."
+	},
+	"homilies-on-matthew": {
+		"artist": "Elihu Vedder",
+		"title": "Three Trees: Italy",
+		"year": "1871",
+		"credit": "Elihu Vedder, “Three Trees: Italy” (1871). The Cleveland Museum of Art, CC0."
+	},
+	"homilies-on-romans": {
+		"artist": "Carl Rottmann",
+		"title": "The Cemetery at Pronoia near Nauplia",
+		"year": "ca. 1841–47",
+		"credit": "Carl Rottmann, “The Cemetery at Pronoia near Nauplia” (ca. 1841–47). The Metropolitan Museum of Art, Open Access."
+	},
+	"homilies-on-the-first-epistle-of-john": {
+		"artist": "William Stanley Haseltine",
+		"title": "Capri",
+		"year": "1869",
+		"credit": "William Stanley Haseltine, “Capri” (1869). The Cleveland Museum of Art, CC0."
 	},
 	"how-i-became-a-christian": {
 		"artist": "Sōami",
@@ -221,11 +389,23 @@
 		"year": "1865",
 		"credit": "Gustave Courbet, “The Fishing Boat” (1865). The Metropolitan Museum of Art, Open Access."
 	},
+	"how-to-pray": {
+		"artist": "Heinrich Hansen",
+		"title": "The Slotskirken of Christiansborg, Copenhagen",
+		"year": "c. 1850s",
+		"credit": "Heinrich Hansen, “The Slotskirken of Christiansborg, Copenhagen” (c. 1850s). The Cleveland Museum of Art, CC0."
+	},
 	"how-to-succeed-in-the-christian-life": {
 		"artist": "Auguste Renoir",
 		"title": "A Road in Louveciennes",
 		"year": "ca. 1870",
 		"credit": "Auguste Renoir, “A Road in Louveciennes” (ca. 1870). The Metropolitan Museum of Art, Open Access."
+	},
+	"humility-2": {
+		"artist": "Paul-Désiré Trouillebert",
+		"title": "A Pond near Nangis",
+		"year": "1880–95",
+		"credit": "Paul-Désiré Trouillebert, “A Pond near Nangis” (1880–95). The Metropolitan Museum of Art, Open Access."
 	},
 	"hurlbuts-life-of-christ": {
 		"artist": "Claude Joseph Vernet",
@@ -233,11 +413,41 @@
 		"year": "1760",
 		"credit": "Claude Joseph Vernet, “Morning” (1760). The Art Institute of Chicago, CC0."
 	},
+	"in-darkest-england-and-the-way-out": {
+		"artist": "Walter Greaves",
+		"title": "Gray and Silver:  A Nocturne",
+		"year": "c. 1880–1900",
+		"credit": "Walter Greaves, “Gray and Silver:  A Nocturne” (c. 1880–1900). The Cleveland Museum of Art, CC0."
+	},
+	"indwelling-sin-in-believers": {
+		"artist": "Julius Caesar Ibbetson",
+		"title": "A Storm Behind the Isle of Wight",
+		"year": "c.179(?)",
+		"credit": "Julius Caesar Ibbetson, “A Storm Behind the Isle of Wight” (c.179(?)). The Cleveland Museum of Art, CC0."
+	},
+	"institutes-of-the-christian-religion": {
+		"artist": "Gustave Courbet",
+		"title": "Panoramic View of the Alps, Les Dents du Midi",
+		"year": "1877",
+		"credit": "Gustave Courbet, “Panoramic View of the Alps, Les Dents du Midi” (1877). The Cleveland Museum of Art, CC0."
+	},
+	"interior-castle": {
+		"artist": "Emanuel Murant",
+		"title": "The Old Castle",
+		"year": "",
+		"credit": "Emanuel Murant, “The Old Castle” (). The Metropolitan Museum of Art, Open Access."
+	},
+	"introduction-to-the-devout-life": {
+		"artist": "Narcisse Diaz de la Peña",
+		"title": "The Pyrenees, the Peak of the Midi de Bigorre",
+		"year": "1871–1872",
+		"credit": "Narcisse Diaz de la Peña, “The Pyrenees, the Peak of the Midi de Bigorre” (1871–1872). The Cleveland Museum of Art, CC0."
+	},
 	"john-hyde-a-life": {
-		"artist": "George Inness",
-		"title": "Moonrise",
-		"year": "1891",
-		"credit": "George Inness, “Moonrise” (1891). The Art Institute of Chicago, CC0."
+		"artist": "Carl Gustav Carus",
+		"title": "Schloss Milkel in Moonlight",
+		"year": "ca. 1833–35",
+		"credit": "Carl Gustav Carus, “Schloss Milkel in Moonlight” (ca. 1833–35). The Metropolitan Museum of Art, Open Access."
 	},
 	"john-ploughmans-pictures": {
 		"artist": "John Constable",
@@ -257,6 +467,18 @@
 		"year": "1871",
 		"credit": "Eugène Fromentin, “On the Nile” (1871). The Art Institute of Chicago, CC0."
 	},
+	"knots-untied": {
+		"artist": "John Crome",
+		"title": "Hautbois Common, Norfolk",
+		"year": "probably ca. 1810",
+		"credit": "John Crome, “Hautbois Common, Norfolk” (probably ca. 1810). The Metropolitan Museum of Art, Open Access."
+	},
+	"large-catechism": {
+		"artist": "Caspar David Friedrich",
+		"title": "Two Men Contemplating the Moon",
+		"year": "ca. 1825–30",
+		"credit": "Caspar David Friedrich, “Two Men Contemplating the Moon” (ca. 1825–30). The Metropolitan Museum of Art, Open Access."
+	},
 	"lectures-to-my-students": {
 		"artist": "Camille Pissarro",
 		"title": "The Crystal Palace",
@@ -269,11 +491,29 @@
 		"year": "1900",
 		"credit": "Claude Monet, “Waterloo Bridge, Gray Weather” (1900). The Art Institute of Chicago, CC0."
 	},
+	"lectures-to-professing-christians": {
+		"artist": "Thomas Doughty",
+		"title": "On the Hudson",
+		"year": "1830–35",
+		"credit": "Thomas Doughty, “On the Hudson” (1830–35). The Metropolitan Museum of Art, Open Access."
+	},
 	"letters-and-minor-works": {
 		"artist": "Camille Pissarro",
 		"title": "Rue de l'Epicerie, Rouen (Effect of Sunlight)",
 		"year": "1898",
 		"credit": "Camille Pissarro, “Rue de l'Epicerie, Rouen (Effect of Sunlight)” (1898). The Metropolitan Museum of Art, Open Access."
+	},
+	"letters-of-jerome": {
+		"artist": "Antoine-Alphonse Montfort",
+		"title": "Cedars of Lebanon",
+		"year": "1837",
+		"credit": "Antoine-Alphonse Montfort, “Cedars of Lebanon” (1837). The Metropolitan Museum of Art, Open Access."
+	},
+	"letters-of-samuel-rutherford": {
+		"artist": "William Bradford",
+		"title": "Labrador Coast",
+		"year": "c. 1860",
+		"credit": "William Bradford, “Labrador Coast” (c. 1860). The Cleveland Museum of Art, CC0."
 	},
 	"life-and-diary-of-david-brainerd": {
 		"artist": "Worthington Whittredge",
@@ -341,11 +581,47 @@
 		"year": "1823",
 		"credit": "Johan Christian Dahl, “Two Men before a Waterfall at Sunset” (1823). The Metropolitan Museum of Art, Open Access."
 	},
+	"of-temptation": {
+		"artist": "Barend Cornelis Koekkoek",
+		"title": "Sunset on the Rhine",
+		"year": "1853",
+		"credit": "Barend Cornelis Koekkoek, “Sunset on the Rhine” (1853). The Metropolitan Museum of Art, Open Access."
+	},
+	"old-paths": {
+		"artist": "Thomas Gainsborough",
+		"title": "Wooded Upland Landscape",
+		"year": "probably 1783",
+		"credit": "Thomas Gainsborough, “Wooded Upland Landscape” (probably 1783). The Metropolitan Museum of Art, Open Access."
+	},
+	"old-testament-types-and-teachings": {
+		"artist": "Samuel Colman",
+		"title": "The Hill of the Alhambra, Granada",
+		"year": "1865",
+		"credit": "Samuel Colman, “The Hill of the Alhambra, Granada” (1865). The Metropolitan Museum of Art, Open Access."
+	},
+	"on-christian-doctrine": {
+		"artist": "Hubert Robert",
+		"title": "The Portico of a Country Mansion",
+		"year": "1773",
+		"credit": "Hubert Robert, “The Portico of a Country Mansion” (1773). The Metropolitan Museum of Art, Open Access."
+	},
+	"on-first-principles": {
+		"artist": "Peder Balke",
+		"title": "The North Cape by Moonlight",
+		"year": "1848",
+		"credit": "Peder Balke, “The North Cape by Moonlight” (1848). The Metropolitan Museum of Art, Open Access."
+	},
 	"on-loving-god": {
 		"artist": "Jean Baptiste Camille Corot",
 		"title": "The Pond at the Entrance of the Woods",
 		"year": "c. 1860–75",
 		"credit": "Jean Baptiste Camille Corot, “The Pond at the Entrance of the Woods” (c. 1860–75). The Cleveland Museum of Art, CC0."
+	},
+	"on-the-holy-spirit": {
+		"artist": "Albert Bierstadt",
+		"title": "Fir Trees and Storm Clouds",
+		"year": "c. 1870",
+		"credit": "Albert Bierstadt, “Fir Trees and Storm Clouds” (c. 1870). The Cleveland Museum of Art, CC0."
 	},
 	"on-the-incarnation": {
 		"artist": "Thomas Cole",
@@ -353,11 +629,29 @@
 		"year": "1839",
 		"credit": "Thomas Cole, “New England Scenery” (1839). The Art Institute of Chicago, CC0."
 	},
+	"on-the-making-of-man": {
+		"artist": "Gaspard Dughet",
+		"title": "Imaginary Landscape",
+		"year": "",
+		"credit": "Gaspard Dughet, “Imaginary Landscape” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"on-the-priesthood": {
 		"artist": "Giovanni Paolo Panini",
 		"title": "Interior of the Pantheon, Rome",
 		"year": "1747",
 		"credit": "Giovanni Paolo Panini, “Interior of the Pantheon, Rome” (1747). The Cleveland Museum of Art, CC0."
+	},
+	"on-the-trinity": {
+		"artist": "Philipp Hackert",
+		"title": "View of the Gulf of Pozzuoli from Solfatara",
+		"year": "1803",
+		"credit": "Philipp Hackert, “View of the Gulf of Pozzuoli from Solfatara” (1803). The Cleveland Museum of Art, CC0."
+	},
+	"orthodoxy": {
+		"artist": "Claude Monet",
+		"title": "Low Tide at Pourville, near Dieppe, 1882",
+		"year": "1882",
+		"credit": "Claude Monet, “Low Tide at Pourville, near Dieppe, 1882” (1882). The Cleveland Museum of Art, CC0."
 	},
 	"our-daily-walk": {
 		"artist": "Jules Dupré",
@@ -371,11 +665,23 @@
 		"year": "",
 		"credit": "Raja Ravi Varma, “Charity” (). Wikimedia Commons, public domain."
 	},
+	"parochial-and-plain-sermons-vii": {
+		"artist": "Johan Christian Dahl",
+		"title": "Mother and Child by the Sea",
+		"year": "1830",
+		"credit": "Johan Christian Dahl, “Mother and Child by the Sea” (1830). The Metropolitan Museum of Art, Open Access."
+	},
 	"pensees": {
 		"artist": "James McNeill Whistler",
 		"title": "Nocturne: Blue and Gold—Southampton Water",
 		"year": "1872",
 		"credit": "James McNeill Whistler, “Nocturne: Blue and Gold—Southampton Water” (1872). The Art Institute of Chicago, CC0."
+	},
+	"phantastes": {
+		"artist": "Georges Seurat",
+		"title": "The Forest at Pontaubert",
+		"year": "1881",
+		"credit": "Georges Seurat, “The Forest at Pontaubert” (1881). The Metropolitan Museum of Art, Open Access."
 	},
 	"pilgrims-progress": {
 		"artist": "Henri-Joseph Harpignies",
@@ -390,10 +696,16 @@
 		"credit": "Joos de Momper, II, “Mountain Road with Travelers” (c. 1615). The Art Institute of Chicago, CC0."
 	},
 	"plain-account-christian-perfection": {
-		"artist": "George Inness",
-		"title": "Harvest Time",
-		"year": "1864",
-		"credit": "George Inness, “Harvest Time” (1864). The Cleveland Museum of Art, CC0."
+		"artist": "Camille Pissarro",
+		"title": "The Harvest, Pontoise (La Récolte, Pontoise)",
+		"year": "1881",
+		"credit": "Camille Pissarro, “The Harvest, Pontoise (La Récolte, Pontoise)” (1881). The Metropolitan Museum of Art, Open Access."
+	},
+	"poems-on-various-subjects": {
+		"artist": "Winslow Homer",
+		"title": "Early Morning After a Storm at Sea",
+		"year": "1900–1903",
+		"credit": "Winslow Homer, “Early Morning After a Storm at Sea” (1900–1903). The Cleveland Museum of Art, CC0."
 	},
 	"possibilities-of-prayer": {
 		"artist": "Antoine-Claude Ponthus-Cinier",
@@ -408,16 +720,22 @@
 		"credit": "Elihu Vedder, “Storm in Umbria” (1875). The Art Institute of Chicago, CC0."
 	},
 	"power-from-on-high-old-testament": {
-		"artist": "George Inness",
-		"title": "A Marine",
-		"year": "c. 1874–75",
-		"credit": "George Inness, “A Marine” (c. 1874–75). The Art Institute of Chicago, CC0."
+		"artist": "Ivan Konstantinovich Aivazovsky (Hovhannes Aivazian)",
+		"title": "Ship by Moonlight",
+		"year": "",
+		"credit": "Ivan Konstantinovich Aivazovsky (Hovhannes Aivazian), “Ship by Moonlight” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"power-through-prayer": {
 		"artist": "Alfred Sisley",
 		"title": "Sahurs Meadows in Morning Sun",
 		"year": "1894",
 		"credit": "Alfred Sisley, “Sahurs Meadows in Morning Sun” (1894). The Metropolitan Museum of Art, Open Access."
+	},
+	"practical-religion": {
+		"artist": "Worthington Whittredge",
+		"title": "Landscape with Haywain",
+		"year": "1861",
+		"credit": "Worthington Whittredge, “Landscape with Haywain” (1861). The Cleveland Museum of Art, CC0."
 	},
 	"prayer-and-praying-men": {
 		"artist": "Philips Koninck",
@@ -436,6 +754,12 @@
 		"title": "Twilight in the Cedars at Darien, Connecticut",
 		"year": "1872",
 		"credit": "John Frederick Kensett, “Twilight in the Cedars at Darien, Connecticut” (1872). The Metropolitan Museum of Art, Open Access."
+	},
+	"proslogium-monologium-cur-deus-homo": {
+		"artist": "Pieter Neeffs the Younger",
+		"title": "Interior of a Gothic Church at Night",
+		"year": "ca. 1660",
+		"credit": "Pieter Neeffs the Younger, “Interior of a Gothic Church at Night” (ca. 1660). The Metropolitan Museum of Art, Open Access."
 	},
 	"provincial-letters": {
 		"artist": "Jean-François Rafaëlli",
@@ -460,6 +784,12 @@
 		"title": "Lake Fucino and the Abruzzi Mountains",
 		"year": "ca. 1789",
 		"credit": "Joseph Bidauld, “Lake Fucino and the Abruzzi Mountains” (ca. 1789). The Metropolitan Museum of Art, Open Access."
+	},
+	"refutation-of-all-heresies": {
+		"artist": "Thomas Cole",
+		"title": "A View near Tivoli (Morning)",
+		"year": "1832",
+		"credit": "Thomas Cole, “A View near Tivoli (Morning)” (1832). The Metropolitan Museum of Art, Open Access."
 	},
 	"religious-affections": {
 		"artist": "Claude Lorrain (Claude Gellée)",
@@ -491,6 +821,12 @@
 		"year": "1868",
 		"credit": "François-Louis Français, “Gathering Olives at Tivoli” (1868). The Metropolitan Museum of Art, Open Access."
 	},
+	"secret-power": {
+		"artist": "Achille-Etna Michallon",
+		"title": "Waterfall at Mont-Dore",
+		"year": "1818",
+		"credit": "Achille-Etna Michallon, “Waterfall at Mont-Dore” (1818). The Metropolitan Museum of Art, Open Access."
+	},
 	"selected-sermons-edwards": {
 		"artist": "Jasper F. Cropsey",
 		"title": "The Clove - A Storm Scene in the Catskill Mountains",
@@ -515,6 +851,12 @@
 		"year": "1828",
 		"credit": "John Constable, “Branch Hill Pond, Hampstead” (1828). The Cleveland Museum of Art, CC0."
 	},
+	"small-catechism": {
+		"artist": "August Heinrich",
+		"title": "At the Edge of the Forest",
+		"year": "ca. 1820",
+		"credit": "August Heinrich, “At the Edge of the Forest” (ca. 1820). The Metropolitan Museum of Art, Open Access."
+	},
 	"spurgeon-on-prayer": {
 		"artist": "Joseph Mallord William Turner",
 		"title": "Valley of Aosta: Snowstorm, Avalanche, and Thunderstorm",
@@ -533,17 +875,125 @@
 		"year": "c. 1665",
 		"credit": "Meindert Hobbema, “The Watermill with the Great Red Roof” (c. 1665). The Art Institute of Chicago, CC0."
 	},
+	"table-talk": {
+		"artist": "Bernardo Bellotto",
+		"title": "Pirna: The Obertor from the South",
+		"year": "mid-1750s",
+		"credit": "Bernardo Bellotto, “Pirna: The Obertor from the South” (mid-1750s). The Metropolitan Museum of Art, Open Access."
+	},
 	"ten-commandments": {
 		"artist": "John Ruskin",
 		"title": "The Valley of Lauterbrunnen, Switzerland",
 		"year": "ca. 1866",
 		"credit": "John Ruskin, “The Valley of Lauterbrunnen, Switzerland” (ca. 1866). The Metropolitan Museum of Art, Open Access."
 	},
+	"tertullian-on-prayer": {
+		"artist": "Vilhelm Hammershøi",
+		"title": "Moonlight, Strandgade 30",
+		"year": "1900–1906",
+		"credit": "Vilhelm Hammershøi, “Moonlight, Strandgade 30” (1900–1906). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-apology-of-tertullian": {
+		"artist": "Pierre Henri de Valenciennes",
+		"title": "View of Rome",
+		"year": "c. 1782–84",
+		"credit": "Pierre Henri de Valenciennes, “View of Rome” (c. 1782–84). The Cleveland Museum of Art, CC0."
+	},
+	"the-art-of-divine-contentment": {
+		"artist": "Meindert Hobbema",
+		"title": "A Cottage in the Woods",
+		"year": "c. 1662",
+		"credit": "Meindert Hobbema, “A Cottage in the Woods” (c. 1662). The Cleveland Museum of Art, CC0."
+	},
+	"the-beatitudes": {
+		"artist": "Auguste Renoir",
+		"title": "Hills around the Bay of Moulin Huet, Guernsey",
+		"year": "1883",
+		"credit": "Auguste Renoir, “Hills around the Bay of Moulin Huet, Guernsey” (1883). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-book-of-pastoral-rule": {
+		"artist": "Anton Mauve",
+		"title": "The Return to the Fold",
+		"year": "",
+		"credit": "Anton Mauve, “The Return to the Fold” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-bruised-reed": {
 		"artist": "Jules Dupré",
 		"title": "Marshland",
 		"year": "1860s-1870s",
 		"credit": "Jules Dupré, “Marshland” (1860s-1870s). The Cleveland Museum of Art, CC0."
+	},
+	"the-christians-great-interest": {
+		"artist": "James M. Hart",
+		"title": "Morning in New England",
+		"year": "1873",
+		"credit": "James M. Hart, “Morning in New England” (1873). The Cleveland Museum of Art, CC0."
+	},
+	"the-city-of-god": {
+		"artist": "John Martin",
+		"title": "Ruins of an Ancient City",
+		"year": "c. 1810–20",
+		"credit": "John Martin, “Ruins of an Ancient City” (c. 1810–20). The Cleveland Museum of Art, CC0."
+	},
+	"the-consolation-of-philosophy": {
+		"artist": "François Marius Granet",
+		"title": "Ponte San Rocco and Waterfalls, Tivoli",
+		"year": "ca. 1810–20",
+		"credit": "François Marius Granet, “Ponte San Rocco and Waterfalls, Tivoli” (ca. 1810–20). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-crook-in-the-lot": {
+		"artist": "Pierre Jean Boquet",
+		"title": "Pollard Willow",
+		"year": "after 1804",
+		"credit": "Pierre Jean Boquet, “Pollard Willow” (after 1804). The Cleveland Museum of Art, CC0."
+	},
+	"the-death-of-death-in-the-death-of-christ": {
+		"artist": "Peter Paul Rubens",
+		"title": "A Forest at Dawn with a Deer Hunt",
+		"year": "ca. 1635",
+		"credit": "Peter Paul Rubens, “A Forest at Dawn with a Deer Hunt” (ca. 1635). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-deeper-christian-life": {
+		"artist": "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)",
+		"title": "Hudson River Scene",
+		"year": "1830–50",
+		"credit": "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889), “Hudson River Scene” (1830–50). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-dialogue-of-catherine-of-siena": {
+		"artist": "Simon Denis",
+		"title": "View on the Quirinal Hill, Rome",
+		"year": "1800",
+		"credit": "Simon Denis, “View on the Quirinal Hill, Rome” (1800). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-divine-institutes": {
+		"artist": "Sébastien Bourdon",
+		"title": "A Classical Landscape",
+		"year": "probably 1660s",
+		"credit": "Sébastien Bourdon, “A Classical Landscape” (probably 1660s). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-dominion-of-sin-and-grace": {
+		"artist": "Eugène Isabey",
+		"title": "A Storm off the Normandy Coast",
+		"year": "probably 1850s",
+		"credit": "Eugène Isabey, “A Storm off the Normandy Coast” (probably 1850s). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-epistles-of-cyprian": {
+		"artist": "Richard Parkes Bonington",
+		"title": "The Doge's Palace, Venice",
+		"year": "1826",
+		"credit": "Richard Parkes Bonington, “The Doge's Palace, Venice” (1826). The Cleveland Museum of Art, CC0."
+	},
+	"the-everlasting-man": {
+		"artist": "El Greco (Domenikos Theotokopoulos)",
+		"title": "The Adoration of the Shepherds",
+		"year": "ca. 1605–10",
+		"credit": "El Greco (Domenikos Theotokopoulos), “The Adoration of the Shepherds” (ca. 1605–10). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-first-apology": {
+		"artist": "Claude-Joseph Vernet",
+		"title": "The Waterfalls at Tivoli",
+		"year": "1737",
+		"credit": "Claude-Joseph Vernet, “The Waterfalls at Tivoli” (1737). The Cleveland Museum of Art, CC0."
 	},
 	"the-fourfold-gospel": {
 		"artist": "Roger Fenton",
@@ -557,11 +1007,47 @@
 		"year": "1748",
 		"credit": "Canaletto (Giovanni Antonio Canal), “Warwick Castle” (1748). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-glory-of-christ": {
+		"artist": "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi)",
+		"title": "Red Sunset",
+		"year": "1905–8",
+		"credit": "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi), “Red Sunset” (1905–8). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-gospel-of-healing": {
 		"artist": "Charles François Daubigny",
 		"title": "Sunset on the River Oise",
 		"year": "1866",
 		"credit": "Charles François Daubigny, “Sunset on the River Oise” (1866). The Cleveland Museum of Art, CC0."
+	},
+	"the-grace-and-duty-of-being-spiritually-minded": {
+		"artist": "William Trost Richards",
+		"title": "June Day",
+		"year": "1870",
+		"credit": "William Trost Richards, “June Day” (1870). The Cleveland Museum of Art, CC0."
+	},
+	"the-great-catechism": {
+		"artist": "Simon Denis",
+		"title": "Mountainous Landscape at Vicovaro",
+		"year": "ca. 1786–97",
+		"credit": "Simon Denis, “Mountainous Landscape at Vicovaro” (ca. 1786–97). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-hexaemeron": {
+		"artist": "Asher B. Durand",
+		"title": "Forest Stream with Vista",
+		"year": "1872",
+		"credit": "Asher B. Durand, “Forest Stream with Vista” (1872). The Cleveland Museum of Art, CC0."
+	},
+	"the-holy-war": {
+		"artist": "Goya",
+		"title": "A City on a Rock",
+		"year": "",
+		"credit": "Goya, “A City on a Rock” (). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-idea-of-a-university": {
+		"artist": "Carl Gustav Carus",
+		"title": "Gothic Windows in the Ruins of the Monastery at Oybin",
+		"year": "ca. 1828",
+		"credit": "Carl Gustav Carus, “Gothic Windows in the Ruins of the Monastery at Oybin” (ca. 1828). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-imitation-of-christ": {
 		"artist": "Jakob Alt",
@@ -575,17 +1061,59 @@
 		"year": "1851",
 		"credit": "Adolph Menzel, “The Artist’s Sitting Room in Ritterstrasse” (1851). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-instructor": {
+		"artist": "Jean-Léon Gérôme",
+		"title": "Study of Palm Trees",
+		"year": "1855/56",
+		"credit": "Jean-Léon Gérôme, “Study of Palm Trees” (1855/56). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-jerusalem-sinner-saved": {
+		"artist": "Salomon van Ruysdael",
+		"title": "View of the Town of Alkmaar",
+		"year": "",
+		"credit": "Salomon van Ruysdael, “View of the Town of Alkmaar” (). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-journal-of-john-wesley": {
+		"artist": "Aelbert Cuyp",
+		"title": "Travelers in Hilly Countryside",
+		"year": "c. 1650",
+		"credit": "Aelbert Cuyp, “Travelers in Hilly Countryside” (c. 1650). The Cleveland Museum of Art, CC0."
+	},
+	"the-life-of-god-in-the-soul-of-man": {
+		"artist": "Philips Koninck",
+		"title": "A Panoramic Landscape with a Country Estate",
+		"year": "ca. 1649",
+		"credit": "Philips Koninck, “A Panoramic Landscape with a Country Estate” (ca. 1649). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-life-of-trust": {
 		"artist": "Camille Flers",
 		"title": "Cottage by the River with Washerwomen",
 		"year": "1835",
 		"credit": "Camille Flers, “Cottage by the River with Washerwomen” (1835). The Cleveland Museum of Art, CC0."
 	},
+	"the-lords-prayer": {
+		"artist": "Vincent van Gogh",
+		"title": "Wheat Field with Cypresses",
+		"year": "1889",
+		"credit": "Vincent van Gogh, “Wheat Field with Cypresses” (1889). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-method-of-grace": {
+		"artist": "Joseph Mallord William Turner",
+		"title": "Saltash with the Water Ferry, Cornwall",
+		"year": "1811",
+		"credit": "Joseph Mallord William Turner, “Saltash with the Water Ferry, Cornwall” (1811). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-normal-christian-life": {
 		"artist": "Aert van der Neer",
 		"title": "Landscape at Sunset",
 		"year": "1650s",
 		"credit": "Aert van der Neer, “Landscape at Sunset” (1650s). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-octavius": {
+		"artist": "Eugène Boudin",
+		"title": "On the Beach at Trouville",
+		"year": "1863",
+		"credit": "Eugène Boudin, “On the Beach at Trouville” (1863). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-pursuit-of-god": {
 		"artist": "George Inness",
@@ -599,17 +1127,71 @@
 		"year": "1632",
 		"credit": "Pieter Jansz. Saenredam, “Interior of the Sint-Pieterskerk, 's-Hertogenbosch” (1632). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-rent-veil": {
+		"artist": "Joseph Wright (Wright of Derby)",
+		"title": "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming",
+		"year": "1779",
+		"credit": "Joseph Wright (Wright of Derby), “Virgil's Tomb by Moonlight, with Silius Italicus Declaiming” (1779). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-rise-and-progress-of-religion-in-the-soul": {
+		"artist": "Narcisse-Virgile Diaz de la Peña",
+		"title": "The Edge of the Woods",
+		"year": "1872",
+		"credit": "Narcisse-Virgile Diaz de la Peña, “The Edge of the Woods” (1872). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-saint-and-his-saviour": {
 		"artist": "Alfred Sisley",
 		"title": "A Turn in the Road",
 		"year": "1873",
 		"credit": "Alfred Sisley, “A Turn in the Road” (1873). The Art Institute of Chicago, CC0."
 	},
+	"the-saints-everlasting-rest": {
+		"artist": "Claude Lorrain (Claude Gellée)",
+		"title": "The Ford",
+		"year": "possibly 1636",
+		"credit": "Claude Lorrain (Claude Gellée), “The Ford” (possibly 1636). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-school-of-obedience": {
+		"artist": "Asher Brown Durand",
+		"title": "The Beeches",
+		"year": "1845",
+		"credit": "Asher Brown Durand, “The Beeches” (1845). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-shepherd-of-hermas": {
+		"artist": "Giovanni Benedetto Castiglione (Il Grechetto)",
+		"title": "Roman Landscape with a Shepherd and Sheep",
+		"year": "late 1640s",
+		"credit": "Giovanni Benedetto Castiglione (Il Grechetto), “Roman Landscape with a Shepherd and Sheep” (late 1640s). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-soul-winner": {
 		"artist": "Léon Augustin Lhermitte",
 		"title": "The Harvesters",
 		"year": "1888–89",
 		"credit": "Léon Augustin Lhermitte, “The Harvesters” (1888–89). The Art Institute of Chicago, CC0."
+	},
+	"the-spiritual-exercises": {
+		"artist": "Asher B. Durand",
+		"title": "Trees on a Rocky Hillside",
+		"year": "c. 1849",
+		"credit": "Asher B. Durand, “Trees on a Rocky Hillside” (c. 1849). The Cleveland Museum of Art, CC0."
+	},
+	"the-theological-orations": {
+		"artist": "Henri-Edmond Cross",
+		"title": "The Pink Cloud",
+		"year": "c. 1896",
+		"credit": "Henri-Edmond Cross, “The Pink Cloud” (c. 1896). The Cleveland Museum of Art, CC0."
+	},
+	"the-two-covenants": {
+		"artist": "Paul Cézanne",
+		"title": "Mont Sainte-Victoire and the Viaduct of the Arc River Valley",
+		"year": "1882–85",
+		"credit": "Paul Cézanne, “Mont Sainte-Victoire and the Viaduct of the Arc River Valley” (1882–85). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-upper-room": {
+		"artist": "British Painter",
+		"title": "Tottenham Church",
+		"year": "",
+		"credit": "British Painter, “Tottenham Church” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-way-to-god": {
 		"artist": "Meyndert Hobbema",
@@ -635,6 +1217,24 @@
 		"year": "1853",
 		"credit": "Andreas Achenbach, “Sunset after a Storm on the Coast of Sicily” (1853). The Metropolitan Museum of Art, Open Access."
 	},
+	"to-autolycus": {
+		"artist": "Jules Coignet",
+		"title": "View of Beirut",
+		"year": "1844",
+		"credit": "Jules Coignet, “View of Beirut” (1844). The Metropolitan Museum of Art, Open Access."
+	},
+	"treatise-on-grace": {
+		"artist": "Hendrik Dirk Kruseman van Elten",
+		"title": "Landscape near Granby, Connecticut",
+		"year": "1870s",
+		"credit": "Hendrik Dirk Kruseman van Elten, “Landscape near Granby, Connecticut” (1870s). The Cleveland Museum of Art, CC0."
+	},
+	"treatise-on-the-love-of-god": {
+		"artist": "Jean-Léon Gérôme",
+		"title": "Alpine Landscape:  The Handegg, Switzerland",
+		"year": "1850s",
+		"credit": "Jean-Léon Gérôme, “Alpine Landscape:  The Handegg, Switzerland” (1850s). The Cleveland Museum of Art, CC0."
+	},
 	"treatises-of-cyprian": {
 		"artist": "William Linton",
 		"title": "Carthage",
@@ -652,6 +1252,12 @@
 		"title": "Apple Blossoms",
 		"year": "1873",
 		"credit": "Charles-François Daubigny, “Apple Blossoms” (1873). The Metropolitan Museum of Art, Open Access."
+	},
+	"unspoken-sermons": {
+		"artist": "Philips Koninck",
+		"title": "Wide River Landscape",
+		"year": "ca. 1648–49",
+		"credit": "Philips Koninck, “Wide River Landscape” (ca. 1648–49). The Metropolitan Museum of Art, Open Access."
 	},
 	"waiting-on-god": {
 		"artist": "Simon de Vlieger",
@@ -671,10 +1277,28 @@
 		"year": "c. 1910",
 		"credit": "Emil Carlsen, “Wood Interior” (c. 1910). The Cleveland Museum of Art, CC0."
 	},
+	"what-the-bible-teaches": {
+		"artist": "Albert Bierstadt",
+		"title": "The Rocky Mountains, Lander's Peak",
+		"year": "1863",
+		"credit": "Albert Bierstadt, “The Rocky Mountains, Lander's Peak” (1863). The Metropolitan Museum of Art, Open Access."
+	},
+	"who-is-the-rich-man-that-shall-be-saved": {
+		"artist": "Claude Lorrain (Claude Gellée)",
+		"title": "Pastoral Landscape: The Roman Campagna",
+		"year": "ca. 1639",
+		"credit": "Claude Lorrain (Claude Gellée), “Pastoral Landscape: The Roman Campagna” (ca. 1639). The Metropolitan Museum of Art, Open Access."
+	},
 	"with-and-without-christ": {
 		"artist": "Edward Lear",
 		"title": "Hardwar, India",
 		"year": "1875",
 		"credit": "Edward Lear, “Hardwar, India” (1875). The Cleveland Museum of Art, CC0."
+	},
+	"working-for-god": {
+		"artist": "Martin Johnson Heade",
+		"title": "Newburyport Meadows",
+		"year": "ca. 1876–81",
+		"credit": "Martin Johnson Heade, “Newburyport Meadows” (ca. 1876–81). The Metropolitan Museum of Art, Open Access."
 	}
 }

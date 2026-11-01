@@ -206,5 +206,36 @@
     "note": [
       "Queue job #4866: «Enraizados – Libro 3» completes this plan in es, so the prose ships in the same PR. Book names are the shipped es subtitles' heads: «Plantados», «Seguir a Jesús», «Dar fruto»."
     ]
+  },
+  "faithful-with-little": {
+    "title": "Fiel en lo poco: el dinero y el corazón",
+    "description": "Tres semanas con lo que toda la Biblia dice sobre el dinero, un capítulo breve cada día. Todo le pertenece a Dios; el corazón detrás de la cartera; el trabajo honrado, la planificación y las deudas; dar como Dios da; y un tesoro que perdura, con John Wesley, George Müller, Charles Spurgeon y A. W. Tozer en el camino. Cada día termina con algo para practicar, y los treinta versículos clave del libro ofrecen un mes de lectura como complemento.",
+    "note": [
+      "The title quotes the shipped es edition («Fiel en lo poco») verbatim; the themes reuse its titles («Todo le pertenece a Dios», «El corazón detrás de la cartera», «Un tesoro que perdura»). Written with the plan (2026-10)."
+    ]
+  },
+  "days-of-heaven-upon-earth-year": {
+    "title": "Un año con Días del cielo en la tierra",
+    "description": "El año de devocionales diarios de A. B. Simpson: un versículo y una breve meditación sobre la plenitud de Cristo para cada día. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Uno o dos minutos al día."
+  },
+  "morning-by-morning-year": {
+    "title": "Un año de Mañana tras mañana",
+    "description": "Las lecturas matutinas de Charles Spurgeon para todo el año: un texto de las Escrituras y una cálida meditación para comenzar cada día. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Dos minutos al día."
+  },
+  "evening-by-evening-year": {
+    "title": "Un año de Noche tras noche",
+    "description": "El compañero de Mañana tras mañana, de Spurgeon: un texto y una meditación para cerrar cada día del año. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Dos minutos cada noche."
+  },
+  "our-daily-walk-year": {
+    "title": "Un año de Nuestro andar diario",
+    "description": "Las lecturas de F. B. Meyer para cada día del año: una meditación breve, con su título y su pasaje bíblico, sobre andar con Dios en los días ordinarios. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Dos o tres minutos al día."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Un año de Pensamientos para la hora de quietud",
+    "description": "La colección de lecturas breves de D. L. Moody para todo el año: un versículo y unas líneas de los predicadores y escritores que él amaba. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Un minuto al día."
+  },
+  "cheque-book-year": {
+    "title": "Un año con El Talonario del Banco de la Fe",
+    "description": "Las promesas diarias de Charles Spurgeon: una promesa de Dios para cada día del año, con una breve palabra sobre cómo tomarla por la fe. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Uno o dos minutos al día."
   }
 }

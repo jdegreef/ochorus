@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "vi",
+  "title": "Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Câu chuyện có thật về Thầy Lawrence, một người đầy tớ trẻ vụng về đã trở thành đầu bếp trong một căn bếp bận rộn và học được cách nói chuyện với Đức Chúa Trời suốt cả ngày, ngay cả giữa nồi niêu xoong chảo. Ấn bản dành cho thiếu nhi này kể lại cuộc đời và lời dạy đơn sơ của ông qua những chương ngắn để đọc to: một câu Kinh Thánh, một phần câu chuyện của ông, một điều câu chuyện ấy có ý nghĩa với con, và một lời cầu nguyện ngắn, kèm theo những câu hỏi để cùng nhau trò chuyện.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của một cuốn sách nhỏ rất được yêu mến về Thầy Lawrence. Sách kể lại cách một chàng trai vụng về đã yêu mến Đức Chúa Trời, làm việc nhiều năm trong một căn bếp mà ông không thích, và học được cách nói chuyện với Đức Chúa Trời suốt cả ngày: khi nấu ăn, khi đi đường, khi đau ốm và khi về già."
+   },
+   {
+    "question": "Thầy Lawrence là ai?",
+    "answer": "Một người Pháp sống cách đây hơn ba trăm năm. Ông từng làm người hầu, một người đầy tớ, và tự nhận mình là người vụng về. Sau khi Đức Chúa Trời thay đổi lòng ông năm mười tám tuổi, ông gia nhập một cộng đồng các Thầy và làm đầu bếp cho họ. Người ta tìm đến ông và viết thư cho ông để học xem làm sao ông luôn ở thật gần Đức Chúa Trời."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Mỗi chương đều ngắn và được viết để đọc to. Chương bắt đầu bằng một câu Kinh Thánh, kể một phần câu chuyện hay lời dạy của Thầy Lawrence, chỉ ra một điều đơn giản mà câu chuyện ấy có ý nghĩa với con, và kết thúc bằng một lời cầu nguyện ngắn. Tiếp theo là ba câu hỏi để cùng trò chuyện."
+   },
+   {
+    "question": "Cuốn sách này dành cho ai?",
+    "answer": "Sách dành cho trẻ em khoảng tám đến mười hai tuổi, để người lớn đọc to cho nghe hoặc để trẻ lớn hơn tự đọc. Bản đầy đủ của Thực Hành Sự Hiện Diện Của Đức Chúa Trời, gồm những cuộc trò chuyện và các lá thư được ghi lại, cũng có sẵn cho bạn đọc lớn tuổi hơn."
+   },
+   {
+    "question": "“Thực hành sự hiện diện của Đức Chúa Trời” có nghĩa là gì?",
+    "answer": "Nghĩa là nhớ rằng Đức Chúa Trời luôn ở với chúng ta, và nói chuyện với Ngài suốt cả ngày, chứ không chỉ trong những giờ cầu nguyện đặc biệt. Thầy Lawrence làm điều đó bằng những lời cầu nguyện ngắn, đơn sơ trong lòng trong khi làm việc."
+   },
+   {
+    "question": "Có phải sống trong tu viện mới cầu nguyện được như Thầy Lawrence không?",
+    "answer": "Không. Chính Thầy Lawrence đã nói rằng không cần phải ở trong nhà thờ mới được ở với Đức Chúa Trời, và ai cũng có thể nói chuyện với Ngài: ở trường, ở nhà, trong bữa ăn hay giữa một ngày bận rộn."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn The Practice of the Presence of God (Thực Hành Sự Hiện Diện Của Đức Chúa Trời) của Thầy Lawrence (Brother Lawrence), là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/the-practice-of-the-presence-of-god-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Chàng trai hay làm vỡ đồ",
+  "body_html": "<blockquote>“Loài người xem bề ngoài, nhưng Đức Giê-hô-va nhìn thấy trong lòng.” — trích 1 Sa-mu-ên 16</blockquote> <p>Ngày xưa, hơn ba trăm năm trước khi con chào đời, có một người mà ngày nay chúng ta gọi là Thầy Lawrence. Trước khi có ai gọi anh là “Thầy”, anh chỉ là một người đầy tớ trẻ.</p> <p>Anh làm người hầu cho một ông lớn, một quan thủ quỹ tên là Monsieur Fieubert. Việc của người hầu là phục vụ chủ, mang đồ, lấy đồ, và giữ cho mọi thứ luôn gọn gàng ngăn nắp.</p> <p>Nhưng có một vấn đề. Lawrence to lớn, mà lại vụng về. Chính anh cũng nói thế. Anh tự gọi mình là “một gã to xác vụng về, đụng đâu vỡ đó”. Con thử tưởng tượng anh bưng một khay tách đẹp rồi va vào cánh cửa. Choang! Con thử tưởng tượng anh với tay lấy cái đĩa rồi làm đổ cả bình nước. Ào!</p> <p>Hầu như chẳng ai ngờ rằng chàng trai vụng về này một ngày kia sẽ được cả thế giới nhớ đến. Họ cũng chẳng ngờ rằng hàng trăm năm sau, người ta vẫn còn đọc về anh. Nhưng Đức Chúa Trời không nhìn đôi tay vụng về của anh. Đức Chúa Trời nhìn vào tấm lòng anh.</p> <p>Và sắp có một điều xảy ra với tấm lòng ấy.</p> <p>Có bao giờ con thấy mình vụng về, hay thấy mình làm gì cũng không giỏi không? Có thể con làm đổ nước, làm rơi bóng, hay trả lời sai. Những điều đó không làm Đức Chúa Trời thôi yêu con hay thôi dùng con. Ngài nhìn vào tấm lòng con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài yêu con không phải vì con thông minh hay cẩn thận, nhưng vì con thuộc về Ngài. Xin Ngài gìn giữ lòng con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lúc còn trẻ, Lawrence làm công việc gì?",
+    "answer": "Anh làm người hầu, một người đầy tớ, cho một ông lớn tên là Monsieur Fieubert, quan thủ quỹ."
+   },
+   {
+    "question": "Lawrence đã nói gì về chính mình?",
+    "answer": "Anh nói mình là “một gã to xác vụng về, đụng đâu vỡ đó”, nghĩa là rất vụng về."
+   },
+   {
+    "question": "Có bao giờ con thấy mình vụng về hay chưa đủ giỏi không? Đức Chúa Trời nhìn vào điều gì?",
+    "answer": "Ý chính của chương: Đức Chúa Trời không nhìn xem bề ngoài chúng ta khéo léo đến đâu. Ngài nhìn vào tấm lòng, và Ngài có thể dùng bất cứ ai."
+   }
+  ],
+  "body_text": "“Loài người xem bề ngoài, nhưng Đức Giê-hô-va nhìn thấy trong lòng.” — trích 1 Sa-mu-ên 16 Ngày xưa, hơn ba trăm năm trước khi con chào đời, có một người mà ngày nay chúng ta gọi là Thầy Lawrence. Trước khi có ai gọi anh là “Thầy”, anh chỉ là một người đầy tớ trẻ. Anh làm người hầu cho một ông lớn, một quan thủ quỹ tên là Monsieur Fieubert. Việc của người hầu là phục vụ chủ, mang đồ, lấy đồ, và giữ cho mọi thứ luôn gọn gàng ngăn nắp. Nhưng có một vấn đề. Lawrence to lớn, mà lại vụng về. Chính anh cũng nói thế. Anh tự gọi mình là “một gã to xác vụng về, đụng đâu vỡ đó”. Con thử tưởng tượng anh bưng một khay tách đẹp rồi va vào cánh cửa. Choang! Con thử tưởng tượng anh với tay lấy cái đĩa rồi làm đổ cả bình nước. Ào! Hầu như chẳng ai ngờ rằng chàng trai vụng về này một ngày kia sẽ được cả thế giới nhớ đến. Họ cũng chẳng ngờ rằng hàng trăm năm sau, người ta vẫn còn đọc về anh. Nhưng Đức Chúa Trời không nhìn đôi tay vụng về của anh. Đức Chúa Trời nhìn vào tấm lòng anh. Và sắp có một điều xảy ra với tấm lòng ấy. Có bao giờ con thấy mình vụng về, hay thấy mình làm gì cũng không giỏi không? Có thể con làm đổ nước, làm rơi bóng, hay trả lời sai. Những điều đó không làm Đức Chúa Trời thôi yêu con hay thôi dùng con. Ngài nhìn vào tấm lòng con. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài yêu con không phải vì con thông minh hay cẩn thận, nhưng vì con thuộc về Ngài. Xin Ngài gìn giữ lòng con. A-men.",
+  "word_count": 311
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Cái cây giữa mùa đông",
+  "body_html": "<blockquote>“Quyền phép đời đời và bổn tánh Ngài, thì từ buổi sáng thế vẫn sờ sờ như mắt xem thấy, khi người ta xem xét công việc của Ngài.” — trích Rô-ma 1</blockquote> <p>Khi Lawrence mười tám tuổi, đang là mùa đông. Mọi thứ đều lạnh lẽo và xám xịt.</p> <p>Một hôm anh dừng lại nhìn một cái cây. Cây đã rụng hết lá. Cành cây trơ trụi, nâu sẫm, giống như những ngón tay xương xẩu giơ lên bầu trời. Trông nó như đã chết rồi.</p> <p>Nhưng Lawrence biết một điều về cây cối. Anh biết rằng ít lâu nữa, khi mùa xuân đến, những chiếc lá xanh non sẽ mọc lại trên các cành trơ trụi ấy. Sau đó cây sẽ ra hoa. Và sau hoa sẽ là trái.</p> <p>Khi anh đứng đó suy nghĩ, một ý tưởng lớn lao tràn ngập tâm trí anh. Ai làm cho lá mọc lại? Ai cho hoa nở, cho trái chín, năm này qua năm khác? Chính Đức Chúa Trời! Bỗng nhiên Lawrence thấy Đức Chúa Trời mạnh mẽ biết bao, và Ngài chăm sóc mọi vật Ngài đã dựng nên cẩn thận biết bao.</p> <p>Chỉ một cái cây trơ trụi ấy đã thay đổi cả cuộc đời anh. Anh nói ý tưởng ấy không bao giờ rời khỏi anh. Nó làm anh yêu Đức Chúa Trời nhiều đến nỗi hơn bốn mươi năm sau, anh vẫn không biết tình yêu của mình có lớn thêm không, vì ngay từ đầu nó đã lớn lắm rồi.</p> <p>Đức Chúa Trời đã dựng nên mọi thứ quanh con: cây cối, chim chóc, mưa và các ngôi sao. Lần tới khi nhìn một cái cây, con hãy nhớ đến Lawrence. Chính Đức Chúa Trời là Đấng làm cho lá mọc lại cũng đang chăm sóc con.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì cây cối và mọi vật Ngài đã dựng nên. Xin giúp con thấy Ngài vĩ đại và nhân từ biết bao. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Năm mười tám tuổi, Lawrence đã nhìn thấy gì?",
+    "answer": "Vào mùa đông, anh thấy một cái cây trụi hết lá, và anh nghĩ đến việc lá, hoa và trái của nó sẽ trở lại."
+   },
+   {
+    "question": "Cái cây trơ trụi đã dạy anh điều gì về Đức Chúa Trời?",
+    "answer": "Nó cho anh thấy quyền năng lớn lao của Đức Chúa Trời và Ngài thành tín chăm sóc mọi vật Ngài đã dựng nên. Nó làm anh yêu Đức Chúa Trời suốt cả cuộc đời."
+   },
+   {
+    "question": "Tuần này con có thể nhìn thấy điều gì ngoài trời nhắc con nhớ đến Đức Chúa Trời?",
+    "answer": "Ý chính của chương: mọi vật Đức Chúa Trời dựng nên đều có thể nhắc chúng ta nhớ Ngài mạnh mẽ và yêu thương biết bao, giống như một cái cây trơ trụi đã nhắc Lawrence."
+   }
+  ],
+  "body_text": "“Quyền phép đời đời và bổn tánh Ngài, thì từ buổi sáng thế vẫn sờ sờ như mắt xem thấy, khi người ta xem xét công việc của Ngài.” — trích Rô-ma 1 Khi Lawrence mười tám tuổi, đang là mùa đông. Mọi thứ đều lạnh lẽo và xám xịt. Một hôm anh dừng lại nhìn một cái cây. Cây đã rụng hết lá. Cành cây trơ trụi, nâu sẫm, giống như những ngón tay xương xẩu giơ lên bầu trời. Trông nó như đã chết rồi. Nhưng Lawrence biết một điều về cây cối. Anh biết rằng ít lâu nữa, khi mùa xuân đến, những chiếc lá xanh non sẽ mọc lại trên các cành trơ trụi ấy. Sau đó cây sẽ ra hoa. Và sau hoa sẽ là trái. Khi anh đứng đó suy nghĩ, một ý tưởng lớn lao tràn ngập tâm trí anh. Ai làm cho lá mọc lại? Ai cho hoa nở, cho trái chín, năm này qua năm khác? Chính Đức Chúa Trời! Bỗng nhiên Lawrence thấy Đức Chúa Trời mạnh mẽ biết bao, và Ngài chăm sóc mọi vật Ngài đã dựng nên cẩn thận biết bao. Chỉ một cái cây trơ trụi ấy đã thay đổi cả cuộc đời anh. Anh nói ý tưởng ấy không bao giờ rời khỏi anh. Nó làm anh yêu Đức Chúa Trời nhiều đến nỗi hơn bốn mươi năm sau, anh vẫn không biết tình yêu của mình có lớn thêm không, vì ngay từ đầu nó đã lớn lắm rồi. Đức Chúa Trời đã dựng nên mọi thứ quanh con: cây cối, chim chóc, mưa và các ngôi sao. Lần tới khi nhìn một cái cây, con hãy nhớ đến Lawrence. Chính Đức Chúa Trời là Đấng làm cho lá mọc lại cũng đang chăm sóc con. Lạy Đức Chúa Trời, cảm ơn Ngài vì cây cối và mọi vật Ngài đã dựng nên. Xin giúp con thấy Ngài vĩ đại và nhân từ biết bao. A-men.",
+  "word_count": 332
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Một bất ngờ vui vẻ",
+  "body_html": "<blockquote>“Trước mặt Chúa có trọn sự khoái lạc” — trích Thi Thiên 16</blockquote> <p>Sau khi nhìn thấy cái cây, Lawrence muốn dâng cả cuộc đời mình cho Đức Chúa Trời. Vì thế anh xin vào một tu viện. Tu viện là một ngôi nhà lớn, nơi nhiều người đàn ông sống chung với nhau để cầu nguyện và làm việc. Những người ở đó được gọi là “Thầy”, và đó là cách anh trở thành Thầy Lawrence.</p> <p>Nhưng Lawrence có một lý do thật buồn cười khi vào đó. Ông nghĩ rằng ở tu viện, ông sẽ bị phạt vì tính vụng về. Ông tưởng mỗi lỗi mình làm đều sẽ bị la mắng. Ông sẵn sàng từ bỏ mọi điều thú vị trong đời vì Đức Chúa Trời, dù điều đó có làm ông khổ sở.</p> <p>Rồi Đức Chúa Trời làm ông bất ngờ.</p> <p>Thầy Lawrence nói rằng Đức Chúa Trời đã “làm ông thất vọng”, nhưng theo cách tuyệt vời nhất! Thay vì khổ sở, ở đó ông chẳng thấy gì khác ngoài niềm vui. Ông đã sẵn sàng cho một cuộc sống vất vả và buồn bã. Thế mà Đức Chúa Trời lại cho ông tràn đầy niềm vui.</p> <p>Thầy Lawrence học được rằng đi theo Đức Chúa Trời không phải là sống buồn rầu. Ở gần Đức Chúa Trời là nơi hạnh phúc nhất.</p> <p>Có người nghĩ rằng yêu Đức Chúa Trời nghĩa là phải bỏ hết mọi niềm vui. Nhưng Đức Chúa Trời không phải là một ông vua cau có. Ngài nhân từ, và chúng ta càng đến gần Ngài, Ngài càng ban cho chúng ta nhiều niềm vui.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì ở gần Ngài là nơi tốt đẹp và hạnh phúc nhất. Xin cho lòng con tràn đầy niềm vui của Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao Thầy Lawrence nghĩ rằng ông sẽ không vui khi ở tu viện?",
+    "answer": "Ông nghĩ mình sẽ bị phạt vì tính vụng về và những lỗi lầm của mình, và ông sẽ phải từ bỏ mọi điều thú vị trong đời."
+   },
+   {
+    "question": "Đức Chúa Trời đã làm ông bất ngờ như thế nào?",
+    "answer": "Thay vì khổ sở, Thầy Lawrence chẳng thấy gì khác ngoài niềm vui ở đó. Ông nói đùa rằng Đức Chúa Trời đã “làm ông thất vọng”."
+   },
+   {
+    "question": "Con nghĩ đi theo Đức Chúa Trời làm người ta vui hay buồn? Tại sao?",
+    "answer": "Ý chính của chương: Đức Chúa Trời nhân từ, không cau có. Đến gần Ngài đem lại niềm vui thật, đúng như Thầy Lawrence đã thấy."
+   }
+  ],
+  "body_text": "“Trước mặt Chúa có trọn sự khoái lạc” — trích Thi Thiên 16 Sau khi nhìn thấy cái cây, Lawrence muốn dâng cả cuộc đời mình cho Đức Chúa Trời. Vì thế anh xin vào một tu viện. Tu viện là một ngôi nhà lớn, nơi nhiều người đàn ông sống chung với nhau để cầu nguyện và làm việc. Những người ở đó được gọi là “Thầy”, và đó là cách anh trở thành Thầy Lawrence. Nhưng Lawrence có một lý do thật buồn cười khi vào đó. Ông nghĩ rằng ở tu viện, ông sẽ bị phạt vì tính vụng về. Ông tưởng mỗi lỗi mình làm đều sẽ bị la mắng. Ông sẵn sàng từ bỏ mọi điều thú vị trong đời vì Đức Chúa Trời, dù điều đó có làm ông khổ sở. Rồi Đức Chúa Trời làm ông bất ngờ. Thầy Lawrence nói rằng Đức Chúa Trời đã “làm ông thất vọng”, nhưng theo cách tuyệt vời nhất! Thay vì khổ sở, ở đó ông chẳng thấy gì khác ngoài niềm vui. Ông đã sẵn sàng cho một cuộc sống vất vả và buồn bã. Thế mà Đức Chúa Trời lại cho ông tràn đầy niềm vui. Thầy Lawrence học được rằng đi theo Đức Chúa Trời không phải là sống buồn rầu. Ở gần Đức Chúa Trời là nơi hạnh phúc nhất. Có người nghĩ rằng yêu Đức Chúa Trời nghĩa là phải bỏ hết mọi niềm vui. Nhưng Đức Chúa Trời không phải là một ông vua cau có. Ngài nhân từ, và chúng ta càng đến gần Ngài, Ngài càng ban cho chúng ta nhiều niềm vui. Lạy Đức Chúa Trời, cảm ơn Ngài vì ở gần Ngài là nơi tốt đẹp và hạnh phúc nhất. Xin cho lòng con tràn đầy niềm vui của Ngài. A-men.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Quá nhiều sách",
+  "body_html": "<blockquote>“Ngươi hãy hết lòng, hết linh hồn, hết ý mà yêu mến Chúa, là Đức Chúa Trời ngươi.” — trích Ma-thi-ơ 22</blockquote> <p>Thầy Lawrence muốn biết làm sao để được gần Đức Chúa Trời. Vì thế ông đọc rất nhiều sách nói về điều đó. Nhưng mỗi cuốn sách lại nói một kiểu. Làm thế này! Không, làm thế kia! Cầu nguyện cách này! Không, cách kia! Thay vì giúp ông, tất cả những ý kiến khác nhau ấy chỉ làm ông rối trí.</p> <p>Vì thế ông quyết định giữ cho mọi việc thật đơn giản. Ông dâng trọn con người mình cho Đức Chúa Trời, và xin Đức Chúa Trời cất tội lỗi của ông đi. Rồi ông bắt đầu sống như thể cả thế giới chỉ có hai người: Đức Chúa Trời và ông.</p> <p>Ông cố gắng nghĩ đến Đức Chúa Trời càng nhiều càng tốt, suốt cả ngày. Có những ngày ông nghĩ về Đức Chúa Trời như một vị quan án, và ông thấy ăn năn vì những điều sai trái mình đã làm. Những ngày khác ông nghĩ về Đức Chúa Trời như Người Cha yêu thương, đang ở ngay trong lòng ông.</p> <p>Điều đó không dễ. Tâm trí ông cứ lơ đãng đi chỗ khác. Và trong nhiều năm, ông lo lắng rằng mình chưa yêu Đức Chúa Trời nhiều như mình nên yêu, và ông cứ nhớ mãi những điều sai trái mình đã làm. Ông thường vấp ngã, rồi lại đứng dậy. Nhưng ông vẫn cứ tin cậy Đức Chúa Trời.</p> <p>Rồi một ngày kia, bỗng nhiên, một sự bình an sâu lắng và yên tĩnh tràn ngập lòng ông, và ở luôn trong đó. Từ đó trở đi, ông bước đi với Đức Chúa Trời cách đơn sơ, với lòng tin cậy và tình yêu.</p> <p>Yêu Đức Chúa Trời không cần phải phức tạp. Con không cần biết thật nhiều luật lệ khôn ngoan. Con có thể bắt đầu ngay hôm nay, chỉ bằng cách nhớ rằng Đức Chúa Trời đang ở với con và nói với Ngài rằng con yêu Ngài.</p> <p><em>Lạy Đức Chúa Trời, con muốn yêu Ngài hết lòng. Xin giúp con nhớ rằng Ngài đang ở với con, hôm nay và mỗi ngày. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao tất cả những cuốn sách lại làm Thầy Lawrence rối trí?",
+    "answer": "Mỗi cuốn sách đưa ra một cách khác nhau để đến gần Đức Chúa Trời, và tất cả những ý kiến khác nhau ấy làm ông bối rối thay vì giúp ông."
+   },
+   {
+    "question": "Thay vào đó, ông quyết định làm điều đơn giản nào?",
+    "answer": "Ông dâng trọn mình cho Đức Chúa Trời và sống như thể trên đời chỉ có Đức Chúa Trời và ông, nghĩ đến Đức Chúa Trời thường xuyên nhất có thể."
+   },
+   {
+    "question": "Hôm nay, lúc nào con có thể nhớ rằng Đức Chúa Trời đang ở với con?",
+    "answer": "Ý chính của chương: yêu Đức Chúa Trời không cần phải phức tạp. Chúng ta chỉ cần nhớ rằng Ngài ở với mình và nói với Ngài rằng chúng ta yêu Ngài."
+   }
+  ],
+  "body_text": "“Ngươi hãy hết lòng, hết linh hồn, hết ý mà yêu mến Chúa, là Đức Chúa Trời ngươi.” — trích Ma-thi-ơ 22 Thầy Lawrence muốn biết làm sao để được gần Đức Chúa Trời. Vì thế ông đọc rất nhiều sách nói về điều đó. Nhưng mỗi cuốn sách lại nói một kiểu. Làm thế này! Không, làm thế kia! Cầu nguyện cách này! Không, cách kia! Thay vì giúp ông, tất cả những ý kiến khác nhau ấy chỉ làm ông rối trí. Vì thế ông quyết định giữ cho mọi việc thật đơn giản. Ông dâng trọn con người mình cho Đức Chúa Trời, và xin Đức Chúa Trời cất tội lỗi của ông đi. Rồi ông bắt đầu sống như thể cả thế giới chỉ có hai người: Đức Chúa Trời và ông. Ông cố gắng nghĩ đến Đức Chúa Trời càng nhiều càng tốt, suốt cả ngày. Có những ngày ông nghĩ về Đức Chúa Trời như một vị quan án, và ông thấy ăn năn vì những điều sai trái mình đã làm. Những ngày khác ông nghĩ về Đức Chúa Trời như Người Cha yêu thương, đang ở ngay trong lòng ông. Điều đó không dễ. Tâm trí ông cứ lơ đãng đi chỗ khác. Và trong nhiều năm, ông lo lắng rằng mình chưa yêu Đức Chúa Trời nhiều như mình nên yêu, và ông cứ nhớ mãi những điều sai trái mình đã làm. Ông thường vấp ngã, rồi lại đứng dậy. Nhưng ông vẫn cứ tin cậy Đức Chúa Trời. Rồi một ngày kia, bỗng nhiên, một sự bình an sâu lắng và yên tĩnh tràn ngập lòng ông, và ở luôn trong đó. Từ đó trở đi, ông bước đi với Đức Chúa Trời cách đơn sơ, với lòng tin cậy và tình yêu. Yêu Đức Chúa Trời không cần phải phức tạp. Con không cần biết thật nhiều luật lệ khôn ngoan. Con có thể bắt đầu ngay hôm nay, chỉ bằng cách nhớ rằng Đức Chúa Trời đang ở với con và nói với Ngài rằng con yêu Ngài. Lạy Đức Chúa Trời, con muốn yêu Ngài hết lòng. Xin giúp con nhớ rằng Ngài đang ở với con, hôm nay và mỗi ngày. A-men.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Căn bếp ông không thích",
+  "body_html": "<blockquote>“Hễ làm việc gì, hãy hết lòng mà làm, như làm cho Chúa” — trích Cô-lô-se 3</blockquote> <p>Trong tu viện, ai cũng có một công việc. Và con có biết người ta giao việc gì cho Thầy Lawrence vụng về không? Họ cho ông làm đầu bếp!</p> <p>Thầy Lawrence không thích việc bếp núc. Ông nói việc ấy trái ngược với mọi điều ông vốn ưa thích. Con hãy tưởng tượng căn bếp lớn: lửa nóng hừng hực, những chiếc nồi gang nặng trịch, hơi nước bốc lên khắp nơi, và rất nhiều Thầy đang đói bụng chờ bữa tối.</p> <p>Nhưng Thầy Lawrence đã tìm ra một bí quyết. Trước khi bắt tay vào việc, ông nghĩ xem cần làm những gì, làm lúc nào, và làm thế nào. Rồi ông nói chuyện với Đức Chúa Trời. Ông nói đại khái thế này: “Lạy Đức Chúa Trời của con, Ngài đang ở đây với con. Bây giờ con phải lo tất cả những việc này. Xin Ngài giúp con ở gần Ngài trong khi con làm. Xin giúp con, và xin nhận mọi việc con làm như một món quà dâng lên Ngài.”</p> <p>Rồi trong khi nấu nướng, ông cứ lặng lẽ nói chuyện với Đức Chúa Trời trong lòng. Ông xin Đức Chúa Trời giúp ông làm tốt công việc, và ông làm tất cả vì tình yêu dành cho Đức Chúa Trời.</p> <p>Và đây là điều bất ngờ. Công việc bếp núc ông từng không thích lại trở nên dễ dàng! Ông làm việc ở đó mười lăm năm, và ông thấy rằng làm việc ấy cho Đức Chúa Trời đã làm mọi sự khác hẳn.</p> <p>Có việc nào con không thích không, như dọn phòng, làm bài tập về nhà hay rửa chén? Con hãy thử làm việc ấy cho Đức Chúa Trời. Hãy xin Ngài giúp con, và làm việc ấy như một món quà yêu thương dâng lên Ngài.</p> <p><em>Lạy Đức Chúa Trời, khi con có một việc con không thích, xin giúp con làm việc ấy cho Ngài, và nhớ rằng Ngài đang ở ngay bên cạnh con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao việc Thầy Lawrence trở thành đầu bếp lại là điều bất ngờ?",
+    "answer": "Ông chẳng thích việc bếp núc chút nào. Việc ấy trái ngược với những gì ông vốn ưa thích."
+   },
+   {
+    "question": "Bí quyết làm việc của ông là gì?",
+    "answer": "Ông xin Đức Chúa Trời giúp đỡ và làm mọi việc vì tình yêu dành cho Đức Chúa Trời, vừa làm vừa nói chuyện với Ngài. Thế là công việc trở nên dễ dàng."
+   },
+   {
+    "question": "Việc nào con thấy khó làm? Con có thể làm việc đó cho Đức Chúa Trời như thế nào?",
+    "answer": "Ý chính của chương: bất cứ việc gì, kể cả việc chúng ta không thích, cũng có thể trở thành món quà yêu thương dâng lên Đức Chúa Trời khi chúng ta xin Ngài giúp và làm việc ấy cho Ngài."
+   }
+  ],
+  "body_text": "“Hễ làm việc gì, hãy hết lòng mà làm, như làm cho Chúa” — trích Cô-lô-se 3 Trong tu viện, ai cũng có một công việc. Và con có biết người ta giao việc gì cho Thầy Lawrence vụng về không? Họ cho ông làm đầu bếp! Thầy Lawrence không thích việc bếp núc. Ông nói việc ấy trái ngược với mọi điều ông vốn ưa thích. Con hãy tưởng tượng căn bếp lớn: lửa nóng hừng hực, những chiếc nồi gang nặng trịch, hơi nước bốc lên khắp nơi, và rất nhiều Thầy đang đói bụng chờ bữa tối. Nhưng Thầy Lawrence đã tìm ra một bí quyết. Trước khi bắt tay vào việc, ông nghĩ xem cần làm những gì, làm lúc nào, và làm thế nào. Rồi ông nói chuyện với Đức Chúa Trời. Ông nói đại khái thế này: “Lạy Đức Chúa Trời của con, Ngài đang ở đây với con. Bây giờ con phải lo tất cả những việc này. Xin Ngài giúp con ở gần Ngài trong khi con làm. Xin giúp con, và xin nhận mọi việc con làm như một món quà dâng lên Ngài.” Rồi trong khi nấu nướng, ông cứ lặng lẽ nói chuyện với Đức Chúa Trời trong lòng. Ông xin Đức Chúa Trời giúp ông làm tốt công việc, và ông làm tất cả vì tình yêu dành cho Đức Chúa Trời. Và đây là điều bất ngờ. Công việc bếp núc ông từng không thích lại trở nên dễ dàng! Ông làm việc ở đó mười lăm năm, và ông thấy rằng làm việc ấy cho Đức Chúa Trời đã làm mọi sự khác hẳn. Có việc nào con không thích không, như dọn phòng, làm bài tập về nhà hay rửa chén? Con hãy thử làm việc ấy cho Đức Chúa Trời. Hãy xin Ngài giúp con, và làm việc ấy như một món quà yêu thương dâng lên Ngài. Lạy Đức Chúa Trời, khi con có một việc con không thích, xin giúp con làm việc ấy cho Ngài, và nhớ rằng Ngài đang ở ngay bên cạnh con. A-men.",
+  "word_count": 355
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Một cọng rơm dưới đất",
+  "body_html": "<blockquote>“Hoặc ăn, hoặc uống, hay là làm sự chi khác, hãy vì sự vinh hiển Đức Chúa Trời mà làm.” — trích 1 Cô-rinh-tô 10</blockquote> <p>Có người nghĩ rằng chỉ những việc lớn lao, quan trọng mới có ý nghĩa với Đức Chúa Trời, như giảng cho đám đông hay xây những nhà thờ đồ sộ. Thầy Lawrence không nghĩ như vậy.</p> <p>Ông nói rằng ông thấy vui khi có thể nhặt một cọng rơm dưới đất vì yêu Đức Chúa Trời. Chỉ một cọng rơm nhỏ xíu thôi! Gần như chẳng là gì cả. Nhưng nếu ông làm điều đó vì yêu Đức Chúa Trời, thì đó là một món quà dâng lên Đức Chúa Trời.</p> <p>Thầy Lawrence nói rằng Đức Chúa Trời không nhìn xem công việc lớn hay nhỏ. Ngài nhìn xem việc ấy được làm với bao nhiêu tình yêu. Một việc nhỏ xíu làm với tình yêu là điều quý báu đối với Đức Chúa Trời.</p> <p>Vì thế ông khuyên mọi người đừng bao giờ chán làm những việc nhỏ vì yêu Đức Chúa Trời. Ông nói rằng trở nên giống Đức Chúa Trời hơn không có nghĩa là phải làm những việc khác. Điều đó có nghĩa là làm chính những việc hằng ngày chúng ta vẫn làm, nhưng làm cho Đức Chúa Trời thay vì chỉ cho bản thân mình.</p> <p>Như vậy, khuấy một nồi canh cũng có thể làm cho Đức Chúa Trời. Quét nhà cũng có thể làm cho Đức Chúa Trời. Ngay cả nhặt một cọng rơm cũng có thể làm cho Đức Chúa Trời.</p> <p>Con không cần đợi đến khi lớn mới làm được điều gì đó cho Đức Chúa Trời. Con có thể làm ngay hôm nay: khi con chia sẻ đồ chơi, giúp dọn bàn ăn, hay nhặt giùm món đồ ai đó làm rơi, hãy làm điều đó cho Ngài.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con hôm nay làm những việc nhỏ vì con yêu Ngài. Cảm ơn Ngài vì ngay cả những điều nhỏ bé cũng có ý nghĩa với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Thầy Lawrence vui lòng làm việc nhỏ xíu nào cho Đức Chúa Trời?",
+    "answer": "Ông vui khi nhặt một cọng rơm dưới đất vì yêu Đức Chúa Trời."
+   },
+   {
+    "question": "Theo Thầy Lawrence, Đức Chúa Trời nhìn vào điều gì?",
+    "answer": "Không phải công việc lớn hay nhỏ, mà là việc ấy được làm với bao nhiêu tình yêu."
+   },
+   {
+    "question": "Hôm nay con có thể làm một việc nhỏ nào cho Đức Chúa Trời?",
+    "answer": "Ý chính của chương: những việc nhỏ hằng ngày làm vì yêu Đức Chúa Trời đều quý báu đối với Ngài. Chúng ta không cần chờ đến khi làm được việc gì lớn lao."
+   }
+  ],
+  "body_text": "“Hoặc ăn, hoặc uống, hay là làm sự chi khác, hãy vì sự vinh hiển Đức Chúa Trời mà làm.” — trích 1 Cô-rinh-tô 10 Có người nghĩ rằng chỉ những việc lớn lao, quan trọng mới có ý nghĩa với Đức Chúa Trời, như giảng cho đám đông hay xây những nhà thờ đồ sộ. Thầy Lawrence không nghĩ như vậy. Ông nói rằng ông thấy vui khi có thể nhặt một cọng rơm dưới đất vì yêu Đức Chúa Trời. Chỉ một cọng rơm nhỏ xíu thôi! Gần như chẳng là gì cả. Nhưng nếu ông làm điều đó vì yêu Đức Chúa Trời, thì đó là một món quà dâng lên Đức Chúa Trời. Thầy Lawrence nói rằng Đức Chúa Trời không nhìn xem công việc lớn hay nhỏ. Ngài nhìn xem việc ấy được làm với bao nhiêu tình yêu. Một việc nhỏ xíu làm với tình yêu là điều quý báu đối với Đức Chúa Trời. Vì thế ông khuyên mọi người đừng bao giờ chán làm những việc nhỏ vì yêu Đức Chúa Trời. Ông nói rằng trở nên giống Đức Chúa Trời hơn không có nghĩa là phải làm những việc khác. Điều đó có nghĩa là làm chính những việc hằng ngày chúng ta vẫn làm, nhưng làm cho Đức Chúa Trời thay vì chỉ cho bản thân mình. Như vậy, khuấy một nồi canh cũng có thể làm cho Đức Chúa Trời. Quét nhà cũng có thể làm cho Đức Chúa Trời. Ngay cả nhặt một cọng rơm cũng có thể làm cho Đức Chúa Trời. Con không cần đợi đến khi lớn mới làm được điều gì đó cho Đức Chúa Trời. Con có thể làm ngay hôm nay: khi con chia sẻ đồ chơi, giúp dọn bàn ăn, hay nhặt giùm món đồ ai đó làm rơi, hãy làm điều đó cho Ngài. Lạy Đức Chúa Trời, xin giúp con hôm nay làm những việc nhỏ vì con yêu Ngài. Cảm ơn Ngài vì ngay cả những điều nhỏ bé cũng có ý nghĩa với Ngài. A-men.",
+  "word_count": 348
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Nồi, chảo và lời cầu nguyện",
+  "body_html": "<blockquote>“Hãy vui mừng mãi mãi, cầu nguyện không thôi, phàm việc gì cũng phải tạ ơn Chúa” — trích 1 Tê-sa-lô-ni-ca 5</blockquote> <p>Con có tưởng tượng được căn bếp tu viện vào giờ ăn tối không? Nồi sôi sùng sục. Chảo kêu loảng xoảng. Muỗng gõ lách cách. Rất nhiều người chạy tới chạy lui, và mấy người cùng lúc gọi lấy những thứ khác nhau.</p> <p>Hầu hết mọi người sẽ cuống lên trong một căn bếp như thế. Nhưng người ta nhận thấy một điều nơi Thầy Lawrence. Ngay cả trong những lúc bận rộn và ồn ào nhất, ông vẫn bình tĩnh. Ông không bao giờ vội vã, và cũng không bao giờ lười biếng. Ông làm mỗi việc đúng lúc, cách bình an và đều đặn.</p> <p>Ông làm thế nào vậy? Ông cầu nguyện mọi lúc, không phải bằng những lời to tiếng, nhưng ở trong lòng. Ông nói rằng giờ làm việc của ông chẳng khác gì giờ cầu nguyện.</p> <p>Nói đơn giản, chính ông đã nói thế này: “Giữa tiếng ồn ào lách cách trong bếp, khi có mấy người cùng lúc gọi lấy những thứ khác nhau, tôi vẫn ở với Đức Chúa Trời cách bình an như thể tôi đang quỳ gối cầu nguyện.”</p> <p>Với Thầy Lawrence, cầu nguyện không chỉ dành cho những giờ đặc biệt. Ông có thể ở gần Đức Chúa Trời ở bất cứ đâu, ngay cả khi tay đang ngâm trong chậu rửa chén.</p> <p>Con có thể nói chuyện với Đức Chúa Trời ở trường, trên xe, ngoài sân chơi hay trong lúc đánh răng. Con không cần đợi đến một nơi yên tĩnh. Ngài ở với con cả trong những lúc bận rộn, ồn ào nữa.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì con có thể nói chuyện với Ngài ở bất cứ đâu. Xin giúp con luôn ở gần Ngài khi mọi thứ bận rộn và ồn ào. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vào những lúc bận rộn, căn bếp trông như thế nào?",
+    "answer": "Rất ồn ào, nồi chảo kêu loảng xoảng và mấy người cùng lúc gọi lấy những thứ khác nhau."
+   },
+   {
+    "question": "Làm sao Thầy Lawrence giữ được sự bình tĩnh?",
+    "answer": "Ông cứ cầu nguyện trong lòng trong khi làm việc. Ông nói giờ làm việc của ông chẳng khác gì giờ cầu nguyện."
+   },
+   {
+    "question": "Lúc nào trong ngày là lúc bận rộn, ồn ào nhất của con? Con có thể nói chuyện với Đức Chúa Trời lúc đó không?",
+    "answer": "Ý chính của chương: cầu nguyện không chỉ dành cho những giờ yên tĩnh, đặc biệt. Chúng ta có thể ở gần Đức Chúa Trời ngay giữa những ngày bận rộn, ồn ào."
+   }
+  ],
+  "body_text": "“Hãy vui mừng mãi mãi, cầu nguyện không thôi, phàm việc gì cũng phải tạ ơn Chúa” — trích 1 Tê-sa-lô-ni-ca 5 Con có tưởng tượng được căn bếp tu viện vào giờ ăn tối không? Nồi sôi sùng sục. Chảo kêu loảng xoảng. Muỗng gõ lách cách. Rất nhiều người chạy tới chạy lui, và mấy người cùng lúc gọi lấy những thứ khác nhau. Hầu hết mọi người sẽ cuống lên trong một căn bếp như thế. Nhưng người ta nhận thấy một điều nơi Thầy Lawrence. Ngay cả trong những lúc bận rộn và ồn ào nhất, ông vẫn bình tĩnh. Ông không bao giờ vội vã, và cũng không bao giờ lười biếng. Ông làm mỗi việc đúng lúc, cách bình an và đều đặn. Ông làm thế nào vậy? Ông cầu nguyện mọi lúc, không phải bằng những lời to tiếng, nhưng ở trong lòng. Ông nói rằng giờ làm việc của ông chẳng khác gì giờ cầu nguyện. Nói đơn giản, chính ông đã nói thế này: “Giữa tiếng ồn ào lách cách trong bếp, khi có mấy người cùng lúc gọi lấy những thứ khác nhau, tôi vẫn ở với Đức Chúa Trời cách bình an như thể tôi đang quỳ gối cầu nguyện.” Với Thầy Lawrence, cầu nguyện không chỉ dành cho những giờ đặc biệt. Ông có thể ở gần Đức Chúa Trời ở bất cứ đâu, ngay cả khi tay đang ngâm trong chậu rửa chén. Con có thể nói chuyện với Đức Chúa Trời ở trường, trên xe, ngoài sân chơi hay trong lúc đánh răng. Con không cần đợi đến một nơi yên tĩnh. Ngài ở với con cả trong những lúc bận rộn, ồn ào nữa. Lạy Đức Chúa Trời, cảm ơn Ngài vì con có thể nói chuyện với Ngài ở bất cứ đâu. Xin giúp con luôn ở gần Ngài khi mọi thứ bận rộn và ồn ào. A-men.",
+  "word_count": 324
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Nói chuyện với Đức Chúa Trời như với một người bạn",
+  "body_html": "<blockquote>“Hãy đến gần Đức Chúa Trời, thì Ngài sẽ đến gần anh em.” — trích Gia-cơ 4</blockquote> <p>Thầy Lawrence viết thư cho bạn bè, và trong thư ông thường chỉ cho họ cách nói chuyện với Đức Chúa Trời. Ông nói việc ấy đơn giản hơn nhiều so với người ta nghĩ.</p> <p>“Không cần phải la to đâu,” ông viết. “Đức Chúa Trời ở gần chúng ta hơn chúng ta tưởng.” Con cũng không cần phải ở trong nhà thờ mới nói chuyện được với Ngài. Ông nói con có thể biến lòng mình thành một căn phòng cầu nguyện nhỏ, rồi lẻn vào đó để nói chuyện với Đức Chúa Trời bất cứ lúc nào.</p> <p>Những lời cầu nguyện của ông thường rất ngắn. Có khi ông chỉ nói: “Lạy Đức Chúa Trời của con, con đây, trọn vẹn thuộc về Ngài. Lạy Chúa, xin làm cho lòng con giống như lòng Ngài.” Có khi ông chỉ nghĩ đến Đức Chúa Trời với lòng yêu mến, chẳng cần lời nào cả. Ông khuyên một người bạn hãy nâng lòng lên cùng Đức Chúa Trời ngay cả trong bữa ăn, hay khi đang ở cùng người khác. Ông nói rằng ngay cả một ý nghĩ nhỏ nhất về Đức Chúa Trời cũng làm Ngài vui lòng.</p> <p>Ông còn cho bạn bè một hình ảnh để ghi nhớ. Nếu có một người bạn đến thăm con, con sẽ không bỏ đi và để bạn ngồi một mình. Như thế thì thật bất lịch sự! Vậy đó, Đức Chúa Trời luôn ở với chúng ta. Cho nên đừng để Ngài một mình. Hãy thường xuyên nghĩ đến Ngài.</p> <p>Thực hành sự hiện diện của Đức Chúa Trời chỉ có nghĩa như vậy thôi: nhớ rằng Ngài đang ở đây, và nói chuyện với Ngài.</p> <p>Con có thể nói chuyện với Đức Chúa Trời giống như con nói chuyện với một người bạn. Hãy cảm ơn Ngài. Hãy nói với Ngài khi con lo lắng. Hãy xin Ngài giúp đỡ. Lời cầu nguyện của con có thể ngắn chỉ một câu thôi, và Ngài rất thích lắng nghe.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn ở với con. Xin giúp con đừng để Ngài một mình, nhưng nói chuyện với Ngài suốt cả ngày. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Thầy Lawrence nói con có thể đến đâu để nói chuyện với Đức Chúa Trời?",
+    "answer": "Bất cứ đâu. Ông nói con có thể biến lòng mình thành một căn phòng cầu nguyện nhỏ và nói chuyện với Đức Chúa Trời ở đó, và không cần phải la to, vì Đức Chúa Trời ở rất gần."
+   },
+   {
+    "question": "Ông đã dùng hình ảnh nào về một người bạn đến thăm?",
+    "answer": "Bỏ mặc một người bạn đến thăm ngồi một mình là bất lịch sự, vì thế chúng ta cũng đừng để Đức Chúa Trời một mình. Chúng ta nên thường xuyên nghĩ đến Ngài."
+   },
+   {
+    "question": "Hôm nay con có thể nói với Đức Chúa Trời một lời cầu nguyện ngắn nào?",
+    "answer": "Ý chính của chương: nói chuyện với Đức Chúa Trời có thể thật đơn giản và ngắn gọn, như nói với một người bạn luôn ở bên chúng ta."
+   }
+  ],
+  "body_text": "“Hãy đến gần Đức Chúa Trời, thì Ngài sẽ đến gần anh em.” — trích Gia-cơ 4 Thầy Lawrence viết thư cho bạn bè, và trong thư ông thường chỉ cho họ cách nói chuyện với Đức Chúa Trời. Ông nói việc ấy đơn giản hơn nhiều so với người ta nghĩ. “Không cần phải la to đâu,” ông viết. “Đức Chúa Trời ở gần chúng ta hơn chúng ta tưởng.” Con cũng không cần phải ở trong nhà thờ mới nói chuyện được với Ngài. Ông nói con có thể biến lòng mình thành một căn phòng cầu nguyện nhỏ, rồi lẻn vào đó để nói chuyện với Đức Chúa Trời bất cứ lúc nào. Những lời cầu nguyện của ông thường rất ngắn. Có khi ông chỉ nói: “Lạy Đức Chúa Trời của con, con đây, trọn vẹn thuộc về Ngài. Lạy Chúa, xin làm cho lòng con giống như lòng Ngài.” Có khi ông chỉ nghĩ đến Đức Chúa Trời với lòng yêu mến, chẳng cần lời nào cả. Ông khuyên một người bạn hãy nâng lòng lên cùng Đức Chúa Trời ngay cả trong bữa ăn, hay khi đang ở cùng người khác. Ông nói rằng ngay cả một ý nghĩ nhỏ nhất về Đức Chúa Trời cũng làm Ngài vui lòng. Ông còn cho bạn bè một hình ảnh để ghi nhớ. Nếu có một người bạn đến thăm con, con sẽ không bỏ đi và để bạn ngồi một mình. Như thế thì thật bất lịch sự! Vậy đó, Đức Chúa Trời luôn ở với chúng ta. Cho nên đừng để Ngài một mình. Hãy thường xuyên nghĩ đến Ngài. Thực hành sự hiện diện của Đức Chúa Trời chỉ có nghĩa như vậy thôi: nhớ rằng Ngài đang ở đây, và nói chuyện với Ngài. Con có thể nói chuyện với Đức Chúa Trời giống như con nói chuyện với một người bạn. Hãy cảm ơn Ngài. Hãy nói với Ngài khi con lo lắng. Hãy xin Ngài giúp đỡ. Lời cầu nguyện của con có thể ngắn chỉ một câu thôi, và Ngài rất thích lắng nghe. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn ở với con. Xin giúp con đừng để Ngài một mình, nhưng nói chuyện với Ngài suốt cả ngày. A-men.",
+  "word_count": 385
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Chiếc thuyền đầy thùng rượu",
+  "body_html": "<blockquote>“Hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em.” — trích 1 Phi-e-rơ 5</blockquote> <p>Một hôm, những người lãnh đạo tu viện giao cho Thầy Lawrence một việc mà ông thật chẳng muốn làm chút nào. Họ sai ông đi một chuyến xa đến một vùng tên là Burgundy, để mua rượu nho mà các Thầy cần dùng.</p> <p>Thầy Lawrence nghĩ mình chẳng giỏi gì chuyện mua bán. Mà còn một vấn đề nữa. Ông bị tật ở chân, nên đi lại rất khó khăn. Trên thuyền, ông gần như không đi được chút nào. Cách duy nhất để ông di chuyển là lăn mình qua trên những thùng rượu!</p> <p>Con có hình dung được không? Một người to lớn với cái chân đau, lăn lộn qua hết thùng này đến thùng khác, cộc, cộc, cộc.</p> <p>Nhưng Thầy Lawrence không lo lắng. Ông thưa với Đức Chúa Trời rằng đây là công việc của Đức Chúa Trời mà ông đang làm. Ông tin cậy Đức Chúa Trời sẽ lo liệu việc ấy. Và sau đó ông thấy cả công việc đã diễn ra rất tốt đẹp.</p> <p>Năm trước, ông cũng đã được sai đi một chuyến giống như vậy đến một nơi khác, tên là Auvergne. Ông thậm chí không giải thích được mọi việc đã thành ra sao, nhưng lần đó mọi sự cũng tốt đẹp.</p> <p>Đôi khi chúng ta phải làm những việc có vẻ quá khó, như một bài kiểm tra, một ngôi trường mới hay một điều gì đó đáng sợ. Con có thể làm như Thầy Lawrence: hãy thưa với Đức Chúa Trời về việc ấy, và tin cậy Ngài sẽ giúp con.</p> <p><em>Lạy Đức Chúa Trời, khi con phải làm một việc khó, xin giúp con trao những lo lắng của con cho Ngài và tin cậy Ngài sẽ chăm sóc con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao chuyến đi đến Burgundy lại khó khăn đối với Thầy Lawrence?",
+    "answer": "Ông không giỏi chuyện buôn bán, và chân ông bị tật, nên trên thuyền ông chỉ có thể di chuyển bằng cách lăn mình qua trên những thùng rượu."
+   },
+   {
+    "question": "Thay vì lo lắng, ông đã làm gì?",
+    "answer": "Ông thưa với Đức Chúa Trời rằng đây là công việc của Đức Chúa Trời mà ông đang làm và tin cậy giao việc ấy cho Ngài, và công việc đã diễn ra rất tốt đẹp."
+   },
+   {
+    "question": "Sắp tới con phải làm một việc khó nào? Con có thể giao việc ấy cho Đức Chúa Trời như thế nào?",
+    "answer": "Ý chính của chương: khi một việc có vẻ quá khó đối với chúng ta, chúng ta có thể trao những lo lắng của mình cho Đức Chúa Trời và tin cậy Ngài sẽ giúp đỡ."
+   }
+  ],
+  "body_text": "“Hãy trao mọi điều lo lắng mình cho Ngài, vì Ngài hay săn sóc anh em.” — trích 1 Phi-e-rơ 5 Một hôm, những người lãnh đạo tu viện giao cho Thầy Lawrence một việc mà ông thật chẳng muốn làm chút nào. Họ sai ông đi một chuyến xa đến một vùng tên là Burgundy, để mua rượu nho mà các Thầy cần dùng. Thầy Lawrence nghĩ mình chẳng giỏi gì chuyện mua bán. Mà còn một vấn đề nữa. Ông bị tật ở chân, nên đi lại rất khó khăn. Trên thuyền, ông gần như không đi được chút nào. Cách duy nhất để ông di chuyển là lăn mình qua trên những thùng rượu! Con có hình dung được không? Một người to lớn với cái chân đau, lăn lộn qua hết thùng này đến thùng khác, cộc, cộc, cộc. Nhưng Thầy Lawrence không lo lắng. Ông thưa với Đức Chúa Trời rằng đây là công việc của Đức Chúa Trời mà ông đang làm. Ông tin cậy Đức Chúa Trời sẽ lo liệu việc ấy. Và sau đó ông thấy cả công việc đã diễn ra rất tốt đẹp. Năm trước, ông cũng đã được sai đi một chuyến giống như vậy đến một nơi khác, tên là Auvergne. Ông thậm chí không giải thích được mọi việc đã thành ra sao, nhưng lần đó mọi sự cũng tốt đẹp. Đôi khi chúng ta phải làm những việc có vẻ quá khó, như một bài kiểm tra, một ngôi trường mới hay một điều gì đó đáng sợ. Con có thể làm như Thầy Lawrence: hãy thưa với Đức Chúa Trời về việc ấy, và tin cậy Ngài sẽ giúp con. Lạy Đức Chúa Trời, khi con phải làm một việc khó, xin giúp con trao những lo lắng của con cho Ngài và tin cậy Ngài sẽ chăm sóc con. A-men.",
+  "word_count": 316
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Khi ông làm sai",
+  "body_html": "<blockquote>“Nếu chúng ta xưng tội mình, thì Ngài là thành tín công bình để tha tội cho chúng ta” — trích 1 Giăng 1</blockquote> <p>Thầy Lawrence rất yêu Đức Chúa Trời. Nhưng ông không hoàn hảo. Ông vẫn còn phạm lỗi. Có khi ông quên Đức Chúa Trời một thời gian khá lâu. Có khi ông làm những điều mà ông biết là sai.</p> <p>Vậy ông đã làm gì khi mình làm sai? Ông không hờn dỗi. Ông không bỏ cuộc. Và ông cũng không viện cớ.</p> <p>Ông chỉ đơn giản thưa với Đức Chúa Trời. Ông nói đại khái thế này: “Lạy Chúa, con là như vậy đó. Nếu Ngài để con một mình, con sẽ cứ mãi làm như thế. Ngài phải giữ con khỏi vấp ngã, và sửa lại những gì con đã làm sai.” Rồi ông thôi không lo lắng về điều đó nữa, và quay lại yêu mến Đức Chúa Trời, y như trước.</p> <p>Thầy Lawrence biết rằng tội lỗi chúng ta được tha là nhờ Chúa Giê-xu, Đấng đã chết thay cho chúng ta, chứ không phải vì chúng ta đủ tốt. Vì thế ông tin cậy Chúa Giê-xu, và ông không mang những lỗi lầm của mình đi khắp nơi như một cái túi nặng trĩu.</p> <p>Còn khi ông làm được điều gì đúng, ông cảm ơn Đức Chúa Trời, vì ông biết sức mạnh ấy đến từ Đức Chúa Trời. Ông nói rằng nhờ đứng dậy lại sau mỗi lần vấp ngã, từng chút một, ông đã học được cách nghĩ đến Đức Chúa Trời mọi lúc.</p> <p>Ai cũng có lúc làm sai, kể cả người lớn và kể cả những người rất yêu Đức Chúa Trời. Khi con làm sai, đừng giấu đi hay lo lắng nhiều ngày liền. Hãy nói với Đức Chúa Trời rằng con xin lỗi, tin cậy Chúa Giê-xu sẽ tha thứ cho con, và bắt đầu lại.</p> <p><em>Lạy Đức Chúa Trời, con xin lỗi vì những điều sai trái con đã làm. Cảm ơn Ngài vì Chúa Giê-xu tha thứ cho con. Xin giúp con đứng dậy và tiếp tục bước đi với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Thầy Lawrence đã làm gì khi ông phạm lỗi?",
+    "answer": "Ông thành thật thưa với Đức Chúa Trời về lỗi ấy, xin Đức Chúa Trời giúp đỡ, rồi thôi lo lắng và quay lại yêu mến Đức Chúa Trời."
+   },
+   {
+    "question": "Tại sao ông không cần cứ lo lắng mãi về tội lỗi của mình?",
+    "answer": "Vì ông tin rằng tội lỗi của ông được tha nhờ Chúa Giê-xu, chứ không phải vì ông đủ tốt."
+   },
+   {
+    "question": "Lần tới khi làm sai điều gì, con có thể làm gì?",
+    "answer": "Ý chính của chương: khi chúng ta làm hỏng việc, chúng ta có thể thưa với Đức Chúa Trời, tin cậy Chúa Giê-xu tha thứ cho mình, và bắt đầu lại mà không mang theo những lỗi lầm của mình."
+   }
+  ],
+  "body_text": "“Nếu chúng ta xưng tội mình, thì Ngài là thành tín công bình để tha tội cho chúng ta” — trích 1 Giăng 1 Thầy Lawrence rất yêu Đức Chúa Trời. Nhưng ông không hoàn hảo. Ông vẫn còn phạm lỗi. Có khi ông quên Đức Chúa Trời một thời gian khá lâu. Có khi ông làm những điều mà ông biết là sai. Vậy ông đã làm gì khi mình làm sai? Ông không hờn dỗi. Ông không bỏ cuộc. Và ông cũng không viện cớ. Ông chỉ đơn giản thưa với Đức Chúa Trời. Ông nói đại khái thế này: “Lạy Chúa, con là như vậy đó. Nếu Ngài để con một mình, con sẽ cứ mãi làm như thế. Ngài phải giữ con khỏi vấp ngã, và sửa lại những gì con đã làm sai.” Rồi ông thôi không lo lắng về điều đó nữa, và quay lại yêu mến Đức Chúa Trời, y như trước. Thầy Lawrence biết rằng tội lỗi chúng ta được tha là nhờ Chúa Giê-xu, Đấng đã chết thay cho chúng ta, chứ không phải vì chúng ta đủ tốt. Vì thế ông tin cậy Chúa Giê-xu, và ông không mang những lỗi lầm của mình đi khắp nơi như một cái túi nặng trĩu. Còn khi ông làm được điều gì đúng, ông cảm ơn Đức Chúa Trời, vì ông biết sức mạnh ấy đến từ Đức Chúa Trời. Ông nói rằng nhờ đứng dậy lại sau mỗi lần vấp ngã, từng chút một, ông đã học được cách nghĩ đến Đức Chúa Trời mọi lúc. Ai cũng có lúc làm sai, kể cả người lớn và kể cả những người rất yêu Đức Chúa Trời. Khi con làm sai, đừng giấu đi hay lo lắng nhiều ngày liền. Hãy nói với Đức Chúa Trời rằng con xin lỗi, tin cậy Chúa Giê-xu sẽ tha thứ cho con, và bắt đầu lại. Lạy Đức Chúa Trời, con xin lỗi vì những điều sai trái con đã làm. Cảm ơn Ngài vì Chúa Giê-xu tha thứ cho con. Xin giúp con đứng dậy và tiếp tục bước đi với Ngài. A-men.",
+  "word_count": 359
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Những lá thư gửi bạn bè đang gặp khó khăn",
+  "body_html": "<blockquote>“Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi” — trích Thi Thiên 23</blockquote> <p>Khi Thầy Lawrence lớn tuổi hơn, nhiều người viết thư cho ông, và ông viết thư trả lời. Một vài người bạn của ông đang gặp những lúc rất khó khăn.</p> <p>Một người bạn kể với ông về một chàng lính trẻ đang gặp nguy hiểm. Thầy Lawrence viết thư trả lời rằng người lính ấy không cần những lời cầu nguyện dài. Ngay cả khi đang hành quân, tay cầm gươm, anh vẫn có thể nâng lòng lên cùng Đức Chúa Trời trong giây lát. Ông nói chỉ cần nhớ đến Đức Chúa Trời một chút là đủ, và những lời cầu nguyện ngắn ấy sẽ làm cho người lính can đảm hơn, chứ không yếu đi.</p> <p>Một người bạn khác bị bệnh rất nặng, trong một thời gian dài, và thuốc men chẳng có tác dụng. Thầy Lawrence thấy thương người bạn này. Ông nói với bạn rằng khi chúng ta đau ốm, Đức Chúa Trời thường còn ở gần chúng ta hơn cả lúc chúng ta khỏe mạnh. Ông khuyên bạn hãy tiếp tục nói chuyện với Đức Chúa Trời, tin cậy Ngài, và dâng cơn đau lên cho Ngài.</p> <p>Thầy Lawrence còn viết một điều rất can đảm. Ông nói rằng ông không chỉ cầu xin cho cơn đau chấm dứt, mà còn cầu xin Đức Chúa Trời ban cho bạn mình sức mạnh và sự kiên nhẫn để chịu đựng. Ông biết Đức Chúa Trời là Cha yêu thương của chúng ta, và chúng ta có thể tin cậy Ngài ngay cả khi đau đớn.</p> <p>Bạn bè của ông buồn bã và đau đớn, nhưng những lá thư của ông chỉ cho họ thấy Đức Chúa Trời, Đấng đang ở ngay đó với họ.</p> <p>Khi con bị ốm, buồn hay sợ hãi, Đức Chúa Trời không hề bỏ đi đâu cả. Ngài ở gần con. Con có thể nói một lời cầu nguyện ngắn, dù chỉ là “Xin giúp con, Đức Chúa Trời ơi,” và tin cậy rằng Ngài ở với con.</p> <p><em>Lạy Đức Chúa Trời, khi con bị ốm hay sợ hãi, cảm ơn Ngài vì Ngài ở gần con. Xin ban cho con sức mạnh và giúp con tin cậy Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Thầy Lawrence nói một người lính có thể làm gì, ngay cả khi đang hành quân với thanh gươm trong tay?",
+    "answer": "Anh có thể nâng lòng lên cùng Đức Chúa Trời trong giây lát. Những lời cầu nguyện ngắn như thế làm Đức Chúa Trời vui lòng và làm cho người lính can đảm hơn."
+   },
+   {
+    "question": "Ông đã nói gì với người bạn bị bệnh rất nặng?",
+    "answer": "Rằng khi đau ốm, Đức Chúa Trời thường ở gần chúng ta hơn cả lúc khỏe mạnh, và hãy tiếp tục nói chuyện với Đức Chúa Trời, tin cậy Ngài, và xin sức mạnh để chịu đựng cơn đau."
+   },
+   {
+    "question": "Có bao giờ con bị ốm, buồn hay sợ hãi không? Lúc đó con có thể nói gì với Đức Chúa Trời?",
+    "answer": "Ý chính của chương: Đức Chúa Trời vẫn ở gần trong những lúc khó khăn. Ngay cả một lời cầu nguyện thật ngắn, như “Xin giúp con, Đức Chúa Trời ơi,” Ngài cũng nghe."
+   }
+  ],
+  "body_text": "“Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi” — trích Thi Thiên 23 Khi Thầy Lawrence lớn tuổi hơn, nhiều người viết thư cho ông, và ông viết thư trả lời. Một vài người bạn của ông đang gặp những lúc rất khó khăn. Một người bạn kể với ông về một chàng lính trẻ đang gặp nguy hiểm. Thầy Lawrence viết thư trả lời rằng người lính ấy không cần những lời cầu nguyện dài. Ngay cả khi đang hành quân, tay cầm gươm, anh vẫn có thể nâng lòng lên cùng Đức Chúa Trời trong giây lát. Ông nói chỉ cần nhớ đến Đức Chúa Trời một chút là đủ, và những lời cầu nguyện ngắn ấy sẽ làm cho người lính can đảm hơn, chứ không yếu đi. Một người bạn khác bị bệnh rất nặng, trong một thời gian dài, và thuốc men chẳng có tác dụng. Thầy Lawrence thấy thương người bạn này. Ông nói với bạn rằng khi chúng ta đau ốm, Đức Chúa Trời thường còn ở gần chúng ta hơn cả lúc chúng ta khỏe mạnh. Ông khuyên bạn hãy tiếp tục nói chuyện với Đức Chúa Trời, tin cậy Ngài, và dâng cơn đau lên cho Ngài. Thầy Lawrence còn viết một điều rất can đảm. Ông nói rằng ông không chỉ cầu xin cho cơn đau chấm dứt, mà còn cầu xin Đức Chúa Trời ban cho bạn mình sức mạnh và sự kiên nhẫn để chịu đựng. Ông biết Đức Chúa Trời là Cha yêu thương của chúng ta, và chúng ta có thể tin cậy Ngài ngay cả khi đau đớn. Bạn bè của ông buồn bã và đau đớn, nhưng những lá thư của ông chỉ cho họ thấy Đức Chúa Trời, Đấng đang ở ngay đó với họ. Khi con bị ốm, buồn hay sợ hãi, Đức Chúa Trời không hề bỏ đi đâu cả. Ngài ở gần con. Con có thể nói một lời cầu nguyện ngắn, dù chỉ là “Xin giúp con, Đức Chúa Trời ơi,” và tin cậy rằng Ngài ở với con. Lạy Đức Chúa Trời, khi con bị ốm hay sợ hãi, cảm ơn Ngài vì Ngài ở gần con. Xin ban cho con sức mạnh và giúp con tin cậy Ngài. A-men.",
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Về nhà với Đức Chúa Trời",
+  "body_html": "<blockquote>“Ta đi sắm sẵn cho các ngươi một chỗ.” — trích Giăng 14</blockquote> <p>Thầy Lawrence dần trở thành một ông cụ. Trong một lá thư, ông viết: “Tôi đã gần tám mươi tuổi.” Lúc ấy ông đã bước đi với Đức Chúa Trời hơn bốn mươi năm, kể từ ngày mùa đông năm ấy khi ông nhìn thấy cái cây trơ trụi.</p> <p>Lúc tuổi già, ông thường bị bệnh rất nặng. Nhưng ông không xin Đức Chúa Trời cất cơn đau đi. Thay vào đó, ông xin sức mạnh để chịu đựng nó với lòng can đảm và tình yêu. Ông nói ông luôn vui vẻ, vì Đức Chúa Trời ở với ông.</p> <p>Trong những lá thư cuối cùng, ông viết rằng ông mong sớm được gặp Đức Chúa Trời. Chỉ hai ngày sau một trong những lá thư ấy, ông lâm bệnh phải nằm liệt giường, và chưa hết tuần thì ông qua đời, về nhà ở với Đức Chúa Trời mà ông yêu mến.</p> <p>Nhưng những lá thư và lời nói của ông đã được giữ lại, để chúng ta có thể đọc. Và trong đó, ông cứ đưa ra mãi một lời mời giống nhau. Hãy thường nghĩ đến Đức Chúa Trời. Hãy nói chuyện với Ngài. Hãy tin cậy Ngài. “Chúng ta hãy bắt đầu,” ông viết. Khi có người bảo rằng ông lúc nào cũng nói một điều giống nhau, ông đồng ý ngay! Đó là cách tốt nhất và dễ nhất mà ông biết, nên ông nói cho mọi người.</p> <p>Chàng người hầu trẻ vụng về ngày nào đã học được cách sống mỗi ngày với Đức Chúa Trời, và ông muốn mọi người khác cũng biết cách sống như thế.</p> <p>Lời mời của Thầy Lawrence cũng dành cho con nữa. Con không cần phải là người lớn, hay thông minh, hay cẩn thận. Con có thể bắt đầu ngay hôm nay: hãy nhớ rằng Đức Chúa Trời đang ở với con, và nói chuyện với Ngài suốt cả ngày.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn ở với con. Xin giúp con bắt đầu ngay hôm nay nói chuyện với Ngài và tin cậy Ngài, suốt cả cuộc đời con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Gần cuối đời, Thầy Lawrence bao nhiêu tuổi, và ông mong mỏi điều gì?",
+    "answer": "Ông viết rằng ông đã gần tám mươi tuổi, và trong những lá thư cuối cùng, ông nói ông mong sớm được gặp Đức Chúa Trời."
+   },
+   {
+    "question": "Thầy Lawrence cứ đưa ra lời mời nào trong các lá thư của ông?",
+    "answer": "Hãy thường nghĩ đến Đức Chúa Trời, nói chuyện với Ngài và tin cậy Ngài. “Chúng ta hãy bắt đầu,” ông viết, và ông nói đó là cách tốt nhất và dễ nhất mà ông biết."
+   },
+   {
+    "question": "Tuần này con có thể bắt đầu tập sống với Đức Chúa Trời như thế nào?",
+    "answer": "Ý chính của chương: lời mời của Thầy Lawrence cũng dành cho trẻ em. Ai cũng có thể bắt đầu ngay hôm nay bằng cách nhớ rằng Đức Chúa Trời ở gần và nói chuyện với Ngài."
+   }
+  ],
+  "body_text": "“Ta đi sắm sẵn cho các ngươi một chỗ.” — trích Giăng 14 Thầy Lawrence dần trở thành một ông cụ. Trong một lá thư, ông viết: “Tôi đã gần tám mươi tuổi.” Lúc ấy ông đã bước đi với Đức Chúa Trời hơn bốn mươi năm, kể từ ngày mùa đông năm ấy khi ông nhìn thấy cái cây trơ trụi. Lúc tuổi già, ông thường bị bệnh rất nặng. Nhưng ông không xin Đức Chúa Trời cất cơn đau đi. Thay vào đó, ông xin sức mạnh để chịu đựng nó với lòng can đảm và tình yêu. Ông nói ông luôn vui vẻ, vì Đức Chúa Trời ở với ông. Trong những lá thư cuối cùng, ông viết rằng ông mong sớm được gặp Đức Chúa Trời. Chỉ hai ngày sau một trong những lá thư ấy, ông lâm bệnh phải nằm liệt giường, và chưa hết tuần thì ông qua đời, về nhà ở với Đức Chúa Trời mà ông yêu mến. Nhưng những lá thư và lời nói của ông đã được giữ lại, để chúng ta có thể đọc. Và trong đó, ông cứ đưa ra mãi một lời mời giống nhau. Hãy thường nghĩ đến Đức Chúa Trời. Hãy nói chuyện với Ngài. Hãy tin cậy Ngài. “Chúng ta hãy bắt đầu,” ông viết. Khi có người bảo rằng ông lúc nào cũng nói một điều giống nhau, ông đồng ý ngay! Đó là cách tốt nhất và dễ nhất mà ông biết, nên ông nói cho mọi người. Chàng người hầu trẻ vụng về ngày nào đã học được cách sống mỗi ngày với Đức Chúa Trời, và ông muốn mọi người khác cũng biết cách sống như thế. Lời mời của Thầy Lawrence cũng dành cho con nữa. Con không cần phải là người lớn, hay thông minh, hay cẩn thận. Con có thể bắt đầu ngay hôm nay: hãy nhớ rằng Đức Chúa Trời đang ở với con, và nói chuyện với Ngài suốt cả ngày. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài luôn ở với con. Xin giúp con bắt đầu ngay hôm nay nói chuyện với Ngài và tin cậy Ngài, suốt cả cuộc đời con. A-men.",
+  "word_count": 371
+ }
+}
+]
