@@ -1406,8 +1406,10 @@ CURATED: dict[str, Artwork] = {
         inset=0.04,
     ),
     "parochial-and-plain-sermons-vii": Artwork(
-        "met", 436832, "Philips Koninck", "Wide River Landscape", "ca. 1648–49",
-        "A distant spire across a wide river country under storm cloud: Newman's sermons on the shortness of life and the world as the Christian's enemy, preached from the pulpit of St Mary's, Oxford.",
+        "met", 438954, "Johan Christian Dahl", "Mother and Child by the Sea", "1830",
+        "A mother and child on a dark shore watching a boat under the moon: \"The night is dark, and I am far from home\" — Newman's \"Lead, Kindly Light\", written at sea in the years of these sermons at St Mary's, Oxford.",
+        focus=0.4,
+        inset=0.06,
     ),
 }
 
