@@ -397,3 +397,9 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   (`-maclaren`); `tests_import.SermonCatalogSlugTests` now fails on a repeat.
   Bonar's last sermon (*The Church's Amen*) can't be sliced: its `ends_before`
   is the book's end, and the slice ran into the first sermon.
+- 2026-11-01 — Batch 6: Maclaren ×21 (*Expositions*: Psalms, Isaiah, John,
+  Romans–Corinthians, Philippians, Mark), 359 → 380. Nine of 30 dropped, each
+  for one aside or its close: the Victorian asides are the cost of a Maclaren
+  batch (Jews, Rome, Islam, "the gipsy strain", the Turkish government). Some
+  readers put a closing comma or stop inside the quotation marks; move it
+  outside when the text runs on, so the quote stays verbatim.
