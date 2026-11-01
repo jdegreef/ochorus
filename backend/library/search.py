@@ -29,6 +29,7 @@ from django.db.models.functions import Coalesce
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
 from .fts import STORED_KINDS, config_for, search_query
+from .http_cache import MAX_AGE
 from .models import (
     Article,
     Author,
@@ -82,8 +83,11 @@ COUNT_CEILING = 200
 HL_START = "⟦"
 HL_END = "⟧"
 
-# How long a memoised answer may outlive a change ContentRevision can't see.
-MEMO_SECONDS = 10 * 60
+# How long a memoised answer may outlive a change ContentRevision can't see —
+# an edit in the Django admin, which bumps nothing. The public API's own
+# freshness promise (http_cache.MAX_AGE: an admin's change reaches readers in
+# about a minute), so a takedown is no slower to leave search than any page.
+MEMO_SECONDS = MAX_AGE
 
 
 def memoized(name: str, compute, *key):

@@ -36,6 +36,7 @@ from .languages import entry as language_entry
 from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
+    QUOTE_SOURCE_UNSERVED,
     SERMON_CARD_DEFER,
     Article,
     Author,
@@ -1872,9 +1873,9 @@ class QuotePageView(APIView):
         if writer is None:
             raise Http404("No such author.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -1932,9 +1933,9 @@ class QuoteTopicDetailView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = list(
-            Quote.objects.filter(reviewed=True, topics=t).select_related(
-                "author", "chapter__book", "sermon"
-            )
+            Quote.objects.filter(reviewed=True, topics=t)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         if not rows:
             raise Http404("No published quotes on this topic.")
@@ -1980,9 +1981,9 @@ class QuoteAuthorTopicView(APIView):
         if t is None:
             raise Http404("No such topic.")
         rows = sorted(
-            Quote.objects.filter(author=writer, reviewed=True, topics=t).select_related(
-                "chapter__book", "sermon"
-            ),
+            Quote.objects.filter(author=writer, reviewed=True, topics=t)
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED),
             key=_quote_reading_order,
         )
         if not rows:
@@ -2192,10 +2193,7 @@ def _short_quotes():
         .annotate(chars=Length("text"))
         .filter(chars__lte=FEATURED_MAX_CHARS)
         .select_related("author", "chapter__book", "sermon")
-        # The card needs titles and slugs, never the bodies they sit in.
-        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
-               "chapter__book__search_vector",
-               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+        .defer(*QUOTE_SOURCE_UNSERVED)
     )
 
 
@@ -2315,8 +2313,10 @@ class QuoteResolveView(APIView):
         # Cap the batch so a malformed client can't ask for the whole table in
         # one request; a reader's saved shelf is far under this.
         wanted = [s for s in slugs if isinstance(s, str)][:200]
-        rows = Quote.objects.filter(slug__in=wanted, reviewed=True).select_related(
-            "author", "chapter__book", "sermon"
+        rows = (
+            Quote.objects.filter(slug__in=wanted, reviewed=True)
+            .select_related("author", "chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         by_slug = {q.slug: _quote_card_payload(q) for q in rows}
         # Preserve the caller's order — favorites arrive most-recent-first, and

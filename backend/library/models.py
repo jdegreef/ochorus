@@ -387,6 +387,16 @@ class AuthorTranslation(models.Model):
 SERMON_CARD_DEFER = ("body_html", "body_text", "search_vector")
 
 
+#: What a quote's joined source rows carry that no quote card reads: the card
+#: needs titles and slugs, never the bodies they sit in (nor any search vector —
+#: select_related joins past the managers that would defer them).
+QUOTE_SOURCE_UNSERVED = (
+    "chapter__body_html", "chapter__body_text", "chapter__search_vector",
+    "chapter__book__search_vector",
+    "sermon__body_html", "sermon__body_text", "sermon__search_vector",
+)
+
+
 class SeriesManager(models.Manager):
     def get_by_natural_key(self, slug):
         return self.get(slug=slug)
@@ -764,10 +774,7 @@ class Book(models.Model):
         # ripple. Compare against the stored row first so unrelated edits
         # (covers, sort order) don't re-tokenise the whole book; on create the
         # refresh matches zero chapter rows, so it's free either way.
-        update_fields = kwargs.get("update_fields")
-        ripple = update_fields is None or not {
-            "title", "language", "author", "author_id"
-        }.isdisjoint(update_fields)
+        ripple = _touches(kwargs, ("title", "language", "author", "author_id"))
         if ripple and self.pk:
             old = (
                 Book.objects.filter(pk=self.pk)
