@@ -1,0 +1,31 @@
+[
+  {
+    "chapter": 1,
+    "title": "Very Early in the Morning",
+    "person": "Jesus",
+    "era": "c. AD 28",
+    "region": "Galilee",
+    "anchor": "Mark 1:35",
+    "scriptures": [
+      "Mark 1:32-33",
+      "Mark 1:37-38",
+      "John 5:19",
+      "Luke 5:15-16",
+      "Matthew 14:23",
+      "Luke 6:12",
+      "Luke 3:21",
+      "Psalm 5:3",
+      "Isaiah 50:4"
+    ],
+    "insights": [
+      {"theme": "Dependence", "text": "If Jesus needed to pray, so do we."},
+      {"theme": "Priority", "text": "Busyness is a reason to pray, not an excuse not to."},
+      {"theme": "Guidance", "text": "Prayer gives direction: alone with the Father we are led by God, not driven by the crowd."}
+    ],
+    "voices": [
+      {"author": "andrew-murray", "book": "ministry-of-intercession", "chapter": "In the Name of Christ"},
+      {"author": "e-m-bounds", "book": "power-through-prayer", "chapter": "Begin the Day with Prayer"}
+    ],
+    "read_more": ["power-through-prayer", "reality-of-prayer", "ministry-of-intercession"]
+  }
+]
