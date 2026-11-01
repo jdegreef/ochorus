@@ -1800,11 +1800,9 @@ class BookDetailSerializer(BookListSerializer):
     daily_plan = serializers.SerializerMethodField()
 
     def get_daily_plan(self, obj) -> str:
-        slug = DAILY_PLAN_FOR_BOOK.get(obj.slug)
-        if not slug:
-            return ""
+        slug = DAILY_PLAN_FOR_BOOK.get(obj.slug, "")
         published = Plan.objects.filter(slug=slug, language=obj.language, is_published=True)
-        return slug if published.exists() else ""
+        return slug if slug and published.exists() else ""
 
     def get_has_leader_guide(self, obj) -> bool:
         return guide_for(obj.slug, obj.language) is not None
@@ -2335,11 +2333,13 @@ def plan_chapter_index(plans, language, with_openings=False):
     as ``opening`` — the detail page's key-verse chips read it. Off for the
     shelf, which shows no chips and would only pay to ship the text.
     """
+    # Not a devotional's day: it reads its entry (plan_entry_index), never the
+    # month chapter it points into.
     pairs = {
         (d.book_slug, d.chapter_order)
         for plan in plans
         for d in plan.days.all()
-        if d.book_slug
+        if d.book_slug and not d.entry_date
     }
     if not pairs:
         return {}
@@ -2415,7 +2415,7 @@ def plan_entry_index(plans, books):
             continue
         for month, e in daily_readings.year_entries(book, version):
             index[(slug, daily_readings.format_date(month, e.day))] = {
-                "title": f"{e.label} — {e.heading}" if e.heading else e.label,
+                "title": e.title,
                 "book_title": book.title,
                 "word_count": e.words,
                 "opening": e.excerpt,
@@ -2444,9 +2444,9 @@ def _plan_reading(day, chapters, articles, entries):
     prebuilt indexes, or None when it doesn't resolve in this language. The one
     place that knows a day is a chapter, a devotional's entry or an article, so
     the card fields and the day list cannot disagree about it."""
-    if day.entry_date:
+    if day.kind == "entry":
         return entries.get((day.book_slug, day.entry_date))
-    if day.article_slug:
+    if day.kind == "article":
         a = articles.get(day.article_slug)
         return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
     c = chapters.get((day.book_slug, day.chapter_order))

@@ -153,9 +153,9 @@ def in_window(remind_at: str, local_now: datetime) -> bool:
 
 
 def _reading_title(day: PlanDay, language: str) -> str:
-    if day.entry_date:
+    if day.kind == "entry":
         return _entry_title(day, language)
-    if day.article_slug:
+    if day.kind == "article":
         article = Article.objects.filter(slug=day.article_slug, language=language).only("h1").first()
         return article.h1 if article else ""
     chapter = (
@@ -169,17 +169,17 @@ def _reading_title(day: PlanDay, language: str) -> str:
 
 
 def _entry_title(day: PlanDay, language: str) -> str:
-    """A year-long devotional day's title: its date line, and the entry's own
-    title where the book gives one ("January 1 — Making a Fresh Start")."""
+    """A year-long devotional day's title (``Entry.title``), found exactly as
+    the plan page finds it — the seeded date is always a real entry."""
     from library import daily_readings
 
     book = Book.objects.filter(slug=day.book_slug, language=language).first()
     when = daily_readings.parse_date(day.entry_date)
-    found = book and when and daily_readings.find_entry(book, *when, daily_readings.content_version())
-    if not found:
+    if book is None or when is None:
         return ""
-    entry = found[1]
-    return f"{entry.label} — {entry.heading}" if entry.heading else entry.label
+    month, d = when
+    entries = daily_readings.month_index(book, month, daily_readings.content_version())
+    return next((e.title for e in entries if e.day == d), "")
 
 
 def day_path(plan: Plan, day: PlanDay) -> str:
@@ -187,11 +187,10 @@ def day_path(plan: Plan, day: PlanDay) -> str:
     ``planDayPath``: the chapter (or article, or a devotional's day page) with
     ``?plan=&day=`` so the page shows the plan's day bar and "mark day done"."""
     query = f"?plan={plan.slug}&day={day.day}"
-    if day.entry_date:
+    if day.kind == "entry":
         # One dated entry, on the book's day page — not its whole month.
-        query = f"?d={day.entry_date}&plan={plan.slug}&day={day.day}"
-        return links.localized(f"today/{day.book_slug}/{query}", plan.language)
-    if day.article_slug:
+        return links.localized(f"today/{day.book_slug}/?d={day.entry_date}&{query[1:]}", plan.language)
+    if day.kind == "article":
         return links.localized(f"articles/{day.article_slug}/{query}", plan.language)
     return links.localized(f"books/{day.book_slug}/{day.chapter_order or 1}/{query}", plan.language)
 

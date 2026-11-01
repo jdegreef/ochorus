@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import type { DailyReading, PlanDetail } from '$lib/library-public';
 	import { planDayPath } from '$lib/editionHref';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { completePlanDay } from '$lib/planProgress.svelte';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { inputValue, isDateKey } from '$lib/dailyDate';
 	import { assetHtml } from '$lib/assetUrl';
@@ -15,7 +15,9 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import PlanDayDone from '$lib/components/PlanDayDone.svelte';
 	import PlanDayRemind from '$lib/components/PlanDayRemind.svelte';
+	import PlanDayStrip from '$lib/components/PlanDayStrip.svelte';
 
 	/**
 	 * One day of a year-long devotional: just that entry, not its whole month —
@@ -61,29 +63,27 @@
 	// counts toward the streak.
 	onMount(() => readingActivity.recordToday());
 
-	/** Mark the day done, then on to the next undone day — or back to the plan. */
 	function completeDay() {
-		if (!plan) return;
-		planProgress.markDone(plan.slug, planDay);
-		const next = planProgress.nextDay(plan.slug, plan.day_count);
-		const entry = next && plan.days.find((d) => d.day === next);
-		goto(localizeHref(entry ? planDayPath(plan.slug, entry) : `/plans/${plan.slug}`));
+		if (plan) goto(localizeHref(completePlanDay(plan, planDay)));
 	}
 
-	const crumbs = $derived(
-		plan
+	// The trail's last crumb is this page (text, not a link).
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		...(plan
 			? [
-					{ name: t('common.home'), href: '/' },
 					{ name: t('nav.plans'), href: '/plans' },
 					{ name: plan.title, href: `/plans/${plan.slug}` },
-					{ name: `${t('plans.day')} ${planDay}`, href: planDayPath(plan.slug, plan.days[planDay - 1] ?? plan.days[0]) }
+					{ name: `${t('plans.day')} ${planDay}`, href: `/plans/${plan.slug}#${planDay}` }
 				]
 			: [
-					{ name: t('common.home'), href: '/' },
 					{ name: t('nav.books'), href: '/books' },
 					{ name: book.title, href: `/books/${book.slug}` },
 					{ name: t('plans.todaysReading'), href: `/today/${book.slug}` }
-				]
+				])
+	]);
+	const eyebrow = $derived(
+		plan ? `${t('plans.day')} ${planDay}` : isToday ? t('plans.todaysReading') : book.title
 	);
 
 	function pickDate(e: Event) {
@@ -104,17 +104,7 @@
 	<Breadcrumb items={crumbs} />
 
 	{#if plan}
-		<div
-			class="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
-		>
-			<div class="min-w-0">
-				<a href={localizeHref(`/plans/${plan.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
-					{plan.title}
-				</a>
-				<span class="text-small text-muted">{t('plans.day')} {planDay} {t('plans.of')} {plan.day_count}</span>
-			</div>
-			{@render markDayDone()}
-		</div>
+		<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="mt-5" />
 	{/if}
 
 	<header class="mt-5 flex items-start gap-5">
@@ -123,7 +113,7 @@
 		</a>
 		<div class="min-w-0">
 			<p class="eyebrow mb-1 text-accent">
-				{plan ? `${t('plans.day')} ${planDay}` : isToday ? t('plans.todaysReading') : book.title}
+				{eyebrow}
 			</p>
 			<h1 class="text-h1" {lang} dir="auto">{r.label}</h1>
 			<p class="mt-1 text-muted">
@@ -153,17 +143,17 @@
 		{@const prev = planDayHref(planDay - 1)}
 		{@const next = planDayHref(planDay + 1)}
 		<nav class="mt-10 border-t border-border pt-6" aria-label={plan.title}>
-			<div class="flex flex-wrap items-center justify-between gap-3">
+			<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
 				{#if prev}
-					<a href={prev} class="btn btn-ghost btn-sm" rel="prev"><Arrow back /> {t('plans.day')} {planDay - 1}</a>
-				{:else}
-					<span></span>
+					<a href={prev} class="btn btn-ghost btn-sm justify-self-start" rel="prev"
+						><Arrow back /> {t('plans.day')} {planDay - 1}</a
+					>
 				{/if}
-				{@render markDayDone()}
+				<div class="col-start-2"><PlanDayDone slug={plan.slug} day={planDay} oncomplete={completeDay} /></div>
 				{#if next}
-					<a href={next} class="btn btn-ghost btn-sm" rel="next">{t('plans.day')} {planDay + 1} <Arrow /></a>
-				{:else}
-					<span></span>
+					<a href={next} class="btn btn-ghost btn-sm col-start-3 justify-self-end" rel="next"
+						>{t('plans.day')} {planDay + 1} <Arrow /></a
+					>
 				{/if}
 			</div>
 			<div class="mt-5 text-small">
@@ -173,7 +163,7 @@
 		<!-- The plan's daily email, as a chapter's plan day offers it. -->
 		<div class="mt-8">
 			{#key `${plan.slug}:${planDay}`}
-				<PlanDayRemind slug={plan.slug} day={planDay} dayCount={plan.day_count} otherwise={nothing} />
+				<PlanDayRemind slug={plan.slug} day={planDay} dayCount={plan.day_count} />
 			{/key}
 		</div>
 	{:else}
@@ -206,18 +196,6 @@
 		</nav>
 	{/if}
 </div>
-
-<!-- On the plan bar at the top and in the nav at the end, as the chapter
-     reader's plan day has it. -->
-{#snippet markDayDone()}
-	{#if plan && planProgress.isDone(plan.slug, planDay)}
-		<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
-	{:else}
-		<button class="btn btn-sm btn-primary" onclick={completeDay}>{t('plans.markDone')}</button>
-	{/if}
-{/snippet}
-
-{#snippet nothing()}{/snippet}
 
 <style>
 	/* A reading column, not a page of cards: the measure the reader keeps. */

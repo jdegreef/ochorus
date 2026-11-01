@@ -642,13 +642,17 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = PlanDetailSerializer
 
     def get_object(self):
-        return get_object_or_404(
-            Plan.objects.filter(is_published=True)
-            .annotate(num_days=Count("days"))
-            .prefetch_related("days"),
-            slug=self.kwargs["slug"],
-            language=_language(self.request),
-        )
+        # Once per request: retrieve() and get_serializer_context() both ask,
+        # and a year-long devotional's plan carries 366 days to prefetch.
+        if not hasattr(self, "_plan"):
+            self._plan = get_object_or_404(
+                Plan.objects.filter(is_published=True)
+                .annotate(num_days=Count("days"))
+                .prefetch_related("days"),
+                slug=self.kwargs["slug"],
+                language=_language(self.request),
+            )
+        return self._plan
 
     def get_serializer_context(self):
         """One index for all four consumers on this page.

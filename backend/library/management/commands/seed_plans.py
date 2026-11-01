@@ -124,79 +124,83 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         self._retire()
+        # Every plan this run creates sorts after every plan already on the
+        # shelf, in seed order. The seed used to number from the plans created
+        # in this run alone — 0 on a live database, where every older plan is
+        # already there — which put each new plan at the head of the shelf.
+        top = Plan.objects.aggregate(top=Max("sort_order"))["top"]
+        self._next_sort = 0 if top is None else top + 1
+        # Year-long devotionals last: a different shape of plan, and seven of
+        # them would otherwise head the shelf above the journeys.
+        created = self._seed_launch() + self._seed_curated() + self._seed_daily()
+        if not created:
+            self.stdout.write("Plans already seeded (or source books missing).")
+
+    def _create_plan(self, slug, lang, title, description, days: list[dict]) -> None:
+        """One plan row and its days (``PlanDay`` field dicts, day 1 first), as
+        one unit: a crash between the two would otherwise leave a
+        permanently-empty plan (see _reconcile_existing)."""
+        with transaction.atomic():
+            plan = Plan.objects.create(
+                slug=slug,
+                language=lang,
+                title=title,
+                description=description,
+                sort_order=self._next_sort,
+            )
+            PlanDay.objects.bulk_create(
+                [PlanDay(plan=plan, day=i + 1, **day) for i, day in enumerate(days)]
+            )
+        self._next_sort += 1
+
+    def _editions_needing(self, slug, book_slug, title, description):
+        """Each published edition of ``book_slug`` that still needs plan
+        ``slug``, with its (title, description) — an existing plan is
+        reconciled instead, and a language with no prose is reported."""
+        for book in Book.objects.filter(slug=book_slug, is_published=True):
+            prose = _prose(slug, book.language, title, description)
+            if prose is None:
+                self._report_untranslated(slug, book.language)
+                continue
+            if self._reconcile_existing(slug, book.language, *prose):
+                continue
+            yield book, *prose
+
+    def _seed_launch(self):
+        """One book's chapters, a day each (or the optional span of them)."""
         created = 0
         for slug, book_slug, title, description, *rest in LAUNCH_PLANS:
             span = rest[0] if rest else None  # (first, last) chapter order
-            for book in Book.objects.filter(slug=book_slug, is_published=True):
-                prose = _prose(slug, book.language, title, description)
-                if prose is None:
-                    self._report_untranslated(slug, book.language)
-                    continue
-                t, d = prose
-                if self._reconcile_existing(slug, book.language, t, d):
-                    continue
+            for book, t, d in self._editions_needing(slug, book_slug, title, description):
                 chapters = book.chapters.order_by("order")
                 if span:
                     chapters = chapters.filter(order__range=span)
                 orders = list(chapters.values_list("order", flat=True))
                 if not orders:
                     continue
-                # Create the plan and its days as one unit: a crash between the
-                # two would otherwise leave a permanently-empty plan (see
-                # _reconcile_existing).
-                with transaction.atomic():
-                    plan = Plan.objects.create(
-                        slug=slug,
-                        language=book.language,
-                        title=t,
-                        description=d,
-                        sort_order=created,
-                    )
-                    PlanDay.objects.bulk_create(
-                        [
-                            PlanDay(
-                                plan=plan,
-                                day=i + 1,
-                                book_slug=book_slug,
-                                chapter_order=order,
-                            )
-                            for i, order in enumerate(orders)
-                        ]
-                    )
+                self._create_plan(
+                    slug,
+                    book.language,
+                    t,
+                    d,
+                    [{"book_slug": book_slug, "chapter_order": o} for o in orders],
+                )
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(
                         f"Created plan {slug} ({book.language}) with {len(orders)} days."
                     )
                 )
-
-        created += self._seed_curated(created)
-        # Last: a year-long devotional is a different shape of plan, and seven
-        # of them would otherwise head the shelf above the journeys.
-        created += self._seed_daily()
-
-        if not created:
-            self.stdout.write("Plans already seeded (or source books missing).")
+        return created
 
     def _seed_daily(self):
-        """Create the year-long devotional plans: one per published edition,
-        a day per dated entry (``daily_readings.year_entries``), January first.
-
-        Sorted after every plan already on the shelf. The other seeds number
-        from the plans created in THIS run, which on a live database — every
-        older plan already there — is 0, and would put these at the top."""
-        sort_base = (Plan.objects.aggregate(top=Max("sort_order"))["top"] or 0) + 1
+        """The year-long devotional plans: one per published edition, a day per
+        dated entry (``daily_readings.year_entries``), January first."""
         created = 0
+        version = daily_readings.content_version()
         for slug, book_slug, title, description in DAILY_PLANS:
-            for book in Book.objects.filter(slug=book_slug, is_published=True):
-                prose = _prose(slug, book.language, title, description)
-                if prose is None:
-                    self._report_untranslated(slug, book.language)
-                    continue
-                t, d = prose
-                if self._reconcile_existing(slug, book.language, t, d):
-                    continue
-                entries = daily_readings.year_entries(book)
+            for book, t, d in self._editions_needing(slug, book_slug, title, description):
+                entries = daily_readings.year_entries(book, version)
                 if not entries:
                     self.stdout.write(
                         self.style.WARNING(
@@ -205,26 +209,20 @@ class Command(BaseCommand):
                         )
                     )
                     continue
-                with transaction.atomic():
-                    plan = Plan.objects.create(
-                        slug=slug,
-                        language=book.language,
-                        title=t,
-                        description=d,
-                        sort_order=sort_base + created,
-                    )
-                    PlanDay.objects.bulk_create(
-                        [
-                            PlanDay(
-                                plan=plan,
-                                day=i + 1,
-                                book_slug=book_slug,
-                                chapter_order=daily_readings.chapter_order(book_slug, month),
-                                entry_date=daily_readings.format_date(month, entry.day),
-                            )
-                            for i, (month, entry) in enumerate(entries)
-                        ]
-                    )
+                self._create_plan(
+                    slug,
+                    book.language,
+                    t,
+                    d,
+                    [
+                        {
+                            "book_slug": book_slug,
+                            "chapter_order": daily_readings.chapter_order(book_slug, month),
+                            "entry_date": daily_readings.format_date(month, entry.day),
+                        }
+                        for month, entry in entries
+                    ],
+                )
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(
@@ -234,7 +232,7 @@ class Command(BaseCommand):
                 )
         return created
 
-    def _seed_curated(self, sort_base):
+    def _seed_curated(self):
         """Create curated plans — several books, and articles — once per
         language that has every one of their sources published."""
         created = 0
@@ -276,17 +274,7 @@ class Command(BaseCommand):
                         )
                     )
                     continue
-                with transaction.atomic():
-                    plan = Plan.objects.create(
-                        slug=slug,
-                        language=lang,
-                        title=t,
-                        description=d,
-                        sort_order=sort_base + created,
-                    )
-                    PlanDay.objects.bulk_create(
-                        [PlanDay(plan=plan, day=i + 1, **day) for i, day in enumerate(days)]
-                    )
+                self._create_plan(slug, lang, t, d, days)
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(

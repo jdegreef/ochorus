@@ -259,6 +259,19 @@ class PlanTests(TestCase):
             [(d.day, d.chapter_order) for d in days], [(1, 2), (2, 3), (3, 4)]
         )
 
+    def test_a_new_plan_sorts_after_the_shelf_it_joins(self):
+        """On a live DB every older plan already exists, so this run creates
+        only the new one — which must not take sort_order 0 and head the shelf."""
+        Plan.objects.create(slug="older", language="en", title="Older", sort_order=40)
+        book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="newcomer", language="en", title="N"
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        launch = [("newcomer-plan", "newcomer", "N", "n")]
+        with patch("library.management.commands.seed_plans.LAUNCH_PLANS", launch):
+            call_command("seed_plans", verbosity=0)
+        self.assertGreater(Plan.objects.get(slug="newcomer-plan").sort_order, 40)
+
     def test_seed_plans_leaves_an_existing_untranslated_row_alone(self):
         """A row created before this guard keeps its prose; deleting a published
         plan is a bigger decision than a seed step makes on its own."""

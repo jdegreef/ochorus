@@ -13,11 +13,16 @@ import calendar
 import json
 from pathlib import Path
 
+from django.core.management import call_command
+from django.db import IntegrityError
 from django.test import SimpleTestCase, TestCase
+
+from emails.plan_reminders import _reading_title, day_path
 
 from . import daily_readings
 from .daily_readings import DATED_BOOKS, DatedBook, blocks, month_entries, parse_date
-from .models import Author, Book, Chapter
+from .models import Author, Book, Chapter, Plan, PlanDay
+from .plan_seed import DAILY_PLANS
 from .quote_blocks import served_block_texts
 
 BOOKS_DIR = Path(__file__).parent / "fixtures" / "content" / "books"
@@ -229,13 +234,17 @@ class DailyPlanTests(_DatedBooks, TestCase):
     PLAN = "/api/library/plans/days-of-heaven-upon-earth-year/?language=en"
 
     def seed(self):
-        from django.core.management import call_command
-
         call_command("seed_plans", verbosity=0)
 
-    def test_the_seed_makes_a_day_per_entry_january_first_sorted_last(self):
-        from .models import Plan
+    def test_every_devotional_plan_reads_a_dated_book(self):
+        self.assertEqual(sorted(b for _, b, *_ in DAILY_PLANS if b not in DATED_BOOKS), [])
 
+    def test_an_entry_date_is_never_on_an_article_day(self):
+        plan = Plan.objects.create(slug="p", language="en", title="P")
+        with self.assertRaises(IntegrityError):
+            PlanDay.objects.create(plan=plan, day=1, article_slug="a", entry_date="01-01")
+
+    def test_the_seed_makes_a_day_per_entry_january_first_sorted_last(self):
         older = Plan.objects.create(slug="older", language="en", title="Older", sort_order=40)
         self.book()
         self.seed()
@@ -246,8 +255,8 @@ class DailyPlanTests(_DatedBooks, TestCase):
             [(d.day, d.chapter_order, d.entry_date) for d in (days[0], days[58], days[59])],
             [(1, 1, "01-01"), (59, 2, "02-28"), (60, 3, "03-01")],
         )
-        # After the shelf, not ahead of it: the other seeds number from the
-        # plans created in the same run, which on a live DB is 0.
+        # After the shelf, not ahead of it: a new plan on a live DB once got
+        # the run's own count, 0.
         self.assertGreater(plan.sort_order, older.sort_order)
         self.seed()  # idempotent
         self.assertEqual(Plan.objects.filter(slug="days-of-heaven-upon-earth-year").count(), 1)
@@ -275,10 +284,6 @@ class DailyPlanTests(_DatedBooks, TestCase):
         )
 
     def test_the_reminder_email_links_the_day_page(self):
-        from emails.plan_reminders import _reading_title, day_path
-
-        from .models import Plan
-
         self.book()
         self.seed()
         plan = Plan.objects.get(slug="days-of-heaven-upon-earth-year", language="en")
