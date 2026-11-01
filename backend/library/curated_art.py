@@ -1442,6 +1442,10 @@ CURATED: dict[str, Artwork] = {
         "A town seen across the fields, its great church rising over the roofs: the gospel was to be preached first in the city that crucified Christ, \"beginning at Jerusalem\".",
         focus=0.30,
     ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
 }
 
 

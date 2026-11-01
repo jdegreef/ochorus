@@ -180,6 +180,9 @@
   "godliness": {
    "space-before-punct": 9
   },
+  "gods-way-of-peace": {
+   "orphan-close-quote": 7
+  },
   "grace-abounding": {
    "space-before-punct": 9,
    "word-fusion": 1
