@@ -117,5 +117,12 @@
   "note": [
    "Three-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», already shipped), pilgrims-progress («Thiên Lộ Lịch Trình», new this batch) and grace-abounding («Ân Điển Dư Dật cho Kẻ Đứng Đầu Các Tội Nhân», already shipped). Ships with the Level 1 books batch 5 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Spurgeon and Bunyan-testimony titles in lower case (“cửa hẹp”, “ân điển dư dật cho kẻ đứng đầu các tội nhân”) rather than quoting them, and does not name «Thiên Lộ Lịch Trình». “Khách hành hương” and “Thành Thiên Thượng” are the words the new full pilgrims-progress edition uses (the children's edition, and the family-devotions plan, say “lữ khách” / “Thành Thiên Quốc”); “the chief of sinners” = kẻ đứng đầu các tội nhân as that edition's title has it. Sentence case as the shipped vi plan titles are."
   ]
+ },
+ "grace-for-every-sinner": {
+  "title": "Con Đường Đến Với Đức Chúa Trời: Ân điển cho mọi tội nhân",
+  "description": "Một tháng với tin lành xưa nhất. Lời kêu gọi dịu dàng của Richard Baxter gửi những người chưa hoán cải, D. L. Moody về con đường đến với Đức Chúa Trời, và Tất Cả Bởi Ân Điển của Charles Spurgeon — những lời chỉ dẫn giản dị nhất về cách một tội nhân được cứu, và làm sao để biết chắc điều ấy.",
+  "note": [
+   "Three-book plan backed by the vi editions of a-call-to-the-unconverted («Lời Kêu Gọi Những Người Chưa Hoán Cải», new this batch), the-way-to-god («Con Đường Đến Với Đức Chúa Trời», new this batch) and all-of-grace («Tất Cả Bởi Ân Điển», already shipped). Ships with the Level 1 books batch 6 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Moody edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are. The description quotes Spurgeon's title verbatim, echoes Baxter's in lower case (“lời kêu gọi … gửi những người chưa hoán cải”) and Moody's as “con đường đến với Đức Chúa Trời”; “the oldest good news” = tin lành xưa nhất (lower case, the good news rather than the Protestant church name)."
+  ]
  }
 }
