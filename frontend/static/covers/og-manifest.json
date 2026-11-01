@@ -13727,7 +13727,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -14110,16 +14110,36 @@
 			]
 		},
 		"gospel-of-john": {
-			"ground": "c0abe4e9c9fe23e8d156c1622e52068878d588c06a31402830bf42aca4474a96",
+			"ground": "0019607f856c4418dab3b8e9a561fd1826162f10043718fec483d8d61576b928",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[133, 300, 467, 376],
+					[189, 371, 411, 447]
+				],
+				"subtitle": [
+					[145, 467, 455, 495],
+					[150, 495, 450, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
 		},
 		"grace-abounding": {
 			"ground": "b9a29734b5a2d4efd0ad4c60c44def4907123af14a7a74c0da07cc4a1c4d718a",
@@ -23467,7 +23487,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -28498,7 +28518,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,

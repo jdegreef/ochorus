@@ -79,6 +79,7 @@ ART_SCRIM: dict[str, float] = {
     "foxes-book-of-martyrs-teens": 0.30,
     "george-muller-of-bristol": 0.30,
     "godliness": 0.30,
+    "gospel-of-john": 0.40,
     "grace-abounding-teens": 0.50,
     "growing-in-wisdom": 0.70,
     "he-holds-my-tomorrows": 0.70,
