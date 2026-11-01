@@ -26,25 +26,18 @@ from django.db.models import (
     Exists,
     F,
     Func,
-    IntegerField,
     OuterRef,
     Q,
     Subquery,
     TextField,
     Value,
 )
-from django.db.models.functions import Coalesce, Substr
+from django.db.models.functions import Coalesce
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import (
-    PREFIX_LANGUAGES,
-    STORED_KINDS,
-    config_for,
-    search_query,
-    strip_particle,
-)
+from .fts import STORED_KINDS, config_for, positive_words, search_query
 from .http_cache import MAX_AGE
 from .models import (
     Article,
@@ -99,7 +92,7 @@ COUNT_CEILING = 200
 HL_START = "⟦"
 HL_END = "⟧"
 
-# The span of a passage a snippet is cut from (see _MatchPoint): characters
+# The span of a passage a snippet is cut from (see _Snippet): characters
 # kept before the match point, and in all. A headline is at most forty words,
 # about 250 characters; the rest is room for ts_headline to choose a denser
 # passage than the first one. Measured on the fixture, 2,400 cost no more than
@@ -435,83 +428,76 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
-class _LexemeFunc(Func):
-    """Base for SQL over the query's own lexemes in one text (see _MatchPoint).
-
-    The lexemes are to_tsvector of the reader's words, so stemmed as the index
-    stems them: "running" looks for "run", which finds "runs".
-    """
-
-    def __init__(self, text, config: str, words: str):
-        super().__init__(text, Value(config), Value(words))
-
-    def compiled(self, compiler):
-        text, config, words = (compiler.compile(e) for e in self.get_source_expressions())
-        lexemes = (
-            f"unnest(tsvector_to_array(to_tsvector({config[0]}::regconfig, {words[0]})))"
-        )
-        return text, lexemes, (*config[1], *words[1])
-
-
-class _MatchPoint(_LexemeFunc):
-    """Where in ``text`` every query word has appeared at least once, or NULL.
+class _Snippet(Func):
+    """A passage's highlighted snippet: ts_headline over a window, not the body.
 
     ts_headline's cost is parsing its whole input, and a chapter runs to tens of
     thousands of characters: twenty of them were ~120 ms of every search, for a
-    snippet of forty words. So the headline is cut from a window around this
-    point (see _search_postgres). The LATEST of the words' first occurrences,
-    not the earliest: any span satisfying the whole query ends at or after it,
-    while a window at the first word alone ("Christ" for "faith in christ")
-    can hold no such span at all. Each word is matched at the start of a word:
-    a bare strpos found "or" inside "lord".
+    snippet of forty words. So it parses SNIPPET_WINDOW characters around the
+    point where every query word has first appeared — the latest of their first
+    occurrences, since any passage satisfying the whole query ends at or after
+    it — and the whole body only where that window can't serve:
 
-    NULL where no lexeme occurs literally — a body that matched only through
-    its title or author, or a stem that isn't a prefix of its word (Spanish
-    drops accents) — and the window then falls back to the whole body.
-    ``substring(... from '^(.*?)\\m<stem>')`` reads a match's position on any
-    Postgres; regexp_instr would say it directly, but only from 15.
+    * no point: no query word occurs literally (the row matched through its
+      title or author, or a word's form is neither the typed word nor its stem);
+    * or the window doesn't itself satisfy the query (``@@``): the words met
+      once, apart, and the passage the query wants lies elsewhere.
+
+    The second test is the query's own, so it knows OR, exclusions, phrases and
+    Korean prefixes; a snippet is never cut from text the query doesn't match.
+
+    A word is looked for as its stem AND as typed, at a word start: "running"
+    finds "runs" through "run", while "holy" (stem "holi") is found as typed.
+    One scalar subquery per row, so the point is found once; Postgres postpones
+    it past the ORDER BY ... LIMIT, so only the capped rows pay for it.
     """
 
-    output_field = IntegerField()
+    output_field = TextField()
+
+    #: Where a word first starts in ``body``, as 1-based char position, else NULL.
+    #: regexp_instr from Postgres 15; before it, the length of what precedes it.
+    _AT = {
+        True: "NULLIF(regexp_instr({body}, '\\m' || {word}, 1, 1, 0, 'i'), 0)",
+        False: "length(substring(lower({body}) from '^(.*?)\\m' || {word})) + 1",
+    }
+
+    def __init__(self, body, query, config: str, words: list[str]):
+        super().__init__(body, query)
+        self.config, self.words = config, words
 
     def as_sql(self, compiler, connection, **extra):
-        text, lexemes, params = self.compiled(compiler)
-        escaped = r"regexp_replace(lexeme, '([.^$*+?()\[\]{}|\\])', '\\\1', 'g')"
-        sql = (
-            f"(SELECT max(length(substring(lower({text[0]}) from '^(.*?)\\m' || {escaped}))) + 1"
-            f" FROM {lexemes} AS lexeme)"
+        (body, body_p), (query, query_p) = (
+            compiler.compile(e) for e in self.get_source_expressions()
         )
-        return sql, (*text[1], *params)
-
-
-class _LexemeCount(_LexemeFunc):
-    """How many distinct stems the query has (a constant; see passages())."""
-
-    output_field = IntegerField()
-
-    def as_sql(self, compiler, connection, **extra):
-        _, lexemes, params = self.compiled(compiler)
-        return f"(SELECT count(*) FROM {lexemes} AS lexeme)", params
-
-
-_MARKED = re.compile(re.escape(HL_START) + "(.*?)" + re.escape(HL_END))
-
-
-def _window_words(q: str, language: str) -> str:
-    """The words a snippet window looks for: the reader's, minus exclusions.
-
-    An excluded word ("-sin") is in no matched body, so it can only send the
-    window somewhere empty; "OR" is syntax. Korean words lose a trailing
-    particle exactly as the prefix query does (fts.prefix_tsquery).
-    """
-    words = [w for w in q.split() if not w.startswith("-") and w != "OR"]
-    if language in PREFIX_LANGUAGES:
-        words = [strip_particle(w) for w in words]
-    return " ".join(words)
+        # Lexemes may hold regex metacharacters (to_tsvector keeps "e.g", "c++").
+        word = r"regexp_replace(word, '([.^$*+?()\[\]{}|\\])', '\\\1', 'g')"
+        at = self._AT[connection.pg_version >= 150000].format(body=body, word=word)
+        options = f"StartSel={HL_START}, StopSel={HL_END}, MaxWords=40, MinWords=20"
+        sql = (
+            f"(SELECT CASE WHEN to_tsvector(%s::regconfig, w.text) @@ {query}"
+            f" THEN ts_headline(%s::regconfig, w.text, {query}, %s)"
+            f" ELSE ts_headline(%s::regconfig, {body}, {query}, %s) END"
+            f" FROM (SELECT max({at}) AS at FROM ("
+            "   SELECT unnest(tsvector_to_array(to_tsvector(%s::regconfig, %s)))"
+            "   UNION SELECT unnest(%s::text[])"
+            " ) AS words(word)) AS m,"
+            f" LATERAL (SELECT substr({body}, greatest(1, m.at - {SNIPPET_BEFORE}), {SNIPPET_WINDOW}) AS text) AS w)"
+        )
+        typed = " ".join(self.words)
+        lowered = [w.lower() for w in self.words]
+        params = (
+            self.config, *query_p,                       # to_tsvector(window) @@ query
+            self.config, *query_p, options,              # window headline
+            self.config, *body_p, *query_p, options,     # whole-body headline
+            *body_p,                                     # inside {at}
+            self.config, typed, lowered,                 # the words
+            *body_p,                                     # substr(body, ...)
+        )
+        return sql, params
 
 
 def _search_postgres(ctx, qs):
-    from django.contrib.postgres.search import SearchHeadline, SearchRank
+    from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
@@ -532,57 +518,17 @@ def _search_postgres(ctx, qs):
         rows = ranked(kind)[: CAPS[kind]]
         return [(float(r.rank) * ENTITY_BOOST, builder(r, ctx)) for r in rows]
 
-    def headline(text):
-        return SearchHeadline(
-            text,
-            query,
-            config=config,
-            start_sel=HL_START,
-            stop_sel=HL_END,
-            max_words=40,
-            min_words=20,
-        )
-
-    words = _window_words(ctx.q, ctx.language)
-    point = _MatchPoint(F("body_text"), config, words)
-    # The window: SNIPPET_BEFORE characters ahead of the match point, and
-    # SNIPPET_WINDOW in all — or the whole body where there is no match point.
-    window = Coalesce(
-        Substr("body_text", point - SNIPPET_BEFORE, SNIPPET_WINDOW), F("body_text")
+    snippet = _Snippet(
+        F("body_text"), query, config, positive_words(ctx.q, ctx.language)
     )
 
     def passages(kind, builder, *tiebreak):
-        # The snippet is computed in SQL on the capped rows only (Postgres
-        # postpones it past the LIMIT), so on this path body_text is never
-        # loaded; and over a window, not the whole body (see _MatchPoint).
-        rows = list(
+        # Computed in SQL on the capped rows only, so body_text is never loaded.
+        rows = (
             ranked(kind, *tiebreak)
             .defer("body_text")
-            .annotate(
-                match_point=point,
-                stems=_LexemeCount(F("body_text"), config, words),
-                headline=headline(window),
-            )[: CAPS[kind]]
+            .annotate(headline=snippet)[: CAPS[kind]]
         )
-        # A window can still miss the span the whole body would have offered —
-        # the words met once, apart — and ts_headline then marks what it has, or
-        # nothing. Where the snippet marks fewer distinct words than the query
-        # has stems, that row gets the whole body, so no snippet is worse than
-        # an unwindowed one. (No match point: the window already WAS the body.)
-        missed = [
-            r.pk
-            for r in rows
-            if r.match_point is not None
-            and len({m.lower() for m in _MARKED.findall(r.headline)}) < r.stems
-        ]
-        if missed:
-            whole = dict(
-                qs[kind].model.objects.filter(pk__in=missed)
-                .annotate(snippet=headline("body_text"))
-                .values_list("pk", "snippet")
-            )
-            for r in rows:
-                r.headline = whole.get(r.pk, r.headline)
         return [(float(r.rank), builder(r, snippet=r.headline)) for r in rows]
 
     pairs: list[tuple[float, dict]] = []

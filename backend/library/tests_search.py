@@ -724,7 +724,7 @@ class StoredSearchVectorTests(TestCase):
 
 @skipUnless(connection.vendor == "postgresql", "SearchHeadline snippets are Postgres-only")
 class SnippetWindowTests(TestCase):
-    """Snippets are cut from a window around the match point (search._MatchPoint),
+    """Snippets are cut from a window around the match point (search._Snippet),
     not ts_headline over the whole body — and still mark every query word."""
 
     # Far past the window, so a snippet found here proves the window moved.
@@ -751,6 +751,11 @@ class SnippetWindowTests(TestCase):
         self.chapter(1, self.FILLER + "<p>He runs the race set before him.</p>")
         self.assertIn("⟦runs⟧", self.snippet("running"))
 
+    def test_a_word_whose_stem_is_not_its_prefix_is_found_as_typed(self):
+        # english stems "holy" to "holi", which never occurs in the text.
+        self.chapter(1, self.FILLER + "<p>Be ye holy, for I am holy.</p>")
+        self.assertIn("⟦holy⟧", self.snippet("holy"))
+
     def test_the_window_starts_at_a_word_not_inside_one(self):
         # "lord" occurs early inside "landlord"; the real match is far past it.
         self.chapter(1, "<p>The landlord came.</p>" + self.FILLER
@@ -772,12 +777,26 @@ class SnippetWindowTests(TestCase):
         self.assertIn("Holiness is the image", self.snippet("ryle"))
 
 
-class WindowWordsTests(SimpleTestCase):
+class PositiveWordsTests(SimpleTestCase):
+    """The words a snippet window looks for (fts.positive_words): read with the
+    same tokeniser as the query itself, so the two can't disagree."""
+
     def test_exclusions_and_or_are_not_looked_for(self):
-        self.assertEqual(search_module._window_words("joy OR peace -sin", "en"), "joy peace")
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("joy OR peace or love -sin", "en"),
+                         ["joy", "peace", "love"])
+
+    def test_punctuation_splits_words_as_the_query_does(self):
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("Spurgeon-like, faith.", "en"),
+                         ["Spurgeon", "like", "faith"])
 
     def test_korean_words_lose_a_particle_as_the_query_does(self):
-        self.assertEqual(search_module._window_words("은혜를 받는", "ko"), "은혜 받는")
+        from .fts import positive_words
+
+        self.assertEqual(positive_words("은혜를, 받는", "ko"), ["은혜", "받는"])
 
 
 class SermonBookFacetTests(TestCase):
