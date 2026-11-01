@@ -60,6 +60,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'orthodoxy-teens': 0.110,
 	'pandita-ramabai-a-life-children': 0.110,
 	'paradise-lost': 0.110,
+	'parochial-and-plain-sermons-vii': 0.110,
 	'pensees-teens': 0.110,
 	'plain-account-christian-perfection': 0.040,
 	'power-from-on-high-old-testament': 0.070,
