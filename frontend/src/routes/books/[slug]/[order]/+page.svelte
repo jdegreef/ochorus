@@ -5,7 +5,6 @@
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
-	import { planDayPath } from '$lib/editionHref';
 	import { childrensReading, splitEdition } from '$lib/edition';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
@@ -15,7 +14,9 @@
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { completePlanDay } from '$lib/planProgress.svelte';
+	import PlanDayDone from '$lib/components/PlanDayDone.svelte';
+	import PlanDayStrip from '$lib/components/PlanDayStrip.svelte';
 	import { reflectPrompt } from '$lib/journal';
 	import {
 		saveProgress,
@@ -1532,20 +1533,13 @@
 	});
 
 	/** Mark today done, then continue: next day's chapter, or back to the plan. */
-	function completePlanDay() {
+	function completeDay() {
 		if (!plan || !planDay) return;
-		planProgress.markDone(plan.slug, planDay);
 		// A plan reads its chapters out of order, so opening a day's chapter is a
 		// jump ahead; finishing the day is what says the chapter was read.
 		markReached(slug, chapter.order);
-		const next = planProgress.nextDay(plan.slug, plan.day_count);
-		const nextEntry = next && plan.days.find((d) => d.day === next);
-		if (nextEntry) {
-			// A plan followed in Modern English carries on in it.
-			goto(localizeHref(planDayPath(plan.slug, nextEntry, edition === 'modern')));
-		} else {
-			goto(localizeHref(`/plans/${plan.slug}`));
-		}
+		// A plan followed in Modern English carries on in it.
+		goto(localizeHref(completePlanDay(plan, planDay, edition === 'modern')));
 	}
 
 	function topVisibleIndex(): number {
@@ -2059,11 +2053,7 @@
 <!-- On the plan strip at the top and under the reflection at the end: in page
      mode those are pages apart, and the end is where a day is finished. -->
 {#snippet markDayDone(planSlug: string, day: number)}
-	{#if planProgress.isDone(planSlug, day)}
-		<span class="text-small font-semibold text-accent">✓ {t('plans.dayDone')}</span>
-	{:else}
-		<button class="btn btn-sm btn-primary" onclick={completePlanDay}>{t('plans.markDone')}</button>
-	{/if}
+	<PlanDayDone slug={planSlug} {day} oncomplete={completeDay} />
 {/snippet}
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
@@ -2096,19 +2086,7 @@
 		<div bind:this={leadEl}>
 			<LanguageFallbackNotice {fallback} alternates={seo.hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
-				<div
-					class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"
-				>
-					<div class="min-w-0">
-						<a href={localizeHref(`/plans/${plan.slug}`)} class="block truncate text-small font-semibold text-text hover:text-accent">
-							{plan.title}
-						</a>
-						<span class="text-small text-muted">
-							{t('plans.day')} {planDay} {t('plans.of')} {plan.day_count}
-						</span>
-					</div>
-					{@render markDayDone(plan.slug, planDay)}
-				</div>
+				<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="mb-6" />
 			{/if}
 		</div>
 
