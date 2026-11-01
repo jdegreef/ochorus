@@ -387,6 +387,16 @@ class AuthorTranslation(models.Model):
 SERMON_CARD_DEFER = ("body_html", "body_text", "search_vector")
 
 
+#: What a quote's joined source rows carry that no quote card reads: the card
+#: needs titles and slugs, never the bodies they sit in (nor any search vector —
+#: select_related joins past the managers that would defer them).
+QUOTE_SOURCE_UNSERVED = (
+    "chapter__body_html", "chapter__body_text", "chapter__search_vector",
+    "chapter__book__search_vector",
+    "sermon__body_html", "sermon__body_text", "sermon__search_vector",
+)
+
+
 class SeriesManager(models.Manager):
     def get_by_natural_key(self, slug):
         return self.get(slug=slug)
@@ -557,7 +567,40 @@ def _require_title(row, save_kwargs, field: str = "title") -> None:
     )
 
 
-class BookManager(models.Manager):
+class _DeferredVectorManager(models.Manager):
+    """Leaves ``search_vector`` out of every row unless a query asks for it.
+
+    Books, plans and articles are loaded whole all over the site — shelves,
+    cards, the prerender's thousands of requests — and their vector (~1 KB a
+    row) is read only inside search's SQL, which names the column itself and so
+    doesn't need it loaded. Deferred also means ``save()`` on a loaded row
+    writes only the loaded fields, so it can never put a stale vector back over
+    the one fts refreshed.
+
+    Each model names this its ``base_manager_name`` too, so a lazy FK load
+    (``chapter.book``, ``day.plan``) defers it as well. A ``select_related``
+    JOIN uses no manager at all: those sites say ``defer("book__search_vector")``
+    themselves.
+    """
+
+    def get_queryset(self):
+        return super().get_queryset().defer("search_vector")
+
+
+def _touches(kwargs, fields) -> bool:
+    """Whether a save() with these kwargs can change any of ``fields``."""
+    update_fields = kwargs.get("update_fields")
+    return update_fields is None or not set(fields).isdisjoint(update_fields)
+
+
+#: What each stored entity vector reads (library/fts.py) — the fields whose save
+#: must refresh it. A book's also reads its author's name (Author.save ripples).
+_BOOK_VECTOR_FIELDS = ("title", "subtitle", "description", "language", "author", "author_id")
+_PLAN_VECTOR_FIELDS = ("title", "description", "language")
+_ARTICLE_VECTOR_FIELDS = ("h1", "meta_title", "description", "language")
+
+
+class BookManager(_DeferredVectorManager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
 
@@ -594,6 +637,8 @@ class Book(models.Model):
     cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     # One line that sells the story rather than the cover ("Amy Carmichael
     # refused to make missions sound nice. This is what she actually saw in
     # India.") — an editor's line, on the teens hub's book cards. Per-language
@@ -675,6 +720,7 @@ class Book(models.Model):
     objects = BookManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "title"]
         constraints = [
             models.UniqueConstraint(
@@ -728,10 +774,7 @@ class Book(models.Model):
         # ripple. Compare against the stored row first so unrelated edits
         # (covers, sort order) don't re-tokenise the whole book; on create the
         # refresh matches zero chapter rows, so it's free either way.
-        update_fields = kwargs.get("update_fields")
-        ripple = update_fields is None or not {
-            "title", "language", "author", "author_id"
-        }.isdisjoint(update_fields)
+        ripple = _touches(kwargs, ("title", "language", "author", "author_id"))
         if ripple and self.pk:
             old = (
                 Book.objects.filter(pk=self.pk)
@@ -740,6 +783,9 @@ class Book(models.Model):
             )
             ripple = old != (self.title, self.language, self.author_id)
         super().save(*args, **kwargs)
+        # The book's OWN vector is one small row, so no comparison first.
+        if _touches(kwargs, _BOOK_VECTOR_FIELDS):
+            fts.refresh_row("book", self)
         if ripple:
             fts.refresh_book_chapters(self)
 
@@ -1015,7 +1061,7 @@ class Sermon(models.Model):
             fts.refresh_sermon(self)
 
 
-class ArticleManager(models.Manager):
+class ArticleManager(_DeferredVectorManager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
 
@@ -1053,6 +1099,8 @@ class Article(models.Model):
     # The standfirst: a short summary shown under the H1 and reused as the meta
     # description. Like Book.description, one field serves the page and the crawl.
     description = models.TextField(blank=True)
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     # The article body as cleaned, structured HTML. Carries pull-quotes and
     # internal links, so it is sanitized with the RICH (bio) profile, not the
     # narrow chapter one — see backend/CLAUDE.md on the two sanitize profiles.
@@ -1107,6 +1155,7 @@ class Article(models.Model):
     objects = ArticleManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "h1"]
         constraints = [
             models.UniqueConstraint(
@@ -1133,8 +1182,9 @@ class Article(models.Model):
         return f"{self.h1} ({self.language})"
 
     def save(self, *args, **kwargs):
-        # word_count is the only derived column (no body_text / FTS on an
+        # word_count is derived from the body (there is no body_text on an
         # article), so a scoped save() that touches body_html carries it too.
+        # search_vector reads only the titling, and is refreshed after.
         from .text import word_count
 
         _require_title(self, kwargs, "h1")
@@ -1143,9 +1193,11 @@ class Article(models.Model):
         if update_fields is not None and "body_html" in update_fields:
             kwargs["update_fields"] = list(update_fields) + ["word_count"]
         super().save(*args, **kwargs)
+        if _touches(kwargs, _ARTICLE_VECTOR_FIELDS):
+            fts.refresh_row("article", self)
 
 
-class PlanManager(models.Manager):
+class PlanManager(_DeferredVectorManager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
 
@@ -1163,6 +1215,8 @@ class Plan(models.Model):
     language = models.CharField(max_length=10, default="en")
     title = models.CharField(max_length=300)
     description = models.TextField(blank=True)
+    # Kept by save() + backfill_search_vectors (library/fts.py, migration 0207).
+    search_vector = SearchVectorField(null=True, editable=False, serialize=False)
     sort_order = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
 
@@ -1172,6 +1226,7 @@ class Plan(models.Model):
     objects = PlanManager()
 
     class Meta:
+        base_manager_name = "objects"  # see _DeferredVectorManager
         ordering = ["sort_order", "title"]
         constraints = [
             models.UniqueConstraint(
@@ -1189,6 +1244,8 @@ class Plan(models.Model):
     def save(self, *args, **kwargs):
         _require_title(self, kwargs)
         super().save(*args, **kwargs)
+        if _touches(kwargs, _PLAN_VECTOR_FIELDS):
+            fts.refresh_row("plan", self)
 
 
 class PlanDayManager(models.Manager):
