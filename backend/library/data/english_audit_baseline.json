@@ -611,6 +611,9 @@
   "the-lord-is-risen-indeed": {
    "space-before-punct": 5
   },
+  "the-lords-prayer": {
+   "orphan-close-quote": 1
+  },
   "the-love-of-the-departing-christ": {
    "space-before-punct": 6
   },

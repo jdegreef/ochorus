@@ -1379,6 +1379,10 @@ BOOKS: list[BookEntry] = [
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
               "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Thomas Watson's The Lord's Prayer (1692) — CCEL's watson/prayer: the
+    # preface and six petitions, the third part of his Body of Practical Divinity.
+    BookEntry("the-lords-prayer", "The Lord's Prayer", "thomas-watson",
+              "ccel", "watson/prayer", skip=("Title Page", "Contents"), cover_color="#3e4a3a"),
     # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
     # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
     BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",

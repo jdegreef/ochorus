@@ -37,6 +37,7 @@ TOPICS = [
             "the-spiritual-exercises",
             "spurgeon-on-prayer",
             "a-short-and-easy-method-of-prayer",
+            "the-lords-prayer",
             "lord-teach-us-to-pray-2",
             "prevailing-prayer",
             "how-to-pray",
