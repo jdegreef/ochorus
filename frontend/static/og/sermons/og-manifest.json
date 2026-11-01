@@ -62,6 +62,10 @@
 			"content": "c10658c5e8006c0b9be9841c4b54f3f51f0904da5651e8c75c2f76732b5fe44b",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"adoption": {
+			"content": "53a65d637c8b89d9cb2961b32c6379cf2911731d6c212ba4f845d5ae7a61e1cf",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"against-eutropius": {
 			"content": "487ba1c3e7c03d63f4eb65591c5a494f46e488144ced1fab73d6c29ecffc2be1",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -94,6 +98,10 @@
 			"content": "e7485370a7e8bfb9f5006cffdca3c23009fa6ad1c697624f98c134662af9cfd8",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"asking-in-christs-name": {
+			"content": "01eb411ddc146a6896140cd0c7c2831cf093e2cfe3a9f24f26d6337fb0b9e1c7",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"assurance-of-salvation": {
 			"content": "328b41c7eb0d96f8516988dc95dd1610285a55bc88d9d12bd683e34aa1a18a1a",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -112,6 +120,14 @@
 		},
 		"believers-not-ashamed": {
 			"content": "36a878ffa20e7ca3d787f0c0a16935bc020c5dacf0f6d06bc3f7f44fbe6f29ac",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"bethany-and-its-feast": {
+			"content": "497e608cb5f41b232411bb767b576b4e5848db900404e1b320f8e14c2d4b30a4",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"bethlehem-and-its-good-news": {
+			"content": "a4e156535843b85b402e763b2eed2672ff8607a641b6327c0772652cc65de826",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"blessed-adversity": {
@@ -177,6 +193,14 @@
 		"christ-the-believers-wisdom": {
 			"content": "12874ad5ea346a0df961fda731de8a1a2a5006444c534752af1a8fc41a70925b",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"christ-the-cleanser": {
+			"content": "f9ed694a2ef57070e464821d68dd036b2d568c2388c30f419dd6b0a1b2dac9ee",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"christ-the-healer-bonar": {
+			"content": "4a0da1a1c8937f6820dc203181acd7a3fa021b21b8e0399fa37c2a1ac2ec4acf",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"christian-charity": {
 			"content": "31db9e347a2122778d0280dcc2a7cc19c7a757ff5e5a1076083ba4bbcef8dbf0",
@@ -374,6 +398,10 @@
 			"content": "09246ae4ce03f3f896ba04cb5bdeb8aa838b33248f4933a3cb5d7bce4bebf9ef",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"grieve-not-the-holy-spirit": {
+			"content": "baa56462dc9df81804d3f2e757a875c599cd052ce351788339bc3bdd2bd31873",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"guard-the-fire": {
 			"content": "e860f8eac422171cded1722ea7c601945784d4000102a3a32b7f46e151fa0598",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -550,9 +578,21 @@
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"martha-and-mary": {
+			"content": "e9d72835d0776f2d62b641376a02fbcf86b29a8c7a4a42631fe412e9ac7d3b90",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"mary-of-bethany": {
 			"content": "5e71cdc6b3751ea484609f59b20aa806e68d55e8cbb664a3a966287dc0231db5",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"messiah-suffering-and-wounded-for-us": {
+			"content": "9ed5e54bdd8574f9e31a3dd4b22e21987ce730c81ac5f907fe0c4c39f551c37a",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"messiahs-easy-yoke": {
+			"content": "c06f27241c5e73acc2d0d7777ae079fc47fc5c0506ee131ef096f7faa6b35da2",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"more-than-conquerors": {
 			"content": "f510c5bf83a361399c7da3bcc010a8bfea1a48195d733440d8d22a9e4569c229",
@@ -613,6 +653,10 @@
 		"personal-responsibility": {
 			"content": "a98c891200a6026e365a8fc297941be8e4a88fe65fe84b49eb04ab89dfadf254",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"peter-on-the-waves": {
+			"content": "cc248c425f453b7c5cb187ff1c5a4af8cc33ca8e533a7f284f16110f28daa6ea",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"please-sir-save-me": {
 			"content": "e12ac6459ef591a4601f08881bf6070b5a882e2f90baa1d539713984bbe6b45d",
@@ -758,12 +802,20 @@
 			"content": "48673a3072c386762e7e62a4366b6cb28d4af97010c86c549b5aa811568d8c3c",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"thanksgiving-obtains-the-spirit": {
+			"content": "c80621741a1fa8426940c8b0136136e80372d5d25b31031ed63e2af4c933f586",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"thanksgiving-sermon-abolition-of-the-slave-trade": {
 			"content": "05f8094576dc1c743409b77fe43ee3ddb8ddc88ea5cc4062ad2fb1d64261ad8b",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-almost-christian": {
 			"content": "dcf4f69c92fcf72903946eb9aaba1cf59792b828c83123e99906a35b8420c403",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-angels-message-and-song": {
+			"content": "480aeaf9f9879bfc35ba5b66cddbf8375ddf932f5f0c8ba46a9b4d5570ca9a6a",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-appearing-of-the-grace-of-god": {
@@ -845,6 +897,10 @@
 		"the-desire-of-the-soul-in-spiritual-darkness": {
 			"content": "1b08259c4e875d85cb7ff3733eb322ccd89ae89aec8dcdc7c1043882867531e0",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-divine-banquet": {
+			"content": "3a7ef9b78b90a209b215635c6a774af2e5bdafb62acf1705ce9db5d0bbd9cdf1",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-drama-of-life-in-three-acts": {
 			"content": "c84929d9cbbafab2cb9c930b0619d9431ed3de346165db46a633b421b767c9d1",
@@ -942,9 +998,17 @@
 			"content": "c194468ed4d0ce883611f3cd71ec69062d1b2522b8938cfcfe7192050d2167aa",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"the-lord-is-risen-indeed": {
+			"content": "f97057a28e67cf30a5388f87958d2d774430c2413f47c66c1f7c77f55da354cf",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"the-lord-our-righteousness": {
 			"content": "a8b19a7caf7313f6a59a477301944906f37f36c86972c0a177cb7128b6c5d74f",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-lords-dealings-with-his-people": {
+			"content": "c222e48f0733a64400dc71103d5a9f90dad09f083eb038ef5b8fe3861cd963eb",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-love-of-christ": {
 			"content": "554aab85928a8160d8740e7b51cda1bd2a3c73f3f6f51a933ee691d9a96710db",
@@ -957,6 +1021,10 @@
 		"the-method-of-grace": {
 			"content": "f326971f04c2addff9e56f7c78299d0437ed71ddd673c046082c6e08df61b3ef",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-mortal-and-the-immortal": {
+			"content": "a6a93518b7aeb69ef8ca691cc166e5428b934ec9437a9ac61ebefbabf6c6d957",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-most-important-question": {
 			"content": "8efa261da026c6925ef3a6e78f7ee5f8c5f358cab8da652b935962121c9f8596",
@@ -1085,6 +1153,10 @@
 		"the-song-of-the-angels": {
 			"content": "9da3f599b939b6072ad9d30c4ef9a957834b01b7c0794593031f1c4fcb940fa8",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-spirit-committed-to-god": {
+			"content": "cb0f5f5a4a4f64dc0bdc5851d8d33dfa5b9e459c64289512d4f773eb4260b978",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-spirit-of-prayer": {
 			"content": "17ee09c1a557eaf91639787372b89b5fd133d9ecc43f2f14c195d548f8412915",
