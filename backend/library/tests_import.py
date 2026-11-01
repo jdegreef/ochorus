@@ -2456,3 +2456,19 @@ class ArchiveOcrTests(SimpleTestCase):
             [self.PAGE, "nothing of the sort"], "Now then we are", "To preside in", "SERMON IV."
         )
         self.assertTrue(paras[0].startswith("To preside in"))
+
+
+class SermonCatalogSlugTests(SimpleTestCase):
+    """A sermon is keyed by (slug, language), so two catalog entries sharing a
+    slug make `import_sermons` overwrite one preacher's sermon with another's —
+    batch 5's Maclaren *The Light of the World* would have replaced Lloyd-Jones's.
+    `screen_sermons` cannot see it either: it reads an existing fixture as the
+    entry's own import."""
+
+    def test_every_catalog_slug_is_unique(self):
+        from collections import Counter
+
+        from library.sermon_catalog import SERMONS
+
+        repeated = sorted(slug for slug, n in Counter(e.slug for e in SERMONS).items() if n > 1)
+        self.assertEqual(repeated, [], f"sermon slug(s) used twice in SERMONS: {repeated}")

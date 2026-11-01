@@ -222,6 +222,10 @@
 			"content": "33d8ea2fc1c11bc3891512ebae8b40c8bcd48be5e031f25ac266987327fbba42",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"christs-touch": {
+			"content": "a22ac77fbe285e31aaa659e43581d90d1bf2eddb25de556033ac1e52e161f5f7",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"come-and-welcome": {
 			"content": "8c4a77634a20e128603958fd80ba5bc6bfec1a8f3594aefe114717e8be7b46e4",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -522,6 +526,10 @@
 			"content": "f56a329636ef62d13fb86d50fa394c5ec92368018331394f4f4a2161021078c7",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"jehovah-jireh": {
+			"content": "b5a1270ee90e2eddc12d94fc6dbf547ea2d740caf4b6bdc99802e2d323603725",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"jephthah-or-the-faith-that-leads-to-faithfulness": {
 			"content": "9579c8c0e4667a5399d457261ffcb9d4656a070504b0a9294231766d05d2f085",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -533,6 +541,10 @@
 		"jesus-on-prayer": {
 			"content": "e89a9ff634995a82b4f09efcc03315e0419d8d4fd8c2e7f326350d7f93193ece",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"joy-and-peace-in-believing": {
+			"content": "048b34674718f86fbbd77162a44ac3914b7a79d2c7a059cec6540db95c4c98c8",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"justification-by-grace": {
 			"content": "dee6874492ed668860c7765f137424405a467947a8190c5f285e50a871c5c2e1",
@@ -549,6 +561,10 @@
 		"living-or-dead": {
 			"content": "d4dba771c9095904f1d84419a94a006da4b7dd3ba221331477d98d120c7a9a23",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"looking-at-the-unseen": {
+			"content": "ba7694d7e7247b05a29f82ce30fb51038fe8ecb8a060716504ad5e91a0bb6334",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"looking-to-the-hills": {
 			"content": "c62b1417829b806481290e8f45507e4d1d3a32a27942e674e35e37ca0ce8a940",
@@ -573,6 +589,10 @@
 		"making-light-of-christ": {
 			"content": "308a089a3b95a242edf63b0c5d339f72fbd58f7a711ba583bed1fe906d178c04",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"many-mansions": {
+			"content": "001fea77e4ce8eb0f7ce266d6ee076960c2c7c7d76d148bb3441ea1fcd436a92",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"marks-of-a-true-conversion": {
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
@@ -810,6 +830,10 @@
 			"content": "05f8094576dc1c743409b77fe43ee3ddb8ddc88ea5cc4062ad2fb1d64261ad8b",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"the-absent-present-christ": {
+			"content": "90e93ead4e01dc7cddae3644867e15e19d4683f44feb48527b1a94a0ff859083",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-almost-christian": {
 			"content": "dcf4f69c92fcf72903946eb9aaba1cf59792b828c83123e99906a35b8420c403",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -890,6 +914,10 @@
 			"content": "1fffbe166970dfb151e716ceadec910d12a0a3a0a4371b143c19b43ac34170fd",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-delays-of-love": {
+			"content": "ec02913b4c0dcc720dc94710f14e32589ca9257fe550cdd4dad3be2295fb26ed",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-demoniac-of-gadara": {
 			"content": "03e2676e666db7de7733d154e5942d8ff0be2a8fbe76c490b9979964ced590c4",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -954,6 +982,10 @@
 			"content": "39250c0b9a699ba89ccb8289b497ce15a80775c60c89f1dd29ab2da9a532e3bd",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-guiding-pillar": {
+			"content": "c4ea9cd348a749380420fc9f90e387313cdc9192755f63be5b8087f4399fbfc8",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-hidden-life-of-faith": {
 			"content": "f40fda89e76d35783d8db0bad89deae99bfa1b4b18a1c4a032d9dc73ad9f5c3c",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -994,9 +1026,17 @@
 			"content": "0a6111427b8d6f68c9d706e654128296561b3af38698a17469539bd780cb7522",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"the-light-of-the-world-maclaren": {
+			"content": "3accb23b0e58699555af29732c461781d19e8b3ff2d618e287ebb16046642e58",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-logic-of-missions": {
 			"content": "c194468ed4d0ce883611f3cd71ec69062d1b2522b8938cfcfe7192050d2167aa",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-looks-of-jesus": {
+			"content": "62af2a4c65488622af69ebb23f0bf9a529c08cef65458c92a836d6a99f85c9f6",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-lord-is-risen-indeed": {
 			"content": "f97057a28e67cf30a5388f87958d2d774430c2413f47c66c1f7c77f55da354cf",
@@ -1013,6 +1053,14 @@
 		"the-love-of-christ": {
 			"content": "554aab85928a8160d8740e7b51cda1bd2a3c73f3f6f51a933ee691d9a96710db",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-love-of-the-departing-christ": {
+			"content": "595853de316266f05a9f9ca6f6511fbf94ea1ec0d312f003e66ad6f6ae1e1546",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-love-that-constrains": {
+			"content": "36f8f7ddc59a3b25e437b1234f4106de81adb0067da7437c303351b824e3a3e9",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-meaning-of-the-cross": {
 			"content": "79070e0892ab3de7c212d262e88b8e58fd99bf39885d428d743b12a757070bd7",
@@ -1094,6 +1142,10 @@
 			"content": "daa26fb3232004840cba6054a8a867b2423c518bbf58f5d039e238f892c8ff02",
 			"art": "fc0cc007599bd01896f7ed6cdc044547bd05e5e1041a9c48eab052f8f33d36df"
 		},
+		"the-rest-giver": {
+			"content": "423f89e8c76aa1b6dde2321f07300f54f24261a6610fa3e45d4feded45457bef",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-resurrection-of-jesus": {
 			"content": "1d8038a312613ab36fc37ef86f055775db36a633f9c28d84c5cbf4174ef4c5c2",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -1117,6 +1169,10 @@
 		"the-scripture-way-of-salvation": {
 			"content": "f596ba2a769c57bbe61e3b0af94526c2a914f4b9383681efc9a036c0d01de3e4",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-secret-of-gladness": {
+			"content": "27335cdbc65166bb5918cb0516412d047bf4f89a7af8f37502ff8e714108afe6",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-secret-of-immortal-youth": {
 			"content": "09b9589fb8f1cdd6ab1c7a5d6b2f8a183a399cd6a51b576b3a81259b82ab99ca",
@@ -1154,6 +1210,10 @@
 			"content": "9da3f599b939b6072ad9d30c4ef9a957834b01b7c0794593031f1c4fcb940fa8",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-sources-of-hope": {
+			"content": "6dfb316e876a1fea9ccc63f0f78f1675dd1cef09538210265451fa1323e70386",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-spirit-committed-to-god": {
 			"content": "cb0f5f5a4a4f64dc0bdc5851d8d33dfa5b9e459c64289512d4f773eb4260b978",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -1165,6 +1225,10 @@
 		"the-spirit-of-prayer-simpson": {
 			"content": "2d257e3783d5e4e1ca851a029837080f794d3f5ed0dff0425e3dc84debf08d75",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"the-springing-fountain": {
+			"content": "5e9a3f259ad18c6b039f01c62956b7c8c2c8ec93627c1ed45da4d5c502aa4c37",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-story-of-the-birth-of-jesus": {
 			"content": "bec314540ec0852e9951f0d2578f69f20cad8c5ebb93de1a1db519062ab7c756",
@@ -1226,9 +1290,17 @@
 			"content": "2bfc397d2619f6f6691ff9cd8c5b9bc2d96071d723a9e778732f50dc66859d91",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"the-wearied-christ": {
+			"content": "7ac5db78eb40fcc6e35464e7dc577ee8ee7de8e9b666fc136a26f7affd480ac2",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-witness-of-the-spirit": {
 			"content": "bf935afe1fe0a22a01ed8e444a3590f5f08a94d99ebf1bc2cb1768b043d353c5",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-witness-of-the-spirit-maclaren": {
+			"content": "a51926dc2aad73cf0c0e38bd8f83032fd91e3db40a5778eeccf3bc21f1025bbf",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-worlds-need": {
 			"content": "729f64b7b7c9cdc61b6fa4684a8d0ccec82532b0ef7cae63dbb579a23b11a40a",
@@ -1321,6 +1393,10 @@
 		"what-it-costs-not-to-be-a-christian": {
 			"content": "8cc3c941145ad2b95efb13bb1250e1a367abc8f4ccc477e23729eab7962b900e",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"what-proves-gods-love": {
+			"content": "876e5cc2432c213e319ac416e50615e209d5d34a1fcce037591cfa7fe4b1f744",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"where-will-you-spend-eternity": {
 			"content": "e13160ce146a5dc33b78df3afacc850894e246178530125b7a2b27a1b2925b36",
