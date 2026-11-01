@@ -49,6 +49,7 @@ ART_SOURCES: dict[str, str] = {
     "ever-increasing-faith": "cma-154962@0.50",
     "exhortation-to-the-heathen": "met-437326@0.50",
     "expository-thoughts-on-matthew": "met-437179@0.50",
+    "faithful-with-little": "met-437079@0.55~0.07",
     "finney-memoirs": "aic-71971@0.50",
     "first-epistle-of-clement": "cma-163456@0.50",
     "first-principles-of-the-reformation": "met-439343@0.40",
