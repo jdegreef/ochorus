@@ -33,6 +33,8 @@ export const SHELL_ROUTES = [
 	'/notebook/*',
 	'/reading',
 	'/welcome',
+	'/today',
+	'/today/*',
 	'/login',
 	'/reset-password',
 	'/email/preferences/*'

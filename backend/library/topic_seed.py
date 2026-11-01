@@ -872,6 +872,7 @@ TOPIC_SERMONS = {
         "the-cry-for-revival",
         "the-praying-christ",
         "asking-in-christs-name",
+        "the-delays-of-love",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -881,6 +882,8 @@ TOPIC_SERMONS = {
         "hindering-the-holy-spirit",
         "grieve-not-the-holy-spirit",
         "thanksgiving-obtains-the-spirit",
+        "the-absent-present-christ",
+        "the-witness-of-the-spirit-maclaren",
     ],
     "deeper-life": [
         "himself",
@@ -914,6 +917,10 @@ TOPIC_SERMONS = {
         "bethany-and-its-feast",
         "the-divine-banquet",
         "martha-and-mary",
+        "the-springing-fountain",
+        "the-absent-present-christ",
+        "joy-and-peace-in-believing",
+        "the-secret-of-gladness",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -975,6 +982,14 @@ TOPIC_SERMONS = {
         "the-lords-dealings-with-his-people",
         "christ-the-healer-bonar",
         "the-mortal-and-the-immortal",
+        "the-wearied-christ",
+        "the-delays-of-love",
+        "the-love-of-the-departing-christ",
+        "many-mansions",
+        "the-sources-of-hope",
+        "christs-touch",
+        "the-looks-of-jesus",
+        "the-rest-giver",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -1019,6 +1034,11 @@ TOPIC_SERMONS = {
         "christ-the-healer-bonar",
         "peter-on-the-waves",
         "the-spirit-committed-to-god",
+        "the-light-of-the-world-maclaren",
+        "the-sources-of-hope",
+        "looking-at-the-unseen",
+        "jehovah-jireh",
+        "the-guiding-pillar",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -1065,6 +1085,10 @@ TOPIC_SERMONS = {
         "the-angels-message-and-song",
         "adoption",
         "bethlehem-and-its-good-news",
+        "the-springing-fountain",
+        "the-light-of-the-world-maclaren",
+        "what-proves-gods-love",
+        "the-rest-giver",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1083,6 +1107,7 @@ TOPIC_SERMONS = {
         "temporal-advantages",
         "religion-pleasant-to-the-religious",
         "christ-the-cleanser",
+        "the-love-that-constrains",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -1103,6 +1128,9 @@ TOPIC_SERMONS = {
         "messiah-suffering-and-wounded-for-us",
         "the-lord-is-risen-indeed",
         "the-spirit-committed-to-god",
+        "the-love-of-the-departing-christ",
+        "what-proves-gods-love",
+        "the-love-that-constrains",
     ],
     "soar-like-the-eagle": [
         "rest",
