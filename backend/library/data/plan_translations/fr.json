@@ -230,5 +230,17 @@
   "note": [
    "The title quotes the shipped fr edition faithful-with-little.fr.json verbatim («Fidèle dans les petites choses»), and the five themes reuse its part and chapter titles («Tout appartient à Dieu», «Le cœur derrière le portefeuille», «Un trésor qui dure»), so the card and the book agree. Written with the plan (Ochorus Original, 2026-10)."
   ]
+ },
+ "days-of-heaven-upon-earth-year": {
+  "title": "Une année avec Des jours du ciel sur la terre",
+  "description": "L’année de méditations quotidiennes d’A. B. Simpson : un verset et une courte méditation sur la plénitude du Christ pour chaque jour. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une ou deux minutes par jour."
+ },
+ "thoughts-for-the-quiet-hour-year": {
+  "title": "Une année de Pensées pour l’heure du recueillement",
+  "description": "Le recueil de courtes lectures de D. L. Moody pour toute l’année : un verset et quelques lignes des prédicateurs et des auteurs qu’il aimait. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une minute par jour."
+ },
+ "cheque-book-year": {
+  "title": "Une année avec Le carnet de chèques de la banque de la foi",
+  "description": "Les promesses quotidiennes de Charles Spurgeon : une promesse de Dieu pour chaque jour de l’année, avec un mot bref sur la manière de la recevoir par la foi. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une ou deux minutes par jour."
  }
 }
