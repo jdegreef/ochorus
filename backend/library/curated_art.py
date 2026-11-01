@@ -1342,6 +1342,13 @@ CURATED: dict[str, Artwork] = {
         "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
         focus=0.75,
     ),
+    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
+    "gospel-of-john": Artwork(
+        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
+        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
+        focus=0.4,
+        inset=0.03,
+    ),
 }
 
 
