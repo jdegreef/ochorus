@@ -261,6 +261,18 @@
 				495
 			]
 		},
+		"against-marcion": {
+			"ground": "6dc97c5f94c2aa88587a37718325a5076dcd3d298b65c7b28372b329d2c05ae2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
 			"style": "inscriptional",
@@ -1529,13 +1541,13 @@
 			"caps": false
 		},
 		"am/humility-2": {
-			"ground": "55400e37a034de4f151008276c3d2b297e5130066f319d911d0fb6501e1b0bb0",
+			"ground": "f0fc7d216c960c65062bfdce8455501e74e3303aa648c10e85982a1756e0e09b",
 			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -3976,6 +3988,18 @@
 				556
 			]
 		},
+		"ar/a-call-to-the-unconverted": {
+			"ground": "69719e51839779416974e4ecb99cac48b3228d82b638d4705479dce428e423a2",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/absolute-surrender": {
 			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
 			"style": "devotional",
@@ -4327,13 +4351,13 @@
 			"caps": false
 		},
 		"ar/humility-2": {
-			"ground": "96f1ad9616b3ae4ad64873abd34d029727f0941f724866641216ba1e0034f91e",
+			"ground": "fc05c52b74288e69337e1a72ac9e32aade44acd1e796f062b8626eef48169582",
 			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -6332,6 +6356,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"epistle-and-martyrdom-of-polycarp": {
+			"ground": "addf2899cc33843bea493ccb3adfb976e46b4d9ee8b3137eee2b2c370800104a",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"epistles-of-ignatius": {
 			"ground": "b259b71e9d1b30cebac05e16d3cd2658956c26a2174dbf900e8cf0667b9362e4",
 			"style": "inscriptional",
@@ -7145,13 +7181,13 @@
 			"caps": false
 		},
 		"es/faithful-with-little": {
-			"ground": "c244f341c4fa3abe7abb198181113584a0bab7b8996517985d9af3b9e2de4ab2",
+			"ground": "0dc2bd9042039541a1441b87c2048b06f48eca09a8206578ef8cd759a7544c8d",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -7472,13 +7508,13 @@
 			"caps": false
 		},
 		"es/humility-2": {
-			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
+			"ground": "30e0bd00fab4855dfb6e5141649a48237fc9f2e3dd3afc70ce698822b75ab4b5",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -9749,13 +9785,13 @@
 			]
 		},
 		"faithful-with-little": {
-			"ground": "bfa5c09bb224b297b257cff42faa6222474c0b0eba4016c9eaf100d1737cf1be",
+			"ground": "06325e69d6769868f13b8ade8f733f3712dd46e9606c95b61cd25b2d4da6088e",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -11112,13 +11148,13 @@
 			]
 		},
 		"fr/faithful-with-little": {
-			"ground": "b848a2dbaee1e0b404feb6d4599411af75dac9664f31a4c6ef9e1ebc82e5f9b2",
+			"ground": "ab8304f32e8e4c4aaa585e432c71e2b88acd909f8bc0ed3420672c6a1a3e5ff3",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -11497,13 +11533,13 @@
 			]
 		},
 		"fr/humility-2": {
-			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
+			"ground": "c2a89289e151be7a92be1fc9a6151d15243aca36235822286787ae0519452820",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -14474,13 +14510,13 @@
 			"caps": false
 		},
 		"hi/humility-2": {
-			"ground": "929c516319eb3d18570bfabb3230d1de3bac5cdc736d7710508a71ccd9866a98",
+			"ground": "d4d259a8a6b5d637d9d627b3fea3a95f73dde43ae1dbc0abe8c9523976ced770",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -15478,6 +15514,18 @@
 				486
 			]
 		},
+		"homilies-on-the-first-epistle-of-john": {
+			"ground": "4acc65defdc5e0bda7881ab9bbc3434b90117a4314a2a7576bc64f83208e4f15",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
@@ -15575,13 +15623,13 @@
 			]
 		},
 		"humility-2": {
-			"ground": "a93fddc9141aa93c2176d7edc9cb6c0874a9cc09ee8228a4a5b5630e6ab0a6c9",
+			"ground": "2ac7437384e3292ba41af7f424ef59f8d897a47c0c2da0652cfa862cfe4b4def",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -17635,13 +17683,13 @@
 			"caps": false
 		},
 		"ko/humility-2": {
-			"ground": "d8835e96aba3a1db15f51ed6d28c814c12f9b5a10f24de969237d0b25f8a306f",
+			"ground": "f7a2b0e1da2aa9d0e5f8b5ef70d2a3948de397905a50f6102b7a6299142ab31c",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
 			"fonts": "0f43f4330a4d16de77031be642cbf9cc7786fa32bff66752c242b3368dd4b680",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -18641,6 +18689,18 @@
 				529
 			]
 		},
+		"letters-of-jerome": {
+			"ground": "15ba87245003619b2ba9703121c3554266fe29412db0d047bd2b92fb0ccb4cd8",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
@@ -19111,13 +19171,13 @@
 			"caps": false
 		},
 		"lg/humility-2": {
-			"ground": "1a1c2e056e560e73fedf4b24232917e415c2de63e0817bb155249654ca1cff5f",
+			"ground": "e9f459f7d8a34e63e8e7103295e889c4944b2502bc3bfd8386001a2605088e67",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -21014,6 +21074,18 @@
 				492
 			]
 		},
+		"parochial-and-plain-sermons-vii": {
+			"ground": "effd4d1319f0cb4434dc7b7c38ee96a50ad0129c2627d6ba45be0c8083ae122d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
 			"style": "press",
@@ -21605,6 +21677,70 @@
 				550
 			]
 		},
+		"pt/brave-for-god-3": {
+			"ground": "4dcecd6314ee0d6931101d248194b71030b02166fc86574e1ab603ff9aae8a18",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 257, 310, 301],
+					[121, 332, 479, 407],
+					[99, 393, 501, 468]
+				],
+				"subtitle": [
+					[56, 522, 544, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
+		"pt/brave-for-god-4": {
+			"ground": "57695f4b3165cb01561b65c8b6730b922a991b1c5eb646eee7a346f2b691fa5b",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 257, 311, 301],
+					[121, 332, 479, 407],
+					[62, 393, 538, 468]
+				],
+				"subtitle": [
+					[56, 522, 544, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
 		"pt/c-s-lewis-a-life-children": {
 			"ground": "bd564f6c4c15a1ed6fbb725bead149e6414e40f602bd9c5a86d755a5dbb23197",
 			"style": "young",
@@ -21799,13 +21935,13 @@
 			]
 		},
 		"pt/faithful-with-little": {
-			"ground": "401d441747f399d494b3573f6cbf70ef94e40651bb307d243596a25419e25c3d",
+			"ground": "22f4b9fbfafa5378b41e834d92b6ba084709670296a3d2d04c9fae2b135e5d24",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -22027,13 +22163,13 @@
 			"caps": false
 		},
 		"pt/humility-2": {
-			"ground": "e8a405fd835e0b2f3f38ca51a89653fda4f51abea0b4f9f7820c63e2e5ea256b",
+			"ground": "d4c1dcb8106b1b8773d7e6a574ed496983908a05c673d7d6ff007ff1e9fc9be6",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -23679,6 +23815,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"refutation-of-all-heresies": {
+			"ground": "c9f39e184f830d40652fbd3ac887237bf76eae71c79f89c4eddb75bf550b29ac",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
 			"style": "enlightenment",
@@ -24930,13 +25078,13 @@
 			]
 		},
 		"sw/faithful-with-little": {
-			"ground": "b3d07b3dd5b1bd09ee784dca0c03643c42510446c05cdd264b64bda9d6af502b",
+			"ground": "52287c62c7ca4082d93b73982497f90b242dcbedb24ffe7702403e721ce0e543",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -25107,13 +25255,13 @@
 			"caps": false
 		},
 		"sw/humility-2": {
-			"ground": "44c2426eaac73697f27e36b55f5fa883cbc4a3b5259d4abfd44c13aa6bca69e1",
+			"ground": "e7f751b43aeb0f7b23856bfa4b613356fb6d2f815da0789adaa7a14ee23c880c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -26466,6 +26614,18 @@
 				556
 			]
 		},
+		"table-talk": {
+			"ground": "9388a5d65596edbec4897d10bb1427ca2dbb3f1f814918487e2935a87939000b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
 			"style": "revival",
@@ -27594,6 +27754,18 @@
 				515
 			]
 		},
+		"the-instructor": {
+			"ground": "1424ffb9b630c573bca497a3afc00921a61261d1ea79ae5dcdd88f1ae32d84ec",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",
@@ -28022,6 +28194,18 @@
 				515
 			]
 		},
+		"the-shepherd-of-hermas": {
+			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
 			"style": "revival",
@@ -28349,6 +28533,18 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04,
+			"caps": false
+		},
+		"to-autolycus": {
+			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
@@ -28722,13 +28918,13 @@
 			]
 		},
 		"uk/humility-2": {
-			"ground": "3776c476b16e83499be0f93a07195446f5eaf5ad73de3efe6663a813d4c5d951",
+			"ground": "74d9e5e5a0f277caeb6300e7abee6317fd48e4a00336997bf33e72e6fa2c8ae4",
 			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -29880,13 +30076,13 @@
 			"caps": false
 		},
 		"vi/humility-2": {
-			"ground": "7f9f67a0f3602c9625ff98442e4bf946497fc6bb75d52d17d5ca0e3021943a7e",
+			"ground": "98494bd775f7ee552b0f41dae74dd02be3a9914ef7e735aeaa6380eda636e022",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
