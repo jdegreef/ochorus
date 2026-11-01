@@ -26517,6 +26517,18 @@
 				484
 			]
 		},
+		"sw/on-the-incarnation": {
+			"ground": "3cf94e9a87a70660ba11a86ad14c323b3eaf4f98c9fed27a56cc34c4797fe260",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/pandita-ramabai-a-life-children": {
 			"ground": "082a0ae07be505929fd1a78b8c106405d703880cf2dbcade8ceacc7b33ba9928",
 			"style": "young",
