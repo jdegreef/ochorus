@@ -6176,16 +6176,35 @@
 			]
 		},
 		"diary-of-an-old-soul": {
-			"ground": "0df89225d1f77fef63c6f3df78a6ae2510abf5841c6b571f6417f47d2fbc2b2b",
+			"ground": "c054a99972593dd55af24ed0e5ddbf045651bbf1e8f74b0ee79935e9a73c8139",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/indigo",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[126, 299, 474, 381],
+					[138, 370, 462, 452]
+				],
+				"subtitle": [
+					[193, 525, 407, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
 		},
 		"divine-healing": {
 			"ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -12235,16 +12254,31 @@
 			"caps": false
 		},
 		"fr/orthodoxy": {
-			"ground": "0454263061f827c9b1d1c60b2d68b63cda467c877886c70796e18949cef4b3b9",
+			"ground": "7bf559f5f20acbc58bc609d10c8bc3fc2a472fd0bfa093b47378275be55d8800",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[110, 348, 491, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
 		},
 		"fr/orthodoxy-teens": {
 			"ground": "533f7d5df2d8673b3ca88fadd11cd0abd8e80ca5964c8a16ff869535d5749dff",
@@ -14254,16 +14288,31 @@
 			]
 		},
 		"heretics": {
-			"ground": "3e0e1ab96d54649afe5b436ff2c3ca7434c404783bf9bd429ac9f7a1b6193d0b",
+			"ground": "bb100dfb955fdd9c3b9020c6bd510801cc8273da01ea627af6368e87049d87d9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[142, 342, 458, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
 		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
@@ -17940,16 +17989,31 @@
 			"caps": false
 		},
 		"ko/orthodoxy": {
-			"ground": "7a0bd773803080ea25086db548eb4ac7e3081b656e74e814a922852579dd77ec",
+			"ground": "0631e705745fb5a43b30716568aee615e79b9574365a853b85895de00c13c729",
 			"style": "revival",
 			"volume": null,
 			"script": "korean",
 			"fonts": "f647c1f70f76cc4716d26b296a803564369f3ef2fe6efb90c21d83530c070253",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[220, 342, 380, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
 		},
 		"ko/pensees": {
 			"ground": "75e48bed8ad5d6652911436bd6cf9b2310bbac88fe6dd7ed536d6f02516a6b50",
@@ -20925,16 +20989,31 @@
 			"caps": false
 		},
 		"orthodoxy": {
-			"ground": "5cff449ccd26243ef1e6804b35d5b3309637b47ff8f22c6dbae11dfb6395939c",
+			"ground": "39abaab47d525f963d442010561682d8df695d7d8cebe3429ba5c9548cb8e7da",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[97, 342, 503, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
 		},
 		"orthodoxy-teens": {
 			"ground": "180cc4cb60b5da3c10c91fd835fea3436eb83f19b4cba565caa82ea06a11b9e5",
@@ -21173,16 +21252,34 @@
 			]
 		},
 		"phantastes": {
-			"ground": "9500f7e0a5e17a0543cf815f1f1b86a964d0cac00a73dfb29a79ed674c91b084",
+			"ground": "227300d76e8457254cb7cfa01abeebfacb93cf11ac2fa4b6269cadd84ad981ef",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/indigo",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[119, 327, 481, 424]
+				],
+				"subtitle": [
+					[57, 496, 543, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
 		},
 		"pilgrims-progress": {
 			"ground": "8127b1cc84e2573af44c41f4f7dfbf76f7e9ee51ea8beab21a3883579fd6e5a8",
@@ -27543,16 +27640,32 @@
 			]
 		},
 		"the-everlasting-man": {
-			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
+			"ground": "69ae96cf3dd0452a7373a7e988d6f405032f7c7b44314a9ee5b132653fc6d72d",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[81, 321, 519, 403],
+					[238, 391, 362, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"the-first-apology": {
 			"ground": "a660360d61060282bcf612933c457ba72a91bfbcc4fc5ddfa14de6c5b4a3d3e8",
@@ -29817,16 +29930,35 @@
 			"caps": false
 		},
 		"unspoken-sermons": {
-			"ground": "cd64a18ced62a34545b48c8ee02ef1736d85fb8b99d97fbdb584cb56a4834fc8",
+			"ground": "f19a2a32b7a282a30cb63242fec90fa38d5a22a2631cf2eb052c5270869b6748",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/indigo",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[135, 285, 465, 382],
+					[152, 369, 448, 466]
+				],
+				"subtitle": [
+					[188, 538, 412, 559]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				236,
+				559
+			]
 		},
 		"vi/a-retrospect": {
 			"ground": "b5be54d822cb3a6c0bb246b9c27f3d51cb88bb698ec4c9f75adfd0c1540ddf56",
@@ -30536,16 +30668,31 @@
 			"caps": false
 		},
 		"vi/orthodoxy": {
-			"ground": "350962ea4556e078ff49f10473bb6cf67af601ab1bea36875f448768e7e76eda",
+			"ground": "c64239f03b47d9cf2c0bc4ebe935328a6022ed2bf5f6aef28a3c0d50b67a646d",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "fade/rust",
-			"bar": 0.11,
-			"caps": false
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[84, 348, 516, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
 		},
 		"vi/pensees": {
 			"ground": "c9003425b81506259703a757f4613f56df7c0e035019be04f0e96b56e8dea1db",

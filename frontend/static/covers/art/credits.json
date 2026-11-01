@@ -179,6 +179,12 @@
 		"year": "1629",
 		"credit": "Pieter de Molijn, “Landscape with a Cottage” (1629). The Metropolitan Museum of Art, Open Access."
 	},
+	"diary-of-an-old-soul": {
+		"artist": "Georges de La Tour",
+		"title": "The Penitent Magdalen",
+		"year": "ca. 1640",
+		"credit": "Georges de La Tour, “The Penitent Magdalen” (ca. 1640). The Metropolitan Museum of Art, Open Access."
+	},
 	"divine-healing": {
 		"artist": "Théodore Rousseau",
 		"title": "A River in a Meadow",
@@ -304,6 +310,12 @@
 		"title": "Wheat Fields",
 		"year": "ca. 1670",
 		"credit": "Jacob van Ruisdael, “Wheat Fields” (ca. 1670). The Metropolitan Museum of Art, Open Access."
+	},
+	"heretics": {
+		"artist": "Gerrit Dou",
+		"title": "An Evening School",
+		"year": "ca. 1655–57",
+		"credit": "Gerrit Dou, “An Evening School” (ca. 1655–57). The Metropolitan Museum of Art, Open Access."
 	},
 	"holiness": {
 		"artist": "Richard Wilson",
@@ -587,6 +599,12 @@
 		"year": "1803",
 		"credit": "Philipp Hackert, “View of the Gulf of Pozzuoli from Solfatara” (1803). The Cleveland Museum of Art, CC0."
 	},
+	"orthodoxy": {
+		"artist": "Claude Monet",
+		"title": "Low Tide at Pourville, near Dieppe, 1882",
+		"year": "1882",
+		"credit": "Claude Monet, “Low Tide at Pourville, near Dieppe, 1882” (1882). The Cleveland Museum of Art, CC0."
+	},
 	"our-daily-walk": {
 		"artist": "Jules Dupré",
 		"title": "On the Road",
@@ -604,6 +622,12 @@
 		"title": "Nocturne: Blue and Gold—Southampton Water",
 		"year": "1872",
 		"credit": "James McNeill Whistler, “Nocturne: Blue and Gold—Southampton Water” (1872). The Art Institute of Chicago, CC0."
+	},
+	"phantastes": {
+		"artist": "Georges Seurat",
+		"title": "The Forest at Pontaubert",
+		"year": "1881",
+		"credit": "Georges Seurat, “The Forest at Pontaubert” (1881). The Metropolitan Museum of Art, Open Access."
 	},
 	"pilgrims-progress": {
 		"artist": "Henri-Joseph Harpignies",
@@ -863,6 +887,12 @@
 		"year": "1826",
 		"credit": "Richard Parkes Bonington, “The Doge's Palace, Venice” (1826). The Cleveland Museum of Art, CC0."
 	},
+	"the-everlasting-man": {
+		"artist": "El Greco (Domenikos Theotokopoulos)",
+		"title": "The Adoration of the Shepherds",
+		"year": "ca. 1605–10",
+		"credit": "El Greco (Domenikos Theotokopoulos), “The Adoration of the Shepherds” (ca. 1605–10). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-first-apology": {
 		"artist": "Claude-Joseph Vernet",
 		"title": "The Waterfalls at Tivoli",
@@ -1072,6 +1102,12 @@
 		"title": "Apple Blossoms",
 		"year": "1873",
 		"credit": "Charles-François Daubigny, “Apple Blossoms” (1873). The Metropolitan Museum of Art, Open Access."
+	},
+	"unspoken-sermons": {
+		"artist": "Philips Koninck",
+		"title": "Wide River Landscape",
+		"year": "ca. 1648–49",
+		"credit": "Philips Koninck, “Wide River Landscape” (ca. 1648–49). The Metropolitan Museum of Art, Open Access."
 	},
 	"waiting-on-god": {
 		"artist": "Simon de Vlieger",
