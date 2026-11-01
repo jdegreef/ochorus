@@ -22,13 +22,22 @@ import re
 from contextlib import contextmanager, nullcontext
 
 from django.db import connection, transaction
-from django.db.models import Exists, F, OuterRef, Q, Subquery, TextField, Value
+from django.db.models import (
+    Exists,
+    F,
+    Func,
+    OuterRef,
+    Q,
+    Subquery,
+    TextField,
+    Value,
+)
 from django.db.models.functions import Coalesce
 
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import STORED_KINDS, config_for, search_query
+from .fts import STORED_KINDS, config_for, positive_words, search_query
 from .http_cache import MAX_AGE
 from .models import (
     Article,
@@ -82,6 +91,14 @@ COUNT_CEILING = 200
 
 HL_START = "⟦"
 HL_END = "⟧"
+
+# The span of a passage a snippet is cut from (see _Snippet): characters
+# kept before the match point, and in all. A headline is at most forty words,
+# about 250 characters; the rest is room for ts_headline to choose a denser
+# passage than the first one. Measured on the fixture, 2,400 cost no more than
+# 1,200 and left fewer snippets differing from the whole-body choice.
+SNIPPET_BEFORE = 800
+SNIPPET_WINDOW = 2400
 
 # How long a memoised answer may outlive a change ContentRevision can't see —
 # an edit in the Django admin, which bumps nothing. The public API's own
@@ -411,8 +428,87 @@ class _Ctx:
 # --- Postgres -----------------------------------------------------------------
 
 
+class _Snippet(Func):
+    """A passage's highlighted snippet: ts_headline over a window, not the body.
+
+    ts_headline's cost is parsing its whole input, and a chapter runs to tens of
+    thousands of characters: twenty of them were ~120 ms of every search, for a
+    snippet of forty words. So it parses SNIPPET_WINDOW characters around the
+    point where every query word has first appeared — the latest of their first
+    occurrences, since any passage satisfying the whole query ends at or after
+    it — and the whole body only where that window can't serve:
+
+    * no point: no query word occurs literally (the row matched through its
+      title or author, or a word's form is neither the typed word nor its stem);
+    * or the window doesn't itself satisfy the query (``@@``): the words met
+      once, apart, and the passage the query wants lies elsewhere.
+
+    The second test is the query's own, so it knows OR, exclusions, phrases and
+    Korean prefixes; a snippet is never cut from text the query doesn't match.
+
+    A word is looked for as its stem AND as typed, at a word start: "running"
+    finds "runs" through "run", while "holy" (stem "holi") is found as typed.
+    The window is trimmed to whole words at both edges.
+    One scalar subquery per row, so the point is found once; Postgres postpones
+    it past the ORDER BY ... LIMIT, so only the capped rows pay for it.
+    """
+
+    output_field = TextField()
+
+    #: Where a word first starts in ``body``, as 1-based char position, else NULL.
+    #: regexp_instr from Postgres 15; before it, the length of what precedes it.
+    _AT = {
+        True: "NULLIF(regexp_instr({body}, '\\m' || {word}, 1, 1, 0, 'i'), 0)",
+        False: "length(substring(lower({body}) from '^(.*?)\\m' || {word})) + 1",
+    }
+
+    def __init__(self, body, query, config: str, words: list[str]):
+        super().__init__(body, query)
+        self.config, self.words = config, words
+
+    def as_sql(self, compiler, connection, **extra):
+        (body, body_p), (query, query_p) = (
+            compiler.compile(e) for e in self.get_source_expressions()
+        )
+        # Lexemes may hold regex metacharacters (to_tsvector keeps "e.g", "c++").
+        word = r"regexp_replace(word, '([.^$*+?()\[\]{}|\\])', '\\\1', 'g')"
+        at = self._AT[connection.pg_version >= 150000].format(body=body, word=word)
+        options = f"StartSel={HL_START}, StopSel={HL_END}, MaxWords=40, MinWords=20"
+        before, width = SNIPPET_BEFORE, SNIPPET_WINDOW
+        sql = (
+            f"(SELECT CASE WHEN to_tsvector(%s::regconfig, w.text) @@ {query}"
+            f" THEN ts_headline(%s::regconfig, w.text, {query}, %s)"
+            f" ELSE ts_headline(%s::regconfig, {body}, {query}, %s) END"
+            # The point: each typed word's EARLIEST form (stem or as typed),
+            # then the latest of those — a late "holiness" must not move the
+            # window past an early "holy".
+            f" FROM (SELECT max(first) AS at FROM ("
+            f"   SELECT min({at}) AS first FROM unnest(%s::text[]) AS typed(given),"
+            "   LATERAL (SELECT unnest(tsvector_to_array(to_tsvector(%s::regconfig, typed.given)))"
+            "            UNION SELECT lower(typed.given)) AS forms(word)"
+            "   GROUP BY typed.given) AS per_word) AS m,"
+            f" LATERAL (SELECT greatest(1, m.at - {before}) AS start,"
+            f"          substr({body}, greatest(1, m.at - {before}), {width}) AS raw) AS r,"
+            # Whole words only: a cut word at either edge would show as a
+            # fragment ("ndlord came"), or as a false match ("faith" of
+            # "faithfulness") that the @@ test would believe.
+            " LATERAL (SELECT CASE WHEN length(r.raw) < "
+            f"{width} THEN t.text ELSE regexp_replace(t.text, '\\s+\\S*$', '') END AS text"
+            "          FROM (SELECT CASE WHEN r.start > 1"
+            "                THEN regexp_replace(r.raw, '^\\S*\\s+', '') ELSE r.raw END AS text) AS t) AS w)"
+        )
+        params = (
+            self.config, *query_p,                       # to_tsvector(window) @@ query
+            self.config, *query_p, options,              # window headline
+            self.config, *body_p, *query_p, options,     # whole-body headline
+            *body_p, list(self.words), self.config,      # the point
+            *body_p,                                     # the window
+        )
+        return sql, params
+
+
 def _search_postgres(ctx, qs):
-    from django.contrib.postgres.search import SearchHeadline, SearchRank
+    from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
     query = search_query(ctx.q, ctx.language)
@@ -433,23 +529,16 @@ def _search_postgres(ctx, qs):
         rows = ranked(kind)[: CAPS[kind]]
         return [(float(r.rank) * ENTITY_BOOST, builder(r, ctx)) for r in rows]
 
+    snippet = _Snippet(
+        F("body_text"), query, config, positive_words(ctx.q, ctx.language)
+    )
+
     def passages(kind, builder, *tiebreak):
-        # The snippet is SearchHeadline over body_text, computed in SQL on the
-        # capped rows only — so on this path body_text is never loaded.
+        # Computed in SQL on the capped rows only, so body_text is never loaded.
         rows = (
             ranked(kind, *tiebreak)
             .defer("body_text")
-            .annotate(
-                headline=SearchHeadline(
-                    "body_text",
-                    query,
-                    config=config,
-                    start_sel=HL_START,
-                    stop_sel=HL_END,
-                    max_words=40,
-                    min_words=20,
-                )
-            )[: CAPS[kind]]
+            .annotate(headline=snippet)[: CAPS[kind]]
         )
         return [(float(r.rank), builder(r, snippet=r.headline)) for r in rows]
 
