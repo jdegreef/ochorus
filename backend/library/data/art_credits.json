@@ -17,6 +17,12 @@
 		"year": "ca. 1670",
 		"credit": "Meyndert Hobbema, “Woodland Road” (ca. 1670). The Metropolitan Museum of Art, Open Access."
 	},
+	"a-practical-view-of-christianity": {
+		"artist": "Samuel Scott",
+		"title": "The Building of Westminster Bridge",
+		"year": "",
+		"credit": "Samuel Scott, “The Building of Westminster Bridge” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"a-retrospect": {
 		"artist": "Chen Hongshou",
 		"title": "Paintings after Ancient Masters: Daoist and Crane in Autumn Landscape",
@@ -305,6 +311,12 @@
 		"year": "ca. 1874",
 		"credit": "Jean-François Millet, “Haystacks: Autumn” (ca. 1874). The Metropolitan Museum of Art, Open Access."
 	},
+	"gods-way-of-peace": {
+		"artist": "Johan Thomas Lundbye",
+		"title": "An Evening beside Lake Arresø",
+		"year": "ca. 1837",
+		"credit": "Johan Thomas Lundbye, “An Evening beside Lake Arresø” (ca. 1837). The Metropolitan Museum of Art, Open Access."
+	},
 	"gospel-of-john": {
 		"artist": "Salomon van Ruysdael",
 		"title": "Fishing Boats on a River",
@@ -491,6 +503,12 @@
 		"year": "1837",
 		"credit": "Antoine-Alphonse Montfort, “Cedars of Lebanon” (1837). The Metropolitan Museum of Art, Open Access."
 	},
+	"letters-of-samuel-rutherford": {
+		"artist": "William Bradford",
+		"title": "Labrador Coast",
+		"year": "c. 1860",
+		"credit": "William Bradford, “Labrador Coast” (c. 1860). The Cleveland Museum of Art, CC0."
+	},
 	"life-and-diary-of-david-brainerd": {
 		"artist": "Worthington Whittredge",
 		"title": "The Brook in the Woods",
@@ -569,6 +587,12 @@
 		"year": "probably 1783",
 		"credit": "Thomas Gainsborough, “Wooded Upland Landscape” (probably 1783). The Metropolitan Museum of Art, Open Access."
 	},
+	"old-testament-types-and-teachings": {
+		"artist": "Samuel Colman",
+		"title": "The Hill of the Alhambra, Granada",
+		"year": "1865",
+		"credit": "Samuel Colman, “The Hill of the Alhambra, Granada” (1865). The Metropolitan Museum of Art, Open Access."
+	},
 	"on-christian-doctrine": {
 		"artist": "Hubert Robert",
 		"title": "The Portico of a Country Mansion",
@@ -634,6 +658,12 @@
 		"title": "Charity",
 		"year": "",
 		"credit": "Raja Ravi Varma, “Charity” (). Wikimedia Commons, public domain."
+	},
+	"parochial-and-plain-sermons-vii": {
+		"artist": "Johan Christian Dahl",
+		"title": "Mother and Child by the Sea",
+		"year": "1830",
+		"credit": "Johan Christian Dahl, “Mother and Child by the Sea” (1830). The Metropolitan Museum of Art, Open Access."
 	},
 	"pensees": {
 		"artist": "James McNeill Whistler",
@@ -839,6 +869,12 @@
 		"year": "c. 1665",
 		"credit": "Meindert Hobbema, “The Watermill with the Great Red Roof” (c. 1665). The Art Institute of Chicago, CC0."
 	},
+	"table-talk": {
+		"artist": "Bernardo Bellotto",
+		"title": "Pirna: The Obertor from the South",
+		"year": "mid-1750s",
+		"credit": "Bernardo Bellotto, “Pirna: The Obertor from the South” (mid-1750s). The Metropolitan Museum of Art, Open Access."
+	},
 	"ten-commandments": {
 		"artist": "John Ruskin",
 		"title": "The Valley of Lauterbrunnen, Switzerland",
@@ -857,6 +893,18 @@
 		"year": "c. 1782–84",
 		"credit": "Pierre Henri de Valenciennes, “View of Rome” (c. 1782–84). The Cleveland Museum of Art, CC0."
 	},
+	"the-art-of-divine-contentment": {
+		"artist": "Meindert Hobbema",
+		"title": "A Cottage in the Woods",
+		"year": "c. 1662",
+		"credit": "Meindert Hobbema, “A Cottage in the Woods” (c. 1662). The Cleveland Museum of Art, CC0."
+	},
+	"the-beatitudes": {
+		"artist": "Auguste Renoir",
+		"title": "Hills around the Bay of Moulin Huet, Guernsey",
+		"year": "1883",
+		"credit": "Auguste Renoir, “Hills around the Bay of Moulin Huet, Guernsey” (1883). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-book-of-pastoral-rule": {
 		"artist": "Anton Mauve",
 		"title": "The Return to the Fold",
@@ -868,6 +916,12 @@
 		"title": "Marshland",
 		"year": "1860s-1870s",
 		"credit": "Jules Dupré, “Marshland” (1860s-1870s). The Cleveland Museum of Art, CC0."
+	},
+	"the-christians-great-interest": {
+		"artist": "James M. Hart",
+		"title": "Morning in New England",
+		"year": "1873",
+		"credit": "James M. Hart, “Morning in New England” (1873). The Cleveland Museum of Art, CC0."
 	},
 	"the-city-of-god": {
 		"artist": "John Martin",
@@ -881,11 +935,23 @@
 		"year": "ca. 1810–20",
 		"credit": "François Marius Granet, “Ponte San Rocco and Waterfalls, Tivoli” (ca. 1810–20). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-crook-in-the-lot": {
+		"artist": "Pierre Jean Boquet",
+		"title": "Pollard Willow",
+		"year": "after 1804",
+		"credit": "Pierre Jean Boquet, “Pollard Willow” (after 1804). The Cleveland Museum of Art, CC0."
+	},
 	"the-death-of-death-in-the-death-of-christ": {
 		"artist": "Peter Paul Rubens",
 		"title": "A Forest at Dawn with a Deer Hunt",
 		"year": "ca. 1635",
 		"credit": "Peter Paul Rubens, “A Forest at Dawn with a Deer Hunt” (ca. 1635). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-deeper-christian-life": {
+		"artist": "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)",
+		"title": "Hudson River Scene",
+		"year": "1830–50",
+		"credit": "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889), “Hudson River Scene” (1830–50). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-dialogue-of-catherine-of-siena": {
 		"artist": "Simon Denis",
@@ -995,6 +1061,12 @@
 		"year": "1855/56",
 		"credit": "Jean-Léon Gérôme, “Study of Palm Trees” (1855/56). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-jerusalem-sinner-saved": {
+		"artist": "Salomon van Ruysdael",
+		"title": "View of the Town of Alkmaar",
+		"year": "",
+		"credit": "Salomon van Ruysdael, “View of the Town of Alkmaar” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-journal-of-john-wesley": {
 		"artist": "Aelbert Cuyp",
 		"title": "Travelers in Hilly Countryside",
@@ -1012,6 +1084,18 @@
 		"title": "Cottage by the River with Washerwomen",
 		"year": "1835",
 		"credit": "Camille Flers, “Cottage by the River with Washerwomen” (1835). The Cleveland Museum of Art, CC0."
+	},
+	"the-lords-prayer": {
+		"artist": "Vincent van Gogh",
+		"title": "Wheat Field with Cypresses",
+		"year": "1889",
+		"credit": "Vincent van Gogh, “Wheat Field with Cypresses” (1889). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-method-of-grace": {
+		"artist": "Joseph Mallord William Turner",
+		"title": "Saltash with the Water Ferry, Cornwall",
+		"year": "1811",
+		"credit": "Joseph Mallord William Turner, “Saltash with the Water Ferry, Cornwall” (1811). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-normal-christian-life": {
 		"artist": "Aert van der Neer",
@@ -1037,6 +1121,12 @@
 		"year": "1632",
 		"credit": "Pieter Jansz. Saenredam, “Interior of the Sint-Pieterskerk, 's-Hertogenbosch” (1632). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-rent-veil": {
+		"artist": "Joseph Wright (Wright of Derby)",
+		"title": "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming",
+		"year": "1779",
+		"credit": "Joseph Wright (Wright of Derby), “Virgil's Tomb by Moonlight, with Silius Italicus Declaiming” (1779). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-rise-and-progress-of-religion-in-the-soul": {
 		"artist": "Narcisse-Virgile Diaz de la Peña",
 		"title": "The Edge of the Woods",
@@ -1054,6 +1144,12 @@
 		"title": "The Ford",
 		"year": "possibly 1636",
 		"credit": "Claude Lorrain (Claude Gellée), “The Ford” (possibly 1636). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-school-of-obedience": {
+		"artist": "Asher Brown Durand",
+		"title": "The Beeches",
+		"year": "1845",
+		"credit": "Asher Brown Durand, “The Beeches” (1845). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-shepherd-of-hermas": {
 		"artist": "Giovanni Benedetto Castiglione (Il Grechetto)",
@@ -1078,6 +1174,18 @@
 		"title": "The Pink Cloud",
 		"year": "c. 1896",
 		"credit": "Henri-Edmond Cross, “The Pink Cloud” (c. 1896). The Cleveland Museum of Art, CC0."
+	},
+	"the-two-covenants": {
+		"artist": "Paul Cézanne",
+		"title": "Mont Sainte-Victoire and the Viaduct of the Arc River Valley",
+		"year": "1882–85",
+		"credit": "Paul Cézanne, “Mont Sainte-Victoire and the Viaduct of the Arc River Valley” (1882–85). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-upper-room": {
+		"artist": "British Painter",
+		"title": "Tottenham Church",
+		"year": "",
+		"credit": "British Painter, “Tottenham Church” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-way-to-god": {
 		"artist": "Meyndert Hobbema",
@@ -1108,6 +1216,12 @@
 		"title": "View of Beirut",
 		"year": "1844",
 		"credit": "Jules Coignet, “View of Beirut” (1844). The Metropolitan Museum of Art, Open Access."
+	},
+	"treatise-on-grace": {
+		"artist": "Hendrik Dirk Kruseman van Elten",
+		"title": "Landscape near Granby, Connecticut",
+		"year": "1870s",
+		"credit": "Hendrik Dirk Kruseman van Elten, “Landscape near Granby, Connecticut” (1870s). The Cleveland Museum of Art, CC0."
 	},
 	"treatise-on-the-love-of-god": {
 		"artist": "Jean-Léon Gérôme",

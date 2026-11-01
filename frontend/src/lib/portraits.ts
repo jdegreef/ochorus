@@ -107,6 +107,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-flavel': '50% 0%', // Hopwood engraving cropped to the bust; face high in a 0.80 crop
 	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
 	'john-henry-newman': '50% 15%', // 1887 photograph: the face sits high in a half-length
@@ -151,6 +152,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'sadhu-sundar-singh': '50% 2%', // 1922 Uppsala photo cropped to a bust; face at ~34% of a 0.75 plate
 	'samson-occom': '50% 0%', // 18th-c. portrait engraving (repr. 1899); face at ~34% of a 0.75 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'samuel-rutherford': '50% 21%', // St Andrews oil cropped to the bust, contrast lifted
 	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
@@ -159,6 +161,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
 	'theophilus-of-antioch': '50% 15%', // Cave engraving (17th c.) cropped to the bust; face at ~25%
 	'thomas-a-kempis': '50% 0%',
+	'thomas-boston': '50% 0%', // engraved oval cropped to the bust; face high in a 0.81 crop
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
 	'tiyo-soga': '50% 0%', // carte-de-visite photo; face at ~27% of a 0.75 plate
@@ -166,9 +169,11 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
+	'william-guthrie': '50% 19%', // Men of the Covenant drawing cropped to head and ruff
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'william-wilberforce': '50% 0%', // Hickel oil cropped to the half-length; face high in a 0.84 crop
 	'yona-kanamuzeyi': '50% 23%', // Ochorus scene (writing his diary by lamplight, head bowed), figure from behind, no face
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
