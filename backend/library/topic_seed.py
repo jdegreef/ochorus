@@ -363,6 +363,7 @@ TOPICS = [
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistle-and-martyrdom-of-polycarp",
+            "epistle-and-martyrdom-of-polycarp",
             "the-shepherd-of-hermas",
             "to-autolycus",
             "refutation-of-all-heresies",
@@ -858,6 +859,7 @@ TOPIC_SERMONS = {
         "waiting-only-upon-god",
         "the-cry-for-revival",
         "the-praying-christ",
+        "asking-in-christs-name",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -865,6 +867,8 @@ TOPIC_SERMONS = {
         "how-to-cultivate-the-holy-spirits-companionship",
         "what-difference-does-the-holy-spirit-make",
         "hindering-the-holy-spirit",
+        "grieve-not-the-holy-spirit",
+        "thanksgiving-obtains-the-spirit",
     ],
     "deeper-life": [
         "himself",
@@ -894,6 +898,10 @@ TOPIC_SERMONS = {
         "christs-friends",
         "rejoice-evermore",
         "religious-joy",
+        "messiahs-easy-yoke",
+        "bethany-and-its-feast",
+        "the-divine-banquet",
+        "martha-and-mary",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -950,6 +958,11 @@ TOPIC_SERMONS = {
         "sorrow-turned-into-joy",
         "jeremiah-a-lesson-for-the-disappointed",
         "the-shepherd-of-our-souls",
+        "messiahs-easy-yoke",
+        "adoption",
+        "the-lords-dealings-with-his-people",
+        "christ-the-healer-bonar",
+        "the-mortal-and-the-immortal",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -963,6 +976,7 @@ TOPIC_SERMONS = {
         "partnership-with-god",
         "true-wisdom",
         "the-cry-for-revival",
+        "thanksgiving-obtains-the-spirit",
     ],
     "faith-and-guidance": [
         "the-possibilities-of-faith",
@@ -990,6 +1004,9 @@ TOPIC_SERMONS = {
         "looking-to-the-hills",
         "divine-calls",
         "jeremiah-a-lesson-for-the-disappointed",
+        "christ-the-healer-bonar",
+        "peter-on-the-waves",
+        "the-spirit-committed-to-god",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -1033,6 +1050,9 @@ TOPIC_SERMONS = {
         "the-call-to-the-thirsty",
         "the-prodigal-and-his-father",
         "divine-calls",
+        "the-angels-message-and-song",
+        "adoption",
+        "bethlehem-and-its-good-news",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1050,6 +1070,7 @@ TOPIC_SERMONS = {
         "the-expulsive-power-of-a-new-affection",
         "temporal-advantages",
         "religion-pleasant-to-the-religious",
+        "christ-the-cleanser",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -1067,6 +1088,9 @@ TOPIC_SERMONS = {
         "the-blood-of-the-everlasting-covenant",
         "christ-lifted-up",
         "thy-redeemer",
+        "messiah-suffering-and-wounded-for-us",
+        "the-lord-is-risen-indeed",
+        "the-spirit-committed-to-god",
     ],
     "soar-like-the-eagle": [
         "rest",
