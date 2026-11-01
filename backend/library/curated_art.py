@@ -1344,6 +1344,13 @@ CURATED_GROUND: dict[str, Artwork] = {
         "than a sanctuary, and so is the picture — which is also why it is not "
         "the church interior on `the-reformed-pastor`.",
     ),
+    "humility-2": Artwork(
+        "met", 459122, "Paul-Désiré Trouillebert", "A Pond near Nangis", "1880–95",
+        "A still pond, a moored boat, low trees under a quiet sky: the lowliest "
+        "of places, painted without any drama. Murray calls humility the beauty "
+        "of holiness, and finds it in the low place. Replaced the crop of the "
+        "designed cover, which stretched a strip of a 443px raster into bands.",
+    ),
     "prayer-the-pulse-of-life": Artwork(
         "met", 11113, "Winslow Homer", "Cannon Rock", "1895",
         "Water that does not stop moving, painted from a stretch of Maine coast "
