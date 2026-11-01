@@ -1464,6 +1464,10 @@ CURATED: dict[str, Artwork] = {
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
     ),
+    "the-school-of-obedience": Artwork(
+        "met", 10786, "Asher Brown Durand", "The Beeches", "1845", "A worn path under great beeches, walked toward the light: obedience as a road learned step by step.",
+        focus=0.50, inset=0.01,
+    ),
     "the-lords-prayer": Artwork(
         "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889", "A ripe wheat field under a moving sky: daily bread standing in the field, asked for one day at a time.",
         focus=0.60, inset=0.045,

@@ -29801,6 +29801,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"the-school-of-obedience": {
+			"ground": "d1c04b6cec75251edf031011abe2edd67b4731e525365b6ebcee879ba734804a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
 		"the-secret-of-guidance-teens": {
 			"ground": "5183a2a8d560e6643bf2a30588c54facca422d01cbc7d6efdbde5b76085b503c",
 			"style": "originals",
