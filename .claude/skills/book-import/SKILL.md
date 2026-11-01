@@ -2173,10 +2173,13 @@ title's apostrophe, or "The Snake's Trick" silently gets none; curl the Q/A text
 the same way; (3) `about_html` may not contain `<em>` (`tests_about_work`) — use
 quotation marks for a hymn/book title; (4) `book_meta/en.json` ≤125 chars;
 (5) `generate_covers` draws a BLANK plate until the book is a topic member in the
-dev DB — add it to `topic_seed.py`, run `seed_topics`, THEN generate; (6) the repo
-has no BSB text: fetch `https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into
-the scratchpad and check every verse card and every `"…" (Ref)` quotation by
-script (normalise case/punctuation, split on `...`); (7) a book's `qa` needs 6–10 entries (`BookQaShapeTests`) — a later volume trimmed to five fails; (8) a verse card whose speech is broken by a speaker tag ("'Do not be afraid,' Elisha answered, 'for…'") must keep the tag — dropping it fails the BSB check; (9) **rebasing a book PR over another book's merge:** the og-manifest "keep both" resolution truncates the earlier entry (shared trailing lines sit outside the conflict) — `git checkout origin/main -- frontend/static/covers/og-manifest.json` and rerun `npm run og:covers` instead; re-dumping `book_meta/en.json` with json.dumps also normalises other entries' spacing — revert those lines. *(tell-me-the-story, 2026-10)*
+dev DB — add it to `topic_seed.py`, run `seed_topics`, THEN generate; (6) check every
+verse card and every `"…" (Ref)` quotation by script against the Bible the book
+quotes (normalise case/punctuation, split on `...`): a further volume of a BSB
+series stays BSB, and the repo has no BSB text, so fetch
+`https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into the scratchpad; a new
+series quotes the Open Word Bible, read from `library/data/bible/owb-en-b.json.gz`
+(`scripture.verse_text`) — see CLAUDE.md, Sourcing; (7) a book's `qa` needs 6–10 entries (`BookQaShapeTests`) — a later volume trimmed to five fails; (8) a verse card whose speech is broken by a speaker tag ("'Do not be afraid,' Elisha answered, 'for…'") must keep the tag — dropping it fails the BSB check; (9) **rebasing a book PR over another book's merge:** the og-manifest "keep both" resolution truncates the earlier entry (shared trailing lines sit outside the conflict) — `git checkout origin/main -- frontend/static/covers/og-manifest.json` and rerun `npm run og:covers` instead; re-dumping `book_meta/en.json` with json.dumps also normalises other entries' spacing — revert those lines. *(tell-me-the-story, 2026-10)*
 
 ## Adding illustrations to a book's chapters
 
