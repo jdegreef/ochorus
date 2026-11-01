@@ -26189,6 +26189,18 @@
 				501
 			]
 		},
+		"sw/grace-abounding": {
+			"ground": "c6c6b02cbbd6881d7f172d9965e2953bd52d75c0fba4bc612331646a16032c15",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/growing-in-wisdom": {
 			"ground": "2ba31897414b044c561f714f4dc2a2a2f711c4fa614d995ac88fe86e62f09c74",
 			"style": "originals",
