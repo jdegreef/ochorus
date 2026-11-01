@@ -3,6 +3,7 @@
 	import { computeSeals, type Seal } from '$lib/seals';
 	import { loadSealInput, sealName, sealNext, sealRule } from '$lib/sealData';
 	import { sealsPref } from '$lib/sealsPref.svelte';
+	import { claimStamps } from '$lib/sealStamp';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -15,18 +16,23 @@
 	 * writer's third, the era that completed the set. Never a pop-up mid-
 	 * chapter; this is the end of the book, where an arrival is already marked.
 	 * Each names its way onward. Nothing shows when the book earned none, or
-	 * when the reader has switched seals off.
+	 * when the reader has switched seals off. A seal this device hasn't shown
+	 * before stamps down into place (one after another); after that it just sits.
 	 */
 	let { slug }: { slug: string } = $props();
 	const t = i18n.t;
 
 	let seals = $state<Seal[]>([]);
+	let stamping = $state(new Set<string>());
 
 	async function load() {
 		const { input } = await loadSealInput(getLang());
 		seals = computeSeals(input).filter(
 			(s) => s.state === 'earned' && s.via?.kind === 'book' && s.via.slug === slug
 		);
+		// Only claim what the reader will see: with seals off, nothing stamps
+		// unseen, so turning them back on still presses them.
+		if (sealsPref.on) stamping = new Set([...stamping, ...claimStamps(seals.map((s) => s.key))]);
 	}
 
 	onMount(() => {
@@ -38,10 +44,10 @@
 
 {#if sealsPref.on && seals.length}
 	<div class="mt-6 flex flex-col items-stretch gap-3">
-		{#each seals as seal (seal.key)}
+		{#each seals as seal, i (seal.key)}
 			{@const next = sealNext(seal)}
 			<div class="seal-earned">
-				<SealMark id={seal.id} state="earned" size="4.5rem" />
+				<SealMark id={seal.id} state="earned" size="4.5rem" stamp={stamping.has(seal.key)} delay="{0.2 + i * 0.35}s" />
 				<div class="min-w-0 text-start">
 					<p class="eyebrow text-gold">{t('seals.new')}</p>
 					<p class="font-display text-h3">{sealName(seal)}</p>
