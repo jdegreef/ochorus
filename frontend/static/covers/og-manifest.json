@@ -27891,6 +27891,36 @@
 				556
 			]
 		},
+		"table-talk": {
+			"ground": "fdb8a1617f5e510bcb31dfab8204bf06e5d1fbb81bb16c2af2b9b80f0b8f6110",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[137, 327, 463, 420]
+				],
+				"subtitle": [
+					[132, 471, 468, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				303,
+				492
+			]
+		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
 			"style": "revival",

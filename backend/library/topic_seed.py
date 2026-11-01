@@ -184,6 +184,7 @@ TOPICS = [
         [
             "confessions",
             "homilies-on-the-first-epistle-of-john",
+            "table-talk",
             "apologia-pro-vita-sua",
             "the-idea-of-a-university",
             "the-consolation-of-philosophy",

@@ -1399,6 +1399,12 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "table-talk": Artwork(
+        "met", 435646, "Bernardo Bellotto", "Pirna: The Obertor from the South", "mid-1750s",
+        "A Saxon town gate in Luther's own country: the Table Talk was gathered by students at his table in Wittenberg, a short way down the Elbe.",
+        focus=0.65,
+        inset=0.04,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,

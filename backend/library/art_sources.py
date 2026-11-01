@@ -150,6 +150,7 @@ ART_SOURCES: dict[str, str] = {
     "spurgeon-on-prayer": "aic-109938@0.45",
     "spurgeon-on-the-holy-spirit": "aic-47582@0.50",
     "susanna-wesley-clarke": "aic-869@0.50",
+    "table-talk": "met-435646@0.65~0.04",
     "ten-commandments": "met-359021@0.50",
     "tertullian-on-prayer": "met-441933@0.50",
     "the-apology-of-tertullian": "cma-145309@0.50",
