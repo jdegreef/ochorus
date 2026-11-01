@@ -30,22 +30,36 @@
 	 * rim while on the way, and a plain grey blank before. Decoration — every
 	 * caller names the seal beside it — so it is hidden from assistive tech.
 	 * The emblems are symmetric or read either way: nothing mirrors in RTL.
+	 * `stamp` presses it down into place once, as it is earned — a squash and
+	 * a ring of wax spreading out from under the seal — after `delay`.
 	 */
-	let { id, state, size = '4.5rem' }: { id: SealId; state: SealState; size?: string } = $props();
+	let {
+		id,
+		state,
+		size = '4.5rem',
+		stamp = false,
+		delay = '0s'
+	}: { id: SealId; state: SealState; size?: string; stamp?: boolean; delay?: string } = $props();
 	const earned = $derived(state === 'earned');
+	const stamping = $derived(stamp && earned);
 </script>
 
 <svg
 	class="seal-mark"
 	class:earned
 	class:progress={state === 'progress'}
+	class:stamp={stamping}
 	viewBox="0 0 100 100"
 	style:width={size}
 	style:height={size}
 	style:--wax={SEAL_WAX[id]}
+	style:--stamp-delay={delay}
 	aria-hidden="true"
 	focusable="false"
 >
+	{#if stamping}
+		<circle class="spread" cx="50" cy="50" r="40" />
+	{/if}
 	<path class="wax" d={BLOB} />
 	{#if earned}
 		<circle class="rim-lit" cx="50" cy="50" r="31" />
@@ -129,6 +143,50 @@
 	}
 	.dotted {
 		stroke-dasharray: 2 4;
+	}
+	/* The stamp: the seal comes down from above, squashes as it meets the
+	   page and settles, while the wax pushed out from under it rings away.
+	   Both fill backwards, so the resting frame is the plain earned seal.
+	   Opt-in under no-preference: the global reduced-motion rule shortens an
+	   animation but keeps its delay, which would leave a blank where the seal
+	   blinks in late. */
+	.spread {
+		fill: none;
+		stroke: var(--wax);
+		stroke-width: 3;
+		opacity: 0;
+		transform-box: fill-box;
+		transform-origin: center;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.stamp {
+			transform-origin: 50% 60%;
+			animation: seal-stamp 0.55s cubic-bezier(0.5, 0, 0.6, 1.5) var(--stamp-delay) backwards;
+		}
+		.spread {
+			animation: seal-spread 0.7s ease-out calc(var(--stamp-delay) + 0.4s);
+		}
+	}
+	@keyframes seal-stamp {
+		0% {
+			/* tilt-ok: a wax seal coming down at a slant, not a book cover; it lands straight */
+			transform: scale(1.8) rotate(-12deg);
+			opacity: 0;
+		}
+		70% {
+			transform: scale(0.92, 0.88);
+			opacity: 1;
+		}
+	}
+	@keyframes seal-spread {
+		from {
+			transform: scale(0.9);
+			opacity: 0.6;
+		}
+		to {
+			transform: scale(1.5);
+			opacity: 0;
+		}
 	}
 	@media print {
 		.earned .wax {

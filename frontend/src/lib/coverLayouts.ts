@@ -118,6 +118,14 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * new volume cannot slip back into its author's layout.
  */
 export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
+	// Chesterton's `fade` and MacDonald's `wash` pale the upper half for a drawn
+	// Original; these six now wear museum paintings, shown whole (Batch 32).
+	orthodoxy: null,
+	heretics: null,
+	'the-everlasting-man': null,
+	phantastes: null,
+	'unspoken-sermons': null,
+	'diary-of-an-old-soul': null,
 	'key-teachings-of-a-b-simpson': null,
 	'key-teachings-of-jonathan-edwards': null,
 	'key-teachings-of-richard-baxter': null,
