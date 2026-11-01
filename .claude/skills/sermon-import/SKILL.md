@@ -403,3 +403,10 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   batch (Jews, Rome, Islam, "the gipsy strain", the Turkish government). Some
   readers put a closing comma or stop inside the quotation marks; move it
   outside when the text runs on, so the quote stays verbatim.
+- 2026-11-01 — Batch 7: Spurgeon ×1, Maclaren ×20, 380 → 401 (the shelf's
+  first 400). The 1856–59 *New Park Street Pulpit* is the printed text but
+  failed the tone rubric 8 times in 9 (Arminians, Rome, "heathen", hellfire
+  closes); its 1860–61 sermons are CCEL's modernised text. Maclaren's Old
+  Testament volumes survive at ~60%. Count the shelf from the fixtures
+  (`is_published` English rows) before declaring a target met: running totals
+  drifted by one across batches.
