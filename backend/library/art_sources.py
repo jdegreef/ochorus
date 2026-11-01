@@ -69,6 +69,7 @@ ART_SOURCES: dict[str, str] = {
     "holy-living": "met-437514@0.50",
     "homilies-on-matthew": "cma-146071@0.50",
     "homilies-on-romans": "met-438953@0.50",
+    "homilies-on-the-first-epistle-of-john": "cma-148312@0.62",
     "how-i-became-a-christian": "cma-139454@0.50",
     "how-to-bring-men-to-christ": "met-436012@0.50",
     "how-to-pray": "cma-159270@0.50",

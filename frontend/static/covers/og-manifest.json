@@ -15964,6 +15964,38 @@
 				486
 			]
 		},
+		"homilies-on-the-first-epistle-of-john": {
+			"ground": "c68f98e793fc8ff9e76351738c75005c5752f33e30b44b0e7a850a729dc82eba",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[110, 102, 490, 131]
+				],
+				"title": [
+					[119, 292, 481, 354],
+					[164, 337, 436, 399],
+					[68, 383, 532, 445]
+				],
+				"subtitle": [
+					[137, 473, 463, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
