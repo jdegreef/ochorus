@@ -203,6 +203,19 @@
 				>
 			{/each}
 		</div>
+		<!-- Lamplight only: a candle's glow over the top of the page. A single
+		     opt-in toggle, off by default, like Tap to page down below. -->
+		{#if theme.current === 'dark'}
+			<button
+				class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
+				class:border-accent={readerPrefs.candlelight}
+				class:text-accent={readerPrefs.candlelight}
+				class:border-border-strong={!readerPrefs.candlelight}
+				class:text-muted={!readerPrefs.candlelight}
+				onclick={() => readerPrefs.setCandlelight(!readerPrefs.candlelight)}
+				aria-pressed={readerPrefs.candlelight}>{t('reader.candlelight')}</button
+			>
+		{/if}
 	</div>
 
 	<!-- Leading -->

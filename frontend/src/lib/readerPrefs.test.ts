@@ -68,12 +68,14 @@ describe('readerPrefs store', () => {
 		readerPrefs.setFont('dyslexic');
 		readerPrefs.setMeasure('wide');
 		readerPrefs.setTapToScroll(true);
+		readerPrefs.setCandlelight(true);
 		readerPrefs.setPreferModern(true);
 		readerPrefs.reset();
 		expect(readerPrefs.scale).toBe(1);
 		expect(readerPrefs.font).toBe('serif');
 		expect(readerPrefs.measure).toBe('normal');
 		expect(readerPrefs.tapToScroll).toBe(false);
+		expect(readerPrefs.candlelight).toBe(false);
 		expect(readerPrefs.preferModern).toBe(false);
 		expect(stored().scale).toBe(1);
 		expect(stored().font).toBe('serif');
@@ -83,6 +85,13 @@ describe('readerPrefs store', () => {
 		expect(readerPrefs.tapToScroll).toBe(false);
 		readerPrefs.setTapToScroll(true);
 		expect(stored().tapToScroll).toBe(true);
+	});
+
+	it('persists candlelight (off by default)', () => {
+		expect(readerPrefs.candlelight).toBe(false);
+		readerPrefs.setCandlelight(true);
+		expect(readerPrefs.candlelight).toBe(true);
+		expect(stored().candlelight).toBe(true);
 	});
 
 	it('persists the prefer-Modern-English default (off by default)', () => {

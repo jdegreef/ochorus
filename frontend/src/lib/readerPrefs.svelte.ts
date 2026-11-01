@@ -193,6 +193,8 @@ interface Stored {
 	margin: Margin;
 	paged: boolean;
 	tapToScroll: boolean;
+	/** A candle's warm glow over the top of the page, in Lamplight (opt-in). */
+	candlelight: boolean;
 	preferModern: boolean;
 	/** The young-reader-layout settings the reader has set themselves — those
 	 *  the layer leaves alone. */
@@ -214,6 +216,7 @@ const DEFAULTS: Stored = {
 	// of the sibling idea (edge-tap to change chapter) was a footgun on phones
 	// and was removed; this one only turns on when a reader asks for it.
 	tapToScroll: false,
+	candlelight: false,
 	preferModern: false,
 	chosen: [],
 	youngLayout: true
@@ -307,6 +310,7 @@ export function load(): Stored & { migrated: boolean } {
 		paged: typeof raw.paged === 'boolean' ? raw.paged : firstRun.paged,
 		tapToScroll:
 			typeof raw.tapToScroll === 'boolean' ? raw.tapToScroll : DEFAULTS.tapToScroll,
+		candlelight: typeof raw.candlelight === 'boolean' ? raw.candlelight : DEFAULTS.candlelight,
 		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern,
 		youngLayout: typeof raw.youngLayout === 'boolean' ? raw.youngLayout : DEFAULTS.youngLayout
 	};
@@ -333,6 +337,7 @@ class ReaderPrefs {
 	margin = $state<Margin>(DEFAULTS.margin);
 	/** Opt-in: in scroll mode, a tap in the lower part of the screen pages down. */
 	tapToScroll = $state(DEFAULTS.tapToScroll);
+	candlelight = $state(DEFAULTS.candlelight);
 	/** When a Modern English edition exists, open it by default (device-local). */
 	preferModern = $state(DEFAULTS.preferModern);
 	#loaded = false;
@@ -370,6 +375,7 @@ class ReaderPrefs {
 		this.alignChosen = rest.alignChosen;
 		this.margin = rest.margin;
 		this.tapToScroll = rest.tapToScroll;
+		this.candlelight = rest.candlelight;
 		this.preferModern = rest.preferModern;
 		this.youngLayout = rest.youngLayout;
 		this.#loaded = true;
@@ -385,6 +391,7 @@ class ReaderPrefs {
 			alignChosen: this.alignChosen,
 			margin: this.margin,
 			tapToScroll: this.tapToScroll,
+			candlelight: this.candlelight,
 			preferModern: this.preferModern,
 			chosen: this.#chosen,
 			youngLayout: this.youngLayout
@@ -457,6 +464,10 @@ class ReaderPrefs {
 		this.tapToScroll = v;
 		this.#save();
 	}
+	setCandlelight(v: boolean) {
+		this.candlelight = v;
+		this.#save();
+	}
 	setPreferModern(v: boolean) {
 		this.preferModern = v;
 		this.#save();
@@ -475,6 +486,7 @@ class ReaderPrefs {
 		this.alignChosen = DEFAULTS.alignChosen;
 		this.margin = DEFAULTS.margin;
 		this.tapToScroll = DEFAULTS.tapToScroll;
+		this.candlelight = DEFAULTS.candlelight;
 		this.preferModern = DEFAULTS.preferModern;
 		this.youngLayout = DEFAULTS.youngLayout;
 		this.#save();
