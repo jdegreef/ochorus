@@ -741,6 +741,13 @@
 							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary">{t('plans.todaysReading')}</a>
 						{/if}
 						<a href={readHref(readOrder)} class="btn {book.daily ? 'btn-ghost' : 'btn-primary'}">{readLabel}</a>
+						{#if book.daily_plan}
+							<!-- The self-paced way through: day one is 1 January's
+							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
+							<a href={localizeHref(`/plans/${book.daily_plan}/`)} class="text-small text-accent hover:underline"
+								>{t('daily.followPlan')}</a
+							>
+						{/if}
 						{#if otherPlace}
 							<a href={readHref(otherPlace.order)} class="text-small text-accent hover:underline"
 								>{otherPlace.label.replace('%n%', String(otherPlace.order))}</a

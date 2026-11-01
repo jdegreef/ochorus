@@ -1604,5 +1604,6 @@
   "daily_in_context": "Soma ndani ya kitabu",
   "daily_missing_day": "Kitabu hiki hakina somo la tarehe hii, kwa hiyo hili ni la siku iliyotangulia.",
   "daily_choose_date": "Chagua tarehe",
-  "daily_none": "Bado hakuna masomo ya kila siku katika lugha hii."
+  "daily_none": "Bado hakuna masomo ya kila siku katika lugha hii.",
+  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima"
 }
