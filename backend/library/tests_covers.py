@@ -448,6 +448,21 @@ class CuratedArtTests(TestCase):
             for path in written:
                 path.unlink(missing_ok=True)
 
+    def test_a_scan_too_small_for_the_plate_is_refused(self):
+        """A thumbnail-sized scan must not be enlarged into a soft cover."""
+        from django.core.management.base import CommandError
+        from PIL import Image
+
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory() as td:
+            src = Path(td) / "s.png"
+            Image.new("RGB", (900, 700), (90, 90, 90)).save(src)
+            with self.assertRaisesRegex(CommandError, "too small"):
+                _crop_3x4(src, "small-selftest", 0.5)
+        self.assertFalse(any(CACHE.glob("small-selftest.*")), "nothing is cached")
+
     def test_inset_cuts_the_mat_off_every_side(self):
         """`inset` has to remove a black mat the photograph carries, not just
         be stored — and an entry without one must keep its old recipe."""
