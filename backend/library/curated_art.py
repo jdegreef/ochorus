@@ -1377,6 +1377,12 @@ CURATED: dict[str, Artwork] = {
         focus=0.4,
         inset=0.03,
     ),
+    # ── Batch 33 · the stacked October/November imports ─────────────────────
+    "letters-of-jerome": Artwork(
+        "met", 926221, "Antoine-Alphonse Montfort", "Cedars of Lebanon", "1837",
+        "The cedars of Lebanon on the mountains above the Holy Land: Jerome wrote these letters from Bethlehem, where he settled to translate the Scriptures.",
+        inset=0.04,
+    ),
 }
 
 

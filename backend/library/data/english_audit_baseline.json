@@ -142,8 +142,7 @@
    "lost-paragraphing": 1
   },
   "foxes-book-of-martyrs": {
-   "hyphen-space": 1,
-   "word-fusion": 1
+   "hyphen-space": 1
   },
   "free-grace": {
    "orphan-close-quote": 1
@@ -251,6 +250,10 @@
   },
   "letters-and-minor-works": {
    "space-before-punct": 1
+  },
+  "letters-of-jerome": {
+   "lost-paragraphing": 4,
+   "orphan-close-quote": 2
   },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
@@ -537,8 +540,7 @@
   },
   "the-journal-of-john-wesley": {
    "hyphen-space": 1,
-   "orphan-close-quote": 2,
-   "word-fusion": 1
+   "orphan-close-quote": 2
   },
   "the-joy-bringer": {
    "space-before-punct": 2

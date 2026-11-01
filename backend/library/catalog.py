@@ -709,6 +709,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Hippolytus of Rome (c. 170–c. 235) was a Greek-speaking presbyter and theologian of the Roman church whose clash with Bishops Zephyrinus and Callistus led later historians to call him the first antipope."
         ),
     ),
+    "jerome": AuthorEntry(
+        slug="jerome",
+        name="Jerome",
+        birth_year=342,
+        death_year=420,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1327,6 +1338,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("refutation-of-all-heresies", "The Refutation of All Heresies", "hippolytus-of-rome",
               "ccel", "schaff/anf05", part="iii.iii", group_parts=True,
               subtitle="Translated by J. H. MacMahon", cover_color="#4a4a5c"),
+    # The Letters of St. Jerome (370–419) — W. H. Fremantle, G. Lewis and
+    # W. G. Martley's NPNF translation (1893), public domain, extracted from
+    # npnf206 by its stem: the letters in Vallarsi's numbering, including some
+    # written to Jerome, each with the translators' summary as its first lines.
+    BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
+              "ccel", "schaff/npnf206", part="v",
+              subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

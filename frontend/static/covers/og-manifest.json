@@ -19191,6 +19191,37 @@
 				529
 			]
 		},
+		"letters-of-jerome": {
+			"ground": "e016908bfd793497e2b064298096945d33e4578edbbda12b554c7d5518c17c06",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[232, 102, 368, 131]
+				],
+				"title": [
+					[126, 314, 474, 376],
+					[106, 360, 494, 422]
+				],
+				"subtitle": [
+					[101, 451, 499, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
