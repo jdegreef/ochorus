@@ -363,6 +363,7 @@ TOPICS = [
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistle-and-martyrdom-of-polycarp",
+            "the-shepherd-of-hermas",
             "exhortation-to-the-heathen",
             "who-is-the-rich-man-that-shall-be-saved",
             "epistles-of-ignatius",
