@@ -1509,10 +1509,9 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _CCEL + "sermons17/sermons17.xli.html",
     ),
-    # Unpublished (2026-10): a caricatured "Massa" dialect anecdote sits at its
-    # heart. Kept here and in the fixture (is_published false) so the text can
-    # be revisited. seed_sermons never unpublishes a live row (is_published is
-    # create-only), so the live row is unticked in the admin.
+    # Its closing appeal quotes an enslaved man in minstrel dialect ("Massa, I
+    # fall flat on de promise"). Unpublished 2026-10, then republished
+    # unedited on the founder's decision (2026-11).
     SermonEntry(
         "healing-for-the-wounded",
         "Healing for the Wounded",

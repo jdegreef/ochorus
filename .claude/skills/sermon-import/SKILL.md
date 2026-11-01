@@ -44,8 +44,9 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
   on a long warning of hell to careless young people. Earlier drops: the
   Simpson batch's Jews-and-money trope; *The Sin of Unbelief* ("unbelief made
   the Jew murder Christ and wander"); Moody's *The Blood* and *Results of True
-  Repentance*; *Healing for the Wounded*, which shipped and was then
-  unpublished for a "Massa" dialect anecdote.
+  Repentance*. *Healing for the Wounded* (a "Massa" dialect line in its
+  closing appeal) was unpublished, then republished unedited on the
+  founder's decision: a passing line in an otherwise warm sermon is his call.
 - **Unpublishing a shipped sermon** takes three steps. Set `is_published` to
   false in its fixture (fresh databases), drop it from `TOPIC_SERMONS`, and
   untick it in the Django admin. `is_published` is create-only in
