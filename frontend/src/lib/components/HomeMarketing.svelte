@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
+	import DailyShelf from '$lib/components/DailyShelf.svelte';
 	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
@@ -198,6 +199,10 @@
      `auth.enabled`, so it stays hidden where accounts don't work and never bakes
      into the prerendered HTML. See SignupBand. -->
 <SignupBand />
+
+<!-- Today in the devotionals — each year-long devotional's entry for the
+     reader's date. Client-side; renders nothing in a language with none. -->
+<DailyShelf />
 
 <!-- Sermon of the day — editorial content discovery, not personal. Renders
      nothing when there is no featured sermon in the current language. -->

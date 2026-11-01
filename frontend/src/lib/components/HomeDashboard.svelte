@@ -18,6 +18,7 @@
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
+	import DailyShelf from '$lib/components/DailyShelf.svelte';
 	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import HomeHighlight from '$lib/components/HomeHighlight.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
@@ -125,6 +126,9 @@
 		<PlansProgress />
 	</div>
 </div>
+
+<!-- Today in the devotionals: each dated devotional's entry for today. -->
+<DailyShelf />
 
 <!-- Today's word: a line from the library over a painting (English only),
      beside the sermon of the day. -->
