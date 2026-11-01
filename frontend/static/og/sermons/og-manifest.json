@@ -54,6 +54,10 @@
 			"content": "486f984c060d31fc69871821b65e384fa65edf7bd37991dcb0c830c8090a25d7",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"a-young-mans-best-counsellor": {
+			"content": "b4db4148d69f2e2403fff9f0e9e66317144e17da9e1ada479b990cea252df5c8",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"abiding-in-christ": {
 			"content": "61e50c2bfaec5b5733f1d593543e382f92263575b2c1050386b26909e967b886",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -110,6 +114,10 @@
 			"content": "328b41c7eb0d96f8516988dc95dd1610285a55bc88d9d12bd683e34aa1a18a1a",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"at-the-bush": {
+			"content": "59a156059d53ca15e14610b2dba01c84c693f112e6ff6af470bf86621e02d82b",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"be-filled-with-the-spirit": {
 			"content": "1aec68a02f056861fcbce33fc57f2be6358ab3e0e23b5b5d62413059bee4467b",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -150,6 +158,10 @@
 			"content": "5d3fedf587c6213022e56206565a31f3798b0eb24470a3b825697b1a3746108e",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"brave-encouragements": {
+			"content": "fdee4385b04e2baa3ad9a7806c14e460d7b5958a19a0ed989de2a87521cbd325",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"breaking-up-the-fallow-ground": {
 			"content": "68f681806948ffae7a2215b8995aa3f24668f6c37f56ca1e5ee27ba08650bba8",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -166,6 +178,10 @@
 			"content": "1e3668d554e84fe26ce96fbdc7d567c23eef1b4f3f2b2036f22cab9b2e388c24",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"caleb-a-green-old-age": {
+			"content": "ff90cd264d47a81c0bb01fdaef3a885f24e8a0f364e1068608721758bd57c41a",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"catholic-spirit": {
 			"content": "6aa2c468f3b4c385cbba149f67b1c65a28f5e7820a32bd27d7aaf08b440da167",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -181,6 +197,10 @@
 		"christ-crucified": {
 			"content": "f3c935fd04b6ab84df684f064f057b5773fd889fb90d26b7c70d858db337e8a4",
 			"art": "defe89ca0e8122d328985352eb9e80bdc4ec0c6d7bfb3d73dea254a3d8c183f3"
+		},
+		"christ-in-the-covenant": {
+			"content": "273aca94a011f1f604c4c054d53b8641c930b85b58045a5cc1b89b8889327d97",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"christ-is-all": {
 			"content": "b18bc4122d6b3d94834f2e4088637a2c8763a335bb9de4e6783e5ecc4734a22d",
@@ -306,6 +326,10 @@
 			"content": "f3f3ab61c5b926894edc8f70e9ff33135f82ebbfbcc287e2837d4c9840513496",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"elijahs-weakness-and-its-cure": {
+			"content": "7b84a00ef715e97d8fb4dfa155977553416d53c4f232d0248a4bc18f0ad5902d",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"enduring-persecution-for-christ": {
 			"content": "6a18896e765d694195f5cea44bdc22ce28d5aaaf7c427458db595e42e5c204bd",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -406,6 +430,10 @@
 			"content": "70fe1737f086909220693c05277e8bdcb9ef95bfa9f18be8cb4e3f01478e8e43",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"gods-requirements-and-gods-gift": {
+			"content": "334c42f4bf1ee8a8cee58b2ff70ba36a6b364b9cd529e5b6e5f65c975ea50d7d",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"grace-abounding": {
 			"content": "0545dd485a1bbaf9075d89780bbe2eb4e61ec5362918b4bcd46304e9d2d68d57",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -454,6 +482,10 @@
 			"content": "d6c35f87fdf609421985781de1296ebe66419d1cac690929167254ade475167b",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"heroic-faith": {
+			"content": "643598cccea3381b7a3a8847d9db560f6b68d188511b7eee3fb08625a4a5bdf5",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"hid-in-light": {
 			"content": "303e3a837b124c129914de8841ffbbc42f26f76da80d4a7076abe6928f2c378e",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -465,6 +497,10 @@
 		"hindering-the-holy-spirit": {
 			"content": "846c0909b224d59c39ab6ad8e96abdd31a93dc8caa9b0b27906ccd5733e7c8cd",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"holding-fast-and-held-fast": {
+			"content": "9213a1090176c09f3f4aec28b302c9b6f40612cbb5e5cb52eeb20eb905f4ef53",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"homily-ii-on-the-statues": {
 			"content": "66bc364b81437b962358f44e70927cd92b1839ea5212e3d52f7e40d75473cbcc",
@@ -573,6 +609,10 @@
 		"justification-by-grace": {
 			"content": "dee6874492ed668860c7765f137424405a467947a8190c5f285e50a871c5c2e1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"keeping-and-kept": {
+			"content": "3935839cb891ae73b2050ff4ede3b02cfc5362f2a5bc1e513be10c9e8c81463c",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"let-us-have-peace": {
 			"content": "520fccad2c71f0a8c69b422ee355ad398eda213a0c27970cedb9846949b7f9a6",
@@ -685,6 +725,10 @@
 		"our-kinsman-redeemer": {
 			"content": "778aadf805ccdaa1aa39a20334ffebdb1c02c6034be8de4b3ac3956f09c610a6",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"our-knocking": {
+			"content": "ce95b95afb6575f820cff3cb21d8ceb81e129af6fb0e029dfae8df2619eb2f41",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"our-strong-city": {
 			"content": "7b7221c6fbb13c6943ac38fee522486ae13813b00a0ec57765e2bfc9d1673a9b",
@@ -910,6 +954,10 @@
 			"content": "4f4bbcf13f39f60da2097ccc76e1fd7c8a5c5b93d26329cba1787504932db549",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-child-prophet": {
+			"content": "f1134f51b724d169987561778e2516da399b3f7a3b1dad880a5fa0659fb53a9b",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-christian-pilgrim": {
 			"content": "7598424913d1762199433b1c69a099af641e66c0e1622ab90fd2f11d66da602e",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -966,6 +1014,10 @@
 			"content": "1b08259c4e875d85cb7ff3733eb322ccd89ae89aec8dcdc7c1043882867531e0",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"the-dew-and-the-plants": {
+			"content": "ac996d20e1c00c6fcc7f58b8451743f1e455220b73a5ecd233743c676d2829fa",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-divine-banquet": {
 			"content": "3a7ef9b78b90a209b215635c6a774af2e5bdafb62acf1705ce9db5d0bbd9cdf1",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -978,6 +1030,10 @@
 			"content": "38fe826661d5299881cc71b00f153ed09169de7330b0b7d0d38fa2875d2482b3",
 			"art": "0dcfebb5bf6d3f3e1f89fd1b2aebd4b074253d5197dc08c657b2126887ae7dfd"
 		},
+		"the-eagle-and-its-brood": {
+			"content": "1cb309e3f62201813d21f58a2bf6597884dfd7c5e44b4464204d1baee36e32f4",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-encamping-angel": {
 			"content": "7d4b644879c6c818b2a27e71500d379f9d587508537851c1fd05c09f9c591be1",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -988,6 +1044,10 @@
 		},
 		"the-expulsive-power-of-a-new-affection": {
 			"content": "e283f5fc7d25c331a1977654b9a7cb705b5c5c6ae74a1880f9b5adc9ac8debbf",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"the-first-beatitude": {
+			"content": "9be10acf665dc8e1bbe7bb8e41c85b0d4d4fce8a32364dc64ad72d6b2799f039",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-fixed-heart": {
@@ -1158,6 +1218,14 @@
 			"content": "31248dd9392686e8889b5f9f9c61d2ff35c7dcf61e78e976092bc9db93cc6396",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-peace-bringer-in-the-spiritual-world": {
+			"content": "8fa6fb6114ab0e9d5572d22571f072236252cc78672e989841272e7b82eadfd0",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-peaceable-fruits-of-sorrows-rightly-borne": {
+			"content": "df20193cf93d942b7b79c333b743e3a293306f64b3cf679c781c202ddd622d6f",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-possibilities-of-faith": {
 			"content": "ff3fde67b2f1c52c92a42f87d9f39e3944f944be7696f11f6a441f9ec4369c78",
 			"art": "23dd58d89bd3b5df09e651325323c8581ec084af8bb2e93dc794884dbe800b64"
@@ -1237,6 +1305,14 @@
 		"the-scripture-way-of-salvation": {
 			"content": "f596ba2a769c57bbe61e3b0af94526c2a914f4b9383681efc9a036c0d01de3e4",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-search-that-always-finds": {
+			"content": "60112bb557fa398d2d61e612f54338c5efb360c948f92cb6fb4e59e148336f57",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"the-second-beatitude": {
+			"content": "4a2ef611e12f695ae3c0711e231261e6d6fdc02171ea6ea418d34bfb5b36c00f",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-secret-of-gladness": {
 			"content": "27335cdbc65166bb5918cb0516412d047bf4f89a7af8f37502ff8e714108afe6",
@@ -1478,8 +1554,16 @@
 			"content": "8cc3c941145ad2b95efb13bb1250e1a367abc8f4ccc477e23729eab7962b900e",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"what-life-may-be-made": {
+			"content": "f24ead933beddd8de01c91303f3cba15fbe197b5d2130c816a8373186b7cf6db",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"what-proves-gods-love": {
 			"content": "876e5cc2432c213e319ac416e50615e209d5d34a1fcce037591cfa7fe4b1f744",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"when-the-oil-flows": {
+			"content": "45b4a26a4f50ce6e579624ff4bc7a27d8abb3a1c557dfe9a2cb842b9dab94f07",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"where-will-you-spend-eternity": {
