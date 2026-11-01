@@ -150,6 +150,7 @@ ART_SCRIM: dict[str, float] = {
     "large-catechism": 0.45,
     "letters-and-minor-works": 0.90,
     "letters-of-jerome": 0.75,
+    "letters-of-samuel-rutherford": 0.70,
     "life-and-diary-of-david-brainerd": 0.70,
     "life-and-diary-of-david-brainerd-teens": 0.30,
     "life-experience-gospel-labours": 0.80,

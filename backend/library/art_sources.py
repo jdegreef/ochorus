@@ -93,6 +93,7 @@ ART_SOURCES: dict[str, str] = {
     "lectures-to-my-students-second-series": "aic-103139@0.45",
     "letters-and-minor-works": "met-437311@0.50",
     "letters-of-jerome": "met-926221@0.50~0.04",
+    "letters-of-samuel-rutherford": "cma-141640@0.60",
     "life-and-diary-of-david-brainerd": "met-16875@0.50",
     "life-experience-gospel-labours": "cma-171296@0.50",
     "life-of-antony": "aic-16512@0.50",

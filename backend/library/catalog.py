@@ -742,6 +742,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Wilberforce (1759–1833) was an English evangelical politician who led the parliamentary campaign that abolished the British slave trade in 1807."
         ),
     ),
+    "samuel-rutherford": AuthorEntry(
+        slug="samuel-rutherford",
+        name="Samuel Rutherford",
+        birth_year=1600,
+        death_year=1661,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Samuel Rutherford (c. 1600–1661) was a Scottish Presbyterian minister of Anwoth, a professor at St Andrews and a commissioner to the Westminster Assembly."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1415,6 +1426,15 @@ BOOKS: list[BookEntry] = [
               "william-wilberforce", "gutenberg", "25709",
               subtitle="Of the Prevailing Religious System of Professed Christians Contrasted with Real Christianity",
               cover_color="#2e3e5c"),
+    # Letters of Samuel Rutherford (Gutenberg #42557) — Andrew A. Bonar's
+    # edition (third edition, Religious Tract Society): all 365 letters in his
+    # chronological order. Built from a reshaped copy of the PG HTML: one <h2>
+    # per letter titled "Letter N: To …", Bonar's topical heading kept as the
+    # first line; his preface, sketch, indexes, glossary, notices of each
+    # correspondent and the footnote marks are left out.
+    BookEntry("letters-of-samuel-rutherford", "Letters of Samuel Rutherford",
+              "samuel-rutherford", "gutenberg", "42557",
+              subtitle="Edited by Andrew A. Bonar", cover_color="#3e2e5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

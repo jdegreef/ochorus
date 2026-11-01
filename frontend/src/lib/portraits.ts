@@ -151,6 +151,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'sadhu-sundar-singh': '50% 2%', // 1922 Uppsala photo cropped to a bust; face at ~34% of a 0.75 plate
 	'samson-occom': '50% 0%', // 18th-c. portrait engraving (repr. 1899); face at ~34% of a 0.75 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'samuel-rutherford': '50% 21%', // St Andrews oil cropped to the bust, contrast lifted
 	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate

@@ -274,6 +274,7 @@ TOPICS = [
             "the-holy-war",
             "grace-abounding",
             "the-bruised-reed",
+            "letters-of-samuel-rutherford",
             "mortification-of-sin",
             "communion-with-god",
             "the-glory-of-christ",

@@ -19345,6 +19345,37 @@
 				472
 			]
 		},
+		"letters-of-samuel-rutherford": {
+			"ground": "c855df4aa5c1adca0d67b13befca5a36c3b132e1591fbfb80363474184d0dd84",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[108, 102, 492, 131]
+				],
+				"title": [
+					[91, 307, 509, 380],
+					[164, 367, 436, 440]
+				],
+				"subtitle": [
+					[127, 492, 473, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",

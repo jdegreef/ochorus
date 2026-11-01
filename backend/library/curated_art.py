@@ -1417,6 +1417,11 @@ CURATED: dict[str, Artwork] = {
         focus=0.60,
         inset=0.02,
     ),
+    "letters-of-samuel-rutherford": Artwork(
+        "cma", 141640, "William Bradford", "Labrador Coast", "c. 1860",
+        "A cold northern shore under a heavy sky: most of Rutherford's letters were written from banishment in Aberdeen, far from his flock at Anwoth.",
+        focus=0.60,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,

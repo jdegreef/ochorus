@@ -283,6 +283,10 @@
    "lost-paragraphing": 4,
    "orphan-close-quote": 2
   },
+  "letters-of-samuel-rutherford": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
+  },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
   },
@@ -305,8 +309,7 @@
    "space-before-punct": 7
   },
   "morning-by-morning": {
-   "space-before-punct": 1,
-   "word-fusion": 1
+   "space-before-punct": 1
   },
   "mortification-of-sin": {
    "space-before-punct": 1
@@ -716,7 +719,7 @@
    "space-before-punct": 9
   },
   "unspoken-sermons": {
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "waiting-and-singing": {
    "space-before-punct": 4
