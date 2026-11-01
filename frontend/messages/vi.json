@@ -1604,5 +1604,6 @@
   "daily_in_context": "Đọc trong sách",
   "daily_missing_day": "Sách này không có bài đọc cho ngày này, nên đây là bài của ngày trước đó.",
   "daily_choose_date": "Chọn ngày",
-  "daily_none": "Chưa có bài đọc hằng ngày bằng ngôn ngữ này."
+  "daily_none": "Chưa có bài đọc hằng ngày bằng ngôn ngữ này.",
+  "daily_follow_plan": "Hoặc theo như một kế hoạch đọc trọn năm"
 }

@@ -1254,12 +1254,14 @@ class PlanDayManager(models.Manager):
 
 
 class PlanDay(models.Model):
-    """One day's reading: a book chapter OR an article, never both.
+    """One day's reading: a book chapter OR an article, never both — or, in a
+    year-long devotional's plan, one dated entry of a month chapter.
 
     Both are soft references in the plan's own language (see ``Plan``). A book
     day sets ``book_slug`` + ``chapter_order``; an article day sets
-    ``article_slug`` and leaves the other two empty. The check constraint holds
-    that shape in the DB, so nothing downstream has to guess which kind a day is.
+    ``article_slug`` and leaves the other two empty; an entry day is a chapter
+    day that also sets ``entry_date``. The check constraints hold those shapes
+    in the DB, and ``kind`` names them, so nothing downstream has to guess.
     """
 
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
@@ -1268,6 +1270,10 @@ class PlanDay(models.Model):
     book_slug = models.SlugField(max_length=160, blank=True, default="")
     chapter_order = models.PositiveIntegerField(null=True, blank=True)
     article_slug = models.SlugField(max_length=180, blank=True, default="")
+    # A year-long devotional's day (library/daily_readings): the one dated
+    # entry, as "MM-DD", that this day reads out of ``chapter_order``'s month
+    # chapter. Blank on every other day, which reads the whole chapter.
+    entry_date = models.CharField(max_length=5, blank=True, default="")
 
     objects = PlanDayManager()
 
@@ -1288,7 +1294,25 @@ class PlanDay(models.Model):
                 ),
                 name="planday_chapter_xor_article",
             ),
+            # A devotional's entry day is a chapter day that reads one entry
+            # of it: never on an article day.
+            models.CheckConstraint(
+                condition=models.Q(entry_date="")
+                | (
+                    models.Q(article_slug="", chapter_order__isnull=False)
+                    & ~models.Q(book_slug="")
+                ),
+                name="planday_entry_is_a_chapter_day",
+            ),
         ]
+
+    @property
+    def kind(self) -> str:
+        """"entry" (one dated entry of a devotional's month chapter),
+        "article" or "chapter" — what this day reads. The one place that asks."""
+        if self.entry_date:
+            return "entry"
+        return "article" if self.article_slug else "chapter"
 
     def natural_key(self):
         return self.plan.natural_key() + (self.day,)
