@@ -295,6 +295,7 @@ TOPICS = [
             "true-vine",
             "holy-in-christ",
             "absolute-surrender",
+            "the-school-of-obedience",
             "the-masters-indwelling",
             "jesus-himself-2",
             "on-loving-god",

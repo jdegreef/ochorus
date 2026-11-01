@@ -1394,6 +1394,10 @@ CURATED: dict[str, Artwork] = {
         focus=0.0,
         inset=0.06,
     ),
+    "the-school-of-obedience": Artwork(
+        "met", 10786, "Asher Brown Durand", "The Beeches", "1845", "A worn path under great beeches, walked toward the light: obedience as a road learned step by step.",
+        focus=0.50, inset=0.01,
+    ),
 }
 
 
