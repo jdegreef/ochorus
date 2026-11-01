@@ -1,0 +1,115 @@
+{
+ "kind": "book",
+ "slug": "samuel-ajayi-crowther-a-life-children",
+ "language": "pt",
+ "job_issue": 6879,
+ "references": [
+  {
+   "reference": "Psalms 139:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Psalms 124:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 44
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Psalms 10:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 53
+  },
+  {
+   "reference": "Psalms 10:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 56
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 62
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 69
+  },
+  {
+   "reference": "2 Corinthians 4:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "2 Corinthians 4:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 80
+  },
+  {
+   "reference": "1 Samuel 3:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "Psalms 4:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 98
+  }
+ ]
+}

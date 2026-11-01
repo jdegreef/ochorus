@@ -1541,13 +1541,13 @@
 			"caps": false
 		},
 		"am/humility-2": {
-			"ground": "55400e37a034de4f151008276c3d2b297e5130066f319d911d0fb6501e1b0bb0",
+			"ground": "f0fc7d216c960c65062bfdce8455501e74e3303aa648c10e85982a1756e0e09b",
 			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -4351,13 +4351,13 @@
 			"caps": false
 		},
 		"ar/humility-2": {
-			"ground": "96f1ad9616b3ae4ad64873abd34d029727f0941f724866641216ba1e0034f91e",
+			"ground": "fc05c52b74288e69337e1a72ac9e32aade44acd1e796f062b8626eef48169582",
 			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -7508,13 +7508,13 @@
 			"caps": false
 		},
 		"es/humility-2": {
-			"ground": "d6046be6ce4cb2267982a0dc9b4bd8de643b29595e2d5707d62de5e4cef767ba",
+			"ground": "30e0bd00fab4855dfb6e5141649a48237fc9f2e3dd3afc70ce698822b75ab4b5",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -11533,13 +11533,13 @@
 			]
 		},
 		"fr/humility-2": {
-			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
+			"ground": "c2a89289e151be7a92be1fc9a6151d15243aca36235822286787ae0519452820",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -14510,13 +14510,13 @@
 			"caps": false
 		},
 		"hi/humility-2": {
-			"ground": "929c516319eb3d18570bfabb3230d1de3bac5cdc736d7710508a71ccd9866a98",
+			"ground": "d4d259a8a6b5d637d9d627b3fea3a95f73dde43ae1dbc0abe8c9523976ced770",
 			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -15623,13 +15623,13 @@
 			]
 		},
 		"humility-2": {
-			"ground": "a93fddc9141aa93c2176d7edc9cb6c0874a9cc09ee8228a4a5b5630e6ab0a6c9",
+			"ground": "2ac7437384e3292ba41af7f424ef59f8d897a47c0c2da0652cfa862cfe4b4def",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -17683,13 +17683,13 @@
 			"caps": false
 		},
 		"ko/humility-2": {
-			"ground": "d8835e96aba3a1db15f51ed6d28c814c12f9b5a10f24de969237d0b25f8a306f",
+			"ground": "f7a2b0e1da2aa9d0e5f8b5ef70d2a3948de397905a50f6102b7a6299142ab31c",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
 			"fonts": "0f43f4330a4d16de77031be642cbf9cc7786fa32bff66752c242b3368dd4b680",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -19183,13 +19183,13 @@
 			"caps": false
 		},
 		"lg/humility-2": {
-			"ground": "1a1c2e056e560e73fedf4b24232917e415c2de63e0817bb155249654ca1cff5f",
+			"ground": "e9f459f7d8a34e63e8e7103295e889c4944b2502bc3bfd8386001a2605088e67",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -21721,6 +21721,38 @@
 				550
 			]
 		},
+		"pt/brave-for-god-4": {
+			"ground": "57695f4b3165cb01561b65c8b6730b922a991b1c5eb646eee7a346f2b691fa5b",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 257, 311, 301],
+					[121, 332, 479, 407],
+					[62, 393, 538, 468]
+				],
+				"subtitle": [
+					[56, 522, 544, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
 		"pt/c-s-lewis-a-life-children": {
 			"ground": "bd564f6c4c15a1ed6fbb725bead149e6414e40f602bd9c5a86d755a5dbb23197",
 			"style": "young",
@@ -22143,13 +22175,13 @@
 			"caps": false
 		},
 		"pt/humility-2": {
-			"ground": "e8a405fd835e0b2f3f38ca51a89653fda4f51abea0b4f9f7820c63e2e5ea256b",
+			"ground": "d4c1dcb8106b1b8773d7e6a574ed496983908a05c673d7d6ff007ff1e9fc9be6",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -22835,6 +22867,35 @@
 			"middle": [
 				261,
 				534
+			]
+		},
+		"pt/samuel-ajayi-crowther-a-life-children": {
+			"ground": "94c329f6eb545063edb18b870e9512d9337538b214444843a0c3dc5d254574d4",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 280, 464, 355],
+					[178, 341, 422, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
 			]
 		},
 		"pt/school-of-prayer": {
@@ -25235,13 +25296,13 @@
 			"caps": false
 		},
 		"sw/humility-2": {
-			"ground": "44c2426eaac73697f27e36b55f5fa883cbc4a3b5259d4abfd44c13aa6bca69e1",
+			"ground": "e7f751b43aeb0f7b23856bfa4b613356fb6d2f815da0789adaa7a14ee23c880c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -28922,13 +28983,13 @@
 			]
 		},
 		"uk/humility-2": {
-			"ground": "3776c476b16e83499be0f93a07195446f5eaf5ad73de3efe6663a813d4c5d951",
+			"ground": "74d9e5e5a0f277caeb6300e7abee6317fd48e4a00336997bf33e72e6fa2c8ae4",
 			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -30080,13 +30141,13 @@
 			"caps": false
 		},
 		"vi/humility-2": {
-			"ground": "7f9f67a0f3602c9625ff98442e4bf946497fc6bb75d52d17d5ca0e3021943a7e",
+			"ground": "98494bd775f7ee552b0f41dae74dd02be3a9914ef7e735aeaa6380eda636e022",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
