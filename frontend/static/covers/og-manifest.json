@@ -30644,6 +30644,18 @@
 				477
 			]
 		},
+		"uk/union-and-communion": {
+			"ground": "9ee27bd435a970064702ddf6e794ad3695fcc7f938d46fdc9580b47c4d2949b9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",
 			"style": "devotional",
