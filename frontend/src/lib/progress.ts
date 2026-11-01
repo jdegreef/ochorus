@@ -122,12 +122,13 @@ export function saveProgress(
 /**
  * Whether chapter `order` is new ground — no place in the work yet, or past
  * the furthest chapter reached — read from the record as it was BEFORE this
- * visit's saveProgress. A chapter behind the furthest is a return. One jumped
- * ahead to stays new ground until reading reaches it (`furthest` only moves a
- * chapter at a time; a jump is a peek).
+ * visit's saveProgress. A chapter behind the furthest, or the one the reader's
+ * place is in, is a return. One jumped ahead to and left stays new ground
+ * until reading reaches it (`furthest` only moves a chapter at a time; a jump
+ * is a peek).
  */
 export function isNewGround(rec: Pick<ProgressRecord, 'order' | 'furthest'> | null, order: number): boolean {
-	return rec == null || order > furthestOf(rec);
+	return rec == null || (order > furthestOf(rec) && order !== rec.order);
 }
 
 /**

@@ -1084,8 +1084,15 @@
 		listen.init();
 	});
 
-	/** The reader has come this far for the first time: the drop cap inks in. */
+	/** The reader has come this far for the first time: the drop cap inks in.
+	 *  Armed on arrival, spent when the ink has dried (so a later switch out of
+	 *  paged mode, or into read-aloud, doesn't start it then). Only where the
+	 *  ink's registered property can tween; see app.css INK-IN. */
 	let inkIn = $state(false);
+	const inkTweens = browser && typeof CSS !== 'undefined' && 'registerProperty' in CSS;
+	const inkDried = (e: AnimationEvent) => {
+		if (e.animationName === 'ink-in') inkIn = false;
+	};
 
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
 	$effect(() => {
@@ -1140,7 +1147,7 @@
 		// New ground: the chapter's initial inks in (app.css, `.ink-in`). Not on
 		// the page the visit entered on, whose initial a prerender has already
 		// painted, nor on a return or a jump to a passage.
-		inkIn = !midBook.landing && !deliberateJump && isNewGround(localRecord, order);
+		inkIn = inkTweens && !untrack(() => paged) && !midBook.landing && !deliberateJump && isNewGround(localRecord, order);
 		syncAsk =
 			!deliberateJump && !syncDismissed.has(s)
 				? { slug: s, order, language, local: localRecord }
@@ -2142,7 +2149,7 @@
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" class:story={childrens} class:ink-in={inkIn} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(chapter.body_html)}</div>
+		<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(chapter.body_html)}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an

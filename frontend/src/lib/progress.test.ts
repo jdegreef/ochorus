@@ -284,4 +284,11 @@ describe('new ground: a chapter past the furthest reached', () => {
 		expect(isNewGround({ order: 4 }, 4)).toBe(false);
 		expect(isNewGround({ order: 4 }, 5)).toBe(true);
 	});
+
+	it('is not the chapter the reader’s place is in, even one peeked ahead to', () => {
+		// Opened chapter 9 from the contents and read on: the place is there,
+		// `furthest` is still 5. Continuing there is a return.
+		expect(isNewGround({ order: 9, furthest: 5 }, 9)).toBe(false);
+		expect(isNewGround({ order: 9, furthest: 5 }, 10)).toBe(true);
+	});
 });

@@ -1925,12 +1925,8 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	font-weight: 600;
 	margin-inline-end: 0.08em;
 	padding-top: 0.06em;
-	/* --ink is 1 at rest, so these are the accent and the gilt; see INK-IN. */
-	--ink: inherit;
-	color: color-mix(in srgb, var(--initial) calc(var(--ink, 1) * 100%), transparent);
-	text-shadow:
-		0.035em 0.035em 0 color-mix(in srgb, var(--ornament) calc(var(--ink, 1) * 75%), transparent),
-		0 0 calc((1 - var(--ink, 1)) * 0.4em) color-mix(in srgb, var(--initial) calc((1 - var(--ink, 1)) * 90%), transparent);
+	color: var(--initial);
+	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--ornament) 75%, transparent);
 }
 
 /* INK-IN: the first time a reader reaches a chapter (the chapter route sets
@@ -1939,26 +1935,36 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
    own ink, sharpening, the gilt settling last.
 
    Browsers will not animate a ::first-letter (Chromium ignores it), so the
-   paragraph animates a registered number, --ink, 0 → 1, and the letter takes
-   it (`--ink: inherit` above; the property itself does not inherit, so the
-   paragraph's other children are not restyled each frame) and mixes its
-   colour and shadows by it. At rest --ink is 1: the accent, the gilt, and a
-   haze of nothing. Without @property the number does not tween; the letter
-   just appears. Opt-in under no-preference: the global reduced-motion rule
-   keeps delays, which would hold the letter blank before it blinks in. */
-@property --ink {
+   paragraph animates a registered number, --initial-ink, 0 → 1, which the
+   letter inherits and mixes its colour and shadows by. The resting rule above
+   is left alone — plain colour, no calc() in color-mix — so an engine without
+   these features still draws the accented, gilt initial; this rule is
+   additionally fenced by @supports, and the route only sets `.ink-in` where
+   CSS.registerProperty exists (without it the number would flip at 50% and
+   hold the letter blank). The selector repeats the drop cap's own gates,
+   script exclusions included: keep the two in step. Opt-in under
+   no-preference: the global reduced-motion rule keeps delays. */
+@property --initial-ink {
 	syntax: '<number>';
-	inherits: false;
+	inherits: true;
 	initial-value: 1;
 }
 @media (prefers-reduced-motion: no-preference) {
-	article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type {
-		animation: ink-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s backwards;
+	@supports (color: color-mix(in srgb, red calc(1 * 50%), blue)) {
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)) {
+			animation: ink-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s backwards;
+		}
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+			color: color-mix(in srgb, var(--initial) calc(var(--initial-ink) * 100%), transparent);
+			text-shadow:
+				0.035em 0.035em 0 color-mix(in srgb, var(--ornament) calc(var(--initial-ink) * 75%), transparent),
+				0 0 calc((1 - var(--initial-ink)) * 0.4em) color-mix(in srgb, var(--initial) calc((1 - var(--initial-ink)) * 90%), transparent);
+		}
 	}
 }
 @keyframes ink-in {
 	from {
-		--ink: 0;
+		--initial-ink: 0;
 	}
 }
 
