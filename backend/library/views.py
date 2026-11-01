@@ -21,10 +21,9 @@ from rest_framework.views import APIView
 from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
 
-from . import book_export
+from . import book_export, daily_readings
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
-from . import daily_readings
 from .export_policy import EXPORT_EDITIONS, is_exportable
 from .http_cache import (
     CACHE_CONTROL,
@@ -86,10 +85,10 @@ from .serializers import (
     TopicDetailSerializer,
     TopicListSerializer,
     _book_cover,
-    _link_scripture,
     _edition_base_slug,
     _edition_family,
     _is_retold,
+    _link_scripture,
     _retold_bases,
     article_lead_book_map,
     article_topic_map,
@@ -1176,7 +1175,7 @@ class DailyShelfView(PublicContentCacheMixin, APIView):
         cards = BookListSerializer(books, many=True, context=ctx).data
         version = daily_readings.content_version()
         readings = []
-        for book, card in zip(books, cards):
+        for book, card in zip(books, cards, strict=True):
             found = daily_readings.find_entry(book, *requested, version)
             if found is None:
                 continue
