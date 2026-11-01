@@ -20621,3 +20621,82 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Batch 7 (2026-11): Spurgeon and Maclaren keying slips the question-writers
+# found reading every word, written against the raw import; three epigraph
+# references the editions misprint (Matt. v. 2 for 3, 1 Sam. iii. 8 for 3).
+for _slug, _pairs in {
+    "the-dew-and-the-plants": [
+        ('spiritual life and growth,’ I will be as the dew unto Israel’;', 'spiritual life and growth, ‘I will be as the dew unto Israel’;'),
+        ('arrayed in the “beauty of holiness,’ and', 'arrayed in the ‘beauty of holiness,’ and'),
+    ],
+    "the-second-beatitude": [
+        ('the consolation of forgiveness arid of cleansing', 'the consolation of forgiveness and of cleansing'),
+    ],
+    "our-knocking": [
+        ('‘Go in and help yourselves,’ You stop', '‘Go in and help yourselves.’ You stop'),
+    ],
+    "the-peace-bringer-in-the-spiritual-world": [
+        ('The dear perception of divine purity', 'The clear perception of divine purity'),
+    ],
+    "the-peaceable-fruits-of-sorrows-rightly-borne": [
+        ('if we are Christ’ s.', 'if we are Christ’s.'),
+    ],
+    "caleb-a-green-old-age": [
+        ('Dear friends I the only thing', 'Dear friends! the only thing'),
+        ('when he says,’ Now, therefore, give me this mountain', 'when he says, ‘Now, therefore, give me this mountain'),
+        ('arid I shall drive them out', 'and I shall drive them out'),
+    ],
+    "elijahs-weakness-and-its-cure": [
+        ('but the Lord was not In the wind', 'but the Lord was not in the wind'),
+        ('What doest then here, Elijah!', 'What doest thou here, Elijah?'),
+        ('when it only nerved his courage I (verse 22)', 'when it only nerved his courage! (verse 22)'),
+        ('though Ahelmeholah, on Gilboa', 'though Abel-meholah, on Gilboa'),
+        ('is that we sire only links in a chain', 'is that we are only links in a chain'),
+    ],
+    "christ-in-the-covenant": [
+        ('just to mediate upon this great thought', 'just to meditate upon this great thought'),
+        ('Enthroned I glory now.', 'Enthroned in glory now.'),
+        ('in marks of indellible grace', 'in marks of indelible grace'),
+        ('AH! believer, “and of his fulness', 'Ah! believer, “and of his fulness'),
+        ('for thee to hold fast by God’s covenant mercies all go together', 'for thee to hold fast by. God’s covenant mercies all go together'),
+        ('dare not come at all. he could not lay hold', 'dare not come at all. He could not lay hold'),
+        ('4. Again, it was necessary that Christ', '3. Again, it was necessary that Christ'),
+        ('and not to use him. he loves to be worked', 'and not to use him. He loves to be worked'),
+        ('an so have I, and I am straitened', 'and so have I, and I am straitened'),
+        ('Now prayer one prayer, and verily', 'Now pray one prayer, and verily'),
+        ('Come, sinner, come and try, If Christ', 'Come, sinner, come and try. If Christ'),
+        ('draw them by this Spirit!', 'draw them by thy Spirit!'),
+    ],
+    "the-first-beatitude": [
+        ('Kingdom of Heaven.’—MATT. v. 2.', 'Kingdom of Heaven.’—MATT. v. 3.'),
+        ('encyclopæ¤©a', 'encyclopædia'),
+    ],
+    "heroic-faith": [
+        ('seek Him. . .. 23. So we', 'seek Him. . . . 23. So we'),
+        ('our God for this. . .. 31.', 'our God for this. . . . 31.'),
+    ],
+    "at-the-bush": [
+        ('I Think this is the only reference', 'I think this is the only reference'),
+        ('‘Goodwill’-the word, perhaps', '‘Goodwill’—the word, perhaps'),
+        ('along t he road in answer', 'along the road in answer'),
+        ('a very simple matter You never', 'a very simple matter. You never'),
+        ('getting the lower good You can', 'getting the lower good. You can'),
+    ],
+    "the-child-prophet": [
+        ('that he could not see; 8. And ere the lamp', 'that he could not see; 3. And ere the lamp'),
+        ('And he ran onto Eli', 'And he ran unto Eli'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Batch 7, the last two Maclaren sermons to 400: keying slips, raw import.
+for _slug, _pairs in {
+    "gods-requirements-and-gods-gift": [
+        ('—God ‘requires of me. The blessed sun', '—God ‘requires’ of me. The blessed sun'),
+        ('to ask, ‘Lord I what wilt Thou', 'to ask, ‘Lord! what wilt Thou'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)

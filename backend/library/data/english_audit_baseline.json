@@ -50,6 +50,9 @@
   "asking-in-christs-name": {
    "lost-paragraphing": 1
   },
+  "at-the-bush": {
+   "space-before-punct": 1
+  },
   "at-the-masters-feet": {
    "space-before-punct": 2
   },
@@ -63,11 +66,20 @@
   "bondage-of-the-will": {
    "orphan-close-quote": 2
   },
+  "brave-encouragements": {
+   "space-before-punct": 2
+  },
+  "caleb-a-green-old-age": {
+   "space-before-punct": 1
+  },
   "catholic-spirit": {
    "space-before-punct": 2
   },
   "cheque-book": {
    "space-before-punct": 1
+  },
+  "christ-in-the-covenant": {
+   "orphan-close-quote": 1
   },
   "christ-precious-to-believers": {
    "space-before-punct": 1
@@ -120,6 +132,9 @@
    "orphan-close-quote": 3,
    "space-before-punct": 11
   },
+  "elijahs-weakness-and-its-cure": {
+   "space-before-punct": 2
+  },
   "enchiridion": {
    "orphan-close-quote": 2
   },
@@ -171,6 +186,9 @@
   },
   "grace-for-grace-2": {
    "space-before-punct": 6
+  },
+  "heroic-faith": {
+   "space-before-punct": 4
   },
   "himself": {
    "space-before-punct": 1
@@ -471,6 +489,9 @@
   "the-burden-bearing-god": {
    "space-before-punct": 4
   },
+  "the-child-prophet": {
+   "space-before-punct": 4
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
   },
@@ -504,6 +525,9 @@
    "lost-paragraphing": 2,
    "word-fusion": 1
   },
+  "the-dew-and-the-plants": {
+   "space-before-punct": 3
+  },
   "the-dialogue-of-catherine-of-siena": {
    "lost-paragraphing": 30
   },
@@ -523,6 +547,9 @@
   },
   "the-first-apology": {
    "lost-paragraphing": 13
+  },
+  "the-first-beatitude": {
+   "space-before-punct": 6
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -638,6 +665,9 @@
   "the-scripture-way-of-salvation": {
    "space-before-punct": 1
   },
+  "the-search-that-always-finds": {
+   "space-before-punct": 4
+  },
   "the-secret-of-guidance": {
    "space-before-punct": 12
   },
@@ -706,11 +736,17 @@
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
   },
+  "what-life-may-be-made": {
+   "space-before-punct": 2
+  },
   "what-proves-gods-love": {
    "space-before-punct": 2
   },
   "what-the-bible-teaches": {
    "orphan-close-quote": 3
+  },
+  "when-the-oil-flows": {
+   "space-before-punct": 2
   },
   "who-is-the-rich-man-that-shall-be-saved": {
    "orphan-close-quote": 1
