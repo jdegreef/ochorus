@@ -23460,6 +23460,38 @@
 			"bar": 0,
 			"caps": false
 		},
+		"pt/they-were-young-1": {
+			"ground": "20d7ff84d7d84a40079c7207fd7353a1583cc0a4110507decae68c1ea9ef35dc",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[149, 328, 451, 404],
+					[197, 394, 403, 470]
+				],
+				"subtitle": [
+					[73, 528, 527, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"pt/things-as-they-are": {
 			"ground": "5780c763cad07fb9109345c4a41430c76b274c7a8190b96ac8e52a207b1b8fc9",
 			"style": "devotional",
@@ -23852,6 +23884,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
+		},
+		"refutation-of-all-heresies": {
+			"ground": "c9f39e184f830d40652fbd3ac887237bf76eae71c79f89c4eddb75bf550b29ac",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -28273,16 +28317,35 @@
 			]
 		},
 		"the-shepherd-of-hermas": {
-			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"ground": "14d6a49941e8184a04db791a2231f8a31930db3e9397ee6f8836d3f935a566f9",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[229, 102, 371, 131]
+				],
+				"title": [
+					[92, 314, 508, 390],
+					[144, 385, 456, 461]
+				],
+				"subtitle": [
+					[170, 481, 430, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
@@ -28611,6 +28674,18 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04,
+			"caps": false
+		},
+		"to-autolycus": {
+			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
