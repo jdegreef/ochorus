@@ -45,10 +45,14 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { onMount } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { allProgress, isFinished } from '$lib/progress';
 	import type { BookSummary } from '$lib/library-public';
+
+	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
+	$effect(() => holdFlag(document.documentElement, READING_FLAG));
 
 	const t = i18n.t;
 

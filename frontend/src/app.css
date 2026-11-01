@@ -1968,6 +1968,38 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	}
 }
 
+/* CANDLELIGHT (a reader pref, Lamplight only; app.html's boot script and
+   $lib/readerPrefs set `data-candle`): a warm pool of light at the top of any
+   page with reading text — chapters, sermons, a life, which hold
+   `data-reading` ($lib/presenceFlag) — as from a candle just above it. A plain see-through gradient, not a blend mode, and still once it
+   has faded in, so it costs nothing as the page scrolls. Above page-turn
+   mode's opaque page (z 5), below the reader's chrome (--z-pinned and up);
+   it never takes a tap. */
+:root[data-theme='dark'][data-candle][data-reading] body::before {
+	content: '';
+	position: fixed;
+	inset: 0 0 auto;
+	height: 80vh;
+	z-index: 6;
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 80% 55% at 50% 12%,
+		rgb(255 176 92 / 0.22),
+		rgb(255 150 60 / 0.08) 45%,
+		transparent 78%
+	);
+}
+@media (prefers-reduced-motion: no-preference) {
+	:root[data-theme='dark'][data-candle][data-reading] body::before {
+		animation: candle-in 1.2s ease-out;
+	}
+}
+@keyframes candle-in {
+	from {
+		opacity: 0;
+	}
+}
+
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
    default — a dotted underline in the accent tint — tappable to open the
    scripture popover (see ScripturePopover.svelte). */
@@ -2107,6 +2139,10 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	.paged-backdrop,
 	.scripture-pop,
 	.define-pop {
+		display: none !important;
+	}
+	/* Candlelight's glow is screen light, not ink. */
+	:root[data-candle] body::before {
 		display: none !important;
 	}
 

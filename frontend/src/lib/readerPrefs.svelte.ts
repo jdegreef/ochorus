@@ -376,6 +376,7 @@ class ReaderPrefs {
 		this.margin = rest.margin;
 		this.tapToScroll = rest.tapToScroll;
 		this.candlelight = rest.candlelight;
+		this.#applyCandle();
 		this.preferModern = rest.preferModern;
 		this.youngLayout = rest.youngLayout;
 		this.#loaded = true;
@@ -467,6 +468,12 @@ class ReaderPrefs {
 	setCandlelight(v: boolean) {
 		this.candlelight = v;
 		this.#save();
+		this.#applyCandle();
+	}
+	/** The `data-candle` attribute app.css draws the glow from (app.html's boot
+	 *  script sets it before first paint; this keeps it in step after). */
+	#applyCandle() {
+		if (browser) document.documentElement.toggleAttribute('data-candle', this.candlelight);
 	}
 	setPreferModern(v: boolean) {
 		this.preferModern = v;
@@ -487,6 +494,7 @@ class ReaderPrefs {
 		this.margin = DEFAULTS.margin;
 		this.tapToScroll = DEFAULTS.tapToScroll;
 		this.candlelight = DEFAULTS.candlelight;
+		this.#applyCandle();
 		this.preferModern = DEFAULTS.preferModern;
 		this.youngLayout = DEFAULTS.youngLayout;
 		this.#save();

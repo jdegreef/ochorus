@@ -131,6 +131,19 @@
 	];
 </script>
 
+<!-- A full-width opt-in switch: Candlelight, Tap to page down. -->
+{#snippet onOff(on: boolean, set: (v: boolean) => void, label: string)}
+	<button
+		class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
+		class:border-accent={on}
+		class:text-accent={on}
+		class:border-border-strong={!on}
+		class:text-muted={!on}
+		onclick={() => set(!on)}
+		aria-pressed={on}>{label}</button
+	>
+{/snippet}
+
 {#snippet panelBody()}
 	<!-- Live preview: the chapter's own opening line, restyled as the
 	     controls change, so a size/spacing/typeface choice shows its
@@ -203,18 +216,9 @@
 				>
 			{/each}
 		</div>
-		<!-- Lamplight only: a candle's glow over the top of the page. A single
-		     opt-in toggle, off by default, like Tap to page down below. -->
+		<!-- Lamplight only: a candle's glow over the page (app.css CANDLELIGHT). -->
 		{#if theme.current === 'dark'}
-			<button
-				class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
-				class:border-accent={readerPrefs.candlelight}
-				class:text-accent={readerPrefs.candlelight}
-				class:border-border-strong={!readerPrefs.candlelight}
-				class:text-muted={!readerPrefs.candlelight}
-				onclick={() => readerPrefs.setCandlelight(!readerPrefs.candlelight)}
-				aria-pressed={readerPrefs.candlelight}>{t('reader.candlelight')}</button
-			>
+			{@render onOff(readerPrefs.candlelight, (v) => readerPrefs.setCandlelight(v), t('reader.candlelight'))}
 		{/if}
 	</div>
 
@@ -352,15 +356,7 @@
 		     A single opt-in toggle, off by default — tapping the lower screen
 		     scrolls down a page. -->
 		{#if !readerPrefs.paged}
-			<button
-				class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
-				class:border-accent={readerPrefs.tapToScroll}
-				class:text-accent={readerPrefs.tapToScroll}
-				class:border-border-strong={!readerPrefs.tapToScroll}
-				class:text-muted={!readerPrefs.tapToScroll}
-				onclick={() => readerPrefs.setTapToScroll(!readerPrefs.tapToScroll)}
-				aria-pressed={readerPrefs.tapToScroll}>{t('reader.tapScroll')}</button
-			>
+			{@render onOff(readerPrefs.tapToScroll, (v) => readerPrefs.setTapToScroll(v), t('reader.tapScroll'))}
 		{/if}
 	</div>
 	{/if}

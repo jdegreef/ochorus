@@ -8,6 +8,7 @@
 	import { childrensReading, splitEdition } from '$lib/edition';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
 	import { chapterSeedTag } from '$lib/chapterSeed';
@@ -29,7 +30,6 @@
 		offerFinish
 	} from '$lib/progress';
 	import { readerPrefs, MARGIN } from '$lib/readerPrefs.svelte';
-	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { nextBarHidden } from '$lib/readerAutohide';
 	import FocusExit from '$lib/components/FocusExit.svelte';
@@ -92,6 +92,9 @@
 	import QandA from '$lib/components/QandA.svelte';
 	import { midBook } from '$lib/midBook.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
+
+	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
+	$effect(() => holdFlag(document.documentElement, READING_FLAG));
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
@@ -2072,12 +2075,6 @@
 	<PlanDayDone slug={planSlug} {day} oncomplete={completeDay} />
 {/snippet}
 
-<!-- Candlelight (Aa panel, Lamplight only): a warm glow pooled over the top of
-     the page, as from a candle just above it. Decoration; it never takes a tap. -->
-{#if readerPrefs.candlelight && theme.current === 'dark'}
-	<div class="candle-glow" aria-hidden="true"></div>
-{/if}
-
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events -->
 <article
 	bind:this={articleEl}
@@ -2786,45 +2783,7 @@
 	   as a translate on .pager — so printing it produced whichever single
 	   screenful was showing, shifted off the sheet by however many pages the
 	   reader had turned. Unwind the whole mechanism back to normal flow. */
-	/* The candle's light: a warm pool at the top of the viewport, screened
-	   over the page so it lifts the dark ground and the ink a little, as real
-	   light would, centred just under the header and fading out down the page. Fixed, under the
-	   reader's chrome, and it breathes very slowly where motion is welcome. */
-	.candle-glow {
-		position: fixed;
-		inset: 0 0 auto;
-		height: 80vh;
-		z-index: 0;
-		pointer-events: none;
-		background: radial-gradient(
-			ellipse 80% 55% at 50% 12%,
-			rgb(255 176 92 / 0.3),
-			rgb(255 150 60 / 0.1) 45%,
-			transparent 78%
-		);
-		mix-blend-mode: screen;
-	}
-	@media (prefers-reduced-motion: no-preference) {
-		.candle-glow {
-			animation: candle-breathe 7s ease-in-out infinite;
-		}
-	}
-	@keyframes candle-breathe {
-		0%,
-		100% {
-			opacity: 1;
-		}
-		35% {
-			opacity: 0.86;
-		}
-		60% {
-			opacity: 0.95;
-		}
-	}
 	@media print {
-		.candle-glow {
-			display: none;
-		}
 		article.paged {
 			position: static !important;
 			inset: auto !important;
