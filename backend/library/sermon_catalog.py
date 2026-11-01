@@ -2101,14 +2101,16 @@ SERMONS: list[SermonEntry] = [
     ),
     # Batch 6 toward 400 (2026-11): more of Maclaren's *Expositions* — Psalms,
     # Isaiah, John, Romans–Corinthians, the later Epistles, Mark — warm titles
-    # only, screened and read in full against the tone rubric.
+    # only, screened and read in full against the tone rubric. Read and dropped:
+    # nine, each for one aside or its close — on Jews (*Give Me to Drink*, *As I
+    # Have Loved*, *The Well-Spring of Salvation*), Roman Catholics (*Continual
+    # Prayer and Its Effects*), Islam (*The Warrior Peace*), other religions
+    # (*God's Yea; Man's Amen*), "the gipsy strain" (*Happy Pilgrims*), the
+    # Turkish government (*A Soul Gazing on God*), and a close on "outer
+    # darkness" (*What Men Find Beneath the Wings of God*).
     SermonEntry(
         "waiting-and-singing", "Waiting and Singing", "alexander-maclaren", "ccel",
         _MACLAREN + "psalms/psalms.iii.vii.html", scripture_ref="Psalm 59:9",
-    ),
-    SermonEntry(
-        "happy-pilgrims", "Happy Pilgrims", "alexander-maclaren", "ccel",
-        _MACLAREN + "psalms/psalms.iii.xvi.html", scripture_ref="Psalm 84:5-7",
     ),
     SermonEntry(
         "blessed-trust", "Blessed Trust", "alexander-maclaren", "ccel",
@@ -2135,16 +2137,8 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "psalms/psalms.ii.xxii.html", scripture_ref="Psalm 31:20",
     ),
     SermonEntry(
-        "what-men-find-beneath-the-wings-of-god", "What Men Find Beneath the Wings of God", "alexander-maclaren", "ccel",
-        _MACLAREN + "psalms/psalms.ii.xxviii.html", scripture_ref="Psalm 36:8-9",
-    ),
-    SermonEntry(
         "the-city-and-river-of-god", "The City and River of God", "alexander-maclaren", "ccel",
         _MACLAREN + "psalms/psalms.ii.xxxvi.html", scripture_ref="Psalm 46:4-7",
-    ),
-    SermonEntry(
-        "the-well-spring-of-salvation", "The Well-Spring of Salvation", "alexander-maclaren", "ccel",
-        _MACLAREN + "isa_jer/isa_jer.ii.i.xv.html", scripture_ref="Isaiah 12:3",
     ),
     SermonEntry(
         "the-rivers-of-god", "The Rivers of God", "alexander-maclaren", "ccel",
@@ -2159,16 +2153,8 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "isa_jer/isa_jer.ii.i.xxi.html", scripture_ref="Isaiah 26:1-2",
     ),
     SermonEntry(
-        "give-me-to-drink", "Give Me to Drink", "alexander-maclaren", "ccel",
-        _MACLAREN + "john1/john1.ii.xxiii.html", scripture_ref="John 4:7",
-    ),
-    SermonEntry(
         "the-way", "The Way", "alexander-maclaren", "ccel",
         _MACLAREN + "john1/john1.ii.lxvii.html", scripture_ref="John 14:4-7",
-    ),
-    SermonEntry(
-        "as-i-have-loved", "As I Have Loved", "alexander-maclaren", "ccel",
-        _MACLAREN + "john1/john1.ii.lxi.html", scripture_ref="John 13:34-35",
     ),
     SermonEntry(
         "abiding-in-love", "Abiding in Love", "alexander-maclaren", "ccel",
@@ -2191,24 +2177,12 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "rom_cor/rom_cor.ii.xxiv.html", scripture_ref="Romans 8:32",
     ),
     SermonEntry(
-        "gods-yea-mans-amen", "God's Yea; Man's Amen", "alexander-maclaren", "ccel",
-        _MACLAREN + "rom_cor/rom_cor.iv.i.html", scripture_ref="2 Corinthians 1:20",
-    ),
-    SermonEntry(
         "strength-in-weakness", "Strength in Weakness", "alexander-maclaren", "ccel",
         _MACLAREN + "iicor_tim/iicor_tim.ii.i.x.html", scripture_ref="2 Corinthians 12:8-9",
     ),
     SermonEntry(
-        "the-warrior-peace", "The Warrior Peace", "alexander-maclaren", "ccel",
-        _MACLAREN + "iicor_tim/iicor_tim.iii.i.v.html", scripture_ref="Philippians 4:7",
-    ),
-    SermonEntry(
         "how-to-say-thank-you", "How to Say 'Thank You'", "alexander-maclaren", "ccel",
         _MACLAREN + "iicor_tim/iicor_tim.iii.i.vii.html", scripture_ref="Philippians 4:10-14",
-    ),
-    SermonEntry(
-        "continual-prayer-and-its-effects", "Continual Prayer and Its Effects", "alexander-maclaren", "ccel",
-        _MACLAREN + "iicor_tim/iicor_tim.iii.iii.ix.html", scripture_ref="1 Thessalonians 5:16-18",
     ),
     SermonEntry(
         "the-toiling-christ", "The Toiling Christ", "alexander-maclaren", "ccel",
@@ -2217,9 +2191,5 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-heavenly-workers-and-the-earthly-watchers", "The Heavenly Workers and the Earthly Watchers", "alexander-maclaren", "ccel",
         _MACLAREN + "isa_jer/isa_jer.ii.ii.xxxii.html", scripture_ref="Isaiah 62:1",
-    ),
-    SermonEntry(
-        "a-soul-gazing-on-god", "A Soul Gazing on God", "alexander-maclaren", "ccel",
-        _MACLAREN + "isa_jer/isa_jer.ii.iii.xiii.html", scripture_ref="Jeremiah 17:12",
     ),
 ]
