@@ -30224,6 +30224,18 @@
 				480
 			]
 		},
+		"treatise-on-grace": {
+			"ground": "d6b53b4250ac2410bd69234d546abbd076347855d0a45e794f0abb9fee3b2496",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
+		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",
 			"style": "press",

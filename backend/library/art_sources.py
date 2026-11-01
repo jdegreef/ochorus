@@ -204,6 +204,7 @@ ART_SOURCES: dict[str, str] = {
     "thoughts-for-the-quiet-hour": "met-11329@0.47",
     "till-he-come": "met-437975@0.50",
     "to-autolycus": "met-438634@0.60~0.02",
+    "treatise-on-grace": "cma-173632@0.50",
     "treatise-on-the-love-of-god": "cma-150051@0.50",
     "treatises-of-cyprian": "cma-95268@0.50",
     "true-vine": "met-435809@0.45",

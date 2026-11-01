@@ -1514,6 +1514,11 @@ BOOKS: list[BookEntry] = [
     # whatsoever state I am, therewith to be content".
     BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
               "ccel", "watson/contentment", cover_color="#5a4a2e"),
+    # Jonathan Edwards's Treatise on Grace (published 1865 from his
+    # manuscripts) — CCEL's edwards/treatiseongrace: that saving grace differs
+    # from common grace in nature and kind, and is divine love itself.
+    BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
+              "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
