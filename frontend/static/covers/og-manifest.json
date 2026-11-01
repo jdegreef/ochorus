@@ -13727,7 +13727,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -23455,7 +23455,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -23907,6 +23907,37 @@
 			"layout": "split/navy",
 			"bar": 0,
 			"caps": false
+		},
+		"refutation-of-all-heresies": {
+			"ground": "ba68b6a808bf9590c4597789ab32c3c5869d123b4517ef82139bf6658f2ad08d",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[72, 314, 528, 376],
+					[72, 360, 528, 422]
+				],
+				"subtitle": [
+					[107, 451, 493, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
@@ -28326,16 +28357,35 @@
 			]
 		},
 		"the-shepherd-of-hermas": {
-			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"ground": "14d6a49941e8184a04db791a2231f8a31930db3e9397ee6f8836d3f935a566f9",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[229, 102, 371, 131]
+				],
+				"title": [
+					[92, 314, 508, 390],
+					[144, 385, 456, 461]
+				],
+				"subtitle": [
+					[170, 481, 430, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
@@ -28488,7 +28538,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -28667,16 +28717,34 @@
 			"caps": false
 		},
 		"to-autolycus": {
-			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"ground": "728c9aa1f397881c9df9206cbd5b584cf0689c0108e5fd8e96d12cc11befa9ea",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[74, 102, 526, 131]
+				],
+				"title": [
+					[69, 342, 531, 432]
+				],
+				"subtitle": [
+					[158, 452, 442, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",
