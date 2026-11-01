@@ -2197,34 +2197,16 @@ SERMONS: list[SermonEntry] = [
     # The 1860–61 Spurgeon picks (*Love to Jesus*, *Trust in God*, *The Shield of
     # Faith*, *Bread for the Hungry*, *The Fullness of Christ Received*) were
     # CCEL's modernised transcription (archaisms 3–15 per 10k, no -eth) and left.
-    SermonEntry(
-        "the-plea-of-faith", "The Plea of Faith", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons02/sermons02.xxxiv.html",
-    ),
-    SermonEntry(
-        "the-beatific-vision", "The Beatific Vision", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons02/sermons02.viii.html",
-    ),
-    SermonEntry(
-        "the-fatherhood-of-god", "The Fatherhood of God", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons04/sermons04.xlix.html",
-    ),
-    SermonEntry(
-        "the-fainting-warrior", "The Fainting Warrior", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons05/sermons05.xii.html", scripture_ref="Romans 7:24-25",
-    ),
-    SermonEntry(
-        "weak-hands-and-feeble-knees", "Weak Hands and Feeble Knees", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons05/sermons05.xx.html", scripture_ref="Isaiah 35:3",
-    ),
-    SermonEntry(
-        "a-sense-of-pardoned-sin", "A Sense of Pardoned Sin", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons06/sermons06.xxx.html", scripture_ref="Isaiah 38:17",
-    ),
-    SermonEntry(
-        "the-river-of-life", "The River of Life", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.ii.ii.v.html", scripture_ref="Ezekiel 47:1-12",
-    ),
+    # Read in full and dropped for tone, 17 of 30, each for an aside or its
+    # close: polemic against Arminians, Wesleyans, free-will preaching, heretics
+    # or denominations (*The Beatific Vision*, *The Plea of Faith*, *The Fainting
+    # Warrior*, *God in the Covenant*, *Weak Hands and Feeble Knees*, *Plenteous
+    # Redemption*); against Rome (*Our Father*, *God and His Saints*); on Jews or
+    # "heathen" (*The Third Beatitude*, *God the Joy-Bringer*, *The Fatherhood of
+    # God*, *Anxious Care*, *The River of Life*); "Red Indians" (*Shod for the
+    # Road*); closes on judgment or hell (*All Things Are Yours*, *The Afterwards
+    # and Our Hope*, *A Sense of Pardoned Sin*). The Spurgeon of 1856–59 fails
+    # the rubric far more often than Maclaren; a top-up of Maclaren follows.
     SermonEntry(
         "the-dew-and-the-plants", "The Dew and the Plants", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.ii.iv.vii.html", scripture_ref="Hosea 14:5-6",
@@ -2232,18 +2214,6 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-second-beatitude", "The Second Beatitude", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.iii.xvi.html", scripture_ref="Matthew 5:4",
-    ),
-    SermonEntry(
-        "the-third-beatitude", "The Third Beatitude", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xvii.html", scripture_ref="Matthew 5:5",
-    ),
-    SermonEntry(
-        "our-father", "Our Father", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xxxii.html", scripture_ref="Matthew 6:9",
-    ),
-    SermonEntry(
-        "anxious-care", "Anxious Care", "alexander-maclaren", "ccel",
-        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xliv.html", scripture_ref="Matthew 6:24-25",
     ),
     SermonEntry(
         "our-knocking", "Our Knocking", "alexander-maclaren", "ccel",
@@ -2262,10 +2232,6 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.xi.html", scripture_ref="2 Chronicles 20:20",
     ),
     SermonEntry(
-        "god-the-joy-bringer", "God the Joy-Bringer", "alexander-maclaren", "ccel",
-        _MACLAREN + "2kings_eccl/2kings_eccl.ii.v.v.html", scripture_ref="Ezra 6:22",
-    ),
-    SermonEntry(
         "keeping-and-kept", "Keeping and Kept", "alexander-maclaren", "ccel",
         _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.viii.html", scripture_ref="Proverbs 4:23",
     ),
@@ -2278,10 +2244,6 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "deut/deut.ii.ii.viii.html", scripture_ref="Deuteronomy 32:11",
     ),
     SermonEntry(
-        "shod-for-the-road", "Shod for the Road", "alexander-maclaren", "ccel",
-        _MACLAREN + "deut/deut.ii.ii.xiii.html", scripture_ref="Deuteronomy 33:25",
-    ),
-    SermonEntry(
         "caleb-a-green-old-age", "Caleb—A Green Old Age", "alexander-maclaren", "ccel",
         _MACLAREN + "deut/deut.ii.iii.xii.html", scripture_ref="Joshua 14:6-14",
     ),
@@ -2290,31 +2252,59 @@ SERMONS: list[SermonEntry] = [
         _MACLAREN + "deut/deut.iii.iii.xix.html", scripture_ref="1 Kings 19:1-18",
     ),
     SermonEntry(
-        "god-in-the-covenant", "God in the Covenant", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons02/sermons02.xxxix.html",
-    ),
-    SermonEntry(
         "christ-in-the-covenant", "Christ in the Covenant", "charles-h-spurgeon", "ccel",
         _CCEL + "sermons02/sermons02.xlix.html",
-    ),
-    SermonEntry(
-        "plenteous-redemption", "Plenteous Redemption", "charles-h-spurgeon", "ccel",
-        _CCEL + "sermons07/sermons07.iv.html", scripture_ref="Psalm 130:7",
-    ),
-    SermonEntry(
-        "god-and-his-saints", "God and His Saints", "alexander-maclaren", "ccel",
-        _MACLAREN + "deut/deut.ii.ii.x.html", scripture_ref="Deuteronomy 33:3",
-    ),
-    SermonEntry(
-        "all-things-are-yours", "All Things Are Yours", "alexander-maclaren", "ccel",
-        _MACLAREN + "deut/deut.ii.iv.iv.html", scripture_ref="Judges 5:20",
     ),
     SermonEntry(
         "the-first-beatitude", "The First Beatitude", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.iii.xv.html", scripture_ref="Matthew 5:3",
     ),
     SermonEntry(
-        "the-afterwards-and-our-hope", "The Afterwards and Our Hope", "alexander-maclaren", "ccel",
-        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.xxvi.html", scripture_ref="Proverbs 23:17-18",
+        "a-dew-from-the-lord", "A Dew from the Lord", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.iv.html", scripture_ref="Micah 5:7",
+    ),
+    SermonEntry(
+        "the-cry-for-bread", "The Cry for Bread", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.xxxvi.html", scripture_ref="Matthew 6:11",
+    ),
+    SermonEntry(
+        "the-healing-christ", "The Healing Christ", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.liii.html", scripture_ref="Matthew 8:17",
+    ),
+    SermonEntry(
+        "the-faith-which-christ-praises", "The Faith Which Christ Praises", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.iii.li.html", scripture_ref="Matthew 8:8-9",
+    ),
+    SermonEntry(
+        "brave-encouragements", "Brave Encouragements", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.x.ii.html", scripture_ref="Haggai 2:1-9",
+    ),
+    SermonEntry(
+        "the-secret-of-victory", "The Secret of Victory", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.iv.iii.html", scripture_ref="2 Chronicles 13:18",
+    ),
+    SermonEntry(
+        "what-life-may-be-made", "What Life May Be Made", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.viii.vi.html", scripture_ref="Job 22:26-29",
+    ),
+    SermonEntry(
+        "heroic-faith", "Heroic Faith", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.v.vi.html", scripture_ref="Ezra 8:22-23",
+    ),
+    SermonEntry(
+        "at-the-bush", "At the Bush", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.ii.xii.html", scripture_ref="Deuteronomy 33:16",
+    ),
+    SermonEntry(
+        "when-the-oil-flows", "When the Oil Flows", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iv.v.html", scripture_ref="2 Kings 4:6",
+    ),
+    SermonEntry(
+        "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
+    ),
+    SermonEntry(
+        "jonathan-the-pattern-of-friendship", "Jonathan, the Pattern of Friendship", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.ii.vi.xiii.html", scripture_ref="1 Samuel 20:1-13",
     ),
 ]
