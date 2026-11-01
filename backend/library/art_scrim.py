@@ -239,6 +239,7 @@ ART_SCRIM: dict[str, float] = {
     "the-bruised-reed-teens": 0.30,
     "the-christians-secret-of-a-happy-life-4": 0.45,
     "the-consolation-of-philosophy": 0.85,
+    "the-crook-in-the-lot": 0.80,
     "the-death-of-death-in-the-death-of-christ": 0.65,
     "the-dialogue-of-catherine-of-siena": 0.65,
     "the-divine-institutes": 0.50,

@@ -105,6 +105,7 @@ TOPICS = [
             "he-holds-my-tomorrows",
             "the-way-to-god",
             "all-things-for-good",
+            "the-crook-in-the-lot",
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",

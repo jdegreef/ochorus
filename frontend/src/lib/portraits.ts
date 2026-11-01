@@ -161,6 +161,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
 	'theophilus-of-antioch': '50% 15%', // Cave engraving (17th c.) cropped to the bust; face at ~25%
 	'thomas-a-kempis': '50% 0%',
+	'thomas-boston': '50% 0%', // engraved oval cropped to the bust; face high in a 0.81 crop
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
 	'tiyo-soga': '50% 0%', // carte-de-visite photo; face at ~27% of a 0.75 plate

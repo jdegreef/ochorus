@@ -161,6 +161,7 @@ ART_SOURCES: dict[str, str] = {
     "the-bruised-reed": "cma-140341@0.50",
     "the-city-of-god": "cma-150353@0.10",
     "the-consolation-of-philosophy": "met-437973@0.50",
+    "the-crook-in-the-lot": "cma-150021@0.50",
     "the-death-of-death-in-the-death-of-christ": "met-437526@0.50",
     "the-dialogue-of-catherine-of-siena": "met-438644@0.50",
     "the-divine-institutes": "met-435756@0.50",

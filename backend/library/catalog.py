@@ -764,6 +764,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Flavel (c. 1627–1691) was an English Puritan minister of Dartmouth in Devon, ejected in 1662 and long forced to preach in secret."
         ),
     ),
+    "thomas-boston": AuthorEntry(
+        slug="thomas-boston",
+        name="Thomas Boston",
+        birth_year=1676,
+        death_year=1732,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Thomas Boston (1676–1732) was a Scottish Presbyterian minister of Simprin and Ettrick, author of Human Nature in its Fourfold State and a leader of the Marrow Men."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1454,6 +1465,18 @@ BOOKS: list[BookEntry] = [
               "ccel", "flavel/grace",
               subtitle="In the Holy Spirit’s Applying to the Souls of Men the Eternal Redemption Contrived by the Father and Accomplished by the Son",
               cover_color="#5c3e2e"),
+    # Thomas Boston's The Crook in the Lot (1737, posthumous): his sermons on
+    # Ecclesiastes 7:13, Proverbs 16:19 and 1 Peter 5:6 on bearing the
+    # afflictions God appoints. CCEL's boston/crook is an unattributed
+    # modernised rewording, so the text is built from three archive.org scans —
+    # the 1852 printing (this ref) as base, the 1839 and Nisbet's 1832 as
+    # voters — by word-level majority vote, then proofread against all three.
+    # The chapters follow the six heads of the work (three propositions on the
+    # first text, one doctrine on the second, two on the third).
+    BookEntry("the-crook-in-the-lot", "The Crook in the Lot", "thomas-boston",
+              "archive", "crookinlotordisp00bost",
+              subtitle="The Sovereignty and Wisdom of God in the Afflictions of Men Displayed",
+              cover_color="#4a3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
