@@ -22797,6 +22797,35 @@
 				534
 			]
 		},
+		"pt/samuel-ajayi-crowther-a-life-children": {
+			"ground": "94c329f6eb545063edb18b870e9512d9337538b214444843a0c3dc5d254574d4",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 280, 464, 355],
+					[178, 341, 422, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
+		},
 		"pt/school-of-prayer": {
 			"ground": "f338063ad6f7c108b18ec198afb321202e8984d47b1e76f6f197814933e88f4a",
 			"style": "devotional",
