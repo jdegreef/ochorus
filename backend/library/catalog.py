@@ -1309,6 +1309,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # John Owen's A Treatise of the Dominion of Sin and Grace (1688) — CCEL's
+    # owen/sin_grace, Goold's edition: on Romans 6:14.
+    BookEntry("the-dominion-of-sin-and-grace", "The Dominion of Sin and Grace", "john-owen",
+              "ccel", "owen/sin_grace", cover_color="#3a2e4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

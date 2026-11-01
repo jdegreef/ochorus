@@ -159,6 +159,7 @@ ART_SOURCES: dict[str, str] = {
     "the-death-of-death-in-the-death-of-christ": "met-437526@0.50",
     "the-dialogue-of-catherine-of-siena": "met-438644@0.50",
     "the-divine-institutes": "met-435756@0.50",
+    "the-dominion-of-sin-and-grace": "met-438950@0.50~0.02",
     "the-epistles-of-cyprian": "cma-152765@0.50",
     "the-everlasting-man": "met-436570@0.50",
     "the-first-apology": "cma-151882@0.50",
