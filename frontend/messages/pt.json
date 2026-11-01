@@ -1594,5 +1594,15 @@
   "together_counted": "Você é contado nos totais do grupo",
   "together_count_stop": "Deixar de me contar",
   "together_count_me": "Contar-me nos totais",
-  "together_count_sign_in_join": "Entre para ser contado nos totais do grupo"
+  "together_count_sign_in_join": "Entre para ser contado nos totais do grupo",
+  "daily_title": "Hoje nos devocionais",
+  "daily_subtitle": "Uma leitura para cada dia do ano, dos devocionais clássicos",
+  "daily_see_all": "Todas as leituras de hoje",
+  "daily_prev_day": "Dia anterior",
+  "daily_next_day": "Próximo dia",
+  "daily_back_to_today": "Voltar para hoje",
+  "daily_in_context": "Ler no livro",
+  "daily_missing_day": "Este livro não tem leitura para esta data; aqui está a do dia anterior.",
+  "daily_choose_date": "Escolher uma data",
+  "daily_none": "Ainda não há leituras diárias neste idioma."
 }
