@@ -1331,6 +1331,17 @@ CURATED: dict[str, Artwork] = {
         "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
         "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
     ),
+    # ── Batch 31 · two more that landed on plates as the gate went in ─────────
+    "to-autolycus": Artwork(
+        "met", 438634, "Jules Coignet", "View of Beirut", "1844",
+        "A white town above a calm sea on the Syrian coast near Antioch, under a wide clear sky: Theophilus's own shore, and the creation he asks his friend to see whole.",
+        focus=0.60, inset=0.02,
+    ),
+    "refutation-of-all-heresies": Artwork(
+        "met", 10500, "Thomas Cole", "A View near Tivoli (Morning)", "1832",
+        "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
+        focus=0.75,
+    ),
     # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
     "gospel-of-john": Artwork(
         "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
