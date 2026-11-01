@@ -78,6 +78,7 @@ TOPICS = [
             "on-loving-god",
             "the-life-of-god-in-the-soul-of-man",
             "the-christians-secret-of-a-happy-life-4",
+            "the-deeper-christian-life",
             "purity-of-heart",
             "way-into-holiest",
             "watchman-nee-a-life",

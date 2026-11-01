@@ -85,6 +85,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-bruised-reed-teens': 0.110,
 	'the-city-of-god': 0.100,
 	'the-death-of-death-in-the-death-of-christ': 0.050,
+	'the-deeper-christian-life': 0.095,
 	'the-everlasting-man': 0.065,
 	'the-glowstone-bargain': 0.110,
 	'the-hill-of-cinders': 0.110,

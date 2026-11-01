@@ -1309,6 +1309,10 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Andrew Murray's The Deeper Christian Life (1895) — CCEL's murray/deeper:
+    # seven addresses and a closing word on consecration.
+    BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",
+              "ccel", "murray/deeper", skip=("Title Page",), cover_color="#2e3e4a"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,

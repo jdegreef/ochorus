@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "the-deeper-christian-life": Artwork(
+        "met", 461186, "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)", "Hudson River Scene", "1830–50", "A still river lying deep between mountains: the quiet depth Murray calls the believer into.",
+        focus=0.10, inset=0.01,
+    ),
 }
 
 

@@ -157,6 +157,7 @@ ART_SOURCES: dict[str, str] = {
     "the-city-of-god": "cma-150353@0.10",
     "the-consolation-of-philosophy": "met-437973@0.50",
     "the-death-of-death-in-the-death-of-christ": "met-437526@0.50",
+    "the-deeper-christian-life": "met-461186@0.10~0.01",
     "the-dialogue-of-catherine-of-siena": "met-438644@0.50",
     "the-divine-institutes": "met-435756@0.50",
     "the-epistles-of-cyprian": "cma-152765@0.50",
