@@ -26760,6 +26760,18 @@
 				496
 			]
 		},
+		"sw/purpose-in-prayer": {
+			"ground": "9b04d934b37c5b9a47d6eda123418b76edc2687a7b34e3e6631d5ba0bc14d91c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/revival-lectures": {
 			"ground": "26ff9dff8abe93ca52c12099dd0e26aabb0a3da5aad22a6f29570d3db3433b43",
 			"style": "revival",
