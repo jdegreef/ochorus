@@ -1389,6 +1389,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("table-talk", "Table Talk", "martin-luther",
               "gutenberg", "9841",
               subtitle="Translated by Henry Bell", cover_color="#5c4a2e"),
+    # Parochial and Plain Sermons, Volume VII (Gutenberg #24256) — eighteen of
+    # the sermons Newman preached as vicar of St Mary's, Oxford (1834–1843),
+    # in the Rivingtons edition. Built from a reshaped copy of the PG HTML
+    # (one <h2> per sermon, titled from its own title line).
+    BookEntry("parochial-and-plain-sermons-vii", "Parochial and Plain Sermons, Volume VII",
+              "john-henry-newman", "gutenberg", "24256", cover_color="#3e3e5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

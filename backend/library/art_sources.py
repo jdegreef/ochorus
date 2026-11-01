@@ -116,6 +116,7 @@ ART_SOURCES: dict[str, str] = {
     "orthodoxy": "cma-125234@0.50",
     "our-daily-walk": "aic-890@0.50",
     "pandita-ramabai-a-life": "wikidata-112062313@0.50",
+    "parochial-and-plain-sermons-vii": "met-438954@0.40~0.06",
     "pensees": "aic-56905@0.20",
     "phantastes": "met-437655@0.50",
     "pilgrims-progress": "met-459103@0.50",

@@ -1405,6 +1405,12 @@ CURATED: dict[str, Artwork] = {
         focus=0.65,
         inset=0.04,
     ),
+    "parochial-and-plain-sermons-vii": Artwork(
+        "met", 438954, "Johan Christian Dahl", "Mother and Child by the Sea", "1830",
+        "A mother and child on a dark shore watching a boat under the moon: \"The night is dark, and I am far from home\" — Newman's \"Lead, Kindly Light\", written at sea in the years of these sermons at St Mary's, Oxford.",
+        focus=0.4,
+        inset=0.06,
+    ),
     "gods-way-of-peace": Artwork(
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
