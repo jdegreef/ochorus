@@ -163,7 +163,7 @@
 			</a>
 		{/if}
 		<!-- The seals this finish pressed (a first finish, a writer's third…). -->
-		<SealsEarned slug={book.slug} />
+		<SealsEarned slug={book.slug} {celebrate} />
 		<div class="mt-6 flex flex-wrap justify-center gap-2">
 			<ShareButton url={shareUrl} title={book.title} showLabel />
 			<BookDownloadMenu {book} />

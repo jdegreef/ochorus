@@ -41,13 +41,14 @@
 		delay = '0s'
 	}: { id: SealId; state: SealState; size?: string; stamp?: boolean; delay?: string } = $props();
 	const earned = $derived(state === 'earned');
+	const stamping = $derived(stamp && earned);
 </script>
 
 <svg
 	class="seal-mark"
 	class:earned
 	class:progress={state === 'progress'}
-	class:stamp={stamp && earned}
+	class:stamp={stamping}
 	viewBox="0 0 100 100"
 	style:width={size}
 	style:height={size}
@@ -56,7 +57,7 @@
 	aria-hidden="true"
 	focusable="false"
 >
-	{#if stamp && earned}
+	{#if stamping}
 		<circle class="spread" cx="50" cy="50" r="40" />
 	{/if}
 	<path class="wax" d={BLOB} />
@@ -146,12 +147,9 @@
 	/* The stamp: the seal comes down from above, squashes as it meets the
 	   page and settles, while the wax pushed out from under it rings away.
 	   Both fill backwards, so the resting frame is the plain earned seal.
-	   Reduced motion drops them outright: the global rule would shorten the
-	   stamp but keep its delay, leaving a blank where the seal blinks in. */
-	.stamp {
-		transform-origin: 50% 60%;
-		animation: seal-stamp 0.55s cubic-bezier(0.5, 0, 0.6, 1.5) var(--stamp-delay) backwards;
-	}
+	   Opt-in under no-preference: the global reduced-motion rule shortens an
+	   animation but keeps its delay, which would leave a blank where the seal
+	   blinks in late. */
 	.spread {
 		fill: none;
 		stroke: var(--wax);
@@ -159,7 +157,15 @@
 		opacity: 0;
 		transform-box: fill-box;
 		transform-origin: center;
-		animation: seal-spread 0.7s ease-out calc(var(--stamp-delay) + 0.4s);
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.stamp {
+			transform-origin: 50% 60%;
+			animation: seal-stamp 0.55s cubic-bezier(0.5, 0, 0.6, 1.5) var(--stamp-delay) backwards;
+		}
+		.spread {
+			animation: seal-spread 0.7s ease-out calc(var(--stamp-delay) + 0.4s);
+		}
 	}
 	@keyframes seal-stamp {
 		0% {
@@ -180,12 +186,6 @@
 		to {
 			transform: scale(1.5);
 			opacity: 0;
-		}
-	}
-	@media (prefers-reduced-motion: reduce) {
-		.stamp,
-		.spread {
-			animation: none;
 		}
 	}
 	@media print {
