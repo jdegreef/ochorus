@@ -28,7 +28,7 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand, CommandError
 
-from library.models import Quote
+from library.models import QUOTE_SOURCE_UNSERVED, Quote
 
 
 class Command(BaseCommand):
@@ -40,8 +40,10 @@ class Command(BaseCommand):
         parser.add_argument("--list", action="store_true", help="Print, approve nothing.")
 
     def handle(self, *args, **opts):
-        qs = Quote.objects.filter(author__slug=opts["author"]).select_related(
-            "chapter__book", "sermon"
+        qs = (
+            Quote.objects.filter(author__slug=opts["author"])
+            .select_related("chapter__book", "sermon")
+            .defer(*QUOTE_SOURCE_UNSERVED)
         )
         if opts["slug"]:
             qs = qs.filter(slug__in=opts["slug"])
