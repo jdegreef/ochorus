@@ -478,6 +478,13 @@
   "the-appearing-of-the-grace-of-god": {
    "space-before-punct": 4
   },
+  "the-art-of-divine-contentment": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
+  "the-beatitudes": {
+   "orphan-close-quote": 1
+  },
   "the-body-of-christ-a-reality": {
    "run-together": 1,
    "space-before-punct": 2
@@ -523,6 +530,9 @@
   "the-death-of-death-in-the-death-of-christ": {
    "lost-paragraphing": 2,
    "word-fusion": 1
+  },
+  "the-deeper-christian-life": {
+   "orphan-close-quote": 3
   },
   "the-dew-and-the-plants": {
    "space-before-punct": 3
@@ -603,6 +613,9 @@
   },
   "the-lord-is-risen-indeed": {
    "space-before-punct": 5
+  },
+  "the-lords-prayer": {
+   "orphan-close-quote": 1
   },
   "the-love-of-the-departing-christ": {
    "space-before-punct": 6
@@ -687,6 +700,9 @@
   },
   "the-toiling-christ": {
    "space-before-punct": 2
+  },
+  "the-two-covenants": {
+   "orphan-close-quote": 1
   },
   "the-use-of-money": {
    "orphan-close-quote": 2,

@@ -1383,6 +1383,21 @@ BOOKS: list[BookEntry] = [
     # chapters on the veil of the tabernacle, rent at the cross.
     BookEntry("the-rent-veil", "The Rent Veil", "horatius-bonar",
               "ccel", "bonar/rentveil", skip=("Title Page",), cover_color="#4a2e2e"),
+    # Andrew Murray's The Deeper Christian Life (1895) — CCEL's murray/deeper:
+    # seven addresses and a closing word on consecration.
+    BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",
+              "ccel", "murray/deeper", skip=("Title Page",), cover_color="#2e3e4a"),
+    # Andrew Murray's The School of Obedience (1898) — CCEL's murray/obedience.
+    BookEntry("the-school-of-obedience", "The School of Obedience", "andrew-murray",
+              "ccel", "murray/obedience", skip=("Title Page",), cover_color="#3a4a3e"),
+    # Thomas Watson's The Lord's Prayer (1692) — CCEL's watson/prayer: the
+    # preface and six petitions, the third part of his Body of Practical Divinity.
+    BookEntry("the-lords-prayer", "The Lord's Prayer", "thomas-watson",
+              "ccel", "watson/prayer", skip=("Title Page", "Contents"), cover_color="#3e4a3a"),
+    # Thomas Watson's The Beatitudes (1660) — CCEL's watson/beatitudes: his
+    # exposition of Matthew 5:1-12, twenty-one chapters and an appendix.
+    BookEntry("the-beatitudes", "The Beatitudes", "thomas-watson",
+              "ccel", "watson/beatitudes", skip=("Title Page",), cover_color="#4a3a2e"),
     # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
     # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
     # death — Roberts and Donaldson's ANF translation (1885), public domain,
@@ -1513,6 +1528,21 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
               "ccel", "ryle/upper_room", group_parts=True,
               cover_color="#3a3e5a"),
+    # Thomas Watson's The Art of Divine Contentment (1653) — CCEL's
+    # watson/contentment: his treatise on Philippians 4:11, "I have learned, in
+    # whatsoever state I am, therewith to be content".
+    BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
+              "ccel", "watson/contentment", cover_color="#5a4a2e"),
+    # Jonathan Edwards's Treatise on Grace (published 1865 from his
+    # manuscripts) — CCEL's edwards/treatiseongrace: that saving grace differs
+    # from common grace in nature and kind, and is divine love itself.
+    BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
+              "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
+    # Andrew Murray's The Two Covenants (1898) — CCEL's murray/covenants: the
+    # old covenant and the new, and the life of the believer under the second.
+    BookEntry("the-two-covenants", "The Two Covenants", "andrew-murray",
+              "ccel", "murray/covenants", subtitle="And the Second Blessing",
+              cover_color="#2e4a5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
