@@ -1331,6 +1331,13 @@ CURATED: dict[str, Artwork] = {
         "met", 816621, "Giovanni Benedetto Castiglione (Il Grechetto)", "Roman Landscape with a Shepherd and Sheep", "late 1640s",
         "A shepherd and his flock in the country outside Rome: Hermas's visions come to him on the roads around the city, and the angel of repentance meets him dressed as a shepherd.",
     ),
+    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
+    "gospel-of-john": Artwork(
+        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
+        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
+        focus=0.4,
+        inset=0.03,
+    ),
 }
 
 
