@@ -163,6 +163,7 @@ TOPICS = [
         "pleading with the unconverted, and the testimony of grace found by the "
         "chief of sinners.",
         [
+            "gospel-of-john",
             "a-call-to-the-unconverted",
             "a-practical-view-of-christianity",
             "the-rise-and-progress-of-religion-in-the-soul",

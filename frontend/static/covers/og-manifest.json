@@ -89,16 +89,36 @@
 			]
 		},
 		"a-practical-view-of-christianity": {
-			"ground": "4627e6efa0ab1ab68ad36eb062a1e1f59ea59633042291456010f4c3241456f9",
+			"ground": "5c44018fe06cdf1a916ab0df36d8c28112f6d4f88dd548c43448c918c468c059",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.6,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[93, 102, 507, 131]
+				],
+				"title": [
+					[91, 275, 509, 338],
+					[110, 337, 490, 400]
+				],
+				"subtitle": [
+					[54, 463, 546, 491],
+					[70, 491, 530, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
+			]
 		},
 		"a-retrospect": {
 			"ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
@@ -262,16 +282,35 @@
 			]
 		},
 		"against-marcion": {
-			"ground": "6dc97c5f94c2aa88587a37718325a5076dcd3d298b65c7b28372b329d2c05ae2",
+			"ground": "f7dd679fc16feb294a825d5644f122968f4ba1fe19cac0cec4548d4ba12d4d34",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[191, 102, 409, 131]
+				],
+				"title": [
+					[153, 300, 447, 379],
+					[137, 358, 463, 437]
+				],
+				"subtitle": [
+					[115, 463, 485, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
@@ -13751,7 +13790,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -14131,6 +14170,38 @@
 			"middle": [
 				294,
 				501
+			]
+		},
+		"gospel-of-john": {
+			"ground": "0019607f856c4418dab3b8e9a561fd1826162f10043718fec483d8d61576b928",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[133, 300, 467, 376],
+					[189, 371, 411, 447]
+				],
+				"subtitle": [
+					[145, 467, 455, 495],
+					[150, 495, 450, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
 			]
 		},
 		"grace-abounding": {
@@ -15536,14 +15607,14 @@
 			]
 		},
 		"homilies-on-the-first-epistle-of-john": {
-			"ground": "4acc65defdc5e0bda7881ab9bbc3434b90117a4314a2a7576bc64f83208e4f15",
+			"ground": "c68f98e793fc8ff9e76351738c75005c5752f33e30b44b0e7a850a729dc82eba",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "rail/rust",
 			"bar": 0,
 			"caps": false
 		},
@@ -18727,16 +18798,35 @@
 			]
 		},
 		"letters-of-jerome": {
-			"ground": "15ba87245003619b2ba9703121c3554266fe29412db0d047bd2b92fb0ccb4cd8",
+			"ground": "e016908bfd793497e2b064298096945d33e4578edbbda12b554c7d5518c17c06",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[232, 102, 368, 131]
+				],
+				"title": [
+					[126, 314, 474, 376],
+					[106, 360, 494, 422]
+				],
+				"subtitle": [
+					[101, 451, 499, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
@@ -21131,16 +21221,33 @@
 			]
 		},
 		"parochial-and-plain-sermons-vii": {
-			"ground": "effd4d1319f0cb4434dc7b7c38ee96a50ad0129c2627d6ba45be0c8083ae122d",
+			"ground": "99976beec1428b8ff352a0c35eec7056c2e630b518bfb7f13d31e939d5a22eec",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[121, 293, 479, 369],
+					[103, 359, 497, 435],
+					[157, 424, 443, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
@@ -23515,7 +23622,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -23936,16 +24043,35 @@
 			"caps": false
 		},
 		"refutation-of-all-heresies": {
-			"ground": "c9f39e184f830d40652fbd3ac887237bf76eae71c79f89c4eddb75bf550b29ac",
+			"ground": "ba68b6a808bf9590c4597789ab32c3c5869d123b4517ef82139bf6658f2ad08d",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[107, 102, 493, 131]
+				],
+				"title": [
+					[72, 314, 528, 376],
+					[72, 360, 528, 422]
+				],
+				"subtitle": [
+					[107, 451, 493, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"religious-affections": {
 			"ground": "f08da596078f54e62ce2185d38705028382066fe51e4fc47d6bd74151b2399d8",
@@ -26735,16 +26861,34 @@
 			]
 		},
 		"table-talk": {
-			"ground": "9388a5d65596edbec4897d10bb1427ca2dbb3f1f814918487e2935a87939000b",
+			"ground": "fdb8a1617f5e510bcb31dfab8204bf06e5d1fbb81bb16c2af2b9b80f0b8f6110",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[137, 327, 463, 420]
+				],
+				"subtitle": [
+					[132, 471, 468, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				303,
+				492
+			]
 		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
@@ -27931,16 +28075,35 @@
 			]
 		},
 		"the-instructor": {
-			"ground": "1424ffb9b630c573bca497a3afc00921a61261d1ea79ae5dcdd88f1ae32d84ec",
+			"ground": "b3b80d1af2f43acaa5b4dcabaf5f70d96596e2dc8a896dc5af68a80663330f58",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[73, 102, 527, 131]
+				],
+				"title": [
+					[233, 300, 367, 379],
+					[82, 358, 518, 437]
+				],
+				"subtitle": [
+					[103, 463, 497, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
@@ -28570,7 +28733,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.6,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
@@ -28749,16 +28912,34 @@
 			"caps": false
 		},
 		"to-autolycus": {
-			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"ground": "728c9aa1f397881c9df9206cbd5b584cf0689c0108e5fd8e96d12cc11befa9ea",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[74, 102, 526, 131]
+				],
+				"title": [
+					[69, 342, 531, 432]
+				],
+				"subtitle": [
+					[158, 452, 442, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"treatise-on-the-love-of-god": {
 			"ground": "b581731f86d4e9ef2a564fba028378cc987de1412decd10b0a0d923103093ecb",

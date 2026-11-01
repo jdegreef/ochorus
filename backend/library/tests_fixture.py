@@ -615,9 +615,11 @@ class SeedFieldCoverageTests(SimpleTestCase):
         from library.management.commands.seed_books import BOOK_FIELDS
         from library.models import Book
 
+        # search_vector is derived by save() (library/fts.py), like a chapter's.
         expected = self._content_fields(
             Book,
-            exclude={"id", "author", "series", "slug", "language", "created_at", "updated_at"},
+            exclude={"id", "author", "series", "slug", "language", "created_at",
+                     "updated_at", "search_vector"},
         )
         self.assertEqual(set(BOOK_FIELDS), expected)
 
