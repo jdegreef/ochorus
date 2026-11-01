@@ -99,7 +99,6 @@ from .serializers import (
     plan_article_index,
     plan_book_index,
     plan_chapter_index,
-    plan_entry_index,
     sermon_topic_map,
 )
 
@@ -606,6 +605,36 @@ def _plan_cards(language: str):
         .prefetch_related("days")
         .order_by("sort_order", "title")
     )
+
+
+def plan_entry_index(plans, books):
+    """``{(book_slug, "MM-DD"): reading}`` for every year-long devotional day
+    (``PlanDay.entry_date``) — the entry companion of ``plan_chapter_index``.
+
+    Such a day reads one dated entry, not its whole month chapter, so its
+    title, length and opening verse are the entry's (``daily_readings``), read
+    through that module's month cache. ``books`` is ``plan_book_index``'s.
+    Here, not in the serializers: the parser's imports must stay out of their
+    graph (library/daily_books.py).
+    """
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.entry_date}
+    if not slugs:
+        return {}
+    version = daily_readings.content_version()
+    index = {}
+    for slug in slugs:
+        book = books.get(slug)
+        if book is None:
+            continue
+        for month, e in daily_readings.year_entries(book, version):
+            index[(slug, daily_readings.format_date(month, e.day))] = {
+                "title": e.title,
+                "book_title": book.title,
+                "word_count": e.words,
+                "opening": e.excerpt,
+            }
+    return index
+
 
 
 def _plan_card_context(plans, language: str) -> dict:

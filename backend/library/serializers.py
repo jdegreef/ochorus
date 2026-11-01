@@ -2289,11 +2289,11 @@ class PlanListSerializer(serializers.ModelSerializer):
         return index
 
     def _entries(self, obj):
-        index = self.context.get("plan_entries")
-        if index is None:
-            index = plan_entry_index([obj], self._books(obj))
-            self.context["plan_entries"] = index
-        return index
+        """The devotional days' index (``views.plan_entry_index``), which the
+        views put in the context. Not built here: it needs the entry parser,
+        whose imports must stay out of this module's graph (daily_books.py) —
+        so without it, an entry day reads as unresolved."""
+        return self.context.get("plan_entries", {})
 
     def _reading(self, obj, day):
         """A day's ``{title, book_title, word_count}``, or None if unresolved."""
@@ -2390,37 +2390,6 @@ def plan_article_index(plans, language):
             slug__in=slugs, language=language, is_published=True
         ).values("slug", "h1", "word_count")
     }
-
-
-def plan_entry_index(plans, books):
-    """``{(book_slug, "MM-DD"): reading}`` for every year-long devotional day
-    (``PlanDay.entry_date``) — the entry companion of ``plan_chapter_index``.
-
-    Such a day reads one dated entry, not its whole month chapter, so its
-    title, length and opening verse are the entry's (``daily_readings``), read
-    through that module's month cache. ``books`` is ``plan_book_index``'s.
-    """
-    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.entry_date}
-    if not slugs:
-        return {}
-    # Local: the parser pulls in ingest and search, which must stay out of this
-    # module's import graph (see library/daily_books.py).
-    from . import daily_readings
-
-    version = daily_readings.content_version()
-    index = {}
-    for slug in slugs:
-        book = books.get(slug)
-        if book is None:
-            continue
-        for month, e in daily_readings.year_entries(book, version):
-            index[(slug, daily_readings.format_date(month, e.day))] = {
-                "title": e.title,
-                "book_title": book.title,
-                "word_count": e.words,
-                "opening": e.excerpt,
-            }
-    return index
 
 
 # A devotional's chapter titles carry the BOOK's own day ("Day 13 — Where You
