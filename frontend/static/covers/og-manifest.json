@@ -28293,16 +28293,35 @@
 			]
 		},
 		"the-shepherd-of-hermas": {
-			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"ground": "14d6a49941e8184a04db791a2231f8a31930db3e9397ee6f8836d3f935a566f9",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[229, 102, 371, 131]
+				],
+				"title": [
+					[92, 314, 508, 390],
+					[144, 385, 456, 461]
+				],
+				"subtitle": [
+					[170, 481, 430, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
