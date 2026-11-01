@@ -2285,4 +2285,16 @@ SERMONS: list[SermonEntry] = [
         "the-child-prophet", "The Child Prophet", "alexander-maclaren", "ccel",
         _MACLAREN + "deut/deut.ii.vi.i.html", scripture_ref="1 Samuel 3:1-14",
     ),
+    SermonEntry(
+        "a-prophets-strange-providers", "A Prophet's Strange Providers", "alexander-maclaren", "ccel",
+        _MACLAREN + "deut/deut.iii.iii.xv.html", scripture_ref="1 Kings 17:1-16",
+    ),
+    SermonEntry(
+        "a-young-mans-best-counsellor", "A Young Man's Best Counsellor", "alexander-maclaren", "ccel",
+        _MACLAREN + "2kings_eccl/2kings_eccl.ii.ix.i.html", scripture_ref="Proverbs 1:1-19",
+    ),
+    SermonEntry(
+        "gods-requirements-and-gods-gift", "God's Requirements and God's Gift", "alexander-maclaren", "ccel",
+        _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.v.html", scripture_ref="Micah 6:8",
+    ),
 ]
