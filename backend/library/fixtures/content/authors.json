@@ -9691,5 +9691,21 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "open-word-bible",
+      "name": "Open Word Bible",
+      "bio": "",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": null,
+      "death_year": null,
+      "original_language": "en",
+      "is_imprint": true,
+      "created_at": "2026-10-30T12:00:00.000Z",
+      "same_as": []
+    }
   }
 ]
