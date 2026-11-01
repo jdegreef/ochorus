@@ -17,6 +17,12 @@
 		"year": "ca. 1670",
 		"credit": "Meyndert Hobbema, “Woodland Road” (ca. 1670). The Metropolitan Museum of Art, Open Access."
 	},
+	"a-practical-view-of-christianity": {
+		"artist": "Thomas Gainsborough",
+		"title": "Rocky, Wooded Landscape with a Dell and Weir",
+		"year": "c. 1782–1783",
+		"credit": "Thomas Gainsborough, “Rocky, Wooded Landscape with a Dell and Weir” (c. 1782–1783). The Cleveland Museum of Art, CC0."
+	},
 	"a-retrospect": {
 		"artist": "Chen Hongshou",
 		"title": "Paintings after Ancient Masters: Daoist and Crane in Autumn Landscape",
@@ -52,6 +58,12 @@
 		"title": "The Brook",
 		"year": "c. 1895–1900",
 		"credit": "Paul Cezanne, “The Brook” (c. 1895–1900). The Cleveland Museum of Art, CC0."
+	},
+	"against-marcion": {
+		"artist": "Jan Baptist Weenix",
+		"title": "Hunters Near Ruins",
+		"year": "1648",
+		"credit": "Jan Baptist Weenix, “Hunters Near Ruins” (1648). The Cleveland Museum of Art, CC0."
 	},
 	"against-the-arians": {
 		"artist": "Constantin Hansen",
@@ -341,6 +353,12 @@
 		"year": "ca. 1841–47",
 		"credit": "Carl Rottmann, “The Cemetery at Pronoia near Nauplia” (ca. 1841–47). The Metropolitan Museum of Art, Open Access."
 	},
+	"homilies-on-the-first-epistle-of-john": {
+		"artist": "Jean Achille Benouville",
+		"title": "Capri",
+		"year": "c. 1845",
+		"credit": "Jean Achille Benouville, “Capri” (c. 1845). The Cleveland Museum of Art, CC0."
+	},
 	"how-i-became-a-christian": {
 		"artist": "Sōami",
 		"title": "Landscape",
@@ -460,6 +478,18 @@
 		"title": "Rue de l'Epicerie, Rouen (Effect of Sunlight)",
 		"year": "1898",
 		"credit": "Camille Pissarro, “Rue de l'Epicerie, Rouen (Effect of Sunlight)” (1898). The Metropolitan Museum of Art, Open Access."
+	},
+	"letters-of-jerome": {
+		"artist": "Jean Baptiste Camille Corot",
+		"title": "La Cervara, the Roman Campagna",
+		"year": "c. 1830–31",
+		"credit": "Jean Baptiste Camille Corot, “La Cervara, the Roman Campagna” (c. 1830–31). The Cleveland Museum of Art, CC0."
+	},
+	"letters-of-samuel-rutherford": {
+		"artist": "Homer Dodge Martin",
+		"title": "In the Housatonic Valley",
+		"year": "late 1850s",
+		"credit": "Homer Dodge Martin, “In the Housatonic Valley” (late 1850s). The Cleveland Museum of Art, CC0."
 	},
 	"life-and-diary-of-david-brainerd": {
 		"artist": "Worthington Whittredge",
@@ -598,6 +628,12 @@
 		"title": "Charity",
 		"year": "",
 		"credit": "Raja Ravi Varma, “Charity” (). Wikimedia Commons, public domain."
+	},
+	"parochial-and-plain-sermons-vii": {
+		"artist": "Jordanus Hoorn",
+		"title": "View of the Village of Eemnes",
+		"year": "1778",
+		"credit": "Jordanus Hoorn, “View of the Village of Eemnes” (1778). The Cleveland Museum of Art, CC0."
 	},
 	"pensees": {
 		"artist": "James McNeill Whistler",
@@ -797,6 +833,12 @@
 		"year": "c. 1665",
 		"credit": "Meindert Hobbema, “The Watermill with the Great Red Roof” (c. 1665). The Art Institute of Chicago, CC0."
 	},
+	"table-talk": {
+		"artist": "Jean-Charles Cazin",
+		"title": "Midnight",
+		"year": "1891",
+		"credit": "Jean-Charles Cazin, “Midnight” (1891). The Cleveland Museum of Art, CC0."
+	},
 	"ten-commandments": {
 		"artist": "John Ruskin",
 		"title": "The Valley of Lauterbrunnen, Switzerland",
@@ -815,6 +857,12 @@
 		"year": "c. 1782–84",
 		"credit": "Pierre Henri de Valenciennes, “View of Rome” (c. 1782–84). The Cleveland Museum of Art, CC0."
 	},
+	"the-art-of-divine-contentment": {
+		"artist": "Meindert Hobbema",
+		"title": "A Cottage in the Woods",
+		"year": "c. 1662",
+		"credit": "Meindert Hobbema, “A Cottage in the Woods” (c. 1662). The Cleveland Museum of Art, CC0."
+	},
 	"the-book-of-pastoral-rule": {
 		"artist": "Anton Mauve",
 		"title": "The Return to the Fold",
@@ -827,6 +875,12 @@
 		"year": "1860s-1870s",
 		"credit": "Jules Dupré, “Marshland” (1860s-1870s). The Cleveland Museum of Art, CC0."
 	},
+	"the-christians-great-interest": {
+		"artist": "Georges Michel",
+		"title": "Landscape Near Paris",
+		"year": "c. 1840",
+		"credit": "Georges Michel, “Landscape Near Paris” (c. 1840). The Cleveland Museum of Art, CC0."
+	},
 	"the-city-of-god": {
 		"artist": "John Martin",
 		"title": "Ruins of an Ancient City",
@@ -838,6 +892,12 @@
 		"title": "Ponte San Rocco and Waterfalls, Tivoli",
 		"year": "ca. 1810–20",
 		"credit": "François Marius Granet, “Ponte San Rocco and Waterfalls, Tivoli” (ca. 1810–20). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-crook-in-the-lot": {
+		"artist": "Johan Christian Clausen Dahl",
+		"title": "Feige Waterfall (Feigefossen), Lysterfjord, Norway",
+		"year": "1848",
+		"credit": "Johan Christian Clausen Dahl, “Feige Waterfall (Feigefossen), Lysterfjord, Norway” (1848). The Cleveland Museum of Art, CC0."
 	},
 	"the-death-of-death-in-the-death-of-christ": {
 		"artist": "Peter Paul Rubens",
@@ -935,6 +995,18 @@
 		"year": "1851",
 		"credit": "Adolph Menzel, “The Artist’s Sitting Room in Ritterstrasse” (1851). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-instructor": {
+		"artist": "Jean-Léon Gérôme",
+		"title": "Leaving the Oasis",
+		"year": "1880s",
+		"credit": "Jean-Léon Gérôme, “Leaving the Oasis” (1880s). The Cleveland Museum of Art, CC0."
+	},
+	"the-jerusalem-sinner-saved": {
+		"artist": "Charles-Théodore Frère",
+		"title": "Jerusalem from the Mount of Olives",
+		"year": "by 1880",
+		"credit": "Charles-Théodore Frère, “Jerusalem from the Mount of Olives” (by 1880). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-journal-of-john-wesley": {
 		"artist": "Aelbert Cuyp",
 		"title": "Travelers in Hilly Countryside",
@@ -952,6 +1024,12 @@
 		"title": "Cottage by the River with Washerwomen",
 		"year": "1835",
 		"credit": "Camille Flers, “Cottage by the River with Washerwomen” (1835). The Cleveland Museum of Art, CC0."
+	},
+	"the-method-of-grace": {
+		"artist": "Salomon van Ruysdael",
+		"title": "Castle on a River",
+		"year": "1644",
+		"credit": "Salomon van Ruysdael, “Castle on a River” (1644). The Cleveland Museum of Art, CC0."
 	},
 	"the-normal-christian-life": {
 		"artist": "Aert van der Neer",
@@ -1019,6 +1097,18 @@
 		"year": "c. 1896",
 		"credit": "Henri-Edmond Cross, “The Pink Cloud” (c. 1896). The Cleveland Museum of Art, CC0."
 	},
+	"the-two-covenants": {
+		"artist": "Alvan Fisher",
+		"title": "A Calm Watering Place—Extensive and Boundless Scene with Cattle",
+		"year": "1816",
+		"credit": "Alvan Fisher, “A Calm Watering Place—Extensive and Boundless Scene with Cattle” (1816). The Cleveland Museum of Art, CC0."
+	},
+	"the-upper-room": {
+		"artist": "Franz Ludwig Catel",
+		"title": "A View of Naples through a Window",
+		"year": "1824",
+		"credit": "Franz Ludwig Catel, “A View of Naples through a Window” (1824). The Cleveland Museum of Art, CC0."
+	},
 	"the-way-to-god": {
 		"artist": "Meyndert Hobbema",
 		"title": "Entrance to a Village",
@@ -1048,6 +1138,12 @@
 		"title": "View of Beirut",
 		"year": "1844",
 		"credit": "Jules Coignet, “View of Beirut” (1844). The Metropolitan Museum of Art, Open Access."
+	},
+	"treatise-on-grace": {
+		"artist": "Sanford Robinson Gifford",
+		"title": "A Home in the Wilderness",
+		"year": "1866",
+		"credit": "Sanford Robinson Gifford, “A Home in the Wilderness” (1866). The Cleveland Museum of Art, CC0."
 	},
 	"treatise-on-the-love-of-god": {
 		"artist": "Jean-Léon Gérôme",

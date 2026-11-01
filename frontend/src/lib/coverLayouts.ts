@@ -154,6 +154,9 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-george-macdonald': null,
 	'key-teachings-of-g-k-chesterton': null,
 	'key-teachings-of-elisabeth-elliot': null,
+	// Augustine's rail holds two sideways lines (28 characters); this title runs
+	// to a third that would spill onto the painting, so it stays framed.
+	'homilies-on-the-first-epistle-of-john': null,
 	// The retold classics for teens wear the teen family's object ground, which
 	// is drawn for the framed composition; the adult author's layout would crop
 	// it to a strip.

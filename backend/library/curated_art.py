@@ -1349,6 +1349,72 @@ CURATED: dict[str, Artwork] = {
         focus=0.4,
         inset=0.03,
     ),
+    # ── Batch 33 · the batch-7 imports, painted as the no-plate gate requires ─
+    "a-practical-view-of-christianity": Artwork(
+        "cma", 152006, "Thomas Gainsborough", "Rocky, Wooded Landscape with a Dell and Weir", "c. 1782–1783",
+        "A wooded English dell and weir, painted in the years Wilberforce turned to Christ: the comfortable Christian England he wrote to rouse.",
+    ),
+    "against-marcion": Artwork(
+        "cma", 140344, "Jan Baptist Weenix", "Hunters Near Ruins", "1648",
+        "Broken Roman columns standing in a warm southern light: the Roman Africa of Tertullian's Carthage, from which he answered Marcion's other god.",
+    ),
+    "homilies-on-the-first-epistle-of-john": Artwork(
+        "cma", 150129, "Jean Achille Benouville", "Capri", "c. 1845",
+        "A rocky headland over a still Mediterranean bay: the coast Augustine preached beside at Hippo, where he spoke these homilies on love one Easter.",
+    ),
+    "letters-of-jerome": Artwork(
+        "cma", 140078, "Jean Baptiste Camille Corot", "La Cervara, the Roman Campagna", "c. 1830–31",
+        "The dry, open Campagna outside Rome: the city Jerome studied in, served and left for Bethlehem, and the friends there he kept writing to.",
+    ),
+    "letters-of-samuel-rutherford": Artwork(
+        "cma", 109244, "Homer Dodge Martin", "In the Housatonic Valley", "late 1850s",
+        "A green hill valley with a lone farmstead under a pale sky: country like the quiet parish of Anwoth that Rutherford longed for from his exile in Aberdeen.",
+    ),
+    "parochial-and-plain-sermons-vii": Artwork(
+        "cma", 173666, "Jordanus Hoorn", "View of the Village of Eemnes", "1778",
+        "A village street under its trees, the church at the end of it: a parish, and the plain Sunday preaching these sermons were.",
+    ),
+    "table-talk": Artwork(
+        "cma", 105480, "Jean-Charles Cazin", "Midnight", "1891",
+        "An old town's houses lit over the water late at night: the evening talk round Luther's table, which his students wrote down.",
+    ),
+    "the-art-of-divine-contentment": Artwork(
+        "cma", 122345, "Meindert Hobbema", "A Cottage in the Woods", "c. 1662",
+        "A plain cottage among tall trees in Watson's own century: a small lot, and enough.",
+    ),
+    "the-christians-great-interest": Artwork(
+        "cma", 148365, "Georges Michel", "Landscape Near Paris", "c. 1840",
+        "A bare upland under a heavy sky, one track crossing it: moorland like Guthrie's Fenwick, where the question of a saving interest in Christ was pressed home.",
+    ),
+    "the-crook-in-the-lot": Artwork(
+        "cma", 359246, "Johan Christian Clausen Dahl", "Feige Waterfall (Feigefossen), Lysterfjord, Norway", "1848",
+        "A torrent falling down a hard, steep valley: the lot as God has shaped it, crooks and all, in country as rough as Boston's Ettrick hills.",
+    ),
+    "the-instructor": Artwork(
+        "cma", 148969, "Jean-Léon Gérôme", "Leaving the Oasis", "1880s",
+        "Palms and a caravan at the water's edge in the Egyptian desert: the country of Clement's Alexandria, where he taught the Christian how to live.",
+    ),
+    "the-jerusalem-sinner-saved": Artwork(
+        "met", 436418, "Charles-Théodore Frère", "Jerusalem from the Mount of Olives", "by 1880",
+        "Jerusalem seen from the Mount of Olives: the city whose sinners, Bunyan says, Christ bade the apostles offer mercy to first.",
+        inset=0.04,
+    ),
+    "the-method-of-grace": Artwork(
+        "cma", 147464, "Salomon van Ruysdael", "Castle on a River", "1644",
+        "A castle at the water's edge with boats going by: Flavel's Dartmouth, where a castle keeps the harbour mouth and the seafaring town heard him preach.",
+    ),
+    "the-two-covenants": Artwork(
+        "cma", 157228, "Alvan Fisher", "A Calm Watering Place—Extensive and Boundless Scene with Cattle", "1816",
+        "Cattle at rest by still water in a wide, warm country: the quiet of a soul that has found the new covenant's \"I will\" is God's to keep.",
+    ),
+    "the-upper-room": Artwork(
+        "cma", 157334, "Franz Ludwig Catel", "A View of Naples through a Window", "1824",
+        "An upper room with its window open on the light: Ryle's title, the room where the Lord's Supper was kept and the disciples waited.",
+    ),
+    "treatise-on-grace": Artwork(
+        "cma", 144968, "Sanford Robinson Gifford", "A Home in the Wilderness", "1866",
+        "A lone homestead by a lake beneath a mountain at evening: the American wilderness of Edwards's New England.",
+    ),
 }
 
 
