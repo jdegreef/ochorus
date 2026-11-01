@@ -1388,6 +1388,12 @@ CURATED: dict[str, Artwork] = {
         "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
         focus=0.45,
     ),
+    "against-marcion": Artwork(
+        "cma", 149665, "Arnold Böcklin", "Ruin by the Sea", "1881",
+        "A ruined building on a sea cliff under a storm: Tertullian takes Marcion's system apart and shows the one God, maker of sea and sky, still standing.",
+        focus=0.0,
+        inset=0.06,
+    ),
 }
 
 

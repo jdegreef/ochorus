@@ -25,6 +25,7 @@ ART_SCRIM: dict[str, float] = {
     "a-short-and-easy-method-of-prayer": 0.80,
     "absolute-surrender-teens": 0.30,
     "against-heresies": 0.85,
+    "against-marcion": 0.85,
     "all-of-grace-teens": 0.50,
     "amanda-smith-autobiography": 0.75,
     "amanda-smith-autobiography-children": 0.30,

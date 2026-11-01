@@ -249,6 +249,37 @@
 				495
 			]
 		},
+		"against-marcion": {
+			"ground": "f7dd679fc16feb294a825d5644f122968f4ba1fe19cac0cec4548d4ba12d4d34",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[191, 102, 409, 131]
+				],
+				"title": [
+					[153, 300, 447, 379],
+					[137, 358, 463, 437]
+				],
+				"subtitle": [
+					[115, 463, 485, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
 			"style": "inscriptional",

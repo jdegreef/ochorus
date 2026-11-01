@@ -26,6 +26,10 @@
   "against-eutropius": {
    "lost-paragraphing": 1
   },
+  "against-marcion": {
+   "lost-paragraphing": 2,
+   "orphan-close-quote": 8
+  },
   "against-the-arians": {
    "lost-paragraphing": 21
   },

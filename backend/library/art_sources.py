@@ -18,6 +18,7 @@ ART_SOURCES: dict[str, str] = {
     "abide-in-christ": "cma-173658@0.72",
     "absolute-surrender": "met-437980@0.50",
     "against-heresies": "cma-135173@0.50",
+    "against-marcion": "cma-149665@0.00~0.06",
     "against-the-arians": "met-438949@0.50",
     "all-of-grace": "met-438642@0.50",
     "all-things-for-good": "cma-148363@0.50",

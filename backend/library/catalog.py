@@ -1352,6 +1352,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
               "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
               subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
