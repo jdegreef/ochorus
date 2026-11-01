@@ -29759,6 +29759,33 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"the-rent-veil": {
+			"ground": "4a1756d9dafa1fbb9b9ba1ae309291f6008f154f2466db7708593ec978237b20",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[80, 348, 520, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
+		},
 		"the-rise-and-progress-of-religion-in-the-soul": {
 			"ground": "821dec503d7961656ff3102e8b4836219097be12b7bfdeb219b9acb37fea1c7e",
 			"style": "enlightenment",

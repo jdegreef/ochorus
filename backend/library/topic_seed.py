@@ -103,6 +103,7 @@ TOPICS = [
             "all-of-grace",
             "gods-way-of-peace",
             "the-god-of-all-comfort",
+            "the-rent-veil",
             "the-unselfishness-of-god",
             "he-holds-my-tomorrows",
             "the-way-to-god",

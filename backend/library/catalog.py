@@ -94,6 +94,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "for devotional classics on prayer, humility, and abiding in Christ."
         ),
     ),
+    "horatius-bonar": AuthorEntry(
+        slug="horatius-bonar",
+        name="Horatius Bonar",
+        birth_year=1808,
+        death_year=1889,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer of the Free Church, at Kelso and then in Edinburgh."
+        ),
+    ),
     "charles-h-spurgeon": AuthorEntry(
         slug="charles-h-spurgeon",
         name="Charles H. Spurgeon",
@@ -267,17 +278,6 @@ AUTHORS: dict[str, AuthorEntry] = {
             "was imprisoned for more than a decade for preaching without a "
             "licence. During that confinement he wrote The Pilgrim's Progress, "
             "one of the most published allegories in the English language."
-        ),
-    ),
-    "horatius-bonar": AuthorEntry(
-        slug="horatius-bonar",
-        name="Horatius Bonar",
-        birth_year=1808,
-        death_year=1889,
-        # The author page carries the full bio (authors.json); this stub is
-        # create-only and never overwrites it.
-        bio=(
-            "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer of the Free Church, at Kelso and then in Edinburgh."
         ),
     ),
     "thomas-watson": AuthorEntry(
@@ -1379,6 +1379,10 @@ BOOKS: list[BookEntry] = [
     # for the anxious, in twelve short chapters.
     BookEntry("gods-way-of-peace", "God's Way of Peace", "horatius-bonar",
               "ccel", "bonar/peace", skip=("Title Page",), cover_color="#2e4a4a"),
+    # Horatius Bonar's The Rent Veil (1875) — CCEL's bonar/rentveil: twelve
+    # chapters on the veil of the tabernacle, rent at the cross.
+    BookEntry("the-rent-veil", "The Rent Veil", "horatius-bonar",
+              "ccel", "bonar/rentveil", skip=("Title Page",), cover_color="#4a2e2e"),
     # Andrew Murray's The Deeper Christian Life (1895) — CCEL's murray/deeper:
     # seven addresses and a closing word on consecration.
     BookEntry("the-deeper-christian-life", "The Deeper Christian Life", "andrew-murray",

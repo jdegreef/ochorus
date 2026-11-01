@@ -1464,6 +1464,10 @@ CURATED: dict[str, Artwork] = {
         "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
         focus=0.05, inset=0.04,
     ),
+    "the-rent-veil": Artwork(
+        "met", 441769, "Joseph Wright (Wright of Derby)", "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming", "1779", "Cloud torn open over an ancient tomb and the light pouring through: the veil rent and the way into the holiest laid open.",
+        focus=0.90, inset=0.01,
+    ),
     "the-deeper-christian-life": Artwork(
         "met", 461186, "French or American Artist (possibly Victor de Grailly, Paris, 1804–1889)", "Hudson River Scene", "1830–50", "A still river lying deep between mountains: the quiet depth Murray calls the believer into.",
         focus=0.10, inset=0.01,
