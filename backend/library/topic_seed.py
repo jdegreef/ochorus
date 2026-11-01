@@ -100,6 +100,7 @@ TOPICS = [
         [
             "all-of-grace",
             "the-god-of-all-comfort",
+            "the-rent-veil",
             "the-unselfishness-of-god",
             "he-holds-my-tomorrows",
             "the-way-to-god",

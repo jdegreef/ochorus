@@ -181,6 +181,7 @@ ART_SOURCES: dict[str, str] = {
     "the-octavius": "met-435749@0.50",
     "the-pursuit-of-god": "aic-68388@0.38",
     "the-reformed-pastor": "met-928532@0.50",
+    "the-rent-veil": "met-441769@0.90~0.01",
     "the-rise-and-progress-of-religion-in-the-soul": "met-436193@0.50",
     "the-saint-and-his-saviour": "aic-96559@0.45",
     "the-saints-everlasting-rest": "met-435905@0.50",

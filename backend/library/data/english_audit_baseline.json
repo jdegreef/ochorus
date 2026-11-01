@@ -229,6 +229,12 @@
   "if": {
    "space-before-punct": 5
   },
+  "ignatius-of-loyola": {
+   "word-fusion": 1
+  },
+  "in-darkest-england-and-the-way-out": {
+   "word-fusion": 1
+  },
   "indwelling-sin-in-believers": {
    "lost-paragraphing": 1
   },

@@ -1399,6 +1399,10 @@ CURATED: dict[str, Artwork] = {
         "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
         focus=0.62,
     ),
+    "the-rent-veil": Artwork(
+        "met", 441769, "Joseph Wright (Wright of Derby)", "Virgil's Tomb by Moonlight, with Silius Italicus Declaiming", "1779", "Cloud torn open over an ancient tomb and the light pouring through: the veil rent and the way into the holiest laid open.",
+        focus=0.90, inset=0.01,
+    ),
 }
 
 
