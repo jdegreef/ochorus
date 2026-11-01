@@ -54,12 +54,6 @@
 					flame: { light: '#fbf6f5', dark: '#1a1112' }
 				};
 				if (palColors[pal]) document.documentElement.setAttribute('data-palette', pal);
-				// Candlelight (a reader pref; $lib/readerPrefs keeps it in step):
-				// set here so its glow paints with the first frame, not after load.
-				try {
-					var rp = JSON.parse(localStorage.getItem('ochorus:reader-prefs') || '{}');
-					if (rp && rp.candlelight === true) document.documentElement.setAttribute('data-candle', '');
-				} catch (e) {}
 				// Match the browser UI (address bar / status bar) to the active theme
 				// (and palette; sepia keeps its own ground under every palette).
 				var colors = { light: '#faf6ef', dark: '#16130f', sepia: '#f4ecd8' };

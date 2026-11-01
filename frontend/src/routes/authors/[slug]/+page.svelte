@@ -51,8 +51,11 @@
 	import { allProgress, isFinished } from '$lib/progress';
 	import type { BookSummary } from '$lib/library-public';
 
-	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
-	$effect(() => holdFlag(document.documentElement, READING_FLAG));
+	// A page of reading text is open — here, only with a life to read (the
+	// reader's Aa mounts on the same condition). app.css CANDLELIGHT.
+	$effect(() => {
+		if (author.bio_html) return holdFlag(document.documentElement, READING_FLAG);
+	});
 
 	const t = i18n.t;
 

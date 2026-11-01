@@ -470,8 +470,7 @@ class ReaderPrefs {
 		this.#save();
 		this.#applyCandle();
 	}
-	/** The `data-candle` attribute app.css draws the glow from (app.html's boot
-	 *  script sets it before first paint; this keeps it in step after). */
+	/** The `data-candle` attribute on <html> that app.css draws the glow from. */
 	#applyCandle() {
 		if (browser) document.documentElement.toggleAttribute('data-candle', this.candlelight);
 	}
