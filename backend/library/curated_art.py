@@ -1428,6 +1428,10 @@ CURATED: dict[str, Artwork] = {
         focus=0.45,
         inset=0.02,
     ),
+    "gods-way-of-peace": Artwork(
+        "met", 438951, "Johan Thomas Lundbye", "An Evening beside Lake Arresø", "ca. 1837", "A still lake at evening under a pale, cloudless sky: the quiet Bonar offers the anxious heart.",
+        focus=0.05, inset=0.04,
+    ),
 }
 
 
