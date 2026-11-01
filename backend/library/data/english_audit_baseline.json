@@ -26,6 +26,10 @@
   "against-eutropius": {
    "lost-paragraphing": 1
   },
+  "against-marcion": {
+   "lost-paragraphing": 2,
+   "orphan-close-quote": 8
+  },
   "against-the-arians": {
    "lost-paragraphing": 21
   },
@@ -203,6 +207,10 @@
   "homilies-on-romans": {
    "lost-paragraphing": 3,
    "orphan-close-quote": 3
+  },
+  "homilies-on-the-first-epistle-of-john": {
+   "lost-paragraphing": 6,
+   "orphan-close-quote": 2
   },
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1

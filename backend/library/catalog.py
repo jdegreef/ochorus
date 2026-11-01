@@ -1356,6 +1356,20 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
               "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
               subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
+    # Augustine's Ten Homilies on the First Epistle of John (c. 407) — H. Browne's
+    # translation as revised by Joseph H. Myers in NPNF (1888), public domain,
+    # extracted from npnf107 by its stem: his prologue and the ten homilies.
+    # The editor's introduction and the passages from other works that the
+    # volume appends on single verses are left out.
+    BookEntry("homilies-on-the-first-epistle-of-john", "Homilies on the First Epistle of John",
+              "augustine-of-hippo", "ccel", "schaff/npnf107", part="iv",
+              subtitle="Translated by H. Browne", cover_color="#2e4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

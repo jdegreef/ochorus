@@ -1388,6 +1388,17 @@ CURATED: dict[str, Artwork] = {
         "Palms of the Egyptian shore: Clement taught in Alexandria, and The Instructor trains the Christian in the ordinary life of that city.",
         focus=0.45,
     ),
+    "against-marcion": Artwork(
+        "cma", 149665, "Arnold Böcklin", "Ruin by the Sea", "1881",
+        "A ruined building on a sea cliff under a storm: Tertullian takes Marcion's system apart and shows the one God, maker of sea and sky, still standing.",
+        focus=0.0,
+        inset=0.06,
+    ),
+    "homilies-on-the-first-epistle-of-john": Artwork(
+        "cma", 148312, "William Stanley Haseltine", "Capri", "1869",
+        "A rock in a calm Mediterranean sea at evening: Augustine preached these Easter homilies on the epistle of love to his people at Hippo, on that sea's African shore.",
+        focus=0.62,
+    ),
     "the-beatitudes": Artwork(
         "met", 437431, "Auguste Renoir", "Hills around the Bay of Moulin Huet, Guernsey", "1883", "A green hillside falling to a quiet bay: the slope above the water where the Beatitudes were first spoken.",
         focus=0.20, inset=0.04,

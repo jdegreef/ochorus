@@ -182,6 +182,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "homilies-on-the-first-epistle-of-john",
             "apologia-pro-vita-sua",
             "the-idea-of-a-university",
             "the-consolation-of-philosophy",
@@ -362,6 +363,7 @@ TOPICS = [
             "treatises-of-cyprian",
             "the-epistles-of-cyprian",
             "the-apology-of-tertullian",
+            "against-marcion",
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistle-and-martyrdom-of-polycarp",
