@@ -1,5 +1,6 @@
 import type { OnNavigate } from '@sveltejs/kit';
 import { canViewTransition } from './crossfade';
+import { isPlainPrimaryClick } from './plainClick';
 
 /**
  * The cover a reader taps flies into the book page it opens: for that one
@@ -37,7 +38,7 @@ let tapped: { el: HTMLElement; href: string } | null = null;
  *  a plain primary-button tap only (a modified click opens a tab instead). */
 export function noteCoverTap(e: MouseEvent): void {
 	tapped = null;
-	if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+	if (!isPlainPrimaryClick(e)) return;
 	const link = e.target instanceof Element ? e.target.closest<HTMLAnchorElement>('a[href]') : null;
 	const cover = link?.querySelector<HTMLElement>(COVER);
 	if (link && cover && !link.target) tapped = { el: cover, href: link.href };

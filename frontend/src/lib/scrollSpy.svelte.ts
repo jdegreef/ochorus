@@ -28,6 +28,7 @@
  */
 
 import { prefersReducedMotion } from './reading';
+import { isUnmodifiedPrimaryClick } from './plainClick';
 
 /**
  * Smooth-scroll to the element with `id`, honouring reduced-motion. The element
@@ -99,8 +100,9 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 		 */
 		jump(e: MouseEvent, id: string, { track = true }: { track?: boolean } = {}) {
 			// A modified or non-primary click is the reader asking for a new tab or
-			// window: leave it to the browser.
-			if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+			// window: leave it to the browser. (Deliberately not isPlainPrimaryClick:
+			// this has never deferred to an earlier handler's preventDefault.)
+			if (!isUnmodifiedPrimaryClick(e)) return;
 			e.preventDefault();
 			if (track) active = id;
 			jumpToSection(id);
