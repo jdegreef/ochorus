@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
-	import GoalPips from '$lib/components/GoalPips.svelte';
+	import WeekLamps from '$lib/components/WeekLamps.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { lang } from '$lib/lang.svelte';
@@ -51,6 +51,7 @@
 	const weekCount = $derived(weekReadCount(days, today));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
+
 
 	// Every tile now comes straight from `readingCounts()` — "finished" is a
 	// stored stamp, not a catalog lookup, so all six render at once (kept live by
@@ -106,7 +107,8 @@
 								{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
 							{/if}
 						</div>
-						<GoalPips {goal} {weekCount} />
+						<!-- The week as lamps: which days were read, not only how many. -->
+						<WeekLamps {days} {today} {goal} locale={lang.current} />
 					</div>
 				</div>
 

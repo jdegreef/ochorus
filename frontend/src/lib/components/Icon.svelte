@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { FLAME_PATH } from '$lib/flamePath';
 	// Lightweight inline-SVG line icons, matching Take Root's icon set: 24-unit
 	// viewBox, no fill, currentColor stroke, round caps/joins. Decorative by
 	// default (aria-hidden); pass `label` for an accessible name when the icon
@@ -185,7 +186,7 @@
 	{:else if name === 'heart'}
 		<path d="M12 20.5S4 15.9 4 10.3A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 8 2.3c0 5.6-8 10.2-8 10.2z" />
 	{:else if name === 'flame'}
-		<path d="M12 2c1.6 3.2 4.6 4.7 4.6 8.6a4.6 4.6 0 0 1-9.2 0c0-2 1-3.3 2.1-4.3.2 1.4 1 2.3 2 2.3 1.3 0 1.9-1.2 1.6-2.6C12.8 4.9 12 3.6 12 2z" />
+		<path d={FLAME_PATH} />
 	{:else if name === 'compass'}
 		<circle cx="12" cy="12" r="9" />
 		<path d="m15.6 8.4-2 5.2-5.2 2 2-5.2z" />
