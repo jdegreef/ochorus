@@ -2295,4 +2295,125 @@ SERMONS: list[SermonEntry] = [
         "gods-requirements-and-gods-gift", "God's Requirements and God's Gift", "alexander-maclaren", "ccel",
         _MACLAREN + "ezek_matt1/ezek_matt1.ii.vii.v.html", scripture_ref="Micah 6:8",
     ),
+    # Batch 8 (2026-11): new voices for the shelf, chosen for warmth — Henry
+    # Drummond's addresses (PG 16739), Phillips Brooks's addresses (PG 14497; his
+    # Lincoln eulogy left out), Frances Ridley Havergal's *Kept for the Master's
+    # Use* (PG 31647), Andrew Murray's *Money* (PG 41994; his other address
+    # collections are already books here) and F. B. Meyer's *Love to the
+    # Uttermost* (PG 22376). George MacDonald's *Unspoken Sermons* is already a
+    # book (all 36), so none are added as sermons. Meyer's first chapter (*The
+    # Laver in the Life of Jesus*) is the edition's only h4, so its slice runs
+    # to the end of the book; it is left out. Read in full and dropped: Meyer's
+    # *Peter's Love and Work* ("a life among savages"), *The Day of Resurrection*
+    # ("a squalid Arab village") and *The Conqueror of the World* (what "the Jews
+    # looked for"); Murray's *The Poverty of Christ* (against Rome's "surplus
+    # merit"); Havergal's *Our Silver and Gold* (appeals for two named charities).
+    SermonEntry(
+        "the-greatest-thing-in-the-world", 'The Greatest Thing in the World', "henry-drummond", "gutenberg", "16739",
+        section='THE GREATEST THING IN THE WORLD. ToC', section_level="h3", scripture_ref="1 Corinthians 13",
+    ),
+    SermonEntry(
+        "pax-vobiscum", 'Pax Vobiscum', "henry-drummond", "gutenberg", "16739",
+        section='PAX VOBISCUM. ToC', section_level="h3", scripture_ref="Matthew 11:28-29",
+    ),
+    SermonEntry(
+        "the-changed-life", 'The Changed Life', "henry-drummond", "gutenberg", "16739",
+        section='THE CHANGED LIFE: THE GREATEST NEED OF THE WORLD. ToC', section_level="h3", scripture_ref="2 Corinthians 3:18",
+    ),
+    SermonEntry(
+        "dealing-with-doubt", 'Dealing with Doubt', "henry-drummond", "gutenberg", "16739",
+        section='DEALING WITH DOUBT. ToC', section_level="h3", scripture_ref="John 20:27",
+    ),
+    SermonEntry(
+        "lessons-from-the-angelus", 'Lessons from the Angelus', "henry-drummond", "gutenberg", "16739",
+        section='LESSONS FROM THE ANGELUS. ToC', section_level="h3",
+    ),
+    SermonEntry(
+        "the-beauty-of-a-life-of-service", 'The Beauty of a Life of Service', "phillips-brooks", "gutenberg", "14497",
+        section='I. THE BEAUTY OF A LIFE OF SERVICE.', section_level="h2", scripture_ref="John 8:31-36",
+    ),
+    SermonEntry(
+        "thought-and-action", 'Thought and Action', "phillips-brooks", "gutenberg", "14497",
+        section='II. THOUGHT AND ACTION.', section_level="h2", scripture_ref="John 8:30-36",
+    ),
+    SermonEntry(
+        "the-duty-of-the-christian-business-man", 'The Duty of the Christian Business Man', "phillips-brooks", "gutenberg", "14497",
+        section='III. THE DUTY OF THE CHRISTIAN BUSINESS MAN.', section_level="h2", scripture_ref="John 8:31-36",
+    ),
+    SermonEntry(
+        "true-liberty", 'True Liberty', "phillips-brooks", "gutenberg", "14497",
+        section='IV. TRUE LIBERTY.', section_level="h2", scripture_ref="John 8:31-32",
+    ),
+    SermonEntry(
+        "the-christ-in-whom-christians-believe", 'The Christ in Whom Christians Believe', "phillips-brooks", "gutenberg", "14497",
+        section='V. THE CHRIST IN WHOM CHRISTIANS BELIEVE.', section_level="h2", scripture_ref="John 8:31-36",
+    ),
+    SermonEntry(
+        "our-lives-kept-for-jesus", 'Our Lives Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter I. Our Lives kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-moments-kept-for-jesus", 'Our Moments Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter II. Our Moments kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-hands-kept-for-jesus", 'Our Hands Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter III. Our Hands kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-voices-kept-for-jesus", 'Our Voices Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter V. Our Voices kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-lips-kept-for-jesus", 'Our Lips Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter VI. Our Lips kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-wills-kept-for-jesus", 'Our Wills Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter IX. Our Wills kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "our-selves-kept-for-jesus", 'Our Selves Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter XII. Our Selves kept for Jesus.', section_level="h2",
+    ),
+    SermonEntry(
+        "christ-for-us", 'Christ for Us', "frances-ridley-havergal", "gutenberg", "31647",
+        section='Chapter XIII. Christ for Us.', section_level="h2", scripture_ref="Hosea 3:3",
+    ),
+    SermonEntry(
+        "christs-estimate-of-money", "Christ's Estimate of Money", "andrew-murray", "gutenberg", "41994",
+        section="I CHRIST'S ESTIMATE OF MONEY", section_level="h2", scripture_ref="Mark 12:41-44",
+    ),
+    SermonEntry(
+        "the-holy-spirit-and-money", 'The Holy Spirit and Money', "andrew-murray", "gutenberg", "41994",
+        section='II THE HOLY SPIRIT AND MONEY', section_level="h2", scripture_ref="Acts 5:3",
+    ),
+    SermonEntry(
+        "thrice-bidden-to-love", 'Thrice Bidden to Love', "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='II', section_level="h2", scripture_ref="John 13:34",
+    ),
+    SermonEntry(
+        "the-reality-of-which-jacobs-dream-was-the-shadow", "The Reality of which Jacob's Dream was the Shadow", "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='V', section_level="h2", scripture_ref="John 14:6",
+    ),
+    SermonEntry(
+        "the-great-deeds-of-prayer", 'The Great Deeds of Prayer', "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='VII', section_level="h2", scripture_ref="John 14:12-14",
+    ),
+    SermonEntry(
+        "christs-legacy-and-gift-of-peace", "Christ's Legacy and Gift of Peace", "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='XIII', section_level="h2", scripture_ref="John 14:27",
+    ),
+    SermonEntry(
+        "abide-in-me-and-i-in-you", '"Abide in Me, and I in you"', "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='XV', section_level="h2", scripture_ref="John 15:4",
+    ),
+    SermonEntry(
+        "prayer-that-prevails", 'Prayer that Prevails', "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='XVI', section_level="h2", scripture_ref="John 15:7",
+    ),
+    SermonEntry(
+        "the-lake-of-galilee", 'The Lake of Galilee', "frederick-brotherton-meyer", "gutenberg", "22376",
+        section='XXXIV', section_level="h2", scripture_ref="John 21:1",
+    ),
 ]

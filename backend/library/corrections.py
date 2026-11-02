@@ -20700,3 +20700,137 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Batch 8 (2026-11): Drummond, Brooks, Havergal, Murray and Meyer. Besides the
+# readers' keying slips: Drummond's edition sets phrases in capitals on their own
+# line mid-sentence ("call / THE SPECTRUM OF LOVE, / the analysis"), rejoined
+# here; Havergal's lone "[34]" paragraphs are page
+# numbers, removed; a running head fused onto True Liberty's first line, removed.
+for _slug, _pairs in {
+    "the-greatest-thing-in-the-world": [
+        ('o</p><p>CHRISTIANITY AT ITS SOURCE;</p><p>a', 'o CHRISTIANITY AT ITS SOURCE; a'),
+        (",</p><p>MEN'S FACES LIGHT UP</p><p>a", ", MEN'S FACES LIGHT UP a"),
+        ('l</p><p>THE SPECTRUM OF LOVE,</p><p>t', 'l THE SPECTRUM OF LOVE, t'),
+        ('n</p><p>DOING GOOD TURNS</p><p>t', 'n DOING GOOD TURNS t'),
+        ('n</p><p>THE HIGHER RIGHT</p><p>o', 'n THE HIGHER RIGHT o'),
+        (',</p><p>FOR SHEER GRATUITOUS MISERY-PRODUCING POWER</p><p>t', ', FOR SHEER GRATUITOUS MISERY-PRODUCING POWER t'),
+        ('e</p><p>BORN AGAIN,</p><p>h', 'e BORN AGAIN, h'),
+        ('d</p><p>THE ONE ETERNAL LESSON</p><p>f', 'd THE ONE ETERNAL LESSON f'),
+        ('t</p><p>THE GREAT SACRIFICE</p><p>a', 't THE GREAT SACRIFICE a'),
+        ('d</p><p>GAVE HIMSELF FOR US,</p><p>a', 'd GAVE HIMSELF FOR US, a'),
+        ('Carlisle said of Robert Burns', 'Carlyle said of Robert Burns'),
+        ('may be less venal than those', 'may be less venial than those'),
+        ('They are often eternal.', 'They are often external.'),
+        ('Sir William Thompson, said', 'Sir William Thomson, said'),
+    ],
+    "pax-vobiscum": [
+        ('s</p><p>MADE UP OF PHRASES;</p><p>h', 's MADE UP OF PHRASES; h'),
+        ('m</p><p>HIS RECEIPT</p><p>f', 'm HIS RECEIPT f'),
+        ('s</p><p>NOTHING THAT THE WORLD COULD DO TO HIM</p><p>t', 's NOTHING THAT THE WORLD COULD DO TO HIM t'),
+        ('a mistaken Christianity which allow men', 'a mistaken Christianity which allows men'),
+        ('connect it thus directly and casually with', 'connect it thus directly and causally with'),
+        ('as the fine phase in the Revised Version', 'as the fine phrase in the Revised Version'),
+    ],
+    "the-changed-life": [
+        ('g</p><p>ONE AT A TIME</p><p>a', 'g ONE AT A TIME a'),
+        ("s</p><p>THE VERY YOUNG MAN'S METHOD;</p><p>a", "s THE VERY YOUNG MAN'S METHOD; a"),
+        ('s</p><p>SOMETHING OUTSIDE THE SOUL OF MAN</p><p>t', 's SOMETHING OUTSIDE THE SOUL OF MAN t'),
+        ('e</p><p>THE SOLUTION OF THE PROBLEM OF SANCTIFICATION</p><p>i', 'e THE SOLUTION OF THE PROBLEM OF SANCTIFICATION i'),
+        ('s</p><p>THE FIRST LAW</p><p>o', 's THE FIRST LAW o'),
+        ('f</p><p>REGENERATION</p><p>t', 'f REGENERATION t'),
+        ('s</p><p>ONLY ONE WAY</p><p>i', 's ONLY ONE WAY i'),
+        ('s</p><p>A CERTAINLY SUCCESSFUL MEANS</p><p>o', 's A CERTAINLY SUCCESSFUL MEANS o'),
+        ('t</p><p>SPEND TIME</p><p>i', 't SPEND TIME i'),
+        ('e</p><p>LIKE CHRIST</p><p>i', 'e LIKE CHRIST i'),
+        ('we can almost see the first disciple grow', 'we can almost see the first disciples grow'),
+    ],
+    "dealing-with-doubt": [
+        (',</p><p>CHRIST WAS VERY FOND</p><p>o', ', CHRIST WAS VERY FOND o'),
+        ("n</p><p>THE CHURCH'S TREATMENT OF DOUBT</p><p>i", "n THE CHURCH'S TREATMENT OF DOUBT i"),
+        ("t</p><p>CHRIST'S TREATMENT</p><p>o", "t CHRIST'S TREATMENT o"),
+        ('e</p><p>HUMAN VERSIONS</p><p>o', 'e HUMAN VERSIONS o'),
+        ('e</p><p>IN REVOLT</p><p>a', 'e IN REVOLT a'),
+        ('f</p><p>UNNECESSARY CARGO</p><p>t', 'f UNNECESSARY CARGO t'),
+        ('o</p><p>OBEY CHRIST;</p><p>a', 'o OBEY CHRIST; a'),
+    ],
+    "lessons-from-the-angelus": [
+        ('s</p><p>THE MUSIC OF THE SOUL,</p><p>a', 's THE MUSIC OF THE SOUL, a'),
+        ('t</p><p>EXPLAINS MANY OF THE MYSTERIES OF LIFE,</p><p>a', 't EXPLAINS MANY OF THE MYSTERIES OF LIFE, a'),
+    ],
+    "the-beauty-of-a-life-of-service": [
+        ('stands forth so perpetually us the symbol', 'stands forth so perpetually as the symbol'),
+        ('Suppose you see the; glory', 'Suppose you see the glory'),
+        ('He has passed put of your sight', 'He has passed out of your sight'),
+        ('No contrition of yours can drawback its consequences', 'No contrition of yours can draw back its consequences'),
+    ],
+    "thought-and-action": [
+        ('I shall certainty bind myself', 'I shall certainly bind myself'),
+        ('put absolutely away from, us all', 'put absolutely away from us all'),
+    ],
+    "the-duty-of-the-christian-business-man": [
+        ('stand In these meetings', 'stand in these meetings'),
+        ('religion comet by the utterance', 'religion comes not by the utterance'),
+        ('outside of that wall, The life', 'outside of that wall. The life'),
+    ],
+    "true-liberty": [
+        ('imprisonment, restraint So it is with all civilization', 'imprisonment, restraint. So it is with all civilization'),
+        ('of how It rings with liberty', 'of how it rings with liberty'),
+        ('region of existence which lie has not touched', 'region of existence which he has not touched'),
+        ('He will hot any longer', 'He will not any longer'),
+        ('a new belief is no to build a wall', 'a new belief is not to build a wall'),
+        ('<p>An earnest appeal to all that enter that Liberty. May I', '<p>May I'),
+    ],
+    "the-christ-in-whom-christians-believe": [
+        ('do I doubt fora moment', 'do I doubt for a moment'),
+    ],
+    "our-lives-kept-for-jesus": [
+        ('<p>[16]</p>', ''),
+        ('<p>[24]</p>', ''),
+        ('<p>[26]</p>', ''),
+    ],
+    "our-moments-kept-for-jesus": [
+        ('<p>[27]</p>', ''),
+        ('<p>[34]</p>', ''),
+    ],
+    "our-hands-kept-for-jesus": [
+        ('<p>[41]</p>', ''),
+        ('<p>[43]</p>', ''),
+    ],
+    "our-voices-kept-for-jesus": [
+        ('<p>[66]</p>', ''),
+        ('by the King’s enemies, Singing an out-and-out', 'by the King’s enemies. Singing an out-and-out'),
+    ],
+    "our-lips-kept-for-jesus": [
+        ('<p>[79]</p>', ''),
+        ('the meditation of Jesus throws', 'the mediation of Jesus throws'),
+    ],
+    "our-wills-kept-for-jesus": [
+        ('<p>[103]</p>', ''),
+        ('<p>[104]</p>', ''),
+    ],
+    "our-selves-kept-for-jesus": [
+        ('<p>[117]</p>', ''),
+        ('<p>[120]</p>', ''),
+        ('<p>[121]</p>', ''),
+        ('<p>[122]</p>', ''),
+        ('Self goes over to the other camp again and again. If is not all for Jesus', 'Self goes over to the other camp again and again. It is not all for Jesus'),
+    ],
+    "christ-for-us": [
+        ('<p>[124]</p>', ''),
+        ('<p>[130]</p>', ''),
+        ('<p>[135]</p>', ''),
+    ],
+    "the-holy-spirit-and-money": [
+        ('what a life of perfect trust in the Father, is how the possession', 'what a life of perfect trust in the Father is, how the possession'),
+    ],
+    "thrice-bidden-to-love": [
+        ('the Divine love which Drought Jesus from the throne', 'the Divine love which brought Jesus from the throne'),
+    ],
+    "the-great-deeds-of-prayer": [
+        ('about to say something usually important', 'about to say something unusually important'),
+        ('The test of genuine faith are twofold.', 'The tests of genuine faith are twofold.'),
+        ('the works that I do shall He do also."', 'the works that I do shall he do also."'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)

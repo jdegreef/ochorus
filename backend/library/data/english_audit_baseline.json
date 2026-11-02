@@ -38,8 +38,7 @@
    "space-before-punct": 2
   },
   "an-all-round-ministry": {
-   "space-before-punct": 2,
-   "word-fusion": 1
+   "space-before-punct": 2
   },
   "are-you-forgiven": {
    "orphan-close-quote": 2
@@ -387,6 +386,9 @@
   "practical-prayer": {
    "space-before-punct": 6
   },
+  "prayer-that-prevails": {
+   "space-before-punct": 5
+  },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
    "space-before-punct": 4
@@ -501,6 +503,9 @@
   "the-child-prophet": {
    "space-before-punct": 4
   },
+  "the-christ-in-whom-christians-believe": {
+   "lost-paragraphing": 1
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
   },
@@ -545,9 +550,6 @@
   },
   "the-divine-institutes": {
    "word-fusion": 2
-  },
-  "the-dying-thief": {
-   "word-fusion": 1
   },
   "the-epistles-of-cyprian": {
    "lost-paragraphing": 1,
@@ -659,6 +661,9 @@
   "the-praying-christ": {
    "space-before-punct": 1
   },
+  "the-reality-of-which-jacobs-dream-was-the-shadow": {
+   "space-before-punct": 4
+  },
   "the-rest-giver": {
    "space-before-punct": 2
   },
@@ -727,6 +732,10 @@
   "the-writing-on-gods-hands": {
    "space-before-punct": 2
   },
+  "thought-and-action": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
+  },
   "till-he-come": {
    "orphan-close-quote": 4,
    "space-before-punct": 8
@@ -734,6 +743,9 @@
   "treatises-of-cyprian": {
    "orphan-close-quote": 6,
    "word-fusion": 1
+  },
+  "true-liberty": {
+   "lost-paragraphing": 1
   },
   "unfailing-springs": {
    "space-before-punct": 1

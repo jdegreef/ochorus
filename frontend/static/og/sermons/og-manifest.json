@@ -58,6 +58,10 @@
 			"content": "b4db4148d69f2e2403fff9f0e9e66317144e17da9e1ada479b990cea252df5c8",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"abide-in-me-and-i-in-you": {
+			"content": "c3c655bdd5a121fee742cb939e400fc1d7245a10da31597513309dcdf3b80b67",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"abiding-in-christ": {
 			"content": "61e50c2bfaec5b5733f1d593543e382f92263575b2c1050386b26909e967b886",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -198,6 +202,10 @@
 			"content": "f3c935fd04b6ab84df684f064f057b5773fd889fb90d26b7c70d858db337e8a4",
 			"art": "defe89ca0e8122d328985352eb9e80bdc4ec0c6d7bfb3d73dea254a3d8c183f3"
 		},
+		"christ-for-us": {
+			"content": "a3e55b1e217f8d2e2990b92ab8d9ed895ea0cdf5436bf75e8367f6db262c4742",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"christ-in-the-covenant": {
 			"content": "273aca94a011f1f604c4c054d53b8641c930b85b58045a5cc1b89b8889327d97",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -238,8 +246,16 @@
 			"content": "004bf5d6b3db17b89625d5584e43b3e45cbac1cd622f5fdc4e1ecc64f72ae368",
 			"art": "d2cfa1486c576fafffe1223e02bc035e2a6bf629ace50f8e2fbbb58155ec109b"
 		},
+		"christs-estimate-of-money": {
+			"content": "7fdef2db60e7eb1d082cf898e07773c04ea8b3dba2f4a47f57f65d66ef49719e",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"christs-friends": {
 			"content": "7c1f03d327ddcdade6158f96cd6f269c1468fd4e2e1e927596424b45b811ffca",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"christs-legacy-and-gift-of-peace": {
+			"content": "49db14216117d1464692f9837d188b628f09222840cba1aa9795ba17bc422fb7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"christs-messages-to-the-church": {
@@ -309,6 +325,10 @@
 		"dealing-with-anxious-souls": {
 			"content": "dbf1422d31a3f9481c3424faa803016414cbe6f7b1de22c0aa29c81a7dac02dd",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"dealing-with-doubt": {
+			"content": "378cd544da41e415311063569145bf5464344d460de96b3a40cf7bbb91365da0",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"divine-calls": {
 			"content": "bdbf5830f6866880515ecb37db19025ac30d297c03972d51df9699afc8271784",
@@ -614,6 +634,10 @@
 			"content": "3935839cb891ae73b2050ff4ede3b02cfc5362f2a5bc1e513be10c9e8c81463c",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"lessons-from-the-angelus": {
+			"content": "4887f0d2627fe4d4808efbaca481a4196289671a23e0295990575fc161808e1b",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"let-us-have-peace": {
 			"content": "520fccad2c71f0a8c69b422ee355ad398eda213a0c27970cedb9846949b7f9a6",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -722,6 +746,10 @@
 			"content": "d4119a1cd575d6e9a958e0d03ff1965e0332d297ff831390f3913071a2f5e9e7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"our-hands-kept-for-jesus": {
+			"content": "97ed1cd9ed6108fa0005da9c3dca4bf84b89e7916ed795fffabfc06d1db7c652",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"our-kinsman-redeemer": {
 			"content": "778aadf805ccdaa1aa39a20334ffebdb1c02c6034be8de4b3ac3956f09c610a6",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -730,8 +758,32 @@
 			"content": "ce95b95afb6575f820cff3cb21d8ceb81e129af6fb0e029dfae8df2619eb2f41",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"our-lips-kept-for-jesus": {
+			"content": "99e11351cfa4662bb5711de5c2cd24e9036251c3b452032544ad47c12a572ccb",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"our-lives-kept-for-jesus": {
+			"content": "2858bd76f220338588a4265814171073726602e552220f71bd2bbcef3d14f8dc",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"our-moments-kept-for-jesus": {
+			"content": "69352b9bb671ede550c02cd9e204d9060bc47a28bb170262894c0e566b667c98",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"our-selves-kept-for-jesus": {
+			"content": "af6db5d06bf962daed05fd125779f04c30482f473cf286acab1962139e085487",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"our-strong-city": {
 			"content": "7b7221c6fbb13c6943ac38fee522486ae13813b00a0ec57765e2bfc9d1673a9b",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"our-voices-kept-for-jesus": {
+			"content": "251f2cb9c40d87a3bd45e829adfd205aaa25f0c37fc45955894d5099cad9b36a",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"our-wills-kept-for-jesus": {
+			"content": "eea6db09335ac61d3b3c1484219644f7f4f6feec2e0cdf1f9557ccc0ca7932a2",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"partnership-with-god": {
@@ -745,6 +797,10 @@
 		"pauls-praise-of-christian-love": {
 			"content": "1ae261744ef5243a8e471b9c34e1da470603165cf053eb80ef9d1743587eed09",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"pax-vobiscum": {
+			"content": "41e29d71f43a458ecb3022cf369d92222254713065e43313e51ca49e7cefc6e4",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"personal-responsibility": {
 			"content": "a98c891200a6026e365a8fc297941be8e4a88fe65fe84b49eb04ab89dfadf254",
@@ -768,6 +824,10 @@
 		},
 		"prayer-answered-love-nourished": {
 			"content": "11ccbbc145150abe1e22f68299be194dab53b5d26ed797edb9dc0b0e6aa9fd2c",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"prayer-that-prevails": {
+			"content": "83df603ac48384ea7aa59b82cac6e3becbc38f6e45b0e1609fdf572482a66610",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"prayer-the-forerunner-of-mercy": {
@@ -934,6 +994,10 @@
 			"content": "6bf65c150aadb8af76efb0ec887d45496775d12434ae8edc60e6efdcbf39438f",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-beauty-of-a-life-of-service": {
+			"content": "d036bfdb5504122e67132a32212924fcba5a4eeb8f85adb4d2f1841073f0f2c5",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-blood-of-the-everlasting-covenant": {
 			"content": "4db0cd0b5910f8079880c11babfe96a1bf99f7f1cd2646929e8c5dbb9f7a6657",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -954,8 +1018,16 @@
 			"content": "4f4bbcf13f39f60da2097ccc76e1fd7c8a5c5b93d26329cba1787504932db549",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-changed-life": {
+			"content": "7fdedce40703c98de140d5c9ab1ba90054003825da59185cf4c239ac41f77a1f",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-child-prophet": {
 			"content": "f1134f51b724d169987561778e2516da399b3f7a3b1dad880a5fa0659fb53a9b",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-christ-in-whom-christians-believe": {
+			"content": "6b3c2f3879598e151c73c3a9950b07e34ea1ef7b3721d9aa4fa28cc8e789f2e8",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-christian-pilgrim": {
@@ -1026,6 +1098,10 @@
 			"content": "c84929d9cbbafab2cb9c930b0619d9431ed3de346165db46a633b421b767c9d1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-duty-of-the-christian-business-man": {
+			"content": "4cce3dd29f8bbce3fafd49bf5efc75cdd853ae4ea9012e730d5eaf70e2957989",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-dying-thief": {
 			"content": "38fe826661d5299881cc71b00f153ed09169de7330b0b7d0d38fa2875d2482b3",
 			"art": "0dcfebb5bf6d3f3e1f89fd1b2aebd4b074253d5197dc08c657b2126887ae7dfd"
@@ -1074,6 +1150,10 @@
 			"content": "60e150e6d4a8ee22a5be98ee37d617dfce2d34575a777a7daa77d6e52513a5b7",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-great-deeds-of-prayer": {
+			"content": "f5916f7e11c6bac183e040ac37fcccc5e8efdf5ebb46c69a29ca1bc7eda9e70e",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-great-secret": {
 			"content": "441a81ddcca2f5909b2c43cde4ba6a528637195d16a08a71879c56cfc796c00a",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -1085,6 +1165,10 @@
 		"the-greatest-sentence-ever-written": {
 			"content": "39250c0b9a699ba89ccb8289b497ce15a80775c60c89f1dd29ab2da9a532e3bd",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-greatest-thing-in-the-world": {
+			"content": "1a89b776709815e20654775daba10d02e054c1ed1b05215f6bc8244bc25f4feb",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-guiding-pillar": {
 			"content": "c4ea9cd348a749380420fc9f90e387313cdc9192755f63be5b8087f4399fbfc8",
@@ -1109,6 +1193,10 @@
 		"the-holy-ghost": {
 			"content": "c8a212a00453bbd403977e1139f5384fe7310ec320df944bfedc08caa5d64ed7",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-holy-spirit-and-money": {
+			"content": "8d5e4f8ccef95b18030c8b17139141060cb9ba7f323d5a2b23039dd7f811db03",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-holy-spirit-bishop-of-the-church": {
 			"content": "18db7360c187de0379f94a64b2355589d458c8d2643367c4ef17fad1bc24e40c",
@@ -1140,6 +1228,10 @@
 		},
 		"the-joy-of-the-lord-is-your-strength": {
 			"content": "bfe196e1d8577bd80171ef1dfcecbc87388197b328235bb45839577706388045",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-lake-of-galilee": {
+			"content": "8506e1d74cb9a4eb118c83c4bcf7b3df714a003b635bb9291ce5480b89a766a8",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-light-of-the-world": {
@@ -1269,6 +1361,10 @@
 		"the-ravens-cry": {
 			"content": "daa26fb3232004840cba6054a8a867b2423c518bbf58f5d039e238f892c8ff02",
 			"art": "fc0cc007599bd01896f7ed6cdc044547bd05e5e1041a9c48eab052f8f33d36df"
+		},
+		"the-reality-of-which-jacobs-dream-was-the-shadow": {
+			"content": "77953dd11328c27303a8f578a383be1b00d979c03a6f3523343a6d0178282030",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-rest-giver": {
 			"content": "423f89e8c76aa1b6dde2321f07300f54f24261a6610fa3e45d4feded45457bef",
@@ -1474,6 +1570,10 @@
 			"content": "2f2c297ae2c67f1dabcbbd44bf7119fef75c4a12b741557c1ed6be93d8bed0dc",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"thought-and-action": {
+			"content": "ec8b20467c269238a6aca754b1e7441b8071b2a498dc7f35465242d60fd15911",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"three-fires": {
 			"content": "784016f640283de353eb95de05680a3708889588652b50560c65bcfb36bc47ce",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -1481,6 +1581,10 @@
 		"three-great-days": {
 			"content": "029ebe316b856bc62a1dfdbb870de8aeb3f868ea923cef10c5f93433ad1d63d3",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"thrice-bidden-to-love": {
+			"content": "bf8d2f05c7e337bbdec58b6615ea905df6808a5b3ee7981d5bdd24029205981c",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"thy-redeemer": {
 			"content": "54a3a81c5fadafdf5bcabb04986dd646802b47778d70f3237142db0f6af12c3a",
@@ -1497,6 +1601,10 @@
 		"tribulation": {
 			"content": "460e1f2c2e1c2bc29819d06609db4d94f45f14686f8f7513c052a3a46484f19c",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"true-liberty": {
+			"content": "0552c88ff7dba0207192cba2cbbf0af5b5a1cdb594ea43d6e3caeca323653168",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"true-wisdom": {
 			"content": "cd37e7f5dcd25f1d01004569b50a41657e80ff1a1491b3978658527b6dd5f75d",

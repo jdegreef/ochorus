@@ -9707,5 +9707,62 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "henry-drummond",
+      "name": "Henry Drummond",
+      "bio": "Henry Drummond (1851–1897) was a Scottish evangelist, writer and lecturer in natural science at the Free Church College in Glasgow. He worked alongside D. L. Moody in the 1873–75 missions in Britain, and his addresses to students in Edinburgh, Oxford and America were widely read. His address on 1 Corinthians 13, The Greatest Thing in the World, became one of the best-loved devotional classics of its century.",
+      "tagline": "Scottish evangelist and scientist, author of The Greatest Thing in the World.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1851,
+      "death_year": 1897,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-11-02T03:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Henry_Drummond_(evangelist)"
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "phillips-brooks",
+      "name": "Phillips Brooks",
+      "bio": "Phillips Brooks (1835–1893) was an American Episcopal clergyman, for twenty-two years rector of Trinity Church, Boston, and from 1891 Bishop of Massachusetts. One of the most admired preachers of his age, he gave the Yale Lectures on Preaching, defining preaching as \"truth through personality\", and wrote the carol \"O Little Town of Bethlehem\".",
+      "tagline": "Rector of Trinity Church, Boston, preacher, and writer of \"O Little Town of Bethlehem\".",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1835,
+      "death_year": 1893,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-11-02T03:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Phillips_Brooks"
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "frances-ridley-havergal",
+      "name": "Frances Ridley Havergal",
+      "bio": "Frances Ridley Havergal (1836–1879) was an English poet, hymn writer and devotional author, the daughter of a Worcestershire clergyman. Her hymns include \"Take my life, and let it be\" and \"Like a river glorious\", and her devotional books, among them Kept for the Master's Use, unfold the consecration of the whole life to Christ.",
+      "tagline": "English hymn writer of \"Take My Life, and Let It Be\" and devotional author.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1836,
+      "death_year": 1879,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-11-02T03:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Frances_Ridley_Havergal"
+      ]
+    }
   }
 ]
