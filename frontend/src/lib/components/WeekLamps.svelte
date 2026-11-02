@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { weekLamps } from '$lib/heatmap';
+	import { FLAME_PATH } from '$lib/flamePath';
 
 	/**
 	 * This week as seven small oil lamps (the dashboard's reading panel, under
@@ -9,17 +10,11 @@
 	 * gone by unread simply rests; the days ahead stand dark. Nothing is shown
 	 * as broken — a missed day is a lamp at rest, not a mark against the reader.
 	 *
-	 * One image to assistive tech (`label`, the goal line in words); the lamps
-	 * and weekday initials are decoration. The row runs in reading order, so it
-	 * reverses with the text in a right-to-left locale.
+	 * Decoration to assistive tech: the goal line above says the same in words.
+	 * The row runs in reading order, so it reverses with the text in a
+	 * right-to-left locale.
 	 */
-	let {
-		days,
-		today,
-		goal,
-		locale,
-		label
-	}: { days: string[]; today: string; goal: number; locale: string; label: string } = $props();
+	let { days, today, goal, locale }: { days: string[]; today: string; goal: number; locale: string } = $props();
 
 	const lamps = $derived(weekLamps(days, today));
 	/** The lamp whose lighting met the goal: the goal-th lit one, if any. */
@@ -30,24 +25,19 @@
 	const FLAME = [0, 1, 1.12, 1.24, 1.36] as const;
 </script>
 
-<div class="lamps" role="img" aria-label={label}>
+<div class="lamps" aria-hidden="true">
 	{#each lamps as lamp (lamp.day)}
 		<div class="lamp" data-state={lamp.state} class:today={lamp.day === today} class:goal={lamp.day === goalDay}>
-			<svg viewBox="0 0 24 36" aria-hidden="true" focusable="false">
+			<svg viewBox="0 0 24 36" focusable="false">
 				{#if lamp.state === 'lit'}
 					<ellipse class="glow" cx="12" cy="10" rx="9" ry="10" />
-					<!-- Icon's flame, so it matches the streak flame beside it. -->
-					<path
-						class="flame"
-						style:--s={FLAME[lamp.level]}
-						d="M12 2c1.6 3.2 4.6 4.7 4.6 8.6a4.6 4.6 0 0 1-9.2 0c0-2 1-3.3 2.1-4.3.2 1.4 1 2.3 2 2.3 1.3 0 1.9-1.2 1.6-2.6C12.8 4.9 12 3.6 12 2z"
-					/>
+					<path class="flame" style:--s={FLAME[lamp.level]} d={FLAME_PATH} />
 				{/if}
 				<path class="wick" d="M12 15.5v5" />
 				<path class="body" d="M3 25c0-3 4-4 9-4s9 1 9 4-4 5-9 5-9-2-9-5zM18 24l5-2v2l-4 2z" />
 				<path class="foot" d="M8 30h8l1 3H7z" />
 			</svg>
-			<span class="day" aria-hidden="true">{weekdays.format(new Date(`${lamp.day}T00:00:00Z`))}</span>
+			<span class="day">{weekdays.format(new Date(`${lamp.day}T00:00:00Z`))}</span>
 		</div>
 	{/each}
 </div>
@@ -81,6 +71,7 @@
 		stroke-linecap: round;
 	}
 	.flame {
+		/* Fire is light in every theme: the theme's gold, lifted toward white. */
 		fill: color-mix(in srgb, var(--gold) 40%, white);
 		stroke: color-mix(in srgb, var(--gold) 85%, transparent);
 		stroke-width: 0.8;

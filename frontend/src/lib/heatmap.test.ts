@@ -89,6 +89,12 @@ describe('weekLamps', () => {
 		expect(weekLamps(['2026-11-01'], today)[0].level).toBe(1);
 	});
 
+	it('never lights a day after today, as the goal count never counts one', () => {
+		const lamps = weekLamps(['2026-11-01', '2026-11-05'], today);
+		expect(lamps[4]).toEqual({ day: '2026-11-05', state: 'ahead', level: 0 });
+		expect(lamps.filter((l) => l.state === 'lit')).toHaveLength(weekReadCount(['2026-11-01', '2026-11-05'], today));
+	});
+
 	it('lights today once it is read', () => {
 		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', level: 1 });
 	});
