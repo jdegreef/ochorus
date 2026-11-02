@@ -497,6 +497,36 @@ class CuratedArtTests(TestCase):
             for path in written:
                 path.unlink(missing_ok=True)
 
+    def test_glow_lights_the_crop_and_moves_the_recipe(self):
+        """`glow` has to lighten pixels where it is laid, enter the recipe (so a
+        changed glow redraws), and be in the cache key (so it is not served the
+        unlit crop)."""
+        from PIL import Image
+
+        from library.curated_art import Artwork, crop_recipe
+        from library.management.commands.build_curated_covers import CACHE, _crop_3x4
+
+        pool = (0.5, 0.5, 0.6, 0.3, 0.8)
+        art = Artwork("met", 1, "a", "t", "y", "w")
+        self.assertEqual(crop_recipe(art._replace(glow=(pool,))), "met-1@0.50+0.50,0.50,0.60,0.30,0.80")
+
+        CACHE.mkdir(parents=True, exist_ok=True)
+        written = []
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                src = Path(td) / "s.png"
+                Image.new("RGB", (600, 800), (40, 40, 40)).save(src)
+                plain = _crop_3x4(src, "glow-selftest", 0.5)
+                lit = _crop_3x4(src, "glow-selftest", 0.5, 0.0, (pool,))
+                written += [plain, lit]
+                self.assertNotEqual(plain, lit, "glow must be in the cache key")
+                with Image.open(plain) as a, Image.open(lit) as b:
+                    self.assertGreater(sum(b.getpixel((300, 400))), sum(a.getpixel((300, 400))) + 300)
+                    self.assertLess(abs(sum(b.getpixel((5, 5))) - sum(a.getpixel((5, 5)))), 15, "lit outside the pool")
+        finally:
+            for path in written:
+                path.unlink(missing_ok=True)
+
     def test_every_source_can_actually_be_fetched(self):
         """A source in the manifest with no fetcher is a build that dies on a
         re-run, months after the entry was added and by someone else."""

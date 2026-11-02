@@ -341,6 +341,31 @@ def scrimmed(ground, strength: float, middle: tuple[int, int], subtitle: bool):
     )
 
 
+#: The light a glow lays down: the warm white of a low sun.
+GLOW_LIGHT = (255, 248, 222)
+
+
+def glowing(im, cx: float, cy: float, rx: float, ry: float, strength: float):
+    """`im` under an ellipse of `GLOW_LIGHT`, `strength` at the centre, smoothstepped
+    to nothing at the rim, so it reads as the sun's own bloom and not a patch.
+
+    Centre and radii are fractions of the image. How a picture set in DARK ink
+    (`INK_DARK`) is made light where the words land, there being no scrim to
+    lift them off it: `designed_covers.Ground.glow` and `curated_art.Artwork.glow`.
+    """
+    from PIL import Image
+
+    w, h = im.size
+    mask = Image.new("L", (w, h))
+    px = mask.load()
+    for y in range(h):
+        dy = (y / h - cy) / ry
+        for x in range(w):
+            t = max(0.0, 1 - ((x / w - cx) / rx) ** 2 - dy * dy) ** 0.5
+            px[x, y] = round(255 * strength * t * t * (3 - 2 * t))
+    return Image.composite(Image.new("RGB", (w, h), GLOW_LIGHT), im, mask)
+
+
 def twin_path(slug: str, language: str) -> tuple[str, str]:
     """(url, path under the covers dir) for one edition's og:image twin.
 
@@ -648,6 +673,7 @@ INK_DARK = frozenset({
     "sons-of-the-king-2",
     "sons-of-the-king-3",
     "soar-like-the-eagle-3",
+    "faithful-with-little",
 })
 
 #: `--cover-ink-dark` in `cover-type.css`.
@@ -684,6 +710,16 @@ DARK_INK_BOXES_BY_SLUG = {
         ("rule", (230, 435, 370, 508), 0.8, 3.0),
         ("subtitle", (78, 462, 526, 548), 0.90, AUTHOR_MIN_CONTRAST),
         ("mark", (230, 660, 370, 750), 0.95, 3.0),
+    ),
+    # Measured 2026-11-02 over en, es, fr, pt, sw (the twins' rows, plus 4px).
+    # Swahili's title wraps to three lines and starts highest; Spanish sets the
+    # widest subtitle. The Originals' bar sits between title and subtitle.
+    "faithful-with-little": (
+        ("byline", (110, 98, 490, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (75, 243, 525, 460), 1.0, TITLE_MIN),
+        ("rule", (250, 415, 350, 520), 0.8, 3.0),
+        ("subtitle", (57, 444, 543, 546), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
     ),
 }
 # The plate gradient's far stop, as a fraction of the base colour.

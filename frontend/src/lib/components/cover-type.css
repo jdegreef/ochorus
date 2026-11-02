@@ -1081,6 +1081,10 @@
 	background: radial-gradient(circle, rgb(35 26 36 / 0.75) 0 0.8cqw, transparent 0.9cqw) 0 50% /
 		3cqw 1.8cqw repeat-x;
 }
+/* The Originals' solid bar is drawn white; in dark ink it takes the ink. */
+.cover-plate.over-art.ink-dark .cover-type.style-originals .rule {
+	background: rgb(35 26 36 / 0.8);
+}
 /* The devotional quatrefoil is drawn white; on a pale ground it is darkened to
    the ink's grey rather than redrawn, so the recipe keeps its one ornament. */
 .cover-plate.over-art.ink-dark .cover-type.style-devotional .rule {

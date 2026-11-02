@@ -87,7 +87,7 @@ from PIL import Image, ImageChops, ImageFilter, ImageMath, ImageOps  # noqa: E40
 # `H`/`W` are the plate's canvas — imported rather than restated, because every
 # other cover tool derives its geometry from that pair and a private copy here
 # would go on drawing 600x800 after the module moved.
-from library.covers import H, W, art_url, scrimmed, write_og_twin  # noqa: E402
+from library.covers import H, W, art_url, glowing, scrimmed, write_og_twin  # noqa: E402
 from library.designed_covers import (  # noqa: E402
     DERIVED_GROUND,
     DESIGNED_BY_SLUG,
@@ -238,26 +238,8 @@ def derived_ground(source: Path, cut: Ground):
         # Feathered in rather than pasted: the join has to read as depth of field.
         ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
     if cut.glow:
-        ground = _glowing(ground, *cut.glow)
+        ground = glowing(ground, *cut.glow)
     return ground
-
-
-#: The light `Ground.glow` lays down: the warm white of a low sun.
-_GLOW = (255, 248, 222)
-
-
-def _glowing(im, cx: float, cy: float, rx: float, ry: float, strength: float):
-    """`im` under an ellipse of `_GLOW`, `strength` at the centre, smoothstepped
-    to nothing at the rim, so it reads as the sun's own bloom and not a patch."""
-    w, h = im.size
-    mask = Image.new("L", (w, h))
-    px = mask.load()
-    for y in range(h):
-        dy = (y / h - cy) / ry
-        for x in range(w):
-            t = max(0.0, 1 - ((x / w - cx) / rx) ** 2 - dy * dy) ** 0.5
-            px[x, y] = round(255 * strength * t * t * (3 - 2 * t))
-    return Image.composite(Image.new("RGB", (w, h), _GLOW), im, mask)
 
 
 # `scrimmed` moved to `library.covers`: the fixture gate that measures every
