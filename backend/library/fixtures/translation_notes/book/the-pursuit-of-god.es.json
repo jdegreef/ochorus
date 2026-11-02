@@ -1,0 +1,1066 @@
+{
+ "kind": "book",
+ "slug": "the-pursuit-of-god",
+ "language": "es",
+ "job_issue": 6988,
+ "pull_request": null,
+ "note": [
+  "Scripture source: no clean modern Reina-Valera text is reachable, so verses were mined from the shipped es corpus (17,342 en/es quotation pairs aligned from blocks with equal quotation counts); everything else was rendered in RV1960 register and is self_rendered. Translators looked up every quotation (cited or not) in that verse file and copied the bytes by script.",
+  "Translated from the English as the deploy settles it (corrections.settled_chapter_body), so the library's BODY_CORRECTIONS for this slug are already in the source.",
+  "Derived by measurement: a row is mined only when the translator reported the quotation verbatim AND the block contains a 30-character run of that verse (or a quoted span of 10+ characters that is a substring of it), compared with quotation marks and punctuation stripped. adapted/self rows and 48 unconfirmed verbatim claims (mostly one-word or short-phrase echoes) are self_rendered. 37 of 169 rows mined.",
+  "Conventions: « » outer quotation marks with “ ” nested (the es book majority); reader tú, audience vosotros (library precedent); a register review kept usted only in Wigglesworth's anecdote dialogue and made each conversation consistent."
+ ],
+ "references": [
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 5,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 5,
+   "chapter_order": 1
+  },
+  {
+   "reference": "1 Kings 18:44",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Psalms 63:8",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 6:44",
+   "status": "mined",
+   "source_file": "all-of-grace.es.json",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalms 63:8",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalms 42:1",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalms 42:2",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalms 42:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Exodus 33:13",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 14,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.es.json",
+   "block_index": 15,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 15,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Numbers 18:20",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 16:26",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:2",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 11,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 21:12",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:3",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:12",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 13,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:16",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:17",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 60:13",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Revelation 21:23",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "till-he-come.es.json",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Jude 1:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 45:8",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 42:1",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Samuel 15:9",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "mined",
+   "source_file": "gleanings-among-the-sheaves.es.json",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 45:8",
+   "status": "mined",
+   "source_file": "gleanings-among-the-sheaves.es.json",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 10:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "evening-by-evening.es.json",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 14:1",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 12:22",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 12:18",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 12:19",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 139:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 139:7",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 139:8",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 139:9",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 139:10",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Deuteronomy 32:10",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "mined",
+   "source_file": "prayer-and-praying-men.es.json",
+   "block_index": 9,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 34:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 27:8",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 18,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ezekiel 37:3",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "rooted-2.es.json",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 33:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 6:63",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 33:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 33:9",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 11:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 90:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 2:15",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Proverbs 8:1",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Proverbs 8:2",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Proverbs 8:4",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 12:29",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Deuteronomy 33:16",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.es.json",
+   "block_index": 14,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Genesis 3:8",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hosea 6:3",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Peter 1:21",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Numbers 21:6",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Numbers 21:9",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "source_file": "the-new-birth.es.json",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 3:15",
+   "status": "mined",
+   "source_file": "the-new-birth.es.json",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 34:5",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 123:1",
+   "status": "mined",
+   "source_file": "selected-sermons-edwards.es.json",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 123:2",
+   "status": "mined",
+   "source_file": "selected-sermons-edwards.es.json",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 14:19",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json",
+   "block_index": 19,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 57:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Judges 5:20",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:34",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 12:26",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:54",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:49",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 21,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 3:30",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Zechariah 9:9",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 21:5",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "soar-like-the-eagle-3.es.json",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "soar-like-the-eagle-3.es.json",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "soar-like-the-eagle-3.es.json",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 8:29",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.es.json",
+   "block_index": 7,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Luke 19:31",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 5:21",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 4:21",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Corinthians 7:20",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 26,
+   "chapter_order": 12
+  }
+ ]
+}

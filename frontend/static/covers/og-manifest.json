@@ -6857,6 +6857,38 @@
 			"bar": 0,
 			"caps": false
 		},
+		"es/at-the-masters-feet": {
+			"ground": "72b5707c6dc8e1736dcfe7587081a7e5f4e4fc4c1f8850c6ec9b92e2d4230938",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[168, 289, 432, 371],
+					[135, 360, 465, 442]
+				],
+				"subtitle": [
+					[96, 514, 504, 535],
+					[96, 535, 504, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"es/baptism-with-the-holy-spirit": {
 			"ground": "95004c144cd2fec09fd0248fa3ac90f9d9cd93c3e5ed29a3b99a6c5bff57ea28",
 			"style": "revival",
@@ -7284,6 +7316,34 @@
 			"layout": "band/oxblood",
 			"bar": 0,
 			"caps": false
+		},
+		"es/ever-increasing-faith": {
+			"ground": "d98042073d47cf8220df9bc446abdd369b66d91dd6d92023ed6bc26ebff640da",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[146, 223, 454, 305],
+					[171, 294, 429, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				427
+			]
 		},
 		"es/faithful-with-little": {
 			"ground": "967482d41070c020186890aa8726246a516fdd04f8d9568a10f019affe9ee8a0",
@@ -9411,6 +9471,34 @@
 			"middle": [
 				287,
 				508
+			]
+		},
+		"es/the-pursuit-of-god": {
+			"ground": "5ae35d914ff6519480b722318f99738155300b9c698927a92cc94d3a17201358",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[123, 223, 477, 305],
+					[195, 294, 405, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				427
 			]
 		},
 		"es/the-reformed-pastor": {
