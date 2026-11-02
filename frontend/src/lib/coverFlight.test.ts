@@ -9,8 +9,8 @@ import { BOOK_ROUTE, COVER_NAME, flyCover, noteCoverTap, shouldFly } from './cov
  * view-transition name is only ever on the elements in flight: the tapped
  * cover for the old snapshot, the landing for the new one, and nothing after.
  */
-const nav = (routeId: string | null, href: string, complete: Promise<void> = Promise.resolve()) =>
-	({ to: { route: { id: routeId }, url: new URL(href) }, complete }) as unknown as OnNavigate;
+const nav = (routeId: string | null, href: string, complete: Promise<void> = Promise.resolve(), type = 'link') =>
+	({ type, to: { route: { id: routeId }, url: new URL(href) }, complete }) as unknown as OnNavigate;
 const BOOK = 'http://localhost:3000/es/books/the-pilgrims-progress';
 
 describe('when a cover flies', () => {
@@ -23,6 +23,9 @@ describe('when a cover flies', () => {
 		expect(shouldFly(nav(BOOK_ROUTE, BOOK), null)).toBe(false);
 		expect(shouldFly(nav('/books/[slug]/[order]', `${BOOK}/3`), tapped)).toBe(false);
 		expect(shouldFly(nav(BOOK_ROUTE, 'http://localhost:3000/es/books/holiness'), tapped)).toBe(false);
+		// Not the link being followed: a goto(), back/forward.
+		expect(shouldFly(nav(BOOK_ROUTE, BOOK, undefined, 'goto'), tapped)).toBe(false);
+		expect(shouldFly(nav(BOOK_ROUTE, BOOK, undefined, 'popstate'), tapped)).toBe(false);
 	});
 	it('names the group app.css times', () => {
 		const css = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
@@ -31,14 +34,12 @@ describe('when a cover flies', () => {
 });
 
 describe('the name handoff', () => {
-	let shelf: HTMLAnchorElement;
 	let cover: HTMLElement;
 	let snapshots: string[][];
 	const named = () => [...document.querySelectorAll<HTMLElement>('*')].filter((e) => e.style.viewTransitionName === COVER_NAME).map((e) => e.id);
 
 	beforeEach(() => {
 		document.body.innerHTML = `<a id="link" href="${BOOK}"><div id="shelf-cover" class="cover-edge"></div></a>`;
-		shelf = document.getElementById('link') as HTMLAnchorElement;
 		cover = document.getElementById('shelf-cover')!;
 		snapshots = [];
 		Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true });
@@ -53,7 +54,6 @@ describe('the name handoff', () => {
 	afterEach(() => {
 		// @ts-expect-error — the test's stand-in only
 		delete document.startViewTransition;
-		document.body.innerHTML = '';
 	});
 
 	const tap = (init: MouseEventInit = {}) => {
@@ -65,7 +65,6 @@ describe('the name handoff', () => {
 	it('moves the name from the tapped cover to the landing, then takes it off both', async () => {
 		tap();
 		const landed = Promise.resolve().then(() => {
-			shelf.remove();
 			document.body.innerHTML = '<div id="hero" data-cover-landing></div>';
 		});
 		await flyCover(nav(BOOK_ROUTE, BOOK, landed));

@@ -15,11 +15,10 @@ import { canViewTransition } from './crossfade';
  * another page) is an ordinary navigation, as it is wherever the browser has
  * no View Transitions or the reader asks for less motion.
  *
- * The name is never left on anything: it is set inline on the tapped cover for
- * the old snapshot, moved to the landing (`[data-cover-landing]`) for the new
- * one, and taken off when the flight ends — so names stay unique on a
- * book-to-book jump, and no other transition (a theme crossfade) lifts the
- * hero out of the page.
+ * The name is only ever on what is in flight (so it stays unique on a
+ * book-to-book jump, and a theme crossfade never lifts the hero): the tapped
+ * cover for the old snapshot, the landing (`[data-cover-landing]`) for the new.
+ * Covers on a book page's edition ladder fly into its hero the same way.
  */
 
 /** The book page's route, whose hero cover is the landing. */
@@ -29,41 +28,44 @@ export const COVER_NAME = 'book-cover';
 /** The cover's drawn box (BookCover's root). */
 const COVER = '.cover-edge';
 const LANDING = '[data-cover-landing]';
-/** A tap older than this is not what a navigation is answering. */
-const TAP_TTL_MS = 10_000;
 /** How long the new snapshot waits for the hero's image to be ready. */
-const DECODE_WAIT_MS = 300;
+const DECODE_WAIT_MS = 150;
 
-let tapped: { el: HTMLElement; href: string; at: number } | null = null;
+let tapped: { el: HTMLElement; href: string } | null = null;
 
 /** Capture-phase document click: remember a cover inside the link tapped —
  *  a plain primary-button tap only (a modified click opens a tab instead). */
 export function noteCoverTap(e: MouseEvent): void {
 	tapped = null;
-	if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+	if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 	const link = e.target instanceof Element ? e.target.closest<HTMLAnchorElement>('a[href]') : null;
 	const cover = link?.querySelector<HTMLElement>(COVER);
-	if (link && cover && !link.target) tapped = { el: cover, href: link.href, at: performance.now() };
+	if (link && cover && !link.target) tapped = { el: cover, href: link.href };
 }
 
-/** Whether a navigation should fly the tapped cover: it lands on the book
- *  page that the tapped link named. */
-export function shouldFly(nav: Pick<OnNavigate, 'to'>, from: { href: string } | null): boolean {
-	return !!from && nav.to?.route.id === BOOK_ROUTE && stripHash(nav.to.url.href) === stripHash(from.href);
+/** Whether a navigation should fly the tapped cover: a link was followed
+ *  (SvelteKit's word for it), and it lands on the book page that link named. */
+export function shouldFly(nav: Pick<OnNavigate, 'to' | 'type'>, from: { href: string } | null): boolean {
+	return (
+		!!from &&
+		nav.type === 'link' &&
+		nav.to?.route.id === BOOK_ROUTE &&
+		stripHash(nav.to.url.href) === stripHash(from.href)
+	);
 }
 
 const stripHash = (href: string) => href.split('#')[0];
 
-/** Resolve once `img` can paint, or after `ms` — whichever is first. */
-function ready(img: HTMLImageElement | null, ms: number): Promise<void> {
+/** Resolve once `img` can paint, or after DECODE_WAIT_MS — whichever is first. */
+function ready(img: HTMLImageElement | null): Promise<void> {
 	if (!img || img.complete) return Promise.resolve();
-	return Promise.race([img.decode().catch(() => {}), new Promise<void>((r) => setTimeout(r, ms))]);
+	return Promise.race([img.decode().catch(() => {}), new Promise<void>((r) => setTimeout(r, DECODE_WAIT_MS))]);
 }
 
 /** The layout's onNavigate: fly the tapped cover into the book page, or
  *  return nothing and let the navigation happen as usual. */
 export function flyCover(nav: OnNavigate): Promise<void> | void {
-	const from = tapped && performance.now() - tapped.at < TAP_TTL_MS ? tapped : null;
+	const from = tapped;
 	tapped = null;
 	if (!from || !shouldFly(nav, from) || !canViewTransition()) return;
 
@@ -86,9 +88,8 @@ export function flyCover(nav: OnNavigate): Promise<void> | void {
 			landing = document.querySelector<HTMLElement>(LANDING);
 			if (!landing) return;
 			landing.style.viewTransitionName = COVER_NAME;
-			await ready(landing.querySelector('img'), DECODE_WAIT_MS);
+			await ready(landing.querySelector('img'));
 		});
 		t.finished.then(clear, clear);
-		t.updateCallbackDone.catch(() => {});
 	});
 }
