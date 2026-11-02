@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount, untrack } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, goto, onNavigate } from '$app/navigation';
+	import { flyCover, noteCoverTap } from '$lib/coverFlight';
 	import { midBook } from '$lib/midBook.svelte';
 	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
@@ -145,6 +146,10 @@
 		cancel();
 		location.assign(to!.url.href);
 	});
+
+	// A tapped cover flies into the book page it opens ($lib/coverFlight;
+	// the tap is noted by <svelte:document> below).
+	onNavigate(flyCover);
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
 	afterNavigate(({ from, to }) => {
@@ -315,6 +320,7 @@
 </svelte:head>
 
 <svelte:window onkeydown={onWindowKeydown} />
+<svelte:document onclickcapture={noteCoverTap} />
 
 <div
 	class="app-root flex min-h-screen flex-col"

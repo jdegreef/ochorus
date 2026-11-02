@@ -1804,6 +1804,16 @@
 	animation-timing-function: ease-in-out;
 }
 
+/* The cover a reader taps flies into the book page it opens ($lib/coverFlight):
+   the shelf's cover and the book page's hero share `book-cover` for that
+   navigation, and the browser carries the one into the other's place and size
+   while the rest of the page crossfades round it. Both are 3:4, so it scales
+   cleanly. */
+::view-transition-group(book-cover) {
+	animation-duration: 440ms;
+	animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
 /* A loading placeholder: a block of parchment (the band's ground, warmed
    with a breath of gold) that a slow band of light crosses, like a page
    turning under a lamp — not the grey pulse of a generic skeleton. Wear it on
