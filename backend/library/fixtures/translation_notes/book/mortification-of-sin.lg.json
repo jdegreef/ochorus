@@ -1,0 +1,2355 @@
+{
+ "kind": "book",
+ "slug": "mortification-of-sin",
+ "language": "lg",
+ "job_issue": 6863,
+ "pull_request": null,
+ "note": [
+  "Scripture source: the Open Luganda Contemporary Bible (OLCB 2017, Biblica, CC BY-SA), parsed from the ebible mirror's USX (bibles/lug_bib), all 66 books. Translators looked up every quotation (cited or not) in that verse file and copied the bytes by script.",
+  "Translated from the English as the deploy settles it (corrections.settled_chapter_body), so the library's BODY_CORRECTIONS for this slug are already in the source.",
+  "Derived by measurement: a row is mined only when the translator reported the quotation verbatim AND the block contains a 30-character run of that verse (or a quoted span of 10+ characters that is a substring of it), compared with quotation marks and punctuation stripped. adapted/self rows and 21 unconfirmed verbatim claims (mostly one-word or short-phrase echoes) are self_rendered. 210 of 355 rows mined.",
+  "Conventions: quotation marks mirror this book's English source (Luganda books never convert to guillemets); in-word apostrophe ’ as OLCB; site terms Bayibuli, Setaani, Omukristaayo; 'Mr. X' is Omwami X. A reviewer pass checked 89 trap-word sites (Kitaawe, balubaale, muzimu, mu bwangu, Mukama + surname) against the English and fixed 7 ('mu bwangu' for 'easily/simply')."
+ ],
+ "references": [
+  {
+   "reference": "2 Corinthians 9:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 1,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Galatians 5:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 20,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 20,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 21,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 21,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 22,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 6:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 22,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 23,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Galatians 6:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 23,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Thessalonians 3:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 23,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Isaiah 49:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Peter 2:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Revelation 9:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 1:12",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 15:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "2 Timothy 3:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:25",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Titus 3:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 4:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 21,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 21,
+   "chapter_order": 4
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 21,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 55:2",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 57:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Isaiah 57:19",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 38:3",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 38:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 40:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 119:57",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Jeremiah 30:13",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Hosea 5:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Hosea 5:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Corinthians 7:11",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:32",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:34",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:35",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:36",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 78:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Genesis 6:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ecclesiastes 8:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Peter 2:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 40:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Kings 8:38",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 51:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 9:31",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 9:32",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 8:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Malachi 3:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jeremiah 6:29",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jeremiah 6:30",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jeremiah 6:28",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 7,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 7:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 7:17",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 7:18",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hosea 7:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hosea 7:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezekiel 13:10",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hosea 5:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 10:3",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 1:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jeremiah 8:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 22:29",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 5:7",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 8
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 58:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Leviticus 15:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 38:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 42:15",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 77:6",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Proverbs 25:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:39",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Deuteronomy 29:19",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Kings 5:18",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Jude 1:4",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 38:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 10
+  },
+  {
+   "reference": "James 1:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 10
+  },
+  {
+   "reference": "James 1:21",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 39:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Jeremiah 8:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 4:7",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Job 3:25",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Isaiah 63:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Isaiah 57:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 20,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Isaiah 57:18",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 2:3",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalms 95:11",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 17:21",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 22,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 19:20",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Kings 5:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 4:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Proverbs 7:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Proverbs 7:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 7:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Revelation 3:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 3:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 89:30",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 57:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 5:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 10,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 77:2",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Job 7:15",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 10:38",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Lamentations 3:33",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 63:10",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 6:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Numbers 25:6",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 6:6",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 51:3",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Deuteronomy 32:6",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 43:24",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 12
+  },
+  {
+   "reference": "2 Corinthians 7:11",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 20,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 51:5",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 26,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Mark 13:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 32,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Luke 21:34",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 32,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Psalms 18:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 32,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Haggai 1:5",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 12
+  },
+  {
+   "reference": "2 Kings 8:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 32,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 12
+  },
+  {
+   "reference": "James 1:14",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 12
+  },
+  {
+   "reference": "James 1:15",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Job 37:22",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 40:22",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 40:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 30:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 30:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 1:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Exodus 34:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 3:16",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 6:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Job 26:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 1:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 John 5:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 4:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 19,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 28,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Romans 9:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 57:19",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 11:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Kings 19:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Ezekiel 16:60",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Ezekiel 16:61",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 7:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Job 42:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 78:37",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 16:8",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 25:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 13,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Kings 5:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Micah 2:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 116:7",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 85:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 15,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Jeremiah 6:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 16,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Hebrews 4:2",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Jeremiah 6:14",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Habakkuk 1:13",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 10:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Song of Songs 5:4",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 7:46",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Hebrews 5:14",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Luke 1:41",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Genesis 49:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 35:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 12:12",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 5,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 123:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 37:37",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 7:9",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 6:68",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 66:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 2:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 11,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Jeremiah 31:36",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 12,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 10:23",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 9:10",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 58:11",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 14,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 5:26",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 6:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Galatians 3:1",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 16:8",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Corinthians 2:8",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 15
+  },
+  {
+   "reference": "2 Corinthians 1:21",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 26,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 15
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 26,
+   "chapter_order": 15
+  }
+ ]
+}
