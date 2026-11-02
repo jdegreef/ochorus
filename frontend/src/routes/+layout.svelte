@@ -147,12 +147,9 @@
 		location.assign(to!.url.href);
 	});
 
-	// A tapped cover flies into the book page it opens ($lib/coverFlight).
+	// A tapped cover flies into the book page it opens ($lib/coverFlight;
+	// the tap is noted by <svelte:document> below).
 	onNavigate(flyCover);
-	$effect(() => {
-		document.addEventListener('click', noteCoverTap, true);
-		return () => document.removeEventListener('click', noteCoverTap, true);
-	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
 	afterNavigate(({ from, to }) => {
@@ -323,6 +320,7 @@
 </svelte:head>
 
 <svelte:window onkeydown={onWindowKeydown} />
+<svelte:document onclickcapture={noteCoverTap} />
 
 <div
 	class="app-root flex min-h-screen flex-col"

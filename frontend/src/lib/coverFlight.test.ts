@@ -1,34 +1,92 @@
-import { describe, expect, it } from 'vitest';
-import { BOOK_ROUTE, shouldFly } from './coverFlight';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { OnNavigate } from '@sveltejs/kit';
+import { BOOK_ROUTE, COVER_NAME, flyCover, noteCoverTap, shouldFly } from './coverFlight';
 
 /**
- * A tapped cover flies only into the book page its link named, and only where
- * the browser can and the reader is happy to see motion. Everything else is an
- * ordinary navigation.
+ * A tapped cover flies only into the book page its link named, and the shared
+ * view-transition name is only ever on the elements in flight: the tapped
+ * cover for the old snapshot, the landing for the new one, and nothing after.
  */
-const to = (routeId: string | null, href: string) =>
-	({ to: { route: { id: routeId }, url: new URL(href) } }) as Parameters<typeof shouldFly>[0];
-const ok = { canTransition: true, reducedMotion: false };
-const tapped = { href: 'https://ochorus.com/es/books/the-pilgrims-progress' };
+const nav = (routeId: string | null, href: string, complete: Promise<void> = Promise.resolve()) =>
+	({ to: { route: { id: routeId }, url: new URL(href) }, complete }) as unknown as OnNavigate;
+const BOOK = 'http://localhost:3000/es/books/the-pilgrims-progress';
 
-describe('cover flight', () => {
-	it('flies into the book page the tapped link named', () => {
-		expect(shouldFly(to(BOOK_ROUTE, 'https://ochorus.com/es/books/the-pilgrims-progress'), tapped, ok)).toBe(true);
-		// A hash on either side is the same page.
-		expect(shouldFly(to(BOOK_ROUTE, 'https://ochorus.com/es/books/the-pilgrims-progress#contents'), tapped, ok)).toBe(true);
+describe('when a cover flies', () => {
+	const tapped = { href: BOOK };
+	it('flies into the book page the tapped link named (a hash is the same page)', () => {
+		expect(shouldFly(nav(BOOK_ROUTE, BOOK), tapped)).toBe(true);
+		expect(shouldFly(nav(BOOK_ROUTE, `${BOOK}#contents`), tapped)).toBe(true);
 	});
-
 	it('stays put for anything else', () => {
-		// No cover was tapped (a text link, the search box, back).
-		expect(shouldFly(to(BOOK_ROUTE, tapped.href), null, ok)).toBe(false);
-		// A cover linking to a chapter (Continue reading), or another book.
-		expect(shouldFly(to('/books/[slug]/[order]', `${tapped.href}/3`), tapped, ok)).toBe(false);
-		expect(shouldFly(to(BOOK_ROUTE, 'https://ochorus.com/es/books/holiness'), tapped, ok)).toBe(false);
+		expect(shouldFly(nav(BOOK_ROUTE, BOOK), null)).toBe(false);
+		expect(shouldFly(nav('/books/[slug]/[order]', `${BOOK}/3`), tapped)).toBe(false);
+		expect(shouldFly(nav(BOOK_ROUTE, 'http://localhost:3000/es/books/holiness'), tapped)).toBe(false);
+	});
+	it('names the group app.css times', () => {
+		const css = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
+		expect(css).toContain(`::view-transition-group(${COVER_NAME})`);
+	});
+});
+
+describe('the name handoff', () => {
+	let shelf: HTMLAnchorElement;
+	let cover: HTMLElement;
+	let snapshots: string[][];
+	const named = () => [...document.querySelectorAll<HTMLElement>('*')].filter((e) => e.style.viewTransitionName === COVER_NAME).map((e) => e.id);
+
+	beforeEach(() => {
+		document.body.innerHTML = `<a id="link" href="${BOOK}"><div id="shelf-cover" class="cover-edge"></div></a>`;
+		shelf = document.getElementById('link') as HTMLAnchorElement;
+		cover = document.getElementById('shelf-cover')!;
+		snapshots = [];
+		Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true });
+		// A stand-in for the browser: record who carries the name before and after the update.
+		document.startViewTransition = ((update: () => Promise<void>) => {
+			snapshots.push(named());
+			const updateCallbackDone = Promise.resolve().then(update);
+			const finished = updateCallbackDone.then(() => snapshots.push(named()));
+			return { updateCallbackDone, finished, ready: finished, skipTransition() {} };
+		}) as unknown as typeof document.startViewTransition;
+	});
+	afterEach(() => {
+		// @ts-expect-error — the test's stand-in only
+		delete document.startViewTransition;
+		document.body.innerHTML = '';
 	});
 
-	it('stays put without View Transitions, or for a reader who asks for less motion', () => {
-		const nav = to(BOOK_ROUTE, tapped.href);
-		expect(shouldFly(nav, tapped, { canTransition: false, reducedMotion: false })).toBe(false);
-		expect(shouldFly(nav, tapped, { canTransition: true, reducedMotion: true })).toBe(false);
+	const tap = (init: MouseEventInit = {}) => {
+		const e = new MouseEvent('click', { bubbles: true, button: 0, ...init });
+		Object.defineProperty(e, 'target', { value: cover });
+		noteCoverTap(e);
+	};
+
+	it('moves the name from the tapped cover to the landing, then takes it off both', async () => {
+		tap();
+		const landed = Promise.resolve().then(() => {
+			shelf.remove();
+			document.body.innerHTML = '<div id="hero" data-cover-landing></div>';
+		});
+		await flyCover(nav(BOOK_ROUTE, BOOK, landed));
+		await vi.waitFor(() => expect(snapshots).toHaveLength(2));
+		expect(snapshots).toEqual([['shelf-cover'], ['hero']]);
+		expect(named()).toEqual([]);
+		expect(cover.style.viewTransitionName).toBe('');
+	});
+
+	it('flies nothing for a modified click (a new tab)', () => {
+		tap({ metaKey: true });
+		expect(flyCover(nav(BOOK_ROUTE, BOOK))).toBeUndefined();
+		expect(snapshots).toEqual([]);
+	});
+
+	it('leaves no name behind when the navigation fails', async () => {
+		tap();
+		const failed = Promise.reject(new Error('superseded'));
+		failed.catch(() => {});
+		await flyCover(nav(BOOK_ROUTE, BOOK, failed));
+		await vi.waitFor(() => expect(snapshots).toHaveLength(2));
+		expect(named()).toEqual([]);
 	});
 });
