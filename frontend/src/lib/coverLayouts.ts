@@ -316,7 +316,10 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	// A sunset photograph whose sun stands where the title goes: its ground is
 	// drawn with the sun at full strength and a glow over the words
 	// (`designed_covers.DERIVED_GROUND`), so the type reads dark against light.
-	'soar-like-the-eagle-3'
+	'soar-like-the-eagle-3',
+	// Picked by the founder from ten warm proofs (2026-11-01): Van Gogh, a wheat field
+	// lit behind the title (`curated_art.Artwork.glow`) so the type reads dark.
+	'faithful-with-little'
 ]);
 
 /** Is this painted book set in dark ink? Never under a layout. */

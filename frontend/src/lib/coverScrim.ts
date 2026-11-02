@@ -67,7 +67,6 @@ export const COVER_SCRIM: Record<string, number> = {
 	'ever-increasing-faith': 0.70,
 	'exhortation-to-the-heathen': 0.65,
 	'expository-thoughts-on-matthew': 0.80,
-	'faithful-with-little': 0.90,
 	'feasting-at-the-table': 0.70,
 	'finney-memoirs': 0.60,
 	'fire-against-the-dark': 0.30,

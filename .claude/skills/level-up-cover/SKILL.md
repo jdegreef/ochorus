@@ -588,6 +588,14 @@ a drawn ORIGINAL_GROUND (the widow's two coins), since replaced (2026-10-31) by 
 painting, Georges Michel's plowed field (Met 437079). That photograph keeps a black mat and
 the canvas's brown lip round the picture: `Artwork.inset` (0.07) cuts it off every side
 before the 3:4 crop; check a new painting's EDGES at 1:1 for the same band.
+On 2026-11-02 the founder asked for a warmer cover with the title in BLACK: it now wears
+Van Gogh's wheat field (Met 436535) in dark ink (`INK_DARK`), lit behind the words by
+`Artwork.glow` (the same warm pool `Ground.glow` lays). A dark-ink painting needs its own
+`covers.DARK_INK_BOXES_BY_SLUG` rows (union of every edition's twin rows) — the default
+boxes are Daughters/Sons'. Tune the glow against that gate BEFORE rendering: the weakest
+pool that clears every bar keeps the most picture. Two gates bite a swap: one painting per
+work (`test_no_painting_is_given_to_two_works`) and three works per painter. The Van Gogh
+had just gone to The Lord's Prayer, which moved to Chapman's harvest (Cleveland 173542).
 After Batch 27 NO published book wore a plate — until the next day's imports brought 30 more
 (Batch 28, 2026-10-31: the Fathers, Owen ×4, Taylor ×2, de Sales ×2, Chrysostom ×2, Justin ×2,
 Calvin, Newman, Wesley's Journal, Doddridge, Scougal, Loyola, Ryle). `import_ochorus` and

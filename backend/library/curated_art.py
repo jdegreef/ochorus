@@ -117,6 +117,12 @@ class Artwork(NamedTuple):
     #: and bottom. Default 0, which is every entry cut before this existed;
     #: only a non-zero inset enters `crop_recipe`, so their recipes stand.
     inset: float = 0.0
+    #: Pools of warm light laid over the finished crop, each (centre x, centre
+    #: y, radius x, radius y, strength) as `designed_covers.Ground.glow` takes
+    #: one. For a painting set in DARK ink (`covers.INK_DARK`): there is no scrim
+    #: to lift the words off it, so it is made light where they land instead.
+    #: Default none; only a glow enters `crop_recipe`, so other recipes stand.
+    glow: tuple[tuple[float, float, float, float, float], ...] = ()
 
 
 def crop_recipe(art: Artwork) -> str:
@@ -129,7 +135,11 @@ def crop_recipe(art: Artwork) -> str:
     leaving the old picture under the new credit.
     """
     recipe = f"{art.source}-{art.object_id}@{art.focus:.2f}"
-    return f"{recipe}~{art.inset:.2f}" if art.inset else recipe
+    if art.inset:
+        recipe += f"~{art.inset:.2f}"
+    for pool in art.glow:
+        recipe += "+" + ",".join(f"{v:.2f}" for v in pool)
+    return recipe
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -1288,10 +1298,16 @@ CURATED: dict[str, Artwork] = {
         "A Roman aqueduct still carrying the land's life after its empire passed: Eusebius tells how the church grew across that world, from the apostles to Constantine.",
     ),
     "faithful-with-little": Artwork(
-        "met", 437079, "Georges Michel", "Landscape with a Plowed Field and a Village", "probably after 1827",
-        "A worked field and a small village under a vast storm-lit sky: ordinary, faithful labour done under heaven, the little that God's servants are asked to keep well.",
-        focus=0.55,
-        inset=0.07,
+        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889",
+        "Ripe wheat under a bright summer sky: the harvest that comes of small, "
+        "faithful sowing, warm and plain enough to carry the title in dark ink.",
+        focus=0.80,
+        inset=0.05,
+        # Set in dark ink (`covers.INK_DARK`): one wide pool of sun from the byline
+        # to the subtitle, paling the cypress and the bluest swirls where the
+        # words cross them, and a haze rising from the foot under the mark. The
+        # weakest pair that clears every `DARK_INK_BOXES_BY_SLUG` bar by 8%.
+        glow=((0.5, 0.42, 1.05, 0.44, 0.70), (0.5, 1.0, 1.2, 0.26, 0.5)),
     ),
     # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
     "epistle-and-martyrdom-of-polycarp": Artwork(
@@ -1493,8 +1509,11 @@ CURATED: dict[str, Artwork] = {
         focus=0.50, inset=0.01,
     ),
     "the-lords-prayer": Artwork(
-        "met", 436535, "Vincent van Gogh", "Wheat Field with Cypresses", "1889", "A ripe wheat field under a moving sky: daily bread standing in the field, asked for one day at a time.",
-        focus=0.60, inset=0.045,
+        "cma", 173542, "John Gadsby Chapman", "Harvest on the Roman Campagna", "1868",
+        "Haystacks and a threshing floor in the sun: the grain gathered in and "
+        "beaten out for bread, asked for one day at a time. (It wore Van Gogh's "
+        "wheat field until Faithful with Little, chosen by the founder, took it.)",
+        focus=0.08,
     ),
     "the-beatitudes": Artwork(
         "met", 437431, "Auguste Renoir", "Hills around the Bay of Moulin Huet, Guernsey", "1883", "A green hillside falling to a quiet bay: the slope above the water where the Beatitudes were first spoken.",

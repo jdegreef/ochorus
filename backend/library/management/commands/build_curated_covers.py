@@ -52,6 +52,7 @@ have meant "on a Mac", which is what shelling out to `sips` made it.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import time
@@ -66,7 +67,7 @@ from django.core.management.base import BaseCommand, CommandError
 from PIL import Image
 
 from library.art_sources import ART_SOURCES
-from library.covers import art_url, wears_designed_english
+from library.covers import art_url, glowing, wears_designed_english
 from library.curated_art import CURATED, CURATED_GROUND, Artwork, crop_recipe
 from library.models import Book
 
@@ -419,7 +420,7 @@ def _artwork_image(art: Artwork) -> Path:
     return raw
 
 
-def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0) -> Path:
+def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0, glow: tuple = ()) -> Path:
     """Scale the artwork to COVER the 3:4 plate, then crop the overflow away.
 
     WHERE the crop is taken from is the artwork's own to say: `Artwork.focus`
@@ -449,7 +450,9 @@ def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0) -> Pa
     # consulted before anything is drawn — leave it out and re-running after
     # adjusting a crop hands back the old one, silently, forever.
     # `inset` likewise, when there is one.
-    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}{f'~{inset:.2f}' if inset else ''}.jpg"
+    # `glow` too: a short digest of the pools, since they are five numbers each.
+    lit = "+" + hashlib.sha256(repr(glow).encode()).hexdigest()[:10] if glow else ""
+    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}{f'~{inset:.2f}' if inset else ''}{lit}.jpg"
     if out.exists():
         return out
     with Image.open(src) as im:
@@ -482,6 +485,8 @@ def _crop_3x4(src: Path, key: str, focus: float = 0.5, inset: float = 0.0) -> Pa
         left = round((im.width - W) * focus)
         top = round((im.height - H) * focus)
         im = im.crop((left, top, left + W, top + H))
+        for pool in glow:
+            im = glowing(im, *pool)
         # Quality 55 is deliberate. These are 600x800 thumbnails behind a
         # scrim and a lot of type — the artefacts JPEG makes at this level are
         # invisible here, and it's the difference between a 235 KB cover and a
@@ -552,7 +557,7 @@ class Command(BaseCommand):
             dest = COVERS_DIR / rel
             recipe = crop_recipe(art)
             keep = dest.exists() and not opts["force"] and ART_SOURCES.get(slug) == recipe
-            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus, art.inset)
+            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus, art.inset, art.glow)
 
             # ONE painting per work, with no type in it. Every language points at
             # this file and BookCover draws the title over it, so the reader
