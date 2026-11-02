@@ -2303,7 +2303,11 @@ SERMONS: list[SermonEntry] = [
     # Uttermost* (PG 22376). George MacDonald's *Unspoken Sermons* is already a
     # book (all 36), so none are added as sermons. Meyer's first chapter (*The
     # Laver in the Life of Jesus*) is the edition's only h4, so its slice runs
-    # to the end of the book; it is left out.
+    # to the end of the book; it is left out. Read in full and dropped: Meyer's
+    # *Peter's Love and Work* ("a life among savages"), *The Day of Resurrection*
+    # ("a squalid Arab village") and *The Conqueror of the World* (what "the Jews
+    # looked for"); Murray's *The Poverty of Christ* (against Rome's "surplus
+    # merit"); Havergal's *Our Silver and Gold* (appeals for two named charities).
     SermonEntry(
         "the-greatest-thing-in-the-world", 'The Greatest Thing in the World', "henry-drummond", "gutenberg", "16739",
         section='THE GREATEST THING IN THE WORLD. ToC', section_level="h3", scripture_ref="1 Corinthians 13",
@@ -2326,23 +2330,23 @@ SERMONS: list[SermonEntry] = [
     ),
     SermonEntry(
         "the-beauty-of-a-life-of-service", 'The Beauty of a Life of Service', "phillips-brooks", "gutenberg", "14497",
-        section='I. THE BEAUTY OF A LIFE OF SERVICE.', section_level="h2",
+        section='I. THE BEAUTY OF A LIFE OF SERVICE.', section_level="h2", scripture_ref="John 8:31-36",
     ),
     SermonEntry(
         "thought-and-action", 'Thought and Action', "phillips-brooks", "gutenberg", "14497",
-        section='II. THOUGHT AND ACTION.', section_level="h2",
+        section='II. THOUGHT AND ACTION.', section_level="h2", scripture_ref="John 8:30-36",
     ),
     SermonEntry(
         "the-duty-of-the-christian-business-man", 'The Duty of the Christian Business Man', "phillips-brooks", "gutenberg", "14497",
-        section='III. THE DUTY OF THE CHRISTIAN BUSINESS MAN.', section_level="h2",
+        section='III. THE DUTY OF THE CHRISTIAN BUSINESS MAN.', section_level="h2", scripture_ref="John 8:31-36",
     ),
     SermonEntry(
         "true-liberty", 'True Liberty', "phillips-brooks", "gutenberg", "14497",
-        section='IV. TRUE LIBERTY.', section_level="h2",
+        section='IV. TRUE LIBERTY.', section_level="h2", scripture_ref="John 8:31-32",
     ),
     SermonEntry(
         "the-christ-in-whom-christians-believe", 'The Christ in Whom Christians Believe', "phillips-brooks", "gutenberg", "14497",
-        section='V. THE CHRIST IN WHOM CHRISTIANS BELIEVE.', section_level="h2",
+        section='V. THE CHRIST IN WHOM CHRISTIANS BELIEVE.', section_level="h2", scripture_ref="John 8:31-36",
     ),
     SermonEntry(
         "our-lives-kept-for-jesus", 'Our Lives Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
@@ -2365,10 +2369,6 @@ SERMONS: list[SermonEntry] = [
         section='Chapter VI. Our Lips kept for Jesus.', section_level="h2",
     ),
     SermonEntry(
-        "our-silver-and-gold-kept-for-jesus", 'Our Silver and Gold Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
-        section='Chapter VII. Our Silver and Gold kept for Jesus.', section_level="h2",
-    ),
-    SermonEntry(
         "our-wills-kept-for-jesus", 'Our Wills Kept for Jesus', "frances-ridley-havergal", "gutenberg", "31647",
         section='Chapter IX. Our Wills kept for Jesus.', section_level="h2",
     ),
@@ -2378,7 +2378,7 @@ SERMONS: list[SermonEntry] = [
     ),
     SermonEntry(
         "christ-for-us", 'Christ for Us', "frances-ridley-havergal", "gutenberg", "31647",
-        section='Chapter XIII. Christ for Us.', section_level="h2",
+        section='Chapter XIII. Christ for Us.', section_level="h2", scripture_ref="Hosea 3:3",
     ),
     SermonEntry(
         "christs-estimate-of-money", "Christ's Estimate of Money", "andrew-murray", "gutenberg", "41994",
@@ -2387,10 +2387,6 @@ SERMONS: list[SermonEntry] = [
     SermonEntry(
         "the-holy-spirit-and-money", 'The Holy Spirit and Money', "andrew-murray", "gutenberg", "41994",
         section='II THE HOLY SPIRIT AND MONEY', section_level="h2", scripture_ref="Acts 5:3",
-    ),
-    SermonEntry(
-        "the-poverty-of-christ", 'The Poverty of Christ', "andrew-murray", "gutenberg", "41994",
-        section='IV THE POVERTY OF CHRIST.', section_level="h2", scripture_ref="2 Corinthians 8:9",
     ),
     SermonEntry(
         "thrice-bidden-to-love", 'Thrice Bidden to Love', "frederick-brotherton-meyer", "gutenberg", "22376",
@@ -2417,19 +2413,7 @@ SERMONS: list[SermonEntry] = [
         section='XVI', section_level="h2", scripture_ref="John 15:7",
     ),
     SermonEntry(
-        "the-conqueror-of-the-world", 'The Conqueror of the World', "frederick-brotherton-meyer", "gutenberg", "22376",
-        section='XX', section_level="h2", scripture_ref="John 16:33",
-    ),
-    SermonEntry(
-        "the-day-of-resurrection", 'The Day of Resurrection', "frederick-brotherton-meyer", "gutenberg", "22376",
-        section='XXXIII', section_level="h2", scripture_ref="John 20:1",
-    ),
-    SermonEntry(
         "the-lake-of-galilee", 'The Lake of Galilee', "frederick-brotherton-meyer", "gutenberg", "22376",
         section='XXXIV', section_level="h2", scripture_ref="John 21:1",
-    ),
-    SermonEntry(
-        "peters-love-and-work", "Peter's Love and Work", "frederick-brotherton-meyer", "gutenberg", "22376",
-        section='XXXV', section_level="h2", scripture_ref="John 21:15",
     ),
 ]
