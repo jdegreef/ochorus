@@ -73,6 +73,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
+	'frances-ridley-havergal': '50% 0%', // engraved cameo (PG 18444, 1898); face at ~28% of a 0.82 plate
 	'francis-de-sales': '50% 0%', // Bussy-Rabutin portrait, cropped to the bust; face at ~33% of a 0.80 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
@@ -88,6 +89,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
+	'henry-drummond': '50% 0%', // frontispiece of Lennox, Practical Life Work of Henry Drummond (1901); face at ~34% of a 0.77 crop
 	'henry-scougal': '50% 0%', // University of Aberdeen oil; face at ~32% of a 0.84 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
@@ -141,6 +143,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
 	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
+	'phillips-brooks': '50% 0%', // studio photograph in Bolton, Famous Leaders Among Men (1894); face at ~31% of a 0.70 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
 	'polycarp': '50% 10%', // Orthodox fresco cropped to the bust; face at ~25% of a 0.97 crop
 	'r-a-torrey': '50% 10%',
