@@ -410,3 +410,14 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
   Testament volumes survive at ~60%. Count the shelf from the fixtures
   (`is_published` English rows) before declaring a target met: running totals
   drifted by one across batches.
+- 2026-11-02 — Batch 8, new voices: Drummond ×5, Phillips Brooks ×5, Havergal ×8
+  (*Kept for the Master's Use*), Meyer ×7 (*Love to the Uttermost*), Murray ×2
+  (*Money*), 401 → 428; three new authors (bio, tagline, Wikipedia; no portrait).
+  27 of 32 kept — gentler writers survive the rubric far better than the
+  Victorian pulpit. MacDonald's *Unspoken Sermons* is already a book (all 36), so
+  none were added. Gutenberg traps: an edition's lone h4 chapter slices to the
+  end of the book (Meyer ch. I, 37,000 words — `screen_sermons` shows it as an
+  absurd word count); display phrases set on their own line mid-sentence
+  (Drummond) and lone "[34]" page-number paragraphs (Havergal) need pairs; an
+  empty `<sup></sup>` in the raw import means a pair written against the stored
+  text never matches — leave that paragraph rather than fight it.
