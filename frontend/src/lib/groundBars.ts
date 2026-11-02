@@ -131,6 +131,7 @@ export const PALE_GROUNDS: ReadonlySet<string> = new Set([
 	'sons-of-the-king-2',
 	'sons-of-the-king-3',
 	'the-god-of-all-comfort',
+	'the-key-in-my-hand',
 	'the-person-and-work-of-the-holy-spirit'
 ]);
 

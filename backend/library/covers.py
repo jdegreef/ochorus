@@ -674,6 +674,10 @@ INK_DARK = frozenset({
     "sons-of-the-king-3",
     "soar-like-the-eagle-3",
     "faithful-with-little",
+    "feasting-at-the-table",
+    "he-holds-my-tomorrows",
+    "stepping-stones-2",
+    "the-key-in-my-hand",
 })
 
 #: `--cover-ink-dark` in `cover-type.css`.
@@ -719,6 +723,39 @@ DARK_INK_BOXES_BY_SLUG = {
         ("title", (75, 243, 525, 460), 1.0, TITLE_MIN),
         ("rule", (250, 415, 350, 520), 0.8, 3.0),
         ("subtitle", (57, 444, 543, 546), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    # Gareth Evans' other four, set in dark ink like Soar (2026-11-02): the union
+    # of every edition's rows (en, am, ar, es, fr, hi, ko, lg, pt, sw, uk, vi),
+    # plus 4px, measured on their twins in the devotional small caps, and the
+    # ornament under the title. Luganda wraps He Holds My Tomorrows to four
+    # lines, which is why its subtitle row reaches 596.
+    "feasting-at-the-table": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (65, 255, 535, 469), 1.0, TITLE_MIN),
+        ("rule", (230, 459, 370, 525), 0.8, 3.0),
+        ("subtitle", (112, 497, 488, 533), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "he-holds-my-tomorrows": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (47, 190, 553, 496), 1.0, TITLE_MIN),
+        ("rule", (230, 486, 370, 552), 0.8, 3.0),
+        ("subtitle", (183, 466, 417, 600), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "stepping-stones-2": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (45, 240, 555, 469), 1.0, TITLE_MIN),
+        ("rule", (230, 459, 370, 525), 0.8, 3.0),
+        ("subtitle", (170, 459, 430, 548), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "the-key-in-my-hand": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (49, 239, 551, 484), 1.0, TITLE_MIN),
+        ("rule", (230, 474, 370, 540), 0.8, 3.0),
+        ("subtitle", (202, 464, 398, 548), 0.90, AUTHOR_MIN_CONTRAST),
         ("mark", (228, 660, 372, 750), 0.95, 3.0),
     ),
 }

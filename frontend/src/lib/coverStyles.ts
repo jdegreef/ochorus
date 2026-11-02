@@ -273,7 +273,12 @@ export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string):
  */
 export const TITLE_SMALL_CAPS: ReadonlySet<string> = new Set([
 	// The founder's pick of ten proofs, 2026-10-30 (with `BOOK_STYLE` above).
-	'soar-like-the-eagle-3'
+	'soar-like-the-eagle-3',
+	// The other four Gareth Evans books follow it (picked by the founder, 2026-11-02).
+	'feasting-at-the-table',
+	'he-holds-my-tomorrows',
+	'stepping-stones-2',
+	'the-key-in-my-hand'
 ]);
 
 /** Is this book's title set in small capitals? */
@@ -403,6 +408,10 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	// old-style reads where the thin hand-lettering could not (founder's pick of
 	// ten proofs, 2026-10-30).
 	'soar-like-the-eagle-3': 'devotional',
+	'feasting-at-the-table': 'devotional',
+	'he-holds-my-tomorrows': 'devotional',
+	'stepping-stones-2': 'devotional',
+	'the-key-in-my-hand': 'devotional',
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
 	'c-s-lewis-a-life': 'house',
