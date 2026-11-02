@@ -1,0 +1,887 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "clement-of-rome"
+  ],
+  "slug": "first-epistle-of-clement",
+  "language": "lg",
+  "title": "Ebbaluwa Esooka eya Clement eri Abakkolinso",
+  "subtitle": "Ekkanisa ey’e Ruumi eri Ekkanisa ey’e Kkolinso",
+  "description": "Ebbaluwa eno yawandiikibwa okuva mu kkanisa ey’e Ruumi eri ekkanisa ey’e Kkolinso awo nga mu AD 96, era kye kiwandiiko eky’Ekikristaayo ekisinga obukadde ebweru w’Endagaano Empya. Clement, ng’awandiika mu linnya ly’ekkanisa ey’e Ruumi, yeegayirira Abakkolinso bakomye enjawukana enkambwe abavubuka mwe baagobera abakadde baabwe abeesigwa, era abayita okudda eri obwetoowaze, entegeka, okwenenya, n’emirembe gya Kristo. Ng’ejjudde Endagaano Enkadde era nga eri omulembe gumu gwokka emabega w’abatume, lye dirisa eriraga ekkanisa ng’omulembe gw’abatume gukoma.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Ebbaluwa Esooka eya Clement eri Abakkolinso kye ki?",
+    "answer": "Ye bbaluwa eyawandiikibwa okuva mu kkanisa ey’e Ruumi eri ekkanisa ey’e Kkolinso awo nga mu AD 96 — ekiwandiiko eky’Ekikristaayo ekisinga obukadde kye tulina ebweru w’Endagaano Empya. Clement, ng’awandiika mu linnya ly’ekkanisa ey’e Ruumi, yeegayirira Abakkolinso bakomye enjawukana enkambwe abamu ku bavubuka mwe baagobera abakadde baabwe, ng’abayita okudda eri obwetoowaze, entegeka, n’okwagala."
+   },
+   {
+    "question": "Clement ow’e Ruumi yali ani?",
+    "answer": "Clement yali omu ku bakulembeze b’ekkanisa ey’e Ruumi ku nkomerero y’ekyasa ekisooka, ng’okusinziira ku nnono abalibwa mu balabirizi b’ekkanisa eyo abaasooka ddala, era oluusi ng’alowoozebwa okuba Clement Pawulo gw’ayogerako mu Abafiripi. Yawandiika ebbaluwa eno ku lw’ekkanisa ey’e Ruumi, era Abakristaayo ab’edda baagissaamu ekitiibwa kingi nnyo ne kiba nti mu makanisa agamu yasomebwanga mu lujjudde wamu n’Ebyawandiikibwa."
+   },
+   {
+    "question": "Lwaki ebbaluwa eno nkulu nnyo mu byafaayo?",
+    "answer": "Kubanga kye kiwandiiko eky’Ekikristaayo ekisinga obukadde ekikyaliwo ebweru w’Endagaano Empya, ekyawandiikibwa ng’omulembe gw’abatume gwakakoma — oboolyawo ng’omutume Yokaana akyali mulamu. Kiwa eddirisa erizibu okufuna ku bulamu, entegeka, n’okukkiriza kw’ekkanisa ey’edda ennyo, era kiraga ekkanisa emu ng’ebuulirira endala ku nsonga z’obumu n’obukulembeze mu mulembe gumu gwokka oluvannyuma lw’abatume."
+   },
+   {
+    "question": "Ekizibu ki ekyali e Kkolinso Clement ky’ayogerako?",
+    "answer": "Enjawukana abamu ku bavubuka mwe baasituka okulwanyisa abakadde b’ekkanisa ne babaggya ku bukulembeze. Clement awandiika okuwonya oluyombo luno, ng’anenya amalala n’obuggya ebyali emabega waalwo, era ng’akubiriza abaasobya okugondera, okwenenya, n’okuzzaawo abakulembeze abaagobebwa, emirembe n’entegeka biryoke bidde mu kkanisa."
+   },
+   {
+    "question": "Clement ayigiriza ki ku ntegeka n’obukulembeze bw’ekkanisa?",
+    "answer": "Nti obukulembeze mu kkanisa tebusaanye kugobwako buli muntu nga bw’ayagadde, wabula bwesigamye ku kulondebwa okulambikiddwa okuddirira emabega okuyita mu batume okutuuka ku Kristo ne Katonda. Clement akozesa entegeka eno okuwoza nti Abakkolinso baali tebalina buyinza kugoba bakadde baabwe abeesigwa, era ebbaluwa ye bujulirwa obw’edda era obw’amaanyi ku ngeri ekkanisa gye yafangayo ku buweereza obulambikiddwa era obuva eri Katonda."
+   },
+   {
+    "question": "Biki ebirala ebiri mu bbaluwa ng’oggyeeko entegeka?",
+    "answer": "Obwetoowaze, okwenenya, okwagala, n’okukwatagana. Clement aggya nnyo mu Ndagaano Enkadde ne mu kyokulabirako kya Kristo okukubiriza obwetoowaze mu kifo ky’amalala, era assaamu ekitundu ekimanyiddwa ennyo ku kwagala ekiddamu ebigambo Pawulo bye yawandiikira ekkanisa y’emu. Era alaga entegeka y’obutonde n’okuzuukira ng’ensibuko y’obwesige n’emirembe mu bakkiriza."
+   },
+   {
+    "question": "Ani asaanye okusoma ebbaluwa eno leero?",
+    "answer": "Buli muntu ayagala okumanya ku kkanisa ey’edda ennyo oluvannyuma lw’abatume, ku nsibuko y’okuyigiriza okw’Ekikristaayo ku bumu n’obukulembeze, oba ku biwandiiko bya Bakitaffe ab’Abatume. Ewa okutegeera okulamu, okw’obujulizi obw’amaaso, ku bulamu bw’ekkanisa nga omulembe gw’Endagaano Empya gwakaggwa, era okubuulirira kwayo ku bwetoowaze n’emirembe kukyayogera n’ekkanisa ezeeyawuddemu."
+   },
+   {
+    "question": "Omusomi asaanye kutandikira wa?",
+    "answer": "Ku ntandikwa, ng’agisoma nga bbaluwa bw’eri, okuva ku kulamusa okw’ebbugumu okwa Ruumi eri Kkolinso okutuuka ku kwegayirira kwayo ku lw’abakadde abaagobebwa. Kwe kwegayirira kumu okutasalako, okusinga okusomebwa omulundi gumu okutuuka ku nkomerero, omusomi alyoke agoberere ensonga za Clement okuva ku luyombo lw’akaabira okutuuka ku bwetoowaze, entegeka, n’okwagala by’akubiriza okuluwonya."
+   }
+  ],
+  "publication_year": 96,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "Public domain. Translated by Alexander Roberts and James Donaldson, from the Ante-Nicene Fathers, Vol. 1 (American edition, ed. A. Cleveland Coxe, 1885).",
+  "cover_url": "/covers/art/first-epistle-of-clement.jpg",
+  "pdf_url": "",
+  "cover_color": "#734b2e",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-11-02T00:00:00Z",
+  "updated_at": "2026-11-02T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Okulamusa",
+  "body_html": "<p>Ekkanisa ya Katonda ebeera ng’omugenyi e Rooma, eri Ekkanisa ya Katonda ebeera ng’omugenyi e Kkolinso, eri abo abayitibwa era abatukuzibwa olw’okwagala kwa Katonda, ku bwa Mukama waffe Yesu Kristo: Ekisa n’emirembe okuva eri Katonda Omuyinza w’Ebintu Byonna ku bwa Yesu Kristo, byeyongerenga gye muli. </p> <p>Abooluganda abaagalwa, olw’ebizibu n’ebibambulira ebitwagwiriddeko amangu nga biddiriŋŋana, tuwulira nga tulwiseemu okussaayo omwoyo ku nsonga ze mwatubuuzaako; naddala ku bujeemu obwo obw’ensonyi era obw’omuzizo, obukyayibwa ennyo abalonde ba Katonda, abantu abatono abeetulinkiriza era abeekakasa bokka bwe bakoleezezza ne butuuka ku ddaala ery’obulalu, ne kiba nti erinnya lyammwe ery’ekitiibwa era eryatiikirira, erisaanira okwagalibwa buli wamu, lyonoonese nnyo. Kubanga ani eyali abeeseeko mu mmwe wadde akaseera katono, n’atasanga nga okukkiriza kwammwe kubala ebibala by’empisa ennungi nga bwe kwali kunywevu? Ani ataasamaaliriranga obukkakkamu n’obwegendereza bw’okutya Katonda kwammwe mu Kristo? Ani ataalangiriranga obugabi bwammwe obw’ekitalo obw’okusembeza abagenyi bwe mwalina bulijjo? Era ani ataasanyukiranga okumanya kwammwe okutuukiridde era okwazimbibwa obulungi? Kubanga mwakolanga byonna nga temusosola mu bantu, era mwatambuliranga mu biragiro bya Katonda, nga mugondera abo abaabafuganga, era nga muwa abakadde abaali mu mmwe ekitiibwa kyonna ekibasaanira. Mwakubirizanga abavubuka okubeera n’emitima egyekuuma era egy’obwegendereza; mwayigirizanga bakyala bammwe okukola byonna n’omuntu ow’omunda ataliiko kya kunenyezebwa, asaanidde era omulongoofu, nga baagala babbaabwe nga bwe kibagwanira; era mwabayigirizanga nti, nga babeera mu kiragiro ky’obuwulize, balabirirenga eby’omu maka gaabwe nga bwe kisaanidde, era babeerenga n’amagezi mu buli kimu. </p>",
+  "body_text": "Ekkanisa ya Katonda ebeera ng’omugenyi e Rooma, eri Ekkanisa ya Katonda ebeera ng’omugenyi e Kkolinso, eri abo abayitibwa era abatukuzibwa olw’okwagala kwa Katonda, ku bwa Mukama waffe Yesu Kristo: Ekisa n’emirembe okuva eri Katonda Omuyinza w’Ebintu Byonna ku bwa Yesu Kristo, byeyongerenga gye muli. Abooluganda abaagalwa, olw’ebizibu n’ebibambulira ebitwagwiriddeko amangu nga biddiriŋŋana, tuwulira nga tulwiseemu okussaayo omwoyo ku nsonga ze mwatubuuzaako; naddala ku bujeemu obwo obw’ensonyi era obw’omuzizo, obukyayibwa ennyo abalonde ba Katonda, abantu abatono abeetulinkiriza era abeekakasa bokka bwe bakoleezezza ne butuuka ku ddaala ery’obulalu, ne kiba nti erinnya lyammwe ery’ekitiibwa era eryatiikirira, erisaanira okwagalibwa buli wamu, lyonoonese nnyo. Kubanga ani eyali abeeseeko mu mmwe wadde akaseera katono, n’atasanga nga okukkiriza kwammwe kubala ebibala by’empisa ennungi nga bwe kwali kunywevu? Ani ataasamaaliriranga obukkakkamu n’obwegendereza bw’okutya Katonda kwammwe mu Kristo? Ani ataalangiriranga obugabi bwammwe obw’ekitalo obw’okusembeza abagenyi bwe mwalina bulijjo? Era ani ataasanyukiranga okumanya kwammwe okutuukiridde era okwazimbibwa obulungi? Kubanga mwakolanga byonna nga temusosola mu bantu, era mwatambuliranga mu biragiro bya Katonda, nga mugondera abo abaabafuganga, era nga muwa abakadde abaali mu mmwe ekitiibwa kyonna ekibasaanira. Mwakubirizanga abavubuka okubeera n’emitima egyekuuma era egy’obwegendereza; mwayigirizanga bakyala bammwe okukola byonna n’omuntu ow’omunda ataliiko kya kunenyezebwa, asaanidde era omulongoofu, nga baagala babbaabwe nga bwe kibagwanira; era mwabayigirizanga nti, nga babeera mu kiragiro ky’obuwulize, balabirirenga eby’omu maka gaabwe nga bwe kisaanidde, era babeerenga n’amagezi mu buli kimu.",
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Okutendereza Abakkolinso kweyongerayo",
+  "body_html": "<p>Ate era mwenna mwali mwawufu olw’obwetoowaze, era temwalina malala mu kintu kyonna, wabula mwasinganga okugonda okusinga okukaka abalala okubagondera, era mwasinganga okwagala okugaba okusinga okuweebwa. Nga mumatidde n’ebyo Katonda bye yabategekera, era nga mussaayo omwoyo ku bigambo bye, mwajjuzibwanga munda okuyigiriza kwe, n’okubonaabona kwe kwabanga mu maaso gammwe. Bwe mutyo emirembe egy’amaanyi era egy’ekitalo ne giweebwa mwenna, era mwalina okwegomba okutakoma okukola ebirungi, so nga n’Omwoyo Omutukuvu yali afukiddwa ku mmwe mwenna mu bujjuvu. Nga mujjudde ebigendererwa ebitukuvu, mwagololanga emikono gyammwe eri Katonda Omuyinza w’Ebintu Byonna n’omwoyo omunyiikivu ddala n’obwesige obw’okutya Katonda, nga mumwegayirira okubasaasira, singa mwali musobezza mu ngeri gye mutaagenderedde. Emisana n’ekiro mweraliikiriranga olw’obooluganda lwonna, omuwendo gw’abalonde ba Katonda gulyoke gulokolebwe mu kusaasirwa n’omuntu ow’omunda omulungi. Mwali ba mazima era abatali boonoonefu, nga mwerabira ebisobyo bye mwakolaganangako. Buli ngeri y’enjawukana n’okweyawulamu yali muzizo mu maaso gammwe. Mwakungubaganga olw’ebisobyo bya bantu bannammwe; obunafu bwabwe mwabutwalanga okuba obwammwe. Temwakaluubirirwanga kukola kikolwa kyonna kya kisa, nga muli “beetegefu okukola buli mulimu omulungi.” Nga mwayooyootebwa obulamu obw’empisa ennungi ddala era obw’eddiini, mwakolanga byonna mu kutya Katonda. Ebiragiro n’amateeka ga Mukama byali biwandiikiddwa ku bipande by’emitima gyammwe.</p>",
+  "body_text": "Ate era mwenna mwali mwawufu olw’obwetoowaze, era temwalina malala mu kintu kyonna, wabula mwasinganga okugonda okusinga okukaka abalala okubagondera, era mwasinganga okwagala okugaba okusinga okuweebwa. Nga mumatidde n’ebyo Katonda bye yabategekera, era nga mussaayo omwoyo ku bigambo bye, mwajjuzibwanga munda okuyigiriza kwe, n’okubonaabona kwe kwabanga mu maaso gammwe. Bwe mutyo emirembe egy’amaanyi era egy’ekitalo ne giweebwa mwenna, era mwalina okwegomba okutakoma okukola ebirungi, so nga n’Omwoyo Omutukuvu yali afukiddwa ku mmwe mwenna mu bujjuvu. Nga mujjudde ebigendererwa ebitukuvu, mwagololanga emikono gyammwe eri Katonda Omuyinza w’Ebintu Byonna n’omwoyo omunyiikivu ddala n’obwesige obw’okutya Katonda, nga mumwegayirira okubasaasira, singa mwali musobezza mu ngeri gye mutaagenderedde. Emisana n’ekiro mweraliikiriranga olw’obooluganda lwonna, omuwendo gw’abalonde ba Katonda gulyoke gulokolebwe mu kusaasirwa n’omuntu ow’omunda omulungi. Mwali ba mazima era abatali boonoonefu, nga mwerabira ebisobyo bye mwakolaganangako. Buli ngeri y’enjawukana n’okweyawulamu yali muzizo mu maaso gammwe. Mwakungubaganga olw’ebisobyo bya bantu bannammwe; obunafu bwabwe mwabutwalanga okuba obwammwe. Temwakaluubirirwanga kukola kikolwa kyonna kya kisa, nga muli “beetegefu okukola buli mulimu omulungi.” Nga mwayooyootebwa obulamu obw’empisa ennungi ddala era obw’eddiini, mwakolanga byonna mu kutya Katonda. Ebiragiro n’amateeka ga Mukama byali biwandiikiddwa ku bipande by’emitima gyammwe.",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Embeera embi ey’ekkanisa oluvannyuma lw’obujeemu obwava mu buggya",
+  "body_html": "<p>Mwaweebwa buli ngeri y’ekitiibwa n’essanyu, olwo ne kutuukirira ekyo ekyawandiikibwa nti, “Omwagalwa wange yalya n’anywa, n’agaziwa, n’agejja n’asambagala.” Okuva awo ne muvaamu okuvuganya n’obuggya, empaka n’obujeemu, okuyigganya n’akavuyo, entalo n’obusibe. Bwe batyo abatalina mugaso ne basituka okulwanyisa abassibwamu ekitiibwa, abatamanyiddwa ne balwanyisa abaatiikirivu, abasirusiru ne balwanyisa abagezi, abato ne balwanyisa abakulu mu myaka. Olw’ensonga eyo obutuukirivu n’emirembe kaakano biri wala nnyo nammwe, kubanga buli muntu aleka okutya Katonda, era azibye amaaso mu kukkiriza kwe, so tatambulira mu biragiro bye yateekawo, wadde okweyisa nga bwe kisaanira Omukristaayo, wabula atambulira mu kwegomba kwe okubi, ng’addamu okukola obuggya obutali bwa butuukirivu era obutatya Katonda, obwo okufa kwennyini mwe kwayita okuyingira mu nsi.</p>",
+  "body_text": "Mwaweebwa buli ngeri y’ekitiibwa n’essanyu, olwo ne kutuukirira ekyo ekyawandiikibwa nti, “Omwagalwa wange yalya n’anywa, n’agaziwa, n’agejja n’asambagala.” Okuva awo ne muvaamu okuvuganya n’obuggya, empaka n’obujeemu, okuyigganya n’akavuyo, entalo n’obusibe. Bwe batyo abatalina mugaso ne basituka okulwanyisa abassibwamu ekitiibwa, abatamanyiddwa ne balwanyisa abaatiikirivu, abasirusiru ne balwanyisa abagezi, abato ne balwanyisa abakulu mu myaka. Olw’ensonga eyo obutuukirivu n’emirembe kaakano biri wala nnyo nammwe, kubanga buli muntu aleka okutya Katonda, era azibye amaaso mu kukkiriza kwe, so tatambulira mu biragiro bye yateekawo, wadde okweyisa nga bwe kisaanira Omukristaayo, wabula atambulira mu kwegomba kwe okubi, ng’addamu okukola obuggya obutali bwa butuukirivu era obutatya Katonda, obwo okufa kwennyini mwe kwayita okuyingira mu nsi.",
+  "word_count": 109
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Ebibi bingi byava dda mu nsibuko eno mu biseera eby’edda",
+  "body_html": "<p>Kubanga bwe kiti bwe kyawandiikibwa nti: “Awo ennaku bwe zaayitawo, Kayini n’aleeta ebibala by’ensi okuba ssaddaaka eri Katonda; Aberi naye n’aleeta ku baana b’endiga ze ababereberye n’amasavu gaazo. Katonda n’asiima Aberi n’ebiweebwayo bye, naye Kayini ne ssaddaaka ze teyabissaako mwoyo. Kayini n’anakuwala nnyo, n’endabika y’amaaso ge n’ewaanyisibwa. Katonda n’agamba Kayini nti, Onakuwalidde ki, era lwaki endabika y’amaaso go ewaanyisiddwa? Bw’owaayo bulungi, naye n’otogabanya bulungi, tewayonoonye? Kkakkana: ekiweebwayo kyo kidda gy’oli, era olikiddamu okukifuna. Kayini n’agamba Aberi muganda we nti, Tulageko mu nnimiro. Awo olwatuuka, bwe baali nga bali mu nnimiro Kayini n’agolokokera ku muganda we Aberi, n’amutta.” Mulaba, abooluganda, obuggya n’ensaalwa bwe byaleeta okutta ow’oluganda. Olw’obuggya era, jjajjaffe Yakobo yadduka n’ava mu maaso ga Esawu muganda we. Obuggya bwaleetera Yusufu okuyigganyizibwa okutuusa okumpi n’okufa, n’okutwalibwa mu buddu. Obuggya bwawaliriza Musa okudduka okuva mu maaso ga Falaawo kabaka w’e Misiri, bwe yawulira ebigambo bino okuva ku munne ow’eggwanga lye nti, “Ani eyakulonda okuba omufuzi waffe era omulamuzi waffe? oyagala kunzita nga bwe watta Omumisiri jjo?” Olw’obuggya, Alooni ne Miryamu baalina okubeera ebweru w’olusiisira. Obuggya bwassa Dasani ne Abiraamu nga balamu emagombe, olw’obujeemu bwe baakuma okulwanyisa omuweereza wa Katonda Musa. Olw’obuggya, Dawudi teyakoma ku kukyayibwa bannaggwanga kyokka, naye era yayigganyizibwa Sawulo kabaka wa Isirayiri.</p>",
+  "body_text": "Kubanga bwe kiti bwe kyawandiikibwa nti: “Awo ennaku bwe zaayitawo, Kayini n’aleeta ebibala by’ensi okuba ssaddaaka eri Katonda; Aberi naye n’aleeta ku baana b’endiga ze ababereberye n’amasavu gaazo. Katonda n’asiima Aberi n’ebiweebwayo bye, naye Kayini ne ssaddaaka ze teyabissaako mwoyo. Kayini n’anakuwala nnyo, n’endabika y’amaaso ge n’ewaanyisibwa. Katonda n’agamba Kayini nti, Onakuwalidde ki, era lwaki endabika y’amaaso go ewaanyisiddwa? Bw’owaayo bulungi, naye n’otogabanya bulungi, tewayonoonye? Kkakkana: ekiweebwayo kyo kidda gy’oli, era olikiddamu okukifuna. Kayini n’agamba Aberi muganda we nti, Tulageko mu nnimiro. Awo olwatuuka, bwe baali nga bali mu nnimiro Kayini n’agolokokera ku muganda we Aberi, n’amutta.” Mulaba, abooluganda, obuggya n’ensaalwa bwe byaleeta okutta ow’oluganda. Olw’obuggya era, jjajjaffe Yakobo yadduka n’ava mu maaso ga Esawu muganda we. Obuggya bwaleetera Yusufu okuyigganyizibwa okutuusa okumpi n’okufa, n’okutwalibwa mu buddu. Obuggya bwawaliriza Musa okudduka okuva mu maaso ga Falaawo kabaka w’e Misiri, bwe yawulira ebigambo bino okuva ku munne ow’eggwanga lye nti, “Ani eyakulonda okuba omufuzi waffe era omulamuzi waffe? oyagala kunzita nga bwe watta Omumisiri jjo?” Olw’obuggya, Alooni ne Miryamu baalina okubeera ebweru w’olusiisira. Obuggya bwassa Dasani ne Abiraamu nga balamu emagombe, olw’obujeemu bwe baakuma okulwanyisa omuweereza wa Katonda Musa. Olw’obuggya, Dawudi teyakoma ku kukyayibwa bannaggwanga kyokka, naye era yayigganyizibwa Sawulo kabaka wa Isirayiri.",
+  "word_count": 202
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 5,
+  "title": "Ebibi ebitali bitono byavudde mu nsibuko y’emu ne mu biseera ebisembyeyo",
+  "body_html": "<p>Naye obutalwawo ku byokulabirako eby’edda, tujje ku bazira ab’omwoyo ab’omu biseera bino ebisembyeyo. Tutwale ebyokulabirako eby’ekitiibwa ebiri mu mulembe gwaffe. Olw’obuggya n’ensaalwa, empagi [z’Ekkanisa] ezisinga obukulu n’obutuukirivu zaayigganyizibwa ne zittibwa. Tuteeke mu maaso gaffe abatume abaatiikirivu. Peetero, olw’obuggya obutali bwa butuukirivu, yagumira emitawaana si gumu oba ebiri, wabula mingi, era bwe yamala okufiirira okukkiriza, n’agenda mu kifo eky’ekitiibwa ekyamusaanira. Olw’obuggya, Pawulo naye yafuna empeera y’okugumiikiriza, oluvannyuma lw’okusibibwa emirundi musanvu, okuwalirizibwa okudduka, n’okukubibwa amayinja. Bwe yamala okubuulira ebuvanjuba n’ebugwanjuba, n’afuna ettutumu ery’ekitiibwa eryasaanira okukkiriza kwe, ng’ayigirizza ensi yonna obutuukirivu, era ng’atuuse ku nkomerero y’ebugwanjuba, n’afiirira okukkiriza mu maaso g’abafuzi. Bw’atyo n’aggyibwa mu nsi, n’agenda mu kifo ekitukuvu, ng’amaze okweraga okuba ekyokulabirako eky’ekitalo eky’okugumiikiriza. </p>",
+  "body_text": "Naye obutalwawo ku byokulabirako eby’edda, tujje ku bazira ab’omwoyo ab’omu biseera bino ebisembyeyo. Tutwale ebyokulabirako eby’ekitiibwa ebiri mu mulembe gwaffe. Olw’obuggya n’ensaalwa, empagi [z’Ekkanisa] ezisinga obukulu n’obutuukirivu zaayigganyizibwa ne zittibwa. Tuteeke mu maaso gaffe abatume abaatiikirivu. Peetero, olw’obuggya obutali bwa butuukirivu, yagumira emitawaana si gumu oba ebiri, wabula mingi, era bwe yamala okufiirira okukkiriza, n’agenda mu kifo eky’ekitiibwa ekyamusaanira. Olw’obuggya, Pawulo naye yafuna empeera y’okugumiikiriza, oluvannyuma lw’okusibibwa emirundi musanvu, okuwalirizibwa okudduka, n’okukubibwa amayinja. Bwe yamala okubuulira ebuvanjuba n’ebugwanjuba, n’afuna ettutumu ery’ekitiibwa eryasaanira okukkiriza kwe, ng’ayigirizza ensi yonna obutuukirivu, era ng’atuuse ku nkomerero y’ebugwanjuba, n’afiirira okukkiriza mu maaso g’abafuzi. Bw’atyo n’aggyibwa mu nsi, n’agenda mu kifo ekitukuvu, ng’amaze okweraga okuba ekyokulabirako eky’ekitalo eky’okugumiikiriza.",
+  "word_count": 112
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Okweyongerayo",
+  "body_html": "<p>Ku basajja bano abaawangaala mu bulamu obw’obutukuvu, kwongerwako ekibiina ekinene eky’abalonde, abaagumira okuswazibwa okungi n’okubonyaabonyezebwa olw’obuggya, ne batuwa ekyokulabirako ekisingira ddala obulungi. Olw’obuggya, abakazi abo, aba Danaidi n’aba Dirke, bwe baayigganyizibwa, oluvannyuma lw’okubonaabona okw’entiisa era okutayogerekeka, baamaliriza olugendo lw’okukkiriza kwabwe n’obunywevu, era wadde baali banafu mu mubiri, ne bafuna empeera ey’ekitiibwa. Obuggya bwawukanyizza abakazi ne babbaabwe, ne bukyusa ekigambo kya jjajjaffe Adamu nti, “Lino lye ggumba ery’omu magumba gange, ye nnyama ey’omu nnyama yange.” Obuggya n’empaka bizikirizza ebibuga ebinene ne bisimbula amawanga ag’amaanyi. </p>",
+  "body_text": "Ku basajja bano abaawangaala mu bulamu obw’obutukuvu, kwongerwako ekibiina ekinene eky’abalonde, abaagumira okuswazibwa okungi n’okubonyaabonyezebwa olw’obuggya, ne batuwa ekyokulabirako ekisingira ddala obulungi. Olw’obuggya, abakazi abo, aba Danaidi n’aba Dirke, bwe baayigganyizibwa, oluvannyuma lw’okubonaabona okw’entiisa era okutayogerekeka, baamaliriza olugendo lw’okukkiriza kwabwe n’obunywevu, era wadde baali banafu mu mubiri, ne bafuna empeera ey’ekitiibwa. Obuggya bwawukanyizza abakazi ne babbaabwe, ne bukyusa ekigambo kya jjajjaffe Adamu nti, “Lino lye ggumba ery’omu magumba gange, ye nnyama ey’omu nnyama yange.” Obuggya n’empaka bizikirizza ebibuga ebinene ne bisimbula amawanga ag’amaanyi.",
+  "word_count": 83
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Okukubiriza okwenenya",
+  "body_html": "<p>Ebintu bino, abaagalwa, tubibawandiikira si lwa kubajjukiza buvunaanyizibwa bwammwe bwokka, wabula era n’okwejjukiza ffe ffennyini. Kubanga tuli mu kisaawe kye kimu, era olutalo lwe lumu luweereddwa ffembi. Kale tuleke okweraliikirira okutaliimu era okutaliiko kibala, tusemberere etteeka ery’ekitiibwa era erissibwamu ekitiibwa ery’okuyitibwa kwaffe okutukuvu. Tussengayo omwoyo ku ebyo ebirungi, ebisanyusa era ebikkirizibwa mu maaso g’Oyo eyatubumba. Tutunuulire n’obunyiikivu omusaayi gwa Kristo, tulabe omusaayi ogwo bwe gwa muwendo omungi eri Katonda, kubanga bwe gwayiyibwa olw’obulokozi bwaffe, gwaleeta ekisa ky’okwenenya mu maaso g’ensi yonna. Tukyukire buli mulembe ogwayita, tuyige nti, okuva ku mulembe okutuuka ku mulembe, Mukama awadde ebbanga ery’okwenenya abo bonna abaagala okukyukira gy’ali. Nuuwa yabuulira okwenenya, era bonna abaamuwuliriza ne balokolebwa. Yona yalangirira okuzikirizibwa eri abantu b’e Nineeve; naye bo, bwe beenenya ebibi byabwe, ne bakkakkanya Katonda nga basaba, ne bafuna obulokozi, newaakubadde nga baali bagwira [eri endagaano] ya Katonda. </p>",
+  "body_text": "Ebintu bino, abaagalwa, tubibawandiikira si lwa kubajjukiza buvunaanyizibwa bwammwe bwokka, wabula era n’okwejjukiza ffe ffennyini. Kubanga tuli mu kisaawe kye kimu, era olutalo lwe lumu luweereddwa ffembi. Kale tuleke okweraliikirira okutaliimu era okutaliiko kibala, tusemberere etteeka ery’ekitiibwa era erissibwamu ekitiibwa ery’okuyitibwa kwaffe okutukuvu. Tussengayo omwoyo ku ebyo ebirungi, ebisanyusa era ebikkirizibwa mu maaso g’Oyo eyatubumba. Tutunuulire n’obunyiikivu omusaayi gwa Kristo, tulabe omusaayi ogwo bwe gwa muwendo omungi eri Katonda, kubanga bwe gwayiyibwa olw’obulokozi bwaffe, gwaleeta ekisa ky’okwenenya mu maaso g’ensi yonna. Tukyukire buli mulembe ogwayita, tuyige nti, okuva ku mulembe okutuuka ku mulembe, Mukama awadde ebbanga ery’okwenenya abo bonna abaagala okukyukira gy’ali. Nuuwa yabuulira okwenenya, era bonna abaamuwuliriza ne balokolebwa. Yona yalangirira okuzikirizibwa eri abantu b’e Nineeve; naye bo, bwe beenenya ebibi byabwe, ne bakkakkanya Katonda nga basaba, ne bafuna obulokozi, newaakubadde nga baali bagwira [eri endagaano] ya Katonda.",
+  "word_count": 139
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Okweyongerayo ku by’okwenenya",
+  "body_html": "<p>Abaweereza b’ekisa kya Katonda, ku bw’Omwoyo Omutukuvu, boogedde ku kwenenya; era Mukama w’ebintu byonna yennyini yalangirira ng’alayira ku nsonga eyo nti, “Nga bwe ndi omulamu, bw’ayogera Mukama, saagala kufa kw’omwonoonyi, wabula okwenenya kwe;” ng’ayongerako n’ekirangiriro kino eky’ekisa nti, “Mwenenye, ggwe ennyumba ya Isirayiri, muleke obutali butuukirivu bwammwe. Gamba abaana b’abantu bange nti, Ebibi byammwe ne bwe binaatuuka okuva ku nsi okutuuka ku ggulu, era ne bwe binaaba bimyufu okusinga olugoye olumyufu, era nga biddugavu okusinga ekibukutu, naye bwe munaakyukira gye ndi n’omutima gwammwe gwonna, ne mugamba nti, Kitaffe! ndibawuliriza ng’abantu abatukuvu.” Era mu kifo ekirala ayogera bw’ati: “Munaabe, mwetukuze; muggyewo obubi bw’emyoyo gyammwe mu maaso gange; mulekeraawo okukola ebibi, muyige okukola obulungi; musalenga emisango n’amazima, mudduukirirenga abajoogebwa, musalenga omusango gw’atalina kitaawe, muwolerezenga bannamwandu; era mujje nno tukubaganye ebirowoozo. Agamba nti, ebibi byammwe ne bwe biba ng’olugoye olumyufu binaafuuka byeru ng’omuzira, ne bwe binaaba bitwakaavu nga langi emyufu enkwafu, binaatukula ng’ebyoya by’endiga. Bwe munaagondanga ne muwulira, munaalyanga ebirungi eby’ensi; naye bwe munaagaananga ne mujeemanga ekitala kinaabalyanga, kubanga akamwa ka Mukama ke kakyogedde.” Kale, bwe yayagala abaagalwa be bonna okugabana ku kwenenya, yanyweza [ebirangiriro bino] olw’okwagala kwe okw’obuyinza bwonna. </p>",
+  "body_text": "Abaweereza b’ekisa kya Katonda, ku bw’Omwoyo Omutukuvu, boogedde ku kwenenya; era Mukama w’ebintu byonna yennyini yalangirira ng’alayira ku nsonga eyo nti, “Nga bwe ndi omulamu, bw’ayogera Mukama, saagala kufa kw’omwonoonyi, wabula okwenenya kwe;” ng’ayongerako n’ekirangiriro kino eky’ekisa nti, “Mwenenye, ggwe ennyumba ya Isirayiri, muleke obutali butuukirivu bwammwe. Gamba abaana b’abantu bange nti, Ebibi byammwe ne bwe binaatuuka okuva ku nsi okutuuka ku ggulu, era ne bwe binaaba bimyufu okusinga olugoye olumyufu, era nga biddugavu okusinga ekibukutu, naye bwe munaakyukira gye ndi n’omutima gwammwe gwonna, ne mugamba nti, Kitaffe! ndibawuliriza ng’abantu abatukuvu.” Era mu kifo ekirala ayogera bw’ati: “Munaabe, mwetukuze; muggyewo obubi bw’emyoyo gyammwe mu maaso gange; mulekeraawo okukola ebibi, muyige okukola obulungi; musalenga emisango n’amazima, mudduukirirenga abajoogebwa, musalenga omusango gw’atalina kitaawe, muwolerezenga bannamwandu; era mujje nno tukubaganye ebirowoozo. Agamba nti, ebibi byammwe ne bwe biba ng’olugoye olumyufu binaafuuka byeru ng’omuzira, ne bwe binaaba bitwakaavu nga langi emyufu enkwafu, binaatukula ng’ebyoya by’endiga. Bwe munaagondanga ne muwulira, munaalyanga ebirungi eby’ensi; naye bwe munaagaananga ne mujeemanga ekitala kinaabalyanga, kubanga akamwa ka Mukama ke kakyogedde.” Kale, bwe yayagala abaagalwa be bonna okugabana ku kwenenya, yanyweza [ebirangiriro bino] olw’okwagala kwe okw’obuyinza bwonna.",
+  "word_count": 187
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Ebyokulabirako by’abatukuvu",
+  "body_html": "<p>Kale tugondere okwagala kwe okw’ekitalo era okw’ekitiibwa; era nga twegayirira okusaasira kwe n’ekisa kye, nga bwe tuleka emirimu gyonna egitaliimu kibala, n’empaka, n’obuggya obutuusa ku kufa, tukyuke tuddukire mu kusaasira kwe. Tutunuulire n’obunyiikivu abo abaaweereza mu bujjuvu ekitiibwa kye eky’ekitalo. Tutwale (ng’ekyokulabirako) Enoka, eyasangibwa nga mutuukirivu mu buwulize, n’atwalibwa, era okufa tekwamanyibwa kumutuukako. Nuuwa, bwe yasangibwa nga mwesigwa, yabuulira ensi okuzaalibwa obuggya ng’ayita mu buweereza bwe; era Mukama n’awonya ku bubwe ensolo ezaayingira mu lyato n’omwoyo gumu. </p>",
+  "body_text": "Kale tugondere okwagala kwe okw’ekitalo era okw’ekitiibwa; era nga twegayirira okusaasira kwe n’ekisa kye, nga bwe tuleka emirimu gyonna egitaliimu kibala, n’empaka, n’obuggya obutuusa ku kufa, tukyuke tuddukire mu kusaasira kwe. Tutunuulire n’obunyiikivu abo abaaweereza mu bujjuvu ekitiibwa kye eky’ekitalo. Tutwale (ng’ekyokulabirako) Enoka, eyasangibwa nga mutuukirivu mu buwulize, n’atwalibwa, era okufa tekwamanyibwa kumutuukako. Nuuwa, bwe yasangibwa nga mwesigwa, yabuulira ensi okuzaalibwa obuggya ng’ayita mu buweereza bwe; era Mukama n’awonya ku bubwe ensolo ezaayingira mu lyato n’omwoyo gumu.",
+  "word_count": 77
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Okweyongerayo kw’ebyo ebyogeddwako waggulu",
+  "body_html": "<p>Ibulayimu, eyayitibwa “mukwano,” yasangibwa nga mwesigwa, kubanga yagondera ebigambo bya Katonda. Ye, mu kugonda, yava mu nsi ye, ne mu baganda be, ne mu nnyumba ya kitaawe, alyoke, ng’aleka ekitundu ekitono, n’ekika ekinafu, n’ennyumba etali ya kitiibwa, asikire ebisuubizo bya Katonda. Kubanga Katonda yamugamba nti, “Vva mu nsi yannyo ne mu bantu bo ne mu nnyumba ya kitaawo ogende mu nsi gye ndikulaga. Nange ndikufuula eggwanga eddene, era ndikuwa omukisa, n’erinnya lyo ne ndifuula kkulu, olyoke obeere mukisa. Ndiwa omukisa abo abakusabira omukisa, era buli alikukolimira nange namukolimiranga; era mu ggwe amawanga gonna ag’omu nsi mwe galiweerwa omukisa.” Era nate, bwe yali ng’ayawukana ne Lutti, Katonda n’amugamba nti. “Yimusa amaaso go ng’osinziira mu kifo mw’oli, otunule ku bukiikakkono, ne ku bukiikaddyo, n’ebuvanjuba n’ebugwanjuba; kubanga ensi gy’olaba ndigikuwa ggwe n’ezzadde lyo emirembe gyonna. Ndyaza ezzadde lyo ng’enfuufu ey’oku nsi; [bwe kityo] omuntu bw’alisobola okubala enfuufu ey’oku nsi, n’ezzadde lyo aliribala.” Era nate [Ekyawandiikibwa] kigamba nti, “Katonda n’afulumya Ibulaamu, n’amugamba nti, Tunuulira eggulu, obale emunyeenye, obanga osobola okuzibala; n’ezzadde lyo bwe liriba bwe lityo. Ibulaamu n’akkiriza Katonda, n’akimubalira okuba obutuukirivu.” Olw’okukkiriza kwe n’okusembeza abagenyi, yaweebwa omwana mu bukadde bwe; era mu kugonda, n’amuwaayo okuba ssaddaaka eri Katonda ku lumu ku nsozi Katonda lwe yamulaga.</p>",
+  "body_text": "Ibulayimu, eyayitibwa “mukwano,” yasangibwa nga mwesigwa, kubanga yagondera ebigambo bya Katonda. Ye, mu kugonda, yava mu nsi ye, ne mu baganda be, ne mu nnyumba ya kitaawe, alyoke, ng’aleka ekitundu ekitono, n’ekika ekinafu, n’ennyumba etali ya kitiibwa, asikire ebisuubizo bya Katonda. Kubanga Katonda yamugamba nti, “Vva mu nsi yannyo ne mu bantu bo ne mu nnyumba ya kitaawo ogende mu nsi gye ndikulaga. Nange ndikufuula eggwanga eddene, era ndikuwa omukisa, n’erinnya lyo ne ndifuula kkulu, olyoke obeere mukisa. Ndiwa omukisa abo abakusabira omukisa, era buli alikukolimira nange namukolimiranga; era mu ggwe amawanga gonna ag’omu nsi mwe galiweerwa omukisa.” Era nate, bwe yali ng’ayawukana ne Lutti, Katonda n’amugamba nti. “Yimusa amaaso go ng’osinziira mu kifo mw’oli, otunule ku bukiikakkono, ne ku bukiikaddyo, n’ebuvanjuba n’ebugwanjuba; kubanga ensi gy’olaba ndigikuwa ggwe n’ezzadde lyo emirembe gyonna. Ndyaza ezzadde lyo ng’enfuufu ey’oku nsi; [bwe kityo] omuntu bw’alisobola okubala enfuufu ey’oku nsi, n’ezzadde lyo aliribala.” Era nate [Ekyawandiikibwa] kigamba nti, “Katonda n’afulumya Ibulaamu, n’amugamba nti, Tunuulira eggulu, obale emunyeenye, obanga osobola okuzibala; n’ezzadde lyo bwe liriba bwe lityo. Ibulaamu n’akkiriza Katonda, n’akimubalira okuba obutuukirivu.” Olw’okukkiriza kwe n’okusembeza abagenyi, yaweebwa omwana mu bukadde bwe; era mu kugonda, n’amuwaayo okuba ssaddaaka eri Katonda ku lumu ku nsozi Katonda lwe yamulaga.",
+  "word_count": 202
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Okweyongerayo",
+  "body_html": "<p>Olw’okusembeza abagenyi n’okutya Katonda, Lutti yalokolebwa n’aggyibwa mu Sodomu, ensi yonna eyetooloddewo bwe yabonerezebwa n’omuliro n’obuganga, Mukama bw’atyo n’alaga lwatu nti talekerera abo abamusuubira, wabula abo abamwesamba abawaayo eri ekibonerezo n’okubonyaabonyezebwa. Kubanga mukazi wa Lutti, eyagenda naye, bwe yali n’endowooza ey’enjawulo ku ye, nga tagenda wamu naye [ku kiragiro kye baali baweereddwa], yafuulibwa ekyokulabirako, n’afuuka empagi y’omunnyo n’okutuusa leero. Kino kyakolebwa bonna bategeere nti abo ab’emitima ebiri, abatakkiriza maanyi ga Katonda, beereetera omusango era bafuuka akabonero eri emirembe gyonna egiddirira. </p>",
+  "body_text": "Olw’okusembeza abagenyi n’okutya Katonda, Lutti yalokolebwa n’aggyibwa mu Sodomu, ensi yonna eyetooloddewo bwe yabonerezebwa n’omuliro n’obuganga, Mukama bw’atyo n’alaga lwatu nti talekerera abo abamusuubira, wabula abo abamwesamba abawaayo eri ekibonerezo n’okubonyaabonyezebwa. Kubanga mukazi wa Lutti, eyagenda naye, bwe yali n’endowooza ey’enjawulo ku ye, nga tagenda wamu naye [ku kiragiro kye baali baweereddwa], yafuulibwa ekyokulabirako, n’afuuka empagi y’omunnyo n’okutuusa leero. Kino kyakolebwa bonna bategeere nti abo ab’emitima ebiri, abatakkiriza maanyi ga Katonda, beereetera omusango era bafuuka akabonero eri emirembe gyonna egiddirira.",
+  "word_count": 80
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Empeera z’okukkiriza n’okusembeza abagenyi",
+  "body_html": "<p>Olw’okukkiriza kwe n’okusembeza abagenyi, Lakabu malaaya yalokolebwa. Kubanga abakessi bwe baatumibwa Yoswa mutabani wa Nuuni e Yeriko, kabaka w’ensi eyo n’ategeera nga bazze kuketta nsi yaabwe, n’atuma abasajja okubakwata, balyoke battibwe nga bamaze okukwatibwa. Naye Lakabu, eyasembezanga abagenyi, n’abaaniriza, n’abakweka waggulu ku nnyumba ye wansi w’ebikolokomba by’obugoogwa. Abasajja kabaka be yatuma bwe baatuuka ne bagamba nti “Waliwo abasajja abazze gy’oli okuketta ensi yaffe; bafulumye, kubanga bw’atyo kabaka bw’alagira,” n’abaddamu nti, “Abasajja ababiri be munoonya bazze gye ndi, naye amangu ago ne bagenda era baweddeyo,” bw’atyo n’atabalaga bakessi. Awo n’agamba abasajja nti, “Nkimanyi ddala nga Mukama Katonda wammwe abawadde ekibuga kino, kubanga entiisa n’okutya mmwe bigudde ku abo abakibeeramu. Kale bwe munaamala okukiwamba, munkuume nze n’ennyumba ya kitange mu mirembe.” Ne bamugamba nti, “Kiriba nga bw’otugambye. Kale amangu ddala nga bw’onootegeera nti tusembedde, onookuŋŋaanya ab’omu nnyumba yo bonna wansi w’akasolya ko, era banaawonyezebwa, naye bonna abanaasangibwa ebweru w’ennyumba yo banaazikirira.” Ate era ne bamuwa akabonero kano, nti awanike ku nnyumba ye omuguwa omumyufu. Bwe batyo ne balaga lwatu nti obununuzi bwandikulukuse okuyita mu musaayi gwa Mukama eri abo bonna abakkiriza era abasuubira Katonda. Mulaba, abaagalwa, nti mu mukazi ono temwali kukkiriza kwokka, wabula n’obunnabbi. </p>",
+  "body_text": "Olw’okukkiriza kwe n’okusembeza abagenyi, Lakabu malaaya yalokolebwa. Kubanga abakessi bwe baatumibwa Yoswa mutabani wa Nuuni e Yeriko, kabaka w’ensi eyo n’ategeera nga bazze kuketta nsi yaabwe, n’atuma abasajja okubakwata, balyoke battibwe nga bamaze okukwatibwa. Naye Lakabu, eyasembezanga abagenyi, n’abaaniriza, n’abakweka waggulu ku nnyumba ye wansi w’ebikolokomba by’obugoogwa. Abasajja kabaka be yatuma bwe baatuuka ne bagamba nti “Waliwo abasajja abazze gy’oli okuketta ensi yaffe; bafulumye, kubanga bw’atyo kabaka bw’alagira,” n’abaddamu nti, “Abasajja ababiri be munoonya bazze gye ndi, naye amangu ago ne bagenda era baweddeyo,” bw’atyo n’atabalaga bakessi. Awo n’agamba abasajja nti, “Nkimanyi ddala nga Mukama Katonda wammwe abawadde ekibuga kino, kubanga entiisa n’okutya mmwe bigudde ku abo abakibeeramu. Kale bwe munaamala okukiwamba, munkuume nze n’ennyumba ya kitange mu mirembe.” Ne bamugamba nti, “Kiriba nga bw’otugambye. Kale amangu ddala nga bw’onootegeera nti tusembedde, onookuŋŋaanya ab’omu nnyumba yo bonna wansi w’akasolya ko, era banaawonyezebwa, naye bonna abanaasangibwa ebweru w’ennyumba yo banaazikirira.” Ate era ne bamuwa akabonero kano, nti awanike ku nnyumba ye omuguwa omumyufu. Bwe batyo ne balaga lwatu nti obununuzi bwandikulukuse okuyita mu musaayi gwa Mukama eri abo bonna abakkiriza era abasuubira Katonda. Mulaba, abaagalwa, nti mu mukazi ono temwali kukkiriza kwokka, wabula n’obunnabbi.",
+  "word_count": 193
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 13,
+  "title": "Okukubiriza obwetoowaze",
+  "body_html": "<p>Kale, abooluganda, tubeerenga n’emitima emiwombeefu, nga tweggyako amalala gonna, n’okwekuza, n’obusirusiru, n’obusungu; era tukolenga nga bwe kyawandiikibwa (kubanga Omwoyo Omutukuvu agamba nti, “Omusajja omugezi aleme kwenyumiririza mu magezi ge, oba omusajja ow’amaanyi okwenyumiririza mu maanyi ge oba omugagga mu bugagga bwe; naye eyeenyumiriza yeenyumirizenga mu Mukama, mu kumunoonya n’obunyiikivu, n’okukola eby’ensonga n’eby’obutuukirivu”), nga tujjukira nnyo ebigambo bya Mukama Yesu bye yayogera, ng’atuyigiriza obukkakkamu n’okugumiikiriza. Kubanga bw’ati bwe yayogera: “Mubeerenga ba kisa, mulyoke musaasirwe; musonyiwenga, mulyoke musonyiyibwe; nga bwe mukola, bwe mutyo bwe mulikolebwa; nga bwe musala omusango, bwe mutyo bwe mulisalirwa; nga bwe mukola eby’ekisa, bwe mutyo bwe mulikolerwa eby’ekisa; ekigera kye mugereramu, nammwe kye muligererwamu.” Ku kiragiro kino ne ku mateeka gano twenywereze, tulyoke tutambulire mu bwetoowaze bwonna nga tugondera ebigambo bye ebitukuvu. Kubanga ekigambo ekitukuvu kigamba nti, “Ani gwe nnaatunulako, wabula oyo omuwombeefu era ow’emirembe, era akankanira ebigambo byange?”</p>",
+  "body_text": "Kale, abooluganda, tubeerenga n’emitima emiwombeefu, nga tweggyako amalala gonna, n’okwekuza, n’obusirusiru, n’obusungu; era tukolenga nga bwe kyawandiikibwa (kubanga Omwoyo Omutukuvu agamba nti, “Omusajja omugezi aleme kwenyumiririza mu magezi ge, oba omusajja ow’amaanyi okwenyumiririza mu maanyi ge oba omugagga mu bugagga bwe; naye eyeenyumiriza yeenyumirizenga mu Mukama, mu kumunoonya n’obunyiikivu, n’okukola eby’ensonga n’eby’obutuukirivu”), nga tujjukira nnyo ebigambo bya Mukama Yesu bye yayogera, ng’atuyigiriza obukkakkamu n’okugumiikiriza. Kubanga bw’ati bwe yayogera: “Mubeerenga ba kisa, mulyoke musaasirwe; musonyiwenga, mulyoke musonyiyibwe; nga bwe mukola, bwe mutyo bwe mulikolebwa; nga bwe musala omusango, bwe mutyo bwe mulisalirwa; nga bwe mukola eby’ekisa, bwe mutyo bwe mulikolerwa eby’ekisa; ekigera kye mugereramu, nammwe kye muligererwamu.” Ku kiragiro kino ne ku mateeka gano twenywereze, tulyoke tutambulire mu bwetoowaze bwonna nga tugondera ebigambo bye ebitukuvu. Kubanga ekigambo ekitukuvu kigamba nti, “Ani gwe nnaatunulako, wabula oyo omuwombeefu era ow’emirembe, era akankanira ebigambo byange?”",
+  "word_count": 141
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 14,
+  "title": "Tusaanye okugondera Katonda okusinga abaleeta obujeemu",
+  "body_html": "<p>Kale, abasajja era abooluganda, kiri kituufu era kitukuvu okugondera Katonda okusinga okugoberera abo abaafuuka abakulembeze b’okuvuganya okw’omuzizo olw’amalala n’obujeemu. Kubanga tetujja kufuna kabi katono, wabula akabi kanene, bwe tunaawaayo awatali kulowooza ffe ffennyini eri okwegomba kw’abantu abagenderera okuleeta empaka n’akavuyo, okutuggya ku birungi. Tubeerenga ba kisa buli omu eri munne, ng’ekyokulabirako ky’okusaasira okungi n’obulungi bw’Omutonzi waffe bwe kiri. Kubanga kyawandiikibwa nti, “Ab’emitima egy’ekisa balituula mu nsi, n’abatalina musango baligisigalamu, naye aboonoonyi balizikirizibwa okuva ku yo.” Era nate [Ekyawandiikibwa] kigamba nti, “Nalaba atatya Katonda ng’agulumiziddwa nnyo, era ng’ayimusiddwa ng’emivule gy’e Lebanooni: ne mpitawo, era, laba, nga taliiwo; ne nnoonya ekifo kye n’obunyiikivu, ne sikiraba. Kuuma obutaliiko kya kunenyezebwa, era tunuulira obwenkanya: kubanga omuntu ow’emirembe aliba n’ezzadde erisigalawo.”</p>",
+  "body_text": "Kale, abasajja era abooluganda, kiri kituufu era kitukuvu okugondera Katonda okusinga okugoberera abo abaafuuka abakulembeze b’okuvuganya okw’omuzizo olw’amalala n’obujeemu. Kubanga tetujja kufuna kabi katono, wabula akabi kanene, bwe tunaawaayo awatali kulowooza ffe ffennyini eri okwegomba kw’abantu abagenderera okuleeta empaka n’akavuyo, okutuggya ku birungi. Tubeerenga ba kisa buli omu eri munne, ng’ekyokulabirako ky’okusaasira okungi n’obulungi bw’Omutonzi waffe bwe kiri. Kubanga kyawandiikibwa nti, “Ab’emitima egy’ekisa balituula mu nsi, n’abatalina musango baligisigalamu, naye aboonoonyi balizikirizibwa okuva ku yo.” Era nate [Ekyawandiikibwa] kigamba nti, “Nalaba atatya Katonda ng’agulumiziddwa nnyo, era ng’ayimusiddwa ng’emivule gy’e Lebanooni: ne mpitawo, era, laba, nga taliiwo; ne nnoonya ekifo kye n’obunyiikivu, ne sikiraba. Kuuma obutaliiko kya kunenyezebwa, era tunuulira obwenkanya: kubanga omuntu ow’emirembe aliba n’ezzadde erisigalawo.”",
+  "word_count": 116
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 15,
+  "title": "Tusaanye okunywerera ku abo abanoonya emirembe",
+  "body_html": "<p>Kale tunywererenga ku abo abanoonya emirembe nga batya Katonda, so si ku abo abeefuula abagyagala mu bunnanfuusi. Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Abantu bano banzisaamu ekitiibwa n’emimwa gyabwe, naye ng’emitima gyabwe gindi wala.” Era nate: “Basaba omukisa n’emimwa gyabwe so nga munda bakolima.” Era nate kigamba nti, “Baamwagala n’akamwa kaabwe, nga bwe bamulimba n’ennimi zaabwe; naye omutima gwabwe tegwali mugolokofu gy’ali, so tebaali beesigwa mu ndagaano ye.” “Emimwa egy’obulimba gisirisibwe,” [ne “Mukama azikirize emimwa gyonna egy’obulimba,] n’olulimi olwenyumiriza olw’abo aboogedde nti, Tugulumize olulimi lwaffe; emimwa gyaffe gyaffe; ani mukama waffe? Olw’okujoogebwa kw’abanafu, n’olw’okusinda kw’abali mu bwetaavu, nnaasituka kaakano, bw’ayogera Mukama: ndimuteeka mu mirembe; ndimukolako n’obuvumu.”</p>",
+  "body_text": "Kale tunywererenga ku abo abanoonya emirembe nga batya Katonda, so si ku abo abeefuula abagyagala mu bunnanfuusi. Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Abantu bano banzisaamu ekitiibwa n’emimwa gyabwe, naye ng’emitima gyabwe gindi wala.” Era nate: “Basaba omukisa n’emimwa gyabwe so nga munda bakolima.” Era nate kigamba nti, “Baamwagala n’akamwa kaabwe, nga bwe bamulimba n’ennimi zaabwe; naye omutima gwabwe tegwali mugolokofu gy’ali, so tebaali beesigwa mu ndagaano ye.” “Emimwa egy’obulimba gisirisibwe,” [ne “Mukama azikirize emimwa gyonna egy’obulimba,] n’olulimi olwenyumiriza olw’abo aboogedde nti, Tugulumize olulimi lwaffe; emimwa gyaffe gyaffe; ani mukama waffe? Olw’okujoogebwa kw’abanafu, n’olw’okusinda kw’abali mu bwetaavu, nnaasituka kaakano, bw’ayogera Mukama: ndimuteeka mu mirembe; ndimukolako n’obuvumu.”",
+  "word_count": 107
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 16,
+  "title": "Kristo ng’ekyokulabirako ky’obwetoowaze",
+  "body_html": "<p>Kubanga Kristo wa abo abalina emitima emiwombeefu, so si wa abo abeegulumiza ku kisibo kye. Mukama waffe Yesu Kristo, Omuggo gw’obwakabaka ogw’obukulu bwa Katonda, teyajja mu kwekuza kw’amalala oba okwemanya, newaakubadde nga yandisobodde okukikola, wabula yajja mu mbeera ey’obwetoowaze, nga Omwoyo Omutukuvu bwe yali ayogedde ku ye. Kubanga agamba nti, “Mukama, ani akkiriza ebigambo byaffe, era ani abikkuliddwa omukono gwa Mukama? Twalangirira [obubaka bwaffe] mu maaso ge: ali ng’omwana omuto, era ng’omulandira oguva mu ttaka ekkalu; talina ndabika wadde ekitiibwa; weewaawo, twamulaba, naye nga talina ndabika wadde obulungi; wabula endabika ye teyaliko kitiibwa, weewaawo, yali ntono bw’ogigeraageranya n’endabika [eya bulijjo] ey’abantu. Muntu eyaweebwayo eri emiggo n’okubonaabona, era amanyi okugumira ennaku: kubanga amaaso ge gaakyusibwa; yanyoomebwa, era tebaamussaamu kitiibwa. Yeetikka ebibi byaffe, era anakuwala ku lwaffe; ate nga twalowooza nti [ku lulwe yennyini] yali mu kutegana, n’emiggo, n’okubonyaabonyezebwa. Naye yafumitibwa olw’okusobya kwaffe. Yabetentebwa olw’obutali butuukirivu bwaffe. Ekibonerezo ekyatuleetera emirembe kyali ku ye, era olw’ebiwundu bye twawonyezebwa. Ffenna twawaba ng’endiga; [buli] muntu yakyamira mu kkubo lye; era Mukama yamuwaayo olw’ebibi byaffe, so ye, wakati mu kubonaabona kwe, tayasamya kamwa ke. Yatwalibwa ng’endiga okuttibwa, era ng’omwana gw’endiga bwe gusirika mu maaso g’oyo agusalako ebyoya, bw’atyo tayasamya kamwa ke. Mu kutoowazibwa kwe omusango gwe gwaggyibwawo; ani alyogera ku zzadde lye? kubanga obulamu bwe buggyibwa ku nsi. Olw’okusobya kw’abantu bange yatuusibwa ku kufa. Era ndiwaayo ababi olw’entaana ye, n’abagagga olw’okufa kwe, kubanga teyakola bubi, so n’obukuusa tebwasangibwa mu kamwa ke. Era Mukama asiima okumulongoosa n’emiggo. Bwe munaawaayo ekiweebwayo olw’ekibi, emmeeme yammwe eriraba ezzadde eriwangaala. Era Mukama asiima okumuggyako okubonaabona kw’emmeeme ye, okumulaga omusana, n’okumubumba n’okutegeera, okuwa obutuukirivu Omutuukirivu aweereza obulungi abangi; era ye yennyini alyetikka ebibi byabwe. Kyaliva asikira bangi, era aligabana omunyago gw’ab’amaanyi; kubanga emmeeme ye yaweebwayo eri okufa, n’abalirwa wamu n’abakozi b’ebibi, era yeetikka ebibi by’abangi, era olw’ebibi byabwe yaweebwayo.” Era nate agamba nti, “Nze ndi lusiriŋŋanyi, siri muntu; ekivume eri abantu, era anyoomebwa abantu. Bonna abandaba banduulira; boogedde n’emimwa gyabwe; banyeenyezza omutwe, [nga bagamba nti] Yasuubira Katonda, amuwonye, amulokole, kubanga amusanyukira.” Mulaba, abaagalwa, ekyokulabirako kye tuweereddwa; kubanga Mukama bwe yeetoowaza bw’atyo, ffe abaayingira wansi w’ekikoligo ky’ekisa kye ku bubwe tunaakola ki? </p>",
+  "body_text": "Kubanga Kristo wa abo abalina emitima emiwombeefu, so si wa abo abeegulumiza ku kisibo kye. Mukama waffe Yesu Kristo, Omuggo gw’obwakabaka ogw’obukulu bwa Katonda, teyajja mu kwekuza kw’amalala oba okwemanya, newaakubadde nga yandisobodde okukikola, wabula yajja mu mbeera ey’obwetoowaze, nga Omwoyo Omutukuvu bwe yali ayogedde ku ye. Kubanga agamba nti, “Mukama, ani akkiriza ebigambo byaffe, era ani abikkuliddwa omukono gwa Mukama? Twalangirira [obubaka bwaffe] mu maaso ge: ali ng’omwana omuto, era ng’omulandira oguva mu ttaka ekkalu; talina ndabika wadde ekitiibwa; weewaawo, twamulaba, naye nga talina ndabika wadde obulungi; wabula endabika ye teyaliko kitiibwa, weewaawo, yali ntono bw’ogigeraageranya n’endabika [eya bulijjo] ey’abantu. Muntu eyaweebwayo eri emiggo n’okubonaabona, era amanyi okugumira ennaku: kubanga amaaso ge gaakyusibwa; yanyoomebwa, era tebaamussaamu kitiibwa. Yeetikka ebibi byaffe, era anakuwala ku lwaffe; ate nga twalowooza nti [ku lulwe yennyini] yali mu kutegana, n’emiggo, n’okubonyaabonyezebwa. Naye yafumitibwa olw’okusobya kwaffe. Yabetentebwa olw’obutali butuukirivu bwaffe. Ekibonerezo ekyatuleetera emirembe kyali ku ye, era olw’ebiwundu bye twawonyezebwa. Ffenna twawaba ng’endiga; [buli] muntu yakyamira mu kkubo lye; era Mukama yamuwaayo olw’ebibi byaffe, so ye, wakati mu kubonaabona kwe, tayasamya kamwa ke. Yatwalibwa ng’endiga okuttibwa, era ng’omwana gw’endiga bwe gusirika mu maaso g’oyo agusalako ebyoya, bw’atyo tayasamya kamwa ke. Mu kutoowazibwa kwe omusango gwe gwaggyibwawo; ani alyogera ku zzadde lye? kubanga obulamu bwe buggyibwa ku nsi. Olw’okusobya kw’abantu bange yatuusibwa ku kufa. Era ndiwaayo ababi olw’entaana ye, n’abagagga olw’okufa kwe, kubanga teyakola bubi, so n’obukuusa tebwasangibwa mu kamwa ke. Era Mukama asiima okumulongoosa n’emiggo. Bwe munaawaayo ekiweebwayo olw’ekibi, emmeeme yammwe eriraba ezzadde eriwangaala. Era Mukama asiima okumuggyako okubonaabona kw’emmeeme ye, okumulaga omusana, n’okumubumba n’okutegeera, okuwa obutuukirivu Omutuukirivu aweereza obulungi abangi; era ye yennyini alyetikka ebibi byabwe. Kyaliva asikira bangi, era aligabana omunyago gw’ab’amaanyi; kubanga emmeeme ye yaweebwayo eri okufa, n’abalirwa wamu n’abakozi b’ebibi, era yeetikka ebibi by’abangi, era olw’ebibi byabwe yaweebwayo.” Era nate agamba nti, “Nze ndi lusiriŋŋanyi, siri muntu; ekivume eri abantu, era anyoomebwa abantu. Bonna abandaba banduulira; boogedde n’emimwa gyabwe; banyeenyezza omutwe, [nga bagamba nti] Yasuubira Katonda, amuwonye, amulokole, kubanga amusanyukira.” Mulaba, abaagalwa, ekyokulabirako kye tuweereddwa; kubanga Mukama bwe yeetoowaza bw’atyo, ffe abaayingira wansi w’ekikoligo ky’ekisa kye ku bubwe tunaakola ki?",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 17,
+  "title": "Abatukuvu ng’ebyokulabirako by’obwetoowaze",
+  "body_html": "<p>Tubeerenga abagoberezi era b’abo abaatambulanga nga bambadde amaliba g’endiga n’ag’embuzi nga balangirira okujja kwa Kristo; njogera ku Eriya, Erisa ne Ezeekyeri mu bannabbi, awamu n’abalala abo abaweebwa obujulirwa obufaananako bwe butyo [mu Byawandiikibwa]. Ibulayimu yaweebwa ekitiibwa eky’enjawulo, era n’ayitibwa mukwano gwa Katonda; naye ye, ng’atunuulira n’obunyiikivu ekitiibwa kya Katonda, n’ayatula mu bwetoowaze nti, “Nze ndi enfuufu n’evvu bwokka.” Ate era kyawandiikibwa bwe kiti ku Yobu nti, “Yobu yali musajja mutuukirivu, ataliiko kya kunenyezebwa, wa mazima, atya Katonda, era eyeekuumanga obutakola kibi kyonna.” Naye ng’eyeewawaabira yennyini, n’agamba nti, “Tewali muntu atalina bugwagwa, ne bwe bulamu bwe buba bwa lunaku lumu lwokka.” Musa yayitibwa mwesigwa mu nnyumba ya Katonda yonna; era ku bubwe, Katonda n’abonereza Misiri n’ebibonoobono n’okubonyaabonyezebwa. Naye ye, newaakubadde nga yassibwamu ekitiibwa kingi bwe kityo, teyakozesa bigambo bya kwegulumiza, wabula yagamba, ekigambo kya Katonda bwe kyamujjira nga kiva mu kisaka, nti, “Nze ani, gw’otuma? Ndi muntu ow’eddoboozi ennafu era ow’olulimi oluzito.” Era nate n’agamba nti, “Nze ndi ng’omukka oguva mu nsuwa bwokka.”</p>",
+  "body_text": "Tubeerenga abagoberezi era b’abo abaatambulanga nga bambadde amaliba g’endiga n’ag’embuzi nga balangirira okujja kwa Kristo; njogera ku Eriya, Erisa ne Ezeekyeri mu bannabbi, awamu n’abalala abo abaweebwa obujulirwa obufaananako bwe butyo [mu Byawandiikibwa]. Ibulayimu yaweebwa ekitiibwa eky’enjawulo, era n’ayitibwa mukwano gwa Katonda; naye ye, ng’atunuulira n’obunyiikivu ekitiibwa kya Katonda, n’ayatula mu bwetoowaze nti, “Nze ndi enfuufu n’evvu bwokka.” Ate era kyawandiikibwa bwe kiti ku Yobu nti, “Yobu yali musajja mutuukirivu, ataliiko kya kunenyezebwa, wa mazima, atya Katonda, era eyeekuumanga obutakola kibi kyonna.” Naye ng’eyeewawaabira yennyini, n’agamba nti, “Tewali muntu atalina bugwagwa, ne bwe bulamu bwe buba bwa lunaku lumu lwokka.” Musa yayitibwa mwesigwa mu nnyumba ya Katonda yonna; era ku bubwe, Katonda n’abonereza Misiri n’ebibonoobono n’okubonyaabonyezebwa. Naye ye, newaakubadde nga yassibwamu ekitiibwa kingi bwe kityo, teyakozesa bigambo bya kwegulumiza, wabula yagamba, ekigambo kya Katonda bwe kyamujjira nga kiva mu kisaka, nti, “Nze ani, gw’otuma? Ndi muntu ow’eddoboozi ennafu era ow’olulimi oluzito.” Era nate n’agamba nti, “Nze ndi ng’omukka oguva mu nsuwa bwokka.”",
+  "word_count": 162
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 18,
+  "title": "Dawudi ng’ekyokulabirako ky’obwetoowaze",
+  "body_html": "<p>Naye tunaayogera ki ku Dawudi, eyaweebwa obujulirwa obw’engeri eyo, era Katonda gwe yayogerako nti, “Nzudde omusajja omutima gwange gwe gwagala, Dawudi, mutabani wa Yese; era mu kusaasira okutaggwaawo mmufuseeko amafuta?” Naye omusajja oyo yennyini agamba Katonda nti, “Onsaasire, Ayi Mukama, ng’okusaasira kwo okunene bwe kuli; era olw’okusaasira kwo okungi nziggyaako ekyonoono kyange. Nnaazaako obutali butuukirivu bwange, ontukulize ddala okuva mu kibi kyange. Kubanga obutali butuukirivu bwange mbukkiriza, era ekibi kyange kiri mu maaso gange bulijjo. Ggwe wennyini ggwe nnyonoonye, ne nkola ebitali bya butuukirivu mu maaso go; olyoke oyitibwe omutuukirivu mu bigambo byo, era owangule bw’osalirwa omusango. Kubanga, laba, nafunyisibwa olubuto mu bisobyo, era mu bibi byange mmange mwe yanfunyisiza olubuto. Kubanga, laba, oyagadde amazima; eby’ekyama era ebikwekeddwa eby’amagezi obindaze. Olimmansira ezobu, ne ntukula; olinnaaza, ne nfuuka mweru okusinga omuzira. Olimpulisa essanyu n’okwesiima; amagumba gange agaatoowazibwa galijaguza. Kyusa amaaso go oleme kutunuulira bibi byange, era osangule ebyonoono byange byonna. Ontondemu omutima omulongoofu, Ayi Katonda, era ozze buggya omwoyo omugolokofu munda yange. Tongoba w’oli, era tonzigyako Mwoyo wo Omutukuvu. Onkomezeewo essanyu ery’obulokozi bwo, era onnyweze n’Omwoyo wo afuga. Ndiyigiriza aboonoonyi amakubo go, n’abatatya Katonda balikyuka ne bakomawo gy’oli. Ondokole mu kibi eky’okuyiwa omusaayi, Ayi Katonda, ggwe Katonda ow’obulokozi bwange; olulimi lwange lulijaguza mu butuukirivu bwo. Ayi Mukama, olyasamya akamwa kange, n’emimwa gyange girirangirira ettendo lyo. Kubanga singa wayagala ssaddaaka, nandigikuleetedde; n’ebiweebwayo ebyokebwa tobisanyukira. Ssaddaaka [esiimibwa] Katonda gwe mwoyo ogubetentebwa; omutima ogumenyese era oguboneredde Katonda taligugaya.”</p>",
+  "body_text": "Naye tunaayogera ki ku Dawudi, eyaweebwa obujulirwa obw’engeri eyo, era Katonda gwe yayogerako nti, “Nzudde omusajja omutima gwange gwe gwagala, Dawudi, mutabani wa Yese; era mu kusaasira okutaggwaawo mmufuseeko amafuta?” Naye omusajja oyo yennyini agamba Katonda nti, “Onsaasire, Ayi Mukama, ng’okusaasira kwo okunene bwe kuli; era olw’okusaasira kwo okungi nziggyaako ekyonoono kyange. Nnaazaako obutali butuukirivu bwange, ontukulize ddala okuva mu kibi kyange. Kubanga obutali butuukirivu bwange mbukkiriza, era ekibi kyange kiri mu maaso gange bulijjo. Ggwe wennyini ggwe nnyonoonye, ne nkola ebitali bya butuukirivu mu maaso go; olyoke oyitibwe omutuukirivu mu bigambo byo, era owangule bw’osalirwa omusango. Kubanga, laba, nafunyisibwa olubuto mu bisobyo, era mu bibi byange mmange mwe yanfunyisiza olubuto. Kubanga, laba, oyagadde amazima; eby’ekyama era ebikwekeddwa eby’amagezi obindaze. Olimmansira ezobu, ne ntukula; olinnaaza, ne nfuuka mweru okusinga omuzira. Olimpulisa essanyu n’okwesiima; amagumba gange agaatoowazibwa galijaguza. Kyusa amaaso go oleme kutunuulira bibi byange, era osangule ebyonoono byange byonna. Ontondemu omutima omulongoofu, Ayi Katonda, era ozze buggya omwoyo omugolokofu munda yange. Tongoba w’oli, era tonzigyako Mwoyo wo Omutukuvu. Onkomezeewo essanyu ery’obulokozi bwo, era onnyweze n’Omwoyo wo afuga. Ndiyigiriza aboonoonyi amakubo go, n’abatatya Katonda balikyuka ne bakomawo gy’oli. Ondokole mu kibi eky’okuyiwa omusaayi, Ayi Katonda, ggwe Katonda ow’obulokozi bwange; olulimi lwange lulijaguza mu butuukirivu bwo. Ayi Mukama, olyasamya akamwa kange, n’emimwa gyange girirangirira ettendo lyo. Kubanga singa wayagala ssaddaaka, nandigikuleetedde; n’ebiweebwayo ebyokebwa tobisanyukira. Ssaddaaka [esiimibwa] Katonda gwe mwoyo ogubetentebwa; omutima ogumenyese era oguboneredde Katonda taligugaya.”",
+  "word_count": 234
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 19,
+  "title": "Nga tugoberera ebyokulabirako bino, tunoonye emirembe",
+  "body_html": "<p>Bwe kityo obwetoowaze n’obuwulize obw’okutya Katonda obw’abasajja abakulu bwe batyo era abaatiikirivu, tebukoma ku kutufuula ffe abalungi okusingawo, wabula n’emirembe gyonna egyatusooka; bonna abaafuna ebigambo bye mu kutya ne mu mazima. Kale, nga tulina ebyokulabirako bingi ebikulu era eby’ekitiibwa ebitussiddwa mu maaso, tuddeyo eri okukola emirembe egyo, egyali akabonero akaatussibwako okuva ku lubereberye; era tutunuulire n’obunyiikivu Kitaffe era Omutonzi w’ebintu byonna, tunywerere ku birabo bye eby’amaanyi era ebisukkulumye ennyo, n’ebirungi bye eby’emirembe. Tumulowoozeeko n’amagezi gaffe, tutunuulire n’amaaso g’emmeeme zaffe okwagala kwe okugumiikiriza. Tulowooze bw’ali nga talina busungu eri ebitonde bye byonna. </p>",
+  "body_text": "Bwe kityo obwetoowaze n’obuwulize obw’okutya Katonda obw’abasajja abakulu bwe batyo era abaatiikirivu, tebukoma ku kutufuula ffe abalungi okusingawo, wabula n’emirembe gyonna egyatusooka; bonna abaafuna ebigambo bye mu kutya ne mu mazima. Kale, nga tulina ebyokulabirako bingi ebikulu era eby’ekitiibwa ebitussiddwa mu maaso, tuddeyo eri okukola emirembe egyo, egyali akabonero akaatussibwako okuva ku lubereberye; era tutunuulire n’obunyiikivu Kitaffe era Omutonzi w’ebintu byonna, tunywerere ku birabo bye eby’amaanyi era ebisukkulumye ennyo, n’ebirungi bye eby’emirembe. Tumulowoozeeko n’amagezi gaffe, tutunuulire n’amaaso g’emmeeme zaffe okwagala kwe okugumiikiriza. Tulowooze bw’ali nga talina busungu eri ebitonde bye byonna.",
+  "word_count": 91
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 20,
+  "title": "Emirembe n’okukwatagana kw’ebitonde byonna",
+  "body_html": "<p>Eggulu, nga lyetoloola wansi w’obufuzi bwe, limugondera mu mirembe. Emisana n’ekiro bitambula olugendo lwe yabitegekera, nga tebiziyizaŋŋana n’akatono. Enjuba n’omwezi, awamu n’ebibinja by’emmunyeenye, byetooloola mu kukwatagana nga bwe yalagira, mu nsalo ezaabiteekebwawo, awatali kukyama n’akatono. Ensi engimu, ng’okwagala kwe bwe kuli, ereeta emmere nnyingi mu biseera byayo ebituufu, eri omuntu n’ensolo n’ebiramu byonna ebigiriko, awatali kulonzalonza, wadde okukyusa ekiragiro kyonna ku ebyo bye yateekawo. Ebifo by’obuziba ebitanoonyezeka, n’entegeka ezitannyonnyoleka ez’ensi ey’emagombe, bikuumibwa amateeka ge gamu. Ennyanja ennene etapimika, eyakuŋŋaanyizibwa mu bisenyi eby’enjawulo olw’omulimu gwe, tesukka nsalo zaagiteerwako, wabula ekola nga bwe yagiragira. Kubanga yagamba nti, “Wano w’onookoma, era amayengo go galimenyekera munda yo.” Ennyanja ennene, omuntu gy’atasobola kusomoka, n’ensi eziri emitala waayo, bifugibwa amateeka ge gamu aga Mukama. Ebiseera by’omwaka—eky’okumera, eky’ebbugumu, eky’amakungula n’eky’empewo—bisikiragana mu mirembe. Empewo mu njuyi zaazo ez’enjawulo zituukiriza, mu kiseera ekituufu, obuweereza bwazo awatali kiziyiza. Ensulo ezitakalira, ezaatondebwa olw’okwesanyusa n’olw’obulamu, ziwa awatali kulemwa amabeere gaazo olw’obulamu bw’abantu. Ebiramu ebisinga obutono bikuŋŋaana wamu mu mirembe n’okukwatagana. Bino byonna Omutonzi omukulu era Mukama wa byonna yabiragira okubeerawo mu mirembe n’okukwatagana; ng’akolera bonna ebirungi, naye okusinga ennyo ffe abaddukira mu kusaasira kwe ku bwa Yesu Kristo Mukama waffe, ekitiibwa n’obukulu bibe gy’ali emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Eggulu, nga lyetoloola wansi w’obufuzi bwe, limugondera mu mirembe. Emisana n’ekiro bitambula olugendo lwe yabitegekera, nga tebiziyizaŋŋana n’akatono. Enjuba n’omwezi, awamu n’ebibinja by’emmunyeenye, byetooloola mu kukwatagana nga bwe yalagira, mu nsalo ezaabiteekebwawo, awatali kukyama n’akatono. Ensi engimu, ng’okwagala kwe bwe kuli, ereeta emmere nnyingi mu biseera byayo ebituufu, eri omuntu n’ensolo n’ebiramu byonna ebigiriko, awatali kulonzalonza, wadde okukyusa ekiragiro kyonna ku ebyo bye yateekawo. Ebifo by’obuziba ebitanoonyezeka, n’entegeka ezitannyonnyoleka ez’ensi ey’emagombe, bikuumibwa amateeka ge gamu. Ennyanja ennene etapimika, eyakuŋŋaanyizibwa mu bisenyi eby’enjawulo olw’omulimu gwe, tesukka nsalo zaagiteerwako, wabula ekola nga bwe yagiragira. Kubanga yagamba nti, “Wano w’onookoma, era amayengo go galimenyekera munda yo.” Ennyanja ennene, omuntu gy’atasobola kusomoka, n’ensi eziri emitala waayo, bifugibwa amateeka ge gamu aga Mukama. Ebiseera by’omwaka—eky’okumera, eky’ebbugumu, eky’amakungula n’eky’empewo—bisikiragana mu mirembe. Empewo mu njuyi zaazo ez’enjawulo zituukiriza, mu kiseera ekituufu, obuweereza bwazo awatali kiziyiza. Ensulo ezitakalira, ezaatondebwa olw’okwesanyusa n’olw’obulamu, ziwa awatali kulemwa amabeere gaazo olw’obulamu bw’abantu. Ebiramu ebisinga obutono bikuŋŋaana wamu mu mirembe n’okukwatagana. Bino byonna Omutonzi omukulu era Mukama wa byonna yabiragira okubeerawo mu mirembe n’okukwatagana; ng’akolera bonna ebirungi, naye okusinga ennyo ffe abaddukira mu kusaasira kwe ku bwa Yesu Kristo Mukama waffe, ekitiibwa n’obukulu bibe gy’ali emirembe n’emirembe. Amiina.",
+  "word_count": 195
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 21,
+  "title": "Tugondere Katonda, so si abaleeta obujeemu",
+  "body_html": "<p>Mwegendereze, abaagalwa, ebirungi bye ebingi bireme okufuuka omusango eri ffenna. [Kubanga bwe kityo bwe kiteekwa okuba] bwe tutaatambulenga nga bwe kimusaanira, ne tukola n’omwoyo gumu ebyo ebirungi era ebisanyusa mu maaso ge. Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Omwoyo wa Mukama ttabaaza ekebera ebitundu eby’ekyama eby’omunda.” Tulowooze bw’ali kumpi, era nti tewali kirowoozo wadde ensonga ze tufumiitiriza ezimukwekeddwa. Kale kituufu obutaleka kifo okwagala kwe kwe kwatuteekamu. Tusinge okunyiiza abantu abo abasirusiru, abatalowooza, abeegulumiza, era abeenyumiririza mu malala g’ebigambo byabwe, okusinga [okunyiiza] Katonda. Tussengamu ekitiibwa Mukama Yesu Kristo, eyawaayo omusaayi gwe ku lwaffe; tussengamu ekitiibwa abo abatufuga; tuwenga abakadde mu ffe ekitiibwa; tukuzenga abavubuka mu kutya Katonda; tuluŋŋamyenga bakyala baffe eri ekirungi. Balagenga empisa ennungi ey’obulongoofu [mu nneeyisa yaabwe yonna]; balagenga omwoyo ogw’amazima ogw’obukkakkamu; balage lwatu obuyinza bwe balina ku nnimi zaabwe, mu ngeri gye boogeramu; balagenga okwagala kwabwe, si mu kusosola, wabula mu kwagala kyenkanyi bonna abatya Katonda mu kumwemalirako. Abaana bammwe bagabane ku kuyigirizibwa okw’Ekikristaayo okw’amazima; bayige obwetoowaze bwe bugasa ennyo eri Katonda—omwoyo ogw’okwagala okulongoofu bwe gusobola ennyo gy’ali—okumutya bwe kuli okw’ekitalo era okukulu, n’engeri gye kulokolamu bonna abatambulira mu kwo n’omutima omulongoofu. Kubanga ye Mukebezi w’ebirowoozo n’okwegomba [kw’omutima]: omukka gwe guli mu ffe; era bw’alisiima, aligutwala. </p>",
+  "body_text": "Mwegendereze, abaagalwa, ebirungi bye ebingi bireme okufuuka omusango eri ffenna. [Kubanga bwe kityo bwe kiteekwa okuba] bwe tutaatambulenga nga bwe kimusaanira, ne tukola n’omwoyo gumu ebyo ebirungi era ebisanyusa mu maaso ge. Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Omwoyo wa Mukama ttabaaza ekebera ebitundu eby’ekyama eby’omunda.” Tulowooze bw’ali kumpi, era nti tewali kirowoozo wadde ensonga ze tufumiitiriza ezimukwekeddwa. Kale kituufu obutaleka kifo okwagala kwe kwe kwatuteekamu. Tusinge okunyiiza abantu abo abasirusiru, abatalowooza, abeegulumiza, era abeenyumiririza mu malala g’ebigambo byabwe, okusinga [okunyiiza] Katonda. Tussengamu ekitiibwa Mukama Yesu Kristo, eyawaayo omusaayi gwe ku lwaffe; tussengamu ekitiibwa abo abatufuga; tuwenga abakadde mu ffe ekitiibwa; tukuzenga abavubuka mu kutya Katonda; tuluŋŋamyenga bakyala baffe eri ekirungi. Balagenga empisa ennungi ey’obulongoofu [mu nneeyisa yaabwe yonna]; balagenga omwoyo ogw’amazima ogw’obukkakkamu; balage lwatu obuyinza bwe balina ku nnimi zaabwe, mu ngeri gye boogeramu; balagenga okwagala kwabwe, si mu kusosola, wabula mu kwagala kyenkanyi bonna abatya Katonda mu kumwemalirako. Abaana bammwe bagabane ku kuyigirizibwa okw’Ekikristaayo okw’amazima; bayige obwetoowaze bwe bugasa ennyo eri Katonda—omwoyo ogw’okwagala okulongoofu bwe gusobola ennyo gy’ali—okumutya bwe kuli okw’ekitalo era okukulu, n’engeri gye kulokolamu bonna abatambulira mu kwo n’omutima omulongoofu. Kubanga ye Mukebezi w’ebirowoozo n’okwegomba [kw’omutima]: omukka gwe guli mu ffe; era bw’alisiima, aligutwala.",
+  "word_count": 199
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 22,
+  "title": "Okubuulirira kuno kunywezebwa okukkiriza okw’Ekikristaayo",
+  "body_html": "<p>Kaakano okukkiriza okuli mu Kristo kunyweza [okubuulirira] kuno kwonna. Kubanga ye yennyini ku bw’Omwoyo Omutukuvu atwogerera bw’ati: “Mujje wano baana bange, mumpulirize; mbayigirize okutya Mukama. Oyagala okuwangaala mu bulamu obulungi, okuba mu ssanyu emyaka emingi? Olulimi lwo lukuumenga luleme okwogera ebitasaana, n’akamwa ko kaleme okwogera eby’obulimba. Lekeraawo okukola ebibi, okolenga ebirungi; noonya emirembe era ogigobererenga. Amaaso ga Mukama gatunuulira abo abatuukirivu, n’amatu ge [gaggule] eri okusaba kwabwe. Obwenyi bwa Mukama buli ku bakola ebibi, okubasaanyizaawo ddala n’obutaddayo kujjukirwa ku nsi. Omutuukirivu yakaaba, Mukama n’amuwulira, n’amuwonya mu bizibu bye byonna.” “Emiggo mingi [egitegekeddwa] ababi; naye okusaasira kulyetooloola abeesiga Mukama.”</p>",
+  "body_text": "Kaakano okukkiriza okuli mu Kristo kunyweza [okubuulirira] kuno kwonna. Kubanga ye yennyini ku bw’Omwoyo Omutukuvu atwogerera bw’ati: “Mujje wano baana bange, mumpulirize; mbayigirize okutya Mukama. Oyagala okuwangaala mu bulamu obulungi, okuba mu ssanyu emyaka emingi? Olulimi lwo lukuumenga luleme okwogera ebitasaana, n’akamwa ko kaleme okwogera eby’obulimba. Lekeraawo okukola ebibi, okolenga ebirungi; noonya emirembe era ogigobererenga. Amaaso ga Mukama gatunuulira abo abatuukirivu, n’amatu ge [gaggule] eri okusaba kwabwe. Obwenyi bwa Mukama buli ku bakola ebibi, okubasaanyizaawo ddala n’obutaddayo kujjukirwa ku nsi. Omutuukirivu yakaaba, Mukama n’amuwulira, n’amuwonya mu bizibu bye byonna.” “Emiggo mingi [egitegekeddwa] ababi; naye okusaasira kulyetooloola abeesiga Mukama.”",
+  "word_count": 98
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 23,
+  "title": "Mubeere bawombeefu, era mukkirize nti Kristo alikomawo",
+  "body_html": "<p>Kitaffe ow’okusaasira kwonna era omukozi w’ebirungi alina omutima [ogw’okusaasira] eri abo abamutya, era mu kisa n’okwagala agabira ebirabo bye abo abajja gy’ali n’omutima ogutaliimu bukuusa. Kale tuleme okubeera n’emitima ebiri; so emmeeme zaffe zireme okwegulumiza olw’ebirabo bye ebikulu ennyo era eby’ekitiibwa. Kibe wala naffe ekyo ekyawandiikibwa nti, “Bannaku abo ab’emitima ebiri, era ab’omutima ogubuusabuusa; aboogera nti, Bino twabiwulira ne mu biseera bya bajjajjaffe; naye, laba, tukaddiye, era tewali na kimu ku byo ekitutuuseeko.” Mmwe abasirusiru! mwegeraageranye n’omuti: mutwale [ng’ekyokulabirako] omuzabbibu. Okusooka, gukunkumula ebikoola byagwo, oluvannyuma ne gutojjera, ate ne gussaako ebikoola, n’oluvannyuma ne gumulisa; awo ne wajja ezabbibu ezikaawa, n’oluvannyuma ne wajja ekibala ekyengedde. Mulaba nga mu kaseera katono ekibala ky’omuti bwe kituuka okwengera. Mazima ddala, mangu era nga tebamanyiridde okwagala kwe kulituukirizibwa, nga n’Ekyawandiikibwa bwe kiwa obujulirwa nti, “Alijja mangu, so talirwa;” era nti, “Mukama alijja mu yeekaalu ye mangu, Omutukuvu, gwe mulindirira.”</p>",
+  "body_text": "Kitaffe ow’okusaasira kwonna era omukozi w’ebirungi alina omutima [ogw’okusaasira] eri abo abamutya, era mu kisa n’okwagala agabira ebirabo bye abo abajja gy’ali n’omutima ogutaliimu bukuusa. Kale tuleme okubeera n’emitima ebiri; so emmeeme zaffe zireme okwegulumiza olw’ebirabo bye ebikulu ennyo era eby’ekitiibwa. Kibe wala naffe ekyo ekyawandiikibwa nti, “Bannaku abo ab’emitima ebiri, era ab’omutima ogubuusabuusa; aboogera nti, Bino twabiwulira ne mu biseera bya bajjajjaffe; naye, laba, tukaddiye, era tewali na kimu ku byo ekitutuuseeko.” Mmwe abasirusiru! mwegeraageranye n’omuti: mutwale [ng’ekyokulabirako] omuzabbibu. Okusooka, gukunkumula ebikoola byagwo, oluvannyuma ne gutojjera, ate ne gussaako ebikoola, n’oluvannyuma ne gumulisa; awo ne wajja ezabbibu ezikaawa, n’oluvannyuma ne wajja ekibala ekyengedde. Mulaba nga mu kaseera katono ekibala ky’omuti bwe kituuka okwengera. Mazima ddala, mangu era nga tebamanyiridde okwagala kwe kulituukirizibwa, nga n’Ekyawandiikibwa bwe kiwa obujulirwa nti, “Alijja mangu, so talirwa;” era nti, “Mukama alijja mu yeekaalu ye mangu, Omutukuvu, gwe mulindirira.”",
+  "word_count": 144
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 24,
+  "title": "Katonda atulaga bulijjo mu bitonde nti walibaawo okuzuukira",
+  "body_html": "<p>Tulowooze, abaagalwa, Mukama bw’atulaga bulijjo nti walibaawo okuzuukira okugenda okujja, Mukama Yesu Kristo kwe yafuula ebibala ebibereberye bwe yamuzuukiza mu bafu. Tutunuulire, abaagalwa, okuzuukira okubaawo buli kiseera. Emisana n’ekiro bitulaga okuzuukira. Ekiro kyebaka, emisana ne gisituka; emisana [nate] ne giggwaawo, ekiro ne kijja. Tulabe ebibala [by’ensi], okusiga kw’ensigo bwe kubaawo. Omusizi agenda, n’agisuula mu ttaka; era ensigo bw’emala okusaasaanyizibwa, newaakubadde nga yali nkalu era bwereere bwe yagwa ku ttaka, evunda mpolampola. Awo okuva mu kuvunda kwayo, amaanyi amangi ag’okulabirira kwa Mukama ne gagizuukiza nate, era okuva mu nsigo emu ne muvaamu nnyingi ne zibala ebibala. </p>",
+  "body_text": "Tulowooze, abaagalwa, Mukama bw’atulaga bulijjo nti walibaawo okuzuukira okugenda okujja, Mukama Yesu Kristo kwe yafuula ebibala ebibereberye bwe yamuzuukiza mu bafu. Tutunuulire, abaagalwa, okuzuukira okubaawo buli kiseera. Emisana n’ekiro bitulaga okuzuukira. Ekiro kyebaka, emisana ne gisituka; emisana [nate] ne giggwaawo, ekiro ne kijja. Tulabe ebibala [by’ensi], okusiga kw’ensigo bwe kubaawo. Omusizi agenda, n’agisuula mu ttaka; era ensigo bw’emala okusaasaanyizibwa, newaakubadde nga yali nkalu era bwereere bwe yagwa ku ttaka, evunda mpolampola. Awo okuva mu kuvunda kwayo, amaanyi amangi ag’okulabirira kwa Mukama ne gagizuukiza nate, era okuva mu nsigo emu ne muvaamu nnyingi ne zibala ebibala.",
+  "word_count": 95
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 25,
+  "title": "Ennyonyi foyiniikisi akabonero k’okuzuukira kwaffe",
+  "body_html": "<p>Tulowooze ku kabonero ako ak’ekitalo [ak’okuzuukira] akabeera mu nsi ez’Ebuvanjuba, kwe kugamba, mu Buwalabu ne mu nsi ezigyetoolodde. Waliwo ennyonyi emu eyitibwa foyiniikisi. Eno y’emu yokka mu kika kyayo, era ewangaala emyaka ebikumi bitaano. Era ekiseera eky’okuvunda kwayo bwe kisembera, nga eteekwa okufa, yeezimbira ekisu eky’obubaane, n’omugavu, n’ebyakaloosa ebirala, era ekiseera bwe kituuka, ekiyingiramu n’efiira omwo. Naye ennyama bw’evunda, ne mu yo muvaamu olusiriŋŋanyi olumu, olulya amazzi g’ennyonyi enfu, ne lumeramu ebyoya. Awo, bwe lumala okufuna amaanyi, ne lusitula ekisu ekyo omuli amagumba g’omuzadde waalwo, era nga lugasitudde ne luva mu nsi ya Buwalabu ne lugenda e Misiri, mu kibuga ekiyitibwa Heliyopoli. Awo, emisana ttuku, nga lubuuka abantu bonna nga balaba, ne lugateeka ku kyoto ky’enjuba, era bwe lumala okukola kino, ne lwanguwa okuddayo gye lwali. Bakabona olwo ne beekenneenya ebiwandiiko by’ennaku, ne bazuula nga lukomyewo ng’omwaka ogw’ebikumi bitaano gwakaggwaako ddala.</p>",
+  "body_text": "Tulowooze ku kabonero ako ak’ekitalo [ak’okuzuukira] akabeera mu nsi ez’Ebuvanjuba, kwe kugamba, mu Buwalabu ne mu nsi ezigyetoolodde. Waliwo ennyonyi emu eyitibwa foyiniikisi. Eno y’emu yokka mu kika kyayo, era ewangaala emyaka ebikumi bitaano. Era ekiseera eky’okuvunda kwayo bwe kisembera, nga eteekwa okufa, yeezimbira ekisu eky’obubaane, n’omugavu, n’ebyakaloosa ebirala, era ekiseera bwe kituuka, ekiyingiramu n’efiira omwo. Naye ennyama bw’evunda, ne mu yo muvaamu olusiriŋŋanyi olumu, olulya amazzi g’ennyonyi enfu, ne lumeramu ebyoya. Awo, bwe lumala okufuna amaanyi, ne lusitula ekisu ekyo omuli amagumba g’omuzadde waalwo, era nga lugasitudde ne luva mu nsi ya Buwalabu ne lugenda e Misiri, mu kibuga ekiyitibwa Heliyopoli. Awo, emisana ttuku, nga lubuuka abantu bonna nga balaba, ne lugateeka ku kyoto ky’enjuba, era bwe lumala okukola kino, ne lwanguwa okuddayo gye lwali. Bakabona olwo ne beekenneenya ebiwandiiko by’ennaku, ne bazuula nga lukomyewo ng’omwaka ogw’ebikumi bitaano gwakaggwaako ddala.",
+  "word_count": 141
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 26,
+  "title": "Kale, tulizuukira, nga n’Ekyawandiikibwa bwe kitegeeza",
+  "body_html": "<p>Kale tulowooza nti kintu kikulu era kya kitalo Omutonzi w’ebintu byonna okuzuukiza abo abaamuweereza n’okutya Katonda nga beesiga okukkiriza okulungi, ng’ate n’ennyonyi atulaga obukulu bw’amaanyi ge okutuukiriza ekisuubizo kye? Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Olinzuukiza, nange ndikwatulira;” era nate, “Ngalamira ne neebaka, ne nzuukuka, kubanga ggwe oli nange;” era nate, Yobu agamba nti, “Olizuukiza omubiri gwange guno, ogugumidde ebintu bino byonna.”</p>",
+  "body_text": "Kale tulowooza nti kintu kikulu era kya kitalo Omutonzi w’ebintu byonna okuzuukiza abo abaamuweereza n’okutya Katonda nga beesiga okukkiriza okulungi, ng’ate n’ennyonyi atulaga obukulu bw’amaanyi ge okutuukiriza ekisuubizo kye? Kubanga [Ekyawandiikibwa] kigamba mu kifo ekimu nti, “Olinzuukiza, nange ndikwatulira;” era nate, “Ngalamira ne neebaka, ne nzuukuka, kubanga ggwe oli nange;” era nate, Yobu agamba nti, “Olizuukiza omubiri gwange guno, ogugumidde ebintu bino byonna.”",
+  "word_count": 63
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 27,
+  "title": "Mu ssuubi ly’okuzuukira",
+  "body_html": "<p>Kale nga tulina essuubi lino, emmeeme zaffe zisibibwe ku Oyo omwesigwa mu bisuubizo bye, era omutuukirivu mu misango gye. Oyo eyatulagira obutalimba, ye yennyini talirimba n’akatono; kubanga tewali kitasoboka eri Katonda, okuggyako okulimba. Kale okukkiriza kwe kuddemu okukoleezebwa munda mu ffe, era tulowooze nti ebintu byonna biri kumpi naye. Olw’ekigambo ky’amaanyi ge yanyweza ebintu byonna, era olw’ekigambo kye asobola okubisuula. “Ani aliyinza okumugamba nti, Okoze ki? oba, Ani aliyinza okuziyiza obuyinza bw’amaanyi ge?” Ddi era nga bw’asiima, alikola byonna, era tewali na kimu ku ebyo bye yasalawo ekiriggwaawo. Ebintu byonna biri lwatu mu maaso ge, era tewali kiyinza kukwekebwa kuteesa kwe. “Eggulu litegeeza ekitiibwa kya Katonda, ebbanga ne litegeeza emirimu gy’emikono gye. Olunaku eri olunaku lwogera ebigambo, n’ekiro eri ekiro kiraga okumanya. Era tewali bigambo wadde enjogera, amaloboozi gaabyo ge gatawulirwa.”</p>",
+  "body_text": "Kale nga tulina essuubi lino, emmeeme zaffe zisibibwe ku Oyo omwesigwa mu bisuubizo bye, era omutuukirivu mu misango gye. Oyo eyatulagira obutalimba, ye yennyini talirimba n’akatono; kubanga tewali kitasoboka eri Katonda, okuggyako okulimba. Kale okukkiriza kwe kuddemu okukoleezebwa munda mu ffe, era tulowooze nti ebintu byonna biri kumpi naye. Olw’ekigambo ky’amaanyi ge yanyweza ebintu byonna, era olw’ekigambo kye asobola okubisuula. “Ani aliyinza okumugamba nti, Okoze ki? oba, Ani aliyinza okuziyiza obuyinza bw’amaanyi ge?” Ddi era nga bw’asiima, alikola byonna, era tewali na kimu ku ebyo bye yasalawo ekiriggwaawo. Ebintu byonna biri lwatu mu maaso ge, era tewali kiyinza kukwekebwa kuteesa kwe. “Eggulu litegeeza ekitiibwa kya Katonda, ebbanga ne litegeeza emirimu gy’emikono gye. Olunaku eri olunaku lwogera ebigambo, n’ekiro eri ekiro kiraga okumanya. Era tewali bigambo wadde enjogera, amaloboozi gaabyo ge gatawulirwa.”",
+  "word_count": 131
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 28,
+  "title": "Katonda alaba byonna: kale twewale okwonoona",
+  "body_html": "<p>Kale nga byonna birabibwa era biwulirwa [Katonda], tumutye, tuleke ebikolwa ebyo ebibi ebiva mu kwegomba okubi; tulyoke, olw’okusaasira kwe, tukuumibwe okuva mu misango egigenda okujja. Kubanga ani ku ffe ayinza okudduka n’ava mu mukono gwe ogw’amaanyi? Oba nsi ki eriyaniriza omuntu yenna amudduka? Kubanga Ekyawandiikibwa kigamba mu kifo ekimu nti, “Nnaagenda wa, era nnaakwekeka wa ggwe gy’otoli? Bwe nnaalinya mu ggulu, nga gy’oli; bwe nnaagenda ne ku nkomerero z’ensi, eyo omukono gwo ogwa ddyo gye guli; bwe nnaayala obuliri bwange mu buziba, eyo Omwoyo wo gy’ali.” Kale omuntu yenna anaagenda wa, oba anaadduka wa okuva ku Oyo azingiramu ebintu byonna? </p>",
+  "body_text": "Kale nga byonna birabibwa era biwulirwa [Katonda], tumutye, tuleke ebikolwa ebyo ebibi ebiva mu kwegomba okubi; tulyoke, olw’okusaasira kwe, tukuumibwe okuva mu misango egigenda okujja. Kubanga ani ku ffe ayinza okudduka n’ava mu mukono gwe ogw’amaanyi? Oba nsi ki eriyaniriza omuntu yenna amudduka? Kubanga Ekyawandiikibwa kigamba mu kifo ekimu nti, “Nnaagenda wa, era nnaakwekeka wa ggwe gy’otoli? Bwe nnaalinya mu ggulu, nga gy’oli; bwe nnaagenda ne ku nkomerero z’ensi, eyo omukono gwo ogwa ddyo gye guli; bwe nnaayala obuliri bwange mu buziba, eyo Omwoyo wo gy’ali.” Kale omuntu yenna anaagenda wa, oba anaadduka wa okuva ku Oyo azingiramu ebintu byonna?",
+  "word_count": 100
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 29,
+  "title": "Naffe tusemberere Katonda n’omutima omulongoofu",
+  "body_html": "<p>Kale tumusemberere n’obutukuvu bw’omwoyo, nga tumuyimusiza emikono emirongoofu egitaliiko bbala, nga twagala Kitaffe ow’ekisa era ow’okusaasira, eyatufuula abagabana ku mikisa gy’abalonde be. Kubanga bwe kiti bwe kyawandiikibwa nti, “Ali Waggulu Ennyo bwe yagabanyiza amawanga, bwe yasaasaanya abaana ba Adamu, yategeka ensalo z’amawanga ng’omuwendo gwa bamalayika ba Katonda bwe gwali. Abantu be Yakobo ne bafuuka omugabo gwa Mukama, ne Isirayiri ne baba omugabo gw’obusika bwe.” Era mu kifo ekirala [Ekyawandiikibwa] kigamba nti, “Laba, Mukama yeetwalira eggwanga okuva wakati mu mawanga, ng’omuntu bw’atwala ebibala ebibereberye eby’egguuliro lye; era mu ggwanga eryo mulivaamu Omutukuvu Ennyo.”</p>",
+  "body_text": "Kale tumusemberere n’obutukuvu bw’omwoyo, nga tumuyimusiza emikono emirongoofu egitaliiko bbala, nga twagala Kitaffe ow’ekisa era ow’okusaasira, eyatufuula abagabana ku mikisa gy’abalonde be. Kubanga bwe kiti bwe kyawandiikibwa nti, “Ali Waggulu Ennyo bwe yagabanyiza amawanga, bwe yasaasaanya abaana ba Adamu, yategeka ensalo z’amawanga ng’omuwendo gwa bamalayika ba Katonda bwe gwali. Abantu be Yakobo ne bafuuka omugabo gwa Mukama, ne Isirayiri ne baba omugabo gw’obusika bwe.” Era mu kifo ekirala [Ekyawandiikibwa] kigamba nti, “Laba, Mukama yeetwalira eggwanga okuva wakati mu mawanga, ng’omuntu bw’atwala ebibala ebibereberye eby’egguuliro lye; era mu ggwanga eryo mulivaamu Omutukuvu Ennyo.”",
+  "word_count": 92
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 30,
+  "title": "Tukolenga ebyo ebisanyusa Katonda",
+  "body_html": "<p>Kale nga bwe tuli omugabo gw’Omutukuvu, tukolenga ebintu byonna ebikwata ku butukuvu, nga twewala okwogera obubi kwonna, okwegatta kwonna okw’omuzizo era okutali kulongoofu, awamu n’obutamiivu bwonna, okwagala ebipya, okwegomba kwonna okw’omuzizo, obwenzi obw’ekivve, n’amalala ag’okukolimirwa. “Kubanga Katonda,” bwe kigamba [Ekyawandiikibwa], “alwana n’ab’amalala naye abawombeefu abawa ekisa.” Kale tunywererenga ku abo Katonda be yawa ekisa. Twambale okukwatagana n’obwetoowaze, nga twefuga bulijjo, nga tuli wala n’okugeya kwonna n’okwogera obubi, nga tuweebwa obutuukirivu olw’ebikolwa byaffe, so si olw’ebigambo byaffe. Kubanga [Ekyawandiikibwa] kigamba nti, “Ayogera ennyo, naye aliwulira bingi eby’okumuddamu. Era oyo omwangu w’okwogera yeerowooza okuba omutuukirivu? Alina omukisa oyo azaalibwa omukazi, awangaala akaseera katono: tobanga wa bigambo bingi.” Ettendo lyaffe libeerenga mu Katonda, so si mu ffe; kubanga Katonda akyawa abo abeetendereza. Obujulirwa ku bikolwa byaffe ebirungi buweebwenga abalala, nga bwe kyali ku bajjajjaffe abatuukirivu. Obukakanyavu, n’okwemanya, n’obuvumu obw’ekijoozi, bya abo abakolimirwa Katonda; naye obukkakkamu, obwetoowaze, n’obuwombeefu bya abo abaweebwa omukisa gy’ali. </p>",
+  "body_text": "Kale nga bwe tuli omugabo gw’Omutukuvu, tukolenga ebintu byonna ebikwata ku butukuvu, nga twewala okwogera obubi kwonna, okwegatta kwonna okw’omuzizo era okutali kulongoofu, awamu n’obutamiivu bwonna, okwagala ebipya, okwegomba kwonna okw’omuzizo, obwenzi obw’ekivve, n’amalala ag’okukolimirwa. “Kubanga Katonda,” bwe kigamba [Ekyawandiikibwa], “alwana n’ab’amalala naye abawombeefu abawa ekisa.” Kale tunywererenga ku abo Katonda be yawa ekisa. Twambale okukwatagana n’obwetoowaze, nga twefuga bulijjo, nga tuli wala n’okugeya kwonna n’okwogera obubi, nga tuweebwa obutuukirivu olw’ebikolwa byaffe, so si olw’ebigambo byaffe. Kubanga [Ekyawandiikibwa] kigamba nti, “Ayogera ennyo, naye aliwulira bingi eby’okumuddamu. Era oyo omwangu w’okwogera yeerowooza okuba omutuukirivu? Alina omukisa oyo azaalibwa omukazi, awangaala akaseera katono: tobanga wa bigambo bingi.” Ettendo lyaffe libeerenga mu Katonda, so si mu ffe; kubanga Katonda akyawa abo abeetendereza. Obujulirwa ku bikolwa byaffe ebirungi buweebwenga abalala, nga bwe kyali ku bajjajjaffe abatuukirivu. Obukakanyavu, n’okwemanya, n’obuvumu obw’ekijoozi, bya abo abakolimirwa Katonda; naye obukkakkamu, obwetoowaze, n’obuwombeefu bya abo abaweebwa omukisa gy’ali.",
+  "word_count": 149
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 31,
+  "title": "Tulabe engeri gye tuyinza okufunamu omukisa gwa Katonda",
+  "body_html": "<p>Kale tunywererenga ku mukisa gwe, tulowooze engeri ez’okugufunamu. Tufumiitirize ku bintu ebyabaawo okuva ku lubereberye. Lwaki jjajjaffe Ibulayimu yaweebwa omukisa? si lwa kuba nti yakola obutuukirivu n’amazima ku bw’okukkiriza? Isaaka, n’obwesige obutuukiridde, ng’alinga amanyi ekigenda okubaawo, yeewaayo n’essanyu okuba ssaddaaka. Yakobo, olwa muganda we, yava mu nsi ye mu bwetoowaze, n’agenda ewa Labbaani n’amuweereza; era eyo n’aweebwa omuggo gw’obwakabaka obw’ebika ekkumi n’ebibiri ebya Isirayiri. </p>",
+  "body_text": "Kale tunywererenga ku mukisa gwe, tulowooze engeri ez’okugufunamu. Tufumiitirize ku bintu ebyabaawo okuva ku lubereberye. Lwaki jjajjaffe Ibulayimu yaweebwa omukisa? si lwa kuba nti yakola obutuukirivu n’amazima ku bw’okukkiriza? Isaaka, n’obwesige obutuukiridde, ng’alinga amanyi ekigenda okubaawo, yeewaayo n’essanyu okuba ssaddaaka. Yakobo, olwa muganda we, yava mu nsi ye mu bwetoowaze, n’agenda ewa Labbaani n’amuweereza; era eyo n’aweebwa omuggo gw’obwakabaka obw’ebika ekkumi n’ebibiri ebya Isirayiri.",
+  "word_count": 64
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 32,
+  "title": "Tetuweebwa butuukirivu lwa bikolwa byaffe, wabula lwa kukkiriza",
+  "body_html": "<p>Buli anaalowooza n’obwesimbu ku buli kimu, alitegeera obukulu bw’ebirabo ebyaweebwa ku bubwe. Kubanga okuva mu ye mwe mwava bakabona n’Abaleevi bonna abaweereza ku kyoto kya Katonda. Okuva mu ye era [mwe yava] Mukama waffe Yesu Kristo ng’omubiri bwe guli. Okuva mu ye [mwe mwava] bakabaka, abalangira, n’abafuzi ab’omu kika kya Yuda. N’ebika bye ebirala tebiri mu kitiibwa kitono, kubanga Katonda yali asuubizza nti, “Ezzadde lyo liriba ng’emmunyeenye ez’eggulu.” Kale bano bonna baassibwamu ekitiibwa kingi, ne bafuulibwa abakulu, si ku lwabwe, oba olw’ebikolwa byabwe, oba olw’obutuukirivu bwe baakola, wabula olw’okukola kw’okwagala kwe. Naffe, bwe tuyitibwa olw’okwagala kwe mu Kristo Yesu, tetuweebwa butuukirivu ku bwaffe, wadde olw’amagezi gaffe, oba okutegeera, oba okutya Katonda, oba ebikolwa bye twakola mu butukuvu bw’omutima; wabula olw’okukkiriza okwo, Katonda Omuyinza w’Ebintu Byonna kwe yaweera abantu bonna obutuukirivu okuva ku lubereberye; ekitiibwa kibe gy’ali emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Buli anaalowooza n’obwesimbu ku buli kimu, alitegeera obukulu bw’ebirabo ebyaweebwa ku bubwe. Kubanga okuva mu ye mwe mwava bakabona n’Abaleevi bonna abaweereza ku kyoto kya Katonda. Okuva mu ye era [mwe yava] Mukama waffe Yesu Kristo ng’omubiri bwe guli. Okuva mu ye [mwe mwava] bakabaka, abalangira, n’abafuzi ab’omu kika kya Yuda. N’ebika bye ebirala tebiri mu kitiibwa kitono, kubanga Katonda yali asuubizza nti, “Ezzadde lyo liriba ng’emmunyeenye ez’eggulu.” Kale bano bonna baassibwamu ekitiibwa kingi, ne bafuulibwa abakulu, si ku lwabwe, oba olw’ebikolwa byabwe, oba olw’obutuukirivu bwe baakola, wabula olw’okukola kw’okwagala kwe. Naffe, bwe tuyitibwa olw’okwagala kwe mu Kristo Yesu, tetuweebwa butuukirivu ku bwaffe, wadde olw’amagezi gaffe, oba okutegeera, oba okutya Katonda, oba ebikolwa bye twakola mu butukuvu bw’omutima; wabula olw’okukkiriza okwo, Katonda Omuyinza w’Ebintu Byonna kwe yaweera abantu bonna obutuukirivu okuva ku lubereberye; ekitiibwa kibe gy’ali emirembe n’emirembe. Amiina.",
+  "word_count": 139
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 33,
+  "title": "Naye tuleme okuleka okukola ebikolwa ebirungi n’okwagala",
+  "body_html": "<p>Kale tunaakola ki, abooluganda? Tunaagayaala mu kukola ebirungi, ne tulekera awo okukola eby’okwagala? Ekyo kireme kubaawo n’akatono gye tuli! Wabula tusinge okwanguwa n’amaanyi gonna n’omwoyo omwetegefu okukola buli mulimu omulungi. Kubanga Omutonzi era Mukama wa byonna yennyini asanyukira emirimu gye. Kubanga olw’amaanyi ge amangi ennyo agatageraageranyizika yanyweza eggulu, era olw’amagezi ge agatategeerekeka n’aliyooyoota. Era yayawula ensi ku mazzi agagyetoolodde, n’agiteeka ku musingi ogutanyeenyezeka ogw’okwagala kwe yennyini. N’ensolo eziri ku yo yaziragira olw’ekigambo kye yennyini okubaawo. Bw’atyo, bwe yamala okubumba ennyanja n’ebitonde ebiramu ebigirimu, yabiziyiza [mu nsalo zaabyo] olw’amaanyi ge yennyini. Okusinga byonna, n’emikono gye emitukuvu egitaliiko bbala yabumba omuntu, [ekitonde] ekisinga obulungi, era ekikulu ddala olw’okutegeera kwe yaweebwa— ekifaananyi ekituufu eky’ekifaananyi kye yennyini. Kubanga bw’ati Katonda bw’agamba: “Tukole omuntu mu kifaananyi kyaffe mu ngeri yaffe. Bw’atyo Katonda n’atonda omuntu; n’abatonda omusajja n’omukazi.” Bwe yamala okumaliriza ebintu bino byonna, n’abisiima, n’abiwa omukisa, n’agamba nti, “Mweyongere, mwale.” Kale tulaba abantu bonna abatuukirivu bwe bayooyooteddwa n’ebikolwa ebirungi, era Mukama yennyini, bwe yeeyooyoota n’emirimu gye, bwe yasanyuka. Kale nga tulina ekyokulabirako ng’ekyo, tukkirize amangu okwagala kwe, era tukole omulimu gw’obutuukirivu n’amaanyi gaffe gonna. </p>",
+  "body_text": "Kale tunaakola ki, abooluganda? Tunaagayaala mu kukola ebirungi, ne tulekera awo okukola eby’okwagala? Ekyo kireme kubaawo n’akatono gye tuli! Wabula tusinge okwanguwa n’amaanyi gonna n’omwoyo omwetegefu okukola buli mulimu omulungi. Kubanga Omutonzi era Mukama wa byonna yennyini asanyukira emirimu gye. Kubanga olw’amaanyi ge amangi ennyo agatageraageranyizika yanyweza eggulu, era olw’amagezi ge agatategeerekeka n’aliyooyoota. Era yayawula ensi ku mazzi agagyetoolodde, n’agiteeka ku musingi ogutanyeenyezeka ogw’okwagala kwe yennyini. N’ensolo eziri ku yo yaziragira olw’ekigambo kye yennyini okubaawo. Bw’atyo, bwe yamala okubumba ennyanja n’ebitonde ebiramu ebigirimu, yabiziyiza [mu nsalo zaabyo] olw’amaanyi ge yennyini. Okusinga byonna, n’emikono gye emitukuvu egitaliiko bbala yabumba omuntu, [ekitonde] ekisinga obulungi, era ekikulu ddala olw’okutegeera kwe yaweebwa— ekifaananyi ekituufu eky’ekifaananyi kye yennyini. Kubanga bw’ati Katonda bw’agamba: “Tukole omuntu mu kifaananyi kyaffe mu ngeri yaffe. Bw’atyo Katonda n’atonda omuntu; n’abatonda omusajja n’omukazi.” Bwe yamala okumaliriza ebintu bino byonna, n’abisiima, n’abiwa omukisa, n’agamba nti, “Mweyongere, mwale.” Kale tulaba abantu bonna abatuukirivu bwe bayooyooteddwa n’ebikolwa ebirungi, era Mukama yennyini, bwe yeeyooyoota n’emirimu gye, bwe yasanyuka. Kale nga tulina ekyokulabirako ng’ekyo, tukkirize amangu okwagala kwe, era tukole omulimu gw’obutuukirivu n’amaanyi gaffe gonna.",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 34,
+  "title": "Empeera y’ebikolwa ebirungi nnene eri Katonda",
+  "body_html": "<p>Omuddu omulungi afuna emmere y’omulimu gwe n’obuvumu; naye omugayaavu era omunafu tayinza kutunula mu maaso ga mukama we. Kale kitugwanidde okwanguwa okukola ebirungi; kubanga byonna biva gy’ali. Era bw’atyo atulabula ng’ayogera nti: “Laba, Mukama [ajja], era empeera ye eri mu maaso ge, buli muntu afune nga bw’akoze.” Kale atukubiriza n’omutima gwaffe gwonna okufaayo ku kino, tuleme okuba abagayaavu oba abanafu mu mulimu gwonna omulungi. Okwenyumiriza kwaffe n’obwesige bwaffe bibeere mu ye. Twewaayo eri by’ayagala. Tulowooze ku kibiina kyonna ekinene ekya bamalayika be, nga bwe bayimirira bulijjo nga beetegefu okuweereza by’ayagala. Kubanga Ekyawandiikibwa kigamba nti, “Emitwalo n’emitwalo baayimirira nga bamwetoolodde, n’enkumi n’enkumi baamuweerezanga, ne boogerera waggulu nti, Mutukuvu, mutukuvu, mutukuvu, [ye] Mukama ow’Eggye; ebitonde byonna bijjudde ekitiibwa kye.” Kale naffe, nga tukuŋŋaanira wamu mu kwegatta n’omwoyo omulongoofu, tumukaabirire n’obunyiikivu, ng’abalina akamwa kamu, tulyoke tugabane ku bisuubizo bye ebinene era eby’ekitiibwa. Kubanga [Ekyawandiikibwa] kigamba nti, “Eriiso bye litalabangako, n’okutu bye kutawulirangako, n’omutima gw’omuntu kye gutalowoozangako, ebyo bye yategekera abo abamulindirira.”</p>",
+  "body_text": "Omuddu omulungi afuna emmere y’omulimu gwe n’obuvumu; naye omugayaavu era omunafu tayinza kutunula mu maaso ga mukama we. Kale kitugwanidde okwanguwa okukola ebirungi; kubanga byonna biva gy’ali. Era bw’atyo atulabula ng’ayogera nti: “Laba, Mukama [ajja], era empeera ye eri mu maaso ge, buli muntu afune nga bw’akoze.” Kale atukubiriza n’omutima gwaffe gwonna okufaayo ku kino, tuleme okuba abagayaavu oba abanafu mu mulimu gwonna omulungi. Okwenyumiriza kwaffe n’obwesige bwaffe bibeere mu ye. Twewaayo eri by’ayagala. Tulowooze ku kibiina kyonna ekinene ekya bamalayika be, nga bwe bayimirira bulijjo nga beetegefu okuweereza by’ayagala. Kubanga Ekyawandiikibwa kigamba nti, “Emitwalo n’emitwalo baayimirira nga bamwetoolodde, n’enkumi n’enkumi baamuweerezanga, ne boogerera waggulu nti, Mutukuvu, mutukuvu, mutukuvu, [ye] Mukama ow’Eggye; ebitonde byonna bijjudde ekitiibwa kye.” Kale naffe, nga tukuŋŋaanira wamu mu kwegatta n’omwoyo omulongoofu, tumukaabirire n’obunyiikivu, ng’abalina akamwa kamu, tulyoke tugabane ku bisuubizo bye ebinene era eby’ekitiibwa. Kubanga [Ekyawandiikibwa] kigamba nti, “Eriiso bye litalabangako, n’okutu bye kutawulirangako, n’omutima gw’omuntu kye gutalowoozangako, ebyo bye yategekera abo abamulindirira.”",
+  "word_count": 158
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 35,
+  "title": "Empeera eno nnene nnyo",
+  "body_html": "<p>Nga birungi era nga bya kitalo, abaagalwa, ebirabo bya Katonda! Obulamu mu butafa, ekitiibwa mu butuukirivu, amazima mu bwesige obutuukiridde, okukkiriza mu bukakafu, okwefuga mu butukuvu! Era ebyo byonna amagezi gaffe gasobola okubitegeera [kaakano]; kale biriba bitya ebyo ebiteekeddwateekeddwa abo abamulindirira? Omutonzi era Kitaffe w’emirembe gyonna, Omutukuvu Ennyo, ye yekka amanyi obungi bwabyo n’obulungi bwabyo. Kale tufube nnyo okusangibwa mu muwendo gw’abo abamulindirira, tulyoke tugabane ku birabo bye yasuubiza. Naye kino kinaakolebwa kitya, abaagalwa? Amagezi gaffe bwe ganaanywezebwa mu kukkiriza nga gatunudde eri Katonda; bwe tunaanoonya n’obunyiikivu ebintu ebimusanyusa era by’asiima; bwe tunaakola ebikwatagana n’ebyo by’ayagala ebitaliiko kamogo; era bwe tunaagoberera ekkubo ery’amazima, nga tweggyako obutali butuukirivu bwonna n’obujeemu, wamu n’omululu gwonna, empaka, ebikolwa ebibi, obulimba, olugambo, n’okuwaayiriza, okukyawa Katonda kwonna, amalala n’okwekulumbaza, okwenoonyeza ekitiibwa ekitaliimu n’okululunkanira obukulu. Kubanga abo abakola ebyo Katonda abakyawa; so si abo bokka ababikola, naye n’abo abasanyukira ababikola. Kubanga Ekyawandiikibwa kigamba nti, “Naye omubi Katonda amugamba nti, Lwaki oyogera ku mateeka gange, n’endagaano yange n’ogiteeka mu kamwa ko, ate nga okyawa okuluŋŋamizibwa, n’ebigambo byange obisuula emabega wo? Bw’olaba omubbi, ng’omukwana; era weetaba n’abenzi. Akamwa ko kajjudde obubi, n’olulimi lwo lwalukanga obulimba. Otuula n’owaayiriza muganda wo; owayiriza omwana wa nnyoko yennyini. Ebyo byonna obikoze, ne nsirika; walowooza, ggwe omubi, nti nze ndi nga ggwe. Naye ka nkunenye, era nkwerage ggwe kennyini mu maaso go. Kale mufumiitirize ku bino, mmwe abeerabira Katonda, aleme okubayuzaayuza ng’empologoma, nga tewali wa kubawonya. Ssaddaaka ey’okutendereza ye eneengulumizanga, era waliwo ekkubo, ndyoke mulage obulokozi bwa Katonda.”</p>",
+  "body_text": "Nga birungi era nga bya kitalo, abaagalwa, ebirabo bya Katonda! Obulamu mu butafa, ekitiibwa mu butuukirivu, amazima mu bwesige obutuukiridde, okukkiriza mu bukakafu, okwefuga mu butukuvu! Era ebyo byonna amagezi gaffe gasobola okubitegeera [kaakano]; kale biriba bitya ebyo ebiteekeddwateekeddwa abo abamulindirira? Omutonzi era Kitaffe w’emirembe gyonna, Omutukuvu Ennyo, ye yekka amanyi obungi bwabyo n’obulungi bwabyo. Kale tufube nnyo okusangibwa mu muwendo gw’abo abamulindirira, tulyoke tugabane ku birabo bye yasuubiza. Naye kino kinaakolebwa kitya, abaagalwa? Amagezi gaffe bwe ganaanywezebwa mu kukkiriza nga gatunudde eri Katonda; bwe tunaanoonya n’obunyiikivu ebintu ebimusanyusa era by’asiima; bwe tunaakola ebikwatagana n’ebyo by’ayagala ebitaliiko kamogo; era bwe tunaagoberera ekkubo ery’amazima, nga tweggyako obutali butuukirivu bwonna n’obujeemu, wamu n’omululu gwonna, empaka, ebikolwa ebibi, obulimba, olugambo, n’okuwaayiriza, okukyawa Katonda kwonna, amalala n’okwekulumbaza, okwenoonyeza ekitiibwa ekitaliimu n’okululunkanira obukulu. Kubanga abo abakola ebyo Katonda abakyawa; so si abo bokka ababikola, naye n’abo abasanyukira ababikola. Kubanga Ekyawandiikibwa kigamba nti, “Naye omubi Katonda amugamba nti, Lwaki oyogera ku mateeka gange, n’endagaano yange n’ogiteeka mu kamwa ko, ate nga okyawa okuluŋŋamizibwa, n’ebigambo byange obisuula emabega wo? Bw’olaba omubbi, ng’omukwana; era weetaba n’abenzi. Akamwa ko kajjudde obubi, n’olulimi lwo lwalukanga obulimba. Otuula n’owaayiriza muganda wo; owayiriza omwana wa nnyoko yennyini. Ebyo byonna obikoze, ne nsirika; walowooza, ggwe omubi, nti nze ndi nga ggwe. Naye ka nkunenye, era nkwerage ggwe kennyini mu maaso go. Kale mufumiitirize ku bino, mmwe abeerabira Katonda, aleme okubayuzaayuza ng’empologoma, nga tewali wa kubawonya. Ssaddaaka ey’okutendereza ye eneengulumizanga, era waliwo ekkubo, ndyoke mulage obulokozi bwa Katonda.”",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 36,
+  "title": "Emikisa gyonna tugiweebwa okuyita mu Kristo",
+  "body_html": "<p>Lino lye kkubo, abaagalwa, mwe tusanga Omulokozi waffe, ye Yesu Kristo, Kabona Asinga Obukulu ow’ebiweebwayo byaffe byonna, omuwolereza era omuyambi w’obunafu bwaffe. Ku bw’oyo tutunula waggulu mu bigulumivu by’eggulu. Ku bw’oyo tulaba, ng’abalaba mu ndabirwamu, amaaso ge agataliiko bbala era agasinga obulungi. Ku bw’oyo amaaso g’emitima gyaffe gazibuka. Ku bw’oyo amagezi gaffe ag’obusirusiru era agaali mu kizikiza gamulisa buggya nga gatunudde eri omusana gwe ogw’ekitalo. Ku bw’oyo Mukama yayagala tulege ku kumanya okutafa, “oyo, ng’ye kwakaayakana kw’obukulu bwe, asinga nnyo bamalayika, nga bw’asikidde erinnya erisinga agaabwe obulungi.” Kubanga kyawandiikibwa bwe kiti nti, “Afuula bamalayika be ng’empewo, n’afuula n’abaweereza be ng’ennimi z’omuliro.” Naye ku Mwana we Mukama yayogera bw’ati: “Ggwe oli Mwana wange, Leero nkuzadde. Nsaba, nange ndikuwa amawanga gonna okuba obusika bwo, era n’ensi yonna gy’ekoma okuba amatwale go.” Era nate amugamba nti, “Tuula wano ku mukono gwange ogwa ddyo, okutuusa lwe ndimala okufufuggaza abalabe bo ne mbassa wansi w’ebigere byo.” Naye abalabe be be baani? Ababi bonna, n’abo abeewaayo okuwakanya by’ayagala Katonda.</p>",
+  "body_text": "Lino lye kkubo, abaagalwa, mwe tusanga Omulokozi waffe, ye Yesu Kristo, Kabona Asinga Obukulu ow’ebiweebwayo byaffe byonna, omuwolereza era omuyambi w’obunafu bwaffe. Ku bw’oyo tutunula waggulu mu bigulumivu by’eggulu. Ku bw’oyo tulaba, ng’abalaba mu ndabirwamu, amaaso ge agataliiko bbala era agasinga obulungi. Ku bw’oyo amaaso g’emitima gyaffe gazibuka. Ku bw’oyo amagezi gaffe ag’obusirusiru era agaali mu kizikiza gamulisa buggya nga gatunudde eri omusana gwe ogw’ekitalo. Ku bw’oyo Mukama yayagala tulege ku kumanya okutafa, “oyo, ng’ye kwakaayakana kw’obukulu bwe, asinga nnyo bamalayika, nga bw’asikidde erinnya erisinga agaabwe obulungi.” Kubanga kyawandiikibwa bwe kiti nti, “Afuula bamalayika be ng’empewo, n’afuula n’abaweereza be ng’ennimi z’omuliro.” Naye ku Mwana we Mukama yayogera bw’ati: “Ggwe oli Mwana wange, Leero nkuzadde. Nsaba, nange ndikuwa amawanga gonna okuba obusika bwo, era n’ensi yonna gy’ekoma okuba amatwale go.” Era nate amugamba nti, “Tuula wano ku mukono gwange ogwa ddyo, okutuusa lwe ndimala okufufuggaza abalabe bo ne mbassa wansi w’ebigere byo.” Naye abalabe be be baani? Ababi bonna, n’abo abeewaayo okuwakanya by’ayagala Katonda.",
+  "word_count": 163
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 37,
+  "title": "Kristo ye mukulembeze waffe, naffe tuli basirikale be",
+  "body_html": "<p>Kale, abasajja era abooluganda, tukole n’amaanyi gaffe gonna ng’abasirikale, nga tugoberera ebiragiro bye ebitukuvu. Tulowooze ku abo abaweereza wansi w’abaduumizi baffe, nga bwe bakola ebyo bye balagirwa mu ntegeka, mu buwulize ne mu kwewombeeka. Bonna si bafuzi ba bitundu, so si baduumizi b’olukumi, wadde ab’ekikumi, wadde ab’amakumi ataano, wadde abalala abafaanana ng’abo; naye buli omu mu ddaala lye akola ebyo kabaka n’abaduumizi bye balagira. Abakulu tebayinza kubeerawo awatali bato, so n’abato tebayinza kubeerawo awatali bakulu. Mu bintu byonna mulimu okutabulwamu okw’engeri emu, era omwo mwe muva okugasizigana. Tutwale omubiri gwaffe okuba ekyokulabirako. Omutwe si kintu awatali bigere, n’ebigere si kintu awatali mutwe; weewaawo, n’ebitundu by’omubiri gwaffe ebisinga obutono byetaagisa era bigasa omubiri gwonna. Naye byonna bikolera wamu mu kukwatagana, era biri wansi w’etteeka limu eribigatta wamu, olw’okukuuma omubiri gwonna. </p>",
+  "body_text": "Kale, abasajja era abooluganda, tukole n’amaanyi gaffe gonna ng’abasirikale, nga tugoberera ebiragiro bye ebitukuvu. Tulowooze ku abo abaweereza wansi w’abaduumizi baffe, nga bwe bakola ebyo bye balagirwa mu ntegeka, mu buwulize ne mu kwewombeeka. Bonna si bafuzi ba bitundu, so si baduumizi b’olukumi, wadde ab’ekikumi, wadde ab’amakumi ataano, wadde abalala abafaanana ng’abo; naye buli omu mu ddaala lye akola ebyo kabaka n’abaduumizi bye balagira. Abakulu tebayinza kubeerawo awatali bato, so n’abato tebayinza kubeerawo awatali bakulu. Mu bintu byonna mulimu okutabulwamu okw’engeri emu, era omwo mwe muva okugasizigana. Tutwale omubiri gwaffe okuba ekyokulabirako. Omutwe si kintu awatali bigere, n’ebigere si kintu awatali mutwe; weewaawo, n’ebitundu by’omubiri gwaffe ebisinga obutono byetaagisa era bigasa omubiri gwonna. Naye byonna bikolera wamu mu kukwatagana, era biri wansi w’etteeka limu eribigatta wamu, olw’okukuuma omubiri gwonna.",
+  "word_count": 129
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 38,
+  "title": "Ab’omu Kkanisa beewombeeke",
+  "body_html": "<p>Kale omubiri gwaffe gwonna gukuumibwe mu Kristo Yesu; era buli muntu agondere muliraanwa we, ng’ekirabo eky’enjawulo kye yaweebwa bwe kiri. Ow’amaanyi aleme kunyooma munafu, n’omunafu assengamu ekitiibwa ow’amaanyi. Omugagga awe omwavu by’ajula; n’omwavu yeebaze Katonda, kubanga amuwadde omuntu ow’okumutuusaako by’abulwa. Ow’amagezi alage amagezi ge, si mu bigambo [byokka], wabula mu bikolwa ebirungi. Omuwombeefu aleme kwewaako bujulirwa yekka, naye aleke omulala amuwe obujulirwa. Oyo omulongoofu mu mubiri aleme kukyenyumiririzaamu n’okwekulumbaza, ng’amanyi nti omulala ye yamuwa ekirabo eky’okwefuga. Kale, abooluganda, tulowooze ku kintu kye twakolebwamu,—nga twali baani era nga twali ba ngeri ki bwe twajja mu nsi, ng’abava mu ntaana, ne mu kizikiza ekikutte. Oyo eyatukola n’atubumba, bwe yamala okututegekera ebirabo bye ebingi nga tetunnazaalibwa, yatuyingiza mu nsi ye. Kale, olw’okuba ebintu bino byonna tubifuna okuva gy’ali, kitugwanidde okumwebaza olwa buli kintu; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Kale omubiri gwaffe gwonna gukuumibwe mu Kristo Yesu; era buli muntu agondere muliraanwa we, ng’ekirabo eky’enjawulo kye yaweebwa bwe kiri. Ow’amaanyi aleme kunyooma munafu, n’omunafu assengamu ekitiibwa ow’amaanyi. Omugagga awe omwavu by’ajula; n’omwavu yeebaze Katonda, kubanga amuwadde omuntu ow’okumutuusaako by’abulwa. Ow’amagezi alage amagezi ge, si mu bigambo [byokka], wabula mu bikolwa ebirungi. Omuwombeefu aleme kwewaako bujulirwa yekka, naye aleke omulala amuwe obujulirwa. Oyo omulongoofu mu mubiri aleme kukyenyumiririzaamu n’okwekulumbaza, ng’amanyi nti omulala ye yamuwa ekirabo eky’okwefuga. Kale, abooluganda, tulowooze ku kintu kye twakolebwamu,—nga twali baani era nga twali ba ngeri ki bwe twajja mu nsi, ng’abava mu ntaana, ne mu kizikiza ekikutte. Oyo eyatukola n’atubumba, bwe yamala okututegekera ebirabo bye ebingi nga tetunnazaalibwa, yatuyingiza mu nsi ye. Kale, olw’okuba ebintu bino byonna tubifuna okuva gy’ali, kitugwanidde okumwebaza olwa buli kintu; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina.",
+  "word_count": 136
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 39,
+  "title": "Tewali nsonga ya kwegulumiza",
+  "body_html": "<p>Abantu abasirusiru era abatafumiitiriza, abatalina magezi wadde okuyigirizibwa, batusekerera era batunyooma, nga baagala nnyo okwegulumiza mu birowoozo byabwe. Kubanga omuntu afa ayinza kukola ki? Oba maanyi ki agali mu oyo eyakolebwa mu nfuufu? Kubanga kyawandiikibwa nti, “Tewaaliwo kifaananyi mu maaso gange, wabula nawulira bulungi akasiriikiriro n’eddoboozi [nga ligamba nti], Kiki kaakano? Omuntu ayinza okuba omulongoofu mu maaso ga Mukama? Oba omuntu ng’oyo ayinza okuba [abalibwa] atalina musango mu bikolwa bye, ate nga Katonda tassa bwesige mu baddu be, era nga bamalayika be abalanga obukyamu? Eggulu si ddongoofu mu maaso ge: kale abo abasula mu nnyumba ez’ebbumba, naffe gye twakolebwamu, kiriba kitya! Yabakuba ng’ekiwojjolo; era okuva enkya okutuusa akawungeezi tebabeerawo. Olw’okuba tebaasobola kwebeerera, baazikirira. Yabafuuwako, ne bafa, kubanga tebaalina magezi. Naye kaakano koowoola, oba nga waliwo anaakuyitaba, oba oba onootunuulira omu ku bamalayika abatukuvu; kubanga obusungu buzikiriza omusirusiru, n’obuggya butta oyo akyamye. Ndabye abasirusiru nga basimba emirandira, naye amangu ago ekifo kye babeeramu ne kizikirizibwa. Abaana baabwe babeere wala n’obukuumi; banyoomebwe mu miryango gy’abo ababasinga obutono, era tewaabenga wa kubawonya. Kubanga ebyabategekerwa abatuukirivu be balibirya; so bo tebaliwonyezebwa mu bubi.”</p>",
+  "body_text": "Abantu abasirusiru era abatafumiitiriza, abatalina magezi wadde okuyigirizibwa, batusekerera era batunyooma, nga baagala nnyo okwegulumiza mu birowoozo byabwe. Kubanga omuntu afa ayinza kukola ki? Oba maanyi ki agali mu oyo eyakolebwa mu nfuufu? Kubanga kyawandiikibwa nti, “Tewaaliwo kifaananyi mu maaso gange, wabula nawulira bulungi akasiriikiriro n’eddoboozi [nga ligamba nti], Kiki kaakano? Omuntu ayinza okuba omulongoofu mu maaso ga Mukama? Oba omuntu ng’oyo ayinza okuba [abalibwa] atalina musango mu bikolwa bye, ate nga Katonda tassa bwesige mu baddu be, era nga bamalayika be abalanga obukyamu? Eggulu si ddongoofu mu maaso ge: kale abo abasula mu nnyumba ez’ebbumba, naffe gye twakolebwamu, kiriba kitya! Yabakuba ng’ekiwojjolo; era okuva enkya okutuusa akawungeezi tebabeerawo. Olw’okuba tebaasobola kwebeerera, baazikirira. Yabafuuwako, ne bafa, kubanga tebaalina magezi. Naye kaakano koowoola, oba nga waliwo anaakuyitaba, oba oba onootunuulira omu ku bamalayika abatukuvu; kubanga obusungu buzikiriza omusirusiru, n’obuggya butta oyo akyamye. Ndabye abasirusiru nga basimba emirandira, naye amangu ago ekifo kye babeeramu ne kizikirizibwa. Abaana baabwe babeere wala n’obukuumi; banyoomebwe mu miryango gy’abo ababasinga obutono, era tewaabenga wa kubawonya. Kubanga ebyabategekerwa abatuukirivu be balibirya; so bo tebaliwonyezebwa mu bubi.”",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 40,
+  "title": "Tukuume mu Kkanisa entegeka Katonda gye yateekawo",
+  "body_html": "<p>Kale olw’okuba ebintu bino bitulabikira lwatu, era olw’okuba tutunula mu buziba bw’okumanya okw’obwakatonda, kitugwanidde okukola ebintu byonna mu [ntegeka yaabyo entuufu], Mukama gye yatulagira okukola mu biseera ebyalagirwa. Yalagira ebiweebwayo [biweebweyo] n’obuweereza bukolebwe [gy’ali], era si mu butafaayo oba awatali ntegeka, wabula mu biseera ebyateekebwawo ne mu ssaawa ezaateekebwawo. Wa era ani gw’ayagala akole ebintu bino, ye yennyini yakiteekawo olw’okwagala kwe okusinga byonna, ebintu byonna bwe binaakolebwanga mu kutya Katonda nga bw’asiima, bimusanyuse. Kale abo abawaayo ebiweebwayo byabwe mu biseera ebyateekebwawo, basiimibwa era baweebwa omukisa; kubanga olw’okuba bagoberera amateeka ga Mukama, tebakola kibi. Kubanga kabona asinga obukulu yaweebwa obuweereza bwe obw’enjawulo, ne bakabona baalagirwa ekifo kyabwe ekibagwanira, n’Abaleevi baweebwa obuweereza bwabwe obw’enjawulo. Omuntu owa bulijjo asibibwa amateeka agakwata ku bantu aba bulijjo. </p>",
+  "body_text": "Kale olw’okuba ebintu bino bitulabikira lwatu, era olw’okuba tutunula mu buziba bw’okumanya okw’obwakatonda, kitugwanidde okukola ebintu byonna mu [ntegeka yaabyo entuufu], Mukama gye yatulagira okukola mu biseera ebyalagirwa. Yalagira ebiweebwayo [biweebweyo] n’obuweereza bukolebwe [gy’ali], era si mu butafaayo oba awatali ntegeka, wabula mu biseera ebyateekebwawo ne mu ssaawa ezaateekebwawo. Wa era ani gw’ayagala akole ebintu bino, ye yennyini yakiteekawo olw’okwagala kwe okusinga byonna, ebintu byonna bwe binaakolebwanga mu kutya Katonda nga bw’asiima, bimusanyuse. Kale abo abawaayo ebiweebwayo byabwe mu biseera ebyateekebwawo, basiimibwa era baweebwa omukisa; kubanga olw’okuba bagoberera amateeka ga Mukama, tebakola kibi. Kubanga kabona asinga obukulu yaweebwa obuweereza bwe obw’enjawulo, ne bakabona baalagirwa ekifo kyabwe ekibagwanira, n’Abaleevi baweebwa obuweereza bwabwe obw’enjawulo. Omuntu owa bulijjo asibibwa amateeka agakwata ku bantu aba bulijjo.",
+  "word_count": 122
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 41,
+  "title": "Okweyongerayo ku nsonga y’emu",
+  "body_html": "<p>Abooluganda, buli omu ku mmwe yeebaze Katonda mu ddaala lye, ng’abeera n’omwoyo omulungi gwonna, mu bwegendereza obusaanidde, nga tasukka mateeka ga buweereza ge yalagirwa. Abooluganda, ssaddaaka eza buli lunaku teziweebwayo buli wantu, wadde ebiweebwayo olw’emirembe, wadde ebiweebwayo olw’ekibi n’ebiweebwayo olw’omusango, wabula mu Yerusaalemi mwokka. Era ne eyo teziweebwayo buli wamu, wabula ku kyoto kyokka ekiri mu maaso ga yeekaalu, ekiweebwayo nga kisooka kwekebejjebwa n’obwegendereza kabona asinga obukulu n’abaweereza abaayogeddwako. Kale abo abakola ekintu kyonna ekisukka ku ekyo ky’ayagala, babonerezebwa kufa. Mulaba, abooluganda, nti nga bwe tuweereddwa okumanya okungi, n’akabi ke tulimu bwe kanene bwe kati. </p>",
+  "body_text": "Abooluganda, buli omu ku mmwe yeebaze Katonda mu ddaala lye, ng’abeera n’omwoyo omulungi gwonna, mu bwegendereza obusaanidde, nga tasukka mateeka ga buweereza ge yalagirwa. Abooluganda, ssaddaaka eza buli lunaku teziweebwayo buli wantu, wadde ebiweebwayo olw’emirembe, wadde ebiweebwayo olw’ekibi n’ebiweebwayo olw’omusango, wabula mu Yerusaalemi mwokka. Era ne eyo teziweebwayo buli wamu, wabula ku kyoto kyokka ekiri mu maaso ga yeekaalu, ekiweebwayo nga kisooka kwekebejjebwa n’obwegendereza kabona asinga obukulu n’abaweereza abaayogeddwako. Kale abo abakola ekintu kyonna ekisukka ku ekyo ky’ayagala, babonerezebwa kufa. Mulaba, abooluganda, nti nga bwe tuweereddwa okumanya okungi, n’akabi ke tulimu bwe kanene bwe kati.",
+  "word_count": 95
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 42,
+  "title": "Entegeka y’abaweereza mu Kkanisa",
+  "body_html": "<p>Abatume baatubuulira Enjiri nga bagiweereddwa Mukama waffe Yesu Kristo; Yesu Kristo [naye yagiweebwa] Katonda. Kale Kristo yatumibwa Katonda, n’abatume baatumibwa Kristo. Okulondebwa okwo kwombi, kwakolebwa mu ntegeka, nga Katonda bw’ayagala. Kale bwe baamala okuweebwa ebiragiro byabwe, era nga bakakasiddwa ddala olw’okuzuukira kwa Mukama waffe Yesu Kristo, era nga banywezeddwa mu kigambo kya Katonda, n’obukakafu obujjuvu obw’Omwoyo Omutukuvu, baagenda nga balangirira nti obwakabaka bwa Katonda busembedde. Era bwe batyo nga babuulira mu nsi ne mu bibuga, baalonda ebibala ebibereberye [eby’emirimu gyabwe], bwe baamala okubakebera mu Mwoyo, okubeera abalabirizi n’abadyakoni b’abo abaali bagenda okukkiriza oluvannyuma. So kino tekyali kipya, kubanga mu mirembe mingi emabega kyawandiikibwa ku balabirizi n’abadyakoni. Kubanga Ekyawandiikibwa kigamba bw’ati mu kifo ekimu nti, “Ndironda abalabirizi baabwe mu butuukirivu, n’abadyakoni baabwe mu kukkiriza.”</p>",
+  "body_text": "Abatume baatubuulira Enjiri nga bagiweereddwa Mukama waffe Yesu Kristo; Yesu Kristo [naye yagiweebwa] Katonda. Kale Kristo yatumibwa Katonda, n’abatume baatumibwa Kristo. Okulondebwa okwo kwombi, kwakolebwa mu ntegeka, nga Katonda bw’ayagala. Kale bwe baamala okuweebwa ebiragiro byabwe, era nga bakakasiddwa ddala olw’okuzuukira kwa Mukama waffe Yesu Kristo, era nga banywezeddwa mu kigambo kya Katonda, n’obukakafu obujjuvu obw’Omwoyo Omutukuvu, baagenda nga balangirira nti obwakabaka bwa Katonda busembedde. Era bwe batyo nga babuulira mu nsi ne mu bibuga, baalonda ebibala ebibereberye [eby’emirimu gyabwe], bwe baamala okubakebera mu Mwoyo, okubeera abalabirizi n’abadyakoni b’abo abaali bagenda okukkiriza oluvannyuma. So kino tekyali kipya, kubanga mu mirembe mingi emabega kyawandiikibwa ku balabirizi n’abadyakoni. Kubanga Ekyawandiikibwa kigamba bw’ati mu kifo ekimu nti, “Ndironda abalabirizi baabwe mu butuukirivu, n’abadyakoni baabwe mu kukkiriza.”",
+  "word_count": 123
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 43,
+  "title": "Musa yakkakkanya empaka ku kitiibwa ky’obwakabona",
+  "body_html": "<p>Era kitalo ki ng’abo abaali mu Kristo, Katonda be yateresa omulimu ng’ogwo, baalonda [abaweereza] abo abaayogeddwako, ng’ate ne Musa alina omukisa, “muweereza mwesigwa mu nnyumba ye yonna,” yawandiika mu bitabo ebitukuvu ebiragiro byonna bye yaweebwa, era nga ne bannabbi abalala baamugoberera, nga bawa obujulirwa n’omwoyo gumu ku biragiro bye yali ateekeddewo? Kubanga bwe waabalukawo okuvuganya ku bwakabona, ebika ne biwakana byokka na byokka ku kiki ku byo ekyandiyonjeddwa n’erinnya eryo ery’ekitiibwa, yalagira abakulu ekkumi n’ababiri ab’ebika okumuleetera emiggo gyabwe, buli gumu nga guwandiikiddwako erinnya ly’ekika. N’agitwala n’agisiba [wamu], n’agiteekako envumbo n’empeta z’abakulu b’ebika, n’agiteeka mu weema ey’obujulirwa ku mmeeza ya Katonda. Era bwe yamala okuggalawo enzigi za weema, n’ateeka envumbo ku bisumuluzo, nga bwe yakola ku miggo, n’abagamba nti, Abasajja era abooluganda, ekika ekinaabaako omuggo ogumulisizza, ekyo Katonda ky’alonze okutuukiriza omulimu gw’obwakabona, n’okumuweereza. Awo enkya bwe bwakya, n’akuŋŋaanya Isirayiri yenna, abasajja emitwalo nkaaga, n’alaga abakulu b’ebika envumbo, n’aggulawo weema ey’obujulirwa, n’aggyamu emiggo. Omuggo gwa Alooni ne gusangibwa nga si kumulisa kwokka, naye nga gubaddeko n’ebibala. Mulowooza mutya, abaagalwa? Musa teyamanya nga bukyali nti kino kyali kigenda kubaawo? Mazima yali akimanyi; naye yakola bw’atyo, waleme kubaawo bujeemu mu Isirayiri, era erinnya lya Katonda ow’amazima era omu yekka ligulumizibwe; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Era kitalo ki ng’abo abaali mu Kristo, Katonda be yateresa omulimu ng’ogwo, baalonda [abaweereza] abo abaayogeddwako, ng’ate ne Musa alina omukisa, “muweereza mwesigwa mu nnyumba ye yonna,” yawandiika mu bitabo ebitukuvu ebiragiro byonna bye yaweebwa, era nga ne bannabbi abalala baamugoberera, nga bawa obujulirwa n’omwoyo gumu ku biragiro bye yali ateekeddewo? Kubanga bwe waabalukawo okuvuganya ku bwakabona, ebika ne biwakana byokka na byokka ku kiki ku byo ekyandiyonjeddwa n’erinnya eryo ery’ekitiibwa, yalagira abakulu ekkumi n’ababiri ab’ebika okumuleetera emiggo gyabwe, buli gumu nga guwandiikiddwako erinnya ly’ekika. N’agitwala n’agisiba [wamu], n’agiteekako envumbo n’empeta z’abakulu b’ebika, n’agiteeka mu weema ey’obujulirwa ku mmeeza ya Katonda. Era bwe yamala okuggalawo enzigi za weema, n’ateeka envumbo ku bisumuluzo, nga bwe yakola ku miggo, n’abagamba nti, Abasajja era abooluganda, ekika ekinaabaako omuggo ogumulisizza, ekyo Katonda ky’alonze okutuukiriza omulimu gw’obwakabona, n’okumuweereza. Awo enkya bwe bwakya, n’akuŋŋaanya Isirayiri yenna, abasajja emitwalo nkaaga, n’alaga abakulu b’ebika envumbo, n’aggulawo weema ey’obujulirwa, n’aggyamu emiggo. Omuggo gwa Alooni ne gusangibwa nga si kumulisa kwokka, naye nga gubaddeko n’ebibala. Mulowooza mutya, abaagalwa? Musa teyamanya nga bukyali nti kino kyali kigenda kubaawo? Mazima yali akimanyi; naye yakola bw’atyo, waleme kubaawo bujeemu mu Isirayiri, era erinnya lya Katonda ow’amazima era omu yekka ligulumizibwe; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina.",
+  "word_count": 203
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 44,
+  "title": "Ebiragiro by’abatume",
+  "body_html": "<p>N’abatume baffe baamanya, ku bwa Mukama waffe Yesu Kristo, nti wandibaddewo empaka olw’ekifo ky’obulabirizi. Kale olw’ensonga eno, olw’okuba baali bategedde kino nga bukyali mu bujjuvu, baalonda [abaweereza] abo abaayogeddwako, era oluvannyuma ne bawa ebiragiro, nti abo bwe banaawummula mu tulo, abasajja abalala abakemeddwa babasikire mu buweereza bwabwe. Kale tulaba nti abo abaalondebwa bo, oba oluvannyuma abasajja abalala ab’ettutumu, nga Ekkanisa yonna ekkirizza, era abaweerereza ekisibo kya Kristo awatali kya kunenyezebwa, mu mwoyo omuwombeefu, ogw’emirembe era ogutenoonyeza byagwo, era abaamala ebbanga ddene nga bonna babasiima, tebayinza kugobwa mu buweereza mu bwenkanya. Kubanga ekibi kyaffe tekiriba kitono, singa tugoba mu bulabirizi abo abaatuukiriza emirimu gyabwo awatali kya kunenyezebwa era mu butukuvu. Balina omukisa abakadde abo abaamala olugendo lwabwe edda, ne bafuna okugenda okubala ebibala era okutuukiridde [okuva mu nsi eno]; kubanga tebatya nti waliwo alibaggya mu kifo kye baateekerwa. Naye tulaba nti mwagobye abamu ku basajja ab’empisa ennungi ennyo mu buweereza, bwe baali batuukiriza awatali kya kunenyezebwa era mu kitiibwa. </p>",
+  "body_text": "N’abatume baffe baamanya, ku bwa Mukama waffe Yesu Kristo, nti wandibaddewo empaka olw’ekifo ky’obulabirizi. Kale olw’ensonga eno, olw’okuba baali bategedde kino nga bukyali mu bujjuvu, baalonda [abaweereza] abo abaayogeddwako, era oluvannyuma ne bawa ebiragiro, nti abo bwe banaawummula mu tulo, abasajja abalala abakemeddwa babasikire mu buweereza bwabwe. Kale tulaba nti abo abaalondebwa bo, oba oluvannyuma abasajja abalala ab’ettutumu, nga Ekkanisa yonna ekkirizza, era abaweerereza ekisibo kya Kristo awatali kya kunenyezebwa, mu mwoyo omuwombeefu, ogw’emirembe era ogutenoonyeza byagwo, era abaamala ebbanga ddene nga bonna babasiima, tebayinza kugobwa mu buweereza mu bwenkanya. Kubanga ekibi kyaffe tekiriba kitono, singa tugoba mu bulabirizi abo abaatuukiriza emirimu gyabwo awatali kya kunenyezebwa era mu butukuvu. Balina omukisa abakadde abo abaamala olugendo lwabwe edda, ne bafuna okugenda okubala ebibala era okutuukiridde [okuva mu nsi eno]; kubanga tebatya nti waliwo alibaggya mu kifo kye baateekerwa. Naye tulaba nti mwagobye abamu ku basajja ab’empisa ennungi ennyo mu buweereza, bwe baali batuukiriza awatali kya kunenyezebwa era mu kitiibwa.",
+  "word_count": 158
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 45,
+  "title": "Kye kikolwa ky’ababi okubonyaabonya abatuukirivu",
+  "body_html": "<p>Muli bantu abaagala empaka, abooluganda, era abajjudde obunyiikivu ku bintu ebitakwata ku bulokozi. Mwekenneenye n’obwegendereza Ebyawandiikibwa, bye bigambo eby’amazima eby’Omwoyo Omutukuvu. Mulabe nti tewali kintu kitali kya bwenkanya oba eky’obulimba ekyawandiikibwamu. Eyo temujja kusangamu nti abatuukirivu baagobebwa abantu abaali abatukuvu bokka. Abatuukirivu baayigganyizibwa ddala, naye ababi bokka be baabayigganya. Baasuulibwa mu kkomera, naye abatali batukuvu bokka be baabasuulamu; baakubibwa amayinja, naye abasobya bokka be baabakuba; battibwa, naye abakolimiddwa bokka, n’abo abaali babakwatiddwa obuggya obutali bwa butuukirivu, be babatta. Bwe baasanga ebibonyoobonyo ng’ebyo, baabigumira mu kitiibwa. Kubanga twogere ki, abooluganda? Danyeri yasuulibwa mu mpuku y’empologoma abo abaatyanga Katonda? Kananiya ne Azaliya ne Misayeri baggalirwa mu kyokero eky’omuliro abo abaakuumanga okusinza okukulu era okw’ekitiibwa okw’Oyo Ali Waggulu Ennyo? Ekirowoozo ekyo kibe wala naffe! Kale baali baani abaakola ebintu ng’ebyo? Abantu ab’obukyayi, abajjudde obubi bwonna, baasajjuka ne batuuka ku ddaala ery’obusungu obungi bwe batyo, ne babonyaabonya abo abaaweerezanga Katonda n’ekigendererwa [ky’omutima] ekitukuvu era ekitaliiko kamogo, nga tebamanyi nti Oyo Ali Waggulu Ennyo ye Muwolereza era Omukuumi w’abo bonna abassaamu ekitiibwa erinnya lye erisinga byonna obulungi n’omwoyo omulongoofu; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina. Naye abo abaagumira [ebyo] n’obuvumu kaakano basika ekitiibwa n’ettendo, era Katonda yabagulumiza n’abafuula ab’ettutumu mu kujjukirwa kwabwe emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Muli bantu abaagala empaka, abooluganda, era abajjudde obunyiikivu ku bintu ebitakwata ku bulokozi. Mwekenneenye n’obwegendereza Ebyawandiikibwa, bye bigambo eby’amazima eby’Omwoyo Omutukuvu. Mulabe nti tewali kintu kitali kya bwenkanya oba eky’obulimba ekyawandiikibwamu. Eyo temujja kusangamu nti abatuukirivu baagobebwa abantu abaali abatukuvu bokka. Abatuukirivu baayigganyizibwa ddala, naye ababi bokka be baabayigganya. Baasuulibwa mu kkomera, naye abatali batukuvu bokka be baabasuulamu; baakubibwa amayinja, naye abasobya bokka be baabakuba; battibwa, naye abakolimiddwa bokka, n’abo abaali babakwatiddwa obuggya obutali bwa butuukirivu, be babatta. Bwe baasanga ebibonyoobonyo ng’ebyo, baabigumira mu kitiibwa. Kubanga twogere ki, abooluganda? Danyeri yasuulibwa mu mpuku y’empologoma abo abaatyanga Katonda? Kananiya ne Azaliya ne Misayeri baggalirwa mu kyokero eky’omuliro abo abaakuumanga okusinza okukulu era okw’ekitiibwa okw’Oyo Ali Waggulu Ennyo? Ekirowoozo ekyo kibe wala naffe! Kale baali baani abaakola ebintu ng’ebyo? Abantu ab’obukyayi, abajjudde obubi bwonna, baasajjuka ne batuuka ku ddaala ery’obusungu obungi bwe batyo, ne babonyaabonya abo abaaweerezanga Katonda n’ekigendererwa [ky’omutima] ekitukuvu era ekitaliiko kamogo, nga tebamanyi nti Oyo Ali Waggulu Ennyo ye Muwolereza era Omukuumi w’abo bonna abassaamu ekitiibwa erinnya lye erisinga byonna obulungi n’omwoyo omulongoofu; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina. Naye abo abaagumira [ebyo] n’obuvumu kaakano basika ekitiibwa n’ettendo, era Katonda yabagulumiza n’abafuula ab’ettutumu mu kujjukirwa kwabwe emirembe n’emirembe. Amiina.",
+  "word_count": 200
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 46,
+  "title": "Twegatte n’abatuukirivu: empaka zammwe za kabi",
+  "body_html": "<p>Kale, abooluganda, ebyokulabirako ng’ebyo kituufu tubigoberere; kubanga kyawandiikibwa nti, “Mwegatte n’abatukuvu, kubanga abo abeegatta nabo [bo bennyini] balifuulibwa abatukuvu.” Era nate, mu kifo ekirala, [Ekyawandiikibwa] kigamba nti, “Eri atalina musango weeraga nga tolina musango, n’eri omulonde weeraga ng’oli mulonde, n’eri abakyamu weeraga ng’oli mukyamu.” Kale twegatte n’abataliiko musango era abatuukirivu, kubanga abo be balonde ba Katonda. Lwaki mubaamu empaka, n’okusasamala, n’okwawukana, n’enjawukana, n’entalo mu mmwe? Tetulina [ffenna] Katonda omu ne Kristo omu? Tewali Mwoyo omu ow’ekisa eyatufukibwako? Era tetulina kuyitibwa kumu mu Kristo? Lwaki twawula era ne tuyuzaayuza ebitundu bya Kristo, ne tujeemera omubiri gwaffe ffennyini, ne tutuuka ku ddaala ery’obulalu bwe tutyo okwerabira nti “tuli bitundu buli omu owa munne?” Mujjukire ebigambo bya Mukama waffe Yesu Kristo, nga bwe yagamba nti, “Zimusanze omuntu oyo [aleeta ebisittaza]! Kyandibadde kirungi singa omuntu oyo teyazaalirwa ddala, okusinga okwesittaza omu ku balonde bange. Weewaawo, kyandibadde kirungi gy’ali okusibibwa olubengo mu bulago [bwe], n’asuulibwa mu buziba bw’ennyanja, okusinga okwesittaza omu ku baana bange abato.” Enjawukana yammwe ekyamizza [okukkiriza kw’]abangi, eggyeemu abangi amaanyi, ereetedde abangi okubuusabuusa, era eleetedde ffenna ennaku. Era obujeemu bwammwe bukyagenda mu maaso. </p>",
+  "body_text": "Kale, abooluganda, ebyokulabirako ng’ebyo kituufu tubigoberere; kubanga kyawandiikibwa nti, “Mwegatte n’abatukuvu, kubanga abo abeegatta nabo [bo bennyini] balifuulibwa abatukuvu.” Era nate, mu kifo ekirala, [Ekyawandiikibwa] kigamba nti, “Eri atalina musango weeraga nga tolina musango, n’eri omulonde weeraga ng’oli mulonde, n’eri abakyamu weeraga ng’oli mukyamu.” Kale twegatte n’abataliiko musango era abatuukirivu, kubanga abo be balonde ba Katonda. Lwaki mubaamu empaka, n’okusasamala, n’okwawukana, n’enjawukana, n’entalo mu mmwe? Tetulina [ffenna] Katonda omu ne Kristo omu? Tewali Mwoyo omu ow’ekisa eyatufukibwako? Era tetulina kuyitibwa kumu mu Kristo? Lwaki twawula era ne tuyuzaayuza ebitundu bya Kristo, ne tujeemera omubiri gwaffe ffennyini, ne tutuuka ku ddaala ery’obulalu bwe tutyo okwerabira nti “tuli bitundu buli omu owa munne?” Mujjukire ebigambo bya Mukama waffe Yesu Kristo, nga bwe yagamba nti, “Zimusanze omuntu oyo [aleeta ebisittaza]! Kyandibadde kirungi singa omuntu oyo teyazaalirwa ddala, okusinga okwesittaza omu ku balonde bange. Weewaawo, kyandibadde kirungi gy’ali okusibibwa olubengo mu bulago [bwe], n’asuulibwa mu buziba bw’ennyanja, okusinga okwesittaza omu ku baana bange abato.” Enjawukana yammwe ekyamizza [okukkiriza kw’]abangi, eggyeemu abangi amaanyi, ereetedde abangi okubuusabuusa, era eleetedde ffenna ennaku. Era obujeemu bwammwe bukyagenda mu maaso.",
+  "word_count": 181
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 47,
+  "title": "Okwawukana kwammwe okw’emirundi gino kusinga okw’omu biseera bya Pawulo",
+  "body_html": "<p>Mukwate ebbaluwa ya Omutume Pawulo alina omukisa. Kiki kye yabawandiikira mu biseera Enjiri we yatandikira okubuulirwa? Mazima, ng’aluŋŋamizibwa Omwoyo, yabawandiikira ku bikwata ku ye yennyini, ne Keefa, ne Apolo, kubanga ne mu biseera ebyo mwali mwekutuddemu obubiina. Naye okwagala omu okusinga omulala mu kiseera ekyo kwabaleetera omusango mutono, kubanga okwekubiira kwammwe kwali kulagibwa eri abatume abaali abatutumufu dda, n’eri omusajja gwe baali basiimye. Naye kaakano mulowooze ku abo ababakyamizza, ne bakendeeza ettutumu ly’okwagalana kwammwe okw’ooluganda okwali kumanyiddwa wonna. Kya buswavu, abaagalwa, weewaawo, kya buswavu nnyo, era tekisaanira bulamu bwammwe obw’Ekikristaayo, okuwulirwa ekintu ng’ekyo nti Ekkanisa ey’Abakkolinso esinga obunywevu era ey’edda ennyo, olw’omuntu omu oba babiri, ejeemera abakadde baayo. Era olugambo luno terututuuseeko ffe fekka, naye lutuuse ne ku abo abatali bannaffe; n’olwekyo, olw’obusirusiru bwammwe, erinnya lya Mukama livvoolebwa, ate nga nammwe mweleetedde akabi. </p>",
+  "body_text": "Mukwate ebbaluwa ya Omutume Pawulo alina omukisa. Kiki kye yabawandiikira mu biseera Enjiri we yatandikira okubuulirwa? Mazima, ng’aluŋŋamizibwa Omwoyo, yabawandiikira ku bikwata ku ye yennyini, ne Keefa, ne Apolo, kubanga ne mu biseera ebyo mwali mwekutuddemu obubiina. Naye okwagala omu okusinga omulala mu kiseera ekyo kwabaleetera omusango mutono, kubanga okwekubiira kwammwe kwali kulagibwa eri abatume abaali abatutumufu dda, n’eri omusajja gwe baali basiimye. Naye kaakano mulowooze ku abo ababakyamizza, ne bakendeeza ettutumu ly’okwagalana kwammwe okw’ooluganda okwali kumanyiddwa wonna. Kya buswavu, abaagalwa, weewaawo, kya buswavu nnyo, era tekisaanira bulamu bwammwe obw’Ekikristaayo, okuwulirwa ekintu ng’ekyo nti Ekkanisa ey’Abakkolinso esinga obunywevu era ey’edda ennyo, olw’omuntu omu oba babiri, ejeemera abakadde baayo. Era olugambo luno terututuuseeko ffe fekka, naye lutuuse ne ku abo abatali bannaffe; n’olwekyo, olw’obusirusiru bwammwe, erinnya lya Mukama livvoolebwa, ate nga nammwe mweleetedde akabi.",
+  "word_count": 133
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 48,
+  "title": "Tuddeyo mu kwagalana okw’ooluganda",
+  "body_html": "<p>Kale, mu bwangu bwonna, tukomye [embeera eno]; tufukamire mu maaso ga Mukama, tumwegayirire n’amaziga, atusaasire atabagane naffe, era atuzzeeyo mu nneeyisa yaffe ey’edda ennungi era entukuvu ey’okwagalana okw’ooluganda. Kubanga [enneeyisa ng’eyo] gwe mulyango gw’obutuukirivu, ogwaggulwawo okutuuka ku bulamu, nga bwe kyawandiikibwa nti, “Munzigulirewo emiryango egy’obutuukirivu, nnyingire, neebaze Mukama: guno gwe mulyango omunene ogwa Mukama, abatuukirivu mmwe banaayingiriranga.” Kale newaakubadde ng’emiryango mingi gyaggulwawo, naye omulyango guno ogw’obutuukirivu gwe mulyango ogwo oguli mu Kristo, era balina omukisa bonna abaguyingiddemu, ne baluŋŋamya ekkubo lyabwe mu butukuvu ne mu butuukirivu, nga bakola byonna awatali kutabukatabuka. Omuntu abeere mwesigwa; abeere wa maanyi mu kwogera ebigambo eby’okumanya; abeere wa magezi mu kusalawo ku bigambo; abeere mulongoofu mu bikolwa bye byonna; naye gy’akoma okulabika ng’asinga abalala [mu bintu ebyo], gy’akoma okwetaaga okuba n’omutima omuwombeefu, n’okunoonya ekirungi ekya bonna, so si ekimugasa yekka. </p>",
+  "body_text": "Kale, mu bwangu bwonna, tukomye [embeera eno]; tufukamire mu maaso ga Mukama, tumwegayirire n’amaziga, atusaasire atabagane naffe, era atuzzeeyo mu nneeyisa yaffe ey’edda ennungi era entukuvu ey’okwagalana okw’ooluganda. Kubanga [enneeyisa ng’eyo] gwe mulyango gw’obutuukirivu, ogwaggulwawo okutuuka ku bulamu, nga bwe kyawandiikibwa nti, “Munzigulirewo emiryango egy’obutuukirivu, nnyingire, neebaze Mukama: guno gwe mulyango omunene ogwa Mukama, abatuukirivu mmwe banaayingiriranga.” Kale newaakubadde ng’emiryango mingi gyaggulwawo, naye omulyango guno ogw’obutuukirivu gwe mulyango ogwo oguli mu Kristo, era balina omukisa bonna abaguyingiddemu, ne baluŋŋamya ekkubo lyabwe mu butukuvu ne mu butuukirivu, nga bakola byonna awatali kutabukatabuka. Omuntu abeere mwesigwa; abeere wa maanyi mu kwogera ebigambo eby’okumanya; abeere wa magezi mu kusalawo ku bigambo; abeere mulongoofu mu bikolwa bye byonna; naye gy’akoma okulabika ng’asinga abalala [mu bintu ebyo], gy’akoma okwetaaga okuba n’omutima omuwombeefu, n’okunoonya ekirungi ekya bonna, so si ekimugasa yekka.",
+  "word_count": 135
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 49,
+  "title": "Ettendo ly’okwagala",
+  "body_html": "<p>Oyo alina okwagala mu Kristo akwate ebiragiro bya Kristo. Ani ayinza okunnyonnyola ekisiba [eky’omukisa] eky’okwagala kwa Katonda? Muntu ki ayinza okwogera obulungi bwakwo obw’ekitalo nga bwe kigwanira okwogerwa? Obugulumivu okwagala bwe kutuusaako tebwogerekeka. Okwagala kutugatta ne Katonda. Okwagala kubikka ebibi bingi. Okwagala kugumira byonna, kugumiikiriza mu byonna. Mu kwagala temuli kintu kya buswavu, temuli kya malala. Okwagala tekukkiriza njawukana: okwagala tekuleeta bujeemu: okwagala kukola byonna mu kukwatagana. Mu kwagala abalonde ba Katonda bonna mwe baatuukirizibwa; awatali kwagala tewali kisanyusa Katonda. Mu kwagala Mukama mwe yatwetwalira. Olw’Okwagala kwe yatwagala, Yesu Kristo Mukama waffe yatuwaayo omusaayi gwe ng’ekyo Katonda bw’ayagala; omubiri gwe olw’omubiri gwaffe, n’emmeeme ye olw’emmeeme zaffe.</p>",
+  "body_text": "Oyo alina okwagala mu Kristo akwate ebiragiro bya Kristo. Ani ayinza okunnyonnyola ekisiba [eky’omukisa] eky’okwagala kwa Katonda? Muntu ki ayinza okwogera obulungi bwakwo obw’ekitalo nga bwe kigwanira okwogerwa? Obugulumivu okwagala bwe kutuusaako tebwogerekeka. Okwagala kutugatta ne Katonda. Okwagala kubikka ebibi bingi. Okwagala kugumira byonna, kugumiikiriza mu byonna. Mu kwagala temuli kintu kya buswavu, temuli kya malala. Okwagala tekukkiriza njawukana: okwagala tekuleeta bujeemu: okwagala kukola byonna mu kukwatagana. Mu kwagala abalonde ba Katonda bonna mwe baatuukirizibwa; awatali kwagala tewali kisanyusa Katonda. Mu kwagala Mukama mwe yatwetwalira. Olw’Okwagala kwe yatwagala, Yesu Kristo Mukama waffe yatuwaayo omusaayi gwe ng’ekyo Katonda bw’ayagala; omubiri gwe olw’omubiri gwaffe, n’emmeeme ye olw’emmeeme zaffe.",
+  "word_count": 106
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 50,
+  "title": "Tusabe tusaanyizibwe mu kwagala",
+  "body_html": "<p>Mulaba, abaagalwa, okwagala nga kintu kinene era kya kitalo, era nga tewali ayinza kunnyonnyola butuukirivu bwakwo. Ani asaanidde okusangibwa mu kwo, okuggyako abo Katonda b’asiimye okufuula abasaanidde? Kale tusabe, tweyuneyo ku kusaasira kwe, tulyoke tubeere abataliiko kya kunenyezebwa mu kwagala, nga tetwekubiira eri omu okusinga omulala ng’abantu bwe bakola. Emirembe gyonna okuva ku Adamu okutuusa leero giyiseewo; naye abo, olw’ekisa kya Katonda, abaatuukirizibwa mu kwagala, kaakano balina ekifo mu abo abatya Katonda, era balirabisibwa nga obwakabaka bwa Kristo bubikkuliddwa. Kubanga kyawandiikibwa nti, “Yingira mu bisenge byo okumala akabanga katono, okutuusa obusungu bwange n’ekiruyi kyange lwe biriggwaawo; era ndijjukira olunaku olw’ekisa, era ndibazuukiza ne mbaggya mu malaalo gammwe.” Tulina omukisa, abaagalwa, bwe tukwata ebiragiro bya Katonda mu kukwatagana kw’okwagala; ebibi byaffe biryoke bitusonyiyibwe olw’okwagala. Kubanga kyawandiikibwa nti, “Alina omukisa oyo asonyiyiddwa ebyonoono bye ekibi ne kiggyibwawo. Alina omukisa omuntu oyo Mukama gw’atakyabalira kibi kye, era mu kamwa ke nga temuli bukuusa.” Omukisa guno gujja ku abo Katonda be yalonda ku bwa Yesu Kristo Mukama waffe; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Mulaba, abaagalwa, okwagala nga kintu kinene era kya kitalo, era nga tewali ayinza kunnyonnyola butuukirivu bwakwo. Ani asaanidde okusangibwa mu kwo, okuggyako abo Katonda b’asiimye okufuula abasaanidde? Kale tusabe, tweyuneyo ku kusaasira kwe, tulyoke tubeere abataliiko kya kunenyezebwa mu kwagala, nga tetwekubiira eri omu okusinga omulala ng’abantu bwe bakola. Emirembe gyonna okuva ku Adamu okutuusa leero giyiseewo; naye abo, olw’ekisa kya Katonda, abaatuukirizibwa mu kwagala, kaakano balina ekifo mu abo abatya Katonda, era balirabisibwa nga obwakabaka bwa Kristo bubikkuliddwa. Kubanga kyawandiikibwa nti, “Yingira mu bisenge byo okumala akabanga katono, okutuusa obusungu bwange n’ekiruyi kyange lwe biriggwaawo; era ndijjukira olunaku olw’ekisa, era ndibazuukiza ne mbaggya mu malaalo gammwe.” Tulina omukisa, abaagalwa, bwe tukwata ebiragiro bya Katonda mu kukwatagana kw’okwagala; ebibi byaffe biryoke bitusonyiyibwe olw’okwagala. Kubanga kyawandiikibwa nti, “Alina omukisa oyo asonyiyiddwa ebyonoono bye ekibi ne kiggyibwawo. Alina omukisa omuntu oyo Mukama gw’atakyabalira kibi kye, era mu kamwa ke nga temuli bukuusa.” Omukisa guno gujja ku abo Katonda be yalonda ku bwa Yesu Kristo Mukama waffe; oyo aweebwe ekitiibwa emirembe n’emirembe. Amiina.",
+  "word_count": 170
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 51,
+  "title": "Abeetaba mu mpaka bakkirize ebibi byabwe",
+  "body_html": "<p>Kale tusabe okusonyiyibwa olw’ebyonoono byonna bye twakola olw’[okusendebwasendebwa] kwonna okw’omulabe. Era abo abaali abakulembeze b’obujeemu n’obutakkaanya bandisaanidde okussa ekitiibwa mu ssuubi lyaffe ffenna. Kubanga abo abawangaala mu kutya ne mu kwagala bandiyagadde bo bennyini okubonaabona okusinga baliraanwa baabwe. Era basinga kwagala bo bennyini okunenyezebwa, okusinga okulumya okukkaanya okwatukwasibwa obulungi era mu kutya Katonda. Kubanga kirungi omuntu okukkiriza ebyonoono bye okusinga okukakanyaza omutima gwe, nga emitima gy’abo bwe gyakakanyala, abajeemera Musa omuddu wa Katonda, era omusango gwabwe ne gulabisibwa [eri bonna]. Kubanga baakka emagombe nga balamu, okufa ne kubamira. Falaawo n’eggye lye n’abakungu bonna ab’e Misiri, n’amagaali n’abaali babeebagadde, baabbira mu buziba bw’Ennyanja Emmyufu, ne bazikirira, olw’ensonga endala yonna wabula olw’okuba emitima gyabwe egy’obusirusiru gyakakanyala, oluvannyuma lw’obubonero n’ebyamagero bingi ennyo Musa omuddu wa Katonda bye yakola mu nsi y’e Misiri. </p>",
+  "body_text": "Kale tusabe okusonyiyibwa olw’ebyonoono byonna bye twakola olw’[okusendebwasendebwa] kwonna okw’omulabe. Era abo abaali abakulembeze b’obujeemu n’obutakkaanya bandisaanidde okussa ekitiibwa mu ssuubi lyaffe ffenna. Kubanga abo abawangaala mu kutya ne mu kwagala bandiyagadde bo bennyini okubonaabona okusinga baliraanwa baabwe. Era basinga kwagala bo bennyini okunenyezebwa, okusinga okulumya okukkaanya okwatukwasibwa obulungi era mu kutya Katonda. Kubanga kirungi omuntu okukkiriza ebyonoono bye okusinga okukakanyaza omutima gwe, nga emitima gy’abo bwe gyakakanyala, abajeemera Musa omuddu wa Katonda, era omusango gwabwe ne gulabisibwa [eri bonna]. Kubanga baakka emagombe nga balamu, okufa ne kubamira. Falaawo n’eggye lye n’abakungu bonna ab’e Misiri, n’amagaali n’abaali babeebagadde, baabbira mu buziba bw’Ennyanja Emmyufu, ne bazikirira, olw’ensonga endala yonna wabula olw’okuba emitima gyabwe egy’obusirusiru gyakakanyala, oluvannyuma lw’obubonero n’ebyamagero bingi ennyo Musa omuddu wa Katonda bye yakola mu nsi y’e Misiri.",
+  "word_count": 129
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 52,
+  "title": "Okwatula ng’okwo kusanyusa Katonda",
+  "body_html": "<p>Abooluganda, Mukama tabulwa kintu kyonna; era tayagala kintu kyonna okuva eri omuntu yenna, okuggyako okwatula ebibi gy’ali. Kubanga Dawudi omulonde agamba nti, “Ndyeyatulira Mukama; era ekyo kinaamusanyusa okusinga okumuwa ennyana ya seddume n’amayembe gaayo, n’ebigere byayo. Abaavu banaakirabanga ne basanyuka.” Era nate agamba nti, “Owangayo ssaddaaka ey’okwebaza eri Katonda; era otuukirizanga obweyamo bwo eri oyo Ali Waggulu Ennyo. Era onkoowoolanga ku lunaku olw’okulaba ennaku: nnaakuwonyanga, naawe onongulumizanga.” Kubanga “Ssaddaaka Katonda gy’ayagala gwe mwoyo ogutegedde okusobya kwagwo.”</p>",
+  "body_text": "Abooluganda, Mukama tabulwa kintu kyonna; era tayagala kintu kyonna okuva eri omuntu yenna, okuggyako okwatula ebibi gy’ali. Kubanga Dawudi omulonde agamba nti, “Ndyeyatulira Mukama; era ekyo kinaamusanyusa okusinga okumuwa ennyana ya seddume n’amayembe gaayo, n’ebigere byayo. Abaavu banaakirabanga ne basanyuka.” Era nate agamba nti, “Owangayo ssaddaaka ey’okwebaza eri Katonda; era otuukirizanga obweyamo bwo eri oyo Ali Waggulu Ennyo. Era onkoowoolanga ku lunaku olw’okulaba ennaku: nnaakuwonyanga, naawe onongulumizanga.” Kubanga “Ssaddaaka Katonda gy’ayagala gwe mwoyo ogutegedde okusobya kwagwo.”",
+  "word_count": 76
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 53,
+  "title": "Okwagala kwa Musa eri abantu be",
+  "body_html": "<p>Mutegeera, abaagalwa, mutegeera bulungi Ebyawandiikibwa Ebitukuvu, era mwetegerezza nnyo ebigambo bya Katonda. Kale mujjukire ebintu bino. Musa bwe yalinnya ku lusozi, n’abeera eyo, ng’asiiba era nga yeetoowaza, ennaku amakumi ana emisana n’ekiro, Mukama n’amugamba nti, “Musa, Musa, situka ove mangu wano oserengete, kubanga abantu bo be waggya mu Misiri boonoonye. Beekyusizza mangu ne bava mu kkubo lye nabalagira okutambulirangamu, ne beekolera ebifaananyi ebisaanuuse.” Mukama n’amugamba nti, “Nkugambye omulundi gumu n’ogwokubiri nti, Neetegerezza abantu bano, era laba, bantu abalina ensingo enkakanyavu: leka mbazikirize, era nsangule erinnya lyabwe wansi w’eggulu; era ndikufuula eggwanga eddene era ery’ekitalo, era ery’abantu bangi nnyo okusinga lino.” Naye Musa n’agamba nti, “Kitalo, Mukama: sonyiwa ekibi ky’abantu bano; oba si ekyo, onsangule nange mu kitabo ky’abalamu.” Ayi okwagala okw’ekitalo! Ayi obutuukirivu obutasingika! Omuddu ayogera n’obuvumu ne mukama we, n’asaba abantu basonyiyibwe, oba n’asaba ye yennyini azikirire wamu nabo. </p>",
+  "body_text": "Mutegeera, abaagalwa, mutegeera bulungi Ebyawandiikibwa Ebitukuvu, era mwetegerezza nnyo ebigambo bya Katonda. Kale mujjukire ebintu bino. Musa bwe yalinnya ku lusozi, n’abeera eyo, ng’asiiba era nga yeetoowaza, ennaku amakumi ana emisana n’ekiro, Mukama n’amugamba nti, “Musa, Musa, situka ove mangu wano oserengete, kubanga abantu bo be waggya mu Misiri boonoonye. Beekyusizza mangu ne bava mu kkubo lye nabalagira okutambulirangamu, ne beekolera ebifaananyi ebisaanuuse.” Mukama n’amugamba nti, “Nkugambye omulundi gumu n’ogwokubiri nti, Neetegerezza abantu bano, era laba, bantu abalina ensingo enkakanyavu: leka mbazikirize, era nsangule erinnya lyabwe wansi w’eggulu; era ndikufuula eggwanga eddene era ery’ekitalo, era ery’abantu bangi nnyo okusinga lino.” Naye Musa n’agamba nti, “Kitalo, Mukama: sonyiwa ekibi ky’abantu bano; oba si ekyo, onsangule nange mu kitabo ky’abalamu.” Ayi okwagala okw’ekitalo! Ayi obutuukirivu obutasingika! Omuddu ayogera n’obuvumu ne mukama we, n’asaba abantu basonyiyibwe, oba n’asaba ye yennyini azikirire wamu nabo.",
+  "word_count": 140
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 54,
+  "title": "Oyo ajjudde okwagala aligumira okufiirwa kwonna",
+  "body_html": "<p>Kale ani mu mmwe ow’omutima omugazi? ani ow’ekisa? ani ajjudde okwagala? Ayogere nti, “Oba nga ku lwange obujeemu n’obutakkaanya n’enjawukana bibaddewo, nja kuvaawo, nja kugenda yonna gye mwagala, era nja kukola kyonna abasinga obungi kye balagira; kyokka ekisibo kya Kristo kibeere mu mirembe n’abakadde abakiteereddwako.” Oyo akola bw’atyo alyefunira ekitiibwa kinene mu Mukama; era buli kifo kirimwaniriza. Kubanga “ensi ya Mukama n’okujjula kwayo.” Ebyo abo abawangaala obulamu obw’okutya Katonda, obutejjusibwa, babikoze era banaabikolanga bulijjo. </p>",
+  "body_text": "Kale ani mu mmwe ow’omutima omugazi? ani ow’ekisa? ani ajjudde okwagala? Ayogere nti, “Oba nga ku lwange obujeemu n’obutakkaanya n’enjawukana bibaddewo, nja kuvaawo, nja kugenda yonna gye mwagala, era nja kukola kyonna abasinga obungi kye balagira; kyokka ekisibo kya Kristo kibeere mu mirembe n’abakadde abakiteereddwako.” Oyo akola bw’atyo alyefunira ekitiibwa kinene mu Mukama; era buli kifo kirimwaniriza. Kubanga “ensi ya Mukama n’okujjula kwayo.” Ebyo abo abawangaala obulamu obw’okutya Katonda, obutejjusibwa, babikoze era banaabikolanga bulijjo.",
+  "word_count": 74
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 55,
+  "title": "Ebyokulabirako by’okwagala okwo",
+  "body_html": "<p>Okuleeta ebyokulabirako ebimu okuva mu b’amawanga: Bakabaka n’abakungu bangi, mu biseera eby’endwadde ez’olumbe, bwe baamala okuluŋŋamizibwa ebiragulo, beewaayo okufa, balyoke bawonye bannansi bannaabwe [okuzikirira] olw’omusaayi gwabwe bennyini. Bangi baava mu bibuga byabwe, obujeemu obwali mu byo bulyoke bukome. Tumanyi bangi mu ffe abeewaayo okusibibwa mu njegere, balyoke banunule abalala. Bangi nabo beewaayo mu buddu, balyoke bagulire abalala emmere n’omuwendo gwe baafuna ku lwabwe. Abakazi bangi nabo, nga banywezeddwa ekisa kya Katonda, baakola ebikolwa bingi eby’obuzira. Yuditi alina omukisa, ekibuga kye bwe kyali kizingiziddwa, yasaba abakadde ebbeetu okugenda mu lusiisira lw’abagwira; era, bwe yeesuula mu kabi, yafuluma olw’okwagala kwe yalina eri ensi ye n’abantu be abaali bazingiziddwa; Mukama n’awaayo Holofeni mu mikono gy’omukazi. Ne Eseza, ng’atuukiridde mu kukkiriza, yeesuula mu kabi akatali katono, alyoke awonye ebika ekkumi n’ebibiri ebya Isirayiri okuzikirira okwali kubalindiridde. Kubanga ng’asiiba era nga yeetoowaza yeegayirira Katonda ow’emirembe n’emirembe, alaba byonna; naye, bwe yalaba obwetoowaze bw’omwoyo gwe, n’awonya abantu be yali yeesudde mu kabi ku lwabwe.. </p>",
+  "body_text": "Okuleeta ebyokulabirako ebimu okuva mu b’amawanga: Bakabaka n’abakungu bangi, mu biseera eby’endwadde ez’olumbe, bwe baamala okuluŋŋamizibwa ebiragulo, beewaayo okufa, balyoke bawonye bannansi bannaabwe [okuzikirira] olw’omusaayi gwabwe bennyini. Bangi baava mu bibuga byabwe, obujeemu obwali mu byo bulyoke bukome. Tumanyi bangi mu ffe abeewaayo okusibibwa mu njegere, balyoke banunule abalala. Bangi nabo beewaayo mu buddu, balyoke bagulire abalala emmere n’omuwendo gwe baafuna ku lwabwe. Abakazi bangi nabo, nga banywezeddwa ekisa kya Katonda, baakola ebikolwa bingi eby’obuzira. Yuditi alina omukisa, ekibuga kye bwe kyali kizingiziddwa, yasaba abakadde ebbeetu okugenda mu lusiisira lw’abagwira; era, bwe yeesuula mu kabi, yafuluma olw’okwagala kwe yalina eri ensi ye n’abantu be abaali bazingiziddwa; Mukama n’awaayo Holofeni mu mikono gy’omukazi. Ne Eseza, ng’atuukiridde mu kukkiriza, yeesuula mu kabi akatali katono, alyoke awonye ebika ekkumi n’ebibiri ebya Isirayiri okuzikirira okwali kubalindiridde. Kubanga ng’asiiba era nga yeetoowaza yeegayirira Katonda ow’emirembe n’emirembe, alaba byonna; naye, bwe yalaba obwetoowaze bw’omwoyo gwe, n’awonya abantu be yali yeesudde mu kabi ku lwabwe..",
+  "word_count": 158
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 56,
+  "title": "Tubuuliraganenga era tunenyaganenga",
+  "body_html": "<p>Kale naffe tusabire abo abaagwa mu kibi kyonna, baweebwe obukkakkamu n’obwetoowaze, balyoke bagondere, si ffe, wabula Katonda by’ayagala. Kubanga mu ngeri eno balifuna okujjukirwa okubala ebibala era okutuukiridde okuva gye tuli, nga tubasaasira, mu kusaba kwaffe eri Katonda, ne mu kubaayogerako eri abatukuvu. Tukkirize okunenyezebwa, abaagalwa, kwe watali muntu n’omu agwanidde kunyiigira. Okubuulirira kwe tubuuliriramu buli omu munne kulungi [mu kwo kwokka] era kugasa nnyo, kubanga kutugatta ne Katonda by’ayagala. Kubanga Ekigambo ekitukuvu kigamba bwe kiti: “Mukama ambonerezza nnyo, naye tandese kufa.” “Kubanga Mukama gw’ayagala amukangavvula, Era abonereza buli gw’ayita omwana we.” “Omutuukirivu,” kigamba, “alinkangavvula mu kisa, era alinnenya; naye amafuta g’aboonoonyi tegagejjanga mutwe gwange.” Era nate agamba nti, “Alina omukisa omuntu Mukama gw’anenya, era tonyooma kukangavvula kw’oyo Ayinzabyonna. Kubanga aleeta ennaku, ate n’azzaawo [essanyu]; afumita, n’emikono gye ne giwonya. Alikuwonya mu buzibu bwa ngeri mukaaga, weewaawo, ne mu bw’omusanvu tewali kibi kirikukwatako. Mu njala alikuwonya okufa, ne mu lutalo alikuwonya amaanyi g’ekitala. Alikukweka eri omuggo gw’olulimi, era tootyenga ebibi bwe binaajjanga. Olisekerera abatali batuukirivu n’ababi, era tootyenga nsolo nkambwe ez’oku nsi. Kubanga onoobanga n’emirembe awali ensolo enkambwe: olwo olimanya nti, ensiisira yo eri mirembe, era ekifo eky’eweema yo tekiriggwaawo. Era olimanya ng’ezzadde lyo liriba ddene, n’abaana bo ng’omuddo ogw’omu nnimiro. Era olituusibwa ku ntaana yo ng’eŋŋaano eyengedde ekungulwa mu kiseera kyayo, oba ng’entuumu ey’omu gguuliro ekuŋŋaanyizibwa mu kiseera ekituufu.” Mulaba, abaagalwa, nti abo Mukama b’akangavvula baweebwa obukuumi; kubanga Katonda bw’ali omulungi, atukangavvula, tulyoke tubuulirirwe olw’okukangavvula kwe okutukuvu. </p>",
+  "body_text": "Kale naffe tusabire abo abaagwa mu kibi kyonna, baweebwe obukkakkamu n’obwetoowaze, balyoke bagondere, si ffe, wabula Katonda by’ayagala. Kubanga mu ngeri eno balifuna okujjukirwa okubala ebibala era okutuukiridde okuva gye tuli, nga tubasaasira, mu kusaba kwaffe eri Katonda, ne mu kubaayogerako eri abatukuvu. Tukkirize okunenyezebwa, abaagalwa, kwe watali muntu n’omu agwanidde kunyiigira. Okubuulirira kwe tubuuliriramu buli omu munne kulungi [mu kwo kwokka] era kugasa nnyo, kubanga kutugatta ne Katonda by’ayagala. Kubanga Ekigambo ekitukuvu kigamba bwe kiti: “Mukama ambonerezza nnyo, naye tandese kufa.” “Kubanga Mukama gw’ayagala amukangavvula, Era abonereza buli gw’ayita omwana we.” “Omutuukirivu,” kigamba, “alinkangavvula mu kisa, era alinnenya; naye amafuta g’aboonoonyi tegagejjanga mutwe gwange.” Era nate agamba nti, “Alina omukisa omuntu Mukama gw’anenya, era tonyooma kukangavvula kw’oyo Ayinzabyonna. Kubanga aleeta ennaku, ate n’azzaawo [essanyu]; afumita, n’emikono gye ne giwonya. Alikuwonya mu buzibu bwa ngeri mukaaga, weewaawo, ne mu bw’omusanvu tewali kibi kirikukwatako. Mu njala alikuwonya okufa, ne mu lutalo alikuwonya amaanyi g’ekitala. Alikukweka eri omuggo gw’olulimi, era tootyenga ebibi bwe binaajjanga. Olisekerera abatali batuukirivu n’ababi, era tootyenga nsolo nkambwe ez’oku nsi. Kubanga onoobanga n’emirembe awali ensolo enkambwe: olwo olimanya nti, ensiisira yo eri mirembe, era ekifo eky’eweema yo tekiriggwaawo. Era olimanya ng’ezzadde lyo liriba ddene, n’abaana bo ng’omuddo ogw’omu nnimiro. Era olituusibwa ku ntaana yo ng’eŋŋaano eyengedde ekungulwa mu kiseera kyayo, oba ng’entuumu ey’omu gguuliro ekuŋŋaanyizibwa mu kiseera ekituufu.” Mulaba, abaagalwa, nti abo Mukama b’akangavvula baweebwa obukuumi; kubanga Katonda bw’ali omulungi, atukangavvula, tulyoke tubuulirirwe olw’okukangavvula kwe okutukuvu.",
+  "word_count": 238
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 57,
+  "title": "Abaaleeta obujeemu beewombeeke",
+  "body_html": "<p>Kale mmwe abaasimba omusingi gw’obujeemu buno, mugondere abakadde, mukkirize okunenyezebwa mulyoke mwenenye, nga mufukamiza amaviivi g’emitima gyammwe. Muyige okugondera, nga mweggyako okwekakasa okw’amalala n’okwekulumbaza okw’olulimi lwammwe. Kubanga kibasingira obulungi okubeera n’ekifo ekitono naye eky’ekitiibwa mu kisibo kya Kristo, okusinga, nga mugulumiziddwa nnyo, okusuulibwa ebweru w’essuubi ly’abantu be. Kubanga Amagezi agalina empisa ennungi zonna bwe gatyo bwe googera: “Laba, ndibafukira ebigambo by’Omwoyo wange, era ndibayigiriza okwogera kwange. Kubanga na bayita ne mugaana okuwuliriza; nabagololera ebigambo byange, ne wataba n’omu afaayo, era ne mutafaayo ku magezi ge nabawa, era ne mugaana okubuulirira kwange kwonna; noolwekyo nange ndibasekerera nga muzikirira; weewaawo, ndisanyuka okuzikirira bwe kulibajjira, n’okutabulwa okw’amangu bwe kulibagwako, okusuulibwa bwe kulibajjira ng’omuyaga omungi, oba ennaku n’okubonaabona bwe biribagwako. Kubanga kiriba nti bwe mulinkoowoola, sijja kubawulira; ababi balinnoonya, naye ne batandaba. Kubanga baakyawa amagezi, era ne bamalirira obutatya Mukama; ne bagaana okuwuliriza amagezi gange; ne banyooma okunenya kwange kwonna. Kyebaliva balya ebibala eby’ekkubo lyabwe, era balijjula obutatya Katonda bwabwe.” …</p>",
+  "body_text": "Kale mmwe abaasimba omusingi gw’obujeemu buno, mugondere abakadde, mukkirize okunenyezebwa mulyoke mwenenye, nga mufukamiza amaviivi g’emitima gyammwe. Muyige okugondera, nga mweggyako okwekakasa okw’amalala n’okwekulumbaza okw’olulimi lwammwe. Kubanga kibasingira obulungi okubeera n’ekifo ekitono naye eky’ekitiibwa mu kisibo kya Kristo, okusinga, nga mugulumiziddwa nnyo, okusuulibwa ebweru w’essuubi ly’abantu be. Kubanga Amagezi agalina empisa ennungi zonna bwe gatyo bwe googera: “Laba, ndibafukira ebigambo by’Omwoyo wange, era ndibayigiriza okwogera kwange. Kubanga na bayita ne mugaana okuwuliriza; nabagololera ebigambo byange, ne wataba n’omu afaayo, era ne mutafaayo ku magezi ge nabawa, era ne mugaana okubuulirira kwange kwonna; noolwekyo nange ndibasekerera nga muzikirira; weewaawo, ndisanyuka okuzikirira bwe kulibajjira, n’okutabulwa okw’amangu bwe kulibagwako, okusuulibwa bwe kulibajjira ng’omuyaga omungi, oba ennaku n’okubonaabona bwe biribagwako. Kubanga kiriba nti bwe mulinkoowoola, sijja kubawulira; ababi balinnoonya, naye ne batandaba. Kubanga baakyawa amagezi, era ne bamalirira obutatya Mukama; ne bagaana okuwuliriza amagezi gange; ne banyooma okunenya kwange kwonna. Kyebaliva balya ebibala eby’ekkubo lyabwe, era balijjula obutatya Katonda bwabwe.” …",
+  "word_count": 157
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 58,
+  "title": "Emikisa egisabirwa bonna abakoowoola Katonda",
+  "body_html": "<p>Katonda, alaba byonna, era Omufuzi w’emyoyo gyonna era Mukama w’ebirina omubiri byonna—eyalonda Mukama waffe Yesu Kristo naffe ku bw’oyo okuba abantu be ab’enjawulo—awe buli mmeeme ekoowoola Erinnya lye ery’ekitiibwa era ettukuvu, okukkiriza, okutya, emirembe, obugumiikiriza, okugumikiriza okw’ebbanga eddene, okwefuga, obulongoofu, n’obutebenkevu, Erinnya lye lisanyuke, ku bwa Kabona waffe Asinga Obukulu era Omukuumi, Yesu Kristo, oyo ku bw’oyo aweebwe ekitiibwa, n’obukulu, n’obuyinza, n’ettendo, kaakano n’emirembe n’emirembe. Amiina. </p>",
+  "body_text": "Katonda, alaba byonna, era Omufuzi w’emyoyo gyonna era Mukama w’ebirina omubiri byonna—eyalonda Mukama waffe Yesu Kristo naffe ku bw’oyo okuba abantu be ab’enjawulo—awe buli mmeeme ekoowoola Erinnya lye ery’ekitiibwa era ettukuvu, okukkiriza, okutya, emirembe, obugumiikiriza, okugumikiriza okw’ebbanga eddene, okwefuga, obulongoofu, n’obutebenkevu, Erinnya lye lisanyuke, ku bwa Kabona waffe Asinga Obukulu era Omukuumi, Yesu Kristo, oyo ku bw’oyo aweebwe ekitiibwa, n’obukulu, n’obuyinza, n’ettendo, kaakano n’emirembe n’emirembe. Amiina.",
+  "word_count": 66
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "lg"
+  ],
+  "order": 59,
+  "title": "Abakkolinso bakubirizibwa okutuweereza amawulire nti emirembe ezzeewo",
+  "body_html": "<p>Mutuddiize mangu mu mirembe ne mu ssanyu ababaka baffe bano be twabatumira: Claudius Ephebus ne Valerius Bito, wamu ne Folutunaato: balyoke banguwe okututegeeza emirembe n’okukkaanya bye twagala ennyo era bye tulumirwa [mu mmwe], era tulyoke tusanyuke mangu olw’entegeka ennungi ezzeemu mu mmwe. Ekisa kya Mukama waffe Yesu Kristo kibeere nammwe, n’abo bonna wonna wonna Katonda be yayita ku bw’oyo, oyo ku bw’oyo aweebwe ekitiibwa, ettendo, obuyinza, obukulu, n’okufuga okutaggwaawo, okuva emirembe n’emirembe okutuusa emirembe n’emirembe. Amiina.</p>",
+  "body_text": "Mutuddiize mangu mu mirembe ne mu ssanyu ababaka baffe bano be twabatumira: Claudius Ephebus ne Valerius Bito, wamu ne Folutunaato: balyoke banguwe okututegeeza emirembe n’okukkaanya bye twagala ennyo era bye tulumirwa [mu mmwe], era tulyoke tusanyuke mangu olw’entegeka ennungi ezzeemu mu mmwe. Ekisa kya Mukama waffe Yesu Kristo kibeere nammwe, n’abo bonna wonna wonna Katonda be yayita ku bw’oyo, oyo ku bw’oyo aweebwe ekitiibwa, ettendo, obuyinza, obukulu, n’okufuga okutaggwaawo, okuva emirembe n’emirembe okutuusa emirembe n’emirembe. Amiina.",
+  "word_count": 76
+ }
+}
+]

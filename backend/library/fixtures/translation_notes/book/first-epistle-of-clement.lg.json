@@ -1,0 +1,1040 @@
+{
+ "kind": "book",
+ "slug": "first-epistle-of-clement",
+ "language": "lg",
+ "job_issue": 6860,
+ "pull_request": null,
+ "note": [
+  "Scripture source: the Open Luganda Contemporary Bible (OLCB 2017, Biblica, CC BY-SA), parsed from the ebible mirror's USX (bibles/lug_bib), all 66 books. Translators looked up every quotation (cited or not) in that verse file and copied the bytes by script.",
+  "Translated from the English as the deploy settles it (corrections.settled_chapter_body), so the library's BODY_CORRECTIONS for this slug are already in the source.",
+  "Derived by measurement: a row is mined only when the translator reported the quotation verbatim AND the block contains a 30-character run of that verse (or a quoted span of 10+ characters that is a substring of it), compared with quotation marks and punctuation stripped. adapted/self rows and 5 unconfirmed verbatim claims (mostly one-word or short-phrase echoes) are self_rendered. 28 of 166 rows mined.",
+  "Conventions: quotation marks mirror this book's English source (Luganda books never convert to guillemets); in-word apostrophe ’ as OLCB; site terms Bayibuli, Setaani, Omukristaayo; 'Mr. X' is Omwami X. A reviewer pass checked 89 trap-word sites (Kitaawe, balubaale, muzimu, mu bwangu, Mukama + surname) against the English and fixed 7 ('mu bwangu' for 'easily/simply').",
+  "This work quotes the Old Testament from the Greek Septuagint (LXX), which often differs from the OLCB (translated from the Hebrew). Where the OLCB matches the author's words they were copied verbatim; where it does not, the author's LXX wording was rendered and recorded self_rendered, so the high self_rendered share is the text's nature, not a gap."
+ ],
+ "references": [
+  {
+   "reference": "Titus 3:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Deuteronomy 32:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Genesis 4:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 4:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 4:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 4:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 2:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezekiel 18:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jeremiah 3:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 1:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 1:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Genesis 12:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 12:2",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 12:3",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 13:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 13:15",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 13:16",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 15:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Joshua 2:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 9:23",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Jeremiah 9:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Matthew 7:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Proverbs 2:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Proverbs 2:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:35",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:36",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalms 37:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 29:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 62:4",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 78:36",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 78:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 31:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 12:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 12:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 12:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 53:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 22:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 22:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 22:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Hebrews 11:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Job 1:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Job 14:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Job 14:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Exodus 3:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalms 89:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "1 Samuel 13:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Acts 13:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Proverbs 20:27",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Psalms 34:11",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:12",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:13",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:14",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 34:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 32:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Isaiah 13:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Malachi 3:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Psalms 28:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 3:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Job 19:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Romans 9:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Psalms 19:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Psalms 19:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Psalms 19:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Psalms 139:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Deuteronomy 32:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Deuteronomy 32:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Deuteronomy 4:34",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Proverbs 3:34",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "James 4:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Job 11:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Job 11:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Genesis 15:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Genesis 1:28",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Isaiah 40:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Revelation 22:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Daniel 7:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 50:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 50:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 50:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 50:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 50:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 50:23",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Hebrews 1:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Hebrews 1:7",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Psalms 104:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Psalms 2:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Hebrews 1:5",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Psalms 110:1",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Job 4:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 39
+  },
+  {
+   "reference": "Isaiah 60:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 42
+  },
+  {
+   "reference": "Hebrews 3:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 43
+  },
+  {
+   "reference": "Numbers 12:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 43
+  },
+  {
+   "reference": "Psalms 18:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Psalms 18:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Matthew 26:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Matthew 18:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Luke 17:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Psalms 118:19",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Psalms 118:20",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 48
+  },
+  {
+   "reference": "1 Peter 4:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 49
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 49
+  },
+  {
+   "reference": "Isaiah 26:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Ezekiel 37:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Psalms 32:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Psalms 32:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Numbers 16:33",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 51
+  },
+  {
+   "reference": "Psalms 69:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 69:32",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 50:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Deuteronomy 9:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Deuteronomy 9:13",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Exodus 32:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Psalms 24:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 54
+  },
+  {
+   "reference": "1 Corinthians 10:26",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 54
+  },
+  {
+   "reference": "Psalms 118:18",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "source_file": "OLCB (lug_bib) Bible text",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Proverbs 3:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Psalms 141:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:23",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Job 5:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 56
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 57
+  },
+  {
+   "reference": "Proverbs 1:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 57
+  },
+  {
+   "reference": "Proverbs 1:29",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 57
+  },
+  {
+   "reference": "Proverbs 1:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 57
+  },
+  {
+   "reference": "Proverbs 1:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 57
+  }
+ ]
+}

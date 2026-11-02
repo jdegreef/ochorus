@@ -19006,6 +19006,18 @@
 				513
 			]
 		},
+		"lg/a-call-to-the-unconverted": {
+			"ground": "ef52114b5ff7fba1242c2dbae3af2f96b5841842da8edc0a75328713c8be4def",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
@@ -19051,6 +19063,30 @@
 		},
 		"lg/all-of-grace": {
 			"ground": "061ef7fbfa3d53136aa192a81e9613154bf540c22db8a65fc6520ee9d4762d07",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
+		"lg/all-things-for-good": {
+			"ground": "820e882f15f047b8fc916947736479a6f90fabb698cdb59a956000d708ee2dcc",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
+		"lg/around-the-wicket-gate": {
+			"ground": "1b257a847092cab8af4f7c6d5b1f6827fa059678ba1805331c20bff58f2d4d6c",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -19317,6 +19353,40 @@
 				517
 			]
 		},
+		"lg/epistles-of-ignatius": {
+			"ground": "409a9b8e57a8aa83c97b4d4aa1dd9bdb906ce0aab43285c9f6adbea5c46eeea3",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[161, 258, 439, 320],
+					[129, 304, 471, 366],
+					[150, 349, 450, 411],
+					[78, 395, 522, 457]
+				],
+				"subtitle": [
+					[131, 486, 469, 507],
+					[114, 507, 486, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
+			]
+		},
 		"lg/feasting-at-the-table": {
 			"ground": "069f82a909f129c9adb5253729df1406d89fbf0c248fec73d9f25321d930f918",
 			"style": "devotional",
@@ -19328,6 +19398,39 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"lg/first-epistle-of-clement": {
+			"ground": "d1439e05f23401e590671294be634596e785433addf980f6be3e5b8563edfdd2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[43, 281, 557, 343],
+					[116, 327, 484, 389],
+					[58, 372, 542, 434]
+				],
+				"subtitle": [
+					[148, 463, 452, 484],
+					[149, 484, 451, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"lg/gleanings-among-the-sheaves": {
 			"ground": "615ec2097d96cb4400c7db7c737a88519afdc6fe40470d45c64bd33fcb734cc4",
@@ -19368,6 +19471,18 @@
 				257,
 				538
 			]
+		},
+		"lg/grace-abounding": {
+			"ground": "ac0b2c1fb5968b97736ebc59205401e80ccb74becc616394e50edba9e8ff8a65",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0,
+			"caps": false
 		},
 		"lg/growing-in-wisdom": {
 			"ground": "1df9af464768ca33b3623b06ba9ed3517a09e2910d898c603519c5682d5c4361",
@@ -19681,6 +19796,61 @@
 			"bar": 0,
 			"caps": false
 		},
+		"lg/mortification-of-sin": {
+			"ground": "8ee186bb3ab81a8a7fc2f6a3041d6c8efc9b8dee9e668670cd05d1fb04edf0ce",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[143, 307, 457, 380],
+					[144, 367, 456, 440]
+				],
+				"subtitle": [
+					[120, 492, 480, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
+		"lg/necessity-of-prayer": {
+			"ground": "54dd16ea98c2bb99692f29a8e85891f1a564a7d5ba7b100f80b3224917970fdb",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false
+		},
+		"lg/on-the-incarnation": {
+			"ground": "ea224cccea2c990456c425c30971199875fd8a58e50144128a0ad494d99f5e1b",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/pilgrims-progress": {
 			"ground": "70a60aa20638bb200073879645130b7856329ee0c52ea24d17f71965158d71b3",
 			"style": "press",
@@ -19786,6 +19956,18 @@
 				270,
 				525
 			]
+		},
+		"lg/purpose-in-prayer": {
+			"ground": "7dd2d6ad70bc456ba104b75b9c78fcae8c2da590b4b7fb638eb5a72b4efcbbbd",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
 		},
 		"lg/rise-up-men-of-god-2": {
 			"ground": "3bdd0b3b0d5f2bbb4ef87c63c4531b3cf4849d31a925f242cec40516c0d89b0a",
@@ -19954,6 +20136,37 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"lg/the-bruised-reed": {
+			"ground": "b9b590890787b253d35e3d4748496968da1cb3e58b0cda067bea47449bd3066b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[194, 303, 406, 381],
+					[154, 367, 446, 445]
+				],
+				"subtitle": [
+					[153, 497, 447, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				277,
+				518
 			]
 		},
 		"lg/the-christians-secret-of-a-happy-life-4": {
