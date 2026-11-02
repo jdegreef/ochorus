@@ -29826,6 +29826,18 @@
 				476
 			]
 		},
+		"uk/a-call-to-the-unconverted": {
+			"ground": "e2bc9e2c841cf242a963796ba1e3e5d4aec897e4e2607cee8148b528c7366c70",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/absolute-surrender": {
 			"ground": "07423bc1c748e3f49b1230c73018e4b8ec98914aa74016f2125d5653fa95f5ea",
 			"style": "devotional",
@@ -30458,6 +30470,34 @@
 			"bar": 0,
 			"caps": true
 		},
+		"uk/the-god-of-all-comfort": {
+			"ground": "9d0665cf94488f9c7759a6f02a791c8d4079b4743270942165cf52374c8c48d3",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[128, 268, 472, 373],
+					[213, 360, 387, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
 			"style": "devotional",
@@ -30508,6 +30548,34 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"uk/the-person-and-work-of-the-holy-spirit": {
+			"ground": "f7c7311e6214ea750978accda6f95d2f48aae68d1dc68abab9810305d2f3ee40",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[138, 326, 462, 402],
+					[117, 391, 483, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
 			]
 		},
 		"uk/the-secret-of-guidance": {
