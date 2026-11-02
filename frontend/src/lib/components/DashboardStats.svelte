@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
-	import GoalPips from '$lib/components/GoalPips.svelte';
+	import WeekLamps from '$lib/components/WeekLamps.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { lang } from '$lib/lang.svelte';
@@ -106,7 +106,13 @@
 								{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
 							{/if}
 						</div>
-						<GoalPips {goal} {weekCount} />
+						<!-- The week as lamps: which days were read, not only how many. -->
+						<WeekLamps
+							{days}
+							{today}
+							locale={lang.current}
+							label="{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}"
+						/>
 					</div>
 				</div>
 

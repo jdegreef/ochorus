@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildHeatmap, weekReadCount } from './heatmap';
+import { buildHeatmap, weekLamps, weekReadCount } from './heatmap';
 import { shiftDay as shift } from './streak';
 
 describe('buildHeatmap', () => {
@@ -66,5 +66,27 @@ describe('run shading', () => {
 
 	it('survives a malformed log entry', () => {
 		expect(() => buildHeatmap(['', '2026-7-1', '2026-07-01'], '2026-07-02', 2)).not.toThrow();
+	});
+});
+
+describe('weekLamps', () => {
+	// Wednesday 4 November 2026; the week runs Sunday 1 – Saturday 7.
+	const today = '2026-11-04';
+
+	it('lights the days read, rests the days missed, and keeps today trimmed and waiting', () => {
+		const lamps = weekLamps(['2026-10-31', '2026-11-01', '2026-11-03'], today);
+		expect(lamps.map((l) => l.day)).toEqual([
+			'2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04', '2026-11-05', '2026-11-06', '2026-11-07'
+		]);
+		expect(lamps.map((l) => l.state)).toEqual(['lit', 'rest', 'lit', 'waiting', 'ahead', 'ahead', 'ahead']);
+	});
+
+	it('grows each flame with the run it is part of, counting from before the week began', () => {
+		const lamps = weekLamps(['2026-10-30', '2026-10-31', '2026-11-01', '2026-11-02'], today);
+		expect(lamps.slice(0, 2).map((l) => l.run)).toEqual([3, 4]);
+	});
+
+	it('lights today once it is read', () => {
+		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', run: 1 });
 	});
 });
