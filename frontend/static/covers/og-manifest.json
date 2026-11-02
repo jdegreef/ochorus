@@ -14746,6 +14746,18 @@
 				501
 			]
 		},
+		"hi/a-call-to-the-unconverted": {
+			"ground": "8e8e87a48c7c1dd3a489cc9d3cb10935d23aa2c87cde3f7facd62bd0494fb15d",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
 			"style": "devotional",
@@ -15667,6 +15679,34 @@
 			"middle": [
 				323,
 				472
+			]
+		},
+		"hi/the-person-and-work-of-the-holy-spirit": {
+			"ground": "469aff230d2e4176bbe3fb82997bac47b115ebb3454b98fd6afaf4eeb004a6ed",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[135, 321, 465, 391],
+					[111, 402, 489, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
 			]
 		},
 		"hi/the-secret-of-guidance": {
