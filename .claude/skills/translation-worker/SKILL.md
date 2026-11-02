@@ -2180,6 +2180,15 @@ archaic spelling and period punctuation are the text, not defects in it.
   Psalm 23:1 — insert a space at every `</para>` first, then collapse. And the
   IRV bakes editorial cross-references into 15 verses' own text (1 John 3:5 ends
   `(यूह. 1:29)`), which is NOT a parser bug and must be dropped by the translator.
+  **But "content and all" must KEEP any `<verse …/>` marker inside the stripped
+  para** (hi Brainerd/Union prep, 2026-11-01): the IRV puts the `eid` of the verse
+  BEFORE a heading inside that heading's `d` para (`<para style="d">बेथ<verse
+  eid="PSA 119:8"/></para>`), so deleting the para wholesale deletes the eid and
+  the sid…eid walk silently drops 21 verses (31,083 instead of 31,104). Replace
+  the para with `''.join(re.findall(r'<verse [^>]*/>', inner))`. Also strip the
+  `sp` para style and the `<char style="k">` span: those are Song of Songs speaker
+  labels (`वधू`), which otherwise land at the end of 17 SNG verses. Check that the
+  verse count is 31,104 before briefing anyone.
   What caught all of it: **three translators independently reporting something
   strange about "the Bible."** Two of the three reports were my tooling. The
   standing lesson holds and is now worth stating as a rule — *before* briefing,
