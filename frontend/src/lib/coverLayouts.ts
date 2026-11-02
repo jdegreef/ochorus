@@ -319,7 +319,13 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	'soar-like-the-eagle-3',
 	// Picked by the founder from ten warm proofs (2026-11-01): Van Gogh, a wheat field
 	// lit behind the title (`curated_art.Artwork.glow`) so the type reads dark.
-	'faithful-with-little'
+	'faithful-with-little',
+	// The other four Gareth Evans books follow Soar (picked by the founder, 2026-11-02), each lit
+	// from the top and foot and behind the title (`designed_covers.Ground.glow`).
+	'feasting-at-the-table',
+	'he-holds-my-tomorrows',
+	'stepping-stones-2',
+	'the-key-in-my-hand'
 ]);
 
 /** Is this painted book set in dark ink? Never under a layout. */

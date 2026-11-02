@@ -237,8 +237,8 @@ def derived_ground(source: Path, cut: Ground):
         ).filter(ImageFilter.GaussianBlur(radius=46))
         # Feathered in rather than pasted: the join has to read as depth of field.
         ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
-    if cut.glow:
-        ground = glowing(ground, *cut.glow)
+    for pool in cut.glow:
+        ground = glowing(ground, *pool)
     return ground
 
 

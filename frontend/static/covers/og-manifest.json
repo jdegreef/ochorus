@@ -1304,32 +1304,16 @@
 			"caps": false
 		},
 		"am/feasting-at-the-table": {
-			"ground": "2320144dca36ff8ca0519020b57ffc252176582b96a1fd30080983531126abb2",
-			"style": "lettered",
+			"ground": "75609d377849f5cde833890e412615b7710ddd758a80a3116bd5b633c419c153",
+			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[89, 302, 511, 408],
-					[158, 386, 442, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"am/finney-memoirs": {
 			"ground": "86f7dab55c9004bb822d8b664e7e0016a5e2eab1171debe2bdfbc42424654f63",
@@ -1548,32 +1532,16 @@
 			]
 		},
 		"am/he-holds-my-tomorrows": {
-			"ground": "a17f159d24def9ce4f19bf26bdb7f72e8fd2b936bcc4feb49fbddcefa3cdf764",
-			"style": "lettered",
+			"ground": "6b18ef3114aede4fcc31f95426e28a945d5a74e62f965a70da6d3d43906901ff",
+			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[159, 302, 441, 408],
-					[69, 386, 531, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"am/holy-in-christ": {
 			"ground": "a11ece9700ec10eb0eac5e5fce0e8b8e9ccf7390b6d663485842a266fc47192d",
@@ -2993,32 +2961,16 @@
 			"caps": false
 		},
 		"am/stepping-stones-2": {
-			"ground": "f8d031b41f94fe7d118dd3885fe8c6f67920fc1bf261da72d4c47a07ab955f41",
-			"style": "lettered",
+			"ground": "c94ac058e829f6fa3e7ac4d364b7cb8ba4c5e03f7c7d715c7d742cdc8e9d62c6",
+			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[121, 302, 479, 408],
-					[142, 386, 458, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"am/susanna-wesley-clarke": {
 			"ground": "e0f66cae84ea9ebf4bbef8c59f68dcc6dde96f6cfb3a9332bd11af5c5d83218a",
@@ -3369,32 +3321,16 @@
 			"caps": false
 		},
 		"am/the-key-in-my-hand": {
-			"ground": "80e88468b434a06f64bf03fdd75f255ff47bc76256b260a8d71010ad0a2549d1",
-			"style": "lettered",
+			"ground": "f8888ba16ee786f7b307b3a0bbba9d5bbb5ca485287406f85d398ece7c3f98bc",
+			"style": "devotional",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[96, 302, 504, 408],
-					[156, 386, 444, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"am/the-life-of-trust": {
 			"ground": "69cfcb43f2dbeb28ca08b4b06ea618e09b688d7e7c8dc73e90b37f4868ad0e96",
@@ -4460,34 +4396,16 @@
 			]
 		},
 		"ar/he-holds-my-tomorrows": {
-			"ground": "c3830f138cdf2df102b6f7ded0f121e0ea82fb02584337ce04139e785f31fb08",
-			"style": "lettered",
+			"ground": "22031a45466b6ea2d51d67c2e248973d21a3d4b6c69a2afae2f64e9c5740df5e",
+			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[178, 333, 422, 411]
-				],
-				"subtitle": [
-					[239, 432, 361, 471]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				326,
-				469
-			]
+			"caps": true
 		},
 		"ar/holy-in-christ": {
 			"ground": "01cd2b9bb6511cbc961984231d6d07951f38a635cd4daf63ecab99d3ee54fd2d",
@@ -5043,34 +4961,16 @@
 			"caps": false
 		},
 		"ar/stepping-stones-2": {
-			"ground": "0f4d1d9dafbc823a70beff8be4112fbbcb26574bbc4c545843bd670e30897b1d",
-			"style": "lettered",
+			"ground": "8b3b3dfc3dc885bdf7c8d2e115c981ec47881b787d7a0ea534f81a88e75a06bf",
+			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[191, 333, 409, 411]
-				],
-				"subtitle": [
-					[246, 432, 354, 471]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				326,
-				469
-			]
+			"caps": true
 		},
 		"ar/talks-to-the-farmer": {
 			"ground": "224b894d61a919164e7a1fb229d6cbc89993aa121780953eccf3a551af91b1a6",
@@ -5166,34 +5066,16 @@
 			"caps": false
 		},
 		"ar/the-key-in-my-hand": {
-			"ground": "9a44c82b413ac96de16fb03bad7940493d8ea06e129d661154608624a941a86d",
-			"style": "lettered",
+			"ground": "3d973343b4f4413f08634b52bcd68c576d6d96a74fce93c7487a7b709701d155",
+			"style": "devotional",
 			"volume": null,
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[101, 333, 499, 411]
-				],
-				"subtitle": [
-					[237, 432, 363, 471]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				326,
-				469
-			]
+			"caps": true
 		},
 		"ar/the-masters-indwelling": {
 			"ground": "45b1af0b52f595f73eedad08ffde0d4fb2577a13207fa6560f685d4c3a54bde5",
@@ -7416,31 +7298,16 @@
 			"caps": false
 		},
 		"es/feasting-at-the-table": {
-			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
-			"style": "lettered",
+			"ground": "b9230a849049ce8972d34c680376da3125a06eb315cff29833011bc0a90b2a16",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[49, 344, 552, 450]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				355,
-				439
-			]
+			"caps": true
 		},
 		"es/finney-memoirs": {
 			"ground": "ec359b486ebc7d943d9740d5ee8abc29c16d7f315dc8e5614f74b5d87cbcfda4",
@@ -7646,35 +7513,16 @@
 			]
 		},
 		"es/he-holds-my-tomorrows": {
-			"ground": "24edaf7af3dbc0d5fe0c66fc1d2bb664ba517d2bdbe338079d8698ff230b1090",
-			"style": "lettered",
+			"ground": "af7ad3d3e53296e1ca312dcc32f42635abab269c54f9d312ce295d34b175b470",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[160, 281, 440, 387],
-					[128, 365, 472, 471]
-				],
-				"subtitle": [
-					[188, 475, 412, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"es/holy-in-christ": {
 			"ground": "dbb951810048bdbd298f9c99fbbb9d80bf4ecf8fcb53056539608bd21296cbd2",
@@ -9094,34 +8942,16 @@
 			"caps": false
 		},
 		"es/stepping-stones-2": {
-			"ground": "749d6f5a833786c7e87f8fbbbf1356d49edf7cca167ce6770ae7855b20d99cb8",
-			"style": "lettered",
+			"ground": "8d5334b77d078277859f111084c5ba028c9b14d027e5987e89fb064f8e545be1",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[112, 323, 488, 429]
-				],
-				"subtitle": [
-					[207, 433, 393, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"es/susanna-wesley-clarke": {
 			"ground": "21d3ae0a412fd7ad3a985da7d13a536bb5dc088fa8c308155954fa361019fb90",
@@ -9416,35 +9246,16 @@
 			"caps": false
 		},
 		"es/the-key-in-my-hand": {
-			"ground": "7c455c0ae6f78bc5833e9d5984683c28f963cc2290a21bb2e15c147254d62771",
-			"style": "lettered",
+			"ground": "f03bb749008f5ef002705e1e3dab813acb5e8ec6164719803e488e76b27414b5",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[159, 281, 442, 387],
-					[182, 365, 418, 471]
-				],
-				"subtitle": [
-					[213, 475, 387, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"es/the-life-of-trust": {
 			"ground": "d0232781763fac00355b4e4a4fc1dba1745ef81eaeee2510872e68922be0073c",
@@ -10085,32 +9896,16 @@
 			"caps": false
 		},
 		"feasting-at-the-table": {
-			"ground": "0aa045af83c25fc447f838309ca1195e4827a2475e457c9dc03d66411eb84329",
-			"style": "lettered",
+			"ground": "08c85d46c878fb77682ec07e5de013627d77035be54981129b0601c7209f5359",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[159, 302, 441, 408],
-					[190, 386, 410, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"finney-memoirs": {
 			"ground": "7e00273a41f573d20d8202b37b0c6d82affbd4512032520c4db8d486e297af71",
@@ -11461,34 +11256,16 @@
 			"caps": false
 		},
 		"fr/feasting-at-the-table": {
-			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
-			"style": "lettered",
+			"ground": "10396b6f4d90b13eaa1fc6c88c070101555ee82f949da70d457c1630f373a8ce",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[62, 323, 538, 429]
-				],
-				"subtitle": [
-					[116, 433, 484, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"fr/first-epistle-of-clement": {
 			"ground": "af4e7dd1c55b639f42a98b6cd5f6d52336209b59408d61991723882fc9a15492",
@@ -11720,35 +11497,16 @@
 			]
 		},
 		"fr/he-holds-my-tomorrows": {
-			"ground": "f7b25cd4b1acc6deed2b1b32e48e396682c9ff10d31edbb9dc7d1a8396333eb2",
-			"style": "lettered",
+			"ground": "d85edba24529df05258aa8fc7cdaec2463a9902f3ddf0c39545f7d6b9511cb41",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[144, 281, 456, 387],
-					[146, 365, 454, 471]
-				],
-				"subtitle": [
-					[200, 475, 400, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"fr/holy-in-christ": {
 			"ground": "eca2b5bc9589a3a53246e5c83168240229c501ed52f5b0a3581fe73fb0ab5d3a",
@@ -13284,34 +13042,16 @@
 			"caps": false
 		},
 		"fr/stepping-stones-2": {
-			"ground": "eeff2f7a8a6c006168586944f625864372cd295d6475c920a8e11dace39945e3",
-			"style": "lettered",
+			"ground": "f650ccaaecbcb1ffd3623e46243d02dee56bcf04bb4b5e3e73c53b68a8acbd2d",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[81, 323, 519, 429]
-				],
-				"subtitle": [
-					[207, 433, 393, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"fr/susanna-wesley-clarke": {
 			"ground": "28e211df10a3653543772e89a93b1d52b54e3e9a56098e007ed48ed36f0d733a",
@@ -13664,35 +13404,16 @@
 			"caps": false
 		},
 		"fr/the-key-in-my-hand": {
-			"ground": "4e5282f62e27419fcd43863c4611a219b502e5ffbf79c5d754fe9f92460a16e5",
-			"style": "lettered",
+			"ground": "a2d37ac40db717ca905ae0a672a0cee9e9b936f0fa72577d4cf579c00017f420",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[160, 281, 440, 387],
-					[185, 365, 415, 471]
-				],
-				"subtitle": [
-					[233, 475, 367, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"fr/the-life-of-trust": {
 			"ground": "487dbde88d4011bbe8deb7361c5744d74628035b15b662ce5988f33691293c99",
@@ -14636,32 +14357,16 @@
 			]
 		},
 		"he-holds-my-tomorrows": {
-			"ground": "bbb16476e010822ce5752094e5fe9d812e5aa93a8fb38fed7a1bf1dddce33b8d",
-			"style": "lettered",
+			"ground": "a28de5ab04fe7ff645a3555584c15c8e4b124a991223ab6647f9a9dfa78e02c3",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[154, 302, 446, 408],
-					[159, 386, 441, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"heretics": {
 			"ground": "bb100dfb955fdd9c3b9020c6bd510801cc8273da01ea627af6368e87049d87d9",
@@ -14934,34 +14639,16 @@
 			]
 		},
 		"hi/he-holds-my-tomorrows": {
-			"ground": "160b323fc6adfdda69594deec7352f6c75eda1345cb029e564aa874fcd3b7b21",
-			"style": "lettered",
+			"ground": "958bbc1fd32a5c9610f3699e5df17765d569bab2ce88dc323dbfad3d8666093d",
+			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[91, 339, 509, 406]
-				],
-				"subtitle": [
-					[206, 434, 394, 456]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				332,
-				463
-			]
+			"caps": true
 		},
 		"hi/holy-in-christ": {
 			"ground": "d0c0c753db3e878d6d45812ba68e73d8dedf12f52e7bbece60aae85c6233287e",
@@ -15460,34 +15147,16 @@
 			"caps": false
 		},
 		"hi/stepping-stones-2": {
-			"ground": "a709e7762f009d72e1f65041bf925ceaa7f9d1a35eb6a536cfaca98f5f15afbb",
-			"style": "lettered",
+			"ground": "bae85e3f46f72748888b74d146e59b866197d937a394ecdab63053e058ae655b",
+			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[183, 339, 417, 406]
-				],
-				"subtitle": [
-					[234, 434, 366, 456]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				332,
-				463
-			]
+			"caps": true
 		},
 		"hi/talks-to-the-farmer": {
 			"ground": "62daf65bd80882f64c95b7b19f2509750c02bd8029e8a20bcd6eae1e0f425c03",
@@ -15569,34 +15238,16 @@
 			"caps": false
 		},
 		"hi/the-key-in-my-hand": {
-			"ground": "5262675cb2761ddb9a7c15bc89827d314b0eb3c4b14a06aad0488f407238df3b",
-			"style": "lettered",
+			"ground": "6d2d674c2336868e781385486f71c5357c0cf332d3ff59084d16fd257ba0a0ae",
+			"style": "devotional",
 			"volume": null,
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[158, 339, 442, 406]
-				],
-				"subtitle": [
-					[223, 434, 377, 456]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				332,
-				463
-			]
+			"caps": true
 		},
 		"hi/the-masters-indwelling": {
 			"ground": "816c7f25929f98aa0a7a3c8c0ee6b3823ea55cea58cf5aed7f04375ccf6e4e9b",
@@ -18189,32 +17840,16 @@
 			]
 		},
 		"ko/he-holds-my-tomorrows": {
-			"ground": "9b964a8144b7314e55bb6adafaf9f39b7f29c5af5f86bc7605032ba5d6d71bcb",
-			"style": "lettered",
+			"ground": "d79896da6308ff3338e1ccf6d2251f178e9044c0a07f38647a31ba8f2b2e0593",
+			"style": "devotional",
 			"volume": null,
 			"script": "korean",
 			"fonts": "3bacd5ed0b8f77a856411374a7ad876aa84fae2aefab2267d17a8ba778b8fe6c",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[84, 302, 516, 408],
-					[84, 386, 516, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"ko/how-to-succeed-in-the-christian-life": {
 			"ground": "3ab7600f8d3d377d3b4c88eeaeb5a315e7a29532e04ad96cdba60528de3da24c",
@@ -18719,34 +18354,16 @@
 			"caps": false
 		},
 		"ko/stepping-stones-2": {
-			"ground": "e4c9205cdde3c00af25da7f08cac00290eb96894681d82ae7c2e547ab6e31a71",
-			"style": "lettered",
+			"ground": "5d538ddb01f746c61cc3194792e1d2dd30abcff12f808ca0b95d45ecba2dc3e8",
+			"style": "devotional",
 			"volume": null,
 			"script": "korean",
 			"fonts": "714131ee247efd0d3c709d54d9e864efb379a4bdbdc2d075870fd1150c566971",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[176, 321, 424, 427]
-				],
-				"subtitle": [
-					[220, 435, 380, 463]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				332,
-				463
-			]
+			"caps": true
 		},
 		"ko/talks-to-the-farmer-children": {
 			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
@@ -19701,34 +19318,16 @@
 			]
 		},
 		"lg/feasting-at-the-table": {
-			"ground": "4a876fcf200356a386645846fa3f90a0b7fc93b9101e7598b46ee0c1d2750ee7",
-			"style": "lettered",
+			"ground": "069f82a909f129c9adb5253729df1406d89fbf0c248fec73d9f25321d930f918",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[48, 323, 552, 429]
-				],
-				"subtitle": [
-					[136, 433, 464, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"lg/gleanings-among-the-sheaves": {
 			"ground": "615ec2097d96cb4400c7db7c737a88519afdc6fe40470d45c64bd33fcb734cc4",
@@ -19803,36 +19402,16 @@
 			]
 		},
 		"lg/he-holds-my-tomorrows": {
-			"ground": "ba9efcc0ff9fcf3bab82998ec1a9931bb40063e29260a92f64a68a8e169a2492",
-			"style": "lettered",
+			"ground": "691605699e281d4d89ac17ef8cb5cd9a1e607ece3512ee8298a9c304d741d411",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[118, 239, 482, 345],
-					[69, 323, 531, 429],
-					[102, 407, 498, 513]
-				],
-				"subtitle": [
-					[187, 517, 413, 545]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				250,
-				545
-			]
+			"caps": true
 		},
 		"lg/holy-in-christ": {
 			"ground": "a7053bde832951c943cb4340cefd74a00c2366f786e38901be4141b4e2f33998",
@@ -20338,35 +19917,16 @@
 			"caps": false
 		},
 		"lg/stepping-stones-2": {
-			"ground": "debb33c2e054861dd0431082b3bcd60f2bafa76df4da01b2aa0ee9dbaef1ecf5",
-			"style": "lettered",
+			"ground": "8dbfb59a804f242819590f671fee1429c64afac21b2d2ced4958981a5f034d05",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[178, 281, 422, 387],
-					[89, 365, 511, 471]
-				],
-				"subtitle": [
-					[174, 475, 426, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"lg/talks-to-the-farmer": {
 			"ground": "f37087a5e829f7bfd852b17b4991bd6845399519f6cbee43431e137e78dd707b",
@@ -20504,33 +20064,16 @@
 			"caps": false
 		},
 		"lg/the-key-in-my-hand": {
-			"ground": "0e0ed9e6ba243afa3a76939c32433318ee3a548f7410be9eae81ed5e66bdcc01",
-			"style": "lettered",
+			"ground": "5aafa5dfd53827c769a386e3a7bcae8cceb52926343a3f3f9e27ba79f10a22ac",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[137, 260, 463, 366],
-					[189, 344, 411, 450],
-					[89, 428, 511, 534]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				271,
-				523
-			]
+			"caps": true
 		},
 		"lg/the-masters-indwelling": {
 			"ground": "d193efb56c4fc37f166e85a86a41ebf8d4d74a06f4dfee8514addecf75a88fb0",
@@ -22764,31 +22307,16 @@
 			"caps": false
 		},
 		"pt/feasting-at-the-table": {
-			"ground": "6dda8fede6c88612a0558cfba72899da0e536239b5309f39e64faf84eb830672",
-			"style": "lettered",
+			"ground": "e7630001b4f77a6672f3dda7c4ef4c140afc45b86cf56714a4c2ba26452045da",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[44, 344, 556, 450]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				355,
-				439
-			]
+			"caps": true
 		},
 		"pt/first-epistle-of-clement": {
 			"ground": "bdee7ceea0d52cca16494f3ed067de72d9fcbd53385b25630af4fdadd0d33319",
@@ -22907,35 +22435,16 @@
 			]
 		},
 		"pt/he-holds-my-tomorrows": {
-			"ground": "1c8435f7eeba4cd7f8841e5bd680a0dbf348f227a43bf78950419fb0eb7f1dd5",
-			"style": "lettered",
+			"ground": "c3cc1389350026d3be93c4a05c526e0318c96a472e99bb27747624534bfdcafc",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[129, 281, 471, 387],
-					[118, 365, 482, 471]
-				],
-				"subtitle": [
-					[188, 475, 412, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"pt/holy-in-christ": {
 			"ground": "0a9d8e5d0fed57aa37214f941a94e0e4398202dece78c15c60ba0a04f7d43f55",
@@ -23800,34 +23309,16 @@
 			"caps": false
 		},
 		"pt/stepping-stones-2": {
-			"ground": "b0ee0420ec8fe0487b27924192738b7b4b5313b1963d17a0e6f3979363639f7d",
-			"style": "lettered",
+			"ground": "dda35c8b45531780a627f21a7255d81e087d6d26ee5bb7c4ee4b0d7d2beb38e3",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[62, 323, 538, 429]
-				],
-				"subtitle": [
-					[214, 433, 387, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"pt/susanna-wesley-clarke": {
 			"ground": "9da72a6585ef49c782f5e152c88c35d0d08b5233fa06cfa0429d3a38b5a4dfae",
@@ -24112,35 +23603,16 @@
 			"caps": false
 		},
 		"pt/the-key-in-my-hand": {
-			"ground": "056334b16e3f90bf950cfc9e426e116c47e2bf87936403f01f02be03d584e263",
-			"style": "lettered",
+			"ground": "3296a1db929a413caacfde5c12fcf0b4a9aac416185d9fab216dd41220503a5f",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[162, 281, 438, 387],
-					[163, 365, 437, 471]
-				],
-				"subtitle": [
-					[225, 475, 375, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"pt/the-life-of-trust": {
 			"ground": "d63f7e346155f39e6ea127964eb73edf3f15ad95fe5a06c09b53d1a6650f049d",
@@ -25494,31 +24966,16 @@
 			"caps": false
 		},
 		"stepping-stones-2": {
-			"ground": "76acb680d213fb8990fd6c9696cf2369399b6c465421619b9863d6c67a0ffd5d",
-			"style": "lettered",
+			"ground": "b90de3a7de9aa01721bbf91c7a30f03e260a7b7cfcc1a167949745e5a577908c",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[95, 344, 505, 450]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				355,
-				439
-			]
+			"caps": true
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -26221,35 +25678,16 @@
 			"caps": false
 		},
 		"sw/feasting-at-the-table": {
-			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
-			"style": "lettered",
+			"ground": "5302179337ffce791250f09247f009a80cf31ad5a7f7ec3093693395976a6122",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[105, 281, 495, 387],
-					[185, 365, 415, 471]
-				],
-				"subtitle": [
-					[130, 475, 470, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"sw/first-epistle-of-clement": {
 			"ground": "9e6c831f58a66b4f6b8f3208934d8cc04117262a99c127e442ee934f51d6d779",
@@ -26369,35 +25807,16 @@
 			]
 		},
 		"sw/he-holds-my-tomorrows": {
-			"ground": "a5e08074c0c3961bbeb2e0fad9950269955549803e3fa32ecdbcb917e8ec27bd",
-			"style": "lettered",
+			"ground": "67dd07a246d86473704909085f278238368bcb7eedde04b0a414c8f32807679f",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[161, 281, 439, 387],
-					[143, 365, 457, 471]
-				],
-				"subtitle": [
-					[194, 475, 406, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"sw/holy-in-christ": {
 			"ground": "fa0a2d8df59c8476bc15406fc27e3c5880c6c50c6b0c81ccd6fafeb441d5f78b",
@@ -27244,34 +26663,16 @@
 			"caps": false
 		},
 		"sw/stepping-stones-2": {
-			"ground": "127f1ecf4732c67f04f5493e944a456f4550e0842b0aa07b149606675d3b1367",
-			"style": "lettered",
+			"ground": "c4e7feacef9de41df10f6e1daf697dd55a4c515755d11adff3d07097270fb49f",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[45, 323, 555, 429]
-				],
-				"subtitle": [
-					[190, 433, 410, 461]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				334,
-				461
-			]
+			"caps": true
 		},
 		"sw/susanna-wesley-clarke": {
 			"ground": "74e9bdacceb5127ff5419da1c04a4ae2bf967efedb9a23276822e8c7e6b3d5f2",
@@ -27513,35 +26914,16 @@
 			"caps": false
 		},
 		"sw/the-key-in-my-hand": {
-			"ground": "e69451fdae62a7aa5771c2bec54b3702967d1db6ac7fd1c26dcfcda09f2dd3b1",
-			"style": "lettered",
+			"ground": "ef93ef24d5def2eb5a05844d3107d2963a4d9be4f8e7522095495bf4237c59bf",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[122, 281, 478, 387],
-					[67, 365, 533, 471]
-				],
-				"subtitle": [
-					[206, 475, 394, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"sw/the-life-of-trust": {
 			"ground": "241881e37eadc95bae908d63a9fddf27bac4bb058b60cca192b79e03997c334b",
@@ -29396,31 +28778,16 @@
 			"caps": false
 		},
 		"the-key-in-my-hand": {
-			"ground": "4fc3a1d997812a41e23457a73778a1acc60bfb1ea830dc77f7d20d323801d75d",
-			"style": "lettered",
+			"ground": "ff34d2f547ee3f934c1fab687fb17754da7de4921fe9c7c7ccaceb0cc76ac15f",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[57, 344, 543, 450]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				355,
-				439
-			]
+			"caps": true
 		},
 		"the-life-of-god-in-the-soul-of-man": {
 			"ground": "8efcdcfa9a1fa59ec472dab0dbc6a9ee78a0392074dd9815d8e28b8b49cfa996",
@@ -30694,35 +30061,16 @@
 			]
 		},
 		"uk/he-holds-my-tomorrows": {
-			"ground": "1092a9ce5ad6587cbb4c2945824280ce8b44eac20499a302901eb6e3a76616d8",
-			"style": "lettered",
+			"ground": "855e89354c850d6274a5faa37dfb72acebcdef33da7a4fce46488467d6993b8b",
+			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[158, 280, 442, 386],
-					[162, 364, 438, 470]
-				],
-				"subtitle": [
-					[208, 476, 392, 504]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				291,
-				504
-			]
+			"caps": true
 		},
 		"uk/humility-2": {
 			"ground": "74d9e5e5a0f277caeb6300e7abee6317fd48e4a00336997bf33e72e6fa2c8ae4",
@@ -31099,34 +30447,16 @@
 			"caps": false
 		},
 		"uk/stepping-stones-2": {
-			"ground": "c41017037413da4a9543d13901c454d70ac7d67c41d8e5596813d50df3be38fe",
-			"style": "lettered",
+			"ground": "36ac6e7e725faa29d31fa70d34d9c0877fe8ac7008b9970cf6dbc2e916ce4369",
+			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[48, 322, 552, 428]
-				],
-				"subtitle": [
-					[225, 434, 375, 462]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				333,
-				462
-			]
+			"caps": true
 		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
@@ -31141,34 +30471,16 @@
 			"caps": false
 		},
 		"uk/the-key-in-my-hand": {
-			"ground": "d12053e024800d4b7f3030b4e65ecce65e385afc4759ac0ff9e26bae3c14e47b",
-			"style": "lettered",
+			"ground": "92a0d2467daa7c6885dacf4fa7f5795d0bd738db8cc13fd891ba3734b0d0ca25",
+			"style": "devotional",
 			"volume": null,
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[73, 322, 527, 428]
-				],
-				"subtitle": [
-					[209, 434, 391, 462]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				333,
-				462
-			]
+			"caps": true
 		},
 		"uk/the-masters-indwelling": {
 			"ground": "a143f7aa42dbf8a4a522110450bba6c5688089ebd2c75e5b6ac3b032fc0b4ef7",
@@ -31926,32 +31238,16 @@
 			]
 		},
 		"vi/he-holds-my-tomorrows": {
-			"ground": "b491ddab97f222411d1c1aafd594957e4f1a68df15f801f3309d50199691d999",
-			"style": "lettered",
+			"ground": "c256ba17a4464c90a64bd742a3e3a9324e5a8789b41455e3a4e686db159f1b20",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
+			"scrim": 0.8,
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[89, 302, 511, 408],
-					[80, 386, 520, 492]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				313,
-				481
-			]
+			"caps": true
 		},
 		"vi/how-to-succeed-in-the-christian-life": {
 			"ground": "1ca203fe63a5c2939c8c5dbb24a9082e3d0ae77a6a21edc55ccf82e0956fe6fc",
@@ -32463,35 +31759,16 @@
 			"caps": false
 		},
 		"vi/stepping-stones-2": {
-			"ground": "ab7006715545a5c32733b594d2ccc3d6a183b2b44a0cbefa3f1d9ad7f73a5b51",
-			"style": "lettered",
+			"ground": "817068f90b04c30057bb4af48dfaca6c54ad3f54306c9aa40b6eb27c38309246",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.9,
-			"layout": "framed",
+			"layout": "framed-light",
 			"bar": 0,
-			"caps": false,
-			"rows": {
-				"byline": [
-					[168, 102, 432, 131]
-				],
-				"title": [
-					[128, 281, 472, 387],
-					[158, 365, 442, 471]
-				],
-				"subtitle": [
-					[198, 475, 402, 503]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				292,
-				503
-			]
+			"caps": true
 		},
 		"vi/talks-to-the-farmer-children": {
 			"ground": "f0144abc340df0f2982dac2736b3d4f12d58723e8c3fcf2b972c77772e02d293",

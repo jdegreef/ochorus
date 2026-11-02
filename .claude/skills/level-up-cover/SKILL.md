@@ -596,6 +596,13 @@ boxes are Daughters/Sons'. Tune the glow against that gate BEFORE rendering: the
 pool that clears every bar keeps the most picture. Two gates bite a swap: one painting per
 work (`test_no_painting_is_given_to_two_works`) and three works per painter. The Van Gogh
 had just gone to The Lord's Prayer, which moved to Chapman's harvest (Cleveland 173542).
+Gareth Evans' other four (feasting, he-holds, stepping-stones-2, the-key) followed Soar
+into dark ink the same day: `Ground.glow` now takes several pools (top haze, a band behind
+the title, foot haze), each spanning the full width so no oval edge shows. Measure a new
+dark-ink work's boxes by rendering its twins WHITE in the new style first (the manifest
+records `rows` only for white ink), taking the union over every language, then switching
+to INK_DARK. A long translation decides the light: Luganda wraps He Holds My Tomorrows to
+four lines and its subtitle lands on the walkers, so they are paler than in English.
 After Batch 27 NO published book wore a plate — until the next day's imports brought 30 more
 (Batch 28, 2026-10-31: the Fathers, Owen ×4, Taylor ×2, de Sales ×2, Chrysostom ×2, Justin ×2,
 Calvin, Newman, Wesley's Journal, Doddridge, Scougal, Loyola, Ryle). `import_ochorus` and
