@@ -2948,6 +2948,18 @@
 			"bar": 0,
 			"caps": true
 		},
+		"am/sons-of-the-king-3": {
+			"ground": "753d15c8dc20162b99989205eef951f19bebdf1a0295769fb98e1cd07243d60a",
+			"style": "young",
+			"volume": "3",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"am/spurgeon-on-prayer": {
 			"ground": "bdf7c0b358d02cb41fc2516efd1802a7a58cf6c2626c33a84068363fd3cd30f0",
 			"style": "revival",
