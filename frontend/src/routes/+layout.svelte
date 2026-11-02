@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount, untrack } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, goto, onNavigate } from '$app/navigation';
+	import { flyCover, noteCoverTap } from '$lib/coverFlight';
 	import { midBook } from '$lib/midBook.svelte';
 	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
@@ -144,6 +145,13 @@
 		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
 		cancel();
 		location.assign(to!.url.href);
+	});
+
+	// A tapped cover flies into the book page it opens ($lib/coverFlight).
+	onNavigate(flyCover);
+	$effect(() => {
+		document.addEventListener('click', noteCoverTap, true);
+		return () => document.removeEventListener('click', noteCoverTap, true);
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.

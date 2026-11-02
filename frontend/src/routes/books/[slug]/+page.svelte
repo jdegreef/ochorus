@@ -573,7 +573,7 @@
 			     follows any cover — painting, plate or designed raster — without a fake
 			     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
 			<div class="book-hero-cover">
-				<div class="hero-cover">
+				<div class="hero-cover" data-cover-landing>
 					<BookCover {book} priority />
 				</div>
 				{#if book.artwork_credit}
@@ -1299,6 +1299,8 @@
 	.hero-cover {
 		position: relative;
 		filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.12)) drop-shadow(0 12px 20px rgb(0 0 0 / 0.22));
+		/* Where a tapped shelf cover lands ($lib/coverFlight). */
+		view-transition-name: book-cover;
 	}
 	.hero-cover::after {
 		content: '';
