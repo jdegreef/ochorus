@@ -81,12 +81,15 @@ describe('weekLamps', () => {
 		expect(lamps.map((l) => l.state)).toEqual(['lit', 'rest', 'lit', 'waiting', 'ahead', 'ahead', 'ahead']);
 	});
 
-	it('grows each flame with the run it is part of, counting from before the week began', () => {
-		const lamps = weekLamps(['2026-10-30', '2026-10-31', '2026-11-01', '2026-11-02'], today);
-		expect(lamps.slice(0, 2).map((l) => l.run)).toEqual([3, 4]);
+	it('tiers each flame by its run, counting from before the week began (as the streak flame does)', () => {
+		const run = Array.from({ length: 7 }, (_, i) => `2026-10-${25 + i}`).concat('2026-11-01');
+		// 25 Oct – 1 Nov: Sunday 1 Nov is day 8 of the run, past a week — the "flame" tier.
+		const lamps = weekLamps(run, today);
+		expect(lamps[0].level).toBe(2);
+		expect(weekLamps(['2026-11-01'], today)[0].level).toBe(1);
 	});
 
 	it('lights today once it is read', () => {
-		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', run: 1 });
+		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', level: 1 });
 	});
 });

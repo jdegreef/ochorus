@@ -102,14 +102,12 @@ export function weekReadCount(days: Iterable<string>, today: string): number {
 	return count;
 }
 
-/** One of the week's reading lamps (WeekLamps): `lit` on a day read, its
- *  flame `run` days into a run; `waiting` is today, not yet read — trimmed and
- *  ready, never a mark against the reader; `rest` a day gone by unread, the
- *  lamp simply resting; `ahead` a day still to come. */
-export interface Lamp {
+/** A day of the week's reading lamps (WeekLamps): lit if read, with its
+ *  run's tier as `level` (runLevel — the streak flame's and the calendar's). */
+interface Lamp {
 	day: string;
 	state: 'lit' | 'waiting' | 'rest' | 'ahead';
-	run: number;
+	level: 0 | 1 | 2 | 3 | 4;
 }
 
 /** This week's seven lamps, Sunday first (the week weekReadCount counts). */
@@ -120,6 +118,6 @@ export function weekLamps(days: Iterable<string>, today: string): Lamp[] {
 		const day = shiftDay(sunday, i);
 		const run = runs.get(day) ?? 0;
 		const state = run ? 'lit' : day === today ? 'waiting' : day < today ? 'rest' : 'ahead';
-		return { day, state, run };
+		return { day, state, level: runLevel(run) };
 	});
 }

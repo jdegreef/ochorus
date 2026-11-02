@@ -51,6 +51,8 @@
 	const weekCount = $derived(weekReadCount(days, today));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
+	/** "3 of 4 days this week": the goal line, also the lamps' spoken label. */
+	const goalLine = $derived(`${weekCount} ${t('settings.goalOf')} ${goal} ${t('settings.goalDaysThisWeek')}`);
 
 	// Every tile now comes straight from `readingCounts()` — "finished" is a
 	// stored stamp, not a catalog lookup, so all six render at once (kept live by
@@ -103,16 +105,11 @@
 							{#if goalMet}
 								{t('settings.goalMet')}
 							{:else}
-								{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+								{goalLine}
 							{/if}
 						</div>
 						<!-- The week as lamps: which days were read, not only how many. -->
-						<WeekLamps
-							{days}
-							{today}
-							locale={lang.current}
-							label="{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}"
-						/>
+						<WeekLamps {days} {today} {goal} locale={lang.current} label={goalLine} />
 					</div>
 				</div>
 
