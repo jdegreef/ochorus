@@ -1,5 +1,6 @@
 import { auth } from './auth.svelte';
 import { noteSignupSource, type SignupSource } from './signupSource';
+import { isPlainPrimaryClick } from './plainClick';
 
 /**
  * The sign-up panel over the current page (SignInSheet, mounted once in the
@@ -34,7 +35,7 @@ export const signInSheet = new SignInSheet();
  */
 export function plainClick(e: MouseEvent): boolean {
 	if (!auth.enabled || !auth.initialized || auth.user) return false;
-	return !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+	return isPlainPrimaryClick(e);
 }
 
 /**

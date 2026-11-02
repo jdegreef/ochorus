@@ -13,6 +13,7 @@ import { Preferences } from '@capacitor/preferences';
 import { Share } from '@capacitor/share';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { isPlainPrimaryClick } from '../plainClick';
 import { backStack } from './back';
 import { linkTarget } from './links';
 import type { ShareData, ShareResult } from './web';
@@ -231,7 +232,7 @@ export function startAppShell(hooks: AppShellHooks): void {
 	// handler's preventDefault is respected here; and before SvelteKit's
 	// router (on <html>), which leaves alone a click this has claimed.
 	document.body.addEventListener('click', (e) => {
-		if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+		if (!isPlainPrimaryClick(e)) return;
 		const a = (e.target as Element | null)?.closest?.('a[href]');
 		if (!(a instanceof HTMLAnchorElement)) return;
 		const to = linkTarget(a.getAttribute('href')!, location.href, hooks.siteUrl, {
