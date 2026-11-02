@@ -2948,6 +2948,18 @@
 			"bar": 0,
 			"caps": true
 		},
+		"am/sons-of-the-king-1": {
+			"ground": "bffbf332a5f511f665538b573e63547a8caf5c1204c4a94a4bf1281610d541c0",
+			"style": "young",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"am/sons-of-the-king-2": {
 			"ground": "c1ea0644b201ef8f96a7cc56e3e7a34b0b0c8fcb518825d3615dca617d0d6025",
 			"style": "young",
