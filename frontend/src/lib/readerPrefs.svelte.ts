@@ -193,8 +193,13 @@ interface Stored {
 	margin: Margin;
 	paged: boolean;
 	tapToScroll: boolean;
-	/** A candle's warm glow over the top of the page, in Lamplight (opt-in). */
+	/** A candle's warm glow over the top of the page, in Lamplight (on unless
+	 *  the reader turns it off). */
 	candlelight: boolean;
+	// Whether the reader has flipped Candlelight themselves. It shipped off by
+	// default, and every save since wrote `candlelight: false` — so a stored
+	// value counts only once it was chosen; otherwise the default applies.
+	candlelightChosen: boolean;
 	preferModern: boolean;
 	/** The young-reader-layout settings the reader has set themselves — those
 	 *  the layer leaves alone. */
@@ -216,7 +221,8 @@ const DEFAULTS: Stored = {
 	// of the sibling idea (edge-tap to change chapter) was a footgun on phones
 	// and was removed; this one only turns on when a reader asks for it.
 	tapToScroll: false,
-	candlelight: false,
+	candlelight: true,
+	candlelightChosen: false,
 	preferModern: false,
 	chosen: [],
 	youngLayout: true
@@ -310,7 +316,11 @@ export function load(): Stored & { migrated: boolean } {
 		paged: typeof raw.paged === 'boolean' ? raw.paged : firstRun.paged,
 		tapToScroll:
 			typeof raw.tapToScroll === 'boolean' ? raw.tapToScroll : DEFAULTS.tapToScroll,
-		candlelight: typeof raw.candlelight === 'boolean' ? raw.candlelight : DEFAULTS.candlelight,
+		candlelight:
+			raw.candlelightChosen === true && typeof raw.candlelight === 'boolean'
+				? raw.candlelight
+				: DEFAULTS.candlelight,
+		candlelightChosen: raw.candlelightChosen === true,
 		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern,
 		youngLayout: typeof raw.youngLayout === 'boolean' ? raw.youngLayout : DEFAULTS.youngLayout
 	};
@@ -338,6 +348,7 @@ class ReaderPrefs {
 	/** Opt-in: in scroll mode, a tap in the lower part of the screen pages down. */
 	tapToScroll = $state(DEFAULTS.tapToScroll);
 	candlelight = $state(DEFAULTS.candlelight);
+	candlelightChosen = $state(DEFAULTS.candlelightChosen);
 	/** When a Modern English edition exists, open it by default (device-local). */
 	preferModern = $state(DEFAULTS.preferModern);
 	#loaded = false;
@@ -376,6 +387,7 @@ class ReaderPrefs {
 		this.margin = rest.margin;
 		this.tapToScroll = rest.tapToScroll;
 		this.candlelight = rest.candlelight;
+		this.candlelightChosen = rest.candlelightChosen;
 		this.#applyCandle();
 		this.preferModern = rest.preferModern;
 		this.youngLayout = rest.youngLayout;
@@ -393,6 +405,7 @@ class ReaderPrefs {
 			margin: this.margin,
 			tapToScroll: this.tapToScroll,
 			candlelight: this.candlelight,
+			candlelightChosen: this.candlelightChosen,
 			preferModern: this.preferModern,
 			chosen: this.#chosen,
 			youngLayout: this.youngLayout
@@ -467,6 +480,7 @@ class ReaderPrefs {
 	}
 	setCandlelight(v: boolean) {
 		this.candlelight = v;
+		this.candlelightChosen = true;
 		this.#save();
 		this.#applyCandle();
 	}
@@ -493,6 +507,7 @@ class ReaderPrefs {
 		this.margin = DEFAULTS.margin;
 		this.tapToScroll = DEFAULTS.tapToScroll;
 		this.candlelight = DEFAULTS.candlelight;
+		this.candlelightChosen = DEFAULTS.candlelightChosen;
 		this.#applyCandle();
 		this.preferModern = DEFAULTS.preferModern;
 		this.youngLayout = DEFAULTS.youngLayout;
