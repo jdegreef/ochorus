@@ -11,11 +11,12 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { feastDay, liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
 	import { artCredit, SEASON_ART, type ArtCredit } from '$lib/heroArt';
-	import { localDayNumber } from '$lib/dailyArticles';
 	import { dayPart } from '$lib/greeting';
+	import { prayerHour } from '$lib/prayerHours';
 	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 	import HeroFeast from '$lib/components/HeroFeast.svelte';
+	import HeroSky from '$lib/components/HeroSky.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { chapterMeter } from '$lib/components/WorkCard.svelte';
@@ -56,6 +57,13 @@
 	 * light of a sunrise breaks along its top (HeroFeast; Pentecost's
 	 * flames are on the logo, in the layout). Decoration only: the season line
 	 * already names the day.
+	 *
+	 * The sky follows the reader's clock, by the hours of prayer
+	 * ($lib/prayerHours): a wash of the hour's colour along the band's top
+	 * (dawn's peach at Lauds, a midday blue at Sext, sunset rose at Vespers,
+	 * indigo at Compline), the sun — or by night the moon, among stars — on
+	 * its arc across it (HeroSky), and the hour's name after the season on a
+	 * wide screen (a phone's date line has no room for a third part). All decoration under the date line: the greeting is the news.
 	 */
 	let { name, current }: { name: string; current: ResumeBook | null } = $props();
 	const t = i18n.t;
@@ -70,6 +78,7 @@
 	const season = $derived(liturgicalSeason(now));
 	const seasonArt = $derived(SEASON_ART[season]);
 	const feast = $derived(feastDay(now));
+	const hour = $derived(prayerHour(now.getHours()));
 
 	// The current book's painting washes the band; a plate, or a painting that
 	// failed to load, leaves it to the season's.
@@ -135,14 +144,16 @@
 	let offscreen = $state(false);
 
 	onMount(() => {
-		// A new day, or a new part of it: the date, season and greeting follow.
-		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}`;
+		// The clock moves on: the date, season, greeting and sky follow — when
+		// the tab comes back into view, and every few minutes while it is in
+		// view, so the sun keeps crossing the band (everything derived from
+		// `now` settles by value, so a tick that changes nothing redraws
+		// nothing but the sun's place).
 		const onVisible = () => {
-			if (document.visibilityState !== 'visible') return;
-			const d = new Date();
-			if (turn(d) !== turn(now)) now = d;
+			if (document.visibilityState === 'visible') now = new Date();
 		};
 		document.addEventListener('visibilitychange', onVisible);
+		const tick = setInterval(onVisible, 5 * 60_000);
 		// The drift is paused while the hero is scrolled away: nobody sees it,
 		// and an endless animation keeps the compositor awake for the whole
 		// visit to the dashboard.
@@ -150,6 +161,7 @@
 		io.observe(hero);
 		return () => {
 			document.removeEventListener('visibilitychange', onVisible);
+			clearInterval(tick);
 			io.disconnect();
 		};
 	});
@@ -172,15 +184,18 @@
 			/>
 		</div>
 	{/if}
-	<div class="home-hero-scrim"></div>
+	<div class="home-hero-scrim" style:--sky="var(--sky-{hour})"></div>
 	<div class="home-hero-grain"></div>
 	{#if feast}<HeroFeast {feast} />{/if}
+	<HeroSky {now} {feast} />
 	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-8 pt-9 sm:pb-9 sm:pt-11">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
 					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"
-					></span>{i18n.t(`liturgical.${season}`)}</span
+					></span>{i18n.t(`liturgical.${season}`)}<span class="home-hero-hour hidden sm:inline"
+						><span class="sr-only">, </span>{i18n.t(`hours.${hour}`)}</span
+					></span
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
@@ -299,8 +314,18 @@
 		position: absolute;
 		inset: 0;
 	}
+	/* The scrim over the hour's sky (--sky, $lib/prayerHours), which washes
+	   in along the band's top: one layer, so the sky costs no extra one over
+	   the drifting wash, and the scrim keeps the text's contrast above it. */
 	.home-hero-scrim {
-		background: var(--hero-scrim);
+		background:
+			var(--hero-scrim),
+			linear-gradient(
+				to bottom,
+				color-mix(in srgb, var(--sky, transparent) 70%, transparent) 0%,
+				color-mix(in srgb, var(--sky, transparent) 28%, transparent) 35%,
+				transparent 65%
+			);
 	}
 	/* The page's paper tooth (the light specks .night-band uses in every
 	   theme), so the band reads as canvas rather than a screen gradient. */
@@ -412,5 +437,13 @@
 		height: 0.55em;
 		border-radius: 50%;
 		box-shadow: 0 0 0 2px var(--hero-ink-faint);
+	}
+	/* The hour's name after the season — on a wide screen only: on a phone
+	   the date line has no room left for a third part. */
+	/* The season line's flex gap stands before the dot; this, after it. */
+	.home-hero-hour::before {
+		content: '·';
+		margin-inline-end: 0.5em;
+		opacity: 0.6;
 	}
 </style>
