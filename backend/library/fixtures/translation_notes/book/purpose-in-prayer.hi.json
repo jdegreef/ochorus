@@ -3,7 +3,7 @@
  "slug": "purpose-in-prayer",
  "language": "hi",
  "job_issue": 7068,
- "pull_request": null,
+ "pull_request": 7113,
  "note": [
   "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — parsed whole from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx; 31,104 verses, section headings, notes and cross-reference apparatus stripped). Translators looked up every quotation, cited or not.",
   "A `mined` row means the translator reported the quotation as pasted verbatim AND the finished chapter body contains an exact substring of that IRV verse of at least 45 characters (or ≥90% of a shorter verse) — measured, not claimed. A verse re-personed, re-tensed or re-aimed to fit Bounds's sentence is self_rendered even where a long span matches. `block_index` is a GLOBAL 0-based index over the book's blocks in chapter order.",
