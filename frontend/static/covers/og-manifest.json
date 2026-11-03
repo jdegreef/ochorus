@@ -4759,6 +4759,18 @@
 				514
 			]
 		},
+		"ar/purpose-in-prayer": {
+			"ground": "e44594136fedbc5c0af1767810b5eafe125344b4f43ccbc011fc9fe8b547bdf0",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/rise-up-men-of-god-2": {
 			"ground": "fccef2e782dd899e510d91e8c007ded6f397cbf3fe1dd2da56c771895ebd3809",
 			"style": "originals",
