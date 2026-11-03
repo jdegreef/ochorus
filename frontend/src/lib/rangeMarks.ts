@@ -84,6 +84,9 @@ function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark | Segmen
 	}
 }
 
+/** Containers already listening for the end of a fresh mark's sweep. */
+const brushed = new WeakSet<HTMLElement>();
+
 /**
  * Render `marks` into the container: restore each touched paragraph to its
  * pristine HTML, then wrap every segment. `onMarkClick` fires when a rendered
@@ -135,6 +138,15 @@ export function renderMarks(
 			if (m.s >= end) continue; // text changed since the mark was made
 			wrapRange(block, m.s, end, m, fresh);
 		}
+	}
+	// A fresh mark is fresh for its sweep only: then it is drawn like the rest
+	// (`clone` per-line ends, the hover shade), not kept apart until the next
+	// render. Added once per container; it ignores every other animation.
+	if (!brushed.has(container)) {
+		brushed.add(container);
+		container.addEventListener('animationend', (ev) => {
+			if (ev.animationName === 'mark-brush') (ev.target as Element).classList.remove('fresh');
+		});
 	}
 	// One delegated listener; replaced on each render via property assignment.
 	container.onclick = (ev: MouseEvent) => {

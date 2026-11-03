@@ -33,4 +33,15 @@ describe('a highlight just made', () => {
 		renderMarks(container, [old, ...made], () => {});
 		expect(fresh()).toEqual([]);
 	});
+
+	it('is fresh for its sweep only, then drawn like the rest', () => {
+		renderMarks(container, [old, ...made], () => {}, [], undefined, 'new');
+		const piece = container.querySelector('mark.range-mark.fresh')!;
+		piece.dispatchEvent(Object.assign(new Event('animationend', { bubbles: true }), { animationName: 'mark-brush' }));
+		expect(piece.classList.contains('fresh')).toBe(false);
+		// Another animation ending (the drop cap's ink, say) leaves the rest alone.
+		const other = container.querySelectorAll('mark.range-mark.fresh')[0]!;
+		other.dispatchEvent(Object.assign(new Event('animationend', { bubbles: true }), { animationName: 'ink-in' }));
+		expect(other.classList.contains('fresh')).toBe(true);
+	});
 });
