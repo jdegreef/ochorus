@@ -9,15 +9,19 @@
  */
 export type PrayerHour = 'vigils' | 'lauds' | 'terce' | 'sext' | 'none' | 'vespers' | 'compline';
 
+/** The sun is up from Lauds until Compline; the moon has the rest. */
+const SUNRISE = 5;
+const SUNSET = 20;
+
 /** Each hour from the clock hour it begins at, in order through the day. */
 const BEGINS: readonly [number, PrayerHour][] = [
 	[0, 'vigils'],
-	[5, 'lauds'],
+	[SUNRISE, 'lauds'],
 	[8, 'terce'],
 	[11, 'sext'],
 	[14, 'none'],
 	[17, 'vespers'],
-	[20, 'compline']
+	[SUNSET, 'compline']
 ];
 
 export function prayerHour(hour: number): PrayerHour {
@@ -25,10 +29,6 @@ export function prayerHour(hour: number): PrayerHour {
 	for (const [from, name] of BEGINS) if (hour >= from) named = name;
 	return named;
 }
-
-/** The sun is up from Lauds until Compline; the moon has the rest. */
-const SUNRISE = 5;
-const SUNSET = 20;
 
 /**
  * Where the sun (by day) or the moon (by night) stands on its arc over the
