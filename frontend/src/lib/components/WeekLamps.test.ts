@@ -17,9 +17,12 @@ afterEach(() => {
 
 // Wednesday 4 November 2026; the week runs Sunday 1 – Saturday 7.
 const today = '2026-11-04';
-function draw(days: string[], goal: number) {
+function draw(days: string[], goal: number, firstDay = 0) {
 	target = document.body.appendChild(document.createElement('div'));
-	component = mount(WeekLamps, { target, props: { days, today, goal, locale: 'en' } }) as Record<string, unknown>;
+	component = mount(WeekLamps, { target, props: { days, today, goal, locale: 'en', firstDay } }) as Record<
+		string,
+		unknown
+	>;
 	flushSync();
 	const lamps = [...target.querySelectorAll<HTMLElement>('.lamp')];
 	return {
@@ -30,8 +33,9 @@ function draw(days: string[], goal: number) {
 }
 
 describe('WeekLamps', () => {
-	it('draws the week Sunday first, with its initials', () => {
+	it('draws the week from the reader\'s first day, with its initials', () => {
 		expect(draw([], 3).initials).toBe('SMTWTFS');
+		expect(draw([], 3, 1).initials).toBe('MTWTFSS');
 	});
 
 	it('rings the lamp that met the goal', () => {

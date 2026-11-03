@@ -12,6 +12,7 @@
 	import { readingGoal } from '$lib/readingGoal.svelte';
 	import { currentStreak, longestStreak, localToday, streakTier } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
+	import { weekStart } from '$lib/planSchedule';
 	import { readingCounts } from '$lib/readingStats';
 
 	/**
@@ -48,7 +49,9 @@
 	// The flame grows with its tier: spark, flame, blaze, crown (streak.ts); the
 	// halo, fill and crown ring are the `.streak-flame` rules in app.css.
 	const flameSize = $derived({ spark: 28, flame: 30, blaze: 34, crown: 38 }[tier]);
-	const weekCount = $derived(weekReadCount(days, today));
+	// The reader's own week (Monday in most of the world), as the plan calendar's.
+	const firstDay = $derived(weekStart(lang.current));
+	const weekCount = $derived(weekReadCount(days, today, firstDay));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
 
@@ -108,7 +111,7 @@
 							{/if}
 						</div>
 						<!-- The week as lamps: which days were read, not only how many. -->
-						<WeekLamps {days} {today} {goal} locale={lang.current} />
+						<WeekLamps {days} {today} {goal} {firstDay} locale={lang.current} />
 					</div>
 				</div>
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildHeatmap, weekLamps, weekReadCount } from './heatmap';
+import { buildHeatmap, weekBegins, weekLamps, weekReadCount } from './heatmap';
 import { shiftDay as shift } from './streak';
 
 describe('buildHeatmap', () => {
@@ -97,5 +97,34 @@ describe('weekLamps', () => {
 
 	it('lights today once it is read', () => {
 		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', level: 1 });
+	});
+});
+
+describe('a week that begins on the reader\'s own first day', () => {
+	// Sunday 1 – Saturday 7 November 2026; a Monday-first week runs 2 – 8.
+	it('finds the week\'s first day', () => {
+		expect(weekBegins('2026-11-04')).toBe('2026-11-01'); // Sunday-first by default
+		expect(weekBegins('2026-11-04', 1)).toBe('2026-11-02');
+		// A Sunday ends a Monday-first week: its week began six days before.
+		expect(weekBegins('2026-11-08', 1)).toBe('2026-11-02');
+		expect(weekBegins('2026-11-02', 1)).toBe('2026-11-02');
+	});
+
+	it('counts a Monday-first reader\'s Sunday in the week it ends', () => {
+		const days = ['2026-11-01', '2026-11-02', '2026-11-08'];
+		// Sunday 8 Nov: a Sunday-first week is just that day; a Monday-first one
+		// began on Monday 2 Nov and holds both it and the Sunday.
+		expect(weekReadCount(days, '2026-11-08')).toBe(1);
+		expect(weekReadCount(days, '2026-11-08', 1)).toBe(2);
+		// …and Sunday 1 Nov belongs to the week before, not this one.
+		expect(weekReadCount(days, '2026-11-04', 1)).toBe(1);
+	});
+
+	it('lays the lamps out from that first day, and agrees with the count', () => {
+		const days = ['2026-11-01', '2026-11-02'];
+		const lamps = weekLamps(days, '2026-11-04', 1);
+		expect(lamps[0].day).toBe('2026-11-02');
+		expect(lamps[6].day).toBe('2026-11-08');
+		expect(lamps.filter((l) => l.state === 'lit')).toHaveLength(weekReadCount(days, '2026-11-04', 1));
 	});
 });

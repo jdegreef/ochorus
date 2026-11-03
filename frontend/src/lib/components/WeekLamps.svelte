@@ -3,7 +3,8 @@
 	import { FLAME_PATH } from '$lib/flamePath';
 
 	/**
-	 * This week as seven small oil lamps (the dashboard's reading panel, under
+	 * This week as seven small oil lamps, from the reader's own first day of the
+ * week (the dashboard's reading panel, under
 	 * the goal line): a day read is lit, its flame sized by the run's tier (the
 	 * streak flame's and the calendar's), and the lamp that reached this week's
 	 * goal wears a gold ring; today, not yet read, is trimmed and waiting; a day
@@ -14,9 +15,15 @@
 	 * The row runs in reading order, so it reverses with the text in a
 	 * right-to-left locale.
 	 */
-	let { days, today, goal, locale }: { days: string[]; today: string; goal: number; locale: string } = $props();
+	let {
+		days,
+		today,
+		goal,
+		locale,
+		firstDay
+	}: { days: string[]; today: string; goal: number; locale: string; firstDay: number } = $props();
 
-	const lamps = $derived(weekLamps(days, today));
+	const lamps = $derived(weekLamps(days, today, firstDay));
 	/** The lamp whose lighting met the goal: the goal-th lit one, if any. */
 	const goalDay = $derived(lamps.filter((l) => l.state === 'lit')[goal - 1]?.day);
 	const weekdays = $derived(new Intl.DateTimeFormat(locale, { weekday: 'narrow', timeZone: 'UTC' }));

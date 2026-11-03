@@ -33,6 +33,7 @@
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { currentStreak, longestStreak, localToday } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
+	import { weekStart } from '$lib/planSchedule';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import StatTiles from '$lib/components/StatTiles.svelte';
 	import { buildReminderICS, DEFAULT_REMINDER_TIME, readReminderTime, REMINDER_TIME_KEY } from '$lib/reminder';
@@ -161,7 +162,7 @@
 	const longest = $derived(longestStreak(activityDays));
 	// Weekly goal — the target lives in readingGoal (a device preference); progress
 	// is this week's read-day count from the same activity log.
-	const weekCount = $derived(weekReadCount(activityDays, localToday()));
+	const weekCount = $derived(weekReadCount(activityDays, localToday(), weekStart(lang.current)));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
 
