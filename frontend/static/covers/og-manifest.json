@@ -7107,6 +7107,36 @@
 			"bar": 0,
 			"caps": false
 		},
+		"es/christ-the-healer": {
+			"ground": "a86d85269206d0bc838012b22789e0de04809ffccc7e63375d102e34eed7a2f3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[56, 223, 544, 305]
+				],
+				"subtitle": [
+					[78, 378, 522, 399]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				399
+			]
+		},
 		"es/clothed-with-strength-and-dignity": {
 			"ground": "039b1da6a59b53bcbf1d793f048281927c6444fd1346360d8add701b47d6b606",
 			"style": "originals",
