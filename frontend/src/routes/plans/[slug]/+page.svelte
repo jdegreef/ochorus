@@ -445,6 +445,18 @@
 				<!-- A status line, not a control: a finished plan has no action, so it
 				     must not wear a button's chrome (it read as a disabled button). -->
 				<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
+				<!-- The garden in full flower — and on the tap that finished the plan,
+				     its last flower grows in here (justRead), not lost with the card. -->
+				<div class="mt-3">
+					<PlanGarden
+						dayCount={plan.day_count}
+						done={doneSet}
+						next={null}
+						grow={justRead}
+						hue={planMeta(plan.slug).accent}
+						label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+					/>
+				</div>
 				<ForPromo place="plan-done" class="mt-2" />
 			{/if}
 
