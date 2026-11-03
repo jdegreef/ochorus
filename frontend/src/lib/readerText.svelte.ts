@@ -30,6 +30,7 @@ import { findQueryHits } from '$lib/searchHits';
 import { listen } from '$lib/listen.svelte';
 import { define } from '$lib/define.svelte';
 import { scripture } from '$lib/scripture.svelte';
+import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
 import { spokenText, blankFootnoteMarkers } from '$lib/listenText';
 import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
@@ -187,8 +188,7 @@ export class ReaderText {
 		if (!a?.dataset.ref) return false;
 		// A modified click on a linked reference (new tab, new window) is the
 		// reader asking for the scripture page itself: let the browser have it.
-		if (a.hasAttribute('href') && (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0))
-			return false;
+		if (a.hasAttribute('href') && !isUnmodifiedPrimaryClick(e)) return false;
 		e.preventDefault();
 		const r = a.getBoundingClientRect();
 		scripture.show(

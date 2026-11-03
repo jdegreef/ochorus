@@ -160,11 +160,12 @@ describe('ReaderText scripture taps', () => {
 		expect(handled).toBe(false);
 	});
 
-	// Cmd/Ctrl-click on a linked reference opens its scripture page in a new tab.
+	// Cmd/Ctrl-click on a linked reference opens its scripture page in a new tab
+	// (and alt-click is the browser's too: download, on most).
 	it('lets a modified click on a linked reference through to the browser', () => {
 		const linked =
 			'<a class="scripture-ref" href="/scripture/john/17/" data-ref="John 17"><span>John 17</span></a>';
-		for (const init of [{ metaKey: true }, { ctrlKey: true }, { shiftKey: true }, { button: 1 }]) {
+		for (const init of [{ metaKey: true }, { ctrlKey: true }, { shiftKey: true }, { altKey: true }, { button: 1 }]) {
 			const { handled, e } = clickOn(linked, init);
 			expect(handled).toBe(false);
 			expect(e.defaultPrevented).toBe(false);
