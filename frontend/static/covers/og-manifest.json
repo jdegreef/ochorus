@@ -15111,6 +15111,18 @@
 				506
 			]
 		},
+		"hi/purpose-in-prayer": {
+			"ground": "e27868da576b2837eb836527a7b34302a6d867efd19291f08b629d200774a74f",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/rise-up-men-of-god-2": {
 			"ground": "eaf5c07b9d4d5091dd33bd0936f1635a1113cfe0002c51f513959ddafab33728",
 			"style": "originals",
