@@ -131,7 +131,7 @@
 	];
 </script>
 
-<!-- A full-width opt-in switch: Candlelight, Tap to page down. -->
+<!-- A full-width on/off switch: Candlelight (on by default), Tap to page down (off). -->
 {#snippet onOff(on: boolean, set: (v: boolean) => void, label: string)}
 	<button
 		class="rc-opt mt-1.5 w-full rounded-sm border px-2 py-1.5 text-small"
