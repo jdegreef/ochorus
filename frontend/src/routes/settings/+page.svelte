@@ -574,6 +574,27 @@
 					</div>
 				</div>
 
+				<!-- Candlelight — a reader pref (readerPrefs), shown on reading pages in
+				     the Dark (Lamplight) theme; also in the reader's Aa panel. -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('reader.candlelight')}</div>
+						<div class="setting-sub">{t('settings.candlelightSub')}</div>
+					</div>
+					<div class="seg">
+						<button
+							class:active={readerPrefs.candlelight}
+							aria-pressed={readerPrefs.candlelight}
+							onclick={() => readerPrefs.setCandlelight(true)}>{t('settings.candlelightShow')}</button
+						>
+						<button
+							class:active={!readerPrefs.candlelight}
+							aria-pressed={!readerPrefs.candlelight}
+							onclick={() => readerPrefs.setCandlelight(false)}>{t('settings.candlelightHide')}</button
+						>
+					</div>
+				</div>
+
 				<!-- Library colours — a palette over the theme above (which stays the
 				     brightness choice). Swatches, not a segmented row: a colour is
 				     chosen by sight. -->
