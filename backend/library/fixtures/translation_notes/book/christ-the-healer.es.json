@@ -3,7 +3,7 @@
  "slug": "christ-the-healer",
  "language": "es",
  "job_issue": 6989,
- "pull_request": null,
+ "pull_request": 7119,
  "note": [
   "Scripture source: no clean modern Reina-Valera text is reachable from the session (the ebible mirror's spa_rv is archaic RV1909), so verses were mined from the shipped es corpus (42,455 en/es quotation pairs aligned from blocks with equal quotation counts across 220 aligned works); everything else was rendered in modern Reina-Valera (RV1960) register and is self_rendered.",
   "Translated from the English as the deploy settles it (corrections.settled_chapter_body); this slug's BODY_CORRECTIONS were already baked into the English fixture.",
