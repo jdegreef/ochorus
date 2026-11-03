@@ -3,7 +3,7 @@
  "slug": "around-the-wicket-gate",
  "language": "uk",
  "job_issue": 7033,
- "pull_request": null,
+ "pull_request": 7112,
  "note": [
   "Scripture source: Kulish 1905 (PD), from the ebible mirror USFM (bibles/ukr_pan), all 66 books; Kulish inner mark ‟ normalised to “. Translators looked up every quotation (cited or not) in that verse file and copied the bytes by script.",
   "Translated from the English as the deploy settles it (corrections.settled_chapter_body).",
