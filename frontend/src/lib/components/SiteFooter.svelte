@@ -25,6 +25,7 @@
 		forPath
 	} from '$lib/forLinks';
 	import { SITE_URL } from '$lib/config';
+	import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
 	import { nativeShare } from '$lib/share';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
@@ -518,8 +519,8 @@
 							// doing nothing is the kind of break nobody reports.
 							// The new tab resolves its locale from the URL prefix on load, so
 							// it needs no choice recorded; only the in-place switch below does.
-							if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
-								return;
+							// (Modifiers and button only, not defaultPrevented: isUnmodifiedPrimaryClick.)
+							if (!isUnmodifiedPrimaryClick(e)) return;
 							e.preventDefault();
 							lang.choose(l.code);
 						}}>{@render tile(l.code, l.native_name)}</a
