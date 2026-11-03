@@ -499,6 +499,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "sons-of-the-king"
+  ],
+  "language": "es",
+  "title": "Hijos del Rey – 30 días con Dios para chicos",
+  "description": "Devocionales de treinta días para chicos de 9 a 12 años: quién eres como hijo del Rey, la fuerza bajo control, y los hombres valientes de la Biblia y de la historia que confiaron en él.",
+  "created_at": "2026-11-03T00:00:00Z",
+  "updated_at": "2026-11-03T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "daughters-of-the-king"
   ],
   "language": "fr",
