@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { monthGrid, parseIsoDay, readsOn, schedulePlan, weekStart } from './planSchedule';
+import { describe, expect, it, vi } from 'vitest';
+import { monthGrid, parseIsoDay, readsOn, schedulePlan, WEEK_START_FALLBACK, weekStart } from './planSchedule';
 import { localToday as isoDay } from './streak';
 import { buildScheduleICS } from './reminder';
 
@@ -68,6 +68,23 @@ describe('weekStart', () => {
 	it('is a weekday number, Monday when the locale cannot say', () => {
 		expect(weekStart('not a tag!!')).toBe(1);
 		expect([0, 1, 6]).toContain(weekStart('en-US'));
+	});
+
+	// The site's languages (project.inlang). Where an engine has no Intl week
+	// info, the fallback must give what Intl gives where it does.
+	const SITE = ['en', 'es', 'sw', 'lg', 'fr', 'pt', 'am', 'ar', 'hi', 'ko', 'uk', 'vi'];
+
+	it('falls back, without Intl week info, to the day Intl would have given', () => {
+		const withIntl = Object.fromEntries(SITE.map((l) => [l, weekStart(l)]));
+		const RealLocale = Intl.Locale;
+		// An engine without week info (Firefox, older WebKit).
+		vi.stubGlobal('Intl', { ...Intl, Locale: class { language: string; constructor(tag: string) { this.language = new RealLocale(tag).language; } } });
+		try {
+			expect(Object.fromEntries(SITE.map((l) => [l, weekStart(l)]))).toEqual(withIntl);
+		} finally {
+			vi.unstubAllGlobals();
+		}
+		expect(Object.keys(WEEK_START_FALLBACK).every((l) => SITE.includes(l))).toBe(true);
 	});
 });
 

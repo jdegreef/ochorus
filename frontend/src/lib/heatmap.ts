@@ -89,9 +89,11 @@ export function buildHeatmap(
 
 /**
  * The first day of `today`'s week, for a week that begins on `firstDay`
- * (0 = Sunday … 6 = Saturday; the reader's own is planSchedule.weekStart).
+ * (0 = Sunday … 6 = Saturday). Callers pass the reader's own,
+ * planSchedule.weekStart(lang) — required, so no surface counts a different
+ * week from the rest.
  */
-export function weekBegins(today: string, firstDay = 0): string {
+export function weekBegins(today: string, firstDay: number): string {
 	return shiftDay(today, -((weekday(today) - firstDay + 7) % 7));
 }
 
@@ -99,7 +101,7 @@ export function weekBegins(today: string, firstDay = 0): string {
  * Distinct days read in the current week (its first day through `today`) —
  * the numerator for a "days per week" goal. Never counts future days.
  */
-export function weekReadCount(days: Iterable<string>, today: string, firstDay = 0): number {
+export function weekReadCount(days: Iterable<string>, today: string, firstDay: number): number {
 	const read = new Set(days);
 	let count = 0;
 	for (let day = weekBegins(today, firstDay); day <= today; day = shiftDay(day, 1)) {
@@ -117,7 +119,7 @@ export interface Lamp {
 }
 
 /** This week's seven lamps from its first day (the week weekReadCount counts). */
-export function weekLamps(days: Iterable<string>, today: string, firstDay = 0): Lamp[] {
+export function weekLamps(days: Iterable<string>, today: string, firstDay: number): Lamp[] {
 	const runs = runLengths(days);
 	const first = weekBegins(today, firstDay);
 	return Array.from({ length: 7 }, (_, i) => {

@@ -49,9 +49,24 @@ export function schedulePlan<T>(items: T[], start: Date, rule: ReadingDays): { i
 }
 
 /**
+ * The first day of the week where the browser can't say (no Intl week info:
+ * Firefox, older WebKit), for the site's own languages — what Intl gives
+ * where it can (planSchedule.test checks they agree), so every engine starts
+ * a reader's week on the same day. Anything else falls back to Monday.
+ */
+export const WEEK_START_FALLBACK: Readonly<Record<string, number>> = {
+	en: 0,
+	pt: 0,
+	am: 0,
+	hi: 0,
+	ko: 0,
+	ar: 6
+};
+
+/**
  * The locale's first day of the week (0 = Sunday … 6 = Saturday): Sunday for
  * en-US, Monday for most of the world. Intl's week info where the browser has
- * it, else Monday.
+ * it, else WEEK_START_FALLBACK by language, else Monday.
  */
 export function weekStart(lang: string): number {
 	try {
@@ -61,6 +76,7 @@ export function weekStart(lang: string): number {
 		};
 		const first = (loc.getWeekInfo?.() ?? loc.weekInfo)?.firstDay;
 		if (first) return first % 7; // Intl counts Monday 1 … Sunday 7
+		return WEEK_START_FALLBACK[loc.language] ?? 1;
 	} catch {
 		// An unknown tag: fall through.
 	}
