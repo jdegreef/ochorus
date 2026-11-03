@@ -209,11 +209,15 @@ export class ReaderText {
 		return body ? Array.from(body.children).map((el) => el.textContent ?? '') : undefined;
 	}
 
+	/** The highlight just made here, brushed in on the next paint and only
+	 *  then (rangeMarks `fresh`) — never a mark restored, recoloured or synced. */
+	#justMarked: string | undefined;
+
 	onHighlight = (segments: Segment[], color: string): void => {
 		const paras = this.#paras();
 		const existing = marks.groupCovering(segments, paras);
 		if (!existing) {
-			marks.add(segments, undefined, color, paras);
+			this.#justMarked = marks.add(segments, undefined, color, paras);
 			nudgeHighlightMilestone();
 		}
 		else if (marks.getColor(existing) === color) removeMarkUndoable(existing);
@@ -253,7 +257,7 @@ export class ReaderText {
 		} else if (this.pending.length) {
 			// Saved with no words is still a highlight in the colour picked — the
 			// reader pressed Save, so something is kept.
-			marks.add(this.pending, this.draft.trim() || undefined, this.color, this.#paras());
+			this.#justMarked = marks.add(this.pending, this.draft.trim() || undefined, this.color, this.#paras());
 			nudgeHighlightMilestone();
 		}
 		this.open = false;
@@ -390,7 +394,8 @@ export class ReaderText {
 				)
 			)
 				return;
-			renderMarks(body, list, this.#editMark, hits, paras);
+			renderMarks(body, list, this.#editMark, hits, paras, this.#justMarked);
+			this.#justMarked = undefined;
 
 			// Once per arrival: bring the first match into view. Guarded, or every
 			// highlight edit would yank the reader back up the page.
