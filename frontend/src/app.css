@@ -1489,6 +1489,32 @@
 .reading mark.range-mark:hover {
 	background: color-mix(in srgb, var(--mark-hue) 42%, transparent);
 }
+/* The highlight just made (rangeMarks `fresh`) brushes in like a pen across
+   the words: the same colour painted as a strip that grows from nothing to
+   full width. `slice` lays the strip end to end across line breaks, so a
+   highlight over several lines sweeps them in turn; it starts from the
+   reading edge (right in right-to-left text). Only the new mark — a page
+   load, a recolour or a sync draws marks as they are. */
+@media (prefers-reduced-motion: no-preference) {
+	.reading mark.range-mark.fresh {
+		background: linear-gradient(
+				color-mix(in srgb, var(--mark-hue) 28%, transparent),
+				color-mix(in srgb, var(--mark-hue) 28%, transparent)
+			)
+			no-repeat 0 0 / 100% 100%;
+		box-decoration-break: slice;
+		-webkit-box-decoration-break: slice;
+		animation: mark-brush 0.55s cubic-bezier(0.5, 0, 0.3, 1);
+	}
+	.reading mark.range-mark.fresh:dir(rtl) {
+		background-position: 100% 0;
+	}
+}
+@keyframes mark-brush {
+	from {
+		background-size: 0% 100%;
+	}
+}
 /* A search hit: the same gold as the result snippet's <mark>, so arriving from
    search feels continuous with the list you arrived from. Not clickable — it is
    transient, unlike a highlight, and carries no note. */
