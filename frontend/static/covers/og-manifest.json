@@ -30199,6 +30199,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"uk/around-the-wicket-gate": {
+			"ground": "7a9bbc396236890871cdaa9710328036e5be3462f13395bd8429ba221e976f75",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
 			"style": "revival",

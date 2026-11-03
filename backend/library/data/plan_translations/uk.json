@@ -87,5 +87,13 @@
   "cheque-book-year": {
     "title": "Рік із книгою «Чекова книжка банку віри»",
     "description": "Щоденні обітниці Чарльза Сперджена: одна Божа обітниця на кожен день року з коротким словом про те, як прийняти її вірою. Почніть будь-якого дня: перший день — це читання на 1 січня, а кожен наступний день бере наступне. Одна-дві хвилини на день."
+  },
+  "first-steps-for-teens": {
+    "title": "Перші кроки: віра для підлітків",
+    "description": "Початок дороги з Ісусом для читачів-підлітків. Чарлз Сперджен зустрічає вас біля Тісної Брами з найпростішою допомогою для кожного, хто шукає дороги до Христа; а правдиві історії чоловіків і жінок, які віддали Йому все, показують, яким стає таке життя, — дві невеликі книжки приблизно на три тижні.",
+    "note": [
+      "Job #7033 (the book job for around-the-wicket-gate → uk, which completes this plan's source set and so creates the (first-steps-for-teens, uk) row on deploy). Source books: around-the-wicket-gate (uk edition shipped in THIS PR, «Біля Тісної Брами») and men-and-women-who-gave-everything-2 (already in uk, «Чоловіки й жінки, які віддали все»). The description echoes both titles: «біля Тісної Брами» (the wicket gate as the uk Pilgrim's Progress names it, «Тісна Брама») and «чоловіків і жінок, які віддали Йому все».",
+      "Reader address «вас» follows the uk Spurgeon editions. AI-drafted, awaiting native review."
+    ]
   }
 }
