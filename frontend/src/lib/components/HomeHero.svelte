@@ -9,12 +9,13 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
-	import { liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
+	import { feastDay, liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
 	import { artCredit, SEASON_ART, type ArtCredit } from '$lib/heroArt';
 	import { localDayNumber } from '$lib/dailyArticles';
 	import { dayPart } from '$lib/greeting';
 	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
+	import HeroFeast from '$lib/components/HeroFeast.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { chapterMeter } from '$lib/components/WorkCard.svelte';
@@ -50,6 +51,11 @@
 	 * page's paper grain laid over it, so the band reads as a canvas. The date
 	 * line names the season of the Church year beside the civil date, with a
 	 * dot in its liturgical colour.
+	 *
+	 * On Christmas Day a star hangs over the band, and on Easter morning the
+	 * light of a sunrise breaks along its top (HeroFeast; Pentecost's
+	 * flames are on the logo, in the layout). Decoration only: the season line
+	 * already names the day.
 	 */
 	let { name, current }: { name: string; current: ResumeBook | null } = $props();
 	const t = i18n.t;
@@ -63,6 +69,7 @@
 	);
 	const season = $derived(liturgicalSeason(now));
 	const seasonArt = $derived(SEASON_ART[season]);
+	const feast = $derived(feastDay(now));
 
 	// The current book's painting washes the band; a plate, or a painting that
 	// failed to load, leaves it to the season's.
@@ -167,6 +174,7 @@
 	{/if}
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
+	{#if feast}<HeroFeast {feast} />{/if}
 	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-8 pt-9 sm:pb-9 sm:pt-11">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">

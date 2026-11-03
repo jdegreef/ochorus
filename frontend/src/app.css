@@ -2430,6 +2430,8 @@ nav.appnav .navlinks a.active {
    alongside the mark are gone with it. `color` still matters: the SVG is
    fill="currentColor". */
 nav.appnav .brand {
+	/* The anchor PentecostFlames' tongues of fire sit over. */
+	position: relative;
 	color: var(--text);
 	display: inline-flex;
 	align-items: center;

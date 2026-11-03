@@ -46,6 +46,7 @@
 	import type { NavSection } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
+	import PentecostFlames from '$lib/components/PentecostFlames.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
@@ -341,7 +342,7 @@
 		>
 			<div class="appnav-inner chrome-col">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
-			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
+			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /><PentecostFlames /></a>
 			<button
 				class="navtoggle"
 				aria-label={t('a11y.menu')}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { adventStart, easterDay, liturgicalSeason } from './liturgical';
+import { adventStart, easterDay, feastDay, liturgicalSeason } from './liturgical';
 
 const day = (y: number, m: number, d: number) => Date.UTC(y, m - 1, d) / 86_400_000;
 const on = (y: number, m: number, d: number) => liturgicalSeason(new Date(y, m - 1, d));
@@ -55,5 +55,28 @@ describe('liturgicalSeason', () => {
 	it('reads the local calendar day, not the UTC one', () => {
 		// 23:30 local on Christmas Eve is still Advent wherever the reader is.
 		expect(liturgicalSeason(new Date(2026, 11, 24, 23, 30))).toBe('advent');
+	});
+});
+
+describe('feastDay', () => {
+	const feast = (y: number, m: number, d: number) => feastDay(new Date(y, m - 1, d, 23, 30));
+	it('marks the three days and nothing either side of them', () => {
+		expect(feast(2026, 12, 25)).toBe('christmas');
+		expect(feast(2026, 12, 24)).toBeNull();
+		expect(feast(2026, 12, 26)).toBeNull();
+		expect(feast(2026, 4, 5)).toBe('easter');
+		expect(feast(2026, 4, 4)).toBeNull(); // Holy Saturday
+		expect(feast(2026, 4, 6)).toBeNull();
+		expect(feast(2026, 5, 24)).toBe('pentecost');
+		expect(feast(2026, 5, 23)).toBeNull();
+		expect(feast(2026, 5, 25)).toBeNull();
+		expect(feast(2027, 3, 28)).toBe('easter');
+		expect(feast(2027, 5, 16)).toBe('pentecost');
+		expect(feast(2026, 11, 3)).toBeNull();
+	});
+	it("turns over at the reader's own midnight", () => {
+		expect(feastDay(new Date(2026, 11, 25, 0, 5))).toBe('christmas');
+		expect(feastDay(new Date(2026, 11, 24, 23, 55))).toBeNull();
+		expect(feastDay(new Date(2026, 3, 5, 0, 5))).toBe('easter');
 	});
 });
