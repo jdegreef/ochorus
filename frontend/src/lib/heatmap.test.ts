@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildHeatmap, weekLamps, weekReadCount } from './heatmap';
+import { buildHeatmap, weekBegins, weekLamps, weekReadCount } from './heatmap';
 import { shiftDay as shift } from './streak';
 
 describe('buildHeatmap', () => {
@@ -35,11 +35,11 @@ describe('weekReadCount', () => {
 	it('counts distinct read days from Sunday through today', () => {
 		// Week of Sun 2026-07-19 … today Wed 2026-07-22.
 		const days = ['2026-07-19', '2026-07-20', '2026-07-22', '2026-07-25'];
-		expect(weekReadCount(days, '2026-07-22')).toBe(3); // 19,20,22 — not the 25th (future)
+		expect(weekReadCount(days, '2026-07-22', 0)).toBe(3); // 19,20,22 — not the 25th (future)
 	});
 
 	it('is 0 when nothing was read this week', () => {
-		expect(weekReadCount(['2026-07-01'], '2026-07-22')).toBe(0);
+		expect(weekReadCount(['2026-07-01'], '2026-07-22', 0)).toBe(0);
 	});
 });
 
@@ -74,7 +74,7 @@ describe('weekLamps', () => {
 	const today = '2026-11-04';
 
 	it('lights the days read, rests the days missed, and keeps today trimmed and waiting', () => {
-		const lamps = weekLamps(['2026-10-31', '2026-11-01', '2026-11-03'], today);
+		const lamps = weekLamps(['2026-10-31', '2026-11-01', '2026-11-03'], today, 0);
 		expect(lamps.map((l) => l.day)).toEqual([
 			'2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04', '2026-11-05', '2026-11-06', '2026-11-07'
 		]);
@@ -84,18 +84,57 @@ describe('weekLamps', () => {
 	it('tiers each flame by its run, counting from before the week began (as the streak flame does)', () => {
 		const run = Array.from({ length: 7 }, (_, i) => `2026-10-${25 + i}`).concat('2026-11-01');
 		// 25 Oct – 1 Nov: Sunday 1 Nov is day 8 of the run, past a week — the "flame" tier.
-		const lamps = weekLamps(run, today);
+		const lamps = weekLamps(run, today, 0);
 		expect(lamps[0].level).toBe(2);
-		expect(weekLamps(['2026-11-01'], today)[0].level).toBe(1);
+		expect(weekLamps(['2026-11-01'], today, 0)[0].level).toBe(1);
 	});
 
 	it('never lights a day after today, as the goal count never counts one', () => {
-		const lamps = weekLamps(['2026-11-01', '2026-11-05'], today);
+		const lamps = weekLamps(['2026-11-01', '2026-11-05'], today, 0);
 		expect(lamps[4]).toEqual({ day: '2026-11-05', state: 'ahead', level: 0 });
-		expect(lamps.filter((l) => l.state === 'lit')).toHaveLength(weekReadCount(['2026-11-01', '2026-11-05'], today));
+		expect(lamps.filter((l) => l.state === 'lit')).toHaveLength(weekReadCount(['2026-11-01', '2026-11-05'], today, 0));
 	});
 
 	it('lights today once it is read', () => {
-		expect(weekLamps([today], today)[3]).toEqual({ day: today, state: 'lit', level: 1 });
+		expect(weekLamps([today], today, 0)[3]).toEqual({ day: today, state: 'lit', level: 1 });
+	});
+});
+
+describe('a week that begins on the reader\'s own first day', () => {
+	// Sunday 1 – Saturday 7 November 2026; a Monday-first week runs 2 – 8.
+	it('finds the week\'s first day', () => {
+		expect(weekBegins('2026-11-04', 0)).toBe('2026-11-01'); // Sunday-first
+		expect(weekBegins('2026-11-04', 1)).toBe('2026-11-02');
+		// A Sunday ends a Monday-first week: its week began six days before.
+		expect(weekBegins('2026-11-08', 1)).toBe('2026-11-02');
+		expect(weekBegins('2026-11-02', 1)).toBe('2026-11-02');
+	});
+
+	it('counts a Monday-first reader\'s Sunday in the week it ends', () => {
+		const days = ['2026-11-01', '2026-11-02', '2026-11-08'];
+		// Sunday 8 Nov: a Sunday-first week is just that day; a Monday-first one
+		// began on Monday 2 Nov and holds both it and the Sunday.
+		expect(weekReadCount(days, '2026-11-08', 0)).toBe(1);
+		expect(weekReadCount(days, '2026-11-08', 1)).toBe(2);
+		// …and Sunday 1 Nov belongs to the week before, not this one.
+		expect(weekReadCount(days, '2026-11-04', 1)).toBe(1);
+	});
+
+	it('lays the lamps out from that first day, and agrees with the count', () => {
+		const days = ['2026-11-01', '2026-11-02'];
+		const lamps = weekLamps(days, '2026-11-04', 1);
+		expect(lamps[0].day).toBe('2026-11-02');
+		expect(lamps[6].day).toBe('2026-11-08');
+		expect(lamps.filter((l) => l.state === 'lit')).toHaveLength(weekReadCount(days, '2026-11-04', 1));
+	});
+
+	it('starts a Saturday-first week (Arabic) on the Saturday before', () => {
+		// Wednesday 4 Nov: the week began Saturday 31 Oct and ends Friday 6 Nov.
+		expect(weekBegins('2026-11-04', 6)).toBe('2026-10-31');
+		expect(weekBegins('2026-10-31', 6)).toBe('2026-10-31');
+		expect(weekReadCount(['2026-10-30', '2026-10-31', '2026-11-01'], '2026-11-04', 6)).toBe(2);
+		expect(weekLamps([], '2026-11-04', 6).map((l) => l.day)).toEqual([
+			'2026-10-31', '2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04', '2026-11-05', '2026-11-06'
+		]);
 	});
 });

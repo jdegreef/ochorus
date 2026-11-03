@@ -20,6 +20,8 @@
 	import { readingGoal } from '$lib/readingGoal.svelte';
 	import { currentStreak, localToday } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
+	import { weekStart } from '$lib/planSchedule';
+	import { lang } from '$lib/lang.svelte';
 
 	/**
 	 * A compact streak + weekly-goal nudge for the home dashboard. Reads the same
@@ -45,7 +47,7 @@
 	});
 	const today = $derived(localToday());
 	const streak = $derived(currentStreak(days, today));
-	const weekCount = $derived(weekReadCount(days, today));
+	const weekCount = $derived(weekReadCount(days, today, weekStart(lang.current)));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
 	const readToday = $derived(days.includes(today));
