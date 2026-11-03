@@ -97,4 +97,17 @@ describe('PlanGarden growing', () => {
 		expect(row()).toBe('FSooFo');
 		expect(growing()).toEqual([5]);
 	});
+
+	it('grows the last day\'s flower when the plan is finished, with no sprout after it', () => {
+		const props = $state<Props>({ dayCount: 4, done: new Set([1, 2, 3]), next: 4 });
+		plant(props);
+		// The finishing tap: the page draws the finished garden (no next) with
+		// the last day as the one just read.
+		props.done = new Set([1, 2, 3, 4]);
+		props.next = null;
+		props.grow = 4;
+		flushSync();
+		expect(row()).toBe('FFFF');
+		expect(growing()).toEqual([4]);
+	});
 });
