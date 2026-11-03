@@ -11,7 +11,6 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { feastDay, liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
 	import { artCredit, SEASON_ART, type ArtCredit } from '$lib/heroArt';
-	import { localDayNumber } from '$lib/dailyArticles';
 	import { dayPart } from '$lib/greeting';
 	import { prayerHour } from '$lib/prayerHours';
 	import * as m from '$lib/paraglide/messages.js';
@@ -145,14 +144,16 @@
 	let offscreen = $state(false);
 
 	onMount(() => {
-		// A new day, or a new part of it: the date, season, greeting and sky follow.
-		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}:${prayerHour(x.getHours())}`;
+		// The clock moves on: the date, season, greeting and sky follow — when
+		// the tab comes back into view, and every few minutes while it is in
+		// view, so the sun keeps crossing the band (everything derived from
+		// `now` settles by value, so a tick that changes nothing redraws
+		// nothing but the sun's place).
 		const onVisible = () => {
-			if (document.visibilityState !== 'visible') return;
-			const d = new Date();
-			if (turn(d) !== turn(now)) now = d;
+			if (document.visibilityState === 'visible') now = new Date();
 		};
 		document.addEventListener('visibilitychange', onVisible);
+		const tick = setInterval(onVisible, 5 * 60_000);
 		// The drift is paused while the hero is scrolled away: nobody sees it,
 		// and an endless animation keeps the compositor awake for the whole
 		// visit to the dashboard.
@@ -160,6 +161,7 @@
 		io.observe(hero);
 		return () => {
 			document.removeEventListener('visibilitychange', onVisible);
+			clearInterval(tick);
 			io.disconnect();
 		};
 	});
@@ -320,8 +322,8 @@
 			var(--hero-scrim),
 			linear-gradient(
 				to bottom,
-				color-mix(in srgb, var(--sky) 70%, transparent) 0%,
-				color-mix(in srgb, var(--sky) 28%, transparent) 35%,
+				color-mix(in srgb, var(--sky, transparent) 70%, transparent) 0%,
+				color-mix(in srgb, var(--sky, transparent) 28%, transparent) 35%,
 				transparent 65%
 			);
 	}
@@ -438,9 +440,10 @@
 	}
 	/* The hour's name after the season — on a wide screen only: on a phone
 	   the date line has no room left for a third part. */
+	/* The season line's flex gap stands before the dot; this, after it. */
 	.home-hero-hour::before {
 		content: '·';
-		margin-inline: 0.5em;
+		margin-inline-end: 0.5em;
 		opacity: 0.6;
 	}
 </style>

@@ -8,22 +8,26 @@
 	 * the scrim, under the greeting; decoration only. The hour's colour itself
 	 * is washed in under the scrim, by HomeHero.
 	 *
-	 * On Christmas Day the star (HeroFeast) has the sky to itself.
+	 * On Christmas Day and Easter morning the feast's own light (HeroFeast) —
+	 * the star, the sunrise — takes the sun's or moon's place; the night's
+	 * stars stay.
 	 */
 	let { now, feast }: { now: Date; feast: Feast | null } = $props();
 	const sky = $derived(skyBody(now));
+	const feastLit = $derived(feast === 'christmas' || feast === 'easter');
 </script>
 
 <div class="heavens" class:night={sky.body === 'moon'} aria-hidden="true">
-	{#if feast !== 'christmas'}
+	{#if !feastLit}
 		<span class={sky.body} style:--along={sky.along.toFixed(3)} style:--height={sky.height.toFixed(3)}></span>
 	{/if}
 </div>
 
 <style>
-	/* Only the band's top: the arc keeps to its first 2rem or so — on a phone
-	   the date line starts just under it — and to the inline start of the
-	   frame. */
+	/* Only the band's top. The body's lowest edge (--horizon + --size) stays
+	   above the date line, which starts at the column's pt-9 (2.25rem) on a
+	   phone and pt-11 (2.75rem) wider; the arc keeps to the inline start of
+	   the frame. */
 	.heavens {
 		position: absolute;
 		inset: 0 0 auto;
@@ -44,8 +48,8 @@
 	.sun,
 	.moon {
 		--size: 0.9rem;
-		--horizon: 1.6rem;
-		--rise: 1.15rem;
+		--horizon: 1.2rem;
+		--rise: 0.95rem;
 		position: absolute;
 		width: var(--size);
 		height: var(--size);
@@ -57,8 +61,8 @@
 		.sun,
 		.moon {
 			--size: 1.05rem;
-			--horizon: 2.2rem;
-			--rise: 1.5rem;
+			--horizon: 1.5rem;
+			--rise: 1.2rem;
 		}
 	}
 	.sun {
