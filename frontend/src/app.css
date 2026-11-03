@@ -1239,6 +1239,17 @@
 	--season-white: #f6ecd2;
 	--season-red: #e0625a;
 	--season-green: #86c08f;
+	/* The sky over the hero by the hour of prayer ($lib/prayerHours): washed
+	   in along the band's top, under the scrim, so the text's contrast never
+	   rests on it (palettes.test.ts measures the scrim over a WHITE painting,
+	   which no sky is lighter than). */
+	--sky-vigils: #1a2350;
+	--sky-lauds: #f3a978;
+	--sky-terce: #9cc7ec;
+	--sky-sext: #b9dcf5;
+	--sky-none: #e9bb7c;
+	--sky-vespers: #d9826a;
+	--sky-compline: #2b2d63;
 	/* The quote card (HomeQuote): clear over its top 6rem, full strength from
 	   9rem — where the text begins (its pt-36) — however tall the quote grows. */
 	--quote-scrim: linear-gradient(

@@ -13,6 +13,7 @@
 	import { artCredit, SEASON_ART, type ArtCredit } from '$lib/heroArt';
 	import { localDayNumber } from '$lib/dailyArticles';
 	import { dayPart } from '$lib/greeting';
+	import { prayerHour, skyBody } from '$lib/prayerHours';
 	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 	import HeroFeast from '$lib/components/HeroFeast.svelte';
@@ -56,6 +57,13 @@
 	 * light of a sunrise breaks along its top (HeroFeast; Pentecost's
 	 * flames are on the logo, in the layout). Decoration only: the season line
 	 * already names the day.
+	 *
+	 * The sky follows the reader's clock, by the hours of prayer
+	 * ($lib/prayerHours): a wash of the hour's colour along the band's top
+	 * (dawn's peach at Lauds, a midday blue at Sext, sunset rose at Vespers,
+	 * indigo at Compline), the sun — or by night the moon, among stars — on
+	 * its arc across it, and the hour's name after the season on a wide
+	 * screen. All decoration under the date line: the greeting is the news.
 	 */
 	let { name, current }: { name: string; current: ResumeBook | null } = $props();
 	const t = i18n.t;
@@ -70,6 +78,9 @@
 	const season = $derived(liturgicalSeason(now));
 	const seasonArt = $derived(SEASON_ART[season]);
 	const feast = $derived(feastDay(now));
+	const hour = $derived(prayerHour(now.getHours()));
+	const sky = $derived(skyBody(now));
+	const night = $derived(hour === 'vigils' || hour === 'compline');
 
 	// The current book's painting washes the band; a plate, or a painting that
 	// failed to load, leaves it to the season's.
@@ -135,8 +146,8 @@
 	let offscreen = $state(false);
 
 	onMount(() => {
-		// A new day, or a new part of it: the date, season and greeting follow.
-		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}`;
+		// A new day, or a new part of it: the date, season, greeting and sky follow.
+		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}:${prayerHour(x.getHours())}`;
 		const onVisible = () => {
 			if (document.visibilityState !== 'visible') return;
 			const d = new Date();
@@ -172,15 +183,28 @@
 			/>
 		</div>
 	{/if}
+	<div class="home-hero-sky" style:--sky="var(--sky-{hour})" aria-hidden="true"></div>
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
 	{#if feast}<HeroFeast {feast} />{/if}
+	<div class="home-hero-heavens" class:night aria-hidden="true">
+		<!-- On Christmas Day the star has the sky to itself. -->
+		{#if feast !== 'christmas'}
+			<span
+				class="home-hero-{sky.body}"
+				style:--along={sky.along.toFixed(3)}
+				style:--height={sky.height.toFixed(3)}
+			></span>
+		{/if}
+	</div>
 	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-8 pt-9 sm:pb-9 sm:pt-11">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
 					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"
-					></span>{i18n.t(`liturgical.${season}`)}</span
+					></span>{i18n.t(`liturgical.${season}`)}<span class="home-hero-hour"
+						><span class="sr-only">, </span>{i18n.t(`hours.${hour}`)}</span
+					></span
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
@@ -412,5 +436,83 @@
 		height: 0.55em;
 		border-radius: 50%;
 		box-shadow: 0 0 0 2px var(--hero-ink-faint);
+	}
+	/* The hour's sky, washed along the top of the band under the scrim. */
+	.home-hero-sky {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--sky) 70%, transparent) 0%,
+			color-mix(in srgb, var(--sky) 28%, transparent) 35%,
+			transparent 65%
+		);
+		transition: background var(--duration-slow) ease;
+	}
+	/* Over the scrim, under the greeting: the sun or moon on its arc, and by
+	   night the stars. The arc keeps to the band's top 2rem or so — on a
+	   phone the date line starts just under it — and to the inline start of
+	   the frame. */
+	.home-hero-heavens {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+	.home-hero-heavens.night {
+		background-image:
+			radial-gradient(1px 1px at 14% 14%, white, transparent),
+			radial-gradient(1px 1px at 31% 7%, white, transparent),
+			radial-gradient(1.4px 1.4px at 47% 18%, white, transparent),
+			radial-gradient(1px 1px at 63% 9%, white, transparent),
+			radial-gradient(1px 1px at 76% 21%, white, transparent),
+			radial-gradient(1.4px 1.4px at 88% 6%, white, transparent),
+			radial-gradient(1px 1px at 22% 26%, white, transparent),
+			radial-gradient(1px 1px at 55% 4%, white, transparent);
+		background-size: 100% 9rem;
+		background-repeat: no-repeat;
+	}
+	.home-hero-sun,
+	.home-hero-moon {
+		position: absolute;
+		width: 0.9rem;
+		height: 0.9rem;
+		border-radius: 50%;
+		inset-inline-start: calc(6% + var(--along) * 70%);
+		top: calc(1.6rem - var(--height) * 1.15rem);
+	}
+	.home-hero-sun {
+		background: color-mix(in srgb, var(--season-white) 55%, var(--hero-gilt));
+		box-shadow:
+			0 0 10px 2px color-mix(in srgb, var(--hero-gilt) 70%, transparent),
+			0 0 32px 10px color-mix(in srgb, var(--hero-gilt) 25%, transparent);
+	}
+	/* A crescent: the full disc with a bite masked out of its far side. */
+	.home-hero-moon {
+		background: var(--season-white);
+		-webkit-mask-image: radial-gradient(circle at 72% 32%, transparent 42%, black 44%);
+		mask-image: radial-gradient(circle at 72% 32%, transparent 42%, black 44%);
+	}
+	@media (min-width: 640px) {
+		.home-hero-sun,
+		.home-hero-moon {
+			width: 1.05rem;
+			height: 1.05rem;
+			top: calc(2.2rem - var(--height) * 1.5rem);
+		}
+	}
+	/* The hour's name after the season — on a wide screen only: on a phone
+	   the date line has no room left for a third part. */
+	.home-hero-hour {
+		display: none;
+	}
+	@media (min-width: 640px) {
+		.home-hero-hour {
+			display: inline;
+		}
+		.home-hero-hour::before {
+			content: '·';
+			margin-inline: 0.5em;
+			opacity: 0.6;
+		}
 	}
 </style>

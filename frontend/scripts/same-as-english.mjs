@@ -83,6 +83,7 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'search_group_articles', // Articles
 	'search_group_passages', // Passages
 	'search_group_sermons', // Sermons
+	'hours_none', // None (the Office's ninth hour, Latin nona, spelled the same)
 	'search_palette_pages', // Page
 	'search_type_article', // Article
 	'search_type_chapter', // Passage
