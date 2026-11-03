@@ -237,5 +237,12 @@
   "cheque-book-year": {
     "title": "Un año con El Talonario del Banco de la Fe",
     "description": "Las promesas diarias de Charles Spurgeon: una promesa de Dios para cada día del año, con una breve palabra sobre cómo tomarla por la fe. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Uno o dos minutos al día."
+  },
+  "rooted-three-months-books-4-6": {
+    "title": "Enraizados: tres meses con Dios — Libros 4–6",
+    "description": "Tres meses más con Dios para lectores de 9 a 12 años: los tres últimos libros de Enraizados —Firmes en la tormenta, Ramas que se extienden y Llevar fruto—, con un breve devocional al día sobre mantenerse firme cuando la vida es difícil, amar a las personas que te rodean y el propósito de Dios para tu vida.",
+    "note": [
+      "Queue job #6985: «Enraizados – Libro 6» completes this plan in es, so the prose ships in the same PR (covers plan job #6997). Book names are the shipped es subtitles' heads: «Firmes en la tormenta», «Ramas que se extienden», «Llevar fruto» (Book 6 is «Llevar fruto», not «Dar fruto», which is Book 3). Title mirrors the shipped «Enraizados: tres meses con Dios — Libros 1–3»."
+    ]
   }
 }
