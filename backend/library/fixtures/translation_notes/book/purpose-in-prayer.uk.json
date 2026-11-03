@@ -3,7 +3,7 @@
  "slug": "purpose-in-prayer",
  "language": "uk",
  "job_issue": 7039,
- "pull_request": null,
+ "pull_request": 7117,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror (scripts/bible_mirror.py ukr_pan) and byte-substring-checked against the verse index; U+201F normalised to “ and ʼ to ’. Bounds quotes scripture almost without citations, so references were identified by the translators; unquoted echoes they flagged are recorded self_rendered. block_index is work-level (blocks of every chapter laid end to end).",
   "Kulish verse numbering differs from the AV in Jonah (AV 1:17 = Kulish 2:1, 2:1 = 2:2, 2:10 = 2:11) and Psalm 29 (AV 29:10 = Kulish 29:9); the AV reference is recorded.",
