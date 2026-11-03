@@ -7469,6 +7469,38 @@
 				505
 			]
 		},
+		"es/foxes-book-of-martyrs": {
+			"ground": "d8afd2ca4b8c55a7891e4e1f7c733df3854a54eb67377d0adf6bbf4ac744d2c5",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[202, 102, 398, 131]
+				],
+				"title": [
+					[136, 297, 464, 370],
+					[117, 356, 483, 429]
+				],
+				"subtitle": [
+					[134, 482, 466, 503],
+					[112, 503, 488, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"es/freedom-of-the-will": {
 			"ground": "fb8b71e3bea4d63bb6774b9e1dd105259cbee3092a5aab2ff906b0db62132cda",
 			"style": "enlightenment",

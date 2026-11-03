@@ -1,0 +1,559 @@
+{
+ "kind": "book",
+ "slug": "foxes-book-of-martyrs",
+ "language": "es",
+ "job_issue": 6986,
+ "references": [
+  {
+   "reference": "Matthew 16:18",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 0
+  },
+  {
+   "reference": "John 18:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 8:1",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 11:19",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 108
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 108,
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Matthew 26:52",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 56
+  },
+  {
+   "reference": "Revelation 13:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 169
+  },
+  {
+   "reference": "Psalms 118:17",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "Proverbs 21:30",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 22
+  },
+  {
+   "reference": "Psalms 31:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 24
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 82
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 84
+  },
+  {
+   "reference": "Luke 23:46",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 84
+  },
+  {
+   "reference": "Psalms 31:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 84
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 95
+  },
+  {
+   "reference": "Wisdom 3:2-3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 96
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 96
+  },
+  {
+   "reference": "Psalms 13:3-4",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 98
+  },
+  {
+   "reference": "Luke 2:29-30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 98
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 31:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 40
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 40
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 6
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 19
+  },
+  {
+   "reference": "Psalms 107:20",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 37,
+   "source_file": "ever-increasing-faith.es.json"
+  },
+  {
+   "reference": "Luke 23:46",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 50
+  },
+  {
+   "reference": "Luke 23:46",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 10:47",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 48
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 49
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 16
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 16
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 36,
+   "source_file": "men-who-moved-heaven.es.json"
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 37
+  },
+  {
+   "reference": "Genesis 3:19",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 48
+  },
+  {
+   "reference": "Luke 22:19",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 49
+  },
+  {
+   "reference": "1 Corinthians 11:24",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 49
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 50
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 53,
+   "source_file": "morning-by-morning.es.json"
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 71
+  },
+  {
+   "reference": "Acts 5:41",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 73
+  },
+  {
+   "reference": "Matthew 10:38",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 20
+  },
+  {
+   "reference": "Psalms 31:5",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 57
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 62
+  },
+  {
+   "reference": "Psalms 11:6",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 22:21",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 11:2",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 34,
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 44
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 63
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 85
+  },
+  {
+   "reference": "Psalms 34:7",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 86
+  },
+  {
+   "reference": "Psalms 116:15",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 87
+  },
+  {
+   "reference": "Romans 16:24",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 87
+  },
+  {
+   "reference": "Matthew 10:28",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 91
+  },
+  {
+   "reference": "Luke 1:46-47",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 2
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "mined",
+   "chapter_order": 21,
+   "block_index": 15,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 13:6",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 22
+  },
+  {
+   "reference": "Psalms 25:7",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 28
+  },
+  {
+   "reference": "Matthew 15:14",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 42
+  },
+  {
+   "reference": "Deuteronomy 32:5",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 10:23",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 19:12",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 19
+  },
+  {
+   "reference": "Judges 2:17",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 27,
+   "source_file": "men-who-moved-heaven.es.json"
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 33
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 33
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 38,
+   "source_file": "how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Habakkuk 1:13",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 38
+  },
+  {
+   "reference": "Proverbs 26:11",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 40
+  },
+  {
+   "reference": "Jeremiah 13:23",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 40
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 7:13-14",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 40
+  },
+  {
+   "reference": "Romans 12:19",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 42
+  },
+  {
+   "reference": "Philemon 1:10",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 30
+  },
+  {
+   "reference": "Exodus 20:5",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 65
+  },
+  {
+   "reference": "John 1:4",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 5:34",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 5,
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 5,
+   "source_file": "humility-2.es.json"
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 34,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Matthew 5:34",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 63
+  },
+  {
+   "reference": "Psalms 116:12",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 67
+  }
+ ]
+}
