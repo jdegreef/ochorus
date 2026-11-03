@@ -70,3 +70,22 @@ export function liturgicalSeason(date: Date): Season {
 	if (today === easter + 49) return 'pentecost';
 	return 'ordinary';
 }
+
+/** The three great feasts the site marks in its own chrome, each on its day. */
+export type Feast = 'christmas' | 'easter' | 'pentecost';
+
+/**
+ * Today's great feast, if it is one: Christmas Day, Easter Sunday or Whit
+ * Sunday (Easter + 49) — the single DAY, not the season around it, so the
+ * touches it draws (a star over the home hero, sunrise light, flames on the
+ * logo) stay rare enough to be noticed. Null on every other day.
+ */
+export function feastDay(date: Date): Feast | null {
+	const season = liturgicalSeason(date);
+	if (season === 'pentecost') return season; // a season of one day
+	const y = date.getFullYear();
+	const today = localDayNumber(date);
+	if (today === dayNumber(y, 11, 25)) return 'christmas';
+	if (today === easterDay(y)) return 'easter';
+	return null;
+}
