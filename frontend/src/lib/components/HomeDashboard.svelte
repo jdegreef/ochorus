@@ -25,6 +25,7 @@
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import HomeHero from '$lib/components/HomeHero.svelte';
+	import OnThisDay from '$lib/components/OnThisDay.svelte';
 	import HomeQuote from '$lib/components/HomeQuote.svelte';
 	import HomeYear from '$lib/components/HomeYear.svelte';
 
@@ -96,6 +97,10 @@
 <!-- Seen /welcome but not finished its checklist: keep the next step one tap
      away (self-hides when done, hidden, or while OnboardingCard is up). -->
 <WelcomeProgress />
+
+<!-- A writer of the library born, or gone home, on this day: a candle and a
+     way to their page (self-hides on the days that are nobody's). -->
+<OnThisDay />
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      The current book is already the hero's resume point, so the strip carries
