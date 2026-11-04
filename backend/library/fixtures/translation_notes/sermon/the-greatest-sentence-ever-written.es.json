@@ -1,0 +1,61 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-sentence-ever-written",
+ "language": "es",
+ "job_issue": 7168,
+ "references": [
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 63:9a",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 17
+  },
+  {
+   "reference": "1 John 3:1a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 19
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 27:46b",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 25
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "block_index": 25
+  }
+ ]
+}
