@@ -196,11 +196,12 @@
 
 			<div class="flex items-center gap-3">
 				<button
-					class="rounded-full bg-accent px-4 py-1.5 text-small font-semibold text-accent-contrast disabled:opacity-50"
+					class="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-small font-semibold text-accent-contrast disabled:opacity-50"
 					disabled={saving || missing.length > 0 || !bibleCode.trim()}
 					onclick={save}
+				aria-busy={saving ? 'true' : undefined}
 				>
-					{saving ? 'Saving…' : 'Save'}
+					{#if saving}<span class="btn-spinner" aria-hidden="true"></span>{/if}Save
 				</button>
 				<button class="text-small text-muted hover:text-text" onclick={() => (editing = false)}>
 					Cancel

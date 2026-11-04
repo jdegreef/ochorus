@@ -62,7 +62,7 @@
 		border: 1px solid var(--color-border);
 		background: var(--color-surface);
 		color: var(--color-text);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		padding: 0.25rem 0.8rem;
 		font-size: var(--fs-small);
 		cursor: pointer;

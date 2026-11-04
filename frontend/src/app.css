@@ -144,6 +144,9 @@
 	--color-warning: var(--warning);
 	--radius-card: 12px;
 	--radius-sm: 9px;
+	/* Full-round (pills, dots, progress tracks). Markup says `rounded-full`;
+	   scoped CSS says var(--radius-pill) — never a hand-typed 999px/9999px. */
+	--radius-pill: 9999px;
 
 	/* The type scale, as Tailwind utilities. Without this the scale existed only
 	   as --fs-* custom properties, so `text-small` / `text-body` / `text-h1..h3`
@@ -1546,7 +1549,7 @@
 .hl-swatch {
 	width: 1.15rem;
 	height: 1.15rem;
-	border-radius: 9999px;
+	border-radius: var(--radius-pill);
 	cursor: pointer;
 	background: var(--swatch-hue, var(--hl-gold));
 	box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
@@ -1821,7 +1824,7 @@
 	width: 0.9em;
 	height: 0.9em;
 	flex-shrink: 0;
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	border: 2px solid currentColor;
 	border-top-color: transparent;
 	animation: btn-spin 0.7s linear infinite;
@@ -2101,9 +2104,11 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 .reading blockquote {
 	margin: 1.4em 0;
 	/* Logical, not physical: .reading is direction-aware (dir="auto"), so an
-	   Arabic chapter must get the accent rule on the right. */
+	   Arabic chapter must get the rule on the right. Gold, the one quotation
+	   rule (STYLE_GUIDE §1; article and bio pull-quotes wear it too) — it was
+	   --accent-soft, which sits ~1.1:1 on the page and all but vanished. */
 	padding-inline-start: 1.1em;
-	border-inline-start: 3px solid var(--accent-soft);
+	border-inline-start: 3px solid var(--gold);
 	color: var(--muted);
 	font-style: italic;
 }
@@ -2418,7 +2423,7 @@ nav.appnav .navlinks a {
 	color: var(--muted);
 	font-size: var(--fs-body);
 	padding: 0.35rem 0.75rem;
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	white-space: nowrap;
 }
 nav.appnav .navlinks a:hover {
@@ -2527,7 +2532,7 @@ nav.appnav .navmore-btn {
 	gap: 0.2rem;
 	padding: 0.35rem 0.65rem;
 	border: 0;
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	background: none;
 	color: var(--muted);
 	font: inherit;
@@ -2642,7 +2647,7 @@ nav.appnav .navsearch {
 	gap: 0.4rem;
 	padding: 0.3rem 0.6rem;
 	border: 1px solid var(--border-strong);
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	background: var(--surface);
 	color: var(--muted);
 	cursor: pointer;
@@ -3164,7 +3169,7 @@ nav.appnav .navsearch:hover {
 	width: var(--chip-size, 3.25rem);
 	height: var(--chip-size, 3.25rem);
 	flex-shrink: 0;
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	background: color-mix(in srgb, var(--chip-hue) 14%, var(--surface));
 	box-shadow: inset 0 0 0 var(--chip-ring, 1px)
 		color-mix(in srgb, var(--chip-hue) var(--chip-ring-mix, 33%), transparent);
@@ -3741,7 +3746,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 /* Filter chip — the pill rows (topics on Books, length on Plans). */
 .chip {
 	border: 1px solid var(--border-strong);
-	border-radius: 999px;
+	border-radius: var(--radius-pill);
 	background: var(--surface);
 	padding: 0.3rem 0.75rem;
 	font-size: var(--fs-small);
@@ -3776,7 +3781,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		align-items: center;
 		gap: 0.3em;
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		padding: 0.25rem 0.75rem;
 		font-size: var(--fs-small);
@@ -3784,9 +3789,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		color: var(--text);
 		white-space: nowrap;
 	}
-	.tag:hover {
-		border-color: var(--accent);
-		color: var(--accent);
+	/* One pill hover (page-design J2): the surface-2 fill .chip and .btn-ghost
+	   already use. The accent edge + text is the SELECTED look (.chip.active),
+	   so a hovered link pill wearing it read as "already chosen". Only on a
+	   control: a `<span class="tag">` (a plan's key verse) is a label, not a
+	   target, and must not answer the pointer. */
+	.tag:is(a, button):hover {
+		background: var(--surface-2);
 		text-decoration: none;
 	}
 	/* A tag riding inline in a line of text — the A–Z index's young-reader
@@ -3825,7 +3834,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	background: var(--surface-2);
 }
 .widthctl button:disabled {
-	opacity: 0.4;
+	opacity: 0.5;
 	cursor: default;
 }
 
@@ -3850,7 +3859,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.account-item,
 		.rc-opt,
 		.selbar-btn,
-		.google-btn,
 		.focus-exit,
 		.sync-cta,
 		.bm-remove,
@@ -3861,8 +3869,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		   (.btn and .widthctl button are already inline-flex + centred.) A global
 		   selector still matches a component-scoped class by name — Svelte scoping
 		   only raises the specificity of a component's OWN selectors — so
-		   `.selbar-btn` (defined only in SelectionBar.svelte, like `.rc-opt` and
-		   `.google-btn`) is handled here rather than duplicated in that file. */
+		   `.selbar-btn` (defined only in SelectionBar.svelte, like `.rc-opt`) is handled here rather than duplicated in that file. */
 		.chip,
 		.seg button,
 		.selbar-btn,
@@ -4078,7 +4085,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: var(--z-popover);
-	border-radius: 9999px;
+	border-radius: var(--radius-pill);
 	border: 1px solid var(--border);
 	background: color-mix(in srgb, var(--bg) 85%, transparent);
 	backdrop-filter: blur(6px);

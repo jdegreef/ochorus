@@ -82,7 +82,7 @@
 			align-items: center;
 			gap: 0.15rem;
 			border: 1px solid var(--accent-soft-border);
-			border-radius: 999px;
+			border-radius: var(--radius-pill);
 			background: var(--accent-soft);
 			padding-block: 0.2rem;
 			padding-inline: 0.7rem 0.35rem;
@@ -97,7 +97,7 @@
 			width: 1.35rem;
 			height: 1.35rem;
 			border: none;
-			border-radius: 999px;
+			border-radius: var(--radius-pill);
 			background: none;
 			color: inherit;
 			font-size: var(--fs-body);

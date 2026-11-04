@@ -171,7 +171,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 	.tab-label {
 		max-width: 100%;
@@ -201,7 +201,7 @@
 		width: 3.25rem;
 		height: 3.25rem;
 		margin-top: -1.1rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--accent-soft-border);
 		background: var(--accent);
 		color: var(--accent-contrast);

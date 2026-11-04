@@ -1,0 +1,54 @@
+{
+ "kind": "sermon",
+ "slug": "of-christs-resurrection",
+ "language": "es",
+ "job_issue": 7183,
+ "references": [
+  {
+   "reference": "Genesis 1:5",
+   "status": "mined",
+   "source_file": "evening-by-evening.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 16:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 6
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 13
+  }
+ ]
+}

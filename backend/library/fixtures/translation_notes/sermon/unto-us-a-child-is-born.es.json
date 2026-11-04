@@ -1,0 +1,164 @@
+{
+ "kind": "sermon",
+ "slug": "unto-us-a-child-is-born",
+ "language": "es",
+ "job_issue": 7187,
+ "references": [
+  {
+   "reference": "Isaiah 9:6",
+   "status": "mined",
+   "source_file": "grace-abounding.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "way-into-holiest.es.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 11:27",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "source_file": "till-he-come.es.json",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 1:10-12",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "source_file": "grace-abounding.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 37:37",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "source_file": "plain-account-christian-perfection.es.json",
+   "block_index": 25
+  },
+  {
+   "reference": "Proverbs 13:15",
+   "status": "mined",
+   "source_file": "pilgrims-progress.es.json",
+   "block_index": 27
+  },
+  {
+   "reference": "Proverbs 9:6",
+   "status": "mined",
+   "source_file": "religious-affections.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Timothy 3:15",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Job 11:7",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 1:48",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 85:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 5:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 112:7",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Proverbs 29:1",
+   "status": "self_rendered",
+   "block_index": 28
+  }
+ ]
+}

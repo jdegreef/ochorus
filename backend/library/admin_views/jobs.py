@@ -218,6 +218,20 @@ def _list_open_jobs() -> list[dict]:
     return [job for issue in issues if (job := _issue_to_job(issue))]
 
 
+def list_open_prs() -> list[dict]:
+    """Every open PR in the job repo, reduced to what matching a job needs
+    (``job_status.Queue.pr_for``). Raises requests.RequestException upstream."""
+    return [
+        {
+            "url": pr.get("html_url", ""),
+            "title": pr.get("title") or "",
+            "body": pr.get("body") or "",
+            "branch": (pr.get("head") or {}).get("ref", ""),
+        }
+        for pr in get_all("/pulls", {"state": "open"})
+    ]
+
+
 def get_all(path: str, params: dict) -> list[dict]:
     """Every item of a paginated GET under the job repo, e.g. ``/issues``.
     Raises requests.RequestException upstream."""

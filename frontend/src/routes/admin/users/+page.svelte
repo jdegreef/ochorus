@@ -211,7 +211,8 @@
 		</div>
 		{#if data}
 			<button class="btn btn-ghost" onclick={users.load} disabled={users.loading}
-				>{users.loading ? 'Refreshing…' : 'Refresh'}</button
+				aria-busy={users.loading ? 'true' : undefined}
+				>{#if users.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh</button
 			>
 		{/if}
 	</header>
@@ -571,7 +572,7 @@
 								type="button"
 								class="btn btn-ghost whitespace-nowrap"
 								disabled={exporting || !dir?.total}
-								onclick={exportCsv}>{exporting ? 'Exporting…' : 'Export CSV'}</button
+								onclick={exportCsv} aria-busy={exporting ? 'true' : undefined}>{#if exporting}<span class="btn-spinner" aria-hidden="true"></span>{/if}Export CSV</button
 							>
 						</div>
 					</div>

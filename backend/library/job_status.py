@@ -7,7 +7,12 @@ recorded in two places, and this module reads both:
 * **GitHub** (the queue — see ``admin_views/jobs.py``): an open issue is
   *queued*; the ``in-progress`` label is a worker's claim; a claim untouched for
   ``STALE_AFTER`` is *stalled* (the translation-worker playbook's crashed-run
-  rule). A worker closes the issue when its PR is OPEN and hands the merge off.
+  rule). A worker closes the issue when its PR is OPEN and hands the merge off,
+  so a closed issue whose job has an open PR is *pr_open* — waiting on CI or a
+  merge, with the PR's link. The PR is found by the job's title line in its
+  body (the translation-worker playbook writes it), or — for PRs opened before
+  that rule — by the worker's branch suffix ``-<type>-<slug>`` plus ``(<lang>)``
+  in the PR title.
 * **This database**: the translated edition existing is the only proof the job
   shipped — a closed issue is not, since the merge (and the deploy) come after
   it. ``source_type`` / ``reviewed`` then say whether the founder approved it.
@@ -16,13 +21,15 @@ So the database wins: an edition that exists is *review* or *done* whatever
 GitHub says (a worker has left an issue open after shipping). "Exists" means
 shipped — merged and deployed — not necessarily visible: a language that isn't
 live yet still hides it from readers. An issue that is closed with no edition is
-*closed* — awaiting a merge or a deploy, or closed as not planned; the open-issue
-list can't tell those apart. When GitHub can't be read, a job without an
-edition is *unknown* rather than a guess.
+*closed* (with no open PR) — merged and awaiting a deploy, or closed as not
+planned. A PR read that fails only loses the *pr_open* split: those jobs read
+*closed*, as before. When GitHub can't be read, a job without an edition is
+*unknown* rather than a guess.
 """
 
 from __future__ import annotations
 
+import contextlib
 from datetime import timedelta
 
 import requests
@@ -39,13 +46,14 @@ STALE_AFTER = timedelta(hours=6)
 QUEUED = "queued"
 IN_PROGRESS = "in_progress"
 STALLED = "stalled"
-CLOSED = "closed"  # issue closed, edition not live: needs a merge/deploy, or not planned
+PR_OPEN = "pr_open"  # issue closed, its PR open: waiting on CI or a merge
+CLOSED = "closed"  # issue closed, no open PR, edition not live: a deploy pending, or not planned
 REVIEW = "review"  # live as an AI translation, awaiting approval
 DONE = "done"  # approved — or live, for a type with no approval step
 UNKNOWN = "unknown"  # no edition, and GitHub couldn't be read
-STATUSES = (QUEUED, IN_PROGRESS, STALLED, CLOSED, REVIEW, DONE, UNKNOWN)
-#: The two that wait on the founder: a merge, and an approval.
-NEEDS_ME = (CLOSED, REVIEW)
+STATUSES = (QUEUED, IN_PROGRESS, STALLED, PR_OPEN, CLOSED, REVIEW, DONE, UNKNOWN)
+#: What waits on a person: a merge, a job that closed without shipping, an approval.
+NEEDS_ME = (PR_OPEN, CLOSED, REVIEW)
 
 #: How long one read of the open queue is reused. The page is reloaded on every
 #: filter change; the queue moves on the scale of minutes. A failed read is
@@ -70,10 +78,12 @@ def target_of(key: Key) -> str:
 
 
 class Queue:
-    """One read of the open queue: ``jobs`` by key, and when it was read."""
+    """One read of the open queue: ``jobs`` by key, when it was read, and the
+    open PRs (empty when they couldn't be read)."""
 
-    def __init__(self, jobs: list[dict], read_at):
+    def __init__(self, jobs: list[dict], read_at, prs: list[dict] | None = None):
         self.read_at = read_at
+        self.prs = prs or []
         self.jobs: dict[Key, dict] = {}
         for job in jobs:
             key = (job["type"], job["slug"], job["language"])
@@ -82,6 +92,21 @@ class Queue:
             # queued duplicate, and the freshest claim says whether it's stalled.
             if (held := self.jobs.get(key)) is None or _rank(job) > _rank(held):
                 self.jobs[key] = job
+
+    def pr_for(self, key: Key) -> str | None:
+        """The open PR shipping ``key``, as its URL; None when there is none."""
+        from .admin_views.jobs import job_title
+
+        type_, slug, lang = key
+        line = job_title(type_, slug, lang)
+        for pr in self.prs:
+            if line in pr["body"].splitlines():
+                return pr["url"]
+        # Before the body line was a rule: the worker's branch and title habit.
+        for pr in self.prs:
+            if pr["branch"].endswith(f"-{type_}-{slug}") and f"({lang})" in pr["title"]:
+                return pr["url"]
+        return None
 
 
 def _rank(job: dict) -> tuple:
@@ -95,12 +120,20 @@ def open_jobs() -> Queue | str | None:
         return None
     read = cache.get(_CACHE_KEY)
     if read is None:
-        from .admin_views.jobs import _list_open_jobs  # the view module imports models
+        from .admin_views.jobs import (  # the view module imports models
+            _list_open_jobs,
+            list_open_prs,
+        )
 
         try:
             read = (_list_open_jobs(), timezone.now())
         except requests.RequestException:
             read = _DOWN
+        else:
+            # Its own try: a token without pull-request read access, or a PR
+            # listing that fails, costs the pr_open split — never the queue.
+            with contextlib.suppress(requests.RequestException):
+                read = (*read, list_open_prs())
         cache.set(_CACHE_KEY, read, CACHE_SECONDS)
     return _DOWN if read == _DOWN else Queue(*read)
 
@@ -162,7 +195,10 @@ def statuses(keys: dict[Key, object], read_queue, now=None) -> dict[Key, str]:
         elif (job := queue.jobs.get(key)) is None:
             # Filed after the cached read: not closed — the read predates it.
             filed = keys[key]
-            out[key] = QUEUED if filed and filed >= queue.read_at else CLOSED
+            if filed and filed >= queue.read_at:
+                out[key] = QUEUED
+            else:
+                out[key] = PR_OPEN if queue.pr_for(key) else CLOSED
         elif job["state"] != "in_progress":
             out[key] = QUEUED
         else:

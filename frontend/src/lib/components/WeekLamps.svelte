@@ -60,7 +60,7 @@
 		gap: 0.15rem;
 		flex: 1 1 0;
 		max-width: 2.25rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 	svg {
 		width: 100%;

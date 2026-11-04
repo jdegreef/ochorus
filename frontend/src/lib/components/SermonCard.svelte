@@ -321,7 +321,7 @@
 		display: flex;
 		align-items: flex-start;
 		gap: 0.75rem;
-		padding: 0.85rem 1rem;
+		padding: 1rem; /* p-4, the card band (page-design H2) */
 	}
 	/* The sermon's monogram chip (recipe in app.css) — only size and hue here. */
 	.sermon-card :global(.monogram) {

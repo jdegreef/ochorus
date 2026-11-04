@@ -264,7 +264,7 @@
 		flex: none;
 		width: 0.45rem;
 		height: 0.45rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 	}
 	.companion {
 		width: fit-content;

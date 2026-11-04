@@ -1,0 +1,283 @@
+{
+ "kind": "sermon",
+ "slug": "do-you-pray",
+ "language": "es",
+ "job_issue": 7191,
+ "references": [
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalms 14:4",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "men-of-prayer-2.es.json",
+   "block_index": 41
+  },
+  {
+   "reference": "John 14:13",
+   "status": "mined",
+   "source_file": "school-of-prayer.es.json",
+   "block_index": 41
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 41
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "mined",
+   "source_file": "ten-commandments.es.json",
+   "block_index": 42
+  },
+  {
+   "reference": "Proverbs 14:14",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 59
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalms 55:22",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 70
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 70
+  },
+  {
+   "reference": "James 5:13",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 70
+  },
+  {
+   "reference": "Isaiah 30:21b",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "mined",
+   "source_file": "grace-abounding.es.json",
+   "block_index": 75
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "till-he-come.es.json",
+   "block_index": 75
+  },
+  {
+   "reference": "Psalms 55:17",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Isaiah 55:6b",
+   "status": "mined",
+   "source_file": "spurgeon-on-prayer.es.json",
+   "block_index": 83
+  },
+  {
+   "reference": "Hosea 14:2a",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 83
+  },
+  {
+   "reference": "Acts 8:22",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Matthew 25:11",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Psalms 119:113",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json",
+   "block_index": 97
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Job 40:4",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json",
+   "block_index": 98
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Psalms 66:18",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Ecclesiastes 5:2",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json",
+   "block_index": 101
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json",
+   "block_index": 101
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "jesus-himself-2.es.json",
+   "block_index": 102
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Daniel 9:19",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 103
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Joshua 7:9",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "mined",
+   "source_file": "prayer-the-pulse-of-life.es.json",
+   "block_index": 106
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "block_index": 109
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "self_rendered",
+   "block_index": 109
+  }
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "kind": "sermon",
+ "slug": "the-lord-our-righteousness",
+ "language": "es",
+ "job_issue": 7180,
+ "references": [
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 10:3",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 23:5-6",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Genesis 2:17",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 2:6-7",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 15
+  },
+  {
+   "reference": "Jeremiah 33:16",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 5:17",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Mark 10:17",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:19",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 10:20",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "Mark 10:21",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 25:34-36",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 25:37-39",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 32
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 46
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 46
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 3:22-23",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 50
+  }
+ ]
+}

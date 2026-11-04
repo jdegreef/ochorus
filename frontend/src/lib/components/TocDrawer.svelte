@@ -232,7 +232,7 @@
 		border-bottom: 1px solid var(--border);
 	}
 	.bm-undo-btn {
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent);
 		color: var(--accent-contrast);
 		padding: 0.2rem 0.7rem;
@@ -247,7 +247,7 @@
 		width: 0.45rem;
 		height: 0.45rem;
 		flex-shrink: 0;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--border);
 	}
 	.toc-dot.on {

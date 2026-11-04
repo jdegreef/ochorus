@@ -961,14 +961,14 @@
 	   dressed as a quiet feature rather than fine print. */
 	.privacy-badge {
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		padding: 0.3rem 0.7rem;
 	}
 	.privacy-dot {
 		width: 7px;
 		height: 7px;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent);
 	}
 
@@ -998,7 +998,7 @@
 	.depthbar {
 		flex: 1;
 		height: 6px;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface-2);
 		overflow: hidden;
 		border: 1px solid var(--border);

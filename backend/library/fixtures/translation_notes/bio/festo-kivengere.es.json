@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "festo-kivengere",
+ "language": "es",
+ "job_issue": 7172,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "rooted-2.es.json",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "rooted-2.es.json",
+   "block_index": 18
+  }
+ ]
+}

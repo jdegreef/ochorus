@@ -142,7 +142,11 @@ three of them gives none of them one.
 5. **Execute** (see per-type recipes below). Work on branch
    `claude/ochorus-dev-261l92` reset from `origin/main`; commit; push
    (force-with-lease); open a **draft PR**; wait for CI; on green mark ready
-   and **squash-merge**. **No prerender-refresh touch and no follow-up PR.**
+   and **squash-merge**. **The PR body carries the job's issue title on a line
+   of its own, verbatim** (`[translation] sermon:do-you-pray -> es`): it is how
+   the admin Activity log finds the PR once the issue is closed and shows the
+   job as *PR open* with its link (`library/job_status.py`). Without it the job
+   reads "Closed, not shipped" until the deploy lands. **No prerender-refresh touch and no follow-up PR.**
    The content PR's own web build rebakes every localized page (see
    "Reaching the static pages" below). Don't edit a `+page.ts` to trigger it.
 

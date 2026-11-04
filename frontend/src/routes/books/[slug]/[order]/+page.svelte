@@ -2814,7 +2814,7 @@
 		place-items: center;
 		width: 3rem;
 		height: 3rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--border);
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 70%, transparent);
@@ -3063,7 +3063,7 @@
 		gap: 0.35rem;
 		padding-block: 0.45rem;
 		padding-inline: 0.7rem 0.9rem; /* tighter on the icon side, whichever side that is */
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--border);
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		color: var(--text);
@@ -3083,7 +3083,7 @@
 	}
 	.sync-cta {
 		white-space: nowrap;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent);
 		color: var(--accent-contrast);
 		padding: 0.25rem 0.75rem;
@@ -3096,7 +3096,7 @@
 	.sync-dismiss {
 		display: inline-flex;
 		padding: 0.55rem; /* ~32px beside the CTA: a thumb target, not a mouse one */
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		color: var(--muted);
 	}
 	.sync-dismiss:hover {

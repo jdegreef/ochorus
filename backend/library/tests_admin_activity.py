@@ -385,9 +385,63 @@ class AdminActivityJobStatusTests(TestCase):
             {**job("es", "in_progress", timedelta(hours=1)), "slug": "grace"},
         ]
 
-    def _get(self, **params):
-        with patch("library.admin_views.jobs._list_open_jobs", return_value=self._queue()):
+    def _get(self, prs=(), **params):
+        with (
+            patch("library.admin_views.jobs._list_open_jobs", return_value=self._queue()),
+            patch("library.admin_views.jobs.list_open_prs", return_value=list(prs)),
+        ):
             return self.client.get("/api/admin/activity/", params).data
+
+    @staticmethod
+    def _pr(number, *, title="", body="", branch=""):
+        return {
+            "url": f"https://github.com/o/r/pull/{number}", "title": title, "body": body,
+            "branch": branch,
+        }
+
+    def test_a_closed_job_with_its_pr_open_is_pr_open_and_links_it(self):
+        # Found by the job's title line in the PR body (the playbook's rule).
+        # The line must be the job's exact title: a near miss is not a match.
+        pr = self._pr(7, title="French book", body="Ships:\n[translation] book:pilgrim:am -> am\n")
+        status = {a["target"]: a.get("job_status") for a in self._get(prs=[pr])["actions"]}
+        self.assertEqual(status["book:pilgrim:am"], "closed")
+        pr["body"] = "Ships:\n[translation] book:pilgrim -> am\n"
+        data = self._get(prs=[pr])
+        row = next(a for a in data["actions"] if a["target"] == "book:pilgrim:am")
+        self.assertEqual(row["job_status"], "pr_open")
+        self.assertEqual(row["job_pr"], "https://github.com/o/r/pull/7")
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["pr_open"], 1)
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["closed"], 0)
+        # Rows not at that stage carry no PR link.
+        self.assertNotIn("job_pr", next(a for a in data["actions"] if a["target"] == "book:grace:es"))
+
+    def test_an_older_pr_is_found_by_branch_suffix_and_language(self):
+        pr = self._pr(8, title="Amharic book: Pilgrim (am)", branch="claude/queue-x1-book-pilgrim")
+        self.assertEqual(self._get(prs=[pr], job_status="pr_open")["total"], 1)
+        # The same branch for another language's PR is not this job's.
+        other = self._pr(9, title="Swahili book: Pilgrim (sw)", branch="claude/queue-x1-book-pilgrim")
+        self.assertEqual(self._get(prs=[other], job_status="pr_open")["total"], 0)
+
+    def test_needs_me_includes_an_open_pr(self):
+        pr = self._pr(7, body="[translation] book:pilgrim -> am")
+        mine = self._get(prs=[pr], job_status="needs_me")
+        self.assertEqual(
+            sorted(a["target"] for a in mine["actions"]), ["book:grace:es", "book:pilgrim:am"]
+        )
+
+    def test_a_failed_pr_read_keeps_the_queue(self):
+        import requests
+
+        with (
+            patch("library.admin_views.jobs._list_open_jobs", return_value=self._queue()),
+            patch("library.admin_views.jobs.list_open_prs", side_effect=requests.HTTPError("403")),
+        ):
+            data = self.client.get("/api/admin/activity/").data
+        status = {a["target"]: a.get("job_status") for a in data["actions"]}
+        # Only the pr_open split is lost: the queue still answers.
+        self.assertEqual(status["book:pilgrim:am"], "closed")
+        self.assertEqual(status["book:pilgrim:fr"], "in_progress")
+        self.assertEqual(data["summary"]["jobs"]["github"], "ok")
 
     def test_each_job_row_carries_its_status(self):
         data = self._get()
@@ -410,7 +464,10 @@ class AdminActivityJobStatusTests(TestCase):
         self.assertEqual(jobs["github"], "ok")
         self.assertEqual(
             jobs["by_status"],
-            {"queued": 1, "in_progress": 1, "stalled": 1, "closed": 1, "review": 1, "done": 1, "unknown": 0},
+            {
+                "queued": 1, "in_progress": 1, "stalled": 1, "pr_open": 0, "closed": 1,
+                "review": 1, "done": 1, "unknown": 0,
+            },
         )
 
     def test_filter_by_status_and_needs_me(self):

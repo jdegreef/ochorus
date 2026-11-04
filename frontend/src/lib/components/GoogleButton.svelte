@@ -7,32 +7,11 @@
 	const t = i18n.t;
 </script>
 
-<button class="google-btn" type="button" {onclick} {disabled}>
+<!-- A plain ghost `.btn`: it used to re-implement .btn in scoped CSS (its own
+     padding, radius, fill and a 0.5 disabled opacity) and drifted from every
+     other button. Google's own brand fill is not used, so it is an ordinary
+     button with the G glyph. -->
+<button class="btn btn-ghost w-full" data-google-signin type="button" {onclick} {disabled}>
 	<GoogleMark />
 	{t('login.google')}
 </button>
-
-<style>
-	.google-btn {
-		display: flex;
-		width: 100%;
-		align-items: center;
-		justify-content: center;
-		gap: 0.6rem;
-		padding: 0.6rem 1.1rem;
-		border-radius: var(--radius-sm);
-		border: 1px solid var(--border);
-		background: var(--surface-2);
-		color: var(--text);
-		font-family: var(--font-sans);
-		font-weight: 600;
-	}
-	.google-btn:hover:not(:disabled) {
-		background: var(--surface);
-		border-color: var(--accent-soft-border);
-	}
-	.google-btn:disabled {
-		opacity: 0.5;
-		cursor: default;
-	}
-</style>

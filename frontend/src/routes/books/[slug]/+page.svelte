@@ -588,7 +588,7 @@
 
 			<div class="book-hero-head min-w-0">
 				<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
-				<h1 class="text-h1" dir="auto">{book.title}</h1>
+				<h1 class="text-h1" dir="auto" lang={contentLang(book.language)}>{book.title}</h1>
 				{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 				<!-- The names this work is also published under. Shown, not merely marked
 				     up: a reader who searched "A Divine Cordial" and landed on a page
@@ -988,7 +988,7 @@
 	     localized edition shows just its topics. -->
 	{#if book.topics?.length || book.scripture?.length}
 		<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t('book.explore')}>
-			<span class="text-small text-muted">{t('book.explore')}</span>
+			<span class="eyebrow text-muted">{t('book.explore')}</span>
 			{#each book.topics ?? [] as topic (topic.slug)}
 				<a href={localizeHref(`/topics/${topic.slug}`)} class="tag">{topic.title}</a>
 			{/each}

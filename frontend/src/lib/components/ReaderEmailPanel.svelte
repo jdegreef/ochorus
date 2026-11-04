@@ -147,7 +147,7 @@
 				</div>
 				{#if error}<p class="text-small text-danger" role="alert">{error}</p>{/if}
 				<div class="flex gap-2">
-					<button type="submit" class="btn btn-primary btn-sm" disabled={busy || !subject.trim() || !body.trim()}>{busy ? 'Sending…' : 'Send'}</button>
+					<button type="submit" class="btn btn-primary btn-sm" disabled={busy || !subject.trim() || !body.trim()} aria-busy={busy ? 'true' : undefined}>{#if busy}<span class="btn-spinner" aria-hidden="true"></span>{/if}Send</button>
 					<button type="button" class="btn btn-ghost btn-sm" onclick={() => { composing = false; error = ''; }} disabled={busy}>Cancel</button>
 				</div>
 			</form>

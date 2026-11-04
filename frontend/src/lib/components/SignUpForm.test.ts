@@ -71,7 +71,7 @@ afterEach(() => {
 describe('SignUpForm', () => {
 	it('asks for a password, not a code', () => {
 		expect(target.querySelector('input[autocomplete=new-password]')).not.toBeNull();
-		expect(target.querySelector('.google-btn')).not.toBeNull();
+		expect(target.querySelector('[data-google-signin]')).not.toBeNull();
 		expect(target.querySelector('input[autocomplete=one-time-code]')).toBeNull();
 	});
 

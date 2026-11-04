@@ -455,7 +455,7 @@
 		width: 3.25rem;
 		align-items: center;
 		justify-content: center;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		font-family: var(--font-display);
 		font-size: var(--fs-h2);
 		color: var(--accent);

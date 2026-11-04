@@ -196,7 +196,7 @@
 		width: 0.375rem;
 		align-self: stretch;
 		min-height: 2.5rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: color-mix(in srgb, var(--hue) 60%, var(--color-surface));
 	}
 	/* Era-hue member of the row-tint recipe (like .sermon-row): the shared

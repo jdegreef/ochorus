@@ -111,8 +111,11 @@
 				method="GET"
 				action={localizeHref('/search')}
 				role="search"
-				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent max-sm:gap-1"
+				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border-strong bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent max-sm:gap-1"
 			>
+				<!-- The pill is the field here (the input inside is bare), so it wears
+				     .field's --border-strong edge like the nav search, not the weaker
+				     card hairline. -->
 				<!-- On a phone the glass moves into the submit button, so the hint
 				     ("Search books, authors, text…") has the width to be read whole
 				     rather than cut at "tex". -->

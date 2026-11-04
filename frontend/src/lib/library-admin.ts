@@ -2806,6 +2806,8 @@ export interface AdminActionRow {
 	title?: string;
 	/** Where a translation job is now — `translation.job` rows only. */
 	job_status?: JobStatus;
+	/** The job's open PR — `pr_open` rows only, when GitHub named one. */
+	job_pr?: string | null;
 	detail: Record<string, unknown>;
 	at: string;
 }
@@ -2818,6 +2820,7 @@ export type JobStatus =
 	| 'queued'
 	| 'in_progress'
 	| 'stalled'
+	| 'pr_open'
 	| 'closed'
 	| 'review'
 	| 'done'
@@ -2861,7 +2864,7 @@ export interface AdminActivityFilters {
 	q?: string;
 	category?: string;
 	actor?: string;
-	/** A JobStatus, or 'needs_me' (closed + review: the two waiting on a person). */
+	/** A JobStatus, or 'needs_me' (pr_open + closed + review: what waits on a person). */
 	job_status?: string;
 }
 
