@@ -791,8 +791,9 @@ access), by admin, or by searching target and detail. A person's or a work's his
 you are looking at. Appendix B lists every action recorded.</p>
 <h3>Translation jobs</h3>
 <p>The jobs panel tracks every translation filed: <em>Open</em>, <em>Stalled</em> (claimed but idle 6
-hours or more), <em>Closed not shipped</em> (waiting on a merge or deploy) and <em>Need your
-approval</em> (shipped, awaiting review). The <em>Job status</em> filter narrows the log to any of
+hours or more), <em>PR open</em> (the worker's PR is up, waiting on CI or a merge — the row links
+it), <em>Closed not shipped</em> (no open PR: a deploy pending, or closed as not planned) and
+<em>Need your approval</em> (shipped, awaiting review). The <em>Job status</em> filter narrows the log to any of
 them.</p>
 {callout("gold", "Why it exists", "The log is append-only on purpose — nothing edits or deletes a row — which is what makes it worth trusting. It records the actor as plain text so the record survives the account. Non-super admins see other admins' emails masked.")}
 {access("<strong>Reporting · View</strong>.")}

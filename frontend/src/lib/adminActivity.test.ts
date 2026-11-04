@@ -310,6 +310,16 @@ describe('jobStatusMeta', () => {
 		expect(jobStatusMeta('done', 'plan:advent:es').label).toBe('Shipped');
 		expect(jobStatusMeta('closed', 'book:grace:es').hint).toMatch(/not planned/);
 	});
+
+	it('names the PR-open stage and places it between claimed and closed', () => {
+		expect(jobStatusMeta('pr_open', 'sermon:do-you-pray:es').label).toBe('PR open');
+		const r = (job_status?: AdminActionRow['job_status']) => row({ job_status });
+		expect(jobTally([r('closed'), r('pr_open'), r('stalled')]).map((x) => x.status)).toEqual([
+			'closed',
+			'pr_open',
+			'stalled'
+		]);
+	});
 });
 
 describe('jobTally', () => {
