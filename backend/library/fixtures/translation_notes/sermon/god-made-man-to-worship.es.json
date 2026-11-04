@@ -1,0 +1,72 @@
+{
+ "kind": "sermon",
+ "slug": "god-made-man-to-worship",
+ "language": "es",
+ "job_issue": 7193,
+ "references": [
+  {
+   "reference": "Psalms 45:11",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalms 45:11a",
+   "status": "mined",
+   "source_file": "union-and-communion.es.json",
+   "block_index": 4
+  },
+  {
+   "reference": "Genesis 3:9",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "waiting-on-god.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 10:20-21",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 8:24",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json",
+   "block_index": 130
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 130
+  },
+  {
+   "reference": "Isaiah 28:10",
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.es.json",
+   "block_index": 134
+  },
+  {
+   "reference": "Psalms 96:9",
+   "status": "mined",
+   "source_file": "key-teachings-of-jonathan-edwards.es.json",
+   "block_index": 140
+  }
+ ]
+}
