@@ -54,8 +54,10 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 - A cover with WORDS in it serves one language. A wordless ground under
   `/covers/art/` serves them all, because `BookCover` draws the title over it per
   edition. So a translated edition never wears another edition's designed file —
-  the sixteen works in `DERIVED_GROUND` keep the English cover in English and
-  wear a crop of its photography everywhere else (`scripts/build_derived_grounds.py`).
+  the works in `DERIVED_GROUND` keep the English cover in English and wear a crop
+  of its photography everywhere else (`scripts/build_derived_grounds.py`) — except
+  `ENGLISH_ON_GROUND`, designed covers that survive only at thumbnail size, whose
+  English wears the crop with live type too (the file stays frozen as its source).
 
 ## Sourcing (be reasonable, not rigid)
 
@@ -71,6 +73,14 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   clearly commercial, watermarked/stock, or an image someone is actively
   policing. When it's a genuine judgement call, surface it to the founder rather
   than silently dropping the asset. (Founder steer, 2026-09-15.)
+- **English Scripture is the Open Word Bible, Balanced** (CC0), bundled as
+  `backend/library/data/bible/owb-en-b.json.gz` (`scripts/build_owb_bible.py`):
+  the verse popover, `/scripture/` pages, daily verse and benedictions. A NEW
+  Ochorus Original quotes it too, tagged `(OWB)`. The existing house books
+  (Rooted, Daughters/Sons of the King, Anchored, Tell Me the Story, Real
+  Questions, The Big Story, They Were Young) **keep the BSB on purpose**, and so
+  does a further volume of one of those series: their teaching is written
+  around the BSB's wording. Don't re-quote them. (Founder decision, 2026-10-25.)
 
 ## The fixture (now a friendly edge)
 

@@ -18,7 +18,8 @@
   "questions_young": "لنتحدّث عنها معًا",
   "questions_teens": "أسئلة للتفكير",
   "answers_young": "ملاحظات للكبار",
-  "answers_teens": "إجابة ممكنة"
+  "answers_teens": "إجابة ممكنة",
+  "questions_reflect": "أسئلة للتأمّل"
  },
  "es": {
   "about": "Acerca de este libro",
@@ -39,7 +40,8 @@
   "questions_young": "Conversen juntos",
   "questions_teens": "Preguntas para pensar",
   "answers_young": "Notas para los adultos",
-  "answers_teens": "Una forma de responder"
+  "answers_teens": "Una forma de responder",
+  "questions_reflect": "Preguntas para reflexionar"
  },
  "fr": {
   "about": "À propos de ce livre",
@@ -60,7 +62,8 @@
   "questions_young": "Parlons-en ensemble",
   "questions_teens": "Questions pour réfléchir",
   "answers_young": "Notes pour les adultes",
-  "answers_teens": "Une façon de répondre"
+  "answers_teens": "Une façon de répondre",
+  "questions_reflect": "Questions pour la réflexion"
  },
  "hi": {
   "about": "इस पुस्तक के बारे में",
@@ -81,7 +84,8 @@
   "questions_young": "आओ, साथ मिलकर बात करें",
   "questions_teens": "सोचने के लिये प्रश्न",
   "answers_young": "बड़ों के लिये टिप्पणियाँ",
-  "answers_teens": "उत्तर देने का एक तरीका"
+  "answers_teens": "उत्तर देने का एक तरीका",
+  "questions_reflect": "मनन के लिए प्रश्न"
  },
  "lg": {
   "about": "Ku kitabo kino",
@@ -102,7 +106,8 @@
   "questions_young": "Mwogere ku kino wamu",
   "questions_teens": "Ebibuuzo eby’okulowoozaako",
   "answers_young": "Ebiwandiiko eri abakulu",
-  "answers_teens": "Engeri emu ey’okuddamu"
+  "answers_teens": "Engeri emu ey’okuddamu",
+  "questions_reflect": "Ebibuuzo eby'okufumiitirizaako"
  },
  "pt": {
   "about": "Sobre este livro",
@@ -123,7 +128,8 @@
   "questions_young": "Conversem juntos",
   "questions_teens": "Perguntas para pensar",
   "answers_young": "Notas para os adultos",
-  "answers_teens": "Uma forma de responder"
+  "answers_teens": "Uma forma de responder",
+  "questions_reflect": "Perguntas para reflexão"
  },
  "sw": {
   "about": "Kuhusu kitabu hiki",
@@ -144,7 +150,8 @@
   "questions_young": "Zungumzeni pamoja",
   "questions_teens": "Maswali ya kufikiria",
   "answers_young": "Maelezo kwa watu wazima",
-  "answers_teens": "Njia moja ya kujibu"
+  "answers_teens": "Njia moja ya kujibu",
+  "questions_reflect": "Maswali ya kutafakari"
  },
  "uk": {
   "about": "Про цю книгу",
@@ -165,6 +172,7 @@
   "questions_young": "Поговоріть разом",
   "questions_teens": "Запитання для роздумів",
   "answers_young": "Нотатки для дорослих",
-  "answers_teens": "Один зі способів відповісти"
+  "answers_teens": "Один зі способів відповісти",
+  "questions_reflect": "Запитання для роздумів"
  }
 }

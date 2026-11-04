@@ -80,5 +80,20 @@
   "the-inner-chamber-month": {
     "title": "شهر في المخدع",
     "description": "ابنِ عادةً يوميّة في الصلاة وكلمة الله: ستّة وثلاثون صباحًا مع أندرو موراي، فصلٌ واحد كلّ يوم."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "سنة مع «خواطر لساعة الهدوء»",
+    "description": "مجموعة د. ل. مودي من القراءات القصيرة للسنة كلها: آية وبضعة أسطر من الوعّاظ والكتّاب الذين أحبّهم. ابدأ في أي يوم: اليوم الأول هو قراءة الأول من يناير، وكل يوم بعده يأخذ القراءة التالية. دقيقة واحدة في اليوم."
+  },
+  "cheque-book-year": {
+    "title": "سنة مع «دفتر شيكات بنك الإيمان»",
+    "description": "وعود تشارلز سبرجن اليومية: وعد واحد من الله لكل يوم من أيام السنة، مع كلمة قصيرة عن نواله بالإيمان. ابدأ في أي يوم: اليوم الأول هو قراءة الأول من يناير، وكل يوم بعده يأخذ القراءة التالية. دقيقة أو دقيقتان في اليوم."
+  },
+  "first-steps-for-teens": {
+    "title": "البداية: إيمانٌ للمراهقين",
+    "description": "أوّل مسيرة مع يسوع، للقرّاء المراهقين. يلقاك تشارلز سبرجن «عند الباب الضيق» بأبسط عونٍ لكل من يتلمّس طريقه إلى المسيح؛ ثم تُريك القصص الحقيقية في «رجال ونساء بذلوا كل شيء» إلامَ تصير تلك الحياة — كتابان قصيران في نحو ثلاثة أسابيع.",
+    "note": [
+      "Written in the same PR as around-the-wicket-gate.ar (job #7052): that book completes this plan's book set in Arabic (men-and-women-who-gave-everything-2.ar already shipped), so seed_plans would otherwise create the ar row with English prose. The two books are named by their shipped Arabic titles verbatim («عند الباب الضيق», «رجال ونساء بذلوا كل شيء»). «البداية» renders 'Starting Out'; singular «ك» address, as the plan speaks to one reader. AI-drafted; awaiting native review."
+    ]
   }
 }

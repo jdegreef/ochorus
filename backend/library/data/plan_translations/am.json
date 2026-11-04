@@ -56,7 +56,7 @@
   "title": "የንጉሡ ወንዶች ልጆች፦ ከእግዚአብሔር ጋር ሦስት ወራት",
   "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች ከእግዚአብሔር ጋር የሚያሳልፉት ሦስት ወራት፦ ሦስቱም የ«የንጉሡ ወንዶች ልጆች» መጻሕፍት — ብርቱ፣ ታማኝ እና ማደግ — በየቀኑ አንድ አጭር ንባብ፤ በክርስቶስ ማን እንደ ሆንክ፣ የሚታመን ሰው መሆን፣ እንዲሁም በጥበብ ማደግ።",
   "note": [
-   "AI-drafted; awaiting native review. Prose only: sons-of-the-king-1 … 3 have no am editions yet, so no am row is created until all three ship — when they do, make the book names agree with their am subtitles. Replaces the per-book sons-of-the-king-book-1/2/3-30-days cards (series title «የንጉሡ ወንዶች ልጆች»); mirrors daughters-of-the-king-three-months in the masculine singular (አንተ)."
+   "AI-drafted; awaiting native review. Three-book plan backed by the am editions of sons-of-the-king-1 … 3 (jobs #6841–#6843); added prose predates them, and Book 1 completes the set. Book names are the am subtitles' lead words (ብርቱ / ታማኝ / ማደግ), which they match. Replaces the per-book sons-of-the-king-book-1/2/3-30-days cards (series title «የንጉሡ ወንዶች ልጆች»); mirrors daughters-of-the-king-three-months in the masculine singular (አንተ)."
   ]
  },
  "humility-12-days": {
@@ -226,5 +226,36 @@
   "note": [
    "Queue job #3779: «ለአምልኮታዊና ለቅዱስ ሕይወት የቀረበ ከባድ ጥሪ» completes this plan in am (with «በክርስቶስ ቅዱሳን» and «ስለ ክርስቲያናዊ ፍጽምና ግልጽ ማብራሪያ», both already live), so seed_plans creates the (pursuit-of-holiness, am) row on the deploy that ships this PR. «ቅድስናን መከተል» echoes Hebrews 12:14 («ቅድስናንም ተከታተሉ»). AI-drafted; awaiting native review."
   ]
+ },
+ "women-of-faith": {
+  "title": "የእምነት ሴቶች",
+  "description": "ከሦስት ልዩ ሴቶች ጋር የሚደረግ ረዘም ያለ ጉዞ። ሃና ዊታል ስሚዝ የደስተኛ ሕይወትን ምሥጢር ትገልጣለች፤ የአማንዳ ቤሪ ስሚዝና የጁልያ ኤ. ጄ. ፉት የሕይወት ታሪኮች ደግሞ — በአሥራ ዘጠነኛው መቶ ክፍለ ዘመን ወንጌልን በዓለም ዙሪያ የሰበኩ ሁለት ጥቁር ሴቶች — ያንን ምሥጢር በታላቅ ዋጋ ሲኖር ያሳያሉ።",
+  "note": [
+   "AI-drafted; awaiting native review. Added with amanda-smith-autobiography.am («አማንዳ ስሚዝ፦ የሕይወት ታሪክ»), which completes the set — the-christians-secret-of-a-happy-life-4.am («የክርስቲያን የደስተኛ ሕይወት ምሥጢር») and a-brand-plucked-from-the-fire.am («ከእሳት የተነጠቀ ትንታግ») were already live — so seed_plans creates the (women-of-faith, am) row on the deploy that ships this PR."
+  ]
+ },
+ "days-of-heaven-upon-earth-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የሰማይ ቀናት በምድር ላይ",
+  "description": "የኤ. ቢ. ሲምፕሰን የዓመት ዕለታዊ ንባቦች፦ ለእያንዳንዱ ቀን አንድ ጥቅስና ስለ ክርስቶስ ሙላት አጭር ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ወይም ሁለት ደቂቃ።"
+ },
+ "morning-by-morning-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ማለዳ ማለዳ",
+  "description": "የቻርልስ ስፐርጀን የዓመቱ ሙሉ የማለዳ ንባቦች፦ ቀኑን ለመጀመር አንድ የመጽሐፍ ቅዱስ ቃልና ሞቅ ያለ ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን ሁለት ደቂቃ ያህል።"
+ },
+ "evening-by-evening-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ምሽት በምሽት",
+  "description": "የ«ማለዳ ማለዳ» ተጓዳኝ የሆነው የስፐርጀን መጽሐፍ፦ የዓመቱን እያንዳንዱን ቀን ለመዝጋት አንድ ቃልና ማሰላሰል። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በየምሽቱ ሁለት ደቂቃ ያህል።"
+ },
+ "our-daily-walk-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የዕለት ተዕለት ጉዟችን",
+  "description": "የኤፍ. ቢ. ማየር ለዓመቱ ለእያንዳንዱ ቀን የሚሆኑ ንባቦች፦ በተራ ቀናት ከእግዚአብሔር ጋር ስለ መሄድ አጭር ርዕስ ያለው ማሰላሰልና ጥቅሱ። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን ሁለት ወይም ሦስት ደቂቃ።"
+ },
+ "thoughts-for-the-quiet-hour-year": {
+  "title": "የአንድ ዓመት ንባብ፦ ለጸጥታ ሰዓት የሚሆኑ አሳቦች",
+  "description": "ዲ. ኤል. ሙዲ ለዓመቱ ሙሉ የሰበሰባቸው አጫጭር ንባቦች፦ አንድ ጥቅስና እርሱ ከሚወዳቸው ሰባኪዎችና ጸሐፊዎች ጥቂት መስመሮች። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ደቂቃ ያህል።"
+ },
+ "cheque-book-year": {
+  "title": "የአንድ ዓመት ንባብ፦ የእምነት ባንክ የቼክ ደብተር",
+  "description": "የቻርልስ ስፐርጀን ዕለታዊ ተስፋዎች፦ ለዓመቱ ለእያንዳንዱ ቀን አንድ የእግዚአብሔር ተስፋ፣ በእምነት እንዴት እንደሚቀበሉት ከሚያሳይ አጭር ቃል ጋር። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ወይም ሁለት ደቂቃ።"
  }
 }

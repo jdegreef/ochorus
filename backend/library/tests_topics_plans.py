@@ -259,6 +259,23 @@ class PlanTests(TestCase):
             [(d.day, d.chapter_order) for d in days], [(1, 2), (2, 3), (3, 4)]
         )
 
+    def test_a_new_plan_sorts_after_the_shelf_it_joins(self):
+        """On a live DB every older plan already exists, so this run creates
+        only the new one — which must not take sort_order 0 and head the shelf."""
+        Plan.objects.create(slug="older", language="en", title="Older", sort_order=40)
+        # A year-long devotional, in its band at the foot of the shelf.
+        Plan.objects.create(slug="a-year", language="en", title="Year", sort_order=100_000)
+        book = Book.objects.create(
+            author=Author.objects.get(slug="am"), slug="newcomer", language="en", title="N"
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        launch = [("newcomer-plan", "newcomer", "N", "n")]
+        with patch("library.management.commands.seed_plans.LAUNCH_PLANS", launch):
+            call_command("seed_plans", verbosity=0)
+        new = Plan.objects.get(slug="newcomer-plan").sort_order
+        # After the journeys, still above the devotionals.
+        self.assertTrue(40 < new < 100_000, new)
+
     def test_seed_plans_leaves_an_existing_untranslated_row_alone(self):
         """A row created before this guard keeps its prose; deleting a published
         plan is a bigger decision than a seed step makes on its own."""
@@ -297,9 +314,9 @@ class RetiredPlanTests(TestCase):
     """``RETIRED_PLANS`` and the progress move that goes with it agree."""
 
     def test_a_retired_slug_never_returns_and_names_live_successors(self):
-        from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, RETIRED_PLANS
+        from library.plan_seed import RETIRED_PLANS, all_plan_sources
 
-        live = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        live = set(all_plan_sources())
         self.assertEqual(sorted(set(RETIRED_PLANS) & live), [])
         self.assertEqual(
             sorted(s for succ in RETIRED_PLANS.values() for s in succ if s not in live), []

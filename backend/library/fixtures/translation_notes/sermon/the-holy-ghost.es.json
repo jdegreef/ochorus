@@ -1,0 +1,55 @@
+{
+ "kind": "sermon",
+ "slug": "the-holy-ghost",
+ "language": "es",
+ "job_issue": 7161,
+ "references": [
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 13
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 16:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Matthew 25:26",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Luke 19:22",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}

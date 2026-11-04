@@ -185,6 +185,9 @@
      toast, skip        PWA toasts; the skip link above everything
    Local stacking inside one component (1–10) can stay numeric. */
 :root {
+	/* Candlelight's glow: over a reading page's own layers (page-turn mode's
+	   opaque page is 5, its edge buttons 6), under every piece of chrome. */
+	--z-glow: 7;
 	--z-pinned: 20;
 	--z-popover: 30;
 	--z-chrome: 40;
@@ -1236,6 +1239,17 @@
 	--season-white: #f6ecd2;
 	--season-red: #e0625a;
 	--season-green: #86c08f;
+	/* The sky over the hero by the hour of prayer ($lib/prayerHours): washed
+	   in along the band's top, under the scrim, so the text's contrast never
+	   rests on it (palettes.test.ts measures the scrim over a WHITE painting,
+	   which no sky is lighter than). */
+	--sky-vigils: #1a2350;
+	--sky-lauds: #f3a978;
+	--sky-terce: #9cc7ec;
+	--sky-sext: #b9dcf5;
+	--sky-none: #e9bb7c;
+	--sky-vespers: #d9826a;
+	--sky-compline: #2b2d63;
 	/* The quote card (HomeQuote): clear over its top 6rem, full strength from
 	   9rem — where the text begins (its pt-36) — however tall the quote grows. */
 	--quote-scrim: linear-gradient(
@@ -1485,6 +1499,32 @@
 }
 .reading mark.range-mark:hover {
 	background: color-mix(in srgb, var(--mark-hue) 42%, transparent);
+}
+/* The highlight just made (rangeMarks `fresh`) brushes in like a pen across
+   the words: the same colour painted as a strip that grows from nothing to
+   full width. `slice` lays the strip end to end across line breaks, so a
+   highlight over several lines sweeps them in turn; it starts from the
+   reading edge (right in right-to-left text). Only the new mark — a page
+   load, a recolour or a sync draws marks as they are. */
+@media (prefers-reduced-motion: no-preference) {
+	.reading mark.range-mark.fresh {
+		background: linear-gradient(
+				color-mix(in srgb, var(--mark-hue) 28%, transparent),
+				color-mix(in srgb, var(--mark-hue) 28%, transparent)
+			)
+			no-repeat 0 0 / 100% 100%;
+		box-decoration-break: slice;
+		-webkit-box-decoration-break: slice;
+		animation: mark-brush 0.55s cubic-bezier(0.5, 0, 0.3, 1);
+	}
+	.reading mark.range-mark.fresh:dir(rtl) {
+		background-position: 100% 0;
+	}
+}
+@keyframes mark-brush {
+	from {
+		background-size: 0% 100%;
+	}
 }
 /* A search hit: the same gold as the result snippet's <mark>, so arriving from
    search feels continuous with the list you arrived from. Not clickable — it is
@@ -1801,6 +1841,16 @@
 	animation-timing-function: ease-in-out;
 }
 
+/* The cover a reader taps flies into the book page it opens ($lib/coverFlight):
+   the shelf's cover and the book page's hero share `book-cover` for that
+   navigation, and the browser carries the one into the other's place and size
+   while the rest of the page crossfades round it. Both are 3:4, so it scales
+   cleanly. */
+::view-transition-group(book-cover) {
+	animation-duration: 440ms;
+	animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
 /* A loading placeholder: a block of parchment (the band's ground, warmed
    with a breath of gold) that a slow band of light crosses, like a page
    turning under a lamp — not the grey pulse of a generic skeleton. Wear it on
@@ -1927,6 +1977,77 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	padding-top: 0.06em;
 	color: var(--initial);
 	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--ornament) 75%, transparent);
+}
+
+/* INK-IN: the first time a reader reaches a chapter (the chapter route sets
+   `.ink-in`; not on a return, a jump to a passage, or the page a visit
+   entered on), its initial soaks into the page: up out of a soft haze of its
+   own ink, sharpening, the gilt settling last.
+
+   Browsers will not animate a ::first-letter (Chromium ignores it), so the
+   paragraph animates a registered number, --initial-ink, 0 → 1, which the
+   letter inherits and mixes its colour and shadows by. The resting rule above
+   is left alone — plain colour, no calc() in color-mix — so an engine without
+   these features still draws the accented, gilt initial; this rule is
+   additionally fenced by @supports, and the route only sets `.ink-in` where
+   CSS.registerProperty exists (without it the number would flip at 50% and
+   hold the letter blank). The selector repeats the drop cap's own gates,
+   script exclusions included: keep the two in step. Opt-in under
+   no-preference: the global reduced-motion rule keeps delays. */
+@property --initial-ink {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+	@supports (color: color-mix(in srgb, red calc(1 * 50%), blue)) {
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)) {
+			animation: ink-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s backwards;
+		}
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+			color: color-mix(in srgb, var(--initial) calc(var(--initial-ink) * 100%), transparent);
+			text-shadow:
+				0.035em 0.035em 0 color-mix(in srgb, var(--ornament) calc(var(--initial-ink) * 75%), transparent),
+				0 0 calc((1 - var(--initial-ink)) * 0.4em) color-mix(in srgb, var(--initial) calc((1 - var(--initial-ink)) * 90%), transparent);
+		}
+	}
+}
+@keyframes ink-in {
+	from {
+		--initial-ink: 0;
+	}
+}
+
+/* CANDLELIGHT (a reader pref, Lamplight only; $lib/readerPrefs sets
+   `data-candle`): a warm pool of light at the top of any
+   page with reading text — chapters, sermons, a life, which hold
+   `data-reading` ($lib/presenceFlag) — as from a candle just above it. A plain see-through gradient, not a blend mode, and still once it
+   has faded in, so it costs nothing as the page scrolls. Its heart sits
+   6.5rem down — clear of a reading page's top bar (3.5rem), which would hide
+   it — and --z-glow places it; it never takes a tap. */
+:root[data-theme='dark'][data-candle][data-reading] body::before {
+	content: '';
+	position: fixed;
+	inset: 0 0 auto;
+	height: 80vh;
+	z-index: var(--z-glow);
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 80% 55% at 50% 6.5rem,
+		rgb(255 176 92 / 0.22),
+		rgb(255 150 60 / 0.08) 45%,
+		transparent 78%
+	);
+}
+@media (prefers-reduced-motion: no-preference) {
+	:root[data-theme='dark'][data-candle][data-reading] body::before {
+		animation: candle-in 1.2s ease-out;
+	}
+}
+@keyframes candle-in {
+	from {
+		opacity: 0;
+	}
 }
 
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
@@ -2068,6 +2189,10 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	.paged-backdrop,
 	.scripture-pop,
 	.define-pop {
+		display: none !important;
+	}
+	/* Candlelight's glow is screen light, not ink. */
+	:root[data-candle] body::before {
 		display: none !important;
 	}
 
@@ -2316,6 +2441,8 @@ nav.appnav .navlinks a.active {
    alongside the mark are gone with it. `color` still matters: the SVG is
    fill="currentColor". */
 nav.appnav .brand {
+	/* The anchor PentecostFlames' tongues of fire sit over. */
+	position: relative;
 	color: var(--text);
 	display: inline-flex;
 	align-items: center;

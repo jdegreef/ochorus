@@ -12,10 +12,21 @@
  * `$lib/reading`'s prefersReducedMotion would bring the reader's modules with it.
  */
 export function crossfade(change: () => void): void {
-	const doc = typeof document === 'undefined' ? null : document;
-	if (!doc?.startViewTransition || doc.visibilityState !== 'visible' || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+	if (!canViewTransition()) {
 		change();
 		return;
 	}
-	doc.startViewTransition(change);
+	document.startViewTransition(change);
+}
+
+/** Whether a view transition may run now: the browser has the API, the tab is
+ *  being looked at, and the reader hasn't asked for less motion. The one rule
+ *  for the site's transitions (this crossfade, $lib/coverFlight). */
+export function canViewTransition(): boolean {
+	const doc = typeof document === 'undefined' ? null : document;
+	return (
+		typeof doc?.startViewTransition === 'function' &&
+		doc.visibilityState === 'visible' &&
+		!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+	);
 }

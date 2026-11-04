@@ -13,6 +13,11 @@
 	 * shelf opens its panel underneath, with the cover and the actions. Size is
 	 * decided by the shelf (spineSize × its scale).
 	 *
+	 * Pointing at it (a mouse) or tabbing to it lifts it and tips its head
+	 * toward the reader, the way a finger hooks a book off a shelf, and tells
+	 * the shelf (`onpeek`) so it can letter the title above it — the spine's
+	 * own lettering is too small to read at a glance.
+	 *
 	 * hex-ok-file: the spine is painted in the book's `cover_color` — data, not a
 	 * theme surface — with white ink, which that colour is floored to carry at AA
 	 * where it is minted (`covers.ink_safe`), as on BookCover's plate.
@@ -22,14 +27,30 @@
 		width,
 		height,
 		selected,
-		onselect
+		lifted = false,
+		onselect,
+		onpeek
 	}: {
 		item: ShelfBook;
 		width: number;
 		height: number;
 		selected: boolean;
+		/** Pointed at or tabbed to (the shelf decides, from `onpeek`). */
+		lifted?: boolean;
 		onselect: (el: HTMLButtonElement) => void;
+		/** This spine pointed at ('pointer') or tabbed to ('focus') — its button —
+		 *  or let go of by that same input (null). */
+		onpeek?: (by: 'pointer' | 'focus', el: HTMLButtonElement | null) => void;
 	} = $props();
+	// Whether focus came from the keyboard. Guarded: an engine without
+	// :focus-visible (Safari before 15.4) throws on the selector.
+	const byKeyboard = (b: HTMLButtonElement) => {
+		try {
+			return b.matches(':focus-visible');
+		} catch {
+			return false;
+		}
+	};
 	const t = i18n.t;
 
 	const title = $derived(splitEdition(item.book.slug, item.book.title)?.base ?? item.book.title);
@@ -41,6 +62,7 @@
 	type="button"
 	class="spine"
 	class:selected
+	class:lifted
 	class:paused={item.paused}
 	style:width="{width}px"
 	style:height="{height}px"
@@ -53,6 +75,10 @@
 			: ''}"
 	title="{item.book.title} — {item.book.author.name}"
 	onclick={() => el && onselect(el)}
+	onpointerenter={(e) => e.pointerType === 'mouse' && el && onpeek?.('pointer', el)}
+	onpointerleave={() => onpeek?.('pointer', null)}
+	onfocus={() => el && byKeyboard(el) && onpeek?.('focus', el)}
+	onblur={() => onpeek?.('focus', null)}
 >
 	<span class="band" aria-hidden="true"></span>
 	<span class="title" class:small={width < 30} aria-hidden="true">{title}</span>
@@ -92,13 +118,26 @@
 		);
 		box-shadow: 1px 0 0 rgb(0 0 0 / 0.25);
 	}
+	.spine {
+		transform-origin: center bottom;
+	}
 	@media (prefers-reduced-motion: no-preference) {
 		.spine {
-			transition: transform var(--duration-fast) ease;
+			/* A little spring in the lift: it overshoots and settles. */
+			transition:
+				transform 300ms cubic-bezier(0.3, 1.4, 0.5, 1),
+				box-shadow 300ms ease;
 		}
 	}
-	.spine:hover {
-		transform: translateY(-4px);
+	/* Pointed at with a mouse (a tap would leave it stuck) or tabbed to — one
+	   state, `lifted`, for both: lifted, and its head tipped toward the reader
+	   off the shelf — a turn toward the reader, not a slant across the row
+	   (coverStraight.test). */
+	.spine.lifted {
+		transform: translateY(-10px) perspective(24rem) rotateX(-12deg);
+		box-shadow:
+			1px 0 0 rgb(0 0 0 / 0.25),
+			0 10px 14px -6px rgb(0 0 0 / 0.45);
 	}
 	/* Pulled half out, while its panel is open. */
 	.spine.selected {

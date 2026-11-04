@@ -186,6 +186,11 @@ describe('the two cover renderers agree', () => {
 			}
 		],
 		[
+			'a title in small capitals',
+			{ cover_url: PLATE, slug: 'soar-like-the-eagle-3', title: 'Soar Like the Eagle' },
+			{ title: 'Soar Like the Eagle', caps: true }
+		],
+		[
 			'a plate with a subtitle',
 			{ cover_url: PLATE, subtitle: 'Thoughts on the Nearness of God' },
 			{ subtitle: 'Thoughts on the Nearness of God' }

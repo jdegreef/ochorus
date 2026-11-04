@@ -37,6 +37,8 @@ export interface CoverCardBook {
 	author: string;
 	title: string;
 	subtitle?: string | null;
+	/** A young edition's edition line (`coverTitle.editionOf`), set under the title. */
+	edition?: string | null;
 	/** A `coverStyles` id — `devotional`, `press`, … */
 	style: string;
 	/** The series volume numeral, from `coverStyles.volumeNumeral`; null
@@ -60,6 +62,8 @@ export interface CoverCardBook {
 	/** Framed type in dark ink over a pale ground, from `coverLayouts.inkDarkFor`.
 	 *  Painting only. */
 	dark?: boolean;
+	/** A title set in small capitals, from `coverStyles.smallCapsFor`. */
+	caps?: boolean;
 }
 
 /**
@@ -76,6 +80,22 @@ export const LONG_TITLE_CHARS = 48;
 
 export function isLongTitle(title: string): boolean {
 	return title.length > LONG_TITLE_CHARS;
+}
+
+/**
+ * How far a SHORT title is set up from its recipe's size: `fit-short`,
+ * `fit-mid`, `fit-roomy`, or none.
+ *
+ * Each recipe sizes its title so the library's longest fit in three lines,
+ * which left a one-word title like "Holiness" set as small as "The Saints'
+ * Everlasting Rest" in a field of empty painting. The class scales the title
+ * (`zoom` in `cover-type.css`, so the recipe's own size is what grows) on a
+ * framed painting only. Counted in characters, like `isLongTitle`, so both
+ * renderers decide it without a layout pass.
+ */
+export function titleFit(title: string): 'fit-short' | 'fit-mid' | 'fit-roomy' | null {
+	const n = title.length;
+	return n <= 9 ? 'fit-short' : n <= 16 ? 'fit-mid' : n <= 24 ? 'fit-roomy' : null;
 }
 
 /** Escape text for an HTML attribute or a text node. */
@@ -107,7 +127,10 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	const classes = ['cover-type', `style-${escapeHtml(book.style)}`];
 	if (book.script) classes.push(`script-${escapeHtml(book.script)}`);
 	if (isLongTitle(book.title)) classes.push('long-title');
+	const fit = titleFit(book.title);
+	if (fit) classes.push(fit);
 	if (book.art && book.top) classes.push('type-top');
+	if (book.caps) classes.push('caps-small');
 	const lang = escapeHtml(book.lang);
 	// The byline takes NO `lang`, matching the component: an author's name is
 	// one row for every edition, so it is Latin on an Arabic cover too, and
@@ -123,6 +146,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	<div class="middle">
 		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}
 		<div class="title" lang="${lang}" dir="auto">${escapeHtml(book.title)}</div>
+		${book.edition ? `<div class="edition" lang="${lang}" dir="auto">${escapeHtml(book.edition)}</div>` : ''}
 		<div class="rule"></div>
 		${
 			book.subtitle

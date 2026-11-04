@@ -95,18 +95,24 @@ export function chapterPath(
 /**
  * A plan day's path (unlocalized), carrying the plan context (`?plan=&day=`)
  * its reading surface needs to mark the day done and move on. A day reads a
- * book chapter (through `chapterPath`, so "Prefer Modern English" holds) or an
- * article; every link into a plan day goes through here, so no entry point
- * handles one kind and drops the other.
+ * book chapter (through `chapterPath`, so "Prefer Modern English" holds), one
+ * dated entry of a year-long devotional (its day page) or an article; every
+ * link into a plan day goes through here, so no entry point handles one kind
+ * and drops the others.
  */
 export function planDayPath(
 	planSlug: string,
-	d: Pick<PlanDay, 'day' | 'book_slug' | 'chapter_order' | 'article_slug' | 'has_modern_edition'>,
+	d: Pick<
+		PlanDay,
+		'day' | 'book_slug' | 'chapter_order' | 'article_slug' | 'entry_date' | 'has_modern_edition'
+	>,
 	/** Open a chapter's Modern edition whatever the preference — carrying on in it. */
 	stayModern = false
 ): string {
 	const query = `plan=${encodeURIComponent(planSlug)}&day=${d.day}`;
 	if (d.article_slug) return `${workPath('article', d.article_slug)}?${query}`;
+	// A devotional's day reads ONE dated entry, on the book's day page.
+	if (d.entry_date) return `/today/${d.book_slug}/?d=${d.entry_date}&${query}`;
 	return chapterPath(d.book_slug, d.chapter_order ?? 1, d.has_modern_edition, query, stayModern);
 }
 

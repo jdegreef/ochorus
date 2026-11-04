@@ -1,0 +1,739 @@
+{
+ "kind": "book",
+ "slug": "rooted-3",
+ "language": "sw",
+ "job_issue": 6897,
+ "references": [
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 29
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 13:6",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 57
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 64
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 72
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 77
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 78
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 82
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 84
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.sw.json",
+   "block_index": 87
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.sw.json",
+   "block_index": 94
+  },
+  {
+   "reference": "Ephesians 4:32",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 102
+  },
+  {
+   "reference": "2 Samuel 9:1",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "2 Samuel 9:7",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Ephesians 4:32",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 109
+  },
+  {
+   "reference": "Ephesians 4:32",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 111
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json",
+   "block_index": 116
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json",
+   "block_index": 124
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json",
+   "block_index": 129
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json",
+   "block_index": 134
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "self_rendered",
+   "block_index": 141
+  },
+  {
+   "reference": "Proverbs 15:1",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Proverbs 15:1",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "humility-2.sw.json",
+   "block_index": 153
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Proverbs 25:28",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 180
+  },
+  {
+   "reference": "Philippians 2:4",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 185
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Galatians 5:25",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 199
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 203
+  },
+  {
+   "reference": "Galatians 5:25",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 216
+  },
+  {
+   "reference": "James 3:3",
+   "status": "self_rendered",
+   "block_index": 221
+  },
+  {
+   "reference": "James 3:4",
+   "status": "self_rendered",
+   "block_index": 221
+  },
+  {
+   "reference": "James 3:5",
+   "status": "self_rendered",
+   "block_index": 221
+  },
+  {
+   "reference": "James 3:10",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "James 3:9",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "Proverbs 12:22",
+   "status": "self_rendered",
+   "block_index": 236
+  },
+  {
+   "reference": "Proverbs 12:22",
+   "status": "self_rendered",
+   "block_index": 241
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 242
+  },
+  {
+   "reference": "Proverbs 12:22",
+   "status": "self_rendered",
+   "block_index": 244
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 256
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 257
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 263
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 264
+  },
+  {
+   "reference": "Philippians 2:14",
+   "status": "self_rendered",
+   "block_index": 270
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "self_rendered",
+   "block_index": 270
+  },
+  {
+   "reference": "Philippians 2:14",
+   "status": "self_rendered",
+   "block_index": 277
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "self_rendered",
+   "block_index": 278
+  },
+  {
+   "reference": "Philippians 2:14",
+   "status": "self_rendered",
+   "block_index": 283
+  },
+  {
+   "reference": "Proverbs 16:28",
+   "status": "self_rendered",
+   "block_index": 285
+  },
+  {
+   "reference": "Proverbs 11:13",
+   "status": "self_rendered",
+   "block_index": 287
+  },
+  {
+   "reference": "Proverbs 16:28",
+   "status": "self_rendered",
+   "block_index": 292
+  },
+  {
+   "reference": "Proverbs 11:13",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "James 1:19",
+   "status": "self_rendered",
+   "block_index": 306
+  },
+  {
+   "reference": "James 1:19",
+   "status": "self_rendered",
+   "block_index": 311
+  },
+  {
+   "reference": "James 1:19",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "James 1:19",
+   "status": "self_rendered",
+   "block_index": 313
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "self_rendered",
+   "block_index": 316
+  },
+  {
+   "reference": "James 1:19",
+   "status": "self_rendered",
+   "block_index": 319
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 321
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 325
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 332
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 334
+  },
+  {
+   "reference": "1 Peter 2:17",
+   "status": "self_rendered",
+   "block_index": 335
+  },
+  {
+   "reference": "Psalms 100:4",
+   "status": "self_rendered",
+   "block_index": 339
+  },
+  {
+   "reference": "Psalms 100:5",
+   "status": "self_rendered",
+   "block_index": 339
+  },
+  {
+   "reference": "Luke 17:13",
+   "status": "self_rendered",
+   "block_index": 343
+  },
+  {
+   "reference": "Luke 17:17",
+   "status": "self_rendered",
+   "block_index": 345
+  },
+  {
+   "reference": "Psalms 100:4",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Psalms 100:5",
+   "status": "self_rendered",
+   "block_index": 350
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 356
+  },
+  {
+   "reference": "Colossians 3:24",
+   "status": "self_rendered",
+   "block_index": 356
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 361
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 365
+  },
+  {
+   "reference": "Colossians 3:24",
+   "status": "self_rendered",
+   "block_index": 367
+  },
+  {
+   "reference": "Colossians 3:24",
+   "status": "self_rendered",
+   "block_index": 368
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 369
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "self_rendered",
+   "block_index": 373
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "self_rendered",
+   "block_index": 373
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 373
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 379
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 381
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "self_rendered",
+   "block_index": 392
+  },
+  {
+   "reference": "Mark 12:43",
+   "status": "self_rendered",
+   "block_index": 397
+  },
+  {
+   "reference": "Mark 12:44",
+   "status": "self_rendered",
+   "block_index": 397
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json",
+   "block_index": 399
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "self_rendered",
+   "block_index": 412
+  },
+  {
+   "reference": "Luke 6:45",
+   "status": "self_rendered",
+   "block_index": 418
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "self_rendered",
+   "block_index": 419
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.sw.json",
+   "block_index": 428
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "christ-all-in-all.sw.json",
+   "block_index": 433
+  },
+  {
+   "reference": "1 Kings 3:5",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "christ-all-in-all.sw.json",
+   "block_index": 441
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "christ-all-in-all.sw.json",
+   "block_index": 442
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "Psalms 101:3",
+   "status": "self_rendered",
+   "block_index": 468
+  },
+  {
+   "reference": "Psalms 101:3",
+   "status": "self_rendered",
+   "block_index": 473
+  },
+  {
+   "reference": "Psalms 101:3",
+   "status": "self_rendered",
+   "block_index": 481
+  },
+  {
+   "reference": "Proverbs 10:9",
+   "status": "self_rendered",
+   "block_index": 487
+  },
+  {
+   "reference": "Daniel 6:4",
+   "status": "self_rendered",
+   "block_index": 493
+  },
+  {
+   "reference": "Proverbs 10:9",
+   "status": "self_rendered",
+   "block_index": 494
+  },
+  {
+   "reference": "Proverbs 10:9",
+   "status": "self_rendered",
+   "block_index": 495
+  },
+  {
+   "reference": "Proverbs 16:18",
+   "status": "self_rendered",
+   "block_index": 501
+  },
+  {
+   "reference": "Matthew 26:33",
+   "status": "self_rendered",
+   "block_index": 504
+  },
+  {
+   "reference": "Matthew 26:34",
+   "status": "self_rendered",
+   "block_index": 505
+  },
+  {
+   "reference": "Proverbs 16:18",
+   "status": "self_rendered",
+   "block_index": 508
+  },
+  {
+   "reference": "Proverbs 16:18",
+   "status": "self_rendered",
+   "block_index": 515
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 516
+  },
+  {
+   "reference": "Luke 6:43",
+   "status": "self_rendered",
+   "block_index": 522
+  },
+  {
+   "reference": "Luke 6:44",
+   "status": "self_rendered",
+   "block_index": 522
+  },
+  {
+   "reference": "Luke 6:45",
+   "status": "self_rendered",
+   "block_index": 522
+  },
+  {
+   "reference": "Luke 6:44",
+   "status": "self_rendered",
+   "block_index": 526
+  },
+  {
+   "reference": "Luke 6:45",
+   "status": "self_rendered",
+   "block_index": 528
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 530
+  },
+  {
+   "reference": "Philippians 1:10",
+   "status": "self_rendered",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 1:11",
+   "status": "self_rendered",
+   "block_index": 549
+  },
+  {
+   "reference": "Philippians 1:9",
+   "status": "self_rendered",
+   "block_index": 549
+  }
+ ]
+}

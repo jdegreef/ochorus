@@ -6,7 +6,8 @@ import { readJSON, writeJSON } from './persisted';
  * *preference* (like theme or font size), not reading data: it's a personal
  * target, so it lives in its own localStorage key and is NOT wiped on sign-out
  * (it isn't in READING_DATA_KEYS). Progress toward it is computed from the
- * synced activity log via heatmap.weekReadCount — the goal itself is just the
+ * synced activity log via heatmap.weekReadCount, over the reader's own week
+ * (planSchedule.weekStart: Monday in most locales) — the goal itself is just the
  * target number.
  */
 

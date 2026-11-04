@@ -38,6 +38,10 @@ export function holdFlag(el: HTMLElement, attr: string): () => void {
 	};
 }
 
+/** The <html> attribute that stands for "a page of reading text is open" — a
+ *  chapter, a sermon, a life — held by those routes (app.css CANDLELIGHT). */
+export const READING_FLAG = 'data-reading';
+
 /** The <html> attribute that stands for "the phone tab bar is in the DOM". */
 export const TABBAR_FLAG = 'data-tabbar';
 

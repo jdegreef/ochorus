@@ -17,3 +17,22 @@
 export function coverTitle(book: { title: string; cover_title?: string | null }): string {
 	return book.cover_title || book.title;
 }
+
+/**
+ * A young-reader edition's title split into the WORDS a cover sets large and
+ * the EDITION it sets as a tracked line under them: « Absolute Surrender (For
+ * Teens) » → `Absolute Surrender` + `For Teens`, es « El progreso del peregrino
+ * (para jóvenes) » → … + `para jóvenes`. The designed English covers have
+ * always set the edition that way ("— FOR TEENS —"); the painted and drawn
+ * ones carried it as a bracket inside the display type, a whole line of it,
+ * in four capitalisations across the translations (2026-11-01).
+ *
+ * Only a young edition (slug `<base>-teens` / `<base>-children`, the
+ * sibling-editions convention) whose set title ENDS in a bracket — so *Come Ye
+ * Children* keeps its words, and a title with no bracket is set as it was.
+ */
+export function editionOf(slug: string, title: string): { words: string; edition: string | null } {
+	if (!/-(teens|children)$/.test(slug)) return { words: title, edition: null };
+	const m = /^(.*\S)\s*[(（]([^()（）]+)[)）]\s*$/u.exec(title);
+	return m ? { words: m[1], edition: m[2].trim() } : { words: title, edition: null };
+}

@@ -24,13 +24,15 @@ import datetime
 import re
 import time
 from functools import lru_cache
+from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
-from library import english_audit
+from library import archive_ocr, english_audit
 from library.corrections import settled_sermon_body
 from library.ingest import QUOTES, clean_fragment, display_line, soup, word_count
+from library.management.commands.import_archive import fetch_text as fetch_archive_text
 from library.management.commands.import_gutenberg import content_root
 from library.management.commands.import_web import NAV_TARGET
 from library.management.commands.import_web import extract_page as extract_web_page
@@ -69,6 +71,9 @@ _TRAILER_WINDOW = 6
 _HEADINGS = ["h1", "h2", "h3", "h4"]
 
 
+_FOOTNOTE_MARK = re.compile(r"\[\d+\]")
+
+
 class AmbiguousSectionError(ValueError):
     """A Gutenberg `section` names several headings and no level picks one."""
 
@@ -93,7 +98,9 @@ def _norm_heading(text: str) -> str:
     ).replace("”", '"').casefold()
 
 
-def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
+def extract_gutenberg_section(
+    html: str, section: str, level: str = "", title: str = ""
+) -> str:
     """Return the body of one heading-delimited sermon from a Gutenberg edition.
 
     Collects paragraph-level elements between the matching heading and the next
@@ -151,11 +158,25 @@ def extract_gutenberg_section(html: str, section: str, level: str = "") -> str:
             continue
         parts.append(str(el))
 
+    # A volume that heads each sermon with its number only ("SERMON VIII.",
+    # Newman's *Parochial and Plain Sermons*, PG 24256) prints the title as the
+    # first paragraph; the page shows the catalog title already. Its footnotes
+    # follow the sermon, marks in place, as archive_ocr sets them — except a
+    # note hung on the title ("Religious Joy.[1]" … "[1] For Christmas Day."),
+    # which would point at nothing once the title line goes, so it goes too.
+    first = subtitles
+    if title and first < len(parts) and parts[first].startswith("<p"):
+        line = re.sub(r"<[^>]+>", "", parts[first])
+        if _norm_heading(_FOOTNOTE_MARK.sub("", line)) == _norm_heading(title):
+            del parts[first]
+            for mark in _FOOTNOTE_MARK.findall(line):
+                note = re.compile(rf"^<p[^>]*>\s*{re.escape(mark)}")
+                parts = [part for part in parts if not note.match(part)]
+
     # The first paragraph is usually the scripture epigraph in quotes — after
     # any display-line subtitle. Only those: a real heading in the source still
     # ends the search, as PG 57109's `<h2>J. Hudson Taylor</h2>` byline does,
     # so its John 4:10 text stays the `<p>` every edition shipped with.
-    first = subtitles
     if first < len(parts) and parts[first].startswith("<p"):
         first_text = re.sub(r"<[^>]+>", "", parts[first]).strip()
         if first_text.startswith(QUOTES):
@@ -428,6 +449,45 @@ def extract_sermonindex(html: str, title: str = "") -> str:
     return clean_fragment(html_body)
 
 
+# Cached by identifier: a batch cuts several sermons from the same volume.
+fetch_scan = lru_cache(maxsize=8)(fetch_archive_text)
+
+
+def extract_archive_sermon(entry: SermonEntry) -> str:
+    """One sermon from an archive.org scan, cross-checked against other scans
+    of the same edition (``library.archive_ocr``): its Bible text as the opening
+    blockquote, then the sermon, footnotes last."""
+    scans = [fetch_scan(i) for i in (entry.source_ref, *entry.alt_scans)]
+    head, paras = archive_ocr.sermon_paragraphs(
+        scans, entry.text_starts, entry.body_starts, entry.ends_before, entry.title
+    )
+    blocks = [f"<blockquote>{escape(head)}</blockquote>"] if head else []
+    blocks += [f"<p>{escape(p)}</p>" for p in paras]
+    return clean_fragment("".join(blocks))
+
+
+def extract_entry(entry: SermonEntry) -> tuple[str, str, datetime.date | None]:
+    """(body_html, scripture_ref, preached_on) for one catalog entry, from its source.
+
+    Only CCEL parses a reference and date from the page; the catalog's overrides
+    are applied by the caller. Shared by the importer and ``screen_sermons``.
+    """
+    if entry.source == "gutenberg":
+        url = (
+            "https://www.gutenberg.org/cache/epub/"
+            f"{entry.source_ref}/pg{entry.source_ref}-images.html"
+        )
+        body = extract_gutenberg_section(fetch(url), entry.section, entry.section_level, entry.title)
+        return body, "", None
+    if entry.source == "web":
+        return extract_web_sermon(fetch_web(entry.source_ref), entry.title, entry.body_starts), "", None
+    if entry.source == "archive":
+        return extract_archive_sermon(entry), "", None
+    if entry.source == "sermonindex":
+        return extract_sermonindex(fetch_web(entry.source_ref), entry.title), "", None
+    return extract(fetch(entry.source_ref), strip_service_notes=True)
+
+
 class Command(BaseCommand):
     help = "Import sermons from CCEL, Gutenberg, the web, and SermonIndex."
 
@@ -460,31 +520,11 @@ class Command(BaseCommand):
         self.stdout.write(f"→ {entry.title}  ({entry.source}:{entry.source_ref})")
         try:
             time.sleep(DELAY)
-            if entry.source == "gutenberg":
-                url = (
-                    "https://www.gutenberg.org/cache/epub/"
-                    f"{entry.source_ref}/pg{entry.source_ref}-images.html"
-                )
-                body = extract_gutenberg_section(
-                    fetch(url), entry.section, entry.section_level
-                )
-                scripture_ref, preached_on = "", None
-            elif entry.source == "web":
-                body = extract_web_sermon(
-                    fetch_web(entry.source_ref), entry.title, entry.body_starts
-                )
-                scripture_ref, preached_on = "", None
-            elif entry.source == "sermonindex":
-                body = extract_sermonindex(fetch_web(entry.source_ref), entry.title)
-                scripture_ref, preached_on = "", None
-            else:
-                body, scripture_ref, preached_on = extract(
-                    fetch(entry.source_ref), strip_service_notes=True
-                )
+            body, scripture_ref, preached_on = extract_entry(entry)
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  fetch failed: {exc}"))
             return
-        except AmbiguousSectionError as exc:
+        except (AmbiguousSectionError, archive_ocr.SliceError) as exc:
             self.stderr.write(self.style.ERROR(f"  {exc}"))
             return
         if word_count(body) < 300:
@@ -504,11 +544,12 @@ class Command(BaseCommand):
         if entry.preached_on:
             preached_on = datetime.date.fromisoformat(entry.preached_on)
 
-        source_url = (
-            f"https://www.gutenberg.org/ebooks/{entry.source_ref}"
-            if entry.source == "gutenberg"
-            else entry.source_ref
-        )
+        if entry.source == "gutenberg":
+            source_url = f"https://www.gutenberg.org/ebooks/{entry.source_ref}"
+        elif entry.source == "archive":
+            source_url = f"https://archive.org/details/{entry.source_ref}"
+        else:
+            source_url = entry.source_ref
         fields = {
             "author": self._author(entry),
             "title": entry.title,

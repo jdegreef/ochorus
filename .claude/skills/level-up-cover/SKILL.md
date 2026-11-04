@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~15 published plates remain after Batch 26 — see "Done so far"). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (every published book is now painted — see "Done so far"; new books and unpublished plates still use this). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -211,6 +211,12 @@ prerendered pages reference it.
   `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
   container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
 
+- **Rebasing a CSS change picks up STALE twins silently** (title fit, 2026-10-29). After a
+  `cover-type.css` change redraws every twin, a rebase over sibling PRs brings in THEIR new
+  twins, drawn with the old CSS — and the merged manifest's `css` digest is yours, so
+  `og:covers` calls them unchanged and nothing fails. After the rebase, delete every twin
+  `git diff --name-only <old-base> <new-base> -- 'frontend/static/covers/**/*.png'` lists,
+  re-run `og:covers`, the tuner and `og:covers` again, and re-copy `export_covers`.
 - **The `fonts` digest also moves with local `node_modules`** (a fontsource version
   differing from the last committer's), same symptom: every twin redrawn. Same cure —
   keep the manifest (its new `fonts` value, so the NEXT run doesn't repeat it) + your
@@ -249,6 +255,31 @@ prerendered pages reference it.
 - **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
   the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
   is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
+- **Check the twin's top and bottom 40px at full size for a scan edge.** A 6-10px
+  black strip survives the framed scrim; since #7134 (2026-11-04) a framed cover
+  crops past a measured bar up to 3.5% (`groundBars.framedBar`), so `npm run
+  covers:bars` before `og:covers` handles a DARK strip. A LIGHT canvas lip (tan,
+  unprimed edge) is not measured: give the entry an `inset` (Homilies on Romans
+  took 0.06; 0.03 was not enough).
+- **Never `sed` an `inset=`/`focus=` line across `curated_art.py`.** The same
+  value appears on other entries; a bulk replace moved `gospel-of-john`'s inset
+  and `test_every_painting_was_cut_from_its_entry` caught it (2026-11-04). Edit
+  the one entry by its slug.
+- **Swapping a drawn Original for a painting** (Chesterton/MacDonald, #6946):
+  delete its `ORIGINAL_GROUND` entry, add the `CURATED` one, and pin the slug to
+  `null` in `coverLayouts.BOOK_LAYOUT` if its author's layout (`fade`, `wash`)
+  pales the upper half — the Original was drawn for it, a painting is not.
+- **A young edition is framed in every language** (`coverLayouts.test.ts` gate,
+  #6949): a translated `-teens`/`-children` row wearing a derived ground must be
+  pinned `null` in `BOOK_LAYOUT`, and its bracket (« (para jóvenes) ») is set as
+  the edition line by `coverTitle.editionOf`, not in the title (#7132).
+- **Waiting on `og:covers` in the background: wait on its PID** (`while kill -0
+  <pid>`), not `pgrep -f "generate-cover-og"` — the pattern matches the waiting
+  shell itself and never exits.
+- **A scan too small to fill 600×800 is refused** (`_crop_3x4` raises "too small …
+  without enlarging it", 2026-11-01). It means the collection served a thumbnail (the
+  Met's `primaryImageSmall` fallback, CMA's `web` size) or an `inset` cut a small scan
+  smaller. Pick another painting or a larger scan — don't lower the bar.
 - **Met image CDN needs a User-Agent**: `curl` without `-A "Mozilla/5.0"` on
   `images.metmuseum.org` saves a ~1.3 KB error body named `.jpg`.
 - **A cover that looks bad may be the AUTHOR LAYOUT, not the art.** Check
@@ -541,6 +572,13 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 - **Order for a NEW book's original ground (Tell Me the Story 8–9, 10-14):** `build_cover_assets` reads the committed FIXTURES (`book_editions()`), not the DB — serialize the book's fixture FIRST or it writes 0 variants for the new slug. Then `tune_art_scrim`: a full run once silently omitted the new slug — always `grep <slug> library/art_scrim.py` after, and if missing run `tune_art_scrim.py <slug>`. Only THEN `npm run og:covers` (the twin bakes the scrim; drawing it before the tune leaves a stale twin). Set `cover_url` straight to `/covers/art/<slug>.jpg` in the build command — no plate, so no svg to delete.
 
 ## Done so far
+**2026-11-01..04:** Batch 32 (#6946) — Orthodoxy (Monet), Heretics (Dou), The Everlasting Man
+(El Greco), Phantastes (Seurat), Unspoken Sermons (Koninck), Diary of an Old Soul
+(La Tour) moved from drawn Originals to paintings. No-plate gate (#6938), young
+layouts (#6949), scan-size refusal (#6952), paper-theme edge (#6957), edition line
+(#7132), framed scan strips (#7134).
+**Batch 30 (#6936, 2026-11-01) painted the last published plates.** `tests_fixture.NoPublishedPlateTests`
+now fails any published edition on a `.svg` plate, so a new import ships with its painting.
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
 Van Gogh → Courbet so his two 1889 cypress Van Goghs no longer pair; wash/sage kept),
@@ -569,12 +607,42 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 on `feature/cyprian-treatises` — check first.
 Batch 26 (2026-10-27, Met + Cleveland): Luther ×4 (Leypold, Dahl, Friedrich, his pupil
 Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 on his rail
-(J. Martin, Hackert, H. Robert). Published plates still left after it (2026-10-27 census):
-Augustine's none; Owen ×2, Calvin's Institutes, Bunyan's Holy War, Baxter's Saints'
-Everlasting Rest, Teresa's Interior Castle, Watson's Body of Divinity, Anselm, Gregory's
-Pastoral Rule, Wheatley's Poems, Murray's Abide in Christ, Moody's Secret Power, Torrey's
-How to Pray, and the Original `faithful-with-little` (so the "no published book wears a
-plate" line below is no longer true).
+(J. Martin, Hackert, H. Robert). Batch 27 (2026-10-29, Met + Cleveland) took the last
+fourteen painted plates: Owen ×2, Torrey ×2, Murray, Moody, Bunyan, Baxter, Watson, Calvin,
+Teresa, Anselm, Gregory, Wheatley. The Original `faithful-with-little` (5 langs) then got
+a drawn ORIGINAL_GROUND (the widow's two coins), since replaced (2026-10-31) by a CURATED
+painting, Georges Michel's plowed field (Met 437079). That photograph keeps a black mat and
+the canvas's brown lip round the picture: `Artwork.inset` (0.07) cuts it off every side
+before the 3:4 crop; check a new painting's EDGES at 1:1 for the same band.
+On 2026-11-02 the founder asked for a warmer cover with the title in BLACK: it now wears
+Van Gogh's wheat field (Met 436535) in dark ink (`INK_DARK`), lit behind the words by
+`Artwork.glow` (the same warm pool `Ground.glow` lays). A dark-ink painting needs its own
+`covers.DARK_INK_BOXES_BY_SLUG` rows (union of every edition's twin rows) — the default
+boxes are Daughters/Sons'. Tune the glow against that gate BEFORE rendering: the weakest
+pool that clears every bar keeps the most picture. Two gates bite a swap: one painting per
+work (`test_no_painting_is_given_to_two_works`) and three works per painter. The Van Gogh
+had just gone to The Lord's Prayer, which moved to Chapman's harvest (Cleveland 173542).
+Gareth Evans' other four (feasting, he-holds, stepping-stones-2, the-key) followed Soar
+into dark ink the same day: `Ground.glow` now takes several pools (top haze, a band behind
+the title, foot haze), each spanning the full width so no oval edge shows. Measure a new
+dark-ink work's boxes by rendering its twins WHITE in the new style first (the manifest
+records `rows` only for white ink), taking the union over every language, then switching
+to INK_DARK. A long translation decides the light: Luganda wraps He Holds My Tomorrows to
+four lines and its subtitle lands on the walkers, so they are paler than in English.
+After Batch 27 NO published book wore a plate — until the next day's imports brought 30 more
+(Batch 28, 2026-10-31: the Fathers, Owen ×4, Taylor ×2, de Sales ×2, Chrysostom ×2, Justin ×2,
+Calvin, Newman, Wesley's Journal, Doddridge, Scougal, Loyola, Ryle). `import_ochorus` and
+the add-a-book flow still land books on plates, so this tier refills; that is why there is
+no "no published plate" gate. Check the census (`cover_url` ending `.svg`,
+`is_published`) at the start of every run. And build the slug list from the batch's own
+block: a regex over everything after a batch marker also catches `CURATED_GROUND` below
+it, `paint_covers` then refuses, and a cleanup loop over that list deleted
+`prayer-the-pulse-of-life.png`, a DESIGNED cover (restored from git; the digest gate
+would have failed the build). Never `rm` a twin path without asking `is_designed`. In a cloud container (root), headless Chromium needs
+`--no-sandbox`: point `CHROME` at a scratch wrapper that adds it, never edit the script.
+A diagonal (Torrey) shows only the UPPER third of the ground — pick for the sky or
+summits (Bierstadt), not for a subject at the foot. And check a still life's corners
+for the painter's signature: Preyer's sat bottom-right until `focus` cropped it off.
 Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
 #2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
 bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).

@@ -263,6 +263,30 @@ export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string):
 }
 
 /**
+ * Books whose title is set in small capitals, over whatever recipe they wear.
+ *
+ * A modifier, not a recipe: the book keeps its style's face, size, ornament and
+ * subtitle, and only the title's lower case is drawn as small capitals
+ * (`.caps-small` in `cover-type.css`). A script with no case — Arabic,
+ * Devanagari, Ethiopic — has no small capitals to draw, so its editions are
+ * unchanged. Both renderers read this, like the tables above.
+ */
+export const TITLE_SMALL_CAPS: ReadonlySet<string> = new Set([
+	// The founder's pick of ten proofs, 2026-10-30 (with `BOOK_STYLE` above).
+	'soar-like-the-eagle-3',
+	// The other four Gareth Evans books follow it (picked by the founder, 2026-11-02).
+	'feasting-at-the-table',
+	'he-holds-my-tomorrows',
+	'stepping-stones-2',
+	'the-key-in-my-hand'
+]);
+
+/** Is this book's title set in small capitals? */
+export function smallCapsFor(bookSlug: string): boolean {
+	return TITLE_SMALL_CAPS.has(bookSlug);
+}
+
+/**
  * The books whose AUDIENCE decides their cover, not their author or century.
  *
  * Every other table here asks when a book was written. A book retold for a
@@ -317,6 +341,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'the-princess-and-the-goblin': 'young',
 	'at-the-back-of-the-north-wind': 'young',
 	'the-practice-of-the-presence-of-god-children': 'young',
+	'talks-to-the-farmer-children': 'young',
 	'samuel-ajayi-crowther-a-life-children': 'young',
 	'mary-slessor-a-life-children': 'young',
 	'pandita-ramabai-a-life-children': 'young',
@@ -378,6 +403,15 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'amy-carmichael-a-life': 'house',
 	'david-livingstone-a-life': 'house',
 	'c-t-studd-a-life': 'house',
+	// One of Gareth Evans' books leaves his lettered face: set over the bright
+	// sun of its photograph in dark ink (`coverLayouts.INK_DARK`), the humanist
+	// old-style reads where the thin hand-lettering could not (founder's pick of
+	// ten proofs, 2026-10-30).
+	'soar-like-the-eagle-3': 'devotional',
+	'feasting-at-the-table': 'devotional',
+	'he-holds-my-tomorrows': 'devotional',
+	'stepping-stones-2': 'devotional',
+	'the-key-in-my-hand': 'devotional',
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
 	'c-s-lewis-a-life': 'house',

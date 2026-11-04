@@ -1,0 +1,74 @@
+{
+ "kind": "book",
+ "slug": "they-were-young-1",
+ "language": "pt",
+ "job_issue": 6880,
+ "references": [
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 47
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 53
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 160
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 222
+  },
+  {
+   "reference": "1 Corinthians 8:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 271
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 271
+  },
+  {
+   "reference": "Acts 16:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 317
+  },
+  {
+   "reference": "Daniel 5:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 326
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 336
+  }
+ ]
+}

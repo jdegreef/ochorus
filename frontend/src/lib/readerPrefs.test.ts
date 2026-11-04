@@ -17,6 +17,7 @@ let readerPrefs: typeof import('./readerPrefs.svelte').readerPrefs;
 const innerWidth = window.innerWidth;
 beforeEach(async () => {
 	localStorage.clear();
+	document.documentElement.removeAttribute('data-candle');
 	vi.resetModules();
 	({ readerPrefs } = await import('./readerPrefs.svelte'));
 });
@@ -68,12 +69,14 @@ describe('readerPrefs store', () => {
 		readerPrefs.setFont('dyslexic');
 		readerPrefs.setMeasure('wide');
 		readerPrefs.setTapToScroll(true);
+		readerPrefs.setCandlelight(false);
 		readerPrefs.setPreferModern(true);
 		readerPrefs.reset();
 		expect(readerPrefs.scale).toBe(1);
 		expect(readerPrefs.font).toBe('serif');
 		expect(readerPrefs.measure).toBe('normal');
 		expect(readerPrefs.tapToScroll).toBe(false);
+		expect(readerPrefs.candlelight).toBe(true);
 		expect(readerPrefs.preferModern).toBe(false);
 		expect(stored().scale).toBe(1);
 		expect(stored().font).toBe('serif');
@@ -83,6 +86,33 @@ describe('readerPrefs store', () => {
 		expect(readerPrefs.tapToScroll).toBe(false);
 		readerPrefs.setTapToScroll(true);
 		expect(stored().tapToScroll).toBe(true);
+	});
+
+	it('lights candlelight by default, and remembers a reader turning it off', () => {
+		const lit = () => document.documentElement.hasAttribute('data-candle');
+		readerPrefs.init();
+		expect(readerPrefs.candlelight).toBe(true);
+		expect(lit()).toBe(true);
+		readerPrefs.setCandlelight(false);
+		expect(lit()).toBe(false);
+		expect(stored()).toMatchObject({ candlelight: false, candlelightChosen: true });
+		readerPrefs.reset();
+		expect(lit()).toBe(true);
+	});
+
+	it('keeps a reader\'s own "off" across a reload', () => {
+		localStorage.setItem(KEY, JSON.stringify({ candlelight: false, candlelightChosen: true }));
+		readerPrefs.init();
+		expect(readerPrefs.candlelight).toBe(false);
+		expect(document.documentElement.hasAttribute('data-candle')).toBe(false);
+	});
+
+	it('lights it for a reader whose stored "off" was only the old default, never chosen', () => {
+		// Saved while Candlelight was off by default: every save wrote it.
+		localStorage.setItem(KEY, JSON.stringify({ scale: 1.2, candlelight: false }));
+		readerPrefs.init();
+		expect(readerPrefs.candlelight).toBe(true);
+		expect(document.documentElement.hasAttribute('data-candle')).toBe(true);
 	});
 
 	it('persists the prefer-Modern-English default (off by default)', () => {

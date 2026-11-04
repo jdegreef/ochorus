@@ -87,7 +87,7 @@ from PIL import Image, ImageChops, ImageFilter, ImageMath, ImageOps  # noqa: E40
 # `H`/`W` are the plate's canvas — imported rather than restated, because every
 # other cover tool derives its geometry from that pair and a private copy here
 # would go on drawing 600x800 after the module moved.
-from library.covers import H, W, art_url, scrimmed, write_og_twin  # noqa: E402
+from library.covers import H, W, art_url, glowing, scrimmed, write_og_twin  # noqa: E402
 from library.designed_covers import (  # noqa: E402
     DERIVED_GROUND,
     DESIGNED_BY_SLUG,
@@ -228,15 +228,17 @@ def derived_ground(source: Path, cut: Ground):
 
     if bh >= H:
         y = (bh - H) // 2
-        return band.crop((0, y, W, y + H))
-
-    seam = H - bh
-    slice_h = max(8, int(bh * cut.sky))
-    ground = ImageOps.fit(
-        band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
-    ).filter(ImageFilter.GaussianBlur(radius=46))
-    # Feathered in rather than pasted: the join has to read as depth of field.
-    ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
+        ground = band.crop((0, y, W, y + H))
+    else:
+        seam = H - bh
+        slice_h = max(8, int(bh * cut.sky))
+        ground = ImageOps.fit(
+            band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
+        ).filter(ImageFilter.GaussianBlur(radius=46))
+        # Feathered in rather than pasted: the join has to read as depth of field.
+        ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
+    for pool in cut.glow:
+        ground = glowing(ground, *pool)
     return ground
 
 

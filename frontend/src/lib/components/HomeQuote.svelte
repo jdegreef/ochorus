@@ -1,22 +1,7 @@
-<script lang="ts" module>
-	import { listFeaturedQuotes as fetchPool, type SavedQuote as Saved } from '$lib/library-public';
-
-	// One fetch of the pool per page session: coming back to the home page
-	// (from the reader, a tab switch) re-mounts this card, and the day's pick
-	// doesn't change. A failed fetch isn't kept, so the next mount retries.
-	let pending: Promise<Saved[]> | null = null;
-	function todaysPool(): Promise<Saved[]> {
-		pending ??= fetchPool().catch((e) => {
-			pending = null;
-			throw e;
-		});
-		return pending;
-	}
-</script>
-
 <script lang="ts">
 	import { assetUrl } from '$lib/assetUrl';
 	import { onMount } from 'svelte';
+	import { featuredPool } from '$lib/quotePool';
 	import { citeLine, quoteHref, type SavedQuote } from '$lib/library-public';
 	import { dayIndex } from '$lib/quoteText';
 	import { getLang } from '$lib/lang.svelte';
@@ -53,7 +38,7 @@
 
 	onMount(() => {
 		if (getLang() !== 'en') return;
-		todaysPool()
+		featuredPool()
 			.then((pool) => {
 				if (pool.length) quote = pool[dayIndex(new Date(), pool.length)];
 			})

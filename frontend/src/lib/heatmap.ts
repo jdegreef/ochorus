@@ -88,16 +88,46 @@ export function buildHeatmap(
 }
 
 /**
- * Distinct days read in the current week (Sunday through `today`) — the
- * numerator for a "days per week" goal. Never counts future days.
+ * The first day of `today`'s week, for a week that begins on `firstDay`
+ * (0 = Sunday … 6 = Saturday). Callers pass the reader's own,
+ * planSchedule.weekStart(lang) — required, so no surface counts a different
+ * week from the rest.
  */
-export function weekReadCount(days: Iterable<string>, today: string): number {
+export function weekBegins(today: string, firstDay: number): string {
+	return shiftDay(today, -((weekday(today) - firstDay + 7) % 7));
+}
+
+/**
+ * Distinct days read in the current week (its first day through `today`) —
+ * the numerator for a "days per week" goal. Never counts future days.
+ */
+export function weekReadCount(days: Iterable<string>, today: string, firstDay: number): number {
 	const read = new Set(days);
-	const dow = weekday(today);
-	const sunday = shiftDay(today, -dow);
 	let count = 0;
-	for (let d = 0; d <= dow; d++) {
-		if (read.has(shiftDay(sunday, d))) count += 1;
+	for (let day = weekBegins(today, firstDay); day <= today; day = shiftDay(day, 1)) {
+		if (read.has(day)) count += 1;
 	}
 	return count;
+}
+
+/** A day of the week's reading lamps (WeekLamps): lit if read, with its
+ *  run's tier as `level` (runLevel — the streak flame's and the calendar's). */
+export interface Lamp {
+	day: string;
+	state: 'lit' | 'waiting' | 'rest' | 'ahead';
+	level: ReturnType<typeof runLevel>;
+}
+
+/** This week's seven lamps from its first day (the week weekReadCount counts). */
+export function weekLamps(days: Iterable<string>, today: string, firstDay: number): Lamp[] {
+	const runs = runLengths(days);
+	const first = weekBegins(today, firstDay);
+	return Array.from({ length: 7 }, (_, i) => {
+		const day = shiftDay(first, i);
+		// Nothing after today is lit, as weekReadCount and the calendar count
+		// it (a day logged early by a device ahead of this one waits its turn).
+		const run = day <= today ? (runs.get(day) ?? 0) : 0;
+		const state = run ? 'lit' : day === today ? 'waiting' : day < today ? 'rest' : 'ahead';
+		return { day, state, level: runLevel(run) };
+	});
 }

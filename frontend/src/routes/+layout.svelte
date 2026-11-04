@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount, untrack } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, goto, onNavigate } from '$app/navigation';
+	import { flyCover, noteCoverTap } from '$lib/coverFlight';
 	import { midBook } from '$lib/midBook.svelte';
 	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
@@ -45,6 +46,7 @@
 	import type { NavSection } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
+	import PentecostFlames from '$lib/components/PentecostFlames.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
@@ -145,6 +147,10 @@
 		cancel();
 		location.assign(to!.url.href);
 	});
+
+	// A tapped cover flies into the book page it opens ($lib/coverFlight;
+	// the tap is noted by <svelte:document> below).
+	onNavigate(flyCover);
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
 	afterNavigate(({ from, to }) => {
@@ -315,6 +321,7 @@
 </svelte:head>
 
 <svelte:window onkeydown={onWindowKeydown} />
+<svelte:document onclickcapture={noteCoverTap} />
 
 <div
 	class="app-root flex min-h-screen flex-col"
@@ -335,7 +342,7 @@
 		>
 			<div class="appnav-inner chrome-col">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
-			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
+			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /><PentecostFlames /></a>
 			<button
 				class="navtoggle"
 				aria-label={t('a11y.menu')}

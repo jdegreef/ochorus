@@ -55,7 +55,7 @@ export function segmentsFromSelection(container: HTMLElement, sel: Selection): S
  * when it doesn't — the two are wrapped by the same code on purpose, so there
  * is exactly one place in the app that edits chapter HTML.
  */
-function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark | Segment) {
+function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark | Segment, fresh?: string) {
 	const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
 	let pos = 0;
 	const targets: { node: Text; from: number; to: number }[] = [];
@@ -77,11 +77,15 @@ function wrapRange(block: HTMLElement, s: number, e: number, mark: Mark | Segmen
 			el.dataset.markId = persisted.id;
 			if (persisted.color) el.dataset.color = persisted.color;
 			if (persisted.note) el.classList.add('has-note');
+			if (persisted.id === fresh) el.classList.add('fresh');
 		}
 		target.parentNode?.replaceChild(el, target);
 		el.appendChild(target);
 	}
 }
+
+/** Containers already listening for the end of a fresh mark's sweep. */
+const brushed = new WeakSet<HTMLElement>();
 
 /**
  * Render `marks` into the container: restore each touched paragraph to its
@@ -100,7 +104,10 @@ export function renderMarks(
 	 */
 	hits: Segment[] = [],
 	/** Each block's text, when the caller already has it. */
-	paras: string[] = Array.from(container.children).map((b) => b.textContent ?? '')
+	paras: string[] = Array.from(container.children).map((b) => b.textContent ?? ''),
+	/** The highlight the reader has just made, which brushes in (app.css,
+	 *  `mark.range-mark.fresh`); every other mark is simply drawn. */
+	fresh?: string
 ) {
 	const blocks = Array.from(container.children) as HTMLElement[];
 	// Restore pristine state everywhere we previously decorated.
@@ -129,8 +136,17 @@ export function renderMarks(
 		for (const m of ordered) {
 			const end = m.e === -1 ? textLen : Math.min(m.e, textLen);
 			if (m.s >= end) continue; // text changed since the mark was made
-			wrapRange(block, m.s, end, m);
+			wrapRange(block, m.s, end, m, fresh);
 		}
+	}
+	// A fresh mark is fresh for its sweep only: then it is drawn like the rest
+	// (`clone` per-line ends, the hover shade), not kept apart until the next
+	// render. Added once per container; it ignores every other animation.
+	if (!brushed.has(container)) {
+		brushed.add(container);
+		container.addEventListener('animationend', (ev) => {
+			if (ev.animationName === 'mark-brush') (ev.target as Element).classList.remove('fresh');
+		});
 	}
 	// One delegated listener; replaced on each render via property assignment.
 	container.onclick = (ev: MouseEvent) => {

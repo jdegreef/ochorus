@@ -136,7 +136,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   The tsvector is the sharpest case: a bulk text change leaves vectors STALE
   rather than NULL, so search silently keeps matching the old prose. NULL
   `search_vector` on the touched rows, or run
-  `manage.py backfill_search_vectors --all`.
+  `manage.py backfill_search_vectors --all`. Books, plans and articles carry a
+  stored `search_vector` too (their titling text, `save()`-kept the same way),
+  so a `queryset.update()` of a title or description goes stale identically.
 
 ## Shared logic
 

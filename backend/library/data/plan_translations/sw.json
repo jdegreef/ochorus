@@ -219,5 +219,24 @@
       "«neema iliyozidi kuwa nyingi» is Romans 5:20 as the corpus quotes it («neema ilizidi kuwa nyingi zaidi»), and «mkuu wa wenye dhambi» is corpus wording for 1 Tim 1:15's 'chief of sinners'. These describe Grace Abounding rather than quote a title; whoever translates grace-abounding may find «Neema Iliyozidi kwa Mkuu wa Wenye Dhambi» a fit that keeps this card in step, but nothing here binds it.",
       "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and grace-abounding is still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Pilgrim's Way» on the Swahili plans page (the #819 defect)."
     ]
+  },
+  "faithful-with-little": {
+    "title": "Mwaminifu Katika Mambo Madogo: Fedha na Moyo",
+    "description": "Wiki tatu pamoja na kile Biblia nzima inachosema kuhusu fedha, sura moja fupi kila siku. Vyote ni mali ya Mungu; moyo nyuma ya pochi; kazi ya uaminifu, kupanga na madeni; kutoa kama Mungu; na hazina inayodumu, pamoja na John Wesley, George Müller, Charles Spurgeon na A. W. Tozer njiani. Kila siku inamalizika kwa zoezi la kufanya, na mistari thelathini muhimu ya kitabu inatoa mwezi wa kusoma kama nyongeza.",
+    "note": [
+      "The title quotes the shipped sw edition («Mwaminifu Katika Mambo Madogo») verbatim; the themes reuse its titles («Vyote Ni Mali ya Mungu», «Moyo nyuma ya pochi», «Hazina inayodumu»). Written with the plan (2026-10)."
+    ]
+  },
+  "days-of-heaven-upon-earth-year": {
+    "title": "Mwaka Mmoja na Siku za Mbinguni Hapa Duniani",
+    "description": "Mwaka wa ibada za kila siku wa A. B. Simpson: mstari mmoja na tafakari fupi kuhusu utimilifu wa Kristo kwa kila siku. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja au mbili kwa siku."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Mwaka Mmoja wa Mawazo kwa Saa ya Utulivu",
+    "description": "Mkusanyiko wa D. L. Moody wa masomo mafupi kwa mwaka mzima: mstari mmoja na maneno machache ya wahubiri na waandishi aliowapenda. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja kwa siku."
+  },
+  "cheque-book-year": {
+    "title": "Mwaka Mmoja na Kitabu cha Hundi cha Benki ya Imani",
+    "description": "Ahadi za kila siku za Charles Spurgeon: ahadi moja ya Mungu kwa kila siku ya mwaka, pamoja na neno fupi la jinsi ya kuipokea kwa imani. Anza siku yoyote: siku ya kwanza ni somo la tarehe 1 Januari, na kila siku inayofuata huchukua somo linalofuata. Dakika moja au mbili kwa siku."
   }
 }

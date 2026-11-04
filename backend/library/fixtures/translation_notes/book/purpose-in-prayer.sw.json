@@ -1,0 +1,894 @@
+{
+ "kind": "book",
+ "slug": "purpose-in-prayer",
+ "language": "sw",
+ "job_issue": 6896,
+ "references": [
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalms 2:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 2:7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalms 2:7",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalms 2:7",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalms 2:9",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalms 2:9",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalms 72:15",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Genesis 20:17",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Genesis 20:18",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Job 42:8",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Job 42:10",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Jonah 1:17",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Jonah 1:4",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Jonah 1:7",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Jonah 2:1",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Jonah 2:10",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 8:8",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Deuteronomy 9:18",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Deuteronomy 9:19",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Deuteronomy 9:20",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Jonah 3:4",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Jonah 3:8",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Isaiah 38:1",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Isaiah 38:3",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Isaiah 38:5",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Psalms 2:9",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Psalms 2:9",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Isaiah 56:7",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Psalms 72:15",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Isaiah 45:12",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms 72:15",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalms 62:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 73
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.sw.json",
+   "block_index": 80
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 80
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "James 5:18",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 82
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 127
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Hebrews 11:35",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:2",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:3",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:4",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:5",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:6",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:8",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 144
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 148
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json",
+   "block_index": 150
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 155
+  },
+  {
+   "reference": "John 16:24",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 168
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Psalms 139:18",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Psalms 5:3",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Psalms 63:1",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 184
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "1 Timothy 2:3",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 201
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 202
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 207
+  },
+  {
+   "reference": "Isaiah 1:13",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "Isaiah 66:1",
+   "status": "self_rendered",
+   "block_index": 219
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "self_rendered",
+   "block_index": 219
+  },
+  {
+   "reference": "Isaiah 66:3",
+   "status": "self_rendered",
+   "block_index": 219
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 227
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "John 18:11",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Judges 10:13",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Judges 10:16",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Isaiah 38:1",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Isaiah 38:5",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Jonah 3:4",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 250
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "John 16:23",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 251
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "absolute-surrender.sw.json",
+   "block_index": 252
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.sw.json",
+   "block_index": 252
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 253
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Revelation 8:5",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "self_rendered",
+   "block_index": 266
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "block_index": 266
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "block_index": 267
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "block_index": 268
+  },
+  {
+   "reference": "Daniel 6:3",
+   "status": "self_rendered",
+   "block_index": 268
+  },
+  {
+   "reference": "Daniel 9:23",
+   "status": "self_rendered",
+   "block_index": 268
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 281
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 289
+  },
+  {
+   "reference": "Isaiah 58:9",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 292
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 292
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "block_index": 292
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 292
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "divine-healing.sw.json",
+   "block_index": 294
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 307
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 308
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 308
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 308
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered",
+   "block_index": 331
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 331
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "block_index": 334
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.sw.json",
+   "block_index": 359
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "block_index": 361
+  },
+  {
+   "reference": "Matthew 8:27",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "self_rendered",
+   "block_index": 380
+  },
+  {
+   "reference": "1 Corinthians 15:25",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "Acts 17:31",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 381
+  },
+  {
+   "reference": "Hebrews 9:28",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "Jeremiah 2:31",
+   "status": "self_rendered",
+   "block_index": 393
+  },
+  {
+   "reference": "2 Corinthians 6:1",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 397
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 405
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json",
+   "block_index": 405
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 408
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "block_index": 408
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 408
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "block_index": 409
+  }
+ ]
+}

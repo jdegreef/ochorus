@@ -217,3 +217,28 @@ describe('the rail', () => {
 		expect(long).toEqual([]);
 	});
 });
+
+describe('young-reader editions are framed in every language', () => {
+	// A young edition is `<base>-teens` / `<base>-children` beside a `<base>`
+	// work (the sibling-editions convention). Its English wears a designed or
+	// drawn cover, framed with its edition line; its translations may wear a
+	// painted ground, and without a BOOK_LAYOUT pin they took the adult author's
+	// layout, so one work came out in two looks (2026-11-01).
+	const rows = allBookRows();
+	const works = new Set(rows.map((b) => b.slug));
+	const young = rows.filter((b) => {
+		const m = /^(.+)-(teens|children)$/.exec(b.slug);
+		return m !== null && works.has(m[1]) && isArtCover(b.cover_url ?? '');
+	});
+
+	it('finds painted young editions in the fixture', () => {
+		expect(young.length).toBeGreaterThan(0);
+	});
+
+	it.each(young.map((b) => [`${b.slug}.${b.language}`, b] as const))('%s is framed', (_key, b) => {
+		expect(
+			coverLayoutFor(b.author[0], null, b.slug, b.title),
+			`${b.slug}: pin it to null in coverLayouts.BOOK_LAYOUT`
+		).toBeNull();
+	});
+});

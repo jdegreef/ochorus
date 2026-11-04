@@ -30,7 +30,10 @@
 	 * each other like a real bookcase. Pressing a spine pulls the book out and
 	 * opens a panel under its board with the cover, where the reader is, and the
 	 * same actions the covers view's menu has; focus moves into the panel and
-	 * back to the spine when it closes.
+	 * back to the spine when it closes. Pointing at a spine (or tabbing to it)
+	 * letters its title and author on a small cream label above it, the
+	 * gallery's own label (--hero-mat), since a spine's lettering is too small
+	 * to read at a glance.
 	 *
 	 * An empty shelf still draws: one bare board with the hint on the wall, so
 	 * the three states are always visible and a new reader sees what the page is
@@ -101,6 +104,33 @@
 			GAP
 		)
 	);
+
+	// The spine pointed at with a mouse, and the one tabbed to — kept apart,
+	// so letting go with one input never takes away the other's — and where
+	// the label hangs: over the spine's middle, just above its head, in its
+	// row's own box. The mouse's wins while both are set.
+	type Peek = { item: ShelfBookItem; row: number; x: number; top: number };
+	let pointed = $state.raw<Peek | null>(null);
+	let tabbed = $state.raw<Peek | null>(null);
+	const peek = $derived(pointed ?? tabbed);
+	// Its own width, measured, so it can be kept inside the row at either end.
+	let peekWidth = $state(0);
+	const peekLeft = $derived(
+		peek ? Math.min(Math.max(peek.x, peekWidth / 2 + 4), Math.max(0, width - peekWidth / 2 - 4)) : 0
+	);
+	function onpeek(item: ShelfBookItem, row: number, by: 'pointer' | 'focus', el: HTMLButtonElement | null) {
+		const at = el && { item, row, x: el.offsetLeft + el.offsetWidth / 2, top: el.offsetTop };
+		if (by === 'pointer') pointed = at;
+		else tabbed = at;
+	}
+	// A reflow (the column resized, the spines rescaled and repacked) moves
+	// every spine out from under its measured label: let it go until pointed
+	// at again.
+	$effect(() => {
+		void rows;
+		pointed = null;
+		tabbed = null;
+	});
 
 	let selected = $state<string | null>(null);
 	let opener: HTMLButtonElement | null = null;
@@ -246,10 +276,27 @@
 								width={sizes[i].width}
 								height={sizes[i].height}
 								selected={selected === items[i].book.slug}
+								lifted={peek?.item.book.slug === items[i].book.slug}
 								onselect={(el) => select(items[i].book.slug, el)}
+								onpeek={(by, el) => onpeek(items[i], r, by, el)}
 							/>
 						</li>
 					{/each}
+					<!-- The pointed-at spine's title, lettered above it (the button
+					     already says it to a screen reader). Not for a book already
+					     pulled out: its panel says it. -->
+					{#if peek?.row === r && peek.item.book.slug !== selected}
+						<li
+							class="spine-peek"
+							aria-hidden="true"
+							bind:offsetWidth={peekWidth}
+							style:left="{peekLeft}px"
+							style:--top="{peek.top}px"
+						>
+							<span class="font-display">{peek.item.book.title}</span>
+							<small>{peek.item.book.author.name}</small>
+						</li>
+					{/if}
 				</ul>
 				<div class="shelf-plank" aria-hidden="true"></div>
 				{#if selectedItem && row.some((i) => items[i].book.slug === selected)}
@@ -293,6 +340,7 @@
 		padding: 0;
 	}
 	.spine-wall {
+		position: relative;
 		display: flex;
 		align-items: flex-end;
 		gap: 3px;
@@ -302,6 +350,64 @@
 		background:
 			linear-gradient(to bottom, rgb(0 0 0 / 0.22), transparent 1.1rem),
 			var(--shelf-back);
+	}
+	/* Headroom over the books for the title label, where there is a real
+	   hover to show it. */
+	@media (hover: hover) {
+		.spine-wall {
+			padding-top: 3.6rem;
+		}
+	}
+	/* The title label over a pointed-at spine: the gallery's cream label and
+	   its ink (--hero-mat / --hero-mat-ink, measured together), centred over
+	   the spine but kept inside the row (`left`, measured: physical in every
+	   direction), and hung just above the lifted head, in the headroom the
+	   wall keeps where there is a pointer to point with. */
+	.spine-peek {
+		position: absolute;
+		z-index: 2;
+		top: max(0.25rem, calc(var(--top) - 3.6rem));
+		translate: -50% 0;
+		width: max-content;
+		/* One line each, so the label always fits the headroom over the row. */
+		max-width: min(18rem, calc(100% - 0.5rem));
+		white-space: nowrap;
+		padding: 0.3rem 0.6rem 0.35rem;
+		border-radius: 3px;
+		background: var(--hero-mat);
+		color: var(--hero-mat-ink);
+		box-shadow:
+			0 0 0 1px var(--hero-gilt),
+			0 6px 14px -6px rgb(0 0 0 / 0.5);
+		text-align: center;
+		line-height: 1.25;
+		pointer-events: none;
+	}
+	.spine-peek span,
+	.spine-peek small {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.spine-peek span {
+		display: block;
+		font-size: var(--fs-small);
+		font-weight: 600;
+	}
+	.spine-peek small {
+		display: block;
+		font-size: var(--fs-micro);
+		opacity: 0.8;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.spine-peek {
+			animation: spine-peek-in var(--duration-fast) ease-out;
+		}
+	}
+	@keyframes spine-peek-in {
+		from {
+			opacity: 0;
+			transform: translateY(4px);
+		}
 	}
 	.pulled:focus {
 		outline: none;

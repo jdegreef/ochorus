@@ -25,6 +25,7 @@
 		forPath
 	} from '$lib/forLinks';
 	import { SITE_URL } from '$lib/config';
+	import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
 	import { nativeShare } from '$lib/share';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
@@ -43,6 +44,7 @@
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
+	import WanderingQuote from '$lib/components/WanderingQuote.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { currentBook } from '$lib/currentBook.svelte';
@@ -344,6 +346,11 @@
 			<p class="mt-2 max-w-xs text-small text-muted">
 				{t('footer.tagline')}
 			</p>
+			<!-- A quill: pressed, a scroll unrolls with a line from one of the
+			     writers. English only, as the quotations are (WanderingQuote). -->
+			{#if lang.current === 'en'}
+				<WanderingQuote />
+			{/if}
 		</div>
 		<!-- Labelled by their own headings rather than a duplicated aria-label:
 		     the visible heading IS the accessible name, so the two can't drift
@@ -518,8 +525,8 @@
 							// doing nothing is the kind of break nobody reports.
 							// The new tab resolves its locale from the URL prefix on load, so
 							// it needs no choice recorded; only the in-place switch below does.
-							if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
-								return;
+							// (Modifiers and button only, not defaultPrevented: isUnmodifiedPrimaryClick.)
+							if (!isUnmodifiedPrimaryClick(e)) return;
 							e.preventDefault();
 							lang.choose(l.code);
 						}}>{@render tile(l.code, l.native_name)}</a

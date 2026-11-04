@@ -486,6 +486,32 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "sons-of-the-king"
+  ],
+  "language": "am",
+  "title": "የንጉሡ ወንዶች ልጆች – ከእግዚአብሔር ጋር 30 ቀናት ለወንዶች ልጆች",
+  "description": "",
+  "created_at": "2026-11-02T00:00:00Z",
+  "updated_at": "2026-11-02T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "sons-of-the-king"
+  ],
+  "language": "es",
+  "title": "Hijos del Rey – 30 días con Dios para chicos",
+  "description": "Devocionales de treinta días para chicos de 9 a 12 años: quién eres como hijo del Rey, la fuerza bajo control, y los hombres valientes de la Biblia y de la historia que confiaron en él.",
+  "created_at": "2026-11-03T00:00:00Z",
+  "updated_at": "2026-11-03T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "daughters-of-the-king"
   ],
   "language": "fr",
@@ -766,6 +792,19 @@
   "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
   "created_at": "2026-10-24T00:00:00Z",
   "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
+  ],
+  "language": "pt",
+  "title": "Eles Eram Jovens",
+  "description": "Histórias verdadeiras, para leitores de 13 a 17 anos, de pessoas cuja fé começou, ou foi provada, antes de se tornarem adultas — contadas por inteiro, com as próprias palavras delas quando as temos, e com perguntas para refletir.",
+  "created_at": "2026-11-01T00:00:00Z",
+  "updated_at": "2026-11-01T00:00:00Z"
  }
 }
 ]

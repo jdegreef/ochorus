@@ -223,5 +223,24 @@
   "note": [
    "2026-10-14: AI-drafted; awaiting native review. Written with they-were-young-1.fr and they-were-young-2.fr (« Ils étaient jeunes – Livre 1 : Appelés » / « Livre 2 : Éprouvés »), which ship in this PR and complete the set, so seed_plans creates the (they-were-young-two-weeks, fr) row."
   ]
+ },
+ "faithful-with-little": {
+  "title": "Fidèle dans les petites choses : l’argent et le cœur",
+  "description": "Trois semaines avec ce que toute la Bible dit de l’argent, un court chapitre par jour. Tout appartient à Dieu ; le cœur derrière le portefeuille ; le travail honnête, la planification et les dettes ; donner comme Dieu ; et un trésor qui dure, avec John Wesley, George Müller, Charles Spurgeon et A. W. Tozer en chemin. Chaque jour se termine par un exercice à pratiquer, et les trente versets clés du livre offrent un mois de lecture en complément.",
+  "note": [
+   "The title quotes the shipped fr edition faithful-with-little.fr.json verbatim («Fidèle dans les petites choses»), and the five themes reuse its part and chapter titles («Tout appartient à Dieu», «Le cœur derrière le portefeuille», «Un trésor qui dure»), so the card and the book agree. Written with the plan (Ochorus Original, 2026-10)."
+  ]
+ },
+ "days-of-heaven-upon-earth-year": {
+  "title": "Une année avec Des jours du ciel sur la terre",
+  "description": "L’année de méditations quotidiennes d’A. B. Simpson : un verset et une courte méditation sur la plénitude du Christ pour chaque jour. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une ou deux minutes par jour."
+ },
+ "thoughts-for-the-quiet-hour-year": {
+  "title": "Une année de Pensées pour l’heure du recueillement",
+  "description": "Le recueil de courtes lectures de D. L. Moody pour toute l’année : un verset et quelques lignes des prédicateurs et des auteurs qu’il aimait. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une minute par jour."
+ },
+ "cheque-book-year": {
+  "title": "Une année avec Le carnet de chèques de la banque de la foi",
+  "description": "Les promesses quotidiennes de Charles Spurgeon : une promesse de Dieu pour chaque jour de l’année, avec un mot bref sur la manière de la recevoir par la foi. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une ou deux minutes par jour."
  }
 }

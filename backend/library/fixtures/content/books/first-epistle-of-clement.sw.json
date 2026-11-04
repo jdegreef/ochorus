@@ -1,0 +1,887 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "clement-of-rome"
+  ],
+  "slug": "first-epistle-of-clement",
+  "language": "sw",
+  "title": "Waraka wa Kwanza wa Clement kwa Wakorintho",
+  "subtitle": "Kanisa la Roma kwa Kanisa la Korintho",
+  "description": "Uliandikwa na kanisa la Roma kwa kanisa la Korintho karibu mwaka 96 BK, nao ndio maandiko ya Kikristo ya kale zaidi nje ya Agano Jipya. Clement, akiandika kwa jina la kanisa la Roma, anawasihi Wakorintho kukomesha mfarakano mchungu ambamo washiriki vijana walikuwa wamewaondoa wazee wao waaminifu, na kuwaita warudi kwenye unyenyekevu, utaratibu, toba, na amani ya Kristo. Ukiwa umejaa Agano la Kale, na ukiwa kizazi kimoja tu nyuma ya mitume, waraka huu ni dirisha la kulitazama kanisa wakati enzi ya mitume ilipokuwa ikifikia mwisho.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Waraka wa Kwanza wa Clement kwa Wakorintho ni nini?",
+    "answer": "Ni barua iliyoandikwa na kanisa la Roma kwa kanisa la Korintho karibu mwaka 96 BK — maandiko ya Kikristo ya kale zaidi tuliyo nayo nje ya Agano Jipya. Clement, akiandika kwa jina la kanisa la Roma, anawasihi Wakorintho kukomesha mfarakano mchungu ambamo baadhi ya washiriki vijana walikuwa wamewaondoa wazee wao, akiwaita kwenye unyenyekevu, utaratibu, na upendo."
+   },
+   {
+    "question": "Clement wa Roma alikuwa nani?",
+    "answer": "Clement alikuwa kiongozi wa kanisa la Roma mwishoni mwa karne ya kwanza, ambaye kwa mapokeo anahesabiwa miongoni mwa maaskofu wa kwanza kabisa wa kanisa hilo, na wakati mwingine hutambuliwa kuwa yule Clement anayetajwa na Paulo katika Wafilipi. Aliandika barua hii kwa niaba ya kanisa la Roma, na Wakristo wa kwanza waliiheshimu sana hata ikasomwa hadharani katika baadhi ya makanisa kando ya Maandiko."
+   },
+   {
+    "question": "Kwa nini barua hii ni muhimu sana kihistoria?",
+    "answer": "Kwa sababu ndiyo hati ya Kikristo ya kale zaidi iliyosalia nje ya Agano Jipya, iliyoandikwa wakati enzi ya mitume ilipokuwa imefikia mwisho punde tu — huenda wakati mtume Yohana alipokuwa bado hai. Inatoa dirisha adimu la kutazama maisha, utaratibu, na imani ya kanisa la mwanzo kabisa, nayo inaonyesha kanisa moja likilishauri jingine katika mambo ya umoja na uongozi ndani ya kizazi kimoja baada ya mitume."
+   },
+   {
+    "question": "Tatizo lililokuwa Korintho, ambalo Clement analishughulikia, lilikuwa nini?",
+    "answer": "Mfarakano ambamo baadhi ya washiriki vijana walikuwa wameinuka dhidi ya wazee wa kanisa, yaani presbiteri, na kuwaondoa katika huduma. Clement anaandika ili kuuponya ugomvi huu, akikemea kiburi na wivu uliokuwa nyuma yake, na kuwahimiza wakosaji wajitiishe, watubu, na kuwarudisha viongozi walioondolewa, ili amani na utaratibu virejee kanisani."
+   },
+   {
+    "question": "Clement anafundisha nini kuhusu utaratibu na uongozi wa kanisa?",
+    "answer": "Kwamba uongozi katika kanisa haupaswi kupinduliwa kwa matakwa ya mtu, bali unasimama juu ya uteuzi wenye utaratibu unaorudi nyuma kupitia mitume hadi kwa Kristo na kwa Mungu. Clement anautumia utaratibu huo kuonyesha kwamba Wakorintho hawakuwa na haki ya kuwaondoa wazee wao waaminifu, na barua yake ni ushahidi wa mapema na wenye uzito juu ya kujali kwa kanisa huduma yenye utaratibu itokayo kwa Mungu."
+   },
+   {
+    "question": "Ni mada gani nyingine, mbali na utaratibu, zinazopita katika barua hii?",
+    "answer": "Unyenyekevu, toba, upendo, na upatano. Clement anachota kwa wingi katika Agano la Kale na katika mfano wa Kristo ili kuhimiza unyonge wa moyo badala ya kiburi, naye anaweka sehemu maarufu juu ya upendo inayokumbusha maneno ya Paulo kwa kanisa lilelile. Pia anaelekeza kwenye utaratibu wa uumbaji na kwenye ufufuo kama misingi ya matumaini na amani kati ya waumini."
+   },
+   {
+    "question": "Ni nani anayepaswa kusoma barua hii leo?",
+    "answer": "Yeyote anayevutiwa na kanisa la mwanzo kabisa baada ya mitume, na mizizi ya mafundisho ya Kikristo kuhusu umoja na uongozi, au na maandishi ya Mababa wa Kitume. Inampa msomaji picha hai, ya moja kwa moja, ya maisha ya kanisa mara tu baada ya kipindi cha Agano Jipya, na mashauri yake juu ya unyenyekevu na amani bado yanasema na makusanyiko yaliyogawanyika."
+   },
+   {
+    "question": "Msomaji aanzie wapi?",
+    "answer": "Mwanzoni kabisa, akiisoma kama barua ilivyo, kuanzia salamu changamfu za Roma kwa Korintho hadi ombi lake kwa ajili ya wazee walioondolewa. Ni ombi moja lisilokatika, linalosomwa vizuri zaidi mfululizo kutoka mwanzo hadi mwisho, ili msomaji afuate hoja ya Clement kutoka katika ugomvi anaouombolezea hadi kwenye unyenyekevu, utaratibu, na upendo anaouhimiza ili kuuponya."
+   }
+  ],
+  "publication_year": 96,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "Haina hakimiliki. Imetafsiriwa kutoka tafsiri ya Kiingereza ya Alexander Roberts na James Donaldson, katika Ante-Nicene Fathers, Juzuu 1 (toleo la Marekani, mhariri A. Cleveland Coxe, 1885).",
+  "cover_url": "/covers/art/first-epistle-of-clement.jpg",
+  "pdf_url": "",
+  "cover_color": "#734b2e",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-11-01T00:00:00Z",
+  "updated_at": "2026-11-01T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Salamu",
+  "body_html": "<p>Kanisa la Mungu linalokaa ugenini huko Roma, kwa Kanisa la Mungu linalokaa ugenini huko Korintho, kwa wale walioitwa na kutakaswa kwa mapenzi ya Mungu, kwa njia ya Bwana wetu Yesu Kristo: Neema na amani kutoka kwa Mungu Mwenyezi, kwa njia ya Yesu Kristo, ziongezwe kwenu.</p> <p>Ndugu wapendwa, kwa sababu ya misiba ya ghafla iliyotupata mmoja baada ya mwingine, tunaona kwamba tumechelewa kiasi kuyashughulikia mambo mliyotuuliza; na hasa ule uasi wa aibu na wa kuchukiza, ulio mgeni kabisa kwa wateule wa Mungu, ambao watu wachache wenye pupa na wenye kujiamini wameuwasha hata kufikia wazimu, hata jina lenu tukufu na mashuhuri, linalostahili kupendwa na watu wote, limeumizwa vibaya. Kwa maana ni nani aliyewahi kukaa kwenu hata kwa muda mfupi asiione imani yenu kuwa inazaa wema kwa wingi kama ilivyo imara? Ni nani asiyestaajabia kiasi na upole wa utauwa wenu katika Kristo? Ni nani asiyetangaza ukuu wa ukarimu wenu wa kawaida? Na ni nani asiyefurahia maarifa yenu makamilifu yenye msingi imara? Kwa maana mlitenda mambo yote bila kupendelea watu, mkaenenda katika amri za Mungu, mkiwatii wale waliokuwa na mamlaka juu yenu, na kuwapa wazee walio kati yenu heshima yote iwapasayo. Mliwaagiza vijana wawe na nia ya kiasi na utulivu; mliwafundisha wake zenu kutenda mambo yote kwa dhamiri isiyo na lawama, yenye adabu na safi, wakiwapenda waume zao kama iwapasavyo; nanyi mliwafundisha kwamba, wakiishi chini ya kanuni ya utii, waendeshe mambo ya nyumba zao kwa adabu, na wawe na busara katika kila jambo.</p>",
+  "body_text": "Kanisa la Mungu linalokaa ugenini huko Roma, kwa Kanisa la Mungu linalokaa ugenini huko Korintho, kwa wale walioitwa na kutakaswa kwa mapenzi ya Mungu, kwa njia ya Bwana wetu Yesu Kristo: Neema na amani kutoka kwa Mungu Mwenyezi, kwa njia ya Yesu Kristo, ziongezwe kwenu. Ndugu wapendwa, kwa sababu ya misiba ya ghafla iliyotupata mmoja baada ya mwingine, tunaona kwamba tumechelewa kiasi kuyashughulikia mambo mliyotuuliza; na hasa ule uasi wa aibu na wa kuchukiza, ulio mgeni kabisa kwa wateule wa Mungu, ambao watu wachache wenye pupa na wenye kujiamini wameuwasha hata kufikia wazimu, hata jina lenu tukufu na mashuhuri, linalostahili kupendwa na watu wote, limeumizwa vibaya. Kwa maana ni nani aliyewahi kukaa kwenu hata kwa muda mfupi asiione imani yenu kuwa inazaa wema kwa wingi kama ilivyo imara? Ni nani asiyestaajabia kiasi na upole wa utauwa wenu katika Kristo? Ni nani asiyetangaza ukuu wa ukarimu wenu wa kawaida? Na ni nani asiyefurahia maarifa yenu makamilifu yenye msingi imara? Kwa maana mlitenda mambo yote bila kupendelea watu, mkaenenda katika amri za Mungu, mkiwatii wale waliokuwa na mamlaka juu yenu, na kuwapa wazee walio kati yenu heshima yote iwapasayo. Mliwaagiza vijana wawe na nia ya kiasi na utulivu; mliwafundisha wake zenu kutenda mambo yote kwa dhamiri isiyo na lawama, yenye adabu na safi, wakiwapenda waume zao kama iwapasavyo; nanyi mliwafundisha kwamba, wakiishi chini ya kanuni ya utii, waendeshe mambo ya nyumba zao kwa adabu, na wawe na busara katika kila jambo.",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Sifa za Wakorintho zinaendelea",
+  "body_html": "<p>Zaidi ya hayo, nyote mlijulikana kwa unyenyekevu, wala hamkujivuna kwa kiburi kwa namna yoyote, bali mlitii badala ya kulazimisha utii, nanyi mlikuwa tayari zaidi kutoa kuliko kupokea. Mkiridhika na riziki ambayo Mungu aliwapa, na kuyasikiliza maneno yake kwa uangalifu, mlijazwa mafundisho yake moyoni, na mateso yake yalikuwa mbele ya macho yenu. Hivyo amani kuu na tele mlipewa nyote, nanyi mlikuwa na shauku isiyoshiba ya kutenda mema, huku Roho Mtakatifu akiwa amemiminwa kwa wingi juu yenu nyote. Mkiwa mmejaa makusudi matakatifu, kwa bidii ya kweli ya moyo na kwa tumaini la kimungu, mliinyosha mikono yenu kwa Mungu Mwenyezi, mkimsihi awe na rehema kwenu, ikiwa mlikuwa mmekosa bila kukusudia. Mchana na usiku mliwahangaikia ndugu wote, ili hesabu ya wateule wa Mungu iokolewe kwa rehema na kwa dhamiri njema. Mlikuwa wanyofu na wasio na unafiki, wala hamkukumbuka mabaya mliyotendeana. Kila namna ya faraka na mgawanyiko ilikuwa chukizo machoni penu. Mliyaombolea makosa ya jirani zenu, na mapungufu yao mliyahesabu kuwa yenu wenyewe. Hamkuwahi kunung'unikia tendo lolote la wema, mkiwa “tayari kwa kila kazi njema.” Mkiwa mmepambwa kwa maisha ya wema kamili na ya utauwa, mlitenda mambo yote katika kumcha Mungu. Amri na hukumu za Bwana ziliandikwa katika vibao vya mioyo yenu.</p>",
+  "body_text": "Zaidi ya hayo, nyote mlijulikana kwa unyenyekevu, wala hamkujivuna kwa kiburi kwa namna yoyote, bali mlitii badala ya kulazimisha utii, nanyi mlikuwa tayari zaidi kutoa kuliko kupokea. Mkiridhika na riziki ambayo Mungu aliwapa, na kuyasikiliza maneno yake kwa uangalifu, mlijazwa mafundisho yake moyoni, na mateso yake yalikuwa mbele ya macho yenu. Hivyo amani kuu na tele mlipewa nyote, nanyi mlikuwa na shauku isiyoshiba ya kutenda mema, huku Roho Mtakatifu akiwa amemiminwa kwa wingi juu yenu nyote. Mkiwa mmejaa makusudi matakatifu, kwa bidii ya kweli ya moyo na kwa tumaini la kimungu, mliinyosha mikono yenu kwa Mungu Mwenyezi, mkimsihi awe na rehema kwenu, ikiwa mlikuwa mmekosa bila kukusudia. Mchana na usiku mliwahangaikia ndugu wote, ili hesabu ya wateule wa Mungu iokolewe kwa rehema na kwa dhamiri njema. Mlikuwa wanyofu na wasio na unafiki, wala hamkukumbuka mabaya mliyotendeana. Kila namna ya faraka na mgawanyiko ilikuwa chukizo machoni penu. Mliyaombolea makosa ya jirani zenu, na mapungufu yao mliyahesabu kuwa yenu wenyewe. Hamkuwahi kunung'unikia tendo lolote la wema, mkiwa “tayari kwa kila kazi njema.” Mkiwa mmepambwa kwa maisha ya wema kamili na ya utauwa, mlitenda mambo yote katika kumcha Mungu. Amri na hukumu za Bwana ziliandikwa katika vibao vya mioyo yenu.",
+  "word_count": 197
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Hali ya huzuni ya kanisa baada ya uasi kuzuka kutokana na wivu",
+  "body_html": "<p>Kila namna ya heshima na furaha mlipewa, ndipo likatimia lile lililoandikwa, “Mpendwa wangu alikula na kunywa, akaongezeka na kunenepa, akapiga teke.” Kutoka hapo zilitiririka husuda na wivu, ugomvi na uasi, mateso na fujo, vita na utumwa. Basi wasio na thamani wakainuka dhidi ya waheshimiwa, wasio na sifa dhidi ya walio mashuhuri, wapumbavu dhidi ya wenye hekima, vijana dhidi ya wazee. Kwa sababu hiyo haki na amani sasa zimekwenda mbali nanyi, kwa kuwa kila mmoja anaacha kumcha Mungu, na amekuwa kipofu katika imani yake, wala haendi katika maagizo aliyoyaweka, wala hatendi kama impasavyo Mkristo, bali anafuata tamaa zake mbaya, akirudia kuzoea wivu usio wa haki na usio wa utauwa, ambao kwa huo mauti yenyewe iliingia ulimwenguni.</p>",
+  "body_text": "Kila namna ya heshima na furaha mlipewa, ndipo likatimia lile lililoandikwa, “Mpendwa wangu alikula na kunywa, akaongezeka na kunenepa, akapiga teke.” Kutoka hapo zilitiririka husuda na wivu, ugomvi na uasi, mateso na fujo, vita na utumwa. Basi wasio na thamani wakainuka dhidi ya waheshimiwa, wasio na sifa dhidi ya walio mashuhuri, wapumbavu dhidi ya wenye hekima, vijana dhidi ya wazee. Kwa sababu hiyo haki na amani sasa zimekwenda mbali nanyi, kwa kuwa kila mmoja anaacha kumcha Mungu, na amekuwa kipofu katika imani yake, wala haendi katika maagizo aliyoyaweka, wala hatendi kama impasavyo Mkristo, bali anafuata tamaa zake mbaya, akirudia kuzoea wivu usio wa haki na usio wa utauwa, ambao kwa huo mauti yenyewe iliingia ulimwenguni.",
+  "word_count": 115
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Maovu mengi yamekwisha kutiririka kutoka chemchemi hii nyakati za kale",
+  "body_html": "<p>Kwa maana ndivyo ilivyoandikwa: “Ikawa baada ya siku kadhaa, Kaini akamletea Mungu sadaka ya matunda ya nchi; na Habili naye akaleta wazaliwa wa kwanza wa kondoo zake, na sehemu za mafuta yake. Mungu akamtakabali Habili na sadaka yake; bali Kaini na sadaka yake hakuitakabali. Kaini akahuzunika sana, uso wake ukakunjamana. Mungu akamwambia Kaini, Kwa nini umehuzunika, na kwa nini uso wako umekunjamana? Kama umetoa sadaka sawasawa, lakini hukugawanya sawasawa, je! hukutenda dhambi? Tulia: sadaka yako inakurudia wewe mwenyewe, nawe utaimiliki tena. Kaini akamwambia Habili nduguye, Twende uwandani. Ikawa walipokuwa uwandani, Kaini akamwinukia Habili nduguye, akamwua.” Mwaona, ndugu, jinsi husuda na wivu vilivyoleta uuaji wa ndugu. Kwa sababu ya wivu pia baba yetu Yakobo alikimbia mbele ya uso wa Esau nduguye. Wivu ulimfanya Yusufu kuteswa hata kufa, na kuingia utumwani. Wivu ulimlazimisha Musa kukimbia mbele ya uso wa Farao mfalme wa Misri, aliposikia maneno haya kutoka kwa mwananchi mwenzake, “Ni nani aliyekuweka wewe kuwa mwamuzi au mkuu juu yetu? Je! wataka kuniua kama ulivyomwua yule Mmisri jana?” Kwa sababu ya wivu Haruni na Miriamu walilazimika kukaa nje ya kambi. Wivu uliwashusha Dathani na Abiramu wakiwa hai mpaka kuzimu, kwa sababu ya uasi waliouchochea dhidi ya Musa, mtumishi wa Mungu. Kwa sababu ya wivu Daudi alichukiwa si na wageni tu, bali pia aliteswa na Sauli mfalme wa Israeli.</p>",
+  "body_text": "Kwa maana ndivyo ilivyoandikwa: “Ikawa baada ya siku kadhaa, Kaini akamletea Mungu sadaka ya matunda ya nchi; na Habili naye akaleta wazaliwa wa kwanza wa kondoo zake, na sehemu za mafuta yake. Mungu akamtakabali Habili na sadaka yake; bali Kaini na sadaka yake hakuitakabali. Kaini akahuzunika sana, uso wake ukakunjamana. Mungu akamwambia Kaini, Kwa nini umehuzunika, na kwa nini uso wako umekunjamana? Kama umetoa sadaka sawasawa, lakini hukugawanya sawasawa, je! hukutenda dhambi? Tulia: sadaka yako inakurudia wewe mwenyewe, nawe utaimiliki tena. Kaini akamwambia Habili nduguye, Twende uwandani. Ikawa walipokuwa uwandani, Kaini akamwinukia Habili nduguye, akamwua.” Mwaona, ndugu, jinsi husuda na wivu vilivyoleta uuaji wa ndugu. Kwa sababu ya wivu pia baba yetu Yakobo alikimbia mbele ya uso wa Esau nduguye. Wivu ulimfanya Yusufu kuteswa hata kufa, na kuingia utumwani. Wivu ulimlazimisha Musa kukimbia mbele ya uso wa Farao mfalme wa Misri, aliposikia maneno haya kutoka kwa mwananchi mwenzake, “Ni nani aliyekuweka wewe kuwa mwamuzi au mkuu juu yetu? Je! wataka kuniua kama ulivyomwua yule Mmisri jana?” Kwa sababu ya wivu Haruni na Miriamu walilazimika kukaa nje ya kambi. Wivu uliwashusha Dathani na Abiramu wakiwa hai mpaka kuzimu, kwa sababu ya uasi waliouchochea dhidi ya Musa, mtumishi wa Mungu. Kwa sababu ya wivu Daudi alichukiwa si na wageni tu, bali pia aliteswa na Sauli mfalme wa Israeli.",
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Maovu yasiyo madogo yamezuka kutoka chemchemi ileile nyakati za karibuni kabisa",
+  "body_html": "<p>Lakini tusikawie katika mifano ya kale; tuwaendee mashujaa wa kiroho wa karibuni. Na tuchukue mifano bora iliyotolewa katika kizazi chetu wenyewe. Kwa sababu ya husuda na wivu, nguzo kuu na zenye haki kuliko zote [za Kanisa] ziliteswa na kuuawa. Na tuwaweke mbele ya macho yetu mitume watukufu. Petro, kwa sababu ya wivu usio wa haki, alivumilia si taabu moja wala mbili, bali nyingi, na hatimaye alipokwisha kuuawa kwa ajili ya ushuhuda wake, akaenda mahali pa utukufu alipostahili. Kwa sababu ya wivu, Paulo naye alipata tuzo ya saburi, baada ya kutiwa vifungoni mara saba, kulazimishwa kukimbia, na kupigwa kwa mawe. Baada ya kuhubiri mashariki na magharibi pia, alipata sifa tukufu iliyostahili imani yake, akiwa amefundisha haki kwa ulimwengu wote, na kufika mpaka wa mwisho wa magharibi, na kuuawa kwa ajili ya ushuhuda wake chini ya watawala. Hivyo akaondolewa ulimwenguni, akaenda mahali patakatifu, akiwa amejionyesha kuwa mfano bora kabisa wa saburi.</p>",
+  "body_text": "Lakini tusikawie katika mifano ya kale; tuwaendee mashujaa wa kiroho wa karibuni. Na tuchukue mifano bora iliyotolewa katika kizazi chetu wenyewe. Kwa sababu ya husuda na wivu, nguzo kuu na zenye haki kuliko zote [za Kanisa] ziliteswa na kuuawa. Na tuwaweke mbele ya macho yetu mitume watukufu. Petro, kwa sababu ya wivu usio wa haki, alivumilia si taabu moja wala mbili, bali nyingi, na hatimaye alipokwisha kuuawa kwa ajili ya ushuhuda wake, akaenda mahali pa utukufu alipostahili. Kwa sababu ya wivu, Paulo naye alipata tuzo ya saburi, baada ya kutiwa vifungoni mara saba, kulazimishwa kukimbia, na kupigwa kwa mawe. Baada ya kuhubiri mashariki na magharibi pia, alipata sifa tukufu iliyostahili imani yake, akiwa amefundisha haki kwa ulimwengu wote, na kufika mpaka wa mwisho wa magharibi, na kuuawa kwa ajili ya ushuhuda wake chini ya watawala. Hivyo akaondolewa ulimwenguni, akaenda mahali patakatifu, akiwa amejionyesha kuwa mfano bora kabisa wa saburi.",
+  "word_count": 149
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Mwendelezo",
+  "body_html": "<p>Pamoja na watu hawa waliotumia maisha yao katika kuzoea utakatifu, unapaswa kuongezwa umati mkubwa wa wateule ambao, kwa sababu ya wivu, walivumilia madhila na mateso mengi, wakatupatia mfano bora kabisa. Kwa sababu ya wivu, wale wanawake, Danaidi na Dirke, wakiisha kuteswa, baada ya kuvumilia mateso ya kutisha yasiyoweza kusemwa, walimaliza mwendo wa imani yao kwa uthabiti, na ingawa walikuwa dhaifu wa mwili, walipokea tuzo tukufu. Wivu umewatenga wake na waume zao, na kuligeuza lile neno la baba yetu Adamu, “Sasa huyu ni mfupa katika mifupa yangu, na nyama katika nyama yangu.” Wivu na ugomvi vimeiangusha miji mikubwa na kuyang'oa mataifa makuu.</p>",
+  "body_text": "Pamoja na watu hawa waliotumia maisha yao katika kuzoea utakatifu, unapaswa kuongezwa umati mkubwa wa wateule ambao, kwa sababu ya wivu, walivumilia madhila na mateso mengi, wakatupatia mfano bora kabisa. Kwa sababu ya wivu, wale wanawake, Danaidi na Dirke, wakiisha kuteswa, baada ya kuvumilia mateso ya kutisha yasiyoweza kusemwa, walimaliza mwendo wa imani yao kwa uthabiti, na ingawa walikuwa dhaifu wa mwili, walipokea tuzo tukufu. Wivu umewatenga wake na waume zao, na kuligeuza lile neno la baba yetu Adamu, “Sasa huyu ni mfupa katika mifupa yangu, na nyama katika nyama yangu.” Wivu na ugomvi vimeiangusha miji mikubwa na kuyang'oa mataifa makuu.",
+  "word_count": 101
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Wito wa kutubu",
+  "body_html": "<p>Mambo haya, wapenzi, tunawaandikia, si kwa kuwaonya ninyi tu juu ya wajibu wenu, bali pia kwa kujikumbusha sisi wenyewe. Kwa maana sisi tunashindana katika uwanja uleule, na pambano lilelile limewekwa kwa sisi sote wawili. Kwa hiyo na tuache mahangaiko ya bure yasiyo na faida, tukaikaribie kanuni tukufu na ya kuheshimiwa ya mwito wetu mtakatifu. Na tuangalie yaliyo mema, yapendezayo na yanayokubalika machoni pake yeye aliyetuumba. Na tuitazame kwa makini damu ya Kristo, tuone jinsi damu hiyo ilivyo ya thamani kwa Mungu, ambayo, ikiisha kumwagika kwa ajili ya wokovu wetu, imeiweka neema ya toba mbele ya ulimwengu wote. Na tuzigeukie nyakati zote zilizopita, tujifunze kwamba, kizazi baada ya kizazi, Bwana amewapa nafasi ya kutubu wote waliotaka kumgeukia. Nuhu alihubiri toba, na wote waliomsikiliza waliokolewa. Yona aliwatangazia watu wa Ninawi maangamizi; lakini wao, wakitubu dhambi zao, walimpatanisha Mungu kwa maombi, wakapata wokovu, ingawa walikuwa wageni [wa agano] la Mungu.</p>",
+  "body_text": "Mambo haya, wapenzi, tunawaandikia, si kwa kuwaonya ninyi tu juu ya wajibu wenu, bali pia kwa kujikumbusha sisi wenyewe. Kwa maana sisi tunashindana katika uwanja uleule, na pambano lilelile limewekwa kwa sisi sote wawili. Kwa hiyo na tuache mahangaiko ya bure yasiyo na faida, tukaikaribie kanuni tukufu na ya kuheshimiwa ya mwito wetu mtakatifu. Na tuangalie yaliyo mema, yapendezayo na yanayokubalika machoni pake yeye aliyetuumba. Na tuitazame kwa makini damu ya Kristo, tuone jinsi damu hiyo ilivyo ya thamani kwa Mungu, ambayo, ikiisha kumwagika kwa ajili ya wokovu wetu, imeiweka neema ya toba mbele ya ulimwengu wote. Na tuzigeukie nyakati zote zilizopita, tujifunze kwamba, kizazi baada ya kizazi, Bwana amewapa nafasi ya kutubu wote waliotaka kumgeukia. Nuhu alihubiri toba, na wote waliomsikiliza waliokolewa. Yona aliwatangazia watu wa Ninawi maangamizi; lakini wao, wakitubu dhambi zao, walimpatanisha Mungu kwa maombi, wakapata wokovu, ingawa walikuwa wageni [wa agano] la Mungu.",
+  "word_count": 147
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Mwendelezo kuhusu toba",
+  "body_html": "<p>Watumishi wa neema ya Mungu, kwa Roho Mtakatifu, wamenena habari za toba; na Bwana wa vitu vyote mwenyewe ametangaza juu yake kwa kiapo, “Kama niishivyo, asema Bwana, sipendi kufa kwake mwenye dhambi, bali afadhali atubu;” akiongeza, zaidi ya hayo, tangazo hili lililojaa neema, “Tubuni, enyi nyumba ya Israeli, mwuache uovu wenu. Waambie wana wa watu wangu, Ijapokuwa dhambi zenu zinafika toka nchi hata mbinguni, na ijapokuwa ni nyekundu kupita bendera, na nyeusi kuliko gunia, lakini mkinirudia kwa moyo wenu wote, na kusema, Baba! nitawasikiliza kama watu watakatifu.” Na mahali pengine anasema hivi: “Jiosheni, mkawe safi; ondoeni uovu wa nafsi zenu mbele ya macho yangu; acheni njia zenu mbaya, jifunzeni kutenda mema; tafuteni hukumu, wasaidieni walioonewa, mwamueni yatima, mkahakikishe kwamba mjane anatendewa haki; njooni basi, tusemezane. Asema, dhambi zenu zijapokuwa nyekundu sana, nitazifanya nyeupe kama theluji; zijapokuwa nyekundu kama bendera, nitazifanya nyeupe kama sufu. Kama mkikubali na kutii, mtakula mema ya nchi; bali mkikataa, wala hamtanisikiliza, upanga utawala ninyi; kwa maana kinywa cha Bwana kimenena mambo haya.” Basi, kwa kuwa anataka wapendwa wake wote washiriki toba, ameyathibitisha [matangazo haya] kwa mapenzi yake yenye uweza wote.</p>",
+  "body_text": "Watumishi wa neema ya Mungu, kwa Roho Mtakatifu, wamenena habari za toba; na Bwana wa vitu vyote mwenyewe ametangaza juu yake kwa kiapo, “Kama niishivyo, asema Bwana, sipendi kufa kwake mwenye dhambi, bali afadhali atubu;” akiongeza, zaidi ya hayo, tangazo hili lililojaa neema, “Tubuni, enyi nyumba ya Israeli, mwuache uovu wenu. Waambie wana wa watu wangu, Ijapokuwa dhambi zenu zinafika toka nchi hata mbinguni, na ijapokuwa ni nyekundu kupita bendera, na nyeusi kuliko gunia, lakini mkinirudia kwa moyo wenu wote, na kusema, Baba! nitawasikiliza kama watu watakatifu.” Na mahali pengine anasema hivi: “Jiosheni, mkawe safi; ondoeni uovu wa nafsi zenu mbele ya macho yangu; acheni njia zenu mbaya, jifunzeni kutenda mema; tafuteni hukumu, wasaidieni walioonewa, mwamueni yatima, mkahakikishe kwamba mjane anatendewa haki; njooni basi, tusemezane. Asema, dhambi zenu zijapokuwa nyekundu sana, nitazifanya nyeupe kama theluji; zijapokuwa nyekundu kama bendera, nitazifanya nyeupe kama sufu. Kama mkikubali na kutii, mtakula mema ya nchi; bali mkikataa, wala hamtanisikiliza, upanga utawala ninyi; kwa maana kinywa cha Bwana kimenena mambo haya.” Basi, kwa kuwa anataka wapendwa wake wote washiriki toba, ameyathibitisha [matangazo haya] kwa mapenzi yake yenye uweza wote.",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Mifano ya watakatifu",
+  "body_html": "<p>Kwa hiyo, na tuyatii mapenzi yake yaliyo bora na matukufu; na tukiomba rehema zake na wema wake, huku tukiacha kazi zote zisizo na faida, na ugomvi, na wivu, uletao mauti, na tugeuke tukazikimbilie huruma zake. Na tuwatazame kwa makini wale waliohudumia utukufu wake bora kwa ukamilifu. Na tumchukue (kwa mfano) Henoko, ambaye, alipoonekana kuwa mwenye haki katika utii, alihamishwa, wala mauti haikujulikana kumpata kamwe. Nuhu, alipoonekana kuwa mwaminifu, aliuhubiria ulimwengu kuzaliwa upya kwa huduma yake; na Bwana kwa njia yake akawaokoa wanyama walioingia safinani kwa umoja.</p>",
+  "body_text": "Kwa hiyo, na tuyatii mapenzi yake yaliyo bora na matukufu; na tukiomba rehema zake na wema wake, huku tukiacha kazi zote zisizo na faida, na ugomvi, na wivu, uletao mauti, na tugeuke tukazikimbilie huruma zake. Na tuwatazame kwa makini wale waliohudumia utukufu wake bora kwa ukamilifu. Na tumchukue (kwa mfano) Henoko, ambaye, alipoonekana kuwa mwenye haki katika utii, alihamishwa, wala mauti haikujulikana kumpata kamwe. Nuhu, alipoonekana kuwa mwaminifu, aliuhubiria ulimwengu kuzaliwa upya kwa huduma yake; na Bwana kwa njia yake akawaokoa wanyama walioingia safinani kwa umoja.",
+  "word_count": 86
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Mwendelezo wa yaliyotangulia",
+  "body_html": "<p>Ibrahimu, aliyeitwa “rafiki,” alionekana kuwa mwaminifu, kwa kuwa aliyatii maneno ya Mungu. Yeye, kwa utii, alitoka katika nchi yake, na kwa jamaa zake, na katika nyumba ya baba yake, ili, kwa kuiacha nchi ndogo, na jamaa dhaifu, na nyumba isiyo na maana, apate kurithi ahadi za Mungu. Kwa maana Mungu alimwambia, “Toka wewe katika nchi yako, na kwa jamaa zako, na nyumba ya baba yako, uende mpaka nchi nitakayokuonyesha. Nami nitakufanya kuwa taifa kubwa, nitakubariki, na kulikuza jina lako, nawe utabarikiwa. Nami nitawabariki wakubarikio, na kuwalaani wakulaanio; na katika wewe jamaa zote za dunia watabarikiwa.” Na tena, alipotengana na Lutu, Mungu alimwambia, “Inua macho yako, ukatazame toka mahali ulipo sasa, upande wa kaskazini, na wa kusini, na wa mashariki, na wa magharibi; kwa maana nchi hii yote uionayo, nitakupa wewe na uzao wako hata milele. Nami nitafanya uzao wako kama mavumbi ya nchi, [hata] mtu akiweza kuyahesabu mavumbi ya nchi, uzao wako nao utahesabika.” Na tena [Maandiko] yasema, “Mungu akamleta Abramu nje, akamwambia, Tazama sasa mbinguni, ukazihesabu nyota, kama ukiweza kuzihesabu; ndivyo utakavyokuwa uzao wako. Abramu akamwamini Mungu, akahesabiwa kuwa haki.” Kwa sababu ya imani yake na ukarimu wake, alipewa mwana katika uzee wake; na kwa utii alimtoa kuwa sadaka kwa Mungu juu ya mojawapo ya milima aliyomwonyesha.</p>",
+  "body_text": "Ibrahimu, aliyeitwa “rafiki,” alionekana kuwa mwaminifu, kwa kuwa aliyatii maneno ya Mungu. Yeye, kwa utii, alitoka katika nchi yake, na kwa jamaa zake, na katika nyumba ya baba yake, ili, kwa kuiacha nchi ndogo, na jamaa dhaifu, na nyumba isiyo na maana, apate kurithi ahadi za Mungu. Kwa maana Mungu alimwambia, “Toka wewe katika nchi yako, na kwa jamaa zako, na nyumba ya baba yako, uende mpaka nchi nitakayokuonyesha. Nami nitakufanya kuwa taifa kubwa, nitakubariki, na kulikuza jina lako, nawe utabarikiwa. Nami nitawabariki wakubarikio, na kuwalaani wakulaanio; na katika wewe jamaa zote za dunia watabarikiwa.” Na tena, alipotengana na Lutu, Mungu alimwambia, “Inua macho yako, ukatazame toka mahali ulipo sasa, upande wa kaskazini, na wa kusini, na wa mashariki, na wa magharibi; kwa maana nchi hii yote uionayo, nitakupa wewe na uzao wako hata milele. Nami nitafanya uzao wako kama mavumbi ya nchi, [hata] mtu akiweza kuyahesabu mavumbi ya nchi, uzao wako nao utahesabika.” Na tena [Maandiko] yasema, “Mungu akamleta Abramu nje, akamwambia, Tazama sasa mbinguni, ukazihesabu nyota, kama ukiweza kuzihesabu; ndivyo utakavyokuwa uzao wako. Abramu akamwamini Mungu, akahesabiwa kuwa haki.” Kwa sababu ya imani yake na ukarimu wake, alipewa mwana katika uzee wake; na kwa utii alimtoa kuwa sadaka kwa Mungu juu ya mojawapo ya milima aliyomwonyesha.",
+  "word_count": 208
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Mwendelezo",
+  "body_html": "<p>Kwa sababu ya ukarimu wake na utauwa wake, Lutu aliokolewa kutoka Sodoma, wakati nchi yote iliyozunguka ilipoadhibiwa kwa moto na kiberiti; hivyo Bwana alionyesha wazi kwamba hawaachi wale wanaomtumaini, bali huwatoa wale wanaomwacha wapate adhabu na mateso. Kwa maana mke wa Lutu, aliyetoka pamoja naye, akiwa na nia tofauti na yake, wala hakudumu katika kupatana naye [kuhusu agizo walilokuwa wamepewa], alifanywa kuwa mfano, hata akawa nguzo ya chumvi hata leo. Hili lilifanyika ili wote wajue kwamba wale walio na nia mbili, na wanaoutilia shaka uweza wa Mungu, hujiletea hukumu na kuwa ishara kwa vizazi vyote vinavyofuata.</p>",
+  "body_text": "Kwa sababu ya ukarimu wake na utauwa wake, Lutu aliokolewa kutoka Sodoma, wakati nchi yote iliyozunguka ilipoadhibiwa kwa moto na kiberiti; hivyo Bwana alionyesha wazi kwamba hawaachi wale wanaomtumaini, bali huwatoa wale wanaomwacha wapate adhabu na mateso. Kwa maana mke wa Lutu, aliyetoka pamoja naye, akiwa na nia tofauti na yake, wala hakudumu katika kupatana naye [kuhusu agizo walilokuwa wamepewa], alifanywa kuwa mfano, hata akawa nguzo ya chumvi hata leo. Hili lilifanyika ili wote wajue kwamba wale walio na nia mbili, na wanaoutilia shaka uweza wa Mungu, hujiletea hukumu na kuwa ishara kwa vizazi vyote vinavyofuata.",
+  "word_count": 96
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Thawabu za imani na ukarimu",
+  "body_html": "<p>Kwa sababu ya imani yake na ukarimu wake, Rahabu yule kahaba aliokolewa. Kwa maana wapelelezi walipotumwa na Yoshua mwana wa Nuni kwenda Yeriko, mfalme wa nchi ile alipata habari kwamba wamekuja kuipeleleza nchi yao, akatuma watu kuwakamata, ili wakiisha kukamatwa wauawe. Lakini Rahabu, mwanamke mkarimu, akawakaribisha, akawaficha juu ya dari ya nyumba yake chini ya mabua ya kitani. Na wale watu waliotumwa na mfalme walipofika, wakasema, “Wamekujia watu walio na nia ya kuipeleleza nchi yetu; uwatoe nje, kwa maana ndivyo mfalme anavyoamuru,” yeye akawajibu, “Wale watu wawili mnaowatafuta walikuja kwangu, lakini wakaondoka upesi, nao wamekwenda zao,” na hivyo hakuwafunua wale wapelelezi kwao. Kisha akawaambia wale watu, “Najua hakika ya kuwa Bwana, Mungu wenu, amewapa mji huu, kwa maana hofu na kitisho chenu kimewaangukia wenyeji wake. Basi mtakapokuwa mmeutwaa, mnilinde mimi na nyumba ya baba yangu salama.” Nao wakamwambia, “Itakuwa kama ulivyotuambia. Basi mara utakapojua kwamba tumekaribia, utawakusanya jamaa zako wote chini ya dari yako, nao watahifadhiwa; lakini wote watakaoonekana nje ya nyumba yako wataangamia.” Zaidi ya hayo, walimpa ishara, kwamba atundike kutoka nyumbani mwake uzi mwekundu. Na hivyo walionyesha wazi kwamba ukombozi utatiririka kwa njia ya damu ya Bwana kwa wote wanaomwamini na kumtumaini Mungu. Mwaona, wapenzi, kwamba ndani ya mwanamke huyu haikuwa imani tu, bali pia unabii.</p>",
+  "body_text": "Kwa sababu ya imani yake na ukarimu wake, Rahabu yule kahaba aliokolewa. Kwa maana wapelelezi walipotumwa na Yoshua mwana wa Nuni kwenda Yeriko, mfalme wa nchi ile alipata habari kwamba wamekuja kuipeleleza nchi yao, akatuma watu kuwakamata, ili wakiisha kukamatwa wauawe. Lakini Rahabu, mwanamke mkarimu, akawakaribisha, akawaficha juu ya dari ya nyumba yake chini ya mabua ya kitani. Na wale watu waliotumwa na mfalme walipofika, wakasema, “Wamekujia watu walio na nia ya kuipeleleza nchi yetu; uwatoe nje, kwa maana ndivyo mfalme anavyoamuru,” yeye akawajibu, “Wale watu wawili mnaowatafuta walikuja kwangu, lakini wakaondoka upesi, nao wamekwenda zao,” na hivyo hakuwafunua wale wapelelezi kwao. Kisha akawaambia wale watu, “Najua hakika ya kuwa Bwana, Mungu wenu, amewapa mji huu, kwa maana hofu na kitisho chenu kimewaangukia wenyeji wake. Basi mtakapokuwa mmeutwaa, mnilinde mimi na nyumba ya baba yangu salama.” Nao wakamwambia, “Itakuwa kama ulivyotuambia. Basi mara utakapojua kwamba tumekaribia, utawakusanya jamaa zako wote chini ya dari yako, nao watahifadhiwa; lakini wote watakaoonekana nje ya nyumba yako wataangamia.” Zaidi ya hayo, walimpa ishara, kwamba atundike kutoka nyumbani mwake uzi mwekundu. Na hivyo walionyesha wazi kwamba ukombozi utatiririka kwa njia ya damu ya Bwana kwa wote wanaomwamini na kumtumaini Mungu. Mwaona, wapenzi, kwamba ndani ya mwanamke huyu haikuwa imani tu, bali pia unabii.",
+  "word_count": 208
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 13,
+  "title": "Wito wa unyenyekevu",
+  "body_html": "<p>Basi, ndugu, na tuwe na nia ya unyenyekevu, tukiweka mbali majivuno yote, na kiburi, na upumbavu, na hasira; na tutende kama ilivyoandikwa (kwa maana Roho Mtakatifu asema, “Mwenye hekima asijisifu kwa sababu ya hekima yake, wala mwenye nguvu asijisifu kwa sababu ya nguvu zake, wala tajiri asijisifu kwa sababu ya utajiri wake; bali yeye ajisifuye na ajisifu katika Bwana, kwa kumtafuta kwa bidii, na kutenda hukumu na haki”), tukiyakumbuka hasa maneno ya Bwana Yesu aliyoyasema, alipotufundisha upole na uvumilivu. Kwa maana alisema hivi: “Iweni na rehema, mpate kupata rehema; sameheni, nanyi mtasamehewa; kama mtendavyo, ndivyo mtakavyotendewa; kama mhukumuvyo, ndivyo mtakavyohukumiwa; kama mwonyeshavyo wema, ndivyo mtakavyoonyeshwa wema; kwa kipimo kile mpimacho, ndicho mtakachopimiwa.” Kwa agizo hili na kwa kanuni hizi na tujithibitishe, ili tuenende kwa unyenyekevu wote katika kuyatii maneno yake matakatifu. Kwa maana neno takatifu lasema, “Nitamwangalia nani, ila yeye aliye mpole na mpenda amani, atetemekaye asikiapo maneno yangu?”</p>",
+  "body_text": "Basi, ndugu, na tuwe na nia ya unyenyekevu, tukiweka mbali majivuno yote, na kiburi, na upumbavu, na hasira; na tutende kama ilivyoandikwa (kwa maana Roho Mtakatifu asema, “Mwenye hekima asijisifu kwa sababu ya hekima yake, wala mwenye nguvu asijisifu kwa sababu ya nguvu zake, wala tajiri asijisifu kwa sababu ya utajiri wake; bali yeye ajisifuye na ajisifu katika Bwana, kwa kumtafuta kwa bidii, na kutenda hukumu na haki”), tukiyakumbuka hasa maneno ya Bwana Yesu aliyoyasema, alipotufundisha upole na uvumilivu. Kwa maana alisema hivi: “Iweni na rehema, mpate kupata rehema; sameheni, nanyi mtasamehewa; kama mtendavyo, ndivyo mtakavyotendewa; kama mhukumuvyo, ndivyo mtakavyohukumiwa; kama mwonyeshavyo wema, ndivyo mtakavyoonyeshwa wema; kwa kipimo kile mpimacho, ndicho mtakachopimiwa.” Kwa agizo hili na kwa kanuni hizi na tujithibitishe, ili tuenende kwa unyenyekevu wote katika kuyatii maneno yake matakatifu. Kwa maana neno takatifu lasema, “Nitamwangalia nani, ila yeye aliye mpole na mpenda amani, atetemekaye asikiapo maneno yangu?”",
+  "word_count": 149
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 14,
+  "title": "Imetupasa kumtii Mungu kuliko waanzilishi wa uasi",
+  "body_html": "<p>Basi, waume, ndugu, ni haki na ni takatifu kumtii Mungu kuliko kuwafuata wale ambao, kwa kiburi na uasi, wamekuwa viongozi wa husuda ya kuchukiza. Kwa maana hatutapata hasara ndogo, bali hatari kubwa, ikiwa kwa pupa tutajitoa kwa matakwa ya watu wanaokusudia kuchochea ugomvi na ghasia, ili kutuvuta mbali na yaliyo mema. Na tuwe wema sisi kwa sisi, kwa mfano wa huruma nyororo na fadhili za Muumba wetu. Kwa maana imeandikwa, “Wenye moyo mwema watakaa katika nchi, nao wasio na hatia watasalia ndani yake; bali wakosaji wataangamizwa watoke juu ya uso wake.” Na tena [Maandiko] yasema, “Nimemwona mwovu ametukuzwa sana, na kuinuliwa kama mierezi ya Lebanoni; nikapita, na tazama, hakuwako; nikapatafuta mahali pake kwa bidii, nisipaone. Ilinde hali ya kutokuwa na hatia, ukaangalie unyofu; kwa maana mtu wa amani atakuwa na mabaki.”</p>",
+  "body_text": "Basi, waume, ndugu, ni haki na ni takatifu kumtii Mungu kuliko kuwafuata wale ambao, kwa kiburi na uasi, wamekuwa viongozi wa husuda ya kuchukiza. Kwa maana hatutapata hasara ndogo, bali hatari kubwa, ikiwa kwa pupa tutajitoa kwa matakwa ya watu wanaokusudia kuchochea ugomvi na ghasia, ili kutuvuta mbali na yaliyo mema. Na tuwe wema sisi kwa sisi, kwa mfano wa huruma nyororo na fadhili za Muumba wetu. Kwa maana imeandikwa, “Wenye moyo mwema watakaa katika nchi, nao wasio na hatia watasalia ndani yake; bali wakosaji wataangamizwa watoke juu ya uso wake.” Na tena [Maandiko] yasema, “Nimemwona mwovu ametukuzwa sana, na kuinuliwa kama mierezi ya Lebanoni; nikapita, na tazama, hakuwako; nikapatafuta mahali pake kwa bidii, nisipaone. Ilinde hali ya kutokuwa na hatia, ukaangalie unyofu; kwa maana mtu wa amani atakuwa na mabaki.”",
+  "word_count": 131
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 15,
+  "title": "Imetupasa kushikamana na wale wanaodumisha amani",
+  "body_html": "<p>Basi, na tushikamane na wale wanaodumisha amani pamoja na utauwa, wala si na wale wanaojidai kwa unafiki kwamba wanaitaka. Kwa maana [Maandiko] yasema mahali fulani, “Watu hawa huniheshimu kwa midomo yao, bali mioyo yao iko mbali nami.” Na tena: “Hubariki kwa vinywa vyao, bali hulaani mioyoni mwao.” Na tena yasema, “Walimpenda kwa vinywa vyao, wakamwambia uongo kwa ndimi zao; lakini mioyo yao haikuwa thabiti kwake, wala hawakuwa waaminifu katika agano lake.” “Midomo ya hila na inyamazishwe,” [na “Bwana na aikatilie mbali midomo yote ya uongo,] na ulimi wa majivuno wa wale waliosema, Tuutukuze ulimi wetu; midomo yetu ni yetu wenyewe; ni nani aliye bwana juu yetu? Kwa sababu ya kuonewa kwa maskini, na kwa sababu ya kuugua kwa wahitaji, sasa nitasimama, asema Bwana; nitamweka mahali salama; nitatenda naye kwa uthabiti.”</p>",
+  "body_text": "Basi, na tushikamane na wale wanaodumisha amani pamoja na utauwa, wala si na wale wanaojidai kwa unafiki kwamba wanaitaka. Kwa maana [Maandiko] yasema mahali fulani, “Watu hawa huniheshimu kwa midomo yao, bali mioyo yao iko mbali nami.” Na tena: “Hubariki kwa vinywa vyao, bali hulaani mioyoni mwao.” Na tena yasema, “Walimpenda kwa vinywa vyao, wakamwambia uongo kwa ndimi zao; lakini mioyo yao haikuwa thabiti kwake, wala hawakuwa waaminifu katika agano lake.” “Midomo ya hila na inyamazishwe,” [na “Bwana na aikatilie mbali midomo yote ya uongo,] na ulimi wa majivuno wa wale waliosema, Tuutukuze ulimi wetu; midomo yetu ni yetu wenyewe; ni nani aliye bwana juu yetu? Kwa sababu ya kuonewa kwa maskini, na kwa sababu ya kuugua kwa wahitaji, sasa nitasimama, asema Bwana; nitamweka mahali salama; nitatenda naye kwa uthabiti.”",
+  "word_count": 130
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 16,
+  "title": "Kristo kama mfano wa unyenyekevu",
+  "body_html": "<p>Kwa maana Kristo ni wa wale walio wanyenyekevu wa moyo, wala si wa wale wanaojitukuza juu ya kundi lake. Bwana wetu Yesu Kristo, Fimbo ya enzi ya utukufu wa Mungu, hakuja kwa fahari ya kiburi wala ya majivuno, ingawa angeweza kufanya hivyo, bali kwa hali ya unyonge, kama Roho Mtakatifu alivyokuwa ametangaza juu yake. Kwa maana asema, “Bwana, ni nani aliyeziamini habari zetu? Na mkono wa Bwana amefunuliwa nani? Tumetangaza [ujumbe wetu] mbele yake: yeye ni kama mtoto, na kama mzizi katika nchi kavu; hana umbo wala utukufu; naam, tulimwona, naye hakuwa na umbo wala uzuri; bali umbo lake halikuwa na heshima, naam, lilipungukiwa likilinganishwa na umbo [la kawaida] la wanadamu. Yeye ni mtu aliyeachwa apigwe na kuteswa, aliyezoea kuvumilia huzuni; kwa maana uso wake ulifichwa; alidharauliwa, wala hatukumhesabu kuwa kitu. Yeye anayachukua maovu yetu, na anahuzunika kwa ajili yetu; lakini sisi tulidhani kwamba [kwa ajili yake mwenyewe] aliachwa apate taabu, na mapigo, na mateso. Bali alijeruhiwa kwa makosa yetu, alichubuliwa kwa maovu yetu; adhabu ya amani yetu ilikuwa juu yake, na kwa kupigwa kwake sisi tumepona. Sisi sote kama kondoo tumepotea; [kila] mtu amegeukia njia yake mwenyewe; naye Bwana amemtoa kwa ajili ya dhambi zetu, naye katikati ya mateso yake hafunui kinywa chake. Alipelekwa kama kondoo machinjoni, na kama mwana-kondoo anyamazavyo mbele yake amkataye manyoya, ndivyo asivyofunua kinywa chake. Katika unyonge wake hukumu yake iliondolewa; ni nani atakayekisimulia kizazi chake? kwa maana uhai wake umeondolewa duniani. Kwa sababu ya makosa ya watu wangu alishushwa hata mautini. Nami nitawatoa waovu kwa ajili ya kaburi lake, na matajiri kwa ajili ya kifo chake, kwa sababu hakutenda uovu, wala hila haikuonekana kinywani mwake. Naye Bwana amependa kumtakasa kwa mapigo. Mkitoa sadaka kwa ajili ya dhambi, nafsi yenu itaona uzao wa siku nyingi. Naye Bwana amependa kumwondolea taabu ya nafsi yake, kumwonyesha nuru, na kumuumba kwa ufahamu, kumhesabia haki yule Mwenye Haki anayewahudumia wengi vyema; naye mwenyewe atachukua dhambi zao. Kwa sababu hiyo atawarithi wengi, naye atagawanya nyara za wenye nguvu; kwa sababu nafsi yake ilitolewa hata kufa, naye alihesabiwa pamoja na wakosaji, naye alizichukua dhambi za wengi, na kwa ajili ya dhambi zao alitolewa.” Na tena asema, “Mimi ni mdudu, wala si mtu; nimelaumiwa na wanadamu, na kudharauliwa na watu. Wote wanionao hunicheka; hunena kwa midomo yao; hutikisa vichwa vyao, [wakisema,] Alimtumaini Mungu, na amwokoe, na amponye, kwa kuwa apendezwa naye.” Mwaona, wapenzi, ni mfano gani tuliopewa; kwa maana ikiwa Bwana alijinyenyekeza hivi, sisi tutafanya nini, tuliokuja kwa njia yake chini ya nira ya neema yake?</p>",
+  "body_text": "Kwa maana Kristo ni wa wale walio wanyenyekevu wa moyo, wala si wa wale wanaojitukuza juu ya kundi lake. Bwana wetu Yesu Kristo, Fimbo ya enzi ya utukufu wa Mungu, hakuja kwa fahari ya kiburi wala ya majivuno, ingawa angeweza kufanya hivyo, bali kwa hali ya unyonge, kama Roho Mtakatifu alivyokuwa ametangaza juu yake. Kwa maana asema, “Bwana, ni nani aliyeziamini habari zetu? Na mkono wa Bwana amefunuliwa nani? Tumetangaza [ujumbe wetu] mbele yake: yeye ni kama mtoto, na kama mzizi katika nchi kavu; hana umbo wala utukufu; naam, tulimwona, naye hakuwa na umbo wala uzuri; bali umbo lake halikuwa na heshima, naam, lilipungukiwa likilinganishwa na umbo [la kawaida] la wanadamu. Yeye ni mtu aliyeachwa apigwe na kuteswa, aliyezoea kuvumilia huzuni; kwa maana uso wake ulifichwa; alidharauliwa, wala hatukumhesabu kuwa kitu. Yeye anayachukua maovu yetu, na anahuzunika kwa ajili yetu; lakini sisi tulidhani kwamba [kwa ajili yake mwenyewe] aliachwa apate taabu, na mapigo, na mateso. Bali alijeruhiwa kwa makosa yetu, alichubuliwa kwa maovu yetu; adhabu ya amani yetu ilikuwa juu yake, na kwa kupigwa kwake sisi tumepona. Sisi sote kama kondoo tumepotea; [kila] mtu amegeukia njia yake mwenyewe; naye Bwana amemtoa kwa ajili ya dhambi zetu, naye katikati ya mateso yake hafunui kinywa chake. Alipelekwa kama kondoo machinjoni, na kama mwana-kondoo anyamazavyo mbele yake amkataye manyoya, ndivyo asivyofunua kinywa chake. Katika unyonge wake hukumu yake iliondolewa; ni nani atakayekisimulia kizazi chake? kwa maana uhai wake umeondolewa duniani. Kwa sababu ya makosa ya watu wangu alishushwa hata mautini. Nami nitawatoa waovu kwa ajili ya kaburi lake, na matajiri kwa ajili ya kifo chake, kwa sababu hakutenda uovu, wala hila haikuonekana kinywani mwake. Naye Bwana amependa kumtakasa kwa mapigo. Mkitoa sadaka kwa ajili ya dhambi, nafsi yenu itaona uzao wa siku nyingi. Naye Bwana amependa kumwondolea taabu ya nafsi yake, kumwonyesha nuru, na kumuumba kwa ufahamu, kumhesabia haki yule Mwenye Haki anayewahudumia wengi vyema; naye mwenyewe atachukua dhambi zao. Kwa sababu hiyo atawarithi wengi, naye atagawanya nyara za wenye nguvu; kwa sababu nafsi yake ilitolewa hata kufa, naye alihesabiwa pamoja na wakosaji, naye alizichukua dhambi za wengi, na kwa ajili ya dhambi zao alitolewa.” Na tena asema, “Mimi ni mdudu, wala si mtu; nimelaumiwa na wanadamu, na kudharauliwa na watu. Wote wanionao hunicheka; hunena kwa midomo yao; hutikisa vichwa vyao, [wakisema,] Alimtumaini Mungu, na amwokoe, na amponye, kwa kuwa apendezwa naye.” Mwaona, wapenzi, ni mfano gani tuliopewa; kwa maana ikiwa Bwana alijinyenyekeza hivi, sisi tutafanya nini, tuliokuja kwa njia yake chini ya nira ya neema yake?",
+  "word_count": 414
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 17,
+  "title": "Watakatifu kama mifano ya unyenyekevu",
+  "body_html": "<p>Na tuwaige pia wale waliozunguka wakiwa wamevaa ngozi za mbuzi na ngozi za kondoo, wakitangaza kuja kwake Kristo; namaanisha Eliya, Elisha, na Ezekieli miongoni mwa manabii, pamoja na wale wengine ambao ushuhuda kama huo umetolewa juu yao [katika Maandiko]. Ibrahimu aliheshimiwa kwa namna ya pekee, akaitwa rafiki wa Mungu; lakini yeye, akiutazama kwa bidii utukufu wa Mungu, alisema kwa unyenyekevu, “Mimi ni mavumbi na majivu tu.” Zaidi ya hayo, imeandikwa hivi juu ya Ayubu, “Ayubu alikuwa mtu mwenye haki, mkamilifu, mkweli, mcha Mungu, aliyejiepusha na kila uovu.” Lakini akijishtaki mwenyewe, alisema, “Hakuna mtu aliye safi bila unajisi, hata kama maisha yake ni ya siku moja tu.” Musa aliitwa mwaminifu katika nyumba yote ya Mungu; na kwa mkono wake Mungu aliiadhibu Misri kwa mapigo na mateso. Lakini yeye, ingawa aliheshimiwa sana hivyo, hakutumia maneno ya kujikweza, bali alisema, neno la Mungu lilipomjia kutoka kichakani, “Mimi ni nani, hata unitume? Mimi ni mtu wa sauti dhaifu, na mzito wa ulimi.” Na tena alisema, “Mimi ni kama moshi wa chungu tu.”</p>",
+  "body_text": "Na tuwaige pia wale waliozunguka wakiwa wamevaa ngozi za mbuzi na ngozi za kondoo, wakitangaza kuja kwake Kristo; namaanisha Eliya, Elisha, na Ezekieli miongoni mwa manabii, pamoja na wale wengine ambao ushuhuda kama huo umetolewa juu yao [katika Maandiko]. Ibrahimu aliheshimiwa kwa namna ya pekee, akaitwa rafiki wa Mungu; lakini yeye, akiutazama kwa bidii utukufu wa Mungu, alisema kwa unyenyekevu, “Mimi ni mavumbi na majivu tu.” Zaidi ya hayo, imeandikwa hivi juu ya Ayubu, “Ayubu alikuwa mtu mwenye haki, mkamilifu, mkweli, mcha Mungu, aliyejiepusha na kila uovu.” Lakini akijishtaki mwenyewe, alisema, “Hakuna mtu aliye safi bila unajisi, hata kama maisha yake ni ya siku moja tu.” Musa aliitwa mwaminifu katika nyumba yote ya Mungu; na kwa mkono wake Mungu aliiadhibu Misri kwa mapigo na mateso. Lakini yeye, ingawa aliheshimiwa sana hivyo, hakutumia maneno ya kujikweza, bali alisema, neno la Mungu lilipomjia kutoka kichakani, “Mimi ni nani, hata unitume? Mimi ni mtu wa sauti dhaifu, na mzito wa ulimi.” Na tena alisema, “Mimi ni kama moshi wa chungu tu.”",
+  "word_count": 168
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 18,
+  "title": "Daudi kama mfano wa unyenyekevu",
+  "body_html": "<p>Lakini tuseme nini juu ya Daudi, aliyeshuhudiwa hivyo, ambaye Mungu alisema juu yake, “Nimemwona mtu anayeupendeza moyo wangu, Daudi mwana wa Yese; nami kwa rehema za milele nimemtia mafuta?” Hata hivyo mtu huyu huyu amwambia Mungu, “Unirehemu, Ee Bwana, sawasawa na rehema zako nyingi; kiasi cha wingi wa huruma zako uyafute makosa yangu. Unioshe zaidi na uovu wangu, unitakase dhambi yangu. Kwa maana nimejua makosa yangu, na dhambi yangu i mbele yangu daima. Nimekutenda dhambi wewe peke yako, na kufanya maovu machoni pako; ili ujulikane kuwa una haki unenapo, na kushinda utakapohukumiwa. Kwa maana, tazama, nalichukuliwa mimba katika makosa, na katika dhambi mama yangu alinichukua mimba. Kwa maana, tazama, umeipenda kweli; mambo ya siri na yaliyofichwa ya hekima umenionyesha. Utaninyunyizia hisopo, nami nitakuwa safi; utanioosha, nami nitakuwa mweupe kuliko theluji. Utanifanya kusikia furaha na shangwe; mifupa yangu, iliyonyenyekezwa, itashangilia. Uso wako uugeuze mbali na dhambi zangu, uyafute maovu yangu yote. Ee Mungu, uniumbie moyo safi, uifanye upya roho iliyo sawa ndani yangu. Usinitenge na uso wako, wala Roho wako Mtakatifu usiniondolee. Unirudishie furaha ya wokovu wako, unitegemeze kwa Roho wako aongozaye. Nitawafundisha wakosaji njia zako, na wenye dhambi watarejea kwako. Uniponye na damu za watu, Ee Mungu, Mungu wa wokovu wangu; ulimi wangu utaishangilia haki yako. Ee Bwana, utanifumbua kinywa changu, na midomo yangu itazitangaza sifa zako. Kwa maana kama ungetaka sadaka, ningekutolea; hupendezwi na sadaka za kuteketezwa. Dhabihu [inayokubalika] kwa Mungu ni roho iliyopondeka; moyo uliovunjika na kupondeka Mungu hataudharau.”</p>",
+  "body_text": "Lakini tuseme nini juu ya Daudi, aliyeshuhudiwa hivyo, ambaye Mungu alisema juu yake, “Nimemwona mtu anayeupendeza moyo wangu, Daudi mwana wa Yese; nami kwa rehema za milele nimemtia mafuta?” Hata hivyo mtu huyu huyu amwambia Mungu, “Unirehemu, Ee Bwana, sawasawa na rehema zako nyingi; kiasi cha wingi wa huruma zako uyafute makosa yangu. Unioshe zaidi na uovu wangu, unitakase dhambi yangu. Kwa maana nimejua makosa yangu, na dhambi yangu i mbele yangu daima. Nimekutenda dhambi wewe peke yako, na kufanya maovu machoni pako; ili ujulikane kuwa una haki unenapo, na kushinda utakapohukumiwa. Kwa maana, tazama, nalichukuliwa mimba katika makosa, na katika dhambi mama yangu alinichukua mimba. Kwa maana, tazama, umeipenda kweli; mambo ya siri na yaliyofichwa ya hekima umenionyesha. Utaninyunyizia hisopo, nami nitakuwa safi; utanioosha, nami nitakuwa mweupe kuliko theluji. Utanifanya kusikia furaha na shangwe; mifupa yangu, iliyonyenyekezwa, itashangilia. Uso wako uugeuze mbali na dhambi zangu, uyafute maovu yangu yote. Ee Mungu, uniumbie moyo safi, uifanye upya roho iliyo sawa ndani yangu. Usinitenge na uso wako, wala Roho wako Mtakatifu usiniondolee. Unirudishie furaha ya wokovu wako, unitegemeze kwa Roho wako aongozaye. Nitawafundisha wakosaji njia zako, na wenye dhambi watarejea kwako. Uniponye na damu za watu, Ee Mungu, Mungu wa wokovu wangu; ulimi wangu utaishangilia haki yako. Ee Bwana, utanifumbua kinywa changu, na midomo yangu itazitangaza sifa zako. Kwa maana kama ungetaka sadaka, ningekutolea; hupendezwi na sadaka za kuteketezwa. Dhabihu [inayokubalika] kwa Mungu ni roho iliyopondeka; moyo uliovunjika na kupondeka Mungu hataudharau.”",
+  "word_count": 241
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 19,
+  "title": "Kwa kuiga mifano hii, na tuitafute amani",
+  "body_html": "<p>Basi unyenyekevu na utii wa kimungu wa watu hao walio wakuu na mashuhuri hivi umetufanya kuwa bora zaidi, si sisi tu, bali pia vizazi vyote vilivyotutangulia, yaani, wote walioyapokea maneno yake kwa hofu na kweli. Kwa hiyo, kwa kuwa tumewekewa mbele yetu mifano mingi hivi iliyo mikuu na yenye utukufu, na turudi tena kwenye kuizoelea amani ile ambayo tangu mwanzo ndiyo iliyokuwa shabaha tuliyowekewa; na tumkazie macho Baba na Muumba wa ulimwengu wote, na tuambatane na karama zake kuu zipitazo kiasi, na fadhili zake za amani. Na tumtafakari kwa akili zetu, na tuyatazame kwa macho ya roho zetu mapenzi yake yenye uvumilivu. Na tufikiri jinsi asivyo na ghadhabu kwa viumbe vyake vyote. </p>",
+  "body_text": "Basi unyenyekevu na utii wa kimungu wa watu hao walio wakuu na mashuhuri hivi umetufanya kuwa bora zaidi, si sisi tu, bali pia vizazi vyote vilivyotutangulia, yaani, wote walioyapokea maneno yake kwa hofu na kweli. Kwa hiyo, kwa kuwa tumewekewa mbele yetu mifano mingi hivi iliyo mikuu na yenye utukufu, na turudi tena kwenye kuizoelea amani ile ambayo tangu mwanzo ndiyo iliyokuwa shabaha tuliyowekewa; na tumkazie macho Baba na Muumba wa ulimwengu wote, na tuambatane na karama zake kuu zipitazo kiasi, na fadhili zake za amani. Na tumtafakari kwa akili zetu, na tuyatazame kwa macho ya roho zetu mapenzi yake yenye uvumilivu. Na tufikiri jinsi asivyo na ghadhabu kwa viumbe vyake vyote.",
+  "word_count": 112
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 20,
+  "title": "Amani na upatano wa ulimwengu",
+  "body_html": "<p>Mbingu, zikizunguka chini ya utawala wake, zinamtii kwa amani. Mchana na usiku huenda mwendo aliouagiza, wala havizuiani hata kidogo. Jua na mwezi, pamoja na makundi ya nyota, huzunguka kwa upatano kufuatana na amri yake, ndani ya mipaka waliyowekewa, bila kugeuka upande wowote. Nchi yenye rutuba, kwa mapenzi yake, huzaa chakula tele kwa majira yake, kwa ajili ya wanadamu na wanyama na viumbe vyote vyenye uhai vilivyo juu yake, bila kusita kamwe, wala kubadili lolote katika amri alizoziweka. Mahali pa vilindi pasipochunguzika, na mipango isiyoelezeka ya ulimwengu wa chini, vinazuiliwa kwa sheria zilezile. Bahari kubwa isiyopimika, iliyokusanywa kwa kazi yake katika mabonde mbalimbali, kamwe haipiti mipaka iliyowekwa kuizunguka, bali hufanya kama alivyoiamuru. Kwa maana alisema, “Mpaka hapa utafika, na mawimbi yako yatavunjika ndani yako.” Bahari kuu, isiyovukika kwa mwanadamu, na malimwengu yaliyo ng'ambo yake, yanatawaliwa kwa amri zilezile za Bwana. Majira ya masika, ya kiangazi, ya vuli na ya baridi hupishana kwa amani. Pepo za kila upande hutimiza huduma yao kwa wakati wake bila kizuizi. Chemchemi zibubujikazo daima, zilizofanywa kwa ajili ya furaha na afya, hutoa matiti yao bila kukoma kwa ajili ya uhai wa wanadamu. Hata viumbe hai vilivyo vidogo kabisa hukutana pamoja kwa amani na umoja. Hivi vyote Muumba mkuu na Bwana wa vyote ameviagiza viwepo katika amani na upatano; naye huwatendea mema wote, lakini kwa wingi zaidi sisi tuliokimbilia rehema zake kwa njia ya Yesu Kristo Bwana wetu, ambaye utukufu na enzi ni vyake milele na milele. Amina. </p>",
+  "body_text": "Mbingu, zikizunguka chini ya utawala wake, zinamtii kwa amani. Mchana na usiku huenda mwendo aliouagiza, wala havizuiani hata kidogo. Jua na mwezi, pamoja na makundi ya nyota, huzunguka kwa upatano kufuatana na amri yake, ndani ya mipaka waliyowekewa, bila kugeuka upande wowote. Nchi yenye rutuba, kwa mapenzi yake, huzaa chakula tele kwa majira yake, kwa ajili ya wanadamu na wanyama na viumbe vyote vyenye uhai vilivyo juu yake, bila kusita kamwe, wala kubadili lolote katika amri alizoziweka. Mahali pa vilindi pasipochunguzika, na mipango isiyoelezeka ya ulimwengu wa chini, vinazuiliwa kwa sheria zilezile. Bahari kubwa isiyopimika, iliyokusanywa kwa kazi yake katika mabonde mbalimbali, kamwe haipiti mipaka iliyowekwa kuizunguka, bali hufanya kama alivyoiamuru. Kwa maana alisema, “Mpaka hapa utafika, na mawimbi yako yatavunjika ndani yako.” Bahari kuu, isiyovukika kwa mwanadamu, na malimwengu yaliyo ng'ambo yake, yanatawaliwa kwa amri zilezile za Bwana. Majira ya masika, ya kiangazi, ya vuli na ya baridi hupishana kwa amani. Pepo za kila upande hutimiza huduma yao kwa wakati wake bila kizuizi. Chemchemi zibubujikazo daima, zilizofanywa kwa ajili ya furaha na afya, hutoa matiti yao bila kukoma kwa ajili ya uhai wa wanadamu. Hata viumbe hai vilivyo vidogo kabisa hukutana pamoja kwa amani na umoja. Hivi vyote Muumba mkuu na Bwana wa vyote ameviagiza viwepo katika amani na upatano; naye huwatendea mema wote, lakini kwa wingi zaidi sisi tuliokimbilia rehema zake kwa njia ya Yesu Kristo Bwana wetu, ambaye utukufu na enzi ni vyake milele na milele. Amina.",
+  "word_count": 240
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 21,
+  "title": "Na tumtii Mungu, wala si wachochezi wa fitina",
+  "body_html": "<p>Jihadharini, wapendwa, fadhili zake nyingi zisije zikawa hukumu juu yetu sote. [Kwa maana ndivyo itakavyokuwa] tusipoenenda kwa kustahili kwake, na kwa nia moja kuyatenda yaliyo mema na yanayompendeza machoni pake. Kwa maana [Maandiko] yasema mahali fulani, “Roho wa Bwana ni taa, ichunguzayo siri za ndani ya tumbo.” Na tufikiri jinsi alivyo karibu, na kwamba hakuna wazo wala hoja yoyote tuifikiriayo iliyofichika kwake. Kwa hiyo ni haki tusiiache nafasi ambayo mapenzi yake yametuwekea. Afadhali tuwachukize watu wale walio wapumbavu, wasio na busara, wenye kujivuna, wanaojisifu kwa kiburi cha maneno yao, kuliko [kumchukiza] Mungu. Na tumche Bwana Yesu Kristo, ambaye damu yake ilitolewa kwa ajili yetu; na tuwaheshimu wale wanaotuongoza; na tuwastahi wazee walio kati yetu; na tuwalee vijana katika kumcha Mungu; na tuwaelekeze wake zetu kwenye yaliyo mema. Na waonyeshe tabia ya kupendeza ya usafi [katika mwenendo wao wote]; na wadhihirishe moyo wa upole usio na unafiki; na waonyeshe kwa namna yao ya kusema jinsi wanavyoutawala ulimi wao; na waonyeshe upendo wao, si kwa kumpendelea mmoja kuliko mwingine, bali kwa kuwapenda sawasawa wote wamchao Mungu kwa utauwa. Watoto wenu na washiriki mafunzo ya kweli ya Kikristo; na wajifunze jinsi unyenyekevu ulivyo na nguvu mbele za Mungu—jinsi roho ya upendo safi inavyoweza kufaulu mbele zake—jinsi kumcha yeye kulivyo bora na kukuu, na jinsi kunavyowaokoa wote waendao ndani yake kwa moyo safi. Kwa maana yeye ndiye Mchunguzi wa mawazo na tamaa [za moyo]: pumzi yake imo ndani yetu; na apendapo, ataiondoa. </p>",
+  "body_text": "Jihadharini, wapendwa, fadhili zake nyingi zisije zikawa hukumu juu yetu sote. [Kwa maana ndivyo itakavyokuwa] tusipoenenda kwa kustahili kwake, na kwa nia moja kuyatenda yaliyo mema na yanayompendeza machoni pake. Kwa maana [Maandiko] yasema mahali fulani, “Roho wa Bwana ni taa, ichunguzayo siri za ndani ya tumbo.” Na tufikiri jinsi alivyo karibu, na kwamba hakuna wazo wala hoja yoyote tuifikiriayo iliyofichika kwake. Kwa hiyo ni haki tusiiache nafasi ambayo mapenzi yake yametuwekea. Afadhali tuwachukize watu wale walio wapumbavu, wasio na busara, wenye kujivuna, wanaojisifu kwa kiburi cha maneno yao, kuliko [kumchukiza] Mungu. Na tumche Bwana Yesu Kristo, ambaye damu yake ilitolewa kwa ajili yetu; na tuwaheshimu wale wanaotuongoza; na tuwastahi wazee walio kati yetu; na tuwalee vijana katika kumcha Mungu; na tuwaelekeze wake zetu kwenye yaliyo mema. Na waonyeshe tabia ya kupendeza ya usafi [katika mwenendo wao wote]; na wadhihirishe moyo wa upole usio na unafiki; na waonyeshe kwa namna yao ya kusema jinsi wanavyoutawala ulimi wao; na waonyeshe upendo wao, si kwa kumpendelea mmoja kuliko mwingine, bali kwa kuwapenda sawasawa wote wamchao Mungu kwa utauwa. Watoto wenu na washiriki mafunzo ya kweli ya Kikristo; na wajifunze jinsi unyenyekevu ulivyo na nguvu mbele za Mungu—jinsi roho ya upendo safi inavyoweza kufaulu mbele zake—jinsi kumcha yeye kulivyo bora na kukuu, na jinsi kunavyowaokoa wote waendao ndani yake kwa moyo safi. Kwa maana yeye ndiye Mchunguzi wa mawazo na tamaa [za moyo]: pumzi yake imo ndani yetu; na apendapo, ataiondoa.",
+  "word_count": 238
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 22,
+  "title": "Mawaidha haya yanathibitishwa na imani ya Kikristo",
+  "body_html": "<p>Basi imani iliyo katika Kristo inayathibitisha [mawaidha] haya yote. Kwa maana yeye mwenyewe kwa Roho Mtakatifu anatuambia hivi: “Njoni, enyi wana, mnisikilize; nitawafundisha kumcha Bwana. Ni nani mtu yule apendaye uzima, apendaye kuona siku njema? Uuzuie ulimi wako na mabaya, na midomo yako na kusema hila. Uache mabaya, ukatende mema; utafute amani, ukaifuatie. Macho ya Bwana huwaelekea wenye haki, na masikio yake [yako wazi] kwa maombi yao. Uso wa Bwana ni juu ya watendao mabaya, ili kukatilia mbali kumbukumbu lao duniani. Mwenye haki alilia, naye Bwana akamsikia, akamwokoa na taabu zake zote.” “Mapigo [aliyowekewa] mtu mwovu ni mengi; bali rehema zitawazunguka wale wamtumainio Bwana.”</p>",
+  "body_text": "Basi imani iliyo katika Kristo inayathibitisha [mawaidha] haya yote. Kwa maana yeye mwenyewe kwa Roho Mtakatifu anatuambia hivi: “Njoni, enyi wana, mnisikilize; nitawafundisha kumcha Bwana. Ni nani mtu yule apendaye uzima, apendaye kuona siku njema? Uuzuie ulimi wako na mabaya, na midomo yako na kusema hila. Uache mabaya, ukatende mema; utafute amani, ukaifuatie. Macho ya Bwana huwaelekea wenye haki, na masikio yake [yako wazi] kwa maombi yao. Uso wa Bwana ni juu ya watendao mabaya, ili kukatilia mbali kumbukumbu lao duniani. Mwenye haki alilia, naye Bwana akamsikia, akamwokoa na taabu zake zote.” “Mapigo [aliyowekewa] mtu mwovu ni mengi; bali rehema zitawazunguka wale wamtumainio Bwana.”",
+  "word_count": 104
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 23,
+  "title": "Muwe wanyenyekevu, na kuamini kwamba Kristo atakuja tena",
+  "body_html": "<p>Baba aliye mwingi wa rehema na mwema ana moyo [wa huruma] kwa wale wamchao, naye huwapa fadhili zake kwa wema na upendo wale wanaomjia kwa moyo mnyofu. Kwa hiyo tusiwe watu wa nia mbili; wala nafsi zetu zisijivune kwa sababu ya karama zake zilizo kuu mno na tukufu. Na liwe mbali nasi lile lililoandikwa, “Ole wao walio na nia mbili, wenye mioyo ya shaka, wasemao, Mambo haya tumeyasikia hata katika siku za baba zetu; lakini, tazama, tumezeeka, wala hakuna hata moja lililotupata.” Enyi wapumbavu! jilinganisheni na mti: chukueni [kwa mfano] mzabibu. Kwanza hupukutisha majani yake, kisha huchipuka, kisha hutoa majani, kisha huchanua maua; baada ya hayo huja zabibu mbichi, na kisha hufuata tunda lililoiva. Mnaona jinsi kwa muda mfupi tunda la mti linavyokomaa. Kweli, upesi na ghafula mapenzi yake yatatimizwa, kama Maandiko nayo yanavyoshuhudia, yakisema, “Atakuja upesi, wala hatakawia;” na, “Bwana atalijia hekalu lake ghafula, yaani, yule Mtakatifu, mnayemtazamia.”</p>",
+  "body_text": "Baba aliye mwingi wa rehema na mwema ana moyo [wa huruma] kwa wale wamchao, naye huwapa fadhili zake kwa wema na upendo wale wanaomjia kwa moyo mnyofu. Kwa hiyo tusiwe watu wa nia mbili; wala nafsi zetu zisijivune kwa sababu ya karama zake zilizo kuu mno na tukufu. Na liwe mbali nasi lile lililoandikwa, “Ole wao walio na nia mbili, wenye mioyo ya shaka, wasemao, Mambo haya tumeyasikia hata katika siku za baba zetu; lakini, tazama, tumezeeka, wala hakuna hata moja lililotupata.” Enyi wapumbavu! jilinganisheni na mti: chukueni [kwa mfano] mzabibu. Kwanza hupukutisha majani yake, kisha huchipuka, kisha hutoa majani, kisha huchanua maua; baada ya hayo huja zabibu mbichi, na kisha hufuata tunda lililoiva. Mnaona jinsi kwa muda mfupi tunda la mti linavyokomaa. Kweli, upesi na ghafula mapenzi yake yatatimizwa, kama Maandiko nayo yanavyoshuhudia, yakisema, “Atakuja upesi, wala hatakawia;” na, “Bwana atalijia hekalu lake ghafula, yaani, yule Mtakatifu, mnayemtazamia.”",
+  "word_count": 149
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 24,
+  "title": "Mungu hutuonyesha daima katika maumbile kwamba kutakuwa na ufufuo",
+  "body_html": "<p>Na tufikiri, wapendwa, jinsi Bwana anavyotuthibitishia daima kwamba kutakuwa na ufufuo ujao, ambao amemfanya Bwana Yesu Kristo kuwa limbuko lake kwa kumfufua katika wafu. Na tuutafakari, wapendwa, ufufuo unaotokea nyakati zote. Mchana na usiku hututangazia ufufuo. Usiku hulala usingizi, na mchana huamka; mchana [nao] huondoka tena, na usiku huingia. Na tuyatazame matunda [ya nchi], jinsi upandaji wa nafaka unavyofanyika. Mpanzi hutoka kwenda kupanda, akaitupa mbegu ardhini; na mbegu ikiisha kutawanywa hivyo, ingawa ilikuwa kavu na tupu ilipoanguka juu ya nchi, huoza kidogo kidogo. Kisha kutoka katika kuoza kwake uweza mkuu wa maongozi ya Bwana huiinua tena, na kutoka katika mbegu moja hutokea nyingi, nazo huzaa matunda. </p>",
+  "body_text": "Na tufikiri, wapendwa, jinsi Bwana anavyotuthibitishia daima kwamba kutakuwa na ufufuo ujao, ambao amemfanya Bwana Yesu Kristo kuwa limbuko lake kwa kumfufua katika wafu. Na tuutafakari, wapendwa, ufufuo unaotokea nyakati zote. Mchana na usiku hututangazia ufufuo. Usiku hulala usingizi, na mchana huamka; mchana [nao] huondoka tena, na usiku huingia. Na tuyatazame matunda [ya nchi], jinsi upandaji wa nafaka unavyofanyika. Mpanzi hutoka kwenda kupanda, akaitupa mbegu ardhini; na mbegu ikiisha kutawanywa hivyo, ingawa ilikuwa kavu na tupu ilipoanguka juu ya nchi, huoza kidogo kidogo. Kisha kutoka katika kuoza kwake uweza mkuu wa maongozi ya Bwana huiinua tena, na kutoka katika mbegu moja hutokea nyingi, nazo huzaa matunda.",
+  "word_count": 106
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 25,
+  "title": "Ndege feniksi, mfano wa ufufuo wetu",
+  "body_html": "<p>Na tuitafakari ishara ile ya ajabu [ya ufufuo] inayotokea katika nchi za Mashariki, yaani, katika Arabuni na nchi zilizo kandokando yake. Kuna ndege mmoja aitwaye feniksi. Huyu ndiye pekee wa aina yake, naye huishi miaka mia tano. Na wakati wa kuoza kwake unapokaribia, ya kwamba lazima afe, hujijengea kiota cha uvumba, na manemane, na manukato mengine, ambacho, wakati unapotimia, huingia ndani yake akafa. Lakini mwili wake unapooza, hutokea funza wa namna fulani, ambaye, akilishwa kwa majimaji ya ndege yule aliyekufa, huota manyoya. Kisha, akiisha kupata nguvu, hukichukua kile kiota ambamo mna mifupa ya mzazi wake, na akiibeba husafiri kutoka nchi ya Arabuni mpaka Misri, hadi mji uitwao Heliopoli. Na mchana kweupe, akiruka mbele ya macho ya watu wote, huiweka juu ya madhabahu ya jua, na akiisha kufanya hivyo, hurudi upesi kwenye makao yake ya zamani. Kisha makuhani huzichunguza kumbukumbu za tarehe, na kuona kwamba amerudi sawasawa wakati mwaka wa mia tano ulipotimia.</p>",
+  "body_text": "Na tuitafakari ishara ile ya ajabu [ya ufufuo] inayotokea katika nchi za Mashariki, yaani, katika Arabuni na nchi zilizo kandokando yake. Kuna ndege mmoja aitwaye feniksi. Huyu ndiye pekee wa aina yake, naye huishi miaka mia tano. Na wakati wa kuoza kwake unapokaribia, ya kwamba lazima afe, hujijengea kiota cha uvumba, na manemane, na manukato mengine, ambacho, wakati unapotimia, huingia ndani yake akafa. Lakini mwili wake unapooza, hutokea funza wa namna fulani, ambaye, akilishwa kwa majimaji ya ndege yule aliyekufa, huota manyoya. Kisha, akiisha kupata nguvu, hukichukua kile kiota ambamo mna mifupa ya mzazi wake, na akiibeba husafiri kutoka nchi ya Arabuni mpaka Misri, hadi mji uitwao Heliopoli. Na mchana kweupe, akiruka mbele ya macho ya watu wote, huiweka juu ya madhabahu ya jua, na akiisha kufanya hivyo, hurudi upesi kwenye makao yake ya zamani. Kisha makuhani huzichunguza kumbukumbu za tarehe, na kuona kwamba amerudi sawasawa wakati mwaka wa mia tano ulipotimia.",
+  "word_count": 152
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 26,
+  "title": "Basi tutafufuka tena, kama Maandiko nayo yanavyoshuhudia",
+  "body_html": "<p>Je! basi tunaona kuwa ni jambo kubwa na la ajabu kwa Muumba wa vitu vyote kuwafufua tena wale waliomtumikia kwa utauwa katika uthabiti wa imani njema, wakati hata kwa ndege anatuonyesha ukuu wa uweza wake wa kutimiza ahadi yake? Kwa maana [Maandiko] yasema mahali fulani, “Utaniinua, nami nitakushukuru;” na tena, “Nalijilaza, nikalala usingizi; nikaamka, kwa sababu wewe u pamoja nami;” na tena, Ayubu asema, “Utauinua mwili wangu huu, ulioteswa kwa mambo haya yote.”</p>",
+  "body_text": "Je! basi tunaona kuwa ni jambo kubwa na la ajabu kwa Muumba wa vitu vyote kuwafufua tena wale waliomtumikia kwa utauwa katika uthabiti wa imani njema, wakati hata kwa ndege anatuonyesha ukuu wa uweza wake wa kutimiza ahadi yake? Kwa maana [Maandiko] yasema mahali fulani, “Utaniinua, nami nitakushukuru;” na tena, “Nalijilaza, nikalala usingizi; nikaamka, kwa sababu wewe u pamoja nami;” na tena, Ayubu asema, “Utauinua mwili wangu huu, ulioteswa kwa mambo haya yote.”",
+  "word_count": 73
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 27,
+  "title": "Katika tumaini la ufufuo",
+  "body_html": "<p>Basi tukiwa na tumaini hili, nafsi zetu na zifungamane naye aliye mwaminifu katika ahadi zake, na mwenye haki katika hukumu zake. Yeye aliyetuamuru tusiseme uongo, zaidi sana yeye mwenyewe hatasema uongo; kwa maana hakuna lisilowezekana kwa Mungu, isipokuwa kusema uongo. Basi imani yake na iamshwe tena ndani yetu, na tufikiri kwamba vitu vyote vi karibu naye. Kwa neno la uweza wake alivisimamisha vitu vyote, na kwa neno lake aweza kuviangusha. “Ni nani atakayemwambia, Umefanya nini? au, Ni nani atakayeshindana na uweza wa nguvu zake?” Wakati apendapo na kama apendavyo atayatenda mambo yote, wala hakuna lolote kati ya yale aliyoyaamua litakalopita. Vitu vyote vi wazi mbele zake, wala hakuna kitu kiwezacho kufichika kwa shauri lake. “Mbingu zahubiri utukufu wa Mungu, na anga laitangaza kazi ya mikono yake. Mchana husemezana na mchana, na usiku huhubiriana maarifa na usiku. Wala hakuna maneno wala lugha ambayo sauti zao hazisikiki.”</p>",
+  "body_text": "Basi tukiwa na tumaini hili, nafsi zetu na zifungamane naye aliye mwaminifu katika ahadi zake, na mwenye haki katika hukumu zake. Yeye aliyetuamuru tusiseme uongo, zaidi sana yeye mwenyewe hatasema uongo; kwa maana hakuna lisilowezekana kwa Mungu, isipokuwa kusema uongo. Basi imani yake na iamshwe tena ndani yetu, na tufikiri kwamba vitu vyote vi karibu naye. Kwa neno la uweza wake alivisimamisha vitu vyote, na kwa neno lake aweza kuviangusha. “Ni nani atakayemwambia, Umefanya nini? au, Ni nani atakayeshindana na uweza wa nguvu zake?” Wakati apendapo na kama apendavyo atayatenda mambo yote, wala hakuna lolote kati ya yale aliyoyaamua litakalopita. Vitu vyote vi wazi mbele zake, wala hakuna kitu kiwezacho kufichika kwa shauri lake. “Mbingu zahubiri utukufu wa Mungu, na anga laitangaza kazi ya mikono yake. Mchana husemezana na mchana, na usiku huhubiriana maarifa na usiku. Wala hakuna maneno wala lugha ambayo sauti zao hazisikiki.”",
+  "word_count": 145
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 28,
+  "title": "Mungu huona vitu vyote: kwa hiyo na tuepuke makosa",
+  "body_html": "<p>Basi kwa kuwa vitu vyote vinaonekana na kusikiwa [na Mungu], na tumche, na tuziache kazi zile mbaya zitokazo katika tamaa mbaya; ili, kwa rehema zake, tulindwe na hukumu zijazo. Kwa maana ni wapi mmoja wetu awezapo kuukimbia mkono wake wenye nguvu? Au ni ulimwengu gani utakaompokea yeyote kati ya wale wanaomkimbia? Kwa maana Maandiko yasema mahali fulani, “Niende wapi, nami nijifiche wapi mbali na uso wako? Nikipanda juu mbinguni, wewe uko; nikienda hata miisho ya dunia, mkono wako wa kuume uko huko; nikitandika kitanda changu vilindini, Roho wako yuko huko.” Basi mtu atakwenda wapi, au atakimbilia wapi amwepuke yeye avishikaye vitu vyote? </p>",
+  "body_text": "Basi kwa kuwa vitu vyote vinaonekana na kusikiwa [na Mungu], na tumche, na tuziache kazi zile mbaya zitokazo katika tamaa mbaya; ili, kwa rehema zake, tulindwe na hukumu zijazo. Kwa maana ni wapi mmoja wetu awezapo kuukimbia mkono wake wenye nguvu? Au ni ulimwengu gani utakaompokea yeyote kati ya wale wanaomkimbia? Kwa maana Maandiko yasema mahali fulani, “Niende wapi, nami nijifiche wapi mbali na uso wako? Nikipanda juu mbinguni, wewe uko; nikienda hata miisho ya dunia, mkono wako wa kuume uko huko; nikitandika kitanda changu vilindini, Roho wako yuko huko.” Basi mtu atakwenda wapi, au atakimbilia wapi amwepuke yeye avishikaye vitu vyote?",
+  "word_count": 102
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 29,
+  "title": "Na tumkaribie Mungu pia kwa usafi wa moyo",
+  "body_html": "<p>Basi na tumkaribie kwa utakatifu wa roho, tukimwinulia mikono safi isiyo na unajisi, tukimpenda Baba yetu mwenye neema na rehema, aliyetufanya washiriki wa baraka za wateule wake. Kwa maana imeandikwa hivi, “Aliye juu alipoyagawa mataifa, alipowatawanya wana wa Adamu, aliweka mipaka ya mataifa kwa kadiri ya hesabu ya malaika wa Mungu. Watu wake Yakobo wakawa fungu la Bwana, na Israeli kura ya urithi wake.” Na mahali pengine [Maandiko] yasema, “Tazama, Bwana anajitwalia taifa kutoka katikati ya mataifa, kama mtu atwaavyo malimbuko ya sakafu yake ya kupuria; na kutoka katika taifa hilo atatoka yeye Aliye Mtakatifu Kabisa.”</p>",
+  "body_text": "Basi na tumkaribie kwa utakatifu wa roho, tukimwinulia mikono safi isiyo na unajisi, tukimpenda Baba yetu mwenye neema na rehema, aliyetufanya washiriki wa baraka za wateule wake. Kwa maana imeandikwa hivi, “Aliye juu alipoyagawa mataifa, alipowatawanya wana wa Adamu, aliweka mipaka ya mataifa kwa kadiri ya hesabu ya malaika wa Mungu. Watu wake Yakobo wakawa fungu la Bwana, na Israeli kura ya urithi wake.” Na mahali pengine [Maandiko] yasema, “Tazama, Bwana anajitwalia taifa kutoka katikati ya mataifa, kama mtu atwaavyo malimbuko ya sakafu yake ya kupuria; na kutoka katika taifa hilo atatoka yeye Aliye Mtakatifu Kabisa.”",
+  "word_count": 96
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 30,
+  "title": "Na tuyatende yale yanayompendeza Mungu",
+  "body_html": "<p>Basi, kwa kuwa sisi tu fungu la yeye Aliye Mtakatifu, na tuyatende yote yahusuyo utakatifu, tukiepuka masingizio yote, makumbatio yote ya machukizo na ya uchafu, pamoja na ulevi wote, kutamani mambo mapya, tamaa zote za machukizo, uzinzi wa kuchukiza, na kiburi cha kulaaniwa. “Kwa maana Mungu,” yasema [Maandiko], “huwapinga wenye kiburi, bali huwapa wanyenyekevu neema.” Basi na tuambatane na wale waliopewa neema na Mungu. Na tujivike umoja na unyenyekevu, tukijizoeza daima kiasi, tukikaa mbali na unong'onaji wote na masingizio, tukihesabiwa haki kwa matendo yetu, wala si kwa maneno yetu. Kwa maana [Maandiko] yasema, “Anayesema mengi atasikia mengi kwa kujibiwa. Je! yeye aliye mwepesi wa kusema ajiona kuwa mwenye haki? Heri aliyezaliwa na mwanamke, aishiye muda mfupi: usiwe mtu wa maneno mengi.” Sifa yetu na iwe katika Mungu, wala si kutoka kwetu wenyewe; kwa maana Mungu huwachukia wale wanaojisifu wenyewe. Ushuhuda wa matendo yetu mema na utolewe na wengine, kama ilivyokuwa kwa baba zetu wenye haki. Ujasiri usio na adabu, na majivuno, na ufidhuli ni vya wale waliolaaniwa na Mungu; bali kiasi, unyenyekevu, na upole ni vya wale waliobarikiwa naye. </p>",
+  "body_text": "Basi, kwa kuwa sisi tu fungu la yeye Aliye Mtakatifu, na tuyatende yote yahusuyo utakatifu, tukiepuka masingizio yote, makumbatio yote ya machukizo na ya uchafu, pamoja na ulevi wote, kutamani mambo mapya, tamaa zote za machukizo, uzinzi wa kuchukiza, na kiburi cha kulaaniwa. “Kwa maana Mungu,” yasema [Maandiko], “huwapinga wenye kiburi, bali huwapa wanyenyekevu neema.” Basi na tuambatane na wale waliopewa neema na Mungu. Na tujivike umoja na unyenyekevu, tukijizoeza daima kiasi, tukikaa mbali na unong'onaji wote na masingizio, tukihesabiwa haki kwa matendo yetu, wala si kwa maneno yetu. Kwa maana [Maandiko] yasema, “Anayesema mengi atasikia mengi kwa kujibiwa. Je! yeye aliye mwepesi wa kusema ajiona kuwa mwenye haki? Heri aliyezaliwa na mwanamke, aishiye muda mfupi: usiwe mtu wa maneno mengi.” Sifa yetu na iwe katika Mungu, wala si kutoka kwetu wenyewe; kwa maana Mungu huwachukia wale wanaojisifu wenyewe. Ushuhuda wa matendo yetu mema na utolewe na wengine, kama ilivyokuwa kwa baba zetu wenye haki. Ujasiri usio na adabu, na majivuno, na ufidhuli ni vya wale waliolaaniwa na Mungu; bali kiasi, unyenyekevu, na upole ni vya wale waliobarikiwa naye.",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 31,
+  "title": "Na tuone ni kwa njia gani tuwezavyo kuipata baraka ya Mungu",
+  "body_html": "<p>Basi na tuambatane na baraka yake, na tufikiri ni njia gani za kuimiliki. Na tuyatafakari mambo yaliyotukia tangu mwanzo. Baba yetu Ibrahimu alibarikiwa kwa sababu gani? je! si kwa sababu alitenda haki na kweli kwa imani? Isaka, kwa matumaini kamili, kana kwamba alijua yatakayotukia, alijitoa kwa furaha kuwa dhabihu. Yakobo, kwa sababu ya ndugu yake, alitoka katika nchi yake mwenyewe kwa unyenyekevu, akaenda kwa Labani akamtumikia; na huko akapewa fimbo ya enzi ya makabila kumi na mawili ya Israeli. </p>",
+  "body_text": "Basi na tuambatane na baraka yake, na tufikiri ni njia gani za kuimiliki. Na tuyatafakari mambo yaliyotukia tangu mwanzo. Baba yetu Ibrahimu alibarikiwa kwa sababu gani? je! si kwa sababu alitenda haki na kweli kwa imani? Isaka, kwa matumaini kamili, kana kwamba alijua yatakayotukia, alijitoa kwa furaha kuwa dhabihu. Yakobo, kwa sababu ya ndugu yake, alitoka katika nchi yake mwenyewe kwa unyenyekevu, akaenda kwa Labani akamtumikia; na huko akapewa fimbo ya enzi ya makabila kumi na mawili ya Israeli.",
+  "word_count": 79
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 32,
+  "title": "Tunahesabiwa haki si kwa matendo yetu wenyewe, bali kwa imani",
+  "body_html": "<p>Yeyote atakayefikiri kwa unyofu kila jambo moja moja, atatambua ukuu wa karama zilizotolewa naye. Kwa maana kutoka kwake wametoka makuhani na Walawi wote wanaohudumu madhabahuni pa Mungu. Kutoka kwake pia [alitoka] Bwana wetu Yesu Kristo kwa jinsi ya mwili. Kutoka kwake [walitoka] wafalme, wakuu, na watawala wa kabila la Yuda. Wala makabila yake mengine hayana utukufu mdogo, kwa kuwa Mungu alikuwa ameahidi, “Uzao wako utakuwa kama nyota za mbinguni.” Basi hawa wote waliheshimiwa sana, na kufanywa wakuu, si kwa ajili yao wenyewe, wala kwa matendo yao wenyewe, wala kwa haki waliyoitenda, bali kwa kazi ya mapenzi yake. Nasi pia, tulioitwa kwa mapenzi yake katika Kristo Yesu, hatuhesabiwi haki kwa nafsi zetu wenyewe, wala kwa hekima yetu, au ufahamu, au utauwa, au matendo tuliyoyatenda kwa utakatifu wa moyo; bali kwa imani ile ambayo kwayo, tangu mwanzo, Mungu Mwenyezi amewahesabia haki watu wote; utukufu ni wake milele na milele. Amina. </p>",
+  "body_text": "Yeyote atakayefikiri kwa unyofu kila jambo moja moja, atatambua ukuu wa karama zilizotolewa naye. Kwa maana kutoka kwake wametoka makuhani na Walawi wote wanaohudumu madhabahuni pa Mungu. Kutoka kwake pia [alitoka] Bwana wetu Yesu Kristo kwa jinsi ya mwili. Kutoka kwake [walitoka] wafalme, wakuu, na watawala wa kabila la Yuda. Wala makabila yake mengine hayana utukufu mdogo, kwa kuwa Mungu alikuwa ameahidi, “Uzao wako utakuwa kama nyota za mbinguni.” Basi hawa wote waliheshimiwa sana, na kufanywa wakuu, si kwa ajili yao wenyewe, wala kwa matendo yao wenyewe, wala kwa haki waliyoitenda, bali kwa kazi ya mapenzi yake. Nasi pia, tulioitwa kwa mapenzi yake katika Kristo Yesu, hatuhesabiwi haki kwa nafsi zetu wenyewe, wala kwa hekima yetu, au ufahamu, au utauwa, au matendo tuliyoyatenda kwa utakatifu wa moyo; bali kwa imani ile ambayo kwayo, tangu mwanzo, Mungu Mwenyezi amewahesabia haki watu wote; utukufu ni wake milele na milele. Amina.",
+  "word_count": 148
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 33,
+  "title": "Lakini tusiache kutenda matendo mema na upendo",
+  "body_html": "<p>Basi, ndugu, tufanye nini? Je! tuwe wavivu katika kutenda mema, na kuacha kuzoelea upendo? Mungu apishe mbali njia kama hiyo isifuatwe na sisi! Bali afadhali na tufanye haraka kwa bidii yote na utayari wa moyo kutenda kila kazi njema. Kwa maana Muumba na Bwana wa vyote mwenyewe hufurahia kazi zake. Kwa maana kwa uweza wake mkuu usio na kikomo alizisimamisha mbingu, na kwa hekima yake isiyofahamika alizipamba. Pia aliitenga nchi na maji yanayoizunguka, akaiweka juu ya msingi usiotikisika wa mapenzi yake mwenyewe. Wanyama nao walio juu yake aliwaamuru kwa neno lake mwenyewe wawepo. Vivyo hivyo, alipokuwa ameiumba bahari, na viumbe hai vilivyomo, alivizingira [ndani ya mipaka yake] kwa uweza wake mwenyewe. Zaidi ya yote, kwa mikono yake mitakatifu isiyo na unajisi alimuumba mwanadamu, [kiumbe chake] kilicho bora kuliko vyote, aliye mkuu kweli kwa ufahamu aliopewa— mfano halisi wa sura yake mwenyewe. Kwa maana Mungu asema hivi: “Na tumfanye mtu kwa mfano wetu, kwa sura yetu. Basi Mungu akamuumba mtu; mwanamume na mwanamke aliwaumba.” Akiisha kuyamaliza hayo yote hivyo, aliyakubali, akayabariki, akasema, “Zaeni mwe wengi.” Basi twaona jinsi watu wote wenye haki walivyopambwa kwa matendo mema, na jinsi Bwana mwenyewe, akijipamba kwa kazi zake, alivyofurahi. Basi tukiwa na kielelezo kama hicho, na tuyakubali mapenzi yake bila kukawia, na tuitende kazi ya haki kwa nguvu zetu zote. </p>",
+  "body_text": "Basi, ndugu, tufanye nini? Je! tuwe wavivu katika kutenda mema, na kuacha kuzoelea upendo? Mungu apishe mbali njia kama hiyo isifuatwe na sisi! Bali afadhali na tufanye haraka kwa bidii yote na utayari wa moyo kutenda kila kazi njema. Kwa maana Muumba na Bwana wa vyote mwenyewe hufurahia kazi zake. Kwa maana kwa uweza wake mkuu usio na kikomo alizisimamisha mbingu, na kwa hekima yake isiyofahamika alizipamba. Pia aliitenga nchi na maji yanayoizunguka, akaiweka juu ya msingi usiotikisika wa mapenzi yake mwenyewe. Wanyama nao walio juu yake aliwaamuru kwa neno lake mwenyewe wawepo. Vivyo hivyo, alipokuwa ameiumba bahari, na viumbe hai vilivyomo, alivizingira [ndani ya mipaka yake] kwa uweza wake mwenyewe. Zaidi ya yote, kwa mikono yake mitakatifu isiyo na unajisi alimuumba mwanadamu, [kiumbe chake] kilicho bora kuliko vyote, aliye mkuu kweli kwa ufahamu aliopewa— mfano halisi wa sura yake mwenyewe. Kwa maana Mungu asema hivi: “Na tumfanye mtu kwa mfano wetu, kwa sura yetu. Basi Mungu akamuumba mtu; mwanamume na mwanamke aliwaumba.” Akiisha kuyamaliza hayo yote hivyo, aliyakubali, akayabariki, akasema, “Zaeni mwe wengi.” Basi twaona jinsi watu wote wenye haki walivyopambwa kwa matendo mema, na jinsi Bwana mwenyewe, akijipamba kwa kazi zake, alivyofurahi. Basi tukiwa na kielelezo kama hicho, na tuyakubali mapenzi yake bila kukawia, na tuitende kazi ya haki kwa nguvu zetu zote.",
+  "word_count": 215
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 34,
+  "title": "Ujira wa matendo mema ni mkuu kwa Mungu",
+  "body_html": "<p>Mtumishi mwema hupokea mkate wa kazi yake kwa ujasiri; mvivu na mzembe hawezi kumtazama usoni yule aliyemwajiri. Kwa hiyo imetupasa tuwe tayari katika kutenda mema; kwa maana vitu vyote vyatoka kwake. Na hivi ndivyo anavyotuonya mapema: “Tazama, Bwana [anakuja], na ujira wake u mbele ya uso wake, ampe kila mtu kwa kadiri ya kazi yake.” Kwa hiyo anatuonya kwa moyo wetu wote tuliangalie jambo hili, tusiwe wavivu wala wazembe katika kazi yoyote njema. Kujisifu kwetu na tumaini letu na viwe ndani yake. Na tujitiishe chini ya mapenzi yake. Na tuutafakari umati wote wa malaika zake, jinsi wanavyosimama tayari daima kuyatumikia mapenzi yake. Kwa maana Maandiko yasema, “Elfu kumi mara elfu kumi walisimama wakimzunguka, na maelfu ya maelfu walimtumikia, wakalia, Mtakatifu, mtakatifu, mtakatifu, [ni] Bwana wa majeshi; viumbe vyote vimejaa utukufu wake.” Basi na sisi, tukikusanyika pamoja kwa umoja na kwa dhamiri safi, na tumlilie kwa bidii, kana kwamba kwa kinywa kimoja, ili tufanywe washiriki wa ahadi zake kuu na tukufu. Kwa maana [Maandiko] yasema, “Mambo ambayo jicho halikuyaona wala sikio halikuyasikia, wala hayakuingia katika moyo wa mwanadamu, mambo ambayo aliwaandalia wamngojeao.”</p>",
+  "body_text": "Mtumishi mwema hupokea mkate wa kazi yake kwa ujasiri; mvivu na mzembe hawezi kumtazama usoni yule aliyemwajiri. Kwa hiyo imetupasa tuwe tayari katika kutenda mema; kwa maana vitu vyote vyatoka kwake. Na hivi ndivyo anavyotuonya mapema: “Tazama, Bwana [anakuja], na ujira wake u mbele ya uso wake, ampe kila mtu kwa kadiri ya kazi yake.” Kwa hiyo anatuonya kwa moyo wetu wote tuliangalie jambo hili, tusiwe wavivu wala wazembe katika kazi yoyote njema. Kujisifu kwetu na tumaini letu na viwe ndani yake. Na tujitiishe chini ya mapenzi yake. Na tuutafakari umati wote wa malaika zake, jinsi wanavyosimama tayari daima kuyatumikia mapenzi yake. Kwa maana Maandiko yasema, “Elfu kumi mara elfu kumi walisimama wakimzunguka, na maelfu ya maelfu walimtumikia, wakalia, Mtakatifu, mtakatifu, mtakatifu, [ni] Bwana wa majeshi; viumbe vyote vimejaa utukufu wake.” Basi na sisi, tukikusanyika pamoja kwa umoja na kwa dhamiri safi, na tumlilie kwa bidii, kana kwamba kwa kinywa kimoja, ili tufanywe washiriki wa ahadi zake kuu na tukufu. Kwa maana [Maandiko] yasema, “Mambo ambayo jicho halikuyaona wala sikio halikuyasikia, wala hayakuingia katika moyo wa mwanadamu, mambo ambayo aliwaandalia wamngojeao.”",
+  "word_count": 181
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 35,
+  "title": "Ujira huu ni mkuu mno",
+  "body_html": "<p>Jinsi zilivyo za heri na za ajabu, wapendwa, karama za Mungu! Uzima katika kutokufa, fahari katika haki, kweli katika tumaini kamili, imani katika uthabiti, kiasi katika utakatifu! Na hayo yote yamo [sasa] katika ufahamu wa akili zetu; basi yatakuwaje yale yaliyoandaliwa kwa ajili ya wale wamngojeao? Muumba na Baba wa malimwengu yote, Aliye Mtakatifu Kabisa, yeye peke yake ajua wingi wake na uzuri wake. Kwa hiyo na tujitahidi kwa bidii tuonekane katika hesabu ya wale wamngojeao, ili tushiriki karama zake alizoahidi. Lakini, wapendwa, hili litafanyikaje? Ikiwa akili zetu zimethibitishwa kwa imani kumwelekea Mungu; ikiwa tunayatafuta kwa bidii yale yanayompendeza na kukubalika kwake; ikiwa tunayatenda yale yanayopatana na mapenzi yake yasiyo na lawama; na ikiwa tunaifuata njia ya kweli, tukitupilia mbali nasi udhalimu wote na uovu, pamoja na choyo chote, ugomvi, matendo mabaya, hila, unong'onaji, na masingizio, kumchukia Mungu kote, kiburi na majivuno, kujisifu bure na tamaa ya makuu. Kwa maana wale wayatendao hayo ni chukizo kwa Mungu; wala si wale wayatendao tu, bali pia wale wanaowafurahia wale wayatendao. Kwa maana Maandiko yasema, “Lakini Mungu akamwambia mwovu, Una nini wewe kuzitangaza amri zangu, na kulitwaa agano langu kinywani mwako, nawe unachukia maonyo, na kuyatupa maneno yangu nyuma yako? Ulipomwona mwizi ulikubaliana naye, ukashirikiana na wazinzi. Kinywa chako kimejaa uovu, na ulimi wako umetunga hila. Unaketi na kumsema ndugu yako; unamsingizia mwana wa mama yako mwenyewe. Mambo hayo umeyatenda, nami nikanyamaza; ukadhani, ewe mwovu, ya kuwa mimi ni kama wewe. Lakini nitakukemea, na kukuweka wewe mwenyewe mbele yako. Yafikirini sasa mambo haya, ninyi mnaomsahau Mungu, asije akawararua vipande vipande kama simba, wala pasiwe na wa kuwaokoa. Dhabihu ya sifa itanitukuza, na huko kuna njia nitakayomwonyesha wokovu wa Mungu.”</p>",
+  "body_text": "Jinsi zilivyo za heri na za ajabu, wapendwa, karama za Mungu! Uzima katika kutokufa, fahari katika haki, kweli katika tumaini kamili, imani katika uthabiti, kiasi katika utakatifu! Na hayo yote yamo [sasa] katika ufahamu wa akili zetu; basi yatakuwaje yale yaliyoandaliwa kwa ajili ya wale wamngojeao? Muumba na Baba wa malimwengu yote, Aliye Mtakatifu Kabisa, yeye peke yake ajua wingi wake na uzuri wake. Kwa hiyo na tujitahidi kwa bidii tuonekane katika hesabu ya wale wamngojeao, ili tushiriki karama zake alizoahidi. Lakini, wapendwa, hili litafanyikaje? Ikiwa akili zetu zimethibitishwa kwa imani kumwelekea Mungu; ikiwa tunayatafuta kwa bidii yale yanayompendeza na kukubalika kwake; ikiwa tunayatenda yale yanayopatana na mapenzi yake yasiyo na lawama; na ikiwa tunaifuata njia ya kweli, tukitupilia mbali nasi udhalimu wote na uovu, pamoja na choyo chote, ugomvi, matendo mabaya, hila, unong'onaji, na masingizio, kumchukia Mungu kote, kiburi na majivuno, kujisifu bure na tamaa ya makuu. Kwa maana wale wayatendao hayo ni chukizo kwa Mungu; wala si wale wayatendao tu, bali pia wale wanaowafurahia wale wayatendao. Kwa maana Maandiko yasema, “Lakini Mungu akamwambia mwovu, Una nini wewe kuzitangaza amri zangu, na kulitwaa agano langu kinywani mwako, nawe unachukia maonyo, na kuyatupa maneno yangu nyuma yako? Ulipomwona mwizi ulikubaliana naye, ukashirikiana na wazinzi. Kinywa chako kimejaa uovu, na ulimi wako umetunga hila. Unaketi na kumsema ndugu yako; unamsingizia mwana wa mama yako mwenyewe. Mambo hayo umeyatenda, nami nikanyamaza; ukadhani, ewe mwovu, ya kuwa mimi ni kama wewe. Lakini nitakukemea, na kukuweka wewe mwenyewe mbele yako. Yafikirini sasa mambo haya, ninyi mnaomsahau Mungu, asije akawararua vipande vipande kama simba, wala pasiwe na wa kuwaokoa. Dhabihu ya sifa itanitukuza, na huko kuna njia nitakayomwonyesha wokovu wa Mungu.”",
+  "word_count": 276
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 36,
+  "title": "Baraka zote tunapewa kwa njia ya Kristo",
+  "body_html": "<p>Hii ndiyo njia, wapendwa, ambayo kwayo tunampata Mwokozi wetu, yaani Yesu Kristo, Kuhani Mkuu wa matoleo yetu yote, mlinzi na msaidizi wa udhaifu wetu. Kwa yeye tunatazama juu hata vilele vya mbinguni. Kwa yeye tunauona, kama katika kioo, uso wake usio na doa ulio bora kabisa. Kwa yeye macho ya mioyo yetu yanafunguliwa. Kwa yeye akili zetu za kipumbavu zilizotiwa giza zinachanua upya kuielekea nuru yake ya ajabu. Kwa yeye Bwana amependa tuonje maarifa yasiyokufa, “ambaye, kwa kuwa ni mwangaza wa enzi yake, amekuwa mkuu kuliko malaika kwa kadiri jina alilolirithi lilivyo bora kuliko lao.” Kwa maana imeandikwa hivi, “Huwafanya malaika zake kuwa roho, na watumishi wake kuwa mwali wa moto.” Lakini kuhusu Mwana wake Bwana alisema hivi: “Wewe ni Mwanangu, mimi leo nimekuzaa. Uniombe, nami nitakupa mataifa kuwa urithi wako, na miisho ya dunia kuwa milki yako.” Na tena amwambia, “Uketi mkono wangu wa kuume, hata niwafanyapo adui zako kuwa chini ya miguu yako.” Lakini adui zake ni akina nani? Ni waovu wote, na wale wanaojitia kupinga mapenzi ya Mungu.</p>",
+  "body_text": "Hii ndiyo njia, wapendwa, ambayo kwayo tunampata Mwokozi wetu, yaani Yesu Kristo, Kuhani Mkuu wa matoleo yetu yote, mlinzi na msaidizi wa udhaifu wetu. Kwa yeye tunatazama juu hata vilele vya mbinguni. Kwa yeye tunauona, kama katika kioo, uso wake usio na doa ulio bora kabisa. Kwa yeye macho ya mioyo yetu yanafunguliwa. Kwa yeye akili zetu za kipumbavu zilizotiwa giza zinachanua upya kuielekea nuru yake ya ajabu. Kwa yeye Bwana amependa tuonje maarifa yasiyokufa, “ambaye, kwa kuwa ni mwangaza wa enzi yake, amekuwa mkuu kuliko malaika kwa kadiri jina alilolirithi lilivyo bora kuliko lao.” Kwa maana imeandikwa hivi, “Huwafanya malaika zake kuwa roho, na watumishi wake kuwa mwali wa moto.” Lakini kuhusu Mwana wake Bwana alisema hivi: “Wewe ni Mwanangu, mimi leo nimekuzaa. Uniombe, nami nitakupa mataifa kuwa urithi wako, na miisho ya dunia kuwa milki yako.” Na tena amwambia, “Uketi mkono wangu wa kuume, hata niwafanyapo adui zako kuwa chini ya miguu yako.” Lakini adui zake ni akina nani? Ni waovu wote, na wale wanaojitia kupinga mapenzi ya Mungu.",
+  "word_count": 171
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 37,
+  "title": "Kristo ndiye kiongozi wetu, nasi tu askari wake",
+  "body_html": "<p>Basi, waume, ndugu, na tufanye kazi ya askari kwa bidii yote, kwa kufuata amri zake takatifu. Na tuwafikirie wale wanaotumika chini ya majemadari wetu, kwa utaratibu gani, utii gani, na unyenyekevu gani wanavyoyatenda yale wanayoamriwa. Si wote walio maliwali, wala wakuu wa elfu, wala wa mia, wala wa hamsini, wala wa vyeo kama hivyo; bali kila mmoja katika cheo chake mwenyewe hutenda yale aliyoamriwa na mfalme na majemadari. Wakubwa hawawezi kuwapo bila wadogo, wala wadogo bila wakubwa. Kuna namna ya mchanganyiko katika vitu vyote, na kutokana na hilo hutokea faida ya pande zote. Na tuutwae mwili wetu kuwa mfano. Kichwa si kitu bila miguu, na miguu si kitu bila kichwa; naam, hata viungo vidogo kabisa vya mwili wetu vyahitajiwa na vinafaa kwa mwili wote. Lakini vyote hufanya kazi pamoja kwa upatano, na viko chini ya kanuni moja ya pamoja kwa ajili ya kuuhifadhi mwili wote. </p>",
+  "body_text": "Basi, waume, ndugu, na tufanye kazi ya askari kwa bidii yote, kwa kufuata amri zake takatifu. Na tuwafikirie wale wanaotumika chini ya majemadari wetu, kwa utaratibu gani, utii gani, na unyenyekevu gani wanavyoyatenda yale wanayoamriwa. Si wote walio maliwali, wala wakuu wa elfu, wala wa mia, wala wa hamsini, wala wa vyeo kama hivyo; bali kila mmoja katika cheo chake mwenyewe hutenda yale aliyoamriwa na mfalme na majemadari. Wakubwa hawawezi kuwapo bila wadogo, wala wadogo bila wakubwa. Kuna namna ya mchanganyiko katika vitu vyote, na kutokana na hilo hutokea faida ya pande zote. Na tuutwae mwili wetu kuwa mfano. Kichwa si kitu bila miguu, na miguu si kitu bila kichwa; naam, hata viungo vidogo kabisa vya mwili wetu vyahitajiwa na vinafaa kwa mwili wote. Lakini vyote hufanya kazi pamoja kwa upatano, na viko chini ya kanuni moja ya pamoja kwa ajili ya kuuhifadhi mwili wote.",
+  "word_count": 145
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 38,
+  "title": "Viungo vya Kanisa na vijitiishe",
+  "body_html": "<p>Basi mwili wetu wote na uhifadhiwe katika Kristo Yesu; na kila mmoja na amtii jirani yake, kwa kadiri ya karama maalum aliyopewa. Mwenye nguvu asimdharau aliye dhaifu, na aliye dhaifu amheshimu mwenye nguvu. Tajiri na ayahudumie mahitaji ya maskini; na maskini na amhimidi Mungu, kwa sababu amempa mtu ambaye kwa yeye uhitaji wake waweza kutoshelezwa. Mwenye hekima na aonyeshe hekima yake, si kwa maneno [matupu], bali kwa matendo mema. Mnyenyekevu asijishuhudie mwenyewe, bali aache ashuhudiwe na mwingine. Aliye safi katika mwili asijivune kwa hilo, wala asijisifu, akijua kwamba ni mwingine aliyempa karama ya kujizuia. Basi, ndugu, na tufikiri tuliumbwa kwa kitu gani,—tulikuwa akina nani na viumbe wa namna gani tulipokuja ulimwenguni, kana kwamba kutoka kaburini, na kutoka katika giza tupu. Yeye aliyetuumba na kutuunda, akiisha kutuandalia karama zake tele kabla hatujazaliwa, alituingiza katika ulimwengu wake. Basi kwa kuwa tunapokea mambo haya yote kutoka kwake, imetupasa kumshukuru kwa kila jambo; utukufu ni wake milele na milele. Amina. </p>",
+  "body_text": "Basi mwili wetu wote na uhifadhiwe katika Kristo Yesu; na kila mmoja na amtii jirani yake, kwa kadiri ya karama maalum aliyopewa. Mwenye nguvu asimdharau aliye dhaifu, na aliye dhaifu amheshimu mwenye nguvu. Tajiri na ayahudumie mahitaji ya maskini; na maskini na amhimidi Mungu, kwa sababu amempa mtu ambaye kwa yeye uhitaji wake waweza kutoshelezwa. Mwenye hekima na aonyeshe hekima yake, si kwa maneno [matupu], bali kwa matendo mema. Mnyenyekevu asijishuhudie mwenyewe, bali aache ashuhudiwe na mwingine. Aliye safi katika mwili asijivune kwa hilo, wala asijisifu, akijua kwamba ni mwingine aliyempa karama ya kujizuia. Basi, ndugu, na tufikiri tuliumbwa kwa kitu gani,—tulikuwa akina nani na viumbe wa namna gani tulipokuja ulimwenguni, kana kwamba kutoka kaburini, na kutoka katika giza tupu. Yeye aliyetuumba na kutuunda, akiisha kutuandalia karama zake tele kabla hatujazaliwa, alituingiza katika ulimwengu wake. Basi kwa kuwa tunapokea mambo haya yote kutoka kwake, imetupasa kumshukuru kwa kila jambo; utukufu ni wake milele na milele. Amina.",
+  "word_count": 156
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 39,
+  "title": "Hakuna sababu ya kujivuna",
+  "body_html": "<p>Watu wapumbavu wasio na busara, wasio na hekima wala mafundisho, hutudhihaki na kutucheka, wakitamani kujikweza katika majivuno yao wenyewe. Kwa maana mwanadamu aliye mtu wa kufa aweza kufanya nini? au mna nguvu gani ndani yake aliyeumbwa kwa mavumbi? Kwa maana imeandikwa, “Hapakuwa na umbo mbele ya macho yangu, ila nilisikia sauti, na neno [likisema], Basi je! Mwanadamu atakuwa safi mbele za Bwana? au mtu wa namna hiyo [atahesabiwa] kuwa hana lawama katika matendo yake, ikiwa Yeye hawaamini watumishi wake, na hata malaika zake huwashtaki kwa upotovu? Mbingu si safi machoni pake: sembuse wao wakaao katika nyumba za udongo, ambazo hata sisi wenyewe tumeumbwa kwazo! Aliwapiga kama nondo; na tangu asubuhi hata jioni hawadumu. Kwa kuwa hawakuweza kujisaidia wenyewe, waliangamia. Aliwapulizia, nao wakafa, kwa sababu hawakuwa na hekima. Lakini ita sasa, kama yuko mtu atakayekujibu, au kama utamgeukia yeyote wa malaika watakatifu; kwa maana ghadhabu humwangamiza mtu mpumbavu, na wivu humwua yeye aliyepotea. Nimewaona wapumbavu wakitia mizizi, lakini maskani yao yaliteketea mara. Wana wao na wawe mbali na usalama; na wadharauliwe malangoni mwa walio duni kuliko wao, wala hapatakuwa na mtu wa kuwaokoa. Kwa maana kile walichowekewa, wenye haki watakila; nao hawataokolewa na mabaya.”</p>",
+  "body_text": "Watu wapumbavu wasio na busara, wasio na hekima wala mafundisho, hutudhihaki na kutucheka, wakitamani kujikweza katika majivuno yao wenyewe. Kwa maana mwanadamu aliye mtu wa kufa aweza kufanya nini? au mna nguvu gani ndani yake aliyeumbwa kwa mavumbi? Kwa maana imeandikwa, “Hapakuwa na umbo mbele ya macho yangu, ila nilisikia sauti, na neno [likisema], Basi je! Mwanadamu atakuwa safi mbele za Bwana? au mtu wa namna hiyo [atahesabiwa] kuwa hana lawama katika matendo yake, ikiwa Yeye hawaamini watumishi wake, na hata malaika zake huwashtaki kwa upotovu? Mbingu si safi machoni pake: sembuse wao wakaao katika nyumba za udongo, ambazo hata sisi wenyewe tumeumbwa kwazo! Aliwapiga kama nondo; na tangu asubuhi hata jioni hawadumu. Kwa kuwa hawakuweza kujisaidia wenyewe, waliangamia. Aliwapulizia, nao wakafa, kwa sababu hawakuwa na hekima. Lakini ita sasa, kama yuko mtu atakayekujibu, au kama utamgeukia yeyote wa malaika watakatifu; kwa maana ghadhabu humwangamiza mtu mpumbavu, na wivu humwua yeye aliyepotea. Nimewaona wapumbavu wakitia mizizi, lakini maskani yao yaliteketea mara. Wana wao na wawe mbali na usalama; na wadharauliwe malangoni mwa walio duni kuliko wao, wala hapatakuwa na mtu wa kuwaokoa. Kwa maana kile walichowekewa, wenye haki watakila; nao hawataokolewa na mabaya.”",
+  "word_count": 193
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 40,
+  "title": "Tuuhifadhi Kanisani utaratibu aliouweka Mungu",
+  "body_html": "<p>Basi kwa kuwa mambo haya yamekuwa wazi kwetu, na kwa kuwa tunachungulia vilindi vya maarifa ya Mungu, imetupasa kufanya mambo yote kwa utaratibu [wake unaofaa], ambao Bwana ametuamuru kuutimiza kwa nyakati zilizowekwa. Ameagiza matoleo [yatolewe] na ibada ifanyike [kwake], tena si kwa uzembe wala bila utaratibu, bali kwa nyakati na saa zilizoamriwa. Mahali yatakapofanyika mambo haya, na ni nani atakayeyafanya, Yeye mwenyewe ameyaweka kwa mapenzi yake makuu, ili mambo yote yakitendwa kwa utauwa kama apendavyo, yapate kukubalika kwake. Basi wale watoao matoleo yao kwa nyakati zilizowekwa hukubaliwa na kubarikiwa; kwa maana, kwa kuwa wanazifuata sheria za Bwana, hawatendi dhambi. Kwa maana kuhani mkuu amepewa huduma zake mwenyewe za pekee, na makuhani wameandikiwa mahali pao wenyewe, na Walawi wamekabidhiwa huduma zao maalum. Mtu wa kawaida asiye kuhani amefungwa na sheria zinazowahusu watu wa kawaida. </p>",
+  "body_text": "Basi kwa kuwa mambo haya yamekuwa wazi kwetu, na kwa kuwa tunachungulia vilindi vya maarifa ya Mungu, imetupasa kufanya mambo yote kwa utaratibu [wake unaofaa], ambao Bwana ametuamuru kuutimiza kwa nyakati zilizowekwa. Ameagiza matoleo [yatolewe] na ibada ifanyike [kwake], tena si kwa uzembe wala bila utaratibu, bali kwa nyakati na saa zilizoamriwa. Mahali yatakapofanyika mambo haya, na ni nani atakayeyafanya, Yeye mwenyewe ameyaweka kwa mapenzi yake makuu, ili mambo yote yakitendwa kwa utauwa kama apendavyo, yapate kukubalika kwake. Basi wale watoao matoleo yao kwa nyakati zilizowekwa hukubaliwa na kubarikiwa; kwa maana, kwa kuwa wanazifuata sheria za Bwana, hawatendi dhambi. Kwa maana kuhani mkuu amepewa huduma zake mwenyewe za pekee, na makuhani wameandikiwa mahali pao wenyewe, na Walawi wamekabidhiwa huduma zao maalum. Mtu wa kawaida asiye kuhani amefungwa na sheria zinazowahusu watu wa kawaida.",
+  "word_count": 133
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 41,
+  "title": "Mwendelezo wa jambo hilohilo",
+  "body_html": "<p>Kila mmoja wenu, ndugu, na amshukuru Mungu katika daraja lake mwenyewe, akiishi katika dhamiri njema kabisa, kwa staha ipasayo, bila kuvuka kanuni ya huduma aliyowekewa. Si kila mahali, ndugu, zitolewapo dhabihu za kila siku, au sadaka za amani, au sadaka za dhambi na sadaka za hatia, bali katika Yerusalemu tu. Na hata huko hazitolewi mahali popote, bali mbele ya patakatifu, madhabahuni tu, kile kinachotolewa kikiwa kwanza kimekaguliwa kwa uangalifu na kuhani mkuu na wahudumu waliokwisha kutajwa. Basi wale wanaofanya lolote lililo nje ya kile kinachopatana na mapenzi yake huadhibiwa kwa kifo. Mnaona, ndugu, kwamba kadiri maarifa tuliyojaliwa yalivyo makuu, ndivyo hatari tunayokabiliwa nayo ilivyo kuu zaidi. </p>",
+  "body_text": "Kila mmoja wenu, ndugu, na amshukuru Mungu katika daraja lake mwenyewe, akiishi katika dhamiri njema kabisa, kwa staha ipasayo, bila kuvuka kanuni ya huduma aliyowekewa. Si kila mahali, ndugu, zitolewapo dhabihu za kila siku, au sadaka za amani, au sadaka za dhambi na sadaka za hatia, bali katika Yerusalemu tu. Na hata huko hazitolewi mahali popote, bali mbele ya patakatifu, madhabahuni tu, kile kinachotolewa kikiwa kwanza kimekaguliwa kwa uangalifu na kuhani mkuu na wahudumu waliokwisha kutajwa. Basi wale wanaofanya lolote lililo nje ya kile kinachopatana na mapenzi yake huadhibiwa kwa kifo. Mnaona, ndugu, kwamba kadiri maarifa tuliyojaliwa yalivyo makuu, ndivyo hatari tunayokabiliwa nayo ilivyo kuu zaidi.",
+  "word_count": 106
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 42,
+  "title": "Utaratibu wa wahudumu katika Kanisa",
+  "body_html": "<p>Mitume walituhubiria Injili kutoka kwa Bwana Yesu Kristo; Yesu Kristo [alifanya hivyo] kutoka kwa Mungu. Basi Kristo alitumwa na Mungu, na mitume walitumwa na Kristo. Kwa hiyo, uteuzi huu wote wawili ulifanyika kwa utaratibu, kwa mapenzi ya Mungu. Basi walipokwisha kupokea maagizo yao, wakiwa wamethibitishwa kikamilifu kwa ufufuo wa Bwana wetu Yesu Kristo, na kuimarishwa katika neno la Mungu, kwa uhakika kamili wa Roho Mtakatifu, walitoka wakitangaza kwamba ufalme wa Mungu umekaribia. Na hivyo, wakihubiri katika nchi na miji, waliwaweka malimbuko [ya kazi zao], wakiisha kuwapima kwanza kwa Roho, wawe maaskofu na mashemasi wa wale ambao wangeamini baadaye. Wala hili halikuwa jambo jipya, kwa maana zama nyingi kabla yake ilikuwa imeandikwa habari za maaskofu na mashemasi. Kwa maana ndivyo yasemavyo Maandiko mahali fulani, “Nitawaweka maaskofu wao katika haki, na mashemasi wao katika imani.”</p>",
+  "body_text": "Mitume walituhubiria Injili kutoka kwa Bwana Yesu Kristo; Yesu Kristo [alifanya hivyo] kutoka kwa Mungu. Basi Kristo alitumwa na Mungu, na mitume walitumwa na Kristo. Kwa hiyo, uteuzi huu wote wawili ulifanyika kwa utaratibu, kwa mapenzi ya Mungu. Basi walipokwisha kupokea maagizo yao, wakiwa wamethibitishwa kikamilifu kwa ufufuo wa Bwana wetu Yesu Kristo, na kuimarishwa katika neno la Mungu, kwa uhakika kamili wa Roho Mtakatifu, walitoka wakitangaza kwamba ufalme wa Mungu umekaribia. Na hivyo, wakihubiri katika nchi na miji, waliwaweka malimbuko [ya kazi zao], wakiisha kuwapima kwanza kwa Roho, wawe maaskofu na mashemasi wa wale ambao wangeamini baadaye. Wala hili halikuwa jambo jipya, kwa maana zama nyingi kabla yake ilikuwa imeandikwa habari za maaskofu na mashemasi. Kwa maana ndivyo yasemavyo Maandiko mahali fulani, “Nitawaweka maaskofu wao katika haki, na mashemasi wao katika imani.”",
+  "word_count": 133
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 43,
+  "title": "Musa aliutuliza ugomvi juu ya heshima ya ukuhani",
+  "body_html": "<p>Basi ni ajabu gani ikiwa wale waliokuwa katika Kristo, waliokabidhiwa na Mungu wajibu kama huo, waliwaweka wale [wahudumu] waliotajwa hapo awali, hali Musa mbarikiwa naye, “mtumishi mwaminifu katika nyumba yake yote,” aliandika katika vitabu vitakatifu maagizo yote aliyopewa, na manabii wengine nao wakamfuata, wakishuhudia kwa nia moja juu ya maagizo aliyokuwa ameyaweka? Kwa maana, wivu ulipozuka juu ya ukuhani, na makabila yalipokuwa yakishindana wao kwa wao ni lipi kati yao lingepambwa kwa cheo hicho kitukufu, aliwaamuru wakuu kumi na wawili wa makabila wamletee fimbo zao, kila moja ikiwa imeandikwa jina la kabila lake. Akazitwaa, akazifunga [pamoja], akazitia muhuri kwa pete za wakuu wa makabila, akaziweka katika hema ya ushuhuda juu ya meza ya Mungu. Kisha, akiisha kuifunga milango ya hema, akazitia muhuri funguo, kama alivyozifanyia zile fimbo, akawaambia, Waume, ndugu, kabila ambalo fimbo yake itachipuka, ndilo Mungu alilolichagua kuitimiza kazi ya ukuhani, na kumhudumia Yeye. Na ilipokuwa asubuhi, akawakusanya Israeli wote, wanaume mia sita elfu, akawaonyesha wakuu wa makabila zile muhuri, akaifungua hema ya ushuhuda, akazitoa zile fimbo. Na fimbo ya Haruni ikaonekana si kwamba imechipuka tu, bali pia imezaa matunda juu yake. Mwaonaje, wapenzi? Je! Musa hakujua tangu mwanzo kwamba jambo hili lingetokea? Bila shaka alijua; lakini alitenda hivyo ili pasiwe na maasi katika Israeli, na ili jina la Mungu wa kweli, aliye peke yake, litukuzwe; utukufu una Yeye milele na milele. Amina. </p>",
+  "body_text": "Basi ni ajabu gani ikiwa wale waliokuwa katika Kristo, waliokabidhiwa na Mungu wajibu kama huo, waliwaweka wale [wahudumu] waliotajwa hapo awali, hali Musa mbarikiwa naye, “mtumishi mwaminifu katika nyumba yake yote,” aliandika katika vitabu vitakatifu maagizo yote aliyopewa, na manabii wengine nao wakamfuata, wakishuhudia kwa nia moja juu ya maagizo aliyokuwa ameyaweka? Kwa maana, wivu ulipozuka juu ya ukuhani, na makabila yalipokuwa yakishindana wao kwa wao ni lipi kati yao lingepambwa kwa cheo hicho kitukufu, aliwaamuru wakuu kumi na wawili wa makabila wamletee fimbo zao, kila moja ikiwa imeandikwa jina la kabila lake. Akazitwaa, akazifunga [pamoja], akazitia muhuri kwa pete za wakuu wa makabila, akaziweka katika hema ya ushuhuda juu ya meza ya Mungu. Kisha, akiisha kuifunga milango ya hema, akazitia muhuri funguo, kama alivyozifanyia zile fimbo, akawaambia, Waume, ndugu, kabila ambalo fimbo yake itachipuka, ndilo Mungu alilolichagua kuitimiza kazi ya ukuhani, na kumhudumia Yeye. Na ilipokuwa asubuhi, akawakusanya Israeli wote, wanaume mia sita elfu, akawaonyesha wakuu wa makabila zile muhuri, akaifungua hema ya ushuhuda, akazitoa zile fimbo. Na fimbo ya Haruni ikaonekana si kwamba imechipuka tu, bali pia imezaa matunda juu yake. Mwaonaje, wapenzi? Je! Musa hakujua tangu mwanzo kwamba jambo hili lingetokea? Bila shaka alijua; lakini alitenda hivyo ili pasiwe na maasi katika Israeli, na ili jina la Mungu wa kweli, aliye peke yake, litukuzwe; utukufu una Yeye milele na milele. Amina.",
+  "word_count": 224
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 44,
+  "title": "Maagizo ya mitume",
+  "body_html": "<p>Mitume wetu nao walijua, kwa njia ya Bwana wetu Yesu Kristo, kwamba kungekuwa na ugomvi kwa ajili ya cheo cha uaskofu. Basi kwa sababu hii, kwa kuwa walikuwa wamepata kujua jambo hili mapema kikamilifu, waliwaweka wale [wahudumu] waliokwisha kutajwa, kisha wakatoa maagizo kwamba hao watakapolala usingizi wa mauti, watu wengine waliothibitika wapokee huduma yao. Kwa hiyo tuna maoni kwamba wale waliowekwa nao, au baadaye na watu wengine mashuhuri, kwa ridhaa ya Kanisa zima, na ambao wamelihudumia kundi la Kristo bila lawama, kwa roho ya unyenyekevu, ya amani na isiyo na tamaa ya faida, na ambao kwa muda mrefu wameshuhudiwa vema na wote, hawawezi kwa haki kuondolewa katika huduma. Kwa maana dhambi yetu haitakuwa ndogo, tukiwaondoa katika uaskofu wale ambao wameitimiza kazi yake bila lawama na kwa utakatifu. Heri wale wazee ambao, wakiisha kumaliza mwendo wao kabla ya sasa, wamepata kuondoka [katika ulimwengu huu] kwa kuzaa matunda na kwa ukamilifu; kwa maana hawana hofu kwamba mtu atawaondoa katika mahali walipowekewa sasa. Lakini tunaona kwamba ninyi mmewaondoa katika huduma baadhi ya watu wenye mwenendo bora, huduma waliyoitimiza bila lawama na kwa heshima. </p>",
+  "body_text": "Mitume wetu nao walijua, kwa njia ya Bwana wetu Yesu Kristo, kwamba kungekuwa na ugomvi kwa ajili ya cheo cha uaskofu. Basi kwa sababu hii, kwa kuwa walikuwa wamepata kujua jambo hili mapema kikamilifu, waliwaweka wale [wahudumu] waliokwisha kutajwa, kisha wakatoa maagizo kwamba hao watakapolala usingizi wa mauti, watu wengine waliothibitika wapokee huduma yao. Kwa hiyo tuna maoni kwamba wale waliowekwa nao, au baadaye na watu wengine mashuhuri, kwa ridhaa ya Kanisa zima, na ambao wamelihudumia kundi la Kristo bila lawama, kwa roho ya unyenyekevu, ya amani na isiyo na tamaa ya faida, na ambao kwa muda mrefu wameshuhudiwa vema na wote, hawawezi kwa haki kuondolewa katika huduma. Kwa maana dhambi yetu haitakuwa ndogo, tukiwaondoa katika uaskofu wale ambao wameitimiza kazi yake bila lawama na kwa utakatifu. Heri wale wazee ambao, wakiisha kumaliza mwendo wao kabla ya sasa, wamepata kuondoka [katika ulimwengu huu] kwa kuzaa matunda na kwa ukamilifu; kwa maana hawana hofu kwamba mtu atawaondoa katika mahali walipowekewa sasa. Lakini tunaona kwamba ninyi mmewaondoa katika huduma baadhi ya watu wenye mwenendo bora, huduma waliyoitimiza bila lawama na kwa heshima.",
+  "word_count": 180
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 45,
+  "title": "Ni kazi ya waovu kuwaudhi wenye haki",
+  "body_html": "<p>Ninyi ndugu, mnapenda ubishi, tena mmejaa juhudi kwa mambo yasiyohusu wokovu. Yachunguzeni Maandiko kwa makini, ambayo ni maneno ya kweli ya Roho Mtakatifu. Angalieni kwamba hakuna kitu cha udhalimu wala cha uongo kilichoandikwa ndani yake. Humo hamtaona kwamba wenye haki walitupwa nje na watu waliokuwa watakatifu wenyewe. Wenye haki waliteswa kweli, lakini na waovu tu. Walitupwa gerezani, lakini na wasio watakatifu tu; walipigwa kwa mawe, lakini na wakosaji tu; waliuawa, lakini na waliolaaniwa tu, na wale waliokuwa wamewaonea wivu usio wa haki. Wakikabiliwa na mateso kama hayo, waliyavumilia kwa utukufu. Kwa maana tuseme nini, ndugu? Je! Danieli alitupwa katika tundu la simba na watu waliomcha Mungu? Je! Hanania, na Azaria, na Mishaeli walifungiwa katika tanuru la moto na wale walioshika ibada kuu na tukufu ya Aliye juu? Wazo kama hilo na liwe mbali nasi! Basi ni nani waliofanya mambo hayo? Watu wenye chuki, waliojaa kila uovu, walichochewa kufikia ukali wa hasira kiasi kwamba waliwatesa wale waliomtumikia Mungu kwa nia takatifu isiyo na lawama [ya moyo], bila kujua kwamba Aliye juu ndiye Mtetezi na Mlinzi wa wote wanaoliheshimu jina lake lililo bora kuliko yote kwa dhamiri safi; utukufu una Yeye milele na milele. Amina. Lakini wale waliovumilia [mambo haya] kwa ujasiri sasa ni warithi wa utukufu na heshima, nao wameinuliwa na kufanywa mashuhuri na Mungu katika ukumbusho wao milele na milele. Amina. </p>",
+  "body_text": "Ninyi ndugu, mnapenda ubishi, tena mmejaa juhudi kwa mambo yasiyohusu wokovu. Yachunguzeni Maandiko kwa makini, ambayo ni maneno ya kweli ya Roho Mtakatifu. Angalieni kwamba hakuna kitu cha udhalimu wala cha uongo kilichoandikwa ndani yake. Humo hamtaona kwamba wenye haki walitupwa nje na watu waliokuwa watakatifu wenyewe. Wenye haki waliteswa kweli, lakini na waovu tu. Walitupwa gerezani, lakini na wasio watakatifu tu; walipigwa kwa mawe, lakini na wakosaji tu; waliuawa, lakini na waliolaaniwa tu, na wale waliokuwa wamewaonea wivu usio wa haki. Wakikabiliwa na mateso kama hayo, waliyavumilia kwa utukufu. Kwa maana tuseme nini, ndugu? Je! Danieli alitupwa katika tundu la simba na watu waliomcha Mungu? Je! Hanania, na Azaria, na Mishaeli walifungiwa katika tanuru la moto na wale walioshika ibada kuu na tukufu ya Aliye juu? Wazo kama hilo na liwe mbali nasi! Basi ni nani waliofanya mambo hayo? Watu wenye chuki, waliojaa kila uovu, walichochewa kufikia ukali wa hasira kiasi kwamba waliwatesa wale waliomtumikia Mungu kwa nia takatifu isiyo na lawama [ya moyo], bila kujua kwamba Aliye juu ndiye Mtetezi na Mlinzi wa wote wanaoliheshimu jina lake lililo bora kuliko yote kwa dhamiri safi; utukufu una Yeye milele na milele. Amina. Lakini wale waliovumilia [mambo haya] kwa ujasiri sasa ni warithi wa utukufu na heshima, nao wameinuliwa na kufanywa mashuhuri na Mungu katika ukumbusho wao milele na milele. Amina.",
+  "word_count": 221
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 46,
+  "title": "Tushikamane na wenye haki: ugomvi wenu ni wa maangamizi",
+  "body_html": "<p>Basi, ndugu, ni haki kwetu kuifuata mifano kama hiyo; kwa kuwa imeandikwa, “Shikamaneni na watakatifu, kwa maana wale washikamanao nao [wenyewe] watafanywa watakatifu.” Tena, mahali pengine, [Maandiko] yasema, “Kwa mtu asiye na hatia utajionyesha huna hatia, na kwa mteule utakuwa mteule, na kwa mpotovu utajionyesha mpotovu.” Basi na tushikamane na wasio na hatia na wenye haki, kwa kuwa hao ndio wateule wa Mungu. Mbona kuna ugomvi, na ghasia, na faraka, na mafarakano, na vita kati yenu? Je! hatuna [sote] Mungu mmoja na Kristo mmoja? Je! hakuna Roho mmoja wa neema aliyemiminwa juu yetu? Na je! hatuna wito mmoja katika Kristo? Mbona tunavigawanya na kuvirarua viungo vya Kristo, na kuinua ugomvi juu ya mwili wetu wenyewe, hata tukafikia kiwango kama hicho cha wazimu hata kusahau kwamba “tu viungo, kila mmoja kiungo cha mwenzake?” Kumbukeni maneno ya Bwana wetu Yesu Kristo, jinsi alivyosema, “Ole wake mtu yule [ambaye kwa yeye vikwazo vinakuja]! Ingekuwa heri kwake kama asingalizaliwa, kuliko kumkwaza mmoja wa wateule wangu. Naam, ingekuwa heri kwake kufungiwa jiwe la kusagia [shingoni mwake], na kuzamishwa katika vilindi vya bahari, kuliko kumkwaza mmoja wa wadogo wangu.” Mafarakano yenu yamepindua [imani ya] wengi, yamewakatisha tamaa wengi, yamewatia wengi shaka, na yametuhuzunisha sisi sote. Na bado maasi yenu yanaendelea. </p>",
+  "body_text": "Basi, ndugu, ni haki kwetu kuifuata mifano kama hiyo; kwa kuwa imeandikwa, “Shikamaneni na watakatifu, kwa maana wale washikamanao nao [wenyewe] watafanywa watakatifu.” Tena, mahali pengine, [Maandiko] yasema, “Kwa mtu asiye na hatia utajionyesha huna hatia, na kwa mteule utakuwa mteule, na kwa mpotovu utajionyesha mpotovu.” Basi na tushikamane na wasio na hatia na wenye haki, kwa kuwa hao ndio wateule wa Mungu. Mbona kuna ugomvi, na ghasia, na faraka, na mafarakano, na vita kati yenu? Je! hatuna [sote] Mungu mmoja na Kristo mmoja? Je! hakuna Roho mmoja wa neema aliyemiminwa juu yetu? Na je! hatuna wito mmoja katika Kristo? Mbona tunavigawanya na kuvirarua viungo vya Kristo, na kuinua ugomvi juu ya mwili wetu wenyewe, hata tukafikia kiwango kama hicho cha wazimu hata kusahau kwamba “tu viungo, kila mmoja kiungo cha mwenzake?” Kumbukeni maneno ya Bwana wetu Yesu Kristo, jinsi alivyosema, “Ole wake mtu yule [ambaye kwa yeye vikwazo vinakuja]! Ingekuwa heri kwake kama asingalizaliwa, kuliko kumkwaza mmoja wa wateule wangu. Naam, ingekuwa heri kwake kufungiwa jiwe la kusagia [shingoni mwake], na kuzamishwa katika vilindi vya bahari, kuliko kumkwaza mmoja wa wadogo wangu.” Mafarakano yenu yamepindua [imani ya] wengi, yamewakatisha tamaa wengi, yamewatia wengi shaka, na yametuhuzunisha sisi sote. Na bado maasi yenu yanaendelea.",
+  "word_count": 204
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 47,
+  "title": "Mafarakano yenu ya sasa ni mabaya kuliko yale ya nyakati za Paulo",
+  "body_html": "<p>Ichukueni waraka wa Mtume Paulo mbarikiwa. Aliwaandikia nini wakati ule Injili ilipoanza kuhubiriwa kwanza? Kweli, kwa uvuvio wa Roho, aliwaandikia habari zake mwenyewe, na za Kefa, na za Apolo, kwa sababu hata wakati ule mlikuwa mmejigawa kuwa makundi. Lakini mwelekeo ule wa kumpendelea mmoja kuliko mwingine uliwaletea hatia ndogo zaidi, kwa kuwa upendeleo wenu wakati ule ulielekezwa kwa mitume, waliokuwa tayari na sifa kuu, na kwa mtu ambaye wao walikuwa wamemkubali. Lakini sasa tafakarini ni akina nani hao waliowapotosha, na kupunguza sifa ya upendo wenu wa kindugu uliojulikana mbali. Ni aibu, wapenzi, naam, ni aibu kubwa sana, tena haistahili ukiri wenu wa Kikristo, kwamba jambo kama hili lisikike, kwamba Kanisa la Wakorintho, lililo imara kabisa na la zamani, kwa ajili ya mtu mmoja au wawili, linafanya maasi juu ya wazee wake. Na habari hii haikutufikia sisi tu, bali hata wale wasiohusiana nasi; hata kwa sababu ya upumbavu wenu jina la Bwana linatukanwa, na hatari inaletwa juu yenu wenyewe pia. </p>",
+  "body_text": "Ichukueni waraka wa Mtume Paulo mbarikiwa. Aliwaandikia nini wakati ule Injili ilipoanza kuhubiriwa kwanza? Kweli, kwa uvuvio wa Roho, aliwaandikia habari zake mwenyewe, na za Kefa, na za Apolo, kwa sababu hata wakati ule mlikuwa mmejigawa kuwa makundi. Lakini mwelekeo ule wa kumpendelea mmoja kuliko mwingine uliwaletea hatia ndogo zaidi, kwa kuwa upendeleo wenu wakati ule ulielekezwa kwa mitume, waliokuwa tayari na sifa kuu, na kwa mtu ambaye wao walikuwa wamemkubali. Lakini sasa tafakarini ni akina nani hao waliowapotosha, na kupunguza sifa ya upendo wenu wa kindugu uliojulikana mbali. Ni aibu, wapenzi, naam, ni aibu kubwa sana, tena haistahili ukiri wenu wa Kikristo, kwamba jambo kama hili lisikike, kwamba Kanisa la Wakorintho, lililo imara kabisa na la zamani, kwa ajili ya mtu mmoja au wawili, linafanya maasi juu ya wazee wake. Na habari hii haikutufikia sisi tu, bali hata wale wasiohusiana nasi; hata kwa sababu ya upumbavu wenu jina la Bwana linatukanwa, na hatari inaletwa juu yenu wenyewe pia.",
+  "word_count": 159
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 48,
+  "title": "Turudi kwenye mazoea ya upendo wa kindugu",
+  "body_html": "<p>Basi na tuyakomeshe [mambo haya] upesi iwezekanavyo; na tuanguke mbele za Bwana, tumsihi kwa machozi, ili kwa rehema zake apatanishwe nasi, na kuturudisha katika mazoea yetu ya kwanza, yenye kufaa na matakatifu, ya upendo wa kindugu. Kwa maana [mwenendo kama huo] ndio lango la haki, lililo wazi ili kuufikia uzima, kama ilivyoandikwa, “Nifungulieni malango ya haki; nitaingia ndani yake, nimsifu Bwana: hili ndilo lango la Bwana: wenye haki wataingia kwalo.” Basi, ingawa malango mengi yamefunguliwa, lango hili la haki ndilo lile lango lililo katika Kristo, ambalo heri ni wote walioingia kwalo, wakaielekeza njia yao katika utakatifu na haki, wakitenda mambo yote bila machafuko. Mtu na awe mwaminifu: na awe hodari wa kunena maarifa; na awe na hekima katika kupambanua maneno; na awe safi katika matendo yake yote; lakini kadiri anavyoonekana kuwa bora kuliko wengine [katika mambo hayo], ndivyo impasavyo zaidi kuwa mnyenyekevu wa moyo, na kutafuta faida ya wote kwa pamoja, wala si faida yake mwenyewe tu. </p>",
+  "body_text": "Basi na tuyakomeshe [mambo haya] upesi iwezekanavyo; na tuanguke mbele za Bwana, tumsihi kwa machozi, ili kwa rehema zake apatanishwe nasi, na kuturudisha katika mazoea yetu ya kwanza, yenye kufaa na matakatifu, ya upendo wa kindugu. Kwa maana [mwenendo kama huo] ndio lango la haki, lililo wazi ili kuufikia uzima, kama ilivyoandikwa, “Nifungulieni malango ya haki; nitaingia ndani yake, nimsifu Bwana: hili ndilo lango la Bwana: wenye haki wataingia kwalo.” Basi, ingawa malango mengi yamefunguliwa, lango hili la haki ndilo lile lango lililo katika Kristo, ambalo heri ni wote walioingia kwalo, wakaielekeza njia yao katika utakatifu na haki, wakitenda mambo yote bila machafuko. Mtu na awe mwaminifu: na awe hodari wa kunena maarifa; na awe na hekima katika kupambanua maneno; na awe safi katika matendo yake yote; lakini kadiri anavyoonekana kuwa bora kuliko wengine [katika mambo hayo], ndivyo impasavyo zaidi kuwa mnyenyekevu wa moyo, na kutafuta faida ya wote kwa pamoja, wala si faida yake mwenyewe tu.",
+  "word_count": 157
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 49,
+  "title": "Sifa ya upendo",
+  "body_html": "<p>Yeye aliye na upendo katika Kristo na azishike amri za Kristo. Ni nani awezaye kueleza kifungo [kitukufu] cha upendo wa Mungu? Ni mtu gani awezaye kusimulia ubora wa uzuri wake, kama ipasavyo kusimuliwa? Kimo ambacho upendo huinua hakiwezi kusemwa. Upendo hutuunganisha na Mungu. Upendo hufunika wingi wa dhambi. Upendo huvumilia yote, huvumilia kwa saburi katika yote. Hakuna kilicho duni, hakuna kiburi katika upendo. Upendo haukubali mafarakano: upendo hauzai maasi: upendo hufanya mambo yote kwa upatano. Kwa upendo wateule wote wa Mungu wamekamilishwa; pasipo upendo hakuna kinachompendeza Mungu. Kwa upendo Bwana ametutwaa kwake. Kwa ajili ya upendo aliotupenda, Yesu Kristo Bwana wetu alitoa damu yake kwa ajili yetu kwa mapenzi ya Mungu; mwili wake kwa ajili ya miili yetu, na nafsi yake kwa ajili ya nafsi zetu.</p>",
+  "body_text": "Yeye aliye na upendo katika Kristo na azishike amri za Kristo. Ni nani awezaye kueleza kifungo [kitukufu] cha upendo wa Mungu? Ni mtu gani awezaye kusimulia ubora wa uzuri wake, kama ipasavyo kusimuliwa? Kimo ambacho upendo huinua hakiwezi kusemwa. Upendo hutuunganisha na Mungu. Upendo hufunika wingi wa dhambi. Upendo huvumilia yote, huvumilia kwa saburi katika yote. Hakuna kilicho duni, hakuna kiburi katika upendo. Upendo haukubali mafarakano: upendo hauzai maasi: upendo hufanya mambo yote kwa upatano. Kwa upendo wateule wote wa Mungu wamekamilishwa; pasipo upendo hakuna kinachompendeza Mungu. Kwa upendo Bwana ametutwaa kwake. Kwa ajili ya upendo aliotupenda, Yesu Kristo Bwana wetu alitoa damu yake kwa ajili yetu kwa mapenzi ya Mungu; mwili wake kwa ajili ya miili yetu, na nafsi yake kwa ajili ya nafsi zetu.",
+  "word_count": 126
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 50,
+  "title": "Tuombe tuhesabiwe kuwa wastahili wa upendo",
+  "body_html": "<p>Mnaona, wapenzi, jinsi upendo ulivyo jambo kuu na la ajabu, na kwamba ukamilifu wake hauwezi kuelezwa. Ni nani astahiliye kuonekana ndani yake, isipokuwa wale ambao Mungu amewajalia kuwa hivyo? Basi na tuombe, tukaisihi rehema yake, ili tupate kuishi katika upendo bila lawama, huru mbali na upendeleo wote wa kibinadamu wa mmoja kuliko mwingine. Vizazi vyote tangu Adamu hata leo vimepita; lakini wale ambao, kwa neema ya Mungu, wamekamilishwa katika upendo, sasa wanayo nafasi miongoni mwa watauwa, nao watadhihirishwa katika kufunuliwa kwa ufalme wa Kristo. Kwa maana imeandikwa, “Ingia vyumbani mwako vya ndani kwa kitambo kidogo, hata ghadhabu yangu na hasira yangu zipite; nami nitaikumbuka siku njema, nami nitawafufua kutoka makaburini mwenu.” Heri sisi, wapenzi, ikiwa tunazishika amri za Mungu katika upatano wa upendo; ili kwa upendo tusamehewe dhambi zetu. Kwa maana imeandikwa, “Heri waliosamehewa makosa yao, na waliositiriwa dhambi zao. Heri mtu yule ambaye Bwana hatamhesabia dhambi, wala kinywani mwake hamna hila.” Heri hii huwajia wale waliochaguliwa na Mungu kwa njia ya Yesu Kristo Bwana wetu; utukufu una Yeye milele na milele. Amina. </p>",
+  "body_text": "Mnaona, wapenzi, jinsi upendo ulivyo jambo kuu na la ajabu, na kwamba ukamilifu wake hauwezi kuelezwa. Ni nani astahiliye kuonekana ndani yake, isipokuwa wale ambao Mungu amewajalia kuwa hivyo? Basi na tuombe, tukaisihi rehema yake, ili tupate kuishi katika upendo bila lawama, huru mbali na upendeleo wote wa kibinadamu wa mmoja kuliko mwingine. Vizazi vyote tangu Adamu hata leo vimepita; lakini wale ambao, kwa neema ya Mungu, wamekamilishwa katika upendo, sasa wanayo nafasi miongoni mwa watauwa, nao watadhihirishwa katika kufunuliwa kwa ufalme wa Kristo. Kwa maana imeandikwa, “Ingia vyumbani mwako vya ndani kwa kitambo kidogo, hata ghadhabu yangu na hasira yangu zipite; nami nitaikumbuka siku njema, nami nitawafufua kutoka makaburini mwenu.” Heri sisi, wapenzi, ikiwa tunazishika amri za Mungu katika upatano wa upendo; ili kwa upendo tusamehewe dhambi zetu. Kwa maana imeandikwa, “Heri waliosamehewa makosa yao, na waliositiriwa dhambi zao. Heri mtu yule ambaye Bwana hatamhesabia dhambi, wala kinywani mwake hamna hila.” Heri hii huwajia wale waliochaguliwa na Mungu kwa njia ya Yesu Kristo Bwana wetu; utukufu una Yeye milele na milele. Amina.",
+  "word_count": 173
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 51,
+  "title": "Walioshiriki ugomvi na wakiri dhambi zao",
+  "body_html": "<p>Basi na tuombe msamaha kwa ajili ya makosa yote tuliyoyatenda kwa [ushawishi] wowote wa yule adui. Na wale waliokuwa viongozi wa maasi na kutokubaliana yawapasa kulijali tumaini la wote kwa pamoja. Kwa maana wale waishio katika hofu na upendo wangependa kwamba wao wenyewe, kuliko jirani zao, ndio waingie katika mateso. Nao huona afadhali kubeba lawama wao wenyewe, kuliko ule upatano tuliokabidhiwa vema na kwa utauwa uharibike. Kwa maana ni afadhali mtu akiri makosa yake kuliko kuufanya moyo wake kuwa mgumu, kama ilivyofanywa migumu mioyo ya wale walioanzisha maasi juu ya Musa mtumishi wa Mungu, ambao hukumu yao ilidhihirishwa [kwa wote]. Kwa maana walishuka kuzimu wangali hai, na mauti ikawameza. Farao pamoja na jeshi lake na wakuu wote wa Misri, na magari pamoja na wapanda farasi wao, walizamishwa katika vilindi vya Bahari ya Shamu, wakaangamia, kwa sababu hii tu, kwamba mioyo yao ya kipumbavu ilifanywa migumu, baada ya ishara na maajabu mengi kiasi kile kufanywa katika nchi ya Misri na Musa mtumishi wa Mungu. </p>",
+  "body_text": "Basi na tuombe msamaha kwa ajili ya makosa yote tuliyoyatenda kwa [ushawishi] wowote wa yule adui. Na wale waliokuwa viongozi wa maasi na kutokubaliana yawapasa kulijali tumaini la wote kwa pamoja. Kwa maana wale waishio katika hofu na upendo wangependa kwamba wao wenyewe, kuliko jirani zao, ndio waingie katika mateso. Nao huona afadhali kubeba lawama wao wenyewe, kuliko ule upatano tuliokabidhiwa vema na kwa utauwa uharibike. Kwa maana ni afadhali mtu akiri makosa yake kuliko kuufanya moyo wake kuwa mgumu, kama ilivyofanywa migumu mioyo ya wale walioanzisha maasi juu ya Musa mtumishi wa Mungu, ambao hukumu yao ilidhihirishwa [kwa wote]. Kwa maana walishuka kuzimu wangali hai, na mauti ikawameza. Farao pamoja na jeshi lake na wakuu wote wa Misri, na magari pamoja na wapanda farasi wao, walizamishwa katika vilindi vya Bahari ya Shamu, wakaangamia, kwa sababu hii tu, kwamba mioyo yao ya kipumbavu ilifanywa migumu, baada ya ishara na maajabu mengi kiasi kile kufanywa katika nchi ya Misri na Musa mtumishi wa Mungu.",
+  "word_count": 163
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 52,
+  "title": "Ungamo la namna hiyo humpendeza Mungu",
+  "body_html": "<p>Ndugu, Bwana hahitaji kitu chochote; wala hatamani kitu kwa mtu yeyote, isipokuwa kwamba ungamo lifanywe kwake. Kwa maana Daudi mteule asema, “Nitamkiri Bwana; na jambo hilo litampendeza kuliko ng’ombe mchanga mwenye pembe na kwato. Wanyonge na waone, wakafurahi.” Tena asema, “Mtolee Mungu dhabihu ya sifa, umtimizie Aliye juu nadhiri zako. Ukaniite siku ya mateso yako: nitakuokoa, nawe utanitukuza.” Kwa maana “dhabihu za Mungu ni roho iliyovunjika.”</p>",
+  "body_text": "Ndugu, Bwana hahitaji kitu chochote; wala hatamani kitu kwa mtu yeyote, isipokuwa kwamba ungamo lifanywe kwake. Kwa maana Daudi mteule asema, “Nitamkiri Bwana; na jambo hilo litampendeza kuliko ng’ombe mchanga mwenye pembe na kwato. Wanyonge na waone, wakafurahi.” Tena asema, “Mtolee Mungu dhabihu ya sifa, umtimizie Aliye juu nadhiri zako. Ukaniite siku ya mateso yako: nitakuokoa, nawe utanitukuza.” Kwa maana “dhabihu za Mungu ni roho iliyovunjika.”",
+  "word_count": 66
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 53,
+  "title": "Upendo wa Musa kwa watu wake",
+  "body_html": "<p>Mnafahamu, wapenzi, mnayafahamu vema Maandiko Matakatifu, nanyi mmeyachunguza kwa bidii sana maneno ya Mungu. Basi yakumbukeni mambo haya. Musa alipopanda mlimani, akakaa huko, akifunga na kujinyenyekeza, siku arobaini mchana na usiku, Bwana alimwambia, “Musa, Musa, shuka upesi kutoka hapa; kwa maana watu wako uliowatoa katika nchi ya Misri wametenda uovu. Wamegeuka upesi kuiacha njia niliyowaamuru waiendee, nao wamejifanyia sanamu za kusubu.” Bwana akamwambia, “Nimesema nawe mara moja na mara ya pili, nikisema, Nimewaona watu hawa, na tazama, ni watu wenye shingo ngumu: niache niwaangamize, nilifute jina lao chini ya mbingu; nami nitakufanya wewe kuwa taifa kubwa la ajabu, lenye watu wengi zaidi kuliko hawa.” Lakini Musa akasema, “Hasha, Bwana: usamehe dhambi ya watu hawa; la sivyo, unifute nami katika kitabu cha walio hai.” Ee upendo wa ajabu! Ee ukamilifu usioweza kushindwa! Mtumishi anasema na Bwana wake kwa uhuru, anaomba msamaha kwa ajili ya watu, au anaomba kwamba yeye mwenyewe aangamie pamoja nao. </p>",
+  "body_text": "Mnafahamu, wapenzi, mnayafahamu vema Maandiko Matakatifu, nanyi mmeyachunguza kwa bidii sana maneno ya Mungu. Basi yakumbukeni mambo haya. Musa alipopanda mlimani, akakaa huko, akifunga na kujinyenyekeza, siku arobaini mchana na usiku, Bwana alimwambia, “Musa, Musa, shuka upesi kutoka hapa; kwa maana watu wako uliowatoa katika nchi ya Misri wametenda uovu. Wamegeuka upesi kuiacha njia niliyowaamuru waiendee, nao wamejifanyia sanamu za kusubu.” Bwana akamwambia, “Nimesema nawe mara moja na mara ya pili, nikisema, Nimewaona watu hawa, na tazama, ni watu wenye shingo ngumu: niache niwaangamize, nilifute jina lao chini ya mbingu; nami nitakufanya wewe kuwa taifa kubwa la ajabu, lenye watu wengi zaidi kuliko hawa.” Lakini Musa akasema, “Hasha, Bwana: usamehe dhambi ya watu hawa; la sivyo, unifute nami katika kitabu cha walio hai.” Ee upendo wa ajabu! Ee ukamilifu usioweza kushindwa! Mtumishi anasema na Bwana wake kwa uhuru, anaomba msamaha kwa ajili ya watu, au anaomba kwamba yeye mwenyewe aangamie pamoja nao.",
+  "word_count": 152
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 54,
+  "title": "Aliyejaa upendo atakubali hasara yoyote",
+  "body_html": "<p>Basi ni nani miongoni mwenu aliye na moyo wa kiungwana? ni nani mwenye huruma? ni nani aliyejaa upendo? Na aseme, “Ikiwa ni kwa ajili yangu kwamba maasi na kutokubaliana na mafarakano yametokea, nitaondoka, nitakwenda popote mtakapo, nami nitafanya lolote ambalo wengi wataamuru; ila tu kundi la Kristo na liishi kwa amani pamoja na wazee waliowekwa juu yake.” Yeye atendaye hivyo atajipatia utukufu mkuu katika Bwana; na kila mahali watamkaribisha. Kwa maana “Dunia ni mali ya BWANA, pamoja na kila kitu kinachoijaza.” Mambo haya wale waishio maisha ya utauwa, yasiyojutiwa kamwe, wameyatenda, nao watayatenda daima. </p>",
+  "body_text": "Basi ni nani miongoni mwenu aliye na moyo wa kiungwana? ni nani mwenye huruma? ni nani aliyejaa upendo? Na aseme, “Ikiwa ni kwa ajili yangu kwamba maasi na kutokubaliana na mafarakano yametokea, nitaondoka, nitakwenda popote mtakapo, nami nitafanya lolote ambalo wengi wataamuru; ila tu kundi la Kristo na liishi kwa amani pamoja na wazee waliowekwa juu yake.” Yeye atendaye hivyo atajipatia utukufu mkuu katika Bwana; na kila mahali watamkaribisha. Kwa maana “Dunia ni mali ya BWANA, pamoja na kila kitu kinachoijaza.” Mambo haya wale waishio maisha ya utauwa, yasiyojutiwa kamwe, wameyatenda, nao watayatenda daima.",
+  "word_count": 94
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 55,
+  "title": "Mifano ya upendo wa namna hiyo",
+  "body_html": "<p>Tukileta mifano kadhaa kutoka kwa watu wa mataifa: Wafalme na watawala wengi, nyakati za tauni, walipokuwa wameagizwa na kauli ya miungu, wamejitoa wenyewe kufa, ili kwa damu yao wenyewe wawaokoe raia wenzao [na maangamizi]. Wengi wametoka katika miji yao wenyewe, ili maasi ndani yake yapate kukoma. Tunawajua wengi miongoni mwetu waliojitoa wenyewe kufungwa minyororo, ili wapate kuwakomboa wengine. Wengi pia wamejitoa wenyewe kuwa watumwa, ili kwa thamani waliyopokea kwa ajili yao wenyewe wawape wengine chakula. Wanawake wengi nao, wakitiwa nguvu kwa neema ya Mungu, wamefanya matendo mengi ya ushujaa. Yudithi mbarikiwa, mji wake ulipozingirwa, aliwaomba wazee ruhusa ya kwenda katika kambi ya wageni; na akijitia hatarini, alitoka kwa ajili ya upendo aliokuwa nao kwa nchi yake na watu wake waliozingirwa wakati ule; na Bwana akamtia Holofernes mikononi mwa mwanamke. Esta naye, akiwa mkamilifu katika imani, alijitia katika hatari isiyo ndogo, ili awaokoe makabila kumi na mawili ya Israeli na maangamizi yaliyokuwa karibu. Kwa maana kwa kufunga na kujinyenyekeza alimsihi Mungu wa milele, aonaye yote; naye, akiuona unyenyekevu wa roho yake, akawaokoa watu ambao kwa ajili yao alikuwa amejitia hatarini. </p>",
+  "body_text": "Tukileta mifano kadhaa kutoka kwa watu wa mataifa: Wafalme na watawala wengi, nyakati za tauni, walipokuwa wameagizwa na kauli ya miungu, wamejitoa wenyewe kufa, ili kwa damu yao wenyewe wawaokoe raia wenzao [na maangamizi]. Wengi wametoka katika miji yao wenyewe, ili maasi ndani yake yapate kukoma. Tunawajua wengi miongoni mwetu waliojitoa wenyewe kufungwa minyororo, ili wapate kuwakomboa wengine. Wengi pia wamejitoa wenyewe kuwa watumwa, ili kwa thamani waliyopokea kwa ajili yao wenyewe wawape wengine chakula. Wanawake wengi nao, wakitiwa nguvu kwa neema ya Mungu, wamefanya matendo mengi ya ushujaa. Yudithi mbarikiwa, mji wake ulipozingirwa, aliwaomba wazee ruhusa ya kwenda katika kambi ya wageni; na akijitia hatarini, alitoka kwa ajili ya upendo aliokuwa nao kwa nchi yake na watu wake waliozingirwa wakati ule; na Bwana akamtia Holofernes mikononi mwa mwanamke. Esta naye, akiwa mkamilifu katika imani, alijitia katika hatari isiyo ndogo, ili awaokoe makabila kumi na mawili ya Israeli na maangamizi yaliyokuwa karibu. Kwa maana kwa kufunga na kujinyenyekeza alimsihi Mungu wa milele, aonaye yote; naye, akiuona unyenyekevu wa roho yake, akawaokoa watu ambao kwa ajili yao alikuwa amejitia hatarini.",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 56,
+  "title": "Tuonyane na kurekebishana sisi kwa sisi",
+  "body_html": "<p>Basi na sisi tuwaombee wale walioanguka katika dhambi yoyote, ili wapewe upole na unyenyekevu, wapate kujitiisha, si kwetu sisi, bali kwa mapenzi ya Mungu. Kwa maana kwa njia hii watapata kwetu ukumbusho wenye kuzaa matunda na mkamilifu, pamoja na huruma kwao, katika maombi yetu kwa Mungu na katika kuwataja kwetu kwa watakatifu. Na tupokee maonyo, wapenzi, ambayo kwa ajili yake mtu yeyote asione uchungu. Yale mausia ambayo kwayo tunaonyana sisi kwa sisi ni mema [yenyewe], tena yana faida kubwa sana, kwa maana yanaelekea kutuunganisha na mapenzi ya Mungu. Kwa maana ndivyo lisemavyo Neno takatifu: “Bwana amenirudi sana, lakini hakuniacha nife.” “Kwa maana Bwana humrudi yeye ampendaye, naye humpiga kila mwana amkubaliye.” “Mwenye haki,” lasema, “ataniadibu kwa rehema, na kunikemea; lakini mafuta ya wenye dhambi yasinenepeshe kichwa changu.” Tena asema, “Heri mtu yule ambaye Bwana humwonya, nawe usikatae maonyo ya Mwenyezi. Kwa maana Yeye huhuzunisha, kisha hurejesha [katika furaha]; hutia jeraha, na mikono yake huponya. Atakuokoa katika taabu sita, naam, katika ya saba hakuna ovu litakalokugusa. Wakati wa njaa atakuokoa na mauti, na vitani atakuokoa na nguvu za upanga. Atakuficha na mjeledi wa ulimi, wala hutaogopa uovu ujapo. Utawacheka wasio haki na waovu, wala hutawaogopa wanyama wa mwituni. Kwa maana wanyama wakali watakaa kwa amani nawe: ndipo utakapojua ya kuwa nyumba yako itakuwa na amani, na maskani ya hema yako hayatapungukiwa. Utajua pia ya kuwa uzao wako utakuwa mwingi, na watoto wako kama majani ya kondeni. Nawe utaingia kaburini kama nafaka iliyokomaa ivunwayo kwa wakati wake, au kama mganda wa kupuria ukusanywao kwa wakati wake.” Mnaona, wapenzi, kwamba ulinzi hupewa wale wanaorudiwa na Bwana; kwa maana kwa kuwa Mungu ni mwema, hutuadibu, ili tupate kuonywa kwa adhabu yake takatifu. </p>",
+  "body_text": "Basi na sisi tuwaombee wale walioanguka katika dhambi yoyote, ili wapewe upole na unyenyekevu, wapate kujitiisha, si kwetu sisi, bali kwa mapenzi ya Mungu. Kwa maana kwa njia hii watapata kwetu ukumbusho wenye kuzaa matunda na mkamilifu, pamoja na huruma kwao, katika maombi yetu kwa Mungu na katika kuwataja kwetu kwa watakatifu. Na tupokee maonyo, wapenzi, ambayo kwa ajili yake mtu yeyote asione uchungu. Yale mausia ambayo kwayo tunaonyana sisi kwa sisi ni mema [yenyewe], tena yana faida kubwa sana, kwa maana yanaelekea kutuunganisha na mapenzi ya Mungu. Kwa maana ndivyo lisemavyo Neno takatifu: “Bwana amenirudi sana, lakini hakuniacha nife.” “Kwa maana Bwana humrudi yeye ampendaye, naye humpiga kila mwana amkubaliye.” “Mwenye haki,” lasema, “ataniadibu kwa rehema, na kunikemea; lakini mafuta ya wenye dhambi yasinenepeshe kichwa changu.” Tena asema, “Heri mtu yule ambaye Bwana humwonya, nawe usikatae maonyo ya Mwenyezi. Kwa maana Yeye huhuzunisha, kisha hurejesha [katika furaha]; hutia jeraha, na mikono yake huponya. Atakuokoa katika taabu sita, naam, katika ya saba hakuna ovu litakalokugusa. Wakati wa njaa atakuokoa na mauti, na vitani atakuokoa na nguvu za upanga. Atakuficha na mjeledi wa ulimi, wala hutaogopa uovu ujapo. Utawacheka wasio haki na waovu, wala hutawaogopa wanyama wa mwituni. Kwa maana wanyama wakali watakaa kwa amani nawe: ndipo utakapojua ya kuwa nyumba yako itakuwa na amani, na maskani ya hema yako hayatapungukiwa. Utajua pia ya kuwa uzao wako utakuwa mwingi, na watoto wako kama majani ya kondeni. Nawe utaingia kaburini kama nafaka iliyokomaa ivunwayo kwa wakati wake, au kama mganda wa kupuria ukusanywao kwa wakati wake.” Mnaona, wapenzi, kwamba ulinzi hupewa wale wanaorudiwa na Bwana; kwa maana kwa kuwa Mungu ni mwema, hutuadibu, ili tupate kuonywa kwa adhabu yake takatifu.",
+  "word_count": 278
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 57,
+  "title": "Walioanzisha maasi na wajitiishe",
+  "body_html": "<p>Basi ninyi mlioweka msingi wa maasi haya, jitiisheni chini ya wazee, mkapokee maonyo ili mpate kutubu, mkipiga magoti ya mioyo yenu. Jifunzeni kutii, mkiweka kando kujiamini kwa kiburi na majivuno ya ndimi zenu. Kwa maana ni afadhali kwenu kushika mahali pa unyenyekevu lakini pa heshima katika kundi la Kristo, kuliko kuinuliwa juu sana kisha kutupwa nje ya tumaini la watu wake. Kwa maana ndivyo isemavyo Hekima, iliyo na kila wema: “Tazama, nitawaletea maneno ya Roho yangu, nami nitawafundisha usemi wangu. Kwa kuwa niliita, nanyi hamkusikia; niliyanyosha maneno yangu, nanyi hamkujali, bali mliyadharau mashauri yangu, wala hamkukubali maonyo yangu; basi mimi nami nitaicheka hasara yenu; naam, nitafurahi maangamizi yatakapowajia, na mshangao wa ghafula utakapowapata, maangamizi yatakapowakumba kama tufani, au dhiki na shida zitakapowaangukia. Kwa maana itakuwa, mtakaponiita, sitawasikia; waovu watanitafuta, wala hawataniona. Kwa maana waliichukia hekima, wala hawakuchagua kumcha Bwana; wala hawakuyasikiliza mashauri yangu, bali waliyadharau maonyo yangu. Basi watakula matunda ya njia yao wenyewe, nao watashibishwa na uasi wao wenyewe.” …</p>",
+  "body_text": "Basi ninyi mlioweka msingi wa maasi haya, jitiisheni chini ya wazee, mkapokee maonyo ili mpate kutubu, mkipiga magoti ya mioyo yenu. Jifunzeni kutii, mkiweka kando kujiamini kwa kiburi na majivuno ya ndimi zenu. Kwa maana ni afadhali kwenu kushika mahali pa unyenyekevu lakini pa heshima katika kundi la Kristo, kuliko kuinuliwa juu sana kisha kutupwa nje ya tumaini la watu wake. Kwa maana ndivyo isemavyo Hekima, iliyo na kila wema: “Tazama, nitawaletea maneno ya Roho yangu, nami nitawafundisha usemi wangu. Kwa kuwa niliita, nanyi hamkusikia; niliyanyosha maneno yangu, nanyi hamkujali, bali mliyadharau mashauri yangu, wala hamkukubali maonyo yangu; basi mimi nami nitaicheka hasara yenu; naam, nitafurahi maangamizi yatakapowajia, na mshangao wa ghafula utakapowapata, maangamizi yatakapowakumba kama tufani, au dhiki na shida zitakapowaangukia. Kwa maana itakuwa, mtakaponiita, sitawasikia; waovu watanitafuta, wala hawataniona. Kwa maana waliichukia hekima, wala hawakuchagua kumcha Bwana; wala hawakuyasikiliza mashauri yangu, bali waliyadharau maonyo yangu. Basi watakula matunda ya njia yao wenyewe, nao watashibishwa na uasi wao wenyewe.” …",
+  "word_count": 161
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 58,
+  "title": "Baraka zinazoombwa kwa ajili ya wote wamwitao Mungu",
+  "body_html": "<p>Mungu, aonaye vitu vyote, aliye Mtawala wa roho zote na Bwana wa wote wenye mwili—aliyemchagua Bwana wetu Yesu Kristo, na sisi kwa njia yake tuwe watu wa milki yake—na amjalie kila nafsi iliitiaye Jina lake tukufu na takatifu, imani, hofu, amani, saburi, uvumilivu, kiasi, usafi, na utimamu wa akili, kwa kulipendeza Jina lake, kwa njia ya Kuhani wetu Mkuu na Mlinzi, Yesu Kristo, ambaye kwa yeye utukufu, na ukuu, na uweza, na heshima viwe kwake, sasa na hata milele. Amina. </p>",
+  "body_text": "Mungu, aonaye vitu vyote, aliye Mtawala wa roho zote na Bwana wa wote wenye mwili—aliyemchagua Bwana wetu Yesu Kristo, na sisi kwa njia yake tuwe watu wa milki yake—na amjalie kila nafsi iliitiaye Jina lake tukufu na takatifu, imani, hofu, amani, saburi, uvumilivu, kiasi, usafi, na utimamu wa akili, kwa kulipendeza Jina lake, kwa njia ya Kuhani wetu Mkuu na Mlinzi, Yesu Kristo, ambaye kwa yeye utukufu, na ukuu, na uweza, na heshima viwe kwake, sasa na hata milele. Amina.",
+  "word_count": 80
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "sw"
+  ],
+  "order": 59,
+  "title": "Wakorintho wanahimizwa kurudisha habari kwamba amani imerejea",
+  "body_html": "<p>Warudisheni kwetu upesi, kwa amani na kwa furaha, hawa wajumbe wetu tuliowatuma kwenu: Klaudio Efebo na Valerio Bito, pamoja na Fortunato: ili watuletee mapema habari ya amani na upatano tunaoutamani na kuuonea shauku kwa bidii [kati yenu], na ili tupate kufurahi upesi zaidi juu ya utaratibu mwema uliorejeshwa kati yenu. Neema ya Bwana wetu Yesu Kristo iwe pamoja nanyi, na pamoja na wote kila mahali walioitwa na Mungu kwa njia yake, ambaye kwa yeye utukufu, heshima, uweza, ukuu, na mamlaka ya milele viwe kwake, tangu milele hata milele. Amina.</p>",
+  "body_text": "Warudisheni kwetu upesi, kwa amani na kwa furaha, hawa wajumbe wetu tuliowatuma kwenu: Klaudio Efebo na Valerio Bito, pamoja na Fortunato: ili watuletee mapema habari ya amani na upatano tunaoutamani na kuuonea shauku kwa bidii [kati yenu], na ili tupate kufurahi upesi zaidi juu ya utaratibu mwema uliorejeshwa kati yenu. Neema ya Bwana wetu Yesu Kristo iwe pamoja nanyi, na pamoja na wote kila mahali walioitwa na Mungu kwa njia yake, ambaye kwa yeye utukufu, heshima, uweza, ukuu, na mamlaka ya milele viwe kwake, tangu milele hata milele. Amina.",
+  "word_count": 89
+ }
+}
+]

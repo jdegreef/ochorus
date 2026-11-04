@@ -74,5 +74,18 @@ describe('planDayPath', () => {
 			'/articles/what-is-grace/?plan=new-to-the-faith&day=4'
 		);
 	});
+	it('links a devotional day to its one dated entry on the day page, never the month', () => {
+		const entryDay = {
+			day: 32,
+			book_slug: 'days-of-heaven-upon-earth',
+			chapter_order: 2,
+			entry_date: '02-01',
+			has_modern_edition: true
+		};
+		// Not even when carrying on in Modern English: the entry is the original's.
+		expect(planDayPath('days-of-heaven-upon-earth-year', entryDay, true)).toBe(
+			'/today/days-of-heaven-upon-earth/?d=02-01&plan=days-of-heaven-upon-earth-year&day=32'
+		);
+	});
 });
 

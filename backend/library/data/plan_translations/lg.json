@@ -123,5 +123,17 @@
     "note": [
       "Queue job #2852. AI-drafted; awaiting native review. Neither source book (around-the-wicket-gate, men-and-women-who-gave-everything-2) has an lg edition yet, so seed_plans will not create the (first-steps-for-teens, lg) row until both ship; their translators should check this prose against those titles."
     ]
+  },
+  "days-of-heaven-upon-earth-year": {
+    "title": "Omwaka Gumu: Ennaku ez’Eggulu ku Nsi",
+    "description": "Omwaka gwa A. B. Simpson ogw’okusinza okwa buli lunaku: olunyiriri lumu n’okufumiitiriza okumpi ku bujjuvu bwa Kristo ku buli lunaku. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
+  },
+  "thoughts-for-the-quiet-hour-year": {
+    "title": "Omwaka Gumu: Ebirowoozo by’Essaawa ey’Akasirise",
+    "description": "Ebisomebwa ebimpi D. L. Moody bye yakuŋŋaanya eby’omwaka gwonna: olunyiriri lumu n’ebigambo bitono okuva mu babuulizi n’abawandiisi be yali ayagala. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu buli lunaku."
+  },
+  "cheque-book-year": {
+    "title": "Omwaka Gumu: Ekitabo kya Cheeki eky’Ebbanka y’Okukkiriza",
+    "description": "Ebisuubizo bya Charles Spurgeon ebya buli lunaku: ekisuubizo kimu ekya Katonda ku buli lunaku lw’omwaka, n’ekigambo ekimpi ku ngeri y’okukifunamu olw’okukkiriza. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
   }
 }

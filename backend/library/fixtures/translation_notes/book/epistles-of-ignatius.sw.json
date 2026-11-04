@@ -1,0 +1,55 @@
+{
+ "kind": "book",
+ "slug": "epistles-of-ignatius",
+ "language": "sw",
+ "job_issue": 6885,
+ "references": [
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 88
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 107
+  },
+  {
+   "reference": "Psalms 33:9",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "1 Corinthians 6:9",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Proverbs 18:17",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Isaiah 52:5",
+   "status": "self_rendered",
+   "block_index": 169
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 271
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 278
+  }
+ ]
+}

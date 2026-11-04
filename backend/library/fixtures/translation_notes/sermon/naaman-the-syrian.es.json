@@ -1,0 +1,84 @@
+{
+ "kind": "sermon",
+ "slug": "naaman-the-syrian",
+ "language": "es",
+ "job_issue": 7167,
+ "references": [
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "source_file": "how-to-bring-men-to-christ.es.json",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Kings 5:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Kings 5:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Kings 5:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Kings 5:11",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Kings 5:13",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 33
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "ten-commandments.es.json",
+   "block_index": 36
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.es.json",
+   "block_index": 52
+  }
+ ]
+}

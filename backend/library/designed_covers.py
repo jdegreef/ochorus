@@ -135,8 +135,6 @@ DESIGNED: dict[str, str] = {
         "f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     "/covers/talks-to-the-farmer.jpg":
         "120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
-    "/covers/talks-to-the-farmer-children.jpg":
-        "bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
     "/covers/talks-to-the-farmer-teens.jpg":
         "476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     "/covers/the-christians-secret-of-a-happy-life-4.jpg":
@@ -245,6 +243,16 @@ class Ground(NamedTuple):
     #: Lettering painted out before the crop (see ``Erase``), which is what
     #: lets a band reach past a subtitle or a URL instead of stopping at it.
     erase: tuple[Erase, ...] = ()
+    #: Pools of warm light laid over the finished ground, each (centre x,
+    #: centre y, radius x, radius y) in fractions of the plate and a strength
+    #: 0-1 at the centre, easing to nothing at the rim. For a ground set in
+    #: DARK ink (`covers.INK_DARK`): there is no scrim to lift the words off the
+    #: picture, so the picture is made light where they land instead — a sun
+    #: behind the title, spread far enough to pale the branches it reaches.
+    #: Several pools may be laid, in order (`curated_art.Artwork.glow` takes the
+    #: same tuple): a light from the top and foot edges as well as one behind the
+    #: title lets the photograph show between them.
+    glow: tuple[tuple[float, float, float, float, float], ...] = ()
     #: The ``DESIGNED`` digest of the cover this ground was actually cut from.
     #:
     #: WHY A GROUND RECORDS ITS SOURCE. Replacing a hand-made cover is meant to
@@ -355,6 +363,9 @@ DERIVED_GROUND: dict[str, Ground] = {
         Erase(0.90, 0.45, 0.94, 0.95, "light", thin=False),
         Erase(0.36, 0.79, 0.64, 0.885, "light"),
     ),
+        # Set in dark ink like Soar (founder, 2026-11-02): light from the top
+        # and the foot, and a band behind the title, so the photograph shows between.
+        glow=((0.5, 0.0, 1.6, 0.49, 0.4), (0.5, 0.49, 1.25, 0.28, 0.48), (0.5, 1.0, 1.6, 0.26, 0.36)),
         source="75428579274b21090f44604464e1608fa54321307892f01791ac7b1f46a28713",
     ),
     "godliness": Ground(0.36, 0.84, 0.09, 1.85, foot=0.08,
@@ -365,10 +376,10 @@ DERIVED_GROUND: dict[str, Ground] = {
     # which put `BookCover`'s Ochorus mark on top of them; a small foot lifts
     # them into the gap between the title and the mark.
     "he-holds-my-tomorrows": Ground(0.40, 0.915, 0.02, 1.10, sky=0.20, foot=0.04,
+        # Set in dark ink like Soar (founder, 2026-11-02): light from the top
+        # and the foot, and a band behind the title, so the photograph shows between.
+        glow=((0.5, 0.0, 1.6, 0.52, 0.55), (0.5, 0.52, 1.25, 0.36, 0.66), (0.5, 1.0, 1.6, 0.26, 0.495)),
         source="ecc94170eec003af3df0a6cd7de73321f752a18120abba82b96f6e77c8eaf433",
-    ),
-    "humility-2": Ground(0.38, 0.80, 0.11, 1.20,
-        source="d1a0e7653d874c4df65e1a37e4963724028584faa66ce51d69892acdfa6cc997",
     ),
     # Below the rule at 0.594 there is only 18% of the cover left, which at the
     # usual inset came out five parts blur to one part picture; the wide inset
@@ -459,6 +470,9 @@ DERIVED_GROUND: dict[str, Ground] = {
     # is 1.4x and still needs no extension. 0.03 clears the rounded corners.
     "stepping-stones-2": Ground(0.21, 0.92, 0.03, 1.15,
         erase=(Erase(0.18, 0.63, 0.80, 0.73, "light"),),
+        # Set in dark ink like Soar (founder, 2026-11-02): light from the top
+        # and the foot, and a band behind the title, so the photograph shows between.
+        glow=((0.5, 0.0, 1.6, 0.481, 0.4), (0.5, 0.481, 1.25, 0.32, 0.48), (0.5, 1.0, 1.6, 0.26, 0.36)),
         source="f3564c524858961bbe55d4a7b900f70b88589a349ca8ad56f9b94ef92bce15da",
     ),
     "talks-to-the-farmer": Ground(0.48, 0.93, 0.09, 1.45,
@@ -468,12 +482,9 @@ DERIVED_GROUND: dict[str, Ground] = {
     # Green seedling leaves rising out of a dark ground, from under the subtitle
     # to above the wordmark; 0.10 clears the hairline frame (~0.03) and crops in
     # far enough that the leaves fill Spurgeon's `band` window, which the foot
-    # centres them in.
-    "talks-to-the-farmer-children": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
-        source="bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
-    ),
-    # The teens cover is pixel-identical to the children's below ~0.60 (only
-    # the "FOR TEENS" line above the band differs), so the same crop.
+    # centres them in. (The children's edition wore a pixel-identical designed
+    # cover and this same crop until 2026-10-30; it now has a drawn ground of
+    # its own, `curated_art.ORIGINAL_GROUND`, so the two can be told apart.)
     "talks-to-the-farmer-teens": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
         source="476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     ),
@@ -485,7 +496,7 @@ DERIVED_GROUND: dict[str, Ground] = {
     # it; the foot continues the haze under the mark. The sun sits where the
     # title goes, so its top end is brought down (`peak`).
     "soar-like-the-eagle-3": Ground(
-        0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, peak=240, erase=(
+        0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, glow=((0.5, 0.56, 0.7, 0.3, 0.65),), erase=(
         Erase(0.33, 0.215, 0.66, 0.315),
         Erase(0.375, 0.325, 0.62, 0.435),
         Erase(0.19, 0.56, 0.79, 0.63),
@@ -503,6 +514,9 @@ DERIVED_GROUND: dict[str, Ground] = {
     # translated title. A pale photograph, so its top end comes down (`peak`).
     "the-key-in-my-hand": Ground(0.22, 0.915, 0.02, 1.05, foot=0.11, peak=240,
         erase=(Erase(0.25, 0.72, 0.80, 0.80),),
+        # Set in dark ink like Soar (founder, 2026-11-02): light from the top
+        # and the foot, and a band behind the title, so the photograph shows between.
+        glow=((0.5, 0.0, 1.6, 0.489, 0.5), (0.5, 0.489, 1.25, 0.24, 0.6), (0.5, 1.0, 1.6, 0.26, 0.45)),
         source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
     ),
     # A wooded river at dusk, from under "of Trust" to above the wordmark, the
@@ -584,6 +598,57 @@ DESIGNED_BY_SLUG: dict[str, str] = {
     if "/" not in url.removeprefix("/covers/")
 }
 
+
+#: Works whose ENGLISH edition wears its derived ground too, with its title set
+#: by ``BookCover``, instead of the designed cover (2026-10-29, at the founder's
+#: request to redo the low-resolution designed covers).
+#:
+#: These designed covers survive only at the thumbnail size the old WordPress
+#: site served (424x600 or 443x668), and no larger original exists anywhere the
+#: repo can reach: ochorus.com is this app now, and the history holds only the
+#: machine twins. At that size the words baked into the pixels are what read
+#: soft, on a phone first. The translations already wore the same photograph
+#: with live type, which is sharp at any size, so English now does too. The
+#: designed file is NOT retired: it stays registered and frozen above, as the
+#: source ``build_derived_grounds`` cuts the ground from, and replacing it with
+#: a real high-resolution original later is still the two-line diff (and
+#: dropping the work from this set puts English back on it).
+#:
+#: `humility-2` sits here too but wears a museum painting
+#: (`curated_art.CURATED_GROUND`) rather than its crop, which stretched a strip
+#: of the 443px original into visible banding (2026-11-01).
+#:
+#: Left on their designed covers: ``baptism-with-the-holy-spirit`` and
+#: ``prayer-the-pulse-of-life`` (their designed file IS the English twin path,
+#: ``/covers/<slug>.png``), ``the-inner-chamber`` (no croppable picture; its
+#: ground is a museum painting, which would change the book, not sharpen it),
+#: ``the-secret-of-guidance`` (568x852, effectively full size), and the ten
+#: young-reader covers, which are 600x800 already.
+ENGLISH_ON_GROUND: frozenset[str] = frozenset({
+    "clothed-with-strength-and-dignity",
+    "feasting-at-the-table",
+    "godliness",
+    "he-holds-my-tomorrows",
+    "humility-2",
+    "jesus-himself-2",
+    "lord-teach-us-to-pray-2",
+    "men-and-women-who-gave-everything-2",
+    "men-of-prayer-2",
+    "men-who-moved-heaven",
+    "men-who-tended-the-flock-2",
+    "purity-of-heart",
+    "rise-up-men-of-god-2",
+    "soar-like-the-eagle-3",
+    "stepping-stones-2",
+    "talks-to-the-farmer",
+    "the-christians-secret-of-a-happy-life-4",
+    "the-god-of-all-comfort",
+    "the-key-in-my-hand",
+    "the-masters-indwelling",
+    "the-person-and-work-of-the-holy-spirit",
+    "the-unselfishness-of-god",
+    "women-who-moved-heaven-2",
+})
 
 def is_designed(cover_url: str) -> bool:
     """Is this URL a registered hand-made cover — one no tool may rewrite?

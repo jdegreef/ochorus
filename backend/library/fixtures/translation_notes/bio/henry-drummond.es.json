@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "henry-drummond",
+ "language": "es",
+ "job_issue": 7142,
+ "references": [
+  {
+   "reference": "Romans 14:8",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 21
+  }
+ ]
+}

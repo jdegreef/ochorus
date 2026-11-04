@@ -7,7 +7,7 @@ description: Add a curated reading plan to Ochorus — a multi-book journey (or 
 
 A plan walks a reader through one or more **already-published** books, **one
 chapter per day**, days numbered sequentially across the books. Plans are pure
-data — no new content, no migration. Two kinds live in
+data — no new content, no migration. Three kinds live in
 `backend/library/plan_seed.py`:
 
 - **`LAUNCH_PLANS`** — one book, split over N days: `(slug, book_slug, title, description)`.
@@ -20,6 +20,17 @@ data — no new content, no migration. Two kinds live in
   DB check constraint), and the plan exists only where every book AND article
   is published — `plan_sources(items)` is that list, read by the seed and the
   coverage test alike.
+
+- **`DAILY_PLANS`** — a year-long devotional read as a plan:
+  `(slug, book_slug, title, description)`. The book must be a calendar book in
+  `library/daily_books.DATED_BOOKS` (a test holds this). Day N is the book's Nth
+  dated entry as `library/daily_readings` parses it — so day one is 1 January's
+  reading whenever the reader begins — and each day reads ONE entry of its month
+  chapter (`PlanDay.entry_date`, `kind == "entry"`) on the book's day page,
+  `/today/<book>/?d=&plan=&day=`. No pacing check: the book sets the rhythm.
+  Its prose rule is the same as a launch plan's (every published edition's
+  language), and the coverage test reads all three kinds through
+  `all_plan_sources()`.
 
 Adding a plan is appending one tuple. The work is in getting the two gotchas
 below right, then verifying.
@@ -127,6 +138,15 @@ below right, then verifying.
   `frontend/src/lib/planMoves.ts` for the device cache. Drop the slug's
   entries from every `plan_translations/<lang>.json` (the dead-slug test fails
   otherwise).
+- **A devotional plan's days are what the parser finds — so a parser change
+  can renumber seven live plans.** Fixing `daily_readings` (or a book's markup)
+  so that an entry appears, disappears or moves — Thoughts for the Quiet Hour's
+  two missing dates parsing, a `DatedBook` flag changing what counts as a
+  marker — shifts every later day. `seed_plans` never rebuilds an existing
+  plan's days, so prod would keep the old rows while a fresh DB gets new ones.
+  Treat such a change as a renumber (below): new slug plus retirement. The
+  fixture gate in `tests_daily_readings` (`KNOWN_GAPS`) is what tells you the
+  entry list moved.
 - **Never renumber a live plan's days in place** — devices re-send their old
   day numbers on every sync. A different day structure is a new slug plus a
   retirement (above).

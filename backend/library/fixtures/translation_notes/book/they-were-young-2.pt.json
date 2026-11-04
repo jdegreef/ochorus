@@ -1,0 +1,62 @@
+{
+ "kind": "book",
+ "slug": "they-were-young-2",
+ "language": "pt",
+ "job_issue": 6881,
+ "references": [
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 55
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 114
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 171
+  },
+  {
+   "reference": "Matthew 10:28",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 253
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 312
+  },
+  {
+   "reference": "1 Chronicles 17:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 322
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 360
+  }
+ ]
+}

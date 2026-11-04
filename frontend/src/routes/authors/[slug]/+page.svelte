@@ -26,6 +26,7 @@
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { authorCardUrl } from '$lib/authorCard';
 	import AuthorHero from '$lib/components/AuthorHero.svelte';
+	import AuthorCandle from '$lib/components/AuthorCandle.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -45,10 +46,17 @@
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import { onMount } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { allProgress, isFinished } from '$lib/progress';
 	import type { BookSummary } from '$lib/library-public';
+
+	// A page of reading text is open — here, only with a life to read (the
+	// reader's Aa mounts on the same condition). app.css CANDLELIGHT.
+	$effect(() => {
+		if (author.bio_html) return holdFlag(document.documentElement, READING_FLAG);
+	});
 
 	const t = i18n.t;
 
@@ -454,6 +462,8 @@
 				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
 			</p>
 		{/if}
+		<!-- Their birthday, or the day they died: a candle and the date. -->
+		<AuthorCandle slug={author.slug} />
 		<!-- The writer's traditions and place, each a hub page of writers like them. -->
 		{#if author.hubs?.length}
 			<ul class="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">

@@ -1,0 +1,32 @@
+{
+ "kind": "sermon",
+ "slug": "all-sufficiency",
+ "language": "es",
+ "job_issue": 7160,
+ "references": [
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 84:12",
+   "status": "mined",
+   "source_file": "union-and-communion.es.json",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Thessalonians 4:17b",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 6
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 8
+  }
+ ]
+}

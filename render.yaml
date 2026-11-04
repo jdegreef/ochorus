@@ -343,6 +343,9 @@ services:
         # prayer out of its body, and the data files carry the rest.
         - backend/library/leader_guides.py
         - backend/library/data/leader_guides/**
+        # Which books are read by the calendar: the book page bakes the
+        # "Today's reading" button from it.
+        - backend/library/daily_books.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
@@ -575,6 +578,12 @@ services:
         source: /welcome
         destination: /200.html
       - type: rewrite
+        source: /today
+        destination: /200.html
+      - type: rewrite
+        source: /today/*
+        destination: /200.html
+      - type: rewrite
         source: /login
         destination: /200.html
       - type: rewrite
@@ -609,6 +618,12 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/welcome
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/today
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/today/*
         destination: /200.html
       - type: rewrite
         source: /:lang/login

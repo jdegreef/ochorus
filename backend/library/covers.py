@@ -56,7 +56,7 @@ from pathlib import Path
 # tables with no Django import between them and this, which is what lets the
 # predicates live beside `art_url` rather than in a command.
 from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
-from library.designed_covers import DERIVED_GROUND
+from library.designed_covers import DERIVED_GROUND, ENGLISH_ON_GROUND
 from library.localization import is_english_edition
 
 # A plain module, imported for exactly that reason — see its docstring.
@@ -131,9 +131,11 @@ def keeps_english_designed(slug: str) -> bool:
 
     ``CURATED`` and ``ORIGINAL_GROUND`` are the tiers this is false for: those
     works have no designed cover, so every one of their languages — English
-    included — takes the shared picture.
+    included — takes the shared picture. So is ``ENGLISH_ON_GROUND``: designed
+    covers that survive only at thumbnail size, whose English edition wears
+    the ground with live type rather than soft baked-in words.
     """
-    return slug in DERIVED_GROUND or slug in CURATED_GROUND
+    return (slug in DERIVED_GROUND or slug in CURATED_GROUND) and slug not in ENGLISH_ON_GROUND
 
 
 def wears_designed_english(slug: str, language: str) -> bool:
@@ -339,6 +341,31 @@ def scrimmed(ground, strength: float, middle: tuple[int, int], subtitle: bool):
     )
 
 
+#: The light a glow lays down: the warm white of a low sun.
+GLOW_LIGHT = (255, 248, 222)
+
+
+def glowing(im, cx: float, cy: float, rx: float, ry: float, strength: float):
+    """`im` under an ellipse of `GLOW_LIGHT`, `strength` at the centre, smoothstepped
+    to nothing at the rim, so it reads as the sun's own bloom and not a patch.
+
+    Centre and radii are fractions of the image. How a picture set in DARK ink
+    (`INK_DARK`) is made light where the words land, there being no scrim to
+    lift them off it: `designed_covers.Ground.glow` and `curated_art.Artwork.glow`.
+    """
+    from PIL import Image
+
+    w, h = im.size
+    mask = Image.new("L", (w, h))
+    px = mask.load()
+    for y in range(h):
+        dy = (y / h - cy) / ry
+        for x in range(w):
+            t = max(0.0, 1 - ((x / w - cx) / rx) ** 2 - dy * dy) ** 0.5
+            px[x, y] = round(255 * strength * t * t * (3 - 2 * t))
+    return Image.composite(Image.new("RGB", (w, h), GLOW_LIGHT), im, mask)
+
+
 def twin_path(slug: str, language: str) -> tuple[str, str]:
     """(url, path under the covers dir) for one edition's og:image twin.
 
@@ -453,6 +480,20 @@ TYPE_TOP = frozenset({
     "key-teachings-of-george-macdonald",
     "key-teachings-of-g-k-chesterton",
     "key-teachings-of-elisabeth-elliot",
+    # Calm sky over a central subject (2026-10-29): see coverLayouts.TYPE_TOP.
+    "christ-the-healer",
+    "evangelization-of-the-world",
+    "ever-increasing-faith",
+    "first-principles-of-the-reformation",
+    "holiness",
+    "interior-castle",
+    "large-catechism",
+    "old-paths",
+    "practical-religion",
+    "religious-experience-and-journal",
+    "the-normal-christian-life",
+    "the-pursuit-of-god",
+    "things-as-they-are",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
@@ -631,6 +672,12 @@ INK_DARK = frozenset({
     "sons-of-the-king-1",
     "sons-of-the-king-2",
     "sons-of-the-king-3",
+    "soar-like-the-eagle-3",
+    "faithful-with-little",
+    "feasting-at-the-table",
+    "he-holds-my-tomorrows",
+    "stepping-stones-2",
+    "the-key-in-my-hand",
 })
 
 #: `--cover-ink-dark` in `cover-type.css`.
@@ -653,6 +700,65 @@ DARK_INK_BOXES = (
     ("subtitle", (60, 474, 540, 566), 0.90, AUTHOR_MIN_CONTRAST),
     ("mark", (232, 662, 368, 748), 0.95, 3.0),
 )
+
+#: A dark-ink work whose words do not sit where Daughters' and Sons' do, by
+#: slug. Same shape and bars as `DARK_INK_BOXES`; the column is the union of
+#: every edition's glyphs, measured on the composed twins.
+DARK_INK_BOXES_BY_SLUG = {
+    # Measured 2026-10-30 over en, am, ar, es, fr, hi, lg, pt, sw. The title
+    # runs nearly frame to frame in English and Hindi; the subtitle (fr, lg,
+    # pt, sw, hi) crosses the pines, which `Ground.glow` pales to carry it.
+    "soar-like-the-eagle-3": (
+        ("byline", (165, 104, 428, 130), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (45, 265, 555, 446), 1.0, TITLE_MIN),
+        ("rule", (230, 435, 370, 508), 0.8, 3.0),
+        ("subtitle", (78, 462, 526, 548), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (230, 660, 370, 750), 0.95, 3.0),
+    ),
+    # Measured 2026-11-02 over en, es, fr, pt, sw (the twins' rows, plus 4px).
+    # Swahili's title wraps to three lines and starts highest; Spanish sets the
+    # widest subtitle. The Originals' bar sits between title and subtitle.
+    "faithful-with-little": (
+        ("byline", (110, 98, 490, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (75, 243, 525, 460), 1.0, TITLE_MIN),
+        ("rule", (250, 415, 350, 520), 0.8, 3.0),
+        ("subtitle", (57, 444, 543, 546), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    # Gareth Evans' other four, set in dark ink like Soar (2026-11-02): the union
+    # of every edition's rows (en, am, ar, es, fr, hi, ko, lg, pt, sw, uk, vi),
+    # plus 4px, measured on their twins in the devotional small caps, and the
+    # ornament under the title. Luganda wraps He Holds My Tomorrows to four
+    # lines, which is why its subtitle row reaches 596.
+    "feasting-at-the-table": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (65, 255, 535, 469), 1.0, TITLE_MIN),
+        ("rule", (230, 459, 370, 525), 0.8, 3.0),
+        ("subtitle", (112, 497, 488, 533), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "he-holds-my-tomorrows": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (47, 190, 553, 496), 1.0, TITLE_MIN),
+        ("rule", (230, 486, 370, 552), 0.8, 3.0),
+        ("subtitle", (183, 466, 417, 600), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "stepping-stones-2": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (45, 240, 555, 469), 1.0, TITLE_MIN),
+        ("rule", (230, 459, 370, 525), 0.8, 3.0),
+        ("subtitle", (170, 459, 430, 548), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+    "the-key-in-my-hand": (
+        ("byline", (164, 98, 436, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+        ("title", (49, 239, 551, 484), 1.0, TITLE_MIN),
+        ("rule", (230, 474, 370, 540), 0.8, 3.0),
+        ("subtitle", (202, 464, 398, 548), 0.90, AUTHOR_MIN_CONTRAST),
+        ("mark", (228, 660, 372, 750), 0.95, 3.0),
+    ),
+}
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.

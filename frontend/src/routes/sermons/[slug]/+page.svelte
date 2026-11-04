@@ -8,6 +8,7 @@
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
+	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { type Sermon, type SermonSummary, isTranslated, listSermons } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
@@ -46,6 +47,9 @@
 	import CitePanel from '$lib/components/CitePanel.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
+
+	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
+	$effect(() => holdFlag(document.documentElement, READING_FLAG));
 
 	let { data } = $props();
 	const sermon = $derived(data.sermon as Sermon);
