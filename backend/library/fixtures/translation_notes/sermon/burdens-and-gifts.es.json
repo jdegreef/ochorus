@@ -1,0 +1,70 @@
+{
+ "kind": "sermon",
+ "slug": "burdens-and-gifts",
+ "language": "es",
+ "job_issue": 7159,
+ "references": [
+  {
+   "reference": "Isaiah 40:28-30",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 11:29-30",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 19
+  },
+  {
+   "reference": "1 Samuel 4:9",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Judges 21:25",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 55
+  }
+ ]
+}
