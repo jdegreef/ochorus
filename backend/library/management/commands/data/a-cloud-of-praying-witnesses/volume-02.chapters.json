@@ -1,5 +1,26 @@
 [
   {
+    "chapter": 0,
+    "title": "Introduction: Where We Are in the Story",
+    "person": null,
+    "era": "c. AD 27-30",
+    "region": "Galilee and Judea",
+    "anchor": "Hebrews 12:1",
+    "scriptures": [
+      "Revelation 5:8",
+      "Deuteronomy 6:4"
+    ],
+    "insights": [],
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "Jesus Christ an Example of Prayer"
+      }
+    ],
+    "read_more": []
+  },
+  {
     "chapter": 1,
     "title": "Very Early in the Morning",
     "person": "Jesus",
@@ -18,14 +39,217 @@
       "Isaiah 50:4"
     ],
     "insights": [
-      {"theme": "Dependence", "text": "If Jesus needed to pray, so do we."},
-      {"theme": "Priority", "text": "Busyness is a reason to pray, not an excuse not to."},
-      {"theme": "Guidance", "text": "Prayer gives direction: alone with the Father we are led by God, not driven by the crowd."}
+      {
+        "theme": "Dependence",
+        "text": "If Jesus needed to pray, so do we."
+      },
+      {
+        "theme": "Priority",
+        "text": "Busyness is a reason to pray, not an excuse not to."
+      },
+      {
+        "theme": "Guidance",
+        "text": "Prayer gives direction: alone with the Father we are led by God, not driven by the crowd."
+      }
     ],
     "voices": [
-      {"author": "andrew-murray", "book": "ministry-of-intercession", "chapter": "In the Name of Christ"},
-      {"author": "e-m-bounds", "book": "power-through-prayer", "chapter": "Begin the Day with Prayer"}
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "In the Name of Christ"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Begin the Day with Prayer"
+      }
     ],
-    "read_more": ["power-through-prayer", "reality-of-prayer", "ministry-of-intercession"]
+    "read_more": [
+      "power-through-prayer",
+      "reality-of-prayer",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "chapter": 2,
+    "title": "All Night on the Mountain",
+    "person": "Jesus",
+    "era": "c. AD 28",
+    "region": "Galilee",
+    "anchor": "Luke 6:12",
+    "scriptures": [
+      "Luke 6:11",
+      "Luke 6:13",
+      "Mark 3:17",
+      "Luke 6:16",
+      "John 6:70",
+      "Mark 3:14",
+      "Mark 6:46",
+      "Luke 9:28",
+      "Acts 1:24",
+      "Acts 14:23",
+      "James 1:5"
+    ],
+    "insights": [
+      {
+        "theme": "Guidance",
+        "text": "Big decisions deserve big prayer."
+      },
+      {
+        "theme": "Suffering",
+        "text": "Praying does not promise an easy road, but it keeps us in the will of God."
+      },
+      {
+        "theme": "The church",
+        "text": "The church was born on a mountain of prayer: its first leaders were chosen after prayer."
+      }
+    ],
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "Jesus Christ an Example of Prayer"
+      }
+    ],
+    "read_more": [
+      "reality-of-prayer",
+      "power-through-prayer"
+    ]
+  },
+  {
+    "chapter": 3,
+    "title": "\"Lord, Teach Us to Pray\"",
+    "person": "Jesus and His disciples",
+    "era": "c. AD 29",
+    "region": "Judea",
+    "anchor": "Luke 11:1",
+    "scriptures": [
+      "Mark 1:35",
+      "Luke 6:12",
+      "Luke 11:2-4",
+      "Luke 11:5-8",
+      "Luke 11:13",
+      "Romans 8:26"
+    ],
+    "insights": [
+      {
+        "theme": "Learning to pray",
+        "text": "Prayer can be learned; it is not a gift for a special few."
+      },
+      {
+        "theme": "Example",
+        "text": "We learn to pray by watching people who pray."
+      },
+      {
+        "theme": "The Holy Spirit",
+        "text": "Jesus is a willing teacher, and still gives His Spirit to all who ask."
+      }
+    ],
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Only Teacher"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "reality-of-prayer"
+    ]
+  },
+  {
+    "chapter": 4,
+    "title": "Our Father in Heaven",
+    "person": "The Lord's Prayer (I)",
+    "era": "c. AD 28",
+    "region": "Galilee",
+    "anchor": "Matthew 6:9-10",
+    "scriptures": [
+      "Matthew 6:5",
+      "Matthew 6:7-8",
+      "Mark 14:36",
+      "Romans 8:15",
+      "Luke 15:20",
+      "Isaiah 6:3",
+      "Revelation 11:15",
+      "Luke 22:42",
+      "Matthew 6:33"
+    ],
+    "insights": [
+      {
+        "theme": "God as Father",
+        "text": "Prayer begins with relationship, not requests."
+      },
+      {
+        "theme": "Praying together",
+        "text": "We never pray alone: \"Our Father\" joins us to the whole family of God."
+      },
+      {
+        "theme": "Priority",
+        "text": "God's concerns come first: His name, His kingdom, His will."
+      }
+    ],
+    "voices": [
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Preface to the Lord's Prayer"
+      }
+    ],
+    "read_more": [
+      "the-lords-prayer",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "chapter": 5,
+    "title": "Bread, Forgiveness, Deliverance",
+    "person": "The Lord's Prayer (II)",
+    "era": "c. AD 28",
+    "region": "Galilee",
+    "anchor": "Matthew 6:11-13",
+    "scriptures": [
+      "Deuteronomy 24:15",
+      "Exodus 16:4",
+      "Proverbs 30:8",
+      "1 John 1:9",
+      "Matthew 6:14-15",
+      "Matthew 18:22",
+      "Luke 23:34",
+      "James 1:13",
+      "1 Corinthians 10:13",
+      "Matthew 26:41",
+      "John 17:15"
+    ],
+    "insights": [
+      {
+        "theme": "Daily dependence",
+        "text": "God cares about our daily needs; we trust Him one day at a time."
+      },
+      {
+        "theme": "Forgiveness",
+        "text": "Forgiven people forgive."
+      },
+      {
+        "theme": "Spiritual warfare",
+        "text": "We need God's protection every day from testing and the evil one."
+      }
+    ],
+    "voices": [
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Fourth Petition: Give Us This Day Our Daily Bread"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Fifth Petition: Forgive Us Our Debts"
+      }
+    ],
+    "read_more": [
+      "the-lords-prayer",
+      "school-of-prayer"
+    ]
   }
 ]
