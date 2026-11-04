@@ -19,10 +19,16 @@ import { contentLang } from '$lib/reading';
  * The numbers go through `volumeNumeral`, the call the cover's own ring makes,
  * so a Persian page says ۲ in both places rather than a ring and a sentence
  * that disagree about digits.
+ *
+ * "Of N" counts the published volume numbers, so while a series is still
+ * coming out with its earlier volumes unwritten (Volume 2 first), N falls
+ * below the book's own number; "Book 2 of 1" is false, so the line names the
+ * series instead until the earlier volumes arrive.
  */
 export function seriesLabel(series: BookSeriesLine, language: string): string {
 	const position = volumeNumeral(series.position, language);
-	if (!position) return m.book_series_member({ series: series.title });
+	if (!position || series.total < (series.position ?? 0))
+		return m.book_series_member({ series: series.title });
 	return m.book_series_volume({
 		position,
 		total: volumeNumeral(series.total, language) ?? String(series.total),
