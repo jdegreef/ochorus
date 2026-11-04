@@ -2031,3 +2031,74 @@ Lord Jesus, You prayed on the mountain and in the garden and on the cross, and n
 
 - Andrew Murray, *With Christ in the School of Prayer*, especially "Christ the Intercessor" and "Christ the High Priest"
 - Charles H. Spurgeon, *Mighty Power in Prayer*, especially "The Throne of Grace"
+
+---
+
+## Conclusion: Passing the Torch
+
+> "All of these were devoted to prayer and of one mind in it. With them were the women, Mary the mother of Jesus, and His brothers." (Acts 1:14)
+
+We began this book on a dark road outside Capernaum, watching Jesus slip away before dawn to pray. We end it on the Mount of Olives, watching Him rise into heaven with His hands raised in blessing.
+
+In between, we have walked with Him through the whole of His life of prayer. We have climbed the mountain where He prayed all night. We have stood with the disciples in "a certain place" and heard them ask, "Lord, teach us how to pray." We have knelt with Him in the garden and stood beneath His cross. And we have seen Him take His seat at the right hand of the Father, where He always lives to pray for us.
+
+### What the Teacher taught us
+
+If you have read this far, you have sat in the school of the greatest Teacher of prayer the world has ever known. Here, in a few lines, is some of what He taught:
+
+- Give God the first of your day, and slip away to pray when life is busiest (chapter 1).
+- Bring your biggest decisions to God before you make them (chapter 2).
+- Prayer can be learned, and Jesus is a willing teacher (chapter 3).
+- Begin with "Our Father." Put His name, His kingdom and His will first (chapter 4).
+- Ask for today's bread, forgive as you have been forgiven, and ask to be kept from the evil one (chapter 5).
+- Pray in secret, for an audience of One (chapter 6).
+- Ask, search and knock, and keep knocking, especially for others (chapter 7).
+- Pray at all times and do not lose heart (chapter 8).
+- Come humbly, asking for mercy, and never look down on others (chapter 9).
+- Have faith in God, and trust His will as well as His power (chapter 10).
+- Pray together, and make peace so that you can (chapter 11).
+- Let God's house be a house of prayer for all the nations (chapter 12).
+- Ask the Lord of the harvest to send out workers, and be ready to go (chapter 13).
+- Give thanks, even before you see the answer and even through tears (chapter 14).
+- Ask in Jesus' name, on His credit and for His glory (chapter 15).
+- Remember that Jesus prays for your faith, even before you fall (chapter 16).
+- Pray for the unity of all His people (chapter 17).
+- Tell God honestly what you want, and then say, "Not what I want; what You want" (chapter 18).
+- Pray for your enemies, cry out honestly in the dark, and place your life in the Father's hands (chapter 19).
+- Come boldly to the throne of grace, because Jesus is praying for you there (chapter 20).
+
+You will find all of these lessons gathered by theme in Appendix A, and every Scripture we have read listed in Bible order in Appendix B.
+
+No one learns all of this at once. The disciples did not. They fell asleep in Gethsemane on the very night Jesus taught them most. Be patient with yourself. Choose one lesson and practice it until it becomes part of you. Then choose another. The school of prayer lasts a lifetime.
+
+### The torch is passed
+
+But the story does not end with the ascension. It begins again.
+
+Before He left, Jesus told His disciples to wait in Jerusalem "for what the Father had promised" (Acts 1:4), the gift of the Holy Spirit. And so they went back to the city, to an upstairs room, and did the one thing He had taught them above all else. They prayed.
+
+> "All of these were devoted to prayer and of one mind in it." (Acts 1:14)
+
+Look at who was in that room. The eleven apostles, including Peter, who had denied Him and been restored. The women who had followed Him from Galilee and stood at the cross. Mary His mother. And His brothers, who had once refused to believe in Him. About a hundred and twenty people in all, waiting and praying together.
+
+The Teacher had gone. Now His students were praying without Him in the room, and yet He was with them, just as He had promised. The torch had been passed.
+
+In **Volume 3, *Devoted to Prayer***, we will follow them out of that upper room and into the streets of Jerusalem and the roads of the Roman world. We will be there when the Spirit falls at Pentecost and three thousand believe. We will see the church pray until the building shakes, pray through the night for Peter in prison, and send out its first missionaries from a prayer meeting in Antioch. We will hear Paul and Silas singing at midnight in a prison cell, and read the prayers Paul wrote for the churches he loved. We will watch ordinary men and women put into practice everything Jesus taught them.
+
+And after them, in the volumes that follow, comes the great cloud of witnesses: martyrs and monks, reformers and revivalists, mothers and missionaries, from every nation and every century, all of them students in the same school, all of them learning from the same Teacher.
+
+### Your turn
+
+The writer of Hebrews, having described that great cloud of witnesses, does not tell us to look at them. He tells us where to look:
+
+> "Let us keep our eyes on Jesus, the pioneer who leads the way in faith and brings it to perfection." (Hebrews 12:2)
+
+That is what this book has tried to do. Before we meet the witnesses, we have looked at Jesus. Everything they knew about prayer, they learned from Him. Everything we will learn from them points back to Him.
+
+Now it is your turn. The same Jesus who rose before dawn to pray, who taught His friends to say "Our Father," who prayed for Peter by name and for you before you were born, is praying for you now. The same Father who heard Him is ready to hear you. The same Spirit who filled that upper room lives in every believer.
+
+So take up the torch. Go into your inner room and shut the door. Find two or three others and pray together. Ask, search and knock. Give thanks. Forgive. Do not lose heart. And every time you pray, remember that you are joining a prayer meeting that began with Jesus, that has never stopped, and that will one day fill the whole earth.
+
+### A closing prayer
+
+Lord Jesus, thank You for teaching me to pray. Thank You for every lesson in this book: for the early morning and the long night, for the secret room and the prayer meeting, for the Lord's Prayer and the prayer from the cross. Forgive me for how slowly I learn. Keep me in Your school all my life. Fill me with Your Holy Spirit, as You filled Your first disciples. Make me devoted to prayer, and of one mind with Your people everywhere. And as I go on from here, keep my eyes on You, the pioneer of my faith, who always lives to pray for me. Amen.
