@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "clement-of-alexandria",
+ "language": "es",
+ "job_issue": 7145,
+ "references": [
+  {
+   "reference": "Isaiah 42:7a",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 35:5",
+   "status": "self_rendered",
+   "block_index": 11
+  }
+ ]
+}
