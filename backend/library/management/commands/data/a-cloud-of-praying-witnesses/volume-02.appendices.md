@@ -1,4 +1,4 @@
-## Appendix A: Key Insights
+## Appendix 1: Key Insights
 
 Every chapter of this book closes with three key insights. Here they are gathered by theme, so you can see at a glance what Jesus teaches about each part of prayer. Each insight points back to the chapter where it is taught and to that chapter's key verse.
 
@@ -106,7 +106,7 @@ Every chapter of this book closes with three key insights. Here they are gathere
 
 ---
 
-## Appendix B: Scripture Index
+## Appendix 2: Scripture Index
 
 Every passage of Scripture quoted or referred to in this book, in Bible order, with the chapters where it appears. "Key verse" marks the Scripture a chapter is built on.
 

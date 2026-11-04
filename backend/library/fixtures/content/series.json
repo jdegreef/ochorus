@@ -208,7 +208,21 @@
   "created_at": "2026-10-10T00:00:00Z",
   "updated_at": "2026-10-10T00:00:00Z"
  }
+},{
+ "model": "library.series",
+ "fields": {
+  "slug": "a-cloud-of-praying-witnesses",
+  "title": "A Cloud of Praying Witnesses",
+  "description": "Prayer through the whole story of the church, one volume to an era: the prayers of the Old Testament, Jesus the Teacher of Prayer, the apostles, and the praying men and women of every century and every land down to today. Each short chapter sets a key verse, tells a story, hears a voice from the past, and ends with insights, a practice and a prayer.",
+  "sort_order": 140,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-11-04T00:00:00Z",
+  "updated_at": "2026-11-04T00:00:00Z"
+ }
 },
+
 {
  "model": "library.seriestranslation",
  "fields": {

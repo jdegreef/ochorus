@@ -1,6 +1,6 @@
-# Lord, Teach Us to Pray
+# Jesus, Teacher of Prayer
 
-*Jesus, the Teacher of Prayer*
+*Lord, teach us to pray*
 
 *A Cloud of Praying Witnesses, Volume 2*
 
@@ -2067,7 +2067,7 @@ If you have read this far, you have sat in the school of the greatest Teacher of
 - Pray for your enemies, cry out honestly in the dark, and place your life in the Father's hands (chapter 19).
 - Come boldly to the throne of grace, because Jesus is praying for you there (chapter 20).
 
-You will find all of these lessons gathered by theme in Appendix A, and every Scripture we have read listed in Bible order in Appendix B.
+You will find all of these lessons gathered by theme in Appendix 1, and every Scripture we have read listed in Bible order in Appendix 2.
 
 No one learns all of this at once. The disciples did not. They fell asleep in Gethsemane on the very night Jesus taught them most. Be patient with yourself. Choose one lesson and practice it until it becomes part of you. Then choose another. The school of prayer lasts a lifetime.
 
