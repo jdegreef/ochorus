@@ -2104,9 +2104,11 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 .reading blockquote {
 	margin: 1.4em 0;
 	/* Logical, not physical: .reading is direction-aware (dir="auto"), so an
-	   Arabic chapter must get the accent rule on the right. */
+	   Arabic chapter must get the rule on the right. Gold, the one quotation
+	   rule (STYLE_GUIDE §1; article and bio pull-quotes wear it too) — it was
+	   --accent-soft, which sits ~1.1:1 on the page and all but vanished. */
 	padding-inline-start: 1.1em;
-	border-inline-start: 3px solid var(--accent-soft);
+	border-inline-start: 3px solid var(--gold);
 	color: var(--muted);
 	font-style: italic;
 }
@@ -3787,9 +3789,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		color: var(--text);
 		white-space: nowrap;
 	}
-	.tag:hover {
-		border-color: var(--accent);
-		color: var(--accent);
+	/* One pill hover (page-design J2): the surface-2 fill .chip and .btn-ghost
+	   already use. The accent edge + text is the SELECTED look (.chip.active),
+	   so a hovered link pill wearing it read as "already chosen". Only on a
+	   control: a `<span class="tag">` (a plan's key verse) is a label, not a
+	   target, and must not answer the pointer. */
+	.tag:is(a, button):hover {
+		background: var(--surface-2);
 		text-decoration: none;
 	}
 	/* A tag riding inline in a line of text — the A–Z index's young-reader

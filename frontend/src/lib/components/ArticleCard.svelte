@@ -57,7 +57,7 @@
 	   .sermon-card (page-design D3/H1). */
 	.article-card {
 		display: block;
-		padding: 1.1rem 1.25rem;
+		padding: 1.25rem; /* p-5, the card band (page-design H2) */
 		text-decoration: none;
 		color: inherit;
 	}

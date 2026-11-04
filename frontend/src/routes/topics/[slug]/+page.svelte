@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import { TOPIC_FOR } from '$lib/forPromos';
-	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import { afterNavigate } from '$app/navigation';
@@ -257,8 +256,9 @@
 					{#if topic.books.length || topic.sermons.length}
 						<a
 							href={localizeHref(scopedSearchHref('topic', topic.slug))}
-							class="inline-block text-small font-semibold text-accent hover:underline"
-							>{t('search.inTopic')} <Arrow /></a
+							class="btn btn-sm btn-ghost"
+							aria-label={t('search.inTopic')}
+							title={t('search.inTopic')}><Icon name="search" size={16} /><span>{t('nav.search')}</span></a
 						>
 					{/if}
 					<span class="text-small text-muted">

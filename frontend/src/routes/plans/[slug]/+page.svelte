@@ -4,7 +4,7 @@
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { planMinutesPerDay, planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
+	import { contentLang, planMinutesPerDay, planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { ORIGINALS_SLUG, authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
@@ -318,7 +318,7 @@
 			</p>
 			<!-- The whole title stays the h1's text; its subtitle is drawn as the
 			     book page draws one. -->
-			<h1 class="text-h1" dir="auto">
+			<h1 class="text-h1" dir="auto" lang={contentLang(plan.language)}>
 				{titleParts.main}{#if titleParts.sub}<span class="sr-only">{': '}</span><span
 						class="mt-1 block text-h3 font-normal text-muted">{titleParts.sub}</span
 					>{/if}
@@ -822,9 +822,6 @@
 	.verse-chip {
 		flex-shrink: 0;
 		color: var(--muted);
-	}
-	.verse-chip:hover {
-		border-color: var(--border);
 	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {
