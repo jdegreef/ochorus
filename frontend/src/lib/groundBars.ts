@@ -58,7 +58,6 @@ export const GROUND_BARS: Record<string, number> = {
 	'holiness': 0.020,
 	'holy-dying': 0.015,
 	'holy-living': 0.020,
-	'homilies-on-romans': 0.030,
 	'how-to-bring-men-to-christ': 0.055,
 	'how-to-succeed-in-the-christian-life-teens': 0.110,
 	'hurlbuts-life-of-christ': 0.060,

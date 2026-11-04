@@ -15812,7 +15812,7 @@
 			]
 		},
 		"homilies-on-romans": {
-			"ground": "1f4e1da41eb1fa4cf0be34543a03b21976d82ed029a3f05512a7add47a2c0bb9",
+			"ground": "fef6f5dc8d476bcd9c66c341b46dadb587fc0959727d84bdc4f3879fbe1bb482",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
@@ -15820,7 +15820,7 @@
 			"art": true,
 			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0.03,
+			"bar": 0,
 			"caps": false,
 			"rows": {
 				"byline": [
