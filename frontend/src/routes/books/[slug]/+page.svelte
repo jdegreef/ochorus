@@ -62,6 +62,8 @@
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
 	import { distinctTitle, downloadFormats, titleWithFormats } from '$lib/bookSeo';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { adminWorkHref } from '$lib/adminLinks';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -805,6 +807,16 @@
 						<span class="btn-label">{t('nav.search')}</span>
 					</a>
 				</div>
+				<!-- Admins only (reporting:view opens the page; the API gates it too).
+				     English, like the admin it leads to. Outside the strip, which is
+				     the reader's row of five. -->
+				{#if auth.can('reporting')}
+					<p class="mt-2 text-small">
+						<a href={localizeHref(adminWorkHref('book', book.slug))} class="text-muted hover:text-accent"
+							>Open in admin <Arrow /></a
+						>
+					</p>
+				{/if}
 				<!-- A book with files to take offline: the leaders who carry books
 				     where there is no signal. -->
 				{#if book.pdf_url || book.epub_url}

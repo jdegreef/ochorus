@@ -47,6 +47,8 @@
 	import CitePanel from '$lib/components/CitePanel.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { adminWorkHref } from '$lib/adminLinks';
 
 	// A page of reading text is open (app.css CANDLELIGHT; $lib/presenceFlag).
 	$effect(() => holdFlag(document.documentElement, READING_FLAG));
@@ -585,6 +587,15 @@
 							<button class="account-item more-item" onclick={fromMore(() => readerUi.toggleFocus())}
 								><Icon name="maximize" size={20} />{t('reader.focus')}</button
 							>
+							<!-- Admins only (reporting:view opens the page; the API gates it
+							     too). English, like the admin it leads to. -->
+							{#if auth.can('reporting')}
+								<a
+									class="account-item more-item"
+									href={localizeHref(adminWorkHref('sermon', sermon.slug))}
+									onclick={() => (moreOpen = false)}>Open in admin</a
+								>
+							{/if}
 						</div>
 					{/if}
 				</div>
