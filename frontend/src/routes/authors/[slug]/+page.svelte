@@ -26,6 +26,7 @@
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { authorCardUrl } from '$lib/authorCard';
 	import AuthorHero from '$lib/components/AuthorHero.svelte';
+	import AuthorCandle from '$lib/components/AuthorCandle.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -461,6 +462,8 @@
 				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
 			</p>
 		{/if}
+		<!-- Their birthday, or the day they died: a candle and the date. -->
+		<AuthorCandle slug={author.slug} />
 		<!-- The writer's traditions and place, each a hub page of writers like them. -->
 		{#if author.hubs?.length}
 			<ul class="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">

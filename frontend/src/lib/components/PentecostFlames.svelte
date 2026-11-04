@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { watchToday } from '$lib/today';
 	import { FLAME_PATH } from '$lib/flamePath';
 	import { feastDay } from '$lib/liturgical';
 
@@ -11,20 +12,12 @@
 	 *
 	 * Decided on mount, not at render: the prerendered SEO pages are built
 	 * once, on the build's own day, and must not carry its feast into every
-	 * other day. Re-checked when the tab comes back into view, as the hero's
-	 * date and the Church-year palette are, so a tab left open across the day
-	 * lights (and puts out) the flames with them. Decorative (aria-hidden);
+	 * other day. Re-checked as the day turns ($lib/today), so a tab left open
+	 * across midnight lights (and puts out) the flames with it. Decorative (aria-hidden);
 	 * the flames flicker up once and then burn still.
 	 */
 	let on = $state(false);
-	onMount(() => {
-		const check = () => {
-			if (document.visibilityState === 'visible') on = feastDay(new Date()) === 'pentecost';
-		};
-		check();
-		document.addEventListener('visibilitychange', check);
-		return () => document.removeEventListener('visibilitychange', check);
-	});
+	onMount(() => watchToday((now) => (on = feastDay(now) === 'pentecost')));
 </script>
 
 {#if on}
