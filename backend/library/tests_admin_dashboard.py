@@ -1813,6 +1813,54 @@ class AdminBookDetailTests(TestCase):
         res = self.client.get("/api/admin/books/nope/")
         self.assertEqual(res.status_code, 404)
 
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="test-token")
+    def test_untranslated_languages_carry_their_job_stage(self):
+        from unittest.mock import patch
+
+        from .languages import target_codes
+        from .models import AdminAction
+
+        targets = [c for c in target_codes() if c != "sw"]
+        self.assertGreaterEqual(len(targets), 3, "needs three untranslated target languages")
+        queued, shipped, never = targets[:3]
+        for lang in (queued, shipped):
+            AdminAction.objects.create(
+                action=AdminAction.Action.TRANSLATION_JOB, actor="admin@example.com",
+                target=f"book:humility:{lang}", detail={},
+            )
+        open_jobs = [{
+            "type": "book", "slug": "humility", "language": queued, "state": "in_progress",
+            "number": 5, "url": "https://github.com/o/r/issues/5", "created_at": "",
+            "updated_at": timezone.now().isoformat(),
+        }]
+        prs = [{
+            "url": "https://github.com/o/r/pull/9", "title": "", "branch": "",
+            "body": f"[translation] book:humility -> {shipped}",
+        }]
+        with (
+            patch("library.admin_views.jobs._list_open_jobs", return_value=open_jobs),
+            patch("library.admin_views.jobs.list_open_prs", return_value=prs),
+        ):
+            res = self.client.get("/api/admin/books/humility/")
+        missing = {lang["code"]: lang for lang in res.data["untranslated"]["languages"]}
+        self.assertFalse(res.data["untranslated"]["blocked"])
+        # Editions that exist are not gaps; English is the source, never a target.
+        self.assertNotIn("sw", missing)
+        self.assertNotIn("en", missing)
+        self.assertEqual(missing[queued]["job_status"], "in_progress")
+        self.assertEqual(missing[queued]["issue_url"], "https://github.com/o/r/issues/5")
+        self.assertEqual(missing[shipped]["job_status"], "pr_open")
+        self.assertEqual(missing[shipped]["pr_url"], "https://github.com/o/r/pull/9")
+        # Never filed: "none", not a guessed "closed".
+        self.assertEqual(missing[never]["job_status"], "none")
+        self.assertIsNone(missing[never]["issue_url"])
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="")
+    def test_untranslated_without_a_queue_still_lists_the_gaps(self):
+        res = self.client.get("/api/admin/books/humility/")
+        stages = {lang["job_status"] for lang in res.data["untranslated"]["languages"]}
+        self.assertEqual(stages, {"none"})
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/books/humility/")

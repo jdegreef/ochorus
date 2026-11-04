@@ -24,6 +24,7 @@
 		initials,
 		issueRange,
 		jobStatusMeta,
+		JOB_TONE_CLASS,
 		jobTally,
 		type JobStatusMeta,
 		parseTarget,
@@ -40,10 +41,12 @@
 	// ---- filter state ----
 	// Every filter runs on the server, over the whole log: filtering the loaded
 	// page answered "nothing matches" for anything older than its newest 100.
-	let query = $state('');
+	// Seeded from ?q= so another page can link a pre-filtered log (a work's page
+	// links `?q=book:<slug>:`, every language's rows of that work).
+	let query = $state($page.url.searchParams.get('q') ?? '');
 	// The search as sent — trails the input by a beat, so typing a word is one
 	// request rather than one per keystroke.
-	let sentQuery = $state('');
+	let sentQuery = $state($page.url.searchParams.get('q') ?? '');
 	let activeCat = $state<Category | 'all'>('all');
 	let activeActor = $state('');
 	// A translation job's stage, or 'needs_me' (PR open, closed, or awaiting approval).
@@ -210,15 +213,7 @@
 			{ key: 'review' as const, value: c.review, label: 'Need your approval', sub: 'shipped as AI translations', tone: 'text-accent' }
 		];
 	});
-	/** Pill classes per tone — the same scale the stage bar uses. */
-	const JOB_TONE: Record<JobStatusMeta['tone'], string> = {
-		muted: 'border-border text-muted',
-		active: 'border-border-strong text-text',
-		danger: 'border-danger text-danger',
-		warning: 'border-warning text-warning',
-		live: 'border-accent-soft-border bg-accent-soft text-accent',
-		done: 'border-accent bg-accent text-accent-contrast'
-	};
+	const JOB_TONE = JOB_TONE_CLASS;
 	const JOB_BAR: Record<JobStatusMeta['tone'], string> = {
 		muted: 'bg-border-strong',
 		active: 'bg-muted',
