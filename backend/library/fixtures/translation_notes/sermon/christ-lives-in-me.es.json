@@ -1,0 +1,126 @@
+{
+ "kind": "sermon",
+ "slug": "christ-lives-in-me",
+ "language": "es",
+ "job_issue": 7169,
+ "references": [
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 13:4-5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ezekiel 18:2",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 12:5",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 46
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 46
+  },
+  {
+   "reference": "Hebrews 12:7a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 59
+  },
+  {
+   "reference": "Luke 14:26",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "John 10:18a",
+   "status": "mined",
+   "source_file": "the-excellency-of-christ.es.json",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 27:42",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 75
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "the-masters-indwelling.es.json",
+   "block_index": 77
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json",
+   "block_index": 78
+  },
+  {
+   "reference": "Matthew 16:25b",
+   "status": "mined",
+   "source_file": "the-pursuit-of-god.es.json",
+   "block_index": 78
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "2 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "2 Corinthians 4:7b",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 92
+  },
+  {
+   "reference": "Psalms 46:1",
+   "status": "self_rendered",
+   "block_index": 88
+  }
+ ]
+}
