@@ -1704,6 +1704,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ("<p>Qu’il est doux au cœur",
              "<blockquote><em>« L’Éternel Dieu est un soleil et un bouclier,<br/> L’Éternel donne la grâce et la gloire,<br/> Il ne refuse aucun bien à ceux<br/> qui marchent dans l’intégrité. »<br/></em> — PSAUME 84:12.</blockquote>"),
+            # es
+            ("<p>¡Qué grato es al corazón",
+             '<blockquote><em>"El SEÑOR DIOS es Sol y Escudo;<br/> gracia y gloria dará el SEÑOR:<br/> ninguna cosa buena negará<br/> a los que andan en integridad."<br/></em>—SALMO 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
