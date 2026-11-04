@@ -1,0 +1,133 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-of-these-is-love",
+ "language": "es",
+ "job_issue": 7197,
+ "references": [
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "1 Corinthians 13:1-7",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Micah 7:19",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Psalms 103:11",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Jeremiah 1:12",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "2 Kings 6:16",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 150
+  },
+  {
+   "reference": "Psalms 139:23",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 160
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 174
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "block_index": 175
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "the-bruised-reed.es.json",
+   "block_index": 186
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "self_rendered",
+   "block_index": 190
+  }
+ ]
+}
