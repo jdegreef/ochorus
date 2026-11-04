@@ -1,0 +1,153 @@
+{
+ "kind": "sermon",
+ "slug": "the-way-of-salvation-made-plain",
+ "language": "es",
+ "job_issue": 7192,
+ "references": [
+  {
+   "reference": "Acts 16:29-31",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 10:43",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "evening-by-evening.es.json",
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "pilgrims-progress-teens.es.json",
+   "block_index": 5
+  },
+  {
+   "reference": "John 8:34",
+   "status": "mined",
+   "source_file": "the-pursuit-of-god.es.json",
+   "block_index": 6
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "source_file": "amanda-smith-autobiography-teens.es.json",
+   "block_index": 6
+  },
+  {
+   "reference": "John 14:11",
+   "status": "mined",
+   "source_file": "reality-of-prayer.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "John 13:13",
+   "status": "mined",
+   "source_file": "at-the-masters-feet.es.json",
+   "block_index": 10
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 10
+  },
+  {
+   "reference": "John 20:29",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 7:48",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 7:50",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:1-2",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 15:3-4",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 6:46",
+   "status": "mined",
+   "source_file": "how-to-succeed-in-the-christian-life.es.json",
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 10:9-10",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 25
+  },
+  {
+   "reference": "Matthew 12:34b",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.es.json",
+   "block_index": 26
+  }
+ ]
+}
