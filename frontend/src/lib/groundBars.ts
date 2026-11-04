@@ -62,6 +62,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'how-to-succeed-in-the-christian-life-teens': 0.110,
 	'hurlbuts-life-of-christ': 0.060,
 	'indwelling-sin-in-believers': 0.025,
+	'jesus-teacher-of-prayer': 0.110,
 	'john-hyde-a-life-children': 0.065,
 	'john-hyde-a-life-teens': 0.110,
 	'john-hyde-a-life': 0.100,

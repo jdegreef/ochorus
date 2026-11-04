@@ -16221,6 +16221,38 @@
 				474
 			]
 		},
+		"jesus-teacher-of-prayer": {
+			"ground": "79538f8cf844ab47d19178ce617c5d180b47cbc2544125885f066ae0c577003f",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[80, 328, 520, 404],
+					[159, 394, 441, 470]
+				],
+				"subtitle": [
+					[188, 528, 412, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"john-hyde-a-life": {
 			"ground": "99d3db2fb6d2acadc76a7a18a0e102e56b75325b51c7e94e8dcc4b48e69ef3b0",
 			"style": "house",

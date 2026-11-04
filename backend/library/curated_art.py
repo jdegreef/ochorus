@@ -1668,6 +1668,20 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # A Cloud of Praying Witnesses, Vol. 2: Jesus, Teacher of Prayer (Ochorus
+    # Original). The series has no museum painting yet: the session that
+    # shipped this volume could reach no collection host (the museum APIs,
+    # Commons and Wikidata were all blocked), so the ground is our own, drawn
+    # as an inline SVG and rendered in headless Chromium at 2x. Generator:
+    # scripts/original_grounds/praying_witnesses.py. A public-domain painting
+    # (a Galilean dawn, or Gethsemane at night) would be the natural level-up:
+    # a two-line diff here plus a CURATED entry.
+    "jesus-teacher-of-prayer": Original(
+        "2c2c6ebe41013aba35a6e16246b87f4970e103bdb9d1103f901a5f6d600a0c4e",
+        "Mark 1:35, 'a great while before day': the Galilean hills under a deep "
+        "night sky, first light low behind the far ridge, and one figure "
+        "kneeling in prayer on the near ridge. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
