@@ -1,0 +1,98 @@
+{
+ "kind": "sermon",
+ "slug": "the-spirit-of-prayer",
+ "language": "es",
+ "job_issue": 7165,
+ "references": [
+  {
+   "reference": "Romans 8:26-27",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 8:13-16",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 13
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 49:11",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 25
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "1 John 4:2-3",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 30
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 58
+  },
+  {
+   "reference": "Mark 11:23-24",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 64
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json",
+   "block_index": 74
+  }
+ ]
+}
