@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "frances-ridley-havergal",
+ "language": "es",
+ "job_issue": 7139,
+ "references": [
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 11
+  },
+  {
+   "reference": "Exodus 32:26a",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json",
+   "block_index": 22
+  }
+ ]
+}
