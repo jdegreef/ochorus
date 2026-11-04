@@ -120,7 +120,7 @@ import {
 // `script-` class, no `lang` and no `dir`: an Arabic preview would have been
 // set in the Latin face and laid out left-to-right.
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
-import { coverTitle } from '../src/lib/coverTitle.ts';
+import { coverTitle, editionOf } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
@@ -652,7 +652,10 @@ html,body{margin:0}
   ${coverPlateMarkup(
 		{
 			author: book.author,
-			title: book.title,
+			// A young edition's bracket comes off the display type and is set as
+			// its edition line — the component's call (`editionOf`).
+			title: editionOf(book.slug, book.title).words,
+			edition: editionOf(book.slug, book.title).edition,
 			subtitle: book.subtitle,
 			style: book.style,
 			volume: book.volume,

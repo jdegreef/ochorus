@@ -2,7 +2,7 @@
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { isLongTitle, titleFit } from '$lib/coverCardMarkup';
-	import { coverTitle } from '$lib/coverTitle';
+	import { coverTitle, editionOf } from '$lib/coverTitle';
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
@@ -165,6 +165,8 @@
 	/** Eager for the page's LCP image and a shelf's first row; lazy otherwise. */
 	const loading = $derived<'eager' | 'lazy'>(priority || eager ? 'eager' : 'lazy');
 	const setTitle = $derived(coverTitle(book));
+	/** The words set large, and a young edition's edition line under them. */
+	const edition = $derived(editionOf(book.slug, setTitle));
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(
@@ -211,8 +213,8 @@
 			'cover-type',
 			`style-${style}`,
 			script && `script-${script}`,
-			isLongTitle(setTitle) && 'long-title',
-			titleFit(setTitle),
+			isLongTitle(edition.words) && 'long-title',
+			titleFit(edition.words),
 			isArt && typeTopFor(book.slug, layout) && 'type-top',
 			smallCapsFor(book.slug) && 'caps-small'
 		]}
@@ -240,7 +242,8 @@
 			     reaches these nodes and reads the label instead. The metrics come
 			     from the class above, which the LANGUAGE decides — never the
 			     characters (see `scriptOf`). -->
-			<div class="title" {lang} dir="auto">{setTitle}</div>
+			<div class="title" {lang} dir="auto">{edition.words}</div>
+			{#if edition.edition}<div class="edition" {lang} dir="auto">{edition.edition}</div>{/if}
 			<div class="rule"></div>
 			{#if book.subtitle}<div class="subtitle" {lang} dir="auto">
 				{book.subtitle}
