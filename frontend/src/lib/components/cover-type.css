@@ -731,8 +731,12 @@
 	content: ' —';
 }
 
-/* Two lines at most — the generator's own subtitle budget; past that the plate
-   is a thumbnail and the words are unreadable anyway. */
+/* Three lines at most. It was two — "the generator's own subtitle budget" —
+   which cut the long Puritan title-page lines mid-word on the tracked-caps
+   styles (« …THAT IS IN THE BLOOD O… », Owen's Death of Death; Of Temptation,
+   Indwelling Sin, The Method of Grace; Rooted 4 in es/fr/pt, 2026-11-04). A
+   clamp acts only on a line that overflows, so every subtitle that fit in two
+   is set exactly as before; the thumbnail container query hides it anyway. */
 .cover-type .subtitle {
 	margin-top: 3cqw;
 	font-family: var(--font-display);
@@ -741,8 +745,8 @@
 	opacity: 0.85;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	line-clamp: 2;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
 	overflow: hidden;
 	/* A subtitle is a title-page line, not a caption, and must not strand its
 	   last word on a line of its own. `balance` is what `.title` already uses;

@@ -64,7 +64,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'indwelling-sin-in-believers': 0.025,
 	'john-hyde-a-life-children': 0.065,
 	'john-hyde-a-life-teens': 0.110,
-	'john-hyde-a-life': 0.065,
+	'john-hyde-a-life': 0.100,
 	'key-teachings-of-elisabeth-elliot': 0.020,
 	'knots-untied': 0.015,
 	'large-catechism': 0.040,

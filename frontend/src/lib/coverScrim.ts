@@ -98,7 +98,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'interior-castle': 0.30,
 	'introduction-to-the-devout-life': 0.90,
 	'jesus-himself-2': 0.65,
-	'john-hyde-a-life': 0.65,
+	'john-hyde-a-life': 0.55,
 	'john-hyde-a-life-children': 0.30,
 	'john-hyde-a-life-teens': 0.65,
 	'journal-of-an-expedition-up-the-niger': 0.70,
@@ -159,7 +159,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'men-of-prayer-2': 0.30,
 	'men-who-moved-heaven': 0.30,
 	'men-who-tended-the-flock-2': 0.30,
-	'mortification-of-sin': 0.35,
+	'mortification-of-sin': 0.40,
 	'mortification-of-sin-teens': 0.30,
 	'of-temptation': 0.85,
 	'old-paths': 0.70,
@@ -291,7 +291,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'watchman-nee-a-life-teens': 0.30,
 	'way-into-holiest': 0.80,
 	'who-is-the-rich-man-that-shall-be-saved': 0.60,
-	'with-and-without-christ': 0.90,
+	'with-and-without-christ': 0.95,
 	'women-who-moved-heaven-2': 0.30,
 };
 

@@ -665,6 +665,7 @@ CURATED: dict[str, Artwork] = {
         "Owen on killing sin in the believer. Griffier's Dutch winter is the work "
         "in a picture — the year's growth cut back to bare wood and ice, Owen's "
         "own century's weather.",
+        inset=0.05,
     ),
     "selected-sermons-edwards": Artwork(
         "cma", 125058, "Jasper F. Cropsey",
@@ -860,6 +861,7 @@ CURATED: dict[str, Artwork] = {
         "One window lit late in a dark house, the moon over the trees: the night "
         "watches of the missionary the Punjab called \"the man who never "
         "sleeps\". (Was Inness's Moonrise until 2026-10-30.)",
+        inset=0.08,
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
     # The founder's pick of five mockups (2026-09-29). Haarlem from the dunes,
@@ -966,6 +968,7 @@ CURATED: dict[str, Artwork] = {
         "cma", 662050, "Edward Lear", "Hardwar, India", "1875",
         "The pilgrim town on the Ganges where the book's sadhu lay on a bed of "
         "spikes: lives with and without Christ, met on the road.",
+        inset=0.05,
     ),
     "how-i-became-a-christian": Artwork(
         "cma", 139454, "Sōami", "Landscape", "early 1500s",
@@ -1211,6 +1214,7 @@ CURATED: dict[str, Artwork] = {
     "the-great-catechism": Artwork(
         "met", 438640, "Simon Denis", "Mountainous Landscape at Vicovaro", "ca. 1786–97",
         "Hills under a high sky, ordered and whole: Gregory of Nyssa's handbook sets out the faith as one coherent account for those who teach it.",
+        inset=0.05,
     ),
     "the-life-of-god-in-the-soul-of-man": Artwork(
         "met", 436830, "Philips Koninck", "A Panoramic Landscape with a Country Estate", "ca. 1649",
