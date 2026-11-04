@@ -1,0 +1,200 @@
+{
+ "kind": "sermon",
+ "slug": "sermon-at-the-execution-of-moses-paul",
+ "language": "es",
+ "job_issue": 7203,
+ "references": [
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "source_file": "all-of-grace.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 3:4b",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 19:10b",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalms 14:1a",
+   "status": "mined",
+   "source_file": "ten-commandments.es.json",
+   "block_index": 18
+  },
+  {
+   "reference": "James 3:8",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "mined",
+   "source_file": "enchiridion.es.json",
+   "block_index": 18
+  },
+  {
+   "reference": "John 3:19-20",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 3:17b",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json",
+   "block_index": 19
+  },
+  {
+   "reference": "Psalms 58:3",
+   "status": "mined",
+   "source_file": "the-christian-pilgrim.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "John 6:70b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 8:44a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 5:12",
+   "status": "mined",
+   "source_file": "key-teachings-of-jonathan-edwards.es.json",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 3:17b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Genesis 2:16-17",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.es.json",
+   "block_index": 26
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "block_index": 26
+  },
+  {
+   "reference": "Deuteronomy 32:29",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 9:44",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "1 John 4:16b",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Genesis 32:10a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "the-fourfold-gospel.es.json",
+   "block_index": 38
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json",
+   "block_index": 38
+  },
+  {
+   "reference": "Numbers 32:23b",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 42
+  },
+  {
+   "reference": "Genesis 9:6a",
+   "status": "mined",
+   "source_file": "life-experience-gospel-labours.es.json",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 17:5b",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Isaiah 53:3b",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 44
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Ephesians 6:10-17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Psalms 94:8b",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "1 Corinthians 6:10",
+   "status": "self_rendered",
+   "block_index": 56
+  }
+ ]
+}
