@@ -20846,3 +20846,12 @@ BODY_CORRECTIONS.setdefault("naaman-the-syrian", {}).setdefault("replacements", 
     ("(Atos 17:31)", "(Atos 16:31)"),
     ("(Matendo 17:31)", "(Matendo 16:31)"),
 ])
+
+# unto-us-a-child-is-born: "the word is rendered Secret" is Judges 13:18
+# ("seeing it is secret"), printed "(Judges 13:8)"; sw and vi carried it over,
+# fr and ko already read 13:18. Found translating the es edition (#7187).
+BODY_CORRECTIONS.setdefault("unto-us-a-child-is-born", {}).setdefault("replacements", []).extend([
+    ("(Judges 13:8)", "(Judges 13:18)"),
+    ("(Waamuzi 13:8)", "(Waamuzi 13:18)"),
+    ("(Các Quan Xét 13:8)", "(Các Quan Xét 13:18)"),
+])
