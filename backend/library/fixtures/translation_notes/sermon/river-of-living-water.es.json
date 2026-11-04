@@ -1,0 +1,104 @@
+{
+ "kind": "sermon",
+ "slug": "river-of-living-water",
+ "language": "es",
+ "job_issue": 7200,
+ "references": [
+  {
+   "reference": "John 4:10",
+   "status": "mined",
+   "source_file": "unfailing-springs.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 53:4-5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 4:9",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "source_file": "plain-account-christian-perfection.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "John 4:19",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 14:12",
+   "status": "mined",
+   "source_file": "school-of-prayer.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 1:5",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 2:16",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 2:17-18",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "Acts 2:39",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "block_index": 7
+  },
+  {
+   "reference": "John 4:20",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 4:24a",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "John 4:21",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 10:8b",
+   "status": "self_rendered",
+   "block_index": 10
+  }
+ ]
+}
