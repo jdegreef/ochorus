@@ -103,8 +103,8 @@ VOLUMES: dict[int, dict[str, object]] = {
             "about_html": (
                 "<p>The disciples had watched Jesus heal the sick and calm the storm, "
                 "but the one thing they asked Him to teach them was how to pray. This "
-                "book sits beside them in that school. It is Volume 2 of <em>A Cloud of "
-                "Praying Witnesses</em>, an Ochorus series that follows the people of "
+                "book sits beside them in that school. It is Volume 2 of A Cloud of "
+                "Praying Witnesses, an Ochorus series that follows the people of "
                 "God at prayer from the Old Testament to the church around the world "
                 "today, and it begins where every praying Christian has learned: with "
                 "Jesus Himself.</p>"
