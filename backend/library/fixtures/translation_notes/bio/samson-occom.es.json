@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "samson-occom",
+ "language": "es",
+ "job_issue": 7171,
+ "references": [
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 20
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}
