@@ -6,8 +6,10 @@
  * The fixture holds only years (`birth_year` / `death_year`), so the day is
  * curated here, and only where it is well attested — a writer with a baptism
  * date, a disputed day or a feast day standing in for an unknown one is left
- * out rather than guessed. Dates are the ones commonly cited (New Style for the
- * English born before 1752, as their biographers give them). `name` is the
+ * out rather than guessed. Dates are the day as it is commonly cited. For the
+ * English (and their colonies) before 1752 that is usually the Old Style day
+ * their own records give; John Wesley and George Whitefield are kept on the
+ * New Style day their biographers now give instead. `name` is the
  * fixture's, copied so the home line needs no request; `authorDays.test.ts`
  * holds every slug, name and year to `authors.json`.
  */
@@ -32,7 +34,6 @@ export const AUTHOR_DAYS: Record<string, AuthorDays> = {
 	'arthur-t-pierson': { name: "Arthur T. Pierson", born: '1837-03-06', died: '1911-06-03' },
 	'athanasius-of-alexandria': { name: "Athanasius of Alexandria", died: '0373-05-02' },
 	'augustine-of-hippo': { name: "Augustine of Hippo", born: '0354-11-13', died: '0430-08-28' },
-	'basil-of-caesarea': { name: "Basil of Caesarea", died: '0379-01-01' },
 	'bernard-of-clairvaux': { name: "Bernard of Clairvaux", died: '1153-08-20' },
 	'bill-bright': { name: "Bill Bright", born: '1921-10-19', died: '2003-07-19' },
 	'billy-graham': { name: "Billy Graham", born: '1918-11-07', died: '2018-02-21' },
@@ -42,7 +43,7 @@ export const AUTHOR_DAYS: Record<string, AuthorDays> = {
 	'c-s-lewis': { name: "C. S. Lewis", born: '1898-11-29', died: '1963-11-22' },
 	'c-t-studd': { name: "C. T. Studd", born: '1860-12-02', died: '1931-07-16' },
 	'catherine-booth': { name: "Catherine Booth", born: '1829-01-17', died: '1890-10-04' },
-	'catherine-of-siena': { name: "Catherine of Siena", born: '1347-03-25', died: '1380-04-29' },
+	'catherine-of-siena': { name: "Catherine of Siena", died: '1380-04-29' },
 	'charles-finney': { name: "Charles G. Finney", born: '1792-08-29', died: '1875-08-16' },
 	'charles-h-spurgeon': { name: "Charles H. Spurgeon", born: '1834-06-19', died: '1892-01-31' },
 	'christmas-evans': { name: "Christmas Evans", born: '1766-12-25', died: '1838-07-19' },
@@ -109,7 +110,6 @@ export const AUTHOR_DAYS: Record<string, AuthorDays> = {
 	'philip-doddridge': { name: "Philip Doddridge", born: '1702-06-26', died: '1751-10-26' },
 	'phillips-brooks': { name: "Phillips Brooks", born: '1835-12-13', died: '1893-01-23' },
 	'phillis-wheatley': { name: "Phillis Wheatley", died: '1784-12-05' },
-	'polycarp': { name: "Polycarp of Smyrna", died: '0155-02-23' },
 	'r-a-torrey': { name: "R. A. Torrey", born: '1856-01-28', died: '1928-10-26' },
 	'rees-howells': { name: "Rees Howells", born: '1879-10-10', died: '1950-02-13' },
 	'richard-allen': { name: "Richard Allen", born: '1760-02-14', died: '1831-03-26' },
@@ -165,12 +165,4 @@ export function anniversariesOn(date: Date): Anniversary[] {
 		.map((slug) => anniversaryOn(slug, date))
 		.filter((a): a is Anniversary => a !== null)
 		.sort((x, y) => x.name.localeCompare(y.name));
-}
-
-/** "13 November 354" in the reader's language — the day as it was, year and all. */
-export function anniversaryDate(iso: string, lang: string): string {
-	const [y, m, d] = iso.split('-').map(Number);
-	const day = new Date(2000, m - 1, d);
-	day.setFullYear(y); // not the Date(y, …) constructor, which reads 0–99 as 1900–1999
-	return new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(day);
 }

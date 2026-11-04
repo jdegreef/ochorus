@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { AUTHOR_DAYS, anniversariesOn, anniversaryOn } from './authorDays';
 import { isDateKey } from './dailyDate';
+import { anniversaryDate, anniversaryYear } from './anniversaryFormat';
 
 const AUTHORS = JSON.parse(
 	readFileSync(join(__dirname, '..', '..', '..', 'backend', 'library', 'fixtures', 'content', 'authors.json'), 'utf8')
@@ -51,5 +52,16 @@ describe('anniversariesOn', () => {
 	it('lists every writer whose day it is, by name', () => {
 		const names = anniversariesOn(new Date(2026, 0, 18)).map((a) => a.name);
 		expect(names).toEqual(['Amy Carmichael', 'Andrew Murray']);
+	});
+});
+
+describe('anniversaryDate', () => {
+	it('writes the day as it was, ancient years included', () => {
+		expect(anniversaryDate('0354-11-13', 'en')).toBe('November 13, 354');
+		expect(anniversaryDate('1903-11-04', 'fr')).toBe('4 novembre 1903');
+	});
+	it("writes the year in the language's digits", () => {
+		expect(anniversaryYear(354, 'en')).toBe('354');
+		expect(anniversaryYear(1917, 'en')).toBe('1917');
 	});
 });

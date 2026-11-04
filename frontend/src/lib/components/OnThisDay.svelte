@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { Anniversary } from '$lib/authorDays';
 	import { localizeHref } from '$lib/href';
-	import { onPageShown } from '$lib/pageHidden';
+	import { anniversaryYear } from '$lib/anniversaryFormat';
+	import { getLang } from '$lib/lang.svelte';
+	import { watchToday } from '$lib/today';
 	import * as m from '$lib/paraglide/messages.js';
 	import Candle from '$lib/components/Candle.svelte';
 
@@ -11,17 +13,16 @@
 	 * 354" — each a way to their page. Nothing at all on the many days that
 	 * are nobody's (`$lib/authorDays` keeps the days).
 	 *
-	 * The reader's own day, re-read when the tab comes back into view, as the
-	 * hero's date is. The table of days loads after the dashboard's first
-	 * paint, not in its bundle.
+	 * The reader's own day, re-read as it turns ($lib/today). The table of
+	 * days loads after the dashboard's first paint, not in its bundle.
 	 */
+	const table = import('$lib/authorDays').catch(() => null);
 	let days = $state<Anniversary[]>([]);
 	$effect(() => {
 		let live = true;
-		const table = import('$lib/authorDays');
-		const stop = onPageShown(() =>
-			table.then(({ anniversariesOn }) => {
-				if (live) days = anniversariesOn(new Date());
+		const stop = watchToday((now) =>
+			table.then((t) => {
+				if (live) days = t?.anniversariesOn(now) ?? [];
 			})
 		);
 		return () => {
@@ -29,8 +30,10 @@
 			stop();
 		};
 	});
-	const said = ({ name, year, kind }: Anniversary) =>
-		kind === 'born' ? m.home_born_today({ name, year: String(year) }) : m.home_died_today({ name, year: String(year) });
+	const said = ({ name, year, kind }: Anniversary) => {
+		const y = anniversaryYear(year, getLang());
+		return kind === 'born' ? m.home_born_today({ name, year: y }) : m.home_died_today({ name, year: y });
+	};
 </script>
 
 {#if days.length}
