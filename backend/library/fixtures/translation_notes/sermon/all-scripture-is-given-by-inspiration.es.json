@@ -1,0 +1,42 @@
+{
+ "kind": "sermon",
+ "slug": "all-scripture-is-given-by-inspiration",
+ "language": "es",
+ "job_issue": 7185,
+ "references": [
+  {
+   "reference": "2 Timothy 3:16-17",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "2 Timothy 3:16-17",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 16
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Timothy 3:16b-17",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json",
+   "block_index": 28
+  },
+  {
+   "reference": "1 Peter 4:11a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Titus 2:12",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}
