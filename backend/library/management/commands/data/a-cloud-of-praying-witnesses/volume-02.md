@@ -1541,3 +1541,493 @@ Father, I come to You not in my own name, for I have nothing to offer You. I com
 
 - Andrew Murray, *With Christ in the School of Prayer*, especially "The All-Prevailing Plea"
 - R. A. Torrey, *How to Pray*, especially "Praying in the Name of Christ and According to the Will of God"
+
+---
+
+## "I Have Prayed for You"
+
+> "Simon, Simon, Satan has demanded to have all of you, to sift you like wheat. But I have prayed for you, so that your faith will not give out. And you, once you have turned back, must strengthen your brothers." (Luke 22:31-32)
+
+It was the last supper Jesus would eat with His disciples before He died. The bread had been broken and the cup shared. Then, of all things, the disciples began to argue about which of them was the greatest (Luke 22:24).
+
+Into that moment Jesus spoke to Peter. He used his old name, twice, the way you might speak to a dear friend when you have something serious to say: "Simon, Simon."
+
+What He said next must have shocked them all. Satan, the enemy of God and of His people, had "demanded to have all of you." The word "you" here is plural in the original language. Satan wanted all of them. He wanted to "sift" them like wheat.
+
+In the villages of Jesus' day, sifting wheat was hard, violent work. After the harvest, the grain was beaten and then shaken hard in a sieve, back and forth, again and again, until the husks and dirt fell through. Satan wanted to shake the disciples like that, until their faith broke apart.
+
+Then Jesus' words change from plural to singular: "But I have prayed for *you*." He was speaking directly to Peter.
+
+### Peter's answer
+
+Peter did not understand. He was sure of himself:
+
+> "Peter answered Him, 'Lord, I am ready to go to prison with You, and even to die with You.' Jesus replied, 'I tell you, Peter, before a rooster crows today, you will have said three times that you do not know Me.'" (Luke 22:33-34)
+
+We know what happened. A few hours later Jesus was arrested, and Peter followed at a distance into the courtyard of the high priest's house. There, warming himself by a fire, he was asked three times whether he was one of Jesus' followers. Three times he said no. The third time, while he was still speaking, a rooster crowed.
+
+> "And the Lord turned and looked at Peter. Then Peter remembered the Lord's words... He went outside and wept bitterly." (Luke 22:61-62)
+
+### What Jesus prayed
+
+Look carefully at what Jesus said He had prayed. He did not pray that Peter would be spared the test. He did not even pray that Peter would never fall. He knew Peter would fall that very night. He prayed "so that your faith will not give out."
+
+Peter's courage failed. His words failed. His promises failed. But his faith, the deep root of trust in Jesus, did not die. That is why, when Jesus looked at him, Peter did not run away in despair. He wept the bitter tears of repentance. And three days later, when the women came with news of the empty tomb, Peter ran to see.
+
+The Puritan Thomas Watson saw great comfort here:
+
+> "Satan would have sifted Peter till he sifted out all his grace, but Christ would not suffer him."
+> Thomas Watson, *The Lord's Prayer*
+
+And:
+
+> "It is a comfort that Satan cannot go a hair's breadth beyond God's permission."
+> Thomas Watson, *The Lord's Prayer*
+
+Like Job long before, Peter was tested within limits that God had set (Job 1:12). The enemy could shake him, but he could not destroy him, because Jesus had prayed.
+
+### "Once you have turned back"
+
+Notice the last part of Jesus' words: "And you, once you have turned back, must strengthen your brothers." Jesus did not only predict Peter's fall. He predicted his return. "Once," not "if." Before Peter had denied Him, Jesus was already planning his restoration, and giving him a job to do afterward.
+
+After the resurrection, Jesus met Peter on the shore of Lake Galilee. Around a charcoal fire, like the one where Peter had denied Him, Jesus asked him three times, "Simon, son of John, do you love Me?" Three times Peter said yes. And three times Jesus gave him his task: "Feed My lambs... Shepherd My sheep... Feed My sheep" (John 21:15-17).
+
+Peter went on to become a leader of the church. On the day of Pentecost he preached, and three thousand people believed. He wrote letters that we still read, full of encouragement for suffering Christians. The man who fell was the man God used to strengthen others, because he knew what it was to fall and to be lifted up.
+
+### A voice from the past
+
+E. M. Bounds, writing about this moment, could hardly contain himself:
+
+> "Happy Peter, to have such an one as the Son of God to pray for him! Unhappy Peter, to be so in the toils of Satan as to demand so much of Christ's solicitude!"
+> E. M. Bounds, *The Reality of Prayer*
+
+"Solicitude" means loving care and concern. Bounds saw both sides: Peter was in great danger, and Peter was greatly loved. The same is true of us.
+
+### Three key insights
+
+1. **Jesus prays for us by name, even before we fall.** He saw Peter's failure coming and prayed for him in advance. He knows our weaknesses better than we do, and He prays for us.
+2. **Jesus prays most of all for our faith.** He did not pray that Peter would escape the test, but that his faith would not give out. Our greatest need in times of testing is not comfort, but a faith that holds.
+3. **Restored people strengthen others.** Jesus spoke of Peter's return before his fall, and gave him work to do afterward. Our failures, when we turn back, can become the very place from which we help others.
+
+### For us today
+
+Perhaps you have fallen badly. You made promises to God, like Peter, and broke them. You are ashamed, and you wonder whether God could ever use you again. Hear Jesus' words: "I have prayed for you." He is not surprised by your failure. He prayed for you before it happened. And He has already said, "Once you have turned back." He is waiting for you to come back, and He has work for you to do when you do.
+
+Perhaps you are being "sifted" right now. Life is shaking you hard: sickness, loss, persecution, temptation, doubt. You may feel your faith is about to break. Remember that Jesus prays for you. The enemy cannot go one hair's breadth beyond what God allows.
+
+And this passage teaches us how to pray for others. When someone we love is being tested, our first prayer should not only be "Lord, take this away," but "Lord, keep their faith from failing." When someone has fallen, we can pray for their return, and be ready to welcome them back.
+
+### Try this
+
+This week, learn from the way Jesus prayed for Peter.
+
+- **Hear His prayer for you.** Read Luke 22:31-32 slowly, putting your own name in place of "Simon." Thank Jesus that He prays for you.
+- **Pray for someone's faith.** Choose one person you know who is being "sifted" by hardship or temptation. Each day, pray by name: "Lord, keep their faith from giving out."
+- **Pray for someone's return.** Think of someone who has fallen away from God. Pray for them as Jesus prayed for Peter, and ask God to show you how to welcome them back.
+- **Strengthen a brother or sister.** If God has restored you from a fall, look for one person this week whom you can encourage with what you have learned.
+
+### A closing prayer
+
+Lord Jesus, thank You that You prayed for Peter, and that You pray for me. You know my weaknesses better than I do. When I am sifted, keep my faith from giving out. When I fall, turn and look at me with love, and bring me back. And when I have turned back, use me to strengthen my brothers and sisters. I pray now for those I love who are being tested: keep their faith strong, and bring them safely through. Amen.
+
+### Questions for reflection
+
+- How does it feel to know that Jesus prayed for Peter before he fell, and that He prays for you?
+- Why do you think Jesus prayed for Peter's faith, rather than praying that he would avoid the test?
+- Has God ever used one of your failures to help someone else? How?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Reality of Prayer*, especially "Prayer Incidents in the Life of Our Lord (Continued)"
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "Intercessory Prayer"
+- Thomas Watson, *The Lord's Prayer*, especially "The Sixth Petition: Lead Us Not into Temptation"
+
+---
+
+## That They May All Be One
+
+> "Father, I ask that all of them may be one. Just as You are in Me and I am in You, so may they too be in Us, so that the world may come to believe that You sent Me." (John 17:21)
+
+The meal was over. Judas had gone out into the night. Jesus had washed His disciples' feet, given them a new commandment to love one another, and spoken to them for a long time about the Holy Spirit who would come. Soon they would leave the house and walk down into the Kidron Valley toward the garden where He would be arrested.
+
+But first, He prayed.
+
+> "After Jesus had said these things, He raised His eyes toward heaven and prayed: 'Father, the hour has come. Glorify Your Son, so that the Son may glorify You.'" (John 17:1)
+
+What follows in John 17 is the longest prayer of Jesus recorded in the Bible. Christians have often called it His "high priestly prayer," because in it Jesus stands before the Father on behalf of His people, as the high priest did in the temple. It is like being allowed to stand in the room and overhear the Son speaking to the Father on the night before He died.
+
+The prayer moves in three widening circles.
+
+### Three circles
+
+First, Jesus prays **for Himself** (John 17:1-5). He asks the Father to glorify Him in the hour that has come, so that He may glorify the Father. And He says what eternal life really is: "that they know You, the only true God, and the one You sent, Jesus Christ" (John 17:3).
+
+Second, He prays **for His disciples** (John 17:6-19), the eleven men in the room with Him. "I am asking on their behalf," He says (John 17:9). He asks the Father to keep them, to protect them, to make them holy. He does not ask that they be taken out of the hard world they live in: "I am not asking You to take them out of the world, but to keep them safe from the evil one" (John 17:15). And He asks, "Set them apart for Yourself by the truth; Your word is truth" (John 17:17).
+
+Third, the circle widens to include people who were not even born yet:
+
+> "I am not asking on behalf of these alone. My prayer is also for those who are going to believe in Me through their message." (John 17:20)
+
+Stop and read that again. "Those who are going to believe in Me through their message." The apostles preached. Those who believed passed on the message, and so on, generation after generation, across every continent, until it reached you. If you believe in Jesus, you are one of the people He was praying for that night. Before you were born, Jesus prayed for you.
+
+### What He asked
+
+And what did He pray for us? Out of everything He could have asked, He asked this: "That all of them may be one."
+
+Not one in the sense that every Christian must think the same thoughts, belong to the same organization or worship in the same style. Jesus asked for something much deeper: "Just as You are in Me and I am in You, so may they too be in Us." The unity He prayed for is a sharing in the love between the Father and the Son. It is a family likeness, a oneness of heart that comes from all of us being joined to the same Lord.
+
+And He gave the reason: "so that the world may come to believe that You sent Me." A little later He says it again: "So may they be brought to perfect oneness, and the world will know that You sent Me and loved them just as You loved Me" (John 17:23). The unity of Christians is meant to be a sign to the world. When people who would naturally be divided, by race, language, class, history or politics, love one another as one family, the world sees something it cannot explain except by the love of God.
+
+E. M. Bounds felt the weight of this:
+
+> "The oneness of God's people was to be the one credential to the world of the divinity of Christ's mission on earth."
+> E. M. Bounds, *The Reality of Prayer*
+
+And then he asked a hard question:
+
+> "Let us ask in all candor, are we praying for this unity as Christ prayed for it?"
+> E. M. Bounds, *The Reality of Prayer*
+
+### An honest look
+
+We must be honest. The history of the church has many shameful pages of division. Christians have quarreled, split, condemned one another and even fought wars against one another. In many towns today there are churches on the same street that will not pray together. Families have been torn apart over church disputes. The world has often looked at Christians and seen not oneness, but rivalry.
+
+This series deliberately includes believers from many traditions: Orthodox, Catholic, Protestant and Pentecostal, from every part of the world. We will not pretend that they agreed on everything. They did not, and some of their disagreements were about important things. But we will listen to them all as brothers and sisters who prayed to the same Father through the same Son. That is one small way of taking Jesus' prayer seriously.
+
+Unity is not something we create. It is something the Spirit gives, and something we are called to protect. Paul wrote, "Spare no effort to keep the unity the Spirit gives, with peace as the bond that holds you together. There is one body and one Spirit... one Lord, one faith, one baptism, one God and Father of all" (Ephesians 4:3-6).
+
+### Three key insights
+
+1. **Jesus prayed for you before you were born.** "My prayer is also for those who are going to believe in Me." Every believer in every generation is included in the prayer of John 17.
+2. **Christian unity is a sharing in the life of God.** Jesus prayed that we would be one as He and the Father are one. Our unity is not a human agreement but a family bond, rooted in His love.
+3. **Unity is a witness to the world.** Jesus prayed for our oneness "so that the world may come to believe." When divided people love one another in Christ, the world sees the love of God.
+
+### For us today
+
+Where are the divisions in your world? Perhaps between your church and the one down the road. Perhaps between Christians of different tribes or nations, or between rich and poor believers, or between older and younger generations. Perhaps there is a broken friendship in your own congregation.
+
+Jesus' prayer asks us not to accept these divisions as normal. We may not be able to solve every disagreement, but we can pray for unity as He did. We can refuse to speak badly about other believers. We can look for ways to pray, worship and serve with Christians who are different from us. And we can begin with the person nearest to us with whom we need to make peace.
+
+It is also a great comfort to know that Jesus prayed for your protection. "Keep them safe from the evil one." "Set them apart for Yourself by the truth." The prayers Jesus prayed that night are still being answered, every day, in the lives of His people.
+
+### Try this
+
+This week, pray the prayer of John 17.
+
+- **Read it slowly.** Read all of John 17 once this week, and notice the three circles: Jesus prays for Himself, for His disciples, and for you.
+- **Pray for your church.** Use Jesus' words to pray for your own congregation: that they would be kept from the evil one, set apart by the truth, and made one.
+- **Pray for another church.** Choose one church of a different tradition or language in your town or nation. Pray for its people by name if you can. Ask God to bless them.
+- **Take one step toward unity.** Is there a believer you have been divided from? Pray for them, and if possible, reach out to them this week.
+
+### A closing prayer
+
+Lord Jesus, on the night before You died, You prayed for me. Thank You. Keep me safe from the evil one, and set me apart by Your truth. Make Your people one, as You and the Father are one. Forgive us for our divisions, our pride and our quarrels. Heal what is broken between Christians in my town, my nation and the world. Let the world see our love for one another and believe that the Father sent You. Amen.
+
+### Questions for reflection
+
+- How does it affect you to know that Jesus prayed for you in John 17?
+- What divisions among Christians do you see around you? Which of them grieve you most?
+- What is one practical thing you could do to "keep the unity the Spirit gives"?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Reality of Prayer*, especially "Our Lord's Sacerdotal Prayer"
+- Andrew Murray, *With Christ in the School of Prayer*, especially "Christ the Intercessor"
+
+---
+
+## Not My Will but Yours
+
+> "He went a little farther, threw Himself face down on the ground, and prayed, 'My Father, if there is any way, let this cup pass by Me. But not what I want; what You want.'" (Matthew 26:39)
+
+The name Gethsemane means "oil press." It was a garden of olive trees on the slope of the Mount of Olives, just across the valley from Jerusalem. In the press, olives were crushed under heavy stones until the oil ran out. On the night Jesus was betrayed, He went there to pray, and He Himself was crushed.
+
+It was late. The Passover moon was full. Jesus left most of His disciples near the entrance: "Stay seated here while I go on over there and pray" (Matthew 26:36). He took Peter, James and John a little farther, the same three who had seen His glory on the mountain of transfiguration. Now they would see His agony.
+
+> "He began to be filled with grief and anguish. Then He said to them, 'My soul is weighed down with grief, even to death. Stay here and keep awake with Me.'" (Matthew 26:37-38)
+
+Then He went a little farther still, alone, and fell with His face to the ground.
+
+### The cup
+
+What was the "cup" Jesus asked His Father to take away? In the Old Testament, the cup is often a picture of God's judgment against sin. Jesus was about to bear that judgment for us. It was not only the physical pain of the cross, terrible as it was. It was the weight of the sin of the world, and the darkness of being separated from His Father. "It was for our rebellions that He was pierced through, for our guilt that He was crushed" (Isaiah 53:5).
+
+Luke, who was a doctor, adds details the others leave out:
+
+> "Then an angel from heaven appeared to Him and gave Him strength. In His anguish He prayed all the more intensely, and His sweat became like thick drops of blood dripping down onto the ground." (Luke 22:43-44)
+
+(Some of the oldest copies of Luke's Gospel do not include these two verses, but they have been read in the church since very early times.)
+
+The writer of Hebrews remembered this night too: "He offered up prayers and pleas, crying aloud and weeping, to the one who was able to save Him out of death, and He was heard for His godly fear" (Hebrews 5:7).
+
+### An honest prayer
+
+Look at the first half of Jesus' prayer: "My Father, if there is any way, let this cup pass by Me."
+
+Jesus was completely honest with His Father. He did not pretend to be calm. He did not hide what He wanted. He said, in effect, "Father, I do not want this. If there is any other way, please take it away." Here is the Son of God, sinless and perfect, telling the Father plainly what His heart desired.
+
+That gives us permission to be honest too. Prayer is not the place for pretending. If you are afraid, tell God. If you want something desperately, tell Him. If the path ahead looks unbearable, tell Him that too. Jesus did.
+
+### A surrendered prayer
+
+But then comes the second half: "But not what I want; what You want."
+
+Jesus prayed this prayer three times that night (Matthew 26:44). The second time, His words had already moved: "My Father, if there is no way for this to pass unless I drink it, then let Your will be done" (Matthew 26:42). In those hours of prayer, Jesus brought His human will into perfect agreement with His Father's will.
+
+This is the heart of Gethsemane. It is not a prayer of giving up. It is a prayer of giving over. Jesus did not stop wanting the cup to pass because He had lost hope, but because He trusted His Father more than His own desires. And Hebrews says He "was heard." The cup was not taken away, but He was heard. He was given strength to drink it, and through His suffering He won salvation for the world.
+
+E. M. Bounds wrote movingly about this prayer. He knew that every believer will have a Gethsemane of their own:
+
+> "'Not my will, but thine, be done,' our broken hearts shall say."
+> E. M. Bounds, *The Reality of Prayer*
+
+But Bounds also gave a warning. Some people use "Your will be done" as an excuse not to pray with faith and effort, as if it meant "whatever happens, happens":
+
+> "We are ever ready to excuse our lack of earnest and toilsome praying, by a fancied and delusive view of submission."
+> E. M. Bounds, *The Reality of Prayer*
+
+Jesus' surrender in Gethsemane was not lazy or passive. He prayed so intensely that His sweat fell like drops of blood. True surrender comes at the end of honest, wrestling prayer, not instead of it.
+
+### Sleeping friends
+
+While Jesus prayed, His closest friends fell asleep. Three times He came back and found them sleeping. "So none of you could stay awake with Me for even one hour?" He said to Peter. "Stay alert and pray that you will not come into testing. The spirit is eager, but human nature is weak" (Matthew 26:40-41).
+
+There is sadness in those words, but also great kindness. Jesus understood their weakness. And His warning came true: within hours they had all run away. Jesus, who had prayed, stood firm. They, who had slept, fell.
+
+Then, at the end, Jesus rose from the ground, calm and ready: "Get up; let us be going. Here comes the man who is betraying Me" (Matthew 26:46). He had gone into the garden crushed with sorrow. He came out with the strength to face the cross. Prayer had not changed the path, but it had prepared Him to walk it.
+
+### Three key insights
+
+1. **We can be honest with God about what we want.** Jesus told His Father plainly that He wanted the cup to pass. Prayer is not the place for pretending; we can pour out our true desires to Him.
+2. **Surrender is giving over, not giving up.** "Not what I want; what You want" is not the prayer of someone who has lost hope. It is the prayer of someone who trusts the Father more than their own desires.
+3. **Prayer prepares us for what we must face.** The cup did not pass, but Jesus rose from prayer strengthened and ready. Sometimes God answers not by changing the road, but by giving us strength to walk it.
+
+### For us today
+
+Everyone who follows Jesus will come to a Gethsemane. It may be a diagnosis, a death, a betrayal, a persecution, a call from God to do something very hard. It may be a moment when we must choose between our own will and God's. In that place, we can pray as Jesus prayed.
+
+First, tell God honestly what you want. Do not be ashamed of your fear or your tears. Jesus wept and cried aloud. Then, as you keep praying, ask Him for the grace to say, "Not what I want; what You want." That may take time. Jesus prayed three times. It may take a whole night, or many nights. But it is the way to peace and to strength.
+
+And if you have friends who are in their Gethsemane, do not fall asleep on them. Stay awake with them. Pray with them. It is one of the greatest gifts we can give.
+
+### Try this
+
+This week, learn to pray the Gethsemane prayer.
+
+- **Name your cup.** Think of the hardest thing you are facing, or the thing you fear most. Write it down.
+- **Pray honestly.** Tell God exactly what you want about it, holding nothing back. "Father, if there is any way, let this pass."
+- **Pray surrender.** Then pray, "But not what I want; what You want." If you cannot mean it yet, ask God to help you mean it. Pray it again tomorrow.
+- **Watch with someone.** Think of one person who is going through a hard time. Stay alert for them this week: call them, visit them, or pray with them.
+
+### A closing prayer
+
+Father, Your Son knelt in the garden and prayed with tears. Thank You that I can be honest with You about what I want and what I fear. Here is my cup: You know it. If there is any way, take it from me. But not what I want; what You want. Give me the trust to say that and mean it. And when the path does not change, give me the strength to walk it, as You gave strength to Jesus. Keep me awake and praying, for myself and for those who need me. In His name. Amen.
+
+### Questions for reflection
+
+- What is your "cup" right now, the thing you most wish God would take away?
+- What is the difference between giving up and giving over? How did Jesus show it?
+- Bounds warns that "Your will be done" can become an excuse not to pray earnestly. Have you ever used it that way?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Reality of Prayer*, especially "The Gethsemane Prayer"
+- Dwight L. Moody, *Prevailing Prayer*, especially "Submission"
+
+---
+
+## Prayers from the Cross
+
+> "Jesus kept saying, 'Father, forgive them. They do not know what they are doing.' They shared out His clothes among themselves by casting lots." (Luke 23:34)
+
+They led Him outside the city walls to a place called the Skull. There the Roman soldiers stretched out His arms, drove nails through His hands and feet, and lifted Him up on a cross between two criminals.
+
+Crucifixion was designed to be the most painful and shameful death imaginable. It could last for hours, even days. Every breath was agony. Men dying this way often cursed and screamed at their executioners, at the crowd, at God.
+
+Jesus prayed.
+
+The Gospels record seven sayings of Jesus from the cross. Three of them are prayers to His Father. Together they show us how Jesus prayed in the darkest hour the world has ever known, and they teach us how to pray in ours.
+
+### "Father, forgive them"
+
+The first prayer came at the very beginning, as the soldiers were nailing Him to the wood and gambling for His clothes at His feet. Luke says Jesus "kept saying" it, again and again: "Father, forgive them. They do not know what they are doing."
+
+Think of who "them" included. The soldiers swinging the hammers. The religious leaders who had plotted His death. The crowd that had shouted "Crucify Him!" Pilate, who washed his hands. The disciples who had run away. And in a deeper sense, all of us, whose sins put Him there.
+
+Jesus did not wait for them to say sorry. He did not wait until the pain was over. He prayed for His enemies while they were hurting Him. He was doing what He had taught on the mountainside: "Love your enemies, and pray for the people who persecute you" (Matthew 5:44). The prophet Isaiah had said of the suffering Servant, "He pleads on behalf of the rebels" (Isaiah 53:12). On the cross, that prophecy came true.
+
+This prayer has echoed through the centuries. A few years later, Stephen, the first Christian martyr, was stoned to death in Jerusalem. As the stones struck him, "he sank to his knees and cried out in a loud voice, 'Lord, do not charge them with this sin'" (Acts 7:60). In later volumes we will meet many more who died with this prayer on their lips, in Rome, in Bohemia, in Uganda and in many other places. They learned it from Jesus.
+
+### "My God, My God, why?"
+
+The second prayer came after hours of suffering. From noon until three in the afternoon, darkness covered the land. Then:
+
+> "At about three o'clock Jesus gave a loud cry: 'Eli, Eli, lema sabachthani?' That means, 'My God, My God, why have You abandoned Me?'" (Matthew 27:46)
+
+This is the most mysterious prayer in the Bible. How could the Son of God cry out that God had abandoned Him? We cannot fully understand it. But we know that in this moment Jesus was bearing the full weight of our sin, and experiencing the separation from God that sin brings. He went into the deepest darkness so that we would never have to go there alone.
+
+Notice something else. These words are not Jesus' own invention. They are the opening words of Psalm 22, a psalm of David. In Volume 1 we saw that Jesus grew up praying the Psalms. Now, in His agony, the words that came to His lips were the words of Scripture. And Psalm 22 does not end in despair. It ends in praise: "He did not turn His face away, but heard him when he called for help" (Psalm 22:24).
+
+This prayer gives us permission to be honest when God feels far away. Jesus Himself cried "Why?" It is not a sin to ask God why. It is still prayer. Even in His cry of abandonment, Jesus still said "My God." He did not let go.
+
+### "Into Your hands"
+
+The third prayer was the last thing Jesus said before He died:
+
+> "Then Jesus cried out in a loud voice, 'Father, I place My spirit in Your hands.' With these words He breathed out His last breath." (Luke 23:46)
+
+Again Jesus prayed a psalm: "I put my spirit into Your hand for safekeeping" (Psalm 31:5). This psalm was traditionally prayed by faithful Jews in the evening, before sleep. Jesus may have prayed it every night of His life. Now He prayed it at the end of His life, but He added one word at the beginning: "Father."
+
+After the darkness and the cry of "Why?", the last prayer is one of complete trust. The same Father He felt had abandoned Him is the Father into whose hands He places His spirit. He dies like a child falling asleep in his father's arms.
+
+E. M. Bounds, looking at the whole life of Jesus, saw that it was prayer from beginning to end:
+
+> "With the breath of prayer in His last sigh, He commits His spirit to God."
+> E. M. Bounds, *The Reality of Prayer*
+
+### A prayer answered at once
+
+There was another prayer at the cross, not by Jesus but to Him. One of the criminals crucified beside Him had joined in mocking Him at first. But as the hours passed, something changed. He turned his head and said, "Jesus, remember me when You come in Your kingdom." And Jesus answered him, "Truly I tell you, this very day you will be with Me in paradise" (Luke 23:42-43).
+
+It was the last prayer anyone prayed to Jesus before He died, and it was answered at once. A dying thief, with nothing to offer, asked to be remembered, and was promised paradise. Even on the cross, Jesus was still hearing prayer.
+
+### Three key insights
+
+1. **Jesus prayed for His enemies.** On the cross, in agony, He asked His Father to forgive the people who were killing Him. That prayer shows us the heart of God, and it calls us to pray for those who hurt us.
+2. **An honest cry of "Why?" is still prayer.** Jesus cried out that God had abandoned Him, using the words of a psalm. When God feels far away, we can tell Him so, and still call Him "my God."
+3. **We can die, and live, in trust.** Jesus' last words were a prayer of trust: "Father, I place My spirit in Your hands." Whatever happens to us, we can place ourselves in the Father's hands.
+
+### For us today
+
+Is there someone who has hurt you deeply? The prayer "Father, forgive them" may be the hardest prayer in the world to pray. But it is the prayer of Jesus, and He can give us the grace to pray it too. Like Him, we may need to keep saying it, again and again, before our hearts follow our words.
+
+Is God silent in your life right now? Do you feel abandoned? Jesus has been there. You can cry out with Him, "My God, My God, why?" He understands. And He will not let go of you, even when you feel you are letting go of Him.
+
+Are you afraid of death, or of the future? Jesus' last prayer can be ours every night: "Father, I place my spirit in Your hands." Many Christians through the centuries have prayed these words before they slept, and many have prayed them as they died. They are words of perfect trust.
+
+### Try this
+
+This week, pray the prayers of the cross.
+
+- **"Father, forgive them."** Think of one person who has hurt you. Pray this prayer for them by name each day, even if your feelings do not follow yet.
+- **"My God, why?"** If there is a place in your life where God feels far away, tell Him honestly. Then read Psalm 22 all the way to the end.
+- **"Into Your hands."** Each night before you sleep, pray Luke 23:46 or Psalm 31:5: "Father, I place my spirit in Your hands." Place yourself, your family and tomorrow into His care.
+- **"Remember me."** Thank Jesus that He heard the dying thief, and that He hears you.
+
+### A closing prayer
+
+Lord Jesus, on the cross You prayed for those who were killing You. Forgive me, and teach me to forgive those who have hurt me. You cried out in the darkness, "My God, My God, why?" Thank You that You went into that darkness for me, so that I would never be truly abandoned. And You died with words of trust: "Father, into Your hands." Teach me to live and die that way. Remember me, Lord, in Your kingdom. Amen.
+
+### Questions for reflection
+
+- Which of Jesus' three prayers from the cross speaks most to you right now? Why?
+- Is there someone you need to pray "Father, forgive them" for? What makes it hard?
+- How does it help to know that Jesus prayed the Psalms, even on the cross?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Reality of Prayer*, especially "Jesus Christ an Example of Prayer"
+- John Bunyan, *The Jerusalem Sinner Saved*
+
+---
+
+## He Always Lives to Pray for Us
+
+> "For this reason He is able to save completely those who approach God through Him, since He is always alive to plead on their behalf." (Hebrews 7:25)
+
+Forty days after He rose from the dead, Jesus led His disciples out of Jerusalem toward the village of Bethany, on the Mount of Olives. They had seen Him alive many times by now. They had eaten with Him, touched Him and listened to Him explain the Scriptures. Now He had one more thing to do.
+
+> "He led them out until they were near Bethany. There He raised His hands and blessed them. He was still blessing them when He parted from them and was borne up into heaven." (Luke 24:50-51)
+
+The last thing the disciples saw of Jesus on earth was His hands raised over them in blessing. Then a cloud hid Him from their sight (Acts 1:9).
+
+Where did He go? And what is He doing now?
+
+### At the right hand of God
+
+The New Testament answers with one picture again and again: Jesus "was taken up into heaven and took His seat at the right hand of God" (Mark 16:19). In the ancient world, the place at a king's right hand was the place of highest honor and authority. Jesus, who was crucified in weakness, now reigns over all things.
+
+But the New Testament also tells us what He is doing there. He is praying for us.
+
+> "Who is going to condemn them? Christ is the one who died; still more, He was raised, and He is at the right hand of God, where He pleads on our behalf." (Romans 8:34)
+
+> "He went into heaven itself, and there He now appears before the face of God on our behalf." (Hebrews 9:24)
+
+> "Yet if anyone does sin, we have an advocate in the Father's presence, Jesus Christ, who is righteous." (1 John 2:1)
+
+And our key verse: "He is always alive to plead on their behalf."
+
+### The praying Christ
+
+Think back over this book. We have seen Jesus rise before dawn to pray, pray all night before choosing His apostles, teach His disciples to pray, pray at the tomb of Lazarus, pray for Peter, pray for all His people in John 17, pray in agony in Gethsemane, and pray from the cross. His whole life on earth was a life of prayer.
+
+His ascension did not end that life. It moved it to the throne of heaven. The same Jesus who prayed for Peter by name prays for you by name. The same Jesus who asked the Father to keep His disciples safe from the evil one is asking it now for you. He never grows tired. He never forgets. He never sleeps. "He is always alive to plead on their behalf."
+
+The writer of Hebrews explains why this matters so much. In the Old Testament, the priests who prayed for Israel grew old and died, and others had to take their place. "But He remains forever, and so the priesthood He holds will never pass to another" (Hebrews 7:24). Jesus is a priest who will never die. His prayers for us will never stop.
+
+That is why He "is able to save completely." Not partly. Not for a while. Completely. Our salvation does not depend on how strong our own grip on Him is. It depends on His grip on us, and on His prayers for us, which never fail.
+
+### Our prayers and His
+
+And here is something even more wonderful. Our prayers are joined to His.
+
+Andrew Murray loved this truth. He wrote:
+
+> "Because He prays, we pray too."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+When we pray, we are not speaking into an empty sky, hoping someone hears. We are joining a prayer that is already going on, the prayer of the Son to the Father on our behalf. Murray put it in a beautiful way: "What He prays passes through us, what we pray passes through Him." Our weak, wandering, imperfect prayers are taken up into His perfect prayer and presented to the Father.
+
+The Holy Spirit is part of this too. Paul wrote that "the Spirit Himself pleads on our behalf, with groans that no words carry," and that He "pleads for God's holy people in line with what God wants" (Romans 8:26-27). So we have two who pray for us: the Son at the right hand of the Father, and the Spirit within our own hearts. We are never praying alone.
+
+### Golden bowls
+
+At the beginning of this book, we saw a picture from the book of Revelation: the prayers of God's people held before the throne of God in "gold bowls full of incense." Later in that same book John sees it again:
+
+> "Then another angel came, holding a gold censer, and took his place at the altar. Much incense was handed to him, so that he could add it to the prayers of all God's holy people on the gold altar before the throne. The smoke of the incense rose with the prayers of God's holy people from the angel's hand before God." (Revelation 8:3-4)
+
+Every prayer you have ever prayed in the name of Jesus has risen before God like incense. The prayers you whispered in the dark, the prayers you could not put into words, the prayers that seemed to go unanswered, the prayers of saints in every century and every land: none of them has been lost. They are gathered before the throne, joined to the prayers of the One who always lives to pray for us.
+
+### Boldness
+
+Because of all this, the writer of Hebrews calls us to come to God with confidence:
+
+> "We have, then, a great high priest who has gone through the heavens: Jesus the Son of God... So let us, with confidence, approach the throne of grace, to receive mercy and to find grace that brings help just when we need it." (Hebrews 4:14, 16)
+
+We do not come to a throne of judgment, but a throne of grace. We do not come alone, but with Jesus our High Priest beside us. We do not come hoping to persuade an unwilling God, but to a Father who loves us, through a Son who prays for us, in a Spirit who helps us. There is no safer, more welcoming place in the universe.
+
+### Three key insights
+
+1. **Jesus is still praying for us.** His ascension did not end His life of prayer. At the right hand of God He always lives to plead on our behalf, and His prayers never fail.
+2. **Our salvation rests on His prayers, not our strength.** Because He is a priest forever, He is able to save completely. Our hope does not depend on our grip on Him, but on His grip on us.
+3. **Our prayers are joined to His.** We never pray alone. The Son prays for us in heaven, the Spirit prays within us, and our prayers rise before God like incense, mingled with His.
+
+### For us today
+
+This is the truth that holds together everything in this book. Every lesson Jesus taught us about prayer, about the secret room, about asking, seeking and knocking, about persistence and humility and faith and forgiveness, rests on this foundation: Jesus Himself is praying.
+
+So when you feel that your prayers are too weak, remember that His are strong. When you do not know what to say, remember that the Spirit prays within you. When you fall, like Peter, remember that you have an advocate before the Father. And when you are tempted to give up on prayer altogether, remember that you are not the only one praying. The Son of God is praying for you right now.
+
+### Try this
+
+This week, let the praying Christ change the way you pray.
+
+- **Begin with Him.** Each time you pray this week, start by reminding yourself, "Jesus is praying for me right now." Then join your prayer to His.
+- **Pray with confidence.** Read Hebrews 4:14-16 each day. Come to God boldly, with your needs, your failures and your fears.
+- **Look back.** Look back over the twenty chapters of this book. Choose the one lesson that has meant the most to you, and ask God to make it part of your life.
+- **Give thanks.** End the week by thanking Jesus for His whole life of prayer: on the mountain, in the garden, on the cross, and now at the right hand of God.
+
+### A closing prayer
+
+Lord Jesus, You prayed on the mountain and in the garden and on the cross, and now You always live to pray for me. Thank You. When my prayers are weak, Yours are strong. When I fall, You plead for me. When I do not know what to pray, Your Spirit prays within me. Teach me to come boldly to the throne of grace, knowing that You are there. Take my prayers and join them to Yours. And keep me praying, all my life, until I see You face to face. Amen.
+
+### Questions for reflection
+
+- How does it change your view of prayer to know that Jesus is praying for you right now?
+- Hebrews says Jesus is "able to save completely." What does that mean for you on the days when your faith feels weak?
+- Looking back over this book, what is the most important thing Jesus has taught you about prayer?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "Christ the Intercessor" and "Christ the High Priest"
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "The Throne of Grace"
