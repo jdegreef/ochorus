@@ -255,6 +255,27 @@ prerendered pages reference it.
 - **`band` shows only the vertical MIDDLE ~44% of the ground** (a strip at y≈28–72% of
   the 3:4 crop). A subject at the top or foot is cropped out — `cheque-book`'s rainbow
   is. For a band author, preview `ground.crop((0, 223, 600, 577))` before picking.
+- **Check the twin's top and bottom 40px at full size for a scan edge.** A 6-10px
+  black strip survives the framed scrim; since #7134 (2026-11-04) a framed cover
+  crops past a measured bar up to 3.5% (`groundBars.framedBar`), so `npm run
+  covers:bars` before `og:covers` handles a DARK strip. A LIGHT canvas lip (tan,
+  unprimed edge) is not measured: give the entry an `inset` (Homilies on Romans
+  took 0.06; 0.03 was not enough).
+- **Never `sed` an `inset=`/`focus=` line across `curated_art.py`.** The same
+  value appears on other entries; a bulk replace moved `gospel-of-john`'s inset
+  and `test_every_painting_was_cut_from_its_entry` caught it (2026-11-04). Edit
+  the one entry by its slug.
+- **Swapping a drawn Original for a painting** (Chesterton/MacDonald, #6946):
+  delete its `ORIGINAL_GROUND` entry, add the `CURATED` one, and pin the slug to
+  `null` in `coverLayouts.BOOK_LAYOUT` if its author's layout (`fade`, `wash`)
+  pales the upper half — the Original was drawn for it, a painting is not.
+- **A young edition is framed in every language** (`coverLayouts.test.ts` gate,
+  #6949): a translated `-teens`/`-children` row wearing a derived ground must be
+  pinned `null` in `BOOK_LAYOUT`, and its bracket (« (para jóvenes) ») is set as
+  the edition line by `coverTitle.editionOf`, not in the title (#7132).
+- **Waiting on `og:covers` in the background: wait on its PID** (`while kill -0
+  <pid>`), not `pgrep -f "generate-cover-og"` — the pattern matches the waiting
+  shell itself and never exits.
 - **A scan too small to fill 600×800 is refused** (`_crop_3x4` raises "too small …
   without enlarging it", 2026-11-01). It means the collection served a thumbnail (the
   Met's `primaryImageSmall` fallback, CMA's `web` size) or an `inset` cut a small scan
@@ -551,6 +572,11 @@ them in order and union-resolve the `curated_art`/scrim/manifest overlap on reba
 - **Order for a NEW book's original ground (Tell Me the Story 8–9, 10-14):** `build_cover_assets` reads the committed FIXTURES (`book_editions()`), not the DB — serialize the book's fixture FIRST or it writes 0 variants for the new slug. Then `tune_art_scrim`: a full run once silently omitted the new slug — always `grep <slug> library/art_scrim.py` after, and if missing run `tune_art_scrim.py <slug>`. Only THEN `npm run og:covers` (the twin bakes the scrim; drawing it before the tune leaves a stale twin). Set `cover_url` straight to `/covers/art/<slug>.jpg` in the build command — no plate, so no svg to delete.
 
 ## Done so far
+**2026-11-01..04:** Batch 32 (#6946) — Orthodoxy (Monet), Heretics (Dou), The Everlasting Man
+(El Greco), Phantastes (Seurat), Unspoken Sermons (Koninck), Diary of an Old Soul
+(La Tour) moved from drawn Originals to paintings. No-plate gate (#6938), young
+layouts (#6949), scan-size refusal (#6952), paper-theme edge (#6957), edition line
+(#7132), framed scan strips (#7134).
 **Batch 30 (#6936, 2026-11-01) painted the last published plates.** `tests_fixture.NoPublishedPlateTests`
 now fails any published edition on a `.svg` plate, so a new import ships with its painting.
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
