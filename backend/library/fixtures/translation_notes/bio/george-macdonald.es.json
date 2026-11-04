@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "george-macdonald",
+ "language": "es",
+ "job_issue": 7141,
+ "references": [
+  {
+   "reference": "Matthew 5:26",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 16
+  }
+ ]
+}
