@@ -37,6 +37,8 @@ export interface CoverCardBook {
 	author: string;
 	title: string;
 	subtitle?: string | null;
+	/** A young edition's edition line (`coverTitle.editionOf`), set under the title. */
+	edition?: string | null;
 	/** A `coverStyles` id — `devotional`, `press`, … */
 	style: string;
 	/** The series volume numeral, from `coverStyles.volumeNumeral`; null
@@ -144,6 +146,7 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	<div class="middle">
 		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}
 		<div class="title" lang="${lang}" dir="auto">${escapeHtml(book.title)}</div>
+		${book.edition ? `<div class="edition" lang="${lang}" dir="auto">${escapeHtml(book.edition)}</div>` : ''}
 		<div class="rule"></div>
 		${
 			book.subtitle

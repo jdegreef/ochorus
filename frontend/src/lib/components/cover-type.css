@@ -710,6 +710,27 @@
 	font-variant-numeric: lining-nums;
 }
 
+/* A YOUNG EDITION'S LINE — « For Teens », « para jóvenes », « ለወጣቶች » — taken
+   off the title (`coverTitle.editionOf`) and set under it in tracked capitals
+   between dashes, as the designed English young covers have always set
+   "— FOR TEENS —". Capitals also settle the four capitalisations the
+   translations carry. Over the title's own colour, a little quieter. */
+.cover-type .edition {
+	margin-top: 2.6cqw;
+	font-family: var(--font-display);
+	font-size: 3.4cqw;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	opacity: 0.88;
+	white-space: nowrap;
+}
+.cover-type .edition::before {
+	content: '— ';
+}
+.cover-type .edition::after {
+	content: ' —';
+}
+
 /* Two lines at most — the generator's own subtitle budget; past that the plate
    is a thumbnail and the words are unreadable anyway. */
 .cover-type .subtitle {
