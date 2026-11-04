@@ -1,0 +1,70 @@
+{
+ "kind": "sermon",
+ "slug": "hearts-set-on-pilgrimage",
+ "language": "es",
+ "job_issue": 7199,
+ "references": [
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json",
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 10:8-9",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 77:8-9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.es.json",
+   "block_index": 40
+  },
+  {
+   "reference": "Psalm 84:6a",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json",
+   "block_index": 50
+  },
+  {
+   "reference": "Hebrews 5:8b",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json",
+   "block_index": 77
+  },
+  {
+   "reference": "Psalm 22:6a",
+   "status": "mined",
+   "source_file": "way-into-holiest.es.json",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 93
+  }
+ ]
+}
