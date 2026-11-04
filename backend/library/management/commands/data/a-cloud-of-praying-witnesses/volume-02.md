@@ -1052,3 +1052,492 @@ Father, You are the God for whom all things are possible. I bring You the mounta
 
 - Andrew Murray, *With Christ in the School of Prayer*, especially "The Faith That Takes" and "The Secret of Believing Prayer"
 - Dwight L. Moody, *Prevailing Prayer*, especially "Faith"
+
+---
+
+## Where Two or Three Agree
+
+> "And again, truly I tell you: if two of you here on earth are of one mind about anything they ask for, it will be done for them by My Father in heaven. For whenever two or three come together in My name, I am there among them." (Matthew 18:19-20)
+
+It was the middle of the night in Jerusalem, and a small house was full of people praying.
+
+King Herod had arrested Peter and thrown him into prison. He had already put the apostle James to death with the sword, and the people had approved. Now Peter was chained between two soldiers, with guards at the door, waiting to be brought out for trial after the Passover. Everyone knew what that trial would mean.
+
+The church had no army, no money and no friends at court. But it had prayer. Luke writes:
+
+> "So Peter was under guard in the prison, but the church was praying to God for him without letup." (Acts 12:5)
+
+That night an angel woke Peter, his chains fell off, and the gates of the prison opened on their own. Peter walked out into the dark street, hardly believing it was real. Then he went to the house where he knew his friends would be:
+
+> "He made his way to the home of Mary, mother of John whose other name was Mark. A good number of people had come together there and were praying." (Acts 12:12)
+
+When he knocked, a servant girl named Rhoda came to the door, recognized his voice, and was so excited that she ran back inside to tell everyone, leaving Peter standing in the street. The people praying for his release told her she was out of her mind. Peter kept knocking. When they finally opened the door, they were astonished.
+
+It is a story full of warmth and even humor. The church prayed together, God answered more quickly than they could believe, and the answer stood knocking at the door while they were still praying for it.
+
+### The promise of united prayer
+
+The early church prayed together because Jesus had taught them to. In Matthew 18 He gave a special promise to those who pray as one: "If two of you here on earth are of one mind about anything they ask for, it will be done for them by My Father in heaven."
+
+The word Matthew uses for being "of one mind" is the word from which we get the English word "symphony." It describes different instruments sounding together in harmony. Two or three believers, each with their own voice and story, come before God with one desire. Jesus says the Father delights to answer that kind of prayer.
+
+Then He adds a promise of His presence: "Whenever two or three come together in My name, I am there among them." Not two or three thousand. Two or three. The smallest prayer meeting in the poorest village, in a prison cell or a hospital room, has the Lord Jesus Himself in the middle of it.
+
+### Agreement begins with reconciliation
+
+It is important to see where Jesus gave this promise. Matthew 18 is about broken relationships in the family of God. Just before these verses, Jesus teaches what to do when a brother or sister sins against you: "Go and confront them about it, with only the two of you present. If they will listen to you, you have won your brother or sister back" (Matthew 18:15). Right after them, Peter asks how many times he must forgive.
+
+So the promise of agreement in prayer sits in the middle of teaching about reconciliation. That is no accident. People cannot truly pray as one while they are divided. Jesus said elsewhere that if you remember at the altar that someone has something against you, "Go and make peace with them first, and then come back and offer your gift" (Matthew 5:24). The symphony of united prayer begins when the instruments are in tune with each other.
+
+### The church that prayed together
+
+From the very beginning, the followers of Jesus prayed together. After His ascension, the apostles, together with Mary His mother and the other women, waited in Jerusalem: "All of these were devoted to prayer and of one mind in it" (Acts 1:14). The Holy Spirit came on them at Pentecost while "they were all gathered in one place" (Acts 2:1).
+
+When the apostles were threatened, the believers "lifted their voices to God together and prayed" (Acts 4:24). And "when they finished praying, the place where they had met shook, and every one of them was filled with the Holy Spirit, and they went on proclaiming God's word fearlessly" (Acts 4:31).
+
+Again and again in church history, great movements of God have begun with a few people praying together. In later volumes we will meet the Moravians in Germany, who began a prayer meeting in 1727, after a season of bitter quarrels had been healed, that lasted for a hundred years. We will meet five students in America who prayed under a haystack in a thunderstorm and started a missionary movement. We will meet a businessman in New York who began a lunchtime prayer meeting that grew to thousands. Each began with two or three.
+
+### A voice from the past
+
+Andrew Murray, having taught about the secret room, turned to this passage and showed how both kinds of prayer belong together:
+
+> "As a tree has its root hidden in the ground and its stem growing up into the sunlight, so prayer needs equally for its full development the hidden secrecy in which the soul meets God alone, and the public fellowship with those who find in the name of Jesus their common meeting-place."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+He also pointed out how strange it would be for God's children never to pray together:
+
+> "Nothing would be more unnatural than that the children of a family should always meet their father separately, but never in the united expression of their desires or their love."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+### Three key insights
+
+1. **United prayer carries a special promise.** Jesus promised that the Father will answer when two or three agree in prayer, and that He Himself is present where they gather in His name. No prayer meeting is too small.
+2. **True agreement begins with reconciliation.** Jesus gave this promise in the middle of His teaching on restoring broken relationships. We cannot pray as one while we refuse to be at peace with one another.
+3. **We need both the secret room and the prayer meeting.** Private prayer is the root; united prayer is the tree in the sunlight. A healthy prayer life has both.
+
+### For us today
+
+In many churches, the prayer meeting is the smallest meeting of the week, if it happens at all. People will come to hear a sermon or a concert, but few will come to pray. Yet the history of the church shows that God has often done His greatest works through small groups of people who simply met to pray together.
+
+You do not need a large group or a special program. You need one or two others. A husband and wife praying together before bed. Two friends meeting before work once a week. A few mothers praying for their children's school. Workers on a factory floor praying together during a break. A family gathering at the end of the day. Jesus said, "I am there among them."
+
+And if there is someone in your church you cannot pray with because of a quarrel, this passage asks you to go to them first. United prayer is worth the cost of making peace.
+
+### Try this
+
+This week, practice the prayer of agreement.
+
+- **Find one prayer partner.** Ask a friend, family member or fellow believer to pray with you at least once this week, in person or by phone.
+- **Agree on one specific thing.** Murray wrote that true united prayer needs "agreement as to the thing asked." Choose one clear request together, and both pray for it.
+- **Remember who is there.** Before you begin, read Matthew 18:20 aloud and thank Jesus that He is present with you.
+- **Make peace first.** If there is someone you are at odds with, take one step this week toward reconciliation before you pray.
+
+### A closing prayer
+
+Lord Jesus, thank You for Your promise that where two or three gather in Your name, You are there among them. Forgive me for the times I have prayed only alone, and for the times I have let quarrels divide me from Your people. Give me partners in prayer. Tune our hearts together, so that we pray with one mind. And do in answer to our united prayers what we could never do alone, for the glory of Your Father. Amen.
+
+### Questions for reflection
+
+- When did you last pray with another person, not only for them? What was that like?
+- Why do you think Jesus placed this promise in a passage about reconciliation?
+- Who could you ask to be a prayer partner with you? What one thing could you agree to pray for together?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Power of United Prayer"
+- Dwight L. Moody, *Prevailing Prayer*, especially "Unity"
+
+---
+
+## A House of Prayer for All Nations
+
+> "Then He taught them, saying, 'Does Scripture not say, "My house will be known as a house of prayer for all the nations"? But you have turned it into a hideout for bandits.'" (Mark 11:17)
+
+The temple in Jerusalem was one of the wonders of the ancient world. Its white stone and gold shone in the sun and could be seen from miles away. Around the holy building itself were great open courts, one inside another. The innermost courts were for the priests and the people of Israel. But the largest court of all, on the outside, was open to everyone. It was the one place in the temple where people from other nations, who worshiped the God of Israel but were not Jews, could come to pray.
+
+That was the court Jesus walked into in the last week of His life.
+
+It was Passover season, and the city was crowded with pilgrims. The outer court had become a marketplace. There were stalls selling animals for sacrifice: oxen, sheep, and doves for the poor who could not afford anything larger. There were tables where money changers exchanged pilgrims' coins for the special coins needed to pay the temple tax, often at a profit. The air was filled with the noise of bargaining, the smell of animals and the clink of coins. People used the court as a shortcut through the city, carrying their goods across it.
+
+Imagine a man from a distant land who had traveled for weeks to pray to the God of Israel. He arrives at the only place in the temple where he is allowed to pray, and he cannot hear himself think.
+
+> "He went into the temple courts and began driving out the people who were selling and buying there. He turned over the money changers' tables and the benches of the dove sellers, and He would not let anyone carry goods through the temple courts." (Mark 11:15-16)
+
+### Two prophets
+
+When Jesus explained what He had done, He quoted two prophets.
+
+The first was Isaiah. God had promised that foreigners who turned to Him would be welcome in His house:
+
+> "I will lead them to My holy mountain and make them glad in My house of prayer. Their burnt offerings and sacrifices will find favor on My altar, for My house will be named a house of prayer for all peoples." (Isaiah 56:7)
+
+This had always been God's plan. When Solomon dedicated the first temple a thousand years earlier, he prayed especially for "the foreigner who is not one of Your people Israel but comes from a distant land," asking God to hear their prayers too, "Then all the peoples of the earth will come to know Your name" (1 Kings 8:41, 43).
+
+The second was Jeremiah, who had warned the people of his day that they were treating the temple as "a hideout for robbers" (Jeremiah 7:11). A hideout is where robbers go to feel safe after they have done wrong. Jeremiah's point was that the people were living unjust lives and then hiding behind their religion, as if being near the temple would protect them. Jesus saw the same thing in His day. The house of God had become a place for profit and for hiding, instead of a place for prayer.
+
+### The zeal of Jesus
+
+This is one of the few times in the Gospels that we see Jesus angry. It was not a loss of temper. It was holy zeal for His Father's house. When John tells of Jesus clearing the temple, he says the disciples remembered the words of the psalm, "Zeal for Your house will devour Me" (John 2:17).
+
+What made Him so angry? Not that people were buying and selling. That has its place. It was that the buying and selling had pushed out the prayer. The one space set aside for the nations to pray had been filled with business. The outsiders who were seeking God had been crowded out by insiders who were seeking money.
+
+E. M. Bounds wrote about this scene in *The Necessity of Prayer*:
+
+> "Prayer is always in place in the house of God. When prayer is a stranger there, then it ceases to be God's house at all."
+> E. M. Bounds, *The Necessity of Prayer*
+
+And:
+
+> "Prayer is perfectly at home in the house of God. It is no stranger, no mere guest; it belongs there."
+> E. M. Bounds, *The Necessity of Prayer*
+
+### For all the nations
+
+Notice the words "for all the nations." From the very beginning, God's heart was for the whole world. He chose Israel not to keep His blessing for one people, but so that through them "all the peoples of the earth" would come to know Him. The psalmist prayed:
+
+> "May God show us grace and bless us; may He let the light of His face shine on us. Then the earth will know Your ways, and every nation Your power to save." (Psalm 67:1-2)
+
+And the Bible ends with that prayer answered. John sees "a crowd so vast that no one could number it. They came from every nation and from all tribes and peoples and languages, and they stood before the throne and before the Lamb" (Revelation 7:9).
+
+Today God's house is not a building in Jerusalem. Through Jesus, His people themselves have become His temple, the place where He lives by His Spirit. That means the church in every land is called to be what the temple was meant to be: a house of prayer, open to all nations.
+
+### Three key insights
+
+1. **God's house is first of all a house of prayer.** Many good things happen in church, but prayer is at the center. When prayer becomes a stranger in God's house, something has gone badly wrong.
+2. **God's heart is for all the nations.** Our prayers should be as wide as His love. The church's prayer is meant to embrace every people, tribe and language on earth.
+3. **Jesus clears away what keeps others from God.** He drove out the business that crowded the outsiders away from prayer. He still challenges anything in our churches that makes it hard for others to come near to God.
+
+### For us today
+
+It is worth asking honest questions about our own churches. Is prayer at the center, or at the edges? Is the prayer meeting the heart of the church, or a small gathering that most people skip? Do we spend more energy on buildings, programs and money than on seeking God together?
+
+And who is being crowded out? The court of the nations was meant for outsiders. Our churches can become places where only one kind of person feels at home: one tribe, one language, one social class, one generation. A house of prayer for all nations is a place where the stranger, the refugee, the poor and the person from another people can come and pray and be welcomed.
+
+There is good news here too. In our time, the church has become more truly global than ever before. There are believers today in almost every nation on earth, and many of the most vibrant praying churches are in Africa, Asia and Latin America. In Volume 10 we will meet some of them. The prayer of Psalm 67 is being answered before our eyes.
+
+### Try this
+
+This week, let your prayers become a house of prayer for all nations.
+
+- **Pray for one nation each day.** Choose seven countries, perhaps your own, your neighbors', and some far away. Each day, learn one thing about one of them, and pray for its people and its church.
+- **Pray in God's house.** If your church building is open, go there once this week simply to pray, not for a service.
+- **Go to the prayer meeting.** If your church has a prayer meeting, attend it this week. If it does not, ask your pastor whether you could help to start one.
+- **Welcome a stranger.** Look for one person at church or in your neighborhood who is an outsider, and make them welcome.
+
+### A closing prayer
+
+Lord Jesus, You were consumed with zeal for Your Father's house. Make my church a house of prayer. Clear away anything in me and in us that has crowded out prayer, or crowded out the people You love. Give me a heart as wide as Yours, for every nation, tribe and language. Let Your light shine on us, so that the whole earth may know Your ways and every nation Your power to save. Amen.
+
+### Questions for reflection
+
+- If Jesus walked into your church this week, what would He find at the center?
+- Who might feel crowded out or unwelcome in your church? What could change that?
+- Which nation or people group has God put on your heart to pray for?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *The Necessity of Prayer*, especially "Prayer and the House of God"
+- E. M. Bounds, *The Possibilities of Prayer*, especially "Wonders of God Through Prayer"
+
+---
+
+## Ask the Lord of the Harvest
+
+> "Then He said to His disciples, 'The harvest is large, but there are few workers. So pray to the Lord of the harvest, and ask Him to send out workers into His harvest.'" (Matthew 9:37-38)
+
+Anyone who has lived in a farming community knows the urgency of harvest time.
+
+For months the farmer has plowed, sown, weeded and waited. Now the grain stands golden in the fields, ready to be gathered. But a harvest cannot wait. If it is not brought in within a few days, the grain will fall to the ground, rot in the rain or be eaten by birds. A whole year's work can be lost. So at harvest time the whole village goes out into the fields, from dawn until dark. Every pair of hands is needed.
+
+Jesus had grown up in a farming land. When He looked at the crowds of Galilee, He saw a harvest field.
+
+### What Jesus saw
+
+Matthew tells us what Jesus had been doing:
+
+> "Jesus went through all the towns and villages, teaching in their synagogues, announcing the gospel of the kingdom, and healing every disease and every illness." (Matthew 9:35)
+
+Everywhere He went, people came to Him. And He did not see them simply as a crowd. He saw each one:
+
+> "When He saw the crowds, He felt deep pity for them, because they were worn out and abandoned, like sheep with no shepherd." (Matthew 9:36)
+
+The word Matthew uses for "deep pity" describes a feeling deep in the stomach, a love so strong it can be felt in the body. Jesus looked at the crowds and His heart broke for them. They were tired, confused, sick and lost. Their religious leaders had failed them. They were like sheep wandering on the hills with no shepherd to lead them to food and water or protect them from wolves.
+
+Then Jesus turned to His disciples. They might have expected Him to say, "Go and help them." Instead, He said, "Pray."
+
+### Why pray?
+
+At first this may seem strange. The need was urgent. Why not just send the disciples out at once? Andrew Murray noticed something unusual about this command:
+
+> "The Lord frequently taught His disciples that they must pray, and how; but seldom what to pray."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+Here is one of the few times Jesus told His followers exactly what to pray for: workers for the harvest. It shows how important this prayer is to Him.
+
+Notice whose harvest it is. Jesus calls God "the Lord of the harvest," and He calls the harvest "His harvest." The people in the fields do not belong to us. They belong to God. The work of bringing them in is His work, and the workers are His to call and send. We do not create the harvest, and we cannot produce the workers. We ask the Lord of the harvest to do it.
+
+Murray believed this prayer truly makes a difference:
+
+> "Prayer is no form or show. The Lord Jesus was Himself the truth; everything He spake was the deepest truth."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+If Jesus told us to pray for workers, it is because our prayers really matter in God's plan. God has chosen to send workers in answer to the prayers of His people.
+
+### The ones who prayed became the answer
+
+Now look at what happens next. Matthew's very next sentence is this:
+
+> "Jesus called His twelve disciples to Him and gave them authority over unclean spirits, to drive them out, and to heal every disease and every illness." (Matthew 10:1)
+
+A few verses later, "Jesus sent these twelve out" (Matthew 10:5). The men He had just told to pray for workers were the workers He sent.
+
+This happens again and again. When we pray honestly for God to send workers, He often answers by sending us. Isaiah had a vision of God asking, "Whom am I to send? Who will go on our behalf?" and he answered, "I am ready. Send me" (Isaiah 6:8). Praying for the harvest changes the person who prays. It is hard to keep asking God to send someone to your neighbor without beginning to wonder whether that someone is you.
+
+### A prayer that changed the world
+
+The history of Christian mission is full of answers to this prayer. In later volumes we will meet William Carey, a poor shoemaker in England who prayed and then went to India. We will meet the Moravians, whose hundred-year prayer meeting sent missionaries to the Caribbean, Greenland and Africa. We will meet five students who prayed in a field in America and started a movement that sent hundreds abroad. We will meet Hudson Taylor, who prayed for seventy new workers for China and saw them come.
+
+But this prayer is not only for faraway places. The harvest is also in your street, your school, your workplace and your village. And today the workers come from everywhere. Missionaries now go out from Nigeria, Brazil, Korea, India, the Philippines and many other nations, carrying the gospel to every part of the world. The prayer of Matthew 9:38 is being answered from every direction.
+
+Jesus said elsewhere, "Raise your eyes and look at the fields. They have turned white, ready for harvest" (John 4:35). The harvest is still large. The workers are still few. And the command is still the same: pray.
+
+### Three key insights
+
+1. **Prayer for the harvest begins with compassion.** Jesus prayed for workers because He saw the crowds with deep pity. When we ask God to let us see people as He sees them, our prayers for them become urgent and real.
+2. **The harvest belongs to the Lord.** It is His harvest, and the workers are His to call and send. We cannot produce them; we can only ask Him. And He has chosen to answer our prayers.
+3. **Those who pray for workers often become workers.** The disciples who were told to pray were sent out themselves. Be ready: when you pray this prayer, God may answer by sending you.
+
+### For us today
+
+Who are the "sheep with no shepherd" around you? Perhaps the young people in your town who have no one to guide them. Perhaps the migrant workers who live far from home. Perhaps a people group in your country who have never heard the gospel in their own language. Perhaps a neighbor who is "worn out and abandoned."
+
+Ask God to open your eyes to see them as Jesus does. Then pray for workers: pastors, evangelists, teachers, Bible translators, doctors, ordinary believers who will love them in Jesus' name. Pray for the workers already in the field, that God will strengthen them. And pray with an open hand, ready for God to say, "You go."
+
+Some Christians set a daily reminder to pray this prayer, for example at 9:38 each morning or evening, to remember Matthew 9:38. However you do it, make it a regular part of your praying. It is one of the few prayers Jesus told us by name to pray.
+
+### Try this
+
+This week, pray every day for the harvest.
+
+- **See the crowd.** Each day, take a moment to look at the people around you: on the street, at work, at the market. Ask God to give you His deep pity for them.
+- **Pray Matthew 9:38.** Ask the Lord of the harvest to send workers into a specific place: your neighborhood, your city, an unreached people, a nation you care about.
+- **Pray for one worker by name.** Choose a missionary, pastor or evangelist you know of, and pray for them each day. If you can, send them a message to tell them you are praying.
+- **Offer yourself.** End your prayer each day with Isaiah's words: "I am ready. Send me." Then watch for how God answers.
+
+### A closing prayer
+
+Lord of the harvest, the harvest is Yours, and it is large. Open my eyes to see the crowds as Jesus saw them, worn out and abandoned, like sheep with no shepherd. Give me His deep pity. I pray now: send out workers into Your harvest, in my own town and to the ends of the earth. Strengthen those who are already in the fields. And if You want to send me, here I am. Send me. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- Who are the "sheep with no shepherd" in your community? How might Jesus see them?
+- Why do you think Jesus told His disciples to pray before He sent them out?
+- Are you willing for God to answer your prayer for workers by sending you? What would that mean for you?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "Prayer Provides Labourers"
+- E. M. Bounds, *The Reality of Prayer*, especially "Jesus Christ, the Divine Teacher of Prayer (Continued)"
+
+---
+
+## Thanks Before the Miracle
+
+> "So they took the stone away. Then Jesus raised His eyes upward and said, 'Father, I give You thanks that You have heard Me. I Myself knew that You hear Me at all times. But I have spoken for the sake of the crowd standing around, so that they may believe that it was You who sent Me.'" (John 11:41-42)
+
+The message came from Bethany, a village just outside Jerusalem. It was from two sisters, Martha and Mary, close friends of Jesus. Their words were short and urgent:
+
+> "Lord, look, the one You love is ill." (John 11:3)
+
+The one He loved was their brother Lazarus. The sisters did not ask Jesus to come. They did not need to. They knew He loved Lazarus, and they were sure He would hurry to help.
+
+But He did not hurry. John tells us something that must have puzzled the disciples: "So when He heard that Lazarus was ill, He stayed where He was for two more days" (John 11:6).
+
+By the time Jesus arrived in Bethany, Lazarus had died and had been in the tomb for four days. The house was full of mourners. Martha came out to meet Jesus on the road, and her first words carried all the pain of those days of waiting: "Lord, had You been here, my brother would not have died" (John 11:21). Mary said the same words when she came, falling at His feet in tears.
+
+And then we read the shortest verse in the Bible: "Jesus wept" (John 11:35).
+
+### At the tomb
+
+They went to the tomb, a cave with a large stone across the entrance. Jesus said, "Take the stone away." Martha, practical as always, objected: "Lord, he already stinks; this is the fourth day" (John 11:39). There was no doubt at all that Lazarus was dead.
+
+They rolled the stone away. Everyone was watching. And Jesus lifted His eyes to heaven and prayed.
+
+Notice what He said. He did not ask the Father to raise Lazarus. He thanked Him: "Father, I give You thanks that You have heard Me."
+
+Jesus gave thanks before anything had happened. Lazarus was still lying dead in the tomb. The smell of death was in the air. The crowd was weeping. And Jesus said, "Thank You."
+
+It seems that Jesus had already prayed about Lazarus, perhaps during those two days of waiting, and He knew that His Father had heard. So He thanked Him for the answer before it could be seen. Then He explained why He prayed out loud: "For the sake of the crowd standing around, so that they may believe." He wanted the people to know that what was about to happen came from the Father.
+
+Then He cried out with a loud voice, "Lazarus, come out!" And the dead man came out, still wrapped in his grave clothes. "Untie him," Jesus said, "and let him go" (John 11:43-44).
+
+### A thankful Savior
+
+Thanksgiving was part of the way Jesus always prayed. When He fed the five thousand with five loaves, "Jesus took the loaves, gave thanks, and shared them out" (John 6:11). He gave thanks before the bread multiplied, while it was still a small boy's lunch. On the night He was betrayed, knowing that He was about to suffer and die, "He took bread, and after giving thanks He broke it and handed it to them" (Luke 22:19). Even with the cross before Him, He gave thanks.
+
+Thanksgiving runs through the prayers of God's people in every age. Daniel, when he heard that praying to God had been made a crime, went home and prayed three times a day, "giving thanks to his God, just as he had always done" (Daniel 6:10). Jonah, from inside the great fish, prayed, "I will sacrifice to You with a song of thanksgiving... It is the LORD who saves" (Jonah 2:9). And Paul, writing from prison, said:
+
+> "Do not worry about anything. Instead, in everything, bring your requests to God through prayer and petition, with thanksgiving." (Philippians 4:6)
+
+### A voice from the past
+
+R. A. Torrey, the American Bible teacher who led great evangelistic missions around the world in the early 1900s, believed that thanksgiving was one of the most neglected parts of prayer:
+
+> "In approaching God to ask for new blessings, we should never forget to return thanks for blessings already granted."
+> R. A. Torrey, *How to Pray*
+
+He noticed that we are often very specific in our requests, but vague in our thanks:
+
+> "We should be just as definite in returning thanks as we are in prayer."
+> R. A. Torrey, *How to Pray*
+
+And he saw that thanksgiving makes faith stronger:
+
+> "Returning thanks for blessings already received increases our faith and enables us to approach God with new boldness and new assurance."
+> R. A. Torrey, *How to Pray*
+
+### Tears and thanks together
+
+There is something very important in this story. Jesus wept, and then He gave thanks. He did not pretend that death was not terrible, or that the sisters' grief did not matter. He felt it deeply. His thanksgiving was not a way of covering up sorrow. It was faith speaking in the middle of sorrow.
+
+That matters for us. Sometimes Christians feel they must hide their pain and always look happy, as if thanksgiving means pretending. Jesus shows us a better way. We can weep honestly and still say, "Father, thank You that You hear me." Paul wrote, "Whatever happens, give thanks" (1 Thessalonians 5:18). He did not say to give thanks *for* everything, as if evil were good. He said to give thanks *in* everything, because even in the darkest place, God is still good and still hears.
+
+### Three key insights
+
+1. **Thanksgiving is faith speaking before the answer is seen.** Jesus thanked His Father while Lazarus was still in the tomb. When we thank God before we see the answer, we are saying that we trust Him.
+2. **Thanksgiving and tears can go together.** Jesus wept, and then He gave thanks. Thankful prayer is not pretending that pain does not hurt. It is trusting God in the middle of it.
+3. **Remembering past answers builds faith for new ones.** Torrey saw that thanking God for what He has already done gives us new boldness to ask again. A thankful heart is a believing heart.
+
+### For us today
+
+Think about how most of our prayers begin. Often we rush straight to our requests. We have a list of needs, and we hand it to God like a shopping list. There is nothing wrong with asking; Jesus told us to ask. But how often do we stop to thank Him?
+
+Torrey suggested an exercise: think back over the prayers God has already answered in your life. Most of us will find that we have forgotten many of them, and thanked Him for few. Remembering them is like turning on a light. Suddenly we see how faithful He has been, and our faith for today grows stronger.
+
+And think of the "tombs" in your life: the situations that seem dead and hopeless. A marriage, a child, a church, a dream, a body. Like Martha, you may say, "Lord, it's too late." Jesus may be waiting there for you to roll away the stone, and to hear you say, even through tears, "Father, thank You that You hear me."
+
+### Try this
+
+This week, let thanksgiving lead your prayers.
+
+- **Start with thanks.** Before you ask for anything each day, thank God for three specific things. Be as definite in your thanks as you are in your requests.
+- **Remember answered prayers.** Write a list of prayers God has answered in your life. Add to it each day this week. Read it back on the last day and give thanks.
+- **Thank Him before the answer.** Choose one request you are still waiting for. Each day, pray for it and then say, "Father, thank You that You have heard me," as Jesus did.
+- **Thank Him in a hard place.** If you are in a season of sorrow, bring your tears to God honestly, and then thank Him for one way He is still with you.
+
+### A closing prayer
+
+Father, thank You that You hear me. Thank You for every prayer You have answered in my life, even the ones I have forgotten. Forgive me for coming to You so often with requests and so seldom with thanks. Teach me to thank You before I see the answer, as Jesus did at the tomb. When I weep, let me weep in Your presence, and still say, "Thank You." And let my thankful heart become a believing heart. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- How much of your prayer time is spent asking, and how much giving thanks?
+- Can you remember a prayer God answered that you never thanked Him for? Thank Him now.
+- What is the "tomb" in your life where it is hardest to give thanks? What would it mean to thank God there?
+
+### Read more on Ochorus
+
+- R. A. Torrey, *How to Pray*, especially "Praying with Thanksgiving"
+- E. M. Bounds, *The Essentials of Prayer*, especially "Prayer, Praise and Thanksgiving"
+- Dwight L. Moody, *Prevailing Prayer*, especially "Thanksgiving"
+
+---
+
+## Asking in His Name
+
+> "So far you have asked for nothing in My name. Ask and you will receive, so that your joy will be complete." (John 16:24)
+
+In the city of Ephesus, some years after Jesus had risen and returned to the Father, a group of men decided to try a new technique.
+
+They were traveling Jewish exorcists, men who went from town to town claiming to drive out evil spirits. They had seen the apostle Paul cast out demons in the name of Jesus, and they thought they had discovered the secret. So they began to use the same words:
+
+> "'I charge you by the Jesus whom Paul preaches,' they would say. A Jewish high priest named Sceva had seven sons who were doing this. The evil spirit answered them, 'I know Jesus, and I am acquainted with Paul. But you, who are you?' Then the man who had the evil spirit threw himself on them. He mastered every one of them and was too strong for them, so that they fled from that house stripped of their clothes and covered with wounds." (Acts 19:13-16)
+
+It is a frightening story, and also a little comic: seven men running out into the street, bruised and without their clothes. But the lesson is serious. The name of Jesus is not a magic word. It does not work like a key that anyone can turn. The sons of Sceva used His name, but they did not know Him.
+
+So what does it mean to pray "in the name of Jesus"?
+
+### The night before the cross
+
+Jesus gave His great promises about praying in His name on the last night before He died. He was with His disciples in an upper room in Jerusalem. He had washed their feet and shared the bread and the cup. Now He was preparing them for His departure.
+
+In those hours He spoke again and again about asking in His name:
+
+> "And whatever you ask in My name, I will do it, so that in the Son the Father may be glorified. If you ask Me anything in My name, I Myself will do it." (John 14:13-14)
+
+> "So that the Father may give you whatever you ask Him in My name." (John 15:16)
+
+> "So far you have asked for nothing in My name. Ask and you will receive, so that your joy will be complete." (John 16:24)
+
+"So far you have asked for nothing in My name." Something new was about to begin. While Jesus was with them on earth, the disciples could simply turn to Him and ask. Soon He would be gone from their sight. But they would not be left alone. They would be able to come to the Father directly, in His name, and the Father would hear them.
+
+### What is in a name?
+
+In the Bible, a person's name stands for the person: their character, their authority and everything they are. To come in someone's name is to come as their representative, with their authority, on their business.
+
+R. A. Torrey explained it with a picture from everyday life. Imagine going to a bank with a check. If you sign it yourself and you have no money in that bank, it will not be paid. But if the check is signed by someone who has a great deal of money in that bank, it will be paid at once, even though you have nothing there yourself:
+
+> "I have nothing deposited there, I have absolutely no credit there, and if I go in my own name I will get absolutely nothing; but Jesus Christ has unlimited credit in heaven, and He has granted to me the privilege of going to the bank with His name on my checks."
+> R. A. Torrey, *How to Pray*
+
+We do not come to God because we are good enough, or because we have prayed long enough, or because we have earned an answer. We come because of who Jesus is and what He has done. "It is through Him that both of us can approach the Father, in the one Spirit" (Ephesians 2:18). Jesus said, "Only through Me does anyone come to the Father" (John 14:6). His name is our only plea, and it is enough.
+
+### Not a formula
+
+Many Christians end their prayers with the words "in Jesus' name, amen." It is a good habit, and it is a good reminder. But Torrey was careful to warn:
+
+> "Praying in the name of Christ is not merely adding the phrase 'I ask these things in Jesus' name' to my prayer."
+> R. A. Torrey, *How to Pray*
+
+The sons of Sceva used the words, and the words did them no good. To pray in Jesus' name means to pray as one who belongs to Him, who trusts in Him, and who wants what He wants. Andrew Murray put it this way:
+
+> "When I go in the name of another, I deny myself, I take not only his name, but himself and what he is, instead of myself and what I am."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+This explains why the promise is so large: "whatever you ask in My name." If we truly pray in His name, we will not ask for things He would be ashamed to sign. We will ask for what serves His purposes and brings glory to the Father. Jesus said He would answer "so that in the Son the Father may be glorified" (John 14:13). A prayer in Jesus' name is a prayer He would be glad to put His own name to.
+
+### The Father Himself loves you
+
+There is one more beautiful promise in this part of the Upper Room teaching:
+
+> "On that day you will ask in My name, and I do not say that I will ask the Father on your behalf. For the Father Himself loves you, since you have loved Me and believed that I came out from God." (John 16:26-27)
+
+Jesus is not saying that He no longer prays for us. Hebrews tells us that He always lives to intercede for us, and we will come to that in the last chapter of this book. He is saying something else: we do not need to think of the Father as unwilling, as if Jesus has to persuade Him to listen. "The Father Himself loves you." Praying in Jesus' name brings us into the love between the Father and the Son. And that is why Jesus says our joy will be "complete."
+
+### Three key insights
+
+1. **We come to God on Jesus' credit, not our own.** We have nothing to offer God that earns an answer. We come in the name of Jesus, who has "unlimited credit in heaven." His name is our only plea, and it is enough.
+2. **Praying in His name means praying His will.** The name of Jesus is not a magic formula. It means asking as His representatives, for the things He wants, for the glory of the Father.
+3. **The Father Himself loves us.** Jesus' name opens the way into the Father's love. Praying in His name is not only powerful; it is full of joy.
+
+### For us today
+
+In many parts of the world, Christians pray boldly "in the name of Jesus" against sickness, fear and evil spirits. This is good and right. The apostles did it: "In the name of Jesus Christ of Nazareth, walk!" Peter said to a man who had been lame from birth (Acts 3:6). There is power in His name, because "Salvation comes through no one but Him" (Acts 4:12).
+
+But the story of the sons of Sceva reminds us that the power is in the Person, not in the phrase. The name of Jesus belongs to those who belong to Jesus.
+
+Next time you end a prayer with "in Jesus' name," pause for a moment. Ask yourself: Is this something Jesus would sign? Am I asking as His representative, for His purposes? Then say it with confidence and joy, because the Father Himself loves you.
+
+### Try this
+
+This week, learn to pray in the name of Jesus.
+
+- **Pause before "in Jesus' name."** Each time you end a prayer, stop before those words and ask, "Lord, is this a prayer You would sign?" If not, change it.
+- **Thank Him for access.** Each day, read Ephesians 2:18 and thank Jesus that through Him you can come to the Father.
+- **Do your work in His name.** Paul wrote, "In everything you say and everything you do, act in the name of the Lord Jesus, and through Him give thanks to God the Father" (Colossians 3:17). Choose one task each day and do it consciously in His name.
+- **Ask for joy.** Pray John 16:24 for yourself and for one other person: "Father, let our joy be complete."
+
+### A closing prayer
+
+Father, I come to You not in my own name, for I have nothing to offer You. I come in the name of Jesus, Your Son, who loved me and gave Himself for me. Thank You that through Him I can approach You, and that You Yourself love me. Teach me to pray as one who belongs to Jesus, asking for the things that He wants, so that You may be glorified in Him. And make my joy complete. In the name of Jesus. Amen.
+
+### Questions for reflection
+
+- What do you usually mean when you say "in Jesus' name" at the end of a prayer?
+- Torrey compared praying in Jesus' name to using a check signed by someone with "unlimited credit." What does that picture teach you?
+- Jesus said, "The Father Himself loves you." How does that change the way you come to Him in prayer?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The All-Prevailing Plea"
+- R. A. Torrey, *How to Pray*, especially "Praying in the Name of Christ and According to the Will of God"
