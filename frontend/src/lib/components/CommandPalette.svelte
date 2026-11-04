@@ -18,6 +18,9 @@
 	import { portal } from '$lib/actions/portal';
 	import { goto } from '$app/navigation';
 	import { paletteUi } from '$lib/paletteUi.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
+	import { adminWorkHref } from '$lib/adminLinks';
 
 	const t = i18n.t;
 
@@ -62,14 +65,36 @@
 		];
 	}
 
-	type Item = { key: string; kind: 'cmd' | 'hit'; label: string; title: string; meta: string; href: string };
+	/** `admin`: the work's admin page, on a book/sermon hit for a viewer who can open it. */
+	type Item = {
+		key: string;
+		kind: 'cmd' | 'hit';
+		label: string;
+		title: string;
+		meta: string;
+		href: string;
+		admin?: string;
+	};
+
+	// ---- admin shortcuts (English-only, like the admin itself) ----
+	// The admin pages a viewer can open — the rail's own list and rule
+	// (`$lib/adminSections`), so the palette can't offer a section the rail
+	// hides. UX only: every admin page and API call is gated server-side.
+	const adminCommands = $derived(
+		auth.hasAdminAccess ? ADMIN_SECTIONS.filter((s) => opensSection(s, auth)) : []
+	);
+	// A work's admin page is a reporting view (AdminBookDetailView /
+	// AdminSermonDetailView require reporting:view).
+	const canOpenWork = $derived(auth.can('reporting'));
+	const adminHref = (kind: 'book' | 'sermon', slug: string) =>
+		canOpenWork ? adminWorkHref(kind, slug) : undefined;
 
 	function hitItem(h: SearchHit): Item {
 		switch (h.type) {
 			case 'author':
 				return { key: 'author:' + h.author_slug, kind: 'hit', label: t('search.typeAuthor'), title: h.author_name, meta: '', href: authorPath(h.author_slug) };
 			case 'book':
-				return { key: 'book:' + h.book_slug, kind: 'hit', label: t('search.typeBook'), title: h.book_title, meta: h.author_name, href: `/books/${h.book_slug}` };
+				return { key: 'book:' + h.book_slug, kind: 'hit', label: t('search.typeBook'), title: h.book_title, meta: h.author_name, href: `/books/${h.book_slug}`, admin: adminHref('book', h.book_slug) };
 			case 'topic':
 				return { key: 'topic:' + h.topic_slug, kind: 'hit', label: t('search.typeTopic'), title: h.topic_title, meta: '', href: `/topics/${h.topic_slug}` };
 			case 'plan':
@@ -79,7 +104,7 @@
 			case 'scripture':
 				return { key: `scripture:${h.book_slug}:${h.chapter}:${h.verse ?? ''}`, kind: 'hit', label: t('search.typeScripture'), title: h.reference, meta: '', href: scripturePageHref(h.book_slug, h.chapter, h.verse) };
 			case 'sermon':
-				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}` };
+				return { key: 'sermon:' + h.sermon_slug, kind: 'hit', label: t('search.typeSermon'), title: h.sermon_title, meta: h.author_name, href: `/sermons/${h.sermon_slug}`, admin: adminHref('sermon', h.sermon_slug) };
 			default:
 				return { key: `chapter:${h.book_slug}:${h.chapter_order}`, kind: 'hit', label: t('search.typeChapter'), title: h.chapter_title || h.book_title, meta: h.book_title, href: `/books/${h.book_slug}/${h.chapter_order}` };
 		}
@@ -89,6 +114,15 @@
 		const term = q.trim().toLowerCase();
 		const list = term ? COMMANDS.filter((c) => c.label.toLowerCase().includes(term)) : COMMANDS;
 		return list.map((c) => ({ key: 'cmd:' + c.href, kind: 'cmd', label: t('search.palettePages'), title: c.label, meta: '', href: c.href }));
+	});
+	// Only once something is typed: the empty palette is the reader's page list,
+	// and nineteen admin rows under it would bury it. "admin" lists them all.
+	const adminItems = $derived.by<Item[]>(() => {
+		const term = q.trim().toLowerCase();
+		if (!term || !adminCommands.length) return [];
+		const all = 'admin'.startsWith(term) || term.startsWith('admin');
+		const list = all ? adminCommands : adminCommands.filter((c) => c.label.toLowerCase().includes(term));
+		return list.map((c) => ({ key: 'admin:' + c.href, kind: 'cmd', label: 'Admin', title: c.label, meta: '', href: c.href }));
 	});
 	const hitItems = $derived<Item[]>(hits.map(hitItem));
 
@@ -123,7 +157,7 @@
 		];
 	});
 
-	const items = $derived<Item[]>([...searchItem, ...cmdItems, ...hitItems]);
+	const items = $derived<Item[]>([...searchItem, ...cmdItems, ...adminItems, ...hitItems]);
 	const activeKey = $derived(items[activeIndex]?.key ?? '');
 
 	// Keep the selection valid as the list changes; keep the active row in view.
@@ -223,7 +257,8 @@
 		} else if (e.key === 'Enter') {
 			e.preventDefault();
 			const it = items[activeIndex];
-			if (it) go(it.href);
+			// ⌘/Ctrl+Enter on a book or sermon opens its admin page instead.
+			if (it) go((e.metaKey || e.ctrlKey) && it.admin ? it.admin : it.href);
 		}
 	}
 </script>
@@ -271,7 +306,7 @@
 				{:else}
 					<ul>
 						{#each items as it (it.key)}
-							<li>
+							<li class="flex items-stretch" class:bg-surface-2={it.key === activeKey}>
 								<a
 									id="cmd-{it.key}"
 									href={localizeHref(it.href)}
@@ -279,8 +314,7 @@
 										e.preventDefault();
 										go(it.href);
 									}}
-									class="flex items-center gap-3 px-4 py-2.5 hover:no-underline"
-									class:bg-surface-2={it.key === activeKey}
+									class="flex min-w-0 flex-1 items-center gap-3 px-4 py-2.5 hover:no-underline"
 								>
 									<span
 										class="eyebrow w-16 shrink-0 text-muted"
@@ -292,6 +326,19 @@
 										{#if it.meta}<span class="block truncate text-small text-muted">{it.meta}</span>{/if}
 									</span>
 								</a>
+								{#if it.admin}
+									<!-- A sibling, not nested: an <a> can't hold another. -->
+									<a
+										href={localizeHref(it.admin)}
+										onclick={(e) => {
+											e.preventDefault();
+											go(it.admin!);
+										}}
+										class="flex shrink-0 items-center pe-4 ps-2 text-small text-muted hover:text-accent hover:no-underline"
+										aria-label="Open {it.title} in admin"
+										title="Open in admin (⌘/Ctrl+Enter)">Admin</a
+									>
+								{/if}
 							</li>
 						{/each}
 					</ul>
@@ -302,6 +349,7 @@
 				<span>↑↓ {t('search.paletteNavigate')}</span>
 				<span>↵ {t('search.paletteOpen')}</span>
 				<span>esc {t('search.paletteClose')}</span>
+				{#if hitItems.some((i) => i.admin)}<span>⌘↵ admin</span>{/if}
 			</div>
 		</div>
 	</div>
