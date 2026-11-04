@@ -1,0 +1,146 @@
+{
+ "kind": "sermon",
+ "slug": "songs-in-the-night",
+ "language": "es",
+ "job_issue": 7178,
+ "references": [
+  {
+   "reference": "Job 35:10",
+   "status": "mined",
+   "source_file": "evening-by-evening.es.json",
+   "block_index": 0
+  },
+  {
+   "reference": "Psalms 91:6a",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 91:5a",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 103:1",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "mined",
+   "source_file": "evening-by-evening.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Exodus 15:1b",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-2.es.json",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalms 102:9",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 17
+  },
+  {
+   "reference": "Psalms 77:10b",
+   "status": "mined",
+   "source_file": "gleanings-among-the-sheaves.es.json",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 55:1b",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Kings 20:31-32",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Lamentations 3:22",
+   "status": "mined",
+   "source_file": "rooted-4.es.json",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 103:10",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Revelation 11:15",
+   "status": "mined",
+   "source_file": "the-possibilities-of-faith.es.json",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 19:6",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 22:12",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json",
+   "block_index": 29
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalms 23:4a",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 42
+  },
+  {
+   "reference": "Acts 13:10",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "John 8:11b",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Mark 16:16a",
+   "status": "mined",
+   "source_file": "spurgeon-on-prayer.es.json",
+   "block_index": 47
+  },
+  {
+   "reference": "Hebrews 7:25a",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json",
+   "block_index": 50
+  }
+ ]
+}
