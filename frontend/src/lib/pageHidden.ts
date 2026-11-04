@@ -19,3 +19,19 @@ export function onPageHidden(fn: () => void): () => void {
 		window.removeEventListener('pagehide', fn);
 	};
 }
+
+/**
+ * Run `fn` now, and again each time the page comes back into view: the
+ * reader's day may have turned while it was away (a tab left open over
+ * midnight). The twin of onPageHidden, for whatever shows "today" — a
+ * birthday candle, a feast's flames. Returns the cleanup (for an `$effect`).
+ */
+export function onPageShown(fn: () => void): () => void {
+	if (!browser) return () => {};
+	const onVisibility = () => {
+		if (document.visibilityState === 'visible') fn();
+	};
+	onVisibility();
+	document.addEventListener('visibilitychange', onVisibility);
+	return () => document.removeEventListener('visibilitychange', onVisibility);
+}

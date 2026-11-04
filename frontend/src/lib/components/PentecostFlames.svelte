@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { onPageShown } from '$lib/pageHidden';
 	import { FLAME_PATH } from '$lib/flamePath';
 	import { feastDay } from '$lib/liturgical';
 
@@ -17,14 +18,7 @@
 	 * the flames flicker up once and then burn still.
 	 */
 	let on = $state(false);
-	onMount(() => {
-		const check = () => {
-			if (document.visibilityState === 'visible') on = feastDay(new Date()) === 'pentecost';
-		};
-		check();
-		document.addEventListener('visibilitychange', check);
-		return () => document.removeEventListener('visibilitychange', check);
-	});
+	onMount(() => onPageShown(() => (on = feastDay(new Date()) === 'pentecost')));
 </script>
 
 {#if on}

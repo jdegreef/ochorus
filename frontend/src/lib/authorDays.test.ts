@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { AUTHOR_DAYS, anniversariesOn, anniversaryOn } from './authorDays';
+import { isDateKey } from './dailyDate';
 
 const AUTHORS = JSON.parse(
 	readFileSync(join(__dirname, '..', '..', '..', 'backend', 'library', 'fixtures', 'content', 'authors.json'), 'utf8')
@@ -21,11 +22,9 @@ describe('AUTHOR_DAYS', () => {
 			const iso = days[kind];
 			if (!iso) continue;
 			expect(iso).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-			const [y, m, d] = iso.split('-').map(Number);
 			// A real calendar day (no 31 April), in the fixture's year.
-			const probe = new Date(2000, m - 1, d);
-			expect(probe.getMonth() + 1 === m && probe.getDate() === d, `${slug} ${kind} ${iso}`).toBe(true);
-			expect(y, `${slug} ${kind} year`).toBe(year);
+			expect(isDateKey(iso.slice(5)), `${slug} ${kind} ${iso}`).toBe(true);
+			expect(Number(iso.slice(0, 4)), `${slug} ${kind} year`).toBe(year);
 		}
 	});
 });
@@ -36,7 +35,8 @@ describe('anniversaryOn', () => {
 			slug: 'augustine-of-hippo',
 			name: 'Augustine of Hippo',
 			kind: 'born',
-			date: '0354-11-13'
+			date: '0354-11-13',
+			year: 354
 		});
 		expect(anniversaryOn('augustine-of-hippo', new Date(2026, 7, 28, 23, 55))?.kind).toBe('died');
 		expect(anniversaryOn('augustine-of-hippo', new Date(2026, 10, 12, 23, 55))).toBeNull();

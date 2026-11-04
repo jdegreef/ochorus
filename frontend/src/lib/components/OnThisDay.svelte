@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { anniversariesOn, type Anniversary } from '$lib/authorDays';
+	import type { Anniversary } from '$lib/authorDays';
 	import { localizeHref } from '$lib/href';
+	import { onPageShown } from '$lib/pageHidden';
 	import * as m from '$lib/paraglide/messages.js';
 	import Candle from '$lib/components/Candle.svelte';
 
@@ -11,22 +12,25 @@
 	 * are nobody's (`$lib/authorDays` keeps the days).
 	 *
 	 * The reader's own day, re-read when the tab comes back into view, as the
-	 * hero's date is.
+	 * hero's date is. The table of days loads after the dashboard's first
+	 * paint, not in its bundle.
 	 */
 	let days = $state<Anniversary[]>([]);
 	$effect(() => {
-		const check = () => {
-			if (document.visibilityState === 'visible') days = anniversariesOn(new Date());
+		let live = true;
+		const table = import('$lib/authorDays');
+		const stop = onPageShown(() =>
+			table.then(({ anniversariesOn }) => {
+				if (live) days = anniversariesOn(new Date());
+			})
+		);
+		return () => {
+			live = false;
+			stop();
 		};
-		check();
-		document.addEventListener('visibilitychange', check);
-		return () => document.removeEventListener('visibilitychange', check);
 	});
-	const said = (a: Anniversary) => {
-		const name = a.name;
-		const year = String(Number(a.date.slice(0, 4)));
-		return a.kind === 'born' ? m.home_born_today({ name, year }) : m.home_died_today({ name, year });
-	};
+	const said = ({ name, year, kind }: Anniversary) =>
+		kind === 'born' ? m.home_born_today({ name, year: String(year) }) : m.home_died_today({ name, year: String(year) });
 </script>
 
 {#if days.length}

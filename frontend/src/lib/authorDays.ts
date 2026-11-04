@@ -11,6 +11,8 @@
  * fixture's, copied so the home line needs no request; `authorDays.test.ts`
  * holds every slug, name and year to `authors.json`.
  */
+import { dateKey } from './dailyDate';
+
 export interface AuthorDays {
 	name: string;
 	/** ISO `YYYY-MM-DD`. */
@@ -138,10 +140,9 @@ export interface Anniversary {
 	kind: 'born' | 'died';
 	/** ISO `YYYY-MM-DD`: the day itself, year and all. */
 	date: string;
+	/** Its year, as a number (354, not "0354"). */
+	year: number;
 }
-
-const monthDay = (d: Date) =>
-	`${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 /**
  * The writer's anniversary on the reader's local day, if it is one: their
@@ -150,10 +151,10 @@ const monthDay = (d: Date) =>
 export function anniversaryOn(slug: string, date: Date): Anniversary | null {
 	const days = AUTHOR_DAYS[slug];
 	if (!days) return null;
-	const md = monthDay(date);
+	const md = dateKey(date);
 	for (const kind of ['born', 'died'] as const) {
 		const iso = days[kind];
-		if (iso?.endsWith(md)) return { slug, name: days.name, kind, date: iso };
+		if (iso?.endsWith(md)) return { slug, name: days.name, kind, date: iso, year: Number(iso.slice(0, 4)) };
 	}
 	return null;
 }
