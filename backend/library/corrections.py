@@ -20834,3 +20834,12 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+# naaman-the-syrian: "Believe on the Lord Jesus Christ, and thou shalt be saved"
+# is Acts 16:31, printed "(Acts xvii. 31)"; pt and sw carried it over. Found
+# translating the es edition (#7167), which cites Hechos 16:31.
+BODY_CORRECTIONS.setdefault("naaman-the-syrian", {}).setdefault("replacements", []).extend([
+    ("(Acts xvii. 31)", "(Acts xvi. 31)"),
+    ("(Atos 17:31)", "(Atos 16:31)"),
+    ("(Matendo 17:31)", "(Matendo 16:31)"),
+])
