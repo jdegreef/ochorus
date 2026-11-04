@@ -310,11 +310,7 @@ class Command(BaseCommand):
             create_defaults={
                 **content,
                 "source_type": Book.SourceType.PUBLIC_DOMAIN,
-                # Unpublished until its painted cover lands (the museum APIs
-                # paint_covers fetches from were out of reach when it was
-                # built); then it is published from the admin, since
-                # is_published is create-only in seed_books.
-                "is_published": False,
+                "is_published": True,
                 "sort_order": book_sort_order(slug),
             },
         )
