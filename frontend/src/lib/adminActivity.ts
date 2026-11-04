@@ -403,6 +403,17 @@ const JOB_STATUS: Record<JobStatus, JobStatusMeta> = {
 	}
 };
 
+/** Pill classes per tone — the scale the Activity stage bar uses, and the
+ *  work page's "Not yet translated" list. */
+export const JOB_TONE_CLASS: Record<JobStatusMeta['tone'], string> = {
+	muted: 'border-border text-muted',
+	active: 'border-border-strong text-text',
+	danger: 'border-danger text-danger',
+	warning: 'border-warning text-warning',
+	live: 'border-accent-soft-border bg-accent-soft text-accent',
+	done: 'border-accent bg-accent text-accent-contrast'
+};
+
 /** Plans and topic shelves have no approval step: shipped is done. */
 const NO_APPROVAL = new Set(['plan', 'topic']);
 

@@ -9,9 +9,10 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
-from .. import dropoff, invalidation
+from .. import dropoff, invalidation, job_status
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..languages import target_codes
 from ..models import AdminAction, Author, Book, Plan, Sermon
 from ..qa import chapter_flags
 from ..views import _language_entry
@@ -94,9 +95,69 @@ class AdminBookDetailView(APIView):
                     "id": canonical.author_id,
                 },
                 "languages": languages,
+                "untranslated": _untranslated("book", slug, {b.language for b in books}),
                 "stall_days": dropoff.STALL_DAYS,
             }
         )
+
+
+#: A language with no edition and no job ever filed: nothing to report but the gap.
+NOT_FILED = "none"
+
+
+def _untranslated(type_: str, slug: str, present: set[str]) -> dict:
+    """Every target language with no edition of this work, and where its
+    translation job stands — so the work's page answers "what's missing, and
+    is anyone on it?" without a trip to the coverage matrix.
+
+    ``blocked`` is the copyright rule (``jobs.translation_blocked``): no job may
+    be filed, so the client shows the gap without a Translate button. A
+    language whose job was never filed (no ``translation.job`` row, nothing in
+    the open queue) reads ``none``; the rest are ``job_status`` stages, with the
+    issue or PR to open when GitHub named one.
+    """
+    from .jobs import translation_blocked
+
+    codes = [c for c in target_codes() if c not in present]
+    keys = {(type_, slug, c): None for c in codes}
+    filed: dict[str, object] = {}
+    for target, at in (
+        AdminAction.objects.filter(
+            action=AdminAction.Action.TRANSLATION_JOB,
+            target__in=[job_status.target_of(k) for k in keys],
+        )
+        .order_by("at")
+        .values_list("target", "at")
+    ):
+        filed[target] = at  # ascending, so the latest filing wins
+    for k in keys:
+        keys[k] = filed.get(job_status.target_of(k))
+    queue = None
+
+    def read_queue():
+        nonlocal queue
+        queue = job_status.open_jobs()
+        return queue
+
+    status = job_status.statuses(keys, read_queue) if keys else {}
+    rows = []
+    for key in keys:
+        stage = status.get(key, job_status.UNKNOWN)
+        q = queue if isinstance(queue, job_status.Queue) else None
+        in_queue = q is not None and key in q.jobs
+        # Never filed from here and not in the queue: "closed" would be a guess
+        # about a job that doesn't exist.
+        if keys[key] is None and not in_queue and stage in (job_status.CLOSED, job_status.UNKNOWN):
+            stage = NOT_FILED
+        rows.append(
+            {
+                **_language_entry(key[2]),
+                "job_status": stage,
+                "issue_url": q.jobs[key].get("url") or None if in_queue else None,
+                "pr_url": q.pr_for(key) if q and stage == job_status.PR_OPEN else None,
+            }
+        )
+    return {"blocked": translation_blocked(type_, slug), "languages": rows}
 
 
 @requires(AdminCapability.PUBLISH, verb=AdminVerb.ACT, language_arg="language")

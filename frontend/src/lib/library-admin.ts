@@ -2565,8 +2565,26 @@ export interface AdminBookDetail {
 	title: string;
 	author: { name: string; slug: string; id: number };
 	languages: AdminBookLang[];
+	/** Target languages with no edition, and where each one's job stands. */
+	untranslated?: AdminUntranslated;
 	/** No progress for this many days and a reader counts as stopped. */
 	stall_days: number;
+}
+
+/**
+ * A work's missing languages (backend `detail._untranslated`). `blocked` is the
+ * copyright rule: no job may be filed. `none` = never filed and not queued.
+ */
+export interface AdminUntranslated {
+	blocked: boolean;
+	languages: {
+		code: string;
+		name: string;
+		native_name: string;
+		job_status: JobStatus | 'none';
+		issue_url: string | null;
+		pr_url: string | null;
+	}[];
 }
 
 export const getAdminBook = (slug: string) =>
