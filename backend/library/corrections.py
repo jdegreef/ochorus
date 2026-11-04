@@ -20855,3 +20855,12 @@ BODY_CORRECTIONS.setdefault("unto-us-a-child-is-born", {}).setdefault("replaceme
     ("(Waamuzi 13:8)", "(Waamuzi 13:18)"),
     ("(Các Quan Xét 13:8)", "(Các Quan Xét 13:18)"),
 ])
+
+# do-you-pray: "Open thy mouth wide, and I will fill it" is Psalm 81:10, printed
+# "(Psalm 8:10.)"; ko and sw carried it over, fr (81:11, Segond numbering) and vi
+# already read Ps 81. Found translating the es edition (#7191).
+BODY_CORRECTIONS.setdefault("do-you-pray", {}).setdefault("replacements", []).extend([
+    ("(Psalm 8:10.)", "(Psalm 81:10.)"),
+    ("(시편 8:10)", "(시편 81:10)"),
+    ("(Zaburi 8:10.)", "(Zaburi 81:10.)"),
+])
