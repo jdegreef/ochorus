@@ -46,7 +46,7 @@
 	let sentQuery = $state('');
 	let activeCat = $state<Category | 'all'>('all');
 	let activeActor = $state('');
-	// A translation job's stage, or 'needs_me' (closed + awaiting approval).
+	// A translation job's stage, or 'needs_me' (PR open, closed, or awaiting approval).
 	let activeJob = $state<JobStatus | 'needs_me' | ''>('');
 	let searchEl = $state<HTMLInputElement | null>(null);
 
@@ -204,7 +204,9 @@
 		return [
 			{ key: null, value: c.queued + c.in_progress + c.stalled, label: 'Open jobs', sub: `${c.queued} queued · ${c.in_progress + c.stalled} claimed`, tone: '' },
 			{ key: 'stalled' as const, value: c.stalled, label: 'Stalled', sub: 'claim idle 6h+', tone: 'text-danger' },
-			{ key: 'closed' as const, value: c.closed, label: 'Closed, not shipped', sub: 'merge or deploy pending', tone: 'text-warning' },
+			// `?? 0`: a backend from before the pr_open stage sends no such count.
+			{ key: 'pr_open' as const, value: c.pr_open ?? 0, label: 'PR open', sub: 'waiting on CI or a merge', tone: 'text-warning' },
+			{ key: 'closed' as const, value: c.closed, label: 'Closed, not shipped', sub: 'deploy pending, or not planned', tone: 'text-warning' },
 			{ key: 'review' as const, value: c.review, label: 'Need your approval', sub: 'shipped as AI translations', tone: 'text-accent' }
 		];
 	});
@@ -229,13 +231,17 @@
 		{ key: '', label: 'Any' },
 		{ key: 'needs_me', label: 'Needs me' },
 		// Problems first, then work in flight, then what's finished.
-		...(['stalled', 'closed', 'review', 'in_progress', 'queued', 'done'] as const).map((s) => ({
+		...(['stalled', 'pr_open', 'closed', 'review', 'in_progress', 'queued', 'done'] as const).map((s) => ({
 			key: s,
 			label: jobStatusMeta(s, 'book').label
 		}))
 	];
 	const jobFilterCount = (key: JobStatus | 'needs_me') =>
-		!jobCounts ? 0 : key === 'needs_me' ? jobCounts.closed + jobCounts.review : jobCounts[key];
+		!jobCounts
+			? 0
+			: key === 'needs_me'
+				? (jobCounts.pr_open ?? 0) + jobCounts.closed + jobCounts.review
+				: (jobCounts[key] ?? 0);
 
 	// ---- the header figures: counted server-side over the whole log ----
 	const cards = $derived.by(() => {
@@ -383,7 +389,17 @@
 				{#if a.job_status}
 					{@const js = jobStatusMeta(a.job_status, a.target)}
 					<span class="text-border-strong" aria-hidden="true">·</span>
-					<span class="rounded-full border px-2 py-0.5 text-micro font-semibold {JOB_TONE[js.tone]}" title={js.hint}>{js.label}</span>
+					{#if a.job_pr}
+						<a
+							href={a.job_pr}
+							target="_blank"
+							rel="noopener"
+							class="rounded-full border px-2 py-0.5 text-micro font-semibold hover:no-underline {JOB_TONE[js.tone]}"
+							title={js.hint}>{js.label} #{a.job_pr.match(/\/pull\/(\d+)/)?.[1] ?? ''} ↗</a
+						>
+					{:else}
+						<span class="rounded-full border px-2 py-0.5 text-micro font-semibold {JOB_TONE[js.tone]}" title={js.hint}>{js.label}</span>
+					{/if}
 				{/if}
 			</div>
 		</div>
@@ -465,7 +481,7 @@
 								<p class="text-small text-muted">The GitHub queue isn't configured here, so unshipped jobs read "status unknown".</p>
 							{/if}
 						</div>
-						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+						<div class="grid grid-cols-2 gap-3 sm:grid-cols-5">
 							{#each jobCards as c (c.label)}
 								{#if c.key === null}
 									<div class="rounded-card border border-border bg-surface p-4">

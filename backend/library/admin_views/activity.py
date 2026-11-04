@@ -111,6 +111,8 @@ def _serialize_page(rows, *, reveal: bool, titled: bool = True, jobs=None) -> li
         for row, data in zip(rows, out, strict=True):
             if row.action == TRANSLATION_JOB:
                 data["job_status"] = status.get(row.target, job_status.UNKNOWN)
+                if data["job_status"] == job_status.PR_OPEN:
+                    data["job_pr"] = jobs.pr_url(row.target)
     return out
 
 
@@ -133,6 +135,12 @@ class _Jobs:
         """"ok", "down" (didn't answer) or "off" (no token configured here)."""
         q = self.queue
         return "off" if q is None else "down" if q == "down" else "ok"
+
+    def pr_url(self, target: str) -> str | None:
+        """The open PR for a job already found to be ``pr_open``."""
+        key = job_status.parse_key(target)
+        q = self.queue
+        return q.pr_for(key) if key and isinstance(q, job_status.Queue) else None
 
     def statuses_for(self, filed: dict) -> dict[str, str]:
         """Statuses for ``{target: when it was last filed}``; unparseable

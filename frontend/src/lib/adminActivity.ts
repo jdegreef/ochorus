@@ -380,10 +380,15 @@ const JOB_STATUS: Record<JobStatus, JobStatusMeta> = {
 		tone: 'danger',
 		hint: 'Claimed, but the issue has not moved in 6 hours — likely a crashed run.'
 	},
+	pr_open: {
+		label: 'PR open',
+		tone: 'warning',
+		hint: 'The worker opened its PR and closed the issue: waiting on CI or a merge.'
+	},
 	closed: {
 		label: 'Closed, not shipped',
 		tone: 'warning',
-		hint: 'The issue is closed but the edition is not in the library: a PR waiting to be merged or deployed — or closed as not planned.'
+		hint: 'The issue is closed, no PR is open, and the edition is not in the library: merged and awaiting a deploy — or closed as not planned.'
 	},
 	review: {
 		label: 'Shipped · awaiting approval',
@@ -414,6 +419,7 @@ export const JOB_STAGES: readonly JobStatus[] = [
 	'done',
 	'review',
 	'closed',
+	'pr_open',
 	'stalled',
 	'in_progress',
 	'queued',
