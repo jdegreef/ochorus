@@ -179,6 +179,6 @@
 	   as working, not greyed-out — it marks itself `aria-busy`, so only an inertly
 	   disabled button fades. Mirrors the `.btn` pattern in app.css (STYLE_GUIDE §6). */
 	.act:disabled:not([aria-busy='true']) {
-		opacity: 0.6;
+		opacity: 0.5;
 	}
 </style>

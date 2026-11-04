@@ -927,8 +927,9 @@
 															class="btn btn-sm btn-primary"
 															disabled={busy[k] || !scrolledEnough}
 															onclick={() => decide([i], 'approved')}
+															aria-busy={busy[k] ? 'true' : undefined}
 														>
-															{busy[k] ? 'Saving…' : approveLabel(i)}
+															{#if busy[k]}<span class="btn-spinner" aria-hidden="true"></span>{/if}{approveLabel(i)}
 														</button>
 														<button
 															class="btn btn-sm btn-ghost"

@@ -161,14 +161,14 @@
 		flex: none;
 		width: 2.6rem;
 		height: 1.5rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		background: var(--color-border);
 		transition: background 0.15s ease;
 		cursor: pointer;
 	}
 	.switch:disabled {
 		opacity: 0.5;
-		cursor: not-allowed;
+		cursor: default;
 	}
 	.switch-on {
 		background: var(--color-accent);
@@ -179,7 +179,7 @@
 		inset-inline-start: 0.15rem;
 		width: 1.2rem;
 		height: 1.2rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		background: #fff; /* hex-ok: the toggle knob is always white, on both the grey and accent tracks */
 		transition: transform 0.15s ease;
 	}

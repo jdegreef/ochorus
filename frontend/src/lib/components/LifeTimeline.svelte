@@ -262,14 +262,14 @@
 		top: 1.45rem;
 		height: 5px;
 		background: var(--accent);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 	.dot {
 		position: absolute;
 		top: 50%;
 		width: 9px;
 		height: 9px;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent);
 		transform: translate(-50%, -50%);
 	}

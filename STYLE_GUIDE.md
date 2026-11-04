@@ -554,6 +554,11 @@ doesn't — `.seg`, the nav pill in its section hue, the tab bar). A list row
 whose own checkbox shows the state (the facet menu) may keep the fill alone.
 Under `forced-colors` the edge becomes a `Highlight` outline (end of app.css).
 
+**Hover is one language for every pill and quiet control:** a `--surface-2`
+fill (`.chip`, `.tag`, `.btn-ghost`, `.widthctl`). The accent edge and accent
+text belong to the *selected* state above, so a hover never borrows them — a
+hovered link pill in accent read as "already chosen".
+
 ### Inputs
 Every text input, select and textarea uses **`.field`** (`.filter-field` is the
 same class under its original name, for the browse pages' filter rows):
@@ -563,6 +568,11 @@ the global `:focus-visible` ring (2px accent outline); placeholders are muted.
 `.field` is unlayered, so a `px-3` or `rounded-lg` beside it silently loses —
 if a control needs different metrics, that is a modifier here, not a utility at
 the call site. Width and margin utilities are fine: the class doesn't set them.
+
+Two inputs are **bare by design** because their container is the field: the
+home hero search (the pill `<form>` wears the `--border-strong` edge, like the
+nav search) and the command palette (the dialog is the box; its input sits on a
+divider). Anything else that draws its own input chrome is drift.
 
 ### Navigation
 Sticky top bar: `--bg/90` with backdrop blur and a hairline bottom border. Wordmark

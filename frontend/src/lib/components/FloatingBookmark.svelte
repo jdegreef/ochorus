@@ -57,7 +57,7 @@
 		justify-content: center;
 		width: 2.5rem;
 		height: 2.5rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--border);
 		background: color-mix(in srgb, var(--bg) 85%, transparent);
 		backdrop-filter: blur(6px);

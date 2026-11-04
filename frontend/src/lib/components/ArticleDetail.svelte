@@ -642,7 +642,7 @@
 		width: 2.75rem;
 		height: 2.75rem;
 		object-fit: cover;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 	.read-next .rel-text {
 		display: flex;

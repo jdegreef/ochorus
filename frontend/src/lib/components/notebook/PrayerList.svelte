@@ -136,7 +136,7 @@
 		margin-inline-start: auto;
 		flex: none;
 		padding: 0 0.5rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: color-mix(in srgb, var(--hue) 14%, transparent);
 		color: color-mix(in srgb, var(--hue) 70%, var(--text));
 		font-size: var(--fs-micro);

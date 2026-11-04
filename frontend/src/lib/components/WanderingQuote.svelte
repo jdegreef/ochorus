@@ -108,7 +108,7 @@
 		gap: 0.5rem;
 		padding: 0.3rem 0.75rem 0.3rem 0.45rem;
 		border: 1px solid var(--color-border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--color-surface);
 		color: var(--color-muted);
 		font-size: var(--fs-small);
@@ -151,7 +151,7 @@
 		display: block;
 		height: 0.45rem;
 		margin-inline: -0.4rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: linear-gradient(to bottom, var(--hero-gilt), var(--hero-gilt-deep));
 		box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
 	}

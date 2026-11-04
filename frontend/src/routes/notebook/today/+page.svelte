@@ -224,7 +224,7 @@
 		width: 100%;
 		padding: 0.4rem 0.25rem;
 		border: 1px solid var(--border-strong);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		color: var(--muted);
 		font-size: var(--fs-small);

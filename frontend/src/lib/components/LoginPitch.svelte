@@ -175,7 +175,7 @@
 	}
 	.saved-chips li {
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		padding: 0.25rem 0.75rem;
 		font-size: var(--fs-small);
 		background: var(--surface-2);

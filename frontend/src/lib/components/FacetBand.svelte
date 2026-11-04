@@ -200,7 +200,7 @@
 	.band-faces > :global(*) {
 		width: 1.75rem;
 		height: 1.75rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 2px solid var(--surface);
 		margin-inline-end: -0.45rem;
 		object-fit: cover;
@@ -240,7 +240,7 @@
 		align-items: center;
 		gap: 0.35rem;
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		padding: 0.15rem 0.6rem;
 		font-size: var(--fs-micro);

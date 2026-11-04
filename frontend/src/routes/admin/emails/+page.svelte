@@ -68,7 +68,8 @@
 		</div>
 		{#if data}
 			<button class="btn btn-ghost btn-sm" onclick={metrics.load} disabled={metrics.loading}
-				>{metrics.loading ? 'Refreshing…' : 'Refresh'}</button
+				aria-busy={metrics.loading ? 'true' : undefined}
+				>{#if metrics.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh</button
 			>
 		{/if}
 	</header>

@@ -79,4 +79,35 @@ describe('system classes are not redefined in scoped CSS', () => {
 		const css = readFileSync(join(SRC, 'app.css'), 'utf8');
 		expect(css, '.btn:disabled must be defined in app.css').toMatch(/\.btn:disabled\s*\{/);
 	});
+
+	// One disabled look (audit I5): 0.4, 0.5 and 0.6 had all shipped, so a
+	// disabled control looked more or less dead depending on who drew it.
+	it('every disabled control fades to the same 0.5', () => {
+		const offenders: string[] = [];
+		const files = [...svelteFiles(SRC), join(SRC, 'app.css')];
+		for (const file of files) {
+			const rel = file.replace(SRC, 'src');
+			if (rel.startsWith('src/routes/admin')) continue;
+			const text = readFileSync(file, 'utf8');
+			for (const m of text.matchAll(/:disabled[^{]*\{([^}]*)\}/g)) {
+				const o = /opacity:\s*([\d.]+)/.exec(m[1]);
+				if (o && Number(o[1]) !== 0.5) offenders.push(`${rel}: opacity ${o[1]}`);
+			}
+			for (const m of text.matchAll(/disabled:opacity-(\d+)/g)) {
+				if (m[1] !== '50') offenders.push(`${rel}: disabled:opacity-${m[1]}`);
+			}
+		}
+		expect(offenders, 'use opacity 0.5 (disabled:opacity-50) for a disabled control').toEqual([]);
+	});
+
+	// Full-round is one token (audit K5): `999px` and `9999px` were both typed by
+	// hand. Markup uses `rounded-full`; scoped CSS uses var(--radius-pill).
+	it('no hand-typed pill radius', () => {
+		const offenders: string[] = [];
+		for (const file of [...svelteFiles(SRC), join(SRC, 'app.css')]) {
+			const text = readFileSync(file, 'utf8');
+			if (/border-radius:[^;]*\b9{3,}px/.test(text)) offenders.push(file.replace(SRC, 'src'));
+		}
+		expect(offenders, 'write border-radius: var(--radius-pill)').toEqual([]);
+	});
 });

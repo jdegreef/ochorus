@@ -76,7 +76,7 @@
 		inset-inline: 0.5rem 35%;
 		bottom: 0.6rem;
 		height: 0.5rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 	.dot {
 		position: absolute;

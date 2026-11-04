@@ -831,11 +831,11 @@ relevant group.
   `<FavoriteButton kind="sermon" …>`. Ships with J5.)_ Favorite: `FavoriteButton` is outside the `.btn` family (own padding,
   `0.15s` literals); the sermon page uses a `btn-icon btn-ghost` heart instead;
   only Author passes `showLabel`. → rebuild on `.btn.btn-sm`; one label policy.
-- [ ] **D8** Action rows: "Search in this X" is `btn-ghost` (Book), `btn-sm
+- [x] **D8** _(shipped 2026-11-04 — Topic's "Search in this topic" text link is now the `btn btn-sm btn-ghost` search button Book and Author already wore; Author's start verb and Plan's finished state had already converged)_ Action rows: "Search in this X" is `btn-ghost` (Book), `btn-sm
   btn-ghost` (Author), a text link with `→` (Topic); Author has no
   `.btn-primary` although it has a start verb; Plan's finished state is
   `<p class="btn btn-ghost">✓ Finished</p>`. → Book's row.
-- [ ] **D9** Topic/scripture chip rows are hand-rolled eight times in three
+- [x] **D9** _(2026-11-04: verified done — every related-pill row is `.tag` (J1), `/topics` is `ShelfCard`, the sermon's scripture chips resolve through `scripture_links` like Book's; Book's "Explore" label moved from `text-small` to `.eyebrow` to match Author/Sermon)_ Topic/scripture chip rows are hand-rolled eight times in three
   colourways (bordered muted, bordered text, filled surface-2) with three label
   styles; Sermon's scripture chips always link to search where Book's link to
   `/scripture/…`. → `.chip` + `.eyebrow` label; shared href logic.
@@ -852,11 +852,11 @@ relevant group.
   Sermon, and is **absent from the chapter reader and the author bio** — an
   `ai_unreviewed` chapter never shows "awaiting native review" (CLAUDE.md
   rule). → under the byline everywhere; add to the reader eyebrow line.
-- [ ] **D12** Language fallback: `localized()` silently serves English with no
+- [x] **D12** _(2026-11-04: Book and Plan `<h1>` now carry `lang={contentLang(…)}` like Sermon/Chapter/Article; every falling-back leaf (book, chapter, sermon, plan, article) shows `LanguageFallbackNotice`; the reader's `inLanguage` is the served edition. Author/Topic deliberately don't fall back — CLAUDE.md's no-English-fallback rule)_ Language fallback: `localized()` silently serves English with no
   notice on six pages; Topic 404s instead; Book's `<h1>` has no `lang`; the
   reader's JSON-LD `inLanguage` reports the UI locale, not the served edition.
   → fallback + visible notice + `lang` from the served language, everywhere.
-- [ ] **D13** Summary: Book's "About this book" is an `h2` + prose; Sermon's "In
+- [~] **D13** _(2026-11-04: judged two roles, not drift — Book's "About this work" is a titled section of long prose; Sermon's "In brief" is a ten-second lede set before the text, where a section heading would interrupt the read. Left as is; revisit only if a third summary shape appears)_ Summary: Book's "About this book" is an `h2` + prose; Sermon's "In
   brief" is a bordered callout with an accent eyebrow and `text-small` body. →
   one treatment.
 - [x] **D14** _(shipped #1526 — documented `.eyebrow-micro`)_ Sermon page overrides `.eyebrow` to `--fs-micro` four times;
@@ -882,7 +882,7 @@ relevant group.
   recent-search chips, `▶` ×2, `✓`, `♥` ×2, `🔖 📝`, `✦`, `→` in "see all"
   links); the hero search `<svg>` is stroke 2. → `<Icon>`; add `check`, `note`,
   `arrow-right`.
-- [ ] **E6** Two text inputs bypass `.field` (home hero, command palette).
+- [~] **E6** _(2026-11-04: the two bare inputs are documented in STYLE_GUIDE §Inputs as container-is-the-field exceptions, and the home hero's pill now wears `--border-strong` like the nav search; `.google-btn` is gone (I4). Login's `.mail-badge`/password-reveal duplication is M1/M2)_ Two text inputs bypass `.field` (home hero, command palette).
   Login duplicates `.btn` as `.google-btn`, declares `.mail-badge` twice, and
   its password-reveal control is pasted into Reset. `PwaToasts` ships a solid
   `bg: var(--accent)` button. → `.field`, `.btn`, `.btn-primary`.
@@ -1019,7 +1019,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
   border/bg or do nothing. → two recipes only — grid card lifts, row card tints
   (this is the concrete form of D3).
-- [ ] **H2** Card interior padding is five values across five families
+- [~] **H2** _(2026-11-04: `.sermon-card` → 1rem (p-4), `.article-card` → 1.25rem (p-5). Left: `.book-card` 0.6rem is a cover tile (the cover is the content; a p-4 shrinks it), and ShelfCard's 1.1rem inline runs through four aligned parts — move them together or not at all)_ Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap
   to `p-4`/`p-5`.
@@ -1041,14 +1041,14 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   selected-state checkbox marker, not a CTA — left solid on purpose)_ Solid `bg-accent` CTAs violate §5's soft-primary rule: `PwaToasts`
   install toast (public), the plan completed-day marker, the admin language trio.
   → `.btn.btn-primary` (cf. E6, G2's "solid `bg-accent`").
-- [ ] **I3** The busy-button pattern is split: spinner + kept label + `aria-busy`
+- [x] **I3** _(shipped 2026-11-04 — the gerund swaps ("Saving…", "Refreshing…", "Exporting…", "Sending…", "Loading…") in `LanguageSettingsCard`, `ReaderEmailPanel` and six admin pages keep their label with `.btn-spinner` + `aria-busy`)_ The busy-button pattern is split: spinner + kept label + `aria-busy`
   (login/reset/search) vs label swapped to a gerund with no spinner
   (`LanguageSettingsCard` "Saving…", admin "Refreshing…"). → the spinner pattern
   (cf. C4).
-- [ ] **I4** `.google-btn` re-implements `.btn` with the default surface fill and
+- [x] **I4** _(shipped 2026-11-04 — `GoogleButton` is `btn btn-ghost w-full`; tests find it by `data-google-signin`)_ `.google-btn` re-implements `.btn` with the default surface fill and
   no Google brand colour — not even the sanctioned vendor exception. →
   `class="btn w-full"` + the glyph (cf. E6).
-- [ ] **I5** Disabled opacity disagrees where it is set at all: 0.4 (`.widthctl`),
+- [x] **I5** _(shipped 2026-11-04 — 0.5 everywhere (`.widthctl` was 0.4, `QuoteCard .act` 0.6); guarded in `systemClasses.test.ts`)_ Disabled opacity disagrees where it is set at all: 0.4 (`.widthctl`),
   0.5 (`.google-btn`), 0.5 (a call site). → one value via I1.
 - [x] **I6** _(shipped 2026-09-05 with I2 — `.pwa-cta:hover` removed)_ `.pwa-cta:hover` uses `filter:brightness(1.05)` — a hover used
   nowhere else. → fold into `.btn-primary` (rides with I2).
@@ -1061,7 +1061,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   sermon, author, article, reader, favorites, `TopicChips`) drifting on text
   colour, fill and padding. → one `.tag`/`.pill-link` class (this is the concrete
   form of D9).
-- [ ] **J2** Two pill hover languages: `.chip:hover` → bg surface-2 (no accent)
+- [x] **J2** _(shipped 2026-11-04 — `.tag:is(a, button):hover` takes the `surface-2` fill `.chip`/`.btn-ghost` use; accent is the selected look only. STYLE_GUIDE §Filter controls)_ Two pill hover languages: `.chip:hover` → bg surface-2 (no accent)
   vs the nav pills → border+text-accent (no bg). → one pill hover.
 - [ ] **J3** Notebook's colour filter active state skips the accent-soft fill
   every other selected filter gets (border+text-accent only). → render as
@@ -1076,16 +1076,16 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### K. Colour & radius
 
-- [ ] **K1** Blockquote/pull-quote left-rule uses four colours + two widths
+- [x] **K1** _(shipped 2026-11-04 — `.reading blockquote` moved from `--accent-soft` (~1.1:1, near-invisible) to the gold rule the article and bio pull-quotes already wore; the book page's opening `figure` is a card, not a rule)_ Blockquote/pull-quote left-rule uses four colours + two widths
   (`.reading` accent-soft, `.bio` gold, `.article-body` solid accent, the book
   "about" figure a 2px border) where §1 says gold. → one `.pullquote`.
 - [ ] **K2** Two token vocabularies in scoped CSS: `--color-*` (12 files) vs bare
   `--*` (25 files). → bare tokens (this is E4, re-counted).
 - [ ] **K3** The "·" middot separator is drawn at opacity-40/50/60 + bare
   `text-muted`, with varying margins. → one `.sep` helper.
-- [ ] **K4** Secondary text is `text-muted` vs `text-muted/60` vs `/70` vs
+- [x] **K4** _(2026-11-04: verified — `text-muted/NN` survives only on the error page's decorative status numeral; the `opacity-*` left are middots, which are K3)_ Secondary text is `text-muted` vs `text-muted/60` vs `/70` vs
   `opacity-*` interchangeably. → `text-muted` (or `.count` for figures).
-- [ ] **K5** "Full-round" is written three ways: `rounded-full`, `999px`,
+- [x] **K5** _(shipped 2026-11-04 — `--radius-pill` in `@theme`; 70 hand-typed `999px`/`9999px` radii replaced; guarded in `systemClasses.test.ts`)_ "Full-round" is written three ways: `rounded-full`, `999px`,
   `9999px`. → one (`--radius-pill`).
 - [ ] **K6** `ArticleCard` + the article page use off-scale radii `0.75rem`,
   `0.5rem`, `0.25rem`. → tokens (cf. D4, E2).
@@ -1112,7 +1112,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   make it an `.emblem-chip` variant (cf. E6, E8).
 - [ ] **M3** "Label between two hairlines" divider is built two ways: `.or-divider`
   (`--border`) vs the error page's `bg-gold/30` spans. → one divider helper.
-- [ ] **M4** The search field has three chromes; two bypass `.field` and its
+- [x] **M4** _(2026-11-04: folded into E6 — the hero pill wears `--border-strong`; the palette input sits on a divider inside its dialog, documented as bare by design)_ The search field has three chromes; two bypass `.field` and its
   `--border-strong` edge (CommandPalette, home hero use a `--border` hairline).
   → base both on `.field` (cf. E6).
 - [ ] **M5** Settings re-implements the prefs row: `.setting-row`/`.setting-label`

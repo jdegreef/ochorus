@@ -194,7 +194,7 @@
 		margin-inline-start: -0.5rem;
 		width: 1rem;
 		height: 1rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--color-gold);
 		color: var(--color-accent-contrast);
 		font-size: var(--fs-micro);

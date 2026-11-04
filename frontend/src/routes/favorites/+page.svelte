@@ -628,7 +628,7 @@
 		padding: 3px;
 		gap: 2px;
 		border: 1px solid var(--color-border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--color-surface);
 	}
 	.view-toggle button {
@@ -637,7 +637,7 @@
 		gap: 0.35rem;
 		padding: 0.3rem 0.8rem;
 		border: 0;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: transparent;
 		color: var(--color-muted);
 		font-size: var(--fs-small);

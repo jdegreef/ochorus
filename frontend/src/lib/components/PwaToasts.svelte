@@ -185,7 +185,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid var(--border);
 		background: var(--surface);
 		padding: 0.5rem 0.9rem;
@@ -202,7 +202,7 @@
 	.pwa-dot {
 		width: 0.5rem;
 		height: 0.5rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--muted);
 	}
 	.midbook {

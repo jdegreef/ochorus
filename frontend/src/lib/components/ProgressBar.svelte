@@ -48,7 +48,7 @@
 <style>
 	.track {
 		overflow: hidden;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		/* Translucent, not a named surface: these meters sit on `surface` in some
 		   cards and on `surface-2` in others, and the one that hardcoded
 		   `bg-surface-2` on a surface-2 card had effectively no track at all. A
@@ -63,7 +63,7 @@
 	}
 	.fill {
 		height: 100%;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent);
 	}
 	/* Only `md` animates. `width` is a layout property, so a shelf of twenty

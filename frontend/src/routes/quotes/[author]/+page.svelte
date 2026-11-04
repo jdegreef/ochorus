@@ -192,7 +192,7 @@
 	}
 	.jump a {
 		padding: 0.25rem 0.7rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid color-mix(in srgb, var(--hue) 30%, var(--color-border));
 		background: color-mix(in srgb, var(--hue) 8%, var(--color-surface));
 		font-size: var(--fs-small);
@@ -254,7 +254,7 @@
 		align-items: baseline;
 		gap: 0.4rem;
 		padding: 0.25rem 0.7rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
 		background: color-mix(in srgb, var(--color-accent) 6%, var(--color-surface));
 		font-size: var(--fs-small);

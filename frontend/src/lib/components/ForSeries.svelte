@@ -125,7 +125,7 @@
 		justify-content: center;
 		width: var(--dot);
 		height: var(--dot);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		font-weight: 600;
 		color: var(--group, var(--color-accent));
 		background: color-mix(in srgb, var(--group, var(--color-accent)) 14%, var(--color-surface));

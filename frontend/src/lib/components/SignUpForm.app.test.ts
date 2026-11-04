@@ -71,7 +71,7 @@ async function signUp() {
 
 describe('SignUpForm in the app', () => {
 	it('offers no Google sign-in', () => {
-		expect(target.querySelector('.google-btn')).toBeNull();
+		expect(target.querySelector('[data-google-signin]')).toBeNull();
 		expect(target.querySelector('input[autocomplete=new-password]')).not.toBeNull();
 	});
 

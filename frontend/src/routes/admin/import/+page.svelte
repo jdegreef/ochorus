@@ -494,7 +494,7 @@
 		width: 3rem;
 		align-items: center;
 		justify-content: center;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		font-size: var(--fs-h3);
 		color: var(--accent);
 		background: color-mix(in srgb, var(--accent) 15%, transparent);
@@ -511,7 +511,7 @@
 		height: 0.5rem;
 		width: 0.5rem;
 		flex-shrink: 0;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--muted);
 	}
 	.qa-high {

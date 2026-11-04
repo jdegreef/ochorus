@@ -88,7 +88,7 @@
 	.writer-face {
 		width: 2.75rem;
 		height: 2.75rem;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		overflow: hidden;
 		display: grid;
 		place-items: center;
