@@ -1,30 +1,27 @@
 """Build a volume of *A Cloud of Praying Witnesses* from its manuscript.
 
-A house series for adults (Ochorus Originals) on prayer through the whole story
-of the church: an Old Testament prelude, Jesus, the apostles, and then the
-praying men and women of every century down to today, one volume per era. The
-plan of all eleven volumes is ``data/a-cloud-of-praying-witnesses/SERIES-PLAN.md``.
-
-Every volume has the same shape: an Introduction ("Where We Are in the
-Story"), its chapters, a Conclusion, and two appendices. Every chapter opens
-on a key verse and a story and ends with the same six sections (``REQUIRED``).
-Scripture is quoted from the Open Word Bible (OWB), Balanced edition, with the
-reader setting that capitalises pronouns for God — the house style of every
-other Original; the classic writers are quoted verbatim from their books in
-the library.
+A house series for adults on prayer through the whole story of the church, one
+volume to an era; the plan of all eleven is
+``data/a-cloud-of-praying-witnesses/SERIES-PLAN.md``. Every volume is an
+Introduction, its chapters, a Conclusion and two appendices, and every chapter
+ends with the same six sections (``REQUIRED``).
 
 A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
 
 - ``volume-NN.md``, the manuscript (Ochorus's own writing, nothing fetched), in
   the closed Markdown subset of ``build_rooted.parse``;
-- ``volume-NN.chapters.json``, one record per ``##`` section of it: the title
-  (checked against the manuscript), the key verse, and the chapter's three
-  insights, each under one of the series' ``THEMES``;
-- ``volume-NN.appendices.md``, GENERATED here from the other two, never edited:
+- ``volume-NN.chapters.json``, one record per ``##`` section, in order: its
+  title (checked against the manuscript, so a record cannot slip onto the wrong
+  chapter), its key verse and its three insights, each under one of the
+  series' ``THEMES``. ``person``, ``era``, ``region``, ``voices`` and
+  ``read_more`` are not read here: they are kept for the last volume's timeline
+  and reading list, which gather every volume's records;
+- ``volume-NN.appendices.md``, GENERATED from the other two and never edited:
   Appendix 1 gathers the insights by theme; Appendix 2 indexes every Scripture
-  the manuscript cites, in Bible order, read from the prose itself so a verse
-  added to a chapter is indexed on the next build. The file is byte-stable, and
-  committed so the appendices can be read and reviewed like the chapters.
+  the chapters cite, read from the prose with ``scripture.extract_citations``
+  (the reader's own citation grammar), so a verse added to a chapter is
+  indexed on the next build. Committed so it can be reviewed like the
+  chapters; ``tests_praying_witnesses`` fails when it is stale.
 
 Fixture-driven: ``seed_books`` creates the book on the next deploy from
 ``fixtures/content/books/<slug>.en.json``. Idempotent. The series row lives in
@@ -36,7 +33,6 @@ Fixture-driven: ``seed_books`` creates the book on the next deploy from
 from __future__ import annotations
 
 import json
-import re
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -45,18 +41,13 @@ from library import covers, english_audit, scripture
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
+from library.management.commands.build_faithful_with_little import ATTRIBUTION
 from library.management.commands.build_rooted import AUTHOR_SLUG, DATA_DIR, parse
 from library.models import Author, Book, Chapter, Series
 from library.quote_marks import convert
 
 SERIES_SLUG = "a-cloud-of-praying-witnesses"
 SERIES_DIR = DATA_DIR / SERIES_SLUG
-
-ATTRIBUTION = (
-    "© Ochorus. An Ochorus Original, free to read and share. Scripture quotations "
-    "are from the Open Word Bible (OWB), Balanced edition, which is dedicated to "
-    "the public domain (CC0)."
-)
 
 # The sections every chapter ends with; a chapter missing one is a broken page.
 REQUIRED = (
@@ -87,19 +78,9 @@ THEMES = (
     "Christ Who Prays for Us",
 )
 
-# A book's heading in the Scripture index where it differs from how a citation
-# names it ("Psalm 23:1" sits under "Psalms").
-BOOK_HEADINGS = {"Psalm": "Psalms"}
-
-# A citation: "Book C:V", "Book C:V-V", "Book C:V, V" ("1 John 5:14", "1 Kings 8:41, 43").
-REF = re.compile(
-    r"\b((?:[1-3] )?[A-Z][a-z]+(?: of [A-Z][a-z]+)?) (\d+):(\d+(?:-\d+)?(?:, \d+(?:-\d+)?)*)"
-)
-
 VOLUMES: dict[int, dict[str, object]] = {
     2: {
         "slug": "jesus-teacher-of-prayer",
-        "chapters": 20,
         "book": {
             "publication_year": 2026,
             "title": "Jesus, Teacher of Prayer",
@@ -174,59 +155,46 @@ VOLUMES: dict[int, dict[str, object]] = {
 # ── The generated appendices ────────────────────────────────────────────────
 
 
-def _label(entry: dict) -> str:
-    """How a chapter is named in an index line."""
-    if entry["chapter"] == 0:
+def _label(index: int, last: int, title: str) -> str:
+    """How the section at ``index`` (of ``0..last``) is named in an index line."""
+    if index == 0:
         return "Introduction"
-    if entry["title"].startswith("Conclusion"):
+    if index == last:
         return "Conclusion"
-    return f"Chapter {entry['chapter']}, *{entry['title']}*"
+    return f"Chapter {index}, *{title}*"
 
 
-def _sections(manuscript: str) -> list[str]:
-    """The manuscript's ``## `` sections, in order (front matter dropped)."""
-    return re.split(r"^## ", manuscript, flags=re.M)[1:]
-
-
-def _citations(section: str) -> list[tuple[str, tuple[int, ...]]]:
-    """Each distinct reference a section cites, with its sorted verse ids."""
-    seen: dict[str, tuple[int, ...]] = {}
-    for book, chap, verses in REF.findall(section):
-        for part in verses.split(", "):
-            ref = f"{book} {chap}:{part}"
-            if ids := tuple(sorted(scripture.reference_verse_ids(ref))):
-                seen.setdefault(ref, ids)
-    return list(seen.items())
-
-
-def _appendix_a(entries: list[dict]) -> str:
+def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
+    """Both appendices for a volume from its parsed ``(title, html)`` sections."""
+    if [title for title, _ in sections] != [e["title"] for e in entries]:
+        raise CommandError("volume's chapters.json titles do not match the manuscript's ## headings, in order")
+    last = len(entries) - 1
     by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
-    for e in entries:
+    refs: dict[tuple[int, int], dict] = {}
+    for i, ((title, html), e) in enumerate(zip(sections, entries, strict=True)):
+        label = _label(i, last, title)
         for ins in e["insights"]:
             if ins["theme"] not in by_theme:
-                raise CommandError(f"chapter {e['chapter']}: unknown theme {ins['theme']!r}; add it to THEMES")
-            by_theme[ins["theme"]].append(f"- **{ins['text']}** {_label(e)} ({e['anchor']})")
+                raise CommandError(f"{title!r}: unknown theme {ins['theme']!r}; add it to THEMES")
+            by_theme[ins["theme"]].append(f"- **{ins['text']}** {label} ({e['anchor']})")
+        for cite in scripture.extract_citations(html):
+            r = refs.setdefault((cite["start"], cite["end"]), {"ref": cite["ref"], "chapters": []})
+            r["chapters"].append(label + (" (key verse)" if cite["ref"] == e["anchor"] else ""))
+
     out = [
         "## Appendix 1: Key Insights",
         "",
         "Every chapter of this book closes with three key insights. Here they are "
-        "gathered by theme, so you can see at a glance what Jesus teaches about each "
-        "part of prayer. Each insight points back to the chapter where it is taught "
+        "gathered by theme, each pointing back to the chapter where it is taught "
         "and to that chapter's key verse.",
     ]
     for theme in THEMES:
         if by_theme[theme]:
             out += ["", f"### {theme}", "", *by_theme[theme]]
-    return "\n".join(out)
-
-
-def _appendix_b(entries: list[dict], sections: list[str]) -> str:
-    refs: dict[str, dict] = {}
-    for e, section in zip(entries, sections, strict=True):
-        for ref, ids in _citations(section):
-            r = refs.setdefault(ref, {"ids": ids, "chapters": []})
-            r["chapters"].append(_label(e) + (" (key verse)" if ref == e["anchor"] else ""))
-    out = [
+    out += [
+        "",
+        "---",
+        "",
         "## Appendix 2: Scripture Index",
         "",
         "Every passage of Scripture quoted or referred to in this book, in Bible "
@@ -234,40 +202,32 @@ def _appendix_b(entries: list[dict], sections: list[str]) -> str:
         "Scripture a chapter is built on.",
     ]
     heading = None
-    for ref, r in sorted(refs.items(), key=lambda kv: (kv[1]["ids"], kv[0])):
-        name, verses = ref.rsplit(" ", 1)
-        if name != heading:
-            heading = name
-            out += ["", f"### {BOOK_HEADINGS.get(name, name)}", ""]
-        out.append(f"- **{verses}**: {'; '.join(r['chapters'])}")
-    return "\n".join(out)
+    for _, r in sorted(refs.items()):
+        book, _ = scripture.book_of(r["ref"])
+        if book != heading:
+            heading = book
+            out += ["", f"### {book}", ""]
+        out.append(f"- **{r['ref'].rsplit(' ', 1)[1]}**: {'; '.join(r['chapters'])}")
+    return "\n".join(out) + "\n"
 
 
-def appendices(manuscript: str, entries: list[dict]) -> str:
-    """Both appendices for a volume, checking its data records against the prose."""
-    sections = _sections(manuscript)
-    if len(entries) != len(sections):
-        raise CommandError(f"{len(entries)} data records but {len(sections)} sections in the manuscript")
-    for e, section in zip(entries, sections, strict=True):
-        if (title := section.splitlines()[0].strip()) != e["title"]:
-            raise CommandError(f"record {e['chapter']} is {e['title']!r} but the manuscript has {title!r}")
-    return _appendix_a(entries) + "\n\n---\n\n" + _appendix_b(entries, sections) + "\n"
+def volume_text(volume: int) -> tuple[list[tuple[str, str]], str]:
+    """A volume's parsed manuscript sections and its generated appendices."""
+    stem = SERIES_DIR / f"volume-{volume:02d}"
+    sections = parse(stem.with_suffix(".md").read_text())
+    entries = json.loads(stem.with_suffix(".chapters.json").read_text())
+    return sections, appendices(sections, entries)
 
 
 # ── The book ────────────────────────────────────────────────────────────────
 
 
-def check_shape(chapters: list[tuple[str, str]], count: int) -> None:
-    """Introduction, the chapters, Conclusion, two appendices — each chapter in full shape."""
-    titles = [title for title, _ in chapters]
-    if (
-        len(titles) != count + 4
-        or not titles[0].startswith("Introduction")
-        or not titles[1 + count].startswith("Conclusion")
-        or [t.split(":")[0] for t in titles[2 + count :]] != ["Appendix 1", "Appendix 2"]
-    ):
-        raise CommandError(f"manuscript is not Introduction, {count} chapters, Conclusion, Appendices 1–2: {titles}")
-    for title, html in chapters[1 : 1 + count]:
+def check_shape(sections: list[tuple[str, str]]) -> None:
+    """Introduction, the chapters, Conclusion — each chapter in full shape."""
+    titles = [title for title, _ in sections]
+    if not titles[0].startswith("Introduction") or not titles[-1].startswith("Conclusion"):
+        raise CommandError(f"manuscript is not Introduction, chapters, Conclusion: {titles}")
+    for title, html in sections[1:-1]:
         missing = [label for label in REQUIRED if f"<h2>{label}</h2>" not in html]
         if missing:
             raise CommandError(f"{title!r}: missing {missing}.")
@@ -293,14 +253,10 @@ class Command(BaseCommand):
         except Series.DoesNotExist as exc:
             raise CommandError(f"series {SERIES_SLUG!r} not found — load series.json first.") from exc
 
-        stem = f"volume-{volume:02d}"
-        manuscript = (SERIES_DIR / f"{stem}.md").read_text()
-        entries = json.loads((SERIES_DIR / f"{stem}.chapters.json").read_text())
-        generated = appendices(manuscript, entries)
-        (SERIES_DIR / f"{stem}.appendices.md").write_text(generated)
-
-        chapters = parse(manuscript + "\n" + generated)
-        check_shape(chapters, meta["chapters"])
+        sections, generated = volume_text(volume)
+        check_shape(sections)
+        (SERIES_DIR / f"volume-{volume:02d}.appendices.md").write_text(generated)
+        chapters = sections + parse(generated)
 
         content = {
             "author": author,

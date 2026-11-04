@@ -1,6 +1,6 @@
 ## Appendix 1: Key Insights
 
-Every chapter of this book closes with three key insights. Here they are gathered by theme, so you can see at a glance what Jesus teaches about each part of prayer. Each insight points back to the chapter where it is taught and to that chapter's key verse.
+Every chapter of this book closes with three key insights. Here they are gathered by theme, each pointing back to the chapter where it is taught and to that chapter's key verse.
 
 ### The Father's Love
 
@@ -121,8 +121,7 @@ Every passage of Scripture quoted or referred to in this book, in Bible order, w
 
 ### 1 Kings
 
-- **8:41**: Chapter 12, *A House of Prayer for All Nations*
-- **8:43**: Chapter 12, *A House of Prayer for All Nations*
+- **8:41-43**: Chapter 12, *A House of Prayer for All Nations*
 
 ### 2 Kings
 
@@ -346,9 +345,7 @@ Every passage of Scripture quoted or referred to in this book, in Bible order, w
 
 ### Hebrews
 
-- **4:14**: Chapter 20, *He Always Lives to Pray for Us*
 - **4:14-16**: Chapter 20, *He Always Lives to Pray for Us*
-- **4:16**: Chapter 20, *He Always Lives to Pray for Us*
 - **5:7**: Chapter 18, *Not My Will but Yours*
 - **7:24**: Chapter 20, *He Always Lives to Pray for Us*
 - **7:25**: Chapter 20, *He Always Lives to Pray for Us* (key verse)

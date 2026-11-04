@@ -1171,7 +1171,7 @@ The first was Isaiah. God had promised that foreigners who turned to Him would b
 
 > "I will lead them to My holy mountain and make them glad in My house of prayer. Their burnt offerings and sacrifices will find favor on My altar, for My house will be named a house of prayer for all peoples." (Isaiah 56:7)
 
-This had always been God's plan. When Solomon dedicated the first temple a thousand years earlier, he prayed especially for "the foreigner who is not one of Your people Israel but comes from a distant land," asking God to hear their prayers too, "Then all the peoples of the earth will come to know Your name" (1 Kings 8:41, 43).
+This had always been God's plan. When Solomon dedicated the first temple a thousand years earlier, he prayed especially for "the foreigner who is not one of Your people Israel but comes from a distant land," asking God to hear their prayers too, "Then all the peoples of the earth will come to know Your name" (1 Kings 8:41-43).
 
 The second was Jeremiah, who had warned the people of his day that they were treating the temple as "a hideout for robbers" (Jeremiah 7:11). A hideout is where robbers go to feel safe after they have done wrong. Jeremiah's point was that the people were living unjust lives and then hiding behind their religion, as if being near the temple would protect them. Jesus saw the same thing in His day. The house of God had become a place for profit and for hiding, instead of a place for prayer.
 
@@ -1992,7 +1992,7 @@ Every prayer you have ever prayed in the name of Jesus has risen before God like
 
 Because of all this, the writer of Hebrews calls us to come to God with confidence:
 
-> "We have, then, a great high priest who has gone through the heavens: Jesus the Son of God... So let us, with confidence, approach the throne of grace, to receive mercy and to find grace that brings help just when we need it." (Hebrews 4:14, 16)
+> "We have, then, a great high priest who has gone through the heavens: Jesus the Son of God... So let us, with confidence, approach the throne of grace, to receive mercy and to find grace that brings help just when we need it." (Hebrews 4:14-16)
 
 We do not come to a throne of judgment, but a throne of grace. We do not come alone, but with Jesus our High Priest beside us. We do not come hoping to persuade an unwilling God, but to a Father who loves us, through a Son who prays for us, in a Spirit who helps us. There is no safer, more welcoming place in the universe.
 
