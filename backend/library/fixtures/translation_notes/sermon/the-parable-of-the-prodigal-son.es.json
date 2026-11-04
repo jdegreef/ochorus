@@ -1,0 +1,54 @@
+{
+ "kind": "sermon",
+ "slug": "the-parable-of-the-prodigal-son",
+ "language": "es",
+ "job_issue": 7196,
+ "references": [
+  {
+   "reference": "Luke 15:1-2",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 15:1",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 15:16",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json",
+   "block_index": 29
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json",
+   "block_index": 34
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 48
+  },
+  {
+   "reference": "Luke 15:27",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json",
+   "block_index": 55
+  },
+  {
+   "reference": "Luke 15:30",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json",
+   "block_index": 56
+  }
+ ]
+}
