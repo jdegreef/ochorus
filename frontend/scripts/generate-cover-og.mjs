@@ -123,7 +123,7 @@ import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverTitle, editionOf } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
-import { groundBar } from '../src/lib/groundBars.ts';
+import { framedBar, groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
@@ -282,7 +282,7 @@ function needTwins() {
 		})
 		// How far a laid-out painting is cropped past its scan border — the
 		// component asks only for a layout, so this does too.
-		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : 0 }))
+		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : b.art ? framedBar(b.cover) : 0 }))
 		// Framed type set from the top (the Key Teachings) — the component's call.
 		.map((b) => ({ ...b, top: b.art && typeTopFor(b.slug, b.layout) }))
 		// Dark ink over a pale ground (Sons and Daughters of the King).
@@ -809,7 +809,7 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              `framed` or `<layout>/<hue>`. Checked by `coverOgManifest.test.ts`
  *              against the table, as `style` is.
  *   `bar`    — how far a laid-out painting is cropped past its scan border
- *              (`groundBars.ts`); 0 for a framed one.
+ *              (`groundBars.ts`); a framed one only past a thin strip (`framedBar`).
  *   `volume` — the series numeral over the title. Written as null outside a
  *              series rather than left out, because the skip is lenient about
  *              an ABSENT field: a book that joined a series would otherwise

@@ -4,7 +4,7 @@
 	import { isLongTitle, titleFit } from '$lib/coverCardMarkup';
 	import { coverTitle, editionOf } from '$lib/coverTitle';
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
-	import { groundBar } from '$lib/groundBars';
+	import { framedBar, groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
@@ -190,10 +190,12 @@
 	/** The layout a painting is composed in (`coverLayouts.ts`); null for the
 	 *  framed composition, and always null off a painting. */
 	const layout = $derived(isArt ? coverLayoutFor(book.author.slug, script, book.slug, book.title) : null);
-	/** How far a laid-out painting is cropped to clear its scan border
-	 *  (`groundBars.ts`). The framed scrim hides the border, so only a layout
-	 *  asks. */
-	const bar = $derived(layout ? groundBar(book.cover_url) : 0);
+	/** How far a painting is cropped to clear its scan border (`groundBars.ts`):
+	 *  a layout by its measured bar, a framed painting only past a thin strip
+	 *  (`framedBar`), which its scrim does not hide. */
+	const bar = $derived(
+		layout ? groundBar(book.cover_url) : isArt ? framedBar(book.cover_url) : 0
+	);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the

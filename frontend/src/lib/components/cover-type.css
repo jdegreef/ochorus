@@ -1236,6 +1236,13 @@
 .cover-ground:has(~ .cover-plate.has-layout) {
 	scale: max(1.06, calc(1 / (1 - 2 * var(--ground-bar, 0))));
 }
+/* A framed painting crops past a THIN scan strip only (`framedBar`, under
+   3.5%): the scrim darkens the edges but leaves a 6-10px black line along
+   the top visible. A ground with no strip carries no --ground-bar and stays at
+   scale 1. */
+.cover-ground:has(~ .cover-plate.over-art:not(.has-layout)) {
+	scale: calc(1 / (1 - 2 * var(--ground-bar, 0)));
+}
 
 /* ── band: a colour band with the mark, the title on paper, the painting below.
    The band is 20cqw (15% of the 133.3cqw plate), the paper runs to 55%, and a
