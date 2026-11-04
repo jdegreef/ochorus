@@ -12,10 +12,12 @@ A volume is three files under ``data/a-cloud-of-praying-witnesses/``:
   the closed Markdown subset of ``build_rooted.parse``;
 - ``volume-NN.chapters.json``, one record per ``##`` section, in order: its
   title (checked against the manuscript, so a record cannot slip onto the wrong
-  chapter), its key verse and its three insights, each under one of the
-  series' ``THEMES``. ``person``, ``era``, ``region``, ``voices`` and
-  ``read_more`` are not read here: they are kept for the last volume's timeline
-  and reading list, which gather every volume's records;
+  chapter), its key verse (which the chapter must cite) and the theme of each
+  of its three key insights, from the series' ``THEMES``; the insights
+  themselves are read from the chapter's own "Three key insights" list.
+  ``person``, ``era``, ``region``, ``voices`` and ``read_more`` are not read
+  here: they are kept for the last volume's timeline and reading list, which
+  gather every volume's records;
 - ``volume-NN.appendices.md``, GENERATED from the other two and never edited:
   Appendix 1 gathers the insights by theme; Appendix 2 indexes every Scripture
   the chapters cite, read from the prose with ``scripture.extract_citations``
@@ -32,7 +34,9 @@ Fixture-driven: ``seed_books`` creates the book on the next deploy from
 
 from __future__ import annotations
 
+import html
 import json
+import re
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -92,8 +96,9 @@ VOLUMES: dict[int, dict[str, object]] = {
                 "decisions, the Lord's Prayer, the secret room, asking, seeking and "
                 "knocking, persistence, humility, faith, praying together, giving "
                 "thanks, and His last prayers in the Upper Room, in Gethsemane and on "
-                "the cross. Each chapter has a key verse, voices from Murray, Bounds, "
-                "Spurgeon and others, three key insights, and a practice for the week."
+                "the cross. Each chapter has a key verse, voices from Andrew Murray, "
+                "E. M. Bounds, Thomas Watson, R. A. Torrey and others, three key "
+                "insights, and a practice for the week."
             ),
             "about_html": (
                 "<p>The disciples had watched Jesus heal the sick and calm the storm, "
@@ -113,8 +118,8 @@ VOLUMES: dict[int, dict[str, object]] = {
                 "is now, at the right hand of the Father, always living to pray for "
                 "us.</p>"
                 "<p>Every chapter opens with a key verse and a story, quotes voices "
-                "from the past such as Andrew Murray, E. M. Bounds, Charles Spurgeon, "
-                "George Müller and Thomas Watson word for word from their books in the "
+                "from the past such as Andrew Murray, E. M. Bounds, Thomas Watson, R. A. "
+                "Torrey and George Müller word for word from their books in the "
                 "library, and ends with three key insights, a word for today, a "
                 "practice to try, a closing prayer and questions for reflection. Two "
                 "appendices gather every insight by theme and every Scripture in Bible "
@@ -140,7 +145,7 @@ VOLUMES: dict[int, dict[str, object]] = {
                 },
                 {
                     "question": "Which classic writers does it quote?",
-                    "answer": "Andrew Murray, E. M. Bounds, Charles Spurgeon, George Müller, R. A. Torrey, Dwight L. Moody and Thomas Watson, each quoted exactly from a book you can read in full in the library.",
+                    "answer": "Andrew Murray and E. M. Bounds most often, then Thomas Watson and R. A. Torrey, with George Müller, Dwight L. Moody and Charles Spurgeon, each quoted exactly from a book you can read in full in the library.",
                 },
                 {
                     "question": "Which Bible translation does it use?",
@@ -164,6 +169,17 @@ def _label(index: int, last: int, title: str) -> str:
     return f"Chapter {index}, *{title}*"
 
 
+# A chapter's "Three key insights" list: each item opens on its insight in bold.
+_INSIGHTS = re.compile(r"<h2>Three key insights</h2><ol>(.*?)</ol>")
+_INSIGHT = re.compile(r"<li><strong>(.*?)</strong>")
+
+
+def _span(ref: str) -> tuple[int, int] | None:
+    """A reference's first and last verse ids, or None when it is not one."""
+    ids = scripture.reference_verse_ids(ref)
+    return (min(ids), max(ids)) if ids else None
+
+
 def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
     """Both appendices for a volume from its parsed ``(title, html)`` sections."""
     if [title for title, _ in sections] != [e["title"] for e in entries]:
@@ -171,15 +187,23 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
     last = len(entries) - 1
     by_theme: dict[str, list[str]] = {t: [] for t in THEMES}
     refs: dict[tuple[int, int], dict] = {}
-    for i, ((title, html), e) in enumerate(zip(sections, entries, strict=True)):
+    for i, ((title, body), e) in enumerate(zip(sections, entries, strict=True)):
         label = _label(i, last, title)
-        for ins in e["insights"]:
-            if ins["theme"] not in by_theme:
-                raise CommandError(f"{title!r}: unknown theme {ins['theme']!r}; add it to THEMES")
-            by_theme[ins["theme"]].append(f"- **{ins['text']}** {label} ({e['anchor']})")
-        for cite in scripture.extract_citations(html):
-            r = refs.setdefault((cite["start"], cite["end"]), {"ref": cite["ref"], "chapters": []})
-            r["chapters"].append(label + (" (key verse)" if cite["ref"] == e["anchor"] else ""))
+        found = _INSIGHTS.search(body)
+        insights = [html.unescape(x) for x in _INSIGHT.findall(found.group(1))] if found else []
+        if len(insights) != len(e["themes"]):
+            raise CommandError(f"{title!r}: {len(insights)} key insights in the prose, {len(e['themes'])} themes in chapters.json")
+        for text, theme in zip(insights, e["themes"], strict=True):
+            if theme not in by_theme:
+                raise CommandError(f"{title!r}: unknown theme {theme!r}; add it to THEMES")
+            by_theme[theme].append(f"- **{text}** {label} ({e['anchor']})")
+        anchor = _span(e["anchor"])
+        cited = {(c["start"], c["end"]): c["ref"] for c in scripture.extract_citations(body)}
+        if anchor not in cited:
+            raise CommandError(f"{title!r}: its key verse {e['anchor']!r} is not cited in the chapter")
+        for span, ref in cited.items():
+            r = refs.setdefault(span, {"ref": ref, "chapters": []})
+            r["chapters"].append(label + (" (key verse)" if span == anchor else ""))
 
     out = [
         "## Appendix 1: Key Insights",
@@ -203,12 +227,27 @@ def appendices(sections: list[tuple[str, str]], entries: list[dict]) -> str:
     ]
     heading = None
     for _, r in sorted(refs.items()):
-        book, _ = scripture.book_of(r["ref"])
-        if book != heading:
-            heading = book
-            out += ["", f"### {book}", ""]
-        out.append(f"- **{r['ref'].rsplit(' ', 1)[1]}**: {'; '.join(r['chapters'])}")
+        if (book := scripture.book_of(r["ref"])) is None:
+            raise CommandError(f"{r['ref']!r} names no book of the Bible")
+        if book[0] != heading:
+            heading = book[0]
+            out += ["", f"### {heading}", ""]
+        out.append(f"- **{r['ref']}**: {'; '.join(r['chapters'])}")
     return "\n".join(out) + "\n"
+
+
+def chapter_rows(volume: int) -> tuple[list[tuple[str, str]], str]:
+    """A volume's chapters as they are stored, ``(title, body_html)`` with the
+    appendices last, through the same cleaning every Original's text takes; and
+    the generated appendices' Markdown."""
+    sections, generated = volume_text(volume)
+    check_shape(sections)
+    rows = []
+    for order, (title, body) in enumerate(sections + parse(generated), start=1):
+        body, _ = convert(clean_fragment(body), outer_guillemets=False)
+        title, _ = convert(title, outer_guillemets=False)
+        rows.append((title, settled_chapter_body(VOLUMES[volume]["slug"], order, body)))
+    return rows, generated
 
 
 def volume_text(volume: int) -> tuple[list[tuple[str, str]], str]:
@@ -227,8 +266,8 @@ def check_shape(sections: list[tuple[str, str]]) -> None:
     titles = [title for title, _ in sections]
     if not titles[0].startswith("Introduction") or not titles[-1].startswith("Conclusion"):
         raise CommandError(f"manuscript is not Introduction, chapters, Conclusion: {titles}")
-    for title, html in sections[1:-1]:
-        missing = [label for label in REQUIRED if f"<h2>{label}</h2>" not in html]
+    for title, body in sections[1:-1]:
+        missing = [label for label in REQUIRED if f"<h2>{label}</h2>" not in body]
         if missing:
             raise CommandError(f"{title!r}: missing {missing}.")
 
@@ -253,10 +292,8 @@ class Command(BaseCommand):
         except Series.DoesNotExist as exc:
             raise CommandError(f"series {SERIES_SLUG!r} not found — load series.json first.") from exc
 
-        sections, generated = volume_text(volume)
-        check_shape(sections)
+        rows, generated = chapter_rows(volume)
         (SERIES_DIR / f"volume-{volume:02d}.appendices.md").write_text(generated)
-        chapters = sections + parse(generated)
 
         content = {
             "author": author,
@@ -280,10 +317,7 @@ class Command(BaseCommand):
         book.chapters.all().delete()
 
         total = 0
-        for order, (title, body) in enumerate(chapters, start=1):
-            body, _ = convert(clean_fragment(body), outer_guillemets=False)
-            body = settled_chapter_body(slug, order, body)
-            title, _ = convert(title, outer_guillemets=False)
+        for order, (title, body) in enumerate(rows, start=1):
             wc = word_count(body)
             total += wc
             Chapter.objects.create(book=book, order=order, title=title, body_html=body)

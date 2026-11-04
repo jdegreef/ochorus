@@ -16,7 +16,7 @@ This book is part of a long story, and it helps to know where we are standing.
 
 The series it belongs to, *A Cloud of Praying Witnesses*, follows the people of God at prayer from the earliest pages of the Bible to the church of today. The writer of Hebrews pictured all the faithful men and women who went before us as a great crowd of witnesses, gathered around us like spectators around a race. They have run their part. Now it is our turn. In the last book of the Bible, John sees the prayers of God's people held before the throne of God in "gold bowls full of incense" (Revelation 5:8). Not one sincere prayer is wasted. Not one is lost. When you pray, you join a prayer meeting that has been going on for thousands of years.
 
-Volume 1 of the series, *The Prayers Jesus Learned*, listened to the prayers of the Old Testament: Abraham pleading for a city, Moses standing in the gap, Hannah pouring out her soul, David singing his psalms, Daniel kneeling at his open window. Those were the prayers Jesus grew up with. As a boy in Nazareth He would have heard them read in the synagogue every Sabbath and sung them on the road to Jerusalem at the great feasts.
+Volume 1 of the series, *The Prayers Jesus Learned*, listens to the prayers of the Old Testament: Abraham pleading for a city, Moses standing in the gap, Hannah pouring out her soul, David singing his psalms, Daniel kneeling at his open window. Those were the prayers Jesus grew up with. As a boy in Nazareth He would have heard them read in the synagogue every Sabbath and sung them on the road to Jerusalem at the great feasts.
 
 Now, in Volume 2, we come to the center of the story. We come to Jesus Himself.
 

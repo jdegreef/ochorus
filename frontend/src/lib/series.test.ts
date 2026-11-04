@@ -37,6 +37,11 @@ describe('seriesLabel', () => {
 		expect(seriesLabel(collection, 'en')).toBe('Part of The Key Teachings');
 	});
 
+	it('names the series while its earlier volumes are still unwritten', () => {
+		const early = { ...rooted, title: 'A Cloud of Praying Witnesses', position: 2, total: 1 };
+		expect(seriesLabel(early, 'en')).toBe('Part of A Cloud of Praying Witnesses');
+	});
+
 	it("sets the numbers in the edition's own digits, as the cover ring does", () => {
 		expect(seriesLabel(rooted, 'fa')).toBe('Book ۲ of ۶ in Rooted');
 	});

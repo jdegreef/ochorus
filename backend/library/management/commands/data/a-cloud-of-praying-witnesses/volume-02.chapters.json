@@ -1,11 +1,11 @@
 [
   {
     "title": "Introduction: Where We Are in the Story",
+    "anchor": "Hebrews 12:1",
+    "themes": [],
     "person": null,
     "era": "c. AD 27-30",
     "region": "Galilee and Judea",
-    "anchor": "Hebrews 12:1",
-    "insights": [],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -17,24 +17,15 @@
   },
   {
     "title": "Very Early in the Morning",
+    "anchor": "Mark 1:35",
+    "themes": [
+      "Making Room for Prayer",
+      "Making Room for Prayer",
+      "Guidance and Surrender"
+    ],
     "person": "Jesus",
     "era": "c. AD 28",
     "region": "Galilee",
-    "anchor": "Mark 1:35",
-    "insights": [
-      {
-        "theme": "Making Room for Prayer",
-        "text": "If Jesus needed to pray, so do we."
-      },
-      {
-        "theme": "Making Room for Prayer",
-        "text": "Busyness is a reason to pray, not an excuse not to."
-      },
-      {
-        "theme": "Guidance and Surrender",
-        "text": "Prayer gives direction: alone with the Father we are led by God, not driven by the crowd."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -55,24 +46,15 @@
   },
   {
     "title": "All Night on the Mountain",
+    "anchor": "Luke 6:12",
+    "themes": [
+      "Guidance and Surrender",
+      "Prayer in Suffering and Testing",
+      "Praying Together"
+    ],
     "person": "Jesus",
     "era": "c. AD 28",
     "region": "Galilee",
-    "anchor": "Luke 6:12",
-    "insights": [
-      {
-        "theme": "Guidance and Surrender",
-        "text": "Big decisions deserve big prayer."
-      },
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "Praying does not promise an easy road, but it keeps us in the will of God."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "The church was born on a mountain of prayer: its first leaders were chosen after prayer."
-      }
-    ],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -87,24 +69,15 @@
   },
   {
     "title": "\"Lord, Teach Us to Pray\"",
+    "anchor": "Luke 11:1",
+    "themes": [
+      "Learning to Pray",
+      "Learning to Pray",
+      "Learning to Pray"
+    ],
     "person": "Jesus and His disciples",
     "era": "c. AD 29",
     "region": "Judea",
-    "anchor": "Luke 11:1",
-    "insights": [
-      {
-        "theme": "Learning to Pray",
-        "text": "Prayer can be learned; it is not a gift for a special few."
-      },
-      {
-        "theme": "Learning to Pray",
-        "text": "We learn to pray by watching people who pray."
-      },
-      {
-        "theme": "Learning to Pray",
-        "text": "Jesus is a willing teacher, and still gives His Spirit to all who ask."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -119,24 +92,15 @@
   },
   {
     "title": "Our Father in Heaven",
+    "anchor": "Matthew 6:9-10",
+    "themes": [
+      "The Father's Love",
+      "Praying Together",
+      "Making Room for Prayer"
+    ],
     "person": "The Lord's Prayer (I)",
     "era": "c. AD 28",
     "region": "Galilee",
-    "anchor": "Matthew 6:9-10",
-    "insights": [
-      {
-        "theme": "The Father's Love",
-        "text": "Prayer begins with relationship, not requests."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "We never pray alone: \"Our Father\" joins us to the whole family of God."
-      },
-      {
-        "theme": "Making Room for Prayer",
-        "text": "God's concerns come first: His name, His kingdom, His will."
-      }
-    ],
     "voices": [
       {
         "author": "thomas-watson",
@@ -151,24 +115,15 @@
   },
   {
     "title": "Bread, Forgiveness, Deliverance",
+    "anchor": "Matthew 6:11-13",
+    "themes": [
+      "Asking Boldly",
+      "Forgiveness",
+      "Prayer in Suffering and Testing"
+    ],
     "person": "The Lord's Prayer (II)",
     "era": "c. AD 28",
     "region": "Galilee",
-    "anchor": "Matthew 6:11-13",
-    "insights": [
-      {
-        "theme": "Asking Boldly",
-        "text": "God cares about our daily needs; we trust Him one day at a time."
-      },
-      {
-        "theme": "Forgiveness",
-        "text": "Forgiven people forgive."
-      },
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "We need God's protection every day from testing and the evil one."
-      }
-    ],
     "voices": [
       {
         "author": "thomas-watson",
@@ -188,24 +143,15 @@
   },
   {
     "title": "The Secret Room",
+    "anchor": "Matthew 6:6",
+    "themes": [
+      "Making Room for Prayer",
+      "The Father's Love",
+      "Making Room for Prayer"
+    ],
     "person": "Jesus' teaching on secret prayer",
     "era": "c. AD 28",
     "region": "Galilee",
-    "anchor": "Matthew 6:6",
-    "insights": [
-      {
-        "theme": "Making Room for Prayer",
-        "text": "Prayer is for an audience of One."
-      },
-      {
-        "theme": "The Father's Love",
-        "text": "The secret room is a meeting, not a ritual."
-      },
-      {
-        "theme": "Making Room for Prayer",
-        "text": "What happens in secret shapes our public life."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -220,24 +166,15 @@
   },
   {
     "title": "Ask, Seek, Knock",
+    "anchor": "Luke 11:9",
+    "themes": [
+      "Asking Boldly",
+      "Persistence",
+      "Praying for Others"
+    ],
     "person": "The friend at midnight",
     "era": "c. AD 29",
     "region": "Judea",
-    "anchor": "Luke 11:9",
-    "insights": [
-      {
-        "theme": "Asking Boldly",
-        "text": "God invites us to ask boldly."
-      },
-      {
-        "theme": "Persistence",
-        "text": "Ask, search, knock: keep at it."
-      },
-      {
-        "theme": "Praying for Others",
-        "text": "Much of our asking is for others: we knock at midnight for a hungry friend."
-      }
-    ],
     "voices": [
       {
         "author": "charles-h-spurgeon",
@@ -252,24 +189,15 @@
   },
   {
     "title": "Always Pray and Never Give Up",
+    "anchor": "Luke 18:1",
+    "themes": [
+      "Persistence",
+      "The Father's Love",
+      "Faith"
+    ],
     "person": "The persistent widow; George Müller",
     "era": "c. AD 29; 1800s",
     "region": "Judea; Bristol, England",
-    "anchor": "Luke 18:1",
-    "insights": [
-      {
-        "theme": "Persistence",
-        "text": "Delay is not denial."
-      },
-      {
-        "theme": "The Father's Love",
-        "text": "We do not pray to wear God down; persistence is what trust looks like over time."
-      },
-      {
-        "theme": "Faith",
-        "text": "Persistent prayer is faith in action."
-      }
-    ],
     "voices": [
       {
         "author": "george-muller",
@@ -290,24 +218,15 @@
   },
   {
     "title": "\"God, Have Mercy on Me, a Sinner\"",
+    "anchor": "Luke 18:13",
+    "themes": [
+      "Humility and Mercy",
+      "Humility and Mercy",
+      "Humility and Mercy"
+    ],
     "person": "The Pharisee and the tax collector",
     "era": "c. AD 29",
     "region": "Jerusalem",
-    "anchor": "Luke 18:13",
-    "insights": [
-      {
-        "theme": "Humility and Mercy",
-        "text": "Humility is the doorway of prayer."
-      },
-      {
-        "theme": "Humility and Mercy",
-        "text": "Comparing ourselves with others poisons prayer."
-      },
-      {
-        "theme": "Humility and Mercy",
-        "text": "God answers the cry for mercy at once."
-      }
-    ],
     "voices": [
       {
         "author": "dwight-l-moody",
@@ -328,24 +247,15 @@
   },
   {
     "title": "Faith That Moves Mountains",
+    "anchor": "Mark 11:24",
+    "themes": [
+      "Faith",
+      "Guidance and Surrender",
+      "Forgiveness"
+    ],
     "person": "Jesus and the fig tree",
     "era": "c. AD 30",
     "region": "Bethany and Jerusalem",
-    "anchor": "Mark 11:24",
-    "insights": [
-      {
-        "theme": "Faith",
-        "text": "Faith looks at God, not at the mountain."
-      },
-      {
-        "theme": "Guidance and Surrender",
-        "text": "Faith trusts God's will as well as His power."
-      },
-      {
-        "theme": "Forgiveness",
-        "text": "Faith and forgiveness go together."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -365,24 +275,15 @@
   },
   {
     "title": "Where Two or Three Agree",
+    "anchor": "Matthew 18:19-20",
+    "themes": [
+      "Praying Together",
+      "Praying Together",
+      "Making Room for Prayer"
+    ],
     "person": "The church praying for Peter",
     "era": "c. AD 29; c. AD 44",
     "region": "Galilee; Jerusalem",
-    "anchor": "Matthew 18:19-20",
-    "insights": [
-      {
-        "theme": "Praying Together",
-        "text": "United prayer carries a special promise, and Jesus is present where two or three gather."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "True agreement in prayer begins with reconciliation."
-      },
-      {
-        "theme": "Making Room for Prayer",
-        "text": "We need both the secret room and the prayer meeting."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -397,24 +298,15 @@
   },
   {
     "title": "A House of Prayer for All Nations",
+    "anchor": "Mark 11:17",
+    "themes": [
+      "Praying Together",
+      "Praying for Others",
+      "Praying Together"
+    ],
     "person": "Jesus clears the temple",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "Mark 11:17",
-    "insights": [
-      {
-        "theme": "Praying Together",
-        "text": "God's house is first of all a house of prayer."
-      },
-      {
-        "theme": "Praying for Others",
-        "text": "God's heart is for all the nations; our prayers should be as wide as His love."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "Jesus clears away what keeps others from God."
-      }
-    ],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -429,24 +321,15 @@
   },
   {
     "title": "Ask the Lord of the Harvest",
+    "anchor": "Matthew 9:37-38",
+    "themes": [
+      "Praying for Others",
+      "Praying for Others",
+      "Praying for Others"
+    ],
     "person": "Jesus sends the Twelve",
     "era": "c. AD 29",
     "region": "Galilee",
-    "anchor": "Matthew 9:37-38",
-    "insights": [
-      {
-        "theme": "Praying for Others",
-        "text": "Prayer for the harvest begins with compassion."
-      },
-      {
-        "theme": "Praying for Others",
-        "text": "The harvest belongs to the Lord, and He sends workers in answer to prayer."
-      },
-      {
-        "theme": "Praying for Others",
-        "text": "Those who pray for workers often become workers."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -461,24 +344,15 @@
   },
   {
     "title": "Thanks Before the Miracle",
+    "anchor": "John 11:41-42",
+    "themes": [
+      "Thanksgiving",
+      "Prayer in Suffering and Testing",
+      "Thanksgiving"
+    ],
     "person": "Jesus at the tomb of Lazarus",
     "era": "c. AD 30",
     "region": "Bethany",
-    "anchor": "John 11:41-42",
-    "insights": [
-      {
-        "theme": "Thanksgiving",
-        "text": "Thanksgiving is faith speaking before the answer is seen."
-      },
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "Thanksgiving and tears can go together."
-      },
-      {
-        "theme": "Thanksgiving",
-        "text": "Remembering past answers builds faith for new ones."
-      }
-    ],
     "voices": [
       {
         "author": "r-a-torrey",
@@ -494,24 +368,15 @@
   },
   {
     "title": "Asking in His Name",
+    "anchor": "John 16:24",
+    "themes": [
+      "Asking Boldly",
+      "Guidance and Surrender",
+      "The Father's Love"
+    ],
     "person": "Jesus in the Upper Room",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "John 16:24",
-    "insights": [
-      {
-        "theme": "Asking Boldly",
-        "text": "We come to God on Jesus' credit, not our own."
-      },
-      {
-        "theme": "Guidance and Surrender",
-        "text": "Praying in His name means praying His will, not using a formula."
-      },
-      {
-        "theme": "The Father's Love",
-        "text": "The Father Himself loves us; praying in Jesus' name is full of joy."
-      }
-    ],
     "voices": [
       {
         "author": "r-a-torrey",
@@ -531,24 +396,15 @@
   },
   {
     "title": "\"I Have Prayed for You\"",
+    "anchor": "Luke 22:31-32",
+    "themes": [
+      "Christ Who Prays for Us",
+      "Faith",
+      "Christ Who Prays for Us"
+    ],
     "person": "Jesus prays for Peter",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "Luke 22:31-32",
-    "insights": [
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Jesus prays for us by name, even before we fall."
-      },
-      {
-        "theme": "Faith",
-        "text": "Jesus prays most of all for our faith, not our escape from testing."
-      },
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Restored people strengthen others."
-      }
-    ],
     "voices": [
       {
         "author": "thomas-watson",
@@ -569,24 +425,15 @@
   },
   {
     "title": "That They May All Be One",
+    "anchor": "John 17:21",
+    "themes": [
+      "Christ Who Prays for Us",
+      "Praying Together",
+      "Praying Together"
+    ],
     "person": "Jesus' high priestly prayer",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "John 17:21",
-    "insights": [
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Jesus prayed for you before you were born."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "Christian unity is a sharing in the life of God."
-      },
-      {
-        "theme": "Praying Together",
-        "text": "Unity is a witness to the world."
-      }
-    ],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -601,24 +448,15 @@
   },
   {
     "title": "Not My Will but Yours",
+    "anchor": "Matthew 26:39",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender",
+      "Prayer in Suffering and Testing"
+    ],
     "person": "Jesus in Gethsemane",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "Matthew 26:39",
-    "insights": [
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "We can be honest with God about what we want."
-      },
-      {
-        "theme": "Guidance and Surrender",
-        "text": "Surrender is giving over, not giving up."
-      },
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "Prayer prepares us for what we must face."
-      }
-    ],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -633,24 +471,15 @@
   },
   {
     "title": "Prayers from the Cross",
+    "anchor": "Luke 23:34",
+    "themes": [
+      "Forgiveness",
+      "Prayer in Suffering and Testing",
+      "The Father's Love"
+    ],
     "person": "Jesus on the cross",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "Luke 23:34",
-    "insights": [
-      {
-        "theme": "Forgiveness",
-        "text": "Jesus prayed for His enemies, and calls us to do the same."
-      },
-      {
-        "theme": "Prayer in Suffering and Testing",
-        "text": "An honest cry of \"Why?\" is still prayer."
-      },
-      {
-        "theme": "The Father's Love",
-        "text": "We can live, and die, placing ourselves in the Father's hands."
-      }
-    ],
     "voices": [
       {
         "author": "e-m-bounds",
@@ -665,24 +494,15 @@
   },
   {
     "title": "He Always Lives to Pray for Us",
+    "anchor": "Hebrews 7:25",
+    "themes": [
+      "Christ Who Prays for Us",
+      "Christ Who Prays for Us",
+      "Christ Who Prays for Us"
+    ],
     "person": "The ascended Christ",
     "era": "c. AD 30 and now",
     "region": "Bethany; heaven",
-    "anchor": "Hebrews 7:25",
-    "insights": [
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Jesus is still praying for us at the right hand of God."
-      },
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Our salvation rests on His prayers, not our strength."
-      },
-      {
-        "theme": "Christ Who Prays for Us",
-        "text": "Our prayers are joined to His; we never pray alone."
-      }
-    ],
     "voices": [
       {
         "author": "andrew-murray",
@@ -697,11 +517,11 @@
   },
   {
     "title": "Conclusion: Passing the Torch",
+    "anchor": "Acts 1:14",
+    "themes": [],
     "person": "The disciples in the upper room",
     "era": "c. AD 30",
     "region": "Jerusalem",
-    "anchor": "Acts 1:14",
-    "insights": [],
     "voices": [],
     "read_more": []
   }
