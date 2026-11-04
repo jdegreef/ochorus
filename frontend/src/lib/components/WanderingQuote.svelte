@@ -20,21 +20,25 @@
 	// Bumped per quotation, so each one unrolls afresh.
 	let turn = $state(0);
 	let busy = $state(false);
+	// The last press found no quotations (offline, the API down): said so.
+	let dry = $state(false);
+	let quill = $state<HTMLButtonElement>();
 
 	async function wander() {
 		if (busy) return;
 		busy = true;
 		try {
 			const pool = await featuredPool();
-			if (!pool.length) return;
-			// Somewhere new each time: never the line already showing.
-			let next = pool[Math.floor(Math.random() * pool.length)];
-			if (pool.length > 1)
-				while (next.slug === quote?.slug) next = pool[Math.floor(Math.random() * pool.length)];
-			quote = next;
+			// Somewhere new each time: never the line already showing (unless
+			// it is the only one there is).
+			const fresh = pool.filter((q) => q.slug !== quote?.slug);
+			const from = fresh.length ? fresh : pool;
+			if (!from.length) throw new Error('no quotations');
+			quote = from[Math.floor(Math.random() * from.length)];
+			dry = false;
 			turn++;
 		} catch {
-			// Offline or the API is down: the quill simply stays dry.
+			dry = true;
 		} finally {
 			busy = false;
 		}
@@ -43,6 +47,7 @@
 
 <div class="wandering">
 	<button
+		bind:this={quill}
 		type="button"
 		class="quill"
 		aria-expanded={quote !== null}
@@ -76,7 +81,18 @@
 					<span class="rod" aria-hidden="true"></span>
 				</figure>
 			{/key}
-			<button type="button" class="roll-up" onclick={() => (quote = null)}>Roll it up</button>
+			<!-- Rolled up, focus goes back to the quill rather than falling to
+			     the page with the button that held it. -->
+			<button
+				type="button"
+				class="roll-up"
+				onclick={() => {
+					quote = null;
+					quill?.focus();
+				}}>Roll it up</button
+			>
+		{:else if dry}
+			<p class="dry">The ink has run dry. Try again in a moment.</p>
 		{/if}
 	</div>
 </div>
@@ -168,6 +184,11 @@
 	}
 	.cite a:hover {
 		text-decoration-color: currentColor;
+	}
+	.dry {
+		margin-top: 0.5rem;
+		font-size: var(--fs-micro);
+		color: var(--color-muted);
 	}
 	.roll-up {
 		margin-top: 0.4rem;
