@@ -758,7 +758,7 @@
 	.footer-for-share {
 		min-block-size: 2.75rem;
 		padding-inline: 1.1rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 
 	/* Language tiles: autonym over its book count. Auto-fill columns, so a

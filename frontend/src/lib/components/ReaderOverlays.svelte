@@ -187,7 +187,7 @@
 		gap: 0.5rem;
 		padding: 0.35rem 0.5rem 0.35rem 1rem;
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		box-shadow: var(--shadow-popover);
 	}

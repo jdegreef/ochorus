@@ -382,7 +382,8 @@
 		</div>
 		{#if data}
 			<button class="btn btn-ghost" onclick={stats.load} disabled={stats.loading}
-				>{stats.loading ? 'Refreshing…' : 'Refresh'}</button
+				aria-busy={stats.loading ? 'true' : undefined}
+				>{#if stats.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh</button
 			>
 		{/if}
 	</header>

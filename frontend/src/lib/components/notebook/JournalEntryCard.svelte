@@ -309,7 +309,7 @@
 	.collection {
 		padding: 0 0.5rem;
 		border: 1px solid var(--border-strong);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		color: var(--muted);
 		cursor: pointer;
 	}
@@ -341,7 +341,7 @@
 		border: 1px solid var(--accent-soft-border);
 		background: var(--accent-soft);
 		color: var(--accent);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		padding: 0 0.55rem;
 		font-size: var(--fs-micro);
 		font-weight: 600;

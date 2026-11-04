@@ -80,7 +80,7 @@
 	.meter {
 		width: 70%;
 		height: 0.3rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface-2);
 		overflow: hidden;
 	}

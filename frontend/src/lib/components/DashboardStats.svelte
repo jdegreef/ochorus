@@ -159,7 +159,7 @@
 		.streak-flame:not([data-tier='spark']) {
 			width: 3rem;
 			height: 3rem;
-			border-radius: 999px;
+			border-radius: var(--radius-pill);
 			background: color-mix(in srgb, var(--gold) 14%, transparent);
 		}
 		.streak-flame[data-tier='blaze'],

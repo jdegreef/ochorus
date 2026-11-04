@@ -182,7 +182,7 @@
 		width: 2.4rem;
 		height: 0.25rem;
 		margin: 0.5rem auto 0;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--border-strong);
 	}
 	@keyframes sheet-in {

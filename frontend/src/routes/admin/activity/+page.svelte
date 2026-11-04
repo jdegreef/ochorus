@@ -406,12 +406,12 @@
 		{#if summary && summary.all > 0}
 			<div class="flex items-center gap-2">
 				<button class="btn btn-ghost" onclick={exportCsv} disabled={exporting || data?.total === 0}
-					>{exporting
-						? 'Exporting…'
-						: `Export CSV${data?.total != null ? ` · ${data.total.toLocaleString('en')}` : ''}`}</button
+					aria-busy={exporting ? 'true' : undefined}
+					>{#if exporting}<span class="btn-spinner" aria-hidden="true"></span>{/if}{`Export CSV${data?.total != null ? ` · ${data.total.toLocaleString('en')}` : ''}`}</button
 				>
 				<button class="btn btn-ghost" onclick={activity.load} disabled={activity.loading}
-					>{activity.loading ? 'Refreshing…' : 'Refresh'}</button
+					aria-busy={activity.loading ? 'true' : undefined}
+					>{#if activity.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh</button
 				>
 			</div>
 		{/if}
@@ -688,8 +688,8 @@
 
 				{#if cursor != null}
 					<div class="mt-4 flex flex-col items-center gap-2">
-						<button class="btn btn-ghost" onclick={loadOlder} disabled={loadingOlder || activity.loading}>
-							{loadingOlder ? 'Loading…' : 'Load older'}
+						<button class="btn btn-ghost" onclick={loadOlder} disabled={loadingOlder || activity.loading} aria-busy={loadingOlder ? 'true' : undefined}>
+							{#if loadingOlder}<span class="btn-spinner" aria-hidden="true"></span>{/if}Load older
 						</button>
 						{#if olderError}<p class="text-small text-danger">{olderError}</p>{/if}
 					</div>

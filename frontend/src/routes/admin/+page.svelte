@@ -186,14 +186,14 @@
 						>Updated {timeFmt(loadedAt)}</span
 					>
 				{/if}
-				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting}>
-					{exporting === 'csv' ? 'Exporting…' : 'Export CSV'}
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('csv')} disabled={!!exporting} aria-busy={exporting === 'csv' ? 'true' : undefined}>
+					{#if exporting === 'csv'}<span class="btn-spinner" aria-hidden="true"></span>{/if}Export CSV
 				</button>
-				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting}>
-					{exporting === 'json' ? 'Exporting…' : 'Export JSON'}
+				<button class="btn btn-sm btn-ghost" onclick={() => exportInventory('json')} disabled={!!exporting} aria-busy={exporting === 'json' ? 'true' : undefined}>
+					{#if exporting === 'json'}<span class="btn-spinner" aria-hidden="true"></span>{/if}Export JSON
 				</button>
-				<button class="btn btn-ghost" onclick={dashboard.load} disabled={dashboard.loading}>
-					{dashboard.loading ? 'Refreshing…' : 'Refresh'}
+				<button class="btn btn-ghost" onclick={dashboard.load} disabled={dashboard.loading} aria-busy={dashboard.loading ? 'true' : undefined}>
+					{#if dashboard.loading}<span class="btn-spinner" aria-hidden="true"></span>{/if}Refresh
 				</button>
 			</div>
 		{/if}

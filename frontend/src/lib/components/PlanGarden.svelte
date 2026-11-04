@@ -125,7 +125,7 @@
 			color-mix(in srgb, var(--plan-hue) 28%, transparent),
 			transparent 70%
 		);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background-position: center;
 		background-size: 100% 100%;
 		background-repeat: no-repeat;

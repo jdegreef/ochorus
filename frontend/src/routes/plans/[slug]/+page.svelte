@@ -811,7 +811,7 @@
 	.week-dot {
 		width: 0.5rem;
 		height: 0.5rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1.5px solid var(--border-strong);
 	}
 	.week-dot.done {

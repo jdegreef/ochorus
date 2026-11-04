@@ -46,7 +46,7 @@
 		flex: none;
 		border: 0;
 		padding: 0;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		color: var(--surface);
 		font-size: var(--fs-micro);
 		font-weight: 700;

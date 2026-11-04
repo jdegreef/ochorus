@@ -593,7 +593,7 @@
 	}
 	.related-topics a {
 		padding: 0.3rem 0.8rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		border: 1px solid color-mix(in srgb, var(--topic) 28%, var(--color-border));
 		background: color-mix(in srgb, var(--topic) 8%, var(--color-surface));
 		font-size: var(--fs-small);

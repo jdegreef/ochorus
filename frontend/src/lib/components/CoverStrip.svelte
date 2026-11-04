@@ -155,7 +155,7 @@
 		inset-inline-end: 4cqw;
 		padding: 0.3em 0.8em;
 		border: 1px solid var(--border);
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--surface);
 		box-shadow: var(--shadow-card);
 		color: var(--text);
