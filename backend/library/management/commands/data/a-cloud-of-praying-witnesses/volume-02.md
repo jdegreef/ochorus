@@ -577,3 +577,478 @@ Father, thank You for every meal You have given me. Give me today the bread I ne
 
 - Thomas Watson, *The Lord's Prayer*, especially "The Fourth Petition: Give Us This Day Our Daily Bread" and "The Fifth Petition: Forgive Us Our Debts"
 - Andrew Murray, *With Christ in the School of Prayer*, especially "Prayer and Love"
+
+---
+
+## The Secret Room
+
+> "But when you pray, go into an inner room, shut the door, and pray to your Father who is there in secret. Your Father sees what is hidden, and He will repay you." (Matthew 6:6)
+
+In the villages of Galilee, most families lived in a small house with one main room. The whole family ate there, worked there and slept there, often with their animals close by at night. There was little privacy. But many houses had one more space: a small storeroom at the back, where grain, oil and tools were kept. It was often the only room with a door that could be shut.
+
+When Jesus said, "Go into an inner room, shut the door," His listeners could picture it. Step away from everyone. Go into the storeroom among the jars of oil and sacks of grain. Pull the door closed behind you. And there, in the dark, speak to your Father.
+
+It was a startling picture, because Jesus was contrasting it with something His listeners saw every day.
+
+### Prayer on the street corner
+
+Faithful Jews prayed at set times of the day. When the hour of prayer came, a man might stop wherever he happened to be and pray. Some people made sure they happened to be in the busiest place in town:
+
+> "And when you pray, do not be like the hypocrites. They love to stand and pray in the synagogues and at the street corners where others can see them. Truly I tell you, they have been paid in full." (Matthew 6:5)
+
+"Paid in full." They wanted people to admire them, and people did. That was their reward, and it was all the reward they would get. Their prayers were really performances, and the audience they cared about was human.
+
+In this part of the Sermon on the Mount, Jesus talks about three things that God's people do: giving to the poor, praying and fasting (Matthew 6:1-18). He gives the same warning about all three. Do not do them to be seen. Do them for your Father, who sees in secret. "Take care not to put your righteousness on show for others to see," He begins (Matthew 6:1). The secret room is the place where we learn to live for an audience of One.
+
+### Jesus in the secret place
+
+Jesus did not only teach this. He lived it. We have already seen Him slip away before dawn and climb a mountain to pray all night. After feeding the five thousand, "He climbed up into the hills by Himself to pray. Evening came, and He was still there by himself" (Matthew 14:23). By Himself. No crowd, no disciples, no one to impress. Just the Son and the Father.
+
+He was following a path that the people of God had walked for centuries. When the prophet Elisha came to the house where a little boy lay dead, "He went in, shut the door on the two of them, and prayed to the LORD" (2 Kings 4:33). Daniel went up to his upstairs room to pray three times a day (Daniel 6:10). Notice that Daniel's windows were open. The secret room is not about hiding our faith from danger. Daniel prayed "just as he had always done," even when it could cost him his life. The secret room is about motive. Whom are we praying to? Whose approval do we want?
+
+### What happens behind the door
+
+Why does Jesus send us into a room alone? Not because God cannot hear us in a crowd. He hears every prayer, everywhere. Jesus sends us there because something happens behind the closed door that does not happen anywhere else. We meet our Father without distraction and without pretending.
+
+Andrew Murray wrote a whole book about the secret room, called *The Inner Chamber*. He believed that the most important thing in private prayer is not our list of requests, or even how well we pray. It is the meeting itself:
+
+> "The first and chief thing is to see that there in secret you have the Father's presence and attention. Know that He sees and hears you."
+> Andrew Murray, *The Inner Chamber*
+
+Murray also warned of a danger. It is possible to go into the secret room, read the Bible, say prayers and come out again without really meeting God at all:
+
+> "You are in danger of substituting Prayer and Bible Study for living fellowship with God, the living interchange of giving Him your love, your heart, and your life, and receiving from Him His love, His life, and His spirit."
+> Andrew Murray, *The Inner Chamber*
+
+The secret room is not a duty to complete. It is an appointment with a Person.
+
+### "He will repay you"
+
+Jesus promises a reward for secret prayer: "Your Father sees what is hidden, and He will repay you." What is the reward? Answers to prayer, certainly. But the greatest reward of the secret room is the Father Himself: His nearness, His peace, His strength for the day. And that reward does not stay hidden. People who spend time with God in secret are changed, and others notice, even if they never know why. Their patience, their courage and their kindness grow out of a place no one else can see.
+
+### Three key insights
+
+1. **Prayer is for an audience of One.** The question is not whether people see us pray, but whom we are praying to. In the secret room there is no one to impress, so we can be completely honest with God.
+2. **The secret room is a meeting, not a ritual.** Reading and praying are the doorway, not the destination. What matters most is that we meet our Father and know that He sees and hears us.
+3. **What happens in secret shapes our public life.** The strength Jesus showed in public came from the hours He spent alone with His Father. The same is true for us.
+
+### For us today
+
+There have always been ways to pray "at the street corner." Today there are new ones. We can post our prayers online for others to see, or make sure people know how spiritual we are. Praying with others is good; the early church did it constantly, as we will see in Volume 3. But the warning of Jesus asks us to check our hearts. If no one ever knew that we prayed, would we still pray?
+
+Some readers will say, "I have no inner room." Many people in the world live in crowded homes, share sleeping space with family, or live in places where privacy is very rare. Remember that the storeroom Jesus described was not a comfortable study. It was simply a place where a person could be alone with God for a while. For you, the door you shut may be your own eyes, closed on a crowded bus. It may be an early walk, a corner of a field, or a few minutes in the washroom at work. In a later volume we will meet Christians in Japan who kept their faith alive in secret for more than two hundred years, and believers in prisons who found that God met them in a cell. God is not limited by the size of your room.
+
+The harder door to shut today may not be a wooden one. It may be the door of the phone, the screen and the constant noise of messages and news. Many of us never truly shut the door, because we carry the whole world in our pocket into the place of prayer. Shutting the door may mean leaving the phone in another room.
+
+### Try this
+
+This week, keep a daily appointment with your Father behind a closed door.
+
+- **Choose your room and your time.** Pick a place and a time you can keep each day, even if it is only ten minutes.
+- **Shut the door.** Close the door if you have one. Turn off your phone or leave it outside.
+- **Begin with the meeting.** Before you ask for anything, say quietly, "Father, You see me. You hear me. I am here with You." Stay with that thought until you know it is true.
+- **Keep a secret with God.** This week, do one good thing for someone without telling anyone at all, not even your closest friend. Let it be a secret between you and your Father.
+
+### A closing prayer
+
+Father, You see what is hidden. You see me now. Thank You that I do not have to perform for You or impress You. Teach me to shut the door on the noise of the world and the opinions of others, and to meet You in secret. Let my prayers be for You alone. Be my reward. And let the strength I find with You in secret shine out in the way I live, for Your glory and not my own. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- If no one ever knew that you prayed, would your prayer life change? How?
+- Where is your "inner room"? What makes it hard to shut the door there?
+- Murray warns that prayer and Bible reading can become a substitute for meeting God. Have you experienced that? What helps you to meet Him?
+
+### Read more on Ochorus
+
+- Andrew Murray, *The Inner Chamber*, especially "The Door Shut — Alone with God" and "The Open Door — The Open Reward"
+- Andrew Murray, *With Christ in the School of Prayer*, especially "Alone with God"
+
+---
+
+## Ask, Seek, Knock
+
+> "So I tell you: ask, and God will give to you; search, and you will find; knock, and God will open the door for you." (Luke 11:9)
+
+It is the middle of the night. The village is dark and silent. Suddenly there is a knock at the door. A friend has arrived after a long journey on foot, tired, dusty and hungry.
+
+In the world of Jesus, hospitality was sacred. You could not let a guest go to bed hungry. It would bring shame on you, your family and your whole village. But you have a problem. There is no bread in the house. You used the last of it at supper.
+
+So you go out into the darkness to the house of another friend and knock.
+
+Jesus told this story right after teaching His disciples the Lord's Prayer:
+
+> "Imagine that one of you has a friend, and you go to his house in the middle of the night and say to him, 'My friend, lend me three loaves. Another friend of mine has come to my house from a journey, and I have nothing to set out for him to eat.' Would that friend call back from inside, 'Do not trouble me. The door is already shut for the night, and my children are in bed with me. I cannot get up now to hand you anything'? I tell you, even if friendship is not enough to get him out of bed to give you the bread, your boldness in asking without shame will get him up, and he will give you as much as you need." (Luke 11:5-8)
+
+Jesus' listeners would have smiled at the picture. In a one-room village house, the whole family slept together on mats on the floor. To get up, the man would have to climb over his sleeping children, unbolt the heavy door, and wake everyone up. No wonder he called out, "Do not trouble me!"
+
+But the man outside keeps knocking. He is not ashamed to ask. And in the end, his friend gets up and gives him everything he needs.
+
+### Not a reluctant God
+
+It would be easy to misunderstand this story. Is Jesus saying that God is like a grumpy neighbor who must be pestered until He gives in? No. Jesus is using a kind of argument His listeners knew well, from the lesser to the greater. If even a sleepy, irritated friend will get up in the middle of the night to help, how much more will your Father in heaven, who never sleeps, and who loves you?
+
+Jesus makes the same point a moment later with a picture from family life:
+
+> "Is there a father among you who would hand his son a snake when the boy asked for a fish? Or if he asked for an egg, would he give him a scorpion? You are evil, and yet you know how to give your children good gifts. Then how much more will the Father in heaven give the Holy Spirit to those who ask Him!" (Luke 11:11-13)
+
+God is not the reluctant neighbor. He is the Father who is eager to give. The story is not about God's unwillingness. It is about our boldness.
+
+### Ask, search, knock
+
+Then Jesus gives one of the greatest invitations in the Bible:
+
+> "So I tell you: ask, and God will give to you; search, and you will find; knock, and God will open the door for you. For all who ask receive, all who search find, and all who knock have the door opened to them." (Luke 11:9-10)
+
+There are three verbs, and they grow stronger. To **ask** is to speak a request. To **search** is to look for something with effort. To **knock** is to stand at a closed door and keep pounding until it opens. Matthew records the same words with a sense of continuing action: "Keep asking, and you will receive. Keep seeking, and you will find. Keep knocking, and the door will be opened for you" (Matthew 7:7).
+
+Jesus is teaching us not to give up after one try. Some answers come the moment we ask. Others come only after long searching and much knocking. But the promise stands: all who ask receive, all who search find, all who knock have the door opened.
+
+Charles Spurgeon, who preached to thousands in London every week and was known for the power of his church's prayer meetings, put it this way:
+
+> "Be importunate, heaven's gate does not open to every runaway knock. Knock, and knock, and knock again; and add to thy knocking and to thy asking seeking, and be not satisfied till thou gettest a real answer."
+> Charles H. Spurgeon, *Mighty Power in Prayer*
+
+"Importunate" is an old word for someone who keeps on asking, boldly and without giving up. A "runaway knock" is the knock of a child who bangs on a door and runs away before anyone comes. Spurgeon was saying: don't pray like that. Stay at the door.
+
+### Asking for someone else
+
+Look again at the story. The man at midnight was not asking for himself. He had a guest who was hungry, and he had nothing to give. "My friend, lend me three loaves. Another friend of mine has come... and I have nothing to set out for him."
+
+That is a picture of much of our praying. People come into our lives with needs we cannot meet: a friend in despair, a neighbor who does not know God, a child who is ill, a church that is struggling. We have nothing in ourselves to give them. But we know Someone who has bread. So we go to Him and knock, on their behalf. In *With Christ in the School of Prayer*, Andrew Murray called this "the boldness of God's friends." God loves to give through people who are bold enough to ask for others.
+
+### The best gift
+
+Notice what Jesus says the Father will give: "the Holy Spirit." In Matthew's version it is "good things" (Matthew 7:11). Luke makes it plain that the greatest good thing of all is God's own presence. We may come asking for bread, for healing or for help, and God may give those things gladly. But above all, He wants to give us Himself.
+
+### Three key insights
+
+1. **God invites us to ask boldly.** The man in the story asked "without shame" at midnight. We do not need to be shy with our Father. He wants us to come to Him with our needs, at any hour.
+2. **Ask, search, knock: keep at it.** Prayer sometimes requires persistence. Some doors open at the first knock; others only after long knocking. Keep asking, keep seeking, keep knocking.
+3. **Much of our asking is for others.** The man knocked at midnight for a hungry friend. When we have nothing to give the people around us, we can go to the Father who has everything.
+
+### For us today
+
+Some of us find it hard to ask God for things. We think it is selfish, or that we should only pray "spiritual" prayers, or that God is too busy for our small needs. Jesus says: ask. James wrote that some Christians go without simply "because you do not ask" (James 4:2). He also warned that some prayers are not answered "because your asking is wrong: you want to spend what you get on your pleasures" (James 4:3). So we ask with clean hearts, for things that honor God, but we do ask.
+
+Others of us have asked once and given up. We prayed for something, nothing seemed to happen, and we decided God was not listening. Jesus' words "keep asking, keep seeking, keep knocking" are for us. We will think more about this in the next chapter.
+
+And all of us have "midnight friends": people who have come into our lives with needs we cannot meet. Their names are your invitation to knock.
+
+### Try this
+
+This week, make an "asking list" with three parts.
+
+- **Ask.** Write one need of your own that you have not yet brought to God. Bring it to Him every day this week, simply and boldly.
+- **Knock for a friend.** Write the name of one person who has come to you with a need you cannot meet. Each day, knock on heaven's door on their behalf. If God shows you a way to help them, do it.
+- **Ask for the best gift.** Each morning, pray Luke 11:13: "Father, You have promised to give the Holy Spirit to those who ask. I am asking. Fill me with Your Spirit today."
+
+At the end of the week, write down anything you have seen God do.
+
+### A closing prayer
+
+Father, thank You that You are not a sleepy neighbor, but a loving Father who delights to give. Forgive me for the times I have not asked, and for the times I have given up too soon. Teach me to ask, to search and to knock until the door opens. I bring You my own needs, and the needs of my friends, which I cannot meet. And above all, give me Your Holy Spirit, as You have promised. In Jesus' name. Amen.
+
+### Questions for reflection
+
+- Do you find it easy or hard to ask God for things? Why?
+- Who are the "midnight friends" in your life right now? What would it look like to knock on their behalf?
+- Why do you think Jesus ends this teaching with the promise of the Holy Spirit, rather than bread or other gifts?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "Pray Without Ceasing" and "Ask and Have"
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Boldness of God's Friends" and "The Certainty of the Answer to Prayer"
+
+---
+
+## Always Pray and Never Give Up
+
+> "Jesus told them a parable about their need to pray at all times and not lose heart." (Luke 18:1)
+
+In the world of Jesus, a widow was one of the most helpless people in society. She had no husband to speak for her in court, often no money of her own, and no power to make anyone listen. The Old Testament law commanded God's people again and again to protect widows, because they were so easy to cheat and so easy to ignore.
+
+Jesus told a story about one such woman. Someone had wronged her. Perhaps a neighbor had taken her land, or a relative had stolen what her husband left her. She had only one hope: the judge of her town. But the judge was a hard man.
+
+> "He said, 'There was once a judge in a certain city who did not fear God and had no regard for anyone. In that city there was also a widow who came to him again and again. She said, "Give me my rights against my opponent." For a while he refused. But later he said to himself, "I do not fear God and I have no regard for anyone. Still, this widow is such a nuisance that I will give her justice. If I do not, she will keep coming until she wears me out."'" (Luke 18:2-5)
+
+Picture her standing outside his house every morning. Following him through the market. Calling out to him at the city gate where he sat to hear cases. Day after day, week after week, the same words: "Give me my rights." She had no money for a bribe and no friends in high places. All she had was her voice and her refusal to give up.
+
+And in the end, she won.
+
+### God is not the unjust judge
+
+Luke tells us why Jesus told this story before the story even begins: "about their need to pray at all times and not lose heart." Jesus knew that His followers would be tempted to give up praying. Answers would seem slow. Injustice would seem to win. Prayers would seem to bounce off a closed heaven.
+
+So Jesus told them this story, and then He explained it:
+
+> "The Lord said, 'Listen to what the unjust judge says. Then surely God will give justice to the people He has chosen, when they call out to Him day and night. Will He be slow to help them? I tell you, He will see them vindicated, and without delay. Even so, when the Son of Man comes, will He find this kind of faith on the earth?'" (Luke 18:6-8)
+
+Like the story of the friend at midnight in the last chapter, this is an argument from the lesser to the greater. If even a corrupt judge who cares for no one will finally give justice to a widow who keeps coming back, how much more will God, who is perfectly just and who loves His people, answer those who cry out to Him day and night?
+
+The widow was a stranger to the judge. We are God's chosen children. The judge had to be worn down. God is eager to act. The widow had no promise to hold on to. We have the promises of God.
+
+### "Without delay"
+
+But here is the puzzle. Jesus says God will act "without delay." Yet in the same breath He tells us to keep praying and not lose heart, which suggests that sometimes the answer will seem slow.
+
+Both are true. From heaven's side, God is never late. He acts at exactly the right time. From our side, the waiting can feel very long. Peter wrote about this: "The Lord is not delaying the promise, as some people think of delay. Rather, He is being patient" (2 Peter 3:9). God's timing is not our timing. What feels like delay to us may be God's patience, His preparation, or His working in ways we cannot yet see.
+
+That is why Jesus ends with a question: "When the Son of Man comes, will He find this kind of faith on the earth?" The kind of faith He is looking for is the widow's kind. It keeps coming back. It does not take silence for an answer. It goes on praying until God acts.
+
+### Voices from the past
+
+Few people in history have shown this kind of faith more clearly than George Müller, who cared for thousands of orphans in Bristol, England, in the 1800s by prayer alone. Müller often met Christians who were tempted to give up. He told of one man who had been praying for many years for his six sons, who showed no interest in God. Müller told him, "Continue to pray for your sons, and expect an answer to your prayer, and you will have to praise God." The man took the advice and gave himself to prayer more earnestly than ever. Two months after that conversation, five of his six sons came to faith in Christ within eight days. When Müller returned to the city six years later, all five were still walking with the Lord. Müller wrote:
+
+> "May the Christian reader be encouraged by this, should his prayers not at once be answered; and, instead of ceasing to pray, wait upon God all the more earnestly and perseveringly, and expect answers to his petitions."
+> George Müller, *Answers to Prayer*
+
+Müller lived what he taught. The American preacher R. A. Torrey, who knew of Müller's work, gave this account of Müller's own persistence, honestly noting where his memory was unsure:
+
+> "George Muller prayed for two men daily for upwards of sixty years. One of these men was converted shortly before his death, I think at the last service that George Muller held, the other was converted within a year after his death."
+> R. A. Torrey, *How to Pray*
+
+Sixty years. And one of the answers came after Müller himself had gone to be with the Lord.
+
+### Three key insights
+
+1. **Delay is not denial.** When an answer seems slow, God has not stopped listening. He is never late, even when He is not early. Our part is to keep praying and not lose heart.
+2. **We do not pray to wear God down.** The widow had to pester an unjust judge. We come to a just and loving Father. We persist not because God is unwilling, but because persistence is what trust looks like over time.
+3. **Persistent prayer is faith in action.** The faith Jesus is looking for when He returns is the widow's faith: it keeps coming back. Every time we pray again for the same thing, we are saying, "I still believe You will act."
+
+### For us today
+
+What have you stopped praying for? Many of us have a prayer we gave up on long ago: a son or daughter who walked away from God, a husband or wife who does not believe, a sickness that did not go away, a broken relationship, a nation suffering injustice. We prayed, nothing seemed to happen, and slowly we stopped asking.
+
+Jesus' story invites us to start again. In Volume 4 of this series we will meet Monica, a mother in North Africa who prayed with tears for many years for her wayward son. That son became Augustine, one of the greatest teachers the church has ever known.
+
+The widow's prayer was a cry for justice. Around the world today, many Christians pray this kind of prayer: for the persecuted, for victims of war and corruption, for the poor who are cheated and the weak who are crushed. The book of Revelation shows the martyrs in heaven crying out, "How long until You judge... and give justice?" (Revelation 6:10). Jesus says: keep crying out. God hears.
+
+One word of balance. Persistent prayer is not the same as refusing to accept God's answer. Paul prayed three times for a painful "thorn" to be taken away, and God answered, "My grace is enough for you, for power comes to its fullness in weakness" (2 Corinthians 12:9). Sometimes the answer is not what we asked for, but something better. Persistence keeps us talking with God until we hear His answer, whatever it is.
+
+### Try this
+
+Choose one long-term request that you have stopped praying for, or that you are tempted to give up on.
+
+- **Write it down** with today's date, and keep it somewhere you will see it.
+- **Pray for it every day this week.** Use the widow's simple, honest words if you like: "Father, please act."
+- **Pray it with thanks.** Paul wrote, "Keep on praying, and stay alert as you pray, giving thanks" (Colossians 4:2). Thank God in advance that He hears you and will answer in His time.
+- **Find a partner.** Ask one trusted friend to pray with you for this request over the coming months. When the answer comes, write the date beside the first one.
+
+### A closing prayer
+
+Father, You are not an unjust judge. You are my loving Father, and You hear me. Forgive me for the prayers I have stopped praying. Give me the widow's faith, that keeps coming back and does not lose heart. I bring You again the things I have long asked for. I trust Your timing, even when I do not understand it. And when Your Son returns, may He find this kind of faith in me. In His name I pray. Amen.
+
+### Questions for reflection
+
+- Is there a prayer you have given up on? What made you stop?
+- How does it help to know that God is not like the unjust judge?
+- What is the difference between persistent prayer and refusing to accept God's answer?
+
+### Read more on Ochorus
+
+- George Müller, *Answers to Prayer*, especially "Precious Answers to Prayer"
+- R. A. Torrey, *How to Pray*, especially "Always Praying and Not Fainting"
+- E. M. Bounds, *Purpose in Prayer*, especially "Pray and Never Faint"
+
+---
+
+## "God, Have Mercy on Me, a Sinner"
+
+> "The tax collector, though, kept back at a distance and would not even lift his eyes toward heaven. Instead he struck his chest again and again and said, 'God, be merciful to me, the sinner!'" (Luke 18:13)
+
+Luke tells us exactly whom this story was for:
+
+> "There were some who relied on themselves, sure that they were righteous, and who looked down on all others. Jesus told them this parable." (Luke 18:9)
+
+Then Jesus painted a scene that everyone listening could see in their minds. It is the hour of prayer at the temple in Jerusalem. The great courts are filling with worshipers. The smoke of the sacrifice rises from the altar. And two men come up the steps to pray.
+
+> "Two men went up to the temple to pray. One was a Pharisee, and the other was a tax collector." (Luke 18:10)
+
+To Jesus' first listeners, the story seemed to be over before it began. Everyone knew who the good man was and who the bad man was.
+
+The Pharisees were the most respected religious people of their day. They studied the Scriptures, kept the law carefully, prayed at the set hours and gave generously. Ordinary people looked up to them.
+
+Tax collectors were among the most hated people in the land. They worked for the Roman occupiers, collecting money from their own people, and many of them took far more than they should and kept the difference. They were seen as traitors and thieves. Respectable people would not eat with them.
+
+So the listeners waited to hear how the good man would be praised and the bad man condemned.
+
+### Two prayers
+
+The Pharisee stood up and prayed. Luke's wording is striking: he "prayed this prayer about himself."
+
+> "God, I thank You that I am not like the rest of humanity, who are swindlers, crooks and adulterers, or even like this tax collector. Twice every week I fast, and I give a tenth of everything I take in." (Luke 18:11-12)
+
+Everything he said may have been true. He probably did fast twice a week and give a tenth of his income. Those are good things. But listen to his prayer. He begins with "God," and then he never mentions God again. He asks for nothing. He confesses nothing. His prayer is a list of his own achievements, and a comparison with people he thinks are worse than him. He even glances across the court at the tax collector and uses him as an example.
+
+Then Jesus turns our eyes to the other man. He "kept back at a distance." He would not even lift his eyes toward heaven. He struck his chest again and again, the way people did in deep grief. And he prayed just seven words in our English Bible:
+
+> "God, be merciful to me, the sinner!"
+
+He did not compare himself with anyone. He did not list his good deeds. He did not make excuses. He called himself not *a* sinner, but *the* sinner, as if there were no one worse. He threw himself completely on the mercy of God.
+
+The word he used for "be merciful" is connected in the Bible with the sacrifice that covered sin. As the smoke of the offering rose from the altar, he was asking God to accept that sacrifice for him. He had nothing to offer God but his need.
+
+### The shock
+
+Then Jesus gave His verdict, and it turned the whole world upside down:
+
+> "I tell you, it was this man, not the other, who went home put right with God. For everyone who lifts themselves up will be brought low, and the one who takes the low place will be lifted up." (Luke 18:14)
+
+The religious man went home exactly as he came. The sinner went home forgiven.
+
+Dwight L. Moody, the American evangelist who preached to millions in the 1800s, loved this short prayer. He noticed how quickly it was answered:
+
+> "How short the publican's prayer was: 'God be merciful to me a sinner!' The Syrophenician woman's was shorter still: 'Lord help me!' She went right to the mark, and she got what she wanted."
+> Dwight L. Moody, *Prevailing Prayer*
+
+("Publican" is the old English word for a tax collector.)
+
+### Humility, the doorway of prayer
+
+The Bible says the same thing in many places. God is high and holy, and yet, as Isaiah heard Him say, "I am also with the one who is crushed and low in spirit" (Isaiah 57:15). David, after his own great sin, prayed, "A heart that is broken and crushed, God, You will never reject" (Psalm 51:17). James wrote, "God sets Himself against the proud, but to the humble He gives grace" (James 4:6).
+
+Andrew Murray wrote a whole book on humility, and he saw this parable as part of a pattern that runs through all of Jesus' teaching:
+
+> "The lowliest is the nearest to God."
+> Andrew Murray, *Humility*
+
+And:
+
+> "Humiliation is the only ladder to honour in God's kingdom."
+> Andrew Murray, *Humility*
+
+This is not about pretending to be worse than we are, or hating ourselves. It is simply about telling the truth. "Everyone has sinned, and all come short of God's glory" (Romans 3:23). The Pharisee did not see that truth about himself. The tax collector did. And the truth set him free.
+
+The tax collector's prayer became one of the best-loved prayers in the history of the church. A blind beggar on the road to Jericho cried something very like it to Jesus, "Jesus, Son of David, have mercy on me!" (Luke 18:38), only a few verses later in Luke's Gospel. In Volume 4 we will meet Christians in the deserts of Egypt and the monasteries of the East who joined these cries into a short prayer they prayed thousands of times: "Lord Jesus Christ, Son of God, have mercy on me, a sinner." Christians all over the world still pray it today.
+
+### Three key insights
+
+1. **Humility is the doorway of prayer.** God hears the prayer that comes from an honest and humble heart. We do not need fine words or a good record. We need to come as we are and ask for mercy.
+2. **Comparing ourselves with others poisons prayer.** The Pharisee's prayer was ruined by his eye on the tax collector. When we pray, our eyes belong on God, not on the people we think are worse than us.
+3. **God answers the cry for mercy at once.** The tax collector went home put right with God that same day. No one is too sinful to pray this prayer, and no one who prays it sincerely is turned away.
+
+### For us today
+
+This parable is a warning especially for religious people, and that includes most of us who read books like this one. It is possible to pray, fast, give, go to church and read the Bible, and still be the Pharisee. The danger is not in the good things we do. It is in trusting them, and in looking down on others.
+
+The Pharisee's prayer can take many forms. "Thank God I'm not like those people." Those people might be another church, another tribe, another nation, another political party, or the neighbor whose life is a mess. Whenever we find ourselves thinking that way, the tax collector's prayer is the cure. We stop looking sideways and look up.
+
+And if you are the tax collector, if you feel too sinful, too broken or too far gone to pray, this parable is for you. You do not need to clean yourself up first. You do not need to find the right words. Seven words are enough. Jesus told this story so that you would know that God is waiting to hear them.
+
+### Try this
+
+This week, let the tax collector teach you to pray.
+
+- **Pray his prayer each morning.** Say slowly, "God, be merciful to me, the sinner." Then be quiet, and receive His mercy with thanks.
+- **Pray it through the day.** Moody noticed how short the best prayers are. Whenever you remember during the day, pray it again silently: while you work, walk or wait.
+- **Check your comparisons.** Ask the Holy Spirit to show you anyone you look down on. Then pray for that person, asking God to bless them.
+- **Confess one thing honestly.** Bring to God one sin you have been excusing, and ask for His forgiveness without making excuses.
+
+### A closing prayer
+
+God, be merciful to me, the sinner. I come to You with nothing to offer but my need. Forgive me for the times I have trusted in my own goodness and looked down on others. Forgive me for comparing myself with anyone but Jesus. Thank You that You do not turn away a broken and humble heart. Thank You that Jesus Himself is the sacrifice for my sin. Send me home today put right with You. Amen.
+
+### Questions for reflection
+
+- In what ways are you tempted to pray like the Pharisee?
+- Who are the people you are most tempted to look down on? What would it mean to pray for them?
+- Why do you think such a short prayer was enough for the tax collector? What does that teach you about prayer?
+
+### Read more on Ochorus
+
+- Andrew Murray, *Humility*, especially "Humility in the Teaching of Jesus"
+- Dwight L. Moody, *Prevailing Prayer*, especially "Confession"
+- John Bunyan, *The Jerusalem Sinner Saved*
+
+---
+
+## Faith That Moves Mountains
+
+> "So I tell you: everything you request when you pray, believe that you received it, and you will have it." (Mark 11:24)
+
+It was the last week of Jesus' life. Each morning He walked with His disciples from the village of Bethany, where they were staying, over the Mount of Olives and into Jerusalem. Each evening they walked back.
+
+One morning, Jesus was hungry. Beside the road He saw a fig tree, covered in leaves. Usually, leaves on a fig tree promised that some early fruit would be there too. But when He reached it, there was nothing. Only leaves. Jesus spoke to the tree: "Let no one eat fruit from you ever again" (Mark 11:14). The disciples heard Him.
+
+They went on into the city, where Jesus drove the traders out of the temple, saying that God's house should be "a house of prayer for all the nations" (Mark 11:17). We will return to that scene in chapter 12. The temple, like the fig tree, was full of leaves and empty of fruit: busy with religion, but missing the heart of prayer.
+
+The next morning, as they walked the same road, Peter saw the tree:
+
+> "Early the next day, as they went along, they saw the fig tree withered from the roots up. Peter remembered and said to Him, 'Look, Rabbi! The fig tree You cursed is all dried up.'" (Mark 11:20-21)
+
+The disciples were amazed. Jesus used their amazement to teach them about prayer.
+
+### "Have faith in God"
+
+> "Jesus answered them, 'Have faith in God. Truly I tell you, if anyone tells this mountain, "Rise up and be hurled into the sea," and does not waver in their heart, but believes that what they say is taking place, it will be done for them. So I tell you: everything you request when you pray, believe that you received it, and you will have it.'" (Mark 11:22-24)
+
+They were standing on or near the Mount of Olives. Jesus may well have pointed to the mountain under their feet, or across to the hill where the temple stood. "This mountain." It was a vivid picture. Jewish writings use the phrase "uprooter of mountains" for a teacher who could solve the hardest problems. Jesus was saying that nothing, no problem and no obstacle, is too big for God.
+
+Notice where Jesus begins. Not with "Have faith in your prayers" or "Have faith in your faith," but "Have faith in God." Everything else rests on that. The power is not in our words, or in how hard we believe. The power is in the God we believe in.
+
+Andrew Murray saw this clearly:
+
+> "The power to believe a promise depends entirely, but only, on faith in the promiser. Trust in the person begets trust in his word."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+If you want stronger faith, do not stare at the mountain. Look at God. Get to know Him in His Word and in prayer. The more you know Him, the easier it becomes to trust what He says.
+
+### "Believe that you received it"
+
+Then Jesus gives a promise so large that many Christians have been nervous of it: "Everything you request when you pray, believe that you received it, and you will have it."
+
+Murray admitted that our first instinct is to shrink it down to something safe:
+
+> "What a promise! so large, so Divine, that our little hearts cannot take it in, and in every possible way seek to limit it to what we think safe or probable."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+We should not shrink this promise. But we should read it in the light of the whole of Scripture, as Jesus meant it. The same Gospel of Mark, only three chapters later, shows us Jesus praying in Gethsemane: "Abba, Father, for You all things are possible. Remove this cup from Me. Yet let it be what You will, not what I will" (Mark 14:36). Jesus believed that all things were possible for God, and He surrendered to God's will. The two belong together.
+
+John put it this way: "Whenever we ask for something in line with His will, He listens to us. And if we know that He hears us in whatever we ask, we know that the requests we have made of Him are ours" (1 John 5:14-15). Faith that moves mountains is not a technique for getting whatever we want. Some teachers have twisted this verse into a promise of wealth and comfort for anyone who believes hard enough. That is not what Jesus taught. Faith is trusting a God who is good and wise, believing that He will do what He has promised, and leaving the how and the when to Him.
+
+### Faith and forgiveness
+
+Then Jesus adds something we might not expect:
+
+> "And whenever you stand up to pray, if you are holding anything against anyone, forgive them, so that your Father in heaven may forgive you your wrongdoings as well." (Mark 11:25)
+
+In the middle of teaching about mountain-moving faith, Jesus talks about forgiveness. Why? Because bitterness blocks faith. A heart full of resentment cannot rest in God's goodness. We saw the same link in the Lord's Prayer (chapter 5). Before we ask God to move mountains, we may need to let Him move the mountain of unforgiveness in our own hearts.
+
+### Three key insights
+
+1. **Faith looks at God, not at the mountain.** Jesus said, "Have faith in God." The size of the problem matters less than the greatness of the One we bring it to. Strong faith grows from knowing God well.
+2. **Faith trusts God's will as well as His power.** Jesus believed all things were possible for His Father, and He also prayed, "Let it be what You will, not what I will." Mountain-moving faith and humble surrender are not enemies. They are partners.
+3. **Faith and forgiveness go together.** Jesus linked believing prayer with a forgiving heart. Unforgiveness is a mountain that can stand between us and God.
+
+### For us today
+
+Everyone faces mountains. A sickness that doctors cannot cure. An addiction that will not let go. Poverty that seems endless. A child far from God. A nation closed to the gospel. A church that has lost its first love. Sometimes the mountain is so big that we stop praying about it at all.
+
+Jesus says: bring it to God. Speak to the mountain in His name. Believe that He hears you. In later volumes of this series we will meet men and women who did exactly that. Hudson Taylor prayed for workers for the unreached provinces of inland China, and hundreds came. George Müller prayed for bread for thousands of orphans, and God provided for them for more than sixty years. Christians in Korea, Africa and Latin America prayed for revival, and whole regions were changed. They were ordinary people with extraordinary faith in an extraordinary God.
+
+But perhaps your faith feels very small. Take heart. Jesus said that faith "even the size of a mustard seed," one of the smallest seeds people knew, could move a mountain (Matthew 17:20). It is not the size of your faith that matters, but the size of your God. When a desperate father brought his son to Jesus, he could only say, "I believe! Help my unbelief!" (Mark 9:24). Jesus did not send him away. He healed the boy. That father's honest prayer can be ours too.
+
+### Try this
+
+This week, bring one mountain to God in faith.
+
+- **Name your mountain.** Write down the one problem that seems most impossible to you right now.
+- **Look at God, not the mountain.** Find one promise or truth about God in Scripture that speaks to your situation. Read it every day this week. Let it fill your view.
+- **Clear the way.** Ask God whether you are holding anything against anyone. If so, forgive them before Him, as Mark 11:25 says.
+- **Pray with thanks.** Bring your request to God each day, and thank Him in advance that He hears you and will act in His way and His time (Philippians 4:6). If your faith is weak, pray honestly, "I believe! Help my unbelief!"
+
+### A closing prayer
+
+Father, You are the God for whom all things are possible. I bring You the mountain in front of me. I cannot move it, but You can. Help me to look at You and not at the problem. Teach me to believe Your promises, and to trust Your will even when I do not understand it. Show me anyone I need to forgive, and give me grace to do it. I believe; help my unbelief. In the name of Jesus, who prayed, "Let it be what You will, not what I will." Amen.
+
+### Questions for reflection
+
+- What is the "mountain" in your life right now? Have you brought it to God, or have you stopped praying about it?
+- Why do you think Jesus said "Have faith in God" before giving His great promise about prayer?
+- How do you hold together faith that "all things are possible" and the prayer "let it be what You will, not what I will"?
+
+### Read more on Ochorus
+
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Faith That Takes" and "The Secret of Believing Prayer"
+- Dwight L. Moody, *Prevailing Prayer*, especially "Faith"

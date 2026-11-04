@@ -251,5 +251,235 @@
       "the-lords-prayer",
       "school-of-prayer"
     ]
+  },
+  {
+    "chapter": 6,
+    "title": "The Secret Room",
+    "person": "Jesus' teaching on secret prayer",
+    "era": "c. AD 28",
+    "region": "Galilee",
+    "anchor": "Matthew 6:6",
+    "scriptures": [
+      "Matthew 6:5",
+      "Matthew 6:1-18",
+      "Matthew 6:1",
+      "Matthew 14:23",
+      "2 Kings 4:33",
+      "Daniel 6:10"
+    ],
+    "insights": [
+      {
+        "theme": "Motive",
+        "text": "Prayer is for an audience of One."
+      },
+      {
+        "theme": "Fellowship with God",
+        "text": "The secret room is a meeting, not a ritual."
+      },
+      {
+        "theme": "Hidden life",
+        "text": "What happens in secret shapes our public life."
+      }
+    ],
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "the-inner-chamber",
+        "chapter": "The Door Shut — Alone with God"
+      }
+    ],
+    "read_more": [
+      "the-inner-chamber",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "chapter": 7,
+    "title": "Ask, Seek, Knock",
+    "person": "The friend at midnight",
+    "era": "c. AD 29",
+    "region": "Judea",
+    "anchor": "Luke 11:9",
+    "scriptures": [
+      "Luke 11:5-8",
+      "Luke 11:11-13",
+      "Luke 11:9-10",
+      "Matthew 7:7",
+      "Matthew 7:11",
+      "James 4:2",
+      "James 4:3"
+    ],
+    "insights": [
+      {
+        "theme": "Boldness",
+        "text": "God invites us to ask boldly."
+      },
+      {
+        "theme": "Persistence",
+        "text": "Ask, search, knock: keep at it."
+      },
+      {
+        "theme": "Intercession",
+        "text": "Much of our asking is for others: we knock at midnight for a hungry friend."
+      }
+    ],
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Pray Without Ceasing"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "chapter": 8,
+    "title": "Always Pray and Never Give Up",
+    "person": "The persistent widow; George Müller",
+    "era": "c. AD 29; 1800s",
+    "region": "Judea; Bristol, England",
+    "anchor": "Luke 18:1",
+    "scriptures": [
+      "Luke 18:2-5",
+      "Luke 18:6-8",
+      "2 Peter 3:9",
+      "Revelation 6:10",
+      "2 Corinthians 12:9",
+      "Colossians 4:2"
+    ],
+    "insights": [
+      {
+        "theme": "Persistence",
+        "text": "Delay is not denial."
+      },
+      {
+        "theme": "God as Father",
+        "text": "We do not pray to wear God down; persistence is what trust looks like over time."
+      },
+      {
+        "theme": "Faith",
+        "text": "Persistent prayer is faith in action."
+      }
+    ],
+    "voices": [
+      {
+        "author": "george-muller",
+        "book": "answers-to-prayer",
+        "chapter": "Precious Answers to Prayer"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "Always Praying and Not Fainting"
+      }
+    ],
+    "read_more": [
+      "answers-to-prayer",
+      "how-to-pray",
+      "purpose-in-prayer"
+    ]
+  },
+  {
+    "chapter": 9,
+    "title": "\"God, Have Mercy on Me, a Sinner\"",
+    "person": "The Pharisee and the tax collector",
+    "era": "c. AD 29",
+    "region": "Jerusalem",
+    "anchor": "Luke 18:13",
+    "scriptures": [
+      "Luke 18:9",
+      "Luke 18:10",
+      "Luke 18:11-12",
+      "Luke 18:14",
+      "Isaiah 57:15",
+      "Psalm 51:17",
+      "James 4:6",
+      "Romans 3:23",
+      "Luke 18:38"
+    ],
+    "insights": [
+      {
+        "theme": "Humility",
+        "text": "Humility is the doorway of prayer."
+      },
+      {
+        "theme": "Comparison",
+        "text": "Comparing ourselves with others poisons prayer."
+      },
+      {
+        "theme": "Mercy",
+        "text": "God answers the cry for mercy at once."
+      }
+    ],
+    "voices": [
+      {
+        "author": "dwight-l-moody",
+        "book": "prevailing-prayer",
+        "chapter": "The Prayers of the Bible"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "humility-2",
+        "chapter": "Humility in the Teaching of Jesus"
+      }
+    ],
+    "read_more": [
+      "humility-2",
+      "prevailing-prayer",
+      "the-jerusalem-sinner-saved"
+    ]
+  },
+  {
+    "chapter": 10,
+    "title": "Faith That Moves Mountains",
+    "person": "Jesus and the fig tree",
+    "era": "c. AD 30",
+    "region": "Bethany and Jerusalem",
+    "anchor": "Mark 11:24",
+    "scriptures": [
+      "Mark 11:14",
+      "Mark 11:17",
+      "Mark 11:20-21",
+      "Mark 11:22-24",
+      "Mark 14:36",
+      "1 John 5:14-15",
+      "Mark 11:25",
+      "Matthew 17:20",
+      "Mark 9:24",
+      "Philippians 4:6"
+    ],
+    "insights": [
+      {
+        "theme": "Faith",
+        "text": "Faith looks at God, not at the mountain."
+      },
+      {
+        "theme": "Surrender",
+        "text": "Faith trusts God's will as well as His power."
+      },
+      {
+        "theme": "Forgiveness",
+        "text": "Faith and forgiveness go together."
+      }
+    ],
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Secret of Believing Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Faith That Takes"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "prevailing-prayer"
+    ]
   }
 ]
