@@ -1243,6 +1243,7 @@ CURATED: dict[str, Artwork] = {
     "homilies-on-romans": Artwork(
         "met", 438953, "Carl Rottmann", "The Cemetery at Pronoia near Nauplia", "ca. 1841–47",
         "Greek ground under a rainbow after storm — the covenant sign over the land of Chrysostom's own language, for his sermons on Romans.",
+        inset=0.06,
     ),
     "apologia-pro-vita-sua": Artwork(
         "met", 436560, "Jan van Goyen", "River View with a Village Church", "",
