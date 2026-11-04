@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "william-j-seymour",
+ "language": "es",
+ "job_issue": 7137,
+ "references": [
+  {
+   "reference": "Matthew 28:19b",
+   "status": "mined",
+   "source_file": "men-of-prayer-2.es.json",
+   "block_index": 25
+  }
+ ]
+}
