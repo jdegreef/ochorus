@@ -27,6 +27,7 @@
 		width,
 		height,
 		selected,
+		lifted = false,
 		onselect,
 		onpeek
 	}: {
@@ -34,10 +35,22 @@
 		width: number;
 		height: number;
 		selected: boolean;
+		/** Pointed at or tabbed to (the shelf decides, from `onpeek`). */
+		lifted?: boolean;
 		onselect: (el: HTMLButtonElement) => void;
-		/** This spine pointed at or tabbed to (its button), or let go (null). */
-		onpeek?: (el: HTMLButtonElement | null) => void;
+		/** This spine pointed at ('pointer') or tabbed to ('focus') — its button —
+		 *  or let go of by that same input (null). */
+		onpeek?: (by: 'pointer' | 'focus', el: HTMLButtonElement | null) => void;
 	} = $props();
+	// Whether focus came from the keyboard. Guarded: an engine without
+	// :focus-visible (Safari before 15.4) throws on the selector.
+	const byKeyboard = (b: HTMLButtonElement) => {
+		try {
+			return b.matches(':focus-visible');
+		} catch {
+			return false;
+		}
+	};
 	const t = i18n.t;
 
 	const title = $derived(splitEdition(item.book.slug, item.book.title)?.base ?? item.book.title);
@@ -49,6 +62,7 @@
 	type="button"
 	class="spine"
 	class:selected
+	class:lifted
 	class:paused={item.paused}
 	style:width="{width}px"
 	style:height="{height}px"
@@ -61,10 +75,10 @@
 			: ''}"
 	title="{item.book.title} — {item.book.author.name}"
 	onclick={() => el && onselect(el)}
-	onpointerenter={(e) => e.pointerType === 'mouse' && el && onpeek?.(el)}
-	onpointerleave={() => onpeek?.(null)}
-	onfocus={() => el?.matches(':focus-visible') && onpeek?.(el)}
-	onblur={() => onpeek?.(null)}
+	onpointerenter={(e) => e.pointerType === 'mouse' && el && onpeek?.('pointer', el)}
+	onpointerleave={() => onpeek?.('pointer', null)}
+	onfocus={() => el && byKeyboard(el) && onpeek?.('focus', el)}
+	onblur={() => onpeek?.('focus', null)}
 >
 	<span class="band" aria-hidden="true"></span>
 	<span class="title" class:small={width < 30} aria-hidden="true">{title}</span>
@@ -115,19 +129,15 @@
 				box-shadow 300ms ease;
 		}
 	}
-	/* Pointed at (a real hover only — a tap would leave it stuck) or tabbed
-	   to: lifted, and its head tipped toward the reader off the shelf — a turn
-	   toward the reader, not a slant across the row (coverStraight.test). */
-	@media (hover: hover) {
-		.spine:hover {
-			transform: translateY(-10px) perspective(24rem) rotateX(-12deg);
-			box-shadow:
-				1px 0 0 rgb(0 0 0 / 0.25),
-				0 10px 14px -6px rgb(0 0 0 / 0.45);
-		}
-	}
-	.spine:focus-visible {
+	/* Pointed at with a mouse (a tap would leave it stuck) or tabbed to — one
+	   state, `lifted`, for both: lifted, and its head tipped toward the reader
+	   off the shelf — a turn toward the reader, not a slant across the row
+	   (coverStraight.test). */
+	.spine.lifted {
 		transform: translateY(-10px) perspective(24rem) rotateX(-12deg);
+		box-shadow:
+			1px 0 0 rgb(0 0 0 / 0.25),
+			0 10px 14px -6px rgb(0 0 0 / 0.45);
 	}
 	/* Pulled half out, while its panel is open. */
 	.spine.selected {

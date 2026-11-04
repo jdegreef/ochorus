@@ -105,17 +105,32 @@
 		)
 	);
 
-	// The spine being pointed at or tabbed to, and where its label hangs: over
-	// the spine's middle, just above its head, in its row's own box.
-	let peek = $state<{ slug: string; x: number; top: number } | null>(null);
+	// The spine pointed at with a mouse, and the one tabbed to — kept apart,
+	// so letting go with one input never takes away the other's — and where
+	// the label hangs: over the spine's middle, just above its head, in its
+	// row's own box. The mouse's wins while both are set.
+	type Peek = { item: ShelfBookItem; row: number; x: number; top: number };
+	let pointed = $state.raw<Peek | null>(null);
+	let tabbed = $state.raw<Peek | null>(null);
+	const peek = $derived(pointed ?? tabbed);
 	// Its own width, measured, so it can be kept inside the row at either end.
 	let peekWidth = $state(0);
 	const peekLeft = $derived(
 		peek ? Math.min(Math.max(peek.x, peekWidth / 2 + 4), Math.max(0, width - peekWidth / 2 - 4)) : 0
 	);
-	function onpeek(slug: string, el: HTMLButtonElement | null) {
-		peek = el ? { slug, x: el.offsetLeft + el.offsetWidth / 2, top: el.offsetTop } : null;
+	function onpeek(item: ShelfBookItem, row: number, by: 'pointer' | 'focus', el: HTMLButtonElement | null) {
+		const at = el && { item, row, x: el.offsetLeft + el.offsetWidth / 2, top: el.offsetTop };
+		if (by === 'pointer') pointed = at;
+		else tabbed = at;
 	}
+	// A reflow (the column resized, the spines rescaled and repacked) moves
+	// every spine out from under its measured label: let it go until pointed
+	// at again.
+	$effect(() => {
+		void rows;
+		pointed = null;
+		tabbed = null;
+	});
 
 	let selected = $state<string | null>(null);
 	let opener: HTMLButtonElement | null = null;
@@ -261,28 +276,26 @@
 								width={sizes[i].width}
 								height={sizes[i].height}
 								selected={selected === items[i].book.slug}
+								lifted={peek?.item.book.slug === items[i].book.slug}
 								onselect={(el) => select(items[i].book.slug, el)}
-								onpeek={(el) => onpeek(items[i].book.slug, el)}
+								onpeek={(by, el) => onpeek(items[i], r, by, el)}
 							/>
 						</li>
 					{/each}
 					<!-- The pointed-at spine's title, lettered above it (the button
 					     already says it to a screen reader). Not for a book already
 					     pulled out: its panel says it. -->
-					{#if peek && peek.slug !== selected && row.some((i) => items[i].book.slug === peek?.slug)}
-						{@const book = items.find((it) => it.book.slug === peek?.slug)?.book}
-						{#if book}
-							<li
-								class="spine-peek"
-								aria-hidden="true"
-								bind:offsetWidth={peekWidth}
-								style:left="{peekLeft}px"
-								style:--top="{peek.top}px"
-							>
-								<span class="font-display">{book.title}</span>
-								<small>{book.author.name}</small>
-							</li>
-						{/if}
+					{#if peek?.row === r && peek.item.book.slug !== selected}
+						<li
+							class="spine-peek"
+							aria-hidden="true"
+							bind:offsetWidth={peekWidth}
+							style:left="{peekLeft}px"
+							style:--top="{peek.top}px"
+						>
+							<span class="font-display">{peek.item.book.title}</span>
+							<small>{peek.item.book.author.name}</small>
+						</li>
 					{/if}
 				</ul>
 				<div class="shelf-plank" aria-hidden="true"></div>
@@ -356,7 +369,9 @@
 		top: max(0.25rem, calc(var(--top) - 3.6rem));
 		translate: -50% 0;
 		width: max-content;
-		max-width: 12rem;
+		/* One line each, so the label always fits the headroom over the row. */
+		max-width: min(18rem, calc(100% - 0.5rem));
+		white-space: nowrap;
 		padding: 0.3rem 0.6rem 0.35rem;
 		border-radius: 3px;
 		background: var(--hero-mat);
@@ -367,6 +382,11 @@
 		text-align: center;
 		line-height: 1.25;
 		pointer-events: none;
+	}
+	.spine-peek span,
+	.spine-peek small {
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.spine-peek span {
 		display: block;
