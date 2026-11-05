@@ -4182,6 +4182,32 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("take ‘time out” to consider", "take ‘time out’ to consider"),
             ("love of God in Christ Jesus (Rom 8:39)", "love of God in Christ Jesus” (Rom 8:39)"),
             ("for the hope of the resurrection! (Acts 26:1-8 paraphrased)", "for the hope of the resurrection!” (Acts 26:1-8 paraphrased)"),
+            # 2026-11-05 proofreading pass: the one split word the full
+            # detector still found ("say ing"), garbled references ("2: 1",
+            # "Pv13", "1 Cor 13 13", "1:15 -20"), dropped parens and quote
+            # marks, the nested quotation in ch4's story set with single
+            # marks inside double, and two plain slips (ch7 "Chapter 12" for
+            # 1 Cor 13, the love chapter the same sentence names; ch8 "at
+            # chattel"). The ch7 cymbal pair must stay below "clanging symbol".
+            ("16:16,17 – Blessed are you, Simon,", "16:16,17 – “Blessed are you, Simon,"),
+            ("who is in Heaven )", "who is in Heaven.”)"),
+            ("‘ eklesia ’ (called-out ones)", "‘ ekklesia ’ (called-out ones)"),
+            ("<p>Eph 4:16).", "<p>(Eph 4:16)."),
+            ("when He said, “You are a leaky roof!", "when He said, ‘You are a leaky roof!"),
+            ("about your wife!” God had given", "about your wife!’” God had given"),
+            ("<p>2: 1 dead in trespasses", "<p>2:1 dead in trespasses"),
+            ("<p>Pv13:", "<p>v13:"),
+            ("each of the disciple’s minds", "each of the disciples’ minds"),
+            ("we are say ing,", "we are saying,"),
+            ("prayer of chapter 1: 15-20", "prayer of chapter 1:15-20"),
+            ("Paul’s prayer in 1:15 -20", "Paul’s prayer in 1:15-20"),
+            ("in its season.” Ps 1:3).", "in its season.” (Ps 1:3)."),
+            ("5: 1-6: Walk in love", "5:1-6: Walk in love"),
+            ("a clanging cymbal – nothing", "a clanging cymbal’ – nothing"),
+            ("Chapter 12 speaks of the excellence of love", "Chapter 13 speaks of the excellence of love"),
+            ("treated at chattel", "treated as chattel"),
+            ("1 Cor 13 13 –", "1 Cor 13:13 –"),
+            ("prayer: (1:15 -20;", "prayer: (1:15-20;"),
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
