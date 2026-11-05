@@ -4878,6 +4878,59 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<h2>THIRTY-FIRST LESSON.</h2> <h3>‘Pray without ceasing;’</h3> <h3>Or, A Life of Prayer.</h3>  ", ""),
         ],
     },
+    "the-two-covenants": {
+        # English proofreading pass (2026-11-05): extraction/OCR damage in the
+        # CCEL text, read chapter by chapter. Murray's period spelling and
+        # punctuation are left alone; each pair is a forced repair.
+        "replacements": [
+            # Epigraph citations: a flattened dash ("”-DEUT.") where every other
+            # epigraph has the em dash ("”—EX.").
+            ("commandments.”-DEUT. vii. 9.", "commandments.”—DEUT. vii. 9."),
+            ("two covenants.”</i> -GAL. iv.", "two covenants.”</i>—GAL. iv."),
+            ("bondage.”-GAL. iv. 24-81, v. 1.", "bondage.”—GAL. iv. 24-31, v. 1."),
+            ("intercession for them.”-HEB. vii.", "intercession for them.”—HEB. vii."),
+            ("these words.”-EX. xxiv. 7, 8;", "these words.”—EX. xxiv. 7, 8;"),
+            ("holy nation unto Me.”-EX. xix. 5.", "holy nation unto Me.”—EX. xix. 5."),
+            ("under grace.”-ROM. vi. 14.", "under grace.”—ROM. vi. 14."),
+            ("all our days.”-LUKE i. 68-75.", "all our days.”—LUKE i. 68-75."),
+            ("—DEUT.xxx. 6, 8.", "—DEUT. xxx. 6, 8."),
+            ("—EZEK.xxxvi. 27.", "—EZEK. xxxvi. 27."),
+            # OCR letter slips.
+            ("—DEUT. iv. 13.i</p>", "—DEUT. iv. 13.</p>"),
+            ("Jesus <i>bath made me free</i>", "Jesus <i>hath made me free</i>"),
+            ("who bath visited His people", "who hath visited His people"),
+            ("as very little known in true power", "is very little known in true power"),
+            ("that it maybe our actual experience", "that it may be our actual experience"),
+            ("already wrougbt in us", "already wrought in us"),
+            ("And the Lord apake unto Moses", "And the Lord spake unto Moses"),
+            ("<i>the Spirit giveth fife</i>", "<i>the Spirit giveth life</i>"),
+            ("out of the hands of our enemaes", "out of the hands of our enemies"),
+            ("<i>in holiness rind righteousness", "<i>in holiness and righteousness"),
+            ("cousequent experience", "consequent experience"),
+            ("what He bad to speak or do", "what He had to speak or do"),
+            ("study this trutb,", "study this truth,"),
+            ("he attributed it two things", "he attributed it to two things"),
+            ("with all thine heart and with all soul.", "with all thine heart and with all thy soul."),
+            ("“The law was given by Moses grace and truth", "“The law was given by Moses; grace and truth"),
+            # Stray / doubled punctuation.
+            ("with wonderful clearness; what the proofs", "with wonderful clearness, what the proofs"),
+            ("by His Holy Spirit given to us.. </p>", "by His Holy Spirit given to us. </p>"),
+            ("that we serve ”—here", "that we serve”—here"),
+            ("“ministration of death ”;", "“ministration of death”;"),
+            ("needed</i>—-is what we dare", "needed</i>—is what we dare"),
+            ("unto good works, “and how, as fitted", "unto good works,” and how, as fitted"),
+            ("how little it has done so in many .cases.", "how little it has done so in many cases."),
+            ("this you may ask and expect,—”<i>and may", "this you may ask and expect,—“<i>and may"),
+            ("entered into the heart of man,-GOD WILL WORK", "entered into the heart of man,—GOD WILL WORK"),
+            ("Until the Church.awakes", "Until the Church awakes"),
+            ("until we begin to exercise them, We must not", "until we begin to exercise them. We must not"),
+            ("will lead you, and. enable you", "will lead you, and enable you"),
+            ("to be taken up into, it.</i>", "to be taken up into it.</i>"),
+            ("As long. as there is not clear faith", "As long as there is not clear faith"),
+            ("holiness,” we must; with the eye", "holiness,” we must, with the eye"),
+            ("<i>came, into the full surrender", "<i>came into the full surrender"),
+        ],
+    },
 }
 
 
