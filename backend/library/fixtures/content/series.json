@@ -820,5 +820,18 @@
   "created_at": "2026-11-01T00:00:00Z",
   "updated_at": "2026-11-01T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "es",
+  "title": "Cuéntame la historia",
+  "description": "Las historias de la propia Biblia contadas para niños, en tres partes: Historias del Antiguo Testamento, La vida de Jesús e Historias del Nuevo Testamento. Cada historia es lo bastante corta para leerla en voz alta a la hora de dormir y termina con una oración y preguntas para conversar juntos.",
+  "created_at": "2026-11-05T00:00:00Z",
+  "updated_at": "2026-11-05T00:00:00Z"
+ }
 }
 ]

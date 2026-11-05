@@ -1,0 +1,179 @@
+{
+ "kind": "book",
+ "slug": "tell-me-the-story-1",
+ "language": "es",
+ "job_issue": 7028,
+ "references": [
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "Genesis 1:27a",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  },
+  {
+   "reference": "John 1:3a",
+   "status": "mined",
+   "source_file": "way-into-holiest.es.json"
+  },
+  {
+   "reference": "Genesis 2:15",
+   "status": "mined",
+   "source_file": "rooted-6.es.json"
+  },
+  {
+   "reference": "Genesis 3:9",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.es.json"
+  },
+  {
+   "reference": "1 John 3:8b",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Genesis 4:7a",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.es.json"
+  },
+  {
+   "reference": "Hebrews 12:24b",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json"
+  },
+  {
+   "reference": "Genesis 6:22",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json"
+  },
+  {
+   "reference": "Genesis 8:1a",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Genesis 9:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:20a",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Genesis 11:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 12:2b",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Genesis 12:4a",
+   "status": "mined",
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:29a",
+   "status": "mined",
+   "source_file": "christ-the-healer.es.json"
+  },
+  {
+   "reference": "Genesis 18:14a",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Genesis 16:13a",
+   "status": "mined",
+   "source_file": "rooted-5.es.json"
+  },
+  {
+   "reference": "Genesis 22:8",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "Romans 8:32a",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Genesis 24:12",
+   "status": "mined",
+   "source_file": "ten-commandments.es.json"
+  },
+  {
+   "reference": "Genesis 25:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:51b",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "jesus-himself-2.es.json"
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 39:21a",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Genesis 39:2a",
+   "status": "mined",
+   "source_file": "rooted-4.es.json"
+  },
+  {
+   "reference": "Genesis 41:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 44:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 50:20a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  }
+ ]
+}
