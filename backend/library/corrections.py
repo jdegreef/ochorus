@@ -861,6 +861,62 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "the-school-of-obedience": {
+        # English proofreading pass (CCEL text): transcription slips only —
+        # stray/missing punctuation, misread letters, a broken entity and two
+        # openers set as closers. Murray's wording and period style untouched.
+        "replacements": [
+            # ch2
+            ("<p>­ — a will utterly", "<p>— a will utterly"),
+            ("so did he,’ And <i>then", "so did he.’ And <i>then"),
+            ("judgment against Amelek", "judgment against Amalek"),
+            ("and destroys Amelek", "and destroys Amalek"),
+            ("And Samuel said. </p>", "And Samuel said: </p>"),
+            ("abide continually in Christ We have", "abide continually in Christ! We have"),
+            # ch3
+            ("covering and swallowing, up and making", "covering and swallowing up, and making"),
+            ("of our life—union to Christ", "of our life-union to Christ"),
+            ("with Christ and his seed,", "with Christ and His seed,"),
+            ("and thou shall obey", "and thou shalt obey"),
+            # ch4
+            ("in every deed shed into", "in very deed shed into"),
+            ("so let us trust him as a Teacher", "so let us trust Him as a Teacher"),
+            ("at the Masterfeet", "at the Master’s feet"),
+            # ch5
+            ("all God’s will that, He will", "all God’s will that He will"),
+            ("and that we, will be able", "and that we will be able"),
+            ("Peniel,—’for I have seen", "Peniel,—‘for I have seen"),
+            # ch6
+            ("an impossibility, </p>", "an impossibility. </p>"),
+            ("You, write with it", "You write with it"),
+            ("the living Christ, ‘We have said before", "the living Christ. We have said before"),
+            ("the Master who commands the Example", "the Master who commands, the Example"),
+            ("love for men, and me in His blessed", "love for men, and use in His blessed"),
+            ("to restore man to His place", "to restore man to his place"),
+            # ch7
+            ("in God, in who calls you", "in God, who calls you"),
+            ("a new heart. and <i>I will", "a new heart, and <i>I will"),
+            ("in Jesus.’All at once", "in Jesus.’ All at once"),
+            ("‘doing, the will of His", "‘doing the will of His"),
+            ("into the promised land: Look up", "into the promised land? Look up"),
+            # ch8
+            ("every man in business doing is", "every man in business: doing is"),
+            ("ever-increasing, knowledge", "ever-increasing knowledge"),
+            ("in the boldness of the letter", "in the oldness of the letter"),
+            ("John 14—’<i>If ye", "John 14—‘<i>If ye"),
+            # ch9
+            ("<i>#8216;As Thou didst", "<i>‘As Thou didst"),
+            ("when be was a slave", "when he was a slave"),
+            ("As binding, as is the first", "As binding as is the first"),
+            ("field of the world. He first drew", "field of the world, He first drew"),
+            ("the obedient unto earth,", "the obedient unto death,"),
+            # ch10
+            ("‘By, the observance", "‘By the observance"),
+            ("what such a revelation implies", "what such a resolution implies"),
+            ("that sentence—, ‘Next", "that sentence—‘Next"),
+            ("so surely stands In need", "so surely stands in need"),
+        ],
+    },
     "how-to-pray": {
         # The misspelt TOC title ("Chatper XII.") kept extract_body from
         # recognising the chapter's restated heading, so it leads the body.
