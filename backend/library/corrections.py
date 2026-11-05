@@ -2581,6 +2581,66 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("18:19-10", "18:19-20"),          # quoted text is Matt 18:20
             ("armor of God of God", "armor of God"),
             ("God sees they as a sinner", "God sees them as a sinner"),
+            # English proofreading pass (2026-11-05). Every pair below is
+            # anchored on English prose (book names in English), so it bites
+            # the en edition only; the translations show ↻ stale on purpose.
+            # Plain typos, punctuation and grammar:
+            ("received his Bachelors of Science",
+             "received his Bachelor of Science"),                 # ch1
+            ("put on His outer garment ,and",
+             "put on His outer garment, and"),                    # ch3
+            ("(which includes you and I)", "(which includes you and me)"),
+            ("dealing with peoples’ problems",
+             "dealing with people’s problems"),                   # ch5
+            ("(Ephesians 5:21),Paul gives", "(Ephesians 5:21), Paul gives"),
+            ("The lion roared, “you’ll never", "The lion roared, “You’ll never"),
+            ("(Ephesians 6:16) As the enemy", "(Ephesians 6:16). As the enemy"),
+            ("made in the Upper Room Let us look",
+             "made in the Upper Room. Let us look"),              # ch8
+            ("four types of hearers of the God’s Word",
+             "four types of hearers of God’s Word"),
+            ("of their neighbors:family,", "of their neighbors: family,"),
+            ("“The Messiah is coming soon” he would",
+             "“The Messiah is coming soon,” he would"),           # ch9
+            ("<p>(Matthew 3:2-12) The people", "<p>(Matthew 3:2-12). The people"),
+            # a doubled speech tag left an unclosed quotation open:
+            ("Jesus replies, “And he answered them, “Go and tell John",
+             "Jesus replies, “Go and tell John"),
+            ("Martha&#x27;s comment", "Martha’s comment"),        # lone straight mark
+            ("angler’s hook and rod -he knows",
+             "angler’s hook and rod - he knows"),                 # ch10
+            ("It’s his role, as a shepherds,", "It’s his role, as a shepherd,"),
+            ("concerning the disciples opinion of Jesus",
+             "concerning the disciples’ opinion of Jesus"),       # ch12
+            # an extra opening mark ahead of the narrative (the quote's own
+            # marks open at "You are" and "Blessed"):
+            ("<p>“Simon Peter replied, “You are the Christ",
+             "<p>Simon Peter replied, “You are the Christ"),
+            ("from the popes ‘authority,’", "from the popes’ ‘authority,’"),
+            ("fellowship is not so sweet -my sin",
+             "fellowship is not so sweet - my sin"),
+            # a dropped verb (es/fr already rendered "ask him to forgive you"):
+            ("go to your brother and for him to forgive you",
+             "go to your brother and ask him to forgive you"),
+            ("“Before you leave” I said", "“Before you leave,” I said"),  # ch13
+            ("just like you and me - and sinner’s sin!",
+             "just like you and me - and sinners sin!"),          # ch15
+            # Citations: a stray space inside the reference, a stray space
+            # before the following stop, or the wrong verse for the words
+            # quoted (Heb 12:14 is "Strive for peace…", as ch9 cites it;
+            # Matt 17:27 is "so that we do not give them any offense"; Peter's
+            # "Up to seven times?" is Matt 18:21).
+            ("(James 5: 14-15)", "(James 5:14-15)"),
+            ("(Hebrews 12: 15)", "(Hebrews 12:14-15)"),
+            ("(Luke 24: 34)", "(Luke 24:34)"),
+            ("(Matthew 17: 24) But to others", "(Matthew 17:27). But to others"),
+            ("“Up to seven times?” (Matthew 18:22)",
+             "“Up to seven times?” (Matthew 18:21)"),
+            ("(Psalm 103: 12) .", "(Psalm 103:12)."),
+            ("(2 Corinthians 5: 18-19)", "(2 Corinthians 5:18-19)"),
+            ("(Acts 7: 60) .", "(Acts 7:60)."),
+            ("(Exodus 20:5) .", "(Exodus 20:5)."),
+            ("(Hebrews 13:8) .", "(Hebrews 13:8)."),
         ],
     },
     "the-way-to-god": {
