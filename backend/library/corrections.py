@@ -4876,6 +4876,108 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<h2>TWENTY-NINTH LESSON.</h2> <h3>‘According to His will;</h3> <h3><i>Or, Our Boldness in Prayer</i>. </h3>  ", ""),
             ("<h2>THIRTIETH LESSON.</h2> <h3>‘An holy priesthood;’</h3> <h3>Or, The Ministry of Intercession.</h3>  ", ""),
             ("<h2>THIRTY-FIRST LESSON.</h2> <h3>‘Pray without ceasing;’</h3> <h3>Or, A Life of Prayer.</h3>  ", ""),
+            # English proofreading pass (2026-11-05): transcription slips, each
+            # forced by grammar, the KJV wording quoted, or the book's own usage
+            # elsewhere — "Thou has" for hast, fused/split words, mispaired or
+            # missing quotation marks (’ for ; is this scan's recurring misread),
+            # roman "I John" for 1 John, Saphiv for Saphir (ch18 spells it right),
+            # Rom. xii. 8 for xiii. 8 (ch33 cites xiii. 8 for the same verse). Each
+            # anchored on English text, so no translation's rows can match.
+            # ch05
+            ("Words which Thou has given us", "Words which Thou hast given us"),
+            # ch06
+            ("petitions. he wills that I should", "petitions. He wills that I should"),
+            # ch07
+            ("into the inner most depths", "into the innermost depths"),
+            # ch08
+            ("all others are comprised The Holy Spirit",
+             "all others are comprised. The Holy Spirit"),
+            # ch09
+            ("nothing to set before him’ and he from within",
+             "nothing to set before him; and he from within"),
+            ("the two fold lesson", "the twofold lesson"),
+            # ch11
+            ("get the aid he ask.", "get the aid he asks."),
+            ("What does thou <i>will</i>?", "What dost thou <i>will</i>?"),
+            # ch12
+            ("what God’s will is’ believing", "what God’s will is; believing"),
+            # ch14
+            ("failed in believing? ‘The Master", "failed in believing?’ The Master"),
+            # ch16
+            ("in the midst of them.—Matt. xviii", "in the midst of them.’—Matt. xviii"),
+            ("in the help of other.", "in the help of others."),
+            ("of Jesus Christ.; To the Colossians", "of Jesus Christ.’ To the Colossians"),
+            ("<p>‘LORD, TEACH US TO PRAY’</p>", "<p>‘LORD, TEACH US TO PRAY.’</p>"),
+            # ch18
+            ("Jesus said, “I knew that Thou always",
+             "Jesus said, ‘I knew that Thou always"),
+            ("‘Ask and it shall be given,” Jesus says",
+             "“Ask and it shall be given,” Jesus says"),
+            # ch19
+            ("image and superscription?—Matt.", "image and superscription?’—Matt."),
+            ("sovereign’s desires’ as long as", "sovereign’s desires; as long as"),
+            ("for Thou has made him", "for Thou hast made him"),
+            # ch20
+            ("contrary: <i> Verily, verily</i>", "contrary: ‘<i>Verily, verily</i>"),
+            ("<i>and whatsover ye shall ask", "<i>and whatsoever ye shall ask"),
+            ("what Thou has promised Thy people", "what Thou hast promised Thy people"),
+            # ch21
+            ("utterance to it: Father! Glorify Thy son, <i>that Thy Son may glorify Thee. ‘I have glorified Thee</i>",
+             "utterance to it: ‘Father! Glorify Thy Son, <i>that Thy Son may glorify Thee. I have glorified Thee</i>"),
+            # ch22
+            ("in this stage, he chief effort", "in this stage, his chief effort"),
+            # ch23
+            ("‘Give ear to me;’ Hearken to my voice;’",
+             "‘Give ear to me;’ ‘Hearken to my voice;’"),
+            ("Jesus had said, “Abide in me", "Jesus had said, ‘Abide in me"),
+            # ch24
+            ("pleasing in His sight.’’ Or take", "pleasing in His sight.’ Or take"),
+            ("—James. v. 16.", "—James v. 16."),
+            # ch25
+            ("Spirit.’—<i>Saphiv, The Lord’s Prayer</i>",
+             "Spirit.’—<i>Saphir, The Lord’s Prayer</i>"),
+            # ch26
+            ("(I John ii. 12-14)", "(1 John ii. 12-14)"),
+            ("in my Name. ‘ We know", "in my Name.’ We know"),
+            ("Whatsoever ye shall ask the father in my Name",
+             "Whatsoever ye shall ask the Father in my Name"),
+            ("fulfil in me Thy promise, At that day",
+             "fulfil in me Thy promise, ‘At that day"),
+            # ch27
+            ("<i>every-praying</i>", "<i>ever-praying</i>"),
+            ("began to life a <i>faith-life", "began to live a <i>faith-life"),
+            ("my life in everything by in Thee", "my life in everything be in Thee"),
+            ("Advocate, who pays the Father", "Advocate, who prays the Father"),
+            ("; I John ii. 1.)", "; 1 John ii. 1.)"),
+            # ch28
+            ("I WILLall that Thou", "I WILL all that Thou"),
+            # ch29
+            ("elevation of that, He lifted up", "elevation of that, ‘He lifted up"),
+            ("His ‘FATHER! I WILL. And the soul", "His ‘FATHER! I WILL.’ And the soul"),
+            ("faith that Thou has atoned", "faith that Thou hast atoned"),
+            # ch30
+            ("—I John V v. 14-15.", "—1 John v. 14-15."),
+            ("through this faith, that we have,’", "through this faith, ‘that we have,’"),
+            ("<p>1See this illustrated", "<p>See this illustrated"),
+            # ch31
+            ("—I Peter ii. 5.", "—1 Peter ii. 5."),
+            ("<p>THE Spirit of the Lord God is upon me",
+             "<p>‘THE Spirit of the Lord God is upon me"),
+            ("‘LORD TEACH US TO PRAY.’", "‘LORD, TEACH US TO PRAY.’"),
+            # ch32
+            ("give thanks.—I Thess. v. 16", "give thanks.’—1 Thess. v. 16"),
+            ("persevering pray is irresistible", "persevering prayer is irresistible"),
+            ("the Holy Trinity Spirit of God!", "the Holy Trinity. Spirit of God!"),
+            # ch33
+            ("in former times. He is the Teacher", "in former times, He is the Teacher"),
+            ("another”(Rom. xii. 8)", "another”(Rom. xiii. 8)"),
+            ("(Nov, 20, 1835)", "(Nov. 20, 1835)"),
+            ("carried on it this way", "carried on in this way"),
+            ("<p><i>December</i> 11.—", "<p>‘<i>December</i> 11.—"),
+            ("occupied in it our not", "occupied in it or not"),
+            ("the larger the work as grown", "the larger the work has grown"),
+            ("concerning the whole, that I was at the time",
+             "concerning the whole, than I was at the time"),
         ],
     },
 }
