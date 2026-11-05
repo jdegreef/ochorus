@@ -4479,6 +4479,92 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # to obtain or keep employment". `notability` is a real word, but
             # not the one meant here.
             ("from society, notability to obtain", "from society, no ability to obtain"),
+            # English proofreading pass (2026-11-05). Gareth Evans is a living
+            # modern author: only genuine typos, fused/split words, mispaired
+            # quotes, misspelled names and grammar slips — his voice, British
+            # spelling and dashes are left alone. Every pair is anchored on
+            # English prose so it cannot reach a translation.
+            # ch01 — Isa 40:29/31 as he quotes it (KJV)
+            ("to them that hath no might", "to them that have no might"),
+            ("they shall run and not grow weary", "they shall run and not be weary"),
+            ("the Heb.word qavah", "the Heb. word qavah"),
+            ("flew information overhead", "flew in formation overhead"),
+            ("surrounded by turkeys!” but I", "surrounded by turkeys!’ but I"),
+            ("work of the ministry . ” i.e.; to teach", "work of the ministry.” i.e., to teach"),
+            # ch02
+            ("the pastor is not here this morning” he said", "the pastor is not here this morning,” he said"),
+            ("the name of Jacky Pullinger", "the name of Jackie Pullinger"),
+            ("Dr Martin Lloyd Jones in his weekly", "Dr Martyn Lloyd-Jones in his weekly"),
+            ("anointing upon Him as he spoke", "anointing upon him as he spoke"),
+            ("However, we read these four portions", "However we read these four portions"),
+            # ch03
+            ("(meaning of Heb.. Aphek )", "(meaning of Heb. Aphek)"),
+            ("(Heb .-the rock our help )", "(Heb. - the rock our help)"),
+            ("Just as the for Samaritan woman", "Just as for the Samaritan woman"),
+            ("“I have a suggestion.” said one", "“I have a suggestion,” said one"),
+            ("need a king to govern us” they said", "need a king to govern us,” they said"),
+            ("“Come” said the king", "“Come,” said the king"),
+            ("go up to Kijath-jearim", "go up to Kirjath-jearim"),
+            # ch04 — the two lost line breaks before a verse/story, punctuated
+            # the way the es edition already reads them
+            ("She needed a new VISION Two men in a prison cell, staring through the bars One only",
+             "She needed a new VISION. Two men in a prison cell, staring through the bars: one only"),
+            ("She needed a different BURDEN A boy", "She needed a different BURDEN. A boy"),
+            ("small bottle held all was necessary", "small bottle held all that was necessary"),
+            ("bondage in Egypt” God always", "bondage in Egypt.” God always"),
+            ("began a good work in You, will perfect", "began a good work in you, will perfect"),
+            # ch05
+            ("“Hi” said one", "“Hi,” said one"),
+            ("“I’m Napoleon” his friend", "“I’m Napoleon,” his friend"),
+            ("man becomes the arbitrator of morals -what", "man becomes the arbitrator of morals - what"),
+            ("“WhenI arrived", "“When I arrived"),
+            ("even as I am not of the world” Of course", "even as I am not of the world.” Of course"),
+            ("woven over many years intercourse", "woven over many years’ intercourse"),
+            ("The lion has roared it’s loudest", "The lion has roared its loudest"),
+            ("(ie; an eager expectation", "(i.e., an eager expectation"),
+            # ch06
+            ("one of the young people were going", "one of the young people was going"),
+            ("“Pastor Gareth” he said", "“Pastor Gareth,” he said"),
+            ("whose church He was building", "whose church he was building"),
+            ("My burden is light . ’ I do", "My burden is light.’ I do"),
+            ("When we are yoked together with him, we", "When we are yoked together with Him, we"),
+            ("for Jacky Pullinger it was", "for Jackie Pullinger it was"),
+            ("for Chuck Colsen it was", "for Chuck Colson it was"),
+            ("prayer and intercession” he replied", "prayer and intercession,” he replied"),
+            ("“Oh” I said", "“Oh,” I said"),
+            ("In Society: ; Victims of abortion", "In Society: victims of abortion"),
+            # ch07
+            ("bears and lions” the shepherd boy", "bears and lions,” the shepherd boy"),
+            ("“ God has appointed .” 1 Cor 12: 11 - “ The Spirit distributes ..” Eph 4:11 - “ He who ascended .. gave .”",
+             "“God has appointed.” 1 Cor 12: 11 - “The Spirit distributes...” Eph 4:11 - “He who ascended ... gave.”"),
+            # ch08
+            ("cardinals, and et.al.", "cardinals, and et al."),
+            ("in Germany and Scandanavia", "in Germany and Scandinavia"),
+            ("the Zwinglian and Calvanist", "the Zwinglian and Calvinist"),
+            ("retreat at Haythrope Hall", "retreat at Heythrop Hall"),
+            ("“Look at that lady” he said", "“Look at that lady,” he said"),
+            ("God has made a mistake” I said", "God has made a mistake,” I said"),
+            # ch09
+            ("took a mission’s trip to Papua", "took a mission trip to Papua"),
+            ("out of Heaven, “Thou art My beloved Son, in thee I am well pleased.”",
+             "out of Heaven, ‘Thou art My beloved Son, in thee I am well pleased.’”"),
+            ("more assured that John himself", "more assured than John himself"),
+            ("The blind receives sight", "The blind receive sight"),
+            ("the deaf hear, The dead are raised", "the deaf hear, the dead are raised"),
+            ("cancel my holidays” he said", "cancel my holidays,” he said"),
+            ("“God has appointed teachers” wrote Paul", "“God has appointed teachers,” wrote Paul"),
+            # ch10
+            ("‘unspeakable, full of glory!” There", "‘unspeakable, full of glory!’ There"),
+            ("<h2>Dr Martin Lloyd Jones</h2><p>No one who", "<h2>Dr Martyn Lloyd-Jones</h2><p>No one who"),
+            # ch12 + appendices
+            ("2.What only you can do", "2. What only you can do"),
+            ("The Elder’s Board must have", "The Elders’ Board must have"),
+            # "in honour preferring one another" is Romans 12:10
+            ("honouring one another” (Romans 12:19)", "honouring one another” (Romans 12:10)"),
+            ("the ‘unity of the Spirit.’(See", "the ‘unity of the Spirit.’ (See"),
+            ("than we are as its elders are!", "than we are as its elders!"),
+            ("(eg; as an honorarium", "(e.g., as an honorarium"),
+            ("positive witness for His Lord", "positive witness for his Lord"),
         ],
     },
     "if": {
