@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "basil-of-caesarea",
+ "language": "fr",
+ "job_issue": 7228,
+ "references": [
+  {
+   "reference": "Luke 23:46b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 32
+  },
+  {
+   "reference": "Luke 23:46b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
