@@ -194,7 +194,7 @@
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
 	     page's position is true even when we don't draw it. -->
 	<PageHeader
-		title={t('scripture.pageTitle')}
+		title={t('reader.scripture')}
 		tagline={t('scripture.tagline')}
 	/>
 

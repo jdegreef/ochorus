@@ -648,7 +648,7 @@ relevant group.
   scripture ×3, articles ×2), `py-8` on Biographies; breadcrumb-to-title gap is
   `mt-5` (book), `mt-4` (topic), 0 elsewhere. → `py-10`, no extra gap; or fold
   the padding into `.page-col`.
-- [~] **A3** H1 register: Sermons/Biographies carry a brand h1 under a nav-word
+- [x] **A3** _(shipped 2026-11-05, a decision made on the founder's "do this work": one register — the h1 is the nav word, the SEO phrase is the `<title>`. Quotes → "Quotes", Scripture → "Scripture"; `quotes.pageTitle` / `scripture.pageTitle` deleted from every catalogue; written into STYLE_GUIDE §5 "One title register"; `pageShell.test.ts` fails a shelf whose `<PageHeader title>` is a `*.pageTitle` key)_ H1 register: Sermons/Biographies carry a brand h1 under a nav-word
   eyebrow; Books/Topics/Plans/Search use the nav word; Quotes/Scripture use a
   descriptive sentence with no eyebrow. `<title>` ≠ `<h1>` on Sermons and
   Biographies. → decide one register, document it in STYLE_GUIDE §5.
@@ -675,7 +675,7 @@ relevant group.
 - [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
   `Reading plan · 27 days`).
-- [~] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
+- [x] **A9** _(shipped 2026-11-05: Legal, Contact and RSS are on `<PageHeader>` with no eyebrow — the `Ochorus` / nav-word / `RSS` eyebrows are gone — held by a new `PROSE_PAGES` list in `pageShell.test.ts`)_ Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
   _2026-10-02: Settings and Notebook are on `<PageHeader>` (no eyebrow), held

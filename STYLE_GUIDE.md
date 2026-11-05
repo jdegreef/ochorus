@@ -337,6 +337,15 @@ previously had six sets of margins and two different title sizes.
 
 The `<h1>` is **`.text-h1`**. `.text-display` is the **home hero only**.
 
+**One title register.** A shelf's `<h1>` is its **navigation word** ("Books",
+"Quotes", "Scripture"), the word the reader clicked to get there. The
+descriptive, search-facing phrase ("Christian quotes, with their sources") is
+the page's `<title>` and its meta description, never the `<h1>`. The app pages
+(Settings, Notebook) and the prose pages (Legal, Contact, RSS) use
+`<PageHeader>` too, with **no eyebrow**: the eyebrow is for a kind ("Sermon ·
+12 min") on a leaf page, not a second copy of the page's name.
+`pageShell.test.ts` holds all three lists to this.
+
 ### Section headings
 
 Below the page title, a heading's size follows its **role**, not the page it

@@ -81,7 +81,7 @@
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
 	     page's position is true even when we don't draw it. -->
 	<PageHeader
-		title={t('quotes.pageTitle')}
+		title={t('nav.quotes')}
 		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
 
