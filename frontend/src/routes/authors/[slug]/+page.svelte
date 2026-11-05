@@ -459,7 +459,7 @@
 			<p class="mt-1.5 text-body text-muted">
 				<!-- The separator as an expression: literal spaces at an {#if} boundary are
 				     compiler-trimmed ("1828–1917·12 books"). -->
-				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
+				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="sep">{' · '}</span>{/if}{bit}{/each}
 			</p>
 		{/if}
 		<!-- Their birthday, or the day they died: a candle and the date. -->

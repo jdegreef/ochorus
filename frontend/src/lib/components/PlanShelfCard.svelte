@@ -41,7 +41,7 @@
 >
 	{#snippet aside()}
 		{plan.day_count} {DAYS}{#if perDay}
-			<span class="opacity-60"> · </span>~{perDay} {t('plans.minPerDay')}{/if}
+			<span class="sep"> · </span>~{perDay} {t('plans.minPerDay')}{/if}
 	{/snippet}
 	<p class="shelf-card-desc mt-1.5 text-small text-muted">{plan.description}</p>
 	<!-- Pushed to the bottom of the body so every card's footer sits on the
@@ -57,7 +57,7 @@
 		{:else if plan.day_one}
 			<p class="text-small text-muted">
 				<span class="font-medium text-text">{t('plans.day')} 1</span>
-				<span class="opacity-60"> · </span>{plan.day_one.book_title || plan.day_one.chapter_title}
+				<span class="sep"> · </span>{plan.day_one.book_title || plan.day_one.chapter_title}
 			</p>
 		{/if}
 	</div>

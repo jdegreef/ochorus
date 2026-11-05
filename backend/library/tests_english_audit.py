@@ -529,8 +529,9 @@ class EnglishAuditPrecisionTests(SimpleTestCase):
         """A hyphenated single-letter suffix cased one way in the title and the
         other in the body — one of the two was retyped.
 
-        The live instance is stepping-stones-2 ch13: the title reads "Type-a
-        Specialist" where its own body reads "Type-A Specialist". Deliberately
+        The live instance was stepping-stones-2 ch13: the title read "Type-a
+        Specialist" where its own body reads "Type-A Specialist" (fixed by
+        migration 0209). Deliberately
         narrow — it fires only on a lone letter after the hyphen, so ordinary
         compounds ("Self-denial" against "Self-Denial") are left alone, those
         being a house-style question rather than a transcription slip.

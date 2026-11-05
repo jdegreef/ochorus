@@ -279,7 +279,7 @@
 						<p class="truncate text-small text-muted">{a.lead_book.author.name}</p>
 					{/if}
 					<p class="mt-auto pt-0.5 text-eyebrow text-muted">
-						{t('book.readersGuide')}<span class="opacity-50">{' · '}</span>{readingTime(a.word_count)}
+						{t('book.readersGuide')}<span class="sep">{' · '}</span>{readingTime(a.word_count)}
 					</p>
 				</div>
 			</a>

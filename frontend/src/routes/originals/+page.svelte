@@ -131,13 +131,13 @@
 				<p class="facts mt-5 text-small text-muted">
 					<span>{count(shelf.books.length, 'common.bookOne', 'common.bookMany')}</span>
 					{#if shelved.series.length}
-						<span aria-hidden="true">·</span>
+						<span class="sep" aria-hidden="true">·</span>
 						<span>
 							{count(shelved.series.length, 'originals.seriesOne', 'originals.seriesMany')}
 						</span>
 					{/if}
 					{#if totalWords}
-						<span aria-hidden="true">·</span>
+						<span class="sep" aria-hidden="true">·</span>
 						<span>{readingTime(totalWords)}</span>
 					{/if}
 				</p>

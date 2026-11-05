@@ -127,11 +127,11 @@
 					<a class="sermon-row-title" {href}>{sermon.title}</a>
 				</h3>
 				<span class="sermon-row-ref"
-					>{#if showAuthor}{sermon.author.name}<span class="opacity-40"> · </span>{/if}{sermon.scripture_ref}</span
+					>{#if showAuthor}{sermon.author.name}<span class="sep"> · </span>{/if}{sermon.scripture_ref}</span
 				>
 				<span class="sermon-row-leader hidden sm:block" aria-hidden="true"></span>
 				<span class="sermon-row-meta"
-					>{readingTime(sermon.word_count)}{#if year}<span class="opacity-50"> · </span>{year}{/if}</span
+					>{readingTime(sermon.word_count)}{#if year}<span class="sep"> · </span>{year}{/if}</span
 				>
 				{#if expandable}
 					<button

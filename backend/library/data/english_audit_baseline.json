@@ -128,8 +128,7 @@
    "space-before-punct": 2
   },
   "divine-healing": {
-   "orphan-close-quote": 3,
-   "space-before-punct": 11
+   "space-before-punct": 10
   },
   "elijahs-weakness-and-its-cure": {
    "space-before-punct": 2
@@ -442,9 +441,6 @@
   "sinning-and-repenting": {
    "space-before-punct": 2
   },
-  "soar-like-the-eagle-3": {
-   "orphan-close-quote": 2
-  },
   "sorrow-turned-into-joy": {
    "space-before-punct": 1
   },
@@ -453,12 +449,7 @@
    "orphan-close-quote": 4
   },
   "stepping-stones-2": {
-   "hyphen-space": 2,
-   "misspelling": 4,
-   "orphan-close-quote": 3,
-   "run-together": 1,
-   "space-before-punct": 10,
-   "title-case-vs-body": 1
+   "space-before-punct": 10
   },
   "susanna-wesley-clarke": {
    "hyphen-space": 1,
@@ -708,9 +699,6 @@
   },
   "the-toiling-christ": {
    "space-before-punct": 2
-  },
-  "the-two-covenants": {
-   "orphan-close-quote": 1
   },
   "the-use-of-money": {
    "orphan-close-quote": 2,

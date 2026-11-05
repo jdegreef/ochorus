@@ -146,7 +146,7 @@
 		<h2 id="finished-heading" class="font-display mt-2 text-h2 text-balance" dir="auto">{book.title}</h2>
 		<p class="mt-1 text-small text-muted">
 			{book.author.name}
-			{#if book.word_count}<span aria-hidden="true"> · </span>{/if}
+			{#if book.word_count}<span class="sep" aria-hidden="true"> · </span>{/if}
 			{#if book.word_count}
 				{t('finished.stats')
 					.replace('%c%', nf.format(book.chapter_count))

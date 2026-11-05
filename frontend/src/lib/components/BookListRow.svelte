@@ -60,7 +60,7 @@
 	>
 		<span class="sm:block">{chapters}</span>
 		{#if book.word_count}
-			<span class="sm:hidden" aria-hidden="true">·</span>
+			<span class="sep sm:hidden" aria-hidden="true">·</span>
 			<span class="sm:block">{readingTime(book.word_count)}</span>
 		{/if}
 	</div>

@@ -149,7 +149,7 @@
 	{#if orderLabel || perDay}
 		<p class="series-facts mt-1 text-small text-muted">
 			{#if orderLabel}<span class="whitespace-nowrap">{orderLabel}</span>{/if}
-			{#if orderLabel && perDay}{' '}<span class="opacity-50">·</span>{' '}{/if}
+			{#if orderLabel && perDay}{' '}<span class="sep">·</span>{' '}{/if}
 			{#if perDay}<span class="whitespace-nowrap"
 					>{m.series_chapter_minutes({ minutes: perDay })}</span
 				>{/if}

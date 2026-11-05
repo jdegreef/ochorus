@@ -683,8 +683,8 @@
 							</span>
 							<!-- The book is named once, on its section — not under every day. -->
 							<span class="block text-small text-muted">
-								{#if d.article_slug}{t('search.typeArticle')}<span class="opacity-60">{' · '}</span>{/if}{#if d.key_verse}<span
-										class="sm:hidden">{d.key_verse}<span class="opacity-60">{' · '}</span></span
+								{#if d.article_slug}{t('search.typeArticle')}<span class="sep">{' · '}</span>{/if}{#if d.key_verse}<span
+										class="sm:hidden">{d.key_verse}<span class="sep">{' · '}</span></span
 									>{/if}{readingMinutes(d.word_count || 0)} {t('common.min')}
 							</span>
 						</span>
