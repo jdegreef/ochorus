@@ -1,0 +1,102 @@
+{
+ "kind": "sermon",
+ "slug": "faith-and-assurance",
+ "language": "fr",
+ "job_issue": 7218,
+ "references": [
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 7:56",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 23:42a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 19:25a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 21
+  },
+  {
+   "reference": "Acts 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:33a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 8:34a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 26
+  },
+  {
+   "reference": "2 Timothy 4:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 26
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 33
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "self_rendered",
+   "block_index": 31
+  }
+ ]
+}

@@ -22062,3 +22062,11 @@ BODY_CORRECTIONS.setdefault("abide-in-christ", {}).setdefault("replacements", []
     ("‘Till He come,Is the watchword", "‘Till He come,’ is the watchword"),
     ("what His union with Jesus on the throne", "what his union with Jesus on the throne"),
 ])
+
+# faith-and-assurance: "Though He slay me, yet will I trust in Him" is Job
+# 13:15, printed "(Job 13.13)"; sw carried it over. Found translating the fr
+# edition (#7218), which cites Job 13:15.
+BODY_CORRECTIONS.setdefault("faith-and-assurance", {}).setdefault("replacements", []).extend([
+    ("(Job 13.13)", "(Job 13.15)"),
+    ("(Ayubu 13:13)", "(Ayubu 13:15)"),
+])
