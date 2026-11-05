@@ -5143,6 +5143,36 @@ BODY_CORRECTIONS.setdefault("true-vine", {}).setdefault("replacements", []).exte
     ("The branch has no cure;", "The branch has no care;"),
 ])
 
+# English proofreading pass (2026-11-05). Each is transcription damage with one
+# reading; anchored on English text so no translation can match.
+BODY_CORRECTIONS["true-vine"]["replacements"].extend([
+    # ch2: a stray opener inside the quotation it closes ("I am the true Vine!
+    # … I will be to you.").
+    ("to its branch, “<i>I will be to you.”</i>", "to its branch, <i>I will be to you.”</i>"),
+    # ch7: "Some tree needs …; others bear" — the plural is forced by "others".
+    ("Some tree needs occasional pruning;", "Some trees need occasional pruning;"),
+    # ch9: "Thou … undertakest" (Murray's prayers: "Thou workest", "Thou givest").
+    ("how Thou as Vine undertaketh to do all", "how Thou as Vine undertakest to do all"),
+    # ch16: a small-caps opening left a capital mid-sentence.
+    ("The Whole place of the branch", "The whole place of the branch"),
+    # ch26: a quotation nested inside Christ's words takes single marks.
+    ("grasp each “Even as I” as the divine", "grasp each ‘Even as I’ as the divine"),
+    # ch29: stray comma inside John 15:15 ("but I have called you friends").
+    ("“But, I have called you friends,", "“But I have called you friends,"),
+    # ch30: Rom 8:29 KJV "the image of his Son".
+    ("to the image of his son.”", "to the image of his Son.”"),
+    # ch31: 1 Cor 2:4 "in demonstration of the Spirit and of power".
+    ("but in demonstrations of the Spirit", "but in demonstration of the Spirit"),
+    # Epigraph title-casing out of step with the rest of the book's epigraphs
+    # (ch5 sets the same John 15:2 line; ch21/ch23/ch26 the others).
+    ("<i>Every Branch in me that Beareth Not Fruit, He taketh It away</i>",
+     "<i>Every Branch in me That Beareth Not Fruit, He Taketh It Away</i>"),
+    ("Except It Abide In the Vine;", "Except It Abide in the Vine;"),
+    ("I Also Have Loved you</i>", "I Also Have Loved You</i>"),
+    ("Ye Shall Abide In My Love</i>", "Ye Shall Abide in My Love</i>"),
+    ("Even as I have Kept My Father", "Even as I Have Kept My Father"),
+])
+
 # OCR/extraction slips found while translating batch 3 to Spanish. All are
 # unambiguous letter/dittography damage with a single reading.
 # Transcription slips in CCEL's files of Fox's Book of Martyrs (Forbush ed.).
