@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "frances-ridley-havergal",
+ "language": "fr",
+ "job_issue": 7223,
+ "references": [
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 11
+  },
+  {
+   "reference": "Joshua 23:14",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}
