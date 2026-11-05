@@ -20864,3 +20864,43 @@ BODY_CORRECTIONS.setdefault("do-you-pray", {}).setdefault("replacements", []).ex
     ("(시편 8:10)", "(시편 81:10)"),
     ("(Zaburi 8:10.)", "(Zaburi 81:10.)"),
 ])
+
+# the-deeper-christian-life (Murray, CCEL): English proofreading pass. Doubled
+# word, mispaired / missing quotation marks, a pronoun capitalised for Peter
+# and Paul as if for Christ, dropped words where the sentence cannot stand
+# without them, hyphens standing for dashes, and two plain typos.
+BODY_CORRECTIONS.setdefault("the-deeper-christian-life", {}).setdefault("replacements", []).extend([
+    # ch2
+    ("into these these heads", "into these heads"),
+    ("is thine ”—all that God", "is thine”—all that God"),
+    ("said, “Yes;” we can take possession", "said, “Yes; we can take possession"),
+    # ch3
+    ("over him that becomes “carnal.”", "over him that he becomes “carnal.”"),
+    ("“ Lovest thou Me?”", "“Lovest thou Me?”"),
+    ("Christ said to Him: “Peter, not only", "Christ said to him: “Peter, not only"),
+    # ch4
+    ("<p>And He brought us out from thence", "<p>“And He brought us out from thence"),
+    ("He lead them into Canaan", "He leads them into Canaan"),
+    ("If there still unbelieving children", "If there were still unbelieving children"),
+    ("on the upper side in to a high wall", "on the upper side into a high wall"),
+    ("who is saying: —I remember how God", "who is saying: —“I remember how God"),
+    # ch5
+    ("but—but—“And in daily life", "but—but—” And in daily life"),
+    ("the man to be filled with the Spirit. Who is there", "the man to be filled with the Spirit.” Who is there"),
+    ("more than fullness-this is overflow", "more than fullness—this is overflow"),
+    ("“Tis done, the great", "“’Tis done, the great"),
+    # ch6
+    ("for my religion. A hundred times", "for my religion.” A hundred times"),
+    ("of Christ, and He said, “If Christ calls me", "of Christ, and he said, “If Christ calls me"),
+    ("Thou hast said, “My presence shall go with thee,”—and, Lord",
+     "Thou hast said, ‘My presence shall go with thee,’—and, Lord"),
+    ("to that soul, -Don’t be discouraged", "to that soul, —Don’t be discouraged"),
+    # ch7
+    ("Jesus who appeared to Him on the way to Damascus", "Jesus who appeared to him on the way to Damascus"),
+    ("And the first questions is", "And the first question is"),
+    # ch8
+    ("make clear to you: - </p>", "make clear to you:— </p>"),
+    ("give everything back? Brother,", "give everything back?” Brother,"),
+    ("for Thy Kingdom. Some talk and pray", "for Thy Kingdom.” Some talk and pray"),
+    ("and posses and use them", "and possess and use them"),
+])
