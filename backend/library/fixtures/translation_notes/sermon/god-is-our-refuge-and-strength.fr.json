@@ -1,0 +1,230 @@
+{
+ "kind": "sermon",
+ "slug": "god-is-our-refuge-and-strength",
+ "language": "fr",
+ "job_issue": 7220,
+ "references": [
+  {
+   "reference": "Luke 21:26a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 13:1b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 6
+  },
+  {
+   "reference": "Deuteronomy 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Deuteronomy 6:5a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 21
+  },
+  {
+   "reference": "John 20:28b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 56:4a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "Proverbs 18:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 41
+  },
+  {
+   "reference": "Matthew 25:32a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 41
+  },
+  {
+   "reference": "Jeremiah 31:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 48
+  },
+  {
+   "reference": "Jeremiah 31:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 48
+  },
+  {
+   "reference": "Jeremiah 31:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 48
+  },
+  {
+   "reference": "Revelation 7:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 63
+  },
+  {
+   "reference": "Revelation 7:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 63
+  },
+  {
+   "reference": "Psalm 46:2",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Psalm 115:16b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 72
+  },
+  {
+   "reference": "Genesis 2:7b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 76
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Acts 9:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 88
+  },
+  {
+   "reference": "Matthew 4:10b",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 94
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 97
+  },
+  {
+   "reference": "Matthew 24:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 99
+  },
+  {
+   "reference": "Psalm 46:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 46:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 46:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 46:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 46:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 46:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 46:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Psalm 46:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 115
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Psalm 127:2b",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Psalm 3:6",
+   "status": "self_rendered",
+   "block_index": 118
+  }
+ ]
+}
