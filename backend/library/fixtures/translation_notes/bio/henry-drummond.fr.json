@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "henry-drummond",
+ "language": "fr",
+ "job_issue": 7224,
+ "references": [
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 14:8b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 5:20",
+   "status": "self_rendered",
+   "block_index": 5
+  }
+ ]
+}
