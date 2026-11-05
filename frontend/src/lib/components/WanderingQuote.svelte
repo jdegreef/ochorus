@@ -74,7 +74,7 @@
 						<blockquote class="font-display"><QuoteText text={quote.text} /></blockquote>
 						<p class="cite">
 							<a href={localizeHref(`/quotes/${quote.author.slug}/`)}>{quote.author.name}</a>
-							<span aria-hidden="true"> · </span>
+							<span class="sep" aria-hidden="true"> · </span>
 							<a href={quoteHref(quote)}>{citeLine(quote)}</a>
 						</p>
 					</div>

@@ -44,7 +44,8 @@ const SYSTEM = [
 	'section-label',
 	'count',
 	'page-col',
-	'subnav-link'
+	'subnav-link',
+	'sep'
 ];
 const RULE = new RegExp(`^\\s*\\.(?:${SYSTEM.join('|')})(?![\\w-])`);
 /** Classes guarded ANYWHERE in a selector, not just at its start: a
@@ -109,5 +110,20 @@ describe('system classes are not redefined in scoped CSS', () => {
 			if (/border-radius:[^;]*\b9{3,}px/.test(text)) offenders.push(file.replace(SRC, 'src'));
 		}
 		expect(offenders, 'write border-radius: var(--radius-pill)').toEqual([]);
+	});
+
+	// One middot (audit K3): a hand-weighted `<span class="opacity-50">·</span>`
+	// is how it drifted to four weights. The separator wears `.sep`.
+	it('every middot separator wears .sep', () => {
+		const offenders: string[] = [];
+		const SPAN = /<span([^>]*)>(\{' · '\}|\{" · "\}|·| · )<\/span>/g;
+		for (const file of svelteFiles(SRC)) {
+			const rel = file.replace(SRC, 'src');
+			if (rel.startsWith('src/routes/admin')) continue;
+			for (const m of readFileSync(file, 'utf8').matchAll(SPAN)) {
+				if (!/class="[^"]*\bsep\b/.test(m[1])) offenders.push(`${rel}: ${m[0]}`);
+			}
+		}
+		expect(offenders, 'write <span class="sep">·</span>').toEqual([]);
 	});
 });

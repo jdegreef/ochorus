@@ -212,7 +212,7 @@
 							     as its card in "Continue reading" offered (with an Undo). -->
 							<div class="flex items-baseline justify-between gap-3">
 								<p class="home-hero-sub text-micro">
-									{meter}{#if perChapter}<span class="opacity-60"> · </span>{perChapter}{/if}
+									{meter}{#if perChapter}<span class="sep"> · </span>{perChapter}{/if}
 								</p>
 								<button
 									type="button"

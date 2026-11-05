@@ -165,7 +165,7 @@
 		     space is an expression so Svelte keeps it as the break. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
 			<span class="whitespace-nowrap">{chapters}</span>{#if time}{' '}<span class="whitespace-nowrap"
-					><span class="opacity-50">·</span> {time}</span
+					><span class="sep">·</span> {time}</span
 				>{/if}
 		</div>
 	</div>

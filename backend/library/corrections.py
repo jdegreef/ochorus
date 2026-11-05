@@ -861,6 +861,62 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "the-school-of-obedience": {
+        # English proofreading pass (CCEL text): transcription slips only —
+        # stray/missing punctuation, misread letters, a broken entity and two
+        # openers set as closers. Murray's wording and period style untouched.
+        "replacements": [
+            # ch2
+            ("<p>­ — a will utterly", "<p>— a will utterly"),
+            ("so did he,’ And <i>then", "so did he.’ And <i>then"),
+            ("judgment against Amelek", "judgment against Amalek"),
+            ("and destroys Amelek", "and destroys Amalek"),
+            ("And Samuel said. </p>", "And Samuel said: </p>"),
+            ("abide continually in Christ We have", "abide continually in Christ! We have"),
+            # ch3
+            ("covering and swallowing, up and making", "covering and swallowing up, and making"),
+            ("of our life—union to Christ", "of our life-union to Christ"),
+            ("with Christ and his seed,", "with Christ and His seed,"),
+            ("and thou shall obey", "and thou shalt obey"),
+            # ch4
+            ("in every deed shed into", "in very deed shed into"),
+            ("so let us trust him as a Teacher", "so let us trust Him as a Teacher"),
+            ("at the Masterfeet", "at the Master’s feet"),
+            # ch5
+            ("all God’s will that, He will", "all God’s will that He will"),
+            ("and that we, will be able", "and that we will be able"),
+            ("Peniel,—’for I have seen", "Peniel,—‘for I have seen"),
+            # ch6
+            ("an impossibility, </p>", "an impossibility. </p>"),
+            ("You, write with it", "You write with it"),
+            ("the living Christ, ‘We have said before", "the living Christ. We have said before"),
+            ("the Master who commands the Example", "the Master who commands, the Example"),
+            ("love for men, and me in His blessed", "love for men, and use in His blessed"),
+            ("to restore man to His place", "to restore man to his place"),
+            # ch7
+            ("in God, in who calls you", "in God, who calls you"),
+            ("a new heart. and <i>I will", "a new heart, and <i>I will"),
+            ("in Jesus.’All at once", "in Jesus.’ All at once"),
+            ("‘doing, the will of His", "‘doing the will of His"),
+            ("into the promised land: Look up", "into the promised land? Look up"),
+            # ch8
+            ("every man in business doing is", "every man in business: doing is"),
+            ("ever-increasing, knowledge", "ever-increasing knowledge"),
+            ("in the boldness of the letter", "in the oldness of the letter"),
+            ("John 14—’<i>If ye", "John 14—‘<i>If ye"),
+            # ch9
+            ("<i>#8216;As Thou didst", "<i>‘As Thou didst"),
+            ("when be was a slave", "when he was a slave"),
+            ("As binding, as is the first", "As binding as is the first"),
+            ("field of the world. He first drew", "field of the world, He first drew"),
+            ("the obedient unto earth,", "the obedient unto death,"),
+            # ch10
+            ("‘By, the observance", "‘By the observance"),
+            ("what such a revelation implies", "what such a resolution implies"),
+            ("that sentence—, ‘Next", "that sentence—‘Next"),
+            ("so surely stands In need", "so surely stands in need"),
+        ],
+    },
     "how-to-pray": {
         # The misspelt TOC title ("Chatper XII.") kept extract_body from
         # recognising the chapter's restated heading, so it leads the body.
@@ -1163,7 +1219,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("He will delight to give.” ()", "He will delight to give.” (Note C.)"),
             ("known by us in their power. ()", "known by us in their power. (Note D.)"),
             ("of His spirit to the Father. )", "of His spirit to the Father. (Note E.)"),
-            ("Gods seeks intercessors. ()", "Gods seeks intercessors. (Note F.)"),
+            # Writes the "God seeks" repair below directly, so this pair's
+            # output stays in the settled fixture (see the next block).
+            ("Gods seeks intercessors. ()", "God seeks intercessors. (Note F.)"),
             ("प्रकट करे। ()", "प्रकट करे। (टिप्पणी A.)"),
             ("बढ़नेवाला। ()", "बढ़नेवाला। (टिप्पणी B.)"),
             ("प्रसन्न होगा।” ()", "प्रसन्न होगा।” (टिप्पणी C.)"),
@@ -1178,6 +1236,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # down-cased it. Anchored on the `<p>` so it cannot touch body_text.
             ("<p>In my name—repeated six times over.",
              "<p>In My Name—repeated six times over."),
+            # English proofreading pass (2026-11). Plain slips, each against
+            # the book's own usage; none rewrites Murray.
+            # ch15: a comma for the full stop in a scripture reference, in a
+            # list where every other abbreviation takes the stop.
+            ("Phil, iii. 17,", "Phil. iii. 17,"),
+            # ch16: "Gods seeks" — the chapter's title and its eleven other
+            # instances read "God seeks intercessors". The pair above writes
+            # the fix on a fresh import; this one repairs the shipped rows.
+            ("Gods seeks intercessors.", "God seeks intercessors."),
+            # ch17: a dropped word ("it is to feared that").
+            ("it is to feared that", "it is to be feared that"),
+            # ch7 and ch12: the reverent capital set on a MAN — Abraham, and
+            # "man" in "that God might dwell and work in Him, and be the life
+            # of his life", where the next pronoun is lowercase.
+            ("What gave Him such boldness?", "What gave him such boldness?"),
+            ("might dwell and work in Him, and be the life of his life",
+             "might dwell and work in him, and be the life of his life"),
         ],
         # The other half of the `pginternal` damage: ch18's six note HEADINGS
         # (`restore_dropped_blocks` has the mechanism, and why this is not a
@@ -1325,6 +1400,35 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("the master‘s likeness", "the master’s likeness"),
             ("made ours by the Holy spirit,", "made ours by the Holy Spirit,"),
             ("Stockmaiev", "Stockmayer"),
+            # English proofreading pass (2026-11-05). Only what is plainly
+            # transcription damage; every one changes nothing Murray meant.
+            #
+            # A full stop missing after the chapter numeral, against the
+            # book's own form everywhere else ("Lev. xx. 7, 8").
+            ("(xxii 21, 33)", "(xxii. 21, 33)"),
+            ("(2 Cor. vi 16–18)", "(2 Cor. vi. 16–18)"),
+            ("Phil ii. 15, iii. 6", "Phil. ii. 15, iii. 6"),
+            # Pronouns capitalised as if for God where they name a man. The
+            # book capitalises only for God; the two Scripture lines read
+            # lower case in the KJV it quotes (Ex. iii. 6, Isa. xliii. 3,
+            # 1 John iv. 16). ch3: a child of God; ch5: Moses (epigraph and
+            # body); ch12: Israel; ch16: "beloved believer"; ch20: Paul;
+            # ch22: the believer; ch30: "he that abideth in love".
+            ("He bears this name", "he bears this name"),
+            ("make Him what it calls", "make him what it calls"),
+            ("Moses hid his face, for He was afraid", "Moses hid his face, for he was afraid"),
+            ("for He feared to look upon God", "for he feared to look upon God"),
+            ("I am the Lord Thy God,", "I am the Lord thy God,"),
+            ("Thy Saviour. Thus saith", "thy Saviour. Thus saith"),
+            ("make Thy inner man a fit home, Thy heart", "make thy inner man a fit home, thy heart"),
+            ("because He wished", "because he wished"),
+            ("forsakes Him,", "forsakes him,"),
+            ("God in Him.’", "God in him.’"),
+            # ch13: the clause after "needed" ran on with no stop; ch17: "or"
+            # for "of" ("the truth of thought and sentiment", the husk set
+            # against life-truth two paragraphs up).
+            ("is needed through Christ, in the Spirit", "is needed: through Christ, in the Spirit"),
+            ("the truth or thought and sentiment", "the truth of thought and sentiment"),
         ],
     },
     "selected-sermons-edwards": {
@@ -2477,6 +2581,66 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("18:19-10", "18:19-20"),          # quoted text is Matt 18:20
             ("armor of God of God", "armor of God"),
             ("God sees they as a sinner", "God sees them as a sinner"),
+            # English proofreading pass (2026-11-05). Every pair below is
+            # anchored on English prose (book names in English), so it bites
+            # the en edition only; the translations show ↻ stale on purpose.
+            # Plain typos, punctuation and grammar:
+            ("received his Bachelors of Science",
+             "received his Bachelor of Science"),                 # ch1
+            ("put on His outer garment ,and",
+             "put on His outer garment, and"),                    # ch3
+            ("(which includes you and I)", "(which includes you and me)"),
+            ("dealing with peoples’ problems",
+             "dealing with people’s problems"),                   # ch5
+            ("(Ephesians 5:21),Paul gives", "(Ephesians 5:21), Paul gives"),
+            ("The lion roared, “you’ll never", "The lion roared, “You’ll never"),
+            ("(Ephesians 6:16) As the enemy", "(Ephesians 6:16). As the enemy"),
+            ("made in the Upper Room Let us look",
+             "made in the Upper Room. Let us look"),              # ch8
+            ("four types of hearers of the God’s Word",
+             "four types of hearers of God’s Word"),
+            ("of their neighbors:family,", "of their neighbors: family,"),
+            ("“The Messiah is coming soon” he would",
+             "“The Messiah is coming soon,” he would"),           # ch9
+            ("<p>(Matthew 3:2-12) The people", "<p>(Matthew 3:2-12). The people"),
+            # a doubled speech tag left an unclosed quotation open:
+            ("Jesus replies, “And he answered them, “Go and tell John",
+             "Jesus replies, “Go and tell John"),
+            ("Martha&#x27;s comment", "Martha’s comment"),        # lone straight mark
+            ("angler’s hook and rod -he knows",
+             "angler’s hook and rod - he knows"),                 # ch10
+            ("It’s his role, as a shepherds,", "It’s his role, as a shepherd,"),
+            ("concerning the disciples opinion of Jesus",
+             "concerning the disciples’ opinion of Jesus"),       # ch12
+            # an extra opening mark ahead of the narrative (the quote's own
+            # marks open at "You are" and "Blessed"):
+            ("<p>“Simon Peter replied, “You are the Christ",
+             "<p>Simon Peter replied, “You are the Christ"),
+            ("from the popes ‘authority,’", "from the popes’ ‘authority,’"),
+            ("fellowship is not so sweet -my sin",
+             "fellowship is not so sweet - my sin"),
+            # a dropped verb (es/fr already rendered "ask him to forgive you"):
+            ("go to your brother and for him to forgive you",
+             "go to your brother and ask him to forgive you"),
+            ("“Before you leave” I said", "“Before you leave,” I said"),  # ch13
+            ("just like you and me - and sinner’s sin!",
+             "just like you and me - and sinners sin!"),          # ch15
+            # Citations: a stray space inside the reference, a stray space
+            # before the following stop, or the wrong verse for the words
+            # quoted (Heb 12:14 is "Strive for peace…", as ch9 cites it;
+            # Matt 17:27 is "so that we do not give them any offense"; Peter's
+            # "Up to seven times?" is Matt 18:21).
+            ("(James 5: 14-15)", "(James 5:14-15)"),
+            ("(Hebrews 12: 15)", "(Hebrews 12:14-15)"),
+            ("(Luke 24: 34)", "(Luke 24:34)"),
+            ("(Matthew 17: 24) But to others", "(Matthew 17:27). But to others"),
+            ("“Up to seven times?” (Matthew 18:22)",
+             "“Up to seven times?” (Matthew 18:21)"),
+            ("(Psalm 103: 12) .", "(Psalm 103:12)."),
+            ("(2 Corinthians 5: 18-19)", "(2 Corinthians 5:18-19)"),
+            ("(Acts 7: 60) .", "(Acts 7:60)."),
+            ("(Exodus 20:5) .", "(Exodus 20:5)."),
+            ("(Hebrews 13:8) .", "(Hebrews 13:8)."),
         ],
     },
     "the-way-to-god": {
@@ -3729,6 +3893,61 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("began to pour its\u2019 sap", "began to pour its sap"),
             ("Christ, the, heavenly Vine", "Christ, the heavenly Vine"),
             ("one may say, \u2018\u2018pray", "one may say, \u201cpray"),
+            # English proofreading pass (2026-11-05), read through all 32
+            # chapters. Extraction damage only: a space the text layer put
+            # inside a reference ("Ps. 103: 3") and after an em dash at a line
+            # end ("mouth\u2014 are"); a third ellipsis dot read as a comma
+            # ("walk.., and" \u2014 ch27 has "hearken.., ... right.., ... ear...
+            # if", the same run three ways); a stray single mark; a dropped
+            # opener; two openers set as closers after a dash; and ch03's
+            # closing reference with no stop. Anchored on English words so no
+            # pair can match a translation.
+            ("(Ps. 103: 3)", "(Ps. 103:3)"),
+            ("(Matt. 11: 5)", "(Matt. 11:5)"),
+            ("(Ps. 25: 3)</p>", "(Ps. 25:3).</p>"),
+            ("(Acts 4: 4)", "(Acts 4:4)"),
+            ("(I Cor. 12: 9)", "(I Cor. 12:9)"),
+            ("(I Cor. 15: 10)", "(I Cor. 15:10)"),
+            ("(Ps. 44: 3)", "(Ps. 44:3)"),
+            ("(Heb. 10: 5)", "(Heb. 10:5)"),
+            ("6:15; 12: 27)", "6:15; 12:27)"),
+            ("II Tim. 2: 21)", "II Tim. 2:21)"),
+            ("(Ps. 112: 4)", "(Ps. 112:4)"),
+            ("(Eph. 6: 3)", "(Eph. 6:3)"),
+            ("(Ex. 33: 16;", "(Ex. 33:16;"),
+            ("(Acts 10: 38)", "(Acts 10:38)"),
+            ("Acts 3: 7; 4:30; 5:12,15, 16", "Acts 3:7; 4:30; 5:12, 15, 16"),
+            ("28: 8, 9)", "28:8, 9)"),
+            ("(Acts 4: 29, 30; 5:12, 14; 6: 7, 8; 8: 6\u20148)", "(Acts 4:29, 30; 5:12, 14; 6:7, 8; 8:6\u20148)"),
+            ("Luke 18: 3; 11: 5)", "Luke 18:3; 11:5)"),
+            ("(I Cor. 11: 30\u201432;", "(I Cor. 11:30\u201432;"),
+            ("(James 1: 2\u2014 4, 12; 5: 7, 8)", "(James 1:2\u20144, 12; 5:7, 8)"),
+            ("to them\u201d (11: 5)", "to them\u201d (11:5)"),
+            ("whole\u201d (14: 35, 36)", "whole\u201d (14:35, 36)"),
+            ("(I John 3: 7)", "(I John 3:7)"),
+            ("Lev. 26:14,16;", "Lev. 26:14, 16;"),
+            ("the mouth\u2014 are called", "the mouth\u2014are called"),
+            ("here on earth\u2014 either to", "here on earth\u2014either to"),
+            ("still more direct\u2014 that of", "still more direct\u2014that of"),
+            ("of the body\u2014 both are", "of the body\u2014both are"),
+            ("to be a branch\u2014 the branch", "to be a branch\u2014the branch"),
+            ("ask the question\u2014 cannot I", "ask the question\u2014cannot I"),
+            ("as I should be\u201d\u2014 then", "as I should be\u201d\u2014then"),
+            ("nothing more\u2014 now I have", "nothing more\u2014now I have"),
+            ("the lame walk.., and the poor", "the lame walk... and the poor"),
+            ("O my soul.., who forgiveth", "O my soul... who forgiveth"),
+            ("under heaven.., whereby", "under heaven... whereby"),
+            ("purge himself.., he shall", "purge himself... he shall"),
+            ("every creature.., and these", "every creature... and these"),
+            ("which believe.., they shall", "which believe... they shall"),
+            ("diligently hearken.., if thou", "diligently hearken... if thou"),
+            ("which is right.., if thou", "which is right... if thou"),
+            ("the Lord thy God.., and give ear", "the Lord thy God... and give ear"),
+            ("because. . . he bare", "because... he bare"),
+            ("such is His \u2018will you", "such is His will you"),
+            ("<p>Anointing him with oil", "<p>\u201cAnointing him with oil"),
+            ("Partnership\u2014\u201dAll I have", "Partnership\u2014\u201cAll I have"),
+            ("poverty!\u2014\u201dnever had", "poverty!\u2014\u201cnever had"),
         ],
     },
     "the-gospel-of-healing": {
@@ -4182,6 +4401,32 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("take ‘time out” to consider", "take ‘time out’ to consider"),
             ("love of God in Christ Jesus (Rom 8:39)", "love of God in Christ Jesus” (Rom 8:39)"),
             ("for the hope of the resurrection! (Acts 26:1-8 paraphrased)", "for the hope of the resurrection!” (Acts 26:1-8 paraphrased)"),
+            # 2026-11-05 proofreading pass: the one split word the full
+            # detector still found ("say ing"), garbled references ("2: 1",
+            # "Pv13", "1 Cor 13 13", "1:15 -20"), dropped parens and quote
+            # marks, the nested quotation in ch4's story set with single
+            # marks inside double, and two plain slips (ch7 "Chapter 12" for
+            # 1 Cor 13, the love chapter the same sentence names; ch8 "at
+            # chattel"). The ch7 cymbal pair must stay below "clanging symbol".
+            ("16:16,17 – Blessed are you, Simon,", "16:16,17 – “Blessed are you, Simon,"),
+            ("who is in Heaven )", "who is in Heaven.”)"),
+            ("‘ eklesia ’ (called-out ones)", "‘ ekklesia ’ (called-out ones)"),
+            ("<p>Eph 4:16).", "<p>(Eph 4:16)."),
+            ("when He said, “You are a leaky roof!", "when He said, ‘You are a leaky roof!"),
+            ("about your wife!” God had given", "about your wife!’” God had given"),
+            ("<p>2: 1 dead in trespasses", "<p>2:1 dead in trespasses"),
+            ("<p>Pv13:", "<p>v13:"),
+            ("each of the disciple’s minds", "each of the disciples’ minds"),
+            ("we are say ing,", "we are saying,"),
+            ("prayer of chapter 1: 15-20", "prayer of chapter 1:15-20"),
+            ("Paul’s prayer in 1:15 -20", "Paul’s prayer in 1:15-20"),
+            ("in its season.” Ps 1:3).", "in its season.” (Ps 1:3)."),
+            ("5: 1-6: Walk in love", "5:1-6: Walk in love"),
+            ("a clanging cymbal – nothing", "a clanging cymbal’ – nothing"),
+            ("Chapter 12 speaks of the excellence of love", "Chapter 13 speaks of the excellence of love"),
+            ("treated at chattel", "treated as chattel"),
+            ("1 Cor 13 13 –", "1 Cor 13:13 –"),
+            ("prayer: (1:15 -20;", "prayer: (1:15-20;"),
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
@@ -4479,6 +4724,92 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # to obtain or keep employment". `notability` is a real word, but
             # not the one meant here.
             ("from society, notability to obtain", "from society, no ability to obtain"),
+            # English proofreading pass (2026-11-05). Gareth Evans is a living
+            # modern author: only genuine typos, fused/split words, mispaired
+            # quotes, misspelled names and grammar slips — his voice, British
+            # spelling and dashes are left alone. Every pair is anchored on
+            # English prose so it cannot reach a translation.
+            # ch01 — Isa 40:29/31 as he quotes it (KJV)
+            ("to them that hath no might", "to them that have no might"),
+            ("they shall run and not grow weary", "they shall run and not be weary"),
+            ("the Heb.word qavah", "the Heb. word qavah"),
+            ("flew information overhead", "flew in formation overhead"),
+            ("surrounded by turkeys!” but I", "surrounded by turkeys!’ but I"),
+            ("work of the ministry . ” i.e.; to teach", "work of the ministry.” i.e., to teach"),
+            # ch02
+            ("the pastor is not here this morning” he said", "the pastor is not here this morning,” he said"),
+            ("the name of Jacky Pullinger", "the name of Jackie Pullinger"),
+            ("Dr Martin Lloyd Jones in his weekly", "Dr Martyn Lloyd-Jones in his weekly"),
+            ("anointing upon Him as he spoke", "anointing upon him as he spoke"),
+            ("However, we read these four portions", "However we read these four portions"),
+            # ch03
+            ("(meaning of Heb.. Aphek )", "(meaning of Heb. Aphek)"),
+            ("(Heb .-the rock our help )", "(Heb. - the rock our help)"),
+            ("Just as the for Samaritan woman", "Just as for the Samaritan woman"),
+            ("“I have a suggestion.” said one", "“I have a suggestion,” said one"),
+            ("need a king to govern us” they said", "need a king to govern us,” they said"),
+            ("“Come” said the king", "“Come,” said the king"),
+            ("go up to Kijath-jearim", "go up to Kirjath-jearim"),
+            # ch04 — the two lost line breaks before a verse/story, punctuated
+            # the way the es edition already reads them
+            ("She needed a new VISION Two men in a prison cell, staring through the bars One only",
+             "She needed a new VISION. Two men in a prison cell, staring through the bars: one only"),
+            ("She needed a different BURDEN A boy", "She needed a different BURDEN. A boy"),
+            ("small bottle held all was necessary", "small bottle held all that was necessary"),
+            ("bondage in Egypt” God always", "bondage in Egypt.” God always"),
+            ("began a good work in You, will perfect", "began a good work in you, will perfect"),
+            # ch05
+            ("“Hi” said one", "“Hi,” said one"),
+            ("“I’m Napoleon” his friend", "“I’m Napoleon,” his friend"),
+            ("man becomes the arbitrator of morals -what", "man becomes the arbitrator of morals - what"),
+            ("“WhenI arrived", "“When I arrived"),
+            ("even as I am not of the world” Of course", "even as I am not of the world.” Of course"),
+            ("woven over many years intercourse", "woven over many years’ intercourse"),
+            ("The lion has roared it’s loudest", "The lion has roared its loudest"),
+            ("(ie; an eager expectation", "(i.e., an eager expectation"),
+            # ch06
+            ("one of the young people were going", "one of the young people was going"),
+            ("“Pastor Gareth” he said", "“Pastor Gareth,” he said"),
+            ("whose church He was building", "whose church he was building"),
+            ("My burden is light . ’ I do", "My burden is light.’ I do"),
+            ("When we are yoked together with him, we", "When we are yoked together with Him, we"),
+            ("for Jacky Pullinger it was", "for Jackie Pullinger it was"),
+            ("for Chuck Colsen it was", "for Chuck Colson it was"),
+            ("prayer and intercession” he replied", "prayer and intercession,” he replied"),
+            ("“Oh” I said", "“Oh,” I said"),
+            ("In Society: ; Victims of abortion", "In Society: victims of abortion"),
+            # ch07
+            ("bears and lions” the shepherd boy", "bears and lions,” the shepherd boy"),
+            ("“ God has appointed .” 1 Cor 12: 11 - “ The Spirit distributes ..” Eph 4:11 - “ He who ascended .. gave .”",
+             "“God has appointed.” 1 Cor 12: 11 - “The Spirit distributes...” Eph 4:11 - “He who ascended ... gave.”"),
+            # ch08
+            ("cardinals, and et.al.", "cardinals, and et al."),
+            ("in Germany and Scandanavia", "in Germany and Scandinavia"),
+            ("the Zwinglian and Calvanist", "the Zwinglian and Calvinist"),
+            ("retreat at Haythrope Hall", "retreat at Heythrop Hall"),
+            ("“Look at that lady” he said", "“Look at that lady,” he said"),
+            ("God has made a mistake” I said", "God has made a mistake,” I said"),
+            # ch09
+            ("took a mission’s trip to Papua", "took a mission trip to Papua"),
+            ("out of Heaven, “Thou art My beloved Son, in thee I am well pleased.”",
+             "out of Heaven, ‘Thou art My beloved Son, in thee I am well pleased.’”"),
+            ("more assured that John himself", "more assured than John himself"),
+            ("The blind receives sight", "The blind receive sight"),
+            ("the deaf hear, The dead are raised", "the deaf hear, the dead are raised"),
+            ("cancel my holidays” he said", "cancel my holidays,” he said"),
+            ("“God has appointed teachers” wrote Paul", "“God has appointed teachers,” wrote Paul"),
+            # ch10
+            ("‘unspeakable, full of glory!” There", "‘unspeakable, full of glory!’ There"),
+            ("<h2>Dr Martin Lloyd Jones</h2><p>No one who", "<h2>Dr Martyn Lloyd-Jones</h2><p>No one who"),
+            # ch12 + appendices
+            ("2.What only you can do", "2. What only you can do"),
+            ("The Elder’s Board must have", "The Elders’ Board must have"),
+            # "in honour preferring one another" is Romans 12:10
+            ("honouring one another” (Romans 12:19)", "honouring one another” (Romans 12:10)"),
+            ("the ‘unity of the Spirit.’(See", "the ‘unity of the Spirit.’ (See"),
+            ("than we are as its elders are!", "than we are as its elders!"),
+            ("(eg; as an honorarium", "(e.g., as an honorarium"),
+            ("positive witness for His Lord", "positive witness for his Lord"),
         ],
     },
     "if": {
@@ -4564,6 +4895,169 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # A name, so it is fixed rather than left as printed (english-qa's
             # misspelling rule). The book spells it correctly elsewhere.
             ("To Nicodemas He said", "To Nicodemus He said"),
+            # English proofreading pass (2026-11-05). Each pair is anchored on
+            # English prose so it cannot bite a translation. Most are
+            # extraction residue: a space left where italics were dropped
+            # ("saving faith ;"), straight apostrophes stored as &#x27;, a
+            # Bible Gateway footnote marker ([b]); the rest are plain typos,
+            # misspelled names (Bonaparte, Elijah, Jim Elliot), unclosed or
+            # mis-nested quotations, and lowercase deity pronouns the book
+            # otherwise capitalises.
+            # ch02
+            ("with Epstein Barr Syndrome", "with Epstein-Barr Syndrome"),
+            ("such great faith ? Or had", "such great faith? Or had"),
+            ("Even if You throw yourself", "Even if you throw yourself"),
+            ("ours in Christ; However, we must", "ours in Christ; however, we must"),
+            # ch03
+            ("G od’s R iches A t C hrist’s E xpense He paid",
+             "God’s Riches At Christ’s Expense. He paid"),
+            ("I have called saving faith ; however", "I have called saving faith; however"),
+            ("Saving Faith , a gift from God", "Saving Faith, a gift from God"),
+            ("They have saving faith , but nothing", "They have saving faith, but nothing"),
+            ("between Satan and us . Does", "between Satan and us. Does"),
+            ("could rightly say , “I am", "could rightly say, “I am"),
+            ("I know your name , so I am going to reveal to you My name ,’”",
+             "I know your name, so I am going to reveal to you My name,’”"),
+            ("and He knows your name !", "and He knows your name!"),
+            ("gift of saving faith , but we must", "gift of saving faith, but we must"),
+            ("never seen” (G Wade Robinson)", "never seen” (G. Wade Robinson)"),
+            ("see His goodness , look", "see His goodness, look"),
+            ("longed for: self-control . This", "longed for: self-control. This"),
+            ("is true of faith . Only He", "is true of faith. Only He"),
+            ("triplet (patience, gentleness, goodness)", "triplet (patience, kindness, goodness)"),
+            ("(1 Corinthians 12: 7, 9)", "(1 Corinthians 12:7, 9)"),
+            ("called the gift of faith . The apostle", "called the gift of faith. The apostle"),
+            ("given to the church , and individuals", "given to the church, and individuals"),
+            ("an unanimous decision", "a unanimous decision"),
+            ("three kinds of faith: saving faith , the fruit of faith , and the gift of faith .",
+             "three kinds of faith: saving faith, the fruit of faith, and the gift of faith."),
+            # ch04
+            ("ordinary people like you and I who", "ordinary people like you and me who"),
+            ("“Examples of Faith, ” as", "“Examples of Faith,” as"),
+            ("all the day long” (G.A Young)", "all the day long” (G. A. Young)"),
+            ("to an inner witness , the prompting", "to an inner witness, the prompting"),
+            ("go in peace” (Luke 7:50)", "go in peace’” (Luke 7:50)"),
+            ("fulfilled in obedience . If there", "fulfilled in obedience. If there"),
+            ("by the Holy Spirit: His gift .", "by the Holy Spirit: His gift."),
+            ("things hoped for; it is a gift .", "things hoped for; it is a gift."),
+            ("knew them by their fruit . The fruit", "knew them by their fruit. The fruit"),
+            ("(Matthew 12:33) Faith is the evidence of things unseen. It is a fruit .",
+             "(Matthew 12:33). Faith is the evidence of things unseen. It is a fruit."),
+            ("It is belief and response . The moving", "It is belief and response. The moving"),
+            ("evidenced in repentance , baptism , confession",
+             "evidenced in repentance, baptism, confession"),
+            # ch05
+            ("another fork full of spaghetti", "another forkful of spaghetti"),
+            ("Do as I say now !”", "Do as I say now!”"),
+            ("often derisively, the mystics .", "often derisively, the mystics."),
+            ("nothing so disconcerting to a pastor than to have",
+             "nothing so disconcerting to a pastor as to have"),
+            ("had mistaken his voice for another", "had mistaken His voice for another"),
+            ("the subject of prophecy , but his words", "the subject of prophecy, but his words"),
+            ("as I hold on to his hand", "as I hold on to His hand"),
+            # ch06
+            ("“ But recall the former days", "“But recall the former days"),
+            ("For, “Yet a little while, and the coming one",
+             "For, ‘Yet a little while, and the coming one"),
+            ("has no pleasure in him.” But we are not", "has no pleasure in him.’ But we are not"),
+            ("not made out of things that are visible.” (Hebrews 11:3)",
+             "not made out of things that are visible” (Hebrews 11:3)"),
+            # ch07
+            ("they don&#x27;t like its call", "they don’t like its call"),
+            ("Does he see one whose heart is pure", "Does He see one whose heart is pure"),
+            ("what was previously unknown . The only way",
+             "what was previously unknown. The only way"),
+            ("depths of the sea (Psalms 103:12)", "depths of the sea (Psalm 103:12)"),
+            # ch08
+            ("Another children&#x27;s Bible quiz", "Another children’s Bible quiz"),
+            ("the principle of eternal life .", "the principle of eternal life."),
+            ("each of the apostles, except John, were martyred for what they knew-that Jesus",
+             "each of the apostles, except John, was martyred for what they knew - that Jesus"),
+            ("I tell you a mystery . We shall", "I tell you a mystery. We shall"),
+            ("‘Oh death, where is your victory?", "‘O death, where is your victory?"),
+            ("new truth, but a mystery . Whenever", "new truth, but a mystery. Whenever"),
+            # ch09
+            ("Genesis 6:5-7:24 Here we have", "Genesis 6:5-7:24. Here we have"),
+            ("lives to God&#x27;s grace and Noah&#x27;s obedience",
+             "lives to God’s grace and Noah’s obedience"),
+            ("and the Son’s obedience , all who", "and the Son’s obedience, all who"),
+            ("receive God’s abundant grace. (v.6).", "receive God’s abundant grace (v.6)."),
+            ("That, is saving faith .", "That is saving faith."),
+            # ch10
+            ("God often leads his children through", "God often leads His children through"),
+            ("of the 695 th Trinity Hymnal", "of the 695th Trinity Hymnal"),
+            ("the sky, I&#x27;m here on business", "the sky, I’m here on business"),
+            ("A.P Carter, has expressed", "A. P. Carter has expressed"),
+            ("I&#x27;m just a’passing through", "I’m just a-passing through"),
+            ("and I can&#x27;t feel at home", "and I can’t feel at home"),
+            ("(Luke 15:18-19) However, the father", "(Luke 15:18-19). However, the father"),
+            ("the farm owned him !", "the farm owned him!"),
+            ("in a &#x27;’mess of pottage", "in a ‘mess of pottage"),
+            # ch11
+            ("promise of His Father, - the baptism", "promise of His Father - the baptism"),
+            ("All the worlds’ religions", "All the world’s religions"),
+            ("evidence of God&#x27;s faithfulness", "evidence of God’s faithfulness"),
+            ("but are they God&#x27;s way?", "but are they God’s way?"),
+            ("emphasize His method . It is the unity of His people !",
+             "emphasize His method. It is the unity of His people!"),
+            # ch12
+            ("“These all died in faith , not having", "“These all died in faith, not having"),
+            ("it is only by faith . Abraham is", "it is only by faith. Abraham is"),
+            ("those justified by faith . So, even", "those justified by faith. So, even"),
+            ("pre-tribulation rapture , but that", "pre-tribulation rapture, but that"),
+            ("like a little child (Matt 18:4)", "like a little child (Matthew 18:4)"),
+            # ch13
+            ("His disciples to pray , “Father", "His disciples to pray, “Father"),
+            ("they always produce failures .", "they always produce failures."),
+            ("proceeding to an honor’s degree", "proceeding to an honors degree"),
+            ("into a believer&#x27;s lives is the testing of offenses .",
+             "into a believer’s life is the testing of offenses."),
+            ("rock and roll band when He came to the Lord",
+             "rock and roll band when he came to the Lord"),
+            ("He lay aside his guitar", "He laid aside his guitar"),
+            ("or wife or brothers[b] or parents", "or wife or brothers or parents"),
+            # ch14
+            ("“By faith , Isaac invoked", "“By faith, Isaac invoked"),
+            ("By faith , Jacob, when dying", "By faith, Jacob, when dying"),
+            ("the Biblical principal God was going", "the Biblical principle God was going"),
+            ("the hand of primary blessing, The other son",
+             "the hand of primary blessing. The other son"),
+            ("die twice (ie; natural and eternal death)", "die twice (i.e., natural and eternal death)"),
+            ("will conquer death by his obedience", "will conquer death by His obedience"),
+            ("but imperishable. that is, through", "but imperishable, that is, through"),
+            ("To Samuel, God had said , “For", "To Samuel, God had said, “For"),
+            # ch15
+            ("see Exodus 13: 19 and Joshua", "see Exodus 13:19 and Joshua"),
+            # ch16
+            ("afraid of the king&#x27;s edict", "afraid of the king’s edict"),
+            ("son of Pharaoh&#x27;s daughter", "son of Pharaoh’s daughter"),
+            ("when they attempted to do the same, were drowned (Hebrews 11:23-29).",
+             "when they attempted to do the same, were drowned” (Hebrews 11:23-29)."),
+            ("preparing a man for a mission .", "preparing a man for a mission."),
+            ("follow His leading by faith .", "follow His leading by faith."),
+            ("than to judge his friend for that", "than to judge His friend for that"),
+            ("the Hebrew word for rock is “ tsoor ,”", "the Hebrew word for rock is “tsoor,”"),
+            ("the Hebrew word for rock is “ selah ,”", "the Hebrew word for rock is “selah,”"),
+            # ch17
+            ("but rather, God’s actions by faith .", "but rather, God’s actions by faith."),
+            ("the walls fell down, by faith . God had", "the walls fell down, by faith. God had"),
+            ("son of Abraham; he is fully a king", "son of Abraham; He is fully a king"),
+            ("the great great grandmother of king David",
+             "the great-great-grandmother of King David"),
+            ("Napoleon Bonepart", "Napoleon Bonaparte"),
+            ("God chose a harlot, by faith , knowing", "God chose a harlot, by faith, knowing"),
+            # ch18
+            ("deliverance of Elija and Elisha", "deliverance of Elijah and Elisha"),
+            ("We could write, “ By faith Stephen", "We could write, “By faith Stephen"),
+            ("lay this sin to his charge!” By this", "lay this sin to his charge!’” By this"),
+            ("the condemnation of God , thereby", "the condemnation of God, thereby"),
+            ("one of them, Jim Elliott, had written", "one of them, Jim Elliot, had written"),
+            ("Nate Saint, and Jim Elliott, together", "Nate Saint, and Jim Elliot, together"),
+            ("by Elizabeth Elliott, Jim’s widow", "by Elizabeth Elliot, Jim’s widow"),
+            ("(G.A.Young) Might we", "(G. A. Young) Might we"),
+            ("something better for ys, that", "something better for us, that"),
+            ("and wither I am led", "and whither I am led"),
+            ("(H.Tee) - permission sought.", "(H. Tee) - permission sought."),
         ],
     },
     "stepping-stones-2": {
@@ -4585,6 +5079,113 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Malasia", "Malaysia"),
             ("Chapultapek", "Chapultepec"),
             ("Deja Vue", "Déjà vu"),
+            # English proofreading pass (2026-11-05), in chapter order. Genuine
+            # slips only — typos, missing/stray punctuation, a dialogue comma
+            # where the stop belongs, quotes opened with the wrong mark, and
+            # names/places spelled two ways or wrongly (Gurkha, Courtenay,
+            # Lorane, Blaenannerch, New Delhi, favela). A quotation that runs
+            # on into the next block (the extractor split the paragraph) gets
+            # its continuation opener, “…, so each block reads balanced. Every
+            # pair is anchored on English prose so it cannot reach a
+            # translation. Evans's voice and British spelling are untouched.
+            ('poems uploaded Bible teachings', 'poems, uploaded Bible teachings'),
+            ('British Army Education Corp in', 'British Army Education Corps in'),
+            ('young adult’s group', 'young adults’ group'),
+            ('wearing lapel &#x27;badges.’', 'wearing lapel ‘badges.’'),
+            ('entertainment &#x27;star.’', 'entertainment ‘star.’'),
+            ('“too industrial” Cardiff', '“too industrial,” Cardiff'),
+            ('preparing me home at Swansea', 'preparing me a home at Swansea'),
+            ('employed by the Ministry of Defense', 'employed by the Ministry of Defence'),
+            ('with the B.O.A.R. so', 'with the B.A.O.R. so'),
+            ('As we fellowship together', 'As we fellowshipped together'),
+            ('examinations followed visas were', 'examinations followed, visas were'),
+            ('KaiTak Airport', 'Kai Tak Airport'),
+            ('speak the truth,” I whispered', 'speak the truth.” I whispered'),
+            ('Then turning back to Alan and added', 'Then, turning back to Alan, I added'),
+            ('Mr. Price, my headmaster was supportive', 'Mr. Price, my headmaster, was supportive'),
+            ('were said, however, we were not going alone', 'were said; however, we were not going alone'),
+            ('author of, “The Cross', 'author of “The Cross'),
+            ('“I’m Don Anderson” he replied', '“I’m Don Anderson,” he replied'),
+            ('certificate to you.” It&#x27;s obvious', 'certificate to you. It&#x27;s obvious'),
+            ('isn’t all about.” I started', 'isn’t all about,” I started'),
+            ('<p>They are amazed to find a man of science', '<p>“They are amazed to find a man of science'),
+            ('<p>Its blood was to be taken by the High Priest', '<p>“Its blood was to be taken by the High Priest'),
+            ('<p>He was the lamb who, alone,', '<p>“He was the lamb who, alone,'),
+            ('“ Blessed are you, Simon', '“Blessed are you, Simon'),
+            ('Father in heaven ” (Matthew', 'Father in heaven” (Matthew'),
+            ('divine revelation.There follows', 'divine revelation. There follows'),
+            ('“There’s no way we can afford it” I said', '“There’s no way we can afford it,” I said'),
+            ('of &#x27;beautiful British Columbia.’', 'of ‘beautiful British Columbia.’'),
+            ('capitol city', 'capital city'),
+            ('“We will need office space with telephones” he said', '“We will need office space with telephones,” he said'),
+            ('“You have them” I said', '“You have them,” I said'),
+            ('daughter, Lynette ‘power of attorney’', 'daughter, Lynette, ‘power of attorney’'),
+            ('what has been done-and we give', 'what has been done – and we give'),
+            ('provided through compassion.', 'provided through Compassion.'),
+            ('conversations with “Te quyiero mucho”', 'conversations with “Te quiero mucho”'),
+            ('<p>Your weak place, your wounds', '<p>“Your weak place, your wounds'),
+            ('some volunteer work; on board', 'some volunteer work on board'),
+            ('take time out’ scraping rust’', 'take time out ‘scraping rust’'),
+            ('in mid- October,', 'in mid-October,'),
+            ('the medical care, we take for granted', 'the medical care we take for granted'),
+            ('As the highlights of the four years we spent on board, the Anastasis were many.', 'The highlights of the four years we spent on board the Anastasis were many.'),
+            ('Your father has a sister; Paula', 'Your father has a sister, Paula'),
+            ('for a women’s meetings', 'for a women’s meeting'),
+            ('Thus, it was that one month spent in Victoria', 'Thus, it was that one month was spent in Victoria'),
+            ('on New Years’ Eve', 'on New Year’s Eve'),
+            ('McDonough, the principal welcomed us', 'McDonough, the principal, welcomed us'),
+            ('“This is what you should be doing.” said Anne', '“This is what you should be doing,” said Anne'),
+            ('<p>We can live on the income from students', '<p>“We can live on the income from students'),
+            ('The Key in My Hand) Mexico was again', 'The Key in My Hand). Mexico was again'),
+            ('believers among the Ghurka soldiers', 'believers among the Gurkha soldiers'),
+            ('found two of the Ghurka soldiers', 'found two of the Gurkha soldiers'),
+            ('ministering to Ghurka soldiers', 'ministering to Gurkha soldiers'),
+            ('five small seminary classes in New Dehli', 'five small seminary classes in New Delhi'),
+            ('from the USA, who was directing the work', 'from the USA, was directing the work'),
+            ('behind a stationery car', 'behind a stationary car'),
+            ('“No, just a toilet break” replied', '“No, just a toilet break,” replied'),
+            ('I&#x27;m Rudy Rabi!', 'I&#x27;m Rudy Raby!'),
+            ('bars. Eachtime he', 'bars. Each time he'),
+            ('coastal city of Ceara in', 'coastal city of Ceará in'),
+            ('working in a favella', 'working in a favela'),
+            ('mountain that contained the favella', 'mountain that contained the favela'),
+            ('the children of the favella', 'the children of the favela'),
+            ('some men from the favella', 'some men from the favela'),
+            ('“Do you have any identification?” He asked', '“Do you have any identification?” he asked'),
+            ('the most dangerous of places The international', 'the most dangerous of places. The international'),
+            ('International YWAM leaders own conference', 'International YWAM leaders’ own conference'),
+            ('“Gareth” he said, “we stopped counting', '“Gareth,” he said, “we stopped counting'),
+            ('Christine, Tony’s wife came to me', 'Christine, Tony’s wife, came to me'),
+            ('leaving for Canada, as Tony drove me', 'leaving for Canada. As Tony drove me'),
+            ('San Filipe and San Matias', 'San Felipe and San Matias'),
+            ('mansion, Haythorp Hall in Oxfordshire', 'mansion, Heythrop Hall in Oxfordshire'),
+            ('after twenty-five years.” The young man on your left', 'after twenty-five years.” “The young man on your left'),
+            ('twenty minutes” the staff worker said', 'twenty minutes,” the staff worker said'),
+            ('Port au Prince, the capitol.', 'Port au Prince, the capital.'),
+            ('where Dave Knipell met us', 'where Dave Knippel met us'),
+            ('The three–week journey', 'The three-week journey'),
+            ('young man in Lorrane, Oregon', 'young man in Lorane, Oregon'),
+            ('visited them in Lorraine, Oregon', 'visited them in Lorane, Oregon'),
+            ('from a lady in Courtney,', 'from a lady in Courtenay,'),
+            ('each weekend to Courtney,', 'each weekend to Courtenay,'),
+            ('To go to Courtney for', 'To go to Courtenay for'),
+            ('the church ‘synod!’.', 'the church ‘synod!’'),
+            ('“That’s what I want” he said', '“That’s what I want,” he said'),
+            ('signed up for the course” she would', 'signed up for the course,” she would'),
+            ('to form as small choir', 'to form a small choir'),
+            ('John Peterson’s Night of Miracle,', 'John Peterson’s Night of Miracles,'),
+            ('right on 4 o’ clock', 'right on 4 o’clock'),
+            ('many sons and daughters” he said', 'many sons and daughters,” he said'),
+            ('<p>Put the word in the bottom drawer', '<p>“Put the word in the bottom drawer'),
+            ('doctor diagnosed, I had', 'doctor diagnosed I had'),
+            ('as soon as possible” he added', 'as soon as possible,” he added'),
+            ('Janice declared ‘Evidently,', 'Janice declared, “Evidently,'),
+            ('travelled to NewQuay where', 'travelled to New Quay where'),
+            ('on to Blaenannarch where', 'on to Blaenannerch where'),
+            ('the chapel at Blaenannarch,', 'the chapel at Blaenannerch,'),
+            ('several times at Wynnum- Manley Alliance', 'several times at Wynnum-Manly Alliance'),
+            ('<p>Ryan Air is one of', '<p>Ryanair is one of'),
+            ('I told Don Stevens I would', 'I told Don Stephens I would'),
         ],
     },
     "prevailing-prayer": {
@@ -4876,6 +5477,161 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<h2>TWENTY-NINTH LESSON.</h2> <h3>‘According to His will;</h3> <h3><i>Or, Our Boldness in Prayer</i>. </h3>  ", ""),
             ("<h2>THIRTIETH LESSON.</h2> <h3>‘An holy priesthood;’</h3> <h3>Or, The Ministry of Intercession.</h3>  ", ""),
             ("<h2>THIRTY-FIRST LESSON.</h2> <h3>‘Pray without ceasing;’</h3> <h3>Or, A Life of Prayer.</h3>  ", ""),
+            # English proofreading pass (2026-11-05): transcription slips, each
+            # forced by grammar, the KJV wording quoted, or the book's own usage
+            # elsewhere — "Thou has" for hast, fused/split words, mispaired or
+            # missing quotation marks (’ for ; is this scan's recurring misread),
+            # roman "I John" for 1 John, Saphiv for Saphir (ch18 spells it right),
+            # Rom. xii. 8 for xiii. 8 (ch33 cites xiii. 8 for the same verse). Each
+            # anchored on English text, so no translation's rows can match.
+            # ch05
+            ("Words which Thou has given us", "Words which Thou hast given us"),
+            # ch06
+            ("petitions. he wills that I should", "petitions. He wills that I should"),
+            # ch07
+            ("into the inner most depths", "into the innermost depths"),
+            # ch08
+            ("all others are comprised The Holy Spirit",
+             "all others are comprised. The Holy Spirit"),
+            # ch09
+            ("nothing to set before him’ and he from within",
+             "nothing to set before him; and he from within"),
+            ("the two fold lesson", "the twofold lesson"),
+            # ch11
+            ("get the aid he ask.", "get the aid he asks."),
+            ("What does thou <i>will</i>?", "What dost thou <i>will</i>?"),
+            # ch12
+            ("what God’s will is’ believing", "what God’s will is; believing"),
+            # ch14
+            ("failed in believing? ‘The Master", "failed in believing?’ The Master"),
+            # ch16
+            ("in the midst of them.—Matt. xviii", "in the midst of them.’—Matt. xviii"),
+            ("in the help of other.", "in the help of others."),
+            ("of Jesus Christ.; To the Colossians", "of Jesus Christ.’ To the Colossians"),
+            ("<p>‘LORD, TEACH US TO PRAY’</p>", "<p>‘LORD, TEACH US TO PRAY.’</p>"),
+            # ch18
+            ("Jesus said, “I knew that Thou always",
+             "Jesus said, ‘I knew that Thou always"),
+            ("‘Ask and it shall be given,” Jesus says",
+             "“Ask and it shall be given,” Jesus says"),
+            # ch19
+            ("image and superscription?—Matt.", "image and superscription?’—Matt."),
+            ("sovereign’s desires’ as long as", "sovereign’s desires; as long as"),
+            ("for Thou has made him", "for Thou hast made him"),
+            # ch20
+            ("contrary: <i> Verily, verily</i>", "contrary: ‘<i>Verily, verily</i>"),
+            ("<i>and whatsover ye shall ask", "<i>and whatsoever ye shall ask"),
+            ("what Thou has promised Thy people", "what Thou hast promised Thy people"),
+            # ch21
+            ("utterance to it: Father! Glorify Thy son, <i>that Thy Son may glorify Thee. ‘I have glorified Thee</i>",
+             "utterance to it: ‘Father! Glorify Thy Son, <i>that Thy Son may glorify Thee. I have glorified Thee</i>"),
+            # ch22
+            ("in this stage, he chief effort", "in this stage, his chief effort"),
+            # ch23
+            ("‘Give ear to me;’ Hearken to my voice;’",
+             "‘Give ear to me;’ ‘Hearken to my voice;’"),
+            ("Jesus had said, “Abide in me", "Jesus had said, ‘Abide in me"),
+            # ch24
+            ("pleasing in His sight.’’ Or take", "pleasing in His sight.’ Or take"),
+            ("—James. v. 16.", "—James v. 16."),
+            # ch25
+            ("Spirit.’—<i>Saphiv, The Lord’s Prayer</i>",
+             "Spirit.’—<i>Saphir, The Lord’s Prayer</i>"),
+            # ch26
+            ("(I John ii. 12-14)", "(1 John ii. 12-14)"),
+            ("in my Name. ‘ We know", "in my Name.’ We know"),
+            ("Whatsoever ye shall ask the father in my Name",
+             "Whatsoever ye shall ask the Father in my Name"),
+            ("fulfil in me Thy promise, At that day",
+             "fulfil in me Thy promise, ‘At that day"),
+            # ch27
+            ("<i>every-praying</i>", "<i>ever-praying</i>"),
+            ("began to life a <i>faith-life", "began to live a <i>faith-life"),
+            ("my life in everything by in Thee", "my life in everything be in Thee"),
+            ("Advocate, who pays the Father", "Advocate, who prays the Father"),
+            ("; I John ii. 1.)", "; 1 John ii. 1.)"),
+            # ch28
+            ("I WILLall that Thou", "I WILL all that Thou"),
+            # ch29
+            ("elevation of that, He lifted up", "elevation of that, ‘He lifted up"),
+            ("His ‘FATHER! I WILL. And the soul", "His ‘FATHER! I WILL.’ And the soul"),
+            ("faith that Thou has atoned", "faith that Thou hast atoned"),
+            # ch30
+            ("—I John V v. 14-15.", "—1 John v. 14-15."),
+            ("through this faith, that we have,’", "through this faith, ‘that we have,’"),
+            ("<p>1See this illustrated", "<p>See this illustrated"),
+            # ch31
+            ("—I Peter ii. 5.", "—1 Peter ii. 5."),
+            ("<p>THE Spirit of the Lord God is upon me",
+             "<p>‘THE Spirit of the Lord God is upon me"),
+            ("‘LORD TEACH US TO PRAY.’", "‘LORD, TEACH US TO PRAY.’"),
+            # ch32
+            ("give thanks.—I Thess. v. 16", "give thanks.’—1 Thess. v. 16"),
+            ("persevering pray is irresistible", "persevering prayer is irresistible"),
+            ("the Holy Trinity Spirit of God!", "the Holy Trinity. Spirit of God!"),
+            # ch33
+            ("in former times. He is the Teacher", "in former times, He is the Teacher"),
+            ("another”(Rom. xii. 8)", "another”(Rom. xiii. 8)"),
+            ("(Nov, 20, 1835)", "(Nov. 20, 1835)"),
+            ("carried on it this way", "carried on in this way"),
+            ("<p><i>December</i> 11.—", "<p>‘<i>December</i> 11.—"),
+            ("occupied in it our not", "occupied in it or not"),
+            ("the larger the work as grown", "the larger the work has grown"),
+            ("concerning the whole, that I was at the time",
+             "concerning the whole, than I was at the time"),
+        ],
+    },
+    "the-two-covenants": {
+        # English proofreading pass (2026-11-05): extraction/OCR damage in the
+        # CCEL text, read chapter by chapter. Murray's period spelling and
+        # punctuation are left alone; each pair is a forced repair.
+        "replacements": [
+            # Epigraph citations: a flattened dash ("”-DEUT.") where every other
+            # epigraph has the em dash ("”—EX.").
+            ("commandments.”-DEUT. vii. 9.", "commandments.”—DEUT. vii. 9."),
+            ("two covenants.”</i> -GAL. iv.", "two covenants.”</i>—GAL. iv."),
+            ("bondage.”-GAL. iv. 24-81, v. 1.", "bondage.”—GAL. iv. 24-31, v. 1."),
+            ("intercession for them.”-HEB. vii.", "intercession for them.”—HEB. vii."),
+            ("these words.”-EX. xxiv. 7, 8;", "these words.”—EX. xxiv. 7, 8;"),
+            ("holy nation unto Me.”-EX. xix. 5.", "holy nation unto Me.”—EX. xix. 5."),
+            ("under grace.”-ROM. vi. 14.", "under grace.”—ROM. vi. 14."),
+            ("all our days.”-LUKE i. 68-75.", "all our days.”—LUKE i. 68-75."),
+            ("—DEUT.xxx. 6, 8.", "—DEUT. xxx. 6, 8."),
+            ("—EZEK.xxxvi. 27.", "—EZEK. xxxvi. 27."),
+            # OCR letter slips.
+            ("—DEUT. iv. 13.i</p>", "—DEUT. iv. 13.</p>"),
+            ("Jesus <i>bath made me free</i>", "Jesus <i>hath made me free</i>"),
+            ("who bath visited His people", "who hath visited His people"),
+            ("as very little known in true power", "is very little known in true power"),
+            ("that it maybe our actual experience", "that it may be our actual experience"),
+            ("already wrougbt in us", "already wrought in us"),
+            ("And the Lord apake unto Moses", "And the Lord spake unto Moses"),
+            ("<i>the Spirit giveth fife</i>", "<i>the Spirit giveth life</i>"),
+            ("out of the hands of our enemaes", "out of the hands of our enemies"),
+            ("<i>in holiness rind righteousness", "<i>in holiness and righteousness"),
+            ("cousequent experience", "consequent experience"),
+            ("what He bad to speak or do", "what He had to speak or do"),
+            ("study this trutb,", "study this truth,"),
+            ("he attributed it two things", "he attributed it to two things"),
+            ("with all thine heart and with all soul.", "with all thine heart and with all thy soul."),
+            ("“The law was given by Moses grace and truth", "“The law was given by Moses; grace and truth"),
+            # Stray / doubled punctuation.
+            ("with wonderful clearness; what the proofs", "with wonderful clearness, what the proofs"),
+            ("by His Holy Spirit given to us.. </p>", "by His Holy Spirit given to us. </p>"),
+            ("that we serve ”—here", "that we serve”—here"),
+            ("“ministration of death ”;", "“ministration of death”;"),
+            ("needed</i>—-is what we dare", "needed</i>—is what we dare"),
+            ("unto good works, “and how, as fitted", "unto good works,” and how, as fitted"),
+            ("how little it has done so in many .cases.", "how little it has done so in many cases."),
+            ("this you may ask and expect,—”<i>and may", "this you may ask and expect,—“<i>and may"),
+            ("entered into the heart of man,-GOD WILL WORK", "entered into the heart of man,—GOD WILL WORK"),
+            ("Until the Church.awakes", "Until the Church awakes"),
+            ("until we begin to exercise them, We must not", "until we begin to exercise them. We must not"),
+            ("will lead you, and. enable you", "will lead you, and enable you"),
+            ("to be taken up into, it.</i>", "to be taken up into it.</i>"),
+            ("As long. as there is not clear faith", "As long as there is not clear faith"),
+            ("holiness,” we must; with the eye", "holiness,” we must, with the eye"),
+            ("<i>came, into the full surrender", "<i>came into the full surrender"),
         ],
     },
 }
@@ -5141,6 +5897,36 @@ BODY_CORRECTIONS.setdefault("christ-crucified", {}).setdefault("replacements", [
 # and receive". A cure/care r/u misread; the context is decisive.
 BODY_CORRECTIONS.setdefault("true-vine", {}).setdefault("replacements", []).extend([
     ("The branch has no cure;", "The branch has no care;"),
+])
+
+# English proofreading pass (2026-11-05). Each is transcription damage with one
+# reading; anchored on English text so no translation can match.
+BODY_CORRECTIONS["true-vine"]["replacements"].extend([
+    # ch2: a stray opener inside the quotation it closes ("I am the true Vine!
+    # … I will be to you.").
+    ("to its branch, “<i>I will be to you.”</i>", "to its branch, <i>I will be to you.”</i>"),
+    # ch7: "Some tree needs …; others bear" — the plural is forced by "others".
+    ("Some tree needs occasional pruning;", "Some trees need occasional pruning;"),
+    # ch9: "Thou … undertakest" (Murray's prayers: "Thou workest", "Thou givest").
+    ("how Thou as Vine undertaketh to do all", "how Thou as Vine undertakest to do all"),
+    # ch16: a small-caps opening left a capital mid-sentence.
+    ("The Whole place of the branch", "The whole place of the branch"),
+    # ch26: a quotation nested inside Christ's words takes single marks.
+    ("grasp each “Even as I” as the divine", "grasp each ‘Even as I’ as the divine"),
+    # ch29: stray comma inside John 15:15 ("but I have called you friends").
+    ("“But, I have called you friends,", "“But I have called you friends,"),
+    # ch30: Rom 8:29 KJV "the image of his Son".
+    ("to the image of his son.”", "to the image of his Son.”"),
+    # ch31: 1 Cor 2:4 "in demonstration of the Spirit and of power".
+    ("but in demonstrations of the Spirit", "but in demonstration of the Spirit"),
+    # Epigraph title-casing out of step with the rest of the book's epigraphs
+    # (ch5 sets the same John 15:2 line; ch21/ch23/ch26 the others).
+    ("<i>Every Branch in me that Beareth Not Fruit, He taketh It away</i>",
+     "<i>Every Branch in me That Beareth Not Fruit, He Taketh It Away</i>"),
+    ("Except It Abide In the Vine;", "Except It Abide in the Vine;"),
+    ("I Also Have Loved you</i>", "I Also Have Loved You</i>"),
+    ("Ye Shall Abide In My Love</i>", "Ye Shall Abide in My Love</i>"),
+    ("Even as I have Kept My Father", "Even as I Have Kept My Father"),
 ])
 
 # OCR/extraction slips found while translating batch 3 to Spanish. All are
@@ -12268,6 +13054,21 @@ BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements",
     ("Spirit is love<i>“?", "Spirit is love<i>”?"),
     ("ni upendo<i>“?", "ni upendo<i>”?"),
 ])
+# absolute-surrender: English proofreading pass (2026-11-05). Each reading is
+# forced by the KJV Murray is quoting or by his own wording beside it; the
+# en-modern edition already reads 1 and 4 correctly ("of red wine", "His
+# branch") and renders 2 as "a peg". Pairs 3 and 4 also bite en-modern.
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    # 1. ch08: Isa 27:2, "A vineyard of red wine".
+    ("that vineyard or red wine", "that vineyard of red wine"),
+    # 2. ch09: Ezek 15:3, "will men take a pin of it to hang any vessel thereon?"
+    ("cannot even be used as a pen;", "cannot even be used as a pin;"),
+    # 3. ch05: Eph 3:16, "according to the riches of his glory" — Murray's
+    # gloss in the next clause says "the riches of His glory".
+    ("grant you according to riches of his glory", "grant you according to the riches of his glory"),
+    # 4. ch09: "He is my Vine, and I am His branch" (cf. "I am Thy branch" below).
+    ("and I am His branches—", "and I am His branch—"),
+])
 # all-things-for-good: pt ch9–11 closed EVERY quotation with an opener, “…“ — 64 of them; the other chapters and the English are right.
 BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
     ("chamados.</i>“ ", "chamados.</i>” "),
@@ -12653,6 +13454,41 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("Tumemngojea.' ", "Tumemngojea.’ "),
     (" atanisikia.' Tar", " atanisikia.’ Tar"),
 ])
+# waiting-on-god: English proofreading pass (2026-11-05). Each pair is
+# anchored on English text no translation carries; the en-modern edition shares
+# four of the defects verbatim and spells one more with its own tighter markup,
+# so it gets its own pair for that.
+BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).extend([
+    # ch7 epigraph (Ps. 25:4): "Teach me Thy paths" printed twice, once run
+    # onto the first verse line and again as the second.
+    ("Shew me thy ways, O Lord; Teach me Thy paths. </p>", "Shew me thy ways, O Lord; </p>"),
+    ("O Lord; Teach me Thy paths.</p><p>Teach me Thy paths.</p>", "O Lord;</p><p>Teach me Thy paths.</p>"),
+    # ch7: a closing mark with no opener; its twin "waiting for supplies" in
+    # the same sentence carries none.
+    ("<i>waiting for instructions.'</i>", "<i>waiting for instructions.</i>"),
+    # ch10: the quotation of Ps. 27:14 opened with ‘ never closes.
+    ("wait thou upon the Lord! Let nothing", "wait thou upon the Lord!’ Let nothing"),
+    # ch24: the italic opens hard against "shall", rendering "shallnot".
+    ("shall<i>not</i> be ashamed", "shall <i>not</i> be ashamed"),
+    # ch5 epigraph (Ps. 104:27-28) opens a quotation it never closes.
+    ("satisfied with good. </p>", "satisfied with good.' </p>"),
+    # ch15: a stray comma between the article and the quotation it introduces.
+    ("Let the, 'And now, Lord", "Let the 'And now, Lord"),
+    # Contents entry 17: the only entry without the full stop before its dash.
+    ("In Times of Darkness—Isa. 8:17.", "In Times of Darkness.—Isa. 8:17."),
+    # ch20 epigraph closes on a comma; every other epigraph closes on a stop.
+    ("His salvation,'—Isa. 25:9", "His salvation.'—Isa. 25:9"),
+    # ch14: Isa. 64:5 (KJV) reads "him that rejoiceth and worketh"; the -s
+    # form breaks the pair of verbs mid-quotation.
+    ("him that rejoices and worketh", "him that rejoiceth and worketh"),
+    # ch35: Law's subtitle, "An Humble, Earnest, and Affectionate Address", as
+    # the same note prints it at its close. Anchored on the English lead-in so
+    # it cannot reach the translations' copies of the bracket.
+    (
+        "Law on the Holy Spirit. [The Power of the Holy Spirit: An humble earnest,",
+        "Law on the Holy Spirit. [The Power of the Holy Spirit: An humble, earnest,",
+    ),
+])
 # walking-with-god: curly ‘ openers closed by a straight ' — 71.
 BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", []).extend([
     (" not strewed'.", " not strewed’."),
@@ -12726,6 +13562,46 @@ BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", [
     ("and lofty One',", "and lofty One’,"),
     (" at my word.' ", " at my word.’ "),
     (" of my mouth'.", " of my mouth’."),
+])
+
+# the-deeper-christian-life (Murray, CCEL): English proofreading pass. Doubled
+# word, mispaired / missing quotation marks, a pronoun capitalised for Peter
+# and Paul as if for Christ, dropped words where the sentence cannot stand
+# without them, hyphens standing for dashes, and two plain typos.
+BODY_CORRECTIONS.setdefault("the-deeper-christian-life", {}).setdefault("replacements", []).extend([
+    # ch2
+    ("into these these heads", "into these heads"),
+    ("is thine ”—all that God", "is thine”—all that God"),
+    ("said, “Yes;” we can take possession", "said, “Yes; we can take possession"),
+    # ch3
+    ("over him that becomes “carnal.”", "over him that he becomes “carnal.”"),
+    ("“ Lovest thou Me?”", "“Lovest thou Me?”"),
+    ("Christ said to Him: “Peter, not only", "Christ said to him: “Peter, not only"),
+    # ch4
+    ("<p>And He brought us out from thence", "<p>“And He brought us out from thence"),
+    ("He lead them into Canaan", "He leads them into Canaan"),
+    ("If there still unbelieving children", "If there were still unbelieving children"),
+    ("on the upper side in to a high wall", "on the upper side into a high wall"),
+    ("who is saying: —I remember how God", "who is saying: —“I remember how God"),
+    # ch5
+    ("but—but—“And in daily life", "but—but—” And in daily life"),
+    ("the man to be filled with the Spirit. Who is there", "the man to be filled with the Spirit.” Who is there"),
+    ("more than fullness-this is overflow", "more than fullness—this is overflow"),
+    ("“Tis done, the great", "“’Tis done, the great"),
+    # ch6
+    ("for my religion. A hundred times", "for my religion.” A hundred times"),
+    ("of Christ, and He said, “If Christ calls me", "of Christ, and he said, “If Christ calls me"),
+    ("Thou hast said, “My presence shall go with thee,”—and, Lord",
+     "Thou hast said, ‘My presence shall go with thee,’—and, Lord"),
+    ("to that soul, -Don’t be discouraged", "to that soul, —Don’t be discouraged"),
+    # ch7
+    ("Jesus who appeared to Him on the way to Damascus", "Jesus who appeared to him on the way to Damascus"),
+    ("And the first questions is", "And the first question is"),
+    # ch8
+    ("make clear to you: - </p>", "make clear to you:— </p>"),
+    ("give everything back? Brother,", "give everything back?” Brother,"),
+    ("for Thy Kingdom. Some talk and pray", "for Thy Kingdom.” Some talk and pray"),
+    ("and posses and use them", "and possess and use them"),
 ])
 
 # Transcription artifacts in the SermonIndex sermons (Tozer / Lloyd-Jones),
@@ -20865,42 +21741,183 @@ BODY_CORRECTIONS.setdefault("do-you-pray", {}).setdefault("replacements", []).ex
     ("(Zaburi 8:10.)", "(Zaburi 81:10.)"),
 ])
 
-# the-deeper-christian-life (Murray, CCEL): English proofreading pass. Doubled
-# word, mispaired / missing quotation marks, a pronoun capitalised for Peter
-# and Paul as if for Christ, dropped words where the sentence cannot stand
-# without them, hyphens standing for dashes, and two plain typos.
-BODY_CORRECTIONS.setdefault("the-deeper-christian-life", {}).setdefault("replacements", []).extend([
+# abide-in-christ (Murray, Altemus 1895, archive.org OCR): English proofreading
+# pass. Every pair is scan damage, not Murray's style -- the edition's spacing
+# before `;`/`:`/`!` and its period spelling are left alone. The shapes: a full
+# stop read for a comma before a capitalised pronoun ("needed. He could die" ->
+# "needed, He"), and its mirror, a comma ending a sentence ("me,' And yet");
+# misread letters ("grapes of Jesus" for grace, "Messing", "le conveyed", "ash in
+# my name", "(John v. H)" for v. 44); stray or misplaced quote marks; small words
+# read as capitals ("to US", "Christian IS"); and one reference split by a page
+# seam ("(Ezek. xxxvi.</p><p>7)" for xxxvi. 27, the verse quoted).
+BODY_CORRECTIONS.setdefault("abide-in-christ", {}).setdefault("replacements", []).extend([
+    # Preface
+    ("life and interest. He invited them", "life and interest, He invited them"),
     # ch2
-    ("into these these heads", "into these heads"),
-    ("is thine ”—all that God", "is thine”—all that God"),
-    ("said, “Yes;” we can take possession", "said, “Yes; we can take possession"),
+    ("to stay with me,’ And yet", "to stay with me.’ And yet"),
+    ("blessed ‘Abide,’ As mighty", "blessed ‘Abide.’ As mighty"),
+    ("constrain us to ‘listen", "constrain us to listen"),
     # ch3
-    ("over him that becomes “carnal.”", "over him that he becomes “carnal.”"),
-    ("“ Lovest thou Me?”", "“Lovest thou Me?”"),
-    ("Christ said to Him: “Peter, not only", "Christ said to him: “Peter, not only"),
+    ("the promise is needed as large", "the promise is indeed as large"),
+    ("yield your- . selves", "yield yourselves"),
+    ("since .so many years", "since so many years"),
+    ("‘tis mine to obey, ‘tis His", "’tis mine to obey, ’tis His"),
     # ch4
-    ("<p>And He brought us out from thence", "<p>“And He brought us out from thence"),
-    ("He lead them into Canaan", "He leads them into Canaan"),
-    ("If there still unbelieving children", "If there were still unbelieving children"),
-    ("on the upper side in to a high wall", "on the upper side into a high wall"),
-    ("who is saying: —I remember how God", "who is saying: —“I remember how God"),
+    ("the large majority, of disciples", "the large majority of disciples"),
+    ("‘Abide,’ The grace", "‘Abide.’ The grace"),
+    ("work in us,’ It is", "work in us.’ It is"),
+    ("Saviour, m Thee I can", "Saviour, in Thee I can"),
+    ("enter upon this, blessed life", "enter upon this blessed life"),
+    ("Jesus has. taken", "Jesus has taken"),
     # ch5
-    ("but—but—“And in daily life", "but—but—” And in daily life"),
-    ("the man to be filled with the Spirit. Who is there", "the man to be filled with the Spirit.” Who is there"),
-    ("more than fullness-this is overflow", "more than fullness—this is overflow"),
-    ("“Tis done, the great", "“’Tis done, the great"),
+    ("condescension of the grapes of Jesus", "condescension of the grace of Jesus"),
+    ("All that Jesus is in heaven. He is for us", "All that Jesus is in heaven, He is for us"),
+    ("forget himself, ‘and to live", "forget himself, and to live"),
+    ("It is for fruit much fruit", "It is for fruit, much fruit"),
+    ("a perishing world.</p>", "a perishing world.’</p>"),
+    ("will Come home to us", "will come home to us"),
+    ("What say est thou", "What sayest thou"),
+    ("day by day. Thou wouldest unfold", "day by day, Thou wouldest unfold"),
     # ch6
-    ("for my religion. A hundred times", "for my religion.” A hundred times"),
-    ("of Christ, and He said, “If Christ calls me", "of Christ, and he said, “If Christ calls me"),
-    ("Thou hast said, “My presence shall go with thee,”—and, Lord",
-     "Thou hast said, ‘My presence shall go with thee,’—and, Lord"),
-    ("to that soul, -Don’t be discouraged", "to that soul, —Don’t be discouraged"),
+    ("all that a vine can ie,", "all that a vine can be,"),
+    ("No, I am. in Christ", "No, I am in Christ"),
+    ("I am ‘In Christ: I have", "I am in Christ: I have"),
+    ("practically ‘beyond our reach", "practically beyond our reach"),
     # ch7
-    ("Jesus who appeared to Him on the way to Damascus", "Jesus who appeared to him on the way to Damascus"),
-    ("And the first questions is", "And the first question is"),
+    ("it must become to US.", "it must become to us."),
+    ("purposed in Himself, and join", "purposed in Himself,’ and join"),
     # ch8
-    ("make clear to you: - </p>", "make clear to you:— </p>"),
-    ("give everything back? Brother,", "give everything back?” Brother,"),
-    ("for Thy Kingdom. Some talk and pray", "for Thy Kingdom.” Some talk and pray"),
-    ("and posses and use them", "and possess and use them"),
+    ("you are in Him.’ and have", "you are in Him, and have"),
+    ("His love. His power. His infinite glory", "His love, His power, His infinite glory"),
+    ("life indeed..", "life indeed."),
+    ("who live in Him, Therefore,", "who live in Him. Therefore,"),
+    ("apparent desertion. His own assurance", "apparent desertion, His own assurance"),
+    # ch9
+    ("the Righteous One or the unrighteous", "the Righteous One for the unrighteous"),
+    ("unto ns righteousness", "unto us righteousness"),
+    # ch10
+    ("to the question. How sinful man", "to the question, How sinful man"),
+    ("invaluable work. The Gospel Mystery", "invaluable work, The Gospel Mystery"),
+    ("for US in Christ", "for us in Christ"),
+    ("we are Justified by", "we are justified by"),
+    ("our new stature and holiness", "our new nature and holiness"),
+    ("<sup>*</sup> Holiness may", "<sup>*</sup> ‘Holiness may"),
+    # ch11
+    ("As a king. He is our sanctification", "As a king, He is our sanctification"),
+    ("guiding US into", "guiding us into"),
+    # ch12
+    ("mean what, he said", "mean what he said"),
+    ("fully united to me. His blessing points", "fully united to me, His blessing points"),
+    # ch13
+    ("unblameable in holiness; ‘The Lord", "unblameable in holiness;’ ‘The Lord"),
+    ("settle you,’ What more", "settle you.’ What more"),
+    # ch14
+    ("precious promise:’ Night and day", "precious promise: ‘Night and day"),
+    # ch15
+    ("(Ezra iii. 4)-, ‘as", "(Ezra iii. 4), ‘as"),
+    # ch16
+    ("‘Jesus saves me now. This is indeed", "‘Jesus saves me now.’ This is indeed"),
+    ("self -recollection", "self-recollection"),
+    ("‘Even when overtaken", "Even when overtaken"),
+    ("David, saying. By the hand", "David, saying, By the hand"),
+    ("Jesus says. Abide in me", "Jesus says, Abide in me"),
+    ("the whisper. Do it now.", "the whisper, Do it now."),
+    # ch17
+    ("secure the treasure of losing", "secure the treasure, of losing"),
+    ("who forsake all. He was expounding", "who forsake all, He was expounding"),
+    ("all things hut loss", "all things but loss"),
+    ("be found) IN Him", "be found IN Him"),
+    ("Then, again,, there", "Then, again, there"),
+    # ch18
+    ("we scarce Know how", "we scarce know how"),
+    ("into the understanding. He makes US know", "into the understanding, He makes us know"),
+    ("ABIDE IN HiM", "ABIDE IN HIM"),
+    ("power le conveyed", "power be conveyed"),
+    # ch19
+    ("only he silent unto God", "only be silent unto God"),
+    ("the Messing of abiding", "the blessing of abiding"),
+    # ch20
+    ("our o.nly portion", "our only portion"),
+    ("the rich Blessings God designed", "the rich blessings God designed"),
+    ("compassion,-— and", "compassion, — and"),
+    # ch21
+    ("a tree of life. of which", "a tree of life, of which"),
+    ("thinks that He cannot have a blessing", "thinks that he cannot have a blessing"),
+    ("work; this. will inspire", "work; this will inspire"),
+    # ch22
+    ("— John</i>", "— John xv. 7.</i>"),
+    ("what he, has seen", "what he has seen"),
+    ("cannot rest, without prayer", "cannot rest without prayer"),
+    ("‘that the father may he glorified", "‘that the Father may be glorified"),
+    ("The promise,’ Whatsoever ye ash in my name, ‘may not",
+     "The promise, ‘Whatsoever ye ask in my name,’ may not"),
+    ("(John v. H)", "(John v. 44)"),
+    ("(1 John Iii. 22)", "(1 John iii. 22)"),
+    # ch23
+    ("His perfection. His immensity. His majesty", "His perfection, His immensity, His majesty"),
+    ("Were it needed. He could die again to possess thee.’ As",
+     "Were it needed, He could die again to possess thee. As"),
+    ("not with a ; love", "not with a love"),
+    ("When it was needed. He sacrificed", "When it was needed, He sacrificed"),
+    ("His righteousness. His Spirit, His glory", "His righteousness, His Spirit, His glory"),
+    ("the question comes. How can", "the question comes, How can"),
+    ("in its I condescension", "in its condescension"),
+    ("hath Loved me", "hath loved me"),
+    ("by which .we yield", "by which we yield"),
+    # ch24
+    ("(ver. 57), As I live", "(ver. 57), ‘As I live"),
+    ("(John xvii. 22), That they", "(John xvii. 22), ‘That they"),
+    ("one ‘with Him", "one with Him"),
+    ("glorified in Him) (2 Thess", "glorified in Him (2 Thess"),
+    # ch25
+    ("(Jer. xxxi,)", "(Jer. xxxi.)"),
+    ("energies, — -therefore", "energies, — therefore"),
+    # ch26
+    ("might be fulL ‘—John xv. 11.", "might be full.’ — John xv. 11."),
+    ("always rejoicing: these", "always rejoicing:’ these"),
+    ("as sinners are brought home. His joy", "as sinners are brought home, His joy"),
+    ("joy might he full", "joy might be full"),
+    ("‘These things I speak,’ that", "‘These things I speak, that"),
+    ("precious words :’ These things", "precious words : ‘These things"),
+    # ch27
+    ("the world may believe; ‘That they", "the world may believe;’ ‘That they"),
+    ("Himself up to death. He simply", "Himself up to death, He simply"),
+    ("each lives not for Himself", "each lives not for himself"),
+    # ch28
+    ("himself tells US of", "himself tells us of"),
+    ("we have not sinned,’ The two", "we have not sinned.’ The two"),
+    ("should yet not he doing sin", "should yet not be doing sin"),
+    ("for you to he partaker", "for you to be partaker"),
+    ("<p>We are apt either", "<p>‘We are apt either"),
+    # ch29
+    ("‘AH power", "‘All power"),
+    ("xii. 9 (R. v.)", "xii. 9 (R. V.)"),
+    ("properly authority (R. v.)", "properly authority (R. V.)"),
+    ("perfect in weakness,’ When our Lord", "perfect in weakness.’ When our Lord"),
+    ("now Jesus . had received", "now Jesus had received"),
+    ("claims or demands. He works Himself", "claims or demands, He works Himself"),
+    ("All He gives. He gives with power", "All He gives, He gives with power"),
+    ("utter impotence. He gives them", "utter impotence, He gives them"),
+    ("for holiness,, to live", "for holiness, to live"),
+    # ch30
+    ("all that is ‘of nature", "all that is of nature"),
+    ("temporal and spiritual. He is ready", "temporal and spiritual, He is ready"),
+    ("life ever can have. He will be", "life ever can have, He will be"),
+    ("(Ro?n, VI. 6)", "(Rom. vi. 6)"),
+    ("the Christian IS of seeking", "the Christian is of seeking"),
+    # ch31
+    ("His human nature. He is personally", "His human nature, He is personally"),
+    ("His own body. He is security", "His own body, He is security"),
+    ("shall not depart from me,’ With what", "shall not depart from me.’ With what"),
+    ("to Walk in my statutes", "to walk in my statutes"),
+    ("(Ezek. xxxvi.</p><p>7). Blessed", "(Ezek. xxxvi. 27). Blessed"),
+    ("(see Heb. vii.), Aaron", "(see Heb. vii.). Aaron"),
+    ("He ever Liveth", "He ever liveth"),
+    ("influences of. His unceasing", "influences of His unceasing"),
+    ("the Father’s favour. He never ceases", "the Father’s favour, He never ceases"),
+    ("for us. He never ceases to work", "for us, He never ceases to work"),
+    ("His suretyship. His unceasing priesthood", "His suretyship, His unceasing priesthood"),
+    # ch32
+    ("‘Till He come,Is the watchword", "‘Till He come,’ is the watchword"),
+    ("what His union with Jesus on the throne", "what his union with Jesus on the throne"),
 ])
