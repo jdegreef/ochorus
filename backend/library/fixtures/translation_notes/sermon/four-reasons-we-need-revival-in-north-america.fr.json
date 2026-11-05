@@ -1,0 +1,107 @@
+{
+ "kind": "sermon",
+ "slug": "four-reasons-we-need-revival-in-north-america",
+ "language": "fr",
+ "job_issue": 7212,
+ "references": [
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 7
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 9:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 9:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 9:11a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 43
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 43
+  },
+  {
+   "reference": "2 Chronicles 7:12a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Chronicles 7:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 51
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 51
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered",
+   "block_index": 45
+  }
+ ]
+}
