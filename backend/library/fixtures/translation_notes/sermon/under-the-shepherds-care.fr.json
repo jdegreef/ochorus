@@ -1,0 +1,102 @@
+{
+ "kind": "sermon",
+ "slug": "under-the-shepherds-care",
+ "language": "fr",
+ "job_issue": 7216,
+ "references": [
+  {
+   "reference": "1 Peter 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 53:5b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 2
+  },
+  {
+   "reference": "2 Timothy 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Nahum 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 1:6a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 12
+  },
+  {
+   "reference": "Job 23:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 44:22b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Peter 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 6:32b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 84:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 11:28a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 18
+  },
+  {
+   "reference": "Joshua 3:4b",
+   "status": "self_rendered"
+  }
+ ]
+}

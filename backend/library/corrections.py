@@ -1820,6 +1820,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # sw
             ('<blockquote>"Kwa maana mlikuwa kama',
              '<h3>HOTUBA YA MWAKA MPYA.</h3>'),
+            # fr
+            ('<blockquote>« Car vous étiez comme',
+             '<h3>ALLOCUTION DU NOUVEL AN.</h3>'),
         ],
     },
     # --- Gutenberg #65066, "The Life and Diary of David Brainerd" ------------
