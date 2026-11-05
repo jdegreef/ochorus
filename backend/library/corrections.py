@@ -4878,6 +4878,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<h2>THIRTY-FIRST LESSON.</h2> <h3>‘Pray without ceasing;’</h3> <h3>Or, A Life of Prayer.</h3>  ", ""),
         ],
     },
+    # English proofreading pass (2026-11-05). A modern teen retelling, so the
+    # fixes are punctuation only: Mark 9:24 quoted in the body with a comma
+    # where the KJV (and this chapter's own epigraph) has a semicolon, and two
+    # bracketed lists that were set off by bare commas, which made them read
+    # as part of the sentence around them.
+    "absolute-surrender-teens": {
+        "replacements": [
+            ("Lord, I believe, help thou", "Lord, I believe; help thou"),
+            ("this week, school, sport, a job, time with friends, pause",
+             "this week (school, sport, a job, time with friends), pause"),
+            ("one bit of fruit, a kind word, patience, an act of help, and thank",
+             "one bit of fruit (a kind word, patience, an act of help) and thank"),
+        ],
+    },
 }
 
 
