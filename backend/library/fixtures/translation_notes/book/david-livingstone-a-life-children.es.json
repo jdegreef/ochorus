@@ -1,0 +1,64 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-children",
+ "language": "es",
+ "job_issue": 7027,
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "source_file": "key-teachings-of-jonathan-edwards.es.json"
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:31a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "mined",
+   "source_file": "our-daily-walk.es.json"
+  },
+  {
+   "reference": "Psalm 15:4b",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Psalm 34:18a",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 25:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  }
+ ]
+}
