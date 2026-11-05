@@ -1325,6 +1325,35 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("the master‘s likeness", "the master’s likeness"),
             ("made ours by the Holy spirit,", "made ours by the Holy Spirit,"),
             ("Stockmaiev", "Stockmayer"),
+            # English proofreading pass (2026-11-05). Only what is plainly
+            # transcription damage; every one changes nothing Murray meant.
+            #
+            # A full stop missing after the chapter numeral, against the
+            # book's own form everywhere else ("Lev. xx. 7, 8").
+            ("(xxii 21, 33)", "(xxii. 21, 33)"),
+            ("(2 Cor. vi 16–18)", "(2 Cor. vi. 16–18)"),
+            ("Phil ii. 15, iii. 6", "Phil. ii. 15, iii. 6"),
+            # Pronouns capitalised as if for God where they name a man. The
+            # book capitalises only for God; the two Scripture lines read
+            # lower case in the KJV it quotes (Ex. iii. 6, Isa. xliii. 3,
+            # 1 John iv. 16). ch3: a child of God; ch5: Moses (epigraph and
+            # body); ch12: Israel; ch16: "beloved believer"; ch20: Paul;
+            # ch22: the believer; ch30: "he that abideth in love".
+            ("He bears this name", "he bears this name"),
+            ("make Him what it calls", "make him what it calls"),
+            ("Moses hid his face, for He was afraid", "Moses hid his face, for he was afraid"),
+            ("for He feared to look upon God", "for he feared to look upon God"),
+            ("I am the Lord Thy God,", "I am the Lord thy God,"),
+            ("Thy Saviour. Thus saith", "thy Saviour. Thus saith"),
+            ("make Thy inner man a fit home, Thy heart", "make thy inner man a fit home, thy heart"),
+            ("because He wished", "because he wished"),
+            ("forsakes Him,", "forsakes him,"),
+            ("God in Him.’", "God in him.’"),
+            # ch13: the clause after "needed" ran on with no stop; ch17: "or"
+            # for "of" ("the truth of thought and sentiment", the husk set
+            # against life-truth two paragraphs up).
+            ("is needed through Christ, in the Spirit", "is needed: through Christ, in the Spirit"),
+            ("the truth or thought and sentiment", "the truth of thought and sentiment"),
         ],
     },
     "selected-sermons-edwards": {
