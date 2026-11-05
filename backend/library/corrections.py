@@ -12655,13 +12655,9 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
 ])
 # waiting-on-god: English proofreading pass (2026-11-05). Each pair is
 # anchored on English text no translation carries; the en-modern edition shares
-# four of the defects verbatim and spells two more with its own tighter
-# markup, so it gets its own pair for those.
+# four of the defects verbatim and spells one more with its own tighter markup,
+# so it gets its own pair for that.
 BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).extend([
-    # ch2: a transcriber's page note left as the Preface's last block. Every
-    # translation already drops it.
-    ("1896</i> </p>  <p> [Page 16 is blank] </p>", "1896</i> </p>"),
-    ("1896</i></p><p>[Page 16 is blank]</p>", "1896</i></p>"),
     # ch7 epigraph (Ps. 25:4): "Teach me Thy paths" printed twice, once run
     # onto the first verse line and again as the second.
     ("Shew me thy ways, O Lord; Teach me Thy paths. </p>", "Shew me thy ways, O Lord; </p>"),
