@@ -3766,6 +3766,22 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-weight: 600;
 }
 
+/* The end-of-text onward pair (page-design D10): a chapter's and a sermon's
+   "Next" is a .btn-primary carrying the next item's title in the display face,
+   "Previous" a .btn-ghost beside it. In @layer components with .btn, so the
+   markup's utilities (flex-col, text-start) still apply. */
+@layer components {
+	.end-next {
+		padding-block: 0.9rem;
+	}
+	.end-next-title {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+}
+
 /* Related-tag pill — a navigational LINK pill: a book's topics, "more by this
    author", the related sermons. Distinct from .chip, which is a filter toggle
    that stays put; a .tag is an anchor that goes somewhere. It was hand-rolled
