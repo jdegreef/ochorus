@@ -40,9 +40,9 @@
 			<p class="mt-1 line-clamp-3 text-body text-muted sm:line-clamp-none">{article.description}</p>
 		{/if}
 		<p class="meta">
-			{#if guide}{t('book.readersGuide')}<span class="opacity-50">{' · '}</span>{/if}{readingTime(
+			{#if guide}{t('book.readersGuide')}<span class="sep">{' · '}</span>{/if}{readingTime(
 				article.word_count
-			)}{#if lead && !guide}<span class="opacity-50">{' · '}</span><span class="lead"
+			)}{#if lead && !guide}<span class="sep">{' · '}</span><span class="lead"
 					>{t('articles.leadsTo').replace('%title%', lead.title)}</span
 				>{/if}
 		</p>

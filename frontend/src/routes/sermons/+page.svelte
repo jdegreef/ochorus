@@ -316,7 +316,7 @@
 	{#snippet sermonCounts()}
 		{sermons.length}
 		{sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-		<span class="opacity-50">·</span>
+		<span class="sep">·</span>
 		{preacherCount}
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
 	{/snippet}
@@ -489,7 +489,7 @@
 					     lifespan read as one figure ("1843–1919 15"). -->
 					{#snippet detail()}
 						<span class="text-small font-normal count"
-							>{#if lifespan}{lifespan}<span class="opacity-50">{' · '}</span>{/if}{g.items.length}
+							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{g.items.length}
 							{g.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}</span
 						>
 					{/snippet}
