@@ -12653,6 +12653,45 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("Tumemngojea.' ", "Tumemngojea.’ "),
     (" atanisikia.' Tar", " atanisikia.’ Tar"),
 ])
+# waiting-on-god: English proofreading pass (2026-11-05). Each pair is
+# anchored on English text no translation carries; the en-modern edition shares
+# four of the defects verbatim and spells two more with its own tighter
+# markup, so it gets its own pair for those.
+BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).extend([
+    # ch2: a transcriber's page note left as the Preface's last block. Every
+    # translation already drops it.
+    ("1896</i> </p>  <p> [Page 16 is blank] </p>", "1896</i> </p>"),
+    ("1896</i></p><p>[Page 16 is blank]</p>", "1896</i></p>"),
+    # ch7 epigraph (Ps. 25:4): "Teach me Thy paths" printed twice, once run
+    # onto the first verse line and again as the second.
+    ("Shew me thy ways, O Lord; Teach me Thy paths. </p>", "Shew me thy ways, O Lord; </p>"),
+    ("O Lord; Teach me Thy paths.</p><p>Teach me Thy paths.</p>", "O Lord;</p><p>Teach me Thy paths.</p>"),
+    # ch7: a closing mark with no opener; its twin "waiting for supplies" in
+    # the same sentence carries none.
+    ("<i>waiting for instructions.'</i>", "<i>waiting for instructions.</i>"),
+    # ch10: the quotation of Ps. 27:14 opened with ‘ never closes.
+    ("wait thou upon the Lord! Let nothing", "wait thou upon the Lord!’ Let nothing"),
+    # ch24: the italic opens hard against "shall", rendering "shallnot".
+    ("shall<i>not</i> be ashamed", "shall <i>not</i> be ashamed"),
+    # ch5 epigraph (Ps. 104:27-28) opens a quotation it never closes.
+    ("satisfied with good. </p>", "satisfied with good.' </p>"),
+    # ch15: a stray comma between the article and the quotation it introduces.
+    ("Let the, 'And now, Lord", "Let the 'And now, Lord"),
+    # Contents entry 17: the only entry without the full stop before its dash.
+    ("In Times of Darkness—Isa. 8:17.", "In Times of Darkness.—Isa. 8:17."),
+    # ch20 epigraph closes on a comma; every other epigraph closes on a stop.
+    ("His salvation,'—Isa. 25:9", "His salvation.'—Isa. 25:9"),
+    # ch14: Isa. 64:5 (KJV) reads "him that rejoiceth and worketh"; the -s
+    # form breaks the pair of verbs mid-quotation.
+    ("him that rejoices and worketh", "him that rejoiceth and worketh"),
+    # ch35: Law's subtitle, "An Humble, Earnest, and Affectionate Address", as
+    # the same note prints it at its close. Anchored on the English lead-in so
+    # it cannot reach the translations' copies of the bracket.
+    (
+        "Law on the Holy Spirit. [The Power of the Holy Spirit: An humble earnest,",
+        "Law on the Holy Spirit. [The Power of the Holy Spirit: An humble, earnest,",
+    ),
+])
 # walking-with-god: curly ‘ openers closed by a straight ' — 71.
 BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", []).extend([
     (" not strewed'.", " not strewed’."),
