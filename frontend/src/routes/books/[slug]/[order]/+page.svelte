@@ -2887,16 +2887,8 @@
 			transform: scale(1.15);
 		}
 	}
-	/* The Next button: its title in the display face. */
-	.end-next {
-		padding-block: 0.9rem;
-	}
-	.end-next-title {
-		font-family: var(--font-display);
-		font-size: var(--fs-h3);
-		font-weight: 600;
-		line-height: 1.2;
-	}
+	/* The Next button (.end-next / .end-next-title) lives in app.css: the
+	   sermon page's pair wears it too (page-design D10). */
 
 	/* Finishing a chapter: one gentle pulse of the onward button so the arrival
 	   registers. Set only when the chapter is completed (and never under

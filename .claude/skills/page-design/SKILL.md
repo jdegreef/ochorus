@@ -845,7 +845,7 @@ relevant group.
   shelf filter; the `/topics` browse chips and sermon scripture chips remain.
   Not to be confused with `TopicChips.svelte`, the "Browse by topic"
   anchor-link section.)_
-- [ ] **D10** Prev/next: a `.btn` pair in the reader, bespoke bordered cards on
+- [x] **D10** _(shipped 2026-11-05 — the sermon page's bespoke bordered cards are now the reader's pair: `.end-next btn-primary` (next title in the display face, first and full-width on a phone) + `.btn-ghost` Previous; `.end-next`/`.end-next-title` moved from the reader's scoped CSS into app.css. The focus-exit pill was already one `FocusExit` component)_ Prev/next: a `.btn` pair in the reader, bespoke bordered cards on
   the sermon page. The exit-focus pill is pasted verbatim into Author, Sermon
   and Reader. → the reader's pair; one `.focus-exit` class.
 - [x] **D11** _(shipped #1427 — `SourceBadge` in the chapter reader and on author bios)_ `SourceBadge` sits under the byline on Book, after the text card on

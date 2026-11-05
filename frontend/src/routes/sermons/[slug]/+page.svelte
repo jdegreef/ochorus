@@ -843,30 +843,38 @@
 	{/if}
 
 	<!-- Sequential prev/next through this author's sermons, so a reader who
-	     finishes one keeps going instead of dead-ending at the bottom. -->
+	     finishes one keeps going instead of dead-ending at the bottom. The
+	     chapter reader's pair (page-design D10): Next is the primary, first and
+	     full-width on a phone; from sm Previous sits at the start, Next at the
+	     end. Tab order stays Next-first at every width. -->
 	{#if sermon.prev || sermon.next}
-		<nav class="mt-12 flex gap-3 border-t border-border pt-6" aria-label={t('sermon.sequentialNav')}>
-			{#if sermon.prev}
-				<a
-					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
-					class="group flex-1 rounded-card border border-border p-3 hover:border-accent hover:no-underline"
-				>
-					<div class="eyebrow text-muted"><Arrow back /> {t('reader.previous')}</div>
-					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
-						<bdi>{sermon.prev.title}</bdi>
-					</div>
-				</a>
-			{/if}
+		<nav
+			class="end-links mt-12 flex flex-col items-stretch gap-3 border-t border-border pt-6 sm:flex-row-reverse"
+			aria-label={t('sermon.sequentialNav')}
+		>
 			{#if sermon.next}
 				<a
 					href={localizeHref(`/sermons/${sermon.next.slug}`)}
-					class="group flex-1 rounded-card border border-border p-3 text-end hover:border-accent hover:no-underline"
+					class="end-next btn btn-primary flex-1 flex-col items-start gap-0.5 text-start sm:items-end sm:text-end"
+					aria-label="{t('reader.next')}: {sermon.next.title}"
 				>
-					<div class="eyebrow text-muted">{t('reader.next')} <Arrow /></div>
-					<div class="mt-0.5 text-small font-semibold text-text group-hover:text-accent">
-						<bdi>{sermon.next.title}</bdi>
-					</div>
+					<span class="eyebrow opacity-75">{t('reader.next')}</span>
+					<span class="end-next-title" dir="auto">{sermon.next.title}</span>
 				</a>
+			{:else}
+				<!-- Holds Previous to its half of the row from sm; nothing on a phone. -->
+				<span class="hidden flex-1 sm:block"></span>
+			{/if}
+			{#if sermon.prev}
+				<a
+					href={localizeHref(`/sermons/${sermon.prev.slug}`)}
+					class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
+				>
+					<span class="eyebrow text-muted">{t('reader.previous')}</span>
+					<span class="text-small" dir="auto">{sermon.prev.title}</span>
+				</a>
+			{:else}
+				<span class="hidden flex-1 sm:block"></span>
 			{/if}
 		</nav>
 	{/if}
