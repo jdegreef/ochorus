@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "es",
+ "job_issue": 7177,
+ "references": [
+  {
+   "reference": "Mark 9:23b",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  }
+ ]
+}
