@@ -1163,7 +1163,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("He will delight to give.” ()", "He will delight to give.” (Note C.)"),
             ("known by us in their power. ()", "known by us in their power. (Note D.)"),
             ("of His spirit to the Father. )", "of His spirit to the Father. (Note E.)"),
-            ("Gods seeks intercessors. ()", "Gods seeks intercessors. (Note F.)"),
+            # Writes the "God seeks" repair below directly, so this pair's
+            # output stays in the settled fixture (see the next block).
+            ("Gods seeks intercessors. ()", "God seeks intercessors. (Note F.)"),
             ("प्रकट करे। ()", "प्रकट करे। (टिप्पणी A.)"),
             ("बढ़नेवाला। ()", "बढ़नेवाला। (टिप्पणी B.)"),
             ("प्रसन्न होगा।” ()", "प्रसन्न होगा।” (टिप्पणी C.)"),
@@ -1178,6 +1180,23 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # down-cased it. Anchored on the `<p>` so it cannot touch body_text.
             ("<p>In my name—repeated six times over.",
              "<p>In My Name—repeated six times over."),
+            # English proofreading pass (2026-11). Plain slips, each against
+            # the book's own usage; none rewrites Murray.
+            # ch15: a comma for the full stop in a scripture reference, in a
+            # list where every other abbreviation takes the stop.
+            ("Phil, iii. 17,", "Phil. iii. 17,"),
+            # ch16: "Gods seeks" — the chapter's title and its eleven other
+            # instances read "God seeks intercessors". The pair above writes
+            # the fix on a fresh import; this one repairs the shipped rows.
+            ("Gods seeks intercessors.", "God seeks intercessors."),
+            # ch17: a dropped word ("it is to feared that").
+            ("it is to feared that", "it is to be feared that"),
+            # ch7 and ch12: the reverent capital set on a MAN — Abraham, and
+            # "man" in "that God might dwell and work in Him, and be the life
+            # of his life", where the next pronoun is lowercase.
+            ("What gave Him such boldness?", "What gave him such boldness?"),
+            ("might dwell and work in Him, and be the life of his life",
+             "might dwell and work in him, and be the life of his life"),
         ],
         # The other half of the `pginternal` damage: ch18's six note HEADINGS
         # (`restore_dropped_blocks` has the mechanism, and why this is not a
