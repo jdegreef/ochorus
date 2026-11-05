@@ -44,7 +44,7 @@
   "source_type": "public_domain",
   "source_url": "",
   "attribution": "© Ochorus. An Ochorus Original, free to read and share. Scripture quotations are from the Open Word Bible (OWB), Balanced edition, which is dedicated to the public domain (CC0).",
-  "cover_url": "",
+  "cover_url": "/covers/art/jesus-teacher-of-prayer.jpg",
   "pdf_url": "",
   "cover_color": "#2b3a67",
   "series": [
@@ -52,7 +52,7 @@
   ],
   "series_position": 2,
   "sort_order": 282,
-  "is_published": false,
+  "is_published": true,
   "created_at": "2026-11-04T20:09:59.143Z",
   "updated_at": "2026-11-04T20:58:09.271Z"
  }
