@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "phillips-brooks",
+ "language": "fr",
+ "job_issue": 7225,
+ "references": [
+  {
+   "reference": "Psalm 78:72a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 16
+  }
+ ]
+}
