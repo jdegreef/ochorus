@@ -669,6 +669,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "tell-me-the-story"
+  ],
+  "language": "fr",
+  "title": "Raconte-moi l’histoire",
+  "description": "Les histoires de la Bible elle-même, racontées pour les enfants, en trois parties : Histoires de l’Ancien Testament, La vie de Jésus et Histoires du Nouveau Testament. Chaque histoire est assez courte pour être lue à voix haute au moment du coucher et se termine par une prière et des questions pour en parler ensemble.",
+  "created_at": "2026-11-05T00:00:00Z",
+  "updated_at": "2026-11-05T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "daughters-of-the-king"
   ],
   "language": "es",
