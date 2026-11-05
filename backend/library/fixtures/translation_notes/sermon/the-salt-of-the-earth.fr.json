@@ -1,0 +1,42 @@
+{
+ "kind": "sermon",
+ "slug": "the-salt-of-the-earth",
+ "language": "fr",
+ "job_issue": 7221,
+ "references": [
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 5:13a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 5:13a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 6:3a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 5:13b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 5:16a",
+   "status": "self_rendered",
+   "block_index": 17
+  }
+ ]
+}
