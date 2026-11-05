@@ -64,7 +64,7 @@
 			<span class="whitespace-nowrap"
 				>{book.chapter_count}
 				{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
-			>{#if sitting}<span class="opacity-50">{' · '}</span><span class="whitespace-nowrap"
+			>{#if sitting}<span class="sep">{' · '}</span><span class="whitespace-nowrap"
 					>{sitting}</span
 				>{/if}
 		</p>

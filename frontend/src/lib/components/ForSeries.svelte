@@ -65,14 +65,14 @@
 				<span class="dot font-display" aria-hidden="true">{i + 1}</span>
 				<div class="stop-body">
 					<p class="text-eyebrow group-ink">
-						{words.week(i + 1)}{#if dates[i]}{' '}<span class="text-muted"><span aria-hidden="true">·</span> {fmt.format(dates[i])}</span>{/if}
+						{words.week(i + 1)}{#if dates[i]}{' '}<span class="text-muted"><span class="sep" aria-hidden="true">·</span> {fmt.format(dates[i])}</span>{/if}
 					</p>
 					<a class="mt-1 block font-semibold text-text hover:underline" href={hrefInLocale(`/sermons/${w.slug}`, locale)}>{w.title}</a>
 					<p class="mt-1 text-small text-muted">
 						{w.author.name}{#if w.scripture_ref},{' '}{w.scripture_ref}{/if}
 					</p>
 					<p class="mt-1 text-small text-muted">
-						{words.studyQuestions(w.questions)}{' '}<span class="opacity-50" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
+						{words.studyQuestions(w.questions)}{' '}<span class="sep" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
 					</p>
 				</div>
 			</li>

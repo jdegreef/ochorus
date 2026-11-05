@@ -110,7 +110,7 @@
 	{#snippet counts()}
 		{series.length}
 		{series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')}
-		<span class="opacity-50">·</span>
+		<span class="sep">·</span>
 		{bookTotal}
 		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
