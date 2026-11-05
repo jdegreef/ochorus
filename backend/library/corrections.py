@@ -17687,6 +17687,46 @@ BODY_CORRECTIONS["the-sin-of-murmuring"]["back_matter"] = [
     ("do something about it right now.</p>", ", \"'Moreover, brethren"),
 ]
 
+# working-for-god (Murray, 1901, CCEL): English proofreading pass. Transcription
+# slips only — stray/missing stops, OCR "be"/"he" and "bidden"/"hidden", soft
+# hyphens left mid-word, a CCEL scripture-link label run into the prose
+# ("(v. 19, 30)John 5:19, 30:"), quotation marks dropped at a quotation's open
+# or close, and impossible references (Revelation has no ch. 24; Rom 16:2 reads
+# "receive her"). Murray's own wording, pronoun capitals and citations that
+# may be the printing's are reported in the PR, not changed here.
+BODY_CORRECTIONS.setdefault("working-for-god", {}).setdefault("replacements", []).extend([
+    ("Good Works. Tit. 3:14 118", "Good Works.—Tit. 3:14 118"),
+    ("the Divine. blessedness", "the Divine blessedness"),
+    ("beware of separating them, The more", "beware of separating them. The more"),
+    ("expressions (v. 19, 30)John 5:19, 30:", "expressions (v. 19, 30):"),
+    ("<p>Verily, verily, I say unto You,", "<p>‘Verily, verily, I say unto you,"),
+    ("as the most honoured The Father", "as the most honoured. The Father"),
+    ("work in fear and trembling,</p>", "work in fear and trembling.</p>"),
+    ("brings forth the fruit, Of faith", "brings forth the fruit. Of faith"),
+    ("Until. it is opened", "Until it is opened"),
+    ("‘Receive here in the Lord;’", "‘Receive her in the Lord;’"),
+    ("in our weak­ ness;", "in our weakness;"),
+    ("of all who, are to be its members", "of all who are to be its members"),
+    ("revelation of Christ in its as the power", "revelation of Christ in us as the power"),
+    ("diligently followed every good work</i>.— 1 Tim.", "diligently followed every good work</i>.’—1 Tim."),
+    ("(Rev. 21:2, 24:8)", "(Rev. 21:2, 19:8)"),
+    ("the humbler the more be is used", "the humbler the more he is used"),
+    ("meet for the Masters use", "meet for the Master’s use"),
+    ("its practical part­—we", "its practical part—we"),
+    ("working as God Works, and with God", "working as God works, and with God"),
+    ("fellowworkers", "fellow-workers"),
+    ("‘I laboured more abundantly, than they all.’", "‘I laboured more abundantly than they all.’"),
+    ("Paul says: I will glory in my weakness", "Paul says: ‘I will glory in my weakness"),
+    ("when be had besought", "when he had besought"),
+    ("each one who waits on Him</p>", "each one who waits on Him.</p>"),
+    ("has a part to take.. The daily", "has a part to take. The daily"),
+    ("Every believer has bidden within himself", "Every believer has hidden within himself"),
+    ("</i>’—Rev. 2:3 </p>", "</i>’—Rev. 2, 3 </p>"),
+    ("that pov­erty of spirit", "that poverty of spirit"),
+    ("a new ur­gency and joy", "a new urgency and joy"),
+    ("The trained stone-cutter has a higher object: be thinks", "The trained stone-cutter has a higher object: he thinks"),
+])
+
 # SermonIndex Simpson batch 4: each sermon read in full; only fixes forced by
 # context — OCR slips ("0" for "O", stray colons and spaces), a misprinted verse
 # number, a word the quoted verse or sentence requires.
