@@ -8149,6 +8149,37 @@
 			"bar": 0,
 			"caps": false
 		},
+		"es/life-of-pascal": {
+			"ground": "7b3654c41c83e5d5966475ee0f836ab0b70894ba22d9e3fafaa4b9e5f355a396",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[169, 303, 431, 381],
+					[141, 367, 459, 445]
+				],
+				"subtitle": [
+					[95, 497, 505, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				277,
+				518
+			]
+		},
 		"es/lord-teach-us-to-pray-2": {
 			"ground": "1775aa31a125fb01ed70e2b9736e21d2193c62d2d0ba4751f750c7911114dabc",
 			"style": "devotional",
