@@ -12268,6 +12268,21 @@ BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements",
     ("Spirit is love<i>“?", "Spirit is love<i>”?"),
     ("ni upendo<i>“?", "ni upendo<i>”?"),
 ])
+# absolute-surrender: English proofreading pass (2026-11-05). Each reading is
+# forced by the KJV Murray is quoting or by his own wording beside it; the
+# en-modern edition already reads 1 and 4 correctly ("of red wine", "His
+# branch") and renders 2 as "a peg". Pairs 3 and 4 also bite en-modern.
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    # 1. ch08: Isa 27:2, "A vineyard of red wine".
+    ("that vineyard or red wine", "that vineyard of red wine"),
+    # 2. ch09: Ezek 15:3, "will men take a pin of it to hang any vessel thereon?"
+    ("cannot even be used as a pen;", "cannot even be used as a pin;"),
+    # 3. ch05: Eph 3:16, "according to the riches of his glory" — Murray's
+    # gloss in the next clause says "the riches of His glory".
+    ("grant you according to riches of his glory", "grant you according to the riches of his glory"),
+    # 4. ch09: "He is my Vine, and I am His branch" (cf. "I am Thy branch" below).
+    ("and I am His branches—", "and I am His branch—"),
+])
 # all-things-for-good: pt ch9–11 closed EVERY quotation with an opener, “…“ — 64 of them; the other chapters and the English are right.
 BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
     ("chamados.</i>“ ", "chamados.</i>” "),
