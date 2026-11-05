@@ -10345,6 +10345,36 @@
 			"bar": 0,
 			"caps": false
 		},
+		"fr/a-hidden-fire": {
+			"ground": "fbfdd811af7ea3c7a3096e589efd9f5f5819efbbdce3e33d55fab7c9f9e4abbf",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[110, 314, 490, 390]
+				],
+				"subtitle": [
+					[128, 448, 472, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
 		"fr/a-retrospect": {
 			"ground": "3dccbd7098fb78d8f7f6fe3a6108178f72509848b6b23d389a76b87ab8ac7d4a",
 			"style": "revival",
