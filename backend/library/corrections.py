@@ -21248,3 +21248,184 @@ BODY_CORRECTIONS.setdefault("do-you-pray", {}).setdefault("replacements", []).ex
     ("(시편 8:10)", "(시편 81:10)"),
     ("(Zaburi 8:10.)", "(Zaburi 81:10.)"),
 ])
+
+# abide-in-christ (Murray, Altemus 1895, archive.org OCR): English proofreading
+# pass. Every pair is scan damage, not Murray's style -- the edition's spacing
+# before `;`/`:`/`!` and its period spelling are left alone. The shapes: a full
+# stop read for a comma before a capitalised pronoun ("needed. He could die" ->
+# "needed, He"), and its mirror, a comma ending a sentence ("me,' And yet");
+# misread letters ("grapes of Jesus" for grace, "Messing", "le conveyed", "ash in
+# my name", "(John v. H)" for v. 44); stray or misplaced quote marks; small words
+# read as capitals ("to US", "Christian IS"); and one reference split by a page
+# seam ("(Ezek. xxxvi.</p><p>7)" for xxxvi. 27, the verse quoted).
+BODY_CORRECTIONS.setdefault("abide-in-christ", {}).setdefault("replacements", []).extend([
+    # Preface
+    ("life and interest. He invited them", "life and interest, He invited them"),
+    # ch2
+    ("to stay with me,’ And yet", "to stay with me.’ And yet"),
+    ("blessed ‘Abide,’ As mighty", "blessed ‘Abide.’ As mighty"),
+    ("constrain us to ‘listen", "constrain us to listen"),
+    # ch3
+    ("the promise is needed as large", "the promise is indeed as large"),
+    ("yield your- . selves", "yield yourselves"),
+    ("since .so many years", "since so many years"),
+    ("‘tis mine to obey, ‘tis His", "’tis mine to obey, ’tis His"),
+    # ch4
+    ("the large majority, of disciples", "the large majority of disciples"),
+    ("‘Abide,’ The grace", "‘Abide.’ The grace"),
+    ("work in us,’ It is", "work in us.’ It is"),
+    ("Saviour, m Thee I can", "Saviour, in Thee I can"),
+    ("enter upon this, blessed life", "enter upon this blessed life"),
+    ("Jesus has. taken", "Jesus has taken"),
+    # ch5
+    ("condescension of the grapes of Jesus", "condescension of the grace of Jesus"),
+    ("All that Jesus is in heaven. He is for us", "All that Jesus is in heaven, He is for us"),
+    ("forget himself, ‘and to live", "forget himself, and to live"),
+    ("It is for fruit much fruit", "It is for fruit, much fruit"),
+    ("a perishing world.</p>", "a perishing world.’</p>"),
+    ("will Come home to us", "will come home to us"),
+    ("What say est thou", "What sayest thou"),
+    ("day by day. Thou wouldest unfold", "day by day, Thou wouldest unfold"),
+    # ch6
+    ("all that a vine can ie,", "all that a vine can be,"),
+    ("No, I am. in Christ", "No, I am in Christ"),
+    ("I am ‘In Christ: I have", "I am in Christ: I have"),
+    ("practically ‘beyond our reach", "practically beyond our reach"),
+    # ch7
+    ("it must become to US.", "it must become to us."),
+    ("purposed in Himself, and join", "purposed in Himself,’ and join"),
+    # ch8
+    ("you are in Him.’ and have", "you are in Him, and have"),
+    ("His love. His power. His infinite glory", "His love, His power, His infinite glory"),
+    ("life indeed..", "life indeed."),
+    ("who live in Him, Therefore,", "who live in Him. Therefore,"),
+    ("apparent desertion. His own assurance", "apparent desertion, His own assurance"),
+    # ch9
+    ("the Righteous One or the unrighteous", "the Righteous One for the unrighteous"),
+    ("unto ns righteousness", "unto us righteousness"),
+    # ch10
+    ("to the question. How sinful man", "to the question, How sinful man"),
+    ("invaluable work. The Gospel Mystery", "invaluable work, The Gospel Mystery"),
+    ("for US in Christ", "for us in Christ"),
+    ("we are Justified by", "we are justified by"),
+    ("our new stature and holiness", "our new nature and holiness"),
+    ("<sup>*</sup> Holiness may", "<sup>*</sup> ‘Holiness may"),
+    # ch11
+    ("As a king. He is our sanctification", "As a king, He is our sanctification"),
+    ("guiding US into", "guiding us into"),
+    # ch12
+    ("mean what, he said", "mean what he said"),
+    ("fully united to me. His blessing points", "fully united to me, His blessing points"),
+    # ch13
+    ("unblameable in holiness; ‘The Lord", "unblameable in holiness;’ ‘The Lord"),
+    ("settle you,’ What more", "settle you.’ What more"),
+    # ch14
+    ("precious promise:’ Night and day", "precious promise: ‘Night and day"),
+    # ch15
+    ("(Ezra iii. 4)-, ‘as", "(Ezra iii. 4), ‘as"),
+    # ch16
+    ("‘Jesus saves me now. This is indeed", "‘Jesus saves me now.’ This is indeed"),
+    ("self -recollection", "self-recollection"),
+    ("‘Even when overtaken", "Even when overtaken"),
+    ("David, saying. By the hand", "David, saying, By the hand"),
+    ("Jesus says. Abide in me", "Jesus says, Abide in me"),
+    ("the whisper. Do it now.", "the whisper, Do it now."),
+    # ch17
+    ("secure the treasure of losing", "secure the treasure, of losing"),
+    ("who forsake all. He was expounding", "who forsake all, He was expounding"),
+    ("all things hut loss", "all things but loss"),
+    ("be found) IN Him", "be found IN Him"),
+    ("Then, again,, there", "Then, again, there"),
+    # ch18
+    ("we scarce Know how", "we scarce know how"),
+    ("into the understanding. He makes US know", "into the understanding, He makes us know"),
+    ("ABIDE IN HiM", "ABIDE IN HIM"),
+    ("power le conveyed", "power be conveyed"),
+    # ch19
+    ("only he silent unto God", "only be silent unto God"),
+    ("the Messing of abiding", "the blessing of abiding"),
+    # ch20
+    ("our o.nly portion", "our only portion"),
+    ("the rich Blessings God designed", "the rich blessings God designed"),
+    ("compassion,-— and", "compassion, — and"),
+    # ch21
+    ("a tree of life. of which", "a tree of life, of which"),
+    ("thinks that He cannot have a blessing", "thinks that he cannot have a blessing"),
+    ("work; this. will inspire", "work; this will inspire"),
+    # ch22
+    ("— John</i>", "— John xv. 7.</i>"),
+    ("what he, has seen", "what he has seen"),
+    ("cannot rest, without prayer", "cannot rest without prayer"),
+    ("‘that the father may he glorified", "‘that the Father may be glorified"),
+    ("The promise,’ Whatsoever ye ash in my name, ‘may not",
+     "The promise, ‘Whatsoever ye ask in my name,’ may not"),
+    ("(John v. H)", "(John v. 44)"),
+    ("(1 John Iii. 22)", "(1 John iii. 22)"),
+    # ch23
+    ("His perfection. His immensity. His majesty", "His perfection, His immensity, His majesty"),
+    ("Were it needed. He could die again to possess thee.’ As",
+     "Were it needed, He could die again to possess thee. As"),
+    ("not with a ; love", "not with a love"),
+    ("When it was needed. He sacrificed", "When it was needed, He sacrificed"),
+    ("His righteousness. His Spirit, His glory", "His righteousness, His Spirit, His glory"),
+    ("the question comes. How can", "the question comes, How can"),
+    ("in its I condescension", "in its condescension"),
+    ("hath Loved me", "hath loved me"),
+    ("by which .we yield", "by which we yield"),
+    # ch24
+    ("(ver. 57), As I live", "(ver. 57), ‘As I live"),
+    ("(John xvii. 22), That they", "(John xvii. 22), ‘That they"),
+    ("one ‘with Him", "one with Him"),
+    ("glorified in Him) (2 Thess", "glorified in Him (2 Thess"),
+    # ch25
+    ("(Jer. xxxi,)", "(Jer. xxxi.)"),
+    ("energies, — -therefore", "energies, — therefore"),
+    # ch26
+    ("might be fulL ‘—John xv. 11.", "might be full.’ — John xv. 11."),
+    ("always rejoicing: these", "always rejoicing:’ these"),
+    ("as sinners are brought home. His joy", "as sinners are brought home, His joy"),
+    ("joy might he full", "joy might be full"),
+    ("‘These things I speak,’ that", "‘These things I speak, that"),
+    ("precious words :’ These things", "precious words : ‘These things"),
+    # ch27
+    ("the world may believe; ‘That they", "the world may believe;’ ‘That they"),
+    ("Himself up to death. He simply", "Himself up to death, He simply"),
+    ("each lives not for Himself", "each lives not for himself"),
+    # ch28
+    ("himself tells US of", "himself tells us of"),
+    ("we have not sinned,’ The two", "we have not sinned.’ The two"),
+    ("should yet not he doing sin", "should yet not be doing sin"),
+    ("for you to he partaker", "for you to be partaker"),
+    ("<p>We are apt either", "<p>‘We are apt either"),
+    # ch29
+    ("‘AH power", "‘All power"),
+    ("xii. 9 (R. v.)", "xii. 9 (R. V.)"),
+    ("properly authority (R. v.)", "properly authority (R. V.)"),
+    ("perfect in weakness,’ When our Lord", "perfect in weakness.’ When our Lord"),
+    ("now Jesus . had received", "now Jesus had received"),
+    ("claims or demands. He works Himself", "claims or demands, He works Himself"),
+    ("All He gives. He gives with power", "All He gives, He gives with power"),
+    ("utter impotence. He gives them", "utter impotence, He gives them"),
+    ("for holiness,, to live", "for holiness, to live"),
+    # ch30
+    ("all that is ‘of nature", "all that is of nature"),
+    ("temporal and spiritual. He is ready", "temporal and spiritual, He is ready"),
+    ("life ever can have. He will be", "life ever can have, He will be"),
+    ("(Ro?n, VI. 6)", "(Rom. vi. 6)"),
+    ("the Christian IS of seeking", "the Christian is of seeking"),
+    # ch31
+    ("His human nature. He is personally", "His human nature, He is personally"),
+    ("His own body. He is security", "His own body, He is security"),
+    ("shall not depart from me,’ With what", "shall not depart from me.’ With what"),
+    ("to Walk in my statutes", "to walk in my statutes"),
+    ("(Ezek. xxxvi.</p><p>7). Blessed", "(Ezek. xxxvi. 27). Blessed"),
+    ("(see Heb. vii.), Aaron", "(see Heb. vii.). Aaron"),
+    ("He ever Liveth", "He ever liveth"),
+    ("influences of. His unceasing", "influences of His unceasing"),
+    ("the Father’s favour. He never ceases", "the Father’s favour, He never ceases"),
+    ("for us. He never ceases to work", "for us, He never ceases to work"),
+    ("His suretyship. His unceasing priesthood", "His suretyship, His unceasing priesthood"),
+    # ch32
+    ("‘Till He come,Is the watchword", "‘Till He come,’ is the watchword"),
+    ("what His union with Jesus on the throne", "what his union with Jesus on the throne"),
+])
