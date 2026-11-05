@@ -3766,6 +3766,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-weight: 600;
 }
 
+/* The middot between two facts in a meta line ("12 min · 1855"). One weight,
+   page-design K3: it was drawn at opacity 40, 50, 60 and full strength. Only
+   the ink: the spacing is the markup's (a spaced " · " or a gap utility). */
+.sep {
+	opacity: 0.5;
+}
+
 /* The end-of-text onward pair (page-design D10): a chapter's and a sermon's
    "Next" is a .btn-primary carrying the next item's title in the display face,
    "Previous" a .btn-ghost beside it. In @layer components with .btn, so the

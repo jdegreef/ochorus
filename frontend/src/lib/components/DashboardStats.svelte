@@ -87,7 +87,7 @@
 								</div>
 								<div class="text-small text-muted">
 									{t('settings.streakLongest')}
-									{longest}<span class="opacity-50"> · </span>{days.length}
+									{longest}<span class="sep"> · </span>{days.length}
 									{t('settings.streakDaysRead')}
 								</div>
 								<!-- A streak that today would end: say so while there's time. -->

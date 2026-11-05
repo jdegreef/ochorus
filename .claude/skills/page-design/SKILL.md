@@ -1081,7 +1081,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   "about" figure a 2px border) where §1 says gold. → one `.pullquote`.
 - [ ] **K2** Two token vocabularies in scoped CSS: `--color-*` (12 files) vs bare
   `--*` (25 files). → bare tokens (this is E4, re-counted).
-- [ ] **K3** The "·" middot separator is drawn at opacity-40/50/60 + bare
+- [x] **K3** _(shipped 2026-11-05 — one `.sep` class in app.css (opacity 0.5, ink only: spacing stays the markup's); 36 hand-weighted middots (opacity 40/50/60/full) converted, CitingPassages' scoped `.sep` folded in; `systemClasses.test.ts` owns `.sep` and fails a middot span without it)_ The "·" middot separator is drawn at opacity-40/50/60 + bare
   `text-muted`, with varying margins. → one `.sep` helper.
 - [x] **K4** _(2026-11-04: verified — `text-muted/NN` survives only on the error page's decorative status numeral; the `opacity-*` left are middots, which are K3)_ Secondary text is `text-muted` vs `text-muted/60` vs `/70` vs
   `opacity-*` interchangeably. → `text-muted` (or `.count` for figures).
@@ -1092,11 +1092,11 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### L. Spacing rhythm
 
-- [ ] **L1** Leaf-page section separators range `mt-8`→`mt-16` for the same
+- [~] **L1** _(2026-11-05: Author, Sermon and Plan already sit every titled section at `mt-12`. Book's split is two roles, not drift: the work's own material (editions, guide, About, opening, Explore, contents) at `mt-8`, then what lies beyond it (languages, author, related) at `mt-12` — keep it. The reader's `end-done` block at `mt-14 … pt-8` is a section break, not the prev/next nav, which now matches the sermon's (D10))_ Leaf-page section separators range `mt-8`→`mt-16` for the same
   "next titled section" role (book mixes 8/12, author 14/16, sermon 12); the
   identical prev/next nav is `mt-14` on the reader, `mt-12` on the sermon. → one
   band value.
-- [ ] **L2** Bordered-footer padding drifts `pt-5`/`pt-6`/`pt-8`. → one `pt-6`.
+- [x] **L2** _(shipped 2026-11-05 — the page-level footer strips (sermon scripture index + attribution notes, the chapter's scripture strip) `pt-5` → `pt-6`, the majority value. `pt-8` stays for full section breaks under an `mt-12`/`mt-14` (reader end-done, author deferred, era navs); `pt-2…4` are in-card rules, component band)_ Bordered-footer padding drifts `pt-5`/`pt-6`/`pt-8`. → one `pt-6`.
 - [ ] **L3** Anchor scroll-offset is computed four ways; only two track the
   sticky bar (`calc(var(--pinned-offset)…)` vs hard-coded `scroll-mt-20` on
   sermons/books, `scroll-margin-top:5rem`, `scroll-mt-24`). → the `--pinned-offset`

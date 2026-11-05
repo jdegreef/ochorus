@@ -2196,7 +2196,7 @@
 			     that was not built. English chapters only; `scripture_refs` is empty
 			     elsewhere, because the citations behind it are English. -->
 			{#if chapter.scripture_refs?.length}
-				<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-5">
+				<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-6">
 					<span class="eyebrow text-muted">{t('reader.scripture')}</span>
 					{#each chapter.scripture_refs as entry (entry.ref)}
 						<a
@@ -2357,7 +2357,7 @@
 				     A middot, not a localized "by", so no message-catalogue key is needed. -->
 				<p class="mt-8 text-center text-small text-muted">
 					<a href={localizeHref(`/books/${slug}`)} class="hover:text-text">{chapter.book_title}</a>
-					<span aria-hidden="true"> · </span>
+					<span class="sep" aria-hidden="true"> · </span>
 					<a href={localizeHref(authorPath(chapter.author_slug))} class="hover:text-text"
 						>{chapter.author_name}</a
 					>
@@ -2492,22 +2492,22 @@
 		/>
 		<div class="progress-meta">
 			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
-			<span class="mx-1.5 opacity-50">·</span>
+			<span class="sep mx-1.5">·</span>
 			<span>
 				{minsLeft}
 				{t('progress.minLeft')}{#if readingPace.personalized}<span class="hidden sm:inline"
-						><span class="mx-1.5 opacity-50">·</span>{t('progress.yourPace')}</span
+						><span class="sep mx-1.5">·</span>{t('progress.yourPace')}</span
 					>{/if}
 			</span>
 			{#if bookPercent !== null}
-				<span class="mx-1.5 opacity-50">·</span>
+				<span class="sep mx-1.5">·</span>
 				<span>{bookPercent}% {t('progress.through')}</span>
 			{/if}
 			{#if bookTimeLeftLabel}
 				<!-- Whole-book time, hidden on the narrowest screens (like "your
 				     pace") so the phone footer stays a single tidy line. -->
 				<span class="hidden sm:inline"
-					><span class="mx-1.5 opacity-50">·</span>{bookTimeLeftLabel}</span
+					><span class="sep mx-1.5">·</span>{bookTimeLeftLabel}</span
 				>
 			{/if}
 		</div>

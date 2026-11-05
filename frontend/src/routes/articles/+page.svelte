@@ -129,7 +129,7 @@
 		{articles.length}
 		{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
 		{#if guides.length}
-			<span class="opacity-50">·</span>
+			<span class="sep">·</span>
 			{guides.length}
 			{guides.length === 1 ? t('articles.guideOne') : t('articles.guideMany')}
 		{/if}
@@ -157,7 +157,7 @@
 								{/if}
 								<div class="flex min-w-0 flex-col gap-1.5">
 									<p class="eyebrow text-accent">
-										{#if a.topics?.[0]}{a.topics[0].title}<span class="opacity-50">{' · '}</span>{/if}{readingTime(a.word_count)}
+										{#if a.topics?.[0]}{a.topics[0].title}<span class="sep">{' · '}</span>{/if}{readingTime(a.word_count)}
 									</p>
 									<h3 class="text-h3 text-text">{a.h1}</h3>
 									{#if a.lead_book}
