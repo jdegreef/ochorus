@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "gregory-of-nyssa",
+ "language": "fr",
+ "job_issue": 7230,
+ "references": [
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ]
+}
