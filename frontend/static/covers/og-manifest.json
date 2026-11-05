@@ -13339,6 +13339,39 @@
 				540
 			]
 		},
+		"fr/tell-me-the-story-1": {
+			"ground": "0ab010aadfe852e070dc1a10762b4f71f5f5fbf8f6b3ccb825c3e19ae79b33db",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 243, 308, 287],
+					[140, 318, 460, 393],
+					[190, 379, 410, 454]
+				],
+				"subtitle": [
+					[194, 508, 406, 536],
+					[146, 536, 454, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
 		"fr/ten-commandments": {
 			"ground": "966e7a8c51553d80e73a958833a2fb22ac06e1f39d3920a47731876993d77fb4",
 			"style": "press",
