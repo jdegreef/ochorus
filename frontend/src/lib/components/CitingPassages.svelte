@@ -19,7 +19,7 @@
 		<li class="passage">
 			<a class="who" href={`/books/${p.book_slug}/${p.chapter_order}/`}>
 				<span class="work">{p.book_title}</span>
-				<span class="sep">·</span>
+				<span class="sep mx-1">·</span>
 				<span class="author">{p.author_name}</span>
 			</a>
 			<p class="where">
@@ -58,10 +58,6 @@
 	}
 	.who:hover .work {
 		text-decoration: underline;
-	}
-	.sep {
-		color: var(--color-muted);
-		margin: 0 0.3rem;
 	}
 	.author {
 		font-weight: 400;

@@ -298,7 +298,7 @@
 		     beside the library's on the home page and the A–Z as a second,
 		     smaller number. The library has one, `countWriters`. -->
 		{#if series.length}
-			<span class="opacity-50">·</span>
+			<span class="sep">·</span>
 			<a href={localizeHref('/series/')}>
 				{series.length}
 				{series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')}

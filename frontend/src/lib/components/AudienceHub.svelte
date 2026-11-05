@@ -175,7 +175,7 @@
 	{#snippet meta()}
 		<span class="whitespace-nowrap"
 			>{counts.books} {counts.books === 1 ? t('common.bookOne') : t('common.bookMany')}</span
-		>{#if counts.series}{' '}<span class="opacity-50">·</span>{' '}<span class="whitespace-nowrap"
+		>{#if counts.series}{' '}<span class="sep">·</span>{' '}<span class="whitespace-nowrap"
 				>{counts.series}
 				{counts.series === 1 ? t('common.seriesOne') : t('common.seriesMany')}</span
 			>{/if}

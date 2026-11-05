@@ -613,7 +613,7 @@
 							href={localizeHref(`/series/${book.series.slug}`)}
 							class="font-medium hover:text-text hover:underline"
 							>{seriesLabel(book.series, contentLang(book.language))}</a
-						>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
+						>{#if book.series.next}<span class="sep px-1.5">·</span><a
 								href={localizeHref(`/books/${book.series.next.slug}`)}
 								class="text-accent hover:underline"
 								>{t('book.seriesNext')}: {book.series.next.title} <Arrow /></a
