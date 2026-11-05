@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { CONTACT_EMAIL, SITE_URL } from '$lib/config';
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -37,8 +38,7 @@
 />
 
 <div class="reading-page">
-	<p class="eyebrow mb-2 text-accent">{t('nav.contact')}</p>
-	<h1 class="text-h1 mb-6">{t('contact.heading')}</h1>
+	<PageHeader title={t('contact.heading')} />
 
 	<p class="text-body text-muted">
 		{t('contact.intro')}

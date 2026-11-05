@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -37,8 +38,7 @@
 />
 
 <div class="reading-page">
-	<p class="eyebrow mb-2 text-accent">Ochorus</p>
-	<h1 class="text-h1 mb-3">{t('legal.title')}</h1>
+	<PageHeader title={t('legal.title')} />
 	<!-- Two documents on one page: the footer link says "Privacy & Terms", so a
 	     reader arriving for one of them needs to see both and pick. -->
 	<nav class="mb-6 flex flex-wrap gap-x-4 gap-y-1 text-small" aria-label={t('legal.title')}>

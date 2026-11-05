@@ -91,6 +91,17 @@ const APP_PAGES: { label: string; file: string }[] = [
  * layout at max-w-5xl, so the class is required somewhere in the file rather
  * than as the only shell.
  */
+/**
+ * The prose pages (`.reading-page`): Legal, Contact, RSS. Their title is a
+ * <PageHeader> with no eyebrow, like the app pages (page-design A9) — they had
+ * hand-rolled eyebrows reading "Ochorus", the nav word, or "RSS".
+ */
+const PROSE_PAGES: { label: string; file: string }[] = [
+	{ label: 'legal', file: 'routes/legal/+page.svelte' },
+	{ label: 'contact', file: 'routes/contact/+page.svelte' },
+	{ label: 'rss', file: 'routes/rss/+page.svelte' }
+];
+
 const NARROW_PAGES: { label: string; file: string }[] = [
 	{ label: 'login', file: 'routes/login/+page.svelte' },
 	{ label: 'reset password', file: 'routes/reset-password/+page.svelte' }
@@ -109,12 +120,21 @@ describe('pages use the shared page furniture', () => {
 		).toMatch(/class="page-col/);
 	});
 
-	it.each([...BROWSE_PAGES, ...APP_PAGES])('$label renders its title through <PageHeader>', ({ file }) => {
+	it.each([...BROWSE_PAGES, ...APP_PAGES, ...PROSE_PAGES])('$label renders its title through <PageHeader>', ({ file }) => {
 		expect(
 			read(file),
 			`${file}: use <PageHeader> rather than a hand-rolled <h1> block, or the ` +
 				`eyebrow/title/tagline spacing drifts per page (STYLE_GUIDE §5).`
 		).toMatch(/<PageHeader\b/);
+	});
+
+	// One h1 register (page-design A3): a shelf's h1 is its nav word ("Quotes"),
+	// the descriptive SEO phrase lives in <title>. Quotes and Scripture carried a
+	// sentence h1 ("Quotes, with their sources") under the other shelves' one word.
+	it.each(BROWSE_PAGES)('$label titles its h1 with a word, not a pageTitle sentence', ({ file }) => {
+		expect(read(file), `${file}: pass the nav word to <PageHeader title>`).not.toMatch(
+			/<PageHeader[^>]*title=\{t\('[a-z]+\.pageTitle'\)/
+		);
 	});
 
 	it.each(BROWSE_PAGES)('$label uses the standard shell padding', ({ file }) => {
