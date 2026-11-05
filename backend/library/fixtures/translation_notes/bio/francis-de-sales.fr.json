@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "francis-de-sales",
+ "language": "fr",
+ "job_issue": 7229,
+ "references": [
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 6
+  }
+ ]
+}
