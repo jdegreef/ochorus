@@ -35,7 +35,7 @@
   "reader_next_paragraph": "Aya inayofuata",
   "reader_chapter_nav": "Urambazaji wa sura",
   "reader_back_to_contents": "Rudi kwenye yaliyomo",
-  "reader_chapter_done": "Sura ya %n% imekamilika",
+  "reader_finished": "Umemaliza %title%",
   "reader_end_progress": "Sura %done% kati ya %total% · %p%% ya kitabu",
   "mid_book_where": "Unasoma sura ya %n% ya %title% ya %author%.",
   "mid_book_from_start": "Anza na sura ya 1",

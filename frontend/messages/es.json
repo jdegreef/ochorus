@@ -35,7 +35,7 @@
   "reader_next_paragraph": "Párrafo siguiente",
   "reader_chapter_nav": "Navegación de capítulos",
   "reader_back_to_contents": "Volver al índice",
-  "reader_chapter_done": "Capítulo %n% completado",
+  "reader_finished": "Terminaste %title%",
   "reader_end_progress": "%done% de %total% capítulos · %p%% del libro",
   "mid_book_where": "Estás leyendo el capítulo %n% de %title%, de %author%.",
   "mid_book_from_start": "Empezar por el capítulo 1",

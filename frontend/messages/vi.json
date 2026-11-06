@@ -35,7 +35,7 @@
   "reader_next_paragraph": "Đoạn tiếp theo",
   "reader_chapter_nav": "Điều hướng chương",
   "reader_back_to_contents": "Về mục lục",
-  "reader_chapter_done": "Đã đọc xong chương %n%",
+  "reader_finished": "Bạn đã đọc xong %title%",
   "reader_end_progress": "%done% trên %total% chương · đã đọc %p%% sách",
   "mid_book_where": "Bạn đang đọc chương %n% của %title%, tác giả %author%.",
   "mid_book_from_start": "Bắt đầu từ chương 1",

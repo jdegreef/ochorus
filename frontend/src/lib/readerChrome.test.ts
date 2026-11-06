@@ -201,3 +201,31 @@ describe('a floating reader control clears the bottom bars', () => {
 		}
 	});
 });
+
+describe('the chapter reader: progress at the top, one end card (design #18)', () => {
+	it('shows its progress as the hairline under the bar, not a slider block under the text', () => {
+		const src = read(READER);
+		// The footer's scrubber and "Page 1 / 18 · 35 min left" line are gone…
+		expect(src).not.toMatch(/class="scrubber"/);
+		expect(src).not.toMatch(/class="progress-meta"/);
+		// …and the hairline carries both: it still seeks (page mode has no
+		// scrollbar) and says the time left to a screen reader.
+		const hair = src.slice(src.indexOf('<div class="hairline"'));
+		expect(hair).toMatch(/<input\s+class="hairline-seek"\s+type="range"/);
+		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
+		// It rides the bar's bottom edge, and the viewport's top once the bar is gone.
+		expect(src).toMatch(/bind:offsetHeight=\{chromeH\}/);
+		expect(src).toMatch(/const hairlineY = \$derived\(\(readerUi\.focus && !showPeek\) \|\| hideChrome \? 0 : chromeH\)/);
+	});
+
+	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
+		const src = read(READER);
+		const nav = src.slice(src.indexOf('<div class="end-nav">'), src.indexOf('{#snippet endAsk()}'));
+		expect(nav, 'Previous belongs to "⋯" and the phone row, not the end card').not.toMatch(/chapter\.prev/);
+		// Next chapter, next volume, or the book page — one of them, never two.
+		expect(nav.match(/class="end-next btn/g)?.length).toBe(3);
+		expect(nav).toMatch(/\{#if chapter\.next\}[\s\S]*\{:else if nextInSeries\}[\s\S]*\{:else\}/);
+		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
+		expect(src).toMatch(/t\('reader\.finished'\)\.replace\('%title%'/);
+	});
+});

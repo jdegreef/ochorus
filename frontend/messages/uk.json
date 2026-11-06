@@ -35,7 +35,7 @@
   "reader_next_paragraph": "Наступний абзац",
   "reader_chapter_nav": "Навігація розділами",
   "reader_back_to_contents": "Повернутися до змісту",
-  "reader_chapter_done": "Розділ %n% завершено",
+  "reader_finished": "Ви завершили: %title%",
   "reader_end_progress": "%done% з %total% розділів · %p%% книги",
   "mid_book_where": "Ви читаєте розділ %n% книги «%title%» (%author%).",
   "mid_book_from_start": "Почати з розділу 1",

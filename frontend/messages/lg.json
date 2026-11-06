@@ -35,7 +35,7 @@
   "reader_next_paragraph": "Akatundu akaddako",
   "reader_chapter_nav": "Okutambula mu ssuula",
   "reader_back_to_contents": "Ddayo eri ebirimu",
-  "reader_chapter_done": "Essuula %n% ewedde",
+  "reader_finished": "Omalirizza %title%",
   "reader_end_progress": "Essuula %done% ku %total% · %p%% y'ekitabo",
   "mid_book_where": "Osoma essuula %n% eya %title% ekya %author%.",
   "mid_book_from_start": "Tandikira ku ssuula 1",

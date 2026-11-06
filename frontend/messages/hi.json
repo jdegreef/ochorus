@@ -35,7 +35,7 @@
   "reader_next_paragraph": "अगला अनुच्छेद",
   "reader_chapter_nav": "अध्याय नेविगेशन",
   "reader_back_to_contents": "विषय-सूची पर लौटें",
-  "reader_chapter_done": "अध्याय %n% पूरा हुआ",
+  "reader_finished": "आपने %title% पूरा किया",
   "reader_end_progress": "%total% में से %done% अध्याय · किताब का %p%%",
   "mid_book_where": "आप %author% की %title% का अध्याय %n% पढ़ रहे हैं।",
   "mid_book_from_start": "अध्याय 1 से शुरू करें",

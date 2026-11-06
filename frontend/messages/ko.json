@@ -35,7 +35,7 @@
   "reader_next_paragraph": "다음 단락",
   "reader_chapter_nav": "장 탐색",
   "reader_back_to_contents": "목차로 돌아가기",
-  "reader_chapter_done": "%n%장 완료",
+  "reader_finished": "%title%을(를) 마쳤어요",
   "reader_end_progress": "전체 %total%장 중 %done%장 · 책의 %p%% 읽음",
   "mid_book_where": "%author%의 %title% %n%장을 읽고 있습니다.",
   "mid_book_from_start": "1장부터 시작",

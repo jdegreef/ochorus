@@ -35,7 +35,7 @@
   "reader_next_paragraph": "الفقرة التالية",
   "reader_chapter_nav": "التنقل بين الفصول",
   "reader_back_to_contents": "العودة إلى المحتويات",
-  "reader_chapter_done": "اكتمل الفصل %n%",
+  "reader_finished": "أنهيت %title%",
   "reader_end_progress": "%done% من %total% فصول · %p%% من الكتاب",
   "mid_book_where": "أنت تقرأ الفصل %n% من %title% لـ %author%.",
   "mid_book_from_start": "ابدأ من الفصل الأول",
