@@ -63,14 +63,25 @@ In this order, and nothing else at the top level:
    reading`, `Sermon of the day`), hidden while the reader is filtering.
 5. **`.filter-row`** — controls in this order: free-text `.filter-field.grow`
    (placeholder `Filter by …`) · scope `<select class="filter-field">` · sort
-   `<select>` · group `.seg` · then a `.chip` row underneath for taxonomy. No
+   `<select>` · group `.seg` · then a `.chip` row underneath for taxonomy
+   (`TopicFilterRow`; Books has dropped it, see below). No
    visible "Sort:" / "Length:" label — put it in `aria-label`. No "Clear"
    button in the row: clearing is `FilterSummary`'s job.
    **On a phone** the row is search + `<FilterSheet>` (the Filters button and
    its bottom sheet); every other control goes in a `hidden sm:contents`
    wrapper and ALSO inside the sheet, as chip choices (`.sheet-label` +
    `.sheet-choices`). Write each control once as a snippet and render it in
-   both places — Sermons, Biographies, Articles, Books are the models.
+   both places — Sermons, Biographies, Articles are the models.
+   **Books is the newer shape (design review #15, 2026-11):** search (grows) ·
+   sort `<select>` · ONE Filters button (`<FilterSheet everywhere>`, a count
+   of what it narrows) · view toggle, on one line, pinned at every width
+   (`<FilterBar>` without `pin="compact"`). Its facets — topic, length
+   (`len`, `bookLength` in `$lib/bookSort`), grouping — live ONLY in the
+   panel (a bottom sheet on a phone, a side sheet from sm), with no topic
+   chip row under the bar; every active filter shows as a removable chip in
+   `<FilterSummary chips>` under it. On a phone sort and view move into the
+   panel too. Follow it for a shelf whose row has outgrown one line; the
+   Sermons half of #15 is still to come.
 6. **`<FilterSummary>`** — rendered **only while a filter is active**, with
    `onClear`. Never "Showing 35 of 35".
 7. **The list** — one card family per content type (§ Cards below). Grouped

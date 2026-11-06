@@ -55,3 +55,26 @@ export function sortBooks<T extends SortableBook>(books: readonly T[], sort: Boo
 			return arr;
 	}
 }
+
+/**
+ * The shelf's length filter: a book is "short" (under an hour), "mid" (one to
+ * three hours, inclusive) or "long" (over three), by the SAME whole-minute
+ * reading time its card and list row print (`readingMinutes`, at the reader's
+ * pace), so a book shown as "3 hr read" never filters as long. Pure: minutes
+ * in, bucket out; the caller supplies the minutes. The sermons' buckets
+ * (`$lib/sermonLength`) are minutes, not hours, so they are their own.
+ */
+export const BOOK_LENGTHS = ['short', 'mid', 'long'] as const;
+export type BookLength = (typeof BOOK_LENGTHS)[number];
+/** Each bucket's label key. */
+export const BOOK_LENGTH_LABEL: Record<BookLength, string> = {
+	short: 'books.lengthShort',
+	mid: 'books.lengthMid',
+	long: 'books.lengthLong'
+};
+
+export function bookLength(minutes: number): BookLength {
+	if (minutes < 60) return 'short';
+	if (minutes <= 180) return 'mid';
+	return 'long';
+}

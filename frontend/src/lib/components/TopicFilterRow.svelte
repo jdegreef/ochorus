@@ -7,7 +7,9 @@
 	 * chip per topic present, bound to the shelf's `topic` URL filter. Extracted
 	 * from BooksShelf and the Sermons shelf, which rendered it byte-for-byte the
 	 * same — a shelf filter, distinct from TopicChips (the "Browse by topic"
-	 * anchor-link section that navigates to /topics/<slug>).
+	 * anchor-link section that navigates to /topics/<slug>). Books has since
+	 * moved its topics into its Filters panel (design review #15); Sermons
+	 * still uses this row.
 	 *
 	 * Shown only when the shelf spans more than one topic — a single-topic shelf
 	 * has nothing to filter, so the guard lives here rather than at each call site.

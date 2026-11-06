@@ -11,6 +11,12 @@
 	 * result — and the sheet holds the same controls as one-tap choices. From sm
 	 * the button hides and the page's inline controls take over.
 	 *
+	 * `everywhere` keeps the button at every width, for a shelf whose bar is
+	 * search · sort · ONE Filters button · view (Books, design review #15): its
+	 * facets live only here. From sm the same panel opens as a side sheet at
+	 * the reading-direction end instead of a bottom sheet, and widening the
+	 * window leaves it open.
+	 *
 	 * The page owns the controls (its `children`, usually snippets it also
 	 * renders inline) and what they narrow; this owns the button, the count on
 	 * it, the sheet, and its footer. A labelled chip group inside is a
@@ -24,6 +30,7 @@
 		showLabel,
 		filtered,
 		onClear,
+		everywhere = false,
 		children
 	}: {
 		open?: boolean;
@@ -39,21 +46,25 @@
 		 *  sheet offers `onClear` while it does. */
 		filtered: boolean;
 		onClear?: () => void;
+		/** Offer the button at every width, not just below sm (see above). */
+		everywhere?: boolean;
 		children: Snippet;
 	} = $props();
 
 	const t = i18n.t;
 
 	// The sheet is a phone control: widen past sm (a tablet rotating) and the
-	// inline row takes over, so close it rather than leave it over the page.
+	// inline row takes over, so close it rather than leave it over the page —
+	// unless there is no inline row (`everywhere`), when it becomes a side sheet.
 	const wide = mediaFlag('(min-width: 640px)');
 	$effect(() => {
-		if (open && wide.matches) open = false;
+		if (open && wide.matches && !everywhere) open = false;
 	});
+	const side = $derived(everywhere && wide.matches);
 </script>
 
 <button
-	class="chip flex shrink-0 items-center gap-1.5 sm:hidden"
+	class="chip flex shrink-0 items-center gap-1.5 {everywhere ? '' : 'sm:hidden'}"
 	onclick={() => (open = true)}
 	aria-haspopup="dialog"
 	aria-expanded={open}
@@ -64,12 +75,14 @@
 	{/if}
 </button>
 
-<DrawerShell bind:open title={t('common.filters')} placement="bottom">
-	<div class="filter-sheet">
+<DrawerShell bind:open title={t('common.filters')} placement={side ? 'end' : 'bottom'}>
+	<!-- A side drawer leaves its body to the caller (DrawerShell): here it
+	     scrolls under the header and the footer stays in reach below it. -->
+	<div class="filter-sheet" class:side-scroll={side}>
 		{@render children()}
 	</div>
 	<!-- The list updates behind the sheet as the choices change; this closes it. -->
-	<div class="mt-6 flex items-center gap-2">
+	<div class="flex items-center gap-2" class:mt-6={!side} class:side-foot={side}>
 		{#if filtered && onClear}
 			<button class="btn btn-ghost" onclick={onClear}>{t('common.clearFilters')}</button>
 		{/if}
@@ -80,6 +93,17 @@
 </DrawerShell>
 
 <style>
+	.side-scroll {
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		padding: 1rem 1.25rem 1.5rem;
+	}
+	.side-foot {
+		border-top: 1px solid var(--border);
+		padding: 0.875rem 1.25rem;
+	}
 	/* The page's controls stack at one rhythm; SheetChoices groups, a select, a
 	   segmented control all sit on it without margins of their own. */
 	.filter-sheet {

@@ -14,7 +14,7 @@
 	 * `--pinned-offset` (`calc(var(--appnav-h, 0px) + {pinned}px)`), which group
 	 * headings, sticky era headings and every `scroll-margin-top` read.
 	 *
-	 * `pin="compact"` is for a row of many controls (Books, Sermons): it pins
+	 * `pin="compact"` is for a row of many controls (Sermons): it pins
 	 * below sm (one line — search + Filters) and from md, and scrolls away
 	 * between sm and md, where the inline row wraps too tall to pin.
 	 *

@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { matchesBookQuery, sortBooks, type BookSort } from './bookSort';
+import {
+	BOOK_LENGTHS,
+	BOOK_LENGTH_LABEL,
+	bookLength,
+	matchesBookQuery,
+	sortBooks,
+	type BookSort
+} from './bookSort';
 
 const book = (over: Partial<Parameters<typeof matchesBookQuery>[0]> = {}) => ({
 	title: 'A Title',
@@ -61,5 +68,19 @@ describe('sortBooks', () => {
 	it('accepts every BookSort value', () => {
 		const sorts: BookSort[] = ['shelf', 'title', 'longest', 'shortest'];
 		for (const s of sorts) expect(sortBooks(shelf, s)).toHaveLength(3);
+	});
+});
+
+describe('bookLength', () => {
+	it('buckets under an hour, one to three hours, and over three', () => {
+		expect(bookLength(1)).toBe('short');
+		expect(bookLength(59)).toBe('short');
+		expect(bookLength(60)).toBe('mid');
+		expect(bookLength(180)).toBe('mid'); // printed "3 hr read" is not "over 3 hours"
+		expect(bookLength(181)).toBe('long');
+	});
+
+	it('has a label for every bucket', () => {
+		for (const b of BOOK_LENGTHS) expect(BOOK_LENGTH_LABEL[b]).toMatch(/^books\.length/);
 	});
 });
