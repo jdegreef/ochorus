@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { flushSync } from 'svelte';
 import {
+	passedMarker,
 	realignHashOnMeasure,
 	realignHashTarget,
 	resetFirstPage,
@@ -73,6 +74,68 @@ describe('spy.jump — the sticky sub-nav click handler', () => {
 			expect(target.scrollIntoView).toHaveBeenCalled();
 		});
 		target.remove();
+	});
+});
+
+describe('scrollSpy line — the sermon outline, whose anchors are headings', () => {
+	// Headings at these viewport tops; the band's bottom edge sits at y=300.
+	function headings(tops: Record<string, number>) {
+		return Object.entries(tops).map(([id, top]) => {
+			const el = document.createElement('h2');
+			el.id = id;
+			el.getBoundingClientRect = () => ({ top: tops[id] }) as DOMRect;
+			document.body.append(el);
+			return el;
+		});
+	}
+	afterEach(() => {
+		document.body.replaceChildren();
+		vi.unstubAllGlobals();
+	});
+
+	it('names the last heading above the line, and none above the first', () => {
+		const els = headings({ one: -900, two: 120, three: 700 });
+		expect(passedMarker(els, 300)).toBe('two');
+		expect(passedMarker(els, 100)).toBe('one');
+		expect(passedMarker(els, -1000)).toBe('');
+	});
+
+	it('hands the section back to the one above on a scroll up', () => {
+		let fire: (entries: Partial<IntersectionObserverEntry>[]) => void = () => {};
+		let margin = '';
+		vi.stubGlobal(
+			'IntersectionObserver',
+			class {
+				constructor(
+					cb: (e: Partial<IntersectionObserverEntry>[]) => void,
+					opts: IntersectionObserverInit
+				) {
+					fire = cb;
+					margin = opts.rootMargin ?? '';
+				}
+				observe() {}
+				disconnect() {}
+			}
+		);
+		const tops = { one: -400, two: 200, three: 900 };
+		const els = headings(tops);
+		const band = { bottom: 300 } as DOMRectReadOnly;
+		const cleanup = $effect.root(() => {
+			const spy = scrollSpy(() => ['one', 'two', 'three'], { line: 0.3 });
+			flushSync();
+			// Everything above a line 30% down: a heading changes state exactly
+			// as it crosses the line, however fast it is scrolled past.
+			expect(margin).toMatch(/^\d{6,}px 0px -70% 0px$/);
+			fire([{ target: els[1], isIntersecting: true, rootBounds: band }]);
+			expect(spy.active).toBe('two');
+			// Scrolling back up: "two" drops back below the band — it is
+			// "intersecting" no longer, and the reader is in section one again.
+			// Last-intersecting-wins kept "two" lit here.
+			tops.two = 320;
+			fire([{ target: els[1], isIntersecting: false, rootBounds: band }]);
+			expect(spy.active).toBe('one');
+		});
+		cleanup();
 	});
 });
 

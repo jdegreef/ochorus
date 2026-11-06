@@ -53,9 +53,28 @@ export function jumpToSection(id: string): void {
  * `rootMargin` defaults to a thin band around the viewport's vertical middle, so
  * the highlight tracks the section you are actually reading. No-JS / prerender:
  * nothing lights, but the links still jump — the markup and `scroll-margin` do.
+ *
+ * `line` (0–1, a share of the viewport's height from its top): the ids name a
+ * section's HEADING — a point in the text — not a box holding the whole
+ * section, so the band test is the wrong question. A heading crosses the band
+ * on its way back down too, and "last intersecting wins" then lit the section
+ * BELOW the one being read on every scroll up; a jump or a fast scroll could
+ * also carry a heading clean over a thin band with no crossing reported at
+ * all. With `line`, the observed region is everything ABOVE the reading line
+ * (its top margin reaches far past the page's top), so a heading changes
+ * state exactly when it crosses the line, whatever the speed, and every
+ * report re-asks which section the line is in: the last heading above it
+ * ('' above the first). `rootMargin` is ignored then.
  */
-export function scrollSpy(ids: () => string[], options: { rootMargin?: string } = {}) {
-	const rootMargin = options.rootMargin ?? '-45% 0px -50% 0px';
+export function scrollSpy(
+	ids: () => string[],
+	options: { rootMargin?: string; line?: number } = {}
+) {
+	const { line } = options;
+	const rootMargin =
+		line != null
+			? `${MARKER_REACH_PX}px 0px ${-Math.round((1 - line) * 100)}% 0px`
+			: (options.rootMargin ?? '-45% 0px -50% 0px');
 	let active = $state('');
 
 	$effect(() => {
@@ -66,6 +85,12 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 		if (!els.length) return;
 		const io = new IntersectionObserver(
 			(entries) => {
+				// rootBounds is null only for a cross-origin frame's implicit root.
+				const y = line != null ? entries[0]?.rootBounds?.bottom : undefined;
+				if (y != null) {
+					active = passedMarker(els, y);
+					return;
+				}
 				// Last intersecting entry wins: as you scroll down, the section
 				// entering the band supersedes the one leaving it.
 				for (const e of entries) if (e.isIntersecting) active = e.target.id;
@@ -116,6 +141,21 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 			}
 		}
 	};
+}
+
+/** How far above the viewport `scrollSpy`'s `line` region reaches: past the
+ *  top of any page, so a heading above the line is always inside it. */
+const MARKER_REACH_PX = 1_000_000;
+
+/** The id of the last of `els` (in document order) whose top is above `line`, a
+ *  viewport y; '' when none is. `scrollSpy`'s `line` mode. */
+export function passedMarker(els: HTMLElement[], line: number): string {
+	let id = '';
+	for (const el of els) {
+		if (el.getBoundingClientRect().top >= line) break;
+		id = el.id;
+	}
+	return id;
 }
 
 /** The sticky sub-nav's height before it is measured: one row of

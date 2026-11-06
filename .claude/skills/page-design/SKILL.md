@@ -299,6 +299,20 @@ there; it stays in Sermon of the day. The minutes-left pill stands in the start
 margin (`.min-left.beside-text`) and is not mounted where the margin can't hold
 it; the biography's pill is still centred (follow-up).
 
+**The sermon outline is pinned beside the text (design #29).** "In this sermon"
+sits in the end margin on a track as tall as the BODY (the `.sermon-text`
+wrapper round `<Reader>`), so it starts level with the sermon's first line —
+never above the head — and scrolls away with the last paragraph. It sticks at
+`calc(var(--appnav-h) + var(--pinned-offset) + 0.5rem)`, level with where a
+jumped-to `.sec-anchor` lands, and is mounted only where the margin holds it at
+the reader's own measure (`railFits`, as `besideText` for the pill); below
+that the top bar's Outline button opens the same list, and the button steps
+aside while the rail is up. The current section is the shared `scrollSpy` in
+its `line` mode (anchors are headings, not section boxes), an entry's jump
+moves focus to its section, and under the list a thin bar and "N min left"
+carry the figure — the start-margin pill steps aside while the rail shows, so
+the number is on screen once.
+
 **No site chrome while reading (design #7).** A route in `READER_ROUTE_IDS`
 draws no site nav, no footer and no phone tab bar — the root layout's one
 switch is `siteChrome` (`!inReader && !readerUi.focus`), and `--appnav-h` is

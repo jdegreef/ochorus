@@ -5,9 +5,10 @@
 	import { PHONE } from '$lib/breakpoints';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { onMount, type Component } from 'svelte';
+	import { onMount, tick, type Component } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { type Sermon, type SermonSummary, formatLifespan, isTranslated, listSermons } from '$lib/library-public';
 	import { MEASURE_REM, readerPrefs } from '$lib/readerPrefs.svelte';
@@ -171,13 +172,18 @@
 	// the prerendered markup), so both `{#if}`s below agree with it.
 	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
-	/** The pill's width plus its gap from the text, each side of the column. */
-	const MIN_LEFT_GUTTER_REM = 9;
-	// Room in the start margin for the minutes-left pill: the column at the
-	// reader's own measure and size, plus the pill's width on each side.
-	const besideText = mediaFlag(
-		() => `(min-width: ${MEASURE_REM[readerPrefs.measure] * readerPrefs.scale + 2 * MIN_LEFT_GUTTER_REM}rem)`
-	);
+	/** Whether each margin beside the column — at the reader's own measure and
+	 *  size, so not a fixed breakpoint — is at least `gutterRem` wide. Both
+	 *  sides, as the column is centred. */
+	const marginHolds = (gutterRem: number) =>
+		mediaFlag(() => `(min-width: ${MEASURE_REM[readerPrefs.measure] * readerPrefs.scale + 2 * gutterRem}rem)`);
+	// The minutes-left pill (its width plus its gap from the text) in the start
+	// margin…
+	const besideText = marginHolds(9);
+	// …and the pinned outline in the end margin (design #29): its gap, its 14rem
+	// and a scrollbar's worth of edge. A fixed 1280px breakpoint let a wide
+	// measure run the rail over the text, and hid it with room to spare.
+	const railFits = marginHolds(18);
 
 	// The footer's action row folds away while reading on and returns on the
 	// first scroll up, as the chapter's does (nextBarHidden). Folding changes no
@@ -236,16 +242,30 @@
 		void sermon.slug; // rebuild when navigating between sermons
 		outline = body ? buildOutline(body) : [];
 	});
-	// Which section the reader is in — for the desktop rail's highlight. The
-	// shared scroll-spy re-observes as the outline is (re)built; `--pinned-offset`
-	// on the article (below) keeps its jumps landing below the reader bar.
-	const spy = scrollSpy(() => outline.map((s) => s.id));
+	// The outline pinned beside the text (design #29): wherever the end margin
+	// holds it. Below that, the top bar's Outline button opens the same list.
+	const showRail = $derived(outline.length >= 2 && railFits.matches && !readerUi.focus);
+	// Which section the reader is in — for the rail's highlight. The anchors are
+	// headings and "I." points, not section boxes, so a reading `line` a third of
+	// the way down: the section is the last whose anchor has passed it, and
+	// scrolling back up hands it back to the section above. `--pinned-offset` on
+	// the article (below) keeps the jumps landing below the reader bar.
+	const spy = scrollSpy(() => outline.map((s) => s.id), { line: 0.3 });
 
 	// Jump to an outline section and close the popover. The landing offset lives
-	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math.
-	function scrollToSection(id: string) {
+	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math. Focus goes
+	// to the section, so Tab and a screen reader carry on from there rather than
+	// from the list — after the popover's trap has handed focus back to its
+	// toggle on closing, hence the tick.
+	async function scrollToSection(id: string) {
+		spy.set(id);
 		jumpToSection(id);
 		outlineOpen = false;
+		await tick();
+		const el = document.getElementById(id);
+		if (!el) return;
+		if (!el.hasAttribute('tabindex')) el.tabIndex = -1;
+		el.focus({ preventScroll: true });
 	}
 
 	const initials = (name: string) =>
@@ -507,9 +527,10 @@
 			     and the site's destinations fold into "⋯". -->
 			<div class="flex shrink-0 items-center gap-0.5">
 				<div class="hidden sm:contents">
-					{#if outline.length >= 2}
+					<!-- Not while the outline is pinned beside the text. -->
+					{#if outline.length >= 2 && !showRail}
 						<button
-							class="outline-toggle-btn btn btn-icon btn-ghost"
+							class="btn btn-icon btn-ghost"
 							class:text-accent={outlineOpen}
 							onclick={toggleOutline}
 							aria-label={t('sermon.outline')}
@@ -658,33 +679,6 @@
 	class="relative mx-auto px-5 py-10"
 	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
 >
-	<!-- Persistent outline rail (wide screens): mirrors the popover, highlighting
-	     the section you're reading. The top-bar toggle takes over below 1280px.
-	     It lives INSIDE the article, on a track beside the column as tall as the
-	     article, and sticks within it: when it was position:fixed it sat on top
-	     of the sign-up band and the footer at the end of every long sermon. -->
-	{#if outline.length >= 2 && !readerUi.focus}
-		<div class="outline-track">
-			<nav class="outline-rail" aria-label={t('sermon.outline')}>
-				<p class="outline-rail-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
-				<ul>
-					{#each outline as s (s.id)}
-						<li>
-							<button
-								class="outline-rail-item"
-								class:point={s.kind === 'point'}
-								class:active={spy.active === s.id}
-								onclick={() => scrollToSection(s.id)}
-							>
-								{s.label}
-							</button>
-						</li>
-					{/each}
-				</ul>
-			</nav>
-		</div>
-	{/if}
-
 	<!-- No visible breadcrumb: the top bar's "← Sermons" is the way back, and the
 	     trail under it was the same link twice (design review #12). The
 	     BreadcrumbList JSON-LD (crumbsLd) still ships. -->
@@ -765,19 +759,58 @@
 		{/if}
 	</header>
 
-	<Reader
-		bind:this={reader}
-		kind="sermon"
-		slug={sermon.slug}
-		language={sermon.language}
-		html={sermon.body_html}
-		{cite}
-		listenTitle={sermon.title}
-		listenArtist={sermon.author_name}
-		bind:body
-		bind:frac
-		finishOnEnd
-	/>
+	<!-- The text, with the outline pinned beside it (design #29). The track is
+	     as tall as the body and its rail sticks within it, so the rail starts
+	     level with the sermon's first line — not above the head, where it
+	     floated before — and scrolls away with the last paragraph instead of
+	     sitting over the questions, the sign-up band or the footer. The body's
+	     top rather than the first heading: the introduction is part of the
+	     sermon, and at this width the rail is the one way to the outline (the
+	     top bar's button steps aside). -->
+	<div class="sermon-text">
+		{#if showRail}
+			<div class="outline-track">
+				<nav class="outline-rail" aria-label={t('sermon.outline')}>
+					<p class="outline-rail-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
+					<ul>
+						{#each outline as s (s.id)}
+							<li>
+								<button
+									class="outline-rail-item"
+									class:point={s.kind === 'point'}
+									class:active={spy.active === s.id}
+									aria-current={spy.active === s.id ? 'location' : undefined}
+									onclick={() => scrollToSection(s.id)}
+								>
+									{s.label}
+								</button>
+							</li>
+						{/each}
+					</ul>
+					<!-- How far through: the figure the start-margin pill shows, which
+					     steps aside while the rail is up (one figure on screen). The
+					     shared meter, which tells a screen reader the same. -->
+					<div class="rail-progress">
+						<ProgressBar percent={frac * 100} label="{minsLeft} {t('sermon.minLeft')}" />
+					</div>
+					<p class="rail-left count" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+				</nav>
+			</div>
+		{/if}
+		<Reader
+			bind:this={reader}
+			kind="sermon"
+			slug={sermon.slug}
+			language={sermon.language}
+			html={sermon.body_html}
+			{cite}
+			listenTitle={sermon.title}
+			listenArtist={sermon.author_name}
+			bind:body
+			bind:frac
+			finishOnEnd
+		/>
+	</div>
 
 	<!-- Questions for reflection: answered study questions grounded in the sermon.
 	     Renders from the same `study_questions` array as the FAQPage JSON-LD, so
@@ -954,8 +987,10 @@
      footer row carries the same line instead. It stands in the margin beside
      the text (`.min-left.beside-text`); centred at the foot of the screen it
      sat on the very line being read. Where the margin is too narrow to hold it,
-     it is left out — the progress line at the top still says how far you are. -->
-{#if !isPhone && besideText.matches && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
+     it is left out — the progress line at the top still says how far you are.
+     While the outline rail is up it carries the figure, under its list, and
+     the pill steps aside rather than show the same number twice (design #29). -->
+{#if !isPhone && besideText.matches && !showRail && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
 	<div class="min-left beside-text" style={readerPrefs.style} aria-hidden="true">
 		{minsLeft} {t('sermon.minLeft')}
 	</div>
@@ -1182,59 +1217,71 @@
 		color: var(--accent);
 	}
 
-	/* Persistent outline rail — hidden until there's room beside the article. */
-	.outline-rail {
-		display: none;
+	/* --- The outline pinned beside the text (design #29) ------------------ */
+	/* Mounted only where the end margin holds it (`railFits`), so no breakpoint
+	   here. The track spans the body's height, 2.25rem past the column's end
+	   edge (the gap the article's padding and the old rail kept), and the rail sticks
+	   within it, clear of the reader bar: `--appnav-h` (the app's status strip
+	   on a reading route) plus `--pinned-offset` (the bar, set on the article). */
+	.sermon-text {
+		position: relative;
 	}
-	@media (min-width: 1280px) {
-		/* The track spans the article's height just past its inline-end edge, so
-		   the sticky rail scrolls away with the sermon's last lines. The min()
-		   keeps it on screen (a 2rem gutter, room for a scrollbar) when a wide
-		   reading measure leaves less margin than the rail needs — as the fixed
-		   rail's max(1rem, …) did — instead of opening a horizontal scroll. */
-		.outline-track {
-			position: absolute;
-			inset-block: 0;
-			inset-inline-start: min(calc(100% + 1rem), calc(50% + 50vw - 16rem));
-			width: 14rem;
-		}
-		.outline-rail {
-			display: block;
-			position: sticky;
-			top: 5rem;
-			max-height: calc(100vh - 7rem);
-			overflow-y: auto;
-			z-index: 5;
-		}
-		/* The top-bar toggle is redundant once the rail is visible. */
-		.outline-toggle-btn {
-			display: none;
-		}
+	.outline-track {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: calc(100% + 2.25rem);
+		width: 14rem;
+	}
+	.outline-rail {
+		/* Level with where a jumped-to heading lands (.sec-anchor's margin). */
+		--rail-top: calc(var(--appnav-h, 0px) + var(--pinned-offset, 4rem) + 0.5rem);
+		position: sticky;
+		top: var(--rail-top);
+		max-height: calc(100dvh - var(--rail-top) - 1.5rem);
+		overflow-y: auto;
 	}
 	.outline-rail-title {
-		padding: 0 0.6rem 0.4rem;
+		padding-block-end: 0.5rem;
 		color: var(--muted);
+	}
+	/* One guide line down the list, the current section marked on it in the
+	   accent — the article contents rail's shape (ArticleDetail .toc-side). */
+	.outline-rail ul {
+		border-inline-start: 2px solid var(--border);
 	}
 	.outline-rail-item {
 		display: block;
 		width: 100%;
-		text-align: start;
-		padding: 0.3rem 0.6rem;
+		margin-inline-start: -2px;
+		padding-block: 0.3rem;
+		padding-inline: 0.8rem 0;
 		border-inline-start: 2px solid transparent;
+		text-align: start;
 		font-size: var(--fs-small);
 		line-height: 1.35;
 		color: var(--muted);
-		transition: color var(--duration-fast) ease;
+		transition:
+			color var(--duration-fast) ease,
+			border-color var(--duration-fast) ease;
 	}
 	.outline-rail-item:hover {
 		color: var(--accent);
 	}
+	/* Headings flush; a homiletic point under one sits a step in. */
 	.outline-rail-item.point {
-		padding-inline-start: 1.1rem;
+		padding-inline-start: 1.3rem;
 	}
 	.outline-rail-item.active {
 		color: var(--accent);
 		border-inline-start-color: var(--accent);
 		font-weight: 600;
+	}
+	/* The meter and the minutes left (`.count`: tabular, muted), under the list. */
+	.rail-progress {
+		margin-block-start: 1rem;
+	}
+	.rail-left {
+		margin-block-start: 0.4rem;
+		font-size: var(--fs-micro);
 	}
 </style>
