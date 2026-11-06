@@ -83,6 +83,72 @@ THEMES = (
 )
 
 VOLUMES: dict[int, dict[str, object]] = {
+    1: {
+        "slug": "the-prayers-jesus-learned",
+        "book": {
+            "publication_year": 2026,
+            "title": "The Prayers Jesus Learned",
+            "subtitle": "Prayer in the Old Testament",
+            "cover_color": covers.ink_safe("#1c1f3d"),  # a starlit indigo
+            "description": (
+                "Seventeen short chapters on the great prayers of the Old Testament, the "
+                "prayers Jesus grew up with: Abraham pleading for a city, Jacob wrestling "
+                "through the night, Moses standing in the gap, Hannah pouring out her soul, "
+                "David's psalms of longing and repentance, Elijah on Mount Carmel, Jonah in "
+                "the deep, Daniel at his open window, Nehemiah before the king, and Habakkuk "
+                "rejoicing when the fields are bare."
+            ),
+            "about_html": (
+                "<p>When Jesus prayed on the cross, the words that came to His lips were the "
+                "words of the Psalms. He had grown up with them: sung on the road to "
+                "Jerusalem at the great feasts, heard every Sabbath in the synagogue at "
+                "Nazareth, said morning and evening at home. This book listens to those "
+                "prayers. It is Volume 1 of A Cloud of Praying Witnesses, an Ochorus series "
+                "that follows the people of God at prayer from the first pages of the Bible "
+                "to the church around the world today.</p>"
+                "<p>Its seventeen chapters move through four parts of the story: the fathers "
+                "of faith, Abraham and Jacob; Moses, who stood in the gap for his people and "
+                "asked to see God's glory; the judges and kings, from Hannah and Samuel to "
+                "David and Solomon; and the prophets, the exile and the return, from Elijah "
+                "and Hezekiah to Daniel, Nehemiah, the psalms of lament and Habakkuk. These "
+                "were not perfect people, and their prayers are not the prayers of the "
+                "strong, but of the weak who learned that God hears.</p>"
+                "<p>Every chapter opens with a key verse and a story, quotes voices from the "
+                "past such as E. M. Bounds, Andrew Murray and Charles Spurgeon word for word "
+                "from their books in the library, and ends with three key insights, a word "
+                "for today, a practice to try, a closing prayer and questions for "
+                "reflection. Two appendices gather every insight by theme and every "
+                "Scripture in Bible order. Scripture is quoted from the Open Word Bible "
+                "(OWB), Balanced edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is The Prayers Jesus Learned about?",
+                    "answer": "The great prayers of the Old Testament, in seventeen short chapters: Abraham, Jacob, Moses, Hannah, Samuel, David, Solomon, Elijah, Jehoshaphat, Hezekiah, Jonah, Daniel, Nehemiah, the psalms of lament and Habakkuk. These are the prayers Jesus grew up with, and the book shows how He carried them into His own praying.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. This prelude listens to the Old Testament; Volume 2 sits with Jesus, the Teacher of Prayer; later volumes follow the apostles and then the praying men and women of every century and every part of the world, down to the global church today.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "How is each chapter laid out?",
+                    "answer": "Each chapter opens with a key verse and a story, looks at what the passage shows about prayer, quotes a voice from the past, and ends with three key insights, a section called For us today, one practice to try that week, a closing prayer and questions for reflection.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes seventeen days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
     2: {
         "slug": "jesus-teacher-of-prayer",
         "book": {

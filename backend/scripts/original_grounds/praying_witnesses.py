@@ -1,4 +1,18 @@
-"""The ground for A Cloud of Praying Witnesses, Vol. 2: Jesus, Teacher of Prayer.
+"""The grounds for A Cloud of Praying Witnesses, one per volume.
+
+The series shares one scene, the hills under a night sky with the light coming
+up a little further in each volume: Vol. 1 under the stars, Vol. 2 at first
+light, Vol. 3 at sunrise. Every ground keeps the upper two-thirds dark for the
+white title, its subject below y=470 and its ridge tops above y=519 (the
+subtitle band), and the mark zone over dark foreground. No likeness.
+
+    python3 backend/scripts/original_grounds/praying_witnesses.py OUTDIR [SLUG ...]
+
+writes OUTDIR/<slug>.html for each slug (all three with none); render each at 2x
+with headless Chromium (600x800 window) and downscale with Pillow to the
+committed jpg, which is FROZEN by digest in curated_art.ORIGINAL_GROUND.
+
+Vol. 2: Jesus, Teacher of Prayer.
 
 Drawn 2026-11-04 because the session could reach no collection host (the museum
 APIs, Commons and Wikidata were all blocked), so the volume wears an Original
@@ -12,9 +26,16 @@ over the dark foreground. No likeness.
 
     python3 backend/scripts/original_grounds/praying_witnesses.py OUTDIR
 
-writes OUTDIR/jesus-teacher-of-prayer.html; render it at 2x with headless
-Chromium (600x800 window) and downscale with Pillow to the committed jpg, which
-is FROZEN by digest in curated_art.ORIGINAL_GROUND.
+Vol. 1: The Prayers Jesus Learned. "Look up into the sky and try counting the
+stars, if you can" (Genesis 15:5): a night thick with stars over low desert
+hills, no dawn yet, only a violet haze on the far horizon; on the near ridge,
+low left, a tent with a lamp at its door and Abram standing beside it, face
+lifted to the sky.
+
+Vol. 3: Devoted to Prayer. The morning of Pentecost over Jerusalem: the sun's
+glow broad on the horizon behind the city, the sky still deep blue above, and
+on the near ridge the flat roofs, walls and towers of the city in silhouette,
+one upper room's window lit (Acts 1:13-14, 2:1).
 """
 import pathlib
 import random
@@ -40,7 +61,7 @@ def ridge(points, fill):
     return f'<path d="{d}" fill="{fill}"/>'
 
 
-SVG = f'''<!doctype html><html><body style="margin:0;background:#000">
+VOL2 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
 <defs>
  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -77,7 +98,89 @@ SVG = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+GRAIN = '''<pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+  <circle cx="1" cy="1" r="0.7" fill="#fff" fill-opacity="0.035"/>
+  <circle cx="3" cy="3" r="0.6" fill="#000" fill-opacity="0.08"/>
+ </pattern>'''
+
+VOL1 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#04060f"/><stop offset=".40" stop-color="#0a1126"/>
+  <stop offset=".56" stop-color="#151c38"/><stop offset=".62" stop-color="#262244"/>
+  <stop offset="1" stop-color="#262244"/>
+ </linearGradient>
+ <radialGradient id="haze" cx="300" cy="520" r="260" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#4a3a63" stop-opacity=".55"/>
+  <stop offset="1" stop-color="#262244" stop-opacity="0"/>
+ </radialGradient>
+ <radialGradient id="lamp" cx="95" cy="503" r="12" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#f3b866" stop-opacity=".6"/>
+  <stop offset="1" stop-color="#f3b866" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#haze)"/>
+{stars(15, n=230, ymax=470)}
+{stars(16, n=40, ymax=300)}
+<circle cx="452" cy="88" r="2.0" fill="#fff" opacity=".95"/>
+<circle cx="214" cy="152" r="1.8" fill="#fff" opacity=".9"/>
+<circle cx="347" cy="236" r="1.7" fill="#fff" opacity=".85"/>
+{ridge([(0, 488), (90, 482), (170, 486), (260, 476), (340, 482), (420, 478), (510, 484), (600, 479)], "#1c1a2e")}
+{ridge([(0, 500), (80, 497), (150, 494), (230, 499), (310, 503), (390, 499), (470, 495), (540, 500), (600, 497)], "#100f1c")}
+{ridge([(0, 511), (100, 506), (190, 505), (270, 510), (360, 513), (450, 509), (530, 505), (600, 508)], "#06070d")}
+<rect width="600" height="800" fill="url(#lamp)"/>
+<g fill="#06070d">
+ <path d="M58 507 L82 474 L106 507 Z"/>
+ <path d="M82 474 L88 470 L84 476 Z"/>
+ <path d="M124 507 L125 489 C125 485 127 483 130 483 C133 483 135 485 135 489 L136 507 Z"/>
+ <circle cx="130.5" cy="477.5" r="5"/>
+ <path d="M128 474 C130 471 134 471 136 473 L134 476 Z"/>
+</g>
+<path d="M92 507 L96 494 L100 507 Z" fill="#f3b866" opacity=".55"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
+VOL3 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#08102a"/><stop offset=".36" stop-color="#132046"/>
+  <stop offset=".52" stop-color="#2a3160"/><stop offset=".58" stop-color="#5a4566"/>
+  <stop offset=".63" stop-color="#9a6458"/><stop offset="1" stop-color="#9a6458"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="300" cy="512" r="165" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#ffd08a" stop-opacity=".9"/>
+  <stop offset=".3" stop-color="#e8955c" stop-opacity=".45"/>
+  <stop offset="1" stop-color="#9a6458" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+{stars(23, n=45, ymax=260)}
+{ridge([(0, 492), (120, 486), (220, 490), (300, 484), (390, 489), (480, 485), (600, 490)], "#4a3346")}
+<g fill="#0a0910">
+ <path d="M0 800 L0 506 L40 506 L40 496 L58 496 L58 506 L96 506 L96 490 L112 490 L112 482 L120 482 L120 490 L136 490
+  L136 500 L170 500 L170 494 L204 494 L204 502 L232 502 L232 488 L262 488 L262 497 L300 497 L300 491 L336 491 L336 499
+  L362 499 L362 476 L372 476 L372 470 L382 470 L382 476 L392 476 L392 499 L428 499 L428 492 L470 492 L470 501 L502 501
+  L502 495 L536 495 L536 504 L566 504 L566 498 L600 498 L600 800 Z"/>
+</g>
+<rect x="241" y="493" width="5" height="5" fill="#f6c06e" opacity=".95"/>
+<rect x="0" y="512" width="600" height="288" fill="#0a0910"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
+SCENES = {
+    "the-prayers-jesus-learned": VOL1,
+    "jesus-teacher-of-prayer": VOL2,
+    "devoted-to-prayer": VOL3,
+}
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "jesus-teacher-of-prayer.html").write_text(SVG)
-    print(OUT / "jesus-teacher-of-prayer.html")
+    for slug in sys.argv[2:] or SCENES:
+        (OUT / f"{slug}.html").write_text(SCENES[slug])
+        print(OUT / f"{slug}.html")
