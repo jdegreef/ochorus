@@ -143,7 +143,6 @@
 {/snippet}
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
-	<LibraryTabs current="az" />
 	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
 	<!-- The library's people in this language (`countWriters`, the home page's
 	     number), not the rows below: the rows are the English roster off
@@ -154,6 +153,8 @@
 		{data.people}
 		{data.people === 1 ? t('common.authorOne') : t('common.authorMany')}
 	{/snippet}
+	<!-- The library tabs sit under the title, as on /books (design review #4). -->
+	<LibraryTabs current="az" />
 
 	<!-- Empty only when the fetch failed (the build throws instead; see +page.ts). -->
 	{#if data.loadError || groups.length === 0}

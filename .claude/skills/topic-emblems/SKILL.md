@@ -62,8 +62,11 @@ project folder") — serve a scratch preview over a port instead:
 `python3 -m http.server 8791` in the worktree, navigate to
 `http://localhost:8791/<preview>.html`. Build the preview by inlining the palette
 consts + the art strings into tinted chips (dark + light) so you judge it as it
-appears on the hero. Do the full-app `/topics/<slug>/` hero pass once, when the
-whole batch is in, before the PR (needs a seeded backend — `seed_topics`).
+appears on the hero. Do the full-app pass once, when the whole batch is in,
+before the PR (needs a seeded backend — `seed_topics`). Since design review #16
+the `/topics/<slug>/` leaf header is plain (no emblem chip; the accent only
+tints the verse rule and related-topic pills), so judge the emblem on the
+`/topics` shelf cards and the OG share card.
 
 ## Ledger — coverage
 

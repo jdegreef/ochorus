@@ -6,7 +6,7 @@
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 
 	/**
-	 * The "Discover Your Next Book" six-book strip, shared by the logged-out home
+	 * The "Discover your next book" six-book strip, shared by the logged-out home
 	 * and the signed-in dashboard so the two can't drift. Hidden when empty, like
 	 * the topics row: if the shelf failed to load (see the note in +page.ts) a
 	 * bare heading over an empty grid reads as "Ochorus has no books", where
@@ -16,47 +16,63 @@
 	 * .night-band): six covers are the most colourful thing the page has, and
 	 * they look their best on a dark ground. The band re-declares the theme
 	 * tokens, so BookCard and the header draw in its night palette with no
-	 * variant of their own. The logged-out home asks for `band="page"` instead —
-	 * the theme's own light tinted band — so a first visit opens on a light page
-	 * rather than on dark band after dark band.
+	 * variant of their own; its heading wears the Books icon, like the
+	 * dashboard's other shelves. The logged-out home asks for `band="none"`
+	 * instead — one ground with sections parted by space, every heading there a
+	 * plain start-aligned `<h2>` with no icon (design #17).
+	 *
+	 * `belowHero`: the logged-out home's hero fans out its own covers above
+	 * this shelf, one of them fetched at high priority, and pushes the row well
+	 * below the first screen — so here no cover is fetched high or eagerly.
 	 */
-	let { books, band = 'night' }: { books: CoverBook[]; band?: 'night' | 'page' } = $props();
+	let {
+		books,
+		band = 'night',
+		belowHero = false
+	}: { books: CoverBook[]; band?: 'night' | 'none'; belowHero?: boolean } = $props();
 
 	const t = i18n.t;
 </script>
 
+{#snippet shelf()}
+	<section class="page-col px-5 pt-14">
+		<SectionHeader
+			section={band === 'night' ? 'books' : undefined}
+			title={t('home.discoverNext')}
+			href={localizeHref('/books')}
+			linkText={t('home.allBooks')}
+		/>
+		<!-- Its own layout rather than .book-grid (whose open-shelf ramp passes
+		     through five columns and would strand a sixth card):
+		       phone  — a rail that scrolls sideways, the third cover peeking
+		                at the edge so it reads as "there is more this way"
+		                rather than a tall stack of six;
+		       tablet — three across, two rows;
+		       desktop — one even row of six. (The first book used to be set
+		                large, as a magazine leads with its pick; beside five
+		                small tinted cards it read as a layout bug — design
+		                review #1.) -->
+		<div class="discover-rail">
+			{#each books as book, i (book.slug)}
+				<!-- The first row starts above the fold at every breakpoint; three
+				     covers the common cases without eagerly loading a shelf
+				     nobody has scrolled to. Only the first is fetched HIGH: it is
+				     the likeliest LCP of an even row (none is, under the home hero:
+				     `belowHero`) — on a phone the row starts
+				     at the very foot of the first screen (y≈800 of 844,
+				     measured), where three high fetches only raced the fonts. -->
+				<BookCard {book} showAuthor priority={!belowHero && i === 0} eager={!belowHero && i < 3} />
+			{/each}
+		</div>
+	</section>
+{/snippet}
+
 {#if books.length}
-	<div class={band === 'night' ? 'night-band' : 'page-band'}>
-		<section class="page-col px-5 pt-14">
-			<SectionHeader
-				section="books"
-				title={t('home.discoverNext')}
-				href={localizeHref('/books')}
-				linkText={t('home.allBooks')}
-			/>
-			<!-- Its own layout rather than .book-grid (whose open-shelf ramp passes
-			     through five columns and would strand a sixth card):
-			       phone  — a rail that scrolls sideways, the third cover peeking
-			                at the edge so it reads as "there is more this way"
-			                rather than a tall stack of six;
-			       tablet — three across, two rows;
-			       desktop — one row with the first book set large, as a
-			                magazine leads with its pick, the rest standing
-			                bottom-aligned beside it. -->
-			<div class="discover-rail">
-				{#each books as book, i (book.slug)}
-					<!-- The first row starts above the fold at every breakpoint; three
-					     covers the common cases without eagerly loading a shelf
-					     nobody has scrolled to. Only the lead is fetched HIGH: it is
-					     the one set large on a desktop, and so the only one that can
-					     be the page's LCP — on a phone the row starts at the very
-					     foot of the first screen (y≈800 of 844, measured), where
-					     three high fetches only raced the fonts. -->
-					<BookCard {book} showAuthor priority={i === 0} eager={i < 3} />
-				{/each}
-			</div>
-		</section>
-	</div>
+	{#if band === 'night'}
+		<div class="night-band">{@render shelf()}</div>
+	{:else}
+		{@render shelf()}
+	{/if}
 {/if}
 
 <style>
@@ -95,14 +111,7 @@
 	}
 	@media (min-width: 1024px) {
 		.discover-rail {
-			grid-template-columns: minmax(0, 1.75fr) repeat(5, minmax(0, 1fr));
-			align-items: end;
-		}
-		/* .book-card fills its cell (height: 100%) to level a grid row; here
-		   the row is the lead's height, so the others keep their own and stand
-		   on the baseline beside it. */
-		.discover-rail > :global(*) {
-			height: auto;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
 		}
 	}
 	/* Print lays the six out flat rather than as a clipped rail. */

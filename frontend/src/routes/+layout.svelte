@@ -121,8 +121,8 @@
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
-		// Field INP attribution (`Slow tap` events); loads after idle, off
-		// with analytics — see $lib/webVitals.
+		// Field INP attribution (`Slow tap` events) and, sampled, the first load's
+		// LCP + TTFB (`Page load`); loads after idle, off with analytics — see $lib/webVitals.
 		initWebVitals(getLocale());
 		install.init();
 	});
@@ -240,56 +240,58 @@
 	let searchKbd = $state('⌘K');
 	let navEl = $state<HTMLElement>();
 
-	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
+	/** Reading surfaces carry their OWN slim bar instead of the site chrome. */
 	const inReader = $derived(isReaderRoute($page.route.id));
+	// The site nav and footer step away on the reading surfaces (design #7) and
+	// in focus mode: a chapter or a sermon is read under ONE slim bar of its
+	// own, whose "⋯" group carries the site's destinations (ReaderSiteLinks)
+	// and whose title links back to the book. Known from the route id, so a
+	// prerendered page paints without them — nothing comes or goes on hydrate.
+	// An ERROR under a reader route (a 404 chapter or sermon) keeps the chrome:
+	// the reader page, and its bar, never mounts there.
+	const siteChrome = $derived(!(inReader && !$page.error) && !readerUi.focus);
 	// The app's status-bar strip matches what sits under it (app.css,
-	// `data-app-top`): the pinned nav, the reader's ground, or no nav at all.
+	// `data-app-top`): the pinned nav, or the page's own ground where there is
+	// no nav.
 	$effect(() => {
-		if (IS_APP) document.documentElement.dataset.appTop = readerUi.focus ? 'none' : inReader ? 'static' : 'nav';
+		if (IS_APP) document.documentElement.dataset.appTop = siteChrome ? 'nav' : 'none';
 	});
 	// The phone tab bar (TabBar; phones only, by its CSS). Not on the reading
 	// surfaces, whose own bottom bar holds that edge; not in focus mode; not
 	// while the Listen bar holds it. Where it shows (TabBar publishes
 	// --tabbar-h), the top bar sheds its hamburger, gear and sign-in button —
 	// they live in its "More" sheet (app.css); a signed-in avatar stays.
-	const withTabBar = $derived(!inReader && !readerUi.focus && listen.status === 'idle');
+	const withTabBar = $derived(siteChrome && listen.status === 'idle');
 
 	// Publish the bar's RENDERED height so the handful of pages with their own
 	// sticky sub-bar (search filters, the biographies index) can sit below it
 	// rather than under it. Measured rather than assumed: the bar wraps when the
 	// mobile drawer opens, and its height changes with the type scale.
 	//
-	// This is a FACT about the nav, not a policy about who should clear it. It
-	// used to publish 0 on the reading routes — true there only because the nav
-	// is static and rides away with the scroll. In the reader's page-turn mode
-	// nothing scrolls, so it never rides away, and a consumer that trusted the 0
-	// pinned itself underneath a bar that was still sitting there. Whether to
-	// clear the nav depends on what the consumer is doing; the height doesn't.
-	// Focus mode is the one case where the height really is 0: the nav is not
-	// rendered at all.
+	// This is a FACT about the nav, not a policy about who should clear it: 0
+	// exactly where the nav is not rendered at all (a reading surface, focus
+	// mode), the measured height everywhere it is. Not measured synchronously:
+	// nothing pins to the nav in its first frame (the per-breakpoint estimate on
+	// `.app-root` covers it), and a synchronous read forces a layout of the
+	// half-built page inside the startup task a first tap waits behind (mobile
+	// INP) — so leave it to the observer.
 	let navH = $state(0);
 	$effect(() => {
 		if (!navEl) return;
-		// On a reading surface, measure once, synchronously, BEFORE observing. A
-		// ResizeObserver's first callback lands a frame late, so the reader's
-		// page-turn bar — which now starts at var(--appnav-h) — spent that frame
-		// at 0, drawn underneath the nav, and then jumped 56px down. Nobody sees a
-		// stale height here: an element that just rendered has its real one.
-		// Elsewhere nothing pins to the nav that first frame (the per-breakpoint
-		// estimate on `.app-root` covers it), and the synchronous read forces a
-		// layout of the half-built page inside the startup task a first tap waits
-		// behind (mobile INP) — so leave it to the observer.
-		if (untrack(() => inReader)) navH = Math.round(navEl.getBoundingClientRect().height);
 		const ro = new ResizeObserver(([entry]) => {
 			navH = Math.round(entry.target.getBoundingClientRect().height);
 		});
 		ro.observe(navEl);
 		return () => ro.disconnect();
 	});
-	// Published as --appnav-h: 0 in focus mode (no nav at all), the measured
-	// height once there is one, and nothing before that, so the per-breakpoint
-	// estimate on `.app-root` (app.css) holds for a prerendered page.
-	const appnavH = $derived(readerUi.focus ? '--appnav-h: 0px; ' : navH ? `--appnav-h: ${navH}px; ` : '');
+	// Published as --appnav-h: where the nav is not rendered (reading surfaces,
+	// focus mode), only the phone app's status strip sits above the page
+	// (`--safe-top`; unset, so 0, on the website); the measured height once
+	// there is a nav; and nothing before that, so the per-breakpoint estimate on
+	// `.app-root` (app.css) holds for a prerendered browse page.
+	const appnavH = $derived(
+		!siteChrome ? '--appnav-h: var(--safe-top, 0px); ' : navH ? `--appnav-h: ${navH}px; ` : ''
+	);
 	// …and hand it to script (readerUi.navHeight) for pages that must clear it.
 	$effect(() => {
 		readerUi.navHeight = navH;
@@ -332,10 +334,9 @@
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	<!-- Defines the Ochorus wordmark <symbol> once; every BrandMark <use>s it. -->
 	<BrandSprite />
-	{#if !readerUi.focus}
+	{#if siteChrome}
 		<nav
 			class="appnav"
-			class:appnav-static={inReader}
 			aria-label={t('a11y.mainNav')}
 			bind:this={navEl}
 			use:dismissable={{ open: navOpen, onDismiss: () => (navOpen = false) }}
@@ -433,7 +434,7 @@
 		{@render children()}
 	</main>
 
-	{#if !readerUi.focus}
+	{#if siteChrome}
 		<SiteFooter />
 	{/if}
 </div>

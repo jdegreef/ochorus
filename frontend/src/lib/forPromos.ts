@@ -184,3 +184,13 @@ export const PROMO_WORDS: Record<ForLocale, { see: string; or: string; all: stri
 		allLead: 'Vous dirigez une Église, une école ou un ministère ?'
 	}
 };
+
+/** The home page's closing line under `allLead`: what the pages offer, and
+ *  how many kinds of ministry they cover — `n` is FOR_LINKS.length, so a new
+ *  group page moves the figure without an edit here. */
+export const HOME_FOR_LINE: Record<ForLocale, (n: number) => string> = {
+	en: (n) =>
+		`Free books, reading plans and leader’s guides for ${n} kinds of ministry, from small groups to prison chaplaincy.`,
+	fr: (n) =>
+		`Des livres, des plans de lecture et des guides d’animation gratuits pour ${n} formes de ministère, des petits groupes à l’aumônerie de prison.`
+};

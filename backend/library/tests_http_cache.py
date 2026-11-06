@@ -77,6 +77,24 @@ class CacheControlHeaderTests(TestCase):
         """A stuck cache is the failure mode being avoided; keep max-age small."""
         self.assertLessEqual(MAX_AGE, 300)
 
+    def test_the_edge_gets_the_same_minute_without_stale_while_revalidate(self):
+        """A CDN copy must never be served stale to the prerender build."""
+        url = reverse("book-list")
+        res = self.client.get(url)
+        edge = res.headers.get("CDN-Cache-Control")
+        self.assertEqual(edge, f"public, max-age={MAX_AGE}")
+        self.assertNotIn("stale", edge)
+        # …and on the 304 a revalidating edge receives.
+        again = self.client.get(url, HTTP_IF_NONE_MATCH=res.headers["ETag"])
+        self.assertEqual(again.status_code, 304)
+        self.assertEqual(again.headers.get("CDN-Cache-Control"), edge)
+
+    def test_uncached_responses_carry_no_edge_header(self):
+        res = self.client.get(reverse("book-detail", args=["nope"]))
+        self.assertIsNone(res.headers.get("CDN-Cache-Control"))
+        res = self.client.get(reverse("search"), {"q": "humility"})
+        self.assertIsNone(res.headers.get("CDN-Cache-Control"))
+
     def test_a_conditional_request_returns_304_without_querying(self):
         url = reverse("book-list")
         first = self.client.get(url)

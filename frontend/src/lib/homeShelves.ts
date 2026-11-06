@@ -7,23 +7,25 @@ import {
 	AUTHOR_TILE_KEYS,
 	pick,
 	toCoverBook,
+	toCoverFace,
 	TOPIC_COUNT_KEYS,
 	type AuthorBio,
 	type AuthorTileData,
 	type BookSummary,
 	type CoverBook,
+	type CoverFace,
 	type HubAudience,
 	type TopicCount,
 	type TopicSummary
 } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
-import { countWriters } from '$lib/authorIndex';
+import { editionKind } from '$lib/edition';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 
 /**
- * The home page's public shelves — Discover, the authors grid, the topic chips
+ * The home page's public shelves — the hero's covers, Discover, the authors grid, the topic chips
  * and the hero's library counts — as ONE snapshot taken when the site is built.
  *
  * WHY A SNAPSHOT. The home page is prerendered, and its universal `load` runs
@@ -37,7 +39,7 @@ import { hubLanguages } from '$lib/audienceHubData';
  * So `routes/home-shelves/[lang].json` serves this at build time, and the home
  * `load` reads it through SvelteKit's `fetch`, which inlines the response into
  * the prerendered page and replays it at hydration. Both runs see the same
- * snapshot, byte for byte. It is small: six books, eight authors and eight
+ * snapshot, byte for byte. It is small: five hero covers, six books, eight authors and eight
  * topics, each PROJECTED to the fields the page draws (`CoverBook`,
  * `AuthorTileData`, `TopicCount`) — whole API objects carried every author's
  * bio and every topic's cover list, and the four full lists would have added
@@ -50,10 +52,19 @@ import { hubLanguages } from '$lib/audienceHubData';
  * disagrees with itself, rotated per deploy rather than per calendar day.
  */
 export interface HomeShelves {
+	/** The logged-out hero's fan of covers (`HomeIntro`): five — the curated
+	 *  `HERO_SLUGS` this language has, filled from its other painted books — or,
+	 *  in a language with fewer, at most three (`CoverStrip`'s deck). */
+	hero: CoverFace[];
+	/** The signed-in dashboard's Discover shelf (it has no hero). */
 	featured: CoverBook[];
+	/** The logged-out home's Discover shelf, right under the hero: `featured`'s
+	 *  pick with the hero's books left out and its authors avoided. */
+	discover: CoverBook[];
 	authors: AuthorTileData[];
 	topics: TopicCount[];
-	counts: { books: number; authors: number; sermons: number };
+	/** The library's totals in this language — /about's stats band reads them. */
+	counts: { books: number; sermons: number };
 	/** The young-reader hubs with something to show in this language — the
 	 *  home page links only those (`HomeAudienceHubs`). */
 	audiences: HubAudience[];
@@ -65,6 +76,22 @@ export interface HomeShelves {
  * and buried everything under it — while the shelf above it showed six books.
  */
 const AUTHOR_LIMIT = 8;
+
+/**
+ * The classics the home hero fans out, in the fan's left-to-right order — the
+ * MIDDLE one stands in front (`CoverStrip`'s spread). Books every reader has
+ * heard of, so the picture says "the library" before a word is read. A
+ * language without one of them fills its place from its own painted books
+ * (different authors first), so every locale's hero has a full fan.
+ */
+export const HERO_SLUGS = [
+	'the-pursuit-of-god',
+	'confessions',
+	'pilgrims-progress',
+	'the-inner-chamber',
+	'the-imitation-of-christ'
+] as const;
+const HERO_COUNT = HERO_SLUGS.length;
 
 /**
  * How many topic chips the home "Browse by topic" row shows before
@@ -111,21 +138,26 @@ export function deriveHomeShelves(
 	day: number
 ): HomeShelves {
 	const { books, authors, topics, sermons, audiences = [] } = lists;
+	// Only books with real cover art reach the front page: a generated flat
+	// plate (the `.svg` tier — see `isPlateCover`) reads as half-finished on
+	// the front page beside a painting or a photograph.
+	const painted = books.filter((b) => !isPlateCover(b.cover_url));
+	const hero = heroBooks(painted, day);
+	// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
+	// the API's own order, which groups by writer — so the front of the
+	// library was routinely three Murrays and three Spurgeons. Painted covers
+	// only, filtered BEFORE `pickByDay`, so the six still favour six authors.
+	const pickSix = (pool: BookSummary[], avoid: string[] = []) =>
+		pickByDay(pool, 6, day, (b) => b.author.slug, avoid).map(toCoverBook);
 	return {
-		// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
-		// the API's own order, which groups by writer — so the front of the
-		// library was routinely three Murrays and three Spurgeons.
-		//
-		// Only books with real cover art reach this editorial shelf: a generated
-		// flat plate (the `.svg` tier — see `isPlateCover`) reads as half-finished
-		// on the front page beside a painting or a photograph. Filtered BEFORE
-		// `pickByDay`, so the six still favour six different authors.
-		featured: pickByDay(
-			books.filter((b) => !isPlateCover(b.cover_url)),
-			6,
-			day,
-			(b) => b.author.slug
-		).map(toCoverBook),
+		hero: hero.map(toCoverFace),
+		featured: pickSix(painted),
+		// Under the hero: none of the books it fans out, and other writers
+		// first, so the first two blocks of the page never repeat each other.
+		discover: pickSix(
+			painted.filter((b) => !hero.includes(b)),
+			hero.map((b) => b.author.slug)
+		),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors
@@ -142,14 +174,32 @@ export function deriveHomeShelves(
 			)
 			.slice(0, HOME_TOPIC_LIMIT)
 			.map(topicCount),
-		// Library breadth for the hero's social-proof line. Counts of what this
-		// LANGUAGE actually has (the lists are already per-locale), so a locale
-		// with fewer works advertises its own honest numbers, not English's.
-		// Authors is `countWriters`, the A–Z's number: the writers list alone
-		// misses anyone withheld from Biographies.
-		counts: { books: books.length, authors: countWriters(authors, books), sermons: sermons.length },
+		// Library breadth for /about's stats band. Counts of what this LANGUAGE
+		// actually has (the lists are already per-locale), so a locale with
+		// fewer works states its own honest numbers, not English's.
+		counts: { books: books.length, sermons: sermons.length },
 		audiences
 	};
+}
+
+/** The hero's five: the curated classics this language has, in their places,
+ *  each missing one filled by another painted full-text book (never a
+ *  young-reader edition) — by an author the fan does not have yet where it
+ *  can. Fewer than five to be had → the first three (the deck), so the
+ *  snapshot holds exactly what the hero shows. */
+function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
+	const bySlug = new Map(painted.map((b) => [b.slug, b]));
+	const curated = HERO_SLUGS.map((slug) => bySlug.get(slug));
+	const have = curated.filter((b): b is BookSummary => !!b);
+	const fill = pickByDay(
+		painted.filter((b) => !have.includes(b) && !editionKind(b.slug)),
+		HERO_COUNT - have.length,
+		day,
+		(b) => b.author.slug,
+		have.map((b) => b.author.slug)
+	);
+	const five = curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
+	return five.length === HERO_COUNT ? five : five.slice(0, 3);
 }
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */
@@ -166,8 +216,8 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		// cross-navigation row, and the page already hides the section when
 		// there are none.
 		listTopics(lang).catch(() => []),
-		// Fetched only for the library-breadth count under the hero — tolerant at
-		// runtime, so a 0 just drops the sermon figure rather than breaking home.
+		// Fetched only for the library-breadth count /about shows — tolerant at
+		// runtime, so a 0 just drops the sermon figure rather than breaking it.
 		shelf(listSermons(lang)),
 		// The hubs this language has something in — tolerant even while
 		// building, like topics: a decorative link band that simply hides.

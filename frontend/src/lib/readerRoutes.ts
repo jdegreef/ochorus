@@ -5,8 +5,9 @@
  * and they behave differently from every browse surface in two ways that both
  * need this list:
  *
- * 1. They pin their OWN bar to the top, so the global nav goes static
- *    (`.appnav-static`).
+ * 1. They read under their OWN slim bar, so the root layout draws no site
+ *    nav, no footer and no phone tab bar there (`siteChrome`, design #7); the
+ *    bar's "⋯" group carries the site's destinations (ReaderSiteLinks).
  * 2. Their column is governed by `--reading-measure` (the `A a` popover's
  *    width control), NOT by the `pageWidth` store — so the quick-settings
  *    **Page width** stepper has nothing to act on and hides itself there.

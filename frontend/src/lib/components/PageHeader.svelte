@@ -1,8 +1,5 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Fleuron from '$lib/components/Fleuron.svelte';
-	import { sectionDest, type NavSection } from '$lib/contentNav';
-	import { hydrateSrc } from '$lib/hydrateSrc';
 
 	/**
 	 * The standard header for a top-level browse page (Books, Topics, Plans,
@@ -19,17 +16,18 @@
 	 * so page titles are `.text-h1` — the home hero keeps display, and is the
 	 * only place that should.
 	 *
-	 * A library section's own page passes `section`: its emblem then sits beside
-	 * the title in the section's hue, and the ornament under it is the
-	 * section's device rather than the house leaf. Both are static files under
-	 * /marks/, fetched by these pages alone.
+	 * Plain on purpose (design review #4, 2026-11-06): the title, one sentence,
+	 * and the shelf's size at the end of that sentence in the same muted run.
+	 * The section emblem beside the title and the ornament under it are gone —
+	 * they were decoration in front of content, the same on every shelf, and
+	 * made each page read as a template. Don't add a device back here.
 	 */
 	let {
 		eyebrow = '',
 		title,
 		tagline = '',
 		meta,
-		section
+		srOnly = false
 	}: {
 		/** Optional kicker above the title, e.g. "SERMONS". Rendered uppercase. */
 		eyebrow?: string;
@@ -37,39 +35,40 @@
 		title: string;
 		/** One-line description under the title. */
 		tagline?: string;
-		/** Optional counts line ("59 books · 27 authors"). */
+		/** Optional counts ("428 sermons · 38 preachers"), run on after the tagline. */
 		meta?: Snippet;
-		/** The library section this page is the shelf of, if any. */
-		section?: NavSection;
+		/**
+		 * Keep the h1 for screen readers and the outline, but draw nothing — for
+		 * a page whose first control IS its header (Search: the field is the
+		 * header, design review #25). Tagline and meta are dropped with it.
+		 */
+		srOnly?: boolean;
 	} = $props();
-
 </script>
 
-<header class="mb-8">
-	{#if eyebrow}
-		<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
-	{/if}
-	{#if section}
-		<div class="mb-3 flex items-center gap-3">
-			<span class="emblem-chip page-header-emblem" data-section={section}>
-				<img
-					src="/marks/emblem-{section}.svg"
-					alt=""
-					width="29"
-					height="29"
-					use:hydrateSrc={{ src: `/marks/emblem-${section}.svg` }}
-				/>
-			</span>
-			<h1 class="text-h1">{title}</h1>
-		</div>
-	{:else}
-		<h1 class="text-h1 mb-3">{title}</h1>
-	{/if}
-	<div class="mb-3"><Fleuron ornament={section && sectionDest(section).ornament} /></div>
-	{#if tagline}
-		<p class="max-w-2xl text-body text-muted">{tagline}</p>
-	{/if}
-	{#if meta}
-		<p class="mt-1 text-small text-muted">{@render meta()}</p>
-	{/if}
-</header>
+{#if srOnly}
+	<h1 class="sr-only">{title}</h1>
+{:else}
+	<header class="mb-8">
+		{#if eyebrow}
+			<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
+		{/if}
+		<h1 class="text-h1 mb-2">{title}</h1>
+		{#if tagline || meta}
+			<p class="max-w-2xl text-body text-muted">
+				{#if tagline}{tagline}{#if meta}{' '}{/if}{/if}{#if meta}<span class="page-header-count"
+						>{@render meta()}</span
+					>{/if}
+			</p>
+		{/if}
+	</header>
+{/if}
+
+<style>
+	/* The count runs on after the sentence and drops to the next line whole
+	   ("428 sermons · 38 preachers") rather than splitting across two; only a
+	   count longer than the line itself wraps inside. */
+	.page-header-count {
+		display: inline-block;
+	}
+</style>

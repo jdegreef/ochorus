@@ -4,7 +4,10 @@ import { env } from '$env/dynamic/public';
 import { canonicalRedirect } from '$lib/canonicalRedirect';
 import { SITE_URL } from '$lib/config';
 import { loadUiCatalog } from '$lib/i18n.svelte';
-import { afterLoadWhenIdle } from '$lib/idle';
+import { armSentryOnError } from '$lib/sentryOnError';
+// Static, tiny (a regex list): lets the first-error listener ignore extension
+// errors without loading the SDK. The rest of sentryScrub stays lazy.
+import { ALLOW_URLS as ALLOW_URLS_FOR_ARM } from '$lib/sentryScrub';
 import { getLocale } from '$lib/paraglide/runtime';
 
 // A duplicate URL (no trailing slash, or the Render host) moves to the real one
@@ -69,12 +72,15 @@ function loadSentry(): Promise<SentryModule> {
 	return sentry;
 }
 
-// When monitoring is on, load the SDK once the page has finished loading and
-// the main thread is idle. It is ~430 KB of JavaScript; parsing it at boot
-// (as this once did) landed exactly when a reader's first taps do, and a tap
-// that waits on a parse is what mobile INP measures. An error before then
-// still reaches Sentry: handleError below loads the SDK on demand.
-if (env.PUBLIC_SENTRY_DSN) afterLoadWhenIdle(() => void loadSentry());
+// When monitoring is on, load the SDK on the first error, not on every visit
+// ($lib/sentryOnError). It is ~430 KB of JavaScript (~145 KB gzipped), the
+// largest file in the build; loading it on idle kept it off the first tap but
+// still had every new visitor download and parse it for code that runs on
+// almost no visits. An error in a load or render still reaches Sentry the same
+// way: handleError below loads the SDK on demand.
+if (env.PUBLIC_SENTRY_DSN) {
+	armSentryOnError({ load: loadSentry, allowUrls: dev ? undefined : ALLOW_URLS_FOR_ARM });
+}
 
 // Report any uncaught load/render error (to Sentry when configured) and always
 // leave a console trace for local debugging. The returned shape is what the

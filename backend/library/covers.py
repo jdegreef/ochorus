@@ -715,12 +715,14 @@ DARK_INK_BOXES_BY_SLUG = {
         ("subtitle", (78, 462, 526, 548), 0.90, AUTHOR_MIN_CONTRAST),
         ("mark", (230, 660, 370, 750), 0.95, 3.0),
     ),
-    # Measured 2026-11-02 over en, es, fr, pt, sw (the twins' rows, plus 4px).
-    # Swahili's title wraps to three lines and starts highest; Spanish sets the
-    # widest subtitle. The Originals' bar sits between title and subtitle.
+    # Measured 2026-11-02 over en, es, fr, pt, sw, and widened 2026-11-06 for
+    # the second wave (am, ar, hi, ko, lg, uk, vi; the twins' rows, plus 4px).
+    # Swahili's title wraps to three lines and starts highest; Ukrainian sets
+    # the widest single line; Spanish the widest subtitle. The Originals' bar
+    # sits between title and subtitle.
     "faithful-with-little": (
         ("byline", (110, 98, 490, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
-        ("title", (75, 243, 525, 460), 1.0, TITLE_MIN),
+        ("title", (43, 243, 557, 460), 1.0, TITLE_MIN),
         ("rule", (250, 415, 350, 520), 0.8, 3.0),
         ("subtitle", (57, 444, 543, 546), 0.90, AUTHOR_MIN_CONTRAST),
         ("mark", (228, 660, 372, 750), 0.95, 3.0),

@@ -26,10 +26,10 @@ from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
 from .export_policy import EXPORT_EDITIONS, is_exportable
 from .http_cache import (
-    CACHE_CONTROL,
     PublicContentCacheMixin,
     _if_none_match,
     content_etag,
+    set_cache_headers,
 )
 from .hubs import Hubs
 from .languages import entry as language_entry
@@ -466,7 +466,7 @@ class BookEpubView(APIView):
                 f'attachment; filename="{book_export.export_filename(book, "epub")}"'
             )
         response["ETag"] = etag
-        response["Cache-Control"] = CACHE_CONTROL
+        set_cache_headers(response)
         return response
 
 

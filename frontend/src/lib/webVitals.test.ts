@@ -1,6 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+	PAGE_LOAD_EVENT,
 	SLOW_TAP_EVENT,
+	lcpBucket,
+	pageLoadProps,
+	ttfbBucket,
+	watchPageLoad,
 	inpBucket,
 	longestPhase,
 	notePageView,
@@ -123,5 +128,37 @@ describe('reportInp', () => {
 		const send = vi.fn();
 		reportInp(metric(600), 'en', send);
 		expect(send.mock.calls[0][1].route).toBe('(no route)');
+	});
+});
+
+describe('page load (LCP + TTFB)', () => {
+	beforeEach(() => resetWebVitals());
+
+	it('buckets LCP and TTFB on web.dev bands', () => {
+		expect([999, 1000, 2500, 2501, 4000, 4001].map(lcpBucket)).toEqual(['<1s', '1-2.5s', '1-2.5s', '2.5-4s', '2.5-4s', '4s+']);
+		expect([299, 300, 800, 801, 1800, 1801].map(ttfbBucket)).toEqual(['<0.3s', '0.3-0.8s', '0.3-0.8s', '0.8-1.8s', '0.8-1.8s', '1.8s+']);
+	});
+
+	it('reports once, for the first page view, with TTFB when it arrived', () => {
+		notePageView('/books/[slug]', 0);
+		notePageView('/authors', 5000);
+		let lcp!: (m: { value: number }) => void;
+		let ttfb!: (m: { value: number }) => void;
+		const send = vi.fn();
+		watchPageLoad({ onLCP: (cb) => (lcp = cb as never), onTTFB: (cb) => (ttfb = cb as never) }, 'sw', send);
+		ttfb({ value: 1200 });
+		lcp({ value: 3100 });
+		lcp({ value: 3300 });
+		expect(send).toHaveBeenCalledTimes(1);
+		expect(send).toHaveBeenCalledWith(PAGE_LOAD_EVENT, {
+			route: '/books/[slug]',
+			locale: 'sw',
+			lcp: '2.5-4s',
+			ttfb: '0.8-1.8s'
+		});
+	});
+
+	it('says unknown when TTFB never arrived', () => {
+		expect(pageLoadProps({ value: 500 }, undefined, '/', 'en')).toEqual({ route: '/', locale: 'en', lcp: '<1s', ttfb: 'unknown' });
 	});
 });

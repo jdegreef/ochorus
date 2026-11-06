@@ -25,10 +25,12 @@ const { load: aboutLoad } = await import('./about/+page');
 const { GET } = await import('./home-shelves/[lang].json/+server');
 
 const SNAPSHOT: HomeShelves = {
+	hero: [],
+	discover: [],
 	featured: [],
 	authors: [{ slug: 'a', name: 'A', photo_url: '', book_count: 1 }],
 	topics: [],
-	counts: { books: 1, authors: 1, sermons: 0 },
+	counts: { books: 1, sermons: 0 },
 	audiences: ['young_readers']
 };
 
@@ -49,10 +51,12 @@ describe('home load', () => {
 
 	it('degrades to empty shelves at runtime — a 404, or the SPA shell answering 200', async () => {
 		const empty = {
+			hero: [],
+			discover: [],
 			featured: [],
 			authors: [],
 			topics: [],
-			counts: { books: 0, authors: 0, sermons: 0 },
+			counts: { books: 0, sermons: 0 },
 			audiences: []
 		};
 		expect(await run(async () => new Response('', { status: 404 }))).toEqual(empty);

@@ -44,8 +44,8 @@
 	 * footer row that links here, so the copy is content from the data modules
 	 * ($lib/forPages, $lib/forChrome) rather than catalogue keys.
 	 *
-	 * Each group wears its own accent and emblem (FOR_META) — the topic hero's
-	 * wash and chip — so nine pages built from one template don't read as copies.
+	 * Each group wears its own accent and emblem (FOR_META) — the wash and chip
+	 * the topic header once wore — so nine pages built from one template don't read as copies.
 	 * The bands below borrow About's eyebrow-and-heading rhythm, inside the page
 	 * column, in the order that group needs them ($lib/forSections): a chaplain's
 	 * page opens on the offline pack, a parent's on the reading levels. A

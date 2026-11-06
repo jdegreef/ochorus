@@ -70,6 +70,18 @@ describe('currentBook', { timeout: 30_000 }, () => {
 		expect(current.key).toBe('cold');
 	});
 
+	// The logged-out home keeps its hero for a book it cannot draw (design #10).
+	it('says when the list has settled, failed or not', async () => {
+		const current = await fresh();
+		progress({ cold: { at: 1 } });
+		listBooks.mockRejectedValue(new Error('offline'));
+		current.refresh();
+		expect(current.pending).toBe(true);
+		await vi.waitFor(() => expect(current.pending).toBe(false));
+		expect(current.key).toBe('cold');
+		expect(current.item).toBeNull();
+	});
+
 	it('passes over a book the language lacks, and asks for no list with nothing open', async () => {
 		const current = await fresh();
 		progress({ old: { at: 1 }, missing: { at: 2 } });

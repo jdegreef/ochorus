@@ -95,5 +95,12 @@
     "note": [
       "Written in the same PR as around-the-wicket-gate.ar (job #7052): that book completes this plan's book set in Arabic (men-and-women-who-gave-everything-2.ar already shipped), so seed_plans would otherwise create the ar row with English prose. The two books are named by their shipped Arabic titles verbatim («عند الباب الضيق», «رجال ونساء بذلوا كل شيء»). «البداية» renders 'Starting Out'; singular «ك» address, as the plan speaks to one reader. AI-drafted; awaiting native review."
     ]
+  },
+  "faithful-with-little": {
+    "title": "الأمين في القليل: المال والقلب",
+    "description": "ثلاثة أسابيع مع ما يقوله الكتاب المقدس كلّه عن المال، فصلٌ قصير كلّ يوم: كلّ شيء لله؛ القلب وراء المحفظة؛ العمل الأمين والتخطيط والدَّين؛ أسخياء مثل الله؛ وكنزٌ يدوم، مع جون وسلي وجورج مولر وتشارلز سبرجن وأ. و. توزر على الطريق. وينتهي كلّ يوم بأمرٍ واحد تتدرّب عليه، والآيات الثلاثون المفتاحية في الكتاب تصنع شهرًا مرافقًا من القراءة.",
+    "note": [
+      "The title quotes the shipped ar edition faithful-with-little.ar.json verbatim (الأمين في القليل), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+    ]
   }
 }

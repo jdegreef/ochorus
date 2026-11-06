@@ -100,6 +100,15 @@
 		 * their finish is "reached the end of the LAST chapter", in the chapter route.
 		 */
 		finishOnEnd?: boolean;
+		/**
+		 * The prose is on the page but not being read: the author page's
+		 * biography while it is folded to its opening. Nothing is restored,
+		 * saved or recorded until it turns false — then the visit is recorded
+		 * and the reader's place restored as on a fresh open. (Folded, the
+		 * hidden paragraphs report no box, so "the paragraph at the top" would
+		 * read as the last one and overwrite the real resume point.)
+		 */
+		paused?: boolean;
 	}
 
 	let {
@@ -115,7 +124,8 @@
 		body = $bindable(),
 		frac = $bindable(0),
 		headerOffset = HEADER_OFFSET,
-		finishOnEnd = false
+		finishOnEnd = false,
+		paused = false
 	}: Props = $props();
 
 	// --- Position --------------------------------------------------------------
@@ -161,6 +171,7 @@
 	}
 
 	function handleScroll() {
+		if (paused) return;
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(saveScrollNow, 250);
 	}
@@ -191,8 +202,17 @@
 	// anchor. Effect, not onMount: client-side nav between works reuses this
 	// component.
 	let restoredFor = '';
+	// The work that opened folded (`paused`, the author page's biography). When
+	// the reader unfolds it they asked to read on from the fold, so it reveals
+	// in place: the visit is recorded, but the page is not jumped to an old
+	// resume point (a `?p=` deep link still lands).
+	let openedFolded = '';
 	$effect(() => {
 		const key = `${kind}:${slug}:${order}`;
+		if (paused) {
+			openedFolded = key;
+			return;
+		}
 		if (!body || restoredFor === key) return;
 		restoredFor = key;
 		openedAt = performance.now();
@@ -214,7 +234,9 @@
 			const idx =
 				Number.isFinite(fromUrl) && fromUrl > 0
 					? fromUrl
-					: (getScrollAnchor(slug, order, kind, language) ??
+					: openedFolded === key
+						? 0
+						: (getScrollAnchor(slug, order, kind, language) ??
 						getProgressRecord(slug, kind)?.paragraph_index ??
 						0);
 			if (idx > 0 && body?.children[idx]) {

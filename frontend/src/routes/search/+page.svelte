@@ -33,15 +33,15 @@
 		groupRows,
 		leadWithPinned,
 		navList,
-		passageBooks as passageBooksOf,
 		toRow,
+		topResult,
 		totalFor as totalForOf,
-		type PassageBook,
 		type ResultGroup,
 		type ResultRow
 	} from '$lib/searchResults';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
-	import { markSnippet } from '$lib/highlight';
+	import { hasServerMarks, snippetParts } from '$lib/highlight';
+	import { tabStrip } from '$lib/actions/tabStrip';
 	import { jumpToSection } from '$lib/scrollSpy.svelte';
 	import { localizeHref } from '$lib/href';
 	import { SITE_URL } from '$lib/config';
@@ -64,8 +64,12 @@
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
-	/** Measured height of the pinned search box — the rail and the group
-	    anchors below both clear it via `--pinned-offset`. */
+	/** A keystroke is waiting out the debounce: what is on screen is the old query's. */
+	let pending = $state(false);
+	/** The tabs' counts (and a click on one) would belong to the previous query. */
+	const stale = $derived(loading || pending);
+	/** Measured height of the pinned search box and its tabs — the group
+	    anchors below clear it via `--pinned-offset`. */
 	let searchBarH = $state(0);
 	let searchError = $state(false);
 	let ran = $state('');
@@ -136,7 +140,7 @@
 	let sortMode = $state<SearchSort>('relevance');
 	const SORTS: SearchSort[] = ['relevance', 'title', 'newest'];
 
-	// Type facet: narrow the result set to one kind. Chips are built from the
+	// Type facet: narrow the result set to one kind. Tabs are built from the
 	// groups actually present, labelled with the REAL total rather than how many
 	// rows the merged list happened to carry. Reset to "all" on each new query.
 	let typeFilter = $state('all');
@@ -146,8 +150,24 @@
 		typeRows ? typeRows.map((h) => ({ ...toRow(h, rowCtx), type: h.type })) : []
 	);
 
+	/**
+	 * The one book or writer the query names exactly, drawn as a larger card
+	 * above the list (design review #25) — and taken out of its section below, so
+	 * it is not listed twice. Only in the mixed list: under a tab the reader has
+	 * already said which kind they want, and the server's order is the answer.
+	 */
+	const top = $derived(typeFilter === 'all' ? topResult(rows, rowCtx.query) : null);
+
 	const shownGroups = $derived.by(() => {
-		if (typeFilter === 'all') return groups;
+		if (typeFilter === 'all') {
+			if (!top) return groups;
+			// The section still counts it as loaded — see `loaded` in the markup.
+			// A section left empty by it stays while it has more to show, so its
+			// "Show all N" and its anchor don't vanish with the one loaded row.
+			return groups
+				.map((g) => ({ ...g, rows: g.rows.filter((r) => r.key !== top.key) }))
+				.filter((g) => g.rows.length || totalFor(g.type, 1) > 1);
+		}
 		const g = GROUP_ORDER.find((x) => x.type === typeFilter);
 		if (!g) return groups;
 		// Fall back to the merged subset until the type's own page arrives, so
@@ -155,32 +175,14 @@
 		const merged = groups.find((x) => x.type === typeFilter)?.rows ?? [];
 		return [{ type: g.type, labelKey: g.labelKey, rows: typeRows ? typeGroupRows : merged }];
 	});
-	const shownCount = $derived(shownGroups.reduce((n, g) => n + g.rows.length, 0));
+	const shownCount = $derived(
+		shownGroups.reduce((n, g) => n + g.rows.length, 0) + (top ? 1 : 0)
+	);
 
-	/** Whether there is more than one kind to choose between — see the rail. */
+	/** Whether there is more than one kind to choose between — see the tabs. */
 	const hasFacets = $derived(groups.length > 1);
 	/** Sorting is only meaningful once one type owns the list, and only above one row. */
 	const showsSort = $derived(typeFilter !== 'all' && shownCount > 1);
-
-	// The rail's geometry, in one place each, because it is a set: the grid, the
-	// column that sits in it, and the input's matching indent all have to agree
-	// or the layout comes apart in a way no single class reveals.
-	// `minmax(12rem, auto)`, not a flat `12rem`: a fixed track cannot be smaller
-	// than what sits in it, it just lets the contents hang out over the results —
-	// which is what happened. The sort control ("Sort:" beside a three-button
-	// segment) has a 244px min-content, so with `Books` chosen the chips and the
-	// segment both overhung the 192px track and painted across the first result's
-	// heading and cover. `auto` lets the column take the width its widest child
-	// actually needs, and 12rem stays the floor so the rail keeps its proportions
-	// when the contents are narrow. A locale with longer words widens the rail
-	// instead of spilling into the results.
-	const RAIL_GRID = 'lg:grid lg:grid-cols-[minmax(12rem,auto)_1fr] lg:items-start lg:gap-8';
-	// `lg:top-[var(--pinned-offset,6rem)]` rather than a fixed `lg:top-24`: the
-	// search box above is itself pinned under the sticky app nav, and its height
-	// changes with the locale and the viewport, so a constant put the rail's
-	// first chips underneath it.
-	const RAIL_COL =
-		'mb-5 flex flex-wrap items-center gap-2 lg:sticky lg:top-[var(--pinned-offset,6rem)] lg:mb-0 lg:flex-col lg:items-stretch lg:self-start';
 
 	/** How many matches of `type` exist — the server's count, else what we hold. */
 	function totalFor(type: SearchType, loaded: number): number {
@@ -198,6 +200,17 @@
 	const grandTotal = $derived(grandTotalOf(groups, totals));
 	const anyCapped = $derived(groups.some((g) => isCapped(g.type)));
 
+	/** The kind tabs: All, then each kind present, each with its real total. */
+	const tabs = $derived([
+		{ type: 'all', label: t('search.filterAll'), count: grandTotal, capped: anyCapped },
+		...groups.map((g) => ({
+			type: g.type as string,
+			label: t(g.labelKey),
+			count: totalFor(g.type, g.rows.length),
+			capped: isCapped(g.type)
+		}))
+	]);
+
 	/** Matches of the selected type not yet loaded. */
 	const remaining = $derived(
 		typeFilter === 'all' || !typeRows
@@ -205,30 +218,13 @@
 			: Math.max(0, (totals[typeFilter as SearchType] ?? 0) - typeRows.length)
 	);
 
-	// Within the Passages section, collapse a book's chapter matches under the
-	// book so "where does this theme live across the work" reads as a map, not a
-	// scatter of unrelated-looking lines. Books over the preview cap get a toggle.
-	const PASSAGE_PREVIEW = 3;
-	let expandedBooks = $state(new Set<string>());
-
-	const passageBooks = $derived<PassageBook[]>(
-		// The selected type's own page when there is one, else the merged list —
-		// otherwise "show more" would load passages the map never rendered.
-		passageBooksOf(typeFilter === 'chapter' && typeRows ? typeRows : hits)
-	);
-
-	function toggleBook(slug: string) {
-		const next = new Set(expandedBooks);
-		if (next.has(slug)) next.delete(slug);
-		else next.add(slug);
-		expandedBooks = next;
-	}
-
 	// --- Keyboard navigation ---------------------------------------------------
-	// Flatten the *visible* leaf results (entity/sermon rows + the shown passage
-	// chapters, in display order) so ↑/↓ walk them and Enter opens the active one.
+	// Flatten the *visible* results (the top card, then every row in display
+	// order) so ↑/↓ walk them and Enter opens the active one.
 	let activeIndex = $state(-1);
-	const nav = $derived(navList(shownGroups, passageBooks, expandedBooks, PASSAGE_PREVIEW));
+	const nav = $derived(
+		navList(top ? [{ type: top.type, labelKey: '', rows: [top] }, ...shownGroups] : shownGroups)
+	);
 	/**
 	 * Tell the server a result was opened — anonymously, and never in the way.
 	 *
@@ -435,6 +431,7 @@
 		// cached one), so only the newest request may write the list — otherwise
 		// an older reply repaints stale hits over the term the reader can see.
 		const token = ++searchSeq;
+		pending = false;
 		loading = true;
 		searchError = false;
 		void maybeScripture(term, token); // in parallel; independent of the list
@@ -503,6 +500,7 @@
 		nextScope = ''
 	) {
 		clearTimeout(timer);
+		pending = false;
 		activeIndex = -1;
 		typeFilter = type;
 		sortMode = sort;
@@ -539,6 +537,7 @@
 		sortMode = 'relevance';
 		typeRows = null;
 		typeSeq++;
+		pending = true;
 		timer = setTimeout(() => {
 			syncUrl(term);
 			runSearch(term);
@@ -593,10 +592,6 @@
 		q = term;
 		onInput();
 	}
-
-	// Server snippets arrive with matches wrapped in full-text markers; markSnippet
-	// escapes them and swaps the markers for <mark> (shared with the in-book search).
-	const mark = markSnippet;
 
 	// --- Empty-state suggestions -----------------------------------------------
 	// A blank search page is dead space; fill it with the reader's recent
@@ -694,21 +689,24 @@
 <!-- A cover, a portrait or a sermon's monogram: the visual anchor that makes
      a list of titles scannable. The box is reserved and colour-filled whether or not an image
      arrives, so the list never reflows under the reader's cursor — and rows
-     with neither (topics, plans) draw nothing rather than a placeholder. -->
-{#snippet thumb(row: {
-	image: string;
-	color: string;
-	face?: CoverFace;
-	round: boolean;
-	small?: boolean;
-	focus?: string;
-	monogram?: { scriptureRef: string; title: string };
-})}
+     with neither (topics, plans) draw nothing rather than a placeholder.
+     `large` is the top result's size; the rows below are short on purpose. -->
+{#snippet thumb(
+	row: {
+		image: string;
+		color: string;
+		face?: CoverFace;
+		round: boolean;
+		focus?: string;
+		monogram?: { scriptureRef: string; title: string };
+	},
+	large = false
+)}
 	{#if row.monogram}
 		<!-- A sermon wears its passage monogram, the mark it has on every shelf,
 		     at the portrait's size. Decorative: the row names the sermon. -->
 		<SermonMonogram
-			class="search-monogram"
+			class={large ? 'search-monogram-lg' : 'search-monogram'}
 			scriptureRef={row.monogram.scriptureRef}
 			title={row.monogram.title}
 			hue={row.color}
@@ -719,7 +717,7 @@
 		<!-- aria-hidden: the row's own title already names the book, and the
 		     cover's "Cover of …" label would read it twice (the old thumb was
 		     alt=""). -->
-		<div class="flex-none {row.small ? 'w-6' : 'w-12'}" aria-hidden="true">
+		<div class="flex-none {large ? 'w-16' : 'w-9'}" aria-hidden="true">
 			<BookCover book={row.face} rounded="rounded-sm" />
 		</div>
 	{:else if row.image}
@@ -736,13 +734,24 @@
 			loading="lazy"
 			decoding="async"
 			class="flex-none bg-surface-2 object-cover {row.round
-				? 'h-11 w-11 rounded-full'
-				: row.small
-					? 'h-8 w-6 rounded-sm'
-					: 'h-16 w-12 rounded-sm'}"
+				? large
+					? 'h-16 w-16 rounded-full'
+					: 'h-9 w-9 rounded-full'
+				: large
+					? 'h-24 w-16 rounded-sm'
+					: 'h-12 w-9 rounded-sm'}"
 			style={boxStyle || undefined}
 		/>
 	{/if}
+{/snippet}
+
+<!-- A snippet with the words that matched marked. Rendered as text runs, never
+     an HTML string: the server's markers say what matched (`snippetParts`), and with
+     none it marks the query's own words — either way nothing in the snippet
+     can become markup. -->
+{#snippet marked(text: string)}
+	{#each snippetParts(text, rowCtx.query) as part, i (i)}{#if part.mark}<mark>{part.text}</mark
+			>{:else}{part.text}{/if}{/each}
 {/snippet}
 
 <!-- Somewhere to go: what this reader searched before, what other readers search,
@@ -813,40 +822,69 @@
 	<meta name="robots" content="noindex,follow" />
 </svelte:head>
 
-<!-- Above lg the page uses the width it has: the facet chips leave the top bar
-     and become a rail, so results get the full column and the filters stop
-     wrapping onto three lines. Below lg nothing changes — the single column is
-     right on a phone, and this page is read on phones. -->
 <!-- `--pinned-offset`: the sticky app nav plus this page's own pinned search
-     box — the first pixel below everything that floats. The facet rail pins to
-     it and the per-type anchors scroll to it. -->
+     box (and its tabs) — the first pixel below everything that floats. The
+     per-type anchors scroll to it. -->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {searchBarH}px)">
-	<PageHeader title={t('search.title')} tagline={t('search.tagline')} />
+	<!-- The field is the header (design review #25): the h1 stays for screen
+	     readers and the outline, but the title, divider and tagline no longer
+	     push the one control this page exists for down the screen. -->
+	<PageHeader title={t('search.title')} srOnly />
 
 	<!-- Sticky: a long result list used to scroll the query out of sight, so
 	     refining meant scrolling back up to find the box. The bleed padding and
-	     background keep results from showing through as they pass under it. -->
-	<!-- The box lines up with the results, not with the page. It used to span the
-	     full width while the results began 12rem in behind the rail, so the eye
-	     had two left edges to track down a single column of content. -->
+	     background keep results from showing through as they pass under it.
+	     The kind tabs ride in it, so switching kind never means scrolling up. -->
 	<div
 		bind:clientHeight={searchBarH}
-		class="sticky z-(--z-pinned) -mx-5 bg-bg px-5 pb-3 pt-2" style="top: var(--appnav-h, 0px)"
-		class:lg:ps-[15.25rem]={hasFacets}
-		role="search"
+		class="sticky z-(--z-pinned) -mx-5 -mt-4 bg-bg px-5 pb-2 pt-2" style="top: var(--appnav-h, 0px)"
 	>
-		<input
-			bind:this={input}
-			bind:value={q}
-			oninput={onInput}
-			onkeydown={onKeydown}
-			type="search"
-			autocomplete="off"
-			placeholder={t('search.placeholder')}
-			aria-label={t('search.title')}
-			aria-describedby="search-help"
-			class="field w-full lg:max-w-3xl"
-		/>
+		<div role="search">
+			<input
+				bind:this={input}
+				bind:value={q}
+				oninput={onInput}
+				onkeydown={onKeydown}
+				type="search"
+				autocomplete="off"
+				placeholder={t('search.placeholder')}
+				aria-label={t('search.title')}
+				aria-describedby="search-help"
+				class="field search-field w-full lg:max-w-3xl"
+			/>
+		</div>
+
+		<!-- The type facet, as tabs by kind with the REAL total on each (not the
+		     rows the merged list happened to carry). Shown only when there is more
+		     than one kind to choose between. While a new query is debouncing or
+		     loading the row stays mounted (unmounting it made the pinned bar, and
+		     everything under it, jump on every search) but is dimmed and inert:
+		     its counts, and a click on one, would belong to the previous query. -->
+		{#if hasFacets && !searchError && q.trim().length >= 2}
+			<div
+				class="search-tabs mt-3 lg:max-w-3xl"
+				class:is-stale={stale}
+				role="group"
+				aria-label={t('search.filterByType')}
+				aria-busy={stale ? 'true' : undefined}
+				inert={stale}
+			>
+				<div class="tab-strip flex gap-1" use:tabStrip={typeFilter}>
+					{#each tabs as tab (tab.type)}
+						<button
+							type="button"
+							class="subnav-link subnav-link-tight"
+							class:is-active={typeFilter === tab.type}
+							onclick={() => selectType(tab.type)}
+							aria-pressed={typeFilter === tab.type}
+						>
+							{tab.label}
+							<span class="count">{tab.count}{tab.capped ? '+' : ''}</span>
+						</button>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</div>
 
 	<!-- The shelf being searched inside, and the one-click way out of it.
@@ -952,7 +990,7 @@
 		</div>
 	{/if}
 
-	<div class="mt-6" id="search-results" aria-busy={loading}>
+	<div class="mt-4" id="search-results" aria-busy={loading}>
 		{#if loading}
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
@@ -964,12 +1002,18 @@
 				{/each}
 			</div>
 		{:else if searchError}
-			<div class="rounded-card border border-border bg-surface p-8 text-center">
-				<p class="text-body text-text">{t('search.loadError')}</p>
-				<button type="button" class="btn btn-primary mt-4" onclick={retrySearch}>
+			<!-- One line under the field, not a boxed panel that became the only
+			     thing on screen. The query is still in the box above it. -->
+			<p class="text-small text-muted" role="alert">
+				{t('search.loadError')}
+				<button
+					type="button"
+					class="ms-1 font-semibold text-accent hover:underline"
+					onclick={retrySearch}
+				>
 					{t('error.tryAgain')}
 				</button>
-			</div>
+			</p>
 		{:else if q.trim().length < 2}
 			{@render waysIn(true)}
 		{:else if ran && hits.length === 0}
@@ -1001,69 +1045,38 @@
 					{t('search.showingFor')} “<span class="font-semibold text-text">{searchedFor}</span>”
 				</p>
 			{/if}
-			<!-- The rail earns its 12rem only when there are chips to put in it. A
-			     query that matched one kind (any scripture reference, for instance)
-			     was still paying for the column, which then held nothing but the word
-			     "Sort:" beside a wide, empty margin. -->
-			<div class={hasFacets ? RAIL_GRID : ''}>
-			<!-- Type facet + result count. Everything that positions this — the
-			     grid column, the column direction, and CRUCIALLY the stickiness —
-			     is one switch. Pinning survived the grid being dropped once, and a
-			     sticky *block* is a very different thing from a sticky grid cell:
-			     with no column to sit in it spans the full width above the results
-			     and they scroll straight through it, unbacked.
-
-			     Rendered only when it holds something. Collapsed and empty it was
-			     still an element with a bottom margin — 20px of nothing above the
-			     results on every single-type query. -->
+			<!-- The running count and, once a tab owns the list, the sort. One quiet
+			     line under the tabs; rendered only when it holds something. -->
 			{#if hasFacets || showsSort}
-			<div class={hasFacets ? RAIL_COL : 'mb-5 flex flex-wrap items-center gap-2'}>
-				{#if hasFacets}
-					<div
-						class="flex flex-wrap gap-1.5 lg:flex-col"
-						role="group"
-						aria-label={t('search.filterByType')}
-					>
-						<button
-							type="button"
-							class="chip"
-							class:active={typeFilter === 'all'}
-							onclick={() => selectType('all')}
-							aria-pressed={typeFilter === 'all'}
-						>
-							{t('search.filterAll')}
-						</button>
-						{#each groups as g (g.type)}
-							<button
-								type="button"
-								class="chip"
-								class:active={typeFilter === g.type}
-								onclick={() => selectType(g.type)}
-								aria-pressed={typeFilter === g.type}
-							>
-								{t(g.labelKey)}
-								<!-- The real total, not the number of rows we were handed. -->
-								<span class="count"
-									>{totalFor(g.type, g.rows.length)}{isCapped(g.type) ? '+' : ''}</span
-								>
-							</button>
-						{/each}
-					</div>
-				{/if}
-				<div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:ms-auto lg:ms-0 lg:flex-col lg:items-start">
+				<div class="mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 lg:max-w-3xl">
+					{#if hasFacets}
+						<p class="text-small text-muted">
+							{#if typeFilter !== 'all' && remaining > 0}
+								{shownCount}
+								{t('search.of')}
+								{totalFor(typeFilter as SearchType, shownCount)}{isCapped(
+									typeFilter as SearchType
+								)
+									? '+'
+									: ''}
+								{t('search.resultsMany')}
+							{:else if typeFilter === 'all' && grandTotal > shownCount}
+								{shownCount}
+								{t('search.of')}
+								{grandTotal}{anyCapped ? '+' : ''}
+								{t('search.resultsMany')}
+							{:else}
+								{shownCount}
+								{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
+							{/if}
+						</p>
+					{/if}
 					<!-- Sorting needs the whole match set, which only the per-type
 					     endpoint returns — so it appears once a type is chosen. In the
 					     mixed list the order is relevance, the only one that means
 					     anything across books, people and passages. -->
 					{#if showsSort}
-						<!-- Side by side in the bar above the results; stacked once it is
-						     in the rail, where a label BESIDE the segment is what made the
-						     control 244px wide in a 12rem column. -->
-						<div
-							class="flex items-center gap-1.5 lg:flex-col lg:items-start lg:gap-1"
-							role="group"
-							aria-label={t('search.sortBy')}
-						>
+						<div class="flex items-center gap-1.5 sm:ms-auto" role="group" aria-label={t('search.sortBy')}>
 							<div class="seg">
 								{#each SORTS as s (s)}
 									<button
@@ -1078,44 +1091,42 @@
 							</div>
 						</div>
 					{/if}
-				<!-- The running total belongs in the rail. With no rail there is
-				     nothing to anchor it to, and it stacked above the section label as
-				     a second lonely line ("15 results" over "PASSAGES") — so the
-				     section heading carries its own count there instead.
-
-				     Removed rather than sr-only'd: the accessible running count is
-				     already its own live region up by the input, so hiding this one
-				     would leave two polite regions announcing the same number on every
-				     keystroke. Its aria-live goes with it for the same reason. -->
-				{#if hasFacets}
-					<p class="text-small text-muted">
-						{#if typeFilter !== 'all' && remaining > 0}
-							{shownCount}
-							{t('search.of')}
-							{totalFor(typeFilter as SearchType, shownCount)}{isCapped(
-								typeFilter as SearchType
-							)
-								? '+'
-								: ''}
-							{t('search.resultsMany')}
-						{:else if typeFilter === 'all' && grandTotal > shownCount}
-							{shownCount}
-							{t('search.of')}
-							{grandTotal}{anyCapped ? '+' : ''}
-							{t('search.resultsMany')}
-						{:else}
-							{shownCount}
-							{shownCount === 1 ? t('search.resultsOne') : t('search.resultsMany')}
-						{/if}
-						</p>
-					{/if}
 				</div>
-			</div>
 			{/if}
-			<div class="space-y-8 lg:min-w-0">
+
+			<!-- The top result: the book or writer the query names exactly, larger,
+			     with its cover or portrait — most searches for a title end here. -->
+			{#if top}
+				<a
+					href={localizeHref(top.href)}
+					id="res-{top.key}"
+					class="top-result mb-8 flex items-center gap-4 rounded-card p-4 hover:no-underline lg:max-w-3xl"
+					class:is-active={top.key === activeKey}
+					onclick={() => recordClick(top.key)}
+				>
+					{@render thumb(top, true)}
+					<div class="min-w-0 flex-1">
+						<p class="eyebrow text-muted">
+							{top.label}{#if top.pinned}<span class="text-accent"> · {t('search.bestMatch')}</span>{/if}
+						</p>
+						<p class="top-result-title mt-0.5 text-text">{top.title}</p>
+						{#if top.meta}
+							<p class="mt-0.5 text-small text-muted">{top.meta}</p>
+						{/if}
+						{#if top.snippet}
+							<p class="snippet-measure mt-1.5 line-clamp-2 text-small text-muted">
+								{@render marked(top.snippet)}
+							</p>
+						{/if}
+					</div>
+				</a>
+			{/if}
+
+			<div class="space-y-8 lg:max-w-3xl">
 				{#each shownGroups as g (g.type)}
-					{@const total = totalFor(g.type, g.rows.length)}
-					{@const more = total - g.rows.length}
+					{@const loaded = g.rows.length + (top?.type === g.type ? 1 : 0)}
+					{@const total = totalFor(g.type, loaded)}
+					{@const more = total - loaded}
 					<section
 						id="group-{g.type}"
 						style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
@@ -1123,119 +1134,75 @@
 						<GroupHeading name={t(g.labelKey)}>
 							{#snippet detail()}
 								<!-- The per-group number distinguishes one section from the next.
-								     With a single section AND the rail's running total already on
+								     With a single section AND the running total already on
 								     screen there is nothing to distinguish and it repeats that
-								     total verbatim — which is what put "PASSAGES 20 OF 127" three
-								     inches from "20 of 127 results". With no rail it is the only
-								     count there is, so it stays.
+								     total verbatim. With no tabs it is the only count there is,
+								     so it stays.
 
 								     Dropped, not hidden: sr-only would leave it in the heading's
 								     accessible name, so a screen reader would still hear the
 								     duplicate this exists to remove. -->
 								{#if !(hasFacets && shownGroups.length === 1)}
 									<span class="text-small font-normal count">
-										{#if more > 0}{g.rows.length} {t('search.of')} {total}{isCapped(g.type)
+										{#if more > 0}{loaded} {t('search.of')} {total}{isCapped(g.type)
 												? '+'
 												: ''}{:else}{total}{/if}
 									</span>
 								{/if}
 							{/snippet}
 						</GroupHeading>
-						{#if g.type === 'chapter'}
-							<!-- Passages: matches collapsed under their book. -->
-							<div class="space-y-5">
-								{#each passageBooks as pb (pb.slug)}
-									{@const expanded = expandedBooks.has(pb.slug)}
-									{@const shown = expanded ? pb.chapters : pb.chapters.slice(0, PASSAGE_PREVIEW)}
-									<div>
-										<a
-											href={localizeHref(`/books/${pb.slug}`)}
-											class="flex items-center gap-2.5 text-small font-semibold text-text hover:text-accent hover:no-underline"
-										>
-											{@render thumb({
-												image: pb.cover,
-												color: pb.color,
-												face: pb.face,
-												round: false,
-												small: true
-											})}
-											<span>
-												{pb.title} <span class="font-normal text-muted">· {pb.author}</span>
-											</span>
-										</a>
-										<ul class="mt-1 divide-y divide-border border-s border-border ps-3">
-											{#each shown as ch (ch.key)}
-												<li class="py-2.5">
-													<a
-														href={localizeHref(
-														`/books/${pb.slug}/${ch.order}?q=${encodeURIComponent(ran || q.trim())}`
-													)}
-														id="res-{ch.key}"
-														class="-mx-2 block rounded-sm px-2 hover:no-underline"
-														class:bg-surface-2={ch.key === activeKey}
-														onclick={() => recordClick(ch.key)}
-													>
-														<div class="text-small font-medium text-text">{ch.title}</div>
-														{#if ch.snippet}
-															<p class="snippet-measure mt-0.5 text-small text-muted">
-																<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-																{@html mark(ch.snippet)}
-															</p>
-														{/if}
-													</a>
-												</li>
-											{/each}
-										</ul>
-										{#if pb.chapters.length > PASSAGE_PREVIEW}
-											<button
-												type="button"
-												onclick={() => toggleBook(pb.slug)}
-												class="mt-1.5 ps-3 text-small font-semibold text-accent"
-											>
-												{#if expanded}
-													{t('search.showLess')}
-												{:else}
-													+{pb.chapters.length - PASSAGE_PREVIEW} {t('search.morePassages')}
-												{/if}
-											</button>
-										{/if}
-									</div>
-								{/each}
-							</div>
-						{:else}
-							<ul class="divide-y divide-border">
-								{#each g.rows as row (row.key)}
-									<li class="py-4">
+						<ul class="divide-y divide-border">
+							{#each g.rows as row (row.key)}
+								<li>
+									{#if row.type === 'chapter'}
+										<!-- A passage: where it is, then the words that matched.
+										     The snippet is the result — it is why the row is here. -->
 										<a
 											href={localizeHref(row.href)}
 											id="res-{row.key}"
-											class="-mx-2 flex gap-3 rounded-sm px-2 hover:no-underline"
+											class="-mx-2 block rounded-sm px-2 py-3 hover:no-underline"
+											class:bg-surface-2={row.key === activeKey}
+											onclick={() => recordClick(row.key)}
+										>
+											<div class="truncate text-small font-medium text-text">{row.location}</div>
+											{#if row.snippet}
+												<p class="snippet-measure mt-0.5 line-clamp-2 text-small text-muted">
+													{@render marked(row.snippet)}
+												</p>
+											{/if}
+										</a>
+									{:else}
+										<!-- A short row: title, and one line of context — the
+										     byline when there is one, else the matching words. -->
+										<a
+											href={localizeHref(row.href)}
+											id="res-{row.key}"
+											class="-mx-2 flex items-center gap-3 rounded-sm px-2 py-2.5 hover:no-underline"
 											class:bg-surface-2={row.key === activeKey}
 											onclick={() => recordClick(row.key)}
 										>
 											{@render thumb(row)}
 											<div class="min-w-0 flex-1">
-												{#if row.pinned}
-													<span class="mb-1 inline-block rounded-full bg-accent-soft px-2 py-0.5 text-micro font-semibold text-accent"
-														>{t('search.bestMatch')}</span
-													>
-												{/if}
+												<div class="truncate text-body font-semibold text-text">
+													{row.title}{#if row.pinned}<span
+															class="ms-2 inline-block rounded-full bg-accent-soft px-2 py-0.5 align-middle text-micro font-semibold text-accent"
+															>{t('search.bestMatch')}</span
+														>{/if}
+												</div>
 												{#if row.meta}
-													<div class="text-small text-muted">{row.meta}</div>
+													<div class="truncate text-small text-muted">{row.meta}</div>
 												{/if}
-												<div class="text-body font-semibold text-text">{row.title}</div>
-												{#if row.snippet}
-													<p class="snippet-measure mt-1 text-small text-muted">
-														<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-														{@html mark(row.snippet)}
-													</p>
+												<!-- The matched words, when there are any: for a book or
+												     sermon found by its text they are the only clue why. -->
+												{#if row.snippet && (!row.meta || hasServerMarks(row.snippet))}
+													<div class="truncate text-small text-muted">{@render marked(row.snippet)}</div>
 												{/if}
 											</div>
 										</a>
-									</li>
-								{/each}
-							</ul>
-						{/if}
+									{/if}
+								</li>
+							{/each}
+						</ul>
 
 						<!-- The way past the cap. In the mixed list this hands the section
 						     over to the server (which can order and page it); once a type is
@@ -1274,7 +1241,6 @@
 						{/if}
 					</section>
 				{/each}
-			</div>
 			</div>
 		{/if}
 	</div>
@@ -1319,6 +1285,41 @@
 	/* A sermon's monogram, sized like the round author portrait beside it
 	   (h-11 w-11). :global because the chip is a child component's root. */
 	:global(.search-monogram) {
-		--chip-size: 2.75rem;
+		--chip-size: 2.25rem;
+	}
+	:global(.search-monogram-lg) {
+		--chip-size: 4rem;
+	}
+	/* The field is the header, so it is drawn at a header's size. One class more
+	   specific than app.css's `input[type='search'].field` (the magnifier and its
+	   pad), so the larger icon and its pad stay in step. */
+	input[type='search'].field.search-field {
+		font-size: var(--fs-h3);
+		padding-block: 0.65rem;
+		padding-inline-start: 2.75rem;
+		background-position: left 0.9rem center;
+		background-size: 1.25rem;
+	}
+	:global([dir='rtl']) input[type='search'].field.search-field {
+		background-position: right 0.9rem center;
+	}
+	.search-tabs {
+		border-bottom: 1px solid var(--border);
+	}
+	.search-tabs.is-stale {
+		opacity: 0.55;
+	}
+	/* The top result: one soft ground, no border (boxless, like the shelves). */
+	.top-result {
+		background: var(--surface-2);
+	}
+	.top-result:hover,
+	.top-result.is-active {
+		background: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
+	}
+	.top-result-title {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
 	}
 </style>

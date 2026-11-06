@@ -26,7 +26,7 @@ import { LIVE_LOCALES } from './live-locales.generated';
  * homeschool families, parents), each saying what Ochorus is worth to THAT
  * reader and pointing into the library: plans to read together, themed
  * shelves, and — where the group needs them — printable leader's guides and an
- * offline pack. Linked from the footer's bottom row and the /for/ index.
+ * offline pack. Linked from the /for/ index (the footer links the index).
  *
  * One route (`/for/[group]/`) renders every entry here, so a new group is a
  * new entry, not a new page. Written per language, not through the
@@ -34,7 +34,7 @@ import { LIVE_LOCALES } from './live-locales.generated';
  * into every catalogue before it settles would mean every edit lands many
  * times. So the copy lives here as content — English here, French in
  * $lib/forPagesFr, each written for what that language's library holds — the
- * footer row renders for those readers only, and each page advertises the URLs
+ * footer link to the /for/ hub renders for those readers only, and each page advertises the URLs
  * of the languages it is written in (sitemap, hreflang).
  *
  * Keep every claim true of the live site. Nothing here mentions how a

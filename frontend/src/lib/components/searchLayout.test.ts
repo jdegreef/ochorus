@@ -12,27 +12,33 @@ import { describe, expect, it } from 'vitest';
  */
 const read = (p: string) => readFileSync(join(process.cwd(), p), 'utf-8');
 
-describe('the search page rail cannot overhang the results', () => {
+// The type facet was a left rail above lg until design review #25 (2026-11-06)
+// moved it into tabs under the field. The rail's own guards — a minmax track so
+// the sort control could not overhang the results, and a stacked sort label —
+// went with the rail; these keep what replaced it from regressing.
+describe('the search page facet is a row of tabs under the field', () => {
 	const source = read('src/routes/search/+page.svelte');
 
-	it('sizes its column to fit its contents, not to a flat width', () => {
-		// A fixed track does not clip an over-wide child, it lets it hang out over
-		// the next column: with a type chosen, the chips and the sort control (a
-		// 244px min-content) painted across the first result's heading and cover.
-		expect(source).toMatch(/lg:grid-cols-\[minmax\(12rem,\s*auto\)_1fr\]/);
-		expect(source).not.toMatch(/lg:grid-cols-\[12rem_1fr\]/);
+	it('draws the kinds as one sideways-scrolling tab row, not a wrapping chip wall or a rail', () => {
+		// A phone holds three or four tabs; the strip scrolls rather than wrapping
+		// onto a second line under the pinned field, which would eat the screen.
+		expect(source).toMatch(/class="tab-strip flex gap-1" use:tabStrip/);
+		expect(source).not.toMatch(/lg:grid-cols-\[minmax\(12rem/);
+		expect(source).not.toMatch(/lg:sticky[^"]*lg:flex-col/);
 	});
 
-	it('stacks the sort label above its buttons once it is in the rail', () => {
-		// "Sort:" BESIDE a three-button segment is what made the control wider than
-		// the column in the first place. Beside it stays in the wide bar below lg.
-		const sortGroup = source
-			.split('\n')
-			.find((line) => line.includes("aria-label={t('search.sortBy')}"));
-		expect(sortGroup).toBeTruthy();
-		const block = source.slice(0, source.indexOf("aria-label={t('search.sortBy')}"));
-		const opening = block.slice(block.lastIndexOf('<div'));
-		expect(opening).toContain('lg:flex-col');
+	it('pins the tabs with the field, so switching kind never means scrolling up', () => {
+		const sticky = source.indexOf('bind:clientHeight={searchBarH}');
+		const tabs = source.indexOf("aria-label={t('search.filterByType')}");
+		const results = source.indexOf('id="search-results"');
+		expect(sticky).toBeGreaterThan(-1);
+		expect(tabs).toBeGreaterThan(sticky);
+		expect(tabs).toBeLessThan(results);
+	});
+
+	it('renders snippets as text runs, never {@html}', () => {
+		// Snippets are untrusted text with the server's match markers in them.
+		expect(source).not.toMatch(/\{@html/);
 	});
 });
 

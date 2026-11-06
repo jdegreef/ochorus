@@ -74,9 +74,10 @@ describe('type scale', () => {
 		// biographies era, the notebook) alongside the admin surface, which is
 		// English-only, has its own header language, and is exempt.
 		//
-		// The home hero now lives in HomeMarketing.svelte (the logged-out home was
-		// split out of +page.svelte into HomeMarketing / HomeDashboard), so the
-		// exemption follows it there.
+		// The home hero now lives in HomeIntro.svelte (the logged-out home was
+		// split out of +page.svelte into HomeMarketing / HomeDashboard, and its
+		// hero out of HomeMarketing for design review #5), so the exemption
+		// follows it there.
 		// HomeHero is the same page's hero for a signed-in reader (the dashboard
 		// and the marketing page never render together).
 		const offenders: string[] = [];
@@ -85,7 +86,7 @@ describe('type scale', () => {
 			if (
 				rel.includes('/admin/') ||
 				rel.endsWith('src/routes/+page.svelte') ||
-				rel.endsWith('src/lib/components/HomeMarketing.svelte') ||
+				rel.endsWith('src/lib/components/HomeIntro.svelte') ||
 				rel.endsWith('src/lib/components/HomeHero.svelte') ||
 				// The error page's status number ("404") is that page's hero.
 				rel.endsWith('src/routes/+error.svelte')
