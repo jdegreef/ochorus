@@ -2502,8 +2502,9 @@ class PlanDetailSerializer(PlanListSerializer):
     def get_authors(self, obj):
         """The distinct writers this plan reads through, in the order their books
         first appear across the days — a link out to each author page, so a plan
-        is a way into their work, not only a sequence of chapters. Reads the
-        page-wide book index (author select_related), so no extra query."""
+        is a way into their work, not only a sequence of chapters — named with
+        a small portrait in the page's hero. Reads the page-wide book index
+        (author select_related), so no extra query."""
         books = self._books(obj)
         authors: list[dict] = []
         seen: set[str] = set()
@@ -2511,7 +2512,13 @@ class PlanDetailSerializer(PlanListSerializer):
             book = books.get(day.book_slug)
             if book and book.author.slug not in seen:
                 seen.add(book.author.slug)
-                authors.append({"slug": book.author.slug, "name": book.author.name})
+                authors.append(
+                    {
+                        "slug": book.author.slug,
+                        "name": book.author.name,
+                        "photo_url": book.author.photo_url,
+                    }
+                )
         return authors
 
     def get_days(self, obj):

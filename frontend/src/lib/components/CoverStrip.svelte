@@ -13,7 +13,9 @@
 	 * (a series page's hero); `fan` is a page's hero picture — a deck: one big
 	 * featured cover in front and up to two more stepped up and out behind it,
 	 * with a "+N" chip when the list holds more than the deck shows, filling
-	 * the width it is given (the plan page, /originals, /for). `priority`
+	 * the width it is given (the plan page, /originals, /for); `one` is a lone
+	 * cover dressed as the fan's featured one, filling the width it is given
+	 * (a one-book plan's hero, beside its title). `priority`
 	 * loads the featured cover eagerly for a fan that is the page's largest
 	 * paint.
 	 *
@@ -28,20 +30,27 @@
 		max = 4,
 		size = 'sm',
 		priority = false
-	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan'; priority?: boolean } =
+	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan' | 'one'; priority?: boolean } =
 		$props();
 	// The fan's geometry holds three. Of three, the middle one is featured —
 	// callers put their lead there (audienceHub.heroCovers) — and the other two
 	// stand behind it in order; otherwise the first leads.
 	const shown = $derived.by(() => {
-		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : max);
+		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : size === 'one' ? 1 : max);
 		return size === 'fan' && list.length === 3 ? [list[1], list[0], list[2]] : list;
 	});
 	const more = $derived(size === 'fan' ? covers.length - shown.length : 0);
 </script>
 
 {#if covers.length}
-	<div class="covers" class:strip={size !== 'fan'} class:lg={size === 'lg'} class:fan={size === 'fan'} aria-hidden="true">
+	<div
+		class="covers"
+		class:strip={size === 'sm' || size === 'lg'}
+		class:lg={size === 'lg'}
+		class:fan={size === 'fan'}
+		class:one={size === 'one'}
+		aria-hidden="true"
+	>
 		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
 			{@const eager = priority && i === 0}
@@ -110,8 +119,16 @@
 		border-radius: 0.375rem;
 		box-shadow: var(--shadow-card), var(--shadow-popover);
 	}
+	/* A lone cover: the fan's featured one, at the width it is given. */
+	.one .cover {
+		position: relative;
+		width: 100%;
+		border-radius: 0.375rem;
+		box-shadow: var(--shadow-card), var(--shadow-popover);
+	}
 	/* The spine: a shade down the bound edge, so each reads as a book. */
-	.fan .cover::after {
+	.fan .cover::after,
+	.one .cover::after {
 		content: '';
 		position: absolute;
 		inset: 0;

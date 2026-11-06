@@ -134,6 +134,8 @@ class PlanTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
         self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+        # …with the portrait the hero byline draws beside the name.
+        self.assertIn("photo_url", res.data["authors"][0])
 
     def test_list_exposes_day_one_teaser(self):
         # The card leads with where the plan starts — day 1's book + chapter.

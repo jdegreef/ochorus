@@ -11,8 +11,9 @@
 	 *
 	 * `hideFrom` is the width at which the page keeps its read verb in view by
 	 * other means and the bar steps aside: `sm` for the book page (its sticky
-	 * sub-nav carries a Continue button from 640px), `lg` for the plan page (its
-	 * side panel sticks from 1024px).
+	 * sub-nav carries a Continue button from 640px). Left out, the bar serves
+	 * every width — the plan page, whose read card sits in its hero and so
+	 * scrolls away on a laptop too (design review #24).
 	 *
 	 * Portalled to <body>, as every fixed overlay is, and clear of the tab bar
 	 * and the listen bar (the shared bottom-chrome expression). While it is up,
@@ -25,7 +26,7 @@
 		href,
 		label,
 		onread,
-		hideFrom = 'lg'
+		hideFrom
 	}: {
 		show: boolean;
 		/** Small line above the title — "Day 14 of 96", the book's name. */
@@ -36,7 +37,7 @@
 		/** The read verb: Start, Continue, Begin reading. */
 		label: string;
 		onread?: () => void;
-		hideFrom?: 'sm' | 'lg';
+		hideFrom?: 'sm';
 	} = $props();
 
 	// <body data-read-bar> (and data-read-bar-until-sm) while the bar is up, for
@@ -81,14 +82,6 @@
 	   resets below win wherever the bar steps aside. */
 	:global(body[data-read-bar]) {
 		padding-bottom: 4.5rem;
-	}
-	@media (min-width: 1024px) {
-		.read-bar {
-			display: none;
-		}
-		:global(body[data-read-bar]) {
-			padding-bottom: 0;
-		}
 	}
 	@media (min-width: 640px) {
 		.read-bar.until-sm {
