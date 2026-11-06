@@ -3237,16 +3237,6 @@ nav.appnav .navsearch:hover {
 	background: url('/marks/seal.svg') center / contain no-repeat;
 	pointer-events: none;
 }
-/* A section page's emblem, beside its <PageHeader> title, in the section's
-   hue (data-section puts it in scope as --section-hue). */
-.page-header-emblem {
-	--chip-size: 2.75rem;
-	--chip-hue: var(--section-hue);
-}
-.page-header-emblem img {
-	width: 66%;
-	height: 66%;
-}
 /* Descriptions are clamped so one long blurb can't set the height of a whole
    grid row. Pair with .shelf-card-body{flex:1} for level bottoms. */
 .shelf-card-desc {

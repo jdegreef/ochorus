@@ -29,9 +29,11 @@ export interface NavDest {
 	/** Its library-palette role: the nav wears `--section-<section>` on the
 	 *  icon and the active pill (app.css, "THE LIBRARY PALETTE"). */
 	section: NavSection;
-	/** The printer's ornament under its page title (`<Fleuron>`), drawn from
-	 *  `/marks/ornament-<name>.svg`; its emblem beside that title is
-	 *  `/marks/emblem-<section>.svg` (marks.test.ts checks both exist). */
+	/** The section's printer's ornament (`<Fleuron ornament>`), drawn from
+	 *  `/marks/ornament-<name>.svg`; its emblem is `/marks/emblem-<section>.svg`
+	 *  (marks.test.ts checks both exist). Neither is drawn in the shelf's
+	 *  `<PageHeader>` any more — design review #4 made the page head plain —
+	 *  but the marks are the sections' identity and stay for other surfaces. */
 	ornament: Ornament;
 }
 

@@ -101,7 +101,6 @@
 <!-- --pinned-offset: the app nav, the one bar that pins here — what the
      jump-chip targets clear (the authors index adds its controls bar). -->
 <div class="page-col px-5 py-10" style="--pinned-offset: var(--appnav-h, 4rem)">
-	<LibraryTabs current="series" />
 	<PageHeader
 		title={t('nav.series')}
 		tagline={t('series.tagline')}
@@ -114,6 +113,8 @@
 		{bookTotal}
 		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
+	<!-- The library tabs sit under the title, as on /books (design review #4). -->
+	<LibraryTabs current="series" />
 
 	{#snippet clearFiltersAction()}
 		<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
