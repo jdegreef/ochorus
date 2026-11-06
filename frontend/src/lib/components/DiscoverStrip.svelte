@@ -16,9 +16,9 @@
 	 * .night-band): six covers are the most colourful thing the page has, and
 	 * they look their best on a dark ground. The band re-declares the theme
 	 * tokens, so BookCard and the header draw in its night palette with no
-	 * variant of their own. The logged-out home asks for `band="page"` instead —
-	 * the theme's own light tinted band — so a first visit opens on a light page
-	 * rather than on dark band after dark band.
+	 * variant of their own. The logged-out home asks for `band="none"` and
+	 * `icon={false}` instead: it is one ground with sections parted by space, and
+	 * every heading there is a plain start-aligned `<h2>` (design #17).
 	 *
 	 * `belowHero`: the logged-out home's hero fans out its own covers above
 	 * this shelf, one of them fetched at high priority, and pushes the row well
@@ -27,17 +27,18 @@
 	let {
 		books,
 		band = 'night',
+		icon = true,
 		belowHero = false
-	}: { books: CoverBook[]; band?: 'night' | 'page'; belowHero?: boolean } = $props();
+	}: { books: CoverBook[]; band?: 'night' | 'none'; icon?: boolean; belowHero?: boolean } = $props();
 
 	const t = i18n.t;
 </script>
 
 {#if books.length}
-	<div class={band === 'night' ? 'night-band' : 'page-band'}>
+	<div class={band === 'night' ? 'night-band' : undefined}>
 		<section class="page-col px-5 pt-14">
 			<SectionHeader
-				section="books"
+				section={icon ? 'books' : undefined}
 				title={t('home.discoverNext')}
 				href={localizeHref('/books')}
 				linkText={t('home.allBooks')}

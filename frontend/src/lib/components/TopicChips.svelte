@@ -10,41 +10,61 @@
 	 * The "Browse by topic" pill row, shared by the logged-out home and the
 	 * signed-in dashboard. Hidden when empty. `lastBlock` adds the bottom padding
 	 * a final section wants: on the dashboard this is the last block, on the
-	 * marketing page the mission teaser follows, so it isn't.
+	 * marketing page more sections follow, so it isn't.
+	 *
+	 * `quiet` is the logged-out home's row (design #17): the first eight names
+	 * only — no emblem, no count — closed by an "All topics" pill, under a
+	 * heading with no section icon. The dashboard keeps the full row.
 	 */
-	let { topics, lastBlock = false }: { topics: TopicCount[]; lastBlock?: boolean } = $props();
+	let {
+		topics,
+		lastBlock = false,
+		quiet = false
+	}: { topics: TopicCount[]; lastBlock?: boolean; quiet?: boolean } = $props();
 
 	const t = i18n.t;
 
-	// The home row carries 13 chips — two full lines at the default desktop
+	// The full row carries 13 chips — two full lines at the default desktop
 	// width (see HOME_TOPIC_LIMIT). Narrower screens show a prefix of the same
 	// list so the teaser stays short and ends on a whole line: a phone (two
 	// chips a line) keeps the first 8, a tablet (four a line) the first 12.
 	const PHONE_CAP = 8;
 	const TABLET_CAP = 12;
+	// The quiet row: eight names at every width.
+	const QUIET_CAP = 8;
 </script>
 
 {#if topics.length}
 	<section class="page-col px-5 pt-14" class:pb-20={lastBlock}>
-		<SectionHeader
-			section="topics"
-			title={t('home.browseTopic')}
-			href={localizeHref('/topics')}
-			linkText={t('home.allTopics')}
-		/>
-		<div class="flex flex-wrap gap-2.5">
-			{#each topics as topic, i (topic.slug)}
-				<!-- Members, not books: a shelf carried by its sermons showed a bare
-				     "0" here, which reads as an empty shelf rather than a full one. -->
-				<TopicPill
-					href={localizeHref(`/topics/${topic.slug}`)}
-					title={topic.title}
-					count={topic.book_count + topic.sermon_count}
-					emblem={TOPIC_META[topic.slug]?.emblem}
-					accent={TOPIC_META[topic.slug]?.accent}
-					class={[i >= PHONE_CAP && 'max-sm:hidden', i >= TABLET_CAP && 'max-lg:hidden']}
-				/>
-			{/each}
-		</div>
+		{#if quiet}
+			<SectionHeader title={t('home.browseTopic')} />
+			<div class="flex flex-wrap gap-2.5">
+				{#each topics.slice(0, QUIET_CAP) as topic (topic.slug)}
+					<TopicPill href={localizeHref(`/topics/${topic.slug}`)} title={topic.title} />
+				{/each}
+				<TopicPill href={localizeHref('/topics')} title={t('home.allTopics')} />
+			</div>
+		{:else}
+			<SectionHeader
+				section="topics"
+				title={t('home.browseTopic')}
+				href={localizeHref('/topics')}
+				linkText={t('home.allTopics')}
+			/>
+			<div class="flex flex-wrap gap-2.5">
+				{#each topics as topic, i (topic.slug)}
+					<!-- Members, not books: a shelf carried by its sermons showed a bare
+					     "0" here, which reads as an empty shelf rather than a full one. -->
+					<TopicPill
+						href={localizeHref(`/topics/${topic.slug}`)}
+						title={topic.title}
+						count={topic.book_count + topic.sermon_count}
+						emblem={TOPIC_META[topic.slug]?.emblem}
+						accent={TOPIC_META[topic.slug]?.accent}
+						class={[i >= PHONE_CAP && 'max-sm:hidden', i >= TABLET_CAP && 'max-lg:hidden']}
+					/>
+				{/each}
+			</div>
+		{/if}
 	</section>
 {/if}

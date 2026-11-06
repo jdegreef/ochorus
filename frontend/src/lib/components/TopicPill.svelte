@@ -23,7 +23,8 @@
 	}: {
 		href: string;
 		title: string;
-		count: number;
+		/** Omitted on the logged-out home's quiet row: a name, no figure. */
+		count?: number;
 		/** The topic's emblem name; it must be one `emblem:art` exports. */
 		emblem?: string;
 		accent?: string;
@@ -51,7 +52,7 @@
 		/>
 	{/if}
 	{title}
-	<span class="text-eyebrow font-normal text-muted">{count}</span>
+	{#if count !== undefined}<span class="text-eyebrow font-normal text-muted">{count}</span>{/if}
 </a>
 
 <style>

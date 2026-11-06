@@ -451,6 +451,28 @@ lists content types, **in the same order** everywhere:
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
 
+### The logged-out home is six sections on one ground (design #17, founder-approved 2026-11)
+
+`HomeMarketing.svelte` had grown nine sections over alternating cream / tan
+bands. It is now, in order: the hero (or, for a returning reader, the
+Continue-reading strip — design #10) · the Today slot (design #20; until it
+ships, the day's blocks sit under the book row) · the book row · topics ·
+authors · the line for churches and ministries (design #27). Rules:
+
+- **One ground.** No `.page-band` / `bg-surface-2` section bands on the
+  logged-out home; space (`pt-14`) separates sections. `DiscoverStrip` takes
+  `band="none"` there (the dashboard keeps its `night-band`). The signed-out
+  `SignupBand` is the one exception still standing.
+- **One heading style**: `<SectionHeader>` with no `section` prop — sentence
+  case, start-aligned, no icon before the `<h2>` (`DiscoverStrip icon={false}`).
+  No centred headings.
+- **Topics are quiet**: `TopicChips quiet` — eight names, no emblem, no count,
+  then an "All topics" pill (`TopicPill`'s `count` is optional for this).
+- **Authors are faces**: a row of large `<Portrait>`s with the name under each
+  (4 a row on a phone, 8 on desktop), not boxed `AuthorTile` cards.
+- **Not on Home**: "How Ochorus works" and the library-figures + mission band.
+  The figures belong to `/about`'s stats band (books and sermons there).
+
 ### The footer is one band (design #3, founder-approved 2026-11)
 
 The footer had grown five bands (~930px on every page: "Before you go" cards,
