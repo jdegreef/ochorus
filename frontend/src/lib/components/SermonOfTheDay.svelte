@@ -30,6 +30,9 @@
 		$props();
 
 	let pick = $state<SermonSummary | null>(null);
+	// The fetch has answered (with a pick or without): a reserve that would
+	// otherwise shimmer "loading" for good after a failed or empty fetch goes.
+	let settled = $state(false);
 
 	onMount(async () => {
 		try {
@@ -37,6 +40,7 @@
 		} catch {
 			pick = null;
 		}
+		settled = true;
 	});
 </script>
 
@@ -70,10 +74,21 @@
 			</SermonPlate>
 		</a>
 	</section>
-{:else if reserve}
+{:else if reserve && !settled}
 	<!-- Holding the panel's place until the pick lands (it is chosen on mount,
 	     above), so the caller's list doesn't jump down a moment after load. -->
-	<div class="sotw-placeholder rounded-card border border-border bg-surface-2" aria-hidden="true"></div>
+	<!-- A skeleton of the card, not an empty panel: the eyebrow is real (it
+	     is the same every day, so it prints at build time), the title and
+	     byline are parchment bars, and the chip waits at the far end — so the
+	     box reads as "loading" and holds the card's own shape. -->
+	<div class="sotw-placeholder rounded-card border border-border" aria-hidden="true">
+		<div class="min-w-0 flex-1">
+			<p class="eyebrow mb-2 text-accent">{t('home.sermonOfDay')}</p>
+			<div class="text-h2 mb-1"><span class="skeleton inline-block w-3/5 rounded-md">&nbsp;</span></div>
+			<div class="text-small"><span class="skeleton inline-block w-2/5 rounded-md">&nbsp;</span></div>
+		</div>
+		<span class="sotw-chip skeleton rounded-full"></span>
+	</div>
 {/if}
 
 <style>
@@ -82,11 +97,27 @@
 	   breakpoint) the title wraps to two lines (166px). A very long title on a
 	   narrow phone can wrap to three, so a small shift is still possible there. */
 	.sotw-placeholder {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 1.15rem;
 		min-height: 7.125rem;
+	}
+	/* The compact plate's chip (SermonPlate: 3.5rem, 3rem on a phone). */
+	.sotw-chip {
+		flex: none;
+		width: 3.5rem;
+		height: 3.5rem;
 	}
 	@media (max-width: 30rem) {
 		.sotw-placeholder {
+			gap: 0.9rem;
+			padding: 1rem 1.05rem;
 			min-height: 10.375rem;
+		}
+		.sotw-chip {
+			width: 3rem;
+			height: 3rem;
 		}
 	}
 	/* The lift language (STYLE_GUIDE §5 → "Card hover"), hue-mixed like
