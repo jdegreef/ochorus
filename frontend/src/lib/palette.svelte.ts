@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { storageHealth } from './storageHealth.svelte';
-import { crossfade } from './crossfade';
+import { canViewTransition, crossfade } from './crossfade';
 import {
 	APPLIED_PALETTE_KEY,
 	appliedPalette,
@@ -11,6 +11,34 @@ import {
 	type Palette
 } from './palettes';
 import { theme } from './theme.svelte';
+
+/** The palette rules (static/palettes.css): linked only once a palette is
+ *  applied, so the readers who keep the house palette never load them. */
+export const PALETTE_SHEET = '/palettes.css';
+
+let sheet: Promise<void> | null = null;
+
+/** Link the palette sheet (once) and resolve when it has loaded, or failed:
+ *  a palette without its sheet paints the house colours, which is the most a
+ *  failure should cost. app.html's boot script may already have written it. */
+export function loadPaletteSheet(): Promise<void> {
+	if (sheet) return sheet;
+	const have = document.head.querySelector<HTMLLinkElement>(`link[rel="stylesheet"][href="${PALETTE_SHEET}"]`);
+	if (have?.sheet) return (sheet = Promise.resolve());
+	const link = have ?? document.createElement('link');
+	sheet = new Promise<void>((done) => {
+		link.addEventListener('load', () => done(), { once: true });
+		link.addEventListener('error', () => done(), { once: true });
+		// A stalled request must not hold a reader's choice hostage.
+		setTimeout(done, 2000);
+	});
+	if (!have) {
+		link.rel = 'stylesheet';
+		link.href = PALETTE_SHEET;
+		document.head.append(link);
+	}
+	return sheet;
+}
 
 /**
  * The reader's library palette (see $lib/palettes). Sets `data-palette` on
@@ -59,7 +87,13 @@ class PalettePref {
 				storageHealth.fail();
 			}
 			if (this.applied !== normalizeApplied(document.documentElement.dataset.palette)) {
-				crossfade(() => this.#apply());
+				// Wait for the palette rules before the crossfade captures the new
+				// state, or it would fade to the house colours and then jump.
+				// (Without a transition there is nothing to capture: apply now,
+				// and the colours arrive with the sheet.)
+				const swap = () => crossfade(() => this.#apply());
+				if (this.applied === 'parchment' || !canViewTransition()) swap();
+				else void loadPaletteSheet().then(swap);
 				return;
 			}
 		}
@@ -70,6 +104,9 @@ class PalettePref {
 		if (!browser) return;
 		const applied = this.applied;
 		const root = document.documentElement;
+		// Already linked by the boot script on a palette page, or by set();
+		// this covers the Church year turning to a new season in an open tab.
+		if (applied !== 'parchment') void loadPaletteSheet();
 		if (applied === 'parchment') delete root.dataset.palette;
 		else root.dataset.palette = applied;
 		// The boot script can't resolve a choice (it has no calendar), so when

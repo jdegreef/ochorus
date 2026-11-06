@@ -53,7 +53,14 @@
 					feast: { light: '#fcfaf4', dark: '#17150f' },
 					flame: { light: '#fbf6f5', dark: '#1a1112' }
 				};
-				if (palColors[pal]) document.documentElement.setAttribute('data-palette', pal);
+				if (palColors[pal]) {
+					document.documentElement.setAttribute('data-palette', pal);
+					// The palette rules are their own sheet (static/palettes.css), kept
+					// out of the render-blocking app.css for the readers who never pick
+					// one. Written by the parser, so it blocks first paint like app.css
+					// and the page never flashes the house colours first.
+					document.write('<link rel="stylesheet" href="/palettes.css">');
+				}
 				// Match the browser UI (address bar / status bar) to the active theme
 				// (and palette; sepia keeps its own ground under every palette).
 				var colors = { light: '#faf6ef', dark: '#16130f', sepia: '#f4ecd8' };

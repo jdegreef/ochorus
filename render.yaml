@@ -434,6 +434,12 @@ services:
       - path: /portraits/*
         name: Cache-Control
         value: "public, max-age=3600, s-maxage=300, stale-while-revalidate=2592000"
+      # The library palettes (frontend/static/palettes.css): split out of the
+      # render-blocking app.css and linked only for a reader with a palette.
+      # Unhashed (app.html's boot script names it), so the covers' tier.
+      - path: /palettes.css
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300, stale-while-revalidate=2592000"
       # In-book pictures (chapter <figure>s): stable names, like the covers.
       - path: /illustrations/*
         name: Cache-Control
