@@ -87,6 +87,25 @@ In this order, and nothing else at the top level:
    targets must exist). Paging a hub drops links from its prerendered HTML:
    run `npm run build` and confirm `ls -d build/<type>/*/ | wc -l` still equals
    the API count (the prerender crawler must reach every item another way).
+   **Books opens on curated rows, not the grid** (design review #11,
+   2026-11-06). `/books` with no query shows **Browse**: a handful of named
+   rows (`h2.section-label` + "See all %n%" on a topic row, one
+   `.cover-rail.browse-row` of `BookCard`s that scrolls sideways with snap,
+   sized by its own container), then the Book Series rail. The
+   full grid with its filter bar is the **"All N books"** tab, which
+   `<LibraryTabs browse>` puts in place of the Books tab on `/books` only. The
+   view is URL state (`?shelf=all`, in the shelf's `urlFilters`), so: a bare
+   `/books` prerenders Browse (no layout-changing restore); **any filter or
+   search in the URL lands on the grid** (lifting a chip or clearing sets
+   `shelf=all`, so the reader stays there; no `$effect` rewrites the URL);
+   the static HTML paints Browse first for a `?shelf=all` link, since one
+   prerendered page serves every query; a row's "See all" is
+   `/books?shelf=all&topic=<slug>`. Row membership is `lib/browseRows.ts` —
+   built from the loaded shelf, no request of its own: the one small hand list
+   (`START_HERE`, topped up from featured order in a thin language), then
+   topic rows from `ROW_TOPICS` titled with the topic's own translated name,
+   falling back to the shelf's largest topics. Change the rows there, not in
+   the component; don't add a second hand list.
 8. **States** — three, all `<EmptyState>`:
    - *no rows in this language* → `message` + `action` = "Read the English library";
    - *filtered to nothing* → `message` + `action` = clear filters;
