@@ -157,9 +157,21 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      the name only in the h1 and no link);
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
-   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip` —
-     except the book, whose cover leads on the START side of its two-column
-     hero (design review #6, below).
+   - **hero visual** on the start side, as the book page hangs its cover:
+     cover, portrait, plate or `CoverStrip`. On a phone it sits small BESIDE
+     the h1, never above it alone.
+   - **The h1 is the item's own name** — a title, a person's name. A longer
+     search phrase ("X Biography, Books, and Sermons") belongs in `<Seo title>`
+     only (design review #13).
+   - **Author page (#13):** `AuthorHero` is the book page's light layout, not a
+     dark band — the portrait as the photograph is (no `.duotone`, no
+     grayscale) in a light print frame; era eyebrow; the name; one line of who
+     they were (`firstSentence(author.bio)`, only when a long bio is shown —
+     a summary-only page prints that summary itself; there is no tagline
+     field, so don't write one); a facts `<dl>` of only what the data holds (Born, Died,
+     Tradition, Place, On Ochorus); then Follow as the one outlined button and
+     Share/Search as bare icons. Quotes is a link in the facts, not a button.
+     `authorHero.test.ts` guards it.
 4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
    `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
    (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
@@ -376,7 +388,8 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
+- [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
+      (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
@@ -418,6 +431,35 @@ lists content types, **in the same order** everywhere:
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
+
+### The footer is one band (design #3, founder-approved 2026-11)
+
+The footer had grown five bands (~930px on every page: "Before you go" cards,
+a large blessing, four link columns, language tiles, a legal bar, the
+"Ochorus for …" panel with 18 links and a "This week" strip). It is now ONE
+band: logo + mission line · **Library** (PRIMARY_NAV) · **More** (Series,
+young-reader hubs, A–Z, the English hubs, Originals, and ONE "For churches &
+ministries" link to the `/for/` hub) · a language switcher with About /
+Contact / Privacy / Send feedback / RSS under it — then the blessing and © as
+one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
+`forPath(`, no generic cards). Rules:
+
+- **Don't add a band.** A new destination is a link in More, not a panel.
+- **The only card above the band is personal**: the sign-up invitation
+  (signed out, not on /login) or the reader's current book (not where the page
+  already shows it — `pageShowsBook`). No generic "Find your next book" /
+  "Reading Plans" cards: they pointed at the page the reader was often on
+  (plans, search) and repeated the Library column.
+- **Reachability**: the footer is on every page, so it is the crawl's path to
+  each locale's `/series/`, `/young-readers/`, `/teens/`, `/originals/`,
+  `/authors/` and `/fr/for/`. Keep those as real `<a href>`s. The
+  `/for/<group>/` pages are reached through the `/for/` hub, which links them
+  all — don't drop a group from `FOR_LINKS` without another link to it.
+- **The language switcher is a `<details>` of real links, not a `<select>`**:
+  a select that switches on `change` jumps language on the first arrow key
+  (WCAG 3.2.2), does nothing before hydration, and loses the links to every
+  locale home. The list opens in flow (the footer's `content-visibility`
+  would clip an overlay).
 
 ## Adding a topic shelf (a topic ROW, not a new route)
 
