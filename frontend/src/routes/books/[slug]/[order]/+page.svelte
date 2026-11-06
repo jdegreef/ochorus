@@ -2117,7 +2117,7 @@
 				min="0"
 				max="1"
 				step={paged && pageTotal > 1 ? 1 / (pageTotal - 1) : 0.005}
-				value={chapterFrac}
+				value={paged && pageTotal > 1 ? pageIndex / (pageTotal - 1) : chapterFrac}
 				oninput={(e) => seekTo(Number(e.currentTarget.value))}
 				aria-label={t('progress.scrub')}
 				aria-valuetext={progressLabel}
