@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FOR_LINKS, FOR_LOCALES } from './forLinks';
 import { forPage, type ForPage } from './forPages';
-import { FOR_PLACES, FOR_PROMOS, PROMO_LEAD, PROMO_WORDS, SEARCH_FOR, TOPIC_FOR, promoLocale, searchFor } from './forPromos';
+import { FOR_PLACES, FOR_PROMOS, HOME_FOR_LINE, PROMO_LEAD, PROMO_WORDS, SEARCH_FOR, TOPIC_FOR, promoLocale, searchFor } from './forPromos';
 import type { ForSection } from './forSections';
 
 const SLUGS = new Set(FOR_LINKS.map((l) => l.slug));
@@ -44,6 +44,13 @@ describe('links to the "Ochorus for …" pages from the rest of the site', () =>
 		for (const locale of FOR_LOCALES) {
 			for (const place of FOR_PLACES) expect(PROMO_LEAD[locale][place], `${locale} ${place}`).toBeTruthy();
 			expect(PROMO_WORDS[locale].all).toBeTruthy();
+		}
+	});
+
+	it('counts the groups on the home line from the list, in every page language', () => {
+		for (const locale of FOR_LOCALES) {
+			expect(HOME_FOR_LINE[locale](FOR_LINKS.length), locale).toContain(String(FOR_LINKS.length));
+			expect(HOME_FOR_LINE[locale](99), locale).toContain('99');
 		}
 	});
 

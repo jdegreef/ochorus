@@ -534,12 +534,12 @@ absent from the palette and from search.
 bands. The target is six, in order: the hero (or, for a returning reader, the
 Continue-reading strip — design #10) · Today (design #20) · books · topics ·
 authors · one line for churches and ministries (design #27). #17 shipped the
-structure; until #20 and #27 land the page still renders, in order: hero ·
+structure; until #20 lands the page still renders, in order: hero ·
 book row · `SignupBand` (signed out, accounts on) · `DailyShelf` ·
 `SermonOfTheDay` · `HomeArticles` (the day's blocks #20 folds into one card,
 right after the hero) · topics · `HomeAudienceHubs` (young readers & teens —
-keep it) · authors · `HomeForGroups` (the pills #27 reduces to a line). The
-comments in the file mark each slot. Rules:
+keep it) · authors · `HomeForGroups`. The comments in the file mark each
+slot. Rules:
 
 - **One ground.** No `.page-band` / `bg-surface-2` section bands on the
   logged-out home; space (`pt-14`) separates sections. `DiscoverStrip` takes
@@ -553,6 +553,12 @@ comments in the file mark each slot. Rules:
 - **Authors are faces**: a row of large `<Portrait>`s with the name under each
   (4 a row on a phone, 8 on desktop; the face shrinks to its cell), not boxed
   `AuthorTile` cards.
+- **One line for leaders** (design #27): `HomeForGroups` is a bold question,
+  one sentence (its "18 kinds of ministry" is `FOR_LINKS.length`, never typed)
+  and one `btn-ghost` link to the /for/ hub, between `border-y` hairlines — no
+  band, no heading, no per-group pills. English and French only, like the
+  footer link; nothing elsewhere. The hub links every group page, so it is
+  the crawler's way to them.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 
