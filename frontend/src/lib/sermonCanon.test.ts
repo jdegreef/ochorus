@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { CANON, CANON_MIN_BOOKS, canonGrid } from './sermonCanon';
 import { BIBLE_SECTIONS, HEAT_LEVELS } from './scriptureIndex';
 
-const on = (order: number, n = 1, name = CANON[order - 1][0]) =>
-	Array.from({ length: n }, () => ({ scripture_book: name, scripture_book_order: order }));
+/** A book facet, as the page's `bookFacets` holds it. */
+const on = (order: number, count = 1, name = CANON[order - 1]?.[0] ?? 'Other') => [{ name, order, count }];
 
 /** One sermon on each of the first `k` books — enough to clear the floor. */
 const spread = (k = CANON_MIN_BOOKS) => Array.from({ length: k }, (_, i) => on(i + 1)).flat();
@@ -23,9 +23,8 @@ describe('canonGrid', () => {
 	it('leaves the grid out below the floor of distinct books', () => {
 		expect(canonGrid([])).toBeNull();
 		expect(canonGrid(spread(CANON_MIN_BOOKS - 1))).toBeNull();
-		// Unparsed references (a translated sermon's) don't count toward it.
-		const unparsed = Array.from({ length: 40 }, () => ({ scripture_book: null, scripture_book_order: null }));
-		expect(canonGrid([...spread(CANON_MIN_BOOKS - 1), ...unparsed])).toBeNull();
+		// A book outside the 66 (the apocrypha) doesn't count toward it.
+		expect(canonGrid([...spread(CANON_MIN_BOOKS - 1), ...on(70, 40)])).toBeNull();
 	});
 
 	it('lists every book in both testaments, empty ones at count 0 and heat 0', () => {
@@ -37,7 +36,7 @@ describe('canonGrid', () => {
 	});
 
 	it('shades any book with sermons at least 1, the busiest at the top', () => {
-		const g = canonGrid([...spread(), ...on(43, 58)])!; // John: 58
+		const g = canonGrid([...spread(), ...on(43, 58)])!;
 		const john = g.new.find((c) => c.name === 'John')!;
 		expect(john.count).toBe(58);
 		expect(john.heat).toBe(HEAT_LEVELS - 1);
@@ -55,6 +54,7 @@ describe('canonGrid', () => {
 	it('filters on the payload name, and ignores books outside the 66', () => {
 		const g = canonGrid([...spread(), ...on(19, 1, 'Psalm'), ...on(70, 3, 'Ecclesiasticus')])!;
 		expect(g.old[18].name).toBe('Psalm');
+		expect(g.old[18].count).toBe(1);
 		expect([...g.old, ...g.new].reduce((n, c) => n + c.count, 0)).toBe(CANON_MIN_BOOKS + 1);
 	});
 });

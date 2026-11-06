@@ -87,9 +87,9 @@ const LAST_OT = 39;
 /**
  * Below this many distinct books the grid is all empty cells and says nothing,
  * so the shelf leaves it out. The book facet parses ENGLISH references only
- * (a translated sermon's "Colosenses 1:27" doesn't resolve), so today that is
- * every shelf but English's; the grid appears on its own once a language's
- * references resolve.
+ * (a translated sermon's "Colosenses 1:27" doesn't resolve). The cells'
+ * abbreviations and names are English too, so the page also shows the grid
+ * only on the English shelf until localized book names exist.
  */
 export const CANON_MIN_BOOKS = 10;
 
@@ -107,34 +107,39 @@ export interface CanonGrid {
 	new: CanonCell[];
 }
 
+/** One book on the shelf, as the page's book facet holds it. */
+export interface BookFacet {
+	/** The payload's `scripture_book`, the value the book filter matches. */
+	name: string;
+	/** Its canonical position (`scripture_book_order`). */
+	order: number;
+	count: number;
+}
+
 /**
- * The grid for a shelf, or null when it covers fewer than CANON_MIN_BOOKS books.
+ * The grid for a shelf's book facets, or null when they cover fewer than
+ * CANON_MIN_BOOKS of the 66.
+ *
+ * Built from the facets the book `<select>` already shows, so a cell's count
+ * and the list its click filters to are the same figure by construction, and
+ * the payload's name for a book wins over CANON's.
  *
  * A book with sermons always takes at least the first shade, so it never looks
  * like an empty one; the rest climb on a square-root scale to the shelf's
  * busiest book (John's 58 against a long tail of ones and twos would leave a
  * linear scale with one dark cell and sixty pale ones).
  */
-export function canonGrid(
-	sermons: { scripture_book: string | null; scripture_book_order: number | null }[]
-): CanonGrid | null {
-	const counts = new Map<number, number>();
-	// The payload's own name for a book wins over CANON's, so a cell can never
-	// filter on a spelling the book filter doesn't match.
-	const names = new Map<number, string>();
-	for (const s of sermons) {
-		const o = s.scripture_book_order;
-		if (!o || o > CANON.length || !s.scripture_book) continue;
-		counts.set(o, (counts.get(o) ?? 0) + 1);
-		names.set(o, s.scripture_book);
-	}
-	if (counts.size < CANON_MIN_BOOKS) return null;
-	const max = Math.max(...counts.values());
+export function canonGrid(facets: readonly BookFacet[]): CanonGrid | null {
+	const byOrder = new Map<number, BookFacet>();
+	for (const f of facets) if (f.order >= 1 && f.order <= CANON.length) byOrder.set(f.order, f);
+	if (byOrder.size < CANON_MIN_BOOKS) return null;
+	const max = Math.max(...[...byOrder.values()].map((f) => f.count));
 	const top = HEAT_LEVELS - 1;
 	const cells = CANON.map(([name, abbr], i): CanonCell => {
-		const count = counts.get(i + 1) ?? 0;
+		const f = byOrder.get(i + 1);
+		const count = f?.count ?? 0;
 		const heat = count ? 1 + Math.round((top - 1) * Math.sqrt(count / max)) : 0;
-		return { name: names.get(i + 1) ?? name, abbr, count, heat };
+		return { name: f?.name ?? name, abbr, count, heat };
 	});
 	return { old: cells.slice(0, LAST_OT), new: cells.slice(LAST_OT) };
 }

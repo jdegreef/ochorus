@@ -28,6 +28,8 @@
 	import AuthorJumpStrip from '$lib/components/AuthorJumpStrip.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { writeFilters } from '$lib/urlFilters';
+	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
 	import { readingMinutes, readingTime } from '$lib/reading';
@@ -71,8 +73,9 @@
 	// $lib/urlFilters — the same helper Books and Biographies use. The
 	// arrangement (`group`, `sort`) rides along, as Biographies' sort does, so
 	// Back and a reload keep it (see Arrangement below).
+	const FILTER_DEFAULTS = { q: '', book: '', len: '', topic: '', group: 'all', sort: 'shelf' };
 	const filters = urlFilters({
-		defaults: { q: '', book: '', len: '', topic: '', group: 'all', sort: 'shelf' },
+		defaults: FILTER_DEFAULTS,
 		// `len`, `group` and `sort` are enums — an off-list value in the URL falls
 		// back to the default. `topic` is a free-text slug (like `book`).
 		allowed: { len: LENGTH_BUCKETS, group: ['all', 'preacher'], sort: ['shelf', 'scripture', 'title', 'shortest'] },
@@ -279,9 +282,21 @@
 
 	// --- Browse by Scripture (design review #21) ----------------------------------
 	// The 66 books, each shaded by how many sermons on this shelf preach from
-	// it; a cell sets the book filter. Null (no grid) where the shelf's
-	// references don't resolve to enough books ($lib/sermonCanon).
-	const canon = $derived(canonGrid(sermons));
+	// it; a cell sets the book filter. Built from `bookFacets`, so a cell's
+	// count is the select's count. Null (no grid) where the shelf's references
+	// don't resolve to enough books, and off the English shelf: the cells'
+	// abbreviations and names are English ($lib/sermonCanon).
+	const canon = $derived(getLang() === 'en' ? canonGrid(bookFacets) : null);
+	/** A cell's link: this view (group, sort) narrowed to the book, so a new
+	 *  tab opens what a plain click shows. Built from the filter VALUES, never
+	 *  the query string, which the prerender may not read. */
+	function bookHref(book: string) {
+		// A placeholder origin: only the path and query are kept (SITE_URL can
+		// be blank in the app build).
+		const base = new URL(localizeHref('/sermons'), 'https://x.invalid');
+		const u = writeFilters(base, { ...filters.values, book }, FILTER_DEFAULTS);
+		return u.pathname + u.search;
+	}
 	// Phone only: the grid opens on a tap, so it doesn't stand between the start
 	// row and the list. From sm it is always open (CSS — the prerendered HTML
 	// is the same at every width, so nothing moves after first paint).
@@ -290,12 +305,17 @@
 
 	/** A cell is a real link (shareable, opens in a new tab); a plain click
 	 *  filters in place and brings the narrowed list into view, since the grid
-	 *  and the rows above it give way to it. */
+	 *  and the rows above it give way to it. Focus goes there too: the link
+	 *  the reader pressed is gone, and focus would otherwise fall to <body>. */
 	function pickBook(e: MouseEvent, name: string) {
 		if (!isPlainPrimaryClick(e)) return;
 		e.preventDefault();
 		filters.values.book = name;
-		tick().then(() => document.getElementById('sermon-results')?.scrollIntoView({ block: 'start' }));
+		tick().then(() => {
+			const results = document.getElementById('sermon-results');
+			results?.focus({ preventScroll: true });
+			results?.scrollIntoView({ block: 'start' });
+		});
 	}
 
 	// A row states its writer only when no heading above it does.
@@ -364,8 +384,7 @@
 	     uses), and it stops the sermon count from clashing with the distinct
 	     "authors" figures on the home and Books pages. -->
 	{#snippet sermonCounts()}
-		{sermons.length}
-		{sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+		{sermonsLabel(sermons.length)}
 		<span class="sep">·</span>
 		{preacherCount}
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
@@ -466,7 +485,12 @@
 	/>
 
 	<!-- Where a Browse by Scripture pick lands the reader: the top of the results. -->
-	<div id="sermon-results" style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"></div>
+	<div
+		id="sermon-results"
+		tabindex="-1"
+		class="outline-none"
+		style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+	></div>
 
 	<!-- One clear affordance, on the FilterSummary — same as Books and
 	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
@@ -552,7 +576,8 @@
 							<li>
 								{#if c.count}
 									<a
-										href={localizeHref(`/sermons?book=${encodeURIComponent(c.name)}`)}
+										href={bookHref(c.name)}
+										rel="nofollow"
 										class="canon-cell heat-{c.heat}"
 										onclick={(e) => pickBook(e, c.name)}>{@render label()}</a
 									>
@@ -626,8 +651,7 @@
 					     lifespan read as one figure ("1843–1919 15"). -->
 					{#snippet detail()}
 						<span class="text-small font-normal count"
-							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{g.items.length}
-							{g.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}</span
+							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{sermonsLabel(g.items.length)}</span
 						>
 					{/snippet}
 				</GroupHeading>
