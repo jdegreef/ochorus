@@ -83,7 +83,7 @@
      SermonOfTheDay, HomeArticles) keep their place below the book row. -->
 
 <!-- Books -->
-<DiscoverStrip books={featured} band="none" icon={false} belowHero />
+<DiscoverStrip books={featured} band="none" belowHero />
 
 <!-- Create-an-account band. Four bands run behind one component (three A/B
      arms + a progress-targeted one); it self-gates on `auth.enabled`, so it
@@ -103,7 +103,7 @@
      with fewer than eight articles. -->
 <HomeArticles />
 
-<!-- Topics: eight names, then "All topics". -->
+<!-- Topics: eight names; the header links to all of them. -->
 <TopicChips {topics} quiet />
 
 <!-- For young readers and teens — the hubs this language has. -->
@@ -133,10 +133,15 @@
 							tone="hover"
 							decorative
 							initialsClass="text-h3"
-							class="h-[4.5rem] w-[4.5rem] ring-1 ring-border sm:h-24 sm:w-24"
+							class="aspect-square h-auto w-full max-w-[4.5rem] sm:max-w-24"
 						/>
-						<!-- Two lines at most: a phone's column is ~80px wide. -->
-						<span class="line-clamp-2 text-small font-medium text-text group-hover:text-accent"
+						<!-- Two lines at most. A phone's column can be ~70px (360px
+						     screen) and the narrowest page width leaves ~80px at eight
+						     a row, so the face shrinks to its cell (`w-full`, capped)
+						     and a long single name ("Wigglesworth") breaks rather than
+						     running into its neighbour. -->
+						<span
+							class="line-clamp-2 w-full break-words text-small font-medium text-text hyphens-auto group-hover:text-accent"
 							>{author.name}</span
 						>
 					</a>

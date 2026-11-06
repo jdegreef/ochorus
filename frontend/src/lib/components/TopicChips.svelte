@@ -13,8 +13,8 @@
 	 * marketing page more sections follow, so it isn't.
 	 *
 	 * `quiet` is the logged-out home's row (design #17): the first eight names
-	 * only — no emblem, no count — closed by an "All topics" pill, under a
-	 * heading with no section icon. The dashboard keeps the full row.
+	 * only — no emblem, no count — under a heading with no section icon; the
+	 * header's "All topics →" is the way on. The dashboard keeps the full row.
 	 */
 	let {
 		topics,
@@ -36,35 +36,25 @@
 
 {#if topics.length}
 	<section class="page-col px-5 pt-14" class:pb-20={lastBlock}>
-		{#if quiet}
-			<SectionHeader title={t('home.browseTopic')} />
-			<div class="flex flex-wrap gap-2.5">
-				{#each topics.slice(0, QUIET_CAP) as topic (topic.slug)}
-					<TopicPill href={localizeHref(`/topics/${topic.slug}`)} title={topic.title} />
-				{/each}
-				<TopicPill href={localizeHref('/topics')} title={t('home.allTopics')} />
-			</div>
-		{:else}
-			<SectionHeader
-				section="topics"
-				title={t('home.browseTopic')}
-				href={localizeHref('/topics')}
-				linkText={t('home.allTopics')}
-			/>
-			<div class="flex flex-wrap gap-2.5">
-				{#each topics as topic, i (topic.slug)}
-					<!-- Members, not books: a shelf carried by its sermons showed a bare
-					     "0" here, which reads as an empty shelf rather than a full one. -->
-					<TopicPill
-						href={localizeHref(`/topics/${topic.slug}`)}
-						title={topic.title}
-						count={topic.book_count + topic.sermon_count}
-						emblem={TOPIC_META[topic.slug]?.emblem}
-						accent={TOPIC_META[topic.slug]?.accent}
-						class={[i >= PHONE_CAP && 'max-sm:hidden', i >= TABLET_CAP && 'max-lg:hidden']}
-					/>
-				{/each}
-			</div>
-		{/if}
+		<SectionHeader
+			section={quiet ? undefined : 'topics'}
+			title={t('home.browseTopic')}
+			href={localizeHref('/topics')}
+			linkText={t('home.allTopics')}
+		/>
+		<div class="flex flex-wrap gap-2.5">
+			{#each quiet ? topics.slice(0, QUIET_CAP) : topics as topic, i (topic.slug)}
+				<!-- Members, not books: a shelf carried by its sermons showed a bare
+				     "0" here, which reads as an empty shelf rather than a full one. -->
+				<TopicPill
+					href={localizeHref(`/topics/${topic.slug}`)}
+					title={topic.title}
+					count={quiet ? undefined : topic.book_count + topic.sermon_count}
+					emblem={quiet ? undefined : TOPIC_META[topic.slug]?.emblem}
+					accent={quiet ? undefined : TOPIC_META[topic.slug]?.accent}
+					class={quiet ? undefined : [i >= PHONE_CAP && 'max-sm:hidden', i >= TABLET_CAP && 'max-lg:hidden']}
+				/>
+			{/each}
+		</div>
 	</section>
 {/if}

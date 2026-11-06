@@ -51,7 +51,7 @@ In this order, and nothing else at the top level:
    "· 16 Book Series" link went: the Book Series tab below it is that link). **One library number per word:** "books" is every
    book row (editions included — what the Books shelf shows), "authors" is
    `countWriters` (`lib/authorIndex.ts`: people, never an imprint), shown by
-   the home page and the A–Z. A shelf whose own count would differ (Books'
+   the A–Z (the home page no longer shows library figures — design #17). A shelf whose own count would differ (Books'
    book writers, Biographies' listed writers) shows no authors figure rather
    than a second, smaller one (2026-10-23: home read 128, Books 63, A–Z 130).
    `eyebrow` is only for a page whose h1 is *not* the nav
@@ -454,22 +454,28 @@ absent from the palette and from search.
 ### The logged-out home is six sections on one ground (design #17, founder-approved 2026-11)
 
 `HomeMarketing.svelte` had grown nine sections over alternating cream / tan
-bands. It is now, in order: the hero (or, for a returning reader, the
-Continue-reading strip — design #10) · the Today slot (design #20; until it
-ships, the day's blocks sit under the book row) · the book row · topics ·
-authors · the line for churches and ministries (design #27). Rules:
+bands. The target is six, in order: the hero (or, for a returning reader, the
+Continue-reading strip — design #10) · Today (design #20) · books · topics ·
+authors · one line for churches and ministries (design #27). #17 shipped the
+structure; until #20 and #27 land the page still renders, in order: hero ·
+book row · `SignupBand` (signed out, accounts on) · `DailyShelf` ·
+`SermonOfTheDay` · `HomeArticles` (the day's blocks #20 folds into one card,
+right after the hero) · topics · `HomeAudienceHubs` (young readers & teens —
+keep it) · authors · `HomeForGroups` (the pills #27 reduces to a line). The
+comments in the file mark each slot. Rules:
 
 - **One ground.** No `.page-band` / `bg-surface-2` section bands on the
   logged-out home; space (`pt-14`) separates sections. `DiscoverStrip` takes
-  `band="none"` there (the dashboard keeps its `night-band`). The signed-out
-  `SignupBand` is the one exception still standing.
+  `band="none"` there (the dashboard keeps its `night-band`, and the Books
+  icon with it). `SignupBand` is the one band still standing.
 - **One heading style**: `<SectionHeader>` with no `section` prop — sentence
-  case, start-aligned, no icon before the `<h2>` (`DiscoverStrip icon={false}`).
-  No centred headings.
-- **Topics are quiet**: `TopicChips quiet` — eight names, no emblem, no count,
-  then an "All topics" pill (`TopicPill`'s `count` is optional for this).
+  case, start-aligned, no icon before the `<h2>`, the "All … →" link at the
+  end. No centred headings.
+- **Topics are quiet**: `TopicChips quiet` — eight names, no emblem, no count
+  (`TopicPill`'s `count` is optional for this); "All topics →" in the header.
 - **Authors are faces**: a row of large `<Portrait>`s with the name under each
-  (4 a row on a phone, 8 on desktop), not boxed `AuthorTile` cards.
+  (4 a row on a phone, 8 on desktop; the face shrinks to its cell), not boxed
+  `AuthorTile` cards.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 

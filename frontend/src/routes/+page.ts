@@ -12,7 +12,7 @@ const EMPTY: HomeShelves = {
 	featured: [],
 	authors: [],
 	topics: [],
-	counts: { books: 0, authors: 0, sermons: 0 },
+	counts: { books: 0, sermons: 0 },
 	audiences: []
 };
 
