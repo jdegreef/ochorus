@@ -315,6 +315,8 @@ weight 600, a 150ms transition).
   2026-11): on the book, plan and author pages the soft fill left the reason the
   page exists about as loud as a chip. Add `.btn-solid` to that one button (and
   its sub-nav / `ReadBar` stand-in) — never to a second button on the same view.
+  The logged-out home hero's "Start reading" (`HomeIntro`, design review #5)
+  is that page's one verb and wears `.btn-solid` too.
   Its ink is `--accent-contrast`, held at AA on `--accent` in every theme and
   palette by `palettes.test.ts`. A second line inside it (`.btn-sub`, with
   `flex-col gap-0` on the button) names what it opens: "Begin reading /

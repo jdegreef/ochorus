@@ -13,9 +13,11 @@
 	 * (a series page's hero); `fan` is a page's hero picture — a deck: one big
 	 * featured cover in front and up to two more stepped up and out behind it,
 	 * with a "+N" chip when the list holds more than the deck shows, filling
-	 * the width it is given (the plan page, /originals, /for). `priority`
-	 * loads the featured cover eagerly for a fan that is the page's largest
-	 * paint.
+	 * the width it is given (the plan page, /originals, /for). Given
+	 * `max={5}` and five covers, the fan is a SPREAD instead (the home hero):
+	 * the middle cover in front, two each side stepping back and down, an arc
+	 * of upright books. `priority` loads the featured cover eagerly for a fan
+	 * that is the page's largest paint.
 	 *
 	 * BOOKS ONLY, by type. A topic's fan can also hold sermon tiles, which are
 	 * drawn as emblem chips rather than covers (`ShelfCard`); this one cannot
@@ -30,21 +32,28 @@
 		priority = false
 	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan'; priority?: boolean } =
 		$props();
-	// The fan's geometry holds three. Of three, the middle one is featured —
+	// The spread: five covers, asked for (max 5), in their own left-to-right
+	// order — the middle one leads.
+	const spread = $derived(size === 'fan' && max === 5 && covers.length >= 5);
+	// The deck's geometry holds three. Of three, the middle one is featured —
 	// callers put their lead there (audienceHub.heroCovers) — and the other two
 	// stand behind it in order; otherwise the first leads.
 	const shown = $derived.by(() => {
+		if (spread) return covers.slice(0, 5);
 		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : max);
 		return size === 'fan' && list.length === 3 ? [list[1], list[0], list[2]] : list;
 	});
-	const more = $derived(size === 'fan' ? covers.length - shown.length : 0);
+	const lead = $derived(spread ? 2 : 0);
+	// The chip sits under the deck's back cover; the spread has no back corner
+	// for it, so it shows no chip.
+	const more = $derived(size === 'fan' && !spread ? covers.length - shown.length : 0);
 </script>
 
 {#if covers.length}
-	<div class="covers" class:strip={size !== 'fan'} class:lg={size === 'lg'} class:fan={size === 'fan'} aria-hidden="true">
+	<div class="covers" class:strip={size !== 'fan'} class:lg={size === 'lg'} class:fan={size === 'fan'} class:spread aria-hidden="true">
 		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
-			{@const eager = priority && i === 0}
+			{@const eager = priority && i === lead}
 			<div class="cover">
 				{#if face}
 					<!-- Drawn, not a bare image: a plate ground has no words. -->
@@ -146,6 +155,43 @@
 		inset-inline-start: 52cqw;
 		width: 36cqw;
 		filter: brightness(0.93);
+	}
+	/* The spread (five, the home hero): an arc of upright books, the middle
+	   one largest and in front, each pair outward smaller, lower and further
+	   back. Symmetric, so it needs no mirroring in a right-to-left locale. */
+	.spread {
+		aspect-ratio: 100 / 55;
+	}
+	.spread .cover,
+	.spread .cover:first-child:not(:only-of-type) {
+		bottom: 0;
+		inset-inline-start: 0;
+		width: 26cqw;
+		filter: brightness(0.93);
+		z-index: 1;
+	}
+	.spread .cover:nth-child(2),
+	.spread .cover:nth-child(4) {
+		bottom: 3.5cqw;
+		width: 30cqw;
+		filter: brightness(0.97);
+		z-index: 2;
+	}
+	.spread .cover:nth-child(2) {
+		inset-inline-start: 15cqw;
+	}
+	.spread .cover:nth-child(3) {
+		bottom: 6.5cqw;
+		inset-inline-start: 32cqw;
+		width: 36cqw;
+		filter: none;
+		z-index: 3;
+	}
+	.spread .cover:nth-child(4) {
+		inset-inline-start: 55cqw;
+	}
+	.spread .cover:nth-child(5) {
+		inset-inline-start: 74cqw;
 	}
 	/* How many more the list holds: under the back of the deck. */
 	.more {
