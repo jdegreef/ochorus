@@ -5382,6 +5382,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("that thou may <i>give</i>", "that thou mayest <i>give</i>"),
             # The same quotation is set with a capital at its four other sites.
             ("'Rest in the lord, and wait", "'Rest in the Lord, and wait"),
+            # --- transcriber's apparatus -------------------------------------
+            # ch2 (Preface) closes on the etext's "[Page 16 is blank]" as a
+            # paragraph of its own, after Murray's date line; every edition
+            # translated it as a paragraph too. Not the author's text, so it
+            # goes in all thirteen at once (a tag-sequence change, so they move
+            # in lockstep for tests_translation_markup). Each pair is anchored
+            # on that edition's own wording plus the closing </p> before it,
+            # and matches once in the whole book. Reported in #7308.
+            ("</p>  <p> [Page 16 is blank] </p>", "</p>"),
+            ("</p><p>[Page 16 is blank]</p>", "</p>"),  # en-modern
+            ("</p>  <p> [ገጽ 16 ባዶ ነው] </p>", "</p>"),
+            ("</p>  <p> [الصفحة 16 فارغة] </p>", "</p>"),
+            ("</p>  <p> [La página 16 está en blanco] </p>", "</p>"),
+            ("</p> <p> [La page 16 est blanche] </p>", "</p>"),
+            ("</p>  <p> [पृष्ठ 16 रिक्त है] </p>", "</p>"),
+            ("</p>  <p> [16쪽은 빈 면입니다] </p>", "</p>"),
+            ("</p>  <p> [Olupapula 16 lwereere] </p>", "</p>"),
+            ("</p>  <p> [A página 16 está em branco] </p>", "</p>"),
+            ("</p>  <p> [Ukurasa wa 16 uko wazi] </p>", "</p>"),
+            ("</p>  <p>[Сторінка 16 порожня]</p>", "</p>"),
+            ("</p>  <p> [Trang 16 để trống] </p>", "</p>"),
         ],
     },
     "the-reformed-pastor": {
