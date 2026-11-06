@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { onMount, untrack } from 'svelte';
+	import { page } from '$app/state';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
@@ -260,11 +261,17 @@
 	// the shelves is the same idea); read on mount, so the prerender is the list.
 	// `?view=calendar` (the end of a plan day's "Add to my calendar") opens the
 	// calendar for this visit only, at the days, without changing that choice.
+	// An effect on the URL, not a mount: the read card's "Add to my calendar"
+	// (PlanStartRemind) links here from this same page, which a client-side
+	// navigation doesn't remount. (In an effect, so the prerender never reads
+	// the query.)
 	onMount(() => {
-		if (new URLSearchParams(location.search).get('view') === 'calendar') {
-			view = 'calendar';
-			requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView());
-		} else if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+	});
+	$effect(() => {
+		if (page.url.searchParams.get('view') !== 'calendar') return;
+		view = 'calendar';
+		requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView());
 	});
 	// "Start the plan" starts it and opens day 1 — nothing in between. The
 	// daily reminder is offered beside it as one quiet line (PlanStartRemind,
@@ -313,7 +320,7 @@
 	     beside its title — a fan of its covers, or the one cover — then its
 	     writers, its shape in one sentence, and the read card right under that,
 	     where the eye already is, on every width. -->
-	<section class="plan-hero">
+	<section class="plan-hero" class:no-art={!plan.covers.length}>
 		{#if plan.covers.length}
 			{@const solo = plan.covers.length === 1}
 			<div class="plan-hero-art" class:solo>
@@ -893,6 +900,13 @@
 			width: 12rem;
 		}
 	}
+	/* No covers to show (an articles-only plan): one column, every width. */
+	.plan-hero.no-art {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.plan-hero.no-art > * {
+		grid-column: 1;
+	}
 	/* minmax(0, 1fr), not the implicit auto track: a truncating week summary's
 	   min-content width would otherwise widen the column past a phone. */
 	.plan-body {
@@ -918,8 +932,8 @@
 			top: calc(var(--appnav-h, 0px) + 1rem);
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
-			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
-			max-height: calc(100dvh - var(--appnav-h, 0px) - 2rem);
+			max-height: calc(100vh - var(--appnav-h, 0px) - var(--dockbar-h, 0px) - 2rem);
+			max-height: calc(100dvh - var(--appnav-h, 0px) - var(--dockbar-h, 0px) - 2rem);
 			overflow-y: auto;
 		}
 	}

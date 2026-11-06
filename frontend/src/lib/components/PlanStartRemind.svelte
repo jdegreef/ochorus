@@ -54,7 +54,9 @@
 			aria-label={t('plans.remindAt')}
 			onchange={(e) => setTime(e.currentTarget.value)}
 		/>
-	{:else if auth.enabled}
+	{:else if auth.enabled && auth.initialized}
+		<!-- Only once the session is known: before that a signed-in reader
+		     would be shown (and counted as seeing) the sign-up ask. -->
 		<button
 			type="button"
 			class="remind-link font-medium text-accent hover:underline"

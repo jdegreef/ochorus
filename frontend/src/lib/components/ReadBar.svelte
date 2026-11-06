@@ -4,7 +4,7 @@
 	import { holdFlag } from '$lib/presenceFlag';
 
 	/**
-	 * The read verb pinned to the foot of a phone screen, once the page's own
+	 * The read verb pinned to the foot of the screen, once the page's own
 	 * read card has scrolled away (`show` — the caller's `elementVisible` gate,
 	 * so there are never two primaries on screen). Shared by the book page and
 	 * the plan page, so the two can't drift in look, clearance or breakpoint.
@@ -73,7 +73,9 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 0.625rem 1.25rem;
+		/* Its content keeps to the page column (`.page-col`'s width) on a wide
+		   screen, rather than stretching edge to edge. */
+		padding: 0.625rem max(1.25rem, calc((100vw - var(--pw, 76rem)) / 2));
 		border-top: 1px solid var(--border);
 		background: var(--surface);
 		box-shadow: var(--shadow-card);

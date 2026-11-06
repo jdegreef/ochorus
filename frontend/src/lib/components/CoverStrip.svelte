@@ -111,20 +111,21 @@
 		aspect-ratio: 100 / 68;
 		container-type: inline-size;
 	}
+	/* A lone cover (`one`) is dressed as the fan's featured one. */
+	.fan .cover,
+	.one .cover {
+		border-radius: 0.375rem;
+		box-shadow: var(--shadow-card), var(--shadow-popover);
+	}
 	.fan .cover {
 		position: absolute;
 		bottom: 0;
 		inset-inline-start: 26cqw;
 		width: 48cqw;
-		border-radius: 0.375rem;
-		box-shadow: var(--shadow-card), var(--shadow-popover);
 	}
-	/* A lone cover: the fan's featured one, at the width it is given. */
 	.one .cover {
 		position: relative;
 		width: 100%;
-		border-radius: 0.375rem;
-		box-shadow: var(--shadow-card), var(--shadow-popover);
 	}
 	/* The spine: a shade down the bound edge, so each reads as a book. */
 	.fan .cover::after,

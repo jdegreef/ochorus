@@ -252,7 +252,6 @@
   "plans_week": "सप्ताह %n%",
   "plans_read_of": "%m% में से %n% पढ़े गए",
   "plans_about_book": "इस पुस्तक के बारे में",
-  "plans_finish_label": "पूरा करने तक, रोज़ एक दिन",
   "plans_about_min_per_day": "रोज़ लगभग %n% मिनट",
   "plans_finish_if_start": "आज शुरू करें तो %d% को पूरा",
   "plans_finish_reading_daily": "रोज़ पढ़ें तो %d% को पूरा",

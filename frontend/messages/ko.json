@@ -252,7 +252,6 @@
   "plans_week": "%n%주차",
   "plans_read_of": "%m%개 중 %n%개 읽음",
   "plans_about_book": "이 책에 대하여",
-  "plans_finish_label": "매일 읽으면 완료",
   "plans_about_min_per_day": "하루 약 %n%분",
   "plans_finish_if_start": "오늘 시작하면 %d% 완료",
   "plans_finish_reading_daily": "매일 읽으면 %d% 완료",

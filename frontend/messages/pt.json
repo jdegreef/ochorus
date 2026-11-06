@@ -252,7 +252,6 @@
   "plans_week": "Semana %n%",
   "plans_read_of": "%n% de %m% lidos",
   "plans_about_book": "Sobre este livro",
-  "plans_finish_label": "para terminar, um dia de cada vez",
   "plans_about_min_per_day": "cerca de %n% minutos por dia",
   "plans_finish_if_start": "termina em %d% se começar hoje",
   "plans_finish_reading_daily": "termina em %d% lendo todos os dias",

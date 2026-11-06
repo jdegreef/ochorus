@@ -252,7 +252,6 @@
   "plans_week": "ሳምንት %n%",
   "plans_read_of": "ከ%m% ውስጥ %n% ተነብበዋል",
   "plans_about_book": "ስለዚህ መጽሐፍ",
-  "plans_finish_label": "በየቀኑ ቢያነቡ የሚጨርሱበት",
   "plans_about_min_per_day": "በቀን %n% ደቂቃ ገደማ",
   "plans_finish_if_start": "ዛሬ ከጀመሩ %d% ላይ ይጨርሳሉ",
   "plans_finish_reading_daily": "በየቀኑ ቢያነቡ %d% ላይ ይጨርሳሉ",
