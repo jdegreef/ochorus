@@ -49,6 +49,7 @@ TOPICS = [
             "cheque-book",
             "key-teachings-of-e-m-bounds",
             "the-practice-of-the-presence-of-god",
+            "the-prayers-jesus-learned",
             "jesus-teacher-of-prayer",
         ],
     ),

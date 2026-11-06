@@ -1,0 +1,515 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Romans 15:4",
+    "themes": [],
+    "person": null,
+    "era": "c. 2000-430 BC",
+    "region": "Canaan, Egypt, Israel and Babylon",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "The Friend Who Pleaded for a City",
+    "anchor": "Genesis 18:25",
+    "themes": [
+      "Praying for Others",
+      "Asking Boldly",
+      "Persistence"
+    ],
+    "person": "Abraham",
+    "era": "c. 2000 BC",
+    "region": "Mamre, near Hebron (Canaan)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Order and Argument in Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Because of His Importunity"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "spurgeon-on-prayer",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "title": "\"I Will Not Let You Go\"",
+    "anchor": "Genesis 32:26",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Persistence"
+    ],
+    "person": "Jacob",
+    "era": "c. 1850 BC",
+    "region": "The Jabbok River, east of the Jordan",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Order and Argument in Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Because of His Importunity"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "spurgeon-on-prayer",
+      "purpose-in-prayer"
+    ]
+  },
+  {
+    "title": "Standing in the Gap",
+    "anchor": "Exodus 32:11",
+    "themes": [
+      "Praying for Others",
+      "Asking Boldly",
+      "Christ Who Prays for Us"
+    ],
+    "person": "Moses",
+    "era": "c. 1400s or 1200s BC (debated)",
+    "region": "Mount Sinai",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Moses, the Mighty Intercessor"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "the-inner-chamber",
+        "chapter": "Moses, the Man of Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Because of His Importunity"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "the-inner-chamber",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "title": "\"Let Me See Your Glory\"",
+    "anchor": "Exodus 33:18",
+    "themes": [
+      "Learning to Pray",
+      "Making Room for Prayer",
+      "The Father's Love"
+    ],
+    "person": "Moses",
+    "era": "c. 1400s or 1200s BC (debated)",
+    "region": "Mount Sinai",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Moses, the Mighty Intercessor"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "the-inner-chamber",
+        "chapter": "The Open Door — The Open Reward"
+      }
+    ],
+    "read_more": [
+      "the-inner-chamber",
+      "the-lords-prayer",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "Pouring Out the Soul",
+    "anchor": "1 Samuel 1:15",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Guidance and Surrender"
+    ],
+    "person": "Hannah",
+    "era": "c. 1100 BC",
+    "region": "Shiloh, hill country of Ephraim",
+    "voices": [
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Preface to the Lord’s Prayer"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "Prayer—Fills Man’s Poverty with God’s Riches"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "purpose-in-prayer",
+      "essentials-of-prayer"
+    ]
+  },
+  {
+    "title": "The Sin of Not Praying",
+    "anchor": "1 Samuel 12:23",
+    "themes": [
+      "Praying for Others",
+      "Forgiveness",
+      "Christ Who Prays for Us"
+    ],
+    "person": "Samuel",
+    "era": "c. 1050 BC",
+    "region": "Gilgal and Mizpah, Israel",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Samuel, the Child of Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Restraining Prayer—Is It Sin?"
+      }
+    ],
+    "read_more": [
+      "ministry-of-intercession",
+      "prayer-and-praying-men",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "title": "One Thing I Ask",
+    "anchor": "Psalm 27:4",
+    "themes": [
+      "The Father's Love",
+      "Learning to Pray",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "David",
+    "era": "c. 1000 BC",
+    "region": "Bethlehem and Jerusalem, Judah",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "necessity-of-prayer",
+        "chapter": "Prayer and Desire"
+      },
+      {
+        "author": "a-w-tozer",
+        "book": "the-pursuit-of-god",
+        "chapter": "Following Hard after God"
+      },
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "Third Letter"
+      }
+    ],
+    "read_more": [
+      "the-pursuit-of-god",
+      "necessity-of-prayer",
+      "the-practice-of-the-presence-of-god"
+    ]
+  },
+  {
+    "title": "A Pure Heart",
+    "anchor": "Psalm 51:10",
+    "themes": [
+      "Humility and Mercy",
+      "Forgiveness",
+      "The Father's Love"
+    ],
+    "person": "David",
+    "era": "c. 990 BC",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "evening-by-evening",
+        "chapter": "April"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Praying Saints of the Old Testaments (Continued)"
+      }
+    ],
+    "read_more": [
+      "evening-by-evening",
+      "prayer-and-praying-men",
+      "prevailing-prayer"
+    ]
+  },
+  {
+    "title": "If My People Will Pray",
+    "anchor": "2 Chronicles 7:14",
+    "themes": [
+      "Humility and Mercy",
+      "Forgiveness",
+      "Praying for Others"
+    ],
+    "person": "Solomon",
+    "era": "c. 960 BC",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "possibilities-of-prayer",
+        "chapter": "Prayer—Its Possibilities (Continued)"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "cheque-book",
+        "chapter": "The Month of October"
+      }
+    ],
+    "read_more": [
+      "cheque-book",
+      "what-the-bible-teaches",
+      "humility-2"
+    ]
+  },
+  {
+    "title": "Fire from Heaven, Rain on the Earth",
+    "anchor": "1 Kings 18:37",
+    "themes": [
+      "Asking Boldly",
+      "Faith",
+      "Persistence"
+    ],
+    "person": "Elijah",
+    "era": "c. 860 BC",
+    "region": "Mount Carmel, northern Israel",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Elijah, the Praying Prophet"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "prevailing-prayer",
+      "possibilities-of-prayer"
+    ]
+  },
+  {
+    "title": "\"Our Eyes Are Turned Toward You\"",
+    "anchor": "2 Chronicles 20:12",
+    "themes": [
+      "Humility and Mercy",
+      "Praying Together",
+      "Thanksgiving"
+    ],
+    "person": "Jehoshaphat",
+    "era": "c. 850 BC",
+    "region": "Jerusalem and the wilderness of Tekoa, Judah",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "cheque-book",
+        "chapter": "The Month of September"
+      },
+      {
+        "author": "a-b-simpson",
+        "book": "days-of-heaven-upon-earth",
+        "chapter": "December"
+      }
+    ],
+    "read_more": [
+      "cheque-book",
+      "days-of-heaven-upon-earth",
+      "necessity-of-prayer"
+    ]
+  },
+  {
+    "title": "Opening the Letter Before the Lord",
+    "anchor": "2 Kings 19:14-15",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Asking Boldly"
+    ],
+    "person": "Hezekiah",
+    "era": "c. 701 BC",
+    "region": "Jerusalem, Judah",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Hezekiah, the Praying King"
+      },
+      {
+        "author": "catherine-booth",
+        "book": "godliness",
+        "chapter": "Love"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "spurgeon-on-prayer",
+      "godliness"
+    ]
+  },
+  {
+    "title": "A Prayer from the Depths",
+    "anchor": "Jonah 2:2",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Humility and Mercy",
+      "Learning to Pray"
+    ],
+    "person": "Jonah",
+    "era": "c. 760 BC",
+    "region": "The Mediterranean Sea, between Joppa and Nineveh",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Praying Saints of the Old Testaments (Continued)"
+      },
+      {
+        "author": "j-c-ryle",
+        "book": "expository-thoughts-on-matthew",
+        "chapter": "Matthew 14"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "expository-thoughts-on-matthew",
+      "evening-by-evening"
+    ]
+  },
+  {
+    "title": "Windows Open Toward Jerusalem",
+    "anchor": "Daniel 6:10",
+    "themes": [
+      "Making Room for Prayer",
+      "Faith",
+      "Humility and Mercy"
+    ],
+    "person": "Daniel",
+    "era": "c. 539 BC",
+    "region": "Babylon",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Daniel, the Praying Captive"
+      },
+      {
+        "author": "dwight-l-moody",
+        "book": "prevailing-prayer",
+        "chapter": "Confession"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "prevailing-prayer",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "Arrow Prayers and Long Fasts",
+    "anchor": "Nehemiah 2:4-5",
+    "themes": [
+      "Learning to Pray",
+      "Persistence",
+      "Faith"
+    ],
+    "person": "Nehemiah",
+    "era": "c. 445 BC",
+    "region": "Susa (Persia) and Jerusalem",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Nehemiah, the Praying Builder"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "purpose-in-prayer",
+      "spurgeon-on-prayer"
+    ]
+  },
+  {
+    "title": "\"How Long, LORD?\" Honest Prayer",
+    "anchor": "Psalm 13:1",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Christ Who Prays for Us"
+    ],
+    "person": "The psalms of lament",
+    "era": "c. 1000 BC",
+    "region": "Israel",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "Prayer and Trouble"
+      },
+      {
+        "author": "samuel-rutherford",
+        "book": "letters-of-samuel-rutherford",
+        "chapter": "Letter CCXXIII: To Alexander Gordon of Knockgray"
+      }
+    ],
+    "read_more": [
+      "essentials-of-prayer",
+      "spurgeon-on-prayer",
+      "letters-of-samuel-rutherford"
+    ]
+  },
+  {
+    "title": "Though the Fig Tree Does Not Flower",
+    "anchor": "Habakkuk 3:17-18",
+    "themes": [
+      "Persistence",
+      "Faith",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Habakkuk",
+    "era": "c. 605 BC",
+    "region": "Judah",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "evening-by-evening",
+        "chapter": "October"
+      },
+      {
+        "author": "samuel-rutherford",
+        "book": "letters-of-samuel-rutherford",
+        "chapter": "Letter XVII: For Marion M’Naught, when in distress as to prospects of the Church"
+      }
+    ],
+    "read_more": [
+      "evening-by-evening",
+      "essentials-of-prayer",
+      "letters-of-samuel-rutherford"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Luke 2:37",
+    "themes": [],
+    "person": "Simeon and Anna",
+    "era": "c. 5 BC",
+    "region": "Jerusalem",
+    "voices": [],
+    "read_more": []
+  }
+]

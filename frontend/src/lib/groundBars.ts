@@ -134,6 +134,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-life-of-god-in-the-soul-of-man': 0.020,
 	'the-practice-of-the-presence-of-god-teens': 0.110,
 	'the-practice-of-the-presence-of-god': 0.110,
+	'the-prayers-jesus-learned': 0.110,
 	'the-princess-and-the-goblin': 0.110,
 	'the-pursuit-of-god-teens': 0.110,
 	'the-reformed-pastor': 0.040,
