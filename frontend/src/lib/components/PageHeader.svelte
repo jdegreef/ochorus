@@ -46,8 +46,9 @@
 	<h1 class="text-h1 mb-2">{title}</h1>
 	{#if tagline || meta}
 		<p class="max-w-2xl text-body text-muted">
-			{tagline}
-			{#if meta}<span class="page-header-count">{@render meta()}</span>{/if}
+			{#if tagline}{tagline}{#if meta}{' '}{/if}{/if}{#if meta}<span class="page-header-count"
+					>{@render meta()}</span
+				>{/if}
 		</p>
 	{/if}
 </header>

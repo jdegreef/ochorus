@@ -512,8 +512,9 @@
 		{@render sermonList(sorted)}
 	{/if}
 	<!-- The leader's way on, at the end of the shelf rather than in its head
-	     (design review #4): a reader came for the sermons first. -->
-	{#if !loadError && sermons.length}
+	     (design review #4): a reader came for the sermons first. Only under
+	     real results — never as the answer to an empty filter. -->
+	{#if !loadError && sorted.length}
 		<ForPromo place="sermons-shelf" class="mt-8" />
 	{/if}
 </div>

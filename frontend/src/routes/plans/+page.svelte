@@ -285,7 +285,10 @@
 			</div>
 		{/if}
 		<!-- The leader's way on, after the plans rather than in the page head
-		     (design review #4): a reader came for the shelf first. -->
-		<ForPromo place="plans-shelf" class="mt-8" />
+		     (design review #4): a reader came for the shelf first. Only under
+		     real results — never as the answer to an empty filter. -->
+		{#if shownPlans.length}
+			<ForPromo place="plans-shelf" class="mt-8" />
+		{/if}
 	{/if}
 </div>
