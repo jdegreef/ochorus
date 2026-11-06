@@ -29713,6 +29713,38 @@
 				535
 			]
 		},
+		"the-prayers-jesus-learned": {
+			"ground": "63077e4c2bdce8171d3d8c4e4dbb13d39c441d3146ca8eacbef5b9712244bcdd",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[117, 328, 483, 404],
+					[87, 394, 513, 470]
+				],
+				"subtitle": [
+					[154, 528, 446, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"the-princess-and-the-goblin": {
 			"ground": "bcf401b70dfb37b6d590139e35cc85d5b3d201091eb714d1d2bb48b6fc9f49e4",
 			"style": "young",

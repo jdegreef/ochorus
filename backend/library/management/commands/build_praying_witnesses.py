@@ -89,6 +89,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "publication_year": 2026,
             "title": "The Prayers Jesus Learned",
             "subtitle": "Prayer in the Old Testament",
+            "cover_url": "/covers/art/the-prayers-jesus-learned.jpg",
             "cover_color": covers.ink_safe("#1c1f3d"),  # a starlit indigo
             "description": (
                 "Seventeen short chapters on the great prayers of the Old Testament, the "

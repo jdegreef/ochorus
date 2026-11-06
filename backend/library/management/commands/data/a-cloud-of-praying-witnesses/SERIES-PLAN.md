@@ -66,20 +66,20 @@ told…"). Known cases are flagged ⚑ below.
 | 1 | The Friend Who Pleaded for a City | Abraham | Genesis 18:25 |
 | 2 | "I Will Not Let You Go" | Jacob | Genesis 32:26 |
 | 3 | Standing in the Gap | Moses | Exodus 32:11 |
-| 4 | "Show Me Your Glory" | Moses | Exodus 33:18 |
+| 4 | "Let Me See Your Glory" | Moses | Exodus 33:18 |
 | 5 | Pouring Out the Soul | Hannah | 1 Samuel 1:15 |
 | 6 | The Sin of Not Praying | Samuel | 1 Samuel 12:23 |
 | 7 | One Thing I Ask | David | Psalm 27:4 |
-| 8 | A Clean Heart | David | Psalm 51:10 |
+| 8 | A Pure Heart | David | Psalm 51:10 |
 | 9 | If My People Will Pray | Solomon | 2 Chronicles 7:14 |
 | 10 | Fire from Heaven, Rain on the Earth | Elijah | 1 Kings 18:37 |
-| 11 | "Our Eyes Are on You" | Jehoshaphat | 2 Chronicles 20:12 |
-| 12 | Spreading the Letter Before the Lord | Hezekiah | 2 Kings 19:14–15 |
+| 11 | "Our Eyes Are Turned Toward You" | Jehoshaphat | 2 Chronicles 20:12 |
+| 12 | Opening the Letter Before the Lord | Hezekiah | 2 Kings 19:14–15 |
 | 13 | A Prayer from the Depths | Jonah | Jonah 2:2 |
 | 14 | Windows Open Toward Jerusalem | Daniel | Daniel 6:10 |
-| 15 | Arrow Prayers and Long Fasts | Nehemiah | Nehemiah 2:4 |
-| 16 | "How Long, O Lord?" Honest Prayer | The psalms of lament | Psalm 13:1 |
-| 17 | Though the Fig Tree Does Not Blossom | Habakkuk | Habakkuk 3:17–18 |
+| 15 | Arrow Prayers and Long Fasts | Nehemiah | Nehemiah 2:4–5 |
+| 16 | "How Long, LORD?" Honest Prayer | The psalms of lament | Psalm 13:1 |
+| 17 | Though the Fig Tree Does Not Flower | Habakkuk | Habakkuk 3:17–18 |
 
 ## Volume 2 — Jesus, Teacher of Prayer
 *Lord, teach us to pray* · 20 chapters

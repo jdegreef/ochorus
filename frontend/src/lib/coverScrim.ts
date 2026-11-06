@@ -266,6 +266,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-practice-of-the-presence-of-god': 0.35,
 	'the-practice-of-the-presence-of-god-children': 0.80,
 	'the-practice-of-the-presence-of-god-teens': 0.30,
+	'the-prayers-jesus-learned': 0.55,
 	'the-pursuit-of-god': 0.85,
 	'the-pursuit-of-god-teens': 0.30,
 	'the-rent-veil': 0.65,

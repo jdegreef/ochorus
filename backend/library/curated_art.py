@@ -1676,6 +1676,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # scripts/original_grounds/praying_witnesses.py. A public-domain painting
     # (a Galilean dawn, or Gethsemane at night) would be the natural level-up:
     # a two-line diff here plus a CURATED entry.
+    # A Cloud of Praying Witnesses, Vol. 1: The Prayers Jesus Learned. The series'
+    # scene before the light comes: stars over desert hills, a tent and Abram
+    # beside it (Genesis 15:5). Same generator as Vol. 2.
+    "the-prayers-jesus-learned": Original(
+        "6ea31fff0d81a43960581c6c1fad456714067ca248cec42e0f32782a50bba058",
+        "Genesis 15:5, 'look up into the sky and try counting the stars': a night "
+        "thick with stars over low desert hills, and on the near ridge a tent with a "
+        "lamp at its door and one figure standing beside it, face lifted. No likeness.",
+    ),
     "jesus-teacher-of-prayer": Original(
         "2c2c6ebe41013aba35a6e16246b87f4970e103bdb9d1103f901a5f6d600a0c4e",
         "Mark 1:35, 'a great while before day': the Galilean hills under a deep "
