@@ -1,0 +1,1004 @@
+{
+ "kind": "book",
+ "slug": "union-and-communion",
+ "language": "hi",
+ "job_issue": 6853,
+ "note": [
+  "Scripture is the Indian Revised Version (IRV, irvhin), the Hindi Bible the corpus quotes; Take Root was egress-blocked, so the whole IRV was parsed from the ebible mirror (bibles/hin_irv/usx, 31,104 verses) and pasted verbatim, with its baked-in cross-reference parentheticals dropped.",
+  "A row is `mined` only when an exact byte substring of at least 45 characters of the IRV verse (or the whole verse, if shorter) stands in the Hindi chapter that quotes it. Verses deliberately departed from are `self_rendered` regardless: where Taylor's commentary depends on his RV reading (Song 2:6 present tense, 6:12 'chariots of my willing people', 7:9, 8:2 'that Thou mightest instruct me', 8:5-6 citron tree and seal on the arm, 1:5 split into a dialogue, 2:3 citron), where the IRV's feminine speaker becomes the Bridegroom's 'I adjure you' (2:7, 3:5, 8:4), where Proverbs 1 is voiced as the Lord rather than Wisdom (1:23, 1:26), and 2 Corinthians 3:18, which Taylor glosses inline.",
+  "Citations follow the corrected English: Section II's exhortation is Psalm 45:10-11 (the English read 'Ps. xiv'; fixed in BODY_CORRECTIONS in the same PR, with the es/pt/sw/fr/am editions)."
+ ],
+ "references": [
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 7:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 1:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 7:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 2:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 2:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 2:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 2:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 45:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 45:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 2:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 3:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 84:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 84:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 84:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 84:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 3:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 45:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 28:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 4:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 4:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 5:4",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Proverbs 1:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Daniel 7:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 7:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 7:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 5:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 5:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:2",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 7:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 6:5",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 6:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 1:6",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 92:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 92:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 92:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 12:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 7:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:1",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 8:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:58",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 118:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 23:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 146:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 8:8",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 33:23",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 8:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Song of Songs 8:12",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:13",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 8:14",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalms 22:3",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 7:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 7:17",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:28",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered"
+  }
+ ]
+}

@@ -2777,6 +2777,28 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "Philadelphia is the Church of Brotherly Love. Church:", " Church:"),
             ("<sup>5</sup><sup>5</sup> [The pronoun here should not be \u201che\u201d as "
              "A. V., nor \u201cit\u201d as R.V., but \u201cshe\u201d.] please?", " please?"),
+            # Scan damage found translating the book to Hindi (job #6853). The
+            # exhortation Taylor quotes in Section II is Psalm 45:10-11, not 14
+            # (a lost "l" read "xlv" as "xiv"); the es/pt/sw/fr/am editions had
+            # carried the wrong number faithfully, so each gets its own pair.
+            ("addressed to her in Ps. xiv:\u2014", "addressed to her in Ps. xlv:\u2014"),
+            ("Salmo xiv:\u2014", "Salmo xlv:\u2014"),
+            ("Salmo 14:\u2014", "Salmo 45:\u2014"),
+            ("Zaburi 14:\u2014", "Zaburi 45:\u2014"),
+            ("au Ps. 14 :\u2014", "au Ps. 45 :\u2014"),
+            ("\u1218\u12dd\u1219\u122d 14 \u120b", "\u1218\u12dd\u1219\u122d 45 \u120b"),
+            # Letter-level OCR slips, English only: "Solomom", "woes" for woos,
+            # RV's "haply", Ps 84:11 "is a Sun", "toilsome ascents" (beside "the
+            # steep pathways"), "never can fail", Prov 1:28 "but I will not
+            # answer", and 1 John 4:7 "love is of God".
+            ("Solomom, the Prince of Peace", "Solomon, the Prince of Peace"),
+            ("He woes her to come forth", "He woos her to come forth"),
+            ("lest happly we drift", "lest haply we drift"),
+            ("For the Lord God in a Sun and Shield", "For the Lord God is a Sun and Shield"),
+            ("cheers the toilsome agents,", "cheers the toilsome ascents,"),
+            ("the love that never can fall,", "the love that never can fail,"),
+            ("but will I not answer;", "but I will not answer;"),
+            ("For love of GOD, and GOD is love.", "For love is of GOD, and GOD is love."),
         ],
     },
     "till-he-come": {
