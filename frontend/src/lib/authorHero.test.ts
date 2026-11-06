@@ -33,3 +33,35 @@ describe('author hero', () => {
 		expect(PAGE).toMatch(/title="\{seoTitle\} — Ochorus"/);
 	});
 });
+
+// Design review #14: below the hero, the works come before the life.
+describe('author page order', () => {
+	const at = (needle: string) => {
+		const i = markup(PAGE).indexOf(needle);
+		expect(i, needle).toBeGreaterThan(-1);
+		return i;
+	};
+
+	it('runs Where to start, the jump-bar, Books, Sermons, the biography, then the Q&A last', () => {
+		const order = [
+			'class="start-row',
+			'class="author-subnav',
+			'id="books"',
+			'id="sermons"',
+			'id="bio"',
+			'id="faq"'
+		].map(at);
+		expect(order).toEqual([...order].sort((a, b) => a - b));
+		expect(markup(PAGE).indexOf('<section', at('id="faq"') + 1)).toBe(-1);
+	});
+
+	it('shows the bio’s quote once and every answer closed', () => {
+		expect(PAGE).not.toMatch(/featuredQuote|author-quote/);
+		expect(markup(PAGE)).not.toMatch(/<details[^>]*\bopen\b/);
+	});
+
+	it('folds the biography with CSS, keeping the whole text in the page', () => {
+		expect(PAGE).toMatch(/html=\{bioFold\.html\}/);
+		expect(PAGE).toMatch(/\.bio-folded :global\(\.reading > \[data-bio-fold\] ~ \*\)/);
+	});
+});

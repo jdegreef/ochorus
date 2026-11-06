@@ -172,6 +172,17 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      Tradition, Place, On Ochorus); then Follow as the one outlined button and
      Share/Search as bare icons. Quotes is a link in the facts, not a button.
      `authorHero.test.ts` guards it.
+   - **Author page below the hero (#14):** the works come before the life.
+     One **Where to start** row (a book with the solid read verb — or
+     Continue reading — a plan, a sermon; only what exists), then the sticky
+     jump-bar in page order with counts — `Books (N) · Sermons (N) ·
+     Biography · Articles · Q&A` (`navItems[].count`, never a label string) —
+     then the Books shelf (`BookCard`), Sermons as `SermonCard variant="row"`,
+     then the biography: its opening only, the rest folded with CSS by
+     `foldBio`'s `data-bio-fold` mark (kept in the DOM for search; `?p=`,
+     Listen and focus mode open it). The bio's pull-quote is shown once, in
+     the bio — never lifted into a header figure too. The Q&A is the last
+     section, every answer closed.
 4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
    `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
    (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,

@@ -39,7 +39,38 @@ import { isUnmodifiedPrimaryClick } from './plainClick';
 export function jumpToSection(id: string): void {
 	const el = document.getElementById(id);
 	if (!el) return;
-	el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+	const smooth = !prefersReducedMotion();
+	el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+	relandAfterJump(el, smooth);
+}
+
+/**
+ * A smooth jump aims at where the target was when it started. Sections that
+ * skip rendering until they near the viewport (`content-visibility: auto`, the
+ * author page's shelves) take their real height as the scroll passes them, so
+ * a target BELOW them — the author page's biography, after its books and
+ * sermons — moved while the page was on its way, and the jump stopped short
+ * (measured: ~340px, the biography heading mid-screen). Once the scroll has
+ * settled, land it again, instantly; unless the reader took over the scroll
+ * in the meantime, which is theirs to keep.
+ */
+function relandAfterJump(el: HTMLElement, smooth: boolean): void {
+	let taken = false;
+	const take = () => (taken = true);
+	const userInput = ['wheel', 'touchstart', 'keydown', 'pointerdown'] as const;
+	for (const t of userInput) window.addEventListener(t, take, { once: true, passive: true });
+	const settle = () => {
+		clearTimeout(timer);
+		window.removeEventListener('scrollend', settle);
+		for (const t of userInput) window.removeEventListener(t, take);
+		if (taken) return;
+		const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+		if (Math.abs(el.getBoundingClientRect().top - margin) > 2) el.scrollIntoView({ block: 'start' });
+	};
+	// `scrollend` where the browser has it; a timeout past any smooth scroll
+	// where it does not (and as a backstop if no scroll happened at all).
+	window.addEventListener('scrollend', settle);
+	const timer = setTimeout(settle, smooth ? 1200 : 50);
 }
 
 /**
