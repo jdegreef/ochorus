@@ -58,7 +58,7 @@
 			<span class="block truncate text-eyebrow text-muted" dir="auto">{eyebrow}</span>
 			<span class="block truncate text-small font-semibold text-text" dir="auto">{title}</span>
 		</span>
-		<a {href} class="btn btn-primary shrink-0" onclick={onread}>{label}</a>
+		<a {href} class="btn btn-primary btn-solid shrink-0" onclick={onread}>{label}</a>
 	</div>
 {/if}
 

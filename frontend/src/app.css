@@ -1658,6 +1658,30 @@
 		text-decoration: none;
 		border-color: var(--accent);
 	}
+	/* The read verb: solid. Each reading page exists for one action — Begin
+	   reading, Start the plan, Continue — and in the soft fill it was about as
+	   loud as a chip (design review #2). So the one read verb (the read card's
+	   CTA, the sub-nav and ReadBar that stand in for it once it scrolls away)
+	   is filled with the accent; every other primary stays soft. Its ink is
+	   --accent-contrast, which palettes.test holds at AA on --accent in every
+	   theme and palette. Hover deepens the fill toward the page's ink. */
+	.btn-solid {
+		background: var(--accent);
+		color: var(--accent-contrast);
+		border-color: var(--accent);
+	}
+	.btn-solid:hover {
+		color: var(--accent-contrast);
+		background: color-mix(in srgb, var(--accent) 86%, var(--text));
+		border-color: color-mix(in srgb, var(--accent) 86%, var(--text));
+	}
+	/* The read verb's second line inside the button: what it opens and how
+	   long it takes ("Book I · 35 min"). */
+	.btn-sub {
+		font-weight: 500;
+		font-size: var(--fs-small);
+		opacity: 0.85;
+	}
 	/* Compact button — the size that 47 of the `!py-1 !px-2.5 !text-small`
 	   overrides were reaching for. */
 	.btn-sm {

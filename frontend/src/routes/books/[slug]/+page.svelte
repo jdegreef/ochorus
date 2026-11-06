@@ -144,6 +144,8 @@
 	);
 	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
 	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
+	/** A first-time reader (and the prerender): nothing to resume or re-read. */
+	const fresh = $derived(finishedAt == null && !resuming);
 	const readLabel = $derived(
 		finishedAt != null
 			? t('fav.readAgain')
@@ -697,53 +699,59 @@
 				     chapter they're on, with the book's progress and the time left — a
 				     reason to press Continue, not just a number. A first-time reader (and
 				     the prerendered HTML, since the saved place is client-only) gets the
-				     same card offering chapter 1, carrying the "Free to read · No account
-				     needed" reassurance that used to sit on a row of its own. Start over
+				     same card as one solid button naming chapter 1 and its length, with
+				     the "Free to read · No account needed" reassurance under it. Start over
 				     is a quiet link: it discards the place, so it shouldn't look like a
 				     second main action. -->
 				<div class="read-card mt-4" bind:this={readCard}>
-					<div class="read-card-body">
-						{#if finishedAt != null}
-							<p class="text-small text-muted">
-								{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
-									day: 'numeric',
-									month: 'long',
-									year: 'numeric'
-								})}
-							</p>
-							<p class="read-card-title" dir="auto">{book.title}</p>
-							<div class="mt-2">
-								<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
-							</div>
-						{:else if resuming}
-							<p class="text-small text-muted">{placeLine}</p>
-							<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
-							<div class="mt-2">
-								<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
-							</div>
-						{:else}
-							<p class="text-small">
-								<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
-									class="px-1.5 opacity-50">·</span
-								><span class="text-muted">{t('book.noAccount')}</span>
-							</p>
-							{#if todayLabel}
-								<p class="read-card-title">{todayLabel}</p>
-							{:else if book.chapters[0]}
-								<p class="read-card-title" dir="auto">
-									{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
+					{#if !fresh}
+						<div class="read-card-body">
+							{#if finishedAt != null}
+								<p class="text-small text-muted">
+									{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
+										day: 'numeric',
+										month: 'long',
+										year: 'numeric'
+									})}
 								</p>
+								<p class="read-card-title" dir="auto">{book.title}</p>
+								<div class="mt-2">
+									<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
+								</div>
+							{:else if resuming}
+								<p class="text-small text-muted">{placeLine}</p>
+								<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
+								<div class="mt-2">
+									<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
+								</div>
 							{/if}
-						{/if}
-					</div>
+						</div>
+					{/if}
 					<div class="read-card-cta">
+						<!-- A first-time reader: the chapter the verb opens rides in the
+						     button as its second line, and the reassurance sits under it
+						     as small print (design review #2), so the card is one thing
+						     to press rather than a label above a pale button. -->
 						{#if book.daily}
 							<!-- A year-long devotional is read by the calendar: today's
 							     entry is the main way in, the book from its start the
 							     second (library/daily_readings). -->
-							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary">{t('plans.todaysReading')}</a>
+							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary btn-solid flex-col gap-0"
+								>{t('plans.todaysReading')}{#if fresh && todayLabel}<span class="btn-sub">{todayLabel}</span>{/if}</a
+							>
 						{/if}
-						<a href={readHref(readOrder)} class="btn {book.daily ? 'btn-ghost' : 'btn-primary'}">{readLabel}</a>
+						<a
+							href={readHref(readOrder)}
+							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid flex-col gap-0'}"
+							>{readLabel}{#if fresh && !book.daily && readChapter}<span class="btn-sub" dir="auto"
+									>{chapterNameIn(readOrder, readChapter.title, book.title)}{readChapter.word_count
+										? ` · ${readingMinutes(readChapter.word_count)} ${t('common.min')}`
+										: ''}</span
+								>{/if}</a
+						>
+						{#if fresh}
+							<p class="text-small text-muted">{t('book.freeToRead')} · {t('book.noAccount')}</p>
+						{/if}
 						{#if book.daily_plan}
 							<!-- The self-paced way through: day one is 1 January's
 							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
@@ -817,11 +825,6 @@
 						>
 					</p>
 				{/if}
-				<!-- A book with files to take offline: the leaders who carry books
-				     where there is no signal. -->
-				{#if book.pdf_url || book.epub_url}
-					<ForPromo place="book-download" class="mt-3" />
-				{/if}
 			</div>
 		</header>
 	</div>
@@ -859,7 +862,7 @@
 			     card is on screen put two "Continue" buttons in view. It appears
 			     only once the card has scrolled away. -->
 			{#if !cardSeen.visible}
-				<a href={readHref(readOrder)} class="btn btn-primary subnav-cta shrink-0"
+				<a href={readHref(readOrder)} class="btn btn-primary btn-solid subnav-cta shrink-0"
 					>{resuming ? `${t('book.continueCh')} ${readOrder}` : readLabel}</a
 				>
 			{/if}
@@ -1254,6 +1257,13 @@
 	{:else if book.has_leader_guide}
 		<!-- No shelf to sit beside: the guide alone, still offered. -->
 		<div class="next-pair mt-12">{@render guideCard()}</div>
+	{/if}
+
+	<!-- A book with files to take offline: the leaders who carry books where
+	     there is no signal. Down here with the page's other onward links, not in
+	     the read card, where it sat at the moment of deciding to read. -->
+	{#if book.pdf_url || book.epub_url}
+		<ForPromo place="book-download" class="mt-8" />
 	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
