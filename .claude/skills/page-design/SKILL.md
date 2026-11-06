@@ -202,8 +202,10 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    **Book is the model (#3277):** the hero is TWO columns (design review #6) —
    the cover on the start side; on the end side the eyebrow, H1, subtitle
    (often the translator), byline with dates, ONE muted facts line (`13 chapters · 9 hr 22 min ·
-   Accessible` — never a ribbon of boxed stat cells), the languages chip, then
-   the read card and the action strip. No third column or floating panel, no
+   Accessible` — never a ribbon of boxed stat cells) ending in one quiet
+   "Also in 5 languages" link to the Editions section (never a chip listing
+   the language names: they are listed once, in Editions — design review #22),
+   then the read card and the action strip. No third column or floating panel, no
    art credit beside the cover (it sits with the source line at the page
    foot), no "Other titles" line (it is a muted line inside About this book).
    On a phone the cover sits beside the title block and the read card comes
@@ -267,8 +269,14 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    follow it in flow on a phone. The reader's guide is one inline link at
    About's foot ("New to <title>? Read our guide →"), not a card section;
    topics and scripture are muted "Topics: a, b" lines of links there, not a
-   chip band. Sections run About → Contents → Editions & languages → (people
-   in it) → Author → Q&A → More like this; the jump nav lists at most five
+   chip band. Sections run About → Contents → Editions → (people in it) →
+   Author → Q&A → More like this. Editions is ONE section (design review
+   #22), never separate "Grow with the story" / "Read in your language"
+   blocks: the young-reader family's cards (full ⇄ teens ⇄ children, from
+   the API's `editions`, this edition ringed), then an "Also in" row of
+   language autonyms, each half only where it exists (no languages row on a
+   fallback page — its notice lists them). The Modern English edition stays
+   the read card's Original ⇄ Modern toggle; the jump nav lists at most five
    (About, Contents, Editions, Author, Q&A), with no counts. Up to 20
    chapters show whole (`CONTENTS_COLLAPSE_AT`), in two columns from md;
    longer books keep the window. Q&As all start closed (`openFirst={false}`).

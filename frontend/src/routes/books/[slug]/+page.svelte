@@ -272,15 +272,6 @@
 	// as absolute URLs) for the Book-level translation links below.
 	const enEdition = $derived(hreflang.alternates.find((a) => a.loc === 'en'));
 	const siblingEditions = $derived(hreflang.alternates.filter((a) => a.loc !== book.language));
-	// The hero's "also in" pill: up to three autonyms, the rest as "+N". It jumps
-	// to the full list further down rather than switching language itself — a
-	// reader arriving on the wrong edition needs to see, near the top, that
-	// theirs exists (that list sits below Q&A, several screens down on a phone).
-	const PILL_LANGS = 3;
-	const editionsPill = $derived({
-		names: siblingEditions.slice(0, PILL_LANGS).map((a) => ({ loc: a.loc, name: localeName(a.loc) })),
-		more: Math.max(0, siblingEditions.length - PILL_LANGS)
-	});
 	// The <title> carries the words people actually type. It was
 	// "{title} — {author} — Ochorus", which names the book and says nothing about
 	// what you can do with it; the query patterns this page competes for are
@@ -502,9 +493,15 @@
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
 	// reach while scrolling — the page's own value over the author sub-nav.
 	const hasAbout = $derived(!!(book.about_html || book.description));
-	// The other-language list renders only off a fallback page (the notice
+	// The other-language row renders only off a fallback page (the notice
 	// there lists the editions itself).
 	const showLanguages = $derived(siblingEditions.length > 0 && !fallback);
+	// The young-reader family (full ⇄ teens ⇄ children), youngest first — the
+	// API's `editions` (serializers.sibling_editions) plus this edition.
+	const family = $derived(book.editions?.length ? editionFamily<BookSummary>(book, book.editions) : []);
+	// One Editions section (design review #22): the family's cards, then the
+	// "Also in" languages — whichever of the two this edition has.
+	const hasEditions = $derived(family.length > 0 || showLanguages);
 	const hasAuthorBand = $derived(book.author.slug !== ORIGINALS_SLUG);
 	// What About's foot carries (the guide link, other titles, topics,
 	// scripture) — shown on its own when the book has no prose to sit under.
@@ -521,11 +518,7 @@
 		[
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
 			{ id: 'contents', label: t('reader.contents') },
-			book.editions?.length
-				? { id: 'editions', label: t('audience.spotlightLadder') }
-				: showLanguages
-					? { id: 'languages', label: t('book.readInLanguage') }
-					: null,
+			hasEditions ? { id: 'editions', label: t('book.editions') } : null,
 			hasAuthorBand ? { id: 'author', label: t('search.typeAuthor') } : null,
 			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null
 		].filter((x): x is { id: string; label: string } => x != null)
@@ -554,7 +547,6 @@
 	const placeLine = $derived(
 		finishedAt != null ? t('fav.shelfFinished') : `${onChapter}${minutesLeft ? ` · ${bookTimeLeft(minutesLeft)}` : ''}`
 	);
-	const family = $derived(book.editions?.length ? editionFamily<BookSummary>(book, book.editions) : []);
 	let subnavH = $state(0);
 	// A cold #section load jumps against the bar's estimate; re-land it once measured.
 	realignHashOnMeasure(() => subnavH);
@@ -666,32 +658,27 @@
 				<!-- The book's measure in one muted line ("13 chapters · 9 hr 22 min ·
 				     Accessible"), not a ribbon of boxed cells (design review #6): the
 				     facts read in one glance. Each fact nowrap, so a narrow column breaks
-				     between them, never inside one. -->
+				     between them, never inside one.
+
+				     The other languages end it as one quiet link, "Also in 5 languages",
+				     that jumps to the Editions section (design review #22) — not the
+				     chip of autonyms that repeated that section's row: the languages are
+				     listed ONCE, there. The pointer stays because a reader on the wrong
+				     edition should learn near the top that theirs exists, and Editions
+				     sits below Contents, screens down on a phone. Not on a fallback page:
+				     the notice above lists the editions, and the row is hidden there. -->
 				<p class="mt-2 text-small text-muted">
 					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
 							>{fact.text}</span
-						>{/each}
+						>{/each}{#if showLanguages}{#if heroFacts.length}{' · '}{/if}<a
+							href="#editions"
+							class="also-in-link whitespace-nowrap"
+							onclick={(e) => spy.jump(e, 'editions', { track: false })}
+							>{#if siblingEditions.length === 1}{`${t('book.alsoIn')} `}<span lang={siblingEditions[0].loc}
+									>{localeName(siblingEditions[0].loc)}</span
+								>{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+						>{/if}
 				</p>
-
-				{#if siblingEditions.length && !fallback}
-					<!-- Not on a fallback page: the notice above lists the editions, and
-					     the section this jumps to is hidden there. -->
-					<div class="mt-3">
-						<a
-							href="#languages"
-							class="hero-chip hero-chip-link"
-							onclick={(e) => spy.jump(e, 'languages', { track: false })}
-							><Icon name="globe" size={15} class="shrink-0" /><span class="min-w-0"
-								><!-- A hidden prefix, not aria-label: the accessible name must keep
-								     the visible language names (label-in-name). --><span
-									class="sr-only">{`${t('book.readInLanguage')}: `}</span
-								>{#each editionsPill.names as n, i (n.loc)}{#if i}{', '}{/if}<span lang={n.loc}
-										>{n.name}</span
-									>{/each}{#if editionsPill.more}{` +${editionsPill.more}`}{/if}</span
-							></a
-						>
-					</div>
-				{/if}
 			</div>
 
 			<!-- The action row's container (`.action-host`): it picks strip vs row by
@@ -1107,66 +1094,74 @@
 		{/if}
 	</section>
 
-	<!-- Other audience editions of the SAME work — the "(For Children)" /
-	     "(For Teens)" retelling and the full text it retells, cross-linked both
-	     ways. Straight after the contents (design review #9: readers decide About
-	     → Contents → Editions), still well above "More like this": a parent
+	<!-- Editions (design review #22): the other forms this work takes, once.
+	     It used to say so three times — a languages chip in the hero, "Grow with
+	     the story" and "Read in your language" — so it is one section now: the
+	     young-reader family's cards first, then an "Also in" row of languages.
+	     Each half renders only where it exists. Straight after the contents
+	     (design review #9: readers decide About → Contents → Editions): a parent
 	     who reached the full text needs the young-reader edition surfaced before
-	     they start reading, and a child on the retelling needs the way back to
-	     the original. Derived and published-gated server-side (see the API's
-	     `editions`), so it renders only for the handful of works that have one.
-	     The whole family is offered, this edition ringed, youngest first (the
-	     ladder's order, as the hubs draw it);
-	     each card is its rung's name and length — the titles differ only by the
-	     "(For …)" suffix the rung already says. -->
-	{#if book.editions?.length}
-		<section id="editions" class="jump-anchor mt-12">
-			<h2 class="section-heading no-rule">{t('audience.spotlightLadder')}</h2>
-			<ul class="edition-picker">
-				{#each family as { book: ed, rung } (ed.slug)}
-					{@const here = ed.slug === book.slug}
-					{@const words = here ? totalWords : ed.word_count}
-					<li>
-						<a
-							href={localizeHref(`/books/${ed.slug}`)}
-							class="edition-card"
-							class:here
-							aria-current={here ? 'page' : undefined}
-						>
-							<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
-							<span class="min-w-0">
-								<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
-								<span class="block text-small text-muted"
-									><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
-									>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
-								>
-							</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	{/if}
+	     they start reading, and a child on the retelling needs the way back.
 
-	<!-- The same work in other languages, made visible to readers — until now it
-	     lived only in the page's hreflang metadata. Books are per-language rows
-	     sharing one slug with no English fallback, so every pill is a real,
-	     published edition; `siblingEditions` is the hreflang alternate set minus
-	     the edition being viewed, and localeName() gives each its autonym.
-	     hreflang/lang on the link announce the target language to the reader and
-	     to assistive tech. data-sveltekit-reload: a full load (the locale is
-	     fixed per document — see the root layout's cross-locale guard), and no
-	     hover preload, which would run this route's load in the WRONG locale. -->
-	<!-- On a fallback page the notice above already lists these. -->
-	{#if showLanguages}
-		<section id="languages" class="jump-anchor mt-12">
-			<h2 class="section-heading no-rule">{t('book.readInLanguage')}</h2>
-			<div class="mt-3 flex flex-wrap items-center gap-2">
-				<span class="text-small text-muted">{t('book.availableIn')}</span>
-				{#each siblingEditions as ed (ed.loc)}
-					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc} data-sveltekit-reload>{localeName(ed.loc)}</a>
-				{/each}
-			</div>
+	     The family: the "(For Children)" / "(For Teens)" retellings and the full
+	     text they retell, from the API's `editions` (sibling_editions, derived
+	     from the slug convention and published-gated server-side). The whole
+	     family is offered, this edition ringed, youngest first (the ladder's
+	     order, as the hubs draw it); each card is its rung's name and length —
+	     the titles differ only by the "(For …)" suffix the rung already says.
+
+	     The languages: books are per-language rows sharing one slug with no
+	     English fallback, so every link is a real, published edition;
+	     `siblingEditions` is the hreflang alternate set minus this edition, and
+	     localeName() gives each its autonym, in its own script. hreflang/lang
+	     announce the target language to the reader and to assistive tech, and
+	     dir="auto" sets each name's own direction on an Arabic page and off one.
+	     data-sveltekit-reload: a full load (the locale is fixed per document —
+	     see the root layout's cross-locale guard), and no hover preload, which
+	     would run this route's load in the WRONG locale. On a fallback page the
+	     notice above already lists them, so the row is not drawn there. -->
+	{#if hasEditions}
+		<section id="editions" class="jump-anchor mt-12" aria-labelledby="editions-heading">
+			<h2 id="editions-heading" class="section-heading no-rule">{t('book.editions')}</h2>
+			{#if family.length}
+				<ul class="edition-picker">
+					{#each family as { book: ed, rung } (ed.slug)}
+						{@const here = ed.slug === book.slug}
+						{@const words = here ? totalWords : ed.word_count}
+						<li>
+							<a
+								href={localizeHref(`/books/${ed.slug}`)}
+								class="edition-card"
+								class:here
+								aria-current={here ? 'page' : undefined}
+							>
+								<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
+								<span class="min-w-0">
+									<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
+									<span class="block text-small text-muted"
+										><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
+										>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
+									>
+								</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			{/if}
+			{#if showLanguages}
+				<div class:mt-6={family.length}>
+					<h3 id="editions-langs" class="section-label">{t('book.alsoIn')}</h3>
+					<ul class="flex flex-wrap gap-2" aria-labelledby="editions-langs">
+						{#each siblingEditions as ed (ed.loc)}
+							<li>
+								<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc} dir="auto" data-sveltekit-reload
+									>{localeName(ed.loc)}</a
+								>
+							</li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
 		</section>
 	{/if}
 
@@ -1475,29 +1470,6 @@
 	.edition-seg button {
 		flex: 1 1 0;
 	}
-	/* The "also in" languages: a quiet chip under the byline. */
-	.hero-chip {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.35rem;
-		max-width: 100%;
-		min-height: 2rem;
-		padding: 0.2rem 0.7rem;
-		/* Not a pill radius: in the narrow title column a chip may wrap to two
-		   lines, and a 999px radius turns that into a lozenge. */
-		border-radius: 1rem;
-		background: var(--surface-2);
-		font-size: var(--fs-small);
-		color: var(--muted);
-	}
-	.hero-chip-link {
-		color: var(--text);
-		text-decoration: none;
-	}
-	.hero-chip-link:hover {
-		background: var(--accent-soft);
-		text-decoration: none;
-	}
 
 	/* About: the prose at a reading measure, and from lg the opening lines as
 	   an aside beside it (design review #9). On a phone they follow in flow. */
@@ -1531,14 +1503,18 @@
 			font-size: var(--quote-size);
 		}
 	}
-	/* Topics and Scripture: plain links in a muted line. */
-	.about-meta a {
+	/* Topics and Scripture: plain links in a muted line. The hero's "Also in 5
+	   languages" the same: a quiet link to Editions, ink not accent, so it
+	   doesn't compete with the read button. */
+	.about-meta a,
+	.also-in-link {
 		color: var(--text);
 		text-decoration: underline;
 		text-decoration-color: var(--border-strong);
 		text-underline-offset: 0.2em;
 	}
-	.about-meta a:hover {
+	.about-meta a:hover,
+	.also-in-link:hover {
 		color: var(--accent);
 		text-decoration-color: currentColor;
 	}
