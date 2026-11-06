@@ -615,7 +615,7 @@
 				{/if}
 				{#if startSermon}
 					<a class="start-item start-link" href={localizeHref(`/sermons/${startSermon.slug}`)}>
-						<span class="text-small text-muted">{t('sermons.label')}</span>
+						<span class="text-small text-muted">{t('search.typeSermon')}</span>
 						<span class="start-title" dir="auto">{startSermon.title}</span>
 						<span class="text-small text-muted">{readingTime(startSermon.word_count)} <Arrow /></span>
 					</a>
