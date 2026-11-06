@@ -1,0 +1,1095 @@
+{
+ "kind": "book",
+ "slug": "union-and-communion",
+ "language": "lg",
+ "job_issue": 6871,
+ "note": [
+  "Rows are MEASURED, not reported: a verse is 'mined' only where the whole OLCB (lug_bib) verse text appears verbatim in the chapter (case and punctuation aside). Everything else is self_rendered, including the many Song of Solomon lines that keep OLCB's vocabulary but follow Taylor's AV/RV wording or line-breaks, because his exposition argues from that wording (e.g. 'a company of horses' 1:9, 'plaits of hair' 1:10-11, 'His banner over me was love' 2:4, 'until she please' 2:7 / 3:5 / 8:4, 'a very flame of the LORD' 8:6, where Taylor notes it is the book's only use of LORD).",
+  "Taylor's bracketed glosses inside quotations are kept as he prints them (John 17:3 '(the object of)', 2 Corinthians 3:18, Song 8:6 '(ardent love)'). 'Song of Songs' is rendered from OLCB 1:1 (olusinga ennyimba zonna). LORD/CHRIST/FATHER in capitals are mirrored as MUKAMA/KRISTO/KITAFFE.",
+  "The English 'Ps. xiv' (ch05) is Psalm 45:10-11 and is rendered as Zabbuli 45; see the PR for the English correction.",
+  "AI-translated (job #6871) in one context, no fan-out; tag sequence identical to the English per chapter; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Acts 8:31",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 7:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 2
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "James 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 1:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 1
+  },
+  {
+   "reference": "1 John 1:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 John 1:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Song of Solomon 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 8
+  },
+  {
+   "reference": "Song of Solomon 1:3",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Song of Solomon 1:4",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Song of Solomon 1:5",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 39
+  },
+  {
+   "reference": "Song of Solomon 1:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 43
+  },
+  {
+   "reference": "Song of Solomon 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 1:10",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Song of Solomon 1:11",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Song of Solomon 1:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 61
+  },
+  {
+   "reference": "Song of Solomon 1:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 64
+  },
+  {
+   "reference": "Song of Solomon 1:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 66
+  },
+  {
+   "reference": "Song of Solomon 1:15",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Song of Solomon 1:16",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Song of Solomon 1:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 86
+  },
+  {
+   "reference": "Song of Solomon 2:1",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Song of Solomon 2:2",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Song of Solomon 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 2:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 104
+  },
+  {
+   "reference": "Song of Solomon 2:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 106
+  },
+  {
+   "reference": "Song of Solomon 2:7",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Song of Solomon 4:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "John 21:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 21:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 7:3",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Hebrews 2:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalms 45:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 45:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 14
+  },
+  {
+   "reference": "Song of Solomon 2:8",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Song of Solomon 2:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 19
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Song of Solomon 2:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 26
+  },
+  {
+   "reference": "Song of Solomon 2:12",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Song of Solomon 2:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 25
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 39
+  },
+  {
+   "reference": "Song of Solomon 2:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 44
+  },
+  {
+   "reference": "Song of Solomon 2:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 48
+  },
+  {
+   "reference": "Song of Solomon 2:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 51
+  },
+  {
+   "reference": "Song of Solomon 3:1",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Song of Solomon 3:2",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Song of Solomon 3:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 66
+  },
+  {
+   "reference": "Song of Solomon 3:4",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Song of Solomon 3:5",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Galatians 4:26",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Psalms 84:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 81
+  },
+  {
+   "reference": "Psalms 84:2",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Psalms 84:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 85
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Psalms 84:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 94
+  },
+  {
+   "reference": "Song of Solomon 3:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 11
+  },
+  {
+   "reference": "Song of Solomon 3:7",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Song of Solomon 3:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 24
+  },
+  {
+   "reference": "Song of Solomon 3:9",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Song of Solomon 3:10",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Song of Solomon 3:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 30
+  },
+  {
+   "reference": "Psalms 45:12",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Song of Solomon 4:1",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Song of Solomon 4:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 37
+  },
+  {
+   "reference": "Song of Solomon 4:3",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Song of Solomon 4:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 4:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 4:6",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Song of Solomon 4:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 50
+  },
+  {
+   "reference": "Song of Solomon 4:8",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Song of Solomon 4:9",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Song of Solomon 4:10",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Song of Solomon 4:11",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Song of Solomon 4:12",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Song of Solomon 4:13",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Song of Solomon 4:14",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Song of Solomon 4:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 82
+  },
+  {
+   "reference": "Song of Solomon 4:16",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Song of Solomon 5:1",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Acts 28:15",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Matthew 14:20",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Song of Solomon 5:3",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Song of Solomon 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 5:5",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Song of Solomon 5:6",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Song of Solomon 5:7",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Song of Solomon 5:8",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Song of Solomon 5:9",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Song of Solomon 5:10",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Song of Solomon 5:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 5:12",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Song of Solomon 5:13",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Song of Solomon 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 5:15",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 12
+  },
+  {
+   "reference": "John 5:17",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 1:24",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Proverbs 1:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Daniel 7:9",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Daniel 7:10",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Revelation 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:14",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Revelation 1:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 1:16",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Revelation 1:17",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Song of Solomon 6:1",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Song of Solomon 6:2",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Song of Solomon 6:3",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Song of Solomon 6:4",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Song of Solomon 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 6:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 6:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 6:8",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Song of Solomon 6:9",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Song of Solomon 6:10",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Song of Solomon 7:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 6:11",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Song of Solomon 6:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 6:13",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Song of Solomon 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:6",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Song of Solomon 7:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:11",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Song of Solomon 7:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 7:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 1:6",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalms 92:12",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 92:13",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalms 92:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 30
+  },
+  {
+   "reference": "Psalms 92:15",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Song of Solomon 2:3",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Song of Solomon 8:1",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Song of Solomon 8:2",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Song of Solomon 8:3",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Song of Solomon 8:4",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Song of Solomon 8:5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Song of Solomon 8:6",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Song of Solomon 8:7",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Song of Solomon 8:8",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Song of Solomon 8:9",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Song of Solomon 8:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 8:11",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Song of Solomon 8:12",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Song of Solomon 8:13",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Song of Solomon 8:14",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "John 8:58",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalms 118:27",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 33:23",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 9:9",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 7:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 70
+  },
+  {
+   "reference": "Revelation 7:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 70
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 9:28",
+   "status": "self_rendered"
+  }
+ ]
+}
