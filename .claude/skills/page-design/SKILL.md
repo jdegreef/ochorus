@@ -153,7 +153,15 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    not a `btn-icon` heart), `.btn.btn-ghost` for `Search in this …`. All the
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
-   **Book is the model (#3277):** the read verb lives in a *read card*
+   **Book is the model (#3277):** the hero is TWO columns (design review #6) —
+   the cover on the start side; on the end side the eyebrow, H1, byline with
+   dates, translator, ONE muted facts line (`13 chapters · 9 hr 22 min ·
+   Accessible` — never a ribbon of boxed stat cells), the languages chip, then
+   the read card and the action strip. No third column or floating panel, no
+   art credit beside the cover (it sits with the source line at the page
+   foot), no "Other titles" line (it is a muted line inside About this book).
+   On a phone the cover sits beside the title block and the read card comes
+   straight under it, inside the first screen. The read verb lives in a *read card*
    (shared `.read-card` in app.css — the plan page uses it too for "Day N of M
    · today's reading"; chapter name + `ProgressBar` + one solid `.btn-primary.btn-solid`; for a
    first-time reader the book card has no body — the button carries the chapter as a
