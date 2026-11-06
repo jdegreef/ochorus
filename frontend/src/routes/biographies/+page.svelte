@@ -543,20 +543,20 @@
 	rather than four hard-coded ones drifting apart.
 -->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
-	<LibraryTabs set="writers" current="bios" />
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
 	     carrying a trail. Detail pages (a book, an author) still get one, where
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
 	<PageHeader
-		section="biographies"
 		title={t('nav.biographies')}
 		tagline={t('bios.tagline')}
 	/>
 	<!-- No count in the head: this shelf leaves out writers withheld from
 	     Biographies (`list_in_biographies`), so its own "N writers · M books"
 	     ran short of the library's one authors number (home, A–Z). -->
+	<!-- The writers' tabs sit under the title, as on /books (design review #4). -->
+	<LibraryTabs set="writers" current="bios" />
 
 	<!-- The page's visual way in: the eras, the traditions or the places as
 	     cards, one lens at a time (eras by default). Each card ticks that value

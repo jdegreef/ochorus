@@ -70,7 +70,7 @@
 			<!-- The one primary on the view: into the library. About is a way to
 			     read about Ochorus, not a rival call, so it is a text link. -->
 			<div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-				<a href={localizeHref('/books')} class="btn btn-primary intro-cta">{t('home.startReading')}</a>
+				<a href={localizeHref('/books')} class="btn btn-primary btn-solid">{t('home.startReading')}</a>
 				<a href={localizeHref('/about')} class="text-body font-semibold">{t('home.aboutOchorus')}</a>
 			</div>
 			<p class="mt-5 text-small text-muted">
@@ -112,15 +112,6 @@
 	/* The hero's one loud control — solid accent, as the footer's invite is
 	   (STYLE_GUIDE §5 names both exceptions): the first screen has one thing
 	   to do, so it says so. Scoped, so every other .btn-primary stays soft. */
-	.intro-cta {
-		background: var(--accent);
-		color: var(--accent-contrast);
-		border-color: var(--accent);
-	}
-	.intro-cta:hover {
-		text-decoration: none;
-		background: color-mix(in srgb, var(--accent) 88%, var(--text));
-	}
 	.trust-sep {
 		margin-inline: 0.5em;
 	}

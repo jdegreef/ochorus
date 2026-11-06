@@ -403,7 +403,7 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						<a href={dayHref(next)} class="btn btn-primary" onclick={startPlan}>
+						<a href={dayHref(next)} class="btn btn-primary btn-solid" onclick={startPlan}>
 							{started ? t('plans.continue') : t('plans.start')}
 						</a>
 						{#if started}

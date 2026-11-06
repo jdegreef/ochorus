@@ -48,18 +48,19 @@
 			                at the edge so it reads as "there is more this way"
 			                rather than a tall stack of six;
 			       tablet — three across, two rows;
-			       desktop — one row with the first book set large, as a
-			                magazine leads with its pick, the rest standing
-			                bottom-aligned beside it. -->
+			       desktop — one even row of six. (The first book used to be set
+			                large, as a magazine leads with its pick; beside five
+			                small tinted cards it read as a layout bug — design
+			                review #1.) -->
 			<div class="discover-rail">
 				{#each books as book, i (book.slug)}
 					<!-- The first row starts above the fold at every breakpoint; three
 					     covers the common cases without eagerly loading a shelf
-					     nobody has scrolled to. Only the lead is fetched HIGH: it is
-					     the one set large on a desktop, and so the only one that can
-					     be the page's LCP — on a phone the row starts at the very
-					     foot of the first screen (y≈800 of 844, measured), where
-					     three high fetches only raced the fonts. -->
+					     nobody has scrolled to. Only the first is fetched HIGH: it is
+					     the likeliest LCP of an even row (none is, under the home hero:
+					     `belowHero`) — on a phone the row starts
+					     at the very foot of the first screen (y≈800 of 844,
+					     measured), where three high fetches only raced the fonts. -->
 					<BookCard {book} showAuthor priority={!belowHero && i === 0} eager={!belowHero && i < 3} />
 				{/each}
 			</div>
@@ -103,14 +104,7 @@
 	}
 	@media (min-width: 1024px) {
 		.discover-rail {
-			grid-template-columns: minmax(0, 1.75fr) repeat(5, minmax(0, 1fr));
-			align-items: end;
-		}
-		/* .book-card fills its cell (height: 100%) to level a grid row; here
-		   the row is the lead's height, so the others keep their own and stand
-		   on the baseline beside it. */
-		.discover-rail > :global(*) {
-			height: auto;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
 		}
 	}
 	/* Print lays the six out flat rather than as a clipped rail. */

@@ -371,10 +371,6 @@
 	--grain-light-specks: -webkit-image-set(url('/textures/grain-light.png') 1x, url('/textures/grain-light@2x.png') 2x, url('/textures/grain-light@3x.png') 3x);
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
-	/* How much of a book's own cover_color tints its card (.book-card): the
-	   most each theme can take and still keep every ink at 4.5:1 over the
-	   darkest-to-lightest colour a cover may have (libraryPalette.test.ts). */
-	--cover-tint-amount: 9%;
 
 	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
 	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
@@ -458,7 +454,6 @@
 	--shelf-wood-edge: #8a6440;
 	--grain: -webkit-image-set(url('/textures/grain-paper.png') 1x, url('/textures/grain-paper@2x.png') 2x, url('/textures/grain-paper@3x.png') 3x);
 	--band: #f1e8d8;
-	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #ecebf7;
 	--hue-oxblood: #8a2f2a;
@@ -503,7 +498,6 @@
 	--shelf-wood-edge: #7a5634;
 	--grain: -webkit-image-set(url('/textures/grain-sepia.png') 1x, url('/textures/grain-sepia@2x.png') 2x, url('/textures/grain-sepia@3x.png') 3x);
 	--band: #ece1c9;
-	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #e9e5f3;
 	--hue-oxblood: #842c27;
@@ -1647,8 +1641,9 @@
 	.btn:disabled:not([aria-busy='true']) {
 		opacity: 0.5;
 	}
-	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
-	   block (see STYLE_GUIDE §5). Matches Take Root. */
+	/* Primary is soft, not bold: a brand-tinted button (see STYLE_GUIDE §5).
+	   Matches Take Root. The one exception is the read verb, `.btn-solid`
+	   below. */
 	.btn-primary {
 		background: var(--accent-soft);
 		color: var(--accent);
@@ -1657,6 +1652,30 @@
 	.btn-primary:hover {
 		text-decoration: none;
 		border-color: var(--accent);
+	}
+	/* The read verb: solid. Each reading page exists for one action — Begin
+	   reading, Start the plan, Continue — and in the soft fill it was about as
+	   loud as a chip (design review #2). So the one read verb (the read card's
+	   CTA, the sub-nav and ReadBar that stand in for it once it scrolls away)
+	   is filled with the accent; every other primary stays soft. Its ink is
+	   --accent-contrast, which palettes.test holds at AA on --accent in every
+	   theme and palette. Hover deepens the fill toward the page's ink. */
+	.btn-solid {
+		background: var(--accent);
+		color: var(--accent-contrast);
+		border-color: var(--accent);
+	}
+	.btn-solid:hover {
+		color: var(--accent-contrast);
+		background: color-mix(in srgb, var(--accent) 86%, var(--text));
+		border-color: color-mix(in srgb, var(--accent) 86%, var(--text));
+	}
+	/* The read verb's second line inside the button: what it opens and how
+	   long it takes ("Book I · 35 min"). */
+	.btn-sub {
+		font-weight: 500;
+		font-size: var(--fs-small);
+		opacity: 0.85;
 	}
 	/* Compact button — the size that 47 of the `!py-1 !px-2.5 !text-small`
 	   overrides were reaching for. */
@@ -2988,7 +3007,8 @@ nav.appnav .navsearch:hover {
    mixed card types reads as one system (STYLE_GUIDE §5 → "Card hover"):
 
      .card-lift — GRID / banded cards rise. A 2px lift and a drop shadow, the
-       border warming. Members: .book-card (neutral) and .shelf-card (era hue).
+       border warming. Members: .shelf-card (era hue). (.book-card, boxless since design #1,
+       owns a rise-only hover below: a shadow would draw a box.)
        The sermon-of-week plate is the same hue lift but restates it in its own
        scoped CSS: its trigger is the parent link's hover/focus-visible on a
        nested, non-focusable plate, which a self-hover class can't express.
@@ -3213,16 +3233,6 @@ nav.appnav .navsearch:hover {
 	background: url('/marks/seal.svg') center / contain no-repeat;
 	pointer-events: none;
 }
-/* A section page's emblem, beside its <PageHeader> title, in the section's
-   hue (data-section puts it in scope as --section-hue). */
-.page-header-emblem {
-	--chip-size: 2.75rem;
-	--chip-hue: var(--section-hue);
-}
-.page-header-emblem img {
-	width: 66%;
-	height: 66%;
-}
 /* Descriptions are clamped so one long blurb can't set the height of a whole
    grid row. Pair with .shelf-card-body{flex:1} for level bottoms. */
 .shelf-card-desc {
@@ -3233,27 +3243,39 @@ nav.appnav .navsearch:hover {
 	overflow: hidden;
 }
 
-/* A book on the shelf. The cover is the visual, so the chrome stays quiet — a
-   hairline and a surface fill, warmed by a whisper of the book's own cover
-   colour (below). Before this the grid was bare
-   covers with caption text floating under them: the only browse surface with
-   no card at all, and the reason the shelf read as unfinished next to Topics.
-   height:100% + the mt-auto footer keep a row of cards level whatever the
-   title wraps to. */
+/* A book on the shelf. The cover IS the card: it sits straight on the page
+   ground with a serif title and a muted author under it, and nothing else at
+   rest — no box, no border, no tint (design review #1, 2026-11). The boxed,
+   cover-tinted card it replaces gave a shelf of 379 books 379 pastel boxes,
+   which read as visual static behind covers that are already the most
+   colourful thing on the page. The chapter count and reading time are on the
+   book page (and in the list view, on the shelves that have one).
+   height:100% keeps a row of cards level whatever the title wraps to. */
 .book-card {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	padding: 0.6rem;
-	/* Each card takes a whisper of its own cover's colour (--cover-tint, set
-	   by BookCard from the book's cover_color), so a shelf of cards reads as
-	   that many books rather than that many white boxes. With no colour it
-	   falls back to the plain surface and border. */
-	border: 1px solid color-mix(in srgb, var(--cover-tint, var(--border)) 22%, var(--border));
+	/* Invisible (there is no ground to show it), but it holds what reaches past
+	   the cover inside the card: the edition ribbon's overhang, the gilt
+	   fore-edge, the hover rise and the cover's tip. Without it they spill out
+	   of a scrolling rail (AudienceHub's .hub-rail) and give a rail that fits
+	   a scrollbar, a false "more" edge fade, and a clipped cover on hover. */
+	padding: 0.25rem;
 	border-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--cover-tint, var(--surface)) var(--cover-tint-amount), var(--surface));
-	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
-	   worn in the markup. */
+	/* Its own hover: the grid card's rise, and only the rise. Not .card-lift,
+	   whose shadow and border would draw the very box this card no longer has
+	   — the cover carries its own shadow, and tips on hover (BookCard). */
+	transition: transform var(--duration-fast);
+}
+.book-card:hover {
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.book-card,
+	.book-card:hover {
+		transform: none;
+	}
 }
 /* A variant of .book-card (a horizontal one, say) has to be a modifier
    class here rather than a `flex-row` utility on the element: `.book-card`
@@ -3294,11 +3316,12 @@ nav.appnav .navsearch:hover {
 	align-items: stretch;
 	/* Two on a phone, not three. The shelf was three-across at every width, which
 	   on a 390px screen is a 97px card: the title clamps to "A Treatise on
-	   Holy…" and the meta line breaks into three ("12 / chapters · 3 / hr 30 min
-	   read"). Two gives 154px, a readable title and a two-line meta.
+	   Holy…". Two gives 154px and a readable title. (The card no longer
+	   carries a chapters · time meta line — design #1 — so the bar is the
+	   title and the cover's own type, not that line's wrapping.)
 
 	   154px is the bar the UPPER steps answer to: a card narrower than that
-	   clamps the (line-clamp-2) title and wraps the meta. The shelf sits in a
+	   clamps the (line-clamp-2) title and shrinks the cover's type. The shelf sits in a
 	   `.page-col px-5` column, so its width is roughly `100vw − 5rem`. On that
 	   arithmetic 5-up clears 154px only past ~914px and 6-up past ~1084px, so
 	   those two steps key off `lg`/`xl` rather than `md`/`lg` — otherwise a
