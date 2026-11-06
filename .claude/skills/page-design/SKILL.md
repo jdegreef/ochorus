@@ -115,9 +115,11 @@ In this order, and nothing else at the top level:
    classes), the count in the cell AND its accessible name; an empty book is
    muted text, not a link. Hidden while filtering, like any secondary
    section. Collapsed behind a toggle below sm, always open from sm — by CSS,
-   so the prerendered HTML is one layout at every width. It shows only where
-   the shelf resolves `CANON_MIN_BOOKS` books, which today is English only:
-   translated sermons carry localized references the backend can't parse.
+   so the prerendered HTML is one layout at every width. It is built from the
+   page's `bookFacets` (one count for the grid and the select) and shows only
+   on the English shelf with at least `CANON_MIN_BOOKS` books: its labels are
+   English, and translated sermons carry localized references the backend
+   can't parse. Widening it needs localized book names first.
    **Books opens on curated rows, not the grid** (design review #11,
    2026-11-06). `/books` with no query shows **Browse**: a handful of named
    rows (`h2.section-label` + "See all %n%" on a topic row, one
