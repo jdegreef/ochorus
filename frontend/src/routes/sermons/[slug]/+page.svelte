@@ -245,12 +245,18 @@
 	// The outline pinned beside the text (design #29): wherever the end margin
 	// holds it. Below that, the top bar's Outline button opens the same list.
 	const showRail = $derived(outline.length >= 2 && railFits.matches && !readerUi.focus);
-	// Which section the reader is in — for the rail's highlight. The anchors are
-	// headings and "I." points, not section boxes, so a reading `line` a third of
-	// the way down: the section is the last whose anchor has passed it, and
-	// scrolling back up hands it back to the section above. `--pinned-offset` on
-	// the article (below) keeps the jumps landing below the reader bar.
-	const spy = scrollSpy(() => outline.map((s) => s.id), { line: 0.3 });
+	// The rail takes over from a popover opened before the window widened (or
+	// the text narrowed): one list on screen, and its toggle is about to go.
+	$effect(() => {
+		if (showRail) outlineOpen = false;
+	});
+	// Which section the reader is in — for the rail's highlight, so only while
+	// it shows. The anchors are headings and "I." points, not section boxes, so
+	// a reading `line` a third of the way down: the section is the last whose
+	// anchor has passed it, and scrolling back up hands it back to the section
+	// above. `--pinned-offset` on the article (below) keeps the jumps landing
+	// below the reader bar.
+	const spy = scrollSpy(() => (showRail ? outline.map((s) => s.id) : []), { line: 0.3 });
 
 	// Jump to an outline section and close the popover. The landing offset lives
 	// in CSS (`.sec-anchor` scroll-margin, below), not scrollTo math. Focus goes
@@ -671,13 +677,15 @@
 {/if}
 
 <!-- `--pinned-offset`: how far down the first pixel unobstructed by the sticky
-     reader bar is (HEADER_OFFSET). The outline anchors below hang their
+     reader bar is — the bar (HEADER_OFFSET) under whatever `--appnav-h` says
+     is above it (the app's status strip; 0 on the web). The outline anchors and
+     the pinned rail below hang their
      `scroll-margin-top` off it, so a jump lands the section clear of the bar —
      the same contract the biographies/search pages use, replacing this page's
      old `scrollTo(top - HEADER_OFFSET - 8)` math. -->
 <article
 	class="relative mx-auto px-5 py-10"
-	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
+	style="--pinned-offset: calc(var(--appnav-h, 0px) + {HEADER_OFFSET}px); {readerPrefs.style}; max-width: var(--reading-measure)"
 >
 	<!-- No visible breadcrumb: the top bar's "← Sermons" is the way back, and the
 	     trail under it was the same link twice (design review #12). The
@@ -789,11 +797,14 @@
 					</ul>
 					<!-- How far through: the figure the start-margin pill shows, which
 					     steps aside while the rail is up (one figure on screen). The
-					     shared meter, which tells a screen reader the same. -->
-					<div class="rail-progress">
-						<ProgressBar percent={frac * 100} label="{minsLeft} {t('sermon.minLeft')}" />
-					</div>
-					<p class="rail-left count" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+					     shared meter, which tells a screen reader the same. Not while
+					     listening, as the pill: the Listen bar owns progress then. -->
+					{#if listen.status === 'idle'}
+						<div class="rail-progress">
+							<ProgressBar percent={frac * 100} label="{minsLeft} {t('sermon.minLeft')}" />
+						</div>
+						<p class="rail-left count" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</p>
+					{/if}
 				</nav>
 			</div>
 		{/if}
@@ -1221,8 +1232,8 @@
 	/* Mounted only where the end margin holds it (`railFits`), so no breakpoint
 	   here. The track spans the body's height, 2.25rem past the column's end
 	   edge (the gap the article's padding and the old rail kept), and the rail sticks
-	   within it, clear of the reader bar: `--appnav-h` (the app's status strip
-	   on a reading route) plus `--pinned-offset` (the bar, set on the article). */
+	   within it, clear of the reader bar: `--pinned-offset`, set on the article
+	   from the bar and `--appnav-h` (the app's status strip). */
 	.sermon-text {
 		position: relative;
 	}
@@ -1234,7 +1245,7 @@
 	}
 	.outline-rail {
 		/* Level with where a jumped-to heading lands (.sec-anchor's margin). */
-		--rail-top: calc(var(--appnav-h, 0px) + var(--pinned-offset, 4rem) + 0.5rem);
+		--rail-top: calc(var(--pinned-offset, 4rem) + 0.5rem);
 		position: sticky;
 		top: var(--rail-top);
 		max-height: calc(100dvh - var(--rail-top) - 1.5rem);

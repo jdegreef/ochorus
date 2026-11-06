@@ -243,7 +243,10 @@ describe('the sermon outline is pinned beside the text (design review #29)', () 
 	});
 
 	it('pins clear of the reader bar from the published heights, not a guessed rem', () => {
-		expect(src).toMatch(/--rail-top:\s*calc\(var\(--appnav-h[^;]*var\(--pinned-offset/);
+		// --pinned-offset is the bar under --appnav-h (the app's status strip), so
+		// the rail and a jumped-to heading (.sec-anchor) clear the same line.
+		expect(src).toMatch(/--pinned-offset: calc\(var\(--appnav-h, 0px\) \+ \{HEADER_OFFSET\}px\)/);
+		expect(src).toMatch(/--rail-top:\s*calc\(var\(--pinned-offset/);
 		expect(src).toMatch(/\.outline-rail\s*\{[^}]*position:\s*sticky;[^}]*top:\s*var\(--rail-top\)/);
 	});
 

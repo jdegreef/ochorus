@@ -303,13 +303,14 @@ it; the biography's pill is still centred (follow-up).
 sits in the end margin on a track as tall as the BODY (the `.sermon-text`
 wrapper round `<Reader>`), so it starts level with the sermon's first line —
 never above the head — and scrolls away with the last paragraph. It sticks at
-`calc(var(--appnav-h) + var(--pinned-offset) + 0.5rem)`, level with where a
-jumped-to `.sec-anchor` lands, and is mounted only where the margin holds it at
+`calc(var(--pinned-offset) + 0.5rem)` (`--pinned-offset` = `--appnav-h` + the
+bar), level with where a jumped-to `.sec-anchor` lands, and is mounted only where the margin holds it at
 the reader's own measure (`railFits`, as `besideText` for the pill); below
 that the top bar's Outline button opens the same list, and the button steps
 aside while the rail is up. The current section is the shared `scrollSpy` in
-its `line` mode (anchors are headings, not section boxes), an entry's jump
-moves focus to its section, and under the list a thin bar and "N min left"
+its `line` mode (anchors are headings, not section boxes; a jump holds its
+section until the scroll settles), an entry's jump moves focus to its section,
+and under the list the shared `ProgressBar` and "N min left"
 carry the figure — the start-margin pill steps aside while the rail shows, so
 the number is on screen once.
 

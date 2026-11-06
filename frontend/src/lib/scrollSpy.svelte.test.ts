@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { flushSync } from 'svelte';
 import {
-	passedMarker,
+	HOLD_MS,
 	realignHashOnMeasure,
 	realignHashTarget,
 	resetFirstPage,
@@ -78,31 +78,10 @@ describe('spy.jump — the sticky sub-nav click handler', () => {
 });
 
 describe('scrollSpy line — the sermon outline, whose anchors are headings', () => {
-	// Headings at these viewport tops; the band's bottom edge sits at y=300.
-	function headings(tops: Record<string, number>) {
-		return Object.entries(tops).map(([id, top]) => {
-			const el = document.createElement('h2');
-			el.id = id;
-			el.getBoundingClientRect = () => ({ top: tops[id] }) as DOMRect;
-			document.body.append(el);
-			return el;
-		});
-	}
-	afterEach(() => {
-		document.body.replaceChildren();
-		vi.unstubAllGlobals();
-	});
-
-	it('names the last heading above the line, and none above the first', () => {
-		const els = headings({ one: -900, two: 120, three: 700 });
-		expect(passedMarker(els, 300)).toBe('two');
-		expect(passedMarker(els, 100)).toBe('one');
-		expect(passedMarker(els, -1000)).toBe('');
-	});
-
-	it('hands the section back to the one above on a scroll up', () => {
-		let fire: (entries: Partial<IntersectionObserverEntry>[]) => void = () => {};
-		let margin = '';
+	let fire: (entries: Partial<IntersectionObserverEntry>[]) => void = () => {};
+	let margin = '';
+	let els: HTMLElement[] = [];
+	beforeEach(() => {
 		vi.stubGlobal(
 			'IntersectionObserver',
 			class {
@@ -117,23 +96,61 @@ describe('scrollSpy line — the sermon outline, whose anchors are headings', ()
 				disconnect() {}
 			}
 		);
-		const tops = { one: -400, two: 200, three: 900 };
-		const els = headings(tops);
-		const band = { bottom: 300 } as DOMRectReadOnly;
+		els = ['one', 'two', 'three'].map((id) => {
+			const el = document.createElement('h2');
+			el.id = id;
+			el.scrollIntoView = vi.fn();
+			document.body.append(el);
+			return el;
+		});
+	});
+	afterEach(() => {
+		document.body.replaceChildren();
+		vi.unstubAllGlobals();
+		vi.useRealTimers();
+	});
+	/** Report which headings are above the line (the observed region). */
+	const report = (state: Record<string, boolean>) =>
+		fire(
+			Object.entries(state).map(([id, isIntersecting]) => ({
+				target: els.find((el) => el.id === id),
+				isIntersecting
+			}))
+		);
+
+	it('lights the last heading above the line, and hands it back on a scroll up', () => {
 		const cleanup = $effect.root(() => {
 			const spy = scrollSpy(() => ['one', 'two', 'three'], { line: 0.3 });
 			flushSync();
 			// Everything above a line 30% down: a heading changes state exactly
 			// as it crosses the line, however fast it is scrolled past.
 			expect(margin).toMatch(/^\d{6,}px 0px -70% 0px$/);
-			fire([{ target: els[1], isIntersecting: true, rootBounds: band }]);
+			report({ one: true, two: true, three: false });
 			expect(spy.active).toBe('two');
-			// Scrolling back up: "two" drops back below the band — it is
-			// "intersecting" no longer, and the reader is in section one again.
-			// Last-intersecting-wins kept "two" lit here.
-			tops.two = 320;
-			fire([{ target: els[1], isIntersecting: false, rootBounds: band }]);
+			// Scrolling back up, "two" drops below the line: the reader is in
+			// section one again (last-intersecting-wins kept "two" lit here).
+			report({ two: false });
 			expect(spy.active).toBe('one');
+			report({ one: false });
+			expect(spy.active).toBe('');
+		});
+		cleanup();
+	});
+
+	it('holds a jumped-to section until the jump has settled', () => {
+		vi.useFakeTimers();
+		const cleanup = $effect.root(() => {
+			const spy = scrollSpy(() => ['one', 'two', 'three'], { line: 0.3 });
+			flushSync();
+			spy.set('two');
+			// The target lands near the top with the next heading still above
+			// the line (a short section): the reader chose "two".
+			report({ one: true, two: true, three: true });
+			expect(spy.active).toBe('two');
+			vi.advanceTimersByTime(HOLD_MS);
+			// Released: the reader's own scrolling moves it on again.
+			report({ three: true });
+			expect(spy.active).toBe('three');
 		});
 		cleanup();
 	});
