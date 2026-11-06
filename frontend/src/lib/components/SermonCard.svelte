@@ -24,7 +24,8 @@
 	 * sermon's own page ("In brief"), one tap away, which is where a reader who
 	 * wants more than a line is going anyway.
 	 *
-	 * Put rows inside an element with class `sermon-list` (a single column).
+	 * Put rows inside an element with class `sermon-list` (app.css: the measure
+	 * and the first row's missing hairline).
 	 */
 	let {
 		sermon,
@@ -35,31 +36,35 @@
 		 *  the index grouped by preacher). */
 		showAuthor?: boolean;
 	} = $props();
+	// The link is named by its title and described by the meta line only; the
+	// brief stays out of both, so a links list or rotor reads the title, not a
+	// 400-character paragraph (the clamp only hides it visually).
+	const uid = $props.id();
 </script>
 
-<a class="sermon-row" href={localizeHref(`/sermons/${sermon.slug}`)}>
+<a
+	class="sermon-row"
+	href={localizeHref(`/sermons/${sermon.slug}`)}
+	aria-labelledby="{uid}-t"
+	aria-describedby="{uid}-m"
+>
 	<!-- The <h3> keeps the title's heading semantics under the page's h2s. -->
-	<h3 class="sermon-row-title">{sermon.title}</h3>
-	<span class="sermon-row-meta">
-		{#if showAuthor}<span>{sermon.author.name}</span><span class="sep" aria-hidden="true">·</span>{/if}
-		{#if sermon.scripture_ref}<span>{sermon.scripture_ref}</span><span class="sep" aria-hidden="true">·</span>{/if}
-		<span class="whitespace-nowrap">{readingTime(sermon.word_count)}</span>
-	</span>
+	<h3 id="{uid}-t" class="sermon-row-title">{sermon.title}</h3>
+	<!-- Spaces are explicit ({' '}) around each dot, so the gap is even and a
+	     screen reader's description still separates the segments. -->
+	<span id="{uid}-m" class="sermon-row-meta"
+		>{#if showAuthor}<span>{sermon.author.name}</span>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}{#if sermon.scripture_ref}<span
+				>{sermon.scripture_ref}</span
+			>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}<span class="whitespace-nowrap"
+			>{readingTime(sermon.word_count)}</span
+		></span
+	>
 	{#if sermon.summary}
 		<span class="sermon-row-brief line-clamp-1">{sermon.summary}</span>
 	{/if}
 </a>
 
 <style>
-	/* The list the rows sit in (`.sermon-list`, a plain block): a hairline
-	   between rows, not above the first. Rows may be wrapped (the index wraps each in a
-	   `display: contents` div to page them), so the rule is on the row and the
-	   first wrapper/row drops it. */
-	:global(.sermon-list > :first-child) .sermon-row,
-	:global(.sermon-list) > .sermon-row:first-child {
-		border-block-start-color: transparent;
-	}
-
 	.sermon-row {
 		display: block;
 		padding-block: 0.75rem;
@@ -94,9 +99,6 @@
 		font-size: var(--fs-small);
 		color: var(--muted);
 		font-variant-numeric: tabular-nums;
-	}
-	.sermon-row-meta .sep {
-		margin-inline: 0.4em;
 	}
 	.sermon-row-brief {
 		/* line-clamp-1 sets display: -webkit-box; it stays a block of its own. */

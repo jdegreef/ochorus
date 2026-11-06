@@ -3378,6 +3378,19 @@ nav.appnav .navsearch:hover {
 	}
 }
 
+/* A list of sermons (SermonCard rows) — the one wrapper every page uses, so
+   the measure and the separators are set once (design #8). Each row draws a
+   hairline above itself; the first row drops it. A row may sit in a wrapper
+   (the index pages rows in `display: contents` divs, the 404 tags them), so
+   both a direct row and a wrapped one count as first. */
+.sermon-list {
+	max-width: 48rem;
+}
+.sermon-list > .sermon-row:first-child,
+.sermon-list > :first-child > .sermon-row {
+	border-block-start-color: transparent;
+}
+
 /* ── Browse-page filter furniture ──────────────────────────────────────────
    One control family for the filter rows on Books, Sermons, Biographies and
    Plans. They had drifted badly: the same "filter by title" input was

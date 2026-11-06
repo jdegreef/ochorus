@@ -505,7 +505,9 @@ longer — never a literal duration.
 | **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
 | **`.card-tint`** — a row card **warms in place**, no lift | `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. The `/quotes` author card overrides both with its era `--row-hue`. (The sermon row is a hairline list row, not a card: its title underlines instead.) |
 
-Grid cards lift, row cards tint — that is the whole vocabulary. A card that
+Grid cards lift, row cards tint — that is the whole vocabulary. (The sermon
+list row is not a card: it has no frame, and its title underlines instead —
+the one frameless exception, not a third recipe for cards.) A card that
 would do neither, or a third thing (a border-only shift, a bg-only shift, a
 gradient-slide), is drift: fold it into whichever recipe its shape calls for.
 The **one sanctioned extra** is the book-cover family's "Begin reading →" /
