@@ -171,12 +171,10 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader
-		section="plans"
 		title={t('plans.title')}
 		tagline={t('plans.tagline')}
 		meta={plans.length ? planCounts : undefined}
 	/>
-	<ForPromo place="plans-shelf" class="-mt-2 mb-6" />
 	{#snippet planCounts()}
 		{plans.length}
 		{plans.length === 1 ? t('common.planOne') : t('common.planMany')}
@@ -285,6 +283,12 @@
 					<PlanShelfCard {plan} />
 				{/each}
 			</div>
+		{/if}
+		<!-- The leader's way on, after the plans rather than in the page head
+		     (design review #4): a reader came for the shelf first. Only under
+		     real results — never as the answer to an empty filter. -->
+		{#if shownPlans.length}
+			<ForPromo place="plans-shelf" class="mt-8" />
 		{/if}
 	{/if}
 </div>

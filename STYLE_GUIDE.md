@@ -419,8 +419,16 @@ is also the one place a sermon's own hue sits inside another surface's
 `--shelf-hue` band — the item's art wins over the shelf's, because the books
 beside it are already showing theirs.
 
-**Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash.
+**Book card** (`.book-card`) — **the cover is the card.** It sits straight on
+the page ground — no box, no border, no tint — with two lines under it: the
+title in the serif (`font-display`) and the author in muted sans. Nothing else
+at rest: the chapter count and reading time are on the book page (and in the
+list view, on the shelves that have one). (Design review #1, 2026-11: the boxed,
+cover-tinted card gave the library 379 pastel boxes of visual static.) The
+one meta line a grid card may carry is the young-reader hubs' single-phrase
+sitting time (`perChapter`, "~12 min a chapter") — one phrase, so no `·` can
+lead a wrapped line. A row of covers is an even row: the home strip no longer
+sets its first book large.
 
 **A cover is a wordless GROUND with the book's type drawn over it in HTML.**
 That is one sentence for the whole system, and it is what lets a title be
@@ -504,7 +512,7 @@ longer — never a literal duration.
 
 | Recipe | Who | What happens |
 |---|---|---|
-| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
+| **`.card-lift`** — a grid or banded card **rises** | `.shelf-card`, the sermon-of-week plate; `.book-card` (BookCard, ArticleShelf's cover view) rises the same 2px with its own rise-only hover — it is boxless, so a shadow would draw a box, and its cover carries the shadow | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
 | **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
 
 Grid cards lift, row cards tint — that is the whole vocabulary. A card that
@@ -512,9 +520,8 @@ would do neither, or a third thing (a border-only shift, a bg-only shift, a
 gradient-slide), is drift: fold it into whichever recipe its shape calls for.
 The **one sanctioned extra** is the book-cover family's "Begin reading →" /
 "Resume →" gradient plate, revealed on `group-hover` over the artwork
-(`BookCard`, `LibraryBookCard`): it is a call-to-action on the cover **ground**,
-not a second hover *language* — the card still lifts — and it is shared by both
-cover cards, so it is a deliberate signature rather than a one-off. No other
+(`BookCard`): it is a call-to-action on the cover **ground**,
+not a second hover *language* — the card still lifts — so it is a deliberate signature rather than a one-off. No other
 card gets a bespoke reveal.
 
 > ⚠️ **A Tailwind utility cannot override one of these classes.** The component
@@ -607,14 +614,18 @@ sits on **`.chrome-col`** (`--chrome-w`: the page column's width, never under
 64rem), so the wordmark shares the page's start edge.
 
 ### Footer
-Identical on every page: wordmark + tagline, an **Explore** group (the six nav
-destinations, then — in English only — Articles, Scripture, Quotes, RSS), an
-**About** group (About / Contact / Legal), the mission block, a language strip
-and the copyright line. Hidden in focus mode. Its rows sit on `.chrome-col`,
-like the nav bar.
+One band, identical on every page (design #3): wordmark + one-line mission, a
+**Library** column (the five nav destinations), a **More** column (Series, the
+young-reader hubs, A–Z, in English Articles · Scripture · Quotes, Originals, and
+one "For churches & ministries" link to the `/for/` hub), the language switcher
+with About / Contact / Privacy / Send feedback / RSS under it, then the
+blessing and copyright as one small line. Above it only a personal next step
+(sign-up invite or the reader's current book). Don't add a band — a new
+destination is a link in More (`page-design` skill, "The footer is one band").
+Hidden in focus mode. Its rows sit on `.chrome-col`, like the nav bar.
 
 **Every surface that lists content types lists the same ones in the same
-order** — nav, footer Explore, the command palette's `COMMANDS`, the search
+order** — nav, the footer columns, the command palette's `COMMANDS`, the search
 hit kinds and `sitemap.ts`. The `page-design` skill carries the checklist; a
 content type that is footer-only (as Articles, Scripture and Quotes were) is
 not shipped.
