@@ -2638,10 +2638,11 @@ class TopicShareCardTests(SimpleTestCase):
 class SermonBriefCoverageTests(SimpleTestCase):
     """Every sermon on the shelf should carry its "In brief".
 
-    The sermons shelf lists one sermon per line and prints the brief under each
-    (STYLE_GUIDE §5, `.sermon-row`), so a sermon with an empty ``summary``
-    renders as a bare title — finished-looking, but useless for deciding whether
-    to read or listen, which is the job that page exists to do.
+    Every sermon list previews the brief's first line under the title
+    (STYLE_GUIDE §5, the sermon row) and the sermon page opens with it in full
+    ("In brief"), so a sermon with an empty ``summary`` lists as a bare title
+    and opens without its summary — finished-looking, but useless for deciding
+    whether to read or listen.
 
     Two ways the gap opens, and this guard closes both:
 

@@ -701,3 +701,73 @@ def misattributed(quote: str, ref_text: str) -> str | None:
     if best < floor or best - cited_best < RIVAL_MARGIN:
         return None
     return f"{best_book.title} {best_id // 1000 % 1000}:{best_id % 1000}"
+
+
+# ── A sermon that opens on its own text ────────────────────────────────────
+# Over half the sermons begin with a <blockquote> of the text the preacher
+# announced, in his own Bible's wording. The sermon page also sets that text
+# above the body, from the house Bible, so a reader met one verse twice in two
+# translations, back to back (design review #12). This says when the body's
+# copy IS the text, so the page can drop its own and keep the preacher's: the
+# sermon argues from his wording, and the body is what bookmarks count in.
+#
+# Conservative: a false yes hides the verse the sermon is built on, a false no
+# only shows it twice. Compared against the ASV — the KJV these sermons quote is
+# far closer to it than to the OWB the page prints, the reason `misattributed`
+# uses it too.
+
+_LEADING_QUOTE = re.compile(r"^\s*<blockquote\b[^>]*>(.*?)</blockquote>", re.S | re.I)
+_REF_ANCHOR = re.compile(r'<a class="scripture-ref"[^>]*\bdata-ref="([^"]*)"[^>]*>.*?</a>', re.S)
+_TAG = re.compile(r"<[^>]+>")
+#: Share of the quote's content words found in the text's verses.
+TEXT_OVERLAP = 0.6
+#: The lower bar when the quote also cites the text itself ("—JOHN i. 17").
+CITED_TEXT_OVERLAP = 0.25
+#: Share of the TEXT's content words an uncited quote must carry, so one verse
+#: quoted from a longer text ("Luke 15", a whole chapter) does not stand in for it.
+TEXT_COVERAGE = 0.25
+#: More content words than this is the opening of the sermon, not its text
+#: (a whole read passage — the Prodigal Son, 1 Kings 19 — is ~150).
+MAX_EPIGRAPH_TOKENS = 400
+
+
+def opens_with_text(body_html: str, ref_text: str) -> bool:
+    """Whether ``body_html`` opens with a quotation of its sermon's text ``ref_text``.
+
+    True only when the body's FIRST element is a ``<blockquote>`` holding verse
+    words (a bare "Matthew 11:28" repeats nothing) of epigraph size, the text is
+    one passage in one chapter (a text of two passages is never stood in for by
+    a quote of one), and either the quote cites the text itself (at least half
+    its verses) and a quarter of its words are the text's, or most of its words
+    are the text's and it carries a fair share of the text. A citation alone is not enough: a homily
+    headed "Spoken in Antioch … 1 Tim. vi. 17" cites the text and quotes none
+    of it. English book names and an English Bible, as everywhere in this
+    module: a translated sermon answers False and keeps both.
+    """
+    m = _LEADING_QUOTE.match(body_html or "")
+    return bool(m and ref_text) and _quote_is_text(m.group(1), ref_text)
+
+
+# Keyed on the quote, not the body, so the cache holds epigraphs rather than
+# whole sermons; the detail endpoint asks on every request.
+@lru_cache(maxsize=2048)
+def _quote_is_text(quote_html: str, ref_text: str) -> bool:
+    text_ids = reference_verse_ids(ref_text)
+    if not text_ids or len({vid // 1000 for vid in text_ids}) != 1:
+        return False
+    quote = annotate_references(quote_html)
+    words = _tokens(_TAG.sub(" ", _REF_ANCHOR.sub(" ", quote)))
+    if len(words) < 2 or len(words) > MAX_EPIGRAPH_TOKENS:
+        return False
+    verse_words = frozenset().union(*(_tokens(_asv_text(vid)) for vid in text_ids))
+    if not verse_words:
+        return False
+    shared = len(words & verse_words)
+    share = shared / len(words)
+    # Cites the text itself — at least half its verses, so "Luke 15" is not
+    # stood in for by a quote of 15:11 — and quotes some of it.
+    cited = frozenset().union(*(reference_verse_ids(r) for r in _REF_ANCHOR.findall(quote)))
+    if len(cited & text_ids) * 2 >= len(text_ids) and share >= CITED_TEXT_OVERLAP:
+        return True
+    # Uncited: most of the quote is the text, and it carries a fair share of it.
+    return share >= TEXT_OVERLAP and shared / len(verse_words) >= TEXT_COVERAGE

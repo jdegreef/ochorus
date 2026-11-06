@@ -15,6 +15,10 @@ import { join } from 'node:path';
  * invisible and unclickable, at every viewport width, in what is the DEFAULT
  * layout on wide screens. Verified with elementFromPoint: 8 of 8 covered.
  *
+ * Since design #7 the reading surfaces draw no site nav at all (one slim
+ * reader bar, no site chrome), so the collision is impossible by construction;
+ * --appnav-h is 0 there and the checks below hold the pieces that say so.
+ *
  * These are source-shape checks, not rendering checks — they can't see a
  * stacking context. What they CAN do is fail when the two invariants that make
  * the collision impossible get reverted by someone who doesn't know the story.
@@ -27,10 +31,15 @@ const LAYOUT = 'routes/+layout.svelte';
 const READER = 'routes/books/[slug]/[order]/+page.svelte';
 
 describe('the layout publishes the nav height as a fact', () => {
-	it('does not zero --appnav-h on the reading routes', () => {
-		// It used to be `inReader ? 0 : navH`. True only in scroll mode, where the
-		// static nav rides away — and page mode is the case that doesn't scroll.
-		const decl = read(LAYOUT).match(/const appnavH = \$derived\((.*)\);/)?.[1] ?? '';
+	it('zeroes --appnav-h from whether the nav is drawn, not from the route', () => {
+		// It used to be `inReader ? 0 : navH` while the reader still drew a static
+		// nav: true only in scroll mode, where that nav rode away — and page mode
+		// is the case that doesn't scroll. It is now keyed on `siteChrome`, the
+		// same switch that draws (or doesn't draw) the nav.
+		// Up to the derived's own closing `\n\t);`, not the first `);` (which is
+		// inside `var(--safe-top, 0px);`).
+		const decl = read(LAYOUT).match(/const appnavH = \$derived\(([\s\S]*?)\n\t\);/)?.[1] ?? '';
+		expect(decl, 'could not find the whole --appnav-h declaration').toMatch(/navH\}px/);
 		expect(decl, '--appnav-h must be declared from a value, not omitted').not.toEqual('');
 		expect(
 			decl,
@@ -40,23 +49,46 @@ describe('the layout publishes the nav height as a fact', () => {
 	});
 
 	it('reports 0 only when the nav is genuinely not rendered', () => {
-		// Focus mode removes the nav from the DOM, so 0 is the truth there. Before
-		// the nav is measured (a prerendered page) it is left unset, so app.css's
-		// per-breakpoint estimate on .app-root holds — never a stand-in 0.
+		// The reading surfaces and focus mode draw no nav (design #7: one slim
+		// reader bar, no site chrome), so 0 — or, in the phone app, the status
+		// strip's --safe-top — is the truth there. Before the nav is measured (a
+		// prerendered browse page) it is left unset, so app.css's per-breakpoint
+		// estimate on .app-root holds — never a stand-in 0.
 		const src = read(LAYOUT);
-		expect(src).toMatch(/readerUi\.focus \? '--appnav-h: 0px; ' : navH \? `--appnav-h: \$\{navH\}px; ` : ''/);
+		expect(src).toMatch(
+			/!siteChrome \? '--appnav-h: var\(--safe-top, 0px\); ' : navH \? `--appnav-h: \$\{navH\}px; ` : ''/
+		);
 		expect(src).toMatch(/style="[^"]*\{appnavH\}/);
 	});
 
-	it('seeds navH synchronously before observing it', () => {
-		// A ResizeObserver's first callback lands a frame late; without the
-		// synchronous read the bar rendered at 0 for that frame and then jumped.
+	it('draws the nav and the footer only where siteChrome holds', () => {
+		// The one switch: a route that is a reading surface, or focus mode, has
+		// neither, so nothing can be pinned underneath a nav that is still there.
+		// An error page under a reader route (a 404 chapter) keeps the chrome: the
+		// reader's own bar never mounts there.
 		const src = read(LAYOUT);
-		const effect = src.slice(src.indexOf('let navH'), src.indexOf('ro.observe(navEl)'));
-		expect(
-			effect,
-			'measure navEl once directly, before the ResizeObserver, or the reader bar jumps on load.'
-		).toMatch(/navH = Math\.round\(navEl\.getBoundingClientRect\(\)\.height\)/);
+		expect(src).toMatch(/const siteChrome = \$derived\(!\(inReader && !\$page\.error\) && !readerUi\.focus\)/);
+		expect(src).toMatch(/\{#if siteChrome\}\s*<nav/);
+		expect(src).toMatch(/\{#if siteChrome\}\s*<SiteFooter \/>/);
+	});
+});
+
+describe('the reading surfaces keep the site one tap away', () => {
+	// With no nav and no footer, the "⋯" group is the way to the rest of Ochorus.
+	it.each([READER, 'routes/sermons/[slug]/+page.svelte'])('%s carries ReaderSiteLinks in its "⋯" group', (file) => {
+		// The group's LAST child, closing it: `onpick` shuts the "⋯" group, and
+		// the group's `</div>` and its `{/if}` follow straight after.
+		const src = read(file);
+		expect(src, `${file}: no "⋯" group found.`).toMatch(/class="account-menu more-group"/);
+		expect(src, `${file}: end the "⋯" group with <ReaderSiteLinks>.`).toMatch(
+			/<ReaderSiteLinks onpick=\{\(\) => \(moreOpen = false\)\} \/>\s*<\/div>\s*\{\/if\}/
+		);
+	});
+
+	it('the chapter bar\'s book title links to the book page', () => {
+		expect(read(READER)).toMatch(
+			/<a\s+href=\{localizeHref\(`\/books\/\$\{slug\}`\)\}[^>]*>[\s\S]{0,120}<bdi class="truncate">\{chapter\.book_title\}<\/bdi><\/a/
+		);
 	});
 });
 
@@ -167,5 +199,130 @@ describe('a floating reader control clears the bottom bars', () => {
 		for (const file of ['lib/components/ArticleDetail.svelte', 'routes/authors/[slug]/+page.svelte']) {
 			expect(read(file), file).toMatch(/<FloatingBookmark\b/);
 		}
+	});
+});
+
+describe('the chapter reader: progress at the top, one end card (design #18)', () => {
+	it('shows its progress as the hairline under the bar, not a slider block under the text', () => {
+		const src = read(READER);
+		// The footer's scrubber and "Page 1 / 18 · 35 min left" line are gone…
+		expect(src).not.toMatch(/class="scrubber"/);
+		expect(src).not.toMatch(/class="progress-meta"/);
+		// …and the hairline carries both: it still seeks (page mode has no
+		// scrollbar) and says the time left to a screen reader.
+		const hair = src.slice(src.indexOf('<div class="hairline"'));
+		expect(hair).toMatch(/<input\s+class="hairline-seek"\s+type="range"/);
+		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
+		// It hangs from the bar (riding its fold-away transform), and is pinned
+		// to the top in focus mode, where there is no bar.
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}\s*>\s*\{@render hairline\(false\)\}/);
+		expect(src).toMatch(/\{#if readerUi\.focus && !showPeek\}\s*\{@render hairline\(true\)\}/);
+	});
+
+	it('a seek on the hairline does not fold the bar out from under it', () => {
+		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS( && !keyboardInBars\(\))?\)\s*barHidden = nextBarHidden/);
+	});
+
+	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
+		const src = read(READER);
+		const nav = src.slice(src.indexOf('<div class="end-nav">'), src.indexOf('{#snippet endAsk()}'));
+		expect(nav, 'Previous belongs to "⋯" and the phone row, not the end card').not.toMatch(/chapter\.prev/);
+		// Next chapter, next volume, or the book page — one of them, never two.
+		expect(nav.match(/class="end-next btn/g)?.length).toBe(3);
+		expect(nav).toMatch(/\{#if chapter\.next\}[\s\S]*\{:else if nextInSeries\}[\s\S]*\{:else\}/);
+		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
+		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
+		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
+	});
+});
+
+describe('the phone reader: the bars fold away while reading (design #30)', () => {
+	const src = read(READER);
+
+	it('folds the bottom bar with a transform, so its controls stay in the accessibility tree', () => {
+		// display:none took Aa, Listen and Previous/Next out of reach of Tab
+		// and a screen reader for as long as the reader read on.
+		expect(src).toMatch(/\.progress-foot\.folded \{\s*transform: translateY\(100%\);/);
+		expect(src).not.toMatch(/\.(progress-foot|foot-actions)\.folded \{\s*display: none;/);
+	});
+
+	it('a focus landing in either bar brings both back', () => {
+		// Keyboard focus only: a press on the hairline to seek must not unfold.
+		expect(src).toMatch(/function unfold\(e: FocusEvent\) \{\s*if \(focusVisible\(e\.target as Element\)\) barHidden = false;/);
+		// …which never throws where `:focus-visible` is unknown (iOS < 15.4).
+		expect(src).toMatch(/function focusVisible\([^)]*\) \{\s*try \{/);
+		// …and while the keyboard is in either bar, scrolling folds neither.
+		expect(src).toMatch(/SEEK_SETTLE_MS && !keyboardInBars\(\)\)\s*barHidden = nextBarHidden/);
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}/);
+		expect(src).toMatch(/class="progress-foot" class:folded=\{hideChrome\} onfocusin=\{unfold\}/);
+	});
+
+	it('in scroll mode a tap in the middle third toggles the bars, the edges stay inert', () => {
+		const click = src.slice(src.indexOf('function onArticleClick('), src.indexOf('// Prefetch the next chapter'));
+		expect(click).toMatch(
+			/if \(coarse && isPhone && !overlayOpen && tapZone\(e\) === 'none'\) \{\s*barHidden = !hideChrome;/
+		);
+		// Page mode keeps its thirds: edges turn, the middle toggles the controls.
+		expect(click).toMatch(/else if \(coarse\) readerUi\.toggleFocus\(\);/);
+	});
+});
+
+describe('the sermon head stands on the page ground (design review #12)', () => {
+	const src = read('routes/sermons/[slug]/+page.svelte');
+
+	it('shows one way back: the top bar, not a visible trail as well', () => {
+		expect(src).not.toMatch(/<Breadcrumb\b/);
+		// …while search engines keep the trail.
+		expect(src).toMatch(/structuredData=\{\[sermonLd, crumbsLd/);
+	});
+
+	it('wears no plate or boxed panel before the first word', () => {
+		expect(src).not.toMatch(/<SermonPlate\b/);
+		expect(src).not.toMatch(/class="text-card\b/);
+		// The text is the shared quiet epigraph, not a panel of its own.
+		expect(src).toMatch(/<ScriptureEpigraph\b/);
+	});
+
+	it('prints the preaching text once when the body opens on it', () => {
+		expect(src).toMatch(/preachingText\?\.verses\?\.length && !sermon\.text_in_body/);
+	});
+
+	it('keeps the minutes-left pill off the column', () => {
+		// Centred at the foot of the screen it sat on the line being read.
+		expect(src).toMatch(/class="min-left beside-text"/);
+		expect(src).toMatch(/besideText\.matches/);
+		expect(read('app.css')).toMatch(/\.min-left\.beside-text\s*\{[^}]*inset-inline-end:/);
+	});
+});
+
+describe('the sermon outline is pinned beside the text (design review #29)', () => {
+	const src = read('routes/sermons/[slug]/+page.svelte');
+
+	it('starts with the body, not above the head, and ends with it', () => {
+		// The track lives in the wrapper around <Reader>, so the sticky rail starts
+		// level with the sermon's first line and scrolls away with its last.
+		const text = src.slice(src.indexOf('<div class="sermon-text">'));
+		expect(text.indexOf('class="outline-track"')).toBeGreaterThan(-1);
+		expect(text.indexOf('class="outline-track"')).toBeLessThan(text.indexOf('<Reader'));
+		expect(src.indexOf('<div class="sermon-text">')).toBeGreaterThan(src.indexOf('</header>'));
+	});
+
+	it('pins clear of the reader bar from the published heights, not a guessed rem', () => {
+		// --pinned-offset is the bar under --appnav-h (the app's status strip), so
+		// the rail and a jumped-to heading (.sec-anchor) clear the same line.
+		expect(src).toMatch(/--pinned-offset: calc\(var\(--appnav-h, 0px\) \+ \{HEADER_OFFSET\}px\)/);
+		expect(src).toMatch(/--rail-top:\s*calc\(var\(--pinned-offset/);
+		expect(src).toMatch(/\.outline-rail\s*\{[^}]*position:\s*sticky;[^}]*top:\s*var\(--rail-top\)/);
+	});
+
+	it('mounts where the margin holds it, and shows the minutes left once', () => {
+		// Sized from the reader's own measure, like the start-margin pill.
+		expect(src).toMatch(/const railFits = marginHolds\(/);
+		expect(src).toMatch(/const besideText = marginHolds\(/);
+		// The rail carries the figure; the pill steps aside while it is up.
+		expect(src).toMatch(/class="rail-left\b/);
+		expect(src).toMatch(/besideText\.matches && !showRail/);
+		// …and the top bar's Outline button steps aside too.
+		expect(src).toMatch(/outline\.length >= 2 && !showRail/);
 	});
 });

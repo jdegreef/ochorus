@@ -50,3 +50,52 @@ export function childrensReading(
 ): boolean {
 	return kind === 'children' || (kind === null && bookAudience === 'young_readers');
 }
+
+/**
+ * The full text a young-reader edition retells — `<base>` for
+ * `<base>-teens` / `<base>-children` — or null for anything else. Both signals
+ * must agree, as for `splitEdition`: the slug suffix AND a trailing
+ * "(For …)" in the title, so a real work whose slug merely ends that way
+ * ("Come Ye Children") is never taken for a retelling. A base that is itself
+ * an edition slug (`x-teens-children`) is no full text either. The link
+ * `serializers.sibling_editions` derives; `authorIndex.foldEditions` and the
+ * shelf's fold below both read it here.
+ */
+export function editionBase(book: { slug: string; title: string }): string | null {
+	if (!splitEdition(book.slug, book.title)) return null;
+	const base = book.slug.replace(EDITION_SLUG, '');
+	return EDITION_SLUG.test(base) ? null : base;
+}
+
+/**
+ * How many editions each work has on this shelf — the full text plus its
+ * young-reader editions in the same language, keyed by the full text's slug.
+ * Only works with more than one edition appear: a young-reader edition whose
+ * full text is not on the shelf (a language with only the retelling) is a
+ * work of its own.
+ */
+export function editionFamilies(books: readonly { slug: string; title: string }[]): Map<string, number> {
+	const slugs = new Set(books.map((b) => b.slug));
+	const sizes = new Map<string, number>();
+	for (const b of books) {
+		const base = editionBase(b);
+		if (base && slugs.has(base)) sizes.set(base, (sizes.get(base) ?? 1) + 1);
+	}
+	return sizes;
+}
+
+/**
+ * One slot per work (design review #26): a young-reader edition drops out of
+ * `list` when its full text is in `list` too — the full edition's card stands
+ * for the family, and its book page is where the reader chooses. Collapsing
+ * within the list, not against the whole shelf, is what keeps a search honest:
+ * a query or filter that matches the teens edition and not the full text still
+ * shows the teens edition, as itself. Order is kept.
+ */
+export function collapseEditions<T extends { slug: string; title: string }>(list: readonly T[]): T[] {
+	const slugs = new Set(list.map((b) => b.slug));
+	return list.filter((b) => {
+		const base = editionBase(b);
+		return !(base && slugs.has(base));
+	});
+}

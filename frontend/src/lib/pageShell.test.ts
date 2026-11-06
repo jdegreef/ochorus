@@ -42,7 +42,7 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 /**
  * The leaf pages you reach FROM a browse surface. They share the page column
  * but not <PageHeader>: each has its own header shape (a cover beside a title,
- * a portrait and a timeline, an emblem in a tinted hero), so only the shell is
+ * a portrait and a timeline, a title beside an epigraph), so only the shell is
  * asserted here.
  *
  * Converting the browse pages alone left the stepper half-working — it moved
@@ -135,6 +135,21 @@ describe('pages use the shared page furniture', () => {
 		expect(read(file), `${file}: pass the nav word to <PageHeader title>`).not.toMatch(
 			/<PageHeader[^>]*title=\{t\('[a-z]+\.pageTitle'\)/
 		);
+	});
+
+	// The plain page head (design review #4): the h1 is the page's first words,
+	// so a tab row comes after <PageHeader>, and a leader cross-link (ForPromo)
+	// belongs at the end of the list, not straight under the header.
+	it.each(BROWSE_PAGES)('$label keeps its head plain: title first, no promo under it', ({ file }) => {
+		const src = read(file);
+		const head = src.indexOf('<PageHeader');
+		const tabs = src.indexOf('<LibraryTabs');
+		if (tabs !== -1)
+			expect(tabs, `${file}: <LibraryTabs> goes under <PageHeader>, not above the h1`).toBeGreaterThan(head);
+		expect(
+			src,
+			`${file}: <ForPromo> sits at the end of the list, not right under <PageHeader>`
+		).not.toMatch(/<PageHeader\b[^>]*\/>\s*<ForPromo\b/);
 	});
 
 	it.each(BROWSE_PAGES)('$label uses the standard shell padding', ({ file }) => {

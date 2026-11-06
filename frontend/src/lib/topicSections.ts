@@ -1,32 +1,25 @@
 export type TopicSectionKind = 'books' | 'sermons' | 'articles';
 
 /**
- * The order the topic page shows its content sections — books, sermons,
- * articles — dropping any that are empty.
+ * The topic page's tabs — Books · Sermons · Articles — in that fixed order,
+ * dropping any that are empty. The first one is the tab the page opens on.
  *
- * Books and sermons lead with whichever the topic is mostly made of, so a
- * sermon-dominated topic (The Gospel Call: 4 books, 25 sermons; Christ & the
- * Cross: sermons only) leads with its sermons instead of burying them under a
- * short books grid, while a book-dominated one (the Puritans, On Prayer) leads
- * with books. Ties keep books before sermons.
+ * Books always lead (design review #16). Books are the heart of the library,
+ * and the page used to open a sermon-heavy shelf (On Prayer: 17 books, 24
+ * sermons) on two dozen sermon cards before a single cover. Each kind now sits
+ * in its own tab with its count, so a reader who came for sermons is one tap
+ * away from them — which retires the old rule that raced books against
+ * sermons by count to decide which led.
  *
- * Articles always come LAST, whatever their count. They used to join the
- * count race, and once the articles push outgrew the shelves (On Prayer: 10
- * books, 17 articles; Enduring Classics: 8 books, 61 articles) eight topics —
- * "Books on Prayer" among them — opened on a wall of study guides with the
- * library itself screens below. The articles are companions to the classics,
- * not the shelf.
- *
- * Adapt-from-data, applied to every topic — the same principle as the by-author
- * book grouping — not a per-topic layout.
+ * Articles always come last: they are companions to the classics, not the
+ * shelf (eight topics once opened on a wall of study guides). A topic with no
+ * books opens on its sermons (Christ & the Cross) — the first NON-EMPTY kind
+ * leads.
  */
 const CANON: readonly TopicSectionKind[] = ['books', 'sermons', 'articles'];
 
 export function topicSectionOrder(counts: Record<TopicSectionKind, number>): TopicSectionKind[] {
-	const shelves = (['books', 'sermons'] as const)
-		.filter((kind) => counts[kind] > 0)
-		.sort((a, b) => counts[b] - counts[a] || CANON.indexOf(a) - CANON.indexOf(b));
-	return counts.articles > 0 ? [...shelves, 'articles'] : [...shelves];
+	return CANON.filter((kind) => counts[kind] > 0);
 }
 
 /**

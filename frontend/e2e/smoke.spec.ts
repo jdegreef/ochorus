@@ -285,9 +285,14 @@ test('switching language from the footer serves that language', async ({ page })
 	await page.goto('/');
 	await hydrated(page);
 
-	// By its autonym, which is what the strip renders: a reader who needs this
-	// control cannot read "Spanish".
-	const spanish = page.getByRole('link', { name: 'Español' });
+	// The footer's language switcher is a disclosure (<details>) of real links:
+	// open it first, as a reader does.
+	await page.locator('details.footer-lang > summary').click();
+
+	// By its autonym, which is what the list renders: a reader who needs this
+	// control cannot read "Spanish". The link's name also carries the book
+	// count ("Español 120 books"), so match the autonym at the start.
+	const spanish = page.getByRole('link', { name: /^Español\b/ });
 	await expect(spanish).toBeVisible();
 	await spanish.click();
 
@@ -382,8 +387,9 @@ test('in page-turn mode a stray window scroll leaves the progress on page 1', as
 	// over "Page 1 / 4".
 	await page.goto(`/books/${BOOK}/1/`);
 	await hydrated(page);
-	const scrubber = page.locator('input.scrubber');
-	await expect(page.locator('.progress-meta')).toContainText(/1 \/ ([2-9]|\d{2,})/);
+	// The scrubber is the hairline under the reader bar (design #18).
+	const scrubber = page.locator('input.hairline-seek');
+	await expect(scrubber).toHaveAttribute('aria-valuetext', /1 \/ ([2-9]|\d{2,})/);
 	await expect(scrubber).toHaveValue('0');
 
 	await page.evaluate(() => window.dispatchEvent(new Event('scroll')));

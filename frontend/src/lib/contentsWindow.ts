@@ -1,8 +1,10 @@
 /**
  * Which chapters a long table of contents shows before "Show all".
  *
- * A 36-chapter book listed in full pushed the Q&A and "More like this" a long
- * scroll down the book page. Collapsed, the list keeps what a reader needs:
+ * Up to 20 chapters list in full (design review #9: hiding seven of a
+ * thirteen-chapter book behind "⋯" saved little). A 36-chapter book listed
+ * in full pushed the Q&A and "More like this" a long scroll down the book
+ * page. Collapsed, the list keeps what a reader needs:
  * the first chapter, the last, and the reader's place with two chapters either
  * side of it — or, with no saved place (a first visit, and the prerendered
  * page), the opening chapters.
@@ -11,7 +13,7 @@
  * short enough not to collapse). A gap that would hide a single chapter is
  * filled instead: "⋯ 1 chapter" takes a row to save a row.
  */
-export const CONTENTS_COLLAPSE_AT = 12;
+export const CONTENTS_COLLAPSE_AT = 20;
 const AROUND = 2;
 const OPENING = 5;
 

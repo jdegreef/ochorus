@@ -130,10 +130,13 @@ class PlanTests(TestCase):
 
     def test_detail_lists_the_plan_authors(self):
         # Both days read the one book by "am" → one distinct author, linked.
+        Author.objects.filter(slug="am").update(photo_url="/portraits/andrew-murray.webp")
         res = self.client.get("/api/library/plans/humility-12-days/?language=en")
         self.assertEqual(res.status_code, 200)
         self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
         self.assertEqual(res.data["authors"][0]["name"], "Andrew Murray")
+        # …with the portrait the hero byline draws beside the name.
+        self.assertEqual(res.data["authors"][0]["photo_url"], "/portraits/andrew-murray.webp")
 
     def test_list_exposes_day_one_teaser(self):
         # The card leads with where the plan starts — day 1's book + chapter.

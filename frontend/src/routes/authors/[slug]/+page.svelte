@@ -17,7 +17,9 @@
 	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
+	import { firstSentence } from '$lib/firstSentence';
 	import { readingTime, readingMinutes } from '$lib/reading';
+	import { foldBio } from '$lib/bioFold';
 	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
@@ -45,7 +47,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -112,10 +114,11 @@
 		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
 	);
 
-	// The H1 and the <title> both name what the page actually holds — "<Name>
-	// Biography, Books, and Sermons" — rather than the bare name: that is how
-	// people search for a writer, and it tells a crawler what the page is. They
-	// share one derived string so the two can never drift apart.
+	// The <title> names what the page actually holds — "<Name> Biography,
+	// Books, and Sermons" — rather than the bare name: that is how people
+	// search for a writer, and it tells a crawler what the page is. The visible
+	// H1 is the person's name alone (design review #13): the long phrase read
+	// as an SEO string to the person who had already arrived.
 	//
 	// Each combination is its own message rather than assembled from fragments,
 	// because these languages put the name in different places ("Biografía de
@@ -143,18 +146,17 @@
 		headingKey ? t(headingKey).replace('%name%', author.name) : author.name
 	);
 	// The search title carries the lifespan — "Andrew Murray (1828–1917)" is how
-	// people recognise the person they searched for. Title only; the H1 stays the
-	// plain heading. (seo.fitTitle drops the brand suffix if it runs long.)
+	// people recognise the person they searched for. (seo.fitTitle drops the
+	// brand suffix if it runs long.)
 	const seoTitle = $derived(
 		headingKey && years
 			? t(headingKey).replace('%name%', `${author.name} (${years})`)
 			: heading
 	);
 
-	// A one-line "what's here" summary under the name: era + work counts.
-	const summaryBits = $derived(
+	// What is here to read — "18 books · 2 sermons" — the hero's last fact.
+	const worksBits = $derived(
 		[
-			years,
 			author.books.length
 				? `${author.books.length} ${author.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}`
 				: '',
@@ -163,6 +165,28 @@
 				: ''
 		].filter(Boolean)
 	);
+	// The era and the work counts, for a bio-less page's meta description.
+	const summaryBits = $derived([years, ...worksBits].filter(Boolean));
+
+	// Who they were, in one line under the name: the opening sentence of the
+	// summary this locale has (there is no tagline field, and the line is not
+	// written for the page). No summary, no line — and none where the page
+	// prints that summary itself (no long bio in this locale), which would
+	// repeat the same sentence a screen lower.
+	const identity = $derived(author.bio_html ? firstSentence(author.bio) : '');
+
+	// The writer's hubs as key facts: their traditions, then their place, each
+	// under its own label ("Tradition", "Place") — the order the API serves.
+	const hubGroups = $derived(
+		(
+			[
+				{ label: t('bios.tradition'), hubs: (author.hubs ?? []).filter((h) => h.kind === 'tradition') },
+				{ label: t('bios.place'), hubs: (author.hubs ?? []).filter((h) => h.kind !== 'tradition') }
+			] as const
+		).filter((g) => g.hubs.length)
+	);
+	// The quote page is English only (see the link in the hero's facts).
+	const showQuotes = $derived(!!author.quote_count && getLang() === 'en');
 
 	// "More lives to explore": nearest contemporaries by birth year (loaded after
 	// mount; the page is prerendered). Falls back to any other authors when this
@@ -305,17 +329,9 @@
 			`--label-answered: ${cssString(t('bios.answerToPrayer'))}`
 	);
 
-	// Where to start + how much there is to read: the first book (the API's
-	// featured order) and the total reading time across every work.
-	const startWork = $derived(author.books[0] ?? null);
-	const totalWords = $derived(
-		author.books.reduce((n, b) => n + (b.word_count ?? 0), 0) +
-			author.sermons.reduce((n, s) => n + (s.word_count ?? 0), 0)
-	);
-
-	// The read card: a reader partway through (past chapter 1 of) one of this author's books picks
+	// The row's book: a reader partway through (past chapter 1 of) one of this author's books picks
 	// it up here ("Continue reading" — the book page's card); anyone else gets
-	// the "New to X? Start with …" suggestion in the same card. Progress is
+	// the "Start with …" suggestion in the same slot. Progress is
 	// client-only, so the prerendered page and a first visit show the latter.
 	let resumeBook = $state<{ book: BookSummary; order: number } | null>(null);
 	$effect(() => {
@@ -327,30 +343,39 @@
 		);
 		resumeBook = rec ? { book: bySlug.get(rec.slug)!, order: resumeOrderOf(rec) } : null;
 	});
-	const cardBook = $derived(resumeBook?.book ?? startWork);
+	// Otherwise the first book, in the API's featured order.
+	const cardBook = $derived(resumeBook?.book ?? author.books[0] ?? null);
+	// The Where to start row's sermon: the first, in the API's order.
+	const startSermon = $derived(author.sermons[0] ?? null);
 
-	// A featured pull-quote for the header: the first <blockquote> in the bio.
-	// Regex, not the DOM, so it works during prerender too. Absent / too-short
-	// quotes just don't show. The bio's own <cite> is kept as the attribution
-	// beneath the quote (its leading dash trimmed) rather than discarded.
-	const featuredQuote = $derived.by<{ text: string; cite: string }>(() => {
-		const m = (author.bio_html || '').match(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/i);
-		if (!m) return { text: '', cite: '' };
-		const inner = m[1];
-		const citeMatch = inner.match(/<cite[^>]*>([\s\S]*?)<\/cite>/i);
-		const cite = citeMatch
-			? stripHtml(citeMatch[1])
-					.replace(/\s+/g, ' ')
-					.replace(/^[—–-]\s*/, '')
-					.trim()
-			: '';
-		const text = stripHtml(inner.replace(/<cite[\s\S]*?<\/cite>/i, ''))
-			.replace(/\s+/g, ' ')
-			.trim();
-		if (text.length < 20) return { text: '', cite: '' };
-		const clipped = text.length > 220 ? text.slice(0, 217).trimEnd() + '…' : text;
-		return { text: clipped, cite };
+	// The biography's opening (design #14): about three paragraphs, then
+	// "Continue reading the biography", which opens the rest in place. See
+	// $lib/bioFold — the rest stays in the HTML, only hidden. Opened per
+	// author (client navigation between authors reuses this component, and the
+	// next life should open on its own opening). A `?p=` deep link (a Notebook
+	// highlight) points into the text, so it opens — on every navigation, not
+	// just the first (an effect, client-only: prerender has no query string);
+	// read aloud and focus mode open it too (see the markup). While folded the
+	// <Reader> is `paused`: it neither restores nor saves a place in prose the
+	// reader has not opened.
+	const bioFold = $derived(foldBio(author.bio_html || ''));
+	let bioOpenFor = $state('');
+	const openBio = () => (bioOpenFor = author.slug);
+	const bioFolded = $derived(bioFold.folded && bioOpenFor !== author.slug && !readerUi.focus);
+	$effect(() => {
+		if ($page.url.searchParams.get('p')) openBio();
 	});
+	// "Continue reading" unmounts itself: hand focus to the first paragraph it
+	// revealed, so a keyboard or screen-reader user carries on from there
+	// rather than from the top of the page.
+	async function continueBio() {
+		openBio();
+		await tick();
+		const next = bioEl?.querySelector<HTMLElement>('[data-bio-fold]');
+		if (!next) return;
+		next.tabIndex = -1;
+		next.focus({ preventScroll: true });
+	}
 
 	// The Q&A band at the foot of the page: an editorial set, hand-written and
 	// verified per author, served by the API in the requested language only —
@@ -373,14 +398,17 @@
 	// `qa.sectionTitle`, as its section heading is); it rides `showFaq`,
 	// so it never appears without the section it points at (in a locale whose Q&A
 	// is not yet translated the API returns none, and both drop out together).
+	// In the page's order (design #14): the works, then the life, then the
+	// rest. Books and Sermons carry their counts — "Books (18)".
+	type NavItem = { id: string; label: string; count?: number };
 	const navItems = $derived(
 		[
+			author.books.length ? { id: 'books', label: t('nav.books'), count: author.books.length } : null,
+			author.sermons.length ? { id: 'sermons', label: t('nav.sermons'), count: author.sermons.length } : null,
 			author.bio_html || author.bio ? { id: 'bio', label: t('articles.kindBiography') } : null,
-			author.books.length ? { id: 'books', label: t('nav.books') } : null,
-			author.sermons.length ? { id: 'sermons', label: t('nav.sermons') } : null,
 			author.articles?.length ? { id: 'articles', label: t('nav.articles') } : null,
 			showFaq ? { id: 'faq', label: t('qa.sectionTitle') } : null
-		].filter((x): x is { id: string; label: string } => x != null)
+		].filter((x): x is NavItem => x != null)
 	);
 	// Articles about this person: the first few, then "Show N more" (see markup).
 	const ARTICLES_SHOWN = 4;
@@ -427,6 +455,16 @@
 
 <svelte:head>
 	{#if thin}<meta name="robots" content="noindex" />{/if}
+	<!-- Without script the "Continue reading" control cannot open the
+	     biography, so it is not folded at all. -->
+	<noscript
+		><style>
+			.bio-folded .reading > [data-bio-fold],
+			.bio-folded .reading > [data-bio-fold] ~ * { display: revert !important; }
+			.bio-folded .reading { -webkit-mask-image: none !important; mask-image: none !important; }
+			.bio-more { display: none !important; }
+		</style></noscript
+	>
 </svelte:head>
 
 <!-- --pinned-offset: how far down the first pixel unobstructed by BOTH the app
@@ -445,127 +483,153 @@
 		<Breadcrumb items={crumbs} />
 	</div>
 
-	<!-- The masthead: the writer's portrait hung as a framed print on a band of
-	     their era's colour (AuthorHero), the name and what's here beside it. -->
-	<AuthorHero
-		slug={author.slug}
-		name={author.name}
-		photoUrl={author.photo_url}
-		birthYear={author.birth_year}
-		{years}
-	>
-		<h1 class="text-h1" dir="auto">{heading}</h1>
-		{#if summaryBits.length}
-			<p class="mt-1.5 text-body text-muted">
-				<!-- The separator as an expression: literal spaces at an {#if} boundary are
-				     compiler-trimmed ("1828–1917·12 books"). -->
-				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="sep">{' · '}</span>{/if}{bit}{/each}
-			</p>
+	<!-- The masthead, laid out as the book page's hero (AuthorHero): the
+	     portrait on the start side; the era, the name and who they were in one
+	     line beside it; then the key facts and the page's actions. -->
+	<AuthorHero slug={author.slug} name={author.name} photoUrl={author.photo_url} birthYear={author.birth_year}>
+		<!-- The person's name, as the book page's H1 is the book's title. The
+		     "<Name> Biography, Books, and Sermons" phrase is the <title>'s. -->
+		<h1 class="text-h1" dir="auto">{author.name}</h1>
+		{#if identity}
+			<p class="mt-2 text-body text-muted" dir="auto">{identity}</p>
 		{/if}
 		<!-- Their birthday, or the day they died: a candle and the date. -->
 		<AuthorCandle slug={author.slug} />
-		<!-- The writer's traditions and place, each a hub page of writers like them. -->
-		{#if author.hubs?.length}
-			<ul class="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
-				{#each author.hubs as h (h.slug)}
-					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+		{#snippet details()}
+			<!-- Key facts, only those the data holds: the years, the writer's
+			     traditions and place (each a hub page of writers like them), and
+			     what is here to read. -->
+			<dl class="author-facts">
+				{#if author.birth_year}
+					<div><dt>{t('author.factBorn')}</dt><dd>{author.birth_year}</dd></div>
+				{/if}
+				{#if author.death_year}
+					<div><dt>{t('author.factDied')}</dt><dd>{author.death_year}</dd></div>
+				{/if}
+				{#each hubGroups as g (g.label)}
+					<div>
+						<dt>{g.label}</dt>
+						<dd>
+							{#each g.hubs as h, i (h.slug)}{#if i > 0}{', '}{/if}<a
+									href={localizeHref(hubPath(h))}
+									class="text-accent hover:underline">{h.label}</a
+								>{/each}
+						</dd>
+					</div>
 				{/each}
-			</ul>
-		{/if}
+				{#if worksBits.length || showQuotes}
+					<div>
+						<dt>{t('author.factHere')}</dt>
+						<dd>
+							<!-- The separator as an expression: literal spaces at an {#if}
+							     boundary are compiler-trimmed. -->
+							{#each worksBits as bit, i (i)}{#if i > 0}<span class="sep">{' · '}</span>{/if}{bit}{/each}
+							<!-- The writer's quotations: a link here rather than a hero
+							     button. Only with approved quotations, and only to English
+							     readers: the quote page is English (lifted from the English
+							     works, each citation naming an English chapter), so a locale
+							     prefix would promise a page that does not exist. Un-localized
+							     href for the same reason. This link also keeps the quote page
+							     off the list of pages reachable only from the sitemap. -->
+							{#if showQuotes}{#if worksBits.length}<span class="sep">{' · '}</span>{/if}<a
+									href={`/quotes/${author.slug}/`}
+									class="text-accent hover:underline"
+									>{author.quote_count} {author.quote_count === 1 ? 'quote' : 'quotes'}</a
+								>{/if}
+						</dd>
+					</div>
+				{/if}
+			</dl>
+
+			<!-- The page's actions: Follow is the one outlined button; Share, and
+			     Search this author's works (the real search, scoped to them), are
+			     quiet icons beside it. The biography's reading tools live with the
+			     biography below. -->
+			<div class="author-actions mt-4 flex flex-wrap items-center gap-1">
+				<FavoriteButton kind="author" slug={author.slug} showLabel />
+				<ShareButton url={canonical} title={author.name} />
+				<a
+					href={localizeHref(scopedSearchHref('author', author.slug))}
+					class="btn btn-icon btn-ghost"
+					aria-label={t('search.inAuthor')}
+					title={t('search.inAuthor')}><Icon name="search" size={18} /></a
+				>
+			</div>
+		{/snippet}
 	</AuthorHero>
 
-	<!-- The read card (shared .read-card, as on the book and plan pages): pick up
-	     one of this author's books where you left off, or — first visit, and the
-	     prerender — where to start, with the total reading time. -->
-	{#if cardBook}
-		<div class="read-card mx-auto mt-6 max-w-[40rem]">
-			<div class="read-card-body flex items-center gap-3">
-				<div class="w-12 shrink-0"><BookCover book={cardBook} rounded="rounded-[3px]" /></div>
-				<div class="min-w-0 flex-1">
-					{#if resumeBook}
-						<p class="text-small text-muted">
-							{t('continue.title')} · {t('book.chapterOf')
-								.replace('%n%', String(resumeBook.order))
-								.replace('%t%', String(cardBook.chapter_count))}
-						</p>
-						<p class="read-card-title" dir="auto">{cardBook.title}</p>
-						<div class="mt-2">
-							<ProgressBar
-								percent={cardBook.chapter_count
-									? ((resumeBook.order - 1) / cardBook.chapter_count) * 100
-									: 0}
-								label="{cardBook.title}: {t('book.onChapter')
-									.replace('%n%', String(resumeBook.order))
-									.replace('%t%', String(cardBook.chapter_count))}"
-							/>
+	<!-- Where to start (design #14): ONE row with a book, a plan and a sermon —
+	     only those that exist. It replaced two boxes, a "Start with" read card
+	     and a plan card, that said the same thing twice. The book keeps the
+	     solid read verb (the shared .read-card's job, design #2) and, for a
+	     reader partway through (past chapter 1 of) one of this author's books,
+	     becomes "Continue reading" with the progress. Progress is client-only,
+	     so the prerendered page and a first visit show the suggestion. -->
+	{#if cardBook || authorPlan || startSermon}
+		<section class="start-row mx-auto mt-6 max-w-[40rem]" aria-labelledby="start-heading">
+			<h2 id="start-heading" class="eyebrow text-muted">{t('hubs.startReading')}</h2>
+			<div class="start-items mt-2">
+				{#if cardBook}
+					<div class="start-item start-book">
+						<div class="flex items-start gap-3">
+							<div class="w-12 shrink-0"><BookCover book={cardBook} rounded="rounded-[3px]" /></div>
+							<div class="min-w-0 flex-1">
+								<p class="text-small text-muted">
+									{#if resumeBook}
+										{t('continue.title')} · {t('book.chapterOf')
+											.replace('%n%', String(resumeBook.order))
+											.replace('%t%', String(cardBook.chapter_count))}
+									{:else}
+										{t('author.startWith')}
+									{/if}
+								</p>
+								<p class="start-title" dir="auto">{cardBook.title}</p>
+								{#if resumeBook}
+									<div class="mt-2">
+										<ProgressBar
+											percent={cardBook.chapter_count
+												? ((resumeBook.order - 1) / cardBook.chapter_count) * 100
+												: 0}
+											label="{cardBook.title}: {t('book.onChapter')
+												.replace('%n%', String(resumeBook.order))
+												.replace('%t%', String(cardBook.chapter_count))}"
+										/>
+									</div>
+								{/if}
+							</div>
 						</div>
-					{:else}
-						<p class="text-small">
-							<span class="font-medium text-accent"
-								>{t('author.newToAuthor').replace('%name%', author.name)}</span
-							>
-							<span class="text-muted">{t('author.startWith')}</span>
-						</p>
-						<p class="read-card-title" dir="auto">{cardBook.title}</p>
-						{#if totalWords}
-							<p class="text-small text-muted">{t('author.allWorks')} · {readingTime(totalWords)}</p>
-						{/if}
-					{/if}
-				</div>
+						<a
+							href={localizeHref(
+								chapterPath(cardBook.slug, resumeBook ? resumeBook.order : 1, cardBook.has_modern_edition)
+							)}
+							class="btn btn-primary btn-solid mt-3 w-full">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
+						>
+					</div>
+				{/if}
+				{#if authorPlan}
+					<a class="start-item start-link" href={localizeHref(`/plans/${authorPlan.slug}`)}>
+						<span class="text-small text-muted">{t('search.typePlan')}</span>
+						<span class="start-title" dir="auto">{authorPlan.title}</span>
+						<span class="text-small text-muted">{authorPlan.day_count} {t('plans.days')} <Arrow /></span>
+					</a>
+				{/if}
+				{#if startSermon}
+					<a class="start-item start-link" href={localizeHref(`/sermons/${startSermon.slug}`)}>
+						<span class="text-small text-muted">{t('search.typeSermon')}</span>
+						<span class="start-title" dir="auto">{startSermon.title}</span>
+						<span class="text-small text-muted">{readingTime(startSermon.word_count)} <Arrow /></span>
+					</a>
+				{/if}
 			</div>
-			<div class="read-card-cta">
-				<a
-					href={localizeHref(
-						chapterPath(cardBook.slug, resumeBook ? resumeBook.order : 1, cardBook.has_modern_edition)
-					)}
-					class="btn btn-primary">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
-				>
-			</div>
-		</div>
+		</section>
 	{/if}
 
-	{#if authorPlan}
-		<a class="author-plan mx-auto mt-3 max-w-[40rem]" href={localizeHref(`/plans/${authorPlan.slug}`)}>
-			<span class="text-eyebrow text-gold">{t('author.planEyebrow').replace('%name%', author.name)}</span>
-			<span class="font-display text-h3 text-text" dir="auto">{authorPlan.title}</span>
-			<span class="text-small text-muted">{authorPlan.day_count} {t('plans.days')} · {t('author.planCta')} <Arrow /></span>
-		</a>
-	{/if}
-
-	<!-- The page's own actions — keep, share, the writer's quotations, search
-	     their works — as the book page's action row (an icon strip when narrow).
-	     The biography's reading tools live with the biography below. -->
-	<div class="action-host mx-auto mt-3 max-w-[40rem]">
-		<div class="action-strip">
-			<FavoriteButton kind="author" slug={author.slug} showLabel />
-			<ShareButton url={canonical} title={author.name} showLabel />
-			<!-- Shown only when a person has approved quotations for this writer,
-			     and only to English readers: the page is English (the quotations
-			     are lifted from the English works and each citation names an
-			     English chapter), so offering it under a locale prefix would
-			     promise a page that does not exist. Un-localized href for the
-			     same reason. This link is also what keeps the quote page off the
-			     list of pages reachable only from the sitemap. -->
-			{#if author.quote_count && getLang() === 'en'}
-				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost"
-					><Icon name="quote" size={16} /><span>Quotes</span></a
-				>
-			{/if}
-			<!-- Search this author's works — the real search, scoped to them. -->
-			<a
-				href={localizeHref(scopedSearchHref('author', author.slug))}
-				class="btn btn-sm btn-ghost"
-				aria-label={t('search.inAuthor')}
-				title={t('search.inAuthor')}><Icon name="search" size={16} /><span>{t('nav.search')}</span></a
-			>
-		</div>
-	</div>
-
-	<!-- On-page jump navigation. Sits directly under the masthead's action row —
-	     a full-width section rule the reader meets before the timeline — then pins
-	     under the app nav (`--appnav-h`) on scroll; its measured height feeds
-	     `--pinned-offset` above. Hidden in focus mode with the rest of the page
-	     context. Only shown when there are ≥2 sections to move between. -->
+	<!-- On-page jump navigation: Books (N) · Sermons (N) · Biography · Articles ·
+	     Q&A, in the order the sections now run. Sits under the Where to start
+	     row, then pins under the app nav (`--appnav-h`) on scroll and lights the
+	     section in view (scrollSpy); its measured height feeds `--pinned-offset`
+	     above. Hidden in focus mode with the rest of the page context. Only shown
+	     when there are ≥2 sections to move between. -->
 	{#if showSubnav}
 		<nav
 			bind:clientHeight={subnavH}
@@ -586,7 +650,8 @@
 								class="subnav-link"
 								class:is-active={spy.active === item.id}
 								aria-current={spy.active === item.id ? 'true' : undefined}
-								onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
+								onclick={(e) => spy.jump(e, item.id)}
+								>{item.label}{#if item.count}<span class="subnav-count">{' '}({item.count})</span>{/if}</a
 							>
 						</li>
 					{/each}
@@ -595,113 +660,15 @@
 		</nav>
 	{/if}
 
-	<!-- The biography's heading carries its own reading tools — Listen, text
-	     settings, focus mode apply to the life story, not to the page, so they
-	     sit with it rather than among the page actions above. -->
-	{#if author.bio_html || author.bio}
-		<div id="bio" class="jump-anchor bio-head mx-auto mt-8 flex max-w-[40rem] items-center gap-3">
-			<h2 class="font-display text-h2 font-semibold">{t('articles.kindBiography')}</h2>
-			{#if author.bio_html}
-				<div class="reader-tools ms-auto shrink-0">
-					{#if listen.offered}
-						<button
-							class="btn btn-icon btn-ghost"
-							class:text-accent={listen.status !== 'idle'}
-							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-							aria-label={t('reader.listen')}
-							title={t('reader.listen')}><Icon name="headphones" size={16} /></button
-						>
-					{/if}
-					<ReaderControls />
-					<button
-						class="btn btn-icon btn-ghost"
-						onclick={() => readerUi.toggleFocus()}
-						aria-label={t('reader.focus')}
-						title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-					>
-				</div>
-			{/if}
-		</div>
-	{/if}
-
-	<!-- Lifespan timeline: their own milestones when curated, else the bare
-	     lifespan bar (see LifeTimeline). -->
-	<LifeTimeline
-		birthYear={author.birth_year}
-		deathYear={author.death_year}
-		milestones={author.milestones}
-		labels={getLang() === 'en'}
-	/>
-
-	<!-- Featured pull-quote: a hook above the biography, carrying the bio's own
-	     attribution beneath it. -->
-	{#if featuredQuote.text}
-		<figure class="mx-auto mt-8 max-w-[40rem]">
-			<blockquote class="author-quote">{featuredQuote.text}</blockquote>
-			{#if featuredQuote.cite}
-				<figcaption class="author-quote-cite">{featuredQuote.cite}</figcaption>
-			{/if}
-		</figure>
-	{/if}
-
-	{/if}
-
-	<!-- Biography. The band — not the page — carries the reader's CSS variables,
-	     so the width/size/typeface controls govern the prose while the portrait,
-	     book grid and contemporaries keep the page's own layout. `bioLabels`
-	     rides along on the same element: custom properties inherit, so the
-	     prayer-callout ::before labels reach the injected HTML. -->
-	{#if author.bio_html}
-		<div
-			class="mx-auto mt-8"
-			style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
-		>
-			<Reader
-				bind:this={reader}
-				kind="bio"
-				slug={author.slug}
-				order={BIO_CHAPTER_ORDER}
-				language={data.language as string}
-				html={author.bio_html}
-				class="bio"
-				{cite}
-				listenTitle={author.name}
-				listenArtist={t('bios.eyebrow')}
-				bind:body={bioEl}
-				bind:frac
-				headerOffset={pinnedOffset}
-			/>
-		</div>
-	{:else if author.bio}
-		<p class="mt-6 text-body leading-relaxed text-muted">{author.bio}</p>
-	{/if}
-
-	{#if !readerUi.focus}
-	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
-	{#if author.topics.length}
-		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
-			<span class="eyebrow text-muted">
-				{t('author.themes')}
-			</span>
-			{#each author.topics as topic (topic.slug)}
-				<a
-					href={localizeHref(`/topics/${topic.slug}`)}
-					class="tag"
-				>
-					{topic.title}
-				</a>
-			{/each}
-		</div>
-	{/if}
-
-	<!-- Books -->
+	<!-- The works come first (design #14): most visitors came for the books,
+	     which used to start some 1,500 words of biography down. -->
 	{#if author.books.length}
-		<section id="books" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section id="books" class="jump-anchor mx-auto mt-8 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
-			<!-- Three across at most: the page is now one reading-width column, so a
+			<!-- Three across at most: the page is one reading-width column, so a
 			     writer's shelf sits as a handful of real covers, not a thumbnail grid. -->
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
 				{#each author.books as book (book.slug)}
@@ -711,17 +678,23 @@
 		</section>
 	{/if}
 
-	<!-- Sermons -->
+	<!-- Sermons as compact rows — the shared SermonCard row, one per line, so a
+	     preacher's sermons read as a list under the shelf rather than a second
+	     grid of boxes. -->
 	{#if author.sermons.length}
-		<section id="sermons" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section
+			id="sermons"
+			class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]"
+			style="contain-intrinsic-block-size: auto {4 + author.sermons.length * 6.5}rem"
+		>
 			<h2 class="section-heading">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
-			<!-- The shared card, not a hand-rolled list: this one used to compute
+			<!-- The shared row, not a hand-rolled list: this one used to compute
 			     its own length with Math.round(word_count / 200), which could
 			     disagree with the figure on the sermon's own page. -->
-			<div class="grid gap-3 sm:grid-cols-2">
+			<div class="sermon-list">
 				{#each author.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} />
 				{/each}
@@ -761,9 +734,140 @@
 			</div>
 		</section>
 	{/if}
+	{/if}
 
+	<!-- The biography, after the works. One section, so the jump-bar's
+	     Biography tab stays lit while the prose is on screen. -->
+	{#if author.bio_html || author.bio}
+	<section id="bio" class="jump-anchor" class:mt-12={!readerUi.focus}>
+		{#if !readerUi.focus}
+		<!-- The biography's heading carries its own reading tools — Listen, text
+		     settings, focus mode apply to the life story, not to the page, so they
+		     sit with it rather than among the page actions above. -->
+		<div class="bio-head mx-auto flex max-w-[40rem] items-center gap-3">
+			<h2 class="font-display text-h2 font-semibold">{t('articles.kindBiography')}</h2>
+			{#if author.bio_html}
+				<div class="reader-tools ms-auto shrink-0">
+					{#if listen.offered}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => {
+								if (listen.status !== 'idle') return listen.stop();
+								// Read aloud runs through the whole life: open it first.
+								openBio();
+								reader?.startListening();
+							}}
+							aria-label={t('reader.listen')}
+							title={t('reader.listen')}><Icon name="headphones" size={16} /></button
+						>
+					{/if}
+					<ReaderControls />
+					<button
+						class="btn btn-icon btn-ghost"
+						onclick={() => {
+							// Focus mode is for reading the whole life; leaving it
+							// should not fold the text back up under the reader.
+							openBio();
+							readerUi.toggleFocus();
+						}}
+						aria-label={t('reader.focus')}
+						title={t('reader.focus')}><Icon name="maximize" size={18} /></button
+					>
+				</div>
+			{/if}
+		</div>
+
+		<!-- Lifespan timeline: their own milestones when curated, else the bare
+		     lifespan bar (see LifeTimeline). -->
+		<LifeTimeline
+			birthYear={author.birth_year}
+			deathYear={author.death_year}
+			milestones={author.milestones}
+			labels={getLang() === 'en'}
+		/>
+		{/if}
+
+		<!-- Biography. The band — not the page — carries the reader's CSS variables,
+		     so the width/size/typeface controls govern the prose while the portrait,
+		     book grid and contemporaries keep the page's own layout. `bioLabels`
+		     rides along on the same element: custom properties inherit, so the
+		     prayer-callout ::before labels reach the injected HTML.
+
+		     The opening only, until the reader asks for the rest (design #14):
+		     `bioFold` marks where the opening ends and `.bio-folded` hides the
+		     rest with CSS. It stays in the DOM, so the prerendered page carries
+		     the whole life for search, and the Reader's paragraph indices
+		     (resume, highlights, `?p=`, read aloud) are those of the full text.
+		     Focus mode always shows all of it. The pull quote the header used to
+		     lift out of the bio is gone: it is the bio's own blockquote, shown
+		     once, in place. -->
+		{#if author.bio_html}
+			<div
+				id="bio-text"
+				class="mx-auto mt-8"
+				class:bio-folded={bioFolded}
+				style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
+			>
+				<Reader
+					bind:this={reader}
+					kind="bio"
+					slug={author.slug}
+					order={BIO_CHAPTER_ORDER}
+					language={data.language as string}
+					html={bioFold.html}
+					class="bio"
+					{cite}
+					listenTitle={author.name}
+					listenArtist={t('bios.eyebrow')}
+					bind:body={bioEl}
+					bind:frac
+					headerOffset={pinnedOffset}
+					paused={bioFolded}
+				/>
+				{#if bioFolded}
+					<!-- Present only while folded, so `aria-expanded` is always false;
+					     once opened the control is gone and focus moves into the
+					     revealed text (continueBio). -->
+					<button
+						type="button"
+						class="bio-more"
+						aria-controls="bio-text"
+						aria-expanded="false"
+						onclick={continueBio}
+					>
+						{t('author.continueBio')} · {readingTime(bioWords)} <Arrow />
+					</button>
+				{/if}
+			</div>
+		{:else}
+			<p class="mx-auto mt-6 max-w-[40rem] text-body leading-relaxed text-muted">{author.bio}</p>
+		{/if}
+	</section>
+	{/if}
+
+	{#if !readerUi.focus}
+	<!-- After the biography, so a writer with a life but no works yet does not
+	     open on a dead end. -->
 	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
 		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
+	{/if}
+
+	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
+	{#if author.topics.length}
+		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
+			<span class="eyebrow text-muted">
+				{t('author.themes')}
+			</span>
+			{#each author.topics as topic (topic.slug)}
+				<a
+					href={localizeHref(`/topics/${topic.slug}`)}
+					class="tag"
+				>
+					{topic.title}
+				</a>
+			{/each}
+		</div>
 	{/if}
 
 	<!-- Articles that name this person (the API's `articles` /
@@ -806,10 +910,23 @@
 		</section>
 	{/if}
 
-	<!-- Frequently asked questions — the editorial set for this author (see `faq`
-	     in the script). Renders only with two or more entries. The visible
+	<!-- More lives to explore: nearest contemporaries by era. -->
+	{#if contemporaries.length}
+		<section class="deferred mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
+			<h2 class="section-heading">{t('author.moreLives')}</h2>
+			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+				{#each contemporaries as c (c.slug)}
+					<PersonCard person={c} />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	<!-- Questions and answers — the editorial set for this author (see `faq`
+	     in the script), the page's last section, every answer closed until asked
+	     (design #14). Renders only with two or more entries. The visible
 	     accordion and the FAQPage JSON-LD are built from one array, so they cannot
-	     disagree. -->
+	     disagree; a closed <details> still carries its answer in the HTML. -->
 	{#if showFaq}
 		<section id="faq" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<!-- Localized: the API serves the Q&A per locale (AuthorTranslation.faq),
@@ -819,22 +936,10 @@
 			<h2 class="section-heading">{t('qa.sectionTitle')}</h2>
 			<div class="faq-list">
 				{#each faq as item, i (i)}
-					<details class="faq-item" open={i === 0}>
+					<details class="faq-item">
 						<summary>{item.q}</summary>
 						<p class="faq-a">{item.a}</p>
 					</details>
-				{/each}
-			</div>
-		</section>
-	{/if}
-
-	<!-- More lives to explore: nearest contemporaries by era. -->
-	{#if contemporaries.length}
-		<section class="deferred mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
-			<h2 class="section-heading">{t('author.moreLives')}</h2>
-			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-				{#each contemporaries as c (c.slug)}
-					<PersonCard person={c} />
 				{/each}
 			</div>
 		</section>
@@ -870,7 +975,7 @@
      view: this is a page with a book grid and contemporaries below, so a pill
      claiming "N min left" while scrolling those would be measuring the wrong
      thing. <Reader> supplies `frac` for the prose alone. -->
-{#if !readerUi.focus && listen.status === 'idle' && frac > 0.01 && frac < 0.99}
+{#if !readerUi.focus && !bioFolded && listen.status === 'idle' && frac > 0.01 && frac < 0.99}
 	<div class="min-left" aria-hidden="true">{minutesLeft} {t('sermon.minLeft')}</div>
 {/if}
 
@@ -929,8 +1034,9 @@
 		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 
-	/* The shelves below the biography (books, sermons, articles, Q&A, more
-	   lives) skip style, layout and paint until they near the viewport: a
+	/* The shelves away from the top of the page (sermons, books about them,
+	   articles, Q&A, more lives — not the books, which open the page now)
+	   skip style, layout and paint until they near the viewport: a
 	   prolific writer's page runs to hundreds of cards, and every state change
 	   on it (a tap that opens a brief, the sub-nav lighting a tab) otherwise
 	   recalcs all of them (INP). `auto` remembers each section's real height
@@ -945,12 +1051,6 @@
 			content-visibility: auto;
 			contain-intrinsic-block-size: auto 30rem;
 			overflow-clip-margin: 2rem;
-		}
-		#books.deferred {
-			contain-intrinsic-block-size: auto 50rem;
-		}
-		#sermons.deferred {
-			contain-intrinsic-block-size: auto 60rem;
 		}
 	}
 
@@ -1012,34 +1112,6 @@
 		color: var(--muted);
 		font-size: var(--fs-body);
 		line-height: 1.6;
-	}
-
-	/* Featured header pull-quote — a hook above the biography. */
-	.author-quote {
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: var(--fs-h2);
-		line-height: 1.4;
-		color: var(--text);
-		border-inline-start: 3px solid var(--gold);
-		padding-block: 0.1em;
-		padding-inline: 1.25rem 0;
-	}
-	.author-quote::before {
-		content: '“';
-	}
-	.author-quote::after {
-		content: '”';
-	}
-	/* The bio's own attribution, beneath the quote and aligned with its text
-	   (past the gold rule). A quiet sans line — the cites are free-form sentences,
-	   not a tidy NAME · WORK, so they read as prose, not an uppercase label. */
-	.author-quote-cite {
-		margin-top: 0.55rem;
-		padding-inline-start: 1.25rem;
-		font-family: var(--font-sans);
-		font-size: var(--fs-small);
-		color: var(--muted);
 	}
 
 	/* Long-form biography styling. Targets the injected {@html} via :global.
@@ -1119,17 +1191,112 @@
 		content: '✦ ' var(--label-answered, 'Answer to prayer');
 		color: var(--accent);
 	}
-	.author-plan {
+	/* The hero's key facts: a quiet two-column list, muted labels in one
+	   column and their values in the next, as a biography's fact box. */
+	.author-facts {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 0.3rem 1rem;
+		margin: 1rem 0 0;
+		font-size: var(--fs-small);
+	}
+	.author-facts > div {
+		display: contents;
+	}
+	.author-facts dt {
+		color: var(--muted);
+	}
+	.author-facts dd {
+		margin: 0;
+		color: var(--text);
+	}
+	/* Follow keeps its outline; Share and Search beside it are bare icons. */
+	.author-actions :global(.btn-icon) {
+		border-color: transparent;
+	}
+	/* Where to start (design #14): one band, the book first and widest, then
+	   the plan and the sermon, divided by hairlines. Side by side when the
+	   column has room for them, stacked on a phone. */
+	.start-row {
+		container: start-row / inline-size;
+	}
+	.start-items {
 		display: flex;
 		flex-direction: column;
-		gap: 0.2rem;
-		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
-		background: var(--surface);
-		padding: 0.9rem 1.1rem;
+		background: var(--surface-2);
+	}
+	.start-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		min-width: 0;
+		padding: 0.85rem 1rem;
+	}
+	.start-item + .start-item {
+		border-block-start: 1px solid var(--border);
+	}
+	@container start-row (min-width: 34rem) {
+		.start-items {
+			flex-direction: row;
+		}
+		.start-item {
+			flex: 1 1 0;
+		}
+		.start-book {
+			flex-grow: 1.6;
+		}
+		.start-item + .start-item {
+			border-block-start: 0;
+			border-inline-start: 1px solid var(--border);
+		}
+	}
+	.start-title {
+		margin-top: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
+		color: var(--text);
+	}
+	.start-link {
 		text-decoration: none;
 	}
-	.author-plan:hover {
-		border-color: var(--accent);
+	.start-link:hover .start-title {
+		color: var(--accent);
+	}
+	.start-link :global(.arrow) {
+		color: var(--accent);
+	}
+
+	/* The jump-bar's counts: quieter than the label they qualify. */
+	.subnav-count {
+		color: var(--muted);
+		font-weight: 400;
+	}
+
+	/* The biography's opening (design #14). Everything from the fold mark on
+	   is hidden, not removed — the prerendered HTML keeps the whole life. The
+	   opening fades out into the "Continue reading" control. */
+	.bio-folded :global(.reading > [data-bio-fold]),
+	.bio-folded :global(.reading > [data-bio-fold] ~ *) {
+		display: none;
+	}
+	.bio-folded :global(.reading) {
+		-webkit-mask-image: linear-gradient(to bottom, black calc(100% - 5rem), transparent);
+		mask-image: linear-gradient(to bottom, black calc(100% - 5rem), transparent);
+	}
+	.bio-more {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-top: 0.25rem;
+		padding-block: 0.5rem;
+		font-family: var(--font-sans);
+		font-size: var(--fs-body);
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.bio-more:hover {
+		text-decoration: underline;
 	}
 </style>

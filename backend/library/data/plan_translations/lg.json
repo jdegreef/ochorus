@@ -135,5 +135,12 @@
   "cheque-book-year": {
     "title": "Omwaka Gumu: Ekitabo kya Cheeki eky’Ebbanka y’Okukkiriza",
     "description": "Ebisuubizo bya Charles Spurgeon ebya buli lunaku: ekisuubizo kimu ekya Katonda ku buli lunaku lw’omwaka, n’ekigambo ekimpi ku ngeri y’okukifunamu olw’okukkiriza. Tandika ku lunaku lwonna: olunaku olusooka kye kisomebwa kya nga 1 Janwali, era buli lunaku oluddako lutwala ekiddako. Eddakiika emu oba bbiri buli lunaku."
+  },
+  "faithful-with-little": {
+    "title": "Omwesigwa mu Bintu Ebitono: Ensimbi n’Omutima",
+    "description": "Wiiki ssatu ku ebyo Bayibuli yonna by’eyogera ku nsimbi, essuula emu ennyimpi buli lunaku. Byonna bya Katonda; omutima oguli emabega w’ensawo; okukola mu bwesimbu, okuteekateeka n’amabanja; okugaba nga Katonda; n’obugagga obutaggwaawo, nga tutambula wamu ne John Wesley, George Müller, Charles Spurgeon ne A. W. Tozer. Buli lunaku lukomekkerezebwa n’ekintu kimu eky’okukola, era ennyiriri amakumi asatu enkulu ez’ekitabo zikola omwezi omulala ogw’okusoma.",
+    "note": [
+      "The title quotes the shipped lg edition faithful-with-little.lg.json verbatim (Omwesigwa mu Bintu Ebitono), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+    ]
   }
 }

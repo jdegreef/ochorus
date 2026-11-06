@@ -13,8 +13,16 @@
 		book,
 		showAuthor = true,
 		anchor,
-		showSeries = true
-	}: { book: BookSummary; showAuthor?: boolean; anchor?: string; showSeries?: boolean } = $props();
+		showSeries = true,
+		editions = 1
+	}: {
+		book: BookSummary;
+		showAuthor?: boolean;
+		anchor?: string;
+		showSeries?: boolean;
+		/** How many editions this row stands for on /books (see BookCard). */
+		editions?: number;
+	} = $props();
 	const t = i18n.t;
 
 	const seriesLine = $derived(
@@ -38,6 +46,11 @@
 	<div class="min-w-0 flex-1">
 		<div class="flex flex-wrap items-center gap-x-2">
 			<span class="text-body font-medium text-balance text-text">{book.title}</span>
+			{#if editions > 1}
+				<span class="text-eyebrow font-medium text-muted">
+					{t('books.editionsCount').replace('%n%', String(editions))}
+				</span>
+			{/if}
 		</div>
 		{#if showAuthor}
 			<div class="text-small text-muted">{book.author.name}</div>

@@ -140,5 +140,12 @@
    "Ships with Level 1 books batch 5 (pilgrims-progress.ko, title 『천로역정』); its other sources around-the-wicket-gate.ko (『좁은 문 앞에서』) and grace-abounding.ko (『죄인 중의 괴수에게 넘치는 은혜』) are already shipped, so this batch brings the card live.",
    "The English names no titles, but the card quotes all three shipped ko titles in 『』, since 'the wicket gate' is rendered 좁은 문 in both the ko pilgrims-progress and the Spurgeon title (as in new-to-the-faith's 『좁은 문 앞에서』 여러분을 맞아). Celestial City = 천성, as in the ko pilgrims-progress edition and family-devotions-pilgrims-journey; 'chief of sinners' is carried by the title itself (죄인 중의 괴수, 디모데전서 1:15 개역), so the closing clause says 가장 큰 죄인 to avoid repeating it. Names per the ko name table (찰스 스펄전, 존 번연). AI-drafted; awaiting native review."
   ]
+ },
+ "faithful-with-little": {
+  "title": "작은 일에 신실하게: 돈과 마음",
+  "description": "돈에 대해 성경 전체가 말하는 것을 하루 한 장씩 짧게 읽으며 3주 동안 함께합니다. 모든 것은 하나님의 것이라는 진리, 지갑 뒤에 있는 마음, 정직한 일과 계획과 빚, 하나님처럼 너그럽게 드리는 삶, 그리고 영원히 남는 보물을 존 웨슬리, 조지 뮬러, 찰스 스펄전, A. W. 토저와 함께 살펴봅니다. 날마다 실천할 한 가지로 하루를 마무리하며, 책에 실린 서른 개의 핵심 구절은 한 달 동안 함께 읽을 묵상 계획이 됩니다.",
+  "note": [
+   "The title quotes the shipped ko edition faithful-with-little.ko.json verbatim (작은 일에 신실하게), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+  ]
  }
 }
