@@ -26,6 +26,7 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import { scopedSearchHref } from '$lib/searchState';
 	import QandA from '$lib/components/QandA.svelte';
 	import { topicMeta } from '$lib/emblemNames';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
@@ -258,10 +259,10 @@
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
 
-	<!-- A plain header (design review #16): the title with its two quiet icon
-	     actions, the shelf's one-line description, and the verse as an epigraph
-	     beside them — no tinted box, no badge, no count line (the tabs carry the
-	     counts) and no Search button (search lives in the site bar). The verse
+	<!-- A plain header (design review #16): the title with its quiet icon
+	     actions (Follow, Share, search inside this topic), the shelf's one-line
+	     description, and the verse as an epigraph beside them — no tinted box,
+	     no badge, no count line (the tabs carry the counts). The verse
 	     wraps under the text on narrow screens. -->
 	<header class="topic-head mb-6 mt-4">
 		<div class="head-main min-w-0">
@@ -272,6 +273,17 @@
 				<div class="head-actions flex shrink-0 items-center">
 					<FavoriteButton kind="topic" slug={topic.slug} />
 					<ShareButton url={canonical} title={topic.title} />
+					<!-- Search inside this topic's books and sermons: an icon beside
+					     Follow and Share (founder call after design #16 dropped the
+					     labelled button). Only when there is something to search. -->
+					{#if topic.books.length || topic.sermons.length}
+						<a
+							href={localizeHref(scopedSearchHref('topic', topic.slug))}
+							class="btn btn-ghost btn-icon"
+							aria-label={t('search.inTopic')}
+							title={t('search.inTopic')}><Icon name="search" size={18} /></a
+						>
+					{/if}
 				</div>
 			</div>
 			{#if topic.description}
