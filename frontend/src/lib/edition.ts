@@ -50,3 +50,44 @@ export function childrensReading(
 ): boolean {
 	return kind === 'children' || (kind === null && bookAudience === 'young_readers');
 }
+
+/**
+ * The full text a young-reader edition retells, by the slug convention
+ * (`<base>-teens` / `<base>-children` → `<base>`), or null for a full text.
+ */
+export const editionBase = (slug: string): string | null =>
+	editionKind(slug) ? slug.replace(EDITION_SLUG, '') : null;
+
+/**
+ * How many editions each work has on this shelf — the full text plus its
+ * young-reader editions in the same language, keyed by the full text's slug.
+ * Only works with more than one edition appear: a young-reader edition whose
+ * full text is not on the shelf ("Divine Songs for Children", or a language
+ * with only the retelling) is a work of its own. The frontend twin of
+ * `serializers.sibling_editions`.
+ */
+export function editionFamilies(books: readonly { slug: string }[]): Map<string, number> {
+	const slugs = new Set(books.map((b) => b.slug));
+	const sizes = new Map<string, number>();
+	for (const b of books) {
+		const base = editionBase(b.slug);
+		if (base && slugs.has(base)) sizes.set(base, (sizes.get(base) ?? 1) + 1);
+	}
+	return sizes;
+}
+
+/**
+ * One slot per work (design review #26): a young-reader edition drops out of
+ * `list` when its full text is in `list` too — the full edition's card stands
+ * for the family, and its book page is where the reader chooses. Collapsing
+ * within the list, not against the whole shelf, is what keeps a search honest:
+ * a query or filter that matches the teens edition and not the full text still
+ * shows the teens edition, as itself. Order is kept.
+ */
+export function collapseEditions<T extends { slug: string }>(list: readonly T[]): T[] {
+	const slugs = new Set(list.map((b) => b.slug));
+	return list.filter((b) => {
+		const base = editionBase(b.slug);
+		return !(base && slugs.has(base));
+	});
+}

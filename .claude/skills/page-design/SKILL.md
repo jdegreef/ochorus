@@ -117,6 +117,18 @@ In this order, and nothing else at the top level:
    topic rows from `ROW_TOPICS` titled with the topic's own translated name,
    falling back to the shelf's largest topics. Change the rows there, not in
    the component; don't add a second hand list.
+   **One slot per work on /books** (design review #26, 2026-11-06): a full
+   text and its young-reader editions (`<base>-teens` / `<base>-children`)
+   share ONE card — the full edition's cover with a stacked edge and an
+   "N editions" marker (`BookCard`/`BookListRow` `editions`), linking to the
+   full edition's page, where the reader chooses. The fold is
+   `collapseEditions` (`lib/edition.ts`), run on what the filters LEFT, so a
+   search or filter matching only the teens edition shows it as itself; a
+   young-reader edition with no full text on the shelf is always itself. Not
+   under "By series" (the teens editions are Straight Talk members). Every
+   count on the shelf counts these slots (header "N books · M editions", the
+   "All N books" tab, facet counts, "Showing x of y"); the JSON-LD still lists
+   every edition.
 8. **States** — three, all `<EmptyState>`:
    - *no rows in this language* → `message` + `action` = "Read the English library";
    - *filtered to nothing* → `message` + `action` = clear filters;

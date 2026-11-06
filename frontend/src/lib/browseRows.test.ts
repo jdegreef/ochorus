@@ -49,6 +49,21 @@ describe('browseRows', () => {
 		expect(prayer?.count).toBe(30);
 	});
 
+	it("folds a topic's young-reader editions into their full text when it is in the row", () => {
+		const books = [
+			book('confessions', 'prayer'),
+			book('confessions-teens', 'prayer'),
+			book('confessions-children', 'prayer'),
+			// Its full text is on the shelf but not in this topic: it stays.
+			book('orthodoxy'),
+			book('orthodoxy-teens', 'prayer'),
+			...many(3, 'p', 'prayer')
+		];
+		const prayer = browseRows(books).find((r) => r.topic?.slug === 'prayer');
+		expect(prayer?.books.map((b) => b.slug)).toEqual(['confessions', 'orthodoxy-teens', 'p-0', 'p-1', 'p-2']);
+		expect(prayer?.count).toBe(5);
+	});
+
 	it('draws no rows for an empty shelf', () => {
 		expect(browseRows([])).toEqual([]);
 	});
