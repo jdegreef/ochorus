@@ -3,7 +3,7 @@
  "slug": "orthodoxy",
  "language": "es",
  "job_issue": 7176,
- "pull_request": null,
+ "pull_request": 7506,
  "note": [
   "Scripture is rendered in the Reina-Valera register (RV1960 wording, from memory, not pasted from a corpus), so every reference is marked self-rendered. Where Chesterton bends a verse (Matt 5:29-30, Job 38:11, Ps 121:1) his bent is kept. Possible slips in the English, kept as he wrote them: “fair as the sun, clear as the moon” (Song 6:10 reads the reverse), “Ragnorok” (Ragnarök), “coup de théatre”.",
   "AI-translated (job #7176) chapter by chapter, then reconciled for one form per term (Utopía, la Nueva Teología, liberal, inmanencia/trascendencia, el país de las hadas). Quotations use « » with nested “ ”. Awaiting native review."
