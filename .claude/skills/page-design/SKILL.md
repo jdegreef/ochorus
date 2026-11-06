@@ -157,7 +157,21 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      the name only in the h1 and no link);
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
-   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip`.
+   - **hero visual** on the start side, as the book page hangs its cover:
+     cover, portrait, plate or `CoverStrip`. On a phone it sits small BESIDE
+     the h1, never above it alone.
+   - **The h1 is the item's own name** — a title, a person's name. A longer
+     search phrase ("X Biography, Books, and Sermons") belongs in `<Seo title>`
+     only (design review #13).
+   - **Author page (#13):** `AuthorHero` is the book page's light layout, not a
+     dark band — the portrait as the photograph is (no `.duotone`, no
+     grayscale) in a light print frame; era eyebrow; the name; one line of who
+     they were (`firstSentence(author.bio)`, only when a long bio is shown —
+     a summary-only page prints that summary itself; there is no tagline
+     field, so don't write one); a facts `<dl>` of only what the data holds (Born, Died,
+     Tradition, Place, On Ochorus); then Follow as the one outlined button and
+     Share/Search as bare icons. Quotes is a link in the facts, not a button.
+     `authorHero.test.ts` guards it.
 4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
    `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
    (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
@@ -199,7 +213,10 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    a phone the panel FOLLOWS the list. A ministry cross-link (ForPromo) goes
    at the very end of the page, not in the panel. The grid track is
    `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
-   min-content width otherwise pushes a phone column off-screen.
+   min-content width otherwise pushes a phone column off-screen. With
+   `max={5}` and five covers `<CoverStrip size="fan">` draws a SPREAD instead
+   of the three-cover deck (the home hero, `HomeIntro`, design #5): middle
+   cover in front, two each side stepping back, all upright.
    Once the read card scrolls away (`elementVisible`, as the book's sub-nav
    CTA does), the read verb rides `<ReadBar>` — ONE component for every
    page's read bar (book: `hideFrom="sm"`, where its sub-nav CTA takes over;
@@ -240,6 +257,20 @@ and their own chrome (STYLE_GUIDE §3, §5). What they still share with leaf
 pages: the breadcrumb rule (2), the eyebrow (3), `SourceBadge`, prev/next as
 a `.btn` pair (ghost previous, soft-primary next), and one shared
 `.focus-exit` pill rather than three pasted copies.
+
+**No site chrome while reading (design #7).** A route in `READER_ROUTE_IDS`
+draws no site nav, no footer and no phone tab bar — the root layout's one
+switch is `siteChrome` (`!inReader && !readerUi.focus`), and `--appnav-h` is
+`var(--safe-top, 0px)` there. The reader's ONE slim bar is the page's chrome:
+‹ book title (a link to the book page) · chapter · "n of N", then icon buttons
+with `title` tooltips and `aria-label`s — Contents · Aa · Listen · Bookmark ·
+"⋯" (no visible labels; Previous/Next chapter, Search, Notebook, Edition and
+Focus live in "⋯"). The "⋯" group ENDS with `<ReaderSiteLinks>` — Home + the
+`PRIMARY_NAV` journeys — so the site stays one tap away; a new reading surface
+needs it too (`readerChrome.test.ts`). The scroll-mode bar folds away on
+scroll-down and returns on scroll-up (`nextBarHidden`), snaps under reduced
+motion, and comes back when Tab lands in it. Don't put the nav or footer back
+on a reading surface.
 
 Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
 - **Paged mode slices the last line.** `.paged .pager` fills each CSS column
@@ -312,7 +343,8 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Content | Card | Hover |
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
-| Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
+| Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
+| Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
@@ -348,6 +380,15 @@ Books' author groups carry `photo_url`, extract the strip into a shared
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
 
+The **Topics hub** is a grouped shelf too (design #23): its shelves sit under
+five family headings (`<GroupHeading>`, one `<section>` each) — the families
+and their order are data in `lib/topicGroups.ts` (`TOPIC_GROUPS`, beside
+`TOPIC_META`), headings localized as `topics_group_*`. A slug in no family
+falls into a trailing "More topics" group rather than vanishing, and
+`topicGroups.test.ts` fails until a newly seeded shelf is placed — add it to a
+family when you add a topic (§ Adding a topic shelf). No filter field: grouped,
+the 33 shelves are a map, not a list to search.
+
 The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
 books by author when the topic is *author-clustered* — most of its books share
 an author with another (the Puritans) — and stays a flat `book-grid` otherwise
@@ -379,7 +420,8 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
+- [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
+      (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
@@ -422,6 +464,35 @@ lists content types, **in the same order** everywhere:
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
 
+### The footer is one band (design #3, founder-approved 2026-11)
+
+The footer had grown five bands (~930px on every page: "Before you go" cards,
+a large blessing, four link columns, language tiles, a legal bar, the
+"Ochorus for …" panel with 18 links and a "This week" strip). It is now ONE
+band: logo + mission line · **Library** (PRIMARY_NAV) · **More** (Series,
+young-reader hubs, A–Z, the English hubs, Originals, and ONE "For churches &
+ministries" link to the `/for/` hub) · a language switcher with About /
+Contact / Privacy / Send feedback / RSS under it — then the blessing and © as
+one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
+`forPath(`, no generic cards). Rules:
+
+- **Don't add a band.** A new destination is a link in More, not a panel.
+- **The only card above the band is personal**: the sign-up invitation
+  (signed out, not on /login) or the reader's current book (not where the page
+  already shows it — `pageShowsBook`). No generic "Find your next book" /
+  "Reading Plans" cards: they pointed at the page the reader was often on
+  (plans, search) and repeated the Library column.
+- **Reachability**: the footer is on every page, so it is the crawl's path to
+  each locale's `/series/`, `/young-readers/`, `/teens/`, `/originals/`,
+  `/authors/` and `/fr/for/`. Keep those as real `<a href>`s. The
+  `/for/<group>/` pages are reached through the `/for/` hub, which links them
+  all — don't drop a group from `FOR_LINKS` without another link to it.
+- **The language switcher is a `<details>` of real links, not a `<select>`**:
+  a select that switches on `change` jumps language on the first arrow key
+  (WCAG 3.2.2), does nothing before hydration, and loses the links to every
+  locale home. The list opens in flow (the footer's `content-visibility`
+  would clip an overlay).
+
 ## Adding a topic shelf (a topic ROW, not a new route)
 
 The `/topics/[slug]` page and its chips are generated from data, so a new
@@ -436,6 +507,9 @@ way unless you regen all three up front:
       re-skins existing covers. No migration — topics are seed data.
 - [ ] English-only shelf → add the slug to `TRANSLATION_PENDING` in the same
       file, or the per-language coverage guard demands prose in all 7 langs.
+- [ ] its family on the Topics hub: `frontend/src/lib/topicGroups.ts`
+      `TOPIC_GROUPS` (`topicGroups.test.ts` reads the seed and fails until it
+      is placed; unplaced, it shows under "More topics").
 - [ ] emblem identity in `frontend/src/lib/emblemNames.ts` `TOPIC_META`
       (`accent` + a **unique** `emblem` with ≥3 colours in `emblems.ts`
       `EMBLEM_ART`, per `emblems.test.ts`) — then **`npm run emblem:art`**
@@ -553,7 +627,7 @@ components carries neither. **Five source-text guards now scan every `.svelte`
 - `pageShell.test.ts` — `.page-col`, `<PageHeader>` on browse, the `py-10` shell
   padding, and no `mx-auto max-w-{2xl…7xl}` shell.
 - `typeScaleGuard.test.ts` — no `text-[…]`; no scoped literal `font-size`;
-  `.text-display` = home hero only; `.text-h1` = the page `<h1>` only, never an
+  `.text-display` = home hero only (`HomeIntro` logged out, `HomeHero` signed in); `.text-h1` = the page `<h1>` only, never an
   `<h2>`–`<h6>`; and no Tailwind default size (`text-base`/`-lg`/`-xl`/`-6xl`…).
 - `typeScaleGuard.test.ts` also forbids `var(--radius-*, …)` fallbacks (a
   fallback fires only on a MISSING token, so it hid the never-defined

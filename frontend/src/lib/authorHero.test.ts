@@ -1,55 +1,35 @@
 /**
- * The author page's masthead (AuthorHero.svelte) — measured, not trusted.
+ * The author page's masthead (AuthorHero.svelte), held to design review #13.
  *
- * Its band is an era hue mixed 28% into --hero-tint (the palette's night
- * shade), and its text is --hero-ink, the secondary lines at 85% opacity. An
- * era's hue is a mid-tone and every palette sets its own tint, so each pair is
- * computed here against WCAG AA rather than eyeballed on one author. The mat
- * under a portrait-less writer carries their initials in --hero-mat-ink over a
- * 16% wash of the era hue.
+ * It used to be a dark band of the era's colour with the portrait printed as
+ * a duotone, and this file measured that band's ink against every era over
+ * every palette. The band is gone: the hero is the book page's light layout on
+ * the page's own ground, so its text is the page's text (palettes.test holds
+ * those), and the --hero-* tokens it used are measured there for the home hero
+ * that still wears them. What is guarded here is the new rule itself.
  */
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { contrastRatio } from './coverArt';
-import { ERA_HUE } from './eras';
 
-const CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '');
-const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-const mix = (a: number[], b: number[], p: number) => a.map((v, i) => v * p + b[i] * (1 - p));
-
-/** Every value a custom property is declared with anywhere in app.css. */
-const declared = (prop: string): string[] =>
-	[...CSS.matchAll(new RegExp(`${prop}:\\s*(#[0-9a-fA-F]{6})\\s*;`, 'g'))].map((m) => m[1]);
+const read = (p: string) => readFileSync(join(process.cwd(), 'src', p), 'utf-8');
+const HERO = read('lib/components/AuthorHero.svelte').replace(/\/\*[\s\S]*?\*\/|<!--[\s\S]*?-->/g, '');
+const PAGE = read('routes/authors/[slug]/+page.svelte').replace(/<!--[\s\S]*?-->/g, '');
+const markup = (src: string) => src.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '');
 
 describe('author hero', () => {
-	const tints = declared('--hero-tint');
-	const [ink] = declared('--hero-ink');
-	const [mat] = declared('--hero-mat');
-	const [matInk] = declared('--hero-mat-ink');
-
-	it('finds the tokens it measures', () => {
-		expect(tints.length).toBeGreaterThan(1);
-		for (const v of [ink, mat, matInk]) expect(v).toMatch(/^#[0-9a-f]{6}$/i);
+	it('shows the real portrait: no duotone, no grayscale', () => {
+		expect(markup(HERO)).not.toMatch(/duotone|grayscale/);
+		expect(HERO).not.toMatch(/--duotone-hue|filter:\s*grayscale/);
 	});
 
-	it('hero ink clears 4.5:1 on every era over every palette tint, full and at 85%', () => {
-		const failures: string[] = [];
-		for (const [era, hue] of Object.entries(ERA_HUE)) {
-			for (const tint of tints) {
-				const ground = mix(rgb(hue), rgb(tint), 0.28);
-				const full = contrastRatio(rgb(ink), ground);
-				const soft = contrastRatio(mix(rgb(ink), ground, 0.85), ground);
-				if (full < 4.5 || soft < 4.5) failures.push(`${era} over ${tint}: ${full.toFixed(2)} / ${soft.toFixed(2)}`);
-			}
-		}
-		expect(failures, failures.join('\n')).toEqual([]);
+	it('sits on the page ground, not a dark slab', () => {
+		expect(HERO).not.toMatch(/--hero-(tint|ink|gilt|mat)/);
 	});
 
-	it('the mat initials clear 4.5:1 on every era wash', () => {
-		for (const [era, hue] of Object.entries(ERA_HUE)) {
-			const ratio = contrastRatio(rgb(matInk), mix(rgb(hue), rgb(mat), 0.16));
-			expect(ratio, era).toBeGreaterThanOrEqual(4.5);
-		}
+	it('the visible H1 is the person’s name; the long phrase is the title only', () => {
+		const h1s = [...markup(PAGE).matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1].trim());
+		expect(h1s).toEqual(['{author.name}']);
+		expect(PAGE).toMatch(/title="\{seoTitle\} — Ochorus"/);
 	});
 });

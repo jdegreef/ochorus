@@ -315,6 +315,8 @@ weight 600, a 150ms transition).
   2026-11): on the book, plan and author pages the soft fill left the reason the
   page exists about as loud as a chip. Add `.btn-solid` to that one button (and
   its sub-nav / `ReadBar` stand-in) — never to a second button on the same view.
+  The logged-out home hero's "Start reading" (`HomeIntro`, design review #5)
+  is that page's one verb and wears `.btn-solid` too.
   Its ink is `--accent-contrast`, held at AA on `--accent` in every theme and
   palette by `palettes.test.ts`. A second line inside it (`.btn-sub`, with
   `flex-col gap-0` on the button) names what it opens: "Begin reading /
@@ -610,14 +612,18 @@ sits on **`.chrome-col`** (`--chrome-w`: the page column's width, never under
 64rem), so the wordmark shares the page's start edge.
 
 ### Footer
-Identical on every page: wordmark + tagline, an **Explore** group (the six nav
-destinations, then — in English only — Articles, Scripture, Quotes, RSS), an
-**About** group (About / Contact / Legal), the mission block, a language strip
-and the copyright line. Hidden in focus mode. Its rows sit on `.chrome-col`,
-like the nav bar.
+One band, identical on every page (design #3): wordmark + one-line mission, a
+**Library** column (the five nav destinations), a **More** column (Series, the
+young-reader hubs, A–Z, in English Articles · Scripture · Quotes, Originals, and
+one "For churches & ministries" link to the `/for/` hub), the language switcher
+with About / Contact / Privacy / Send feedback / RSS under it, then the
+blessing and copyright as one small line. Above it only a personal next step
+(sign-up invite or the reader's current book). Don't add a band — a new
+destination is a link in More (`page-design` skill, "The footer is one band").
+Hidden in focus mode. Its rows sit on `.chrome-col`, like the nav bar.
 
 **Every surface that lists content types lists the same ones in the same
-order** — nav, footer Explore, the command palette's `COMMANDS`, the search
+order** — nav, the footer columns, the command palette's `COMMANDS`, the search
 hit kinds and `sitemap.ts`. The `page-design` skill carries the checklist; a
 content type that is footer-only (as Articles, Scripture and Quotes were) is
 not shipped.

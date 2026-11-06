@@ -2314,12 +2314,6 @@ nav.appnav {
 		--appnav-h: 0px;
 	}
 }
-/* The reading routes opt out: their own bar pins to the top and carries
-   back/contents/settings, so a second sticky bar would take ~56px of reading
-   height for the whole chapter and stack two bars over the text. */
-nav.appnav.appnav-static {
-	position: static;
-}
 /* The phone app (<html data-app>, set by $lib/platform's startAppShell).
    Unlayered, so it outranks the scoped and utility `top: 0` it adjusts.
    Capacitor 8 runs the web view edge to edge on iOS and Android, so the
@@ -2334,8 +2328,8 @@ nav.appnav.appnav-static {
 	--safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 }
 /* The strip wears the nav's colour, so the nav reads as running up under the
-   clock; on the reading routes, where the nav rides away and the reader's own
-   bar (the page ground) pins beneath, it wears the ground. It sits above the
+   clock; on the reading routes and in focus mode, where there is no nav and
+   the reader's own bar (the page ground) pins beneath, it wears the ground. It sits above the
    chrome but below a sheet's or dialog's scrim, which dims it with the rest of
    the page — those overlays keep their own content clear of the inset. */
 :root[data-app] body::after {
@@ -2349,9 +2343,8 @@ nav.appnav.appnav-static {
 	pointer-events: none;
 }
 /* data-app-top (the root layout, app only): 'nav' while the nav is pinned,
-   'static' on the reading routes, 'none' in focus mode. A flag, not
+   'none' where it isn't drawn (the reading routes, focus mode). A flag, not
    body:has(), which would restyle the page each time the nav came or went. */
-:root[data-app][data-app-top='static'] body::after,
 :root[data-app][data-app-top='none'] body::after {
 	background: var(--bg);
 }
@@ -2372,7 +2365,8 @@ nav.appnav.appnav-static {
 :root[data-app] .app-root {
 	--appnav-h: calc(3.5rem + var(--safe-top));
 }
-/* Focus mode draws no nav: the page itself starts below the strip. */
+/* No nav (a reading surface, focus mode): the page itself starts below the
+   strip. */
 :root[data-app][data-app-top='none'] .app-root {
 	padding-top: var(--safe-top);
 }
@@ -2645,15 +2639,6 @@ nav.appnav .navmore-menu {
 		display: none;
 	}
 }
-/* On a phone's reading surfaces (`.appnav-static`, no tab bar) the reader's own
-   Aa sheet holds the theme switch, so the gear goes there too. Elsewhere with
-   no tab bar (while Listen plays, say) it stays, or the page would have no
-   theme control. */
-@media (max-width: 639.98px) {
-	nav.appnav.appnav-static .prefs {
-		display: none;
-	}
-}
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
    the shortcut is advertised, and it is meaningless without a keyboard: so it
@@ -2743,6 +2728,10 @@ nav.appnav .navsearch:hover {
    hung a little closer to its button, with icon rows at thumb size. */
 .account-menu.more-group {
 	top: calc(100% + 0.25rem);
+	/* It ends with the site's destinations (ReaderSiteLinks) — on a short
+	   landscape screen that runs past the fold, so it scrolls in itself. */
+	max-height: calc(100dvh - var(--appnav-h, 0px) - 5rem);
+	overflow-y: auto;
 }
 .account-item.more-item {
 	display: flex;
