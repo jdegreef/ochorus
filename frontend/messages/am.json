@@ -1146,7 +1146,6 @@
   "book_on_chapter": "ከ%t% ምዕራፍ %n% ላይ ነዎት",
   "book_chapter_of": "ከ%t% ምዕራፍ %n%",
   "book_continue": "ይቀጥሉ",
-  "book_explore": "ያስሱ",
   "book_read_in_language": "በቋንቋዎ ያንብቡ",
   "book_available_in": "ይህ መጽሐፍ በሚከተሉት ቋንቋዎችም ይገኛል፦",
   "fallback_title": "ገና በ%lang% አይገኝም",

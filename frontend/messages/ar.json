@@ -1146,7 +1146,6 @@
   "book_on_chapter": "أنت في الفصل %n% من %t%",
   "book_chapter_of": "الفصل %n% من %t%",
   "book_continue": "متابعة",
-  "book_explore": "استكشف",
   "book_read_in_language": "اقرأ بلغتك",
   "book_available_in": "هذا الكتاب متوفر أيضًا بـ:",
   "fallback_title": "غير متوفر بعدُ باللغة %lang%",

@@ -1146,7 +1146,6 @@
   "book_on_chapter": "Vous en êtes au chapitre %n% sur %t%",
   "book_chapter_of": "Chapitre %n% sur %t%",
   "book_continue": "Continuer",
-  "book_explore": "Explorer",
   "book_read_in_language": "Lisez dans votre langue",
   "book_available_in": "Ce livre est aussi disponible en :",
   "fallback_title": "Pas encore disponible en %lang%",

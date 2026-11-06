@@ -514,8 +514,9 @@
 	// The sections in the order a reader decides (design review #9): About →
 	// Contents → Editions → Author → Q&A. Five at most and no counts: a sixth
 	// tab and two counts made the bar a second menu, and "More like this" is the
-	// page's end, not a place to jump to. The pill and the <h2> share their key:
-	// they are the same words.
+	// page's end, not a place to jump to. A pill shares its section <h2>'s key
+	// (the same words) wherever the heading is a label; the author band's
+	// heading is the author's name, so its pill is the plain noun "Author".
 	const navItems = $derived(
 		[
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
@@ -845,7 +846,7 @@
 </div>
 <!-- /book-band -->
 
-<div class="book-body page-col px-5 pb-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
+<div class="page-col px-5 pb-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- A3: on-page jump navigation. Pinned under the app nav on scroll; its
 	     measured height feeds `--pinned-offset` on the page column so anchored
 	     sections land clear of both bars (the same contract the author sub-nav
@@ -899,9 +900,9 @@
 	     bio_html to bio, so a book without a long-form piece still has prose. -->
 	{#if hasAbout}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
+			<h2 id="about-work" class="section-heading no-rule">{t('book.aboutWork')}</h2>
 			<div class="about-layout">
-				<div class="about-prose">
+				<div class="about-prose text-body">
 					{#if book.about_html}
 						<div class="about-work has-initial text-body leading-relaxed" dir="auto">
 							<!-- Server-sanitised long-form piece. -->
@@ -920,11 +921,15 @@
 				{@render openingLines()}
 			</div>
 		</section>
-	{:else if hasAboutFoot || book.opening}
+	{:else if hasAboutFoot}
 		<div class="about-layout mt-8">
-			<div class="about-prose">{@render aboutFoot()}</div>
+			<div class="about-prose text-body">{@render aboutFoot()}</div>
 			{@render openingLines()}
 		</div>
+	{:else if book.opening}
+		<!-- No prose and no foot: the quote alone, not stranded in the aside's
+		     column beside an empty one. -->
+		<div class="mt-8 max-w-xl">{@render openingLines()}</div>
 	{/if}
 	<!-- Under the prose: the way into the reader's guide, then the quiet
 	     metadata lines.
@@ -944,7 +949,10 @@
 	{#snippet aboutFoot()}
 		{#each book.guides ?? [] as guide, i (guide.slug)}
 			<p class="mt-4 text-body" dir="auto">
-				<a href={localizeHref(`/articles/${guide.slug}/`)} class="font-medium text-accent hover:underline"
+				<a
+					href={localizeHref(`/articles/${guide.slug}/`)}
+					title={i === 0 ? guide.h1 : undefined}
+					class="font-medium text-accent hover:underline"
 					>{i === 0 ? t('book.newToGuide').replace('%title%', book.title) : guide.h1}{'\u00a0'}<Arrow /></a
 				>
 			</p>
@@ -1005,7 +1013,7 @@
 	     hydration. There is still no per-chapter completion record, so a check means
 	     "before the furthest you got", not a claim the chapter was read end to end. -->
 	<section id="contents" class="jump-anchor mt-8">
-		<h2 class="section-heading">
+		<h2 class="section-heading no-rule">
 			{t('reader.contents')}
 			<span class="meta"
 				>· <span class="whitespace-nowrap">{chapterCount(book.chapter_count)}</span
@@ -1018,7 +1026,7 @@
 		{#if finishedAt != null || resuming}
 			<div class="mb-2 mt-1">
 				<!-- A part per chapter while the parts stay legible; a long book
-				     (past the length the list itself collapses at) is one bar. -->
+				     (past SEGMENTS_MAX chapters) is one bar. -->
 				{#if book.chapters.length <= SEGMENTS_MAX}
 					<SeriesSegments
 						stages={book.chapters.map((c) => (isCurrent(c.order) ? 'reading' : isRead(c.order) ? 'done' : 'unread'))}
@@ -1113,7 +1121,7 @@
 	     "(For …)" suffix the rung already says. -->
 	{#if book.editions?.length}
 		<section id="editions" class="jump-anchor mt-12">
-			<h2 class="section-heading">{t('audience.spotlightLadder')}</h2>
+			<h2 class="section-heading no-rule">{t('audience.spotlightLadder')}</h2>
 			<ul class="edition-picker">
 				{#each family as { book: ed, rung } (ed.slug)}
 					{@const here = ed.slug === book.slug}
@@ -1152,7 +1160,7 @@
 	<!-- On a fallback page the notice above already lists these. -->
 	{#if showLanguages}
 		<section id="languages" class="jump-anchor mt-12">
-			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
+			<h2 class="section-heading no-rule">{t('book.readInLanguage')}</h2>
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<span class="text-small text-muted">{t('book.availableIn')}</span>
 				{#each siblingEditions as ed (ed.loc)}
@@ -1168,7 +1176,7 @@
 	     language is dropped), so every card here is a live link. -->
 	{#if book.featured_people?.length}
 		<section class="mt-12">
-			<h2 class="section-heading">{t('book.peopleInBook')}</h2>
+			<h2 class="section-heading no-rule">{t('book.peopleInBook')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each book.featured_people as person (person.slug)}
 					<PersonCard {person} />
@@ -1229,7 +1237,7 @@
 	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
 	     the visible answers and the structured data stay in lockstep. The shared
 	     <QandA> section id is `questions`, which the jump-nav above points at. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" openFirst={false} />
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading no-rule" openFirst={false} />
 
 	<!-- Where to go from here: one book to read next (the first of "More like
 	     this", given room and its pitch) and, for a book with one, the leader's
@@ -1253,7 +1261,7 @@
 	{#if book.related?.length}
 		{@const [next, ...rest] = book.related}
 		<section id="related" class="jump-anchor mt-12">
-			<h2 class="section-heading">{t('book.related')}</h2>
+			<h2 class="section-heading no-rule">{t('book.related')}</h2>
 			<div class="next-pair">
 				<a
 					href={localizeHref(`/books/${next.slug}`)}
@@ -1491,15 +1499,6 @@
 		text-decoration: none;
 	}
 
-	/* Section headings without the rule under each (design review #9): on a
-	   page of eight sections the hairlines striped it, and the space between
-	   sections already separates them. :global — the Q&A heading is drawn by
-	   <QandA>. */
-	.book-body :global(.section-heading) {
-		padding-bottom: 0;
-		border-bottom: 0;
-	}
-
 	/* About: the prose at a reading measure, and from lg the opening lines as
 	   an aside beside it (design review #9). On a phone they follow in flow. */
 	.about-prose {
@@ -1510,6 +1509,10 @@
 		padding-inline-start: 1.25rem;
 		/* The one quotation rule (STYLE_GUIDE §1), not a filled card. */
 		border-inline-start: 3px solid var(--gold);
+	}
+	/* Alone (a book with no prose to follow), the wrapper's mt-8 is the gap. */
+	.about-quote:first-child {
+		margin-top: 0;
 	}
 	.about-quote blockquote {
 		font-size: var(--fs-h3);
@@ -1524,10 +1527,8 @@
 		.about-quote {
 			margin-top: 0.25rem;
 		}
-		/* Generous, between the two heading sizes: a full h2 ran a long
-		   opening taller than the prose beside it. */
 		.about-quote blockquote {
-			font-size: calc((var(--fs-h3) + var(--fs-h2)) / 2);
+			font-size: var(--quote-size);
 		}
 	}
 	/* Topics and Scripture: plain links in a muted line. */
@@ -1637,8 +1638,16 @@
 		padding: 0;
 		list-style: none;
 	}
+	/* A flex row, so the link fills the <li> even when the grid row is taller
+	   (the neighbouring column's title wraps): the line's 50% caps then meet
+	   the marker's centre. */
 	.contents-path > li {
 		position: relative;
+		display: flex;
+	}
+	.contents-path > li > * {
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 	.contents-path > li::before {
 		content: '';

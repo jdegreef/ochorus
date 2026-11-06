@@ -257,7 +257,8 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    (About, Contents, Editions, Author, Q&A), with no counts. Up to 20
    chapters show whole (`CONTENTS_COLLAPSE_AT`), in two columns from md;
    longer books keep the window. Q&As all start closed (`openFirst={false}`).
-   The book page's section H2s carry no rule — spacing separates them.
+   The book page's section H2s carry no rule (`.section-heading.no-rule`,
+   app.css) — spacing separates them.
 6. **Sections** — `h2.section-label` above a *list* (contents, quotes, passages);
    `h2.text-h3` above *prose*. A count in a heading is `(N)` in
    `text-small font-normal text-muted`, or absent — not both styles.

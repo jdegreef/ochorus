@@ -1146,7 +1146,6 @@
   "book_on_chapter": "Bạn đang ở chương %n% / %t%",
   "book_chapter_of": "Chương %n% / %t%",
   "book_continue": "Đọc tiếp",
-  "book_explore": "Khám phá",
   "book_read_in_language": "Đọc bằng ngôn ngữ của bạn",
   "book_available_in": "Sách này cũng có bằng:",
   "fallback_title": "Chưa có bằng %lang%",
