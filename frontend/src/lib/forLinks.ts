@@ -1,5 +1,5 @@
 /**
- * The "Ochorus for …" pages' links — the footer's closing sentence, each page's
+ * The "Ochorus for …" pages' links — the footer's link to the hub, each page's
  * group switcher, the /for/ index and the share-card script. Kept apart from the page copy ($lib/forPages) because the
  * footer is in the layout: importing the copy there would ship every page's
  * text with every page. forPages.test.ts keeps the two lists in step.
@@ -7,7 +7,7 @@
  * The pages exist in English and French (`FOR_LOCALES`): pitch copy is written
  * per language rather than through the catalogues, so each language is a
  * deliberate set of pages, not a placeholder. A reader in any other language
- * is not sent to them (the footer row is English and French only).
+ * is not sent to them (the footer link is English and French only).
  */
 export interface ForLinkDest {
 	/** The URL segment: /for/<slug>/. */
@@ -25,8 +25,8 @@ export interface ForLinkDest {
 	family: ForFamily;
 }
 
-/** The footer's four columns, left to right: who a page is for, grouped so
- *  eighteen links read as four short lists rather than one long sentence. */
+/** Four families, left to right: who a page is for, grouped so eighteen links
+ *  read as four short lists rather than one long sentence. */
 export const FOR_FAMILIES = [
 	{ id: 'church', en: 'Church', fr: 'Église' },
 	{ id: 'mission', en: 'Mission', fr: 'Mission' },
@@ -79,33 +79,16 @@ export const forFamilyLinks = (family: ForFamily): ForLinkDest[] => FOR_LINKS.fi
 /** The row's name: "Ochorus for …" — the footer eyebrow and each page's. */
 export const FOR_EYEBROW: Record<ForLocale, string> = { en: 'Ochorus for', fr: 'Ochorus pour' };
 
-/** The footer row's own words, beside the links. Like the links, written per
- *  language rather than catalogued (the French library has no leader's guides
- *  yet, so its line doesn't promise them). */
-export const FOR_FOOTER: Record<
-	ForLocale,
-	{ title: string; body: string; thisWeek: string; share: string; shareTitle: string; copied: string }
-> = {
-	en: {
-		title: 'Bring the classics to your people.',
-		body: 'Free books, reading plans and leader’s guides for every kind of ministry and home.',
-		thisWeek: 'This week:',
-		share: 'Pass it on to your pastor',
-		shareTitle: 'Ochorus for pastors',
-		copied: 'Link copied'
-	},
-	fr: {
-		title: 'Apportez les classiques à ceux que vous servez.',
-		body: 'Des livres et des parcours de lecture gratuits, pour chaque ministère et chaque foyer.',
-		thisWeek: 'Cette semaine :',
-		share: 'Faites-le connaître à votre pasteur',
-		shareTitle: 'Ochorus pour les pasteurs',
-		copied: 'Lien copié'
-	}
+/** The footer's one link to the /for/ hub, which lists every group page. Like
+ *  the links, written per language rather than catalogued, and shown only to a
+ *  reader of a language the pages are written in. */
+export const FOR_FOOTER: Record<ForLocale, string> = {
+	en: 'For churches & ministries',
+	fr: 'Pour les Églises et les ministères'
 };
 
-/** The group the footer features this week: each in turn, changing on Monday
- *  (UTC), so every page view in a week shows the same one. */
+/** A group in turn, changing on Monday (UTC), so every page view in a week
+ *  shows the same one. */
 export function forOfTheWeek(now: number = Date.now()): ForLinkDest {
 	const MONDAY_1970 = Date.UTC(1970, 0, 5);
 	const week = Math.floor((now - MONDAY_1970) / (7 * 86_400_000));

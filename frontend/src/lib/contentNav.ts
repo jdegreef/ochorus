@@ -67,7 +67,7 @@ export const sectionDest = (section: NavSection): NavDest => PRIMARY_NAV.find((d
 
 /* Not listed here on purpose: the "Ochorus for …" landing pages ($lib/forLinks)
  * are pitches to a group of readers, not content destinations, so they sit in
- * the footer's bottom row alone — not the palette or the More sheet. */
+ * the footer (one link to their /for/ hub) — not the palette or the More sheet. */
 
 /** Articles · Scripture · Quotes — English-only hubs (footer + palette). */
 export const ENGLISH_HUBS: HubDest[] = [

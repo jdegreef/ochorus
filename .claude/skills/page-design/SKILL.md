@@ -351,7 +351,8 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
+- [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
+      (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
@@ -393,6 +394,32 @@ lists content types, **in the same order** everywhere:
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
+
+### The footer is one band (design #3, founder-approved 2026-11)
+
+The footer had grown five bands (~930px on every page: "Before you go" cards,
+a large blessing, four link columns, language tiles, a legal bar, the
+"Ochorus for …" panel with 18 links and a "This week" strip). It is now ONE
+band: logo + mission line · **Library** (PRIMARY_NAV) · **More** (Series,
+young-reader hubs, A–Z, the English hubs, Originals, and ONE "For churches &
+ministries" link to the `/for/` hub) · language `<select>` with About /
+Contact / Privacy / Send feedback / RSS under it — then the blessing and © as
+one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
+`forPath(`, no generic cards). Rules:
+
+- **Don't add a band.** A new destination is a link in More, not a panel.
+- **The only card above the band is personal**: the sign-up invitation
+  (signed out, not on /login) or the reader's current book (not where the page
+  already shows it — `pageShowsBook`). No generic "Find your next book" /
+  "Reading Plans" cards: they pointed at the page the reader was often on
+  (plans, search) and repeated the Library column.
+- **Reachability**: the footer is on every page, so it is the crawl's path to
+  each locale's `/series/`, `/young-readers/`, `/teens/`, `/originals/`,
+  `/authors/` and `/fr/for/`. Keep those as real `<a href>`s. The
+  `/for/<group>/` pages are reached through the `/for/` hub, which links them
+  all — don't drop a group from `FOR_LINKS` without another link to it. The
+  language select needs no hrefs: each locale home is a prerender entry
+  (`svelte.config.js`) and the head's hreflang names them.
 
 ## Adding a topic shelf (a topic ROW, not a new route)
 

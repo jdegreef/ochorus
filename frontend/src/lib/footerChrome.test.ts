@@ -7,41 +7,56 @@ const FOOTER = read('src/lib/components/SiteFooter.svelte');
 const FAB = read('src/lib/components/FeedbackFab.svelte');
 
 describe('the floating feedback button and the footer', () => {
-	it('steps aside once the footer’s Account column (its "Send feedback") is reached', () => {
+	it('steps aside once the footer’s "Send feedback" row is reached', () => {
 		expect(FOOTER).toMatch(/footerFeedback\.reached\s*=/);
-		expect(FOOTER).toContain("getElementById('footer-account-heading')");
+		expect(FOOTER).toMatch(/<nav class="footer-legal[^"]*"[^>]*bind:this=\{feedbackRow\}/);
 		expect(FAB).toMatch(/!footerFeedback\.reached \|\| focused/);
 	});
 
-	it('the Account column keeps the "Send feedback" entry it is watched for', () => {
-		const account = FOOTER.slice(FOOTER.indexOf('{#snippet accountList()}'));
-		expect(account.slice(0, account.indexOf('{/snippet}'))).toContain("t('feedback.send')");
+	it('the watched row keeps the "Send feedback" entry', () => {
+		const legal = FOOTER.slice(FOOTER.indexOf('<nav class="footer-legal'));
+		expect(legal.slice(0, legal.indexOf('</nav>'))).toContain("t('feedback.send')");
 	});
 });
 
-describe('phone link columns', () => {
-	it('fold in CSS, so the prerendered page carries every link and nothing reflows', () => {
-		expect(FOOTER).toMatch(/\.footer-col:not\(\.open\) :global\(\.footer-links\)\s*\{\s*display: none;/);
-		expect(FOOTER).not.toMatch(/mediaFlag\(/);
-	});
-
-	it('every link column goes through linkColumn', () => {
-		expect(FOOTER.match(/\{@render linkColumn\(/g)?.length).toBe(3);
+/*
+ * Design #3, "A one-band footer": the footer had grown five bands (~930px on
+ * every page). These pin the one band, so a future addition is a decision, not
+ * a drift back.
+ */
+describe('one band', () => {
+	it('has exactly two link columns, Read and More, both through linkColumn', () => {
+		expect(FOOTER.match(/\{@render linkColumn\(/g)?.length).toBe(2);
 		expect(FOOTER).not.toMatch(/<nav aria-labelledby="footer-/);
 	});
+
+	it('links the /for/ hub once instead of every audience page', () => {
+		expect(FOOTER).toContain('forIndexPath(forLang)');
+		expect(FOOTER).not.toMatch(/forPath\(|FOR_LINKS|forFamilyLinks/);
+	});
+
+	it('draws no generic library cards — only a personal next step', () => {
+		expect(FOOTER).not.toContain("t('seals.nextBooks')");
+		expect(FOOTER).not.toContain("t('seals.nextPlans')");
+		expect(FOOTER).toMatch(/pageShowsBook\(path, item\.slug\)/);
+	});
 });
 
-describe('language tiles', () => {
+describe('language select', () => {
 	const GENERATOR = read('scripts/fetch-live-locales.mjs');
 
-	it('bake each live language\'s book count from the API at build time', () => {
+	it('bakes each live language\'s book count from the API at build time', () => {
 		expect(GENERATOR).toMatch(/row\?\.book_count/);
 		expect(GENERATOR).toContain('export const LIVE_LOCALE_BOOKS');
 	});
 
-	it('print the count under the autonym, and nothing for a language with none', () => {
+	it('words the count beside the autonym, and nothing for a language with none', () => {
 		expect(FOOTER).toContain("import { LIVE_LOCALE_BOOKS } from '$lib/live-locales.generated'");
-		expect(FOOTER).toMatch(/\{#if LIVE_LOCALE_BOOKS\[code\]\}/);
-		expect(FOOTER.match(/\{@render tile\(/g)?.length).toBe(2);
+		expect(FOOTER).toMatch(/if \(!n\) return name;/);
+	});
+
+	it('switches through lang.choose(), voicing each option in its own language', () => {
+		expect(FOOTER).toMatch(/onchange=\{\(e\) => lang\.choose\(e\.currentTarget\.value\)\}/);
+		expect(FOOTER).toMatch(/<option value=\{l\.code\} lang=\{l\.code\}/);
 	});
 });
