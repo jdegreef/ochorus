@@ -31869,6 +31869,18 @@
 				417
 			]
 		},
+		"vi/faithful-with-little": {
+			"ground": "14835dccd6f3dcec4a921ca82dea2580ace98c9666a7f8411117bfa819bd6aeb",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/gleanings-among-the-sheaves": {
 			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",
 			"style": "revival",
