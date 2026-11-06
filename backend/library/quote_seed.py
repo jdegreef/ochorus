@@ -3540,13 +3540,13 @@ GARETH_EVANS = [
         "slug": "gareth-evans-acd8fcf2",
         "text": "God has not called us to be famous or successful; He has called us to be faithful.",
         "chapter": ("he-holds-my-tomorrows", 15),
-        "paragraph": 16,
+        "paragraph": 15,
     },
     {
         "slug": "gareth-evans-250ffc80",
         "text": "Faith does not deliver us from the chisel or hammer of the Divine sculptor.",
         "chapter": ("he-holds-my-tomorrows", 16),
-        "paragraph": 45,
+        "paragraph": 47,
     },
     {
         "slug": "gareth-evans-7bf997cc",
@@ -3558,7 +3558,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-ea56a35e",
         "text": "The great promises of God only come to those who have died to themselves.",
         "chapter": ("he-holds-my-tomorrows", 12),
-        "paragraph": 28,
+        "paragraph": 29,
     },
     {
         "slug": "gareth-evans-8f7e4023",
@@ -3570,7 +3570,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-0b4a12e9",
         "text": "Faith is an attribute of the heart and is evidenced in obedience.",
         "chapter": ("he-holds-my-tomorrows", 2),
-        "paragraph": 40,
+        "paragraph": 39,
     },
     {
         "slug": "gareth-evans-c9e0110e",
@@ -3594,19 +3594,19 @@ GARETH_EVANS = [
         "slug": "gareth-evans-5229253d",
         "text": "God only allows testing to come in our lives so that He might make us pure.",
         "chapter": ("he-holds-my-tomorrows", 13),
-        "paragraph": 26,
+        "paragraph": 27,
     },
     {
         "slug": "gareth-evans-5df533df",
         "text": "God knows the heart of man and will only reveal Himself to those who are pure in heart.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 41,
+        "paragraph": 45,
     },
     {
         "slug": "gareth-evans-cf0d0a61",
         "text": "The only way man can approach God is through the shed blood of a lamb.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 31,
+        "paragraph": 33,
     },
     {
         "slug": "gareth-evans-b4cd492e",
@@ -3642,7 +3642,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-dc3ec2c5",
         "text": "The gifts are given to individuals, not that they might glory or boast in them, but that they might be for the benefit of all.",
         "chapter": ("he-holds-my-tomorrows", 3),
-        "paragraph": 68,
+        "paragraph": 71,
     },
     {
         "slug": "gareth-evans-7f44b4a6",
@@ -3654,7 +3654,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-12a18c7e",
         "text": "To those who have placed their trust in the finished work of Calvary, there is no more condemnation but an access into the presence and fellowship of God.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 34,
+        "paragraph": 36,
     },
     {
         "slug": "gareth-evans-eece1b59",
@@ -3666,7 +3666,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-cd926d0d",
         "text": "The end of the journey for all who walk in faith, is that they shall be with their Saviour, glorified in His presence.",
         "chapter": ("he-holds-my-tomorrows", 16),
-        "paragraph": 39,
+        "paragraph": 40,
     },
     {
         "slug": "gareth-evans-5c0753d7",
