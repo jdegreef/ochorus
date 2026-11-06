@@ -219,22 +219,35 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    query, not a viewport breakpoint, because the column beside the cover on a
    tablet and long translations run out of room long before `md`. A sticky sub-nav CTA shows only once the hero CTA has scrolled
    away (IntersectionObserver), never two primaries on screen.
-   **Long-list leaf: the plan page is the model for a side panel.** Where
-   the body is a long list the reader works through (a plan's days), the read
-   card, Save/Share and the writers sit in a sticky end-side panel from
-   1024px (`.plan-body` / `.plan-aside`, `top: calc(var(--pinned-offset,
-   var(--appnav-h, 0px)) + 1rem)`), and come FIRST on a phone so the one
-   action leads — instead of the book's sub-nav CTA. The grid track is
+   **Long-list leaf: the plan page is the model for a side panel** — and
+   the panel holds SECONDARY things only (design review #24). Where the body
+   is a long list the reader works through (a plan's days), the read card
+   stays in the HERO on every width, under the title and the one-sentence
+   facts line ("12 days · about 8 minutes a day · finish on 17 November if
+   you start today" — never stat boxes), where the eye already is; Save/Share
+   sit right under it, and the writers are a small-portrait byline in the
+   hero (`<Portrait>` + link), not an "Authors" heading over plain names.
+   A first visit's read card offers the daily reminder as one quiet line
+   under Start (`PlanStartRemind`: the email switch, the free-account ask,
+   the calendar view) — never a sheet between the tap and day 1.
+   The hero is the book page's shape: the picture beside the title
+   (`<CoverStrip size="fan">` for several books, `size="one"` for a single
+   one — the shared fan/cover, never re-drawn in a page), the about lines
+   and the read card full width beneath it on a phone. From 1024px a sticky
+   end-side panel beside the list (`.plan-body` / `.plan-aside`, `top:
+   calc(var(--appnav-h, 0px) + 1rem)`) keeps the secondary items — "Read
+   together" with its one-line explanation, and Coming up once started; on
+   a phone the panel FOLLOWS the list. A ministry cross-link (ForPromo) goes
+   at the very end of the page, not in the panel. The grid track is
    `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
-   min-content width otherwise pushes a phone column off-screen. Its hero
-   visual is `<CoverStrip size="fan" priority>` — the one shared big fan
-   (/originals uses it too); never re-draw fan geometry in a page. With
-   `max={5}` and five covers it draws a SPREAD instead of the three-cover
-   deck (the home hero, `HomeIntro`, design #5): middle cover in front, two
-   each side stepping back, all upright.
-   Below 1024px, once the read card scrolls away (`elementVisible`, as the
-   book's sub-nav CTA does), the read verb rides `<ReadBar>` — ONE component
-   for every page's phone read bar (book: `hideFrom="sm"`, plan: `"lg"`). It
+   min-content width otherwise pushes a phone column off-screen. With
+   `max={5}` and five covers `<CoverStrip size="fan">` draws a SPREAD instead
+   of the three-cover deck (the home hero, `HomeIntro`, design #5): middle
+   cover in front, two each side stepping back, all upright.
+   Once the read card scrolls away (`elementVisible`, as the book's sub-nav
+   CTA does), the read verb rides `<ReadBar>` — ONE component for every
+   page's read bar (book: `hideFrom="sm"`, where its sub-nav CTA takes over;
+   plan: no `hideFrom`, every width, since its card no longer sticks). It
    portals, clears the shared bottom chrome, pads the body and publishes
    `--dockbar-h` for the toasts; never hand-roll another. Pinned jump
    chips over a list publish their measured height into `--pinned-offset`
@@ -804,7 +817,8 @@ relevant group.
   one `crumbs` array feeding both (Book).
 - [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
-  `Reading plan · 27 days`).
+  `Reading plan · 27 days`; since design #24 the plan's day count leads its
+  facts line instead, so its eyebrow is `Reading plan · 4 hr 11 min read`).
 - [x] **A9** _(shipped 2026-11-05: Legal, Contact and RSS are on `<PageHeader>` with no eyebrow — the `Ochorus` / nav-word / `RSS` eyebrows are gone — held by a new `PROSE_PAGES` list in `pageShell.test.ts`)_ Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.

@@ -1259,8 +1259,9 @@ export interface PlanDetail extends PlanSummary {
 	available_languages: string[];
 	/** The distinct writers the plan reads through, in first-appearance order —
 	 * a link to each author page. Optional so an API predating the field renders
-	 * no section (rolling-deploy skew). */
-	authors?: { slug: string; name: string }[];
+	 * no byline (rolling-deploy skew). `photo_url` is the hero byline's small
+	 * portrait — optional too, so an older API draws initials. */
+	authors?: { slug: string; name: string; photo_url?: string }[];
 }
 
 export const listPlans = (language = 'en', f?: Fetch) =>

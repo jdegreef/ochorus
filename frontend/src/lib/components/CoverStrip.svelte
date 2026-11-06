@@ -16,8 +16,10 @@
 	 * the width it is given (the plan page, /originals, /for). Given
 	 * `max={5}` and five covers, the fan is a SPREAD instead (the home hero):
 	 * the middle cover in front, two each side stepping back and down, an arc
-	 * of upright books. `priority` loads the featured cover eagerly for a fan
-	 * that is the page's largest paint.
+	 * of upright books. `one` is a lone cover dressed as the fan's featured
+	 * one, filling the width it is given (a one-book plan's hero, beside its
+	 * title). `priority` loads the featured cover eagerly for a fan that is
+	 * the page's largest paint.
 	 *
 	 * BOOKS ONLY, by type. A topic's fan can also hold sermon tiles, which are
 	 * drawn as emblem chips rather than covers (`ShelfCard`); this one cannot
@@ -30,7 +32,7 @@
 		max = 4,
 		size = 'sm',
 		priority = false
-	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan'; priority?: boolean } =
+	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan' | 'one'; priority?: boolean } =
 		$props();
 	// The spread: five covers, asked for (max 5), in their own left-to-right
 	// order — the middle one leads.
@@ -40,7 +42,7 @@
 	// stand behind it in order; otherwise the first leads.
 	const shown = $derived.by(() => {
 		if (spread) return covers.slice(0, 5);
-		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : max);
+		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : size === 'one' ? 1 : max);
 		return size === 'fan' && list.length === 3 ? [list[1], list[0], list[2]] : list;
 	});
 	const lead = $derived(spread ? 2 : 0);
@@ -50,7 +52,15 @@
 </script>
 
 {#if covers.length}
-	<div class="covers" class:strip={size !== 'fan'} class:lg={size === 'lg'} class:fan={size === 'fan'} class:spread aria-hidden="true">
+	<div
+		class="covers"
+		class:strip={size === 'sm' || size === 'lg'}
+		class:lg={size === 'lg'}
+		class:fan={size === 'fan'}
+		class:one={size === 'one'}
+		class:spread
+		aria-hidden="true"
+	>
 		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
 			{@const eager = priority && i === lead}
@@ -111,16 +121,25 @@
 		aspect-ratio: 100 / 68;
 		container-type: inline-size;
 	}
+	/* A lone cover (`one`) is dressed as the fan's featured one. */
+	.fan .cover,
+	.one .cover {
+		border-radius: 0.375rem;
+		box-shadow: var(--shadow-card), var(--shadow-popover);
+	}
 	.fan .cover {
 		position: absolute;
 		bottom: 0;
 		inset-inline-start: 26cqw;
 		width: 48cqw;
-		border-radius: 0.375rem;
-		box-shadow: var(--shadow-card), var(--shadow-popover);
+	}
+	.one .cover {
+		position: relative;
+		width: 100%;
 	}
 	/* The spine: a shade down the bound edge, so each reads as a book. */
-	.fan .cover::after {
+	.fan .cover::after,
+	.one .cover::after {
 		content: '';
 		position: absolute;
 		inset: 0;
