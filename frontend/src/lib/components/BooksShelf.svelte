@@ -35,6 +35,7 @@
 	import { pager } from '$lib/paging.svelte';
 	import ShowMore from '$lib/components/ShowMore.svelte';
 	import { groupBySeries, seriesAmong } from '$lib/series';
+	import { browseRows } from '$lib/browseRows';
 
 	let {
 		books,
@@ -64,11 +65,17 @@
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
 	// localStorage — they describe the reader, not the shelf.
+	//
+	// `shelf` is which view is showing: '' the curated Browse rows the shelf
+	// opens on (design review #11), 'all' the full grid with these filters. It
+	// rides with them so a "See all" link can land on a pre-filtered grid, and
+	// clearing the filters keeps the reader on the grid they were using.
 	const filters = urlFilters({
-		defaults: { q: '', topic: '' },
+		defaults: { q: '', topic: '', shelf: '' },
+		allowed: { shelf: ['all'] },
 		url: () => $page.url
 	});
-	const clearFilters = () => filters.reset();
+	const clearFilters = () => filters.reset({ shelf: 'all' });
 
 	function save() {
 		writeJSON(PREFS_KEY, { view, sort, group });
@@ -99,7 +106,23 @@
 	});
 
 	// --- Derived --------------------------------------------------------------
-	const searching = $derived(filters.active);
+	// Only the query and the topic narrow the shelf; `shelf` picks the view.
+	const searching = $derived(!!(filters.values.q.trim() || filters.values.topic));
+	// The Browse rows — from the books already loaded, no request of their own.
+	const rows = $derived(browseRows(books));
+	// Any filter or search in the URL lands on the grid, never on the rows; so
+	// does a shelf too small to make a single row (a young language).
+	const hasBrowse = $derived(rows.length > 0);
+	const showAll = $derived(searching || filters.values.shelf === 'all' || !hasBrowse);
+	// …and stays there once the last filter is lifted: a filtered link without
+	// `shelf=all` (an older shared link) gains it, so removing its one chip
+	// does not throw the reader back to the rows.
+	$effect(() => {
+		if (searching && filters.values.shelf !== 'all') filters.values.shelf = 'all';
+	});
+
+	const seeAllHref = (topic = '') =>
+		localizeHref(`/books?shelf=all${topic ? `&topic=${encodeURIComponent(topic)}` : ''}`);
 
 	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
 	const allTopics = $derived.by(() => {
@@ -283,6 +306,31 @@
 	</div>
 {/snippet}
 
+<!-- Book Series — books written to be read together. A rail of the index's
+     own cards (without their descriptions), so the reader meets on /series
+     the card they tapped here. Under the Browse rows, and above the grid. -->
+{#snippet seriesRail()}
+	{#if railSeries.length}
+		<section class="mb-8">
+			<div class="flex items-baseline justify-between gap-3">
+				<h2 class="section-label">{t('nav.series')}</h2>
+				<a href={localizeHref('/series/')} class="shrink-0 text-small font-medium">
+					{t('series.seeAll')}
+				</a>
+			</div>
+			<!-- pt/pb leave room for the cards' hover lift and shadow, which the
+			     rail's overflow would otherwise clip. -->
+			<div class="cover-rail flex gap-4 pt-1 pb-2" use:scrollEdges>
+				{#each railSeries as s (s.slug)}
+					<div class="grid w-64 shrink-0">
+						<SeriesCard series={s} compact />
+					</div>
+				{/each}
+			</div>
+		</section>
+	{/if}
+{/snippet}
+
 <!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
 {#snippet clearFiltersAction()}
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
@@ -300,7 +348,11 @@
 	{/snippet}
 	<!-- Under the title, not above it: the page's first words are its name,
 	     not navigation (design review #4). -->
-	<LibraryTabs current="books" series={series.length > 0} />
+	<LibraryTabs
+		current="books"
+		series={series.length > 0}
+		browse={hasBrowse ? { count: books.length, all: showAll } : undefined}
+	/>
 
 	{#if loadError}
 		<!-- The API couldn't be reached. -->
@@ -339,155 +391,193 @@
 			</ContinueShelf>
 		{/if}
 
-		<!-- Book Series — books written to be read together. A rail of the index's
-		     own cards (without their descriptions), so the reader meets on /series
-		     the card they tapped here. -->
-		{#if railSeries.length}
-			<section class="mb-8">
-				<div class="flex items-baseline justify-between gap-3">
-					<h2 class="section-label">{t('nav.series')}</h2>
-					<a href={localizeHref('/series/')} class="shrink-0 text-small font-medium">
-						{t('series.seeAll')}
-					</a>
-				</div>
-				<!-- pt/pb leave room for the cards' hover lift and shadow, which the
-				     rail's overflow would otherwise clip. -->
-				<div class="cover-rail flex gap-4 pt-1 pb-2" use:scrollEdges>
-					{#each railSeries as s (s.slug)}
-						<div class="grid w-64 shrink-0">
-							<SeriesCard series={s} compact />
-						</div>
-					{/each}
-				</div>
-			</section>
-		{/if}
+		{#if !showAll}
+			<!-- Browse: a few named rows a reader can choose between, each with
+			     "See all" into the grid (pre-filtered to its topic). The full grid
+			     is the "All N books" tab above. -->
+			{#each rows as row, ri (row.topic?.slug ?? '')}
+				{@const id = `row-${row.topic?.slug ?? 'start'}`}
+				<section class="mb-8" aria-labelledby={id}>
+					<div class="flex items-baseline justify-between gap-3">
+						<h2 {id} class="section-label">{row.topic?.title ?? t('books.startHere')}</h2>
+						<a href={seeAllHref(row.topic?.slug)} class="shrink-0 text-small font-medium">
+							{t('books.seeAll').replace('%n%', String(row.count))}
+						</a>
+					</div>
+					<div class="cover-rail browse-row" use:scrollEdges>
+						{#each row.books as book, i (book.slug)}
+							<BookCard {book} showAuthor eager={ri === 0 && i < 6} />
+						{/each}
+					</div>
+				</section>
+			{/each}
+			{@render seriesRail()}
+		{:else}
+			{@render seriesRail()}
 
-		<!-- Controls: search · sort · group · view — pinned under the app
-		     nav (FilterBar) so a reader deep in the shelf can re-sort or regroup
-		     without scrolling back up. `compact`: between sm and md the inline row
-		     wraps too tall to pin. -->
-		<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-6">
-			<div class="filter-row">
-				<input
-					bind:value={filters.values.q}
-					type="search"
-					class="filter-field grow"
-					placeholder={t('books.filterPlaceholder')}
-					aria-label={t('books.filterPlaceholder')}
-				/>
-
-				<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
-				<FilterSheet
-					count={0}
-					shown={filtered.length}
-					showLabel={t('books.showResults')}
-					filtered={searching}
-					onClear={clearFilters}
-				>
-					<SheetChoices
-						label={t('common.sort')}
-						options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
-						value={sort}
-						onselect={setSort}
+			<!-- Controls: search · sort · group · view — pinned under the app
+			     nav (FilterBar) so a reader deep in the shelf can re-sort or regroup
+			     without scrolling back up. `compact`: between sm and md the inline row
+			     wraps too tall to pin. -->
+			<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-6">
+				<div class="filter-row">
+					<input
+						bind:value={filters.values.q}
+						type="search"
+						class="filter-field grow"
+						placeholder={t('books.filterPlaceholder')}
+						aria-label={t('books.filterPlaceholder')}
 					/>
-					{@render groupSeg('w-full', 'flex-1')}
-					<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
-				</FilterSheet>
 
-				<div class="hidden sm:contents">
-					<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
-						{#each BOOK_SORTS as v (v)}
-							<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
-						{/each}
-					</select>
-					{@render groupSeg('', '')}
-					<ViewToggle {view} onchange={setView} />
-				</div>
-			</div>
-		</FilterBar>
-
-		<!-- Topic filter -->
-		<TopicFilterRow
-			topics={allTopics}
-			selected={filters.values.topic}
-			onSelect={(topic) => (filters.values.topic = topic)}
-		/>
-
-		<!-- What the filters have left. The shelf showed nothing here at all, so a
-		     query matching nine of fifty-nine books looked exactly like a library
-		     of nine. -->
-		{#if searching}
-			<FilterSummary
-				shown={filtered.length}
-				total={books.length}
-				template={t('books.showing')}
-				onClear={clearFilters}
-				chips={activeChips}
-				class="mb-6"
-			/>
-		{/if}
-
-		<!-- Author quick-nav: the shared faces strip (Sermons uses it too). -->
-		{#if groups && groups.length > 1}
-			<AuthorJumpStrip
-				class="mb-8"
-				label={t('books.jumpAuthor')}
-				href={(slug) => `#author-${slug}`}
-				writers={groups.map((g) => ({ slug: g.slug, name: g.name, photo_url: g.photo_url, count: g.books.length }))}
-			/>
-		{/if}
-
-		<!-- Results — in a size container, so the library grid steps to seven
-		     across by the shelf's own width (.book-shelf-room in app.css). -->
-		<div class="book-shelf-room">
-			{#if sorted.length === 0}
-				<!-- Books exist in this language but the filters removed them all — a
-				     filtered-to-nothing state, so offer to clear (not the bare <p> that
-				     made Books the odd shelf out; C2). -->
-				<EmptyState art="search" message={t('books.noResults')} action={clearFiltersAction} />
-			{:else if seriesGroups}
-				<!-- By series: one section per series (group-heading recipe, the name
-				     linking to the series page), then the books in no series. The
-				     cards drop their series line — the heading already says it. -->
-				{#each seriesGroups.named as g, gi (g.slug)}
-					<section class="mb-10">
-						<GroupHeading
-							name={g.title}
-							href={localizeHref(`/series/${g.slug}/`)}
-							count={g.books.length}
+					<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+					<FilterSheet
+						count={0}
+						shown={filtered.length}
+						showLabel={t('books.showResults')}
+						filtered={searching}
+						onClear={clearFilters}
+					>
+						<SheetChoices
+							label={t('common.sort')}
+							options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
+							value={sort}
+							onselect={setSort}
 						/>
-						{@render shelfBooks(g.books, gi === 0, false)}
-					</section>
-				{/each}
-				{#if seriesGroups.standalone.length}
-					<section>
-						<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
-						{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
-					</section>
-				{/if}
-			{:else if groups}
-				<!-- By author: one flat shelf, books ordered so each author's works sit
-				     together and the author rides every card. A <section> per author
-				     turned a library of mostly one-book authors into a tall column of
-				     near-empty rows; a single grid fills left-to-right, and the
-				     quick-nav above still lands on each author's first book. -->
-				{#if view === 'grid'}
-					<div class="book-grid book-grid--library">
-						{#each authorFlat as book, i (book.slug)}
-							<BookCard {book} showAuthor eager={i < 7} anchor={authorAnchor.get(book.slug)} />
-						{/each}
+						{@render groupSeg('w-full', 'flex-1')}
+						<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
+					</FilterSheet>
+
+					<div class="hidden sm:contents">
+						<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+							{#each BOOK_SORTS as v (v)}
+								<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
+							{/each}
+						</select>
+						{@render groupSeg('', '')}
+						<ViewToggle {view} onchange={setView} />
 					</div>
-				{:else}
-					<div class="flex flex-col gap-1">
-						{#each authorFlat as book (book.slug)}
-							<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
-						{/each}
-					</div>
-				{/if}
-			{:else}
-				{@render shelfBooks(flat.visible, true, true)}
-				<ShowMore pager={flat} />
+				</div>
+			</FilterBar>
+
+			<!-- Topic filter -->
+			<TopicFilterRow
+				topics={allTopics}
+				selected={filters.values.topic}
+				onSelect={(topic) => (filters.values.topic = topic)}
+			/>
+
+			<!-- What the filters have left. The shelf showed nothing here at all, so a
+			     query matching nine of fifty-nine books looked exactly like a library
+			     of nine. -->
+			{#if searching}
+				<FilterSummary
+					shown={filtered.length}
+					total={books.length}
+					template={t('books.showing')}
+					onClear={clearFilters}
+					chips={activeChips}
+					class="mb-6"
+				/>
 			{/if}
-		</div>
+
+			<!-- Author quick-nav: the shared faces strip (Sermons uses it too). -->
+			{#if groups && groups.length > 1}
+				<AuthorJumpStrip
+					class="mb-8"
+					label={t('books.jumpAuthor')}
+					href={(slug) => `#author-${slug}`}
+					writers={groups.map((g) => ({ slug: g.slug, name: g.name, photo_url: g.photo_url, count: g.books.length }))}
+				/>
+			{/if}
+
+			<!-- Results — in a size container, so the library grid steps to seven
+			     across by the shelf's own width (.book-shelf-room in app.css). -->
+			<div class="book-shelf-room">
+				{#if sorted.length === 0}
+					<!-- Books exist in this language but the filters removed them all — a
+					     filtered-to-nothing state, so offer to clear (not the bare <p> that
+					     made Books the odd shelf out; C2). -->
+					<EmptyState art="search" message={t('books.noResults')} action={clearFiltersAction} />
+				{:else if seriesGroups}
+					<!-- By series: one section per series (group-heading recipe, the name
+					     linking to the series page), then the books in no series. The
+					     cards drop their series line — the heading already says it. -->
+					{#each seriesGroups.named as g, gi (g.slug)}
+						<section class="mb-10">
+							<GroupHeading
+								name={g.title}
+								href={localizeHref(`/series/${g.slug}/`)}
+								count={g.books.length}
+							/>
+							{@render shelfBooks(g.books, gi === 0, false)}
+						</section>
+					{/each}
+					{#if seriesGroups.standalone.length}
+						<section>
+							<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
+							{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
+						</section>
+					{/if}
+				{:else if groups}
+					<!-- By author: one flat shelf, books ordered so each author's works sit
+					     together and the author rides every card. A <section> per author
+					     turned a library of mostly one-book authors into a tall column of
+					     near-empty rows; a single grid fills left-to-right, and the
+					     quick-nav above still lands on each author's first book. -->
+					{#if view === 'grid'}
+						<div class="book-grid book-grid--library">
+							{#each authorFlat as book, i (book.slug)}
+								<BookCard {book} showAuthor eager={i < 7} anchor={authorAnchor.get(book.slug)} />
+							{/each}
+						</div>
+					{:else}
+						<div class="flex flex-col gap-1">
+							{#each authorFlat as book (book.slug)}
+								<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
+							{/each}
+						</div>
+					{/if}
+				{:else}
+					{@render shelfBooks(flat.visible, true, true)}
+					<ShowMore pager={flat} />
+				{/if}
+			</div>
+		{/if}
 	{/if}
 </div>
+
+<style>
+	/* A Browse row: one line of the shelf's own cards that scrolls sideways
+	   (the shared .cover-rail carries overflow, hidden phone scrollbar and edge
+	   fades), snapping card by card. Columns are sized off the row's width the
+	   way .book-grid steps — a little over two on a phone, so the next cover
+	   peeks in and says "swipe", then four, five and six across. Block padding
+	   keeps a card's hover lift and focus ring inside the scroller's clip. */
+	.browse-row {
+		--across: 2.3;
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: calc((100% - (var(--across) - 1) * 1rem) / var(--across));
+		column-gap: 1rem;
+		padding-block: 0.375rem 0.5rem;
+		scroll-snap-type: x proximity;
+	}
+	.browse-row > :global(*) {
+		scroll-snap-align: start;
+	}
+	@media (min-width: 40rem) {
+		.browse-row {
+			--across: 4;
+		}
+	}
+	@media (min-width: 64rem) {
+		.browse-row {
+			--across: 5;
+		}
+	}
+	@media (min-width: 80rem) {
+		.browse-row {
+			--across: 6;
+		}
+	}
+</style>
