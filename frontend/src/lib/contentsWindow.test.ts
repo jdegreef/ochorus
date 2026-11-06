@@ -8,6 +8,13 @@ describe('contentsWindow', () => {
 	it('shows everything for a short book', () => {
 		expect(contentsWindow(range(9), 3)).toBeNull();
 		expect(contentsWindow(range(12), null)).toBeNull();
+		// Up to 20 chapters show whole (design review #9): hiding seven of
+		// thirteen behind "⋯" saved little and hid the shape of the book.
+		expect(contentsWindow(range(20), 7)).toBeNull();
+	});
+
+	it('collapses a book past 20 chapters', () => {
+		expect(shown(contentsWindow(range(21), null))).toEqual([1, 2, 3, 4, 5, 21]);
 	});
 
 	it('shows the opening chapters and the last with no saved place', () => {
@@ -28,8 +35,8 @@ describe('contentsWindow', () => {
 	});
 
 	it('works on the chapter orders, not positions, and ignores an unknown place', () => {
-		const orders = range(20).map((o) => o + 1); // chapters 2..21
-		expect(shown(contentsWindow(orders, 99))).toEqual([2, 3, 4, 5, 6, 21]);
-		expect(shown(contentsWindow(orders, 21))).toEqual([2, 19, 20, 21]);
+		const orders = range(24).map((o) => o + 1); // chapters 2..25
+		expect(shown(contentsWindow(orders, 99))).toEqual([2, 3, 4, 5, 6, 25]);
+		expect(shown(contentsWindow(orders, 25))).toEqual([2, 23, 24, 25]);
 	});
 });

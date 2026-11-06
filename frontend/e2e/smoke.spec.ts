@@ -387,8 +387,9 @@ test('in page-turn mode a stray window scroll leaves the progress on page 1', as
 	// over "Page 1 / 4".
 	await page.goto(`/books/${BOOK}/1/`);
 	await hydrated(page);
-	const scrubber = page.locator('input.scrubber');
-	await expect(page.locator('.progress-meta')).toContainText(/1 \/ ([2-9]|\d{2,})/);
+	// The scrubber is the hairline under the reader bar (design #18).
+	const scrubber = page.locator('input.hairline-seek');
+	await expect(scrubber).toHaveAttribute('aria-valuetext', /1 \/ ([2-9]|\d{2,})/);
 	await expect(scrubber).toHaveValue('0');
 
 	await page.evaluate(() => window.dispatchEvent(new Event('scroll')));

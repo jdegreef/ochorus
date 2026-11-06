@@ -8,8 +8,8 @@ const derived = new Map<string, Promise<HomeShelves>>();
 /**
  * The build's home snapshot for `lang`, read through the caller's SvelteKit
  * `fetch` so the response is inlined into the prerendered HTML and REPLAYED at
- * hydration. The home page shows its shelves and counts from it; About shows
- * the same counts, so the two can never state different library totals.
+ * hydration. The home page shows its shelves from it; About shows its library
+ * counts (the home page's own figures band went to About in design #17).
  *
  * On the web it throws when the file can't be read — each caller decides how
  * loud. The app prerenders nothing, so it has no snapshot file: it derives the

@@ -7,8 +7,8 @@
 	/**
 	 * A compact author card — grayscale portrait (or initials fallback) beside
 	 * the name and book count (stacked above them on a phone), linking to the
-	 * author page. Shared by the logged-out home's author roster and the "My
-	 * Library" following section, which had grown identical inline copies.
+	 * author page — the "My Library" following section's tile. (The logged-out
+	 * home drew its roster with it until design #17 made that a row of faces.)
 	 */
 	let { author }: { author: AuthorTileData } = $props();
 	const t = i18n.t;

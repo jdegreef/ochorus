@@ -51,7 +51,6 @@
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
-	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -201,6 +200,15 @@
 		}
 		return gaps;
 	});
+	// A list short enough to show whole (≤ CONTENTS_COLLAPSE_AT) splits into two
+	// columns from md (design review #9) — past a handful of rows, where one
+	// column of short titles left the page's end side empty. Filled down the
+	// first column, then the second (a contents list reads downward), so each
+	// column's first and last rows are known here: the path's line stops at them.
+	const twoColumns = $derived(book.chapters.length >= 6 && book.chapters.length <= CONTENTS_COLLAPSE_AT);
+	// A part per chapter in the place bar while the parts stay legible.
+	const SEGMENTS_MAX = 24;
+	const contentsRows = $derived(twoColumns ? Math.ceil(book.chapters.length / 2) : book.chapters.length);
 
 	// Whether the read card has scrolled out of view — the sticky section bar
 	// shows its own read verb only then. (The card sits in the hero, so off
@@ -494,19 +502,33 @@
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
 	// reach while scrolling — the page's own value over the author sub-nav.
 	const hasAbout = $derived(!!(book.about_html || book.description));
+	// The other-language list renders only off a fallback page (the notice
+	// there lists the editions itself).
+	const showLanguages = $derived(siblingEditions.length > 0 && !fallback);
+	const hasAuthorBand = $derived(book.author.slug !== ORIGINALS_SLUG);
+	// What About's foot carries (the guide link, other titles, topics,
+	// scripture) — shown on its own when the book has no prose to sit under.
+	const hasAboutFoot = $derived(
+		!!(book.guides?.length || otherTitles.length || book.topics?.length || book.scripture?.length)
+	);
+	// The sections in the order a reader decides (design review #9): About →
+	// Contents → Editions → Author → Q&A. Five at most and no counts: a sixth
+	// tab and two counts made the bar a second menu, and "More like this" is the
+	// page's end, not a place to jump to. A pill shares its section <h2>'s key
+	// (the same words) wherever the heading is a label; the author band's
+	// heading is the author's name, so its pill is the plain noun "Author".
 	const navItems = $derived(
 		[
-			// The pill and the <h2> share their key: they are the same words. A
-			// count where a section is a list — how much is behind the tab.
-			book.editions?.length
-				? { id: 'editions', label: t('audience.spotlightLadder'), count: book.editions.length + 1 }
-				: null,
-			book.guides?.length ? { id: 'guide', label: t('book.readersGuide') } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
-			{ id: 'contents', label: t('reader.contents'), count: book.chapter_count },
-			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle'), count: qa.items.length } : null,
-			book.related?.length ? { id: 'related', label: t('book.related') } : null
-		].filter((x): x is { id: string; label: string; count?: number } => x != null)
+			{ id: 'contents', label: t('reader.contents') },
+			book.editions?.length
+				? { id: 'editions', label: t('audience.spotlightLadder') }
+				: showLanguages
+					? { id: 'languages', label: t('book.readInLanguage') }
+					: null,
+			hasAuthorBand ? { id: 'author', label: t('search.typeAuthor') } : null,
+			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null
+		].filter((x): x is { id: string; label: string } => x != null)
 	);
 	const showSubnav = $derived(navItems.length >= 2);
 
@@ -846,7 +868,7 @@
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
 							onclick={(e) => spy.jump(e, item.id)}
-							>{item.label}{#if item.count}{' '}<span class="count">{item.count}</span>{/if}</a
+							>{item.label}</a
 						>
 					</li>
 				{/each}
@@ -862,173 +884,126 @@
 		</nav>
 	{/if}
 
-	<!-- Other audience editions of the SAME work — the "(For Children)" /
-	     "(For Teens)" retelling and the full text it retells, cross-linked both
-	     ways. Placed first in the body, not down with "More like this": a parent
-	     who reached the full text needs the young-reader edition surfaced before
-	     they start reading, and a child on the retelling needs the way back to
-	     the original. Derived and published-gated server-side (see the API's
-	     `editions`), so it renders only for the handful of works that have one.
-	     The whole family is offered, this edition ringed, youngest first (the
-	     ladder's order, as the hubs draw it);
-	     each card is its rung's name and length — the titles differ only by the
-	     "(For …)" suffix the rung already says. -->
-	{#if book.editions?.length}
-		<section id="editions" class="jump-anchor mt-8">
-			<h2 class="section-heading">{t('audience.spotlightLadder')}</h2>
-			<ul class="edition-picker">
-				{#each family as { book: ed, rung } (ed.slug)}
-					{@const here = ed.slug === book.slug}
-					{@const words = here ? totalWords : ed.word_count}
-					<li>
-						<a
-							href={localizeHref(`/books/${ed.slug}`)}
-							class="edition-card"
-							class:here
-							aria-current={here ? 'page' : undefined}
-						>
-							<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
-							<span class="min-w-0">
-								<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
-								<span class="block text-small text-muted"
-									><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
-									>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
-								>
-							</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	{/if}
-
-	<!-- Reader's guide. The article(s) that explain this work — the reverse of an
-	     article's Read-next funnel (see the API's `guides` / guides_for_book). Placed
-	     high in the body, above "About", so a reader new to a hard classic finds the
-	     orientation before they start, and so the guide earns an internal link from a
-	     high-value page. Per-language: a localized edition shows its OWN translated
-	     guide, or none — never the English one. Usually exactly one guide; a list
-	     handles the rare extra. -->
-	{#if book.guides?.length}
-		<section id="guide" class="jump-anchor mt-8">
-			<h2 class="section-heading">{t('book.readersGuide')}</h2>
-			<ul class="mt-3 flex flex-col gap-3">
-				{#each book.guides as guide (guide.slug)}
-					<li><ArticleLinkCard article={guide} cta={t('book.readGuide')} /></li>
-				{/each}
-			</ul>
-		</section>
-	{/if}
-
 	<!-- About this book. The page previously said nothing about the WORK: the
 	     book's own `description` fed the meta tag and the JSON-LD and was never
-	     rendered, while the AUTHOR's bio was. So a reader arriving on a
-	     fourth-century treatise met the chapter list and a paragraph about
-	     Athanasius, and nothing about the book itself.
+	     rendered, while the AUTHOR's bio was. The author's summary has since been
+	     dropped from this page entirely: under this heading it read as a second
+	     paragraph of the book's own prose. It belongs on the author page, which
+	     the byline links to.
 
-	     The author's summary has since been dropped from this page entirely. It
-	     sat directly under this heading in muted type, which read as a second
-	     paragraph of the book's own prose — E. M. Bounds's dates and Civil War
-	     chaplaincy presented as if they were part of what "Prayer and Praying
-	     Men" is about. It belongs on the author page, which the byline links to.
-
-	     No `max-w-*`: this band runs the full page width, aligning with the
-	     Contents list below it. That is wider than a reading measure, which is
-	     the deliberate trade — this is a metadata band the reader scans, not a
-	     surface they settle into, and the ragged right edge against a
-	     full-width table of contents read worse than the long line does.
+	     The prose is held to a reading measure (`.about-prose`, ~65ch; design
+	     review #9): across the full column it ran ~150 characters a line, which
+	     people scan rather than read. From lg the opening lines stand beside it
+	     as an aside; on a phone they follow it in flow.
 
 	     Falls back to `description` exactly as the author page falls back from
-	     bio_html to bio, so the 63 books with a description gain visible prose
-	     today rather than waiting for a long-form piece to be written. -->
-	{#if book.about_html}
-		<section id="about" class="jump-anchor about-work mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
-			<div class="has-initial text-body leading-relaxed" dir="auto">
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				{@html book.about_html}
-			</div>
-			{@render alsoTitled()}
-		</section>
-	{:else if book.description}
+	     bio_html to bio, so a book without a long-form piece still has prose. -->
+	{#if hasAbout}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
-			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
-			<!-- The initial only for a description long enough to wrap: beside a
-			     one-line sentence a three-line cap hangs below the text. -->
-			<div class:has-initial={book.description.length > 240} dir="auto">
-				<p class="text-body leading-relaxed">{book.description}</p>
+			<h2 id="about-work" class="section-heading no-rule">{t('book.aboutWork')}</h2>
+			<div class="about-layout">
+				<div class="about-prose text-body">
+					{#if book.about_html}
+						<div class="about-work has-initial text-body leading-relaxed" dir="auto">
+							<!-- Server-sanitised long-form piece. -->
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+							{@html book.about_html}
+						</div>
+					{:else if book.description}
+						<!-- The initial only for a description long enough to wrap: beside a
+						     one-line sentence a three-line cap hangs below the text. -->
+						<div class:has-initial={book.description.length > 240} dir="auto">
+							<p class="text-body leading-relaxed">{book.description}</p>
+						</div>
+					{/if}
+					{@render aboutFoot()}
+				</div>
+				{@render openingLines()}
 			</div>
-			{@render alsoTitled()}
 		</section>
-	{:else if otherTitles.length}
-		<div class="mt-8">{@render alsoTitled()}</div>
+	{:else if hasAboutFoot}
+		<div class="about-layout mt-8">
+			<div class="about-prose text-body">{@render aboutFoot()}</div>
+			{@render openingLines()}
+		</div>
+	{:else if book.opening}
+		<!-- No prose and no foot: the quote alone, not stranded in the aside's
+		     column beside an empty one. -->
+		<div class="mt-8 max-w-xl">{@render openingLines()}</div>
 	{/if}
-	<!-- The names this work is also published under. A reader who searched "A
-	     Divine Cordial" and landed on "All Things for Good" still sees it named,
-	     but here in About, not in the hero: the alternate titles serve search,
-	     not the decision to read (design review #6). -->
-	{#snippet alsoTitled()}
+	<!-- Under the prose: the way into the reader's guide, then the quiet
+	     metadata lines.
+
+	     The guide (the API's `guides`, the reverse of an article's Read-next
+	     funnel) is one inline link, not a card section of its own that pushed
+	     the description down (design review #9) — still a crawlable link from a
+	     high-value page. Per-language: a localized edition shows its OWN guide,
+	     or none. Usually exactly one; a rare second is named by its title.
+
+	     The names this work is also published under serve search, not the
+	     decision to read (design review #6). Topics and Scripture are lines of
+	     links, not a band of chips (#9): topic shelves, and the scripture page
+	     when one was built, else a search for the reference (the chapter page's
+	     exact fallback; trailing slashes are load-bearing, lib/href.test.ts).
+	     Scripture is English-only (its citations are). -->
+	{#snippet aboutFoot()}
+		{#each book.guides ?? [] as guide, i (guide.slug)}
+			<p class="mt-4 text-body" dir="auto">
+				<a
+					href={localizeHref(`/articles/${guide.slug}/`)}
+					title={i === 0 ? guide.h1 : undefined}
+					class="font-medium text-accent hover:underline"
+					>{i === 0 ? t('book.newToGuide').replace('%title%', book.title) : guide.h1}{'\u00a0'}<Arrow /></a
+				>
+			</p>
+		{/each}
 		{#if otherTitles.length}
 			<p class="mt-3 text-small text-muted" dir="auto">
 				{t('book.otherTitles')}: {otherTitles.join(' · ')}
 			</p>
 		{/if}
+		{#if book.topics?.length}
+			<p class="about-meta mt-3 text-small text-muted">
+				{t('common.topics')}:
+				{#each book.topics as topic, i (topic.slug)}{#if i}{', '}{/if}<a
+						href={localizeHref(`/topics/${topic.slug}`)}>{topic.title}</a
+					>{/each}
+			</p>
+		{/if}
+		{#if book.scripture?.length}
+			<p class="about-meta mt-1 text-small text-muted">
+				{t('reader.scripture')}:
+				{#each book.scripture as entry, i (entry.reference)}{#if i}{', '}{/if}<a
+						class="whitespace-nowrap"
+						href={entry.page
+							? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
+								(entry.page.verse ? `${entry.page.verse}/` : '')
+							: localizeHref(`/search?q=${encodeURIComponent(entry.reference)}`)}>{entry.reference}</a
+					>{/each}
+			</p>
+		{/if}
 	{/snippet}
 
-	<!-- The first taste of the prose itself, right under the summary: everything
-	     else on this page is ABOUT the book — cover, chapter list, description,
-	     the About section — and a reader deciding whether to start a
-	     fourth-century treatise wants to know how it reads, before the metadata
-	     band and the contents below.
-
-	     Named with its chapter, because an unattributed paragraph leaves the
-	     reader unable to tell the opening of the book from something plucked
-	     out of the middle. Blockquote, not body text: it is the author's voice,
-	     not the page's, and the page has just been speaking in its own.
-
-	     Absent for three books whose front matter yields no clean prose. Server
-	     owns that judgement (library/opening.py); the page just renders what it
-	     is given. -->
-	{#if book.opening}
-		<figure class="opening-card mt-8 max-w-xl">
-			<blockquote class="font-display text-h3 leading-snug" dir="auto">
-				{book.opening.text}
-			</blockquote>
-			<figcaption class="mt-2 text-small text-muted" dir="auto">
-				{t('book.openingFrom').replace('%chapter%', book.opening.chapter)}
-			</figcaption>
-		</figure>
-	{/if}
-
-	<!-- Explore: one metadata band between the summary and the contents, in place
-	     of the two muted rows (Topics + Scripture this book treats) that used to
-	     sit apart and clutter the run-up to the chapter list. Topic chips link to
-	     their shelves; the scripture chips — derived from the book's own chapters,
-	     so no other edition of the same public-domain text carries them — link to
-	     the scripture page when one was built, else a search for the reference
-	     (the chapter page's exact fallback; trailing slashes are load-bearing,
-	     lib/href.test.ts). Scripture is English-only (its citations are), so a
-	     localized edition shows just its topics. -->
-	{#if book.topics?.length || book.scripture?.length}
-		<nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t('book.explore')}>
-			<span class="eyebrow text-muted">{t('book.explore')}</span>
-			{#each book.topics ?? [] as topic (topic.slug)}
-				<a href={localizeHref(`/topics/${topic.slug}`)} class="tag">{topic.title}</a>
-			{/each}
-			{#each book.scripture ?? [] as entry (entry.reference)}
-				<a
-					href={entry.page
-						? `/scripture/${entry.page.book}/${entry.page.chapter}/` +
-							(entry.page.verse ? `${entry.page.verse}/` : '')
-						: localizeHref(`/search?q=${encodeURIComponent(entry.reference)}`)}
-					class="tag"
-				>
-					{entry.reference}
-				</a>
-			{/each}
-		</nav>
-	{/if}
-
+	<!-- The first taste of the prose itself: everything else on this page is
+	     ABOUT the book, and a reader deciding whether to start a fourth-century
+	     treatise wants to know how it reads. Named with its chapter, so the
+	     opening is not mistaken for a line plucked from the middle. An aside, not
+	     a filled card (design review #9): the gold quotation rule (STYLE_GUIDE §1)
+	     and the serif at a generous size — beside the prose from lg, under it on a
+	     phone. Absent where the front matter yields no clean prose: the server
+	     owns that judgement (library/opening.py). -->
+	{#snippet openingLines()}
+		{#if book.opening}
+			<figure class="about-quote">
+				<blockquote class="font-display leading-snug" dir="auto">
+					{book.opening.text}
+				</blockquote>
+				<figcaption class="mt-3 text-small text-muted" dir="auto">
+					{t('book.openingFrom').replace('%chapter%', book.opening.chapter)}
+				</figcaption>
+			</figure>
+		{/if}
+	{/snippet}
 	<!-- Contents. When the reader has a saved place, Continue's chapter
 	     (resumeHere, aria-current) is the one they're in, and every chapter before
 	     the furthest one REACHED (furthestHere — opened in sequence or read to its
@@ -1038,7 +1013,7 @@
 	     hydration. There is still no per-chapter completion record, so a check means
 	     "before the furthest you got", not a claim the chapter was read end to end. -->
 	<section id="contents" class="jump-anchor mt-8">
-		<h2 class="section-heading">
+		<h2 class="section-heading no-rule">
 			{t('reader.contents')}
 			<span class="meta"
 				>· <span class="whitespace-nowrap">{chapterCount(book.chapter_count)}</span
@@ -1051,8 +1026,8 @@
 		{#if finishedAt != null || resuming}
 			<div class="mb-2 mt-1">
 				<!-- A part per chapter while the parts stay legible; a long book
-				     (past the length the list itself collapses at) is one bar. -->
-				{#if book.chapters.length <= CONTENTS_COLLAPSE_AT * 2}
+				     (past SEGMENTS_MAX chapters) is one bar. -->
+				{#if book.chapters.length <= SEGMENTS_MAX}
 					<SeriesSegments
 						stages={book.chapters.map((c) => (isCurrent(c.order) ? 'reading' : isRead(c.order) ? 'done' : 'unread'))}
 						weights={book.chapters.map((c) => c.word_count)}
@@ -1067,8 +1042,13 @@
 		<!-- The chapters as a path: a line down the markers, a filled mark with a
 		     tick for each chapter behind the reader, a ring for the one they're in
 		     (its row raised, offering to carry on), a number for the rest. -->
-		<ol id="contents-list" class="contents-path">
-			{#each book.chapters as ch (ch.order)}
+		<ol
+			id="contents-list"
+			class="contents-path"
+			class:two-col={twoColumns}
+			style:--contents-rows={twoColumns ? contentsRows : undefined}
+		>
+			{#each book.chapters as ch, i (ch.order)}
 				{@const read = isRead(ch.order)}
 				{@const current = isCurrent(ch.order)}
 				{@const gap = gapBefore.get(ch.order)}
@@ -1085,7 +1065,14 @@
 						</button>
 					</li>
 				{/if}
-				<li class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}>
+				<!-- The ends of each column: the path's line stops at their marks. -->
+				<li
+					class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}
+					class:col-start={i === 0}
+					class:col-end={i === book.chapters.length - 1}
+					class:split-start={twoColumns && i === contentsRows}
+					class:split-end={twoColumns && i === contentsRows - 1}
+				>
 					<a
 						href={readHref(ch.order)}
 						class="contents-row"
@@ -1120,11 +1107,46 @@
 		{/if}
 	</section>
 
-	<!-- Questions and Answers. `qa.items` (editorial if present, else the derived
-	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
-	     the visible answers and the structured data stay in lockstep. The shared
-	     <QandA> section id is `questions`, which the jump-nav above points at. -->
-	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading" />
+	<!-- Other audience editions of the SAME work — the "(For Children)" /
+	     "(For Teens)" retelling and the full text it retells, cross-linked both
+	     ways. Straight after the contents (design review #9: readers decide About
+	     → Contents → Editions), still well above "More like this": a parent
+	     who reached the full text needs the young-reader edition surfaced before
+	     they start reading, and a child on the retelling needs the way back to
+	     the original. Derived and published-gated server-side (see the API's
+	     `editions`), so it renders only for the handful of works that have one.
+	     The whole family is offered, this edition ringed, youngest first (the
+	     ladder's order, as the hubs draw it);
+	     each card is its rung's name and length — the titles differ only by the
+	     "(For …)" suffix the rung already says. -->
+	{#if book.editions?.length}
+		<section id="editions" class="jump-anchor mt-12">
+			<h2 class="section-heading no-rule">{t('audience.spotlightLadder')}</h2>
+			<ul class="edition-picker">
+				{#each family as { book: ed, rung } (ed.slug)}
+					{@const here = ed.slug === book.slug}
+					{@const words = here ? totalWords : ed.word_count}
+					<li>
+						<a
+							href={localizeHref(`/books/${ed.slug}`)}
+							class="edition-card"
+							class:here
+							aria-current={here ? 'page' : undefined}
+						>
+							<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
+							<span class="min-w-0">
+								<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
+								<span class="block text-small text-muted"
+									><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
+									>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
+								>
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
 
 	<!-- The same work in other languages, made visible to readers — until now it
 	     lived only in the page's hreflang metadata. Books are per-language rows
@@ -1136,9 +1158,9 @@
 	     fixed per document — see the root layout's cross-locale guard), and no
 	     hover preload, which would run this route's load in the WRONG locale. -->
 	<!-- On a fallback page the notice above already lists these. -->
-	{#if siblingEditions.length && !fallback}
+	{#if showLanguages}
 		<section id="languages" class="jump-anchor mt-12">
-			<h2 class="section-heading">{t('book.readInLanguage')}</h2>
+			<h2 class="section-heading no-rule">{t('book.readInLanguage')}</h2>
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<span class="text-small text-muted">{t('book.availableIn')}</span>
 				{#each siblingEditions as ed (ed.loc)}
@@ -1154,7 +1176,7 @@
 	     language is dropped), so every card here is a live link. -->
 	{#if book.featured_people?.length}
 		<section class="mt-12">
-			<h2 class="section-heading">{t('book.peopleInBook')}</h2>
+			<h2 class="section-heading no-rule">{t('book.peopleInBook')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each book.featured_people as person (person.slug)}
 					<PersonCard {person} />
@@ -1168,9 +1190,10 @@
 	     birth to death. No bio: on this page it read as the book's own prose
 	     (bookAboutSection.test.ts); the full life is the author page's, and
 	     this band is the way there. -->
-	{#if book.author.slug !== ORIGINALS_SLUG}
+	{#if hasAuthorBand}
 		<section
-			class="mt-12 flex items-center gap-5 rounded-card bg-surface-2 p-5 sm:gap-7 sm:p-7"
+			id="author"
+			class="jump-anchor mt-12 flex items-center gap-5 rounded-card bg-surface-2 p-5 sm:gap-7 sm:p-7"
 			aria-labelledby="author-band-name"
 		>
 			<a href={authorHref} class="shrink-0 hover:no-underline" tabindex="-1" aria-hidden="true">
@@ -1210,6 +1233,12 @@
 		</section>
 	{/if}
 
+	<!-- Questions and Answers. `qa.items` (editorial if present, else the derived
+	     set) also feeds the FAQPage JSON-LD in <Seo> via the same pickQa call, so
+	     the visible answers and the structured data stay in lockstep. The shared
+	     <QandA> section id is `questions`, which the jump-nav above points at. -->
+	<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-heading no-rule" openFirst={false} />
+
 	<!-- Where to go from here: one book to read next (the first of "More like
 	     this", given room and its pitch) and, for a book with one, the leader's
 	     guide for reading it with a group — then the rest of the shelf. The
@@ -1232,7 +1261,7 @@
 	{#if book.related?.length}
 		{@const [next, ...rest] = book.related}
 		<section id="related" class="jump-anchor mt-12">
-			<h2 class="section-heading">{t('book.related')}</h2>
+			<h2 class="section-heading no-rule">{t('book.related')}</h2>
 			<div class="next-pair">
 				<a
 					href={localizeHref(`/books/${next.slug}`)}
@@ -1470,21 +1499,48 @@
 		text-decoration: none;
 	}
 
-	/* The opening lines: the author's voice on a quiet card, a gilt quote mark
-	   at its head (the ornament metal, as the drop cap's edge). */
-	.opening-card {
-		padding: 1.25rem 1.4rem 1.1rem;
-		border-radius: var(--radius-card);
-		background: var(--surface-2);
+	/* About: the prose at a reading measure, and from lg the opening lines as
+	   an aside beside it (design review #9). On a phone they follow in flow. */
+	.about-prose {
+		max-width: 65ch;
 	}
-	.opening-card::before {
-		content: '“' / '';
-		display: block;
-		height: 1.6rem;
-		font-family: var(--house-display);
-		font-size: var(--fs-display);
-		line-height: 1;
-		color: var(--ornament);
+	.about-quote {
+		margin: 2rem 0 0;
+		padding-inline-start: 1.25rem;
+		/* The one quotation rule (STYLE_GUIDE §1), not a filled card. */
+		border-inline-start: 3px solid var(--gold);
+	}
+	/* Alone (a book with no prose to follow), the wrapper's mt-8 is the gap. */
+	.about-quote:first-child {
+		margin-top: 0;
+	}
+	.about-quote blockquote {
+		font-size: var(--fs-h3);
+	}
+	@media (min-width: 1024px) {
+		.about-layout {
+			display: grid;
+			grid-template-columns: minmax(0, 65ch) minmax(0, 20rem);
+			column-gap: 3.5rem;
+			align-items: start;
+		}
+		.about-quote {
+			margin-top: 0.25rem;
+		}
+		.about-quote blockquote {
+			font-size: var(--quote-size);
+		}
+	}
+	/* Topics and Scripture: plain links in a muted line. */
+	.about-meta a {
+		color: var(--text);
+		text-decoration: underline;
+		text-decoration-color: var(--border-strong);
+		text-underline-offset: 0.2em;
+	}
+	.about-meta a:hover {
+		color: var(--accent);
+		text-decoration-color: currentColor;
 	}
 
 	/* The author's lifeline: birth and death at its ends, this book a dot. */
@@ -1573,20 +1629,55 @@
 		color: var(--accent);
 	}
 
-	/* The path: a hairline down the markers' centre, behind them. */
+	/* The path: a hairline down the markers' centre, behind them — drawn per
+	   row, so it stops at each column's first and last mark. A grid, so a row's
+	   own margins (the current one's) stay inside it and the line runs on. */
 	.contents-path {
-		position: relative;
+		display: grid;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	.contents-path::before {
+	/* A flex row, so the link fills the <li> even when the grid row is taller
+	   (the neighbouring column's title wraps): the line's 50% caps then meet
+	   the marker's centre. */
+	.contents-path > li {
+		position: relative;
+		display: flex;
+	}
+	.contents-path > li > * {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	.contents-path > li::before {
 		content: '';
 		position: absolute;
-		inset-block: 1rem;
+		inset-block: 0;
 		inset-inline-start: calc(0.75rem + 0.75rem - 1px);
 		width: 2px;
 		background: var(--border);
+	}
+	.contents-path > li.col-start::before {
+		top: 50%;
+	}
+	.contents-path > li.col-end::before {
+		bottom: 50%;
+	}
+	/* A short book, whole, in two columns from md: down the first, then the
+	   second. */
+	@media (min-width: 768px) {
+		.contents-path.two-col {
+			grid-template-rows: repeat(var(--contents-rows), auto);
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+			column-gap: 2rem;
+		}
+		.contents-path.two-col > li.split-start::before {
+			top: 50%;
+		}
+		.contents-path.two-col > li.split-end::before {
+			bottom: 50%;
+		}
 	}
 	.contents-row {
 		position: relative;

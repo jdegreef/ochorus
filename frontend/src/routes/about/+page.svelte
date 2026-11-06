@@ -29,9 +29,8 @@
 	const languageCount = LIVE_LOCALES.length;
 
 	// The band's figures. Titles and sermons are the library's own totals — the
-	// home page's snapshot (+page.ts), exact, so About never states a number the
-	// home page contradicts; one with no count (the read failed, or a language
-	// has no sermons) drops out, as on home. Grouped like "1,000+" beside them
+	// home page's snapshot (+page.ts), exact and per language; one with no count
+	// (the read failed, or a language has no sermons) drops out. Grouped like "1,000+" beside them
 	// (countUp keeps a grouped figure grouped). The rest are field facts.
 	const library = $derived(
 		[

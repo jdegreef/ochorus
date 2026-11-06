@@ -51,7 +51,7 @@ In this order, and nothing else at the top level:
    "· 16 Book Series" link went: the Book Series tab below it is that link). **One library number per word:** "books" is every
    book row (editions included — what the Books shelf shows), "authors" is
    `countWriters` (`lib/authorIndex.ts`: people, never an imprint), shown by
-   the home page and the A–Z. A shelf whose own count would differ (Books'
+   the A–Z (the home page no longer shows library figures — design #17). A shelf whose own count would differ (Books'
    book writers, Biographies' listed writers) shows no authors figure rather
    than a second, smaller one (2026-10-23: home read 128, Books 63, A–Z 130).
    `eyebrow` is only for a page whose h1 is *not* the nav
@@ -143,8 +143,10 @@ In this order, and nothing else at the top level:
    `onMount` then swaps rows for a grid (or one band for another) after the
    reader can see the page — a visible jump on every load. Biographies dropped
    restoring its grid/list and Browse-by choices for this (2026-10-03), and
-   Sermons its group/sort (design #28, 2026-11). Books (view/sort/group)
-   still restores and still jumps; fix it the same way, or apply the choice before first paint (the
+   Sermons its group/sort (design #28, 2026-11). Plans
+   dropped restoring its sort when the shelf became length-grouped (design
+   #19, 2026-11): a sort turns the groups into a flat list. Books
+   (view/sort/group) still restores and still jumps; fix it the same way, or apply the choice before first paint (the
    `app.html` boot script, as the theme does) if it must persist.
    A key that holds the READER'S data rather than a device preference (a
    plan's schedule choices, anything a sign-out should not hand the next
@@ -268,6 +270,19 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    menu from closing another); a full overlay uses `focusTrap` instead.
 5. **Summary** — `h2.text-h3` + prose (`About this book`). One treatment, not a
    heading here and a bordered "In brief" callout there.
+   **Book body (design review #9):** About's prose sits at a ~65ch measure
+   (`.about-prose`), never the full column; the opening lines are an aside
+   beside it from lg (gold start rule, no filled box, the serif large) and
+   follow it in flow on a phone. The reader's guide is one inline link at
+   About's foot ("New to <title>? Read our guide →"), not a card section;
+   topics and scripture are muted "Topics: a, b" lines of links there, not a
+   chip band. Sections run About → Contents → Editions & languages → (people
+   in it) → Author → Q&A → More like this; the jump nav lists at most five
+   (About, Contents, Editions, Author, Q&A), with no counts. Up to 20
+   chapters show whole (`CONTENTS_COLLAPSE_AT`), in two columns from md;
+   longer books keep the window. Q&As all start closed (`openFirst={false}`).
+   The book page's section H2s carry no rule (`.section-heading.no-rule`,
+   app.css) — spacing separates them.
 6. **Sections** — `h2.section-label` above a *list* (contents, quotes, passages);
    `h2.text-h3` above *prose*. A count in a heading is `(N)` in
    `text-small font-normal text-muted`, or absent — not both styles.
@@ -291,7 +306,8 @@ Swahili — showing the English edition"), and no page 404s instead.
 The chapter reader and the sermon page are governed by `--reading-measure`
 and their own chrome (STYLE_GUIDE §3, §5). What they still share with leaf
 pages: the eyebrow (3), `SourceBadge`, prev/next as a `.btn` pair (ghost
-previous, soft-primary next), and one shared `.focus-exit` pill rather than
+previous, soft-primary next — except the chapter reader, whose end card
+has one solid Next since design #18), and one shared `.focus-exit` pill rather than
 three pasted copies.
 
 **A reading surface shows no visible breadcrumb** (design review #12, founder-
@@ -321,6 +337,27 @@ needs it too (`readerChrome.test.ts`). The scroll-mode bar folds away on
 scroll-down and returns on scroll-up (`nextBarHidden`), snaps under reduced
 motion, and comes back when Tab lands in it. Don't put the nav or footer back
 on a reading surface.
+
+**Progress at the top, one end card (design #18, chapter reader).** The
+chapter's progress is a 2px hairline along the reader bar's bottom edge
+(`.hairline`, rendered INSIDE `.reader-chrome` at `top: 100%` so it rides the
+bar's fold-away transform for free; fixed at the top in focus mode) — not a
+slider block under the text. It is still the scrubber: a transparent
+`<input type="range" class="hairline-seek">` over the line (a 10px strip on a
+mouse; on touch only in page mode, where it lies over the pager's padding)
+seeks, takes Tab (a page per arrow key in page mode), and shows "Page n / N ·
+min left in chapter · left in book" as a tip on hover/focus/drag and as
+`aria-valuetext`; page mode has no scrollbar, so it stays. A seek must not
+fold the bar (`seekedAt` in `trackChrome`). The bottom
+`.progress-foot` is now the phone's action row only (hidden from `sm`, and
+while folded). The chapter's ending is ONE card: "You finished <chapter>"
+(`reader.finished`), the book pips, then ONE large button — "Next: <chapter>"
+with its length (`.end-next btn-primary btn-solid`, the read verb), the
+series' next volume at a book's end, or the book's page (soft) — with
+Contents and Share as text links under it. No Previous at the end of a
+chapter (it lives in "⋯" and the phone row). The sermon page still has the
+older Previous/Next pair and footer scrubber until its own item moves it.
+`readerChrome.test.ts` guards both.
 
 Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
 - **Paged mode slices the last line.** `.paged .pager` fills each CSS column
@@ -394,7 +431,8 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
-| Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
+| Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
+| Plan | `<PlanShelfCard>` (boxless: one large cover, or two overlapping, beside title + length once + 2-line description — design #19) | rise (the book card's) |
 | Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
@@ -409,9 +447,13 @@ which also sets the 48rem measure — don't hand-set a `max-w` per page). The
   card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
   favourites and 404 lists are single columns for that reason.
 
-Two hover languages only: **lift** for banded cards, **border tint** for rows.
-The one exception is the frameless sermon list row (above): no frame to tint,
-so its title underlines in accent. It is not a pattern for other cards.
+Two hover languages only: **lift** for banded cards, **border tint** for rows
+(the boxless book and plan cards rise without a shadow — a shadow would draw
+the box they no longer have). The one exception is the frameless sermon list
+row (above): no frame to tint, so its title underlines in accent. It is not a
+pattern for other cards. /plans groups its cards by length ("A week or two"
+≤ 14 days, "About a month" 15–40, "Longer journeys"), the same buckets as its
+length chips; sorting or filtering shows one flat list instead.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
@@ -451,6 +493,18 @@ falls into a trailing "More topics" group rather than vanishing, and
 family when you add a topic (§ Adding a topic shelf). No filter field: grouped,
 the 33 shelves are a map, not a list to search.
 
+**Search is the one shelf whose field is its header** (design review #25,
+2026-11-06). Its `<PageHeader srOnly />` keeps the h1 for screen readers and
+draws nothing; the pinned bar holds the field (header-sized) and, under it, the
+kind tabs (`.tab-strip` + `.subnav-link`, each with its real total) — the old
+left facet rail is gone, and `searchLayout.test.ts` guards the tabs instead.
+Then one larger top-result card when the query names a book or writer exactly
+(`topResult` in `lib/searchResults.ts`), short rows (title + one line), and
+passage rows as "Book · Chapter" over a snippet whose matches are `<mark>`ed
+from text runs (`snippetParts` in `lib/highlight.ts`) — never `{@html}`. A load
+error is one line plus Try again under the field, not a panel. Don't give
+another shelf `srOnly`: on a shelf the title is the first thing to read.
+
 The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
 books by author when the topic is *author-clustered* — most of its books share
 an author with another (the Puritans) — and stays a flat `book-grid` otherwise
@@ -464,12 +518,23 @@ here, `sermons/+page.svelte`, `BooksShelf.svelte` — but the topic one's null
 gate is topic-specific; a shared low-level `groupByAuthor` is a deferred
 refactor, not this pattern's job.)
 
-Same shape for the **order of the content sections**: Books / Sermons /
-Articles are rendered in *prominence* order — the topic leads with the type it
-has the most of and drops any that are empty (`lib/topicSections.ts`), so a
-sermon-heavy topic (The Gospel Call, Christ & the Cross) surfaces its sermons
-first and an article-heavy one (The Deeper Life, 21 articles) its articles,
-while a balanced topic keeps the familiar Books → Sermons → Articles order.
+The **content sections are tabs** — Books (N) · Sermons (N) · Articles (N),
+always in that order, empty kinds dropped (`lib/topicSections.ts`), opening on
+the first (books whenever there are any; a books-less shelf like Christ & the
+Cross opens on sermons). _(Design review #16, 2026-11, founder-approved: this
+replaced the old *prominence* order, which led a sermon-heavy topic with its
+sermons — On Prayer opened on 24 sermon cards before a single cover. With
+tabs the sermons are one tap away, so books lead.)_ Every panel stays in the
+prerendered HTML (inactive ones are `hidden`, not unrendered) so each work
+stays linked for search. A one-kind topic still shows its one tab (it is
+where the shelf states its size). A panel's own section `h2` is
+visually hidden (the tab names it) — except Books after a Book Series row,
+where it marks where the single books begin. The Books panel opens with ONE "Start
+here" pick: the topic's lead book — the first in its `topic_seed` order —
+never a hand-invented editorial pick. The header is plain (no tinted hero
+box, no badge): title with icon-only Follow + Share, the shelf's short
+description (unclamped), the verse as a quiet epigraph; the ministry cross-link
+(`ForPromo`) sits at the END of the page, after Related topics.
 
 **Verifying a page in the in-app Browser pane:** `npm run dev` binds IPv6
 `[::1]` only, but the pane resolves `localhost`→IPv4, so navigation fails with
@@ -485,7 +550,7 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
       (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
-- [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
+- [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's kind tabs
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
 - [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
       prerendered URL *family* (e.g. a topic-filtered shelf), the route's
@@ -525,6 +590,34 @@ lists content types, **in the same order** everywhere:
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
+
+### The logged-out home is six sections on one ground (design #17, founder-approved 2026-11)
+
+`HomeMarketing.svelte` had grown nine sections over alternating cream / tan
+bands. The target is six, in order: the hero (or, for a returning reader, the
+Continue-reading strip — design #10) · Today (design #20) · books · topics ·
+authors · one line for churches and ministries (design #27). #17 shipped the
+structure; until #20 and #27 land the page still renders, in order: hero ·
+book row · `SignupBand` (signed out, accounts on) · `DailyShelf` ·
+`SermonOfTheDay` · `HomeArticles` (the day's blocks #20 folds into one card,
+right after the hero) · topics · `HomeAudienceHubs` (young readers & teens —
+keep it) · authors · `HomeForGroups` (the pills #27 reduces to a line). The
+comments in the file mark each slot. Rules:
+
+- **One ground.** No `.page-band` / `bg-surface-2` section bands on the
+  logged-out home; space (`pt-14`) separates sections. `DiscoverStrip` takes
+  `band="none"` there (the dashboard keeps its `night-band`, and the Books
+  icon with it). `SignupBand` is the one band still standing.
+- **One heading style**: `<SectionHeader>` with no `section` prop — sentence
+  case, start-aligned, no icon before the `<h2>`, the "All … →" link at the
+  end. No centred headings.
+- **Topics are quiet**: `TopicChips quiet` — eight names, no emblem, no count
+  (`TopicPill`'s `count` is optional for this); "All topics →" in the header.
+- **Authors are faces**: a row of large `<Portrait>`s with the name under each
+  (4 a row on a phone, 8 on desktop; the face shrinks to its cell), not boxed
+  `AuthorTile` cards.
+- **Not on Home**: "How Ochorus works" and the library-figures + mission band.
+  The figures belong to `/about`'s stats band (books and sermons there).
 
 ### The footer is one band (design #3, founder-approved 2026-11)
 
@@ -1243,7 +1336,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### K. Colour & radius
 
-- [x] **K1** _(shipped 2026-11-04 — `.reading blockquote` moved from `--accent-soft` (~1.1:1, near-invisible) to the gold rule the article and bio pull-quotes already wore; the book page's opening `figure` is a card, not a rule)_ Blockquote/pull-quote left-rule uses four colours + two widths
+- [x] **K1** _(shipped 2026-11-04 — `.reading blockquote` moved from `--accent-soft` (~1.1:1, near-invisible) to the gold rule the article and bio pull-quotes already wore; the book page's opening lines, once a card, now wear the gold rule too as About's aside — design #9)_ Blockquote/pull-quote left-rule uses four colours + two widths
   (`.reading` accent-soft, `.bio` gold, `.article-body` solid accent, the book
   "about" figure a 2px border) where §1 says gold. → one `.pullquote`.
 - [ ] **K2** Two token vocabularies in scoped CSS: `--color-*` (12 files) vs bare
@@ -1259,7 +1352,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### L. Spacing rhythm
 
-- [~] **L1** _(2026-11-05: Author, Sermon and Plan already sit every titled section at `mt-12`. Book's split is two roles, not drift: the work's own material (editions, guide, About, opening, Explore, contents) at `mt-8`, then what lies beyond it (languages, author, related) at `mt-12` — keep it. The reader's `end-done` block at `mt-14 … pt-8` is a section break, not the prev/next nav, which now matches the sermon's (D10))_ Leaf-page section separators range `mt-8`→`mt-16` for the same
+- [~] **L1** _(2026-11-05: Author, Sermon and Plan already sit every titled section at `mt-12`. Book's split is two roles, not drift: the work's own material (About with its guide link, opening aside and topics; contents) at `mt-8`, then what lies beyond it (editions, languages, author, Q&A, related) at `mt-12` — keep it (design #9 reordered them). The reader's `end-done` block at `mt-14 … pt-8` is a section break, not the prev/next nav, which now matches the sermon's (D10))_ Leaf-page section separators range `mt-8`→`mt-16` for the same
   "next titled section" role (book mixes 8/12, author 14/16, sermon 12); the
   identical prev/next nav is `mt-14` on the reader, `mt-12` on the sermon. → one
   band value.

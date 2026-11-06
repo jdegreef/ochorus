@@ -109,6 +109,6 @@ describe('deriveHomeShelves', () => {
 	});
 
 	it("counts the language's whole library, not the capped shelves", () => {
-		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, authors: 12, sermons: 3 });
+		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, sermons: 3 });
 	});
 });

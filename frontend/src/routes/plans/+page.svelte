@@ -7,6 +7,7 @@
 	import { localizeHref } from '$lib/href';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -18,11 +19,9 @@
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { planMeta } from '$lib/emblemNames';
 	import { queryChip, type FilterChip } from '$lib/filterChips';
-	import { readJSON, writeJSON } from '$lib/persisted';
 	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -38,15 +37,16 @@
 	const dayLabel = (plan: PlanSummary, done: number) =>
 		`${plan.title}: ${done} ${OF} ${plan.day_count} ${DAYS}`;
 
-	// Length filter: help a reader pick a plan that fits the time they have, and
-	// keep the list scannable as it grows. Buckets are derived from the day count
-	// — up to two weeks, up to a month, longer — and labelled with that time, as
-	// the Sermons length filter is. The query and length live in the URL
-	// (shareable/reloadable/Back-able) via $lib/urlFilters, like every shelf.
+	// Length: the question a reader brings to this shelf is how much time they
+	// have, so the shelf is grouped by it (design review #19) — "A week or two"
+	// (up to 14 days), "About a month" (15–40), "Longer journeys" — and the same
+	// three buckets are the length filter's chips, so a chip and a group heading
+	// never disagree about where a plan sits. The query and length live in the
+	// URL (shareable/reloadable/Back-able) via $lib/urlFilters, like every shelf.
 	type LengthBucket = 'short' | 'medium' | 'long';
 	const BUCKETS: LengthBucket[] = ['short', 'medium', 'long'];
 	const bucketOf = (days: number): LengthBucket =>
-		days <= 14 ? 'short' : days <= 30 ? 'medium' : 'long';
+		days <= 14 ? 'short' : days <= 40 ? 'medium' : 'long';
 	const LENGTH_LABEL: Record<LengthBucket, string> = {
 		short: 'plans.lengthShort',
 		medium: 'plans.lengthMedium',
@@ -57,43 +57,50 @@
 		allowed: { length: BUCKETS },
 		url: () => $page.url
 	});
-	const counts = $derived.by(() => {
+	const countIn = (list: PlanSummary[]) => {
 		const c: Record<LengthBucket, number> = { short: 0, medium: 0, long: 0 };
-		for (const p of plans) c[bucketOf(p.day_count)]++;
+		for (const p of list) c[bucketOf(p.day_count)]++;
 		return c;
+	};
+	const counts = $derived(countIn(plans));
+	// What the chips count: the plans the search leaves, so pressing "About a
+	// month 3" shows three. Which chips exist still follows the whole shelf, so
+	// the row doesn't reshuffle while the reader types.
+	const matching = $derived.by(() => {
+		const q = filters.values.q.trim().toLowerCase();
+		return plans.filter((p) => matchesQuery(q, p.title, p.description));
 	});
-	// Only buckets that hold a plan are offered, and the dropdown only when the
+	const matchCounts = $derived(countIn(matching));
+	// Only buckets that hold a plan are offered, and the chips only when the
 	// plans actually spread across two of them.
 	const shownBuckets = $derived(BUCKETS.filter((b) => counts[b] > 0));
 	const showSearch = $derived(plans.length >= SHELF_SEARCH_MIN);
 	const showLength = $derived(plans.length >= 3 && shownBuckets.length >= 2);
+	/** The length choices, said once for the inline chips and the phone sheet. */
+	const lengthOptions = $derived([
+		{ v: '', label: t('plans.lengthAll'), count: matching.length },
+		...shownBuckets.map((b) => ({ v: b, label: t(LENGTH_LABEL[b]), count: matchCounts[b] }))
+	]);
 
-	// Sort is the reader's preference, not the shelf's: localStorage.
+	// Sort is a view choice for this visit, and deliberately NOT restored from
+	// localStorage: a sorted shelf is a flat list and the resting one is grouped,
+	// so restoring it after the prerendered paint flipped the whole page from
+	// groups to a list on every load (page-design: never restore a
+	// layout-changing preference on a prerendered page — Biographies, 2026-10).
 	type Sort = 'shelf' | 'shortest' | 'longest';
 	const SORTS: { v: Sort; k: string }[] = [
 		{ v: 'shelf', k: 'common.sortShelf' },
 		{ v: 'shortest', k: 'common.sortShortest' },
 		{ v: 'longest', k: 'common.sortLongest' }
 	];
-	const PREFS_KEY = 'ochorus:plans-view';
 	let sort = $state<Sort>('shelf');
-	onMount(() => {
-		const p = readJSON<{ sort?: Sort }>(PREFS_KEY, {});
-		if (p.sort && SORTS.some((o) => o.v === p.sort)) sort = p.sort;
-	});
-	const setSort = (v: Sort) => {
-		sort = v;
-		writeJSON(PREFS_KEY, { sort });
-	};
+	const setSort = (v: Sort) => (sort = v);
 
 	const filtering = $derived(filters.active);
 	const clearFilters = () => filters.reset();
 	const filtered = $derived.by(() => {
-		const q = filters.values.q.trim().toLowerCase();
 		const len = filters.values.length;
-		return plans.filter(
-			(p) => (!len || bucketOf(p.day_count) === len) && matchesQuery(q, p.title, p.description)
-		);
+		return len ? matching.filter((p) => bucketOf(p.day_count) === len) : matching;
 	});
 	const shownPlans = $derived(
 		sort === 'shelf'
@@ -101,6 +108,17 @@
 			: [...filtered].sort((a, b) =>
 					sort === 'shortest' ? a.day_count - b.day_count : b.day_count - a.day_count
 				)
+	);
+	// The resting shelf reads in length groups, in shelf order within each. Once
+	// the reader sorts or filters they asked for a list, so they get a flat one.
+	// (Resting means unfiltered and unsorted, so the groups split `plans` itself.)
+	const groups = $derived(
+		filtering || sort !== 'shelf' || !showLength
+			? null
+			: shownBuckets.map((b) => ({
+					bucket: b,
+					plans: plans.filter((p) => bucketOf(p.day_count) === b)
+				}))
 	);
 	const activeChips = $derived.by(() => {
 		const c: FilterChip[] = [];
@@ -155,14 +173,31 @@
 	structuredData={plans.length ? [plansLd] : []}
 />
 
-<!-- Shared by the inline row (sm up) and the phone sheet. -->
-{#snippet lengthSelect(cls: string)}
-	<select bind:value={filters.values.length} aria-label={t('plans.lengthAll')} class="filter-field {cls}">
-		<option value="">{t('plans.lengthAll')}</option>
-		{#each shownBuckets as b (b)}
-			<option value={b}>{t(LENGTH_LABEL[b])} ({counts[b]})</option>
+<!-- The length chips of the inline row (sm up); the phone sheet offers the
+     same choices as SheetChoices. -->
+{#snippet lengthChips()}
+	<div class="flex flex-wrap gap-1.5" role="group" aria-label={t('plans.lengthAll')}>
+		{#each lengthOptions as o (o.v)}
+			{@const on = filters.values.length === o.v}
+			<button
+				type="button"
+				class="chip"
+				class:active={on}
+				aria-pressed={on}
+				onclick={() => (filters.values.length = o.v)}
+			>
+				{o.label}<span class="count">{o.count}</span>
+			</button>
 		{/each}
-	</select>
+	</div>
+{/snippet}
+
+{#snippet planGrid(list: PlanSummary[], headingLevel: 2 | 3)}
+	<div class="grid items-stretch gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+		{#each list as plan (plan.slug)}
+			<PlanShelfCard {plan} {headingLevel} />
+		{/each}
+	</div>
 {/snippet}
 
 {#snippet clearFiltersAction()}
@@ -233,10 +268,7 @@
 						<SheetChoices
 							label={t('plans.lengthAll')}
 							showLabel={false}
-							options={[
-								{ v: '', label: t('plans.lengthAll') },
-								...shownBuckets.map((b) => ({ v: b, label: t(LENGTH_LABEL[b]), count: counts[b] }))
-							]}
+							options={lengthOptions}
 							value={filters.values.length}
 							onselect={(v) => (filters.values.length = v)}
 						/>
@@ -249,7 +281,7 @@
 					/>
 				</FilterSheet>
 				<div class="hidden sm:contents">
-					{#if showLength}{@render lengthSelect('')}{/if}
+					{#if showLength}{@render lengthChips()}{/if}
 					<select
 						value={sort}
 						onchange={(e) => setSort(e.currentTarget.value as Sort)}
@@ -277,12 +309,15 @@
 
 		{#if shownPlans.length === 0}
 			<EmptyState art="search" message={t('plans.noResults')} action={clearFiltersAction} />
+		{:else if groups}
+			{#each groups as g (g.bucket)}
+				<section class="mb-12 last:mb-0">
+					<GroupHeading name={t(LENGTH_LABEL[g.bucket])} count={g.plans.length} />
+					{@render planGrid(g.plans, 3)}
+				</section>
+			{/each}
 		{:else}
-			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-				{#each shownPlans as plan (plan.slug)}
-					<PlanShelfCard {plan} />
-				{/each}
-			</div>
+			{@render planGrid(shownPlans, 2)}
 		{/if}
 		<!-- The leader's way on, after the plans rather than in the page head
 		     (design review #4): a reader came for the shelf first. Only under

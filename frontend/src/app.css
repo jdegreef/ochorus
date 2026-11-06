@@ -215,6 +215,11 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+	/* A role size, not a scale step (like `.reading`'s --prose-h2): a
+	   set-apart quotation in a narrow aside (the book page's opening lines),
+	   generous but under an h2, which ran a long opening taller than the
+	   prose beside it. */
+	--quote-size: 1.4rem;
 }
 /* A phone is held further from the eye than its pixel density suggests, and
    the two smallest steps (11px micro, 12px eyebrow) carry real reading — card
@@ -2925,6 +2930,12 @@ nav.appnav .navsearch:hover {
 	letter-spacing: -0.01em;
 	color: var(--text);
 }
+/* A page whose sections are separated by space alone (the book page, design
+   review #9): the heading without its hairline. */
+.section-heading.no-rule {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
 /* A quiet count / length trailing the heading text ("Contents · 15 chapters ·
    34 min"), on the same baseline but demoted to small muted sans. */
 .section-heading .meta {
@@ -3072,12 +3083,8 @@ nav.appnav .navsearch:hover {
    sermon plate — and the whole point of a house wash is that they match, so it
    is one recipe driven by --band-hue rather than two that drift.
 
-   A THIRD wash exists and is NOT on this recipe: the topic hero
-   (routes/topics/[slug]/+page.svelte). It has already drifted — 16%/7% over
-   --surface where this is 22%/9% over --surface-2 — so folding it in is a
-   visible redesign of that page (tinted white becomes a warmer, greyer band),
-   not a refactor. Worth doing deliberately; it was left alone here rather than
-   smuggled into a sermon change.
+   (A third, drifted wash once tinted the topic hero; design review #16 took
+   that page's header out of its box, so there is no third copy any more.)
 
    The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
    is what keeps a saturated accent legible in both themes. */
@@ -3168,8 +3175,8 @@ nav.appnav .navsearch:hover {
 }
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
-   one recipe for every surface (shelf cards, sermon rows and cards, topic
-   heroes). A call site decides only how big and which hue, via --chip-size
+   one recipe for every surface (shelf cards, sermon rows and cards, the
+   Ochorus-for pages). A call site decides only how big and which hue, via --chip-size
    and --chip-hue; the art scales with the chip, so "give the emblems more
    air" is one edit here, not a hunt across components. */
 .emblem-chip {

@@ -6,8 +6,9 @@
 	let { article, cta }: { article: ArticleLink; cta: string } = $props();
 </script>
 
-<!-- An article surfaced on a page that is NOT the articles index: the reader's
-     guide on a book page, an author's articles on their own page.
+<!-- An article surfaced on a page that is NOT the articles index: an
+     author's articles on their own page. (The book page's reader's guide is
+     an inline link in About since design review #9.)
 
      Deliberately not ArticleCard. That one owns an <h2>, which here would sit
      inside a section that already has one and break the heading hierarchy
