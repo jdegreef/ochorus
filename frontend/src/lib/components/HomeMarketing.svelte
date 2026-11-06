@@ -151,9 +151,8 @@
 	</section>
 {/if}
 
-<!-- The leader behind the reader: a page for each group they lead. Design
-     #27 (the audience pills) turns this into the page's closing line for
-     churches and ministries. -->
+<!-- The leader behind the reader: one closing line for churches and
+     ministries and a link to the /for/ hub (design #27). -->
 <div class="pb-20"><HomeForGroups /></div>
 
 <style>
