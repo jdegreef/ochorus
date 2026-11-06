@@ -33,7 +33,7 @@
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import { currentBook } from '$lib/currentBook.svelte';
+	import type { currentBook as CurrentBookStore } from '$lib/currentBook.svelte';
 	import { blessingFor } from '$lib/benediction';
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { pageShowsBook } from '$lib/footerResume';
@@ -65,8 +65,13 @@
 	// Signed in: their current book, unless this page already shows it (home's
 	// hero, their lists, the book itself — pageShowsBook). Home never resolves it.
 	const wantResume = $derived(!!auth.user && path !== '/');
+	// The current-book store is imported only once it could be shown: it brings
+	// the resume and library-list modules (and through them library-public and
+	// seo), which no signed-out reader and no page view that stops short of the
+	// footer needs in the JavaScript every page loads first.
+	let currentBook = $state.raw<typeof CurrentBookStore | null>(null);
 	const resume = $derived.by(() => {
-		const item = wantResume ? currentBook.item : null;
+		const item = wantResume ? (currentBook?.item ?? null) : null;
 		return item && !pageShowsBook(path, item.slug) ? item : null;
 	});
 
@@ -75,10 +80,15 @@
 	let footerEl = $state<HTMLElement>();
 	const footerNear = elementVisible(() => footerEl, { rootMargin: '600px 0px' });
 	$effect(() => {
-		if (!wantResume || !footerNear.visible) return;
+		if (!wantResume || !footerNear.visible || currentBook) return;
+		void import('$lib/currentBook.svelte').then((m) => (currentBook = m.currentBook));
+	});
+	$effect(() => {
+		const store = currentBook;
+		if (!store || !wantResume || !footerNear.visible) return;
 		void lang.current;
-		untrack(() => currentBook.refresh());
-		return currentBook.watch();
+		untrack(() => store.refresh());
+		return store.watch();
 	});
 
 	const blessing = $derived(blessingFor(lang.current));

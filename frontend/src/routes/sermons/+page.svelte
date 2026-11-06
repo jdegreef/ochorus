@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import { formatLifespan, type SermonSummary } from '$lib/library-public';
 	import { SvelteSet } from 'svelte/reactivity';
@@ -9,7 +8,13 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readJSON, writeJSON } from '$lib/persisted';
+	import { pager, pagedSnapshot } from '$lib/paging.svelte';
+	import { featuredOrder, startWith } from '$lib/sermonPicks';
+	import { canonGrid } from '$lib/sermonCanon';
+	import { isPlainPrimaryClick } from '$lib/plainClick';
+	import { tick } from 'svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
+	import ShowMore from '$lib/components/ShowMore.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -23,9 +28,11 @@
 	import AuthorJumpStrip from '$lib/components/AuthorJumpStrip.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { writeFilters } from '$lib/urlFilters';
+	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
-	import { readingMinutes } from '$lib/reading';
+	import { readingMinutes, readingTime } from '$lib/reading';
 	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
 	import type { LengthBucket } from '$lib/sermonLength';
 
@@ -63,13 +70,15 @@
 
 	// --- Filters ----------------------------------------------------------------
 	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
-	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
-	// sort stay in localStorage below: they describe the reader, not the shelf.
+	// $lib/urlFilters — the same helper Books and Biographies use. The
+	// arrangement (`group`, `sort`) rides along, as Biographies' sort does, so
+	// Back and a reload keep it (see Arrangement below).
+	const FILTER_DEFAULTS = { q: '', book: '', len: '', topic: '', group: 'all', sort: 'shelf' };
 	const filters = urlFilters({
-		defaults: { q: '', book: '', len: '', topic: '' },
-		// `len` is an enum — an off-list value in the URL falls back to "any".
-		// `topic` is a free-text slug (like `book`), so it isn't listed here.
-		allowed: { len: LENGTH_BUCKETS },
+		defaults: FILTER_DEFAULTS,
+		// `len`, `group` and `sort` are enums — an off-list value in the URL falls
+		// back to the default. `topic` is a free-text slug (like `book`).
+		allowed: { len: LENGTH_BUCKETS, group: ['all', 'preacher'], sort: ['shelf', 'scripture', 'title', 'shortest'] },
 		url: () => $page.url
 	});
 
@@ -134,7 +143,10 @@
 		});
 	});
 
-	const filtering = $derived(filters.active);
+	// Narrowing, not arranging: a grouping or sort is not a filter.
+	const filtering = $derived(
+		!!(filters.values.q.trim() || filters.values.book || filters.values.len || filters.values.topic)
+	);
 
 	// The filters currently narrowing the shelf, each liftable on its own. The
 	// query and the topic (shared with every shelf) come from filterChips; book
@@ -156,20 +168,30 @@
 	});
 
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
-	// sort are the reader's own preference (localStorage) and survive.
+	// sort survive.
 	function clearFilters() {
-		filters.reset();
+		filters.reset({ group: filters.values.group, sort: filters.values.sort });
 	}
 
-	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
-	// "By preacher" keeps the author sections the shelf was built around; "All
-	// sermons" drops them for one continuous list.
+	// --- Arrangement -----------------------------------------------------------
+	// "All sermons" — one continuous list in featured order, paged — is the
+	// default (design review #28): grouped under 38 preachers the page ran
+	// ~23,000px and opened on A. B. Simpson for the alphabet's sake. "By
+	// preacher" keeps the author sections as a choice.
+	//
+	// URL state, not localStorage: the page is prerendered with the default, and
+	// restoring a stored grouping or sort in onMount swapped the whole list after
+	// the reader could see it on EVERY load (page-design: never restore a
+	// layout-changing view after first paint). In the URL it only differs from
+	// the default when the reader chose it — a Back or a shared link — as on
+	// Biographies.
 	type Group = 'preacher' | 'all';
 	type Sort = 'shelf' | 'scripture' | 'title' | 'shortest';
-	const PREFS_KEY = 'ochorus:sermons-view';
 
-	let group = $state<Group>('preacher');
-	let sort = $state<Sort>('shelf');
+	const group = $derived(filters.values.group as Group);
+	const sort = $derived(filters.values.sort as Sort);
+	/** The arrangement the page opens on — the only one the start row shows in. */
+	const defaultView = $derived(!filtering && group === 'all' && sort === 'shelf');
 
 	/** What the phone Filters sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived((filters.values.book ? 1 : 0) + (filters.values.len ? 1 : 0));
@@ -185,20 +207,20 @@
 	// preacher anchors clear can't be assumed — it feeds `--pinned-offset`.
 	let pinnedH = $state(0);
 
-	// Hydrated after mount, not during load: the page is prerendered, so reading
-	// localStorage while rendering would desync the static HTML from the client.
-	onMount(() => {
-		const p = readJSON<{ group?: Group; sort?: Sort }>(PREFS_KEY, {});
-		if (p.group) group = p.group;
-		if (p.sort) sort = p.sort;
-	});
-	const save = () => writeJSON(PREFS_KEY, { group, sort });
-	const setGroup = (g: Group) => ((group = g), save());
+	// "Start with these": three hand-picked sermons for a newcomer, shown only
+	// in the default view — a filter, sort or grouping is the reader saying
+	// what they want, and in any other order the picks would repeat right
+	// under the row.
+	const starters = $derived(startWith(sermons));
+	const startSlugs = $derived(new Set(starters.map((s) => s.slug)));
 
 	const sorted = $derived.by(() => {
-		// Shelf order is the API's own (author, then their sequence) — return the
-		// filter's array as-is rather than copying it only to not sort it.
-		if (sort === 'shelf') return filtered;
+		// "Featured": the flat list lets the preachers take turns ($lib/sermonPicks);
+		// grouped, it is the API's own order (preacher A–Z, then their sequence),
+		// returned as-is rather than copied only to not sort it. While the row
+		// shows them, its three wait for their preacher's last turn.
+		if (sort === 'shelf')
+			return group === 'all' ? featuredOrder(filtered, defaultView ? startSlugs : undefined) : filtered;
 		const arr = [...filtered];
 		switch (sort) {
 			case 'scripture':
@@ -224,6 +246,18 @@
 		return [...map.values()];
 	});
 
+	// The flat list pages 24 at a time (page-design: a flat list over ~30 items).
+	// Keyed to the filters and sort, so a new filter starts over at the first
+	// page; the snapshot brings Back to where the reader was. Every sermon page
+	// stays reachable for the prerender crawler without this list's full HTML:
+	// each preacher's page (/authors/<slug>, from the seeded A–Z) lists all of
+	// their sermons.
+	const pages = pager(
+		() => sorted,
+		() => Object.values(filters.values).join('|')
+	);
+	export const snapshot = pagedSnapshot(() => (groups ? undefined : pages));
+
 	// A preacher section opens on its first few sermons, so Spurgeon's eighteen
 	// don't fill three screens before the next preacher. The rest stay in the
 	// HTML (hidden, so every row is still a crawlable link) behind "Show N more".
@@ -244,6 +278,44 @@
 		const section = document.getElementById(`preacher-${slug}`);
 		if (section && section.getBoundingClientRect().top < 0)
 			section.scrollIntoView({ block: 'start' });
+	}
+
+	// --- Browse by Scripture (design review #21) ----------------------------------
+	// The 66 books, each shaded by how many sermons on this shelf preach from
+	// it; a cell sets the book filter. Built from `bookFacets`, so a cell's
+	// count is the select's count. Null (no grid) where the shelf's references
+	// don't resolve to enough books, and off the English shelf: the cells'
+	// abbreviations and names are English ($lib/sermonCanon).
+	const canon = $derived(getLang() === 'en' ? canonGrid(bookFacets) : null);
+	/** A cell's link: this view (group, sort) narrowed to the book, so a new
+	 *  tab opens what a plain click shows. Built from the filter VALUES, never
+	 *  the query string, which the prerender may not read. */
+	function bookHref(book: string) {
+		// A placeholder origin: only the path and query are kept (SITE_URL can
+		// be blank in the app build).
+		const base = new URL(localizeHref('/sermons'), 'https://x.invalid');
+		const u = writeFilters(base, { ...filters.values, book }, FILTER_DEFAULTS);
+		return u.pathname + u.search;
+	}
+	// Phone only: the grid opens on a tap, so it doesn't stand between the start
+	// row and the list. From sm it is always open (CSS — the prerendered HTML
+	// is the same at every width, so nothing moves after first paint).
+	let canonOpen = $state(false);
+	const sermonsLabel = (n: number) => `${n} ${n === 1 ? t('common.sermonOne') : t('common.sermonMany')}`;
+
+	/** A cell is a real link (shareable, opens in a new tab); a plain click
+	 *  filters in place and brings the narrowed list into view, since the grid
+	 *  and the rows above it give way to it. Focus goes there too: the link
+	 *  the reader pressed is gone, and focus would otherwise fall to <body>. */
+	function pickBook(e: MouseEvent, name: string) {
+		if (!isPlainPrimaryClick(e)) return;
+		e.preventDefault();
+		filters.values.book = name;
+		tick().then(() => {
+			const results = document.getElementById('sermon-results');
+			results?.focus({ preventScroll: true });
+			results?.scrollIntoView({ block: 'start' });
+		});
 	}
 
 	// A row states its writer only when no heading above it does.
@@ -283,15 +355,15 @@
 	<div class="seg {cls}">
 		<button
 			class={btnCls}
-			class:active={group === 'preacher'}
-			onclick={() => setGroup('preacher')}
-			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
+			class:active={group === 'all'}
+			onclick={() => (filters.values.group = 'all')}
+			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
 		>
 		<button
 			class={btnCls}
-			class:active={group === 'all'}
-			onclick={() => setGroup('all')}
-			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
+			class:active={group === 'preacher'}
+			onclick={() => (filters.values.group = 'preacher')}
+			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
 		>
 	</div>
 {/snippet}
@@ -312,8 +384,7 @@
 	     uses), and it stops the sermon count from clashing with the distinct
 	     "authors" figures on the home and Books pages. -->
 	{#snippet sermonCounts()}
-		{sermons.length}
-		{sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
+		{sermonsLabel(sermons.length)}
 		<span class="sep">·</span>
 		{preacherCount}
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
@@ -362,7 +433,7 @@
 					label={t('common.sort')}
 					options={SORTS.map((o) => ({ v: o.v, label: t(o.k) }))}
 					value={sort}
-					onselect={(v) => ((sort = v), save())}
+					onselect={(v) => (filters.values.sort = v)}
 				/>
 				{@render groupSeg('w-full', 'flex-1')}
 			</FilterSheet>
@@ -381,7 +452,7 @@
 					{/each}
 				</select>
 
-				<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+				<select bind:value={filters.values.sort} class="filter-field" aria-label={t('common.sort')}>
 					{#each SORTS as o (o.v)}
 						<option value={o.v}>{t(o.k)}</option>
 					{/each}
@@ -413,6 +484,14 @@
 		onSelect={(topic) => (filters.values.topic = topic)}
 	/>
 
+	<!-- Where a Browse by Scripture pick lands the reader: the top of the results. -->
+	<div
+		id="sermon-results"
+		tabindex="-1"
+		class="outline-none"
+		style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+	></div>
+
 	<!-- One clear affordance, on the FilterSummary — same as Books and
 	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
 	{#if filtering}
@@ -424,6 +503,93 @@
 			chips={activeChips}
 			class="mb-6"
 		/>
+	{/if}
+
+	<!-- Three to start with (design #28): large faces, the title, preacher ·
+	     minutes — a way in for a reader who doesn't yet know whom to read. -->
+	{#if defaultView && !loadError && starters.length}
+		<section class="mb-10" aria-labelledby="start-with">
+			<h2 id="start-with" class="section-label mb-4">{t('sermons.startWith')}</h2>
+			<ul class="start-with">
+				{#each starters as s (s.slug)}
+					<li>
+						<a href={localizeHref(`/sermons/${s.slug}`)} class="start-card">
+							<Portrait
+								slug={s.author.slug}
+								name={s.author.name}
+								url={s.author.photo_url}
+								px={72}
+								tone="color"
+								decorative
+								class="start-face"
+							/>
+							<span class="min-w-0">
+								<span class="start-title">{s.title}</span>
+								<span class="block text-small text-muted"
+									>{s.author.name}{' '}<span class="sep" aria-hidden="true">·</span>{' '}<span
+										class="whitespace-nowrap">{readingTime(s.word_count)}</span
+									></span
+								>
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	<!-- Browse by Scripture (design #21): every book of the Bible, shaded by how
+	     many sermons here preach from it (the shared .heat-N wash, the count
+	     printed in the cell and in its name, so the shade is never the only
+	     signal). An empty book is muted text, not a link. A secondary section:
+	     hidden while filtering — the chosen book shows as a chip instead. -->
+	{#if canon && !filtering && !loadError}
+		<section class="mb-10" class:canon-open={canonOpen} aria-labelledby="by-scripture">
+			<h2 id="by-scripture" class="section-label mb-4">
+				<button
+					type="button"
+					class="canon-toggle"
+					aria-expanded={canonOpen}
+					aria-controls="canon-body"
+					onclick={() => (canonOpen = !canonOpen)}
+				>
+					{t('sermons.byScripture')}
+					<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"
+						><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" /></svg
+					>
+				</button>
+				<span class="hidden sm:inline">{t('sermons.byScripture')}</span>
+			</h2>
+			<div id="canon-body" class="canon-body">
+				{#each [canon.old, canon.new] as cells, i (i)}
+					<h3 class="eyebrow text-muted mb-2" class:mt-4={i > 0}>
+						{t(i ? 'scripture.newTestament' : 'scripture.oldTestament')}
+					</h3>
+					<ul class="canon">
+						{#each cells as c (c.name)}
+							<!-- The visible label is the abbreviation (and count); the
+							     accessible name is the full book and "N sermons". -->
+							{#snippet label()}<span aria-hidden="true" class="canon-abbr">{c.abbr}</span
+								>{#if c.count}<span aria-hidden="true" class="canon-count">{c.count}</span
+									>{/if}<span class="sr-only">{c.name}, {sermonsLabel(c.count)}</span
+								>{/snippet}
+							<li>
+								{#if c.count}
+									<a
+										href={bookHref(c.name)}
+										rel="nofollow"
+										class="canon-cell heat-{c.heat}"
+										onclick={(e) => pickBook(e, c.name)}>{@render label()}</a
+									>
+								{:else}
+									<span class="canon-cell canon-empty">{@render label()}</span>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				{/each}
+			</div>
+		</section>
 	{/if}
 
 	<!-- One sermon per line, a plain list (design #8): the title, one meta line
@@ -485,8 +651,7 @@
 					     lifespan read as one figure ("1843–1919 15"). -->
 					{#snippet detail()}
 						<span class="text-small font-normal count"
-							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{g.items.length}
-							{g.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}</span
+							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{sermonsLabel(g.items.length)}</span
 						>
 					{/snippet}
 				</GroupHeading>
@@ -507,7 +672,8 @@
 			</section>
 		{/each}
 	{:else}
-		{@render sermonList(sorted)}
+		{@render sermonList(pages.visible)}
+		<ShowMore pager={pages} />
 	{/if}
 	<!-- The leader's way on, at the end of the shelf rather than in its head
 	     (design review #4): a reader came for the sermons first. Only under
@@ -516,3 +682,133 @@
 		<ForPromo place="sermons-shelf" class="mt-8" />
 	{/if}
 </div>
+
+<style>
+	/* Three across from sm up, a face over its title; a phone stacks them as
+	   rows, the face beside the words, so three fit one screen. */
+	.start-with {
+		display: grid;
+		gap: 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.start-card {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.start-card :global(.start-face) {
+		flex: none;
+		width: 4rem;
+		height: 4rem;
+	}
+	.start-title {
+		display: block;
+		margin-block-end: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.3;
+	}
+	.start-card:hover .start-title,
+	.start-card:focus-visible .start-title {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	/* The canon grid: as many ~3.5rem cells across as fit, each a 44px target. */
+	.canon {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
+		gap: 0.3rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.canon-cell {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding: 0.2rem 0.25rem;
+		border-radius: var(--radius-sm);
+		color: var(--text);
+		font-size: var(--fs-small);
+		line-height: 1.15;
+		text-align: center;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.canon-abbr {
+		font-weight: 600;
+	}
+	.canon-count {
+		font-size: var(--fs-micro);
+		font-variant-numeric: tabular-nums;
+	}
+	/* The top shade is the solid accent: its ink needs this specificity to beat
+	   the body colour above (as ScriptureChapterChips does). */
+	.canon-cell.heat-4 {
+		color: var(--accent-contrast);
+	}
+	a.canon-cell:hover,
+	a.canon-cell:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 1px;
+	}
+	/* No sermons: the name in muted ink on a hairline, nothing to tap. */
+	.canon-empty {
+		color: var(--muted);
+		box-shadow: inset 0 0 0 1px var(--border);
+	}
+	/* A phone's way to open the grid; from sm the plain label beside it shows
+	   instead (this scoped display would beat a `sm:hidden` utility). */
+	.canon-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font: inherit;
+		letter-spacing: inherit;
+		text-transform: inherit;
+		color: inherit;
+	}
+	.canon-toggle .chev {
+		transition: transform 0.15s ease;
+	}
+	.canon-open .canon-toggle .chev {
+		transform: rotate(180deg);
+	}
+	/* Collapsed on a phone until the toggle opens it; always open from sm. */
+	.canon-body {
+		display: none;
+	}
+	.canon-open .canon-body {
+		display: block;
+	}
+	@media (min-width: 40rem) {
+		.canon-body {
+			display: block;
+		}
+		.canon-toggle {
+			display: none;
+		}
+		.start-with {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+		.start-card {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
+		}
+		.start-card :global(.start-face) {
+			width: 4.5rem;
+			height: 4.5rem;
+		}
+	}
+</style>

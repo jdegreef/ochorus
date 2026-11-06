@@ -23,6 +23,10 @@ import { getLang } from './lang.svelte';
 class CurrentBook {
 	item = $state.raw<ResumeBook | null>(null);
 	key = $state<string | undefined>(undefined);
+	/** The full list is still on its way, so a null `item` may yet come. Once
+	 * false, a key with no item is a book that cannot be drawn (the list
+	 * failed), and the logged-out home keeps its hero (HomeMarketing). */
+	pending = $state(false);
 	#generation = 0;
 	#lang = '';
 
@@ -51,9 +55,11 @@ class CurrentBook {
 		this.#lang = lang;
 		if (!slug) {
 			this.item = null;
+			this.pending = false;
 			return;
 		}
 		this.item = this.#resolve(cachedResumeBooks(lang), slug, progress) ?? kept;
+		this.pending = true;
 		libraryBooks(lang)
 			.then((books) => {
 				if (generation !== this.#generation) return;
@@ -62,7 +68,10 @@ class CurrentBook {
 				this.key = now ? workSlugKey('book', now) : undefined;
 				this.item = now ? this.#resolve(books, now) : null;
 			})
-			.catch(() => {});
+			.catch(() => {})
+			.finally(() => {
+				if (generation === this.#generation) this.pending = false;
+			});
 	}
 
 	/** Follow `ochorus:sync`; returns the unsubscribe. */

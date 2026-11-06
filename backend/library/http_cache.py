@@ -63,6 +63,23 @@ CACHE_CONTROL = (
     f"public, max-age={MAX_AGE}, stale-while-revalidate={STALE_WHILE_REVALIDATE}"
 )
 
+#: What a CDN in front of the API may do (``CDN-Cache-Control``, RFC 9213:
+#: Cloudflare, Fastly and Akamai read it before ``Cache-Control`` and do not
+#: pass it on to the browser). The same minute as the browser, so an admin's
+#: change still reaches readers in about a minute, but WITHOUT
+#: ``stale-while-revalidate``: an edge that served a stale copy while it
+#: refreshed would hand the reader's prerender build (which reads this API minutes
+#: after a change fires the rebuild) last version's shelf, and bake it into the
+#: static pages. A browser may show a stale shelf for a moment; a build must not.
+#: Inert until a CDN sits in front of the API (docs/api-edge-cache.md).
+EDGE_CACHE_CONTROL = f"public, max-age={MAX_AGE}"
+
+
+def set_cache_headers(response) -> None:
+    """The browser's and the edge's cache headers on a public content read."""
+    response["Cache-Control"] = CACHE_CONTROL
+    response["CDN-Cache-Control"] = EDGE_CACHE_CONTROL
+
 
 def content_etag(request, *, release: bool = False) -> str:
     """A weak, per-URL ETag over (path, content digest, content revision) —
@@ -122,7 +139,7 @@ class PublicContentCacheMixin:
             if _if_none_match(request, etag):
                 not_modified = HttpResponseNotModified()
                 not_modified["ETag"] = etag
-                not_modified["Cache-Control"] = CACHE_CONTROL
+                set_cache_headers(not_modified)
                 return not_modified
         return super().dispatch(request, *args, **kwargs)
 
@@ -131,6 +148,6 @@ class PublicContentCacheMixin:
         # Only cache successful reads. An error is not the catalogue, and
         # caching a 404 for a minute would outlive the import that fixes it.
         if request.method in ("GET", "HEAD") and response.status_code == 200:
-            response["Cache-Control"] = CACHE_CONTROL
+            set_cache_headers(response)
             response["ETag"] = content_etag(request, release=self.etag_tracks_release)
         return response

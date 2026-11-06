@@ -215,12 +215,12 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
 		// It hangs from the bar (riding its fold-away transform), and is pinned
 		// to the top in focus mode, where there is no bar.
-		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*>\s*\{@render hairline\(false\)\}/);
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}\s*>\s*\{@render hairline\(false\)\}/);
 		expect(src).toMatch(/\{#if readerUi\.focus && !showPeek\}\s*\{@render hairline\(true\)\}/);
 	});
 
 	it('a seek on the hairline does not fold the bar out from under it', () => {
-		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS\)\s*barHidden = nextBarHidden/);
+		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS( && !keyboardInBars\(\))?\)\s*barHidden = nextBarHidden/);
 	});
 
 	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
@@ -233,6 +233,37 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
 		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
 		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
+	});
+});
+
+describe('the phone reader: the bars fold away while reading (design #30)', () => {
+	const src = read(READER);
+
+	it('folds the bottom bar with a transform, so its controls stay in the accessibility tree', () => {
+		// display:none took Aa, Listen and Previous/Next out of reach of Tab
+		// and a screen reader for as long as the reader read on.
+		expect(src).toMatch(/\.progress-foot\.folded \{\s*transform: translateY\(100%\);/);
+		expect(src).not.toMatch(/\.(progress-foot|foot-actions)\.folded \{\s*display: none;/);
+	});
+
+	it('a focus landing in either bar brings both back', () => {
+		// Keyboard focus only: a press on the hairline to seek must not unfold.
+		expect(src).toMatch(/function unfold\(e: FocusEvent\) \{\s*if \(focusVisible\(e\.target as Element\)\) barHidden = false;/);
+		// …which never throws where `:focus-visible` is unknown (iOS < 15.4).
+		expect(src).toMatch(/function focusVisible\([^)]*\) \{\s*try \{/);
+		// …and while the keyboard is in either bar, scrolling folds neither.
+		expect(src).toMatch(/SEEK_SETTLE_MS && !keyboardInBars\(\)\)\s*barHidden = nextBarHidden/);
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}/);
+		expect(src).toMatch(/class="progress-foot" class:folded=\{hideChrome\} onfocusin=\{unfold\}/);
+	});
+
+	it('in scroll mode a tap in the middle third toggles the bars, the edges stay inert', () => {
+		const click = src.slice(src.indexOf('function onArticleClick('), src.indexOf('// Prefetch the next chapter'));
+		expect(click).toMatch(
+			/if \(coarse && isPhone && !overlayOpen && tapZone\(e\) === 'none'\) \{\s*barHidden = !hideChrome;/
+		);
+		// Page mode keeps its thirds: edges turn, the middle toggles the controls.
+		expect(click).toMatch(/else if \(coarse\) readerUi\.toggleFocus\(\);/);
 	});
 });
 

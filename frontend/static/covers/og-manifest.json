@@ -1294,6 +1294,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"am/faithful-with-little": {
+			"ground": "c24b844779ce6151a0e316a45c144b2db95864277c53466774ac38123e3635d0",
+			"style": "originals",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"am/feasting-at-the-table": {
 			"ground": "75609d377849f5cde833890e412615b7710ddd758a80a3116bd5b633c419c153",
 			"style": "devotional",
@@ -4352,6 +4364,18 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05,
+			"caps": false
+		},
+		"ar/faithful-with-little": {
+			"ground": "9faf81572afc59d090dc79629139e1b84078f8e69f4464c023b40dcb38996a72",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
 			"caps": false
 		},
 		"ar/gleanings-among-the-sheaves": {
@@ -14939,6 +14963,18 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"hi/faithful-with-little": {
+			"ground": "29a0d5d20722498a5e6bc9aa350c9928538b2c30886fb42fe39f783a8833f7ff",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/gleanings-among-the-sheaves": {
 			"ground": "b7094bcdc0675614f85fcac8c38932f134c5fd115f2f8c9f508904b772d3b742",
 			"style": "revival",
@@ -18170,6 +18206,18 @@
 				476
 			]
 		},
+		"ko/faithful-with-little": {
+			"ground": "730d1145e252900c5c1b32b9872bec83dccc442df47a84c12486140dd08b031b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1f93e968ef345e5bcf329b608984428f7c13bc20e9f222c81cf1ba2b7ab67014",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
@@ -19794,6 +19842,18 @@
 				267,
 				528
 			]
+		},
+		"lg/faithful-with-little": {
+			"ground": "8a03179b03dbc6835561dc3fd065b3dde2b3ed2bc3a21fd06ecd6cdc63f14536",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
 		},
 		"lg/feasting-at-the-table": {
 			"ground": "069f82a909f129c9adb5253729df1406d89fbf0c248fec73d9f25321d930f918",
@@ -30587,6 +30647,18 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"uk/faithful-with-little": {
+			"ground": "38d15632c0976cb6cd7a109b9393d7a6d2a00a1264d0710534e0db04c5407778",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/gleanings-among-the-sheaves": {
 			"ground": "81443d8687b122b5926ac2cd7a50a45614c3aecfa267350b595c07a63c7ed09f",
 			"style": "revival",
@@ -31844,6 +31916,18 @@
 				173,
 				417
 			]
+		},
+		"vi/faithful-with-little": {
+			"ground": "14835dccd6f3dcec4a921ca82dea2580ace98c9666a7f8411117bfa819bd6aeb",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
 		},
 		"vi/gleanings-among-the-sheaves": {
 			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",

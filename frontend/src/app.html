@@ -90,10 +90,11 @@
 				// which moved the whole page down a screen on a phone. Flagged here,
 				// the home page shows a member the dashboard's skeleton until the app
 				// has mounted, and keeps a returning reader's page visible with the
-				// strip's space already held (src/routes/+page.svelte, app.css
+				// strip's space already held (and, with a book open, "Continue
+				// reading" framed in the hero's place) (src/routes/+page.svelte, app.css
 				// .home-root, HomeMarketing .home-hold). Mirrors the supabase-js
-				// session key and $lib/reading-schema's PROGRESS_KEY, ACTIVITY_KEY
-				// and RESUME_BOOKS_KEY. A session counts only when it is one the
+				// session key and $lib/reading-schema's PROGRESS_KEY, ACTIVITY_KEY,
+				// RESUME_BOOKS_KEY and PLANS_KEY. A session counts only when it is one the
 				// page will draw the dashboard for ($lib/auth storedSessionUser:
 				// a refresh token and a user), or the two disagree.
 				var de = document.documentElement;
@@ -119,9 +120,20 @@
 					var lm = /^\/([a-z]{2,3})(\/|$)/.exec(location.pathname);
 					var rb = JSON.parse(localStorage.getItem('ochorus:resume-books') || '{}') || {};
 					var ab = ((rb.schema === 3 && rb.absent) || {})[lm ? lm[1] : 'en'] || [];
-					var n = 0;
+					// The newest of those that is a book (a bare key) is the book the
+					// reader is in ($lib/resumeBooks currentBookSlug): HomeResume
+					// shows it in the hero's place (design #10) and the strip leaves
+					// it out, so it is not one of the strip's slots.
+					var n = 0, cur = '', curAt = -1;
 					for (var k in pr)
-						if (pr[k] && pr[k].finished_at == null && !/^(bio|article):/.test(k) && ab.indexOf(k) < 0) n++;
+						if (pr[k] && pr[k].finished_at == null && !/^(bio|article):/.test(k) && ab.indexOf(k) < 0) {
+							n++;
+							if (k.indexOf(':') < 0 && (pr[k].at || 0) > curAt) {
+								cur = k;
+								curAt = pr[k].at || 0;
+							}
+						}
+					if (cur) n--;
 					var ds = JSON.parse(localStorage.getItem('ochorus:activity') || '[]');
 					var day = function (back) {
 						var d = new Date();
@@ -135,10 +147,21 @@
 						if (ds.indexOf(day(0)) >= 0) nudge += ' streak today';
 						else if (ds.indexOf(day(1)) >= 0) nudge += ' streak';
 					}
-					if (n || nudge) {
+					if (cur || n || nudge) {
 						de.setAttribute('data-home-for', 'reader');
 						de.setAttribute('data-home-cards', String(Math.min(n, 4)));
 						if (nudge) de.setAttribute('data-home-nudge', nudge);
+					}
+					if (cur) {
+						// The hero's place goes to "Continue reading", with a plan's
+						// card beside the book where a plan is started
+						// ($lib/reading-schema PLANS_KEY; HomeResume's hold).
+						de.setAttribute('data-home-resume', '');
+						var pl = JSON.parse(localStorage.getItem('ochorus:plans') || '{}') || {};
+						for (var ps in pl) {
+							de.setAttribute('data-home-plan', '');
+							break;
+						}
 					}
 				}
 			} catch (e) {}

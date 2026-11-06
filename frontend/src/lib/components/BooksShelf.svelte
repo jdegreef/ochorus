@@ -23,7 +23,6 @@
 	import GroupHeading from './GroupHeading.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
-	import TopicFilterRow from './TopicFilterRow.svelte';
 	import FilterBar from './FilterBar.svelte';
 	import AuthorJumpStrip from './AuthorJumpStrip.svelte';
 	import ViewToggle from './ViewToggle.svelte';
@@ -31,11 +30,23 @@
 	import ContinueRow from './ContinueRow.svelte';
 	import ProgressBar from './ProgressBar.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
-	import { BOOK_SORTS, BOOK_SORT_LABEL, matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
+	import {
+		BOOK_LENGTHS,
+		BOOK_LENGTH_LABEL,
+		BOOK_SORTS,
+		BOOK_SORT_LABEL,
+		bookLength,
+		matchesBookQuery,
+		sortBooks,
+		type BookLength,
+		type BookSort
+	} from '$lib/bookSort';
+	import { readingMinutes } from '$lib/reading';
 	import { pager } from '$lib/paging.svelte';
 	import ShowMore from '$lib/components/ShowMore.svelte';
 	import { groupBySeries, seriesAmong } from '$lib/series';
 	import { browseRows } from '$lib/browseRows';
+	import { collapseEditions, editionFamilies } from '$lib/edition';
 
 	let {
 		books,
@@ -70,9 +81,11 @@
 	// opens on (design review #11), 'all' the full grid with these filters. It
 	// rides with them so a "See all" link can land on a pre-filtered grid, and
 	// clearing the filters keeps the reader on the grid they were using.
+	// `len` is a reading-time bucket ($lib/bookSort); off the list it reads as
+	// "any length".
 	const filters = urlFilters({
-		defaults: { q: '', topic: '', shelf: '' },
-		allowed: { shelf: ['all'] },
+		defaults: { q: '', topic: '', len: '', shelf: '' },
+		allowed: { shelf: ['all'], len: BOOK_LENGTHS },
 		url: () => $page.url
 	});
 	const clearFilters = () => filters.reset({ shelf: 'all' });
@@ -106,10 +119,35 @@
 	});
 
 	// --- Derived --------------------------------------------------------------
-	// Only the query and the topic narrow the shelf; `shelf` picks the view.
-	const searching = $derived(!!(filters.values.q.trim() || filters.values.topic));
+	// "By series" is offered only when some book on the shelf is in a named
+	// series (never in a language with none, nor behind an API without the
+	// field); a stored preference for it then falls back to the flat view.
+	const hasSeries = $derived(books.some((b) => b.series));
+	const activeGroup = $derived<Group>(group === 'series' && !hasSeries ? 'all' : group);
+
+	// One slot per work (design review #26). A work's full text and its
+	// young-reader editions (`<base>-teens` / `<base>-children`, $lib/edition)
+	// take ONE card: the full edition's, with a stacked edge and an "N
+	// editions" marker (N = its editions on this shelf); its book page is where
+	// the reader picks one. The fold runs on whatever the filters left, so a
+	// search or filter matching only the teens edition still finds it, as
+	// itself. Not under "By series": there each edition sits in its own series
+	// (the teens editions are Straight Talk), so every edition shows. Every count
+	// on the page counts these slots, the cards a reader can see.
+	const folding = $derived(activeGroup !== 'series');
+	const family = $derived(editionFamilies(books));
+	const fold = (list: readonly BookSummary[]): readonly BookSummary[] =>
+		folding ? collapseEditions(list) : list;
+	const editionsOf = (b: BookSummary) => (folding ? (family.get(b.slug) ?? 1) : 1);
+	/** The unfiltered shelf, one slot per card — what "N books", the "All N
+	 *  books" tab and "of y" count. */
+	const slots = $derived(fold(books));
+	// The query, the topic and the length narrow the shelf; `shelf` picks the view.
+	const searching = $derived(
+		!!(filters.values.q.trim() || filters.values.topic || filters.values.len)
+	);
 	// The Browse rows — from the books already loaded, no request of their own.
-	const rows = $derived(browseRows(books));
+	const rows = $derived(browseRows(books, folding)); // folds as the grid does
 	// Any filter or search in the URL lands on the grid, never on the rows; so
 	// does a shelf too small to make a single row (a young language).
 	const hasBrowse = $derived(rows.length > 0);
@@ -118,30 +156,68 @@
 	const seeAllHref = (topic: string) =>
 		localizeHref(`/books?shelf=all&topic=${encodeURIComponent(topic)}`);
 
-	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
+	// Distinct topics present on the shelf, alphabetical, with how many books
+	// each holds — the Filters panel's topic choices. A count is the cards the
+	// choice shows, so editions folded into one slot count once.
 	const allTopics = $derived.by(() => {
-		const m = new Map<string, string>();
-		for (const b of books) for (const tc of b.topics ?? []) m.set(tc.slug, tc.title);
-		return [...m].map(([slug, title]) => ({ slug, title })).sort((a, b) => a.title.localeCompare(b.title));
+		const m = new Map<string, { slug: string; title: string; books: BookSummary[] }>();
+		for (const b of books)
+			for (const tc of b.topics ?? []) {
+				const e = m.get(tc.slug) ?? { slug: tc.slug, title: tc.title, books: [] };
+				e.books.push(b);
+				m.set(tc.slug, e);
+			}
+		return [...m.values()]
+			.map(({ slug, title, books: list }) => ({ slug, title, count: fold(list).length }))
+			.sort((a, b) => a.title.localeCompare(b.title));
 	});
 	const isEnglish = $derived(getLang() === 'en');
 
-	// The filters currently narrowing the shelf, each liftable on its own
-	// (query and topic, shared with every shelf, via filterChips). Lifting one
-	// keeps the reader on the grid: a filtered link without `shelf=all` (an
-	// older shared one) would otherwise drop to the Browse rows with its last
-	// chip.
-	const activeChips = $derived.by(() =>
-		[queryChip(filters), topicChip(filters, allTopics)]
-			.filter((c): c is FilterChip => c !== null)
-			.map((c) => ({ ...c, onRemove: () => (c.onRemove(), (filters.values.shelf = 'all')) }))
+	/** The length bucket a book falls in — at THIS reader's pace, so it agrees
+	 *  with the reading time its card prints — or null for a book with no word
+	 *  count, which prints no time and so is in no bucket. */
+	const lengthOf = (b: BookSummary): BookLength | null =>
+		b.word_count ? bookLength(readingMinutes(b.word_count)) : null;
+	/** Cards per length bucket (editions folded, as above), for the panel's choices. */
+	const lengthFacets = $derived.by(() => {
+		const c: Record<BookLength, number> = { short: 0, mid: 0, long: 0 };
+		for (const l of BOOK_LENGTHS) c[l] = fold(books.filter((b) => lengthOf(b) === l)).length;
+		return c;
+	});
+	// An empty bucket is dropped — unless a link selected it, so the panel
+	// still shows (and can lift) what is filtering the grid to nothing.
+	const lengthChoices = $derived(
+		BOOK_LENGTHS.filter((b) => lengthFacets[b] || b === filters.values.len)
 	);
+	/** A SheetChoices toggle: tapping the active choice lifts it, as the topic
+	 *  chip row did. */
+	const toggle = (cur: string, v: string) => (v === cur ? '' : v);
+
+	// The filters currently narrowing the shelf, each liftable on its own
+	// (query and topic, shared with every shelf, via filterChips; length is
+	// this shelf's own). Lifting one keeps the reader on the grid: a filtered
+	// link without `shelf=all` (an older shared one) would otherwise drop to
+	// the Browse rows with its last chip.
+	const activeChips = $derived.by(() => {
+		const len = filters.values.len as BookLength | '';
+		const lenChip: FilterChip | null = len
+			? { kind: 'len', label: t(BOOK_LENGTH_LABEL[len]), onRemove: () => (filters.values.len = '') }
+			: null;
+		return [queryChip(filters), topicChip(filters, allTopics), lenChip]
+			.filter((c): c is FilterChip => c !== null)
+			.map((c) => ({ ...c, onRemove: () => (c.onRemove(), (filters.values.shelf = 'all')) }));
+	});
+	/** What the Filters panel is narrowing by — the count on its button. The
+	 *  query shows in its own field; grouping and sort arrange, not narrow. */
+	const sheetCount = $derived((filters.values.topic ? 1 : 0) + (filters.values.len ? 1 : 0));
 
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
+		const len = filters.values.len;
 		return books.filter((b) => {
 			const topic = filters.values.topic;
 			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
+			if (len && lengthOf(b) !== len) return false;
 			// Topic is a shelf-only facet; the title/subtitle/author query
 			// is the shared primitive (also used by the topic shelf). q is already
 			// normalised, and matchesBookQuery treats '' as "no filter".
@@ -149,7 +225,9 @@
 		});
 	});
 
-	const sorted = $derived(sortBooks(filtered, sort)); // shelf order preserves the API's sort_order
+	// What the filters left, one slot per work, in the chosen order (shelf order
+	// preserves the API's sort_order).
+	const sorted = $derived(sortBooks(fold(filtered), sort));
 
 	// A page at a time, like Articles and Biographies: the whole library in one
 	// grid ran 40 phone screens. Only the flat view pages — by author and by
@@ -162,17 +240,11 @@
 	const MORE_PAGE = 48;
 	const flat = pager(
 		() => sorted,
-		() => `${filters.values.q}|${filters.values.topic}|${sort}`,
+		() => `${filters.values.q}|${filters.values.topic}|${filters.values.len}|${sort}`,
 		MORE_PAGE,
 		FIRST_PAGE
 	);
 	export const pages = flat; // for the route's snapshot ($lib/paging)
-
-	// "By series" is offered only when some book on the shelf is in a named
-	// series (never in a language with none, nor behind an API without the
-	// field); a stored preference for it then falls back to the flat view.
-	const hasSeries = $derived(books.some((b) => b.series));
-	const activeGroup = $derived<Group>(group === 'series' && !hasSeries ? 'all' : group);
 
 	const groups = $derived.by(() => {
 		if (activeGroup !== 'author') return null;
@@ -262,42 +334,16 @@
 	{#if view === 'grid'}
 		<div class="book-grid book-grid--library">
 			{#each list as book, i (book.slug)}
-				<BookCard {book} showAuthor {showSeries} eager={eager && i < 7} />
+				<BookCard {book} showAuthor {showSeries} eager={eager && i < 7} editions={editionsOf(book)} />
 			{/each}
 		</div>
 	{:else}
 		<div class="flex flex-col gap-1">
 			{#each list as book (book.slug)}
-				<BookListRow {book} {showSeries} />
+				<BookListRow {book} {showSeries} editions={editionsOf(book)} />
 			{/each}
 		</div>
 	{/if}
-{/snippet}
-
-<!-- Shared by the inline row (sm up) and the phone sheet. -->
-{#snippet groupSeg(cls: string, btnCls: string)}
-	<div class="seg {cls}">
-		<button
-			class={btnCls}
-			class:active={activeGroup === 'author'}
-			onclick={() => setGroup('author')}
-			aria-pressed={activeGroup === 'author'}>{t('books.groupAuthor')}</button
-		>
-		{#if hasSeries}
-			<button
-				class={btnCls}
-				class:active={activeGroup === 'series'}
-				onclick={() => setGroup('series')}
-				aria-pressed={activeGroup === 'series'}>{t('books.groupSeries')}</button
-			>
-		{/if}
-		<button
-			class={btnCls}
-			class:active={activeGroup === 'all'}
-			onclick={() => setGroup('all')}
-			aria-pressed={activeGroup === 'all'}>{t('books.groupAll')}</button
-		>
-	</div>
 {/snippet}
 
 <!-- Book Series — books written to be read together. A rail of the index's
@@ -333,8 +379,14 @@
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
-		{books.length}
-		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		<!-- Works, as the grid shows them; and, where young-reader editions fold
+		     into their full texts, every edition too, so neither number hides. -->
+		{slots.length}
+		{slots.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{#if slots.length < books.length}
+			<span class="sep" aria-hidden="true">·</span>
+			{t('books.editionsCount').replace('%n%', String(books.length))}
+		{/if}
 		<!-- No author count: its own (book writers, the imprint among them) ran
 		     beside the library's on the home page and the A–Z as a second,
 		     smaller number. The library has one, `countWriters`. No series link
@@ -345,7 +397,7 @@
 	<LibraryTabs
 		current="books"
 		series={series.length > 0}
-		browse={hasBrowse ? { count: books.length, all: showAll } : undefined}
+		browse={hasBrowse ? { count: slots.length, all: showAll } : undefined}
 	/>
 
 	{#if loadError}
@@ -404,7 +456,7 @@
 						</div>
 						<div class="cover-rail browse-row" use:scrollEdges>
 							{#each row.books as book, i (book.slug)}
-								<BookCard {book} showAuthor eager={ri === 0 && i < 6} />
+								<BookCard {book} showAuthor eager={ri === 0 && i < 6} editions={editionsOf(book)} />
 							{/each}
 						</div>
 					</section>
@@ -414,11 +466,14 @@
 		{:else}
 			{@render seriesRail()}
 
-			<!-- Controls: search · sort · group · view — pinned under the app
-			     nav (FilterBar) so a reader deep in the shelf can re-sort or regroup
-			     without scrolling back up. `compact`: between sm and md the inline row
-			     wraps too tall to pin. -->
-			<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-6">
+			<!-- Controls: search · sort · ONE Filters button · view (design
+			     review #15), pinned under the app nav (FilterBar) so a reader deep
+			     in the shelf can refine without scrolling back up. One line at
+			     every width, so it pins at every width. Topic, length and grouping
+			     live in the Filters panel — a bottom sheet on a phone, a side sheet
+			     from sm — and the topic chip row that pushed the grid down is gone;
+			     on a phone sort and view move into the panel too. -->
+			<FilterBar bind:pinned={pinnedH} class="mb-6">
 				<div class="filter-row">
 					<input
 						bind:value={filters.values.q}
@@ -428,50 +483,87 @@
 						aria-label={t('books.filterPlaceholder')}
 					/>
 
-					<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+					<select
+						bind:value={sort}
+						onchange={save}
+						class="filter-field hidden sm:block"
+						aria-label={t('common.sort')}
+					>
+						{#each BOOK_SORTS as v (v)}
+							<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
+						{/each}
+					</select>
+
 					<FilterSheet
-						count={0}
-						shown={filtered.length}
+						everywhere
+						count={sheetCount}
+						shown={sorted.length}
 						showLabel={t('books.showResults')}
 						filtered={searching}
 						onClear={clearFilters}
 					>
+						{#if allTopics.length > 1}
+							<SheetChoices
+								label={t('common.topics')}
+								options={[
+									{ v: '', label: t('books.topicAll') },
+									...allTopics.map((tc) => ({ v: tc.slug, label: tc.title, count: tc.count }))
+								]}
+								value={filters.values.topic}
+								onselect={(v) => (filters.values.topic = toggle(filters.values.topic, v))}
+							/>
+						{/if}
+						{#if lengthChoices.length > 1 || filters.values.len}
+							<SheetChoices
+								label={t('common.length')}
+								options={[
+									{ v: '', label: t('common.allLengths') },
+									...lengthChoices.map((b) => ({
+										v: b,
+										label: t(BOOK_LENGTH_LABEL[b]),
+										count: lengthFacets[b]
+									}))
+								]}
+								value={filters.values.len}
+								onselect={(v) => (filters.values.len = toggle(filters.values.len, v))}
+							/>
+						{/if}
 						<SheetChoices
-							label={t('common.sort')}
-							options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
-							value={sort}
-							onselect={setSort}
+							label={t('books.groupLabel')}
+							options={[
+								{ v: 'all' as Group, label: t('books.groupAll') },
+								{ v: 'author' as Group, label: t('books.groupAuthor') },
+								...(hasSeries ? [{ v: 'series' as Group, label: t('books.groupSeries') }] : [])
+							]}
+							value={activeGroup}
+							onselect={setGroup}
 						/>
-						{@render groupSeg('w-full', 'flex-1')}
-						<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
+						<!-- Phone only: the bar has no room for these there. -->
+						<div class="contents sm:hidden">
+							<SheetChoices
+								label={t('common.sort')}
+								options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
+								value={sort}
+								onselect={setSort}
+							/>
+							<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
+						</div>
 					</FilterSheet>
 
 					<div class="hidden sm:contents">
-						<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
-							{#each BOOK_SORTS as v (v)}
-								<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
-							{/each}
-						</select>
-						{@render groupSeg('', '')}
 						<ViewToggle {view} onchange={setView} />
 					</div>
 				</div>
 			</FilterBar>
 
-			<!-- Topic filter -->
-			<TopicFilterRow
-				topics={allTopics}
-				selected={filters.values.topic}
-				onSelect={(topic) => (filters.values.topic = topic)}
-			/>
-
-			<!-- What the filters have left. The shelf showed nothing here at all, so a
-			     query matching nine of fifty-nine books looked exactly like a library
-			     of nine. -->
+			<!-- What the filters have left, each one a removable chip, with "Clear
+			     filters" — the only place a closed panel's choices show. The shelf
+			     once showed nothing here at all, so a query matching nine of
+			     fifty-nine books looked exactly like a library of nine. -->
 			{#if searching}
 				<FilterSummary
-					shown={filtered.length}
-					total={books.length}
+					shown={sorted.length}
+					total={slots.length}
 					template={t('books.showing')}
 					onClear={clearFilters}
 					chips={activeChips}
@@ -526,13 +618,19 @@
 					{#if view === 'grid'}
 						<div class="book-grid book-grid--library">
 							{#each authorFlat as book, i (book.slug)}
-								<BookCard {book} showAuthor eager={i < 7} anchor={authorAnchor.get(book.slug)} />
+								<BookCard
+									{book}
+									showAuthor
+									eager={i < 7}
+									anchor={authorAnchor.get(book.slug)}
+									editions={editionsOf(book)}
+								/>
 							{/each}
 						</div>
 					{:else}
 						<div class="flex flex-col gap-1">
 							{#each authorFlat as book (book.slug)}
-								<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
+								<BookListRow {book} anchor={authorAnchor.get(book.slug)} editions={editionsOf(book)} />
 							{/each}
 						</div>
 					{/if}

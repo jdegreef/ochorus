@@ -59,7 +59,14 @@
 		 * The Ochorus Originals ribbon on an imprint book. Off on /originals,
 		 * where every card is one and the page already says so.
 		 */
-		showImprint = true
+		showImprint = true,
+		/**
+		 * How many editions this card stands for — the full text and the
+		 * young-reader editions folded into it on /books (design review #26,
+		 * `collapseEditions`). Above one, the cover gets a quiet stacked edge and
+		 * a small "3 editions" marker; the book page is where the reader chooses.
+		 */
+		editions = 1
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -71,6 +78,7 @@
 		hook?: string;
 		link?: { href: string; cta: string; label: string; ariaLabel: string };
 		showImprint?: boolean;
+		editions?: number;
 	} = $props();
 	const t = i18n.t;
 	const hookId = $props.id();
@@ -82,6 +90,9 @@
 	// The house imprint's own books wear its ribbon, in the Originals hue —
 	// unless an audience ribbon already sits there (it says more).
 	const imprint = $derived(showImprint && !edition && book.author.slug === ORIGINALS_SLUG);
+	const editionsLabel = $derived(
+		editions > 1 ? t('books.editionsCount').replace('%n%', String(editions)) : ''
+	);
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
 	);
@@ -104,14 +115,23 @@
 	class="book-card group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
 	data-testid="book-card"
-	aria-label={link?.ariaLabel ??
-		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)}
+	aria-label={(link?.ariaLabel ??
+		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)) +
+		(editionsLabel ? ` · ${editionsLabel}` : '')}
 	aria-describedby={hook ? hookId : undefined}
 >
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
 	     tips together on hover, so the overlay stays on the cover. -->
 	<div class="book-card-cover relative">
+		{#if editionsLabel}
+			<!-- Its other editions, as sheets stacked behind the cover. -->
+			<span class="edition-stack" aria-hidden="true"></span>
+		{/if}
 		<BookCover {book} {priority} {eager} />
+		{#if editionsLabel}
+			<!-- In the link's label too, which overrides this text. -->
+			<span class="edition-count" aria-hidden="true">{editionsLabel}</span>
+		{/if}
 		{#if edition}
 			<!-- The audience as a ribbon on the cover, so a teens or children's
 			     edition is told apart at a glance across a shelf. Its words are the
@@ -204,6 +224,61 @@
 			background: none;
 			border: 1px solid currentColor;
 			box-shadow: none;
+		}
+	}
+
+	/* A work with several editions on the shelf (design review #26): two
+	   sheets peek out past the cover's outer and lower edges, the paper of the
+	   page behind it with a hairline each, so the stack reads in every theme.
+	   Below the hover fore-edge (::before, -1), which still shows over it; 7px
+	   at most, inside a Browse rail's block padding. Mirrored right-to-left
+	   (the shadows' offsets are physical). */
+	.edition-stack {
+		position: absolute;
+		z-index: -2;
+		inset: 0;
+		border-radius: var(--radius-card);
+		box-shadow:
+			3px 3px 0 -1px var(--surface-2),
+			4px 4px 0 -1px var(--border-strong),
+			6px 6px 0 -2px var(--surface-2),
+			7px 7px 0 -2px var(--border-strong);
+		pointer-events: none;
+	}
+	:global([dir='rtl']) .edition-stack {
+		transform: scaleX(-1);
+	}
+	/* "3 editions", small, on the cover's lower start corner — away from the
+	   audience/imprint ribbon at the end — and out of the way on hover, like
+	   the ribbon, for the "Begin reading" label. */
+	.edition-count {
+		position: absolute;
+		bottom: 0.4rem;
+		inset-inline-start: 0.4rem;
+		max-width: calc(100% - 0.8rem);
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		padding: 0.1rem 0.45rem;
+		border-radius: 4px;
+		font-size: var(--fs-micro);
+		font-weight: 600;
+		color: var(--surface);
+		background: var(--text);
+		pointer-events: none;
+		transition: opacity var(--duration-fast);
+	}
+	.book-card:hover .edition-count {
+		opacity: 0;
+	}
+	@media print {
+		.edition-stack {
+			display: none;
+		}
+		.edition-count {
+			color: var(--text);
+			background: none;
+			border: 1px solid currentColor;
 		}
 	}
 

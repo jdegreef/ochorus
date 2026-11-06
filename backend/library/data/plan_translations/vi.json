@@ -124,5 +124,12 @@
   "note": [
    "Three-book plan backed by the vi editions of a-call-to-the-unconverted («Lời Kêu Gọi Những Người Chưa Hoán Cải», new this batch), the-way-to-god («Con Đường Đến Với Đức Chúa Trời», new this batch) and all-of-grace («Tất Cả Bởi Ân Điển», already shipped). Ships with the Level 1 books batch 6 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Moody edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are. The description quotes Spurgeon's title verbatim, echoes Baxter's in lower case (“lời kêu gọi … gửi những người chưa hoán cải”) and Moody's as “con đường đến với Đức Chúa Trời”; “the oldest good news” = tin lành xưa nhất (lower case, the good news rather than the Protestant church name)."
   ]
+ },
+ "faithful-with-little": {
+  "title": "Trung Tín Trong Việc Nhỏ: Tiền Bạc Và Tấm Lòng",
+  "description": "Ba tuần với những gì cả Kinh Thánh nói về tiền bạc, mỗi ngày một chương ngắn. Mọi sự đều thuộc về Đức Chúa Trời; tấm lòng đằng sau chiếc ví; làm việc ngay thẳng, lập kế hoạch và nợ nần; rộng rãi như Đức Chúa Trời; và kho báu còn mãi, cùng với John Wesley, George Müller, Charles Spurgeon và A. W. Tozer trên suốt chặng đường. Mỗi ngày kết thúc bằng một điều để thực hành, và ba mươi câu Kinh Thánh then chốt của sách làm thành một tháng đọc đồng hành.",
+  "note": [
+   "The title quotes the shipped vi edition faithful-with-little.vi.json verbatim (Trung Tín Trong Việc Nhỏ), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+  ]
  }
 }

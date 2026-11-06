@@ -1,6 +1,6 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { ORIGINALS_PATH } from '$lib/originals';
-import { AUDIENCE_HUBS } from '$lib/audienceHub';
+import { AUDIENCE_HUBS } from '$lib/audienceHubs';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
