@@ -283,11 +283,11 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 
 | Content | Card | Hover |
 |---|---|---|
-| Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `.book-card--row` (row) | rise + cover tip + overlay |
+| Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
-| Article, Quotes-author | *should be* `.book-card--row`-family rows | row tint |
+| Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a

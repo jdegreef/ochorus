@@ -37,8 +37,8 @@
 		 * chapter", the series card's words): on the young-reader hubs, where one
 		 * chapter is the real commitment and saying so is part of the pitch.
 		 * Every other card carries title and author only — the chapter count
-		 * and the whole book's time live in the list view (BookListRow) and on
-		 * the book page (design review #1, 2026-11).
+		 * and the whole book's time are on the book page, and in the list view
+		 * where a shelf has one (design review #1, 2026-11).
 		 */
 		perChapter = false,
 		/**
@@ -101,7 +101,7 @@
 <a
 	href={localizeHref(link?.href ?? `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
-	class="book-card card-lift group"
+	class="book-card group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
 	data-testid="book-card"
 	aria-label={link?.ariaLabel ??
@@ -258,7 +258,7 @@
 	}
 
 	/* Hovering tips the cover a little toward the reader, as if being taken off
-	   the shelf — on the card lift's own beat (.card-lift), only where there is
+	   the shelf — on the card's own rise beat (.book-card), only where there is
 	   a real hover (a tap would leave it stuck), mirrored right-to-left, and
 	   not at all under reduced motion. */
 	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
