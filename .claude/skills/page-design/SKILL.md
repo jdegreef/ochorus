@@ -114,7 +114,9 @@ In this order, and nothing else at the top level:
    The static HTML is drawn with the default; reading localStorage in
    `onMount` then swaps rows for a grid (or one band for another) after the
    reader can see the page — a visible jump on every load. Biographies dropped
-   restoring its grid/list and Browse-by choices for this (2026-10-03). Books
+   restoring its grid/list and Browse-by choices for this (2026-10-03). Plans
+   dropped restoring its sort when the shelf became length-grouped (design
+   #19, 2026-11): a sort turns the groups into a flat list. Books
    (view/sort/group) and Sermons (group/sort) still restore theirs and still
    jump; fix them the same way, or apply the choice before first paint (the
    `app.html` boot script, as the theme does) if it must persist.

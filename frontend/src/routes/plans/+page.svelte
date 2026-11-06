@@ -19,11 +19,9 @@
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { planMeta } from '$lib/emblemNames';
 	import { queryChip, type FilterChip } from '$lib/filterChips';
-	import { readJSON, writeJSON } from '$lib/persisted';
 	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
@@ -59,11 +57,20 @@
 		allowed: { length: BUCKETS },
 		url: () => $page.url
 	});
-	const counts = $derived.by(() => {
+	const countIn = (list: PlanSummary[]) => {
 		const c: Record<LengthBucket, number> = { short: 0, medium: 0, long: 0 };
-		for (const p of plans) c[bucketOf(p.day_count)]++;
+		for (const p of list) c[bucketOf(p.day_count)]++;
 		return c;
+	};
+	const counts = $derived(countIn(plans));
+	// What the chips count: the plans the search leaves, so pressing "About a
+	// month 3" shows three. Which chips exist still follows the whole shelf, so
+	// the row doesn't reshuffle while the reader types.
+	const matching = $derived.by(() => {
+		const q = filters.values.q.trim().toLowerCase();
+		return plans.filter((p) => matchesQuery(q, p.title, p.description));
 	});
+	const matchCounts = $derived(countIn(matching));
 	// Only buckets that hold a plan are offered, and the chips only when the
 	// plans actually spread across two of them.
 	const shownBuckets = $derived(BUCKETS.filter((b) => counts[b] > 0));
@@ -71,36 +78,29 @@
 	const showLength = $derived(plans.length >= 3 && shownBuckets.length >= 2);
 	/** The length choices, said once for the inline chips and the phone sheet. */
 	const lengthOptions = $derived([
-		{ v: '', label: t('plans.lengthAll'), count: plans.length },
-		...shownBuckets.map((b) => ({ v: b, label: t(LENGTH_LABEL[b]), count: counts[b] }))
+		{ v: '', label: t('plans.lengthAll'), count: matching.length },
+		...shownBuckets.map((b) => ({ v: b, label: t(LENGTH_LABEL[b]), count: matchCounts[b] }))
 	]);
 
-	// Sort is the reader's preference, not the shelf's: localStorage.
+	// Sort is a view choice for this visit, and deliberately NOT restored from
+	// localStorage: a sorted shelf is a flat list and the resting one is grouped,
+	// so restoring it after the prerendered paint flipped the whole page from
+	// groups to a list on every load (page-design: never restore a
+	// layout-changing preference on a prerendered page — Biographies, 2026-10).
 	type Sort = 'shelf' | 'shortest' | 'longest';
 	const SORTS: { v: Sort; k: string }[] = [
 		{ v: 'shelf', k: 'common.sortShelf' },
 		{ v: 'shortest', k: 'common.sortShortest' },
 		{ v: 'longest', k: 'common.sortLongest' }
 	];
-	const PREFS_KEY = 'ochorus:plans-view';
 	let sort = $state<Sort>('shelf');
-	onMount(() => {
-		const p = readJSON<{ sort?: Sort }>(PREFS_KEY, {});
-		if (p.sort && SORTS.some((o) => o.v === p.sort)) sort = p.sort;
-	});
-	const setSort = (v: Sort) => {
-		sort = v;
-		writeJSON(PREFS_KEY, { sort });
-	};
+	const setSort = (v: Sort) => (sort = v);
 
 	const filtering = $derived(filters.active);
 	const clearFilters = () => filters.reset();
 	const filtered = $derived.by(() => {
-		const q = filters.values.q.trim().toLowerCase();
 		const len = filters.values.length;
-		return plans.filter(
-			(p) => (!len || bucketOf(p.day_count) === len) && matchesQuery(q, p.title, p.description)
-		);
+		return len ? matching.filter((p) => bucketOf(p.day_count) === len) : matching;
 	});
 	const shownPlans = $derived(
 		sort === 'shelf'

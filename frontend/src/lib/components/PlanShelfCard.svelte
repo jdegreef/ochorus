@@ -34,6 +34,9 @@
 	const DAYS = t('plans.days');
 
 	const covers = $derived(plan.covers.slice(0, 2));
+	// The plan's curated accent: the hue of a cover with no colour of its own,
+	// and of the emblem standing in for a plan with no covers.
+	const meta = $derived(planMeta(plan.slug));
 	const done = $derived(planProgress.doneDays(plan.slug).length);
 	const started = $derived(planProgress.isStarted(plan.slug));
 	/** Rounded minutes of reading in an average day of the plan. */
@@ -44,7 +47,7 @@
 
 <a class="plan-card group" href={localizeHref(`/plans/${plan.slug}`)}>
 	<div class="plan-card-covers" class:two={covers.length > 1} aria-hidden="true">
-		{#each covers as cover (cover.slug ?? cover.title)}
+		{#each covers as cover (cover.slug)}
 			{@const face = tileFace(cover)}
 			<div class="cover">
 				{#if face}
@@ -54,24 +57,24 @@
 					{@const source = { src: assetUrl(cover.cover_url), srcset: assetSrcset(coverSrcset(cover.cover_url)) || undefined }}
 					<img src={source.src} srcset={source.srcset} use:hydrateSrc={source} alt="" loading="lazy" />
 				{:else}
-					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
+					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color || meta.accent)}"></div>
 				{/if}
 			</div>
 		{:else}
 			<!-- A plan whose books aren't in this language yet (every day an
 			     article, say): its curated emblem holds the cover's place. -->
-			{@const meta = planMeta(plan.slug)}
 			<span class="emblem-chip" style="--chip-hue: {meta.accent}"><Emblem name={meta.emblem} /></span>
 		{/each}
 	</div>
-	<div class="min-w-0">
+	<div class="flex min-w-0 flex-col self-stretch">
 		<svelte:element this={`h${headingLevel}`} class="plan-card-title">{plan.title}</svelte:element>
 		<p class="mt-1 text-small text-muted">
 			{plan.day_count} {DAYS}{#if perDay}<span class="sep">{' · '}</span>~{perDay} {t('plans.minPerDay')}{/if}
 		</p>
 		<p class="mt-1.5 line-clamp-2 text-small text-muted">{plan.description}</p>
 		{#if started}
-			<div class="mt-2.5">
+			<!-- Pushed to the foot, so started plans' bars line up across a row. -->
+			<div class="mt-auto pt-2.5">
 				<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel} />
 				<p class="mt-1.5 text-small text-muted">
 					{done === plan.day_count
@@ -156,8 +159,11 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	/* Block-level, so the auto margins centre it in the cover slot (an inline
+	   box ignores them). */
 	.emblem-chip {
 		--chip-size: 4rem;
+		display: flex;
 		margin: 0.75rem auto 0;
 	}
 </style>
