@@ -559,13 +559,14 @@
 	});
 	const endStreak = $derived(endMounted ? currentStreak(readingActivity.days(), localToday()) : 0);
 
-	// The phone bar's second line — the chapter, in words that don't repeat the
-	// book title above it.
+	// The chapter, in words that don't repeat the book title beside it — the
+	// phone bar's second line and the slim bar's "Book · chapter".
 	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
 	// The slim bar's "1 of 13" — from the book fetch, so it joins the bar once
-	// that lands (the prerendered bar names the chapter alone).
+	// that lands (the prerendered bar names the chapter alone). Not for a
+	// one-chapter book, as the end card's progress isn't.
 	const chapterPosition = $derived(
-		endProgress
+		endProgress && endProgress.total > 1
 			? t('reader.position')
 					.replace('%n%', String(endProgress.done))
 					.replace('%total%', String(endProgress.total))
@@ -1917,9 +1918,7 @@
 					><Icon name="chevron-left" size={18} class="shrink-0" /><bdi class="truncate">{chapter.book_title}</bdi></a
 				>
 				<span class="flex min-w-0 shrink-[2] items-center gap-1 text-small text-muted">
-					{#if chapter.book_title !== chapterName(chapter.order, chapter.title)}
-						<span class="sep" aria-hidden="true">·</span><bdi class="truncate">{chapterName(chapter.order, chapter.title)}</bdi>
-					{/if}
+					<span class="sep" aria-hidden="true">·</span><bdi class="truncate">{phoneChapterLine}</bdi>
 					{#if chapterPosition}
 						<span class="sep" aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
 					{/if}

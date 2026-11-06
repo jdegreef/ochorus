@@ -247,7 +247,9 @@
 	// own, whose "⋯" group carries the site's destinations (ReaderSiteLinks)
 	// and whose title links back to the book. Known from the route id, so a
 	// prerendered page paints without them — nothing comes or goes on hydrate.
-	const siteChrome = $derived(!inReader && !readerUi.focus);
+	// An ERROR under a reader route (a 404 chapter or sermon) keeps the chrome:
+	// the reader page, and its bar, never mounts there.
+	const siteChrome = $derived(!(inReader && !$page.error) && !readerUi.focus);
 	// The app's status-bar strip matches what sits under it (app.css,
 	// `data-app-top`): the pinned nav, or the page's own ground where there is
 	// no nav.

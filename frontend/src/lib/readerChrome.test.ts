@@ -36,7 +36,10 @@ describe('the layout publishes the nav height as a fact', () => {
 		// nav: true only in scroll mode, where that nav rode away — and page mode
 		// is the case that doesn't scroll. It is now keyed on `siteChrome`, the
 		// same switch that draws (or doesn't draw) the nav.
-		const decl = read(LAYOUT).match(/const appnavH = \$derived\(([\s\S]*?)\);/)?.[1] ?? '';
+		// Up to the derived's own closing `\n\t);`, not the first `);` (which is
+		// inside `var(--safe-top, 0px);`).
+		const decl = read(LAYOUT).match(/const appnavH = \$derived\(([\s\S]*?)\n\t\);/)?.[1] ?? '';
+		expect(decl, 'could not find the whole --appnav-h declaration').toMatch(/navH\}px/);
 		expect(decl, '--appnav-h must be declared from a value, not omitted').not.toEqual('');
 		expect(
 			decl,
@@ -61,8 +64,10 @@ describe('the layout publishes the nav height as a fact', () => {
 	it('draws the nav and the footer only where siteChrome holds', () => {
 		// The one switch: a route that is a reading surface, or focus mode, has
 		// neither, so nothing can be pinned underneath a nav that is still there.
+		// An error page under a reader route (a 404 chapter) keeps the chrome: the
+		// reader's own bar never mounts there.
 		const src = read(LAYOUT);
-		expect(src).toMatch(/const siteChrome = \$derived\(!inReader && !readerUi\.focus\)/);
+		expect(src).toMatch(/const siteChrome = \$derived\(!\(inReader && !\$page\.error\) && !readerUi\.focus\)/);
 		expect(src).toMatch(/\{#if siteChrome\}\s*<nav/);
 		expect(src).toMatch(/\{#if siteChrome\}\s*<SiteFooter \/>/);
 	});
@@ -71,9 +76,13 @@ describe('the layout publishes the nav height as a fact', () => {
 describe('the reading surfaces keep the site one tap away', () => {
 	// With no nav and no footer, the "⋯" group is the way to the rest of Ochorus.
 	it.each([READER, 'routes/sermons/[slug]/+page.svelte'])('%s carries ReaderSiteLinks in its "⋯" group', (file) => {
+		// The group's LAST child, closing it: `onpick` shuts the "⋯" group, and
+		// the group's `</div>` and its `{/if}` follow straight after.
 		const src = read(file);
-		const more = src.slice(src.indexOf('class="account-menu more-group"'));
-		expect(more, `${file}: put <ReaderSiteLinks> inside the "⋯" group.`).toMatch(/<ReaderSiteLinks\b/);
+		expect(src, `${file}: no "⋯" group found.`).toMatch(/class="account-menu more-group"/);
+		expect(src, `${file}: end the "⋯" group with <ReaderSiteLinks>.`).toMatch(
+			/<ReaderSiteLinks onpick=\{\(\) => \(moreOpen = false\)\} \/>\s*<\/div>\s*\{\/if\}/
+		);
 	});
 
 	it('the chapter bar\'s book title links to the book page', () => {
