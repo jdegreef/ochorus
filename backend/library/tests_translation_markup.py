@@ -80,8 +80,22 @@ def tag_sequence(html: str) -> list[str]:
 
     Attributes are KEPT: a class is sometimes load-bearing (the bios' prayer
     callouts are styled by one), and a translation has no reason to change one.
+
+    ``<sup>`` is NOT compared. It never holds prose (a footnote number or an
+    ordinal's letters), and a language that writes no superscript ordinal empties
+    it: ``28<sup>th</sup> October`` became ``28<i><sup></sup> octobre</i>`` in
+    five school-of-prayer editions. The deploy's ``strip_footnote_markers``
+    deletes that empty residue, so a fixture settled to what production holds
+    carries fewer ``<sup>`` tags than its English, legitimately.
     """
-    return [_WS.sub(" ", t).strip() for t in _TAG.findall(html or "")]
+    return [
+        t
+        for t in (_WS.sub(" ", t).strip() for t in _TAG.findall(html or ""))
+        if t not in _SUP_TAGS
+    ]
+
+
+_SUP_TAGS = frozenset({"<sup>", "</sup>"})
 
 
 def _corpus() -> tuple[dict, dict]:
