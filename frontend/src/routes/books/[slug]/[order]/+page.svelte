@@ -1918,10 +1918,10 @@
 				>
 				<span class="flex min-w-0 shrink-[2] items-center gap-1 text-small text-muted">
 					{#if chapter.book_title !== chapterName(chapter.order, chapter.title)}
-						<span aria-hidden="true">·</span><bdi class="truncate">{chapterName(chapter.order, chapter.title)}</bdi>
+						<span class="sep" aria-hidden="true">·</span><bdi class="truncate">{chapterName(chapter.order, chapter.title)}</bdi>
 					{/if}
 					{#if chapterPosition}
-						<span aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
+						<span class="sep" aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
 					{/if}
 				</span>
 			</div>
