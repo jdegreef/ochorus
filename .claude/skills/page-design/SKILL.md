@@ -35,9 +35,20 @@ In this order, and nothing else at the top level:
 1. **Shell** — `<div class="page-col px-5 py-10">`. `py-10`, not `py-6`/`py-8`.
    (Twelve shells say `py-10`, six say something else; the content edge should
    not jump vertically on navigation.)
-2. **`<PageHeader>`** — always. `title` is the **nav word** (`Books`, `Topics`,
+2. **`<PageHeader>`** — always, and **plain** (design review #4, 2026-11-06):
+   the H1, one tagline sentence, and the count run on at the end of that
+   sentence in the same muted paragraph. **No emblem medallion beside the
+   title, no fleuron/ornament divider under it** — the `section` prop is gone;
+   don't add a device back (it was decoration in front of content, identical
+   on every shelf). A sub-nav of tabs (`<LibraryTabs>` on Books / Series / A–Z,
+   and the writers' pair on Biographies) goes **under** the header, never above
+   the H1: a page's first words are its name. A leader cross-link
+   (`<ForPromo place="…-shelf">`, "Leading a study? See Ochorus for …") is never
+   in the head either — it goes at the **end of the list** (Sermons, Plans).
+   `title` is the **nav word** (`Books`, `Topics`,
    `Reading Plans`); `tagline` is one sentence; `meta` is the total, formatted
-   `N books · M authors`. **One library number per word:** "books" is every
+   `N books · M authors` — counts only, no links (the Books head's
+   "· 16 Book Series" link went: the Book Series tab below it is that link). **One library number per word:** "books" is every
    book row (editions included — what the Books shelf shows), "authors" is
    `countWriters` (`lib/authorIndex.ts`: people, never an imprint), shown by
    the home page and the A–Z. A shelf whose own count would differ (Books'
@@ -146,16 +157,34 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      the name only in the h1 and no link);
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
-   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip`.
-4. **Action row** — `.btn.btn-primary` for the one start verb (`Begin reading`,
-   `Start the plan`, `Start with <book>`), `<FavoriteButton>` (the component,
+   - **hero visual** on the start side, as the book page hangs its cover:
+     cover, portrait, plate or `CoverStrip`. On a phone it sits small BESIDE
+     the h1, never above it alone.
+   - **The h1 is the item's own name** — a title, a person's name. A longer
+     search phrase ("X Biography, Books, and Sermons") belongs in `<Seo title>`
+     only (design review #13).
+   - **Author page (#13):** `AuthorHero` is the book page's light layout, not a
+     dark band — the portrait as the photograph is (no `.duotone`, no
+     grayscale) in a light print frame; era eyebrow; the name; one line of who
+     they were (`firstSentence(author.bio)`, only when a long bio is shown —
+     a summary-only page prints that summary itself; there is no tagline
+     field, so don't write one); a facts `<dl>` of only what the data holds (Born, Died,
+     Tradition, Place, On Ochorus); then Follow as the one outlined button and
+     Share/Search as bare icons. Quotes is a link in the facts, not a button.
+     `authorHero.test.ts` guards it.
+4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
+   `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
+   (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
    not a `btn-icon` heart), `.btn.btn-ghost` for `Search in this …`. All the
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
    **Book is the model (#3277):** the read verb lives in a *read card*
    (shared `.read-card` in app.css — the plan page uses it too for "Day N of M
-   · today's reading"; chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
-   link), and every other action is ONE quiet `.action-strip` row — Save,
+   · today's reading"; chapter name + `ProgressBar` + one solid `.btn-primary.btn-solid`; for a
+   first-time reader the book card has no body — the button carries the chapter as a
+   `.btn-sub` line ("Book I · 35 min") with "Free to read · No account needed" under it;
+   Start over is a text link; no ministry promo inside the card — the book page's
+   `ForPromo place="book-download"` sits in the page foot, above the source line), and every other action is ONE quiet `.action-strip` row — Save,
    shelf, a single Download menu (`BookDownloadMenu`, never separate
    offline/EPUB/PDF buttons), Share/Search icon-only on desktop. When its
    host column (`.action-host`, a CSS container) is under 560px the same DOM
@@ -297,11 +326,11 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 
 | Content | Card | Hover |
 |---|---|---|
-| Book | `.book-card` (grid) / `.book-card--row` (row) | overlay + border |
+| Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
-| Article, Quotes-author | *should be* `.book-card--row`-family rows | row tint |
+| Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
@@ -365,7 +394,8 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
+- [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
+      (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
@@ -407,6 +437,35 @@ lists content types, **in the same order** everywhere:
 
 Articles, Scripture and Quotes each failed several of these: footer-only,
 absent from the palette and from search.
+
+### The footer is one band (design #3, founder-approved 2026-11)
+
+The footer had grown five bands (~930px on every page: "Before you go" cards,
+a large blessing, four link columns, language tiles, a legal bar, the
+"Ochorus for …" panel with 18 links and a "This week" strip). It is now ONE
+band: logo + mission line · **Library** (PRIMARY_NAV) · **More** (Series,
+young-reader hubs, A–Z, the English hubs, Originals, and ONE "For churches &
+ministries" link to the `/for/` hub) · a language switcher with About /
+Contact / Privacy / Send feedback / RSS under it — then the blessing and © as
+one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
+`forPath(`, no generic cards). Rules:
+
+- **Don't add a band.** A new destination is a link in More, not a panel.
+- **The only card above the band is personal**: the sign-up invitation
+  (signed out, not on /login) or the reader's current book (not where the page
+  already shows it — `pageShowsBook`). No generic "Find your next book" /
+  "Reading Plans" cards: they pointed at the page the reader was often on
+  (plans, search) and repeated the Library column.
+- **Reachability**: the footer is on every page, so it is the crawl's path to
+  each locale's `/series/`, `/young-readers/`, `/teens/`, `/originals/`,
+  `/authors/` and `/fr/for/`. Keep those as real `<a href>`s. The
+  `/for/<group>/` pages are reached through the `/for/` hub, which links them
+  all — don't drop a group from `FOR_LINKS` without another link to it.
+- **The language switcher is a `<details>` of real links, not a `<select>`**:
+  a select that switches on `change` jumps language on the first arrow key
+  (WCAG 3.2.2), does nothing before hydration, and loses the links to every
+  locale home. The list opens in flow (the footer's `content-visibility`
+  would clip an overlay).
 
 ## Adding a topic shelf (a topic ROW, not a new route)
 
@@ -1033,7 +1092,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
   border/bg or do nothing. → two recipes only — grid card lifts, row card tints
   (this is the concrete form of D3).
-- [~] **H2** _(2026-11-04: `.sermon-card` → 1rem (p-4), `.article-card` → 1.25rem (p-5). Left: `.book-card` 0.6rem is a cover tile (the cover is the content; a p-4 shrinks it), and ShelfCard's 1.1rem inline runs through four aligned parts — move them together or not at all)_ Card interior padding is five values across five families
+- [~] **H2** _(2026-11-04: `.sermon-card` → 1rem (p-4), `.article-card` → 1.25rem (p-5). Left: `.book-card` has no padding at all since design #1 (2026-11) — it is a boxless cover tile, so it is out of this count, and ShelfCard's 1.1rem inline runs through four aligned parts — move them together or not at all)_ Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap
   to `p-4`/`p-5`.
@@ -1202,5 +1261,7 @@ From an outside tester's report (design & accessibility section). Shipped on
   the About gallery's last row shares 4:3, and lamplight `--muted` went up to
   `#ab9f8b` (~7:1).
 - [ ] **Q7** Open, founder's call: the footer "Create an account" CTA is
-  deliberately solid indigo with a gold ring, while every other primary is soft.
-  The tester read that as inconsistent.
+  deliberately solid indigo with a gold ring. Since design review #2 the read
+  verb is solid too (`.btn-solid`), so the footer is no longer the only solid
+  button; the open question is now only its gold ring. The tester read that as
+  inconsistent.

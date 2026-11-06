@@ -289,22 +289,18 @@
 {/snippet}
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
-	<LibraryTabs current="books" series={series.length > 0} />
-	<PageHeader section="books" title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
+	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
 		{books.length}
 		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
 		<!-- No author count: its own (book writers, the imprint among them) ran
 		     beside the library's on the home page and the A–Z as a second,
-		     smaller number. The library has one, `countWriters`. -->
-		{#if series.length}
-			<span class="sep">·</span>
-			<a href={localizeHref('/series/')}>
-				{series.length}
-				{series.length === 1 ? t('common.seriesOne') : t('common.seriesMany')}
-			</a>
-		{/if}
+		     smaller number. The library has one, `countWriters`. No series link
+		     either: the Book Series tab right below already is one. -->
 	{/snippet}
+	<!-- Under the title, not above it: the page's first words are its name,
+	     not navigation (design review #4). -->
+	<LibraryTabs current="books" series={series.length > 0} />
 
 	{#if loadError}
 		<!-- The API couldn't be reached. -->
