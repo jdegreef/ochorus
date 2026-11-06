@@ -433,7 +433,7 @@
 	{#snippet sermonsSection()}
 		<section class="mb-10">
 			<h2 class="section-heading">{t('topics.sermons')}</h2>
-			<div class="grid gap-3 sm:grid-cols-2">
+			<div class="sermon-list max-w-[48rem]">
 				{#each topic.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} showAuthor />
 				{/each}

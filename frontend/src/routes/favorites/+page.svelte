@@ -475,7 +475,7 @@
 	{#if sermonFavs.length}
 		<section id="sermons" class="scroll-mt-24 pt-10">
 			<SectionHeader section="sermons" title={t('fav.groupSermons')} />
-			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+			<div class="sermon-list max-w-[48rem]">
 				{#each sermonFavs as e (e.slug)}
 					{#if sermons[e.slug]}
 						<SermonCard sermon={sermons[e.slug]} showAuthor />

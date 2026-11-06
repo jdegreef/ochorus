@@ -718,10 +718,10 @@
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
-			<!-- The shared card, not a hand-rolled list: this one used to compute
+			<!-- The shared row, not a hand-rolled list: this one used to compute
 			     its own length with Math.round(word_count / 200), which could
 			     disagree with the figure on the sermon's own page. -->
-			<div class="grid gap-3 sm:grid-cols-2">
+			<div class="sermon-list">
 				{#each author.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} />
 				{/each}

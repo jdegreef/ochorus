@@ -300,9 +300,18 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 |---|---|---|
 | Book | `.book-card` (grid) / `.book-card--row` (row) | overlay + border |
 | Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
-| Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
+| Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.book-card--row`-family rows | row tint |
+
+- **Sermons are listed as plain rows, everywhere** (design review #8, founder-
+  approved 2026-11; overrides the older "row card tints" rule for sermons).
+  `<SermonCard>` has one shape: serif title, one muted meta line (preacher ·
+  passage · length; preacher omitted under a preacher heading), one clamped line
+  of the brief, hairlines between rows from the `.sermon-list` wrapper. The
+  whole row is the link — no expand chevron, no rail, no passage monogram, no
+  card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
+  favourites and 404 lists are single columns for that reason.
 
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
