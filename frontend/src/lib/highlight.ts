@@ -39,16 +39,23 @@ function fallbackMatcher(query: string): RegExp | null {
 	const q = query.trim().replace(/\s+/g, ' ');
 	if (q !== fallbackFor) {
 		fallbackFor = q;
-		fallbackRe =
-			q.length < 2
-				? null
-				: // Whole words only (no "all" inside "called"), and the phrase as a
-					// whole: marking "of" alone for "all of grace" would claim a match
-					// the server never made.
-					new RegExp(
-						`(?<![\\p{L}\\p{N}])(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+')})(?![\\p{L}\\p{N}])`,
-						'giu'
-					);
+		fallbackRe = null;
+		if (q.length >= 2) {
+			// Whole words only (no "all" inside "called"), and the phrase as a
+			// whole: marking "of" alone for "all of grace" would claim a match
+			// the server never made.
+			try {
+				fallbackRe = new RegExp(
+					`(?<![\\p{L}\\p{N}])(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+')})(?![\\p{L}\\p{N}])`,
+					'giu'
+				);
+			} catch {
+				// Lookbehind is a SyntaxError before Safari/WKWebView 16.4, and the
+				// iOS app still targets iOS 15: there the snippet is simply shown
+				// unmarked rather than taking the results list down with it.
+				fallbackRe = null;
+			}
+		}
 	}
 	return fallbackRe;
 }
