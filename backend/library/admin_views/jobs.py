@@ -31,7 +31,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
-from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
 from ..job_status import forget_queue
 from ..languages import entry as language_entry
 from ..languages import known_codes
@@ -255,10 +255,11 @@ def get_all(path: str, params: dict) -> list[dict]:
 def translation_blocked(job_type: str, slug: str) -> bool:
     """Whether no translation may be made of ``(job_type, slug)``: a book under
     copyright, whose translation would be a derivative of the protected English
-    edition. The one owner of that rule: this filer refuses such a job (451),
-    the coverage matrix locks its cells, and the demand list shows the work
-    without a queue button."""
-    return job_type == "book" and slug in COPYRIGHT_BLOCKED_SLUGS
+    edition, or one retired as a duplicate (``corrections.RETIRED_BOOKS``),
+    whose translation nobody could reach. The one owner of that rule: this
+    filer refuses such a job, the coverage matrix locks its cells, and the
+    demand list shows the work without a queue button."""
+    return job_type == "book" and (slug in COPYRIGHT_BLOCKED_SLUGS or slug in RETIRED_BOOKS)
 
 
 @requires(AdminCapability.TRANSLATE, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
@@ -326,6 +327,12 @@ class AdminTranslationJobsView(AdminAudited, APIView):
             return Response({"detail": "invalid slug."}, status=status.HTTP_400_BAD_REQUEST)
 
         if translation_blocked(type_, slug):
+            if slug in RETIRED_BOOKS:
+                return Response(
+                    {"detail": f"this book is retired in favour of {RETIRED_BOOKS[slug][0]};"
+                     " translate that instead."},
+                    status=status.HTTP_409_CONFLICT,
+                )
             # A translation of a protected English edition is a derivative of it;
             # three shipped this way before this check existed (2026-09-24).
             return Response(

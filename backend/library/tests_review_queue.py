@@ -122,6 +122,17 @@ class ReviewQueueTests(TestCase):
         slugs = {(r["kind"], r["language"]) for r in self._get()["results"]}
         self.assertNotIn(("sermon", "en"), slugs)
 
+    def test_a_retired_duplicate_is_not_queued(self):
+        # corrections.RETIRED_BOOKS: nobody reads it again, so nothing to review.
+        b = Book.objects.create(
+            author=self.author, slug="lord-teach-us-to-pray-2", language="sw", title="Retired",
+            is_published=False, source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Chapter.objects.create(book=b, order=1, title="One", body_html="<p>x</p>")
+        slugs = {r["slug"] for r in self._get()["results"]}
+        self.assertNotIn("lord-teach-us-to-pray-2", slugs)
+        self.assertIn("waiting", slugs)
+
     def test_facets_and_filters(self):
         data = self._get()
         self.assertEqual(data["facets"]["kind"]["sermon"], 1)

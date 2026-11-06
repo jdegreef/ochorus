@@ -49,7 +49,8 @@ COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
 # is the mirror, kept in step by ``tests_fixture.RetiredBookTests``, which also
 # fails on any plan, topic, quote or download that still names a retired slug.
 # Migration 0210 unpublished the live rows (``is_published`` is create-only in
-# seed_books) and moved the plan days and topic shelf onto the successor.
+# seed_books) and moved the plan days onto the successor; the topic shelf
+# follows ``topic_seed`` (seed_topics drops a member it no longer lists).
 RETIRED_BOOKS: dict[str, tuple[str, int]] = {
     # 2026-11: a modernized, ESV-swapped paraphrase of Lessons 1-4 of *With
     # Christ in the School of Prayer*, which the library carries in Murray's

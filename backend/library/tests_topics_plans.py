@@ -1026,3 +1026,29 @@ class RetireDuplicateBookMigrationTests(TestCase):
             set(plans["fr"].days.values_list("book_slug", flat=True)),
             {"lord-teach-us-to-pray-2", "prevailing-prayer"},
         )
+
+    def _plan_on_retired(self, lang, school_orders, published=True):
+        import importlib
+
+        from django.apps import apps
+
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        school = Book.objects.create(
+            author=author, slug="school-of-prayer", language=lang, title="S", is_published=published
+        )
+        for i in school_orders:
+            Chapter.objects.create(book=school, order=i, title=f"L{i}", body_html="<p>x</p>")
+        plan = Plan.objects.create(slug="school-of-prayer", language=lang, title="F")
+        for d in (1, 2, 3, 4):
+            PlanDay.objects.create(plan=plan, day=d, book_slug="lord-teach-us-to-pray-2", chapter_order=d)
+        importlib.import_module("library.migrations.0210_retire_lord_teach_us_to_pray_2").retire(apps, None)
+        return set(plan.days.values_list("book_slug", flat=True))
+
+    def test_a_plan_moves_whole_or_not_at_all(self):
+        # The successor lacks lesson 4 (its chapter 5): no day moves, not days 1-3.
+        self.assertEqual(self._plan_on_retired("es", (1, 2, 3, 4)), {"lord-teach-us-to-pray-2"})
+
+    def test_an_unpublished_successor_takes_no_days(self):
+        self.assertEqual(
+            self._plan_on_retired("pt", (1, 2, 3, 4, 5), published=False), {"lord-teach-us-to-pray-2"}
+        )

@@ -4,7 +4,7 @@ import { ApiError } from '$lib/api';
 import { getChapterExact, listBooks, MODERN_EDITION } from '$lib/library-public';
 import { localizeHref } from '$lib/href';
 import { bookChapterPath } from '$lib/reading-schema';
-import { retiredBookPath } from '$lib/retiredBooks';
+import { retiredChapterHref } from '$lib/retiredBooks';
 import { chapterEntries } from '$lib/loadHelpers';
 import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -23,8 +23,10 @@ export const trailingSlash = 'always';
 export const entries: EntryGenerator = async () => chapterEntries(await listBooks(MODERN_EDITION));
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
-	// A retired duplicate ($lib/retiredBooks): the same lesson in its successor.
-	const moved = retiredBookPath(params.slug, Number(params.order), true);
+	// A retired duplicate ($lib/retiredBooks): the same lesson in its successor's
+	// ORIGINAL edition, in one hop (the successor has no Modern edition),
+	// keeping plan context but not ?p=.
+	const moved = retiredChapterHref(params.slug, Number(params.order), building ? '' : url.search);
 	if (moved) redirect(308, localizeHref(moved));
 	const order = Number(params.order);
 	// Hydrating, from the page's own seed and prose, as the original route does

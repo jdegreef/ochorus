@@ -4,7 +4,7 @@ import { getChapterWithLang, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
-import { retiredBookPath } from '$lib/retiredBooks';
+import { retiredChapterHref } from '$lib/retiredBooks';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
 import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -53,9 +53,9 @@ export const entries: EntryGenerator = async () => chapterEntries(await listBook
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
 	// A retired duplicate's chapter: the same lesson in the work that replaced
-	// it ($lib/retiredBooks). The query is dropped: a ?p= paragraph counts the
-	// paraphrase's blocks, not the successor's.
-	const moved = retiredBookPath(params.slug, Number(params.order));
+	// it ($lib/retiredBooks), keeping plan context but not ?p=. No query at
+	// build time (touching url.search would fail the prerender).
+	const moved = retiredChapterHref(params.slug, Number(params.order), building ? '' : url.search);
 	if (moved) redirect(308, localizeHref(moved));
 	// ?edition=modern is the Modern English edition's OLD address (bookmarks,
 	// shared links, saved marks): send it to the edition's own route, keeping the

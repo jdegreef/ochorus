@@ -783,8 +783,6 @@ class RetiredBookTests(SimpleTestCase):
         out = {}
         for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
             rows = json.loads(path.read_text(encoding="utf-8"))
-            if rows[0]["fields"]["slug"] != slug:
-                continue  # a longer slug sharing the prefix
             out[rows[0]["fields"]["language"]] = (
                 rows[0]["fields"],
                 {r["fields"]["order"] for r in rows[1:] if r["model"] == "library.chapter"},
@@ -809,13 +807,17 @@ class RetiredBookTests(SimpleTestCase):
         from library.corrections import RETIRED_BOOKS
 
         source = self.FRONTEND.read_text(encoding="utf-8")
-        mirrored = {
-            slug: (to, int(offset))
-            for slug, to, offset in re.findall(
-                r"'([a-z0-9-]+)':\s*\{\s*to:\s*'([a-z0-9-]+)',\s*offset:\s*(-?\d+)\s*\}", source
-            )
-        }
-        self.assertEqual(mirrored, RETIRED_BOOKS)
+        found = re.findall(
+            r"'([a-z0-9-]+)':\s*\{\s*to:\s*'([a-z0-9-]+)',\s*offset:\s*(-?\d+),\s*chapters:\s*(\d+)\s*\}",
+            source,
+        )
+        self.assertEqual({slug: (to, int(offset)) for slug, to, offset, _ in found}, RETIRED_BOOKS)
+        # The reader forwards only orders 1..chapters, so the count must cover
+        # every chapter any edition of the retired book had — and no more.
+        for slug, _, _, chapters in found:
+            with self.subTest(slug=slug):
+                orders = set().union(*(o for _, o in self._editions(slug).values()))
+                self.assertEqual(orders, set(range(1, int(chapters) + 1)))
 
     def test_nothing_still_names_a_retired_book(self):
         from library import export_policy, quote_seed
