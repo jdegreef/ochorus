@@ -2314,12 +2314,6 @@ nav.appnav {
 		--appnav-h: 0px;
 	}
 }
-/* The reading routes opt out: their own bar pins to the top and carries
-   back/contents/settings, so a second sticky bar would take ~56px of reading
-   height for the whole chapter and stack two bars over the text. */
-nav.appnav.appnav-static {
-	position: static;
-}
 /* The phone app (<html data-app>, set by $lib/platform's startAppShell).
    Unlayered, so it outranks the scoped and utility `top: 0` it adjusts.
    Capacitor 8 runs the web view edge to edge on iOS and Android, so the
@@ -2334,8 +2328,8 @@ nav.appnav.appnav-static {
 	--safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 }
 /* The strip wears the nav's colour, so the nav reads as running up under the
-   clock; on the reading routes, where the nav rides away and the reader's own
-   bar (the page ground) pins beneath, it wears the ground. It sits above the
+   clock; on the reading routes and in focus mode, where there is no nav and
+   the reader's own bar (the page ground) pins beneath, it wears the ground. It sits above the
    chrome but below a sheet's or dialog's scrim, which dims it with the rest of
    the page — those overlays keep their own content clear of the inset. */
 :root[data-app] body::after {
@@ -2349,9 +2343,8 @@ nav.appnav.appnav-static {
 	pointer-events: none;
 }
 /* data-app-top (the root layout, app only): 'nav' while the nav is pinned,
-   'static' on the reading routes, 'none' in focus mode. A flag, not
+   'none' where it isn't drawn (the reading routes, focus mode). A flag, not
    body:has(), which would restyle the page each time the nav came or went. */
-:root[data-app][data-app-top='static'] body::after,
 :root[data-app][data-app-top='none'] body::after {
 	background: var(--bg);
 }
@@ -2372,7 +2365,8 @@ nav.appnav.appnav-static {
 :root[data-app] .app-root {
 	--appnav-h: calc(3.5rem + var(--safe-top));
 }
-/* Focus mode draws no nav: the page itself starts below the strip. */
+/* No nav (a reading surface, focus mode): the page itself starts below the
+   strip. */
 :root[data-app][data-app-top='none'] .app-root {
 	padding-top: var(--safe-top);
 }
@@ -2645,15 +2639,6 @@ nav.appnav .navmore-menu {
 		display: none;
 	}
 }
-/* On a phone's reading surfaces (`.appnav-static`, no tab bar) the reader's own
-   Aa sheet holds the theme switch, so the gear goes there too. Elsewhere with
-   no tab bar (while Listen plays, say) it stays, or the page would have no
-   theme control. */
-@media (max-width: 639.98px) {
-	nav.appnav.appnav-static .prefs {
-		display: none;
-	}
-}
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
    the shortcut is advertised, and it is meaningless without a keyboard: so it
@@ -2743,6 +2728,10 @@ nav.appnav .navsearch:hover {
    hung a little closer to its button, with icon rows at thumb size. */
 .account-menu.more-group {
 	top: calc(100% + 0.25rem);
+	/* It ends with the site's destinations (ReaderSiteLinks) — on a short
+	   landscape screen that runs past the fold, so it scrolls in itself. */
+	max-height: calc(100dvh - var(--appnav-h, 0px) - 5rem);
+	overflow-y: auto;
 }
 .account-item.more-item {
 	display: flex;
@@ -2984,7 +2973,7 @@ nav.appnav .navsearch:hover {
 }
 
 /* The one step below the eyebrow, for the dense width-constrained cluster §2
-   names (sermon outline/text-card labels). A modifier beside .eyebrow — not a
+   names (sermon outline labels, the epigraph's credit). A modifier beside .eyebrow — not a
    per-component scoped font-size override, which fights the unlayered class. */
 .eyebrow-micro {
 	font-size: var(--fs-micro);
@@ -3014,9 +3003,10 @@ nav.appnav .navsearch:hover {
        nested, non-focusable plate, which a self-hover class can't express.
 
      .card-tint — ROW cards warm in place, no lift. The border shifts to accent
-       and the ground to surface-2. Members: .sermon-card, .article-card,
-       AuthorBioCard, PersonCard, AuthorTile, BookListRow (neutral); .sermon-row
-       and the /quotes author card override the two colours with their era hue.
+       and the ground to surface-2. Members: .article-card, AuthorBioCard,
+       PersonCard, AuthorTile, BookListRow (neutral); the /quotes author card
+       overrides the two colours with its era hue. (The sermon row is a plain
+       hairline list row, not a card — SermonCard.)
 
    Both animate on --duration-fast, and nothing else. Resting
    border/radius/background/padding stay with the individual card (its scoped
@@ -3286,7 +3276,7 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
+       .shelf-card, .filter-field, .field, .seg, .chip,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
@@ -3386,50 +3376,17 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* A sermon on the shelf — one per line, under its preacher.
-
-   Not a card in a grid: a sermon's "In brief" is 300–400 characters, and a
-   tile that holds it is mostly text with a title on top. One per line gives
-   that prose the full measure to breathe, and lets a reader scan title →
-   passage → brief down a single column and decide whether to read or listen
-   without opening anything. Row height varies with the brief, which costs
-   nothing here — rows stack, so there is no bottom edge to level.
-
-   `--row-hue` is the writer's era (same source as .shelf-card), used only
-   through color-mix so it stays a tint and never becomes text colour. */
-.sermon-row {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
-	gap: 1rem;
-	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
-	border: 1px solid var(--border);
-	border-radius: var(--radius-card);
-	background: var(--surface);
-	/* The whole row is a click target: open the brief, then go to the sermon. */
-	cursor: pointer;
-	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
-	   markup; only the hue-mixed border and ground below are the row's own. */
+/* A list of sermons (SermonCard rows) — the one wrapper every page uses, so
+   the measure and the separators are set once (design #8). Each row draws a
+   hairline above itself; the first row drops it. A row may sit in a wrapper
+   (the index pages rows in `display: contents` divs, the 404 tags them), so
+   both a direct row and a wrapped one count as first. */
+.sermon-list {
+	max-width: 48rem;
 }
-/* The era rail down the leading edge. Inside the border radius, so it reads as
-   part of the row rather than a stripe stuck to it. */
-.sermon-row::before {
-	content: '';
-	position: absolute;
-	inset-block: -1px;
-	inset-inline-start: -1px;
-	width: 3px;
-	border-start-start-radius: var(--radius-card);
-	border-end-start-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
-	transition: background var(--duration-fast);
-}
-.sermon-row:hover {
-	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
-	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
-}
-.sermon-row:hover::before {
-	background: var(--row-hue);
+.sermon-list > .sermon-row:first-child,
+.sermon-list > :first-child > .sermon-row {
+	border-block-start-color: transparent;
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────
@@ -3938,8 +3895,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navtoggle,
 		.navsearch,
 		.day-toggle,
-		.sync-dismiss,
-		.sermon-row-toggle {
+		.sync-dismiss {
 			position: relative;
 		}
 		/* The finish toggle on a Continue-reading card is a 28px disc, already
@@ -3951,8 +3907,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navsearch::after,
 		.finish-btn::after,
 		.day-toggle::after,
-		.sync-dismiss::after,
-		.sermon-row-toggle::after {
+		.sync-dismiss::after {
 			content: '';
 			position: absolute;
 			top: 50%;
@@ -4139,6 +4094,16 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+/* In the start margin, its end edge just short of the reading column, rather
+   than centred over the line being read (design review #12). Wants the
+   column's `--reading-measure` on the pill itself (the page passes the
+   reader's style) and a margin wide enough to hold it, which the page checks
+   before mounting it. Logical, so it moves to the right in Arabic. */
+.min-left.beside-text {
+	left: auto;
+	transform: none;
+	inset-inline-end: calc(50% + var(--reading-measure, 42rem) / 2);
 }
 /* Phones: near-opaque instead of blurred, as .reader-dock (the blur repaints
    under the pill on every scroll frame). */

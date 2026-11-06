@@ -685,15 +685,18 @@
 		<section
 			id="sermons"
 			class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]"
-			style="contain-intrinsic-block-size: auto {4 + author.sermons.length * 9}rem"
+			style="contain-intrinsic-block-size: auto {4 + author.sermons.length * 6.5}rem"
 		>
 			<h2 class="section-heading">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
 			</h2>
-			<div class="flex flex-col gap-3">
+			<!-- The shared row, not a hand-rolled list: this one used to compute
+			     its own length with Math.round(word_count / 200), which could
+			     disagree with the figure on the sermon's own page. -->
+			<div class="sermon-list">
 				{#each author.sermons as sermon (sermon.slug)}
-					<SermonCard {sermon} variant="row" />
+					<SermonCard {sermon} />
 				{/each}
 			</div>
 		</section>

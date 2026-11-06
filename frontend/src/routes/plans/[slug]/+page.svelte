@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { onMount, untrack } from 'svelte';
+	import { page } from '$app/state';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
@@ -21,6 +22,8 @@
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import PlanTogetherBanner from '$lib/components/PlanTogetherBanner.svelte';
 	import PlanTogetherShare from '$lib/components/PlanTogetherShare.svelte';
+	import PlanStartRemind from '$lib/components/PlanStartRemind.svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import PlanGarden from '$lib/components/PlanGarden.svelte';
@@ -59,7 +62,7 @@
 		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
 	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
-	/** The writers to meet — not the house imprint (see the authors block). */
+	/** The writers to meet — not the house imprint (see the hero byline). */
 	const writers = $derived((plan.authors ?? []).filter((a) => a.slug !== ORIGINALS_SLUG));
 	/** "Daughters of the King: Three Months with God" set as a title over its
 	 *  subtitle, as a book's is (plans have no subtitle field of their own). */
@@ -161,28 +164,30 @@
 	};
 	// Built once per language, not on every progress change.
 	const dateFmt = $derived({
-		monthDay: new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }),
+		monthDay: new Intl.DateTimeFormat(getLang(), { month: 'long', day: 'numeric' }),
 		weekday: new Intl.DateTimeFormat(getLang(), { weekday: 'short' }),
 		day: new Intl.DateTimeFormat(getLang(), { day: 'numeric' })
 	});
-	const finishDate = $derived(today ? dateFmt.monthDay.format(dayFrom(daysLeft - 1)) : '—');
+	const finishDate = $derived(today ? dateFmt.monthDay.format(dayFrom(daysLeft - 1)) : '');
 	/** One read count for a run of days — a book section, a week, a rail segment. */
 	const readIn = (days: PlanDay[]) => days.filter((d) => doneSet.has(d.day)).length;
 	const perDay = $derived(planMinutesPerDay(plan));
-	/** The plan's shape beyond the eyebrow's length: how much a day, how many
-	 *  books, and when a reader going a day at a time from today would finish. */
-	const facts = $derived(
+	/** The plan's shape in one sentence (design review #24, in place of the
+	 *  stat boxes): "12 days · about 8 minutes a day · finish on 17 November if
+	 *  you start today". The finish date is the reader's, so it joins once
+	 *  mounted; a started plan counts from the days still to read. */
+	const factsLine = $derived(
 		[
-			perDay ? { value: `~${perDay}`, label: t('plans.minPerDay') } : null,
+			`${plan.day_count} ${t('plans.days')}`,
 			// "1 book" says nothing the cover beside it doesn't.
-			planBooks.length > 1
-				? {
-						value: String(planBooks.length),
-						label: t('common.bookMany')
-					}
-				: null,
-			next === null ? null : { value: finishDate, label: t('plans.finishLabel') }
-		].filter((f) => f !== null)
+			planBooks.length > 1 ? `${planBooks.length} ${t('common.bookMany')}` : '',
+			perDay ? t('plans.aboutMinPerDay').replace('%n%', String(perDay)) : '',
+			next !== null && finishDate
+				? t(started ? 'plans.finishReadingDaily' : 'plans.finishIfStart').replace('%d%', () => finishDate)
+				: ''
+		]
+			.filter(Boolean)
+			.join(' · ')
 	);
 
 	/** The jump chips' targets and labels: one per book section. Volumes of ONE
@@ -256,16 +261,23 @@
 	// the shelves is the same idea); read on mount, so the prerender is the list.
 	// `?view=calendar` (the end of a plan day's "Add to my calendar") opens the
 	// calendar for this visit only, at the days, without changing that choice.
+	// An effect on the URL, not a mount: the read card's "Add to my calendar"
+	// (PlanStartRemind) links here from this same page, which a client-side
+	// navigation doesn't remount. (In an effect, so the prerender never reads
+	// the query.)
 	onMount(() => {
-		if (new URLSearchParams(location.search).get('view') === 'calendar') {
-			view = 'calendar';
-			requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView());
-		} else if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+	});
+	$effect(() => {
+		if (page.url.searchParams.get('view') !== 'calendar') return;
+		view = 'calendar';
+		requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView());
 	});
 	// "Start the plan" starts it and opens day 1 — nothing in between. The
-	// reminder for day 2 is offered at the END of day 1 (PlanDayRemind signed
-	// in, ChapterEndAsk signed out), once the reader has read something: a sheet
-	// here asked about tomorrow before they had read a line (2026-10 UX audit).
+	// daily reminder is offered beside it as one quiet line (PlanStartRemind,
+	// design review #24), never a sheet in the way: one here asked about
+	// tomorrow before they had read a line (2026-10 UX audit). The end of each
+	// day offers it again (PlanDayRemind signed in, ChapterEndAsk signed out).
 	function startPlan() {
 		planProgress.start(plan.slug);
 	}
@@ -304,17 +316,23 @@
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/plans" />
 
-	<!-- The hero: the plan's books fanned large beside its title (the covers
-	     ARE the picture, as on /originals), and its shape as facts — how much a
-	     day, how many books, and when you'd finish. -->
-	<section class="plan-hero">
-		<div class="min-w-0">
+	<!-- The hero, as the book page's (design review #24): the plan's books
+	     beside its title — a fan of its covers, or the one cover — then its
+	     writers, its shape in one sentence, and the read card right under that,
+	     where the eye already is, on every width. -->
+	<section class="plan-hero" class:no-art={!plan.covers.length}>
+		{#if plan.covers.length}
+			{@const solo = plan.covers.length === 1}
+			<div class="plan-hero-art" class:solo>
+				<CoverStrip covers={plan.covers} size={solo ? 'one' : 'fan'} priority />
+			</div>
+		{/if}
+		<div class="plan-hero-head min-w-0">
 			<p class="eyebrow mb-1 text-muted">
-				<!-- The separators as expressions: a literal space at an {#if} boundary
-				     is compiler-trimmed ("96 days· 3 hr"). -->
-				{t('search.typePlan')}{' · '}{plan.day_count} {t('plans.days')}{#if plan.total_words}{' · '}{readingTime(
-						plan.total_words
-					)}{/if}
+				<!-- The separator as an expression: a literal space at an {#if}
+				     boundary is compiler-trimmed ("Reading plan· 3 hr"). The day
+				     count leads the facts line below, so it isn't said twice. -->
+				{t('search.typePlan')}{#if plan.total_words}{' · '}{readingTime(plan.total_words)}{/if}
 			</p>
 			<!-- The whole title stays the h1's text; its subtitle is drawn as the
 			     book page draws one. -->
@@ -323,36 +341,36 @@
 						class="mt-1 block text-h3 font-normal text-muted">{titleParts.sub}</span
 					>{/if}
 			</h1>
-			{#if plan.description}
-				<p class="mt-3 max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
+			<!-- The writers this plan reads through, each a small portrait and a
+			     link to their page — so a plan is a way into their work. The house
+			     imprint alone (an Ochorus Originals plan) is no writer to meet. -->
+			{#if writers.length}
+				<ul class="plan-byline">
+					{#each writers as a (a.slug)}
+						<li>
+							<a href={localizeHref(authorPath(a.slug))} class="plan-writer text-body text-accent hover:underline">
+								<Portrait slug={a.slug} name={a.name} url={a.photo_url} px={28} class="h-7 w-7" initialsClass="text-micro" decorative />
+								<span>{a.name}</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
 			{/if}
-			<dl class="plan-facts">
-				{#each facts as f, i (i)}
-					<div class="plan-fact">
-						<dt class="text-eyebrow text-muted">{f.label}</dt>
-						<dd class="font-display text-h3 font-semibold text-text tabular-nums">{f.value}</dd>
-					</div>
-				{/each}
-			</dl>
 		</div>
-		{#if plan.covers.length}
-			<div class="plan-hero-fan">
-				<CoverStrip covers={plan.covers} size="fan" priority />
-			</div>
-		{/if}
-	</section>
+		<div class="plan-hero-about min-w-0">
+			{#if plan.description}
+				<p class="max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
+			{/if}
+			<p class="mt-3 text-small font-medium text-text">{factsLine}</p>
+		</div>
 
-	<!-- Two columns from a laptop up: the day list, and beside it a panel that
-	     stays put while it scrolls — the next reading, Save/Share, the writers.
-	     On a phone the panel comes first, so the one action leads. -->
-	<div class="plan-body">
-		<aside class="plan-aside">
+		<div class="plan-hero-start min-w-0">
 			<PlanTogetherBanner slug={plan.slug} dayCount={plan.day_count} {today} {dayHref} />
 			<!-- The read card, as on the book page: the reading that's next, named —
 			     its book and length, and for a started plan how far through you are —
 			     with the one read verb. A first visit (and the prerender, since plan
 			     progress is client-only) gets Day 1 with the "Free to read · No account
-			     needed" reassurance. Save and Share sit quietly beneath. -->
+			     needed" reassurance, and the daily reminder offered beside Start. -->
 			{#if next !== null}
 				<div class="read-card" bind:this={readCardEl}>
 					<div class="read-card-body">
@@ -417,30 +435,12 @@
 							</button>
 						{/if}
 					</div>
+					{#if !started}
+						<div class="read-card-remind">
+							<PlanStartRemind slug={plan.slug} />
+						</div>
+					{/if}
 				</div>
-
-				<!-- What comes after today: the next few days, dated for a reader going
-				     a day at a time. -->
-				{#if comingUp.length}
-					<section class="mt-5" aria-labelledby="coming-up-heading">
-						<h2 id="coming-up-heading" class="section-heading">{t('plans.comingUp')}</h2>
-						<ol class="divide-y divide-border">
-							{#each comingUp as d (d.day)}
-								<li>
-									<a href={dayHref(d.day)} class="coming-row">
-										<span class="coming-date text-small font-semibold text-muted tabular-nums">{d.date}</span>
-										<span class="min-w-0 flex-1">
-											<span class="block truncate text-body text-text" dir="auto">{dayTitle(d)}</span>
-											<span class="block text-small text-muted"
-												>{t('plans.day')} {d.day} · {readingMinutes(d.word_count || 0)} {t('common.min')}</span
-											>
-										</span>
-									</a>
-								</li>
-							{/each}
-						</ol>
-					</section>
-				{/if}
 			{:else}
 				<!-- A status line, not a control: a finished plan has no action, so it
 				     must not wear a button's chrome (it read as a disabled button). -->
@@ -463,14 +463,15 @@
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<FavoriteButton kind="plan" slug={plan.slug} showLabel />
 				<ShareButton url={canonical} title={plan.title} showLabel />
-				<PlanTogetherShare slug={plan.slug} title={plan.title} url={canonical} {today} />
 			</div>
-			<!-- A leader reading this with a group: the page made for them. -->
-			<ForPromo place="plan" class="mt-3" />
+		</div>
+	</section>
 
-			{@render authorsBlock('plan-authors-side mt-6')}
-		</aside>
-
+	<!-- The day list, and from a laptop up a panel beside it that stays put
+	     while it scrolls — the secondary things only: reading it with a group,
+	     and (once started) the next few days. The one action is in the hero.
+	     On a phone the panel follows the days. -->
+	<div class="plan-body">
 		<div class="plan-main">
 			<!-- The day list, shaped: grouped by the book each run of days reads (a
 			     collapsible section per book, the current one open), and each long run
@@ -584,29 +585,37 @@
 					{/each}
 				{/if}
 			</section>
-			{@render authorsBlock('plan-authors-main mt-10')}
 		</div>
-	</div>
+		<aside class="plan-aside">
+			<!-- "Read together", said in one line before it is offered (its
+			     button names it, so no heading says it twice). -->
+			<p class="mb-2 text-small text-muted">{t('together.hint')}</p>
+			<PlanTogetherShare slug={plan.slug} title={plan.title} url={canonical} {today} />
 
-	<!-- The writers this plan reads through — a link to each author page, so a
-	     plan is a way into their work, not only a sequence of chapters. Drawn in
-	     the side panel from a laptop up, and after the day list below that, so a
-	     phone reader reaches the days first. The house imprint alone (an Ochorus
-	     Originals plan) is no writer to meet, so it draws no section. Reuses the
-	     shared "Authors" label, so it is already translated in every locale. -->
-	{#snippet authorsBlock(cls: string)}
-		{#if writers.length}
-			<section class={cls}>
-				<h2 class="section-heading">{t('search.groupAuthors')}</h2>
-				<p class="text-body">
-					{#each writers as a, i (a.slug)}<a
-							href={localizeHref(authorPath(a.slug))}
-							class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
-						>{i < writers.length - 1 ? ' · ' : ''}{/each}
-				</p>
-			</section>
-		{/if}
-	{/snippet}
+			<!-- What comes after today: the next few days, dated for a reader going
+			     a day at a time. -->
+			{#if comingUp.length}
+				<section class="mt-8" aria-labelledby="coming-up-heading">
+					<h2 id="coming-up-heading" class="section-heading">{t('plans.comingUp')}</h2>
+					<ol class="divide-y divide-border">
+						{#each comingUp as d (d.day)}
+							<li>
+								<a href={dayHref(d.day)} class="coming-row">
+									<span class="coming-date text-small font-semibold text-muted tabular-nums">{d.date}</span>
+									<span class="min-w-0 flex-1">
+										<span class="block truncate text-body text-text" dir="auto">{dayTitle(d)}</span>
+										<span class="block text-small text-muted"
+											>{t('plans.day')} {d.day} · {readingMinutes(d.word_count || 0)} {t('common.min')}</span
+										>
+									</span>
+								</a>
+							</li>
+						{/each}
+					</ol>
+				</section>
+			{/if}
+		</aside>
+	</div>
 
 	<!-- A run of days, in weeks when it is longer than one. The week holding the
 	     next reading opens; in a run that doesn't hold it, the first week does. -->
@@ -715,11 +724,14 @@
 		</section>
 	{/if}
 
+	<!-- A leader reading this with a group: the page made for them — at the
+	     end, once the plan itself has been seen (design review #24). -->
+	<ForPromo place="plan" class="mt-12" />
 </div>
 
-<!-- Phones: once the read card scrolls away, the read verb rides a bar above
-     the tab bar (ReadBar, shared with the book page). From 1024px the side
-     panel keeps it in view instead. -->
+<!-- Once the read card scrolls away, the read verb rides a bar at the foot of
+     the screen (ReadBar, shared with the book page) — on every width: the card
+     is in the hero now, not in a panel that sticks. -->
 <ReadBar
 	show={next !== null && !!nextDay && !cardSeen.visible}
 	eyebrow="{t('plans.day')} {next} {t('plans.of')} {plan.day_count}"
@@ -823,31 +835,77 @@
 		flex-shrink: 0;
 		color: var(--muted);
 	}
-	/* The hero: words beside the fan; on a phone the fan leads, centred. */
+	/* The hero, the book page's shape: the picture beside the title, the
+	   about lines and the read card full width beneath on a phone; from 640px
+	   the picture spans the rows and everything else stacks beside it. */
 	.plan-hero {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) 20rem;
-		gap: 2.5rem;
-		align-items: center;
+		grid-template-columns: auto minmax(0, 1fr);
+		column-gap: 1rem;
+		align-items: start;
 		padding-block: 0.5rem 2rem;
 	}
-	.plan-facts {
-		display: grid;
-		/* Fills the row whether it holds three facts or two (a finished plan
-		   has no finish date), three across even on a phone. */
-		grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-		gap: 0.625rem;
-		max-width: 32rem;
-		margin-top: 1.5rem;
+	.plan-hero-art {
+		width: 9.5rem;
 	}
-	.plan-fact {
+	.plan-hero-art.solo {
+		width: 6.5rem;
+	}
+	.plan-hero-about,
+	.plan-hero-start {
+		grid-column: 1 / -1;
+		margin-top: 1rem;
+	}
+	.plan-hero-start {
+		max-width: 36rem;
+	}
+	.plan-byline {
 		display: flex;
-		flex-direction: column-reverse;
-		justify-content: flex-end;
-		padding: 0.75rem 0.875rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		background: var(--surface-2);
+		flex-wrap: wrap;
+		gap: 0.375rem 1rem;
+		margin-top: 0.75rem;
+	}
+	.plan-writer {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.read-card-remind {
+		flex-basis: 100%;
+		padding-top: 0.625rem;
+		border-top: 1px solid var(--border);
+	}
+	@media (min-width: 640px) {
+		.plan-hero {
+			grid-template-rows: auto auto auto 1fr;
+			column-gap: 2rem;
+		}
+		.plan-hero-art {
+			grid-row: 1 / -1;
+			width: 16rem;
+		}
+		.plan-hero-art.solo {
+			width: 11rem;
+		}
+		.plan-hero-about,
+		.plan-hero-start {
+			grid-column: 2;
+		}
+	}
+	@media (min-width: 1024px) {
+		.plan-hero-art {
+			width: 19rem;
+		}
+		.plan-hero-art.solo {
+			width: 12rem;
+		}
+	}
+	/* No covers to show (an articles-only plan): one column, every width. */
+	.plan-hero.no-art {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.plan-hero.no-art > * {
+		grid-column: 1;
 	}
 	/* minmax(0, 1fr), not the implicit auto track: a truncating week summary's
 	   min-content width would otherwise widen the column past a phone. */
@@ -874,33 +932,9 @@
 			top: calc(var(--appnav-h, 0px) + 1rem);
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
-			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
-			max-height: calc(100dvh - var(--appnav-h, 0px) - 2rem);
+			max-height: calc(100vh - var(--appnav-h, 0px) - var(--dockbar-h, 0px) - 2rem);
+			max-height: calc(100dvh - var(--appnav-h, 0px) - var(--dockbar-h, 0px) - 2rem);
 			overflow-y: auto;
-		}
-	}
-	@media (max-width: 639.98px) {
-		.plan-hero {
-			grid-template-columns: minmax(0, 1fr);
-			gap: 0.5rem;
-			padding-block: 0 1.5rem;
-		}
-		/* Small enough that the title shares the first screen with it. */
-		.plan-hero-fan {
-			order: -1;
-			width: min(13.5rem, 62%);
-			margin-inline: auto;
-		}
-	}
-	/* The writers: in the panel from a laptop up, after the days below that. */
-	@media (max-width: 1023.98px) {
-		.plan-authors-side {
-			display: none;
-		}
-	}
-	@media (min-width: 1024px) {
-		.plan-authors-main {
-			display: none;
 		}
 	}
 	.plan-jump {

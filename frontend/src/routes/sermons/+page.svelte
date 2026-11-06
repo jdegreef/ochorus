@@ -426,16 +426,14 @@
 		/>
 	{/if}
 
-	<!-- One sermon per line: title, the passage it expounds, the "In brief", and
-	     how long it runs — enough to decide whether to read or listen without
-	     opening it. A tile can't carry a 300–400 character brief without becoming
-	     mostly text, and prose set across a 76rem page is unreadable, so the row
-	     gives the brief a real measure and the meta a column of its own. -->
+	<!-- One sermon per line, a plain list (design #8): the title, one meta line
+	     (preacher · passage · length) and the first line of the "In brief",
+	     hairlines between. The whole row opens the sermon. -->
 	{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
-		<div {id} class="flex flex-col gap-3">
+		<div {id} class="sermon-list">
 			{#each items as sermon, i (sermon.slug)}
 				<div class="contents" hidden={i >= limit}>
-					<SermonCard {sermon} {showAuthor} variant="row" />
+					<SermonCard {sermon} {showAuthor} />
 				</div>
 			{/each}
 		</div>

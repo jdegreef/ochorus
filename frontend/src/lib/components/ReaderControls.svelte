@@ -377,6 +377,7 @@
 			aria-haspopup="dialog"
 			aria-expanded={open.value}
 			aria-label={t('reader.textSettings')}
+			title={t('reader.textSettings')}
 		>
 			<span class="font-display">A</span><span class="text-small">a</span>
 		</button>

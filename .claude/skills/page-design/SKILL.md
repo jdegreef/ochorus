@@ -87,6 +87,25 @@ In this order, and nothing else at the top level:
    targets must exist). Paging a hub drops links from its prerendered HTML:
    run `npm run build` and confirm `ls -d build/<type>/*/ | wc -l` still equals
    the API count (the prerender crawler must reach every item another way).
+   **Books opens on curated rows, not the grid** (design review #11,
+   2026-11-06). `/books` with no query shows **Browse**: a handful of named
+   rows (`h2.section-label` + "See all %n%" on a topic row, one
+   `.cover-rail.browse-row` of `BookCard`s that scrolls sideways with snap,
+   sized by its own container), then the Book Series rail. The
+   full grid with its filter bar is the **"All N books"** tab, which
+   `<LibraryTabs browse>` puts in place of the Books tab on `/books` only. The
+   view is URL state (`?shelf=all`, in the shelf's `urlFilters`), so: a bare
+   `/books` prerenders Browse (no layout-changing restore); **any filter or
+   search in the URL lands on the grid** (lifting a chip or clearing sets
+   `shelf=all`, so the reader stays there; no `$effect` rewrites the URL);
+   the static HTML paints Browse first for a `?shelf=all` link, since one
+   prerendered page serves every query; a row's "See all" is
+   `/books?shelf=all&topic=<slug>`. Row membership is `lib/browseRows.ts` —
+   built from the loaded shelf, no request of its own: the one small hand list
+   (`START_HERE`, topped up from featured order in a thin language), then
+   topic rows from `ROW_TOPICS` titled with the topic's own translated name,
+   falling back to the shelf's largest topics. Change the rows there, not in
+   the component; don't add a second hand list.
 8. **States** — three, all `<EmptyState>`:
    - *no rows in this language* → `message` + `action` = "Read the English library";
    - *filtered to nothing* → `message` + `action` = clear filters;
@@ -189,7 +208,15 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    not a `btn-icon` heart), `.btn.btn-ghost` for `Search in this …`. All the
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
-   **Book is the model (#3277):** the read verb lives in a *read card*
+   **Book is the model (#3277):** the hero is TWO columns (design review #6) —
+   the cover on the start side; on the end side the eyebrow, H1, subtitle
+   (often the translator), byline with dates, ONE muted facts line (`13 chapters · 9 hr 22 min ·
+   Accessible` — never a ribbon of boxed stat cells), the languages chip, then
+   the read card and the action strip. No third column or floating panel, no
+   art credit beside the cover (it sits with the source line at the page
+   foot), no "Other titles" line (it is a muted line inside About this book).
+   On a phone the cover sits beside the title block and the read card comes
+   straight under it, inside the first screen. The read verb lives in a *read card*
    (shared `.read-card` in app.css — the plan page uses it too for "Day N of M
    · today's reading"; chapter name + `ProgressBar` + one solid `.btn-primary.btn-solid`; for a
    first-time reader the book card has no body — the button carries the chapter as a
@@ -203,19 +230,35 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    query, not a viewport breakpoint, because the column beside the cover on a
    tablet and long translations run out of room long before `md`. A sticky sub-nav CTA shows only once the hero CTA has scrolled
    away (IntersectionObserver), never two primaries on screen.
-   **Long-list leaf: the plan page is the model for a side panel.** Where
-   the body is a long list the reader works through (a plan's days), the read
-   card, Save/Share and the writers sit in a sticky end-side panel from
-   1024px (`.plan-body` / `.plan-aside`, `top: calc(var(--pinned-offset,
-   var(--appnav-h, 0px)) + 1rem)`), and come FIRST on a phone so the one
-   action leads — instead of the book's sub-nav CTA. The grid track is
+   **Long-list leaf: the plan page is the model for a side panel** — and
+   the panel holds SECONDARY things only (design review #24). Where the body
+   is a long list the reader works through (a plan's days), the read card
+   stays in the HERO on every width, under the title and the one-sentence
+   facts line ("12 days · about 8 minutes a day · finish on 17 November if
+   you start today" — never stat boxes), where the eye already is; Save/Share
+   sit right under it, and the writers are a small-portrait byline in the
+   hero (`<Portrait>` + link), not an "Authors" heading over plain names.
+   A first visit's read card offers the daily reminder as one quiet line
+   under Start (`PlanStartRemind`: the email switch, the free-account ask,
+   the calendar view) — never a sheet between the tap and day 1.
+   The hero is the book page's shape: the picture beside the title
+   (`<CoverStrip size="fan">` for several books, `size="one"` for a single
+   one — the shared fan/cover, never re-drawn in a page), the about lines
+   and the read card full width beneath it on a phone. From 1024px a sticky
+   end-side panel beside the list (`.plan-body` / `.plan-aside`, `top:
+   calc(var(--appnav-h, 0px) + 1rem)`) keeps the secondary items — "Read
+   together" with its one-line explanation, and Coming up once started; on
+   a phone the panel FOLLOWS the list. A ministry cross-link (ForPromo) goes
+   at the very end of the page, not in the panel. The grid track is
    `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
-   min-content width otherwise pushes a phone column off-screen. Its hero
-   visual is `<CoverStrip size="fan" priority>` — the one shared big fan
-   (/originals uses it too); never re-draw fan geometry in a page.
-   Below 1024px, once the read card scrolls away (`elementVisible`, as the
-   book's sub-nav CTA does), the read verb rides `<ReadBar>` — ONE component
-   for every page's phone read bar (book: `hideFrom="sm"`, plan: `"lg"`). It
+   min-content width otherwise pushes a phone column off-screen. With
+   `max={5}` and five covers `<CoverStrip size="fan">` draws a SPREAD instead
+   of the three-cover deck (the home hero, `HomeIntro`, design #5): middle
+   cover in front, two each side stepping back, all upright.
+   Once the read card scrolls away (`elementVisible`, as the book's sub-nav
+   CTA does), the read verb rides `<ReadBar>` — ONE component for every
+   page's read bar (book: `hideFrom="sm"`, where its sub-nav CTA takes over;
+   plan: no `hideFrom`, every width, since its card no longer sticks). It
    portals, clears the shared bottom chrome, pads the body and publishes
    `--dockbar-h` for the toasts; never hand-roll another. Pinned jump
    chips over a list publish their measured height into `--pinned-offset`
@@ -249,9 +292,37 @@ Swahili — showing the English edition"), and no page 404s instead.
 
 The chapter reader and the sermon page are governed by `--reading-measure`
 and their own chrome (STYLE_GUIDE §3, §5). What they still share with leaf
-pages: the breadcrumb rule (2), the eyebrow (3), `SourceBadge`, prev/next as
-a `.btn` pair (ghost previous, soft-primary next), and one shared
-`.focus-exit` pill rather than three pasted copies.
+pages: the eyebrow (3), `SourceBadge`, prev/next as a `.btn` pair (ghost
+previous, soft-primary next), and one shared `.focus-exit` pill rather than
+three pasted copies.
+
+**A reading surface shows no visible breadcrumb** (design review #12, founder-
+approved; it overrides leaf step 2 here): its top bar already carries the way
+back ("← Sermons"), and a trail under it was the same link twice. Keep the
+BreadcrumbList JSON-LD. **And nothing boxed before the first word**: the
+sermon head is eyebrow (kind · passage · time), H1, byline (linked preacher
+with years, Listen beside it), an italic `.standfirst` for the summary, and the
+preaching text as the shared `<ScriptureEpigraph hue="var(--ornament)">` (gold
+start rule, no fill, translation credited) — dropped when the body opens on the
+same verse
+(`text_in_body`, backend `scripture.opens_with_text`). No `SermonPlate`
+there; it stays in Sermon of the day. The minutes-left pill stands in the start
+margin (`.min-left.beside-text`) and is not mounted where the margin can't hold
+it; the biography's pill is still centred (follow-up).
+
+**No site chrome while reading (design #7).** A route in `READER_ROUTE_IDS`
+draws no site nav, no footer and no phone tab bar — the root layout's one
+switch is `siteChrome` (`!inReader && !readerUi.focus`), and `--appnav-h` is
+`var(--safe-top, 0px)` there. The reader's ONE slim bar is the page's chrome:
+‹ book title (a link to the book page) · chapter · "n of N", then icon buttons
+with `title` tooltips and `aria-label`s — Contents · Aa · Listen · Bookmark ·
+"⋯" (no visible labels; Previous/Next chapter, Search, Notebook, Edition and
+Focus live in "⋯"). The "⋯" group ENDS with `<ReaderSiteLinks>` — Home + the
+`PRIMARY_NAV` journeys — so the site stays one tap away; a new reading surface
+needs it too (`readerChrome.test.ts`). The scroll-mode bar folds away on
+scroll-down and returns on scroll-up (`nextBarHidden`), snaps under reduced
+motion, and comes back when Tab lands in it. Don't put the nav or footer back
+on a reading surface.
 
 Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
 - **Paged mode slices the last line.** `.paged .pager` fills each CSS column
@@ -324,12 +395,25 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Content | Card | Hover |
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
-| Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
-| Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
+| Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
+| Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
+| Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
+- **Sermons are listed as plain rows, everywhere** (design review #8, founder-
+  approved 2026-11; overrides the older "row card tints" rule for sermons).
+  `<SermonCard>` has one shape: serif title, one muted meta line (preacher ·
+  passage · length; preacher omitted under a preacher heading), one clamped line
+  of the brief, hairlines between rows from the `.sermon-list` wrapper (app.css,
+which also sets the 48rem measure — don't hand-set a `max-w` per page). The
+  whole row is the link — no expand chevron, no rail, no passage monogram, no
+  card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
+  favourites and 404 lists are single columns for that reason.
+
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
+The one exception is the frameless sermon list row (above): no frame to tint,
+so its title underlines in accent. It is not a pattern for other cards.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
@@ -359,6 +443,15 @@ Books' author groups carry `photo_url`, extract the strip into a shared
 `<AuthorJumpStrip>` and use it on both.
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
+
+The **Topics hub** is a grouped shelf too (design #23): its shelves sit under
+five family headings (`<GroupHeading>`, one `<section>` each) — the families
+and their order are data in `lib/topicGroups.ts` (`TOPIC_GROUPS`, beside
+`TOPIC_META`), headings localized as `topics_group_*`. A slug in no family
+falls into a trailing "More topics" group rather than vanishing, and
+`topicGroups.test.ts` fails until a newly seeded shelf is placed — add it to a
+family when you add a topic (§ Adding a topic shelf). No filter field: grouped,
+the 33 shelves are a map, not a list to search.
 
 The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
 books by author when the topic is *author-clustered* — most of its books share
@@ -478,6 +571,9 @@ way unless you regen all three up front:
       re-skins existing covers. No migration — topics are seed data.
 - [ ] English-only shelf → add the slug to `TRANSLATION_PENDING` in the same
       file, or the per-language coverage guard demands prose in all 7 langs.
+- [ ] its family on the Topics hub: `frontend/src/lib/topicGroups.ts`
+      `TOPIC_GROUPS` (`topicGroups.test.ts` reads the seed and fails until it
+      is placed; unplaced, it shows under "More topics").
 - [ ] emblem identity in `frontend/src/lib/emblemNames.ts` `TOPIC_META`
       (`accent` + a **unique** `emblem` with ≥3 colours in `emblems.ts`
       `EMBLEM_ART`, per `emblems.test.ts`) — then **`npm run emblem:art`**
@@ -595,7 +691,7 @@ components carries neither. **Five source-text guards now scan every `.svelte`
 - `pageShell.test.ts` — `.page-col`, `<PageHeader>` on browse, the `py-10` shell
   padding, and no `mx-auto max-w-{2xl…7xl}` shell.
 - `typeScaleGuard.test.ts` — no `text-[…]`; no scoped literal `font-size`;
-  `.text-display` = home hero only; `.text-h1` = the page `<h1>` only, never an
+  `.text-display` = home hero only (`HomeIntro` logged out, `HomeHero` signed in); `.text-h1` = the page `<h1>` only, never an
   `<h2>`–`<h6>`; and no Tailwind default size (`text-base`/`-lg`/`-xl`/`-6xl`…).
 - `typeScaleGuard.test.ts` also forbids `var(--radius-*, …)` fallbacks (a
   fallback fires only on a MISSING token, so it hid the never-defined
@@ -744,7 +840,8 @@ relevant group.
   one `crumbs` array feeding both (Book).
 - [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
-  `Reading plan · 27 days`).
+  `Reading plan · 27 days`; since design #24 the plan's day count leads its
+  facts line instead, so its eyebrow is `Reading plan · 4 hr 11 min read`).
 - [x] **A9** _(shipped 2026-11-05: Legal, Contact and RSS are on `<PageHeader>` with no eyebrow — the `Ochorus` / nav-word / `RSS` eyebrows are gone — held by a new `PROSE_PAGES` list in `pageShell.test.ts`)_ Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
@@ -959,7 +1056,7 @@ relevant group.
 - [x] **E7** _(shipped #1526 — compact buttons on `.btn-sm`)_ Compact ghost buttons hand-roll `py-1.5`/`py-2` on Settings ×4,
   Sermons and `CatalogLanguageNudge`. → `.btn-sm`.
 - [ ] **E8** Near-duplicate classes: `.footer-heading` ≈ `.section-label`,
-  `.sermon-row-ref` ≈ `.eyebrow`, `.navsearch` ≈ a pill `.field`; the topic
+  ~~`.sermon-row-ref` ≈ `.eyebrow`~~ (gone with design #8), `.navsearch` ≈ a pill `.field`; the topic
   hero still carries its own weaker `.hue-band`. `.stat-number` is admin-only
   but lives with the public classes; `--hl-*` are fixed hex that don't follow
   the theme. → fold or document.

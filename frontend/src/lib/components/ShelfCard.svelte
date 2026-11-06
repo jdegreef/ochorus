@@ -17,12 +17,15 @@
 	 *
 	 * This is the Topics card, generalised. It was the best-looking surface in
 	 * the app and the only page using it — Plans rendered plain bordered rows
-	 * with a ragged cluster of covers floated top-right. Topics and Plans share
-	 * it now.
+	 * with a ragged cluster of covers floated top-right. Plans (and the topic
+	 * cards on Favorites) still wear it. The Topics hub itself left it in design
+	 * review #23: grouped under family headings, each topic is a boxless tile
+	 * there — three readable covers in a `CoverStrip` fan, the name and one
+	 * counts line — with no band, no tint and no scripture-code badge.
 	 *
 	 * Sermons does NOT: a sermon shelf carries a 300–400 character brief, which
 	 * a banded card cannot hold without becoming mostly text, so the sermons
-	 * index uses `<SermonCard variant="row">` instead. (An earlier version of
+	 * index uses `<SermonCard>` (a plain list row) instead. (An earlier version of
 	 * this note claimed all three shared this card, which sent people looking
 	 * for a caller that isn't there.)
 	 *
