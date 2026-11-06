@@ -5341,7 +5341,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("16:16,17 – Blessed are you, Simon,", "16:16,17 – “Blessed are you, Simon,"),
             ("who is in Heaven )", "who is in Heaven.”)"),
             ("‘ eklesia ’ (called-out ones)", "‘ ekklesia ’ (called-out ones)"),
-            ("<p>Eph 4:16).", "<p>(Eph 4:16)."),
+            ("love.”</p><p>Eph 4:16).</p>", "love.” (Eph 4:16).</p>"),
             ("when He said, “You are a leaky roof!", "when He said, ‘You are a leaky roof!"),
             ("about your wife!” God had given", "about your wife!’” God had given"),
             ("<p>2: 1 dead in trespasses", "<p>2:1 dead in trespasses"),
@@ -5357,6 +5357,87 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("treated at chattel", "treated as chattel"),
             ("1 Cor 13 13 –", "1 Cor 13:13 –"),
             ("prayer: (1:15 -20;", "prayer: (1:15-20;"),
+            # 2026-11-06 layout repair, in all seven editions at once so the
+            # tag sequences stay in lockstep (tests_translation_markup). Each
+            # language's pairs are anchored on its own text, so they match only
+            # there. Four paragraphs split mid-sentence are rejoined: ch1's
+            # "See Heb 10:35.", ch2's "Colossians 2:15.", ch4's "(Eph 4:16)."
+            # (each a citation left on a line of its own) and ch6's "you
+            # shouldn't be teaching! / You should be in the ministry!" (one
+            # quoted speech). ch3's tenth block had welded four things into one
+            # paragraph; it is split into the A. B. Simpson hymn, its credit,
+            # the Tozer quote with his, and the "Seated us with Him … (2:6)"
+            # subheading as an <h2>, matching "Sealed in Him" above it, with
+            # the body after it its own paragraph. Restructure only: no word
+            # changes. Every OLD carries markup so none can fire on the tagless
+            # body_text; that is why ch3's first pair runs to the block's
+            # closing </p> and its second is anchored on the </p><h2> the
+            # first one writes (keep them in this order). The ch4 en pair
+            # joins the already-repaired "(Eph"; the pair above it covers a
+            # raw re-import.
+            # en
+            ("is evidenced in confidence.</p><p>See Heb 10:35.</p>", "is evidenced in confidence. See Heb 10:35.</p>"),  # ch1
+            ("made an open show of them.</p><p>Colossians 2:15.</p>", "made an open show of them. Colossians 2:15.</p>"),  # ch2
+            ("up of itself in love.”</p><p>(Eph 4:16).</p>", "up of itself in love.” (Eph 4:16).</p>"),  # ch4
+            ("you shouldn’t be teaching!</p><p>You should be in the ministry!” – the", "you shouldn’t be teaching! You should be in the ministry!” – the"),  # ch6
+            ("A W Tozer Seated us with Him (the Father) in the heavenly places in Christ Jesus. (2:6) To be ‘seated’ with the Father means to have ceased from our efforts to please Him. He has accepted us in Christ and we are now called to enter into “His rest” (Hebrews 4:9). We may miss this rest by disobedience to the call of faith – His promptings within us (Heb 4:11). “The one who entered His rest has himself also rested from his works, as God did from His” (Heb 4:10).</p>",
+             "A W Tozer</p><h2>Seated us with Him (the Father) in the heavenly places in Christ Jesus. (2:6)</h2><p>To be ‘seated’ with the Father means to have ceased from our efforts to please Him. He has accepted us in Christ and we are now called to enter into “His rest” (Hebrews 4:9). We may miss this rest by disobedience to the call of faith – His promptings within us (Heb 4:11). “The one who entered His rest has himself also rested from his works, as God did from His” (Heb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("at Thy footstool I bow. A B Simpson “When a man is filled with the Spirit, he knows it!” A W Tozer</p><h2>",
+             "at Thy footstool I bow.</p><p>A B Simpson</p><p>“When a man is filled with the Spirit, he knows it!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # am
+            ("ባሕርይ ሲሆን የሚገለጠውም በመተማመን ነው።</p><p>ዕብራውያን 10:35ን ተመልከት።</p>", "ባሕርይ ሲሆን የሚገለጠውም በመተማመን ነው። ዕብራውያን 10:35ን ተመልከት።</p>"),  # ch1
+            ("ላይ በግልጥ ባሳያቸው ጊዜ ድል ተነሥተዋል።</p><p>ቆላስይስ 2:15።</p>", "ላይ በግልጥ ባሳያቸው ጊዜ ድል ተነሥተዋል። ቆላስይስ 2:15።</p>"),  # ch2
+            ("ራሱን በፍቅር ለማነጽ አካሉን ያሳድጋል።»</p><p>(ኤፌሶን 4:16)።</p>", "ራሱን በፍቅር ለማነጽ አካሉን ያሳድጋል።» (ኤፌሶን 4:16)።</p>"),  # ch4
+            ("አንተ መምህር ሆነህ መቀጠል የለብህም!</p><p>በአገልግሎት ውስጥ መሆን አለብህ!» — ይህ ነበር «የወንድሞች", "አንተ መምህር ሆነህ መቀጠል የለብህም! በአገልግሎት ውስጥ መሆን አለብህ!» — ይህ ነበር «የወንድሞች"),  # ch6
+            ("ኤ. ደብሊው. ቶዘር ከእርሱ (ከአብ) ጋር በክርስቶስ ኢየሱስ በሰማያዊ ስፍራ አስቀመጠን (2:6)። ከአብ ጋር «መቀመጥ» ማለት እርሱን ለማስደሰት የምናደርገውን ጥረት ማቆም ማለት ነው። በክርስቶስ ተቀብሎናል፤ አሁንም ወደ «ዕረፍቱ» እንድንገባ ተጠርተናል (ዕብራውያን 4:9)። የእምነትን ጥሪ — በውስጣችን የሚያነሣሣንን ምሪቱን — ባለመታዘዝ ይህን ዕረፍት ልናጣው እንችላለን (ዕብራውያን 4:11)። «ወደ ዕረፍቱ የገባ፥ እግዚአብሔር ከሥራው እንዳረፈ፥ እርሱ ደግሞ ከሥራው አርፎአልና።» (ዕብራውያን 4:10)።</p>",
+             "ኤ. ደብሊው. ቶዘር</p><h2>ከእርሱ (ከአብ) ጋር በክርስቶስ ኢየሱስ በሰማያዊ ስፍራ አስቀመጠን (2:6)።</h2><p>ከአብ ጋር «መቀመጥ» ማለት እርሱን ለማስደሰት የምናደርገውን ጥረት ማቆም ማለት ነው። በክርስቶስ ተቀብሎናል፤ አሁንም ወደ «ዕረፍቱ» እንድንገባ ተጠርተናል (ዕብራውያን 4:9)። የእምነትን ጥሪ — በውስጣችን የሚያነሣሣንን ምሪቱን — ባለመታዘዝ ይህን ዕረፍት ልናጣው እንችላለን (ዕብራውያን 4:11)። «ወደ ዕረፍቱ የገባ፥ እግዚአብሔር ከሥራው እንዳረፈ፥ እርሱ ደግሞ ከሥራው አርፎአልና።» (ዕብራውያን 4:10)።</p>"),  # ch3 Tozer | heading | body
+            ("ብዬ ስሰግድ በሙላትህና በማኅተምህ ና። ኤ. ቢ. ሲምፕሰን «አንድ ሰው በመንፈስ ሲሞላ ያውቀዋል!» ኤ. ደብሊው. ቶዘር</p><h2>",
+             "ብዬ ስሰግድ በሙላትህና በማኅተምህ ና።</p><p>ኤ. ቢ. ሲምፕሰን</p><p>«አንድ ሰው በመንፈስ ሲሞላ ያውቀዋል!» ኤ. ደብሊው. ቶዘር</p><h2>"),  # ch3 hymn | credit | Tozer
+            # es
+            ("evidencia en la confianza.</p><p>Ver Hebreos 10:35.</p>", "evidencia en la confianza. Ver Hebreos 10:35.</p>"),  # ch1
+            ("los exhibió públicamente.</p><p>Colosenses 2:15.</p>", "los exhibió públicamente. Colosenses 2:15.</p>"),  # ch2
+            ("a sí mismo en amor».</p><p>Efesios 4:16).</p>", "a sí mismo en amor». Efesios 4:16).</p>"),  # ch4
+            ("estar dando clases!</p><p>¡Deberías estar en el ministerio!»: el", "estar dando clases! ¡Deberías estar en el ministerio!»: el"),  # ch6
+            ("A. W. Tozer Nos hizo sentar con él (el Padre) en los lugares celestiales en Cristo Jesús (2:6). Estar «sentados» con el Padre significa haber cesado de nuestros esfuerzos por agradarle. Él nos ha aceptado en Cristo, y ahora estamos llamados a entrar en «su reposo» (Hebreos 4:9). Podemos perder este reposo por desobedecer el llamado de la fe, es decir, sus impulsos dentro de nosotros (Hebreos 4:11). «El que ha entrado en su reposo, también ha reposado de sus obras, como Dios de las suyas» (Hebreos 4:10).</p>",
+             "A. W. Tozer</p><h2>Nos hizo sentar con él (el Padre) en los lugares celestiales en Cristo Jesús (2:6).</h2><p>Estar «sentados» con el Padre significa haber cesado de nuestros esfuerzos por agradarle. Él nos ha aceptado en Cristo, y ahora estamos llamados a entrar en «su reposo» (Hebreos 4:9). Podemos perder este reposo por desobedecer el llamado de la fe, es decir, sus impulsos dentro de nosotros (Hebreos 4:11). «El que ha entrado en su reposo, también ha reposado de sus obras, como Dios de las suyas» (Hebreos 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("postro humilde a tus pies. A. B. Simpson «Cuando un hombre está lleno del Espíritu, ¡lo sabe!» A. W. Tozer</p><h2>",
+             "postro humilde a tus pies.</p><p>A. B. Simpson</p><p>«Cuando un hombre está lleno del Espíritu, ¡lo sabe!» A. W. Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # fr
+            ("manifeste par la confiance.</p><p>Voir Hébreux 10:35.</p>", "manifeste par la confiance. Voir Hébreux 10:35.</p>"),  # ch1
+            ("publiquement en spectacle.</p><p>Colossiens 2:15.</p>", "publiquement en spectacle. Colossiens 2:15.</p>"),  # ch2
+            ("lui-même dans la charité. »</p><p>Éph 4:16).</p>", "lui-même dans la charité. » Éph 4:16).</p>"),  # ch4
+            ("ne devrais pas enseigner !</p><p>« Tu devrais être dans le ministère ! » —", "ne devrais pas enseigner ! « Tu devrais être dans le ministère ! » —"),  # ch6
+            ("A W Tozer Il nous a fait asseoir avec lui (le Père) dans les lieux célestes, en Jésus-Christ. (2:6) Être « assis » avec le Père, c’est avoir cessé nos efforts pour lui plaire. Il nous a acceptés en Christ, et nous sommes désormais appelés à entrer dans « son repos » (Hébreux 4:9). Nous pouvons manquer ce repos par la désobéissance à l’appel de la foi – ses incitations au-dedans de nous (Héb 4:11). « Celui qui entre dans le repos de Dieu se repose de ses œuvres, comme Dieu s’est reposé des siennes. » (Héb 4:10).</p>",
+             "A W Tozer</p><h2>Il nous a fait asseoir avec lui (le Père) dans les lieux célestes, en Jésus-Christ. (2:6)</h2><p>Être « assis » avec le Père, c’est avoir cessé nos efforts pour lui plaire. Il nous a acceptés en Christ, et nous sommes désormais appelés à entrer dans « son repos » (Hébreux 4:9). Nous pouvons manquer ce repos par la désobéissance à l’appel de la foi – ses incitations au-dedans de nous (Héb 4:11). « Celui qui entre dans le repos de Dieu se repose de ses œuvres, comme Dieu s’est reposé des siennes. » (Héb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("je m’incline à tes pieds. A B Simpson « Quand un homme est rempli de l’Esprit, il le sait ! » A W Tozer</p><h2>",
+             "je m’incline à tes pieds.</p><p>A B Simpson</p><p>« Quand un homme est rempli de l’Esprit, il le sait ! » A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # lg
+            ("era kirabikira mu buvumu.</p><p>Laba Abaebbulaniya 10:35.</p>", "era kirabikira mu buvumu. Laba Abaebbulaniya 10:35.</p>"),  # ch1
+            ("bwe yabaswaza mu lwatu.</p><p>Abakkolosaayi 2:15.</p>", "bwe yabaswaza mu lwatu. Abakkolosaayi 2:15.</p>"),  # ch2
+            ("nga gwezimba mu kwagala.”</p><p>Abaefeso 4:16).</p>", "nga gwezimba mu kwagala.” Abaefeso 4:16).</p>"),  # ch4
+            ("kubeera musomesa!</p><p>Osaanidde kubeera mu buweereza!” –", "kubeera musomesa! Osaanidde kubeera mu buweereza!” –"),  # ch6
+            ("A W Tozer Katonda yatuzuukiriza wamu ne Kristo okuva mu kufa ne tufuna obulamu, era atutuuzizza mu bifo eby’omu ggulu, okumpi ne Kristo Yesu. (2:6) Okuba nga ‘tutuuzibwa’ wamu ne Kitaffe kitegeeza okulekera awo okufuba kwaffe okumusanyusa. Yatwaniriza mu Kristo era kaakano tuyitibwa okuyingira mu “kiwummulo kye” (Abaebbulaniya 4:9). Tuyinza okusubwa ekiwummulo kino olw’obujeemu eri okuyitibwa okw’okukkiriza – okukubiriza kwe okuli munda mu ffe (Beb 4:11). “Kubanga oyo ayingira mu kiwummulo kya Katonda, awummula emirimu gye nga Katonda bwe yawummula ng’amaze emirimu gye.” (Beb 4:10)</p>",
+             "A W Tozer</p><h2>Katonda yatuzuukiriza wamu ne Kristo okuva mu kufa ne tufuna obulamu, era atutuuzizza mu bifo eby’omu ggulu, okumpi ne Kristo Yesu. (2:6)</h2><p>Okuba nga ‘tutuuzibwa’ wamu ne Kitaffe kitegeeza okulekera awo okufuba kwaffe okumusanyusa. Yatwaniriza mu Kristo era kaakano tuyitibwa okuyingira mu “kiwummulo kye” (Abaebbulaniya 4:9). Tuyinza okusubwa ekiwummulo kino olw’obujeemu eri okuyitibwa okw’okukkiriza – okukubiriza kwe okuli munda mu ffe (Beb 4:11). “Kubanga oyo ayingira mu kiwummulo kya Katonda, awummula emirimu gye nga Katonda bwe yawummula ng’amaze emirimu gye.” (Beb 4:10)</p>"),  # ch3 Tozer | heading | body
+            ("w’entebe y’ebigere byo. A B Simpson “Omuntu bw’ajjula Omwoyo, akimanya!” A W Tozer</p><h2>",
+             "w’entebe y’ebigere byo.</p><p>A B Simpson</p><p>“Omuntu bw’ajjula Omwoyo, akimanya!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # pt
+            ("se evidencia na confiança.</p><p>Veja Hb 10:35.</p>", "se evidencia na confiança. Veja Hb 10:35.</p>"),  # ch1
+            ("Ele os expôs publicamente.</p><p>Colossenses 2:15.</p>", "Ele os expôs publicamente. Colossenses 2:15.</p>"),  # ch2
+            ("de si mesmo em amor.”</p><p>Ef 4:16).</p>", "de si mesmo em amor.” Ef 4:16).</p>"),  # ch4
+            ("deveria estar dando aulas!</p><p>Você deveria estar no ministério!” – o", "deveria estar dando aulas! Você deveria estar no ministério!” – o"),  # ch6
+            ("A W Tozer Nos fez assentar com Ele (o Pai) nas regiões celestiais em Cristo Jesus. (2:6) Estar ‘assentado’ com o Pai significa ter cessado dos nossos esforços para agradar a Ele. Ele nos aceitou em Cristo, e agora somos chamados a entrar no “seu descanso” (Hebreus 4:9). Podemos perder esse descanso pela desobediência ao chamado da fé – os Seus impulsos dentro de nós (Hb 4:11). “Aquele que entrou no seu descanso, ele mesmo também descansou das suas obras, assim como Deus descansou das suas” (Hb 4:10).</p>",
+             "A W Tozer</p><h2>Nos fez assentar com Ele (o Pai) nas regiões celestiais em Cristo Jesus. (2:6)</h2><p>Estar ‘assentado’ com o Pai significa ter cessado dos nossos esforços para agradar a Ele. Ele nos aceitou em Cristo, e agora somos chamados a entrar no “seu descanso” (Hebreus 4:9). Podemos perder esse descanso pela desobediência ao chamado da fé – os Seus impulsos dentro de nós (Hb 4:11). “Aquele que entrou no seu descanso, ele mesmo também descansou das suas obras, assim como Deus descansou das suas” (Hb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("ao Teu estrado me prostro. A B Simpson “Quando um homem está cheio do Espírito, ele sabe disso!” A W Tozer</p><h2>",
+             "ao Teu estrado me prostro.</p><p>A B Simpson</p><p>“Quando um homem está cheio do Espírito, ele sabe disso!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # sw
+            ("hushuhudiwa katika ujasiri.</p><p>Ona Waebrania 10:35.</p>", "hushuhudiwa katika ujasiri. Ona Waebrania 10:35.</p>"),  # ch1
+            ("kuwa mkogo waziwazi.</p><p>Wakolosai 2:15.</p>", "kuwa mkogo waziwazi. Wakolosai 2:15.</p>"),  # ch2
+            ("wenyewe katika upendo.”</p><p>(Waefeso 4:16).</p>", "wenyewe katika upendo.” (Waefeso 4:16).</p>"),  # ch4
+            ("hupaswi kuwa unafundisha!</p><p>Wapaswa kuwa katika huduma!” — ule", "hupaswi kuwa unafundisha! Wapaswa kuwa katika huduma!” — ule"),  # ch6
+            ("— A W Tozer. Ametuketisha pamoja naye (Baba) katika ulimwengu wa roho ndani yake Kristo Yesu. (2:6) Kuwa “umeketishwa” pamoja na Baba humaanisha kuwa umekoma juhudi zetu za kumpendeza. Ametukubali ndani ya Kristo, nasi sasa twaitwa kuingia katika “raha yake” (Waebrania 4:9). Twaweza kuikosa raha hii kwa kutokutii ule mwito wa imani — misukumo yake ndani yetu (Waebrania 4:11). “Kwa maana yeye aliyeingia katika raha yake, amestarehe mwenyewe katika kazi zake, kama vile Mungu alivyostarehe katika kazi zake” (Waebrania 4:10).</p>",
+             "— A W Tozer.</p><h2>Ametuketisha pamoja naye (Baba) katika ulimwengu wa roho ndani yake Kristo Yesu. (2:6)</h2><p>Kuwa “umeketishwa” pamoja na Baba humaanisha kuwa umekoma juhudi zetu za kumpendeza. Ametukubali ndani ya Kristo, nasi sasa twaitwa kuingia katika “raha yake” (Waebrania 4:9). Twaweza kuikosa raha hii kwa kutokutii ule mwito wa imani — misukumo yake ndani yetu (Waebrania 4:11). “Kwa maana yeye aliyeingia katika raha yake, amestarehe mwenyewe katika kazi zake, kama vile Mungu alivyostarehe katika kazi zake” (Waebrania 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("penye kiti cha miguu yako. — A B Simpson. “Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>",
+             "penye kiti cha miguu yako.</p><p>— A B Simpson.</p><p>“Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>"),  # ch3 hymn | credit | Tozer
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
