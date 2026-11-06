@@ -313,12 +313,17 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Content | Card | Hover |
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
-| Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
+| Topic | `<ShelfCard>` | lift −2px + shadow |
+| Plan | `<PlanShelfCard>` (boxless: one large cover, or two overlapping, beside title + length once + 2-line description — design #19) | rise (the book card's) |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
-Two hover languages only: **lift** for banded cards, **border tint** for rows.
+Two hover languages only: **lift** for banded cards, **border tint** for rows
+(the boxless book and plan cards rise without a shadow — a shadow would draw
+the box they no longer have). /plans groups its cards by length ("A week or
+two" ≤ 14 days, "About a month" 15–40, "Longer journeys"), the same buckets as
+its length chips; sorting or filtering shows one flat list instead.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.

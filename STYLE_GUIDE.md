@@ -392,7 +392,7 @@ emblem can appear in two tints a click apart — it is the shelf's colour there
 and its own colour here.
 
 **Shelf card** (`<ShelfCard>` / `.shelf-card`) — the colour-washed card used by
-Topics and Plans: a tinted band carrying an icon chip (or a portrait) and a fan
+Topics (and the series index): a tinted band carrying an icon chip (or a portrait) and a fan
 of covers, over a typographic body. Each card sets `--shelf-hue`, used **only
 through `color-mix()`** for tints and the icon, never as body text, so contrast
 holds in both themes. Hues come from:
@@ -400,7 +400,6 @@ holds in both themes. Hues come from:
 | Surface | Hue source |
 |---|---|
 | Topics | `topicMeta(slug).accent` — curated per topic |
-| Plans | `accentForSlug(slug)` — stable pick from the same palette |
 | Sermon plate | `sermonArt(slug).hue` — derived from the emblem's own art |
 | Sermons index row | `hueForBirthYear(...)` — the preacher's era |
 | Sermon tile in a fan | `sermonArt(slug).hue` — its own art, even inside a band |
@@ -409,8 +408,7 @@ holds in both themes. Hues come from:
 The band's far end takes a **fan of member tiles** (`covers`); the band does the
 positioning, so an occupant only styles itself. A topic's fan holds books first
 and then **sermon tiles** — its members in the reader's language, and in most
-languages there are more sermons than books. A plan's holds books only, and its
-type says so (`BookTile[]`).
+languages there are more sermons than books.
 
 A sermon tile is the round **emblem chip**, not a 3:4 cover. That is the rule
 above made visible: the same fan carries a book wearing its cover and a sermon
@@ -418,6 +416,18 @@ wearing its own art, and the differing silhouette is what tells them apart. It
 is also the one place a sermon's own hue sits inside another surface's
 `--shelf-hue` band — the item's art wins over the shelf's, because the books
 beside it are already showing theirs.
+
+**Plan card** (`<PlanShelfCard>`) — **led by the cover** (design review #19,
+2026-11), on /plans, a plan's "More like this", the young-reader hubs and the
+/for pages. A plan is a journey through books, so the card shows them: one
+large cover, or two overlapping for a plan that reads several (always upright),
+beside the serif title, the length said once ("27 days · ~9 min/day") and two
+lines of description. Boxless like the book card — no band, no per-card wash,
+no "DAYS 27" monogram, no "Day 1 · …" teaser; its hover is the book card's
+rise. A plan's covers are books only, and its type says so (`BookTile[]`).
+The /plans hub groups the cards by length — "A week or two" (≤ 14 days),
+"About a month" (15–40), "Longer journeys" — the same buckets as its length
+chips; a sort or a filter turns the groups into one flat list.
 
 **Book card** (`.book-card`) — **the cover is the card.** It sits straight on
 the page ground — no box, no border, no tint — with two lines under it: the

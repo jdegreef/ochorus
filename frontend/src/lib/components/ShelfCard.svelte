@@ -17,8 +17,9 @@
 	 *
 	 * This is the Topics card, generalised. It was the best-looking surface in
 	 * the app and the only page using it — Plans rendered plain bordered rows
-	 * with a ragged cluster of covers floated top-right. Topics and Plans share
-	 * it now.
+	 * with a ragged cluster of covers floated top-right. Plans wore it too until
+	 * design review #19 (2026-11) gave them a cover-led card of their own
+	 * (`PlanShelfCard`): a plan is its books, so the books lead it.
 	 *
 	 * Sermons does NOT: a sermon shelf carries a 300–400 character brief, which
 	 * a banded card cannot hold without becoming mostly text, so the sermons
@@ -51,7 +52,7 @@
 		emblem?: EmblemName;
 		/**
 		 * A monogram for the badge — label over value: a topic's epigraph
-		 * ("JER" over 33) or a plan's length ("DAYS" over 21). Null keeps the emblem (e.g. a topic with no
+		 * ("JER" over 33). Null keeps the emblem (e.g. a topic with no
 		 * epigraph translated into this language).
 		 */
 		mark?: { top: string; value: string } | null;
@@ -67,7 +68,7 @@
 		 *  the point of the card — they grow to legible width, centred in the
 		 *  band, and the emblem badge steps aside for them. */
 		fan?: 'sm' | 'lg';
-		/** 2 when the card sits directly under the page's <h1> (Topics, Plans); 3
+		/** 2 when the card sits directly under the page's <h1> (Topics); 3
 		 *  when it sits in a section under its own <h2> (the Books page's rail). */
 		headingLevel?: 2 | 3;
 		/** Right-aligned meta beside the title (counts, day totals). */
