@@ -434,6 +434,12 @@ services:
       - path: /portraits/*
         name: Cache-Control
         value: "public, max-age=3600, s-maxage=300, stale-while-revalidate=2592000"
+      # The library palettes (frontend/static/palettes.css): split out of the
+      # render-blocking app.css and linked only for a reader with a palette.
+      # Unhashed (app.html's boot script names it), so the covers' tier.
+      - path: /palettes.css
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300, stale-while-revalidate=2592000"
       # In-book pictures (chapter <figure>s): stable names, like the covers.
       - path: /illustrations/*
         name: Cache-Control
@@ -506,6 +512,13 @@ services:
       - type: redirect
         source: /plans/the-key-teachings-four-teachers
         destination: /plans/key-teachings-four-teachers/
+      # A book retired as a duplicate of the work it paraphrased
+      # (corrections.RETIRED_BOOKS). Only the book page: its chapter URLs and
+      # the localized forms are forwarded, lesson for lesson, by the pages'
+      # own loads ($lib/retiredBooks).
+      - type: redirect
+        source: /books/lord-teach-us-to-pray-2
+        destination: /books/school-of-prayer/
       # Book PDFs moved to Supabase Storage (2026-09-29). One wildcard keeps every
       # link shared before the move working. Render serves a file that exists
       # before any rule, so what still sits in frontend/static/pdfs is untouched.

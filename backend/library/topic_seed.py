@@ -38,7 +38,7 @@ TOPICS = [
             "spurgeon-on-prayer",
             "a-short-and-easy-method-of-prayer",
             "the-lords-prayer",
-            "lord-teach-us-to-pray-2",
+            "school-of-prayer",
             "prevailing-prayer",
             "how-to-pray",
             "tertullian-on-prayer",

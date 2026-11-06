@@ -82,6 +82,9 @@
 import { getBook, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
+import { localizeHref } from '$lib/href';
+import { retiredBookPath } from '$lib/retiredBooks';
+import { redirect } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Canonical URL carries a trailing slash so this page prerenders to
@@ -97,6 +100,11 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params, fetch }) => {
+	// A book retired as a duplicate ($lib/retiredBooks): old links land on the
+	// work that replaced it. (render.yaml 301s the English URL; this covers the
+	// localized ones and the app.)
+	const moved = retiredBookPath(params.slug);
+	if (moved) redirect(308, localizeHref(moved));
 	const book = await orNotFound(() => getBook(params.slug, getLang(), fetch));
 	return { book };
 };

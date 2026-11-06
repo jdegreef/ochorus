@@ -18,6 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
+from ..corrections import RETIRED_BOOKS
 from ..demand import reading_elsewhere
 from ..languages import known_codes
 from ..models import (
@@ -230,11 +231,14 @@ class AdminStatsView(APIView):
     def _attention(self) -> dict:
         """Content-health signals worth surfacing at a glance."""
         return {
-            "unpublished_books": Book.objects.filter(is_published=False).count(),
+            # A retired duplicate is unpublished for good — not a to-do.
+            "unpublished_books": Book.objects.filter(is_published=False)
+            .exclude(slug__in=RETIRED_BOOKS)
+            .count(),
             "unpublished_sermons": Sermon.objects.filter(is_published=False).count(),
             "unreviewed_translations": Book.objects.filter(
                 source_type=Book.SourceType.AI_UNREVIEWED
-            ).count(),
+            ).exclude(slug__in=RETIRED_BOOKS).count(),
             # Imprints are bylines, not people — they never get a bio, so
             # counting them would leave this to-do permanently unfinishable.
             "authors_without_bio": Author.objects.filter(bio="", is_imprint=False).count(),

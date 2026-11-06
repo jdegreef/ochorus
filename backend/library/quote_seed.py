@@ -1273,20 +1273,20 @@ ANDREW_MURRAY = [
     {
         "slug": "andrew-murray-87d9f1d8",
         "text": "To know how to speak to God is more than knowing how to speak to man.",
-        "chapter": ("lord-teach-us-to-pray-2", 1),
-        "paragraph": 13,
+        "chapter": ("school-of-prayer", 2),
+        "paragraph": 8,
     },
     {
         "slug": "andrew-murray-7bc3e383",
-        "text": "The knowledge of God's Father love is the first and simplest, but also the last and highest lesson in the school of prayer.",
-        "chapter": ("lord-teach-us-to-pray-2", 4),
-        "paragraph": 3,
+        "text": "The knowledge of God’s Father-love is the first and simplest, but also the last and highest lesson in the school of prayer.",
+        "chapter": ("school-of-prayer", 5),
+        "paragraph": 2,
     },
     {
         "slug": "andrew-murray-4e3ad077",
         "text": "Let us beware of the prayer for forgiveness becoming a formality: only what is really confessed is really forgiven.",
-        "chapter": ("lord-teach-us-to-pray-2", 4),
-        "paragraph": 11,
+        "chapter": ("school-of-prayer", 5),
+        "paragraph": 9,
     },
     {
         "slug": "andrew-murray-622d4639",
@@ -1350,9 +1350,9 @@ ANDREW_MURRAY = [
     },
     {
         "slug": "andrew-murray-ee7711d2",
-        "text": "God is a spirit: He is the Everlasting and Unchangeable One; what He is, He is always and in truth.",
-        "chapter": ("lord-teach-us-to-pray-2", 2),
-        "paragraph": 11,
+        "text": "God is a Spirit: He is the Everlasting and Unchangeable One; what He is, He is always and in truth.",
+        "chapter": ("school-of-prayer", 3),
+        "paragraph": 5,
     },
     {
         "slug": "andrew-murray-25892082",
@@ -3540,13 +3540,13 @@ GARETH_EVANS = [
         "slug": "gareth-evans-acd8fcf2",
         "text": "God has not called us to be famous or successful; He has called us to be faithful.",
         "chapter": ("he-holds-my-tomorrows", 15),
-        "paragraph": 16,
+        "paragraph": 15,
     },
     {
         "slug": "gareth-evans-250ffc80",
         "text": "Faith does not deliver us from the chisel or hammer of the Divine sculptor.",
         "chapter": ("he-holds-my-tomorrows", 16),
-        "paragraph": 45,
+        "paragraph": 47,
     },
     {
         "slug": "gareth-evans-7bf997cc",
@@ -3558,7 +3558,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-ea56a35e",
         "text": "The great promises of God only come to those who have died to themselves.",
         "chapter": ("he-holds-my-tomorrows", 12),
-        "paragraph": 28,
+        "paragraph": 29,
     },
     {
         "slug": "gareth-evans-8f7e4023",
@@ -3570,7 +3570,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-0b4a12e9",
         "text": "Faith is an attribute of the heart and is evidenced in obedience.",
         "chapter": ("he-holds-my-tomorrows", 2),
-        "paragraph": 40,
+        "paragraph": 39,
     },
     {
         "slug": "gareth-evans-c9e0110e",
@@ -3594,19 +3594,19 @@ GARETH_EVANS = [
         "slug": "gareth-evans-5229253d",
         "text": "God only allows testing to come in our lives so that He might make us pure.",
         "chapter": ("he-holds-my-tomorrows", 13),
-        "paragraph": 26,
+        "paragraph": 27,
     },
     {
         "slug": "gareth-evans-5df533df",
         "text": "God knows the heart of man and will only reveal Himself to those who are pure in heart.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 41,
+        "paragraph": 45,
     },
     {
         "slug": "gareth-evans-cf0d0a61",
         "text": "The only way man can approach God is through the shed blood of a lamb.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 31,
+        "paragraph": 33,
     },
     {
         "slug": "gareth-evans-b4cd492e",
@@ -3642,7 +3642,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-dc3ec2c5",
         "text": "The gifts are given to individuals, not that they might glory or boast in them, but that they might be for the benefit of all.",
         "chapter": ("he-holds-my-tomorrows", 3),
-        "paragraph": 68,
+        "paragraph": 71,
     },
     {
         "slug": "gareth-evans-7f44b4a6",
@@ -3654,7 +3654,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-12a18c7e",
         "text": "To those who have placed their trust in the finished work of Calvary, there is no more condemnation but an access into the presence and fellowship of God.",
         "chapter": ("he-holds-my-tomorrows", 7),
-        "paragraph": 34,
+        "paragraph": 36,
     },
     {
         "slug": "gareth-evans-eece1b59",
@@ -3666,7 +3666,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-cd926d0d",
         "text": "The end of the journey for all who walk in faith, is that they shall be with their Saviour, glorified in His presence.",
         "chapter": ("he-holds-my-tomorrows", 16),
-        "paragraph": 39,
+        "paragraph": 40,
     },
     {
         "slug": "gareth-evans-5c0753d7",
@@ -3868,7 +3868,7 @@ TOPIC_MEMBERS = {
         "charles-h-spurgeon-f259f382",  # God’s Spirit is teaching you how to wrestle and agonize in p
         "charles-h-spurgeon-4b7afe02",  # The prayer that this morning you offered, Christ is now offe
         "charles-h-spurgeon-0a553264",  # The Lord Jesus has led captivity captive, and now sits at th
-        "andrew-murray-7bc3e383",  # The knowledge of God's Father love is the first and simplest
+        "andrew-murray-7bc3e383",  # The knowledge of God’s Father-love is the first and simplest
         "andrew-murray-4e3ad077",  # Let us beware of the prayer for forgiveness becoming a forma
         "andrew-murray-7f00de09",  # Christ’s life and work, His suffering and death—it was all p
         "andrew-murray-ceef792c",  # It is the life abiding wholly in Christ that can pray the ef
@@ -4131,7 +4131,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-be6f13f2",  # The wise lover regards not so much the gift of Him Who loves
         "thomas-a-kempis-69ad2257",  # Place all your trust in God; let Him be your fear and your l
         "thomas-a-kempis-8e7b6b00",  # Jesus Christ must be loved alone with a special love for He 
-        "andrew-murray-7bc3e383",  # The knowledge of God's Father love is the first and simplest
+        "andrew-murray-7bc3e383",  # The knowledge of God’s Father-love is the first and simplest
         "andrew-murray-29a39898",  # Chastisement is bringing your heart into unity with God’s Wi
         "andrew-murray-ba80b140",  # The spirit of separation is the spirit of self-sacrifice, of
         "andrew-murray-c38b33cb",  # If the love of God is in your heart you will love your broth
@@ -4440,7 +4440,7 @@ TOPIC_MEMBERS = {
         "thomas-a-kempis-35828f2d",  # No man is fit to enjoy heaven unless he has resigned himself
         "thomas-a-kempis-6ff5eb6f",  # No man deserves the consolation of heaven unless he persiste
         "andrew-murray-ba743e80",  # The truth is this, pride may die in you or nothing of heaven
-        "andrew-murray-ee7711d2",  # God is a spirit: He is the Everlasting and Unchangeable One;
+        "andrew-murray-ee7711d2",  # God is a Spirit: He is the Everlasting and Unchangeable One;
         "andrew-murray-3279a07e",  # The Holy Spirit is the life of the heavenly Vine, and what y
         "andrew-murray-9222df6d",  # Let us seek to understand that the life of the branch is a l
         "andrew-murray-716ef8a0",  # To be a branch means not only bearing fruit on earth, but po

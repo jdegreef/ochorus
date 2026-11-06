@@ -49,10 +49,10 @@
   "source_url": "",
   "attribution": "",
   "cover_url": "/covers/art/lord-teach-us-to-pray-2.jpg",
-  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/lord-teach-us-to-pray-2.lg.pdf?download=lord-teach-us-to-pray-2.lg.pdf",
+  "pdf_url": "",
   "cover_color": "#486487",
   "sort_order": 21,
-  "is_published": true,
+  "is_published": false,
   "created_at": "2026-07-22T18:15:16.666Z",
   "updated_at": "2026-07-22T18:15:16.666Z"
  }

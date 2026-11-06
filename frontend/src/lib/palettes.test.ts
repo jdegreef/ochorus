@@ -1,5 +1,5 @@
 /**
- * Library palettes (app.css "PALETTES") — measured, not trusted.
+ * Library palettes (static/palettes.css) — measured, not trusted.
  *
  * A palette re-tints the grounds and the accent over a theme, so every ink the
  * theme already promised at 4.5:1 has to be re-measured on the new grounds:
@@ -26,7 +26,12 @@ import {
 } from './palettes';
 import { palette } from './palette.svelte';
 
-const CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '');
+// The theme blocks are in app.css; the palette blocks in static/palettes.css,
+// linked only when a palette is applied (see that file's header).
+const CSS = ['src/app.css', 'static/palettes.css']
+	.map((f) => readFileSync(join(process.cwd(), f), 'utf-8'))
+	.join('\n')
+	.replace(/\/\*[\s\S]*?\*\//g, '');
 const HTML = readFileSync(join(process.cwd(), 'src/app.html'), 'utf-8');
 const HUES = ['indigo', 'oxblood', 'cypress', 'ochre', 'slate', 'plum'];
 const GROUNDS = ['--bg', '--surface', '--surface-2', '--band'];

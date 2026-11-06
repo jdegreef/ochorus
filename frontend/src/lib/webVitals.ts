@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { ANALYTICS_ENABLED, track } from '$lib/analytics';
 import { afterLoadWhenIdle } from '$lib/idle';
 import type { INPMetricWithAttribution } from 'web-vitals/attribution';
+import type { LCPMetric, TTFBMetric } from 'web-vitals';
 
 /**
  * Field INP attribution: which tap is slow on real readers' phones.
@@ -14,6 +15,14 @@ import type { INPMetricWithAttribution } from 'web-vitals/attribution';
  * URL or query), the locale, a bucket rather than the exact ms, the
  * interaction type, a scrubbed CSS selector (tag/id/class names, never text),
  * and the longest phase.
+ *
+ * It also reports how fast the FIRST page of a visit loaded, as a `Page load`
+ * event (see `pageLoadProps`): LCP (when the main content appeared) and TTFB
+ * (when the first byte arrived), bucketed, with the route and locale.
+ * Plausible adds the country to every event, so this is how to see whether
+ * Kampala waits longer than Victoria, and whether an API or CDN change helped.
+ * Sampled (LOAD_SAMPLE) because every custom event counts toward Plausible's
+ * monthly quota, like a pageview.
  *
  * Cost at load: nothing. Google's `web-vitals/attribution` build (~4 KB gz) is
  * dynamically imported after load + idle; its observer is `buffered`, so a slow
@@ -127,15 +136,83 @@ export function resetWebVitals(): void {
 	reported.clear();
 }
 
+export const PAGE_LOAD_EVENT = 'Page load';
+/** The share of first page loads that report (custom events cost quota). */
+export const LOAD_SAMPLE = 0.1;
+
+export type LcpBucket = '<1s' | '1-2.5s' | '2.5-4s' | '4s+';
+export type TtfbBucket = '<0.3s' | '0.3-0.8s' | '0.8-1.8s' | '1.8s+';
+
+/** LCP in web.dev's bands (good ≤ 2.5 s, poor > 4 s), with "good" split at 1 s. */
+export function lcpBucket(ms: number): LcpBucket {
+	if (ms < 1000) return '<1s';
+	if (ms <= 2500) return '1-2.5s';
+	if (ms <= 4000) return '2.5-4s';
+	return '4s+';
+}
+
+/** TTFB in web.dev's bands (good ≤ 0.8 s, poor > 1.8 s), with "good" split
+ *  at 0.3 s, roughly where an edge cache hit and a trip to the origin part. */
+export function ttfbBucket(ms: number): TtfbBucket {
+	if (ms < 300) return '<0.3s';
+	if (ms <= 800) return '0.3-0.8s';
+	if (ms <= 1800) return '0.8-1.8s';
+	return '1.8s+';
+}
+
+/** Props for the `Page load` event. TTFB is `unknown` when it never arrived. */
+export function pageLoadProps(
+	lcp: Pick<LCPMetric, 'value'>,
+	ttfb: Pick<TTFBMetric, 'value'> | undefined,
+	route: string,
+	locale: string
+): Record<string, string> {
+	return {
+		route,
+		locale,
+		lcp: lcpBucket(lcp.value),
+		ttfb: ttfb ? ttfbBucket(ttfb.value) : 'unknown'
+	};
+}
+
+/**
+ * Watch the first page load: TTFB arrives early, LCP once it is final (the
+ * reader's first input, or the page being hidden). Reports once, for the
+ * document's first page view; a client-side navigation has no LCP of its own.
+ */
+export function watchPageLoad(
+	vitals: {
+		onLCP: (cb: (m: LCPMetric) => void) => void;
+		onTTFB: (cb: (m: TTFBMetric) => void) => void;
+	},
+	locale: string,
+	send: typeof track = track
+): void {
+	let ttfb: TTFBMetric | undefined;
+	let sent = false;
+	vitals.onTTFB((m) => (ttfb = m));
+	vitals.onLCP((m) => {
+		if (sent) return;
+		sent = true;
+		send(PAGE_LOAD_EVENT, pageLoadProps(m, ttfb, views[0]?.route ?? '(no route)', locale));
+	});
+}
+
 let started = false;
 
-/** Start observing INP after load + idle. No-op without analytics. */
+/** Start observing INP (and, sampled, the first load) after load + idle.
+ *  No-op without analytics. */
 export function initWebVitals(locale: string): void {
 	if (!ANALYTICS_ENABLED || !browser || started) return;
 	started = true;
 	afterLoadWhenIdle(() => {
 		import('web-vitals/attribution')
-			.then(({ onINP }) => onINP((metric) => reportInp(metric, locale)))
+			.then(({ onINP, onLCP, onTTFB }) => {
+				onINP((metric) => reportInp(metric, locale));
+				// Both observers are `buffered`, so starting them after idle
+				// still sees the load that has already happened.
+				if (Math.random() < LOAD_SAMPLE) watchPageLoad({ onLCP, onTTFB }, locale);
+			})
 			.catch(() => {
 				/* measurement must never break the page */
 			});

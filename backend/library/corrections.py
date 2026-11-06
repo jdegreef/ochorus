@@ -40,6 +40,24 @@ COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
     "if",
 })
 
+# Books RETIRED as duplicates of another work in the corpus, each with the work
+# that replaces it and the offset from a retired chapter's order to the same
+# text's order in the successor:  {retired slug: (successor slug, offset)}.
+# Every edition stays in the fixture, unpublished (a reader's progress, marks
+# and notes are keyed by slug and must keep resolving to a row), and the reader
+# forwards the old URLs to the successor — ``frontend/src/lib/retiredBooks.ts``
+# is the mirror, kept in step by ``tests_fixture.RetiredBookTests``, which also
+# fails on any plan, topic, quote or download that still names a retired slug.
+# Migration 0210 unpublished the live rows (``is_published`` is create-only in
+# seed_books) and moved the plan days onto the successor; the topic shelf
+# follows ``topic_seed`` (seed_topics drops a member it no longer lists).
+RETIRED_BOOKS: dict[str, tuple[str, int]] = {
+    # 2026-11: a modernized, ESV-swapped paraphrase of Lessons 1-4 of *With
+    # Christ in the School of Prayer*, which the library carries in Murray's
+    # own words (its chapter 1 is the Preface, so lesson N is chapter N + 1).
+    "lord-teach-us-to-pray-2": ("school-of-prayer", 1),
+}
+
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
 EXCLUDED_SLUGS: set[str] = {
@@ -48,6 +66,7 @@ EXCLUDED_SLUGS: set[str] = {
     "the-person-and-work-of-the-holy-spirit-2",
     # Kept out of re-import too.
     *COPYRIGHT_BLOCKED_SLUGS,
+    *RETIRED_BOOKS,
 }
 
 CORRECTIONS: dict[str, dict] = {
@@ -735,8 +754,8 @@ CORRECTIONS: dict[str, dict] = {
         # CCEL titles each lesson "First Lesson. ‘Lord, teach us to pray;’ Or,
         # The Only Teacher" — the reader already numbers the chapter, and the
         # motto is the verse the lesson opens with. Title each by its own "Or,"
-        # subtitle, as the four-lesson `lord-teach-us-to-pray-2` already does
-        # (CCEL's TOC also misspells "Ninteenth", which this sidesteps). Ch33
+        # subtitle, as the four-lesson `lord-teach-us-to-pray-2` (since retired
+        # as a duplicate of these lessons) did (CCEL's TOC also misspells "Ninteenth", which this sidesteps). Ch33
         # is Murray's closing note on Müller, spelled as the library spells him.
         "chapter_titles": {
             2: "The Only Teacher",
@@ -859,6 +878,26 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 #
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
+
+def _split_fused_headings(tag: str, rows: dict[str, list[tuple[str, str]]]) -> list[tuple[str, str]]:
+    """`replacements` pairs that split a section heading back out of the
+    paragraph it was flattened into.
+
+    `rows` is `{language: [(heading, following)]}`, where `following` is what
+    comes after the heading in the fused paragraph: the separator (a space, or
+    the ". " / ": " a translator put between the two), then enough prose to
+    make the pair unique across the book. The language key is only for the
+    reader; every pair runs over every edition, like any other replacement.
+
+    Each pair is anchored on `<p>`, which the tagless `body_text` never holds,
+    and is idempotent because the split consumes its own `<p>{heading} `.
+    """
+    return [
+        (f"<p>{heading}{following}", f"<{tag}>{heading}</{tag}><p>{following.lstrip(' .:።')}")
+        for pairs in rows.values()
+        for heading, following in pairs
+    ]
+
 
 # `holy-in-christ`'s layout tables, kept out of its `BODY_CORRECTIONS` entry
 # below only because they run to nine editions each; the entry says what they
@@ -5322,7 +5361,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("16:16,17 – Blessed are you, Simon,", "16:16,17 – “Blessed are you, Simon,"),
             ("who is in Heaven )", "who is in Heaven.”)"),
             ("‘ eklesia ’ (called-out ones)", "‘ ekklesia ’ (called-out ones)"),
-            ("<p>Eph 4:16).", "<p>(Eph 4:16)."),
+            ("love.”</p><p>Eph 4:16).</p>", "love.” (Eph 4:16).</p>"),
             ("when He said, “You are a leaky roof!", "when He said, ‘You are a leaky roof!"),
             ("about your wife!” God had given", "about your wife!’” God had given"),
             ("<p>2: 1 dead in trespasses", "<p>2:1 dead in trespasses"),
@@ -5338,6 +5377,116 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("treated at chattel", "treated as chattel"),
             ("1 Cor 13 13 –", "1 Cor 13:13 –"),
             ("prayer: (1:15 -20;", "prayer: (1:15-20;"),
+            # 2026-11-06 layout repair, in all seven editions at once so the
+            # tag sequences stay in lockstep (tests_translation_markup). Each
+            # language's pairs are anchored on its own text, so they match only
+            # there. Four paragraphs split mid-sentence are rejoined: ch1's
+            # "See Heb 10:35.", ch2's "Colossians 2:15.", ch4's "(Eph 4:16)."
+            # (each a citation left on a line of its own) and ch6's "you
+            # shouldn't be teaching! / You should be in the ministry!" (one
+            # quoted speech). ch3's tenth block had welded four things into one
+            # paragraph; it is split into the A. B. Simpson hymn, its credit,
+            # the Tozer quote with his, and the "Seated us with Him … (2:6)"
+            # subheading as an <h2>, matching "Sealed in Him" above it, with
+            # the body after it its own paragraph. Restructure only: no word
+            # changes. Every OLD carries markup so none can fire on the tagless
+            # body_text; that is why ch3's first pair runs to the block's
+            # closing </p> and its second is anchored on the </p><h2> the
+            # first one writes (keep them in this order). The ch4 en pair
+            # joins the already-repaired "(Eph"; the pair above it covers a
+            # raw re-import.
+            # en
+            ("is evidenced in confidence.</p><p>See Heb 10:35.</p>", "is evidenced in confidence. See Heb 10:35.</p>"),  # ch1
+            ("made an open show of them.</p><p>Colossians 2:15.</p>", "made an open show of them. Colossians 2:15.</p>"),  # ch2
+            ("up of itself in love.”</p><p>(Eph 4:16).</p>", "up of itself in love.” (Eph 4:16).</p>"),  # ch4
+            ("you shouldn’t be teaching!</p><p>You should be in the ministry!” – the", "you shouldn’t be teaching! You should be in the ministry!” – the"),  # ch6
+            ("A W Tozer Seated us with Him (the Father) in the heavenly places in Christ Jesus. (2:6) To be ‘seated’ with the Father means to have ceased from our efforts to please Him. He has accepted us in Christ and we are now called to enter into “His rest” (Hebrews 4:9). We may miss this rest by disobedience to the call of faith – His promptings within us (Heb 4:11). “The one who entered His rest has himself also rested from his works, as God did from His” (Heb 4:10).</p>",
+             "A W Tozer</p><h2>Seated us with Him (the Father) in the heavenly places in Christ Jesus. (2:6)</h2><p>To be ‘seated’ with the Father means to have ceased from our efforts to please Him. He has accepted us in Christ and we are now called to enter into “His rest” (Hebrews 4:9). We may miss this rest by disobedience to the call of faith – His promptings within us (Heb 4:11). “The one who entered His rest has himself also rested from his works, as God did from His” (Heb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("at Thy footstool I bow. A B Simpson “When a man is filled with the Spirit, he knows it!” A W Tozer</p><h2>",
+             "at Thy footstool I bow.</p><p>A B Simpson</p><p>“When a man is filled with the Spirit, he knows it!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # am
+            ("ባሕርይ ሲሆን የሚገለጠውም በመተማመን ነው።</p><p>ዕብራውያን 10:35ን ተመልከት።</p>", "ባሕርይ ሲሆን የሚገለጠውም በመተማመን ነው። ዕብራውያን 10:35ን ተመልከት።</p>"),  # ch1
+            ("ላይ በግልጥ ባሳያቸው ጊዜ ድል ተነሥተዋል።</p><p>ቆላስይስ 2:15።</p>", "ላይ በግልጥ ባሳያቸው ጊዜ ድል ተነሥተዋል። ቆላስይስ 2:15።</p>"),  # ch2
+            ("ራሱን በፍቅር ለማነጽ አካሉን ያሳድጋል።»</p><p>(ኤፌሶን 4:16)።</p>", "ራሱን በፍቅር ለማነጽ አካሉን ያሳድጋል።» (ኤፌሶን 4:16)።</p>"),  # ch4
+            ("አንተ መምህር ሆነህ መቀጠል የለብህም!</p><p>በአገልግሎት ውስጥ መሆን አለብህ!» — ይህ ነበር «የወንድሞች", "አንተ መምህር ሆነህ መቀጠል የለብህም! በአገልግሎት ውስጥ መሆን አለብህ!» — ይህ ነበር «የወንድሞች"),  # ch6
+            ("ኤ. ደብሊው. ቶዘር ከእርሱ (ከአብ) ጋር በክርስቶስ ኢየሱስ በሰማያዊ ስፍራ አስቀመጠን (2:6)። ከአብ ጋር «መቀመጥ» ማለት እርሱን ለማስደሰት የምናደርገውን ጥረት ማቆም ማለት ነው። በክርስቶስ ተቀብሎናል፤ አሁንም ወደ «ዕረፍቱ» እንድንገባ ተጠርተናል (ዕብራውያን 4:9)። የእምነትን ጥሪ — በውስጣችን የሚያነሣሣንን ምሪቱን — ባለመታዘዝ ይህን ዕረፍት ልናጣው እንችላለን (ዕብራውያን 4:11)። «ወደ ዕረፍቱ የገባ፥ እግዚአብሔር ከሥራው እንዳረፈ፥ እርሱ ደግሞ ከሥራው አርፎአልና።» (ዕብራውያን 4:10)።</p>",
+             "ኤ. ደብሊው. ቶዘር</p><h2>ከእርሱ (ከአብ) ጋር በክርስቶስ ኢየሱስ በሰማያዊ ስፍራ አስቀመጠን (2:6)።</h2><p>ከአብ ጋር «መቀመጥ» ማለት እርሱን ለማስደሰት የምናደርገውን ጥረት ማቆም ማለት ነው። በክርስቶስ ተቀብሎናል፤ አሁንም ወደ «ዕረፍቱ» እንድንገባ ተጠርተናል (ዕብራውያን 4:9)። የእምነትን ጥሪ — በውስጣችን የሚያነሣሣንን ምሪቱን — ባለመታዘዝ ይህን ዕረፍት ልናጣው እንችላለን (ዕብራውያን 4:11)። «ወደ ዕረፍቱ የገባ፥ እግዚአብሔር ከሥራው እንዳረፈ፥ እርሱ ደግሞ ከሥራው አርፎአልና።» (ዕብራውያን 4:10)።</p>"),  # ch3 Tozer | heading | body
+            ("ብዬ ስሰግድ በሙላትህና በማኅተምህ ና። ኤ. ቢ. ሲምፕሰን «አንድ ሰው በመንፈስ ሲሞላ ያውቀዋል!» ኤ. ደብሊው. ቶዘር</p><h2>",
+             "ብዬ ስሰግድ በሙላትህና በማኅተምህ ና።</p><p>ኤ. ቢ. ሲምፕሰን</p><p>«አንድ ሰው በመንፈስ ሲሞላ ያውቀዋል!» ኤ. ደብሊው. ቶዘር</p><h2>"),  # ch3 hymn | credit | Tozer
+            # es
+            ("evidencia en la confianza.</p><p>Ver Hebreos 10:35.</p>", "evidencia en la confianza. Ver Hebreos 10:35.</p>"),  # ch1
+            ("los exhibió públicamente.</p><p>Colosenses 2:15.</p>", "los exhibió públicamente. Colosenses 2:15.</p>"),  # ch2
+            ("a sí mismo en amor».</p><p>Efesios 4:16).</p>", "a sí mismo en amor». Efesios 4:16).</p>"),  # ch4
+            ("estar dando clases!</p><p>¡Deberías estar en el ministerio!»: el", "estar dando clases! ¡Deberías estar en el ministerio!»: el"),  # ch6
+            ("A. W. Tozer Nos hizo sentar con él (el Padre) en los lugares celestiales en Cristo Jesús (2:6). Estar «sentados» con el Padre significa haber cesado de nuestros esfuerzos por agradarle. Él nos ha aceptado en Cristo, y ahora estamos llamados a entrar en «su reposo» (Hebreos 4:9). Podemos perder este reposo por desobedecer el llamado de la fe, es decir, sus impulsos dentro de nosotros (Hebreos 4:11). «El que ha entrado en su reposo, también ha reposado de sus obras, como Dios de las suyas» (Hebreos 4:10).</p>",
+             "A. W. Tozer</p><h2>Nos hizo sentar con él (el Padre) en los lugares celestiales en Cristo Jesús (2:6).</h2><p>Estar «sentados» con el Padre significa haber cesado de nuestros esfuerzos por agradarle. Él nos ha aceptado en Cristo, y ahora estamos llamados a entrar en «su reposo» (Hebreos 4:9). Podemos perder este reposo por desobedecer el llamado de la fe, es decir, sus impulsos dentro de nosotros (Hebreos 4:11). «El que ha entrado en su reposo, también ha reposado de sus obras, como Dios de las suyas» (Hebreos 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("postro humilde a tus pies. A. B. Simpson «Cuando un hombre está lleno del Espíritu, ¡lo sabe!» A. W. Tozer</p><h2>",
+             "postro humilde a tus pies.</p><p>A. B. Simpson</p><p>«Cuando un hombre está lleno del Espíritu, ¡lo sabe!» A. W. Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # fr
+            ("manifeste par la confiance.</p><p>Voir Hébreux 10:35.</p>", "manifeste par la confiance. Voir Hébreux 10:35.</p>"),  # ch1
+            ("publiquement en spectacle.</p><p>Colossiens 2:15.</p>", "publiquement en spectacle. Colossiens 2:15.</p>"),  # ch2
+            ("lui-même dans la charité. »</p><p>Éph 4:16).</p>", "lui-même dans la charité. » Éph 4:16).</p>"),  # ch4
+            ("ne devrais pas enseigner !</p><p>« Tu devrais être dans le ministère ! » —", "ne devrais pas enseigner ! « Tu devrais être dans le ministère ! » —"),  # ch6
+            ("A W Tozer Il nous a fait asseoir avec lui (le Père) dans les lieux célestes, en Jésus-Christ. (2:6) Être « assis » avec le Père, c’est avoir cessé nos efforts pour lui plaire. Il nous a acceptés en Christ, et nous sommes désormais appelés à entrer dans « son repos » (Hébreux 4:9). Nous pouvons manquer ce repos par la désobéissance à l’appel de la foi – ses incitations au-dedans de nous (Héb 4:11). « Celui qui entre dans le repos de Dieu se repose de ses œuvres, comme Dieu s’est reposé des siennes. » (Héb 4:10).</p>",
+             "A W Tozer</p><h2>Il nous a fait asseoir avec lui (le Père) dans les lieux célestes, en Jésus-Christ. (2:6)</h2><p>Être « assis » avec le Père, c’est avoir cessé nos efforts pour lui plaire. Il nous a acceptés en Christ, et nous sommes désormais appelés à entrer dans « son repos » (Hébreux 4:9). Nous pouvons manquer ce repos par la désobéissance à l’appel de la foi – ses incitations au-dedans de nous (Héb 4:11). « Celui qui entre dans le repos de Dieu se repose de ses œuvres, comme Dieu s’est reposé des siennes. » (Héb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("je m’incline à tes pieds. A B Simpson « Quand un homme est rempli de l’Esprit, il le sait ! » A W Tozer</p><h2>",
+             "je m’incline à tes pieds.</p><p>A B Simpson</p><p>« Quand un homme est rempli de l’Esprit, il le sait ! » A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # lg
+            ("era kirabikira mu buvumu.</p><p>Laba Abaebbulaniya 10:35.</p>", "era kirabikira mu buvumu. Laba Abaebbulaniya 10:35.</p>"),  # ch1
+            ("bwe yabaswaza mu lwatu.</p><p>Abakkolosaayi 2:15.</p>", "bwe yabaswaza mu lwatu. Abakkolosaayi 2:15.</p>"),  # ch2
+            ("nga gwezimba mu kwagala.”</p><p>Abaefeso 4:16).</p>", "nga gwezimba mu kwagala.” Abaefeso 4:16).</p>"),  # ch4
+            ("kubeera musomesa!</p><p>Osaanidde kubeera mu buweereza!” –", "kubeera musomesa! Osaanidde kubeera mu buweereza!” –"),  # ch6
+            ("A W Tozer Katonda yatuzuukiriza wamu ne Kristo okuva mu kufa ne tufuna obulamu, era atutuuzizza mu bifo eby’omu ggulu, okumpi ne Kristo Yesu. (2:6) Okuba nga ‘tutuuzibwa’ wamu ne Kitaffe kitegeeza okulekera awo okufuba kwaffe okumusanyusa. Yatwaniriza mu Kristo era kaakano tuyitibwa okuyingira mu “kiwummulo kye” (Abaebbulaniya 4:9). Tuyinza okusubwa ekiwummulo kino olw’obujeemu eri okuyitibwa okw’okukkiriza – okukubiriza kwe okuli munda mu ffe (Beb 4:11). “Kubanga oyo ayingira mu kiwummulo kya Katonda, awummula emirimu gye nga Katonda bwe yawummula ng’amaze emirimu gye.” (Beb 4:10)</p>",
+             "A W Tozer</p><h2>Katonda yatuzuukiriza wamu ne Kristo okuva mu kufa ne tufuna obulamu, era atutuuzizza mu bifo eby’omu ggulu, okumpi ne Kristo Yesu. (2:6)</h2><p>Okuba nga ‘tutuuzibwa’ wamu ne Kitaffe kitegeeza okulekera awo okufuba kwaffe okumusanyusa. Yatwaniriza mu Kristo era kaakano tuyitibwa okuyingira mu “kiwummulo kye” (Abaebbulaniya 4:9). Tuyinza okusubwa ekiwummulo kino olw’obujeemu eri okuyitibwa okw’okukkiriza – okukubiriza kwe okuli munda mu ffe (Beb 4:11). “Kubanga oyo ayingira mu kiwummulo kya Katonda, awummula emirimu gye nga Katonda bwe yawummula ng’amaze emirimu gye.” (Beb 4:10)</p>"),  # ch3 Tozer | heading | body
+            ("w’entebe y’ebigere byo. A B Simpson “Omuntu bw’ajjula Omwoyo, akimanya!” A W Tozer</p><h2>",
+             "w’entebe y’ebigere byo.</p><p>A B Simpson</p><p>“Omuntu bw’ajjula Omwoyo, akimanya!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # pt
+            ("se evidencia na confiança.</p><p>Veja Hb 10:35.</p>", "se evidencia na confiança. Veja Hb 10:35.</p>"),  # ch1
+            ("Ele os expôs publicamente.</p><p>Colossenses 2:15.</p>", "Ele os expôs publicamente. Colossenses 2:15.</p>"),  # ch2
+            ("de si mesmo em amor.”</p><p>Ef 4:16).</p>", "de si mesmo em amor.” Ef 4:16).</p>"),  # ch4
+            ("deveria estar dando aulas!</p><p>Você deveria estar no ministério!” – o", "deveria estar dando aulas! Você deveria estar no ministério!” – o"),  # ch6
+            ("A W Tozer Nos fez assentar com Ele (o Pai) nas regiões celestiais em Cristo Jesus. (2:6) Estar ‘assentado’ com o Pai significa ter cessado dos nossos esforços para agradar a Ele. Ele nos aceitou em Cristo, e agora somos chamados a entrar no “seu descanso” (Hebreus 4:9). Podemos perder esse descanso pela desobediência ao chamado da fé – os Seus impulsos dentro de nós (Hb 4:11). “Aquele que entrou no seu descanso, ele mesmo também descansou das suas obras, assim como Deus descansou das suas” (Hb 4:10).</p>",
+             "A W Tozer</p><h2>Nos fez assentar com Ele (o Pai) nas regiões celestiais em Cristo Jesus. (2:6)</h2><p>Estar ‘assentado’ com o Pai significa ter cessado dos nossos esforços para agradar a Ele. Ele nos aceitou em Cristo, e agora somos chamados a entrar no “seu descanso” (Hebreus 4:9). Podemos perder esse descanso pela desobediência ao chamado da fé – os Seus impulsos dentro de nós (Hb 4:11). “Aquele que entrou no seu descanso, ele mesmo também descansou das suas obras, assim como Deus descansou das suas” (Hb 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("ao Teu estrado me prostro. A B Simpson “Quando um homem está cheio do Espírito, ele sabe disso!” A W Tozer</p><h2>",
+             "ao Teu estrado me prostro.</p><p>A B Simpson</p><p>“Quando um homem está cheio do Espírito, ele sabe disso!” A W Tozer</p><h2>"),  # ch3 hymn | credit | Tozer
+            # sw
+            ("hushuhudiwa katika ujasiri.</p><p>Ona Waebrania 10:35.</p>", "hushuhudiwa katika ujasiri. Ona Waebrania 10:35.</p>"),  # ch1
+            ("kuwa mkogo waziwazi.</p><p>Wakolosai 2:15.</p>", "kuwa mkogo waziwazi. Wakolosai 2:15.</p>"),  # ch2
+            ("wenyewe katika upendo.”</p><p>(Waefeso 4:16).</p>", "wenyewe katika upendo.” (Waefeso 4:16).</p>"),  # ch4
+            ("hupaswi kuwa unafundisha!</p><p>Wapaswa kuwa katika huduma!” — ule", "hupaswi kuwa unafundisha! Wapaswa kuwa katika huduma!” — ule"),  # ch6
+            ("— A W Tozer. Ametuketisha pamoja naye (Baba) katika ulimwengu wa roho ndani yake Kristo Yesu. (2:6) Kuwa “umeketishwa” pamoja na Baba humaanisha kuwa umekoma juhudi zetu za kumpendeza. Ametukubali ndani ya Kristo, nasi sasa twaitwa kuingia katika “raha yake” (Waebrania 4:9). Twaweza kuikosa raha hii kwa kutokutii ule mwito wa imani — misukumo yake ndani yetu (Waebrania 4:11). “Kwa maana yeye aliyeingia katika raha yake, amestarehe mwenyewe katika kazi zake, kama vile Mungu alivyostarehe katika kazi zake” (Waebrania 4:10).</p>",
+             "— A W Tozer.</p><h2>Ametuketisha pamoja naye (Baba) katika ulimwengu wa roho ndani yake Kristo Yesu. (2:6)</h2><p>Kuwa “umeketishwa” pamoja na Baba humaanisha kuwa umekoma juhudi zetu za kumpendeza. Ametukubali ndani ya Kristo, nasi sasa twaitwa kuingia katika “raha yake” (Waebrania 4:9). Twaweza kuikosa raha hii kwa kutokutii ule mwito wa imani — misukumo yake ndani yetu (Waebrania 4:11). “Kwa maana yeye aliyeingia katika raha yake, amestarehe mwenyewe katika kazi zake, kama vile Mungu alivyostarehe katika kazi zake” (Waebrania 4:10).</p>"),  # ch3 Tozer | heading | body
+            ("penye kiti cha miguu yako. — A B Simpson. “Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>",
+             "penye kiti cha miguu yako.</p><p>— A B Simpson.</p><p>“Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>"),  # ch3 hymn | credit | Tozer
+            # 2026-11-06 layout repair, part two: ch7's fourth block had the
+            # same welded shape as ch3's — the second stanza of A. B. Simpson's
+            # "Rise with thy risen Lord", its credit, the "4:1: WALK in a
+            # manner worthy of your calling …" subheading and the body. It is
+            # split into hymn | credit | <h2> (set like ch7's own "4:17-24:
+            # Walk, …" headings) | body, in all seven editions at once.
+            # Restructure only: no word changes. Each OLD opens on the block's
+            # <p>, so none can fire on the tagless body_text.
+            # en
+            ('<p>Walk as a heavenly race, Princes of royal blood; walk as the children of the light, the sons and heirs of God. A B Simpson 4:1: WALK in a manner worthy of your calling : with humility, gentleness, patience, tolerance – in love. Elsewhere',
+             '<p>Walk as a heavenly race, Princes of royal blood; walk as the children of the light, the sons and heirs of God.</p><p>A B Simpson</p><h2>4:1: WALK in a manner worthy of your calling : with humility, gentleness, patience, tolerance – in love.</h2><p>Elsewhere'),  # ch7 hymn | credit | heading
+            # am
+            ('<p>እንደ ሰማያዊ ዘር፣ የንጉሣዊ ደም ልዑላን ሆናችሁ ተመላለሱ፤ እንደ ብርሃን ልጆች፣ እንደ እግዚአብሔር ልጆችና ወራሾች ተመላለሱ። ኤ. ቢ. ሲምፕሰን 4:1፦ በተጠራችሁበት መጠራታችሁ እንደሚገባ ተመላለሱ፦ በትሕትና፣ በየዋህነት፣ በትዕግሥት፣ በመቻቻል — በፍቅር። እነዚህ',
+             '<p>እንደ ሰማያዊ ዘር፣ የንጉሣዊ ደም ልዑላን ሆናችሁ ተመላለሱ፤ እንደ ብርሃን ልጆች፣ እንደ እግዚአብሔር ልጆችና ወራሾች ተመላለሱ።</p><p>ኤ. ቢ. ሲምፕሰን</p><h2>4:1፦ በተጠራችሁበት መጠራታችሁ እንደሚገባ ተመላለሱ፦ በትሕትና፣ በየዋህነት፣ በትዕግሥት፣ በመቻቻል — በፍቅር።</h2><p>እነዚህ'),  # ch7 hymn | credit | heading
+            # es
+            ('<p>Anda como linaje celestial, príncipe de sangre real; anda como hijo de la luz, hijo y heredero de Dios. A. B. Simpson 4:1: ANDA como es digno de tu vocación: con humildad, mansedumbre, paciencia y tolerancia, en amor. En otro lugar',
+             '<p>Anda como linaje celestial, príncipe de sangre real; anda como hijo de la luz, hijo y heredero de Dios.</p><p>A. B. Simpson</p><h2>4:1: ANDA como es digno de tu vocación: con humildad, mansedumbre, paciencia y tolerancia, en amor.</h2><p>En otro lugar'),  # ch7 hymn | credit | heading
+            # fr
+            ('<p>Marche comme une race céleste, princes du sang royal ; marche comme les enfants de la lumière, les fils et héritiers de Dieu. A B Simpson. 4:1 : MARCHEZ d’une manière digne de votre vocation : avec humilité, douceur, patience, tolérance — dans l’amour. On les retrouve',
+             '<p>Marche comme une race céleste, princes du sang royal ; marche comme les enfants de la lumière, les fils et héritiers de Dieu.</p><p>A B Simpson.</p><h2>4:1 : MARCHEZ d’une manière digne de votre vocation : avec humilité, douceur, patience, tolérance — dans l’amour.</h2><p>On les retrouve'),  # ch7 hymn | credit | heading
+            # lg
+            ('<p>Tambula ng’eggwanga ery’omu ggulu, Abalangira ab’omusaayi ogw’obwakabaka; tambula ng’abaana ab’omusana, abaana era abasika ba Katonda. A B Simpson 4:1: TAMBULA mu ngeri esaanira okuyitibwa kwo : n’obwetoowaze, obuwombeefu, obugumiikiriza, okugumiikirizaganya – mu kwagala. Mu bifo ebirala',
+             '<p>Tambula ng’eggwanga ery’omu ggulu, Abalangira ab’omusaayi ogw’obwakabaka; tambula ng’abaana ab’omusana, abaana era abasika ba Katonda.</p><p>A B Simpson</p><h2>4:1: TAMBULA mu ngeri esaanira okuyitibwa kwo : n’obwetoowaze, obuwombeefu, obugumiikiriza, okugumiikirizaganya – mu kwagala.</h2><p>Mu bifo ebirala'),  # ch7 hymn | credit | heading
+            # pt
+            ('<p>Ande como raça celestial, príncipes de sangue real; ande como filho da luz, filho e herdeiro de Deus. A B Simpson 4:1: ANDE de modo digno da sua vocação : com humildade, mansidão, paciência, tolerância – em amor. Em outro lugar',
+             '<p>Ande como raça celestial, príncipes de sangue real; ande como filho da luz, filho e herdeiro de Deus.</p><p>A B Simpson</p><h2>4:1: ANDE de modo digno da sua vocação : com humildade, mansidão, paciência, tolerância – em amor.</h2><p>Em outro lugar'),  # ch7 hymn | credit | heading
+            # sw
+            ('<p>Enenda kama taifa la mbinguni, Wana wa damu ya kifalme; enenda kama watoto wa nuru, wana na warithi wa Mungu. A B Simpson 4:1: ENENDA kwa kustahili wito wako: kwa unyenyekevu wote, na upole, na uvumilivu, na kuchukuliana – katika upendo. Mahali pengine',
+             '<p>Enenda kama taifa la mbinguni, Wana wa damu ya kifalme; enenda kama watoto wa nuru, wana na warithi wa Mungu.</p><p>A B Simpson</p><h2>4:1: ENENDA kwa kustahili wito wako: kwa unyenyekevu wote, na upole, na uvumilivu, na kuchukuliana – katika upendo.</h2><p>Mahali pengine'),  # ch7 hymn | credit | heading
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
@@ -5925,6 +6074,80 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<p>Eric Spruyt YWAM</p><h2>Kiambatisho 2 - MIFANO YA AGANO LA HUDUMA KWA WAZEE</h2><p>1. "),
             ("<p>•Kutenda pamoja na Baraza la Wazee katika kuwarekebisha wanachama/wafuasi pale inapohitajika. Hili ni lazima liende sambamba na miongozo ya kibiblia. (Yapasa kutambua kwamba kumrekebisha mzee ni jambo zito na litakuwa hadharani mbele ya wanachama – 1 Tim. 5: 1,2,19,20) Uhusiano na Mchungaji Kwa kuwa Baraza",
              "<p>•Kutenda pamoja na Baraza la Wazee katika kuwarekebisha wanachama/wafuasi pale inapohitajika. Hili ni lazima liende sambamba na miongozo ya kibiblia. (Yapasa kutambua kwamba kumrekebisha mzee ni jambo zito na litakuwa hadharani mbele ya wanachama – 1 Tim. 5: 1,2,19,20)</p><h2>Uhusiano na Mchungaji</h2><p>Kwa kuwa Baraza"),
+            # Layout repairs, second pass (2026-11-06): the three #7358 left
+            # open. ch11: "A simple example follows:" ran its Susan example
+            # into the lead-in; the example now opens its own <p>. ch12, App.
+            # 2: "Biblical Qualifications" was fused into the preamble's
+            # block — it becomes an <h2> like "Relationship with Pastor"
+            # (the label's trailing colon goes, as #7358 dropped am's ፦), and
+            # "We would recognize that:" becomes a lead-in <p>, one <p> per
+            # qualification (each keeping its reference), and the
+            # "On being appointed…" sentence its own <p>. Same rules as the
+            # pairs above: every edition, each pair anchored on <p> plus
+            # that language's own text, `</p><p>` joint, no word changed.
+            # [en]
+            ("<p>This could take a couple of weeks to formulate before both he and you (the elders) have full agreement. You might well have a small group of people whose ministry is to write up such ministry covenants for yours, and the young eagle’s approval. The Ministry Covenant should clearly state the ministry parameters, the delegated authority and accountability. A simple example follows: ",
+             "<p>This could take a couple of weeks to formulate before both he and you (the elders) have full agreement. You might well have a small group of people whose ministry is to write up such ministry covenants for yours, and the young eagle’s approval. The Ministry Covenant should clearly state the ministry parameters, the delegated authority and accountability. A simple example follows:</p><p>"),
+            ("<p>{Preamble: (This was a statement concerning the Constitution and By-Laws of the local church and its Statement of Faith. Naturally all elders would be expected to recognize and support these.)} Biblical Qualifications: ",
+             "<p>{Preamble: (This was a statement concerning the Constitution and By-Laws of the local church and its Statement of Faith. Naturally all elders would be expected to recognize and support these.)}</p><h2>Biblical Qualifications</h2><p>"),
+            ("<p>We would recognize that: It is good for a man to desire such an office. 1 Tim.3:1 Such office is ‘God-given.’ 1 Cor.12:28 Should be recognized by current pastor/eldership. 1 John 4:1 Approved by congregation (election). 1 Tim. 3:7 ",
+             "<p>We would recognize that:</p><p>It is good for a man to desire such an office. 1 Tim.3:1</p><p>Such office is ‘God-given.’ 1 Cor.12:28</p><p>Should be recognized by current pastor/eldership. 1 John 4:1</p><p>Approved by congregation (election). 1 Tim. 3:7</p><p>"),
+            # [am]
+            ("<p>እርሱም እናንተም (ሽማግሌዎቹ) ሙሉ ስምምነት ላይ ከመድረሳችሁ በፊት ይህን ለማዘጋጀት ሁለት ሳምንት ያህል ሊወስድ ይችላል። እንዲህ ያሉትን የአገልግሎት ቃል ኪዳኖች ጽፈው ለአንተና ለወጣቱ ንስር ይሁንታ የሚያቀርቡ፣ አገልግሎታቸው ይኸው የሆነ ጥቂት ሰዎች ያሉበት ቡድን ሊኖርህም ይችላል። የአገልግሎት ቃል ኪዳኑ የአገልግሎቱን ወሰን፣ በውክልና የተሰጠውን ሥልጣንና ተጠያቂነቱን በግልጽ ማስቀመጥ አለበት። አንድ ቀላል ምሳሌ ይኸውና፦ ",
+             "<p>እርሱም እናንተም (ሽማግሌዎቹ) ሙሉ ስምምነት ላይ ከመድረሳችሁ በፊት ይህን ለማዘጋጀት ሁለት ሳምንት ያህል ሊወስድ ይችላል። እንዲህ ያሉትን የአገልግሎት ቃል ኪዳኖች ጽፈው ለአንተና ለወጣቱ ንስር ይሁንታ የሚያቀርቡ፣ አገልግሎታቸው ይኸው የሆነ ጥቂት ሰዎች ያሉበት ቡድን ሊኖርህም ይችላል። የአገልግሎት ቃል ኪዳኑ የአገልግሎቱን ወሰን፣ በውክልና የተሰጠውን ሥልጣንና ተጠያቂነቱን በግልጽ ማስቀመጥ አለበት። አንድ ቀላል ምሳሌ ይኸውና፦</p><p>"),
+            ("<p>{መግቢያ፦ (ይህ ስለ አጥቢያዋ ቤተ ክርስቲያን ሕገ ደንብና መተዳደሪያ ደንቦች እንዲሁም ስለ እምነት መግለጫዋ የሚገልጽ ጽሑፍ ነበር። ሽማግሌዎች ሁሉ እነዚህን እንዲቀበሉና እንዲደግፉ መጠበቁ የታወቀ ነው።)} የመጽሐፍ ቅዱስ መመዘኛዎች፦ ",
+             "<p>{መግቢያ፦ (ይህ ስለ አጥቢያዋ ቤተ ክርስቲያን ሕገ ደንብና መተዳደሪያ ደንቦች እንዲሁም ስለ እምነት መግለጫዋ የሚገልጽ ጽሑፍ ነበር። ሽማግሌዎች ሁሉ እነዚህን እንዲቀበሉና እንዲደግፉ መጠበቁ የታወቀ ነው።)}</p><h2>የመጽሐፍ ቅዱስ መመዘኛዎች</h2><p>"),
+            ("<p>የሚከተሉትን እንቀበላለን፦ አንድ ሰው እንዲህ ያለውን ሹመት መመኘቱ መልካም ነው። 1ኛ ጢሞቴዎስ 3:1 እንዲህ ያለው ሹመት «በእግዚአብሔር የተሰጠ» ነው። 1ኛ ቆሮንቶስ 12:28 በአሁኑ ፓስተር/በሽማግሌዎች ጉባኤ ሊታወቅ ይገባዋል። 1ኛ ዮሐንስ 4:1 በጉባኤው (በምርጫ) ይጸድቃል። 1ኛ ጢሞቴዎስ 3:7 ",
+             "<p>የሚከተሉትን እንቀበላለን፦</p><p>አንድ ሰው እንዲህ ያለውን ሹመት መመኘቱ መልካም ነው። 1ኛ ጢሞቴዎስ 3:1</p><p>እንዲህ ያለው ሹመት «በእግዚአብሔር የተሰጠ» ነው። 1ኛ ቆሮንቶስ 12:28</p><p>በአሁኑ ፓስተር/በሽማግሌዎች ጉባኤ ሊታወቅ ይገባዋል። 1ኛ ዮሐንስ 4:1</p><p>በጉባኤው (በምርጫ) ይጸድቃል። 1ኛ ጢሞቴዎስ 3:7</p><p>"),
+            # [ar]
+            ("<p>وقد تستغرق صياغة هذا العهد أسبوعين قبل أن يتّفق عليه هو وأنتم (الشيوخ) اتّفاقًا تامًّا. وقد يكون لديكم مجموعة صغيرة من الأشخاص خدمتهم أن يكتبوا مثل عهود الخدمة هذه لتوافقوا عليها أنتم والنسر الصغير. وينبغي أن ينصّ عهد الخدمة بوضوح على حدود الخدمة، والسلطة المفوّضة، والمساءلة. وإليك مثالًا بسيطًا: ",
+             "<p>وقد تستغرق صياغة هذا العهد أسبوعين قبل أن يتّفق عليه هو وأنتم (الشيوخ) اتّفاقًا تامًّا. وقد يكون لديكم مجموعة صغيرة من الأشخاص خدمتهم أن يكتبوا مثل عهود الخدمة هذه لتوافقوا عليها أنتم والنسر الصغير. وينبغي أن ينصّ عهد الخدمة بوضوح على حدود الخدمة، والسلطة المفوّضة، والمساءلة. وإليك مثالًا بسيطًا:</p><p>"),
+            ("<p>{التمهيد: (كان هذا بيانًا يتعلّق بدستور الكنيسة المحلية ولوائحها الداخلية وإقرار إيمانها. ومن الطبيعي أن يُنتظر من جميع الشيوخ أن يعترفوا بها ويدعموها.)} المؤهّلات الكتابية: ",
+             "<p>{التمهيد: (كان هذا بيانًا يتعلّق بدستور الكنيسة المحلية ولوائحها الداخلية وإقرار إيمانها. ومن الطبيعي أن يُنتظر من جميع الشيوخ أن يعترفوا بها ويدعموها.)}</p><h2>المؤهّلات الكتابية</h2><p>"),
+            ("<p>نعترف بما يلي: حسن أن يبتغي الرجل هذه الوظيفة. تيموثاوس الأولى 3:1 هذه الوظيفة «عطية من الله». كورنثوس الأولى 12:28 ينبغي أن يعترف بها الراعي الحالي/مجلس الشيوخ. يوحنا الأولى 4:1 توافق عليها الجماعة (بالانتخاب). تيموثاوس الأولى 3:7 ",
+             "<p>نعترف بما يلي:</p><p>حسن أن يبتغي الرجل هذه الوظيفة. تيموثاوس الأولى 3:1</p><p>هذه الوظيفة «عطية من الله». كورنثوس الأولى 12:28</p><p>ينبغي أن يعترف بها الراعي الحالي/مجلس الشيوخ. يوحنا الأولى 4:1</p><p>توافق عليها الجماعة (بالانتخاب). تيموثاوس الأولى 3:7</p><p>"),
+            # [es]
+            ("<p>Podría tomar un par de semanas formularlo antes de que tanto él como usted (los ancianos) lleguen a un pleno acuerdo. Bien podría tener un pequeño grupo de personas cuyo ministerio sea redactar tales pactos ministeriales para la aprobación de usted y de la joven águila. El Pacto Ministerial debería expresar con claridad los parámetros del ministerio, la autoridad delegada y la rendición de cuentas. Sigue un ejemplo sencillo: ",
+             "<p>Podría tomar un par de semanas formularlo antes de que tanto él como usted (los ancianos) lleguen a un pleno acuerdo. Bien podría tener un pequeño grupo de personas cuyo ministerio sea redactar tales pactos ministeriales para la aprobación de usted y de la joven águila. El Pacto Ministerial debería expresar con claridad los parámetros del ministerio, la autoridad delegada y la rendición de cuentas. Sigue un ejemplo sencillo:</p><p>"),
+            ("<p>{Preámbulo: (Esta era una declaración acerca de la Constitución y los Estatutos de la iglesia local y su Declaración de Fe. Naturalmente, se esperaría que todos los ancianos las reconocieran y las apoyaran.)} Requisitos bíblicos: ",
+             "<p>{Preámbulo: (Esta era una declaración acerca de la Constitución y los Estatutos de la iglesia local y su Declaración de Fe. Naturalmente, se esperaría que todos los ancianos las reconocieran y las apoyaran.)}</p><h2>Requisitos bíblicos</h2><p>"),
+            ("<p>Reconoceríamos que: Es bueno que un hombre anhele tal oficio. 1 Ti.3:1 Tal oficio es «dado por Dios». 1 Co.12:28 Debería ser reconocido por el pastor y el cuerpo de ancianos actuales. 1 Jn.4:1 Aprobado por la congregación (elección). 1 Ti. 3:7 ",
+             "<p>Reconoceríamos que:</p><p>Es bueno que un hombre anhele tal oficio. 1 Ti.3:1</p><p>Tal oficio es «dado por Dios». 1 Co.12:28</p><p>Debería ser reconocido por el pastor y el cuerpo de ancianos actuales. 1 Jn.4:1</p><p>Aprobado por la congregación (elección). 1 Ti. 3:7</p><p>"),
+            # [fr]
+            ("<p>Sa formulation pourrait prendre quelques semaines avant que lui et vous (les anciens) soyez pleinement d’accord. Vous pourriez fort bien avoir un petit groupe de personnes dont le ministère consiste à rédiger de telles alliances de ministère, pour votre approbation et celle du jeune aigle. L’Alliance de Ministère devrait énoncer clairement les paramètres du ministère, l’autorité déléguée et la reddition de comptes. Voici un exemple simple : ",
+             "<p>Sa formulation pourrait prendre quelques semaines avant que lui et vous (les anciens) soyez pleinement d’accord. Vous pourriez fort bien avoir un petit groupe de personnes dont le ministère consiste à rédiger de telles alliances de ministère, pour votre approbation et celle du jeune aigle. L’Alliance de Ministère devrait énoncer clairement les paramètres du ministère, l’autorité déléguée et la reddition de comptes. Voici un exemple simple :</p><p>"),
+            ("<p>{Préambule : (Il s’agissait d’une déclaration concernant la Constitution et les Statuts de l’Église locale ainsi que sa Confession de foi. Naturellement, tous les anciens seraient tenus de les reconnaître et de les soutenir.)} Qualifications bibliques : ",
+             "<p>{Préambule : (Il s’agissait d’une déclaration concernant la Constitution et les Statuts de l’Église locale ainsi que sa Confession de foi. Naturellement, tous les anciens seraient tenus de les reconnaître et de les soutenir.)}</p><h2>Qualifications bibliques</h2><p>"),
+            ("<p>Nous reconnaîtrions ceci : Il est bon qu’un homme désire une telle charge. 1 Tim. 3:1 Une telle charge est un « don de Dieu ». 1 Cor. 12:28 Elle doit être reconnue par le pasteur/collège d’anciens actuel. 1 Jean 4:1 Approuvée par l’assemblée (élection). 1 Tim. 3:7 ",
+             "<p>Nous reconnaîtrions ceci :</p><p>Il est bon qu’un homme désire une telle charge. 1 Tim. 3:1</p><p>Une telle charge est un « don de Dieu ». 1 Cor. 12:28</p><p>Elle doit être reconnue par le pasteur/collège d’anciens actuel. 1 Jean 4:1</p><p>Approuvée par l’assemblée (élection). 1 Tim. 3:7</p><p>"),
+            # [hi]
+            ("<p>इसे तैयार करने में, जब तक वह और आप (प्राचीन) पूरी तरह सहमत न हो जाएँ, कुछ सप्ताह लग सकते हैं। सम्भव है कि आपके पास लोगों का एक छोटा समूह हो जिसकी सेवकाई ही यह हो कि ऐसी सेवकाई वाचाएँ लिखकर आपकी और उस युवा उकाब की स्वीकृति के लिये तैयार करे। सेवकाई वाचा में सेवकाई की सीमाएँ, सौंपा गया अधिकार और जवाबदेही स्पष्ट रूप से लिखी होनी चाहिए। एक सरल उदाहरण इस प्रकार है: ",
+             "<p>इसे तैयार करने में, जब तक वह और आप (प्राचीन) पूरी तरह सहमत न हो जाएँ, कुछ सप्ताह लग सकते हैं। सम्भव है कि आपके पास लोगों का एक छोटा समूह हो जिसकी सेवकाई ही यह हो कि ऐसी सेवकाई वाचाएँ लिखकर आपकी और उस युवा उकाब की स्वीकृति के लिये तैयार करे। सेवकाई वाचा में सेवकाई की सीमाएँ, सौंपा गया अधिकार और जवाबदेही स्पष्ट रूप से लिखी होनी चाहिए। एक सरल उदाहरण इस प्रकार है:</p><p>"),
+            ("<p>{प्रस्तावना: (यह स्थानीय कलीसिया के संविधान और उपनियमों तथा उसके विश्वास-वक्तव्य के विषय में एक कथन था। स्वाभाविक है कि सभी प्राचीनों से इन्हें मानने और इनका समर्थन करने की अपेक्षा की जाती।)} बाइबल पर आधारित योग्यताएँ: ",
+             "<p>{प्रस्तावना: (यह स्थानीय कलीसिया के संविधान और उपनियमों तथा उसके विश्वास-वक्तव्य के विषय में एक कथन था। स्वाभाविक है कि सभी प्राचीनों से इन्हें मानने और इनका समर्थन करने की अपेक्षा की जाती।)}</p><h2>बाइबल पर आधारित योग्यताएँ</h2><p>"),
+            ("<p>हम यह मानेंगे कि: किसी पुरुष का ऐसे पद की इच्छा करना अच्छी बात है। 1 तीमुथियुस 3:1 ऐसा पद ‘परमेश्वर का दिया हुआ’ है। 1 कुरिन्थियों 12:28 वर्तमान पासबान/प्राचीन-मंडल द्वारा मान्यता मिलनी चाहिए। 1 यूहन्ना 4:1 मण्डली द्वारा स्वीकृत (चुनाव)। 1 तीमुथियुस 3:7 ",
+             "<p>हम यह मानेंगे कि:</p><p>किसी पुरुष का ऐसे पद की इच्छा करना अच्छी बात है। 1 तीमुथियुस 3:1</p><p>ऐसा पद ‘परमेश्वर का दिया हुआ’ है। 1 कुरिन्थियों 12:28</p><p>वर्तमान पासबान/प्राचीन-मंडल द्वारा मान्यता मिलनी चाहिए। 1 यूहन्ना 4:1</p><p>मण्डली द्वारा स्वीकृत (चुनाव)। 1 तीमुथियुस 3:7</p><p>"),
+            # [lg]
+            ("<p>Kino kiyinza okutwala wiiki nga bbiri okukiteekateeka, ye naawe (abakadde) mulyoke mukkiriziganye mu bujjuvu. Oyinza n’okuba n’akabinja k’abantu abatono obuweereza bwabwe kwe kuwandiika endagaano z’obuweereza ez’engeri eyo, ggwe n’empungu ento mulyoke muzikkirize. Endagaano y’Obuweereza esaanidde okulaga bulungi ensalo z’obuweereza, obuyinza obusigiddwa n’okuvunaanibwa. Ekyokulabirako ekyangu kye kino: ",
+             "<p>Kino kiyinza okutwala wiiki nga bbiri okukiteekateeka, ye naawe (abakadde) mulyoke mukkiriziganye mu bujjuvu. Oyinza n’okuba n’akabinja k’abantu abatono obuweereza bwabwe kwe kuwandiika endagaano z’obuweereza ez’engeri eyo, ggwe n’empungu ento mulyoke muzikkirize. Endagaano y’Obuweereza esaanidde okulaga bulungi ensalo z’obuweereza, obuyinza obusigiddwa n’okuvunaanibwa. Ekyokulabirako ekyangu kye kino:</p><p>"),
+            ("<p>{Ennyanjula: (Kino kyali kiwandiiko ekikwata ku Ssemateeka n’Amateeka ag’ekkanisa ey’omu kitundu n’Ekiwandiiko kyayo eky’Okukkiriza. Mu butonde abakadde bonna bandisuubiddwa okubitegeera n’okubiwagira.)} Ebisaanyizo ebya Bayibuli: ",
+             "<p>{Ennyanjula: (Kino kyali kiwandiiko ekikwata ku Ssemateeka n’Amateeka ag’ekkanisa ey’omu kitundu n’Ekiwandiiko kyayo eky’Okukkiriza. Mu butonde abakadde bonna bandisuubiddwa okubitegeera n’okubiwagira.)}</p><h2>Ebisaanyizo ebya Bayibuli</h2><p>"),
+            ("<p>Twanditegeeredde nti: Kirungi omuntu okwegomba ekifo ng’ekyo. 1 Timoseewo 3:1 Ekifo ng’ekyo ‘kiweebwa Katonda.’ 1 Abakkolinso 12:28 Kisaanidde okutegeerwa omusumba/abakadde abaliwo. 1 Yokaana 4:1 Kikkirizibwa ekibiina (okulonda). 1 Timoseewo 3:7 ",
+             "<p>Twanditegeeredde nti:</p><p>Kirungi omuntu okwegomba ekifo ng’ekyo. 1 Timoseewo 3:1</p><p>Ekifo ng’ekyo ‘kiweebwa Katonda.’ 1 Abakkolinso 12:28</p><p>Kisaanidde okutegeerwa omusumba/abakadde abaliwo. 1 Yokaana 4:1</p><p>Kikkirizibwa ekibiina (okulonda). 1 Timoseewo 3:7</p><p>"),
+            # [pt]
+            ("<p>Isso poderia levar algumas semanas para ser formulado, até que tanto ele quanto você (os presbíteros) estejam em pleno acordo. Você bem poderia ter um pequeno grupo de pessoas cujo ministério é redigir tais pactos de ministério para a sua aprovação e a da jovem águia. O Pacto de Ministério deve declarar claramente os parâmetros do ministério, a autoridade delegada e a prestação de contas. Segue um exemplo simples: ",
+             "<p>Isso poderia levar algumas semanas para ser formulado, até que tanto ele quanto você (os presbíteros) estejam em pleno acordo. Você bem poderia ter um pequeno grupo de pessoas cujo ministério é redigir tais pactos de ministério para a sua aprovação e a da jovem águia. O Pacto de Ministério deve declarar claramente os parâmetros do ministério, a autoridade delegada e a prestação de contas. Segue um exemplo simples:</p><p>"),
+            ("<p>{Preâmbulo: (Esta era uma declaração a respeito da Constituição e do Regimento Interno da igreja local e da sua Declaração de Fé. Naturalmente, esperava-se que todos os presbíteros as reconhecessem e apoiassem.)} Qualificações Bíblicas: ",
+             "<p>{Preâmbulo: (Esta era uma declaração a respeito da Constituição e do Regimento Interno da igreja local e da sua Declaração de Fé. Naturalmente, esperava-se que todos os presbíteros as reconhecessem e apoiassem.)}</p><h2>Qualificações Bíblicas</h2><p>"),
+            ("<p>Reconheceríamos que: É bom que um homem deseje tal ofício. 1 Tm 3:1 Tal ofício é ‘dado por Deus’. 1 Co 12:28 Deve ser reconhecido pelo pastor/presbitério atual. 1 Jo 4:1 Aprovado pela congregação (eleição). 1 Tm 3:7 ",
+             "<p>Reconheceríamos que:</p><p>É bom que um homem deseje tal ofício. 1 Tm 3:1</p><p>Tal ofício é ‘dado por Deus’. 1 Co 12:28</p><p>Deve ser reconhecido pelo pastor/presbitério atual. 1 Jo 4:1</p><p>Aprovado pela congregação (eleição). 1 Tm 3:7</p><p>"),
+            # [sw]
+            ("<p>Jambo hili laweza kuchukua wiki kadhaa kulitunga kabla yeye na wewe (wazee) hamjafikia makubaliano kamili. Yaweza kuwa una kikundi kidogo cha watu ambao huduma yao ni kuandika maagano ya huduma kama hayo kwa ajili ya idhini yako na ya yule tai kijana. Agano la Huduma linapaswa kueleza waziwazi mipaka ya huduma, mamlaka yaliyokabidhiwa na uwajibikaji. Mfano rahisi wafuata: ",
+             "<p>Jambo hili laweza kuchukua wiki kadhaa kulitunga kabla yeye na wewe (wazee) hamjafikia makubaliano kamili. Yaweza kuwa una kikundi kidogo cha watu ambao huduma yao ni kuandika maagano ya huduma kama hayo kwa ajili ya idhini yako na ya yule tai kijana. Agano la Huduma linapaswa kueleza waziwazi mipaka ya huduma, mamlaka yaliyokabidhiwa na uwajibikaji. Mfano rahisi wafuata:</p><p>"),
+            ("<p>{Utangulizi: (Hii ilikuwa taarifa kuhusu Katiba na Sheria-Ndogo za kanisa la mahali na Tamko lake la Imani. Kwa kawaida wazee wote wangetarajiwa kuvitambua na kuviunga mkono.)} Sifa za Kibiblia: ",
+             "<p>{Utangulizi: (Hii ilikuwa taarifa kuhusu Katiba na Sheria-Ndogo za kanisa la mahali na Tamko lake la Imani. Kwa kawaida wazee wote wangetarajiwa kuvitambua na kuviunga mkono.)}</p><h2>Sifa za Kibiblia</h2><p>"),
+            ("<p>Tungetambua kwamba: Ni jambo jema mtu kutamani cheo kama hicho. 1 Tim.3:1 Cheo kama hicho ni ‘cha kutoka kwa Mungu.’ 1 Kor.12:28 Kinapaswa kutambuliwa na mchungaji/uzee wa sasa. 1 Yohana 4:1 Kinathibitishwa na kusanyiko (uchaguzi). 1 Tim. 3:7 ",
+             "<p>Tungetambua kwamba:</p><p>Ni jambo jema mtu kutamani cheo kama hicho. 1 Tim.3:1</p><p>Cheo kama hicho ni ‘cha kutoka kwa Mungu.’ 1 Kor.12:28</p><p>Kinapaswa kutambuliwa na mchungaji/uzee wa sasa. 1 Yohana 4:1</p><p>Kinathibitishwa na kusanyiko (uchaguzi). 1 Tim. 3:7</p><p>"),
         ],
     },
     "if": {
@@ -6173,6 +6396,720 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("something better for ys, that", "something better for us, that"),
             ("and wither I am led", "and whither I am led"),
             ("(H.Tee) - permission sought.", "(H. Tee) - permission sought."),
+            # Layout repair (2026-11-06), in all 12 editions at once so the tag
+            # sequences stay in lockstep (`tests_translation_markup`). The
+            # proofreading pass above reported these and could not fix them:
+            # 38 section headings flattened into the first words of the next
+            # paragraph ("Belief is NOT Faith Pastor John was worried!") are
+            # split back out as `<h2>`, the tag Evans's other books on the
+            # shelf use for their section headings. A separator a translator
+            # added between the fused heading and the prose (". ", ": ", "። ")
+            # goes with the seam. Anchored on `<p>` so `body_text` is untouched.
+            *_split_fused_headings("h2", {
+            "en": [
+                ('Belief is NOT Faith', ' Pastor'),  # ch2
+                ('Presumption Is NOT Faith', ' Like'),  # ch2
+                ('Hope is NOT Faith', ' Another'),  # ch2
+                ('Positive Thinking is NOT Faith', ' There'),  # ch2
+                ('Saving Faith', ' “For'),  # ch3
+                ('Fruit of Faith', ' “But'),  # ch3
+                ('Gift of Faith', ' “To'),  # ch3
+                ('The Roman Centurion → Matthew 8:5-13', ' His'),  # ch4
+                ('The Woman With A Hemorrhage → Mark 5:25-34', ' This'),  # ch4
+                ('The Canaanite Woman → Matthew 15:22-28', ' This'),  # ch4
+                ('Blind Bartimaeus → Mark 10:46-52', ' Though'),  # ch4
+                ('The Woman in Simon’s House → Luke 7:37-50', ' In'),  # ch4
+                ('The Tenth Leper → Luke 17:11-19', ' Ten'),  # ch4
+                ('Definition of Faith', ' How'),  # ch4
+                ('The Still, Small Voice', ' The'),  # ch5
+                ('Learning To Recognize His Voice', ' I'),  # ch5
+                ('To Hear His Voice, We Need', ' 1.'),  # ch5
+                ('“The Lord Told Me…”', ' There'),  # ch5
+                ('Corporate Prayer', ' One'),  # ch5
+                ('The Destructive Power of Offense', ' The'),  # ch7
+                ('The Atoning Power of the Blood', ' Secondly,'),  # ch7
+                ('Cain’s Response', ' Cain’s'),  # ch7
+                ('Summary', ' As'),  # ch7
+                ('The Hope of Resurrection', ' What'),  # ch8
+                ('Paul’s Testimony', ' It'),  # ch8
+                ('Summary', ' “By'),  # ch8
+                ('Summary', ' The story'),  # ch9
+                ('Summary', ' Abraham'),  # ch10
+                ('Lessons To Learn from Sarah’s Faith', ' Firstly,'),  # ch11
+                ('God’s Work in God’s Way', ' I'),  # ch11
+                ('Summary', ' The example'),  # ch11
+                ('Summary', ' 1.'),  # ch12
+                ('Summary', ' God'),  # ch13
+                ('Summary', ' To'),  # ch14
+                ('Summary', ' On'),  # ch15
+                ('Summary', ' It'),  # ch16
+                ('Summary', ' Both'),  # ch17
+            ],
+            "am": [
+                ('ማመን እምነት አይደለም', '። ፓስተር'),  # ch2
+                ('መዳፈር እምነት አይደለም', '። እንደ'),  # ch2
+                ('ተስፋ እምነት አይደለም', '። የማመን'),  # ch2
+                ('አዎንታዊ አስተሳሰብ እምነት አይደለም', '። ሰዎች'),  # ch2
+                ('የሚያድን እምነት', ' «ጸጋው'),  # ch3
+                ('የእምነት ፍሬ', ' «የመንፈስ'),  # ch3
+                ('የእምነት ስጦታ', ' «ነገር'),  # ch3
+                ('ሮማዊው የመቶ አለቃ → ማቴዎስ 8:5-13', ' አገልጋዩ'),  # ch4
+                ('ደም የሚፈሳት ሴት → ማርቆስ 5:25-34', ' ይህች'),  # ch4
+                ('ከነናዊቷ ሴት → ማቴዎስ 15:22-28', ' ጋኔን'),  # ch4
+                ('ዕውሩ በርጤሜዎስ → ማርቆስ 10:46-52', ' ዕውር'),  # ch4
+                ('በስምዖን ቤት የነበረችው ሴት → ሉቃስ 7:37-50', ' በዮሐንስ'),  # ch4
+                ('አሥረኛው ለምጻም → ሉቃስ 17:11-19', ' አሥር'),  # ch4
+                ('የእምነት ትርጕም', ' እንግዲያስ'),  # ch4
+                ('ትንሹ የዝምታ ድምፅ', ' ነቢዩ'),  # ch5
+                ('ድምፁን ለይቶ ማወቅን መማር', ' በየቀኑ'),  # ch5
+                ('ድምፁን ለመስማት የሚያስፈልጉን', ' 1.'),  # ch5
+                ('«ጌታ ነገረኝ…»', ' ምክር'),  # ch5
+                ('የጋራ ጸሎት', ' ካገኘኋቸው'),  # ch5
+                ('የመሰናከል አጥፊ ኃይል', ' ሰዎቹ'),  # ch7
+                ('የደሙ የማስተስሪያ ኃይል', ' ሁለተኛ፣'),  # ch7
+                ('የቃየን ምላሽ', ' የቃየን'),  # ch7
+                ('ማጠቃለያ', ' የቃየንንና'),  # ch7
+                ('የትንሣኤ ተስፋ', ' ከዚህ'),  # ch8
+                ('የጳውሎስ ምስክርነት', ' የጥንቶቹ'),  # ch8
+                ('ማጠቃለያ', ' «ሄኖክ'),  # ch8
+                ('ማጠቃለያ', ' የኖኅ'),  # ch9
+                ('ማጠቃለያ', ' አብርሃም'),  # ch10
+                ('ከሣራ እምነት የምንማራቸው ትምህርቶች', ' በመጀመሪያ፣'),  # ch11
+                ('የእግዚአብሔር ሥራ በእግዚአብሔር መንገድ', ' ንጉሥ'),  # ch11
+                ('ማጠቃለያ', ' በእግዚአብሔር'),  # ch11
+                ('ማጠቃለያ', ' 1.'),  # ch12
+                ('ማጠቃለያ', ' እግዚአብሔር'),  # ch13
+                ('ማጠቃለያ', ' ለዕብራውያን'),  # ch14
+                ('ማጠቃለያ', ' ዮሴፍ'),  # ch15
+                ('ማጠቃለያ', ' የእምነትን'),  # ch16
+                ('ማጠቃለያ', ' የዕብራውያን'),  # ch17
+            ],
+            "ar": [
+                ('التصديق ليس هو الإيمان', ' كان'),  # ch2
+                ('التجاسر ليس هو الإيمان', ' وعلى'),  # ch2
+                ('الرجاء ليس هو الإيمان', ' وثمّة'),  # ch2
+                ('التفكير الإيجابي ليس هو الإيمان', ' وتُثار'),  # ch2
+                ('الإيمان المخلِّص', ' «لأنكم'),  # ch3
+                ('ثمر الإيمان', ' «وأمّا'),  # ch3
+                ('موهبة الإيمان', ' «ولكنه'),  # ch3
+                ('قائد المئة الروماني ← متى 8:5-13', ' كان'),  # ch4
+                ('المرأة النازفة ← مرقس 5:25-34', ' هذه'),  # ch4
+                ('المرأة الكنعانية ← متى 15:22-28', ' كان'),  # ch4
+                ('بارتيماوس الأعمى ← مرقس 10:46-52', ' مع'),  # ch4
+                ('المرأة في بيت سمعان ← لوقا 7:37-50', ' يُقال'),  # ch4
+                ('الأبرص العاشر ← لوقا 17:11-19', ' جاء'),  # ch4
+                ('تعريف الإيمان', ' فكيف'),  # ch4
+                ('الصوت المنخفض الخفيف', ' كان'),  # ch5
+                ('أن نتعلّم كيف نميّز صوته', ' إني'),  # ch5
+                ('لكي نسمع صوته، نحن نحتاج إلى ما يلي', ': 1.'),  # ch5
+                ('«قال لي الرب…»', ' ليس'),  # ch5
+                ('الصلاة الجماعيّة', ' ومن'),  # ch5
+                ('قوّة العثرة المدمِّرة', ' إنّ'),  # ch7
+                ('قوّة الدم الكفّاريّة', ' ثانيًا،'),  # ch7
+                ('استجابة قايين', ' وههنا'),  # ch7
+                ('خلاصة', ' وأنا'),  # ch7
+                ('رجاء القيامة', ' فما'),  # ch8
+                ('شهادة بولس', ' إنما'),  # ch8
+                ('خلاصة', ' «بالإيمان'),  # ch8
+                ('خلاصة', ' إنّ قصّة'),  # ch9
+                ('خلاصة', ' قُدّم'),  # ch10
+                ('دروسٌ نتعلّمها من إيمان سارة', ' أوّلًا،'),  # ch11
+                ('عمل الله بطريقة الله', ' يذكّرني'),  # ch11
+                ('خلاصة', ' إنّ مثال'),  # ch11
+                ('خلاصة', ' 1.'),  # ch12
+                ('خلاصة', ' لم'),  # ch13
+                ('خلاصة', ' إنّ كاتب'),  # ch14
+                ('خلاصة', ' على'),  # ch15
+                ('خلاصة', ' إنّني'),  # ch16
+                ('خلاصة', ' لقد'),  # ch17
+            ],
+            "es": [
+                ('La creencia NO es fe', '. ¡El'),  # ch2
+                ('La presunción NO es fe', '. Como'),  # ch2
+                ('La esperanza NO es fe', '. Otro'),  # ch2
+                ('El pensamiento positivo NO es fe', '. Grandes'),  # ch2
+                ('Fe salvadora', ' «Porque'),  # ch3
+                ('El fruto de la fe', ' «Mas'),  # ch3
+                ('El don de la fe', ' «A'),  # ch3
+                ('El centurión romano → Mateo 8:5-13', ' Su'),  # ch4
+                ('La mujer con flujo de sangre → Marcos 5:25-34', ' Esta'),  # ch4
+                ('La mujer cananea → Mateo 15:22-28', ' El'),  # ch4
+                ('El ciego Bartimeo → Marcos 10:46-52', ' Aunque'),  # ch4
+                ('La mujer en casa de Simón → Lucas 7:37-50', ' En'),  # ch4
+                ('El décimo leproso → Lucas 17:11-19', ' Diez'),  # ch4
+                ('Definición de la fe', ' ¿Cómo,'),  # ch4
+                ('El silbo apacible y delicado', ' El'),  # ch5
+                ('Aprender a reconocer su voz', ' Creo'),  # ch5
+                ('Para oír su voz, necesitamos', ' 1.'),  # ch5
+                ('«El Señor me dijo…»', ' No'),  # ch5
+                ('La oración colectiva', ' Una'),  # ch5
+                ('El poder destructor de la ofensa', '. Los'),  # ch7
+                ('El poder expiatorio de la sangre', '. En'),  # ch7
+                ('La respuesta de Caín', '. El'),  # ch7
+                ('Resumen', '. Al'),  # ch7
+                ('La esperanza de la resurrección', '. ¿Qué'),  # ch8
+                ('El testimonio de Pablo', '. Fue'),  # ch8
+                ('Resumen', '. «Por'),  # ch8
+                ('Resumen', '. La'),  # ch9
+                ('Resumen', '. Abraham'),  # ch10
+                ('Lecciones que aprender de la fe de Sara', '. En'),  # ch11
+                ('La obra de Dios a la manera de Dios', '. Recuerdo'),  # ch11
+                ('Resumen', '. El'),  # ch11
+                ('Resumen', ' 1.'),  # ch12
+                ('Resumen', '. Dios'),  # ch13
+                ('Resumen', '. Para'),  # ch14
+                ('Resumen', ': En'),  # ch15
+                ('Resumen', '. Es'),  # ch16
+                ('Resumen', '. Tanto'),  # ch17
+            ],
+            "fr": [
+                ('La croyance n’est PAS la foi', '. Le'),  # ch2
+                ('La présomption n’est PAS la foi', '. Comme'),  # ch2
+                ('L’espérance n’est PAS la foi', '. Un'),  # ch2
+                ('La pensée positive n’est PAS la foi', '. De'),  # ch2
+                ('La foi qui sauve', ' «'),  # ch3
+                ('Le fruit de la foi', ' «'),  # ch3
+                ('Le don de la foi', ' «'),  # ch3
+                ('Le centurion romain → Matthieu 8:5-13', ' Son'),  # ch4
+                ('La femme atteinte d’une perte de sang → Marc 5:25-34', ' Cette'),  # ch4
+                ('La femme cananéenne → Matthieu 15:22-28', ' Le'),  # ch4
+                ('L’aveugle Bartimée → Marc 10:46-52', ' Bien'),  # ch4
+                ('La femme dans la maison de Simon → Luc 7:37-50', ' En'),  # ch4
+                ('Le dixième lépreux → Luc 17:11-19', ' Dix'),  # ch4
+                ('Définition de la foi', ' Comment'),  # ch4
+                ('Le murmure doux et léger', ' Le'),  # ch5
+                ('Apprendre à reconnaître sa voix', ' Je'),  # ch5
+                ('Pour entendre sa voix, il nous faut', ' 1.'),  # ch5
+                ('« Le Seigneur m’a dit… »', ' Il'),  # ch5
+                ('La prière collective', ' L’une'),  # ch5
+                ('Le pouvoir destructeur de l’offense', ' Les'),  # ch7
+                ('Le pouvoir expiatoire du sang', ' Deuxièmement,'),  # ch7
+                ('La réponse de Caïn', ' Le'),  # ch7
+                ('Résumé', ' À'),  # ch7
+                ('L’espérance de la résurrection', ' Quel'),  # ch8
+                ('Le témoignage de Paul', ' C’est'),  # ch8
+                ('Résumé', ' «'),  # ch8
+                ('Résumé', ' L’histoire'),  # ch9
+                ('Résumé', ' Abraham'),  # ch10
+                ('Leçons à tirer de la foi de Sara', '. Premièrement,'),  # ch11
+                ('L’œuvre de Dieu à la manière de Dieu', '. Je'),  # ch11
+                ('Résumé', '. L’exemple'),  # ch11
+                ('Résumé', '. 1.'),  # ch12
+                ('Résumé', '. Dieu'),  # ch13
+                ('Résumé', '. Pour'),  # ch14
+                ('Résumé', ' Sur'),  # ch15
+                ('Résumé', ' C’est'),  # ch16
+                ('Résumé', ' L’auteur'),  # ch17
+            ],
+            "hi": [
+                ('मानना विश्वास नहीं है', ' पासबान'),  # ch2
+                ('धृष्टता विश्वास नहीं है', ' शैतान'),  # ch2
+                ('आशा विश्वास नहीं है', ' मानने'),  # ch2
+                ('सकारात्मक चिन्तन विश्वास नहीं है', ' जब'),  # ch2
+                ('उद्धार देनेवाला विश्वास', ' “क्योंकि'),  # ch3
+                ('विश्वास का फल', ' “पर'),  # ch3
+                ('विश्वास का वरदान', ' “सब'),  # ch3
+                ('रोमी सूबेदार → मत्ती 8:5-13', ' उसका'),  # ch4
+                ('लहू बहने की रोगी स्त्री → मरकुस 5:25-34', ' इस'),  # ch4
+                ('कनानी स्त्री → मत्ती 15:22-28', ' इस'),  # ch4
+                ('अंधा बरतिमाई → मरकुस 10:46-52', ' अंधा'),  # ch4
+                ('शमौन के घर की स्त्री → लूका 7:37-50', ' यूहन्ना'),  # ch4
+                ('दसवाँ कोढ़ी → लूका 17:11-19', ' दस'),  # ch4
+                ('विश्वास की परिभाषा', ' तो'),  # ch4
+                ('दबा हुआ धीमा शब्द', ' एलिय्याह'),  # ch5
+                ('उसका शब्द पहचानना सीखना', ' मेरा'),  # ch5
+                ('उसका शब्द सुनने के लिये हमें चाहिए', ' 1.'),  # ch5
+                ('“प्रभु ने मुझसे कहा…”', ' किसी'),  # ch5
+                ('सामूहिक प्रार्थना', ' जो'),  # ch5
+                ('ठोकर की विनाशकारी सामर्थ्य', ' पुरुष'),  # ch7
+                ('लहू की प्रायश्चित्त करनेवाली सामर्थ्य', ' दूसरे,'),  # ch7
+                ('कैन का उत्तर', ' कैन'),  # ch7
+                ('सारांश', ' जब'),  # ch7
+                ('पुनरुत्थान की आशा', ' इस'),  # ch8
+                ('पौलुस की गवाही', ' अनन्त'),  # ch8
+                ('सारांश', ' “विश्वास'),  # ch8
+                ('सारांश', ' विश्वास'),  # ch9
+                ('सारांश', ' अब्राहम'),  # ch10
+                ('सारा के विश्वास से सीखने योग्य पाठ', ' पहला,'),  # ch11
+                ('परमेश्वर का काम परमेश्वर की रीति से', ' मुझे'),  # ch11
+                ('सारांश', ' सारा'),  # ch11
+                ('सारांश', ' 1.'),  # ch12
+                ('सारांश', ' परमेश्वर'),  # ch13
+                ('सारांश', ' इब्रानियों 11'),  # ch14
+                ('सारांश', ' अपनी'),  # ch15
+                ('सारांश', ' मूसा'),  # ch16
+                ('सारांश', ' इब्रानियों के'),  # ch17
+            ],
+            "ko": [
+                ('신념은 믿음이 아닙니다', ' 존'),  # ch2
+                ('주제넘음은 믿음이 아닙니다', ' 사탄처럼,'),  # ch2
+                ('소망은 믿음이 아닙니다', ' 신념의'),  # ch2
+                ('긍정적 사고는 믿음이 아닙니다', ' 사람들이'),  # ch2
+                ('구원의 믿음', ' “너희가'),  # ch3
+                ('믿음의 열매', ' “오직'),  # ch3
+                ('믿음의 은사', ' “각'),  # ch3
+                ('로마 백부장 → 마태복음 8:5-13', ' 그의'),  # ch4
+                ('혈루증 앓는 여인 → 마가복음 5:25-34', ' 이'),  # ch4
+                ('가나안 여자 → 마태복음 15:22-28', ' 귀신'),  # ch4
+                ('눈먼 바디매오 → 마가복음 10:46-52', ' 바디매오는'),  # ch4
+                ('시몬의 집에 있던 여인 → 누가복음 7:37-50', ' 요한복음'),  # ch4
+                ('열 번째 나병 환자 → 누가복음 17:11-19', ' 나병'),  # ch4
+                ('믿음의 정의', ' 그렇다면'),  # ch4
+                ('세미한 소리', ' 선지자'),  # ch5
+                ('그분의 음성을 알아듣는 법 배우기', ' 저는'),  # ch5
+                ('그분의 음성을 들으려면 우리에게 필요한 것', ' 1.'),  # ch5
+                ('“주님께서 내게 말씀하셨습니다…”', ' 목회자에게'),  # ch5
+                ('합심 기도', ' 제가'),  # ch5
+                ('실족의 파괴적인 힘', ' 그'),  # ch7
+                ('피의 속죄하는 능력', ' 둘째로,'),  # ch7
+                ('가인의 반응', ' 가인의'),  # ch7
+                ('요약', ' 믿음이라는'),  # ch7
+                ('부활의 소망', ' 이'),  # ch8
+                ('바울의 증언', ' 초대'),  # ch8
+                ('요약', ' “믿음으로'),  # ch8
+                ('요약', ' 믿음의'),  # ch9
+                ('요약', ' 히브리서 11장은'),  # ch10
+                ('사라의 믿음에서 배울 교훈', ' 첫째,'),  # ch11
+                ('하나님의 방법으로 하는 하나님의 일', ' 다윗'),  # ch11
+                ('요약', ' 하나님을'),  # ch11
+                ('요약', ' 1.'),  # ch12
+                ('요약', ' 하나님께서'),  # ch13
+                ('요약', ' 히브리서 11장의'),  # ch14
+                ('요약', ' 임종'),  # ch15
+                ('요약', ' 저는'),  # ch16
+                ('요약', ' 히브리서 기자와'),  # ch17
+            ],
+            "lg": [
+                ('Okukkiriza mu Birowoozo Si Kukkiriza', '. Omusumba'),  # ch2
+                ('Okwekakasa Si Kukkiriza', '. Nga'),  # ch2
+                ('Essuubi Si Kukkiriza', '. Ekintu'),  # ch2
+                ('Okufumiitiriza Okulungi Si Kukkiriza', '. Waliwo'),  # ch2
+                ('Okukkiriza Okulokola', ' “Kubanga'),  # ch3
+                ('Ekibala ky’Okukkiriza', ' “Naye'),  # ch3
+                ('Ekirabo ky’Okukkiriza', ' “Buli'),  # ch3
+                ('Omuduumizi Omuruumi → Matayo 8:5-13', ' Omuweereza'),  # ch4
+                ('Omukazi Eyavaamu Omusaayi → Makko 5:25-34', ' Omukazi'),  # ch4
+                ('Omukazi Omukanani → Matayo 15:22-28', ' Omutima'),  # ch4
+                ('Batimaayo Omuzibe wa Maaso → Makko 10:46-52', ' Newaakubadde'),  # ch4
+                ('Omukazi mu Nnyumba ya Simooni → Lukka 7:37-50', ' Mu'),  # ch4
+                ('Omugenge ow’Ekkumi → Lukka 17:11-19', ' Abagenge'),  # ch4
+                ('Okunnyonnyola Okukkiriza', ' Kale'),  # ch4
+                ('Eddoboozi Eddibiivu, Eritono', ' Erija'),  # ch5
+                ('Okuyiga Okutegeera Eddoboozi Lye', ' Nzikiriza'),  # ch5
+                ('Okuwulira Eddoboozi Lye, Twetaaga', ' 1.'),  # ch5
+                ('“Mukama Yaŋŋamba…”', ' Tewali'),  # ch5
+                ('Okusaba Awamu', ' Emu'),  # ch5
+                ('Amaanyi Agazikiriza ag’Okunyiiga', '. Abasajja'),  # ch7
+                ('Amaanyi ag’Omusaayi ag’Okutangirira', '. Ekyokubiri,'),  # ch7
+                ('Okuddamu kwa Kayini', '. Omutima'),  # ch7
+                ('Obufunze', '. Nga'),  # ch7
+                ('Essuubi ery’Okuzuukira', ' Musingi'),  # ch8
+                ('Obujulizi bwa Pawulo', ' Kyali'),  # ch8
+                ('Obufunze', ' “Olw’okukkiriza,'),  # ch8
+                ('Obufunze', '. Ebyafaayo'),  # ch9
+                ('Obufunze', ': Ibulayimu'),  # ch10
+                ('Amasomo ag’Okuyiga okuva mu Kukkiriza kwa Saala', ' Ekisooka,'),  # ch11
+                ('Omulimu gwa Katonda mu Ngeri ya Katonda', ' Nzijukizibwa'),  # ch11
+                ('Obufunze', ' Ekyokulabirako'),  # ch11
+                ('Obufunze', ' 1.'),  # ch12
+                ('Obufunze', ': Katonda'),  # ch13
+                ('Obufunze', ' Eri'),  # ch14
+                ('Obufunze', ' Ku'),  # ch15
+                ('Ennyunyunsi', ' Mu'),  # ch16
+                ('Obufunze', ' Omuwandiisi'),  # ch17
+            ],
+            "pt": [
+                ('Crença NÃO é fé', ' O'),  # ch2
+                ('Presunção NÃO é fé', ' Assim'),  # ch2
+                ('Esperança NÃO é fé', ' Outro'),  # ch2
+                ('Pensamento positivo NÃO é fé', ' Grandes'),  # ch2
+                ('A Fé Salvadora', ' “Porque'),  # ch3
+                ('O Fruto da Fé', ' “Mas'),  # ch3
+                ('O Dom da Fé', ' “A'),  # ch3
+                ('O Centurião Romano → Mateus 8:5-13', ' O'),  # ch4
+                ('A Mulher com um Fluxo de Sangue → Marcos 5:25-34', ' Essa'),  # ch4
+                ('A Mulher Cananeia → Mateus 15:22-28', ' O'),  # ch4
+                ('Bartimeu, o Cego → Marcos 10:46-52', ' Embora'),  # ch4
+                ('A Mulher na Casa de Simão → Lucas 7:37-50', ' Em'),  # ch4
+                ('O Décimo Leproso → Lucas 17:11-19', ' Dez'),  # ch4
+                ('Definição de Fé', ' Como,'),  # ch4
+                ('A Voz Mansa e Delicada', ' O'),  # ch5
+                ('Aprendendo a Reconhecer a sua Voz', ' Creio'),  # ch5
+                ('Para Ouvir a sua Voz, Precisamos de', ' 1.'),  # ch5
+                ('“O Senhor Me Disse…”', ' Não'),  # ch5
+                ('Oração Coletiva', ' Uma'),  # ch5
+                ('O Poder Destrutivo da Ofensa', ' Os'),  # ch7
+                ('O Poder Expiatório do Sangue', ' Em'),  # ch7
+                ('A Resposta de Caim', ' O'),  # ch7
+                ('Resumo', ' Ao'),  # ch7
+                ('A Esperança da Ressurreição', ' Que'),  # ch8
+                ('O Testemunho de Paulo', ' Foi'),  # ch8
+                ('Resumo', ' “Pela'),  # ch8
+                ('Resumo', ' A história'),  # ch9
+                ('Resumo', '. Abraão'),  # ch10
+                ('Lições a Aprender com a Fé de Sara', ' Em'),  # ch11
+                ('A Obra de Deus à Maneira de Deus', ' Lembro-me'),  # ch11
+                ('Resumo', ' O'),  # ch11
+                ('Resumo', ' 1.'),  # ch12
+                ('Resumo', ' Deus'),  # ch13
+                ('Resumo', ' Para'),  # ch14
+                ('Resumo', ' No'),  # ch15
+                ('Resumo', ' É'),  # ch16
+                ('Resumo', ' Tanto'),  # ch17
+            ],
+            "sw": [
+                ('Kuamini SI Imani', ' Mchungaji'),  # ch2
+                ('Kujidai SI Imani', ' Kama'),  # ch2
+                ('Tumaini SI Imani', ' Kipengele'),  # ch2
+                ('Kufikiri Chanya SI Imani', ' Kuna'),  # ch2
+                ('Imani Iokoayo', ' “Kwa'),  # ch3
+                ('Tunda la Imani', ' “Lakini'),  # ch3
+                ('Kipawa cha Imani', ' “Lakini'),  # ch3
+                ('Akida wa Kirumi → Mathayo 8:5-13', ' Mtumishi'),  # ch4
+                ('Mwanamke Aliyekuwa na Kutokwa na Damu → Marko 5:25-34', ' Mwanamke'),  # ch4
+                ('Mwanamke Mkanaani → Mathayo 15:22-28', ' Moyo'),  # ch4
+                ('Bartimayo Kipofu → Marko 10:46-52', ' Ingawa'),  # ch4
+                ('Mwanamke Katika Nyumba ya Simoni → Luka 7:37-50', ' Katika'),  # ch4
+                ('Mkoma wa Kumi → Luka 17:11-19', ' Wakoma'),  # ch4
+                ('Maana ya Imani', ' Basi'),  # ch4
+                ('Sauti Ndogo ya Utulivu', ' Nabii'),  # ch5
+                ('Kujifunza Kuitambua Sauti Yake', ' Naamini'),  # ch5
+                ('Ili Kuisikia Sauti Yake, Twahitaji', ' 1.'),  # ch5
+                ('“Bwana Aliniambia…”', ' Hakuna'),  # ch5
+                ('Maombi ya Pamoja', ' Mojawapo'),  # ch5
+                ('Nguvu Iharibuyo ya Chukizo', ' Watu'),  # ch7
+                ('Nguvu ya Upatanisho ya Damu', ' Pili,'),  # ch7
+                ('Itikio la Kaini', ' Moyo'),  # ch7
+                ('Muhtasari', ' Ninaposoma'),  # ch7
+                ('Tumaini la Ufufuo', ' Ni'),  # ch8
+                ('Ushuhuda wa Paulo', ' Ni'),  # ch8
+                ('Muhtasari', ' “Kwa'),  # ch8
+                ('Muhtasari', ' Habari'),  # ch9
+                ('Muhtasari', ' Ibrahimu'),  # ch10
+                ('Mafunzo ya Kujifunza kutoka Imani ya Sara', ' Kwanza,'),  # ch11
+                ('Kazi ya Mungu kwa Njia ya Mungu', ' Nakumbushwa'),  # ch11
+                ('Muhtasari', ' Mfano'),  # ch11
+                ('Muhtasari', ' 1.'),  # ch12
+                ('Muhtasari', ' Mungu'),  # ch13
+                ('Muhtasari', ' Kwa'),  # ch14
+                ('Muhtasari', ' Alipokuwa'),  # ch15
+                ('Muhtasari', ' Ni katika'),  # ch16
+                ('Muhtasari', ' Mwandishi'),  # ch17
+            ],
+            "uk": [
+                ('Переконання — це НЕ віра', ' Пастор'),  # ch2
+                ('Самовпевненість — це НЕ віра', ' Як'),  # ch2
+                ('Надія — це НЕ віра', ' Ще'),  # ch2
+                ('Позитивне мислення — це НЕ віра', ' Щоразу,'),  # ch2
+                ('Спасенна віра', ' «Благодатю'),  # ch3
+                ('Плід віри', ' «А'),  # ch3
+                ('Дар віри', ' «Кожному'),  # ch3
+                ('Римський сотник → Маттея 8:5-13', ' Його'),  # ch4
+                ('Жінка з кровотечею → Марка 5:25-34', ' Ця'),  # ch4
+                ('Жінка-ханаанка → Маттея 15:22-28', ' Серце'),  # ch4
+                ('Сліпий Вартимей → Марка 10:46-52', ' Хоч'),  # ch4
+                ('Жінка в домі Симона → Луки 7:37-50', ' У'),  # ch4
+                ('Десятий прокажений → Луки 17:11-19', ' Десятеро'),  # ch4
+                ('Означення віри', ' Як'),  # ch4
+                ('Тихий, лагідний голос', ' Пророк'),  # ch5
+                ('Учитися впізнавати Його голос', ' Я'),  # ch5
+                ('Щоб чути Його голос, нам потрібно', ' 1.'),  # ch5
+                ('«Господь сказав мені…»', ' Немає'),  # ch5
+                ('Спільна молитва', ' Одне'),  # ch5
+                ('Руйнівна сила образи', ' Важливі'),  # ch7
+                ('Спокутна сила крові', ' По-друге,'),  # ch7
+                ('Каїнів відгук', ' Каїнове'),  # ch7
+                ('Підсумок', ' Коли'),  # ch7
+                ('Надія воскресіння', ' Якої'),  # ch8
+                ('Свідчення Павла', ' Саме'),  # ch8
+                ('Підсумок', ' «Вірою'),  # ch8
+                ('Підсумок', ' Історія'),  # ch9
+                ('Підсумок', ' Авраама'),  # ch10
+                ('Уроки з віри Сарри', ' По-перше,'),  # ch11
+                ('Боже діло Божим способом', ' Мені'),  # ch11
+                ('Підсумок', ' Приклад'),  # ch11
+                ('Підсумок', ' 1.'),  # ch12
+                ('Підсумок', ' Бог'),  # ch13
+                ('Підсумок', ' Для'),  # ch14
+                ('Підсумок', ' На'),  # ch15
+                ('Підсумок', ' Саме'),  # ch16
+                ('Підсумок', ' І автор'),  # ch17
+            ],
+            "vi": [
+                ('Niềm Tin KHÔNG Phải Là Đức Tin', ' Mục'),  # ch2
+                ('Sự Tự Phụ KHÔNG Phải Là Đức Tin', ' Giống'),  # ch2
+                ('Sự Trông Cậy KHÔNG Phải Là Đức Tin', ' Một'),  # ch2
+                ('Suy Nghĩ Tích Cực KHÔNG Phải Là Đức Tin', ' Mỗi'),  # ch2
+                ('Đức Tin Cứu Rỗi', ' “Vả,'),  # ch3
+                ('Trái Đức Tin', ' “Nhưng'),  # ch3
+                ('Ân Tứ Đức Tin', ' “Đức'),  # ch3
+                ('Viên Đội Trưởng La Mã → Ma-thi-ơ 8:5-13', ' Đầy'),  # ch4
+                ('Người Đàn Bà Bị Bệnh Mất Huyết → Mác 5:25-34', ' Người'),  # ch4
+                ('Người Đàn Bà Ca-na-an → Ma-thi-ơ 15:22-28', ' Lòng'),  # ch4
+                ('Ba-ti-mê Mù → Mác 10:46-52', ' Dù'),  # ch4
+                ('Người Đàn Bà Trong Nhà Si-môn → Lu-ca 7:37-50', ' Trong'),  # ch4
+                ('Người Phung Thứ Mười → Lu-ca 17:11-19', ' Mười'),  # ch4
+                ('Định Nghĩa Về Đức Tin', ' Vậy'),  # ch4
+                ('Tiếng Êm Dịu Nhỏ Nhẹ', ' Tiên'),  # ch5
+                ('Học Cách Nhận Ra Tiếng Ngài', ' Tôi'),  # ch5
+                ('Để Nghe Tiếng Ngài, Chúng Ta Cần', ' 1.'),  # ch5
+                ('“Chúa Đã Bảo Tôi…”', ' Không'),  # ch5
+                ('Sự Cầu Nguyện Chung', ' Một'),  # ch5
+                ('Sức Tàn Phá Của Sự Vấp Phạm', ' Con'),  # ch7
+                ('Quyền Năng Chuộc Tội Của Huyết', ' Thứ'),  # ch7
+                ('Phản Ứng Của Ca-in', ' Lòng'),  # ch7
+                ('Tóm Tắt', ' Khi'),  # ch7
+                ('Niềm Hy Vọng Về Sự Sống Lại', ' Từ'),  # ch8
+                ('Lời Chứng Của Phao-lô', ' Chính'),  # ch8
+                ('Tóm Tắt', ' “Bởi'),  # ch8
+                ('Tóm Tắt', ' Câu'),  # ch9
+                ('Tóm tắt', ' Áp-ra-ham'),  # ch10
+                ('Những Bài Học Từ Đức Tin Của Sa-ra', ' Thứ'),  # ch11
+                ('Công Việc Của Đức Chúa Trời Theo Cách Của Đức Chúa Trời', ' Tôi'),  # ch11
+                ('Tóm tắt', ' Tấm'),  # ch11
+                ('Tóm tắt', ' 1.'),  # ch12
+                ('Tóm lược', ': Đức'),  # ch13
+                ('Tóm lược', ': Theo'),  # ch14
+                ('Tóm lược', ': Trên'),  # ch15
+                ('Tóm Lược', ' Chính'),  # ch16
+                ('Tóm Lược', ' Cả'),  # ch17
+            ],
+            }),
+            # Stray paragraph breaks from the PDF's page and line ends, joined:
+            # Satan's speech (ch2), the "I hope… (I may fail!)" run and
+            # "Hallelujah!" (ch2), the Hebrews 11:5 citation set as its own
+            # paragraph (ch8), "Mt.</p><p>Hermon" (ch15) and Napoleon's saying
+            # (ch17). A verse's attribution that opened the next paragraph,
+            # "(Author unknown)" (ch16, ahead of a fused heading) and
+            # "(G. A. Young)" (ch18), goes back behind the verse, as ch4 has it.
+            # English
+            ('do that!</p><p>They will',
+             'do that! They will'),  # ch2
+            ('my exams!”</p><p>(I may fail!)',
+             'my exams!” (I may fail!)'),  # ch2
+            ('marriage.”</p><p>(There may',
+             'marriage.” (There may'),  # ch2
+            ('see Him!</p><p>Hallelujah!',
+             'see Him! Hallelujah!'),  # ch2
+            ('pleased God.”</p><p>(Hebrews',
+             'pleased God.” (Hebrews'),  # ch8
+            ('do on Mt.</p><p>Hermon over',
+             'do on Mt. Hermon over'),  # ch15
+            ('He’s about!”</p><p>(Author unknown) The Two Rocks The one act recorded',
+             'He’s about!” (Author unknown)</p><h2>The Two Rocks</h2><p>The one act recorded'),  # ch16
+            ('known world.</p><p>At the same',
+             'known world. At the same'),  # ch17
+            ('day long.</p><p>(G. A. Young) Might we',
+             'day long. (G. A. Young)</p><p>Might we'),  # ch18
+            # Amharic
+            ('እስቲ አስበው!</p><p>ሁሉም ሊከተሉህ',
+             'እስቲ አስበው! ሁሉም ሊከተሉህ'),  # ch2
+            ('አደርጋለሁ!»</p><p>(ልወድቅ እችላለሁ!)',
+             'አደርጋለሁ!» (ልወድቅ እችላለሁ!)'),  # ch2
+            ('አደርጋለሁ።»</p><p>(ፍቺ ሊኖር ይችላል!)',
+             'አደርጋለሁ።» (ፍቺ ሊኖር ይችላል!)'),  # ch2
+            ('እያደረገው ነው!</p><p>ሃሌ ሉያ! አሁን',
+             'እያደረገው ነው! ሃሌ ሉያ! አሁን'),  # ch2
+            ('ተመስክሮለታልና።»</p><p>(ዕብራውያን 11:5)።',
+             'ተመስክሮለታልና።» (ዕብራውያን 11:5)።'),  # ch8
+            ('ሐዋርያው ጴጥሮስ</p><p>ከ2000 ዓመታት',
+             'ሐዋርያው ጴጥሮስ ከ2000 ዓመታት'),  # ch15
+            ('የሚያደርገውን ያውቃል!»</p><p>(ደራሲው አይታወቅም) ሁለቱ ዓለቶች ሙሴ ለመለኮታዊው ትእዛዝ',
+             'የሚያደርገውን ያውቃል!» (ደራሲው አይታወቅም)</p><h2>ሁለቱ ዓለቶች</h2><p>ሙሴ ለመለኮታዊው ትእዛዝ'),  # ch16
+            ('ድል አደረገ።</p><p>በዚያው ዕድሜ',
+             'ድል አደረገ። በዚያው ዕድሜ'),  # ch17
+            ('ቀኑንም ሙሉ።</p><p>(ጂ. ኤ. ያንግ) በእምነት (ስምህ)',
+             'ቀኑንም ሙሉ። (ጂ. ኤ. ያንግ)</p><p>በእምነት (ስምህ)'),  # ch18
+            # Arabic
+            ('فعلت ذلك!</p><p>سيتقاطرون',
+             'فعلت ذلك! سيتقاطرون'),  # ch2
+            ('امتحاناتي!»</p><p>(وقد أرسب!)',
+             'امتحاناتي!» (وقد أرسب!)'),  # ch2
+            ('في زواجك».</p><p>(وقد يقع',
+             'في زواجك». (وقد يقع'),  # ch2
+            ('وأنتِ ترينه!</p><p>هللويا! أنتِ',
+             'وأنتِ ترينه! هللويا! أنتِ'),  # ch2
+            ('أرضى الله».</p><p>(عبرانيين',
+             'أرضى الله». (عبرانيين'),  # ch8
+            ('الرسول على جبل</p><p>حرمون بعد',
+             'الرسول على جبل حرمون بعد'),  # ch15
+            ('ما هو صانع!»</p><p>(شاعر مجهول) الصخرتان أمّا العمل الوحيد',
+             'ما هو صانع!» (شاعر مجهول)</p><h2>الصخرتان</h2><p>أمّا العمل الوحيد'),  # ch16
+            ('المعروف كلّه.</p><p>وفي السنّ',
+             'المعروف كلّه. وفي السنّ'),  # ch17
+            ('النهار كلّه.</p><p>(ج. أ. يَنغ) أفلا يسعنا',
+             'النهار كلّه. (ج. أ. يَنغ)</p><p>أفلا يسعنا'),  # ch18
+            # Spanish
+            ('haces eso!</p><p>Todos acudirán',
+             'haces eso! Todos acudirán'),  # ch2
+            ('exámenes!».</p><p>(¡Puede que',
+             'exámenes!». (¡Puede que'),  # ch2
+            ('matrimonio».</p><p>(¡Puede que',
+             'matrimonio». (¡Puede que'),  # ch2
+            ('mientras lo ves!</p><p>¡Aleluya!',
+             'mientras lo ves! ¡Aleluya!'),  # ch2
+            ('a Dios.»</p><p>(Hebreos',
+             'a Dios.» (Hebreos'),  # ch8
+            ('el monte</p><p>Hermón más',
+             'el monte Hermón más'),  # ch15
+            ('lo que hace!”</p><p>(Autor desconocido) Las Dos Rocas. El único acto',
+             'lo que hace!” (Autor desconocido)</p><h2>Las Dos Rocas</h2><p>El único acto'),  # ch16
+            ('conocido.</p><p>A esa misma',
+             'conocido. A esa misma'),  # ch17
+            ('todo el día.</p><p>(G. A. Young) ¿No podríamos',
+             'todo el día. (G. A. Young)</p><p>¿No podríamos'),  # ch18
+            # French
+            ('faisais cela !</p><p>Ils accourront',
+             'faisais cela ! Ils accourront'),  # ch2
+            ('examens ! »</p><p>(Je peux',
+             'examens ! » (Je peux'),  # ch2
+            ('mariage. »</p><p>(Il peut',
+             'mariage. » (Il peut'),  # ch2
+            ('le vois !</p><p>Alléluia',
+             'le vois ! Alléluia'),  # ch2
+            ('à Dieu. »</p><p>(Hébreux',
+             'à Dieu. » (Hébreux'),  # ch8
+            ('sur le mont</p><p>Hermon, plus',
+             'sur le mont Hermon, plus'),  # ch15
+            ('qu’il fait ! »</p><p>(Auteur inconnu) Les deux rochers Le seul acte',
+             'qu’il fait ! » (Auteur inconnu)</p><h2>Les deux rochers</h2><p>Le seul acte'),  # ch16
+            ('monde connu.</p><p>Au même âge,',
+             'monde connu. Au même âge,'),  # ch17
+            ('du jour.</p><p>(G. A. Young) Ne pourrions-nous',
+             'du jour. (G. A. Young)</p><p>Ne pourrions-nous'),  # ch18
+            # Hindi
+            ('सोचेंगे!</p><p>वे सब दौड़कर',
+             'सोचेंगे! वे सब दौड़कर'),  # ch2
+            ('जाऊँगा!”</p><p>(मैं असफल',
+             'जाऊँगा!” (मैं असफल'),  # ch2
+            ('सुखी रहोगे।”</p><p>(तलाक़ भी',
+             'सुखी रहोगे।” (तलाक़ भी'),  # ch2
+            ('कर रहा है!</p><p>हालेलूय्याह!',
+             'कर रहा है! हालेलूय्याह!'),  # ch2
+            ('किया है।”</p><p>(इब्रानियों',
+             'किया है।” (इब्रानियों'),  # ch8
+            ('ने पर्वत</p><p>हेर्मोन पर',
+             'ने पर्वत हेर्मोन पर'),  # ch15
+            ('क्या कर रहा है!”</p><p>(लेखक अज्ञात) दो चट्टानें मूसा के जीवन',
+             'क्या कर रहा है!” (लेखक अज्ञात)</p><h2>दो चट्टानें</h2><p>मूसा के जीवन'),  # ch16
+            ('जीत लिया।</p><p>उसी आयु में',
+             'जीत लिया। उसी आयु में'),  # ch17
+            ('और दिन भर।</p><p>(जी. ए. यंग) क्या हम यह',
+             'और दिन भर। (जी. ए. यंग)</p><p>क्या हम यह'),  # ch18
+            # Korean
+            ('생각할지 상상해 보라!</p><p>모두 몰려와 너를',
+             '생각할지 상상해 보라! 모두 몰려와 너를'),  # ch2
+            ('합격하면 좋겠다!”</p><p>(떨어질 수도 있습니다!)',
+             '합격하면 좋겠다!” (떨어질 수도 있습니다!)'),  # ch2
+            ('살면 좋겠어요.”</p><p>(이혼할 수도 있습니다!)',
+             '살면 좋겠어요.” (이혼할 수도 있습니다!)'),  # ch2
+            ('하고 계십니다!</p><p>할렐루야! 이제',
+             '하고 계십니다! 할렐루야! 이제'),  # ch2
+            ('증거를 받았느니라”</p><p>(히브리서 11:5).',
+             '증거를 받았느니라” (히브리서 11:5).'),  # ch8
+            ('뒤 사도 베드로가</p><p>헤르몬 산에서 한',
+             '뒤 사도 베드로가 헤르몬 산에서 한'),  # ch15
+            ('하시는 일을 아신다!”</p><p>(작자 미상) 두 반석 모세의 생애에서 그가 하나님의',
+             '하시는 일을 아신다!” (작자 미상)</p><h2>두 반석</h2><p>모세의 생애에서 그가 하나님의'),  # ch16
+            ('세계를 정복했다.</p><p>같은 나이에 나는',
+             '세계를 정복했다. 같은 나이에 나는'),  # ch17
+            ('밤에도 종일토록.</p><p>(G. A. 영) 우리는 또한 이렇게',
+             '밤에도 종일토록. (G. A. 영)</p><p>우리는 또한 이렇게'),  # ch18
+            # Luganda
+            ('okikola!</p><p>Bonna banajja',
+             'okikola! Bonna banajja'),  # ch2
+            ('byange!”</p><p>(Nnyinza',
+             'byange!” (Nnyinza'),  # ch2
+            ('bufumbo bwo.”</p><p>(Wayinza',
+             'bufumbo bwo.” (Wayinza'),  # ch2
+            ('bw’omulaba!</p><p>Aleruya!',
+             'bw’omulaba! Aleruya!'),  # ch2
+            ('Katonda.”</p><p>(Abaebbulaniya',
+             'Katonda.” (Abaebbulaniya'),  # ch8
+            ('ku lusozi.</p><p>Kerumooni',
+             'ku lusozi. Kerumooni'),  # ch15
+            ('amanyi ky’akola!”</p><p>(Omuwandiisi tamanyiddwa) Enjazi Ebbiri Ekikolwa ekimu',
+             'amanyi ky’akola!” (Omuwandiisi tamanyiddwa)</p><h2>Enjazi Ebbiri</h2><p>Ekikolwa ekimu'),  # ch16
+            ('eyamanyibwa.</p><p>Mu myaka',
+             'eyamanyibwa. Mu myaka'),  # ch17
+            ('lunaku lwonna.</p><p>(G.A. Young) Tetuyinza',
+             'lunaku lwonna. (G.A. Young)</p><p>Tetuyinza'),  # ch18
+            # Portuguese
+            ('fizeres isso!</p><p>Todos correrão',
+             'fizeres isso! Todos correrão'),  # ch2
+            ('provas!”</p><p>(Posso reprovar!)',
+             'provas!” (Posso reprovar!)'),  # ch2
+            ('casamento.”</p><p>(Pode haver',
+             'casamento.” (Pode haver'),  # ch2
+            ('você O vê!</p><p>Aleluia!',
+             'você O vê! Aleluia!'),  # ch2
+            ('a Deus.”</p><p>(Hebreus',
+             'a Deus.” (Hebreus'),  # ch8
+            ('no monte</p><p>Hermom, mais',
+             'no monte Hermom, mais'),  # ch15
+            ('sabe o que faz!”</p><p>(Autor desconhecido) As Duas Rochas O único ato registrado',
+             'sabe o que faz!” (Autor desconhecido)</p><h2>As Duas Rochas</h2><p>O único ato registrado'),  # ch16
+            ('conhecido.</p><p>Na mesma',
+             'conhecido. Na mesma'),  # ch17
+            ('todo o dia.</p><p>(G.A.Young) Não poderíamos',
+             'todo o dia. (G.A.Young)</p><p>Não poderíamos'),  # ch18
+            # Swahili
+            ('ukifanya hivyo!</p><p>Wote watakuja',
+             'ukifanya hivyo! Wote watakuja'),  # ch2
+            ('mitihani yangu!”</p><p>(Naweza kufeli!)',
+             'mitihani yangu!” (Naweza kufeli!)'),  # ch2
+            ('ndoa yako.”</p><p>(Kunaweza',
+             'ndoa yako.” (Kunaweza'),  # ch2
+            ('unapomwona!</p><p>Haleluya!',
+             'unapomwona! Haleluya!'),  # ch2
+            ('amempendeza Mungu.”</p><p>(Waebrania',
+             'amempendeza Mungu.” (Waebrania'),  # ch8
+            ('ya Mlima.</p><p>Hermoni,',
+             'ya Mlima. Hermoni,'),  # ch15
+            ('analolifanya!»</p><p>(Mwandishi hajulikani) Miamba Miwili Tendo pekee lililoandikwa',
+             'analolifanya!» (Mwandishi hajulikani)</p><h2>Miamba Miwili</h2><p>Tendo pekee lililoandikwa'),  # ch16
+            ('uliojulikana.</p><p>Katika umri',
+             'uliojulikana. Katika umri'),  # ch17
+            ('mchana kutwa.</p><p>(G.A.Young) Je, tusiweze',
+             'mchana kutwa. (G.A.Young)</p><p>Je, tusiweze'),  # ch18
+            # Ukrainian
+            ('це зробиш!</p><p>Усі вони',
+             'це зробиш! Усі вони'),  # ch2
+            ('іспити!»</p><p>(А можу й',
+             'іспити!» (А можу й'),  # ch2
+            ('у шлюбі».</p><p>(А може дійти',
+             'у шлюбі». (А може дійти'),  # ch2
+            ('Його бачиш!</p><p>Алилуя! Тепер',
+             'Його бачиш! Алилуя! Тепер'),  # ch2
+            ('угодив Богу.“»</p><p>(Євреїв 11:5).',
+             'угодив Богу.“» (Євреїв 11:5).'),  # ch8
+            ('Петро на горі</p><p>Хермон понад',
+             'Петро на горі Хермон понад'),  # ch15
+            ('знає, що робить!»</p><p>(автор невідомий) Дві скелі Єдиний записаний',
+             'знає, що робить!» (автор невідомий)</p><h2>Дві скелі</h2><p>Єдиний записаний'),  # ch16
+            ('відомий світ.</p><p>У тому самому',
+             'відомий світ. У тому самому'),  # ch17
+            ('цілий день.</p><p>(Дж. А. Янг) Чи не могли',
+             'цілий день. (Дж. А. Янг)</p><p>Чи не могли'),  # ch18
+            # Vietnamese
+            ('làm thế!</p><p>Họ sẽ kéo',
+             'làm thế! Họ sẽ kéo'),  # ch2
+            ('thi đậu!”</p><p>(Tôi có thể',
+             'thi đậu!” (Tôi có thể'),  # ch2
+            ('hôn nhân.”</p><p>(Có thể sẽ',
+             'hôn nhân.” (Có thể sẽ'),  # ch2
+            ('thấy Ngài!</p><p>Ha-lê-lu-gia!',
+             'thấy Ngài! Ha-lê-lu-gia!'),  # ch2
+            ('Trời rồi.”</p><p>(Hê-bơ-rơ',
+             'Trời rồi.” (Hê-bơ-rơ'),  # ch8
+            ('trên núi</p><p>Hẹt-môn hơn',
+             'trên núi Hẹt-môn hơn'),  # ch15
+            ('đang làm gì!”</p><p>(Khuyết danh) Hai Tảng Đá Việc duy nhất',
+             'đang làm gì!” (Khuyết danh)</p><h2>Hai Tảng Đá</h2><p>Việc duy nhất'),  # ch16
+            ('bấy giờ.</p><p>Cũng ở tuổi',
+             'bấy giờ. Cũng ở tuổi'),  # ch17
+            ('ngày dài.</p><p>(G.A.Young) Há chúng',
+             'ngày dài. (G.A.Young)</p><p>Há chúng'),  # ch18
         ],
     },
     "stepping-stones-2": {
@@ -6191,7 +7128,18 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("city of Brazilia", "city of Brasília"),
             ("Stocklholm", "Stockholm"),
             ("Guatamalan", "Guatemalan"),
-            ("Malasia", "Malaysia"),
+            # Anchored on the English words beside it: a bare "Malasia" also
+            # matched the es edition, where it is the correct Spanish spelling.
+            ("beaches of Malasia", "beaches of Malaysia"),
+            ("Kuala Lumpur, Malasia. I", "Kuala Lumpur, Malaysia. I"),
+            ("From Malasia,", "From Malaysia,"),
+            ("Cheah in Malasia", "Cheah in Malaysia"),
+            # ...and that bare pair has already rewritten the es rows in
+            # production (ch21, ch38, ch40). Put the Spanish spelling back.
+            ("playas de Malaysia", "playas de Malasia"),
+            ("Kuala Lumpur, Malaysia. En", "Kuala Lumpur, Malasia. En"),
+            ("De Malaysia regresamos", "De Malasia regresamos"),
+            ("Cheah, de Malaysia", "Cheah, de Malasia"),
             ("Chapultapek", "Chapultepec"),
             ("Deja Vue", "Déjà vu"),
             # English proofreading pass (2026-11-05), in chapter order. Genuine

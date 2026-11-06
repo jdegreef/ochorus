@@ -39,6 +39,17 @@ class AdminAttentionTests(TestCase):
             source_type=Book.SourceType.AI_UNREVIEWED,
         )
         Chapter.objects.create(book=sw, order=1, title="Moja", body_html="<p>x</p>", word_count=2)
+        # A retired duplicate (corrections.RETIRED_BOOKS): unpublished and
+        # unreviewed for good, so it is neither to-do — the counts stay 1 and 1.
+        old = Book.objects.create(
+            author=author,
+            slug="lord-teach-us-to-pray-2",
+            language="sw",
+            title="Retired",
+            is_published=False,
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Chapter.objects.create(book=old, order=1, title="Moja", body_html="<p>x</p>", word_count=2)
         # A published book with no chapters — the one empty_books defect.
         Book.objects.create(author=author, slug="stub", language="en", title="Stub")
 

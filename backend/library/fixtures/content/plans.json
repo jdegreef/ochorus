@@ -622,19 +622,7 @@
    "en"
   ],
   "day": 1,
-  "book_slug": "lord-teach-us-to-pray-2",
-  "chapter_order": 1
- }
-},
-{
- "model": "library.planday",
- "fields": {
-  "plan": [
-   "school-of-prayer",
-   "en"
-  ],
-  "day": 2,
-  "book_slug": "lord-teach-us-to-pray-2",
+  "book_slug": "school-of-prayer",
   "chapter_order": 2
  }
 },
@@ -645,8 +633,8 @@
    "school-of-prayer",
    "en"
   ],
-  "day": 3,
-  "book_slug": "lord-teach-us-to-pray-2",
+  "day": 2,
+  "book_slug": "school-of-prayer",
   "chapter_order": 3
  }
 },
@@ -657,9 +645,21 @@
    "school-of-prayer",
    "en"
   ],
-  "day": 4,
-  "book_slug": "lord-teach-us-to-pray-2",
+  "day": 3,
+  "book_slug": "school-of-prayer",
   "chapter_order": 4
+ }
+},
+{
+ "model": "library.planday",
+ "fields": {
+  "plan": [
+   "school-of-prayer",
+   "en"
+  ],
+  "day": 4,
+  "book_slug": "school-of-prayer",
+  "chapter_order": 5
  }
 },
 {
