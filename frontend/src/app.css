@@ -3082,12 +3082,8 @@ nav.appnav .navsearch:hover {
    sermon plate — and the whole point of a house wash is that they match, so it
    is one recipe driven by --band-hue rather than two that drift.
 
-   A THIRD wash exists and is NOT on this recipe: the topic hero
-   (routes/topics/[slug]/+page.svelte). It has already drifted — 16%/7% over
-   --surface where this is 22%/9% over --surface-2 — so folding it in is a
-   visible redesign of that page (tinted white becomes a warmer, greyer band),
-   not a refactor. Worth doing deliberately; it was left alone here rather than
-   smuggled into a sermon change.
+   (A third, drifted wash once tinted the topic hero; design review #16 took
+   that page's header out of its box, so there is no third copy any more.)
 
    The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
    is what keeps a saturated accent legible in both themes. */
