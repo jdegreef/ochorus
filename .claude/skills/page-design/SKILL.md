@@ -386,11 +386,23 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
 | Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
-| Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
+| Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
+- **Sermons are listed as plain rows, everywhere** (design review #8, founder-
+  approved 2026-11; overrides the older "row card tints" rule for sermons).
+  `<SermonCard>` has one shape: serif title, one muted meta line (preacher ·
+  passage · length; preacher omitted under a preacher heading), one clamped line
+  of the brief, hairlines between rows from the `.sermon-list` wrapper (app.css,
+which also sets the 48rem measure — don't hand-set a `max-w` per page). The
+  whole row is the link — no expand chevron, no rail, no passage monogram, no
+  card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
+  favourites and 404 lists are single columns for that reason.
+
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
+The one exception is the frameless sermon list row (above): no frame to tint,
+so its title underlines in accent. It is not a pattern for other cards.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
@@ -455,12 +467,23 @@ here, `sermons/+page.svelte`, `BooksShelf.svelte` — but the topic one's null
 gate is topic-specific; a shared low-level `groupByAuthor` is a deferred
 refactor, not this pattern's job.)
 
-Same shape for the **order of the content sections**: Books / Sermons /
-Articles are rendered in *prominence* order — the topic leads with the type it
-has the most of and drops any that are empty (`lib/topicSections.ts`), so a
-sermon-heavy topic (The Gospel Call, Christ & the Cross) surfaces its sermons
-first and an article-heavy one (The Deeper Life, 21 articles) its articles,
-while a balanced topic keeps the familiar Books → Sermons → Articles order.
+The **content sections are tabs** — Books (N) · Sermons (N) · Articles (N),
+always in that order, empty kinds dropped (`lib/topicSections.ts`), opening on
+the first (books whenever there are any; a books-less shelf like Christ & the
+Cross opens on sermons). _(Design review #16, 2026-11, founder-approved: this
+replaced the old *prominence* order, which led a sermon-heavy topic with its
+sermons — On Prayer opened on 24 sermon cards before a single cover. With
+tabs the sermons are one tap away, so books lead.)_ Every panel stays in the
+prerendered HTML (inactive ones are `hidden`, not unrendered) so each work
+stays linked for search. A one-kind topic still shows its one tab (it is
+where the shelf states its size). A panel's own section `h2` is
+visually hidden (the tab names it) — except Books after a Book Series row,
+where it marks where the single books begin. The Books panel opens with ONE "Start
+here" pick: the topic's lead book — the first in its `topic_seed` order —
+never a hand-invented editorial pick. The header is plain (no tinted hero
+box, no badge): title with icon-only Follow + Share, the shelf's short
+description (unclamped), the verse as a quiet epigraph; the ministry cross-link
+(`ForPromo`) sits at the END of the page, after Related topics.
 
 **Verifying a page in the in-app Browser pane:** `npm run dev` binds IPv6
 `[::1]` only, but the pane resolves `localhost`→IPv4, so navigation fails with
@@ -1045,7 +1068,7 @@ relevant group.
 - [x] **E7** _(shipped #1526 — compact buttons on `.btn-sm`)_ Compact ghost buttons hand-roll `py-1.5`/`py-2` on Settings ×4,
   Sermons and `CatalogLanguageNudge`. → `.btn-sm`.
 - [ ] **E8** Near-duplicate classes: `.footer-heading` ≈ `.section-label`,
-  `.sermon-row-ref` ≈ `.eyebrow`, `.navsearch` ≈ a pill `.field`; the topic
+  ~~`.sermon-row-ref` ≈ `.eyebrow`~~ (gone with design #8), `.navsearch` ≈ a pill `.field`; the topic
   hero still carries its own weaker `.hue-band`. `.stat-number` is admin-only
   but lives with the public classes; `--hl-*` are fixed hex that don't follow
   the theme. → fold or document.

@@ -490,19 +490,21 @@ through `sermonArt`, never `emblemHue`: that one reads the drawings, and
 importing it pulls all 51 onto the route's critical path.
 
 The shelf card's band and the sermon plate share **`.hue-band`**, driven by
-`--band-hue`: one wash rule, not one per surface. The topic hero still carries
-its own, slightly weaker copy — see the note on `.hue-band` in `app.css`.
+`--band-hue`: one wash rule, not one per surface. (The topic page's header had
+its own weaker copy until design review #16 took that header out of its box.)
 
-**Sermon row** (`.sermon-row`) — the sermons shelf is a **list, not a grid**:
-one sermon per line, under its preacher, carrying the title, the passage it
-expounds, the "In brief" and how long it runs. That is a deliberate exception to
-the card families above, and the reason is the brief: it runs 300–400 characters,
-a tile holding it is mostly body text with a title on top, and prose set across
-the full page column is unreadable. A row lets the brief run the full
-width of the box — spreading it over fewer lines keeps the shelf short — with
-the reading length at the top right, opposite the passage. Row heights vary
-freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
-writer's era (same source as a shelf card), used only through `color-mix()`.
+**Sermon row** (`<SermonCard>`, `.sermon-row` inside a `.sermon-list`) — a
+sermon is listed as a **plain list row, not a card**, on every page that lists
+sermons (the index, a topic, an author, favourites, the 404 picks): the title in
+the display serif, ONE muted meta line — preacher · passage · length (the
+preacher dropped where a heading already names them) — and one clamped line of
+the "In brief", with **hairlines between rows** and no border, rail, monogram,
+leader or chevron. The whole row is the link; the full brief lives on the
+sermon's own page. Design review #8 (2026-11): the bordered card with its era
+rail, passage monogram, repeated passage, dotted leader and expand chevron made
+each sermon about twice as tall as it needed to be. Hover underlines the title
+in `--accent` — a hairline row has no frame to tint, so it is outside the
+`.card-tint` recipe on purpose.
 
 **Card hover — two recipes, and only two.** Every content card answers a hover
 in one of exactly two languages, so a page of mixed card types reads as one
@@ -515,9 +517,11 @@ longer — never a literal duration.
 | Recipe | Who | What happens |
 |---|---|---|
 | **`.card-lift`** — a grid or banded card **rises** | `.shelf-card`, the sermon-of-week plate; `.book-card` (BookCard, ArticleShelf's cover view) rises the same 2px with its own rise-only hover — it is boxless, so a shadow would draw a box, and its cover carries the shadow | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
-| **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
+| **`.card-tint`** — a row card **warms in place**, no lift | `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. The `/quotes` author card overrides both with its era `--row-hue`. (The sermon row is a hairline list row, not a card: its title underlines instead.) |
 
-Grid cards lift, row cards tint — that is the whole vocabulary. A card that
+Grid cards lift, row cards tint — that is the whole vocabulary. (The sermon
+list row is not a card: it has no frame, and its title underlines instead —
+the one frameless exception, not a third recipe for cards.) A card that
 would do neither, or a third thing (a border-only shift, a bg-only shift, a
 gradient-slide), is drift: fold it into whichever recipe its shape calls for.
 The **one sanctioned extra** is the book-cover family's "Begin reading →" /
@@ -537,7 +541,7 @@ card gets a bespoke reveal.
 >
 > Add a modifier next to the base class instead (`.book-card--row`). Reach for a
 > utility only for properties the component class doesn't set — which is why
-> `.sermon-row-brief` can take `line-clamp-5`: it sets no clamp of its own.
+> `.sermon-row-brief` can take `line-clamp-1`: it sets no clamp of its own.
 
 **Equal heights — one item per card, or bound the variance.** A card grid must
 never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an
@@ -565,9 +569,9 @@ card — give it a heading and one-item cards beneath, the way the grouped Books
 shelf and the sermon shelf's preacher sections do.
 
 **And if the item's own content is long-form, don't reach for a card at all** —
-`.sermon-row` is the worked example. A grid buys you scannable equal-height
-tiles; it costs you measure. When the thing worth showing is a paragraph, the
-list wins.
+the sermon list is the worked example. A grid buys you scannable equal-height
+tiles; it costs you measure. When the thing worth choosing by is prose, a list
+of one-line previews wins, and the prose itself stays on the item's page.
 
 ### Filter controls
 

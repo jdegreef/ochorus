@@ -3003,9 +3003,10 @@ nav.appnav .navsearch:hover {
        nested, non-focusable plate, which a self-hover class can't express.
 
      .card-tint — ROW cards warm in place, no lift. The border shifts to accent
-       and the ground to surface-2. Members: .sermon-card, .article-card,
-       AuthorBioCard, PersonCard, AuthorTile, BookListRow (neutral); .sermon-row
-       and the /quotes author card override the two colours with their era hue.
+       and the ground to surface-2. Members: .article-card, AuthorBioCard,
+       PersonCard, AuthorTile, BookListRow (neutral); the /quotes author card
+       overrides the two colours with its era hue. (The sermon row is a plain
+       hairline list row, not a card — SermonCard.)
 
    Both animate on --duration-fast, and nothing else. Resting
    border/radius/background/padding stay with the individual card (its scoped
@@ -3071,12 +3072,8 @@ nav.appnav .navsearch:hover {
    sermon plate — and the whole point of a house wash is that they match, so it
    is one recipe driven by --band-hue rather than two that drift.
 
-   A THIRD wash exists and is NOT on this recipe: the topic hero
-   (routes/topics/[slug]/+page.svelte). It has already drifted — 16%/7% over
-   --surface where this is 22%/9% over --surface-2 — so folding it in is a
-   visible redesign of that page (tinted white becomes a warmer, greyer band),
-   not a refactor. Worth doing deliberately; it was left alone here rather than
-   smuggled into a sermon change.
+   (A third, drifted wash once tinted the topic hero; design review #16 took
+   that page's header out of its box, so there is no third copy any more.)
 
    The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
    is what keeps a saturated accent legible in both themes. */
@@ -3167,8 +3164,8 @@ nav.appnav .navsearch:hover {
 }
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
-   one recipe for every surface (shelf cards, sermon rows and cards, topic
-   heroes). A call site decides only how big and which hue, via --chip-size
+   one recipe for every surface (shelf cards, sermon rows and cards, the
+   Ochorus-for pages). A call site decides only how big and which hue, via --chip-size
    and --chip-hue; the art scales with the chip, so "give the emblems more
    air" is one edit here, not a hunt across components. */
 .emblem-chip {
@@ -3275,7 +3272,7 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
+       .shelf-card, .filter-field, .field, .seg, .chip,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
@@ -3375,50 +3372,17 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* A sermon on the shelf — one per line, under its preacher.
-
-   Not a card in a grid: a sermon's "In brief" is 300–400 characters, and a
-   tile that holds it is mostly text with a title on top. One per line gives
-   that prose the full measure to breathe, and lets a reader scan title →
-   passage → brief down a single column and decide whether to read or listen
-   without opening anything. Row height varies with the brief, which costs
-   nothing here — rows stack, so there is no bottom edge to level.
-
-   `--row-hue` is the writer's era (same source as .shelf-card), used only
-   through color-mix so it stays a tint and never becomes text colour. */
-.sermon-row {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
-	gap: 1rem;
-	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
-	border: 1px solid var(--border);
-	border-radius: var(--radius-card);
-	background: var(--surface);
-	/* The whole row is a click target: open the brief, then go to the sermon. */
-	cursor: pointer;
-	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
-	   markup; only the hue-mixed border and ground below are the row's own. */
+/* A list of sermons (SermonCard rows) — the one wrapper every page uses, so
+   the measure and the separators are set once (design #8). Each row draws a
+   hairline above itself; the first row drops it. A row may sit in a wrapper
+   (the index pages rows in `display: contents` divs, the 404 tags them), so
+   both a direct row and a wrapped one count as first. */
+.sermon-list {
+	max-width: 48rem;
 }
-/* The era rail down the leading edge. Inside the border radius, so it reads as
-   part of the row rather than a stripe stuck to it. */
-.sermon-row::before {
-	content: '';
-	position: absolute;
-	inset-block: -1px;
-	inset-inline-start: -1px;
-	width: 3px;
-	border-start-start-radius: var(--radius-card);
-	border-end-start-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
-	transition: background var(--duration-fast);
-}
-.sermon-row:hover {
-	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
-	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
-}
-.sermon-row:hover::before {
-	background: var(--row-hue);
+.sermon-list > .sermon-row:first-child,
+.sermon-list > :first-child > .sermon-row {
+	border-block-start-color: transparent;
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────
@@ -3927,8 +3891,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navtoggle,
 		.navsearch,
 		.day-toggle,
-		.sync-dismiss,
-		.sermon-row-toggle {
+		.sync-dismiss {
 			position: relative;
 		}
 		/* The finish toggle on a Continue-reading card is a 28px disc, already
@@ -3940,8 +3903,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navsearch::after,
 		.finish-btn::after,
 		.day-toggle::after,
-		.sync-dismiss::after,
-		.sermon-row-toggle::after {
+		.sync-dismiss::after {
 			content: '';
 			position: absolute;
 			top: 50%;

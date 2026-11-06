@@ -10,7 +10,9 @@
 	import { absUrl, jsonLd, breadcrumbLd, hreflangExact, pickQa, toQa } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { scopedSearchHref } from '$lib/searchState';
+	import { tabStrip } from '$lib/actions/tabStrip';
+	import { radioKeys } from '$lib/radioKeys';
+	import type { Snapshot } from './$types';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import { seriesFromBooks } from '$lib/series';
@@ -21,8 +23,6 @@
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import Emblem from '$lib/components/Emblem.svelte';
-	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -31,7 +31,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
-	import { topicSectionOrder, topicLeadsWithSeries } from '$lib/topicSections';
+	import { topicSectionOrder, topicLeadsWithSeries, type TopicSectionKind } from '$lib/topicSections';
 	import { BOOK_SORTS, BOOK_SORT_LABEL, matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
@@ -88,7 +88,20 @@
 	// navigations, so the filter would otherwise leak from one topic to the next —
 	// afterNavigate clears it so every topic opens unfiltered.
 	let query = $state('');
-	afterNavigate(() => (query = ''));
+	// The open tab, reset with the filter: every topic opens on its first tab.
+	// null = "the default", so the prerendered HTML and first paint agree.
+	// Back/Forward is the exception: the snapshot brings the tab back, so the
+	// scroll position SvelteKit restores still matches the panel it was saved
+	// against (Back from the 18th sermon lands on it, not in the books grid).
+	let tab = $state<TopicSectionKind | null>(null);
+	export const snapshot: Snapshot<TopicSectionKind | null> = {
+		capture: () => tab,
+		restore: (v) => (tab = v)
+	};
+	afterNavigate((nav) => {
+		query = '';
+		if (nav.type !== 'popstate') tab = null;
+	});
 	onMount(() => {
 		const p = readJSON<{ view?: View; sort?: BookSort; group?: Group }>(PREFS_KEY, {});
 		if (p.view === 'grid' || p.view === 'list') view = p.view;
@@ -138,15 +151,35 @@
 	const noResults = $derived(effQuery !== '' && flatBooks.length === 0);
 	const clearQuery = () => (query = '');
 
-	// Content sections led by the type the topic is mostly made of; empties
-	// dropped. See topicSectionOrder.
-	const sectionOrder = $derived(
-		topicSectionOrder({
-			books: topic.books.length,
-			sermons: topic.sermons.length,
-			articles: articles.length
-		})
+	// The tabs: Books · Sermons · Articles, empties dropped, books first. See
+	// topicSectionOrder.
+	const counts = $derived<Record<TopicSectionKind, number>>({
+		books: topic.books.length,
+		sermons: topic.sermons.length,
+		articles: articles.length
+	});
+	const sectionOrder = $derived(topicSectionOrder(counts));
+	const TAB_LABEL: Record<TopicSectionKind, string> = {
+		books: 'topics.books',
+		sermons: 'topics.sermons',
+		articles: 'topics.articles'
+	};
+	const activeTab = $derived(tab && sectionOrder.includes(tab) ? tab : sectionOrder[0]);
+	// The WAI-ARIA tabs pattern: arrows move between tabs, selection follows
+	// focus, Left/Right swap under RTL — the same stepping as the radio groups.
+	const onTabKey = $derived(
+		radioKeys(
+			sectionOrder,
+			() => activeTab,
+			(v) => (tab = v),
+			'data-tab'
+		)
 	);
+
+	// "Start here": the shelf's lead book — the first in the topic's curated
+	// order (topic_seed's book list, which the API serves in order). Only on a
+	// shelf with more than one book; a lone book is already the whole shelf.
+	const startBook = $derived(topic.books.length > 1 ? topic.books[0] : null);
 
 	// Self-referential canonical, and hreflang only for the locales this shelf
 	// actually exists in. A topic no longer falls back to its English title — it
@@ -225,68 +258,34 @@
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
 
-	<!-- Two-column banner: the description and actions run down the main column
-	     while the Scripture epigraph sits beside them, so the shelf clears the fold
-	     sooner. The verse column wraps under the main one on narrow screens. -->
-	<header class="hero mb-8 mt-4">
-		<!-- The shelf's epigraph passage as a monogram (MAT over 11), the mark
-		     every sermon wears. Many locales have no translated epigraph yet
-		     (ar/sw entirely, most of hi); those keep the illustrated emblem
-		     rather than a bare title initial ("ف" for "في الصلاة"). -->
-		{#if topic.scripture_ref}
-			<SermonMonogram class="badge" scriptureRef={topic.scripture_ref} title={topic.title} />
-		{:else}
-			<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
-		{/if}
-		<div class="hero-body">
-			<div class="hero-main min-w-0">
-				<h1 class="text-h1 mb-2">{topic.title}</h1>
-				{#if topic.description}
-					<!-- No measure cap: the main column is already bounded by its flex
-					     basis, so a cap here would strand the text against the left edge. -->
-					<p class="text-body text-muted">{topic.description}</p>
-				{/if}
-				<div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-					<!-- Follow this shelf: it lands in "My Library" and updates as the
-					     topic gains works. -->
-					<FavoriteButton kind="topic" slug={topic.slug} showLabel />
-					<ShareButton url={canonical} title={topic.title} showLabel />
-					<!-- A topic is a shelf, and a shelf you can't search is a list you have
-					     to read end to end. -->
-					{#if topic.books.length || topic.sermons.length}
-						<a
-							href={localizeHref(scopedSearchHref('topic', topic.slug))}
-							class="btn btn-sm btn-ghost"
-							aria-label={t('search.inTopic')}
-							title={t('search.inTopic')}><Icon name="search" size={16} /><span>{t('nav.search')}</span></a
-						>
-					{/if}
-					<span class="text-small text-muted">
-						{topic.books.length}
-						{topic.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-						{#if topic.sermons.length}
-							· {topic.sermons.length}
-							{topic.sermons.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-						{/if}
-						{#if articles.length}
-							· {articles.length}
-							{articles.length === 1 ? t('common.articleOne') : t('common.articleMany')}
-						{/if}
-					</span>
+	<!-- A plain header (design review #16): the title with its two quiet icon
+	     actions, the shelf's one-line description, and the verse as an epigraph
+	     beside them — no tinted box, no badge, no count line (the tabs carry the
+	     counts) and no Search button (search lives in the site bar). The verse
+	     wraps under the text on narrow screens. -->
+	<header class="topic-head mb-6 mt-4">
+		<div class="head-main min-w-0">
+			<div class="flex items-start gap-2">
+				<h1 class="text-h1 min-w-0 flex-1">{topic.title}</h1>
+				<!-- Follow this shelf: it lands in "My Library" and updates as the
+				     topic gains works. -->
+				<div class="head-actions flex shrink-0 items-center">
+					<FavoriteButton kind="topic" slug={topic.slug} />
+					<ShareButton url={canonical} title={topic.title} />
 				</div>
-				{#if TOPIC_FOR[topic.slug]}
-					<ForPromo place="topic" slugs={[TOPIC_FOR[topic.slug]]} class="mt-3" />
-				{/if}
 			</div>
-			{#if topic.scripture_text}
-				<figure class="verse hero-verse">
-					<blockquote>{topic.scripture_text}</blockquote>
-					{#if topic.scripture_ref}
-						<figcaption>— {topic.scripture_ref}</figcaption>
-					{/if}
-				</figure>
+			{#if topic.description}
+				<p class="mt-2 text-body text-muted">{topic.description}</p>
 			{/if}
 		</div>
+		{#if topic.scripture_text}
+			<figure class="verse">
+				<blockquote>{topic.scripture_text}</blockquote>
+				{#if topic.scripture_ref}
+					<figcaption>— {topic.scripture_ref}</figcaption>
+				{/if}
+			</figure>
+		{/if}
 	</header>
 
 	{#if topic.books.length === 0 && topic.sermons.length === 0 && articles.length === 0}
@@ -317,7 +316,10 @@
 
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<h2 class="section-heading">{t('topics.books')}</h2>
+			<!-- The tab names the books, so the heading is for screen readers only —
+			     unless a Book Series row comes first, when it marks where the
+			     individual books begin. -->
+			<h2 class="section-heading" class:sr-only={!topicSeries.length}>{t('topics.books')}</h2>
 
 			<!-- Shelf controls: the filter / sort / grid-list toolbar appears only on a
 			     shelf big enough to need it (showToolbar); the By-author / All-books
@@ -433,7 +435,7 @@
 	{#snippet sermonsSection()}
 		<section class="mb-10">
 			<h2 class="section-heading">{t('topics.sermons')}</h2>
-			<div class="grid gap-3 sm:grid-cols-2">
+			<div class="sermon-list">
 				{#each topic.sermons as sermon (sermon.slug)}
 					<SermonCard {sermon} showAuthor />
 				{/each}
@@ -471,13 +473,62 @@
 		</section>
 	{/snippet}
 
-	<!-- Content sections in prominence order: books and sermons lead with the
-	     type the topic is mostly made of, articles always come last, empty types
-	     dropped. See topicSectionOrder. -->
+	<!-- The shelf's one pick, ahead of everything: its lead book. -->
+	{#snippet startHere()}
+		{#if startBook}
+			<section class="mb-8 max-w-[36rem]" aria-labelledby="topic-start-here">
+				<h2 id="topic-start-here" class="eyebrow mb-1 text-muted">{t('audience.startHeading')}</h2>
+				<BookListRow book={startBook} />
+			</section>
+		{/if}
+	{/snippet}
+
+	<!-- Tabs: Books · Sermons · Articles with their counts, books first, empty
+	     kinds dropped (topicSectionOrder). A one-kind topic still gets its one
+	     tab: it is where the shelf's size is stated. Every panel is in the
+	     prerendered HTML — the inactive ones are only `hidden` — so each work
+	     stays linked for search engines and the JSON-LD above still lists them
+	     all. `tabStrip`: a long language can push the row past a phone's width;
+	     it scrolls sideways with the shared edge fade and keeps the active tab
+	     in view. -->
+	{#if sectionOrder.length}
+		<div
+			class="topic-tabs tab-strip mb-6"
+			role="tablist"
+			aria-label={topic.title}
+			use:tabStrip={`topic-panel-${activeTab}`}
+			tabindex="-1"
+			onkeydown={onTabKey}
+		>
+			{#each sectionOrder as kind (kind)}
+				<button
+					type="button"
+					role="tab"
+					id="topic-tab-{kind}"
+					data-tab={kind}
+					class="subnav-link"
+					class:is-active={kind === activeTab}
+					aria-selected={kind === activeTab}
+					aria-controls="topic-panel-{kind}"
+					tabindex={kind === activeTab ? 0 : -1}
+					onclick={() => (tab = kind)}
+					>{t(TAB_LABEL[kind])} <span class="tab-count">{counts[kind]}</span></button
+				>
+			{/each}
+		</div>
+	{/if}
 	{#each sectionOrder as kind (kind)}
-		{#if kind === 'books'}{@render seriesSection()}{@render booksSection()}
-		{:else if kind === 'sermons'}{@render sermonsSection()}
-		{:else}{@render articlesSection()}{/if}
+		<div
+			id="topic-panel-{kind}"
+			class="topic-panel panel-{kind}"
+			role="tabpanel"
+			aria-labelledby="topic-tab-{kind}"
+			hidden={kind !== activeTab}
+		>
+			{#if kind === 'books'}{@render startHere()}{@render seriesSection()}{@render booksSection()}
+			{:else if kind === 'sermons'}{@render sermonsSection()}
+			{:else}{@render articlesSection()}{/if}
+		</div>
 	{/each}
 
 	<!-- Authors on this shelf: a reader here often wants more of a voice, not
@@ -512,76 +563,88 @@
 			</nav>
 		</section>
 	{/if}
+
+	<!-- The ministry cross-link ("Leading others through this?") comes after the
+	     shelf, not in its header: it is a next step for a leader, not the
+	     reason the reader came. -->
+	{#if TOPIC_FOR[topic.slug]}
+		<ForPromo place="topic" slugs={[TOPIC_FOR[topic.slug]]} class="mt-10" />
+	{/if}
 </div>
 
 <style>
-	.hero {
-		display: flex;
-		align-items: flex-start;
-		gap: 1rem;
-		padding: 1.4rem 1.5rem;
-		border-radius: var(--radius-card);
-		border: 1px solid color-mix(in srgb, var(--topic) 22%, var(--color-border));
-		background:
-			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--topic) 16%, transparent), transparent 55%),
-			color-mix(in srgb, var(--topic) 7%, var(--color-surface));
-	}
-	/* The banner body beside the emblem: the text column and the Scripture column
-	   sit side by side, and the verse wraps under the text when the row can't hold
-	   both at their basis (narrow screens). The gap spaces them in either axis. */
-	.hero-body {
+	/* The plain header: the title column and the Scripture epigraph side by
+	   side, the verse wrapping under the text when the row can't hold both at
+	   their basis (phones). No box — the page column is the frame. */
+	.topic-head {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
-		gap: 1rem 1.75rem;
-		flex: 1 1 auto;
-		min-width: 0;
+		gap: 1rem 2.5rem;
 	}
-	.hero-main {
-		flex: 1 1 22rem;
+	.head-main {
+		flex: 1 1 24rem;
 	}
-	/* The verse as the right-hand column. It keeps the `.verse` accent rule but
-	   drops the stacked top margin (the flex gap spaces it now) and is bounded so a
-	   long epigraph wraps to more lines rather than crowding the text column. The
-	   selector is compounded with `.verse` so the `margin` reset outranks `.verse`'s
-	   own `margin` (which is declared later in this block) and the verse top-aligns
-	   with the text column. */
-	.verse.hero-verse {
-		flex: 1 1 15rem;
-		max-width: 26rem;
-		margin: 0;
+	/* The icon actions sit on the title's first line. The h1 is taller than a
+	   36px icon button, so they are nudged down to its cap height. */
+	.head-actions {
+		margin-top: 0.35rem;
 	}
-	/* The hero's chip, monogram or emblem (recipe in app.css) — only size and
-	   hue here. :global because the monogram is a child component's root. */
-	.hero :global(.badge) {
-		--chip-size: 3.9rem;
-		--chip-hue: var(--topic);
-	}
-	/* A themed Scripture epigraph, set off by an accent rule.
-
-	   No max-width: the 34rem cap stopped the epigraph a third of the way across
-	   the card, which — with the description capped too — left the whole hero
-	   hugging the left edge. The page column already bounds the measure.
-	   padding-inline-start, not padding-left, so the rule stays on the reading
-	   edge under RTL (Arabic). */
+	/* The verse as a quiet epigraph: muted italic in the display face, set off by
+	   a hairline rule in the topic accent, bounded so a long verse wraps rather
+	   than crowding the title. padding-inline-start, not padding-left, so the
+	   rule stays on the reading edge under RTL (Arabic). */
 	.verse {
-		margin: 0.9rem 0 0;
+		flex: 1 1 15rem;
+		max-width: 24rem;
+		margin: 0;
 		padding-inline-start: 0.9rem;
-		border-inline-start: 2px solid color-mix(in srgb, var(--topic) 55%, var(--color-border));
+		border-inline-start: 2px solid color-mix(in srgb, var(--topic) 45%, var(--color-border));
 	}
 	.verse blockquote {
 		margin: 0;
 		font-family: var(--font-display, Georgia, serif);
 		font-style: italic;
-		font-size: var(--fs-body);
-		line-height: 1.5;
-		color: var(--color-text);
+		font-size: var(--fs-small);
+		line-height: 1.55;
+		color: var(--color-muted);
 	}
 	.verse figcaption {
 		margin-top: 0.3rem;
 		font-size: var(--fs-small);
 		letter-spacing: 0.02em;
-		color: color-mix(in srgb, var(--topic) 70%, var(--color-muted));
+		color: var(--color-muted);
+	}
+
+	/* The tab bar: the shared `.subnav-link` tab on a hairline, as the book and
+	   author pages' sub-navs. A button, so strip the UA button chrome. */
+	.topic-tabs {
+		display: flex;
+		gap: 0.25rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+	.topic-tabs button {
+		background: none;
+		cursor: pointer;
+	}
+	.tab-count {
+		margin-inline-start: 0.2rem;
+		font-variant-numeric: tabular-nums;
+	}
+	/* Under the tab that already names it, the Sermons / Articles panel's own
+	   heading would only repeat the tab; it stays for screen readers and the
+	   document outline, visually hidden (Tailwind's `sr-only`, restated: the
+	   headings live in snippets shared with another PR's edits, so they are
+	   reached from the panel rather than given the class). Each of these panels
+	   holds exactly one section. The Books heading takes `sr-only` directly. */
+	.panel-sermons > section > .section-heading,
+	.panel-articles > section > .section-heading {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
 	}
 
 	/* Related-topics chips: quiet pills in the topic accent, a lateral "see also"

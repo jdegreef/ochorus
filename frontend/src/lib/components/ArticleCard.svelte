@@ -54,7 +54,7 @@
 	   and ground ride on layered Tailwind utilities in the markup, and the hover
 	   (border→accent, ground→surface-2, no lift) on the shared .card-tint — so
 	   nothing ties this scoped rule and the hover always wins, exactly like
-	   .sermon-card (page-design D3/H1). */
+	   the other .card-tint rows (page-design D3/H1). */
 	.article-card {
 		display: block;
 		padding: 1.25rem; /* p-5, the card band (page-design H2) */
