@@ -3174,8 +3174,8 @@ nav.appnav .navsearch:hover {
 }
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
-   one recipe for every surface (shelf cards, sermon rows and cards, topic
-   heroes). A call site decides only how big and which hue, via --chip-size
+   one recipe for every surface (shelf cards, sermon rows and cards, the
+   Ochorus-for pages). A call site decides only how big and which hue, via --chip-size
    and --chip-hue; the art scales with the chip, so "give the emblems more
    air" is one edit here, not a hunt across components. */
 .emblem-chip {

@@ -370,12 +370,14 @@ replaced the old *prominence* order, which led a sermon-heavy topic with its
 sermons — On Prayer opened on 24 sermon cards before a single cover. With
 tabs the sermons are one tap away, so books lead.)_ Every panel stays in the
 prerendered HTML (inactive ones are `hidden`, not unrendered) so each work
-stays linked for search; under a tab bar a panel's own section `h2` is
-visually hidden (the tab names it). The Books panel opens with ONE "Start
+stays linked for search. A one-kind topic still shows its one tab (it is
+where the shelf states its size). A panel's own section `h2` is
+visually hidden (the tab names it) — except Books after a Book Series row,
+where it marks where the single books begin. The Books panel opens with ONE "Start
 here" pick: the topic's lead book — the first in its `topic_seed` order —
 never a hand-invented editorial pick. The header is plain (no tinted hero
-box, no badge): title with icon-only Follow + Share, one line of
-description, the verse as a quiet epigraph; the ministry cross-link
+box, no badge): title with icon-only Follow + Share, the shelf's short
+description (unclamped), the verse as a quiet epigraph; the ministry cross-link
 (`ForPromo`) sits at the END of the page, after Related topics.
 
 **Verifying a page in the in-app Browser pane:** `npm run dev` binds IPv6

@@ -11,6 +11,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { tabStrip } from '$lib/actions/tabStrip';
+	import { radioKeys } from '$lib/radioKeys';
+	import type { Snapshot } from './$types';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import { seriesFromBooks } from '$lib/series';
@@ -88,10 +90,17 @@
 	let query = $state('');
 	// The open tab, reset with the filter: every topic opens on its first tab.
 	// null = "the default", so the prerendered HTML and first paint agree.
+	// Back/Forward is the exception: the snapshot brings the tab back, so the
+	// scroll position SvelteKit restores still matches the panel it was saved
+	// against (Back from the 18th sermon lands on it, not in the books grid).
 	let tab = $state<TopicSectionKind | null>(null);
-	afterNavigate(() => {
+	export const snapshot: Snapshot<TopicSectionKind | null> = {
+		capture: () => tab,
+		restore: (v) => (tab = v)
+	};
+	afterNavigate((nav) => {
 		query = '';
-		tab = null;
+		if (nav.type !== 'popstate') tab = null;
 	});
 	onMount(() => {
 		const p = readJSON<{ view?: View; sort?: BookSort; group?: Group }>(PREFS_KEY, {});
@@ -155,25 +164,17 @@
 		sermons: 'topics.sermons',
 		articles: 'topics.articles'
 	};
-	// One kind needs no tab bar — its section just shows, under its heading.
-	const tabbed = $derived(sectionOrder.length > 1);
 	const activeTab = $derived(tab && sectionOrder.includes(tab) ? tab : sectionOrder[0]);
-	// The WAI-ARIA tabs pattern: arrows move between tabs (selection follows
-	// focus), Home/End jump to the ends. Reversed under RTL, where the next
-	// tab sits to the left.
-	function onTabKey(e: KeyboardEvent) {
-		const i = sectionOrder.indexOf(activeTab);
-		const rtl = getComputedStyle(e.currentTarget as Element).direction === 'rtl';
-		const step = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[e.key];
-		let next: number;
-		if (step) next = (i + step + sectionOrder.length) % sectionOrder.length;
-		else if (e.key === 'Home') next = 0;
-		else if (e.key === 'End') next = sectionOrder.length - 1;
-		else return;
-		e.preventDefault();
-		tab = sectionOrder[next];
-		document.getElementById(`topic-tab-${tab}`)?.focus();
-	}
+	// The WAI-ARIA tabs pattern: arrows move between tabs, selection follows
+	// focus, Left/Right swap under RTL — the same stepping as the radio groups.
+	const onTabKey = $derived(
+		radioKeys(
+			sectionOrder,
+			() => activeTab,
+			(v) => (tab = v),
+			'data-tab'
+		)
+	);
 
 	// "Start here": the shelf's lead book — the first in the topic's curated
 	// order (topic_seed's book list, which the API serves in order). Only on a
@@ -315,7 +316,10 @@
 
 	{#snippet booksSection()}
 		<section class="mb-10">
-			<h2 class="section-heading">{t('topics.books')}</h2>
+			<!-- The tab names the books, so the heading is for screen readers only —
+			     unless a Book Series row comes first, when it marks where the
+			     individual books begin. -->
+			<h2 class="section-heading" class:sr-only={!topicSeries.length}>{t('topics.books')}</h2>
 
 			<!-- Shelf controls: the filter / sort / grid-list toolbar appears only on a
 			     shelf big enough to need it (showToolbar); the By-author / All-books
@@ -480,25 +484,34 @@
 	{/snippet}
 
 	<!-- Tabs: Books · Sermons · Articles with their counts, books first, empty
-	     kinds dropped (topicSectionOrder). Every panel is in the prerendered HTML
-	     — the inactive ones are only `hidden` — so each work stays linked for
-	     search engines and the JSON-LD above still lists them all. -->
-	{#if tabbed}
-		<!-- `tabStrip`: a long language can push the row past a phone's width;
-		     it scrolls sideways with the shared edge fade (as LibraryTabs). -->
-		<div class="topic-tabs tab-strip mb-6" role="tablist" aria-label={topic.title} use:tabStrip={undefined}>
+	     kinds dropped (topicSectionOrder). A one-kind topic still gets its one
+	     tab: it is where the shelf's size is stated. Every panel is in the
+	     prerendered HTML — the inactive ones are only `hidden` — so each work
+	     stays linked for search engines and the JSON-LD above still lists them
+	     all. `tabStrip`: a long language can push the row past a phone's width;
+	     it scrolls sideways with the shared edge fade and keeps the active tab
+	     in view. -->
+	{#if sectionOrder.length}
+		<div
+			class="topic-tabs tab-strip mb-6"
+			role="tablist"
+			aria-label={topic.title}
+			use:tabStrip={`topic-panel-${activeTab}`}
+			tabindex="-1"
+			onkeydown={onTabKey}
+		>
 			{#each sectionOrder as kind (kind)}
 				<button
 					type="button"
 					role="tab"
 					id="topic-tab-{kind}"
+					data-tab={kind}
 					class="subnav-link"
 					class:is-active={kind === activeTab}
 					aria-selected={kind === activeTab}
 					aria-controls="topic-panel-{kind}"
 					tabindex={kind === activeTab ? 0 : -1}
 					onclick={() => (tab = kind)}
-					onkeydown={onTabKey}
 					>{t(TAB_LABEL[kind])} <span class="tab-count">{counts[kind]}</span></button
 				>
 			{/each}
@@ -507,11 +520,10 @@
 	{#each sectionOrder as kind (kind)}
 		<div
 			id="topic-panel-{kind}"
-			class="topic-panel"
-			class:tabbed
-			role={tabbed ? 'tabpanel' : undefined}
-			aria-labelledby={tabbed ? `topic-tab-${kind}` : undefined}
-			hidden={tabbed && kind !== activeTab}
+			class="topic-panel panel-{kind}"
+			role="tabpanel"
+			aria-labelledby="topic-tab-{kind}"
+			hidden={kind !== activeTab}
 		>
 			{#if kind === 'books'}{@render startHere()}{@render seriesSection()}{@render booksSection()}
 			{:else if kind === 'sermons'}{@render sermonsSection()}
@@ -618,13 +630,15 @@
 	.tab-count {
 		margin-inline-start: 0.2rem;
 		font-variant-numeric: tabular-nums;
-		opacity: 0.75;
 	}
-	/* Under a tab that already names it, a panel's own "Books" / "Sermons"
+	/* Under the tab that already names it, the Sermons / Articles panel's own
 	   heading would only repeat the tab; it stays for screen readers and the
-	   document outline, visually hidden. The panel's main section is its last
-	   child (Start here and Book Series come before the books). */
-	.topic-panel.tabbed > section:last-child > .section-heading {
+	   document outline, visually hidden (Tailwind's `sr-only`, restated: the
+	   headings live in snippets shared with another PR's edits, so they are
+	   reached from the panel rather than given the class). Each of these panels
+	   holds exactly one section. The Books heading takes `sr-only` directly. */
+	.panel-sermons > section > .section-heading,
+	.panel-articles > section > .section-heading {
 		position: absolute;
 		width: 1px;
 		height: 1px;

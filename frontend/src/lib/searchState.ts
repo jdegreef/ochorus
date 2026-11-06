@@ -53,7 +53,7 @@ export const searchStateKey = (s: SearchState): string =>
 /**
  * A link into a scoped search — the one place that spells the `?in=` contract.
  *
- * Every entry point (author page, topic page, book page, the reader's in-book
+ * Every entry point (author page, book page, the reader's in-book
  * drawer) goes through here, so they encode identically to what the page itself
  * writes back. Hand-built, they didn't: `?in=book:humility` from a link versus
  * `?in=book%3Ahumility` from `writeSearchState` parse the same but differ as
