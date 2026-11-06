@@ -202,9 +202,18 @@
 	// anchor. Effect, not onMount: client-side nav between works reuses this
 	// component.
 	let restoredFor = '';
+	// The work that opened folded (`paused`, the author page's biography). When
+	// the reader unfolds it they asked to read on from the fold, so it reveals
+	// in place: the visit is recorded, but the page is not jumped to an old
+	// resume point (a `?p=` deep link still lands).
+	let openedFolded = '';
 	$effect(() => {
 		const key = `${kind}:${slug}:${order}`;
-		if (!body || paused || restoredFor === key) return;
+		if (paused) {
+			openedFolded = key;
+			return;
+		}
+		if (!body || restoredFor === key) return;
 		restoredFor = key;
 		openedAt = performance.now();
 		didFinish = false;
@@ -225,7 +234,9 @@
 			const idx =
 				Number.isFinite(fromUrl) && fromUrl > 0
 					? fromUrl
-					: (getScrollAnchor(slug, order, kind, language) ??
+					: openedFolded === key
+						? 0
+						: (getScrollAnchor(slug, order, kind, language) ??
 						getProgressRecord(slug, kind)?.paragraph_index ??
 						0);
 			if (idx > 0 && body?.children[idx]) {
