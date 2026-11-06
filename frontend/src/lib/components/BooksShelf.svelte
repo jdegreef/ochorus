@@ -134,20 +134,20 @@
 	// itself. Not under "By series": there each edition sits in its own series
 	// (the teens editions are Straight Talk), so every edition shows. Every count
 	// on the page counts these slots, the cards a reader can see.
+	const folding = $derived(activeGroup !== 'series');
 	const family = $derived(editionFamilies(books));
-	const fold = <T extends { slug: string }>(list: readonly T[]): readonly T[] =>
-		activeGroup === 'series' ? list : collapseEditions(list);
-	const editionsOf = (b: BookSummary) => (activeGroup === 'series' ? 1 : (family.get(b.slug) ?? 1));
-	/** The works on the shelf — what "N books" counts. */
-	const works = $derived(collapseEditions(books));
-	/** The unfiltered shelf in the current arrangement's slots — "of y". */
-	const shelfSize = $derived(activeGroup === 'series' ? books.length : works.length);
+	const fold = (list: readonly BookSummary[]): readonly BookSummary[] =>
+		folding ? collapseEditions(list) : list;
+	const editionsOf = (b: BookSummary) => (folding ? (family.get(b.slug) ?? 1) : 1);
+	/** The unfiltered shelf, one slot per card — what "N books", the "All N
+	 *  books" tab and "of y" count. */
+	const slots = $derived(fold(books));
 	// The query, the topic and the length narrow the shelf; `shelf` picks the view.
 	const searching = $derived(
 		!!(filters.values.q.trim() || filters.values.topic || filters.values.len)
 	);
 	// The Browse rows — from the books already loaded, no request of their own.
-	const rows = $derived(browseRows(books)); // folds editions itself
+	const rows = $derived(browseRows(books, folding)); // folds as the grid does
 	// Any filter or search in the URL lands on the grid, never on the rows; so
 	// does a shelf too small to make a single row (a young language).
 	const hasBrowse = $derived(rows.length > 0);
@@ -381,9 +381,9 @@
 	{#snippet bookCounts()}
 		<!-- Works, as the grid shows them; and, where young-reader editions fold
 		     into their full texts, every edition too, so neither number hides. -->
-		{works.length}
-		{works.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-		{#if works.length < books.length}
+		{slots.length}
+		{slots.length === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{#if slots.length < books.length}
 			<span class="sep" aria-hidden="true">·</span>
 			{t('books.editionsCount').replace('%n%', String(books.length))}
 		{/if}
@@ -397,7 +397,7 @@
 	<LibraryTabs
 		current="books"
 		series={series.length > 0}
-		browse={hasBrowse ? { count: works.length, all: showAll } : undefined}
+		browse={hasBrowse ? { count: slots.length, all: showAll } : undefined}
 	/>
 
 	{#if loadError}
@@ -456,7 +456,7 @@
 						</div>
 						<div class="cover-rail browse-row" use:scrollEdges>
 							{#each row.books as book, i (book.slug)}
-								<BookCard {book} showAuthor eager={ri === 0 && i < 6} editions={family.get(book.slug)} />
+								<BookCard {book} showAuthor eager={ri === 0 && i < 6} editions={editionsOf(book)} />
 							{/each}
 						</div>
 					</section>
@@ -563,7 +563,7 @@
 			{#if searching}
 				<FilterSummary
 					shown={sorted.length}
-					total={shelfSize}
+					total={slots.length}
 					template={t('books.showing')}
 					onClear={clearFilters}
 					chips={activeChips}

@@ -73,12 +73,26 @@ describe('edition families (design review #26)', () => {
 		'divine-songs-for-children',
 		'come-ye-children',
 		'humility'
-	].map((slug) => ({ slug }));
+	].map((slug) => ({
+		slug,
+		// The young-reader editions' titles carry their "(For …)"; a real work
+		// whose slug merely ends that way does not.
+		title: /-(teens|children)$/.test(slug) && !slug.startsWith('divine') && !slug.startsWith('come')
+			? `${slug} (For Readers)`
+			: slug
+	}));
 
 	it('reads the full text a young-reader edition retells from its slug', () => {
-		expect(editionBase('confessions-teens')).toBe('confessions');
-		expect(editionBase('c-s-lewis-a-life-children')).toBe('c-s-lewis-a-life');
-		expect(editionBase('confessions')).toBeNull();
+		expect(editionBase({ slug: 'confessions-teens', title: 'Confessions (For Teens)' })).toBe('confessions');
+		expect(editionBase({ slug: 'c-s-lewis-a-life-children', title: 'C. S. Lewis (For Children)' })).toBe(
+			'c-s-lewis-a-life'
+		);
+		expect(editionBase({ slug: 'confessions', title: 'Confessions' })).toBeNull();
+	});
+
+	it('takes nothing for a retelling on the slug alone, nor a chained suffix', () => {
+		expect(editionBase({ slug: 'come-ye-children', title: 'Come Ye Children' })).toBeNull();
+		expect(editionBase({ slug: 'x-teens-children', title: 'X (For Children)' })).toBeNull();
 	});
 
 	it('counts each family present on the shelf, keyed by its full text', () => {

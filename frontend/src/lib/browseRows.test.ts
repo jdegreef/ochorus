@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { browseRows, ROW_MAX, ROW_TOPICS, START_HERE } from './browseRows';
 
 const topic = (slug: string) => ({ slug, title: slug.toUpperCase() });
-const book = (slug: string, ...topics: string[]) => ({ slug, topics: topics.map(topic) });
+// A young-reader edition's title carries its "(For …)", as the API's do.
+const titleOf = (slug: string) =>
+	slug.endsWith('-teens') ? `${slug} (For Teens)` : slug.endsWith('-children') ? `${slug} (For Children)` : slug;
+const book = (slug: string, ...topics: string[]) => ({ slug, title: titleOf(slug), topics: topics.map(topic) });
 const many = (n: number, prefix: string, ...topics: string[]) =>
 	Array.from({ length: n }, (_, i) => book(`${prefix}-${i}`, ...topics));
 
@@ -62,6 +65,8 @@ describe('browseRows', () => {
 		const prayer = browseRows(books).find((r) => r.topic?.slug === 'prayer');
 		expect(prayer?.books.map((b) => b.slug)).toEqual(['confessions', 'orthodoxy-teens', 'p-0', 'p-1', 'p-2']);
 		expect(prayer?.count).toBe(5);
+		const unfolded = browseRows(books, false).find((r) => r.topic?.slug === 'prayer');
+		expect(unfolded?.count).toBe(7);
 	});
 
 	it('draws no rows for an empty shelf', () => {

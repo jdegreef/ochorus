@@ -230,17 +230,19 @@
 	/* A work with several editions on the shelf (design review #26): two
 	   sheets peek out past the cover's outer and lower edges, the paper of the
 	   page behind it with a hairline each, so the stack reads in every theme.
-	   Mirrored right-to-left (the shadows' offsets are physical). */
+	   Below the hover fore-edge (::before, -1), which still shows over it; 7px
+	   at most, inside a Browse rail's block padding. Mirrored right-to-left
+	   (the shadows' offsets are physical). */
 	.edition-stack {
 		position: absolute;
-		z-index: -1;
+		z-index: -2;
 		inset: 0;
 		border-radius: var(--radius-card);
 		box-shadow:
-			4px 4px 0 -1px var(--surface-2),
-			5px 5px 0 -1px var(--border-strong),
-			8px 8px 0 -2px var(--surface-2),
-			9px 9px 0 -2px var(--border-strong);
+			3px 3px 0 -1px var(--surface-2),
+			4px 4px 0 -1px var(--border-strong),
+			6px 6px 0 -2px var(--surface-2),
+			7px 7px 0 -2px var(--border-strong);
 		pointer-events: none;
 	}
 	:global([dir='rtl']) .edition-stack {

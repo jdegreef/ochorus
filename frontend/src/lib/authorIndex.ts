@@ -12,7 +12,7 @@
  * unpaginated.
  */
 
-import { splitEdition } from './edition';
+import { editionBase, splitEdition } from './edition';
 import { isImprint } from './originals';
 import { foldText } from './searchNormalize';
 
@@ -181,8 +181,6 @@ export interface IndexRowGroup<A extends IndexAuthor, B extends IndexBook<IndexA
 	entries: IndexRowEntry<A, B>[];
 }
 
-const EDITION_SUFFIX = /-(teens|children)$/;
-
 /**
  * Fold each young-reader edition under its full text, by slug alone — the same
  * link `serializers.sibling_editions` derives. An edition whose `<base>` is not
@@ -196,11 +194,9 @@ export function foldEditions<B extends IndexBook<IndexAuthor>>(books: B[]): Inde
 	const editionsOf = new Map<string, IndexEdition<B>[]>();
 	const folded = new Set<string>();
 	for (const b of books) {
-		const m = b.slug.match(EDITION_SUFFIX);
-		const split = m && splitEdition(b.slug, b.title);
-		if (!m || !split) continue;
-		const base = b.slug.slice(0, -m[0].length);
-		if (!bySlug.has(base) || EDITION_SUFFIX.test(base)) continue;
+		const base = editionBase(b);
+		const split = splitEdition(b.slug, b.title);
+		if (!base || !split || !bySlug.has(base)) continue;
 		const list = editionsOf.get(base) ?? [];
 		list.push({ book: b, audience: split.audience });
 		editionsOf.set(base, list);

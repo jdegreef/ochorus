@@ -52,25 +52,33 @@ export function childrensReading(
 }
 
 /**
- * The full text a young-reader edition retells, by the slug convention
- * (`<base>-teens` / `<base>-children` → `<base>`), or null for a full text.
+ * The full text a young-reader edition retells — `<base>` for
+ * `<base>-teens` / `<base>-children` — or null for anything else. Both signals
+ * must agree, as for `splitEdition`: the slug suffix AND a trailing
+ * "(For …)" in the title, so a real work whose slug merely ends that way
+ * ("Come Ye Children") is never taken for a retelling. A base that is itself
+ * an edition slug (`x-teens-children`) is no full text either. The link
+ * `serializers.sibling_editions` derives; `authorIndex.foldEditions` and the
+ * shelf's fold below both read it here.
  */
-export const editionBase = (slug: string): string | null =>
-	editionKind(slug) ? slug.replace(EDITION_SLUG, '') : null;
+export function editionBase(book: { slug: string; title: string }): string | null {
+	if (!splitEdition(book.slug, book.title)) return null;
+	const base = book.slug.replace(EDITION_SLUG, '');
+	return EDITION_SLUG.test(base) ? null : base;
+}
 
 /**
  * How many editions each work has on this shelf — the full text plus its
  * young-reader editions in the same language, keyed by the full text's slug.
  * Only works with more than one edition appear: a young-reader edition whose
- * full text is not on the shelf ("Divine Songs for Children", or a language
- * with only the retelling) is a work of its own. The frontend twin of
- * `serializers.sibling_editions`.
+ * full text is not on the shelf (a language with only the retelling) is a
+ * work of its own.
  */
-export function editionFamilies(books: readonly { slug: string }[]): Map<string, number> {
+export function editionFamilies(books: readonly { slug: string; title: string }[]): Map<string, number> {
 	const slugs = new Set(books.map((b) => b.slug));
 	const sizes = new Map<string, number>();
 	for (const b of books) {
-		const base = editionBase(b.slug);
+		const base = editionBase(b);
 		if (base && slugs.has(base)) sizes.set(base, (sizes.get(base) ?? 1) + 1);
 	}
 	return sizes;
@@ -84,10 +92,10 @@ export function editionFamilies(books: readonly { slug: string }[]): Map<string,
  * a query or filter that matches the teens edition and not the full text still
  * shows the teens edition, as itself. Order is kept.
  */
-export function collapseEditions<T extends { slug: string }>(list: readonly T[]): T[] {
+export function collapseEditions<T extends { slug: string; title: string }>(list: readonly T[]): T[] {
 	const slugs = new Set(list.map((b) => b.slug));
 	return list.filter((b) => {
-		const base = editionBase(b.slug);
+		const base = editionBase(b);
 		return !(base && slugs.has(base));
 	});
 }
