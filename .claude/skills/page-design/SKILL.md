@@ -223,8 +223,9 @@ back ("← Sermons"), and a trail under it was the same link twice. Keep the
 BreadcrumbList JSON-LD. **And nothing boxed before the first word**: the
 sermon head is eyebrow (kind · passage · time), H1, byline (linked preacher
 with years, Listen beside it), an italic `.standfirst` for the summary, and the
-preaching text as a `.text-epigraph` (gold start rule, no fill, translation
-credited) — dropped when the body opens on the same verse
+preaching text as the shared `<ScriptureEpigraph hue="var(--ornament)">` (gold
+start rule, no fill, translation credited) — dropped when the body opens on the
+same verse
 (`text_in_body`, backend `scripture.opens_with_text`). No `SermonPlate`
 there; it stays in Sermon of the day. The minutes-left pill stands in the start
 margin (`.min-left.beside-text`) and is not mounted where the margin can't hold

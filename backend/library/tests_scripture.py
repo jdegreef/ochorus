@@ -509,6 +509,25 @@ class OpensWithTextTests(SimpleTestCase):
         body = "<blockquote>“In the beginning God created the heaven and the earth.”</blockquote><p>…</p>"
         self.assertFalse(self._check(body, "John 3:16"))
 
+    def test_one_verse_does_not_stand_in_for_a_longer_text(self):
+        luke = (
+            "<blockquote>‘Behold, I send the promise of my Father upon you: but tarry ye in the "
+            "city of Jerusalem, until ye be endued with power from on high.’</blockquote><p>…</p>"
+        )
+        self.assertTrue(self._check(luke, "Luke 24:49"))
+        # Two passages: the epigraph would print Acts 1:8 nowhere.
+        self.assertFalse(self._check(luke, "Luke 24:49; Acts 1:8"))
+        # A whole chapter, quoted one verse of — even when that verse is cited.
+        prodigal = "<blockquote>‘A certain man had two sons.’—Luke xv. 11.</blockquote><p>…</p>"
+        self.assertFalse(self._check(prodigal, "Luke 15"))
+
+    def test_citing_another_verse_of_the_chapter_is_not_the_text(self):
+        body = (
+            "<blockquote>‘Except a man be born again, he cannot see the kingdom of God.’"
+            "—John iii. 3.</blockquote><p>…</p>"
+        )
+        self.assertFalse(self._check(body, "John 3:16"))
+
     def test_only_an_opening_quote_counts(self):
         verse = "<blockquote>For God so loved the world, that he gave his only begotten Son.</blockquote>"
         self.assertTrue(self._check(verse + "<p>…</p>", "John 3:16"))

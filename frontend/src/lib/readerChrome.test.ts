@@ -182,6 +182,8 @@ describe('the sermon head stands on the page ground (design review #12)', () => 
 	it('wears no plate or boxed panel before the first word', () => {
 		expect(src).not.toMatch(/<SermonPlate\b/);
 		expect(src).not.toMatch(/class="text-card\b/);
+		// The text is the shared quiet epigraph, not a panel of its own.
+		expect(src).toMatch(/<ScriptureEpigraph\b/);
 	});
 
 	it('prints the preaching text once when the body opens on it', () => {

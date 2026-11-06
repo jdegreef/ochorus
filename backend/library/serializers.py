@@ -35,7 +35,7 @@ from .models import (
 from .opening import opening_candidate_orders, opening_excerpt
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
-from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
+from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
 from .scripture_graph import treated_passages
 
 #: A dated book's slug → its year-long plan's slug.
@@ -791,8 +791,6 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     text_in_body = serializers.SerializerMethodField()
 
     def get_text_in_body(self, obj) -> bool:
-        from .scripture import opens_with_text
-
         return opens_with_text(obj.body_html, obj.scripture_ref)
 
     # The preacher's years, for the byline ("Robert Murray M'Cheyne, 1813–1843").

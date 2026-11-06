@@ -45,6 +45,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
+	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { adminWorkHref } from '$lib/adminLinks';
@@ -215,8 +216,13 @@
 		};
 	});
 
-	/** Listen / stop — the top bar's button and the one by the title. */
-	const toggleListen = () => (listen.status === 'idle' ? reader?.startListening() : listen.stop());
+	/** Listen — the top bar's button and the one by the title: start, stop, or
+	 *  resume one paused from the Listen bar (stopping it there lost the place). */
+	function toggleListen() {
+		if (listen.status === 'idle') reader?.startListening();
+		else if (listen.status === 'paused') listen.toggle();
+		else listen.stop();
+	}
 
 	/** Scroll to a fraction of the sermon — drives the footer's scrubber. */
 	function scrubTo(to: number) {
@@ -737,10 +743,7 @@
 					onclick={toggleListen}
 					aria-pressed={listen.status !== 'idle'}
 					title="{t('reader.listen')} · {listenTime(sermon.word_count, listen.rate)}"
-					><Icon name={listen.status === 'idle' ? 'play' : 'headphones'} size={16} />{listen.status ===
-					'idle'
-						? t('reader.listen')
-						: t('reader.stopListening')}</button
+					><Icon name={listen.status === 'idle' ? 'play' : 'headphones'} size={16} />{t('reader.listen')}</button
 				>
 			{/if}
 		</div>
@@ -757,12 +760,13 @@
 		     same verse (`text_in_body`), when the preacher's own wording stands
 		     alone and the reference rides in the eyebrow. -->
 		{#if preachingText?.verses?.length && !sermon.text_in_body}
-			<blockquote class="text-epigraph">
-				<p dir="auto">{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}</p>
-				<footer class="eyebrow eyebrow-micro">
-					<bdi>{sermon.scripture_ref}</bdi> · {preachingText.version}
-				</footer>
-			</blockquote>
+			<div class="mt-4">
+				<ScriptureEpigraph
+					text={preachingText.verses.map((v) => v.text).join(' ')}
+					reference="{sermon.scripture_ref} · {preachingText.version}"
+					hue="var(--ornament)"
+				/>
+			</div>
 		{/if}
 	</header>
 
@@ -1122,30 +1126,13 @@
 
 	/* --- The head, on the page ground (design review #12) ------------------ */
 	/* "In brief" as a standfirst: the summary in the display face's italic,
-	   a step above the UI's body size, inviting rather than boxed. */
+	   at the article standfirst's size (ArticleDetail), inviting rather than boxed. */
 	.standfirst {
 		margin-top: 1.25rem;
 		font-family: var(--font-display);
 		font-style: italic;
-		font-size: calc(var(--fs-body) * 1.125);
-		line-height: 1.55;
-		color: var(--muted);
-	}
-	/* The preaching text as a quiet epigraph: indented behind a thin gold
-	   rule (the ornament metal), no fill, its translation credited under it. */
-	.text-epigraph {
-		margin: 1.5rem 0 0;
-		padding-inline-start: 1.1rem;
-		border-inline-start: 2px solid var(--ornament);
-	}
-	.text-epigraph p {
-		font-family: var(--font-display);
-		font-style: italic;
-		line-height: 1.6;
-		color: var(--text);
-	}
-	.text-epigraph footer {
-		margin-top: 0.45rem;
+		font-size: var(--fs-h3);
+		line-height: 1.5;
 		color: var(--muted);
 	}
 
