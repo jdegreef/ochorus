@@ -20,7 +20,8 @@
     "description": "ماذا يكلّف التسليم الكامل من كل القلب، وماذا يثمر؟ يوميات ديفيد برينرد الإرسالية الفاحصة، تليها سِيَر رجال ونساء بذلوا كل شيء من أجل الإنجيل — دعوة إلى التكريس تُروى من خلال حيوات لبّت النداء.",
     "note": [
       "Queue job #1657. Neither source book (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) has an Arabic edition yet, so seed_plans will not create the row until both ship; this prose lands dormant.",
-      "«التسليم» follows the ar glossary for 'surrender'; Brainerd is ديفيد برينرد, the corpus's only form (6 uses). Whoever ships the two books should harmonise their titles with this card."
+      "«التسليم» follows the ar glossary for 'surrender'; Brainerd is ديفيد برينرد, the corpus's only form (6 uses). Whoever ships the two books should harmonise their titles with this card.",
+      "Book job #6845 shipped life-and-diary-of-david-brainerd.ar as «حياة ديفيد برينرد ويوميّاته» (same ديفيد برينرد; the card's «يوميات ديفيد برينرد» names its diary, so no prose change). With men-and-women-who-gave-everything-2.ar already shipped, both source books now exist in ar and seed_plans can create the row."
     ]
   },
   "faith-in-the-fire": {
