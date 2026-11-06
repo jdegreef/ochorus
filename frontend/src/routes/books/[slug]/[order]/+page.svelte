@@ -1437,7 +1437,7 @@
 		// a toolbar button clicked with the mouse keeps focus too, but there
 		// Space still pages, as readers expect.
 		const control = el?.closest?.(INTERACTIVE);
-		const byKeyboard = control && el.matches?.(':focus-visible');
+		const byKeyboard = control && focusVisible(el);
 		if (byKeyboard && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
 		if (e.key === ' ' && control && (byKeyboard || el.closest('.pager'))) return;
 		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
@@ -1840,16 +1840,26 @@
 			barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
 		lastScrollY = y;
 	}
+	/** Whether `el` has keyboard focus. `:focus-visible` is a SyntaxError in
+	 *  `matches()` before Safari 15.4 (the app targets iOS 15.0), and this runs
+	 *  in the scroll handler: a throw there would stop the bars folding at all. */
+	function focusVisible(el: Element | null | undefined) {
+		try {
+			return !!el?.matches?.(':focus-visible');
+		} catch {
+			return false;
+		}
+	}
 	/** Keyboard focus (`:focus-visible`) inside the top bar or the phone row. */
 	function keyboardInBars() {
 		const el = document.activeElement;
-		return !!el?.matches(':focus-visible') && !!(chromeEl?.contains(el) || footEl?.contains(el));
+		return focusVisible(el) && !!(chromeEl?.contains(el) || footEl?.contains(el));
 	}
 	/** Tab landing in a folded bar brings both bars back. A pointer focus — a
 	 *  press on the hairline to seek, a drawer handing focus back — does not:
 	 *  `:focus-visible` only, the rule the top bar's CSS has kept since #7. */
 	function unfold(e: FocusEvent) {
-		if ((e.target as Element).matches?.(':focus-visible')) barHidden = false;
+		if (focusVisible(e.target as Element)) barHidden = false;
 	}
 	const hideChrome = $derived(
 		barHidden &&

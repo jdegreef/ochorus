@@ -248,7 +248,9 @@ describe('the phone reader: the bars fold away while reading (design #30)', () =
 
 	it('a focus landing in either bar brings both back', () => {
 		// Keyboard focus only: a press on the hairline to seek must not unfold.
-		expect(src).toMatch(/function unfold\(e: FocusEvent\) \{\s*if \(\(e\.target as Element\)\.matches\?\.\(':focus-visible'\)\) barHidden = false;/);
+		expect(src).toMatch(/function unfold\(e: FocusEvent\) \{\s*if \(focusVisible\(e\.target as Element\)\) barHidden = false;/);
+		// …which never throws where `:focus-visible` is unknown (iOS < 15.4).
+		expect(src).toMatch(/function focusVisible\([^)]*\) \{\s*try \{/);
 		// …and while the keyboard is in either bar, scrolling folds neither.
 		expect(src).toMatch(/SEEK_SETTLE_MS && !keyboardInBars\(\)\)\s*barHidden = nextBarHidden/);
 		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}/);
