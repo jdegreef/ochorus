@@ -678,12 +678,10 @@ absent from the palette and from search.
 bands. The target is six, in order: the hero (or, for a returning reader, the
 Continue-reading strip — design #10) · Today (design #20) · books · topics ·
 authors · one line for churches and ministries (design #27). #17 shipped the
-structure; until #20 lands the page still renders, in order: hero ·
-book row · `SignupBand` (signed out, accounts on) · `DailyShelf` ·
-`SermonOfTheDay` · `HomeArticles` (the day's blocks #20 folds into one card,
-right after the hero) · topics · `HomeAudienceHubs` (young readers & teens —
-keep it) · authors · `HomeForGroups`. The comments in the file mark each
-slot. Rules:
+structure; the page renders, in order: hero · `TodayCard` · book row ·
+`SignupBand` (signed out, accounts on) · topics · `HomeAudienceHubs` (young
+readers & teens — keep it) · authors · `HomeForGroups`. The comments in the
+file mark each slot. Rules:
 
 - **One ground.** No `.page-band` / `bg-surface-2` section bands on the
   logged-out home; space (`pt-14`) separates sections. `DiscoverStrip` takes
@@ -703,6 +701,18 @@ slot. Rules:
   band, no heading, no per-group pills. English and French only, like the
   footer link; nothing elsewhere. The hub links every group page, so it is
   the crawler's way to them.
+- **Today is one card** (design #20): `TodayCard` — the day's verse, the
+  devotional reading for this date and the sermon of the day as three short
+  columns (stacked under 48rem), "All of today's readings →" to `/today/`.
+  The verse and reading come from `getDailyShelf` (`$lib/todayCard`: the
+  verse is split off a devotional's opening quotation, so outside English it
+  is in the locale's own Bible; in English the reference is looked up and
+  shown in the OWB, tagged OWB), the sermon from `pickDailySermon`. All picked at mount
+  from the reader's local date; the baked HTML carries its skeleton at the
+  card's height. A locale with no devotional or no sermons drops that column;
+  with neither, no card. It replaced `DailyShelf`, `SermonOfTheDay` and
+  `HomeArticles` on this page — don't add a day's block back beside it (the
+  signed-in dashboard keeps all three).
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 
