@@ -402,7 +402,7 @@ a large blessing, four link columns, language tiles, a legal bar, the
 "Ochorus for …" panel with 18 links and a "This week" strip). It is now ONE
 band: logo + mission line · **Library** (PRIMARY_NAV) · **More** (Series,
 young-reader hubs, A–Z, the English hubs, Originals, and ONE "For churches &
-ministries" link to the `/for/` hub) · language `<select>` with About /
+ministries" link to the `/for/` hub) · a language switcher with About /
 Contact / Privacy / Send feedback / RSS under it — then the blessing and © as
 one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
 `forPath(`, no generic cards). Rules:
@@ -417,9 +417,12 @@ one small line. `footerChrome.test.ts` pins it (two `linkColumn`s, no
   each locale's `/series/`, `/young-readers/`, `/teens/`, `/originals/`,
   `/authors/` and `/fr/for/`. Keep those as real `<a href>`s. The
   `/for/<group>/` pages are reached through the `/for/` hub, which links them
-  all — don't drop a group from `FOR_LINKS` without another link to it. The
-  language select needs no hrefs: each locale home is a prerender entry
-  (`svelte.config.js`) and the head's hreflang names them.
+  all — don't drop a group from `FOR_LINKS` without another link to it.
+- **The language switcher is a `<details>` of real links, not a `<select>`**:
+  a select that switches on `change` jumps language on the first arrow key
+  (WCAG 3.2.2), does nothing before hydration, and loses the links to every
+  locale home. The list opens in flow (the footer's `content-visibility`
+  would clip an overlay).
 
 ## Adding a topic shelf (a topic ROW, not a new route)
 

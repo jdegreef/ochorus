@@ -7,15 +7,15 @@ const FOOTER = read('src/lib/components/SiteFooter.svelte');
 const FAB = read('src/lib/components/FeedbackFab.svelte');
 
 describe('the floating feedback button and the footer', () => {
-	it('steps aside once the footer’s "Send feedback" row is reached', () => {
+	it('steps aside once the band carrying "Send feedback" is reached', () => {
 		expect(FOOTER).toMatch(/footerFeedback\.reached\s*=/);
-		expect(FOOTER).toMatch(/<nav class="footer-legal[^"]*"[^>]*bind:this=\{feedbackRow\}/);
+		expect(FOOTER).toMatch(/<div class="footer-band[^"]*"[^>]*bind:this=\{band\}/);
 		expect(FAB).toMatch(/!footerFeedback\.reached \|\| focused/);
 	});
 
-	it('the watched row keeps the "Send feedback" entry', () => {
-		const legal = FOOTER.slice(FOOTER.indexOf('<nav class="footer-legal'));
-		expect(legal.slice(0, legal.indexOf('</nav>'))).toContain("t('feedback.send')");
+	it('the band keeps the "Send feedback" entry', () => {
+		const band = FOOTER.slice(FOOTER.indexOf('<div class="footer-band'));
+		expect(band.slice(0, band.indexOf('<!-- Bible credit'))).toContain("t('feedback.send')");
 	});
 });
 
@@ -25,7 +25,7 @@ describe('the floating feedback button and the footer', () => {
  * a drift back.
  */
 describe('one band', () => {
-	it('has exactly two link columns, Read and More, both through linkColumn', () => {
+	it('has exactly two link columns, Library and More, both through linkColumn', () => {
 		expect(FOOTER.match(/\{@render linkColumn\(/g)?.length).toBe(2);
 		expect(FOOTER).not.toMatch(/<nav aria-labelledby="footer-/);
 	});
@@ -42,7 +42,7 @@ describe('one band', () => {
 	});
 });
 
-describe('language select', () => {
+describe('language switcher', () => {
 	const GENERATOR = read('scripts/fetch-live-locales.mjs');
 
 	it('bakes each live language\'s book count from the API at build time', () => {
@@ -50,13 +50,17 @@ describe('language select', () => {
 		expect(GENERATOR).toContain('export const LIVE_LOCALE_BOOKS');
 	});
 
-	it('words the count beside the autonym, and nothing for a language with none', () => {
+	it('prints the count beside the autonym, and nothing for a language with none', () => {
 		expect(FOOTER).toContain("import { LIVE_LOCALE_BOOKS } from '$lib/live-locales.generated'");
-		expect(FOOTER).toMatch(/if \(!n\) return name;/);
+		expect(FOOTER).toMatch(/\{#if LIVE_LOCALE_BOOKS\[l\.code\]\}/);
 	});
 
-	it('switches through lang.choose(), voicing each option in its own language', () => {
-		expect(FOOTER).toMatch(/onchange=\{\(e\) => lang\.choose\(e\.currentTarget\.value\)\}/);
-		expect(FOOTER).toMatch(/<option value=\{l\.code\} lang=\{l\.code\}/);
+	// Not a <select>: one that switches on `change` jumps language on the first
+	// arrow key, does nothing before hydration, and drops the per-page links to
+	// every locale's home. Real links, the click recorded through choose().
+	it('lists real links to each locale home, switching through lang.choose()', () => {
+		expect(FOOTER).not.toMatch(/<select\s/);
+		expect(FOOTER).toMatch(/href=\{localizeHref\('\/', \{ locale: l\.code/);
+		expect(FOOTER).toMatch(/isUnmodifiedPrimaryClick\(e\)[\s\S]{0,120}lang\.choose\(l\.code\)/);
 	});
 });

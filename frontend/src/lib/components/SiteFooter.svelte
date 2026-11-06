@@ -1,8 +1,8 @@
 <script lang="ts">
 	/**
 	 * The site footer, under every page but a focus-mode reader. One band: the
-	 * logo and a one-line mission, two short link columns (Read · More), the
-	 * language select with the About / Contact / Privacy links under it, and the
+	 * logo and a one-line mission, two short link columns (Library · More), the
+	 * language switcher with the About / Contact / Privacy links under it, and the
 	 * closing blessing as one small line. Above it, only a PERSONAL next step —
 	 * the sign-up invitation, or a signed-in reader's current book — and never
 	 * one that points at the page the reader is on. Its own component so footer
@@ -18,7 +18,8 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
-	import { localizeHref, deLocalizeHref, getTextDirection } from '$lib/paraglide/runtime';
+	import { localizeHref, deLocalizeHref, getTextDirection, locales } from '$lib/paraglide/runtime';
+	import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import {
 		PRIMARY_NAV,
@@ -43,7 +44,7 @@
 	const t = i18n.t;
 	const copyrightYear = new Date().getFullYear();
 
-	// The language select: the ADVERTISED locales, named in their own language,
+	// The language switcher: the ADVERTISED locales, named in their own language,
 	// plus the one the reader is in (footerLocales — the same rule the sitemap
 	// and hreflang use, so the site makes one claim about which languages it
 	// serves; the rest stay switchable in Settings).
@@ -82,13 +83,14 @@
 
 	const blessing = $derived(blessingFor(lang.current));
 
-	// Tell FeedbackFab once the footer's "Send feedback" row has scrolled into
-	// view, or past it, so the floating button steps aside instead of
-	// duplicating it over the footer.
-	let feedbackRow = $state<HTMLElement>();
+	// Tell FeedbackFab once the band — which carries "Send feedback" — has
+	// scrolled into view, or past it, so the floating button steps aside
+	// instead of duplicating that link over the footer (or covering the
+	// language switcher above it). The band, not the link, for that reason.
+	let band = $state<HTMLElement>();
 	$effect(() => {
-		const node = feedbackRow;
-		if (!node || typeof IntersectionObserver === 'undefined') return;
+		const node = band;
+		if (!auth.enabled || !node || typeof IntersectionObserver === 'undefined') return;
 		const io = new IntersectionObserver(([e]) => {
 			footerFeedback.reached = e.isIntersecting || e.boundingClientRect.top < 0;
 		});
@@ -107,14 +109,9 @@
 		withSource(localizeHref(loginHref($page.url.pathname, $page.url.search)), 'feedback')
 	);
 
-	/** A language's option text: the autonym, and how many books wait in it
-	 *  (baked at build, $lib/live-locales.generated), worded in the reader's
-	 *  UI language like every count on the site; just the name with none. */
-	function langOption(code: string, name: string): string {
-		const n = LIVE_LOCALE_BOOKS[code];
-		if (!n) return name;
-		return `${name} · ${n} ${n === 1 ? t('common.bookOne') : t('common.bookMany')}`;
-	}
+	const currentName = $derived(
+		footerLangs.find((l) => l.code === lang.current)?.native_name ?? lang.currentEntry.native_name
+	);
 </script>
 
 <footer class="site-footer border-t border-border bg-surface-2" bind:this={footerEl}>
@@ -161,7 +158,7 @@
 			{@render list()}
 		</nav>
 	{/snippet}
-	<div class="footer-band chrome-col px-5 py-8 sm:py-10">
+	<div class="footer-band chrome-col px-5 py-8 sm:py-10" bind:this={band}>
 		<div class="footer-brand">
 			<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
 				<BrandMark height={30} />
@@ -210,32 +207,59 @@
 		{@render linkColumn('footer-more-heading', t('nav.more'), moreList)}
 
 		<div class="footer-meta">
-			<!-- The language select: each locale named in its OWN language (a reader
-			     scanning for theirs recognises the autonym, not the exonym), with
-			     lang on each option so a screen reader voices it in that language.
-			     The change goes through lang.choose(), not set(): a reader-
-			     initiated switch MUST record the choice, or the next profile pull
-			     adopts the account's saved locale and bounces them back to English
-			     (langChoice.test.ts guards it). The crawl does not need links here:
-			     every locale's home is a prerender entry, and the head's hreflang
-			     names them all. -->
-			<label class="footer-heading block" for="footer-lang">{t('nav.language')}</label>
-			<select
-				id="footer-lang"
-				class="field footer-lang"
-				value={lang.current}
-				onchange={(e) => lang.choose(e.currentTarget.value)}
-			>
-				{#each footerLangs as l (l.code)}
-					<option value={l.code} lang={l.code} dir={getTextDirection(l.code)}
-						>{langOption(l.code, l.native_name)}</option
-					>
-				{/each}
-			</select>
+			<!-- The language switcher: a select-shaped disclosure whose list is real
+			     links, not a <select>. A <select> that switches on `change` jumps
+			     language on the first arrow key (WCAG 3.2.2), does nothing before
+			     hydration, and drops the links to every locale's home that each
+			     page carries. Here a closed row shows the current language; open,
+			     each locale is named in its OWN language (the autonym a reader
+			     scans for), lang on the name so a screen reader voices it in that
+			     language, and how many books wait there (baked at build,
+			     $lib/live-locales.generated) worded in the reader's UI language.
+			     The list opens in flow, not as an overlay, so the footer's paint
+			     containment can't clip it.
+			     The click goes through lang.choose(), not set(): a reader-initiated
+			     switch MUST record the choice, or the next profile pull adopts the
+			     account's saved locale and bounces them back to English
+			     (langChoice.test.ts). Modified clicks go to the browser: the href
+			     is already that locale's home, so a new tab opens it right. -->
+			<h2 class="footer-heading" id="footer-lang-heading">{t('nav.language')}</h2>
+			<details class="footer-lang">
+				<summary class="field footer-lang-current" aria-describedby="footer-lang-heading">
+					<span lang={lang.current} dir={getTextDirection(lang.current)}>{currentName}</span>
+					<Icon name="chevron-right" size={16} mirror={false} class="footer-lang-chevron" />
+				</summary>
+				<ul class="footer-lang-list" aria-labelledby="footer-lang-heading">
+					{#each footerLangs as l (l.code)}
+						<li>
+							<a
+								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
+								class="footer-lang-link"
+								aria-current={l.code === lang.current ? 'true' : undefined}
+								onclick={(e) => {
+									if (!isUnmodifiedPrimaryClick(e)) return;
+									e.preventDefault();
+									lang.choose(l.code);
+								}}
+							>
+								<span class="footer-lang-name" lang={l.code} dir={getTextDirection(l.code)}
+									>{l.native_name}</span
+								>
+								{#if LIVE_LOCALE_BOOKS[l.code]}
+									<span class="footer-lang-count">
+										{LIVE_LOCALE_BOOKS[l.code]}
+										{LIVE_LOCALE_BOOKS[l.code] === 1 ? t('common.bookOne') : t('common.bookMany')}
+									</span>
+								{/if}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</details>
 			<!-- The utility links a reader looks for last. Feedback is a modal when
 			     signed in; signed out it needs an account first, so it links to
 			     /login. RSS serves every language. -->
-			<nav class="footer-legal footer-links" aria-label={t('footer.aboutHeading')} bind:this={feedbackRow}>
+			<nav class="footer-legal footer-links" aria-label={t('footer.aboutHeading')}>
 				<a href={localizeHref('/about')}>{t('nav.about')}</a>
 				<a href={localizeHref('/contact')}>{t('nav.contact')}</a>
 				<a href="{localizeHref('/legal')}#privacy">{t('footer.legal')}</a>
@@ -303,16 +327,22 @@
 		   layout and paint until it nears the viewport, so a long page's
 		   recalcs (every tap that changes state) don't pay for a footer nobody
 		   is looking at (INP). `auto` remembers the real height once rendered;
-		   the figure is the measured band (≈720px on a phone, ≈330px wider).
+		   the figure is the measured band (≈760px stacked on a phone, ≈620px
+		   stacked from sm, ≈420px in its one row from lg).
 		   Nothing in it is sticky or overflows its box (paint containment would
 		   clip it), and its IntersectionObservers (the resume card's 600px
 		   prefetch, the feedback hand-off) fire as before. */
 		content-visibility: auto;
-		contain-intrinsic-block-size: auto 720px;
+		contain-intrinsic-block-size: auto 760px;
 	}
 	@media (min-width: 640px) {
 		.site-footer {
-			contain-intrinsic-block-size: auto 360px;
+			contain-intrinsic-block-size: auto 620px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.site-footer {
+			contain-intrinsic-block-size: auto 420px;
 		}
 	}
 	/* The footer's one colourful gesture: an indigo-to-gold hairline along the
@@ -351,13 +381,73 @@
 		}
 	}
 
+	/* The switcher: a .field-shaped row with a chevron that turns as it opens,
+	   and under it the locales as touch rows (a mis-tap here doesn't scroll,
+	   it switches the whole site's language). */
 	.footer-lang {
-		display: block;
-		inline-size: 100%;
 		max-inline-size: 18rem;
-		/* A mis-pick here doesn't scroll, it switches the whole site's
-		   language, so it gets a full touch row. */
+	}
+	.footer-lang-current {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
 		min-block-size: 2.75rem;
+		cursor: pointer;
+		list-style: none;
+	}
+	.footer-lang-current::-webkit-details-marker {
+		display: none;
+	}
+	.footer-lang-current :global(.footer-lang-chevron) {
+		color: var(--muted);
+		rotate: 90deg;
+		transition: rotate var(--duration-fast) ease;
+	}
+	.footer-lang[open] .footer-lang-current :global(.footer-lang-chevron) {
+		rotate: -90deg;
+	}
+	.footer-lang-list {
+		margin-block-start: 0.25rem;
+		padding-block: 0.25rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+	}
+	.footer-lang-link {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.75rem;
+		min-block-size: 2.75rem;
+		align-content: center;
+		flex-wrap: wrap;
+		padding: 0.55rem 0.85rem;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.footer-lang-link:hover {
+		background: var(--surface-2);
+		text-decoration: none;
+	}
+	/* The reader's own language: an accent edge, never the fill alone (Q1). */
+	.footer-lang-link[aria-current] {
+		border-inline-start: 3px solid var(--accent);
+		padding-inline-start: calc(0.85rem - 3px);
+	}
+	.footer-lang-name {
+		font-family: var(--font-display);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	.footer-lang-count {
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.footer-lang-current :global(.footer-lang-chevron) {
+			transition: none;
+		}
 	}
 	/* About · Contact · Privacy · Feedback · RSS, wrapping under the select. */
 	/* The links wear app.css's .footer-links recipe (muted, tap padding, the
