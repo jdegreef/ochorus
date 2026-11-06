@@ -17,6 +17,7 @@
 	import { cssString } from '$lib/cssString';
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
+	import { firstSentence } from '$lib/firstSentence';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
@@ -112,10 +113,11 @@
 		formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))
 	);
 
-	// The H1 and the <title> both name what the page actually holds — "<Name>
-	// Biography, Books, and Sermons" — rather than the bare name: that is how
-	// people search for a writer, and it tells a crawler what the page is. They
-	// share one derived string so the two can never drift apart.
+	// The <title> names what the page actually holds — "<Name> Biography,
+	// Books, and Sermons" — rather than the bare name: that is how people
+	// search for a writer, and it tells a crawler what the page is. The visible
+	// H1 is the person's name alone (design review #13): the long phrase read
+	// as an SEO string to the person who had already arrived.
 	//
 	// Each combination is its own message rather than assembled from fragments,
 	// because these languages put the name in different places ("Biografía de
@@ -143,18 +145,17 @@
 		headingKey ? t(headingKey).replace('%name%', author.name) : author.name
 	);
 	// The search title carries the lifespan — "Andrew Murray (1828–1917)" is how
-	// people recognise the person they searched for. Title only; the H1 stays the
-	// plain heading. (seo.fitTitle drops the brand suffix if it runs long.)
+	// people recognise the person they searched for. (seo.fitTitle drops the
+	// brand suffix if it runs long.)
 	const seoTitle = $derived(
 		headingKey && years
 			? t(headingKey).replace('%name%', `${author.name} (${years})`)
 			: heading
 	);
 
-	// A one-line "what's here" summary under the name: era + work counts.
-	const summaryBits = $derived(
+	// What is here to read — "18 books · 2 sermons" — the hero's last fact.
+	const worksBits = $derived(
 		[
-			years,
 			author.books.length
 				? `${author.books.length} ${author.books.length === 1 ? t('common.bookOne') : t('common.bookMany')}`
 				: '',
@@ -163,6 +164,26 @@
 				: ''
 		].filter(Boolean)
 	);
+	// The era and the work counts, for a bio-less page's meta description.
+	const summaryBits = $derived([years, ...worksBits].filter(Boolean));
+
+	// Who they were, in one line under the name: the opening sentence of the
+	// summary this locale has (there is no tagline field, and the line is not
+	// written for the page). No summary, no line.
+	const identity = $derived(firstSentence(author.bio));
+
+	// The writer's hubs as key facts: their traditions, then their place, each
+	// under its own label ("Tradition", "Place") — the order the API serves.
+	const hubGroups = $derived(
+		(
+			[
+				{ label: t('bios.tradition'), hubs: (author.hubs ?? []).filter((h) => h.kind === 'tradition') },
+				{ label: t('bios.place'), hubs: (author.hubs ?? []).filter((h) => h.kind !== 'tradition') }
+			] as const
+		).filter((g) => g.hubs.length)
+	);
+	// The quote page is English only (see the link in the hero's facts).
+	const showQuotes = $derived(!!author.quote_count && getLang() === 'en');
 
 	// "More lives to explore": nearest contemporaries by birth year (loaded after
 	// mount; the page is prerendered). Falls back to any other authors when this
@@ -445,33 +466,78 @@
 		<Breadcrumb items={crumbs} />
 	</div>
 
-	<!-- The masthead: the writer's portrait hung as a framed print on a band of
-	     their era's colour (AuthorHero), the name and what's here beside it. -->
-	<AuthorHero
-		slug={author.slug}
-		name={author.name}
-		photoUrl={author.photo_url}
-		birthYear={author.birth_year}
-		{years}
-	>
-		<h1 class="text-h1" dir="auto">{heading}</h1>
-		{#if summaryBits.length}
-			<p class="mt-1.5 text-body text-muted">
-				<!-- The separator as an expression: literal spaces at an {#if} boundary are
-				     compiler-trimmed ("1828–1917·12 books"). -->
-				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="sep">{' · '}</span>{/if}{bit}{/each}
-			</p>
+	<!-- The masthead, laid out as the book page's hero (AuthorHero): the
+	     portrait on the start side; the era, the name and who they were in one
+	     line beside it; then the key facts and the page's actions. -->
+	<AuthorHero slug={author.slug} name={author.name} photoUrl={author.photo_url} birthYear={author.birth_year}>
+		<!-- The person's name, as the book page's H1 is the book's title. The
+		     "<Name> Biography, Books, and Sermons" phrase is the <title>'s. -->
+		<h1 class="text-h1" dir="auto">{author.name}</h1>
+		{#if identity}
+			<p class="mt-2 text-body text-muted" dir="auto">{identity}</p>
 		{/if}
 		<!-- Their birthday, or the day they died: a candle and the date. -->
 		<AuthorCandle slug={author.slug} />
-		<!-- The writer's traditions and place, each a hub page of writers like them. -->
-		{#if author.hubs?.length}
-			<ul class="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
-				{#each author.hubs as h (h.slug)}
-					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+		{#snippet details()}
+			<!-- Key facts, only those the data holds: the years, the writer's
+			     traditions and place (each a hub page of writers like them), and
+			     what is here to read. -->
+			<dl class="author-facts">
+				{#if author.birth_year}
+					<div><dt>{t('author.factBorn')}</dt><dd>{author.birth_year}</dd></div>
+				{/if}
+				{#if author.death_year}
+					<div><dt>{t('author.factDied')}</dt><dd>{author.death_year}</dd></div>
+				{/if}
+				{#each hubGroups as g (g.label)}
+					<div>
+						<dt>{g.label}</dt>
+						<dd>
+							{#each g.hubs as h, i (h.slug)}{#if i > 0}{', '}{/if}<a
+									href={localizeHref(hubPath(h))}
+									class="text-accent hover:underline">{h.label}</a
+								>{/each}
+						</dd>
+					</div>
 				{/each}
-			</ul>
-		{/if}
+				{#if worksBits.length || showQuotes}
+					<div>
+						<dt>{t('author.factHere')}</dt>
+						<dd>
+							<!-- The separator as an expression: literal spaces at an {#if}
+							     boundary are compiler-trimmed. -->
+							{#each worksBits as bit, i (i)}{#if i > 0}<span class="sep">{' · '}</span>{/if}{bit}{/each}
+							<!-- The writer's quotations: a link here rather than a hero
+							     button. Only with approved quotations, and only to English
+							     readers: the quote page is English (lifted from the English
+							     works, each citation naming an English chapter), so a locale
+							     prefix would promise a page that does not exist. Un-localized
+							     href for the same reason. This link also keeps the quote page
+							     off the list of pages reachable only from the sitemap. -->
+							{#if showQuotes}{#if worksBits.length}<span class="sep">{' · '}</span>{/if}<a
+									href={`/quotes/${author.slug}/`}
+									class="text-accent hover:underline">{author.quote_count} quotes</a
+								>{/if}
+						</dd>
+					</div>
+				{/if}
+			</dl>
+
+			<!-- The page's actions: Follow is the one outlined button; Share, and
+			     Search this author's works (the real search, scoped to them), are
+			     quiet icons beside it. The biography's reading tools live with the
+			     biography below. -->
+			<div class="author-actions mt-4 flex flex-wrap items-center gap-1">
+				<FavoriteButton kind="author" slug={author.slug} showLabel />
+				<ShareButton url={canonical} title={author.name} />
+				<a
+					href={localizeHref(scopedSearchHref('author', author.slug))}
+					class="btn btn-icon btn-ghost"
+					aria-label={t('search.inAuthor')}
+					title={t('search.inAuthor')}><Icon name="search" size={18} /></a
+				>
+			</div>
+		{/snippet}
 	</AuthorHero>
 
 	<!-- The read card (shared .read-card, as on the book and plan pages): pick up
@@ -532,36 +598,7 @@
 		</a>
 	{/if}
 
-	<!-- The page's own actions — keep, share, the writer's quotations, search
-	     their works — as the book page's action row (an icon strip when narrow).
-	     The biography's reading tools live with the biography below. -->
-	<div class="action-host mx-auto mt-3 max-w-[40rem]">
-		<div class="action-strip">
-			<FavoriteButton kind="author" slug={author.slug} showLabel />
-			<ShareButton url={canonical} title={author.name} showLabel />
-			<!-- Shown only when a person has approved quotations for this writer,
-			     and only to English readers: the page is English (the quotations
-			     are lifted from the English works and each citation names an
-			     English chapter), so offering it under a locale prefix would
-			     promise a page that does not exist. Un-localized href for the
-			     same reason. This link is also what keeps the quote page off the
-			     list of pages reachable only from the sitemap. -->
-			{#if author.quote_count && getLang() === 'en'}
-				<a href={`/quotes/${author.slug}/`} class="btn btn-sm btn-ghost"
-					><Icon name="quote" size={16} /><span>Quotes</span></a
-				>
-			{/if}
-			<!-- Search this author's works — the real search, scoped to them. -->
-			<a
-				href={localizeHref(scopedSearchHref('author', author.slug))}
-				class="btn btn-sm btn-ghost"
-				aria-label={t('search.inAuthor')}
-				title={t('search.inAuthor')}><Icon name="search" size={16} /><span>{t('nav.search')}</span></a
-			>
-		</div>
-	</div>
-
-	<!-- On-page jump navigation. Sits directly under the masthead's action row —
+	<!-- On-page jump navigation. Sits under the masthead's read and plan cards —
 	     a full-width section rule the reader meets before the timeline — then pins
 	     under the app nav (`--appnav-h`) on scroll; its measured height feeds
 	     `--pinned-offset` above. Hidden in focus mode with the rest of the page
@@ -1118,6 +1155,29 @@
 	:global(.bio .prayer.answered)::before {
 		content: '✦ ' var(--label-answered, 'Answer to prayer');
 		color: var(--accent);
+	}
+	/* The hero's key facts: a quiet two-column list, muted labels in one
+	   column and their values in the next, as a biography's fact box. */
+	.author-facts {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 0.3rem 1rem;
+		margin: 1rem 0 0;
+		font-size: var(--fs-small);
+	}
+	.author-facts > div {
+		display: contents;
+	}
+	.author-facts dt {
+		color: var(--muted);
+	}
+	.author-facts dd {
+		margin: 0;
+		color: var(--text);
+	}
+	/* Follow keeps its outline; Share and Search beside it are bare icons. */
+	.author-actions :global(.btn-icon) {
+		border-color: transparent;
 	}
 	.author-plan {
 		display: flex;

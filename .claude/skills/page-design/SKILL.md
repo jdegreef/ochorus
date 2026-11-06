@@ -146,7 +146,20 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      the name only in the h1 and no link);
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
-   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip`.
+   - **hero visual** on the start side, as the book page hangs its cover:
+     cover, portrait, plate or `CoverStrip`. On a phone it sits small BESIDE
+     the h1, never above it alone.
+   - **The h1 is the item's own name** — a title, a person's name. A longer
+     search phrase ("X Biography, Books, and Sermons") belongs in `<Seo title>`
+     only (design review #13).
+   - **Author page (#13):** `AuthorHero` is the book page's light layout, not a
+     dark band — the portrait as the photograph is (no `.duotone`, no
+     grayscale) in a light print frame; era eyebrow; the name; one line of who
+     they were (`firstSentence(author.bio)` — there is no tagline field, so
+     don't write one); a facts `<dl>` of only what the data holds (Born, Died,
+     Tradition, Place, On Ochorus); then Follow as the one outlined button and
+     Share/Search as bare icons. Quotes is a link in the facts, not a button.
+     `authorHero.test.ts` guards it.
 4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
    `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
    (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
