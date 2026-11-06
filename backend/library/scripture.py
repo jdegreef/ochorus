@@ -701,3 +701,60 @@ def misattributed(quote: str, ref_text: str) -> str | None:
     if best < floor or best - cited_best < RIVAL_MARGIN:
         return None
     return f"{best_book.title} {best_id // 1000 % 1000}:{best_id % 1000}"
+
+
+# ── A sermon that opens on its own text ────────────────────────────────────
+# Over half the sermons begin with a <blockquote> of the text the preacher
+# announced, in his own Bible's wording. The sermon page also sets that text
+# above the body, from the house Bible, so a reader met one verse twice in two
+# translations, back to back (design review #12). This says when the body's
+# copy IS the text, so the page can drop its own and keep the preacher's: the
+# sermon argues from his wording, and the body is what bookmarks count in.
+#
+# Conservative: a false yes hides the verse the sermon is built on, a false no
+# only shows it twice. Compared against the ASV — the KJV these sermons quote is
+# far closer to it than to the OWB the page prints, the reason `misattributed`
+# uses it too.
+
+_LEADING_QUOTE = re.compile(r"^\s*<blockquote\b[^>]*>(.*?)</blockquote>", re.S | re.I)
+_REF_ANCHOR = re.compile(r'<a class="scripture-ref"[^>]*\bdata-ref="([^"]*)"[^>]*>.*?</a>', re.S)
+_TAG = re.compile(r"<[^>]+>")
+#: Share of the quote's content words found in the text's verses.
+TEXT_OVERLAP = 0.6
+#: The lower bar when the quote also cites the text's own chapter ("—JOHN i. 17").
+CITED_TEXT_OVERLAP = 0.25
+#: More content words than this is the opening of the sermon, not its text
+#: (a whole read passage — the Prodigal Son, 1 Kings 19 — is ~150).
+MAX_EPIGRAPH_TOKENS = 400
+
+
+def opens_with_text(body_html: str, ref_text: str) -> bool:
+    """Whether ``body_html`` opens with a quotation of its sermon's text ``ref_text``.
+
+    True only when the body's FIRST element is a ``<blockquote>`` holding verse
+    words (a bare "Matthew 11:28" repeats nothing) of epigraph size, and most of
+    those words are in the text's verses — or a quarter are and the quote also
+    cites the text's chapter. A citation alone is not enough: a homily headed
+    "Spoken in Antioch … 1 Tim. vi. 17" cites the chapter and quotes none of it.
+    English book names and an English Bible, as everywhere in this module: a
+    translated sermon answers False and keeps both.
+    """
+    m = _LEADING_QUOTE.match(body_html or "")
+    text_ids = reference_verse_ids(ref_text) if ref_text and m else frozenset()
+    if not text_ids:
+        return False
+    quote = annotate_references(m.group(1))
+    words = _tokens(_TAG.sub(" ", _REF_ANCHOR.sub(" ", quote)))
+    if len(words) < 2 or len(words) > MAX_EPIGRAPH_TOKENS:
+        return False
+    verse_words: set[str] = set()
+    for vid in text_ids:
+        verse_words |= _tokens(_asv_text(vid))
+    share = len(words & verse_words) / len(words)
+    if share >= TEXT_OVERLAP:
+        return True
+    chapters = {vid // 1000 for vid in text_ids}
+    cites_chapter = any(
+        chapters & {vid // 1000 for vid in reference_verse_ids(r)} for r in _REF_ANCHOR.findall(quote)
+    )
+    return cites_chapter and share >= CITED_TEXT_OVERLAP

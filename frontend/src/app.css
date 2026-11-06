@@ -2989,7 +2989,7 @@ nav.appnav .navsearch:hover {
 }
 
 /* The one step below the eyebrow, for the dense width-constrained cluster §2
-   names (sermon outline/text-card labels). A modifier beside .eyebrow — not a
+   names (sermon outline labels, the epigraph's credit). A modifier beside .eyebrow — not a
    per-component scoped font-size override, which fights the unlayered class. */
 .eyebrow-micro {
 	font-size: var(--fs-micro);
@@ -4140,6 +4140,16 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+/* In the start margin, its end edge just short of the reading column, rather
+   than centred over the line being read (design review #12). Wants the
+   column's `--reading-measure` on the pill itself (the page passes the
+   reader's style) and a margin wide enough to hold it, which the page checks
+   before mounting it. Logical, so it moves to the right in Arabic. */
+.min-left.beside-text {
+	left: auto;
+	transform: none;
+	inset-inline-end: calc(50% + var(--reading-measure, 42rem) / 2);
 }
 /* Phones: near-opaque instead of blurred, as .reader-dock (the blur repaints
    under the pill on every scroll frame). */
