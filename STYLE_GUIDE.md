@@ -490,8 +490,8 @@ through `sermonArt`, never `emblemHue`: that one reads the drawings, and
 importing it pulls all 51 onto the route's critical path.
 
 The shelf card's band and the sermon plate share **`.hue-band`**, driven by
-`--band-hue`: one wash rule, not one per surface. The topic hero still carries
-its own, slightly weaker copy — see the note on `.hue-band` in `app.css`.
+`--band-hue`: one wash rule, not one per surface. (The topic page's header had
+its own weaker copy until design review #16 took that header out of its box.)
 
 **Sermon row** (`<SermonCard>`, `.sermon-row` inside a `.sermon-list`) — a
 sermon is listed as a **plain list row, not a card**, on every page that lists
