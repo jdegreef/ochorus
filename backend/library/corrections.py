@@ -5434,6 +5434,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # across an <h2> and a <p> (the chapter title carries it).
         "replacements": [
             ("<p>——0——</p> ", ""),
+            # The same ornament, left between ch23's motto and its closing
+            # prayer and between ch26's prayer and its NOTE. Every translation
+            # copied the bare block verbatim, so the one pair clears all twelve
+            # editions and their tag sequences stay in step.
+            ("<p>——0———</p> ", ""),
+            ("<p>———0——-</p> ", ""),
+            # Ch08's footnote marker, whose note the transcription dropped: the
+            # "1" points at nothing. Every edition carries it at the same spot;
+            # fr alone has no space after it, so its pair restores one first.
+            ("foi.<sup>1 </sup>Que", "foi. Que"),
+            ("<sup>1 </sup>", ""),
             ("<h2>GEORGE MULLER, AND THE SECRET OF HIS</h2> <p>POWER IN PRAYER</p> ", ""),
             # CCEL dates the Preface 1895; the book is 1885, and Murray's own
             # note (ch33) has Müller, born 1805, "now eighty years of age".
