@@ -121,8 +121,8 @@
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
-		// Field INP attribution (`Slow tap` events); loads after idle, off
-		// with analytics — see $lib/webVitals.
+		// Field INP attribution (`Slow tap` events) and, sampled, the first load's
+		// LCP + TTFB (`Page load`); loads after idle, off with analytics — see $lib/webVitals.
 		initWebVitals(getLocale());
 		install.init();
 	});
