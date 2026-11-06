@@ -192,6 +192,7 @@ EXPORT_PILOT = frozenset({
     ("faithful-with-little", "fr"),
     ("faithful-with-little", "pt"),
     ("faithful-with-little", "sw"),
+    ("faithful-with-little", "lg"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices

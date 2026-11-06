@@ -19807,6 +19807,18 @@
 				528
 			]
 		},
+		"lg/faithful-with-little": {
+			"ground": "8a03179b03dbc6835561dc3fd065b3dde2b3ed2bc3a21fd06ecd6cdc63f14536",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/feasting-at-the-table": {
 			"ground": "069f82a909f129c9adb5253729df1406d89fbf0c248fec73d9f25321d930f918",
 			"style": "devotional",
