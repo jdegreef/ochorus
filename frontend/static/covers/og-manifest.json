@@ -7271,6 +7271,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"es/daughters-of-the-king-3": {
+			"ground": "04d5aa9af6192a8dd26e480d7b05569c4773306a26bb23f1fee4b2cf363c4b22",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"es/david-livingstone-a-life-children": {
 			"ground": "53b12b7c3e78e011d84b4e1ab155af0961b9bbcaf6c225ea810401c852dc731a",
 			"style": "young",
