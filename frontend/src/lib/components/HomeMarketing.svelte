@@ -4,9 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
-	import DailyShelf from '$lib/components/DailyShelf.svelte';
-	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
-	import HomeArticles from '$lib/components/HomeArticles.svelte';
+	import TodayCard from '$lib/components/TodayCard.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
@@ -78,9 +76,12 @@
 	<div class="home-hold order-1">{@render continueHold()}{@render nudgeHold()}</div>
 </div>
 
-<!-- Design #20 (Today: verse · devotional · sermon) slots in HERE, between
-     the hero and the books. Until it does, the day's blocks (DailyShelf,
-     SermonOfTheDay, HomeArticles) keep their place below the book row. -->
+<!-- Today (design #20): the day's verse, devotional reading and sermon in
+     one card, between the hero and the books. It replaced the three day's
+     blocks that sat below the book row (DailyShelf, SermonOfTheDay,
+     HomeArticles); the signed-in dashboard keeps those. Client-side — its
+     skeleton holds the card's place in the baked HTML. -->
+<TodayCard />
 
 <!-- Books -->
 <DiscoverStrip books={featured} band="none" belowHero />
@@ -90,18 +91,6 @@
      stays hidden where accounts don't work and never bakes into the
      prerendered HTML. See SignupBand. -->
 <SignupBand />
-
-<!-- Today in the devotionals — each year-long devotional's entry for the
-     reader's date. Client-side; renders nothing in a language with none. -->
-<DailyShelf />
-
-<!-- Sermon of the day — editorial content discovery, not personal. Renders
-     nothing when there is no featured sermon in the current language. -->
-<SermonOfTheDay />
-
-<!-- Eight articles for today — turns over daily; renders nothing in a language
-     with fewer than eight articles. -->
-<HomeArticles />
 
 <!-- Topics: eight names; the header links to all of them. -->
 <TopicChips {topics} quiet />
