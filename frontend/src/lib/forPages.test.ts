@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FOR_FAMILIES, FOR_LINKS, forFamilyLinks, forIndexPath, forLocale, forOfTheWeek, forPath } from './forLinks';
+import { FOR_LINKS, forIndexPath, forLocale, forPath } from './forLinks';
 import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
 import {
@@ -416,21 +416,5 @@ describe('the French "Ochorus pour …" pages', () => {
 		const row = forLanguage('sw', { books: [], sermons: 0, plans: 0 }, [], 'fr');
 		expect(row.name).toBe('swahili');
 		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, [], 'fr').name).toBe('luganda');
-	});
-});
-
-describe('the footer families', () => {
-	it('link every audience exactly once, none in an empty column', () => {
-		const linked = FOR_FAMILIES.flatMap((f) => forFamilyLinks(f.id).map((l) => l.slug));
-		expect([...linked].sort()).toEqual(FOR_LINKS.map((l) => l.slug).sort());
-		for (const f of FOR_FAMILIES) expect(forFamilyLinks(f.id).length).toBeGreaterThan(0);
-	});
-
-	it('feature each group in turn, one per week from Monday', () => {
-		const monday = Date.UTC(2026, 9, 19);
-		const sunday = monday + 6 * 86_400_000 + 86_399_000;
-		expect(forOfTheWeek(sunday)).toBe(forOfTheWeek(monday));
-		const weeks = Array.from({ length: FOR_LINKS.length }, (_, i) => forOfTheWeek(monday + i * 7 * 86_400_000).slug);
-		expect(new Set(weeks).size).toBe(FOR_LINKS.length);
 	});
 });

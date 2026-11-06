@@ -663,6 +663,16 @@ export interface Sermon extends SermonSummary {
 	 * pages are). Optional so an API running behind this build simply omits it.
 	 */
 	author_quote_count?: number;
+	/** The preacher's years, for the byline. Optional: an API behind this build omits them. */
+	author_birth_year?: number | null;
+	author_death_year?: number | null;
+	/**
+	 * Whether the body opens with a quotation of its own preaching text (a
+	 * leading blockquote of the verse; backend `scripture.opens_with_text`). The
+	 * page then prints the verse once — the preacher's wording — rather than its
+	 * house-Bible copy as well. Optional: an older API omits it, and both show.
+	 */
+	text_in_body?: boolean;
 }
 
 export interface AuthorBio {
@@ -1249,8 +1259,9 @@ export interface PlanDetail extends PlanSummary {
 	available_languages: string[];
 	/** The distinct writers the plan reads through, in first-appearance order —
 	 * a link to each author page. Optional so an API predating the field renders
-	 * no section (rolling-deploy skew). */
-	authors?: { slug: string; name: string }[];
+	 * no byline (rolling-deploy skew). `photo_url` is the hero byline's small
+	 * portrait — optional too, so an older API draws initials. */
+	authors?: { slug: string; name: string; photo_url?: string }[];
 }
 
 export const listPlans = (language = 'en', f?: Fetch) =>

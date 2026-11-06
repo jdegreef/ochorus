@@ -1,47 +1,61 @@
 <script lang="ts">
-	import type { TopicSummary } from '$lib/library-public';
+	import { isSermonTile, type BookTile, type TopicSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { passageMark } from '$lib/sermonMonogram';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import Emblem from '$lib/components/Emblem.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { topicMeta } from '$lib/emblemNames';
+	import { groupTopics, topicGroupKey } from '$lib/topicGroups';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import FilterSummary from '$lib/components/FilterSummary.svelte';
-	import { queryChip } from '$lib/filterChips';
-	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
-	import { urlFilters } from '$lib/urlFilters.svelte';
-	import { page } from '$app/stores';
 
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// A filter field once the shelf is long enough to want one (page-design:
-	// every shelf opens with the same row). The query lives in the URL, as on
-	// every shelf, so a filtered view survives a reload and comes back with Back.
-	const filters = urlFilters({ defaults: { q: '' }, url: () => $page.url });
-	const showSearch = $derived(topics.length >= SHELF_SEARCH_MIN);
-	const filtering = $derived(filters.active);
-	const clearFilters = () => filters.reset();
-	const shown = $derived.by(() => {
-		const q = filters.values.q.trim().toLowerCase();
-		return topics.filter((tp) => matchesQuery(q, tp.title, tp.description));
-	});
-	const activeChips = $derived([queryChip(filters)].filter((c) => c !== null));
+	// Families, not one flat grid of 33 (design review #23). The grouping is
+	// data (`topicGroups.ts`), and a shelf placed in no family lands under
+	// "More topics" rather than vanishing. No filter field: grouped, the whole
+	// hub fits in a few screens, and a filter emptying families under their
+	// headings read worse than the map it was searching.
+	const groups = $derived(groupTopics(topics));
 
-	// schema.org ItemList of the topical shelves — an ordered roster for crawlers.
+	// The three book covers a card fans out. Sermon tiles are dropped: a fan is
+	// books (CoverStrip takes `BookTile[]`), and a shelf that holds only sermons
+	// wears its emblem in the fan's place instead. The covers arrive in the
+	// shelf's curated order, lead first; CoverStrip features the MIDDLE of three,
+	// so the lead goes there (as audienceHub.heroCovers does).
+	const bookCovers = (tp: TopicSummary): BookTile[] => {
+		const books = tp.covers.filter((c): c is BookTile => !isSermonTile(c)).slice(0, 3);
+		return books.length === 3 ? [books[1], books[0], books[2]] : books;
+	};
+
+	// One muted line, "17 books · 24 sermons". A zero is dropped rather than
+	// printed as "0 books · 5 sermons": a shelf listed on the strength of its
+	// sermons is most shelves in most languages (TopicListSerializer.get_covers),
+	// and announcing what it does NOT have first made the card contradict itself.
+	const countParts = (tp: TopicSummary): string[] =>
+		[
+			tp.book_count && `${tp.book_count} ${tp.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}`,
+			tp.sermon_count &&
+				`${tp.sermon_count} ${tp.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
+		].filter((p): p is string => !!p);
+
+	// schema.org ItemList of the topical shelves — an ordered roster for
+	// crawlers, in the order the page shows them.
 	const topicsLd = $derived(
 		itemList(
 			t('topics.title'),
-			topics.map((tp) => ({ name: tp.title, url: localizeHref(`/topics/${tp.slug}`) }))
+			groups
+				.flatMap((g) => g.topics)
+				.map((tp) => ({ name: tp.title, url: localizeHref(`/topics/${tp.slug}`) }))
 		)
 	);
-
 
 	// Gated on ADVERTISED_LOCALES, not Paraglide's full `locales`: a locale that
 	// is wired in the UI but has an empty catalog must not be advertised to
@@ -73,70 +87,99 @@
 		{topics.length === 1 ? t('common.topicOne') : t('common.topicMany')}
 	{/snippet}
 
-	{#snippet clearFiltersAction()}
-		<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
-	{/snippet}
-
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if topics.length === 0}
 		<EmptyState art="language" message={t('topics.none')} />
 	{:else}
-		{#if showSearch}
-			<div class="filter-row mb-6">
-				<input
-					bind:value={filters.values.q}
-					type="search"
-					autocomplete="off"
-					class="filter-field grow"
-					placeholder={t('topics.filterPlaceholder')}
-					aria-label={t('topics.filterPlaceholder')}
-				/>
-			</div>
-		{/if}
-		{#if filtering}
-			<FilterSummary
-				shown={shown.length}
-				total={topics.length}
-				template={t('topics.showing')}
-				onClear={clearFilters}
-				chips={activeChips}
-				class="mb-6"
-			/>
-		{/if}
-		{#if shown.length === 0}
-			<EmptyState art="search" message={t('topics.noResults')} action={clearFiltersAction} />
-		{/if}
-		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-			{#each shown as topic (topic.slug)}
-				{@const meta = topicMeta(topic.slug)}
-				<ShelfCard
-					href={localizeHref(`/topics/${topic.slug}`)}
-					hue={meta.accent}
-					emblem={meta.emblem}
-					mark={passageMark(topic.scripture_ref)}
-					covers={topic.covers}
-					title={topic.title}
-				>
-					{#snippet aside()}
-						<!-- The book count is dropped when it is zero rather than printed as
-						     "0 books · 5 sermons". A shelf listed on the strength of its
-						     sermons is most shelves in most languages (see
-						     TopicListSerializer.get_covers), and announcing what it does
-						     NOT have first is how this card came to contradict itself. -->
-						{#if topic.book_count}
-							{topic.book_count}
-							{topic.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
-						{/if}
-						{#if topic.sermon_count}
-							{#if topic.book_count}<span class="sep"> · </span>{/if}{topic.sermon_count}
-							{topic.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}
-						{/if}
-					{/snippet}
-					<p class="shelf-card-desc mt-1.5 text-small text-muted">{topic.description}</p>
-				</ShelfCard>
-			{/each}
-		</div>
+		{#each groups as group (group.id)}
+			<section class="topic-group">
+				<GroupHeading name={t(topicGroupKey(group.id))} />
+				<div class="topic-grid">
+					{#each group.topics as topic (topic.slug)}
+						{@const covers = bookCovers(topic)}
+						<a class="book-card topic-tile" href={localizeHref(`/topics/${topic.slug}`)}>
+							<div class="topic-tile-art">
+								{#if covers.length}
+									<CoverStrip {covers} size="fan" />
+								{:else}
+									{@const meta = topicMeta(topic.slug)}
+									<span class="emblem-chip topic-tile-emblem" style="--chip-hue: {meta.accent}">
+										<Emblem name={meta.emblem} />
+									</span>
+								{/if}
+							</div>
+							<h3 class="topic-tile-title">{topic.title}</h3>
+							<p class="text-small text-muted">
+								{#each countParts(topic) as part, i (i)}{#if i}<span class="sep">{' · '}</span>{/if}{part}{/each}
+							</p>
+						</a>
+					{/each}
+				</div>
+			</section>
+		{/each}
 	{/if}
 </div>
 
+<style>
+	.topic-group + .topic-group {
+		margin-top: 3rem;
+	}
+	/* Two on a phone (a ~165px card still fans three legible covers), three on
+	   a tablet, four from a desktop up. */
+	.topic-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 2rem 1.25rem;
+	}
+	@media (min-width: 640px) {
+		.topic-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+	@media (min-width: 1024px) {
+		.topic-grid {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 2.25rem 1.75rem;
+		}
+	}
+	/* Boxless, wearing the book card's own recipe (design #1: padding, radius,
+	   the hover rise and its reduced-motion opt-out, all from .book-card in
+	   app.css): the covers carry the colour, so there is no band, no tint and
+	   no border — just the fan, the name and one muted line. */
+	.topic-tile {
+		gap: 0.2rem;
+		color: inherit;
+	}
+	/* The fan's footprint, held by the emblem fallback too, so a sermons-only
+	   shelf's card lines up with its neighbours. */
+	.topic-tile-art {
+		display: grid;
+		place-items: center;
+		aspect-ratio: 100 / 68;
+		margin-bottom: 0.6rem;
+	}
+	.topic-tile-art > :global(.covers) {
+		width: 100%;
+	}
+	.topic-tile-emblem {
+		--chip-size: 6.5rem;
+	}
+	.topic-tile-title {
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		font-weight: 600;
+		line-height: 1.25;
+		color: var(--text);
+		transition: color var(--duration-fast);
+	}
+	@media (min-width: 1024px) {
+		.topic-tile-title {
+			font-size: var(--fs-h3);
+		}
+	}
+	.topic-tile:hover .topic-tile-title,
+	.topic-tile:focus-visible .topic-tile-title {
+		color: var(--accent);
+	}
+</style>

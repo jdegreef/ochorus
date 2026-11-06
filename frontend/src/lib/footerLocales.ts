@@ -1,18 +1,18 @@
 import { isAdvertised } from './advertised-locales';
 
 /**
- * Which locales the footer language strip lists.
+ * Which locales the footer language switcher lists.
  *
- * The base rule is `isAdvertised`: the strip is a promise ("Ochorus is
+ * The base rule is `isAdvertised`: the list is a promise ("Ochorus is
  * available in your language"), and a locale with nothing to read delivers a
  * fully translated interface wrapped around an empty library. Same rule the
  * sitemap and hreflang use, so the site makes one consistent claim.
  *
  * The exception is the locale the reader is ACTUALLY IN. Filtering on
  * `isAdvertised` alone meant that on an unadvertised-but-wired locale (/hi
- * today, /ar until it filled up) the strip named five other languages and not
+ * today, /ar until it filled up) the list named five other languages and not
  * the reader's own — no "you are here" marker anywhere, because the current
- * locale had been filtered out before the strip could mark it. Withholding the
+ * locale had been filtered out before the list could mark it. Withholding the
  * advertisement is the point; withholding the reader's own position in the list
  * is just a broken control.
  *

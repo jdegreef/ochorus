@@ -285,9 +285,14 @@ test('switching language from the footer serves that language', async ({ page })
 	await page.goto('/');
 	await hydrated(page);
 
-	// By its autonym, which is what the strip renders: a reader who needs this
-	// control cannot read "Spanish".
-	const spanish = page.getByRole('link', { name: 'Español' });
+	// The footer's language switcher is a disclosure (<details>) of real links:
+	// open it first, as a reader does.
+	await page.locator('details.footer-lang > summary').click();
+
+	// By its autonym, which is what the list renders: a reader who needs this
+	// control cannot read "Spanish". The link's name also carries the book
+	// count ("Español 120 books"), so match the autonym at the start.
+	const spanish = page.getByRole('link', { name: /^Español\b/ });
 	await expect(spanish).toBeVisible();
 	await spanish.click();
 

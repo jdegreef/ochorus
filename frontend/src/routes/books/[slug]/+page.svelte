@@ -135,6 +135,13 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+	// The book's measure — its length and the time it takes — whichever it
+	// has. One list for the meta description and the hero's facts line.
+	const measureFacts = $derived(
+		[book.chapter_count ? chapterCount(book.chapter_count) : '', totalWords ? readingTime(totalWords) : ''].filter(
+			Boolean
+		)
+	);
 
 	// A saved place past chapter 1 in a book not yet finished: the read verb is
 	// Continue, not Begin (a finished book is read again from the start).
@@ -249,12 +256,7 @@
 		const base = t('book.metaFallback')
 			.replace('%title%', book.title)
 			.replace('%name%', book.author.name);
-		const facts = [
-			book.chapter_count
-				? chapterCount(book.chapter_count)
-				: '',
-			totalWords ? readingTime(totalWords) : ''
-		].filter(Boolean);
+		const facts = measureFacts;
 		return truncateMeta(lead + (facts.length ? `${base} ${facts.join(' · ')}.` : base));
 	});
 	// The same work's other-language editions, reused from the hreflang set
@@ -336,6 +338,19 @@
 	// "Ages 8–12" — the series index's wording, for a book written for young
 	// readers or teens.
 	const ages = $derived(book.ages ? seriesAges(book.ages) : '');
+	// The hero's one facts line: the measure, then how hard it reads and who
+	// it's for — whichever of them the book has. The difficulty word carries
+	// its label as a title (as the sermon page's does): "Advanced" alone does
+	// not say what is advanced.
+	const heroFacts = $derived(
+		[
+			...measureFacts.map((text) => ({ text, title: undefined })),
+			book.difficulty
+				? { text: t(`reader.difficulty_${book.difficulty}`), title: t('reader.difficulty') }
+				: null,
+			ages ? { text: ages, title: undefined } : null
+		].filter((f) => f !== null)
+	);
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -560,10 +575,11 @@
 
 		<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
 
-		<!-- A grid, so on a phone the cover sits BESIDE the title (a 9rem cover
-		     alone on its row left the right half of the first screen empty) while
-		     the read card and actions take the full width beneath. From sm it is the
-		     original layout: cover down the left, everything else in one column. -->
+		<!-- Two columns (design review #6). A grid, so on a phone the cover sits
+		     BESIDE the title block (a 9rem cover alone on its row left the right
+		     half of the first screen empty) while the read card and actions take
+		     the full width straight beneath it. From sm: the cover down the start
+		     side, everything else in one column beside it. -->
 		<header class="book-hero mt-5">
 			<!-- One component decides what a cover is. This page used to branch on
 			     cover_url itself and paint its own gradient box in the else, so the
@@ -581,30 +597,12 @@
 				<div class="hero-cover" data-cover-landing>
 					<BookCover {book} priority />
 				</div>
-				{#if book.artwork_credit}
-					<!-- The painting's credit (see the foot copy below for why it is
-					     shown at all): from sm it hangs under the cover it names; a
-					     phone's 7rem cover column is too narrow, so there it stays at
-					     the foot. -->
-					<p class="mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
-				{/if}
 			</div>
 
 			<div class="book-hero-head min-w-0">
 				<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
 				<h1 class="text-h1" dir="auto" lang={contentLang(book.language)}>{book.title}</h1>
 				{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
-				<!-- The names this work is also published under. Shown, not merely marked
-				     up: a reader who searched "A Divine Cordial" and landed on a page
-				     headed "All Things for Good" needs to see, on arrival, that they are
-				     in the right place. Held to one line — it is confirmation, not a
-				     second title, and it sits above the author so it reads as part of
-				     naming the work rather than as a fact about it. -->
-				{#if otherTitles.length}
-					<p class="mt-1 text-small text-muted" dir="auto">
-						{t('book.otherTitles')}: {otherTitles.join(' · ')}
-					</p>
-				{/if}
 				<!-- Where this book sits in its series, and the way on to the next
 				     volume in this language. Absent outside a series and where the series
 				     has no name in this edition's language (the API's no-fallback rule).
@@ -643,6 +641,16 @@
 					</p>
 				{/if}
 
+				<!-- The book's measure in one muted line ("13 chapters · 9 hr 22 min ·
+				     Accessible"), not a ribbon of boxed cells (design review #6): the
+				     facts read in one glance. Each fact nowrap, so a narrow column breaks
+				     between them, never inside one. -->
+				<p class="mt-2 text-small text-muted">
+					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
+							>{fact.text}</span
+						>{/each}
+				</p>
+
 				{#if siblingEditions.length && !fallback}
 					<!-- Not on a fallback page: the notice above lists the editions, and
 					     the section this jumps to is hidden there. -->
@@ -663,32 +671,6 @@
 					</div>
 				{/if}
 			</div>
-
-			<!-- The book's measure in one ribbon: its length, the time it takes,
-			     how hard it reads and who it's for. Its own grid item, so on a phone
-			     it takes the full width under the cover rather than squeezing into
-			     the title's column beside it. Read as one line ("9 chapters, 2 hr 55
-			     min read, Accessible reading difficulty"). -->
-			<ul class="book-stats">
-				<li>
-					<span class="book-stat-value">{book.chapter_count}</span>
-					<span class="book-stat-label"
-						>{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
-					>
-				</li>
-				{#if totalWords}
-					<li><span class="book-stat-value">{readingTime(totalWords)}</span></li>
-				{/if}
-				{#if book.difficulty}
-					<li>
-						<span class="book-stat-value">{t(`reader.difficulty_${book.difficulty}`)}</span>
-						<span class="book-stat-label">{t('reader.difficulty')}</span>
-					</li>
-				{/if}
-				{#if ages}
-					<li><span class="book-stat-value">{ages}</span></li>
-				{/if}
-			</ul>
 
 			<!-- The action row's container (`.action-host`): it picks strip vs row by
 			     this block's width — the full page width on a phone. -->
@@ -718,7 +700,7 @@
 								<div class="mt-2">
 									<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
 								</div>
-							{:else if resuming}
+							{:else}
 								<p class="text-small text-muted">{placeLine}</p>
 								<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
 								<div class="mt-2">
@@ -731,27 +713,38 @@
 						<!-- A first-time reader: the chapter the verb opens rides in the
 						     button as its second line, and the reassurance sits under it
 						     as small print (design review #2), so the card is one thing
-						     to press rather than a label above a pale button. -->
+						     to press rather than a label above a pale button. The small print
+						     goes under the solid button, whichever one that is. -->
+						{#snippet reassurance()}
+							{#if fresh}
+								<p class="text-small text-muted">
+									{t('book.freeToRead')}<span class="sep">{' · '}</span>{t('book.noAccount')}
+								</p>
+							{/if}
+						{/snippet}
 						{#if book.daily}
 							<!-- A year-long devotional is read by the calendar: today's
 							     entry is the main way in, the book from its start the
 							     second (library/daily_readings). -->
 							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary btn-solid flex-col gap-0"
-								>{t('plans.todaysReading')}{#if fresh && todayLabel}<span class="btn-sub">{todayLabel}</span>{/if}</a
+								>{t('plans.todaysReading')}{#if fresh && todayLabel}{' '}<span class="btn-sub">{todayLabel}</span
+									>{/if}</a
 							>
+							{@render reassurance()}
 						{/if}
+						<!-- The space before the sub-line keeps the link's text (and its
+						     accessible name) "Begin reading Book I · 35 min"; a flex
+						     container drops it visually. -->
 						<a
 							href={readHref(readOrder)}
-							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid flex-col gap-0'}"
-							>{readLabel}{#if fresh && !book.daily && readChapter}<span class="btn-sub" dir="auto"
+							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid'} flex-col gap-0"
+							>{readLabel}{#if fresh && readChapter}{' '}<span class="btn-sub" dir="auto"
 									>{chapterNameIn(readOrder, readChapter.title, book.title)}{readChapter.word_count
 										? ` · ${readingMinutes(readChapter.word_count)} ${t('common.min')}`
 										: ''}</span
 								>{/if}</a
 						>
-						{#if fresh}
-							<p class="text-small text-muted">{t('book.freeToRead')} · {t('book.noAccount')}</p>
-						{/if}
+						{#if !book.daily}{@render reassurance()}{/if}
 						{#if book.daily_plan}
 							<!-- The self-paced way through: day one is 1 January's
 							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
@@ -955,6 +948,7 @@
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html book.about_html}
 			</div>
+			{@render alsoTitled()}
 		</section>
 	{:else if book.description}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
@@ -964,8 +958,22 @@
 			<div class:has-initial={book.description.length > 240} dir="auto">
 				<p class="text-body leading-relaxed">{book.description}</p>
 			</div>
+			{@render alsoTitled()}
 		</section>
+	{:else if otherTitles.length}
+		<div class="mt-8">{@render alsoTitled()}</div>
 	{/if}
+	<!-- The names this work is also published under. A reader who searched "A
+	     Divine Cordial" and landed on "All Things for Good" still sees it named,
+	     but here in About, not in the hero: the alternate titles serve search,
+	     not the decision to read (design review #6). -->
+	{#snippet alsoTitled()}
+		{#if otherTitles.length}
+			<p class="mt-3 text-small text-muted" dir="auto">
+				{t('book.otherTitles')}: {otherTitles.join(' · ')}
+			</p>
+		{/if}
+	{/snippet}
 
 	<!-- The first taste of the prose itself, right under the summary: everything
 	     else on this page is ABOUT the book — cover, chapter list, description,
@@ -1284,7 +1292,7 @@
 		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
 		     and it is the provenance a reader would otherwise have to take on
 		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
+		<p class="mt-2 text-small text-muted">{book.artwork_credit}</p>
 	{/if}
 	<!-- A translated edition did not appear in the original's year, so it is
 	     cited without one rather than as a reprint of it. -->
@@ -1382,11 +1390,13 @@
 		--muted: var(--muted-on-wash);
 	}
 
-	/* The wide step is decided by the room the column has (a container), not
-	   the viewport: the reader's page-width setting can narrow it. Row gap
-	   0: the read card carries its own mt-4, as it did in the title's column.
-	   A phone: the cover beside the title, the ribbon and the actions full
-	   width beneath. */
+	/* Two columns (design review #6): the cover on the start side, and on the
+	   end side the title block, its one facts line, then the read card and the
+	   action strip. A phone: the cover beside the title block and the actions
+	   full width straight beneath it, so the read button is in the first
+	   screen. The wide step is decided by the room the column has (a
+	   container), not the viewport: the reader's page-width setting can
+	   narrow it. Row gap 0: the read card carries its own mt-4. */
 	.book-hero-col {
 		container: book-hero / inline-size;
 	}
@@ -1399,90 +1409,38 @@
 	.book-hero-cover {
 		width: 7rem;
 	}
-	.book-stats,
 	.book-hero-actions {
 		grid-column: 1 / -1;
 	}
 	@media (min-width: 640px) {
-		/* A last row takes up the cover's spare height, so the title, the
-		   ribbon and the actions stack tight at the top beside it. */
+		/* A last row takes up the cover's spare height, so the title and the
+		   actions stack tight at the top beside it. */
 		.book-hero {
-			grid-template-rows: auto auto auto 1fr;
-			column-gap: 1.25rem;
+			grid-template-rows: auto 1fr;
+			column-gap: 1.5rem;
 		}
 		.book-hero-cover {
 			grid-row: 1 / -1;
 			width: 11rem;
 		}
-		.book-stats,
 		.book-hero-actions {
 			grid-column: 2;
 		}
+		/* The read card held to a measure, so the button is not a bar across a
+		   wide column. The card only, not the action host: the strip keeps the
+		   whole column, so it is still a plain row once that passes 560px. */
+		.book-hero-actions .read-card {
+			max-width: 32rem;
+		}
 	}
-	/* Wide: three columns — cover, the title and its ribbon, and the read
-	   card, its edition toggle and the actions gathered into one raised panel. */
+	/* Wide: a larger cover. */
 	@container book-hero (min-width: 56rem) {
 		.book-hero {
-			grid-template-columns: auto minmax(0, 1fr) 21rem;
-			grid-template-rows: auto auto 1fr;
-			column-gap: 2rem;
+			column-gap: 2.5rem;
 		}
 		.book-hero-cover {
-			width: 12rem;
+			width: 13rem;
 		}
-		.book-hero-actions {
-			grid-column: 3;
-			grid-row: 1 / -1;
-			padding: 1.1rem;
-			border: 1px solid var(--border);
-			border-radius: var(--radius-card);
-			background: var(--surface);
-			box-shadow: var(--shadow-card);
-		}
-		.book-hero-actions .read-card {
-			margin-top: 0;
-			padding: 0;
-			background: none;
-		}
-	}
-
-	/* The ribbon: a quiet card of cells, each a value over its label, divided
-	   by hairlines. On its own solid ground, not the wash. Every cell draws its
-	   hairlines on its start and top edges, pulled 1px outside itself, and the
-	   card clips them: so in a narrow column, where the cells wrap, each row
-	   and column is ruled like a table with no rule along the card's own edge. */
-	.book-stats {
-		display: flex;
-		flex-wrap: wrap;
-		justify-self: start;
-		max-width: 100%;
-		margin: 1rem 0 0;
-		padding: 0;
-		list-style: none;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		background: var(--surface);
-		overflow: hidden;
-	}
-	.book-stats li {
-		display: flex;
-		flex: 1 0 auto;
-		flex-direction: column;
-		justify-content: center;
-		margin-block-start: -1px;
-		margin-inline-start: -1px;
-		padding: 0.55rem 1rem;
-		border-block-start: 1px solid var(--border);
-		border-inline-start: 1px solid var(--border);
-	}
-	.book-stat-value {
-		font-family: var(--font-display);
-		font-size: var(--fs-h3);
-		line-height: 1.2;
-	}
-	.book-stat-label {
-		font-size: var(--fs-eyebrow);
-		color: var(--muted);
 	}
 	/* The edition toggle: full width under the read button, two even halves. */
 	.edition-seg button {

@@ -45,7 +45,7 @@ export const LEADING: Record<Leading, number> = {
  * instead. The measure is applied to the <article>, whose own font-size is the
  * root's, so this cannot be expressed in `em` — hence the explicit calc.
  */
-const MEASURE_REM: Record<Measure, number> = {
+export const MEASURE_REM: Record<Measure, number> = {
 	narrow: 34,
 	normal: 42,
 	wide: 52,

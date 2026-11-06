@@ -260,7 +260,7 @@
 {:else if asCovers}
 	<div class="book-grid">
 		{#each paged.visible as a (a.slug)}
-			<a href={localizeHref(`/articles/${a.slug}/`)} class="book-card card-lift group">
+			<a href={localizeHref(`/articles/${a.slug}/`)} class="book-card group">
 				{#if a.lead_book}
 					<BookCover book={a.lead_book} />
 				{:else}
@@ -271,15 +271,19 @@
 				<div class="mt-2 flex flex-1 flex-col px-0.5">
 					<svelte:element
 						this={heading}
-						class="line-clamp-2 text-small font-medium leading-snug text-text"
+						class="line-clamp-2 font-display text-small font-medium leading-snug text-text"
 					>
 						{a.lead_book?.title ?? a.h1}
 					</svelte:element>
 					{#if a.lead_book}
 						<p class="truncate text-small text-muted">{a.lead_book.author.name}</p>
 					{/if}
-					<p class="mt-auto pt-0.5 text-eyebrow text-muted">
-						{t('book.readersGuide')}<span class="sep">{' · '}</span>{readingTime(a.word_count)}
+					<!-- Two unbreakable halves, a gap and no "·": a dot between them
+					     led the wrapped line on a narrow card (design #1). -->
+					<p class="mt-auto flex flex-wrap gap-x-2 pt-0.5 text-eyebrow text-muted">
+						<span class="whitespace-nowrap">{t('book.readersGuide')}</span><span class="whitespace-nowrap"
+							>{readingTime(a.word_count)}</span
+						>
 					</p>
 				</div>
 			</a>
