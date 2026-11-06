@@ -32,7 +32,10 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	const sermon = await orNotFound(() => getSermon(params.slug, getLang(), fetch));
 	// Its preaching text, here rather than after hydration so the verses are in
 	// the prerendered page (see getPreachingText). Never fails the page.
-	const preachingText = sermon.scripture_ref ? await getPreachingText(sermon.scripture_ref, fetch) : null;
+	// Not when the body opens on the same verse: the page shows the preacher's
+	// copy then, and the lookup would only add a round trip (text_in_body).
+	const preachingText =
+		sermon.scripture_ref && !sermon.text_in_body ? await getPreachingText(sermon.scripture_ref, fetch) : null;
 	return { sermon, preachingText };
 };
 
