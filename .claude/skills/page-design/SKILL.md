@@ -242,6 +242,20 @@ pages: the breadcrumb rule (2), the eyebrow (3), `SourceBadge`, prev/next as
 a `.btn` pair (ghost previous, soft-primary next), and one shared
 `.focus-exit` pill rather than three pasted copies.
 
+**No site chrome while reading (design #7).** A route in `READER_ROUTE_IDS`
+draws no site nav, no footer and no phone tab bar — the root layout's one
+switch is `siteChrome` (`!inReader && !readerUi.focus`), and `--appnav-h` is
+`var(--safe-top, 0px)` there. The reader's ONE slim bar is the page's chrome:
+‹ book title (a link to the book page) · chapter · "n of N", then icon buttons
+with `title` tooltips and `aria-label`s — Contents · Aa · Listen · Bookmark ·
+"⋯" (no visible labels; Previous/Next chapter, Search, Notebook, Edition and
+Focus live in "⋯"). The "⋯" group ENDS with `<ReaderSiteLinks>` — Home + the
+`PRIMARY_NAV` journeys — so the site stays one tap away; a new reading surface
+needs it too (`readerChrome.test.ts`). The scroll-mode bar folds away on
+scroll-down and returns on scroll-up (`nextBarHidden`), snaps under reduced
+motion, and comes back when Tab lands in it. Don't put the nav or footer back
+on a reading surface.
+
 Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
 - **Paged mode slices the last line.** `.paged .pager` fills each CSS column
   with `column-fill: auto`, which starts a line whenever its TOP fits and lets

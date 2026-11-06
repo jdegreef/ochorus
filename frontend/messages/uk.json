@@ -201,6 +201,7 @@
   "reader_bookmark": "Закладка",
   "reader_remove_bookmark": "Прибрати закладку",
   "reader_more_tools": "Більше інструментів читання",
+  "reader_position": "%n% з %total%",
   "reader_bookmarks": "Закладки",
   "reader_no_bookmarks": "Закладок ще немає",
   "notebook_title": "Мій зошит",

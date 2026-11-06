@@ -201,6 +201,7 @@
   "reader_bookmark": "Signet",
   "reader_remove_bookmark": "Retirer le signet",
   "reader_more_tools": "Autres outils de lecture",
+  "reader_position": "%n% sur %total%",
   "reader_bookmarks": "Signets",
   "reader_no_bookmarks": "Aucun signet pour l’instant",
   "notebook_title": "Mon carnet",
