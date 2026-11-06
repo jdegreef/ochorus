@@ -69,6 +69,13 @@ KNOWN_CHAPTER_GAPS: set[tuple[str, str, int]] = {
     # re-translation from the clean English. Same count/order, so the reader's
     # per-chapter URLs still resolve in both languages.
     *(("es", "possibilities-of-prayer", n) for n in range(2, 17)),
+    # school-of-prayer: the English keeps the ordinal "28<sup>th</sup> October"
+    # (ch1) and "25<sup>th</sup> September" (ch33). These translations emptied
+    # it to <sup></sup>, which the deploy's strip_footnote_markers deletes, so
+    # the fixture settled to what production holds carries one <sup> pair fewer.
+    # No prose is missing.
+    *((lang, "school-of-prayer", n) for lang in ("ar", "fr", "lg", "vi") for n in (1, 33)),
+    ("ko", "school-of-prayer", 1),
 }
 
 _TAG = re.compile(r"<[^>]+>")
@@ -80,22 +87,8 @@ def tag_sequence(html: str) -> list[str]:
 
     Attributes are KEPT: a class is sometimes load-bearing (the bios' prayer
     callouts are styled by one), and a translation has no reason to change one.
-
-    ``<sup>`` is NOT compared. It never holds prose (a footnote number or an
-    ordinal's letters), and a language that writes no superscript ordinal empties
-    it: ``28<sup>th</sup> October`` became ``28<i><sup></sup> octobre</i>`` in
-    five school-of-prayer editions. The deploy's ``strip_footnote_markers``
-    deletes that empty residue, so a fixture settled to what production holds
-    carries fewer ``<sup>`` tags than its English, legitimately.
     """
-    return [
-        t
-        for t in (_WS.sub(" ", t).strip() for t in _TAG.findall(html or ""))
-        if t not in _SUP_TAGS
-    ]
-
-
-_SUP_TAGS = frozenset({"<sup>", "</sup>"})
+    return [_WS.sub(" ", t).strip() for t in _TAG.findall(html or "")]
 
 
 def _corpus() -> tuple[dict, dict]:

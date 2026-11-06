@@ -6191,7 +6191,18 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("city of Brazilia", "city of Brasília"),
             ("Stocklholm", "Stockholm"),
             ("Guatamalan", "Guatemalan"),
-            ("Malasia", "Malaysia"),
+            # Anchored on the English words beside it: a bare "Malasia" also
+            # matched the es edition, where it is the correct Spanish spelling.
+            ("beaches of Malasia", "beaches of Malaysia"),
+            ("Kuala Lumpur, Malasia. I", "Kuala Lumpur, Malaysia. I"),
+            ("From Malasia,", "From Malaysia,"),
+            ("Cheah in Malasia", "Cheah in Malaysia"),
+            # ...and that bare pair has already rewritten the es rows in
+            # production (ch21, ch38, ch40). Put the Spanish spelling back.
+            ("playas de Malaysia", "playas de Malasia"),
+            ("Kuala Lumpur, Malaysia. En", "Kuala Lumpur, Malasia. En"),
+            ("De Malaysia regresamos", "De Malasia regresamos"),
+            ("Cheah, de Malaysia", "Cheah, de Malasia"),
             ("Chapultapek", "Chapultepec"),
             ("Deja Vue", "Déjà vu"),
             # English proofreading pass (2026-11-05), in chapter order. Genuine
