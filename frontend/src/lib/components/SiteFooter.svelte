@@ -972,10 +972,11 @@
 		color: var(--muted);
 	}
 
-	/* The one deliberately LOUD control in the app: it wears the base .btn
+	/* The deliberately LOUD conversion control: it wears the base .btn
 	   recipe (metrics, radius, type) via `class="btn footer-invite-cta"` and
-	   overrides only the loud bits. Every other .btn-primary is soft by design
-	   (STYLE_GUIDE §5); this single conversion CTA is the exception — a solid
+	   overrides only the loud bits. A .btn-primary is soft by design
+	   (STYLE_GUIDE §5) except the page's read verb (.btn-solid); this
+	   conversion CTA is the other exception — a solid
 	   indigo with a thin gold ring (the signature pairing) and a warm sweep on
 	   hover. Scoped and unlayered, so it beats @layer components and changes
 	   nothing else. */

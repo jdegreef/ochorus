@@ -700,7 +700,7 @@
 								<div class="mt-2">
 									<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
 								</div>
-							{:else if resuming}
+							{:else}
 								<p class="text-small text-muted">{placeLine}</p>
 								<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
 								<div class="mt-2">
@@ -713,27 +713,38 @@
 						<!-- A first-time reader: the chapter the verb opens rides in the
 						     button as its second line, and the reassurance sits under it
 						     as small print (design review #2), so the card is one thing
-						     to press rather than a label above a pale button. -->
+						     to press rather than a label above a pale button. The small print
+						     goes under the solid button, whichever one that is. -->
+						{#snippet reassurance()}
+							{#if fresh}
+								<p class="text-small text-muted">
+									{t('book.freeToRead')}<span class="sep">{' · '}</span>{t('book.noAccount')}
+								</p>
+							{/if}
+						{/snippet}
 						{#if book.daily}
 							<!-- A year-long devotional is read by the calendar: today's
 							     entry is the main way in, the book from its start the
 							     second (library/daily_readings). -->
 							<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary btn-solid flex-col gap-0"
-								>{t('plans.todaysReading')}{#if fresh && todayLabel}<span class="btn-sub">{todayLabel}</span>{/if}</a
+								>{t('plans.todaysReading')}{#if fresh && todayLabel}{' '}<span class="btn-sub">{todayLabel}</span
+									>{/if}</a
 							>
+							{@render reassurance()}
 						{/if}
+						<!-- The space before the sub-line keeps the link's text (and its
+						     accessible name) "Begin reading Book I · 35 min"; a flex
+						     container drops it visually. -->
 						<a
 							href={readHref(readOrder)}
-							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid flex-col gap-0'}"
-							>{readLabel}{#if fresh && !book.daily && readChapter}<span class="btn-sub" dir="auto"
+							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid'} flex-col gap-0"
+							>{readLabel}{#if fresh && readChapter}{' '}<span class="btn-sub" dir="auto"
 									>{chapterNameIn(readOrder, readChapter.title, book.title)}{readChapter.word_count
 										? ` · ${readingMinutes(readChapter.word_count)} ${t('common.min')}`
 										: ''}</span
 								>{/if}</a
 						>
-						{#if fresh}
-							<p class="text-small text-muted">{t('book.freeToRead')} · {t('book.noAccount')}</p>
-						{/if}
+						{#if !book.daily}{@render reassurance()}{/if}
 						{#if book.daily_plan}
 							<!-- The self-paced way through: day one is 1 January's
 							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->

@@ -137,6 +137,21 @@ describe('pages use the shared page furniture', () => {
 		);
 	});
 
+	// The plain page head (design review #4): the h1 is the page's first words,
+	// so a tab row comes after <PageHeader>, and a leader cross-link (ForPromo)
+	// belongs at the end of the list, not straight under the header.
+	it.each(BROWSE_PAGES)('$label keeps its head plain: title first, no promo under it', ({ file }) => {
+		const src = read(file);
+		const head = src.indexOf('<PageHeader');
+		const tabs = src.indexOf('<LibraryTabs');
+		if (tabs !== -1)
+			expect(tabs, `${file}: <LibraryTabs> goes under <PageHeader>, not above the h1`).toBeGreaterThan(head);
+		expect(
+			src,
+			`${file}: <ForPromo> sits at the end of the list, not right under <PageHeader>`
+		).not.toMatch(/<PageHeader\b[^>]*\/>\s*<ForPromo\b/);
+	});
+
 	it.each(BROWSE_PAGES)('$label uses the standard shell padding', ({ file }) => {
 		// The vertical axis is what drifted — shells sat at py-6 / py-8 / py-10, so
 		// the content edge jumped on every navigation. py-10 is the one value.
