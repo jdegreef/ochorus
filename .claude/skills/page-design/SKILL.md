@@ -678,7 +678,7 @@ absent from the palette and from search.
 bands. The target is six, in order: the hero (or, for a returning reader, the
 Continue-reading strip — design #10) · Today (design #20) · books · topics ·
 authors · one line for churches and ministries (design #27). #17 shipped the
-structure; the page renders, in order: hero · `TodayCard` · book row ·
+structure; the page renders, in order: hero (or `HomeResume`, #10) · `TodayCard` · book row ·
 `SignupBand` (signed out, accounts on) · topics · `HomeAudienceHubs` (young
 readers & teens — keep it) · authors · `HomeForGroups`. The comments in the
 file mark each slot. Rules:
@@ -713,6 +713,19 @@ file mark each slot. Rules:
   with neither, no card. It replaced `DailyShelf`, `SermonOfTheDay` and
   `HomeArticles` on this page — don't add a day's block back beside it (the
   signed-in dashboard keeps all three).
+- **A returning reader gets "Continue reading" in the hero's place**
+  (design #10): with a book in progress on this device, `HomeResume` replaces
+  `HomeIntro` — the book (`$lib/currentBook.svelte`, the store the signed-in
+  `HomeHero` wears), "Chapter N of M", a `ProgressBar` and one solid Resume
+  to the chapter (the reader restores the paragraph), and a STARTED plan's day
+  beside it (`$lib/todaysPlan`, shared with `TodaysReading`; never an
+  invitation). Its eyebrow is then the page's `<h1>`. The `ContinueReading`
+  strip under it leaves that book out (`exclude`). The swap is at mount; the
+  baked HTML keeps the hero for everyone, and app.html's boot flag
+  (`data-home-resume`, `data-home-plan`; `homeBootFlag.test.ts`) hides it and
+  shows `HomeResume`'s `hold` frame before first paint, so the hero never
+  flashes. A boot-flag change re-pins the app.html hash in `csp.config.js`.
+  Sermon-only (or plan-only) progress keeps the hero, with the strip above it.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 

@@ -1,68 +1,27 @@
 <script lang="ts">
-	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
-	import { listPlans, getPlan, type PlanSummary } from '$lib/library-public';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { todaysPlan, type PlanToday } from '$lib/todaysPlan';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 
 	/**
 	 * "Today's reading" — the next unread day of the reader's most recently
-	 * started plan, or the first plan as an invitation to start. Fetched
-	 * CLIENT-SIDE (not in the page load): the homepage is prerendered, and this
-	 * block is personal — baking it at build time would show every visitor the
-	 * same non-personal state and require the plans API during the web build.
-	 * Renders nothing until loaded, and nothing at all if plans are unavailable.
+	 * started plan, or the first plan as an invitation to start
+	 * (`$lib/todaysPlan`). Fetched CLIENT-SIDE (not in the page load): the
+	 * homepage is prerendered, and this block is personal — baking it at build
+	 * time would show every visitor the same non-personal state and require the
+	 * plans API during the web build. Renders nothing until loaded, and nothing
+	 * at all if plans are unavailable.
 	 */
 	const t = i18n.t;
 
-	interface Today {
-		plan: PlanSummary;
-		day: number;
-		isStarted: boolean;
-		chapterTitle: string;
-		bookTitle: string;
-		href: string;
-	}
-	let today = $state<Today | null>(null);
+	let today = $state<PlanToday | null>(null);
 
 	onMount(async () => {
 		try {
-			const plans = await listPlans(getLang());
-			if (!plans.length) return;
-			const started = planProgress
-				.started()
-				.map(({ slug }) => plans.find((p) => p.slug === slug))
-				.filter((p): p is NonNullable<typeof p> => !!p)
-				.filter((p) => planProgress.nextDay(p.slug, p.day_count) !== null);
-			// Fall back to a plan that still HAS a day left, not merely the first
-			// in the catalog. `nextDay` returns null for a completed plan and the
-			// `?? 1` below turned that into day 1 — so finishing the catalog's
-			// first plan was rewarded with "Continue — Day 1 of 30", presenting a
-			// 100%-complete plan as in progress at the beginning, right after the
-			// reader's most satisfying moment.
-			const unfinished = plans.filter(
-				(p) => planProgress.nextDay(p.slug, p.day_count) !== null
-			);
-			const pick = started[0] ?? unfinished[0] ?? plans[0];
-			const next = planProgress.nextDay(pick.slug, pick.day_count);
-			const day = next ?? 1;
-
-			const detail = await getPlan(pick.slug, getLang());
-			const entry = detail.days.find((d) => d.day === day) ?? detail.days[0];
-			if (!entry) return;
-			today = {
-				plan: pick,
-				day: entry.day,
-				// A finished plan is offered as a fresh START at day 1, never as a
-				// continuation of something already complete.
-				isStarted: next !== null && planProgress.isStarted(pick.slug),
-				chapterTitle: entry.chapter_title,
-				bookTitle: entry.book_title,
-				href: planDayPath(pick.slug, entry)
-			};
+			today = await todaysPlan(getLang());
 		} catch {
 			/* plans are a bonus block — never break the homepage */
 		}
