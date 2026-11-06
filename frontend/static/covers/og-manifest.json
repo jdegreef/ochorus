@@ -1294,6 +1294,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"am/faithful-with-little": {
+			"ground": "c24b844779ce6151a0e316a45c144b2db95864277c53466774ac38123e3635d0",
+			"style": "originals",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"am/feasting-at-the-table": {
 			"ground": "75609d377849f5cde833890e412615b7710ddd758a80a3116bd5b633c419c153",
 			"style": "devotional",
