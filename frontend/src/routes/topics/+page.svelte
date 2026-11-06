@@ -27,9 +27,13 @@
 
 	// The three book covers a card fans out. Sermon tiles are dropped: a fan is
 	// books (CoverStrip takes `BookTile[]`), and a shelf that holds only sermons
-	// wears its emblem in the fan's place instead.
-	const bookCovers = (tp: TopicSummary): BookTile[] =>
-		tp.covers.filter((c): c is BookTile => !isSermonTile(c)).slice(0, 3);
+	// wears its emblem in the fan's place instead. The covers arrive in the
+	// shelf's curated order, lead first; CoverStrip features the MIDDLE of three,
+	// so the lead goes there (as audienceHub.heroCovers does).
+	const bookCovers = (tp: TopicSummary): BookTile[] => {
+		const books = tp.covers.filter((c): c is BookTile => !isSermonTile(c)).slice(0, 3);
+		return books.length === 3 ? [books[1], books[0], books[2]] : books;
+	};
 
 	// One muted line, "17 books · 24 sermons". A zero is dropped rather than
 	// printed as "0 books · 5 sermons": a shelf listed on the strength of its
@@ -42,11 +46,14 @@
 				`${tp.sermon_count} ${tp.sermon_count === 1 ? t('common.sermonOne') : t('common.sermonMany')}`
 		].filter((p): p is string => !!p);
 
-	// schema.org ItemList of the topical shelves — an ordered roster for crawlers.
+	// schema.org ItemList of the topical shelves — an ordered roster for
+	// crawlers, in the order the page shows them.
 	const topicsLd = $derived(
 		itemList(
 			t('topics.title'),
-			topics.map((tp) => ({ name: tp.title, url: localizeHref(`/topics/${tp.slug}`) }))
+			groups
+				.flatMap((g) => g.topics)
+				.map((tp) => ({ name: tp.title, url: localizeHref(`/topics/${tp.slug}`) }))
 		)
 	);
 
@@ -91,7 +98,7 @@
 				<div class="topic-grid">
 					{#each group.topics as topic (topic.slug)}
 						{@const covers = bookCovers(topic)}
-						<a class="topic-tile" href={localizeHref(`/topics/${topic.slug}`)}>
+						<a class="book-card topic-tile" href={localizeHref(`/topics/${topic.slug}`)}>
 							<div class="topic-tile-art">
 								{#if covers.length}
 									<CoverStrip {covers} size="fan" />
@@ -136,27 +143,13 @@
 			gap: 2.25rem 1.75rem;
 		}
 	}
-	/* Boxless, like the book card (design #1): the covers carry the colour, so
-	   there is no band, no tint and no border — just the fan, the name and one
-	   muted line. Its hover is the book card's rise. */
+	/* Boxless, wearing the book card's own recipe (design #1: padding, radius,
+	   the hover rise and its reduced-motion opt-out, all from .book-card in
+	   app.css): the covers carry the colour, so there is no band, no tint and
+	   no border — just the fan, the name and one muted line. */
 	.topic-tile {
-		display: flex;
-		flex-direction: column;
 		gap: 0.2rem;
-		padding: 0.25rem;
-		border-radius: var(--radius-card);
 		color: inherit;
-		transition: transform var(--duration-fast);
-	}
-	.topic-tile:hover {
-		text-decoration: none;
-		transform: translateY(-2px);
-	}
-	@media (prefers-reduced-motion: reduce) {
-		.topic-tile,
-		.topic-tile:hover {
-			transform: none;
-		}
 	}
 	/* The fan's footprint, held by the emblem fallback too, so a sermons-only
 	   shelf's card lines up with its neighbours. */
@@ -172,11 +165,6 @@
 	.topic-tile-emblem {
 		--chip-size: 6.5rem;
 	}
-	@media (min-width: 1024px) {
-		.topic-tile-title {
-			font-size: var(--fs-h3);
-		}
-	}
 	.topic-tile-title {
 		font-family: var(--font-display);
 		font-size: var(--fs-body);
@@ -185,7 +173,13 @@
 		color: var(--text);
 		transition: color var(--duration-fast);
 	}
-	.topic-tile:hover .topic-tile-title {
+	@media (min-width: 1024px) {
+		.topic-tile-title {
+			font-size: var(--fs-h3);
+		}
+	}
+	.topic-tile:hover .topic-tile-title,
+	.topic-tile:focus-visible .topic-tile-title {
 		color: var(--accent);
 	}
 </style>

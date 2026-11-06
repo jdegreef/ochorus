@@ -11,12 +11,7 @@
  * Order matters twice: the families in the order they are listed, and each
  * family's shelves in the order written — an editorial order, not the seed's.
  */
-export type TopicGroupId = 'innerLife' | 'christianLife' | 'gospel' | 'history' | 'young' | 'more';
-
-export const TOPIC_GROUPS: readonly {
-	id: Exclude<TopicGroupId, 'more'>;
-	slugs: readonly string[];
-}[] = [
+export const TOPIC_GROUPS = [
 	{
 		id: 'innerLife',
 		slugs: [
@@ -69,7 +64,10 @@ export const TOPIC_GROUPS: readonly {
 		]
 	},
 	{ id: 'young', slugs: ['for-young-readers', 'for-teens'] }
-];
+] as const satisfies readonly { id: string; slugs: readonly string[] }[];
+
+/** A family's id — one of TOPIC_GROUPS', or the trailing fallback. */
+export type TopicGroupId = (typeof TOPIC_GROUPS)[number]['id'] | 'more';
 
 /** The i18n key of a family's heading (`topics_group_<id>` in the catalogues). */
 export const topicGroupKey = (id: TopicGroupId): string => `topics.group.${id}`;
@@ -87,7 +85,7 @@ export function groupTopics<T extends { slug: string }>(
 	const placed = new Set<string>();
 	const groups: { id: TopicGroupId; topics: T[] }[] = TOPIC_GROUPS.map(({ id, slugs }) => ({
 		id,
-		topics: slugs.flatMap((s) => {
+		topics: (slugs as readonly string[]).flatMap((s) => {
 			const t = bySlug.get(s);
 			if (!t) return [];
 			placed.add(s);

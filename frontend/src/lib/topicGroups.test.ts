@@ -15,7 +15,7 @@ const seedSlugs = (): string[] =>
 		(m) => m[1]
 	);
 
-const listed = TOPIC_GROUPS.flatMap((g) => g.slugs);
+const listed: string[] = TOPIC_GROUPS.flatMap((g) => [...g.slugs]);
 
 describe('topic families', () => {
 	it('places every seeded and every curated topic in a family', () => {
@@ -25,6 +25,14 @@ describe('topic families', () => {
 			(s) => !listed.includes(s)
 		);
 		expect(unplaced, 'add the new shelf to a family in TOPIC_GROUPS (topicGroups.ts)').toEqual([]);
+	});
+
+	it('lists no slug the seed no longer has (a renamed or retired shelf)', () => {
+		const seeded = new Set(seedSlugs());
+		expect(
+			listed.filter((s) => !seeded.has(s)),
+			'remove or rename the stale slug in TOPIC_GROUPS (topicGroups.ts)'
+		).toEqual([]);
 	});
 
 	it('places each topic once', () => {
