@@ -47,15 +47,32 @@
 
 	// A started plan's card is held from mount, so its arrival does not move
 	// the page; it goes if the plan proves finished or the request fails.
+	// Followed on `ochorus:sync`, as the book is (currentBook.watch), so the
+	// two halves of the block cannot disagree after a sync or another tab.
 	let plan = $state<PlanToday | null>(null);
 	let planLoading = $state(false);
-	onMount(() => {
-		if (!planProgress.started().length) return;
-		planLoading = true;
+	let generation = 0;
+	function loadPlan() {
+		const mine = ++generation;
+		if (!planProgress.started().length) {
+			plan = null;
+			planLoading = false;
+			return;
+		}
+		planLoading = !plan;
 		todaysPlan(getLang(), true)
-			.then((p) => (plan = p))
+			.then((p) => {
+				if (mine === generation) plan = p;
+			})
 			.catch(() => {})
-			.finally(() => (planLoading = false));
+			.finally(() => {
+				if (mine === generation) planLoading = false;
+			});
+	}
+	onMount(() => {
+		loadPlan();
+		window.addEventListener('ochorus:sync', loadPlan);
+		return () => window.removeEventListener('ochorus:sync', loadPlan);
 	});
 	const planDay = $derived(plan ? m.home_resume_plan_day({ day: plan.day, total: plan.plan.day_count }) : '');
 </script>
@@ -64,7 +81,7 @@
 	<div class="resume-card resume-book" aria-hidden="true">
 		<div class="resume-cover aspect-[3/4] skeleton rounded-sm"></div>
 		<div class="min-w-0 flex-1 self-center">
-			<div class="font-display text-h3 font-semibold"><span class="inline-block w-3/4 skeleton rounded">&nbsp;</span></div>
+			<div class="resume-title font-display text-h3 font-semibold"><span class="inline-block w-3/4 skeleton rounded">&nbsp;</span></div>
 			<div class="mt-0.5 text-small"><span class="inline-block w-1/2 skeleton rounded">&nbsp;</span></div>
 			<div class="mt-3 text-small">&nbsp;</div>
 			<div class="mt-1.5"><ProgressBar percent={0} label="" /></div>
@@ -75,7 +92,7 @@
 
 {#snippet planHold()}
 	<div class="resume-card resume-plan" aria-hidden="true">
-		<div class="font-display text-body font-semibold"><span class="inline-block w-2/3 skeleton rounded">&nbsp;</span></div>
+		<div class="resume-title font-display text-body font-semibold"><span class="inline-block w-2/3 skeleton rounded">&nbsp;</span></div>
 		<div class="mt-0.5 text-small"><span class="inline-block w-1/2 skeleton rounded">&nbsp;</span></div>
 		<div class="mt-3"><ProgressBar percent={0} label="" /></div>
 		<div class="mt-4"><span class="btn btn-sm invisible">&nbsp;</span></div>
@@ -85,7 +102,7 @@
 {#snippet hold()}
 	<section class="page-col px-5 pt-8 sm:pt-16" aria-hidden="true">
 		<div class="eyebrow mb-3"><span class="inline-block w-28 skeleton rounded">&nbsp;</span></div>
-		<div class="resume-grid resume-hold-grid">
+		<div class="resume-grid">
 			{@render bookHold()}
 			<div class="resume-hold-plan">{@render planHold()}</div>
 		</div>
@@ -96,7 +113,7 @@
 	<!-- The page's one <h1> while this block stands in for the hero (which
 	     carries it otherwise, and is not rendered beside this). -->
 	<h1 id="home-resume" class="eyebrow mb-3 text-accent">{t('home.resumeTitle')}</h1>
-	<div class="resume-grid" class:with-plan={plan || planLoading}>
+	<div class="resume-grid">
 		{#if item}
 			<div class="resume-card resume-book">
 				<!-- The cover is the same way back in as the titled link beside it:
@@ -106,7 +123,9 @@
 					<BookCover book={item.book} rounded="rounded-sm" priority />
 				</a>
 				<div class="min-w-0 flex-1 self-center">
-					<a {href} class="line-clamp-2 font-display text-h3 font-semibold text-text hover:no-underline">{item.title}</a>
+					<div class="resume-title font-display text-h3 font-semibold">
+						<a {href} class="line-clamp-2 text-text hover:no-underline">{item.title}</a>
+					</div>
 					<p class="mt-0.5 truncate text-small text-muted">{item.author}</p>
 					<p class="mt-3 truncate text-small text-muted">{chapter}</p>
 					<div class="mt-1.5"><ProgressBar percent={item.pct} label="{item.title}: {chapter}" /></div>
@@ -122,9 +141,9 @@
 		{/if}
 		{#if plan}
 			<div class="resume-card resume-plan">
-				<a href={localizeHref(`/plans/${plan.plan.slug}`)} class="line-clamp-2 font-display text-body font-semibold text-text"
-					>{plan.plan.title}</a
-				>
+				<div class="resume-title font-display text-body font-semibold">
+					<a href={localizeHref(`/plans/${plan.plan.slug}`)} class="line-clamp-2 text-text">{plan.plan.title}</a>
+				</div>
 				<p class="mt-0.5 truncate text-small text-muted" title={plan.chapterTitle || plan.bookTitle}>
 					{planDay}{#if plan.chapterTitle || plan.bookTitle}<span class="sep mx-1.5">·</span>{plan.chapterTitle ||
 							plan.bookTitle}{/if}
@@ -145,17 +164,27 @@
 </section>
 
 <style>
+	/* Two columns from md whether or not a plan shows, so a plan's card that
+	   is held and then proves finished leaves the book card where it was. */
 	.resume-grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1rem;
-		max-width: 48rem;
 	}
 	@media (min-width: 768px) {
-		.resume-grid.with-plan,
-		:global(html[data-home-plan]) .resume-hold-grid {
+		.resume-grid {
 			grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-			max-width: none;
+		}
+	}
+	/* A phone's title often wraps: two lines are held in the frame and in the
+	   block alike (the text sits on the lower one), so a long title does not
+	   grow the card when the block replaces its frame. */
+	@media (max-width: 639px) {
+		.resume-title {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			min-height: 2lh;
 		}
 	}
 	.resume-card {

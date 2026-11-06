@@ -44,8 +44,10 @@ export async function todaysPlan(lang: string, startedOnly = false): Promise<Pla
 	const next = planProgress.nextDay(pick.slug, pick.day_count);
 	const detail = await getPlan(pick.slug, lang);
 	// A finished plan is offered as a fresh START at day 1, never as a
-	// continuation of something already complete.
-	const entry = detail.days.find((d) => d.day === (next ?? 1)) ?? detail.days[0];
+	// continuation of something already complete. A resume (`startedOnly`)
+	// whose day the plan no longer has offers nothing rather than day 1.
+	const found = detail.days.find((d) => d.day === (next ?? 1));
+	const entry = found ?? (startedOnly ? undefined : detail.days[0]);
 	if (!entry) return null;
 	return {
 		plan: pick,

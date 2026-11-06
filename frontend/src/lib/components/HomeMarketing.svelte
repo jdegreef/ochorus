@@ -55,14 +55,20 @@
 	// progress — the prerendered page (and hydration) is the newcomer's, and
 	// app.html's boot flag hides its hero until then (see the style below).
 	// `currentBook` is the store the signed-in hero uses: it knows WHICH book
-	// at once and resolves the book itself from the cache or the list.
+	// at once and resolves the book itself from the cache or the list. A book
+	// it cannot draw once the list has settled (the list failed: offline, the
+	// API down) leaves the hero, not a skeleton, in place. `mounted` as well
+	// as the key: the store is shared with the dashboard, so before this
+	// page's refresh it may still hold another visit's book.
 	let mounted = $state(false);
 	onMount(() => {
 		currentBook.refresh();
 		mounted = true;
 		return currentBook.watch();
 	});
-	const resuming = $derived(mounted && !!currentBook.key);
+	const resuming = $derived(
+		mounted && !!currentBook.key && (!!currentBook.item || currentBook.pending)
+	);
 </script>
 
 <!-- Continue reading + streak render ABOVE the acquisition hero: a returning
@@ -199,10 +205,31 @@
 	.resume-hold {
 		display: none;
 	}
+	/* If the app never says it is ready (a script error, a chunk that will
+	   not load), the hero comes back after 3 s, as the member's page is
+	   revealed (app.css home-reveal), instead of staying a skeleton. */
 	:global(html[data-home-resume]:not([data-home-ready])) .resume:empty + .resume-hold {
 		display: block;
+		animation: resume-hold-end 0s 3s forwards;
 	}
+	/* Folded rather than display: none — an element that is display: none runs
+	   no animation, so it could not come back on its own. */
 	:global(html[data-home-resume]:not([data-home-ready])) .intro {
-		display: none;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		animation: resume-intro-back 0s 3s forwards;
+	}
+	@keyframes resume-hold-end {
+		to {
+			display: none;
+		}
+	}
+	@keyframes resume-intro-back {
+		to {
+			height: auto;
+			overflow: visible;
+			visibility: visible;
+		}
 	}
 </style>

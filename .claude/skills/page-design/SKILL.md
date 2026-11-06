@@ -724,7 +724,11 @@ file mark each slot. Rules:
   baked HTML keeps the hero for everyone, and app.html's boot flag
   (`data-home-resume`, `data-home-plan`; `homeBootFlag.test.ts`) hides it and
   shows `HomeResume`'s `hold` frame before first paint, so the hero never
-  flashes. A boot-flag change re-pins the app.html hash in `csp.config.js`.
+  flashes; if the app never mounts, the hero returns after 3 s. A book the
+  list cannot supply (offline, API down) keeps the hero (`currentBook.pending`).
+  The desktop grid is two columns with or without a plan, so a held plan card
+  that proves finished leaves the book card in place. A boot-flag change
+  re-pins the app.html hash in `csp.config.js`.
   Sermon-only (or plan-only) progress keeps the hero, with the strip above it.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
