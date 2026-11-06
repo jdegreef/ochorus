@@ -202,6 +202,40 @@ describe('a floating reader control clears the bottom bars', () => {
 	});
 });
 
+describe('the chapter reader: progress at the top, one end card (design #18)', () => {
+	it('shows its progress as the hairline under the bar, not a slider block under the text', () => {
+		const src = read(READER);
+		// The footer's scrubber and "Page 1 / 18 · 35 min left" line are gone…
+		expect(src).not.toMatch(/class="scrubber"/);
+		expect(src).not.toMatch(/class="progress-meta"/);
+		// …and the hairline carries both: it still seeks (page mode has no
+		// scrollbar) and says the time left to a screen reader.
+		const hair = src.slice(src.indexOf('<div class="hairline"'));
+		expect(hair).toMatch(/<input\s+class="hairline-seek"\s+type="range"/);
+		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
+		// It hangs from the bar (riding its fold-away transform), and is pinned
+		// to the top in focus mode, where there is no bar.
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*>\s*\{@render hairline\(false\)\}/);
+		expect(src).toMatch(/\{#if readerUi\.focus && !showPeek\}\s*\{@render hairline\(true\)\}/);
+	});
+
+	it('a seek on the hairline does not fold the bar out from under it', () => {
+		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS\)\s*barHidden = nextBarHidden/);
+	});
+
+	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
+		const src = read(READER);
+		const nav = src.slice(src.indexOf('<div class="end-nav">'), src.indexOf('{#snippet endAsk()}'));
+		expect(nav, 'Previous belongs to "⋯" and the phone row, not the end card').not.toMatch(/chapter\.prev/);
+		// Next chapter, next volume, or the book page — one of them, never two.
+		expect(nav.match(/class="end-next btn/g)?.length).toBe(3);
+		expect(nav).toMatch(/\{#if chapter\.next\}[\s\S]*\{:else if nextInSeries\}[\s\S]*\{:else\}/);
+		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
+		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
+		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
+	});
+});
+
 describe('the sermon head stands on the page ground (design review #12)', () => {
 	const src = read('routes/sermons/[slug]/+page.svelte');
 

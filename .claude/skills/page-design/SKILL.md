@@ -282,7 +282,8 @@ Swahili — showing the English edition"), and no page 404s instead.
 The chapter reader and the sermon page are governed by `--reading-measure`
 and their own chrome (STYLE_GUIDE §3, §5). What they still share with leaf
 pages: the eyebrow (3), `SourceBadge`, prev/next as a `.btn` pair (ghost
-previous, soft-primary next), and one shared `.focus-exit` pill rather than
+previous, soft-primary next — except the chapter reader, whose end card
+has one solid Next since design #18), and one shared `.focus-exit` pill rather than
 three pasted copies.
 
 **A reading surface shows no visible breadcrumb** (design review #12, founder-
@@ -312,6 +313,27 @@ needs it too (`readerChrome.test.ts`). The scroll-mode bar folds away on
 scroll-down and returns on scroll-up (`nextBarHidden`), snaps under reduced
 motion, and comes back when Tab lands in it. Don't put the nav or footer back
 on a reading surface.
+
+**Progress at the top, one end card (design #18, chapter reader).** The
+chapter's progress is a 2px hairline along the reader bar's bottom edge
+(`.hairline`, rendered INSIDE `.reader-chrome` at `top: 100%` so it rides the
+bar's fold-away transform for free; fixed at the top in focus mode) — not a
+slider block under the text. It is still the scrubber: a transparent
+`<input type="range" class="hairline-seek">` over the line (a 10px strip on a
+mouse; on touch only in page mode, where it lies over the pager's padding)
+seeks, takes Tab (a page per arrow key in page mode), and shows "Page n / N ·
+min left in chapter · left in book" as a tip on hover/focus/drag and as
+`aria-valuetext`; page mode has no scrollbar, so it stays. A seek must not
+fold the bar (`seekedAt` in `trackChrome`). The bottom
+`.progress-foot` is now the phone's action row only (hidden from `sm`, and
+while folded). The chapter's ending is ONE card: "You finished <chapter>"
+(`reader.finished`), the book pips, then ONE large button — "Next: <chapter>"
+with its length (`.end-next btn-primary btn-solid`, the read verb), the
+series' next volume at a book's end, or the book's page (soft) — with
+Contents and Share as text links under it. No Previous at the end of a
+chapter (it lives in "⋯" and the phone row). The sermon page still has the
+older Previous/Next pair and footer scrubber until its own item moves it.
+`readerChrome.test.ts` guards both.
 
 Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
 - **Paged mode slices the last line.** `.paged .pager` fills each CSS column
