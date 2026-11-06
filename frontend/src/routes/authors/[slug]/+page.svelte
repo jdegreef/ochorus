@@ -169,8 +169,10 @@
 
 	// Who they were, in one line under the name: the opening sentence of the
 	// summary this locale has (there is no tagline field, and the line is not
-	// written for the page). No summary, no line.
-	const identity = $derived(firstSentence(author.bio));
+	// written for the page). No summary, no line — and none where the page
+	// prints that summary itself (no long bio in this locale), which would
+	// repeat the same sentence a screen lower.
+	const identity = $derived(author.bio_html ? firstSentence(author.bio) : '');
 
 	// The writer's hubs as key facts: their traditions, then their place, each
 	// under its own label ("Tradition", "Place") — the order the API serves.
@@ -516,7 +518,8 @@
 							     off the list of pages reachable only from the sitemap. -->
 							{#if showQuotes}{#if worksBits.length}<span class="sep">{' · '}</span>{/if}<a
 									href={`/quotes/${author.slug}/`}
-									class="text-accent hover:underline">{author.quote_count} quotes</a
+									class="text-accent hover:underline"
+									>{author.quote_count} {author.quote_count === 1 ? 'quote' : 'quotes'}</a
 								>{/if}
 						</dd>
 					</div>

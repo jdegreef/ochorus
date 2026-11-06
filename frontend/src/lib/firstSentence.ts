@@ -1,27 +1,35 @@
-import { truncateMeta } from '$lib/seo';
-
 /**
- * The first sentence of a summary — the author page's one-line "who they
+ * The first sentence of a summary: the author page's one-line "who they
  * were" under the name (design review #13). There is no tagline field, so the
  * line is the summary's own opening rather than new copy.
  *
- * A full stop ends the sentence only where it can: not after an initial
- * ("C. S. Lewis", "أ. و. توزر"), a "c." date or a title ("Dr", "St"), and not
- * before a lowercase letter. The sentence ends at `. ! ? । ؟` followed by a
- * space or the end. A long one is held to `max` on a word boundary.
+ * A sentence ends at `. ! ? । ؟ ።`, optionally followed by a closing quote or
+ * bracket, then a space or the end. A full stop does not end it after an
+ * initial ("C. S. Lewis", "أ. و. توزر"), a "c." date or a title ("Dr", "St",
+ * "डॉ"), or before a lowercase letter. A long sentence is cut on a word
+ * boundary at `max`, with an ellipsis.
  */
 const ABBREVIATION = /^(?:jr|sr|st|ste|dr|mr|mrs|ms|rev|revd|fr|mt|ca|vs|etc|no|vol|ed|डॉ)$/i;
+/** One letter with its combining marks: an initial. */
+const INITIAL = /^\p{L}\p{M}*$/u;
+const END = /[.!?।؟።]["”’»)]*(?= |$)/g;
 
-export function firstSentence(text: string, max = 240): string {
+export function firstSentence(text: string, max = 180): string {
 	const clean = (text ?? '').replace(/\s+/g, ' ').trim();
-	for (const m of clean.matchAll(/[.!?।؟](?= |$)/g)) {
-		const end = m.index + 1;
+	let sentence = clean;
+	for (const m of clean.matchAll(END)) {
+		const end = m.index + m[0].length;
 		if (m[0] === '.') {
-			const word = (clean.slice(0, m.index).match(/(\p{L}+)$/u) ?? ['', ''])[1];
-			if ([...word].length <= 1 || ABBREVIATION.test(word)) continue;
+			// The token before the stop, without an opening bracket or quote.
+			const token = (clean.slice(0, m.index).match(/(\S+)$/)?.[1] ?? '').replace(/^["“‘«(]+/, '');
+			if (INITIAL.test(token) || ABBREVIATION.test(token)) continue;
 			if (/^\p{Ll}/u.test(clean.slice(end + 1))) continue;
 		}
-		return truncateMeta(clean.slice(0, end), max);
+		sentence = clean.slice(0, end);
+		break;
 	}
-	return truncateMeta(clean, max);
+	if (sentence.length <= max) return sentence;
+	const cut = sentence.slice(0, max);
+	const space = cut.lastIndexOf(' ');
+	return (space > 0 ? cut.slice(0, space) : cut).replace(/[\s,;:—–-]+$/, '') + '…';
 }

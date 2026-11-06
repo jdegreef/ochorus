@@ -155,8 +155,9 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    - **Author page (#13):** `AuthorHero` is the book page's light layout, not a
      dark band — the portrait as the photograph is (no `.duotone`, no
      grayscale) in a light print frame; era eyebrow; the name; one line of who
-     they were (`firstSentence(author.bio)` — there is no tagline field, so
-     don't write one); a facts `<dl>` of only what the data holds (Born, Died,
+     they were (`firstSentence(author.bio)`, only when a long bio is shown —
+     a summary-only page prints that summary itself; there is no tagline
+     field, so don't write one); a facts `<dl>` of only what the data holds (Born, Died,
      Tradition, Place, On Ochorus); then Follow as the one outlined button and
      Share/Search as bare icons. Quotes is a link in the facts, not a button.
      `authorHero.test.ts` guards it.
