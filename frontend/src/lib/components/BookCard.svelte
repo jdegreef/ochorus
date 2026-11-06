@@ -9,7 +9,6 @@
 	import { ORIGINALS_SLUG } from '$lib/originals';
 	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
-	import { cardTint } from '$lib/coverArt';
 
 	let {
 		book,
@@ -34,9 +33,12 @@
 		 */
 		showSeries = true,
 		/**
-		 * The time as a sitting ("~12 min a chapter", the series card's words)
-		 * rather than the whole book's: on the young-reader hubs, where "3 hr
-		 * read" is what puts a reader off and one chapter is the real commitment.
+		 * A line under the byline giving the time as a sitting ("~12 min a
+		 * chapter", the series card's words): on the young-reader hubs, where one
+		 * chapter is the real commitment and saying so is part of the pitch.
+		 * Every other card carries title and author only — the chapter count
+		 * and the whole book's time live in the list view (BookListRow) and on
+		 * the book page (design review #1, 2026-11).
 		 */
 		perChapter = false,
 		/**
@@ -73,9 +75,6 @@
 	const t = i18n.t;
 	const hookId = $props.id();
 
-	const chapters = $derived(
-		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
-	);
 	// A young-reader edition's "(For Teens)" / "(For Children)" can be clamped off
 	// the title on a narrow card; pull it onto its own line so the two editions
 	// don't look identical. Null for ordinary books.
@@ -86,17 +85,17 @@
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
 	);
-	const time = $derived(
-		!book.word_count
+	// One phrase, no separator, so a wrapped line can never lead with a "·".
+	// (A one-chapter book's sitting is the whole book.)
+	const sitting = $derived(
+		!perChapter || !book.word_count
 			? ''
-			: perChapter && book.chapter_count > 1
+			: book.chapter_count > 1
 				? m.series_chapter_minutes({
 						minutes: readingMinutes(book.word_count / book.chapter_count)
 					})
 				: readingTime(book.word_count)
 	);
-	// The card's tint (app.css, .book-card), from the book's own cover colour.
-	const tint = $derived(cardTint(book.cover_color));
 </script>
 
 <a
@@ -104,7 +103,6 @@
 	id={anchor ? `author-${anchor}` : undefined}
 	class="book-card card-lift group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
-	style:--cover-tint={tint || undefined}
 	data-testid="book-card"
 	aria-label={link?.ariaLabel ??
 		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)}
@@ -137,7 +135,7 @@
 		<!-- min-h-[2lh]: the title always takes its two lines, so the author
 		     and series lines start level across a grid row whether the title
 		     wraps or not (QA, 2026-10: rows were hard to scan). -->
-		<div class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text" title={book.title}>
+		<div class="line-clamp-2 min-h-[2lh] font-display text-small font-medium leading-snug text-text" title={book.title}>
 			{edition ? edition.base : book.title}
 		</div>
 		{#if link}
@@ -156,18 +154,9 @@
 				{hook}
 			</p>
 		{/if}
-		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
-		     two-line title still bottom out level across a grid row. -->
-		<!-- Two unbreakable halves with a break between them: on a narrow card
-		     (the library's seven-across) the meta wraps BEFORE the dot, which
-		     leads the time onto its line ("12 chapters / · 3 hr 15 min"), never
-		     "3 hr 15 min / read" and never a dot stranded at a line's end. The
-		     space is an expression so Svelte keeps it as the break. -->
-		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if time}{' '}<span class="whitespace-nowrap"
-					><span class="sep">·</span> {time}</span
-				>{/if}
-		</div>
+		{#if sitting}
+			<div class="mt-auto pt-0.5 text-eyebrow text-muted">{sitting}</div>
+		{/if}
 	</div>
 </a>
 

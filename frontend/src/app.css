@@ -371,10 +371,6 @@
 	--grain-light-specks: -webkit-image-set(url('/textures/grain-light.png') 1x, url('/textures/grain-light@2x.png') 2x, url('/textures/grain-light@3x.png') 3x);
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
-	/* How much of a book's own cover_color tints its card (.book-card): the
-	   most each theme can take and still keep every ink at 4.5:1 over the
-	   darkest-to-lightest colour a cover may have (libraryPalette.test.ts). */
-	--cover-tint-amount: 9%;
 
 	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
 	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
@@ -458,7 +454,6 @@
 	--shelf-wood-edge: #8a6440;
 	--grain: -webkit-image-set(url('/textures/grain-paper.png') 1x, url('/textures/grain-paper@2x.png') 2x, url('/textures/grain-paper@3x.png') 3x);
 	--band: #f1e8d8;
-	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #ecebf7;
 	--hue-oxblood: #8a2f2a;
@@ -503,7 +498,6 @@
 	--shelf-wood-edge: #7a5634;
 	--grain: -webkit-image-set(url('/textures/grain-sepia.png') 1x, url('/textures/grain-sepia@2x.png') 2x, url('/textures/grain-sepia@3x.png') 3x);
 	--band: #ece1c9;
-	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #e9e5f3;
 	--hue-oxblood: #842c27;
@@ -2988,7 +2982,7 @@ nav.appnav .navsearch:hover {
    mixed card types reads as one system (STYLE_GUIDE §5 → "Card hover"):
 
      .card-lift — GRID / banded cards rise. A 2px lift and a drop shadow, the
-       border warming. Members: .book-card (neutral) and .shelf-card (era hue).
+       border warming. Members: .book-card (neutral; boxless, so the rise only) and .shelf-card (era hue).
        The sermon-of-week plate is the same hue lift but restates it in its own
        scoped CSS: its trigger is the parent link's hover/focus-visible on a
        nested, non-focusable plate, which a self-hover class can't express.
@@ -3233,27 +3227,25 @@ nav.appnav .navsearch:hover {
 	overflow: hidden;
 }
 
-/* A book on the shelf. The cover is the visual, so the chrome stays quiet — a
-   hairline and a surface fill, warmed by a whisper of the book's own cover
-   colour (below). Before this the grid was bare
-   covers with caption text floating under them: the only browse surface with
-   no card at all, and the reason the shelf read as unfinished next to Topics.
-   height:100% + the mt-auto footer keep a row of cards level whatever the
-   title wraps to. */
+/* A book on the shelf. The cover IS the card: it sits straight on the page
+   ground with a serif title and a muted author under it, and nothing else at
+   rest — no box, no border, no tint (design review #1, 2026-11). The boxed,
+   cover-tinted card it replaces gave a shelf of 379 books 379 pastel boxes,
+   which read as visual static behind covers that are already the most
+   colourful thing on the page. The chapter count and reading time live in the
+   list view (BookListRow) and on the book page.
+   height:100% keeps a row of cards level whatever the title wraps to. */
 .book-card {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	padding: 0.6rem;
-	/* Each card takes a whisper of its own cover's colour (--cover-tint, set
-	   by BookCard from the book's cover_color), so a shelf of cards reads as
-	   that many books rather than that many white boxes. With no colour it
-	   falls back to the plain surface and border. */
-	border: 1px solid color-mix(in srgb, var(--cover-tint, var(--border)) 22%, var(--border));
 	border-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--cover-tint, var(--surface)) var(--cover-tint-amount), var(--surface));
-	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
-	   worn in the markup. */
+	/* Hover is the neutral .card-lift rise, worn in the markup — minus its
+	   shadow and border, which would draw the very box this card no longer
+	   has. The cover carries its own shadow, and tips on hover (BookCard). */
+}
+.book-card:hover {
+	box-shadow: none;
 }
 /* A variant of .book-card (a horizontal one, say) has to be a modifier
    class here rather than a `flex-row` utility on the element: `.book-card`

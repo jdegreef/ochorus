@@ -283,7 +283,7 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 
 | Content | Card | Hover |
 |---|---|---|
-| Book | `.book-card` (grid) / `.book-card--row` (row) | overlay + border |
+| Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `.book-card--row` (row) | rise + cover tip + overlay |
 | Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
@@ -1019,7 +1019,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   `.sermon-row`, `.sermon-card`, `.article-card`, `.author-card` variously tint
   border/bg or do nothing. → two recipes only — grid card lifts, row card tints
   (this is the concrete form of D3).
-- [~] **H2** _(2026-11-04: `.sermon-card` → 1rem (p-4), `.article-card` → 1.25rem (p-5). Left: `.book-card` 0.6rem is a cover tile (the cover is the content; a p-4 shrinks it), and ShelfCard's 1.1rem inline runs through four aligned parts — move them together or not at all)_ Card interior padding is five values across five families
+- [~] **H2** _(2026-11-04: `.sermon-card` → 1rem (p-4), `.article-card` → 1.25rem (p-5). Left: `.book-card` has no padding at all since design #1 (2026-11) — it is a boxless cover tile, so it is out of this count, and ShelfCard's 1.1rem inline runs through four aligned parts — move them together or not at all)_ Card interior padding is five values across five families
   (`.book-card` 0.6rem, `.sermon-card` 0.85rem, `.shelf-card-body` 0.9rem,
   `.article-card` 1.1rem, `AuthorBioCard` p-5) — none on a shared band. → snap
   to `p-4`/`p-5`.

@@ -410,8 +410,16 @@ is also the one place a sermon's own hue sits inside another surface's
 `--shelf-hue` band — the item's art wins over the shelf's, because the books
 beside it are already showing theirs.
 
-**Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash.
+**Book card** (`.book-card`) — **the cover is the card.** It sits straight on
+the page ground — no box, no border, no tint — with two lines under it: the
+title in the serif (`font-display`) and the author in muted sans. Nothing else
+at rest: the chapter count and reading time live in the list view
+(`BookListRow`) and on the book page. (Design review #1, 2026-11: the boxed,
+cover-tinted card gave the library 379 pastel boxes of visual static.) The
+one meta line a grid card may carry is the young-reader hubs' single-phrase
+sitting time (`perChapter`, "~12 min a chapter") — one phrase, so no `·` can
+lead a wrapped line. A row of covers is an even row: the home strip no longer
+sets its first book large.
 
 **A cover is a wordless GROUND with the book's type drawn over it in HTML.**
 That is one sentence for the whole system, and it is what lets a title be
@@ -491,7 +499,7 @@ longer — never a literal duration.
 
 | Recipe | Who | What happens |
 |---|---|---|
-| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
+| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms (the boxless `.book-card` takes the rise only — its cover carries the shadow). Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
 | **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
 
 Grid cards lift, row cards tint — that is the whole vocabulary. A card that
