@@ -5,8 +5,8 @@ import {
 	groupRows,
 	leadWithPinned,
 	navList,
-	passageBooks,
 	toRow,
+	topResult,
 	totalFor,
 	type ResultGroup,
 	type ResultRow
@@ -184,23 +184,6 @@ describe('groupRows', () => {
 	});
 });
 
-describe('passageBooks', () => {
-	it('clusters chapters under their book in server order', () => {
-		const books = passageBooks([
-			chapter('humility', 5),
-			chapter('waiting-on-god', 1),
-			chapter('humility', 2)
-		]);
-		expect(books.map((b) => b.slug)).toEqual(['humility', 'waiting-on-god']);
-		// Book order preserved: 5 came first because the server ranked it first.
-		expect(books[0].chapters.map((c) => c.order)).toEqual([5, 2]);
-	});
-
-	it('ignores hits that are not passages', () => {
-		expect(passageBooks([author(), book(), sermon()])).toEqual([]);
-	});
-});
-
 describe('counting', () => {
 	// The bug this exists for: the page reported the rows it held, so a search
 	// matching four hundred passages rendered "30 results".
@@ -223,32 +206,60 @@ describe('counting', () => {
 
 describe('navList', () => {
 	const groups = groupRows(rowsOf([book(), chapter('humility', 1), chapter('humility', 2)]));
-	const books = passageBooks([chapter('humility', 1), chapter('humility', 2)]);
 
 	it('walks the sections in display order', () => {
-		const nav = navList(groups, books, new Set(), 3);
-		expect(nav.keys[0]).toBe('book:humility');
-		expect(nav.keys.slice(1)).toEqual(['humility:1', 'humility:2']);
-	});
-
-	// A collapsed book contributes its preview and no more, or the arrow keys
-	// walk rows the reader cannot see.
-	it('stops at the preview cap for a collapsed book', () => {
-		const many = passageBooks([1, 2, 3, 4, 5].map((n) => chapter('humility', n)));
-		const g = groupRows(rowsOf([1, 2, 3, 4, 5].map((n) => chapter('humility', n))));
-		expect(navList(g, many, new Set(), 3).keys).toHaveLength(3);
-		expect(navList(g, many, new Set(['humility']), 3).keys).toHaveLength(5);
+		const nav = navList(groups);
+		expect(nav.keys).toEqual(['book:humility', 'chapter:humility:1', 'chapter:humility:2']);
 	});
 
 	it('maps every key to a destination, a label and its type', () => {
-		const nav = navList(groups, books, new Set(), 3);
+		const nav = navList(groups);
 		for (const k of nav.keys) {
 			expect(nav.map.get(k)).toBeTruthy();
 			expect(nav.labels.get(k)).toBeTruthy();
 			expect(nav.types.get(k)).toBeTruthy();
 		}
-		expect(nav.map.get('humility:2')).toBe('/books/humility/2');
-		expect(nav.types.get('humility:2')).toBe('chapter');
+		expect(nav.map.get('chapter:humility:2')).toBe('/books/humility/2?q=prayer');
+		expect(nav.types.get('chapter:humility:2')).toBe('chapter');
+	});
+});
+
+describe('passage location', () => {
+	it('names a passage by its book and chapter', () => {
+		expect(toRow(chapter('humility', 3, 'Humility and Faith'), ctx).location).toBe(
+			'Humility · Humility and Faith'
+		);
+	});
+
+	it('is carried by passages only', () => {
+		expect(toRow(book(), ctx).location).toBeUndefined();
+		expect(toRow(sermon(), ctx).location).toBeUndefined();
+	});
+});
+
+describe('topResult', () => {
+	it('promotes a book the query names exactly, ignoring case, accents and punctuation', () => {
+		const other = { ...(book('absolute-surrender') as object), book_title: 'Absolute Surrender' } as SearchHit;
+		const rows = rowsOf([other, book()]);
+		expect(topResult(rows, 'humility')?.key).toBe('book:humility');
+		expect(topResult(rows, '  HUMILITY! ')?.key).toBe('book:humility');
+		expect(topResult(rowsOf([author()]), 'andrew murráy')?.key).toBe('author:andrew-murray');
+	});
+
+	it('promotes nothing for a partial match or a passage', () => {
+		expect(topResult(rowsOf([book()]), 'humil')).toBeNull();
+		expect(topResult(rowsOf([chapter('x', 1, 'Prayer')]), 'prayer')).toBeNull();
+		expect(topResult(rowsOf([book()]), 'h')).toBeNull();
+	});
+
+	it('prefers the book when a book and a writer share the name', () => {
+		const same = { ...(author() as object), author_name: 'Humility' } as SearchHit;
+		expect(topResult(rowsOf([same, book()]), 'humility')?.type).toBe('book');
+	});
+
+	it('leads with an admin-pinned book or writer even when it is not an exact match', () => {
+		const rows = rowsOf([book()]).map((r) => ({ ...r, pinned: true }));
+		expect(topResult(rows, 'meekness')?.key).toBe('book:humility');
 	});
 });
 
@@ -269,7 +280,6 @@ describe('cover faces', () => {
 		const withFace = (h: SearchHit) => ({ ...h, cover: face }) as SearchHit;
 		expect(toRow(withFace(book('rooted-1')), ctx).face).toEqual(face);
 		expect(toRow(withFace(chapter('rooted-1', 2)), ctx).face).toEqual(face);
-		expect(passageBooks([withFace(chapter('rooted-1', 2))])[0].face).toEqual(face);
 	});
 
 	it('leaves it out from an API behind this build, so the bare image still shows', () => {

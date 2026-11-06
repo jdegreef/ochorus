@@ -26,7 +26,8 @@
 		eyebrow = '',
 		title,
 		tagline = '',
-		meta
+		meta,
+		srOnly = false
 	}: {
 		/** Optional kicker above the title, e.g. "SERMONS". Rendered uppercase. */
 		eyebrow?: string;
@@ -36,22 +37,32 @@
 		tagline?: string;
 		/** Optional counts ("428 sermons · 38 preachers"), run on after the tagline. */
 		meta?: Snippet;
+		/**
+		 * Keep the h1 for screen readers and the outline, but draw nothing — for
+		 * a page whose first control IS its header (Search: the field is the
+		 * header, design review #25). Tagline and meta are dropped with it.
+		 */
+		srOnly?: boolean;
 	} = $props();
 </script>
 
-<header class="mb-8">
-	{#if eyebrow}
-		<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
-	{/if}
-	<h1 class="text-h1 mb-2">{title}</h1>
-	{#if tagline || meta}
-		<p class="max-w-2xl text-body text-muted">
-			{#if tagline}{tagline}{#if meta}{' '}{/if}{/if}{#if meta}<span class="page-header-count"
-					>{@render meta()}</span
-				>{/if}
-		</p>
-	{/if}
-</header>
+{#if srOnly}
+	<h1 class="sr-only">{title}</h1>
+{:else}
+	<header class="mb-8">
+		{#if eyebrow}
+			<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
+		{/if}
+		<h1 class="text-h1 mb-2">{title}</h1>
+		{#if tagline || meta}
+			<p class="max-w-2xl text-body text-muted">
+				{#if tagline}{tagline}{#if meta}{' '}{/if}{/if}{#if meta}<span class="page-header-count"
+						>{@render meta()}</span
+					>{/if}
+			</p>
+		{/if}
+	</header>
+{/if}
 
 <style>
 	/* The count runs on after the sentence and drops to the next line whole

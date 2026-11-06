@@ -335,6 +335,18 @@ Books' author groups carry `photo_url`, extract the strip into a shared
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
 
+**Search is the one shelf whose field is its header** (design review #25,
+2026-11-06). Its `<PageHeader srOnly />` keeps the h1 for screen readers and
+draws nothing; the pinned bar holds the field (header-sized) and, under it, the
+kind tabs (`.tab-strip` + `.subnav-link`, each with its real total) — the old
+left facet rail is gone, and `searchLayout.test.ts` guards the tabs instead.
+Then one larger top-result card when the query names a book or writer exactly
+(`topResult` in `lib/searchResults.ts`), short rows (title + one line), and
+passage rows as "Book · Chapter" over a snippet whose matches are `<mark>`ed
+from text runs (`snippetParts` in `lib/highlight.ts`) — never `{@html}`. A load
+error is one line plus Try again under the field, not a panel. Don't give
+another shelf `srOnly`: on a shelf the title is the first thing to read.
+
 The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
 books by author when the topic is *author-clustered* — most of its books share
 an author with another (the Puritans) — and stays a flat `book-grid` otherwise
@@ -369,7 +381,7 @@ lists content types, **in the same order** everywhere:
 - [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
       (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
-- [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
+- [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's kind tabs
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
 - [ ] `lib/sitemap.ts` static pages (nav order) and a sitemap section — for a
       prerendered URL *family* (e.g. a topic-filtered shelf), the route's

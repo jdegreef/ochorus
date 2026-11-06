@@ -22,6 +22,48 @@ export function markSnippet(snippet: string): string {
 	return escapeHtml(snippet).replaceAll(HL_START, '<mark>').replaceAll(HL_END, '</mark>');
 }
 
+/** One run of a snippet: plain text, or a matched word to draw as `<mark>`. */
+export interface SnippetPart {
+	text: string;
+	mark: boolean;
+}
+
+/**
+ * A server snippet as runs of text, for a template to render with `{#each}` —
+ * no HTML string, so nothing in it can ever be read as markup.
+ *
+ * The server's full-text markers decide what is marked. A snippet that carries
+ * none (an entity's description, a fallback excerpt) falls back to marking the
+ * query's words where they appear, case-insensitively, so a passage never shows
+ * up with nothing to show why it matched.
+ */
+export function snippetParts(snippet: string, query = ''): SnippetPart[] {
+	if (snippet.includes(HL_START)) {
+		const parts: SnippetPart[] = [];
+		for (const [i, run] of snippet.split(HL_START).entries()) {
+			const end = i === 0 ? -1 : run.indexOf(HL_END);
+			if (end < 0) {
+				parts.push({ text: run, mark: false });
+				continue;
+			}
+			parts.push({ text: run.slice(0, end), mark: true });
+			parts.push({ text: run.slice(end + HL_END.length), mark: false });
+		}
+		return parts.filter((p) => p.text);
+	}
+	const words = query
+		.split(/\s+/)
+		.filter((w) => w.length >= 2)
+		.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+	if (!words.length) return snippet ? [{ text: snippet, mark: false }] : [];
+	const re = new RegExp(`(${words.join('|')})`, 'giu');
+	// split() with a capturing group alternates text, match, text, match…
+	return snippet
+		.split(re)
+		.map((text, i) => ({ text, mark: i % 2 === 1 }))
+		.filter((p) => p.text);
+}
+
 /**
  * A window of `text` around the span [idx, idx+len), with that span wrapped in
  * `<mark>`. The caller has already located the match (a literal `indexOf`, or a
