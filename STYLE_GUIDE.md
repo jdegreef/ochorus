@@ -462,9 +462,13 @@ that line, and neither side measures anything.
 (On a topic's own shelf every book shares the emblem, which is honest rather
 than useless: they do share the topic, and that shelf is tinted for it anyway.)
 
-**Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
-Sermon of the day: the eyebrow/title/byline in a hue wash with the sermon's
-emblem anchoring the far end, the same composition as its share card. Sermons
+**Sermon plate** (`<SermonPlate>`) — a sermon's head in Sermon of the day:
+the eyebrow/title/byline in a hue wash with the sermon's emblem anchoring the
+far end, the same composition as its share card. Not on the sermon's own page:
+there the head stands on the page ground like a chapter's (design review #12 —
+eyebrow with the passage, title, byline with the preacher's years and Listen,
+an italic standfirst, the text as a gold-ruled epigraph), because a plate, a
+text panel and a boxed summary were three boxes before the first word. Sermons
 are **not** given 3:4 covers on a browse shelf: that silhouette says *volume*,
 and differing silhouettes are what tell a book from a sermon at a glance there.
 

@@ -6,8 +6,10 @@
 	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 
 	/**
-	 * A sermon's plate: the hue-washed band it wears at the head of its own page
-	 * and in the Sermon of the day panel. The sermon's words sit in the band and
+	 * A sermon's plate: the hue-washed band it wears in the Sermon of the day
+	 * panel. (It headed the sermon's own page too, until design review #12 set
+	 * that head on the page ground: a plate, a text panel and a boxed summary
+	 * were three boxes before the first word of the sermon.) The sermon's words sit in the band and
 	 * its passage monogram (MAT over 11, as on every sermon shelf) anchors the
 	 * far end. Its share card (`scripts/generate-sermon-og.mjs`) keeps the same
 	 * composition and hue, with the illustrated emblem in the chip.
@@ -21,9 +23,8 @@
 	 *   - The hue comes from `sermonArt`, shared with the topic fan and the
 	 *     share card, so a sermon keeps one colour everywhere. No drawing is
 	 *     loaded: the monogram is text, so it paints with the band.
-	 *   - It renders a band, not a link. One of its two callers wraps it in an
-	 *     anchor and owns the hover state, since heading a page is the commoner
-	 *     job and a plate should not assume it is clickable.
+	 *   - It renders a band, not a link. Its caller wraps it in an anchor and
+	 *     owns the hover state, so a plate does not assume it is clickable.
 	 */
 	let {
 		slug,
@@ -51,8 +52,7 @@
 		/**
 		 * An author portrait to stand in the chip in place of the monogram,
 		 * so the preacher has a face — used by the Sermon of the day panel. Left
-		 * null (the sermon's own page) keeps the monogram, so this is purely
-		 * additive and the page header is unchanged. `pos` is the `object-position`
+		 * null keeps the monogram. `pos` is the `object-position`
 		 * from `$lib/portraits`, which lands the crop on the face; the face is
 		 * printed as a duotone in the band's hue (`.duotone`, app.css).
 		 */

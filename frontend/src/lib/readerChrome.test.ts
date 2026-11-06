@@ -201,3 +201,31 @@ describe('a floating reader control clears the bottom bars', () => {
 		}
 	});
 });
+
+describe('the sermon head stands on the page ground (design review #12)', () => {
+	const src = read('routes/sermons/[slug]/+page.svelte');
+
+	it('shows one way back: the top bar, not a visible trail as well', () => {
+		expect(src).not.toMatch(/<Breadcrumb\b/);
+		// …while search engines keep the trail.
+		expect(src).toMatch(/structuredData=\{\[sermonLd, crumbsLd/);
+	});
+
+	it('wears no plate or boxed panel before the first word', () => {
+		expect(src).not.toMatch(/<SermonPlate\b/);
+		expect(src).not.toMatch(/class="text-card\b/);
+		// The text is the shared quiet epigraph, not a panel of its own.
+		expect(src).toMatch(/<ScriptureEpigraph\b/);
+	});
+
+	it('prints the preaching text once when the body opens on it', () => {
+		expect(src).toMatch(/preachingText\?\.verses\?\.length && !sermon\.text_in_body/);
+	});
+
+	it('keeps the minutes-left pill off the column', () => {
+		// Centred at the foot of the screen it sat on the line being read.
+		expect(src).toMatch(/class="min-left beside-text"/);
+		expect(src).toMatch(/besideText\.matches/);
+		expect(read('app.css')).toMatch(/\.min-left\.beside-text\s*\{[^}]*inset-inline-end:/);
+	});
+});

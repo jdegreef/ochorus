@@ -268,9 +268,23 @@ Swahili — showing the English edition"), and no page 404s instead.
 
 The chapter reader and the sermon page are governed by `--reading-measure`
 and their own chrome (STYLE_GUIDE §3, §5). What they still share with leaf
-pages: the breadcrumb rule (2), the eyebrow (3), `SourceBadge`, prev/next as
-a `.btn` pair (ghost previous, soft-primary next), and one shared
-`.focus-exit` pill rather than three pasted copies.
+pages: the eyebrow (3), `SourceBadge`, prev/next as a `.btn` pair (ghost
+previous, soft-primary next), and one shared `.focus-exit` pill rather than
+three pasted copies.
+
+**A reading surface shows no visible breadcrumb** (design review #12, founder-
+approved; it overrides leaf step 2 here): its top bar already carries the way
+back ("← Sermons"), and a trail under it was the same link twice. Keep the
+BreadcrumbList JSON-LD. **And nothing boxed before the first word**: the
+sermon head is eyebrow (kind · passage · time), H1, byline (linked preacher
+with years, Listen beside it), an italic `.standfirst` for the summary, and the
+preaching text as the shared `<ScriptureEpigraph hue="var(--ornament)">` (gold
+start rule, no fill, translation credited) — dropped when the body opens on the
+same verse
+(`text_in_body`, backend `scripture.opens_with_text`). No `SermonPlate`
+there; it stays in Sermon of the day. The minutes-left pill stands in the start
+margin (`.min-left.beside-text`) and is not mounted where the margin can't hold
+it; the biography's pill is still centred (follow-up).
 
 **No site chrome while reading (design #7).** A route in `READER_ROUTE_IDS`
 draws no site nav, no footer and no phone tab bar — the root layout's one

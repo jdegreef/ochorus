@@ -142,6 +142,25 @@ class SermonCardPayloadTests(TestCase):
         res, _ = self._get(reverse("sermon-detail", args=["with-questions"]))
         self.assertEqual(res.data["study_questions"], qa)
 
+    def test_the_sermon_page_says_when_the_body_opens_on_its_text(self):
+        """`text_in_body` lets the page print its preaching text once (design #12),
+        and the byline gets the preacher's years."""
+        Sermon.objects.create(
+            author=self.author,
+            slug="on-its-text",
+            language="en",
+            title="On Its Text",
+            scripture_ref="John 3:16",
+            body_html="<blockquote>For God so loved the world, that he gave his only begotten Son."
+            "</blockquote><p>Consider it.</p>",
+            is_published=True,
+        )
+        res, _ = self._get(reverse("sermon-detail", args=["on-its-text"]))
+        self.assertIs(res.data["text_in_body"], True)
+        self.assertIn("author_birth_year", res.data)
+        res, _ = self._get(reverse("sermon-detail", args=["sermon-1"]))
+        self.assertIs(res.data["text_in_body"], False)
+
     def test_the_shelf_omits_study_questions(self):
         """Study questions are a detail-only field — a card never carries them."""
         res, _ = self._get(reverse("sermon-list"))
