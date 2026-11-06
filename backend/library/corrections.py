@@ -13170,6 +13170,42 @@ BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements",
     # 4. ch09: "He is my Vine, and I am His branch" (cf. "I am Thy branch" below).
     ("and I am His branches—", "and I am His branch—"),
 ])
+# absolute-surrender ch03: the body opened with an <h2> restating the chapter
+# title ("SEPARATED UNTO THE HOLY GHOST" under "Separated unto the Holy
+# Spirit"), so the reader printed it twice. It paraphrases rather than repeats
+# the title (Ghost/Spirit), so `ingest.strip_restated_heading` misses it; drop
+# it by pair in EVERY edition at once, as migration 0092 judged translations by
+# their English twin, so the tag sequences stay in lockstep. Anchored on the
+# opening of the verse that follows, so the settled form still names a string.
+# (Reported in the 2026-11-05 proofreading sweep, #7317.)
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    # en
+    ("<h2>SEPARATED UNTO THE HOLY GHOST</h2> <p><i>“Now there", "<p><i>“Now there"),
+    # en-modern
+    ("<h2>SET APART FOR THE HOLY SPIRIT</h2><p><i>“Now there", "<p><i>“Now there"),
+    # am
+    ("<h2>ለመንፈስ ቅዱስ የተለዩት</h2> <p><i>«በአንጾኪያም ባለችው", "<p><i>«በአንጾኪያም ባለችው"),
+    # ar
+    ("<h2>مُخَصَّصُونَ لِلرُّوحِ ٱلْقُدُسِ</h2> <p><i>«وَكَانَ فِي", "<p><i>«وَكَانَ فِي"),
+    # es
+    ("<h2>SEPARADOS PARA EL ESPÍRITU SANTO</h2> <p><i>«Había entonces", "<p><i>«Había entonces"),
+    # fr
+    ("<h2>MIS À PART POUR LE SAINT-ESPRIT</h2> <p><i>« Il", "<p><i>« Il"),
+    # hi
+    ("<h2>पवित्र आत्मा के निमित्त अलग किए हुए</h2> <p><i>“अन्ताकिया की", "<p><i>“अन्ताकिया की"),
+    # ko
+    ("<h2>성령을 위하여 따로 세움</h2> <p><i>“안디옥 교회에", "<p><i>“안디옥 교회에"),
+    # lg
+    ("<h2>OKWAWULIRWA OMWOYO OMUTUKUVU</h2> <p><i>“Mu Kkanisa", "<p><i>“Mu Kkanisa"),
+    # pt
+    ("<h2>POSTOS À PARTE PARA O ESPÍRITO SANTO</h2> <p><i>“Ora, na", "<p><i>“Ora, na"),
+    # sw
+    ("<h2>KUTENGWA KWA ROHO MTAKATIFU</h2> <p><i>“Basi katika", "<p><i>“Basi katika"),
+    # uk
+    ("<h2>ВІДЛУЧЕНІ СВЯТОМУ ДУХОВІ</h2> <p><i>«Були ж", "<p><i>«Були ж"),
+    # vi
+    ("<h2>ĐƯỢC ĐỂ RIÊNG CHO ĐỨC THÁNH LINH</h2> <p><i>“Trong Hội", "<p><i>“Trong Hội"),
+])
 # all-things-for-good: pt ch9–11 closed EVERY quotation with an opener, “…“ — 64 of them; the other chapters and the English are right.
 BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
     ("chamados.</i>“ ", "chamados.</i>” "),
