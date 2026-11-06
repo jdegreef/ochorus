@@ -17,9 +17,12 @@
 	 *
 	 * This is the Topics card, generalised. It was the best-looking surface in
 	 * the app and the only page using it — Plans rendered plain bordered rows
-	 * with a ragged cluster of covers floated top-right. Plans wore it too until
-	 * design review #19 (2026-11) gave them a cover-led card of their own
-	 * (`PlanShelfCard`): a plan is its books, so the books lead it.
+	 * with a ragged cluster of covers floated top-right. Only the topic cards on
+	 * Favorites still wear it. The Topics hub left it in design review #23
+	 * (boxless tiles: three readable covers in a `CoverStrip` fan, the name and
+	 * one counts line), and Plans left it in design review #19 for a cover-led
+	 * card of their own (`PlanShelfCard`): a plan is its books, so the books
+	 * lead it.
 	 *
 	 * Sermons does NOT: a sermon shelf carries a 300–400 character brief, which
 	 * a banded card cannot hold without becoming mostly text, so the sermons

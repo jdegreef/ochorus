@@ -9,8 +9,8 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
-	import { type Sermon, type SermonSummary, isTranslated, listSermons } from '$lib/library-public';
-	import { readerPrefs } from '$lib/readerPrefs.svelte';
+	import { type Sermon, type SermonSummary, formatLifespan, isTranslated, listSermons } from '$lib/library-public';
+	import { MEASURE_REM, readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { nextBarHidden } from '$lib/readerAutohide';
 	import FocusExit from '$lib/components/FocusExit.svelte';
@@ -20,6 +20,7 @@
 	import {
 		contentLang,
 		readingTime,
+		listenTime,
 		minutesLeft as minutesLeftOf,
 		preachedYear,
 		HEADER_OFFSET
@@ -38,14 +39,14 @@
 	import { favorites } from '$lib/favorites.svelte';
 	import { localizeHref } from '$lib/href';
 	import { authorLdType, authorPath } from '$lib/originals';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ReaderSiteLinks from '$lib/components/ReaderSiteLinks.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
-	import SermonPlate from '$lib/components/SermonPlate.svelte';
+	import ScriptureEpigraph from '$lib/components/ScriptureEpigraph.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { adminWorkHref } from '$lib/adminLinks';
@@ -170,6 +171,13 @@
 	// the prerendered markup), so both `{#if}`s below agree with it.
 	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
+	/** The pill's width plus its gap from the text, each side of the column. */
+	const MIN_LEFT_GUTTER_REM = 9;
+	// Room in the start margin for the minutes-left pill: the column at the
+	// reader's own measure and size, plus the pill's width on each side.
+	const besideText = mediaFlag(
+		() => `(min-width: ${MEASURE_REM[readerPrefs.measure] * readerPrefs.scale + 2 * MIN_LEFT_GUTTER_REM}rem)`
+	);
 
 	// The footer's action row folds away while reading on and returns on the
 	// first scroll up, as the chapter's does (nextBarHidden). Folding changes no
@@ -209,6 +217,14 @@
 		};
 	});
 
+	/** Listen — the top bar's button and the one by the title: start, stop, or
+	 *  resume one paused from the Listen bar (stopping it there lost the place). */
+	function toggleListen() {
+		if (listen.status === 'idle') reader?.startListening();
+		else if (listen.status === 'paused') listen.toggle();
+		else listen.stop();
+	}
+
 	/** Scroll to a fraction of the sermon — drives the footer's scrubber. */
 	function scrubTo(to: number) {
 		if (!body) return;
@@ -241,9 +257,9 @@
 			.join('')
 			.toUpperCase();
 
-	// The sermon's preaching text — the verse(s) it's built on — for the header
-	// card, from the load so it is in the prerendered page (getPreachingText);
-	// absent = card shows just the reference.
+	// The sermon's preaching text — the verse(s) it's built on — for the head's
+	// epigraph, from the load so it is in the prerendered page (getPreachingText);
+	// absent = no epigraph, the reference stays in the eyebrow.
 	const preachingText = $derived(data.preachingText);
 
 	/** "1 Peter 2:7" -> "1 Peter"; "Matthew 11:28" -> "Matthew". */
@@ -294,6 +310,10 @@
 	const shareTargets = $derived(shareLinks(shareLabel, canonical, t('login.email')));
 
 	const year = $derived(preachedYear(sermon.preached_on));
+	// The preacher's years for the byline; "" when the API (or the author) has none.
+	const lifespan = $derived(
+		formatLifespan(sermon.author_birth_year ?? null, sermon.author_death_year ?? null, t('common.bornPrefix'))
+	);
 
 	// --- SEO -------------------------------------------------------------------
 	// Description, then structured data (an Article for the sermon plus a
@@ -328,7 +348,7 @@
 	// searches are passage-driven ("sermon on Matthew 11:28"), and the reference
 	// lived only in the page body — never the title tag search engines weight
 	// most. The visible H1 stays the plain title (the passage sits in the
-	// text-card right below it, and the book page's H1 is the bare title too).
+	// eyebrow right above it, and the book page's H1 is the bare title too).
 	const titleParts = $derived(
 		[sermon.title, sermon.scripture_ref || null, sermon.author_name].filter(Boolean)
 	);
@@ -371,9 +391,9 @@
 			publisher: publisherLd()
 		})
 	);
-	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (they had
-	// drifted: the visible nav went Sermons › Author, the JSON-LD Home › Sermons
-	// › Title). Home › Sermons › Title, the book page's shape.
+	// The trail for the BreadcrumbList JSON-LD: Home › Sermons › Title, the book
+	// page's shape. Not shown — the top bar's "← Sermons" is the one way back
+	// (design review #12).
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
 		{ name: t('nav.sermons'), href: '/sermons' },
@@ -483,8 +503,8 @@
 				><Arrow back /> {t('nav.sermons')}</a
 			>
 			<!-- From `sm`, the chapter bar's shape: Outline (where Contents stands) ·
-			     Bookmark · Listen · Aa · "⋯", labelled from `md`; Save, Share and
-			     Focus fold into "⋯". -->
+			     Aa · Listen · Bookmark · "⋯", icons with tooltips; Save, Share, Focus
+			     and the site's destinations fold into "⋯". -->
 			<div class="flex shrink-0 items-center gap-0.5">
 				<div class="hidden sm:contents">
 					{#if outline.length >= 2}
@@ -497,34 +517,27 @@
 							aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
 						>
 					{/if}
-					<!-- Labelled from `md`; the aria-label matches the visible word. -->
-					<button
-						class="btn btn-icon btn-ghost md:px-2.5"
-						class:text-accent={bookmark.current}
-						onclick={bookmark.toggle}
-						aria-label={t('reader.bookmark')}
-						title={t('reader.bookmark')}
-						aria-pressed={bookmark.current}
-						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
-							>{t('reader.bookmark')}</span
-						></button
-					>
-					{#if listen.offered && !isPhone}
-						<button
-							class="btn btn-icon btn-ghost md:px-2.5"
-							class:text-accent={listen.status !== 'idle'}
-							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-							aria-label={t('reader.listen')}
-							aria-pressed={listen.status !== 'idle'}
-							title={t('reader.listen')}
-							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
-								>{t('reader.listen')}</span
-							></button
-						>
-					{/if}
 					{#if !isPhone}
 						<ReaderControls />
 					{/if}
+					{#if listen.offered && !isPhone}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={toggleListen}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title={t('reader.listen')}><Icon name="headphones" size={18} /></button
+						>
+					{/if}
+					<button
+						class="btn btn-icon btn-ghost"
+						class:text-accent={bookmark.current}
+						onclick={bookmark.toggle}
+						aria-label={t('reader.bookmark')}
+						title={bookmark.current ? t('reader.removeBookmark') : t('reader.bookmark')}
+						aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
+					>
 				</div>
 				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
 				     sits in the row from `sm`, so only the phone folds it in here. -->
@@ -596,6 +609,7 @@
 									onclick={() => (moreOpen = false)}>Open in admin</a
 								>
 							{/if}
+							<ReaderSiteLinks onpick={() => (moreOpen = false)} />
 						</div>
 					{/if}
 				</div>
@@ -671,84 +685,85 @@
 		</div>
 	{/if}
 
-	<!-- Not on phones: the top bar's title block already names the sermon, and
-	     the trail wrapped to two lines repeating it. Only the visible trail —
-	     the BreadcrumbList JSON-LD (crumbsLd) still ships. -->
-	<div class="max-sm:hidden"><Breadcrumb items={crumbs} /></div>
+	<!-- No visible breadcrumb: the top bar's "← Sermons" is the way back, and the
+	     trail under it was the same link twice (design review #12). The
+	     BreadcrumbList JSON-LD (crumbsLd) still ships. -->
+	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" class="mb-8" />
 
-	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" />
-
-	<!-- The head sits in its plate (see SermonPlate), except in focus mode,
-	     which strips the page to the prose. -->
-	{#snippet head()}
-		<p class="eyebrow mb-1 text-muted">
-			{t('search.typeSermon')} · {readingTime(sermon.word_count)}{#if year} · {year}{/if}{#if sermon.difficulty}&nbsp;·
-				<span title={t('reader.difficulty')}>{t(`reader.difficulty_${sermon.difficulty}`)}</span>{/if}
+	<!-- The head, on the page ground like a chapter's — no card, plate or panel
+	     before the first word (design review #12): eyebrow (with the passage),
+	     title, byline, then the standfirst and the text as an epigraph. -->
+	<header class="mb-8">
+		<p class="eyebrow mb-2 text-muted">
+			<!-- `{' · '}`: a block trims its leading space, which glued "SERMON·". -->
+			{t('search.typeSermon')}{#if sermon.scripture_ref}{' · '}<bdi>{sermon.scripture_ref}</bdi>{/if}
+			· {readingTime(sermon.word_count)}{#if year}{' · '}{year}{/if}
 		</p>
 		<h1 class="text-h1 mb-3" dir="auto" lang={contentLang(sermon.language)}>{sermon.title}</h1>
 
-		<!-- Author row: portrait + name -->
-		<a
-			href={localizeHref(`/authors/${sermon.author_slug}`)}
-			class="group mb-1 inline-flex items-center gap-2.5 hover:no-underline"
-		>
-			{#if sermon.author_photo}
-				{@const src = assetUrl(sermon.author_photo)}
-				<img
-					{src}
-					use:hydrateSrc={{ src }}
-					alt="{t('a11y.portraitOf')} {sermon.author_name}"
-					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
-					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
-					loading="lazy"
-				/>
-			{:else}
-				<span
-					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-				>
-					{initials(sermon.author_name)}
-				</span>
-			{/if}
-			<span class="text-body font-medium text-text group-hover:text-accent"
-				>{sermon.author_name}</span
+		<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+			<a
+				href={localizeHref(`/authors/${sermon.author_slug}`)}
+				class="group inline-flex min-w-0 items-center gap-2.5 hover:no-underline"
 			>
-		</a>
-	{/snippet}
-
-	<!-- The margin is the wrapper's, not one branch's: hung off the plate alone
-	     it vanished in focus mode and the head sat flush against the card below. -->
-	<div class="mb-5">
-		{#if readerUi.focus}
-			{@render head()}
-		{:else}
-			<SermonPlate slug={sermon.slug} scriptureRef={sermon.scripture_ref} title={sermon.title}>{@render head()}</SermonPlate>
-		{/if}
-	</div>
-
-	<!-- Preaching text: the reference, and its verse(s) when available -->
-	{#if sermon.scripture_ref}
-		<div class="text-card">
-			<p class="text-card-eyebrow eyebrow eyebrow-micro">{t('sermon.text')}</p>
-			<p class="text-card-ref">{sermon.scripture_ref}</p>
-			{#if preachingText?.verses?.length}
-				<p class="text-card-verse">
-					{#each preachingText.verses as v (v.number)}{v.text}{' '}{/each}
-				</p>
-				<p class="text-card-version eyebrow eyebrow-micro">{preachingText.version}</p>
+				{#if sermon.author_photo}
+					{@const src = assetUrl(sermon.author_photo)}
+					<img
+						{src}
+						use:hydrateSrc={{ src }}
+						alt="{t('a11y.portraitOf')} {sermon.author_name}"
+						class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
+						style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"
+						loading="lazy"
+					/>
+				{:else}
+					<span
+						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
+					>
+						{initials(sermon.author_name)}
+					</span>
+				{/if}
+				<span class="text-body font-medium text-text group-hover:text-accent"
+					><bdi>{sermon.author_name}</bdi>{#if lifespan}<span class="ms-1.5 font-normal text-muted"
+							>(<bdi>{lifespan}</bdi>)</span
+						>{/if}</span
+				>
+			</a>
+			<!-- Listen, by the title: these were preached aloud. The same control as
+			     the top bar's and the phone footer's (the Reader's speech, `listen`
+			     state) — not a second player. Not in focus mode, which is prose only. -->
+			{#if listen.offered && !readerUi.focus}
+				<button
+					class="btn btn-primary btn-sm"
+					onclick={toggleListen}
+					aria-pressed={listen.status !== 'idle'}
+					title="{t('reader.listen')} · {listenTime(sermon.word_count, listen.rate)}"
+					><Icon name={listen.status === 'idle' ? 'play' : 'headphones'} size={16} />{t('reader.listen')}</button
+				>
 			{/if}
 		</div>
-	{/if}
 
-	<!-- "In brief": an AI-drafted TL;DR so a reader knows in ten seconds
-	     whether this sermon is the one they need right now. -->
-	{#if sermon.summary}
-		<div class="mb-8 rounded-card border border-border bg-surface p-4">
-			<p class="eyebrow mb-1.5 text-accent">
-				{t('sermon.inBrief')}
+		<!-- "In brief" as a standfirst: an invitation set under the title, not a
+		     boxed disclaimer. The heading stays for screen readers. -->
+		{#if sermon.summary}
+			<p class="standfirst" dir="auto" lang={contentLang(sermon.language)}>
+				<span class="sr-only">{t('sermon.inBrief')}: </span>{sermon.summary}
 			</p>
-			<p class="text-small leading-relaxed text-muted">{sermon.summary}</p>
-		</div>
-	{/if}
+		{/if}
+
+		<!-- The preaching text as a quiet epigraph — unless the body opens on the
+		     same verse (`text_in_body`), when the preacher's own wording stands
+		     alone and the reference rides in the eyebrow. -->
+		{#if preachingText?.verses?.length && !sermon.text_in_body}
+			<div class="mt-4">
+				<ScriptureEpigraph
+					text={preachingText.verses.map((v) => v.text).join(' ')}
+					reference="{sermon.scripture_ref} · {preachingText.version}"
+					hue="var(--ornament)"
+				/>
+			</div>
+		{/if}
+	</header>
 
 	<Reader
 		bind:this={reader}
@@ -936,9 +951,14 @@
 </article>
 
 <!-- Time-remaining pill; hidden in focus and while listening. On phones the
-     footer row carries the same line instead. -->
-{#if !isPhone && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
-	<div class="min-left" aria-hidden="true">{minsLeft} {t('sermon.minLeft')}</div>
+     footer row carries the same line instead. It stands in the margin beside
+     the text (`.min-left.beside-text`); centred at the foot of the screen it
+     sat on the very line being read. Where the margin is too narrow to hold it,
+     it is left out — the progress line at the top still says how far you are. -->
+{#if !isPhone && besideText.matches && !readerUi.focus && listen.status === 'idle' && frac < 0.99}
+	<div class="min-left beside-text" style={readerPrefs.style} aria-hidden="true">
+		{minsLeft} {t('sermon.minLeft')}
+	</div>
 {/if}
 
 <!-- Phone footer, in thumb reach — the chapter reader's: a scrubber, the
@@ -1099,33 +1119,15 @@
 		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 
-	/* Preaching-text card: the sermon's reference + verse(s) as an epigraph. */
-	.text-card {
-		margin: 0 0 2rem;
-		padding: 0.85rem 1.1rem;
-		border-inline-start: 3px solid var(--accent);
-		border-start-end-radius: var(--radius-card);
-		border-end-end-radius: var(--radius-card);
-		background: var(--accent-soft);
-	}
-	.text-card-eyebrow {
-		color: var(--accent);
-	}
-	.text-card-ref {
-		font-family: var(--font-display);
-		font-size: var(--fs-h3);
-		color: var(--accent);
-		margin-top: 0.1rem;
-	}
-	.text-card-verse {
-		margin-top: 0.5rem;
+	/* --- The head, on the page ground (design review #12) ------------------ */
+	/* "In brief" as a standfirst: the summary in the display face's italic,
+	   at the article standfirst's size (ArticleDetail), inviting rather than boxed. */
+	.standfirst {
+		margin-top: 1.25rem;
 		font-family: var(--font-display);
 		font-style: italic;
-		line-height: 1.6;
-		color: var(--text);
-	}
-	.text-card-version {
-		margin-top: 0.45rem;
+		font-size: var(--fs-h3);
+		line-height: 1.5;
 		color: var(--muted);
 	}
 
