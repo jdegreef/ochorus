@@ -15,6 +15,10 @@ import { join } from 'node:path';
  * invisible and unclickable, at every viewport width, in what is the DEFAULT
  * layout on wide screens. Verified with elementFromPoint: 8 of 8 covered.
  *
+ * Since design #7 the reading surfaces draw no site nav at all (one slim
+ * reader bar, no site chrome), so the collision is impossible by construction;
+ * --appnav-h is 0 there and the checks below hold the pieces that say so.
+ *
  * These are source-shape checks, not rendering checks — they can't see a
  * stacking context. What they CAN do is fail when the two invariants that make
  * the collision impossible get reverted by someone who doesn't know the story.
@@ -27,10 +31,12 @@ const LAYOUT = 'routes/+layout.svelte';
 const READER = 'routes/books/[slug]/[order]/+page.svelte';
 
 describe('the layout publishes the nav height as a fact', () => {
-	it('does not zero --appnav-h on the reading routes', () => {
-		// It used to be `inReader ? 0 : navH`. True only in scroll mode, where the
-		// static nav rides away — and page mode is the case that doesn't scroll.
-		const decl = read(LAYOUT).match(/const appnavH = \$derived\((.*)\);/)?.[1] ?? '';
+	it('zeroes --appnav-h from whether the nav is drawn, not from the route', () => {
+		// It used to be `inReader ? 0 : navH` while the reader still drew a static
+		// nav: true only in scroll mode, where that nav rode away — and page mode
+		// is the case that doesn't scroll. It is now keyed on `siteChrome`, the
+		// same switch that draws (or doesn't draw) the nav.
+		const decl = read(LAYOUT).match(/const appnavH = \$derived\(([\s\S]*?)\);/)?.[1] ?? '';
 		expect(decl, '--appnav-h must be declared from a value, not omitted').not.toEqual('');
 		expect(
 			decl,
@@ -40,23 +46,40 @@ describe('the layout publishes the nav height as a fact', () => {
 	});
 
 	it('reports 0 only when the nav is genuinely not rendered', () => {
-		// Focus mode removes the nav from the DOM, so 0 is the truth there. Before
-		// the nav is measured (a prerendered page) it is left unset, so app.css's
-		// per-breakpoint estimate on .app-root holds — never a stand-in 0.
+		// The reading surfaces and focus mode draw no nav (design #7: one slim
+		// reader bar, no site chrome), so 0 — or, in the phone app, the status
+		// strip's --safe-top — is the truth there. Before the nav is measured (a
+		// prerendered browse page) it is left unset, so app.css's per-breakpoint
+		// estimate on .app-root holds — never a stand-in 0.
 		const src = read(LAYOUT);
-		expect(src).toMatch(/readerUi\.focus \? '--appnav-h: 0px; ' : navH \? `--appnav-h: \$\{navH\}px; ` : ''/);
+		expect(src).toMatch(
+			/!siteChrome \? '--appnav-h: var\(--safe-top, 0px\); ' : navH \? `--appnav-h: \$\{navH\}px; ` : ''/
+		);
 		expect(src).toMatch(/style="[^"]*\{appnavH\}/);
 	});
 
-	it('seeds navH synchronously before observing it', () => {
-		// A ResizeObserver's first callback lands a frame late; without the
-		// synchronous read the bar rendered at 0 for that frame and then jumped.
+	it('draws the nav and the footer only where siteChrome holds', () => {
+		// The one switch: a route that is a reading surface, or focus mode, has
+		// neither, so nothing can be pinned underneath a nav that is still there.
 		const src = read(LAYOUT);
-		const effect = src.slice(src.indexOf('let navH'), src.indexOf('ro.observe(navEl)'));
-		expect(
-			effect,
-			'measure navEl once directly, before the ResizeObserver, or the reader bar jumps on load.'
-		).toMatch(/navH = Math\.round\(navEl\.getBoundingClientRect\(\)\.height\)/);
+		expect(src).toMatch(/const siteChrome = \$derived\(!inReader && !readerUi\.focus\)/);
+		expect(src).toMatch(/\{#if siteChrome\}\s*<nav/);
+		expect(src).toMatch(/\{#if siteChrome\}\s*<SiteFooter \/>/);
+	});
+});
+
+describe('the reading surfaces keep the site one tap away', () => {
+	// With no nav and no footer, the "⋯" group is the way to the rest of Ochorus.
+	it.each([READER, 'routes/sermons/[slug]/+page.svelte'])('%s carries ReaderSiteLinks in its "⋯" group', (file) => {
+		const src = read(file);
+		const more = src.slice(src.indexOf('class="account-menu more-group"'));
+		expect(more, `${file}: put <ReaderSiteLinks> inside the "⋯" group.`).toMatch(/<ReaderSiteLinks\b/);
+	});
+
+	it('the chapter bar\'s book title links to the book page', () => {
+		expect(read(READER)).toMatch(
+			/<a\s+href=\{localizeHref\(`\/books\/\$\{slug\}`\)\}[^>]*>[\s\S]{0,120}<bdi class="truncate">\{chapter\.book_title\}<\/bdi><\/a/
+		);
 	});
 });
 

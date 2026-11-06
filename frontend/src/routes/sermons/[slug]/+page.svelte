@@ -42,6 +42,7 @@
 	import { portraitPosition } from '$lib/portraits';
 	import Reader from '$lib/components/Reader.svelte';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ReaderSiteLinks from '$lib/components/ReaderSiteLinks.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
@@ -483,8 +484,8 @@
 				><Arrow back /> {t('nav.sermons')}</a
 			>
 			<!-- From `sm`, the chapter bar's shape: Outline (where Contents stands) ·
-			     Bookmark · Listen · Aa · "⋯", labelled from `md`; Save, Share and
-			     Focus fold into "⋯". -->
+			     Aa · Listen · Bookmark · "⋯", icons with tooltips; Save, Share, Focus
+			     and the site's destinations fold into "⋯". -->
 			<div class="flex shrink-0 items-center gap-0.5">
 				<div class="hidden sm:contents">
 					{#if outline.length >= 2}
@@ -497,34 +498,27 @@
 							aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
 						>
 					{/if}
-					<!-- Labelled from `md`; the aria-label matches the visible word. -->
-					<button
-						class="btn btn-icon btn-ghost md:px-2.5"
-						class:text-accent={bookmark.current}
-						onclick={bookmark.toggle}
-						aria-label={t('reader.bookmark')}
-						title={t('reader.bookmark')}
-						aria-pressed={bookmark.current}
-						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
-							>{t('reader.bookmark')}</span
-						></button
-					>
+					{#if !isPhone}
+						<ReaderControls />
+					{/if}
 					{#if listen.offered && !isPhone}
 						<button
-							class="btn btn-icon btn-ghost md:px-2.5"
+							class="btn btn-icon btn-ghost"
 							class:text-accent={listen.status !== 'idle'}
 							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
 							aria-label={t('reader.listen')}
 							aria-pressed={listen.status !== 'idle'}
-							title={t('reader.listen')}
-							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
-								>{t('reader.listen')}</span
-							></button
+							title={t('reader.listen')}><Icon name="headphones" size={18} /></button
 						>
 					{/if}
-					{#if !isPhone}
-						<ReaderControls />
-					{/if}
+					<button
+						class="btn btn-icon btn-ghost"
+						class:text-accent={bookmark.current}
+						onclick={bookmark.toggle}
+						aria-label={t('reader.bookmark')}
+						title={bookmark.current ? t('reader.removeBookmark') : t('reader.bookmark')}
+						aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
+					>
 				</div>
 				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
 				     sits in the row from `sm`, so only the phone folds it in here. -->
@@ -596,6 +590,7 @@
 									onclick={() => (moreOpen = false)}>Open in admin</a
 								>
 							{/if}
+							<ReaderSiteLinks onpick={() => (moreOpen = false)} />
 						</div>
 					{/if}
 				</div>

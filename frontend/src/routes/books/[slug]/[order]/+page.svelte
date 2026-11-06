@@ -6,7 +6,6 @@
 	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { childrensReading, splitEdition } from '$lib/edition';
-	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -66,7 +65,6 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
-	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
@@ -75,6 +73,7 @@
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ReaderSiteLinks from '$lib/components/ReaderSiteLinks.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -250,14 +249,6 @@
 
 	let body: HTMLDivElement | undefined = $state();
 	let titleEl: HTMLHeadingElement | undefined = $state();
-	// Is the chapter title still on screen? Once it scrolls under the header the
-	// top bar swaps the "← Book" link for a "you are here" label. Shared single-
-	// element observer; the header-height inset matches the old inline IO. Starts
-	// true — the title is at the top of the page on load.
-	const titleSpy = elementVisible(() => titleEl, {
-		rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`,
-		initial: true
-	});
 
 	// The chapter order read-aloud rolled over INTO, so the per-chapter effect
 	// picks playback up from its top on arrival (audiobook roll-over). Scoped to
@@ -571,6 +562,15 @@
 	// The phone bar's second line — the chapter, in words that don't repeat the
 	// book title above it.
 	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
+	// The slim bar's "1 of 13" — from the book fetch, so it joins the bar once
+	// that lands (the prerendered bar names the chapter alone).
+	const chapterPosition = $derived(
+		endProgress
+			? t('reader.position')
+					.replace('%n%', String(endProgress.done))
+					.replace('%total%', String(endProgress.total))
+			: ''
+	);
 	// The book's word counts split around the open chapter — the words before it,
 	// the words after it, and the total. Computed once per (book, chapter), NOT on
 	// the scroll path, then shared by both the "% through" figure and the "time
@@ -1846,12 +1846,6 @@
 	ontouchmove={onWinTouchMove}
 />
 
-<!-- Compact "where you are" — book · chapter. One definition, rendered both as
-     the inline label (≥sm) and the phone location line below the controls.
-     When the chapter's name is just the book's title (a single-work volume like
-     "Absolute Surrender"), drop the redundant "Book · " prefix. -->
-{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted"><bdi>{chapter.book_title}</bdi> · </span>{/if}<bdi>{chap}</bdi>{/snippet}
-
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
      except a transient peek summoned by a swipe-down from the top (see above). -->
 {#if !readerUi.focus || showPeek}
@@ -1860,14 +1854,15 @@
 	     `sticky` sibling makes Chromium drop the top line of the reader's later
 	     paged columns (a paint bug), which `fixed` avoids.
 
-	     `fixed` measures from the VIEWPORT, though, and the global nav is
-	     `.appnav-static` here — in flow, at the top, and (since nothing scrolls
-	     in page mode) never going anywhere. So `top-0` parked this whole bar
-	     underneath it, below the nav in the stacking order: every control in it, Contents
-	     and Text settings and Focus included, was invisible and unclickable at
-	     every viewport width. `.reader-chrome.fixed` below starts it beneath the
-	     nav instead. Scroll mode is untouched — there the nav really does ride
-	     away, and 0 is right. -->
+	     `fixed` measures from the VIEWPORT, though, so `.reader-chrome.fixed`
+	     below starts it at var(--appnav-h): whatever sits above the page. Since
+	     design #7 the reader draws no site nav, so that is 0 on the website and
+	     the status strip in the phone app — when the nav was still drawn here,
+	     a `top-0` bar sat underneath it, every control invisible and
+	     unclickable. -->
+	<!-- This is the reader's ONE bar: no site nav above it, no footer below the
+	     text (the root layout's `siteChrome`). The site's destinations live at
+	     the end of its "⋯" group (ReaderSiteLinks). -->
 	<div
 		bind:this={chromeEl}
 		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur max-sm:bg-bg/97 max-sm:backdrop-blur-none"
@@ -1912,83 +1907,36 @@
 				phone bar's own title block (above) says the same, so nothing is lost
 				by standing this down where there is no room for it.
 			-->
-			<div class="hidden min-w-0 flex-1 sm:block">
-				{#if titleSpy.visible}
-					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						<Arrow back /> <bdi>{chapter.book_title}</bdi>
-					</a>
-				{:else}
-					<!-- Once the heading scrolls away, show where you are. -->
-					<div class="truncate text-small text-text">{@render locationLabel()}</div>
-				{/if}
+			<!-- From `sm`: ‹ Book title (the way back — a link to the book page) ·
+			     where you are · "1 of 13" once the book's contents have loaded. -->
+			<div class="hidden min-w-0 flex-1 items-center gap-1 sm:flex">
+				<a
+					href={localizeHref(`/books/${slug}`)}
+					class="flex min-w-0 shrink items-center gap-1 text-small font-semibold text-text hover:text-accent"
+					title={t('reader.backToContents')}
+					><Icon name="chevron-left" size={18} class="shrink-0" /><bdi class="truncate">{chapter.book_title}</bdi></a
+				>
+				<span class="flex min-w-0 shrink-[2] items-center gap-1 text-small text-muted">
+					{#if chapter.book_title !== chapterName(chapter.order, chapter.title)}
+						<span aria-hidden="true">·</span><bdi class="truncate">{chapterName(chapter.order, chapter.title)}</bdi>
+					{/if}
+					{#if chapterPosition}
+						<span aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
+					{/if}
+				</span>
 			</div>
-			<!-- From `sm`: Prev · Next | Contents · Bookmark · Listen · Aa · "⋯" —
-			     the few verbs a reader reaches for, labelled from `md`; Search,
-			     Notebook, Edition and Focus fold into "⋯" (the sermon bar's shape). -->
+			<!-- From `sm`: Contents · Aa · Listen · Bookmark · "⋯" — icons with
+			     tooltips (`title`) and accessible names. Previous/Next chapter,
+			     Search, Notebook, Edition, Focus and the site's destinations fold
+			     into "⋯" (the sermon bar's shape). -->
 			<div class="flex shrink-0 items-center gap-0.5">
 				<div class="hidden sm:contents">
-					<!-- Both slots always render: at the first or last chapter the missing
-					     one is a dimmed, inert stand-in rather than nothing, so the row
-					     keeps its shape and nothing jumps between chapters (a lone ">"
-					     used to float on chapter 1). -->
-					{#if chapter.prev}
-						<a
-							href={chapterHref(chapter.prev.order)}
-							class="btn btn-icon btn-ghost"
-							aria-label={t('reader.prevChapter')}
-							title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
-						>
-					{:else}
-						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
-						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.prevChapter')}
-							><Icon name="chevron-left" size={18} /></button
-						>
-					{/if}
-					{#if chapter.next}
-						<a
-							href={chapterHref(chapter.next.order)}
-							class="btn btn-icon btn-ghost"
-							aria-label={t('reader.nextChapter')}
-							title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
-						>
-					{:else}
-						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
-						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.nextChapter')}
-							><Icon name="chevron-right" size={18} /></button
-						>
-					{/if}
-					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 					<button
 						class="btn btn-icon btn-ghost"
 						onclick={() => (tocOpen = true)}
 						aria-label={t('reader.contents')}
 						title={t('reader.contents')}><Icon name="list" size={18} /></button
 					>
-					<!-- Labelled from `md`; the aria-label matches the visible word. -->
-					<button
-						class="btn btn-icon btn-ghost md:px-2.5"
-						class:text-accent={currentBookmarked}
-						onclick={toggleBookmark}
-						aria-label={t('reader.bookmark')}
-						title={t('reader.bookmark')}
-						aria-pressed={currentBookmarked}
-						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
-							>{t('reader.bookmark')}</span
-						></button
-					>
-					{#if listen.offered}
-						<button
-							class="btn btn-icon btn-ghost md:px-2.5"
-							class:text-accent={listen.status !== 'idle'}
-							onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
-							aria-label={t('reader.listen')}
-							aria-pressed={listen.status !== 'idle'}
-							title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
-							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
-								>{t('reader.listen')}</span
-							></button
-						>
-					{/if}
 					<!-- `layout`: the chapter reader is the one surface that implements
 					     paged mode, so it is the one that offers the switch. -->
 					<!-- `sample`: the chapter's opening line, so the panel's live preview
@@ -1998,6 +1946,25 @@
 					{#if !isPhone}
 						<ReaderControls layout margins {...rcProps} />
 					{/if}
+					{#if listen.offered}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
+							><Icon name="headphones" size={18} /></button
+						>
+					{/if}
+					<button
+						class="btn btn-icon btn-ghost"
+						class:text-accent={currentBookmarked}
+						onclick={toggleBookmark}
+						aria-label={t('reader.bookmark')}
+						title={currentBookmarked ? t('reader.removeBookmark') : t('reader.bookmark')}
+						aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
+					>
 				</div>
 				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
 				     sits in the row from `sm`, so only the phone folds it in here. -->
@@ -2028,6 +1995,25 @@
 										? t('reader.removeBookmark')
 										: t('reader.bookmark')}</button
 								>
+							{:else}
+								<!-- The phone's footer row carries Previous/Next; from `sm` they
+								     live here, off the slim bar (← → turn chapters too). -->
+								{#if chapter.prev}
+									<a
+										class="account-item more-item"
+										href={chapterHref(chapter.prev.order)}
+										onclick={() => (moreOpen = false)}
+										><Icon name="chevron-left" size={20} />{t('reader.prevChapter')}</a
+									>
+								{/if}
+								{#if chapter.next}
+									<a
+										class="account-item more-item"
+										href={chapterHref(chapter.next.order)}
+										onclick={() => (moreOpen = false)}
+										><Icon name="chevron-right" size={20} />{t('reader.nextChapter')}</a
+									>
+								{/if}
 							{/if}
 							<button class="account-item more-item" onclick={fromMore(() => (searchOpen = true))}
 								><Icon name="search" size={20} />{t('reader.search')}</button
@@ -2049,6 +2035,7 @@
 									? t('reader.exitFocus')
 									: t('reader.focus')}</button
 							>
+							<ReaderSiteLinks onpick={() => (moreOpen = false)} />
 						</div>
 					{/if}
 				</div>
@@ -2634,7 +2621,7 @@
 	}
 	/* Sits below the columns (z 5) and the edge arrows (z 6), above the page, so
 	   the whole reading surface is one uniform shade. */
-	/* Page mode only: `sticky` already sits below the nav in flow. */
+	/* Page mode only: `sticky` already sits at the top of the flow. */
 	.reader-chrome.fixed {
 		top: var(--appnav-h, 0px);
 	}

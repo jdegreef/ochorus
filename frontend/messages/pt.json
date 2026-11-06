@@ -201,6 +201,7 @@
   "reader_bookmark": "Marcador",
   "reader_remove_bookmark": "Remover marcador",
   "reader_more_tools": "Mais ferramentas de leitura",
+  "reader_position": "%n% de %total%",
   "reader_bookmarks": "Marcadores",
   "reader_no_bookmarks": "Nenhum marcador ainda",
   "notebook_title": "Meu caderno",

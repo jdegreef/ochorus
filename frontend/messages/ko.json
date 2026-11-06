@@ -201,6 +201,7 @@
   "reader_bookmark": "책갈피",
   "reader_remove_bookmark": "책갈피 삭제",
   "reader_more_tools": "더 많은 읽기 도구",
+  "reader_position": "%total% 중 %n%",
   "reader_bookmarks": "책갈피",
   "reader_no_bookmarks": "아직 책갈피가 없습니다",
   "notebook_title": "노트",
