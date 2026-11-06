@@ -21985,6 +21985,9 @@ BODY_CORRECTIONS.setdefault("abide-in-christ", {}).setdefault("replacements", []
     ("a tree of life. of which", "a tree of life, of which"),
     ("thinks that He cannot have a blessing", "thinks that he cannot have a blessing"),
     ("work; this. will inspire", "work; this will inspire"),
+    # A false paragraph break (page seam) inside the "There is work…" run.
+    ("There is work in our own home.</p><p>There is work among the sick",
+     "There is work in our own home. There is work among the sick"),
     # ch22
     ("— John</i>", "— John xv. 7.</i>"),
     ("what he, has seen", "what he has seen"),
