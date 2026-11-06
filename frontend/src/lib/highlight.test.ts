@@ -38,9 +38,14 @@ describe('snippetParts', () => {
 		expect(parts[0]).toEqual({ text: '<img src=x onerror=alert(1)> ', mark: false });
 	});
 
-	it('falls back to the query words, case-insensitively, when the server marked nothing', () => {
+	it('falls back to the query, case-insensitively, when the server marked nothing', () => {
 		expect(marked('Grace upon grace, and more', 'grace')).toEqual(['Grace', 'grace']);
-		expect(marked('faith and hope', 'hope faith')).toEqual(['faith', 'hope']);
+		expect(marked('it is All  of Grace here', 'all of grace')).toEqual(['All  of Grace']);
+	});
+
+	it('marks whole words and the whole phrase only, never a claim the server did not make', () => {
+		expect(marked('he was called often', 'all')).toEqual([]);
+		expect(marked('all of us, of course', 'all of grace')).toEqual([]);
 	});
 
 	it('treats the query as text, not a pattern', () => {

@@ -29,13 +29,38 @@ export interface SnippetPart {
 }
 
 /**
+ * The fallback matcher for `query`: the whole query, as whole words, any case.
+ * Compiled once per query rather than once per row — the page renders thirty
+ * rows off the same one.
+ */
+let fallbackFor = '';
+let fallbackRe: RegExp | null = null;
+function fallbackMatcher(query: string): RegExp | null {
+	const q = query.trim().replace(/\s+/g, ' ');
+	if (q !== fallbackFor) {
+		fallbackFor = q;
+		fallbackRe =
+			q.length < 2
+				? null
+				: // Whole words only (no "all" inside "called"), and the phrase as a
+					// whole: marking "of" alone for "all of grace" would claim a match
+					// the server never made.
+					new RegExp(
+						`(?<![\\p{L}\\p{N}])(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+')})(?![\\p{L}\\p{N}])`,
+						'giu'
+					);
+	}
+	return fallbackRe;
+}
+
+/**
  * A server snippet as runs of text, for a template to render with `{#each}` —
  * no HTML string, so nothing in it can ever be read as markup.
  *
  * The server's full-text markers decide what is marked. A snippet that carries
  * none (an entity's description, a fallback excerpt) falls back to marking the
- * query's words where they appear, case-insensitively, so a passage never shows
- * up with nothing to show why it matched.
+ * query itself where it appears as whole words, so a row never claims a match
+ * it doesn't have and rarely hides one it does.
  */
 export function snippetParts(snippet: string, query = ''): SnippetPart[] {
 	if (snippet.includes(HL_START)) {
@@ -51,18 +76,17 @@ export function snippetParts(snippet: string, query = ''): SnippetPart[] {
 		}
 		return parts.filter((p) => p.text);
 	}
-	const words = query
-		.split(/\s+/)
-		.filter((w) => w.length >= 2)
-		.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-	if (!words.length) return snippet ? [{ text: snippet, mark: false }] : [];
-	const re = new RegExp(`(${words.join('|')})`, 'giu');
-	// split() with a capturing group alternates text, match, text, match…
+	const re = fallbackMatcher(query);
+	if (!re) return snippet ? [{ text: snippet, mark: false }] : [];
+	// split() with one capturing group alternates text, match, text, match…
 	return snippet
 		.split(re)
 		.map((text, i) => ({ text, mark: i % 2 === 1 }))
 		.filter((p) => p.text);
 }
+
+/** Whether the server marked a match in `snippet` (its full-text markers). */
+export const hasServerMarks = (snippet: string) => snippet.includes(HL_START);
 
 /**
  * A window of `text` around the span [idx, idx+len), with that span wrapped in

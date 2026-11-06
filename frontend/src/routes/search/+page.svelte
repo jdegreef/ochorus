@@ -40,7 +40,7 @@
 		type ResultRow
 	} from '$lib/searchResults';
 	import type { ScriptureResult } from '$lib/scripture.svelte';
-	import { snippetParts } from '$lib/highlight';
+	import { hasServerMarks, snippetParts } from '$lib/highlight';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { jumpToSection } from '$lib/scrollSpy.svelte';
 	import { localizeHref } from '$lib/href';
@@ -64,6 +64,10 @@
 	let q = $state('');
 	let hits = $state<SearchHit[]>([]);
 	let loading = $state(false);
+	/** A keystroke is waiting out the debounce: what is on screen is the old query's. */
+	let pending = $state(false);
+	/** The tabs' counts (and a click on one) would belong to the previous query. */
+	const stale = $derived(loading || pending);
 	/** Measured height of the pinned search box and its tabs — the group
 	    anchors below clear it via `--pinned-offset`. */
 	let searchBarH = $state(0);
@@ -158,9 +162,11 @@
 		if (typeFilter === 'all') {
 			if (!top) return groups;
 			// The section still counts it as loaded — see `loaded` in the markup.
+			// A section left empty by it stays while it has more to show, so its
+			// "Show all N" and its anchor don't vanish with the one loaded row.
 			return groups
 				.map((g) => ({ ...g, rows: g.rows.filter((r) => r.key !== top.key) }))
-				.filter((g) => g.rows.length);
+				.filter((g) => g.rows.length || totalFor(g.type, 1) > 1);
 		}
 		const g = GROUP_ORDER.find((x) => x.type === typeFilter);
 		if (!g) return groups;
@@ -425,6 +431,7 @@
 		// cached one), so only the newest request may write the list — otherwise
 		// an older reply repaints stale hits over the term the reader can see.
 		const token = ++searchSeq;
+		pending = false;
 		loading = true;
 		searchError = false;
 		void maybeScripture(term, token); // in parallel; independent of the list
@@ -493,6 +500,7 @@
 		nextScope = ''
 	) {
 		clearTimeout(timer);
+		pending = false;
 		activeIndex = -1;
 		typeFilter = type;
 		sortMode = sort;
@@ -529,6 +537,7 @@
 		sortMode = 'relevance';
 		typeRows = null;
 		typeSeq++;
+		pending = true;
 		timer = setTimeout(() => {
 			syncUrl(term);
 			runSearch(term);
@@ -847,11 +856,20 @@
 
 		<!-- The type facet, as tabs by kind with the REAL total on each (not the
 		     rows the merged list happened to carry). Shown only when there is more
-		     than one kind to choose between, and only over a live answer — over the
-		     skeleton or an error its counts would belong to the previous query. -->
-		{#if hasFacets && !loading && !searchError && q.trim().length >= 2}
-			<div class="search-tabs mt-3 lg:max-w-3xl" role="group" aria-label={t('search.filterByType')}>
-				<div class="tab-strip flex gap-1" use:tabStrip={undefined}>
+		     than one kind to choose between. While a new query is debouncing or
+		     loading the row stays mounted (unmounting it made the pinned bar, and
+		     everything under it, jump on every search) but is dimmed and inert:
+		     its counts, and a click on one, would belong to the previous query. -->
+		{#if hasFacets && !searchError && q.trim().length >= 2}
+			<div
+				class="search-tabs mt-3 lg:max-w-3xl"
+				class:is-stale={stale}
+				role="group"
+				aria-label={t('search.filterByType')}
+				aria-busy={stale ? 'true' : undefined}
+				inert={stale}
+			>
+				<div class="tab-strip flex gap-1" use:tabStrip={typeFilter}>
 					{#each tabs as tab (tab.type)}
 						<button
 							type="button"
@@ -1136,7 +1154,7 @@
 						<ul class="divide-y divide-border">
 							{#each g.rows as row (row.key)}
 								<li>
-									{#if row.location}
+									{#if row.type === 'chapter'}
 										<!-- A passage: where it is, then the words that matched.
 										     The snippet is the result — it is why the row is here. -->
 										<a
@@ -1173,7 +1191,10 @@
 												</div>
 												{#if row.meta}
 													<div class="truncate text-small text-muted">{row.meta}</div>
-												{:else if row.snippet}
+												{/if}
+												<!-- The matched words, when there are any: for a book or
+												     sermon found by its text they are the only clue why. -->
+												{#if row.snippet && (!row.meta || hasServerMarks(row.snippet))}
 													<div class="truncate text-small text-muted">{@render marked(row.snippet)}</div>
 												{/if}
 											</div>
@@ -1284,6 +1305,9 @@
 	}
 	.search-tabs {
 		border-bottom: 1px solid var(--border);
+	}
+	.search-tabs.is-stale {
+		opacity: 0.55;
 	}
 	/* The top result: one soft ground, no border (boxless, like the shelves). */
 	.top-result {

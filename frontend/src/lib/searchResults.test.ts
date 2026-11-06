@@ -252,6 +252,12 @@ describe('topResult', () => {
 		expect(topResult(rowsOf([book()]), 'h')).toBeNull();
 	});
 
+	it('keeps Devanagari vowel signs, so different Hindi titles stay different', () => {
+		const hi = { ...(book('him') as object), book_title: 'हिम' } as SearchHit;
+		expect(topResult(rowsOf([hi]), 'हम')).toBeNull();
+		expect(topResult(rowsOf([hi]), 'हिम')?.key).toBe('book:him');
+	});
+
 	it('prefers the book when a book and a writer share the name', () => {
 		const same = { ...(author() as object), author_name: 'Humility' } as SearchHit;
 		expect(topResult(rowsOf([same, book()]), 'humility')?.type).toBe('book');

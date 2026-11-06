@@ -18,6 +18,7 @@ import { authorPath } from './originals';
 import { scripturePageHref } from '$lib/library-public';
 import type { CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
+import { foldText } from './searchNormalize';
 import { sermonArt } from './sermonArt';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
@@ -306,13 +307,15 @@ export function navList(groups: ResultGroup[]): NavList {
 	return { keys, map, labels, types };
 }
 
-/** Case, accents and punctuation folded away, so "all of grace" names "All of Grace". */
+/**
+ * Case, accents and punctuation folded away, so "all of grace" names "All of
+ * Grace". `foldText` strips only Latin combining marks on purpose: stripping
+ * every mark would delete Devanagari vowel signs and fold different Hindi
+ * titles together.
+ */
 function fold(s: string): string {
-	return s
-		.normalize('NFKD')
-		.replace(/\p{M}/gu, '')
-		.toLowerCase()
-		.replace(/[^\p{L}\p{N}]+/gu, ' ')
+	return foldText(s)
+		.replace(/[^\p{L}\p{M}\p{N}]+/gu, ' ')
 		.trim();
 }
 

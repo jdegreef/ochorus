@@ -17,12 +17,14 @@ export function tabStrip(node: HTMLElement, active: string | null | undefined) {
 	const edges = scrollEdges(node);
 	// A jump-nav names its active tab by section id; a route tab row (no id)
 	// marks it with `.is-active` / aria-current, so that is what's revealed.
+	// A row of buttons (Search's kind tabs) passes its selection only so that
+	// `update` runs when it changes; with no `#id` link to find, it falls back
+	// to the marked tab too.
 	function reveal(id: string | null | undefined) {
 		revealInStrip(
 			node,
-			node.querySelector<HTMLElement>(
-				id ? `[href="#${CSS.escape(id)}"]` : '.is-active, [aria-current="page"]'
-			)
+			(id ? node.querySelector<HTMLElement>(`[href="#${CSS.escape(id)}"]`) : null) ??
+				node.querySelector<HTMLElement>('.is-active, [aria-current="page"]')
 		);
 	}
 	reveal(active);
