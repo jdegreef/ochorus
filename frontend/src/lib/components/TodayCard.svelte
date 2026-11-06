@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { watchToday } from '$lib/today';
+	import { lookupScripture } from '$lib/scripture.svelte';
 	import { getDailyShelf, listSermons, type DailyEntry, type SermonSummary } from '$lib/library-public';
 	import { dateKey } from '$lib/dailyDate';
 	import { pickDailySermon } from '$lib/dailySermon';
-	import { pickToday } from '$lib/todayCard';
+	import { pickToday, type Verse } from '$lib/todayCard';
 	import { getLang } from '$lib/lang.svelte';
 	import { contentLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -18,8 +20,11 @@
 	 * (stacked on a phone), with a link to /today.
 	 *
 	 * The verse and the reading come from the dated devotionals' shelf — the
-	 * one /today and DailyShelf draw — so they are in the reader's language and
-	 * Bible; the sermon is SermonOfTheDay's pick (`pickDailySermon`). All of it
+	 * one /today and DailyShelf draw — so outside English the verse is in the
+	 * reader's language and Bible. English Scripture is the Open Word Bible
+	 * (CLAUDE.md), so in English the shelf only supplies the day's references:
+	 * the first one the Scripture API knows is shown in the OWB's words, tagged
+	 * OWB. The sermon is SermonOfTheDay's pick (`pickDailySermon`). All of it
 	 * is chosen CLIENT-SIDE with the reader's local date: home is prerendered,
 	 * and a build-time pick would freeze on the day of the last deploy. So the
 	 * baked HTML carries the card's skeleton, holding its height, and the real
@@ -29,40 +34,56 @@
 	 * language with none, that page would only say so.
 	 */
 
-	type Picks = ReturnType<typeof pickToday<DailyEntry>> & { sermon: SermonSummary | null };
+	type Picks = {
+		reading: DailyEntry | null;
+		/** The verse, and the language its words are in. */
+		verse: (Verse & { lang: string }) | null;
+		sermon: SermonSummary | null;
+	};
+
+	/** How many of the shelf's references English tries in the OWB. */
+	const OWB_TRIES = 3;
 
 	let picks = $state<Picks | null>(null);
 	let dateLabel = $state('');
 	let pickedFor = '';
-	// The sermon list does not change with the day, so it is fetched once.
-	let sermons: Promise<SermonSummary[]> | null = null;
 
-	// Re-picks only when the calendar day has moved, so a tab left open
-	// overnight turns over when the reader comes back to it.
-	function loadToday() {
-		const now = new Date();
+	/** The day's verse: the first candidate, or in English the first one the
+	 *  OWB has (looked up together; null when it has none of them). */
+	async function verseOf(verses: (Verse & { from: DailyEntry })[], lang: string): Promise<Picks['verse']> {
+		if (lang !== 'en') {
+			const v = verses[0];
+			return v ? { text: v.text, ref: v.ref, lang: contentLang(v.from.book.language) } : null;
+		}
+		const found = await Promise.all(verses.slice(0, OWB_TRIES).map((v) => lookupScripture(v.ref)));
+		const hit = found.find((r) => r?.verses.length);
+		return hit
+			? { text: hit.verses.map((v) => v.text).join(' '), ref: `${hit.reference} · OWB`, lang: 'en' }
+			: null;
+	}
+
+	// Re-picks only when the calendar day has moved: watchToday looks again on
+	// a return to the tab and every few minutes while it is in view, so a page
+	// left open over midnight turns over. Both lists are fetched fresh for the
+	// new day — the sermon list too, as SermonOfTheDay does, so a failed fetch
+	// is retried and the pick matches the sermons shelf's.
+	async function loadToday(now: Date) {
 		const key = dateKey(now);
 		if (key === pickedFor) return;
 		pickedFor = key;
 		const lang = getLang();
-		sermons ??= listSermons(lang).catch(() => []);
-		Promise.all([getDailyShelf(key, lang).then((r) => r.readings, () => []), sermons]).then(
-			([readings, shelf]) => {
-				if (key !== pickedFor) return;
-				dateLabel = now.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
-				picks = { ...pickToday(readings, now), sermon: pickDailySermon(shelf, now) };
-			}
-		);
+		const [readings, sermons] = await Promise.all([
+			getDailyShelf(key, lang).then((r) => r.readings, () => []),
+			listSermons(lang).catch(() => [])
+		]);
+		const { reading, verses } = pickToday(readings, now);
+		const verse = await verseOf(verses, lang);
+		if (key !== pickedFor) return;
+		dateLabel = now.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
+		picks = { reading, verse, sermon: pickDailySermon(sermons, now) };
 	}
 
-	onMount(() => {
-		loadToday();
-		const onVisible = () => {
-			if (document.visibilityState === 'visible') loadToday();
-		};
-		document.addEventListener('visibilitychange', onVisible);
-		return () => document.removeEventListener('visibilitychange', onVisible);
-	});
+	onMount(() => watchToday((now) => void loadToday(now)));
 
 	const columns = $derived(picks ? [picks.verse, picks.reading, picks.sermon].filter(Boolean).length : 3);
 	// Static class names, so Tailwind sees each one.
@@ -83,15 +104,12 @@
 					{#if picks.verse}
 						{@const v = picks.verse}
 						<li class="col">
-							<a class="today-link" href={localizeHref(`/today/${v.from.book.slug}/`)}>
-								<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
-								<span class="title verse mt-2 line-clamp-3 text-body" lang={contentLang(v.from.book.language)} dir="auto"
-									>{v.text}</span
-								>
-								<span class="mt-2 block truncate text-small text-muted" lang={contentLang(v.from.book.language)} dir="auto"
-									>{v.ref}</span
-								>
-							</a>
+							<!-- Not a link: in English its words are the OWB's, elsewhere
+							     another devotional's than the reading beside it, so no one
+							     page stands for it. -->
+							<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
+							<span class="title verse mt-2 line-clamp-3 text-body" lang={v.lang} dir="auto">{v.text}</span>
+							<span class="mt-2 block truncate text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
 						</li>
 					{/if}
 					{#if picks.reading}

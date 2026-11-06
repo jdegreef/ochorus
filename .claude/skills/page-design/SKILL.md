@@ -669,8 +669,9 @@ file mark each slot. Rules:
   devotional reading for this date and the sermon of the day as three short
   columns (stacked under 48rem), "All of today's readings →" to `/today/`.
   The verse and reading come from `getDailyShelf` (`$lib/todayCard`: the
-  verse is split off a devotional's opening quotation, so it is in the
-  locale's own Bible), the sermon from `pickDailySermon`. All picked at mount
+  verse is split off a devotional's opening quotation, so outside English it
+  is in the locale's own Bible; in English the reference is looked up and
+  shown in the OWB, tagged OWB), the sermon from `pickDailySermon`. All picked at mount
   from the reader's local date; the baked HTML carries its skeleton at the
   card's height. A locale with no devotional or no sermons drops that column;
   with neither, no card. It replaced `DailyShelf`, `SermonOfTheDay` and
