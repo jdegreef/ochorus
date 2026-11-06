@@ -77,7 +77,7 @@ In this order, and nothing else at the top level:
    shelves head each group with the **group heading** recipe (§ below), in a
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
    A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
-   button (Articles, Biographies; Books opens on 56 and adds 48, sized for its
+   button (Articles, Biographies, Sermons' "All sermons"; Books opens on 56 and adds 48, sized for its
    seven-across `.book-grid--library` — `pager()`'s `first` argument), keyed to the filter/sort state so a
    new filter starts over — use `pager()` from `$lib/paging.svelte`, and export
    `snapshot = pagedSnapshot(() => shelf)` from the route so Back lands where
@@ -87,6 +87,14 @@ In this order, and nothing else at the top level:
    targets must exist). Paging a hub drops links from its prerendered HTML:
    run `npm run build` and confirm `ls -d build/<type>/*/ | wc -l` still equals
    the API count (the prerender crawler must reach every item another way).
+   **Sermons opens on "All sermons"** (design review #28, 2026-11; overrides
+   B4's `preacher` default): a "Start with these" row of three hand picks
+   (`lib/sermonPicks.ts` `START_WITH`, topped up per language — the one hand
+   list; hidden while filtering), then the flat list in **featured order**
+   (`featuredOrder`: preachers take turns, each in their own sequence), paged.
+   "By preacher" stays a choice. Its crawl path is `/<l>/authors/` → every
+   author page, which lists all of that preacher's sermons (checked by
+   crawling the dev server's SSR HTML: 428/428 en, 238/238 sw reached).
    **Books opens on curated rows, not the grid** (design review #11,
    2026-11-06). `/books` with no query shows **Browse**: a handful of named
    rows (`h2.section-label` + "See all %n%" on a topic row, one
@@ -133,9 +141,9 @@ In this order, and nothing else at the top level:
    The static HTML is drawn with the default; reading localStorage in
    `onMount` then swaps rows for a grid (or one band for another) after the
    reader can see the page — a visible jump on every load. Biographies dropped
-   restoring its grid/list and Browse-by choices for this (2026-10-03). Books
-   (view/sort/group) and Sermons (group/sort) still restore theirs and still
-   jump; fix them the same way, or apply the choice before first paint (the
+   restoring its grid/list and Browse-by choices for this (2026-10-03), and
+   Sermons its group/sort (design #28, 2026-11). Books (view/sort/group)
+   still restores and still jumps; fix it the same way, or apply the choice before first paint (the
    `app.html` boot script, as the theme does) if it must persist.
    A key that holds the READER'S data rather than a device preference (a
    plan's schedule choices, anything a sign-out should not hand the next
@@ -874,6 +882,8 @@ relevant group.
 - [x] **B4** _(shipped #1519 — seg order made consistent)_ Default grouping: Books `all`, Sermons `preacher`, with the same seg
   order on both (so Books' default is the second option). → one default; the
   default option first.
+  _2026-11 (design #28): Sermons now defaults to `all` too, and its seg
+  lists "All sermons" first._
 - [x] **B5** _(shipped #1519 — sort/label consistency)_ Sort is a `<select>` on three shelves and a labelled `.seg` on
   Search; visible `Length:` / `Sort:` labels exist only on Plans/Search. →
   `<select>` + `aria-label`.

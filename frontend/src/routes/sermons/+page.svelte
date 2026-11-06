@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import { formatLifespan, type SermonSummary } from '$lib/library-public';
 	import { SvelteSet } from 'svelte/reactivity';
@@ -9,7 +8,10 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import { readJSON, writeJSON } from '$lib/persisted';
+	import { pager, pagedSnapshot } from '$lib/paging.svelte';
+	import { featuredOrder, startWith } from '$lib/sermonPicks';
+	import Portrait from '$lib/components/Portrait.svelte';
+	import ShowMore from '$lib/components/ShowMore.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -25,7 +27,7 @@
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
 	import { portraitPosition } from '$lib/portraits';
-	import { readingMinutes } from '$lib/reading';
+	import { readingMinutes, readingTime } from '$lib/reading';
 	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
 	import type { LengthBucket } from '$lib/sermonLength';
 
@@ -64,7 +66,7 @@
 	// --- Filters ----------------------------------------------------------------
 	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
 	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
-	// sort stay in localStorage below: they describe the reader, not the shelf.
+	// sort are this visit's arrangement only (below).
 	const filters = urlFilters({
 		defaults: { q: '', book: '', len: '', topic: '' },
 		// `len` is an enum — an off-list value in the URL falls back to "any".
@@ -156,19 +158,25 @@
 	});
 
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
-	// sort are the reader's own preference (localStorage) and survive.
+	// sort survive.
 	function clearFilters() {
 		filters.reset();
 	}
 
-	// --- Arrangement (persisted per device, mirroring the Books shelf) ----------
-	// "By preacher" keeps the author sections the shelf was built around; "All
-	// sermons" drops them for one continuous list.
+	// --- Arrangement -----------------------------------------------------------
+	// "All sermons" — one continuous list in featured order, paged — is the
+	// default (design review #28): grouped under 38 preachers the page ran
+	// ~23,000px and opened on A. B. Simpson for the alphabet's sake. "By
+	// preacher" keeps the author sections as a choice.
+	//
+	// Not persisted: this page is prerendered with the default, so restoring a
+	// stored grouping or sort in onMount swapped the whole list after the reader
+	// could see it (page-design: never restore a layout-changing view after
+	// first paint). The choice lasts the visit, as on Biographies.
 	type Group = 'preacher' | 'all';
 	type Sort = 'shelf' | 'scripture' | 'title' | 'shortest';
-	const PREFS_KEY = 'ochorus:sermons-view';
 
-	let group = $state<Group>('preacher');
+	let group = $state<Group>('all');
 	let sort = $state<Sort>('shelf');
 
 	/** What the phone Filters sheet is narrowing by (FilterSheet's `count`). */
@@ -185,20 +193,18 @@
 	// preacher anchors clear can't be assumed — it feeds `--pinned-offset`.
 	let pinnedH = $state(0);
 
-	// Hydrated after mount, not during load: the page is prerendered, so reading
-	// localStorage while rendering would desync the static HTML from the client.
-	onMount(() => {
-		const p = readJSON<{ group?: Group; sort?: Sort }>(PREFS_KEY, {});
-		if (p.group) group = p.group;
-		if (p.sort) sort = p.sort;
-	});
-	const save = () => writeJSON(PREFS_KEY, { group, sort });
-	const setGroup = (g: Group) => ((group = g), save());
+	// "Start with these": three hand-picked sermons for a newcomer, hidden while
+	// the reader is filtering (a filter is the reader saying what they want).
+	const starters = $derived(startWith(sermons));
+	const startSlugs = $derived(new Set(starters.map((s) => s.slug)));
 
 	const sorted = $derived.by(() => {
-		// Shelf order is the API's own (author, then their sequence) — return the
-		// filter's array as-is rather than copying it only to not sort it.
-		if (sort === 'shelf') return filtered;
+		// "Featured": the flat list lets the preachers take turns ($lib/sermonPicks);
+		// grouped, it is the API's own order (preacher A–Z, then their sequence),
+		// returned as-is rather than copied only to not sort it. While the row
+		// shows them, its three wait for their preacher's last turn.
+		if (sort === 'shelf')
+			return group === 'all' ? featuredOrder(filtered, filtering ? undefined : startSlugs) : filtered;
 		const arr = [...filtered];
 		switch (sort) {
 			case 'scripture':
@@ -223,6 +229,18 @@
 		}
 		return [...map.values()];
 	});
+
+	// The flat list pages 24 at a time (page-design: a flat list over ~30 items).
+	// Keyed to the filters and sort, so a new filter starts over at the first
+	// page; the snapshot brings Back to where the reader was. Every sermon page
+	// stays reachable for the prerender crawler without this list's full HTML:
+	// each preacher's page (/authors/<slug>, from the seeded A–Z) lists all of
+	// their sermons.
+	const pages = pager(
+		() => sorted,
+		() => [...Object.values(filters.values), sort].join('|')
+	);
+	export const snapshot = pagedSnapshot(() => (groups ? undefined : pages));
 
 	// A preacher section opens on its first few sermons, so Spurgeon's eighteen
 	// don't fill three screens before the next preacher. The rest stay in the
@@ -283,15 +301,15 @@
 	<div class="seg {cls}">
 		<button
 			class={btnCls}
-			class:active={group === 'preacher'}
-			onclick={() => setGroup('preacher')}
-			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
+			class:active={group === 'all'}
+			onclick={() => (group = 'all')}
+			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
 		>
 		<button
 			class={btnCls}
-			class:active={group === 'all'}
-			onclick={() => setGroup('all')}
-			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
+			class:active={group === 'preacher'}
+			onclick={() => (group = 'preacher')}
+			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
 		>
 	</div>
 {/snippet}
@@ -362,7 +380,7 @@
 					label={t('common.sort')}
 					options={SORTS.map((o) => ({ v: o.v, label: t(o.k) }))}
 					value={sort}
-					onselect={(v) => ((sort = v), save())}
+					onselect={(v) => (sort = v)}
 				/>
 				{@render groupSeg('w-full', 'flex-1')}
 			</FilterSheet>
@@ -381,7 +399,7 @@
 					{/each}
 				</select>
 
-				<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+				<select bind:value={sort} class="filter-field" aria-label={t('common.sort')}>
 					{#each SORTS as o (o.v)}
 						<option value={o.v}>{t(o.k)}</option>
 					{/each}
@@ -424,6 +442,40 @@
 			chips={activeChips}
 			class="mb-6"
 		/>
+	{/if}
+
+	<!-- Three to start with (design #28): large faces, the title, preacher ·
+	     minutes — a way in for a reader who doesn't yet know whom to read. -->
+	{#if !filtering && !loadError && starters.length}
+		<section class="mb-10" aria-labelledby="start-with">
+			<h2 id="start-with" class="section-label mb-4">{t('sermons.startWith')}</h2>
+			<ul class="start-with">
+				{#each starters as s (s.slug)}
+					<li>
+						<a href={localizeHref(`/sermons/${s.slug}`)} class="start-card">
+							<Portrait
+								slug={s.author.slug}
+								name={s.author.name}
+								url={s.author.photo_url}
+								px={72}
+								position={portraitPosition(s.author.slug)}
+								tone="color"
+								decorative
+								class="start-face"
+							/>
+							<span class="min-w-0">
+								<span class="start-title">{s.title}</span>
+								<span class="block text-small text-muted"
+									>{s.author.name}{' '}<span class="sep" aria-hidden="true">·</span>{' '}<span
+										class="whitespace-nowrap">{readingTime(s.word_count)}</span
+									></span
+								>
+							</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
 	{/if}
 
 	<!-- One sermon per line, a plain list (design #8): the title, one meta line
@@ -507,7 +559,8 @@
 			</section>
 		{/each}
 	{:else}
-		{@render sermonList(sorted)}
+		{@render sermonList(pages.visible)}
+		<ShowMore pager={pages} />
 	{/if}
 	<!-- The leader's way on, at the end of the shelf rather than in its head
 	     (design review #4): a reader came for the sermons first. Only under
@@ -516,3 +569,56 @@
 		<ForPromo place="sermons-shelf" class="mt-8" />
 	{/if}
 </div>
+
+<style>
+	/* Three across from sm up, a face over its title; a phone stacks them as
+	   rows, the face beside the words, so three fit one screen. */
+	.start-with {
+		display: grid;
+		gap: 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.start-card {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.start-card :global(.start-face) {
+		flex: none;
+		width: 4rem;
+		height: 4rem;
+	}
+	.start-title {
+		display: block;
+		margin-block-end: 0.15rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.3;
+	}
+	.start-card:hover .start-title,
+	.start-card:focus-visible .start-title {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+	@media (min-width: 40rem) {
+		.start-with {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+		.start-card {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
+		}
+		.start-card :global(.start-face) {
+			width: 4.5rem;
+			height: 4.5rem;
+		}
+	}
+</style>
