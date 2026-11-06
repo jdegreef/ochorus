@@ -147,15 +147,19 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
    - **hero visual** on the end side: cover, portrait, plate or `CoverStrip`.
-4. **Action row** — `.btn.btn-primary` for the one start verb (`Begin reading`,
-   `Start the plan`, `Start with <book>`), `<FavoriteButton>` (the component,
+4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
+   `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
+   (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
    not a `btn-icon` heart), `.btn.btn-ghost` for `Search in this …`. All the
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
    **Book is the model (#3277):** the read verb lives in a *read card*
    (shared `.read-card` in app.css — the plan page uses it too for "Day N of M
-   · today's reading"; chapter name + `ProgressBar` + one `.btn-primary`; Start over is a text
-   link), and every other action is ONE quiet `.action-strip` row — Save,
+   · today's reading"; chapter name + `ProgressBar` + one solid `.btn-primary.btn-solid`; for a
+   first-time reader the book card has no body — the button carries the chapter as a
+   `.btn-sub` line ("Book I · 35 min") with "Free to read · No account needed" under it;
+   Start over is a text link; no ministry promo inside the card — the book page's
+   `ForPromo place="book-download"` sits in the page foot, above the source line), and every other action is ONE quiet `.action-strip` row — Save,
    shelf, a single Download menu (`BookDownloadMenu`, never separate
    offline/EPUB/PDF buttons), Share/Search icon-only on desktop. When its
    host column (`.action-host`, a CSS container) is under 560px the same DOM

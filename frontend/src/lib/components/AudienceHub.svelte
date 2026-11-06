@@ -239,7 +239,7 @@
 					<div class="read-card-cta">
 						<a
 							href={localizeHref(`/books/${start.slug}`)}
-							class="btn btn-primary"
+							class="btn btn-primary btn-solid"
 							onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'start' })}
 							>{t('book.beginReading')}</a
 						>

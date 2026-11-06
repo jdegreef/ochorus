@@ -302,6 +302,7 @@ weight 600, a 150ms transition).
 | Role | Class | Fill | Text | Border | When |
 |---|---|---|---|---|---|
 | **Primary** | `.btn .btn-primary` | `--accent-soft` | `--accent` | `--accent-soft-border` | The main action on a view (one per context) |
+| **Read verb** | `.btn .btn-primary .btn-solid` | `--accent` | `--accent-contrast` | `--accent` | The ONE read verb a reading page exists for — Begin reading / Continue in the read card, Start the plan, and the sub-nav / `ReadBar` that stand in for it once it scrolls away |
 | **Default** | `.btn` | `--surface-2` | `--text` | `--border` | Secondary actions |
 | **Ghost** | `.btn .btn-ghost` | transparent | `--text` | `--border` | Low-emphasis (dismiss, back) |
 
@@ -309,9 +310,17 @@ weight 600, a 150ms transition).
   **`.btn-icon`** for a square icon-only one. Don't hand-roll padding — five
   different compact sizes existed before these did.
 - **Primary is soft, not bold** — a brand-tinted button (accent-soft fill, accent
-  text, `--accent-soft-border`), never a solid filled indigo block. It reads as
-  "the main thing" without shouting.
-- Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
+  text, `--accent-soft-border`). It reads as "the main thing" without shouting.
+- **Except the read verb, which is solid** (design review #2, founder-approved
+  2026-11): on the book, plan and author pages the soft fill left the reason the
+  page exists about as loud as a chip. Add `.btn-solid` to that one button (and
+  its sub-nav / `ReadBar` stand-in) — never to a second button on the same view.
+  Its ink is `--accent-contrast`, held at AA on `--accent` in every theme and
+  palette by `palettes.test.ts`. A second line inside it (`.btn-sub`, with
+  `flex-col gap-0` on the button) names what it opens: "Begin reading /
+  Book I · 35 min"; the reassurance goes under the button as small muted text.
+- Hover: default → `--surface` + accent-soft border; primary → border to `--accent`;
+  solid → the fill deepens toward `--text`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 
 ### Favourite / saved state — one control, one colour

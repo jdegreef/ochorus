@@ -518,7 +518,7 @@
 					href={localizeHref(
 						chapterPath(cardBook.slug, resumeBook ? resumeBook.order : 1, cardBook.has_modern_edition)
 					)}
-					class="btn btn-primary">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
+					class="btn btn-primary btn-solid">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
 				>
 			</div>
 		</div>
