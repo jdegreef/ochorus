@@ -282,6 +282,26 @@ class AdminTranslationJobsTests(TestCase):
         gh.post.assert_not_called()
 
     @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_post_refuses_a_retired_duplicate(self):
+        # corrections.RETIRED_BOOKS: the reader forwards its URLs to the
+        # successor, so a translation would be a page nobody can reach.
+        from unittest.mock import patch
+
+        from library.admin_views.jobs import translation_blocked
+
+        self.assertTrue(translation_blocked("book", "lord-teach-us-to-pray-2"))
+        self.assertFalse(translation_blocked("book", "school-of-prayer"))
+        with patch("library.admin_views.jobs.requests") as gh:
+            res = self.client.post(
+                "/api/admin/translation-jobs/",
+                {"type": "book", "slug": "lord-teach-us-to-pray-2", "language": "es"},
+                format="json",
+            )
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("school-of-prayer", res.data["detail"])
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
     def test_post_creates_issue(self):
         from unittest.mock import MagicMock, patch
 

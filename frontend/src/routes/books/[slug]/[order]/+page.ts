@@ -4,6 +4,7 @@ import { getChapterWithLang, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
+import { retiredChapterHref } from '$lib/retiredBooks';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
 import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -51,6 +52,11 @@ export const trailingSlash = 'always';
 export const entries: EntryGenerator = async () => chapterEntries(await listBooks('en'));
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
+	// A retired duplicate's chapter: the same lesson in the work that replaced
+	// it ($lib/retiredBooks), keeping plan context but not ?p=. No query at
+	// build time (touching url.search would fail the prerender).
+	const moved = retiredChapterHref(params.slug, Number(params.order), building ? '' : url.search);
+	if (moved) redirect(308, localizeHref(moved));
 	// ?edition=modern is the Modern English edition's OLD address (bookmarks,
 	// shared links, saved marks): send it to the edition's own route, keeping the
 	// rest of the query (?p=, plan context). Before any fetch — the modern route

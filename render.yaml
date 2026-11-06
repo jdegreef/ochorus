@@ -512,6 +512,13 @@ services:
       - type: redirect
         source: /plans/the-key-teachings-four-teachers
         destination: /plans/key-teachings-four-teachers/
+      # A book retired as a duplicate of the work it paraphrased
+      # (corrections.RETIRED_BOOKS). Only the book page: its chapter URLs and
+      # the localized forms are forwarded, lesson for lesson, by the pages'
+      # own loads ($lib/retiredBooks).
+      - type: redirect
+        source: /books/lord-teach-us-to-pray-2
+        destination: /books/school-of-prayer/
       # Book PDFs moved to Supabase Storage (2026-09-29). One wildcard keeps every
       # link shared before the move working. Render serves a file that exists
       # before any rule, so what still sits in frontend/static/pdfs is untouched.

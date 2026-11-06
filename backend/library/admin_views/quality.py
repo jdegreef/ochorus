@@ -27,6 +27,7 @@ from ..content_audit import (
     schedule_status,
     worst_books,
 )
+from ..corrections import RETIRED_BOOKS
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
@@ -279,6 +280,8 @@ class AdminReviewQueueView(AdminAudited, APIView):
         out: list[dict] = []
         books = (
             Book.objects.filter(source_type=Book.SourceType.AI_UNREVIEWED)
+            # A retired duplicate is never read again: nothing to review.
+            .exclude(slug__in=RETIRED_BOOKS)
             .select_related("author")
             .annotate(num_chapters=Count("chapters"))
             .order_by("language", "sort_order", "title")

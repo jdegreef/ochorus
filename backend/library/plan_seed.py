@@ -178,7 +178,12 @@ CURATED_PLANS = [
         "prevailing prayer, and Hannah Buyinza on prayer as the daily pulse of "
         "the Christian life.",
         [
-            "lord-teach-us-to-pray-2",
+            # Lessons 1-4 of With Christ in the School of Prayer (chapter 1 is
+            # the Preface). Until 2026-11 these four days read
+            # `lord-teach-us-to-pray-2`, a retired paraphrase of the same
+            # lessons (corrections.RETIRED_BOOKS); migration 0210 moved the
+            # live days, keeping their numbers.
+            chapters("school-of-prayer", 2, 5),
             "prevailing-prayer",
             "prayer-the-pulse-of-life",
         ],

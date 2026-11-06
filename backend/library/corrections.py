@@ -40,6 +40,24 @@ COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
     "if",
 })
 
+# Books RETIRED as duplicates of another work in the corpus, each with the work
+# that replaces it and the offset from a retired chapter's order to the same
+# text's order in the successor:  {retired slug: (successor slug, offset)}.
+# Every edition stays in the fixture, unpublished (a reader's progress, marks
+# and notes are keyed by slug and must keep resolving to a row), and the reader
+# forwards the old URLs to the successor — ``frontend/src/lib/retiredBooks.ts``
+# is the mirror, kept in step by ``tests_fixture.RetiredBookTests``, which also
+# fails on any plan, topic, quote or download that still names a retired slug.
+# Migration 0210 unpublished the live rows (``is_published`` is create-only in
+# seed_books) and moved the plan days onto the successor; the topic shelf
+# follows ``topic_seed`` (seed_topics drops a member it no longer lists).
+RETIRED_BOOKS: dict[str, tuple[str, int]] = {
+    # 2026-11: a modernized, ESV-swapped paraphrase of Lessons 1-4 of *With
+    # Christ in the School of Prayer*, which the library carries in Murray's
+    # own words (its chapter 1 is the Preface, so lesson N is chapter N + 1).
+    "lord-teach-us-to-pray-2": ("school-of-prayer", 1),
+}
+
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
 EXCLUDED_SLUGS: set[str] = {
@@ -48,6 +66,7 @@ EXCLUDED_SLUGS: set[str] = {
     "the-person-and-work-of-the-holy-spirit-2",
     # Kept out of re-import too.
     *COPYRIGHT_BLOCKED_SLUGS,
+    *RETIRED_BOOKS,
 }
 
 CORRECTIONS: dict[str, dict] = {
@@ -735,8 +754,8 @@ CORRECTIONS: dict[str, dict] = {
         # CCEL titles each lesson "First Lesson. ‘Lord, teach us to pray;’ Or,
         # The Only Teacher" — the reader already numbers the chapter, and the
         # motto is the verse the lesson opens with. Title each by its own "Or,"
-        # subtitle, as the four-lesson `lord-teach-us-to-pray-2` already does
-        # (CCEL's TOC also misspells "Ninteenth", which this sidesteps). Ch33
+        # subtitle, as the four-lesson `lord-teach-us-to-pray-2` (since retired
+        # as a duplicate of these lessons) did (CCEL's TOC also misspells "Ninteenth", which this sidesteps). Ch33
         # is Murray's closing note on Müller, spelled as the library spells him.
         "chapter_titles": {
             2: "The Only Teacher",

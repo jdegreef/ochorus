@@ -29,6 +29,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
+from ..corrections import RETIRED_BOOKS
 from ..models import Author, Book, Chapter, Language, Plan, SearchQueryLog, Sermon
 
 
@@ -42,8 +43,11 @@ class AdminAttentionView(APIView):
             {
                 "unreviewed_translations": Book.objects.filter(
                     source_type=Book.SourceType.AI_UNREVIEWED
-                ).count(),
-                "unpublished_books": Book.objects.filter(is_published=False).count(),
+                ).exclude(slug__in=RETIRED_BOOKS).count(),
+                # A retired duplicate is unpublished for good — not a to-do.
+                "unpublished_books": Book.objects.filter(is_published=False)
+                .exclude(slug__in=RETIRED_BOOKS)
+                .count(),
                 "unpublished_sermons": Sermon.objects.filter(is_published=False).count(),
                 # Imprints are bylines, not people — they never get a bio, so
                 # counting them would leave this to-do permanently unfinishable

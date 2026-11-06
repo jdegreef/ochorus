@@ -24,7 +24,7 @@ from django.db import transaction
 from django.utils.text import slugify
 
 from . import qa
-from .corrections import COPYRIGHT_BLOCKED_SLUGS
+from .corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
 from .covers import ink_safe
 from .ingest import (
     chapter_title,
@@ -322,8 +322,10 @@ def create_book(
         sort_order=last + 1,
         # A title can mint a copyright-blocked slug (e.g. "Grace for Grace" →
         # grace-for-grace-2 once grace-for-grace exists); such a row is created
-        # hidden, the same rule the publish toggle enforces.
-        is_published=slug not in COPYRIGHT_BLOCKED_SLUGS,
+        # hidden, the same rule the publish toggle enforces — as is a retired
+        # duplicate's slug (corrections.RETIRED_BOOKS), whose URLs the reader
+        # forwards to its successor.
+        is_published=slug not in COPYRIGHT_BLOCKED_SLUGS and slug not in RETIRED_BOOKS,
     )
     order = 0
     for ch in chapters:

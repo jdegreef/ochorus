@@ -987,3 +987,71 @@ class AdminLanguageTopicsTests(TestCase):
             [t["slug"] for t in res.data["topics"]], ["prayer", "holy-spirit"]
         )
         self.assertEqual(res.data["todo"]["topics"], [])
+
+
+class RetireDuplicateBookMigrationTests(TestCase):
+    """Migration 0210 unpublishes the retired book and moves its plan days onto
+    the same lessons of the successor, keeping their day numbers."""
+
+    def test_unpublishes_and_moves_plan_days(self):
+        import importlib
+
+        from django.apps import apps
+
+        migration = importlib.import_module("library.migrations.0210_retire_lord_teach_us_to_pray_2")
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        for lang in ("en", "fr"):
+            Book.objects.create(
+                author=author, slug="lord-teach-us-to-pray-2", language=lang, title="Lord"
+            )
+        school = Book.objects.create(author=author, slug="school-of-prayer", language="en", title="S")
+        for i in range(1, 6):
+            Chapter.objects.create(book=school, order=i, title=f"L{i}", body_html="<p>x</p>")
+        plans = {}
+        for lang in ("en", "fr"):  # fr has no school-of-prayer here: left alone
+            plans[lang] = Plan.objects.create(slug="school-of-prayer", language=lang, title="F")
+            for d in (1, 2, 3, 4):
+                PlanDay.objects.create(
+                    plan=plans[lang], day=d, book_slug="lord-teach-us-to-pray-2", chapter_order=d
+                )
+            PlanDay.objects.create(plan=plans[lang], day=5, book_slug="prevailing-prayer", chapter_order=1)
+
+        migration.retire(apps, None)
+
+        self.assertFalse(Book.objects.filter(slug="lord-teach-us-to-pray-2", is_published=True).exists())
+        self.assertEqual(Book.objects.filter(slug="lord-teach-us-to-pray-2").count(), 2)
+        self.assertEqual(
+            list(plans["en"].days.order_by("day").values_list("day", "book_slug", "chapter_order")),
+            [(1, "school-of-prayer", 2), (2, "school-of-prayer", 3), (3, "school-of-prayer", 4),
+             (4, "school-of-prayer", 5), (5, "prevailing-prayer", 1)],
+        )
+        self.assertEqual(
+            set(plans["fr"].days.values_list("book_slug", flat=True)),
+            {"lord-teach-us-to-pray-2", "prevailing-prayer"},
+        )
+
+    def _plan_on_retired(self, lang, school_orders, published=True):
+        import importlib
+
+        from django.apps import apps
+
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        school = Book.objects.create(
+            author=author, slug="school-of-prayer", language=lang, title="S", is_published=published
+        )
+        for i in school_orders:
+            Chapter.objects.create(book=school, order=i, title=f"L{i}", body_html="<p>x</p>")
+        plan = Plan.objects.create(slug="school-of-prayer", language=lang, title="F")
+        for d in (1, 2, 3, 4):
+            PlanDay.objects.create(plan=plan, day=d, book_slug="lord-teach-us-to-pray-2", chapter_order=d)
+        importlib.import_module("library.migrations.0210_retire_lord_teach_us_to_pray_2").retire(apps, None)
+        return set(plan.days.values_list("book_slug", flat=True))
+
+    def test_a_plan_moves_whole_or_not_at_all(self):
+        # The successor lacks lesson 4 (its chapter 5): no day moves, not days 1-3.
+        self.assertEqual(self._plan_on_retired("es", (1, 2, 3, 4)), {"lord-teach-us-to-pray-2"})
+
+    def test_an_unpublished_successor_takes_no_days(self):
+        self.assertEqual(
+            self._plan_on_retired("pt", (1, 2, 3, 4, 5), published=False), {"lord-teach-us-to-pray-2"}
+        )
