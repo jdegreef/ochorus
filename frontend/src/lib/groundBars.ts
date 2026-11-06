@@ -40,6 +40,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'corrie-ten-boom-a-life-teens': 0.110,
 	'david-livingstone-a-life-teens': 0.050,
 	'david-livingstone-a-life': 0.110,
+	'devoted-to-prayer': 0.110,
 	'diary-of-an-old-soul': 0.025,
 	'divine-healing': 0.050,
 	'divine-songs-for-children': 0.055,

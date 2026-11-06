@@ -1,0 +1,615 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Acts 1:8",
+    "themes": [],
+    "person": null,
+    "era": "c. AD 30-95",
+    "region": "Jerusalem and the Roman world",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Waiting in the Upper Room",
+    "anchor": "Acts 1:14",
+    "themes": [
+      "Persistence",
+      "Praying Together",
+      "Guidance and Surrender"
+    ],
+    "person": "The 120",
+    "era": "c. AD 30",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "The Ministration of the Spirit and Prayer"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "The Place of Prayer Before and During Revivals"
+      }
+    ],
+    "read_more": [
+      "ministry-of-intercession",
+      "how-to-pray",
+      "possibilities-of-prayer"
+    ]
+  },
+  {
+    "title": "Devoted to the Prayers",
+    "anchor": "Acts 2:42",
+    "themes": [
+      "Making Room for Prayer",
+      "Persistence",
+      "Praying Together"
+    ],
+    "person": "The Jerusalem church",
+    "era": "c. AD 30",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 4, Chapter 17 — Of the Lord’s Supper, and the Benefits Conferred by It"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "Prayer and the Holy Ghost Dispensation"
+      }
+    ],
+    "read_more": [
+      "reality-of-prayer",
+      "essentials-of-prayer",
+      "prevailing-prayer"
+    ]
+  },
+  {
+    "title": "The Hour of Prayer",
+    "anchor": "Acts 3:1",
+    "themes": [
+      "Making Room for Prayer",
+      "Praying for Others",
+      "Faith"
+    ],
+    "person": "Peter and John at the gate",
+    "era": "c. AD 30",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "tertullian",
+        "book": "tertullian-on-prayer",
+        "chapter": "Of Time for Prayer"
+      },
+      {
+        "author": "william-law",
+        "book": "a-serious-call",
+        "chapter": "Concerning that part of devotion which relates to times and hours of prayer. Of daily early prayer in the morning. How we are to improve our forms of prayer, and how to increase the spirit of devotion"
+      }
+    ],
+    "read_more": [
+      "tertullian-on-prayer",
+      "a-serious-call",
+      "power-through-prayer"
+    ]
+  },
+  {
+    "title": "\"Sovereign Master\": Praying Under Threat",
+    "anchor": "Acts 4:31",
+    "themes": [
+      "Faith",
+      "Prayer in Suffering and Testing",
+      "Learning to Pray"
+    ],
+    "person": "The church after the arrest",
+    "era": "c. AD 30",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "possibilities-of-prayer",
+        "chapter": "Answered Prayer (Continued)"
+      }
+    ],
+    "read_more": [
+      "possibilities-of-prayer",
+      "school-of-prayer",
+      "prevailing-prayer"
+    ]
+  },
+  {
+    "title": "Holding Fast to Prayer",
+    "anchor": "Acts 6:4",
+    "themes": [
+      "Making Room for Prayer",
+      "Making Room for Prayer",
+      "Praying for Others"
+    ],
+    "person": "The apostles' priority",
+    "era": "c. AD 30",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "possibilities-of-prayer",
+        "chapter": "The Ministry of Prayer"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Prayer Marks Spiritual Leadership"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "Prayerless Praying"
+      }
+    ],
+    "read_more": [
+      "power-through-prayer",
+      "purpose-in-prayer"
+    ]
+  },
+  {
+    "title": "\"Do Not Charge Them with This Sin\"",
+    "anchor": "Acts 7:60",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Forgiveness",
+      "Praying for Others"
+    ],
+    "person": "Stephen",
+    "era": "c. AD 34",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "thomas-watson",
+        "book": "the-beatitudes",
+        "chapter": "A Discourse of Mercifulness"
+      },
+      {
+        "author": "augustine-of-hippo",
+        "book": "homilies-on-the-first-epistle-of-john",
+        "chapter": "Homily V: 1 John 3:9–18"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-beatitudes",
+        "chapter": "Concerning Persecution"
+      }
+    ],
+    "read_more": [
+      "the-beatitudes",
+      "homilies-on-the-first-epistle-of-john",
+      "treatises-of-cyprian"
+    ]
+  },
+  {
+    "title": "Prayers That Rose Before God",
+    "anchor": "Acts 10:4",
+    "themes": [
+      "The Father's Love",
+      "Guidance and Surrender",
+      "Humility and Mercy"
+    ],
+    "person": "Cornelius",
+    "era": "c. AD 40",
+    "region": "Caesarea and Joppa",
+    "voices": [
+      {
+        "author": "r-a-torrey",
+        "book": "what-the-bible-teaches",
+        "chapter": "Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "The Ministration of the Spirit and Prayer"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "Prayer and Devotion"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "essentials-of-prayer",
+      "what-the-bible-teaches"
+    ]
+  },
+  {
+    "title": "Peter in Prison, the Church on Its Knees",
+    "anchor": "Acts 12:5",
+    "themes": [
+      "Praying Together",
+      "Prayer in Suffering and Testing",
+      "Faith"
+    ],
+    "person": "The church at Mary's house",
+    "era": "c. AD 44",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "Praying unto God"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Third Petition: Thy Will Be Done"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "all-things-for-good",
+        "chapter": "The best things work for good to the godly"
+      }
+    ],
+    "read_more": [
+      "how-to-pray",
+      "all-things-for-good",
+      "possibilities-of-prayer"
+    ]
+  },
+  {
+    "title": "Worship, Fasting and Sending",
+    "anchor": "Acts 13:2-3",
+    "themes": [
+      "Guidance and Surrender",
+      "Making Room for Prayer",
+      "Praying for Others"
+    ],
+    "person": "The church at Antioch",
+    "era": "c. AD 47",
+    "region": "Antioch in Syria",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Cure of Unbelief"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Paul and His Praying"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "The Ministration of the Spirit and Prayer"
+      }
+    ],
+    "read_more": [
+      "essentials-of-prayer",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "title": "The Place of Prayer by the River",
+    "anchor": "Acts 16:13",
+    "themes": [
+      "Making Room for Prayer",
+      "Praying Together",
+      "Faith"
+    ],
+    "person": "Lydia and the women of Philippi",
+    "era": "c. AD 49",
+    "region": "Philippi, Macedonia",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "evening-by-evening",
+        "chapter": "December"
+      }
+    ],
+    "read_more": [
+      "evening-by-evening",
+      "school-of-prayer",
+      "necessity-of-prayer"
+    ]
+  },
+  {
+    "title": "Songs at Midnight",
+    "anchor": "Acts 16:25",
+    "themes": [
+      "Thanksgiving",
+      "Praying Together",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Paul and Silas",
+    "era": "c. AD 49",
+    "region": "Philippi, Macedonia",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Paul and His Praying"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "essentials-of-prayer",
+      "spurgeon-on-prayer"
+    ]
+  },
+  {
+    "title": "That You May Know Him Better",
+    "anchor": "Ephesians 1:16-19",
+    "themes": [
+      "Praying for Others",
+      "Thanksgiving",
+      "Faith"
+    ],
+    "person": "Paul's prayers (I)",
+    "era": "c. AD 60-62",
+    "region": "Ephesus and the province of Asia",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Paul a Pattern of Prayer"
+      },
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 2, Chapter 2 — Man Now Deprived of Freedom of Will, and Miserably Enslaved"
+      }
+    ],
+    "read_more": [
+      "ministry-of-intercession",
+      "prayer-and-praying-men",
+      "the-inner-chamber"
+    ]
+  },
+  {
+    "title": "Rooted Deep in Love",
+    "anchor": "Ephesians 3:16-19",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Praying Together",
+      "Asking Boldly"
+    ],
+    "person": "Paul's prayers (II)",
+    "era": "c. AD 60-62",
+    "region": "Ephesus and the province of Asia",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "Paul a Pattern of Prayer"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Ask and Have"
+      }
+    ],
+    "read_more": [
+      "the-inner-chamber",
+      "reality-of-prayer",
+      "spurgeon-on-prayer"
+    ]
+  },
+  {
+    "title": "When We Do Not Know What to Pray",
+    "anchor": "Romans 8:26",
+    "themes": [
+      "Learning to Pray",
+      "Christ Who Prays for Us",
+      "Guidance and Surrender"
+    ],
+    "person": "The Spirit's help",
+    "era": "c. AD 57",
+    "region": "Corinth and Rome",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "ministry-of-intercession",
+        "chapter": "The Spirit of Supplication"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "Praying in the Name of Christ and According to the Will of God"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "The Holy Spirit Our Helper in Prayer"
+      }
+    ],
+    "read_more": [
+      "ministry-of-intercession",
+      "reality-of-prayer",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "Always Wrestling in Prayer",
+    "anchor": "Colossians 4:12",
+    "themes": [
+      "Praying for Others",
+      "Persistence",
+      "Guidance and Surrender"
+    ],
+    "person": "Epaphras",
+    "era": "c. AD 60-62",
+    "region": "Colossae and the Lycus valley",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "necessity-of-prayer",
+        "chapter": "Prayer and Fervency"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Prayer Marks Spiritual Leadership"
+      }
+    ],
+    "read_more": [
+      "power-through-prayer",
+      "necessity-of-prayer",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "title": "Do Not Worry About Anything",
+    "anchor": "Philippians 4:6-7",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Thanksgiving",
+      "Guidance and Surrender"
+    ],
+    "person": "Paul in chains",
+    "era": "c. AD 60-62",
+    "region": "Rome (writing to Philippi)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Prayer, the Cure for Care"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "The Importance of Prayer"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "how-to-pray",
+      "cheque-book"
+    ]
+  },
+  {
+    "title": "Never Stop Praying",
+    "anchor": "1 Thessalonians 5:16-18",
+    "themes": [
+      "Making Room for Prayer",
+      "Thanksgiving",
+      "The Father's Love"
+    ],
+    "person": "The church at Thessalonica",
+    "era": "c. AD 50",
+    "region": "Thessalonica, Macedonia",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Pray Without Ceasing"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "how-to-pray",
+      "prayer-and-praying-men"
+    ]
+  },
+  {
+    "title": "For Kings and All in Authority",
+    "anchor": "1 Timothy 2:1-2",
+    "themes": [
+      "Praying for Others",
+      "Humility and Mercy",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Timothy at Ephesus",
+    "era": "c. AD 62-64",
+    "region": "Ephesus, province of Asia",
+    "voices": [
+      {
+        "author": "tertullian",
+        "book": "the-apology-of-tertullian",
+        "chapter": "We Pray for the Emperors to the True God"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "what-the-bible-teaches",
+        "chapter": "Prayer"
+      }
+    ],
+    "read_more": [
+      "the-apology-of-tertullian",
+      "the-upper-room",
+      "essentials-of-prayer"
+    ]
+  },
+  {
+    "title": "The Prayer Made in Faith",
+    "anchor": "James 5:16",
+    "themes": [
+      "Praying Together",
+      "Faith",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "James, and Elijah's example",
+    "era": "c. AD 45-62",
+    "region": "Jerusalem",
+    "voices": [
+      {
+        "author": "eusebius-of-caesarea",
+        "book": "church-history",
+        "chapter": "Book II"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Elijah, the Praying Prophet"
+      },
+      {
+        "author": "maria-w-stewart",
+        "book": "meditations-maria-w-stewart",
+        "chapter": "Meditation X"
+      }
+    ],
+    "read_more": [
+      "prayer-and-praying-men",
+      "purpose-in-prayer",
+      "meditations-maria-w-stewart"
+    ]
+  },
+  {
+    "title": "Golden Bowls",
+    "anchor": "Revelation 8:3-4",
+    "themes": [
+      "Praying Together",
+      "Asking Boldly",
+      "Faith"
+    ],
+    "person": "John on Patmos",
+    "era": "c. AD 95",
+    "region": "Patmos, Aegean Sea",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Ask and Have"
+      },
+      {
+        "author": "samuel-rutherford",
+        "book": "letters-of-samuel-rutherford",
+        "chapter": "Letter CCXCIII: To Mr. James Wilson"
+      }
+    ],
+    "read_more": [
+      "reality-of-prayer",
+      "letters-of-samuel-rutherford",
+      "a-body-of-divinity"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Hebrews 13:7",
+    "themes": [],
+    "person": "The first church",
+    "era": "c. AD 60-95",
+    "region": "Rome and Patmos",
+    "voices": [],
+    "read_more": []
+  }
+]

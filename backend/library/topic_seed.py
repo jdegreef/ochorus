@@ -51,6 +51,7 @@ TOPICS = [
             "the-practice-of-the-presence-of-god",
             "the-prayers-jesus-learned",
             "jesus-teacher-of-prayer",
+            "devoted-to-prayer",
         ],
     ),
     (
