@@ -625,7 +625,9 @@ Reported, not fixed
   English propagates into every translation (already reached es for `humility-2`
   and `the-inner-chamber`). Confirmed altered: secret-of-guidance (damaged),
   god-of-all-comfort, humility-2, the-inner-chamber, jesus-himself-2,
-  lord-teach-us-to-pray-2, the-masters-indwelling; full catalog is a backlog
+  lord-teach-us-to-pray-2, the-masters-indwelling,
+  the-christians-secret-of-a-happy-life-4, talks-to-the-farmer,
+  the-person-and-work-of-the-holy-spirit, godliness; full catalog is a backlog
   (see memory `modernized-scripture-in-pd-classics`). The 2026-11-05 Murray
   proofreading sweep added the last three. Density alone can mislead:
   `lord-teach-us-to-pray-2` scored 16.4/10k, inside the "genuine" band, yet is
@@ -634,6 +636,28 @@ Reported, not fixed
   compare against it. `the-masters-indwelling` was proofread and merged anyway
   (#7300) as an interim cleanup; it still needs the re-import. Any other book
   that fails the check gets no proofreading PR: report it and stop.
+  The 2026-11-06 scan of four more suspects confirmed all four:
+  - `the-christians-secret-of-a-happy-life-4` (Smith): Matt 6:25-34 and Phil
+    4:6 run verbatim ESV ("Do not be anxious about anything"), too long for her
+    own loose paraphrase. Seams: one surviving KJV line reads "be careful for
+    nothing … Be anxious for nothing", and Ex 15:1 reads "the song of Moses and the children
+    of Israel. It says, 'Then Moses and the people of Israel sang'".
+  - `talks-to-the-farmer` (Spurgeon): 117 inline "(ESV)" labels. Prov 24:30
+    is ESV ("field of a sluggard … lacking sense"), and so are Isa 54:10 and
+    Ps 147:11 ("steadfast love"). The KJV "At meal-time come thou hither" is
+    labelled "(Ruth 2:14 ESV)". The `-children` / `-teens` editions and 8
+    `quote_seed` quotes derive from it.
+  - `the-person-and-work-of-the-holy-spirit` (Torrey): John 3:5, 1 Cor 2:14
+    ("The natural person does not accept … folly to him") and Rom 8:26 match
+    the ESV, not the RV/ASV he used. Matt 3:11 is ESV, yet his gloss "the second
+    'with' … is in italics" refers to the KJV. Prose is rewritten too: "will
+    almost always become proud, acting like they're better than other
+    Christians". Inserted "(KJV)" labels.
+  - `godliness` (Booth): "(Acts 16:31, ESV)"-style labels, plus the
+    meta-artifact "(The longer wording found in some older translations — …
+    — is not included in the ESV text.)". It stands where her Luke 9:55
+    "manner of spirit" quote was. The ESV Isa 53:5 has been personalised
+    ("wounded for my transgressions; he was crushed").
 - **A quotation labelled KJV that isn't KJV** (2026-09-29, #4513). The Key
   Teachings companions claim the Authorised Version throughout, and 6 of their
   564 set-apart quotes had drifted. One read 1 Tim 3:3's "greedy of filthy lucre"
