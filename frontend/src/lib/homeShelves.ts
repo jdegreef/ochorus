@@ -21,7 +21,6 @@ import {
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
 import { editionKind } from '$lib/edition';
-import { countWriters } from '$lib/authorIndex';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 
@@ -64,7 +63,8 @@ export interface HomeShelves {
 	discover: CoverBook[];
 	authors: AuthorTileData[];
 	topics: TopicCount[];
-	counts: { books: number; authors: number; sermons: number };
+	/** The library's totals in this language — /about's stats band reads them. */
+	counts: { books: number; sermons: number };
 	/** The young-reader hubs with something to show in this language — the
 	 *  home page links only those (`HomeAudienceHubs`). */
 	audiences: HubAudience[];
@@ -174,12 +174,10 @@ export function deriveHomeShelves(
 			)
 			.slice(0, HOME_TOPIC_LIMIT)
 			.map(topicCount),
-		// Library breadth for the hero's social-proof line. Counts of what this
-		// LANGUAGE actually has (the lists are already per-locale), so a locale
-		// with fewer works advertises its own honest numbers, not English's.
-		// Authors is `countWriters`, the A–Z's number: the writers list alone
-		// misses anyone withheld from Biographies.
-		counts: { books: books.length, authors: countWriters(authors, books), sermons: sermons.length },
+		// Library breadth for /about's stats band. Counts of what this LANGUAGE
+		// actually has (the lists are already per-locale), so a locale with
+		// fewer works states its own honest numbers, not English's.
+		counts: { books: books.length, sermons: sermons.length },
 		audiences
 	};
 }
@@ -218,8 +216,8 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		// cross-navigation row, and the page already hides the section when
 		// there are none.
 		listTopics(lang).catch(() => []),
-		// Fetched only for the library-breadth count under the hero — tolerant at
-		// runtime, so a 0 just drops the sermon figure rather than breaking home.
+		// Fetched only for the library-breadth count /about shows — tolerant at
+		// runtime, so a 0 just drops the sermon figure rather than breaking it.
 		shelf(listSermons(lang)),
 		// The hubs this language has something in — tolerant even while
 		// building, like topics: a decorative link band that simply hides.
