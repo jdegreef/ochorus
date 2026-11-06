@@ -215,7 +215,7 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
 		// It hangs from the bar (riding its fold-away transform), and is pinned
 		// to the top in focus mode, where there is no bar.
-		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*>\s*\{@render hairline\(false\)\}/);
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}\s*>\s*\{@render hairline\(false\)\}/);
 		expect(src).toMatch(/\{#if readerUi\.focus && !showPeek\}\s*\{@render hairline\(true\)\}/);
 	});
 
@@ -233,6 +233,33 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
 		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
 		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
+	});
+});
+
+describe('the phone reader: the bars fold away while reading (design #30)', () => {
+	const src = read(READER);
+
+	it('folds the bottom bar with a transform, so its controls stay in the accessibility tree', () => {
+		// display:none took Aa, Listen and Previous/Next out of reach of Tab
+		// and a screen reader for as long as the reader read on.
+		expect(src).toMatch(/\.progress-foot\.folded \{\s*transform: translateY\(100%\);/);
+		expect(src).not.toMatch(/\.(progress-foot|foot-actions)\.folded \{\s*display: none;/);
+		expect(src).toMatch(/\.progress-foot\.folded:has\(:focus-visible\) \{\s*transform: none;/);
+	});
+
+	it('a focus landing in either bar brings both back', () => {
+		expect(src).toMatch(/const unfold = \(\) => \(barHidden = false\);/);
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}/);
+		expect(src).toMatch(/class="progress-foot" class:folded=\{hideChrome\} onfocusin=\{unfold\}/);
+	});
+
+	it('in scroll mode a tap in the middle third toggles the bars, the edges stay inert', () => {
+		const click = src.slice(src.indexOf('function onArticleClick('), src.indexOf('// Prefetch the next chapter'));
+		expect(click).toMatch(
+			/if \(coarse && isPhone && tapTurn\(e\.clientX, window\.innerWidth, contentRtl, 0\.34\) === 'none'\) \{\s*barHidden = !hideChrome;/
+		);
+		// Page mode keeps its thirds: edges turn, the middle toggles the controls.
+		expect(click).toMatch(/else if \(coarse\) readerUi\.toggleFocus\(\);/);
 	});
 });
 

@@ -630,11 +630,11 @@
 	let footEl = $state<HTMLElement>();
 	let leadEl = $state<HTMLElement>();
 	let chapterEndEl = $state<HTMLElement>();
-	// The footer's UNFOLDED height, published as --foot-h for the article's
-	// bottom clearance and the return pill (hand-kept per-breakpoint constants
-	// had drifted three times). It varies with the touch scrubber and the phone
-	// action row — but deliberately NOT with that row folding: folding changes
-	// no layout, because shrinking the article's padding at the end of a
+	// The footer's height, published as --foot-h for the article's bottom
+	// clearance and the return pill (hand-kept per-breakpoint constants had
+	// drifted three times). It varies with the phone action row — but NOT with
+	// the bar folding, which is only a transform (design #30): folding must
+	// change no layout, because shrinking the article's padding at the end of a
 	// chapter clamped scrollY upward, which read as a scroll-up and unfolded it
 	// again — a flicker loop. measureScrollPages reads the same number so the
 	// page total doesn't shift with the fold. Removed while no footer is shown.
@@ -644,7 +644,6 @@
 		if (!el) return;
 		const root = document.documentElement;
 		const ro = new ResizeObserver(() => {
-			if (el.querySelector('.foot-actions.folded')) return;
 			footH = el.offsetHeight;
 			root.style.setProperty('--foot-h', `${footH}px`);
 		});
@@ -1516,6 +1515,14 @@
 		}
 		if (readerPrefs.tapToScroll && coarse && e.clientY / window.innerHeight > 0.66) {
 			pageScroll(1);
+			return;
+		}
+		// Phone, scroll mode (design #30): the bars fold away as the reader
+		// reads on, and a tap in the middle third — the same zone that shows the
+		// controls in page mode — brings them back (or folds them again). The
+		// outer thirds stay inert here: no chapter turns off a stray edge tap.
+		if (coarse && isPhone && tapTurn(e.clientX, window.innerWidth, contentRtl, 0.34) === 'none') {
+			barHidden = !hideChrome;
 		}
 	}
 
@@ -1827,6 +1834,10 @@
 			barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
 		lastScrollY = y;
 	}
+	/** A focus inside a folded bar — Tab, or a screen reader moving onto one
+	 *  of its controls — brings both bars back, so focus never sits on a
+	 *  control the reader can't see. Scrolling on folds them again. */
+	const unfold = () => (barHidden = false);
 	const hideChrome = $derived(
 		barHidden &&
 			!paged &&
@@ -1901,6 +1912,7 @@
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
 		class:autohidden={hideChrome}
+		onfocusin={unfold}
 	>
 		{@render hairline(false)}
 		<div
@@ -2507,10 +2519,12 @@
 
 <!-- The phone's bottom bar: the Previous · Listen · + · Aa · Next row, fixed,
      hidden in focus/Listen modes. Phones only since design #18 moved the
-     chapter's progress to the hairline at the top; it folds away with the
-     top bar (hideChrome), and with nothing else left in it, so does the bar. -->
+     chapter's progress to the hairline at the top. It slides away with the
+     top bar (hideChrome) so it never sits over the text being read (design
+     #30) — a transform only: it stays in the accessibility tree, and a focus
+     landing in it (Tab, a screen reader) brings both bars back. -->
 {#if !readerUi.focus && listen.status === 'idle'}
-	<div bind:this={footEl} class="progress-foot" class:folded={hideChrome}>
+	<div bind:this={footEl} class="progress-foot" class:folded={hideChrome} onfocusin={unfold}>
 		<!-- Scroll mode: the footer is a translucent bar the text scrolls under, so
 		     a line landing at its hard top edge is sliced into unreadable letter-tops.
 		     This scrim fades the last line into the bar instead of chopping it. Page
@@ -2518,9 +2532,8 @@
 		{#if !paged}
 			<div class="foot-fade" aria-hidden="true"></div>
 		{/if}
-		<!-- Phone action row, in thumb reach. Folds away with the top bar while
-		     reading on (hideChrome: scroll mode only) and returns with it. -->
-		<div class="foot-actions" class:folded={hideChrome}>
+		<!-- Phone action row, in thumb reach. -->
+		<div class="foot-actions">
 			{#if chapter.prev}
 				<a
 					href={chapterHref(chapter.prev.order)}
@@ -2678,6 +2691,15 @@
 	   focus, and the bar must still fold away as the reader scrolls on. */
 	.reader-chrome.autohidden:has(:focus-visible) {
 		transform: none;
+	}
+	/* The line hangs from the bar's padding edge, so folded away it sat half
+	   above the viewport (the bar's 1px border is below it): on a phone, where
+	   it is the only chrome left while reading (design #30), drop it by that
+	   border so the whole 2px shows at the top of the screen. */
+	@media (max-width: 639.98px) {
+		.reader-chrome.autohidden:not(:has(:focus-visible)) .hairline {
+			top: calc(100% + 1px);
+		}
 	}
 	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
 	   the axis that fits — nine controls can't also be 44px WIDE on a 360px
@@ -3007,17 +3029,27 @@
 		pointer-events: none;
 	}
 	/* Phones only: from `sm` the bar held nothing but the progress, which is
-	   the hairline now. Folded (hideChrome) its row is all it had, so it goes
-	   too; --foot-h keeps the unfolded height (see footH). */
+	   the hairline now. */
 	@media (min-width: 640px) {
 		.progress-foot {
 			display: none;
 		}
 	}
-	@media (max-width: 639.98px) {
-		.progress-foot.folded {
-			display: none;
-		}
+	/* Folded, it slides down off the screen — the counterpart of the top bar's
+	   translateY(-100%), on the same transition (snapped by app.css's
+	   reduced-motion block). The fade above it would otherwise be left lying
+	   over the last lines, so it goes with it. Tabbing in brings it back. */
+	.progress-foot {
+		transition: transform var(--duration-base) ease;
+	}
+	.progress-foot.folded {
+		transform: translateY(100%);
+	}
+	.progress-foot.folded .foot-fade {
+		opacity: 0;
+	}
+	.progress-foot.folded:has(:focus-visible) {
+		transform: none;
 	}
 
 	/* --- The progress hairline (see the markup) -------------------------------
@@ -3119,9 +3151,6 @@
 	@media (max-width: 639.98px) {
 		.foot-actions {
 			display: flex;
-		}
-		.foot-actions.folded {
-			display: none;
 		}
 	}
 	.foot-btn {
