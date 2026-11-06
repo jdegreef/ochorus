@@ -15932,6 +15932,18 @@
 				487
 			]
 		},
+		"hi/union-and-communion": {
+			"ground": "b321896aeb037ede5409c379f80d34c32edff7b238bdbc635489ac5543555a71",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0.02,
+			"caps": false
+		},
 		"hi/waiting-on-god": {
 			"ground": "c9ecae20e6c796d9a10b26118f9766d40b814f25507e06716c37c393f7514bfa",
 			"style": "devotional",
