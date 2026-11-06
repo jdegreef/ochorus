@@ -3,7 +3,7 @@
  "slug": "anchored-2",
  "language": "pt",
  "job_issue": 6873,
- "pull_request": null,
+ "pull_request": 7516,
  "note": [
   "Every quotation is the Bíblia Livre para o Mundo (por_bpm, ebible mirror), the library's pt Bible, pasted verbatim where it says what the English quotes (mined). Anchored keeps the BSB in English on purpose; this edition re-quotes each verse from the pt Bible rather than translating the BSB wording, and the teaching was adapted where it leaned on a BSB word the pt Bible does not use.",
   "self_rendered rows: Ecclesiastes 2:25 (BLM follows the Hebrew 'more than I'; the devotion needs the 'apart from Him' reading the BSB prints, so it is rendered from the English), and Micah 7:7-8 (BLM wording with its 'Yahweh' replaced by the corpus's SENHOR). AI-translated in-session; awaiting native review."
