@@ -213,9 +213,14 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		const hair = src.slice(src.indexOf('<div class="hairline"'));
 		expect(hair).toMatch(/<input\s+class="hairline-seek"\s+type="range"/);
 		expect(hair).toMatch(/aria-valuetext=\{progressLabel\}/);
-		// It rides the bar's bottom edge, and the viewport's top once the bar is gone.
-		expect(src).toMatch(/bind:offsetHeight=\{chromeH\}/);
-		expect(src).toMatch(/const hairlineY = \$derived\(\(readerUi\.focus && !showPeek\) \|\| hideChrome \? 0 : chromeH\)/);
+		// It hangs from the bar (riding its fold-away transform), and is pinned
+		// to the top in focus mode, where there is no bar.
+		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*>\s*\{@render hairline\(false\)\}/);
+		expect(src).toMatch(/\{#if readerUi\.focus && !showPeek\}\s*\{@render hairline\(true\)\}/);
+	});
+
+	it('a seek on the hairline does not fold the bar out from under it', () => {
+		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS\)\s*barHidden = nextBarHidden/);
 	});
 
 	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
@@ -226,6 +231,7 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(nav.match(/class="end-next btn/g)?.length).toBe(3);
 		expect(nav).toMatch(/\{#if chapter\.next\}[\s\S]*\{:else if nextInSeries\}[\s\S]*\{:else\}/);
 		expect(nav).toMatch(/class="end-link"[\s\S]*?t\('reader\.contents'\)/);
-		expect(src).toMatch(/t\('reader\.finished'\)\.replace\('%title%'/);
+		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
+		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
 	});
 });

@@ -529,6 +529,12 @@
 	}
 
 	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
+	// The end card's "You finished %title%", split so the chapter's name can
+	// carry the content's lang, and its button's "Next: %title%".
+	const [finishedBefore, finishedAfter] = $derived(t('reader.finished').split('%title%'));
+	const nextNamed = $derived(
+		chapter.next ? t('reader.nextNamed').replace('%title%', chapterName(chapter.next.order, chapter.next.title)) : ''
+	);
 	const editionLabel = $derived(
 		edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')
 	);
@@ -748,8 +754,12 @@
 			.filter(Boolean)
 			.join(' · ')
 	);
+	// When the hairline last seeked (see trackChrome).
+	let seekedAt = 0;
+	const SEEK_SETTLE_MS = 400;
 	/** Seek to a fraction of the chapter: a page in page mode, a scroll otherwise. */
 	function seekTo(frac: number) {
+		seekedAt = performance.now();
 		if (paged) {
 			breakPace(); // a seek: goToPage samples, and this pair must not count
 			goToPage(Math.round(frac * (pageTotal - 1)));
@@ -1811,7 +1821,10 @@
 	let lastScrollY = 0;
 	function trackChrome() {
 		const y = window.scrollY;
-		barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
+		// A seek on the hairline scrolls too, but it is not reading on: folding
+		// the bar there would pull the line out from under the pointer.
+		if (performance.now() - seekedAt > SEEK_SETTLE_MS)
+			barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
 		lastScrollY = y;
 	}
 	const hideChrome = $derived(
@@ -1823,10 +1836,6 @@
 			!reader.open &&
 			!showPeek
 	);
-	// The bar's height, so the progress hairline rides its bottom edge — and
-	// the top of the viewport while the bar is folded away or gone (focus).
-	let chromeH = $state(0);
-	const hairlineY = $derived((readerUi.focus && !showPeek) || hideChrome ? 0 : chromeH);
 	// A fresh chapter — or leaving focus mode — opens with the bar visible; the
 	// reader's own scrolling re-hides it.
 	$effect(() => {
@@ -1887,13 +1896,13 @@
 	     the end of its "⋯" group (ReaderSiteLinks). -->
 	<div
 		bind:this={chromeEl}
-		bind:offsetHeight={chromeH}
 		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur max-sm:bg-bg/97 max-sm:backdrop-blur-none"
 		class:fixed={paged || showPeek}
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
 		class:autohidden={hideChrome}
 	>
+		{@render hairline(false)}
 		<div
 			class="mx-auto flex items-center justify-between gap-0.5 py-1.5 sm:gap-3 sm:py-2.5"
 			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
@@ -2084,6 +2093,40 @@
 	<div class="paged-backdrop" aria-hidden="true"></div>
 {/if}
 
+<!-- The chapter's progress: a 2px line along the reader bar's bottom edge
+     (design #18 — it replaced the slider block under the text). Rendered
+     inside the bar at `top: 100%`, so it rides the bar's own transform: at
+     the bar's edge while it shows, at the top of the viewport while it is
+     folded away. In focus mode (no bar) it is fixed at the top instead.
+
+     It is still the scrubber: page mode has no scrollbar, so without it page
+     12 of 18 is eleven turns away. A transparent range input lies over the
+     line, so dragging or clicking seeks and Tab lands on it (arrow keys step
+     a page at a time in page mode). On touch it is on in page mode only — in
+     scroll mode the strip would sit over the text, and the scroll is the
+     seek. Hover, focus or a drag shows the time left; aria-valuetext says the
+     same to a screen reader. Not in Listen mode, which moves through the
+     chapter itself. -->
+{#snippet hairline(top: boolean)}
+	<div class="hairline" class:top class:paged>
+		<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+		{#if listen.status === 'idle'}
+			<input
+				class="hairline-seek"
+				type="range"
+				min="0"
+				max="1"
+				step={paged && pageTotal > 1 ? 1 / (pageTotal - 1) : 0.005}
+				value={chapterFrac}
+				oninput={(e) => seekTo(Number(e.currentTarget.value))}
+				aria-label={t('progress.scrub')}
+				aria-valuetext={progressLabel}
+			/>
+			<span class="hairline-tip" style="--f: {chapterFrac}" aria-hidden="true">{progressLabel}</span>
+		{/if}
+	</div>
+{/snippet}
+
 <!-- On the plan strip at the top and under the reflection at the end: in page
      mode those are pages apart, and the end is where a day is finished. -->
 {#snippet markDayDone(planSlug: string, day: number)}
@@ -2243,7 +2286,8 @@
 				<!-- "You finished Book I": the chapter's name inside the sentence, so
 				     the heading says what happened, not the h1 again. -->
 				<h2 id="end-done-heading" class="font-display mt-3 text-h2 text-balance" dir="auto">
-					{t('reader.finished').replace('%title%', chapterName(chapter.order, chapter.title))}
+					{finishedBefore}<span lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</span
+					>{finishedAfter}
 				</h2>
 				<!-- Nothing to count in a one-chapter work ("1 of 1 chapters"). -->
 				{#if endProgress && endProgress.total > 1}
@@ -2283,9 +2327,9 @@
 							href={chapterHref(chapter.next.order)}
 							class="end-next btn btn-primary btn-solid flex-col gap-0.5 text-center"
 							class:celebrate
-							aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
+							aria-label={nextNamed}
 						>
-							<span class="end-next-title" dir="auto">{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}</span>
+							<span class="end-next-title" dir="auto">{nextNamed}</span>
 							<!-- The moment of highest intent: say how long it is, and let its
 							     opening line do the inviting. Both are optional — the time needs
 							     the book fetched, the line needs the prefetch to have landed — so
@@ -2410,37 +2454,9 @@
 	</button>
 {/if}
 
-<!-- The chapter's progress: a 2px line along the reader bar's bottom edge
-     (design #18 — it replaced the slider block under the text). It rides the
-     bar, and the top of the viewport while the bar is folded away or gone
-     (focus mode), so a glance always says how far through you are.
-
-     It is still the scrubber: page mode has no scrollbar, so without it page
-     12 of 18 is eleven turns away. A transparent range input lies over the
-     line (a thin hit strip on a mouse; off on touch, where the strip would
-     sit under taps meant to turn the page), so dragging or clicking seeks and
-     Tab lands on it. Hover or focus shows the time left; the input's
-     aria-valuetext says the same to a screen reader. Not in Listen mode, which
-     moves through the chapter itself. Rendered once the bar is measured, so
-     it never slides down from the top on load. -->
-{#if chromeH || readerUi.focus}
-	<div class="hairline" style="transform: translateY({hairlineY}px)">
-		<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
-		{#if listen.status === 'idle'}
-			<input
-				class="hairline-seek"
-				type="range"
-				min="0"
-				max="1"
-				step="0.005"
-				value={chapterFrac}
-				oninput={(e) => seekTo(Number(e.currentTarget.value))}
-				aria-label={t('progress.scrub')}
-				aria-valuetext={progressLabel}
-			/>
-			<span class="hairline-tip" style="--f: {chapterFrac}" aria-hidden="true">{progressLabel}</span>
-		{/if}
-	</div>
+<!-- Focus mode has no bar: the line sits at the top of the viewport. -->
+{#if readerUi.focus && !showPeek}
+	{@render hairline(true)}
 {/if}
 
 <!-- Focus mode: announce the page as it turns (only there, where the reader
@@ -3005,19 +3021,19 @@
 	}
 
 	/* --- The progress hairline (see the markup) -------------------------------
-	   A fixed strip at the top of the viewport, moved down to the bar's bottom
-	   edge by an inline translateY — the transform rides the bar's own slide
-	   when it folds away. The 2px fill is the shared .read-progress, held inside
-	   the strip instead of pinned to the viewport. */
+	   Inside the bar it hangs from the bar's bottom edge; in focus mode
+	   (.top) it is pinned to the viewport. The 2px fill is the shared
+	   .read-progress, held inside the strip instead of pinned on its own. */
 	.hairline {
-		position: fixed;
-		top: var(--appnav-h, 0px);
+		position: absolute;
+		top: 100%;
 		inset-inline: 0;
 		height: 2px;
-		/* Just under the bar (--z-pinned): its "⋯" group drops over the line,
-		   not under it. Still above the paged columns and the edge arrows. */
-		z-index: calc(var(--z-pinned) - 1);
-		transition: transform var(--duration-base) ease;
+	}
+	.hairline.top {
+		position: fixed;
+		top: var(--appnav-h, 0px);
+		z-index: var(--z-chrome);
 	}
 	.hairline .read-progress {
 		position: absolute;
@@ -3027,14 +3043,16 @@
 			height var(--duration-fast) ease;
 	}
 	/* The seek strip: transparent, a little taller than the line so a mouse can
-	   find it, and off on touch (see the markup). Its own focus ring would be a
-	   box round the whole width; the line thickens and the tip shows instead. */
+	   find it — reaching only 6px below it, so the text keeps its clicks. On
+	   touch it is on in page mode only, a little taller, over the pager's top
+	   padding (see the markup). Its own focus ring would be a box round the
+	   whole width; the line thickens and the tip shows instead. */
 	.hairline-seek {
 		position: absolute;
 		inset-inline: 0;
 		top: -4px;
 		width: 100%;
-		height: 14px;
+		height: 10px;
 		margin: 0;
 		opacity: 0;
 		cursor: pointer;
@@ -3043,13 +3061,17 @@
 		.hairline-seek {
 			pointer-events: none;
 		}
+		.hairline.paged .hairline-seek {
+			height: 16px;
+			pointer-events: auto;
+		}
 	}
-	/* Hovered or focused, the line shows its whole length (a faint track) and
+	/* Hovered, focused or dragged, the line shows its whole length (a faint track) and
 	   thickens, and the time left appears beneath it. */
-	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible) {
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) {
 		background: var(--border-strong);
 	}
-	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible) .read-progress {
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) .read-progress {
 		height: 4px;
 	}
 	/* Under the fill's end, kept on screen: at 0 its start sits at the line's
@@ -3076,7 +3098,7 @@
 	:global([dir='rtl']) .hairline-tip {
 		--tip-dir: 1;
 	}
-	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible) .hairline-tip {
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) .hairline-tip {
 		opacity: 1;
 	}
 	@media print {

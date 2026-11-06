@@ -259,12 +259,15 @@ on a reading surface.
 
 **Progress at the top, one end card (design #18, chapter reader).** The
 chapter's progress is a 2px hairline along the reader bar's bottom edge
-(`.hairline`, moved by `translateY(chromeH)`; the viewport's top while the bar
-is folded or in focus mode) — not a slider block under the text. It is still
-the scrubber: a transparent `<input type="range" class="hairline-seek">` over
-the line (thin hit strip on a mouse, off on touch) seeks, takes Tab, and shows
-"Page n / N · min left in chapter · left in book" as a tip on hover/focus and
-as `aria-valuetext`; page mode has no scrollbar, so it stays. The bottom
+(`.hairline`, rendered INSIDE `.reader-chrome` at `top: 100%` so it rides the
+bar's fold-away transform for free; fixed at the top in focus mode) — not a
+slider block under the text. It is still the scrubber: a transparent
+`<input type="range" class="hairline-seek">` over the line (a 10px strip on a
+mouse; on touch only in page mode, where it lies over the pager's padding)
+seeks, takes Tab (a page per arrow key in page mode), and shows "Page n / N ·
+min left in chapter · left in book" as a tip on hover/focus/drag and as
+`aria-valuetext`; page mode has no scrollbar, so it stays. A seek must not
+fold the bar (`seekedAt` in `trackChrome`). The bottom
 `.progress-foot` is now the phone's action row only (hidden from `sm`, and
 while folded). The chapter's ending is ONE card: "You finished <chapter>"
 (`reader.finished`), the book pips, then ONE large button — "Next: <chapter>"
