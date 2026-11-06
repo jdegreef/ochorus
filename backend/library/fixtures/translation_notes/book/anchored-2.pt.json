@@ -1,0 +1,1167 @@
+{
+ "kind": "book",
+ "slug": "anchored-2",
+ "language": "pt",
+ "job_issue": 6873,
+ "pull_request": null,
+ "note": [
+  "Every quotation is the Bíblia Livre para o Mundo (por_bpm, ebible mirror), the library's pt Bible, pasted verbatim where it says what the English quotes (mined). Anchored keeps the BSB in English on purpose; this edition re-quotes each verse from the pt Bible rather than translating the BSB wording, and the teaching was adapted where it leaned on a BSB word the pt Bible does not use.",
+  "self_rendered rows: Ecclesiastes 2:25 (BLM follows the Hebrew 'more than I'; the devotion needs the 'apart from Him' reading the BSB prints, so it is rendered from the English), and Micah 7:7-8 (BLM wording with its 'Yahweh' replaced by the corpus's SENHOR). AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Hebrews 6:19",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Colossians 3:17",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 6:3",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 31:14-15",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 31:12",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 31:14",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 31:15",
+   "status": "mined",
+   "block_index": 53,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 4:14",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 4:15",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 43:2-3",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "mined",
+   "block_index": 83,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 139:23",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Corinthians 10:5",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:11-12",
+   "status": "mined",
+   "block_index": 100,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:11",
+   "status": "mined",
+   "block_index": 104,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:12",
+   "status": "mined",
+   "block_index": 106,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 106,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "block_index": 108,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 1:17",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "mined",
+   "block_index": 110,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jonah 4:1",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jonah 4:4",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "mined",
+   "block_index": 119,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jonah 4:2",
+   "status": "mined",
+   "block_index": 121,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jonah 4:4",
+   "status": "mined",
+   "block_index": 122,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 1:19-20",
+   "status": "mined",
+   "block_index": 127,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "mined",
+   "block_index": 129,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Jonah 4:2",
+   "status": "mined",
+   "block_index": 131,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Samuel 18:7-9",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Samuel 18:9",
+   "status": "mined",
+   "block_index": 141,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Samuel 18:1",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Samuel 23:17",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "mined",
+   "block_index": 146,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 21:22",
+   "status": "mined",
+   "block_index": 147,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "block_index": 148,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 2:24",
+   "status": "mined",
+   "block_index": 153,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 2:25",
+   "status": "self_rendered",
+   "block_index": 153
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 1:8",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 2:24",
+   "status": "mined",
+   "block_index": 158,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 2:25",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Zechariah 4:10",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "mined",
+   "block_index": 169,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "mined",
+   "block_index": 173,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 3:21",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "mined",
+   "block_index": 177,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 127:1-2",
+   "status": "mined",
+   "block_index": 185,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "mined",
+   "block_index": 189,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "mined",
+   "block_index": 189,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 121:4",
+   "status": "mined",
+   "block_index": 190,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 2:27",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 2:8-9",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 195,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 4:9-10",
+   "status": "mined",
+   "block_index": 195,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Peter 2:19",
+   "status": "mined",
+   "block_index": 202,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Peter 2:19",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 6:12",
+   "status": "mined",
+   "block_index": 207,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "block_index": 215,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 6:22-23",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 6:22",
+   "status": "mined",
+   "block_index": 224,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "block_index": 227,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "block_index": 232,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 11:9",
+   "status": "mined",
+   "block_index": 238,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 11:9",
+   "status": "mined",
+   "block_index": 241,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Zechariah 8:5",
+   "status": "mined",
+   "block_index": 241,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 11:9",
+   "status": "mined",
+   "block_index": 242,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 249,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 55:12-14",
+   "status": "mined",
+   "block_index": 254,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 55:13",
+   "status": "mined",
+   "block_index": 258,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "block_index": 264,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 31:8",
+   "status": "mined",
+   "block_index": 266,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "mined",
+   "block_index": 272,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "status": "mined",
+   "block_index": 275,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 7:16",
+   "status": "mined",
+   "block_index": 279,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "mined",
+   "block_index": 280,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 14:15",
+   "status": "mined",
+   "block_index": 281,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 11:1",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 30:18-19",
+   "status": "mined",
+   "block_index": 288,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 30:19",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Song of Songs 2:7",
+   "status": "mined",
+   "block_index": 294,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 13:10",
+   "status": "mined",
+   "block_index": 307,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 6:1",
+   "status": "mined",
+   "block_index": 310,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 13:10",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "block_index": 312,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "block_index": 312,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "block_index": 324,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "block_index": 328,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 6:66",
+   "status": "mined",
+   "block_index": 328,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 26:56",
+   "status": "mined",
+   "block_index": 328,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "block_index": 330,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 333,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 17:9",
+   "status": "mined",
+   "block_index": 341,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 18:8",
+   "status": "mined",
+   "block_index": 344,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 17:9",
+   "status": "mined",
+   "block_index": 345,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 26:20",
+   "status": "mined",
+   "block_index": 345,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:15",
+   "status": "mined",
+   "block_index": 348,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 11:13",
+   "status": "mined",
+   "block_index": 351,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "block_index": 355,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 John 1:12",
+   "status": "mined",
+   "block_index": 360,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "block_index": 365,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "mined",
+   "block_index": 365,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:25",
+   "status": "mined",
+   "block_index": 371,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 4:1",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 4:1",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 1:19",
+   "status": "mined",
+   "block_index": 387,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 18:13",
+   "status": "mined",
+   "block_index": 387,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 15:1",
+   "status": "mined",
+   "block_index": 388,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "mined",
+   "block_index": 391,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "block_index": 392,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 147:3",
+   "status": "mined",
+   "block_index": 398,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 147:3",
+   "status": "mined",
+   "block_index": 404,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 90:1",
+   "status": "mined",
+   "block_index": 408,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Deuteronomy 31:6",
+   "status": "mined",
+   "block_index": 408,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 33:3-4",
+   "status": "mined",
+   "block_index": 415,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 25:28",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 27:41",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 27:41",
+   "status": "mined",
+   "block_index": 419,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 33:4",
+   "status": "mined",
+   "block_index": 421,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 33:10",
+   "status": "mined",
+   "block_index": 421,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "mined",
+   "block_index": 425,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:32",
+   "status": "mined",
+   "block_index": 431,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:33",
+   "status": "mined",
+   "block_index": 436,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:19",
+   "status": "mined",
+   "block_index": 438,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "block_index": 440,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "mined",
+   "block_index": 441,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 4:30",
+   "status": "mined",
+   "block_index": 443,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "mined",
+   "block_index": 444,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "block_index": 445,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "mined",
+   "block_index": 450,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Corinthians 7:10",
+   "status": "mined",
+   "block_index": 461,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 28:13",
+   "status": "mined",
+   "block_index": 463,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 5:24",
+   "status": "mined",
+   "block_index": 465,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "block_index": 467,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:32",
+   "status": "mined",
+   "block_index": 472,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:33",
+   "status": "mined",
+   "block_index": 472,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:32",
+   "status": "mined",
+   "block_index": 476,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:33",
+   "status": "mined",
+   "block_index": 476,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "block_index": 476,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "block_index": 482,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 11:25",
+   "status": "mined",
+   "block_index": 482,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "mined",
+   "block_index": 482,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Micah 7:7-8",
+   "status": "self_rendered",
+   "block_index": 490
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "self_rendered",
+   "block_index": 494
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "mined",
+   "block_index": 495,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "block_index": 497,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "block_index": 501,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 1:8-9",
+   "status": "mined",
+   "block_index": 507,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 32:3",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 32:4",
+   "status": "mined",
+   "block_index": 511,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 32:5",
+   "status": "mined",
+   "block_index": 512,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 32:5",
+   "status": "mined",
+   "block_index": 512,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 513,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 514,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 514,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 517,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "mined",
+   "block_index": 525,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "mined",
+   "block_index": 529,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "mined",
+   "block_index": 531,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 12:21",
+   "status": "mined",
+   "block_index": 531,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ecclesiastes 5:10",
+   "status": "mined",
+   "block_index": 532,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Timothy 6:17",
+   "status": "mined",
+   "block_index": 533,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Timothy 6:6-7",
+   "status": "mined",
+   "block_index": 535,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Luke 21:3",
+   "status": "mined",
+   "block_index": 538,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "mined",
+   "block_index": 545,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "mined",
+   "block_index": 550,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "mined",
+   "block_index": 551,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "mined",
+   "block_index": 552,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Lamentations 3:22-23",
+   "status": "mined",
+   "block_index": 554,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "block_index": 571,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "block_index": 571,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "block_index": 571,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  }
+ ]
+}
