@@ -141,7 +141,7 @@
 						     and a long single name ("Wigglesworth") breaks rather than
 						     running into its neighbour. -->
 						<span
-							class="line-clamp-2 w-full break-words text-small font-medium text-text hyphens-auto group-hover:text-accent"
+							class="line-clamp-2 w-full break-words text-small font-medium text-text hyphens-auto group-hover:text-accent group-focus-visible:text-accent"
 							>{author.name}</span
 						>
 					</a>
