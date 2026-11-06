@@ -1,0 +1,2187 @@
+{
+ "kind": "book",
+ "slug": "pensees",
+ "language": "es",
+ "job_issue": 7149,
+ "pull_request": 7507,
+ "note": [
+  "Translation job #7149 (2026-11-06): translated from the English (W. F. Trotter) edition in ~3k-word chunks split at fragment boundaries; each chunk machine-checked against its English source for identical tag sequence, fragment numbers and quote nesting. Scripture is rendered by the translator in a conservative Reina-Valera register following Pascal's own paraphrase (Take Root unreachable; no wording pasted from a Bible text or a shipped file), so every reference is self_rendered. Latin and Greek citations are kept as Pascal wrote them. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "chapter_order": 4
+  },
+  {
+   "reference": "Luke 11:21",
+   "status": "self_rendered",
+   "chapter_order": 5
+  },
+  {
+   "reference": "Genesis 8:21",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 37:32",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 4:4",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 36:1",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ecclesiastes 4:13",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 35:10",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Proverbs 25:21",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ecclesiastes 9:14",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 41:1",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalms 78:39",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Wisdom 2:6",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 2:4",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Jonah 3:9",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 12:49",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 8:9",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 25:44",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 12:47",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 12:48",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 9:2",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 11:6",
+   "status": "self_rendered",
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hosea 14:9",
+   "status": "self_rendered",
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 7:27",
+   "status": "self_rendered",
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 12:34",
+   "status": "self_rendered",
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 12:40",
+   "status": "self_rendered",
+   "chapter_order": 8
+  },
+  {
+   "reference": "Deuteronomy 8:19",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 8:19",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 8:20",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 56:3",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 56:6",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 56:7",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 63:16",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 63:16",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 10:17",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Jeremiah 4:4",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 10:16",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 10:17",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 30:6",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Jeremiah 9:26b",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 30:19",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 30:20",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 32:20",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Deuteronomy 32:21",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Maccabees 2:2",
+   "status": "self_rendered",
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 24:34",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Mark 13:32",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 12:34",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 6:23",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Hebrews 8:5",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:36",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 1:47",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Romans 2:29",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 6:32",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Hebrews 2:14",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:36",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 6:32",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Exodus 20:5",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Deuteronomy 30:6",
+   "status": "self_rendered",
+   "chapter_order": 10
+  },
+  {
+   "reference": "Acts 17:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 48:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 48:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 48:19a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 48:19b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 11:11b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 11:11a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:1",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:6b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:7b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:6a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 5:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:15b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:15a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:17b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 8:17a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:10a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:10b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 12:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 14:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:11b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:12",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:11a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:13a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:13b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:13b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 29:13b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:23a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:23b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:24b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:26",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:23a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:23a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 41:24a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 42:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 42:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 42:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 42:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:12b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:12a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:14b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:16b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:17",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:16a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:18",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:19",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:21a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:21b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:25",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:26",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 43:27",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:6a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:6b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:7b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:8b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 44:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:4b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 45:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 42:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:4b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:6a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:6b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:7b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:6a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 48:8b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:1a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:1b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:1a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:2a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:2b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:7b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:8b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:12a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:12b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:17",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:18",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:19",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:25",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:1",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:3b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:3a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 56:3a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:10a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:10b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:10a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 59:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 66:18",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 66:19a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 66:19b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 66:20",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 66:19a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:12b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:14a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:14b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:12a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:12a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:14a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:23b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:23a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:23a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 7:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:15a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 65:15b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 6:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 19:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 19:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:27b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:28a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:28b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:27a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:27a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:28a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:30",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:31b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:32",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:33",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:34",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:31a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:35",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:35",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:35",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:36a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:36b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:37",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:38",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:39",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:40",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:41a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:41b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:43b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:43a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:44",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:45a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:45b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:45b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:45b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:46",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:7",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:8b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:10b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:11b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:8a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:10a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:11a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:15b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:15a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:20b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:21a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:21b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:20a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:20a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:23",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:24",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:25",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:20",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:23",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:24",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:25a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:25b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:26",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:27",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:6a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:6b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:7",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:12",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:17",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:18a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:18b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:19",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:20",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:23",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 11:24",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:1",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:6",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:7",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:12",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:15",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:17",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:18",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:19",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:20",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:21",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:22",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:24",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:25",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 49:26",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:1",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:6",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:7",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 50:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 51:1",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 51:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 51:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 51:4",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:10a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:10b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:11",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:12",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:13",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 8:14",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Amos 3:2",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 12:7",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:3",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:4a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:4b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:5",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:6",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:7a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:7b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 50:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:9a",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Haggai 2:9b",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Deuteronomy 18:16",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Deuteronomy 18:17",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Deuteronomy 18:18",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Deuteronomy 18:19",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 49:8",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 49:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 49:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 1:9",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 1:10",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 31:34",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Joel 2:28",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Jeremiah 32:40",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Luke 22:40",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Luke 19:44",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Genesis 12:3a",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 16:26",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 5:17",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Romans 11:4",
+   "status": "self_rendered",
+   "chapter_order": 12
+  },
+  {
+   "reference": "Luke 10:20",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Luke 16:31",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 4:54",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Judges 13:23",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Kings 17:24",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 7:49",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 7:48",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 7:52",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 7:51",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 10:38",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 9:29",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 10:20",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "John 10:21",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 43:26",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Acts 19:15",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Galatians 1:8",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Mark 13:22",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ecclesiastes 3:4",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Matthew 12:30",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Luke 9:50",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Jeremiah 6:16",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Jeremiah 6:16",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Jeremiah 18:12",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Samuel 8:20",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Luke 19:40",
+   "status": "self_rendered",
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "self_rendered",
+   "chapter_order": 14
+  }
+ ]
+}
