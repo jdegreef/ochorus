@@ -624,8 +624,16 @@ Reported, not fixed
   can't restore what's gone. This matters most before translating: the altered
   English propagates into every translation (already reached es for `humility-2`
   and `the-inner-chamber`). Confirmed altered: secret-of-guidance (damaged),
-  god-of-all-comfort, humility-2, the-inner-chamber; full catalog is a backlog
-  (see memory `modernized-scripture-in-pd-classics`).
+  god-of-all-comfort, humility-2, the-inner-chamber, jesus-himself-2,
+  lord-teach-us-to-pray-2, the-masters-indwelling; full catalog is a backlog
+  (see memory `modernized-scripture-in-pd-classics`). The 2026-11-05 Murray
+  proofreading sweep added the last three. Density alone can mislead:
+  `lord-teach-us-to-pray-2` scored 16.4/10k, inside the "genuine" band, yet is
+  ESV-swapped. It is lessons 2-5 of `school-of-prayer`, which ran 173.9 over
+  the same text. Where the corpus holds a genuine witness of the same text,
+  compare against it. `the-masters-indwelling` was proofread and merged anyway
+  (#7300) as an interim cleanup; it still needs the re-import. Any other book
+  that fails the check gets no proofreading PR: report it and stop.
 - **A quotation labelled KJV that isn't KJV** (2026-09-29, #4513). The Key
   Teachings companions claim the Authorised Version throughout, and 6 of their
   564 set-apart quotes had drifted. One read 1 Tim 3:3's "greedy of filthy lucre"
