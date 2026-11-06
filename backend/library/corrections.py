@@ -17698,7 +17698,45 @@ BODY_CORRECTIONS["the-sin-of-murmuring"]["back_matter"] = [
 # "receive her"). Murray's own wording, pronoun capitals and citations that
 # may be the printing's are reported in the PR, not changed here.
 BODY_CORRECTIONS.setdefault("working-for-god", {}).setdefault("replacements", []).extend([
-    ("Good Works. Tit. 3:14 118", "Good Works.—Tit. 3:14 118"),
+    # Introduction: the printed CONTENTS with page numbers ran on after the
+    # signature. The reader has its own table of contents, so it goes.
+    # (Supersedes the contents-only "Good Works. Tit. 3:14" pair.)
+    (
+     '1901.</p>'
+     '<p>CONTENTS</p> '
+     '<p> CHAP. PAGE</p> '
+     '<p>I. Waiting and Working.—Isa. 40:31, 64:4 11</p> '
+     '<p>II. Good Works the Light of the World.—Matt. 5:14, 16 16</p> '
+     '<p>III. Son, go Work.—Matt. 21:28 21</p> '
+     '<p>IV. To Each one his Work.—Mark 8:34 26</p> '
+     '<p>V. To Each one according to his Ability.—Matt. 25:14 31</p> '
+     '<p>VI. Life and Work.—John 5:34, 9:4, 17:4 36</p> '
+     '<p>VII. The Father abiding in Me doeth the Work.—John 5:17-20, 14:10 41</p> '
+     '<p>VIII. Greater Works.—John 14:12-14 46</p> '
+     '<p>IX. Created in Christ Jesus for Good Works.—Eph. 2:10 51</p> '
+     '<p>X. Work, for it is God which worketh in you.—Phil. 2:12, 13 56</p> '
+     '<p>XI. Faith working by Love.—Gal. 5:6, 13 61</p> '
+     '<p>XII. Bearing Fruit in every Good Work.—Col. 1:10 66</p>'
+     '<p>XIII. Always abounding in the Work of the Lord.—I Cor. 15:58 71</p> '
+     '<p>XIV. Abounding Grace for abounding Work.—2 Cor. 9:8 76</p> '
+     '<p>XV. The Work of Ministering.—Eph. 4:11, 12 81</p> '
+     '<p>XVI. According to the Working of each several Part.—Eph. 4:15, 16 86</p> '
+     '<p>XVII. Women adorned with Good Works.—1 Tim. 2:10. 5:9, 10 90</p> '
+     '<p>XVIII. Rich in Good Works.—1 Tim. 6:18 95</p> '
+     '<p>XIX. Prepared unto every Good Work.—2 Tim. 2:21 100</p> '
+     '<p>XX. Furnished completely unto every Good Work.—2 Tim. 3:16, 17, 2:15 104</p> '
+     '<p>XXI. Zealous of Good Works.—Tit. 2:14 109</p> '
+     '<p>XXII. Ready to every Good Work.—Tit. 3:1 113</p> '
+     '<p>XXIII. Careful to maintain Good Works.—Tit. 3:14 118</p> '
+     '<p>XXIV. As His Fellow-Workers.—1 Cor. 3:9; 2 Cor. 6:1 123</p> '
+     '<p>XXV. According to the Working of His Power.—Col. 1:29; Eph. 3:7 128</p> '
+     '<p> XXVI. Labouring more abundantly.—1 Cor. 15:10; 2 Cor. 12:9, 11 133</p>'
+     '<p>XXVII. A Doer that worketh shall be blessed in Doing.—Jas. 1:22, 25 138</p> '
+     '<p>XXVIII. The Work of Soul-Saving.—Jas. 5:19 142</p> '
+     '<p>XXIX. Praying and Working.—1 John 5:16 147</p> '
+     '<p>XXX. I know thy Works.—Rev. 2, 3 152</p> '
+     '<p>XXXI. That God may be Glorified.—1 Pet. 4:11 157</p>',
+     "1901.</p>"),
     ("the Divine. blessedness", "the Divine blessedness"),
     ("beware of separating them, The more", "beware of separating them. The more"),
     ("expressions (v. 19, 30)John 5:19, 30:", "expressions (v. 19, 30):"),
