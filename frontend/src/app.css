@@ -215,6 +215,11 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+	/* A role size, not a scale step (like `.reading`'s --prose-h2): a
+	   set-apart quotation in a narrow aside (the book page's opening lines),
+	   generous but under an h2, which ran a long opening taller than the
+	   prose beside it. */
+	--quote-size: 1.4rem;
 }
 /* A phone is held further from the eye than its pixel density suggests, and
    the two smallest steps (11px micro, 12px eyebrow) carry real reading — card
@@ -371,10 +376,6 @@
 	--grain-light-specks: -webkit-image-set(url('/textures/grain-light.png') 1x, url('/textures/grain-light@2x.png') 2x, url('/textures/grain-light@3x.png') 3x);
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
-	/* How much of a book's own cover_color tints its card (.book-card): the
-	   most each theme can take and still keep every ink at 4.5:1 over the
-	   darkest-to-lightest colour a cover may have (libraryPalette.test.ts). */
-	--cover-tint-amount: 9%;
 
 	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
 	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
@@ -458,7 +459,6 @@
 	--shelf-wood-edge: #8a6440;
 	--grain: -webkit-image-set(url('/textures/grain-paper.png') 1x, url('/textures/grain-paper@2x.png') 2x, url('/textures/grain-paper@3x.png') 3x);
 	--band: #f1e8d8;
-	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #ecebf7;
 	--hue-oxblood: #8a2f2a;
@@ -503,7 +503,6 @@
 	--shelf-wood-edge: #7a5634;
 	--grain: -webkit-image-set(url('/textures/grain-sepia.png') 1x, url('/textures/grain-sepia@2x.png') 2x, url('/textures/grain-sepia@3x.png') 3x);
 	--band: #ece1c9;
-	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #e9e5f3;
 	--hue-oxblood: #842c27;
@@ -1647,8 +1646,9 @@
 	.btn:disabled:not([aria-busy='true']) {
 		opacity: 0.5;
 	}
-	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
-	   block (see STYLE_GUIDE §5). Matches Take Root. */
+	/* Primary is soft, not bold: a brand-tinted button (see STYLE_GUIDE §5).
+	   Matches Take Root. The one exception is the read verb, `.btn-solid`
+	   below. */
 	.btn-primary {
 		background: var(--accent-soft);
 		color: var(--accent);
@@ -1657,6 +1657,30 @@
 	.btn-primary:hover {
 		text-decoration: none;
 		border-color: var(--accent);
+	}
+	/* The read verb: solid. Each reading page exists for one action — Begin
+	   reading, Start the plan, Continue — and in the soft fill it was about as
+	   loud as a chip (design review #2). So the one read verb (the read card's
+	   CTA, the sub-nav and ReadBar that stand in for it once it scrolls away)
+	   is filled with the accent; every other primary stays soft. Its ink is
+	   --accent-contrast, which palettes.test holds at AA on --accent in every
+	   theme and palette. Hover deepens the fill toward the page's ink. */
+	.btn-solid {
+		background: var(--accent);
+		color: var(--accent-contrast);
+		border-color: var(--accent);
+	}
+	.btn-solid:hover {
+		color: var(--accent-contrast);
+		background: color-mix(in srgb, var(--accent) 86%, var(--text));
+		border-color: color-mix(in srgb, var(--accent) 86%, var(--text));
+	}
+	/* The read verb's second line inside the button: what it opens and how
+	   long it takes ("Book I · 35 min"). */
+	.btn-sub {
+		font-weight: 500;
+		font-size: var(--fs-small);
+		opacity: 0.85;
 	}
 	/* Compact button — the size that 47 of the `!py-1 !px-2.5 !text-small`
 	   overrides were reaching for. */
@@ -2295,12 +2319,6 @@ nav.appnav {
 		--appnav-h: 0px;
 	}
 }
-/* The reading routes opt out: their own bar pins to the top and carries
-   back/contents/settings, so a second sticky bar would take ~56px of reading
-   height for the whole chapter and stack two bars over the text. */
-nav.appnav.appnav-static {
-	position: static;
-}
 /* The phone app (<html data-app>, set by $lib/platform's startAppShell).
    Unlayered, so it outranks the scoped and utility `top: 0` it adjusts.
    Capacitor 8 runs the web view edge to edge on iOS and Android, so the
@@ -2315,8 +2333,8 @@ nav.appnav.appnav-static {
 	--safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 }
 /* The strip wears the nav's colour, so the nav reads as running up under the
-   clock; on the reading routes, where the nav rides away and the reader's own
-   bar (the page ground) pins beneath, it wears the ground. It sits above the
+   clock; on the reading routes and in focus mode, where there is no nav and
+   the reader's own bar (the page ground) pins beneath, it wears the ground. It sits above the
    chrome but below a sheet's or dialog's scrim, which dims it with the rest of
    the page — those overlays keep their own content clear of the inset. */
 :root[data-app] body::after {
@@ -2330,9 +2348,8 @@ nav.appnav.appnav-static {
 	pointer-events: none;
 }
 /* data-app-top (the root layout, app only): 'nav' while the nav is pinned,
-   'static' on the reading routes, 'none' in focus mode. A flag, not
+   'none' where it isn't drawn (the reading routes, focus mode). A flag, not
    body:has(), which would restyle the page each time the nav came or went. */
-:root[data-app][data-app-top='static'] body::after,
 :root[data-app][data-app-top='none'] body::after {
 	background: var(--bg);
 }
@@ -2353,7 +2370,8 @@ nav.appnav.appnav-static {
 :root[data-app] .app-root {
 	--appnav-h: calc(3.5rem + var(--safe-top));
 }
-/* Focus mode draws no nav: the page itself starts below the strip. */
+/* No nav (a reading surface, focus mode): the page itself starts below the
+   strip. */
 :root[data-app][data-app-top='none'] .app-root {
 	padding-top: var(--safe-top);
 }
@@ -2626,15 +2644,6 @@ nav.appnav .navmore-menu {
 		display: none;
 	}
 }
-/* On a phone's reading surfaces (`.appnav-static`, no tab bar) the reader's own
-   Aa sheet holds the theme switch, so the gear goes there too. Elsewhere with
-   no tab bar (while Listen plays, say) it stays, or the page would have no
-   theme control. */
-@media (max-width: 639.98px) {
-	nav.appnav.appnav-static .prefs {
-		display: none;
-	}
-}
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
    the shortcut is advertised, and it is meaningless without a keyboard: so it
@@ -2724,6 +2733,10 @@ nav.appnav .navsearch:hover {
    hung a little closer to its button, with icon rows at thumb size. */
 .account-menu.more-group {
 	top: calc(100% + 0.25rem);
+	/* It ends with the site's destinations (ReaderSiteLinks) — on a short
+	   landscape screen that runs past the fold, so it scrolls in itself. */
+	max-height: calc(100dvh - var(--appnav-h, 0px) - 5rem);
+	overflow-y: auto;
 }
 .account-item.more-item {
 	display: flex;
@@ -2917,6 +2930,12 @@ nav.appnav .navsearch:hover {
 	letter-spacing: -0.01em;
 	color: var(--text);
 }
+/* A page whose sections are separated by space alone (the book page, design
+   review #9): the heading without its hairline. */
+.section-heading.no-rule {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
 /* A quiet count / length trailing the heading text ("Contents · 15 chapters ·
    34 min"), on the same baseline but demoted to small muted sans. */
 .section-heading .meta {
@@ -2965,7 +2984,7 @@ nav.appnav .navsearch:hover {
 }
 
 /* The one step below the eyebrow, for the dense width-constrained cluster §2
-   names (sermon outline/text-card labels). A modifier beside .eyebrow — not a
+   names (sermon outline labels, the epigraph's credit). A modifier beside .eyebrow — not a
    per-component scoped font-size override, which fights the unlayered class. */
 .eyebrow-micro {
 	font-size: var(--fs-micro);
@@ -2988,15 +3007,17 @@ nav.appnav .navsearch:hover {
    mixed card types reads as one system (STYLE_GUIDE §5 → "Card hover"):
 
      .card-lift — GRID / banded cards rise. A 2px lift and a drop shadow, the
-       border warming. Members: .book-card (neutral) and .shelf-card (era hue).
+       border warming. Members: .shelf-card (era hue). (.book-card, boxless since design #1,
+       owns a rise-only hover below: a shadow would draw a box.)
        The sermon-of-week plate is the same hue lift but restates it in its own
        scoped CSS: its trigger is the parent link's hover/focus-visible on a
        nested, non-focusable plate, which a self-hover class can't express.
 
      .card-tint — ROW cards warm in place, no lift. The border shifts to accent
-       and the ground to surface-2. Members: .sermon-card, .article-card,
-       AuthorBioCard, PersonCard, AuthorTile, BookListRow (neutral); .sermon-row
-       and the /quotes author card override the two colours with their era hue.
+       and the ground to surface-2. Members: .article-card, AuthorBioCard,
+       PersonCard, AuthorTile, BookListRow (neutral); the /quotes author card
+       overrides the two colours with its era hue. (The sermon row is a plain
+       hairline list row, not a card — SermonCard.)
 
    Both animate on --duration-fast, and nothing else. Resting
    border/radius/background/padding stay with the individual card (its scoped
@@ -3062,12 +3083,8 @@ nav.appnav .navsearch:hover {
    sermon plate — and the whole point of a house wash is that they match, so it
    is one recipe driven by --band-hue rather than two that drift.
 
-   A THIRD wash exists and is NOT on this recipe: the topic hero
-   (routes/topics/[slug]/+page.svelte). It has already drifted — 16%/7% over
-   --surface where this is 22%/9% over --surface-2 — so folding it in is a
-   visible redesign of that page (tinted white becomes a warmer, greyer band),
-   not a refactor. Worth doing deliberately; it was left alone here rather than
-   smuggled into a sermon change.
+   (A third, drifted wash once tinted the topic hero; design review #16 took
+   that page's header out of its box, so there is no third copy any more.)
 
    The hue reaches the pixel ONLY through color-mix (STYLE_GUIDE §Cards), which
    is what keeps a saturated accent legible in both themes. */
@@ -3158,8 +3175,8 @@ nav.appnav .navsearch:hover {
 }
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
-   one recipe for every surface (shelf cards, sermon rows and cards, topic
-   heroes). A call site decides only how big and which hue, via --chip-size
+   one recipe for every surface (shelf cards, sermon rows and cards, the
+   Ochorus-for pages). A call site decides only how big and which hue, via --chip-size
    and --chip-hue; the art scales with the chip, so "give the emblems more
    air" is one edit here, not a hunt across components. */
 .emblem-chip {
@@ -3213,16 +3230,6 @@ nav.appnav .navsearch:hover {
 	background: url('/marks/seal.svg') center / contain no-repeat;
 	pointer-events: none;
 }
-/* A section page's emblem, beside its <PageHeader> title, in the section's
-   hue (data-section puts it in scope as --section-hue). */
-.page-header-emblem {
-	--chip-size: 2.75rem;
-	--chip-hue: var(--section-hue);
-}
-.page-header-emblem img {
-	width: 66%;
-	height: 66%;
-}
 /* Descriptions are clamped so one long blurb can't set the height of a whole
    grid row. Pair with .shelf-card-body{flex:1} for level bottoms. */
 .shelf-card-desc {
@@ -3233,27 +3240,39 @@ nav.appnav .navsearch:hover {
 	overflow: hidden;
 }
 
-/* A book on the shelf. The cover is the visual, so the chrome stays quiet — a
-   hairline and a surface fill, warmed by a whisper of the book's own cover
-   colour (below). Before this the grid was bare
-   covers with caption text floating under them: the only browse surface with
-   no card at all, and the reason the shelf read as unfinished next to Topics.
-   height:100% + the mt-auto footer keep a row of cards level whatever the
-   title wraps to. */
+/* A book on the shelf. The cover IS the card: it sits straight on the page
+   ground with a serif title and a muted author under it, and nothing else at
+   rest — no box, no border, no tint (design review #1, 2026-11). The boxed,
+   cover-tinted card it replaces gave a shelf of 379 books 379 pastel boxes,
+   which read as visual static behind covers that are already the most
+   colourful thing on the page. The chapter count and reading time are on the
+   book page (and in the list view, on the shelves that have one).
+   height:100% keeps a row of cards level whatever the title wraps to. */
 .book-card {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	padding: 0.6rem;
-	/* Each card takes a whisper of its own cover's colour (--cover-tint, set
-	   by BookCard from the book's cover_color), so a shelf of cards reads as
-	   that many books rather than that many white boxes. With no colour it
-	   falls back to the plain surface and border. */
-	border: 1px solid color-mix(in srgb, var(--cover-tint, var(--border)) 22%, var(--border));
+	/* Invisible (there is no ground to show it), but it holds what reaches past
+	   the cover inside the card: the edition ribbon's overhang, the gilt
+	   fore-edge, the hover rise and the cover's tip. Without it they spill out
+	   of a scrolling rail (AudienceHub's .hub-rail) and give a rail that fits
+	   a scrollbar, a false "more" edge fade, and a clipped cover on hover. */
+	padding: 0.25rem;
 	border-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--cover-tint, var(--surface)) var(--cover-tint-amount), var(--surface));
-	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
-	   worn in the markup. */
+	/* Its own hover: the grid card's rise, and only the rise. Not .card-lift,
+	   whose shadow and border would draw the very box this card no longer has
+	   — the cover carries its own shadow, and tips on hover (BookCard). */
+	transition: transform var(--duration-fast);
+}
+.book-card:hover {
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.book-card,
+	.book-card:hover {
+		transform: none;
+	}
 }
 /* A variant of .book-card (a horizontal one, say) has to be a modifier
    class here rather than a `flex-row` utility on the element: `.book-card`
@@ -3264,7 +3283,7 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
+       .shelf-card, .filter-field, .field, .seg, .chip,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
@@ -3294,11 +3313,12 @@ nav.appnav .navsearch:hover {
 	align-items: stretch;
 	/* Two on a phone, not three. The shelf was three-across at every width, which
 	   on a 390px screen is a 97px card: the title clamps to "A Treatise on
-	   Holy…" and the meta line breaks into three ("12 / chapters · 3 / hr 30 min
-	   read"). Two gives 154px, a readable title and a two-line meta.
+	   Holy…". Two gives 154px and a readable title. (The card no longer
+	   carries a chapters · time meta line — design #1 — so the bar is the
+	   title and the cover's own type, not that line's wrapping.)
 
 	   154px is the bar the UPPER steps answer to: a card narrower than that
-	   clamps the (line-clamp-2) title and wraps the meta. The shelf sits in a
+	   clamps the (line-clamp-2) title and shrinks the cover's type. The shelf sits in a
 	   `.page-col px-5` column, so its width is roughly `100vw − 5rem`. On that
 	   arithmetic 5-up clears 154px only past ~914px and 6-up past ~1084px, so
 	   those two steps key off `lg`/`xl` rather than `md`/`lg` — otherwise a
@@ -3363,50 +3383,17 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* A sermon on the shelf — one per line, under its preacher.
-
-   Not a card in a grid: a sermon's "In brief" is 300–400 characters, and a
-   tile that holds it is mostly text with a title on top. One per line gives
-   that prose the full measure to breathe, and lets a reader scan title →
-   passage → brief down a single column and decide whether to read or listen
-   without opening anything. Row height varies with the brief, which costs
-   nothing here — rows stack, so there is no bottom edge to level.
-
-   `--row-hue` is the writer's era (same source as .shelf-card), used only
-   through color-mix so it stays a tint and never becomes text colour. */
-.sermon-row {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
-	gap: 1rem;
-	padding: 1.1rem 1.25rem 1.15rem 1.5rem;
-	border: 1px solid var(--border);
-	border-radius: var(--radius-card);
-	background: var(--surface);
-	/* The whole row is a click target: open the brief, then go to the sermon. */
-	cursor: pointer;
-	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
-	   markup; only the hue-mixed border and ground below are the row's own. */
+/* A list of sermons (SermonCard rows) — the one wrapper every page uses, so
+   the measure and the separators are set once (design #8). Each row draws a
+   hairline above itself; the first row drops it. A row may sit in a wrapper
+   (the index pages rows in `display: contents` divs, the 404 tags them), so
+   both a direct row and a wrapped one count as first. */
+.sermon-list {
+	max-width: 48rem;
 }
-/* The era rail down the leading edge. Inside the border radius, so it reads as
-   part of the row rather than a stripe stuck to it. */
-.sermon-row::before {
-	content: '';
-	position: absolute;
-	inset-block: -1px;
-	inset-inline-start: -1px;
-	width: 3px;
-	border-start-start-radius: var(--radius-card);
-	border-end-start-radius: var(--radius-card);
-	background: color-mix(in srgb, var(--row-hue) 55%, transparent);
-	transition: background var(--duration-fast);
-}
-.sermon-row:hover {
-	border-color: color-mix(in srgb, var(--row-hue) 45%, var(--border));
-	background: color-mix(in srgb, var(--row-hue) 4%, var(--surface));
-}
-.sermon-row:hover::before {
-	background: var(--row-hue);
+.sermon-list > .sermon-row:first-child,
+.sermon-list > :first-child > .sermon-row {
+	border-block-start-color: transparent;
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────
@@ -3915,8 +3902,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navtoggle,
 		.navsearch,
 		.day-toggle,
-		.sync-dismiss,
-		.sermon-row-toggle {
+		.sync-dismiss {
 			position: relative;
 		}
 		/* The finish toggle on a Continue-reading card is a 28px disc, already
@@ -3928,8 +3914,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		.navsearch::after,
 		.finish-btn::after,
 		.day-toggle::after,
-		.sync-dismiss::after,
-		.sermon-row-toggle::after {
+		.sync-dismiss::after {
 			content: '';
 			position: absolute;
 			top: 50%;
@@ -4116,6 +4101,16 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+/* In the start margin, its end edge just short of the reading column, rather
+   than centred over the line being read (design review #12). Wants the
+   column's `--reading-measure` on the pill itself (the page passes the
+   reader's style) and a margin wide enough to hold it, which the page checks
+   before mounting it. Logical, so it moves to the right in Arabic. */
+.min-left.beside-text {
+	left: auto;
+	transform: none;
+	inset-inline-end: calc(50% + var(--reading-measure, 42rem) / 2);
 }
 /* Phones: near-opaque instead of blurred, as .reader-dock (the blur repaints
    under the pill on every scroll frame). */

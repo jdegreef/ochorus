@@ -1,11 +1,11 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { ORIGINALS_PATH } from '$lib/originals';
-import { AUDIENCE_HUBS } from '$lib/audienceHub';
+import { AUDIENCE_HUBS } from '$lib/audienceHubs';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
  *
- * The top nav, the footer's Explore group and the command palette each listed
+ * The top nav, the footer's link columns and the command palette each listed
  * these destinations in their own hand-written order, and the three drifted (a
  * new hub reached one surface and not the others, in a different position). They
  * now all `.map` these two arrays, so their order cannot come apart: change the
@@ -29,9 +29,11 @@ export interface NavDest {
 	/** Its library-palette role: the nav wears `--section-<section>` on the
 	 *  icon and the active pill (app.css, "THE LIBRARY PALETTE"). */
 	section: NavSection;
-	/** The printer's ornament under its page title (`<Fleuron>`), drawn from
-	 *  `/marks/ornament-<name>.svg`; its emblem beside that title is
-	 *  `/marks/emblem-<section>.svg` (marks.test.ts checks both exist). */
+	/** The section's printer's ornament (`<Fleuron ornament>`), drawn from
+	 *  `/marks/ornament-<name>.svg`; its emblem is `/marks/emblem-<section>.svg`
+	 *  (marks.test.ts checks both exist). Neither is drawn in the shelf's
+	 *  `<PageHeader>` any more — design review #4 made the page head plain —
+	 *  but the marks are the sections' identity and stay for other surfaces. */
 	ornament: Ornament;
 }
 
@@ -44,7 +46,7 @@ export type NavSection = 'books' | 'topics' | 'plans' | 'sermons' | 'biographies
  *  for every page that is not a section's. */
 export type Ornament = 'leaf' | 'lamp' | 'anchor' | 'vine' | 'dove' | 'laurel';
 
-/** An English-only hub: the footer Explore group and the palette, gated to
+/** An English-only hub: the footer's More column and the palette, gated to
  *  English, and never the top nav (an entry point for search, not a primary
  *  journey). English-only because the content is lifted from / parsed against
  *  the English works, so there is no localized page to send anyone to. */
@@ -67,7 +69,7 @@ export const sectionDest = (section: NavSection): NavDest => PRIMARY_NAV.find((d
 
 /* Not listed here on purpose: the "Ochorus for …" landing pages ($lib/forLinks)
  * are pitches to a group of readers, not content destinations, so they sit in
- * the footer's bottom row alone — not the palette or the More sheet. */
+ * the footer (one link to their /for/ hub) — not the palette or the More sheet. */
 
 /** Articles · Scripture · Quotes — English-only hubs (footer + palette). */
 export const ENGLISH_HUBS: HubDest[] = [
@@ -78,7 +80,7 @@ export const ENGLISH_HUBS: HubDest[] = [
 
 /** Book Series — every series in this language, hanging off Books. Not a top-nav
  *  slot (the Books page's rail and count link are its way in there), but every
- *  locale's footer Explore group and the palette offer it right after the
+ *  locale's footer More column and the palette offer it right after the
  *  primary five: a series is translated content, so each locale has its own
  *  index. The trailing slash is added by `localizeHref` ($lib/canonicalRedirect isSlashedPath). */
 export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
@@ -91,12 +93,12 @@ export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.or
 
 /** Authors & Books A–Z — the one page linking every writer and every book in
  *  a language ($lib/authorIndex), so the whole library is two clicks from any
- *  page. Every locale's footer Explore group and the palette offer it after
+ *  page. Every locale's footer More column and the palette offer it after
  *  Book Series. The trailing slash comes from `localizeHref` (isSlashedPath). */
 export const AZ_INDEX_DEST: HubDest = { href: '/authors', labelKey: 'nav.azIndex' };
 
 /** The young-reader hubs — /young-readers/ and /teens/ ($lib/audienceHub).
- *  Like Book Series, not a top-nav slot: every locale's footer Explore group,
+ *  Like Book Series, not a top-nav slot: every locale's footer More column,
  *  the palette and the phone's More sheet offer them right after Book Series
  *  (their books are translated, so each locale has its own copy). The trailing
  *  slash comes from `localizeHref` (isSlashedPath). */

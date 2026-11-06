@@ -7,10 +7,12 @@ import type { PageLoad } from './$types';
 /** What the page shows when the snapshot cannot be read at runtime: the shelf
  *  sections hide themselves when empty, so this reads as a shorter page. */
 const EMPTY: HomeShelves = {
+	hero: [],
+	discover: [],
 	featured: [],
 	authors: [],
 	topics: [],
-	counts: { books: 0, authors: 0, sermons: 0 },
+	counts: { books: 0, sermons: 0 },
 	audiences: []
 };
 

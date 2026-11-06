@@ -257,5 +257,12 @@
  "cheque-book-year": {
   "title": "የአንድ ዓመት ንባብ፦ የእምነት ባንክ የቼክ ደብተር",
   "description": "የቻርልስ ስፐርጀን ዕለታዊ ተስፋዎች፦ ለዓመቱ ለእያንዳንዱ ቀን አንድ የእግዚአብሔር ተስፋ፣ በእምነት እንዴት እንደሚቀበሉት ከሚያሳይ አጭር ቃል ጋር። በማንኛውም ቀን ይጀምሩ፤ የመጀመሪያው ቀን የጃንዋሪ 1 ንባብ ነው፤ እያንዳንዱም ተከታይ ቀን ቀጣዩን ንባብ ይወስዳል። በቀን አንድ ወይም ሁለት ደቂቃ።"
+ },
+ "faithful-with-little": {
+  "title": "በትንሽ ነገር ታማኝ፦ ገንዘብና ልብ",
+  "description": "መላው መጽሐፍ ቅዱስ ስለ ገንዘብ የሚናገረውን በየቀኑ አንድ አጭር ምዕራፍ እያነበቡ የሚያሳልፉት ሦስት ሳምንታት። ሁሉም የእግዚአብሔር ነው፤ ከኪስ በስተጀርባ ያለው ልብ፤ ሐቀኛ ሥራ፣ ዕቅድና ዕዳ፤ እንደ እግዚአብሔር ለጋስ መሆን፤ እና የማያልፍ ሀብት — በመንገዱም ላይ ጆን ዌስሊ፣ ጆርጅ ሙለር፣ ቻርልስ ስፐርጀንና ኤ. ደብሊው. ቶዘር አብረውን ይጓዛሉ። እያንዳንዱ ቀን የሚለማመዱትን አንድ ነገር ይዞ ይጠናቀቃል፤ የመጽሐፉ ሠላሳ ቁልፍ ጥቅሶችም የአንድ ወር ተጓዳኝ ንባብ ይሆናሉ።",
+  "note": [
+   "The title quotes the shipped am edition faithful-with-little.am.json verbatim (በትንሽ ነገር ታማኝ), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+  ]
  }
 }

@@ -27,7 +27,7 @@
 <!-- A bordered card (matching the site's rounded-card pattern) that reads as one
      tappable unit: hovering it warms the whole thing — border → accent, a
      surface-2 tint, and the portrait from grayscale to full colour. It's a row
-     card, so it tints rather than lifts, the same recipe as .sermon-card /
+     card, so it tints rather than lifts, the same recipe as
      .article-card (page-design H1). The author links carry preload-on-hover so
      the click lands instantly. -->
 <!-- `id` is the deep-link target for /biographies#slug, so the card has to

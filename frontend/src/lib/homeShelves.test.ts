@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { deriveHomeShelves } from './homeShelves';
-import { COVER_BOOK_KEYS } from './library-public';
+import { deriveHomeShelves, HERO_SLUGS } from './homeShelves';
+import { COVER_BOOK_KEYS, toCoverBook } from './library-public';
+import { pickByDay } from './dailyPicks';
 import type { AuthorBio, BookSummary, TopicSummary } from './library-public';
 
 const book = (slug: string, author: string, cover = `/covers/art/${slug}.jpg`) =>
@@ -66,7 +67,48 @@ describe('deriveHomeShelves', () => {
 		expect(Object.keys(first).sort()).toEqual([...COVER_BOOK_KEYS, 'author'].sort());
 	});
 
+	it('fans the curated classics in their places, filling a missing one, and keeps them off the shelf below', () => {
+		// The language has four of the five curated books; one is a plate.
+		const curated = HERO_SLUGS.slice(0, 4).map((slug, i) =>
+			book(slug, `c${i}`, i === 3 ? `/covers/${slug}.svg` : `/covers/art/${slug}.jpg`)
+		);
+		const { hero, discover } = deriveHomeShelves(lists({ books: [...books, ...curated] }), 20000);
+		expect(hero).toHaveLength(5);
+		expect(hero.slice(0, 3).map((b) => b.slug)).toEqual(HERO_SLUGS.slice(0, 3));
+		// The plate's place and the absent one's are filled by painted books, by
+		// authors the fan does not have yet.
+		const fill = hero.slice(3);
+		expect(fill.every((b) => !b.cover_url.endsWith('.svg') && !HERO_SLUGS.includes(b.slug as never))).toBe(true);
+		expect(new Set(hero.map((b) => b.author.slug)).size).toBe(5);
+		// A cover only, and none of them — nor, while others remain, their
+		// authors — again in the logged-out Discover right under it.
+		expect(Object.keys(hero[0])).not.toContain('chapter_count');
+		const inHero = new Set(hero.map((b) => b.slug));
+		expect(discover).toHaveLength(6);
+		expect(discover.some((b) => inHero.has(b.slug))).toBe(false);
+		const heroAuthors = new Set(hero.map((b) => b.author.slug));
+		expect(discover.some((b) => heroAuthors.has(b.author.slug))).toBe(false);
+	});
+
+	it('never fills the hero with a young-reader edition, and falls back to the deck under five', () => {
+		const young = [book('x-children', 'y1'), book('x-teens', 'y2')];
+		// Only two curated books and two young-reader editions: four to be had at
+		// most, so the hero is the three-cover deck.
+		const two = HERO_SLUGS.slice(0, 2).map((slug, i) => book(slug, `c${i}`));
+		const { hero } = deriveHomeShelves(lists({ books: [...two, ...young, book('z', 'z')] }), 20000);
+		expect(hero.map((b) => b.slug)).toEqual([HERO_SLUGS[0], HERO_SLUGS[1], 'z']);
+	});
+
+	it("keeps the dashboard's Discover a pick of the whole painted library", () => {
+		// The signed-in dashboard has no hero, so its shelf leaves nothing out.
+		const curated = HERO_SLUGS.map((slug, i) => book(slug, `c${i}`));
+		const all = [...books, ...curated];
+		const { featured } = deriveHomeShelves(lists({ books: all }), 20000);
+		const unfiltered = pickByDay(all, 6, 20000, (b) => b.author.slug).map(toCoverBook);
+		expect(featured).toEqual(unfiltered);
+	});
+
 	it("counts the language's whole library, not the capped shelves", () => {
-		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, authors: 12, sermons: 3 });
+		expect(deriveHomeShelves(lists(), 20000).counts).toEqual({ books: 20, sermons: 3 });
 	});
 });

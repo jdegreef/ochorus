@@ -1,83 +1,74 @@
 <script lang="ts">
-	import type { CoverBook, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
-	import { goto } from '$app/navigation';
+	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
-	import DailyShelf from '$lib/components/DailyShelf.svelte';
-	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
-	import HomeArticles from '$lib/components/HomeArticles.svelte';
+	import TodayCard from '$lib/components/TodayCard.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
-	import AuthorTile from '$lib/components/AuthorTile.svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
-	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import HomeIntro from '$lib/components/HomeIntro.svelte';
+	import HomeResume, { hold as resumeHold } from '$lib/components/HomeResume.svelte';
+	import { currentBook } from '$lib/currentBook.svelte';
+	import { onMount } from 'svelte';
 
 	/**
 	 * The logged-OUT home page: what a first-time visitor and every crawler sees.
 	 * It is the prerendered, indexable surface — see the note in `+page.svelte` on
 	 * why the baked HTML is always this component, never the dashboard.
 	 *
-	 * It stays acquisition-first (hero → discover → mission), but keeps the slim
-	 * `ContinueReading` + `ReadingNudge` resume strip so a RETURNING reader who
-	 * has not signed in still lands on their book rather than a fresh pitch. Both
-	 * strip blocks render nothing without local reading activity, so a true first
-	 * visit is unchanged. The heavier personal blocks (today's plan,
+	 * It stays acquisition-first (hero → books → topics → authors), but keeps the
+	 * slim `ContinueReading` + `ReadingNudge` resume strip so a RETURNING reader
+	 * who has not signed in still lands on their book rather than a fresh pitch.
+	 * Both strip blocks render nothing without local reading activity, so a true
+	 * first visit is unchanged. The heavier personal blocks (today's plan,
 	 * recommendations, favourites) live only on the signed-in dashboard.
+	 *
+	 * Design #17 ("Home in six sections"): one ground, sections parted by space
+	 * alone — no tinted bands — and one heading style, a start-aligned
+	 * sentence-case `<SectionHeader>` with no icon. "How Ochorus works" is gone;
+	 * the library's figures and the mission paragraph live on /about.
 	 */
 	interface HomeData {
+		hero?: CoverFace[];
 		featured: CoverBook[];
+		discover?: CoverBook[];
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
-		counts?: { books: number; authors: number; sermons: number };
 		audiences?: HubAudience[];
 	}
 	let { data }: { data: HomeData } = $props();
 
-	const featured = $derived<CoverBook[]>(data.featured);
+	const featured = $derived<CoverBook[]>(data.discover ?? data.featured);
 	const authors = $derived<AuthorTileData[]>(data.authors);
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
 	const t = i18n.t;
 
-	// Hero search → the full search page. Progressive enhancement: the form is a
-	// real GET to /search (works with no JS); with JS we intercept and navigate
-	// client-side so it stays in the SPA.
-	let query = $state('');
-	function submitSearch(e: Event) {
-		e.preventDefault();
-		const q = query.trim();
-		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
-	}
-
-	// Library-breadth social proof in the mission band: "N books · N authors · N
-	// sermons". Each figure drops out when the current language has none of that
-	// kind, so a smaller locale never shows "0 sermons".
-	const breadth = $derived(
-		[
-			{ n: data.counts?.books ?? 0, one: 'common.bookOne', many: 'common.bookMany' },
-			{ n: data.counts?.authors ?? 0, one: 'common.authorOne', many: 'common.authorMany' },
-			{ n: data.counts?.sermons ?? 0, one: 'common.sermonOne', many: 'common.sermonMany' }
-		].filter((x) => x.n > 0)
+	// Design #10: a reader with a book open on this device gets "Continue
+	// reading" in the hero's place. Decided at mount, from this device's
+	// progress — the prerendered page (and hydration) is the newcomer's, and
+	// app.html's boot flag hides its hero until then (see the style below).
+	// `currentBook` is the store the signed-in hero uses: it knows WHICH book
+	// at once and resolves the book itself from the cache or the list. A book
+	// it cannot draw once the list has settled (the list failed: offline, the
+	// API down) leaves the hero, not a skeleton, in place. `mounted` as well
+	// as the key: the store is shared with the dashboard, so before this
+	// page's refresh it may still hold another visit's book.
+	let mounted = $state(false);
+	onMount(() => {
+		currentBook.refresh();
+		mounted = true;
+		return currentBook.watch();
+	});
+	const resuming = $derived(
+		mounted && !!currentBook.key && (!!currentBook.item || currentBook.pending)
 	);
-
-	// The trust row beneath the hero's calls to action.
-	const proof: { icon: IconName; label: string }[] = [
-		{ icon: 'heart', label: t('home.proofFree') },
-		{ icon: 'wind', label: t('home.proofNoAds') },
-		{ icon: 'headphones', label: t('home.proofOffline') }
-	];
-
-	// The three steps of the "how it works" row.
-	const steps: { icon: IconName; title: string; text: string }[] = [
-		{ icon: 'compass', title: t('home.howDiscoverTitle'), text: t('home.howDiscoverText') },
-		{ icon: 'book', title: t('home.howReadTitle'), text: t('home.howReadText') },
-		{ icon: 'flame', title: t('home.howTrackTitle'), text: t('home.howTrackText') }
-	];
 </script>
 
 <!-- Continue reading + streak render ABOVE the acquisition hero: a returning
@@ -86,184 +77,105 @@
      already accepted. Both render nothing until there is reading activity, so
      a first-time visitor still lands on the hero and sees no change.
 
+     Design #10: a reader with a BOOK in progress here does not get the hero
+     at all — HomeResume takes its place (the book, its chapter and one
+     Resume button; a started plan's day beside it), and the strip under it
+     carries the rest of what is in progress, leaving that book out.
+
      The reordering is `order`, not DOM order, so the page's only <h1> still
      comes before every <h2> in the source — a document that opens on an <h2>
      is a worse outline for anyone navigating by heading. Client-side only
      (this page is prerendered), so the blocks appear at hydration rather than
      in the baked HTML. -->
 <div class="flex flex-col">
-	<!-- Hero: plain words on the page's own ground — no painting, scrim or
-	     grain — so the first screen reads light and calm, with the theme's ink
-	     and its one accent (the search button). -->
-	<section class="order-2">
-		<div class="mx-auto max-w-4xl px-5 pt-14 text-center sm:pt-20">
-			<p class="eyebrow mb-4 text-muted">
-				{t('home.heroEyebrow')}
-			</p>
-			<h1 class="text-display mx-auto mb-5 max-w-3xl">
-				{t('home.heroTitle')}
-			</h1>
-			<p class="mx-auto mb-7 max-w-xl text-body text-muted">
-				{t('home.heroTagline')}
-			</p>
-			<form
-				onsubmit={submitSearch}
-				method="GET"
-				action={localizeHref('/search')}
-				role="search"
-				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border-strong bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent max-sm:gap-1"
-			>
-				<!-- The pill is the field here (the input inside is bare), so it wears
-				     .field's --border-strong edge like the nav search, not the weaker
-				     card hairline. -->
-				<!-- On a phone the glass moves into the submit button, so the hint
-				     ("Search books, authors, text…") has the width to be read whole
-				     rather than cut at "tex". -->
-				<svg
-					class="ms-2 h-5 w-5 shrink-0 text-muted max-sm:hidden"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					aria-hidden="true"
-				>
-					<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-				</svg>
-				<input
-					bind:value={query}
-					name="q"
-					type="search"
-					enterkeyhint="search"
-					placeholder={t('search.placeholder')}
-					aria-label={t('nav.search')}
-					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2 max-sm:ps-3 max-sm:placeholder:text-small"
-				/>
-				<button type="submit" class="btn btn-primary shrink-0 rounded-full max-sm:px-3">
-					<Icon name="search" size={18} class="sm:hidden" />
-					<span class="max-sm:sr-only">{t('nav.search')}</span>
-				</button>
-			</form>
-			<!-- One primary per view: the search submit above. These two are the
-			     alternative routes into the same library, not competing calls to
-			     action, so they read as secondary. -->
-			<div class="flex flex-wrap justify-center gap-3">
-				<a href={localizeHref('/books')} class="btn btn-ghost">{t('home.browseLibrary')}</a>
-				<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
-			</div>
-			<!-- Trust row: the reasons to stay, at a glance -->
-			<div class="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2">
-				{#each proof as p (p.label)}
-					<span class="inline-flex items-center gap-1.5 text-small text-muted">
-						<Icon name={p.icon} size={16} />
-						{p.label}
-					</span>
-				{/each}
-			</div>
-		</div>
-	</section>
+	<!-- "Continue reading" in the hero's place, and its frame before the app
+	     runs: in the baked HTML for everyone, shown only where app.html's boot
+	     flag saw a book in progress (`data-home-resume`), until the block
+	     fills `.resume` (sibling selector, as `.home-hold` below). Nothing but
+	     the block inside `.resume`: whitespace would make it never `:empty`. -->
+	<div class="resume">{#if resuming}<HomeResume />{/if}</div>
+	<div class="resume-hold">{@render resumeHold()}</div>
+	<!-- Hero: what the reader gets, beside a spread of the library's covers,
+	     on the page's own ground (HomeIntro). Hidden by the boot flag before
+	     mount for a reader the block replaces it for. -->
+	{#if !resuming}<div class="intro order-2"><HomeIntro covers={data.hero ?? []} /></div>{/if}
 	<!-- The strip's space before the app runs, for a reader app.html's boot
 	     flag knows is returning: the rest of the page shows at once, below the
 	     strip's frame, and the real strip takes the frame's place at mount
 	     without moving it. After `.personal`, so CSS can drop the hold the
 	     moment `.personal` fills (sibling selector, no :has). In the baked HTML
 	     for everyone, shown to no one else (display: none). -->
-	<div class="personal order-1"><ContinueReading /><ReadingNudge /></div>
+	<div class="personal order-1"><ContinueReading exclude={resuming ? currentBook.key : undefined} /><ReadingNudge /></div>
 	<div class="home-hold order-1">{@render continueHold()}{@render nudgeHold()}</div>
 </div>
 
-<!-- Discover Your Next Book — above the plan/sermon blocks -->
-<DiscoverStrip books={featured} band="page" />
+<!-- Today (design #20): the day's verse, devotional reading and sermon in
+     one card, between the hero and the books. It replaced the three day's
+     blocks that sat below the book row (DailyShelf, SermonOfTheDay,
+     HomeArticles); the signed-in dashboard keeps those. Client-side — its
+     skeleton holds the card's place in the baked HTML. -->
+<TodayCard />
 
-<!-- How it works — a first-time visitor's three steps, previewing the reading
-     journey the dashboard delivers once they sign in. Static, so it shows on
-     every logged-out visit. -->
-<section class="page-col px-5 pt-14">
-	<h2 class="text-h2 mb-8 text-center">{t('home.howTitle')}</h2>
-	<div class="grid gap-8 sm:grid-cols-3">
-		{#each steps as step (step.title)}
-			<div class="text-center">
-				<span
-					class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent-soft text-accent"
-				>
-					<Icon name={step.icon} size={22} />
-				</span>
-				<h3 class="text-h3 mb-1.5">{step.title}</h3>
-				<p class="mx-auto max-w-xs text-small text-muted">{step.text}</p>
-			</div>
-		{/each}
-	</div>
-</section>
+<!-- Books -->
+<DiscoverStrip books={featured} band="none" belowHero />
 
-<!-- Create-an-account band: right after "how it works" explains the tracking
-     benefit — the natural moment to ask for the sign-up. Four bands run behind
-     one component (three A/B arms + a progress-targeted one); it self-gates on
-     `auth.enabled`, so it stays hidden where accounts don't work and never bakes
-     into the prerendered HTML. See SignupBand. -->
+<!-- Create-an-account band. Four bands run behind one component (three A/B
+     arms + a progress-targeted one); it self-gates on `auth.enabled`, so it
+     stays hidden where accounts don't work and never bakes into the
+     prerendered HTML. See SignupBand. -->
 <SignupBand />
 
-<!-- Today in the devotionals — each year-long devotional's entry for the
-     reader's date. Client-side; renders nothing in a language with none. -->
-<DailyShelf />
-
-<!-- Sermon of the day — editorial content discovery, not personal. Renders
-     nothing when there is no featured sermon in the current language. -->
-<SermonOfTheDay />
-
-<!-- Eight articles for today — turns over daily; renders nothing in a language
-     with fewer than eight articles. -->
-<HomeArticles />
-
-<!-- Browse by topic -->
-<TopicChips {topics} />
+<!-- Topics: eight names; the header links to all of them. -->
+<TopicChips {topics} quiet />
 
 <!-- For young readers and teens — the hubs this language has. -->
 <HomeAudienceHubs audiences={data.audiences ?? []} />
 
-<!-- The leader behind the reader: a page for each group they lead. -->
-<HomeForGroups />
-
-<!-- Mission teaser -->
-<section class="mt-14 border-y border-border bg-surface-2">
-	<div class="mx-auto max-w-3xl px-5 py-16 text-center">
-		<!-- The library's breadth, in this language's own numbers, as the band's
-		     figures: what the mission has put on the shelf so far. -->
-		{#if breadth.length}
-			<div class="mkt-numbers mb-10">
-				{#each breadth as b (b.one)}
-					<div>
-						<div class="mkt-number font-display">{b.n}</div>
-						<div class="eyebrow text-muted">{b.n === 1 ? t(b.one) : t(b.many)}</div>
-					</div>
-				{/each}
-			</div>
-		{/if}
-		<h2 class="text-h2 mb-3">{t('home.missionTitle')}</h2>
-		<p class="mx-auto max-w-xl text-body text-muted">
-			{t('home.missionText')}
-		</p>
-		<a href={localizeHref('/about')} class="btn btn-ghost mt-6">{t('home.ourStory')}</a>
-	</div>
-</section>
-
-<!-- Christian Authors — hidden when the shelf is empty, same reason as
-     "Discover your next book" above. -->
+<!-- Authors: a row of faces with the name under each. Hidden when the shelf
+     is empty, same reason as the book row. -->
 {#if authors.length}
-	<section class="page-col px-5 pt-14 pb-20">
+	<section class="page-col px-5 pt-14">
 		<SectionHeader
-			section="biographies"
 			title={t('home.authorsTitle')}
 			href={localizeHref('/biographies')}
 			linkText={t('home.allBiographies')}
 		/>
-		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+		<ul class="grid grid-cols-4 gap-x-3 gap-y-6 lg:grid-cols-8">
 			{#each authors as author (author.slug)}
-				<AuthorTile {author} />
+				<li>
+					<a
+						href={localizeHref(`/authors/${author.slug}`)}
+						class="group flex flex-col items-center gap-2.5 text-center hover:no-underline"
+					>
+						<Portrait
+							slug={author.slug}
+							name={author.name}
+							url={author.photo_url}
+							px={96}
+							tone="hover"
+							decorative
+							initialsClass="text-h3"
+							class="aspect-square h-auto w-full max-w-[4.5rem] sm:max-w-24"
+						/>
+						<!-- Two lines at most. A phone's column can be ~70px (360px
+						     screen) and the narrowest page width leaves ~80px at eight
+						     a row, so the face shrinks to its cell (`w-full`, capped)
+						     and a long single name ("Wigglesworth") breaks rather than
+						     running into its neighbour. -->
+						<span
+							class="line-clamp-2 w-full break-words text-small font-medium text-text hyphens-auto group-hover:text-accent group-focus-visible:text-accent"
+							>{author.name}</span
+						>
+					</a>
+				</li>
 			{/each}
-		</div>
+		</ul>
 	</section>
 {/if}
+
+<!-- The leader behind the reader: one closing line for churches and
+     ministries and a link to the /for/ hub (design #27). -->
+<div class="pb-20"><HomeForGroups /></div>
 
 <style>
 	/*
@@ -273,19 +185,6 @@
 	 * So the closing rule and the space above the hero come and go with the
 	 * content, and a first visit is exactly the page it was before.
 	 */
-	/* The mission band's figures: big serif numerals over small labels. */
-	.mkt-numbers {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1.5rem 3.5rem;
-	}
-	.mkt-number {
-		font-size: var(--fs-h1);
-		font-weight: 600;
-		line-height: 1.1;
-		color: var(--accent);
-	}
 	.personal:not(:empty),
 	.home-hold {
 		padding-bottom: 3.5rem;
@@ -300,5 +199,37 @@
 	   not a frame later at `data-home-ready`, or that frame shows both. */
 	:global(html[data-home-for='reader']:not([data-home-ready])) .personal:empty + .home-hold {
 		display: block;
+	}
+	/* Design #10's swap, before the app runs: the hero hidden and the block's
+	   frame in its place, for a reader the boot flag saw a book open for. */
+	.resume-hold {
+		display: none;
+	}
+	/* If the app never says it is ready (a script error, a chunk that will
+	   not load), the hero comes back after 3 s, as the member's page is
+	   revealed (app.css home-reveal), instead of staying a skeleton. */
+	:global(html[data-home-resume]:not([data-home-ready])) .resume:empty + .resume-hold {
+		display: block;
+		animation: resume-hold-end 0s 3s forwards;
+	}
+	/* Folded rather than display: none — an element that is display: none runs
+	   no animation, so it could not come back on its own. */
+	:global(html[data-home-resume]:not([data-home-ready])) .intro {
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		animation: resume-intro-back 0s 3s forwards;
+	}
+	@keyframes resume-hold-end {
+		to {
+			display: none;
+		}
+	}
+	@keyframes resume-intro-back {
+		to {
+			height: auto;
+			overflow: visible;
+			visibility: visible;
+		}
 	}
 </style>

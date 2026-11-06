@@ -464,3 +464,77 @@ class EpigraphReferenceTests(SimpleTestCase):
         self.assertEqual(epigraph_reference("The keeper — Room 3:16 — waited."), "")
         self.assertEqual(epigraph_reference("x" * EPIGRAPH_WINDOW + " — John 3:16"), "")
         self.assertEqual(epigraph_reference(""), "")
+
+
+class OpensWithTextTests(SimpleTestCase):
+    """A sermon whose body opens on its own text shows the verse once (design #12).
+
+    Shapes taken from the shipped sermons. Precision first: a false True hides
+    the verse the sermon is built on; a false False only prints it twice."""
+
+    def _check(self, body, ref):
+        from .scripture import opens_with_text
+
+        return opens_with_text(body, ref)
+
+    def test_the_preachers_wording_of_the_text_counts(self):
+        # M'Cheyne's KJV against the ASV; no citation in the quote at all.
+        castaway = (
+            "<blockquote>“I therefore so run, not as uncertainly; so fight I, not as one that "
+            "beateth the air; but I keep under my body, and bring it into subjection; lest that "
+            "by any means, when I have preached to others, I myself should be a castaway.”"
+            "</blockquote> <p>OBSERVE, how earnestly Paul sought the kingdom.</p>"
+        )
+        self.assertTrue(self._check(castaway, "1 Corinthians 9:26-27"))
+
+    def test_a_short_quote_counts_when_it_cites_the_texts_chapter(self):
+        # Maclaren's attribution, roman numerals and all.
+        body = "<blockquote>‘Thirsting for God, for the living God.’—PSALM xlii. 2.</blockquote><p>…</p>"
+        self.assertTrue(self._check(body, "Psalm 42:2"))
+
+    def test_a_bare_citation_repeats_nothing(self):
+        body = "<blockquote> Matthew 11:28 </blockquote><p>Come unto me.</p>"
+        self.assertFalse(self._check(body, "Matthew 11:28"))
+
+    def test_a_citation_without_the_verse_is_not_the_text(self):
+        # Chrysostom's homily heading names the chapter and quotes none of it.
+        body = (
+            "<blockquote>Spoken in Antioch in the Old Church, as it was called, while he was a "
+            "presbyter, on the subject of the calamity that had befallen the city, 1 Tim. vi. 17."
+            "</blockquote><p>…</p>"
+        )
+        self.assertFalse(self._check(body, "1 Timothy 6:17"))
+
+    def test_a_different_verse_is_not_the_text(self):
+        body = "<blockquote>“In the beginning God created the heaven and the earth.”</blockquote><p>…</p>"
+        self.assertFalse(self._check(body, "John 3:16"))
+
+    def test_one_verse_does_not_stand_in_for_a_longer_text(self):
+        luke = (
+            "<blockquote>‘Behold, I send the promise of my Father upon you: but tarry ye in the "
+            "city of Jerusalem, until ye be endued with power from on high.’</blockquote><p>…</p>"
+        )
+        self.assertTrue(self._check(luke, "Luke 24:49"))
+        # Two passages: the epigraph would print Acts 1:8 nowhere.
+        self.assertFalse(self._check(luke, "Luke 24:49; Acts 1:8"))
+        # A whole chapter, quoted one verse of — even when that verse is cited.
+        prodigal = "<blockquote>‘A certain man had two sons.’—Luke xv. 11.</blockquote><p>…</p>"
+        self.assertFalse(self._check(prodigal, "Luke 15"))
+
+    def test_citing_another_verse_of_the_chapter_is_not_the_text(self):
+        body = (
+            "<blockquote>‘Except a man be born again, he cannot see the kingdom of God.’"
+            "—John iii. 3.</blockquote><p>…</p>"
+        )
+        self.assertFalse(self._check(body, "John 3:16"))
+
+    def test_only_an_opening_quote_counts(self):
+        verse = "<blockquote>For God so loved the world, that he gave his only begotten Son.</blockquote>"
+        self.assertTrue(self._check(verse + "<p>…</p>", "John 3:16"))
+        self.assertFalse(self._check("<p>Our text.</p>" + verse, "John 3:16"))
+
+    def test_no_text_or_no_body_is_false(self):
+        verse = "<blockquote>For God so loved the world, that he gave his only begotten Son.</blockquote>"
+        self.assertFalse(self._check(verse, ""))
+        self.assertFalse(self._check(verse, "Not a reference"))
+        self.assertFalse(self._check("", "John 3:16"))

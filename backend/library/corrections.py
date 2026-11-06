@@ -860,12 +860,618 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # Applied on every import AND backfillable over stored rows (management command
 # `apply_body_corrections`, plus a data migration for prod).
 
+# `holy-in-christ`'s layout tables, kept out of its `BODY_CORRECTIONS` entry
+# below only because they run to nine editions each; the entry says what they
+# repair and why. One row per edition, every edition in lockstep, because
+# `tests_translation_markup` pins each translation's tag sequence to the
+# English.
+#
+# Day headings: (cut, anchor). `cut` is the close of a day's last paragraph and
+# the `<h3>` naming the NEXT day, which the importer left at the foot of the
+# chapter before its own; `anchor` opens the chapter it names. The entry turns
+# each row into a `replacements` pair (cut -> "</p>") and a `restored_blocks`
+# row (the `<h3>` goes back in front of `anchor`). Rows run Second Day (cut
+# from ch2, restored to ch3) to Thirty-first Day (ch31 -> ch32); each `<h3>`
+# keeps its stored spelling exactly. Every anchor is unique across all nine
+# editions, since the whole entry runs over every chapter of the book.
+_HOLY_IN_CHRIST_DAYS: dict[str, list[tuple[str, str]]] = {
+    "en": [
+        ("</p> <h3> <br/>Second Day.<br/></h3>",
+         "<p>‘To those that are <em>made"),
+        ("</p> <h3> <br/>Third Day.<br/></h3>",
+         "<p>‘And God blessed the Sabbath"),
+        ("</p> <h3> <br/>Fourth Day.<br/></h3>",
+         "<p>‘And when the Lord saw that"),
+        ("</p> <h3> <br/>Fifth Day.<br/></h3>",
+         "<p>‘<em>Sanctify</em> unto <em>me</em>"),
+        ("</p> <h3> <br/>Sixth Day.<br/></h3>",
+         "<p>‘Who is like unto Thee, O Lord!"),
+        ("</p> <h3> <br/>Seventh Day.<br/></h3>",
+         "<p>‘Ye have seen what I did to"),
+        ("</p> <h3> <br/>Eighth Day.<br/></h3>",
+         "<p>‘And let them make me <em>a"),
+        ("</p> <h3><br/>Ninth Day.<br/></h3>",
+         "<p>‘And thou shalt make a plate"),
+        ("</p> <h3><br/>Tenth Day.<br/></h3>",
+         "<p>‘I am the Lord your God, which"),
+        ("</p> <h3><br/>Eleventh Day.<br/></h3>",
+         "<p>‘I am the Lord that brought"),
+        ("</p> <h3><br/>Twelfth Day.<br/></h3>",
+         "<p>‘I saw the Lord sitting on a"),
+        ("</p> <h3><br/>Thirteenth Day.<br/></h3>",
+         "<p>‘Thus saith the High and Lofty"),
+        ("</p> <h3><br/>Fourteenth Day.<br/></h3>",
+         "<p>‘Therefore also that <em>holy</em>"),
+        ("</p> <h3><br/>Fifteenth Day.<br/></h3>",
+         "<p>‘But this spake He of the Spirit,"),
+        ("</p> <h3><br/>Sixteenth Day.<br/></h3>",
+         "<p>‘<em>Make them holy</em> in"),
+        ("</p> <h3><br/>Seventeenth Day.<br/></h3>",
+         "<p>‘For their sakes I <em>sanctify</em>"),
+        ("</p> <h3><br/>Eighteenth Day.<br/></h3>",
+         "<p>‘That they may receive remission"),
+        ("</p> <h3><br/>Nineteenth Day.<br/></h3>",
+         "<p>‘The Son of God, who was born"),
+        ("</p> <h3><br/>Twentieth Day.<br/></h3>",
+         "<p>‘Being made <em>free from sin</em>,"),
+        ("</p> <h3><br/>Twenty-first Day.<br/></h3>",
+         "<p>‘The kingdom of God is joy in"),
+        ("</p> <h3><br/>Twenty-second Day.<br/></h3>",
+         "<p>‘Of God are ye in Christ Jesus,"),
+        ("</p> <h3><br/>Twenty-third Day.<br/></h3>",
+         "<p>‘The temple of God is <em>holy</em>,"),
+        ("</p> <h3><br/>Twenty-fourth Day.<br/></h3>",
+         "<p>‘Having therefore these promises,"),
+        ("</p> <h3><br/>Twenty-fifth Day.<br/></h3>",
+         "<p>‘Ye are witnesses, and God also,"),
+        ("</p> <h3><br/>Twenty-sixth Day.<br/></h3>",
+         "<p>‘This is <em>the will of God</em>,"),
+        ("</p> <h3><br/>Twenty-seventh Day.<br/></h3>",
+         "<p>‘If a man therefore cleanse"),
+        ("</p> <h3><br/>Twenty-eighth Day.<br/></h3>",
+         "<p>‘Having therefore, brethren,"),
+        ("</p> <h3><br/>Twenty-ninth Day.<br/></h3>",
+         "<p>‘He chasteneth us for our profit, that we may"),
+        ("</p> <h3><br/>Thirtieth Day.<br/></h3>",
+         "<p>‘And ye have <em>an anointing"),
+        ("</p> <h3><br/>Thirty-first Day.<br/></h3>",
+         "<p>‘Seeing that all these things"),
+    ],
+    "es": [
+        ("</p> <h3> <br/>Segundo día.<br/></h3>",
+         "<p>«A los que son <em>hechos santos</em>"),
+        ("</p> <h3> <br/>Tercer día.<br/></h3>",
+         "<p>«Y bendijo Dios el día de reposo,"),
+        ("</p> <h3> <br/>Cuarto día.<br/></h3>",
+         "<p>«Y cuando el Señor vio que Moisés"),
+        ("</p> <h3> <br/>Quinto Día.<br/></h3>",
+         "<p>«<em>Santifica</em> para <em>mí</em>"),
+        ("</p> <h3> <br/>Día Sexto.<br/></h3>",
+         "<p>«¿Quién como Tú, oh Señor, entre"),
+        ("</p> <h3> <br/>Séptimo día.<br/></h3>",
+         "<p>«Vosotros habéis visto lo que"),
+        ("</p> <h3> <br/>Octavo Día.<br/></h3>",
+         "<p>«Y que me hagan <em>un lugar"),
+        ("</p> <h3><br/>Noveno Día.<br/></h3>",
+         "<p>«Harás además una lámina de"),
+        ("</p> <h3><br/>Décimo Día.<br/></h3>",
+         "<p>«Yo soy el Señor vuestro Dios,"),
+        ("</p> <h3><br/>Día Once.<br/></h3>",
+         "<p>«Yo soy el Señor, que os hago"),
+        ("</p> <h3><br/>Duodécimo Día.<br/></h3>",
+         "<p>«Vi al Señor sentado sobre un"),
+        ("</p> <h3><br/>Día Trece.<br/></h3>",
+         "<p>«Así dice el Alto y Sublime,"),
+        ("</p> <h3><br/>Día Catorce.<br/></h3>",
+         "<p>«Por lo cual también aquel <em>santo</em>"),
+        ("</p> <h3><br/>Día Decimoquinto.<br/></h3>",
+         "<p>«Pero esto dijo del Espíritu"),
+        ("</p> <h3><br/>Día decimosexto.<br/></h3>",
+         "<p>«<em>Santifícalos</em> en <em>la"),
+        ("</p> <h3><br/>Día Decimoséptimo.<br/></h3>",
+         "<p>«Por ellos yo me <em>santifico</em>"),
+        ("</p> <h3><br/>Día dieciocho.<br/></h3>",
+         "<p>«Para que reciban perdón de"),
+        ("</p> <h3><br/>Día decimonoveno.<br/></h3>",
+         "<p>«El Hijo de Dios, que era del"),
+        ("</p> <h3><br/>Día Vigésimo.<br/></h3>",
+         "<p>«Habiendo sido hechos <em>libres"),
+        ("</p> <h3><br/>Día vigésimo primero.<br/></h3>",
+         "<p>«El reino de Dios es gozo en"),
+        ("</p> <h3><br/>Día vigésimo segundo.<br/></h3>",
+         "<p>«Mas por él estáis vosotros"),
+        ("</p> <h3><br/>Día vigésimo tercero.<br/></h3>",
+         "<p>«El templo de Dios es <em>santo</em>,"),
+        ("</p> <h3><br/>Día vigésimo cuarto.<br/></h3>",
+         "<p>«Así que, amados, puesto que"),
+        ("</p> <h3><br/>Día veinticinco.<br/></h3>",
+         "<p>«Vosotros sois testigos, y Dios"),
+        ("</p> <h3><br/>Día vigésimo sexto.<br/></h3>",
+         "<p>«Esta es <em>la voluntad de"),
+        ("</p> <h3><br/>Día Veintisiete.<br/></h3>",
+         "<p>«Si alguno, pues, se limpia"),
+        ("</p> <h3><br/>Vigésimo octavo día.<br/></h3>",
+         "<p>«Teniendo, pues, hermanos, confianza"),
+        ("</p> <h3><br/>Día vigésimo noveno.<br/></h3>",
+         "<p>«Nos disciplina para lo que nos es provechoso, para que participemos"),
+        ("</p> <h3><br/>Día Trigésimo.<br/></h3>",
+         "<p>«Vosotros tenéis <em>la unción"),
+        ("</p> <h3><br/>Día trigésimo primero.<br/></h3>",
+         "<p>«Puesto que todas estas cosas han"),
+    ],
+    "fr": [
+        ("</p> <h3> <br/>Deuxième jour.<br/></h3>",
+         "<p>« À ceux qui ont été <em>sanctifiés</em>"),
+        ("</p> <h3> <br/>Troisième jour.<br/></h3>",
+         "<p>« Dieu bénit le septième jour,"),
+        ("</p> <h3> <br/>Quatrième jour.<br/></h3>",
+         "<p>« L’Éternel vit qu’il se détournait"),
+        ("</p> <h3> <br/>Cinquième jour.<br/></h3>",
+         "<p>« <em>Consacre</em>-<em>moi</em>"),
+        ("</p> <h3> <br/>Sixième jour.<br/></h3>",
+         "<p>« Qui est comme toi parmi les"),
+        ("</p> <h3> <br/>Septième Jour.<br/></h3>",
+         "<p>« Vous avez vu ce que j’ai fait"),
+        ("</p> <h3> <br/>Huitième Jour.<br/></h3>",
+         "<p>« Ils me feront <em>un sanctuaire</em>,"),
+        ("</p> <h3><br/>Neuvième Jour.<br/></h3>",
+         "<p>« Tu feras une lame d’or pur,"),
+        ("</p> <h3><br/>Dixième jour.<br/></h3>",
+         "<p>« Je suis l’Éternel, votre Dieu,"),
+        ("</p> <h3><br/>Onzième jour.<br/></h3>",
+         "<p>« Car je suis l’Éternel, qui vous ai fait monter du pays d’Égypte, pour être <em>votre"),
+        ("</p> <h3><br/>Douzième jour.<br/></h3>",
+         "<p>« Je vis le Seigneur assis sur"),
+        ("</p> <h3><br/>Treizième Jour.<br/></h3>",
+         "<p>« Ainsi parle le Très-Haut,"),
+        ("</p> <h3><br/>Quatorzième Jour.<br/></h3>",
+         "<p>« C’est pourquoi le <em>saint</em>"),
+        ("</p> <h3><br/>Quinzième Jour.<br/></h3>",
+         "<p>« Il dit cela de l’Esprit que"),
+        ("</p> <h3><br/>Seizième Jour.<br/></h3>",
+         "<p>« <em>Sanctifie-les</em> par"),
+        ("</p> <h3><br/>Dix-septième Jour.<br/></h3>",
+         "<p>« Et je me <em>sanctifie</em>"),
+        ("</p> <h3><br/>Dix-huitième Jour.<br/></h3>",
+         "<p>« pour qu’ils reçoivent, <em>par"),
+        ("</p> <h3><br/>Dix-neuvième jour.<br/></h3>",
+         "<p>« Le Fils de Dieu, né de la"),
+        ("</p> <h3><br/>Vingtième jour.<br/></h3>",
+         "<p>« Ayant été <em>affranchis du"),
+        ("</p> <h3><br/>Vingt et unième jour.<br/></h3>",
+         "<p>« Le royaume de Dieu, c’est"),
+        ("</p> <h3><br/>Vingt-deuxième jour.<br/></h3>",
+         "<p>« Or, c’est par lui que vous"),
+        ("</p> <h3><br/>Vingt-troisième jour.<br/></h3>",
+         "<p>« Le temple de Dieu est <em>saint</em>,"),
+        ("</p> <h3><br/>Vingt-quatrième jour.<br/></h3>",
+         "<p>« Ayant donc de telles promesses,"),
+        ("</p> <h3><br/>Vingt-cinquième jour.<br/></h3>",
+         "<p>« Vous êtes témoins, et Dieu"),
+        ("</p> <h3><br/>Vingt-sixième jour.<br/></h3>",
+         "<p>« <em>Ce que Dieu veut</em>,"),
+        ("</p> <h3><br/>Vingt-septième jour.<br/></h3>",
+         "<p>« Si donc quelqu’un se conserve"),
+        ("</p> <h3><br/>Vingt-huitième Jour.<br/></h3>",
+         "<p>« Ainsi donc, frères, puisque"),
+        ("</p> <h3><br/>Vingt-neuvième Jour.<br/></h3>",
+         "<p>« Il nous châtie pour notre bien, afin que nous participions à <em>sa"),
+        ("</p> <h3><br/>Trentième Jour.<br/></h3>",
+         "<p>« Pour vous, vous avez reçu"),
+        ("</p> <h3><br/>Trente et unième jour.<br/></h3>",
+         "<p>« Puisque donc toutes ces choses doivent se"),
+    ],
+    "pt": [
+        ("</p> <h3> <br/>Segundo Dia.<br/></h3>",
+         "<p>‘Aos que foram <em>santificados</em>"),
+        ("</p> <h3> <br/>Terceiro Dia.<br/></h3>",
+         "<p>‘E abençoou Deus o dia de sábado,"),
+        ("</p> <h3> <br/>Quarto Dia.<br/></h3>",
+         "<p>‘E vendo o Senhor que ele se"),
+        ("</p> <h3> <br/>Quinto Dia.<br/></h3>",
+         "<p>‘<em>Santifica</em> para <em>mim</em>"),
+        ("</p> <h3> <br/>Sexto Dia.<br/></h3>",
+         "<p>‘Quem é como tu, ó Senhor, entre"),
+        ("</p> <h3> <br/>Sétimo Dia.<br/></h3>",
+         "<p>‘Vós tendes visto o que fiz"),
+        ("</p> <h3> <br/>Oitavo Dia.<br/></h3>",
+         "<p>‘E que me façam <em>um lugar"),
+        ("</p> <h3><br/>Nono Dia.<br/></h3>",
+         "<p>‘E farás uma lâmina de ouro"),
+        ("</p> <h3><br/>Décimo Dia.<br/></h3>",
+         "<p>‘Eu sou o Senhor vosso Deus,"),
+        ("</p> <h3><br/>Décimo Primeiro Dia.<br/></h3>",
+         "<p>‘Eu sou o Senhor, que vos fiz"),
+        ("</p> <h3><br/>Décimo Segundo Dia.<br/></h3>",
+         "<p>‘Vi o Senhor assentado sobre"),
+        ("</p> <h3><br/>Décimo Terceiro Dia.<br/></h3>",
+         "<p>‘Assim diz o Alto e o Sublime,"),
+        ("</p> <h3><br/>Décimo Quarto Dia.<br/></h3>",
+         "<p>‘Por isso também aquele <em>santo</em>"),
+        ("</p> <h3><br/>Décimo Quinto Dia.<br/></h3>",
+         "<p>‘Ora, isto disse Ele a respeito"),
+        ("</p> <h3><br/>Décimo Sexto Dia.<br/></h3>",
+         "<p>‘<em>Santifica-os</em> na <em>verdade</em>:"),
+        ("</p> <h3><br/>Décimo Sétimo Dia.<br/></h3>",
+         "<p>‘Eu por eles me <em>santifico</em>"),
+        ("</p> <h3><br/>Décimo Oitavo Dia.<br/></h3>",
+         "<p>‘para que recebam a remissão"),
+        ("</p> <h3><br/>Décimo Nono Dia.<br/></h3>",
+         "<p>‘O Filho de Deus, que nasceu"),
+        ("</p> <h3><br/>Vigésimo Dia.<br/></h3>",
+         "<p>‘Sendo <em>libertados do pecado</em>,"),
+        ("</p> <h3><br/>Vigésimo Primeiro Dia.<br/></h3>",
+         "<p>‘O reino de Deus é alegria no"),
+        ("</p> <h3><br/>Vigésimo Segundo Dia.<br/></h3>",
+         "<p>‘Mas vós sois dele, em Cristo"),
+        ("</p><h3><br/>Vigésimo Terceiro Dia.<br/></h3>",
+         "<p>‘O templo de Deus é <em>santo</em>,"),
+        ("</p> <h3><br/>Vigésimo Quarto Dia.<br/></h3>",
+         "<p>‘Tendo, portanto, estas promessas,"),
+        ("</p> <h3><br/>Vigésimo Quinto Dia.<br/></h3>",
+         "<p>‘Vós e Deus sois testemunhas"),
+        ("</p><h3><br/>Vigésimo Sexto Dia.<br/></h3>",
+         "<p>‘Esta é <em>a vontade de Deus</em>,"),
+        ("</p> <h3><br/>Vigésimo Sétimo Dia.<br/></h3>",
+         "<p>‘Se, pois, alguém se purificar"),
+        ("</p> <h3><br/>Vigésimo Oitavo Dia.<br/></h3>",
+         "<p>‘Tendo, pois, irmãos, ousadia"),
+        ("</p> <h3><br/>Vigésimo Nono Dia.<br/></h3>",
+         "<p>‘Deus nos corrige para o nosso proveito, para que sejamos participantes da <em>sua"),
+        ("</p><h3><br/>Trigésimo Dia.<br/></h3>",
+         "<p>‘E vós tendes <em>uma unção"),
+        ("</p> <h3><br/>Trigésimo Primeiro Dia.<br/></h3>",
+         "<p>‘Visto que todas estas coisas hão"),
+    ],
+    "sw": [
+        ("</p> <h3> <br/>Siku ya Pili.<br/></h3>",
+         "<p>‘Kwa wale waliofanywa <em>watakatifu</em>"),
+        ("</p> <h3> <br/>Siku ya Tatu.<br/></h3>",
+         "<p>‘Mungu akaibariki siku ya Sabato,"),
+        ("</p> <h3> <br/>Siku ya Nne.<br/></h3>",
+         "<p>‘Naye Bwana alipoona ya kuwa"),
+        ("</p> <h3> <br/>Siku ya Tano.<br/></h3>",
+         "<p>‘<em>Takaseni</em> kwa ajili"),
+        ("</p> <h3> <br/>Siku ya Sita.<br/></h3>",
+         "<p>‘Ni nani aliye kama Wewe, Ee"),
+        ("</p> <h3> <br/>Siku ya Saba.<br/></h3>",
+         "<p>‘Mmeona niliyowatendea Wamisri,"),
+        ("</p> <h3> <br/>Siku ya Nane.<br/></h3>",
+         "<p>‘Nao na wanifanyie <em>mahali"),
+        ("</p> <h3><br/>Siku ya Tisa.<br/></h3>",
+         "<p>‘Nawe fanya bamba la dhahabu"),
+        ("</p> <h3><br/>Siku ya Kumi.<br/></h3>",
+         "<p>‘Mimi ni Bwana, Mungu wenu,"),
+        ("</p> <h3><br/>Siku ya Kumi na Moja.<br/></h3>",
+         "<p>‘Mimi ni Bwana niliyewapandisha"),
+        ("</p> <h3><br/>Siku ya Kumi na Mbili.<br/></h3>",
+         "<p>‘Nalimwona Bwana ameketi katika"),
+        ("</p> <h3><br/>Siku ya Kumi na Tatu.<br/></h3>",
+         "<p>‘Bwana asema hivi, yeye aliye"),
+        ("</p> <h3><br/>Siku ya Kumi na Nne.<br/></h3>",
+         "<p>‘Kwa hiyo hicho <em>kitakatifu</em>"),
+        ("</p> <h3><br/>Siku ya Kumi na Tano.<br/></h3>",
+         "<p>‘Lakini hili alilinena kwa habari"),
+        ("</p> <h3><br/>Siku ya Kumi na Sita.<br/></h3>",
+         "<p>‘<em>Uwafanye watakatifu</em>"),
+        ("</p> <h3><br/>Siku ya Kumi na Saba.<br/></h3>",
+         "<p>‘Kwa ajili yao <em>najitakasa</em>"),
+        ("</p> <h3><br/>Siku ya Kumi na Nane.<br/></h3>",
+         "<p>‘Ili wapate msamaha wa dhambi,"),
+        ("</p> <h3><br/>Siku ya Kumi na Tisa.<br/></h3>",
+         "<p>‘Mwana wa Mungu, aliyezaliwa"),
+        ("</p> <h3><br/>Siku ya Ishirini.<br/></h3>",
+         "<p>‘Mkiisha kuwekwa <em>huru na"),
+        ("</p> <h3><br/>Siku ya Ishirini na Moja.<br/></h3>",
+         "<p>‘Ufalme wa Mungu ni furaha katika"),
+        ("</p> <h3><br/>Siku ya Ishirini na Mbili.<br/></h3>",
+         "<p>‘Bali kwa yeye ninyi mmo katika"),
+        ("</p> <h3><br/>Siku ya Ishirini na Tatu.<br/></h3>",
+         "<p>‘Hekalu la Mungu ni <em>takatifu</em>,"),
+        ("</p> <h3><br/>Siku ya Ishirini na Nne.<br/></h3>",
+         "<p>‘Basi, kwa kuwa tuna ahadi hizi,"),
+        ("</p> <h3><br/>Siku ya Ishirini na Tano.<br/></h3>",
+         "<p>‘Ninyi ni mashahidi, na Mungu"),
+        ("</p> <h3><br/>Siku ya Ishirini na Sita.<br/></h3>",
+         "<p>‘Haya ndiyo <em>mapenzi ya Mungu</em>,"),
+        ("</p> <h3><br/>Siku ya Ishirini na Saba.<br/></h3>",
+         "<p>‘Basi mtu akijisafisha na mambo"),
+        ("</p> <h3><br/>Siku ya Ishirini na Nane.<br/></h3>",
+         "<p>‘Basi, ndugu, kwa kuwa tuna"),
+        ("</p> <h3><br/>Siku ya Ishirini na Tisa.<br/></h3>",
+         "<p>‘Yeye hutuadhibu kwa faida yetu, ili tupate"),
+        ("</p> <h3><br/>Siku ya Thelathini.<br/></h3>",
+         "<p>‘Nanyi mnao <em>upako kutoka"),
+        ("</p> <h3><br/>Siku ya Thelathini na Moja.<br/></h3>",
+         "<p>‘Basi kwa kuwa vitu hivi vyote"),
+    ],
+    "lg": [
+        ("</p> <h3> <br/>Olunaku Olwokubiri.<br/></h3>",
+         "<p>‘Eri abo <em>abaatukuzibwa</em>"),
+        ("</p> <h3> <br/>Olunaku olw’Okusatu.<br/></h3>",
+         "<p>‘Bw’atyo Katonda olunaku olw’omusanvu"),
+        ("</p> <h3> <br/>Olunaku olw’Okuna.<br/></h3>",
+         "<p>‘Mukama bwe yalaba nga Musa"),
+        ("</p> <h3> <br/>Olunaku olw’Okutaano.<br/></h3>",
+         "<p>‘Ebibereberye byonna <em>binjawulireko</em>"),
+        ("</p> <h3> <br/>Olunaku olw’Omukaaga.<br/></h3>",
+         "<p>‘Ani akufaanana, Ayi Mukama,"),
+        ("</p> <h3> <br/>Olunaku olw’Omusanvu.<br/></h3>",
+         "<p>‘Mwalaba bye nakola Abamisiri,"),
+        ("</p> <h3> <br/>Olunaku olw’Omunaana.<br/></h3>",
+         "<p>‘Bankolere <em>ekifo ekitukuvu</em>"),
+        ("</p> <h3><br/>Olunaku olw’Omwenda.<br/></h3>",
+         "<p>‘Onookola akapande aka zaabu"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi.<br/></h3>",
+         "<p>‘Nze Mukama Katonda wammwe <em>eyabaawula</em>"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Olumu.<br/></h3>",
+         "<p>‘Nze Mukama eyabaggya mu nsi"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Ebbiri.<br/></h3>",
+         "<p>‘Nalaba Mukama ng’atudde ku"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Essatu.<br/></h3>",
+         "<p>‘Kubanga bw’atyo bw’ayogera"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Ennya.<br/></h3>",
+         "<p>‘omwana alizaalibwa aliba <em>mutukuvu</em>,"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Etaano.<br/></h3>",
+         "<p>‘Yesu yali ayogera ku <em>Mwoyo"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Omukaaga.<br/></h3>",
+         "<p>‘<em>Obatukuze</em> mu <em>mazima</em>;"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Omusanvu.<br/></h3>",
+         "<p>‘Era <em>neetukuza</em> ku lwabwe"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Omunaana.<br/></h3>",
+         "<p>‘Balyoke basonyiyibwe ebibi"),
+        ("</p> <h3><br/>Olunaku olw’Ekkumi n’Omwenda.<br/></h3>",
+         "<p>‘Omwana wa Katonda, eyava mu"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri.<br/></h3>",
+         "<p>‘Noolwekyo <em>mwasumululwa"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Lumu.<br/></h3>",
+         "<p>‘Obwakabaka bwa Katonda bwe"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Bbiri.<br/></h3>",
+         "<p>‘Kyokka ku bw’oyo muli mu Kristo"),
+        ("</p> <h3><br/>Olunaku olw’Abiri mu Ssatu.<br/></h3>",
+         "<p>‘Yeekaalu ya Katonda <em>ntukuvu</em>,"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Nnya.<br/></h3>",
+         "<p>‘Abaagalwa, nga bwe tulina ebisuubizo"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Ttaano.<br/></h3>",
+         "<p>‘Mmwe muli bajulirwa, era ne"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Mukaaga.<br/></h3>",
+         "<p>‘<em>Katonda ayagala</em> <em>mutukuzibwe</em>.’—1"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Musanvu.<br/></h3>",
+         "<p>‘Kale omuntu bw’alyeerongoosa"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Munaana.<br/></h3>",
+         "<p>‘Kale abooluganda nga bwe tulina"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Abiri mu Omwenda.<br/></h3>",
+         "<p>‘Ye atugunjula tugasibwe tulyoke tusobole okugabanira awamu naye mu <em>butukuvu"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Asatu.<br/></h3>",
+         "<p>‘Kyokka mmwe <em>mwafukibwako"),
+        ("</p> <h3><br/>Olunaku olw’Amakumi Asatu mu Lumu.<br/></h3>",
+         "<p>‘Kale obanga ebintu byonna bya"),
+    ],
+    "hi": [
+        ("</p> <h3> <br/>दूसरा दिन।<br/></h3>",
+         "<p>‘उनके नाम जो मसीह यीशु में <em>पवित्र"),
+        ("</p> <h3> <br/>तीसरा दिन।<br/></h3>",
+         "<p>‘और परमेश्वर ने सातवें दिन को"),
+        ("</p> <h3> <br/>चौथा दिन।<br/></h3>",
+         "<p>‘जब यहोवा ने देखा कि मूसा देखने"),
+        ("</p> <h3> <br/>पाँचवाँ दिन।<br/></h3>",
+         "<p>‘सब पहलौठों को <em>मेरे</em>"),
+        ("</p> <h3> <br/>छठा दिन।<br/></h3>",
+         "<p>‘हे यहोवा, देवताओं में तेरे"),
+        ("</p> <h3> <br/>सातवाँ दिन।<br/></h3>",
+         "<p>‘तुम ने देखा है कि मैंने मिस्रियों"),
+        ("</p> <h3> <br/>आठवाँ दिन।<br/></h3>",
+         "<p>‘और वे मेरे लिये <em>एक पवित्रस्थान</em>"),
+        ("</p> <h3><br/>नौवाँ दिन।<br/></h3>",
+         "<p>‘फिर शुद्ध सोने का एक टीका बनवाना,"),
+        ("</p> <h3><br/>दसवाँ दिन।<br/></h3>",
+         "<p>‘मैं तुम्हारा परमेश्वर यहोवा"),
+        ("</p> <h3><br/>ग्यारहवाँ दिन।<br/></h3>",
+         "<p>‘मैं वह यहोवा हूँ जो तुम्हें"),
+        ("</p><h3><br/>बारहवाँ दिन।<br/></h3>",
+         "<p>‘मैंने प्रभु को बहुत ही ऊँचे"),
+        ("</p><h3><br/>तेरहवाँ दिन।<br/></h3>",
+         "<p>‘जो महान और उत्तम और सदैव स्थिर"),
+        ("</p> <h3><br/>चौदहवाँ दिन।<br/></h3>",
+         "<p>‘इसलिए वह <em>पवित्र</em> जो"),
+        ("</p> <h3><br/>पन्द्रहवाँ दिन।<br/></h3>",
+         "<p>‘उसने यह वचन उस आत्मा के विषय"),
+        ("</p> <h3><br/>सोलहवाँ दिन।<br/></h3>",
+         "<p>‘<em>सत्य</em> के द्वारा <em>उन्हें"),
+        ("</p> <h3><br/>सत्रहवाँ दिन।<br/></h3>",
+         "<p>‘उनके लिये मैं अपने आपको <em>पवित्र"),
+        ("</p> <h3><br/>अठारहवाँ दिन।<br/></h3>",
+         "<p>‘कि पापों की क्षमा, और उन लोगों"),
+        ("</p> <h3><br/>उन्नीसवाँ दिन।<br/></h3>",
+         "<p>‘परमेश्वर का पुत्र, जो <em>शरीर"),
+        ("</p> <h3><br/>बीसवाँ दिन।<br/></h3>",
+         "<p>‘<em>पाप से छुड़ाए जाकर</em> धार्मिकता"),
+        ("</p> <h3><br/>इक्कीसवाँ दिन।<br/></h3>",
+         "<p>‘परमेश्वर का राज्य वह आनन्द"),
+        ("</p> <h3><br/>बाईसवाँ दिन।<br/></h3>",
+         "<p>‘उसी की ओर से तुम मसीह यीशु"),
+        ("</p> <h3><br/>तेईसवाँ दिन।<br/></h3>",
+         "<p>‘परमेश्वर का मन्दिर <em>पवित्र</em>"),
+        ("</p> <h3><br/>चौबीसवाँ दिन।<br/></h3>",
+         "<p>‘हे प्यारों जबकि ये प्रतिज्ञाएँ"),
+        ("</p> <h3><br/>पच्चीसवाँ दिन।<br/></h3>",
+         "<p>‘तुम आप ही गवाह हो, और परमेश्वर"),
+        ("</p> <h3><br/>छब्बीसवाँ दिन।<br/></h3>",
+         "<p>‘<em>परमेश्वर की इच्छा</em>"),
+        ("</p> <h3><br/>सत्ताईसवाँ दिन।<br/></h3>",
+         "<p>‘यदि कोई अपने आपको इनसे शुद्ध"),
+        ("</p> <h3><br/>अट्ठाईसवाँ दिन।<br/></h3>",
+         "<p>‘इसलिए हे भाइयों, जबकि हमें"),
+        ("</p> <h3><br/>उनतीसवाँ दिन।<br/></h3>",
+         "<p>‘वह तो हमारे लाभ के लिये ताड़ना करता है, कि हम भी <em>उसकी"),
+        ("</p> <h3><br/>तीसवाँ दिन।<br/></h3>",
+         "<p>‘और तुम्हारा तो <em>उस पवित्र"),
+        ("</p> <h3><br/>इकतीसवाँ दिन।<br/></h3>",
+         "<p>‘तो जबकि ये सब वस्तुएँ, इस रीति"),
+    ],
+    "ar": [
+        ("</p> <h3> <br/>اليوم الثاني.<br/></h3>",
+         "<p>«<em>ٱلْمُقَدَّسِينَ</em> فِي"),
+        ("</p> <h3> <br/>اليوم الثالث.<br/></h3>",
+         "<p>«وَبَارَكَ ٱللهُ ٱلْيَوْمَ ٱلسَّابِعَ"),
+        ("</p> <h3> <br/>اليوم الرابع.<br/></h3>",
+         "<p>«فَلَمَّا رَأَى ٱلرَّبُّ أَنَّهُ"),
+        ("</p> <h3> <br/>اليوم الخامس.<br/></h3>",
+         "<p>«<em>قَدِّسْ</em> <em>لِي</em>"),
+        ("</p> <h3> <br/>اليوم السادس.<br/></h3>",
+         "<p>«مَنْ مِثْلُكَ بَيْنَ ٱلْآلِهَةِ"),
+        ("</p> <h3> <br/>اليوم السابع.<br/></h3>",
+         "<p>«أَنْتُمْ رَأَيْتُمْ مَا صَنَعْتُ"),
+        ("</p> <h3> <br/>اليوم الثامن.<br/></h3>",
+         "<p>«فَيَصْنَعُونَ لِي <em>مَقْدِسًا</em>"),
+        ("</p> <h3><br/>اليوم التاسع.<br/></h3>",
+         "<p>«وَتَصْنَعُ صَفِيحَةً مِنْ ذَهَبٍ"),
+        ("</p> <h3><br/>اليوم العاشر.<br/></h3>",
+         "<p>«أَنَا ٱلرَّبُّ إِلَهُكُمُ ٱلَّذِي"),
+        ("</p> <h3><br/>اليوم الحادي عشر.<br/></h3>",
+         "<p>«أَنَا ٱلرَّبُّ ٱلَّذِي أَصْعَدَكُمْ"),
+        ("</p> <h3><br/>اليوم الثاني عشر.<br/></h3>",
+         "<p>«رَأَيْتُ ٱلسَّيِّدَ جَالِسًا"),
+        ("</p> <h3><br/>اليوم الثالث عشر.<br/></h3>",
+         "<p>«هَكَذَا قَالَ ٱلْعَلِيُّ ٱلْمُرْتَفِعُ،"),
+        ("</p> <h3><br/>اليوم الرابع عشر.<br/></h3>",
+         "<p>«فَلِذَلِكَ أَيْضًا <em>ٱلْقُدُّوسُ</em>"),
+        ("</p> <h3><br/>اليوم الخامس عشر.<br/></h3>",
+         "<p>«قَالَ هَذَا عَنِ ٱلرُّوحِ ٱلَّذِي"),
+        ("</p> <h3><br/>اليوم السادس عشر.<br/></h3>",
+         "<p>«<em>قَدِّسْهُمْ</em> فِي <em>حَقِّكَ</em>."),
+        ("</p> <h3><br/>اليوم السابع عشر.<br/></h3>",
+         "<p>«لِأَجْلِهِمْ <em>أُقَدِّسُ</em>"),
+        ("</p> <h3><br/>اليوم الثامن عشر.<br/></h3>",
+         "<p>«لكي ينالوا غفران الخطايا ونصيبا"),
+        ("</p> <h3><br/>اليوم التاسع عشر.<br/></h3>",
+         "<p>«ٱبْنِهِ. ٱلَّذِي صَارَ مِنْ"),
+        ("</p> <h3><br/>اليوم العشرون.<br/></h3>",
+         "<p>«إِذْ <em>أُعْتِقْتُمْ مِنَ"),
+        ("</p> <h3><br/>اليوم الحادي والعشرون.<br/></h3>",
+         "<p>«مَلَكُوتُ ٱللهِ … فَرَحٌ فِي"),
+        ("</p> <h3><br/>اليوم الثاني والعشرون.<br/></h3>",
+         "<p>«وَمِنْهُ أَنْتُمْ بِٱلْمَسِيحِ"),
+        ("</p> <h3><br/>اليوم الثالث والعشرون.<br/></h3>",
+         "<p>«هَيْكَلَ ٱللهِ <em>مُقَدَّسٌ</em>"),
+        ("</p> <h3><br/>اليوم الرابع والعشرون.<br/></h3>",
+         "<p>«فَإِذْ لَنَا هَذِهِ ٱلْمَوَاعِيدُ"),
+        ("</p> <h3><br/>اليوم الخامس والعشرون.<br/></h3>",
+         "<p>«أَنْتُمْ شُهُودٌ، وَٱللهُ،"),
+        ("</p> <h3><br/>اليوم السادس والعشرون.<br/></h3>",
+         "<p>«هَذِهِ هِيَ <em>إِرَادَةُ ٱللهِ</em>:"),
+        ("</p> <h3><br/>اليوم السابع والعشرون.<br/></h3>",
+         "<p>«فَإِنْ طَهَّرَ أَحَدٌ نَفْسَهُ"),
+        ("</p> <h3><br/>اليوم الثامن والعشرون.<br/></h3>",
+         "<p>«فَإِذْ لَنَا أَيُّهَا ٱلْإِخْوَةُ"),
+        ("</p> <h3><br/>اليوم التاسع والعشرون.<br/></h3>",
+         "<p>«وَأَمَّا هَذَا فَلِأَجْلِ ٱلْمَنْفَعَةِ، لِكَيْ نَشْتَرِكَ فِي <em>قَدَاسَتِهِ</em>."),
+        ("</p> <h3><br/>اليوم الثلاثون.<br/></h3>",
+         "<p>«وَأَمَّا أَنْتُمْ فَلَكُمْ"),
+        ("</p> <h3><br/>اليوم الحادي والثلاثون.<br/></h3>",
+         "<p>«فَبِمَا أَنَّ هَذِهِ كُلَّهَا"),
+    ],
+    "am": [
+        ("</p> <h3> <br/>ሁለተኛ ቀን።<br/></h3>",
+         "<p>«በክርስቶስ ኢየሱስ <em>ለተቀደሱት</em>፥"),
+        ("</p> <h3> <br/>ሦስተኛ ቀን።<br/></h3>",
+         "<p>«እግዚአብሔርም የሰንበትን ቀን ባረከ፥ <em>ቀደሰውም</em>፤"),
+        ("</p> <h3> <br/>አራተኛ ቀን።<br/></h3>",
+         "<p>«እግዚአብሔርም ሙሴ ሊያይ ፈቀቅ እንዳለ ባየ"),
+        ("</p> <h3> <br/>አምስተኛ ቀን።<br/></h3>",
+         "<p>«በኵርን ሁሉ <em>ቀድስልኝ</em>፤ <em>ለእኔ</em>"),
+        ("</p> <h3> <br/>ስድስተኛ ቀን።<br/></h3>",
+         "<p>«አቤቱ፥ ከአማልክት መካከል አንተን የሚመስል"),
+        ("</p> <h3> <br/>ሰባተኛ ቀን።<br/></h3>",
+         "<p>«በግብፃውያን ያደረግሁትን፥ እናንተንም በንስር"),
+        ("</p> <h3> <br/>ስምንተኛ ቀን።<br/></h3>",
+         "<p>«በመካከላቸውም <em>አድር</em> ዘንድ <em>መቅደስ</em>"),
+        ("</p> <h3><br/>ዘጠነኛ ቀን።<br/></h3>",
+         "<p>«ከጥሩ ወርቅም ቅጠል ሥራ፥ በእርሱም ላይ ለእግዚአብሔር"),
+        ("</p> <h3><br/>አሥረኛ ቀን።<br/></h3>",
+         "<p>«ከአሕዛብ <em>የለየኋችሁ</em> አምላካችሁ"),
+        ("</p> <h3><br/>አሥራ አንደኛ ቀን።<br/></h3>",
+         "<p>«<em>አምላካችሁ</em> እሆን ዘንድ ከግብፅ"),
+        ("</p> <h3><br/>አሥራ ሁለተኛ ቀን።<br/></h3>",
+         "<p>«ጌታን ከፍ ብሎ በተነሣ ዙፋን ላይ ተቀምጦ"),
+        ("</p> <h3><br/>አሥራ ሦስተኛ ቀን።<br/></h3>",
+         "<p>«ከፍ ያለውና ልዑል፥ በዘላለም የሚኖረው፥ ስሙም"),
+        ("</p> <h3><br/>አሥራ አራተኛ ቀን።<br/></h3>",
+         "<p>«ስለዚህ ደግሞ ከአንቺ የሚወለደው <em>ቅዱስ</em>"),
+        ("</p> <h3><br/>አሥራ አምስተኛ ቀን።<br/></h3>",
+         "<p>«ይህን ግን በእርሱ የሚያምኑ ሊቀበሉት ስላላቸው"),
+        ("</p> <h3><br/>አሥራ ስድስተኛ ቀን።<br/></h3>",
+         "<p>«<em>በእውነትህ</em> <em>ቀድሳቸው</em>፤"),
+        ("</p> <h3><br/>አሥራ ሰባተኛ ቀን።<br/></h3>",
+         "<p>«እነርሱም ደግሞ በእውነት <em>የተቀደሱ</em>"),
+        ("</p> <h3><br/>አሥራ ስምንተኛ ቀን።<br/></h3>",
+         "<p>«የኃጢአትን ስርየት፥ <em>በእኔም በማመን"),
+        ("</p> <h3><br/>አሥራ ዘጠነኛ ቀን።<br/></h3>",
+         "<p>«<em>በሥጋ በኩል</em> ከዳዊት ዘር የተወለደው፥"),
+        ("</p> <h3><br/>ሃያኛ ቀን።<br/></h3>",
+         "<p>«<em>ከኃጢአት አርነት ወጥታችሁ</em> ለጽድቅ"),
+        ("</p> <h3><br/>ሃያ አንደኛ ቀን።<br/></h3>",
+         "<p>«የእግዚአብሔር መንግሥት በመንፈስ ቅዱስ የሆነ"),
+        ("</p> <h3><br/>ሃያ ሁለተኛ ቀን።<br/></h3>",
+         "<p>«እናንተስ ከእግዚአብሔር ሆናችሁ በክርስቶስ"),
+        ("</p> <h3><br/>ሃያ ሦስተኛ ቀን።<br/></h3>",
+         "<p>«የእግዚአብሔር ቤተ መቅደስ <em>ቅዱስ</em>"),
+        ("</p> <h3><br/>ሃያ አራተኛ ቀን።<br/></h3>",
+         "<p>«እንግዲህ፥ ወዳጆች ሆይ፥ የዚህ ተስፋ ቃል"),
+        ("</p> <h3><br/>ሃያ አምስተኛ ቀን።<br/></h3>",
+         "<p>«በእናንተ በምታምኑ ዘንድ በእንዴት ያለ <em>ቅድስናና</em>"),
+        ("</p> <h3><br/>ሃያ ስድስተኛ ቀን።<br/></h3>",
+         "<p>«ይህ <em>የእግዚአብሔር ፈቃድ</em> እርሱም"),
+        ("</p> <h3><br/>ሃያ ሰባተኛ ቀን።<br/></h3>",
+         "<p>«እንግዲህ ማንም ራሱን ከእነዚህ ቢያነጻ፥ ለክብር"),
+        ("</p> <h3><br/>ሀያ ስምንተኛ ቀን።<br/></h3>",
+         "<p>«እንግዲህ፥ ወንድሞች ሆይ፥ <em>ወደ ቅድስት</em>"),
+        ("</p> <h3><br/>ሀያ ዘጠነኛ ቀን።<br/></h3>",
+         "<p>«እርሱ ግን <em>ከቅድስናው</em> እንድንካፈል"),
+        ("</p> <h3><br/>ሠላሳኛ ቀን።<br/></h3>",
+         "<p>«እናንተም <em>ከቅዱሱ ቅባት</em> ተቀብላችኋል፥"),
+        ("</p> <h3><br/>ሠላሳ አንደኛ ቀን።<br/></h3>",
+         "<p>«ይህ ሁሉ እንዲህ የሚፈታ ከሆነ፥ በ<em>ቅዱስ</em>"),
+    ],
+}
+
+# Ps. xcix. in ch7: the opening of the loose verse run, per edition
+# (`wrapped_blocks`).
+_HOLY_IN_CHRIST_PSALM_99: list[str] = [
+    "Let them praise Thy great",
+    "Alaben Tu nombre grande y",
+    "Qu’on célèbre ton nom grand",
+    "Louvem o teu grande e",
+    "Na walisifu jina Lako kuu",
+    "Amawanga gonna gatendereze erinnya lyo",
+    "वे तेरे महान और भययोग्य",
+    "يَحْمَدُونَ ٱسْمَكَ ٱلْعَظِيمَ وَٱلْمَهُوبَ، قُدُّوسٌ",
+    "ታላቁንና የሚያስፈራውን ስምህን ያመስግኑ። እርሱ",
+]
+
+# ch33's printer's colophon, per edition (`back_matter` seams).
+_HOLY_IN_CHRIST_COLOPHON: list[tuple[str, str]] = [
+    ("own seal.’</p>", "<p>THE END.</p>"),
+    ("propio sello.»</p>", "<p>FIN.</p>"),
+    ("sceau. »</p>", "<p>FIN.</p>"),
+    ("próprio selo.’</p>", "<p>FIM.</p>"),
+    ("wake Mwenyewe.’</p>", "<p>MWISHO.</p>"),
+    ("nvumbo ye.’</p>", "<p>ENKOMERERO.</p>"),
+    ("न तोड़ेगा।’</p>", "<p>समाप्त।</p>"),
+    ("ختمه أبدا».</p>", "<p>النهاية.</p>"),
+    ("ፈጽሞ አይሰብርም።»</p>", "<p>ተፈጸመ።</p>"),
+]
+
+
 BODY_CORRECTIONS: dict[str, dict] = {
     "the-school-of-obedience": {
         # English proofreading pass (CCEL text): transcription slips only —
         # stray/missing punctuation, misread letters, a broken entity and two
         # openers set as closers. Murray's wording and period style untouched.
         "replacements": [
+            # ch3, 4, 5, 6, 9: an empty italic block (residue of CCEL's
+            # epigraph markup) opened each chapter ahead of its epigraph.
+            ("<p><i> </i></p> <p><i>‘", "<p><i>‘"),
             # ch2
             ("<p>­ — a will utterly", "<p>— a will utterly"),
             ("so did he,’ And <i>then", "so did he.’ And <i>then"),
@@ -1378,8 +1984,44 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(<i>From an address by Pastor Stockmayer.</i>) <p>\u2018Who gave ",
              "<h3> NOTE G.</h3> <h4>\u2018Freed\u2019 and \u2018Possessed\u2019\u2014The Twofold Result of "
              "Redemption.</h4>"),
+            # The day headings, moved to the chapter they name (see the
+            # `replacements` half below and `_HOLY_IN_CHRIST_DAYS`).
+            *(
+                (anchor, cut[cut.index("<h3>"):])
+                for rows in _HOLY_IN_CHRIST_DAYS.values()
+                for cut, anchor in rows
+            ),
         ],
+        # LAYOUT (2026-11-06, every edition at once; reported by the
+        # proofreading pass #7303, which could not fix it tag-neutrally).
+        #
+        # 1. Day headings one chapter early. The source prints a day label
+        #    ("Second Day.") over each day; the importer split each chapter
+        #    just AFTER that label, so ch2-ch31 each ended on an `<h3>` naming
+        #    the NEXT day and Day 1 (ch2) opened with none. They are MOVED,
+        #    not removed: the chapter titles carry the day's THEME ("God's
+        #    Provision for Holiness"), and nothing else on the page carries
+        #    the day NUMBER \u2014 which Murray's own cross-references use
+        #    ("see \u2018Sixth Day\u2019" in ch12 and ch33). The cut is a
+        #    `replacements` pair anchored on the closing `</p>`; the insert is
+        #    a guarded `restored_blocks` row, so a second pass does nothing.
+        #    The `<hr/>` behind ch2-ch8's heading is left where it was.
+        #    "First Day." is NOT restored: it is in no edition, and every
+        #    edition would need its own wording of it.
+        # 2. ch7: the three lines quoted from Ps. xcix. shipped as loose text
+        #    between two paragraphs; `wrapped_blocks` gives them their `<p>`
+        #    (the `<br/>`s between the lines stay).
+        # 3. ch33 ended on the printer's colophon, "THE END." / "MORRISON AND
+        #    GIBB, PRINTERS, EDINBURGH." (translated in most editions); cut by
+        #    `back_matter`.
+        "wrapped_blocks": [(head, "p") for head in _HOLY_IN_CHRIST_PSALM_99],
+        "back_matter": _HOLY_IN_CHRIST_COLOPHON,
         "replacements": [
+            *(
+                (cut, "</p>")
+                for rows in _HOLY_IN_CHRIST_DAYS.values()
+                for cut, _anchor in rows
+            ),
             ("deep Restfulness ()", "deep Restfulness (ch. 3)"),
             ("humble Reverence ()", "humble Reverence (ch. 4)"),
             ("entire Surrender ()", "entire Surrender (ch. 5)"),
@@ -2644,6 +3286,104 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(Acts 7: 60) .", "(Acts 7:60)."),
             ("(Exodus 20:5) .", "(Exodus 20:5)."),
             ("(Hebrews 13:8) .", "(Hebrews 13:8)."),
+            # Layout repairs (2026-11-06), every edition at once so the tag
+            # sequences stay in lockstep (tests_translation_markup). One pair per
+            # edition, anchored on that edition's own text plus `</p><p>`, so no
+            # pair can touch the tagless body_text. Replacements rather than
+            # paragraph_breaks so the split keeps this book's `</p><p>` joint.
+            # ch2: the foreword's signature ran its three lines into one block
+            # ("Keith Price Victoria, British Columbia March, 1996"). One block per
+            # line: name, place, date.
+            ('<p>Keith Price Victoria, British Columbia March, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>March, 1996</p>'),  # en
+            ('<p>ኪት ፕራይስ ቪክቶሪያ፣ ብሪቲሽ ኮሎምቢያ ማርች 1996</p>',
+             '<p>ኪት ፕራይስ</p><p>ቪክቶሪያ፣ ብሪቲሽ ኮሎምቢያ</p><p>ማርች 1996</p>'),  # am
+            ('<p>كيث برايس فيكتوريا، كولومبيا البريطانية مارس 1996</p>',
+             '<p>كيث برايس</p><p>فيكتوريا، كولومبيا البريطانية</p><p>مارس 1996</p>'),  # ar
+            ('<p>Keith Price Victoria, Columbia Británica Marzo de 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Columbia Británica</p><p>Marzo de 1996</p>'),  # es
+            ('<p>Keith Price Victoria, Colombie-Britannique Mars 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Colombie-Britannique</p><p>Mars 1996</p>'),  # fr
+            ('<p>कीथ प्राइस विक्टोरिया, ब्रिटिश कोलंबिया मार्च, 1996</p>',
+             '<p>कीथ प्राइस</p><p>विक्टोरिया, ब्रिटिश कोलंबिया</p><p>मार्च, 1996</p>'),  # hi
+            ('<p>Keith Price Victoria, British Columbia Marisi, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>Marisi, 1996</p>'),  # lg
+            ('<p>Keith Price Victoria, Colúmbia Britânica Março de 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Colúmbia Britânica</p><p>Março de 1996</p>'),  # pt
+            ('<p>Keith Price Victoria, British Columbia Machi, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>Machi, 1996</p>'),  # sw
+            ('<p>Кіт Прайс Вікторія, Британська Колумбія Березень, 1996</p>',
+             '<p>Кіт Прайс</p><p>Вікторія, Британська Колумбія</p><p>Березень, 1996</p>'),  # uk
+            # ch8: the opening paragraph ("Many are hindered in the battle…taken
+            # umbrage") recurs as block 5 with a different middle — a draft left in.
+            # Block 1 (it opens the chapter and follows on from ch7's lion and
+            # arrows) stays; the later copy goes, in every edition. Anchored on the
+            # close of the block before it so the applied state is findable.
+            ('peace.</p><p>Many are hindered in the battle, not because they have been ‘wounded’ by others, but because they have taken upon themselves a burden that they should not be carrying. They have been offended by someone and have ‘taken umbrage.’</p>',
+             'peace.</p>'),  # en
+            ('ያስፈልገናል።</p><p>ብዙዎች በውጊያው የሚደናቀፉት በሌሎች «ስለ ቆሰሉ» ሳይሆን፣ ሊሸከሙት የማይገባቸውን ሸክም በራሳቸው ላይ ስለ ጫኑ ነው። በአንድ ሰው ቅር ተሰኝተው «ቂም ይዘዋል»።</p>',
+             'ያስፈልገናል።</p>'),  # am
+            ('سلامنا.</p><p>كثيرون يُعاقون في المعركة، لا لأنّ آخرين قد «جرحوهم»، بل لأنّهم هم أنفسهم حمّلوا أنفسهم حِملًا ما كان ينبغي لهم أن يحملوه. فقد عثروا بسبب أحدٍ من الناس، و«حملوا في نفوسهم استياءً».</p>',
+             'سلامنا.</p>'),  # ar
+            ('paz.</p><p>Muchos son estorbados en la batalla, no porque hayan sido «heridos» por otros, sino porque han tomado sobre sí una carga que no deberían llevar. Alguien los ha ofendido y se han «resentido».</p>',
+             'paz.</p>'),  # es
+            ('paix.</p><p>Beaucoup sont entravés dans le combat, non parce qu’ils ont été « blessés » par d’autres, mais parce qu’ils se sont chargés d’un fardeau qu’ils ne devraient pas porter. Ils ont été offensés par quelqu’un et s’en sont « formalisés ».</p>',
+             'paix.</p>'),  # fr
+            ('ले।</p><p>बहुत से लोग इस लड़ाई में रुक जाते हैं — इसलिए नहीं कि दूसरों ने उन्हें ‘घायल’ किया है, बल्कि इसलिए कि उन्होंने अपने ऊपर ऐसा बोझ उठा लिया है जिसे उन्हें उठाना ही नहीं चाहिए था। किसी ने उन्हें ठोकर खिलाई है और उन्होंने ‘बुरा मान लिया है।’</p>',
+             'ले।</p>'),  # hi
+            ('gyaffe.</p><p>Bangi baziyizibwa mu lutalo, si lwa kuba nti abalala ‘baabafumita’, wabula lwa kubanga beetisse omugugu gwe batasaanidde kwetikka. Omuntu abanyiizizza, ne ‘bakwata ettima.’</p>',
+             'gyaffe.</p>'),  # lg
+            ('paz.</p><p>Muitos são atrapalhados na batalha não porque tenham sido “feridos” por outros, mas porque tomaram sobre si um fardo que não deveriam estar carregando. Foram ofendidos por alguém e “ficaram melindrados”.</p>',
+             'paz.</p>'),  # pt
+            ('yetu.</p><p>Wengi huzuiwa katika vita, si kwa sababu wamejeruhiwa na wengine, bali kwa sababu wamejitwika mzigo ambao hawapaswi kuubeba. Wamechukizwa na mtu fulani nao ‘wameichukua chuki moyoni.’</p>',
+             'yetu.</p>'),  # sw
+            ('мир.</p><p>Багатьом заважає в битві не те, що інші їх «поранили», а тягар, який вони взяли на себе, хоча не повинні були його нести. Хтось їх образив, і вони «затаїли образу».</p>',
+             'мир.</p>'),  # uk
+            # ch11: a quotation broke across two blocks at “‘Serve you right! / Stew
+            # in your own juice!’” — rejoined.
+            ('you right!</p><p>Stew in',
+             'you right! Stew in'),  # en
+            ('እየነቀነቅሁ ‹ይገባሃል!</p><p>በገዛ ጦስህ',
+             'እየነቀነቅሁ ‹ይገባሃል! በገዛ ጦስህ'),  # am
+            ('«هذا جزاؤك!</p><p>اغلِ في',
+             '«هذا جزاؤك! اغلِ في'),  # ar
+            ('lo tienes!</p><p>¡Cuécete en',
+             'lo tienes! ¡Cuécete en'),  # es
+            ('toi !</p><p>Mijote dans',
+             'toi ! Mijote dans'),  # fr
+            ('ही हुआ!</p><p>अपने ही',
+             'ही हुआ! अपने ही'),  # hi
+            ('nti, ‘Kikusaanidde!</p><p>Bonerera wekka',
+             'nti, ‘Kikusaanidde! Bonerera wekka'),  # lg
+            ('‘Bem feito!</p><p>Cozinhe no',
+             '‘Bem feito! Cozinhe no'),  # pt
+            ('nikisema, ‘Umestahili!</p><p>Chemka katika',
+             'nikisema, ‘Umestahili! Chemka katika'),  # sw
+            ('й треба!</p><p>Сама заварила',
+             'й треба! Сама заварила'),  # uk
+            # ch13: the break fell before the speech tag (“…release them?” / I
+            # asked. “I cannot!”…). It moves after it: the tag closes the question's
+            # block and the reply opens the next. Tag-neutral.
+            ('release them?”</p><p>I asked. “I cannot!”',
+             'release them?” I asked.</p><p>“I cannot!”'),  # en
+            ('ለመልቀቅ ትመርጫለሽ?»</p><p>ብዬ ጠየቅኋት። «አልችልም!» ብላ',
+             'ለመልቀቅ ትመርጫለሽ?» ብዬ ጠየቅኋት።</p><p>«አልችልም!» ብላ'),  # am
+            ('وأن تُطلقيهما؟»</p><p>هكذا سألتُها. فصرخت من',
+             'وأن تُطلقيهما؟» هكذا سألتُها.</p><p>فصرخت من'),  # ar
+            ('y soltarlos?»</p><p>le pregunté. «¡No puedo!»,',
+             'y soltarlos?» le pregunté.</p><p>«¡No puedo!»,'),  # es
+            ('? »</p><p>demandai-je. « Je',
+             '? » demandai-je.</p><p>« Je'),  # fr
+            ('कर दें?”</p><p>मैंने पूछा। “मैं नहीं',
+             'कर दें?” मैंने पूछा।</p><p>“मैं नहीं'),  # hi
+            ('bo n’okubasumulula?”</p><p>Bwe nnamubuuza. “Sisobola!” n’akaaba',
+             'bo n’okubasumulula?” Bwe nnamubuuza.</p><p>“Sisobola!” n’akaaba'),  # lg
+            ('e soltá-los?”,</p><p>perguntei. “Não consigo!”,',
+             'e soltá-los?”, perguntei.</p><p>“Não consigo!”,'),  # pt
+            ('na kuwaachilia?”</p><p>Niliuliza. “Siwezi!” alilia',
+             'na kuwaachilia?” Niliuliza.</p><p>“Siwezi!” alilia'),  # sw
+            ('звільнити їх?»</p><p>— запитав я. «Я не',
+             'звільнити їх?» — запитав я.</p><p>«Я не'),  # uk
         ],
     },
     "the-way-to-god": {
@@ -3951,6 +4691,174 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Anointing him with oil", "<p>\u201cAnointing him with oil"),
             ("Partnership\u2014\u201dAll I have", "Partnership\u2014\u201cAll I have"),
             ("poverty!\u2014\u201dnever had", "poverty!\u2014\u201cnever had"),
+            # Layout (2026-11-06): eleven chapters open on a bare scripture
+            # reference that the import ran into the first paragraph ("Mark
+            # 5:25—34 We may be thankful…"). The intact chapters set their opening
+            # text as a block of its own, so the reference gets one. Structural, so
+            # every edition at once, anchored on <p> and that edition's own words
+            # (tests_translation_markup pins the tag sequences together). The
+            # ch15 quote anchor (`quote_seed`) and the am/ko/vi translation
+            # notes' `block_index` values in these chapters shifted by one in
+            # the same commit.
+            # ch3
+            ("<p>Mark 5:25—34 We may", "<p>Mark 5:25—34</p><p>We may"),  # en
+            ("<p>ማርቆስ 5:25—34 ሐኪሞችን ስለ", "<p>ማርቆስ 5:25—34</p><p>ሐኪሞችን ስለ"),  # am
+            ("<p>(مرقس 5:25-34) لنا أن", "<p>(مرقس 5:25-34)</p><p>لنا أن"),  # ar
+            ("<p>Marcos 5:25—34 Podemos dar", "<p>Marcos 5:25—34</p><p>Podemos dar"),  # es
+            ("<p>Marc 5:25-34 Nous pouvons", "<p>Marc 5:25-34</p><p>Nous pouvons"),  # fr
+            ("<p>मरकुस 5:25—34 हम परमेश्वर", "<p>मरकुस 5:25—34</p><p>हम परमेश्वर"),  # hi
+            ("<p>마가복음 5:25–34 우리에게 의사들을", "<p>마가복음 5:25–34</p><p>우리에게 의사들을"),  # ko
+            ("<p>Makko 5:25—34 Tusaanidde okwebaza", "<p>Makko 5:25—34</p><p>Tusaanidde okwebaza"),  # lg
+            ("<p>Marcos 5:25—34 Podemos ser", "<p>Marcos 5:25—34</p><p>Podemos ser"),  # pt
+            ("<p>Marko 5:25-34 Twaweza kumshukuru", "<p>Marko 5:25-34</p><p>Twaweza kumshukuru"),  # sw
+            ("<p>Марка 5:25–34. Ми можемо", "<p>Марка 5:25–34.</p><p>Ми можемо"),  # uk
+            ("<p>Mác 5:25—34 Chúng ta", "<p>Mác 5:25—34</p><p>Chúng ta"),  # vi
+            # ch4
+            ("<p>Acts 3:16; 4:10, 12 When after", "<p>Acts 3:16; 4:10, 12</p><p>When after"),  # en
+            ("<p>የሐዋርያት ሥራ 3:16፤ 4:10, 12 ከበዓለ ኀምሳ", "<p>የሐዋርያት ሥራ 3:16፤ 4:10, 12</p><p>ከበዓለ ኀምሳ"),  # am
+            ("<p>(أعمال الرسل 3:16؛ 4:10، 12) عندما شُفي", "<p>(أعمال الرسل 3:16؛ 4:10، 12)</p><p>عندما شُفي"),  # ar
+            ("<p>Hechos 3:16; 4:10, 12 Cuando, después", "<p>Hechos 3:16; 4:10, 12</p><p>Cuando, después"),  # es
+            ("<p>Actes 3:16 ; 4:10, 12 Lorsque, après", "<p>Actes 3:16 ; 4:10, 12</p><p>Lorsque, après"),  # fr
+            ("<p>प्रेरितों के काम 3:16; 4:10, 12 जब पिन्तेकुस्त", "<p>प्रेरितों के काम 3:16; 4:10, 12</p><p>जब पिन्तेकुस्त"),  # hi
+            ("<p>사도행전 3:16; 4:10, 12 오순절 이후", "<p>사도행전 3:16; 4:10, 12</p><p>오순절 이후"),  # ko
+            ("<p>Ebikolwa by’Abatume 3:16; 4:10, 12 Oluvannyuma lwa", "<p>Ebikolwa by’Abatume 3:16; 4:10, 12</p><p>Oluvannyuma lwa"),  # lg
+            ("<p>Atos 3:16; 4:10, 12 Quando, depois", "<p>Atos 3:16; 4:10, 12</p><p>Quando, depois"),  # pt
+            ("<p>Matendo 3:16; 4:10, 12 Baada ya", "<p>Matendo 3:16; 4:10, 12</p><p>Baada ya"),  # sw
+            ("<p>Дїяння 3:16; 4:10, 12. Коли після", "<p>Дїяння 3:16; 4:10, 12.</p><p>Коли після"),  # uk
+            ("<p>Công Vụ Các Sứ Đồ 3:16; 4:10, 12 Sau Lễ", "<p>Công Vụ Các Sứ Đồ 3:16; 4:10, 12</p><p>Sau Lễ"),  # vi
+            # ch8
+            ("<p>I Corinthians 6:15, 19, 20 The Bible", "<p>I Corinthians 6:15, 19, 20</p><p>The Bible"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:15, 19, 20 መጽሐፍ ቅዱስ", "<p>1ኛ ቆሮንቶስ 6:15, 19, 20</p><p>መጽሐፍ ቅዱስ"),  # am
+            ("<p>(1 كورنثوس 6:15، 19، 20) يعلّمنا الكتاب", "<p>(1 كورنثوس 6:15، 19، 20)</p><p>يعلّمنا الكتاب"),  # ar
+            ("<p>1 Corintios 6:15, 19, 20 La Biblia", "<p>1 Corintios 6:15, 19, 20</p><p>La Biblia"),  # es
+            ("<p>1 Corinthiens 6:15, 19, 20 La Bible", "<p>1 Corinthiens 6:15, 19, 20</p><p>La Bible"),  # fr
+            ("<p>1 कुरिन्थियों 6:15, 19, 20 बाइबल हमें", "<p>1 कुरिन्थियों 6:15, 19, 20</p><p>बाइबल हमें"),  # hi
+            ("<p>고린도전서 6:15, 19, 20 성경은 그리스도의", "<p>고린도전서 6:15, 19, 20</p><p>성경은 그리스도의"),  # ko
+            ("<p>1 Abakkolinso 6:15, 19, 20 Bayibuli etuyigiriza", "<p>1 Abakkolinso 6:15, 19, 20</p><p>Bayibuli etuyigiriza"),  # lg
+            ("<p>1 Coríntios 6:15, 19, 20 A Bíblia", "<p>1 Coríntios 6:15, 19, 20</p><p>A Bíblia"),  # pt
+            ("<p>1 Wakorintho 6:15, 19, 20 Biblia inatufundisha", "<p>1 Wakorintho 6:15, 19, 20</p><p>Biblia inatufundisha"),  # sw
+            ("<p>1 Коринтян 6:15, 19, 20. Біблія навчає", "<p>1 Коринтян 6:15, 19, 20.</p><p>Біблія навчає"),  # uk
+            ("<p>1 Cô-rinh-tô 6:15, 19, 20 Kinh Thánh", "<p>1 Cô-rinh-tô 6:15, 19, 20</p><p>Kinh Thánh"),  # vi
+            # ch9
+            ("<p>I Corinthians 6:13 One of", "<p>I Corinthians 6:13</p><p>One of"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:13 ከሊቃውንተ መለኮት", "<p>1ኛ ቆሮንቶስ 6:13</p><p>ከሊቃውንተ መለኮት"),  # am
+            ("<p>(1 كورنثوس 6:13) قال أحد", "<p>(1 كورنثوس 6:13)</p><p>قال أحد"),  # ar
+            ("<p>1 Corintios 6:13 Uno de", "<p>1 Corintios 6:13</p><p>Uno de"),  # es
+            ("<p>1 Corinthiens 6:13 L’un des", "<p>1 Corinthiens 6:13</p><p>L’un des"),  # fr
+            ("<p>1 कुरिन्थियों 6:13 सबसे विद्वान", "<p>1 कुरिन्थियों 6:13</p><p>सबसे विद्वान"),  # hi
+            ("<p>고린도전서 6:13 가장 학식", "<p>고린도전서 6:13</p><p>가장 학식"),  # ko
+            ("<p>1 Abakkolinso 6:13 Omu ku", "<p>1 Abakkolinso 6:13</p><p>Omu ku"),  # lg
+            ("<p>1 Coríntios 6:13 Um dos", "<p>1 Coríntios 6:13</p><p>Um dos"),  # pt
+            ("<p>1 Wakorintho 6:13 Mmojawapo wa", "<p>1 Wakorintho 6:13</p><p>Mmojawapo wa"),  # sw
+            ("<p>1 Коринтян 6:13. Один із", "<p>1 Коринтян 6:13.</p><p>Один із"),  # uk
+            ("<p>1 Cô-rinh-tô 6:13 Một trong", "<p>1 Cô-rinh-tô 6:13</p><p>Một trong"),  # vi
+            # ch10
+            ("<p>I Corinthians 6:13 There is", "<p>I Corinthians 6:13</p><p>There is"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:13 እግዚአብሔር ከሰው", "<p>1ኛ ቆሮንቶስ 6:13</p><p>እግዚአብሔር ከሰው"),  # am
+            ("<p>(1 كورنثوس 6:13) إن في", "<p>(1 كورنثوس 6:13)</p><p>إن في"),  # ar
+            ("<p>1 Corintios 6:13 Hay reciprocidad", "<p>1 Corintios 6:13</p><p>Hay reciprocidad"),  # es
+            ("<p>1 Corinthiens 6:13 Il y", "<p>1 Corinthiens 6:13</p><p>Il y"),  # fr
+            ("<p>1 कुरिन्थियों 6:13 परमेश्वर के", "<p>1 कुरिन्थियों 6:13</p><p>परमेश्वर के"),  # hi
+            ("<p>고린도전서 6:13 하나님께서 사람과", "<p>고린도전서 6:13</p><p>하나님께서 사람과"),  # ko
+            ("<p>1 Abakkolinso 6:13 Mu nkolagana", "<p>1 Abakkolinso 6:13</p><p>Mu nkolagana"),  # lg
+            ("<p>1 Coríntios 6:13 Há reciprocidade", "<p>1 Coríntios 6:13</p><p>Há reciprocidade"),  # pt
+            ("<p>1 Wakorintho 6:13 Kuna kulipiana", "<p>1 Wakorintho 6:13</p><p>Kuna kulipiana"),  # sw
+            ("<p>1 Коринтян 6:13. У Божих", "<p>1 Коринтян 6:13.</p><p>У Божих"),  # uk
+            ("<p>1 Cô-rinh-tô 6:13 Trong mối", "<p>1 Cô-rinh-tô 6:13</p><p>Trong mối"),  # vi
+            # ch11
+            ("<p>Romans 4:19—21 When God", "<p>Romans 4:19—21</p><p>When God"),  # en
+            ("<p>ሮሜ 4:19—21 እግዚአብሔር ለአብርሃም", "<p>ሮሜ 4:19—21</p><p>እግዚአብሔር ለአብርሃም"),  # am
+            ("<p>(رومية 4:19-21) حين وعد", "<p>(رومية 4:19-21)</p><p>حين وعد"),  # ar
+            ("<p>Romanos 4:19—21 Cuando Dios", "<p>Romanos 4:19—21</p><p>Cuando Dios"),  # es
+            ("<p>Romains 4:19-21 Lorsque Dieu", "<p>Romains 4:19-21</p><p>Lorsque Dieu"),  # fr
+            ("<p>रोमियों 4:19—21 जब परमेश्वर", "<p>रोमियों 4:19—21</p><p>जब परमेश्वर"),  # hi
+            ("<p>로마서 4:19-21 하나님께서 아브라함에게", "<p>로마서 4:19-21</p><p>하나님께서 아브라함에게"),  # ko
+            ("<p>Abaruumi 4:19—21 Katonda bwe", "<p>Abaruumi 4:19—21</p><p>Katonda bwe"),  # lg
+            ("<p>Romanos 4:19—21 Quando Deus", "<p>Romanos 4:19—21</p><p>Quando Deus"),  # pt
+            ("<p>Warumi 4:19-21 Mungu alipoahidi", "<p>Warumi 4:19-21</p><p>Mungu alipoahidi"),  # sw
+            ("<p>Римлян 4:19–21. Коли Бог", "<p>Римлян 4:19–21.</p><p>Коли Бог"),  # uk
+            ("<p>Rô-ma 4:19-21 Khi Đức", "<p>Rô-ma 4:19-21</p><p>Khi Đức"),  # vi
+            # ch13
+            ("<p>Psalm 91:3, 6, 16; Psalm 92:14 This objection", "<p>Psalm 91:3, 6, 16; Psalm 92:14</p><p>This objection"),  # en
+            ("<p>መዝሙር 91:3, 6, 16፤ መዝሙር 92:14 ሐዋርያው ያዕቆብ፦", "<p>መዝሙር 91:3, 6, 16፤ መዝሙር 92:14</p><p>ሐዋርያው ያዕቆብ፦"),  # am
+            ("<p>(مزمور 91:3، 6، 16؛ مزمور 92:14) كثيرًا ما", "<p>(مزمور 91:3، 6، 16؛ مزمور 92:14)</p><p>كثيرًا ما"),  # ar
+            ("<p>Salmo 91:3, 6, 16; Salmo 92:14 Con frecuencia", "<p>Salmo 91:3, 6, 16; Salmo 92:14</p><p>Con frecuencia"),  # es
+            ("<p>Psaume 91:3, 6, 16 ; Psaume 92:14 On fait", "<p>Psaume 91:3, 6, 16 ; Psaume 92:14</p><p>On fait"),  # fr
+            ("<p>भजन संहिता 91:3, 6, 16; भजन संहिता 92:14 प्रेरित याकूब", "<p>भजन संहिता 91:3, 6, 16; भजन संहिता 92:14</p><p>प्रेरित याकूब"),  # hi
+            ("<p>시편 91:3, 6, 16; 시편 92:14 사도 야고보의", "<p>시편 91:3, 6, 16; 시편 92:14</p><p>사도 야고보의"),  # ko
+            ("<p>Zabbuli 91:3, 6, 16; Zabbuli 92:14 Ebigambo by’omutume", "<p>Zabbuli 91:3, 6, 16; Zabbuli 92:14</p><p>Ebigambo by’omutume"),  # lg
+            ("<p>Salmos 91:3, 6, 16; Salmos 92:14 Esta objeção", "<p>Salmos 91:3, 6, 16; Salmos 92:14</p><p>Esta objeção"),  # pt
+            ("<p>Zaburi 91:3, 6, 16; Zaburi 92:14 Pingamizi hili", "<p>Zaburi 91:3, 6, 16; Zaburi 92:14</p><p>Pingamizi hili"),  # sw
+            ("<p>Псальма 91:3, 6, 16; Псальма 92:14. Проти слів", "<p>Псальма 91:3, 6, 16; Псальма 92:14.</p><p>Проти слів"),  # uk
+            ("<p>Thi Thiên 91:3, 6, 16; Thi Thiên 92:14 Người ta", "<p>Thi Thiên 91:3, 6, 16; Thi Thiên 92:14</p><p>Người ta"),  # vi
+            # ch14
+            ("<p>I Corinthians 12:4, 9, 11 What is", "<p>I Corinthians 12:4, 9, 11</p><p>What is"),  # en
+            ("<p>1ኛ ቆሮንቶስ 12:4, 9, 11 የእግዚአብሔርን ልጆች", "<p>1ኛ ቆሮንቶስ 12:4, 9, 11</p><p>የእግዚአብሔርን ልጆች"),  # am
+            ("<p>(1 كورنثوس 12:4، 9، 11) ما الذي", "<p>(1 كورنثوس 12:4، 9، 11)</p><p>ما الذي"),  # ar
+            ("<p>1 Corintios 12:4, 9, 11 ¿Qué es", "<p>1 Corintios 12:4, 9, 11</p><p>¿Qué es"),  # es
+            ("<p>1 Corinthiens 12:4, 9, 11 Qu’est-ce qui", "<p>1 Corinthiens 12:4, 9, 11</p><p>Qu’est-ce qui"),  # fr
+            ("<p>1 कुरिन्थियों 12:4, 9, 11 वह क्या", "<p>1 कुरिन्थियों 12:4, 9, 11</p><p>वह क्या"),  # hi
+            ("<p>고린도전서 12:4, 9, 11 하나님의 자녀들을", "<p>고린도전서 12:4, 9, 11</p><p>하나님의 자녀들을"),  # ko
+            ("<p>1 Abakkolinso 12:4, 9, 11 Kiki ekyawula", "<p>1 Abakkolinso 12:4, 9, 11</p><p>Kiki ekyawula"),  # lg
+            ("<p>1 Coríntios 12:4, 9, 11 Que é", "<p>1 Coríntios 12:4, 9, 11</p><p>Que é"),  # pt
+            ("<p>1 Wakorintho 12:4, 9, 11 Ni nini", "<p>1 Wakorintho 12:4, 9, 11</p><p>Ni nini"),  # sw
+            ("<p>1 Коринтян 12:4, 9, 11. Чим вирізняються", "<p>1 Коринтян 12:4, 9, 11.</p><p>Чим вирізняються"),  # uk
+            ("<p>1 Cô-rinh-tô 12:4, 9, 11 Điều gì", "<p>1 Cô-rinh-tô 12:4, 9, 11</p><p>Điều gì"),  # vi
+            # ch15
+            ("<p>Luke 18:1—8 The necessity", "<p>Luke 18:1—8</p><p>The necessity"),  # en
+            ("<p>ሉቃስ 18:1—8 በጸሎት ሳይታክቱ", "<p>ሉቃስ 18:1—8</p><p>በጸሎት ሳይታክቱ"),  # am
+            ("<p>(لوقا 18:1-8) إن ضرورة", "<p>(لوقا 18:1-8)</p><p>إن ضرورة"),  # ar
+            ("<p>Lucas 18:1—8 La necesidad", "<p>Lucas 18:1—8</p><p>La necesidad"),  # es
+            ("<p>Luc 18:1-8 La nécessité", "<p>Luc 18:1-8</p><p>La nécessité"),  # fr
+            ("<p>लूका 18:1—8 दृढ़ता के", "<p>लूका 18:1—8</p><p>दृढ़ता के"),  # hi
+            ("<p>누가복음 18:1–8 인내하며 기도해야", "<p>누가복음 18:1–8</p><p>인내하며 기도해야"),  # ko
+            ("<p>Lukka 18:1—8 Obwetaavu bw’okusaba", "<p>Lukka 18:1—8</p><p>Obwetaavu bw’okusaba"),  # lg
+            ("<p>Lucas 18:1—8 A necessidade", "<p>Lucas 18:1—8</p><p>A necessidade"),  # pt
+            ("<p>Luka 18:1-8 Ulazima wa", "<p>Luka 18:1-8</p><p>Ulazima wa"),  # sw
+            ("<p>Луки 18:1—8. Необхідність наполегливої", "<p>Луки 18:1—8.</p><p>Необхідність наполегливої"),  # uk
+            ("<p>Lu-ca 18:1–8 Sự cần", "<p>Lu-ca 18:1–8</p><p>Sự cần"),  # vi
+            # ch17
+            ("<p>Acts 4:29—31 Is it", "<p>Acts 4:29—31</p><p>Is it"),  # en
+            ("<p>የሐዋርያት ሥራ 4:29—31 ዛሬም እንዲህ", "<p>የሐዋርያት ሥራ 4:29—31</p><p>ዛሬም እንዲህ"),  # am
+            ("<p>(أعمال الرسل 4:29-31) هل يجوز", "<p>(أعمال الرسل 4:29-31)</p><p>هل يجوز"),  # ar
+            ("<p>Hechos 4:29—31 ¿Es lícito", "<p>Hechos 4:29—31</p><p>¿Es lícito"),  # es
+            ("<p>Actes 4:29-31. Est-il permis", "<p>Actes 4:29-31.</p><p>Est-il permis"),  # fr
+            ("<p>प्रेरितों के काम 4:29—31 क्या आज", "<p>प्रेरितों के काम 4:29—31</p><p>क्या आज"),  # hi
+            ("<p>사도행전 4:29–31 오늘날에도 이렇게", "<p>사도행전 4:29–31</p><p>오늘날에도 이렇게"),  # ko
+            ("<p>Ebikolwa by’Abatume 4:29—31 Kikkirizibwa okusaba", "<p>Ebikolwa by’Abatume 4:29—31</p><p>Kikkirizibwa okusaba"),  # lg
+            ("<p>Atos 4:29—31 Será permitido", "<p>Atos 4:29—31</p><p>Será permitido"),  # pt
+            ("<p>Matendo 4:29-31 Je, yaruhusika", "<p>Matendo 4:29-31</p><p>Je, yaruhusika"),  # sw
+            ("<p>Дїяння 4:29–31. Чи можна", "<p>Дїяння 4:29–31.</p><p>Чи можна"),  # uk
+            ("<p>Công Vụ Các Sứ Đồ 4:29–31 Ngày nay", "<p>Công Vụ Các Sứ Đồ 4:29–31</p><p>Ngày nay"),  # vi
+            # ch31
+            ("<p>Luke 15:31 Please turn", "<p>Luke 15:31</p><p>Please turn"),  # en
+            ("<p>ሉቃስ 15:31 እባክህ ከእኔ", "<p>ሉቃስ 15:31</p><p>እባክህ ከእኔ"),  # am
+            ("<p>(لوقا 15:31) افتحوا معي", "<p>(لوقا 15:31)</p><p>افتحوا معي"),  # ar
+            ("<p>Lucas 15:31 Vuelva conmigo", "<p>Lucas 15:31</p><p>Vuelva conmigo"),  # es
+            ("<p>Luc 15:31 Veuillez ouvrir", "<p>Luc 15:31</p><p>Veuillez ouvrir"),  # fr
+            ("<p>लूका 15:31 कृपया मेरे", "<p>लूका 15:31</p><p>कृपया मेरे"),  # hi
+            ("<p>누가복음 15:31 저와 함께", "<p>누가복음 15:31</p><p>저와 함께"),  # ko
+            ("<p>Lukka 15:31 Nkwegayiridde, tuggule", "<p>Lukka 15:31</p><p>Nkwegayiridde, tuggule"),  # lg
+            ("<p>Lucas 15:31 Peço-vos que", "<p>Lucas 15:31</p><p>Peço-vos que"),  # pt
+            ("<p>Luka 15:31 Tafadhali fungua", "<p>Luka 15:31</p><p>Tafadhali fungua"),  # sw
+            ("<p>Луки 15:31 Прошу розгорнути", "<p>Луки 15:31</p><p>Прошу розгорнути"),  # uk
+            ("<p>Lu-ca 15:31 Xin anh", "<p>Lu-ca 15:31</p><p>Xin anh"),  # vi
+        ],
+        # ch32 closes on a printer's "THE END" block, and every edition
+        # translated it. Not Murray's text: cut after his last line.
+        "back_matter": [
+            ("Glory to His blessed name!</p>", "<p>THE END</p>"),  # en
+            ("ለተባረከው ስሙ ክብር ይሁን!</p>", "<p>ተፈጸመ</p>"),  # am
+            ("المجد لاسمه المبارك!</p>", "<p>النهاية</p>"),  # ar
+            ("¡Gloria a su bendito nombre!</p>", "<p>FIN</p>"),  # es
+            ("Gloire soit à son nom béni !</p>", "<p>FIN</p>"),  # fr
+            ("उसके धन्य नाम की महिमा हो!</p>", "<p>समाप्त</p>"),  # hi
+            ("복되신 주님의 이름에 영광을 돌립니다!</p>", "<p>끝</p>"),  # ko
+            ("Ekitiibwa kibe eri erinnya lye ery’omukisa!</p>", "<p>ENKOMERERO</p>"),  # lg
+            ("Glória ao seu bendito nome!</p>", "<p>FIM</p>"),  # pt
+            ("Utukufu kwa jina Lake lililobarikiwa!</p>", "<p>MWISHO.</p>"),  # sw
+            ("Слава Його благословенному імені!</p>", "<p>КІНЕЦЬ</p>"),  # uk
+            ("Vinh hiển thay danh phước hạnh của Ngài!</p>", "<p>HẾT</p>"),  # vi
         ],
     },
     "the-gospel-of-healing": {
@@ -4894,6 +5802,210 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("than we are as its elders are!", "than we are as its elders!"),
             ("(eg; as an honorarium", "(e.g., as an honorarium"),
             ("positive witness for His Lord", "positive witness for his Lord"),
+            # Layout repairs (2026-11-06): structure the PDF extraction ran
+            # together, reported by the proofreading pass (#7315) — ch04's
+            # SIX STEPS list, ch11's Pastor/Elder dialogue lines and the
+            # covenant's signature block (which swallowed the "Continue to
+            # nurture" heading), and the appendices' lettered 1B headings and
+            # items, the "Eric Spruyt YWAM" credit fused onto Appendix 2's
+            # title, and the "Relationship with Pastor" heading. Headings are
+            # <h2>, as C./D./E. and "Relationship with the Congregation"
+            # already are. A tag change, so it lands in EVERY edition at once
+            # (tests_translation_markup pins each to the English tag sequence):
+            # one pair per site per edition, each anchored on its block's
+            # markup plus that language's own text, so it matches once in its
+            # edition and never in body_text. Only list-joining separators the
+            # translators added (am ፣/፤, ar ،, es ;) and an am heading's
+            # trailing ፦/። go; no word is changed.
+            # [en]
+            ("<p>So we outline SIX STEPS: VISION BURDEN GIFTING MINISTRY ANOINTING FLYING!",
+             "<p>So we outline SIX STEPS:</p><p>VISION</p><p>BURDEN</p><p>GIFTING</p><p>MINISTRY</p><p>ANOINTING</p><p>FLYING!"),
+            ("<p>A typical situation might be like this: Pastor:",
+             "<p>A typical situation might be like this:</p><p>Pastor:"),
+            ("<p>Another scenario: Pastor:",
+             "<p>Another scenario:</p><p>Pastor:"),
+            ("concerned? (Titus and 1 Timothy) Elder(s): We believe so.</p>",
+             "concerned? (Titus and 1 Timothy)</p><p>Elder(s): We believe so.</p>"),
+            ("<p>Agreed: Signed: Susan Smith John Williams (elder) - on behalf of the elders’ board Peter Smith (pastor) * Other sample Ministry Covenants may be found in Appendix 2 Continue to nurture When Susan",
+             "<p>Agreed: Signed:</p><p>Susan Smith</p><p>John Williams (elder) - on behalf of the elders’ board</p><p>Peter Smith (pastor)</p><p>* Other sample Ministry Covenants may be found in Appendix 2</p><h2>Continue to nurture</h2><p>When Susan"),
+            ("<p>A. WHAT YOU CANNOT DELEGATE 1. ",
+             "<h2>A. WHAT YOU CANNOT DELEGATE</h2><p>1. "),
+            ("<p>2. What only you can do B. WHAT YOU SHOULD DELEGATE 1. ",
+             "<p>2. What only you can do</p><h2>B. WHAT YOU SHOULD DELEGATE</h2><p>1. "),
+            ("<p>2. What others can do better 3. ",
+             "<p>2. What others can do better</p><p>3. "),
+            ("<p>Eric Spruyt YWAM Appendix 2 - MINISTRY COVENANT SAMPLES FOR ELDERS 1. ",
+             "<p>Eric Spruyt YWAM</p><h2>Appendix 2 - MINISTRY COVENANT SAMPLES FOR ELDERS</h2><p>1. "),
+            ("<p>•To act with the Elders’ Board in disciplining members/adherents where necessary. This must be along biblical guidelines. (One should note that the disciplining of an elder is a serious matter and will be public before the membership – 1 Tim. 5: 1,2,19,20) Relationship with Pastor Having been",
+             "<p>•To act with the Elders’ Board in disciplining members/adherents where necessary. This must be along biblical guidelines. (One should note that the disciplining of an elder is a serious matter and will be public before the membership – 1 Tim. 5: 1,2,19,20)</p><h2>Relationship with Pastor</h2><p>Having been"),
+            # [am]
+            ("ስድስቱን እርምጃዎች እንዲህ እንዘረዝራለን፦ ራእይ፣ ሸክም፣ ስጦታ፣ አገልግሎት፣ ቅባት፣ መብረር!</p>",
+             "ስድስቱን እርምጃዎች እንዲህ እንዘረዝራለን፦</p><p>ራእይ</p><p>ሸክም</p><p>ስጦታ</p><p>አገልግሎት</p><p>ቅባት</p><p>መብረር!</p>"),
+            ("<p>አንድ የተለመደ ሁኔታ ይህን ሊመስል ይችላል፦ ፓስተር፦",
+             "<p>አንድ የተለመደ ሁኔታ ይህን ሊመስል ይችላል፦</p><p>ፓስተር፦"),
+            ("<p>ሌላ ሁኔታ፦ ፓስተር፦",
+             "<p>ሌላ ሁኔታ፦</p><p>ፓስተር፦"),
+            ("መሠረት «ብቁ» ነውን? (ቲቶና 1ኛ ጢሞቴዎስ) ሽማግሌ(ዎች)፦ እንደዚያ እናምናለን።</p>",
+             "መሠረት «ብቁ» ነውን? (ቲቶና 1ኛ ጢሞቴዎስ)</p><p>ሽማግሌ(ዎች)፦ እንደዚያ እናምናለን።</p>"),
+            ("<p>ተስማምተናል፦ ፊርማ፦ ሱዛን ስሚዝ፤ ጆን ዊልያምስ (ሽማግሌ) — የሽማግሌዎችን ቦርድ በመወከል፤ ፒተር ስሚዝ (ፓስተር)። * ሌሎች የአገልግሎት ቃል ኪዳን ናሙናዎች በአባሪ 2 ይገኛሉ። መንከባከብህን ቀጥል። ሱዛን ወደ",
+             "<p>ተስማምተናል፦ ፊርማ፦</p><p>ሱዛን ስሚዝ</p><p>ጆን ዊልያምስ (ሽማግሌ) — የሽማግሌዎችን ቦርድ በመወከል</p><p>ፒተር ስሚዝ (ፓስተር)።</p><p>* ሌሎች የአገልግሎት ቃል ኪዳን ናሙናዎች በአባሪ 2 ይገኛሉ።</p><h2>መንከባከብህን ቀጥል</h2><p>ሱዛን ወደ"),
+            ("<p>ሀ. በውክልና ልትሰጠው የማትችለው 1. ",
+             "<h2>ሀ. በውክልና ልትሰጠው የማትችለው</h2><p>1. "),
+            ("<p>2. አንተ ብቻ ልታደርገው የምትችለው። ለ. በውክልና ልትሰጠው የሚገባህ 1. ",
+             "<p>2. አንተ ብቻ ልታደርገው የምትችለው።</p><h2>ለ. በውክልና ልትሰጠው የሚገባህ</h2><p>1. "),
+            ("<p>2. ሌሎች ይበልጥ ሊያደርጉት የሚችሉት። 3. ",
+             "<p>2. ሌሎች ይበልጥ ሊያደርጉት የሚችሉት።</p><p>3. "),
+            ("<p>ኤሪክ ስፕሩይት፣ ዋይዋም። አባሪ 2 — ለሽማግሌዎች የአገልግሎት ቃል ኪዳን ናሙናዎች። 1. ",
+             "<p>ኤሪክ ስፕሩይት፣ ዋይዋም።</p><h2>አባሪ 2 — ለሽማግሌዎች የአገልግሎት ቃል ኪዳን ናሙናዎች</h2><p>1. "),
+            ("<p>•አስፈላጊ በሆነበት ጊዜ አባላትን/ተሳታፊዎችን በመገሠጽ ከሽማግሌዎች ቦርድ ጋር አብሮ መሥራት። ይህም በመጽሐፍ ቅዱስ መመሪያዎች መሠረት መሆን አለበት። (የሽማግሌ ተግሣጽ ከባድ ጉዳይ እንደ ሆነና በአባላቱ ሁሉ ፊት በግልጽ እንደሚሆን ልብ ሊባል ይገባል — 1ኛ ጢሞቴዎስ 5:1, 2, 19, 20) ከፓስተሩ ጋር ያለው ግንኙነት፦ የሽማግሌዎች ቦርድ ለፓስተሩ",
+             "<p>•አስፈላጊ በሆነበት ጊዜ አባላትን/ተሳታፊዎችን በመገሠጽ ከሽማግሌዎች ቦርድ ጋር አብሮ መሥራት። ይህም በመጽሐፍ ቅዱስ መመሪያዎች መሠረት መሆን አለበት። (የሽማግሌ ተግሣጽ ከባድ ጉዳይ እንደ ሆነና በአባላቱ ሁሉ ፊት በግልጽ እንደሚሆን ልብ ሊባል ይገባል — 1ኛ ጢሞቴዎስ 5:1, 2, 19, 20)</p><h2>ከፓስተሩ ጋር ያለው ግንኙነት</h2><p>የሽማግሌዎች ቦርድ ለፓስተሩ"),
+            # [ar]
+            ("<p>وهكذا نرسم ست خطوات: الرؤية، العبء، الموهبة، الخدمة، المسحة، الطيران!",
+             "<p>وهكذا نرسم ست خطوات:</p><p>الرؤية</p><p>العبء</p><p>الموهبة</p><p>الخدمة</p><p>المسحة</p><p>الطيران!"),
+            ("<p>وقد يكون الموقف النموذجي على هذا النحو: الراعي:",
+             "<p>وقد يكون الموقف النموذجي على هذا النحو:</p><p>الراعي:"),
+            ("<p>وسيناريو آخر: الراعي:",
+             "<p>وسيناريو آخر:</p><p>الراعي:"),
+            ("المقدس؟ (تيطس وتيموثاوس الأولى) الشيخ (الشيوخ): نعتقد ذلك.</p>",
+             "المقدس؟ (تيطس وتيموثاوس الأولى)</p><p>الشيخ (الشيوخ): نعتقد ذلك.</p>"),
+            ("<p>تمّت الموافقة: التوقيع: سوزان سميث جون ويليامز (شيخ) - نيابة عن مجلس الشيوخ بيتر سميث (راعٍ) * يمكن الاطّلاع على نماذج أخرى من عهود الخدمة في الملحق 2 استمرّ في الرعاية حين تغادر",
+             "<p>تمّت الموافقة: التوقيع:</p><p>سوزان سميث</p><p>جون ويليامز (شيخ) - نيابة عن مجلس الشيوخ</p><p>بيتر سميث (راعٍ)</p><p>* يمكن الاطّلاع على نماذج أخرى من عهود الخدمة في الملحق 2</p><h2>استمرّ في الرعاية</h2><p>حين تغادر"),
+            ("<p>أ. ما لا تستطيع أن تفوّضه 1. ",
+             "<h2>أ. ما لا تستطيع أن تفوّضه</h2><p>1. "),
+            ("<p>2. ما لا يستطيع أن يفعله أحد سواك ب. ما ينبغي أن تفوّضه 1. ",
+             "<p>2. ما لا يستطيع أن يفعله أحد سواك</p><h2>ب. ما ينبغي أن تفوّضه</h2><p>1. "),
+            ("<p>2. ما يستطيع الآخرون أن يفعلوه أفضل منك 3. ",
+             "<p>2. ما يستطيع الآخرون أن يفعلوه أفضل منك</p><p>3. "),
+            ("<p>إريك سبرايت، «شباب مع رسالة» الملحق 2 - نماذج من عهود الخدمة للشيوخ 1. ",
+             "<p>إريك سبرايت، «شباب مع رسالة»</p><h2>الملحق 2 - نماذج من عهود الخدمة للشيوخ</h2><p>1. "),
+            ("<p>•أن يعمل مع مجلس الشيوخ في تأديب الأعضاء/المنتسبين حيث يلزم. ويجب أن يكون ذلك بحسب الإرشادات الكتابية. (ويجدر الانتباه إلى أن تأديب الشيخ أمر خطير، ويكون علنيًا أمام الأعضاء – تيموثاوس الأولى 5:1، 2، 19، 20) العلاقة بالراعي إذ كان",
+             "<p>•أن يعمل مع مجلس الشيوخ في تأديب الأعضاء/المنتسبين حيث يلزم. ويجب أن يكون ذلك بحسب الإرشادات الكتابية. (ويجدر الانتباه إلى أن تأديب الشيخ أمر خطير، ويكون علنيًا أمام الأعضاء – تيموثاوس الأولى 5:1، 2، 19، 20)</p><h2>العلاقة بالراعي</h2><p>إذ كان"),
+            # [es]
+            ("<p>Así que trazamos SEIS PASOS: VISIÓN CARGA DON MINISTERIO UNCIÓN ¡VOLAR!",
+             "<p>Así que trazamos SEIS PASOS:</p><p>VISIÓN</p><p>CARGA</p><p>DON</p><p>MINISTERIO</p><p>UNCIÓN</p><p>¡VOLAR!"),
+            ("<p>Una situación típica podría ser así: Pastor:",
+             "<p>Una situación típica podría ser así:</p><p>Pastor:"),
+            ("<p>Otro escenario: Pastor:",
+             "<p>Otro escenario:</p><p>Pastor:"),
+            ("Escrituras? (Tito y 1 Timoteo) Anciano(s): Creemos que sí.</p>",
+             "Escrituras? (Tito y 1 Timoteo)</p><p>Anciano(s): Creemos que sí.</p>"),
+            ("<p>Acordado: Firmado: Susana Smith; Juan Williams (anciano), en representación de la junta de ancianos; Pedro Smith (pastor). * Se pueden encontrar otros modelos de Pactos Ministeriales en el Apéndice 2. Continúe cuidando Cuando Susana",
+             "<p>Acordado: Firmado:</p><p>Susana Smith</p><p>Juan Williams (anciano), en representación de la junta de ancianos</p><p>Pedro Smith (pastor).</p><p>* Se pueden encontrar otros modelos de Pactos Ministeriales en el Apéndice 2.</p><h2>Continúe cuidando</h2><p>Cuando Susana"),
+            ("<p>A. LO QUE USTED NO PUEDE DELEGAR 1. ",
+             "<h2>A. LO QUE USTED NO PUEDE DELEGAR</h2><p>1. "),
+            ("<p>2. Lo que solo usted puede hacer B. LO QUE USTED DEBERÍA DELEGAR 1. ",
+             "<p>2. Lo que solo usted puede hacer</p><h2>B. LO QUE USTED DEBERÍA DELEGAR</h2><p>1. "),
+            ("<p>2. Lo que otros pueden hacer mejor 3. ",
+             "<p>2. Lo que otros pueden hacer mejor</p><p>3. "),
+            ("<p>Eric Spruyt YWAM Apéndice 2 - MODELOS DE PACTO DE MINISTERIO PARA ANCIANOS 1. ",
+             "<p>Eric Spruyt YWAM</p><h2>Apéndice 2 - MODELOS DE PACTO DE MINISTERIO PARA ANCIANOS</h2><p>1. "),
+            ("<p>•Actuar junto con la Junta de Ancianos en la disciplina de miembros o adherentes cuando sea necesario. Esto debe hacerse conforme a las pautas bíblicas. (Conviene notar que la disciplina de un anciano es un asunto serio y será pública ante la membresía: 1 Ti. 5:1,2,19,20) Relación con el pastor Habiendo sido",
+             "<p>•Actuar junto con la Junta de Ancianos en la disciplina de miembros o adherentes cuando sea necesario. Esto debe hacerse conforme a las pautas bíblicas. (Conviene notar que la disciplina de un anciano es un asunto serio y será pública ante la membresía: 1 Ti. 5:1,2,19,20)</p><h2>Relación con el pastor</h2><p>Habiendo sido"),
+            # [fr]
+            ("traçons donc SIX ÉTAPES : VISION FARDEAU DON MINISTÈRE ONCTION ENVOL !</p>",
+             "traçons donc SIX ÉTAPES :</p><p>VISION</p><p>FARDEAU</p><p>DON</p><p>MINISTÈRE</p><p>ONCTION</p><p>ENVOL !</p>"),
+            ("<p>Une situation typique pourrait ressembler à ceci : Pasteur :",
+             "<p>Une situation typique pourrait ressembler à ceci :</p><p>Pasteur :"),
+            ("<p>Autre scénario : Pasteur :",
+             "<p>Autre scénario :</p><p>Pasteur :"),
+            ("Écritures ? (Tite et 1 Timothée) Ancien(s) : Nous le croyons.</p>",
+             "Écritures ? (Tite et 1 Timothée)</p><p>Ancien(s) : Nous le croyons.</p>"),
+            ("<p>Convenu : Signé : Susan Smith John Williams (ancien) — au nom du conseil des anciens Peter Smith (pasteur) * D’autres exemples d’Alliances de Ministère se trouvent à l’Annexe 2 Continuer à prendre soin Lorsque Susan",
+             "<p>Convenu : Signé :</p><p>Susan Smith</p><p>John Williams (ancien) — au nom du conseil des anciens</p><p>Peter Smith (pasteur)</p><p>* D’autres exemples d’Alliances de Ministère se trouvent à l’Annexe 2</p><h2>Continuer à prendre soin</h2><p>Lorsque Susan"),
+            ("<p>A. CE QUE VOUS NE POUVEZ PAS DÉLÉGUER 1. ",
+             "<h2>A. CE QUE VOUS NE POUVEZ PAS DÉLÉGUER</h2><p>1. "),
+            ("<p>2. Ce que vous seul pouvez faire B. CE QUE VOUS DEVRIEZ DÉLÉGUER 1. ",
+             "<p>2. Ce que vous seul pouvez faire</p><h2>B. CE QUE VOUS DEVRIEZ DÉLÉGUER</h2><p>1. "),
+            ("<p>2. Ce que d’autres peuvent faire mieux 3. ",
+             "<p>2. Ce que d’autres peuvent faire mieux</p><p>3. "),
+            ("<p>Eric Spruyt, Jeunesse en Mission (JEM) Annexe 2 — MODÈLES D’ALLIANCE DE MINISTÈRE POUR LES ANCIENS 1. ",
+             "<p>Eric Spruyt, Jeunesse en Mission (JEM)</p><h2>Annexe 2 — MODÈLES D’ALLIANCE DE MINISTÈRE POUR LES ANCIENS</h2><p>1. "),
+            ("<p>•Agir avec le Conseil des anciens pour discipliner les membres/adhérents lorsque c’est nécessaire. Cela doit se faire selon les principes bibliques. (On notera que la discipline d’un ancien est une affaire grave et se fera publiquement devant les membres — 1 Tim. 5:1,2,19,20) Relation avec le pasteur Ayant été",
+             "<p>•Agir avec le Conseil des anciens pour discipliner les membres/adhérents lorsque c’est nécessaire. Cela doit se faire selon les principes bibliques. (On notera que la discipline d’un ancien est une affaire grave et se fera publiquement devant les membres — 1 Tim. 5:1,2,19,20)</p><h2>Relation avec le pasteur</h2><p>Ayant été"),
+            # [hi]
+            ("कदमों की रूपरेखा देते हैं: दर्शन बोझ वरदान सेवकाई अभिषेक उड़ान!</p>",
+             "कदमों की रूपरेखा देते हैं:</p><p>दर्शन</p><p>बोझ</p><p>वरदान</p><p>सेवकाई</p><p>अभिषेक</p><p>उड़ान!</p>"),
+            ("<p>एक सामान्य स्थिति कुछ इस प्रकार हो सकती है: पासबान:",
+             "<p>एक सामान्य स्थिति कुछ इस प्रकार हो सकती है:</p><p>पासबान:"),
+            ("<p>एक और स्थिति: पासबान:",
+             "<p>एक और स्थिति:</p><p>पासबान:"),
+            ("है? (तीतुस और 1 तीमुथियुस) प्राचीन: हमारा विश्वास है कि हाँ।</p>",
+             "है? (तीतुस और 1 तीमुथियुस)</p><p>प्राचीन: हमारा विश्वास है कि हाँ।</p>"),
+            ("<p>सहमत: हस्ताक्षर: सूज़न स्मिथ जॉन विलियम्स (प्राचीन) - प्राचीनों की सभा की ओर से पीटर स्मिथ (पासबान) * अन्य नमूना सेवकाई वाचाएँ परिशिष्ट 2 में मिल सकती हैं पालन-पोषण करते रहें जब सूज़न",
+             "<p>सहमत: हस्ताक्षर:</p><p>सूज़न स्मिथ</p><p>जॉन विलियम्स (प्राचीन) - प्राचीनों की सभा की ओर से</p><p>पीटर स्मिथ (पासबान)</p><p>* अन्य नमूना सेवकाई वाचाएँ परिशिष्ट 2 में मिल सकती हैं</p><h2>पालन-पोषण करते रहें</h2><p>जब सूज़न"),
+            ("<p>क. आप क्या नहीं सौंप सकते 1. ",
+             "<h2>क. आप क्या नहीं सौंप सकते</h2><p>1. "),
+            ("<p>2. वह जो केवल आप ही कर सकते हैं ख. आपको क्या सौंपना चाहिए 1. ",
+             "<p>2. वह जो केवल आप ही कर सकते हैं</p><h2>ख. आपको क्या सौंपना चाहिए</h2><p>1. "),
+            ("<p>2. वह जो दूसरे आपसे बेहतर कर सकते हैं 3. ",
+             "<p>2. वह जो दूसरे आपसे बेहतर कर सकते हैं</p><p>3. "),
+            ("<p>एरिक स्प्रुइट, YWAM परिशिष्ट 2 - प्राचीनों के लिये सेवकाई-वाचा के नमूने 1. ",
+             "<p>एरिक स्प्रुइट, YWAM</p><h2>परिशिष्ट 2 - प्राचीनों के लिये सेवकाई-वाचा के नमूने</h2><p>1. "),
+            ("<p>•जहाँ आवश्यक हो, सदस्यों/अनुयायियों को अनुशासित करने में प्राचीन-मंडल के साथ मिलकर काम करना। यह बाइबल के दिशानिर्देशों के अनुसार होना चाहिए। (ध्यान देना चाहिए कि किसी प्राचीन को अनुशासित करना एक गम्भीर विषय है और यह सदस्यों के सामने सार्वजनिक रूप से होगा – 1 तीमुथियुस 5: 1,2,19,20) पासबान के साथ सम्बन्ध पासबान की ‘बुलाहट’",
+             "<p>•जहाँ आवश्यक हो, सदस्यों/अनुयायियों को अनुशासित करने में प्राचीन-मंडल के साथ मिलकर काम करना। यह बाइबल के दिशानिर्देशों के अनुसार होना चाहिए। (ध्यान देना चाहिए कि किसी प्राचीन को अनुशासित करना एक गम्भीर विषय है और यह सदस्यों के सामने सार्वजनिक रूप से होगा – 1 तीमुथियुस 5: 1,2,19,20)</p><h2>पासबान के साथ सम्बन्ध</h2><p>पासबान की ‘बुलाहट’"),
+            # [lg]
+            ("tulambika EMITENDERA OMUKAAGA: OKWOLESEBWA OMUGUGU EKIRABO OBUWEEREZA AMAFUTA OKUBUUKA!</p>",
+             "tulambika EMITENDERA OMUKAAGA:</p><p>OKWOLESEBWA</p><p>OMUGUGU</p><p>EKIRABO</p><p>OBUWEEREZA</p><p>AMAFUTA</p><p>OKUBUUKA!</p>"),
+            ("<p>Embeera eya bulijjo eyinza okuba bw’eti: Omusumba:",
+             "<p>Embeera eya bulijjo eyinza okuba bw’eti:</p><p>Omusumba:"),
+            ("<p>Embeera endala: Omusumba:",
+             "<p>Embeera endala:</p><p>Omusumba:"),
+            ("Byawandiikibwa? (Tito ne 1 Timoseewo) Omukadde (Abakadde): Tukkiriza nti bwe kiri.</p>",
+             "Byawandiikibwa? (Tito ne 1 Timoseewo)</p><p>Omukadde (Abakadde): Tukkiriza nti bwe kiri.</p>"),
+            ("<p>Kikkiriziddwa: Abateeseeko emikono: Susan Smith John Williams (omukadde) - ku lw’akakiiko k’abakadde Peter Smith (omusumba) * Endagaano z’Obuweereza endala ez’okulabirako zisangibwa mu Ekyongerezeddwako 2 Weeyongere okulabirira Susan bw’agenda",
+             "<p>Kikkiriziddwa: Abateeseeko emikono:</p><p>Susan Smith</p><p>John Williams (omukadde) - ku lw’akakiiko k’abakadde</p><p>Peter Smith (omusumba)</p><p>* Endagaano z’Obuweereza endala ez’okulabirako zisangibwa mu Ekyongerezeddwako 2</p><h2>Weeyongere okulabirira</h2><p>Susan bw’agenda"),
+            ("<p>A. BY’OTOSOBOLA KUSIGIRA 1. ",
+             "<h2>A. BY’OTOSOBOLA KUSIGIRA</h2><p>1. "),
+            ("<p>2. Ggwe wekka by’osobola okukola B. BY’OSAANIDDE OKUSIGIRA 1. ",
+             "<p>2. Ggwe wekka by’osobola okukola</p><h2>B. BY’OSAANIDDE OKUSIGIRA</h2><p>1. "),
+            ("<p>2. Abalala bye basobola okukola obulungi 3. ",
+             "<p>2. Abalala bye basobola okukola obulungi</p><p>3. "),
+            ("<p>Eric Spruyt YWAM Ekyongerezeddwako 2 - EBYOKULABIRAKO EBY’ENDAGAANO Y’OBUWEEREZA ERI ABAKADDE 1. ",
+             "<p>Eric Spruyt YWAM</p><h2>Ekyongerezeddwako 2 - EBYOKULABIRAKO EBY’ENDAGAANO Y’OBUWEEREZA ERI ABAKADDE</h2><p>1. "),
+            ("<p>•Okukolera awamu n’Akakiiko k’Abakadde mu kukangavvula bammemba/abagoberezi we kyetaagisa. Kino kiteekwa okugoberera ebiragiro bya Bayibuli. (Omuntu asaanidde okumanya nti okukangavvula omukadde nsonga nzito era kijja kubeera mu lujjudde mu maaso ga bammemba – 1 Timoseewo 5:1,2,19,20) Enkolagana n’Omusumba Olwokubanga",
+             "<p>•Okukolera awamu n’Akakiiko k’Abakadde mu kukangavvula bammemba/abagoberezi we kyetaagisa. Kino kiteekwa okugoberera ebiragiro bya Bayibuli. (Omuntu asaanidde okumanya nti okukangavvula omukadde nsonga nzito era kijja kubeera mu lujjudde mu maaso ga bammemba – 1 Timoseewo 5:1,2,19,20)</p><h2>Enkolagana n’Omusumba</h2><p>Olwokubanga"),
+            # [pt]
+            ("<p>Assim delineamos SEIS PASSOS: VISÃO FARDO DOM MINISTÉRIO UNÇÃO VOO!",
+             "<p>Assim delineamos SEIS PASSOS:</p><p>VISÃO</p><p>FARDO</p><p>DOM</p><p>MINISTÉRIO</p><p>UNÇÃO</p><p>VOO!"),
+            ("<p>Uma situação típica poderia ser assim: Pastor:",
+             "<p>Uma situação típica poderia ser assim:</p><p>Pastor:"),
+            ("<p>Outro cenário: Pastor:",
+             "<p>Outro cenário:</p><p>Pastor:"),
+            ("Escrituras? (Tito e 1 Timóteo) Presbítero(s): Cremos que sim.</p>",
+             "Escrituras? (Tito e 1 Timóteo)</p><p>Presbítero(s): Cremos que sim.</p>"),
+            ("<p>Acordado: Assinado: Susan Smith  John Williams (presbítero) — em nome do conselho de presbíteros  Peter Smith (pastor) * Outros modelos de Pactos de Ministério podem ser encontrados no Apêndice 2  Continue a nutrir  Quando Susan",
+             "<p>Acordado: Assinado:</p><p>Susan Smith</p><p>John Williams (presbítero) — em nome do conselho de presbíteros</p><p>Peter Smith (pastor)</p><p>* Outros modelos de Pactos de Ministério podem ser encontrados no Apêndice 2</p><h2>Continue a nutrir</h2><p>Quando Susan"),
+            ("<p>A. O QUE VOCÊ NÃO PODE DELEGAR 1. ",
+             "<h2>A. O QUE VOCÊ NÃO PODE DELEGAR</h2><p>1. "),
+            ("<p>2. O que só você pode fazer B. O QUE VOCÊ DEVE DELEGAR 1. ",
+             "<p>2. O que só você pode fazer</p><h2>B. O QUE VOCÊ DEVE DELEGAR</h2><p>1. "),
+            ("<p>2. O que os outros podem fazer melhor 3. ",
+             "<p>2. O que os outros podem fazer melhor</p><p>3. "),
+            ("<p>Eric Spruyt JOCUM Apêndice 2 - MODELOS DE PACTO DE MINISTÉRIO PARA PRESBÍTEROS 1. ",
+             "<p>Eric Spruyt JOCUM</p><h2>Apêndice 2 - MODELOS DE PACTO DE MINISTÉRIO PARA PRESBÍTEROS</h2><p>1. "),
+            ("<p>•Agir com o Conselho de Presbíteros na disciplina de membros/frequentadores onde for necessário. Isso deve seguir as diretrizes bíblicas. (Convém observar que a disciplina de um presbítero é um assunto sério e será pública diante dos membros – 1 Tm 5:1,2,19,20) Relacionamento com o Pastor Tendo sido",
+             "<p>•Agir com o Conselho de Presbíteros na disciplina de membros/frequentadores onde for necessário. Isso deve seguir as diretrizes bíblicas. (Convém observar que a disciplina de um presbítero é um assunto sério e será pública diante dos membros – 1 Tm 5:1,2,19,20)</p><h2>Relacionamento com o Pastor</h2><p>Tendo sido"),
+            # [sw]
+            ("<p>Basi tunaeleza HATUA SITA: MAONO MZIGO KIPAWA HUDUMA UPAKO KURUKA!",
+             "<p>Basi tunaeleza HATUA SITA:</p><p>MAONO</p><p>MZIGO</p><p>KIPAWA</p><p>HUDUMA</p><p>UPAKO</p><p>KURUKA!"),
+            ("<p>Hali ya kawaida yaweza kuwa hivi: Mchungaji:",
+             "<p>Hali ya kawaida yaweza kuwa hivi:</p><p>Mchungaji:"),
+            ("<p>Hali nyingine: Mchungaji:",
+             "<p>Hali nyingine:</p><p>Mchungaji:"),
+            ("yanavyohusika? (Tito na 1 Timotheo) Mzee (wazee): Twaamini hivyo.</p>",
+             "yanavyohusika? (Tito na 1 Timotheo)</p><p>Mzee (wazee): Twaamini hivyo.</p>"),
+            ("<p>Imekubaliwa: Imetiwa saini: Susan Smith John Williams (mzee) - kwa niaba ya halmashauri ya wazee Peter Smith (mchungaji) * Mifano mingine ya Maagano ya Huduma yaweza kupatikana katika Nyongeza ya 2 Endelea kulea Susan anapoondoka",
+             "<p>Imekubaliwa: Imetiwa saini:</p><p>Susan Smith</p><p>John Williams (mzee) - kwa niaba ya halmashauri ya wazee</p><p>Peter Smith (mchungaji)</p><p>* Mifano mingine ya Maagano ya Huduma yaweza kupatikana katika Nyongeza ya 2</p><h2>Endelea kulea</h2><p>Susan anapoondoka"),
+            ("<p>A. USICHOWEZA KUKABIDHI 1. ",
+             "<h2>A. USICHOWEZA KUKABIDHI</h2><p>1. "),
+            ("<p>2. Kile ambacho wewe pekee waweza kukifanya B. UNACHOPASWA KUKABIDHI 1. ",
+             "<p>2. Kile ambacho wewe pekee waweza kukifanya</p><h2>B. UNACHOPASWA KUKABIDHI</h2><p>1. "),
+            ("<p>2. Kile ambacho wengine waweza kufanya vizuri zaidi 3. ",
+             "<p>2. Kile ambacho wengine waweza kufanya vizuri zaidi</p><p>3. "),
+            ("<p>Eric Spruyt YWAM Kiambatisho 2 - MIFANO YA AGANO LA HUDUMA KWA WAZEE 1. ",
+             "<p>Eric Spruyt YWAM</p><h2>Kiambatisho 2 - MIFANO YA AGANO LA HUDUMA KWA WAZEE</h2><p>1. "),
+            ("<p>•Kutenda pamoja na Baraza la Wazee katika kuwarekebisha wanachama/wafuasi pale inapohitajika. Hili ni lazima liende sambamba na miongozo ya kibiblia. (Yapasa kutambua kwamba kumrekebisha mzee ni jambo zito na litakuwa hadharani mbele ya wanachama – 1 Tim. 5: 1,2,19,20) Uhusiano na Mchungaji Kwa kuwa Baraza",
+             "<p>•Kutenda pamoja na Baraza la Wazee katika kuwarekebisha wanachama/wafuasi pale inapohitajika. Hili ni lazima liende sambamba na miongozo ya kibiblia. (Yapasa kutambua kwamba kumrekebisha mzee ni jambo zito na litakuwa hadharani mbele ya wanachama – 1 Tim. 5: 1,2,19,20)</p><h2>Uhusiano na Mchungaji</h2><p>Kwa kuwa Baraza"),
         ],
     },
     "if": {
@@ -5271,6 +6383,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('<p>Ryan Air is one of', '<p>Ryanair is one of'),
             ('I told Don Stevens I would', 'I told Don Stephens I would'),
         ],
+        # ch3: the poem's attribution ran into the paragraph after it
+        # ("-Anonymous In the months…"). A block split, so every edition at
+        # once (tests_translation_markup). Each tail is anchored on its <p>,
+        # so it can only fire at a block start, and matches once book-wide.
+        "paragraph_breaks": [
+            ("<p>-Anonymous", "In the months following"),
+            ("<p>—ደራሲው ያልታወቀ።", "ከቀላሉ ጸሎቴ"),
+            ("<p>— مجهول المؤلف.", "في الأشهر التي أعقبت"),
+            ("<p>-Anónimo", "En los meses que siguieron"),
+            ("<p>— Anonyme", "Dans les mois qui suivirent"),
+            ("<p>-अनाम", "अपनी उस सरल प्रार्थना"),
+            ("<p>-작자 미상", "그 단순한 기도를"),
+            ("<p>-Atamanyiddwa", "Mu myezi egyaddirira"),
+            ("<p>-Anônimo", "Nos meses que se seguiram"),
+            ("<p>-Bila jina", "Katika miezi iliyofuata"),
+            ("<p>— Невідомий автор.", "За кілька місяців"),
+            ("<p>-Khuyết danh", "Trong những tháng"),
+        ],
     },
     "prevailing-prayer": {
         # The three Roman brothers are the Horatii (Livy I.24-25); Moody's
@@ -5463,6 +6593,27 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("that thou may <i>give</i>", "that thou mayest <i>give</i>"),
             # The same quotation is set with a capital at its four other sites.
             ("'Rest in the lord, and wait", "'Rest in the Lord, and wait"),
+            # --- transcriber's apparatus -------------------------------------
+            # ch2 (Preface) closes on the etext's "[Page 16 is blank]" as a
+            # paragraph of its own, after Murray's date line; every edition
+            # translated it as a paragraph too. Not the author's text, so it
+            # goes in all thirteen at once (a tag-sequence change, so they move
+            # in lockstep for tests_translation_markup). Each pair is anchored
+            # on that edition's own wording plus the closing </p> before it,
+            # and matches once in the whole book. Reported in #7308.
+            ("</p>  <p> [Page 16 is blank] </p>", "</p>"),
+            ("</p><p>[Page 16 is blank]</p>", "</p>"),  # en-modern
+            ("</p>  <p> [ገጽ 16 ባዶ ነው] </p>", "</p>"),
+            ("</p>  <p> [الصفحة 16 فارغة] </p>", "</p>"),
+            ("</p>  <p> [La página 16 está en blanco] </p>", "</p>"),
+            ("</p> <p> [La page 16 est blanche] </p>", "</p>"),
+            ("</p>  <p> [पृष्ठ 16 रिक्त है] </p>", "</p>"),
+            ("</p>  <p> [16쪽은 빈 면입니다] </p>", "</p>"),
+            ("</p>  <p> [Olupapula 16 lwereere] </p>", "</p>"),
+            ("</p>  <p> [A página 16 está em branco] </p>", "</p>"),
+            ("</p>  <p> [Ukurasa wa 16 uko wazi] </p>", "</p>"),
+            ("</p>  <p>[Сторінка 16 порожня]</p>", "</p>"),
+            ("</p>  <p> [Trang 16 để trống] </p>", "</p>"),
         ],
     },
     "the-reformed-pastor": {
@@ -5515,6 +6666,17 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # across an <h2> and a <p> (the chapter title carries it).
         "replacements": [
             ("<p>——0——</p> ", ""),
+            # The same ornament, left between ch23's motto and its closing
+            # prayer and between ch26's prayer and its NOTE. Every translation
+            # copied the bare block verbatim, so the one pair clears all twelve
+            # editions and their tag sequences stay in step.
+            ("<p>——0———</p> ", ""),
+            ("<p>———0——-</p> ", ""),
+            # Ch08's footnote marker, whose note the transcription dropped: the
+            # "1" points at nothing. Every edition carries it at the same spot;
+            # fr alone has no space after it, so its pair restores one first.
+            ("foi.<sup>1 </sup>Que", "foi. Que"),
+            ("<sup>1 </sup>", ""),
             ("<h2>GEORGE MULLER, AND THE SECRET OF HIS</h2> <p>POWER IN PRAYER</p> ", ""),
             # CCEL dates the Preface 1895; the book is 1885, and Murray's own
             # note (ch33) has Müller, born 1805, "now eighty years of age".
@@ -13251,6 +14413,42 @@ BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements",
     # 4. ch09: "He is my Vine, and I am His branch" (cf. "I am Thy branch" below).
     ("and I am His branches—", "and I am His branch—"),
 ])
+# absolute-surrender ch03: the body opened with an <h2> restating the chapter
+# title ("SEPARATED UNTO THE HOLY GHOST" under "Separated unto the Holy
+# Spirit"), so the reader printed it twice. It paraphrases rather than repeats
+# the title (Ghost/Spirit), so `ingest.strip_restated_heading` misses it; drop
+# it by pair in EVERY edition at once, as migration 0092 judged translations by
+# their English twin, so the tag sequences stay in lockstep. Anchored on the
+# opening of the verse that follows, so the settled form still names a string.
+# (Reported in the 2026-11-05 proofreading sweep, #7317.)
+BODY_CORRECTIONS.setdefault("absolute-surrender", {}).setdefault("replacements", []).extend([
+    # en
+    ("<h2>SEPARATED UNTO THE HOLY GHOST</h2> <p><i>“Now there", "<p><i>“Now there"),
+    # en-modern
+    ("<h2>SET APART FOR THE HOLY SPIRIT</h2><p><i>“Now there", "<p><i>“Now there"),
+    # am
+    ("<h2>ለመንፈስ ቅዱስ የተለዩት</h2> <p><i>«በአንጾኪያም ባለችው", "<p><i>«በአንጾኪያም ባለችው"),
+    # ar
+    ("<h2>مُخَصَّصُونَ لِلرُّوحِ ٱلْقُدُسِ</h2> <p><i>«وَكَانَ فِي", "<p><i>«وَكَانَ فِي"),
+    # es
+    ("<h2>SEPARADOS PARA EL ESPÍRITU SANTO</h2> <p><i>«Había entonces", "<p><i>«Había entonces"),
+    # fr
+    ("<h2>MIS À PART POUR LE SAINT-ESPRIT</h2> <p><i>« Il", "<p><i>« Il"),
+    # hi
+    ("<h2>पवित्र आत्मा के निमित्त अलग किए हुए</h2> <p><i>“अन्ताकिया की", "<p><i>“अन्ताकिया की"),
+    # ko
+    ("<h2>성령을 위하여 따로 세움</h2> <p><i>“안디옥 교회에", "<p><i>“안디옥 교회에"),
+    # lg
+    ("<h2>OKWAWULIRWA OMWOYO OMUTUKUVU</h2> <p><i>“Mu Kkanisa", "<p><i>“Mu Kkanisa"),
+    # pt
+    ("<h2>POSTOS À PARTE PARA O ESPÍRITO SANTO</h2> <p><i>“Ora, na", "<p><i>“Ora, na"),
+    # sw
+    ("<h2>KUTENGWA KWA ROHO MTAKATIFU</h2> <p><i>“Basi katika", "<p><i>“Basi katika"),
+    # uk
+    ("<h2>ВІДЛУЧЕНІ СВЯТОМУ ДУХОВІ</h2> <p><i>«Були ж", "<p><i>«Були ж"),
+    # vi
+    ("<h2>ĐƯỢC ĐỂ RIÊNG CHO ĐỨC THÁNH LINH</h2> <p><i>“Trong Hội", "<p><i>“Trong Hội"),
+])
 # all-things-for-good: pt ch9–11 closed EVERY quotation with an opener, “…“ — 64 of them; the other chapters and the English are right.
 BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
     ("chamados.</i>“ ", "chamados.</i>” "),
@@ -17779,7 +18977,45 @@ BODY_CORRECTIONS["the-sin-of-murmuring"]["back_matter"] = [
 # "receive her"). Murray's own wording, pronoun capitals and citations that
 # may be the printing's are reported in the PR, not changed here.
 BODY_CORRECTIONS.setdefault("working-for-god", {}).setdefault("replacements", []).extend([
-    ("Good Works. Tit. 3:14 118", "Good Works.—Tit. 3:14 118"),
+    # Introduction: the printed CONTENTS with page numbers ran on after the
+    # signature. The reader has its own table of contents, so it goes.
+    # (Supersedes the contents-only "Good Works. Tit. 3:14" pair.)
+    (
+     '1901.</p>'
+     '<p>CONTENTS</p> '
+     '<p> CHAP. PAGE</p> '
+     '<p>I. Waiting and Working.—Isa. 40:31, 64:4 11</p> '
+     '<p>II. Good Works the Light of the World.—Matt. 5:14, 16 16</p> '
+     '<p>III. Son, go Work.—Matt. 21:28 21</p> '
+     '<p>IV. To Each one his Work.—Mark 8:34 26</p> '
+     '<p>V. To Each one according to his Ability.—Matt. 25:14 31</p> '
+     '<p>VI. Life and Work.—John 5:34, 9:4, 17:4 36</p> '
+     '<p>VII. The Father abiding in Me doeth the Work.—John 5:17-20, 14:10 41</p> '
+     '<p>VIII. Greater Works.—John 14:12-14 46</p> '
+     '<p>IX. Created in Christ Jesus for Good Works.—Eph. 2:10 51</p> '
+     '<p>X. Work, for it is God which worketh in you.—Phil. 2:12, 13 56</p> '
+     '<p>XI. Faith working by Love.—Gal. 5:6, 13 61</p> '
+     '<p>XII. Bearing Fruit in every Good Work.—Col. 1:10 66</p>'
+     '<p>XIII. Always abounding in the Work of the Lord.—I Cor. 15:58 71</p> '
+     '<p>XIV. Abounding Grace for abounding Work.—2 Cor. 9:8 76</p> '
+     '<p>XV. The Work of Ministering.—Eph. 4:11, 12 81</p> '
+     '<p>XVI. According to the Working of each several Part.—Eph. 4:15, 16 86</p> '
+     '<p>XVII. Women adorned with Good Works.—1 Tim. 2:10. 5:9, 10 90</p> '
+     '<p>XVIII. Rich in Good Works.—1 Tim. 6:18 95</p> '
+     '<p>XIX. Prepared unto every Good Work.—2 Tim. 2:21 100</p> '
+     '<p>XX. Furnished completely unto every Good Work.—2 Tim. 3:16, 17, 2:15 104</p> '
+     '<p>XXI. Zealous of Good Works.—Tit. 2:14 109</p> '
+     '<p>XXII. Ready to every Good Work.—Tit. 3:1 113</p> '
+     '<p>XXIII. Careful to maintain Good Works.—Tit. 3:14 118</p> '
+     '<p>XXIV. As His Fellow-Workers.—1 Cor. 3:9; 2 Cor. 6:1 123</p> '
+     '<p>XXV. According to the Working of His Power.—Col. 1:29; Eph. 3:7 128</p> '
+     '<p> XXVI. Labouring more abundantly.—1 Cor. 15:10; 2 Cor. 12:9, 11 133</p>'
+     '<p>XXVII. A Doer that worketh shall be blessed in Doing.—Jas. 1:22, 25 138</p> '
+     '<p>XXVIII. The Work of Soul-Saving.—Jas. 5:19 142</p> '
+     '<p>XXIX. Praying and Working.—1 John 5:16 147</p> '
+     '<p>XXX. I know thy Works.—Rev. 2, 3 152</p> '
+     '<p>XXXI. That God may be Glorified.—1 Pet. 4:11 157</p>',
+     "1901.</p>"),
     ("the Divine. blessedness", "the Divine blessedness"),
     ("beware of separating them, The more", "beware of separating them. The more"),
     ("expressions (v. 19, 30)John 5:19, 30:", "expressions (v. 19, 30):"),
@@ -22066,6 +23302,9 @@ BODY_CORRECTIONS.setdefault("abide-in-christ", {}).setdefault("replacements", []
     ("a tree of life. of which", "a tree of life, of which"),
     ("thinks that He cannot have a blessing", "thinks that he cannot have a blessing"),
     ("work; this. will inspire", "work; this will inspire"),
+    # A false paragraph break (page seam) inside the "There is work…" run.
+    ("There is work in our own home.</p><p>There is work among the sick",
+     "There is work in our own home. There is work among the sick"),
     # ch22
     ("— John</i>", "— John xv. 7.</i>"),
     ("what he, has seen", "what he has seen"),

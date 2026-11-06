@@ -302,6 +302,7 @@ weight 600, a 150ms transition).
 | Role | Class | Fill | Text | Border | When |
 |---|---|---|---|---|---|
 | **Primary** | `.btn .btn-primary` | `--accent-soft` | `--accent` | `--accent-soft-border` | The main action on a view (one per context) |
+| **Read verb** | `.btn .btn-primary .btn-solid` | `--accent` | `--accent-contrast` | `--accent` | The ONE read verb a reading page exists for — Begin reading / Continue in the read card, Start the plan, and the sub-nav / `ReadBar` that stand in for it once it scrolls away |
 | **Default** | `.btn` | `--surface-2` | `--text` | `--border` | Secondary actions |
 | **Ghost** | `.btn .btn-ghost` | transparent | `--text` | `--border` | Low-emphasis (dismiss, back) |
 
@@ -309,9 +310,19 @@ weight 600, a 150ms transition).
   **`.btn-icon`** for a square icon-only one. Don't hand-roll padding — five
   different compact sizes existed before these did.
 - **Primary is soft, not bold** — a brand-tinted button (accent-soft fill, accent
-  text, `--accent-soft-border`), never a solid filled indigo block. It reads as
-  "the main thing" without shouting.
-- Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
+  text, `--accent-soft-border`). It reads as "the main thing" without shouting.
+- **Except the read verb, which is solid** (design review #2, founder-approved
+  2026-11): on the book, plan and author pages the soft fill left the reason the
+  page exists about as loud as a chip. Add `.btn-solid` to that one button (and
+  its sub-nav / `ReadBar` stand-in) — never to a second button on the same view.
+  The logged-out home hero's "Start reading" (`HomeIntro`, design review #5)
+  is that page's one verb and wears `.btn-solid` too.
+  Its ink is `--accent-contrast`, held at AA on `--accent` in every theme and
+  palette by `palettes.test.ts`. A second line inside it (`.btn-sub`, with
+  `flex-col gap-0` on the button) names what it opens: "Begin reading /
+  Book I · 35 min"; the reassurance goes under the button as small muted text.
+- Hover: default → `--surface` + accent-soft border; primary → border to `--accent`;
+  solid → the fill deepens toward `--text`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 
 ### Favourite / saved state — one control, one colour
@@ -383,7 +394,7 @@ emblem can appear in two tints a click apart — it is the shelf's colour there
 and its own colour here.
 
 **Shelf card** (`<ShelfCard>` / `.shelf-card`) — the colour-washed card used by
-Topics and Plans: a tinted band carrying an icon chip (or a portrait) and a fan
+Topics (and the series index): a tinted band carrying an icon chip (or a portrait) and a fan
 of covers, over a typographic body. Each card sets `--shelf-hue`, used **only
 through `color-mix()`** for tints and the icon, never as body text, so contrast
 holds in both themes. Hues come from:
@@ -391,7 +402,6 @@ holds in both themes. Hues come from:
 | Surface | Hue source |
 |---|---|
 | Topics | `topicMeta(slug).accent` — curated per topic |
-| Plans | `accentForSlug(slug)` — stable pick from the same palette |
 | Sermon plate | `sermonArt(slug).hue` — derived from the emblem's own art |
 | Sermons index row | `hueForBirthYear(...)` — the preacher's era |
 | Sermon tile in a fan | `sermonArt(slug).hue` — its own art, even inside a band |
@@ -400,8 +410,7 @@ holds in both themes. Hues come from:
 The band's far end takes a **fan of member tiles** (`covers`); the band does the
 positioning, so an occupant only styles itself. A topic's fan holds books first
 and then **sermon tiles** — its members in the reader's language, and in most
-languages there are more sermons than books. A plan's holds books only, and its
-type says so (`BookTile[]`).
+languages there are more sermons than books.
 
 A sermon tile is the round **emblem chip**, not a 3:4 cover. That is the rule
 above made visible: the same fan carries a book wearing its cover and a sermon
@@ -410,8 +419,28 @@ is also the one place a sermon's own hue sits inside another surface's
 `--shelf-hue` band — the item's art wins over the shelf's, because the books
 beside it are already showing theirs.
 
-**Book card** (`.book-card`) — the cover is the visual, so the chrome stays
-quiet: hairline, surface fill, no colour wash.
+**Plan card** (`<PlanShelfCard>`) — **led by the cover** (design review #19,
+2026-11), on /plans, a plan's "More like this", the young-reader hubs and the
+/for pages. A plan is a journey through books, so the card shows them: one
+large cover, or two overlapping for a plan that reads several (always upright),
+beside the serif title, the length said once ("27 days · ~9 min/day") and two
+lines of description. Boxless like the book card — no band, no per-card wash,
+no "DAYS 27" monogram, no "Day 1 · …" teaser; its hover is the book card's
+rise. A plan's covers are books only, and its type says so (`BookTile[]`).
+The /plans hub groups the cards by length — "A week or two" (≤ 14 days),
+"About a month" (15–40), "Longer journeys" — the same buckets as its length
+chips; a sort or a filter turns the groups into one flat list.
+
+**Book card** (`.book-card`) — **the cover is the card.** It sits straight on
+the page ground — no box, no border, no tint — with two lines under it: the
+title in the serif (`font-display`) and the author in muted sans. Nothing else
+at rest: the chapter count and reading time are on the book page (and in the
+list view, on the shelves that have one). (Design review #1, 2026-11: the boxed,
+cover-tinted card gave the library 379 pastel boxes of visual static.) The
+one meta line a grid card may carry is the young-reader hubs' single-phrase
+sitting time (`perChapter`, "~12 min a chapter") — one phrase, so no `·` can
+lead a wrapped line. A row of covers is an even row: the home strip no longer
+sets its first book large.
 
 **A cover is a wordless GROUND with the book's type drawn over it in HTML.**
 That is one sentence for the whole system, and it is what lets a title be
@@ -443,9 +472,13 @@ that line, and neither side measures anything.
 (On a topic's own shelf every book shares the emblem, which is honest rather
 than useless: they do share the topic, and that shelf is tinted for it anyway.)
 
-**Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
-Sermon of the day: the eyebrow/title/byline in a hue wash with the sermon's
-emblem anchoring the far end, the same composition as its share card. Sermons
+**Sermon plate** (`<SermonPlate>`) — a sermon's head in Sermon of the day:
+the eyebrow/title/byline in a hue wash with the sermon's emblem anchoring the
+far end, the same composition as its share card. Not on the sermon's own page:
+there the head stands on the page ground like a chapter's (design review #12 —
+eyebrow with the passage, title, byline with the preacher's years and Listen,
+an italic standfirst, the text as a gold-ruled epigraph), because a plate, a
+text panel and a boxed summary were three boxes before the first word. Sermons
 are **not** given 3:4 covers on a browse shelf: that silhouette says *volume*,
 and differing silhouettes are what tell a book from a sermon at a glance there.
 
@@ -467,19 +500,21 @@ through `sermonArt`, never `emblemHue`: that one reads the drawings, and
 importing it pulls all 51 onto the route's critical path.
 
 The shelf card's band and the sermon plate share **`.hue-band`**, driven by
-`--band-hue`: one wash rule, not one per surface. The topic hero still carries
-its own, slightly weaker copy — see the note on `.hue-band` in `app.css`.
+`--band-hue`: one wash rule, not one per surface. (The topic page's header had
+its own weaker copy until design review #16 took that header out of its box.)
 
-**Sermon row** (`.sermon-row`) — the sermons shelf is a **list, not a grid**:
-one sermon per line, under its preacher, carrying the title, the passage it
-expounds, the "In brief" and how long it runs. That is a deliberate exception to
-the card families above, and the reason is the brief: it runs 300–400 characters,
-a tile holding it is mostly body text with a title on top, and prose set across
-the full page column is unreadable. A row lets the brief run the full
-width of the box — spreading it over fewer lines keeps the shelf short — with
-the reading length at the top right, opposite the passage. Row heights vary
-freely — rows stack, so there is no bottom edge to level. `--row-hue` is the
-writer's era (same source as a shelf card), used only through `color-mix()`.
+**Sermon row** (`<SermonCard>`, `.sermon-row` inside a `.sermon-list`) — a
+sermon is listed as a **plain list row, not a card**, on every page that lists
+sermons (the index, a topic, an author, favourites, the 404 picks): the title in
+the display serif, ONE muted meta line — preacher · passage · length (the
+preacher dropped where a heading already names them) — and one clamped line of
+the "In brief", with **hairlines between rows** and no border, rail, monogram,
+leader or chevron. The whole row is the link; the full brief lives on the
+sermon's own page. Design review #8 (2026-11): the bordered card with its era
+rail, passage monogram, repeated passage, dotted leader and expand chevron made
+each sermon about twice as tall as it needed to be. Hover underlines the title
+in `--accent` — a hairline row has no frame to tint, so it is outside the
+`.card-tint` recipe on purpose.
 
 **Card hover — two recipes, and only two.** Every content card answers a hover
 in one of exactly two languages, so a page of mixed card types reads as one
@@ -491,17 +526,18 @@ longer — never a literal duration.
 
 | Recipe | Who | What happens |
 |---|---|---|
-| **`.card-lift`** — a grid or banded card **rises** | `.book-card` (incl. `--row` and `LibraryBookCard`), `.shelf-card`, the sermon-of-week plate | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
-| **`.card-tint`** — a row card **warms in place**, no lift | `.sermon-card`, `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. `.sermon-row` and the `/quotes` author card override both with their era `--row-hue`. |
+| **`.card-lift`** — a grid or banded card **rises** | `.shelf-card`, the sermon-of-week plate; `.book-card` (BookCard, ArticleShelf's cover view) rises the same 2px with its own rise-only hover — it is boxless, so a shadow would draw a box, and its cover carries the shadow | `transform: translateY(-2px)` + `box-shadow`, border warms. Neutral cards use `--accent-soft-border` + `--shadow-card`; `.shelf-card` and the sermon-of-week plate override both with their `--shelf-hue` / `--band-hue`. Dropped under `prefers-reduced-motion`. |
+| **`.card-tint`** — a row card **warms in place**, no lift | `.article-card`, `AuthorBioCard`, `PersonCard`, `AuthorTile`, `BookListRow` | border → `--accent`, ground → `--surface-2`. The `/quotes` author card overrides both with its era `--row-hue`. (The sermon row is a hairline list row, not a card: its title underlines instead.) |
 
-Grid cards lift, row cards tint — that is the whole vocabulary. A card that
+Grid cards lift, row cards tint — that is the whole vocabulary. (The sermon
+list row is not a card: it has no frame, and its title underlines instead —
+the one frameless exception, not a third recipe for cards.) A card that
 would do neither, or a third thing (a border-only shift, a bg-only shift, a
 gradient-slide), is drift: fold it into whichever recipe its shape calls for.
 The **one sanctioned extra** is the book-cover family's "Begin reading →" /
 "Resume →" gradient plate, revealed on `group-hover` over the artwork
-(`BookCard`, `LibraryBookCard`): it is a call-to-action on the cover **ground**,
-not a second hover *language* — the card still lifts — and it is shared by both
-cover cards, so it is a deliberate signature rather than a one-off. No other
+(`BookCard`): it is a call-to-action on the cover **ground**,
+not a second hover *language* — the card still lifts — so it is a deliberate signature rather than a one-off. No other
 card gets a bespoke reveal.
 
 > ⚠️ **A Tailwind utility cannot override one of these classes.** The component
@@ -515,7 +551,7 @@ card gets a bespoke reveal.
 >
 > Add a modifier next to the base class instead (`.book-card--row`). Reach for a
 > utility only for properties the component class doesn't set — which is why
-> `.sermon-row-brief` can take `line-clamp-5`: it sets no clamp of its own.
+> `.sermon-row-brief` can take `line-clamp-1`: it sets no clamp of its own.
 
 **Equal heights — one item per card, or bound the variance.** A card grid must
 never set `items-start`; let `.shelf-card`/`.book-card`'s `height:100%` plus an
@@ -543,9 +579,9 @@ card — give it a heading and one-item cards beneath, the way the grouped Books
 shelf and the sermon shelf's preacher sections do.
 
 **And if the item's own content is long-form, don't reach for a card at all** —
-`.sermon-row` is the worked example. A grid buys you scannable equal-height
-tiles; it costs you measure. When the thing worth showing is a paragraph, the
-list wins.
+the sermon list is the worked example. A grid buys you scannable equal-height
+tiles; it costs you measure. When the thing worth choosing by is prose, a list
+of one-line previews wins, and the prose itself stays on the item's page.
 
 ### Filter controls
 
@@ -594,14 +630,18 @@ sits on **`.chrome-col`** (`--chrome-w`: the page column's width, never under
 64rem), so the wordmark shares the page's start edge.
 
 ### Footer
-Identical on every page: wordmark + tagline, an **Explore** group (the six nav
-destinations, then — in English only — Articles, Scripture, Quotes, RSS), an
-**About** group (About / Contact / Legal), the mission block, a language strip
-and the copyright line. Hidden in focus mode. Its rows sit on `.chrome-col`,
-like the nav bar.
+One band, identical on every page (design #3): wordmark + one-line mission, a
+**Library** column (the five nav destinations), a **More** column (Series, the
+young-reader hubs, A–Z, in English Articles · Scripture · Quotes, Originals, and
+one "For churches & ministries" link to the `/for/` hub), the language switcher
+with About / Contact / Privacy / Send feedback / RSS under it, then the
+blessing and copyright as one small line. Above it only a personal next step
+(sign-up invite or the reader's current book). Don't add a band — a new
+destination is a link in More (`page-design` skill, "The footer is one band").
+Hidden in focus mode. Its rows sit on `.chrome-col`, like the nav bar.
 
 **Every surface that lists content types lists the same ones in the same
-order** — nav, footer Explore, the command palette's `COMMANDS`, the search
+order** — nav, the footer columns, the command palette's `COMMANDS`, the search
 hit kinds and `sitemap.ts`. The `page-design` skill carries the checklist; a
 content type that is footer-only (as Articles, Scripture and Quotes were) is
 not shipped.

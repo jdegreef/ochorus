@@ -18,25 +18,48 @@
 	 * `set="writers"` is the same row for the two indexes of the writers —
 	 * Biographies (their lives) and the A–Z (their books) — on /biographies, so
 	 * a reader there can see the alphabetical index exists and step across.
+	 *
+	 * `browse` is the Books shelf's own pair (design review #11): there the
+	 * Books tab splits into Browse (the curated rows /books opens on) and
+	 * "All N books" (the full grid with its filters, `?shelf=all`), so the
+	 * grid is one tab away and the tab a reader is on says which view it is.
 	 */
 	type Tab = 'books' | 'series' | 'az' | 'bios';
 	let {
 		current,
 		series = true,
-		set = 'library'
-	}: { current: Tab; series?: boolean; set?: 'library' | 'writers' } = $props();
+		set = 'library',
+		browse
+	}: {
+		current: Tab;
+		series?: boolean;
+		set?: 'library' | 'writers';
+		/** On /books: the library's size, and whether the full grid is showing. */
+		browse?: { count: number; all: boolean };
+	} = $props();
 	const t = i18n.t;
 
-	const tabs = $derived(
+	type Item = { id: string; href: string; label: string; active: boolean };
+	const tabs = $derived<Item[]>(
 		set === 'writers'
 			? [
-					{ id: 'bios' as const, href: '/biographies', label: t('nav.biographies') },
-					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+					{ id: 'bios', href: '/biographies', label: t('nav.biographies'), active: current === 'bios' },
+					{ id: 'az', href: '/authors', label: t('nav.azIndex'), active: current === 'az' }
 				]
 			: [
-					{ id: 'books' as const, href: '/books', label: t('nav.books') },
-					{ id: 'series' as const, href: '/series/', label: t('nav.series') },
-					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+					...(browse
+						? [
+								{ id: 'browse', href: '/books', label: t('books.browse'), active: !browse.all },
+								{
+									id: 'all',
+									href: '/books?shelf=all',
+									label: t('books.allCount').replace('%n%', String(browse.count)),
+									active: browse.all
+								}
+							]
+						: [{ id: 'books', href: '/books', label: t('nav.books'), active: current === 'books' }]),
+					{ id: 'series', href: '/series/', label: t('nav.series'), active: current === 'series' },
+					{ id: 'az', href: '/authors', label: t('nav.azIndex'), active: current === 'az' }
 				].filter((tab) => series || tab.id !== 'series' || current === 'series')
 	);
 
@@ -53,8 +76,8 @@
 				<a
 					href={localizeHref(tab.href)}
 					class="subnav-link"
-					class:is-active={tab.id === current}
-					aria-current={tab.id === current ? 'page' : undefined}>{tab.label}</a
+					class:is-active={tab.active}
+					aria-current={tab.active ? 'page' : undefined}>{tab.label}</a
 				>
 			</li>
 		{/each}

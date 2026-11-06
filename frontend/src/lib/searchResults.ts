@@ -2,8 +2,8 @@
  * Turning search hits into what the results page renders.
  *
  * Six hit types arrive in six shapes; the page shows one list. That flattening,
- * the grouping into type sections, the clustering of chapter matches under their
- * book, the counts, and the order the keyboard walks are all decisions — and
+ * the grouping into type sections, the one top result, the counts, and the
+ * order the keyboard walks are all decisions — and
  * they lived inside a 1,420-line component where nothing could reach them. The
  * page still owns the query, the paging and the URL, which are genuinely
  * coupled to the router; this is the part that is a function of the data.
@@ -16,8 +16,9 @@
 import { portraitPosition } from '$lib/portraits';
 import { authorPath } from './originals';
 import { scripturePageHref } from '$lib/library-public';
-import type { ChapterHit, CoverFace, SearchHit, SearchType } from '$lib/library-public';
+import type { CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
+import { foldText } from './searchNormalize';
 import { sermonArt } from './sermonArt';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
@@ -48,6 +49,11 @@ export interface Row {
 	 * mark it wears on every shelf. Absent on other rows.
 	 */
 	monogram?: { scriptureRef: string; title: string };
+	/**
+	 * Where a passage sits — "All of Grace · Chapter 3" — shown above its
+	 * snippet. Only chapter rows carry one: a passage is read by where it is.
+	 */
+	location?: string;
 }
 
 export type ResultRow = Row & {
@@ -169,13 +175,15 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				round: true,
 				monogram: { scriptureRef: hit.scripture_ref, title: hit.sermon_title }
 			};
-		default:
+		default: {
+			const title = chapterName(hit.chapter_order, hit.chapter_title);
 			return {
 				key: `chapter:${hit.book_slug}:${hit.chapter_order}`,
 				label: ctx.label('chapter'),
 				href: withQuery(`/books/${hit.book_slug}/${hit.chapter_order}`),
-				title: chapterName(hit.chapter_order, hit.chapter_title),
+				title,
 				meta: `${hit.book_title} · ${hit.author_name}`,
+				location: `${hit.book_title} · ${title}`,
 				snippet: hit.snippet,
 				date: hit.date,
 				image: hit.cover_url,
@@ -183,6 +191,7 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				face: hit.cover,
 				round: false
 			};
+		}
 	}
 }
 
@@ -237,53 +246,6 @@ export function leadWithPinned(groups: ResultGroup[]): ResultGroup[] {
 	return i > 0 ? [groups[i], ...groups.slice(0, i), ...groups.slice(i + 1)] : groups;
 }
 
-export interface PassageBook {
-	slug: string;
-	title: string;
-	author: string;
-	date: string;
-	cover: string;
-	color: string;
-	face?: CoverFace;
-	chapters: { key: string; order: number; title: string; snippet: string }[];
-}
-
-/**
- * Collapse chapter matches under their book, so "where does this theme live
- * across the work" reads as a map rather than a scatter of unrelated lines.
- *
- * Server order throughout: books in first-match order, chapters in book order.
- * Re-sorting here would silently override the relevance the server ranked by.
- */
-export function passageBooks(hits: SearchHit[]): PassageBook[] {
-	const by = new Map<string, PassageBook>();
-	for (const h of hits) {
-		if (h.type !== 'chapter') continue;
-		const c = h as ChapterHit;
-		let g = by.get(c.book_slug);
-		if (!g) {
-			g = {
-				slug: c.book_slug,
-				title: c.book_title,
-				author: c.author_name,
-				date: c.date,
-				cover: c.cover_url,
-				color: c.cover_color,
-				face: c.cover,
-				chapters: []
-			};
-			by.set(c.book_slug, g);
-		}
-		g.chapters.push({
-			key: `${c.book_slug}:${c.chapter_order}`,
-			order: c.chapter_order,
-			title: c.chapter_title || c.book_title,
-			snippet: c.snippet
-		});
-	}
-	return [...by.values()];
-}
-
 /**
  * Every match across every type.
  *
@@ -325,42 +287,53 @@ export interface NavList {
 
 /**
  * Flatten what is on screen so ↑/↓ walk it and Enter opens the active one.
- *
- * Only the SHOWN passage chapters: a collapsed book contributes its preview and
- * no more, or the arrow keys would walk through rows the reader cannot see.
+ * Every kind is one row per result now — passages included, each carrying its
+ * own "Book · Chapter" — so the walk is simply the rows in display order.
  */
-export function navList(
-	groups: ResultGroup[],
-	books: PassageBook[],
-	expanded: ReadonlySet<string>,
-	previewCap: number
-): NavList {
+export function navList(groups: ResultGroup[]): NavList {
 	const keys: string[] = [];
 	const map = new Map<string, string>();
 	const labels = new Map<string, string>();
 	const types = new Map<string, SearchType>();
 
 	for (const g of groups) {
-		if (g.type === 'chapter') {
-			for (const pb of books) {
-				const shown = expanded.has(pb.slug)
-					? pb.chapters
-					: pb.chapters.slice(0, previewCap);
-				for (const ch of shown) {
-					keys.push(ch.key);
-					map.set(ch.key, `/books/${pb.slug}/${ch.order}`);
-					labels.set(ch.key, `${ch.title} — ${pb.title}`);
-					types.set(ch.key, 'chapter');
-				}
-			}
-		} else {
-			for (const row of g.rows) {
-				keys.push(row.key);
-				map.set(row.key, row.href);
-				labels.set(row.key, row.meta ? `${row.title} — ${row.meta}` : row.title);
-				types.set(row.key, g.type as SearchType);
-			}
+		for (const row of g.rows) {
+			keys.push(row.key);
+			map.set(row.key, row.href);
+			labels.set(row.key, row.meta ? `${row.title} — ${row.meta}` : row.title);
+			types.set(row.key, g.type as SearchType);
 		}
 	}
 	return { keys, map, labels, types };
+}
+
+/**
+ * Case, accents and punctuation folded away, so "all of grace" names "All of
+ * Grace". `foldText` strips only Latin combining marks on purpose: stripping
+ * every mark would delete Devanagari vowel signs and fold different Hindi
+ * titles together.
+ */
+function fold(s: string): string {
+	return foldText(s)
+		.replace(/[^\p{L}\p{M}\p{N}]+/gu, ' ')
+		.trim();
+}
+
+/**
+ * The one result worth a larger card above the list: a book or a writer the
+ * query names exactly ("all of grace", "spurgeon" does not; "Charles Spurgeon"
+ * does), or an admin's pinned best match when that is a book or a writer.
+ *
+ * Exact, not "first": a top card over a fuzzy match claims an answer the
+ * reader didn't ask for. Books win a tie with writers because the reader came
+ * to read, and the writer is one tap away from the book.
+ */
+export function topResult(rows: ResultRow[], query: string): ResultRow | null {
+	const named = rows.filter((r) => r.type === 'book' || r.type === 'author');
+	const pinned = named.find((r) => r.pinned);
+	if (pinned) return pinned;
+	const q = fold(query);
+	if (q.length < 2) return null;
+	const exact = named.filter((r) => fold(r.title) === q);
+	return exact.find((r) => r.type === 'book') ?? exact[0] ?? null;
 }

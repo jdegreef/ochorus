@@ -4,15 +4,16 @@
 	import { holdFlag } from '$lib/presenceFlag';
 
 	/**
-	 * The read verb pinned to the foot of a phone screen, once the page's own
+	 * The read verb pinned to the foot of the screen, once the page's own
 	 * read card has scrolled away (`show` — the caller's `elementVisible` gate,
 	 * so there are never two primaries on screen). Shared by the book page and
 	 * the plan page, so the two can't drift in look, clearance or breakpoint.
 	 *
 	 * `hideFrom` is the width at which the page keeps its read verb in view by
 	 * other means and the bar steps aside: `sm` for the book page (its sticky
-	 * sub-nav carries a Continue button from 640px), `lg` for the plan page (its
-	 * side panel sticks from 1024px).
+	 * sub-nav carries a Continue button from 640px). Left out, the bar serves
+	 * every width — the plan page, whose read card sits in its hero and so
+	 * scrolls away on a laptop too (design review #24).
 	 *
 	 * Portalled to <body>, as every fixed overlay is, and clear of the tab bar
 	 * and the listen bar (the shared bottom-chrome expression). While it is up,
@@ -25,7 +26,7 @@
 		href,
 		label,
 		onread,
-		hideFrom = 'lg'
+		hideFrom
 	}: {
 		show: boolean;
 		/** Small line above the title — "Day 14 of 96", the book's name. */
@@ -36,7 +37,7 @@
 		/** The read verb: Start, Continue, Begin reading. */
 		label: string;
 		onread?: () => void;
-		hideFrom?: 'sm' | 'lg';
+		hideFrom?: 'sm';
 	} = $props();
 
 	// <body data-read-bar> (and data-read-bar-until-sm) while the bar is up, for
@@ -58,7 +59,7 @@
 			<span class="block truncate text-eyebrow text-muted" dir="auto">{eyebrow}</span>
 			<span class="block truncate text-small font-semibold text-text" dir="auto">{title}</span>
 		</span>
-		<a {href} class="btn btn-primary shrink-0" onclick={onread}>{label}</a>
+		<a {href} class="btn btn-primary btn-solid shrink-0" onclick={onread}>{label}</a>
 	</div>
 {/if}
 
@@ -72,7 +73,9 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 0.625rem 1.25rem;
+		/* Its content keeps to the page column (`.page-col`'s width) on a wide
+		   screen, rather than stretching edge to edge. */
+		padding: 0.625rem max(1.25rem, calc((100vw - var(--pw, 76rem)) / 2));
 		border-top: 1px solid var(--border);
 		background: var(--surface);
 		box-shadow: var(--shadow-card);
@@ -81,14 +84,6 @@
 	   resets below win wherever the bar steps aside. */
 	:global(body[data-read-bar]) {
 		padding-bottom: 4.5rem;
-	}
-	@media (min-width: 1024px) {
-		.read-bar {
-			display: none;
-		}
-		:global(body[data-read-bar]) {
-			padding-bottom: 0;
-		}
 	}
 	@media (min-width: 640px) {
 		.read-bar.until-sm {

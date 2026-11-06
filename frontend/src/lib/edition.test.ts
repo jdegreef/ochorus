@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { childrensReading, splitEdition } from './edition';
+import {
+	childrensReading,
+	collapseEditions,
+	editionBase,
+	editionFamilies,
+	splitEdition
+} from './edition';
 
 describe('splitEdition', () => {
 	it('splits a children edition into base + audience', () => {
@@ -54,5 +60,57 @@ describe('childrensReading', () => {
 		expect(childrensReading(null, 'adults')).toBe(false);
 		expect(childrensReading(null, '')).toBe(false);
 		expect(childrensReading(null, undefined)).toBe(false);
+	});
+});
+
+describe('edition families (design review #26)', () => {
+	const shelf = [
+		'confessions',
+		'confessions-teens',
+		'confessions-children',
+		'orthodoxy',
+		'orthodoxy-teens',
+		'divine-songs-for-children',
+		'come-ye-children',
+		'humility'
+	].map((slug) => ({
+		slug,
+		// The young-reader editions' titles carry their "(For …)"; a real work
+		// whose slug merely ends that way does not.
+		title: /-(teens|children)$/.test(slug) && !slug.startsWith('divine') && !slug.startsWith('come')
+			? `${slug} (For Readers)`
+			: slug
+	}));
+
+	it('reads the full text a young-reader edition retells from its slug', () => {
+		expect(editionBase({ slug: 'confessions-teens', title: 'Confessions (For Teens)' })).toBe('confessions');
+		expect(editionBase({ slug: 'c-s-lewis-a-life-children', title: 'C. S. Lewis (For Children)' })).toBe(
+			'c-s-lewis-a-life'
+		);
+		expect(editionBase({ slug: 'confessions', title: 'Confessions' })).toBeNull();
+	});
+
+	it('takes nothing for a retelling on the slug alone, nor a chained suffix', () => {
+		expect(editionBase({ slug: 'come-ye-children', title: 'Come Ye Children' })).toBeNull();
+		expect(editionBase({ slug: 'x-teens-children', title: 'X (For Children)' })).toBeNull();
+	});
+
+	it('counts each family present on the shelf, keyed by its full text', () => {
+		expect(Object.fromEntries(editionFamilies(shelf))).toEqual({ confessions: 3, orthodoxy: 2 });
+	});
+
+	it('gives a work one slot, keeping order, when its full text is in the list', () => {
+		expect(collapseEditions(shelf).map((b) => b.slug)).toEqual([
+			'confessions',
+			'orthodoxy',
+			'divine-songs-for-children',
+			'come-ye-children',
+			'humility'
+		]);
+	});
+
+	it('keeps an edition whose full text the list (a search, a filter) left out', () => {
+		const matched = shelf.filter((b) => b.slug.endsWith('-teens'));
+		expect(collapseEditions(matched).map((b) => b.slug)).toEqual(['confessions-teens', 'orthodoxy-teens']);
 	});
 });

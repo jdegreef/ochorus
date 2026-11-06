@@ -6,7 +6,6 @@
 	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { childrensReading, splitEdition } from '$lib/edition';
-	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -66,7 +65,6 @@
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
-	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
@@ -75,6 +73,7 @@
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
+	import ReaderSiteLinks from '$lib/components/ReaderSiteLinks.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -250,14 +249,6 @@
 
 	let body: HTMLDivElement | undefined = $state();
 	let titleEl: HTMLHeadingElement | undefined = $state();
-	// Is the chapter title still on screen? Once it scrolls under the header the
-	// top bar swaps the "← Book" link for a "you are here" label. Shared single-
-	// element observer; the header-height inset matches the old inline IO. Starts
-	// true — the title is at the top of the page on load.
-	const titleSpy = elementVisible(() => titleEl, {
-		rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`,
-		initial: true
-	});
 
 	// The chapter order read-aloud rolled over INTO, so the per-chapter effect
 	// picks playback up from its top on arrival (audiobook roll-over). Scoped to
@@ -538,6 +529,12 @@
 	}
 
 	const minsLeft = $derived(minutesLeftOf(chapter.word_count, chapterFrac));
+	// The end card's "You finished %title%", split so the chapter's name can
+	// carry the content's lang, and its button's "Next: %title%".
+	const [finishedBefore, finishedAfter] = $derived(t('reader.finished').split('%title%'));
+	const nextNamed = $derived(
+		chapter.next ? t('reader.nextNamed').replace('%title%', chapterName(chapter.next.order, chapter.next.title)) : ''
+	);
 	const editionLabel = $derived(
 		edition === 'modern' ? t('reader.readOriginal') : t('reader.readModern')
 	);
@@ -568,9 +565,19 @@
 	});
 	const endStreak = $derived(endMounted ? currentStreak(readingActivity.days(), localToday()) : 0);
 
-	// The phone bar's second line — the chapter, in words that don't repeat the
-	// book title above it.
+	// The chapter, in words that don't repeat the book title beside it — the
+	// phone bar's second line and the slim bar's "Book · chapter".
 	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
+	// The slim bar's "1 of 13" — from the book fetch, so it joins the bar once
+	// that lands (the prerendered bar names the chapter alone). Not for a
+	// one-chapter book, as the end card's progress isn't.
+	const chapterPosition = $derived(
+		endProgress && endProgress.total > 1
+			? t('reader.position')
+					.replace('%n%', String(endProgress.done))
+					.replace('%total%', String(endProgress.total))
+			: ''
+	);
 	// The book's word counts split around the open chapter — the words before it,
 	// the words after it, and the total. Computed once per (book, chapter), NOT on
 	// the scroll path, then shared by both the "% through" figure and the "time
@@ -623,11 +630,11 @@
 	let footEl = $state<HTMLElement>();
 	let leadEl = $state<HTMLElement>();
 	let chapterEndEl = $state<HTMLElement>();
-	// The footer's UNFOLDED height, published as --foot-h for the article's
-	// bottom clearance and the return pill (hand-kept per-breakpoint constants
-	// had drifted three times). It varies with the touch scrubber and the phone
-	// action row — but deliberately NOT with that row folding: folding changes
-	// no layout, because shrinking the article's padding at the end of a
+	// The footer's height, published as --foot-h for the article's bottom
+	// clearance and the return pill (hand-kept per-breakpoint constants had
+	// drifted three times). It varies with the phone action row — but NOT with
+	// the bar folding, which is only a transform (design #30): folding must
+	// change no layout, because shrinking the article's padding at the end of a
 	// chapter clamped scrollY upward, which read as a scroll-up and unfolded it
 	// again — a flicker loop. measureScrollPages reads the same number so the
 	// page total doesn't shift with the fold. Removed while no footer is shown.
@@ -637,7 +644,6 @@
 		if (!el) return;
 		const root = document.documentElement;
 		const ro = new ResizeObserver(() => {
-			if (el.querySelector('.foot-actions.folded')) return;
 			footH = el.offsetHeight;
 			root.style.setProperty('--foot-h', `${footH}px`);
 		});
@@ -737,6 +743,27 @@
 			? pageIndex + 1
 			: Math.min(pageCount, Math.max(1, Math.round(chapterFrac * pageCount) || 1))
 	);
+
+	// --- The progress hairline (design #18) --------------------------------------
+	// The slider block under the text ("Page 1 / 18 · 35 min left") became a 2px
+	// line along the reader bar's bottom edge. What the block printed is the
+	// line's tooltip (hover, or Tab onto it) and its accessible value.
+	const progressLabel = $derived(
+		[`${t('progress.page')} ${currentPage} / ${pageCount}`, `${minsLeft} ${t('progress.minLeft')}`, bookTimeLeftLabel]
+			.filter(Boolean)
+			.join(' · ')
+	);
+	// When the hairline last seeked (see trackChrome).
+	let seekedAt = 0;
+	const SEEK_SETTLE_MS = 400;
+	/** Seek to a fraction of the chapter: a page in page mode, a scroll otherwise. */
+	function seekTo(frac: number) {
+		seekedAt = performance.now();
+		if (paged) {
+			breakPace(); // a seek: goToPage samples, and this pair must not count
+			goToPage(Math.round(frac * (pageTotal - 1)));
+		} else scrubTo(frac);
+	}
 
 	/** Scroll to a fraction of the chapter — drives the draggable scrubber. */
 	function scrubTo(frac: number) {
@@ -1410,7 +1437,7 @@
 		// a toolbar button clicked with the mouse keeps focus too, but there
 		// Space still pages, as readers expect.
 		const control = el?.closest?.(INTERACTIVE);
-		const byKeyboard = control && el.matches?.(':focus-visible');
+		const byKeyboard = control && focusVisible(el);
 		if (byKeyboard && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) return;
 		if (e.key === ' ' && control && (byKeyboard || el.closest('.pager'))) return;
 		// Focus mode had no keyboard exit at all: exitFocus() existed and nothing
@@ -1438,13 +1465,15 @@
 		}
 	}
 
-	/** Which page a tap in PAGED mode turns, from where it lands (see below). */
-	function pagedTurn(e: MouseEvent) {
-		if (!paged) return 'none';
+	/** Which zone a tap lands in (see below). Touch: thirds (deadZone 0.34).
+	 *  Fine pointer: the outer 15% (0.7). Page mode turns on it; scroll mode
+	 *  on a phone shows the bars from its middle (design #30). */
+	function tapZone(e: MouseEvent) {
 		const coarse = coarsePointer?.matches ?? false;
-		// Touch: thirds (deadZone 0.34). Fine pointer: the outer 15% (0.7).
 		return tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0.34 : 0.7);
 	}
+	/** Which page a tap in PAGED mode turns, from where it lands. */
+	const pagedTurn = (e: MouseEvent) => (paged ? tapZone(e) : 'none');
 
 	/**
 	 * Tapping the page. In PAGED mode this is how you turn: on TOUCH the screen is
@@ -1488,6 +1517,16 @@
 		}
 		if (readerPrefs.tapToScroll && coarse && e.clientY / window.innerHeight > 0.66) {
 			pageScroll(1);
+			return;
+		}
+		// Phone, scroll mode (design #30): the bars fold away as the reader
+		// reads on, and a tap in the middle third — the same zone that shows the
+		// controls in page mode — brings them back (or folds them again). The
+		// outer thirds stay inert here: no chapter turns off a stray edge tap.
+		// A tap that closes an open menu or popover only closes it.
+		const overlayOpen = moreOpen || readerUi.panelOpen || reader.open || define.open || scripture.open;
+		if (coarse && isPhone && !overlayOpen && tapZone(e) === 'none') {
+			barHidden = !hideChrome;
 		}
 	}
 
@@ -1793,8 +1832,34 @@
 	let lastScrollY = 0;
 	function trackChrome() {
 		const y = window.scrollY;
-		barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
+		// A seek on the hairline scrolls too, but it is not reading on: folding
+		// the bar there would pull the line out from under the pointer.
+		// Nor while the keyboard is on one of the bars' controls: the two bars
+		// stay together, and focus is never on a control the reader can't see.
+		if (performance.now() - seekedAt > SEEK_SETTLE_MS && !keyboardInBars())
+			barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
 		lastScrollY = y;
+	}
+	/** Whether `el` has keyboard focus. `:focus-visible` is a SyntaxError in
+	 *  `matches()` before Safari 15.4 (the app targets iOS 15.0), and this runs
+	 *  in the scroll handler: a throw there would stop the bars folding at all. */
+	function focusVisible(el: Element | null | undefined) {
+		try {
+			return !!el?.matches?.(':focus-visible');
+		} catch {
+			return false;
+		}
+	}
+	/** Keyboard focus (`:focus-visible`) inside the top bar or the phone row. */
+	function keyboardInBars() {
+		const el = document.activeElement;
+		return focusVisible(el) && !!(chromeEl?.contains(el) || footEl?.contains(el));
+	}
+	/** Tab landing in a folded bar brings both bars back. A pointer focus — a
+	 *  press on the hairline to seek, a drawer handing focus back — does not:
+	 *  `:focus-visible` only, the rule the top bar's CSS has kept since #7. */
+	function unfold(e: FocusEvent) {
+		if (focusVisible(e.target as Element)) barHidden = false;
 	}
 	const hideChrome = $derived(
 		barHidden &&
@@ -1846,12 +1911,6 @@
 	ontouchmove={onWinTouchMove}
 />
 
-<!-- Compact "where you are" — book · chapter. One definition, rendered both as
-     the inline label (≥sm) and the phone location line below the controls.
-     When the chapter's name is just the book's title (a single-work volume like
-     "Absolute Surrender"), drop the redundant "Book · " prefix. -->
-{#snippet locationLabel()}{@const chap = chapterName(chapter.order, chapter.title)}{#if chapter.book_title !== chap}<span class="text-muted"><bdi>{chapter.book_title}</bdi> · </span>{/if}<bdi>{chap}</bdi>{/snippet}
-
 <!-- Reader top bar: breadcrumb / context + controls. Hidden in focus mode,
      except a transient peek summoned by a swipe-down from the top (see above). -->
 {#if !readerUi.focus || showPeek}
@@ -1860,14 +1919,15 @@
 	     `sticky` sibling makes Chromium drop the top line of the reader's later
 	     paged columns (a paint bug), which `fixed` avoids.
 
-	     `fixed` measures from the VIEWPORT, though, and the global nav is
-	     `.appnav-static` here — in flow, at the top, and (since nothing scrolls
-	     in page mode) never going anywhere. So `top-0` parked this whole bar
-	     underneath it, below the nav in the stacking order: every control in it, Contents
-	     and Text settings and Focus included, was invisible and unclickable at
-	     every viewport width. `.reader-chrome.fixed` below starts it beneath the
-	     nav instead. Scroll mode is untouched — there the nav really does ride
-	     away, and 0 is right. -->
+	     `fixed` measures from the VIEWPORT, though, so `.reader-chrome.fixed`
+	     below starts it at var(--appnav-h): whatever sits above the page. Since
+	     design #7 the reader draws no site nav, so that is 0 on the website and
+	     the status strip in the phone app — when the nav was still drawn here,
+	     a `top-0` bar sat underneath it, every control invisible and
+	     unclickable. -->
+	<!-- This is the reader's ONE bar: no site nav above it, no footer below the
+	     text (the root layout's `siteChrome`). The site's destinations live at
+	     the end of its "⋯" group (ReaderSiteLinks). -->
 	<div
 		bind:this={chromeEl}
 		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur max-sm:bg-bg/97 max-sm:backdrop-blur-none"
@@ -1875,7 +1935,9 @@
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
 		class:autohidden={hideChrome}
+		onfocusin={unfold}
 	>
+		{@render hairline(false)}
 		<div
 			class="mx-auto flex items-center justify-between gap-0.5 py-1.5 sm:gap-3 sm:py-2.5"
 			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
@@ -1895,7 +1957,14 @@
 				>
 				<div class="min-w-0 flex-1 text-center">
 					<div class="truncate text-small font-semibold text-text">{chapter.book_title}</div>
-					<div class="truncate text-small text-muted">{phoneChapterLine}</div>
+					<!-- The chapter's place in the book ("1 of 13") as on the wider bar;
+					     the chapter's name gives way first. -->
+					<div class="flex min-w-0 justify-center gap-1 text-small text-muted">
+						<bdi class="truncate">{phoneChapterLine}</bdi>
+						{#if chapterPosition}
+							<span class="sep" aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
+						{/if}
+					</div>
 				</div>
 				<button
 					class="btn btn-icon btn-ghost min-w-11 shrink-0"
@@ -1912,83 +1981,34 @@
 				phone bar's own title block (above) says the same, so nothing is lost
 				by standing this down where there is no room for it.
 			-->
-			<div class="hidden min-w-0 flex-1 sm:block">
-				{#if titleSpy.visible}
-					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						<Arrow back /> <bdi>{chapter.book_title}</bdi>
-					</a>
-				{:else}
-					<!-- Once the heading scrolls away, show where you are. -->
-					<div class="truncate text-small text-text">{@render locationLabel()}</div>
-				{/if}
+			<!-- From `sm`: ‹ Book title (the way back — a link to the book page) ·
+			     where you are · "1 of 13" once the book's contents have loaded. -->
+			<div class="hidden min-w-0 flex-1 items-center gap-1 sm:flex">
+				<a
+					href={localizeHref(`/books/${slug}`)}
+					class="flex min-w-0 shrink items-center gap-1 text-small font-semibold text-text hover:text-accent"
+					title={t('reader.backToContents')}
+					><Icon name="chevron-left" size={18} class="shrink-0" /><bdi class="truncate">{chapter.book_title}</bdi></a
+				>
+				<span class="flex min-w-0 shrink-[2] items-center gap-1 text-small text-muted">
+					<span class="sep" aria-hidden="true">·</span><bdi class="truncate">{phoneChapterLine}</bdi>
+					{#if chapterPosition}
+						<span class="sep" aria-hidden="true">·</span><span class="shrink-0 whitespace-nowrap">{chapterPosition}</span>
+					{/if}
+				</span>
 			</div>
-			<!-- From `sm`: Prev · Next | Contents · Bookmark · Listen · Aa · "⋯" —
-			     the few verbs a reader reaches for, labelled from `md`; Search,
-			     Notebook, Edition and Focus fold into "⋯" (the sermon bar's shape). -->
+			<!-- From `sm`: Contents · Aa · Listen · Bookmark · "⋯" — icons with
+			     tooltips (`title`) and accessible names. Previous/Next chapter,
+			     Search, Notebook, Edition, Focus and the site's destinations fold
+			     into "⋯" (the sermon bar's shape). -->
 			<div class="flex shrink-0 items-center gap-0.5">
 				<div class="hidden sm:contents">
-					<!-- Both slots always render: at the first or last chapter the missing
-					     one is a dimmed, inert stand-in rather than nothing, so the row
-					     keeps its shape and nothing jumps between chapters (a lone ">"
-					     used to float on chapter 1). -->
-					{#if chapter.prev}
-						<a
-							href={chapterHref(chapter.prev.order)}
-							class="btn btn-icon btn-ghost"
-							aria-label={t('reader.prevChapter')}
-							title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
-						>
-					{:else}
-						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
-						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.prevChapter')}
-							><Icon name="chevron-left" size={18} /></button
-						>
-					{/if}
-					{#if chapter.next}
-						<a
-							href={chapterHref(chapter.next.order)}
-							class="btn btn-icon btn-ghost"
-							aria-label={t('reader.nextChapter')}
-							title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
-						>
-					{:else}
-						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
-						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.nextChapter')}
-							><Icon name="chevron-right" size={18} /></button
-						>
-					{/if}
-					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
 					<button
 						class="btn btn-icon btn-ghost"
 						onclick={() => (tocOpen = true)}
 						aria-label={t('reader.contents')}
 						title={t('reader.contents')}><Icon name="list" size={18} /></button
 					>
-					<!-- Labelled from `md`; the aria-label matches the visible word. -->
-					<button
-						class="btn btn-icon btn-ghost md:px-2.5"
-						class:text-accent={currentBookmarked}
-						onclick={toggleBookmark}
-						aria-label={t('reader.bookmark')}
-						title={t('reader.bookmark')}
-						aria-pressed={currentBookmarked}
-						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
-							>{t('reader.bookmark')}</span
-						></button
-					>
-					{#if listen.offered}
-						<button
-							class="btn btn-icon btn-ghost md:px-2.5"
-							class:text-accent={listen.status !== 'idle'}
-							onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
-							aria-label={t('reader.listen')}
-							aria-pressed={listen.status !== 'idle'}
-							title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
-							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
-								>{t('reader.listen')}</span
-							></button
-						>
-					{/if}
 					<!-- `layout`: the chapter reader is the one surface that implements
 					     paged mode, so it is the one that offers the switch. -->
 					<!-- `sample`: the chapter's opening line, so the panel's live preview
@@ -1998,6 +2018,25 @@
 					{#if !isPhone}
 						<ReaderControls layout margins {...rcProps} />
 					{/if}
+					{#if listen.offered}
+						<button
+							class="btn btn-icon btn-ghost"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
+							><Icon name="headphones" size={18} /></button
+						>
+					{/if}
+					<button
+						class="btn btn-icon btn-ghost"
+						class:text-accent={currentBookmarked}
+						onclick={toggleBookmark}
+						aria-label={t('reader.bookmark')}
+						title={currentBookmarked ? t('reader.removeBookmark') : t('reader.bookmark')}
+						aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
+					>
 				</div>
 				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
 				     sits in the row from `sm`, so only the phone folds it in here. -->
@@ -2028,6 +2067,25 @@
 										? t('reader.removeBookmark')
 										: t('reader.bookmark')}</button
 								>
+							{:else}
+								<!-- The phone's footer row carries Previous/Next; from `sm` they
+								     live here, off the slim bar (← → turn chapters too). -->
+								{#if chapter.prev}
+									<a
+										class="account-item more-item"
+										href={chapterHref(chapter.prev.order)}
+										onclick={() => (moreOpen = false)}
+										><Icon name="chevron-left" size={20} />{t('reader.prevChapter')}</a
+									>
+								{/if}
+								{#if chapter.next}
+									<a
+										class="account-item more-item"
+										href={chapterHref(chapter.next.order)}
+										onclick={() => (moreOpen = false)}
+										><Icon name="chevron-right" size={20} />{t('reader.nextChapter')}</a
+									>
+								{/if}
 							{/if}
 							<button class="account-item more-item" onclick={fromMore(() => (searchOpen = true))}
 								><Icon name="search" size={20} />{t('reader.search')}</button
@@ -2049,6 +2107,7 @@
 									? t('reader.exitFocus')
 									: t('reader.focus')}</button
 							>
+							<ReaderSiteLinks onpick={() => (moreOpen = false)} />
 						</div>
 					{/if}
 				</div>
@@ -2068,6 +2127,40 @@
 {#if paged}
 	<div class="paged-backdrop" aria-hidden="true"></div>
 {/if}
+
+<!-- The chapter's progress: a 2px line along the reader bar's bottom edge
+     (design #18 — it replaced the slider block under the text). Rendered
+     inside the bar at `top: 100%`, so it rides the bar's own transform: at
+     the bar's edge while it shows, at the top of the viewport while it is
+     folded away. In focus mode (no bar) it is fixed at the top instead.
+
+     It is still the scrubber: page mode has no scrollbar, so without it page
+     12 of 18 is eleven turns away. A transparent range input lies over the
+     line, so dragging or clicking seeks and Tab lands on it (arrow keys step
+     a page at a time in page mode). On touch it is on in page mode only — in
+     scroll mode the strip would sit over the text, and the scroll is the
+     seek. Hover, focus or a drag shows the time left; aria-valuetext says the
+     same to a screen reader. Not in Listen mode, which moves through the
+     chapter itself. -->
+{#snippet hairline(top: boolean)}
+	<div class="hairline" class:top class:paged>
+		<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+		{#if listen.status === 'idle'}
+			<input
+				class="hairline-seek"
+				type="range"
+				min="0"
+				max="1"
+				step={paged && pageTotal > 1 ? 1 / (pageTotal - 1) : 0.005}
+				value={paged && pageTotal > 1 ? pageIndex / (pageTotal - 1) : chapterFrac}
+				oninput={(e) => seekTo(Number(e.currentTarget.value))}
+				aria-label={t('progress.scrub')}
+				aria-valuetext={progressLabel}
+			/>
+			<span class="hairline-tip" style="--f: {chapterFrac}" aria-hidden="true">{progressLabel}</span>
+		{/if}
+	</div>
+{/snippet}
 
 <!-- On the plan strip at the top and under the reflection at the end: in page
      mode those are pages apart, and the end is where a day is finished. -->
@@ -2212,8 +2305,9 @@
 				</div>
 			{/if}
 
-			<!-- Finishing a chapter is an arrival: say which one, and where it
-			     leaves the reader in the book, before offering the next. -->
+			<!-- The end card (design #18): what was finished and where it leaves
+			     the reader in the book (this section), then ONE way on (.end-nav
+			     below). Two blocks, not one, only so page mode can keep each whole. -->
 			<!-- data-nosnippet: every chapter's HTML carries this, and it is not what
 			     a search result should quote. -->
 			<section
@@ -2224,14 +2318,12 @@
 				<span class="end-check" class:check-pop={celebrate} aria-hidden="true"
 					><Icon name="check" size={26} /></span
 				>
-				<!-- The heading is the new fact; the title under it repeats the h1, so
-				     it is a paragraph, not a second heading of the same name. -->
-				<h2 id="end-done-heading" class="mt-3 font-sans text-small font-normal text-muted">
-					{t('reader.chapterDone').replace('%n%', String(chapter.order))}
+				<!-- "You finished Book I": the chapter's name inside the sentence, so
+				     the heading says what happened, not the h1 again. -->
+				<h2 id="end-done-heading" class="font-display mt-3 text-h2 text-balance" dir="auto">
+					{finishedBefore}<span lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</span
+					>{finishedAfter}
 				</h2>
-				<p class="font-display mt-0.5 text-h2" dir="auto" lang={contentLang(language)}>
-					{chapterName(chapter.order, chapter.title)}
-				</p>
 				<!-- Nothing to count in a one-chapter work ("1 of 1 chapters"). -->
 				{#if endProgress && endProgress.total > 1}
 					{#if endProgress.pips}
@@ -2257,35 +2349,28 @@
 				{/if}
 			</section>
 
-			<!-- One block, so in page mode the way on never splits from its links:
-			     the last page always holds Previous/Next. (The completion mark above
-			     is its own block: together they outgrew a short screen's column, and
-			     an unbreakable block taller than the column splits anyway.) -->
+			<!-- One block, so in page mode the way on never splits from its links.
+			     ONE large button (design #18): the next chapter with its length, or
+			     at a book's end the series' next volume — both solid, the read verb
+			     (.btn-solid) — or, soft, the book's page. The previous chapter is
+			     in "⋯" and the phone's bottom row, not here. -->
 			<div class="end-nav">
-				<!-- The way on first and full-width on a phone — it is what the thumb
-				     is looking for here; Previous sits under it. From sm the classic
-				     pair: Previous at the start, Next at the end. Tab order stays Next-first
-				     at every width — one DOM order can't match both; Next is the primary. -->
-				<nav
-					class="end-links mt-8 flex flex-col items-stretch gap-3 sm:flex-row-reverse"
-					aria-label={t('reader.chapterNav')}
-				>
+				<nav class="end-links mx-auto mt-8 flex max-w-md flex-col items-stretch" aria-label={t('reader.chapterNav')}>
 					{#if chapter.next}
 						{@const nextWords = bookForProgress?.chapters.find((c) => c.order === chapter.next?.order)?.word_count}
 						<a
 							href={chapterHref(chapter.next.order)}
-							class="end-next btn btn-primary flex-1 flex-col items-start gap-0.5 text-start sm:items-end sm:text-end"
+							class="end-next btn btn-primary btn-solid flex-col gap-0.5 text-center"
 							class:celebrate
-							aria-label="{t('reader.next')}: {chapterName(chapter.next.order, chapter.next.title)}"
+							aria-label={nextNamed}
 						>
-							<span class="eyebrow opacity-75">{t('reader.next')}</span>
-							<span class="end-next-title" dir="auto">{chapterName(chapter.next.order, chapter.next.title)}</span>
+							<span class="end-next-title" dir="auto">{nextNamed}</span>
 							<!-- The moment of highest intent: say how long it is, and let its
 							     opening line do the inviting. Both are optional — the time needs
 							     the book fetched, the line needs the prefetch to have landed — so
 							     the line's height is reserved: the button must not grow under a
 							     thumb that is already aiming at it. -->
-							<span class="up-next-meta mt-0.5 block text-small opacity-80" dir="auto">
+							<span class="up-next-meta btn-sub block max-w-full truncate" dir="auto">
 								{#if nextWords}{readingTime(nextWords)}{/if}{#if nextWords && nextPreview}{' · '}{/if}{#if nextPreview}<span class="italic">{nextPreview}…</span>{/if}
 							</span>
 						</a>
@@ -2297,35 +2382,33 @@
 						     and a reader deciding to go on wants to see what they are starting. -->
 						<a
 							href={localizeHref(`/books/${nextInSeries.slug}`)}
-							class="end-next btn btn-primary flex-1 flex-col items-start gap-0.5 text-start sm:items-end sm:text-end"
+							class="end-next btn btn-primary btn-solid flex-col gap-0.5 text-center"
 							class:celebrate
 							aria-label="{t('book.seriesNext')}: {nextInSeries.title}"
 						>
-							<span class="eyebrow opacity-75">{t('book.seriesNext')}</span>
+							<span class="btn-sub">{t('book.seriesNext')}</span>
 							<span class="end-next-title" dir="auto">{nextInSeries.title}</span>
 						</a>
 					{:else}
-						<a href={localizeHref(`/books/${slug}`)} class="btn btn-ghost flex-1 text-center" class:celebrate>{t('reader.backToContents')}</a>
-					{/if}
-					{#if chapter.prev}
+						<!-- The book's last chapter: back to its page (the finish below
+						     offers the ways onward once the book is loaded). -->
 						<a
-							href={chapterHref(chapter.prev.order)}
-							class="btn btn-ghost flex-1 flex-col items-start gap-0.5 text-start"
+							href={localizeHref(`/books/${slug}`)}
+							class="end-next btn btn-primary flex-col gap-0.5 text-center"
+							class:celebrate
 						>
-							<span class="eyebrow text-muted">{t('reader.previous')}</span>
-							<span class="text-small" dir="auto">{chapterName(chapter.prev.order, chapter.prev.title)}</span>
+							<span class="end-next-title">{t('reader.backToContents')}</span>
+							<span class="btn-sub block max-w-full truncate" dir="auto">{chapter.book_title}</span>
 						</a>
-					{:else}
-						<!-- Holds Next to its half of the row from sm; nothing on a phone. -->
-						<span class="hidden flex-1 sm:block"></span>
 					{/if}
 				</nav>
-				<!-- Contents whenever the button above points somewhere else (mid-book,
-				     and at the end of a volume that has a next one), and Share always:
-				     the end of a chapter is when a reader passes one on. -->
-				<div class="mt-3 flex justify-center gap-2">
+				<!-- Under the button, as text: Contents whenever the button points
+				     somewhere else (mid-book, and at the end of a volume that has a
+				     next one), and Share always — the end of a chapter is when a
+				     reader passes one on. -->
+				<div class="end-aside mt-2 flex items-center justify-center gap-1">
 					{#if chapter.next || nextInSeries}
-						<a href={localizeHref(`/books/${slug}`)} class="btn btn-sm btn-ghost"
+						<a href={localizeHref(`/books/${slug}`)} class="end-link"
 							><Icon name="list" size={16} />{t('reader.contents')}</a
 						>
 					{/if}
@@ -2406,19 +2489,14 @@
 	</button>
 {/if}
 
-<!-- A hairline of progress along the top. It began as focus mode's stand-in
-     for the hidden scrubber; it now stays on in scroll mode too, so a glance
-     tells you where you are without looking down at the footer. Page mode
-     keeps it to focus only — the fixed chrome bar sits where it would go, and
-     "Page 3 / 9" already says it. -->
-{#if readerUi.focus || !paged}
-	<div class="read-progress" style="transform: scaleX({chapterFrac})" aria-hidden="true"></div>
+<!-- Focus mode has no bar: the line sits at the top of the viewport. -->
+{#if readerUi.focus && !showPeek}
+	{@render hairline(true)}
 {/if}
 
-<!-- Focus mode hides the footer, and with it the scrubber's aria-valuetext —
-     so announce the page here instead (only there: elsewhere it would be said
-     twice). The text re-renders only when currentPage does, so a screen reader
-     hears "Page 4 / 9", not every pixel. -->
+<!-- Focus mode: announce the page as it turns (only there, where the reader
+     has no bar to look at). The text re-renders only when currentPage does,
+     so a screen reader hears "Page 4 / 9", not every pixel. -->
 {#if readerUi.focus}
 	<div class="sr-only" role="status" aria-live="polite">
 		{t('progress.page')} {currentPage} / {pageCount}
@@ -2462,10 +2540,14 @@
 	</div>
 {/snippet}
 
-<!-- Reading-progress footer: a draggable scrubber + location, fixed, hidden in
-     focus/Listen modes. -->
+<!-- The phone's bottom bar: the Previous · Listen · + · Aa · Next row, fixed,
+     hidden in focus/Listen modes. Phones only since design #18 moved the
+     chapter's progress to the hairline at the top. It slides away with the
+     top bar (hideChrome) so it never sits over the text being read (design
+     #30) — a transform only: it stays in the accessibility tree, and a focus
+     landing in it (Tab, a screen reader) brings both bars back. -->
 {#if !readerUi.focus && listen.status === 'idle'}
-	<div bind:this={footEl} class="progress-foot">
+	<div bind:this={footEl} class="progress-foot" class:folded={hideChrome} onfocusin={unfold}>
 		<!-- Scroll mode: the footer is a translucent bar the text scrolls under, so
 		     a line landing at its hard top edge is sliced into unreadable letter-tops.
 		     This scrim fades the last line into the bar instead of chopping it. Page
@@ -2473,47 +2555,8 @@
 		{#if !paged}
 			<div class="foot-fade" aria-hidden="true"></div>
 		{/if}
-		<input
-			class="scrubber"
-			type="range"
-			min="0"
-			max="1"
-			step="0.005"
-			value={chapterFrac}
-			oninput={(e) => {
-				const frac = Number(e.currentTarget.value);
-				if (paged) {
-					breakPace(); // a seek: goToPage samples, and this pair must not count
-					goToPage(Math.round(frac * (pageTotal - 1)));
-				} else scrubTo(frac);
-			}}
-			aria-label={t('progress.scrub')}
-			aria-valuetext="{t('progress.page')} {currentPage} / {pageCount}"
-		/>
-		<div class="progress-meta">
-			<span>{t('progress.page')} {currentPage} / {pageCount}</span>
-			<span class="sep mx-1.5">·</span>
-			<span>
-				{minsLeft}
-				{t('progress.minLeft')}{#if readingPace.personalized}<span class="hidden sm:inline"
-						><span class="sep mx-1.5">·</span>{t('progress.yourPace')}</span
-					>{/if}
-			</span>
-			{#if bookPercent !== null}
-				<span class="sep mx-1.5">·</span>
-				<span>{bookPercent}% {t('progress.through')}</span>
-			{/if}
-			{#if bookTimeLeftLabel}
-				<!-- Whole-book time, hidden on the narrowest screens (like "your
-				     pace") so the phone footer stays a single tidy line. -->
-				<span class="hidden sm:inline"
-					><span class="sep mx-1.5">·</span>{bookTimeLeftLabel}</span
-				>
-			{/if}
-		</div>
-		<!-- Phone action row, in thumb reach. Folds away with the top bar while
-		     reading on (hideChrome: scroll mode only) and returns with it. -->
-		<div class="foot-actions" class:folded={hideChrome}>
+		<!-- Phone action row, in thumb reach. -->
+		<div class="foot-actions">
 			{#if chapter.prev}
 				<a
 					href={chapterHref(chapter.prev.order)}
@@ -2634,7 +2677,7 @@
 	}
 	/* Sits below the columns (z 5) and the edge arrows (z 6), above the page, so
 	   the whole reading surface is one uniform shade. */
-	/* Page mode only: `sticky` already sits below the nav in flow. */
+	/* Page mode only: `sticky` already sits at the top of the flow. */
 	.reader-chrome.fixed {
 		top: var(--appnav-h, 0px);
 	}
@@ -2671,6 +2714,18 @@
 	   focus, and the bar must still fold away as the reader scrolls on. */
 	.reader-chrome.autohidden:has(:focus-visible) {
 		transform: none;
+	}
+	/* The line hangs from the bar's padding edge, so folded away it sat half
+	   above the viewport (the bar's 1px border is below it): on a phone, where
+	   it is the only chrome left while reading (design #30), drop it by that
+	   border so the whole 2px shows at the top of the screen. */
+	@media (max-width: 639.98px) {
+		.reader-chrome .hairline {
+			transition: top var(--duration-base) ease;
+		}
+		.reader-chrome.autohidden:not(:has(:focus-visible)) .hairline {
+			top: calc(100% + 1px);
+		}
 	}
 	/* Touch: give the chrome's icon buttons a full-height tap target (≥44px on
 	   the axis that fits — nine controls can't also be 44px WIDE on a 360px
@@ -2888,7 +2943,30 @@
 		}
 	}
 	/* The Next button (.end-next / .end-next-title) lives in app.css: the
-	   sermon page's pair wears it too (page-design D10). */
+	   sermon page's pair wears it too (page-design D10). Here it is the end
+	   card's one large button, so it gets a little more height. */
+	.end-links .end-next {
+		min-height: 4.5rem;
+		align-items: center;
+	}
+	/* Under it, Contents and Share as text links: the button is the one action. */
+	.end-link,
+	.end-aside :global(.share-wrap > .btn) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		min-height: 2.75rem;
+		padding-inline: 0.5rem;
+		border-color: transparent;
+		background: transparent;
+		color: var(--accent);
+		font-size: var(--fs-small);
+		font-weight: 600;
+	}
+	.end-link:hover,
+	.end-aside :global(.share-wrap > .btn:hover) {
+		text-decoration: underline;
+	}
 
 	/* Finishing a chapter: one gentle pulse of the onward button so the arrival
 	   registers. Set only when the chapter is completed (and never under
@@ -2976,25 +3054,114 @@
 		background: linear-gradient(to top, var(--bg), transparent);
 		pointer-events: none;
 	}
-	.progress-meta {
-		margin-top: 0.1rem;
+	/* Phones only: from `sm` the bar held nothing but the progress, which is
+	   the hairline now. */
+	@media (min-width: 640px) {
+		.progress-foot {
+			display: none;
+		}
 	}
-	.scrubber {
-		display: block;
-		width: min(42rem, 100%);
-		max-width: 100%;
-		margin: 0 auto;
-		height: 1.1rem;
+	/* Folded, it slides down off the screen — the counterpart of the top bar's
+	   translateY(-100%), on the same transition (snapped by app.css's
+	   reduced-motion block). The fade above it would otherwise be left lying
+	   over the last lines, so it goes with it. Tabbing in brings it back
+	   (`unfold`). */
+	@media (max-width: 639.98px) {
+		.progress-foot {
+			transition: transform var(--duration-base) ease;
+		}
+		.progress-foot.folded {
+			transform: translateY(100%);
+		}
+		.progress-foot.folded .foot-fade {
+			opacity: 0;
+		}
+	}
+
+	/* --- The progress hairline (see the markup) -------------------------------
+	   Inside the bar it hangs from the bar's bottom edge; in focus mode
+	   (.top) it is pinned to the viewport. The 2px fill is the shared
+	   .read-progress, held inside the strip instead of pinned on its own. */
+	.hairline {
+		position: absolute;
+		top: 100%;
+		inset-inline: 0;
+		height: 2px;
+	}
+	.hairline.top {
+		position: fixed;
+		top: var(--appnav-h, 0px);
+		z-index: var(--z-chrome);
+	}
+	.hairline .read-progress {
+		position: absolute;
+		top: 0;
+		transition:
+			transform var(--duration-fast) linear,
+			height var(--duration-fast) ease;
+	}
+	/* The seek strip: transparent, a little taller than the line so a mouse can
+	   find it — reaching only 6px below it, so the text keeps its clicks. On
+	   touch it is on in page mode only, a little taller, over the pager's top
+	   padding (see the markup). Its own focus ring would be a box round the
+	   whole width; the line thickens and the tip shows instead. */
+	.hairline-seek {
+		position: absolute;
+		inset-inline: 0;
+		top: -4px;
+		width: 100%;
+		height: 10px;
+		margin: 0;
+		opacity: 0;
 		cursor: pointer;
-		accent-color: var(--accent);
-		background: transparent;
 	}
-	/* Touch: a range input's whole height is its hit area, so growing it gives
-	   the thumb a ≥44px target without restyling the native thumb (which
-	   `accent-color` would lose under `appearance: none`). */
 	@media (pointer: coarse) {
-		.scrubber {
-			height: 2.75rem;
+		.hairline-seek {
+			pointer-events: none;
+		}
+		.hairline.paged .hairline-seek {
+			height: 16px;
+			pointer-events: auto;
+		}
+	}
+	/* Hovered, focused or dragged, the line shows its whole length (a faint track) and
+	   thickens, and the time left appears beneath it. */
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) {
+		background: var(--border-strong);
+	}
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) .read-progress {
+		height: 4px;
+	}
+	/* Under the fill's end, kept on screen: at 0 its start sits at the line's
+	   start, at 1 its end at the line's end. --tip-dir flips the shift in RTL,
+	   where inset-inline-start measures from the right. */
+	.hairline-tip {
+		--tip-dir: -1;
+		position: absolute;
+		top: 0.6rem;
+		inset-inline-start: calc(var(--f, 0) * 100%);
+		transform: translateX(calc(var(--tip-dir) * var(--f, 0) * 100%));
+		padding: 0.2rem 0.55rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-pill);
+		background: var(--surface);
+		color: var(--muted);
+		font-size: var(--fs-micro);
+		white-space: nowrap;
+		box-shadow: var(--shadow-popover);
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity var(--duration-fast) ease;
+	}
+	:global([dir='rtl']) .hairline-tip {
+		--tip-dir: 1;
+	}
+	.hairline:has(.hairline-seek:hover, .hairline-seek:focus-visible, .hairline-seek:active) .hairline-tip {
+		opacity: 1;
+	}
+	@media print {
+		.hairline {
+			display: none;
 		}
 	}
 
@@ -3010,9 +3177,6 @@
 	@media (max-width: 639.98px) {
 		.foot-actions {
 			display: flex;
-		}
-		.foot-actions.folded {
-			display: none;
 		}
 	}
 	.foot-btn {

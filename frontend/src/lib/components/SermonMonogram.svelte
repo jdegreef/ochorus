@@ -4,7 +4,7 @@
 
 	/**
 	 * A passage as a Monogram — "MAT" over 11 — for sermons (rows, tiles, the
-	 * plate) and topics (their epigraph). With no parseable passage it wears
+	 * plate, a shelf card's sermon tile). With no parseable passage it wears
 	 * the title's first letter, set the same way.
 	 */
 	let {

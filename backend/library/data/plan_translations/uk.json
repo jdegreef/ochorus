@@ -95,5 +95,12 @@
       "Job #7033 (the book job for around-the-wicket-gate → uk, which completes this plan's source set and so creates the (first-steps-for-teens, uk) row on deploy). Source books: around-the-wicket-gate (uk edition shipped in THIS PR, «Біля Тісної Брами») and men-and-women-who-gave-everything-2 (already in uk, «Чоловіки й жінки, які віддали все»). The description echoes both titles: «біля Тісної Брами» (the wicket gate as the uk Pilgrim's Progress names it, «Тісна Брама») and «чоловіків і жінок, які віддали Йому все».",
       "Reader address «вас» follows the uk Spurgeon editions. AI-drafted, awaiting native review."
     ]
+  },
+  "faithful-with-little": {
+    "title": "Вірний у малому: гроші й серце",
+    "description": "Три тижні з тим, що вся Біблія каже про гроші, — по одному короткому розділу щодня. Усе належить Богові; серце за гаманцем; чесна праця, планування й борги; щедрі, як Бог; і скарб, що не минає, — а в дорозі поруч Джон Веслі, Джордж Мюллер, Чарлз Сперджен і А. В. Тозер. Кожен день закінчується однією справою на практиці, а тридцять ключових віршів книги дають ще місяць читання.",
+    "note": [
+      "The title quotes the shipped uk edition faithful-with-little.uk.json verbatim (Вірний у малому), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+    ]
   }
 }

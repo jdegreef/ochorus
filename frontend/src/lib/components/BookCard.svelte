@@ -9,7 +9,6 @@
 	import { ORIGINALS_SLUG } from '$lib/originals';
 	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
-	import { cardTint } from '$lib/coverArt';
 
 	let {
 		book,
@@ -34,9 +33,12 @@
 		 */
 		showSeries = true,
 		/**
-		 * The time as a sitting ("~12 min a chapter", the series card's words)
-		 * rather than the whole book's: on the young-reader hubs, where "3 hr
-		 * read" is what puts a reader off and one chapter is the real commitment.
+		 * A line under the byline giving the time as a sitting ("~12 min a
+		 * chapter", the series card's words): on the young-reader hubs, where one
+		 * chapter is the real commitment and saying so is part of the pitch.
+		 * Every other card carries title and author only — the chapter count
+		 * and the whole book's time are on the book page, and in the list view
+		 * where a shelf has one (design review #1, 2026-11).
 		 */
 		perChapter = false,
 		/**
@@ -57,7 +59,14 @@
 		 * The Ochorus Originals ribbon on an imprint book. Off on /originals,
 		 * where every card is one and the page already says so.
 		 */
-		showImprint = true
+		showImprint = true,
+		/**
+		 * How many editions this card stands for — the full text and the
+		 * young-reader editions folded into it on /books (design review #26,
+		 * `collapseEditions`). Above one, the cover gets a quiet stacked edge and
+		 * a small "3 editions" marker; the book page is where the reader chooses.
+		 */
+		editions = 1
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -69,13 +78,11 @@
 		hook?: string;
 		link?: { href: string; cta: string; label: string; ariaLabel: string };
 		showImprint?: boolean;
+		editions?: number;
 	} = $props();
 	const t = i18n.t;
 	const hookId = $props.id();
 
-	const chapters = $derived(
-		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
-	);
 	// A young-reader edition's "(For Teens)" / "(For Children)" can be clamped off
 	// the title on a narrow card; pull it onto its own line so the two editions
 	// don't look identical. Null for ordinary books.
@@ -83,37 +90,48 @@
 	// The house imprint's own books wear its ribbon, in the Originals hue —
 	// unless an audience ribbon already sits there (it says more).
 	const imprint = $derived(showImprint && !edition && book.author.slug === ORIGINALS_SLUG);
+	const editionsLabel = $derived(
+		editions > 1 ? t('books.editionsCount').replace('%n%', String(editions)) : ''
+	);
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
 	);
-	const time = $derived(
-		!book.word_count
+	// One phrase, no separator, so a wrapped line can never lead with a "·".
+	// (A one-chapter book's sitting is the whole book.)
+	const sitting = $derived(
+		!perChapter || !book.word_count
 			? ''
-			: perChapter && book.chapter_count > 1
+			: book.chapter_count > 1
 				? m.series_chapter_minutes({
 						minutes: readingMinutes(book.word_count / book.chapter_count)
 					})
 				: readingTime(book.word_count)
 	);
-	// The card's tint (app.css, .book-card), from the book's own cover colour.
-	const tint = $derived(cardTint(book.cover_color));
 </script>
 
 <a
 	href={localizeHref(link?.href ?? `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
-	class="book-card card-lift group"
+	class="book-card group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
-	style:--cover-tint={tint || undefined}
 	data-testid="book-card"
-	aria-label={link?.ariaLabel ??
-		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)}
+	aria-label={(link?.ariaLabel ??
+		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)) +
+		(editionsLabel ? ` · ${editionsLabel}` : '')}
 	aria-describedby={hook ? hookId : undefined}
 >
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
 	     tips together on hover, so the overlay stays on the cover. -->
 	<div class="book-card-cover relative">
+		{#if editionsLabel}
+			<!-- Its other editions, as sheets stacked behind the cover. -->
+			<span class="edition-stack" aria-hidden="true"></span>
+		{/if}
 		<BookCover {book} {priority} {eager} />
+		{#if editionsLabel}
+			<!-- In the link's label too, which overrides this text. -->
+			<span class="edition-count" aria-hidden="true">{editionsLabel}</span>
+		{/if}
 		{#if edition}
 			<!-- The audience as a ribbon on the cover, so a teens or children's
 			     edition is told apart at a glance across a shelf. Its words are the
@@ -137,7 +155,7 @@
 		<!-- min-h-[2lh]: the title always takes its two lines, so the author
 		     and series lines start level across a grid row whether the title
 		     wraps or not (QA, 2026-10: rows were hard to scan). -->
-		<div class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text" title={book.title}>
+		<div class="line-clamp-2 min-h-[2lh] font-display text-small font-medium leading-snug text-text" title={book.title}>
 			{edition ? edition.base : book.title}
 		</div>
 		{#if link}
@@ -156,18 +174,9 @@
 				{hook}
 			</p>
 		{/if}
-		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
-		     two-line title still bottom out level across a grid row. -->
-		<!-- Two unbreakable halves with a break between them: on a narrow card
-		     (the library's seven-across) the meta wraps BEFORE the dot, which
-		     leads the time onto its line ("12 chapters / · 3 hr 15 min"), never
-		     "3 hr 15 min / read" and never a dot stranded at a line's end. The
-		     space is an expression so Svelte keeps it as the break. -->
-		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if time}{' '}<span class="whitespace-nowrap"
-					><span class="sep">·</span> {time}</span
-				>{/if}
-		</div>
+		{#if sitting}
+			<div class="mt-auto pt-0.5 text-eyebrow text-muted">{sitting}</div>
+		{/if}
 	</div>
 </a>
 
@@ -215,6 +224,61 @@
 			background: none;
 			border: 1px solid currentColor;
 			box-shadow: none;
+		}
+	}
+
+	/* A work with several editions on the shelf (design review #26): two
+	   sheets peek out past the cover's outer and lower edges, the paper of the
+	   page behind it with a hairline each, so the stack reads in every theme.
+	   Below the hover fore-edge (::before, -1), which still shows over it; 7px
+	   at most, inside a Browse rail's block padding. Mirrored right-to-left
+	   (the shadows' offsets are physical). */
+	.edition-stack {
+		position: absolute;
+		z-index: -2;
+		inset: 0;
+		border-radius: var(--radius-card);
+		box-shadow:
+			3px 3px 0 -1px var(--surface-2),
+			4px 4px 0 -1px var(--border-strong),
+			6px 6px 0 -2px var(--surface-2),
+			7px 7px 0 -2px var(--border-strong);
+		pointer-events: none;
+	}
+	:global([dir='rtl']) .edition-stack {
+		transform: scaleX(-1);
+	}
+	/* "3 editions", small, on the cover's lower start corner — away from the
+	   audience/imprint ribbon at the end — and out of the way on hover, like
+	   the ribbon, for the "Begin reading" label. */
+	.edition-count {
+		position: absolute;
+		bottom: 0.4rem;
+		inset-inline-start: 0.4rem;
+		max-width: calc(100% - 0.8rem);
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		padding: 0.1rem 0.45rem;
+		border-radius: 4px;
+		font-size: var(--fs-micro);
+		font-weight: 600;
+		color: var(--surface);
+		background: var(--text);
+		pointer-events: none;
+		transition: opacity var(--duration-fast);
+	}
+	.book-card:hover .edition-count {
+		opacity: 0;
+	}
+	@media print {
+		.edition-stack {
+			display: none;
+		}
+		.edition-count {
+			color: var(--text);
+			background: none;
+			border: 1px solid currentColor;
 		}
 	}
 
@@ -269,7 +333,7 @@
 	}
 
 	/* Hovering tips the cover a little toward the reader, as if being taken off
-	   the shelf — on the card lift's own beat (.card-lift), only where there is
+	   the shelf — on the card's own rise beat (.book-card), only where there is
 	   a real hover (a tap would leave it stuck), mirrored right-to-left, and
 	   not at all under reduced motion. */
 	@media (hover: hover) and (prefers-reduced-motion: no-preference) {

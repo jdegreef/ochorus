@@ -35,7 +35,7 @@ from .models import (
 from .opening import opening_candidate_orders, opening_excerpt
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
-from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
+from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
 from .scripture_graph import treated_passages
 
 #: A dated book's slug → its year-long plan's slug.
@@ -785,6 +785,18 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     def get_author_quote_count(self, obj) -> int:
         return obj.author.quotes.filter(reviewed=True).count()
 
+    # Whether the body opens on its own preaching text (a leading <blockquote>
+    # of the verse). The page then leaves out its house-Bible copy of the text
+    # rather than print one verse twice, back to back (scripture.opens_with_text).
+    text_in_body = serializers.SerializerMethodField()
+
+    def get_text_in_body(self, obj) -> bool:
+        return opens_with_text(obj.body_html, obj.scripture_ref)
+
+    # The preacher's years, for the byline ("Robert Murray M'Cheyne, 1813–1843").
+    author_birth_year = serializers.IntegerField(source="author.birth_year", read_only=True)
+    author_death_year = serializers.IntegerField(source="author.death_year", read_only=True)
+
     class Meta:
         model = Sermon
         fields = [
@@ -812,6 +824,9 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "topics",
             "available_languages",
             "author_quote_count",
+            "author_birth_year",
+            "author_death_year",
+            "text_in_body",
             # For the sermon page's JSON-LD `dateModified`. Honest as a
             # modification date: seed_sermons diffs before saving, so `auto_now`
             # doesn't re-stamp every row on every deploy (same reasoning that
@@ -2502,8 +2517,9 @@ class PlanDetailSerializer(PlanListSerializer):
     def get_authors(self, obj):
         """The distinct writers this plan reads through, in the order their books
         first appear across the days — a link out to each author page, so a plan
-        is a way into their work, not only a sequence of chapters. Reads the
-        page-wide book index (author select_related), so no extra query."""
+        is a way into their work, not only a sequence of chapters — named with
+        a small portrait in the page's hero. Reads the page-wide book index
+        (author select_related), so no extra query."""
         books = self._books(obj)
         authors: list[dict] = []
         seen: set[str] = set()
@@ -2511,7 +2527,13 @@ class PlanDetailSerializer(PlanListSerializer):
             book = books.get(day.book_slug)
             if book and book.author.slug not in seen:
                 seen.add(book.author.slug)
-                authors.append({"slug": book.author.slug, "name": book.author.name})
+                authors.append(
+                    {
+                        "slug": book.author.slug,
+                        "name": book.author.name,
+                        "photo_url": book.author.photo_url,
+                    }
+                )
         return authors
 
     def get_days(self, obj):

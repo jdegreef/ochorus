@@ -8,8 +8,9 @@
 	 *
 	 * The house leaf is drawn inline. A library section's own device (its
 	 * `ornament` in PRIMARY_NAV) is a static file, `/marks/ornament-<name>.svg`,
-	 * painted in that metal through a CSS mask — so only the five section pages that
-	 * show one ever fetch it, and the home hero carries none of their paths.
+	 * painted in that metal through a CSS mask, so the home hero carries none of
+	 * their paths. No page draws a section device today: the shelves' header is
+	 * plain since design review #4 (2026-11-06), and must stay so.
 	 *
 	 * Gold here is what STYLE_GUIDE §1 says gold is for — ornament, never a
 	 * message — so it carries no meaning and is hidden from assistive tech.
