@@ -18170,6 +18170,18 @@
 				476
 			]
 		},
+		"ko/faithful-with-little": {
+			"ground": "730d1145e252900c5c1b32b9872bec83dccc442df47a84c12486140dd08b031b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1f93e968ef345e5bcf329b608984428f7c13bc20e9f222c81cf1ba2b7ab67014",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
