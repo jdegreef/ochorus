@@ -147,15 +147,27 @@
 	const isEnglish = $derived(getLang() === 'en');
 
 	/** The length bucket a book falls in — at THIS reader's pace, so it agrees
-	 *  with the reading time its card prints. */
-	const lengthOf = (b: BookSummary): BookLength => bookLength(readingMinutes(b.word_count ?? 0));
-	/** Books per length bucket, for the panel's choices (an empty one is dropped). */
+	 *  with the reading time its card prints — or null for a book with no word
+	 *  count, which prints no time and so is in no bucket. */
+	const lengthOf = (b: BookSummary): BookLength | null =>
+		b.word_count ? bookLength(readingMinutes(b.word_count)) : null;
+	/** Books per length bucket, for the panel's choices. */
 	const lengthFacets = $derived.by(() => {
 		const c: Record<BookLength, number> = { short: 0, mid: 0, long: 0 };
-		for (const b of books) c[lengthOf(b)]++;
+		for (const b of books) {
+			const l = lengthOf(b);
+			if (l) c[l]++;
+		}
 		return c;
 	});
-	const lengthChoices = $derived(BOOK_LENGTHS.filter((b) => lengthFacets[b]));
+	// An empty bucket is dropped — unless a link selected it, so the panel
+	// still shows (and can lift) what is filtering the grid to nothing.
+	const lengthChoices = $derived(
+		BOOK_LENGTHS.filter((b) => lengthFacets[b] || b === filters.values.len)
+	);
+	/** A SheetChoices toggle: tapping the active choice lifts it, as the topic
+	 *  chip row did. */
+	const toggle = (cur: string, v: string) => (v === cur ? '' : v);
 
 	// The filters currently narrowing the shelf, each liftable on its own
 	// (query and topic, shared with every shelf, via filterChips; length is
@@ -472,14 +484,14 @@
 									...allTopics.map((tc) => ({ v: tc.slug, label: tc.title, count: tc.count }))
 								]}
 								value={filters.values.topic}
-								onselect={(v) => (filters.values.topic = v)}
+								onselect={(v) => (filters.values.topic = toggle(filters.values.topic, v))}
 							/>
 						{/if}
-						{#if lengthChoices.length > 1}
+						{#if lengthChoices.length > 1 || filters.values.len}
 							<SheetChoices
 								label={t('common.length')}
 								options={[
-									{ v: '', label: t('sermons.allLengths') },
+									{ v: '', label: t('common.allLengths') },
 									...lengthChoices.map((b) => ({
 										v: b,
 										label: t(BOOK_LENGTH_LABEL[b]),
@@ -487,7 +499,7 @@
 									}))
 								]}
 								value={filters.values.len}
-								onselect={(v) => (filters.values.len = v)}
+								onselect={(v) => (filters.values.len = toggle(filters.values.len, v))}
 							/>
 						{/if}
 						<SheetChoices

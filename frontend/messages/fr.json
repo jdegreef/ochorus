@@ -692,6 +692,7 @@
   "books_no_results": "Aucun livre ne correspond à ces filtres.",
   "common_sort": "Trier",
   "common_length": "Durée",
+  "common_all_lengths": "Toutes les durées",
   "common_sort_shelf": "En vedette",
   "common_sort_title": "Titre A–Z",
   "common_sort_longest": "Les plus longs",

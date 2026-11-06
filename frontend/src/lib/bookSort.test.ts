@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { readdirSync, readFileSync } from 'node:fs';
 import {
 	BOOK_LENGTHS,
 	BOOK_LENGTH_LABEL,
@@ -80,7 +81,18 @@ describe('bookLength', () => {
 		expect(bookLength(181)).toBe('long');
 	});
 
-	it('has a label for every bucket', () => {
-		for (const b of BOOK_LENGTHS) expect(BOOK_LENGTH_LABEL[b]).toMatch(/^books\.length/);
+	it('has a label for every bucket, in every catalogue', () => {
+		const dir = 'messages';
+		for (const f of readdirSync(dir).filter((n) => n.endsWith('.json'))) {
+			const cat = JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')) as Record<string, string>;
+			for (const b of BOOK_LENGTHS) {
+				// t('books.lengthShort') resolves books_length_short ($lib/i18n).
+				const key = BOOK_LENGTH_LABEL[b]
+					.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+					.replace('.', '_')
+					.toLowerCase();
+				expect(cat[key], `${f}: ${key}`).toBeTruthy();
+			}
+		}
 	});
 });

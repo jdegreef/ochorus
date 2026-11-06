@@ -692,6 +692,7 @@
   "books_no_results": "No books match these filters.",
   "common_sort": "Sort",
   "common_length": "Length",
+  "common_all_lengths": "All lengths",
   "common_sort_shelf": "Featured",
   "common_sort_title": "Title A–Z",
   "common_sort_longest": "Longest",

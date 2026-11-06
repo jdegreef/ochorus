@@ -14,8 +14,9 @@
 	 * Shown only when the shelf spans more than one topic — a single-topic shelf
 	 * has nothing to filter, so the guard lives here rather than at each call site.
 	 *
-	 * From sm up the chips wrap, and the Books shelf's 33 topics wrapped to four
-	 * rows between the toolbar and the grid. So beyond COLLAPSE_AT the extra chips
+	 * From sm up the chips wrap, and a shelf with ~30 topics (Books, when it
+	 * still used this row) wrapped to four rows between the toolbar and the
+	 * list. So beyond COLLAPSE_AT the extra chips
 	 * sit behind a "Show N more" chip (a selected one always stays visible). On a
 	 * phone the row already scrolls sideways (.chip-scroller), so every chip is
 	 * shown there and the toggle is hidden.

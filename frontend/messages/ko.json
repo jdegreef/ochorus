@@ -692,6 +692,7 @@
   "books_no_results": "이 조건에 맞는 책이 없습니다.",
   "common_sort": "정렬",
   "common_length": "길이",
+  "common_all_lengths": "모든 길이",
   "common_sort_shelf": "추천순",
   "common_sort_title": "제목순 (가나다)",
   "common_sort_longest": "긴 순",

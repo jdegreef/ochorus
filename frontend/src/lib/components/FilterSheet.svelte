@@ -55,17 +55,23 @@
 
 	// The sheet is a phone control: widen past sm (a tablet rotating) and the
 	// inline row takes over, so close it rather than leave it over the page —
-	// unless there is no inline row (`everywhere`), when it becomes a side sheet.
+	// unless there is no inline row (`everywhere`): then it opens as a side
+	// sheet from sm. Its form is fixed when it opens — switching it under an
+	// open panel would remount the controls and drop the focus inside it.
 	const wide = mediaFlag('(min-width: 640px)');
 	$effect(() => {
 		if (open && wide.matches && !everywhere) open = false;
 	});
-	const side = $derived(everywhere && wide.matches);
+	let side = $state(false);
+	function show() {
+		side = everywhere && wide.matches;
+		open = true;
+	}
 </script>
 
 <button
 	class="chip flex shrink-0 items-center gap-1.5 {everywhere ? '' : 'sm:hidden'}"
-	onclick={() => (open = true)}
+	onclick={show}
 	aria-haspopup="dialog"
 	aria-expanded={open}
 >
