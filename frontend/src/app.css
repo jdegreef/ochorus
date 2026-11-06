@@ -1647,8 +1647,9 @@
 	.btn:disabled:not([aria-busy='true']) {
 		opacity: 0.5;
 	}
-	/* Primary is soft, not bold: a brand-tinted button, never a solid indigo
-	   block (see STYLE_GUIDE §5). Matches Take Root. */
+	/* Primary is soft, not bold: a brand-tinted button (see STYLE_GUIDE §5).
+	   Matches Take Root. The one exception is the read verb, `.btn-solid`
+	   below. */
 	.btn-primary {
 		background: var(--accent-soft);
 		color: var(--accent);
