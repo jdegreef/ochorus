@@ -2034,6 +2034,25 @@ class AdminBookPublishTests(TestCase):
         blocked.refresh_from_db()
         self.assertFalse(blocked.is_published)
 
+    @override_settings(DEBUG=True)
+    def test_retired_duplicate_cannot_be_published(self):
+        # The reader forwards a retired book's URLs to its successor
+        # (corrections.RETIRED_BOOKS), so a published edition would be a page
+        # nobody can reach — and a second copy of the successor in search.
+        retired = Book.objects.create(
+            author=self.author, slug="lord-teach-us-to-pray-2", language="en",
+            title="Lord, Teach Us to Pray", is_published=False,
+        )
+        res = self.client.post(
+            "/api/admin/books/lord-teach-us-to-pray-2/publish/",
+            {"language": "en", "published": True},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("school-of-prayer", res.data["detail"])
+        retired.refresh_from_db()
+        self.assertFalse(retired.is_published)
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.post(

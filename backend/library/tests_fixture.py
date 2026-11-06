@@ -765,6 +765,95 @@ class CopyrightBlockedTests(SimpleTestCase):
         )
 
 
+class RetiredBookTests(SimpleTestCase):
+    """A book retired as a duplicate (``corrections.RETIRED_BOOKS``) stays
+    retired, and nothing still sends a reader to it.
+
+    Its editions stay in the fixture — readers' saved places are keyed by its
+    slug — but every one is unpublished, its successor carries each retired
+    chapter at ``order + offset`` in every language it had, the reader's mirror
+    (``frontend/src/lib/retiredBooks.ts``) forwards the same map, and no plan,
+    topic shelf, quote or download names the retired slug.
+    """
+
+    FRONTEND = Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "retiredBooks.ts"
+
+    @staticmethod
+    def _editions(slug):
+        out = {}
+        for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
+            rows = json.loads(path.read_text(encoding="utf-8"))
+            if rows[0]["fields"]["slug"] != slug:
+                continue  # a longer slug sharing the prefix
+            out[rows[0]["fields"]["language"]] = (
+                rows[0]["fields"],
+                {r["fields"]["order"] for r in rows[1:] if r["model"] == "library.chapter"},
+            )
+        return out
+
+    def test_every_edition_is_unpublished_and_the_successor_has_its_chapters(self):
+        from library.corrections import RETIRED_BOOKS
+
+        for old, (new, offset) in RETIRED_BOOKS.items():
+            retired, successor = self._editions(old), self._editions(new)
+            self.assertTrue(retired, f"{old}: keep its editions in the fixture")
+            for lang, (fields, orders) in retired.items():
+                with self.subTest(slug=old, language=lang):
+                    self.assertFalse(fields.get("is_published", True))
+                    self.assertFalse(fields.get("pdf_url"), "a retired edition offers no download")
+                    self.assertIn(lang, successor, f"no {lang} {new} to forward to")
+                    self.assertTrue(successor[lang][0].get("is_published", True))
+                    self.assertLessEqual({o + offset for o in orders}, successor[lang][1])
+
+    def test_the_reader_forwards_the_same_map(self):
+        from library.corrections import RETIRED_BOOKS
+
+        source = self.FRONTEND.read_text(encoding="utf-8")
+        mirrored = {
+            slug: (to, int(offset))
+            for slug, to, offset in re.findall(
+                r"'([a-z0-9-]+)':\s*\{\s*to:\s*'([a-z0-9-]+)',\s*offset:\s*(-?\d+)\s*\}", source
+            )
+        }
+        self.assertEqual(mirrored, RETIRED_BOOKS)
+
+    def test_nothing_still_names_a_retired_book(self):
+        from library import export_policy, quote_seed
+        from library.corrections import RETIRED_BOOKS
+        from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, plan_items
+        from library.topic_seed import TOPICS
+
+        retired = set(RETIRED_BOOKS)
+        plan_books = {p[1] for p in LAUNCH_PLANS} | {
+            item[1]
+            for _, _, _, items in CURATED_PLANS
+            for item in plan_items(items)
+            if item[0] == "book"
+        }
+        topic_books = {s for t in TOPICS for s in t[3]}
+        quoted = {q["chapter"][0] for qs in quote_seed.QUOTES.values() for q in qs if "chapter" in q}
+        exported = (
+            {s for s, _ in export_policy.EXPORT_PILOT}
+            | set(export_policy.ENGLISH_CLASSICS)
+            | set(export_policy.HELD_ESV)
+            | {s for slugs in export_policy.TRANSLATIONS.values() for s in slugs}
+        )
+        plan_days = {
+            r["fields"].get("book_slug")
+            for r in json.loads(PLANS_FILE.read_text(encoding="utf-8"))
+            if r["model"] == "library.planday"
+        }
+        for name, used in (
+            ("plan_seed", plan_books),
+            ("topic_seed", topic_books),
+            ("quote_seed", quoted),
+            ("export_policy", exported),
+            ("plans.json", plan_days),
+        ):
+            with self.subTest(source=name):
+                self.assertEqual(sorted(used & retired), [])
+
+
 class NoPublishedPlateTests(SimpleTestCase):
     """No published edition wears a flat generated plate (`/covers/…/<slug>.svg`).
 

@@ -548,10 +548,10 @@ export const FOR_PAGES: ForPage[] = [
 					'school-of-prayer',
 					'power-through-prayer',
 					'prevailing-prayer',
-					'lord-teach-us-to-pray-2',
 					'ministry-of-intercession',
 					'spurgeon-on-prayer',
-					'the-inner-chamber'
+					'the-inner-chamber',
+					'waiting-on-god'
 				]
 			},
 			{
@@ -1013,7 +1013,7 @@ export const FOR_PAGES: ForPage[] = [
 					'the-practice-of-the-presence-of-god',
 					'the-inner-chamber',
 					'waiting-on-god',
-					'lord-teach-us-to-pray-2',
+					'the-lords-prayer',
 					'spurgeon-on-prayer'
 				]
 			}

@@ -11,7 +11,7 @@ from accounts.permissions import requires
 
 from .. import dropoff, invalidation, job_status
 from ..audit import AdminAudited
-from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..corrections import COPYRIGHT_BLOCKED_SLUGS, RETIRED_BOOKS
 from ..languages import target_codes
 from ..models import AdminAction, Author, Book, Plan, Sermon
 from ..qa import chapter_flags
@@ -186,6 +186,9 @@ class _EditionPublishView(AdminAudited, APIView):
     #: publish grant is not a rights clearance (see
     #: ``corrections.COPYRIGHT_BLOCKED_SLUGS``). Unpublishing stays open.
     blocked_slugs: frozenset[str] = frozenset()
+    #: Retired duplicates, by successor (``corrections.RETIRED_BOOKS``): the
+    #: reader forwards their URLs, so a published edition would be unreachable.
+    retired: dict[str, tuple[str, int]] = {}
 
     def audit_action_for(self, request):
         return (
@@ -220,6 +223,12 @@ class _EditionPublishView(AdminAudited, APIView):
                 {"detail": f"“{slug}” is under copyright and cannot be published."},
                 status=409,
             )
+        if published and slug in self.retired:
+            return Response(
+                {"detail": f"“{slug}” is retired as a duplicate of "
+                           f"“{self.retired[slug][0]}” and cannot be published."},
+                status=409,
+            )
         obj = self.model.objects.filter(slug=slug, language=language).first()
         if obj is None:
             return Response(
@@ -242,6 +251,7 @@ class AdminBookPublishView(_EditionPublishView):
     model = Book
     target_kind = "book"
     blocked_slugs = COPYRIGHT_BLOCKED_SLUGS
+    retired = RETIRED_BOOKS
 
 
 class AdminSermonPublishView(_EditionPublishView):
