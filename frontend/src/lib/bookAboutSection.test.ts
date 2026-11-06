@@ -38,11 +38,14 @@ describe('the book page states what the book is', () => {
 		expect(PAGE).toMatch(/\{:else if book\.description\}/);
 	});
 
-	it('heads both branches with the same translated label', () => {
-		// Both About branches head with `book.aboutWork`. Count the HEADINGS, not
-		// every use of the key — the on-page jump nav reuses the same label for its
-		// "About" chip, so a raw key count is no longer 2.
-		expect(PAGE.match(/<h2 id="about-work"[^>]*>\{t\('book\.aboutWork'\)\}/g)?.length).toBe(2);
+	it('heads both branches with the one translated label', () => {
+		// Both branches sit inside one About section headed by `book.aboutWork`
+		// (design review #9 folded them under a shared layout). Count the
+		// HEADINGS, not every use of the key — the jump nav reuses the label.
+		expect(PAGE.match(/<h2 id="about-work"[^>]*>\{t\('book\.aboutWork'\)\}/g)?.length).toBe(1);
+		const section = PAGE.slice(PAGE.indexOf('{#if hasAbout}'), PAGE.indexOf('{:else if hasAboutFoot'));
+		expect(section).toMatch(/\{#if book\.about_html\}/);
+		expect(section).toMatch(/\{:else if book\.description\}/);
 	});
 
 	it('does not show the author bio', () => {
@@ -53,12 +56,12 @@ describe('the book page states what the book is', () => {
 		expect(PAGE).not.toMatch(/book\.author\.bio/);
 	});
 
-	it('runs the full page width, like the Contents list below it', () => {
-		// Slice just the About band — from its opening `{#if}` to the opening-excerpt
-		// figure that now follows it (the figure is a reading-measure blockquote and
-		// legitimately carries `max-w-xl`, so it must sit OUTSIDE this window). The
-		// guard is that the About prose band itself sets no reading measure.
-		const about = PAGE.slice(PAGE.indexOf('{#if book.about_html}'), PAGE.indexOf('{#if book.opening}'));
-		expect(about).not.toMatch(/max-w-/);
+	it('holds the prose to a reading measure', () => {
+		// Design review #9 reversed the old full-width band: at ~150 characters
+		// a line the description was scanned, not read. Both branches render
+		// inside `.about-prose`, which the page holds to ~65ch.
+		const section = PAGE.slice(PAGE.indexOf('{#if hasAbout}'), PAGE.indexOf('{:else if hasAboutFoot'));
+		expect(section.indexOf('<div class="about-prose">')).toBeLessThan(section.indexOf('{#if book.about_html}'));
+		expect(PAGE).toMatch(/\.about-prose \{\s*max-width: 65ch;/);
 	});
 });

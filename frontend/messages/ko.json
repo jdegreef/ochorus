@@ -2,7 +2,7 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "book_people_in_book": "이 책에 나오는 인물",
   "book_readers_guide": "읽기 가이드",
-  "book_read_guide": "가이드 읽기",
+  "book_new_to_guide": "《%title%》이 처음이신가요? 읽기 가이드를 보세요",
   "author_appears_in": "함께 등장하는 곳",
   "author_books_about": "관련 책",
   "author_articles_about": "관련 글",
