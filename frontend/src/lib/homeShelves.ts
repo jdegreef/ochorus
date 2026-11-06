@@ -7,11 +7,13 @@ import {
 	AUTHOR_TILE_KEYS,
 	pick,
 	toCoverBook,
+	toCoverFace,
 	TOPIC_COUNT_KEYS,
 	type AuthorBio,
 	type AuthorTileData,
 	type BookSummary,
 	type CoverBook,
+	type CoverFace,
 	type HubAudience,
 	type TopicCount,
 	type TopicSummary
@@ -23,7 +25,7 @@ import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 
 /**
- * The home page's public shelves — Discover, the authors grid, the topic chips
+ * The home page's public shelves — the hero's covers, Discover, the authors grid, the topic chips
  * and the hero's library counts — as ONE snapshot taken when the site is built.
  *
  * WHY A SNAPSHOT. The home page is prerendered, and its universal `load` runs
@@ -37,7 +39,7 @@ import { hubLanguages } from '$lib/audienceHubData';
  * So `routes/home-shelves/[lang].json` serves this at build time, and the home
  * `load` reads it through SvelteKit's `fetch`, which inlines the response into
  * the prerendered page and replays it at hydration. Both runs see the same
- * snapshot, byte for byte. It is small: six books, eight authors and eight
+ * snapshot, byte for byte. It is small: five hero covers, six books, eight authors and eight
  * topics, each PROJECTED to the fields the page draws (`CoverBook`,
  * `AuthorTileData`, `TopicCount`) — whole API objects carried every author's
  * bio and every topic's cover list, and the four full lists would have added
@@ -50,6 +52,9 @@ import { hubLanguages } from '$lib/audienceHubData';
  * disagrees with itself, rotated per deploy rather than per calendar day.
  */
 export interface HomeShelves {
+	/** The hero's fan of covers (`HomeWelcome`): five, the curated
+	 *  `HERO_SLUGS` this language has, filled from its other painted books. */
+	hero: CoverFace[];
 	featured: CoverBook[];
 	authors: AuthorTileData[];
 	topics: TopicCount[];
@@ -65,6 +70,22 @@ export interface HomeShelves {
  * and buried everything under it — while the shelf above it showed six books.
  */
 const AUTHOR_LIMIT = 8;
+
+/**
+ * The classics the home hero fans out, in the fan's left-to-right order — the
+ * MIDDLE one stands in front (`CoverStrip`'s spread). Books every reader has
+ * heard of, so the picture says "the library" before a word is read. A
+ * language without one of them fills its place from its own painted books
+ * (different authors first), so every locale's hero has a full fan.
+ */
+export const HERO_SLUGS = [
+	'the-pursuit-of-god',
+	'confessions',
+	'pilgrims-progress',
+	'the-inner-chamber',
+	'the-imitation-of-christ'
+] as const;
+const HERO_COUNT = HERO_SLUGS.length;
 
 /**
  * How many topic chips the home "Browse by topic" row shows before
@@ -111,17 +132,23 @@ export function deriveHomeShelves(
 	day: number
 ): HomeShelves {
 	const { books, authors, topics, sermons, audiences = [] } = lists;
+	// Only books with real cover art reach the front page: a generated flat
+	// plate (the `.svg` tier — see `isPlateCover`) reads as half-finished on
+	// the front page beside a painting or a photograph.
+	const painted = books.filter((b) => !isPlateCover(b.cover_url));
+	const hero = heroBooks(painted, day);
+	const inHero = new Set(hero.map((b) => b.slug));
 	return {
+		hero: hero.map(toCoverFace),
 		// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
 		// the API's own order, which groups by writer — so the front of the
 		// library was routinely three Murrays and three Spurgeons.
 		//
-		// Only books with real cover art reach this editorial shelf: a generated
-		// flat plate (the `.svg` tier — see `isPlateCover`) reads as half-finished
-		// on the front page beside a painting or a photograph. Filtered BEFORE
-		// `pickByDay`, so the six still favour six different authors.
+		// Painted covers only, and none the hero above already fans out (the
+		// shelf sits right under it). Filtered BEFORE `pickByDay`, so the six
+		// still favour six different authors.
 		featured: pickByDay(
-			books.filter((b) => !isPlateCover(b.cover_url)),
+			painted.filter((b) => !inHero.has(b.slug)),
 			6,
 			day,
 			(b) => b.author.slug
@@ -150,6 +177,23 @@ export function deriveHomeShelves(
 		counts: { books: books.length, authors: countWriters(authors, books), sermons: sermons.length },
 		audiences
 	};
+}
+
+/** The hero's five: the curated classics this language has, in their places,
+ *  each missing one filled by another painted book — by an author the fan
+ *  does not have yet where it can. */
+function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
+	const bySlug = new Map(painted.map((b) => [b.slug, b]));
+	const curated = HERO_SLUGS.map((slug) => bySlug.get(slug));
+	const have = curated.filter((b): b is BookSummary => !!b);
+	const fill = pickByDay(
+		painted.filter((b) => !have.includes(b)),
+		HERO_COUNT - have.length,
+		day,
+		(b) => b.author.slug,
+		have.map((b) => b.author.slug)
+	);
+	return curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
 }
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */

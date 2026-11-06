@@ -172,7 +172,10 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
    min-content width otherwise pushes a phone column off-screen. Its hero
    visual is `<CoverStrip size="fan" priority>` — the one shared big fan
-   (/originals uses it too); never re-draw fan geometry in a page.
+   (/originals uses it too); never re-draw fan geometry in a page. With
+   `max={5}` and five covers it draws a SPREAD instead of the three-cover
+   deck (the home hero, `HomeIntro`, design #5): middle cover in front, two
+   each side stepping back, all upright.
    Below 1024px, once the read card scrolls away (`elementVisible`, as the
    book's sub-nav CTA does), the read verb rides `<ReadBar>` — ONE component
    for every page's phone read bar (book: `hideFrom="sm"`, plan: `"lg"`). It
@@ -525,7 +528,7 @@ components carries neither. **Five source-text guards now scan every `.svelte`
 - `pageShell.test.ts` — `.page-col`, `<PageHeader>` on browse, the `py-10` shell
   padding, and no `mx-auto max-w-{2xl…7xl}` shell.
 - `typeScaleGuard.test.ts` — no `text-[…]`; no scoped literal `font-size`;
-  `.text-display` = home hero only; `.text-h1` = the page `<h1>` only, never an
+  `.text-display` = home hero only (`HomeIntro` logged out, `HomeHero` signed in); `.text-h1` = the page `<h1>` only, never an
   `<h2>`–`<h6>`; and no Tailwind default size (`text-base`/`-lg`/`-xl`/`-6xl`…).
 - `typeScaleGuard.test.ts` also forbids `var(--radius-*, …)` fallbacks (a
   fallback fires only on a MISSING token, so it hid the never-defined

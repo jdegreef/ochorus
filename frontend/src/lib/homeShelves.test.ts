@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { deriveHomeShelves } from './homeShelves';
+import { deriveHomeShelves, HERO_SLUGS } from './homeShelves';
 import { COVER_BOOK_KEYS } from './library-public';
 import type { AuthorBio, BookSummary, TopicSummary } from './library-public';
 
@@ -64,6 +64,25 @@ describe('deriveHomeShelves', () => {
 		const withExtra = lists({ books: books.map((b) => ({ ...b, blurb: 'a long blurb' })) });
 		const [first] = deriveHomeShelves(withExtra, 20000).featured;
 		expect(Object.keys(first).sort()).toEqual([...COVER_BOOK_KEYS, 'author'].sort());
+	});
+
+	it('fans the curated classics in their places, filling a missing one, and keeps them off the shelf below', () => {
+		// The language has four of the five curated books; one is a plate.
+		const curated = HERO_SLUGS.slice(0, 4).map((slug, i) =>
+			book(slug, `c${i}`, i === 3 ? `/covers/${slug}.svg` : `/covers/art/${slug}.jpg`)
+		);
+		const { hero, featured } = deriveHomeShelves(lists({ books: [...books, ...curated] }), 20000);
+		expect(hero).toHaveLength(5);
+		expect(hero.slice(0, 3).map((b) => b.slug)).toEqual(HERO_SLUGS.slice(0, 3));
+		// The plate's place and the absent one's are filled by painted books, by
+		// authors the fan does not have yet.
+		const fill = hero.slice(3);
+		expect(fill.every((b) => !b.cover_url.endsWith('.svg') && !HERO_SLUGS.includes(b.slug as never))).toBe(true);
+		expect(new Set(hero.map((b) => b.author.slug)).size).toBe(5);
+		// A cover only, and none of them again in Discover.
+		expect(Object.keys(hero[0])).not.toContain('chapter_count');
+		const inHero = new Set(hero.map((b) => b.slug));
+		expect(featured.some((b) => inHero.has(b.slug))).toBe(false);
 	});
 
 	it("counts the language's whole library, not the capped shelves", () => {

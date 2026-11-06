@@ -311,6 +311,11 @@ weight 600, a 150ms transition).
 - **Primary is soft, not bold** — a brand-tinted button (accent-soft fill, accent
   text, `--accent-soft-border`), never a solid filled indigo block. It reads as
   "the main thing" without shouting.
+  **Two named exceptions**, each scoped to its component: the footer's
+  "Create an account" invite (`.footer-invite-cta`), and the logged-out home
+  hero's "Start reading" (`HomeIntro` `.intro-cta`, design review #5, founder
+  approved 2026-11) — the first screen has one thing to do, so it is solid
+  `--accent` on `--accent-contrast`. Don't add a third without the same call.
 - Hover: default → `--surface` + accent-soft border; primary → border to `--accent`.
 - ❌ Don't invent bespoke button styles per page — extend the system.
 

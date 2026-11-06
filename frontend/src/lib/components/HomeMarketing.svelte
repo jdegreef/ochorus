@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { CoverBook, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
-	import { goto } from '$app/navigation';
+	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
@@ -16,6 +15,7 @@
 	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import HomeIntro from '$lib/components/HomeIntro.svelte';
 
 	/**
 	 * The logged-OUT home page: what a first-time visitor and every crawler sees.
@@ -30,6 +30,7 @@
 	 * recommendations, favourites) live only on the signed-in dashboard.
 	 */
 	interface HomeData {
+		hero?: CoverFace[];
 		featured: CoverBook[];
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
@@ -44,16 +45,6 @@
 
 	const t = i18n.t;
 
-	// Hero search → the full search page. Progressive enhancement: the form is a
-	// real GET to /search (works with no JS); with JS we intercept and navigate
-	// client-side so it stays in the SPA.
-	let query = $state('');
-	function submitSearch(e: Event) {
-		e.preventDefault();
-		const q = query.trim();
-		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
-	}
-
 	// Library-breadth social proof in the mission band: "N books · N authors · N
 	// sermons". Each figure drops out when the current language has none of that
 	// kind, so a smaller locale never shows "0 sermons".
@@ -64,13 +55,6 @@
 			{ n: data.counts?.sermons ?? 0, one: 'common.sermonOne', many: 'common.sermonMany' }
 		].filter((x) => x.n > 0)
 	);
-
-	// The trust row beneath the hero's calls to action.
-	const proof: { icon: IconName; label: string }[] = [
-		{ icon: 'heart', label: t('home.proofFree') },
-		{ icon: 'wind', label: t('home.proofNoAds') },
-		{ icon: 'headphones', label: t('home.proofOffline') }
-	];
 
 	// The three steps of the "how it works" row.
 	const steps: { icon: IconName; title: string; text: string }[] = [
@@ -92,77 +76,9 @@
      (this page is prerendered), so the blocks appear at hydration rather than
      in the baked HTML. -->
 <div class="flex flex-col">
-	<!-- Hero: plain words on the page's own ground — no painting, scrim or
-	     grain — so the first screen reads light and calm, with the theme's ink
-	     and its one accent (the search button). -->
-	<section class="order-2">
-		<div class="mx-auto max-w-4xl px-5 pt-14 text-center sm:pt-20">
-			<p class="eyebrow mb-4 text-muted">
-				{t('home.heroEyebrow')}
-			</p>
-			<h1 class="text-display mx-auto mb-5 max-w-3xl">
-				{t('home.heroTitle')}
-			</h1>
-			<p class="mx-auto mb-7 max-w-xl text-body text-muted">
-				{t('home.heroTagline')}
-			</p>
-			<form
-				onsubmit={submitSearch}
-				method="GET"
-				action={localizeHref('/search')}
-				role="search"
-				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border-strong bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent max-sm:gap-1"
-			>
-				<!-- The pill is the field here (the input inside is bare), so it wears
-				     .field's --border-strong edge like the nav search, not the weaker
-				     card hairline. -->
-				<!-- On a phone the glass moves into the submit button, so the hint
-				     ("Search books, authors, text…") has the width to be read whole
-				     rather than cut at "tex". -->
-				<svg
-					class="ms-2 h-5 w-5 shrink-0 text-muted max-sm:hidden"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					aria-hidden="true"
-				>
-					<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-				</svg>
-				<input
-					bind:value={query}
-					name="q"
-					type="search"
-					enterkeyhint="search"
-					placeholder={t('search.placeholder')}
-					aria-label={t('nav.search')}
-					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2 max-sm:ps-3 max-sm:placeholder:text-small"
-				/>
-				<button type="submit" class="btn btn-primary shrink-0 rounded-full max-sm:px-3">
-					<Icon name="search" size={18} class="sm:hidden" />
-					<span class="max-sm:sr-only">{t('nav.search')}</span>
-				</button>
-			</form>
-			<!-- One primary per view: the search submit above. These two are the
-			     alternative routes into the same library, not competing calls to
-			     action, so they read as secondary. -->
-			<div class="flex flex-wrap justify-center gap-3">
-				<a href={localizeHref('/books')} class="btn btn-ghost">{t('home.browseLibrary')}</a>
-				<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
-			</div>
-			<!-- Trust row: the reasons to stay, at a glance -->
-			<div class="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2">
-				{#each proof as p (p.label)}
-					<span class="inline-flex items-center gap-1.5 text-small text-muted">
-						<Icon name={p.icon} size={16} />
-						{p.label}
-					</span>
-				{/each}
-			</div>
-		</div>
-	</section>
+	<!-- Hero: what the reader gets, beside a spread of the library's covers,
+	     on the page's own ground (HomeIntro). -->
+	<div class="order-2"><HomeIntro covers={data.hero ?? []} /></div>
 	<!-- The strip's space before the app runs, for a reader app.html's boot
 	     flag knows is returning: the rest of the page shows at once, below the
 	     strip's frame, and the real strip takes the frame's place at mount
