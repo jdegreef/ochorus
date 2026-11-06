@@ -3684,7 +3684,7 @@ GARETH_EVANS = [
         "slug": "gareth-evans-90d08e5c",
         "text": "A sure way to stop the Lord moving in miraculous ways in your life, is to take offense.",
         "chapter": ("the-key-in-my-hand", 8),
-        "paragraph": 27,
+        "paragraph": 26,
     },
     {
         "slug": "gareth-evans-531d812b",

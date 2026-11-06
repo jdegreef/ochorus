@@ -2644,6 +2644,104 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("(Acts 7: 60) .", "(Acts 7:60)."),
             ("(Exodus 20:5) .", "(Exodus 20:5)."),
             ("(Hebrews 13:8) .", "(Hebrews 13:8)."),
+            # Layout repairs (2026-11-06), every edition at once so the tag
+            # sequences stay in lockstep (tests_translation_markup). One pair per
+            # edition, anchored on that edition's own text plus `</p><p>`, so no
+            # pair can touch the tagless body_text. Replacements rather than
+            # paragraph_breaks so the split keeps this book's `</p><p>` joint.
+            # ch2: the foreword's signature ran its three lines into one block
+            # ("Keith Price Victoria, British Columbia March, 1996"). One block per
+            # line: name, place, date.
+            ('<p>Keith Price Victoria, British Columbia March, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>March, 1996</p>'),  # en
+            ('<p>ኪት ፕራይስ ቪክቶሪያ፣ ብሪቲሽ ኮሎምቢያ ማርች 1996</p>',
+             '<p>ኪት ፕራይስ</p><p>ቪክቶሪያ፣ ብሪቲሽ ኮሎምቢያ</p><p>ማርች 1996</p>'),  # am
+            ('<p>كيث برايس فيكتوريا، كولومبيا البريطانية مارس 1996</p>',
+             '<p>كيث برايس</p><p>فيكتوريا، كولومبيا البريطانية</p><p>مارس 1996</p>'),  # ar
+            ('<p>Keith Price Victoria, Columbia Británica Marzo de 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Columbia Británica</p><p>Marzo de 1996</p>'),  # es
+            ('<p>Keith Price Victoria, Colombie-Britannique Mars 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Colombie-Britannique</p><p>Mars 1996</p>'),  # fr
+            ('<p>कीथ प्राइस विक्टोरिया, ब्रिटिश कोलंबिया मार्च, 1996</p>',
+             '<p>कीथ प्राइस</p><p>विक्टोरिया, ब्रिटिश कोलंबिया</p><p>मार्च, 1996</p>'),  # hi
+            ('<p>Keith Price Victoria, British Columbia Marisi, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>Marisi, 1996</p>'),  # lg
+            ('<p>Keith Price Victoria, Colúmbia Britânica Março de 1996</p>',
+             '<p>Keith Price</p><p>Victoria, Colúmbia Britânica</p><p>Março de 1996</p>'),  # pt
+            ('<p>Keith Price Victoria, British Columbia Machi, 1996</p>',
+             '<p>Keith Price</p><p>Victoria, British Columbia</p><p>Machi, 1996</p>'),  # sw
+            ('<p>Кіт Прайс Вікторія, Британська Колумбія Березень, 1996</p>',
+             '<p>Кіт Прайс</p><p>Вікторія, Британська Колумбія</p><p>Березень, 1996</p>'),  # uk
+            # ch8: the opening paragraph ("Many are hindered in the battle…taken
+            # umbrage") recurs as block 5 with a different middle — a draft left in.
+            # Block 1 (it opens the chapter and follows on from ch7's lion and
+            # arrows) stays; the later copy goes, in every edition. Anchored on the
+            # close of the block before it so the applied state is findable.
+            ('peace.</p><p>Many are hindered in the battle, not because they have been ‘wounded’ by others, but because they have taken upon themselves a burden that they should not be carrying. They have been offended by someone and have ‘taken umbrage.’</p>',
+             'peace.</p>'),  # en
+            ('ያስፈልገናል።</p><p>ብዙዎች በውጊያው የሚደናቀፉት በሌሎች «ስለ ቆሰሉ» ሳይሆን፣ ሊሸከሙት የማይገባቸውን ሸክም በራሳቸው ላይ ስለ ጫኑ ነው። በአንድ ሰው ቅር ተሰኝተው «ቂም ይዘዋል»።</p>',
+             'ያስፈልገናል።</p>'),  # am
+            ('سلامنا.</p><p>كثيرون يُعاقون في المعركة، لا لأنّ آخرين قد «جرحوهم»، بل لأنّهم هم أنفسهم حمّلوا أنفسهم حِملًا ما كان ينبغي لهم أن يحملوه. فقد عثروا بسبب أحدٍ من الناس، و«حملوا في نفوسهم استياءً».</p>',
+             'سلامنا.</p>'),  # ar
+            ('paz.</p><p>Muchos son estorbados en la batalla, no porque hayan sido «heridos» por otros, sino porque han tomado sobre sí una carga que no deberían llevar. Alguien los ha ofendido y se han «resentido».</p>',
+             'paz.</p>'),  # es
+            ('paix.</p><p>Beaucoup sont entravés dans le combat, non parce qu’ils ont été « blessés » par d’autres, mais parce qu’ils se sont chargés d’un fardeau qu’ils ne devraient pas porter. Ils ont été offensés par quelqu’un et s’en sont « formalisés ».</p>',
+             'paix.</p>'),  # fr
+            ('ले।</p><p>बहुत से लोग इस लड़ाई में रुक जाते हैं — इसलिए नहीं कि दूसरों ने उन्हें ‘घायल’ किया है, बल्कि इसलिए कि उन्होंने अपने ऊपर ऐसा बोझ उठा लिया है जिसे उन्हें उठाना ही नहीं चाहिए था। किसी ने उन्हें ठोकर खिलाई है और उन्होंने ‘बुरा मान लिया है।’</p>',
+             'ले।</p>'),  # hi
+            ('gyaffe.</p><p>Bangi baziyizibwa mu lutalo, si lwa kuba nti abalala ‘baabafumita’, wabula lwa kubanga beetisse omugugu gwe batasaanidde kwetikka. Omuntu abanyiizizza, ne ‘bakwata ettima.’</p>',
+             'gyaffe.</p>'),  # lg
+            ('paz.</p><p>Muitos são atrapalhados na batalha não porque tenham sido “feridos” por outros, mas porque tomaram sobre si um fardo que não deveriam estar carregando. Foram ofendidos por alguém e “ficaram melindrados”.</p>',
+             'paz.</p>'),  # pt
+            ('yetu.</p><p>Wengi huzuiwa katika vita, si kwa sababu wamejeruhiwa na wengine, bali kwa sababu wamejitwika mzigo ambao hawapaswi kuubeba. Wamechukizwa na mtu fulani nao ‘wameichukua chuki moyoni.’</p>',
+             'yetu.</p>'),  # sw
+            ('мир.</p><p>Багатьом заважає в битві не те, що інші їх «поранили», а тягар, який вони взяли на себе, хоча не повинні були його нести. Хтось їх образив, і вони «затаїли образу».</p>',
+             'мир.</p>'),  # uk
+            # ch11: a quotation broke across two blocks at “‘Serve you right! / Stew
+            # in your own juice!’” — rejoined.
+            ('you right!</p><p>Stew in',
+             'you right! Stew in'),  # en
+            ('እየነቀነቅሁ ‹ይገባሃል!</p><p>በገዛ ጦስህ',
+             'እየነቀነቅሁ ‹ይገባሃል! በገዛ ጦስህ'),  # am
+            ('«هذا جزاؤك!</p><p>اغلِ في',
+             '«هذا جزاؤك! اغلِ في'),  # ar
+            ('lo tienes!</p><p>¡Cuécete en',
+             'lo tienes! ¡Cuécete en'),  # es
+            ('toi !</p><p>Mijote dans',
+             'toi ! Mijote dans'),  # fr
+            ('ही हुआ!</p><p>अपने ही',
+             'ही हुआ! अपने ही'),  # hi
+            ('nti, ‘Kikusaanidde!</p><p>Bonerera wekka',
+             'nti, ‘Kikusaanidde! Bonerera wekka'),  # lg
+            ('‘Bem feito!</p><p>Cozinhe no',
+             '‘Bem feito! Cozinhe no'),  # pt
+            ('nikisema, ‘Umestahili!</p><p>Chemka katika',
+             'nikisema, ‘Umestahili! Chemka katika'),  # sw
+            ('й треба!</p><p>Сама заварила',
+             'й треба! Сама заварила'),  # uk
+            # ch13: the break fell before the speech tag (“…release them?” / I
+            # asked. “I cannot!”…). It moves after it: the tag closes the question's
+            # block and the reply opens the next. Tag-neutral.
+            ('release them?”</p><p>I asked. “I cannot!”',
+             'release them?” I asked.</p><p>“I cannot!”'),  # en
+            ('ለመልቀቅ ትመርጫለሽ?»</p><p>ብዬ ጠየቅኋት። «አልችልም!» ብላ',
+             'ለመልቀቅ ትመርጫለሽ?» ብዬ ጠየቅኋት።</p><p>«አልችልም!» ብላ'),  # am
+            ('وأن تُطلقيهما؟»</p><p>هكذا سألتُها. فصرخت من',
+             'وأن تُطلقيهما؟» هكذا سألتُها.</p><p>فصرخت من'),  # ar
+            ('y soltarlos?»</p><p>le pregunté. «¡No puedo!»,',
+             'y soltarlos?» le pregunté.</p><p>«¡No puedo!»,'),  # es
+            ('? »</p><p>demandai-je. « Je',
+             '? » demandai-je.</p><p>« Je'),  # fr
+            ('कर दें?”</p><p>मैंने पूछा। “मैं नहीं',
+             'कर दें?” मैंने पूछा।</p><p>“मैं नहीं'),  # hi
+            ('bo n’okubasumulula?”</p><p>Bwe nnamubuuza. “Sisobola!” n’akaaba',
+             'bo n’okubasumulula?” Bwe nnamubuuza.</p><p>“Sisobola!” n’akaaba'),  # lg
+            ('e soltá-los?”,</p><p>perguntei. “Não consigo!”,',
+             'e soltá-los?”, perguntei.</p><p>“Não consigo!”,'),  # pt
+            ('na kuwaachilia?”</p><p>Niliuliza. “Siwezi!” alilia',
+             'na kuwaachilia?” Niliuliza.</p><p>“Siwezi!” alilia'),  # sw
+            ('звільнити їх?»</p><p>— запитав я. «Я не',
+             'звільнити їх?» — запитав я.</p><p>«Я не'),  # uk
         ],
     },
     "the-way-to-god": {
