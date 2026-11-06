@@ -107,6 +107,19 @@ In this order, and nothing else at the top level:
    `?sort=`), never a localStorage restore. Its crawl path is `/<l>/authors/` → every
    author page, which lists all of that preacher's sermons (checked by
    crawling the dev server's SSR HTML: 428/428 en, 238/238 sw reached).
+   **Sermons: Browse by Scripture** (design review #21, 2026-11): after the
+   start row, an `h2.section-label` section with the 66 books as a canon grid
+   (`lib/sermonCanon.ts`, built from the shelf payload's `scripture_book*` —
+   the book filter's own fields, no second parser). Each cell is a link that
+   sets `?book=`, shaded with the shared `.heat-N` wash (the /scripture
+   classes), the count in the cell AND its accessible name; an empty book is
+   muted text, not a link. Hidden while filtering, like any secondary
+   section. Collapsed behind a toggle below sm, always open from sm — by CSS,
+   so the prerendered HTML is one layout at every width. It is built from the
+   page's `bookFacets` (one count for the grid and the select) and shows only
+   on the English shelf with at least `CANON_MIN_BOOKS` books: its labels are
+   English, and translated sermons carry localized references the backend
+   can't parse. Widening it needs localized book names first.
    **Books opens on curated rows, not the grid** (design review #11,
    2026-11-06). `/books` with no query shows **Browse**: a handful of named
    rows (`h2.section-label` + "See all %n%" on a topic row, one
