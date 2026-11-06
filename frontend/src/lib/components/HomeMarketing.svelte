@@ -13,6 +13,9 @@
 	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import HomeIntro from '$lib/components/HomeIntro.svelte';
+	import HomeResume, { hold as resumeHold } from '$lib/components/HomeResume.svelte';
+	import { currentBook } from '$lib/currentBook.svelte';
+	import { onMount } from 'svelte';
 
 	/**
 	 * The logged-OUT home page: what a first-time visitor and every crawler sees.
@@ -46,6 +49,26 @@
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
 	const t = i18n.t;
+
+	// Design #10: a reader with a book open on this device gets "Continue
+	// reading" in the hero's place. Decided at mount, from this device's
+	// progress — the prerendered page (and hydration) is the newcomer's, and
+	// app.html's boot flag hides its hero until then (see the style below).
+	// `currentBook` is the store the signed-in hero uses: it knows WHICH book
+	// at once and resolves the book itself from the cache or the list. A book
+	// it cannot draw once the list has settled (the list failed: offline, the
+	// API down) leaves the hero, not a skeleton, in place. `mounted` as well
+	// as the key: the store is shared with the dashboard, so before this
+	// page's refresh it may still hold another visit's book.
+	let mounted = $state(false);
+	onMount(() => {
+		currentBook.refresh();
+		mounted = true;
+		return currentBook.watch();
+	});
+	const resuming = $derived(
+		mounted && !!currentBook.key && (!!currentBook.item || currentBook.pending)
+	);
 </script>
 
 <!-- Continue reading + streak render ABOVE the acquisition hero: a returning
@@ -54,25 +77,35 @@
      already accepted. Both render nothing until there is reading activity, so
      a first-time visitor still lands on the hero and sees no change.
 
+     Design #10: a reader with a BOOK in progress here does not get the hero
+     at all — HomeResume takes its place (the book, its chapter and one
+     Resume button; a started plan's day beside it), and the strip under it
+     carries the rest of what is in progress, leaving that book out.
+
      The reordering is `order`, not DOM order, so the page's only <h1> still
      comes before every <h2> in the source — a document that opens on an <h2>
      is a worse outline for anyone navigating by heading. Client-side only
      (this page is prerendered), so the blocks appear at hydration rather than
-     in the baked HTML.
-
-     Design #10 (Continue reading for returning readers) builds on this strip:
-     it takes the hero's place for a reader who has one. -->
+     in the baked HTML. -->
 <div class="flex flex-col">
+	<!-- "Continue reading" in the hero's place, and its frame before the app
+	     runs: in the baked HTML for everyone, shown only where app.html's boot
+	     flag saw a book in progress (`data-home-resume`), until the block
+	     fills `.resume` (sibling selector, as `.home-hold` below). Nothing but
+	     the block inside `.resume`: whitespace would make it never `:empty`. -->
+	<div class="resume">{#if resuming}<HomeResume />{/if}</div>
+	<div class="resume-hold">{@render resumeHold()}</div>
 	<!-- Hero: what the reader gets, beside a spread of the library's covers,
-	     on the page's own ground (HomeIntro). -->
-	<div class="order-2"><HomeIntro covers={data.hero ?? []} /></div>
+	     on the page's own ground (HomeIntro). Hidden by the boot flag before
+	     mount for a reader the block replaces it for. -->
+	{#if !resuming}<div class="intro order-2"><HomeIntro covers={data.hero ?? []} /></div>{/if}
 	<!-- The strip's space before the app runs, for a reader app.html's boot
 	     flag knows is returning: the rest of the page shows at once, below the
 	     strip's frame, and the real strip takes the frame's place at mount
 	     without moving it. After `.personal`, so CSS can drop the hold the
 	     moment `.personal` fills (sibling selector, no :has). In the baked HTML
 	     for everyone, shown to no one else (display: none). -->
-	<div class="personal order-1"><ContinueReading /><ReadingNudge /></div>
+	<div class="personal order-1"><ContinueReading exclude={resuming ? currentBook.key : undefined} /><ReadingNudge /></div>
 	<div class="home-hold order-1">{@render continueHold()}{@render nudgeHold()}</div>
 </div>
 
@@ -166,5 +199,37 @@
 	   not a frame later at `data-home-ready`, or that frame shows both. */
 	:global(html[data-home-for='reader']:not([data-home-ready])) .personal:empty + .home-hold {
 		display: block;
+	}
+	/* Design #10's swap, before the app runs: the hero hidden and the block's
+	   frame in its place, for a reader the boot flag saw a book open for. */
+	.resume-hold {
+		display: none;
+	}
+	/* If the app never says it is ready (a script error, a chunk that will
+	   not load), the hero comes back after 3 s, as the member's page is
+	   revealed (app.css home-reveal), instead of staying a skeleton. */
+	:global(html[data-home-resume]:not([data-home-ready])) .resume:empty + .resume-hold {
+		display: block;
+		animation: resume-hold-end 0s 3s forwards;
+	}
+	/* Folded rather than display: none — an element that is display: none runs
+	   no animation, so it could not come back on its own. */
+	:global(html[data-home-resume]:not([data-home-ready])) .intro {
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		animation: resume-intro-back 0s 3s forwards;
+	}
+	@keyframes resume-hold-end {
+		to {
+			display: none;
+		}
+	}
+	@keyframes resume-intro-back {
+		to {
+			height: auto;
+			overflow: visible;
+			visibility: visible;
+		}
 	}
 </style>
