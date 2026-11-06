@@ -261,6 +261,19 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    menu from closing another); a full overlay uses `focusTrap` instead.
 5. **Summary** — `h2.text-h3` + prose (`About this book`). One treatment, not a
    heading here and a bordered "In brief" callout there.
+   **Book body (design review #9):** About's prose sits at a ~65ch measure
+   (`.about-prose`), never the full column; the opening lines are an aside
+   beside it from lg (gold start rule, no filled box, the serif large) and
+   follow it in flow on a phone. The reader's guide is one inline link at
+   About's foot ("New to <title>? Read our guide →"), not a card section;
+   topics and scripture are muted "Topics: a, b" lines of links there, not a
+   chip band. Sections run About → Contents → Editions & languages → (people
+   in it) → Author → Q&A → More like this; the jump nav lists at most five
+   (About, Contents, Editions, Author, Q&A), with no counts. Up to 20
+   chapters show whole (`CONTENTS_COLLAPSE_AT`), in two columns from md;
+   longer books keep the window. Q&As all start closed (`openFirst={false}`).
+   The book page's section H2s carry no rule (`.section-heading.no-rule`,
+   app.css) — spacing separates them.
 6. **Sections** — `h2.section-label` above a *list* (contents, quotes, passages);
    `h2.text-h3` above *prose*. A count in a heading is `(N)` in
    `text-small font-normal text-muted`, or absent — not both styles.
@@ -1312,7 +1325,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### K. Colour & radius
 
-- [x] **K1** _(shipped 2026-11-04 — `.reading blockquote` moved from `--accent-soft` (~1.1:1, near-invisible) to the gold rule the article and bio pull-quotes already wore; the book page's opening `figure` is a card, not a rule)_ Blockquote/pull-quote left-rule uses four colours + two widths
+- [x] **K1** _(shipped 2026-11-04 — `.reading blockquote` moved from `--accent-soft` (~1.1:1, near-invisible) to the gold rule the article and bio pull-quotes already wore; the book page's opening lines, once a card, now wear the gold rule too as About's aside — design #9)_ Blockquote/pull-quote left-rule uses four colours + two widths
   (`.reading` accent-soft, `.bio` gold, `.article-body` solid accent, the book
   "about" figure a 2px border) where §1 says gold. → one `.pullquote`.
 - [ ] **K2** Two token vocabularies in scoped CSS: `--color-*` (12 files) vs bare
@@ -1328,7 +1341,7 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
 
 ### L. Spacing rhythm
 
-- [~] **L1** _(2026-11-05: Author, Sermon and Plan already sit every titled section at `mt-12`. Book's split is two roles, not drift: the work's own material (editions, guide, About, opening, Explore, contents) at `mt-8`, then what lies beyond it (languages, author, related) at `mt-12` — keep it. The reader's `end-done` block at `mt-14 … pt-8` is a section break, not the prev/next nav, which now matches the sermon's (D10))_ Leaf-page section separators range `mt-8`→`mt-16` for the same
+- [~] **L1** _(2026-11-05: Author, Sermon and Plan already sit every titled section at `mt-12`. Book's split is two roles, not drift: the work's own material (About with its guide link, opening aside and topics; contents) at `mt-8`, then what lies beyond it (editions, languages, author, Q&A, related) at `mt-12` — keep it (design #9 reordered them). The reader's `end-done` block at `mt-14 … pt-8` is a section break, not the prev/next nav, which now matches the sermon's (D10))_ Leaf-page section separators range `mt-8`→`mt-16` for the same
   "next titled section" role (book mixes 8/12, author 14/16, sermon 12); the
   identical prev/next nav is `mt-14` on the reader, `mt-12` on the sermon. → one
   band value.

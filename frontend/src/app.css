@@ -215,6 +215,11 @@
 	--fs-h2: 1.563rem;
 	--fs-h1: 1.953rem;
 	--fs-display: clamp(2rem, 5vw, 2.75rem);
+	/* A role size, not a scale step (like `.reading`'s --prose-h2): a
+	   set-apart quotation in a narrow aside (the book page's opening lines),
+	   generous but under an h2, which ran a long opening taller than the
+	   prose beside it. */
+	--quote-size: 1.4rem;
 }
 /* A phone is held further from the eye than its pixel density suggests, and
    the two smallest steps (11px micro, 12px eyebrow) carry real reading — card
@@ -2924,6 +2929,12 @@ nav.appnav .navsearch:hover {
 	font-weight: 600;
 	letter-spacing: -0.01em;
 	color: var(--text);
+}
+/* A page whose sections are separated by space alone (the book page, design
+   review #9): the heading without its hairline. */
+.section-heading.no-rule {
+	padding-bottom: 0;
+	border-bottom: 0;
 }
 /* A quiet count / length trailing the heading text ("Contents · 15 chapters ·
    34 min"), on the same baseline but demoted to small muted sans. */
