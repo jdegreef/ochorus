@@ -8,6 +8,7 @@ import type { PageLoad } from './$types';
  *  sections hide themselves when empty, so this reads as a shorter page. */
 const EMPTY: HomeShelves = {
 	hero: [],
+	discover: [],
 	featured: [],
 	authors: [],
 	topics: [],

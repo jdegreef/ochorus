@@ -19,8 +19,16 @@
 	 * variant of their own. The logged-out home asks for `band="page"` instead —
 	 * the theme's own light tinted band — so a first visit opens on a light page
 	 * rather than on dark band after dark band.
+	 *
+	 * `belowHero`: the logged-out home's hero fans out its own covers above
+	 * this shelf, one of them fetched at high priority, and pushes the row well
+	 * below the first screen — so here no cover is fetched high or eagerly.
 	 */
-	let { books, band = 'night' }: { books: CoverBook[]; band?: 'night' | 'page' } = $props();
+	let {
+		books,
+		band = 'night',
+		belowHero = false
+	}: { books: CoverBook[]; band?: 'night' | 'page'; belowHero?: boolean } = $props();
 
 	const t = i18n.t;
 </script>
@@ -52,7 +60,7 @@
 					     be the page's LCP — on a phone the row starts at the very
 					     foot of the first screen (y≈800 of 844, measured), where
 					     three high fetches only raced the fonts. -->
-					<BookCard {book} showAuthor priority={i === 0} eager={i < 3} />
+					<BookCard {book} showAuthor priority={!belowHero && i === 0} eager={!belowHero && i < 3} />
 				{/each}
 			</div>
 		</section>

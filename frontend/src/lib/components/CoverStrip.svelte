@@ -34,7 +34,7 @@
 		$props();
 	// The spread: five covers, asked for (max 5), in their own left-to-right
 	// order — the middle one leads.
-	const spread = $derived(size === 'fan' && max >= 5 && covers.length >= 5);
+	const spread = $derived(size === 'fan' && max === 5 && covers.length >= 5);
 	// The deck's geometry holds three. Of three, the middle one is featured —
 	// callers put their lead there (audienceHub.heroCovers) — and the other two
 	// stand behind it in order; otherwise the first leads.
@@ -44,7 +44,9 @@
 		return size === 'fan' && list.length === 3 ? [list[1], list[0], list[2]] : list;
 	});
 	const lead = $derived(spread ? 2 : 0);
-	const more = $derived(size === 'fan' ? covers.length - shown.length : 0);
+	// The chip sits under the deck's back cover; the spread has no back corner
+	// for it, so it shows no chip.
+	const more = $derived(size === 'fan' && !spread ? covers.length - shown.length : 0);
 </script>
 
 {#if covers.length}

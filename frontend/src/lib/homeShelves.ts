@@ -20,6 +20,7 @@ import {
 } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
+import { editionKind } from '$lib/edition';
 import { countWriters } from '$lib/authorIndex';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
@@ -52,10 +53,15 @@ import { hubLanguages } from '$lib/audienceHubData';
  * disagrees with itself, rotated per deploy rather than per calendar day.
  */
 export interface HomeShelves {
-	/** The hero's fan of covers (`HomeWelcome`): five, the curated
-	 *  `HERO_SLUGS` this language has, filled from its other painted books. */
+	/** The logged-out hero's fan of covers (`HomeIntro`): five — the curated
+	 *  `HERO_SLUGS` this language has, filled from its other painted books — or,
+	 *  in a language with fewer, at most three (`CoverStrip`'s deck). */
 	hero: CoverFace[];
+	/** The signed-in dashboard's Discover shelf (it has no hero). */
 	featured: CoverBook[];
+	/** The logged-out home's Discover shelf, right under the hero: `featured`'s
+	 *  pick with the hero's books left out and its authors avoided. */
+	discover: CoverBook[];
 	authors: AuthorTileData[];
 	topics: TopicCount[];
 	counts: { books: number; authors: number; sermons: number };
@@ -137,22 +143,21 @@ export function deriveHomeShelves(
 	// the front page beside a painting or a photograph.
 	const painted = books.filter((b) => !isPlateCover(b.cover_url));
 	const hero = heroBooks(painted, day);
-	const inHero = new Set(hero.map((b) => b.slug));
+	// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
+	// the API's own order, which groups by writer — so the front of the
+	// library was routinely three Murrays and three Spurgeons. Painted covers
+	// only, filtered BEFORE `pickByDay`, so the six still favour six authors.
+	const pickSix = (pool: BookSummary[], avoid: string[] = []) =>
+		pickByDay(pool, 6, day, (b) => b.author.slug, avoid).map(toCoverBook);
 	return {
 		hero: hero.map(toCoverFace),
-		// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
-		// the API's own order, which groups by writer — so the front of the
-		// library was routinely three Murrays and three Spurgeons.
-		//
-		// Painted covers only, and none the hero above already fans out (the
-		// shelf sits right under it). Filtered BEFORE `pickByDay`, so the six
-		// still favour six different authors.
-		featured: pickByDay(
-			painted.filter((b) => !inHero.has(b.slug)),
-			6,
-			day,
-			(b) => b.author.slug
-		).map(toCoverBook),
+		featured: pickSix(painted),
+		// Under the hero: none of the books it fans out, and other writers
+		// first, so the first two blocks of the page never repeat each other.
+		discover: pickSix(
+			painted.filter((b) => !hero.includes(b)),
+			hero.map((b) => b.author.slug)
+		),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors
@@ -180,20 +185,23 @@ export function deriveHomeShelves(
 }
 
 /** The hero's five: the curated classics this language has, in their places,
- *  each missing one filled by another painted book — by an author the fan
- *  does not have yet where it can. */
+ *  each missing one filled by another painted full-text book (never a
+ *  young-reader edition) — by an author the fan does not have yet where it
+ *  can. Fewer than five to be had → the first three (the deck), so the
+ *  snapshot holds exactly what the hero shows. */
 function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
 	const bySlug = new Map(painted.map((b) => [b.slug, b]));
 	const curated = HERO_SLUGS.map((slug) => bySlug.get(slug));
 	const have = curated.filter((b): b is BookSummary => !!b);
 	const fill = pickByDay(
-		painted.filter((b) => !have.includes(b)),
+		painted.filter((b) => !have.includes(b) && !editionKind(b.slug)),
 		HERO_COUNT - have.length,
 		day,
 		(b) => b.author.slug,
 		have.map((b) => b.author.slug)
 	);
-	return curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
+	const five = curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
+	return five.length === HERO_COUNT ? five : five.slice(0, 3);
 }
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */

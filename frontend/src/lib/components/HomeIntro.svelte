@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
+	import { searchHref } from '$lib/searchState';
 	import { toBookTile, type CoverFace } from '$lib/library-public';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -22,8 +23,8 @@
 	const t = i18n.t;
 
 	// Five make the spread; a language with fewer painted books gets the
-	// three-cover deck rather than a "+1" chip on the front page.
-	const tiles = $derived((covers.length >= 5 ? covers.slice(0, 5) : covers.slice(0, 3)).map(toBookTile));
+	// three-cover deck (the snapshot holds exactly what shows).
+	const tiles = $derived(covers.map(toBookTile));
 
 	// Search → the full search page. Progressive enhancement: the form is a
 	// real GET to /search (works with no JS); with JS we intercept and navigate
@@ -31,8 +32,7 @@
 	let query = $state('');
 	function submitSearch(e: Event) {
 		e.preventDefault();
-		const q = query.trim();
-		goto(localizeHref('/search') + (q ? `?q=${encodeURIComponent(q)}` : ''));
+		goto(localizeHref(searchHref(query)));
 	}
 
 	const trust = [t('home.proofFree'), t('home.proofNoAds'), t('home.proofOffline')];

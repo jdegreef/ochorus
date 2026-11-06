@@ -32,6 +32,7 @@
 	interface HomeData {
 		hero?: CoverFace[];
 		featured: CoverBook[];
+		discover?: CoverBook[];
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
 		counts?: { books: number; authors: number; sermons: number };
@@ -39,7 +40,7 @@
 	}
 	let { data }: { data: HomeData } = $props();
 
-	const featured = $derived<CoverBook[]>(data.featured);
+	const featured = $derived<CoverBook[]>(data.discover ?? data.featured);
 	const authors = $derived<AuthorTileData[]>(data.authors);
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
@@ -90,7 +91,7 @@
 </div>
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
-<DiscoverStrip books={featured} band="page" />
+<DiscoverStrip books={featured} band="page" belowHero />
 
 <!-- How it works — a first-time visitor's three steps, previewing the reading
      journey the dashboard delivers once they sign in. Static, so it shows on
