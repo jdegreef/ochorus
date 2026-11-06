@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { escapeHtml, markSnippet, highlightAround } from './highlight';
+import { escapeHtml, markSnippet, highlightAround, snippetParts } from './highlight';
 
 describe('escapeHtml', () => {
 	it('escapes the HTML-significant characters', () => {
@@ -14,6 +14,47 @@ describe('markSnippet', () => {
 
 	it('escapes injected HTML before inserting marks', () => {
 		expect(markSnippet('<script>⟦x⟧')).toBe('&lt;script&gt;<mark>x</mark>');
+	});
+});
+
+describe('snippetParts', () => {
+	const marked = (s: string, q = '') =>
+		snippetParts(s, q)
+			.filter((p) => p.mark)
+			.map((p) => p.text);
+
+	it('marks what the server marked, and only that', () => {
+		expect(snippetParts('it is by ⟦grace⟧ alone, ⟦grace⟧ only', 'faith')).toEqual([
+			{ text: 'it is by ', mark: false },
+			{ text: 'grace', mark: true },
+			{ text: ' alone, ', mark: false },
+			{ text: 'grace', mark: true },
+			{ text: ' only', mark: false }
+		]);
+	});
+
+	it('keeps markup as text — the parts are never HTML', () => {
+		const parts = snippetParts('<img src=x onerror=alert(1)> ⟦x⟧');
+		expect(parts[0]).toEqual({ text: '<img src=x onerror=alert(1)> ', mark: false });
+	});
+
+	it('falls back to the query, case-insensitively, when the server marked nothing', () => {
+		expect(marked('Grace upon grace, and more', 'grace')).toEqual(['Grace', 'grace']);
+		expect(marked('it is All  of Grace here', 'all of grace')).toEqual(['All  of Grace']);
+	});
+
+	it('marks whole words and the whole phrase only, never a claim the server did not make', () => {
+		expect(marked('he was called often', 'all')).toEqual([]);
+		expect(marked('all of us, of course', 'all of grace')).toEqual([]);
+	});
+
+	it('treats the query as text, not a pattern', () => {
+		expect(marked('a (b) c', '(b)')).toEqual(['(b)']);
+		expect(marked('anything', '.*')).toEqual([]);
+	});
+
+	it('marks nothing for a one-letter query', () => {
+		expect(snippetParts('a cat', 'a')).toEqual([{ text: 'a cat', mark: false }]);
 	});
 });
 
