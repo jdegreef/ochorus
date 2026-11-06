@@ -47,7 +47,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { holdFlag, READING_FLAG } from '$lib/presenceFlag';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -353,15 +353,29 @@
 	// $lib/bioFold — the rest stays in the HTML, only hidden. Opened per
 	// author (client navigation between authors reuses this component, and the
 	// next life should open on its own opening). A `?p=` deep link (a Notebook
-	// highlight) points into the text, so it opens; read aloud and focus mode
-	// open it too (see the markup).
+	// highlight) points into the text, so it opens — on every navigation, not
+	// just the first (an effect, client-only: prerender has no query string);
+	// read aloud and focus mode open it too (see the markup). While folded the
+	// <Reader> is `paused`: it neither restores nor saves a place in prose the
+	// reader has not opened.
 	const bioFold = $derived(foldBio(author.bio_html || ''));
 	let bioOpenFor = $state('');
 	const openBio = () => (bioOpenFor = author.slug);
 	const bioFolded = $derived(bioFold.folded && bioOpenFor !== author.slug && !readerUi.focus);
-	onMount(() => {
+	$effect(() => {
 		if ($page.url.searchParams.get('p')) openBio();
 	});
+	// "Continue reading" unmounts itself: hand focus to the first paragraph it
+	// revealed, so a keyboard or screen-reader user carries on from there
+	// rather than from the top of the page.
+	async function continueBio() {
+		openBio();
+		await tick();
+		const next = bioEl?.querySelector<HTMLElement>('[data-bio-fold]');
+		if (!next) return;
+		next.tabIndex = -1;
+		next.focus({ preventScroll: true });
+	}
 
 	// The Q&A band at the foot of the page: an editorial set, hand-written and
 	// verified per author, served by the API in the requested language only —
@@ -445,7 +459,8 @@
 	     biography, so it is not folded at all. -->
 	<noscript
 		><style>
-			.bio-folded .reading > * { display: revert !important; }
+			.bio-folded .reading > [data-bio-fold],
+			.bio-folded .reading > [data-bio-fold] ~ * { display: revert !important; }
 			.bio-folded .reading { -webkit-mask-image: none !important; mask-image: none !important; }
 			.bio-more { display: none !important; }
 		</style></noscript
@@ -648,7 +663,7 @@
 	<!-- The works come first (design #14): most visitors came for the books,
 	     which used to start some 1,500 words of biography down. -->
 	{#if author.books.length}
-		<section id="books" class="jump-anchor deferred mx-auto mt-8 max-w-[40rem]">
+		<section id="books" class="jump-anchor mx-auto mt-8 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
@@ -667,7 +682,11 @@
 	     preacher's sermons read as a list under the shelf rather than a second
 	     grid of boxes. -->
 	{#if author.sermons.length}
-		<section id="sermons" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section
+			id="sermons"
+			class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]"
+			style="contain-intrinsic-block-size: auto {4 + author.sermons.length * 9}rem"
+		>
 			<h2 class="section-heading">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
@@ -711,10 +730,6 @@
 				{/each}
 			</div>
 		</section>
-	{/if}
-
-	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
-		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
 	{/if}
 	{/if}
 
@@ -805,14 +820,18 @@
 					bind:body={bioEl}
 					bind:frac
 					headerOffset={pinnedOffset}
+					paused={bioFolded}
 				/>
 				{#if bioFolded}
+					<!-- Present only while folded, so `aria-expanded` is always false;
+					     once opened the control is gone and focus moves into the
+					     revealed text (continueBio). -->
 					<button
 						type="button"
 						class="bio-more"
 						aria-controls="bio-text"
 						aria-expanded="false"
-						onclick={openBio}
+						onclick={continueBio}
 					>
 						{t('author.continueBio')} · {readingTime(bioWords)} <Arrow />
 					</button>
@@ -825,6 +844,12 @@
 	{/if}
 
 	{#if !readerUi.focus}
+	<!-- After the biography, so a writer with a life but no works yet does not
+	     open on a dead end. -->
+	{#if !author.books.length && !author.sermons.length && !author.appears_in?.length}
+		<div class="mt-10"><EmptyState message={t('author.empty')} /></div>
+	{/if}
+
 	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
 	{#if author.topics.length}
 		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
@@ -1006,8 +1031,9 @@
 		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
 	}
 
-	/* The shelves below the biography (books, sermons, articles, Q&A, more
-	   lives) skip style, layout and paint until they near the viewport: a
+	/* The shelves away from the top of the page (sermons, books about them,
+	   articles, Q&A, more lives — not the books, which open the page now)
+	   skip style, layout and paint until they near the viewport: a
 	   prolific writer's page runs to hundreds of cards, and every state change
 	   on it (a tap that opens a brief, the sub-nav lighting a tab) otherwise
 	   recalcs all of them (INP). `auto` remembers each section's real height
@@ -1022,12 +1048,6 @@
 			content-visibility: auto;
 			contain-intrinsic-block-size: auto 30rem;
 			overflow-clip-margin: 2rem;
-		}
-		#books.deferred {
-			contain-intrinsic-block-size: auto 50rem;
-		}
-		#sermons.deferred {
-			contain-intrinsic-block-size: auto 60rem;
 		}
 	}
 

@@ -19,12 +19,13 @@
 export const FOLD_ATTR = 'data-bio-fold';
 
 const VOID = new Set(['br', 'hr', 'img', 'wbr', 'input', 'source', 'col', 'area', 'meta', 'link']);
-const HEADING = /^h[1-6]$/;
 
 /** Each top-level element's tag and where its opening `<` sits. */
 function topLevel(html: string): { tag: string; at: number }[] {
 	const out: { tag: string; at: number }[] = [];
-	const re = /<(\/?)([a-zA-Z][\w-]*)\b[^>]*?(\/?)>/g;
+	// Attribute values are skipped whole, so a `/` or `>` inside one is not
+	// read as the end of the tag.
+	const re = /<(\/?)([a-zA-Z][\w-]*)\b(?:[^>"']|"[^"]*"|'[^']*')*?(\/?)>/g;
 	let depth = 0;
 	for (let m; (m = re.exec(html)); ) {
 		const [, close, rawTag, selfClose] = m;
@@ -41,17 +42,14 @@ function topLevel(html: string): { tag: string; at: number }[] {
 
 /**
  * `html` with the fold marked after its first `paragraphs` top-level <p>s —
- * moved up past any heading it would otherwise strand at the end of the
- * opening. Unchanged (and `folded: false`) when the rest would be under
+ * so the opening always ends on a paragraph, never on a heading. Unchanged (and `folded: false`) when the rest would be under
  * `minRest` elements: a fold that hides one paragraph only costs a click.
  */
 export function foldBio(html: string, paragraphs = 3, minRest = 2): { html: string; folded: boolean } {
 	const els = topLevel(html);
 	let seen = 0;
-	let k = els.findIndex((e) => e.tag === 'p' && ++seen === paragraphs);
-	if (k < 0) return { html, folded: false };
-	k += 1;
-	while (k > 1 && HEADING.test(els[k - 1].tag)) k--;
+	const k = els.findIndex((e) => e.tag === 'p' && ++seen === paragraphs) + 1;
+	if (k === 0) return { html, folded: false };
 	if (els.length - k < minRest) return { html, folded: false };
 	const { tag, at } = els[k];
 	const cut = at + 1 + tag.length;

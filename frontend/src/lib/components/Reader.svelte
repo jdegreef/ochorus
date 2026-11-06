@@ -100,6 +100,15 @@
 		 * their finish is "reached the end of the LAST chapter", in the chapter route.
 		 */
 		finishOnEnd?: boolean;
+		/**
+		 * The prose is on the page but not being read: the author page's
+		 * biography while it is folded to its opening. Nothing is restored,
+		 * saved or recorded until it turns false — then the visit is recorded
+		 * and the reader's place restored as on a fresh open. (Folded, the
+		 * hidden paragraphs report no box, so "the paragraph at the top" would
+		 * read as the last one and overwrite the real resume point.)
+		 */
+		paused?: boolean;
 	}
 
 	let {
@@ -115,7 +124,8 @@
 		body = $bindable(),
 		frac = $bindable(0),
 		headerOffset = HEADER_OFFSET,
-		finishOnEnd = false
+		finishOnEnd = false,
+		paused = false
 	}: Props = $props();
 
 	// --- Position --------------------------------------------------------------
@@ -161,6 +171,7 @@
 	}
 
 	function handleScroll() {
+		if (paused) return;
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(saveScrollNow, 250);
 	}
@@ -193,7 +204,7 @@
 	let restoredFor = '';
 	$effect(() => {
 		const key = `${kind}:${slug}:${order}`;
-		if (!body || restoredFor === key) return;
+		if (!body || paused || restoredFor === key) return;
 		restoredFor = key;
 		openedAt = performance.now();
 		didFinish = false;
