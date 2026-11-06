@@ -866,6 +866,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # stray/missing punctuation, misread letters, a broken entity and two
         # openers set as closers. Murray's wording and period style untouched.
         "replacements": [
+            # ch3, 4, 5, 6, 9: an empty italic block (residue of CCEL's
+            # epigraph markup) opened each chapter ahead of its epigraph.
+            ("<p><i> </i></p> <p><i>‘", "<p><i>‘"),
             # ch2
             ("<p>­ — a will utterly", "<p>— a will utterly"),
             ("so did he,’ And <i>then", "so did he.’ And <i>then"),
