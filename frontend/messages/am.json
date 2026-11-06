@@ -584,6 +584,7 @@
   "book_other_editions": "ሌሎች እትሞች",
   "book_editions": "እትሞች",
   "book_also_in": "በሌሎች ቋንቋዎችም",
+  "book_also_in_one": "በ%lang%ም ይገኛል",
   "book_also_in_count": "በሌሎች %n% ቋንቋዎችም",
   "book_series_volume": "ከ{series} {total} መጻሕፍት {position}ኛው",
   "book_series_member": "የ{series} አካል",

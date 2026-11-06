@@ -584,6 +584,7 @@
   "book_other_editions": "Matoleo mengine",
   "book_editions": "Matoleo",
   "book_also_in": "Pia kwa",
+  "book_also_in_one": "Pia kwa %lang%",
   "book_also_in_count": "Pia kwa lugha %n%",
   "book_series_volume": "Kitabu cha {position} kati ya {total} katika {series}",
   "book_series_member": "Sehemu ya {series}",

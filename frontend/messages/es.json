@@ -584,6 +584,7 @@
   "book_other_editions": "Otras ediciones",
   "book_editions": "Ediciones",
   "book_also_in": "También en",
+  "book_also_in_one": "También en %lang%",
   "book_also_in_count": "También en %n% idiomas",
   "book_series_volume": "Libro {position} de {total} de {series}",
   "book_series_member": "Parte de {series}",

@@ -584,6 +584,7 @@
   "book_other_editions": "अन्य संस्करण",
   "book_editions": "संस्करण",
   "book_also_in": "इन भाषाओं में भी",
+  "book_also_in_one": "%lang% में भी",
   "book_also_in_count": "%n% अन्य भाषाओं में भी",
   "book_series_volume": "{series} की {total} में से पुस्तक {position}",
   "book_series_member": "{series} का हिस्सा",

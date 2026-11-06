@@ -584,6 +584,7 @@
   "book_other_editions": "Ấn bản khác",
   "book_editions": "Ấn bản",
   "book_also_in": "Cũng có bằng",
+  "book_also_in_one": "Cũng có bằng %lang%",
   "book_also_in_count": "Cũng có bằng %n% ngôn ngữ",
   "book_series_volume": "Quyển {position} / {total} trong bộ {series}",
   "book_series_member": "Thuộc bộ {series}",

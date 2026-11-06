@@ -584,6 +584,7 @@
   "book_other_editions": "다른 판",
   "book_editions": "판본",
   "book_also_in": "다른 언어판",
+  "book_also_in_one": "%lang% 판도 있음",
   "book_also_in_count": "다른 언어판 %n%개",
   "book_series_volume": "{series} 전 {total}권 중 제{position}권",
   "book_series_member": "{series}의 일부",

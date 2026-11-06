@@ -502,6 +502,16 @@
 	// One Editions section (design review #22): the family's cards, then the
 	// "Also in" languages — whichever of the two this edition has.
 	const hasEditions = $derived(family.length > 0 || showLanguages);
+	// The hero's pointer when there is ONE other language: that language named
+	// ("Also in Español", Hindi "Español में भी") — its own message, since the
+	// name's place in the phrase differs by locale. Split around %lang% so the
+	// name can carry its own lang/dir.
+	const alsoInOne = $derived.by(() => {
+		if (siblingEditions.length !== 1) return null;
+		const loc = siblingEditions[0].loc;
+		const [before, after = ''] = t('book.alsoInOne').split('%lang%');
+		return { loc, name: localeName(loc), before, after };
+	});
 	const hasAuthorBand = $derived(book.author.slug !== ORIGINALS_SLUG);
 	// What About's foot carries (the guide link, other titles, topics,
 	// scripture) — shown on its own when the book has no prose to sit under.
@@ -663,9 +673,11 @@
 				     The other languages end it as one quiet link, "Also in 5 languages",
 				     that jumps to the Editions section (design review #22) — not the
 				     chip of autonyms that repeated that section's row: the languages are
-				     listed ONCE, there. The pointer stays because a reader on the wrong
-				     edition should learn near the top that theirs exists, and Editions
-				     sits below Contents, screens down on a phone. Not on a fallback page:
+				     listed ONCE, there. The pointer stays so the first screen still says
+				     other languages exist, and Editions sits below Contents, screens down
+				     on a phone. (A reader browsing in their own locale already lands on
+				     their edition; the switcher and the fallback notice serve the rest.)
+				     Not on a fallback page:
 				     the notice above lists the editions, and the row is hidden there. -->
 				<p class="mt-2 text-small text-muted">
 					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
@@ -674,9 +686,8 @@
 							href="#editions"
 							class="also-in-link whitespace-nowrap"
 							onclick={(e) => spy.jump(e, 'editions', { track: false })}
-							>{#if siblingEditions.length === 1}{`${t('book.alsoIn')} `}<span lang={siblingEditions[0].loc}
-									>{localeName(siblingEditions[0].loc)}</span
-								>{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+							>{#if alsoInOne}{alsoInOne.before}<span lang={alsoInOne.loc} dir="auto">{alsoInOne.name}</span
+								>{alsoInOne.after}{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
 						>{/if}
 				</p>
 			</div>
@@ -1149,7 +1160,9 @@
 				</ul>
 			{/if}
 			{#if showLanguages}
-				<div class:mt-6={family.length}>
+				<!-- id="languages": the old "Read in your language" section's anchor,
+				     kept so shared /books/<slug>/#languages links still land here. -->
+				<div id="languages" class="jump-anchor" class:mt-6={family.length}>
 					<h3 id="editions-langs" class="section-label">{t('book.alsoIn')}</h3>
 					<ul class="flex flex-wrap gap-2" aria-labelledby="editions-langs">
 						{#each siblingEditions as ed (ed.loc)}
