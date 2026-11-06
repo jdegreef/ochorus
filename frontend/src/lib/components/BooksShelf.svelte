@@ -114,15 +114,9 @@
 	// does a shelf too small to make a single row (a young language).
 	const hasBrowse = $derived(rows.length > 0);
 	const showAll = $derived(searching || filters.values.shelf === 'all' || !hasBrowse);
-	// …and stays there once the last filter is lifted: a filtered link without
-	// `shelf=all` (an older shared link) gains it, so removing its one chip
-	// does not throw the reader back to the rows.
-	$effect(() => {
-		if (searching && filters.values.shelf !== 'all') filters.values.shelf = 'all';
-	});
 
-	const seeAllHref = (topic = '') =>
-		localizeHref(`/books?shelf=all${topic ? `&topic=${encodeURIComponent(topic)}` : ''}`);
+	const seeAllHref = (topic: string) =>
+		localizeHref(`/books?shelf=all&topic=${encodeURIComponent(topic)}`);
 
 	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
 	const allTopics = $derived.by(() => {
@@ -133,15 +127,15 @@
 	const isEnglish = $derived(getLang() === 'en');
 
 	// The filters currently narrowing the shelf, each liftable on its own
-	// (query and topic, shared with every shelf, via filterChips).
-	const activeChips = $derived.by(() => {
-		const c: FilterChip[] = [];
-		const q = queryChip(filters);
-		if (q) c.push(q);
-		const topic = topicChip(filters, allTopics);
-		if (topic) c.push(topic);
-		return c;
-	});
+	// (query and topic, shared with every shelf, via filterChips). Lifting one
+	// keeps the reader on the grid: a filtered link without `shelf=all` (an
+	// older shared one) would otherwise drop to the Browse rows with its last
+	// chip.
+	const activeChips = $derived.by(() =>
+		[queryChip(filters), topicChip(filters, allTopics)]
+			.filter((c): c is FilterChip => c !== null)
+			.map((c) => ({ ...c, onRemove: () => (c.onRemove(), (filters.values.shelf = 'all')) }))
+	);
 
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
@@ -395,22 +389,27 @@
 			<!-- Browse: a few named rows a reader can choose between, each with
 			     "See all" into the grid (pre-filtered to its topic). The full grid
 			     is the "All N books" tab above. -->
-			{#each rows as row, ri (row.topic?.slug ?? '')}
-				{@const id = `row-${row.topic?.slug ?? 'start'}`}
-				<section class="mb-8" aria-labelledby={id}>
-					<div class="flex items-baseline justify-between gap-3">
-						<h2 {id} class="section-label">{row.topic?.title ?? t('books.startHere')}</h2>
-						<a href={seeAllHref(row.topic?.slug)} class="shrink-0 text-small font-medium">
-							{t('books.seeAll').replace('%n%', String(row.count))}
-						</a>
-					</div>
-					<div class="cover-rail browse-row" use:scrollEdges>
-						{#each row.books as book, i (book.slug)}
-							<BookCard {book} showAuthor eager={ri === 0 && i < 6} />
-						{/each}
-					</div>
-				</section>
-			{/each}
+			<div class="browse-rows">
+				<!-- Start here has no "See all": the whole library is the tab above. -->
+				{#each rows as row, ri (row.topic?.slug ?? '')}
+					{@const id = `row-${row.topic?.slug ?? 'start'}`}
+					<section class="mb-8" aria-labelledby={id}>
+						<div class="flex items-baseline justify-between gap-3">
+							<h2 {id} class="section-label">{row.topic?.title ?? t('books.startHere')}</h2>
+							{#if row.topic}
+								<a href={seeAllHref(row.topic.slug)} class="shrink-0 text-small font-medium">
+									{t('books.seeAll').replace('%n%', String(row.count))}
+								</a>
+							{/if}
+						</div>
+						<div class="cover-rail browse-row" use:scrollEdges>
+							{#each row.books as book, i (book.slug)}
+								<BookCard {book} showAuthor eager={ri === 0 && i < 6} />
+							{/each}
+						</div>
+					</section>
+				{/each}
+			</div>
 			{@render seriesRail()}
 		{:else}
 			{@render seriesRail()}
@@ -547,11 +546,17 @@
 </div>
 
 <style>
+	/* Sized off the rows' own width, like .book-grid--library in its
+	   .book-shelf-room, so a card is the same width on both tabs. */
+	.browse-rows {
+		container: browse-rows / inline-size;
+	}
 	/* A Browse row: one line of the shelf's own cards that scrolls sideways
 	   (the shared .cover-rail carries overflow, hidden phone scrollbar and edge
 	   fades), snapping card by card. Columns are sized off the row's width the
 	   way .book-grid steps — a little over two on a phone, so the next cover
-	   peeks in and says "swipe", then four, five and six across. Block padding
+	   peeks in and says "swipe", then four, five and six across (by the rows'
+	   container, below). Gaps match .book-grid's 1rem. Block padding
 	   keeps a card's hover lift and focus ring inside the scroller's clip. */
 	.browse-row {
 		--across: 2.3;
@@ -565,17 +570,17 @@
 	.browse-row > :global(*) {
 		scroll-snap-align: start;
 	}
-	@media (min-width: 40rem) {
+	@container browse-rows (min-width: 36rem) {
 		.browse-row {
 			--across: 4;
 		}
 	}
-	@media (min-width: 64rem) {
+	@container browse-rows (min-width: 56rem) {
 		.browse-row {
 			--across: 5;
 		}
 	}
-	@media (min-width: 80rem) {
+	@container browse-rows (min-width: 68rem) {
 		.browse-row {
 			--across: 6;
 		}

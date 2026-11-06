@@ -89,14 +89,17 @@ In this order, and nothing else at the top level:
    the API count (the prerender crawler must reach every item another way).
    **Books opens on curated rows, not the grid** (design review #11,
    2026-11-06). `/books` with no query shows **Browse**: a handful of named
-   rows (`h2.section-label` + "See all %n%", one `.cover-rail.browse-row` of
-   `BookCard`s that scrolls sideways with snap), then the Book Series rail. The
+   rows (`h2.section-label` + "See all %n%" on a topic row, one
+   `.cover-rail.browse-row` of `BookCard`s that scrolls sideways with snap,
+   sized by its own container), then the Book Series rail. The
    full grid with its filter bar is the **"All N books"** tab, which
    `<LibraryTabs browse>` puts in place of the Books tab on `/books` only. The
    view is URL state (`?shelf=all`, in the shelf's `urlFilters`), so: a bare
    `/books` prerenders Browse (no layout-changing restore); **any filter or
-   search in the URL lands on the grid** (and gains `shelf=all`, so lifting the
-   last chip keeps the reader there); a row's "See all" is
+   search in the URL lands on the grid** (lifting a chip or clearing sets
+   `shelf=all`, so the reader stays there; no `$effect` rewrites the URL);
+   the static HTML paints Browse first for a `?shelf=all` link, since one
+   prerendered page serves every query; a row's "See all" is
    `/books?shelf=all&topic=<slug>`. Row membership is `lib/browseRows.ts` —
    built from the loaded shelf, no request of its own: the one small hand list
    (`START_HERE`, topped up from featured order in a thin language), then

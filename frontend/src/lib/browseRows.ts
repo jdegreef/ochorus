@@ -20,6 +20,8 @@
  * Pure, so the selection is tested beside it (`browseRows.test.ts`).
  */
 
+import { editionKind } from './edition';
+
 interface RowBook {
 	slug: string;
 	topics?: { slug: string; title: string }[];
@@ -48,11 +50,9 @@ export const ROW_MIN = 4;
 /** The most books one row shows; "See all" has the rest. */
 export const ROW_MAX = 12;
 
-/** A young-reader edition, by the slug convention (CLAUDE.md, Content model). */
-const isYoungEdition = (slug: string) => slug.endsWith('-children') || slug.endsWith('-teens');
 
-/** One row. `topic` is null for Start here, whose "See all" is the whole
- *  grid — so its `count` is the whole shelf; a topic row's is the topic's. */
+/** One row. `topic` is null for Start here; `count` is how many books the
+ *  row's "See all" holds (a topic row shows at most `ROW_MAX`). */
 export interface BrowseRow<T extends RowBook> {
 	topic: { slug: string; title: string } | null;
 	count: number;
@@ -68,10 +68,10 @@ export function browseRows<T extends RowBook>(books: readonly T[]): BrowseRow<T>
 		const picked = new Set(start.map((b) => b.slug));
 		for (const b of books) {
 			if (start.length >= ROW_MIN * 2) break;
-			if (!picked.has(b.slug) && !isYoungEdition(b.slug)) start.push(b);
+			if (!picked.has(b.slug) && !editionKind(b.slug)) start.push(b);
 		}
 	}
-	if (start.length >= ROW_MIN) rows.push({ topic: null, count: books.length, books: start });
+	if (start.length >= ROW_MIN) rows.push({ topic: null, count: start.length, books: start });
 
 	// Every topic on the shelf, its books in shelf (featured) order.
 	const topics = new Map<string, { topic: { slug: string; title: string }; books: T[] }>();
