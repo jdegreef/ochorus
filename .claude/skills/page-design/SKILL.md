@@ -146,7 +146,9 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      the name only in the h1 and no link);
    - **`<SourceBadge>` directly under the byline** whenever
      `source_type === 'ai_unreviewed'` — the reading surfaces must show it too;
-   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip`.
+   - **hero visual** on the end side: cover, portrait, plate or `CoverStrip` —
+     except the book, whose cover leads on the START side of its two-column
+     hero (design review #6, below).
 4. **Action row** — `.btn.btn-primary.btn-solid` for the one start verb (`Begin reading`,
    `Start the plan`, `Start with <book>`) — the read verb is the one SOLID button
    (design review #2; every other primary stays soft, STYLE_GUIDE §5), `<FavoriteButton>` (the component,
@@ -154,8 +156,8 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    same size. A finished/complete state is a muted status line, not a `<p>`
    wearing `.btn`.
    **Book is the model (#3277):** the hero is TWO columns (design review #6) —
-   the cover on the start side; on the end side the eyebrow, H1, byline with
-   dates, translator, ONE muted facts line (`13 chapters · 9 hr 22 min ·
+   the cover on the start side; on the end side the eyebrow, H1, subtitle
+   (often the translator), byline with dates, ONE muted facts line (`13 chapters · 9 hr 22 min ·
    Accessible` — never a ribbon of boxed stat cells), the languages chip, then
    the read card and the action strip. No third column or floating panel, no
    art credit beside the cover (it sits with the source line at the page

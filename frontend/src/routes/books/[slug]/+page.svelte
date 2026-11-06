@@ -135,6 +135,13 @@
 	);
 
 	const totalWords = $derived(book.chapters.reduce((sum, c) => sum + c.word_count, 0));
+	// The book's measure — its length and the time it takes — whichever it
+	// has. One list for the meta description and the hero's facts line.
+	const measureFacts = $derived(
+		[book.chapter_count ? chapterCount(book.chapter_count) : '', totalWords ? readingTime(totalWords) : ''].filter(
+			Boolean
+		)
+	);
 
 	// A saved place past chapter 1 in a book not yet finished: the read verb is
 	// Continue, not Begin (a finished book is read again from the start).
@@ -249,12 +256,7 @@
 		const base = t('book.metaFallback')
 			.replace('%title%', book.title)
 			.replace('%name%', book.author.name);
-		const facts = [
-			book.chapter_count
-				? chapterCount(book.chapter_count)
-				: '',
-			totalWords ? readingTime(totalWords) : ''
-		].filter(Boolean);
+		const facts = measureFacts;
 		return truncateMeta(lead + (facts.length ? `${base} ${facts.join(' · ')}.` : base));
 	});
 	// The same work's other-language editions, reused from the hreflang set
@@ -336,15 +338,18 @@
 	// "Ages 8–12" — the series index's wording, for a book written for young
 	// readers or teens.
 	const ages = $derived(book.ages ? seriesAges(book.ages) : '');
-	// The hero's one facts line: its length, the time it takes, how hard it
-	// reads and who it's for — whichever of them the book has.
+	// The hero's one facts line: the measure, then how hard it reads and who
+	// it's for — whichever of them the book has. The difficulty word carries
+	// its label as a title (as the sermon page's does): "Advanced" alone does
+	// not say what is advanced.
 	const heroFacts = $derived(
 		[
-			chapterCount(book.chapter_count),
-			totalWords ? readingTime(totalWords) : '',
-			book.difficulty ? t(`reader.difficulty_${book.difficulty}`) : '',
-			ages
-		].filter(Boolean)
+			...measureFacts.map((text) => ({ text, title: undefined })),
+			book.difficulty
+				? { text: t(`reader.difficulty_${book.difficulty}`), title: t('reader.difficulty') }
+				: null,
+			ages ? { text: ages, title: undefined } : null
+		].filter((f) => f !== null)
 	);
 	const bookLd = $derived(
 		jsonLd({
@@ -570,10 +575,11 @@
 
 		<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
 
-		<!-- A grid, so on a phone the cover sits BESIDE the title (a 9rem cover
-		     alone on its row left the right half of the first screen empty) while
-		     the read card and actions take the full width beneath. From sm it is the
-		     original layout: cover down the left, everything else in one column. -->
+		<!-- Two columns (design review #6). A grid, so on a phone the cover sits
+		     BESIDE the title block (a 9rem cover alone on its row left the right
+		     half of the first screen empty) while the read card and actions take
+		     the full width straight beneath it. From sm: the cover down the start
+		     side, everything else in one column beside it. -->
 		<header class="book-hero mt-5">
 			<!-- One component decides what a cover is. This page used to branch on
 			     cover_url itself and paint its own gradient box in the else, so the
@@ -636,11 +642,13 @@
 				{/if}
 
 				<!-- The book's measure in one muted line ("13 chapters · 9 hr 22 min ·
-				     Accessible"), not a ribbon of boxed cells (design review #6): three
+				     Accessible"), not a ribbon of boxed cells (design review #6): the
 				     facts read in one glance. Each fact nowrap, so a narrow column breaks
 				     between them, never inside one. -->
 				<p class="mt-2 text-small text-muted">
-					{#each heroFacts as fact, i (i)}{#if i}{' · '}{/if}<span class="whitespace-nowrap">{fact}</span>{/each}
+					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
+							>{fact.text}</span
+						>{/each}
 				</p>
 
 				{#if siblingEditions.length && !fallback}
@@ -1407,18 +1415,20 @@
 		.book-hero-actions {
 			grid-column: 2;
 		}
+		/* The read card held to a measure, so the button is not a bar across a
+		   wide column. The card only, not the action host: the strip keeps the
+		   whole column, so it is still a plain row once that passes 560px. */
+		.book-hero-actions .read-card {
+			max-width: 32rem;
+		}
 	}
-	/* Wide: a larger cover, and the read card held to a measure so the button
-	   is not a bar across the whole column. */
+	/* Wide: a larger cover. */
 	@container book-hero (min-width: 56rem) {
 		.book-hero {
 			column-gap: 2.5rem;
 		}
 		.book-hero-cover {
 			width: 13rem;
-		}
-		.book-hero-actions {
-			max-width: 32rem;
 		}
 	}
 	/* The edition toggle: full width under the read button, two even halves. */
