@@ -94,10 +94,53 @@ function relandAfterJump(el: HTMLElement, smooth: boolean): void {
  * `rootMargin` defaults to a thin band around the viewport's vertical middle, so
  * the highlight tracks the section you are actually reading. No-JS / prerender:
  * nothing lights, but the links still jump — the markup and `scroll-margin` do.
+ *
+ * `line` (0–1, a share of the viewport's height from its top): the ids name a
+ * section's HEADING — a point in the text — not a box holding the whole
+ * section, so the band test is the wrong question. A heading crosses the band
+ * on its way back down too, and "last intersecting wins" then lit the section
+ * BELOW the one being read on every scroll up; a jump or a fast scroll could
+ * also carry a heading clean over a thin band with no crossing reported at
+ * all. With `line`, the observed region is everything ABOVE the reading line
+ * (its top margin reaches far past the page's top), so a heading intersects
+ * exactly while its top is above the line, whatever the speed it got there,
+ * and the section is the last such heading in document order ('' above the
+ * first) — read from the observer's own reports, no layout reads.
+ *
+ * A section lit by `set` or `jump` is HELD until that jump's scroll ends: the
+ * smooth scroll sweeps other sections past the band or the line on its way,
+ * and a short section's next heading can sit above the line where the target
+ * lands — either would light a section the reader did not choose.
  */
-export function scrollSpy(ids: () => string[], options: { rootMargin?: string } = {}) {
-	const rootMargin = options.rootMargin ?? '-45% 0px -50% 0px';
+export function scrollSpy(
+	ids: () => string[],
+	options: { rootMargin?: string; line?: never } | { line: number; rootMargin?: never } = {}
+) {
+	const { line } = options;
+	const rootMargin =
+		line != null
+			? `${MARKER_REACH_PX}px 0px ${-Math.round((1 - line) * 100)}% 0px`
+			: (options.rootMargin ?? '-45% 0px -50% 0px');
 	let active = $state('');
+
+	// The jump hold: released by the jump's `scrollend`, or after HOLD_MS where
+	// there is no such event (or no scroll — the target was already in place).
+	let held = false;
+	let holdTimer: ReturnType<typeof setTimeout> | undefined;
+	const release = () => {
+		held = false;
+		clearTimeout(holdTimer);
+		window.removeEventListener('scrollend', release);
+	};
+	function hold(id: string) {
+		active = id;
+		release();
+		held = true;
+		holdTimer = setTimeout(release, HOLD_MS);
+		// Added after the jump starts, so a scroll already ending can't release it.
+		requestAnimationFrame(() => held && window.addEventListener('scrollend', release, { once: true }));
+	}
+	$effect(() => release);
 
 	$effect(() => {
 		if (typeof IntersectionObserver === 'undefined') return;
@@ -105,8 +148,19 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 			.map((id) => document.getElementById(id))
 			.filter((el): el is HTMLElement => el != null);
 		if (!els.length) return;
+		// `line` mode: the anchors above the line, as last reported.
+		const above = new Set<Element>();
 		const io = new IntersectionObserver(
 			(entries) => {
+				if (line != null) {
+					for (const e of entries) {
+						if (e.isIntersecting) above.add(e.target);
+						else above.delete(e.target);
+					}
+					if (!held) active = els.findLast((el) => above.has(el))?.id ?? '';
+					return;
+				}
+				if (held) return;
 				// Last intersecting entry wins: as you scroll down, the section
 				// entering the band supersedes the one leaving it.
 				for (const e of entries) if (e.isIntersecting) active = e.target.id;
@@ -122,12 +176,11 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 			return active;
 		},
 		/**
-		 * Pre-light a section before the observer catches up — for a jump handler
-		 * that wants the tapped link lit at once rather than a frame after the
-		 * smooth scroll starts.
+		 * Light a section a jump handler is scrolling to: at once rather than a
+		 * frame after the smooth scroll starts, and held until it ends (above).
 		 */
 		set(id: string) {
-			active = id;
+			hold(id);
 		},
 		/**
 		 * The sub-nav link's click handler, shared by the book, author and
@@ -145,7 +198,7 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 			// this has never deferred to an earlier handler's preventDefault.)
 			if (!isUnmodifiedPrimaryClick(e)) return;
 			e.preventDefault();
-			if (track) active = id;
+			if (track) hold(id);
 			jumpToSection(id);
 			// Last, and allowed to fail: Safari throws after ~100 replaceState calls
 			// in 30s (and some embedded frames always do). The jump has happened;
@@ -158,6 +211,13 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 		}
 	};
 }
+
+/** How far above the viewport `scrollSpy`'s `line` region reaches: past the
+ *  top of any page, so a heading above the line is always inside it. */
+const MARKER_REACH_PX = 1_000_000;
+
+/** The longest a jump holds its section where no `scrollend` arrives. */
+export const HOLD_MS = 1500;
 
 /** The sticky sub-nav's height before it is measured: one row of
  *  `.subnav-link` tabs (measured 44.6px at every width). The prerendered page

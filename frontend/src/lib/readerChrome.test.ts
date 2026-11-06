@@ -263,3 +263,35 @@ describe('the sermon head stands on the page ground (design review #12)', () => 
 		expect(read('app.css')).toMatch(/\.min-left\.beside-text\s*\{[^}]*inset-inline-end:/);
 	});
 });
+
+describe('the sermon outline is pinned beside the text (design review #29)', () => {
+	const src = read('routes/sermons/[slug]/+page.svelte');
+
+	it('starts with the body, not above the head, and ends with it', () => {
+		// The track lives in the wrapper around <Reader>, so the sticky rail starts
+		// level with the sermon's first line and scrolls away with its last.
+		const text = src.slice(src.indexOf('<div class="sermon-text">'));
+		expect(text.indexOf('class="outline-track"')).toBeGreaterThan(-1);
+		expect(text.indexOf('class="outline-track"')).toBeLessThan(text.indexOf('<Reader'));
+		expect(src.indexOf('<div class="sermon-text">')).toBeGreaterThan(src.indexOf('</header>'));
+	});
+
+	it('pins clear of the reader bar from the published heights, not a guessed rem', () => {
+		// --pinned-offset is the bar under --appnav-h (the app's status strip), so
+		// the rail and a jumped-to heading (.sec-anchor) clear the same line.
+		expect(src).toMatch(/--pinned-offset: calc\(var\(--appnav-h, 0px\) \+ \{HEADER_OFFSET\}px\)/);
+		expect(src).toMatch(/--rail-top:\s*calc\(var\(--pinned-offset/);
+		expect(src).toMatch(/\.outline-rail\s*\{[^}]*position:\s*sticky;[^}]*top:\s*var\(--rail-top\)/);
+	});
+
+	it('mounts where the margin holds it, and shows the minutes left once', () => {
+		// Sized from the reader's own measure, like the start-margin pill.
+		expect(src).toMatch(/const railFits = marginHolds\(/);
+		expect(src).toMatch(/const besideText = marginHolds\(/);
+		// The rail carries the figure; the pill steps aside while it is up.
+		expect(src).toMatch(/class="rail-left\b/);
+		expect(src).toMatch(/besideText\.matches && !showRail/);
+		// …and the top bar's Outline button steps aside too.
+		expect(src).toMatch(/outline\.length >= 2 && !showRail/);
+	});
+});

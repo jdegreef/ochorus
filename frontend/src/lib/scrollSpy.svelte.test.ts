@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { flushSync } from 'svelte';
 import {
+	HOLD_MS,
 	realignHashOnMeasure,
 	realignHashTarget,
 	resetFirstPage,
@@ -73,6 +74,85 @@ describe('spy.jump — the sticky sub-nav click handler', () => {
 			expect(target.scrollIntoView).toHaveBeenCalled();
 		});
 		target.remove();
+	});
+});
+
+describe('scrollSpy line — the sermon outline, whose anchors are headings', () => {
+	let fire: (entries: Partial<IntersectionObserverEntry>[]) => void = () => {};
+	let margin = '';
+	let els: HTMLElement[] = [];
+	beforeEach(() => {
+		vi.stubGlobal(
+			'IntersectionObserver',
+			class {
+				constructor(
+					cb: (e: Partial<IntersectionObserverEntry>[]) => void,
+					opts: IntersectionObserverInit
+				) {
+					fire = cb;
+					margin = opts.rootMargin ?? '';
+				}
+				observe() {}
+				disconnect() {}
+			}
+		);
+		els = ['one', 'two', 'three'].map((id) => {
+			const el = document.createElement('h2');
+			el.id = id;
+			el.scrollIntoView = vi.fn();
+			document.body.append(el);
+			return el;
+		});
+	});
+	afterEach(() => {
+		document.body.replaceChildren();
+		vi.unstubAllGlobals();
+		vi.useRealTimers();
+	});
+	/** Report which headings are above the line (the observed region). */
+	const report = (state: Record<string, boolean>) =>
+		fire(
+			Object.entries(state).map(([id, isIntersecting]) => ({
+				target: els.find((el) => el.id === id),
+				isIntersecting
+			}))
+		);
+
+	it('lights the last heading above the line, and hands it back on a scroll up', () => {
+		const cleanup = $effect.root(() => {
+			const spy = scrollSpy(() => ['one', 'two', 'three'], { line: 0.3 });
+			flushSync();
+			// Everything above a line 30% down: a heading changes state exactly
+			// as it crosses the line, however fast it is scrolled past.
+			expect(margin).toMatch(/^\d{6,}px 0px -70% 0px$/);
+			report({ one: true, two: true, three: false });
+			expect(spy.active).toBe('two');
+			// Scrolling back up, "two" drops below the line: the reader is in
+			// section one again (last-intersecting-wins kept "two" lit here).
+			report({ two: false });
+			expect(spy.active).toBe('one');
+			report({ one: false });
+			expect(spy.active).toBe('');
+		});
+		cleanup();
+	});
+
+	it('holds a jumped-to section until the jump has settled', () => {
+		vi.useFakeTimers();
+		const cleanup = $effect.root(() => {
+			const spy = scrollSpy(() => ['one', 'two', 'three'], { line: 0.3 });
+			flushSync();
+			spy.set('two');
+			// The target lands near the top with the next heading still above
+			// the line (a short section): the reader chose "two".
+			report({ one: true, two: true, three: true });
+			expect(spy.active).toBe('two');
+			vi.advanceTimersByTime(HOLD_MS);
+			// Released: the reader's own scrolling moves it on again.
+			report({ three: true });
+			expect(spy.active).toBe('three');
+		});
+		cleanup();
 	});
 });
 
