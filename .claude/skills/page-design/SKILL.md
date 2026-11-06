@@ -340,8 +340,8 @@ seeks, takes Tab (a page per arrow key in page mode), and shows "Page n / N ·
 min left in chapter · left in book" as a tip on hover/focus/drag and as
 `aria-valuetext`; page mode has no scrollbar, so it stays. A seek must not
 fold the bar (`seekedAt` in `trackChrome`). The bottom
-`.progress-foot` is now the phone's action row only (hidden from `sm`, and
-while folded). The chapter's ending is ONE card: "You finished <chapter>"
+`.progress-foot` is now the phone's action row only (hidden from `sm`; folded,
+it slides down off the screen — see design #30 below). The chapter's ending is ONE card: "You finished <chapter>"
 (`reader.finished`), the book pips, then ONE large button — "Next: <chapter>"
 with its length (`.end-next btn-primary btn-solid`, the read verb), the
 series' next volume at a book's end, or the book's page (soft) — with
@@ -384,7 +384,15 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   Add it to `overlayPortal.test.ts` either way.
 - **Phone reader chrome (below `sm`) is its own layout.** Top: Back · book/
   chapter · Contents · "⋯"; footer `.foot-actions`: Previous · Listen · + ·
-  Aa · Next (folds with `hideChrome`). The sermon has the same footer — scrubber,
+  Aa · Next (folds with `hideChrome`). **Design #30:** both bars fold with a
+  TRANSFORM only (top `translateY(-100%)`, footer `translateY(100%)`) —
+  never `display:none`, which took Aa/Listen/Next away from Tab and screen
+  readers while folded — and a `focusin` in either bar (`unfold`) brings both
+  back. In scroll mode a tap in the middle third (`tapTurn(..., 0.34) ===
+  'none'`, the zone that shows the controls in page mode) toggles them; the
+  outer thirds stay inert. Page mode keeps its thirds (edges turn, middle
+  toggles focus mode). While folded, the hairline shows its full 2px at the
+  top of the screen. The sermon has the same footer — scrubber,
   minutes left, and the row, its Previous/Next stepping through the author's
   sermons (`sermon.prev/next`). The centre "+" is `<FootFeedback />` (feedback), and the
   floating FeedbackFab hides wherever a `.foot-actions` row is up. Traps: (1) the text-settings **sheet**
