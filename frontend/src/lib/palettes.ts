@@ -7,8 +7,9 @@ import { liturgicalSeason, SEASON_COLOUR, type SeasonColour } from './liturgical
 
 /**
  * Library palettes — the reader's choice of colours, layered over the theme
- * (light / sepia / dark stays the brightness choice). The CSS is app.css's
- * PALETTES block; the store is palette.svelte.ts; app.html's boot script
+ * (light / sepia / dark stays the brightness choice). The CSS is
+ * static/palettes.css (out of app.css, linked only when a palette is applied);
+ * the store is palette.svelte.ts; app.html's boot script
  * applies the stored value before first paint. 'parchment' is the house
  * palette and sets no attribute.
  *
