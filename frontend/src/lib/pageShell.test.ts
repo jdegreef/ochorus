@@ -42,7 +42,7 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 /**
  * The leaf pages you reach FROM a browse surface. They share the page column
  * but not <PageHeader>: each has its own header shape (a cover beside a title,
- * a portrait and a timeline, an emblem in a tinted hero), so only the shell is
+ * a portrait and a timeline, a title beside an epigraph), so only the shell is
  * asserted here.
  *
  * Converting the browse pages alone left the stepper half-working — it moved
