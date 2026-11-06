@@ -133,7 +133,9 @@ In this order, and nothing else at the top level:
    The static HTML is drawn with the default; reading localStorage in
    `onMount` then swaps rows for a grid (or one band for another) after the
    reader can see the page — a visible jump on every load. Biographies dropped
-   restoring its grid/list and Browse-by choices for this (2026-10-03). Books
+   restoring its grid/list and Browse-by choices for this (2026-10-03). Plans
+   dropped restoring its sort when the shelf became length-grouped (design
+   #19, 2026-11): a sort turns the groups into a flat list. Books
    (view/sort/group) and Sermons (group/sort) still restore theirs and still
    jump; fix them the same way, or apply the choice before first paint (the
    `app.html` boot script, as the theme does) if it must persist.
@@ -407,7 +409,8 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
-| Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
+| Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
+| Plan | `<PlanShelfCard>` (boxless: one large cover, or two overlapping, beside title + length once + 2-line description — design #19) | rise (the book card's) |
 | Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
@@ -422,9 +425,13 @@ which also sets the 48rem measure — don't hand-set a `max-w` per page). The
   card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
   favourites and 404 lists are single columns for that reason.
 
-Two hover languages only: **lift** for banded cards, **border tint** for rows.
-The one exception is the frameless sermon list row (above): no frame to tint,
-so its title underlines in accent. It is not a pattern for other cards.
+Two hover languages only: **lift** for banded cards, **border tint** for rows
+(the boxless book and plan cards rise without a shadow — a shadow would draw
+the box they no longer have). The one exception is the frameless sermon list
+row (above): no frame to tint, so its title underlines in accent. It is not a
+pattern for other cards. /plans groups its cards by length ("A week or two"
+≤ 14 days, "About a month" 15–40, "Longer journeys"), the same buckets as its
+length chips; sorting or filtering shows one flat list instead.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
