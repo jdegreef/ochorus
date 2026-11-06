@@ -386,11 +386,23 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
 | Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
 | Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
-| Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
+| Sermon (any list of sermons) | `<SermonCard>` in a `.sermon-list` — a plain hairline row, not a card (design #8, 2026-11) | title underlines in accent; no frame |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
 
+- **Sermons are listed as plain rows, everywhere** (design review #8, founder-
+  approved 2026-11; overrides the older "row card tints" rule for sermons).
+  `<SermonCard>` has one shape: serif title, one muted meta line (preacher ·
+  passage · length; preacher omitted under a preacher heading), one clamped line
+  of the brief, hairlines between rows from the `.sermon-list` wrapper (app.css,
+which also sets the 48rem measure — don't hand-set a `max-w` per page). The
+  whole row is the link — no expand chevron, no rail, no passage monogram, no
+  card grid. Don't put sermon rows in a `grid-cols-2`; the topic, author,
+  favourites and 404 lists are single columns for that reason.
+
 Two hover languages only: **lift** for banded cards, **border tint** for rows.
+The one exception is the frameless sermon list row (above): no frame to tint,
+so its title underlines in accent. It is not a pattern for other cards.
 A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
@@ -1033,7 +1045,7 @@ relevant group.
 - [x] **E7** _(shipped #1526 — compact buttons on `.btn-sm`)_ Compact ghost buttons hand-roll `py-1.5`/`py-2` on Settings ×4,
   Sermons and `CatalogLanguageNudge`. → `.btn-sm`.
 - [ ] **E8** Near-duplicate classes: `.footer-heading` ≈ `.section-label`,
-  `.sermon-row-ref` ≈ `.eyebrow`, `.navsearch` ≈ a pill `.field`; the topic
+  ~~`.sermon-row-ref` ≈ `.eyebrow`~~ (gone with design #8), `.navsearch` ≈ a pill `.field`; the topic
   hero still carries its own weaker `.hue-band`. `.stat-number` is admin-only
   but lives with the public classes; `--hl-*` are fixed hex that don't follow
   the theme. → fold or document.
