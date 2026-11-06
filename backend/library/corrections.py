@@ -5458,6 +5458,35 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "— A W Tozer.</p><h2>Ametuketisha pamoja naye (Baba) katika ulimwengu wa roho ndani yake Kristo Yesu. (2:6)</h2><p>Kuwa “umeketishwa” pamoja na Baba humaanisha kuwa umekoma juhudi zetu za kumpendeza. Ametukubali ndani ya Kristo, nasi sasa twaitwa kuingia katika “raha yake” (Waebrania 4:9). Twaweza kuikosa raha hii kwa kutokutii ule mwito wa imani — misukumo yake ndani yetu (Waebrania 4:11). “Kwa maana yeye aliyeingia katika raha yake, amestarehe mwenyewe katika kazi zake, kama vile Mungu alivyostarehe katika kazi zake” (Waebrania 4:10).</p>"),  # ch3 Tozer | heading | body
             ("penye kiti cha miguu yako. — A B Simpson. “Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>",
              "penye kiti cha miguu yako.</p><p>— A B Simpson.</p><p>“Mtu ajazwapo Roho, hulijua!” — A W Tozer.</p><h2>"),  # ch3 hymn | credit | Tozer
+            # 2026-11-06 layout repair, part two: ch7's fourth block had the
+            # same welded shape as ch3's — the second stanza of A. B. Simpson's
+            # "Rise with thy risen Lord", its credit, the "4:1: WALK in a
+            # manner worthy of your calling …" subheading and the body. It is
+            # split into hymn | credit | <h2> (set like ch7's own "4:17-24:
+            # Walk, …" headings) | body, in all seven editions at once.
+            # Restructure only: no word changes. Each OLD opens on the block's
+            # <p>, so none can fire on the tagless body_text.
+            # en
+            ('<p>Walk as a heavenly race, Princes of royal blood; walk as the children of the light, the sons and heirs of God. A B Simpson 4:1: WALK in a manner worthy of your calling : with humility, gentleness, patience, tolerance – in love. Elsewhere',
+             '<p>Walk as a heavenly race, Princes of royal blood; walk as the children of the light, the sons and heirs of God.</p><p>A B Simpson</p><h2>4:1: WALK in a manner worthy of your calling : with humility, gentleness, patience, tolerance – in love.</h2><p>Elsewhere'),  # ch7 hymn | credit | heading
+            # am
+            ('<p>እንደ ሰማያዊ ዘር፣ የንጉሣዊ ደም ልዑላን ሆናችሁ ተመላለሱ፤ እንደ ብርሃን ልጆች፣ እንደ እግዚአብሔር ልጆችና ወራሾች ተመላለሱ። ኤ. ቢ. ሲምፕሰን 4:1፦ በተጠራችሁበት መጠራታችሁ እንደሚገባ ተመላለሱ፦ በትሕትና፣ በየዋህነት፣ በትዕግሥት፣ በመቻቻል — በፍቅር። እነዚህ',
+             '<p>እንደ ሰማያዊ ዘር፣ የንጉሣዊ ደም ልዑላን ሆናችሁ ተመላለሱ፤ እንደ ብርሃን ልጆች፣ እንደ እግዚአብሔር ልጆችና ወራሾች ተመላለሱ።</p><p>ኤ. ቢ. ሲምፕሰን</p><h2>4:1፦ በተጠራችሁበት መጠራታችሁ እንደሚገባ ተመላለሱ፦ በትሕትና፣ በየዋህነት፣ በትዕግሥት፣ በመቻቻል — በፍቅር።</h2><p>እነዚህ'),  # ch7 hymn | credit | heading
+            # es
+            ('<p>Anda como linaje celestial, príncipe de sangre real; anda como hijo de la luz, hijo y heredero de Dios. A. B. Simpson 4:1: ANDA como es digno de tu vocación: con humildad, mansedumbre, paciencia y tolerancia, en amor. En otro lugar',
+             '<p>Anda como linaje celestial, príncipe de sangre real; anda como hijo de la luz, hijo y heredero de Dios.</p><p>A. B. Simpson</p><h2>4:1: ANDA como es digno de tu vocación: con humildad, mansedumbre, paciencia y tolerancia, en amor.</h2><p>En otro lugar'),  # ch7 hymn | credit | heading
+            # fr
+            ('<p>Marche comme une race céleste, princes du sang royal ; marche comme les enfants de la lumière, les fils et héritiers de Dieu. A B Simpson. 4:1 : MARCHEZ d’une manière digne de votre vocation : avec humilité, douceur, patience, tolérance — dans l’amour. On les retrouve',
+             '<p>Marche comme une race céleste, princes du sang royal ; marche comme les enfants de la lumière, les fils et héritiers de Dieu.</p><p>A B Simpson.</p><h2>4:1 : MARCHEZ d’une manière digne de votre vocation : avec humilité, douceur, patience, tolérance — dans l’amour.</h2><p>On les retrouve'),  # ch7 hymn | credit | heading
+            # lg
+            ('<p>Tambula ng’eggwanga ery’omu ggulu, Abalangira ab’omusaayi ogw’obwakabaka; tambula ng’abaana ab’omusana, abaana era abasika ba Katonda. A B Simpson 4:1: TAMBULA mu ngeri esaanira okuyitibwa kwo : n’obwetoowaze, obuwombeefu, obugumiikiriza, okugumiikirizaganya – mu kwagala. Mu bifo ebirala',
+             '<p>Tambula ng’eggwanga ery’omu ggulu, Abalangira ab’omusaayi ogw’obwakabaka; tambula ng’abaana ab’omusana, abaana era abasika ba Katonda.</p><p>A B Simpson</p><h2>4:1: TAMBULA mu ngeri esaanira okuyitibwa kwo : n’obwetoowaze, obuwombeefu, obugumiikiriza, okugumiikirizaganya – mu kwagala.</h2><p>Mu bifo ebirala'),  # ch7 hymn | credit | heading
+            # pt
+            ('<p>Ande como raça celestial, príncipes de sangue real; ande como filho da luz, filho e herdeiro de Deus. A B Simpson 4:1: ANDE de modo digno da sua vocação : com humildade, mansidão, paciência, tolerância – em amor. Em outro lugar',
+             '<p>Ande como raça celestial, príncipes de sangue real; ande como filho da luz, filho e herdeiro de Deus.</p><p>A B Simpson</p><h2>4:1: ANDE de modo digno da sua vocação : com humildade, mansidão, paciência, tolerância – em amor.</h2><p>Em outro lugar'),  # ch7 hymn | credit | heading
+            # sw
+            ('<p>Enenda kama taifa la mbinguni, Wana wa damu ya kifalme; enenda kama watoto wa nuru, wana na warithi wa Mungu. A B Simpson 4:1: ENENDA kwa kustahili wito wako: kwa unyenyekevu wote, na upole, na uvumilivu, na kuchukuliana – katika upendo. Mahali pengine',
+             '<p>Enenda kama taifa la mbinguni, Wana wa damu ya kifalme; enenda kama watoto wa nuru, wana na warithi wa Mungu.</p><p>A B Simpson</p><h2>4:1: ENENDA kwa kustahili wito wako: kwa unyenyekevu wote, na upole, na uvumilivu, na kuchukuliana – katika upendo.</h2><p>Mahali pengine'),  # ch7 hymn | credit | heading
         ],
     },
     "the-christians-secret-of-a-happy-life-4": {
