@@ -221,6 +221,75 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    3: {
+        "slug": "devoted-to-prayer",
+        "book": {
+            "publication_year": 2026,
+            "title": "Devoted to Prayer",
+            "subtitle": "The Apostles and the First Church",
+            "cover_url": "/covers/art/devoted-to-prayer.jpg",
+            "cover_color": covers.ink_safe("#24305e"),  # a dawn-blue
+            "description": (
+                "Twenty short chapters on how the first Christians prayed: waiting in the "
+                "upper room, devoted to the prayers, praying under threat, Stephen praying "
+                "for his killers, the church praying all night for Peter, Paul and Silas "
+                "singing at midnight, the prayers of Paul's letters, the Spirit's help when "
+                "we do not know what to pray, never stop praying, prayer for rulers and for "
+                "the sick, and the golden bowls of Revelation."
+            ),
+            "about_html": (
+                "<p>When Jesus was taken up into heaven, His followers had no leader they "
+                "could see, no buildings, no money and no plan anyone else would take "
+                "seriously. They went back into Jerusalem, climbed the stairs to an upper "
+                "room, and prayed. This book follows what happened next. It is Volume 3 of "
+                "A Cloud of Praying Witnesses, an Ochorus series that follows the people of "
+                "God at prayer from the Old Testament to the church around the world "
+                "today.</p>"
+                "<p>Its twenty chapters move in three parts. In Jerusalem we wait with the "
+                "hundred and twenty, join the first believers devoted to the prayers, pray "
+                "with the church under threat, kneel with Stephen and pray through the night "
+                "for Peter in prison. On the move we watch the church at Antioch fast and "
+                "send out its first missionaries, find women praying by a river in Philippi, "
+                "and hear Paul and Silas singing at midnight. In the letters we read the "
+                "prayers Paul wrote for the churches he loved, learn how the Spirit helps "
+                "our weakness, pray for rulers and for the sick, and end with John on "
+                "Patmos, watching the prayers of God's people rise before the throne.</p>"
+                "<p>Every chapter opens with a key verse and a story, quotes voices from the "
+                "past such as E. M. Bounds, Andrew Murray, Charles Spurgeon and R. A. Torrey "
+                "word for word from their books in the library, and ends with three key "
+                "insights, a word for today, a practice to try, a closing prayer and "
+                "questions for reflection. Two appendices gather every insight by theme and "
+                "every Scripture in Bible order. Scripture is quoted from the Open Word "
+                "Bible (OWB), Balanced edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Devoted to Prayer about?",
+                    "answer": "How the first Christians prayed, from the upper room in Jerusalem to the letters of Paul, James and John: twenty short chapters on waiting for the Spirit, praying together, praying under threat, praying for enemies, rulers and the sick, praying without stopping, and the prayers of God's people rising before the throne in Revelation.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. Volume 1 listens to the prayers of the Old Testament, Volume 2 sits with Jesus, the Teacher of Prayer, and this third volume follows the apostles and the first church. Later volumes follow the praying men and women of every century and every part of the world.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "How is each chapter laid out?",
+                    "answer": "Each chapter opens with a key verse and a story, looks at what the passage shows about prayer, quotes a voice from the past, and ends with three key insights, a section called For us today, one practice to try that week, a closing prayer and questions for reflection.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 

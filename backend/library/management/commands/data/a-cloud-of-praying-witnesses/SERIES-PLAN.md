@@ -115,22 +115,22 @@ told…"). Known cases are flagged ⚑ below.
 | 1 | Waiting in the Upper Room | The 120 | Acts 1:14 |
 | 2 | Devoted to the Prayers | The Jerusalem church | Acts 2:42 |
 | 3 | The Hour of Prayer | Peter and John at the gate | Acts 3:1 |
-| 4 | "Sovereign Lord": Praying Under Threat | The church after the arrest | Acts 4:31 |
-| 5 | We Will Give Ourselves to Prayer | The apostles' priority | Acts 6:4 |
-| 6 | "Do Not Hold This Sin Against Them" | Stephen | Acts 7:60 |
+| 4 | "Sovereign Master": Praying Under Threat | The church after the arrest | Acts 4:31 |
+| 5 | Holding Fast to Prayer | The apostles' priority | Acts 6:4 |
+| 6 | "Do Not Charge Them with This Sin" | Stephen | Acts 7:60 |
 | 7 | Prayers That Rose Before God | Cornelius | Acts 10:4 |
 | 8 | Peter in Prison, the Church on Its Knees | Mary's house | Acts 12:5 |
 | 9 | Worship, Fasting and Sending | Antioch | Acts 13:2–3 |
 | 10 | The Place of Prayer by the River | Lydia and the women of Philippi | Acts 16:13 |
 | 11 | Songs at Midnight | Paul and Silas | Acts 16:25 |
-| 12 | That You May Know Him Better | Paul's prayers (I) | Ephesians 1:17–18 |
-| 13 | Rooted and Grounded in Love | Paul's prayers (II) | Ephesians 3:17–19 |
+| 12 | That You May Know Him Better | Paul's prayers (I) | Ephesians 1:16–19 |
+| 13 | Rooted Deep in Love | Paul's prayers (II) | Ephesians 3:16–19 |
 | 14 | When We Do Not Know What to Pray | The Spirit's help | Romans 8:26 |
 | 15 | Always Wrestling in Prayer | Epaphras | Colossians 4:12 |
-| 16 | Do Not Be Anxious About Anything | Paul in chains | Philippians 4:6–7 |
-| 17 | Pray Without Ceasing | Thessalonica | 1 Thessalonians 5:16–18 |
+| 16 | Do Not Worry About Anything | Paul in chains | Philippians 4:6–7 |
+| 17 | Never Stop Praying | Thessalonica | 1 Thessalonians 5:16–18 |
 | 18 | For Kings and All in Authority | Timothy at Ephesus | 1 Timothy 2:1–2 |
-| 19 | The Prayer of Faith | James, and Elijah's example | James 5:16 |
+| 19 | The Prayer Made in Faith | James, and Elijah's example | James 5:16 |
 | 20 | Golden Bowls | John on Patmos | Revelation 8:3–4 |
 
 ## Volume 4 — Faithful unto Death

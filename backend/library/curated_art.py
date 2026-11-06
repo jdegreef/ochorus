@@ -1691,6 +1691,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "night sky, first light low behind the far ridge, and one figure "
         "kneeling in prayer on the near ridge. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 3: Devoted to Prayer. The series' scene
+    # at sunrise: the morning of Pentecost over Jerusalem, the city in silhouette
+    # and one upper room's window lit (Acts 1:13-14, 2:1). Same generator.
+    "devoted-to-prayer": Original(
+        "d01fbde9e49159ffe99441569f0788728be4a281fd8bbb3add83104fdd5275f7",
+        "Acts 1:13-14 and 2:1: sunrise over Jerusalem on the morning of Pentecost, "
+        "the sky still deep above, the city's flat roofs, walls and towers in "
+        "silhouette, and one upper room's window lit. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
