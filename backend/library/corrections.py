@@ -5190,6 +5190,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('<p>Ryan Air is one of', '<p>Ryanair is one of'),
             ('I told Don Stevens I would', 'I told Don Stephens I would'),
         ],
+        # ch3: the poem's attribution ran into the paragraph after it
+        # ("-Anonymous In the months…"). A block split, so every edition at
+        # once (tests_translation_markup). Each tail is anchored on its <p>,
+        # so it can only fire at a block start, and matches once book-wide.
+        "paragraph_breaks": [
+            ("<p>-Anonymous", "In the months following"),
+            ("<p>—ደራሲው ያልታወቀ።", "ከቀላሉ ጸሎቴ"),
+            ("<p>— مجهول المؤلف.", "في الأشهر التي أعقبت"),
+            ("<p>-Anónimo", "En los meses que siguieron"),
+            ("<p>— Anonyme", "Dans les mois qui suivirent"),
+            ("<p>-अनाम", "अपनी उस सरल प्रार्थना"),
+            ("<p>-작자 미상", "그 단순한 기도를"),
+            ("<p>-Atamanyiddwa", "Mu myezi egyaddirira"),
+            ("<p>-Anônimo", "Nos meses que se seguiram"),
+            ("<p>-Bila jina", "Katika miezi iliyofuata"),
+            ("<p>— Невідомий автор.", "За кілька місяців"),
+            ("<p>-Khuyết danh", "Trong những tháng"),
+        ],
     },
     "prevailing-prayer": {
         # The three Roman brothers are the Horatii (Livy I.24-25); Moody's
