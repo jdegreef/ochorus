@@ -20,10 +20,11 @@
  * Pure, so the selection is tested beside it (`browseRows.test.ts`).
  */
 
-import { editionKind } from './edition';
+import { collapseEditions, editionKind } from './edition';
 
 interface RowBook {
 	slug: string;
+	title: string;
 	topics?: { slug: string; title: string }[];
 }
 
@@ -59,7 +60,9 @@ export interface BrowseRow<T extends RowBook> {
 	books: T[];
 }
 
-export function browseRows<T extends RowBook>(books: readonly T[]): BrowseRow<T>[] {
+/** `fold`: give each work one slot (design review #26) — off where the shelf
+ *  it links to shows every edition (/books "By series"). */
+export function browseRows<T extends RowBook>(books: readonly T[], fold = true): BrowseRow<T>[] {
 	const rows: BrowseRow<T>[] = [];
 
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
@@ -82,6 +85,10 @@ export function browseRows<T extends RowBook>(books: readonly T[]): BrowseRow<T>
 			topics.set(tc.slug, entry);
 		}
 	}
+	// One slot per work (design review #26): a topic's young-reader editions
+	// fold into their full text when it is in the row too — the same rule, and
+	// so the same count, as the "See all" grid the row links to.
+	if (fold) for (const e of topics.values()) e.books = collapseEditions(e.books);
 	const big = (slug: string) => (topics.get(slug)?.books.length ?? 0) >= ROW_MIN;
 	const chosen: string[] = ROW_TOPICS.filter(big);
 	// Fallback: the largest remaining topics, until the row count matches.
