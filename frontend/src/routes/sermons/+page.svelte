@@ -65,13 +65,14 @@
 
 	// --- Filters ----------------------------------------------------------------
 	// The shelf's filters live in the URL (shareable, reloadable, Back-able) via
-	// $lib/urlFilters — the same helper Books and Biographies use. Grouping and
-	// sort are this visit's arrangement only (below).
+	// $lib/urlFilters — the same helper Books and Biographies use. The
+	// arrangement (`group`, `sort`) rides along, as Biographies' sort does, so
+	// Back and a reload keep it (see Arrangement below).
 	const filters = urlFilters({
-		defaults: { q: '', book: '', len: '', topic: '' },
-		// `len` is an enum — an off-list value in the URL falls back to "any".
-		// `topic` is a free-text slug (like `book`), so it isn't listed here.
-		allowed: { len: LENGTH_BUCKETS },
+		defaults: { q: '', book: '', len: '', topic: '', group: 'all', sort: 'shelf' },
+		// `len`, `group` and `sort` are enums — an off-list value in the URL falls
+		// back to the default. `topic` is a free-text slug (like `book`).
+		allowed: { len: LENGTH_BUCKETS, group: ['all', 'preacher'], sort: ['shelf', 'scripture', 'title', 'shortest'] },
 		url: () => $page.url
 	});
 
@@ -136,7 +137,10 @@
 		});
 	});
 
-	const filtering = $derived(filters.active);
+	// Narrowing, not arranging: a grouping or sort is not a filter.
+	const filtering = $derived(
+		!!(filters.values.q.trim() || filters.values.book || filters.values.len || filters.values.topic)
+	);
 
 	// The filters currently narrowing the shelf, each liftable on its own. The
 	// query and the topic (shared with every shelf) come from filterChips; book
@@ -160,7 +164,7 @@
 	// Clears what narrows the shelf, not how it is arranged — the grouping and
 	// sort survive.
 	function clearFilters() {
-		filters.reset();
+		filters.reset({ group: filters.values.group, sort: filters.values.sort });
 	}
 
 	// --- Arrangement -----------------------------------------------------------
@@ -169,15 +173,19 @@
 	// ~23,000px and opened on A. B. Simpson for the alphabet's sake. "By
 	// preacher" keeps the author sections as a choice.
 	//
-	// Not persisted: this page is prerendered with the default, so restoring a
-	// stored grouping or sort in onMount swapped the whole list after the reader
-	// could see it (page-design: never restore a layout-changing view after
-	// first paint). The choice lasts the visit, as on Biographies.
+	// URL state, not localStorage: the page is prerendered with the default, and
+	// restoring a stored grouping or sort in onMount swapped the whole list after
+	// the reader could see it on EVERY load (page-design: never restore a
+	// layout-changing view after first paint). In the URL it only differs from
+	// the default when the reader chose it — a Back or a shared link — as on
+	// Biographies.
 	type Group = 'preacher' | 'all';
 	type Sort = 'shelf' | 'scripture' | 'title' | 'shortest';
 
-	let group = $state<Group>('all');
-	let sort = $state<Sort>('shelf');
+	const group = $derived(filters.values.group as Group);
+	const sort = $derived(filters.values.sort as Sort);
+	/** The arrangement the page opens on — the only one the start row shows in. */
+	const defaultView = $derived(!filtering && group === 'all' && sort === 'shelf');
 
 	/** What the phone Filters sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived((filters.values.book ? 1 : 0) + (filters.values.len ? 1 : 0));
@@ -193,8 +201,10 @@
 	// preacher anchors clear can't be assumed — it feeds `--pinned-offset`.
 	let pinnedH = $state(0);
 
-	// "Start with these": three hand-picked sermons for a newcomer, hidden while
-	// the reader is filtering (a filter is the reader saying what they want).
+	// "Start with these": three hand-picked sermons for a newcomer, shown only
+	// in the default view — a filter, sort or grouping is the reader saying
+	// what they want, and in any other order the picks would repeat right
+	// under the row.
 	const starters = $derived(startWith(sermons));
 	const startSlugs = $derived(new Set(starters.map((s) => s.slug)));
 
@@ -204,7 +214,7 @@
 		// returned as-is rather than copied only to not sort it. While the row
 		// shows them, its three wait for their preacher's last turn.
 		if (sort === 'shelf')
-			return group === 'all' ? featuredOrder(filtered, filtering ? undefined : startSlugs) : filtered;
+			return group === 'all' ? featuredOrder(filtered, defaultView ? startSlugs : undefined) : filtered;
 		const arr = [...filtered];
 		switch (sort) {
 			case 'scripture':
@@ -238,7 +248,7 @@
 	// their sermons.
 	const pages = pager(
 		() => sorted,
-		() => [...Object.values(filters.values), sort].join('|')
+		() => Object.values(filters.values).join('|')
 	);
 	export const snapshot = pagedSnapshot(() => (groups ? undefined : pages));
 
@@ -302,13 +312,13 @@
 		<button
 			class={btnCls}
 			class:active={group === 'all'}
-			onclick={() => (group = 'all')}
+			onclick={() => (filters.values.group = 'all')}
 			aria-pressed={group === 'all'}>{t('sermons.groupAll')}</button
 		>
 		<button
 			class={btnCls}
 			class:active={group === 'preacher'}
-			onclick={() => (group = 'preacher')}
+			onclick={() => (filters.values.group = 'preacher')}
 			aria-pressed={group === 'preacher'}>{t('sermons.groupPreacher')}</button
 		>
 	</div>
@@ -380,7 +390,7 @@
 					label={t('common.sort')}
 					options={SORTS.map((o) => ({ v: o.v, label: t(o.k) }))}
 					value={sort}
-					onselect={(v) => (sort = v)}
+					onselect={(v) => (filters.values.sort = v)}
 				/>
 				{@render groupSeg('w-full', 'flex-1')}
 			</FilterSheet>
@@ -399,7 +409,7 @@
 					{/each}
 				</select>
 
-				<select bind:value={sort} class="filter-field" aria-label={t('common.sort')}>
+				<select bind:value={filters.values.sort} class="filter-field" aria-label={t('common.sort')}>
 					{#each SORTS as o (o.v)}
 						<option value={o.v}>{t(o.k)}</option>
 					{/each}
@@ -446,7 +456,7 @@
 
 	<!-- Three to start with (design #28): large faces, the title, preacher ·
 	     minutes — a way in for a reader who doesn't yet know whom to read. -->
-	{#if !filtering && !loadError && starters.length}
+	{#if defaultView && !loadError && starters.length}
 		<section class="mb-10" aria-labelledby="start-with">
 			<h2 id="start-with" class="section-label mb-4">{t('sermons.startWith')}</h2>
 			<ul class="start-with">
@@ -458,7 +468,6 @@
 								name={s.author.name}
 								url={s.author.photo_url}
 								px={72}
-								position={portraitPosition(s.author.slug)}
 								tone="color"
 								decorative
 								class="start-face"

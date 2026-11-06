@@ -90,9 +90,10 @@ In this order, and nothing else at the top level:
    **Sermons opens on "All sermons"** (design review #28, 2026-11; overrides
    B4's `preacher` default): a "Start with these" row of three hand picks
    (`lib/sermonPicks.ts` `START_WITH`, topped up per language — the one hand
-   list; hidden while filtering), then the flat list in **featured order**
+   list; shown only in the default view), then the flat list in **featured order**
    (`featuredOrder`: preachers take turns, each in their own sequence), paged.
-   "By preacher" stays a choice. Its crawl path is `/<l>/authors/` → every
+   "By preacher" stays a choice; group and sort are URL state (`?group=`,
+   `?sort=`), never a localStorage restore. Its crawl path is `/<l>/authors/` → every
    author page, which lists all of that preacher's sermons (checked by
    crawling the dev server's SSR HTML: 428/428 en, 238/238 sw reached).
    **Books opens on curated rows, not the grid** (design review #11,

@@ -30,6 +30,9 @@
 		$props();
 
 	let pick = $state<SermonSummary | null>(null);
+	// The fetch has answered (with a pick or without): a reserve that would
+	// otherwise shimmer "loading" for good after a failed or empty fetch goes.
+	let settled = $state(false);
 
 	onMount(async () => {
 		try {
@@ -37,6 +40,7 @@
 		} catch {
 			pick = null;
 		}
+		settled = true;
 	});
 </script>
 
@@ -70,7 +74,7 @@
 			</SermonPlate>
 		</a>
 	</section>
-{:else if reserve}
+{:else if reserve && !settled}
 	<!-- Holding the panel's place until the pick lands (it is chosen on mount,
 	     above), so the caller's list doesn't jump down a moment after load. -->
 	<!-- A skeleton of the card, not an empty panel: the eyebrow is real (it

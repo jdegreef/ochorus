@@ -15,7 +15,7 @@
  *   taking turns, each walking their own sequence (the API's per-preacher
  *   `sort_order`), so the first screen is a sampler of the shelf rather than
  *   one alphabetically lucky preacher. The deepest shelves go first; ties by
- *   name, so the order is stable.
+ *   slug, so the order is stable.
  */
 
 interface PickSermon {
@@ -28,8 +28,8 @@ interface PickSermon {
  *  M'Cheyne's fourteen minutes on a minister's own soul. */
 export const START_WITH = ['the-golden-key-of-prayer', 'the-infinite-god', 'a-castaway'] as const;
 
-/** How many the row shows. */
-export const START_COUNT = 3;
+/** How many the row shows: all of the hand list, when a language has them. */
+export const START_COUNT = START_WITH.length;
 
 /** The shelf in featured order: one sermon from each preacher in turn, the
  *  deepest shelves first. `defer` names sermons to move to the end of their
@@ -47,7 +47,14 @@ export function featuredOrder<T extends PickSermon>(
 	}
 	const queues = [...byPreacher.values()]
 		.map((q) => [...q.filter((s) => !defer.has(s.slug)), ...q.filter((s) => defer.has(s.slug))])
-		.sort((a, b) => b.length - a.length || a[0].author.name.localeCompare(b[0].author.name));
+		// Ties by slug, compared as plain strings: localeCompare would follow the
+		// build host's and each browser's locale, and a prerendered list must
+		// come out in the same order when it hydrates.
+		.sort((a, b) => {
+			const x = a[0].author.slug;
+			const y = b[0].author.slug;
+			return b.length - a.length || (x < y ? -1 : x > y ? 1 : 0);
+		});
 	const out: T[] = [];
 	for (let i = 0; out.length < sermons.length; i++)
 		for (const q of queues) if (i < q.length) out.push(q[i]);

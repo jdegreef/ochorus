@@ -18,7 +18,7 @@ const shelf = [
 describe('featuredOrder', () => {
 	it('lets the preachers take turns, each in their own sequence', () => {
 		const order = featuredOrder(shelf).map((x) => x.slug);
-		// Deepest shelves first; ties by name.
+		// Deepest shelves first; ties by slug.
 		expect(order).toEqual(['a1', 'c1', 'the-infinite-god', 'b1', 'a2', 'c2', 't2', 'a3']);
 	});
 
