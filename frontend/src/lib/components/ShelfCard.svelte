@@ -26,7 +26,7 @@
 	 *
 	 * Sermons does NOT: a sermon shelf carries a 300–400 character brief, which
 	 * a banded card cannot hold without becoming mostly text, so the sermons
-	 * index uses `<SermonCard variant="row">` instead. (An earlier version of
+	 * index uses `<SermonCard>` (a plain list row) instead. (An earlier version of
 	 * this note claimed all three shared this card, which sent people looking
 	 * for a caller that isn't there.)
 	 *

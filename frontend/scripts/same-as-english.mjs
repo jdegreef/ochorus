@@ -87,7 +87,6 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'search_type_article', // Article
 	'search_type_chapter', // Passage
 	'search_type_sermon', // Sermon
-	'sermons_label', // Sermon
 	'settings_stat_notes', // Notes
 	'spacing_compact', // Compact
 	'topics_articles', // Articles

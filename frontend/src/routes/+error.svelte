@@ -152,7 +152,7 @@
 			<section>
 				<h2 class="text-h2 mb-1">{t('error.picksSermonsHeading')}</h2>
 				<p class="mb-6 text-small text-muted">{t('error.picksSermonsSub')}</p>
-				<div class="grid gap-4 sm:grid-cols-2">
+				<div class="sermon-list">
 					{#each sermonPicks as sermon (sermon.slug)}
 						<div data-testid="notfound-sermon"><SermonCard {sermon} showAuthor /></div>
 					{/each}
