@@ -4691,6 +4691,174 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Anointing him with oil", "<p>\u201cAnointing him with oil"),
             ("Partnership\u2014\u201dAll I have", "Partnership\u2014\u201cAll I have"),
             ("poverty!\u2014\u201dnever had", "poverty!\u2014\u201cnever had"),
+            # Layout (2026-11-06): eleven chapters open on a bare scripture
+            # reference that the import ran into the first paragraph ("Mark
+            # 5:25—34 We may be thankful…"). The intact chapters set their opening
+            # text as a block of its own, so the reference gets one. Structural, so
+            # every edition at once, anchored on <p> and that edition's own words
+            # (tests_translation_markup pins the tag sequences together). The
+            # ch15 quote anchor (`quote_seed`) and the am/ko/vi translation
+            # notes' `block_index` values in these chapters shifted by one in
+            # the same commit.
+            # ch3
+            ("<p>Mark 5:25—34 We may", "<p>Mark 5:25—34</p><p>We may"),  # en
+            ("<p>ማርቆስ 5:25—34 ሐኪሞችን ስለ", "<p>ማርቆስ 5:25—34</p><p>ሐኪሞችን ስለ"),  # am
+            ("<p>(مرقس 5:25-34) لنا أن", "<p>(مرقس 5:25-34)</p><p>لنا أن"),  # ar
+            ("<p>Marcos 5:25—34 Podemos dar", "<p>Marcos 5:25—34</p><p>Podemos dar"),  # es
+            ("<p>Marc 5:25-34 Nous pouvons", "<p>Marc 5:25-34</p><p>Nous pouvons"),  # fr
+            ("<p>मरकुस 5:25—34 हम परमेश्वर", "<p>मरकुस 5:25—34</p><p>हम परमेश्वर"),  # hi
+            ("<p>마가복음 5:25–34 우리에게 의사들을", "<p>마가복음 5:25–34</p><p>우리에게 의사들을"),  # ko
+            ("<p>Makko 5:25—34 Tusaanidde okwebaza", "<p>Makko 5:25—34</p><p>Tusaanidde okwebaza"),  # lg
+            ("<p>Marcos 5:25—34 Podemos ser", "<p>Marcos 5:25—34</p><p>Podemos ser"),  # pt
+            ("<p>Marko 5:25-34 Twaweza kumshukuru", "<p>Marko 5:25-34</p><p>Twaweza kumshukuru"),  # sw
+            ("<p>Марка 5:25–34. Ми можемо", "<p>Марка 5:25–34.</p><p>Ми можемо"),  # uk
+            ("<p>Mác 5:25—34 Chúng ta", "<p>Mác 5:25—34</p><p>Chúng ta"),  # vi
+            # ch4
+            ("<p>Acts 3:16; 4:10, 12 When after", "<p>Acts 3:16; 4:10, 12</p><p>When after"),  # en
+            ("<p>የሐዋርያት ሥራ 3:16፤ 4:10, 12 ከበዓለ ኀምሳ", "<p>የሐዋርያት ሥራ 3:16፤ 4:10, 12</p><p>ከበዓለ ኀምሳ"),  # am
+            ("<p>(أعمال الرسل 3:16؛ 4:10، 12) عندما شُفي", "<p>(أعمال الرسل 3:16؛ 4:10، 12)</p><p>عندما شُفي"),  # ar
+            ("<p>Hechos 3:16; 4:10, 12 Cuando, después", "<p>Hechos 3:16; 4:10, 12</p><p>Cuando, después"),  # es
+            ("<p>Actes 3:16 ; 4:10, 12 Lorsque, après", "<p>Actes 3:16 ; 4:10, 12</p><p>Lorsque, après"),  # fr
+            ("<p>प्रेरितों के काम 3:16; 4:10, 12 जब पिन्तेकुस्त", "<p>प्रेरितों के काम 3:16; 4:10, 12</p><p>जब पिन्तेकुस्त"),  # hi
+            ("<p>사도행전 3:16; 4:10, 12 오순절 이후", "<p>사도행전 3:16; 4:10, 12</p><p>오순절 이후"),  # ko
+            ("<p>Ebikolwa by’Abatume 3:16; 4:10, 12 Oluvannyuma lwa", "<p>Ebikolwa by’Abatume 3:16; 4:10, 12</p><p>Oluvannyuma lwa"),  # lg
+            ("<p>Atos 3:16; 4:10, 12 Quando, depois", "<p>Atos 3:16; 4:10, 12</p><p>Quando, depois"),  # pt
+            ("<p>Matendo 3:16; 4:10, 12 Baada ya", "<p>Matendo 3:16; 4:10, 12</p><p>Baada ya"),  # sw
+            ("<p>Дїяння 3:16; 4:10, 12. Коли після", "<p>Дїяння 3:16; 4:10, 12.</p><p>Коли після"),  # uk
+            ("<p>Công Vụ Các Sứ Đồ 3:16; 4:10, 12 Sau Lễ", "<p>Công Vụ Các Sứ Đồ 3:16; 4:10, 12</p><p>Sau Lễ"),  # vi
+            # ch8
+            ("<p>I Corinthians 6:15, 19, 20 The Bible", "<p>I Corinthians 6:15, 19, 20</p><p>The Bible"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:15, 19, 20 መጽሐፍ ቅዱስ", "<p>1ኛ ቆሮንቶስ 6:15, 19, 20</p><p>መጽሐፍ ቅዱስ"),  # am
+            ("<p>(1 كورنثوس 6:15، 19، 20) يعلّمنا الكتاب", "<p>(1 كورنثوس 6:15، 19، 20)</p><p>يعلّمنا الكتاب"),  # ar
+            ("<p>1 Corintios 6:15, 19, 20 La Biblia", "<p>1 Corintios 6:15, 19, 20</p><p>La Biblia"),  # es
+            ("<p>1 Corinthiens 6:15, 19, 20 La Bible", "<p>1 Corinthiens 6:15, 19, 20</p><p>La Bible"),  # fr
+            ("<p>1 कुरिन्थियों 6:15, 19, 20 बाइबल हमें", "<p>1 कुरिन्थियों 6:15, 19, 20</p><p>बाइबल हमें"),  # hi
+            ("<p>고린도전서 6:15, 19, 20 성경은 그리스도의", "<p>고린도전서 6:15, 19, 20</p><p>성경은 그리스도의"),  # ko
+            ("<p>1 Abakkolinso 6:15, 19, 20 Bayibuli etuyigiriza", "<p>1 Abakkolinso 6:15, 19, 20</p><p>Bayibuli etuyigiriza"),  # lg
+            ("<p>1 Coríntios 6:15, 19, 20 A Bíblia", "<p>1 Coríntios 6:15, 19, 20</p><p>A Bíblia"),  # pt
+            ("<p>1 Wakorintho 6:15, 19, 20 Biblia inatufundisha", "<p>1 Wakorintho 6:15, 19, 20</p><p>Biblia inatufundisha"),  # sw
+            ("<p>1 Коринтян 6:15, 19, 20. Біблія навчає", "<p>1 Коринтян 6:15, 19, 20.</p><p>Біблія навчає"),  # uk
+            ("<p>1 Cô-rinh-tô 6:15, 19, 20 Kinh Thánh", "<p>1 Cô-rinh-tô 6:15, 19, 20</p><p>Kinh Thánh"),  # vi
+            # ch9
+            ("<p>I Corinthians 6:13 One of", "<p>I Corinthians 6:13</p><p>One of"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:13 ከሊቃውንተ መለኮት", "<p>1ኛ ቆሮንቶስ 6:13</p><p>ከሊቃውንተ መለኮት"),  # am
+            ("<p>(1 كورنثوس 6:13) قال أحد", "<p>(1 كورنثوس 6:13)</p><p>قال أحد"),  # ar
+            ("<p>1 Corintios 6:13 Uno de", "<p>1 Corintios 6:13</p><p>Uno de"),  # es
+            ("<p>1 Corinthiens 6:13 L’un des", "<p>1 Corinthiens 6:13</p><p>L’un des"),  # fr
+            ("<p>1 कुरिन्थियों 6:13 सबसे विद्वान", "<p>1 कुरिन्थियों 6:13</p><p>सबसे विद्वान"),  # hi
+            ("<p>고린도전서 6:13 가장 학식", "<p>고린도전서 6:13</p><p>가장 학식"),  # ko
+            ("<p>1 Abakkolinso 6:13 Omu ku", "<p>1 Abakkolinso 6:13</p><p>Omu ku"),  # lg
+            ("<p>1 Coríntios 6:13 Um dos", "<p>1 Coríntios 6:13</p><p>Um dos"),  # pt
+            ("<p>1 Wakorintho 6:13 Mmojawapo wa", "<p>1 Wakorintho 6:13</p><p>Mmojawapo wa"),  # sw
+            ("<p>1 Коринтян 6:13. Один із", "<p>1 Коринтян 6:13.</p><p>Один із"),  # uk
+            ("<p>1 Cô-rinh-tô 6:13 Một trong", "<p>1 Cô-rinh-tô 6:13</p><p>Một trong"),  # vi
+            # ch10
+            ("<p>I Corinthians 6:13 There is", "<p>I Corinthians 6:13</p><p>There is"),  # en
+            ("<p>1ኛ ቆሮንቶስ 6:13 እግዚአብሔር ከሰው", "<p>1ኛ ቆሮንቶስ 6:13</p><p>እግዚአብሔር ከሰው"),  # am
+            ("<p>(1 كورنثوس 6:13) إن في", "<p>(1 كورنثوس 6:13)</p><p>إن في"),  # ar
+            ("<p>1 Corintios 6:13 Hay reciprocidad", "<p>1 Corintios 6:13</p><p>Hay reciprocidad"),  # es
+            ("<p>1 Corinthiens 6:13 Il y", "<p>1 Corinthiens 6:13</p><p>Il y"),  # fr
+            ("<p>1 कुरिन्थियों 6:13 परमेश्वर के", "<p>1 कुरिन्थियों 6:13</p><p>परमेश्वर के"),  # hi
+            ("<p>고린도전서 6:13 하나님께서 사람과", "<p>고린도전서 6:13</p><p>하나님께서 사람과"),  # ko
+            ("<p>1 Abakkolinso 6:13 Mu nkolagana", "<p>1 Abakkolinso 6:13</p><p>Mu nkolagana"),  # lg
+            ("<p>1 Coríntios 6:13 Há reciprocidade", "<p>1 Coríntios 6:13</p><p>Há reciprocidade"),  # pt
+            ("<p>1 Wakorintho 6:13 Kuna kulipiana", "<p>1 Wakorintho 6:13</p><p>Kuna kulipiana"),  # sw
+            ("<p>1 Коринтян 6:13. У Божих", "<p>1 Коринтян 6:13.</p><p>У Божих"),  # uk
+            ("<p>1 Cô-rinh-tô 6:13 Trong mối", "<p>1 Cô-rinh-tô 6:13</p><p>Trong mối"),  # vi
+            # ch11
+            ("<p>Romans 4:19—21 When God", "<p>Romans 4:19—21</p><p>When God"),  # en
+            ("<p>ሮሜ 4:19—21 እግዚአብሔር ለአብርሃም", "<p>ሮሜ 4:19—21</p><p>እግዚአብሔር ለአብርሃም"),  # am
+            ("<p>(رومية 4:19-21) حين وعد", "<p>(رومية 4:19-21)</p><p>حين وعد"),  # ar
+            ("<p>Romanos 4:19—21 Cuando Dios", "<p>Romanos 4:19—21</p><p>Cuando Dios"),  # es
+            ("<p>Romains 4:19-21 Lorsque Dieu", "<p>Romains 4:19-21</p><p>Lorsque Dieu"),  # fr
+            ("<p>रोमियों 4:19—21 जब परमेश्वर", "<p>रोमियों 4:19—21</p><p>जब परमेश्वर"),  # hi
+            ("<p>로마서 4:19-21 하나님께서 아브라함에게", "<p>로마서 4:19-21</p><p>하나님께서 아브라함에게"),  # ko
+            ("<p>Abaruumi 4:19—21 Katonda bwe", "<p>Abaruumi 4:19—21</p><p>Katonda bwe"),  # lg
+            ("<p>Romanos 4:19—21 Quando Deus", "<p>Romanos 4:19—21</p><p>Quando Deus"),  # pt
+            ("<p>Warumi 4:19-21 Mungu alipoahidi", "<p>Warumi 4:19-21</p><p>Mungu alipoahidi"),  # sw
+            ("<p>Римлян 4:19–21. Коли Бог", "<p>Римлян 4:19–21.</p><p>Коли Бог"),  # uk
+            ("<p>Rô-ma 4:19-21 Khi Đức", "<p>Rô-ma 4:19-21</p><p>Khi Đức"),  # vi
+            # ch13
+            ("<p>Psalm 91:3, 6, 16; Psalm 92:14 This objection", "<p>Psalm 91:3, 6, 16; Psalm 92:14</p><p>This objection"),  # en
+            ("<p>መዝሙር 91:3, 6, 16፤ መዝሙር 92:14 ሐዋርያው ያዕቆብ፦", "<p>መዝሙር 91:3, 6, 16፤ መዝሙር 92:14</p><p>ሐዋርያው ያዕቆብ፦"),  # am
+            ("<p>(مزمور 91:3، 6، 16؛ مزمور 92:14) كثيرًا ما", "<p>(مزمور 91:3، 6، 16؛ مزمور 92:14)</p><p>كثيرًا ما"),  # ar
+            ("<p>Salmo 91:3, 6, 16; Salmo 92:14 Con frecuencia", "<p>Salmo 91:3, 6, 16; Salmo 92:14</p><p>Con frecuencia"),  # es
+            ("<p>Psaume 91:3, 6, 16 ; Psaume 92:14 On fait", "<p>Psaume 91:3, 6, 16 ; Psaume 92:14</p><p>On fait"),  # fr
+            ("<p>भजन संहिता 91:3, 6, 16; भजन संहिता 92:14 प्रेरित याकूब", "<p>भजन संहिता 91:3, 6, 16; भजन संहिता 92:14</p><p>प्रेरित याकूब"),  # hi
+            ("<p>시편 91:3, 6, 16; 시편 92:14 사도 야고보의", "<p>시편 91:3, 6, 16; 시편 92:14</p><p>사도 야고보의"),  # ko
+            ("<p>Zabbuli 91:3, 6, 16; Zabbuli 92:14 Ebigambo by’omutume", "<p>Zabbuli 91:3, 6, 16; Zabbuli 92:14</p><p>Ebigambo by’omutume"),  # lg
+            ("<p>Salmos 91:3, 6, 16; Salmos 92:14 Esta objeção", "<p>Salmos 91:3, 6, 16; Salmos 92:14</p><p>Esta objeção"),  # pt
+            ("<p>Zaburi 91:3, 6, 16; Zaburi 92:14 Pingamizi hili", "<p>Zaburi 91:3, 6, 16; Zaburi 92:14</p><p>Pingamizi hili"),  # sw
+            ("<p>Псальма 91:3, 6, 16; Псальма 92:14. Проти слів", "<p>Псальма 91:3, 6, 16; Псальма 92:14.</p><p>Проти слів"),  # uk
+            ("<p>Thi Thiên 91:3, 6, 16; Thi Thiên 92:14 Người ta", "<p>Thi Thiên 91:3, 6, 16; Thi Thiên 92:14</p><p>Người ta"),  # vi
+            # ch14
+            ("<p>I Corinthians 12:4, 9, 11 What is", "<p>I Corinthians 12:4, 9, 11</p><p>What is"),  # en
+            ("<p>1ኛ ቆሮንቶስ 12:4, 9, 11 የእግዚአብሔርን ልጆች", "<p>1ኛ ቆሮንቶስ 12:4, 9, 11</p><p>የእግዚአብሔርን ልጆች"),  # am
+            ("<p>(1 كورنثوس 12:4، 9، 11) ما الذي", "<p>(1 كورنثوس 12:4، 9، 11)</p><p>ما الذي"),  # ar
+            ("<p>1 Corintios 12:4, 9, 11 ¿Qué es", "<p>1 Corintios 12:4, 9, 11</p><p>¿Qué es"),  # es
+            ("<p>1 Corinthiens 12:4, 9, 11 Qu’est-ce qui", "<p>1 Corinthiens 12:4, 9, 11</p><p>Qu’est-ce qui"),  # fr
+            ("<p>1 कुरिन्थियों 12:4, 9, 11 वह क्या", "<p>1 कुरिन्थियों 12:4, 9, 11</p><p>वह क्या"),  # hi
+            ("<p>고린도전서 12:4, 9, 11 하나님의 자녀들을", "<p>고린도전서 12:4, 9, 11</p><p>하나님의 자녀들을"),  # ko
+            ("<p>1 Abakkolinso 12:4, 9, 11 Kiki ekyawula", "<p>1 Abakkolinso 12:4, 9, 11</p><p>Kiki ekyawula"),  # lg
+            ("<p>1 Coríntios 12:4, 9, 11 Que é", "<p>1 Coríntios 12:4, 9, 11</p><p>Que é"),  # pt
+            ("<p>1 Wakorintho 12:4, 9, 11 Ni nini", "<p>1 Wakorintho 12:4, 9, 11</p><p>Ni nini"),  # sw
+            ("<p>1 Коринтян 12:4, 9, 11. Чим вирізняються", "<p>1 Коринтян 12:4, 9, 11.</p><p>Чим вирізняються"),  # uk
+            ("<p>1 Cô-rinh-tô 12:4, 9, 11 Điều gì", "<p>1 Cô-rinh-tô 12:4, 9, 11</p><p>Điều gì"),  # vi
+            # ch15
+            ("<p>Luke 18:1—8 The necessity", "<p>Luke 18:1—8</p><p>The necessity"),  # en
+            ("<p>ሉቃስ 18:1—8 በጸሎት ሳይታክቱ", "<p>ሉቃስ 18:1—8</p><p>በጸሎት ሳይታክቱ"),  # am
+            ("<p>(لوقا 18:1-8) إن ضرورة", "<p>(لوقا 18:1-8)</p><p>إن ضرورة"),  # ar
+            ("<p>Lucas 18:1—8 La necesidad", "<p>Lucas 18:1—8</p><p>La necesidad"),  # es
+            ("<p>Luc 18:1-8 La nécessité", "<p>Luc 18:1-8</p><p>La nécessité"),  # fr
+            ("<p>लूका 18:1—8 दृढ़ता के", "<p>लूका 18:1—8</p><p>दृढ़ता के"),  # hi
+            ("<p>누가복음 18:1–8 인내하며 기도해야", "<p>누가복음 18:1–8</p><p>인내하며 기도해야"),  # ko
+            ("<p>Lukka 18:1—8 Obwetaavu bw’okusaba", "<p>Lukka 18:1—8</p><p>Obwetaavu bw’okusaba"),  # lg
+            ("<p>Lucas 18:1—8 A necessidade", "<p>Lucas 18:1—8</p><p>A necessidade"),  # pt
+            ("<p>Luka 18:1-8 Ulazima wa", "<p>Luka 18:1-8</p><p>Ulazima wa"),  # sw
+            ("<p>Луки 18:1—8. Необхідність наполегливої", "<p>Луки 18:1—8.</p><p>Необхідність наполегливої"),  # uk
+            ("<p>Lu-ca 18:1–8 Sự cần", "<p>Lu-ca 18:1–8</p><p>Sự cần"),  # vi
+            # ch17
+            ("<p>Acts 4:29—31 Is it", "<p>Acts 4:29—31</p><p>Is it"),  # en
+            ("<p>የሐዋርያት ሥራ 4:29—31 ዛሬም እንዲህ", "<p>የሐዋርያት ሥራ 4:29—31</p><p>ዛሬም እንዲህ"),  # am
+            ("<p>(أعمال الرسل 4:29-31) هل يجوز", "<p>(أعمال الرسل 4:29-31)</p><p>هل يجوز"),  # ar
+            ("<p>Hechos 4:29—31 ¿Es lícito", "<p>Hechos 4:29—31</p><p>¿Es lícito"),  # es
+            ("<p>Actes 4:29-31. Est-il permis", "<p>Actes 4:29-31.</p><p>Est-il permis"),  # fr
+            ("<p>प्रेरितों के काम 4:29—31 क्या आज", "<p>प्रेरितों के काम 4:29—31</p><p>क्या आज"),  # hi
+            ("<p>사도행전 4:29–31 오늘날에도 이렇게", "<p>사도행전 4:29–31</p><p>오늘날에도 이렇게"),  # ko
+            ("<p>Ebikolwa by’Abatume 4:29—31 Kikkirizibwa okusaba", "<p>Ebikolwa by’Abatume 4:29—31</p><p>Kikkirizibwa okusaba"),  # lg
+            ("<p>Atos 4:29—31 Será permitido", "<p>Atos 4:29—31</p><p>Será permitido"),  # pt
+            ("<p>Matendo 4:29-31 Je, yaruhusika", "<p>Matendo 4:29-31</p><p>Je, yaruhusika"),  # sw
+            ("<p>Дїяння 4:29–31. Чи можна", "<p>Дїяння 4:29–31.</p><p>Чи можна"),  # uk
+            ("<p>Công Vụ Các Sứ Đồ 4:29–31 Ngày nay", "<p>Công Vụ Các Sứ Đồ 4:29–31</p><p>Ngày nay"),  # vi
+            # ch31
+            ("<p>Luke 15:31 Please turn", "<p>Luke 15:31</p><p>Please turn"),  # en
+            ("<p>ሉቃስ 15:31 እባክህ ከእኔ", "<p>ሉቃስ 15:31</p><p>እባክህ ከእኔ"),  # am
+            ("<p>(لوقا 15:31) افتحوا معي", "<p>(لوقا 15:31)</p><p>افتحوا معي"),  # ar
+            ("<p>Lucas 15:31 Vuelva conmigo", "<p>Lucas 15:31</p><p>Vuelva conmigo"),  # es
+            ("<p>Luc 15:31 Veuillez ouvrir", "<p>Luc 15:31</p><p>Veuillez ouvrir"),  # fr
+            ("<p>लूका 15:31 कृपया मेरे", "<p>लूका 15:31</p><p>कृपया मेरे"),  # hi
+            ("<p>누가복음 15:31 저와 함께", "<p>누가복음 15:31</p><p>저와 함께"),  # ko
+            ("<p>Lukka 15:31 Nkwegayiridde, tuggule", "<p>Lukka 15:31</p><p>Nkwegayiridde, tuggule"),  # lg
+            ("<p>Lucas 15:31 Peço-vos que", "<p>Lucas 15:31</p><p>Peço-vos que"),  # pt
+            ("<p>Luka 15:31 Tafadhali fungua", "<p>Luka 15:31</p><p>Tafadhali fungua"),  # sw
+            ("<p>Луки 15:31 Прошу розгорнути", "<p>Луки 15:31</p><p>Прошу розгорнути"),  # uk
+            ("<p>Lu-ca 15:31 Xin anh", "<p>Lu-ca 15:31</p><p>Xin anh"),  # vi
+        ],
+        # ch32 closes on a printer's "THE END" block, and every edition
+        # translated it. Not Murray's text: cut after his last line.
+        "back_matter": [
+            ("Glory to His blessed name!</p>", "<p>THE END</p>"),  # en
+            ("ለተባረከው ስሙ ክብር ይሁን!</p>", "<p>ተፈጸመ</p>"),  # am
+            ("المجد لاسمه المبارك!</p>", "<p>النهاية</p>"),  # ar
+            ("¡Gloria a su bendito nombre!</p>", "<p>FIN</p>"),  # es
+            ("Gloire soit à son nom béni !</p>", "<p>FIN</p>"),  # fr
+            ("उसके धन्य नाम की महिमा हो!</p>", "<p>समाप्त</p>"),  # hi
+            ("복되신 주님의 이름에 영광을 돌립니다!</p>", "<p>끝</p>"),  # ko
+            ("Ekitiibwa kibe eri erinnya lye ery’omukisa!</p>", "<p>ENKOMERERO</p>"),  # lg
+            ("Glória ao seu bendito nome!</p>", "<p>FIM</p>"),  # pt
+            ("Utukufu kwa jina Lake lililobarikiwa!</p>", "<p>MWISHO.</p>"),  # sw
+            ("Слава Його благословенному імені!</p>", "<p>КІНЕЦЬ</p>"),  # uk
+            ("Vinh hiển thay danh phước hạnh của Ngài!</p>", "<p>HẾT</p>"),  # vi
         ],
     },
     "the-gospel-of-healing": {

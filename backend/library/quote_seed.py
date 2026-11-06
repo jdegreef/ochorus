@@ -1316,7 +1316,7 @@ ANDREW_MURRAY = [
         "slug": "andrew-murray-74ee7679",
         "text": "The only means by which this unseen enemy can be conquered is faith.",
         "chapter": ("divine-healing", 15),
-        "paragraph": 1,
+        "paragraph": 2,
     },
     {
         "slug": "andrew-murray-2097ba81",
