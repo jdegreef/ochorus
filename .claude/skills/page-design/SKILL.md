@@ -1203,5 +1203,7 @@ From an outside tester's report (design & accessibility section). Shipped on
   the About gallery's last row shares 4:3, and lamplight `--muted` went up to
   `#ab9f8b` (~7:1).
 - [ ] **Q7** Open, founder's call: the footer "Create an account" CTA is
-  deliberately solid indigo with a gold ring, while every other primary is soft.
-  The tester read that as inconsistent.
+  deliberately solid indigo with a gold ring. Since design review #2 the read
+  verb is solid too (`.btn-solid`), so the footer is no longer the only solid
+  button; the open question is now only its gold ring. The tester read that as
+  inconsistent.

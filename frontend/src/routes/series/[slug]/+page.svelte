@@ -125,7 +125,7 @@
 
 	<div class="mt-2 flex flex-wrap items-center gap-3">
 		{#if next}
-			<a href={localizeHref(`/books/${next.book.slug}`)} class="btn btn-primary">
+			<a href={localizeHref(`/books/${next.book.slug}`)} class="btn btn-primary btn-solid">
 				{next.resume ? t('plans.continue') : t('author.startWith')}
 				<span dir="auto">{next.book.title}</span>
 			</a>
