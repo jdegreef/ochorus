@@ -1,12 +1,16 @@
 ---
 name: write-biography
-description: Write a long-form biography of an Ochorus author (a preacher, missionary, or writer) and publish it to their author page. Use when adding or improving an author's biography. Each bio is 1500+ words, in a warm devotional tone, with the person's real quotes called out as pull-quotes and their key times of prayer and answers to prayer highlighted as callouts. The bio renders above the author's books and sermons.
+description: Write a long-form biography of an Ochorus author (a preacher, missionary, or writer) and publish it to their author page. Use when adding or improving an author's biography. Each bio is 1500+ words, in a warm devotional tone, with the person's real quotes called out as pull-quotes and their key times of prayer and answers to prayer highlighted as callouts. The bio renders after the author's books and sermons, opening on its first three paragraphs.
 ---
 
 # Writing an Ochorus biography
 
-An author page (`/authors/<slug>`) shows, in order: the **biography**, then their
-**books**, then their **sermons**. This skill covers writing the biography — the
+An author page (`/authors/<slug>`) shows, in order: their **books**, then their
+**sermons**, then the **biography** (design review #14). The biography opens on
+its first three top-level paragraphs and folds the rest behind "Continue reading
+the biography" (`$lib/bioFold`) — so write an opening that stands on its own,
+and don't open with a blockquote or a heading. The whole text stays in the
+prerendered HTML. This skill covers writing the biography — the
 long-form `Author.bio_html` field. The short `Author.bio` (a few sentences) stays
 as the card/SEO summary; don't remove it.
 
