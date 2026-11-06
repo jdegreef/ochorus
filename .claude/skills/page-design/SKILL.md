@@ -387,12 +387,15 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   Aa · Next (folds with `hideChrome`). **Design #30:** both bars fold with a
   TRANSFORM only (top `translateY(-100%)`, footer `translateY(100%)`) —
   never `display:none`, which took Aa/Listen/Next away from Tab and screen
-  readers while folded — and a `focusin` in either bar (`unfold`) brings both
-  back. In scroll mode a tap in the middle third (`tapTurn(..., 0.34) ===
-  'none'`, the zone that shows the controls in page mode) toggles them; the
-  outer thirds stay inert. Page mode keeps its thirds (edges turn, middle
-  toggles focus mode). While folded, the hairline shows its full 2px at the
-  top of the screen. The sermon has the same footer — scrubber,
+  readers while folded. Keyboard focus (`:focus-visible`, not any focus — a
+  press on the hairline to seek must not unfold) in either bar brings both
+  back (`unfold`), and scrolling folds neither while it stays there
+  (`keyboardInBars`). In scroll mode a tap in the middle third (`tapZone`, the
+  zone that shows the controls in page mode) toggles them, except a tap that
+  only closes an open menu or popover; the outer thirds stay inert. Page mode
+  keeps its thirds (edges turn, middle toggles focus mode). While folded, the
+  hairline shows its full 2px at the top of the screen. (The sermon page's row
+  still folds with `display:none` until its own item moves it.) The sermon has the same footer — scrubber,
   minutes left, and the row, its Previous/Next stepping through the author's
   sermons (`sermon.prev/next`). The centre "+" is `<FootFeedback />` (feedback), and the
   floating FeedbackFab hides wherever a `.foot-actions` row is up. Traps: (1) the text-settings **sheet**

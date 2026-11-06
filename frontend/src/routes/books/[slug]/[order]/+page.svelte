@@ -1465,13 +1465,15 @@
 		}
 	}
 
-	/** Which page a tap in PAGED mode turns, from where it lands (see below). */
-	function pagedTurn(e: MouseEvent) {
-		if (!paged) return 'none';
+	/** Which zone a tap lands in (see below). Touch: thirds (deadZone 0.34).
+	 *  Fine pointer: the outer 15% (0.7). Page mode turns on it; scroll mode
+	 *  on a phone shows the bars from its middle (design #30). */
+	function tapZone(e: MouseEvent) {
 		const coarse = coarsePointer?.matches ?? false;
-		// Touch: thirds (deadZone 0.34). Fine pointer: the outer 15% (0.7).
 		return tapTurn(e.clientX, window.innerWidth, contentRtl, coarse ? 0.34 : 0.7);
 	}
+	/** Which page a tap in PAGED mode turns, from where it lands. */
+	const pagedTurn = (e: MouseEvent) => (paged ? tapZone(e) : 'none');
 
 	/**
 	 * Tapping the page. In PAGED mode this is how you turn: on TOUCH the screen is
@@ -1521,7 +1523,9 @@
 		// reads on, and a tap in the middle third — the same zone that shows the
 		// controls in page mode — brings them back (or folds them again). The
 		// outer thirds stay inert here: no chapter turns off a stray edge tap.
-		if (coarse && isPhone && tapTurn(e.clientX, window.innerWidth, contentRtl, 0.34) === 'none') {
+		// A tap that closes an open menu or popover only closes it.
+		const overlayOpen = moreOpen || readerUi.panelOpen || reader.open || define.open || scripture.open;
+		if (coarse && isPhone && !overlayOpen && tapZone(e) === 'none') {
 			barHidden = !hideChrome;
 		}
 	}
@@ -1830,14 +1834,23 @@
 		const y = window.scrollY;
 		// A seek on the hairline scrolls too, but it is not reading on: folding
 		// the bar there would pull the line out from under the pointer.
-		if (performance.now() - seekedAt > SEEK_SETTLE_MS)
+		// Nor while the keyboard is on one of the bars' controls: the two bars
+		// stay together, and focus is never on a control the reader can't see.
+		if (performance.now() - seekedAt > SEEK_SETTLE_MS && !keyboardInBars())
 			barHidden = nextBarHidden(barHidden, y, lastScrollY, window.innerHeight);
 		lastScrollY = y;
 	}
-	/** A focus inside a folded bar — Tab, or a screen reader moving onto one
-	 *  of its controls — brings both bars back, so focus never sits on a
-	 *  control the reader can't see. Scrolling on folds them again. */
-	const unfold = () => (barHidden = false);
+	/** Keyboard focus (`:focus-visible`) inside the top bar or the phone row. */
+	function keyboardInBars() {
+		const el = document.activeElement;
+		return !!el?.matches(':focus-visible') && !!(chromeEl?.contains(el) || footEl?.contains(el));
+	}
+	/** Tab landing in a folded bar brings both bars back. A pointer focus — a
+	 *  press on the hairline to seek, a drawer handing focus back — does not:
+	 *  `:focus-visible` only, the rule the top bar's CSS has kept since #7. */
+	function unfold(e: FocusEvent) {
+		if ((e.target as Element).matches?.(':focus-visible')) barHidden = false;
+	}
 	const hideChrome = $derived(
 		barHidden &&
 			!paged &&
@@ -2697,6 +2710,9 @@
 	   it is the only chrome left while reading (design #30), drop it by that
 	   border so the whole 2px shows at the top of the screen. */
 	@media (max-width: 639.98px) {
+		.reader-chrome .hairline {
+			transition: top var(--duration-base) ease;
+		}
 		.reader-chrome.autohidden:not(:has(:focus-visible)) .hairline {
 			top: calc(100% + 1px);
 		}
@@ -3038,18 +3054,18 @@
 	/* Folded, it slides down off the screen — the counterpart of the top bar's
 	   translateY(-100%), on the same transition (snapped by app.css's
 	   reduced-motion block). The fade above it would otherwise be left lying
-	   over the last lines, so it goes with it. Tabbing in brings it back. */
-	.progress-foot {
-		transition: transform var(--duration-base) ease;
-	}
-	.progress-foot.folded {
-		transform: translateY(100%);
-	}
-	.progress-foot.folded .foot-fade {
-		opacity: 0;
-	}
-	.progress-foot.folded:has(:focus-visible) {
-		transform: none;
+	   over the last lines, so it goes with it. Tabbing in brings it back
+	   (`unfold`). */
+	@media (max-width: 639.98px) {
+		.progress-foot {
+			transition: transform var(--duration-base) ease;
+		}
+		.progress-foot.folded {
+			transform: translateY(100%);
+		}
+		.progress-foot.folded .foot-fade {
+			opacity: 0;
+		}
 	}
 
 	/* --- The progress hairline (see the markup) -------------------------------

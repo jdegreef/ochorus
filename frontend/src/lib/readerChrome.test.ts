@@ -220,7 +220,7 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 	});
 
 	it('a seek on the hairline does not fold the bar out from under it', () => {
-		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS\)\s*barHidden = nextBarHidden/);
+		expect(read(READER)).toMatch(/if \(performance\.now\(\) - seekedAt > SEEK_SETTLE_MS( && !keyboardInBars\(\))?\)\s*barHidden = nextBarHidden/);
 	});
 
 	it('ends a chapter with one large way on and Contents under it, not a Previous/Next pair', () => {
@@ -244,11 +244,13 @@ describe('the phone reader: the bars fold away while reading (design #30)', () =
 		// and a screen reader for as long as the reader read on.
 		expect(src).toMatch(/\.progress-foot\.folded \{\s*transform: translateY\(100%\);/);
 		expect(src).not.toMatch(/\.(progress-foot|foot-actions)\.folded \{\s*display: none;/);
-		expect(src).toMatch(/\.progress-foot\.folded:has\(:focus-visible\) \{\s*transform: none;/);
 	});
 
 	it('a focus landing in either bar brings both back', () => {
-		expect(src).toMatch(/const unfold = \(\) => \(barHidden = false\);/);
+		// Keyboard focus only: a press on the hairline to seek must not unfold.
+		expect(src).toMatch(/function unfold\(e: FocusEvent\) \{\s*if \(\(e\.target as Element\)\.matches\?\.\(':focus-visible'\)\) barHidden = false;/);
+		// …and while the keyboard is in either bar, scrolling folds neither.
+		expect(src).toMatch(/SEEK_SETTLE_MS && !keyboardInBars\(\)\)\s*barHidden = nextBarHidden/);
 		expect(src).toMatch(/class:autohidden=\{hideChrome\}\s*onfocusin=\{unfold\}/);
 		expect(src).toMatch(/class="progress-foot" class:folded=\{hideChrome\} onfocusin=\{unfold\}/);
 	});
@@ -256,7 +258,7 @@ describe('the phone reader: the bars fold away while reading (design #30)', () =
 	it('in scroll mode a tap in the middle third toggles the bars, the edges stay inert', () => {
 		const click = src.slice(src.indexOf('function onArticleClick('), src.indexOf('// Prefetch the next chapter'));
 		expect(click).toMatch(
-			/if \(coarse && isPhone && tapTurn\(e\.clientX, window\.innerWidth, contentRtl, 0\.34\) === 'none'\) \{\s*barHidden = !hideChrome;/
+			/if \(coarse && isPhone && !overlayOpen && tapZone\(e\) === 'none'\) \{\s*barHidden = !hideChrome;/
 		);
 		// Page mode keeps its thirds: edges turn, the middle toggles the controls.
 		expect(click).toMatch(/else if \(coarse\) readerUi\.toggleFocus\(\);/);
