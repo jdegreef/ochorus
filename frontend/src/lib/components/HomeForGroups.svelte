@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { track } from '$lib/analytics';
-	import { FOR_FOOTER, FOR_LINKS, forIndexPath } from '$lib/forLinks';
+	import { FOR_LINKS, forIndexPath } from '$lib/forLinks';
 	import { HOME_FOR_LINE, PROMO_WORDS, promoLocale } from '$lib/forPromos';
 	import { FOR_EVENT } from '$lib/forSections';
 	import { lang } from '$lib/lang.svelte';
@@ -18,10 +18,10 @@
 </script>
 
 {#if locale}
-	<section class="page-col px-5 pt-14" aria-label={FOR_FOOTER[locale]} lang={locale}>
+	<section class="page-col px-5 pt-14" aria-labelledby="home-for-lead" lang={locale}>
 		<div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-y border-border py-6">
 			<p class="max-w-2xl text-body text-muted">
-				<strong class="font-semibold text-text">{PROMO_WORDS[locale].allLead}</strong>
+				<strong id="home-for-lead" class="font-semibold text-text">{PROMO_WORDS[locale].allLead}</strong>
 				{HOME_FOR_LINE[locale](FOR_LINKS.length)}
 			</p>
 			<a

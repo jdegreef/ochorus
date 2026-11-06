@@ -554,7 +554,7 @@ slot. Rules:
   (4 a row on a phone, 8 on desktop; the face shrinks to its cell), not boxed
   `AuthorTile` cards.
 - **One line for leaders** (design #27): `HomeForGroups` is a bold question,
-  one sentence (its "18 kinds of ministry" is `FOR_LINKS.length`, never typed)
+  one sentence (its "N kinds of ministry" is `FOR_LINKS.length`, never typed)
   and one `btn-ghost` link to the /for/ hub, between `border-y` hairlines — no
   band, no heading, no per-group pills. English and French only, like the
   footer link; nothing elsewhere. The hub links every group page, so it is

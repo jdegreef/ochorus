@@ -111,7 +111,12 @@
 		{#each FOR_LINKS as l (l.slug)}
 			{@const meta = FOR_META[l.slug]}
 			<li>
-				<a class="group group-wash card-lift" href={forPath(l.slug, locale)} style="--group: {meta.accent}">
+				<a
+					class="group group-wash card-lift"
+					href={forPath(l.slug, locale)}
+					style="--group: {meta.accent}"
+					onclick={() => track(FOR_EVENT, { group: l.slug, action: 'index-card' })}
+				>
 					<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
 					<span class="min-w-0">
 						<span class="block text-h3 font-semibold text-text">{forLabel(l, locale)}</span>

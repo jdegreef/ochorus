@@ -52,6 +52,9 @@ describe('links to the "Ochorus for …" pages from the rest of the site', () =>
 			expect(HOME_FOR_LINE[locale](FOR_LINKS.length), locale).toContain(String(FOR_LINKS.length));
 			expect(HOME_FOR_LINE[locale](99), locale).toContain('99');
 		}
+		// …and the home line is handed the list's length, not a typed figure.
+		const home = readFileSync(join(import.meta.dirname, 'components', 'HomeForGroups.svelte'), 'utf8');
+		expect(home).toMatch(/HOME_FOR_LINE\[locale\]\(FOR_LINKS\.length\)/);
 	});
 
 	it('finds the group a search names, preferring the longer phrase, and ignores the rest', () => {
