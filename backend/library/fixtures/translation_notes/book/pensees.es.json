@@ -3,6 +3,7 @@
  "slug": "pensees",
  "language": "es",
  "job_issue": 7149,
+ "pull_request": 7507,
  "note": [
   "Translation job #7149 (2026-11-06): translated from the English (W. F. Trotter) edition in ~3k-word chunks split at fragment boundaries; each chunk machine-checked against its English source for identical tag sequence, fragment numbers and quote nesting. Scripture is rendered by the translator in a conservative Reina-Valera register following Pascal's own paraphrase (Take Root unreachable; no wording pasted from a Bible text or a shipped file), so every reference is self_rendered. Latin and Greek citations are kept as Pascal wrote them. AI-drafted, awaiting native review."
  ],
