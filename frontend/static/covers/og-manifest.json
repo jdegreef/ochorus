@@ -14963,6 +14963,18 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"hi/faithful-with-little": {
+			"ground": "29a0d5d20722498a5e6bc9aa350c9928538b2c30886fb42fe39f783a8833f7ff",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/gleanings-among-the-sheaves": {
 			"ground": "b7094bcdc0675614f85fcac8c38932f134c5fd115f2f8c9f508904b772d3b742",
 			"style": "revival",

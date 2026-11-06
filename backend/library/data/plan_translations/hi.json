@@ -116,5 +116,12 @@
   "note": [
    "Queue job #7053 (book:around-the-wicket-gate -> hi). Shipping छोटे फाटक के पास completes this plan's two source books in Hindi (men-and-women-who-gave-everything-2.hi, «वे स्त्री और पुरुष जिन्होंने सब कुछ दे दिया», was already live), so seed_plans creates the hi row on this deploy; the prose ships in the same PR so the card is never English-titled. The description quotes the new edition's title «छोटे फाटक के पास» verbatim and echoes the second title in running prose («स्त्रियों और पुरुषों … जिन्होंने उसे सब कुछ दे दिया») rather than quoting it. Reader address तुम, as in the hi edition. AI-drafted; awaiting native review."
   ]
+ },
+ "faithful-with-little": {
+  "title": "छोटी बातों में विश्वासयोग्य: पैसा और मन",
+  "description": "तीन सप्ताह, दिन में एक छोटा अध्याय, इस बात के साथ कि पूरी बाइबल पैसे के बारे में क्या कहती है। सब कुछ परमेश्वर का है; बटुए के पीछे का मन; ईमानदारी का काम, योजना और कर्ज़; परमेश्वर जैसे उदार होकर देना; और टिकनेवाला ख़ज़ाना, रास्ते में जॉन वेस्ली, जॉर्ज म्यूलर, चार्ल्स स्पर्जन और ए. डब्ल्यू. टोज़र के साथ। हर दिन आज़माने के लिए एक बात के साथ समाप्त होता है, और पुस्तक के तीस मुख्य पद साथ-साथ एक महीने की पठन-योजना बन जाते हैं।",
+  "note": [
+   "The title quotes the shipped hi edition faithful-with-little.hi.json verbatim (छोटी बातों में विश्वासयोग्य), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
+  ]
  }
 }
