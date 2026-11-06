@@ -330,7 +330,8 @@ class — `.reading-page` is referenced by two of them and defined nowhere.
 | Content | Card | Hover |
 |---|---|---|
 | Book | `.book-card` (grid: boxless cover + serif title + muted author, nothing else at rest — design #1) / `BookListRow` (row) | rise (own, not `.card-lift`) + cover tip + overlay |
-| Topic, Plan | `<ShelfCard>` | lift −2px + shadow |
+| Topic (the `/topics` hub) | boxless tile: a `CoverStrip size="fan"` of three book covers (the emblem chip in its place for a sermons-only shelf), the name, one muted counts line — no band, no tint, no scripture-code badge (design #23) | rise −2px, like `.book-card` |
+| Plan, Topic on Favorites | `<ShelfCard>` | lift −2px + shadow |
 | Sermon on the shelf | `<SermonCard variant="row">` | hue-mixed border, no lift |
 | Author | `<AuthorBioCard>` one-per-row | border-accent |
 | Article, Quotes-author | *should be* `.card-tint` rows like `BookListRow` | row tint |
@@ -365,6 +366,15 @@ Books' author groups carry `photo_url`, extract the strip into a shared
 `<AuthorJumpStrip>` and use it on both.
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
+
+The **Topics hub** is a grouped shelf too (design #23): its shelves sit under
+five family headings (`<GroupHeading>`, one `<section>` each) — the families
+and their order are data in `lib/topicGroups.ts` (`TOPIC_GROUPS`, beside
+`TOPIC_META`), headings localized as `topics_group_*`. A slug in no family
+falls into a trailing "More topics" group rather than vanishing, and
+`topicGroups.test.ts` fails until a newly seeded shelf is placed — add it to a
+family when you add a topic (§ Adding a topic shelf). No filter field: grouped,
+the 33 shelves are a map, not a list to search.
 
 The **topic leaf page** also uses `<GroupHeading>`: its Books section groups the
 books by author when the topic is *author-clustered* — most of its books share
@@ -484,6 +494,9 @@ way unless you regen all three up front:
       re-skins existing covers. No migration — topics are seed data.
 - [ ] English-only shelf → add the slug to `TRANSLATION_PENDING` in the same
       file, or the per-language coverage guard demands prose in all 7 langs.
+- [ ] its family on the Topics hub: `frontend/src/lib/topicGroups.ts`
+      `TOPIC_GROUPS` (`topicGroups.test.ts` reads the seed and fails until it
+      is placed; unplaced, it shows under "More topics").
 - [ ] emblem identity in `frontend/src/lib/emblemNames.ts` `TOPIC_META`
       (`accent` + a **unique** `emblem` with ≥3 colours in `emblems.ts`
       `EMBLEM_ART`, per `emblems.test.ts`) — then **`npm run emblem:art`**
