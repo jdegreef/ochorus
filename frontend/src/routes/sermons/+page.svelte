@@ -302,12 +302,10 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<PageHeader
-		section="sermons"
 		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
 		meta={sermons.length ? sermonCounts : undefined}
 	/>
-	<ForPromo place="sermons-shelf" class="-mt-2 mb-6" />
 	<!-- "N sermons · M preachers" — mirrors the Books shelf's count line, but names
 	     the writers behind the sermons as PREACHERS, not "authors": it's the
 	     accurate word (and the one this page's "By preacher" grouping already
@@ -512,5 +510,10 @@
 		{/each}
 	{:else}
 		{@render sermonList(sorted)}
+	{/if}
+	<!-- The leader's way on, at the end of the shelf rather than in its head
+	     (design review #4): a reader came for the sermons first. -->
+	{#if !loadError && sermons.length}
+		<ForPromo place="sermons-shelf" class="mt-8" />
 	{/if}
 </div>

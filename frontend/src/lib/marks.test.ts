@@ -1,6 +1,7 @@
 /**
- * The library sections' marks — /marks/emblem-<section>.svg beside a section's
- * page title, /marks/ornament-<name>.svg under it (PRIMARY_NAV names both).
+ * The library sections' marks — /marks/emblem-<section>.svg and
+ * /marks/ornament-<name>.svg (PRIMARY_NAV names both). No longer drawn in the
+ * shelves' plain <PageHeader> (design review #4), kept as section identity.
  * Static files, so these check what a type can't: that every file a section
  * names exists, and that the emblems are drawn like the topic and plan art.
  */

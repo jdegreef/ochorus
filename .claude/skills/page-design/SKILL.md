@@ -35,9 +35,20 @@ In this order, and nothing else at the top level:
 1. **Shell** — `<div class="page-col px-5 py-10">`. `py-10`, not `py-6`/`py-8`.
    (Twelve shells say `py-10`, six say something else; the content edge should
    not jump vertically on navigation.)
-2. **`<PageHeader>`** — always. `title` is the **nav word** (`Books`, `Topics`,
+2. **`<PageHeader>`** — always, and **plain** (design review #4, 2026-11-06):
+   the H1, one tagline sentence, and the count run on at the end of that
+   sentence in the same muted paragraph. **No emblem medallion beside the
+   title, no fleuron/ornament divider under it** — the `section` prop is gone;
+   don't add a device back (it was decoration in front of content, identical
+   on every shelf). A sub-nav of tabs (`<LibraryTabs>` on Books / Series / A–Z,
+   and the writers' pair on Biographies) goes **under** the header, never above
+   the H1: a page's first words are its name. A leader cross-link
+   (`<ForPromo place="…-shelf">`, "Leading a study? See Ochorus for …") is never
+   in the head either — it goes at the **end of the list** (Sermons, Plans).
+   `title` is the **nav word** (`Books`, `Topics`,
    `Reading Plans`); `tagline` is one sentence; `meta` is the total, formatted
-   `N books · M authors`. **One library number per word:** "books" is every
+   `N books · M authors` — counts only, no links (the Books head's
+   "· 16 Book Series" link went: the Book Series tab below it is that link). **One library number per word:** "books" is every
    book row (editions included — what the Books shelf shows), "authors" is
    `countWriters` (`lib/authorIndex.ts`: people, never an imprint), shown by
    the home page and the A–Z. A shelf whose own count would differ (Books'
