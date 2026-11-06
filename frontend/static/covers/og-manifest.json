@@ -8548,6 +8548,33 @@
 				475
 			]
 		},
+		"es/orthodoxy": {
+			"ground": "73ad0cdee7c57e2f91299844fa2ffcca568a9da0be7f4d8fa79c89e4d6a27f40",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[109, 342, 491, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"es/our-daily-walk": {
 			"ground": "85a5c4fe454ccd64130d179874ef059d77bf29cd6f2aa85ec0ce24a289289fab",
 			"style": "devotional",
