@@ -1,0 +1,65 @@
+{
+ "kind": "sermon",
+ "slug": "come-thou-into-the-ark",
+ "language": "fr",
+ "job_issue": 7445,
+ "references": [
+  {
+   "reference": "Genesis 7:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 17:26-27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 6:5-6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 6:11-12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 7:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 13:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Samuel 18:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 17:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

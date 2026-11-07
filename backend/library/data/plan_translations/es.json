@@ -251,5 +251,47 @@
     "note": [
       "AI-drafted (2026-11-07); awaiting native review. Job #6991. Prose-ahead: neither anchored-1 nor anchored-2 has an es edition yet, so seed_plans keeps the es row dormant until both ship. Series name « Anclados » is coined to match the shipped « Enraizados » (Rooted); book names translate the en subtitles' heads (« Is It True? Who Am I? », « Real Life »). A later book job should reuse them or fix both."
     ]
+  },
+  "family-devotions-boy-from-osogun": {
+    "title": "Devocionales en familia: el niño de Osogun",
+    "description": "Doce noches de devocionales familiares de cinco minutos con Samuel Ajayi Crowther, el niño yoruba vendido como esclavo que creció para dar a su pueblo la Biblia en su propia lengua. Lean en voz alta un capítulo corto: el barco de esclavos detenido en alta mar, el día en que volvió a encontrar a su madre, el Padrenuestro en yoruba para la reina, y los esclavos bondadosos que le dieron de comer cuando estuvo prisionero. Cada uno termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6992. Title follows the shipped «Devocionales en familia: valientes y fieles». Prose-ahead: samuel-ajayi-crowther-a-life-children has no es edition yet, so seed_plans keeps the es row dormant until it ships."
+    ]
+  },
+  "tell-me-the-christmas-story": {
+    "title": "Cuéntame la historia de Navidad: un plan de Adviento",
+    "description": "Un calendario de Adviento de historias bíblicas para los niños y los mayores que las leen con ellos: una historia de cinco minutos cada noche, del 1 al 25 de diciembre. Comienza con las promesas que Dios hizo a Eva, a Abraham, a Moisés, a David y por medio de Isaías, y las sigue hasta la visita del ángel, el «sí» de María, el nacimiento en Belén en Nochebuena y los pastores el día de Navidad. Comience el 1 de diciembre. Cada historia termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6993. Series name «Cuéntame la historia» is the shipped tell-me-the-story-1.es title (« Cuéntame la historia – Libro 1: En el principio »). Prose-ahead until tell-me-the-story-2 … -4 ship in es."
+    ]
+  },
+  "tell-me-the-easter-story": {
+    "title": "Cuéntame la historia de Pascua: un plan para la Pascua",
+    "description": "Veintinueve noches de historias bíblicas para los niños y los mayores que las leen con ellos, una historia de cinco minutos cada noche. Comienza con las promesas que apuntan a la cruz: el cordero que Dios provee, la Pascua, la serpiente en el asta, los tres días de Jonás y el buen Pastor. Luego camina con Jesús hasta Jerusalén, por la última cena, el huerto y la cruz, hasta la tumba vacía, y sigue por la semana de Pascua hasta la ascensión. Comience el domingo que cae tres semanas antes de la Pascua, y el Viernes Santo, el Sábado Santo y el Domingo de Resurrección caerán en su propia historia. Cada historia termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6994. Mirrors the Christmas plan's «Cuéntame la historia de Navidad». Prose-ahead until tell-me-the-story-2, -3, -5, -6 and -9 ship in es."
+    ]
+  },
+  "they-were-young-two-weeks": {
+    "title": "Eran jóvenes: dos semanas de historias verdaderas",
+    "description": "Dos semanas de historias verdaderas para lectores de 13 a 17 años: los dos libros de Eran jóvenes —Llamados y Probados—, una vida cada día, desde Spurgeon en una tormenta de nieve y Richard Allen en Delaware hasta Patricio, Perpetua y los mártires de Uganda, y cada una termina con preguntas para pensar.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6995. they-were-young-1/-2 have no es edition yet; series name «Eran jóvenes» and book names «Llamados» / «Probados» are coined here — a later book job should reuse them or fix both. Prose-ahead until both ship."
+    ]
+  },
+  "sons-of-the-king-three-months": {
+    "title": "Hijos del Rey: tres meses con Dios",
+    "description": "Tres meses con Dios para chicos de 9 a 12 años: los tres libros de Hijos del Rey —Fuerte, Fiel y Creciendo—, con un breve devocional al día sobre quién eres en Cristo, ser alguien digno de confianza y crecer con sabiduría.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6998. Mirrors the shipped «Hijas del Rey: tres meses con Dios». «Creciendo» is the head of the shipped sons-of-the-king-3.es subtitle; «Fuerte» and «Fiel» are coined for books 1–2 (jobs #6982/#6983 are translating them). Prose-ahead until books 1 and 2 ship."
+    ]
+  },
+  "diary-of-an-old-soul-year": {
+    "title": "Un año con El diario de un alma anciana",
+    "description": "El libro de oraciones en verso de George MacDonald: una estrofa de siete versos para cada día del año. Comience cualquier día: el primer día es la lectura del 1 de enero, y cada día siguiente toma la que sigue. Un minuto para leerla, y el día para llevarla consigo.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6999. diary-of-an-old-soul has no es edition yet; «El diario de un alma anciana» is coined. Description follows the shipped es year plans («Comience cualquier día…»). Prose-ahead until the book ships."
+    ]
   }
 }

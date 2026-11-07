@@ -1,0 +1,70 @@
+{
+ "kind": "sermon",
+ "slug": "coming-to-the-king",
+ "language": "fr",
+ "job_issue": 7446,
+ "references": [
+  {
+   "reference": "1 Kings 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 10:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Song of Solomon 1:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 10:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 10:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 10:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 10:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 24:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 33:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 10:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
