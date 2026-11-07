@@ -1,0 +1,568 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Hebrews 11:38",
+    "themes": [],
+    "person": null,
+    "era": "c. AD 100-500",
+    "region": "The Roman world and beyond",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Three Times a Day",
+    "anchor": "Psalm 55:17",
+    "themes": [
+      "Making Room for Prayer",
+      "Learning to Pray",
+      "Praying Together"
+    ],
+    "person": "The Didache",
+    "era": "c. AD 100",
+    "region": "Syria or Egypt (uncertain)",
+    "voices": [
+      {
+        "author": "eusebius-of-caesarea",
+        "book": "church-history",
+        "chapter": "Book III"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Preface to the Lord’s Prayer"
+      }
+    ],
+    "read_more": [
+      "the-lords-prayer",
+      "jesus-teacher-of-prayer",
+      "tertullian-on-prayer"
+    ]
+  },
+  {
+    "title": "A Prayer for Rulers Who Persecute",
+    "anchor": "1 Timothy 2:1-2",
+    "themes": [
+      "Faith",
+      "Prayer in Suffering and Testing",
+      "Praying for Others"
+    ],
+    "person": "Clement of Rome",
+    "era": "c. AD 96",
+    "region": "Rome",
+    "voices": [
+      {
+        "author": "eusebius-of-caesarea",
+        "book": "church-history",
+        "chapter": "Book III"
+      },
+      {
+        "author": "clement-of-rome",
+        "book": "first-epistle-of-clement",
+        "chapter": "Blessings sought for all that call upon God"
+      },
+      {
+        "author": "polycarp",
+        "book": "epistle-and-martyrdom-of-polycarp",
+        "chapter": "Epistle to the Philippians"
+      }
+    ],
+    "read_more": [
+      "first-epistle-of-clement",
+      "epistle-and-martyrdom-of-polycarp",
+      "the-apology-of-tertullian"
+    ]
+  },
+  {
+    "title": "Prayer on the Road to the Lions",
+    "anchor": "Philippians 1:21",
+    "themes": [
+      "Praying Together",
+      "Prayer in Suffering and Testing",
+      "Praying for Others"
+    ],
+    "person": "Ignatius of Antioch",
+    "era": "c. AD 108",
+    "region": "Antioch (Syria) to Rome, by way of Smyrna",
+    "voices": [
+      {
+        "author": "ignatius-of-antioch",
+        "book": "epistles-of-ignatius",
+        "chapter": "The Epistle to the Romans"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "prayer-and-praying-men",
+        "chapter": "Paul and His Requests for Prayer"
+      }
+    ],
+    "read_more": [
+      "epistles-of-ignatius",
+      "prayer-and-praying-men"
+    ]
+  },
+  {
+    "title": "\"Eighty and Six Years Have I Served Him\"",
+    "anchor": "Revelation 2:10",
+    "themes": [
+      "Persistence",
+      "Praying for Others",
+      "Thanksgiving"
+    ],
+    "person": "Polycarp",
+    "era": "c. AD 155",
+    "region": "Smyrna (Asia Minor)",
+    "voices": [
+      {
+        "author": "eusebius-of-caesarea",
+        "book": "church-history",
+        "chapter": "Book V"
+      },
+      {
+        "author": "polycarp",
+        "book": "epistle-and-martyrdom-of-polycarp",
+        "chapter": "The Martyrdom of Polycarp"
+      }
+    ],
+    "read_more": [
+      "epistle-and-martyrdom-of-polycarp",
+      "epistles-of-ignatius",
+      "foxes-book-of-martyrs"
+    ]
+  },
+  {
+    "title": "Prayer in a Prison Cell",
+    "anchor": "Psalm 23:4",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Asking Boldly",
+      "Praying Together"
+    ],
+    "person": "Perpetua and Felicity",
+    "era": "AD 203",
+    "region": "Carthage (North Africa)",
+    "voices": [
+      {
+        "author": "tertullian",
+        "book": "the-apology-of-tertullian",
+        "chapter": "The Blood of Christians Is Seed"
+      },
+      {
+        "author": "cyprian-of-carthage",
+        "book": "the-epistles-of-cyprian",
+        "chapter": "Epistle XV: To Moyses and Maximus, and the Rest of the Confessors"
+      }
+    ],
+    "read_more": [
+      "they-were-young-2",
+      "the-epistles-of-cyprian",
+      "the-apology-of-tertullian"
+    ]
+  },
+  {
+    "title": "Prayer, the Wall of Faith",
+    "anchor": "Ephesians 6:18",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Praying for Others",
+      "Making Room for Prayer"
+    ],
+    "person": "Tertullian",
+    "era": "c. AD 200",
+    "region": "Carthage (North Africa)",
+    "voices": [
+      {
+        "author": "tertullian",
+        "book": "the-apology-of-tertullian",
+        "chapter": "Christians Blamed for Every Calamity"
+      },
+      {
+        "author": "tertullian",
+        "book": "the-apology-of-tertullian",
+        "chapter": "We Pray for the Emperors to the True God"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "necessity-of-prayer",
+        "chapter": "Prayer and Vigilance"
+      },
+      {
+        "author": "tertullian",
+        "book": "tertullian-on-prayer",
+        "chapter": "Of the Power of Prayer"
+      }
+    ],
+    "read_more": [
+      "tertullian-on-prayer",
+      "the-apology-of-tertullian",
+      "necessity-of-prayer"
+    ]
+  },
+  {
+    "title": "Prayer Rising Like Incense",
+    "anchor": "Psalm 141:2",
+    "themes": [
+      "Making Room for Prayer",
+      "Learning to Pray",
+      "Christ Who Prays for Us"
+    ],
+    "person": "Origen",
+    "era": "c. AD 233",
+    "region": "Alexandria (Egypt) and Caesarea (Palestine)",
+    "voices": [
+      {
+        "author": "eusebius-of-caesarea",
+        "book": "church-history",
+        "chapter": "Book VI"
+      },
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "Fourth Conversation"
+      }
+    ],
+    "read_more": [
+      "church-history",
+      "the-practice-of-the-presence-of-god",
+      "school-of-prayer"
+    ]
+  },
+  {
+    "title": "Why We Say \"Our\" Father",
+    "anchor": "Galatians 4:6",
+    "themes": [
+      "The Father's Love",
+      "Praying for Others",
+      "Praying Together"
+    ],
+    "person": "Cyprian of Carthage",
+    "era": "c. AD 252-258",
+    "region": "Carthage (North Africa)",
+    "voices": [
+      {
+        "author": "cyprian-of-carthage",
+        "book": "treatises-of-cyprian",
+        "chapter": "On the Lord's Prayer"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "the-lords-prayer",
+        "chapter": "The Preface to the Lord’s Prayer"
+      }
+    ],
+    "read_more": [
+      "treatises-of-cyprian",
+      "the-epistles-of-cyprian",
+      "the-lords-prayer"
+    ]
+  },
+  {
+    "title": "Into the Desert to Pray",
+    "anchor": "Hosea 2:14",
+    "themes": [
+      "The Father's Love",
+      "Guidance and Surrender",
+      "Making Room for Prayer"
+    ],
+    "person": "Antony, by Athanasius",
+    "era": "c. AD 270-356",
+    "region": "Egypt",
+    "voices": [
+      {
+        "author": "athanasius-of-alexandria",
+        "book": "life-of-antony",
+        "chapter": "Birth and beginnings of Antony"
+      },
+      {
+        "author": "athanasius-of-alexandria",
+        "book": "life-of-antony",
+        "chapter": "His early ascetic life"
+      },
+      {
+        "author": "athanasius-of-alexandria",
+        "book": "life-of-antony",
+        "chapter": "How humanely he counselled those who resorted to him"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "the-inner-chamber",
+        "chapter": "The Door Shut — Alone with God"
+      }
+    ],
+    "read_more": [
+      "life-of-antony",
+      "key-teachings-of-athanasius-of-alexandria",
+      "the-inner-chamber"
+    ]
+  },
+  {
+    "title": "A Struggle to the Last Breath",
+    "anchor": "Ephesians 6:12",
+    "themes": [
+      "Persistence",
+      "Prayer in Suffering and Testing",
+      "Humility and Mercy"
+    ],
+    "person": "Desert Mothers and Fathers",
+    "era": "c. AD 330-450",
+    "region": "Egypt, Palestine and Syria",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "Prayer Is a Trade to Be Learned"
+      }
+    ],
+    "read_more": [
+      "life-of-antony",
+      "purpose-in-prayer",
+      "letters-of-jerome"
+    ]
+  },
+  {
+    "title": "\"God, Come and Rescue Me\"",
+    "anchor": "Psalm 70:1",
+    "themes": [
+      "Making Room for Prayer",
+      "Humility and Mercy",
+      "Learning to Pray"
+    ],
+    "person": "John Cassian",
+    "era": "c. AD 400-430",
+    "region": "Egypt and Marseille (Gaul)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "Pray Without Ceasing"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "introduction-to-the-devout-life",
+      "holy-living"
+    ]
+  },
+  {
+    "title": "A Home Made a House of Prayer",
+    "anchor": "Psalm 31:5",
+    "themes": [
+      "Making Room for Prayer",
+      "Guidance and Surrender",
+      "Thanksgiving"
+    ],
+    "person": "Macrina the Younger",
+    "era": "c. AD 379",
+    "region": "Annisa, Pontus (Asia Minor)",
+    "voices": [
+      {
+        "author": "jeremy-taylor",
+        "book": "holy-living",
+        "chapter": "Prayers and Devotions"
+      }
+    ],
+    "read_more": [
+      "holy-living",
+      "a-body-of-divinity",
+      "letters-of-jerome"
+    ]
+  },
+  {
+    "title": "Prayer in Song",
+    "anchor": "Colossians 3:16",
+    "themes": [
+      "Learning to Pray",
+      "Praying Together",
+      "Praying for Others"
+    ],
+    "person": "Ephrem the Syrian",
+    "era": "c. AD 363-373",
+    "region": "Nisibis and Edessa (Mesopotamia)",
+    "voices": [
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book IX"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "Prayer, Praise and Thanksgiving"
+      }
+    ],
+    "read_more": [
+      "confessions",
+      "essentials-of-prayer",
+      "spurgeon-on-prayer"
+    ]
+  },
+  {
+    "title": "Prayer, the Light of the Soul",
+    "anchor": "Psalm 18:28",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Learning to Pray",
+      "The Father's Love"
+    ],
+    "person": "John Chrysostom",
+    "era": "c. AD 407",
+    "region": "Antioch (Syria) and Constantinople",
+    "voices": [
+      {
+        "author": "john-chrysostom",
+        "book": "homilies-on-matthew",
+        "chapter": "Homily XIX: Matthew 6:1"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "Men Who Prayed with a Purpose"
+      }
+    ],
+    "read_more": [
+      "homilies-on-matthew",
+      "on-the-priesthood",
+      "purpose-in-prayer"
+    ]
+  },
+  {
+    "title": "The Child of Those Tears",
+    "anchor": "Lamentations 2:19",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender",
+      "Praying for Others"
+    ],
+    "person": "Monica",
+    "era": "c. AD 383",
+    "region": "Thagaste and Carthage (North Africa), Milan and Ostia (Italy)",
+    "voices": [
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book V"
+      },
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book III"
+      },
+      {
+        "author": "arthur-t-pierson",
+        "book": "george-muller-of-bristol",
+        "chapter": "The Period of World-Wide Witness"
+      },
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book IX"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "The Importance of Prayer"
+      }
+    ],
+    "read_more": [
+      "confessions",
+      "key-teachings-of-augustine-of-hippo",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "\"Our Heart Is Restless\"",
+    "anchor": "Psalm 62:1",
+    "themes": [
+      "The Father's Love",
+      "Persistence",
+      "Guidance and Surrender"
+    ],
+    "person": "Augustine",
+    "era": "c. AD 386",
+    "region": "Milan (Italy) and Hippo (North Africa)",
+    "voices": [
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book I"
+      },
+      {
+        "author": "augustine-of-hippo",
+        "book": "homilies-on-the-first-epistle-of-john",
+        "chapter": "Homily IV: 1 John 2:27–3:8"
+      },
+      {
+        "author": "augustine-of-hippo",
+        "book": "confessions",
+        "chapter": "Book X"
+      }
+    ],
+    "read_more": [
+      "confessions",
+      "homilies-on-the-first-epistle-of-john",
+      "key-teachings-of-augustine-of-hippo"
+    ]
+  },
+  {
+    "title": "Christ Be with Me",
+    "anchor": "Matthew 28:20",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Faith",
+      "Christ Who Prays for Us"
+    ],
+    "person": "Patrick",
+    "era": "c. AD 450",
+    "region": "Britain and Ireland",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "jesus-himself-2",
+        "chapter": "I will come and dwell with you, and I will never leave you"
+      }
+    ],
+    "read_more": [
+      "they-were-young-2",
+      "jesus-himself-2",
+      "purpose-in-prayer"
+    ]
+  },
+  {
+    "title": "Lord Jesus Christ, Have Mercy",
+    "anchor": "Luke 18:38",
+    "themes": [
+      "Humility and Mercy",
+      "Persistence",
+      "Making Room for Prayer"
+    ],
+    "person": "The Jesus Prayer",
+    "era": "c. AD 400-600",
+    "region": "Egypt, Palestine and Sinai",
+    "voices": [
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "Blind Bartimeus"
+      },
+      {
+        "author": "jeremy-taylor",
+        "book": "holy-living",
+        "chapter": "The First General Instrument of Holy Living: Care of Our Time"
+      }
+    ],
+    "read_more": [
+      "selected-sermons-whitefield",
+      "holy-living",
+      "life-of-antony"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "2 Timothy 2:2",
+    "themes": [],
+    "person": "The church of the martyrs and the desert",
+    "era": "c. AD 100-500",
+    "region": "The Roman world and beyond",
+    "voices": [],
+    "read_more": []
+  }
+]

@@ -1700,6 +1700,16 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "the sky still deep above, the city's flat roofs, walls and towers in "
         "silhouette, and one upper room's window lit. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 4, Faithful unto Death: the series ground
+    # at full morning: the Egyptian desert, a flat-topped mountain, a domed cell
+    # with a lit doorway and a palm (Hosea 2:14). Same generator.
+    "faithful-unto-death": Original(
+        "752ef59eac2f2a0b252dabc8c7e1bbe1d76d54d2cde37fe9036a3bfd0d563c42",
+        "Hosea 2:14: full morning over the Egyptian desert where the monks went "
+        "out to pray, the sun just clear of the far dunes, a flat-topped mountain in "
+        "silhouette, and a domed mud-brick cell with a small cross, its doorway lit, "
+        "a palm beside it. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair

@@ -52,6 +52,7 @@ TOPICS = [
             "the-prayers-jesus-learned",
             "jesus-teacher-of-prayer",
             "devoted-to-prayer",
+            "faithful-unto-death",
         ],
     ),
     (
