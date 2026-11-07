@@ -3,7 +3,7 @@
  "slug": "a-serious-call",
  "language": "lg",
  "job_issue": 6856,
- "pull_request": null,
+ "pull_request": 7557,
  "note": [
   "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names), the same verse file earlier Luganda books used. A row is `mined` only when, for every verse it names, a span of at least 25 characters of that OLCB verse appears verbatim (case-insensitive) in the cited block; everything else — Law’s loose, partial, blended or re-personed quotations and unmarked allusions — is `self_rendered` from the English in OLCB’s register. block_index is per chapter (chapter_order).",
   "OLCB’s inner quotation marks are dropped inside Law’s quotations so each block keeps the English straight-quote count; no curly or guillemet quotes are used. Citations use OLCB book names with Arabic numerals (e.g. Matayo 5:22, 1 Abakkolinso 6:19); Law’s [Ver. 7] becomes [Olunyiriri 7].",
