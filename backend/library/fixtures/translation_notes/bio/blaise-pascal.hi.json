@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "blaise-pascal",
+ "language": "hi",
+ "job_issue": 7533,
+ "references": [
+  {
+   "reference": "Psalm 119:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 28
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "gregory-of-nazianzus",
+ "language": "fr",
+ "job_issue": 7428,
+ "references": [
+  {
+   "reference": "John 7:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  }
+ ]
+}

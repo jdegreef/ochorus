@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "john-owen",
+ "language": "hi",
+ "job_issue": 7530,
+ "references": [
+  {
+   "reference": "Matthew 8:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 6
+  }
+ ]
+}

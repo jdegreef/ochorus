@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "phillips-brooks",
+ "language": "hi",
+ "job_issue": 7537,
+ "references": [
+  {
+   "reference": "Psalm 78:72",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 19
+  }
+ ]
+}
