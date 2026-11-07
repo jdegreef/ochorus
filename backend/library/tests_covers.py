@@ -846,6 +846,29 @@ class EditionInkRowTests(SimpleTestCase):
         self.assertEqual(middle_band_alpha(40, self.LOW_MIDDLE, True), 0.0)
         self.assertEqual(middle_band_alpha(790, self.LOW_MIDDLE, True), 0.0)
 
+    def test_the_halo_counts_and_only_by_its_floor(self):
+        """The gate lays `cover_halo.HALO` over each line it measures: the
+        least the halo darkens the paint beside a glyph. Counted, a line reads
+        darker than the bands alone leave it — and by exactly that floor, so the
+        tuner can lower a band only as far as the halo really carries."""
+        from unittest import mock
+
+        from PIL import Image
+
+        from library import cover_halo
+        from library.covers import _LINEAR, _inked, ink_contrast
+
+        plate = Image.new("RGB", (600, 800), (200, 200, 200))
+        rows = {"subtitle": [(100, 540, 500, 566)]}
+        with_halo = ink_contrast(plate, "planted", rows)["subtitle"][0]
+        with mock.patch.dict(cover_halo.HALO, {}, clear=True):
+            bare = ink_contrast(plate, "planted", rows)["subtitle"][0]
+        self.assertGreater(with_halo, bare)
+        c = round(200 * (1 - cover_halo.HALO["subtitle"]))
+        lum = lambda t: 0.2126 * t[0] + 0.7152 * t[1] + 0.0722 * t[2]  # noqa: E731
+        expected = (lum([_inked(0.90)[c]] * 3) + 0.05) / (lum([_LINEAR[c]] * 3) + 0.05)
+        self.assertAlmostEqual(with_halo, expected, places=2)
+
     def test_a_short_block_clamps_its_stops_as_a_browser_does(self):
         # A one-line block is shorter than the subtitle foot's ramp: those stops
         # fall before the top shoulder's last one, and CSS clamps a stop to the

@@ -651,10 +651,26 @@ def worst_ink_contrast(band, opacity: float) -> float:
 
 def ink_contrast(plate, slug: str, rows: dict) -> dict:
     """Region -> (worst white-ink contrast, its bar) on one edition's scrimmed
-    plate, at `ink_boxes`; `painting_contrast` runs this over each edition."""
+    plate, at `ink_boxes`; `painting_contrast` runs this over each edition.
+
+    THE HALO COUNTS. White type over a painting carries its own soft shadow
+    (`cover-type.css`, THE HALO), so the paint just outside every glyph — the
+    background its contrast is read against — is darker than the bands alone
+    leave it. By at least `cover_halo.HALO[region]`, measured in the browser
+    over every framed edition; so that much black is laid over the measured
+    box, on top of the bands. Not more: it is the floor, and the rest of the
+    box (between words, past a line's ends) is darker still or carries no ink.
+    """
+    from PIL import Image
+
+    from library.cover_halo import HALO
+
     out: dict[str, tuple[float, float]] = {}
     for name, box, opacity, bar in ink_boxes(slug, rows):
-        got = worst_ink_contrast(plate.crop(box), opacity)
+        band = plate.crop(box)
+        if HALO.get(name):
+            band = Image.blend(band, Image.new("RGB", band.size, (0, 0, 0)), HALO[name])
+        got = worst_ink_contrast(band, opacity)
         if name in out:
             got = min(got, out[name][0])
         out[name] = (got, bar)
