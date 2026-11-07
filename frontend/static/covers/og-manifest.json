@@ -21191,6 +21191,18 @@
 				490
 			]
 		},
+		"lg/union-and-communion": {
+			"ground": "5a104a02c01bf6c9a9d657e78a15a8006be3b64a1ffd7ea9a25c5da6f47ec4ec",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0.02,
+			"caps": false
+		},
 		"lg/waiting-on-god": {
 			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
 			"style": "devotional",
