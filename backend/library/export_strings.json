@@ -1,4 +1,26 @@
 {
+ "am": {
+  "about": "ስለዚህ ሥራ",
+  "ai_unreviewed": "ይህ በAI የተሠራና በቋንቋው አፍ መፍቻ ተናጋሪ እንዲገመገም የሚጠብቅ ትርጉም ነው። የደራሲው የመጀመሪያ ጽሑፍ አይደለም።",
+  "author_title": "ስለ ደራሲው",
+  "chapter": "ምዕራፍ {n}",
+  "contents": "ማውጫ",
+  "edition": "ይህን እትም ያዘጋጀው የክርስቲያን ክላሲኮች ነጻ ቤተ መጻሕፍት የሆነው Ochorus ነው።",
+  "full_bio": "ሙሉ የሕይወት ታሪኩን እዚህ ያንብቡ፦",
+  "more": "ተጨማሪ ነጻ ክላሲኮች፦",
+  "ochorus_html": "<p class=\"vision\">«ታላላቆቹን የክርስትና እምነት ክላሲኮች በዓለም ዙሪያ ላለችው ቤተ ክርስቲያን በነጻ ማድረስ — በራሳቸው ቋንቋ፣ ለእግዚአብሔር ክብር።»</p><p>Ochorus በቪክቶሪያ፣ ካናዳ እና በካምፓላ፣ ዩጋንዳ የሚገኝ የክርስቲያን አገልግሎት ነው። ከ2021 ጀምሮ ያለፉትን ዘመናት ታላላቅ የክርስቲያን መጻሕፍት እያፈላለግን ለዛሬ አንባቢዎች በጥንቃቄ እናዘጋጃቸዋለን፤ በነጻም እንሰጣቸዋለን — በነጻ እንዲነበቡ፣ በነጻም እንዲቀመጡ።</p><p>እኛ ድረ ገጽ ብቻ አይደለንም። በዩጋንዳ የታተሙ መጻሕፍት በምሥራቅ አፍሪካ ሁሉ በቀጥታ ለሰዎች እጅ ይደርሳሉ — በፓስተሮች ጉባኤዎች፣ እንዲሁም እንድናገለግል በተጋበዝንባቸው አብያተ ክርስቲያናት፣ ትምህርት ቤቶችና ማረሚያ ቤቶች።</p><h2>በ{site} ማንበብዎን ይቀጥሉ</h2><ul><li>በመቶዎች የሚቆጠሩ ክላሲኮች፣ ስብከቶችና የሕይወት ታሪኮች — በነጻ፣ ያለ ማስታወቂያና ያለ መለያ።</li><li>ከእንግሊዝኛና ከስዋሂሊ እስከ ዐረብኛና ሂንዲ ድረስ በብዙ ቋንቋዎች የሚገኙ መጻሕፍት።</li><li>ከአንድ መሣሪያ ወደ ሌላው የሚከተሉዎት የንባብ ዕቅዶች፣ ማድመቂያዎችና ማስታወሻዎች።</li><li>ጮክ ብሎ ያዳምጡ፣ ወይም መጽሐፉን አስቀምጠው ከመስመር ውጭ ያንብቡ።</li><li>እንደዚህ ያሉ ነጻ ማውረጃዎች። በነጻ ያካፍሏቸው።</li></ul><p class=\"verse\">«ያለ ክፍያ ተቀበላችሁ፤ ያለ ክፍያም ስጡ።» <span>ማቴዎስ 10:8</span></p>",
+  "ochorus_title": "ስለ Ochorus",
+  "public_domain": "የዚህ መጽሐፍ ጽሑፍ የሕዝብ ሀብት (public domain) ነው። ይህን እትም ያዘጋጀው የክርስቲያን ክላሲኮች ነጻ ቤተ መጻሕፍት የሆነው Ochorus ነው።",
+  "published": "ለመጀመሪያ ጊዜ የታተመው በ{year} ነው።",
+  "read_online": "በመስመር ላይ በነጻ ያንብቡት፦",
+  "translation_edition": "ይህን ትርጉም ያዘጋጀው የክርስቲያን ክላሲኮች ነጻ ቤተ መጻሕፍት የሆነው Ochorus ነው።",
+  "translation_rights": "የዚህ መጽሐፍ የመጀመሪያ ጽሑፍ የሕዝብ ሀብት (public domain) ነው። ይህን ትርጉም ያዘጋጀው የክርስቲያን ክላሲኮች ነጻ ቤተ መጻሕፍት የሆነው Ochorus ነው።",
+  "questions_young": "አብራችሁ ተወያዩበት",
+  "questions_teens": "ለማሰብ የሚረዱ ጥያቄዎች",
+  "answers_young": "ለአዋቂዎች የሚሆኑ ማስታወሻዎች",
+  "answers_teens": "አንድ የመመለሻ መንገድ",
+  "questions_reflect": "ለማሰላሰል የሚረዱ ጥያቄዎች"
+ },
  "ar": {
   "about": "عن هذا الكتاب",
   "ai_unreviewed": "هذه ترجمة أُعدّت بالذكاء الاصطناعي وهي بانتظار مراجعة متحدث أصلي باللغة. وليست النص الأصلي للمؤلف.",
@@ -87,6 +109,28 @@
   "answers_teens": "उत्तर देने का एक तरीका",
   "questions_reflect": "मनन के लिए प्रश्न"
  },
+ "ko": {
+  "about": "이 책에 대하여",
+  "ai_unreviewed": "이 책은 AI로 번역되었으며 원어민의 검토를 기다리고 있습니다. 저자가 쓴 원문이 아닙니다.",
+  "author_title": "저자 소개",
+  "chapter": "{n}장",
+  "contents": "목차",
+  "edition": "이 판은 기독교 고전을 무료로 펴내는 도서관 Ochorus가 준비했습니다.",
+  "full_bio": "전체 전기 읽기:",
+  "more": "더 많은 무료 고전:",
+  "ochorus_html": "<p class=\"vision\">“기독교 신앙의 위대한 고전들을 전 세계 교회가 자기 언어로 무료로 읽을 수 있게 하여, 하나님께 영광을 돌리는 것.”</p><p>Ochorus는 캐나다 빅토리아와 우간다 캄팔라에 기반을 둔 기독교 사역입니다. 2021년부터 저희는 지난 시대의 위대한 기독교 서적을 찾아 오늘의 독자를 위해 정성껏 편집하고, 값없이 나누고 있습니다. 무료로 읽고, 무료로 간직하십시오.</p><p>저희는 웹사이트만이 아닙니다. 우간다에서 인쇄한 책을 동아프리카 곳곳의 사람들 손에 직접 전합니다. 목회자 콘퍼런스에서, 그리고 섬기도록 초대받은 교회와 학교와 교도소에서 말입니다.</p><h2>{site}에서 계속 읽으세요</h2><ul><li>수백 권의 고전, 설교, 전기 — 모두 무료이며, 광고도 없고 계정도 필요 없습니다.</li><li>영어와 스와힐리어부터 아랍어와 힌디어까지, 여러 언어로 된 책.</li><li>기기를 바꿔도 이어지는 읽기 계획, 하이라이트, 메모.</li><li>소리 내어 듣거나, 책을 저장해 두고 오프라인으로 읽으십시오.</li><li>이와 같은 무료 다운로드. 마음껏 나누십시오.</li></ul><p class=\"verse\">“너희가 값없이 받았으니, 값없이 주어라.” <span>마태복음 10:8</span></p>",
+  "ochorus_title": "Ochorus 소개",
+  "public_domain": "이 책의 본문은 퍼블릭 도메인에 속합니다. 이 판은 기독교 고전을 무료로 펴내는 도서관 Ochorus가 준비했습니다.",
+  "published": "{year}년 처음 출간.",
+  "read_online": "온라인에서 무료로 읽기:",
+  "translation_edition": "이 번역은 기독교 고전을 무료로 펴내는 도서관 Ochorus가 준비했습니다.",
+  "translation_rights": "이 책의 원문은 퍼블릭 도메인에 속합니다. 이 번역은 기독교 고전을 무료로 펴내는 도서관 Ochorus가 준비했습니다.",
+  "questions_young": "함께 이야기해 보세요",
+  "questions_teens": "생각해 볼 질문",
+  "answers_young": "어른을 위한 도움말",
+  "answers_teens": "이렇게 답해 볼 수 있습니다",
+  "questions_reflect": "묵상을 위한 질문"
+ },
  "lg": {
   "about": "Ku kitabo kino",
   "ai_unreviewed": "Kuno kuvvuunula okwakolebwa AI, okulindiridde okwekenneenyezebwa omwogezi w'olulimi luno ow'enzaalwa. Si bigambo by'omuwandiisi ebyasooka.",
@@ -174,5 +218,27 @@
   "answers_young": "Нотатки для дорослих",
   "answers_teens": "Один зі способів відповісти",
   "questions_reflect": "Запитання для роздумів"
+ },
+ "vi": {
+  "about": "Về tác phẩm này",
+  "ai_unreviewed": "Đây là bản dịch bằng AI đang chờ người bản ngữ duyệt lại. Đây không phải là văn bản gốc của tác giả.",
+  "author_title": "Về tác giả",
+  "chapter": "Chương {n}",
+  "contents": "Mục lục",
+  "edition": "Ấn bản này do Ochorus, một thư viện miễn phí các tác phẩm kinh điển Cơ Đốc, biên soạn.",
+  "full_bio": "Đọc tiểu sử đầy đủ tại",
+  "more": "Thêm nhiều tác phẩm kinh điển miễn phí tại",
+  "ochorus_html": "<p class=\"vision\">“Đem những tác phẩm kinh điển vĩ đại của đức tin Cơ Đốc đến với Hội Thánh khắp thế giới cách miễn phí — bằng chính ngôn ngữ của họ, để làm vinh hiển Đức Chúa Trời.”</p><p>Ochorus là một mục vụ Cơ Đốc có trụ sở tại Victoria, Canada và Kampala, Uganda. Từ năm 2021, chúng tôi tìm lại những cuốn sách Cơ Đốc vĩ đại của quá khứ, biên tập cẩn thận cho độc giả ngày nay và trao tặng — đọc miễn phí và giữ miễn phí.</p><p>Chúng tôi không chỉ là một trang web. Sách in tại Uganda được trao tận tay mọi người khắp Đông Phi — tại các hội nghị mục sư, và trong các Hội Thánh, trường học và nhà tù mà chúng tôi được mời đến phục vụ.</p><h2>Tiếp tục đọc tại {site}</h2><ul><li>Hàng trăm tác phẩm kinh điển, bài giảng và tiểu sử — miễn phí, không quảng cáo và không cần tài khoản.</li><li>Sách bằng nhiều ngôn ngữ, từ tiếng Anh và tiếng Swahili đến tiếng Ả Rập và tiếng Hindi.</li><li>Kế hoạch đọc, đánh dấu và ghi chú theo bạn từ thiết bị này sang thiết bị khác.</li><li>Nghe đọc thành tiếng, hoặc lưu sách để đọc ngoại tuyến.</li><li>Những bản tải xuống miễn phí như cuốn này. Hãy chia sẻ thoải mái.</li></ul><p class=\"verse\">“Các con đã nhận không phải trả gì, thì hãy cho đi mà không đòi gì.” <span>Ma-thi-ơ 10:8</span></p>",
+  "ochorus_title": "Giới thiệu Ochorus",
+  "public_domain": "Văn bản của cuốn sách này thuộc phạm vi công cộng. Ấn bản này do Ochorus, một thư viện miễn phí các tác phẩm kinh điển Cơ Đốc, biên soạn.",
+  "published": "Xuất bản lần đầu năm {year}.",
+  "read_online": "Đọc trực tuyến, miễn phí, tại",
+  "translation_edition": "Bản dịch này do Ochorus, một thư viện miễn phí các tác phẩm kinh điển Cơ Đốc, thực hiện.",
+  "translation_rights": "Văn bản gốc của cuốn sách này thuộc phạm vi công cộng. Bản dịch này do Ochorus, một thư viện miễn phí các tác phẩm kinh điển Cơ Đốc, thực hiện.",
+  "questions_young": "Cùng nhau trò chuyện",
+  "questions_teens": "Câu hỏi để suy ngẫm",
+  "answers_young": "Ghi chú cho người lớn",
+  "answers_teens": "Một cách trả lời",
+  "questions_reflect": "Câu hỏi suy ngẫm"
  }
 }
