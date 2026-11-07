@@ -25,7 +25,10 @@ import { resolve } from 'node:path';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { HEIGHT, STATIC, WIDTH, coverPage, made, measureInk, needTwins } from './generate-cover-og.mjs';
-import { haloDigest } from '../src/lib/coverHalo.ts';
+import { createHash } from 'node:crypto';
+import { haloRules } from '../src/lib/coverHalo.ts';
+
+const haloDigest = (css) => createHash('sha256').update(haloRules(css)).digest('hex').slice(0, 16);
 
 const CSS = readFileSync(resolve(import.meta.dirname, '../src/lib/components/cover-type.css'), 'utf8');
 const OUT = resolve(import.meta.dirname, '../../backend/library/cover_halo.py');

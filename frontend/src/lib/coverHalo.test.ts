@@ -1,7 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { HALO_SCOPE, haloDigest, haloRules } from './coverHalo';
+import { createHash } from 'node:crypto';
+import { HALO_SCOPE, haloRules } from './coverHalo';
+
+const haloDigest = (css: string) => createHash('sha256').update(haloRules(css)).digest('hex').slice(0, 16);
 
 /**
  * The halo is a promise the contrast gate relies on, and this holds it.
