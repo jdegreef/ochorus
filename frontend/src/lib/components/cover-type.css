@@ -238,6 +238,38 @@
 		rgb(0 0 0 / 0) 100%
 	);
 }
+
+/* THE HALO — each line's own shadow, the scrim's third layer (2026-11).
+   The bands above darken whole rows of the painting; the halo darkens only the
+   paint right around the letters, which is all a glyph's contrast is measured
+   against. Counting it lets every painting's band strength drop
+   (`tune_art_scrim.py` walks lower), so the picture reads brighter between and
+   beside the words while the type keeps its bar.
+
+   A PROMISE, like the bands: `covers.HALO` is the least darkness this lays
+   down just outside a glyph's edge, per region, measured in the browser over a
+   white ground — and the contrast gate composites exactly that over each line
+   it measures. Change a shadow here and `coverHalo.test.ts` fails until the
+   floor is measured again (`npm run covers:halo`).
+
+   Scrimmed covers only: a layout sets dark ink on paper, and a dark-ink ground
+   sets dark ink on the picture — neither has white type to carry. */
+.cover-plate.over-art:not(.has-layout, .ink-dark) .cover-type :is(.byline, .volume, .title, .edition, .subtitle) {
+	text-shadow:
+		0 0 0.25cqw rgb(0 0 0 / 0.6),
+		0 0 0.8cqw rgb(0 0 0 / 0.55),
+		0 0 2.6cqw rgb(0 0 0 / 0.45),
+		0 0 6cqw rgb(0 0 0 / 0.3);
+}
+/* The volume's ring is a border, which a text-shadow does not reach. */
+.cover-plate.over-art:not(.has-layout, .ink-dark) .cover-type .volume {
+	box-shadow:
+		0 0 0.4cqw rgb(0 0 0 / 0.6),
+		inset 0 0 0.4cqw rgb(0 0 0 / 0.6);
+}
+.cover-plate.over-art:not(.has-layout, .ink-dark) .cover-type .brandmark svg {
+	filter: drop-shadow(0 0 0.3cqw rgb(0 0 0 / 0.6)) drop-shadow(0 0 1.5cqw rgb(0 0 0 / 0.55));
+}
 .cover-plate.over-art.has-subtitle .cover-type .middle::after {
 	background: linear-gradient(
 		180deg,

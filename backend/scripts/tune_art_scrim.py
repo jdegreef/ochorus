@@ -72,6 +72,11 @@ TS_TABLE = BACKEND.parent / "frontend" / "src" / "lib" / "coverScrim.ts"
 # so a re-encode or a resampling difference cannot drop a painting under it.
 MARGIN = 0.1
 
+# Where the walk starts. It was 0.30 while the bands alone carried the type;
+# the halo (`cover_halo.HALO`) now carries part of it, and a painting that
+# needs less band than that should get less.
+WALK_FROM = 10
+
 
 def needed(image, slug: str, editions) -> tuple[float | None, dict]:
     """The least strength that clears every bar on every edition, or None if
@@ -86,7 +91,7 @@ def needed(image, slug: str, editions) -> tuple[float | None, dict]:
     run to 2.00x, answering with strengths no page renders. At the ceiling the
     bar itself is enough — MARGIN is headroom to spend, and there is none left.
     """
-    for step in range(30, round(SCRIM_MAX * 100) + 1, 5):
+    for step in range(WALK_FROM, round(SCRIM_MAX * 100) + 1, 5):
         got = painting_contrast(image, step / 100, slug, editions)
         over = min(worst - bar for worst, bar, _key in got.values())
         if over >= MARGIN:

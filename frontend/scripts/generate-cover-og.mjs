@@ -1052,4 +1052,7 @@ async function main() {
 	for (const line of wrote) console.log(`    ${line}`);
 }
 
-await main();
+// Run as `npm run og:covers`; imported (`measure-cover-halo.mjs`) for the page
+// it builds, the twins it needs, and the ink it measures, without drawing.
+export { COVERS, HEIGHT, STATIC, WIDTH, coverPage, made, measureInk, needTwins };
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

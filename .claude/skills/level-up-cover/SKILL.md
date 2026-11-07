@@ -188,6 +188,14 @@ prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
+- **The halo is part of the scrim (2026-11).** White type over a painting wears
+  its own soft shadow (`cover-type.css`, THE HALO), and the contrast gate counts
+  it: `covers.ink_contrast` lays `cover_halo.HALO` (the least darkness it leaves
+  beside a glyph, per region) over every line. That is why strengths now walk
+  from 0.10x. Touch a halo shadow and `coverHalo.test.ts` fails: run
+  `npm run covers:halo` (~9 min, every framed edition), then a BARE
+  `tune_art_scrim.py`, then `npm run og:covers` (a full redraw).
+
 - **DERIVED grounds (translations of a DESIGNED cover) are tuned in
   `designed_covers.DERIVED_GROUND`, not here** (#3233, Gareth Evans). Knobs beyond
   the crop: `erase=(Erase(x0,y0,x1,y1,"dark"|"light"),…)` paints thin lettering out
