@@ -1,0 +1,68 @@
+{
+ "kind": "sermon",
+ "slug": "guard-the-fire",
+ "language": "fr",
+ "job_issue": 7443,
+ "references": [
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 3:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered"
+  }
+ ]
+}

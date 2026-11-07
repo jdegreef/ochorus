@@ -1749,6 +1749,10 @@
 				"content": "31e20fff4e8bc12f05da28798c6e18286e06ca95b419a98464cdd50a4fbbe7bd",
 				"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 			},
+			"all-with-one-accord": {
+				"content": "627eb29d8bfa683b3a3944935caa6066fdcc84cff927e722a8a8438dedf547cd",
+				"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+			},
 			"are-you-born-again": {
 				"content": "03dca4d6450b29cb212b40efdbd209c529c44ac28b65d54551e5960d74348c91",
 				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -1809,9 +1813,25 @@
 				"content": "95494b5c812dc55d2d52ceb42d50691cb4c028a9dd63d140eb55f375c64f83f8",
 				"art": "d2cfa1486c576fafffe1223e02bc035e2a6bf629ace50f8e2fbbb58155ec109b"
 			},
+			"come-thou-into-the-ark": {
+				"content": "4f02a55b09875281d0292f151cf547327ef09541d9508a7fac9fc4605000e026",
+				"art": "326289b4e8044ad6d2e4f3440e919c83972c9734398d724848e421bac4015d3c"
+			},
+			"come-unto-him": {
+				"content": "fc15f4e5c759e9cd8a06f5d4d9d28b3413d3d1d48a5d9bbd2b5dd444d3b57f57",
+				"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+			},
+			"comfort-for-the-desponding": {
+				"content": "12558e5ad72fabaeca13c47c6b740f73b1d9cf6ffd5645dfa75ca2b6cd28b467",
+				"art": "7e50abce91b95c8bbfc2bf7b8d5445acc939624b809fdda90508014248da9ff5"
+			},
 			"comfort-ye-my-people": {
 				"content": "00076922c63b937884d53f2324783e6b54ea8633d1da50f88f08150255d060c1",
 				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+			},
+			"coming-to-the-king": {
+				"content": "313fa313c4df3c26eed5afa3c66c687a1a8021763a48372a788597af4bddda21",
+				"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 			},
 			"compel-them-to-come-in": {
 				"content": "c19da5811578d56bf2d920a8c3a29655e770e95cbca1303fd368e4bba1399743",
@@ -1871,6 +1891,10 @@
 			},
 			"grace-and-truth": {
 				"content": "4d95933fa225754735d2ebb1feb9dd41d5ead7342d64ceb20d550f06b7f8a0f7",
+				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+			},
+			"guard-the-fire": {
+				"content": "68c25c41ae53c58fb2ecf1746a1f978aa7a22ee93105cf4e74a7ed48c78355de",
 				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 			},
 			"hearts-set-on-pilgrimage": {
@@ -2072,6 +2096,10 @@
 			"the-possibilities-of-faith": {
 				"content": "d83a65501ce5528517f275825cbdb64045637596f0d9890c954c1d158ad73d0e",
 				"art": "23dd58d89bd3b5df09e651325323c8581ec084af8bb2e93dc794884dbe800b64"
+			},
+			"the-power-of-feeble-faith": {
+				"content": "1afee8d75f72fd44b2fe0abfd772cb585ba336f4576e273e4f93efcc63d58488",
+				"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 			},
 			"the-power-of-stillness": {
 				"content": "c19273c833c7d944cbe5fc7f3a9592e662e955a5faaad45d89ed551ebbff8bab",
