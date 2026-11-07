@@ -3,6 +3,7 @@
  "slug": "the-life-of-trust",
  "language": "ko",
  "job_issue": 6854,
+ "pull_request": 7518,
  "note": [
   "Translation queue job #6854 (2026-11-07): translated part by part (52 parts) against the shared Müller term table used for answers-to-prayer.ko and the-life-of-trust-children.ko, each part checked for block/tag/numeral parity with the English. Scripture from the 개역 (Take Root korean / ebible kor_old) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. Mirror defects (Matthew 6:19 garbled, Proverbs 11:15 and 11:24-25 offset by one verse, 1 Peter 5:7 missing, James 5:18 '디시') were rendered from the standard 개역 text and are self_rendered. AI-drafted, awaiting native review."
  ],
