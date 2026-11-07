@@ -19224,6 +19224,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"ko/the-life-of-trust": {
+			"ground": "c5b88256523f8c9e31732303a140f40f4aa199db1f9e4e9b95b84e5fc2c3db83",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "00aa4b67fa5488bce99b6ecd6f558c81d851e45df0920c8b9c218ffc265df68b",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/the-life-of-trust-children": {
 			"ground": "e965ff383bf51c9ceb81e360451e7f507a1d0b9a332f6810b971d2dac2e5e08f",
 			"style": "revival",
