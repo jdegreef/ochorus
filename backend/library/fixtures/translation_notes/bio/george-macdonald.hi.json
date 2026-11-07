@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "george-macdonald",
+ "language": "hi",
+ "job_issue": 7535,
+ "references": [
+  {
+   "reference": "Matthew 5:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 18
+  }
+ ]
+}

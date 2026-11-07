@@ -244,5 +244,12 @@
     "note": [
       "Queue job #6985: «Enraizados – Libro 6» completes this plan in es, so the prose ships in the same PR (covers plan job #6997). Book names are the shipped es subtitles' heads: «Firmes en la tormenta», «Ramas que se extienden», «Llevar fruto» (Book 6 is «Llevar fruto», not «Dar fruto», which is Book 3). Title mirrors the shipped «Enraizados: tres meses con Dios — Libros 1–3»."
     ]
+  },
+  "anchored-two-months": {
+    "title": "Anclados: dos meses con Dios para adolescentes",
+    "description": "Dos meses con Dios para lectores de 13 a 17 años: los dos libros de Anclados —¿Es verdad? ¿Quién soy? y La vida real—, con un devocional al día sobre las preguntas sinceras de la fe, quién eres en Cristo y cómo seguir a Jesús en medio de la preocupación, las pantallas, las amistades, el hogar y el duelo. Cada día termina con una invitación a leer un capítulo de un clásico.",
+    "note": [
+      "AI-drafted (2026-11-07); awaiting native review. Job #6991. Prose-ahead: neither anchored-1 nor anchored-2 has an es edition yet, so seed_plans keeps the es row dormant until both ship. Series name « Anclados » is coined to match the shipped « Enraizados » (Rooted); book names translate the en subtitles' heads (« Is It True? Who Am I? », « Real Life »). A later book job should reuse them or fix both."
+    ]
   }
 }

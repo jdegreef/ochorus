@@ -242,5 +242,68 @@
  "cheque-book-year": {
   "title": "Une année avec Le carnet de chèques de la banque de la foi",
   "description": "Les promesses quotidiennes de Charles Spurgeon : une promesse de Dieu pour chaque jour de l’année, avec un mot bref sur la manière de la recevoir par la foi. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une ou deux minutes par jour."
+ },
+ "tell-me-the-christmas-story": {
+  "title": "Raconte-moi l’histoire de Noël : un parcours de l’Avent",
+  "description": "Un calendrier de l’Avent fait d’histoires bibliques pour les enfants et les grands qui les lisent avec eux : une histoire de cinq minutes chaque soir, du 1er au 25 décembre. Il commence par les promesses que Dieu a faites, à Ève, à Abraham, à Moïse, à David et par la bouche d’Ésaïe, et les suit jusqu’à la visite de l’ange, au « oui » de Marie, à la naissance à Bethléem la veille de Noël et aux bergers le jour de Noël. Commencez le 1er décembre. Chaque histoire se termine par une prière et trois questions à se poser ensemble.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7433. Prose-ahead: the plan's books are tell-me-the-story-1 … -4; only tell-me-the-story-1.fr (« Raconte-moi l’histoire – Livre 1 : Au commencement ») exists, so seed_plans keeps the fr row dormant until -2, -3 and -4 ship. Title echoes that series name « Raconte-moi l’histoire »."
+  ]
+ },
+ "tell-me-the-easter-story": {
+  "title": "Raconte-moi l’histoire de Pâques : un parcours pour Pâques",
+  "description": "Vingt-neuf soirs d’histoires bibliques pour les enfants et les grands qui les lisent avec eux, une histoire de cinq minutes par soir. Il commence par les promesses qui annoncent la croix : l’agneau que Dieu pourvoit, la Pâque, le serpent sur la perche, les trois jours de Jonas et le bon Berger. Puis il marche avec Jésus jusqu’à Jérusalem, à travers le dernier repas, le jardin et la croix, jusqu’au tombeau vide, et poursuit pendant la semaine de Pâques jusqu’à l’ascension. Commencez le dimanche qui tombe trois semaines avant Pâques : le Vendredi saint, le Samedi saint et le dimanche de Pâques tombent alors sur leur propre histoire. Chaque histoire se termine par une prière et trois questions à se poser ensemble.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7434. Prose-ahead: the plan's books are tell-me-the-story-1, -2, -3, -9, -6 and -5; only tell-me-the-story-1.fr exists, so the fr row stays dormant until the rest ship. Title mirrors the Christmas plan's « Raconte-moi l’histoire de Noël »."
+  ]
+ },
+ "daughters-of-the-king-three-months": {
+  "title": "Filles du Roi : trois mois avec Dieu",
+  "description": "Trois mois avec Dieu pour les filles de 9 à 12 ans : les trois livres de Filles du Roi — « Bien-aimée », « Courageuse » et « Grandir » — une courte méditation par jour sur qui tu es en Christ, le courage de parler et de servir, et l’art de grandir avec sagesse.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7436. Title follows the shipped book titles « Filles du Roi – 30 jours avec Dieu pour les filles – Livre N ». « Bien-aimée » and « Courageuse » are the lead words of the fr subtitles of daughters-of-the-king-1/-2; daughters-of-the-king-3 has no fr edition yet, so « Grandir » (Growing Up) is coined here — a later book job should reuse it or fix both. Prose-ahead until daughters-of-the-king-3.fr ships."
+  ]
+ },
+ "rooted-three-months-books-4-6": {
+  "title": "Enracinés : trois mois avec Dieu — Livres 4–6",
+  "description": "Trois mois de plus avec Dieu pour les lecteurs de 9 à 12 ans : les trois derniers livres d’Enracinés — « Fort dans la tempête », « Déployer ses branches » et « Porter du fruit » — une courte méditation par jour pour tenir bon quand la vie est dure, aimer les gens qui t’entourent, et découvrir le projet de Dieu pour ta vie.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7437. Title mirrors the shipped « Enracinés : trois mois avec Dieu — Livres 1–3 ». « Fort dans la tempête » is the lead of the shipped rooted-4.fr subtitle; rooted-5 and rooted-6 have no fr edition yet, so « Déployer ses branches » (Branching Out) and « Porter du fruit » (Bearing Fruit; distinct from Book 3's « Des fruits qui poussent ») are coined here. Prose-ahead until rooted-5.fr and rooted-6.fr ship."
+  ]
+ },
+ "sons-of-the-king-three-months": {
+  "title": "Fils du Roi : trois mois avec Dieu",
+  "description": "Trois mois avec Dieu pour les garçons de 9 à 12 ans : les trois livres de Fils du Roi — « Fort », « Fidèle » et « Grandir » — une courte méditation par jour sur qui tu es en Christ, sur le fait d’être quelqu’un de fiable, et sur l’art de grandir avec sagesse.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7438. No sons-of-the-king book has a fr edition yet; the series name « Fils du Roi » and the book names « Fort » / « Fidèle » / « Grandir » are coined to pair with the shipped « Filles du Roi – 30 jours avec Dieu pour les filles » (expected book title: « Fils du Roi – 30 jours avec Dieu pour les garçons – Livre N »). Prose-ahead until all three ship."
+  ]
+ },
+ "morning-by-morning-year": {
+  "title": "Une année de Matin après matin",
+  "description": "Les lectures du matin de Charles Spurgeon pour toute l’année : un texte de l’Écriture et une chaleureuse méditation pour commencer chaque journée. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Deux minutes par jour.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7439. morning-by-morning has no fr edition yet; « Matin après matin » is coined (es ships « Mañana tras mañana »), and the description follows the shipped fr year plans' wording (« Commencez n’importe quel jour… »). Prose-ahead until the book ships."
+  ]
+ },
+ "evening-by-evening-year": {
+  "title": "Une année de Soir après soir",
+  "description": "Le compagnon de Matin après matin, de Spurgeon : un texte et une méditation pour clore chaque journée de l’année. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Deux minutes chaque soir.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7440. evening-by-evening has no fr edition yet; « Soir après soir » is coined to pair with « Matin après matin » (job #7439). Prose-ahead until the book ships."
+  ]
+ },
+ "our-daily-walk-year": {
+  "title": "Une année de Notre marche quotidienne",
+  "description": "Les lectures de F. B. Meyer pour chaque jour de l’année : une courte méditation, avec son titre et son passage biblique, sur la marche avec Dieu au fil des jours ordinaires. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Deux ou trois minutes par jour.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7441. our-daily-walk has no fr edition yet; « Notre marche quotidienne » is coined. Prose-ahead until the book ships."
+  ]
+ },
+ "diary-of-an-old-soul-year": {
+  "title": "Une année avec Le Journal d’une vieille âme",
+  "description": "Le livre de prières en vers de George MacDonald : une strophe de sept vers pour chaque jour de l’année. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Une minute pour la lire, et la journée pour la porter.",
+  "note": [
+   "AI-drafted (2026-11-07); awaiting native review. Job #7442. diary-of-an-old-soul has no fr edition yet; « Le Journal d’une vieille âme » is coined. Title follows « Une année avec Des jours du ciel sur la terre ». Prose-ahead until the book ships."
+  ]
  }
 }

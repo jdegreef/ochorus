@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "william-j-seymour",
+ "language": "hi",
+ "job_issue": 7529,
+ "references": [
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}

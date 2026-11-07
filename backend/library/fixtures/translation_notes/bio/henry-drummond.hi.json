@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "henry-drummond",
+ "language": "hi",
+ "job_issue": 7536,
+ "references": [
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 14:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text",
+   "block_index": 24
+  }
+ ]
+}

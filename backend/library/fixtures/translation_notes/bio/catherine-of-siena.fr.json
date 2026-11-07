@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "catherine-of-siena",
+ "language": "fr",
+ "job_issue": 7425,
+ "references": [
+  {
+   "reference": "Luke 23:46",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}
