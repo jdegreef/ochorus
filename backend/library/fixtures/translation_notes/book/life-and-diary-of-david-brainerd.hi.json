@@ -3,7 +3,7 @@
  "slug": "life-and-diary-of-david-brainerd",
  "language": "hi",
  "job_issue": 6851,
- "pull_request": null,
+ "pull_request": 7517,
  "note": [
   "Scripture is the Indian Revised Version (IRV, irvhin), the Hindi Bible the corpus quotes; Take Root was egress-blocked, so the IRV was parsed from the ebible mirror (bibles/hin_irv/usx, 31,104 verses) and pasted where its sense matches the KJV wording Brainerd and Edwards quote, with its baked-in cross-reference parentheticals dropped.",
   "Derived by measurement: a row is `mined` only when an exact byte substring of at least 45 characters of the IRV verse (or the whole verse, if shorter) stands in the Hindi chapter. Verses the English cites by reference that do not meet that bar are `self_rendered`: the many loose, blended or partial quotations (e.g. Hos 13:9, Ps 16:2, Job 9:14, Rom 12:11, Rom 14:8 put in the first person) were rendered in the IRV's register. Unquoted echoes are not recorded.",
