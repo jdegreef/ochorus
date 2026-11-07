@@ -19791,6 +19791,42 @@
 				509
 			]
 		},
+		"lg/a-serious-call": {
+			"ground": "074f05b5dfe0c06cf97879f24614436073815c040b03456ee18a81bddf2bcae0",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[199, 158, 401, 218],
+					[132, 218, 468, 278],
+					[140, 277, 460, 337],
+					[116, 337, 484, 397],
+					[154, 396, 446, 456],
+					[111, 456, 489, 516]
+				],
+				"subtitle": [
+					[56, 580, 544, 608],
+					[96, 608, 504, 636]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				159,
+				636
+			]
+		},
 		"lg/absolute-surrender": {
 			"ground": "bf1938c977fbb93897749f1ba73fd4a36cef866e54ac501c009178cd39bb7216",
 			"style": "devotional",
