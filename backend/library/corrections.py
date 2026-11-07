@@ -8204,6 +8204,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("الدين الحقيقي! <i>آمين.</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("एक सुखद साधन सिद्ध हो! <i>आमीन।</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk

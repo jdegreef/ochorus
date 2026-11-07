@@ -15383,6 +15383,37 @@
 				350
 			]
 		},
+		"hi/life-and-diary-of-david-brainerd": {
+			"ground": "ca8d30a6dd92b3365024e849b4a326d4429eb64cf90d66a37b7ee4f6358b131d",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[158, 275, 442, 340],
+					[135, 357, 465, 422]
+				],
+				"subtitle": [
+					[173, 499, 427, 521]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
+			]
+		},
 		"hi/lord-teach-us-to-pray-2": {
 			"ground": "1c240ea4c83ea2979c5f656a6238328328c342ba2823b2b0eee6c03151836e21",
 			"style": "devotional",
