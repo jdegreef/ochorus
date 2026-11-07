@@ -141,14 +141,14 @@ told…"). Known cases are flagged ⚑ below.
 | 1 | Three Times a Day | The *Didache* | Psalm 55:17 |
 | 2 | A Prayer for Rulers Who Persecute | Clement of Rome ★ | 1 Timothy 2:1–2 |
 | 3 | Prayer on the Road to the Lions | Ignatius of Antioch ★ | Philippians 1:21 |
-| 4 | "Eighty-Six Years I Have Served Him" | Polycarp | Revelation 2:10 |
+| 4 | "Eighty and Six Years Have I Served Him" | Polycarp | Revelation 2:10 |
 | 5 | Prayer in a Prison Cell | Perpetua and Felicity | Psalm 23:4 |
 | 6 | Prayer, the Wall of Faith | Tertullian | Ephesians 6:18 |
 | 7 | Prayer Rising Like Incense | Origen | Psalm 141:2 |
 | 8 | Why We Say "Our" Father | Cyprian of Carthage ★ | Galatians 4:6 |
 | 9 | Into the Desert to Pray | Antony, by Athanasius ★ | Hosea 2:14 |
 | 10 | A Struggle to the Last Breath | Desert Mothers and Fathers | Ephesians 6:12 |
-| 11 | "O God, Come to My Help" | John Cassian ★ | Psalm 70:1 |
+| 11 | "God, Come and Rescue Me" | John Cassian ★ | Psalm 70:1 |
 | 12 | A Home Made a House of Prayer | Macrina the Younger | Psalm 31:5 |
 | 13 | Prayer in Song | Ephrem the Syrian | Colossians 3:16 |
 | 14 | Prayer, the Light of the Soul | John Chrysostom ★ | Psalm 18:28 |
