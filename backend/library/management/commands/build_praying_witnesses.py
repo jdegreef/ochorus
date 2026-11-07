@@ -290,6 +290,75 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    4: {
+        "slug": "faithful-unto-death",
+        "book": {
+            "publication_year": 2026,
+            "title": "Faithful unto Death",
+            "subtitle": "Martyrs and Desert Fathers",
+            "cover_url": "/covers/art/faithful-unto-death.jpg",
+            "cover_color": covers.ink_safe("#3a2a2e"),  # a desert dusk
+            "description": (
+                "Eighteen short chapters on how the church prayed from about AD 100 to 500: "
+                "the Didache's three times a day, Clement praying for rulers who persecute, "
+                "Ignatius and Polycarp facing death, Perpetua in prison, Cyprian on the Lord's "
+                "Prayer, Antony and the desert mothers and fathers, Cassian's one-verse prayer, "
+                "Ephrem's hymns, Monica's tears, Augustine's restless heart, Patrick in Ireland "
+                "and the Jesus Prayer."
+            ),
+            "about_html": (
+                "<p>When the last of the apostles died, the church had to go on praying "
+                "without anyone who had seen the Lord with their own eyes. For much of the "
+                "next two hundred years, being a Christian was against the law. This book "
+                "follows the believers who prayed through those years and the centuries "
+                "after them, up to about the year 500. It is Volume 4 of A Cloud of Praying "
+                "Witnesses, an Ochorus series that follows the people of God at prayer from "
+                "the Old Testament to the church around the world today.</p>"
+                "<p>Its eighteen chapters move in three parts. In the age of the martyrs we "
+                "learn to pray three times a day from the Didache, hear Clement pray for "
+                "rulers who persecute, walk with Ignatius on the road to the lions, stand "
+                "with Polycarp at the stake and sit with Perpetua and Felicity in prison. In "
+                "the desert we follow Antony and the mothers and fathers who came after him, "
+                "learn John Cassian's one short verse for the whole day, and hear Macrina and "
+                "Ephrem turn a home and a city to prayer and song. Last come teachers, "
+                "mothers and missionaries: John Chrysostom, Monica, Augustine, Patrick, and "
+                "the Jesus Prayer.</p>"
+                "<p>Every chapter tells its story from the earliest sources and says plainly "
+                "where tradition takes over. It quotes the witnesses themselves word for word "
+                "from their books in the library, and ends with three key insights, a word "
+                "for today, a practice to try, a closing prayer and questions for reflection. "
+                "Two appendices gather every insight by theme and every Scripture in Bible "
+                "order. Scripture is quoted from the Open Word Bible (OWB), Balanced edition, "
+                "which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Faithful unto Death about?",
+                    "answer": "How Christians prayed in the four centuries after the apostles, from about AD 100 to 500: eighteen short chapters on the martyrs who prayed in prison and at the stake, the mothers and fathers of the desert, and the teachers, mothers and missionaries who taught the church to pray, from the Didache to Augustine, Patrick and the Jesus Prayer.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. Volume 1 listens to the prayers of the Old Testament, Volume 2 sits with Jesus, the Teacher of Prayer, Volume 3 follows the apostles and the first church, and this fourth volume follows the martyrs and desert fathers. Later volumes follow the praying men and women of every century and every part of the world.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Are the stories in this book historical?",
+                    "answer": "They come from the oldest sources we have: letters, prison diaries, sermons and lives written by people who knew these believers. Where a detail is only a later tradition, or where scholars are unsure, the chapter says so.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes eighteen days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
