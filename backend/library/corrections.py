@@ -24333,10 +24333,9 @@ BODY_CORRECTIONS.setdefault("epistles-of-ignatius", {}).setdefault("replacements
     ('rob you o the life', 'rob you of the life'),
     ('when He one, raised them', 'when He came, raised them'),
 ])
-# Miscitations: the word of knowledge is 1 Cor 12:8 (12:9 is faith); "I have no need of you" is 1 Cor 12:21.
+# Miscitation: the word of knowledge is 1 Cor 12:8 (12:9 is faith).
 BODY_CORRECTIONS.setdefault("feasting-at-the-table", {}).setdefault("replacements", []).extend([
     ('a word of knowledge for that brother. (1 Cor 12:9)', 'a word of knowledge for that brother. (1 Cor 12:8)'),
-    ('‘I have no need of you’. (1 Cor 12:15).', '‘I have no need of you’. (1 Cor 12:21).'),
 ])
 # A cut-off heading from the source PDF closed the last chapter in every edition.
 BODY_CORRECTIONS.setdefault("on-loving-god", {}).setdefault("replacements", []).extend([
