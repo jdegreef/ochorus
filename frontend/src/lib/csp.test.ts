@@ -133,6 +133,7 @@ describe('render.yaml non-CSP security headers', () => {
 	it('ships the headers that cost nothing and are easy to lose', () => {
 		expect(headers['X-Content-Type-Options']).toBe('nosniff');
 		expect(headers['X-Frame-Options']).toBe('DENY');
+		expect(headers['Strict-Transport-Security']).toMatch(/^max-age=\d{7,}/);
 		expect(headers['Referrer-Policy']).toBe('strict-origin-when-cross-origin');
 		expect(headers['Permissions-Policy']).toBeTruthy();
 	});
