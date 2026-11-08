@@ -264,11 +264,12 @@ worker specifics that shipped ~11 editions:
   the prose textconv hides whitespace, but don't add a 44th).
   *(`authors.json` is the one file that is NOT this format — it is `indent=2`.
   Books, sermons and `plans.json` all are.)* Copy source_url/sort_order from the
-  English file; `source_type=ai_unreviewed`; `pdf_url` empty; `body_text`
-  via `library.text.html_to_text`. **Set `word_count` with
-  `library.text.word_count(body_html)`, NOT `len(body_text.split())`** — the
-  canonical count tokenises `body_html` (tags→space) and a fixture row never
-  passes through `save()`, so a naive count off `body_text` disagrees and fails
+  English file; `source_type=ai_unreviewed`; `pdf_url` empty; **no `body_text`** (it is
+  derived on deploy, and `tests_fixture.BodyTextNotStoredTests` fails a row that
+  carries one — `manage.py rederive_body_text --write` drops it). **Set
+  `word_count` with `library.text.word_count(body_html)`, NOT a split of the
+  plain text** — the canonical count tokenises `body_html` (tags→space) and a
+  fixture row never passes through `save()`, so a naive count disagrees and fails
   `tests_fixture` ("N rows carry a word_count their own body_html does not
   give"). Easiest reliable path: build the row on the DB's cloned English
   `Sermon`/`Book` object and let `serializers.serialize(..., natural keys)`

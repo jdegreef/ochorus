@@ -48,7 +48,7 @@ class SermonScreenTests(SimpleTestCase):
             root = Path(tmp)
             (root / "books").mkdir()
             (root / "sermons").mkdir()
-            rows = [{"model": "library.chapter", "fields": {"body_text": text}}]
+            rows = [{"model": "library.chapter", "fields": {"body_html": f"<p>{text}</p>"}}]
             (root / "books" / "holiness.en.json").write_text(json.dumps(rows))
             other = "nothing like it at all here " * 20
             index = sermon_screen.LibraryIndex([text, other], dirs=[root / "books", root / "sermons"])

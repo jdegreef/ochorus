@@ -92,11 +92,9 @@ DEFAULTED_OK = {
     ("library.book", "cover_byline"),
     # Blank for every book without an editor's one-line hook (most of them).
     ("library.book", "hook"),
-    ("library.chapter", "body_text"),
     # Empty on every chapter outside the young-reader editions.
     ("library.chapter", "study_questions"),
     ("library.sermon", "source_type"),
-    ("library.sermon", "body_text"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
     ("library.author", "faq"),
     ("library.author", "list_in_biographies"),
@@ -130,6 +128,11 @@ DROPPED_IF_ABSENT = {
     ("library.sermon", "english_digest"),
     ("library.article", "content_digest"),
     ("library.article", "english_digest"),
+    # Derived from body_html by save() and filled on deploy by
+    # backfill_body_text. It was half of every chapter's bytes, so the fixture
+    # does not carry it at all (tests_fixture.BodyTextNotStoredTests).
+    ("library.chapter", "body_text"),
+    ("library.sermon", "body_text"),
 }
 
 # Hand-written fixtures spell timestamps their own way ("…00.000Z", or with

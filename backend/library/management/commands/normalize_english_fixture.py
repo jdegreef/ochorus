@@ -29,7 +29,7 @@ and a pair carrying markup or an entity (`<p>Amajor`, `it is<i>the God`) matches
 INDEPENDENTLY cannot converge on what `save()` produces. Deriving it can, which
 is what production has always done — `apply_body_corrections` calls `.save()`.
 So: correct the source here, then `manage.py rederive_body_text --write`.
-`tests_fixture.BodyTextDerivationTests` fails until you do. Dry-run by default.
+`tests_fixture.BodyTextNotStoredTests` fails until you do. Dry-run by default.
 
     manage.py normalize_english_fixture            # show what would change
     manage.py normalize_english_fixture --write    # do it

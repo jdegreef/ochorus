@@ -67,7 +67,7 @@ def main() -> int:
         # different depths and land on different pairs. `the-inner-chamber.pt`
         # is the case that showed it, taking » in `body_text` where `body_html`
         # has ”. Convert the source; then run `manage.py rederive_body_text
-        # --write`, which `tests_fixture.BodyTextDerivationTests` will demand.
+        # --write`, which `tests_fixture.BodyTextNotStoredTests` will demand.
         bodies = [r["fields"].get("body_html") or "" for r in rows]
         repaired, changed_here = convert_work(bodies, path.name)
         if not changed_here:
