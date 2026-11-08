@@ -1,0 +1,199 @@
+{
+ "kind": "book",
+ "slug": "men-who-moved-heaven",
+ "language": "ko",
+ "job_issue": 7018,
+ "references": [
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 62:7",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:21",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "source_file": "개역 (kor_old) Bible text"
+  }
+ ]
+}

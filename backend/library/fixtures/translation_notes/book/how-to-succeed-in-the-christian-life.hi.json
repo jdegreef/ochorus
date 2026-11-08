@@ -1,0 +1,427 @@
+{
+ "kind": "book",
+ "slug": "how-to-succeed-in-the-christian-life",
+ "language": "hi",
+ "job_issue": 7539,
+ "references": [
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Galatians 3:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Luke 6:46",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 12:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 13:39",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 John 5:10-12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Luke 7:48",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 19:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 9:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 21:22",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:16-17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 16:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Luke 22:40",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 9:37",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Proverbs 11:25",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 9:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 14:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Mark 4:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 5:11-12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:12-14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:2-3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "James 1:5-7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "James 1:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Ezekiel 12:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  },
+  {
+   "reference": "Ezekiel 12:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  }
+ ]
+}

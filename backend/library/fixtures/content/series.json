@@ -859,5 +859,109 @@
   "created_at": "2026-11-05T00:00:00Z",
   "updated_at": "2026-11-05T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "uk",
+  "title": "Розкажи мені історію",
+  "description": "Біблійні історії, переказані для дітей, у трьох частинах: старозавітні історії, життя Ісуса та новозавітні історії. Кожна історія досить коротка, щоб прочитати її вголос перед сном, і закінчується молитвою та запитаннями для спільної розмови.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "pt",
+  "title": "Conte-me a história",
+  "description": "As histórias da própria Bíblia recontadas para crianças, em três partes: Histórias do Antigo Testamento, A vida de Jesus e Histórias do Novo Testamento. Cada história é curta o bastante para ser lida em voz alta na hora de dormir e termina com uma oração e perguntas para conversar juntos.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "sw",
+  "title": "Nisimulie Hadithi",
+  "description": "Hadithi za Biblia yenyewe zimesimuliwa upya kwa ajili ya watoto, katika sehemu tatu: Hadithi za Agano la Kale, Maisha ya Yesu na Hadithi za Agano Jipya. Kila hadithi ni fupi ya kutosha kusomwa kwa sauti wakati wa kulala, na inamalizika kwa sala na maswali ya kuzungumza pamoja.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "es",
+  "title": "Hablando claro",
+  "description": "Clásicos cristianos y vidas verdaderas contados de nuevo para lectores adolescentes, con honestidad y en palabras sencillas: el peregrino de Bunyan camino a la Ciudad Celestial, las charlas francas de Spurgeon desde la granja, y los hombres y mujeres que lo apostaron todo por Dios.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "uk",
+  "title": "Відверта розмова",
+  "description": "Християнська класика та правдиві життєві історії, переказані для підлітків — чесно й простими словами: Беньянів прочанин на шляху до Небесного міста, відверті бесіди Сперджена з ферми, а також чоловіки й жінки, які поставили все на Бога.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "ar",
+  "title": "حديث صريح",
+  "description": "كلاسيكيات مسيحية وسِيَر حقيقية تُروى من جديد للقرّاء اليافعين، بصدق وبكلمات بسيطة: حاجّ بنيان في طريقه إلى المدينة السماوية، وأحاديث سبرجن الصريحة من المزرعة، والرجال والنساء الذين راهنوا بكل شيء على الله.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "hi",
+  "title": "सीधी बात",
+  "description": "किशोर पाठकों के लिए ईमानदारी और सरल शब्दों में फिर से सुनाई गई मसीही क्लासिक पुस्तकें और सच्चे जीवन: स्वर्गीय नगर की ओर जाता बनयन का तीर्थयात्री, खेत से स्पर्जन की सीधी बातें, और वे स्त्री-पुरुष जिन्होंने परमेश्वर पर सब कुछ दाँव पर लगा दिया।",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "lg",
+  "title": "Okwogera Obutereevu",
+  "description": "Ebitabo by'Ekikristaayo eby'edda n'obulamu obw'amazima ebiddamu okunyumizibwa eri abavubuka, mu bwesimbu ne mu bigambo ebyangu: omutambuze wa Bunyan ku kkubo erigenda mu Kibuga eky'omu Ggulu, ebigambo bya Spurgeon ebitereevu ebiva mu nnimiro, n'abasajja n'abakazi abaawaayo byonna eri Katonda.",
+  "created_at": "2026-11-08T00:00:00Z",
+  "updated_at": "2026-11-08T00:00:00Z"
+ }
 }
 ]
