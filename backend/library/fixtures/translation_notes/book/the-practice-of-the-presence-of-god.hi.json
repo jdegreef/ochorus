@@ -1,0 +1,13 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "hi",
+ "job_issue": 7543,
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Bible text"
+  }
+ ]
+}

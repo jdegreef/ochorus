@@ -1,0 +1,150 @@
+{
+ "kind": "book",
+ "slug": "the-way-to-god-teens",
+ "language": "es",
+ "job_issue": 7456,
+ "references": [
+  {
+   "reference": "Acts 4:13",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 13:1",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "around-the-wicket-gate.es.json"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Matthew 16:15-16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:58",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Mark 14:61-62",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Matthew 16:15-16",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "mined",
+   "source_file": "absolute-surrender.es.json"
+  },
+  {
+   "reference": "Acts 3:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 21:29",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Jeremiah 2:5",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Jeremiah 2:19",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "kind": "book",
+ "slug": "tell-me-the-story-1",
+ "language": "sw",
+ "job_issue": 7461,
+ "references": [
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Genesis 2:15",
+   "status": "mined",
+   "source_file": "faithful-with-little.sw.json"
+  },
+  {
+   "reference": "Genesis 3:9",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Genesis 4:7",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "mined",
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "Genesis 6:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 9:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Genesis 11:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 12:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 18:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "stepping-stones-2.sw.json"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "Genesis 24:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 25:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:51",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 39:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 39:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 41:16",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 44:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "source_file": "all-things-for-good.sw.json"
+  }
+ ]
+}
