@@ -24285,3 +24285,68 @@ BODY_CORRECTIONS.setdefault("faith-and-assurance", {}).setdefault("replacements"
     ("(Job 13.13)", "(Job 13.15)"),
     ("(Ayubu 13:13)", "(Ayubu 13:15)"),
 ])
+
+
+# --- English defects found while translating (queue batches #7556, #7561, #7593) ---
+# Every pair is a slip with one possible reading (OCR, a transcript mishearing, a
+# typo, an extraction artefact). The fixtures already carry the repaired text; these
+# keep a re-import from bringing the slip back. Pairs naming no English (the
+# on-loving-god fragment heading) cover the translated editions, which mirrored it.
+BODY_CORRECTIONS.setdefault("comfort-for-the-desponding", {}).setdefault("replacements", []).extend([
+    ('read my ‘my title clear,’', 'read ‘my title clear,’'),
+    ('lose now but a live pound note', 'lose now but a five pound note'),
+    ('it there were the slightest trace', 'if there were the slightest trace'),
+    ('creep in anywhere, though the smallest crevice', 'creep in anywhere, through the smallest crevice'),
+    ('sooner or latter', 'sooner or later'),
+    ('Ah I my friends', 'Ah! my friends'),
+    ('“How?” savest thou.', '“How?” sayest thou.'),
+    ('came into the world so save sinners', 'came into the world to save sinners'),
+])
+# Tozer audio transcript: his own name, Scofield, the Parthians (Acts 2:9), Robert Jaffray, and Saul (Acts 13:2) were misheard.
+BODY_CORRECTIONS.setdefault("all-with-one-accord", {}).setdefault("replacements", []).extend([
+    ('Torsion, I have determined', 'Tozer, I have determined'),
+    ('the Schofield Bible', 'the Scofield Bible'),
+    ('pythians and Medes', 'Parthians and Medes'),
+    ('when Dr. Jeffrey, eight years ago', 'when Dr. Jaffray, eight years ago'),
+    ('Separate me, Barnabas, and Squire, unto whom', 'Separate me, Barnabas, and Saul, unto whom'),
+])
+BODY_CORRECTIONS.setdefault("come-thou-into-the-ark", {}).setdefault("replacements", []).extend([
+    ('mad but himself A drunkard', 'mad but himself. A drunkard'),
+])
+BODY_CORRECTIONS.setdefault("the-power-of-feeble-faith", {}).setdefault("replacements", []).extend([
+    ('disappointed hopes of core', 'disappointed hopes of cure'),
+])
+BODY_CORRECTIONS.setdefault("come-unto-him", {}).setdefault("replacements", []).extend([
+    ('in no wise cast out (John 6:37) This', 'in no wise cast out (John 6:37). This'),
+])
+# "Ɣ" is a bullet the PDF extraction mangled; it matches in every edition.
+BODY_CORRECTIONS.setdefault("purity-of-heart", {}).setdefault("replacements", []).extend([
+    ('Ɣ', '•'),
+    ('garments clean.You like', 'garments clean. You like'),
+])
+BODY_CORRECTIONS.setdefault("the-practice-of-the-presence-of-god", {}).setdefault("replacements", []).extend([
+    ('before we can <em>lore</em>.', 'before we can <em>love</em>.'),
+    ('should deceive, hut also', 'should deceive, but also'),
+])
+BODY_CORRECTIONS.setdefault("epistles-of-ignatius", {}).setdefault("replacements", []).extend([
+    ('if so be I an worthy of it', 'if so be I am worthy of it'),
+    ('rob you o the life', 'rob you of the life'),
+    ('when He one, raised them', 'when He came, raised them'),
+])
+# Miscitations: the word of knowledge is 1 Cor 12:8 (12:9 is faith); "I have no need of you" is 1 Cor 12:21.
+BODY_CORRECTIONS.setdefault("feasting-at-the-table", {}).setdefault("replacements", []).extend([
+    ('a word of knowledge for that brother. (1 Cor 12:9)', 'a word of knowledge for that brother. (1 Cor 12:8)'),
+    ('‘I have no need of you’. (1 Cor 12:15).', '‘I have no need of you’. (1 Cor 12:21).'),
+])
+# A cut-off heading from the source PDF closed the last chapter in every edition.
+BODY_CORRECTIONS.setdefault("on-loving-god", {}).setdefault("replacements", []).extend([
+    ('</p><p>FRAGMENTS FROM A</p>', '</p>'),
+    ('</p><p>ከ… የተወሰዱ ቁርጥራጮች</p>', '</p>'),
+    ('</p><p>FRAGMENTOS DE UNA</p>', '</p>'),
+    ('</p><p>FRAGMENTS D’UN</p>', '</p>'),
+    ('</p><p>कुछ अंश</p>', '</p>'),
+    ('</p><p>…에서 가려 뽑은 단편들</p>', '</p>'),
+    ('</p><p>FRAGMENTOS DE UM</p>', '</p>'),
+    ('</p><p>VIPANDE KUTOKA KATIKA</p>', '</p>'),
+    ('</p><p>CÁC ĐOẠN TRÍCH TỪ MỘT</p>', '</p>'),
+])
