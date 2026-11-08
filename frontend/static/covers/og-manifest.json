@@ -5094,6 +5094,33 @@
 				504
 			]
 		},
+		"ar/talks-to-the-farmer-teens": {
+			"ground": "92a25e6cf5d903ffcf365cf3d42571d1efa0de0c10ff963423520cd301c6bf4a",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[96, 326, 504, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				530
+			]
+		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
 			"style": "devotional",
@@ -9977,6 +10004,33 @@
 			"layout": "wash/ochre",
 			"bar": 0.015,
 			"caps": false
+		},
+		"es/the-way-to-god-teens": {
+			"ground": "4f7f9c82ce75f04612230f028629e35fd32e0db78270bad82deaa75e1c5f8275",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[49, 320, 551, 396]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				325,
+				469
+			]
 		},
 		"es/things-as-they-are": {
 			"ground": "130213db00649a2f8a28ebd57e565f2f903e2fc1c982508344c77726773039eb",
@@ -15226,6 +15280,38 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"hi/epistles-of-ignatius": {
+			"ground": "fe056fda75943aabe4fe6b2f0853d87607accfa7be2e8c771f248c6d187b4bd8",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[164, 244, 436, 316],
+					[115, 326, 485, 398],
+					[114, 408, 486, 480]
+				],
+				"subtitle": [
+					[173, 527, 427, 549]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				240,
+				555
+			]
+		},
 		"hi/faithful-with-little": {
 			"ground": "29a0d5d20722498a5e6bc9aa350c9928538b2c30886fb42fe39f783a8833f7ff",
 			"style": "originals",
@@ -15237,6 +15323,18 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false
+		},
+		"hi/feasting-at-the-table": {
+			"ground": "1ddd05fbf8d4f984bc1256b214031d6e30ef2d126ea195265e06b4f19aea4975",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"hi/gleanings-among-the-sheaves": {
 			"ground": "b7094bcdc0675614f85fcac8c38932f134c5fd115f2f8c9f508904b772d3b742",
@@ -15328,6 +15426,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false
+		},
+		"hi/how-to-succeed-in-the-christian-life": {
+			"ground": "92a0b914372551956789a21d4351821251584d89b306d2768913e87ea559ddef",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
 			"bar": 0,
 			"caps": false
 		},
@@ -15596,6 +15706,37 @@
 			"layout": "wash/sage",
 			"bar": 0.03,
 			"caps": false
+		},
+		"hi/on-loving-god": {
+			"ground": "fba109fd12d2dcd1635272a19932a577325ab3fe8d06980efc3b406184704372",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[150, 285, 450, 357],
+					[115, 367, 485, 439]
+				],
+				"subtitle": [
+					[189, 486, 411, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				514
+			]
 		},
 		"hi/pilgrims-progress": {
 			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
@@ -15897,6 +16038,33 @@
 				506
 			]
 		},
+		"hi/talks-to-the-farmer-teens": {
+			"ground": "ddea56a0b115248a3936571d388afa96a9c3268780b201c2ecf8af173a6dcd83",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[113, 330, 487, 420]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				528
+			]
+		},
 		"hi/the-fourfold-gospel": {
 			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
 			"style": "revival",
@@ -16014,6 +16182,37 @@
 			"middle": [
 				259,
 				536
+			]
+		},
+		"hi/the-practice-of-the-presence-of-god": {
+			"ground": "6fea655c2f2598e7d40677870c6713bf684b802d68e468082c8dacd4da724cd9",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.25,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[106, 293, 494, 360],
+					[194, 375, 406, 442]
+				],
+				"subtitle": [
+					[163, 514, 437, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				253,
+				542
 			]
 		},
 		"hi/the-secret-of-guidance": {
@@ -18767,6 +18966,34 @@
 				449
 			]
 		},
+		"ko/men-who-moved-heaven": {
+			"ground": "57504bd7d339067fd8b2d5043412d67604202a936b01f23ffe0cd51dd54a2e8d",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "231cba589991ea333f65c191e7252525b7b78a9407ccaae1cead9d9c72e9ced5",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[148, 308, 452, 384],
+					[177, 374, 423, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ko/mortification-of-sin": {
 			"ground": "3d4cfd0977e2b90c557e84477f7f222369c0532f55c348d784a38e8f979eba35",
 			"style": "press",
@@ -19028,6 +19255,33 @@
 			"bar": 0,
 			"caps": false
 		},
+		"ko/purity-of-heart": {
+			"ground": "6a3d928fc9e88f374a18a16ed25f12f6338c6a2e52b6f2b1d5c01e777dac376a",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[91, 342, 509, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"ko/purpose-in-prayer": {
 			"ground": "937f9b9447796ac8142b0000e0d1fb38bc6a0f0f3472125720723888964b4ef9",
 			"style": "devotional",
@@ -19155,6 +19409,34 @@
 			"middle": [
 				295,
 				500
+			]
+		},
+		"ko/talks-to-the-farmer-teens": {
+			"ground": "9a90168eeae02750ca76eb830760a8c2abb3948fe952a5a2dfc3816fe3841520",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "f5171979b05e6da70fd21e59da61a9c08e341e34de3e3d90cb3760110a1df0c8",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[115, 284, 485, 381],
+					[80, 368, 520, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
 			]
 		},
 		"ko/the-bruised-reed": {
@@ -21046,6 +21328,34 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"lg/talks-to-the-farmer-teens": {
+			"ground": "0ae666f91c0aa04a3e6306faf68221557658677ea804aef79af8ea1f64c098de",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[159, 300, 441, 382],
+					[128, 371, 472, 453]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
 			]
 		},
 		"lg/the-bruised-reed": {
@@ -24582,6 +24892,37 @@
 				545
 			]
 		},
+		"pt/tell-me-the-story-1": {
+			"ground": "dc2af3a0d0dfd40ef8fb71a99f4af4750eec2253a6694886be05bc2f04074a40",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 287, 308, 331],
+					[49, 362, 551, 437]
+				],
+				"subtitle": [
+					[90, 492, 510, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"pt/the-bruised-reed": {
 			"ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
 			"style": "press",
@@ -27915,6 +28256,38 @@
 			"middle": [
 				250,
 				545
+			]
+		},
+		"sw/tell-me-the-story-1": {
+			"ground": "40327324d5e197c2050351b73cc962dff54cd82ab3f3087a4eb7b40a27299ea4",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 273, 308, 317],
+					[86, 348, 514, 423]
+				],
+				"subtitle": [
+					[173, 478, 427, 506],
+					[159, 506, 441, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
 			]
 		},
 		"sw/the-bruised-reed": {
@@ -31518,6 +31891,34 @@
 			"bar": 0,
 			"caps": false
 		},
+		"uk/purity-of-heart": {
+			"ground": "8e223d787aafc651d29ae26f76ca16fa8a4b0db194ce3388e722cb300eb7f7af",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[151, 307, 449, 404],
+					[198, 390, 402, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
+		},
 		"uk/purpose-in-prayer": {
 			"ground": "27c32b63acbfdf43f9e7a56044aecc4382f67017057590914a01413eadbe82c6",
 			"style": "devotional",
@@ -31657,6 +32058,66 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"uk/talks-to-the-farmer-teens": {
+			"ground": "0ae171f5a528b0b0724b8b6174a762eb815be23dea69be1cab793ab83366708c",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[182, 299, 418, 381],
+					[128, 370, 472, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
+		"uk/tell-me-the-story-1": {
+			"ground": "761c7fafd30d54ba9634d8eb90104d2b076a3be49e230ebbc6bccd39ca72bea3",
+			"style": "young",
+			"volume": "1",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 256, 308, 300],
+					[196, 331, 404, 406],
+					[149, 393, 451, 468]
+				],
+				"subtitle": [
+					[124, 523, 476, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
 		},
 		"uk/the-god-of-all-comfort": {
 			"ground": "9d0665cf94488f9c7759a6f02a791c8d4079b4743270942165cf52374c8c48d3",
@@ -32669,6 +33130,35 @@
 				482
 			]
 		},
+		"vi/men-who-moved-heaven": {
+			"ground": "43d11ab0ed8a7b1f56d8d7f96c1bae09fd545633578705cfeb11fb798698cfd1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[107, 275, 493, 351],
+					[121, 341, 479, 417],
+					[42, 407, 558, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"vi/mortification-of-sin": {
 			"ground": "cb1f4bf6b1f5779c4066460d7cadf6579b132cbf220dc11ff2efec50a2d60eaf",
 			"style": "press",
@@ -32934,6 +33424,34 @@
 			"bar": 0,
 			"caps": false
 		},
+		"vi/purity-of-heart": {
+			"ground": "c65323bca9b4570032d8516cfca9da258ed7545cde9fd4e25ce1d00a822b55c3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[159, 321, 441, 403],
+					[140, 391, 460, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"vi/purpose-in-prayer": {
 			"ground": "58ff9c211f7eaed32f367b5c37c8a4745a34653d7b229e49df135ffa9562feca",
 			"style": "devotional",
@@ -33062,6 +33580,34 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"vi/talks-to-the-farmer-teens": {
+			"ground": "9d8c7e3e6dfbcdf77cc0c0103ea0b5beb2b71a37277ba227b456b9cf61aef1ec",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[135, 300, 465, 382],
+					[109, 371, 491, 453]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				250,
+				545
 			]
 		},
 		"vi/the-bruised-reed": {
