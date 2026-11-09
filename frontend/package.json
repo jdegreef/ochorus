@@ -42,7 +42,7 @@
 	"devDependencies": {
 		"@capacitor/cli": "8.6.0",
 		"@eslint/js": "^9.39.5",
-		"@inlang/paraglide-js": "^2.29.3",
+		"@inlang/paraglide-js": "^3.2.0",
 		"@playwright/test": "^1.65.0",
 		"@resvg/resvg-js": "^2.6.2",
 		"@sentry/bundler-plugins": "^11.0.0",
