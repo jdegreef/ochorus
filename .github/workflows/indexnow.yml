@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: frontend/.nvmrc
 
@@ -40,7 +40,7 @@ jobs:
       # run saves under its own key and restores the newest by prefix. Evicted
       # (7 days unused) or never saved: the script falls back to --since.
       - name: Restore last run's sitemap state
-        uses: actions/cache/restore@v6
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: frontend/indexnow-state.json
           key: indexnow-state-${{ github.run_id }}
@@ -58,7 +58,7 @@ jobs:
       # Only after a successful submit (the default `if: success()`): a failed
       # run leaves the old state, so the next run retries what this one missed.
       - name: Save sitemap state
-        uses: actions/cache/save@v6
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: frontend/indexnow-state.json
           key: indexnow-state-${{ github.run_id }}

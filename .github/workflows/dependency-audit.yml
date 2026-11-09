@@ -1,0 +1,67 @@
+name: Dependency audit
+
+# Known-vulnerability scan of what production actually installs: the API's
+# locked Python packages (backend/uv.lock, dev group excluded) and the
+# frontend's runtime npm packages (dev tooling excluded — it never ships).
+#
+# Dependabot only proposes version bumps on a weekly schedule; nothing failed a
+# build when a pinned package had a published advisory. When this was added
+# (2026-11-08) the lock held pyjwt 2.13.0 — the library that validates every
+# sign-in token — with 15 advisories, plus pillow, djangorestframework,
+# cryptography and urllib3.
+#
+# Not a required PR check on every PR, deliberately: a new advisory against an
+# untouched package would then turn ~80 unrelated PRs a day red at once. So it
+# runs on a PR only when a lockfile changes (that PR is the one introducing the
+# versions), and daily on main, where a failure is the signal to bump.
+on:
+  pull_request:
+    paths:
+      - backend/uv.lock
+      - backend/pyproject.toml
+      - frontend/package-lock.json
+      - frontend/package.json
+      - .github/workflows/dependency-audit.yml
+  schedule:
+    - cron: '41 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: backend
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
+      - name: Audit locked production packages
+        # --no-deps: the export is already the full resolved set, so pip-audit
+        # need not re-resolve (or install) anything.
+        run: |
+          uv export --frozen --no-dev --no-hashes --no-emit-project > "$RUNNER_TEMP/requirements.txt"
+          uvx pip-audit --requirement "$RUNNER_TEMP/requirements.txt" --disable-pip --no-deps --progress-spinner off
+
+  npm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: frontend
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: frontend/.nvmrc
+      - name: Audit runtime packages (high and critical)
+        # Reads the lockfile; installs nothing. Low/moderate advisories in
+        # runtime packages are left to Dependabot's weekly bumps.
+        run: npm audit --omit=dev --audit-level=high
