@@ -122,6 +122,7 @@ import {
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverTitle, editionOf } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
+import { groundLift } from '../src/lib/coverLift.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { framedBar, groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
@@ -276,6 +277,8 @@ function needTwins() {
 				// reads. A card drawn without this wears the strength the palest
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
+				// And how far a dark painting is brightened, from the same table.
+				lift: isArtCover(cover) ? groundLift(fields.slug) : 1,
 				// A painting's composition; a plate takes none.
 				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug, fields.title) : null
 			};
@@ -627,6 +630,14 @@ function inputs(book, ground) {
  * against. There is still no way to mount Svelte in here — there is just no
  * longer anything left in here to keep in step by hand.
  */
+/** The ground's own custom properties, as `BookCover` writes them. */
+function groundStyle(book) {
+	const style = [book.bar ? `--ground-bar: ${book.bar}` : '', book.lift !== 1 ? `--ground-lift: ${book.lift}` : '']
+		.filter(Boolean)
+		.join('; ');
+	return style ? ` style="${style}"` : '';
+}
+
 function coverPage(book, groundBytes) {
 	// A painting is an <img> so `object-fit` can crop it — typed by its file,
 	// since a ground under `covers/art/` may be a drawn SVG (the ORIGINAL_SVG_GROUND
@@ -634,7 +645,7 @@ function coverPage(book, groundBytes) {
 	// inlined, which is what lets its gradient and emblem paint at any size
 	// without a second file. Neither carries a word.
 	const ground = book.art
-		? `<img class="ground cover-ground"${book.bar ? ` style="--ground-bar: ${book.bar}"` : ''} src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
+		? `<img class="ground cover-ground"${groundStyle(book)} src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
 	return `<style>${cardFontCss(book)}${COVER_CSS}
 html,body{margin:0}
@@ -799,6 +810,8 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              `prayer-the-pulse-of-life` from 0.30 to 0.90, and moving
  *              `godliness` alone redrew nothing at all — its seven translated
  *              cards kept the old wash with every gate green.
+ *   `lift`   — how far a dark painting is brightened (`coverLift.ts`), per
+ *              slug; moved by the same tuner run that moves `scrim`.
  *   `script` — which face the title is set in (`faceScriptOf`, not the
  *              recipe-correction table). Derived from the language, so it
  *              moves only if that table does; a twin whose LANGUAGE changed is a
@@ -829,6 +842,7 @@ function made(book, groundBytes) {
 		fonts: fontDigest(book),
 		art: book.art,
 		scrim: book.scrim,
+		lift: book.lift,
 		layout: layoutKey(book.layout, book.top, book.dark),
 		bar: book.bar,
 		caps: book.caps

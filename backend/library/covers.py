@@ -341,6 +341,49 @@ def scrimmed(ground, strength: float, middle: tuple[int, int], subtitle: bool):
     )
 
 
+# ── The lift: the darkest paintings, brightened ────────────────────────────
+#
+# A shelf jumps between near-black old paintings and bright illustrations. The
+# darkest paintings are brightened toward the library's median, and nothing is
+# ever darkened: the bright illustrated covers keep their colour (design review,
+# 2026-11, variant "D" of the shelf-evening mock).
+#
+# KEYED TO THE ARTWORK, not to the scrim: ``ground_lift`` reads the painting's
+# own mean brightness, so a re-tuned scrim never moves it and the tuner can lift
+# first and tune second without chasing itself. The page applies it as CSS
+# `brightness()` on the ground (`cover-type.css`, `--ground-lift`), which
+# Chromium computes as a clamped multiply on the 8-bit sRGB values — exactly
+# ``lifted`` — and the contrast gate measures the lifted painting.
+
+#: The library's median painting brightness (mean 8-bit luma at 600x800,
+#: measured 2026-11-08 over the 282 paintings under a scrim). A painting darker
+#: than this is lifted toward it; one at or above it is left alone.
+LIFT_TARGET = 88
+#: How much of the gap is closed: 1 would bring every dark painting to the
+#: median, which flattens a night scene into dusk.
+LIFT_EXPONENT = 0.75
+#: The most any painting is brightened; past this a near-black canvas shows
+#: its craquelure and its highlights blow out.
+LIFT_MAX = 1.45
+
+
+def ground_lift(image) -> float:
+    """How far to brighten one painting (an RGB image at the plate's size):
+    1.0 for none, else up to `LIFT_MAX`, in steps of 0.05 rounded down."""
+    from PIL import ImageStat
+
+    mean = ImageStat.Stat(image.convert("L")).mean[0]
+    k = LIFT_MAX if mean <= 0 else min(LIFT_MAX, (LIFT_TARGET / mean) ** LIFT_EXPONENT)
+    return max(1.0, math.floor(k * 20 + 1e-9) / 20)
+
+
+def lifted(image, k: float):
+    """``image`` as the page draws it under `brightness(k)`."""
+    if k == 1.0:
+        return image
+    return image.point(lambda v: min(255, round(v * k)))
+
+
 #: The light a glow lays down: the warm white of a low sun.
 GLOW_LIGHT = (255, 248, 222)
 
