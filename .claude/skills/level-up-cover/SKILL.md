@@ -188,6 +188,12 @@ prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
+- **Dark paintings are lifted (2026-11).** `tune_art_scrim.py` also writes
+  `library/art_lift.py` + `coverLift.ts`: `covers.ground_lift` brightens a
+  painting darker than the library median (88) toward it, up to 1.45x, never
+  darkening, and the scrim is tuned over the LIFTED picture. It is keyed to the
+  artwork, so a new or recropped painting just needs the usual tuner run; the
+  gate fails by name if a lift no longer matches its file.
 - **The halo is part of the scrim (2026-11).** White type over a painting wears
   its own soft shadow (`cover-type.css`, THE HALO), and the contrast gate counts
   it: `covers.ink_contrast` lays `cover_halo.HALO` (the least darkness it leaves

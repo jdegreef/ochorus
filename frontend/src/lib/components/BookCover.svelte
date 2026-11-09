@@ -6,6 +6,7 @@
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { framedBar, groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
+	import { groundLift } from '$lib/coverLift';
 	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
@@ -196,6 +197,14 @@
 	const bar = $derived(
 		layout ? groundBar(book.cover_url) : isArt ? framedBar(book.cover_url) : 0
 	);
+	/** How far a dark painting is brightened (`coverLift.ts`); `cover-type.css`
+	 *  applies it under a scrim only. */
+	const lift = $derived(isArt ? groundLift(book.slug) : 1);
+	const groundStyle = $derived(
+		[bar ? `--ground-bar: ${bar}` : '', lift !== 1 ? `--ground-lift: ${lift}` : '']
+			.filter(Boolean)
+			.join('; ') || undefined
+	);
 </script>
 
 <!-- The cover's type. Identical over a painting, over a plate file and over the
@@ -292,7 +301,7 @@
 			onload={(e) => onLoaded(e.currentTarget as HTMLImageElement)}
 			onerror={() => (failedUrl = book.cover_url)}
 			use:whenComplete={source}
-			style={bar ? `--ground-bar: ${bar}` : undefined}
+			style={groundStyle}
 			class="cover-ground absolute inset-0 h-full w-full {needsMat
 				? 'object-contain'
 				: 'object-cover'}"
