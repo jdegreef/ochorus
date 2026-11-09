@@ -2334,8 +2334,14 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
+        from library.art_lift import ART_LIFT
         from library.art_scrim import ART_SCRIM
-        from library.covers import painting_contrast, painting_editions
+        from library.covers import (
+            ground_lift,
+            lifted,
+            painting_contrast,
+            painting_editions,
+        )
 
         art_dir = STATIC_DIR / "covers" / "art"
         # EVERY FRAMED EDITION as it was laid out: its own lines, and its own
@@ -2345,7 +2351,7 @@ class CoverAssetTests(SimpleTestCase):
         # and 20 of its 26 editions set white type on pale art with this green.
         # A painting only laid-out editions wear carries no scrim, so is absent.
         editions = painting_editions(self.books)
-        thin, untuned = [], []
+        thin, untuned, stale_lift = [], [], []
         for path in sorted(art_dir.glob("*.jpg")):
             # No edition wears it under a scrim (laid out, or a dark-ink ground —
             # `test_dark_ink_grounds_carry_their_type` measures that ink).
@@ -2363,10 +2369,17 @@ class CoverAssetTests(SimpleTestCase):
             # used to measure the byline and the title and stop; the subtitle
             # and the brandmark were not measured at all, and 36 of 38 paintings
             # were under 4.5:1 under the subtitle.
+            # AS THE PAGE DRAWS IT: brightened by its lift (`covers.ground_lift`),
+            # which is re-derived from the artwork here so a recrop cannot leave
+            # a painting lifted by a number measured on the picture it replaced.
+            image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
+            lift = ART_LIFT.get(path.stem, 1.0)
+            if ground_lift(image) != lift:
+                stale_lift.append(f"{path.stem}: table {lift:.2f}, artwork {ground_lift(image):.2f}")
             bad = [
                 f"{name} {got:.2f}:1 on {key} (needs {bar})"
                 for name, (got, bar, key) in painting_contrast(
-                    Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
+                    lifted(image, lift),
                     ART_SCRIM.get(path.stem, 1.0),
                     path.stem,
                     editions[path.stem],
@@ -2381,6 +2394,11 @@ class CoverAssetTests(SimpleTestCase):
             "a painting too pale for the ink it carries under the scrim it is "
             "given — re-run `cd backend && uv run python scripts/tune_art_scrim.py`, "
             "or recrop the artwork if no strength carries it",
+        )
+        self.assertEqual(
+            stale_lift, [],
+            "a painting's brightness lift no longer matches its artwork — run "
+            "`cd backend && uv run python scripts/tune_art_scrim.py`",
         )
         self.assertEqual(
             untuned, [],

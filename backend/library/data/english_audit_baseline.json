@@ -330,7 +330,7 @@
    "orphan-close-quote": 2
   },
   "on-loving-god": {
-   "lost-paragraphing": 2
+   "lost-paragraphing": 3
   },
   "on-the-holy-spirit": {
    "lost-paragraphing": 12
@@ -396,8 +396,7 @@
    "orphan-close-quote": 1
   },
   "purity-of-heart": {
-   "orphan-close-quote": 1,
-   "run-together": 1
+   "orphan-close-quote": 1
   },
   "reality-and-religion": {
    "space-before-punct": 2

@@ -1280,6 +1280,18 @@
 	scale: calc(1 / (1 - 2 * var(--ground-bar, 0)));
 }
 
+/* THE LIFT — the darkest paintings, brightened (2026-11). A shelf jumped from
+   near-black canvases to bright illustrations; a dark painting is now lifted
+   toward the library's median, never darkened, by `--ground-lift` (set on the
+   ground from `coverLift.ts`, `covers.ground_lift` in Python). Under a scrim
+   only — where the scrim strength it was tuned with is in force; a layout and
+   a dark-ink ground show their paintings as they are. `brightness()` is a
+   clamped multiply on the sRGB values, which is what the contrast gate
+   applies (`covers.lifted`). */
+.cover-ground:has(~ .cover-plate.over-art:not(.has-layout, .ink-dark)) {
+	filter: brightness(var(--ground-lift, 1));
+}
+
 /* ── band: a colour band with the mark, the title on paper, the painting below.
    The band is 20cqw (15% of the 133.3cqw plate), the paper runs to 55%, and a
    rule of the band colour closes it. */
