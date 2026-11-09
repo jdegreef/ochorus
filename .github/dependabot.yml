@@ -46,6 +46,17 @@ updates:
         update-types: ["version-update:semver-major"]
 
   # The CI / prerender-audit workflows' own action versions.
+  # The API image's base and the pinned uv binary (backend/Dockerfile).
+  - package-ecosystem: "docker"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    groups:
+      docker:
+        patterns: ["*"]
+
+  # Actions are pinned to commit SHAs (with the version in a trailing comment);
+  # Dependabot bumps both together.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
