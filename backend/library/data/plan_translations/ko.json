@@ -148,5 +148,12 @@
   "note": [
    "The title quotes the shipped ko edition faithful-with-little.ko.json verbatim (작은 일에 신실하게), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
   ]
+ },
+ "voices-of-the-early-church": {
+  "title": "초대 교회의 목소리",
+  "description": "초대 그리스도교 몇 세기를 그들 자신의 말로 듣습니다. 로마의 클레멘스는 사도들의 세대가 아직 살아 있을 때 로마 교회의 이름으로 편지를 쓰고, 안디옥의 이그나티우스는 순교의 길 위에서 편지를 보내며, 알렉산드리아의 아타나시우스는 『성육신에 관하여』에서 신앙의 핵심, 곧 하나님께서 친히 사람이 되신 까닭을 펼쳐 보입니다. 넉 달가량 이어지는 짧은 날마다의 읽기입니다.",
+  "note": [
+   "Queue batch 5: first-epistle-of-clement.ko completes the plan's three ko sources (epistles-of-ignatius.ko, on-the-incarnation.ko already shipped). Book title quoted as shipped (『성육신에 관하여』); names follow the ko editions (클레멘스, 이그나티우스, 아타나시우스). AI-drafted, ai_unreviewed in spirit."
+  ]
  }
 }
