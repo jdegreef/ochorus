@@ -575,6 +575,7 @@ class FixtureSourceDefectTests(SimpleTestCase):
     def test_every_registered_source_fix_is_already_applied_to_the_fixture(self):
         from library.content_fixtures import load_all_rows
         from library.source_fixes import SOURCE_FIXES, apply_source_fixes
+        from library.text import html_to_text
 
         chapters = [
             r["fields"] for r in load_all_rows() if r.get("model") == "library.chapter"
@@ -590,12 +591,18 @@ class FixtureSourceDefectTests(SimpleTestCase):
             )
             for chapter in editions:
                 language = chapter["book"][1]
-                for field in ("body_html", "body_text"):
+                # body_text is no longer stored (save() and backfill_body_text
+                # derive it), so check the text it will be derived as.
+                stored = {
+                    "body_html": chapter["body_html"],
+                    "body_text": html_to_text(chapter["body_html"]),
+                }
+                for field, text in stored.items():
                     # assertTrue, not assertEqual: these bodies run to tens of
                     # thousands of characters, and the useful thing on failure
                     # is which edition regressed, not a diff nobody can read.
                     self.assertTrue(
-                        apply_source_fixes(slug, order, chapter[field]) == chapter[field],
+                        apply_source_fixes(slug, order, text) == text,
                         f"{language} {slug} ch{order:02d} {field} ships with the "
                         f"uncorrected source text — the repair would still change it",
                     )

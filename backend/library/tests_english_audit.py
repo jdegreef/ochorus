@@ -810,6 +810,7 @@ class CorrectionsHygieneTests(SimpleTestCase):
 
         from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
         from library.corrections import BODY_CORRECTIONS, PARAGRAPH_BREAK
+        from library.text import html_to_text
 
         # The FIELD VALUES, not the serialized file: `json.dumps` escapes every
         # `"` as `\"`, so a correction whose text contains a double quote — the
@@ -818,13 +819,20 @@ class CorrectionsHygieneTests(SimpleTestCase):
         # to notice a pair that protects nothing.
         paths = list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
 
+        # Plus each body's derived plain text: some pairs are tagless, spanning
+        # a tag the way `body_text` does, and the fixture no longer stores
+        # `body_text` (save() and backfill_body_text derive it), so derive it.
+        def values(fields):
+            yield from (v for v in fields.values() if isinstance(v, str))
+            if fields.get("body_html"):
+                yield html_to_text(fields["body_html"])
+
         def text_of(files):
             return "\n".join(
                 value
                 for path in files
                 for row in json.loads(path.read_text(encoding="utf-8"))
-                for value in (row.get("fields") or {}).values()
-                if isinstance(value, str)
+                for value in values(row.get("fields") or {})
             )
 
         # Each pair is looked for in its own work's files first (`<slug>.<lang>.json`),
