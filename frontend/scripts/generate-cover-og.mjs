@@ -783,6 +783,8 @@ async function measureInk(page) {
 		take('title', '.cover-type .middle > .volume', true);
 		take('title', '.cover-type .title', true);
 		take('subtitle', '.cover-type .subtitle', true);
+		// A young edition's "— For Teens —" line: small white type, like the subtitle.
+		take('edition', '.cover-type .edition', true);
 		take('mark', '.cover-type .brandmark svg', false);
 		// And the block the scrim's band hangs off (`.middle::after`), so the
 		// Python model can put the band where this edition's words put it.
