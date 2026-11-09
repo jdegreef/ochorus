@@ -1,0 +1,742 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-hannah-whitall-smith",
+ "language": "es",
+ "job_issue": 7153,
+ "references": [
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json"
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "mined",
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "source_file": "the-golden-key-of-prayer.es.json"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:6-7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "feasting-at-the-table.es.json"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json"
+  },
+  {
+   "reference": "Isaiah 64:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 18:4",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "christ-the-healer.es.json"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "mined",
+   "source_file": "susanna-wesley-clarke.es.json"
+  },
+  {
+   "reference": "2 Peter 1:5",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json"
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "enchiridion.es.json"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.es.json"
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "way-into-holiest.es.json"
+  },
+  {
+   "reference": "Matthew 23:19",
+   "status": "mined",
+   "source_file": "ten-commandments.es.json"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "mined",
+   "source_file": "key-teachings-of-andrew-murray.es.json"
+  },
+  {
+   "reference": "Romans 4:3",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json"
+  },
+  {
+   "reference": "1 John 5:9",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json"
+  },
+  {
+   "reference": "Hebrews 10:23",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "enchiridion.es.json"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "Psalm 119:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Psalm 57:7",
+   "status": "mined",
+   "source_file": "a-serious-call.es.json"
+  },
+  {
+   "reference": "Romans 6:16",
+   "status": "mined",
+   "source_file": "the-reformed-pastor.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "John 20:29",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json"
+  },
+  {
+   "reference": "1 John 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 50:10",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "Psalm 42:11",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-3.es.json"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "till-he-come.es.json"
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.es.json"
+  },
+  {
+   "reference": "Matthew 10:29-30",
+   "status": "mined",
+   "source_file": "possibilities-of-prayer.es.json"
+  },
+  {
+   "reference": "Genesis 45:8",
+   "status": "mined",
+   "source_file": "possibilities-of-prayer.es.json"
+  },
+  {
+   "reference": "2 Kings 6:16",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "the-life-of-trust.es.json"
+  },
+  {
+   "reference": "Hebrews 13:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json"
+  },
+  {
+   "reference": "James 1:13",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.es.json"
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "Psalm 121:7-8",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Psalm 68:17",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json"
+  },
+  {
+   "reference": "James 1:2-4",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Song of Solomon 3:10",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Psalm 20:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Psalm 32:8",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.es.json"
+  },
+  {
+   "reference": "John 10:4",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Isaiah 8:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:1",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json"
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-2.es.json"
+  },
+  {
+   "reference": "Romans 14:23",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "1 Corinthians 14:33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "source_file": "rooted-4.es.json"
+  },
+  {
+   "reference": "James 1:12",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json"
+  },
+  {
+   "reference": "Joshua 7:10",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json"
+  },
+  {
+   "reference": "Luke 15:4-5",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "2 Corinthians 7:10",
+   "status": "mined",
+   "source_file": "morning-by-morning.es.json"
+  },
+  {
+   "reference": "Jude 1:22",
+   "status": "mined",
+   "source_file": "key-teachings-of-jonathan-edwards.es.json"
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "mined",
+   "source_file": "rooted-6.es.json"
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "Jeremiah 17:7-8",
+   "status": "mined",
+   "source_file": "order-and-argument-in-prayer.es.json"
+  },
+  {
+   "reference": "Matthew 6:28-29",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-2.es.json"
+  },
+  {
+   "reference": "Mark 4:26-27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "1 Corinthians 3:6-7",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Hebrews 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "mined",
+   "source_file": "rooted-6.es.json"
+  },
+  {
+   "reference": "John 14:21",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json"
+  },
+  {
+   "reference": "Matthew 11:29-30",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "John 15:14-15",
+   "status": "mined",
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "Isaiah 62:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zephaniah 3:17",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Matthew 12:50",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "Luke 17:10",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "Romans 14:4",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json"
+  },
+  {
+   "reference": "1 John 5:3",
+   "status": "mined",
+   "source_file": "grace-for-grace-2.es.json"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.es.json"
+  },
+  {
+   "reference": "John 17:21",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "the-fourfold-gospel.es.json"
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "source_file": "the-fourfold-gospel.es.json"
+  },
+  {
+   "reference": "Matthew 7:17",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "1 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "treatises-of-cyprian.es.json"
+  },
+  {
+   "reference": "2 Corinthians 1:3-4",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "John 10:11",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Ezekiel 34:16",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Psalm 103:13-14",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Isaiah 66:13",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Isaiah 49:15",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "mined",
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json"
+  },
+  {
+   "reference": "Lamentations 3:40",
+   "status": "mined",
+   "source_file": "the-gospel-of-healing.es.json"
+  },
+  {
+   "reference": "Psalm 23:6",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.es.json"
+  },
+  {
+   "reference": "John 14:9",
+   "status": "mined",
+   "source_file": "the-unselfishness-of-god.es.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "the-fourfold-gospel.es.json"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "source_file": "rooted-1.es.json"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "freedom-of-the-will.es.json"
+  },
+  {
+   "reference": "Acts 3:21",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json"
+  },
+  {
+   "reference": "Matthew 25:46",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Deuteronomy 29:29",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Psalm 145:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Psalm 62:5-6",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Psalm 73:25-26",
+   "status": "mined",
+   "source_file": "plain-account-christian-perfection.es.json"
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Lamentations 3:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "key-teachings-of-watchman-nee.es.json"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.es.json"
+  }
+ ]
+}

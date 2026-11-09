@@ -4551,6 +4551,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"ar/daughters-of-the-king-1": {
+			"ground": "7ae4eeb1a45835ffcd65a376a90e2f1d6e8a6d017964a7dcc9982c88645ab7bb",
+			"style": "young",
+			"volume": "1",
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/divine-healing": {
 			"ground": "a4de311c632ba5129bdc21772259eed1a83825f793a401761e69b1cf5d8ef484",
 			"style": "devotional",
@@ -4576,6 +4589,19 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false
+		},
+		"ar/feasting-at-the-table": {
+			"ground": "85fa2dca5229d072042934948a636976ef9bf45bab29b98b48f88d79f7032e9c",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"ar/gleanings-among-the-sheaves": {
 			"ground": "3f9a60c3d07f8e91707b12b09664a85d120dc2b139a57b4100ab535935aa26f3",
@@ -4729,6 +4755,73 @@
 			"middle": [
 				300,
 				495
+			]
+		},
+		"ar/key-teachings-of-gareth-evans": {
+			"ground": "ebc03c4a1419c3e5f3ebadd399462f4805a8d133e49fe05c88fe507b890e58c7",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[250, 105, 350, 134]
+				],
+				"title": [
+					[57, 192, 543, 255]
+				],
+				"subtitle": [
+					[164, 323, 292, 362],
+					[292, 323, 366, 362],
+					[366, 323, 436, 362]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				185,
+				359
+			]
+		},
+		"ar/key-teachings-of-richard-baxter": {
+			"ground": "f1c0da7f0a95c26c6d599cd5e89ebb0451c194a69ede14250c5158b261382153",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[237, 105, 363, 134]
+				],
+				"title": [
+					[170, 192, 430, 255],
+					[166, 269, 434, 332]
+				],
+				"subtitle": [
+					[164, 400, 292, 439],
+					[292, 400, 366, 439],
+					[366, 400, 436, 439]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				185,
+				437
 			]
 		},
 		"ar/life-and-diary-of-david-brainerd": {
@@ -5351,6 +5444,38 @@
 			"middle": [
 				265,
 				530
+			]
+		},
+		"ar/tell-me-the-story-1": {
+			"ground": "0a9226627464293c0130b64ee3b21661f53a56ae9e153bbfd0db20f698e2da5b",
+			"style": "young",
+			"volume": "1",
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 268, 308, 312],
+					[108, 357, 492, 438]
+				],
+				"subtitle": [
+					[167, 502, 433, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				256,
+				539
 			]
 		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
@@ -8459,6 +8584,40 @@
 				460
 			]
 		},
+		"es/key-teachings-of-hannah-whitall-smith": {
+			"ground": "bfc72b6b9093011469ef5fa6855cfc35bb9f131901eabc5de4367db581ed354c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[93, 225, 507, 288],
+					[123, 280, 477, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"es/key-teachings-of-jonathan-edwards": {
 			"ground": "f90ce5862c82a85e8131357b4c1e0a2bbfc9b609e755dea500f9df6c0b216dc9",
 			"style": "originals",
@@ -9336,6 +9495,39 @@
 			"layout": "split/navy",
 			"bar": 0.02,
 			"caps": false
+		},
+		"es/real-questions-1": {
+			"ground": "2b3fdfeaaa0da0302b25f9d1a1eb4f022d7e4ff22249949c884aeb427ba3561e",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[47, 347, 553, 423]
+				],
+				"subtitle": [
+					[115, 481, 485, 509],
+					[107, 509, 493, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"es/reality-of-prayer": {
 			"ground": "9804e6b4963da55045d6cb3c082d2e1b57a178d8dee21ccef7f048a64ea85cc2",
@@ -10473,6 +10665,39 @@
 			"middle": [
 				325,
 				469
+			]
+		},
+		"es/they-were-young-1": {
+			"ground": "0cdeb6a49154b3ae1b5613bd07ccf1c7697fbb1e4b8162682fac2e610cee961e",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[108, 347, 492, 423]
+				],
+				"subtitle": [
+					[140, 481, 460, 509],
+					[172, 509, 428, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
 			]
 		},
 		"es/things-as-they-are": {
@@ -13919,6 +14144,39 @@
 			"bar": 0.02,
 			"caps": false
 		},
+		"fr/real-questions-1": {
+			"ground": "684a6f8fd058816232cc0023d8f7aa7e757665f00abb181e39129a19cdb809e3",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[53, 347, 547, 423]
+				],
+				"subtitle": [
+					[107, 481, 493, 509],
+					[136, 509, 464, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
 		"fr/religious-affections": {
 			"ground": "e9a28775856619614d544456f6cd16fad58a0fe53e5ab42ee01c1f78b9ce7ac3",
 			"style": "enlightenment",
@@ -14274,6 +14532,19 @@
 				290,
 				505
 			]
+		},
+		"fr/separation-and-service": {
+			"ground": "6fbf4755a2eb65b77c3ded19dec9a2398ad29cfe5de3b3a0eea4bfb343f7ad88",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "rail/teal",
+			"bar": 0,
+			"caps": false
 		},
 		"fr/sermons-on-several-occasions": {
 			"ground": "185cd593904fb19d33a2fbe85cae0b73db992fbe815fe7993bf89fa9a7053503",
@@ -15934,6 +16205,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"hi/daughters-of-the-king-1": {
+			"ground": "0ede6ece57955175842da26c2be13fa6394255e5097468c1fdae941133d3c3f8",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/divine-healing": {
 			"ground": "b4a55c076d68456f5a23110c93c75a2c872c5445b0e0a8228910f6594ce7dd62",
 			"style": "devotional",
@@ -16202,6 +16486,69 @@
 			"middle": [
 				173,
 				350
+			]
+		},
+		"hi/key-teachings-of-gareth-evans": {
+			"ground": "c23332ae6699cc9c92050d89d2c7e28ba531fe284cb19a16a45de535b7da1794",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[231, 102, 369, 131]
+				],
+				"title": [
+					[44, 185, 556, 248]
+				],
+				"subtitle": [
+					[71, 326, 529, 348]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				177,
+				354
+			]
+		},
+		"hi/key-teachings-of-richard-baxter": {
+			"ground": "fe0ed7ab9e110aa07364519ff8cc6fcdf566a3f44df49f8928d2ff59da2b5836",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[217, 102, 383, 131]
+				],
+				"title": [
+					[174, 185, 426, 248],
+					[151, 265, 449, 328]
+				],
+				"subtitle": [
+					[71, 406, 529, 428]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				177,
+				434
 			]
 		},
 		"hi/life-and-diary-of-david-brainerd": {
@@ -16766,6 +17113,38 @@
 			"middle": [
 				266,
 				528
+			]
+		},
+		"hi/tell-me-the-story-1": {
+			"ground": "7e3111f977b9a3e6cad47063fc785c4e328435ddb53dac47c92d28165a435e8e",
+			"style": "young",
+			"volume": "1",
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 274, 308, 318],
+					[105, 362, 495, 431]
+				],
+				"subtitle": [
+					[162, 504, 438, 526]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				262,
+				533
 			]
 		},
 		"hi/the-fourfold-gospel": {
@@ -19442,6 +19821,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"ko/daughters-of-the-king-1": {
+			"ground": "d4d8d8c7eb49e7d0f8620ada171b2e6d837af7df04e650745d956484034eb28f",
+			"style": "young",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "65e51b9577855c852e3e7e1e87c3be24243a2717018238fbe615ff86ca19b09b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/divine-healing": {
 			"ground": "7f55a8a937c6491b798118d5320b1187c31022f4f72665060d9378254527a649",
 			"style": "devotional",
@@ -19528,6 +19920,19 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false
+		},
+		"ko/feasting-at-the-table": {
+			"ground": "12c9cdf71befcc5426fd37e8dfd76d10992072114ab6062032e35385d19f02b8",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "2c703cc2115675a7798680425da1270bf3ea01d80b8e411ef8383e19df8c7e2b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
@@ -19694,6 +20099,70 @@
 			"middle": [
 				315,
 				480
+			]
+		},
+		"ko/key-teachings-of-gareth-evans": {
+			"ground": "cff4bcdb4ec99b52b7ba9377c67e233c04a9ba695ea4188a30ce6aa12c3a6b6a",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "db30fa83a0d651b73bfe75474a66e3b0b83f72c7a9dd41ce0d521c73920fa492",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[207, 106, 393, 135]
+				],
+				"title": [
+					[147, 174, 453, 237],
+					[142, 230, 458, 293]
+				],
+				"subtitle": [
+					[61, 357, 539, 385]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				178,
+				385
+			]
+		},
+		"ko/key-teachings-of-richard-baxter": {
+			"ground": "3ca56d9f7443d6600fbc1f2ebee37b3863b3cb708e0ce669f0098181ff13dd87",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "db30fa83a0d651b73bfe75474a66e3b0b83f72c7a9dd41ce0d521c73920fa492",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[207, 106, 393, 135]
+				],
+				"title": [
+					[147, 174, 453, 237],
+					[142, 230, 458, 293]
+				],
+				"subtitle": [
+					[61, 357, 539, 385]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				178,
+				385
 			]
 		},
 		"ko/lord-teach-us-to-pray-2": {
@@ -20158,6 +20627,35 @@
 				449
 			]
 		},
+		"ko/rise-up-men-of-god-2": {
+			"ground": "b5b2bd6daaa9465cf805282315740f3e79a8c7000b8595dcd9d0dfdadfb2615a",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b4567341479b65f2f109cd212c9e5c3fd904239b112eb9370a7635e6124e01fb",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[109, 308, 491, 384],
+					[89, 374, 511, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ko/rooted-1": {
 			"ground": "a87b6f52780c7283557703a1f0b9c9751f7be8e07128313aef1846a11c0a5667",
 			"style": "young",
@@ -20275,6 +20773,38 @@
 			"middle": [
 				235,
 				560
+			]
+		},
+		"ko/tell-me-the-story-1": {
+			"ground": "5eb41684f5434b74ffd4c6cf936e26d7c6d19626fb15c68dcc9636cc9b8c9f2b",
+			"style": "young",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 285, 308, 329],
+					[58, 360, 542, 435]
+				],
+				"subtitle": [
+					[207, 494, 393, 522]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				273,
+				522
 			]
 		},
 		"ko/the-bruised-reed": {
@@ -21268,6 +21798,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"lg/daughters-of-the-king-1": {
+			"ground": "bf7e9e5a6381943286fd8e982ade68a8d5d9ea8e4eba3918908a706ef2e7173a",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/days-of-heaven-upon-earth": {
 			"ground": "b1561f668d7d04562ad7020e3f09c9800faf2bc1990f544c432932fca622cd44",
 			"style": "revival",
@@ -21638,6 +22181,39 @@
 			"middle": [
 				178,
 				617
+			]
+		},
+		"lg/key-teachings-of-gareth-evans": {
+			"ground": "f32b016c1438b449bd15522124493542e1404a6aa3b5d9be9860bfec882f469b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[80, 169, 520, 232],
+					[98, 225, 502, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[95, 376, 505, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
 			]
 		},
 		"lg/life-and-diary-of-david-brainerd": {
@@ -22281,6 +22857,39 @@
 			"middle": [
 				250,
 				545
+			]
+		},
+		"lg/tell-me-the-story-1": {
+			"ground": "a4efa3055dfdab93c91326e74a8063d8afdec3b64dfaa08282bd016490c62138",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 273, 308, 317],
+					[66, 348, 534, 423]
+				],
+				"subtitle": [
+					[146, 478, 454, 506],
+					[175, 506, 425, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
 			]
 		},
 		"lg/the-bruised-reed": {
@@ -24696,6 +25305,19 @@
 				467
 			]
 		},
+		"pt/daughters-of-the-king-1": {
+			"ground": "dc3cc2e52e9940f94d64d7bad32bb8e96337817d968b47c5a9470ccc6b1edf1e",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"pt/days-of-heaven-upon-earth": {
 			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
 			"style": "revival",
@@ -25053,6 +25675,39 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"pt/key-teachings-of-gareth-evans": {
+			"ground": "0ccb00225f218fbb3a6fd99383459a03a6530f1d8b5e419725c9a08ca5d90762",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[131, 280, 469, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
 			]
 		},
 		"pt/key-teachings-of-richard-baxter": {
@@ -28197,6 +28852,19 @@
 				467
 			]
 		},
+		"sw/daughters-of-the-king-1": {
+			"ground": "6e054dec043b20029d1a12c39ab3d551fe17e3918099c278772e8dea80b3e6e3",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/days-of-heaven-upon-earth": {
 			"ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
 			"style": "revival",
@@ -28575,6 +29243,39 @@
 			"middle": [
 				327,
 				467
+			]
+		},
+		"sw/key-teachings-of-gareth-evans": {
+			"ground": "5e6ffc5aa0834e8003885d91d18b337d6521415c841380d2db4fa9c03b6253b5",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[96, 225, 504, 288]
+				],
+				"subtitle": [
+					[162, 348, 438, 376],
+					[155, 376, 445, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
 			]
 		},
 		"sw/life-and-diary-of-david-brainerd": {
@@ -32716,6 +33417,38 @@
 			"bar": 0,
 			"caps": false
 		},
+		"uk/a-short-and-easy-method-of-prayer": {
+			"ground": "f26854b943d7dcc665255a8bc4e4bf9d437d2563ed84d09fec2dab16fb9098b6",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[54, 266, 546, 348],
+					[98, 338, 502, 420]
+				],
+				"subtitle": [
+					[78, 496, 522, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"uk/absolute-surrender": {
 			"ground": "07423bc1c748e3f49b1230c73018e4b8ec98914aa74016f2125d5653fa95f5ea",
 			"style": "devotional",
@@ -32888,6 +33621,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"uk/daughters-of-the-king-1": {
+			"ground": "f9cfde004acad1b79a9134b24662b65cc1c9ca624402b3d8a462f875afbc3f81",
+			"style": "young",
+			"volume": "1",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/divine-healing": {
 			"ground": "1d2453716cb3bf0d448c92ecef2f279a845c359cb266db9c872072182dd2fc65",
 			"style": "devotional",
@@ -32913,6 +33659,19 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false
+		},
+		"uk/feasting-at-the-table": {
+			"ground": "bccfeb88f4a77a776c9ef7e9d19aed2a3dddc3cdb1b5b436e22537592af706bb",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"uk/gleanings-among-the-sheaves": {
 			"ground": "81443d8687b122b5926ac2cd7a50a45614c3aecfa267350b595c07a63c7ed09f",
@@ -33055,6 +33814,70 @@
 			"middle": [
 				315,
 				480
+			]
+		},
+		"uk/key-teachings-of-gareth-evans": {
+			"ground": "6e66450b910dca9298b35d26c965c460048f78425482bd2dfe946921f35c07b9",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[188, 103, 412, 132]
+				],
+				"title": [
+					[95, 171, 505, 234],
+					[127, 227, 473, 290]
+				],
+				"subtitle": [
+					[65, 351, 535, 379]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				175,
+				379
+			]
+		},
+		"uk/key-teachings-of-richard-baxter": {
+			"ground": "486d3c418d1cf9e551186ee1fef1381f4db31fdde56f6f0bcf076c01e8485688",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 103, 440, 132]
+				],
+				"title": [
+					[95, 171, 505, 234],
+					[82, 227, 518, 290]
+				],
+				"subtitle": [
+					[65, 351, 535, 379]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				175,
+				379
 			]
 		},
 		"uk/lord-teach-us-to-pray-2": {
@@ -33446,6 +34269,34 @@
 			"bar": 0,
 			"caps": true
 		},
+		"uk/talks-to-the-farmer-children": {
+			"ground": "87770c6ef68f3d243118de249c23c31eba694b07d8764862be47c5d1a77eee62",
+			"style": "young",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[47, 319, 553, 394]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				326,
+				468
+			]
+		},
 		"uk/talks-to-the-farmer-teens": {
 			"ground": "0ae171f5a528b0b0724b8b6174a762eb815be23dea69be1cab793ab83366708c",
 			"style": "revival",
@@ -33508,6 +34359,19 @@
 				551
 			]
 		},
+		"uk/the-fourfold-gospel": {
+			"ground": "eb2d07c0213f3b7d8b525af9a22cf466e1cc4cce830b3447a9ebf96c798cc65f",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/the-god-of-all-comfort": {
 			"ground": "9d0665cf94488f9c7759a6f02a791c8d4079b4743270942165cf52374c8c48d3",
 			"style": "devotional",
@@ -33562,6 +34426,34 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"uk/the-life-of-trust-children": {
+			"ground": "8b5169b9c305d12ff70c0c60a30cc73929ac7e1cb5160c78f682ed3422b16519",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[155, 102, 445, 131]
+				],
+				"title": [
+					[52, 327, 548, 424]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
 		},
 		"uk/the-masters-indwelling": {
 			"ground": "a143f7aa42dbf8a4a522110450bba6c5688089ebd2c75e5b6ac3b032fc0b4ef7",
@@ -34244,6 +35136,19 @@
 			"bar": 0.015,
 			"caps": false
 		},
+		"vi/daughters-of-the-king-1": {
+			"ground": "f4578689b51dd2c9628970321e27c8ceb65893c777145f582c6ffcebc7ff4e44",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/divine-healing": {
 			"ground": "e7cfde1dd6f0f093a5a5554b0282e6a0fc296579fb3b1af394c233e595e4c6ea",
 			"style": "devotional",
@@ -34333,6 +35238,19 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": false
+		},
+		"vi/feasting-at-the-table": {
+			"ground": "08b99fcf065cbd5938a9c3f189414a32ddb16cc02bbd0e7b809150b29e72f981",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"vi/gleanings-among-the-sheaves": {
 			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",
@@ -34475,6 +35393,40 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"vi/key-teachings-of-gareth-evans": {
+			"ground": "a01edf14c4e26081530b86c2f9e0069e91db7c2f789fa6eace657aaa018e8a9a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[119, 169, 481, 232],
+					[166, 225, 434, 288],
+					[131, 280, 469, 343]
+				],
+				"subtitle": [
+					[151, 404, 449, 432],
+					[139, 432, 461, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"vi/lord-teach-us-to-pray-2": {
@@ -34947,6 +35899,36 @@
 				389
 			]
 		},
+		"vi/rise-up-men-of-god-2": {
+			"ground": "4d37508093d8b3a641b8d4109eaaad69dbd025f7a627559cbb17e3968c937c51",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1.3,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[82, 297, 519, 356],
+					[88, 349, 512, 408],
+					[85, 401, 515, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"vi/rooted-1": {
 			"ground": "9a7095085e59d96d8053fc17a2e478fb164443b57e1f9c77ec455455c4e668eb",
 			"style": "young",
@@ -35065,6 +36047,38 @@
 			"middle": [
 				250,
 				545
+			]
+		},
+		"vi/tell-me-the-story-1": {
+			"ground": "8ac7599216b10e0cad23b98c1fd80a4be1af027fdfb1a8361a1953baa26b8058",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 287, 308, 331],
+					[74, 362, 526, 437]
+				],
+				"subtitle": [
+					[90, 492, 510, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
 			]
 		},
 		"vi/the-bruised-reed": {

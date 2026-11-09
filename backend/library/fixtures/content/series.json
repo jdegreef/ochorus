@@ -963,5 +963,291 @@
   "created_at": "2026-11-08T00:00:00Z",
   "updated_at": "2026-11-08T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "uk",
+  "title": "Доньки Царя – 30 днів з Богом для дівчат",
+  "description": "Роздуми на 30 днів для дівчат від 9 до 12 років: хто ти як донька Царя, і відважні жінки Біблії та історії, які довіряли Йому.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "pt",
+  "title": "Filhas do Rei – 30 Dias com Deus para Meninas",
+  "description": "Devocionais de 30 dias para meninas de 9 a 12 anos: quem você é como filha do Rei, e as mulheres corajosas da Bíblia e da história que confiaram nele.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "sw",
+  "title": "Binti za Mfalme – Siku 30 na Mungu kwa Wasichana",
+  "description": "Tafakari za siku 30 kwa wasichana wenye umri wa miaka 9 hadi 12: wewe ni nani kama binti wa Mfalme, na wanawake jasiri wa Biblia na wa historia waliomtumaini Yeye.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "ar",
+  "title": "بنات الملك – 30 يومًا مع الله للفتيات",
+  "description": "تأملات يومية على مدى 30 يومًا للفتيات من سن 9 إلى 12: من تكونين بصفتك ابنة الملك، والنساء الشجاعات في الكتاب المقدس وعبر التاريخ اللواتي وثقن به.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "hi",
+  "title": "राजा की बेटियाँ — लड़कियों के लिये परमेश्वर के साथ 30 दिन",
+  "description": "9 से 12 वर्ष की लड़कियों के लिये 30 दिनों की भक्ति-वार्ताएँ: राजा की बेटी के रूप में तुम कौन हो, और बाइबल तथा इतिहास की वे साहसी स्त्रियाँ जिन्होंने उस पर भरोसा रखा।",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "ko",
+  "title": "왕의 딸들 – 소녀를 위한 하나님과 함께하는 30일",
+  "description": "9세에서 12세 소녀들을 위한 30일 묵상집입니다. 왕의 딸로서 나는 누구인지, 그리고 하나님을 신뢰한 성경과 역사 속 용감한 여성들을 다룹니다.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "lg",
+  "title": "Abawala ba Kabaka – Ennaku 30 ne Katonda eri Abawala",
+  "description": "Ebyokufumiitiriza by’ennaku 30 eri abawala ab’emyaka 9 okutuuka ku 12: oli ani ng’omuwala wa Kabaka, n’abakazi abavumu ab’omu Bayibuli n’ab’omu byafaayo abaamwesiga.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "vi",
+  "title": "Con Gái Của Vua – 30 Ngày Với Đức Chúa Trời Dành Cho Các Bạn Gái",
+  "description": "Sách tĩnh nguyện 30 ngày dành cho các bạn gái từ 9 đến 12 tuổi: em là ai với tư cách là con gái của Vua, và những người phụ nữ can đảm trong Kinh Thánh và trong lịch sử đã tin cậy Ngài.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "uk",
+  "title": "Ключові вчення",
+  "description": "Короткі й вірні путівники від Ochorus до серця вчення одного класичного автора — кожен розділ завершується запитаннями й молитвою та скеровує читача до власних книжок автора.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "sw",
+  "title": "Mafundisho Makuu",
+  "description": "Miongozo mifupi na yenye uaminifu ya Ochorus kuhusu kiini cha mafundisho ya mwandishi mmoja wa kale — kila sura inamalizika kwa maswali na sala, na kumwelekeza msomaji kwenye vitabu vya mwandishi mwenyewe.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "ar",
+  "title": "التعاليم الأساسية",
+  "description": "أدلة موجزة وأمينة من Ochorus إلى لب تعليم كاتب كلاسيكي واحد، ينتهي كل فصل فيها بأسئلة وصلاة، ويقود القارئ إلى كتب المؤلف نفسه.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "ko",
+  "title": "핵심 가르침",
+  "description": "Ochorus가 펴내는 짧고 충실한 안내서로, 고전 작가 한 사람의 가르침의 핵심으로 독자를 이끕니다. 각 장은 질문과 기도로 끝나며, 독자를 그 작가가 직접 쓴 책들로 안내합니다.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "lg",
+  "title": "Enjigiriza Enkulu",
+  "description": "Obulagirizi obumpi era obwesigwa obwa Ochorus eri omutima gw’enjigiriza y’omuwandiisi omu ow’edda — buli ssuula ekomekkerezebwa n’ebibuuzo n’essaala, era esindika omusomi eri ebitabo by’omuwandiisi oyo yennyini.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "vi",
+  "title": "Những Lời Dạy Cốt Lõi",
+  "description": "Những quyển hướng dẫn ngắn gọn và trung thực của Ochorus, đi vào cốt lõi sự dạy dỗ của một tác giả kinh điển — mỗi chương kết thúc bằng các câu hỏi và một lời cầu nguyện, rồi dẫn người đọc đến chính các sách của tác giả ấy.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "hi",
+  "title": "मुझे कहानी सुनाओ",
+  "description": "बच्चों के लिए फिर से सुनाई गई बाइबल की अपनी कहानियाँ, तीन भागों में: पुराने नियम की कहानियाँ, यीशु का जीवन और नये नियम की कहानियाँ। हर कहानी इतनी छोटी है कि सोने से पहले पढ़कर सुनाई जा सके, और एक प्रार्थना तथा मिलकर बात करने के लिए प्रश्नों पर समाप्त होती है।",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "ar",
+  "title": "احكِ لي القصة",
+  "description": "قصص الكتاب المقدس نفسه تروى للأطفال في ثلاثة أجزاء: قصص من العهد القديم، وحياة يسوع، وقصص من العهد الجديد. كل قصة قصيرة بما يكفي لتقرأ بصوت مرتفع قبل النوم، وتنتهي بصلاة وأسئلة للحديث عنها معًا.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "ko",
+  "title": "이야기를 들려주세요",
+  "description": "어린이를 위해 다시 들려주는 성경 속 이야기로, 구약 이야기, 예수님의 생애, 신약 이야기의 세 부분으로 되어 있습니다. 한 편 한 편이 잠자리에서 소리 내어 읽어 주기 좋을 만큼 짧으며, 기도와 함께 이야기 나눌 질문으로 끝납니다.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "lg",
+  "title": "Nnyumiza Olugero",
+  "description": "Engero za Bayibuli yennyini eziddamu okunyumizibwa eri abaana, mu bitundu bisatu: Engero z’Endagaano Enkadde, Obulamu bwa Yesu, n’Engero z’Endagaano Empya. Buli lugero lumpi ekimala okusomerwa waggulu mu kiseera eky’okwebaka, era luggwa n’okusaba n’ebibuuzo eby’okwogerako awamu.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "tell-me-the-story"
+  ],
+  "language": "vi",
+  "title": "Kể Cho Con Nghe",
+  "description": "Những câu chuyện của chính Kinh Thánh được kể lại cho trẻ em, gồm ba phần: Những Câu Chuyện Cựu Ước, Cuộc Đời Chúa Giê-xu và Những Câu Chuyện Tân Ước. Mỗi câu chuyện đủ ngắn để đọc to trước giờ đi ngủ và kết thúc bằng một lời cầu nguyện cùng những câu hỏi để cùng nhau trò chuyện.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
+  ],
+  "language": "es",
+  "title": "Eran jóvenes",
+  "description": "Historias verdaderas, para lectores de 13 a 17 años, de personas cuya fe comenzó, o fue puesta a prueba, antes de llegar a la edad adulta: contadas completas, con sus propias palabras cuando las tenemos, y con preguntas para pensar.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "real-questions"
+  ],
+  "language": "es",
+  "title": "Preguntas reales",
+  "description": "Respuestas sinceras y breves, para lectores de 13 a 17 años, a las preguntas que de verdad hacen los adolescentes sobre Dios, la Biblia, Jesús y la vida: claras donde los cristianos coinciden, justas donde difieren, y que remiten a los clásicos.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "real-questions"
+  ],
+  "language": "fr",
+  "title": "Vraies questions",
+  "description": "Des réponses honnêtes et brèves, pour les lecteurs de 13 à 17 ans, aux questions que les adolescents se posent vraiment sur Dieu, la Bible, Jésus et la vie — claires là où les chrétiens s’accordent, équitables là où ils divergent, et qui renvoient aux classiques.",
+  "created_at": "2026-11-09T00:00:00Z",
+  "updated_at": "2026-11-09T00:00:00Z"
+ }
 }
 ]
