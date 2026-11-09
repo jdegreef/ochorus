@@ -607,8 +607,7 @@
   },
   {
    "reference": "1 John 5:13",
-   "status": "mined",
-   "source_file": "he-holds-my-tomorrows.es.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Philippians 1:6",
@@ -681,8 +680,7 @@
   },
   {
    "reference": "2 Peter 3:9",
-   "status": "mined",
-   "source_file": "men-who-moved-heaven.es.json"
+   "status": "self_rendered"
   },
   {
    "reference": "Matthew 24:44",

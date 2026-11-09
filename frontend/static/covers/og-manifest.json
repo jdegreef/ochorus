@@ -4758,7 +4758,7 @@
 			]
 		},
 		"ar/key-teachings-of-gareth-evans": {
-			"ground": "ebc03c4a1419c3e5f3ebadd399462f4805a8d133e49fe05c88fe507b890e58c7",
+			"ground": "7b3f5df631737a2e41ea738a9aa85ab5d1ce766454a30cb625b107443bf07528",
 			"style": "originals",
 			"volume": null,
 			"script": "arabic",
@@ -4771,27 +4771,27 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[250, 105, 350, 134]
+					[168, 102, 432, 131]
 				],
 				"title": [
-					[57, 192, 543, 255]
+					[57, 180, 543, 243]
 				],
 				"subtitle": [
-					[164, 323, 292, 362],
-					[292, 323, 366, 362],
-					[366, 323, 436, 362]
+					[164, 311, 292, 350],
+					[292, 311, 366, 350],
+					[366, 311, 436, 350]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				185,
-				359
+				173,
+				347
 			]
 		},
 		"ar/key-teachings-of-richard-baxter": {
-			"ground": "f1c0da7f0a95c26c6d599cd5e89ebb0451c194a69ede14250c5158b261382153",
+			"ground": "2753abc43c3eac6c58aa6f406937248576b1462e49ad8db5d5f13017127842c2",
 			"style": "originals",
 			"volume": null,
 			"script": "arabic",
@@ -4804,24 +4804,24 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[237, 105, 363, 134]
+					[147, 102, 453, 131]
 				],
 				"title": [
-					[170, 192, 430, 255],
-					[166, 269, 434, 332]
+					[170, 180, 430, 243],
+					[166, 257, 434, 320]
 				],
 				"subtitle": [
-					[164, 400, 292, 439],
-					[292, 400, 366, 439],
-					[366, 400, 436, 439]
+					[164, 388, 292, 427],
+					[292, 388, 366, 427],
+					[366, 388, 436, 427]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				185,
-				437
+				173,
+				425
 			]
 		},
 		"ar/life-and-diary-of-david-brainerd": {
@@ -16489,7 +16489,7 @@
 			]
 		},
 		"hi/key-teachings-of-gareth-evans": {
-			"ground": "c23332ae6699cc9c92050d89d2c7e28ba531fe284cb19a16a45de535b7da1794",
+			"ground": "1ba3ccac34ced0e90226c57dd5aa7ebf4aec2469e5ba07a2537a7f067374eef0",
 			"style": "originals",
 			"volume": null,
 			"script": "devanagari",
@@ -16502,25 +16502,25 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[231, 102, 369, 131]
+					[168, 102, 432, 131]
 				],
 				"title": [
-					[44, 185, 556, 248]
+					[44, 181, 556, 244]
 				],
 				"subtitle": [
-					[71, 326, 529, 348]
+					[71, 322, 529, 344]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				177,
-				354
+				173,
+				350
 			]
 		},
 		"hi/key-teachings-of-richard-baxter": {
-			"ground": "fe0ed7ab9e110aa07364519ff8cc6fcdf566a3f44df49f8928d2ff59da2b5836",
+			"ground": "5fe1117c952d5d0d35fc81b85bfda32ac6e139e5f36f9aff9abd1a528494433b",
 			"style": "originals",
 			"volume": null,
 			"script": "devanagari",
@@ -16533,22 +16533,22 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[217, 102, 383, 131]
+					[147, 102, 453, 131]
 				],
 				"title": [
-					[174, 185, 426, 248],
-					[151, 265, 449, 328]
+					[174, 181, 426, 244],
+					[151, 261, 449, 324]
 				],
 				"subtitle": [
-					[71, 406, 529, 428]
+					[71, 402, 529, 424]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				177,
-				434
+				173,
+				430
 			]
 		},
 		"hi/life-and-diary-of-david-brainerd": {
@@ -20102,7 +20102,7 @@
 			]
 		},
 		"ko/key-teachings-of-gareth-evans": {
-			"ground": "cff4bcdb4ec99b52b7ba9377c67e233c04a9ba695ea4188a30ce6aa12c3a6b6a",
+			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
 			"volume": null,
 			"script": "korean",
@@ -20115,26 +20115,26 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[207, 106, 393, 135]
+					[168, 102, 432, 131]
 				],
 				"title": [
-					[147, 174, 453, 237],
-					[142, 230, 458, 293]
+					[147, 169, 453, 232],
+					[142, 225, 458, 288]
 				],
 				"subtitle": [
-					[61, 357, 539, 385]
+					[61, 352, 539, 380]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				178,
-				385
+				173,
+				380
 			]
 		},
 		"ko/key-teachings-of-richard-baxter": {
-			"ground": "3ca56d9f7443d6600fbc1f2ebee37b3863b3cb708e0ce669f0098181ff13dd87",
+			"ground": "ad35ad10ebfd988a196c54c5b86f28338b2d178d87da398e3c66b7ddf694130f",
 			"style": "originals",
 			"volume": null,
 			"script": "korean",
@@ -20147,22 +20147,22 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[207, 106, 393, 135]
+					[147, 102, 453, 131]
 				],
 				"title": [
-					[147, 174, 453, 237],
-					[142, 230, 458, 293]
+					[147, 169, 453, 232],
+					[142, 225, 458, 288]
 				],
 				"subtitle": [
-					[61, 357, 539, 385]
+					[61, 352, 539, 380]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				178,
-				385
+				173,
+				380
 			]
 		},
 		"ko/lord-teach-us-to-pray-2": {
@@ -33817,7 +33817,7 @@
 			]
 		},
 		"uk/key-teachings-of-gareth-evans": {
-			"ground": "6e66450b910dca9298b35d26c965c460048f78425482bd2dfe946921f35c07b9",
+			"ground": "e478c27041c3a1ae7ea535a4b6f8f0ef3209021511c6295a5859f20a5cf79b52",
 			"style": "originals",
 			"volume": null,
 			"script": "cyrillic",
@@ -33830,26 +33830,26 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[188, 103, 412, 132]
+					[168, 102, 432, 131]
 				],
 				"title": [
-					[95, 171, 505, 234],
-					[127, 227, 473, 290]
+					[95, 169, 505, 232],
+					[127, 225, 473, 288]
 				],
 				"subtitle": [
-					[65, 351, 535, 379]
+					[65, 349, 535, 377]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				175,
-				379
+				173,
+				377
 			]
 		},
 		"uk/key-teachings-of-richard-baxter": {
-			"ground": "486d3c418d1cf9e551186ee1fef1381f4db31fdde56f6f0bcf076c01e8485688",
+			"ground": "30a2d018bdff1340faebd39a42e1cd662e85b6c5b37873a54f16e8929cef5769",
 			"style": "originals",
 			"volume": null,
 			"script": "cyrillic",
@@ -33862,22 +33862,22 @@
 			"caps": false,
 			"rows": {
 				"byline": [
-					[160, 103, 440, 132]
+					[147, 102, 453, 131]
 				],
 				"title": [
-					[95, 171, 505, 234],
-					[82, 227, 518, 290]
+					[95, 169, 505, 232],
+					[82, 225, 518, 288]
 				],
 				"subtitle": [
-					[65, 351, 535, 379]
+					[65, 349, 535, 377]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				175,
-				379
+				173,
+				377
 			]
 		},
 		"uk/lord-teach-us-to-pray-2": {
