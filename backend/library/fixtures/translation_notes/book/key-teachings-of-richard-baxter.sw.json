@@ -1,0 +1,836 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-richard-baxter",
+ "language": "sw",
+ "job_issue": 6890,
+ "references": [
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "source_file": "c-s-lewis-a-life-children.sw.json",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 1:12-13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ephesians 4:4-6",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Philippians 3:15-16",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Ephesians 4:3",
+   "status": "mined",
+   "source_file": "the-death-of-self.sw.json",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 37
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "source_file": "the-fourfold-gospel.sw.json",
+   "block_index": 41
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 54
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json",
+   "block_index": 60
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 63
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 65
+  },
+  {
+   "reference": "Hebrews 12:22-23",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Colossians 3:1-2",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "full-salvation.sw.json",
+   "block_index": 77
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.sw.json",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Psalm 42:5a",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 33:11b",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.sw.json",
+   "block_index": 102
+  },
+  {
+   "reference": "Ezekiel 33:11a",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.sw.json",
+   "block_index": 106
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "source_file": "mortification-of-sin.sw.json",
+   "block_index": 113
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "mined",
+   "source_file": "necessity-of-prayer.sw.json",
+   "block_index": 122
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.sw.json",
+   "block_index": 126
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "witnessing-for-christ.sw.json",
+   "block_index": 128
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "source_file": "all-of-grace.sw.json",
+   "block_index": 131
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json",
+   "block_index": 136
+  },
+  {
+   "reference": "Matthew 13:21",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Romans 3:28",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 151
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "source_file": "all-of-grace.sw.json",
+   "block_index": 160
+  },
+  {
+   "reference": "Philippians 3:9",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Ephesians 2:8-10",
+   "status": "self_rendered",
+   "block_index": 166
+  },
+  {
+   "reference": "1 Timothy 2:5-6",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json",
+   "block_index": 175
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 188
+  },
+  {
+   "reference": "Romans 2:21",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "a-castaway.sw.json",
+   "block_index": 193
+  },
+  {
+   "reference": "Matthew 7:3",
+   "status": "self_rendered",
+   "block_index": 197
+  },
+  {
+   "reference": "1 Timothy 4:12b",
+   "status": "self_rendered",
+   "block_index": 200
+  },
+  {
+   "reference": "1 Timothy 3:4-5",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "1 Timothy 4:16",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 204
+  },
+  {
+   "reference": "1 Peter 5:2a",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Hebrews 13:17a",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 211
+  },
+  {
+   "reference": "Ezekiel 3:18",
+   "status": "self_rendered",
+   "block_index": 212
+  },
+  {
+   "reference": "1 Thessalonians 5:14",
+   "status": "self_rendered",
+   "block_index": 216
+  },
+  {
+   "reference": "Galatians 6:1b",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "Ezekiel 34:4",
+   "status": "self_rendered",
+   "block_index": 220
+  },
+  {
+   "reference": "1 Thessalonians 5:12-13",
+   "status": "self_rendered",
+   "block_index": 223
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 226
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Colossians 1:28",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json",
+   "block_index": 244
+  },
+  {
+   "reference": "Deuteronomy 6:7",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "2 Timothy 1:13",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json",
+   "block_index": 269
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 273
+  },
+  {
+   "reference": "1 Timothy 3:4-5",
+   "status": "self_rendered",
+   "block_index": 275
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json",
+   "block_index": 278
+  },
+  {
+   "reference": "Psalm 78:6",
+   "status": "self_rendered",
+   "block_index": 282
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered",
+   "block_index": 285
+  },
+  {
+   "reference": "1 Peter 3:1b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 289
+  },
+  {
+   "reference": "Acts 10:2",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Acts 10:24",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "1 Peter 4:9",
+   "status": "mined",
+   "source_file": "christian-charity.sw.json",
+   "block_index": 296
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json",
+   "block_index": 309
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "full-salvation.sw.json",
+   "block_index": 313
+  },
+  {
+   "reference": "Hebrews 11:27",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 317
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "source_file": "the-christian-pilgrim.sw.json",
+   "block_index": 319
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 325
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "source_file": "grace-abounding.sw.json",
+   "block_index": 329
+  },
+  {
+   "reference": "Romans 4:20-21",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 331
+  },
+  {
+   "reference": "Hebrews 11:27b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered",
+   "block_index": 322
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 344
+  },
+  {
+   "reference": "Lamentations 3:40",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "1 Corinthians 11:28",
+   "status": "self_rendered",
+   "block_index": 349
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 351
+  },
+  {
+   "reference": "Psalm 4:4b",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json",
+   "block_index": 363
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 368
+  },
+  {
+   "reference": "Song of Solomon 2:15a",
+   "status": "mined",
+   "source_file": "union-and-communion.sw.json",
+   "block_index": 370
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 376
+  },
+  {
+   "reference": "Psalm 139:23a",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "Psalm 139:24b",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "mined",
+   "source_file": "the-masters-indwelling.sw.json",
+   "block_index": 389
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "source_file": "union-and-communion.sw.json",
+   "block_index": 393
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "mined",
+   "source_file": "the-life-of-trust.sw.json",
+   "block_index": 395
+  },
+  {
+   "reference": "Galatians 6:14b",
+   "status": "mined",
+   "source_file": "the-masters-indwelling.sw.json",
+   "block_index": 389
+  },
+  {
+   "reference": "1 Timothy 6:9",
+   "status": "self_rendered",
+   "block_index": 403
+  },
+  {
+   "reference": "1 Timothy 6:17-18",
+   "status": "self_rendered",
+   "block_index": 407
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "humility-2.sw.json",
+   "block_index": 413
+  },
+  {
+   "reference": "John 12:42-43",
+   "status": "mined",
+   "source_file": "heroes-and-cowards.sw.json",
+   "block_index": 415
+  },
+  {
+   "reference": "Ephesians 5:15-16",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 428
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 432
+  },
+  {
+   "reference": "James 4:14",
+   "status": "mined",
+   "source_file": "the-practical-hope-of-the-lords-coming.sw.json",
+   "block_index": 433
+  },
+  {
+   "reference": "John 9:4",
+   "status": "self_rendered",
+   "block_index": 437
+  },
+  {
+   "reference": "Ecclesiastes 9:10",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "self_rendered",
+   "block_index": 443
+  },
+  {
+   "reference": "Colossians 3:23-24",
+   "status": "self_rendered",
+   "block_index": 449
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "prayer-the-pulse-of-life.sw.json",
+   "block_index": 451
+  },
+  {
+   "reference": "Exodus 20:8-10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:11a",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 464
+  },
+  {
+   "reference": "1 Kings 19:5",
+   "status": "self_rendered",
+   "block_index": 473
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "source_file": "growing-in-wisdom.sw.json",
+   "block_index": 475
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 476
+  },
+  {
+   "reference": "Psalm 130:1-2",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "the-spirit-of-prayer.sw.json",
+   "block_index": 484
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 19:4",
+   "status": "self_rendered",
+   "block_index": 472
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "self_rendered",
+   "block_index": 496
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "mary-slessor-a-life-children.sw.json",
+   "block_index": 497
+  },
+  {
+   "reference": "1 Corinthians 3:3",
+   "status": "self_rendered",
+   "block_index": 501
+  },
+  {
+   "reference": "Romans 14:1",
+   "status": "self_rendered",
+   "block_index": 503
+  },
+  {
+   "reference": "James 3:17",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 507
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "source_file": "if-god-be-for-us.sw.json",
+   "block_index": 511
+  },
+  {
+   "reference": "Psalm 133:1",
+   "status": "self_rendered",
+   "block_index": 518
+  },
+  {
+   "reference": "James 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "self_rendered",
+   "block_index": 511
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "source_file": "full-salvation.sw.json",
+   "block_index": 531
+  },
+  {
+   "reference": "Romans 5:3-4",
+   "status": "self_rendered",
+   "block_index": 535
+  },
+  {
+   "reference": "2 Corinthians 1:4",
+   "status": "self_rendered",
+   "block_index": 537
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 540
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.sw.json",
+   "block_index": 544
+  },
+  {
+   "reference": "Hebrews 12:11b",
+   "status": "mined",
+   "source_file": "the-school-of-faith.sw.json",
+   "block_index": 547
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 552
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 539
+  },
+  {
+   "reference": "2 Corinthians 11:24-25",
+   "status": "self_rendered",
+   "block_index": 543
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "block_index": 565
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 569
+  },
+  {
+   "reference": "Ecclesiastes 7:2",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.sw.json",
+   "block_index": 571
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 574
+  },
+  {
+   "reference": "1 Corinthians 15:55-57",
+   "status": "self_rendered",
+   "block_index": 577
+  },
+  {
+   "reference": "2 Timothy 4:7-8a",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.sw.json",
+   "block_index": 581
+  },
+  {
+   "reference": "Revelation 14:13a",
+   "status": "self_rendered",
+   "block_index": 583
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "self_rendered",
+   "block_index": 584
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 587
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json",
+   "block_index": 588
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "self_rendered",
+   "block_index": 590
+  },
+  {
+   "reference": "1 Thessalonians 4:18",
+   "status": "self_rendered",
+   "block_index": 590
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "self_rendered",
+   "block_index": 600
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 603
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "self_rendered",
+   "block_index": 607
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.sw.json",
+   "block_index": 613
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 621
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 639
+  }
+ ]
+}
