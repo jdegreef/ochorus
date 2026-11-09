@@ -102,5 +102,26 @@
     "note": [
       "The title quotes the shipped uk edition faithful-with-little.uk.json verbatim (Вірний у малому), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
     ]
+  },
+  "christ-our-healer": {
+    "title": "Христос — наш Цілитель",
+    "description": "Шість тижнів про Христа як Спасителя, Освятителя, Цілителя й Царя, що приходить. А. Б. Сімпсон розкриває «Чотиригранне Євангеліє» та його служіння зцілення, а Ендрю Мюррей завершує місяцем роздумів про Господа, Який і нині зцілює тіло як заставу майбутнього життя.",
+    "note": [
+      "Queue batch 5: the-gospel-of-healing.uk completes the plan's uk sources (the-fourfold-gospel.uk, divine-healing.uk shipped). Book title quoted as shipped; names follow the uk corpus (Сімпсон, Мюррей). AI-drafted."
+    ]
+  },
+  "family-devotions-pilgrims-journey": {
+    "title": "Сімейні читання: мандрівка пілігрима",
+    "description": "П’ятихвилинні сімейні читання для дітей і дорослих, які читають разом із ними, — приблизно три з половиною тижні вечорів. Прочитайте вголос один короткий розділ: спершу про пілігрима Беньяна на дорозі до Небесного Міста, потім картини з ферми від Сперджена. Кожен завершується молитвою та трьома запитаннями для спільної розмови.",
+    "note": [
+      "Queue batch 5: pilgrims-progress-children.uk completes the plan's uk sources (talks-to-the-farmer-children.uk shipped). «Небесне Місто» as in the uk children's edition; Беньян / Сперджен follow the uk corpus. AI-drafted."
+    ]
+  },
+  "praying-men": {
+    "title": "Люди молитви: школа молитви з Е. М. Баундсом",
+    "description": "Сім тижнів у горнилі заступництва з великим апостолом молитви. Е. М. Баундс починає з власної потреби проповідника в силі, потім розкриває мету, що робить молитву переможною, і необхідність, яка робить її всією справою християнського життя.",
+    "note": [
+      "Queue batch 5: necessity-of-prayer.uk completes the plan's uk sources (power-through-prayer.uk, purpose-in-prayer.uk shipped). Баундс is the commoner uk spelling (53× vs Баундз 28×). AI-drafted."
+    ]
   }
 }

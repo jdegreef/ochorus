@@ -8173,6 +8173,8 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
     ("በድል አድራጊነት በሚቀርብ ጸሎት ነው።</p>",
      "<p><i>Printed in the United States of America</i></p>"),
+    ("précise et victorieuse.</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
 ]
 # Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
 # SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
@@ -8277,6 +8279,11 @@ BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"] = [
      "<blockquote>ጸሎት የክርስቲያን የሕይወት እስትንፋስ ነው፣<br/>የሚኖርበትም የተፈጥሮ አየሩ፤<br/>በሞት ደጆች ፊት መለያ ቃሉ፣<br/>በጸሎት ይገባል ወደ ሰማይ አገሩ።</blockquote>"),
     ("<p>በዚህ ርዕስ ላይ የምናደርገውን",
      "<blockquote>«ደካማ ስሜት የማያውቃቸው፣<br/>የአእምሮ ጭላንጭል ያላያቸው፣<br/>በብርቱና በሚያዝዝ መተማመን<br/>ሰማያዊ ምንጫቸውን ይገልጣሉ።»</blockquote>"),
+    # fr (translated from the settled English; same blocks, same positions)
+    ("<p>Le Christ élimine de la prière toute",
+     "<blockquote>La prière est le souffle vital du chrétien,<br/>L’air natal de son âme ;<br/>Son mot d’ordre aux portes de la mort ;<br/>Il entre au ciel par la prière.</blockquote>"),
+    ("<p>Deux choses peuvent être dites ici,",
+     "<blockquote>« Ce que les faibles sens ignorent,<br/>Ce que la raison n’entrevoit,<br/>Avec une ferme et souveraine assurance,<br/>Révèle son origine céleste. »</blockquote>"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
@@ -24405,3 +24412,159 @@ BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("r
 BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
     ("crucifié pour nous.</p> <p>FIN.</p>", "<p>Note du transcripteur :<br/>"),
 )
+
+# --- English defects found while translating (queue batch 5) ---
+# OCR slips in the source scan, and miscited chapter headings: Hezekiah's healing is 2 Kings 20, the blind man John 9, Paul stoned at Lystra Acts 14:19, the temptation Matthew 4.
+BODY_CORRECTIONS.setdefault("the-gospel-of-healing", {}).setdefault("replacements", []).extend([
+    ('end of. the world', 'end of the world'),
+    ('kept His. Word', 'kept His Word'),
+    ('the .Gospel', 'the Gospel'),
+    ('question of .this', 'question of this'),
+    ('they _ were', 'they were'),
+    ('is brqken', 'is broken'),
+    ('Corning Deliverer', 'Coming Deliverer'),
+    ('HEZEKIAH. II. Kings xviii.', 'HEZEKIAH. II. Kings xx.'),
+    ('JERUSALEM. John lx.', 'JERUSALEM. John ix.'),
+    ('HEALING. Acts xv. 19;', 'HEALING. Acts xiv. 19;'),
+    ('IN GOD. Matt. iii.', 'IN GOD. Matt. iv.'),
+    ('Naarnan', 'Naaman'),
+    ('Jerusalern', 'Jerusalem'),
+    ('cry tor help', 'cry for help'),
+    ('not a told or mechanical', 'not a cold or mechanical'),
+    ('It wilt be noticed', 'It will be noticed'),
+    ('garment, I. shall be whole. Then', 'garment, I shall be whole.&quot; Then'),
+    ('request of-this man', 'request of this man'),
+    ('it may not, be', 'it may not be'),
+    ('Switzerland-by rail', 'Switzerland by rail'),
+    ('Orchard Beach, Ma.', 'Orchard Beach, Me.'),
+    ('of Divine. Healing', 'of Divine Healing'),
+    ('was tinkling with', 'was tingling with'),
+    ('experiences, hut of Jesus', 'experiences, but of Jesus'),
+    ('am sure that is nothing', 'am sure that it is nothing'),
+    ('His flesh and His bones I do not', 'His flesh and His bones.&quot; I do not'),
+    ('I told they could', 'I told them they could'),
+    ('met within other cities', 'met with in other cities'),
+    ('workers and-city missionaries', 'workers and city missionaries'),
+    ('souls of men The secular', 'souls of men. The secular'),
+    ('insiduously', 'insidiously'),
+    ('standard authorities This', 'standard authorities. This'),
+    ('doctrines of - the', 'doctrines of the'),
+    ('Mrs. Edey', 'Mrs. Eddy'),
+    ('forever In Mind', 'forever in Mind'),
+    ('That Life; Truth', 'That Life, Truth'),
+    ('we only aced call', 'we only need call'),
+    ('ሕዝቅያስ። 2ኛ ነገሥት 18።', 'ሕዝቅያስ። 2ኛ ነገሥት 20።'),
+    ('የሐዋርያት ሥራ 15:19፤', 'የሐዋርያት ሥራ 14:19፤'),
+    ('ልምድ። ማቴዎስ 3።', 'ልምድ። ማቴዎስ 4።'),
+    ('EZEQUÍAS. 2 Reyes 18.', 'EZEQUÍAS. 2 Reyes 20.'),
+    ('Hechos 15:19;', 'Hechos 14:19;'),
+    ('EN DIOS. Mateo 3.', 'EN DIOS. Mateo 4.'),
+    ('ÉZÉCHIAS. II. Rois xviii.', 'ÉZÉCHIAS. II. Rois xx.'),
+    ('Actes xv. 19;', 'Actes xiv. 19;'),
+    ('Matthieu iii.', 'Matthieu iv.'),
+    ('KEEZEEKIYA. 2 Bassekabaka 18.', 'KEEZEEKIYA. 2 Bassekabaka 20.'),
+    ('Abatume 15:19;', 'Abatume 14:19;'),
+    ('BWE YAFUNA. Matayo 3.', 'BWE YAFUNA. Matayo 4.'),
+    ('EZEQUIAS. II Reis xviii.', 'EZEQUIAS. II Reis xx.'),
+    ('Atos xv. 19;', 'Atos xiv. 19;'),
+    ('EM DEUS. Mat. iii.', 'EM DEUS. Mat. iv.'),
+    ('HEZEKIA. 2 Wafalme 18.', 'HEZEKIA. 2 Wafalme 20.'),
+    ('Matendo 15:19;', 'Matendo 14:19;'),
+    ('KATIKA MUNGU. Mathayo 3.', 'KATIKA MUNGU. Mathayo 4.'),
+])
+# OCR/typesetting slips and KJV quote slips (Josh 10:12 Gibeon, Num 11:2, Neh 2:4, 6:9, 13:29, Php 1:19); the prayer request quoted is Hebrews 13:18.
+BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
+    ('stand thou still upon Gideon', 'stand thou still upon Gibeon'),
+    ('Moses, and when unto the Lord', 'Moses, and when Moses prayed unto the Lord'),
+    ('in thy mouth is truth. Answers', 'in thy mouth is truth.” Answers'),
+    ('a far great blessing', 'a far greater blessing'),
+    ('fillet of wood', 'fillet of wool'),
+    ('unto the God of heaven?”', 'unto the God of heaven.”'),
+    ('Now there, O God', 'Now therefore, O God'),
+    ('“Remember me, O my God, because they have defiled', '“Remember them, O my God, because they have defiled'),
+    ('were destroyed his prayers', 'were destroyed by his prayers'),
+    ('rest his ease', 'rest his case'),
+    ('He Goat,” But', 'He Goat.” But'),
+    ('reformation So Samuel', 'reformation. So Samuel'),
+    ('In Hebrews 13:9,', 'In Hebrews 13:18,'),
+    ('salvation through our prayer', 'salvation through your prayer'),
+    ('as a master of course', 'as a matter of course'),
+    ('articulating dearly', 'articulating clearly'),
+    ('stagger and under', 'stagger under'),
+    ('aloof from The natural', 'aloof from. The natural'),
+    ('now needed, He needs', 'now needed. He needs'),
+    ('በዕብራውያን 13:9 ጳውሎስ', 'በዕብራውያን 13:18 ጳውሎስ'),
+    ('En Hebreos 13:9,', 'En Hebreos 13:18,'),
+    ('En Hébreux 13:9,', 'En Hébreux 13:18,'),
+    ('Em Hebreus 13:9,', 'Em Hebreus 13:18,'),
+])
+# OCR slips in the source scan (1 Pet 1:7 'glory').
+BODY_CORRECTIONS.setdefault("necessity-of-prayer", {}).setdefault("replacements", []).extend([
+    ('Sudden]y', 'Suddenly'),
+    ('honour and glow at', 'honour and glory at'),
+    ('their in credulity', 'their incredulity'),
+    ('and in he power', 'and in the power'),
+    ('victory, a I have fought', 'victory, "I have fought'),
+    ('Word of God .Whether', 'Word of God. Whether'),
+    ('Prayer be longs', 'Prayer belongs'),
+])
+# Miscitations: the quoted verses are 1 John 5:14-15 and 1 Timothy 2:1; Adam Clarke.
+BODY_CORRECTIONS.setdefault("reality-of-prayer", {}).setdefault("replacements", []).extend([
+    ('In John 5:13 we have', 'In 1 John 5:14 we have'),
+    ('(I Tim. 1:8)', '(I Tim. 2:1)'),
+    ('—Adam Clark.', '—Adam Clarke.'),
+    ('በዮሐንስ 5:13 ስለ', 'በ1ኛ ዮሐንስ 5:14 ስለ'),
+    ('(1ኛ ጢሞቴዎስ 1:8)', '(1ኛ ጢሞቴዎስ 2:1)'),
+    ('En Juan 5:13 tenemos', 'En 1 Juan 5:14 tenemos'),
+    ('(1 Ti. 1:8)', '(1 Ti. 2:1)'),
+])
+# Typesetting slips: alms, Rom 5:20, Pharaoh.
+BODY_CORRECTIONS.setdefault("enchiridion", {}).setdefault("replacements", []).extend([
+    ('give aims as', 'give alms as'),
+    ('“The, law entered', '“The law entered'),
+    ('unto Pharoah', 'unto Pharaoh'),
+])
+# Misprint: clear views.
+BODY_CORRECTIONS.setdefault("letters-and-minor-works", {}).setdefault("replacements", []).extend([
+    ('the dear views of Christianity', 'the clear views of Christianity'),
+])
+# Jim Elliot was killed in January 1956; the anecdote's subject is Alan.
+BODY_CORRECTIONS.setdefault("soar-like-the-eagle-3", {}).setdefault("replacements", []).extend([
+    ('Ecuador in 1959', 'Ecuador in 1956'),
+    ('Suddenly Peter saw', 'Suddenly Alan saw'),
+    ('በ1959 በኢኳዶር', 'በ1956 በኢኳዶር'),
+    ('በድንገትም ፒተር በአዲስ', 'በድንገትም አለን በአዲስ'),
+    ('الإكوادور سنة 1959', 'الإكوادور سنة 1956'),
+    ('وفجأة رأى بيتر برؤية', 'وفجأة رأى آلن برؤية'),
+    ('Ecuador en 1959', 'Ecuador en 1956'),
+    ('De repente Peter vio', 'De repente Alan vio'),
+    ('l’Équateur en 1959', 'l’Équateur en 1956'),
+    ('Soudain, Peter vit', 'Soudain, Alan vit'),
+    ('जो 1959 में इक्वाडोर', 'जो 1956 में इक्वाडोर'),
+    ('अचानक पीटर एक नए', 'अचानक एलन एक नए'),
+    ('Ecuador mu 1959', 'Ecuador mu 1956'),
+    ('Amangu ago Peter n’alaba', 'Amangu ago Alan n’alaba'),
+    ('Equador em 1959', 'Equador em 1956'),
+    ('De repente, Peter viu', 'De repente, Alan viu'),
+    ('Ekuado mwaka 1959', 'Ekuado mwaka 1956'),
+    ('Ghafla Peter akaona', 'Ghafla Alan akaona'),
+])
+# 1 Samuel 4:19: it was Phinehas's wife who died in childbirth; 'then' for 'than'.
+BODY_CORRECTIONS.setdefault("the-pursuit-of-god", {}).setdefault("replacements", []).extend([
+    ('the wife of Hophni dies', 'the wife of Phineas dies'),
+    ('an inward grace than we', 'an inward grace then we'),
+    ('la mujer de Ofni muere', 'la mujer de Finees muere'),
+    ('la femme de Hophni meurt', 'la femme de Phinées meurt'),
+    ('홉니의 아내는', '비느하스의 아내는'),
+    ('vợ của Hóp-ni chết', 'vợ của Phi-nê-a chết'),
+])
+# Typesetting slips in the Lightfoot text (doubled stop, full stop for comma, 'and' for 'that').
+BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacements", []).extend([
+    ('encountered peril.. ', 'encountered peril. '),
+    ('God said to him. “Lift up', 'God said to him, “Lift up'),
+    ('Jesus Christ, and there would be strife', 'Jesus Christ, that there would be strife'),
+])
+# OCR slip: "whom even themselves hold to be gods".
+BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
+    ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
+])

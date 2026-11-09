@@ -1,0 +1,611 @@
+{
+ "kind": "book",
+ "slug": "soar-like-the-eagle-3",
+ "language": "vi",
+ "job_issue": 7055,
+ "references": [
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 103:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 20:26",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:32",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Timothy 3:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:18",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:7",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:11",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 12:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 2:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 4:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 4:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 6:20",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 17:21",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 4:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 4:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 4:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Exodus 4:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 13:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 13:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 13:5",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 14:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 14:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 14:20",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 18:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Exodus 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 17:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 17:16",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 15:30",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 3:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 3:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 3:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 121:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 6:5",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 23:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 12:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:13",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:5",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 4:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 21:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 7:29",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 3:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 3:22",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 4:19",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:4",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:5",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:6",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Timothy 5:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:29",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "John 4:35",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 9:37",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 26:11",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:3",
+   "status": "mined",
+   "source_file": "Kinh Thánh Cadman (vie_kt) Bible text"
+  }
+ ]
+}

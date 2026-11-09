@@ -1,0 +1,959 @@
+{
+ "kind": "book",
+ "slug": "enchiridion",
+ "language": "fr",
+ "job_issue": 7208,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 16:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Job 28:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Joel 2:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 8:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 8:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "James 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 12:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 7:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 1:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 5:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Peter 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Proverbs 16:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 59:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 90:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Job 14:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 3:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 1:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 1:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Numbers 21:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 2:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Exodus 32:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Exodus 32:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Exodus 20:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ezekiel 18:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 5:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 54:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 43:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Peter 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 148:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Zechariah 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 38:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 11:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 11:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Sirach 40:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "James 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Sirach 27:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 7:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Titus 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Sirach 30:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 11:42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 23:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 6:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "James 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 5:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Galatians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 10:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Isaiah 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Genesis 18:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 27:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Luke 22:61",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:50",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Revelation 20:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 101:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 11:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 115:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 135:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 111:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Psalm 77:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 25:46",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Romans 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "Exodus 20:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 4:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  },
+  {
+   "reference": "John 15:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text"
+  }
+ ]
+}

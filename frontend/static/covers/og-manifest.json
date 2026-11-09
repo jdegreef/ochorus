@@ -2006,7 +2006,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -4871,6 +4871,39 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"ar/epistles-of-ignatius": {
+			"ground": "d6fa0a4573ca43dbe853fdbba89e59ffff25f5c5ceae8c675be8881eaae1b63c",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[119, 273, 481, 357],
+					[176, 367, 424, 451]
+				],
+				"subtitle": [
+					[183, 489, 417, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				526
+			]
+		},
 		"ar/faithful-with-little": {
 			"ground": "9faf81572afc59d090dc79629139e1b84078f8e69f4464c023b40dcb38996a72",
 			"style": "originals",
@@ -4898,6 +4931,39 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"ar/first-epistle-of-clement": {
+			"ground": "33447cb6abbd6a249c04ac97eb42fceb5052a50251866ea41f56b967d22a6a87",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[48, 273, 552, 357],
+					[101, 367, 499, 451]
+				],
+				"subtitle": [
+					[179, 489, 421, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				526
+			]
 		},
 		"ar/gleanings-among-the-sheaves": {
 			"ground": "3f9a60c3d07f8e91707b12b09664a85d120dc2b139a57b4100ab535935aa26f3",
@@ -5101,7 +5167,7 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -5348,6 +5414,20 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.04,
+			"caps": false
+		},
+		"ar/prayer-and-praying-men": {
+			"ground": "f2f053d6dbd64957d0da4b2b62550f1529de0f4e6e0122428ac0b50b3496194f",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false
 		},
 		"ar/prayer-the-pulse-of-life": {
@@ -5956,6 +6036,35 @@
 			"middle": [
 				240,
 				555
+			]
+		},
+		"ar/the-pursuit-of-god": {
+			"ground": "3f35313a363e72fd90fc86fd4eb010b26b634d15049aa1c15d513450f1e3937a",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[114, 235, 486, 341]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				406
 			]
 		},
 		"ar/the-secret-of-guidance": {
@@ -9176,6 +9285,40 @@
 				460
 			]
 		},
+		"es/key-teachings-of-r-a-torrey": {
+			"ground": "787ed64e25c50fac6eadcd6bb7c084680bc983dc9973ad594880e2c5e539ee34",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[43, 225, 557, 288]
+				],
+				"subtitle": [
+					[160, 348, 440, 376],
+					[183, 376, 417, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
 		"es/key-teachings-of-richard-baxter": {
 			"ground": "a7389de7d340a799790a1dbd404ec7a07d971f4f3c17708f86529922f1aa02a4",
 			"style": "originals",
@@ -9183,7 +9326,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -9244,6 +9387,40 @@
 			"middle": [
 				173,
 				460
+			]
+		},
+		"es/letters-and-minor-works": {
+			"ground": "767911f10269d6f2b25bcfd7b311d28bfbb0805d1c44f42ba885867dbc4b206b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[197, 292, 403, 370],
+					[118, 356, 482, 434]
+				],
+				"subtitle": [
+					[76, 487, 524, 508],
+					[123, 508, 477, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
 			]
 		},
 		"es/life-and-diary-of-david-brainerd": {
@@ -13274,6 +13451,20 @@
 				469
 			]
 		},
+		"fr/enchiridion": {
+			"ground": "0093947c10b657025ec0dba314fc7f93a862bf0f680c591bacb6432caa78fa26",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"fr/epistles-of-ignatius": {
 			"ground": "0c6601ce396e065b2ddded1a02ab2e66685d4ee7f04da9fa22650b0986aaba71",
 			"style": "inscriptional",
@@ -13984,6 +14175,40 @@
 				460
 			]
 		},
+		"fr/key-teachings-of-r-a-torrey": {
+			"ground": "882c2f9da454f4205f148a463bf3931ca83892d2368f7b97262ea98077be8f4e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[61, 169, 539, 232],
+					[59, 225, 541, 288]
+				],
+				"subtitle": [
+					[164, 348, 436, 376],
+					[176, 376, 424, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
 		"fr/key-teachings-of-richard-baxter": {
 			"ground": "8b278a69fc6ce46cca78aa95954abeda10353fdc881847acaef6b0c1203c7e1a",
 			"style": "originals",
@@ -13991,7 +14216,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -15061,6 +15286,20 @@
 				257,
 				537
 			]
+		},
+		"fr/reality-of-prayer": {
+			"ground": "69eae30b796727278047f19ad0acd622dbeec58cbd7de7c881b17981d721c164",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
+			"caps": false
 		},
 		"fr/religious-affections": {
 			"ground": "e9a28775856619614d544456f6cd16fad58a0fe53e5ab42ee01c1f78b9ce7ac3",
@@ -17068,6 +17307,20 @@
 			"bar": 0,
 			"caps": false
 		},
+		"hi/answers-to-prayer": {
+			"ground": "173cee95d57f1cb570fc2e07f76b89398851e261e9b85e39dd4b5def32384dae",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0.105,
+			"caps": false
+		},
 		"hi/around-the-wicket-gate": {
 			"ground": "0e68adc5c41f74a08faf71429db3b83f1f1af674f22f2daf9120aa263a716da0",
 			"style": "revival",
@@ -17310,6 +17563,39 @@
 			"bar": 0,
 			"caps": true
 		},
+		"hi/first-epistle-of-clement": {
+			"ground": "f4484b2fed2588e721f21a90f833474680f2007a254196785bdaca31589a9e10",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[109, 285, 491, 357],
+					[63, 367, 537, 439]
+				],
+				"subtitle": [
+					[79, 486, 521, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				514
+			]
+		},
 		"hi/gleanings-among-the-sheaves": {
 			"ground": "b7094bcdc0675614f85fcac8c38932f134c5fd115f2f8c9f508904b772d3b742",
 			"style": "revival",
@@ -17485,6 +17771,39 @@
 				480
 			]
 		},
+		"hi/jesus-teacher-of-prayer": {
+			"ground": "c71fb95b5ac88c6ec07fd4a59143056372504fba8e5367c24c323935e0fa4aff",
+			"style": "originals",
+			"volume": "2",
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[88, 363, 512, 428]
+				],
+				"subtitle": [
+					[179, 506, 421, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"hi/key-teachings-of-andrew-murray": {
 			"ground": "52b571b6b56c747efd72008822744bd5b7b621ebc52ce0e73b2edb6ff3abaaed",
 			"style": "originals",
@@ -17556,7 +17875,7 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -17778,6 +18097,20 @@
 			"bar": 0.03,
 			"caps": false
 		},
+		"hi/necessity-of-prayer": {
+			"ground": "0c1c1f229605b74f00a1cfb20322f1c31f74d14c631b673d315504049333e863",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false
+		},
 		"hi/on-loving-god": {
 			"ground": "fba109fd12d2dcd1635272a19932a577325ab3fe8d06980efc3b406184704372",
 			"style": "inscriptional",
@@ -17811,6 +18144,20 @@
 				514
 			]
 		},
+		"hi/on-the-incarnation": {
+			"ground": "142c65e61bf66f5ca8d0985e43ae60ccf10d5b50272149acfaccc90f3b3e0814",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/indigo",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/pilgrims-progress": {
 			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
 			"style": "press",
@@ -17837,6 +18184,20 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.04,
+			"caps": false
+		},
+		"hi/prayer-and-praying-men": {
+			"ground": "7b55a50a0dfcd0b53019a2b91cd217af72baa76cff4e820626f2ca8fe8aa01b7",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false
 		},
 		"hi/prayer-the-pulse-of-life": {
@@ -18368,6 +18729,35 @@
 			"middle": [
 				253,
 				542
+			]
+		},
+		"hi/the-pursuit-of-god": {
+			"ground": "53026dab18cf0150e92bbaa123959487647a24066d6ec9736f19d316da0d2600",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[86, 236, 515, 326]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				391
 			]
 		},
 		"hi/the-secret-of-guidance": {
@@ -20510,7 +20900,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -21111,6 +21501,39 @@
 			"bar": 0,
 			"caps": true
 		},
+		"ko/first-epistle-of-clement": {
+			"ground": "f2ca5b06ad708e3783ced259d39237ca418f3f7dd507d47204619984d07e1ed6",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "7053c8b6451958800861f5f78d255c2f0b41bfd4391795f00707d94c4a64056c",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[72, 309, 528, 375],
+					[47, 358, 553, 424]
+				],
+				"subtitle": [
+					[180, 455, 420, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				318,
+				477
+			]
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
@@ -21326,7 +21749,7 @@
 			"script": "korean",
 			"fonts": "db30fa83a0d651b73bfe75474a66e3b0b83f72c7a9dd41ce0d521c73920fa492",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -21719,6 +22142,20 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"ko/prayer-and-praying-men": {
+			"ground": "98d205245059a5414cd858eaa082d426c7a32bd341a61e61b71bc39e74c380f0",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "17404af23710ca245e3d11784f1e3a2c4e0892cea9d80a84d4b3c78830c3bdfc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
+			"caps": false
+		},
 		"ko/prayer-the-pulse-of-life": {
 			"ground": "ca0cbb21bbbfa52480c9c60e1d0e49cbd2b4943b6384e43dac5d7c7ac3e15cfb",
 			"style": "house",
@@ -21918,6 +22355,20 @@
 			"layout": "wash/sage",
 			"bar": 0.04,
 			"caps": false
+		},
+		"ko/soar-like-the-eagle-3": {
+			"ground": "3b6d76319312166614955face00bdae1fe609f2e61b7ab6d5307f6a9b0393a05",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "231cba589991ea333f65c191e7252525b7b78a9407ccaae1cead9d9c72e9ced5",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"ko/stepping-stones-2": {
 			"ground": "5d538ddb01f746c61cc3194792e1d2dd30abcff12f808ca0b95d45ecba2dc3e8",
@@ -23507,6 +23958,40 @@
 				404
 			]
 		},
+		"lg/key-teachings-of-richard-baxter": {
+			"ground": "4e17e81edf1c410b195f9d50512af0c8d9b2e783adeefd84dab20d2dd0696c93",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[80, 169, 520, 232],
+					[74, 225, 526, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[95, 376, 505, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
 		"lg/life-and-diary-of-david-brainerd": {
 			"ground": "7a0a59a69fb59295889326a164ed680195b0e13065277b6ffb6b61b9843eed27",
 			"style": "enlightenment",
@@ -23824,6 +24309,20 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.04,
+			"caps": false
+		},
+		"lg/prayer-and-praying-men": {
+			"ground": "e60f15b809f538326474f227d3c2fd1abfd165956b755e7a44284f427f136a66",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false
 		},
 		"lg/prayer-the-pulse-of-life": {
@@ -24441,6 +24940,36 @@
 			"middle": [
 				243,
 				552
+			]
+		},
+		"lg/the-pursuit-of-god": {
+			"ground": "274f24e3d4f1a122c56bc09ebab2781dc23f1093562a33182e563317e26830f0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[138, 223, 462, 305],
+					[182, 294, 418, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				427
 			]
 		},
 		"lg/the-secret-of-guidance": {
@@ -27210,7 +27739,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -28573,6 +29102,36 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"pt/the-pursuit-of-god": {
+			"ground": "57383afebea34e9e7997e811f1b3e2c7a3db0f508aa0398f43f0d0413aa7dea2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[168, 222, 432, 319],
+					[167, 306, 433, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
 			]
 		},
 		"pt/the-reformed-pastor": {
@@ -30952,7 +31511,9 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
@@ -30965,7 +31526,7 @@
 					[91, 225, 509, 288]
 				],
 				"subtitle": [
-					[137, 348, 463, 376],
+					[138, 348, 462, 376],
 					[128, 376, 472, 404]
 				],
 				"mark": [
@@ -31474,6 +32035,20 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.04,
+			"caps": false
+		},
+		"sw/prayer-and-praying-men": {
+			"ground": "f7aad373183bedfc69e4ca41d7db2e2f9042061e5ad8697bbc57c4725bb8d8c2",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false
 		},
 		"sw/prayer-the-pulse-of-life": {
@@ -32335,6 +32910,36 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"sw/the-pursuit-of-god": {
+			"ground": "672c0d0c853145d57b1f78406c7eb8e7eb8d3bbf10c16049f911d3ef7a09fb3a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[123, 222, 477, 319],
+					[182, 306, 418, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
 			]
 		},
 		"sw/the-secret-of-guidance": {
@@ -35431,6 +36036,39 @@
 			"bar": 0,
 			"caps": false
 		},
+		"uk/amanda-smith-autobiography-children": {
+			"ground": "6ad2f49c4878986d927d13048328ceaa8ce76782a6f68b1502f301c9b3397714",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[194, 299, 406, 381],
+					[107, 370, 493, 452]
+				],
+				"edition": [
+					[227, 464, 373, 489]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
 		"uk/around-the-wicket-gate": {
 			"ground": "7a9bbc396236890871cdaa9710328036e5be3462f13395bd8429ba221e976f75",
 			"style": "revival",
@@ -35612,6 +36250,41 @@
 			"bar": 0.05,
 			"caps": false
 		},
+		"uk/epistles-of-ignatius": {
+			"ground": "e62e5438a3753d07b23fbdf3a5958042752c4f9e1324675684c678d2fb89e62e",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.2,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[130, 256, 470, 325],
+					[174, 307, 426, 376],
+					[123, 359, 477, 428],
+					[95, 411, 505, 480]
+				],
+				"subtitle": [
+					[75, 508, 525, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				530
+			]
+		},
 		"uk/faithful-with-little": {
 			"ground": "38d15632c0976cb6cd7a109b9393d7a6d2a00a1264d0710534e0db04c5407778",
 			"style": "originals",
@@ -35639,6 +36312,41 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"uk/first-epistle-of-clement": {
+			"ground": "171f80e0dd9a244d82e700b1d88759eb6f9f01b0c8aa850be47f7b435a0d3eab",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[188, 256, 412, 325],
+					[130, 307, 470, 376],
+					[130, 359, 470, 428],
+					[77, 411, 523, 480]
+				],
+				"subtitle": [
+					[111, 508, 489, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				530
+			]
 		},
 		"uk/gleanings-among-the-sheaves": {
 			"ground": "81443d8687b122b5926ac2cd7a50a45614c3aecfa267350b595c07a63c7ed09f",
@@ -35789,6 +36497,39 @@
 				480
 			]
 		},
+		"uk/key-teachings-of-a-b-simpson": {
+			"ground": "75d3caf06311f035de23f09afca250efe0f54b30207112a26860d355589faac8",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[95, 169, 505, 232],
+					[120, 225, 480, 288]
+				],
+				"subtitle": [
+					[65, 349, 535, 377]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				377
+			]
+		},
 		"uk/key-teachings-of-gareth-evans": {
 			"ground": "e478c27041c3a1ae7ea535a4b6f8f0ef3209021511c6295a5859f20a5cf79b52",
 			"style": "originals",
@@ -35829,7 +36570,7 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.2,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -36005,6 +36746,53 @@
 				482
 			]
 		},
+		"uk/necessity-of-prayer": {
+			"ground": "f23f79fb1a6b831a47ef4ab5aa6feacd710a05d5b68a00a7cfc48cdad109c533",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.05,
+			"caps": false
+		},
+		"uk/on-loving-god": {
+			"ground": "9f5ee06188756cca9a1e58e1e61d26fffffe2e44eeeb7453593ab46d068ada35",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[100, 303, 500, 378],
+					[158, 359, 442, 434]
+				],
+				"subtitle": [
+					[188, 461, 412, 482]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"uk/pilgrims-progress": {
 			"ground": "3a15ca7b869df47ff721b290a360bc2a19c6d2e1e668e7eda915e727264a74e1",
 			"style": "press",
@@ -36019,6 +36807,39 @@
 			"bar": 0.03,
 			"caps": false
 		},
+		"uk/pilgrims-progress-children": {
+			"ground": "d3564d9e8b5510ce934b68c1b388cecb2fc6648c47e70ee2d10291a94ff8d1f6",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[157, 304, 443, 382],
+					[172, 368, 428, 446]
+				],
+				"edition": [
+					[227, 456, 373, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
+		},
 		"uk/power-through-prayer": {
 			"ground": "c4078282762f68c4e9e8d9492fe6c9c5f8015e905f51a9f5ceaf97a9e13f1f6e",
 			"style": "devotional",
@@ -36031,6 +36852,20 @@
 			"medallion": null,
 			"layout": "split/navy",
 			"bar": 0.04,
+			"caps": false
+		},
+		"uk/prayer-and-praying-men": {
+			"ground": "26ec5941ac46dc18e57d59983e180998543533757e25631d54fa8d6151df8c93",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
 			"caps": false
 		},
 		"uk/prayer-the-pulse-of-life": {
@@ -36233,6 +37068,20 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"uk/soar-like-the-eagle-3": {
+			"ground": "6f218cc1b080cacf89e206b9bf81d259303105e95788078ac78cb4b7fffe4de9",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
+		},
 		"uk/spurgeon-on-prayer": {
 			"ground": "0ef593b96a92e9f254924a55f2a53d6d74d6dd9b178722f179e5d11a988e0325",
 			"style": "revival",
@@ -36404,6 +37253,20 @@
 				520
 			]
 		},
+		"uk/the-gospel-of-healing": {
+			"ground": "d472ac42a67164dc2d6f53d96c6a443bf92ec08bd222bc8e405a5254b0c1c718",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
 			"style": "devotional",
@@ -36524,6 +37387,36 @@
 				519
 			]
 		},
+		"uk/the-pursuit-of-god": {
+			"ground": "ef7ced3cacc0c91d8bc9e6bb190388c9230f40ccaf8a1b646425439bc8443764",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[113, 222, 487, 319],
+					[221, 306, 379, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
+		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
 			"style": "devotional",
@@ -36609,6 +37502,20 @@
 			"lift": 1,
 			"medallion": null,
 			"layout": "wash/ochre",
+			"bar": 0,
+			"caps": false
+		},
+		"uk/true-vine": {
+			"ground": "5f0ba3af59dd44cab887d75e37500b1371c3f23b110729bedb1f0c47744ec0e2",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
 			"bar": 0,
 			"caps": false
 		},
@@ -37487,6 +38394,41 @@
 				460
 			]
 		},
+		"vi/key-teachings-of-richard-baxter": {
+			"ground": "76b15175204516e3dd1e7b6cb882eb7dc8b5420f7bed34bd6528d9c79bb71596",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[119, 169, 481, 232],
+					[166, 225, 434, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[151, 404, 449, 432],
+					[139, 432, 461, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"vi/lord-teach-us-to-pray-2": {
 			"ground": "fc0dfe4a216d1099f804bba9263ea684521a25f16a2e42b655e7b71aa420c2c6",
 			"style": "devotional",
@@ -37861,6 +38803,20 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"vi/prayer-and-praying-men": {
+			"ground": "034819e3e0571fb6ece9b6c08230819a4e56c05e800e029af11ae8230fcf4474",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/navy",
+			"bar": 0.015,
+			"caps": false
+		},
 		"vi/prayer-the-pulse-of-life": {
 			"ground": "8e77923b79ca8b0ad953952b59dffcdb7999756627d555d6ac36e5be35695e77",
 			"style": "house",
@@ -38063,6 +39019,20 @@
 			"layout": "wash/sage",
 			"bar": 0.04,
 			"caps": false
+		},
+		"vi/soar-like-the-eagle-3": {
+			"ground": "54f5dbbb42f10363212e1ccbc7bdfafa1bd024f4a71e672d66e983e267aa09e0",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": true
 		},
 		"vi/stepping-stones-2": {
 			"ground": "817068f90b04c30057bb4af48dfaca6c54ad3f54306c9aa40b6eb27c38309246",

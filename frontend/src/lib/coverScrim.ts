@@ -137,7 +137,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'key-teachings-of-martin-luther': 0.10,
 	'key-teachings-of-martyn-lloyd-jones': 0.10,
 	'key-teachings-of-r-a-torrey': 0.10,
-	'key-teachings-of-richard-baxter': 0.15,
+	'key-teachings-of-richard-baxter': 0.20,
 	'key-teachings-of-watchman-nee': 0.10,
 	'knots-untied': 0.60,
 	'large-catechism': 0.65,
