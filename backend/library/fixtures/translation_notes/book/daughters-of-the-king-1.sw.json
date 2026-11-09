@@ -1,0 +1,239 @@
+{
+ "kind": "book",
+ "slug": "daughters-of-the-king-1",
+ "language": "sw",
+ "job_issue": 7049,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "mined",
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "1 Samuel 16:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 16:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:3-4",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Zephaniah 3:17",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Galatians 6:4",
+   "status": "mined",
+   "source_file": "concerning-lowliness-of-mind.sw.json"
+  },
+  {
+   "reference": "Galatians 6:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 29:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 29:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 29:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 29:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 14:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 16:5-6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:41-42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:45",
+   "status": "mined",
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Ruth 1:16",
+   "status": "mined",
+   "source_file": "the-way-of-salvation.sw.json"
+  },
+  {
+   "reference": "James 2:1-4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 26:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:26-27",
+   "status": "mined",
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "source_file": "mortification-of-sin.sw.json"
+  },
+  {
+   "reference": "Exodus 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 2:7-8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 2:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 4:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 25:32-33",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 25:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 2:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 5:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Kings 5:3",
+   "status": "mined",
+   "source_file": "naaman-the-syrian.sw.json"
+  },
+  {
+   "reference": "2 Kings 5:15",
+   "status": "mined",
+   "source_file": "naaman-the-syrian.sw.json"
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Luke 1:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:34",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 1:37",
+   "status": "mined",
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "1 Samuel 1:15",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "1 Samuel 1:18",
+   "status": "mined",
+   "source_file": "all-things-for-good.sw.json"
+  },
+  {
+   "reference": "Luke 10:41-42",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 10:40",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 14:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 14:4-5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 14:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 31:25",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 31:30",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 34:5",
+   "status": "self_rendered"
+  }
+ ]
+}

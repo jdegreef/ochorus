@@ -188,6 +188,14 @@ prerendered pages reference it.
 
 ## Gotchas (each has bitten a run)
 
+- **Biographies wear a portrait medallion (2026-11).** `library/medallions.py`
+  lists the works, each with a hand-cut square (face centre + side) of
+  `static/portraits/<subject>.jpg`; `scripts/build_medallions.py` cuts and
+  sepia-tones them to `static/covers/medallions/` and writes
+  `coverMedallions.ts`. The medallion grows `.middle`, so after adding one run
+  `og:covers`, then `tune_art_scrim.py`, then `og:covers` again. Only a photo
+  that is public domain or freely licensed: Lewis, ten Boom and Elliot are
+  withheld on purpose (a test holds that).
 - **Dark paintings are lifted (2026-11).** `tune_art_scrim.py` also writes
   `library/art_lift.py` + `coverLift.ts`: `covers.ground_lift` brightens a
   painting darker than the library median (88) toward it, up to 1.45x, never

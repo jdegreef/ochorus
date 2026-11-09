@@ -2,6 +2,7 @@ import type { ClientInit, HandleClientError } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { env } from '$env/dynamic/public';
 import { canonicalRedirect } from '$lib/canonicalRedirect';
+import { armCspReports } from '$lib/cspReport';
 import { SITE_URL } from '$lib/config';
 import { loadUiCatalog } from '$lib/i18n.svelte';
 import { armSentryOnError } from '$lib/sentryOnError';
@@ -80,6 +81,9 @@ function loadSentry(): Promise<SentryModule> {
 // way: handleError below loads the SDK on demand.
 if (env.PUBLIC_SENTRY_DSN) {
 	armSentryOnError({ load: loadSentry, allowUrls: dev ? undefined : ALLOW_URLS_FOR_ARM });
+	// The <meta> CSP cannot name a report endpoint, so refusals were silent.
+	// This sends the ones that look like ours ($lib/cspReport).
+	armCspReports({ load: loadSentry, origin: location.origin });
 }
 
 // Report any uncaught load/render error (to Sentry when configured) and always

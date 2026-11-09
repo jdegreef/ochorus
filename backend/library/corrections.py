@@ -24349,3 +24349,59 @@ BODY_CORRECTIONS.setdefault("on-loving-god", {}).setdefault("replacements", []).
     ('</p><p>VIPANDE KUTOKA KATIKA</p>', '</p>'),
     ('</p><p>CÁC ĐOẠN TRÍCH TỪ MỘT</p>', '</p>'),
 ])
+
+# --- English defects found while translating (queue batch 4) ---
+# Miscitations: "Hearken unto me, O house of Jacob" is Isaiah 46:3 (ch 46 has 13 verses); "in Him we live, and move" is Acts 17:28.
+BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault("replacements", []).extend([
+    ('(Isa. xlvi. 31)', '(Isa. xlvi. 3)'),
+    ('(Acts xvii. 23)', '(Acts xvii. 28)'),
+    ('(ኢሳይያስ 46:31)', '(ኢሳይያስ 46:3)'),
+    ('ሥራ 17:23)', 'ሥራ 17:28)'),
+    ('(Isaías xlvi. 31)', '(Isaías xlvi. 3)'),
+    ('(Hech. xvii. 23)', '(Hech. xvii. 28)'),
+    ('(És 46.31)', '(És 46.3)'),
+    ('(Ac 17.23)', '(Ac 17.28)'),
+    ('(Is 46:31)', '(Is 46:3)'),
+    ('(At 17:23)', '(At 17:28)'),
+    ('(Matendo 17:23)', '(Matendo 17:28)'),
+])
+# OCR and typesetting slips in the source scan.
+BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
+    ('"0 wretched man', '"O wretched man'),
+    ('never become. so', 'never become so'),
+    ('medical healing..', 'medical healing.'),
+    ('all he facts', 'all the facts'),
+    ('"We "We know', '"We know'),
+    ('There shall he no more', 'There shall be no more'),
+    ('You. can', 'You can'),
+    ('Stoopinig', 'Stooping'),
+    ('woman s face', "woman's face"),
+    ("''rejoice evermore.", '"rejoice evermore.'),
+    ('(Ps. Xvii. 8)', '(Ps. xvii. 8)'),
+    ('in the clays when', 'in the days when'),
+    ('Rosseau', 'Rousseau'),
+    ('THE PRINCIPAL OF HIS LIFE', 'THE PRINCIPLE OF HIS LIFE'),
+])
+# Numbers 7:86: the incense spoons weighed ten shekels apiece (12 x 10 = 120).
+BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacements", []).extend([
+    ('full of incense, weighing twelve shekels apiece', 'full of incense, weighing ten shekels apiece'),
+    ('እያንዳንዳቸው አሥራ ሁለት አሥራ ሁለት ሰቅል ይመዝኑ', 'እያንዳንዳቸው አሥር አሥር ሰቅል ይመዝኑ'),
+    ('llenos de incienso, pesando cada uno doce siclos', 'llenos de incienso, pesando cada uno diez siclos'),
+])
+# 1 Samuel 18:14 is said of David, not Jonathan.
+BODY_CORRECTIONS.setdefault("rise-up-men-of-god-2", {}).setdefault("replacements", []).extend([
+    ('In everything Jonathan did, he had great success', 'In everything David did, he had great success'),
+    ('«ዮናታን በሚያደርገው ነገር ሁሉ', '«ዳዊት በሚያደርገው ነገር ሁሉ'),
+    ('«كان يوناثان ناجحا في كل ما فعله', '«كان داود ناجحا في كل ما فعله'),
+    ('“योनातान अपने सब कामों में सफल', '“दाऊद अपने सब कामों में सफल'),
+    ('“Katika kila jambo Yonathani alilolifanya', '“Katika kila jambo Daudi alilolifanya'),
+    ('«В усьому, що робив Йонатан,', '«В усьому, що робив Давид,'),
+])
+# A line-break hyphen left in "tender".
+BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("replacements", []).extend([
+    ('ten-der', 'tender'),
+])
+# The fr edition ends on "FIN." like the es one; its seam for the transcriber's note.
+BODY_CORRECTIONS["separation-and-service"]["back_matter"].append(
+    ("crucifié pour nous.</p> <p>FIN.</p>", "<p>Note du transcripteur :<br/>"),
+)

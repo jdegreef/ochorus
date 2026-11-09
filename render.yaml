@@ -373,6 +373,15 @@ services:
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
+      # HTTPS-only for a year. The API already sends HSTS (Django's
+      # SECURE_HSTS_SECONDS), but this origin is the one holding the Supabase
+      # token, and without it a reader's first plain-http visit on hostile Wi-Fi
+      # can be downgraded before the redirect to https. No includeSubDomains or
+      # preload: those reach every *.ochorus.com host (email tracking, future
+      # services) and are hard to take back — add them deliberately, not here.
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000
       # Send the full URL same-origin, only the origin cross-origin — reader
       # paths name what someone is reading, which is not a referrer's business.
       - path: /*
