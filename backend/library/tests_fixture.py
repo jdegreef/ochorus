@@ -89,7 +89,7 @@ from library.ingest import (
 )
 from library.localization import is_english_edition
 from library.quote_marks import mark_counts, mispaired_marks
-from library.text import html_to_text, is_blank_title
+from library.text import is_blank_title
 
 EXPECTED_MODELS = {
     "library.author",
@@ -2860,46 +2860,33 @@ class SettledBodyIdempotenceTests(SimpleTestCase):
                 self.assertEqual(twice, once)
 
 
-class BodyTextDerivationTests(SimpleTestCase):
-    """`body_text` must be exactly what `save()` would derive from `body_html`.
+class BodyTextNotStoredTests(SimpleTestCase):
+    """No chapter or sermon row may carry `body_text`.
 
     It is a DERIVED column — `Chapter.save()` and `Sermon.save()` both set it to
-    `html_to_text(body_html)` — and it is what full-text search indexes and what
-    snippets are rendered from. The fixture is the one place it can drift:
-    `loaddata` writes it verbatim (it never calls `save()`), and
-    `backfill_body_text` only fills an EMPTY one, so a value that is present but
-    wrong self-corrects nowhere — not in a fresh build, not on a deploy.
-
-    490 rows across 58 files had drifted, in four ways and none of them visible
-    on a page: quote marks left behind by a sweep that converted `body_html`
-    only; `man&#x27;s` where the rule gives `man's`; `الخيرات. »` for
-    `الخيرات.»`, from an older derivation that spaced every tag rather than the
-    block-level ones; and 36 chapters of `the-inner-chamber.lg` with no
-    `body_text` at all.
-
-    Nothing was watching, which is why it accumulated. This is the watch.
+    `html_to_text(body_html)`, and `backfill_body_text` (the second step of
+    `manage.py release`) fills every row `loaddata` leaves empty. Stored, it was
+    ~49% of the fixture's bytes, and it drifted: `loaddata` writes a stored value
+    verbatim and the backfill fills only an EMPTY one, so a `body_text` left
+    behind by an edit to `body_html` (490 rows across 58 files, once) corrected
+    nowhere. Not storing it removes both problems; this keeps it removed when a
+    new work is serialized straight from a dev database.
     """
 
-    def test_every_body_text_is_derived_from_its_body_html(self):
-        stale = []
+    def test_no_row_stores_the_derived_body_text(self):
+        carrying = []
         for path in ordered_fixture_paths():
             if path.name in {"authors.json", "series.json", "plans.json"}:
                 continue
             for row in json.loads(path.read_text()):
-                fields = row.get("fields", {})
-                body_html = fields.get("body_html")
-                # `is None`, not falsy: a row whose body_text is "" is precisely
-                # one of the rows this exists to catch.
-                if not body_html or fields.get("body_text") is None:
-                    continue
-                if html_to_text(body_html) != fields["body_text"]:
-                    stale.append(f"{path.name} #{fields.get('order', '-')}")
+                if "body_text" in row.get("fields", {}):
+                    carrying.append(f"{path.name} #{row['fields'].get('order', '-')}")
         self.assertEqual(
-            stale[:20],
+            carrying[:20],
             [],
-            f"{len(stale)} rows carry a body_text their own body_html no longer "
-            f"derives — search indexes one thing and the page shows another. Run "
-            f"`manage.py rederive_body_text --write`.",
+            f"{len(carrying)} rows store `body_text`, which save() and "
+            f"backfill_body_text derive from `body_html` — run "
+            f"`manage.py rederive_body_text --write` to drop it.",
         )
 
 

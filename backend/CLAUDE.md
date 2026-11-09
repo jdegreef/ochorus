@@ -127,6 +127,10 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   a derived column is not a fact a fixture gets to assert — don't compare one
   against a fixture value in a seed, or the seed "repairs" it and `save()`
   derives it straight back, every deploy, forever.
+  The fixture therefore does not store `body_text` at all (it was ~49% of the
+  fixture's bytes): `backfill_body_text` fills it after `loaddata`, and
+  `tests_fixture.BodyTextNotStoredTests` fails a row that carries one — a work
+  serialized straight from a dev DB does, so run `rederive_body_text --write`.
   The routes that BYPASS `save()` are the hazard: `loaddata`, a
   `queryset.update()`, a data migration's historical model. Each column has a
   release-chain keeper for them (`backfill_body_text`, `backfill_word_count`,

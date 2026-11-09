@@ -20,7 +20,7 @@ rewritten where it stands in the raw JSON, which `-` never needs escaping in.
 characters `html_to_text` would produce from the converted HTML in every case
 but two: a run split across a tag ("26.-</i>-“", which the text joins into one)
 and an unescaped `<…>` in the text. Neither is guessed at here —
-`tests_fixture.BodyTextDerivationTests` fails on the row, and it is repaired by
+`tests_fixture.BodyTextNotStoredTests` fails on the row, and it is repaired by
 hand (Brainerd ch11 was the one case). `word_count` cannot move: a dash replaces
 a run of hyphens inside a whitespace-delimited token.
 """

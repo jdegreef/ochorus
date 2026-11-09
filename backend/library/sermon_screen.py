@@ -32,7 +32,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from library.content_fixtures import ARTICLES_DIR, BOOKS_DIR, SERMONS_DIR
-from library.text import text_of, word_count
+from library.text import html_to_text, text_of, word_count
 
 _ARCHAISM = re.compile(r"\b(thee|thou|thy|thine|ye|hath|unto|doth|art|shalt|wilt)\b", re.I)
 # Lower-case only (Nazareth, Seth), and not an ordinal (twentieth) or a noun.
@@ -90,7 +90,7 @@ class LibraryIndex:
             for path in sorted(folder.glob("*.en.json")):
                 work = path.name.split(".")[0]
                 for row in json.loads(path.read_text(encoding="utf-8")):
-                    words = _WORD.findall((row["fields"].get("body_text") or "").lower())
+                    words = _WORD.findall(html_to_text(row["fields"].get("body_html") or "").lower())
                     for i in range(len(words) - NGRAM + 1):
                         if (words[i], words[i + 1]) in starts and (
                             g := " ".join(words[i : i + NGRAM])
