@@ -1,0 +1,64 @@
+{
+ "kind": "book",
+ "slug": "epistles-of-ignatius",
+ "language": "uk",
+ "job_issue": 7609,
+ "references": [
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Proverbs 18:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 52:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered"
+  }
+ ]
+}

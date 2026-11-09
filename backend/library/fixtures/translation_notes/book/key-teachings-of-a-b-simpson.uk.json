@@ -1,0 +1,850 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-a-b-simpson",
+ "language": "uk",
+ "job_issue": 7623,
+ "references": [
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 106:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 5:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 4:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 1:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 1:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Titus 2:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 24:42",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 1:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "3 John 1:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 1:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Joshua 1:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Numbers 13:32",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Numbers 13:33",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:19",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 16:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 4:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Joshua 3:13",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 2:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 2:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Mark 11:25",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 24:27",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 24:44",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Exodus 17:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 6:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ezekiel 48:35",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 34:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 2:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 2:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 8:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

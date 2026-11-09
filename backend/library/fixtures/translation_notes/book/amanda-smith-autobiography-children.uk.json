@@ -1,0 +1,68 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography-children",
+ "language": "uk",
+ "job_issue": 7622,
+ "references": [
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Proverbs 4:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 91:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 18:5",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

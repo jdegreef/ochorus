@@ -1,0 +1,560 @@
+{
+ "kind": "book",
+ "slug": "the-pursuit-of-god",
+ "language": "sw",
+ "job_issue": 7574,
+ "references": [
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "mined",
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:44",
+   "status": "mined",
+   "source_file": "god-will-have-all-men-to-be-saved.sw.json"
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "source_file": "the-good-way-of-coming-before-the-lord.sw.json"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "the-good-way-of-coming-before-the-lord.sw.json"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Exodus 33:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Numbers 18:20",
+   "status": "mined",
+   "source_file": "gods-best-is-himself.sw.json"
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "mined",
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Genesis 22:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 21:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:16",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Genesis 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "samuel-ajayi-crowther-a-life-teens.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Wisdom of Solomon 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "mined",
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Psalm 45:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:27",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "purity-of-heart.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "John 14:1",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:22",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:18",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:19",
+   "status": "mined",
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 139:9",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 139:10",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "mined",
+   "source_file": "i-know-that-my-redeemer-liveth.sw.json"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 32:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Exodus 34:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ezekiel 37:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "rooted-2.sw.json"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Psalm 33:6",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:3",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Genesis 1:7",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 90:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 2:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 8:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 8:4",
+   "status": "mined",
+   "source_file": "are-you-forgiven.sw.json"
+  },
+  {
+   "reference": "John 12:29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "mined",
+   "source_file": "rooted-3.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Peter 1:21",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Numbers 21:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 21:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 34:5",
+   "status": "mined",
+   "source_file": "daughters-of-the-king-1.sw.json"
+  },
+  {
+   "reference": "Psalm 123:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 123:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 14:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 57:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "mined",
+   "source_file": "the-immutability-of-god.sw.json"
+  },
+  {
+   "reference": "John 8:34",
+   "status": "mined",
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "Judges 5:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "mined",
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "John 12:26",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 8:54",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "mined",
+   "source_file": "rooted-2.sw.json"
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "mined",
+   "source_file": "all-things-for-good.sw.json"
+  },
+  {
+   "reference": "John 8:29",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Mark 11:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:21",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "prevailing-prayer.sw.json"
+  }
+ ]
+}

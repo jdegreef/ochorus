@@ -1,0 +1,60 @@
+{
+ "kind": "book",
+ "slug": "epistles-of-ignatius",
+ "language": "ar",
+ "job_issue": 7612,
+ "references": [
+  {
+   "reference": "James 4:6",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 6:9",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Proverbs 18:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 52:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:4",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "mined",
+   "source_file": "Van Dyck (arb-vd) Bible text"
+  }
+ ]
+}

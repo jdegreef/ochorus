@@ -1,0 +1,92 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-children",
+ "language": "uk",
+ "job_issue": 7616,
+ "references": [
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 116:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

@@ -1378,7 +1378,7 @@ class RealityOfPrayerVerseTests(SimpleTestCase):
         return [block for _, block in corrections.BODY_CORRECTIONS[self.SLUG]["restored_blocks"]]
 
     def test_each_edition_carries_both_poems_in_place(self):
-        self.assertEqual(set(self.editions), {"am", "en", "es"})
+        self.assertEqual(set(self.editions), {"am", "en", "es", "fr"})
         for lang, chapters in self.editions.items():
             for order, index in self.POSITIONS.items():
                 with self.subTest(language=lang, chapter=order):
