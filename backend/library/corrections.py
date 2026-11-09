@@ -24557,3 +24557,7 @@ BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacem
     ('God said to him. “Lift up', 'God said to him, “Lift up'),
     ('Jesus Christ, and there would be strife', 'Jesus Christ, that there would be strife'),
 ])
+# OCR slip: "whom even themselves hold to be gods".
+BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
+    ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
+])
