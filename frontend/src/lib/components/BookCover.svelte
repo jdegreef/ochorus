@@ -7,6 +7,7 @@
 	import { framedBar, groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { groundLift } from '$lib/coverLift';
+	import { medallionFor } from '$lib/coverMedallions';
 	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
@@ -197,6 +198,9 @@
 	const bar = $derived(
 		layout ? groundBar(book.cover_url) : isArt ? framedBar(book.cover_url) : 0
 	);
+	/** A biography's portrait medallion (`coverMedallions.ts`), over a framed
+	 *  painting only: a layout composes its own page. */
+	const medallion = $derived(isArt && !layout ? medallionFor(book.slug) : null);
 	/** How far a dark painting is brightened (`coverLift.ts`); `cover-type.css`
 	 *  applies it under a scrim only. */
 	const lift = $derived(isArt ? groundLift(book.slug) : 1);
@@ -245,7 +249,12 @@
 		<div class="middle">
 			<!-- A series volume rides with the title block, so the auto margins
 			     centre the numeral and the words together. -->
-			{#if volume}<div class="volume" {lang}>{volume}</div>{/if}
+			<!-- A biography's subject in a medallion above the title
+			     (`coverMedallions.ts`); its volume numeral rides on the rim. -->
+			{#if medallion}<div class="medallion">
+					<img src={medallion} alt="" />{#if volume}<div class="volume" {lang}>{volume}</div>{/if}
+				</div>
+			{:else if volume}<div class="volume" {lang}>{volume}</div>{/if}
 			<!-- `lang` on the words themselves, not on the plate: it is what lets
 			     a browser shape and hyphenate the title correctly. NOT an
 			     accessibility win, though it looks like one — the plate is

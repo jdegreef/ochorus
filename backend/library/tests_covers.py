@@ -1059,3 +1059,33 @@ class CoverAssetPlanTests(SimpleTestCase):
         ):
             module.main()
         persist.assert_called_once_with(Path("x.json"), "cover_url", "/covers/art/my-work.jpg")
+
+
+class MedallionTests(SimpleTestCase):
+    """A biography's portrait medallion (`library/medallions.py`): every entry
+    is cut and listed, and what is on disk is what the table cuts today."""
+
+    def test_every_medallion_is_cut_from_its_entry_and_listed(self):
+        import re
+        import sys
+        from pathlib import Path
+
+        from library.medallions import MEDALLIONS
+
+        backend = Path(__file__).resolve().parents[1]
+        sys.path.insert(0, str(backend / "scripts"))
+        from build_medallions import OUT, TS, medallion_bytes
+
+        on_disk = {p.stem for p in OUT.glob("*.webp")}
+        self.assertEqual(on_disk, set(MEDALLIONS), "run `uv run python scripts/build_medallions.py`")
+        listed = set(re.findall(r"^\t'([^']+)',$", TS.read_text(), re.M))
+        self.assertEqual(listed, set(MEDALLIONS), "coverMedallions.ts disagrees with library/medallions.py")
+        stale = [s for s, m in MEDALLIONS.items() if (OUT / f"{s}.webp").read_bytes() != medallion_bytes(m)]
+        self.assertEqual(stale, [], "a medallion no longer matches its entry — re-run build_medallions.py")
+
+    def test_the_withheld_portraits_stay_withheld(self):
+        # Founder decision (2026-11): no photo of uncertain copyright on a cover.
+        from library.medallions import MEDALLIONS
+
+        for slug in ("c-s-lewis-a-life", "corrie-ten-boom-a-life", "elisabeth-elliot-a-life"):
+            self.assertNotIn(slug, MEDALLIONS)
