@@ -160,6 +160,26 @@ describe('the two cover renderers agree', () => {
 			}
 		],
 		[
+			'a biography medallion, its volume on the rim',
+			// A framed painting whose work wears its subject's portrait
+			// (`coverMedallions.ts`): the medallion leads `.middle` and the series
+			// numeral moves inside it. Its `src` differs between the two (a URL, a
+			// data URI) and is no attribute the skeleton compares.
+			{
+				cover_url: '/covers/art/mary-slessor-a-life.jpg',
+				slug: 'mary-slessor-a-life',
+				series_position: 4,
+				author: { ...book().author, slug: 'an-author-with-no-layout' }
+			},
+			{
+				art: true,
+				scrim: scrimStrength('mary-slessor-a-life'),
+				style: coverStyleFor(eraOf(1828), 'an-author-with-no-layout', 'mary-slessor-a-life'),
+				medallion: '/covers/medallions/mary-slessor-a-life.webp',
+				volume: '4'
+			}
+		],
+		[
 			'a painting in the framed composition',
 			// A painting by an author with no entry in the layout table.
 			{

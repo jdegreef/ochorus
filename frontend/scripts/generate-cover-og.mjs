@@ -123,6 +123,7 @@ import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverTitle, editionOf } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
 import { groundLift } from '../src/lib/coverLift.ts';
+import { medallionFor } from '../src/lib/coverMedallions.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { framedBar, groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
@@ -279,6 +280,8 @@ function needTwins() {
 				scrim: scrimStrength(fields.slug),
 				// And how far a dark painting is brightened, from the same table.
 				lift: isArtCover(cover) ? groundLift(fields.slug) : 1,
+				// A biography's medallion: the file under static/, inlined when drawn.
+				medallion: medallionFor(fields.slug),
 				// A painting's composition; a plate takes none.
 				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug, fields.title) : null
 			};
@@ -667,6 +670,10 @@ html,body{margin:0}
 			// its edition line — the component's call (`editionOf`).
 			title: editionOf(book.slug, book.title).words,
 			edition: editionOf(book.slug, book.title).edition,
+			medallion:
+				book.medallion && !book.layout
+					? `data:image/webp;base64,${readFileSync(resolve(STATIC, book.medallion.replace(/^\//, ''))).toString('base64')}`
+					: null,
 			subtitle: book.subtitle,
 			style: book.style,
 			volume: book.volume,
@@ -771,7 +778,9 @@ async function measureInk(page) {
 			}
 		};
 		take('byline', '.cover-type .byline', true);
-		take('title', '.cover-type .volume', true);
+		// A numeral on a medallion's rim sits on the medallion's own dark badge,
+		// not on the painting, so it is no line of the painting's to carry.
+		take('title', '.cover-type .middle > .volume', true);
 		take('title', '.cover-type .title', true);
 		take('subtitle', '.cover-type .subtitle', true);
 		take('mark', '.cover-type .brandmark svg', false);
@@ -812,6 +821,8 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              cards kept the old wash with every gate green.
  *   `lift`   — how far a dark painting is brightened (`coverLift.ts`), per
  *              slug; moved by the same tuner run that moves `scrim`.
+ *   `medallion` — a digest of a biography's portrait medallion, so a re-cut
+ *              portrait redraws its cards.
  *   `script` — which face the title is set in (`faceScriptOf`, not the
  *              recipe-correction table). Derived from the language, so it
  *              moves only if that table does; a twin whose LANGUAGE changed is a
@@ -843,6 +854,10 @@ function made(book, groundBytes) {
 		art: book.art,
 		scrim: book.scrim,
 		lift: book.lift,
+		medallion:
+			book.medallion && !book.layout
+				? digest(readFileSync(resolve(STATIC, book.medallion.replace(/^\//, ''))))
+				: null,
 		layout: layoutKey(book.layout, book.top, book.dark),
 		bar: book.bar,
 		caps: book.caps

@@ -41,6 +41,10 @@ export interface CoverCardBook {
 	edition?: string | null;
 	/** A `coverStyles` id — `devotional`, `press`, … */
 	style: string;
+	/** A biography's medallion image (`coverMedallions.ts`): a URL in the
+	 *  browser, a data URI in the share-card script. Null for everything else,
+	 *  and for a painting set in a layout. */
+	medallion?: string | null;
 	/** The series volume numeral, from `coverStyles.volumeNumeral`; null
 	 *  outside a series. */
 	volume?: string | null;
@@ -144,7 +148,13 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 	return `<div class="${classes.join(' ')}"${dir}>
 	<div class="byline" dir="auto">${escapeHtml(book.author)}</div>
 	<div class="middle">
-		${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}
+		${
+			book.medallion
+				? `<div class="medallion"><img src="${escapeHtml(book.medallion)}" alt="">${book.volume ? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>` : ''}</div>`
+				: book.volume
+					? `<div class="volume" lang="${lang}">${escapeHtml(book.volume)}</div>`
+					: ''
+		}
 		<div class="title" lang="${lang}" dir="auto">${escapeHtml(book.title)}</div>
 		${book.edition ? `<div class="edition" lang="${lang}" dir="auto">${escapeHtml(book.edition)}</div>` : ''}
 		<div class="rule"></div>
