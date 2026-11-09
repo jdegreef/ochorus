@@ -465,6 +465,10 @@ INK = {
     "byline": (AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
     "title": (1.0, TITLE_MIN),
     "subtitle": (0.90, AUTHOR_MIN_CONTRAST),
+    # A young edition's "— For Teens —" line (`coverTitle.editionOf`): small
+    # capitals at `.edition`'s 0.88 opacity, so it asks the small-text bar.
+    # Unmeasured until 2026-11, while every other white line was.
+    "edition": (0.88, AUTHOR_MIN_CONTRAST),
     "mark": (0.95, 3.0),
 }
 

@@ -10,6 +10,7 @@ import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
 import { isArtCover, isPlateCover, twinUrl } from './coverArt';
 import { allBookRows } from '../test/bookRows';
+import { coverTitle, editionOf } from './coverTitle';
 
 /**
  * The other half of the share-card staleness gate.
@@ -121,6 +122,9 @@ const needTwins = once(() => {
 				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
 				caps: smallCapsFor(f.slug),
+				// Whether the card sets a young edition's "— For Teens —" line, as the
+				// script decides it (`editionOf` over the cover title).
+				edition: Boolean(editionOf(f.slug, coverTitle(f)).edition),
 				layout: (() => {
 					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug, f.title) : null;
 					return layoutKey(
@@ -318,7 +322,7 @@ describe('the og twins were drawn in the style the table names now', () => {
 				const middle = recorded[b.key].middle;
 				if (!(Array.isArray(middle) && middle.length === 2 && middle[0] < middle[1]))
 					return [`${b.key}: no middle for the scrim band`];
-				return ['byline', 'title', 'mark']
+				return ['byline', 'title', 'mark', ...(b.edition ? ['edition'] : [])]
 					.filter((name) => !rows[name]?.length || !rows[name].every(box))
 					.map((name) => `${b.key}: no usable ${name} row`);
 			});
