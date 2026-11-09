@@ -201,6 +201,9 @@
 	/** A biography's portrait medallion (`coverMedallions.ts`), over a framed
 	 *  painting only: a layout composes its own page. */
 	const medallion = $derived(isArt && !layout ? medallionFor(book.slug) : null);
+	const medallionSource = $derived(
+		medallion ? { src: assetUrl(medallion) } : { src: '' }
+	);
 	/** How far a dark painting is brightened (`coverLift.ts`); `cover-type.css`
 	 *  applies it under a scrim only. */
 	const lift = $derived(isArt ? groundLift(book.slug) : 1);
@@ -252,7 +255,7 @@
 			<!-- A biography's subject in a medallion above the title
 			     (`coverMedallions.ts`); its volume numeral rides on the rim. -->
 			{#if medallion}<div class="medallion">
-					<img src={medallion} alt="" />{#if volume}<div class="volume" {lang}>{volume}</div>{/if}
+					<img src={medallionSource.src} alt="" use:hydrateSrc={medallionSource} />{#if volume}<div class="volume" {lang}>{volume}</div>{/if}
 				</div>
 			{:else if volume}<div class="volume" {lang}>{volume}</div>{/if}
 			<!-- `lang` on the words themselves, not on the plate: it is what lets
