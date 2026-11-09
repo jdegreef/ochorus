@@ -3,8 +3,10 @@
 # anonymous pull limit breaks builds on shared runner IPs (see ci.yml).
 FROM mirror.gcr.io/library/python:3.12-slim
 
-# Fast, reproducible installs with uv.
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+# Fast, reproducible installs with uv. Pinned, not `latest`: a moving tag
+# lets a new uv release change what builds the production image with no commit
+# here. Dependabot's docker entry proposes the bumps.
+COPY --from=ghcr.io/astral-sh/uv:0.13.7 /uv /uvx /bin/
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
