@@ -23,7 +23,8 @@
  "waiting-on-god-trust": {
   "description": "Mười tuần trong trường học của sự tin cậy. Andrew Murray dạy kỷ luật hằng ngày của việc trông đợi Đức Chúa Trời, F. B. Meyer mở ra bí quyết được Ngài dẫn dắt, và cuộc đời đức tin lạ lùng của George Müller cho thấy sự tin cậy ấy nhận được những gì.",
   "note": [
-   "Job #6187 (waiting-on-god → vi) adds this prose because the book backs the plan. «Trông Đợi Đức Chúa Trời» is the shipped vi title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Vietnamese; whichever lands last brings the card live, and its translator should check the title here against that edition."
+   "Job #6187 (waiting-on-god → vi) adds this prose because the book backs the plan. «Trông Đợi Đức Chúa Trời» is the shipped vi title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Vietnamese; whichever lands last brings the card live, and its translator should check the title here against that edition.",
+   "Job #6905 (the-life-of-trust → vi) ships the last source book, so this card goes live with it. The book's vi title is «Cuộc Đời Tin Cậy» (matching «Cuộc Đời Tin Cậy (Cho thiếu nhi)»); the card's «Một Đời Sống Tin Cậy» echoes the English plan title «A Life of Trust» rather than quoting the book title, as the English card does, so it is left as written."
   ],
   "title": "Trông Đợi Đức Chúa Trời: Một Đời Sống Tin Cậy"
  },
