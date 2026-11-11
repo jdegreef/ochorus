@@ -24885,6 +24885,39 @@
 			"bar": 0,
 			"caps": true
 		},
+		"lg/susanna-wesley-clarke": {
+			"ground": "93ace83a85cfa1ce30d0618d03da95d39427f8f60bd97e9b45839415676dc394",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[64, 316, 536, 409]
+				],
+				"subtitle": [
+					[119, 461, 481, 482],
+					[217, 482, 383, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
+		},
 		"lg/talks-to-the-farmer": {
 			"ground": "f37087a5e829f7bfd852b17b4991bd6845399519f6cbee43431e137e78dd707b",
 			"style": "revival",
