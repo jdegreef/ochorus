@@ -1632,6 +1632,11 @@
   "daily_in_context": "Đọc trong sách",
   "daily_missing_day": "Sách này không có bài đọc cho ngày này, nên đây là bài của ngày trước đó.",
   "daily_choose_date": "Chọn ngày",
+  "today_time_title": "Bạn có bao nhiêu thời gian?",
+  "today_time_hour": "1 giờ",
+  "today_time_continue": "Đọc tiếp",
+  "today_time_start": "Bắt đầu",
+  "today_time_none": "Ngôn ngữ này chưa có bài nào ngắn như vậy — hãy thử thêm một chút thời gian.",
   "daily_none": "Chưa có bài đọc hằng ngày bằng ngôn ngữ này.",
   "daily_follow_plan": "Hoặc theo như một kế hoạch đọc trọn năm"
 }

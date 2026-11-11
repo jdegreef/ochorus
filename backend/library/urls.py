@@ -1,5 +1,6 @@
 from django.urls import path
 
+from .time_fit import TimeFitView
 from .views import (
     ArticleDetailView,
     ArticleListView,
@@ -111,6 +112,7 @@ urlpatterns = [
         name="book-daily",
     ),
     path("daily/<str:date>/", DailyShelfView.as_view(), name="daily-shelf"),
+    path("fit/", TimeFitView.as_view(), name="time-fit"),
     path(
         "books/<slug:slug>/download.epub",
         BookEpubView.as_view(),
