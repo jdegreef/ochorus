@@ -541,6 +541,13 @@ TYPE_TOP = frozenset({
     "the-normal-christian-life",
     "the-pursuit-of-god",
     "things-as-they-are",
+    # The Open Word Bible's books (scripts/original_grounds/scripture.py): a
+    # pale leaf with the book's Hebrew or Greek name low on it, the type set
+    # above it from the top in dark ink.
+    "genesis",
+    "gospel-of-john",
+    "psalms",
+    "romans",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
@@ -741,6 +748,13 @@ INK_DARK = frozenset({
     "he-holds-my-tomorrows",
     "stepping-stones-2",
     "the-key-in-my-hand",
+    # The Open Word Bible's books (scripts/original_grounds/scripture.py): a
+    # pale leaf with the book's Hebrew or Greek name low on it, the type set
+    # above it from the top in dark ink.
+    "genesis",
+    "gospel-of-john",
+    "psalms",
+    "romans",
 })
 
 #: `--cover-ink-dark` in `cover-type.css`.

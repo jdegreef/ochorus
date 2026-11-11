@@ -16987,6 +16987,38 @@
 			"bar": 0,
 			"caps": false
 		},
+		"genesis": {
+			"ground": "e1030a35defbc8e9d8de242f73bbcc739779c8b8ddcdb42dbe4ce3dcf9db7dd4",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[162, 165, 438, 284]
+				],
+				"subtitle": [
+					[157, 358, 443, 386]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				386
+			]
+		},
 		"george-muller-of-bristol": {
 			"ground": "583c4abb5631dde6f80d29f6a5f6649c94f2c866d4ade91304511324b80b4afc",
 			"style": "revival",
@@ -17095,16 +17127,16 @@
 			]
 		},
 		"gospel-of-john": {
-			"ground": "0019607f856c4418dab3b8e9a561fd1826162f10043718fec483d8d61576b928",
-			"style": "house",
+			"ground": "d6fc28dbb66e196887b195f658501a0a01617983fae50f9ecfbe77d7d250190c",
+			"style": "devotional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.25,
+			"scrim": 1,
 			"lift": 1,
 			"medallion": null,
-			"layout": "framed",
+			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
 			"rows": {
@@ -17112,20 +17144,18 @@
 					[138, 102, 462, 131]
 				],
 				"title": [
-					[133, 300, 467, 376],
-					[189, 371, 411, 447]
+					[213, 165, 387, 284]
 				],
 				"subtitle": [
-					[145, 467, 455, 495],
-					[150, 495, 450, 523]
+					[121, 358, 479, 386]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				272,
-				523
+				173,
+				386
 			]
 		},
 		"grace-abounding": {
@@ -26718,6 +26748,38 @@
 				518
 			]
 		},
+		"psalms": {
+			"ground": "5564fcd4a46ade50da3bb351de4fb7d85f75a28849849a066144217c25ac4e22",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[176, 165, 424, 284]
+				],
+				"subtitle": [
+					[204, 358, 396, 386]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				386
+			]
+		},
 		"pt/a-call-to-the-unconverted": {
 			"ground": "dad4dd6b6f8244224cedc3b9e5864c187b55d8e59211d6181448237f31297b25",
 			"style": "press",
@@ -29895,6 +29957,38 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"romans": {
+			"ground": "ed0c305e2095d8df7b5caf8bd583712f595109340a7a279f5371fcc40e044b11",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[148, 165, 452, 284]
+				],
+				"subtitle": [
+					[122, 358, 478, 386]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				386
 			]
 		},
 		"rooted-1": {

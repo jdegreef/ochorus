@@ -1,0 +1,34 @@
+{
+ "slug": "genesis",
+ "title": "Genesis",
+ "cover_title": "Genesis",
+ "subtitle": "Bereshit, “In the beginning”",
+ "cover_color": "#6b3a26",
+ "description": "The first book of the Bible, called in Hebrew Bereshit from its opening words, “In the beginning”. It begins with God speaking light into darkness and a world he calls very good, and ends with a coffin in Egypt and a promise still waiting to be kept. Between the two: Adam and Eve in the garden and outside it, Cain and Abel, Noah and the rainbow, the tower of Babel, and then one family called out of the nations for the sake of them all — Abraham counting the stars, Isaac on the mountain, Jacob wrestling through the night, and Joseph forgiving the brothers who sold him. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Genesis?",
+   "answer": "The first book of the Bible and of the five books of Moses, the Torah. Its Hebrew name, Bereshit, is its first word, “In the beginning”; the name Genesis, Greek for “origin”, comes from the ancient Greek translation. Its fifty chapters run from the creation of the world to the death of Joseph in Egypt: chapters 1–11 tell of the beginnings of the world and of all peoples, and chapters 12–50 follow one family, Abraham, Isaac, Jacob and Jacob’s twelve sons, through whom God promises to bless all the families of the earth (12:3)."
+  },
+  {
+   "question": "Who wrote the book of Genesis?",
+   "answer": "Genesis does not name its author. Jewish and Christian tradition has long received it as the first of the five books of Moses, and the New Testament speaks of the Law as coming through Moses. Many scholars think the book drew on older sources and family records and reached its final form over a long period, some placing that well after Moses. Christians hold a range of views on how the book was composed, while agreeing that it is Scripture and the foundation of everything the rest of the Bible says about God, humanity and the promise."
+  },
+  {
+   "question": "How is the book of Genesis structured?",
+   "answer": "By a heading that recurs through the book, in Hebrew “these are the toledot of…”, traditionally translated “these are the generations of”. It appears ten times, introducing the accounts of the heavens and the earth (2:4), Adam (5:1), Noah (6:9), Noah’s sons (10:1), Shem (11:10), Terah (11:27), Ishmael (25:12), Isaac (25:19), Esau (36:1, repeated at 36:9) and Jacob (37:2). Each heading names a father and goes on to tell what came of his line, so Terah’s account is the story of Abraham, Isaac’s is the story of Jacob, and Jacob’s is the story of Joseph and his brothers."
+  },
+  {
+   "question": "Does Genesis conflict with science?",
+   "answer": "Christians answer this in different ways. Some read the six days of Genesis 1 as ordinary days and the earth as young; others read them as long ages, or as a literary frame in which the days arrange God’s work rather than time it, or as an ancient account written to show who made the world and why, not how or when. What the chapter itself insists on is not in dispute among them: that one God made everything that exists, that he made it good, that he made human beings in his image, and that the world is his and not a god in its own right. Many believing scientists and theologians across the centuries have found no final conflict between that confession and the study of nature."
+  },
+  {
+   "question": "What is God’s covenant with Abraham?",
+   "answer": "God’s promise, first given in Genesis 12:1–3 and confirmed by covenant in chapters 15 and 17, to make Abraham a great nation, to give his descendants the land of Canaan, to be their God, and through him to bless all the families of the earth. Abraham was old and his wife Sarah was barren, and he “put his trust in the LORD, and the LORD counted it to his credit as righteousness” (15:6). The apostle Paul reads that verse as the pattern of faith for everyone, and the promise of blessing for all nations as the gospel announced ahead of time, fulfilled in Christ (Galatians 3:8, 3:29)."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

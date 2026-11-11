@@ -1,0 +1,35 @@
+{
+ "slug": "psalms",
+ "title": "The Psalms",
+ "cover_title": "Psalms",
+ "subtitle": "Tehillim, “Praises”",
+ "chapter_label": "Psalm",
+ "cover_color": "#5a2f4f",
+ "description": "The prayer book and songbook of Israel and the church: a hundred and fifty psalms, gathered over a thousand years into five books, that begin with “How blessed is the one” and end with “Let every creature that breathes praise the LORD!” The shepherd psalm and the cry “My God, my God, why have you abandoned me?”; David’s confession after Bathsheba and Moses’ prayer for every generation; the songs of ascents sung by pilgrims on the road to Jerusalem; laments that turn to trust, and the psalms Jesus prayed on the cross. Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What are the Psalms?",
+   "answer": "The Psalms are a collection of a hundred and fifty prayers and songs in the Old Testament, the prayer book and hymnbook of ancient Israel, and of the church ever since. Their Hebrew name, Tehillim, means “Praises”, though more of them are laments than anything else. They were written over many centuries, from the time of Moses and David to the return from exile in Babylon, and were gathered into five books, each ending with a blessing of God. No Old Testament book is quoted more often in the New Testament."
+  },
+  {
+   "question": "Who wrote the Psalms?",
+   "answer": "Many hands. By the titles printed above them, David is linked with seventy-three psalms; Asaph, a temple musician, with twelve; the sons of Korah, a family of temple singers, with eleven; Solomon with two; and Moses, Heman and Ethan with one each. About a third have no name at all. The titles are very old, already part of the Hebrew text and translated in the Greek Septuagint before the time of Christ, but most scholars think they were added by the editors who gathered the collections, and the Hebrew “of David” can mean by, for or belonging to David’s collection. Jesus quotes Psalm 110 as David’s words."
+  },
+  {
+   "question": "Why are the Psalms divided into five books?",
+   "answer": "The final editors arranged the Psalms into five books (Psalms 1–41, 42–72, 73–89, 90–106 and 107–150), each closing with a short doxology, a blessing of God, and the last ending with five psalms of praise. Ancient Jewish teachers saw the five books as Israel’s answer to the five books of Moses. The arrangement also tells a story: Book III ends in grief over the fallen line of David, Book IV answers with Moses’ prayer and the cry “The LORD is King!”, and the whole collection climbs toward praise."
+  },
+  {
+   "question": "What kinds of psalms are there?",
+   "answer": "The main kinds are psalms of praise, which call people to worship God and give the reason; laments, by one person or the whole people, which pour out a trouble and usually turn to trust; thanksgivings for prayer answered; royal psalms about the king in David’s line, and psalms that celebrate the LORD as King; wisdom psalms on the two paths and God’s law; quiet psalms of trust such as Psalm 23; and the seven penitential psalms of confession (6, 32, 38, 51, 102, 130 and 143). The imprecatory psalms, which call down judgment on enemies, are the hardest for Christians; the church has read them as honest cries that hand vengeance to God, as a refusal to make light of evil, and as prayers against sin and the devil rather than curses on a neighbour."
+  },
+  {
+   "question": "How do Jesus and the New Testament use the Psalms?",
+   "answer": "Jesus grew up singing the Psalms and quoted them often. On the cross he prayed the first line of Psalm 22, “My God, my God, why have you abandoned me?”, and, in Luke, Psalm 31:5, committing his spirit into his Father’s hands. He asked how David could call the Messiah “my lord” in Psalm 110, the Old Testament passage the New Testament quotes most. The apostles preached Psalm 2 and Psalm 110 of his kingship, Psalm 16 of his resurrection and Psalm 118 of the rejected stone made the cornerstone, and told the churches to sing psalms together."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Each line of the poetry is set on its own, and “LORD” in capitals stands for God’s personal name. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

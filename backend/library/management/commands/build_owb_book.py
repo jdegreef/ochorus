@@ -17,7 +17,18 @@ under `data/grc|hbo/` for paragraphing — never its code, so the rules below ar
 a small port of the ones its site builder (`scripts/build_site.py`) applies:
 
 * **Settings** at their defaults: a `{{setting:a|b}}` span reads `a`.
-* **Poetry lines** run together: a `\\q` break reads as a space.
+* **Poetry lines** run together in prose books: a `\\q` break reads as a
+  space. In a book of verse (`POETRY`) each line is its own: a `\\q` break and
+  the start of every verse become a `<br>`, inside the paragraphs below.
+* **English chapters.** Records carry the source text's numbering, which in
+  some Old Testament books differs from English Bibles (Hebrew Genesis 32:1 is
+  English 31:55; Malachi 4 is Hebrew 3:19-24). A sentence goes in the ENGLISH
+  chapter of its first verse, through OWB's `data/versification.json`.
+* **Psalm titles** ("A psalm of David"), which English Bibles print unnumbered
+  above verse 1, are the verses that map to no English number: they open the
+  chapter as an italic paragraph of their own. Where the Hebrew counts a short
+  title as part of verse 1 ("A psalm of David. The LORD is my shepherd"), the
+  title's sentences are told by their words (`PSALM_TITLE`) and set the same way.
 * **No verse numbers**: a reader's edition, chapters and paragraphs only. A bare
   `<sup>16</sup>` is footnote residue to this library — the deploy's
   `corrections.strip_footnote_markers` removes every one, and listen mode would
@@ -87,6 +98,28 @@ DISPUTED_NOTE = (
 #: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
 FIRST_NT_INDEX = 39
 
+#: Books set as verse, line by line (see the module doc).
+POETRY = frozenset({"PSA"})
+
+#: One sentence of a psalm's title, by the few words titles are made of: "For
+#: the music director.", "A psalm of David.", "Of the sons of Korah.", "A song of
+#: ascents." Peeled from the front of a psalm's first verse only, and only where
+#: no verse of the psalm is a title already. "Praise the LORD!" is not one:
+#: English Bibles print it as the psalm's first words.
+PSALM_TITLE = re.compile(
+    r"(?:For the music director|(?:A |An )?(?:psalm|song|prayer|maskil|miktam|shiggaion)\b[^.!?\n]*"
+    r"|Of (?:the sons of Korah|[A-Z][a-z]+))\.[ \n]*",
+    re.I,
+)
+
+
+def split_psalm_title(text: str) -> tuple[str, str]:
+    """(the title sentences at the start of `text`, the rest)."""
+    end = 0
+    while m := PSALM_TITLE.match(text, end):
+        end = m.end()
+    return " ".join(text[:end].split()), text[end:]
+
 _SPAN = re.compile(r"\{\{([a-z_]+):([^{}]*)\}\}")
 _VERSE = re.compile(r"\\v (\d+) ?")
 _LINE = re.compile(r" ?\\q ?")
@@ -121,23 +154,35 @@ def curl_singles(text: str) -> str:
     return _SINGLE.sub(lambda m: "‘" if m[1] is not None else "’", text)
 
 
-def plain(text: str) -> str:
-    """A rendering with every setting at its default and its lines run together."""
-    return curl_singles(
-        " ".join(_LINE.sub(" ", _SPAN.sub(lambda m: m[2].split("|")[0], text)).split())
-    )
+def plain(text: str, lines: bool = False) -> str:
+    """A rendering with every setting at its default. Its poetry lines run
+    together, or with `lines` are kept apart by a newline."""
+    text = _SPAN.sub(lambda m: m[2].split("|")[0], text)
+    if not lines:
+        return curl_singles(" ".join(_LINE.sub(" ", text).split()))
+    return "\n".join(curl_singles(" ".join(line.split())) for line in _LINE.split(text))
 
 
-def verses_of(record: dict) -> list[tuple[str, str]]:
+def heading_text(heading: str) -> str:
+    """A section heading, capitalised: OWB sets Psalm 121's as "the LORD guards
+    your going and coming", lower case where its divine-name setting begins it."""
+    text = plain(heading)
+    return text[:1].upper() + text[1:]
+
+
+def verses_of(record: dict, lines: bool = False) -> list[tuple[str, str]]:
     """[(verse id, text)] for one sentence, split at its verse markers. A
-    record's markers follow its refs in order."""
+    record's markers follow its refs in order. `lines` as for `plain`."""
     parts = _VERSE.split(record["renderings"][LANGUAGE][LEVEL])
     texts = [parts[0], *parts[2::2]]
     if len(texts) != len(record["refs"]):
         raise CommandError(
             f"{record['id']}: {len(texts)} verse parts for refs {record['refs']}"
         )
-    return [(vid, plain(text)) for vid, text in zip(record["refs"], texts, strict=True)]
+    return [
+        (vid, plain(text, lines))
+        for vid, text in zip(record["refs"], texts, strict=True)
+    ]
 
 
 class Source:
@@ -175,13 +220,16 @@ class Source:
         books = json.loads((root / "data" / "books.json").read_text("utf-8"))["books"]
         self.name = books[code][LANGUAGE]
         self.greek = list(books).index(code) >= FIRST_NT_INDEX
-        # Records carry the SOURCE text's numbering. Where the Hebrew numbers a
-        # book's verses differently from English Bibles (Malachi 4 is Hebrew
-        # 3:19-24), grouping by it would mis-cut the chapters; refuse until the
-        # book is mapped through data/versification.json.
-        renumbered = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
-        if any(vid.startswith(f"{code}.") for vid in renumbered):
-            raise CommandError(f"{code} is numbered differently in English; chapters would not match")
+        self.poetry = code in POETRY
+        # Source verse -> its English verses, for the verses numbered otherwise
+        # in English ([] for a psalm title). See the module doc.
+        self.english = {
+            vid: english
+            for vid, english in json.loads(
+                (root / "data" / "versification.json").read_text("utf-8")
+            )["english"].items()
+            if vid.startswith(f"{code}.")
+        }
         self.commit = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
             capture_output=True,
@@ -189,11 +237,21 @@ class Source:
             check=True,
         ).stdout.strip()
 
+    def english_chapter(self, vid: str) -> int:
+        """The English chapter a source verse is printed in. A psalm title has
+        no English verse and stays in its own chapter."""
+        english = self.english.get(vid, [vid])
+        return verse_key(english[0] if english else vid)[0]
+
+    def is_title(self, record: dict) -> bool:
+        """A sentence that is all psalm title: no verse of it has an English number."""
+        return all(self.english.get(vid) == [] for vid in record["refs"])
+
     def chapters(self) -> dict[int, list[dict]]:
-        """{chapter: its sentences}, each sentence in the chapter it starts in."""
+        """{English chapter: its sentences}, each in the chapter it starts in."""
         out: dict[int, list[dict]] = {}
         for r in self.records:
-            out.setdefault(verse_key(r["refs"][0])[0], []).append(r)
+            out.setdefault(self.english_chapter(r["refs"][0]), []).append(r)
         return out
 
     def _words(self, chapter: int) -> list[dict]:
@@ -237,11 +295,32 @@ class Source:
         para: list[str] | None = None
         in_disputed = False
 
+        title: list[str] = []
+        # Verse sets each line on its own; prose runs its verses together.
+        joiner = "<br>" if self.poetry else " "
+
         def close():
             if para:
-                out.append("<p>" + " ".join(para) + "</p>")
+                out.append("<p>" + joiner.join(para) + "</p>")
 
+        def close_title():
+            if title:
+                out.append("<p><em>" + " ".join(title) + "</em></p>")
+                title.clear()
+
+        # A psalm whose title shares its first verse (see PSALM_TITLE).
+        peel = self.code == "PSA" and not any(self.is_title(r) for r in records)
         for r in records:
+            if self.is_title(r):
+                # A psalm's title follows its heading and precedes its first line.
+                close()
+                para = None
+                heading = self.headings.get(r["id"])
+                if heading and not title:
+                    out.append(f"<h3>{escape(heading_text(heading), quote=False)}</h3>")
+                title.extend(escape(text, quote=False) for _, text in verses_of(r))
+                continue
+            close_title()
             disputed = any(is_disputed(v) for v in r["refs"])
             heading = self.headings.get(r["id"])
             if heading or disputed != in_disputed:
@@ -252,16 +331,24 @@ class Source:
             if in_disputed and not disputed:
                 out.append("</blockquote>")
             if heading:
-                out.append(f"<h3>{escape(plain(heading), quote=False)}</h3>")
+                out.append(f"<h3>{escape(heading_text(heading), quote=False)}</h3>")
             if disputed and not in_disputed:
                 out.append(
                     f"<p><em>{escape(self.disputed_note(r), quote=False)}</em></p><blockquote>"
                 )
             in_disputed = disputed
+            texts = [text for _, text in verses_of(r, self.poetry)]
+            if peel:
+                peel = False
+                heading_title, texts[0] = split_psalm_title(texts[0])
+                if heading_title:
+                    close()
+                    para = None
+                    out.append(f"<p><em>{escape(heading_title, quote=False)}</em></p>")
             if para is None or r["id"] in starts:
                 close()
                 para = []
-            para.extend(escape(text, quote=False) for _, text in verses_of(r))
+            para.extend(escape(text, quote=False).replace("\n", "<br>") for text in texts)
         close()
         if in_disputed:
             out.append("</blockquote>")
@@ -314,8 +401,10 @@ class Command(BaseCommand):
                 source.embed((editorial / "introduction.html").read_text("utf-8")),
             )
         ]
+        # "Psalm 23", not "Psalms 23": a chapter of the book can have its own label.
+        label = meta.get("chapter_label", source.name)
         bodies += [
-            (f"{source.name} {chapter}", source.chapter_html(chapter, records))
+            (f"{label} {chapter}", source.chapter_html(chapter, records))
             for chapter, records in sorted(source.chapters().items())
         ]
         bodies.append(
@@ -339,6 +428,7 @@ class Command(BaseCommand):
             "author": author,
             "title": meta["title"],
             "subtitle": meta["subtitle"],
+            "cover_title": meta.get("cover_title", ""),
             "description": meta["description"],
             "qa": meta["qa"],
             "cover_color": meta["cover_color"],

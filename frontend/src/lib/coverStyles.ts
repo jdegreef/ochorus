@@ -125,6 +125,9 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 	// house voice with every other living writer — and a publisher's imprint
 	// that looks like everyone else's books is not an imprint.
 	'ochorus-originals': 'originals',
+	// The Open Word Bible: its books are set in the devotional hand, the
+	// Garamond of the printed Bibles, in dark ink on their leaf.
+	'open-word-bible': 'devotional',
 	// His English editions wear the covers his ministry designed, all set in
 	// hand-lettered small caps; without this his translations were the only
 	// editions of those books in a different voice.

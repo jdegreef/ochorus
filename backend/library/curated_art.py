@@ -1391,13 +1391,6 @@ CURATED: dict[str, Artwork] = {
         "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
         focus=0.75,
     ),
-    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
-    "gospel-of-john": Artwork(
-        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
-        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
-        focus=0.4,
-        inset=0.03,
-    ),
     # ── Batch 33 · the stacked October/November imports ─────────────────────
     "letters-of-jerome": Artwork(
         "met", 926221, "Antoine-Alphonse Montfort", "Cedars of Lebanon", "1837",
@@ -2478,6 +2471,25 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A road at night from a fruit tree in the dark foreground to a city "
         "of light on the far hill: from the garden in Genesis to the city "
         "in Revelation.",
+    ),
+    # The Open Word Bible's books: a leaf of parchment with the book's name in
+    # its own language (Hebrew or Greek), the same for every edition and drawn
+    # by scripts/original_grounds/scripture.py; the type is set live above it.
+    "genesis": Original(
+        "19d59fed9565fddf4e35592a0b8ad096b111ffd1f433c36e6b6ad71be2fc9088",
+        "Bereshit, 'In the beginning', the book's first word in Hebrew, set large on a pale leaf.",
+    ),
+    "gospel-of-john": Original(
+        "6fe81939e6d37377a6020c7864ce86920f1f72d029effb17628c45516dfe2ca6",
+        "Kata Ioannen, 'According to John', the Gospel's title in the Greek manuscripts, set large on a pale leaf. Replaced its Ruysdael river scene (2026-11-11), so the Bible's books read as one set.",
+    ),
+    "psalms": Original(
+        "85ed5eef3a2f551d1b4354fd500063b4cd9dd457273053c0b3496ec89ec56098",
+        "Tehillim, 'Praises', the Hebrew name of the book, set large on a pale leaf.",
+    ),
+    "romans": Original(
+        "954b769f175b23df206b57dc73a8980f5d85bf57687f2490cabe9264f9b4a599",
+        "Pros Rhomaious, 'To the Romans', the letter's title in the Greek manuscripts, set large on a pale leaf.",
     ),
 }
 

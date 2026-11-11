@@ -291,7 +291,12 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'religious-experience-and-journal',
 	'the-normal-christian-life',
 	'the-pursuit-of-god',
-	'things-as-they-are'
+	'things-as-they-are',
+	// The Open Word Bible's books: the type above the name on their leaf.
+	'genesis',
+	'gospel-of-john',
+	'psalms',
+	'romans'
 ]);
 
 /**
@@ -325,7 +330,13 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	'feasting-at-the-table',
 	'he-holds-my-tomorrows',
 	'stepping-stones-2',
-	'the-key-in-my-hand'
+	'the-key-in-my-hand',
+	// The Open Word Bible's books: a pale leaf with the book's Hebrew or Greek
+	// name low on it (scripts/original_grounds/scripture.py).
+	'genesis',
+	'gospel-of-john',
+	'psalms',
+	'romans'
 ]);
 
 /** Is this painted book set in dark ink? Never under a layout. */
