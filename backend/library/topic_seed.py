@@ -53,6 +53,7 @@ TOPICS = [
             "jesus-teacher-of-prayer",
             "devoted-to-prayer",
             "faithful-unto-death",
+            "seven-times-a-day",
         ],
     ),
     (
