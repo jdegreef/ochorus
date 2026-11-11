@@ -3,6 +3,7 @@
  "slug": "susanna-wesley-clarke",
  "language": "vi",
  "job_issue": 7030,
+ "pull_request": 7728,
  "note": [
   "Job #7030 (2026-11-11): translated chapter by chapter (three long chapters in halves) against one shared CONVENTIONS file, then assembled, validated (paragraph parity, digits, quotes) and reconciled for terms. Scripture from the Kinh Thánh 1925 (Cadman; ebible vie_kt) via scripts/bible_mirror.py — Take Root unreachable. Every `mined` row was re-checked as a verbatim substring of that verse and of the chapter body. The book cites no references; every row is an uncited quotation or allusion in the prose. AI-drafted, awaiting native review."
  ],
