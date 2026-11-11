@@ -1,0 +1,1690 @@
+{
+ "kind": "book",
+ "slug": "the-unselfishness-of-god",
+ "language": "vi",
+ "job_issue": 7048,
+ "note": [
+  "Job #7048 (2026-11-11): one translator per chapter against a shared per-book CONVENTIONS file (term + chapter-title table), validated for tag parity, digits and verbatim scripture, then reconciled across the book. Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 1:18",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 14:8",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 14:9-10",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 10:34b-35",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 14:17a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:1-2a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:3a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:3a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 10:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 48:18",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 20
+  },
+  {
+   "reference": "Job 22:21",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 26
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 32:10",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 27,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "James 1:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 48:18",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 31
+  },
+  {
+   "reference": "Habakkuk 3:18",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 16:13b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:15",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 16:24b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 15:14-15",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 17:26a",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 14:2b",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 5,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Proverbs 29:25a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:4b",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 2:27",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 6:60",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 10:18-20",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 10:8b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:1b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 10:19b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:3",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:18",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 13:10",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 1:1",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 10:11",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 20:17",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 17:29",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Revelation 19:14",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Revelation 19:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:4b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jeremiah 23:21",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 15:2",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 23:10",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 17:26a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 150:1a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 150:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 150:4",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 2:2a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 10:34",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 13
+  },
+  {
+   "reference": "John 16:24b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 5,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 12:11b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 18:8",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 24:13a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 7:14a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 5:30a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 41:17a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 50:10b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 37:7a",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 17
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 16:23a",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 1:9a",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 4:8b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hosea 4:17",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:19b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:22a",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:25",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:27a",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 5:19a",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 5:8b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 9:15",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 5:24b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 5:1a",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 28
+  },
+  {
+   "reference": "John 6:47",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 31
+  },
+  {
+   "reference": "1 John 5:1a",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 32,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 20:30-31",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 33,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 20:31b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 33,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:6b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 10:10b",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 13:38-39",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:19a",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 9:35b",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 15
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalms 23:5b",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 13
+  },
+  {
+   "reference": "Psalms 145:9b",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:11a",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 2:2",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 5:18",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 3:21",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 2:10-11",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:25",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 28
+  },
+  {
+   "reference": "Psalms 68:1",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 68:2",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Malachi 3:2b",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 32,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Malachi 3:3a",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 32,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 99:8b",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 4:8b",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 5,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:28a",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 12:1a",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:13a",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 15:4b",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 21
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 26,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 145:9b",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 27,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 62:6",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 32
+  },
+  {
+   "reference": "Ephesians 3:18",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:19a",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:18-19",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 23
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 7:21b",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 63:1",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "James 2:26b",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Titus 2:1",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 61:10",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 26,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Zechariah 3:4",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 2:15",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:15-16",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 2:21",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:28",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 63:1",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 34,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Exodus 14:14",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 52,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 52,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 54,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 33:9",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 55,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 55,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 57
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 57,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 59,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 59,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30b",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:31b",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 5:17b",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:21b",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 4:4a",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jeremiah 9:23",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jeremiah 9:24a",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 23,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:9",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 23,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 44:3",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 44:8",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3b",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:7a",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Colossians 1:10a",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 26,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 6:20a",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 27,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 27,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 5:4-5",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 29,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Exodus 14:13a",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3b",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 2:9a",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 59:19b",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 16:20a",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalms 51:12a",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 4
+  },
+  {
+   "reference": "John 8:32b",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 35:8a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Joshua 1:3a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jude 1:24a",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 3:18-19a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 4:8b",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 3:12a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 136:1a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Nahum 1:7",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 17
+  },
+  {
+   "reference": "Psalms 34:8a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 34:8a",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 22
+  },
+  {
+   "reference": "Numbers 8:25",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 5:45a",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 8:3",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 17:24a",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 John 3:2b",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}
