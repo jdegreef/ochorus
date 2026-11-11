@@ -789,6 +789,9 @@ async function measureInk(page) {
 		// A young edition's "— For Teens —" line: small white type, like the subtitle.
 		take('edition', '.cover-type .edition', true);
 		take('mark', '.cover-type .brandmark svg', false);
+		// The address a work with its own home sets in the mark's place
+		// (`coverStyles.siteMarkFor`): type, so measured by its line.
+		take('mark', '.cover-type .sitemark', true);
 		// And the block the scrim's band hangs off (`.middle::after`), so the
 		// Python model can put the band where this edition's words put it.
 		const m = document.querySelector('.cover-type .middle').getBoundingClientRect();

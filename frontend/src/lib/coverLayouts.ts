@@ -212,6 +212,11 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'the-normal-christian-life': null,
 	'the-pursuit-of-god': null,
 	'things-as-they-are': null,
+	// The Open Word Bible books, framed on their leaf with the type from the top.
+	'genesis': null,
+	'gospel-of-john': null,
+	'psalms': null,
+	'romans': null,
 	// Photographs from designed covers, worn in English since 2026-10-29
 	// (designed_covers.ENGLISH_ON_GROUND): framed like the designed covers they
 	// came from — the author's wash, band or diagonal fades or crops a photograph.
@@ -292,7 +297,7 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'the-normal-christian-life',
 	'the-pursuit-of-god',
 	'things-as-they-are',
-	// The Open Word Bible's books: the type above the name on their leaf.
+	// The Open Word Bible books: the type above the name on their leaf.
 	'genesis',
 	'gospel-of-john',
 	'psalms',
@@ -331,8 +336,8 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	'he-holds-my-tomorrows',
 	'stepping-stones-2',
 	'the-key-in-my-hand',
-	// The Open Word Bible's books: a pale leaf with the book's Hebrew or Greek
-	// name low on it (scripts/original_grounds/scripture.py).
+	// The Open Word Bible books: a pale leaf with each book named low on it in
+	// Hebrew or Greek (scripts/original_grounds/scripture.py).
 	'genesis',
 	'gospel-of-john',
 	'psalms',
@@ -393,5 +398,7 @@ export function coverLayoutFor(
  *  `<layout>/<hue>`. */
 export function layoutKey(layout: CoverLayout | null, top = false, dark = false): string {
 	if (layout) return `${layout.layout}/${layout.hue}`;
-	return top ? 'framed-top' : dark ? 'framed-light' : 'framed';
+	// Dark ink first: a dark-ink ground has no scrim wherever its type sits
+	// (the Open Word Bible books are dark AND set from the top).
+	return dark ? 'framed-light' : top ? 'framed-top' : 'framed';
 }

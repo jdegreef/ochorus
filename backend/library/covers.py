@@ -838,6 +838,22 @@ DARK_INK_BOXES_BY_SLUG = {
         ("mark", (228, 660, 372, 750), 0.95, 3.0),
     ),
 }
+
+#: The Open Word Bible's books share one composition (type from the top, the
+#: name low on the leaf, OpenWordBible.org at the foot), so one set of boxes,
+#: measured 2026-11-11 on the English twins plus margin. The title row allows a
+#: second line and the subtitle runs down to it, both still clear of the name's
+#: band, which starts at y=470.
+OPEN_WORD_BIBLE_INK_BOXES = (
+    ("byline", (60, 98, 540, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+    ("title", (40, 160, 560, 380), 1.0, TITLE_MIN),
+    ("subtitle", (60, 350, 540, 450), 0.90, AUTHOR_MIN_CONTRAST),
+    ("mark", (150, 684, 450, 726), 0.95, 3.0),
+)
+DARK_INK_BOXES_BY_SLUG |= {
+    slug: OPEN_WORD_BIBLE_INK_BOXES
+    for slug in ("genesis", "gospel-of-john", "psalms", "romans")
+}
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.
