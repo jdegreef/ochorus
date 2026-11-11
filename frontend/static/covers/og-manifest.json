@@ -40564,6 +40564,36 @@
 				505
 			]
 		},
+		"vi/the-unselfishness-of-god": {
+			"ground": "7c546edf138521359823c6c30aa7b1c944b96f47bdec5e0496e8cf8623ddb1c7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[80, 290, 520, 372],
+					[108, 362, 492, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
 		"vi/the-way-to-god": {
 			"ground": "382eedbe5a7b52037bee2027dcc827c2f9d56b6f1d5075fc6f93f7cf560ca0cd",
 			"style": "revival",
