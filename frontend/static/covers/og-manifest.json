@@ -17725,6 +17725,35 @@
 				555
 			]
 		},
+		"hi/ever-increasing-faith": {
+			"ground": "dc17169274983f6725ad2619ae8470597f8623554737ff445dbdc2a225e4db2c",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[99, 235, 501, 311]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				374
+			]
+		},
 		"hi/faithful-with-little": {
 			"ground": "29a0d5d20722498a5e6bc9aa350c9928538b2c30886fb42fe39f783a8833f7ff",
 			"style": "originals",
