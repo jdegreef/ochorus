@@ -36036,6 +36036,20 @@
 			"bar": 0,
 			"caps": false
 		},
+		"uk/all-things-for-good": {
+			"ground": "b329631f7bc80e5fe9122c44ef1a3eb547fd7c789aa01eb1158f03e02127ad15",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/amanda-smith-autobiography-children": {
 			"ground": "6ad2f49c4878986d927d13048328ceaa8ce76782a6f68b1502f301c9b3397714",
 			"style": "revival",
