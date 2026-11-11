@@ -7573,6 +7573,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("To this answer, ‘Is it necessity", "To this I answer, ‘Is it necessity"),
             ("your flesh and family, then undertake", "your flesh and family, than undertake"),
             ("and had rather than his carnal hearers", "and had rather that his carnal hearers"),
+            # Two more the vi translation (#7079) read through, same standard.
+            ("alleged more than all his against the duty", "alleged more than all this against the duty"),
+            ("<p>Your unworthy fellow -servant</p>", "<p>Your unworthy fellow-servant</p>"),
         ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
