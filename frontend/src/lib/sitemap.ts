@@ -498,6 +498,10 @@ async function build(): Promise<SitemapData> {
 			byLocale: new Map([['en', '/quotes/']]),
 			lastmod: newest(quoteAuthors.map((a) => a.updated_at))
 		});
+	// "Whose words?", the daily quotation game, English-only for the same
+	// reason. Undated: its page is the same frame every day (the puzzle is
+	// drawn in the browser), so no row says when it last changed.
+	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/game/']]) });
 	// The quotes-by-topic index, English-only for the same reason. Only when a
 	// theme has actually earned a page, so the hub is never advertised empty.
 	if (quoteTopics.length)

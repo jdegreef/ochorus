@@ -100,7 +100,11 @@
 				{/each}
 			</ul>
 		{/if}
-		<a class="browse" href="/quotes/topics/">{t('quotes.browseByTopic')}</a>
+		<span class="flex flex-wrap gap-x-5 gap-y-1">
+			<a class="browse" href="/quotes/topics/">{t('quotes.browseByTopic')}</a>
+			<!-- The daily game plays with these same quotations. -->
+			<a class="browse" href="/quotes/game/">{t('game.cta')} <Arrow /></a>
+		</span>
 	</nav>
 
 	<!-- A card per author. The accent bar wears the author's era hue, the same

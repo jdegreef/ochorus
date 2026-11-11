@@ -3,23 +3,27 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import { tileFace, type BookTile } from '$lib/library-public';
+	import { localizeHref } from '$lib/href';
 	import BookCover from './BookCover.svelte';
 
 	/**
-	 * Book covers fanned together. Decorative (aria-hidden); falls back to the
-	 * book's cover colour when there's no image.
+	 * Book covers fanned together. Decorative (aria-hidden) unless `spread`;
+	 * falls back to the book's cover colour when there's no image.
 	 *
 	 * `size`: `sm` is a small strip (a plan's book sections); `lg` a larger one
 	 * (a series page's hero); `fan` is a page's hero picture — a deck: one big
 	 * featured cover in front and up to two more stepped up and out behind it,
 	 * with a "+N" chip when the list holds more than the deck shows, filling
-	 * the width it is given (the plan page, /originals, /for). Given
-	 * `max={5}` and five covers, the fan is a SPREAD instead (the home hero):
-	 * the middle cover in front, two each side stepping back and down, an arc
-	 * of upright books. `one` is a lone cover dressed as the fan's featured
-	 * one, filling the width it is given (a one-book plan's hero, beside its
-	 * title). `priority` loads the featured cover eagerly for a fan that is
-	 * the page's largest paint.
+	 * the width it is given (the plan page, /originals, /for). `spread` is the
+	 * home hero: three covers side by side, the middle one larger, raised and
+	 * in front — every cover WHOLE, none tucked behind another, so each title
+	 * reads (the five-cover arc it replaced cut the outer ones to "The Pu… of G"
+	 * and "…mber"). Each is a link to its own book, labelled with its title and
+	 * author, since there the covers are the picture of the library and its
+	 * first way in. Fewer than three → the deck. `one` is a lone cover dressed
+	 * as the fan's featured one, filling the width it is given (a one-book
+	 * plan's hero, beside its title). `priority` loads the featured cover
+	 * eagerly for a fan that is the page's largest paint.
 	 *
 	 * BOOKS ONLY, by type. A topic's fan can also hold sermon tiles, which are
 	 * drawn as emblem chips rather than covers (`ShelfCard`); this one cannot
@@ -32,23 +36,28 @@
 		max = 4,
 		size = 'sm',
 		priority = false
-	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan' | 'one'; priority?: boolean } =
-		$props();
-	// The spread: five covers, asked for (max 5), in their own left-to-right
-	// order — the middle one leads.
-	const spread = $derived(size === 'fan' && max === 5 && covers.length >= 5);
+	}: {
+		covers: BookTile[];
+		max?: number;
+		size?: 'sm' | 'lg' | 'fan' | 'spread' | 'one';
+		priority?: boolean;
+	} = $props();
+	// The spread: three covers in their own left-to-right order — the middle
+	// one leads. Fewer to be had → the deck.
+	const spread = $derived(size === 'spread' && covers.length >= 3);
+	const fan = $derived(size === 'fan' || (size === 'spread' && !spread));
 	// The deck's geometry holds three. Of three, the middle one is featured —
 	// callers put their lead there (audienceHub.heroCovers) — and the other two
 	// stand behind it in order; otherwise the first leads.
 	const shown = $derived.by(() => {
-		if (spread) return covers.slice(0, 5);
-		const list = covers.slice(0, size === 'fan' ? Math.min(max, 3) : size === 'one' ? 1 : max);
-		return size === 'fan' && list.length === 3 ? [list[1], list[0], list[2]] : list;
+		if (spread) return covers.slice(0, 3);
+		const list = covers.slice(0, fan ? Math.min(max, 3) : size === 'one' ? 1 : max);
+		return fan && list.length === 3 ? [list[1], list[0], list[2]] : list;
 	});
-	const lead = $derived(spread ? 2 : 0);
+	const lead = $derived(spread ? 1 : 0);
 	// The chip sits under the deck's back cover; the spread has no back corner
 	// for it, so it shows no chip.
-	const more = $derived(size === 'fan' && !spread ? covers.length - shown.length : 0);
+	const more = $derived(fan ? covers.length - shown.length : 0);
 </script>
 
 {#if covers.length}
@@ -56,18 +65,22 @@
 		class="covers"
 		class:strip={size === 'sm' || size === 'lg'}
 		class:lg={size === 'lg'}
-		class:fan={size === 'fan'}
+		class:fan={fan || spread}
 		class:one={size === 'one'}
 		class:spread
-		aria-hidden="true"
+		aria-hidden={spread ? undefined : 'true'}
 	>
 		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
 			{@const eager = priority && i === lead}
-			<div class="cover">
+			<svelte:element
+				this={spread ? 'a' : 'div'}
+				class="cover"
+				href={spread ? localizeHref(`/books/${cover.slug}`) : undefined}
+			>
 				{#if face}
 					<!-- Drawn, not a bare image: a plate ground has no words. -->
-					<BookCover book={face} rounded="" priority={eager} />
+					<BookCover book={face} rounded="" priority={eager} byline={spread} />
 				{:else if cover.cover_url}
 					{@const source = { src: assetUrl(cover.cover_url), srcset: assetSrcset(coverSrcset(cover.cover_url)) || undefined }}
 					<img
@@ -80,7 +93,7 @@
 				{:else}
 					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
 				{/if}
-			</div>
+			</svelte:element>
 		{/each}
 		{#if more > 0}<span class="more"><bdi dir="ltr">+{more}</bdi></span>{/if}
 	</div>
@@ -175,42 +188,50 @@
 		width: 36cqw;
 		filter: brightness(0.93);
 	}
-	/* The spread (five, the home hero): an arc of upright books, the middle
-	   one largest and in front, each pair outward smaller, lower and further
-	   back. Symmetric, so it needs no mirroring in a right-to-left locale. */
+	/* The spread (the home hero): three upright books side by side, the middle
+	   one larger, raised and in front, the outer two a step back (smaller,
+	   lower, a shade darker). They don't overlap — a 2cqw gap each side — so
+	   every cover shows whole. Sized off the width (cqw) in a box whose
+	   aspect-ratio is fixed, so nothing moves when the covers arrive.
+	   Symmetric, so it needs no mirroring in a right-to-left locale. */
 	.spread {
-		aspect-ratio: 100 / 55;
+		aspect-ratio: 100 / 52;
 	}
 	.spread .cover,
 	.spread .cover:first-child:not(:only-of-type) {
 		bottom: 0;
 		inset-inline-start: 0;
-		width: 26cqw;
-		filter: brightness(0.93);
+		width: 30cqw;
+		filter: brightness(0.96);
 		z-index: 1;
 	}
-	.spread .cover:nth-child(2),
-	.spread .cover:nth-child(4) {
-		bottom: 3.5cqw;
-		width: 30cqw;
-		filter: brightness(0.97);
-		z-index: 2;
-	}
 	.spread .cover:nth-child(2) {
-		inset-inline-start: 15cqw;
-	}
-	.spread .cover:nth-child(3) {
-		bottom: 6.5cqw;
+		bottom: 3.5cqw;
 		inset-inline-start: 32cqw;
 		width: 36cqw;
 		filter: none;
-		z-index: 3;
+		z-index: 2;
 	}
-	.spread .cover:nth-child(4) {
-		inset-inline-start: 55cqw;
+	/* Restated in full: the deck's third-cover rule above is as specific. */
+	.spread .cover:nth-child(3) {
+		bottom: 0;
+		inset-inline-start: 70cqw;
+		width: 30cqw;
+		filter: brightness(0.96);
+		z-index: 1;
 	}
-	.spread .cover:nth-child(5) {
-		inset-inline-start: 74cqw;
+	/* A lift on hover, as a shelf card's: each is a way into its book. */
+	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+		.spread .cover {
+			transition: translate 0.2s ease;
+		}
+		.spread .cover:hover {
+			translate: 0 -0.5cqw;
+		}
+	}
+	.spread .cover:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
 	}
 	/* How many more the list holds: under the back of the deck. */
 	.more {

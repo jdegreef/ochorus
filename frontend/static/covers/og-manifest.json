@@ -2046,6 +2046,39 @@
 				379
 			]
 		},
+		"am/key-teachings-of-gareth-evans": {
+			"ground": "180263a8b45abe6eeaaee3efbe7b6a93e709ba95296834325602dc6fd55f4559",
+			"style": "originals",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[117, 169, 483, 232],
+					[143, 225, 457, 288]
+				],
+				"subtitle": [
+					[94, 350, 506, 378]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				379
+			]
+		},
 		"am/key-teachings-of-jonathan-edwards": {
 			"ground": "cfb6d0436930e933a3ecf1a5ffe1e2838783591d712a7c278ba14a0567748c48",
 			"style": "originals",
@@ -2053,7 +2086,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -4079,6 +4112,36 @@
 				499
 			]
 		},
+		"am/the-pursuit-of-god": {
+			"ground": "9c656faaf9c16395795192ae6f4ffe77df0126c5ec1e3cb74c7c429bd37869d8",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[78, 222, 522, 319],
+					[223, 306, 377, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
+		},
 		"am/the-reformed-pastor": {
 			"ground": "13e65894386bd249173a6a8b5e794866223c571cdc38ecbdadb6ba57611d173a",
 			"style": "press",
@@ -6036,6 +6099,38 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ar/susanna-wesley-clarke": {
+			"ground": "769df74421d4370a4453605505f29c395726307e1abbb66e0fedeae29ca14cbd",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[139, 317, 461, 418]
+				],
+				"subtitle": [
+					[224, 484, 376, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"ar/talks-to-the-farmer": {
 			"ground": "224b894d61a919164e7a1fb229d6cbc89993aa121780953eccf3a551af91b1a6",
 			"style": "revival",
@@ -6313,6 +6408,20 @@
 				173,
 				406
 			]
+		},
+		"ar/the-reformed-pastor": {
+			"ground": "0030529b5fdd2b70205590e09c695def7f90146624912fded6e8c0e25a43b762",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"ar/the-secret-of-guidance": {
 			"ground": "2ed8745f175f68bee49d4f200a797d58cb36555e574afee3066ee061c3936144",
@@ -9020,6 +9129,40 @@
 				541
 			]
 		},
+		"es/fire-against-the-dark": {
+			"ground": "4ae00ba6c993737da3ae980baa85f94712e5080941eea4fd85c33615803452d3",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 257, 308, 301],
+					[132, 332, 468, 407],
+					[144, 393, 456, 468]
+				],
+				"subtitle": [
+					[90, 522, 510, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
 		"es/first-epistle-of-clement": {
 			"ground": "6598e83c9f6275e3fea947d397e9393dd0811f91e7a961269a1841b79834f684",
 			"style": "inscriptional",
@@ -9626,7 +9769,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -11137,6 +11280,34 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"es/sons-of-the-king-1": {
+			"ground": "958b0cb464bfcad1db9f89cee59bfa2e3698b613efd34cc5543f6fc04937e0c1",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
+		"es/sons-of-the-king-2": {
+			"ground": "ed6faebed6e8382a577131f57b5873fd4b7a7f5c4e4ecc78e5e5cd5ce5ee8f57",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"es/sons-of-the-king-3": {
 			"ground": "00f2008db5a84e37141b99252d0f67b3d2ff9d42fb6bf38c0f8f051ac6df0dd9",
 			"style": "young",
@@ -11362,6 +11533,39 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"es/the-black-stair": {
+			"ground": "9c7c79e80f9c3f0951786c6e48fb273b917751789f17a2e3f5c9a172455e6ded",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[71, 362, 529, 437]
+				],
+				"subtitle": [
+					[92, 492, 508, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"es/the-bruised-reed": {
 			"ground": "7618420bb2988970794d46d3f9d860394abe07687d1d54937f959c52a5c7e8f0",
@@ -13642,6 +13846,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/christ-the-healer": {
+			"ground": "90672bf90536c735751027f6325a480fdec4709ff8a6b1792226ba019af0e87a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0.03,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[180, 223, 420, 305],
+					[150, 294, 450, 376]
+				],
+				"subtitle": [
+					[94, 449, 506, 470]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				470
+			]
+		},
 		"fr/clothed-with-strength-and-dignity": {
 			"ground": "aa54b674e8f9e790f3bb243a81e61feb54d91cbc9722df2138a2a107f0a1fd5d",
 			"style": "originals",
@@ -14045,6 +14282,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/evening-by-evening": {
+			"ground": "58ee480c5f58a276a1118cf3aa4b2e52dfa3e04d03728e8e59a679297a871272",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"fr/ever-increasing-faith": {
 			"ground": "c86781970dab97445634de033e09eab0049aad077d20693daa3799b492813f58",
 			"style": "revival",
@@ -14105,6 +14356,40 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"fr/fire-against-the-dark": {
+			"ground": "f26975b6f1fe111f7954cb153b21dd45277dcb363ee930455708d84399f9572d",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 257, 308, 301],
+					[218, 332, 382, 407],
+					[130, 393, 470, 468]
+				],
+				"subtitle": [
+					[94, 522, 506, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
 		},
 		"fr/first-epistle-of-clement": {
 			"ground": "af4e7dd1c55b639f42a98b6cd5f6d52336209b59408d61991723882fc9a15492",
@@ -14704,7 +14989,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -16546,6 +16831,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/the-black-stair": {
+			"ground": "650f4e369c9b16ab1c5e6c2d7b27e3efbdbcdbde07796c9d5250faec1074453c",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[118, 362, 482, 437]
+				],
+				"subtitle": [
+					[82, 492, 518, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"fr/the-bruised-reed": {
 			"ground": "2e5a9b19c6edb29da97ff7312bc4812f80593cfbca9655a3efb1cae9c76c602e",
 			"style": "press",
@@ -17980,6 +18298,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/all-things-for-good": {
+			"ground": "21521580e7028941cb828c39a7fbdc51175602ab054dcdc53e64a733acec3e2a",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/answers-to-prayer": {
 			"ground": "173cee95d57f1cb570fc2e07f76b89398851e261e9b85e39dd4b5def32384dae",
 			"style": "revival",
@@ -18217,6 +18549,35 @@
 			"middle": [
 				240,
 				555
+			]
+		},
+		"hi/ever-increasing-faith": {
+			"ground": "dc17169274983f6725ad2619ae8470597f8623554737ff445dbdc2a225e4db2c",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[99, 235, 501, 311]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				374
 			]
 		},
 		"hi/faithful-with-little": {
@@ -18803,6 +19164,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/mortification-of-sin": {
+			"ground": "3359ec21b32234dd914c09c32017409391cee896393e9852510a85aad1fcc2dd",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[140, 293, 460, 360],
+					[165, 375, 435, 442]
+				],
+				"subtitle": [
+					[123, 514, 477, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				253,
+				542
+			]
+		},
 		"hi/necessity-of-prayer": {
 			"ground": "0c1c1f229605b74f00a1cfb20322f1c31f74d14c631b673d315504049333e863",
 			"style": "devotional",
@@ -18866,6 +19260,67 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"hi/orthodoxy": {
+			"ground": "949516fa52504e7a45390eef2cee4ac2378c73d3b422636c9d7dc11c34271cbf",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[146, 352, 454, 442]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				289,
+				506
+			]
+		},
+		"hi/pensees": {
+			"ground": "edecbb108da20ec8f60844a9d33d71541d2f1aaf3aca79472952158baf1ba593",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[242, 318, 358, 415]
+				],
+				"subtitle": [
+					[147, 491, 453, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"hi/pilgrims-progress": {
 			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
@@ -19197,6 +19652,38 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"hi/susanna-wesley-clarke": {
+			"ground": "1fde7698b42652160dc163f2d0768855f24015b791c1ce25bede16adb3456822",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[152, 324, 448, 410]
+				],
+				"subtitle": [
+					[170, 484, 430, 506]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				282,
+				513
+			]
+		},
 		"hi/talks-to-the-farmer": {
 			"ground": "62daf65bd80882f64c95b7b19f2509750c02bd8029e8a20bcd6eae1e0f425c03",
 			"style": "revival",
@@ -19225,6 +19712,38 @@
 			"middle": [
 				289,
 				506
+			]
+		},
+		"hi/talks-to-the-farmer-children": {
+			"ground": "851102ae8f6d85756e6a0bad5c2169615043aae3ff5df42516df26f06c9b2b2c",
+			"style": "young",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[153, 321, 447, 390]
+				],
+				"edition": [
+					[238, 412, 362, 437]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
 			]
 		},
 		"hi/talks-to-the-farmer-teens": {
@@ -19294,6 +19813,36 @@
 				533
 			]
 		},
+		"hi/the-christians-secret-of-a-happy-life-4": {
+			"ground": "cbb76d82e0eb89ba111a0388609bc9783d4461b20b9f9d24c6d8d7888839f20f",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[147, 286, 453, 360],
+					[173, 374, 427, 448]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				279,
+				516
+			]
+		},
 		"hi/the-fourfold-gospel": {
 			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
 			"style": "revival",
@@ -19338,6 +19887,38 @@
 			"middle": [
 				286,
 				509
+			]
+		},
+		"hi/the-imitation-of-christ": {
+			"ground": "cfe88438230173ba2a50b3e14da68402bb9858f03e532223ca95a66118427e8b",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[72, 296, 528, 384]
+				],
+				"subtitle": [
+					[126, 478, 474, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				288,
+				507
 			]
 		},
 		"hi/the-inner-chamber": {
@@ -19494,6 +20075,20 @@
 				173,
 				391
 			]
+		},
+		"hi/the-reformed-pastor": {
+			"ground": "b760352b4ccd61c35fd40fd79eb8cde87fc9194035aebe1f2e906b7ffa019b99",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"hi/the-secret-of-guidance": {
 			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
@@ -21535,7 +22130,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -22162,6 +22757,20 @@
 				243,
 				552
 			]
+		},
+		"ko/cheque-book": {
+			"ground": "bb3c7c304511d9092162357b6bb24271e29768f07334371296f0fbd64dee2360",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "241ec41d0666e13632688c6c85545f3d650eecc6db4b59ec60ae424399240465",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false
 		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
@@ -23238,6 +23847,20 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ko/spurgeon-on-prayer": {
+			"ground": "46a0952e5cf6d55066a39c76e671a73b9ce733081e81d5b6d5c0b7eb4cce1b35",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/stepping-stones-2": {
 			"ground": "5d538ddb01f746c61cc3194792e1d2dd30abcff12f808ca0b95d45ecba2dc3e8",
 			"style": "devotional",
@@ -23252,6 +23875,38 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"ko/susanna-wesley-clarke": {
+			"ground": "0506132ecef807bdb43e6b28baa12c4c84b267261977d4deb9cbc61725b71406",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[51, 319, 549, 424]
+				],
+				"subtitle": [
+					[180, 477, 420, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
 		},
 		"ko/talks-to-the-farmer-children": {
 			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
@@ -23548,6 +24203,36 @@
 				524
 			]
 		},
+		"ko/the-masters-indwelling": {
+			"ground": "9cc17ac51441ab87ade44e0d92c3212d04397db1aeb113c6a046114e9a2187a5",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b4567341479b65f2f109cd212c9e5c3fd904239b112eb9370a7635e6124e01fb",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[123, 255, 477, 374],
+					[158, 359, 442, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"ko/the-person-and-work-of-the-holy-spirit": {
 			"ground": "7f02940e22c9e916baef5ebdd08cc2e9331a043d01e079f4793e8112cacfd6ca",
 			"style": "revival",
@@ -23676,6 +24361,20 @@
 				173,
 				476
 			]
+		},
+		"ko/the-reformed-pastor": {
+			"ground": "e9dcc6c06171e7f154cf9baacb77167e3cd6c0a7283acdafaa542bdf9eea8b00",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "9b5f3b92022b712a796b253b201c113f6595cd1f18d1e96cb0e18b93809e982b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"ko/the-secret-of-guidance": {
 			"ground": "67a96aaf715ce04519baf1aecaac0a2e950da9e4e64244c407a4d766ecbff058",
@@ -25579,6 +26278,39 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"lg/susanna-wesley-clarke": {
+			"ground": "93ace83a85cfa1ce30d0618d03da95d39427f8f60bd97e9b45839415676dc394",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[64, 316, 536, 409]
+				],
+				"subtitle": [
+					[119, 461, 481, 482],
+					[217, 482, 383, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
+		},
 		"lg/talks-to-the-farmer": {
 			"ground": "f37087a5e829f7bfd852b17b4991bd6845399519f6cbee43431e137e78dd707b",
 			"style": "revival",
@@ -25946,6 +26678,20 @@
 				173,
 				427
 			]
+		},
+		"lg/the-reformed-pastor": {
+			"ground": "1b22c2a78a8a322f1fecf24be2ad9d60d429086508c1e456b7fa24de15c4553c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"lg/the-secret-of-guidance": {
 			"ground": "f6c5053e973bd775263547c50e2b86f28bb5e1a6a3782128ae55ce6efc5e5c80",
@@ -28033,6 +28779,40 @@
 			"middle": [
 				255,
 				540
+			]
+		},
+		"pt/anchored-1": {
+			"ground": "2438a2f692f8d0bf2bec6a1a3a00109b9966cbeab03f4b42dffdf5f727a52252",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[137, 347, 463, 423]
+				],
+				"subtitle": [
+					[112, 481, 488, 509],
+					[125, 509, 475, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
 			]
 		},
 		"pt/anchored-2": {
@@ -31516,6 +32296,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"seven-times-a-day": {
+			"ground": "96049a75818d961203d4d4224a3ccf1586729fbae637154b323bded5395b28c4",
+			"style": "originals",
+			"volume": "5",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[211, 328, 389, 404],
+					[118, 394, 482, 470]
+				],
+				"subtitle": [
+					[130, 528, 470, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"small-catechism": {
 			"ground": "7199cc67412be241f3a7d4403a9b830685cc09717da90cf34e08eb08708f06a4",
 			"style": "press",
@@ -31799,6 +32613,41 @@
 			"middle": [
 				237,
 				558
+			]
+		},
+		"sw/a-serious-call": {
+			"ground": "453fafe05aeda41be5f8c048a2d9ba06087dd3c05142eb1bce835b463a6afe7c",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[55, 243, 545, 306],
+					[65, 306, 535, 369],
+					[140, 368, 460, 431]
+				],
+				"subtitle": [
+					[131, 494, 469, 522],
+					[112, 522, 488, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				550
 			]
 		},
 		"sw/a-short-and-easy-method-of-prayer": {
@@ -32837,6 +33686,109 @@
 				404
 			]
 		},
+		"sw/key-teachings-of-jonathan-edwards": {
+			"ground": "6c895636ee6a5bec05fc2a9bc7207c4f7ffa91ccec65af46ca1e5f62fed17872",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[147, 169, 453, 232],
+					[177, 225, 423, 288],
+					[63, 280, 537, 343]
+				],
+				"subtitle": [
+					[138, 404, 462, 432],
+					[128, 432, 472, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"sw/key-teachings-of-richard-baxter": {
+			"ground": "6ad0966d84a8b96afe6cb398cd7f7113303a7251da9fa4b471395c4fb4add1c3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[72, 225, 528, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
+		"sw/key-teachings-of-watchman-nee": {
+			"ground": "47965b2f4362c6161f3f41cb993f703419f479705eed19555fb0c02a535a4cbe",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[74, 225, 526, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
 		"sw/life-and-diary-of-david-brainerd": {
 			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
 			"style": "enlightenment",
@@ -33305,6 +34257,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/plain-account-christian-perfection": {
+			"ground": "dc4a2b86c75d073072ba24f2204d7481d22ab0c6be6c425b353718780c4e5fab",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/mauve",
+			"bar": 0.04,
+			"caps": false
+		},
 		"sw/power-through-prayer": {
 			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",
 			"style": "devotional",
@@ -33679,6 +34645,20 @@
 			"bar": 0.04,
 			"caps": false,
 			"sitemark": null
+		},
+		"sw/selected-sermons-edwards": {
+			"ground": "c56e53b876b4808bceb0a23cf6bfc0075a8435529746867ee1c595f8d1e35a2a",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "c5e0f7674c522feb728fb346a7dd7e8f0a845f578caec64c427635bd900b953e",
@@ -34259,6 +35239,20 @@
 				173,
 				454
 			]
+		},
+		"sw/the-reformed-pastor": {
+			"ground": "cb23262b039dd47c44472ff5db40cd59b74c1bf8d3b94b196670ba240e95e305",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"sw/the-secret-of-guidance": {
 			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
@@ -37470,6 +38464,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"uk/all-things-for-good": {
+			"ground": "b329631f7bc80e5fe9122c44ef1a3eb547fd7c789aa01eb1158f03e02127ad15",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"uk/amanda-smith-autobiography-children": {
 			"ground": "6ad2f49c4878986d927d13048328ceaa8ce76782a6f68b1502f301c9b3397714",
 			"style": "revival",
@@ -37841,6 +38849,20 @@
 				496
 			]
 		},
+		"uk/grace-abounding": {
+			"ground": "6d89b78bb5a53c1d5649d06d88423377d7720e1a8cad74338251ad4399fa8ffe",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false
+		},
 		"uk/growing-in-wisdom": {
 			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
 			"style": "originals",
@@ -38053,6 +39075,39 @@
 				377
 			]
 		},
+		"uk/life-and-diary-of-david-brainerd": {
+			"ground": "48972ad3f4d2c4553293472da73e2586aa12a8af87d533692f666592ea8340b8",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.02,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[63, 281, 537, 351],
+					[70, 351, 530, 421]
+				],
+				"subtitle": [
+					[122, 486, 478, 514]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				514
+			]
+		},
 		"uk/lord-teach-us-to-pray-2": {
 			"ground": "b0478ab35aa802a0bd01f1e16ea2025076ba0831159ea90e9e508c389803289b",
 			"style": "devotional",
@@ -38206,6 +39261,39 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"uk/mortification-of-sin": {
+			"ground": "818017a69f9e53d574535fab8675ecced28dfad2c3b9b90c233ed5e590a28d70",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[102, 306, 498, 379],
+					[95, 366, 505, 439]
+				],
+				"subtitle": [
+					[137, 492, 463, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				514
 			]
 		},
 		"uk/necessity-of-prayer": {
@@ -38589,6 +39677,38 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"uk/susanna-wesley-clarke": {
+			"ground": "150211ba5c692e51ba1e8ca4389a70ea12e3083bbe44a7d2bd2e3cbde2a15fd3",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[72, 326, 528, 419]
+				],
+				"subtitle": [
+					[76, 471, 524, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
+		},
 		"uk/talks-to-the-farmer-children": {
 			"ground": "87770c6ef68f3d243118de249c23c31eba694b07d8764862be47c5d1a77eee62",
 			"style": "young",
@@ -38752,6 +39872,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"uk/the-imitation-of-christ": {
+			"ground": "a5c35fa035d9503445b001ea3818d4363bee885ac379c9391efe1835ec246727",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[104, 259, 496, 347],
+					[196, 337, 404, 425]
+				],
+				"subtitle": [
+					[65, 502, 535, 530]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				530
+			]
+		},
 		"uk/the-inner-chamber": {
 			"ground": "fb9325a52995fb69b6b6b5bc819ff6a2ef8d6c7f655b62023089bf7a0879eebd",
 			"style": "devotional",
@@ -38907,6 +40060,20 @@
 				173,
 				454
 			]
+		},
+		"uk/the-reformed-pastor": {
+			"ground": "c112fe8fa04384a3a1fe0c7cad3706b057682ec32843d244592ed8b85f446898",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
@@ -39561,6 +40728,20 @@
 				595
 			]
 		},
+		"vi/cheque-book": {
+			"ground": "63f2ae3f6f803e61d8b69f0d93dc74f333935b8f1bad050727555d51aa0c64b9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false
+		},
 		"vi/clothed-with-strength-and-dignity": {
 			"ground": "cd1b81541ffc096749f870408667060443f500932a116d38f89ac878e8269a4a",
 			"style": "originals",
@@ -39749,6 +40930,35 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"vi/godliness": {
+			"ground": "cf9de513d0f4ebe43b4581594cb5b96a0c8b50a5f40162e905dc1edbd2e5e5c5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[103, 348, 497, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
 		},
 		"vi/grace-abounding": {
 			"ground": "c4678112e1d05163c2ade2f96ff6d0251b8ac71f363e463f7c0063b75c69107f",
@@ -40593,6 +41803,20 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"vi/spurgeon-on-prayer": {
+			"ground": "3eb99d258e45fbf68394ab2177bb33aca5ae9354614cd96da946a670a21bdde3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/stepping-stones-2": {
 			"ground": "817068f90b04c30057bb4af48dfaca6c54ad3f54306c9aa40b6eb27c38309246",
 			"style": "devotional",
@@ -40607,6 +41831,38 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"vi/susanna-wesley-clarke": {
+			"ground": "758de48c7d2dece3c14c18fd93f4d425a1d2c8232ad573315996396a5a6869a1",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[64, 326, 536, 419]
+				],
+				"subtitle": [
+					[82, 471, 518, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
 		},
 		"vi/talks-to-the-farmer-children": {
 			"ground": "f0144abc340df0f2982dac2736b3d4f12d58723e8c3fcf2b972c77772e02d293",
@@ -40855,6 +42111,20 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"vi/the-life-of-trust": {
+			"ground": "39202ce9dcb0c630cfd8532e01c7fd5b477d6d84812065faa4d2d60540902132",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/the-life-of-trust-children": {
 			"ground": "ae7b2d87fa4e231f29f341550bbd5ad2a0b2c51dee688c402babc21e78686520",
 			"style": "revival",
@@ -40887,6 +42157,36 @@
 			"middle": [
 				237,
 				558
+			]
+		},
+		"vi/the-masters-indwelling": {
+			"ground": "9b1942de887d5b3198972360264bbde39caa6be21bcc0e2d77d1f5fb313e528c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[156, 284, 444, 372],
+					[138, 361, 462, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
 			]
 		},
 		"vi/the-person-and-work-of-the-holy-spirit": {
@@ -41023,6 +42323,20 @@
 				427
 			]
 		},
+		"vi/the-reformed-pastor": {
+			"ground": "f00634fbe746c0a3a6c918fdf0872d87cbcd50f33709e2df985577f994d2393d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
+		},
 		"vi/the-secret-of-guidance": {
 			"ground": "84580314d5fbdef005cd147eea1e564f938b74fbf7dd522b480e10d9ec6f0dd4",
 			"style": "devotional",
@@ -41052,6 +42366,36 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"vi/the-unselfishness-of-god": {
+			"ground": "7c546edf138521359823c6c30aa7b1c944b96f47bdec5e0496e8cf8623ddb1c7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[80, 290, 520, 372],
+					[108, 362, 492, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
 			]
 		},
 		"vi/the-way-to-god": {

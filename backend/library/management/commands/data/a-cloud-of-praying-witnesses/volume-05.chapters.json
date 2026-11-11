@@ -1,0 +1,493 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Psalm 145:4",
+    "themes": [],
+    "person": null,
+    "era": "c. AD 500-1500",
+    "region": "Europe, Africa and Asia",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Ora et Labora: Pray and Work",
+    "anchor": "Psalm 119:164",
+    "themes": [
+      "Making Room for Prayer",
+      "Guidance and Surrender",
+      "Praying Together"
+    ],
+    "person": "Benedict of Nursia",
+    "era": "c. AD 500-547",
+    "region": "Subiaco and Monte Cassino (Italy)",
+    "voices": [
+      {
+        "author": "augustine-of-hippo",
+        "book": "the-city-of-god",
+        "chapter": "Book XI: The Two Cities and the Creation of the World"
+      },
+      {
+        "author": "gregory-the-great",
+        "book": "the-book-of-pastoral-rule",
+        "chapter": "Part II: The Life of the Pastor"
+      }
+    ],
+    "read_more": [
+      "the-book-of-pastoral-rule",
+      "the-practice-of-the-presence-of-god",
+      "key-teachings-of-dietrich-bonhoeffer"
+    ]
+  },
+  {
+    "title": "Ethiopia Stretches Out Her Hands",
+    "anchor": "Psalm 68:31",
+    "themes": [
+      "Faith",
+      "Guidance and Surrender",
+      "Making Room for Prayer"
+    ],
+    "person": "The ancient Ethiopian Church (Frumentius, Ezana, the Nine Saints)",
+    "era": "c. AD 340-1400",
+    "region": "Aksum and Lalibela (Ethiopia)",
+    "voices": [
+      {
+        "author": "cyril-of-jerusalem",
+        "book": "catechetical-lectures",
+        "chapter": "Lecture XVII: On the Holy Ghost, Continued"
+      }
+    ],
+    "read_more": [
+      "catechetical-lectures",
+      "devoted-to-prayer",
+      "samuel-ajayi-crowther-a-life"
+    ]
+  },
+  {
+    "title": "Prayer on the Silk Road",
+    "anchor": "Malachi 1:11",
+    "themes": [
+      "Praying Together",
+      "Faith",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "The Church of the East in China (Alopen and the Xi'an stele)",
+    "era": "c. AD 635-845",
+    "region": "Chang'an (Xi'an), China",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "God Shapes the World by Prayer"
+      },
+      {
+        "author": "maria-w-stewart",
+        "book": "meditations-maria-w-stewart",
+        "chapter": "Meditation VIII"
+      }
+    ],
+    "read_more": [
+      "purpose-in-prayer",
+      "meditations-maria-w-stewart",
+      "key-teachings-of-hudson-taylor"
+    ]
+  },
+  {
+    "title": "The Prayers of Ordinary Days",
+    "anchor": "Psalm 121:8",
+    "themes": [
+      "Making Room for Prayer",
+      "Guidance and Surrender",
+      "Praying for Others"
+    ],
+    "person": "Columba of Iona and Celtic prayer",
+    "era": "c. AD 563-597",
+    "region": "Iona (Scotland)",
+    "voices": [
+      {
+        "author": "dwight-l-moody",
+        "book": "the-way-to-god",
+        "chapter": "Words of Counsel"
+      }
+    ],
+    "read_more": [
+      "the-way-to-god",
+      "faithful-unto-death"
+    ]
+  },
+  {
+    "title": "Out of the Depths",
+    "anchor": "Psalm 130:1-4",
+    "themes": [
+      "Humility and Mercy",
+      "Forgiveness",
+      "Learning to Pray"
+    ],
+    "person": "Gregory of Narek",
+    "era": "c. AD 1002",
+    "region": "Narek, Lake Van (Armenia)",
+    "voices": [
+      {
+        "author": "john-chrysostom",
+        "book": "homilies-on-matthew",
+        "chapter": "Homily XIX: Matthew 6:1"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "morning-by-morning",
+        "chapter": "February"
+      }
+    ],
+    "read_more": [
+      "morning-by-morning",
+      "confessions",
+      "key-teachings-of-richard-baxter"
+    ]
+  },
+  {
+    "title": "Faith Seeking Your Face",
+    "anchor": "Psalm 27:7-8",
+    "themes": [
+      "The Father's Love",
+      "Learning to Pray",
+      "Making Room for Prayer"
+    ],
+    "person": "Anselm of Canterbury",
+    "era": "c. AD 1077",
+    "region": "Bec (Normandy, France)",
+    "voices": [
+      {
+        "author": "anselm-of-canterbury",
+        "book": "proslogium-monologium-cur-deus-homo",
+        "chapter": "Proslogium"
+      }
+    ],
+    "read_more": [
+      "proslogium-monologium-cur-deus-homo",
+      "key-teachings-of-augustine-of-hippo",
+      "introduction-to-the-devout-life"
+    ]
+  },
+  {
+    "title": "Jesus, the Very Thought of You",
+    "anchor": "1 John 4:19",
+    "themes": [
+      "The Father's Love",
+      "Prayer in Suffering and Testing",
+      "Humility and Mercy"
+    ],
+    "person": "Bernard of Clairvaux",
+    "era": "c. AD 1113-1153",
+    "region": "Clairvaux (Burgundy, France)",
+    "voices": [
+      {
+        "author": "bernard-of-clairvaux",
+        "book": "on-loving-god",
+        "chapter": "Why We Ought to Love God"
+      },
+      {
+        "author": "bernard-of-clairvaux",
+        "book": "on-loving-god",
+        "chapter": "The Second and Third Degrees of Love"
+      },
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 2, Chapter 16 — How Christ Performed the Office of Redeemer in Procuring Our Salvation"
+      }
+    ],
+    "read_more": [
+      "on-loving-god",
+      "key-teachings-of-hannah-whitall-smith"
+    ]
+  },
+  {
+    "title": "Praise for Brother Sun",
+    "anchor": "Psalm 148:3",
+    "themes": [
+      "Thanksgiving",
+      "Prayer in Suffering and Testing",
+      "Forgiveness"
+    ],
+    "person": "Francis of Assisi",
+    "era": "c. AD 1225",
+    "region": "Assisi (Italy)",
+    "voices": [
+      {
+        "author": "g-k-chesterton",
+        "book": "st-francis-of-assisi",
+        "chapter": "The Little Poor Man"
+      }
+    ],
+    "read_more": [
+      "st-francis-of-assisi",
+      "key-teachings-of-g-k-chesterton",
+      "key-teachings-of-charles-h-spurgeon"
+    ]
+  },
+  {
+    "title": "Gazing on Christ",
+    "anchor": "2 Corinthians 3:18",
+    "themes": [
+      "Learning to Pray",
+      "Praying for Others",
+      "Making Room for Prayer"
+    ],
+    "person": "Clare of Assisi",
+    "era": "c. AD 1212-1253",
+    "region": "San Damiano, Assisi (Italy)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Secret of Believing Prayer"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "key-teachings-of-a-w-tozer"
+    ]
+  },
+  {
+    "title": "A Prayer Before Study",
+    "anchor": "James 1:5",
+    "themes": [
+      "Making Room for Prayer",
+      "Asking Boldly",
+      "Humility and Mercy"
+    ],
+    "person": "Thomas Aquinas",
+    "era": "c. AD 1273",
+    "region": "Naples (Italy)",
+    "voices": [
+      {
+        "author": "catherine-of-siena",
+        "book": "the-dialogue-of-catherine-of-siena",
+        "chapter": "The Supernatural Light of the Unitive State"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "The Golden Key of Prayer"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "power-through-prayer",
+      "the-inner-chamber"
+    ]
+  },
+  {
+    "title": "A Simple Reaching for God",
+    "anchor": "Psalm 73:25",
+    "themes": [
+      "Faith",
+      "Guidance and Surrender",
+      "Learning to Pray"
+    ],
+    "person": "The Cloud of Unknowing",
+    "era": "c. AD 1375",
+    "region": "England",
+    "voices": [
+      {
+        "author": "a-w-tozer",
+        "book": "the-pursuit-of-god",
+        "chapter": "Following Hard after God"
+      }
+    ],
+    "read_more": [
+      "the-pursuit-of-god",
+      "key-teachings-of-jeanne-guyon"
+    ]
+  },
+  {
+    "title": "Waiting in Stillness",
+    "anchor": "Lamentations 3:25-26",
+    "themes": [
+      "Making Room for Prayer",
+      "Humility and Mercy",
+      "Faith"
+    ],
+    "person": "The Hesychasts of Mount Athos (Gregory of Sinai, Gregory Palamas)",
+    "era": "c. AD 1340",
+    "region": "Mount Athos (Greece)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "waiting-on-god",
+        "chapter": "Quietly"
+      }
+    ],
+    "read_more": [
+      "waiting-on-god",
+      "faithful-unto-death"
+    ]
+  },
+  {
+    "title": "\"All Shall Be Well\"",
+    "anchor": "Romans 8:28",
+    "themes": [
+      "The Father's Love",
+      "Prayer in Suffering and Testing",
+      "Persistence"
+    ],
+    "person": "Julian of Norwich",
+    "era": "c. AD 1373",
+    "region": "Norwich (England)",
+    "voices": [
+      {
+        "author": "julian-of-norwich",
+        "book": "revelations-of-divine-love",
+        "chapter": "I desired to suffer with Him"
+      },
+      {
+        "author": "julian-of-norwich",
+        "book": "revelations-of-divine-love",
+        "chapter": "God, of Thy Goodness, give me Thyself;—only in Thee I have all"
+      },
+      {
+        "author": "julian-of-norwich",
+        "book": "revelations-of-divine-love",
+        "chapter": "Sin is behovable; but all shall be well"
+      },
+      {
+        "author": "julian-of-norwich",
+        "book": "revelations-of-divine-love",
+        "chapter": "I am the Ground of thy beseeching — Also to prayer belongeth thanking"
+      },
+      {
+        "author": "thomas-watson",
+        "book": "all-things-for-good",
+        "chapter": "The worst things work for good to the godly"
+      }
+    ],
+    "read_more": [
+      "revelations-of-divine-love",
+      "all-things-for-good"
+    ]
+  },
+  {
+    "title": "Giving God No Rest",
+    "anchor": "Isaiah 62:6-7",
+    "themes": [
+      "Persistence",
+      "Praying for Others",
+      "Asking Boldly"
+    ],
+    "person": "Catherine of Siena",
+    "era": "c. AD 1375",
+    "region": "Siena and Rome (Italy), and Avignon (France)",
+    "voices": [
+      {
+        "author": "catherine-of-siena",
+        "book": "the-dialogue-of-catherine-of-siena",
+        "chapter": "How the Soul Prayed for the Holy Church and for Her Own People"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "Prayer and Missions"
+      }
+    ],
+    "read_more": [
+      "the-dialogue-of-catherine-of-siena",
+      "essentials-of-prayer",
+      "ministry-of-intercession"
+    ]
+  },
+  {
+    "title": "Open My Eyes to Your Word",
+    "anchor": "Psalm 119:18",
+    "themes": [
+      "Learning to Pray",
+      "Praying Together",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "John Wycliffe and the Lollards",
+    "era": "c. AD 1380",
+    "region": "Oxford and Lutterworth (England)",
+    "voices": [
+      {
+        "author": "john-foxe",
+        "book": "foxes-book-of-martyrs",
+        "chapter": "An Account of the Life and Persecutions of John Wickliffe"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "what-the-bible-teaches",
+        "chapter": "The Work of the Holy Spirit"
+      }
+    ],
+    "read_more": [
+      "foxes-book-of-martyrs",
+      "foxes-book-of-martyrs-teens",
+      "what-the-bible-teaches"
+    ]
+  },
+  {
+    "title": "Praying for Those Who Burn You",
+    "anchor": "Matthew 5:44-45",
+    "themes": [
+      "Praying for Others",
+      "Prayer in Suffering and Testing",
+      "Forgiveness"
+    ],
+    "person": "Jan Hus",
+    "era": "AD 1415",
+    "region": "Prague (Bohemia) and Constance (Germany)",
+    "voices": [
+      {
+        "author": "john-foxe",
+        "book": "foxes-book-of-martyrs",
+        "chapter": "An Account of the Persecutions in Bohemia Under the Papacy"
+      },
+      {
+        "author": "william-law",
+        "book": "a-serious-call",
+        "chapter": "Of the necessity and benefit of intercession, considered as an exercise of universal love. How all orders of men are to pray and intercede with God for one another. How naturally such intercession amends and reforms the hearts of those that use it"
+      }
+    ],
+    "read_more": [
+      "foxes-book-of-martyrs",
+      "jesus-teacher-of-prayer",
+      "key-teachings-of-corrie-ten-boom"
+    ]
+  },
+  {
+    "title": "\"Speak, for Your Servant Is Listening\"",
+    "anchor": "1 Samuel 3:10",
+    "themes": [
+      "Learning to Pray",
+      "Humility and Mercy",
+      "Praying Together"
+    ],
+    "person": "Thomas à Kempis",
+    "era": "c. AD 1420",
+    "region": "Deventer and Mount Saint Agnes, near Zwolle (the Netherlands)",
+    "voices": [
+      {
+        "author": "thomas-a-kempis",
+        "book": "the-imitation-of-christ",
+        "chapter": "Truth Speaks Inwardly Without the Sound of Words"
+      },
+      {
+        "author": "thomas-a-kempis",
+        "book": "the-imitation-of-christ",
+        "chapter": "Reading the Holy Scripture"
+      }
+    ],
+    "read_more": [
+      "the-imitation-of-christ",
+      "the-pursuit-of-god"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Isaiah 40:8",
+    "themes": [],
+    "person": "The praying church of the Middle Ages",
+    "era": "c. AD 1450-1500",
+    "region": "Europe",
+    "voices": [],
+    "read_more": []
+  }
+]

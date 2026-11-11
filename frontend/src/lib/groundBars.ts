@@ -111,6 +111,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'school-of-prayer': 0.040,
 	'secret-power': 0.030,
 	'selected-sermons-whitefield': 0.020,
+	'seven-times-a-day': 0.110,
 	'small-catechism': 0.030,
 	'st-francis-of-assisi': 0.110,
 	'talks-to-the-farmer-children': 0.085,
