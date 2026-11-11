@@ -37506,6 +37506,38 @@
 			"bar": 0,
 			"caps": true
 		},
+		"uk/susanna-wesley-clarke": {
+			"ground": "150211ba5c692e51ba1e8ca4389a70ea12e3083bbe44a7d2bd2e3cbde2a15fd3",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[72, 326, 528, 419]
+				],
+				"subtitle": [
+					[76, 471, 524, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
+		},
 		"uk/talks-to-the-farmer-children": {
 			"ground": "87770c6ef68f3d243118de249c23c31eba694b07d8764862be47c5d1a77eee62",
 			"style": "young",
