@@ -201,5 +201,12 @@
   "note": [
    "AI-drafted (2026-11-11); awaiting native review. Job #7545 (the-christians-secret-of-a-happy-life-4 -> hi), which ships the plan's first Hindi book; the card quotes that book's shipped title, सुखी जीवन का मसीही रहस्य, as the line ‘opens the secret of a happy life’. Names follow the shipped hi bios: हन्ना व्हिटॉल स्मिथ, अमांडा बेरी स्मिथ, जूलिया ए. जे. फुट; अश्वेत is the bios' word for Black. amanda-smith-autobiography and a-brand-plucked-from-the-fire have no hi edition yet, so the card names their authors, not their titles. Prose-ahead: seed_plans creates no hi row until both ship."
   ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "पारिवारिक भक्ति: तीर्थयात्री की यात्रा",
+  "description": "बच्चों और उनके साथ पढ़नेवाले बड़ों के लिए पाँच मिनट की पारिवारिक भक्ति, लगभग साढ़े तीन सप्ताह की रातों के लिए। हर रात एक छोटा अध्याय ज़ोर से पढ़िए: पहले बनियन का तीर्थयात्री, स्वर्गीय नगर की ओर जानेवाले रास्ते पर, फिर स्पर्जन की खेत की तस्वीरें। हर अध्याय एक प्रार्थना और साथ बैठकर बात करने के लिए तीन प्रश्नों के साथ समाप्त होता है।",
+  "note": [
+   "AI-drafted (2026-11-11); awaiting native review. Job #7637 (talks-to-the-farmer-children → hi) ships one of this plan's two source books; pilgrims-progress-children has no hi edition yet, so this is prose-ahead: seed_plans creates the hi row only once both are published. Series name ‘पारिवारिक भक्ति’ as in family-devotions-brave-and-faithful (#7522) and -boy-from-osogun (#7523). Like the English it describes the books rather than quoting their titles; तीर्थयात्री (title echoes pilgrims-progress.hi «तीर्थयात्री की यात्रा»), बनियन and स्वर्गीय नगर as in pilgrims-progress.hi, स्पर्जन as in the hi Spurgeon editions. It promises the prayer and three talk-about-it questions: talks-to-the-farmer-children.hi ships study_questions (3 per chapter)."
+  ]
  }
 }
