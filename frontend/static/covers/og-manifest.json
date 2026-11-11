@@ -8782,6 +8782,40 @@
 				541
 			]
 		},
+		"es/fire-against-the-dark": {
+			"ground": "4ae00ba6c993737da3ae980baa85f94712e5080941eea4fd85c33615803452d3",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 257, 308, 301],
+					[132, 332, 468, 407],
+					[144, 393, 456, 468]
+				],
+				"subtitle": [
+					[90, 522, 510, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
 		"es/first-epistle-of-clement": {
 			"ground": "6598e83c9f6275e3fea947d397e9393dd0811f91e7a961269a1841b79834f684",
 			"style": "inscriptional",
