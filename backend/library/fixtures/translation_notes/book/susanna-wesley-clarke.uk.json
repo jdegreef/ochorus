@@ -3,7 +3,7 @@
  "slug": "susanna-wesley-clarke",
  "language": "uk",
  "job_issue": 7012,
- "pull_request": null,
+ "pull_request": 7675,
  "note": [
   "A biography built largely from Susanna Wesley’s and her family’s letters, which quote and echo the Authorized Version freely but cite almost no references. Kulish (1905, ebible ukr1871) verses were pasted from the gracious-tech/fetch_collection ukr_pan USFM mirror by script; a row is mined only if a byte-exact span of at least 20 characters of the Kulish verse occurs in that block (re-measured over the finished text — shorter verbatim fragments and re-personed or adapted quotations are self_rendered). Kulish ‟ normalised to “.",
   "Block indices are per chapter (</p> split). The English is an OCR scan; obvious one-reading scan errors (1 for I, ’11 for ’ll, stray page signatures and running heads, 1811/1816 for 1711/1716) were read as meant. AI-translated in-session; awaiting native review."
