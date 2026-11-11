@@ -1150,6 +1150,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "key-teachings"
+  ],
+  "language": "am",
+  "title": "ዋና ዋና ትምህርቶች",
+  "description": "Ochorus ያዘጋጃቸው፣ የአንድን ጥንታዊ ጸሐፊ ትምህርት እምብርት በአጭሩና በታማኝነት የሚያቀርቡ መመሪያዎች — እያንዳንዱ ምዕራፍ በጥያቄዎችና በጸሎት ይደመደማል፤ አንባቢውንም ወደ ጸሐፊው የራሱ መጻሕፍት ይመራል።",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "tell-me-the-story"
   ],
   "language": "hi",
