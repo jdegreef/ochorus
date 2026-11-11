@@ -349,11 +349,14 @@
 		}
 		return [...m.values()].sort((a, b) => b.count - a.count || a.author.name.localeCompare(b.author.name));
 	});
-	/** The By-preacher view of these filters, optionally at one preacher. */
-	function preacherHref(slug?: string) {
+	/** The By-preacher view of these filters. No `#preacher-<slug>` fragment:
+	 *  the prerender crawler ignores the query, so it would look for that id on
+	 *  the default (ungrouped) /sermons, where no preacher section exists, and
+	 *  fail the build. A plain click still lands on the section (pickPreacher). */
+	function preacherHref() {
 		const base = new URL(localizeHref('/sermons'), 'https://x.invalid');
 		const u = writeFilters(base, { ...filters.values, group: 'preacher' }, FILTER_DEFAULTS);
-		return u.pathname + u.search + (slug ? `#preacher-${slug}` : '');
+		return u.pathname + u.search;
 	}
 	function pickPreacher(e: MouseEvent, slug?: string) {
 		if (!isPlainPrimaryClick(e)) return;
@@ -549,7 +552,7 @@
 							{#each railPreachers.slice(0, RAIL_FACES) as p (p.author.slug)}
 								<li>
 									<a
-										href={preacherHref(p.author.slug)}
+										href={preacherHref()}
 										class="rail-face group"
 										title={p.author.name}
 										onclick={(e) => pickPreacher(e, p.author.slug)}
