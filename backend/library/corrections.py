@@ -5609,6 +5609,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "the intruding agency » f:My brother",
                 "the intruding agency. My brother",
             ),
+            # Two century slips (found translating vi, #7030): Susanna died in
+            # 1742, the manuscript in ch9 is dated 1711-12 in the same
+            # paragraph, and ch11's letters about the noises are dated 1716-17.
+            # The am/ar/es/fr/uk editions already read 1711/1712 and 1716; en,
+            # lg, pt and sw carried the slip. Anchored on the bare digits so the
+            # pairs match in every language (nothing else in the book reads
+            # " 1811 ", " 1812." or " 1816,").
+            (" 1811 ", " 1711 "),
+            (" 1812.", " 1712."),
+            (" 1816,", " 1716,"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
@@ -7536,6 +7546,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #
         # Each seam carries the tail of the preceding sentence, so it matches
         # its one site and nowhere else in the book.
+        # Word-level OCR slips the uk translation (#7037) read through, each with
+        # one possible reading, which the uk edition already renders. Every seam
+        # carries enough context to match its one site. Punctuation losses (the
+        # dozens of dropped "?" and mismatched quote marks) are NOT repaired here —
+        # they are listed on the PR for a dedicated pass.
+        "replacements": [
+            ("<p>To my bretheren and dearly-beloved", "<p>To my reverend and dearly-beloved"),
+            ("in Jesus Christ be increase </p>", "in Jesus Christ be increased </p>"),
+            ("further means to he used.", "further means to be used."),
+            ("if he be not mused to greater", "if he be not roused to greater"),
+            ("?’ Brethen, if the saving", "?’ Brethren, if the saving"),
+            ("taken heed to all the Rock:", "taken heed to all the flock:"),
+            ("greater necessity to do or them,", "greater necessity to do for them,"),
+            ("our Master’s will by no aggravation", "our Master’s will be no aggravation"),
+            ("judge of the a affection of him", "judge of the affection of him"),
+            ("therefore, keep dose to the ancient", "therefore, keep close to the ancient"),
+            ("consideration of he blessed nature", "consideration of the blessed nature"),
+            ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+            ("did speak to us as well others.", "did speak to us as well as others."),
+            ("parliament began, bow frequent", "parliament began, how frequent"),
+            ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
+            ("For if you we’re a Christian", "For if you were a Christian"),
+        ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
             ("will not do so small a matter to attain it.", "It is a palpable error"),
@@ -8209,6 +8242,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
     ("एक सुखद साधन सिद्ध हो! <i>आमीन।</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("kw’eddiini entuufu! <i>Amiina.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("істинної релігії! <i>Амінь.</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
@@ -24567,4 +24602,27 @@ BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacem
 # OCR slip: "whom even themselves hold to be gods".
 BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
     ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
+])
+
+# OCR slips found while translating Watson's book to Ukrainian (job #7608). Each has one
+# reading, forced by the verse quoted or by grammar: Eph 6:16 is the shield of faith; the
+# moon-in-the-water image needs the firmament; Matt 6:26 reads "not". Left as found (not
+# unambiguous): "intemperate hearts" (heats?), "he get no heat", Watson's own citation
+# ranges (2 Chron. xxxiii. 11, 12 for vv. 12-13; Job vii. 17 for vv. 17-18).
+BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
+    ("displays the skill of faith", "displays the shield of faith"),
+    ("And now be grows more modest", "And now he grows more modest"),
+    ("loves me became I am king Alexander", "loves me because I am king Alexander"),
+    ("Are ye nor much better than they", "Are ye not much better than they"),
+    ("condition is fused and unalterable", "condition is fixed and unalterable"),
+    ("look up to the Ornament", "look up to the firmament"),
+    ("God wilt make it cost you dear", "God will make it cost you dear"),
+    ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
+    ("going to execution . sin is the halter", "going to execution: sin is the halter"),
+])
+# Wrong book in a headline reference (found translating cheque-book → ko, #7015):
+# the April 19 promise "I, even I, will both search my sheep, and seek them out"
+# is Ezekiel 34:11, not Exodus (Exodus 34:11 is the covenant warning).
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
 ])

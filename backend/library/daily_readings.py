@@ -16,7 +16,8 @@ references only wraps text inside blocks, never adds or moves one, and
 
 The marker is found by shape, not by month name, so a translated edition needs
 no word list: a marker of the book's tag, short, holding exactly one number of
-one or two digits and no colon (a verse reference has one). The month comes
+one or two digits and no colon (a verse reference has one) — or, in Korean,
+a ``M월 D일`` line, whose month number is skipped. The month comes
 from the chapter's position — ``first_month`` is the January chapter's order
 (the Cheque Book's preface is chapter 1). ``tests_daily_readings`` holds every
 published dated edition to twelve months of strictly increasing, in-range
@@ -51,6 +52,9 @@ from .daily_books import DATED_BOOKS, DatedBook
 #: A date marker is a line, not a paragraph; past this it is prose.
 _MARKER_MAX = 40
 _NUMBER = re.compile(r"(?<!\d)(\d{1,2})(?!\d)")
+#: A Korean / CJK date line names the month by its number too ("1월 1일", "1月1日"):
+#: the second number is the day. The month is still taken from the chapter.
+_MONTH_DAY = re.compile(r"\d{1,2}\s*[월月]\s*(\d{1,2})\s*[일日]")
 _HEADING_MAX = 80
 _EXCERPT_MAX = 220
 #: How far back a missing date may resolve (see the module docstring).
@@ -75,6 +79,8 @@ def _marker_day(el, text: str, tag: str) -> int | None:
     if el.name != tag or len(text) > _MARKER_MAX or ":" in text:
         return None
     numbers = _NUMBER.findall(text)
+    if len(numbers) == 2 and (m := _MONTH_DAY.fullmatch(text)):
+        numbers = [m[1]]
     if len(numbers) != 1:
         return None
     day = int(numbers[0])
