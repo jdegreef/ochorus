@@ -1,0 +1,103 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "obadiah",
+  "language": "en",
+  "title": "Obadiah",
+  "subtitle": "Ovadyah, “Servant of the LORD”",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "The shortest book in the Old Testament, twenty-one verses of vision against Edom, the nation descended from Esau, which stood by and cheered when Jerusalem fell. Obadiah speaks to a people who nested among the rocks and asked “Who can bring me down to the ground?”, names the sins of the bystander one by one — “You should not have gloated over your brother’s day” — and announces the day of the LORD for all the nations: “As you have done, so it will be done to you.” It ends with the exiles coming home and the last word given to God: “the kingdom will belong to the LORD.” Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the book of Obadiah?",
+    "answer": "The fourth of the twelve shorter prophetic books, and the shortest book in the Old Testament, a single chapter of twenty-one verses. It is a vision about Edom, Israel’s neighbour to the south-east: its pride and coming fall (verses 1–9), its cruelty when Jerusalem was captured (10–14), the day of the LORD for all the nations (15–16), and the return of God’s people, ending, “the kingdom will belong to the LORD” (17–21)."
+   },
+   {
+    "question": "Who wrote the book of Obadiah, and when?",
+    "answer": "The book says only, “The vision of Obadiah” (1:1). His name means “servant of the LORD”, and nothing else is known of him; an old Jewish tradition identified him with the Obadiah who hid the prophets from Jezebel in 1 Kings 18, but few readers now hold that view. Most scholars date the book soon after the Babylonians destroyed Jerusalem in 586 BC, when Edom joined in the plunder; some place it earlier, at another time when Jerusalem was raided. Verses 1–9 closely parallel Jeremiah 49, and the two prophets seem to draw on a shared oracle."
+   },
+   {
+    "question": "Who were the Edomites?",
+    "answer": "The descendants of Esau, the twin brother of Jacob, whose rivalry is told in Genesis 25–33. They lived in the mountains south-east of the Dead Sea and were Israel’s neighbours and frequent enemies; they refused Israel passage on the way from Egypt and fought Judah under the kings. After the exile they were pushed into southern Judah, where they were called Idumeans, and Herod the Great was of Idumean descent. That is why Obadiah calls the two nations Esau and Jacob, and speaks of “your brother”."
+   },
+   {
+    "question": "Why is God so angry with Edom in Obadiah?",
+    "answer": "Because Edom betrayed its brother on the day of his disaster. When Jerusalem fell, the Edomites “stood at a distance” and were “like one of them” (1:11); then they gloated, boasted, entered the city’s gates, seized its wealth, and cut down or handed over those who tried to escape (1:12–14). Behind it all was pride: “The pride of your heart has deceived you” (1:3). The book’s principle is that “As you have done, so it will be done to you” (1:15)."
+   },
+   {
+    "question": "Is Obadiah only about Edom?",
+    "answer": "No. Edom’s judgment is part of “the day of the LORD”, which is “close at hand for all the nations” (1:15), and the book ends not with Israel’s triumph but with God’s reign: “the kingdom will belong to the LORD” (1:21). Christian readers since Augustine have heard in that last verse the kingdom of God that comes in Christ, and the book’s warnings against pride and against delighting in another’s fall have been read as words for everyone."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#oba",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/obadiah.jpg",
+  "pdf_url": "",
+  "cover_color": "#55402f",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 31,
+  "sort_order": 339,
+  "is_published": true,
+  "created_at": "2026-11-11T21:47:24.252Z",
+  "updated_at": "2026-11-11T21:54:47.791Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "obadiah",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>For the day of the LORD is close at hand for all the nations. As you have done, so it will be done to you; what you have dealt out will come back on your own head.</p><p>— Obadiah 1:15</p></blockquote> <p>Obadiah is the shortest book in the Old Testament: twenty-one verses, a single chapter, readable in five minutes. It is a vision about one nation, Edom, Israel’s neighbour to the south-east, and about one dreadful day when Jerusalem fell and Edom stood by and cheered. Yet in that small compass it holds some of the Bible’s deepest convictions: that pride goes before a fall, that cruelty to a brother does not go unanswered, and that in the end the kingdom belongs to God.</p> <p>We know nothing about the prophet except his name. Obadiah means “servant of the LORD”, and a dozen men in the Old Testament bear it. An old Jewish tradition identified him with the Obadiah who hid a hundred prophets from Queen Jezebel, but the book itself says only, “The vision of Obadiah.”</p> <h3>Two brothers</h3> <p>To understand Obadiah you have to go back to Genesis. Edom was the nation descended from Esau, and Israel the nation descended from his twin brother Jacob. Their quarrel began in the womb, where the boys struggled together, and it ran through the stolen birthright and the stolen blessing to the night Jacob spent dreading his brother’s four hundred men. That story ended in a reconciliation: Esau ran to meet Jacob and embraced him, and they wept.</p> <p>The nations did not do as well as their fathers. When Israel came out of Egypt, Edom refused to let it pass through its land. Through the centuries of the kings the two peoples fought again and again. And when the Babylonians captured Jerusalem in 586 BC, burned the temple and carried its people into exile, the Edomites did not simply stand aside. Psalm 137 remembers what they shouted: “Strip it, strip it bare, right down to its foundations!” Obadiah is God’s answer to that day.</p> <p>The book calls Edom by both its names, Edom and Esau, and Israel by its father’s name, Jacob. The prophet wants us to hear, all the way through, the word “brother”.</p> <h3>The pride of your heart</h3> <p>Edom’s homeland was a rugged plateau of red sandstone mountains, cut by deep gorges and full of caves, its cities set high on the heights. It seemed impregnable, and the Edomites believed it. The LORD speaks to them:</p> <blockquote><p>The pride of your heart has deceived you, you who live in the clefts of the rock, whose home is on the heights, who say to yourself, “Who can bring me down to the ground?” Though you soar as high as the eagle, though your nest is placed among the stars, I will bring you down from there, declares the LORD.</p><p>— Obadiah 1:3–4</p></blockquote> <p>Notice where the deception lies. Edom’s enemies have not fooled it; its own pride has. A nation that asks “Who can bring me down?” has forgotten that there is someone above the eagle and beyond the stars.</p> <p>Then the poem describes how complete the fall will be. Thieves take only what they want; grape pickers leave a few grapes for the gleaners. But Esau will be ransacked, “his hidden treasures hunted down!” His allies will turn on him, his friends will deceive him, and those who eat at his table will set a trap for him. Edom was famous for its wise men, and Teman, in its heartland, for its wisdom; but “There is no understanding in Edom.”</p> <h3>On the day of your brother’s misfortune</h3> <p>Now Obadiah names the crime:</p> <blockquote><p>Because of the violence you did to your brother Jacob, you will be covered in shame and cut off forever. On the day you stood at a distance, on the day strangers carried off his wealth and foreigners entered his gates and cast lots for Jerusalem, you were like one of them.</p><p>— Obadiah 1:10–11</p></blockquote> <p>“You were like one of them.” Edom did not have to raise a sword to share in the guilt. Standing at a distance and watching was already a choice. And it went further. In three verses the prophet says eight times what Edom should not have done: gloated over its brother’s day, rejoiced over Judah’s ruin, boasted, marched through the gate of God’s people, gloated again, seized their wealth, stood at the crossroads to cut down those who escaped, and handed the survivors over to the enemy. The word “day” rings through the passage like a bell, ten times in four verses: the day of his misfortune, of their ruin, of their distress, of his disaster.</p> <p>It is a searching list, because the sins it names begin so small. Looking on. Taking pleasure in someone else’s fall. Talking big. Only then come looting and betrayal. Obadiah traces the whole slope, from the bystander’s smile to the hand that delivers a refugee to his killers.</p> <h3>The day of the LORD</h3> <p>Then the vision widens. Edom’s day of reckoning is part of a greater day, “the day of the LORD”, which is “close at hand for all the nations.” Its rule is the one in the verse at the head of this introduction: “As you have done, so it will be done to you.” As there was drinking on God’s holy mountain, so all the nations will drink the cup of his judgment, until they are as if they had never existed.</p> <p>This is not revenge for its own sake. It is the moral order of a world with a just God at its centre, the same truth Jesus put in different words when he said that the measure we use will be measured back to us. Obadiah’s comfort to a crushed and humiliated people is that their humiliation has been seen, and that it will not have the last word.</p> <h3>The kingdom will belong to the LORD</h3> <p>The last verses turn to the future of the house of Jacob. Where Edom’s survivors will be cut off, “on Mount Zion there will be survivors, and it will be holy”. The exiles will come home and possess the land again, from the Negev in the south to Gilead in the east and as far north as Zarephath. And the book ends with its great conclusion:</p> <blockquote><p>Deliverers will go up onto Mount Zion to rule over Mount Esau, and the kingdom will belong to the LORD.</p><p>— Obadiah 1:21</p></blockquote> <p>The last word is not Israel’s victory over Edom but God’s kingship over all. Mount Zion and Mount Esau, the two mountains of the two brothers, end under one rule, and it is the LORD’s.</p> <h3>How to read Obadiah</h3> <p>Read it aloud, all at once, and then read the story of Jacob and Esau in Genesis 25–33 beside it. Most scholars date the book soon after the fall of Jerusalem in 586 BC, since its description of that day matches the laments of the exile so closely. Some place it earlier, at one of the other times when Jerusalem was plundered and Edom joined in. Verses 1–9 are very close to a passage about Edom in Jeremiah 49, and the two prophets seem to draw on a shared oracle.</p> <p>As you read, let the book search you as well as comfort you. Its hard words are aimed at Edom, but its warnings are for anyone: against the pride that thinks itself out of reach, and against the quiet pleasure of watching a brother fall.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Hebrew and given freely to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Obadiah is poetry, and <strong>this edition prints each line on its own</strong>, as the Hebrew sets it out. Where the Hebrew uses God’s personal name, it writes “the LORD”, and where it joins that name to the word for “Lord”, as in the first verse, “the Lord GOD”. Edom’s mountain country is called, as in the Hebrew, “Mount Esau”. Sepharad, where some of Jerusalem’s exiles are found, is a place no one has identified for certain; later Jewish tradition gave the name to Spain. For the reasoning behind every sentence, with the Hebrew beside it, see openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "obadiah",
+   "en"
+  ],
+  "order": 2,
+  "title": "Obadiah 1",
+  "body_html": "<h3>Edom brought down</h3><p>The vision of Obadiah.<br/>The Lord GOD says this about Edom: We have heard news from the LORD; a messenger has been sent among the nations:<br/>“Rise up! Let us rise up against her in battle!”<br/>See, I will make you small among the nations;<br/>you will be utterly despised.<br/>The pride of your heart has deceived you,<br/>you who live in the clefts of the rock, whose home is on the heights,<br/>who say to yourself,<br/>“Who can bring me down to the ground?”<br/>Though you soar as high as the eagle,<br/>though your nest is placed among the stars,<br/>I will bring you down from there, declares the LORD.<br/>If thieves came to you, if robbers came by night<br/>(how you will be destroyed!),<br/>would they not steal only as much as they wanted?<br/>If grape pickers came to you,<br/>would they not leave a few grapes behind?<br/>How Esau will be ransacked,<br/>his hidden treasures hunted down!<br/>All your allies will drive you to the border;<br/>your friends will deceive you and overpower you;<br/>those who share your bread will lay a trap for you.<br/>There is no understanding in Edom.<br/>On that day, declares the LORD,<br/>will I not destroy the wise from Edom,<br/>and understanding from Mount Esau?<br/>Your warriors will be terrified, Teman,<br/>so that everyone on Mount Esau will be cut down in the slaughter.<br/>Because of the violence you did to your brother Jacob,<br/>you will be covered in shame and cut off forever.<br/>On the day you stood at a distance,<br/>on the day strangers carried off his wealth<br/>and foreigners entered his gates and cast lots for Jerusalem,<br/>you were like one of them.<br/>You should not have gloated over your brother’s day, the day of his misfortune,<br/>nor rejoiced over the people of Judah on the day of their ruin,<br/>nor boasted so loudly on the day of their distress.<br/>You should not have marched through the gate of my people on the day of their disaster,<br/>nor gloated, you of all people, over his calamity on the day of his disaster,<br/>nor seized his wealth on the day of his disaster.<br/>You should not have stood at the crossroads<br/>to cut down those who escaped,<br/>nor handed over his survivors on the day of distress.<br/>For the day of the LORD is close at hand for all the nations.<br/>As you have done, so it will be done to you;<br/>what you have dealt out will come back on your own head.<br/>Just as you drank on my holy mountain,<br/>all the nations will keep on drinking;<br/>they will drink and gulp it down,<br/>and be as if they had never existed.<br/>But on Mount Zion there will be survivors, and it will be holy;<br/>and the house of Jacob will take possession of what belongs to them.<br/>The house of Jacob will become a fire, and the house of Joseph will be a flame, and the house of Esau will be stubble;<br/>they will set them ablaze and burn them up.<br/>No survivor will be left to the house of Esau,<br/>for the LORD has spoken.<br/>The people of the Negev will take possession of Mount Esau, and the people of the Shephelah the land of the Philistines;<br/>they will take possession of the territory of Ephraim<br/>and the territory of Samaria,<br/>and Benjamin will possess Gilead.<br/>The exiles of this army of Israel will take possession of the Canaanite land as far as Zarephath,<br/>and the exiles of Jerusalem who are in Sepharad<br/>will possess the towns of the Negev.<br/>Deliverers will go up onto Mount Zion<br/>to rule over Mount Esau,<br/>and the kingdom will belong to the LORD.</p>",
+  "study_questions": [],
+  "word_count": 627
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "obadiah",
+   "en"
+  ],
+  "order": 3,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>Deliverers will go up onto Mount Zion to rule over Mount Esau, and the kingdom will belong to the LORD.</p><p>— Obadiah 1:21</p></blockquote> <p>The shortest book in the Old Testament ends with one of its largest claims. After twenty verses about a small nation’s pride and a terrible day in Jerusalem, Obadiah lifts his eyes to the end of all things, and what he sees there is not a nation but a King.</p> <h3>The question the book leaves with you</h3> <p>Obadiah asks where we stand on the day of someone else’s disaster. Edom’s guilt began with standing at a distance, and went on to gloating, boasting and looting. Most of us will never hand a refugee to his enemies, but every one of us has felt the small, ugly pleasure of watching a rival fall. Obadiah calls that pleasure by its name, and reminds us that the one we watch is a brother.</p> <p>And it asks what we trust in. Edom trusted its heights, its allies and its wise men, and all three failed it. The book’s final answer to pride is not humiliation for its own sake but the kingdom of God, in which the high are brought low and the scattered are brought home.</p> <h3>Where the story goes next</h3> <p>Obadiah’s words came true. In the centuries after the exile, the Edomites were driven from their mountains and pushed west into southern Judah, where they became known as the Idumeans. Herod the Great, the king who tried to kill the child born in Bethlehem, was of Idumean descent. After the first century the Edomites disappear from history. But the kingdom Obadiah foresaw did not disappear. The book of Revelation hears loud voices in heaven announce it: “The rule over the world now belongs to our Lord and to his Christ, and he will reign forever and ever.”</p> <h3>Where to go from here</h3> <ul> <li><strong>On standing by (1:11).</strong> Charles H. Spurgeon’s reading for July 23 in <em>Morning by Morning</em>, on the brotherly kindness Edom owed and refused.</li> <li><strong>On pride and its fall (1:3–4).</strong> Jerome’s letter to Eustochium (Letter XXII in <em>The Letters of St. Jerome</em>), which hears Obadiah’s eagle among the stars as a warning against the pride by which Lucifer fell.</li> <li><strong>On deliverance and holiness (1:17).</strong> Thomas Watson’s <em>The Ten Commandments</em>, whose chapter on the preface to the commandments takes up Obadiah’s promise that on Mount Zion there will be both.</li> <li><strong>On the two brothers.</strong> “I Will Not Let You Go”, the chapter on Jacob at the Jabbok in <em>The Prayers Jesus Learned</em>, an Ochorus Original, which tells how Jacob went to meet the brother he had wronged.</li> <li><strong>On the conqueror from Edom.</strong> Christmas Evans’s sermon <em>The Triumph of Calvary</em> (Isaiah 63:1), on the one who comes from Edom “with clothing dyed red”, read as Christ returning from the cross.</li> <li><strong>On Obadiah and the gospel.</strong> Augustine’s <em>The City of God</em>, book XVIII, chapter 31, on the deliverers going up to Mount Zion; and Jerome’s letter to Paulinus (Letter LIII in <em>The Letters of St. Jerome</em>).</li> </ul> <p>And then read the vision again, and end where Obadiah points, on the holy mountain where the scattered are gathered:</p> <blockquote><p>But on Mount Zion there will be survivors, and it will be holy; and the house of Jacob will take possession of what belongs to them.</p><p>— Obadiah 1:17</p></blockquote>",
+  "study_questions": [],
+  "word_count": 560
+ }
+}
+]
+

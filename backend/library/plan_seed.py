@@ -700,6 +700,14 @@ CURATED_PLANS = [
         "the LORD!”",
         [chapters("psalms", 2, 151)],
     ),
+    (
+        "proverbs-in-a-month",
+        "Proverbs in a Month",
+        "A chapter of Proverbs for every day of the month in the Open Word Bible: "
+        "thirty-one chapters of wisdom for ordinary life, from the fear of the "
+        "LORD as the beginning of knowledge to the woman of strength.",
+        [chapters("proverbs", 2, 32)],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that

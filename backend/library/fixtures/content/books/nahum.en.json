@@ -1,0 +1,131 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "nahum",
+  "language": "en",
+  "title": "Nahum",
+  "subtitle": "Nachum, “Comfort”",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "The seventh of the twelve Minor Prophets, and a book about one city: Nineveh, the capital of Assyria, the empire that destroyed the northern kingdom of Israel and held Judah in fear for a century. It opens with a hymn to the God who is “slow to grow angry but great in power” and “a stronghold in the day of trouble”, announces good news on the mountains for the oppressed, and then, in some of the most vivid poetry in Scripture, tells of red shields, racing chariots and river gates thrown open, until the lion’s den is empty and the city of bloodshed falls. Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the book of Nahum about?",
+    "answer": "The fall of Nineveh, the capital of the Assyrian empire. Its three chapters open with a hymn to the LORD as the judge before whom no one can stand (1:1–8), turn back and forth between words of doom for Nineveh and words of freedom for Judah (1:9–15), and then picture the city’s capture (chapter 2) and the reasons for it, its bloodshed, plunder and cruelty (chapter 3). Unlike most prophetic books, it contains no call to repent and no rebuke of God’s own people."
+   },
+   {
+    "question": "Who wrote Nahum, and when?",
+    "answer": "The book is “the vision of Nahum of Elkosh” (1:1). Nothing else is known of him, and the site of Elkosh is uncertain. The book speaks of the sack of Thebes, which it calls No-amon, as already past (3:8–10); the Assyrians took Thebes in 663 BC. It looks ahead to the fall of Nineveh, which Babylonians and Medes captured in 612 BC. So Nahum prophesied between those dates, while Assyria was still powerful."
+   },
+   {
+    "question": "How is Nahum related to the book of Jonah?",
+    "answer": "Both are about Nineveh, and both quote the confession God made to Moses in Exodus 34:6–7. In Jonah, Nineveh repents, and Jonah complains that God is “slow to grow angry, rich in faithful love” (Jonah 4:2). In Nahum, perhaps a century later, the same God is “slow to grow angry but great in power”, and “will never acquit the guilty” (1:3). Read together, the two books show both sides of one character: patient with those who turn, and just with those who persist in cruelty. Both books end with a question."
+   },
+   {
+    "question": "Is Nahum a book of revenge?",
+    "answer": "Many readers find its delight in Nineveh’s fall hard. But in the book it is the LORD who acts, not Judah, and the reason given is Nineveh’s own violence: it is “the city of bloodshed”, and its last verse asks, “for who has not felt your endless cruelty?” (3:19). Scripture leaves vengeance to God rather than to people (Romans 12:19). For nations that had suffered under Assyria, the news that its power would end was comfort, which is what the prophet’s name means."
+   },
+   {
+    "question": "What does “the feet of one who brings good news” mean in Nahum?",
+    "answer": "In 1:15 a messenger runs across the mountains to Judah with news of peace: the oppressor is cut off, and the people can keep their festivals again. Isaiah 52:7 uses almost the same words for the return from exile, and Paul quotes Isaiah for the preaching of the gospel (Romans 10:15). In Hebrew Bibles this verse is numbered 2:1."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#nam",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/nahum.jpg",
+  "pdf_url": "",
+  "cover_color": "#55302f",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 34,
+  "sort_order": 342,
+  "is_published": true,
+  "created_at": "2026-11-11T21:47:34.585Z",
+  "updated_at": "2026-11-11T21:54:57.742Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "nahum",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>The LORD is good, a stronghold in the day of trouble; he knows those who take refuge in him.</p><p>— Nahum 1:7</p></blockquote> <p>Nahum is a book about one city. Its first words are “An oracle about Nineveh”, and from there to its last line it never looks away. There is no call to Nineveh to repent and no word of hope for her, only the news, told in some of the most vivid poetry in the Bible, that the great capital of Assyria is about to fall.</p> <p>The prophet’s name means “comfort”, and that is a clue to how the book should be read. It is written not to Nineveh but to the people Nineveh had crushed, for whom its end was good news.</p> <h3>Nineveh</h3> <p>For more than a century Assyria was the terror of the ancient Near East. Its armies destroyed the northern kingdom of Israel and carried its people into exile in 722 BC. Twenty years later they swept through Judah, took its fortified towns and shut King Hezekiah up in Jerusalem “like a bird in a cage”, as the Assyrian king boasted in his own records. Assyrian kings lined their palaces with carved scenes of conquered cities and captives, and boasted of their cruelty in inscriptions. Nahum’s picture of Nineveh as a lion’s den, “where the lion and lioness prowled with their cubs, and no one disturbed them”, is not exaggeration.</p> <p>The book can be dated within a few decades. It speaks of the fall of No-amon, the Egyptian city of Thebes, “who sat by the streams of the Nile”, as something already past (3:8–10); the Assyrians sacked Thebes in 663 BC. And it looks forward to the fall of Nineveh itself, which came in 612 BC, when an alliance of Babylonians and Medes took the city. Nahum prophesied somewhere between the two, while Assyria still seemed unbeatable. Of the prophet himself we know only that he came from Elkosh, a village whose place no one can now find with certainty.</p> <h3>The shape of the book</h3> <ul> <li><strong>1:1–8: the God who judges.</strong> A hymn to the LORD as a warrior and judge, before whom the mountains quake. Its lines begin, more or less in order, with the first half of the letters of the Hebrew alphabet.</li> <li><strong>1:9–15: two audiences.</strong> Short words turn back and forth between Nineveh, which is told it is finished, and Judah, which is told its yoke will be broken.</li> <li><strong>Chapter 2: the fall of the city.</strong> The attack, told as if the reader were standing on the walls: red shields, racing chariots, river gates thrown open, treasure looted.</li> <li><strong>Chapter 3: woe to the city of bloodshed.</strong> The reasons for the judgement, the example of Thebes, and a mocking dirge over the king of Assyria.</li> </ul> <h3>Slow to grow angry</h3> <p>The book begins not with Nineveh but with God. Before a single word about Assyria, Nahum sets out who it is that Assyria has to deal with:</p> <blockquote><p>The LORD is slow to grow angry but great in power, and he will never acquit the guilty. The LORD makes his way in the whirlwind and the storm, and the clouds are the dust of his feet.</p><p>— Nahum 1:3</p></blockquote> <p>These words come from the oldest confession of God’s character in the Bible, the one he proclaimed to Moses on Mount Sinai, “a God of tender compassion and grace, slow to grow angry”, who forgives wrongdoing, “Yet he will never acquit the guilty” (Exodus 34:6–7).</p> <p>Another prophet had once quoted the same confession about the same city. When Nineveh repented at Jonah’s preaching, Jonah sulked, because, he said, “I knew that you are a God of grace and tender compassion, slow to grow angry, rich in faithful love” (Jonah 4:2). The two little books belong together. Jonah shows the first half of the confession: God is slow to anger, and spares a city that turns. Nahum, a century or so later, shows the second: he is slow, but he is not indifferent, and he will not acquit the guilty for ever. Both books end with a question about Nineveh.</p> <h3>Good news on the mountains</h3> <p>For Judah, the fall of Assyria meant freedom. In the middle of the first chapter the LORD speaks to his people directly: “I have afflicted you, but I will afflict you no more.” Then comes the announcement:</p> <blockquote><p>Look! On the mountains, the feet of one who brings good news! He calls out peace. Celebrate your festivals, Judah, and fulfill your vows, for the worthless one will never again march through you; he is cut off completely.</p><p>— Nahum 1:15</p></blockquote> <p>Isaiah uses almost the same picture for the end of the exile in Babylon: “What a welcome sight on the mountains, the feet of one who brings good news!” (Isaiah 52:7). Paul quotes Isaiah’s line for the preaching of the gospel itself (Romans 10:15). In the Greek translation of the Old Testament, the word for the messenger who “brings good news” is the word from which the New Testament gets its word gospel.</p> <h3>A hard book</h3> <p>Many readers find Nahum difficult. The poetry of chapters 2 and 3 is the poetry of a sacked city: horses galloping, “heaps of corpses”, a city “stripped and carried away”, and, in the memory of Thebes, little ones dashed to pieces at every street corner. Can this be the word of the God of Jonah, who cared for Nineveh’s people and even its animals?</p> <p>Three things help. First, the book is about God’s justice, not Judah’s revenge. Judah lifts no sword in it; the LORD acts, and his people are told only to keep their festivals. Scripture forbids people to take revenge for themselves, and leaves it to God, who alone can repay justly (Romans 12:19).</p> <p>Second, the book says why. Nineveh is “the city of bloodshed”, which has looted nations and sold peoples. Its last line is not a cheer but a question that every nation Assyria had trampled could answer: “for who has not felt your endless cruelty?”</p> <p>Third, the hymn at the start sets limits. The God who brings Nineveh down is the same one who is “a stronghold in the day of trouble”, who “knows those who take refuge in him”. His anger is the settled opposition of the good to what destroys his creatures. For anyone who has lived under a cruel power, the message that it will not last for ever is not bloodthirsty. It is comfort.</p> <h3>How to read Nahum</h3> <p>Nahum is short, three chapters, and best read in one sitting, aloud if you can. Its poetry is fast, full of short cries, and meant to be heard. Read Jonah beside it, and notice how differently the two books speak about the same city and the same God.</p> <p>As you read, keep in mind who first heard it: a small kingdom that had lived for a century under the shadow of the most powerful army on earth. Then let it widen: Babylon falls in Isaiah and Jeremiah, and a greater Babylon in Revelation. Every empire that trusts in its own strength is Nineveh. The question the book puts to its readers is the one in its first hymn: “Who can stand before his indignation?” And its answer is the verse at the head of this introduction: those who take refuge in him.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Hebrew and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Nahum is poetry almost from beginning to end, and it is printed here one line per line, as the poetry it is. A few of the translation’s choices are worth knowing.</p> <p><strong>“The LORD.”</strong> Where the Hebrew uses God’s personal name, the four letters often written Yahweh, this translation follows long Jewish and Christian custom and writes “the LORD”. Twice the LORD speaks in his own voice to Nineveh: “I am against you, declares the LORD of Armies.” “The LORD of Armies” renders the title older Bibles translate “the LORD of hosts”: he commands the armies of heaven, and no earthly army can stand against him.</p> <p><strong>An old confession.</strong> The translation renders Nahum 1:3 in the same words it uses for God’s self-description to Moses in Exodus 34:6–7, “slow to grow angry” and “will never acquit the guilty”, so that the echo can be heard in English as it is in Hebrew.</p> <p><strong>Numbering.</strong> Hebrew Bibles count the verse about the feet on the mountains as the first verse of chapter 2, so chapter 2 has one more verse than in English. References in this edition follow the numbering of English Bibles.</p> <p>For the reasoning behind every sentence of the translation, with the Hebrew beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1478
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "nahum",
+   "en"
+  ],
+  "order": 2,
+  "title": "Nahum 1",
+  "body_html": "<h3>The jealous and avenging God</h3><p>An oracle about Nineveh. The book of the vision of Nahum of Elkosh.<br/>The LORD is a jealous and avenging God;<br/>the LORD avenges and is full of wrath.<br/>The LORD takes vengeance on his foes<br/>and holds his anger against his enemies.<br/>The LORD is slow to grow angry but great in power,<br/>and he will never acquit the guilty.<br/>The LORD makes his way in the whirlwind and the storm,<br/>and the clouds are the dust of his feet.<br/>He rebukes the sea and makes it dry;<br/>he dries up every river.<br/>Bashan and Carmel wilt,<br/>and the flowers of Lebanon fade.<br/>Before him the mountains quake,<br/>and the hills melt away.<br/>The earth heaves at his presence,<br/>the world and everyone who lives in it.<br/>Who can stand before his indignation?<br/>Who can endure his burning anger?<br/>His wrath pours out like fire,<br/>and the rocks are shattered before him.<br/>The LORD is good,<br/>a stronghold in the day of trouble;<br/>he knows those who take refuge in him.<br/>But with a rushing flood<br/>he will make an end of her place,<br/>and he will drive his enemies into darkness.<br/>What are you plotting against the LORD?<br/>He will make a complete end;<br/>trouble will not rise up a second time.<br/>Though they are like a tangle of thorns<br/>and drunk with their wine,<br/>they will be burned up<br/>like dry stubble.<br/>From you has come one<br/>who plots evil against the LORD,<br/>a counselor of wickedness.</p><h3>No more affliction for Judah</h3><p>The LORD says this: Though they are at full strength and many,<br/>they will still be cut down and pass away.<br/>I have afflicted you,<br/>but I will afflict you no more.<br/>Now I will break his yoke from off you<br/>and snap the ropes that bind you.<br/>The LORD has given a command about you:<br/>you will have no more offspring to bear your name.<br/>I will cut off the carved idol and the cast image from the house of your gods. I will make your grave, for you count for nothing.</p><p>Look! On the mountains, the feet of one who brings good news! He calls out peace.<br/>Celebrate your festivals, Judah, and fulfill your vows,<br/>for the worthless one will never again march through you; he is cut off completely.</p>",
+  "study_questions": [],
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "nahum",
+   "en"
+  ],
+  "order": 3,
+  "title": "Nahum 2",
+  "body_html": "<h3>Good news on the mountains: Nineveh falls</h3><p>One who scatters is coming up against you. Guard the ramparts!<br/>Watch the road! Brace yourself!<br/>Gather all your strength!<br/>For the LORD is restoring the glory of Jacob,<br/>like the glory of Israel,<br/>though plunderers have stripped them bare<br/>and ruined their vines.<br/>The shields of his warriors are red; his soldiers are dressed in scarlet.<br/>The chariots flash like fire with steel on the day he musters them,<br/>and the spears of cypress wood are brandished.<br/>The chariots race madly through the streets<br/>and rush back and forth in the squares.<br/>They look like flaming torches;<br/>they dart about like lightning.<br/>He calls up his officers;<br/>they stumble as they advance.<br/>They rush to the city wall,<br/>and the siege shelter is set in place.<br/>The river gates are thrown open,<br/>and the palace gives way.<br/>It is decreed: she is stripped and carried away,<br/>and her servant women moan like doves<br/>and beat their breasts.<br/>Nineveh has been like a pool of water since ancient days,<br/>and now its people flee.<br/>“Halt! Halt!” But no one turns back.<br/>Loot the silver! Loot the gold!<br/>There is no end to the treasure,<br/>riches of every precious kind.<br/>Empty, emptied, stripped bare!<br/>Hearts melt and knees give way, every body writhes in anguish,<br/>and every face turns pale.<br/>Where now is the lions’ den,<br/>the place where the young lions fed,<br/>where the lion and lioness prowled with their cubs, and no one disturbed them?<br/>The lion killed enough for his cubs<br/>and strangled prey for his mates;<br/>he filled his caves with prey<br/>and his dens with what he had torn.<br/>I am against you, declares the LORD of Armies.<br/>I will burn up your chariots in a cloud of smoke,<br/>and the sword will feed on your young lions.<br/>I will leave you no prey on the earth,<br/>and your messengers’ voices will be heard no more.</p>",
+  "study_questions": [],
+  "word_count": 327
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "nahum",
+   "en"
+  ],
+  "order": 4,
+  "title": "Nahum 3",
+  "body_html": "<h3>Woe to the city of bloodshed</h3><p>Woe to the city of bloodshed,<br/>full of lies, full of plunder,<br/>never without prey!<br/>The crack of the whip,<br/>the rumble of wheels,<br/>horses galloping,<br/>chariots bouncing!<br/>Horsemen charging, swords flashing, spears gleaming!<br/>Crowds of the slain, heaps of corpses,<br/>bodies without end;<br/>they stumble over the dead.<br/>All because of the countless acts of the prostitute,<br/>the charming beauty, the mistress of sorcery,<br/>who sells nations by her prostitution<br/>and peoples by her spells.<br/>I am against you, declares the LORD of Armies.<br/>I will pull your skirts up over your face;<br/>I will let the nations look on your nakedness<br/>and the kingdoms on your shame.<br/>I will pelt you with filth and treat you with scorn;<br/>I will make you a public spectacle.<br/>Everyone who sees you will shrink back from you<br/>and say, “Nineveh is in ruins!<br/>Who will grieve for her?”<br/>Where can I find anyone to comfort you?<br/>Are you better than No-amon,<br/>who sat by the streams of the Nile,<br/>surrounded by water,<br/>whose rampart was the sea<br/>and whose wall was the water?<br/>Cush and Egypt were her strength, without limit;<br/>Put and the Libyans were among her allies.<br/>Yet she was carried into exile and went into captivity.<br/>Her little ones were dashed to pieces at every street corner.<br/>They cast lots for her nobles,<br/>and all her great men were bound in chains.<br/>You too will become drunk;<br/>you will go into hiding;<br/>you too will look for refuge from the enemy.<br/>All your fortresses are like fig trees with the first ripe figs:<br/>shake them, and they fall into the mouth of the one who eats.<br/>Look at your troops: they are like women among you.<br/>The gates of your land stand wide open to your enemies;<br/>fire has consumed their bars.<br/>Draw water for the siege!<br/>Strengthen your forts!<br/>Go down into the clay, tread the mortar, grip the brick mold!<br/>There the fire will consume you,<br/>and the sword will cut you down;<br/>it will eat you up as the hopping locust does.<br/>Multiply like the hopping locust;<br/>multiply like the swarming locust!<br/>You have increased your merchants<br/>until they outnumber the stars of the sky;<br/>the hopping locust strips the land and flies away.<br/>Your guards are like swarming locusts,<br/>your officials like clouds of locusts<br/>that settle on the stone walls on a cold day;<br/>when the sun comes up they fly off,<br/>and no one knows where they have gone.<br/>Your shepherds are asleep, king of Assyria;<br/>your nobles lie still.<br/>Your people are scattered across the mountains, and no one gathers them.<br/>There is no relief for your injury;<br/>your wound is fatal.<br/>All who hear the news about you clap their hands over you,<br/>for who has not felt your endless cruelty?</p>",
+  "study_questions": [],
+  "word_count": 477
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "nahum",
+   "en"
+  ],
+  "order": 5,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>Your shepherds are asleep, king of Assyria; your nobles lie still. Your people are scattered across the mountains, and no one gathers them. There is no relief for your injury; your wound is fatal. All who hear the news about you clap their hands over you, for who has not felt your endless cruelty?</p><p>— Nahum 3:18–19</p></blockquote> <p>Nahum ends at a graveside. The king of Assyria’s shepherds are asleep, his people are scattered across the mountains, and the nations he ground down stand around clapping their hands. The great city that seemed as if it would last for ever is gone, and two centuries later a Greek army marching past its mounds did not even know its name.</p> <h3>The question the book leaves with you</h3> <p>Nahum’s last question is put to the king of Assyria: who has not felt your cruelty? But its first question is put to everyone: “Who can stand before his indignation?” The book does not let us stand on Judah’s side of the walls and enjoy the spectacle. It asks where we take refuge. Nineveh trusted its rivers, its walls, its merchants “until they outnumber the stars of the sky”, and they scattered like locusts when the sun came up. The LORD, Nahum says, “is good, a stronghold in the day of trouble”.</p> <p>The book also leaves a quieter question for anyone who has suffered at the hands of the powerful: will God do anything? Nahum’s answer is yes. He is slow to grow angry, and he waits, as he waited for Nineveh in Jonah’s day. But he sees, and he will not acquit the guilty for ever.</p> <h3>Where it points</h3> <p>The good news on the mountains in 1:15 did not stop with Assyria. Isaiah heard it again for the exiles in Babylon, and Paul heard it in the sending of the apostles: “How lovely are the feet of those who bring the good news of good things!” (Romans 10:15). The New Testament announces a greater freedom than Judah’s, from a greater tyranny than Nineveh’s, and the end of every city built with blood. In Revelation, the last Babylon falls, and the merchants who grew rich from her weep.</p> <h3>Where to go from here</h3> <p>A few places in this library to take Nahum further:</p> <ul> <li><strong>On the jealousy and patience of God (1:2–3).</strong> Charles H. Spurgeon’s <em>Morning by Morning</em>, the reading for September 12, on “God is jealous” (Nahum 1:2), and his <em>Evening by Evening</em>, the reading for February 22, on “The Lord is slow to anger, and great in power” (Nahum 1:3).</li> <li><strong>On Nahum and Christ.</strong> Augustine’s <em>The City of God</em>, Book XVIII, chapter 31, on what Obadiah, Nahum and Habakkuk foretold of the salvation of the world in Christ.</li> <li><strong>On the wrath of God (1:6).</strong> Jonathan Edwards’s sermon <em>Sinners in the Hands of an Angry God</em> (Deuteronomy 32:35), and Martyn Lloyd-Jones’s <em>The Wrath of God</em> (Romans 1:18).</li> <li><strong>On God as a stronghold (1:7).</strong> A. W. Tozer’s <em>God Is Our Refuge and Strength</em> (Psalm 46:1), and Alexander Maclaren’s <em>The City and River of God</em> (Psalm 46:4–7).</li> <li><strong>On the feet of those who bring good news (1:15).</strong> A. B. Simpson’s sermon <em>The Logic of Missions</em> (Romans 10:14–15).</li> </ul> <p>And read Revelation in this same edition, especially chapters 17 and 18, where the fall of Babylon the great is told in words that echo Nahum’s.</p> <p>Every reference to Nahum in this library can be tapped to read the verse. But the best next step may be to read the book again, and to hear its good news as the first readers did:</p> <blockquote><p>Look! On the mountains, the feet of one who brings good news! He calls out peace. Celebrate your festivals, Judah, and fulfill your vows, for the worthless one will never again march through you; he is cut off completely.</p><p>— Nahum 1:15</p></blockquote>",
+  "study_questions": [],
+  "word_count": 638
+ }
+}
+]
+

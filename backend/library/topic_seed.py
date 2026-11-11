@@ -55,6 +55,7 @@ TOPICS = [
             "faithful-unto-death",
             "seven-times-a-day",
             "psalms",
+            "habakkuk",
         ],
     ),
     (
@@ -74,6 +75,8 @@ TOPICS = [
             "power-from-on-high-old-testament",
             "spurgeon-on-the-holy-spirit",
             "acts-of-the-apostles",
+            "joel",
+            "ezekiel",
         ],
     ),
     (
@@ -127,6 +130,9 @@ TOPICS = [
             "philippians",
             "2-corinthians",
             "1-peter",
+            "job",
+            "lamentations",
+            "isaiah",
         ],
     ),
     (
@@ -151,6 +157,9 @@ TOPICS = [
             "key-teachings-of-dwight-l-moody",
             "key-teachings-of-charles-finney",
             "acts-of-the-apostles",
+            "2-chronicles",
+            "ezra",
+            "jonah",
         ],
     ),
     (
@@ -172,6 +181,8 @@ TOPICS = [
             "christ-the-healer",
             "key-teachings-of-frederick-brotherton-meyer",
             "faithful-with-little",
+            "numbers",
+            "joshua",
         ],
     ),
     (
@@ -195,6 +206,8 @@ TOPICS = [
             "romans",
             "gospel-of-mark",
             "gospel-of-luke",
+            "hosea",
+            "jeremiah",
         ],
     ),
     (
@@ -259,6 +272,7 @@ TOPICS = [
             "key-teachings-of-john-wesley",
             "james",
             "hebrews",
+            "leviticus",
         ],
     ),
     (
@@ -318,6 +332,8 @@ TOPICS = [
             "selected-sermons-edwards",
             "key-teachings-of-john-bunyan",
             "key-teachings-of-john-owen",
+            "zechariah",
+            "malachi",
         ],
     ),
     (
@@ -375,6 +391,8 @@ TOPICS = [
             "revelations-of-divine-love",
             "the-dialogue-of-catherine-of-siena",
             "key-teachings-of-elisabeth-elliot",
+            "ruth",
+            "esther",
         ],
     ),
     (
@@ -437,6 +455,7 @@ TOPICS = [
             "days-of-heaven-upon-earth",
             "cheque-book",
             "diary-of-an-old-soul",
+            "proverbs",
         ],
     ),
     (
@@ -493,6 +512,8 @@ TOPICS = [
             "the-practice-of-the-presence-of-god",
             "at-the-masters-feet",
             "reality-and-religion",
+            "ecclesiastes",
+            "song-of-songs",
         ],
     ),
     (
@@ -603,6 +624,8 @@ TOPICS = [
             "what-the-bible-teaches",
             "genesis",
             "gospel-of-matthew",
+            "exodus",
+            "deuteronomy",
         ],
     ),
     (
@@ -692,6 +715,8 @@ TOPICS = [
             "cheque-book",
             "days-of-heaven-upon-earth",
             "ever-increasing-faith",
+            "judges",
+            "daniel",
         ],
     ),
     (
@@ -705,6 +730,9 @@ TOPICS = [
             "men-who-tended-the-flock-2",
             "rise-up-men-of-god-2",
             "men-and-women-who-gave-everything-2",
+            "1-samuel",
+            "2-samuel",
+            "nehemiah",
         ],
     ),
     (
