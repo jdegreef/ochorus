@@ -24592,7 +24592,8 @@ BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements"
 # reading: "all the Rock" is Acts 20:28's flock; the others are dropped/swapped letters.
 # Left as found (not unambiguous): "mused to greater faithfulness" (roused? moved?), "To my
 # bretheren and dearly-beloved brethren" (reverend?), "Take heed, therefore, to ourselves
-# first, that you be", and a dozen missing "?" / unbalanced quotes.
+# first, that you be", "uncourteous courteous and morose", and a dozen missing "?" /
+# unbalanced quotes.
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Grace and Peace in Jesus Christ be increase </p>", "Grace and Peace in Jesus Christ be increased </p>"),
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
@@ -24605,4 +24606,6 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ("further means to he used", "further means to be used"),
     ("taken heed to all the Rock:", "taken heed to all the flock:"),
     ("a work of greater necessity to do or them", "a work of greater necessity to do for them"),
+    ("For if you we’re a Christian indeed", "For if you were a Christian indeed"),
+    ("Before the parliament began, bow frequent", "Before the parliament began, how frequent"),
 ])
