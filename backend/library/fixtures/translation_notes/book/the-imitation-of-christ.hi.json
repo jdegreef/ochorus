@@ -3,6 +3,7 @@
  "slug": "the-imitation-of-christ",
  "language": "hi",
  "job_issue": 7546,
+ "pull_request": 7683,
  "note": [
   "Thomas quotes Scripture constantly and almost never cites it (the English prints one reference, John 8:12), usually following the Latin Vulgate. 22 range-translators identified each quotation themselves and looked it up in the IRV Hindi (ebible mirror hin_irv, parsed locally; Take Root unreachable). Where the IRV says what the English quotes, its wording was spliced in by script.",
   "A row is 'mined' only when the translator reported it verbatim AND the chapter body contains an exact byte substring of the IRV verse of 30+ characters (or the whole verse). Short IRV phrase splices (allusions under 30 characters), verses re-aimed to another person, Vulgate-sense renderings (e.g. Luke 17:21 'within you', Job 7:1 'life is a warfare') and deuterocanonical quotations (Sirach, Wisdom, Maccabees) are 'self_rendered'.",
