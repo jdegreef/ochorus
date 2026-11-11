@@ -26,6 +26,7 @@ export const FOR_SECTIONS = [
 	'offline',
 	'languages',
 	'invite',
+	'embed',
 	'questions'
 ] as const;
 export type ForSection = (typeof FOR_SECTIONS)[number];
@@ -53,8 +54,26 @@ export const FOR_LEAD: Record<string, ForSection[]> = {
 	campus: ['why', 'shelves', 'plans', 'series', 'writers']
 };
 
+/** The groups that run a church's or a ministry's website, whose pages offer
+ *  the "Today from Ochorus" widget ($lib/embed). A parent, a homeschool family
+ *  or a new believer has no site to put it on. */
+export const EMBED_GROUPS: readonly string[] = [
+	'churches',
+	'pastors',
+	'african-churches',
+	'prayer-groups',
+	'womens-ministry',
+	'mens-ministry',
+	'youth',
+	'campus',
+	'missionaries',
+	'evangelism',
+	'chaplains',
+	'prison-ministry'
+];
+
 /** Does this page have anything to draw for the section? The copy-only
- *  sections (why, ideas, invite, questions) always do. */
+ *  sections (why, ideas, invite, embed, questions) always do. */
 export const hasSection = (s: ForSection, shelf: ForShelfData): boolean => {
 	switch (s) {
 		case 'quote':
@@ -78,7 +97,9 @@ export const hasSection = (s: ForSection, shelf: ForShelfData): boolean => {
  *  in the default order, each only when it has something to draw. */
 export function forSectionOrder(slug: string, shelf: ForShelfData): ForSection[] {
 	const lead = FOR_LEAD[slug] ?? [];
-	return [...lead, ...FOR_SECTIONS.filter((s) => !lead.includes(s))].filter((s) => hasSection(s, shelf));
+	return [...lead, ...FOR_SECTIONS.filter((s) => !lead.includes(s))].filter(
+		(s) => hasSection(s, shelf) && (s !== 'embed' || EMBED_GROUPS.includes(slug))
+	);
 }
 
 /** The sections the jump bar lists: every one but the quotation, which has no

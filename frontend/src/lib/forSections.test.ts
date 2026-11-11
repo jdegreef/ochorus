@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { FOR_CHROME } from './forChrome';
 import { FOR_LINKS, FOR_LOCALES } from './forLinks';
 import { EMPTY_SHELF_DATA, type ForShelfData } from './forPages';
-import { FOR_LEAD, FOR_SECTIONS, forSectionOrder, hasSection, navSections } from './forSections';
+import { EMBED_GROUPS, FOR_LEAD, FOR_SECTIONS, forSectionOrder, hasSection, navSections } from './forSections';
 import { seriesDates, seriesICS } from './forSeries';
 
 /** A snapshot with something in every section. */
@@ -43,9 +43,15 @@ describe('the order a page tells its story in', () => {
 
 	it('drops a section with nothing to draw, but always keeps the copy', () => {
 		const order = forSectionOrder('missionaries', EMPTY_SHELF_DATA);
-		expect(order).toEqual(['why', 'ideas', 'invite', 'questions']);
+		expect(order).toEqual(['why', 'ideas', 'invite', 'embed', 'questions']);
 		expect(hasSection('quote', EMPTY_SHELF_DATA)).toBe(false);
 		expect(hasSection('writers', FULL)).toBe(true);
+	});
+
+	it('offers the website widget only to groups with a website to put it on', () => {
+		for (const g of EMBED_GROUPS) expect(FOR_LINKS.map((l) => l.slug)).toContain(g);
+		expect(forSectionOrder('churches', FULL)).toContain('embed');
+		expect(forSectionOrder('parents', FULL)).not.toContain('embed');
 	});
 
 	it('lists every section but the quotation on the jump bar, each named in every page language', () => {
