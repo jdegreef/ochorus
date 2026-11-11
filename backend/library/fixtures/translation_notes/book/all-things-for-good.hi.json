@@ -3,7 +3,7 @@
  "slug": "all-things-for-good",
  "language": "hi",
  "job_issue": 7548,
- "pull_request": null,
+ "pull_request": 7672,
  "note": [
   "Scripture source: the Indian Revised Version (IRV Hindi, CC BY-SA 4.0), parsed from the ebible mirror's USX (gracious-tech/fetch_collection, bibles/hin_irv), all 66 books (31,104 verses), with section headings, notes, speaker labels and the IRV's trailing cross-reference parentheses stripped. Translators looked up every quotation, cited or not, in that verse file.",
   "Translated from the English fixture, which already carries the settled text (corrections.settled_chapter_body changes nothing for this slug).",
