@@ -171,3 +171,43 @@ class FusedTitleTests(SimpleTestCase):
             self.build("Praise the LORD! \\q Praise God in his holy place."),
             "<p>Praise the LORD!<br>Praise God in his holy place.</p>",
         )
+
+
+class NewTestamentTests(SimpleTestCase):
+    def test_revelation_12_18_opens_english_chapter_13(self):
+        """OWB's hand-kept New Testament table: SBLGNT 12:18 is English 13:1."""
+        fake = FakeCheckout(
+            {"REV": {"12": [
+                record("REV.12.17.s1", ["REV.12.17"], "The dragon was furious."),
+                record("REV.12.18.s1", ["REV.12.18"], "It stood on the sand of the sea."),
+            ]}},
+            {},
+        )
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "books.json").write_text(
+            json.dumps({"books": {"REV": {"en": "Revelation"}}})
+        )
+        chapters = Source(fake.root, "REV").chapters()
+        self.assertEqual(
+            {c: [r["id"] for r in rs] for c, rs in chapters.items()},
+            {12: ["REV.12.17.s1"], 13: ["REV.12.18.s1"]},
+        )
+
+    def test_marks_later_endings_are_set_apart_from_inside_16_8(self):
+        fake = FakeCheckout(
+            {"MRK": {"16": [
+                record("MRK.16.8.s1", ["MRK.16.8"], "They were afraid."),
+                record("MRK.16.8.s2", ["MRK.16.8"], "[They gave Peter a short report.]"),
+                record("MRK.16.9.s1", ["MRK.16.9"], "[He appeared first to Mary.]"),
+            ]}},
+            {},
+        )
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "books.json").write_text(
+            json.dumps({"books": {"MRK": {"en": "Mark"}}})
+        )
+        source = Source(fake.root, "MRK")
+        html = source.chapter_html(16, source.chapters()[16])
+        self.assertTrue(html.startswith("<p>They were afraid.</p><p><em>The earliest manuscripts of Mark end at 16:8."))
+        self.assertTrue(html.endswith("</blockquote>"))
+        self.assertIn("<blockquote><p>[They gave Peter a short report.]", html)

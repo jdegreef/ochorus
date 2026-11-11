@@ -183,12 +183,36 @@ export function framedBar(coverUrl: string | null | undefined): number {
 // 0.78): blurred under its scrim they read as mud, so the hero paints the
 // reader's tint instead.
 export const PALE_GROUNDS: ReadonlySet<string> = new Set([
+	'1-corinthians',
+	'1-john',
+	'1-peter',
+	'1-thessalonians',
+	'1-timothy',
+	'2-corinthians',
+	'2-john',
+	'2-peter',
+	'2-thessalonians',
+	'2-timothy',
+	'3-john',
+	'acts-of-the-apostles',
+	'colossians',
 	'daughters-of-the-king-1',
 	'daughters-of-the-king-2',
 	'daughters-of-the-king-3',
+	'ephesians',
+	'galatians',
 	'genesis',
 	'gospel-of-john',
+	'gospel-of-luke',
+	'gospel-of-mark',
+	'gospel-of-matthew',
+	'hebrews',
+	'james',
+	'jude',
+	'philemon',
+	'philippians',
 	'psalms',
+	'revelation',
 	'romans',
 	'soar-like-the-eagle-3',
 	'sons-of-the-king-1',
@@ -196,7 +220,8 @@ export const PALE_GROUNDS: ReadonlySet<string> = new Set([
 	'sons-of-the-king-3',
 	'the-god-of-all-comfort',
 	'the-key-in-my-hand',
-	'the-person-and-work-of-the-holy-spirit'
+	'the-person-and-work-of-the-holy-spirit',
+	'titus'
 ]);
 
 /** The book slug a `/covers/art/` painting was cut for (any width), or null
