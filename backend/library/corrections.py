@@ -24587,6 +24587,12 @@ BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements"
     ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
     ("going to execution . sin is the halter", "going to execution: sin is the halter"),
 ])
+# Wrong book in a headline reference (found translating cheque-book → ko, #7015):
+# the April 19 promise "I, even I, will both search my sheep, and seek them out"
+# is Ezekiel 34:11, not Exodus (Exodus 34:11 is the covenant warning).
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
+])
 
 # OCR slips found while translating The Reformed Pastor to Luganda (job #7072). Each has one
 # reading: "all the Rock" is Acts 20:28's flock; the others are dropped/swapped letters.

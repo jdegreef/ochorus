@@ -21639,6 +21639,20 @@
 				552
 			]
 		},
+		"ko/cheque-book": {
+			"ground": "bb3c7c304511d9092162357b6bb24271e29768f07334371296f0fbd64dee2360",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "241ec41d0666e13632688c6c85545f3d650eecc6db4b59ec60ae424399240465",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false
+		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
 			"style": "originals",
@@ -39523,6 +39537,20 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"vi/spurgeon-on-prayer": {
+			"ground": "3eb99d258e45fbf68394ab2177bb33aca5ae9354614cd96da946a670a21bdde3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
 		},
 		"vi/stepping-stones-2": {
 			"ground": "817068f90b04c30057bb4af48dfaca6c54ad3f54306c9aa40b6eb27c38309246",
