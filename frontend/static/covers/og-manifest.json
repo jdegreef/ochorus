@@ -30890,6 +30890,41 @@
 				558
 			]
 		},
+		"sw/a-serious-call": {
+			"ground": "453fafe05aeda41be5f8c048a2d9ba06087dd3c05142eb1bce835b463a6afe7c",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[55, 243, 545, 306],
+					[65, 306, 535, 369],
+					[140, 368, 460, 431]
+				],
+				"subtitle": [
+					[131, 494, 469, 522],
+					[112, 522, 488, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				550
+			]
+		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
 			"style": "devotional",
