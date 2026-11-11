@@ -3,7 +3,7 @@
  "slug": "cheque-book",
  "language": "ko",
  "job_issue": 7015,
- "pull_request": null,
+ "pull_request": 7686,
  "note": [
   "Scripture is 개역 (kor_old, ebible mirror; Take Root was egress-blocked). Each headline promise is pasted verbatim; a reference is `mined` only if every quoted stretch is a substring of the cleaned mirror, checked by script. Mirror misnumbering found and worked around (the right text quoted, the English reference kept): Prov 10:22/24/27, Prov 11:25, 1 Sam 17:37/47, Ezek 16:60, Ps 92:12. Not in the mirror (self_rendered): Ps 16:10, Ps 118:17, 1 Pet 5:6.",
   "Where the 개역 departs from the KJV wording Spurgeon builds on, the verse is kept and his meditation carries the point — e.g. 2 Sam 23:5 (rhetorical questions), Isa 50:7 (도우시므로), Mal 3:17 (특별한 소유), Deut 33:25 (빗장), Deut 33:28, Isa 27:3, Job 33:27-28, Ps 27:14, Hos 6:3, Rom 5:3 (clause runs into v.4). Native reviewer should judge each.",
