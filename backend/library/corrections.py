@@ -11764,6 +11764,26 @@ BODY_CORRECTIONS.setdefault("plain-account-christian-perfection", {}).setdefault
     ("(ማቴዎስ 12:37።)", "(ማቴዎስ 22:37።)"),
 ])
 
+# Found while translating to Swahili (#6895, 2026-11-11): OCR slips in the
+# English only (none reached the es/fr/lg/am/sw editions). Period punctuation
+# (Wesley's semicolons, emphatic capitals) is left as printed.
+BODY_CORRECTIONS.setdefault("plain-account-christian-perfection", {}).setdefault("replacements", []).extend([
+    # [en] stray capital
+    ("how can we be Said to be", "how can we be said to be"),
+    # [en] stray capital
+    ("desires of those Who are justified", "desires of those who are justified"),
+    # [en] stray capital
+    ("crying in their Inmost soul", "crying in their inmost soul"),
+    # [en] line-break hyphen left in
+    ("If, there-fore, such a one", "If, therefore, such a one"),
+    # [en] stray comma
+    ("I have no sin to be cleansed, from.", "I have no sin to be cleansed from."),
+    # [en] dropped comma in a three-item list
+    ("the health strength, and vigour", "the health, strength, and vigour"),
+    # [en] article typo
+    ("who seek a entire circumcision", "who seek an entire circumcision"),
+])
+
 # Found while translating to French (2026-10-14): Selected Sermons of George
 # Whitefield — OCR slips and wrong citations (en + es)
 BODY_CORRECTIONS.setdefault("selected-sermons-whitefield", {}).setdefault("replacements", []).extend([

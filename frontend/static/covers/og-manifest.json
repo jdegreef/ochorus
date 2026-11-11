@@ -32683,6 +32683,20 @@
 			"bar": 0.025,
 			"caps": false
 		},
+		"sw/plain-account-christian-perfection": {
+			"ground": "dc4a2b86c75d073072ba24f2204d7481d22ab0c6be6c425b353718780c4e5fab",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/mauve",
+			"bar": 0.04,
+			"caps": false
+		},
 		"sw/power-through-prayer": {
 			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",
 			"style": "devotional",
