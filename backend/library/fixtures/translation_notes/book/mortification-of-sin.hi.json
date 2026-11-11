@@ -3,6 +3,7 @@
  "slug": "mortification-of-sin",
  "language": "hi",
  "job_issue": 7553,
+ "pull_request": 7674,
  "note": [
   "Scripture is the Indian Revised Version (IRV, irvhin), the Hindi Bible the corpus quotes. Take Root was egress-blocked, so the IRV was parsed from the ebible mirror (bibles/hin_irv/usx, 31,104 verses, section-heading and acrostic paras stripped, verse markers kept) and pasted where its sense matches the KJV wording Owen quotes, with its baked-in cross-reference parentheticals dropped.",
   "Derived by measurement: a row is mined only when an exact substring of at least 45 characters of the IRV verse (or the whole verse, if shorter) stands in that block of the Hindi chapter. Every other verse Owen cites by reference is self_rendered: his many partial, blended, person-shifted (thou/thy) or KJV-only quotations (e.g. Ps 84:5, Isa 1:12, Isa 26:12, Hos 5:15, Deut 29:19, James 4:5, the Gal 5:19-21 vice list with the KJV's adultery and murders) were rendered in the IRV's register. Uncited echoes are not recorded.",
