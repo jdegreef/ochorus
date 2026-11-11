@@ -11,6 +11,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from django.core.management.base import CommandError
 from django.test import SimpleTestCase
 
 from library.management.commands.build_owb_book import Source
@@ -33,9 +34,9 @@ class FakeCheckout:
         root = self.root = Path(self.dir.name)
         (root / "data" / "hbo").mkdir(parents=True)
         (root / "data" / "headings").mkdir()
+        names = {"GEN": "Genesis", "PSA": "Psalms"} | {code: code.title() for code in books}
         (root / "data" / "books.json").write_text(
-            json.dumps({"books": {code: {"en": name} for code, name in
-                                  (("GEN", "Genesis"), ("PSA", "Psalms"))}})
+            json.dumps({"books": {code: {"en": name} for code, name in names.items()}})
         )
         (root / "data" / "versification.json").write_text(json.dumps({"english": english}))
         for code, chapters in books.items():
@@ -257,3 +258,62 @@ class HeadingIntoNextChapterTests(SimpleTestCase):
                 "<h3>The beast from the sea</h3><p>It stood on the sand."
             )
         )
+
+
+class VerseInProseTests(SimpleTestCase):
+    """Outside the VERSE books, only what OWB breaks into lines is verse."""
+
+    def build(self, code: str, records: list[dict]) -> str:
+        fake = FakeCheckout({code: {"3": records}}, {})
+        self.addCleanup(fake.close)
+        source = Source(fake.root, code)
+        return source.chapter_html(3, source.chapters()[3])
+
+    def test_narrative_runs_on_and_the_song_after_it_is_set_in_lines(self):
+        self.assertEqual(
+            self.build("JOB", [
+                record("JOB.3.1.s1", ["JOB.3.1"], "After this Job spoke."),
+                record("JOB.3.2.s1", ["JOB.3.2"], "He said:"),
+                record("JOB.3.3.s1", ["JOB.3.3"], "Let the day perish, \\q and the night."),
+                record("JOB.3.4.s1", ["JOB.3.4"], "Let it be darkness."),
+            ]),
+            # The two prose verses run on; the line of verse starts a line,
+            # and so does the verse after it.
+            "<p>After this Job spoke. He said:<br>Let the day perish,<br>and the night.<br>Let it be darkness.</p>",
+        )
+
+    def test_prose_with_no_line_breaks_runs_on(self):
+        self.assertEqual(
+            self.build("JHN", [
+                record("JHN.3.1.s1", ["JHN.3.1"], "There was a man."),
+                record("JHN.3.2.s1", ["JHN.3.2"], "He came at night."),
+            ]),
+            "<p>There was a man. He came at night.</p>",
+        )
+
+    def test_a_verse_book_sets_every_verse_on_its_own_line(self):
+        self.assertEqual(
+            self.build("PRO", [
+                record("PRO.3.1.s1", ["PRO.3.1"], "Do not forget my teaching."),
+                record("PRO.3.2.s1", ["PRO.3.2"], "It will add years."),
+            ]),
+            "<p>Do not forget my teaching.<br>It will add years.</p>",
+        )
+
+
+class EmbedTests(SimpleTestCase):
+    def test_a_placeholder_quotes_a_sentence_of_another_book(self):
+        """From a chapter OWB splits into passage files (MAT.12.38-50.json)."""
+        fake = FakeCheckout({"GEN": {"1": [record("GEN.1.1.s1", ["GEN.1.1"], "In the beginning.")]}}, {})
+        self.addCleanup(fake.close)
+        (fake.root / "content" / "MAT").mkdir()
+        (fake.root / "content" / "MAT" / "MAT.12.38-50.json").write_text(json.dumps({"records": [
+            record("MAT.12.42.s1", ["MAT.12.42"], "Someone greater than Solomon is here."),
+        ]}))
+        source = Source(fake.root, "GEN")
+        self.assertEqual(
+            source.embed("<p>{{OWB:MAT.12.42.s1}}</p>"),
+            "<p>Someone greater than Solomon is here.</p>",
+        )
+        with self.assertRaises(CommandError):
+            source.embed("{{OWB:MAT.12.43.s1}}")
