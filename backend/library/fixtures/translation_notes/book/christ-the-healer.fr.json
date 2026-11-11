@@ -3,7 +3,7 @@
  "slug": "christ-the-healer",
  "language": "fr",
  "job_issue": 7088,
- "pull_request": null,
+ "pull_request": 7693,
  "note": [
   "Scripture is Louis Segond 1910 (fra_lsg), fetched whole from the ebible mirror (raw.githubusercontent.com, gracious-tech/fetch_collection, bibles/fra_lsg/usfm; Take Root is egress-blocked). Translators quoted it through a lookup over all 66 books, and a row is mined only when every quoted run (split at …) is a verbatim substring of that verse in the mirror, compared case- and punctuation-insensitively; Psalms and Jonah were checked at Segond's +1 verse numbering where it differs from the KJV the English cites. 4 claimed-mined rows failed that check and ship self_rendered.",
   "412 of 585 rows mined; self_rendered rows are Young's, Leeser's, Rotherham's, Weymouth's and Moffatt's renderings that Bosworth quotes (translated from his English, attributions kept), his paraphrases and insertions, person shifts, bare citations, and verses where Segond does not carry his argument from the KJV wording.",
