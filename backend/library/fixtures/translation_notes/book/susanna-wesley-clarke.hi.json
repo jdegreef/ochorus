@@ -3,7 +3,7 @@
  "slug": "susanna-wesley-clarke",
  "language": "hi",
  "job_issue": 7020,
- "pull_request": null,
+ "pull_request": 7697,
  "note": [
   "Scripture source: the Indian Revised Version (IRV Hindi, CC BY-SA 4.0, Bridge Connectivity Solutions), parsed from the ebible mirror's USX (gracious-tech/fetch_collection, bibles/hin_irv), all 66 books / 31,104 verses, with notes, section and acrostic headings, cross-reference spans and the IRV's trailing cross-reference parentheses stripped. Translators looked up every quotation in that verse file.",
   "The English cites no chapter:verse references at all; every row here is a quotation or close allusion the translators identified themselves, with the paragraph it sits in.",
