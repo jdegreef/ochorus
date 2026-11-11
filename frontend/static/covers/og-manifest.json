@@ -10712,6 +10712,20 @@
 			"bar": 0,
 			"caps": true
 		},
+		"es/sons-of-the-king-1": {
+			"ground": "958b0cb464bfcad1db9f89cee59bfa2e3698b613efd34cc5543f6fc04937e0c1",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
+		},
 		"es/sons-of-the-king-3": {
 			"ground": "00f2008db5a84e37141b99252d0f67b3d2ff9d42fb6bf38c0f8f051ac6df0dd9",
 			"style": "young",
