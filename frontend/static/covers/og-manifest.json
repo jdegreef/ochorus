@@ -18955,6 +18955,38 @@
 				506
 			]
 		},
+		"hi/talks-to-the-farmer-children": {
+			"ground": "851102ae8f6d85756e6a0bad5c2169615043aae3ff5df42516df26f06c9b2b2c",
+			"style": "young",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[153, 321, 447, 390]
+				],
+				"edition": [
+					[238, 412, 362, 437]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"hi/talks-to-the-farmer-teens": {
 			"ground": "ddea56a0b115248a3936571d388afa96a9c3268780b201c2ecf8af173a6dcd83",
 			"style": "revival",
