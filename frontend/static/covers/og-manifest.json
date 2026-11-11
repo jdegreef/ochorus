@@ -37481,6 +37481,39 @@
 				482
 			]
 		},
+		"uk/mortification-of-sin": {
+			"ground": "818017a69f9e53d574535fab8675ecced28dfad2c3b9b90c233ed5e590a28d70",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[102, 306, 498, 379],
+					[95, 366, 505, 439]
+				],
+				"subtitle": [
+					[137, 492, 463, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				514
+			]
+		},
 		"uk/necessity-of-prayer": {
 			"ground": "f23f79fb1a6b831a47ef4ab5aa6feacd710a05d5b68a00a7cfc48cdad109c533",
 			"style": "devotional",
