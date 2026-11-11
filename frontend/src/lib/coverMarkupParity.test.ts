@@ -213,7 +213,7 @@ describe('the two cover renderers agree', () => {
 				cover_url: '/covers/art/genesis.jpg',
 				slug: 'genesis',
 				title: 'Genesis',
-				author: { slug: 'open-word-bible', name: 'Open Word Bible', birth_year: null }
+				author: { ...book().author, slug: 'open-word-bible', name: 'Open Word Bible', birth_year: null }
 			},
 			{
 				art: true,
