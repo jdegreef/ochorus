@@ -1633,5 +1633,7 @@
   "daily_missing_day": "Este libro no tiene lectura para esta fecha; aquí está la del día anterior.",
   "daily_choose_date": "Elegir una fecha",
   "daily_none": "Todavía no hay lecturas diarias en este idioma.",
-  "daily_follow_plan": "O sígalo como un plan de un año"
+  "daily_follow_plan": "O sígalo como un plan de un año",
+  "journey_you_are_here": "Estás aquí",
+  "journey_passed": "%n% de %t% lugares recorridos"
 }
