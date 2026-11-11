@@ -1648,5 +1648,7 @@
   "daily_missing_day": "Kitabu hiki hakina somo la tarehe hii, kwa hiyo hili ni la siku iliyotangulia.",
   "daily_choose_date": "Chagua tarehe",
   "daily_none": "Bado hakuna masomo ya kila siku katika lugha hii.",
-  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima"
+  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima",
+  "journey_you_are_here": "Uko hapa",
+  "journey_passed": "Umepita sehemu %n% kati ya %t%"
 }

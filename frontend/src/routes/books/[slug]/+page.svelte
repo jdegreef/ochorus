@@ -47,6 +47,8 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import JourneyMap from '$lib/components/JourneyMap.svelte';
+	import { journeyMapFor } from '$lib/journeyMaps';
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -550,6 +552,15 @@
 	// The chapter they're in wins over "read" (a reader who went back to
 	// reread is IN that chapter), and only a reader with a place (`resuming`,
 	// the read verb's own test) has one.
+	// An allegory's road, for the books that have one drawn ($lib/journeyMaps):
+	// the reader's place on it is the same saved place the contents mark.
+	const journeyMap = $derived(journeyMapFor(book.slug, book.language));
+	const journeyPlace = $derived({
+		current: resumeHere,
+		furthest: furthestHere,
+		finished: finishedAt != null
+	});
+
 	const isCurrent = (order: number) => resuming && order === resumeHere;
 	const isRead = (order: number) =>
 		!isCurrent(order) && (finishedAt != null || (furthestHere != null && order < furthestHere));
@@ -1104,6 +1115,16 @@
 			</button>
 		{/if}
 	</section>
+
+	<!-- The road (The Pilgrim's Progress, Part One): each place a stop linked
+	     to its chapter, the reader's place on it from this device. Only for a
+	     book with a map drawn ($lib/journeyMaps), and only in its language. -->
+	{#if journeyMap}
+		<section id="journey" class="jump-anchor mt-10" aria-labelledby="journey-heading">
+			<h2 id="journey-heading" class="section-heading no-rule">{journeyMap.title}</h2>
+			<JourneyMap map={journeyMap} place={journeyPlace} chapterHref={readHref} lang={contentLang(book.language)} />
+		</section>
+	{/if}
 
 	<!-- Editions (design review #22): the other forms this work takes, once.
 	     It used to say so three times — a languages chip in the hero, "Grow with
