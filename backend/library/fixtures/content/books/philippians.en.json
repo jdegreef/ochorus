@@ -28,6 +28,14 @@
     "answer": "Paul says that Christ, being in the form of God, did not treat equality with God as something to exploit for himself, but emptied himself by taking on the form of a servant and becoming human, and humbled himself to death on a cross; so God exalted him and gave him the name above every name. The church has always held that the Son did not stop being God. He emptied himself by taking on what he was not, not by giving up what he was. Paul tells the story so that believers will think the same way toward one another (2:5)."
    },
    {
+    "question": "What does Philippians 4:13 mean by “I can do all things through Christ”?",
+    "answer": "In this translation the verse reads “I have strength for every situation in the one who makes me strong.” It comes straight after Paul’s words about plenty and hunger: he has learned to be content in every situation, with plenty or with little, and the strength he means is strength to endure both. It is a promise of contentment and endurance whatever comes, more than of success in whatever we attempt. The oldest manuscripts say “the one who makes me strong”; the name “Christ” was added later, though it is plainly Christ whom Paul means."
+   },
+   {
+    "question": "Why is Philippians called the letter of joy?",
+    "answer": "The words “joy” and “rejoice” run through it more than a dozen times, though Paul is in chains, not knowing whether he will live or die, while some preachers try to make his imprisonment more painful. His joy does not rest on his circumstances: if Christ is proclaimed, he rejoices (1:18). He tells the Philippians, “Rejoice in the Lord always. I will say it again: rejoice!” (4:4), and sets beside it prayer in place of anxiety and the peace of God that guards the heart (4:6–7). It is also a letter between friends, warm with thanks for a partnership that began on the very first day."
+   },
+   {
     "question": "Which translation of the Bible is this?",
     "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
    }
@@ -39,12 +47,14 @@
   "cover_url": "/covers/art/philippians.jpg",
   "pdf_url": "",
   "cover_color": "#5a3a1c",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 50,
   "sort_order": 297,
   "is_published": true,
   "created_at": "2026-11-11T20:30:04.705Z",
-  "updated_at": "2026-11-11T20:30:05.259Z"
+  "updated_at": "2026-11-11T21:10:43.862Z"
  }
 },
 {

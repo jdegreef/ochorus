@@ -47,12 +47,14 @@
   "cover_url": "/covers/art/galatians.jpg",
   "pdf_url": "",
   "cover_color": "#1f4a4a",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 48,
   "sort_order": 295,
   "is_published": true,
   "created_at": "2026-11-11T20:29:58.444Z",
-  "updated_at": "2026-11-11T20:29:59.019Z"
+  "updated_at": "2026-11-11T21:10:36.922Z"
  }
 },
 {

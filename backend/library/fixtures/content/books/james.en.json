@@ -29,7 +29,7 @@
    },
    {
     "question": "Why did Martin Luther call James “an epistle of straw”?",
-    "answer": "In the preface to his German New Testament of 1522, Luther compared James with the letters he valued most, Romans, Galatians, 1 Peter and the Gospel and First Letter of John, and called it “an epistle of straw” beside them, because he found in it little of Christ and of the gospel of free grace, and thought its words on justification clashed with Paul’s. The phrase was dropped from later editions of the preface, and even there Luther praised James as a good book, because it sets up no human teaching and insists firmly on God’s law."
+    "answer": "In the preface to his German New Testament of 1522, Luther compared James with the letters he valued most, Romans, Galatians, 1 Peter and the Gospel and First Letter of John, and called it “an epistle of straw” beside them, because he found in it little of Christ and of the gospel of free grace, and thought its words on justification clashed with Paul’s. The phrase was dropped from later editions of the preface, and in his preface to James itself Luther praised it as a good book, because it sets up no human teaching and insists firmly on God’s law."
    },
    {
     "question": "What does James say about the tongue?",
@@ -47,12 +47,14 @@
   "cover_url": "/covers/art/james.jpg",
   "pdf_url": "",
   "cover_color": "#34502c",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 59,
   "sort_order": 306,
   "is_published": true,
   "created_at": "2026-11-11T20:30:33.538Z",
-  "updated_at": "2026-11-11T20:30:34.146Z"
+  "updated_at": "2026-11-11T21:11:14.034Z"
  }
 },
 {
