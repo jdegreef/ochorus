@@ -490,6 +490,17 @@ SCRIM_MAX = 1.0
 #: The painted works whose type is set from the TOP of the cover rather than
 #: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
 #: in Python. A fixture gate holds the two sets equal.
+#: The Open Word Bible's books (scripts/original_grounds/scripture.py): a pale
+#: leaf with the book's Hebrew or Greek name low on it, the type set above it
+#: from the top in dark ink. One composition, so they are in TYPE_TOP and
+#: INK_DARK both, and share one set of measured ink boxes below.
+OPEN_WORD_BIBLE = frozenset({
+    "genesis",
+    "gospel-of-john",
+    "psalms",
+    "romans",
+})
+
 TYPE_TOP = frozenset({
     "key-teachings-of-a-b-simpson",
     "key-teachings-of-jonathan-edwards",
@@ -541,14 +552,7 @@ TYPE_TOP = frozenset({
     "the-normal-christian-life",
     "the-pursuit-of-god",
     "things-as-they-are",
-    # The Open Word Bible's books (scripts/original_grounds/scripture.py): a
-    # pale leaf with the book's Hebrew or Greek name low on it, the type set
-    # above it from the top in dark ink.
-    "genesis",
-    "gospel-of-john",
-    "psalms",
-    "romans",
-})
+}) | OPEN_WORD_BIBLE
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
 #: cover is measured there rather than across the frame: its picture sits
@@ -748,14 +752,7 @@ INK_DARK = frozenset({
     "he-holds-my-tomorrows",
     "stepping-stones-2",
     "the-key-in-my-hand",
-    # The Open Word Bible's books (scripts/original_grounds/scripture.py): a
-    # pale leaf with the book's Hebrew or Greek name low on it, the type set
-    # above it from the top in dark ink.
-    "genesis",
-    "gospel-of-john",
-    "psalms",
-    "romans",
-})
+}) | OPEN_WORD_BIBLE
 
 #: `--cover-ink-dark` in `cover-type.css`.
 DARK_INK = (0x23, 0x1A, 0x24)
@@ -850,10 +847,7 @@ OPEN_WORD_BIBLE_INK_BOXES = (
     ("subtitle", (60, 350, 540, 450), 0.90, AUTHOR_MIN_CONTRAST),
     ("mark", (150, 684, 450, 726), 0.95, 3.0),
 )
-DARK_INK_BOXES_BY_SLUG |= {
-    slug: OPEN_WORD_BIBLE_INK_BOXES
-    for slug in ("genesis", "gospel-of-john", "psalms", "romans")
-}
+DARK_INK_BOXES_BY_SLUG |= dict.fromkeys(OPEN_WORD_BIBLE, OPEN_WORD_BIBLE_INK_BOXES)
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.

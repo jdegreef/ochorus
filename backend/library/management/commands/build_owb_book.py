@@ -101,6 +101,10 @@ FIRST_NT_INDEX = 39
 #: Books set as verse, line by line (see the module doc).
 POETRY = frozenset({"PSA"})
 
+#: Books whose chapters open with a title English Bibles print unnumbered: the
+#: Psalms (see the module doc).
+TITLED = frozenset({"PSA"})
+
 #: One sentence of a psalm's title, by the few words titles are made of: "For
 #: the music director.", "A psalm of David.", "Of the sons of Korah.", "A song of
 #: ascents." Peeled from the front of a psalm's first verse only, and only where
@@ -108,8 +112,7 @@ POETRY = frozenset({"PSA"})
 #: English Bibles print it as the psalm's first words.
 PSALM_TITLE = re.compile(
     r"(?:For the music director|(?:A |An )?(?:psalm|song|prayer|maskil|miktam|shiggaion)\b[^.!?\n]*"
-    r"|Of (?:the sons of Korah|[A-Z][a-z]+))\.[ \n]*",
-    re.I,
+    r"|Of (?:the sons of Korah|[A-Z][a-z]+))\.[ \n]*"
 )
 
 
@@ -300,8 +303,11 @@ class Source:
         joiner = "<br>" if self.poetry else " "
 
         def close():
+            """End the paragraph in hand, if any."""
+            nonlocal para
             if para:
                 out.append("<p>" + joiner.join(para) + "</p>")
+            para = None
 
         def close_title():
             if title:
@@ -309,12 +315,11 @@ class Source:
                 title.clear()
 
         # A psalm whose title shares its first verse (see PSALM_TITLE).
-        peel = self.code == "PSA" and not any(self.is_title(r) for r in records)
+        peel = self.code in TITLED and not any(self.is_title(r) for r in records)
         for r in records:
             if self.is_title(r):
                 # A psalm's title follows its heading and precedes its first line.
                 close()
-                para = None
                 heading = self.headings.get(r["id"])
                 if heading and not title:
                     out.append(f"<h3>{escape(heading_text(heading), quote=False)}</h3>")
@@ -325,7 +330,6 @@ class Source:
             heading = self.headings.get(r["id"])
             if heading or disputed != in_disputed:
                 close()
-                para = None
             # The passage's heading above its note, so the note and the
             # bracketed text it explains stay together.
             if in_disputed and not disputed:
@@ -343,8 +347,8 @@ class Source:
                 heading_title, texts[0] = split_psalm_title(texts[0])
                 if heading_title:
                     close()
-                    para = None
-                    out.append(f"<p><em>{escape(heading_title, quote=False)}</em></p>")
+                    title.append(escape(heading_title, quote=False))
+                    close_title()
             if para is None or r["id"] in starts:
                 close()
                 para = []
