@@ -39188,6 +39188,35 @@
 			"bar": 0.02,
 			"caps": false
 		},
+		"vi/godliness": {
+			"ground": "cf9de513d0f4ebe43b4581594cb5b96a0c8b50a5f40162e905dc1edbd2e5e5c5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[103, 348, 497, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
+		},
 		"vi/grace-abounding": {
 			"ground": "c4678112e1d05163c2ade2f96ff6d0251b8ac71f363e463f7c0063b75c69107f",
 			"style": "press",
