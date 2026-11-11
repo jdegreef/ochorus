@@ -3,6 +3,21 @@
 	"css": "1a5fdd787a5f7263d4487d089ac549eeff212ddcaeb4d08e3eec335bd907ff96",
 	"markup": "b237bed5f8b6061133c32eed4e5e47b060543c7b13502c72c43727085f257dd6",
 	"twins": {
+		"1-chronicles": {
+			"ground": "d3508d246745b6b76189d783923c591eed6da9ee1ba7059cdda036a8a3d54548",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"1-corinthians": {
 			"ground": "5590e1e653c814b1b73ce100a000be170ce08edf857ffe34e6f5e1922d6ac016",
 			"style": "devotional",
@@ -33,8 +48,38 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"1-kings": {
+			"ground": "82653c9dba59af3ea426436dbad4b849d892ee4a0490e7b4c4734f322d6920f2",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"1-peter": {
 			"ground": "b0551d325c1a67359b9f7131473cf7d85379b530c40bcb6633add1db22ddb8de",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"1-samuel": {
+			"ground": "80bc8b0182c2411133f194bc4c38b5f697ec044b46630f11b9bbe6a6bc12fc1b",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -78,6 +123,21 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"2-chronicles": {
+			"ground": "16d4909ac54e66b82446fe3ed0c17a6eb95aaea943216344c8947c18725b03d9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"2-corinthians": {
 			"ground": "8ecacaa7366a8a8533adf019c83b41dc670ca84b9f800a642b86d22a9ef2f5c4",
 			"style": "devotional",
@@ -108,8 +168,38 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"2-kings": {
+			"ground": "051271138d066004236b31f987a938191a7162a9914491bf30f2f5b252bbca4b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"2-peter": {
 			"ground": "5eeefc73f3ce392fc0705570488d1609cd16785b47859af167a62eaed5f1f453",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"2-samuel": {
+			"ground": "4b789bff0854cd6d8b7371512d3b1aab500120add0aa7ba5e5c62124e5841dc4",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -4694,6 +4784,21 @@
 				551
 			]
 		},
+		"amos": {
+			"ground": "209fd4d1f78e9da0207fe94836a10bf4d6cce48c38fe7dec2bb389f68163b036",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"amy-carmichael-a-life": {
 			"ground": "51890840673408251e53becf361a2f92fdae099db286ed151c2ebb6d0fd065dc",
 			"style": "house",
@@ -7562,6 +7667,21 @@
 				469
 			]
 		},
+		"daniel": {
+			"ground": "716b207b4e2604ccdc786d4583227d705dd321acf5503013c815bfab62f9b713",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"daughters-of-the-king-1": {
 			"ground": "cdeca93949c57d78aa7f907c095b29da214f40735e73802ccb2ef4ac40acceed",
 			"style": "young",
@@ -7724,6 +7844,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"deuteronomy": {
+			"ground": "5e30cc1402bc18e38e169a9ef79fc7d7282dfaff02f6db020101792b88f15692",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"devoted-to-prayer": {
 			"ground": "0b39116d42e254a89c20aa37596db34e30d32c626b5d2ee3edafb5a929a47a55",
 			"style": "originals",
@@ -7877,6 +8012,21 @@
 				278,
 				517
 			]
+		},
+		"ecclesiastes": {
+			"ground": "70168959be1b3c7a9871c7e419c21cf541606a6ec0ada1f1308b9ee847b68be6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"elisabeth-elliot-a-life": {
 			"ground": "0a992144608f19f756cadec30b7f372deb4f2cd7aa2742184a029304cedeeec4",
@@ -12476,6 +12626,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"esther": {
+			"ground": "8ae47c36fdb77a9fccf386a07f1b588038630b983e0c6fe5ad9c70cb4eb917be",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"evangelization-of-the-world": {
 			"ground": "042fa4a14ba6339ca9f8bf036bad7f98253be396f5fc1be848d566e03b1c35f9",
 			"style": "revival",
@@ -12588,6 +12753,21 @@
 				472
 			]
 		},
+		"exodus": {
+			"ground": "1619179cfda5f6eaed03ed9851d80e1be65312fcca25af25155be4cd5f9b02cb",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"expository-thoughts-on-matthew": {
 			"ground": "fd78847169844721ec0e435d9123b5855715816ab8ed779de143268ff4e3c536",
 			"style": "revival",
@@ -12622,6 +12802,36 @@
 				221,
 				573
 			]
+		},
+		"ezekiel": {
+			"ground": "37cf25faddb1d0d919203d05e246092b6358af829b2798406cb77e07521d2362",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"ezra": {
+			"ground": "b89c804bd8790bae5f43e0cda9c0f6c5ee9d6d1195788ae054fc776be5afae7b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"faithful-unto-death": {
 			"ground": "5f96038879381fcf8a6f55f8dbcdc4d112ca520debc21b75d10caec4d783914a",
@@ -18160,6 +18370,36 @@
 				509
 			]
 		},
+		"habakkuk": {
+			"ground": "cd023676dbc973fcd2c8763c4093ecaa895fa207d4924ad4a59729e4c15a05b1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"haggai": {
+			"ground": "16be21ea61b89f7a366ae58ea41866542aa13894a837732b2cc262d207802ea8",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"he-holds-my-tomorrows": {
 			"ground": "a28de5ab04fe7ff645a3555584c15c8e4b124a991223ab6647f9a9dfa78e02c3",
 			"style": "devotional",
@@ -20229,6 +20469,21 @@
 				494
 			]
 		},
+		"hosea": {
+			"ground": "03d95f85b0598f6053e80d85684e7b0b5165c4371e8faf9e3f0d37ff0ca2245f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
@@ -20588,8 +20843,38 @@
 				491
 			]
 		},
+		"isaiah": {
+			"ground": "dabd54d30f38ec42bcad56aa73308725a043b71f05df5d09d4eae4c06ac488cc",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"jeremiah": {
+			"ground": "284afcab691da63c7925f8b2c4da6b88028588130521e351aeee576971ef7bb0",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -20667,6 +20952,36 @@
 				238,
 				556
 			]
+		},
+		"job": {
+			"ground": "495d4cc800f72de26967f50d42fe4cb94390c012b3af02f9c18b92519fcea889",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"joel": {
+			"ground": "7f062cc2da5252fdffa257a59b189cc24b039fa299b5a9d4fc23f9c94ed980de",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"john-hyde-a-life": {
 			"ground": "99d3db2fb6d2acadc76a7a18a0e102e56b75325b51c7e94e8dcc4b48e69ef3b0",
@@ -20798,6 +21113,36 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"jonah": {
+			"ground": "ff6e91b42ccdbec21aabee5e763aa781f01bd12f0ed9c206174b3fe5e2e59add",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"joshua": {
+			"ground": "47b22e7af74c3dd57ec7c82ee5a4220d73105eb0d48fecbd64fdd70280150132",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
 			"style": "revival",
@@ -20835,6 +21180,21 @@
 		},
 		"jude": {
 			"ground": "69b82cce79cc65c66d31278540db164264341944f7f4cf62598c938075196c23",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"judges": {
+			"ground": "9e9d3ae5732cec86f7376201651a72ed5dc0fc31716ea78efa1a276bb32101d6",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -24163,6 +24523,21 @@
 				482
 			]
 		},
+		"lamentations": {
+			"ground": "1925ec61abc7d9939f9caba8309f1aa92d51d65011e67946f6297e81f1f72c3f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"large-catechism": {
 			"ground": "f24c79ebc8f441a93dc064d063eda20d8ba063ad0b135b9e2efe18b3d98cc6c0",
 			"style": "press",
@@ -24376,6 +24751,21 @@
 				281,
 				513
 			]
+		},
+		"leviticus": {
+			"ground": "1cfec845b7d420c73b77df4396733bc49fa8f4c0a4d7b35d9e00d31f83edacdd",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"lg/a-call-to-the-unconverted": {
 			"ground": "ef52114b5ff7fba1242c2dbae3af2f96b5841842da8edc0a75328713c8be4def",
@@ -26719,6 +27109,21 @@
 				505
 			]
 		},
+		"malachi": {
+			"ground": "e3a12d1050afc6ed9a33e04966c7d6a62aa4b652935515fc7083986abdfe26d9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"mary-slessor-a-life": {
 			"ground": "c39a49528400944d85f9ba9fa8dbb997c32bbd7a338b153f09e1f03cb5e1cd23",
 			"style": "house",
@@ -27012,6 +27417,21 @@
 				482
 			]
 		},
+		"micah": {
+			"ground": "842337491be687187caa37309b6c0d26cd5169ac733901f0447b9145682dd5c6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",
@@ -27111,6 +27531,21 @@
 				535
 			]
 		},
+		"nahum": {
+			"ground": "6b6566d7f1c11b1bdc1a539fce7e7248aea3aee8f4914f98513af2ecda606ce6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"necessity-of-prayer": {
 			"ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
 			"style": "devotional",
@@ -27125,6 +27560,51 @@
 			"bar": 0.05,
 			"caps": false,
 			"sitemark": null
+		},
+		"nehemiah": {
+			"ground": "9feb405a21356a843335c1147171d6dda3c6c7f3eacade8722180b04282b71c3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"numbers": {
+			"ground": "12307d362fe8c8bbaed9503d25f76845272064c5f9790516c4c0ac8b63842da1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"obadiah": {
+			"ground": "408fa5cf6b2f5294afe47bde905ee74498bed1509c97bc6b07a3a9c147b13907",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"of-temptation": {
 			"ground": "9ffbcc3a4bd906f79ee7ba4049b393afb74cda8e9be7dcda84ee76533027f2de",
@@ -28069,6 +28549,21 @@
 				278,
 				517
 			]
+		},
+		"proverbs": {
+			"ground": "42ed274eb1c8e30b12b62f592e55f392f029be8d8f6b1b00e22f5aa4e00c572e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"provincial-letters": {
 			"ground": "e954e344f5e53eb45677c6482c0d21ef2d632a8bf519cb2a286acfe5a99389d6",
@@ -31663,6 +32158,21 @@
 				534
 			]
 		},
+		"ruth": {
+			"ground": "23135b404dc48238d9ea87fab02e4d9881db76ae2c61c75e93f05832eacb2c19",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
 		"samuel-ajayi-crowther-a-life": {
 			"ground": "1e03ec5a425e140f8121eae334a8047f950ecf5dce1654debf8c6a460486bd0a",
 			"style": "house",
@@ -31924,6 +32434,21 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"song-of-songs": {
+			"ground": "c7ce80471cccaef803069e329895cc88a31e2d00f03b7497adc8405cbd8f1b75",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		},
 		"sons-of-the-king-1": {
 			"ground": "e9ed389d5a9d68f1b85112c478d21182ed8d8fb27266e2992844da36e52a8231",
@@ -41786,6 +42311,36 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"zechariah": {
+			"ground": "05be89abbdc33b3db42191912e1e635b957ca01d47af109f980414296c14fd93",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
+		},
+		"zephaniah": {
+			"ground": "80137e3c64422c9674ae60f3a6794f9af6508533853111956aa311898fa97db6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": "OpenWordBible.org"
 		}
 	}
 }

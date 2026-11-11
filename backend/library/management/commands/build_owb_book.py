@@ -467,15 +467,27 @@ class Source:
         span = f"{c1}:{v1}–" + (str(v2) if c1 == c2 else f"{c2}:{v2}")
         return DISPUTED_NOTE.format(book=self.name, ref=f"{self.name} {span}")
 
+    def sentence(self, rid: str) -> dict:
+        """Any sentence of OWB by id: this book's, or another's (an introduction
+        quoting Matthew on Solomon), read from that book's chapter file."""
+        if rid in self.by_id:
+            return self.by_id[rid]
+        code, chapter = rid.split(".")[:2]
+        # A chapter is one file, or several by passage (MAT.12.38-50.json).
+        folder = self.root / "content" / code
+        files = [*folder.glob(f"{code}.{chapter}.json"), *folder.glob(f"{code}.{chapter}.*.json")]
+        records = [r for f in files for r in json.loads(f.read_text("utf-8"))["records"]]
+        found = next((r for r in records if r["id"] == rid), None)
+        if found is None:
+            raise CommandError(f"editorial quotes unknown sentence {rid}")
+        return found
+
     def embed(self, html: str) -> str:
-        """Replace each {{OWB:<record id>}} with that sentence's text."""
+        """Replace each {{OWB:<record id>}} with that sentence's text, from this
+        book or any other, so a quotation can't drift from the translation."""
 
         def text(m: re.Match) -> str:
-            if m[1] not in self.by_id:
-                raise CommandError(f"editorial quotes unknown sentence {m[1]}")
-            return escape(
-                " ".join(t for _, t in verses_of(self.by_id[m[1]])), quote=False
-            )
+            return escape(" ".join(t for _, t in verses_of(self.sentence(m[1]))), quote=False)
 
         return _EMBED.sub(text, html)
 

@@ -1,6 +1,22 @@
 {
  "_comment": "Ratchet for library/tests_english_audit.py \u2014 a work's class may shrink but never grow. Regenerate with `manage.py audit_english --update-baseline` and say in the commit message what you fixed. A NEW work is ordinary (that is how an import lands here) and is printed with the findings it brings in; an ALREADY-PINNED work that gained findings is a regression, and the command refuses to absorb it without --absorb.",
  "works": {
+  "1-chronicles": {
+   "orphan-close-quote": 1
+  },
+  "1-kings": {
+   "orphan-close-quote": 1
+  },
+  "1-samuel": {
+   "orphan-close-quote": 1
+  },
+  "2-chronicles": {
+   "orphan-close-quote": 1
+  },
+  "2-samuel": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 1
+  },
   "a-body-of-divinity": {
    "orphan-close-quote": 1
   },
@@ -122,6 +138,14 @@
   "continual-sunshine": {
    "space-before-punct": 2
   },
+  "daniel": {
+   "lost-paragraphing": 3,
+   "orphan-close-quote": 1
+  },
+  "deuteronomy": {
+   "lost-paragraphing": 3,
+   "orphan-close-quote": 4
+  },
   "dialogue-with-trypho": {
    "anachronism": 1,
    "lost-paragraphing": 48,
@@ -142,6 +166,9 @@
   "essentials-of-prayer": {
    "orphan-close-quote": 1
   },
+  "esther": {
+   "orphan-close-quote": 1
+  },
   "ever-increasing-faith": {
    "orphan-close-quote": 2
   },
@@ -149,8 +176,15 @@
    "space-before-punct": 5,
    "word-fusion": 1
   },
+  "exodus": {
+   "orphan-close-quote": 3
+  },
   "expository-thoughts-on-matthew": {
    "orphan-close-quote": 13
+  },
+  "ezekiel": {
+   "lost-paragraphing": 2,
+   "orphan-close-quote": 2
   },
   "faith-and-assurance": {
    "space-before-punct": 2
@@ -261,11 +295,20 @@
   "introduction-to-the-devout-life": {
    "lost-paragraphing": 1
   },
+  "jeremiah": {
+   "orphan-close-quote": 2
+  },
   "jesus-himself-2": {
    "space-before-punct": 2
   },
   "john-ploughmans-pictures": {
    "word-fusion": 2
+  },
+  "jonah": {
+   "orphan-close-quote": 1
+  },
+  "joshua": {
+   "orphan-close-quote": 2
   },
   "journal-of-an-expedition-up-the-niger": {
    "lost-paragraphing": 1,
@@ -273,6 +316,9 @@
   },
   "joy-and-peace-in-believing": {
    "space-before-punct": 3
+  },
+  "judges": {
+   "lost-paragraphing": 1
   },
   "justification-by-grace": {
    "orphan-close-quote": 1
@@ -301,6 +347,10 @@
   "letters-of-samuel-rutherford": {
    "lost-paragraphing": 1,
    "word-fusion": 1
+  },
+  "leviticus": {
+   "lost-paragraphing": 3,
+   "orphan-close-quote": 4
   },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
@@ -335,6 +385,9 @@
   },
   "no-one-can-harm-the-man-who-does-not-injure-himself": {
    "lost-paragraphing": 1
+  },
+  "numbers": {
+   "orphan-close-quote": 1
   },
   "old-testament-types-and-teachings": {
    "orphan-close-quote": 6
@@ -415,9 +468,11 @@
   "proslogium-monologium-cur-deus-homo": {
    "orphan-close-quote": 1
   },
+  "proverbs": {
+   "lost-paragraphing": 7
+  },
   "psalms": {
-   "lost-paragraphing": 3,
-   "word-fusion": 1
+   "lost-paragraphing": 3
   },
   "purity-of-heart": {
    "orphan-close-quote": 1
@@ -444,6 +499,9 @@
   "revival-lectures": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
+  },
+  "ruth": {
+   "orphan-close-quote": 2
   },
   "school-of-prayer": {
    "space-before-punct": 11
@@ -568,7 +626,7 @@
   },
   "the-everlasting-man": {
    "lost-paragraphing": 3,
-   "word-fusion": 4
+   "word-fusion": 2
   },
   "the-first-apology": {
    "lost-paragraphing": 13

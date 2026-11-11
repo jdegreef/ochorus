@@ -61,6 +61,45 @@ BOOKS: dict[str, Name] = {
     "gospel-of-john": Name(("ΚΑΤΑ", "ΙΩΑΝΝΗΝ"), "grc", "#24425a"),
     # Pros Rhōmaious, "To the Romans".
     "romans": Name(("ΠΡΟΣ", "ΡΩΜΑΙΟΥΣ"), "grc", "#1f3a5c"),
+    # The rest of the Old Testament: each book's Hebrew name, the halves of
+    # Samuel, Kings and Chronicles numbered as the Hebrew numbers them (א, ב).
+    "exodus": Name(('שְׁמוֹת',), "he", "#6b3a26"),
+    "leviticus": Name(('וַיִּקְרָא',), "he", "#7a4a22"),
+    "numbers": Name(('בְּמִדְבַּר',), "he", "#5c4a2a"),
+    "deuteronomy": Name(('דְּבָרִים',), "he", "#6a2f2a"),
+    "joshua": Name(('יְהוֹשֻׁעַ',), "he", "#4f5a2e"),
+    "judges": Name(('שֹׁפְטִים',), "he", "#5a4a2e"),
+    "ruth": Name(('רוּת',), "he", "#6b5a2e"),
+    "1-samuel": Name(('שְׁמוּאֵל', 'א'), "he", "#3f4a2e"),
+    "2-samuel": Name(('שְׁמוּאֵל', 'ב'), "he", "#2e4a3f"),
+    "1-kings": Name(('מְלָכִים', 'א'), "he", "#4a3a2e"),
+    "2-kings": Name(('מְלָכִים', 'ב'), "he", "#3a2e2e"),
+    "1-chronicles": Name(('דִּבְרֵי הַיָּמִים', 'א'), "he", "#2e3a4a"),
+    "2-chronicles": Name(('דִּבְרֵי הַיָּמִים', 'ב'), "he", "#2e4a4a"),
+    "ezra": Name(('עֶזְרָא',), "he", "#4a3a24"),
+    "nehemiah": Name(('נְחֶמְיָה',), "he", "#3a4a24"),
+    "esther": Name(('אֶסְתֵּר',), "he", "#5a2a3a"),
+    "job": Name(('אִיּוֹב',), "he", "#3a2a1e"),
+    "proverbs": Name(('מִשְׁלֵי',), "he", "#5a2f4f"),
+    "ecclesiastes": Name(('קֹהֶלֶת',), "he", "#4a2f5a"),
+    "song-of-songs": Name(('שִׁיר הַשִּׁירִים',), "he", "#6a2a44"),
+    "isaiah": Name(('יְשַׁעְיָהוּ',), "he", "#2c3563"),
+    "jeremiah": Name(('יִרְמְיָהוּ',), "he", "#2c3f63"),
+    "lamentations": Name(('אֵיכָה',), "he", "#3a2f4a"),
+    "ezekiel": Name(('יְחֶזְקֵאל',), "he", "#2c4a63"),
+    "daniel": Name(('דָּנִיֵּאל',), "he", "#3a2c63"),
+    "hosea": Name(('הוֹשֵׁעַ',), "he", "#2f5559"),
+    "joel": Name(('יוֹאֵל',), "he", "#2f4f59"),
+    "amos": Name(('עָמוֹס',), "he", "#3f5530"),
+    "obadiah": Name(('עֹבַדְיָה',), "he", "#55402f"),
+    "jonah": Name(('יוֹנָה',), "he", "#2f4a55"),
+    "micah": Name(('מִיכָה',), "he", "#4a2f55"),
+    "nahum": Name(('נַחוּם',), "he", "#55302f"),
+    "habakkuk": Name(('חֲבַקּוּק',), "he", "#2f5540"),
+    "zephaniah": Name(('צְפַנְיָה',), "he", "#40302f"),
+    "haggai": Name(('חַגַּי',), "he", "#5a4a2a"),
+    "zechariah": Name(('זְכַרְיָה',), "he", "#2a4a5a"),
+    "malachi": Name(('מַלְאָכִי',), "he", "#4a2a5a"),
     # The rest of the New Testament: each book's title in the manuscripts, the
     # letters numbered as they number them (Α, Β, Γ).
     "gospel-of-matthew": Name(("ΚΑΤΑ", "ΜΑΘΘΑΙΟΝ"), "grc", "#6b2a2f"),
@@ -109,12 +148,16 @@ def name_markup(name: Name) -> str:
     as an optional small first word (ΚΑΤΑ, ΠΡΟΣ), the large name, and an
     optional small last line (a letter's number, Revelation's ΙΩΑΝΝΟΥ)."""
     if name.script == "he":
+        word, *after = name.lines
         # Letters only: the vowel points are combining marks and take no width.
-        letters = sum(unicodedata.category(c) != "Mn" for c in name.lines[0])
-        size = 104 if letters <= 8 else 88
+        letters = sum(unicodedata.category(c) not in ("Mn", "Zs") for c in word)
+        # Bereshit and Tehillim keep the size they were drawn at; a longer name
+        # (Divrei HaYamim, Shir HaShirim) steps down to stay inside the leaf.
+        size = 104 if letters <= 8 and not after else min(88, int(470 / (letters * 0.58)))
+        last = f'<div class="small after">{after[0]}</div>' if after else ""
         return (
             f'<div class="he" dir="rtl" lang="he" style="font-size:{size}px">'
-            f"{name.lines[0]}</div>"
+            f"{word}</div>{last}"
         )
     if not 2 <= len(name.lines) <= 3:
         raise ValueError(f"a Greek name is 2 or 3 lines, not {name.lines}")
@@ -131,6 +174,14 @@ def name_markup(name: Name) -> str:
     )
 
 
+def stacked(name: Name) -> bool:
+    """Three lines of Greek (ΠΡΟΣ / ΚΟΡΙΝΘΙΟΥΣ / Α), or a Hebrew name with its
+    number under it (שְׁמוּאֵל / א): set tighter to hold to the band."""
+    if name.script == "he":
+        return len(name.lines) == 2
+    return len(name.lines) == 3 and all(name.lines)
+
+
 def page(fonts: pathlib.Path, name: Name) -> str:
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 {font_face(fonts, name.script)}
@@ -145,6 +196,8 @@ html,body{{margin:0;background:#000}}
   letter-spacing:.06em;opacity:.92}}
 .grc .small{{font-size:30px;letter-spacing:.32em;margin-bottom:10px;opacity:.8}}
 .grc .small.after{{margin:12px 0 0}}
+.he + .small.after{{font-family:'Name he',serif;font-size:34px;margin-top:10px;opacity:.8;text-align:center}}
+.band.three .he + .small.after{{font-size:28px;margin-top:4px}}
 .name{{margin:22px 0}}
 /* Three lines (ΠΡΟΣ / ΚΟΡΙΝΘΙΟΥΣ / Α) hold to the same band, y=470..650, with
    tighter margins and a smaller first and last line. */
@@ -174,7 +227,7 @@ html,body{{margin:0;background:#000}}
  <rect width="600" height="800" filter="url(#grain)"/>
  <rect width="600" height="800" fill="url(#edge)"/>
 </svg>
-<div class="band{' three' if len(name.lines) == 3 and all(name.lines) else ''}"><div class="rule"><i></i><b></b><i></i></div>
+<div class="band{' three' if stacked(name) else ''}"><div class="rule"><i></i><b></b><i></i></div>
 <div class="name">{name_markup(name)}</div>
 <div class="rule"><i></i><b></b><i></i></div></div>
 </div></body></html>"""

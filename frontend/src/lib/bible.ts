@@ -108,7 +108,11 @@ export function groupBible<T extends { series_position?: number | null }>(
  * Bible book" cannot tell a plan that reads only the Bible from one that does
  * not. A plan here that has not shipped in a language is simply absent.
  */
-export const BIBLE_PLANS: readonly string[] = ['john-in-21-days', 'psalms-in-150-days'];
+export const BIBLE_PLANS: readonly string[] = [
+	'john-in-21-days',
+	'psalms-in-150-days',
+	'proverbs-in-a-month'
+];
 
 /** The Bible's plans among `plans`, in `BIBLE_PLANS` order. */
 export function biblePlans<P extends { slug: string }>(plans: readonly P[]): P[] {
