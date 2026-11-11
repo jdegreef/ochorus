@@ -194,5 +194,12 @@
   "note": [
    "AI-drafted (2026-11-07); awaiting native review. Job #7528. None of the three books has a hi edition yet; ‘देहधारण के विषय में’ (On the Incarnation) is coined — the hi book job (#7549) should reuse it or fix both. Prose-ahead until all three ship."
   ]
+ },
+ "women-of-faith": {
+  "title": "विश्वास की स्त्रियाँ",
+  "description": "तीन असाधारण स्त्रियों के साथ एक लम्बी यात्रा। हन्ना व्हिटॉल स्मिथ सुखी जीवन का मसीही रहस्य खोलती हैं, और अमांडा बेरी स्मिथ तथा जूलिया ए. जे. फुट — दो अश्वेत स्त्रियाँ जिन्होंने उन्नीसवीं शताब्दी के संसार में सुसमाचार का प्रचार किया — की आत्मकथाएँ दिखाती हैं कि वह रहस्य भारी कीमत चुकाकर कैसे जिया गया।",
+  "note": [
+   "AI-drafted (2026-11-11); awaiting native review. Job #7545 (the-christians-secret-of-a-happy-life-4 -> hi), which ships the plan's first Hindi book; the card quotes that book's shipped title, सुखी जीवन का मसीही रहस्य, as the line ‘opens the secret of a happy life’. Names follow the shipped hi bios: हन्ना व्हिटॉल स्मिथ, अमांडा बेरी स्मिथ, जूलिया ए. जे. फुट; अश्वेत is the bios' word for Black. amanda-smith-autobiography and a-brand-plucked-from-the-fire have no hi edition yet, so the card names their authors, not their titles. Prose-ahead: seed_plans creates no hi row until both ship."
+  ]
  }
 }
