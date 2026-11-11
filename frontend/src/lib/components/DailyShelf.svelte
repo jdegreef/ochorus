@@ -61,7 +61,9 @@
 </script>
 
 {#snippet cards()}
-	<ul role="list" class="m-0 grid list-none gap-4 p-0 sm:grid-cols-2">
+	<!-- grid-cols-1, not the implicit column: an auto track grows to the longest
+	     no-wrap eyebrow and pushed the cards past a phone screen. -->
+	<ul role="list" class="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
 		{#each readings as r (r.book.slug)}
 			<li>
 				<a
