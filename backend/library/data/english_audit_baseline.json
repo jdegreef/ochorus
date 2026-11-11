@@ -168,6 +168,10 @@
    "orphan-close-quote": 5,
    "space-before-punct": 3
   },
+  "genesis": {
+   "lost-paragraphing": 11,
+   "orphan-close-quote": 1
+  },
   "george-muller-of-bristol": {
    "lost-paragraphing": 1,
    "word-fusion": 1
@@ -394,6 +398,10 @@
   },
   "proslogium-monologium-cur-deus-homo": {
    "orphan-close-quote": 1
+  },
+  "psalms": {
+   "lost-paragraphing": 3,
+   "word-fusion": 1
   },
   "purity-of-heart": {
    "orphan-close-quote": 1

@@ -233,6 +233,7 @@ class Source:
             )["english"].items()
             if vid.startswith(f"{code}.")
         }
+        self.carry_headings_forward()
         self.commit = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
             capture_output=True,
@@ -247,8 +248,24 @@ class Source:
         return verse_key(english[0] if english else vid)[0]
 
     def is_title(self, record: dict) -> bool:
-        """A sentence that is all psalm title: no verse of it has an English number."""
-        return all(self.english.get(vid) == [] for vid in record["refs"])
+        """A sentence that is all psalm title: no verse of it has an English
+        number. Only in a TITLED book: elsewhere (Numbers, 1 Samuel,
+        1 Chronicles) an unnumbered verse is a merge, not a title."""
+        return self.code in TITLED and all(self.english.get(vid) == [] for vid in record["refs"])
+
+    def carry_headings_forward(self) -> None:
+        """A heading over a verse that English numbers into the chapter BEFORE
+        (Hebrew Genesis 32:1 is English 31:55) opens the passage that goes on in
+        the next chapter, not the last verse of this one: it moves to the next
+        sentence, if that has none of its own."""
+        for r, after in zip(self.records, self.records[1:], strict=False):
+            source = verse_key(r["refs"][0])[0]
+            if (
+                r["id"] in self.headings
+                and self.english_chapter(r["refs"][0]) < source
+                and after["id"] not in self.headings
+            ):
+                self.headings[after["id"]] = self.headings.pop(r["id"])
 
     def chapters(self) -> dict[int, list[dict]]:
         """{English chapter: its sentences}, each in the chapter it starts in."""
@@ -352,7 +369,8 @@ class Source:
             if para is None or r["id"] in starts:
                 close()
                 para = []
-            para.extend(escape(text, quote=False).replace("\n", "<br>") for text in texts)
+            # A verse the peeled title used up whole leaves nothing to set.
+            para.extend(escape(text, quote=False).replace("\n", "<br>") for text in texts if text)
         close()
         if in_disputed:
             out.append("</blockquote>")

@@ -84,6 +84,24 @@ class EnglishChapterTests(SimpleTestCase):
             {31: ["GEN.31.54.s1", "GEN.32.1.s1"], 32: ["GEN.32.2.s1"]},
         )
 
+    def test_its_heading_moves_on_with_the_passage_it_opens(self):
+        """The heading OWB sets over Hebrew 32:1 opens the next English chapter."""
+        fake = FakeCheckout(
+            {"GEN": {"32": [
+                record("GEN.32.1.s1", ["GEN.32.1"], "Early in the morning Laban left."),
+                record("GEN.32.2.s1", ["GEN.32.2"], "Jacob went on his way."),
+            ]}},
+            {"GEN.32.1": ["GEN.31.55"], "GEN.32.2": ["GEN.32.1"]},
+        )
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "headings" / "GEN.json").write_text(
+            json.dumps({"headings": {"GEN.32.1.s1": {"en": "Angels meet Jacob"}}})
+        )
+        source = Source(fake.root, "GEN")
+        chapters = source.chapters()
+        self.assertEqual(source.chapter_html(31, chapters[31]), "<p>Early in the morning Laban left.</p>")
+        self.assertTrue(source.chapter_html(32, chapters[32]).startswith("<h3>Angels meet Jacob</h3>"))
+
 
 class PsalmTests(SimpleTestCase):
     def setUp(self):

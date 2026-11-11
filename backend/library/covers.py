@@ -487,9 +487,6 @@ _FIXED_ROWS = {"byline": (102, 130), "mark": (664, 747)}
 #: does) would pass a painting the page leaves pale.
 SCRIM_MAX = 1.0
 
-#: The painted works whose type is set from the TOP of the cover rather than
-#: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
-#: in Python. A fixture gate holds the two sets equal.
 #: The Open Word Bible's books (scripts/original_grounds/scripture.py): a pale
 #: leaf with the book's Hebrew or Greek name low on it, the type set above it
 #: from the top in dark ink. One composition, so they are in TYPE_TOP and
@@ -501,6 +498,9 @@ OPEN_WORD_BIBLE = frozenset({
     "romans",
 })
 
+#: The painted works whose type is set from the TOP of the cover rather than
+#: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
+#: in Python. A fixture gate holds the two sets equal.
 TYPE_TOP = frozenset({
     "key-teachings-of-a-b-simpson",
     "key-teachings-of-jonathan-edwards",
@@ -845,7 +845,8 @@ OPEN_WORD_BIBLE_INK_BOXES = (
     ("byline", (60, 98, 540, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
     ("title", (40, 160, 560, 380), 1.0, TITLE_MIN),
     ("subtitle", (60, 350, 540, 450), 0.90, AUTHOR_MIN_CONTRAST),
-    ("mark", (150, 684, 450, 726), 0.95, 3.0),
+    # The address is set at 0.86 (`.cover-type .sitemark`), not the mark's 0.95.
+    ("mark", (150, 684, 450, 726), 0.86, 3.0),
 )
 DARK_INK_BOXES_BY_SLUG |= dict.fromkeys(OPEN_WORD_BIBLE, OPEN_WORD_BIBLE_INK_BOXES)
 # The plate gradient's far stop, as a fraction of the base colour.
