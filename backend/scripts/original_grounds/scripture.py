@@ -42,7 +42,9 @@ from typing import NamedTuple
 
 
 class Name(NamedTuple):
-    #: The name as the cover sets it: lines, top to bottom.
+    #: The name as the cover sets it, top to bottom. Hebrew: one line. Greek: a
+    #: small first word ("ΚΑΤΑ", "ΠΡΟΣ", or "" for none), the large name, and an
+    #: optional small last line (a letter's number, "Α"; Revelation's "ΙΩΑΝΝΟΥ").
     lines: tuple[str, ...]
     #: "he" (Noto Serif Hebrew, right to left) or "grc" (EB Garamond capitals).
     script: str
@@ -59,6 +61,33 @@ BOOKS: dict[str, Name] = {
     "gospel-of-john": Name(("ΚΑΤΑ", "ΙΩΑΝΝΗΝ"), "grc", "#24425a"),
     # Pros Rhōmaious, "To the Romans".
     "romans": Name(("ΠΡΟΣ", "ΡΩΜΑΙΟΥΣ"), "grc", "#1f3a5c"),
+    # The rest of the New Testament: each book's title in the manuscripts, the
+    # letters numbered as they number them (Α, Β, Γ).
+    "gospel-of-matthew": Name(("ΚΑΤΑ", "ΜΑΘΘΑΙΟΝ"), "grc", "#6b2a2f"),
+    "gospel-of-mark": Name(("ΚΑΤΑ", "ΜΑΡΚΟΝ"), "grc", "#7a3b22"),
+    "gospel-of-luke": Name(("ΚΑΤΑ", "ΛΟΥΚΑΝ"), "grc", "#5c3b1e"),
+    "acts-of-the-apostles": Name(("ΠΡΑΞΕΙΣ", "ΑΠΟΣΤΟΛΩΝ"), "grc", "#6e5420"),
+    "1-corinthians": Name(("ΠΡΟΣ", "ΚΟΡΙΝΘΙΟΥΣ", "Α"), "grc", "#3b2f5c"),
+    "2-corinthians": Name(("ΠΡΟΣ", "ΚΟΡΙΝΘΙΟΥΣ", "Β"), "grc", "#2f3b5c"),
+    "galatians": Name(("ΠΡΟΣ", "ΓΑΛΑΤΑΣ"), "grc", "#1f4a4a"),
+    "ephesians": Name(("ΠΡΟΣ", "ΕΦΕΣΙΟΥΣ"), "grc", "#22405e"),
+    "philippians": Name(("ΠΡΟΣ", "ΦΙΛΙΠΠΗΣΙΟΥΣ"), "grc", "#5a3a1c"),
+    "colossians": Name(("ΠΡΟΣ", "ΚΟΛΟΣΣΑΕΙΣ"), "grc", "#2b4a35"),
+    "1-thessalonians": Name(("ΠΡΟΣ", "ΘΕΣΣΑΛΟΝΙΚΕΙΣ", "Α"), "grc", "#2e4a5c"),
+    "2-thessalonians": Name(("ΠΡΟΣ", "ΘΕΣΣΑΛΟΝΙΚΕΙΣ", "Β"), "grc", "#3a4a2e"),
+    "1-timothy": Name(("ΠΡΟΣ", "ΤΙΜΟΘΕΟΝ", "Α"), "grc", "#4a2e3a"),
+    "2-timothy": Name(("ΠΡΟΣ", "ΤΙΜΟΘΕΟΝ", "Β"), "grc", "#3a2e4a"),
+    "titus": Name(("ΠΡΟΣ", "ΤΙΤΟΝ"), "grc", "#2e3a4a"),
+    "philemon": Name(("ΠΡΟΣ", "ΦΙΛΗΜΟΝΑ"), "grc", "#5b3240"),
+    "hebrews": Name(("ΠΡΟΣ", "ΕΒΡΑΙΟΥΣ"), "grc", "#4a2a1e"),
+    "james": Name(("", "ΙΑΚΩΒΟΥ"), "grc", "#34502c"),
+    "1-peter": Name(("", "ΠΕΤΡΟΥ", "Α"), "grc", "#2c3f5a"),
+    "2-peter": Name(("", "ΠΕΤΡΟΥ", "Β"), "grc", "#3f2c5a"),
+    "1-john": Name(("", "ΙΩΑΝΝΟΥ", "Α"), "grc", "#24425a"),
+    "2-john": Name(("", "ΙΩΑΝΝΟΥ", "Β"), "grc", "#2a4f4a"),
+    "3-john": Name(("", "ΙΩΑΝΝΟΥ", "Γ"), "grc", "#4a3a24"),
+    "jude": Name(("", "ΙΟΥΔΑ"), "grc", "#4f2a2a"),
+    "revelation": Name(("", "ΑΠΟΚΑΛΥΨΙΣ", "ΙΩΑΝΝΟΥ"), "grc", "#2a1f3a"),
 }
 
 FONT_FILES = {
@@ -76,8 +105,9 @@ def font_face(fonts: pathlib.Path, script: str) -> str:
 
 
 def name_markup(name: Name) -> str:
-    """The name, centred in its band: one line large, or a small first word
-    (ΚΑΤΑ, ΠΡΟΣ) over a large second."""
+    """The name, centred in its band: a Hebrew name on one line, or a Greek one
+    as an optional small first word (ΚΑΤΑ, ΠΡΟΣ), the large name, and an
+    optional small last line (a letter's number, Revelation's ΙΩΑΝΝΟΥ)."""
     if name.script == "he":
         # Letters only: the vowel points are combining marks and take no width.
         letters = sum(unicodedata.category(c) != "Mn" for c in name.lines[0])
@@ -86,11 +116,18 @@ def name_markup(name: Name) -> str:
             f'<div class="he" dir="rtl" lang="he" style="font-size:{size}px">'
             f"{name.lines[0]}</div>"
         )
-    small, large = name.lines
-    size = 72 if len(large) <= 7 else 62
+    if not 2 <= len(name.lines) <= 3:
+        raise ValueError(f"a Greek name is 2 or 3 lines, not {name.lines}")
+    small, large, *after = name.lines
+    # A long name steps down to keep inside the leaf (a capital is ~0.68em wide
+    # at this tracking); Pros Rhōmaious and Kata Iōannēn keep the two sizes
+    # they were drawn at.
+    size = 72 if len(large) <= 7 else min(62, int(500 / (len(large) * 0.68)))
+    first = f'<div class="small">{small}</div>' if small else ""
+    last = f'<div class="small after">{after[0]}</div>' if after else ""
     return (
-        f'<div class="grc" lang="grc"><div class="small">{small}</div>'
-        f'<div style="font-size:{size}px">{large}</div></div>'
+        f'<div class="grc" lang="grc">{first}'
+        f'<div style="font-size:{size}px">{large}</div>{last}</div>'
     )
 
 
@@ -107,6 +144,13 @@ html,body{{margin:0;background:#000}}
 .grc{{font-family:'Name grc',serif;font-weight:500;line-height:1.05;text-align:center;
   letter-spacing:.06em;opacity:.92}}
 .grc .small{{font-size:30px;letter-spacing:.32em;margin-bottom:10px;opacity:.8}}
+.grc .small.after{{margin:12px 0 0}}
+.name{{margin:22px 0}}
+/* Three lines (ΠΡΟΣ / ΚΟΡΙΝΘΙΟΥΣ / Α) hold to the same band, y=470..650, with
+   tighter margins and a smaller first and last line. */
+.band.three .name{{margin:8px 0}}
+.band.three .grc .small{{font-size:24px;margin-bottom:6px}}
+.band.three .grc .small.after{{margin:6px 0 0}}
 .rule{{display:flex;align-items:center;gap:12px;width:220px;opacity:.55}}
 .rule i{{flex:1;height:1px;background:{name.ink}}}
 .rule b{{width:7px;height:7px;transform:rotate(45deg);border:1px solid {name.ink}}}
@@ -130,8 +174,8 @@ html,body{{margin:0;background:#000}}
  <rect width="600" height="800" filter="url(#grain)"/>
  <rect width="600" height="800" fill="url(#edge)"/>
 </svg>
-<div class="band"><div class="rule"><i></i><b></b><i></i></div>
-<div style="margin:22px 0">{name_markup(name)}</div>
+<div class="band{' three' if len(name.lines) == 3 and all(name.lines) else ''}"><div class="rule"><i></i><b></b><i></i></div>
+<div class="name">{name_markup(name)}</div>
 <div class="rule"><i></i><b></b><i></i></div></div>
 </div></body></html>"""
 

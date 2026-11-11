@@ -1,0 +1,131 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "titus",
+  "language": "en",
+  "title": "The Letter to Titus",
+  "subtitle": "Pros Titon, “To Titus”",
+  "cover_title": "Titus",
+  "cover_byline": "",
+  "description": "Paul’s short letter to Titus, his Gentile co-worker, left on the island of Crete to put the churches in order and appoint elders in every town. Brisk and practical, it sets out what an elder must be, warns against teachers who are “ruining whole households”, and shows how older and younger, men and women, slaves and citizens can make the teaching about God our Savior attractive. And twice it stops to say why: the grace of God has appeared, bringing salvation to all people, and teaches us to live while we wait for the appearing of our great God and Savior, Jesus Christ; and God saved us, not because of righteous things we had done, but because of his mercy. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the Letter to Titus?",
+    "answer": "A short letter in the New Testament from the apostle Paul to Titus, his co-worker, whom he had left on Crete to set the young churches in order and appoint elders in every town (1:5). With 1 and 2 Timothy it is one of the three Pastoral Letters. It describes what an elder must be, warns against false teachers, gives instructions for believers of every age and station, and grounds them in two great summaries of the gospel (2:11–14; 3:4–7)."
+   },
+   {
+    "question": "Who was Titus, and who wrote the letter?",
+    "answer": "Titus was a Greek believer whom Paul took to Jerusalem as an uncircumcised Gentile convert (Galatians 2:1–3) and later sent to the church at Corinth, calling him “a partner of mine” (2 Corinthians 8:23). The letter names Paul as its author, and the church received it as his, written in the 60s AD after a mission on Crete not recorded in Acts. Many modern scholars think the Pastoral Letters were written by a follower of Paul after his death; many others defend Paul’s authorship."
+   },
+   {
+    "question": "Does Titus 2:13 call Jesus God?",
+    "answer": "It speaks of “the appearing of the glory of our great God and Savior, Jesus Christ.” Because one article in the Greek governs both “God” and “Savior”, the phrase most naturally names one person, Jesus Christ, as our great God and Savior, and most translations, including this one, read it that way. Some read two persons, God the Father and Christ, since the letter elsewhere calls the Father “God our Savior”. Either way, the verse sets Christ’s coming in glory at the centre of Christian hope."
+   },
+   {
+    "question": "What qualifications for elders does the Letter to Titus give?",
+    "answer": "An elder must be blameless, “the husband of one wife, with children who believe”, and a household in order (1:6). Paul calls the same leader an overseer, who manages God’s household, and says he must not be arrogant or quick-tempered, a drunkard, violent or greedy for money, but hospitable, self-controlled, upright, holy and disciplined, holding firmly to the trustworthy message so that he can encourage with sound teaching and correct those who oppose it (1:7–9). The list is close to 1 Timothy 3. Christians differ on what “the husband of one wife” requires: faithfulness in marriage, no polygamy, or no remarriage."
+   },
+   {
+    "question": "What does “the washing of new birth” mean in Titus 3:5?",
+    "answer": "Paul says God saved us “not because of righteous things we had done, but because of his mercy”, through the washing of new birth and renewal by the Holy Spirit, whom he poured out on us generously through Jesus Christ our Savior (3:5–6). The Greek word means “becoming again”, which older Bibles render “regeneration”. Many Christians see in the washing a reference to baptism; others a cleansing that baptism pictures. All agree that it is God’s work and not ours, and that its fruit is a people justified by his grace, heirs with the hope of eternal life, and devoted to doing good."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#tit",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/titus.jpg",
+  "pdf_url": "",
+  "cover_color": "#2e3a4a",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 56,
+  "sort_order": 303,
+  "is_published": true,
+  "created_at": "2026-11-11T20:30:23.845Z",
+  "updated_at": "2026-11-11T21:11:04.267Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>For the grace of God has appeared, bringing salvation to all people. It teaches us to say no to ungodliness and worldly desires, and to live self-controlled, righteous and godly lives in this present age, while we wait for the blessed hope, the appearing of the glory of our great God and Savior, Jesus Christ. He gave himself for us to set us free from all lawlessness and to purify for himself a people that belongs to him, eager to do what is good.</p><p>— Titus 2:11–14</p></blockquote> <p>Paul had left his co-worker Titus on the island of Crete with an unfinished job: to put the churches there in order and to appoint elders in every town. This short letter tells him how. It is brisk and practical, full of instructions for older men and younger women, slaves, and how to live under rulers, and stern about troublemakers. But twice it stops to say why any of it matters, and those two passages, on the grace of God that has appeared, are among the richest summaries of the gospel anywhere in Paul’s letters.</p> <h3>Titus</h3> <p>Titus is never named in Acts, but Paul’s letters show how much he trusted him. He was a Greek, uncircumcised, and Paul took him to Jerusalem as living proof that Gentile believers need not become Jews (Galatians 2:1–3). Later he was Paul’s envoy to the troubled church at Corinth, where he probably carried a painful letter, brought back good news, and organized the collection for Jerusalem (2 Corinthians 7–8). “He is a partner of mine, working with me for you,” Paul wrote of him there (8:23). The last we hear, he has gone to Dalmatia, on the Adriatic coast (2 Timothy 4:10). Eusebius records a tradition that he was the first bishop of the churches in Crete.</p> <h3>Crete</h3> <p>Acts mentions Crete only as a coast Paul’s ship sailed along on its way to Rome (Acts 27). The letter implies a mission there that Acts does not record, perhaps after Paul’s first imprisonment, though the island had Jewish residents and Cretans were in Jerusalem at Pentecost (Acts 2:11). Like 1 and 2 Timothy, Titus is one of the Pastoral Letters, and scholars differ over whether Paul wrote it himself or a follower wrote it in his name; the introduction to 1 Timothy in this edition says more.</p> <p>The churches faced teachers “of the circumcision group”, full of empty talk, Jewish myths and quarrels about the law, who were “ruining whole households” for gain. Paul quotes a line attributed to the Cretan poet Epimenides: “Cretans are always liars, evil brutes, lazy gluttons.” “What he said is true,” Paul adds, a blunt use of a famous insult. But the letter is not finally about Cretans. It is about what the grace of God can make of anyone.</p> <h3>The shape of the letter</h3> <ul> <li><strong>Chapter 1: elders and opponents.</strong> The greeting, what an elder must be, and why false teachers must be silenced.</li> <li><strong>Chapter 2: teaching that fits.</strong> How believers of every age and station are to live, and the grace that teaches them.</li> <li><strong>Chapter 3: good citizens, made new.</strong> Life among outsiders, the kindness of God our Savior, and final instructions.</li> </ul> <h3>Elders in every town</h3> <p>An elder must be “blameless, the husband of one wife”, with a household in order. Paul then calls the same leader an overseer, and lists what he must not be, “arrogant or quick-tempered, not a drunkard or violent, not greedy for money”, and what he must be: hospitable, self-controlled, holy, and holding firmly to the trustworthy message, able to encourage with sound teaching and to correct those who oppose it. The list is close to the one in 1 Timothy 3. Character comes first; the ability to teach the truth follows.</p> <h3>Teaching that fits</h3> <p>“You must teach what fits with sound teaching,” Paul tells Titus, and he goes through the church: older men and older women, younger women and younger men, slaves. The instructions reflect the household order of the first-century world, including the call for wives to submit to their husbands. Christians differ on how such instructions apply in other times and cultures. What the letter makes plain is their purpose. Each group is to live so that “no one will speak evil of the word of God”, and slaves, the people with least status of all, are to “make the teaching about God our Savior attractive”.</p> <h3>The grace of God has appeared</h3> <p>Then comes the first of the letter’s two great summaries. Grace has appeared in Jesus Christ, bringing salvation to all people. And grace is not only a gift; it is a teacher. It trains believers to say no to ungodliness and to live “self-controlled, righteous and godly lives in this present age”, while they wait for “the blessed hope, the appearing of the glory of our great God and Savior, Jesus Christ.” The Christian life stands between two appearings, the first in humility and the second in glory.</p> <h3>He saved us</h3> <p>In chapter 3 Paul reminds the believers what they once were, “foolish, disobedient and led astray”, and then turns to what God has done:</p> <blockquote><p>But when the kindness and love of God our Savior appeared, he saved us, not because of righteous things we had done, but because of his mercy. He saved us through the washing of new birth and renewal by the Holy Spirit, whom he poured out on us generously through Jesus Christ our Savior, so that, having been justified by his grace, we might become heirs with the hope of eternal life.</p><p>— Titus 3:4–7</p></blockquote> <p>Here, in a few lines, is nearly the whole gospel: the kindness and love of God, mercy not merit, new birth and the Spirit poured out, grace and the hope of eternal life. The Father, the Son and the Spirit are all named. Many see in “the washing of new birth” a reference to baptism; others a cleansing that baptism pictures. All agree that it is God’s work, “not because of righteous things we had done”.</p> <p>Then the letter’s refrain: those who have believed must “devote themselves to doing good.” The phrase or one like it comes again and again in these three chapters. Grace that saves without good works produces a people “eager to do what is good.”</p> <h3>How to read Titus</h3> <p>Read it in one sitting; it takes about ten minutes. Then read 2:11–14 and 3:4–7 slowly, and notice how every practical instruction around them depends on them. Notice too how the title “Savior” passes back and forth between God and Jesus Christ (1:3–4; 2:10, 2:13; 3:4, 3:6).</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Greek and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. A few of its choices in Titus are worth knowing about before you begin.</p> <p><strong>“Our great God and Savior, Jesus Christ” (2:13).</strong> With one article governing both nouns, the Greek most naturally names one person, Jesus Christ, as God and Savior, as in 2 Peter 1:1. Some read two persons, God the Father and Christ. This translation follows the first reading.</p> <p><strong>“The washing of new birth” (3:5).</strong> Older Bibles say “regeneration”. The Greek means “becoming again”, and this translation uses the plainer English.</p> <p><strong>“The husband of one wife” (1:6).</strong> Literally “a one-woman man”, as in 1 Timothy 3:2. It may require faithfulness in marriage, rule out polygamy or rule out remarriage. Here the translation keeps the familiar phrase.</p> <p>For the reasoning behind every sentence of the translation, with the Greek beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "en"
+  ],
+  "order": 2,
+  "title": "Titus 1",
+  "body_html": "<h3>Greeting</h3><p>From Paul, a servant of God and an apostle of Jesus Christ. I was sent to bring God’s chosen people to faith and to the knowledge of the truth that leads to godliness, a faith and knowledge resting on the hope of eternal life. God, who never lies, promised this life before eternal ages began, and at the right time he made his word known through the preaching entrusted to me by the command of God our Savior. To Titus, my true son in the faith we share: grace and peace from God the Father and Christ Jesus our Savior.</p><h3>Appointing elders in Crete</h3><p>I left you in Crete so that you could put in order what was left unfinished and appoint elders in every town, as I told you to. An elder must be blameless, the husband of one wife, with children who believe and are not open to the charge of wild living or disobedience. Since an overseer manages God’s household, he must be blameless. He must not be arrogant or quick-tempered, not a drunkard or violent, not greedy for money. He must be hospitable, love what is good, and be self-controlled, upright, holy and disciplined. He must hold firmly to the trustworthy message as it has been taught, so that he can encourage others with sound teaching and correct those who oppose it.</p><h3>Rebellious people must be silenced</h3><p>For there are many rebellious people, full of empty talk and deception, especially those of the circumcision group. They must be silenced, because they are ruining whole households by teaching what they should not, and doing it for dishonest gain. One of their own prophets has said, “Cretans are always liars, evil brutes, lazy gluttons.” What he said is true. So rebuke them sharply, so that they may be sound in the faith and pay no attention to Jewish myths or to the commands of people who reject the truth. To the pure, all things are pure, but to those who are corrupted and do not believe, nothing is pure. In fact, both their minds and their consciences are corrupted. They claim to know God, but by what they do they deny him. They are detestable and disobedient, and unfit for doing anything good.</p>",
+  "study_questions": [],
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "en"
+  ],
+  "order": 3,
+  "title": "Titus 2",
+  "body_html": "<h3>Teach what fits sound teaching</h3><p>But you must teach what fits with sound teaching. Teach the older men to be clear-headed, worthy of respect and self-controlled, and to be sound in faith, in love and in endurance.</p><h3>Older women and younger women</h3><p>In the same way, teach the older women to live in a way that honors God. They must not be slanderers or slaves to much wine, but must teach what is good. Then they can train the younger women to love their husbands and children, to be self-controlled and pure, to work at home, to be kind, and to submit to their own husbands, so that no one will speak evil of the word of God.</p><h3>Younger men, and an example in Titus</h3><p>In the same way, encourage the younger men to be self-controlled. In every way set them an example by doing what is good. In your teaching show integrity and seriousness, and sound speech that cannot be criticized, so that anyone who opposes you will be ashamed, because they have nothing bad to say about us.</p><h3>Slaves and masters</h3><p>Teach slaves to submit to their masters in everything, to try to please them, not to talk back or steal from them, but to show that they can be fully trusted, so that in every way they will make the teaching about God our Savior attractive.</p><h3>The grace of God has appeared</h3><p>For the grace of God has appeared, bringing salvation to all people. It teaches us to say no to ungodliness and worldly desires, and to live self-controlled, righteous and godly lives in this present age, while we wait for the blessed hope, the appearing of the glory of our great God and Savior, Jesus Christ. He gave himself for us to set us free from all lawlessness and to purify for himself a people that belongs to him, eager to do what is good.</p><h3>Teach with full authority</h3><p>Teach these things. Encourage and rebuke with full authority. Do not let anyone look down on you.</p>",
+  "study_questions": [],
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "en"
+  ],
+  "order": 4,
+  "title": "Titus 3",
+  "body_html": "<h3>Saved by his mercy, ready for good</h3><p>Remind the people to submit to rulers and authorities, to be obedient, to be ready to do whatever is good, to speak evil of no one, to avoid quarreling, to be gentle, and to be considerate to everyone. For at one time we too were foolish, disobedient and led astray, slaves to all kinds of desires and pleasures. We lived in malice and envy, hated by others and hating one another. But when the kindness and love of God our Savior appeared, he saved us, not because of righteous things we had done, but because of his mercy. He saved us through the washing of new birth and renewal by the Holy Spirit, whom he poured out on us generously through Jesus Christ our Savior, so that, having been justified by his grace, we might become heirs with the hope of eternal life.</p><h3>Devoted to good, avoiding foolish controversies</h3><p>This saying is trustworthy. I want you to insist on these things, so that those who have believed in God will be careful to devote themselves to doing good. These things are excellent and useful for everyone. But avoid foolish controversies, genealogies, arguments and quarrels about the law, because these are unprofitable and useless. Warn a divisive person once, and then a second time. After that, have nothing more to do with them. You can be sure that such a person is twisted and sinful, and condemns themselves.</p><h3>Last requests</h3><p>When I send Artemas or Tychicus to you, do your best to come to me at Nicopolis, because I have decided to spend the winter there. Do everything you can to help Zenas the lawyer and Apollos on their way, and see that they have everything they need. Our people must also learn to devote themselves to doing good, so that they can meet urgent needs and not be unfruitful.</p><h3>Final greetings</h3><p>Everyone with me sends you greetings. Greet those who love us in the faith. Grace be with all of you.</p>",
+  "study_questions": [],
+  "word_count": 338
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "titus",
+   "en"
+  ],
+  "order": 5,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>This saying is trustworthy. I want you to insist on these things, so that those who have believed in God will be careful to devote themselves to doing good. These things are excellent and useful for everyone.</p><p>— Titus 3:8</p></blockquote> <p>Titus ends where it has been heading all along: with people who have believed in God, devoting themselves to doing good. The letter has no patience for a faith that is only talk. Its opponents “claim to know God, but by what they do they deny him.” Its hope is a church on an island with a bad name, whose ordinary life, in homes and workplaces and before the authorities, makes the teaching about God our Savior attractive.</p> <h3>The question the letter leaves</h3> <p>Does what you believe show? Titus answers that it must, and it explains why it can. Good works are not the root of salvation; the letter could hardly say so more plainly: “not because of righteous things we had done, but because of his mercy.” They are its fruit. The grace that saves is the same grace that teaches. A people washed, made new and given the Spirit are being made into a people “eager to do what is good”, and they wait, while they work, for the appearing of their great God and Savior.</p> <h3>Where to go from here</h3> <p>A few places in this library to take the letter further:</p> <ul> <li><strong>On the grace that has appeared (2:11–15).</strong> Martin Luther’s Christmas Eve sermon <em>The Appearing of the Grace of God</em>, from his Church Postil, which opens by noting Paul’s charge in 1:9 that a pastor must both teach and refute.</li> <li><strong>On salvation by mercy, not works (3:4–7).</strong> John Wesley’s sermon <em>Salvation by Faith</em>, and Charles H. Spurgeon’s <em>All of Grace</em>.</li> <li><strong>On the new birth (3:5).</strong> J. C. Ryle’s sermon <em>Are You Born Again?</em> and Dwight L. Moody’s <em>The New Birth</em>, both on Jesus’s words to Nicodemus in John 3.</li> <li><strong>On elders and their work (1:5–9).</strong> <em>The First Epistle of Clement to the Corinthians</em>, which tells how the apostles appointed overseers and deacons in the churches they founded; John Chrysostom’s <em>On the Priesthood</em>, which quotes Paul’s instruction to Titus that an overseer must hold firmly to the trustworthy message; and Gregory the Great’s <em>The Book of Pastoral Rule</em>.</li> </ul> <p>And read 1 and 2 Timothy, in this same edition, the two letters most like this one.</p> <p>Every reference to Titus in this library can be tapped to read the verse, and the Scripture pages gather what the great writers of the church have said about each passage. But the best next step may be to read the letter again, and to receive its last words as if they were written to you:</p> <blockquote><p>Greet those who love us in the faith. Grace be with all of you.</p><p>— Titus 3:15</p></blockquote>",
+  "study_questions": [],
+  "word_count": 477
+ }
+}
+]
+

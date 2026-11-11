@@ -1,0 +1,131 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "2-thessalonians",
+  "language": "en",
+  "title": "The Second Letter to the Thessalonians",
+  "subtitle": "Pros Thessalonikeis B, “Second to the Thessalonians”",
+  "cover_title": "2 Thessalonians",
+  "cover_byline": "",
+  "description": "A short letter to a persecuted church thrown into alarm by a claim that the day of the Lord had already come. Paul thanks God for faith that is growing under suffering and promises that God will set things right when the Lord Jesus appears; he insists that the day has not yet arrived, for the great rebellion and the man of lawlessness must come first, held back for now by a power the Thessalonians knew and we do not; and he tells those who have stopped working to earn their own bread, closing with a greeting in his own hand. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the Second Letter to the Thessalonians about?",
+    "answer": "It is a short letter to the church in Thessalonica, written to steady believers who were being persecuted and had been told that the day of the Lord had already come. It encourages them that God will judge justly when the Lord Jesus appears (chapter 1), explains that the day cannot have come yet, because the great rebellion and the man of lawlessness must come first (chapter 2), and commands those who had stopped working to go back to work (chapter 3)."
+   },
+   {
+    "question": "Who wrote 2 Thessalonians, and when?",
+    "answer": "The letter names Paul, Silvanus and Timothy as its senders, and Paul signs it in his own hand (3:17). The traditional view, held by many scholars, is that Paul wrote it from Corinth around AD 51, soon after 1 Thessalonians. Many other modern scholars think a follower of Paul wrote it later, because of its close imitation of the first letter and its different emphasis about the end; others answer that a new problem in the church explains the differences."
+   },
+   {
+    "question": "Who is the man of lawlessness in 2 Thessalonians 2?",
+    "answer": "Paul describes a figure who will set himself against every god, take his seat in God’s temple and present himself as God, before the Lord Jesus destroys him at his coming (2:3–8). Early Christian writers such as Irenaeus and Cyril of Jerusalem identified him with the Antichrist of the last days; the Reformers often saw the papacy; others think of a figure still to come or of a recurring pattern of rebellion against God. Paul says that something is holding him back, which the Thessalonians knew about; Augustine admitted he did not know what it was, and Christians still disagree."
+   },
+   {
+    "question": "Why does 2 Thessalonians say the day of the Lord had not yet come?",
+    "answer": "Someone, by a prophetic word, a spoken message or a letter claiming to come from Paul, was telling the church that the day of the Lord was already here (2:2). Paul answers that it cannot have come, because certain things must happen first: the great rebellion, and the unveiling of the man of lawlessness, who is being held back for now (2:3–7). The false claim was not that the day was near, which Paul himself taught, but that it had already arrived. His purpose is pastoral. Evil is real but on a leash, and the Lord Jesus will destroy it at his coming, so believers need not be shaken."
+   },
+   {
+    "question": "What does “Anyone who will not work should not eat” mean in 2 Thessalonians 3:10?",
+    "answer": "Paul repeats a rule he had given the church in person, because some members were living undisciplined lives, not busy working but busy with everyone else’s business, and expecting the church to feed them. The rule is about those who will not work, not those who cannot. Paul points to his own example: he worked night and day so as not to be a burden, though he had a right to support. And he is careful about how the rule is applied. The church is to keep its distance from such a person, but not to treat him as an enemy; he is to be corrected as a brother or sister."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#2th",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/2-thessalonians.jpg",
+  "pdf_url": "",
+  "cover_color": "#3a4a2e",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 53,
+  "sort_order": 300,
+  "is_published": true,
+  "created_at": "2026-11-11T20:30:14.317Z",
+  "updated_at": "2026-11-11T21:10:53.811Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-thessalonians",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>Brothers and sisters, we have a request about the coming of our Lord Jesus Christ and our gathering to meet him. Do not let yourselves be quickly shaken out of your senses or thrown into alarm by a prophetic word, a spoken message or a letter that claims to come from us, saying that the day of the Lord is already here.</p><p>— 2 Thessalonians 2:1–2</p></blockquote> <p>The young church in Thessalonica had been told to wait for the Lord’s coming. Now some of its members were told that the waiting was over. Someone, by a prophecy, a message or even a letter said to be from Paul, was claiming that the day of the Lord had already arrived. Believers who were already suffering persecution were thrown into alarm, and some had stopped working altogether.</p> <p>This short letter answers them. It is the shortest of the letters to churches that bear Paul’s name, three chapters long, and it does three things: it encourages a persecuted church, it corrects a mistaken idea about the end, and it tells the idle to go back to work.</p> <h3>A second letter</h3> <p>The letter opens with the same three names as the first, Paul, Silvanus and Timothy, and much of its language echoes 1 Thessalonians. The traditional view, still held by many scholars, is that Paul wrote it a few weeks or months after the first letter, from Corinth, around AD 51, when news reached him that the church’s hope had been knocked off balance.</p> <p>Many other scholars think it was written later by a follower of Paul, pointing to its cooler tone, its close imitation of the first letter, and its teaching that certain events must come before the day of the Lord, where 1 Thessalonians says the day comes like a thief. Defenders of Paul’s authorship answer that a writer facing a new error would naturally say something new, and that the letter’s closing signature (3:17) is hard to explain otherwise. A few have suggested that this letter was actually written first. The church has always received it as Paul’s.</p> <h3>The shape of the letter</h3> <ul> <li><strong>Chapter 1: suffering and justice.</strong> Thanks for a church whose faith is growing under persecution, and the promise that God will set things right when the Lord Jesus appears.</li> <li><strong>Chapter 2: the day has not yet come.</strong> What must happen first, and why believers need not be shaken.</li> <li><strong>Chapter 3: prayer and work.</strong> A request for prayer, a command to the idle, and a greeting in Paul’s own hand.</li> </ul> <h3>Suffering and justice</h3> <p>The church was still being persecuted, and its faith was growing anyway. Paul is proud of them. He also speaks to a question every suffering believer asks: will the wrong done to us ever be put right? His answer is yes. When the Lord Jesus appears from heaven “in a blaze of fire”, God will repay those who make his people suffer, and give rest to those who suffer. The language is drawn from the prophets, and it is severe: those who refuse the gospel will be “cut off from the presence of the Lord and from the glory of his power”.</p> <p>Paul does not tell the Thessalonians to take revenge. He tells them that justice belongs to God, and that the day of judgment is also the day when the Lord comes “to be glorified among his holy people”. Then he prays for them, that God would count them worthy of the life he called them to.</p> <h3>The day has not yet come</h3> <p>Chapter 2 is the heart of the letter, and one of the most puzzling passages in the New Testament. Paul tells the Thessalonians not to be shaken. The day of the Lord cannot already be here, because certain things must come first:</p> <blockquote><p>No one must lead you astray, whatever they say. Before that day comes, the great rebellion must first take place, and the man of lawlessness must be unveiled, the one doomed to destruction. He will set himself against every so-called god and everything people worship, and lift himself above them all, until he takes his seat in God’s temple and presents himself as God.</p><p>— 2 Thessalonians 2:3–4</p></blockquote> <p>Something, or someone, is holding him back for now, and the Thessalonians know what it is. Paul had told them while he was with them. We were not there, and we do not know. Augustine wrote frankly that he did not know what Paul meant, and then set out the guesses of his day.</p> <p>Christians have proposed many answers. Early writers such as Irenaeus and Cyril of Jerusalem saw the man of lawlessness as the Antichrist who would appear at the end, and many took the restraining power to be the Roman empire and its law. Some recalled the emperor Gaius (Caligula), who about ten years earlier had ordered his statue set up in the temple at Jerusalem. The Reformers often identified the man of lawlessness with the papacy, a view few hold today. Others think of a figure still to come, or of a pattern of rebellion against God that repeats through history. Proposals for the restrainer have included the empire, the preaching of the gospel, an angel, the Holy Spirit and God himself.</p> <p>What is not in doubt is Paul’s point. Evil is real and will come to a head, but it is on a leash. It is held back until its time, and when it is revealed, “the Lord Jesus will destroy him with the breath of his mouth and bring him to nothing by the brightness of his coming.” So the believers need not be shaken. They can give thanks, stand firm and hold on to what they were taught.</p> <h3>Anyone who will not work</h3> <p>The last chapter returns to a problem the first letter had touched on gently (1 Thessalonians 4:11; 5:14). Some members were living undisciplined lives, “not busy working” but “busy with everyone else’s business”, and expecting the church to feed them. Paul reminds them that he worked night and day so as not to be a burden, though he had a right to support, and he repeats a rule he had given them in person:</p> <blockquote><p>For even while we were with you, we gave you this instruction: “Anyone who will not work should not eat.”</p><p>— 2 Thessalonians 3:10</p></blockquote> <p>It is a rule about those who <em>will</em> not work, not those who cannot. And Paul is careful about how it is applied: keep your distance from such a person, but “do not treat that person as an enemy; correct them as a brother or sister.”</p> <p>Then Paul takes the pen from his secretary and writes the last lines himself, as the sign of a genuine letter. After the warning about letters claiming to come from him, the signature matters.</p> <h3>How to read 2 Thessalonians</h3> <p>Read 1 Thessalonians first, and then this letter straight after, to hear what has changed. Do not let chapter 2 swallow the rest. Its details are disputed, but its purpose is pastoral: to steady a frightened church. Read chapter 1 as comfort for anyone who suffers unjustly, and chapter 3 as a reminder that hope in the Lord’s coming is lived out in ordinary, faithful work.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Greek and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. A few of its choices in 2 Thessalonians are worth knowing about before you begin.</p> <p><strong>“Already here” (2:2).</strong> The Greek verb means “has arrived” or “is present”. The false claim was not that the day was near, which Paul himself taught, but that it had already come, and the translation says so.</p> <p><strong>“The man of lawlessness” (2:3).</strong> Many manuscripts read “the man of sin”, the phrase in older English Bibles; this translation follows those that read “lawlessness”, which links him to “the mystery of lawlessness” in verse 7.</p> <p><strong>“As the first of a harvest” (2:13).</strong> Two readings, a single letter apart in the oldest manuscripts, say either that God chose the Thessalonians “from the beginning” or “as firstfruits”, the first of a harvest offered to God. This translation follows the second, and explains the word.</p> <p><strong>“Undisciplined” (3:6, 3:11).</strong> The word was used of soldiers out of rank. Older Bibles have “disorderly”; the context makes plain that these members had stopped working.</p> <p>For the reasoning behind every sentence of the translation, with the Greek beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1434
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-thessalonians",
+   "en"
+  ],
+  "order": 2,
+  "title": "2 Thessalonians 1",
+  "body_html": "<h3>Greeting</h3><p>From Paul, Silvanus and Timothy, to the church of the Thessalonians, which belongs to God our Father and the Lord Jesus Christ. Grace and peace to you from God the Father and from the Lord Jesus Christ.</p><h3>Thanks, and God’s just judgment</h3><p>We are bound to thank God for you at all times, brothers and sisters, and rightly so, because your faith is growing beyond measure and the love every one of you has for the others keeps increasing. So we ourselves speak proudly of you among the churches of God, because of your endurance and faith in all the persecutions and troubles you are bearing. All this is evidence that God judges rightly, and the result will be that you are counted worthy of God’s kingdom, for which you are suffering. For it is right for God to repay with suffering those who make you suffer, and to give rest to you who suffer, as to us also, when the Lord Jesus appears from heaven with his mighty angels in a blaze of fire, bringing punishment on those who do not know God and on those who refuse to obey the gospel of our Lord Jesus. They will pay the penalty of eternal destruction, cut off from the presence of the Lord and from the glory of his power, on that day when he comes to be glorified among his holy people and marveled at by all who believed. And you are among those believers, for when we bore witness to you, you believed it. With this in view we pray for you constantly. We ask our God to count you worthy of the life he called you to, and by his power to fulfill every good desire you have and every work your faith takes on. Then the name of our Lord Jesus will be honored in you, and you will be honored in him, by the grace of our God and the Lord Jesus Christ.</p>",
+  "study_questions": [],
+  "word_count": 329
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-thessalonians",
+   "en"
+  ],
+  "order": 3,
+  "title": "2 Thessalonians 2",
+  "body_html": "<h3>The man of lawlessness</h3><p>Brothers and sisters, we have a request about the coming of our Lord Jesus Christ and our gathering to meet him. Do not let yourselves be quickly shaken out of your senses or thrown into alarm by a prophetic word, a spoken message or a letter that claims to come from us, saying that the day of the Lord is already here. No one must lead you astray, whatever they say. Before that day comes, the great rebellion must first take place, and the man of lawlessness must be unveiled, the one doomed to destruction. He will set himself against every so-called god and everything people worship, and lift himself above them all, until he takes his seat in God’s temple and presents himself as God. Surely you remember: I kept telling you this while I was still with you. And you know what is holding him back now, so that he will be revealed only when his time comes. For the mystery of lawlessness is already at work, but only until the one who now holds it back is taken out of the way. Then the lawless one will be unveiled, and the Lord Jesus will destroy him with the breath of his mouth and bring him to nothing by the brightness of his coming. The lawless one comes by Satan’s working, with all kinds of power, with false signs and wonders, and with every evil trick to deceive those who are on the way to ruin. They are lost because they would not welcome the love of the truth, which would have saved them. That is why God sends them a deluding power, so that they put their trust in the lie, and judgment comes on all who refused to believe the truth and chose to take pleasure in what is wrong.</p><h3>Chosen to be saved</h3><p>But we must always thank God for you, brothers and sisters whom the Lord loves, because God chose you, as the first of a harvest, to be saved, through the Spirit who makes you holy and through your faith in the truth. To this he called you when we brought you the gospel, so that you would come to possess the glory of our Lord Jesus Christ. So, brothers and sisters, keep standing firm, and keep a firm grip on the traditions you were taught by us, whether we spoke them in person or wrote them in our letter.</p><p>Our Lord Jesus Christ himself and God our Father loved us and gave us eternal comfort and a good hope by grace. May they comfort your hearts and steady them in every good deed and word.</p>",
+  "study_questions": [],
+  "word_count": 447
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-thessalonians",
+   "en"
+  ],
+  "order": 4,
+  "title": "2 Thessalonians 3",
+  "body_html": "<h3>Pray for us</h3><p>Finally, brothers and sisters, pray for us: pray that the word of the Lord may run swiftly and be glorified everywhere, as it was among you, and that we may be rescued from perverse and wicked people, for faith is not found in everyone. But the Lord can be trusted: he will make you strong and guard you from the evil one. Because of the Lord, we are confident about you: you are doing what we tell you, and you will go on doing it. May the Lord guide your hearts into the love of God and the endurance of Christ.</p><h3>Anyone who will not work</h3><p>Brothers and sisters, in the name of our Lord Jesus Christ we command you: keep your distance from any brother or sister who lives an undisciplined life, contrary to the tradition they received from us. You know yourselves that you should imitate us. We did not live idly among you, and we never ate anyone’s bread as a gift; we labored and toiled, working night and day, so as not to be a burden to any of you. It was not that we had no right to support, but we wanted to give you an example to follow. For even while we were with you, we gave you this instruction: “Anyone who will not work should not eat.” We hear that some among you are living undisciplined lives: they are not busy working, they are busy with everyone else’s business. We command such people, and we urge them in the Lord Jesus Christ, to go about their work quietly and to eat bread they have earned themselves. As for you, brothers and sisters, do not lose heart in doing what is right.</p><p>If anyone will not obey what we say in this letter, take note of that person and have nothing to do with them, so that they will be ashamed. But do not treat that person as an enemy; correct them as a brother or sister.</p><h3>Peace, and Paul’s own greeting</h3><p>Now may the Lord of peace himself grant you peace continually and in every way. The Lord be with you all.</p><p>This greeting is in my own handwriting, Paul’s. It is the sign of genuineness in every letter; this is how I write. May the grace of our Lord Jesus Christ be with you all.</p>",
+  "study_questions": [],
+  "word_count": 396
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-thessalonians",
+   "en"
+  ],
+  "order": 5,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>May the Lord guide your hearts into the love of God and the endurance of Christ.</p><p>— 2 Thessalonians 3:5</p></blockquote> <p>A letter that contains one of the most puzzling passages in the Bible ends with one of its simplest prayers. Paul does not pray that the Thessalonians will understand the man of lawlessness or name the power that holds him back. He prays that their hearts will be led deeper into God’s love and into the endurance of Christ. That is what a frightened church needs, and it is what every reader of this letter needs, whatever they make of chapter 2.</p> <h3>The question the letter leaves</h3> <p>How should Christians wait? The Thessalonians had been tempted two ways at once: to be shaken by every new report that the end had come, and to give up ordinary life because of it. Paul’s answer to both is the same. Do not be shaken; keep a firm grip on what you were taught. Do not be idle; go about your work quietly. “As for you, brothers and sisters, do not lose heart in doing what is right.” Hope in the Lord’s coming, rightly held, makes a person steadier, not more anxious, and more faithful in the work in front of them.</p> <h3>Where to go from here</h3> <p>Readers have puzzled over this letter and preached from it for as long as there has been a church, and several of them are in this library:</p> <ul> <li><strong>On growing faith (1:3).</strong> Charles H. Spurgeon’s <em>A Lecture for Little-Faith</em>, on Paul’s thanks that the church’s faith was growing beyond measure.</li> <li><strong>On the day of the Lord and the man of lawlessness (2:1–12).</strong> Augustine of Hippo’s <em>The City of God</em>, whose twentieth book weighs the guesses of his day and admits he does not know; Cyril of Jerusalem’s <em>The Catechetical Lectures</em>, whose fifteenth lecture, on Christ’s coming in glory, expounds the passage for new believers; and the fifth book of Irenaeus of Lyons’s <em>Against Heresies</em>.</li> <li><strong>On the hope of glory (1:10).</strong> Richard Baxter’s <em>The Saints’ Everlasting Rest</em>, which takes up the day when Christ is glorified among his people.</li> <li><strong>On work (3:6–13).</strong> Spurgeon’s <em>John Ploughman’s Talk</em>, whose homely chapter “To the Idle” makes Paul’s point in a farmer’s voice.</li> </ul> <p>And go back to 1 Thessalonians, in this same edition, if you have not read it; the two letters are best read side by side.</p> <p>Every reference to 2 Thessalonians in this library can be tapped to read the verse, and the Scripture pages gather what the great writers of the church have said about each passage. But the best next step may be to read the letter again, and to make its closing prayer your own:</p> <blockquote><p>Now may the Lord of peace himself grant you peace continually and in every way. The Lord be with you all.</p><p>— 2 Thessalonians 3:16</p></blockquote>",
+  "study_questions": [],
+  "word_count": 479
+ }
+}
+]
+
