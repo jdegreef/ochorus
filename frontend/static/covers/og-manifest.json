@@ -1973,7 +1973,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -3918,6 +3918,36 @@
 			"middle": [
 				295,
 				499
+			]
+		},
+		"am/the-pursuit-of-god": {
+			"ground": "9c656faaf9c16395795192ae6f4ffe77df0126c5ec1e3cb74c7c429bd37869d8",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[78, 222, 522, 319],
+					[223, 306, 377, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
 			]
 		},
 		"am/the-reformed-pastor": {
@@ -9257,7 +9287,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -10711,6 +10741,20 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"es/sons-of-the-king-1": {
+			"ground": "958b0cb464bfcad1db9f89cee59bfa2e3698b613efd34cc5543f6fc04937e0c1",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false
 		},
 		"es/sons-of-the-king-3": {
 			"ground": "00f2008db5a84e37141b99252d0f67b3d2ff9d42fb6bf38c0f8f051ac6df0dd9",
@@ -14147,7 +14191,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -18097,6 +18141,39 @@
 			"bar": 0.03,
 			"caps": false
 		},
+		"hi/mortification-of-sin": {
+			"ground": "3359ec21b32234dd914c09c32017409391cee896393e9852510a85aad1fcc2dd",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[140, 293, 460, 360],
+					[165, 375, 435, 442]
+				],
+				"subtitle": [
+					[123, 514, 477, 536]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				253,
+				542
+			]
+		},
 		"hi/necessity-of-prayer": {
 			"ground": "0c1c1f229605b74f00a1cfb20322f1c31f74d14c631b673d315504049333e863",
 			"style": "devotional",
@@ -20733,7 +20810,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -31572,6 +31649,41 @@
 				404
 			]
 		},
+		"sw/key-teachings-of-jonathan-edwards": {
+			"ground": "6c895636ee6a5bec05fc2a9bc7207c4f7ffa91ccec65af46ca1e5f62fed17872",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[147, 169, 453, 232],
+					[177, 225, 423, 288],
+					[63, 280, 537, 343]
+				],
+				"subtitle": [
+					[138, 404, 462, 432],
+					[128, 432, 472, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"sw/key-teachings-of-richard-baxter": {
 			"ground": "6ad0966d84a8b96afe6cb398cd7f7113303a7251da9fa4b471395c4fb4add1c3",
 			"style": "originals",
@@ -39352,6 +39464,36 @@
 			"middle": [
 				237,
 				558
+			]
+		},
+		"vi/the-masters-indwelling": {
+			"ground": "9b1942de887d5b3198972360264bbde39caa6be21bcc0e2d77d1f5fb313e528c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[156, 284, 444, 372],
+					[138, 361, 462, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
 			]
 		},
 		"vi/the-person-and-work-of-the-holy-spirit": {
