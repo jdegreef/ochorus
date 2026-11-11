@@ -22713,6 +22713,38 @@
 			"bar": 0,
 			"caps": true
 		},
+		"ko/susanna-wesley-clarke": {
+			"ground": "0506132ecef807bdb43e6b28baa12c4c84b267261977d4deb9cbc61725b71406",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[51, 319, 549, 424]
+				],
+				"subtitle": [
+					[180, 477, 420, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+		},
 		"ko/talks-to-the-farmer-children": {
 			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
 			"style": "young",
