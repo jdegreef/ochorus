@@ -1,0 +1,3004 @@
+{
+ "kind": "book",
+ "slug": "life-and-diary-of-david-brainerd",
+ "language": "uk",
+ "job_issue": 6901,
+ "pull_request": null,
+ "note": [
+  "Take Root is not used: the Kulish text (ukr1871, public domain, 1905) was fetched from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/ukr_pan) via scripts/bible_mirror.py — 66 books, 31,082 verses, zero welded sentences — and handed to every translator on disk.",
+  "Statuses were checked by measurement, not taken from the translators' reports: a row stays mined only when the rendered block (±1) carries at least two consecutive words of the cited Kulish verse verbatim (blind to our quotation marks and case). Four claimed rows failed that and are self_rendered; two more were demoted on the translator's own flag (1 Thess 2:13, Ps 118:23). Bare sermon-text citations that quote no words carry no row.",
+  "Kulish's inner mark ‟ (U+201F) is normalised to “, as in the shipped uk corpus. Hebrews is cited as «Євреїв», not Kulish's running head «Жидів» (the corpus majority, and «жид» is pejorative in modern Ukrainian). Other book names follow Kulish's \\toc2 heads (Маттея, Дїяння, Псальма, 1 Мойсея…).",
+  "chapter_order + block_index locate each row (blocks split on </p>|</blockquote>|</h3> within the chapter). AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 3,
+   "why": "'without God in the world' — Kulish has plural adjective 'безбожні в сьвітї'; singular first-person narrative needs 'без Бога у світі', and modern 'безбожний' reads as 'wicked'"
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 3,
+   "why": "re-personed by Brainerd ('Almost I was persuaded'); rendered 'Мало не вговорено мене бути Християнином' echoing Kulish's 'мало не вговорив єси мене бути Християнином'"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 4,
+   "why": "same phrase repeated; same rendering as block 3"
+  },
+  {
+   "reference": "Matthew 7:13-14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 9,
+   "why": "loose allusion ('the gate appeared so very strait'), not a quotation"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 13
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 16
+  },
+  {
+   "reference": "John 6:60",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17,
+   "why": "Kulish words 'знеможені та отягчені' used but inflected to genitive ('до знеможених та отягчених')"
+  },
+  {
+   "reference": "Luke 16:26",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17,
+   "why": "loose allusion 'a great gulph'; rendered 'великою прірвою'"
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 19,
+   "why": "'dead in trespasses and sins' — Kulish 'мертві провинами й гріхами вашими' adapted to singular: 'мертвий провинами й гріхами'"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 19,
+   "why": "'convenient season' — Kulish 'мавши час' doesn't carry 'more convenient'; rendered 'слушнішого часу'"
+  },
+  {
+   "reference": "John 3:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 20,
+   "why": "Brainerd paraphrases and expands the verse (no quote marks); own rendering of his paraphrase"
+  },
+  {
+   "reference": "Romans 3:19",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 20,
+   "why": "allusion 'my mouth would be for ever stopped'; uses Kulish verb 'загородились' in own sentence"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 23,
+   "why": "loose allusion 'God over all for ever and ever'; rendered «Бог над усім повік-віків» in prose"
+  },
+  {
+   "reference": "Deuteronomy 6:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 2,
+   "block_index": 26
+  },
+  {
+   "reference": "Psalm 94:19",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 28,
+   "why": "Brainerd re-persons 'thy comforts' to 'God's comforts', adds emphasised 'principally'; Kulish wording kept otherwise («від натовпу думок моїх»→«серед натовпу думок моїх»)"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 32,
+   "why": "allusion 'hungering and thirsting after righteousness' adapted to fem. singular («голодна й жадна правди»)"
+  },
+  {
+   "reference": "Galatians 3:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 32,
+   "why": "'set forth crucified before me' built from Kulish words (прописаний, розпятий, перед очима) re-personed"
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 31,
+   "why": "allusion 'love cast out fear', prose rendering"
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 32,
+   "why": "allusion 'love and joy cast out fear', prose rendering"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 34,
+   "why": "'shedding abroad his love in my heart' re-personed from «любов Божа вилилась у серця наші»"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 37,
+   "why": "Kulish «від любови Божої, що в Христї Ісусї, Господї нашім» with нашім→моїм and verb «не возможе мене розлучити» per Brainerd's 'my Lord'"
+  },
+  {
+   "reference": "Proverbs 10:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 41,
+   "why": "'whose memory is blessed' — Kulish «Память ... остане благословенна» without the intervening «про праведника»"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 3:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 2,
+   "why": "measured: the rendering is not a verbatim Kulish span (1 consecutive words match)"
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 2,
+   "why": "loose allusion to the mansions prepared; only 'осель' echoes Kulish"
+  },
+  {
+   "reference": "Matthew 14:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 3
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "'body of sin and death' is Brainerd's own conflation, not a quotation; rendered in modern spelling"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 9,
+   "why": "allusion 'lift up the light of his countenance upon me', unquoted, third-person narrative"
+  },
+  {
+   "reference": "Job 3:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 10,
+   "why": "Kulish 'спочивають ті, що вичерпали сили' re-tensed to future 'спочинуть' to match 'will be at rest'"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 11,
+   "why": "italic 'I long for God' — echo of Kulish 'жадає Бога' re-personed 'жадаю Бога'"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 13,
+   "why": "'to send me into his harvest' re-personed from Kulish 'вислав женцїв на жниво своє'"
+  },
+  {
+   "reference": "Exodus 33:19",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 14,
+   "why": "re-personed and re-tensed from Kulish 'Проведу всю милость мою перед лицем твоїм' → 'проводив милость Свою перед лицем моїм'"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 16
+  },
+  {
+   "reference": "Revelation 21:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 18
+  },
+  {
+   "reference": "Revelation 15:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 18,
+   "why": "'song of Moses and the Lamb' condensed; Kulish has 'пісню Мойсея... і пісню Агнця'"
+  },
+  {
+   "reference": "Revelation 14:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 20
+  },
+  {
+   "reference": "John 13:25",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 21,
+   "why": "allusion 'lean on his bosom' → 'пригорнутися до Його грудей', echoing Kulish's 'Пригорнувшись... до грудей'"
+  },
+  {
+   "reference": "Isaiah 38:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 3,
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 1:25",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 21,
+   "why": "re-personed (God as third person, 'me' as object): 'счистив з мене жужелицю й віддїлив від мене все олово'"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 24,
+   "why": "measured: the rendering is not a verbatim Kulish span (1 consecutive words match)"
+  },
+  {
+   "reference": "Psalm 4:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 25,
+   "why": "'show me the light of his countenance' re-personed from 'Яви нам... сьвітло лиця твого'; modern spelling used"
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 25,
+   "why": "allusion 'sweat blood', not a quotation"
+  },
+  {
+   "reference": "1 Samuel 27:1",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 28,
+   "why": "Kulish 'Попадусь я таки колись Саулові в руки' loses 'perish'; rendered Brainerd's wording 'загину я від руки Саулової'"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 32,
+   "why": "'come quickly' adapted from Kulish 'прийду хутко' → 'прийди хутко'; first part verbatim"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 4,
+   "why": "singularised 'wise as a serpent, harmless as a dove' following Kulish vocabulary (мудрим, як вуж, і тихим, як голуб)"
+  },
+  {
+   "reference": "Matthew 24:46",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 11:13 / 1 Peter 2:11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 8,
+   "why": "loose allusion about brother John, unquoted"
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 11,
+   "why": "singular, re-personed paraphrase of the verse"
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 4,
+   "block_index": 11
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 12,
+   "why": "idiomatic allusion; Kulish has 'земля і порох', kept the English pair 'порох і попіл'"
+  },
+  {
+   "reference": "Ezekiel 13:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 12,
+   "why": "verb form adapted from Kulish 'мастять її глиною' -> 'мазати глиною'"
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 7:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 17:15",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13,
+   "why": "Brainerd's paraphrase ('when I awake in God's likeness') diverges from Kulish wording"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13,
+   "why": "Kulish 'біжу до мети' re-cast as infinitive 'бігти до мети'"
+  },
+  {
+   "reference": "1 Peter 1:16 / Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 14,
+   "why": "third-person paraphrase 'holy, as God is holy'"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 15,
+   "why": "AV-phrase allusion absent from Kulish wording"
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 4,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Samuel 24:14 / 2 Samuel 9:8",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 18,
+   "why": "allusion; Kulish 'здохлим псом' put into nominative 'здохлий пес'"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 5,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 5,
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 27:5",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 17,
+   "why": "'take hold of God's strength' follows the AV wording ('take hold of my strength'); Kulish renders the verse quite differently (шукати захисту в мене), so pasting it would change his meaning"
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 5,
+   "block_index": 23
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 23,
+   "why": "«ходили з Богом» — Kulish's verb ходив re-personed to plural to fit 'that they should walk with God'"
+  },
+  {
+   "reference": "Psalm 27:5 / 31:20",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 12,
+   "why": "'abide in his pavilion' is an unquoted loose allusion; rendered «перебувати в Його наметі»"
+  },
+  {
+   "reference": "Job 10:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4,
+   "why": "allusion 'made me to differ'; echoed Kulish verb одрізнити in my own syntax"
+  },
+  {
+   "reference": "Acts 26:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 49:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8,
+   "why": "Kulish reads 'iniquity of those who pursue me', not 'iniquity of my heels'; pasting would change Brainerd's meaning"
+  },
+  {
+   "reference": "Psalm 25:7",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8,
+   "why": "only the phrase 'гріхи молодостї моєї' is Kulish; 'set in order before me' is Brainerd's composite wording"
+  },
+  {
+   "reference": "Psalm 38:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 13:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 9,
+   "why": "allusion 'God hides his face from me', third person; adapted from Kulish ховати лице"
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 65:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 19,
+   "why": "re-personed to first person ('my sojourning ... in his fear') from Kulish wording"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 21,
+   "why": "Brainerd's 'counted ... of the present life' re-cast; Kulish words adapted to past tense/accusative"
+  },
+  {
+   "reference": "John 16:21",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 21,
+   "why": "re-tensed and re-personed to 'I remembered no more'"
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 21,
+   "why": "'Rock of Ages' is the AV margin reading; Kulish has 'твердиня вічна'; rendered as the hymn title «Скеля віків»"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 21,
+   "why": "re-personed to third person ('never leave it nor forsake it')"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 21,
+   "why": "adapted to 'work together for its good' with Kulish core 'усе допомагає до доброго'"
+  },
+  {
+   "reference": "Hebrews 12:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 28
+  },
+  {
+   "reference": "Acts 21:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 11:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 33
+  },
+  {
+   "reference": "Psalm 145:4 / Ps 9:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 37,
+   "why": "“show forth God’s goodness and works of grace” matches no single verse; translated his words"
+  },
+  {
+   "reference": "2 Kings 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 39
+  },
+  {
+   "reference": "2 Kings 2:9",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 39,
+   "why": "“double portion of that spirit” adapted from Kulish «удвоє духа» to fit his sentence"
+  },
+  {
+   "reference": "2 Kings 2:15",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 39,
+   "why": "“rest on me” adapted from Kulish «опочив» (re-personed/re-gendered: «опочило на мені»)"
+  },
+  {
+   "reference": "Psalm 48:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 43
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 43
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 43,
+   "why": "“from him comes thy salvation” re-personed (Kulish «від него моє спасеннє» → «від Него твоє спасеннє»)"
+  },
+  {
+   "reference": "1 Peter 4:7",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 47,
+   "why": "italic allusion “watch unto prayer”, not quoted; rendered «чувати в молитві»"
+  },
+  {
+   "reference": "Hebrews 11:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 48,
+   "why": "“see Him who is invisible” — Kulish «Невидомого видить» re-cast as infinitive «бачити Невидомого»"
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 48,
+   "why": "‘continue instant in prayer’ — Kulish plural adjective «в молитві непереставаючі» does not fit his sentence; rendered „неустанно перебувати в молитві“"
+  },
+  {
+   "reference": "Ephesians 6:10",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 48,
+   "why": "Kulish imperative «кріпіть ся в Господї і в потузї сили Його» turned predicative: «кріпка в Господї і в потузї сили Його»"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 49,
+   "why": "Kulish genitive «починателя і звершителя віри» put in nominative «починатель і звершитель віри»"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 49,
+   "why": "re-personed: «без Него не можу робити нїчого»"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 49,
+   "why": "Kulish «у вас» → «у нас», parenthetical words dropped: «Він робить у нас, щоб і хотїти і робити по Його вподобі»"
+  },
+  {
+   "reference": "1 Peter 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 50
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 50
+  },
+  {
+   "reference": "1 Peter 1:15-16",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 50,
+   "why": "“holy, as he is holy” re-personed; modern spelling «святою, як Він святий»"
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 50,
+   "why": "“pure, even as Christ is pure” — Kulish «яко і Він чистий» with Christ named: «чистою, яко і Христос чистий»"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 50,
+   "why": "re-personed: «звершеною, як Отець мій, що на небі, звершений»"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 52
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 52
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 55
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 60,
+   "why": "indirect-speech allusion (what they should do to be saved); rendered «що їм робити, щоб спастись?» re-personed from Kulish's «що менї робити, щоб спастись?»"
+  },
+  {
+   "reference": "Hebrews 11:38",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 71,
+   "why": "English elides the verse ('wandered about in dens and caves of the earth'); Kulish words used but non-contiguous: «скитались ... по вертепах і проваллях земних»"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 71
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 75
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 6,
+   "block_index": 77
+  },
+  {
+   "reference": "Hosea 3:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 79,
+   "why": "loose allusion ('to be for him, and not for another'); Kulish wording differs, translated directly"
+  },
+  {
+   "reference": "Matthew 19:26",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 5,
+   "why": "uncited allusion; 'у людей не можливою' inflected to fit sentence (Kulish: 'У людей се не можливе'), 'у Бога ж' and 'все можливе' verbatim"
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 5,
+   "why": "'instant in prayer' loose idiom; rendered 'невпинно молитися'"
+  },
+  {
+   "reference": "Psalm 144:5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 5,
+   "why": "indirect speech: Kulish imperative 'прихили небо твоє, і зійди' re-tensed to 'прихилить небо і зійде'"
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 5,
+   "why": "re-personed: 'вибраною посудиною, щоб нести ймя Його перед поган' (Kulish 'ймя моє')"
+  },
+  {
+   "reference": "Isaiah 64:10",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 7,
+   "why": "loose allusion 'O how does Zion lie waste!'; rendered in own words"
+  },
+  {
+   "reference": "Acts 14:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 8,
+   "why": "Brainerd expands 'vanities' to 'all the vanities of the heathen'; built on Kulish 'від сих дурниць навернулись до Бога живого' -> 'навернутись від усїх поганських дурниць до Бога живого'"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 8,
+   "why": "phrase 'силу в нутряному чоловіку' inflected from Kulish 'силою ... у нутряному чоловіку'"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 10,
+   "why": "singular 'здатним слугою нового завіту' vs Kulish plural 'слугами нового завіту'"
+  },
+  {
+   "reference": "Jeremiah 3:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 12,
+   "why": "'continue instant in prayer' loose idiom; rendered 'невпинно перебувати в молитві'"
+  },
+  {
+   "reference": "Psalm 137:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 13,
+   "why": "re-applied to God: 'ставлю Його над усї радощі мої' (Kulish 'поставлю Єрусалима над усї радощі мої')"
+  },
+  {
+   "reference": "Psalm 144:5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 14,
+   "why": "quoted in indirect speech; imperative re-tensed to 'прихилить небо і зійде'"
+  },
+  {
+   "reference": "Psalm 34:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 21,
+   "why": "re-personed and re-tensed: 'зберіг усї костї мої, і нї одна з них не переломилась' (Kulish 'Він хоронить всї костї його, і нї одна з них не переломиться'); AV numbering matches Kulish here"
+  },
+  {
+   "reference": "Jeremiah 50:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 22
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 22,
+   "why": "Brainerd's own adaptation with inserted 'I trust'; rendered in own words"
+  },
+  {
+   "reference": "Acts 16:19",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 24,
+   "why": "Brainerd adds 'unlawful': 'надія їх неправедного заробітку' (Kulish 'надія заробітку їх')"
+  },
+  {
+   "reference": "2 Timothy 4:17 / Acts 23:11",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 33,
+   "why": "'This night ... the Lord stood by me' blends Acts 23:11 and 2 Tim 4:17; used Kulish 2TI 4:17 'Господь ... став передо мною' minus 'же'"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 33,
+   "why": "re-personed from Kulish 'Виливайте перед ним серця ваші' to 'виливати серце моє перед Богом'"
+  },
+  {
+   "reference": "1 Kings 8:38",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 47,
+   "why": "italic allusion 'the plague of my own heart'; Kulish word 'горе в серцї' adapted to 'горе в моєму власному серці'"
+  },
+  {
+   "reference": "Revelation 18:2",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 47,
+   "why": "loose allusion 'cage of unclean and hateful birds'; Kulish adjectives 'нечистій і огидній' reused in modern case"
+  },
+  {
+   "reference": "Hebrews 12:24 + 1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 47,
+   "why": "composite quote; Kulish 'крови кроплення' put into instrumental 'кровю кроплення' + 1JN 1:7 'очищає ... од усякого гріха' (dropped 'нас')"
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 48
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 49,
+   "why": "'Прийди, Господи Ісусе' from Kulish; 'come quickly' re-personed from Christ's 'прийду хутко' to 'прийди хутко'"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 49,
+   "why": "re-tensed Kulish 'жадає Бога, живого Бога' to past 'жадала'"
+  },
+  {
+   "reference": "Song of Songs 1:2",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 49,
+   "why": "Kulish numbering off by one (AV 1:2 = Kulish 1:1); 'Ласкавість бо твоя над вино солодша' used minus 'бо'"
+  },
+  {
+   "reference": "Luke 13:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 50
+  },
+  {
+   "reference": "Psalm 77:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 53
+  },
+  {
+   "reference": "Luke 13:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 53
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 45
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 55,
+   "why": "as block 24: 'прийди, Господи Ісусе' Kulish; 'прийди хутко' re-personed"
+  },
+  {
+   "reference": "Psalm 89:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 58,
+   "why": "'know the joyful sound' as indirect wish: Kulish 'розуміє голос твій торжествуючий' re-personed/re-moded to 'розуміли голос торжествуючий' (dropped 'твій' to fit)"
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 58,
+   "why": "uncited allusion 'death without a sting'; rendered 'без жала' (Kulish 'жоло' in a question form)"
+  },
+  {
+   "reference": "John 7:37",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 59
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 59,
+   "why": "uncited allusion 'quick and powerful is the word'; Kulish words 'живе', 'дїйственне', 'слово' used but reordered into an exclamation"
+  },
+  {
+   "reference": "John 7:37",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 60
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 60
+  },
+  {
+   "reference": "Ecclesiastes 5:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 60,
+   "why": "Kulish numbers it 5:19 and reads 'надоложив йому радощами серця його' — does not fit 'answered me'; rendered 'відповів мені радощами серця мого'"
+  },
+  {
+   "reference": "John 6:67",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 61
+  },
+  {
+   "reference": "Zechariah 13:1",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 61,
+   "why": "uncited allusion 'fountain opened to purge away sin'; Kulish 'криниця на змиттє гріха' inflected to 'криниці, відкритої на змиттє гріха'"
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 62,
+   "why": "uncited allusion; 'криницю води живої' verbatim, 'broken cisterns' inflected to genitive 'дїравих колодязїв'"
+  },
+  {
+   "reference": "Psalm 103:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 62
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 66
+  },
+  {
+   "reference": "2 Peter 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 68
+  },
+  {
+   "reference": "Psalm 17:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 70
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 72
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 73,
+   "why": "'mystery of godliness' — Kulish 'тайна благочестя' inflected to genitive «тайни благочестя»"
+  },
+  {
+   "reference": "Psalm 17:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 73,
+   "why": "author adapts ('with it'); 'пробудившись, буду ... насищатись' verbatim with 'образом твоїм' replaced by 'ним', and 'thy likeness' as 'Твого образу'"
+  },
+  {
+   "reference": "Mark 6:7",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 64,
+   "why": "paraphrase 'sent out his disciples two and two' in Brainerd's prose; only 'по двоє' from Kulish"
+  },
+  {
+   "reference": "Isaiah 40:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 76
+  },
+  {
+   "reference": "Zechariah 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 76
+  },
+  {
+   "reference": "Psalm 17:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 7,
+   "block_index": 77
+  },
+  {
+   "reference": "Psalm 16:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 78,
+   "why": "'These are the excellent ones of the earth' restructured ('Це ті величні на землі'); second span 'вони уся моя радість' is verbatim Kulish"
+  },
+  {
+   "reference": "Psalm 30:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 126:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 23,
+   "why": "jailer's question re-personed to 3rd-person reported speech: «Що йому робити, щоб спастись?» (Kulish «що менї робити, щоб спастись»)"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 30
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 38,
+   "why": "indirect speech: Kulish 'що менї робити, щоб спастись' re-personed to 'що їм робити, щоб спастись'"
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 40
+  },
+  {
+   "reference": "Isaiah 53:1",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 41,
+   "why": "allusion 'the arm of the Lord was revealed': Kulish noun phrase 'правиця Господня' kept, Kulish 'явна' recast as 'явлена' to fit his clause"
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 43,
+   "why": "'like a mighty rushing wind' as a simile on the power of God; Kulish 'мов би од віючого буйного вітру' (genitive 'from the sound of') recast 'мов віючий буйний вітер'"
+  },
+  {
+   "reference": "Zechariah 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 44
+  },
+  {
+   "reference": "Zechariah 12:12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 44,
+   "why": "'mourn apart': Kulish 'ридати ме ... окроме' re-tensed to past 'ридав окроме'"
+  },
+  {
+   "reference": "Joshua 10:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 44
+  },
+  {
+   "reference": "Acts 17:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 45
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 47
+  },
+  {
+   "reference": "Zechariah 12:11-12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 47,
+   "why": "echo of 'great mourning'/'mourn apart' in italics: 'голосний плач' (Kulish) + 'ридав окроме' (re-tensed)"
+  },
+  {
+   "reference": "2 Corinthians 5:8",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 48,
+   "why": "unquoted allusion in prose: Kulish wording 'бути далеко від тїла ... домувати у Господа' adapted, modern spelling 'тіла', 'щоб' for 'а'"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 49
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 50,
+   "why": "Brainerd says 'the word of the LORD' (AV: of God): Kulish 'слово Боже' changed to 'слово Господнє', 'бо' dropped; rest verbatim 'живе і дїйственне, і гостріще всякого обоюдного меча'"
+  },
+  {
+   "reference": "Matthew 9:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 55
+  },
+  {
+   "reference": "2 Chronicles 20:17 / Exodus 14:13",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 58,
+   "why": "'stand still, and see the salvation of God': 2 Chr 20:17 Kulish 'стійте та дивіться на спасеннє Господнє' recast to infinitives 'стояти та дивитись на спасеннє Господнє' (Kulish 'Господнє' kept though he writes 'of God')"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 58
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 61
+  },
+  {
+   "reference": "John 5:4",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 61,
+   "why": "unquoted allusion; only the phrase 'збивав воду' is taken from Kulish, the rest is prose"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 63,
+   "why": "Brainerd paraphrases 'ascend up and meet him in the air'; Kulish 'будемо підхоплені ... назустріч Господеві на воздух' does not fit his infinitive construction"
+  },
+  {
+   "reference": "1 Thessalonians 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 63
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 64
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 64,
+   "why": "reported speech in the third person; Kulish 'що менї робити, щоб спастись' re-personed to 'що йому робити, щоб спастись'"
+  },
+  {
+   "reference": "1 John 3:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 69
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 71,
+   "why": "loose allusion ('Him in whom the weary find rest'); I only echoed 'знеможені' and 'спочинок'"
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 74
+  },
+  {
+   "reference": "Hebrews 11:36",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 77,
+   "why": "'trial of cruel mockings' adapted from Kulish's 'наруги ... дізнали' as 'дізнали жорстоких наруг'"
+  },
+  {
+   "reference": "Psalm 74:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 80
+  },
+  {
+   "reference": "Revelation 2:13",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 80,
+   "why": "allusion ('Satan seems to have his seat'): 'має свій престол', from Kulish's 'престол сатани'"
+  },
+  {
+   "reference": "1 Corinthians 16:9",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 81,
+   "why": "allusion ('open an effectual door'): 'відчинить великі й широкі двері', after Kulish's 'Двері бо великі й широкі відчинились'"
+  },
+  {
+   "reference": "2 Timothy 2:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 93
+  },
+  {
+   "reference": "2 Kings 5:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 94,
+   "why": "Brainerd follows the AV 'strike his hand over the place, and call on the name of the LORD his God', adapted to the heathen ('their god'); Kulish has 'доторкнеться рукою своєю прокази ... призове ймя Господа, Бога свого', which does not fit his wording"
+  },
+  {
+   "reference": "2 Timothy 2:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 96,
+   "why": "Brainerd's 'led captive by Satan at his will' names Satan where the verse has 'him'; kept Kulish's 'живими вловлені ... у його волю' but inserted 'сатаною'"
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 96
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 103
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 103
+  },
+  {
+   "reference": "Acts 11:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 107
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 109
+  },
+  {
+   "reference": "Revelation 21:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 109
+  },
+  {
+   "reference": "Luke 16:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 110
+  },
+  {
+   "reference": "Psalm 8:2 / Hebrews 11:34",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 117,
+   "why": "'ordained strength out of weakness' blends Ps 8:2 (AV 'ordained strength') with Heb 11:34 ('out of weakness'); Kulish Ps 8:2 reads 'вчинив хвалу', so pasting would lose his wording"
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 119,
+   "why": "indirect, re-personed ('they'): 'Що їм робити, щоб спастись?' adapted from Kulish 'що менї робити, щоб спастись?'"
+  },
+  {
+   "reference": "Isaiah 43:13",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 122,
+   "why": "proverbial adaptation 'If God will work, who can hinder?'; built on Kulish 'я вчиню, а хто те переіначить?' re-personed to God in third person"
+  },
+  {
+   "reference": "Matthew 7:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 127,
+   "why": "loose allusion ('build upon the sand'); rendered «будуватиму на піску», echoing Kulish's «на піску»"
+  },
+  {
+   "reference": "Acts 16:29",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 129,
+   "why": "allusion to the jailer trembling, not a quotation"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 131,
+   "why": "Kulish «гріх, що путав нас» re-personed to «гріха, що путав їх» (case + person adjusted)"
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 131,
+   "why": "Brainerd inverts the verse ('esteem themselves better than others'); Kulish wording («вважаючи більшим себе») would not carry his sense"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 132
+  },
+  {
+   "reference": "Psalm 72:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 133
+  },
+  {
+   "reference": "Isaiah 28:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 137,
+   "why": "Brainerd reverses the order (line before precept); built from Kulish's «правило та правило» / «заповідь на заповідь», reordered and declined"
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 8,
+   "block_index": 137
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 137,
+   "why": "Kulish «що менї робити, щоб спастись?» re-personed to plural «що нам робити, щоб спастись?» as Brainerd has 'we'"
+  },
+  {
+   "reference": "Matthew 9:38 / Luke 10:2",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 137,
+   "why": "adapted prayer ('other laborers into this part of his harvest'); uses Kulish's «Господь жнива», rest rendered"
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 137,
+   "why": "adapted ('those who sit in darkness may see'); «сьвітло велике» from Kulish, verb/clause recast"
+  },
+  {
+   "reference": "Habakkuk 2:14 / Isaiah 11:9",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 137,
+   "why": "loose allusion ('filled with the knowledge of himself'), wording diverges from both verses"
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4,
+   "why": "loose allusion 'with open face behold his glory'; only «відкритим лицем» taken from Kulish"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 11,
+   "why": "Kulish's parenthesis «(яко ж справдї є,)» is omitted from the quoted span, so the wording is adapted."
+  },
+  {
+   "reference": "2 Peter 1:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 14,
+   "why": "'make their election sure' re-personed: «утвердити своє вибраннє» (Kulish: «утвердити ваше покликаннє і вибраннє»)"
+  },
+  {
+   "reference": "Joel 2:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 14:25",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 15,
+   "why": "unquoted allusion 'God was in the midst of us, of a truth', rendered in my own words"
+  },
+  {
+   "reference": "Jeremiah 20:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 8,
+   "why": "unquoted allusion 'waited for their halting', rendered as «підстерігає, чи не спіткнуться вони», echoing Kulish's wording"
+  },
+  {
+   "reference": "Luke 13:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 18,
+   "why": "Brainerd expands the verse ('all, old as well as young, that come to him'); built around Kulish's «спасти до кінця»"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 20,
+   "why": "'weary and heavy laden' changed to the feminine singular for the old woman: «знеможена та отягчена» (Kulish: «знеможені та отягчені»)"
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 22,
+   "why": "re-personed: «що їм робити, щоб спастись» (Kulish: «що менї робити, щоб спастись»)"
+  },
+  {
+   "reference": "Psalm 18:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 13:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 23
+  },
+  {
+   "reference": "Job 29:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 32,
+   "why": "loose allusion ('the blessing of those ready to perish'); Kulish's syntax 'Хто погибав, того благословеннє' does not fit his sentence, rendered 'благословення тих, хто погибає'"
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 35,
+   "why": "re-personed indirect question: Kulish 'що менї робити, щоб спастись' -> 'що їм робити, щоб спастись'"
+  },
+  {
+   "reference": "2 Thessalonians 3:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 35,
+   "why": "Kulish imperative 'не втомлюйтесь, роблячи добре' turned into infinitive 'втомлюватися, роблячи добре' ('роблячи добре' verbatim)"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 38,
+   "why": "allusion 'weary, heavy laden soul' — Kulish adjectives 'знеможені та отягчені' adapted to singular 'знеможена й отягчена душа' (block 29 'отягчена душа' likewise)"
+  },
+  {
+   "reference": "Mark 6:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 60
+  },
+  {
+   "reference": "Psalm 118:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 67,
+   "why": "«і по праву» (Brainerd's 'justly') is inserted between two verbatim Kulish spans."
+  },
+  {
+   "reference": "1 Corinthians 12:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 67,
+   "why": "measured: the rendering is not a verbatim Kulish span (1 consecutive words match)"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 71,
+   "why": "allusion 'the one thing needful' woven into syntax; Kulish 'одного ж треба' recast as 'те одне, чого треба'"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 72,
+   "why": "re-tensed to past and to 3rd-person narration ('поглянули на Нього, як на Того, Кого прокололи', 'голосили по Ньому'); final span 'як сумують по перворідневі' is verbatim Kulish"
+  },
+  {
+   "reference": "Zechariah 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 73
+  },
+  {
+   "reference": "Psalm 84:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 74
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 75
+  },
+  {
+   "reference": "2 Corinthians 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 78
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 79
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 80,
+   "why": "imperative 'ростїть' re-personed to 3rd sg 'росте'; 'в благодатї і знанню' verbatim; 'Христа' from the English (Kulish: 'Господа нашого і Спаса Ісуса Христа')"
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 85,
+   "why": "'the Great Salvation' is a sermon topic name echoing Heb 2:3, rendered 'Велике Спасіння' in modern spelling"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 85,
+   "why": "loose allusion 'Spirit of God moving upon the face of the assembly'; uses Kulish verb 'ширяє' but phrasing is Brainerd's"
+  },
+  {
+   "reference": "Hosea 13:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 89
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 94
+  },
+  {
+   "reference": "Acts 3:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 97
+  },
+  {
+   "reference": "2 Peter 3:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 99
+  },
+  {
+   "reference": "Psalm 72:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 99
+  },
+  {
+   "reference": "Numbers 23:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 99,
+   "why": "Kulish («Коли б менї так праведно, як і їм вмирати…») paraphrases and drops 'let my last end be like his'; pasting it would change Brainerd's wording"
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 103,
+   "why": "Brainerd re-persons it ('saith to Christ… his kingdom'); Kulish phrasing kept as far as possible"
+  },
+  {
+   "reference": "Matthew 18:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 104
+  },
+  {
+   "reference": "Acts 8:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 104
+  },
+  {
+   "reference": "Colossians 2:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 108,
+   "why": "Kulish's words are non-contiguous («серця їх … зʼєднавшись у любові»); rendered as «серця, з’єднані в любові»"
+  },
+  {
+   "reference": "Judges 6:37-40",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 108,
+   "why": "loose allusion to Gideon's fleece, not a quotation"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 113,
+   "why": "loose allusion ('quick and powerful, sharp and piercing'), unquoted"
+  },
+  {
+   "reference": "Matthew 17:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 114
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 115
+  },
+  {
+   "reference": "Zechariah 9:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 116,
+   "why": "'as with new wine' is a loose allusion; Kulish verse wording does not match"
+  },
+  {
+   "reference": "Psalm 118:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 116
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 116,
+   "why": "'who is Love' as a relative clause; Kulish has «Бог любов»"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 117,
+   "why": "paraphrased into third person ('redeem his people'; later 'redeemed from all iniquity' as participle)"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 120,
+   "why": "Brainerd's paraphrase ('a day thus spent in God's house… elsewhere') diverges from the verse"
+  },
+  {
+   "reference": "John 14:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 121
+  },
+  {
+   "reference": "Exodus 21:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 121,
+   "why": "allusion to the bored ear, not a quotation"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 122,
+   "why": "Kulish («гріх, що путав нас») diverges from AV 'the sin that easily besets'; re-personed to 'them'"
+  },
+  {
+   "reference": "1 Thessalonians 5:22",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 122,
+   "why": "unquoted allusion ('appearance of evil')"
+  },
+  {
+   "reference": "Acts 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 122
+  },
+  {
+   "reference": "Mark 4:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 123
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 124
+  },
+  {
+   "reference": "Acts 8:9-10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 128,
+   "why": "stitched from two Kulish fragments ('кажучи, що він хтось великий' 8:9 + 'на него вважали' 8:10) joined with 'і'; Kulish 'всї від малого до старого' omitted as not in English"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 128,
+   "why": "unquoted loose allusion ('whose thoughts are not as man's thoughts'), rendered in prose"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 134,
+   "why": "Kulish 'сотворені в Христї Ісусї на добрі дїла' made singular (сотвореної) and Brainerd's 'anew' added (наново)"
+  },
+  {
+   "reference": "Galatians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 135,
+   "why": "'defends and practically preaches' is Brainerd's expansion; tail 'благовіствує віру, що колись руйнував' verbatim Kulish"
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 136
+  },
+  {
+   "reference": "Acts 20:19",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 138,
+   "why": "Brainerd paraphrases ('with much affection and fervency' added); Kulish 'Господеві', 'многими слїзми', 'з усякою покорою' used inside own sentence"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 143
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 143
+  },
+  {
+   "reference": "Matthew 8:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 143,
+   "why": "unquoted allusion (from east and west ... sit down in the kingdom), rendered in prose; 'cast out' (Matt 8:12) likewise"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 143,
+   "why": "first quoted span re-personed: Kulish 'засьвітив у серцях наших на просьвіченнє' -> 'засьвітив у серцї його на просьвіченнє'; 'commanded the light to shine out of darkness' (unquoted) rendered in prose"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 9,
+   "block_index": 143
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 149,
+   "why": "Kulish 'Ви бо були колись тьмою, тепер же (ви) сьвітло в Господї' re-personed to 3rd person: 'були колись тьмою, тепер сьвітло в Господї'"
+  },
+  {
+   "reference": "Ephesians 5:8; 1 Thessalonians 5:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 149,
+   "why": "'ходїть же яко дїти сьвітла' (Eph 5:8) turned into 3rd-person wish 'ходять яко дїти сьвітла' + 'і дня' (1 Thess 5:5 'сини дня')"
+  },
+  {
+   "reference": "Romans 16:25-27",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 149,
+   "why": "unquoted doxology adapted from Kulish wording (утвердити по благовісті й проповіді, єдиному премудрому Богові ... на віки. Амінь), modernised in prose"
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 1,
+   "why": "unquoted italic phrase 'Christ crucified'; rendered in modern spelling «Христа розп’ятого» (Kulish: «Христа розпятого»)"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 2,
+   "why": "unquoted allusion 'the chief of sinners'; rendered in prose"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 2
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 3,
+   "why": "loose paraphrase 'way to the Father'; Kulish words «дорога» / «до Отця» combined"
+  },
+  {
+   "reference": "Isaiah 42:21",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 3,
+   "why": "'magnified the law' re-tensed to past from Kulish «звеличити та прославити закон»"
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 3,
+   "why": "re-shaped 'become the end of it'; tail «на праведність кожному віруючому» verbatim"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4,
+   "why": "unquoted allusion 'weary and heavy laden', case-adjusted"
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 5
+  },
+  {
+   "reference": "Ecclesiastes 12:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6,
+   "why": "Brainerd re-persons 'among you' to 'among them'; «між вами» changed to «між ними», rest verbatim"
+  },
+  {
+   "reference": "Matthew 23:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 23:23",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 17,
+   "why": "unquoted allusion 'ought to be done, while others are not to be left undone'"
+  },
+  {
+   "reference": "Psalm 126:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 20
+  },
+  {
+   "reference": "Philippians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 24,
+   "why": "'their state' for 'your state'; Kulish «про вас» → «про них», bracketed (йому) dropped"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 32
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 33
+  },
+  {
+   "reference": "2 Corinthians 11:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 35
+  },
+  {
+   "reference": "2 Corinthians 11:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 10,
+   "block_index": 36
+  },
+  {
+   "reference": "Micah 7:10",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 36,
+   "why": "verb re-tensed «топчуть»; «неначе ту грязь на улицях» verbatim"
+  },
+  {
+   "reference": "Luke 3:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 38,
+   "why": "unquoted allusion 'see the salvation of God'; modern spelling «спасіння Божого»"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 3,
+   "why": "'in the midst of us' — Kulish 'посеред них' re-personed to 'посеред нас'"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 119:106",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 103:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 3:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 14
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 15,
+   "why": "'filled with the Holy Ghost' — Kulish 'сповнились усї Духом сьвятим' with 'усї' dropped to fit 'several'"
+  },
+  {
+   "reference": "Psalm 72:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 12:15",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 1,
+   "why": "unquoted allusion 'spend and be spent' — rendered in prose (витрачав себе і був витрачений)"
+  },
+  {
+   "reference": "Ezekiel 37:4",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 25,
+   "why": "unquoted allusion 'dry bones' — rendered in prose (сухих кісток)"
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 32,
+   "why": "'fervent in spirit' — Kulish 'духом горючі' put in the singular 'духом горючий'"
+  },
+  {
+   "reference": "Romans 12:3",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 32,
+   "why": "'not think of me above what they ought to think' — Kulish 'не думав більш про себе, нїж треба думати' re-personed: 'не думали про мене більш, нїж треба думати'"
+  },
+  {
+   "reference": "Romans 14:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 39,
+   "why": "Brainerd re-persons the verse into a first-person singular wish ('whether I live, I might live to the Lord...'); built from Kulish's wording (Господеві жив/вмирав, Господній) but re-personed and re-moded."
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 44
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 44
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 44
+  },
+  {
+   "reference": "Titus 2:14 / Ephesians 5:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 44,
+   "why": "Loose allusion re-personed to 'them'; rendered „оддав себе за них“ after Kulish's 'оддав себе ... за нас'."
+  },
+  {
+   "reference": "Mark 6:34 / Matthew 9:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 50
+  },
+  {
+   "reference": "Matthew 5:16 / 6:23",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 50,
+   "why": "Unquoted allusion in Brainerd's own sentence; translated in modern prose."
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 55,
+   "why": "measured: the rendering is not a verbatim Kulish span (1 consecutive words match)"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 61
+  },
+  {
+   "reference": "Job 29:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 61
+  },
+  {
+   "reference": "Acts 26:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 65
+  },
+  {
+   "reference": "Job 3:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 72,
+   "why": "‘following hard after God’ is an infinitive with God named; Kulish «Душа моя йде слїдом за тобою» adapted to «йти слїдом за Богом»"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 72,
+   "why": "re-cast as infinitives after «так далеко від того, щоб»: «уже достигти, або вже бути звершеним» (Kulish: «уже я достиг, або вже був звершений»)"
+  },
+  {
+   "reference": "Luke 19:27",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 72,
+   "why": "re-personed: «ворогів» / «повбивати їх перед Ним» from Kulish «ворогів моїх … повбивайте передо мною»"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 75,
+   "why": "infinitive «приступити до престола благодати» from Kulish exhortation «Приступаймо ж … до престола благодати»"
+  },
+  {
+   "reference": "Acts 2:46 / Ephesians 6:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 78
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 79
+  },
+  {
+   "reference": "2 Timothy 2:13",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 79,
+   "why": "unmarked allusion ‘deny himself’ rendered «відректися Самого Себе» in modern spelling; also blocks 36"
+  },
+  {
+   "reference": "Psalm 40:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 21:28",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 88,
+   "why": "‘lift up my head with joy’ — Brainerd adds ‘with joy’ and singularises; «підіймати голову з радістю» adapted from «підіймайте голови ваші»"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 97
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 98
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 108,
+   "why": "Brainerd paraphrases ('call upon my soul, and all within me, to bless the name of God'); kept Kulish's 'все внутро моє' but the sentence is reshaped as an infinitive purpose clause"
+  },
+  {
+   "reference": "Revelation 18:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 118,
+   "why": "'Babylon the great would fall' is a future-tense allusion to Kulish's 'Упав, упав Вавилон, велика'; rendered 'Вавилон великий упаде'"
+  },
+  {
+   "reference": "Jeremiah 51:64",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 118
+  },
+  {
+   "reference": "Psalm 43:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 118
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 125,
+   "why": "'the perfect day' allusion; Kulish 'до повного дня' re-cased to nominative 'той повний день'"
+  },
+  {
+   "reference": "Psalm 73:26 / 119:57",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 119,
+   "why": "'my only portion' allusion; used Kulish's word 'доля' ('як у єдиній моїй долі'), not a quotation"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 132
+  },
+  {
+   "reference": "Malachi 2:15",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 132,
+   "why": "Kulish MAL 2:15 has no 'residue of the Spirit' wording; rendered «є ще повнота Духа»"
+  },
+  {
+   "reference": "Isaiah 32:15",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 132,
+   "why": "'poured from on high' re-tensed/passivised from Kulish «виллє … Духа з висоти» → „вилито з висоти“"
+  },
+  {
+   "reference": "Luke 6:45 / Matthew 12:34",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 133,
+   "why": "Kulish «з переповнї серця промовляють уста його» re-tensed to past «промовляли» for Edwards' narrative 'spake'"
+  },
+  {
+   "reference": "Malachi 3:3",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 141,
+   "why": "Kulish «очистить синів Левіїних» put in optative «очистив» after 'Oh that God would'"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 143
+  },
+  {
+   "reference": "Psalm 43:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 143
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 144,
+   "why": "«О, прийди, Господи Ісусе» verbatim Kulish; 'come quickly' = Kulish «прийду хутко» re-personed to «прийди хутко»"
+  },
+  {
+   "reference": "Judges 5:28",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 148,
+   "why": "Brainerd's 'why is his chariot so long in coming? why tarry the wheels' diverges from Kulish («гаються щось колесницї, не тупотять конї»); own rendering, borrowing «гаються»"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 148
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 158,
+   "why": "same as block 12 (no 'O' in English)"
+  },
+  {
+   "reference": "Judges 5:28",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 158,
+   "why": "same as block 16"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 163,
+   "why": "Kulish «Вдоволений споглядати ме він на працю життя свого» re-tensed to «вдоволений споглядав на працю життя свого» after 'that … might'"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 163,
+   "why": "same as block 12"
+  },
+  {
+   "reference": "Hebrews 10:37",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 11,
+   "block_index": 168
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 154,
+   "why": "loose allusion 'filled with the Spirit of God'; Kulish «сповняйте себе Духом» is imperative — own wording «сповнені Духа Божого»"
+  },
+  {
+   "reference": "Psalm 27:13",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 149,
+   "why": "idiom 'land of the living' rendered «на землі живих»; not a quotation"
+  },
+  {
+   "reference": "Romans 10:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4,
+   "why": "Kulish words «ревність ... та не по розуму» kept, but «Божу мають» elided to fit Edwards's excerpt"
+  },
+  {
+   "reference": "1 John 4:18",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4,
+   "why": "«геть виганяє страха» verbatim; «любові, що» recast as relative clause (Kulish: «звершена любов геть виганяє страха»)"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 9,
+   "why": "uncited, unquoted allusion 'rejoicing with trembling' rendered «радістю з дрожаннєм» echoing Kulish «радуйтеся з дрожаннєм»"
+  },
+  {
+   "reference": "Ezekiel 16:63",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 13:36",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 12,
+   "why": "Kulish «послуживши своєму родові, Божою волею» re-tensed to «служачи своєму родові Божою волею» to match the participial series"
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "Edwards generalises ('the heart'); Kulish wording kept minus «твоїм/твоєю»"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 1:46",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "«величає ... Господа» reordered into 'the soul magnifying the Lord'"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "«жадає Бога» from Kulish, recast as relative clause"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "Kulish «голодні й жадні правди» made verbal «голодує й жадає правди»"
+  },
+  {
+   "reference": "Psalm 119:20",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "Kulish «втомилась душа ... від бажання за присудами твоїми» adapted (tense/person) to fit the list"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 19
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "'broken heart and contrite spirit' built from Kulish «серця сокрушеного і смиренного»"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "composite paraphrase list; «нове серце» echoed"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "Kulish «духа сильного» does not fit 'right spirit'; rendered «правого духа»"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "«обновлятись духом ума» nominalised to «обновлення духом ума»"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "«осьвятить ... зовсїм» nominalised to «освячення зовсїм»"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 19,
+   "why": "«нове сотворіннє» declined to «новим сотворіннєм»"
+  },
+  {
+   "reference": "2 Timothy 2:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 21
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 21,
+   "why": "'Captain of our salvation' as «Починателя спасення нашого» from Kulish «починателя спасення їх», person changed"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 21,
+   "why": "Kulish «всякого часу подвизаєть ся» re-tensed to «всякого часу подвизався»"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 21,
+   "why": "'travailing in birth' from Kulish «мучусь (перед родинами)» re-personed «мучачись, мов перед родинами»; 'until Christ were formed' = verbatim «доки Христос вʼобразить ся»"
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 21,
+   "why": "Kulish «пильнують душ ваших, яко мають перелїк оддати» re-personed to singular past"
+  },
+  {
+   "reference": "Psalm 71:16",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 21,
+   "why": "Kulish «Буду ступати силою Господа Бога» re-tensed «ступав силою Господа Бога»"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 24,
+   "why": "«біжім на боротьбу, що перед нами» re-personed «бігти на боротьбу, що перед ними»"
+  },
+  {
+   "reference": "Galatians 2:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 24,
+   "why": "'run in vain' rendered «бігти марно» (Kulish «марно ... ходжу»)"
+  },
+  {
+   "reference": "1 Corinthians 9:26",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 24,
+   "why": "'run as uncertainly' rendered «бігти, якби на непевне» from Kulish «біжу, не якби на непевне»"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 24,
+   "why": "«з радістю скінчити путь мій» re-personed «путь свій»"
+  },
+  {
+   "reference": "Isaiah 64:7",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 25,
+   "why": "Kulish «постановив твердо, за тебе держатись» adapted «постановляючи твердо за Бога держатись»"
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 25,
+   "why": "Kulish «в молитві непереставаючі» made singular adverbial participle «непереставаючи»"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter_order": 12,
+   "block_index": 25
+  },
+  {
+   "reference": "Psalm 137:6",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 27,
+   "why": "uncited, unquoted allusion; «ставив Єрусалим над усі радощі свої» echoes Kulish «поставлю Єрусалима над усї радощі мої»"
+  }
+ ]
+}
