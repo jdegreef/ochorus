@@ -47,8 +47,10 @@
   "cover_url": "/covers/art/gospel-of-john.jpg",
   "pdf_url": "",
   "cover_color": "#2f4a5c",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 43,
   "sort_order": 242,
   "is_published": true,
   "created_at": "2026-10-31T03:41:33.833Z",

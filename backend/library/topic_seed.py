@@ -53,6 +53,7 @@ TOPICS = [
             "jesus-teacher-of-prayer",
             "devoted-to-prayer",
             "faithful-unto-death",
+            "psalms",
         ],
     ),
     (
@@ -120,6 +121,7 @@ TOPICS = [
             "revelations-of-divine-love",
             "key-teachings-of-george-macdonald",
             "key-teachings-of-g-k-chesterton",
+            "psalms",
         ],
     ),
     (
@@ -184,6 +186,7 @@ TOPICS = [
             "how-to-bring-men-to-christ",
             "key-teachings-of-dwight-l-moody",
             "with-and-without-christ",
+            "romans",
         ],
     ),
     (
@@ -582,6 +585,7 @@ TOPICS = [
             "key-teachings-of-g-k-chesterton",
             "the-everlasting-man",
             "what-the-bible-teaches",
+            "genesis",
         ],
     ),
     (
@@ -618,6 +622,7 @@ TOPICS = [
             "key-teachings-of-john-bunyan",
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
+            "romans",
         ],
     ),
     (
