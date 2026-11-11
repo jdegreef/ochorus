@@ -55,6 +55,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
+	import AboutThisText from '$lib/components/AboutThisText.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -1311,26 +1312,11 @@
 		<ForPromo place="book-download" class="mt-8" />
 	{/if}
 
-	{#if book.source_url && book.source_type === 'public_domain'}
-		<p class="mt-8 text-small text-muted">
-			{t('book.publicDomain')}
-			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
-		</p>
-	{:else if book.source_url}
-		<p class="mt-8 text-small text-muted">
-			{t('book.translationOf')}
-			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
-		</p>
-	{/if}
+	<!-- Where this edition came from — its source note and link, translation,
+	     cover credit, last update and rights — in one panel at the foot, where
+	     the source line and cover credit used to sit (AboutThisText). -->
+	<AboutThisText {book} />
 
-	{#if book.artwork_credit}
-		<!-- The painter, for the covers that wear a real painting. This used to sit
-		     in the composited SVG's <desc>, where nothing surfaced it. The art is
-		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
-		     and it is the provenance a reader would otherwise have to take on
-		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-small text-muted">{book.artwork_credit}</p>
-	{/if}
 	<!-- A translated edition did not appear in the original's year, so it is
 	     cited without one rather than as a reprint of it. -->
 	<CitePanel

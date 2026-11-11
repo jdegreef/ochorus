@@ -245,6 +245,10 @@ export interface BookDetail extends BookSummary {
 	 *  (library/rights). Optional: absent means no claim. */
 	public_domain?: boolean;
 	source_url: string;
+	/** The edition's free-text rights and source note ("Public domain — first
+	 *  published 1898 by … Text from …", or a © credit), in its own language;
+	 *  "" for none. Shown in the book page's "About this text". */
+	attribution?: string;
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
 	/**
