@@ -1,0 +1,34 @@
+{
+ "slug": "nehemiah",
+ "title": "Nehemiah",
+ "cover_title": "Nehemiah",
+ "subtitle": "Nechemyah, “The LORD comforts”",
+ "cover_color": "#3a4a24",
+ "description": "The memoir of a cupbearer to the king of Persia who heard that the wall of Jerusalem was broken down and its gates burned, sat down and wept, and went to rebuild it. A prayer whispered between the king’s question and his answer; a ride around the ruins by night; builders with a tool in one hand and a weapon in the other; mockery, threats and plots, and a wall finished in fifty-two days. Then Ezra reading the law from morning until midday while the people wept, and the word that turned their tears to feasting: “the joy of the LORD is your stronghold.” A great prayer that tells Israel’s whole story, two choirs on the wall, and a last chapter of honest disappointment ending in the words “Remember me, my God, for good.” In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Nehemiah about?",
+   "answer": "The rebuilding of the walls of Jerusalem and the renewal of the people who lived behind them, after the return from exile in Babylon. Chapters 1–7 tell how Nehemiah, cupbearer to the Persian king Artaxerxes I, came to Jerusalem around 445 BC and led the people in rebuilding the wall in fifty-two days despite fierce opposition. Chapters 8–10 tell of Ezra reading the law to the people, the Festival of Booths, a great prayer of confession and a written covenant. Chapters 11–13 tell of the resettling and dedication of the city and of Nehemiah’s reforms during a second term as governor."
+  },
+  {
+   "question": "Who wrote the book of Nehemiah, and when?",
+   "answer": "Much of the book is Nehemiah’s own account, written in the first person, and it begins “The account of Nehemiah son of Hacaliah.” His memoir covers events from about 445 BC to some time after 433 BC, when he returned for a second term as governor. In the Hebrew Bible Ezra and Nehemiah were a single book, and an editor, perhaps not long after Nehemiah’s time, joined his memoir to the account of Ezra and to the lists of families, priests and Levites. Jewish tradition linked the whole work with Ezra."
+  },
+  {
+   "question": "What does “the joy of the LORD is your strength” mean?",
+   "answer": "Nehemiah 8:10 was spoken on the day Ezra read the law aloud and the people wept as they realised how far they had fallen short. Nehemiah, Ezra and the Levites told them not to grieve, because the day was holy to the LORD, and to go and feast and send food to those who had none. The Hebrew word often rendered “strength” means a stronghold or place of refuge, and this translation renders it “the joy of the LORD is your stronghold”: joy in God’s goodness shelters his people even when his word has shown them their sin."
+  },
+  {
+   "question": "Why does Nehemiah keep saying “Remember me, my God”?",
+   "answer": "Nehemiah’s memoir is punctuated by short prayers, often only a line long: for God to remember his work for good (5:19; 13:14, 31), to remember his enemies (6:14; 13:29), to strengthen his hands (6:9) and to spare him according to his faithful love (13:22). They are not boasts but the prayers of a man who knew his reforms were fragile and that his people could undo them. They also show what the book shows from its first chapter: a life lived in constant conversation with God, in which prayer and hard practical work go together."
+  },
+  {
+   "question": "Why does Nehemiah end on such a sad note?",
+   "answer": "In chapter 13 Nehemiah returns from a visit to the king to find that the promises the people made in chapter 10 have been broken: an enemy has been given a room in the temple, the Levites have not been paid, the Sabbath has become a market day, and marriages with the surrounding peoples have resumed. The book does not hide it. Many readers see in this honest ending a sign that walls, laws and good leaders, though gifts of God, cannot by themselves change the human heart, and a pointer to the new covenant promised by the prophets, in which God writes his law on his people’s hearts."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}
