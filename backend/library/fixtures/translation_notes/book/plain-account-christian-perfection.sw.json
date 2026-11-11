@@ -3,7 +3,7 @@
  "slug": "plain-account-christian-perfection",
  "language": "sw",
  "job_issue": 6895,
- "pull_request": null,
+ "pull_request": 7690,
  "note": [
   "No reachable public-domain Swahili Union Version text exists for this session (swhonen on Take Root is a different edition; the ebible Swahili texts are licensed or off-tradition), so scripture was mined from the shipped Swahili corpus: en/sw block pairs from every shipped *.sw.json were aligned and each quotation's Swahili lifted verbatim where the same clause appears.",
   "A `mined` row was checked by script: every fragment of the rendered quotation is an exact substring of both the cited source_file and this edition's chapter. Translator claims that failed that check were demoted to self_rendered. Wesley re-persons and abridges the KJV constantly, so most rows are self_rendered in SUV register and await native review.",
