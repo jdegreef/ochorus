@@ -23,6 +23,9 @@
   "abiding-in-love": {
    "space-before-punct": 2
   },
+  "acts-of-the-apostles": {
+   "orphan-close-quote": 2
+  },
   "against-eutropius": {
    "lost-paragraphing": 1
   },
@@ -181,6 +184,16 @@
   },
   "gods-way-of-peace": {
    "orphan-close-quote": 7
+  },
+  "gospel-of-luke": {
+   "orphan-close-quote": 2
+  },
+  "gospel-of-mark": {
+   "orphan-close-quote": 2,
+   "space-before-punct": 1
+  },
+  "gospel-of-matthew": {
+   "orphan-close-quote": 3
   },
   "grace-abounding": {
    "space-before-punct": 9,

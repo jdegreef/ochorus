@@ -492,10 +492,35 @@ SCRIM_MAX = 1.0
 #: from the top in dark ink. One composition, so they are in TYPE_TOP and
 #: INK_DARK both, and share one set of measured ink boxes below.
 OPEN_WORD_BIBLE = frozenset({
+    "1-corinthians",
+    "1-john",
+    "1-peter",
+    "1-thessalonians",
+    "1-timothy",
+    "2-corinthians",
+    "2-john",
+    "2-peter",
+    "2-thessalonians",
+    "2-timothy",
+    "3-john",
+    "acts-of-the-apostles",
+    "colossians",
+    "ephesians",
+    "galatians",
     "genesis",
     "gospel-of-john",
+    "gospel-of-luke",
+    "gospel-of-mark",
+    "gospel-of-matthew",
+    "hebrews",
+    "james",
+    "jude",
+    "philemon",
+    "philippians",
     "psalms",
+    "revelation",
     "romans",
+    "titus",
 })
 
 #: The painted works whose type is set from the TOP of the cover rather than
