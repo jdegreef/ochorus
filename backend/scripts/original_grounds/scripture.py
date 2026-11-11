@@ -105,8 +105,9 @@ def font_face(fonts: pathlib.Path, script: str) -> str:
 
 
 def name_markup(name: Name) -> str:
-    """The name, centred in its band: one line large, or a small first word
-    (ΚΑΤΑ, ΠΡΟΣ) over a large second."""
+    """The name, centred in its band: a Hebrew name on one line, or a Greek one
+    as an optional small first word (ΚΑΤΑ, ΠΡΟΣ), the large name, and an
+    optional small last line (a letter's number, Revelation's ΙΩΑΝΝΟΥ)."""
     if name.script == "he":
         # Letters only: the vowel points are combining marks and take no width.
         letters = sum(unicodedata.category(c) != "Mn" for c in name.lines[0])
@@ -115,6 +116,8 @@ def name_markup(name: Name) -> str:
             f'<div class="he" dir="rtl" lang="he" style="font-size:{size}px">'
             f"{name.lines[0]}</div>"
         )
+    if not 2 <= len(name.lines) <= 3:
+        raise ValueError(f"a Greek name is 2 or 3 lines, not {name.lines}")
     small, large, *after = name.lines
     # A long name steps down to keep inside the leaf (a capital is ~0.68em wide
     # at this tracking); Pros Rhōmaious and Kata Iōannēn keep the two sizes
@@ -142,6 +145,12 @@ html,body{{margin:0;background:#000}}
   letter-spacing:.06em;opacity:.92}}
 .grc .small{{font-size:30px;letter-spacing:.32em;margin-bottom:10px;opacity:.8}}
 .grc .small.after{{margin:12px 0 0}}
+.name{{margin:22px 0}}
+/* Three lines (ΠΡΟΣ / ΚΟΡΙΝΘΙΟΥΣ / Α) hold to the same band, y=470..650, with
+   tighter margins and a smaller first and last line. */
+.band.three .name{{margin:8px 0}}
+.band.three .grc .small{{font-size:24px;margin-bottom:6px}}
+.band.three .grc .small.after{{margin:6px 0 0}}
 .rule{{display:flex;align-items:center;gap:12px;width:220px;opacity:.55}}
 .rule i{{flex:1;height:1px;background:{name.ink}}}
 .rule b{{width:7px;height:7px;transform:rotate(45deg);border:1px solid {name.ink}}}
@@ -165,8 +174,8 @@ html,body{{margin:0;background:#000}}
  <rect width="600" height="800" filter="url(#grain)"/>
  <rect width="600" height="800" fill="url(#edge)"/>
 </svg>
-<div class="band"><div class="rule"><i></i><b></b><i></i></div>
-<div style="margin:22px 0">{name_markup(name)}</div>
+<div class="band{' three' if len(name.lines) == 3 and all(name.lines) else ''}"><div class="rule"><i></i><b></b><i></i></div>
+<div class="name">{name_markup(name)}</div>
 <div class="rule"><i></i><b></b><i></i></div></div>
 </div></body></html>"""
 

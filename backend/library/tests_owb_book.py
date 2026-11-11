@@ -211,3 +211,24 @@ class NewTestamentTests(SimpleTestCase):
         self.assertTrue(html.startswith("<p>They were afraid.</p><p><em>The earliest manuscripts of Mark end at 16:8."))
         self.assertTrue(html.endswith("</blockquote>"))
         self.assertIn("<blockquote><p>[They gave Peter a short report.]", html)
+
+
+class HeadingIntoNextChapterTests(SimpleTestCase):
+    def test_a_verse_numbered_into_the_next_chapter_takes_its_heading(self):
+        """SBLGNT Revelation 12:18 is English 13:1: chapter 13's heading moves up to it."""
+        fake = FakeCheckout(
+            {"REV": {"12": [record("REV.12.18.s1", ["REV.12.18"], "It stood on the sand.")],
+                     "13": [record("REV.13.1.s1", ["REV.13.1"], "A beast rose from the sea.")]}},
+            {},
+        )
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "books.json").write_text(json.dumps({"books": {"REV": {"en": "Revelation"}}}))
+        (fake.root / "data" / "headings" / "REV.json").write_text(
+            json.dumps({"headings": {"REV.13.1.s1": {"en": "The beast from the sea"}}})
+        )
+        source = Source(fake.root, "REV")
+        self.assertTrue(
+            source.chapter_html(13, source.chapters()[13]).startswith(
+                "<h3>The beast from the sea</h3><p>It stood on the sand."
+            )
+        )
