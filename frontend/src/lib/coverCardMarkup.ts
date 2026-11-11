@@ -68,6 +68,9 @@ export interface CoverCardBook {
 	dark?: boolean;
 	/** A title set in small capitals, from `coverStyles.smallCapsFor`. */
 	caps?: boolean;
+	/** The address set in place of the Ochorus mark (`coverStyles.siteMarkFor`);
+	 *  null for the mark. */
+	sitemark?: string | null;
 }
 
 /**
@@ -165,7 +168,11 @@ export function coverTypeMarkup(book: CoverCardBook, lockup: string): string {
 		}
 	</div>
 	${book.art ? '' : '<div class="emblem-band" aria-hidden="true"></div>'}
-	<span class="brandmark" style="--h: 13.7cqw" role="img" aria-label="Ochorus">${lockup}</span>
+	${
+		book.sitemark
+			? `<div class="sitemark">${escapeHtml(book.sitemark)}</div>`
+			: `<span class="brandmark" style="--h: 13.7cqw" role="img" aria-label="Ochorus">${lockup}</span>`
+	}
 </div>`;
 }
 

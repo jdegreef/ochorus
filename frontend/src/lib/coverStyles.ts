@@ -290,6 +290,25 @@ export function smallCapsFor(bookSlug: string): boolean {
 }
 
 /**
+ * The authors whose covers carry the publisher's address where the Ochorus mark
+ * goes, by author slug.
+ *
+ * The Open Word Bible is its own work with its own home: its books in this
+ * library are its text in our reader, and the cover says where the translation
+ * lives, not who is showing it. Set as a line of type (`.sitemark` in
+ * `cover-type.css`), in the place and the ink of the mark it replaces. Both
+ * renderers read this.
+ */
+export const COVER_SITE_MARK: Readonly<Record<string, string>> = {
+	'open-word-bible': 'OpenWordBible.org'
+};
+
+/** The address a cover sets in place of the Ochorus mark, or null for the mark. */
+export function siteMarkFor(authorSlug: string): string | null {
+	return COVER_SITE_MARK[authorSlug] ?? null;
+}
+
+/**
  * The books whose AUDIENCE decides their cover, not their author or century.
  *
  * Every other table here asks when a book was written. A book retold for a
