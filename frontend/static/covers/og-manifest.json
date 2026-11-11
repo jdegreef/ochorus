@@ -18728,6 +18728,38 @@
 			"bar": 0,
 			"caps": true
 		},
+		"hi/susanna-wesley-clarke": {
+			"ground": "1fde7698b42652160dc163f2d0768855f24015b791c1ce25bede16adb3456822",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[152, 324, 448, 410]
+				],
+				"subtitle": [
+					[170, 484, 430, 506]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				282,
+				513
+			]
+		},
 		"hi/talks-to-the-farmer": {
 			"ground": "62daf65bd80882f64c95b7b19f2509750c02bd8029e8a20bcd6eae1e0f425c03",
 			"style": "revival",
@@ -22712,6 +22744,38 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"ko/susanna-wesley-clarke": {
+			"ground": "0506132ecef807bdb43e6b28baa12c4c84b267261977d4deb9cbc61725b71406",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[51, 319, 549, 424]
+				],
+				"subtitle": [
+					[180, 477, 420, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
 		},
 		"ko/talks-to-the-farmer-children": {
 			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
@@ -27329,6 +27393,40 @@
 			"middle": [
 				255,
 				540
+			]
+		},
+		"pt/anchored-1": {
+			"ground": "2438a2f692f8d0bf2bec6a1a3a00109b9966cbeab03f4b42dffdf5f727a52252",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[137, 347, 463, 423]
+				],
+				"subtitle": [
+					[112, 481, 488, 509],
+					[125, 509, 475, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
 			]
 		},
 		"pt/anchored-2": {
