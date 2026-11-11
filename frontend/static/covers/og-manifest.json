@@ -23339,6 +23339,20 @@
 				476
 			]
 		},
+		"ko/the-reformed-pastor": {
+			"ground": "e9dcc6c06171e7f154cf9baacb77167e3cd6c0a7283acdafaa542bdf9eea8b00",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "9b5f3b92022b712a796b253b201c113f6595cd1f18d1e96cb0e18b93809e982b",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
+		},
 		"ko/the-secret-of-guidance": {
 			"ground": "67a96aaf715ce04519baf1aecaac0a2e950da9e4e64244c407a4d766ecbff058",
 			"style": "devotional",
