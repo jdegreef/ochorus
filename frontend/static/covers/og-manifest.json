@@ -15923,6 +15923,39 @@
 			"bar": 0,
 			"caps": false
 		},
+		"fr/the-black-stair": {
+			"ground": "650f4e369c9b16ab1c5e6c2d7b27e3efbdbcdbde07796c9d5250faec1074453c",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[118, 362, 482, 437]
+				],
+				"subtitle": [
+					[82, 492, 518, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"fr/the-bruised-reed": {
 			"ground": "2e5a9b19c6edb29da97ff7312bc4812f80593cfbca9655a3efb1cae9c76c602e",
 			"style": "press",
