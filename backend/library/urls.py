@@ -43,6 +43,7 @@ from .views import (
     SermonListView,
     TopicDetailView,
     TopicListView,
+    WordPassagesView,
 )
 
 urlpatterns = [
@@ -77,6 +78,8 @@ urlpatterns = [
         QuoteAuthorTopicView.as_view(),
         name="quote-author-topic",
     ),
+    # Example passages for a /glossary/<term>/ page.
+    path("words/<str:word>/passages/", WordPassagesView.as_view(), name="word-passages"),
     path("scripture/", ScriptureView.as_view(), name="scripture"),
     # BEFORE scripture/<slug:book>/: that pattern is one segment too, so
     # "pages" would otherwise be read as a book of the Bible (and 404).

@@ -129,6 +129,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	sermons: [],
 	scripture: [],
 	quotes: [],
+	glossary: [],
 	articles: [],
 	chapters: [],
 	openings: [],
@@ -281,6 +282,13 @@ describe('sections', () => {
 		expect(sectionEntries(d, 'scripture')).toHaveLength(1);
 		expect(sections()).toContain('scripture');
 		expect(urlXml(d.scripture[0])).not.toContain('hreflang="sw"');
+	});
+
+	it('gives the glossary its own section, carrying only English', () => {
+		const d = data({ glossary: [entry({ en: '/glossary/wherefore/' })] });
+		expect(sections()).toContain('glossary');
+		expect(sectionEntries(d, 'glossary')).toHaveLength(1);
+		expect(urlXml(d.glossary[0])).not.toContain('hreflang="sw"');
 	});
 
 	it('routes topics and plans into pages, so no section goes unserved', () => {

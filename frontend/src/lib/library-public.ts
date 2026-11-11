@@ -1944,6 +1944,28 @@ export interface SavedQuote extends Quote {
 export const listFeaturedQuotes = (f?: Fetch) =>
 	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
 
+// --- Glossary examples -----------------------------------------------------------
+
+/** A real sentence from the English library that uses a glossary word, split
+ *  around the word so the page can mark it; `href` opens its paragraph. */
+export interface WordPassage {
+	before: string;
+	match: string;
+	after: string;
+	kind: 'chapter' | 'sermon';
+	/** The book's title, or the sermon's. */
+	work: string;
+	/** The chapter's title; "" for a sermon. */
+	title: string;
+	author: { slug: string; name: string };
+	href: string;
+}
+
+/** Up to three passages using `word` (backend `library.word_passages`). Only
+ *  sentences containing the word itself — an empty list is a real answer. */
+export const getWordPassages = (word: string, f?: Fetch) =>
+	apiFetch<{ word: string; passages: WordPassage[] }>(`/api/library/words/${word}/passages/`, {}, f);
+
 /** A quotation's whole source paragraph, as plain text — "read it in context". */
 export interface QuoteContext {
 	slug: string;

@@ -1,5 +1,7 @@
 <script lang="ts">
+	import Arrow from '$lib/components/Arrow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { glossaryHref } from '$lib/glossary';
 	import { define } from '$lib/define.svelte';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { portal } from '$lib/actions/portal';
@@ -45,8 +47,16 @@
 					{entry.text}
 				</p>
 			{/each}
-			<p class="eyebrow mt-2 text-muted">
-				{define.result.source === 'glossary' ? t('reader.glossarySource') : t('reader.dictionarySource')}
+			<p class="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+				<span class="eyebrow text-muted">
+					{define.result.source === 'glossary' ? t('reader.glossarySource') : t('reader.dictionarySource')}
+				</span>
+				{#if define.result.term}
+					<!-- The word's own glossary page: its examples across the library. -->
+					<a class="text-small" href={glossaryHref(define.result.term)} onclick={() => define.close()}
+						>{t('glossary.more')} <Arrow /></a
+					>
+				{/if}
 			</p>
 		{:else}
 			<p class="mt-2 text-small text-muted">{t('reader.noDefinition')}</p>

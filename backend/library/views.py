@@ -2330,6 +2330,36 @@ class QuoteFeaturedView(APIView):
         return Response([_quote_card_payload(q) for q in pool])
 
 
+class _WordPassagesThrottle(ScopedCacheThrottle):
+    """Each uncached word reads up to a dozen chapters, so it has its own
+    bucket — sized for the web build, which asks once per glossary page."""
+
+    scope = "word-passages"
+
+
+class WordPassagesView(PublicContentCacheMixin, APIView):
+    """Real passages from the English library that use ``word`` — the examples
+    on a /glossary/<term>/ page (``library.word_passages``). Only sentences
+    that contain the word itself are returned, each linked to its paragraph;
+    an empty list is an honest answer. Cached per word for a day.
+    """
+
+    throttle_classes = [_WordPassagesThrottle]
+
+    def get(self, request, word):
+        from . import word_passages
+
+        word = word.lower()
+        if len(word) > word_passages.MAX_WORD or not word_passages.WORD_RE.match(word):
+            raise Http404("Not a glossary word")
+        key = f"word-passages:{word}"
+        found = cache.get(key)
+        if found is None:
+            found = word_passages.passages_for(word)
+            cache.set(key, found, 60 * 60 * 24)
+        return Response({"word": word, "passages": found})
+
+
 def quote_block_text(quote) -> str | None:
     """The plain text of the block a quote's `paragraph` points at, AS SERVED
     (see `library.quote_blocks`). None if the index no longer lands — a work

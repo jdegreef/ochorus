@@ -71,11 +71,13 @@ export const sectionDest = (section: NavSection): NavDest => PRIMARY_NAV.find((d
  * are pitches to a group of readers, not content destinations, so they sit in
  * the footer (one link to their /for/ hub) — not the palette or the More sheet. */
 
-/** Articles · Scripture · Quotes — English-only hubs (footer + palette). */
+/** Articles · Scripture · Quotes · Glossary — English-only hubs (footer +
+ *  palette). The glossary is the reader's tap-to-define words, one page each. */
 export const ENGLISH_HUBS: HubDest[] = [
 	{ href: '/articles', labelKey: 'nav.articles' },
 	{ href: '/scripture', labelKey: 'reader.scripture' },
-	{ href: '/quotes', labelKey: 'nav.quotes' }
+	{ href: '/quotes', labelKey: 'nav.quotes' },
+	{ href: '/glossary', labelKey: 'nav.glossary' }
 ];
 
 /** Book Series — every series in this language, hanging off Books. Not a top-nav
