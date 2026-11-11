@@ -311,11 +311,55 @@
 		if (!isPlainPrimaryClick(e)) return;
 		e.preventDefault();
 		filters.values.book = name;
+		showResults();
+	}
+	/** Bring the (re-arranged) list's top into view and focus, once it renders. */
+	function showResults(id = 'sermon-results') {
 		tick().then(() => {
-			const results = document.getElementById('sermon-results');
+			const results = document.getElementById(id);
 			results?.focus({ preventScroll: true });
 			results?.scrollIntoView({ block: 'start' });
 		});
+	}
+
+	// --- The side rail (design: fill the empty half, from lg) -----------------
+	// From lg the list's 48rem measure leaves the right of the column empty all
+	// the way down, so the shelf's secondary furniture moves into a sticky rail
+	// beside it: Sermon of the Day, a length shortcut and the preachers' faces.
+	// Below lg the rail is just Sermon of the Day, where it always sat; the
+	// length and preacher controls live in the filter row / sheet and the
+	// By-preacher view there. CSS only — the prerendered HTML is one layout.
+
+	/** "Short on time?": a one-tap length choice, the same `len` filter as the
+	 *  row's select. A second tap lifts it. */
+	function pickLength(b: LengthBucket) {
+		filters.values.len = filters.values.len === b ? '' : b;
+		showResults();
+	}
+
+	/** The preachers in what is shown, most sermons first — each face jumps to
+	 *  their section of the By-preacher view, which has the same filters. */
+	const RAIL_FACES = 15;
+	const railPreachers = $derived.by(() => {
+		const m = new Map<string, { author: SermonSummary['author']; count: number }>();
+		for (const s of filtered) {
+			const e = m.get(s.author.slug);
+			if (e) e.count++;
+			else m.set(s.author.slug, { author: s.author, count: 1 });
+		}
+		return [...m.values()].sort((a, b) => b.count - a.count || a.author.name.localeCompare(b.author.name));
+	});
+	/** The By-preacher view of these filters, optionally at one preacher. */
+	function preacherHref(slug?: string) {
+		const base = new URL(localizeHref('/sermons'), 'https://x.invalid');
+		const u = writeFilters(base, { ...filters.values, group: 'preacher' }, FILTER_DEFAULTS);
+		return u.pathname + u.search + (slug ? `#preacher-${slug}` : '');
+	}
+	function pickPreacher(e: MouseEvent, slug?: string) {
+		if (!isPlainPrimaryClick(e)) return;
+		e.preventDefault();
+		filters.values.group = 'preacher';
+		showResults(slug ? `preacher-${slug}` : undefined);
 	}
 
 	// A row states its writer only when no heading above it does.
@@ -463,224 +507,290 @@
 		</div>
 	</FilterBar>
 
-	<!-- One sermon to start with, for a reader who doesn't yet know whom to
-	     read — the same weekly pick as the home page, hidden while the reader is
-	     filtering (page-design: a shelf's secondary section). BELOW the filter
-	     bar, not above it as the anatomy's order has it: hiding it on the first
-	     keystroke would otherwise yank the search box out from under the
-	     reader's typing. `reserve` holds its height until the pick lands. -->
-	{#if !filtering && !loadError && sermons.length}
-		<div class="mb-8">
-			<SermonOfTheDay embedded reserve />
-		</div>
-	{/if}
-
-	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
-	     Books shelf; the shared component reuses the Books labels (the same "All
-	     topics" / "Filter by topic") and shows only when the shelf spans >1 topic. -->
-	<TopicFilterRow
-		topics={allTopics}
-		selected={filters.values.topic}
-		onSelect={(topic) => (filters.values.topic = topic)}
-	/>
-
-	<!-- Where a Browse by Scripture pick lands the reader: the top of the results. -->
-	<div
-		id="sermon-results"
-		tabindex="-1"
-		class="outline-none"
-		style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
-	></div>
-
-	<!-- One clear affordance, on the FilterSummary — same as Books and
-	     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
-	{#if filtering}
-		<FilterSummary
-			shown={filtered.length}
-			total={sermons.length}
-			template={t('sermons.showing')}
-			onClear={clearFilters}
-			chips={activeChips}
-			class="mb-6"
-		/>
-	{/if}
-
-	<!-- Three to start with (design #28): large faces, the title, preacher ·
-	     minutes — a way in for a reader who doesn't yet know whom to read. -->
-	{#if defaultView && !loadError && starters.length}
-		<section class="mb-10" aria-labelledby="start-with">
-			<h2 id="start-with" class="section-label mb-4">{t('sermons.startWith')}</h2>
-			<ul class="start-with">
-				{#each starters as s (s.slug)}
-					<li>
-						<a href={localizeHref(`/sermons/${s.slug}`)} class="start-card">
-							<Portrait
-								slug={s.author.slug}
-								name={s.author.name}
-								url={s.author.photo_url}
-								px={72}
-								tone="color"
-								decorative
-								class="start-face"
-							/>
-							<span class="min-w-0">
-								<span class="start-title">{s.title}</span>
-								<span class="block text-small text-muted"
-									>{s.author.name}{' '}<span class="sep" aria-hidden="true">·</span>{' '}<span
-										class="whitespace-nowrap">{readingTime(s.word_count)}</span
-									></span
+	<!-- Sermon of the Day: one sermon to start with, for a reader who doesn't
+	     yet know whom to read — the same daily pick as the home page. BELOW the
+	     filter bar, not above it as the anatomy's order has it: hiding it on the
+	     first keystroke would otherwise yank the search box out from under the
+	     reader's typing. `reserve` holds its height until the pick lands.
+	     It heads the rail (see the script's "side rail"), first in source order,
+	     so a phone shows it above the list as it always has, hidden while the
+	     reader filters (a shelf's secondary section). From lg the grid puts the
+	     rail in its own sticky column beside the list, where it stays while the
+	     reader filters: it moves nothing there, and its length chips ARE a
+	     filter. -->
+	<div class="shelf-split">
+		{#if !loadError && sermons.length}
+			<aside class="shelf-rail">
+				<div class={filtering ? 'hidden lg:block' : 'mb-8 lg:mb-0'}>
+					<SermonOfTheDay embedded reserve />
+				</div>
+				<section class="rail-block hidden lg:block" aria-labelledby="rail-length">
+					<h2 id="rail-length" class="section-label">{t('sermons.shortOnTime')}</h2>
+					<div class="flex flex-wrap gap-2">
+						{#each LENGTH_BUCKETS as b (b)}
+							{#if lengthFacets[b]}
+								<button
+									type="button"
+									class="chip"
+									class:active={filters.values.len === b}
+									aria-pressed={filters.values.len === b}
+									onclick={() => pickLength(b)}
+									>{t(LENGTH_LABEL[b])}
+									<span class="count">{lengthFacets[b]}</span></button
 								>
-							</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	{/if}
-
-	<!-- Browse by Scripture (design #21): every book of the Bible, shaded by how
-	     many sermons here preach from it (the shared .heat-N wash, the count
-	     printed in the cell and in its name, so the shade is never the only
-	     signal). An empty book is muted text, not a link. A secondary section:
-	     hidden while filtering — the chosen book shows as a chip instead. -->
-	{#if canon && !filtering && !loadError}
-		<section class="mb-10" class:canon-open={canonOpen} aria-labelledby="by-scripture">
-			<h2 id="by-scripture" class="section-label mb-4">
-				<button
-					type="button"
-					class="canon-toggle"
-					aria-expanded={canonOpen}
-					aria-controls="canon-body"
-					onclick={() => (canonOpen = !canonOpen)}
-				>
-					{t('sermons.byScripture')}
-					<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"
-						><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" /></svg
-					>
-				</button>
-				<span class="hidden sm:inline">{t('sermons.byScripture')}</span>
-			</h2>
-			<div id="canon-body" class="canon-body">
-				{#each [canon.old, canon.new] as cells, i (i)}
-					<h3 class="eyebrow text-muted mb-2" class:mt-4={i > 0}>
-						{t(i ? 'scripture.newTestament' : 'scripture.oldTestament')}
-					</h3>
-					<ul class="canon">
-						{#each cells as c (c.name)}
-							<!-- The visible label is the abbreviation (and count); the
-							     accessible name is the full book and "N sermons". -->
-							{#snippet label()}<span aria-hidden="true" class="canon-abbr">{c.abbr}</span
-								>{#if c.count}<span aria-hidden="true" class="canon-count">{c.count}</span
-									>{/if}<span class="sr-only">{c.name}, {sermonsLabel(c.count)}</span
-								>{/snippet}
-							<li>
-								{#if c.count}
+							{/if}
+						{/each}
+					</div>
+				</section>
+				{#if railPreachers.length > 1}
+					<section class="rail-block hidden lg:block" aria-labelledby="rail-preachers">
+						<h2 id="rail-preachers" class="section-label">{t('sermons.railPreachers')}</h2>
+						<ul class="rail-faces">
+							{#each railPreachers.slice(0, RAIL_FACES) as p (p.author.slug)}
+								<li>
 									<a
-										href={bookHref(c.name)}
-										rel="nofollow"
-										class="canon-cell heat-{c.heat}"
-										onclick={(e) => pickBook(e, c.name)}>{@render label()}</a
+										href={preacherHref(p.author.slug)}
+										class="rail-face group"
+										title={p.author.name}
+										onclick={(e) => pickPreacher(e, p.author.slug)}
 									>
-								{:else}
-									<span class="canon-cell canon-empty">{@render label()}</span>
-								{/if}
+										<Portrait
+											slug={p.author.slug}
+											name={p.author.name}
+											url={p.author.photo_url}
+											px={44}
+											tone="hover"
+											decorative
+											class="rail-face-img"
+										/>
+										<span class="sr-only">{p.author.name}, {sermonsLabel(p.count)}</span>
+									</a>
+								</li>
+							{/each}
+						</ul>
+						{#if group !== 'preacher'}
+							<a
+								href={preacherHref()}
+								class="mt-3 inline-block text-small"
+								onclick={(e) => pickPreacher(e)}
+								>{t('sermons.railAllPreachers').replace('%n%', String(railPreachers.length))}</a
+							>
+						{/if}
+					</section>
+				{/if}
+			</aside>
+		{/if}
+
+		<div class="shelf-main">
+
+			<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
+			     Books shelf; the shared component reuses the Books labels (the same "All
+			     topics" / "Filter by topic") and shows only when the shelf spans >1 topic. -->
+			<TopicFilterRow
+				topics={allTopics}
+				selected={filters.values.topic}
+				onSelect={(topic) => (filters.values.topic = topic)}
+			/>
+
+			<!-- Where a Browse by Scripture pick lands the reader: the top of the results. -->
+			<div
+				id="sermon-results"
+				tabindex="-1"
+				class="outline-none"
+				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+			></div>
+
+			<!-- One clear affordance, on the FilterSummary — same as Books and
+			     Biographies. (The bespoke in-row "Clear" and sermons.clear are retired.) -->
+			{#if filtering}
+				<FilterSummary
+					shown={filtered.length}
+					total={sermons.length}
+					template={t('sermons.showing')}
+					onClear={clearFilters}
+					chips={activeChips}
+					class="mb-6"
+				/>
+			{/if}
+
+			<!-- Three to start with (design #28): large faces, the title, preacher ·
+			     minutes — a way in for a reader who doesn't yet know whom to read. -->
+			{#if defaultView && !loadError && starters.length}
+				<section class="mb-10" aria-labelledby="start-with">
+					<h2 id="start-with" class="section-label mb-4">{t('sermons.startWith')}</h2>
+					<ul class="start-with">
+						{#each starters as s (s.slug)}
+							<li>
+								<a href={localizeHref(`/sermons/${s.slug}`)} class="start-card">
+									<Portrait
+										slug={s.author.slug}
+										name={s.author.name}
+										url={s.author.photo_url}
+										px={72}
+										tone="color"
+										decorative
+										class="start-face"
+									/>
+									<span class="min-w-0">
+										<span class="start-title">{s.title}</span>
+										<span class="block text-small text-muted"
+											>{s.author.name}{' '}<span class="sep" aria-hidden="true">·</span>{' '}<span
+												class="whitespace-nowrap">{readingTime(s.word_count)}</span
+											></span
+										>
+									</span>
+								</a>
 							</li>
 						{/each}
 					</ul>
-				{/each}
-			</div>
-		</section>
-	{/if}
+				</section>
+			{/if}
 
-	<!-- One sermon per line, a plain list (design #8): the title, one meta line
-	     (preacher · passage · length) and the first line of the "In brief",
-	     hairlines between. The whole row opens the sermon. -->
-	{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
-		<div {id} class="sermon-list">
-			{#each items as sermon, i (sermon.slug)}
-				<div class="contents" hidden={i >= limit}>
-					<SermonCard {sermon} {showAuthor} />
-				</div>
-			{/each}
-		</div>
-	{/snippet}
-
-	{#if loadError}
-		<EmptyState message={t('common.loadError')} onRetry />
-	{:else if sorted.length === 0}
-		<EmptyState
-			art={filtering ? 'search' : 'book'}
-			message={filtering ? t('sermons.noMatches') : t('sermons.empty')}
-			action={filtering ? clearFiltersAction : undefined}
-		/>
-	{:else if groups}
-		<!-- Jump to a preacher — the sections are long, so they need a way in
-		     that isn't scrolling: the shared faces strip (Books uses it too). -->
-		{#if groups.length > 1}
-			<AuthorJumpStrip
-				class="mb-8"
-				label={t('sermons.jumpPreacher')}
-				href={(slug) => `#preacher-${slug}`}
-				writers={groups.map((g) => ({ ...g.author, count: g.items.length }))}
-			/>
-		{/if}
-		{#each groups as g (g.author.slug)}
-			{@const a = g.author}
-			{@const lifespan = formatLifespan(a.birth_year, a.death_year, t('common.bornPrefix'))}
-			{@const canCollapse = collapsible(g.items.length)}
-			{@const collapsed = canCollapse && !expanded.has(a.slug)}
-			<section
-				id="preacher-{a.slug}"
-				class="mb-10"
-				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
-			>
-				<!-- Who the preacher was, before what they preached: their years and
-				     one line on who they were, so a newcomer can tell Chrysostom's
-				     Antioch from Tozer's Chicago. The line is the tagline, written for
-				     this spot (a bio often opens "Name (1897–1963) was…", repeating
-				     the heading); a language without one falls back to the bio's
-				     opening. The name links to the full life. -->
-				<GroupHeading
-					name={a.name}
-					href={localizeHref(authorPath(a.slug))}
-					portraitUrl={a.photo_url}
-					portraitPosition={portraitPosition(a.slug)}
-					blurb={a.tagline || a.bio}
-				>
-					<!-- Years, then the count as words: a bare count after a
-					     lifespan read as one figure ("1843–1919 15"). -->
-					{#snippet detail()}
-						<span class="text-small font-normal count"
-							>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{sermonsLabel(g.items.length)}</span
+			<!-- Browse by Scripture (design #21): every book of the Bible, shaded by how
+			     many sermons here preach from it (the shared .heat-N wash, the count
+			     printed in the cell and in its name, so the shade is never the only
+			     signal). An empty book is muted text, not a link. A secondary section:
+			     hidden while filtering — the chosen book shows as a chip instead. -->
+			{#if canon && !filtering && !loadError}
+				<section class="mb-10" class:canon-open={canonOpen} aria-labelledby="by-scripture">
+					<h2 id="by-scripture" class="section-label mb-4">
+						<button
+							type="button"
+							class="canon-toggle"
+							aria-expanded={canonOpen}
+							aria-controls="canon-body"
+							onclick={() => (canonOpen = !canonOpen)}
 						>
-					{/snippet}
-				</GroupHeading>
-				{@render sermonList(g.items, collapsed ? PREVIEW : Infinity, `preacher-list-${a.slug}`)}
-				{#if canCollapse}
-					<button
-						type="button"
-						class="btn btn-ghost btn-sm mt-3"
-						aria-expanded={!collapsed}
-						aria-controls="preacher-list-{a.slug}"
-						onclick={() => toggleSection(a.slug)}
-					>
-						{collapsed
-							? t('bios.showMore').replace('%n%', String(g.items.length - PREVIEW))
-							: t('search.showLess')}
-					</button>
+							{t('sermons.byScripture')}
+							<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"
+								><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" /></svg
+							>
+						</button>
+						<span class="hidden sm:inline">{t('sermons.byScripture')}</span>
+					</h2>
+					<div id="canon-body" class="canon-body">
+						{#each [canon.old, canon.new] as cells, i (i)}
+							<h3 class="eyebrow text-muted mb-2" class:mt-4={i > 0}>
+								{t(i ? 'scripture.newTestament' : 'scripture.oldTestament')}
+							</h3>
+							<ul class="canon">
+								{#each cells as c (c.name)}
+									<!-- The visible label is the abbreviation (and count); the
+									     accessible name is the full book and "N sermons". -->
+									{#snippet label()}<span aria-hidden="true" class="canon-abbr">{c.abbr}</span
+										>{#if c.count}<span aria-hidden="true" class="canon-count">{c.count}</span
+											>{/if}<span class="sr-only">{c.name}, {sermonsLabel(c.count)}</span
+										>{/snippet}
+									<li>
+										{#if c.count}
+											<a
+												href={bookHref(c.name)}
+												rel="nofollow"
+												class="canon-cell heat-{c.heat}"
+												onclick={(e) => pickBook(e, c.name)}>{@render label()}</a
+											>
+										{:else}
+											<span class="canon-cell canon-empty">{@render label()}</span>
+										{/if}
+									</li>
+								{/each}
+							</ul>
+						{/each}
+					</div>
+				</section>
+			{/if}
+
+			<!-- One sermon per line, a plain list (design #8): the title, one meta line
+			     (preacher · passage · length) and the first line of the "In brief",
+			     hairlines between. The whole row opens the sermon. -->
+			{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
+				<div {id} class="sermon-list">
+					{#each items as sermon, i (sermon.slug)}
+						<div class="contents" hidden={i >= limit}>
+							<SermonCard {sermon} {showAuthor} />
+						</div>
+					{/each}
+				</div>
+			{/snippet}
+
+			{#if loadError}
+				<EmptyState message={t('common.loadError')} onRetry />
+			{:else if sorted.length === 0}
+				<EmptyState
+					art={filtering ? 'search' : 'book'}
+					message={filtering ? t('sermons.noMatches') : t('sermons.empty')}
+					action={filtering ? clearFiltersAction : undefined}
+				/>
+			{:else if groups}
+				<!-- Jump to a preacher — the sections are long, so they need a way in
+				     that isn't scrolling: the shared faces strip (Books uses it too). -->
+				{#if groups.length > 1}
+					<AuthorJumpStrip
+						class="mb-8"
+						label={t('sermons.jumpPreacher')}
+						href={(slug) => `#preacher-${slug}`}
+						writers={groups.map((g) => ({ ...g.author, count: g.items.length }))}
+					/>
 				{/if}
-			</section>
-		{/each}
-	{:else}
-		{@render sermonList(pages.visible)}
-		<ShowMore pager={pages} />
-	{/if}
-	<!-- The leader's way on, at the end of the shelf rather than in its head
-	     (design review #4): a reader came for the sermons first. Only under
-	     real results — never as the answer to an empty filter. -->
-	{#if !loadError && sorted.length}
-		<ForPromo place="sermons-shelf" class="mt-8" />
-	{/if}
+				{#each groups as g (g.author.slug)}
+					{@const a = g.author}
+					{@const lifespan = formatLifespan(a.birth_year, a.death_year, t('common.bornPrefix'))}
+					{@const canCollapse = collapsible(g.items.length)}
+					{@const collapsed = canCollapse && !expanded.has(a.slug)}
+					<section
+						id="preacher-{a.slug}"
+						class="mb-10"
+						style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
+					>
+						<!-- Who the preacher was, before what they preached: their years and
+						     one line on who they were, so a newcomer can tell Chrysostom's
+						     Antioch from Tozer's Chicago. The line is the tagline, written for
+						     this spot (a bio often opens "Name (1897–1963) was…", repeating
+						     the heading); a language without one falls back to the bio's
+						     opening. The name links to the full life. -->
+						<GroupHeading
+							name={a.name}
+							href={localizeHref(authorPath(a.slug))}
+							portraitUrl={a.photo_url}
+							portraitPosition={portraitPosition(a.slug)}
+							blurb={a.tagline || a.bio}
+						>
+							<!-- Years, then the count as words: a bare count after a
+							     lifespan read as one figure ("1843–1919 15"). -->
+							{#snippet detail()}
+								<span class="text-small font-normal count"
+									>{#if lifespan}{lifespan}<span class="sep">{' · '}</span>{/if}{sermonsLabel(g.items.length)}</span
+								>
+							{/snippet}
+						</GroupHeading>
+						{@render sermonList(g.items, collapsed ? PREVIEW : Infinity, `preacher-list-${a.slug}`)}
+						{#if canCollapse}
+							<button
+								type="button"
+								class="btn btn-ghost btn-sm mt-3"
+								aria-expanded={!collapsed}
+								aria-controls="preacher-list-{a.slug}"
+								onclick={() => toggleSection(a.slug)}
+							>
+								{collapsed
+									? t('bios.showMore').replace('%n%', String(g.items.length - PREVIEW))
+									: t('search.showLess')}
+							</button>
+						{/if}
+					</section>
+				{/each}
+			{:else}
+				{@render sermonList(pages.visible)}
+				<ShowMore pager={pages} />
+			{/if}
+			<!-- The leader's way on, at the end of the shelf rather than in its head
+			     (design review #4): a reader came for the sermons first. Only under
+			     real results — never as the answer to an empty filter. -->
+			{#if !loadError && sorted.length}
+				<ForPromo place="sermons-shelf" class="mt-8" />
+			{/if}
+		</div>
+	</div>
 </div>
 
 <style>
@@ -789,6 +899,50 @@
 	}
 	.canon-open .canon-body {
 		display: block;
+	}
+	/* The side rail beside the list, from lg (see the script). Logical grid
+	   columns, so Arabic mirrors it. The rail sticks under the pinned filter
+	   bar; it is short enough to fit a laptop screen whole. */
+	@media (min-width: 64rem) {
+		.shelf-split {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) 18rem;
+			column-gap: 3rem;
+			align-items: start;
+		}
+		.shelf-main {
+			grid-column: 1;
+			grid-row: 1;
+		}
+		.shelf-rail {
+			grid-column: 2;
+			grid-row: 1;
+			position: sticky;
+			top: calc(var(--pinned-offset, 5rem) + 1rem);
+		}
+	}
+	.rail-block {
+		margin-block-start: 2rem;
+	}
+	.rail-faces {
+		display: grid;
+		grid-template-columns: repeat(5, 2.75rem);
+		gap: 0.6rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.rail-face {
+		display: block;
+		border-radius: var(--radius-pill);
+	}
+	.rail-face :global(.rail-face-img) {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
+	.rail-face:hover :global(.rail-face-img),
+	.rail-face:focus-visible :global(.rail-face-img) {
+		border-color: var(--accent);
 	}
 	@media (min-width: 40rem) {
 		.canon-body {

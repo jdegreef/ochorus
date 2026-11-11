@@ -2,6 +2,7 @@
 	import type { SermonSummary } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { readingTime } from '$lib/reading';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	/**
 	 * A sermon on a SHELF — the one row for "here is a sermon, go read it".
@@ -26,14 +27,19 @@
 	 *
 	 * Put rows inside an element with class `sermon-list` (app.css: the measure
 	 * and the first row's missing hairline).
+	 *
+	 * Where the row names its preacher it also shows their face — a small round
+	 * portrait (the shared `<Portrait>`: webp srcset, per-writer crop, initials
+	 * when there is no free image) at the row's start, so a long list scans by
+	 * face as well as by name. Decorative: the name is in the meta line.
 	 */
 	let {
 		sermon,
 		showAuthor = false
 	}: {
 		sermon: SermonSummary;
-		/** Name the preacher. Off where a heading already does (an author page,
-		 *  the index grouped by preacher). */
+		/** Name the preacher, and show their portrait. Off where a heading already
+		 *  does (an author page, the index grouped by preacher). */
 		showAuthor?: boolean;
 	} = $props();
 	// The link is named by its title and described by the meta line only; the
@@ -44,24 +50,38 @@
 
 <a
 	class="sermon-row"
+	class:with-face={showAuthor}
 	href={localizeHref(`/sermons/${sermon.slug}`)}
 	aria-labelledby="{uid}-t"
 	aria-describedby="{uid}-m"
 >
-	<!-- The <h3> keeps the title's heading semantics under the page's h2s. -->
-	<h3 id="{uid}-t" class="sermon-row-title">{sermon.title}</h3>
-	<!-- Spaces are explicit ({' '}) around each dot, so the gap is even and a
-	     screen reader's description still separates the segments. -->
-	<span id="{uid}-m" class="sermon-row-meta"
-		>{#if showAuthor}<span>{sermon.author.name}</span>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}{#if sermon.scripture_ref}<span
-				>{sermon.scripture_ref}</span
-			>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}<span class="whitespace-nowrap"
-			>{readingTime(sermon.word_count)}</span
-		></span
-	>
-	{#if sermon.summary}
-		<span class="sermon-row-brief line-clamp-1">{sermon.summary}</span>
+	{#if showAuthor}
+		<Portrait
+			slug={sermon.author.slug}
+			name={sermon.author.name}
+			url={sermon.author.photo_url}
+			px={40}
+			tone="color"
+			decorative
+			class="sermon-row-face"
+		/>
 	{/if}
+	<div class="sermon-row-text">
+		<!-- The <h3> keeps the title's heading semantics under the page's h2s. -->
+		<h3 id="{uid}-t" class="sermon-row-title">{sermon.title}</h3>
+		<!-- Spaces are explicit ({' '}) around each dot, so the gap is even and a
+		     screen reader's description still separates the segments. -->
+		<span id="{uid}-m" class="sermon-row-meta"
+			>{#if showAuthor}<span>{sermon.author.name}</span>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}{#if sermon.scripture_ref}<span
+					>{sermon.scripture_ref}</span
+				>{' '}<span class="sep" aria-hidden="true">·</span>{' '}{/if}<span class="whitespace-nowrap"
+				>{readingTime(sermon.word_count)}</span
+			></span
+		>
+		{#if sermon.summary}
+			<span class="sermon-row-brief line-clamp-1">{sermon.summary}</span>
+		{/if}
+	</div>
 </a>
 
 <style>
@@ -71,6 +91,22 @@
 		border-block-start: 1px solid var(--border);
 		color: var(--text);
 		text-decoration: none;
+	}
+	/* With a face: the portrait at the row's start, level with the title. */
+	.sermon-row.with-face {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.85rem;
+	}
+	.sermon-row :global(.sermon-row-face) {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin-block-start: 0.1rem;
+	}
+	.sermon-row-text {
+		display: block;
+		min-width: 0;
+		flex: 1;
 	}
 	.sermon-row-title {
 		margin: 0;
