@@ -6,6 +6,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import CitingPassages from '$lib/components/CitingPassages.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { citedAuthors, scriptureHead } from '$lib/scriptureIndex';
 
 	const t = i18n.t;
 
@@ -28,9 +29,13 @@
 	// point search engines at pages that do not exist.
 	const hreflang = $derived(hreflangFor(path, ['en']));
 
-	const title = $derived(`${page.reference} — what the classics say — Ochorus`);
+	// Named for who it quotes — the words a search for "John 15 Andrew Murray"
+	// matches — from the passages the page already lists.
+	const head = $derived(scriptureHead(page.reference, citedAuthors(page.passages)));
+	const title = $derived(head.title);
 	const description = $derived(
-		`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from the ` +
+		head.lead +
+			`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from the ` +
 			`Christian classics that treat ${page.reference}, each quoted and linked to its source.`
 	);
 

@@ -4,6 +4,7 @@ import {
 	absUrl,
 	jsonLd,
 	breadcrumb,
+	fitList,
 	breadcrumbLd,
 	collectionPage,
 	faqPage,
@@ -272,5 +273,14 @@ describe('toQa', () => {
 	it('treats a missing set as empty', () => {
 		expect(toQa(undefined)).toEqual([]);
 		expect(toQa(null)).toEqual([]);
+	});
+});
+
+describe('fitList', () => {
+	it('names as many as fit, once each, and keeps the head when none do', () => {
+		expect(fitList('Today', ['A', 'B', 'A'], 60)).toBe('Today: A, B');
+		expect(fitList('Today', ['Alpha', 'Beta'], 14)).toBe('Today: Alpha');
+		expect(fitList('Today', ['A very long name'], 10)).toBe('Today');
+		expect(fitList('Today', [])).toBe('Today');
 	});
 });

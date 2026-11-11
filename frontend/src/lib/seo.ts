@@ -208,6 +208,24 @@ export function fitTitle(title: string, max = TITLE_BUDGET): string {
 }
 
 /**
+ * `head` followed by as many of `names` (deduplicated, in order) as fit within
+ * `max` characters, comma-joined — `head` alone when not even one fits. For a
+ * title that names what is on the page ("Today in the devotionals: Charles H.
+ * Spurgeon, F. B. Meyer") without running past what a result shows.
+ */
+export function fitList(head: string, names: string[], max = TITLE_BUDGET): string {
+	let out = head;
+	let sep = ': ';
+	for (const n of new Set(names.filter(Boolean))) {
+		const next = `${out}${sep}${n}`;
+		if (next.length > max) break;
+		out = next;
+		sep = ', ';
+	}
+	return out;
+}
+
+/**
  * The raw schema.org ItemList object for a shelf's works — the ordered roster of
  * {name, url} pairs, urls made absolute. The shared body of the standalone
  * itemList() script and the CollectionPage's `mainEntity`, so a ListItem's shape

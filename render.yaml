@@ -545,6 +545,16 @@ services:
       - type: redirect
         source: /authors/ochorus-originals
         destination: /originals/
+      # The two author slugs people guess most (the initial left out). Neither
+      # source is, or can become, a real page: author slugs keep the initial.
+      # Every other near-miss slug is recovered by the not-found page itself
+      # ($lib/slugMatch), so don't grow this list per author.
+      - type: redirect
+        source: /authors/charles-spurgeon
+        destination: /authors/charles-h-spurgeon/
+      - type: redirect
+        source: /authors/dwight-moody
+        destination: /authors/dwight-l-moody/
       # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
       # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
       # `/about/` (verified live — there is no build/about/ directory, only

@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest';
 import type { ScripturePageEntry } from '$lib/library-public';
 import {
 	BIBLE_SECTIONS,
+	citedAuthors,
+	namedAuthors,
+	scriptureHead,
 	bookFromPageList,
 	groupScripture,
 	heatScale,
@@ -181,5 +184,50 @@ describe('bookFromPageList', () => {
 	});
 	it('is null for a book with no chapter page, like the API', () => {
 		expect(bookFromPageList('jude', list)).toBeNull();
+	});
+});
+
+describe('scripture page titles', () => {
+	const cite = (author_slug: string, author_name: string, weight?: number) => ({
+		author_slug,
+		author_name,
+		weight
+	});
+
+	it('ranks the writers a page quotes, leaving out the house imprint', () => {
+		const rows = [
+			cite('ochorus-originals', 'Ochorus Originals'),
+			cite('john-owen', 'John Owen'),
+			cite('andrew-murray', 'Andrew Murray'),
+			cite('andrew-murray', 'Andrew Murray'),
+			cite('ochorus-originals', 'Ochorus Originals')
+		];
+		expect(citedAuthors(rows)).toEqual(['Andrew Murray', 'John Owen']);
+		// A book page's rows carry their counts; ties keep the page's order.
+		expect(citedAuthors([cite('a', 'A', 2), cite('b', 'B', 5), cite('c', 'C', 2)])).toEqual([
+			'B',
+			'A',
+			'C'
+		]);
+	});
+
+	it('names up to three writers, saying "and more" only when there are more', () => {
+		expect(namedAuthors(['A'])).toBe('A');
+		expect(namedAuthors(['A', 'B'])).toBe('A and B');
+		expect(namedAuthors(['A', 'B', 'C'])).toBe('A, B and C');
+		expect(namedAuthors(['A', 'B', 'C', 'D'])).toBe('A, B, C and more');
+		expect(namedAuthors([])).toBe('');
+	});
+
+	it('keeps the title within budget, then falls back to the plain title', () => {
+		const names = ['Andrew Murray', 'John Owen', 'Charles H. Spurgeon', 'John Calvin'];
+		const h = scriptureHead('John 15', names);
+		expect(h.title).toBe('John 15 in the classics: Andrew Murray, John Owen and more — Ochorus');
+		expect(h.title.replace(' — Ochorus', '').length).toBeLessThanOrEqual(65);
+		expect(h.lead).toBe('Andrew Murray, John Owen and more on John 15. ');
+
+		const long = scriptureHead('1 Thessalonians 4', ['A Writer With An Extraordinarily Long Name']);
+		expect(long).toEqual({ title: '1 Thessalonians 4 — what the classics say — Ochorus', lead: '' });
+		expect(scriptureHead('John', []).title).toBe('John — what the classics say — Ochorus');
 	});
 });
