@@ -5609,6 +5609,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "the intruding agency » f:My brother",
                 "the intruding agency. My brother",
             ),
+            # Two century slips (found translating vi, #7030): Susanna died in
+            # 1742, the manuscript in ch9 is dated 1711-12 in the same
+            # paragraph, and ch11's letters about the noises are dated 1716-17.
+            # The am/ar/es/fr/uk editions already read 1711/1712 and 1716; en,
+            # lg, pt and sw carried the slip. Anchored on the bare digits so the
+            # pairs match in every language (nothing else in the book reads
+            # " 1811 ", " 1812." or " 1816,").
+            (" 1811 ", " 1711 "),
+            (" 1812.", " 1712."),
+            (" 1816,", " 1716,"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
@@ -7536,6 +7546,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #
         # Each seam carries the tail of the preceding sentence, so it matches
         # its one site and nowhere else in the book.
+        # Word-level OCR slips the uk translation (#7037) read through, each with
+        # one possible reading, which the uk edition already renders. Every seam
+        # carries enough context to match its one site. Punctuation losses (the
+        # dozens of dropped "?" and mismatched quote marks) are NOT repaired here —
+        # they are listed on the PR for a dedicated pass.
+        "replacements": [
+            ("<p>To my bretheren and dearly-beloved", "<p>To my reverend and dearly-beloved"),
+            ("in Jesus Christ be increase </p>", "in Jesus Christ be increased </p>"),
+            ("further means to he used.", "further means to be used."),
+            ("if he be not mused to greater", "if he be not roused to greater"),
+            ("?’ Brethen, if the saving", "?’ Brethren, if the saving"),
+            ("taken heed to all the Rock:", "taken heed to all the flock:"),
+            ("greater necessity to do or them,", "greater necessity to do for them,"),
+            ("our Master’s will by no aggravation", "our Master’s will be no aggravation"),
+            ("judge of the a affection of him", "judge of the affection of him"),
+            ("therefore, keep dose to the ancient", "therefore, keep close to the ancient"),
+            ("consideration of he blessed nature", "consideration of the blessed nature"),
+            ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+            ("did speak to us as well others.", "did speak to us as well as others."),
+            ("parliament began, bow frequent", "parliament began, how frequent"),
+            ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
+            ("For if you we’re a Christian", "For if you were a Christian"),
+        ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
             ("will not do so small a matter to attain it.", "It is a palpable error"),
@@ -24594,24 +24627,9 @@ BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).ex
     ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
 ])
 
-# OCR slips found while translating The Reformed Pastor to Luganda (job #7072). Each has one
-# reading: "all the Rock" is Acts 20:28's flock; the others are dropped/swapped letters.
-# Left as found (not unambiguous): "mused to greater faithfulness" (roused? moved?), "To my
-# bretheren and dearly-beloved brethren" (reverend?), "Take heed, therefore, to ourselves
-# first, that you be", "uncourteous courteous and morose", and a dozen missing "?" /
-# unbalanced quotes.
+# Found translating The Reformed Pastor to Luganda (job #7072). The uk job (#7037)
+# already repairs the other word-level slips in this book's own "replacements" above;
+# this is the one it left: a stray space inside the signature's hyphenated word.
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
-    ("Grace and Peace in Jesus Christ be increase </p>", "Grace and Peace in Jesus Christ be increased </p>"),
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
-    ("Master’s will by no aggravation", "Master’s will be no aggravation"),
-    ("keep dose to the ancient simplicity", "keep close to the ancient simplicity"),
-    ("souls?’ Brethen, if the saving", "souls?’ Brethren, if the saving"),
-    ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
-    ("as they judge of the a affection", "as they judge of the affection"),
-    ("consideration of he blessed nature", "consideration of the blessed nature"),
-    ("further means to he used", "further means to be used"),
-    ("taken heed to all the Rock:", "taken heed to all the flock:"),
-    ("a work of greater necessity to do or them", "a work of greater necessity to do for them"),
-    ("For if you we’re a Christian indeed", "For if you were a Christian indeed"),
-    ("Before the parliament began, bow frequent", "Before the parliament began, how frequent"),
 ])
