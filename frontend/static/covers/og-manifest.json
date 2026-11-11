@@ -18158,6 +18158,38 @@
 			"bar": 0,
 			"caps": false
 		},
+		"hi/pensees": {
+			"ground": "edecbb108da20ec8f60844a9d33d71541d2f1aaf3aca79472952158baf1ba593",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[242, 318, 358, 415]
+				],
+				"subtitle": [
+					[147, 491, 453, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"hi/pilgrims-progress": {
 			"ground": "259bde2c330daffad57056e6d50bb86d54898414a3a4bdf86f7266a8ce2b2a75",
 			"style": "press",
