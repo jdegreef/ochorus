@@ -32384,6 +32384,20 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"sw/selected-sermons-edwards": {
+			"ground": "c56e53b876b4808bceb0a23cf6bfc0075a8435529746867ee1c595f8d1e35a2a",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/slate",
+			"bar": 0,
+			"caps": false
+		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "c5e0f7674c522feb728fb346a7dd7e8f0a845f578caec64c427635bd900b953e",
 			"style": "devotional",
