@@ -22,7 +22,7 @@
 	function originOf(src) {
 		try {
 			return new URL(src, location.href).origin;
-		} catch (e) {
+		} catch (_e) {
 			return 'https://ochorus.com';
 		}
 	}
