@@ -1,0 +1,34 @@
+{
+ "slug": "numbers",
+ "title": "Numbers",
+ "cover_title": "Numbers",
+ "subtitle": "Bemidbar, “In the wilderness”",
+ "cover_color": "#5c4a2a",
+ "description": "The fourth book of the Bible, called in Hebrew Bemidbar, “In the wilderness”, from its first verse, and in English Numbers, after the two counts of the people that frame it. Israel sets out from Sinai with the tribes camped around the tabernacle, the priestly blessing on their heads and the cloud going before them, and almost at once they begin to complain. Moses longs for all the LORD’s people to be prophets; twelve scouts come back from Canaan, ten of them feeling like grasshoppers, and the people refuse to go in; Korah rebels, Aaron’s staff blossoms, Moses strikes the rock, and a bronze snake is lifted up on a pole. Then the seer Balaam, hired to curse, can only bless and sees a star come out of Jacob, and a new generation stands at last on the plains of Moab. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Numbers?",
+   "answer": "The fourth book of the Bible and of the five books of Moses. Its Hebrew name, Bemidbar, means “In the wilderness”; its English name comes, through Latin, from the Greek translation and refers to the two censuses of the people in chapters 1 and 26. Its thirty-six chapters follow Israel from Mount Sinai to the plains of Moab, across the Jordan from Jericho, over some forty years: the generation that came out of Egypt refuses to enter the promised land and dies in the wilderness, and their children are counted and made ready to go in."
+  },
+  {
+   "question": "Who wrote the book of Numbers?",
+   "answer": "Numbers does not name its author, though it says that Moses recorded the stages of the journey (33:2), and Jewish and Christian tradition has received it as one of the five books of Moses. Many scholars think it gathers old lists, laws and stories that reached their final form much later. Christians hold a range of views on how it was composed, while receiving it as Scripture; the New Testament reads its story as written down to warn and teach the church (1 Corinthians 10:11)."
+  },
+  {
+   "question": "Why did Israel wander in the wilderness for forty years?",
+   "answer": "Because at Kadesh, after twelve scouts had explored Canaan, the people believed the ten who said the land could not be taken and refused to go in, even proposing to choose a leader and return to Egypt (Numbers 13–14). God pardoned them at Moses’ prayer, but declared that the generation which had refused the land would not enter it. They would wander forty years, a year for each day the scouts were in the land, and only Caleb and Joshua, who had trusted God, would go in with the next generation. Hebrews 3:19 sums it up: “it was unbelief that kept them from entering.”"
+  },
+  {
+   "question": "What is the bronze snake in Numbers 21?",
+   "answer": "When the people spoke against God and Moses, fiery snakes came among them, and many died. When they confessed their sin, God told Moses to make a snake and set it on a pole, and whoever had been bitten and looked at it lived (Numbers 21:4–9). Centuries later, when the Israelites had been burning incense to it, King Hezekiah smashed it (2 Kings 18:4). Jesus took it as a picture of his own death: “Moses lifted up the serpent in the wilderness, and in the same way the Son of Man must be lifted up” (John 3:14)."
+  },
+  {
+   "question": "Who was Balaam, and what is the star out of Jacob?",
+   "answer": "Balaam son of Beor was a famous seer from Aram whom Balak king of Moab hired to curse Israel (Numbers 22–24). On the way his donkey saw the angel of the LORD barring the road when he could not, and when he came to curse, he could speak only blessing. In his fourth oracle he says, “A star will march out of Jacob, and a scepter will rise from Israel” (24:17), words that Jews and Christians alike have read as a promise of the Messiah. The New Testament remembers Balaam less kindly, as a man who loved the pay he could get for doing wrong (2 Peter 2:15), and Numbers 31:16 says Israel’s sin at Peor came on his advice."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

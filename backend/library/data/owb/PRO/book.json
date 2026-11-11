@@ -1,0 +1,34 @@
+{
+ "slug": "proverbs",
+ "title": "Proverbs",
+ "cover_title": "Proverbs",
+ "subtitle": "Mishlei, “Proverbs”",
+ "cover_color": "#5a2f4f",
+ "description": "The Bible’s book of everyday wisdom, which begins with its motto — “Knowledge begins with the fear of the LORD” — and then brings that fear down to earth: words that calm anger and words that wound, the lazy one and the ant, honest scales and justice for the poor, friends who stay closer than a brother, and plans that only the LORD can make stand. A father teaching his son, Wisdom calling in the street and delighting beside God at creation, two houses and two invitations, the sayings of Solomon copied in Hezekiah’s day, Agur’s riddles, and the capable wife who closes the book. Thirty-one chapters, a chapter a day for a month, set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Proverbs?",
+   "answer": "A book of the Old Testament made of wise sayings and teaching poems about how to live well under God. Its Hebrew name, Mishlei, is its first word, “the proverbs of”; a mashal is a saying that teaches by comparison. Chapters 1–9 are long poems in which a parent instructs a son and Wisdom calls out in the streets; chapters 10–29 gather hundreds of short sayings, most of them two balanced lines; and chapters 30–31 hold the words of Agur, the words of King Lemuel and the poem of the capable wife. With Job and Ecclesiastes it is one of the wisdom books of the Bible."
+  },
+  {
+   "question": "Who wrote the book of Proverbs?",
+   "answer": "Proverbs is a collection, and its headings name several sources. It opens with “the proverbs of Solomon”, the king remembered for speaking three thousand proverbs (1 Kings 4:32), and two large collections bear his name (10:1–22:16 and chapters 25–29). The second was “collected and copied by the officials of Hezekiah, king of Judah” (25:1), around 700 BC. The book also gathers “sayings of the wise” (22:17; 24:23), the words of Agur son of Jakeh (chapter 30) and of King Lemuel, taught by his mother (31:1). Scholars differ over how much goes back to Solomon himself and when the book took its final form, but it was clearly gathered over centuries."
+  },
+  {
+   "question": "What does “the fear of the LORD” mean in Proverbs?",
+   "answer": "It is the motto of the book: “Knowledge begins with the fear of the LORD” (1:7), repeated at 9:10 and echoed in the last chapter, where the woman who fears the LORD “is the one to be praised” (31:30). It does not mean terror that runs from God, but reverent awe that trusts him and turns from evil. Proverbs defines it directly — “To fear the LORD is to hate evil” (8:13) — and describes it as trusting the LORD with your whole heart rather than relying on your own insight (3:5–7). In Proverbs, wisdom is skill in living, and it begins with knowing who God is."
+  },
+  {
+   "question": "Are the sayings in Proverbs promises?",
+   "answer": "Not in the sense of guarantees. A proverb states how life usually goes in God’s world, compressed into a memorable line, and it has to be applied with judgment. “Start children off on the way they should go” (22:6) is wise and generally true, but it does not promise that every child of faithful parents will believe. Proverbs shows this itself by setting side by side “Do not answer fools on the terms of their folly” and “Answer fools as their folly deserves” (26:4–5): both are right, in different moments. The books of Job and Ecclesiastes, which stand beside Proverbs, take up the hard cases in which the righteous suffer and the wicked prosper."
+  },
+  {
+   "question": "Who is the woman of Proverbs 31?",
+   "answer": "Proverbs 31:10–31 is an alphabetic poem, each of its twenty-two verses beginning with the next letter of the Hebrew alphabet, in praise of “a capable wife” (in Hebrew eshet hayil, a woman of strength and worth, the phrase used of Ruth in Ruth 3:11). She works, trades, buys land, cares for her household and opens her hand to the poor, and she is praised because she fears the LORD. Many read her as the portrait of a real and admirable woman, and the poem is sung in Jewish homes on the eve of the Sabbath; many also notice that she embodies the Wisdom described in chapters 1–9, so that the book ends with wisdom lived out in a home. The chapter opens with the words King Lemuel’s mother taught him (31:1–9)."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Each line of the poetry is set on its own, and “LORD” in capitals stands for God’s personal name. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}
