@@ -22370,6 +22370,20 @@
 			"bar": 0,
 			"caps": true
 		},
+		"ko/spurgeon-on-prayer": {
+			"ground": "46a0952e5cf6d55066a39c76e671a73b9ce733081e81d5b6d5c0b7eb4cce1b35",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"ko/stepping-stones-2": {
 			"ground": "5d538ddb01f746c61cc3194792e1d2dd30abcff12f808ca0b95d45ecba2dc3e8",
 			"style": "devotional",
