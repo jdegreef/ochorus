@@ -7568,6 +7568,11 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("parliament began, bow frequent", "parliament began, how frequent"),
             ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
             ("For if you we’re a Christian", "For if you were a Christian"),
+            # Four more the ar translation (#7063) read through, same standard.
+            ("If it be no, then", "If it be not, then"),
+            ("To this answer, ‘Is it necessity", "To this I answer, ‘Is it necessity"),
+            ("your flesh and family, then undertake", "your flesh and family, than undertake"),
+            ("and had rather than his carnal hearers", "and had rather that his carnal hearers"),
         ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
