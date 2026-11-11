@@ -17,9 +17,9 @@ under `data/grc|hbo/` for paragraphing — never its code, so the rules below ar
 a small port of the ones its site builder (`scripts/build_site.py`) applies:
 
 * **Settings** at their defaults: a `{{setting:a|b}}` span reads `a`.
-* **Poetry lines** run together in prose books: a `\\q` break reads as a
-  space. In a book of verse (`POETRY`) each line is its own: a `\\q` break and
-  the start of every verse become a `<br>`, inside the paragraphs below.
+* **Verse, line by line.** A sentence OWB breaks into lines (`\\q`) is set
+  one line to a line, and on lines of its own; prose around it runs on. In a
+  book of verse (`VERSE`) every verse starts a line, a one-line verse too.
 * **English chapters.** Records carry the source text's numbering, which in
   some Old Testament books differs from English Bibles (Hebrew Genesis 32:1 is
   English 31:55; Malachi 4 is Hebrew 3:19-24). A sentence goes in the ENGLISH
@@ -124,16 +124,12 @@ NEW_TESTAMENT_ENGLISH = {
 FIRST_NT_NUMBER = 40
 
 #: Books that are verse throughout: every verse on a line of its own, a
-#: one-line verse (which carries no `\q`) included.
+#: one-line verse (which carries no `\q`) included. In every other book a
+#: sentence that OWB breaks into lines of verse (`\q`) is set line by line and
+#: on lines of its own, and prose runs on: so Job's speeches, a prophet's
+#: oracles, the Song of the Sea, Hannah's prayer and Mary's song are verse, and
+#: the narrative around them is prose.
 VERSE = frozenset({"PSA", "PRO", "SNG", "LAM"})
-#: Books whose verse is set line by line (see the module doc). Outside VERSE a
-#: book mixes the two (Job's prose frame, a prophet's narrative), so a paragraph
-#: is set as verse only when it holds a line break of verse (`\q`), and every
-#: other paragraph as prose.
-POETRY = VERSE | frozenset({
-    "JOB", "ECC", "ISA", "JER", "EZK", "DAN", "HOS", "JOL", "AMO", "OBA", "JON",
-    "MIC", "NAM", "HAB", "ZEP", "HAG", "ZEC", "MAL",
-})
 
 #: Books whose chapters open with a title English Bibles print unnumbered: the
 #: Psalms (see the module doc).
@@ -255,6 +251,8 @@ class Source:
             )
         self.records = sorted(records, key=record_key)
         self.by_id = {r["id"]: r for r in self.records}
+        #: Other books' chapters an introduction quotes, read once each.
+        self._elsewhere: dict[tuple[str, str], dict[str, dict]] = {}
         headings = root / "data" / "headings" / f"{code}.json"
         self.headings = (
             {
@@ -272,7 +270,6 @@ class Source:
         #: The book's place in the canon (Genesis 1, Revelation 66): OWB's own order.
         self.number = list(books).index(code) + 1
         self.greek = self.number >= FIRST_NT_NUMBER
-        self.poetry = code in POETRY
         # Source verse -> its English verses, for the verses numbered otherwise
         # in English ([] for a psalm title). See the module doc.
         upstream = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
@@ -390,21 +387,23 @@ class Source:
     def chapter_html(self, chapter: int, records: list[dict]) -> str:
         starts = self.paragraph_starts(chapter, records)
         out: list[str] = []
-        para: list[str] | None = None
-        # Does the paragraph in hand hold a line of verse? In a POETRY book a
-        # paragraph with one sets every verse on a line of its own; one without
-        # (Job's prose frame, a prophet's narrative) runs its verses together.
-        verse = False
+        # The paragraph in hand: (text, is a line of verse) per verse.
+        para: list[tuple[str, bool]] | None = None
         in_disputed = False
+        every_line = self.code in VERSE
 
         title: list[str] = []
 
         def close():
-            """End the paragraph in hand, if any."""
-            nonlocal para, verse
+            """End the paragraph in hand, if any. Two verses run on only when
+            neither is verse; otherwise each starts a line of its own."""
+            nonlocal para
             if para:
-                out.append("<p>" + ("<br>" if verse else " ").join(para) + "</p>")
-            para, verse = None, False
+                parts = [para[0][0]]
+                for (_, before), (text, line) in zip(para, para[1:], strict=False):
+                    parts += ["<br>" if every_line or before or line else " ", text]
+                out.append("<p>" + "".join(parts) + "</p>")
+            para = None
 
         def close_title():
             if title:
@@ -438,7 +437,7 @@ class Source:
                     f"<p><em>{escape(self.disputed_note(r), quote=False)}</em></p><blockquote>"
                 )
             in_disputed = disputed
-            texts = [text for _, text in verses_of(r, self.poetry)]
+            texts = [text for _, text in verses_of(r, lines=True)]
             if peel:
                 peel = False
                 heading_title, texts[0] = split_psalm_title(texts[0])
@@ -449,11 +448,13 @@ class Source:
             if para is None or r["id"] in starts:
                 close()
                 para = []
+            # Verse if OWB broke the sentence into lines, as set (not the raw
+            # text, where a line break can sit in a setting not taken).
+            line = every_line or any("\n" in t for t in texts)
             # A verse the peeled title used up whole leaves nothing to set.
-            verse = verse or self.code in VERSE or (
-                self.poetry and "\\q" in r["renderings"][LANGUAGE][LEVEL]
+            para.extend(
+                (escape(text, quote=False).replace("\n", "<br>"), line) for text in texts if text
             )
-            para.extend(escape(text, quote=False).replace("\n", "<br>") for text in texts if text)
         close()
         if in_disputed:
             out.append("</blockquote>")
@@ -473,13 +474,16 @@ class Source:
         if rid in self.by_id:
             return self.by_id[rid]
         code, chapter = rid.split(".")[:2]
-        # A chapter is one file, or several by passage (MAT.12.38-50.json).
-        folder = self.root / "content" / code
-        files = [*folder.glob(f"{code}.{chapter}.json"), *folder.glob(f"{code}.{chapter}.*.json")]
-        records = [r for f in files for r in json.loads(f.read_text("utf-8"))["records"]]
-        found = next((r for r in records if r["id"] == rid), None)
-        if found is None:
-            raise CommandError(f"editorial quotes unknown sentence {rid}")
+        if (code, chapter) not in self._elsewhere:
+            # A chapter is one file, or several by passage (MAT.12.38-50.json).
+            folder = self.root / "content" / code
+            files = [*folder.glob(f"{code}.{chapter}.json"), *folder.glob(f"{code}.{chapter}.*.json")]
+            self._elsewhere[code, chapter] = {
+                r["id"]: r for f in files for r in json.loads(f.read_text("utf-8"))["records"]
+            }
+        found = self._elsewhere[code, chapter].get(rid)
+        if found is None or LEVEL not in found["renderings"].get(LANGUAGE, {}):
+            raise CommandError(f"editorial quotes unknown sentence {rid} (or one with no {LANGUAGE}-{LEVEL})")
         return found
 
     def embed(self, html: str) -> str:

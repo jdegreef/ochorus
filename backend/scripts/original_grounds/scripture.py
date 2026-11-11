@@ -42,7 +42,8 @@ from typing import NamedTuple
 
 
 class Name(NamedTuple):
-    #: The name as the cover sets it, top to bottom. Hebrew: one line. Greek: a
+    #: The name as the cover sets it, top to bottom. Hebrew: the name, and for
+    #: the halves of Samuel, Kings and Chronicles its number (א, ב). Greek: a
     #: small first word ("ΚΑΤΑ", "ΠΡΟΣ", or "" for none), the large name, and an
     #: optional small last line (a letter's number, "Α"; Revelation's "ΙΩΑΝΝΟΥ").
     lines: tuple[str, ...]
@@ -148,6 +149,8 @@ def name_markup(name: Name) -> str:
     as an optional small first word (ΚΑΤΑ, ΠΡΟΣ), the large name, and an
     optional small last line (a letter's number, Revelation's ΙΩΑΝΝΟΥ)."""
     if name.script == "he":
+        if not 1 <= len(name.lines) <= 2:
+            raise ValueError(f"a Hebrew name is 1 or 2 lines, not {name.lines}")
         word, *after = name.lines
         # Letters only: the vowel points are combining marks and take no width.
         letters = sum(unicodedata.category(c) not in ("Mn", "Zs") for c in word)
@@ -196,8 +199,8 @@ html,body{{margin:0;background:#000}}
   letter-spacing:.06em;opacity:.92}}
 .grc .small{{font-size:30px;letter-spacing:.32em;margin-bottom:10px;opacity:.8}}
 .grc .small.after{{margin:12px 0 0}}
-.he + .small.after{{font-family:'Name he',serif;font-size:34px;margin-top:10px;opacity:.8;text-align:center}}
-.band.three .he + .small.after{{font-size:28px;margin-top:4px}}
+/* A Hebrew number line is always stacked (`stacked`), so set at its size here. */
+.band.three .he + .small.after{{font-family:'Name he',serif;font-size:28px;margin-top:4px;opacity:.8;text-align:center}}
 .name{{margin:22px 0}}
 /* Three lines (ΠΡΟΣ / ΚΟΡΙΝΘΙΟΥΣ / Α) hold to the same band, y=470..650, with
    tighter margins and a smaller first and last line. */
