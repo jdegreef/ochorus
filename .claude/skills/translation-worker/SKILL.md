@@ -2911,3 +2911,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   them. (4) 25 half-month chunks at once tripped an account usage limit (HTTP 429) twice;
   ~10 concurrent translators ran clean, and a stopped agent resumes with SendMessage.
   Chapter band n=24 chunks: **0.74** of the English (`word_count`).
+- **The first translation of a house NOVEL (`fire-against-the-dark` → es, #7031,
+  2026-11-11) — what fiction needs beyond a devotional book.** (1) A names-and-terms
+  table is not optional: 15 parallel translators coined the same recurring words
+  differently (the song refrain three ways, "night-lamp" three ways), and a recurring
+  line can carry a COUNT the text depends on — ch07 says Wren remembers "two words"
+  of *Morning comes*, so the refrain had to be a two-word Spanish line («Ya amanece»)
+  in every chapter. Grep each recurring English phrase across the translated chapters
+  before building. (2) Address forms between characters need a table row each (who
+  uses tú/usted with whom). Left open, chapters split; a first-meeting usted that
+  turns to tú is defensible, so record it rather than flatten it. (3) The English had
+  69 interrupted speeches CLOSED with an opening mark (`—“` for `—”`). Every
+  translator reported it and no quote gate catches it; for a house Original, fix the
+  English in the same PR (a literal `—“`→`—”` swap was safe here: every hit was a
+  closer — check that first). (4) `<img>` alt text stays English (the system prompt
+  copies the tag verbatim); say so in the PR.
