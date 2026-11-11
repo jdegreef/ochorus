@@ -204,10 +204,11 @@
   },
   "key-teachings-four-teachers": {
     "title": "Mafundisho Makuu: Walimu Wanne",
-    "description": "Wiki kumi na mbili pamoja na walimu wanne, sura moja fupi kila siku, kila moja ikimalizika kwa maswali na sala: Richard Baxter juu ya pumziko la milele la watakatifu, Jonathan Edwards juu ya uzuri wa Mungu na dini ya kweli, A. B. Simpson juu ya Kristo Mwokozi wetu, Mtakasaji, Mponyaji na Mfalme Ajaye, na Watchman Nee juu ya maisha ya kawaida ya Kikristo.",
+    "description": "Wiki kumi na mbili pamoja na walimu wanne, sura moja fupi kila siku, kila moja ikimalizika kwa maswali na sala: Richard Baxter juu ya raha ya milele ya watakatifu, Jonathan Edwards juu ya uzuri wa Mungu na dini ya kweli, A. B. Simpson juu ya Kristo Mwokozi wetu, Mtakasaji, Mponyaji na Mfalme Ajaye, na Watchman Nee juu ya maisha ya kawaida ya Kikristo.",
     "note": [
       "Job #5116. PROVISIONAL SERIES TITLE: the English title opens with the series name of its four source books (The Key Teachings of …), none of which has a Swahili edition yet, so «Mafundisho Makuu» is this entry's own choice. Whoever translates the first key-teachings-of-* book into sw should title it «Mafundisho Makuu ya <author>» (author name in English form), or change this entry in the same PR.",
-      "«Mwokozi, Mtakasaji, Mponyaji na Mfalme Ajaye» matches the christ-our-healer card and the-fourfold-gospel.sw; «maisha ya kawaida ya Kikristo» is Nee's phrase as watchman-nee-a-life.sw renders it; «pumziko la milele», «uzuri wa Mungu» and «dini ya kweli» are corpus wording.",
+      "«Mwokozi, Mtakasaji, Mponyaji na Mfalme Ajaye» matches the christ-our-healer card and the-fourfold-gospel.sw; «maisha ya kawaida ya Kikristo» is Nee's phrase as watchman-nee-a-life.sw renders it; «uzuri wa Mungu» and «dini ya kweli» are corpus wording.",
+      "Job #6890 (key-teachings-of-richard-baxter → sw): «raha ya milele ya watakatifu» is that book's own chapter-4 title «Raha ya Milele ya Watakatifu», following SUV Heb 4:9 «imesalia raha kwa watu wa Mungu», the verse Baxter's title comes from; the card was changed from «pumziko» to agree with the book.",
       "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and key-teachings-of-richard-baxter, key-teachings-of-jonathan-edwards, key-teachings-of-a-b-simpson, key-teachings-of-watchman-nee are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Key Teachings: Four Teachers» on the Swahili plans page (the #819 defect)."
     ]
   },
