@@ -138,11 +138,36 @@ class PsalmTests(SimpleTestCase):
             "Many say<br>there is no help.</p>"
         ))
 
-    def test_prose_runs_its_lines_together(self):
-        """The Gospel of John's rule, untouched: a book not in POETRY."""
-        self.source.poetry = False
-        self.assertIn("<p>LORD, how many! Many rise against me. Many say there is no help.</p>",
-                      self.html())
+    def test_a_mixed_book_sets_only_its_verse_line_by_line(self):
+        """Job's prose frame runs on; the speeches, which carry `\\q`, do not."""
+        fake = FakeCheckout(
+            {"JOB": {"3": [
+                record("JOB.3.1.s1", ["JOB.3.1"], "After this Job spoke."),
+                record("JOB.3.2.s1", ["JOB.3.2"], "He cursed the day."),
+            ]}},
+            {},
+        )
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "books.json").write_text(json.dumps({"books": {"JOB": {"en": "Job"}}}))
+        prose = Source(fake.root, "JOB")
+        self.assertEqual(
+            prose.chapter_html(3, prose.chapters()[3]),
+            "<p>After this Job spoke. He cursed the day.</p>",
+        )
+        verse = FakeCheckout(
+            {"JOB": {"3": [
+                record("JOB.3.3.s1", ["JOB.3.3"], "Let the day perish, \\q and the night."),
+                record("JOB.3.4.s1", ["JOB.3.4"], "Let it be darkness."),
+            ]}},
+            {},
+        )
+        self.addCleanup(verse.close)
+        (verse.root / "data" / "books.json").write_text(json.dumps({"books": {"JOB": {"en": "Job"}}}))
+        poem = Source(verse.root, "JOB")
+        self.assertEqual(
+            poem.chapter_html(3, poem.chapters()[3]),
+            "<p>Let the day perish,<br>and the night.<br>Let it be darkness.</p>",
+        )
 
 
 class FusedTitleTests(SimpleTestCase):

@@ -123,8 +123,17 @@ NEW_TESTAMENT_ENGLISH = {
 #: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
 FIRST_NT_NUMBER = 40
 
-#: Books set as verse, line by line (see the module doc).
-POETRY = frozenset({"PSA"})
+#: Books that are verse throughout: every verse on a line of its own, a
+#: one-line verse (which carries no `\q`) included.
+VERSE = frozenset({"PSA", "PRO", "SNG", "LAM"})
+#: Books whose verse is set line by line (see the module doc). Outside VERSE a
+#: book mixes the two (Job's prose frame, a prophet's narrative), so a paragraph
+#: is set as verse only when it holds a line break of verse (`\q`), and every
+#: other paragraph as prose.
+POETRY = VERSE | frozenset({
+    "JOB", "ECC", "ISA", "JER", "EZK", "DAN", "HOS", "JOL", "AMO", "OBA", "JON",
+    "MIC", "NAM", "HAB", "ZEP", "HAG", "ZEC", "MAL",
+})
 
 #: Books whose chapters open with a title English Bibles print unnumbered: the
 #: Psalms (see the module doc).
@@ -382,18 +391,20 @@ class Source:
         starts = self.paragraph_starts(chapter, records)
         out: list[str] = []
         para: list[str] | None = None
+        # Does the paragraph in hand hold a line of verse? In a POETRY book a
+        # paragraph with one sets every verse on a line of its own; one without
+        # (Job's prose frame, a prophet's narrative) runs its verses together.
+        verse = False
         in_disputed = False
 
         title: list[str] = []
-        # Verse sets each line on its own; prose runs its verses together.
-        joiner = "<br>" if self.poetry else " "
 
         def close():
             """End the paragraph in hand, if any."""
-            nonlocal para
+            nonlocal para, verse
             if para:
-                out.append("<p>" + joiner.join(para) + "</p>")
-            para = None
+                out.append("<p>" + ("<br>" if verse else " ").join(para) + "</p>")
+            para, verse = None, False
 
         def close_title():
             if title:
@@ -439,6 +450,9 @@ class Source:
                 close()
                 para = []
             # A verse the peeled title used up whole leaves nothing to set.
+            verse = verse or self.code in VERSE or (
+                self.poetry and "\\q" in r["renderings"][LANGUAGE][LEVEL]
+            )
             para.extend(escape(text, quote=False).replace("\n", "<br>") for text in texts if text)
         close()
         if in_disputed:
