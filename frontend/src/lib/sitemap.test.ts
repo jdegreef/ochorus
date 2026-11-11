@@ -96,7 +96,8 @@ vi.mock('$lib/library-public', () => {
 		listQuoteAuthors: empty,
 		listQuoteTopics: empty,
 		listQuoteTopicPages: empty,
-		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }] : []),
+		// Swahili has the Bible series; English and Spanish have none.
+		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }, { slug: 'the-bible' }] : []),
 		listSermons: empty,
 		// Indexable in Swahili; on the Spanish shelf but below the API's works
 		// floor, so served there yet not advertised.
@@ -505,5 +506,16 @@ describe('build() translated articles', () => {
 	it('keeps topic shelves English-only', async () => {
 		const shelf = await find('/articles/prayer/');
 		expect([...shelf!.byLocale.keys()]).toEqual(['en']);
+	});
+});
+
+describe('build() the Bible hub', () => {
+	beforeEach(() => resetSitemapData());
+
+	it('lists /bible/ only in the locales that have the Bible series', async () => {
+		const bible = (await sitemapData()).pages.find((e) =>
+			[...e.byLocale.values()].includes('/bible/')
+		);
+		expect([...bible!.byLocale.keys()]).toEqual(['sw']);
 	});
 });

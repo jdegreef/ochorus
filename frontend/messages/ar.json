@@ -1633,5 +1633,21 @@
   "daily_missing_day": "لا يحتوي هذا الكتاب على قراءة لهذا التاريخ، وهذه قراءة اليوم الذي قبله.",
   "daily_choose_date": "اختر تاريخًا",
   "daily_none": "لا توجد قراءات يومية بهذه اللغة بعد.",
-  "daily_follow_plan": "أو تابِعه خطةً لسنة كاملة"
+  "daily_follow_plan": "أو تابِعه خطةً لسنة كاملة",
+  "nav_bible": "الكتاب المقدس",
+  "bible_tagline": "أسفار الكتاب المقدس في ترجمة Open Word Bible، وهي ترجمة جديدة مُنحت مجانًا للملك العام، بترتيبها من التكوين إلى الرؤيا.",
+  "bible_old_testament": "العهد القديم",
+  "bible_new_testament": "العهد الجديد",
+  "bible_division_law": "الشريعة",
+  "bible_division_history": "الأسفار التاريخية",
+  "bible_division_wisdom": "الحكمة والشعر",
+  "bible_division_major_prophets": "الأنبياء الكبار",
+  "bible_division_minor_prophets": "الأنبياء الصغار",
+  "bible_division_gospels": "الأناجيل",
+  "bible_division_acts": "أعمال الرسل",
+  "bible_division_paul": "رسائل بولس",
+  "bible_division_general_letters": "الرسائل العامة",
+  "bible_division_revelation": "الرؤيا",
+  "bible_read_along": "اقرأ خطوة بخطوة",
+  "bible_in_order": "اقرأه كاملًا بالترتيب، من التكوين إلى الرؤيا"
 }

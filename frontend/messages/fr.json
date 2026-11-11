@@ -1633,5 +1633,21 @@
   "daily_missing_day": "Ce livre n’a pas de lecture pour cette date ; voici celle de la veille.",
   "daily_choose_date": "Choisir une date",
   "daily_none": "Il n’y a pas encore de lectures quotidiennes dans cette langue.",
-  "daily_follow_plan": "Ou suivez-le comme un plan sur un an"
+  "daily_follow_plan": "Ou suivez-le comme un plan sur un an",
+  "nav_bible": "La Bible",
+  "bible_tagline": "Les livres de la Bible dans l’Open Word Bible, une nouvelle traduction offerte librement au domaine public, dans l’ordre, de la Genèse à l’Apocalypse.",
+  "bible_old_testament": "Ancien Testament",
+  "bible_new_testament": "Nouveau Testament",
+  "bible_division_law": "La Loi",
+  "bible_division_history": "Livres historiques",
+  "bible_division_wisdom": "Sagesse et poésie",
+  "bible_division_major_prophets": "Grands prophètes",
+  "bible_division_minor_prophets": "Petits prophètes",
+  "bible_division_gospels": "Évangiles",
+  "bible_division_acts": "Actes",
+  "bible_division_paul": "Lettres de Paul",
+  "bible_division_general_letters": "Épîtres générales",
+  "bible_division_revelation": "Apocalypse",
+  "bible_read_along": "Lire pas à pas",
+  "bible_in_order": "Tout lire dans l’ordre, de la Genèse à l’Apocalypse"
 }

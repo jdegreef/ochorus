@@ -1633,5 +1633,21 @@
   "daily_missing_day": "이 책에는 이 날짜의 읽기가 없어 전날의 읽기를 보여 드립니다.",
   "daily_choose_date": "날짜 선택",
   "daily_none": "이 언어로 된 매일 읽기가 아직 없습니다.",
-  "daily_follow_plan": "또는 일 년 읽기 계획으로 따라가기"
+  "daily_follow_plan": "또는 일 년 읽기 계획으로 따라가기",
+  "nav_bible": "성경",
+  "bible_tagline": "오픈 워드 바이블(Open Word Bible)로 읽는 성경의 책들입니다. 퍼블릭 도메인으로 자유롭게 공개된 새 번역을 창세기부터 요한계시록까지 순서대로 담았습니다.",
+  "bible_old_testament": "구약",
+  "bible_new_testament": "신약",
+  "bible_division_law": "율법서",
+  "bible_division_history": "역사서",
+  "bible_division_wisdom": "시가서",
+  "bible_division_major_prophets": "대선지서",
+  "bible_division_minor_prophets": "소선지서",
+  "bible_division_gospels": "복음서",
+  "bible_division_acts": "사도행전",
+  "bible_division_paul": "바울 서신",
+  "bible_division_general_letters": "일반 서신",
+  "bible_division_revelation": "요한계시록",
+  "bible_read_along": "차근차근 읽기",
+  "bible_in_order": "창세기부터 요한계시록까지 순서대로 읽기"
 }
