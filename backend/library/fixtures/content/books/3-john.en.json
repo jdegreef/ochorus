@@ -1,0 +1,93 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "3-john",
+  "language": "en",
+  "title": "The Third Letter of John",
+  "subtitle": "Iōannou Γ, “Third of John”",
+  "cover_title": "3 John",
+  "cover_byline": "",
+  "description": "The shortest book in the Bible, a personal note from “the elder” to his dear friend Gaius, and a window into the everyday life of the first churches. Gaius has opened his home to travelling believers who set out for the sake of the Name and take nothing from the pagans; Diotrephes, who loves to be first, has shut his door to them and driven out those who would help. Do not copy what is bad, the elder writes, but what is good; and the rest he will say face to face. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the Third Letter of John?",
+    "answer": "The twenty-fifth book of the New Testament and the shortest book in the Bible, a personal letter from “the elder” to a Christian named Gaius. It praises Gaius for welcoming and supporting travelling preachers, rebukes a church leader named Diotrephes who refused to receive them, and commends a man named Demetrius. It is the only book of the New Testament that does not mention Jesus or Christ by name, speaking instead of “the Name” (1:7)."
+   },
+   {
+    "question": "Who wrote 3 John, and who were Gaius, Diotrephes and Demetrius?",
+    "answer": "The writer calls himself “the elder”, as in 2 John, and the two letters are so alike that they are generally agreed to come from the same hand; the church has linked them with John the apostle, though some early Christians thought the elder might be another John. Gaius was a faithful believer, otherwise unknown, who gave hospitality to travelling missionaries. Diotrephes was a leader who “loves to be first” and would not receive them or the elder. Demetrius, well spoken of by everyone, may have carried the letter."
+   },
+   {
+    "question": "What does 3 John teach about hospitality and supporting missionaries?",
+    "answer": "The travelling believers had set out “for the sake of the Name” and would take nothing from unbelievers, so they relied on the churches for food, lodging and supplies. The elder tells Gaius to send them on “in a manner worthy of God” (1:6) and says that those who take in and support such people “become fellow workers with the truth” (1:8). Those who give share in the work of those who go."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#3jn",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/3-john.jpg",
+  "pdf_url": "",
+  "cover_color": "#4a3a24",
+  "series": null,
+  "series_position": null,
+  "sort_order": 311,
+  "is_published": true,
+  "created_at": "2026-11-11T20:30:49.526Z",
+  "updated_at": "2026-11-11T20:30:50.095Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>No joy of mine is greater than this: to hear that my children are walking in the truth.</p><p>— 3 John 1:4</p></blockquote> <p>Third John is the shortest book in the Bible. In Greek it runs to little more than two hundred words, a single sheet of papyrus, about the length of a note a friend might leave on a table. It is also the most personal of John’s letters, and in one way the most surprising of all the letters in the New Testament: it never once mentions Jesus or Christ by name. He is there, but only as “the Name” for whose sake the travelling preachers have set out.</p> <p>That makes 3 John a precious window into the ordinary life of the first churches. There is no great doctrine here, no vision, no argument. There are three men, one good, one bad, one recommended, and a question that every church still faces: how should we treat the people who carry the gospel from place to place?</p> <h3>Gaius, the dear friend</h3> <blockquote><p>The elder, to my dear friend Gaius, whom I love in truth. Dear friend, my prayer is that you are doing well in every way and are in good health, just as your soul is doing well.</p><p>— 3 John 1:1–2</p></blockquote> <p>Gaius was one of the commonest names in the Roman world, and we cannot tell whether this Gaius is any of the others in the New Testament. What we know of him comes from this letter alone, and it is all good. Four times the elder calls him “dear friend”. Travelling believers have come back with news of his faithfulness, “how you are walking in the truth” (1:3), and that news is the elder’s greatest joy.</p> <p>The wish in verse 2, for Gaius’s good health, has sometimes been read as a promise that God wants every believer to prosper in body and goods. In fact it is the ordinary kind wish with which letters of the time began, much as we might write “I hope you are keeping well”. What is unusual is the comparison: the elder hopes that Gaius’s body is doing as well as his soul.</p> <h3>For the sake of the Name</h3> <p>The heart of the letter is about hospitality. Gaius has been taking in travelling Christians, men he had never met before, and helping them on their way:</p> <blockquote><p>Dear friend, you are acting faithfully in all you do for the brothers and sisters, strangers though they are to you. They have testified before the church to your love. You will do well to supply them for the next stage of their journey in a manner worthy of God.</p><p>— 3 John 1:5–6</p></blockquote> <p>These were missionaries, or something like them. “They set out for the sake of the Name, and they take nothing from the pagans” (1:7). They would not ask unbelievers to pay for the preaching of the gospel, so they depended on the churches along the road for a bed, a meal, and supplies for the next stage. To send them on “in a manner worthy of God” meant to treat them as you would treat God’s own messengers.</p> <p>And the elder draws the lesson: “It is our duty, then, to take in and support such people, and so become fellow workers with the truth” (1:8). Not everyone is called to go. But those who stay at home and open their doors share in the work of those who go. A church that supports its missionaries is not an audience for the gospel; it is a partner in it.</p> <h3>Diotrephes, who loves to be first</h3> <p>Then the tone changes:</p> <blockquote><p>I wrote a few lines to the church, but Diotrephes, who loves to be first among them, refuses to receive us.</p><p>— 3 John 1:9</p></blockquote> <p>This is the only time Diotrephes appears in history, and it is not a flattering portrait. He refuses the elder’s authority. He spreads “empty and wicked talk” about him. He will not receive the travelling believers himself, he stops others from receiving them, and “he drives them out of the church” (1:10).</p> <p>Readers have long wondered what lay behind the quarrel. Some think Diotrephes was a leader of a house church who resented outside oversight; some see in him an early stage of the struggle over how churches should be governed; a few have wondered whether a dispute over teaching lay underneath. The letter does not say. What it does say is the root of the trouble, in a single Greek word: he “loves to be first”. Whatever else was at stake, the elder diagnoses it as ambition. It is the sin the disciples showed when they argued about which of them was the greatest, and it has troubled the church in every age since.</p> <h3>Do what is good</h3> <p>The elder does not tell Gaius to fight Diotrephes. He gives him a simple rule:</p> <blockquote><p>Dear friend, do not copy what is bad, but what is good. The person who does good is from God; the person who does evil has not seen God.</p><p>— 3 John 1:11</p></blockquote> <p>It is the same test 1 John gives, put in a single line: a life shows where it comes from. And the elder sets a good example beside the bad one. “Everyone testifies in favor of Demetrius, and so does the truth itself” (1:12). Demetrius may have been one of the travellers, perhaps the one carrying this very letter, and the elder’s words are a letter of recommendation: here is someone you can receive.</p> <h3>Ink and pen</h3> <p>The close is very like that of 2 John. The elder has much more to say, but “I do not want to put it down in ink with a pen” (1:13). He hopes to come soon and talk face to face. Then come three short lines of greeting: peace to Gaius, greetings from “the friends here”, and greetings to “each of the friends there by name”. The church, in this letter, is a network of friends who know each other by name.</p> <h3>Who wrote 3 John?</h3> <p>As in 2 John, the writer calls himself only “the elder”, and the two letters are so alike in shape and phrasing, down to the closing lines, that nearly everyone agrees they come from the same hand. The church linked them with John the apostle, though, as Eusebius records, some in the early centuries were unsure whether they belonged to the evangelist “or to another person of the same name”, the John the Elder whom Papias mentions. They were probably written late in the first century, in the province of Asia, where tradition places John’s last years.</p> <h3>How to read 3 John</h3> <p>Read it as a real letter between real people, with the gaps a real letter has. Notice the three men and what each shows: the faithful host, the man who loves to be first, the one everyone speaks well of. Notice how often the word truth comes, even here. And read it beside 2 John. One letter tells a church whom not to receive; the other tells a friend whom he must receive. Together they show a church that guards its door and keeps it open, both for the sake of the truth.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Greek and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. A few of its choices in 3 John are worth knowing about.</p> <p><strong>“The Name.”</strong> In verse 7 the translation gives the Name a capital letter. The Greek says simply “the name”, and the elder means the name of Jesus, as the apostles in Acts were glad to have been found worthy “to bear shame for the sake of the Name” (Acts 5:41).</p> <p><strong>“Pagans” and “brothers and sisters.”</strong> The word in verse 7 means the nations, those who were not God’s people; here it is rendered “pagans”. Where the Greek “brothers” means fellow believers of either sex, the translation says “brothers and sisters”.</p> <p><strong>The last verse.</strong> Bibles divide the closing lines differently. Some, like the King James Version, end the letter at verse 14; others make the final greetings a verse 15. References here follow the first numbering.</p> <p>For the reasoning behind every sentence of the translation, with the Greek beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1410
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "en"
+  ],
+  "order": 2,
+  "title": "3 John 1",
+  "body_html": "<h3>The elder to Gaius</h3><p>The elder, to my dear friend Gaius, whom I love in truth.</p><p>Dear friend, my prayer is that you are doing well in every way and are in good health, just as your soul is doing well. It made me very glad when brothers and sisters arrived and testified to your faithfulness to the truth, how you are walking in the truth. No joy of mine is greater than this: to hear that my children are walking in the truth.</p><h3>Help for traveling believers</h3><p>Dear friend, you are acting faithfully in all you do for the brothers and sisters, strangers though they are to you. They have testified before the church to your love. You will do well to supply them for the next stage of their journey in a manner worthy of God. They set out for the sake of the Name, and they take nothing from the pagans. It is our duty, then, to take in and support such people, and so become fellow workers with the truth.</p><h3>Diotrephes and Demetrius</h3><p>I wrote a few lines to the church, but Diotrephes, who loves to be first among them, refuses to receive us. That is why, if I come, I will remind the church of what he is doing, spreading empty and wicked talk about us. And that is not enough for him: he will not receive the brothers and sisters himself, he hinders those who want to receive them, and he drives them out of the church.</p><p>Dear friend, do not copy what is bad, but what is good. The person who does good is from God; the person who does evil has not seen God. Everyone testifies in favor of Demetrius, and so does the truth itself. We too testify for him, and you know that our testimony is true.</p><h3>Closing greetings</h3><p>There is a great deal I could write to you, but I do not want to put it down in ink with a pen. I hope instead to see you very soon, and then we can speak face to face.</p><p>Peace be with you. The friends here send you greetings. Greet each of the friends there by name.</p>",
+  "study_questions": [],
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "3-john",
+   "en"
+  ],
+  "order": 3,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>It is our duty, then, to take in and support such people, and so become fellow workers with the truth.</p><p>— 3 John 1:8</p></blockquote> <p>Third John leaves us in the middle of a story. We never learn whether the elder came, whether Diotrephes gave way, or what became of Gaius and Demetrius. The letter survives because the church saw in it something more than one congregation’s quarrel: a picture of what the church is meant to be, and of what can spoil it.</p> <h3>The question the book leaves with you</h3> <p>The letter sets two kinds of people side by side and asks which we are. Gaius opens his door to strangers because they belong to the Name. Diotrephes shuts his door, and other people’s doors too, because he loves to be first. Both are church members. Both, presumably, would have said they served God. What divides them is not their doctrine but what they love.</p> <p>The question reaches every Christian, but especially anyone with a little authority: a pastor, an elder, a leader of anything. Are we using our place to make room for others, or to keep it for ourselves? Do we rejoice when the gospel goes forward through someone else, or only when it goes through us? The elder’s answer is as plain as it is searching: “The person who does good is from God; the person who does evil has not seen God.”</p> <h3>Where to go from here</h3> <p>No book in this library is given wholly to 3 John, but several take up its two great concerns, the support of those who go out with the gospel and the danger of loving to be first:</p> <ul> <li><strong>On ambition in the church.</strong> Gregory the Great’s <em>The Book of Pastoral Rule</em>, whose first part warns against those who “covet superiority to others” and take up leadership “through lust of pre-eminence”; Richard Baxter’s <em>The Reformed Pastor</em>, which calls ministers away from self-seeking and pride; and Andrew Murray’s <em>Humility</em>.</li> <li><strong>On those who set out for the sake of the Name.</strong> Hudson Taylor’s <em>A Retrospect</em>, the story of a missionary who resolved to depend on God alone for his support, and John R. Mott’s <em>The Evangelization of the World in This Generation</em>.</li> <li><strong>On the elder and his letters.</strong> Eusebius of Caesarea’s <em>The Church History</em>, which preserves what Papias said of the two Johns of Ephesus and records the early questions about 2 and 3 John; and Augustine of Hippo’s <em>Homilies on the First Epistle of John</em>, on the longer letter from the same hand.</li> </ul> <p>But the best next step may be simpler. Think of someone who has gone out for the sake of the Name, a missionary, a travelling preacher, a believer far from home, and do something to send them on their way “in a manner worthy of God”. That is how the elder would want his letter read. And then receive his blessing, as Gaius did:</p> <blockquote><p>Peace be with you.</p><p>— 3 John 1:14</p></blockquote>",
+  "study_questions": [],
+  "word_count": 500
+ }
+}
+]
+

@@ -1,0 +1,26 @@
+{
+ "slug": "jude",
+ "title": "The Letter of Jude",
+ "cover_title": "Jude",
+ "subtitle": "Iouda, “Of Jude”",
+ "cover_color": "#4f2a2a",
+ "description": "A short, urgent letter from Jude, a servant of Jesus Christ and a brother of James, who meant to write about the salvation all believers share and wrote instead to urge his readers to fight hard for the faith handed over once for all. Intruders have slipped in who twist God’s grace into an excuse for shameless living: reefs hidden under the water, clouds that bring no rain, wandering stars. Cain, Balaam and Korah, Michael and the devil, Enoch’s prophecy; then the call to build, pray, keep yourselves in God’s love and show mercy, and the great doxology to the one who is able to guard you from stumbling. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "Who wrote the Letter of Jude, and when?",
+   "answer": "The writer calls himself “a servant of Jesus Christ and a brother of James” (1:1). The James meant is almost certainly James of Jerusalem, the brother of Jesus, which would make Jude another of Jesus’s brothers, named in Mark 6:3. Most who accept the letter as his date it between the 50s and 80s of the first century; some scholars think it was written later in his name. Its date and first readers are not stated."
+  },
+  {
+   "question": "What is the Letter of Jude about?",
+   "answer": "Jude warns a church about people who “have slipped in among you without being noticed” and “twist our God’s grace into an excuse for shameless living” (1:4). He urges his readers to fight hard for “the faith that was handed over to God’s holy people once for all” (1:3), recalls examples of judgment from Israel’s history, and describes the intruders in vivid images. Then he tells his readers to build themselves up, pray in the Holy Spirit, keep themselves in God’s love and show mercy, and ends with a doxology to the God who is able to keep them from stumbling."
+  },
+  {
+   "question": "Why does Jude quote the book of Enoch and tell the story of Michael and the body of Moses?",
+   "answer": "Verses 14–15 closely match a passage in 1 Enoch, a Jewish writing well known in the first century, and Origen says the story of Michael disputing with the devil over Moses’s body (1:9) comes from a book called the Ascension of Moses. Jude uses writings his readers knew to make his point. Some early Christians hesitated over the letter because of this, but most have understood that quoting a book does not make it Scripture, as Paul quoted Greek poets."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. In verse 5, where manuscripts differ, it reads that “Jesus saved a people out of the land of Egypt”. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}
