@@ -19,3 +19,12 @@ export const SITE_URL = (env.PUBLIC_SITE_URL || 'https://ochorus-web.onrender.co
 // mail for this address. Overridable per deployment so a future forwarding
 // address is a config change, not a code change.
 export const CONTACT_EMAIL = env.PUBLIC_CONTACT_EMAIL || 'support@ochorus.com';
+
+// The Ochorus WhatsApp channel's public link (https://whatsapp.com/channel/…).
+// EMPTY until the founder creates the channel: then set PUBLIC_WHATSAPP_CHANNEL_URL
+// on ochorus-web (render.yaml) and redeploy, and a "Follow on WhatsApp" link
+// appears on /today and in the footer. Unset, or anything but an https URL,
+// shows nothing. The day's post is composed at /admin/whatsapp.
+export const WHATSAPP_CHANNEL_URL = /^https:\/\/\S+$/.test(env.PUBLIC_WHATSAPP_CHANNEL_URL ?? '')
+	? env.PUBLIC_WHATSAPP_CHANNEL_URL!
+	: '';

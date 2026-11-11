@@ -50,3 +50,11 @@ class I18n {
 }
 
 export const i18n = new I18n();
+
+/** `key` in `locale`'s catalogue rather than the page's, loading it first —
+ *  for text written for another language's readers (the admin's WhatsApp
+ *  post, composed on an English page). */
+export async function tIn(locale: string, key: string): Promise<string> {
+	await loadUiCatalog(locale);
+	return catalogs.get(locale)?.[toSnake(key)] ?? key;
+}
