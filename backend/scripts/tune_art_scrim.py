@@ -119,9 +119,12 @@ def main() -> int:
     table, lifts, unusable = {}, {}, []
     paths = sorted(ART.glob("*.jpg"))
     if opts.slugs:
+        from library.art_lift import ART_LIFT
         from library.art_scrim import ART_SCRIM
 
-        table = dict(ART_SCRIM)
+        # Re-measuring a few paintings must leave every other entry in BOTH
+        # tables as it was: the lift table is rewritten whole, too.
+        table, lifts = dict(ART_SCRIM), dict(ART_LIFT)
         missing = [s for s in opts.slugs if not (ART / f"{s}.jpg").exists()]
         if missing:
             print(f"no painting at covers/art/ for: {', '.join(missing)}", file=sys.stderr)

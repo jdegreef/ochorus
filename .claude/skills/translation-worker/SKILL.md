@@ -2894,3 +2894,35 @@ archaic spelling and period punctuation are the text, not defects in it.
   existing ko PNGs (drawn by CI's browser) and commit only the manifest's new digests.
   (5) `normalize_quotes.py` rewrites `body_html` only: re-derive `body_text` /
   `word_count` after it.
+- **The first ko DATED book (cheque-book, #7015, 2026-11-11) — what a daily devotional in
+  Korean needs.** (1) **Date markers**: a Korean date carries the month number too (`1월 1일`),
+  and `daily_readings._marker_day` used to require exactly ONE number in a marker, so a
+  ko month would have parsed as zero entries. It now accepts a `M월 D일` (and CJK `M月D日`)
+  line and takes the day; write the markers in that form. Check with `month_entries` over
+  all twelve months before shipping (366 strictly increasing days here). (2) **`kor_old`
+  misnumbers more chapters than the entries above say**, by one or two verses: Prov 10
+  (10:22/24/27), Prov 11 (30 verses; its "11:24" is 개역 11:25), Prov 13:13, 1 Sam 17
+  (17:37, 17:47), Ezek 16:60, Ps 92:12. A crib built by reference hands the translator the
+  wrong verse; tell them to grep the whole cleaned index for the chapter and quote the
+  right line verbatim, and gate `mined` by substring against a window of neighbouring
+  verses joined with a space (a two-verse quote spans the verse break). Missing outright:
+  Ps 16:10, Ps 118:17, 1 Pet 5:6. (3) Spurgeon's references use ROMAN numerals (`II Sam.`,
+  `I Peter`) and one stray `Prov. 3: 25,26`; a reference regex that expects `2 Sam` misses
+  them. (4) 25 half-month chunks at once tripped an account usage limit (HTTP 429) twice;
+  ~10 concurrent translators ran clean, and a stopped agent resumes with SendMessage.
+  Chapter band n=24 chunks: **0.74** of the English (`word_count`).
+- **The first translation of a house NOVEL (`fire-against-the-dark` → es, #7031,
+  2026-11-11) — what fiction needs beyond a devotional book.** (1) A names-and-terms
+  table is not optional: 15 parallel translators coined the same recurring words
+  differently (the song refrain three ways, "night-lamp" three ways), and a recurring
+  line can carry a COUNT the text depends on — ch07 says Wren remembers "two words"
+  of *Morning comes*, so the refrain had to be a two-word Spanish line («Ya amanece»)
+  in every chapter. Grep each recurring English phrase across the translated chapters
+  before building. (2) Address forms between characters need a table row each (who
+  uses tú/usted with whom). Left open, chapters split; a first-meeting usted that
+  turns to tú is defensible, so record it rather than flatten it. (3) The English had
+  69 interrupted speeches CLOSED with an opening mark (`—“` for `—”`). Every
+  translator reported it and no quote gate catches it; for a house Original, fix the
+  English in the same PR (a literal `—“`→`—”` swap was safe here: every hit was a
+  closer — check that first). (4) `<img>` alt text stays English (the system prompt
+  copies the tag verbatim); say so in the PR.

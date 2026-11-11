@@ -1,0 +1,12 @@
+{
+ "kind": "book",
+ "slug": "the-black-stair",
+ "language": "fr",
+ "job_issue": 7098,
+ "pull_request": 7678,
+ "note": [
+  "No scripture is quoted. The English cites no Bible verse (0 parenthetical citations; its own Q&A says it never quotes Scripture directly). The Lamplighters' Psalm and the Story-Wall are in-world texts that echo Psalm 23 and the Gospels; they are translated as story, not replaced with Louis Segond wording, and the Psalm is held to one fixed French text everywhere it recurs (ch. 1, 10).",
+  "First French volume of The Lamplighters of Gloamhaven: the world's names (les Fouisseurs, l’Escalier Noir, la Lande Grise, l’Homme-Chaleur, les Allumeurs…) were coined in this job and should be reused by Book One and Book Three in French. AI-translated in-session; awaiting native review."
+ ],
+ "references": []
+}

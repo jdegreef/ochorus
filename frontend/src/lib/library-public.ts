@@ -1966,6 +1966,32 @@ export interface WordPassage {
 export const getWordPassages = (word: string, f?: Fetch) =>
 	apiFetch<{ word: string; passages: WordPassage[] }>(`/api/library/words/${word}/passages/`, {}, f);
 
+/** A writer offered as an answer in "Whose words?" — always with a portrait. */
+export interface QuoteGameChoice {
+	slug: string;
+	name: string;
+	photo_url: string;
+	birth_year: number | null;
+	death_year: number | null;
+}
+
+/** One day of "Whose words?" (/quotes/game/): the same for every reader on a
+ *  date. `answer` is one of `choices`' slugs; the quote is that writer's. */
+export interface QuoteGame {
+	/** Puzzle No. — 1 on the game's first day. */
+	number: number;
+	/** The date asked for, `YYYY-MM-DD`. */
+	date: string;
+	quote: Quote;
+	answer: string;
+	choices: QuoteGameChoice[];
+}
+
+/** The puzzle for `date` — the reader's LOCAL `YYYY-MM-DD` ($lib/streak
+ *  `localToday`), so the game turns over at their midnight, not the server's. */
+export const getQuoteGame = (date: string, f?: Fetch) =>
+	apiFetch<QuoteGame>(`/api/library/quotes/game/${date}/`, {}, f);
+
 /** A quotation's whole source paragraph, as plain text — "read it in context". */
 export interface QuoteContext {
 	slug: string;

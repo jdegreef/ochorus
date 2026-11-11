@@ -68,18 +68,19 @@ describe('deriveHomeShelves', () => {
 	});
 
 	it('fans the curated classics in their places, filling a missing one, and keeps them off the shelf below', () => {
-		// The language has four of the five curated books; one is a plate.
-		const curated = HERO_SLUGS.slice(0, 4).map((slug, i) =>
-			book(slug, `c${i}`, i === 3 ? `/covers/${slug}.svg` : `/covers/art/${slug}.jpg`)
+		// The language has the first two of the three curated books, and the
+		// third only as a plate.
+		const curated = HERO_SLUGS.map((slug, i) =>
+			book(slug, `c${i}`, i === 2 ? `/covers/${slug}.svg` : `/covers/art/${slug}.jpg`)
 		);
 		const { hero, discover } = deriveHomeShelves(lists({ books: [...books, ...curated] }), 20000);
-		expect(hero).toHaveLength(5);
-		expect(hero.slice(0, 3).map((b) => b.slug)).toEqual(HERO_SLUGS.slice(0, 3));
-		// The plate's place and the absent one's are filled by painted books, by
-		// authors the fan does not have yet.
-		const fill = hero.slice(3);
+		expect(hero).toHaveLength(3);
+		expect(hero.slice(0, 2).map((b) => b.slug)).toEqual(HERO_SLUGS.slice(0, 2));
+		// The plate's place is filled by a painted book, by an author the fan
+		// does not have yet.
+		const fill = hero.slice(2);
 		expect(fill.every((b) => !b.cover_url.endsWith('.svg') && !HERO_SLUGS.includes(b.slug as never))).toBe(true);
-		expect(new Set(hero.map((b) => b.author.slug)).size).toBe(5);
+		expect(new Set(hero.map((b) => b.author.slug)).size).toBe(3);
 		// A cover only, and none of them — nor, while others remain, their
 		// authors — again in the logged-out Discover right under it.
 		expect(Object.keys(hero[0])).not.toContain('chapter_count');
@@ -90,13 +91,13 @@ describe('deriveHomeShelves', () => {
 		expect(discover.some((b) => heroAuthors.has(b.author.slug))).toBe(false);
 	});
 
-	it('never fills the hero with a young-reader edition, and falls back to the deck under five', () => {
+	it('never fills the hero with a young-reader edition, and holds only what there is', () => {
 		const young = [book('x-children', 'y1'), book('x-teens', 'y2')];
-		// Only two curated books and two young-reader editions: four to be had at
-		// most, so the hero is the three-cover deck.
-		const two = HERO_SLUGS.slice(0, 2).map((slug, i) => book(slug, `c${i}`));
-		const { hero } = deriveHomeShelves(lists({ books: [...two, ...young, book('z', 'z')] }), 20000);
-		expect(hero.map((b) => b.slug)).toEqual([HERO_SLUGS[0], HERO_SLUGS[1], 'z']);
+		// One curated book, two young-reader editions and one other full text:
+		// the hero takes the two full texts (CoverStrip draws them as the deck).
+		const one = [book(HERO_SLUGS[0], 'c0')];
+		const { hero } = deriveHomeShelves(lists({ books: [...one, ...young, book('z', 'z')] }), 20000);
+		expect(hero.map((b) => b.slug)).toEqual([HERO_SLUGS[0], 'z']);
 	});
 
 	it("keeps the dashboard's Discover a pick of the whole painted library", () => {
