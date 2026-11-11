@@ -19571,6 +19571,8 @@ BODY_CORRECTIONS.setdefault("ever-increasing-faith", {}).setdefault("replacement
     ("if yoq, will but", "if you will but"),
     ("God's hands", "God’s hands"),
     ("the Lord that 1 would", "the Lord that I would"),
+    # Found translating to Hindi (job #7547): the same 1-for-I scanner slip.
+    ("After 1 had received the Baptism", "After I had received the Baptism"),
     ("cabin and sa:d,", "cabin and said,"),
     ("Right there lie opened", "Right there he opened"),
     ("compassion ior his", "compassion for his"),
