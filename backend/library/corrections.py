@@ -24568,3 +24568,20 @@ BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacem
 BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
     ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
 ])
+
+# OCR slips found while translating Watson's book to Ukrainian (job #7608). Each has one
+# reading, forced by the verse quoted or by grammar: Eph 6:16 is the shield of faith; the
+# moon-in-the-water image needs the firmament; Matt 6:26 reads "not". Left as found (not
+# unambiguous): "intemperate hearts" (heats?), "he get no heat", Watson's own citation
+# ranges (2 Chron. xxxiii. 11, 12 for vv. 12-13; Job vii. 17 for vv. 17-18).
+BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
+    ("displays the skill of faith", "displays the shield of faith"),
+    ("And now be grows more modest", "And now he grows more modest"),
+    ("loves me became I am king Alexander", "loves me because I am king Alexander"),
+    ("Are ye nor much better than they", "Are ye not much better than they"),
+    ("condition is fused and unalterable", "condition is fixed and unalterable"),
+    ("look up to the Ornament", "look up to the firmament"),
+    ("God wilt make it cost you dear", "God will make it cost you dear"),
+    ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
+    ("going to execution . sin is the halter", "going to execution: sin is the halter"),
+])
