@@ -32038,6 +32038,40 @@
 				404
 			]
 		},
+		"sw/key-teachings-of-watchman-nee": {
+			"ground": "47965b2f4362c6161f3f41cb993f703419f479705eed19555fb0c02a535a4cbe",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[74, 225, 526, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
 		"sw/life-and-diary-of-david-brainerd": {
 			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
 			"style": "enlightenment",
