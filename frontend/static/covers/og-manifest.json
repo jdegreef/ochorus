@@ -27331,6 +27331,40 @@
 				540
 			]
 		},
+		"pt/anchored-1": {
+			"ground": "2438a2f692f8d0bf2bec6a1a3a00109b9966cbeab03f4b42dffdf5f727a52252",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[137, 347, 463, 423]
+				],
+				"subtitle": [
+					[112, 481, 488, 509],
+					[125, 509, 475, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
 		"pt/anchored-2": {
 			"ground": "0d33f0eb9f90919255de73745cffc5f44805000fb890862eb5ad637a25396150",
 			"style": "originals",
@@ -30938,6 +30972,41 @@
 				558
 			]
 		},
+		"sw/a-serious-call": {
+			"ground": "453fafe05aeda41be5f8c048a2d9ba06087dd3c05142eb1bce835b463a6afe7c",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[55, 243, 545, 306],
+					[65, 306, 535, 369],
+					[140, 368, 460, 431]
+				],
+				"subtitle": [
+					[131, 494, 469, 522],
+					[112, 522, 488, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				550
+			]
+		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
 			"style": "devotional",
@@ -31967,6 +32036,74 @@
 			"middle": [
 				173,
 				460
+			]
+		},
+		"sw/key-teachings-of-richard-baxter": {
+			"ground": "6ad0966d84a8b96afe6cb398cd7f7113303a7251da9fa4b471395c4fb4add1c3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[72, 225, 528, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
+		"sw/key-teachings-of-watchman-nee": {
+			"ground": "47965b2f4362c6161f3f41cb993f703419f479705eed19555fb0c02a535a4cbe",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[74, 225, 526, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
 			]
 		},
 		"sw/life-and-diary-of-david-brainerd": {
@@ -36816,6 +36953,20 @@
 				496
 			]
 		},
+		"uk/grace-abounding": {
+			"ground": "6d89b78bb5a53c1d5649d06d88423377d7720e1a8cad74338251ad4399fa8ffe",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false
+		},
 		"uk/growing-in-wisdom": {
 			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
 			"style": "originals",
@@ -37906,6 +38057,20 @@
 				173,
 				454
 			]
+		},
+		"uk/the-reformed-pastor": {
+			"ground": "c112fe8fa04384a3a1fe0c7cad3706b057682ec32843d244592ed8b85f446898",
+			"style": "press",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
 		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
@@ -39551,6 +39716,38 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true
+		},
+		"vi/susanna-wesley-clarke": {
+			"ground": "758de48c7d2dece3c14c18fd93f4d425a1d2c8232ad573315996396a5a6869a1",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[64, 326, 536, 419]
+				],
+				"subtitle": [
+					[82, 471, 518, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
 		},
 		"vi/talks-to-the-farmer-children": {
 			"ground": "f0144abc340df0f2982dac2736b3d4f12d58723e8c3fcf2b972c77772e02d293",
