@@ -178,7 +178,7 @@ told…"). Known cases are flagged ⚑ below.
 | 14 | Giving God No Rest | Catherine of Siena | Isaiah 62:6–7 |
 | 15 | Open My Eyes to Your Word | John Wycliffe and the Lollards | Psalm 119:18 |
 | 16 | Praying for Those Who Burn You | Jan Hus | Matthew 5:44 |
-| 17 | "Speak, Lord, Your Servant Is Listening" | Thomas à Kempis ★ | 1 Samuel 3:10 |
+| 17 | "Speak, for Your Servant Is Listening" | Thomas à Kempis ★ | 1 Samuel 3:10 |
 
 ## Volume 6 — A Mighty Fortress
 *Prayer and the Reformation (1500–1650)* · 17 chapters
