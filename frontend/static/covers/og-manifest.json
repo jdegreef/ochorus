@@ -3920,6 +3920,36 @@
 				499
 			]
 		},
+		"am/the-pursuit-of-god": {
+			"ground": "9c656faaf9c16395795192ae6f4ffe77df0126c5ec1e3cb74c7c429bd37869d8",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[78, 222, 522, 319],
+					[223, 306, 377, 403]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				454
+			]
+		},
 		"am/the-reformed-pastor": {
 			"ground": "13e65894386bd249173a6a8b5e794866223c571cdc38ecbdadb6ba57611d173a",
 			"style": "press",
