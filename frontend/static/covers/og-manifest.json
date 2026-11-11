@@ -27345,6 +27345,40 @@
 				540
 			]
 		},
+		"pt/anchored-1": {
+			"ground": "2438a2f692f8d0bf2bec6a1a3a00109b9966cbeab03f4b42dffdf5f727a52252",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[137, 347, 463, 423]
+				],
+				"subtitle": [
+					[112, 481, 488, 509],
+					[125, 509, 475, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
 		"pt/anchored-2": {
 			"ground": "0d33f0eb9f90919255de73745cffc5f44805000fb890862eb5ad637a25396150",
 			"style": "originals",
@@ -32038,6 +32072,40 @@
 				"title": [
 					[54, 169, 546, 232],
 					[72, 225, 528, 288]
+				],
+				"subtitle": [
+					[138, 348, 462, 376],
+					[128, 376, 472, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				404
+			]
+		},
+		"sw/key-teachings-of-watchman-nee": {
+			"ground": "47965b2f4362c6161f3f41cb993f703419f479705eed19555fb0c02a535a4cbe",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[54, 169, 546, 232],
+					[74, 225, 526, 288]
 				],
 				"subtitle": [
 					[138, 348, 462, 376],
