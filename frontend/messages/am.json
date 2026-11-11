@@ -1633,5 +1633,22 @@
   "daily_missing_day": "ይህ መጽሐፍ ለዚህ ቀን ንባብ የለውም፤ ስለዚህ የቀደመው ቀን ንባብ ይኸውና።",
   "daily_choose_date": "ቀን ምረጥ",
   "daily_none": "በዚህ ቋንቋ እስካሁን ዕለታዊ ንባቦች የሉም።",
-  "daily_follow_plan": "ወይም የአንድ ዓመት የንባብ ዕቅድ አድርገው ይከተሉት"
+  "daily_follow_plan": "ወይም የአንድ ዓመት የንባብ ዕቅድ አድርገው ይከተሉት",
+  "nav_bible": "መጽሐፍ ቅዱስ",
+  "bible_tagline": "የመጽሐፍ ቅዱስ መጻሕፍት በOpen Word Bible — ለሕዝብ በነጻ የተሰጠ አዲስ ትርጉም — ከዘፍጥረት እስከ ራእይ በቅደም ተከተላቸው።",
+  "bible_none": "በዚህ ቋንቋ እስካሁን የመጽሐፍ ቅዱስ መጻሕፍት የሉም።",
+  "bible_old_testament": "ብሉይ ኪዳን",
+  "bible_new_testament": "አዲስ ኪዳን",
+  "bible_division_law": "ሕግ",
+  "bible_division_history": "ታሪክ",
+  "bible_division_wisdom": "ጥበብና ቅኔ",
+  "bible_division_major_prophets": "ዐበይት ነቢያት",
+  "bible_division_minor_prophets": "ደቂቅ ነቢያት",
+  "bible_division_gospels": "ወንጌላት",
+  "bible_division_acts": "የሐዋርያት ሥራ",
+  "bible_division_paul": "የጳውሎስ መልእክቶች",
+  "bible_division_general_letters": "አጠቃላይ መልእክቶች",
+  "bible_division_revelation": "ራእይ",
+  "bible_read_along": "ደረጃ በደረጃ ያንብቡ",
+  "bible_in_order": "ከዘፍጥረት እስከ ራእይ በቅደም ተከተል ሙሉውን ያንብቡ"
 }

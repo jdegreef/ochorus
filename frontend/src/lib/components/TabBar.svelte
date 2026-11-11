@@ -12,7 +12,8 @@
 		AUDIENCE_DESTS,
 		ENGLISH_HUBS,
 		ORIGINALS_DEST,
-		AZ_INDEX_DEST
+		AZ_INDEX_DEST,
+		BIBLE_DEST
 	} from '$lib/contentNav';
 	import { holdFlag, TABBAR_FLAG } from '$lib/presenceFlag';
 
@@ -39,7 +40,8 @@
 		...AUDIENCE_DESTS,
 		...ENGLISH_HUBS,
 		ORIGINALS_DEST,
-		AZ_INDEX_DEST
+		AZ_INDEX_DEST,
+		BIBLE_DEST
 	].map((d) => d.href);
 	const routeId = $derived($page.route.id ?? '');
 	const under = (prefixes: string[]) => prefixes.some((p) => routeId === p || routeId.startsWith(`${p}/`));

@@ -1633,5 +1633,22 @@
   "daily_missing_day": "Ekitabo kino tekirina kisomebwa kya lunaku luno, kale kino kye kya lunaku olwasooka.",
   "daily_choose_date": "Londa olunaku",
   "daily_none": "Tewannaba kubaawo bisomebwa bya buli lunaku mu lulimi luno.",
-  "daily_follow_plan": "Oba kigoberere ng’enteekateeka ey’omwaka gumu"
+  "daily_follow_plan": "Oba kigoberere ng’enteekateeka ey’omwaka gumu",
+  "nav_bible": "Baibuli",
+  "bible_tagline": "Ebitabo bya Baibuli mu Open Word Bible, enkyusa empya eweereddwa bwereere eri buli muntu, mu nsengeka yaabyo okuva ku Olubereberye okutuuka ku Okubikkulirwa.",
+  "bible_none": "Tewannaba bitabo bya Baibuli mu lulimi luno.",
+  "bible_old_testament": "Endagaano Enkadde",
+  "bible_new_testament": "Endagaano Empya",
+  "bible_division_law": "Amateeka",
+  "bible_division_history": "Ebyafaayo",
+  "bible_division_wisdom": "Amagezi n'Ennyimba",
+  "bible_division_major_prophets": "Bannabbi Abakulu",
+  "bible_division_minor_prophets": "Bannabbi Abato",
+  "bible_division_gospels": "Enjiri",
+  "bible_division_acts": "Ebikolwa by'Abatume",
+  "bible_division_paul": "Ebbaluwa za Pawulo",
+  "bible_division_general_letters": "Ebbaluwa Endala",
+  "bible_division_revelation": "Okubikkulirwa",
+  "bible_read_along": "Soma mpola mpola",
+  "bible_in_order": "Gisome yonna mu nsengeka, okuva ku Olubereberye okutuuka ku Okubikkulirwa"
 }

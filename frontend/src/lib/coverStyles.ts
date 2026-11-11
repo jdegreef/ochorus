@@ -303,6 +303,32 @@ export const COVER_SITE_MARK: Readonly<Record<string, string>> = {
 	'open-word-bible': 'OpenWordBible.org'
 };
 
+/**
+ * The series whose positions are an ORDER, not volume numbers. The Bible's
+ * books sit in `the-bible` at their place in the canon (Genesis 1, John 43) so
+ * the series reads Genesis to Revelation; "Book 43 of 29" on John's page, or a
+ * ring saying "43" over its title, would read as a volume count. The book
+ * page's series line reads this (`series.seriesLabel`).
+ */
+export const UNNUMBERED_SERIES: ReadonlySet<string> = new Set(['the-bible']);
+
+/**
+ * The same fact for the covers, by author, because a cover is drawn from fields
+ * that do not carry the series: every book by these authors is in a series
+ * above (`coverStyles.test.ts` holds the fixture to it). Both renderers read it.
+ */
+export const UNNUMBERED_AUTHORS: ReadonlySet<string> = new Set(['open-word-bible']);
+
+/** The numeral a cover sets over its title: `volumeNumeral`, except for the
+ *  authors above. */
+export function coverVolume(
+	position: number | null | undefined,
+	language: string,
+	authorSlug: string
+): string | null {
+	return UNNUMBERED_AUTHORS.has(authorSlug) ? null : volumeNumeral(position, language);
+}
+
 /** The address a cover sets in place of the Ochorus mark, or null for the mark. */
 export function siteMarkFor(authorSlug: string): string | null {
 	return COVER_SITE_MARK[authorSlug] ?? null;

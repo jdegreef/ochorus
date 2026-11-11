@@ -680,6 +680,26 @@ CURATED_PLANS = [
             chapters("tell-me-the-story-6", 7, 23),  # foot-washing … Good Friday (14), Easter (16) … ascension
         ],
     ),
+    # The Open Word Bible's books, a chapter a day. Chapter 1 of each edition is
+    # its introduction and the last its conclusion, so the spans start at 2.
+    (
+        "john-in-21-days",
+        "The Gospel of John in 21 Days",
+        "Three weeks with the fourth Gospel in the Open Word Bible, a chapter a "
+        "day: the Word made flesh, seven signs, the “I am” sayings, the long "
+        "farewell in the upper room, the cross as the hour of glory, and "
+        "breakfast by the lake.",
+        [chapters("gospel-of-john", 2, 22)],
+    ),
+    (
+        "psalms-in-150-days",
+        "The Psalms in 150 Days",
+        "A psalm a day for five months in the Open Word Bible, set line by line: "
+        "the Bible’s own prayer book of praise and lament, trust and thanks, from "
+        "“How blessed is the one” to “Let every creature that breathes praise "
+        "the LORD!”",
+        [chapters("psalms", 2, 151)],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that

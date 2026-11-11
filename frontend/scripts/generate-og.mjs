@@ -91,6 +91,8 @@ const CARDS = [
 	['biographies', 'Biographies', 'The lives behind the classics'],
 	['quotes', 'Quotes, with sources', 'Traced to the book, chapter and paragraph'],
 	['scripture', 'Scripture in the classics', 'Every Bible reference, and who preached it'],
+	// The Bible hub (/bible/): the Open Word Bible's books in canonical order.
+	['bible', 'The Bible', 'The Open Word Bible, Genesis to Revelation'],
 	// The young-reader hubs (`AudienceHub` points at og/<hub path>.png).
 	['young-readers', 'For Young Readers', 'Free Christian classics retold for children'],
 	['teens', 'For Teens', 'Free Christian books for the teenage years']

@@ -126,7 +126,7 @@ import { groundLift } from '../src/lib/coverLift.ts';
 import { medallionFor } from '../src/lib/coverMedallions.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { framedBar, groundBar } from '../src/lib/groundBars.ts';
-import { coverStyleFor, scriptOf, siteMarkFor, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
+import { coverStyleFor, coverVolume, scriptOf, siteMarkFor, smallCapsFor } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
 
@@ -254,7 +254,7 @@ function needTwins() {
 				sitemark: siteMarkFor(author.slug),
 				// Its series numeral, in the edition's digits — the same call the
 				// component makes, so a card and a page cannot number a book apart.
-				volume: volumeNumeral(fields.series_position, baseEdition(fields.language || 'en')),
+				volume: coverVolume(fields.series_position, baseEdition(fields.language || 'en'), author.slug),
 				cover,
 				// The edition's language, and the script its type is set in — both
 				// through the app's own table. Only English books get a twin today,

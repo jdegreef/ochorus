@@ -8,7 +8,7 @@
 	import { scrimStrength } from '$lib/coverScrim';
 	import { groundLift } from '$lib/coverLift';
 	import { medallionFor } from '$lib/coverMedallions';
-	import { coverStyleFor, scriptOf, siteMarkFor, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
+	import { coverStyleFor, coverVolume, scriptOf, siteMarkFor, smallCapsFor } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
@@ -186,7 +186,7 @@
 	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
-	const volume = $derived(volumeNumeral(book.series_position, lang));
+	const volume = $derived(coverVolume(book.series_position, lang, book.author.slug));
 	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
 	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
 	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
