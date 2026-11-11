@@ -45,7 +45,7 @@
 		BIBLE_DEST
 	} from '$lib/contentNav';
 	import { bibleIn } from '$lib/bible';
-	import { withTrailingSlash } from '$lib/href';
+	import { localizeHref as localizeSlashed } from '$lib/href';
 	import type { NavSection } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
@@ -230,7 +230,7 @@
 			{ path: ORIGINALS_DEST.href, href: localizeHref(ORIGINALS_DEST.href), label: t(ORIGINALS_DEST.labelKey) },
 			// The Bible where its books have shipped — the footer's gate ($lib/bible).
 			...(bibleIn(lang.current)
-				? [{ path: BIBLE_DEST.href, href: withTrailingSlash(localizeHref(BIBLE_DEST.href)), label: t(BIBLE_DEST.labelKey) }]
+				? [{ path: BIBLE_DEST.href, href: localizeSlashed(BIBLE_DEST.href), label: t(BIBLE_DEST.labelKey) }]
 				: []),
 			...(lang.current === 'en'
 				? ENGLISH_HUBS.map((d) => ({ path: d.href, href: `${d.href}/`, label: t(d.labelKey) }))

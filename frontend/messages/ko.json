@@ -1636,6 +1636,7 @@
   "daily_follow_plan": "또는 일 년 읽기 계획으로 따라가기",
   "nav_bible": "성경",
   "bible_tagline": "오픈 워드 바이블(Open Word Bible)로 읽는 성경의 책들입니다. 퍼블릭 도메인으로 자유롭게 공개된 새 번역을 창세기부터 요한계시록까지 순서대로 담았습니다.",
+  "bible_none": "아직 이 언어로 된 성경책이 없습니다.",
   "bible_old_testament": "구약",
   "bible_new_testament": "신약",
   "bible_division_law": "율법서",

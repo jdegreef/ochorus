@@ -4,7 +4,7 @@
 	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { BIBLE_PATH, BIBLE_SERIES, divisionKey, groupBible, testamentKey } from '$lib/bible';
+	import { BIBLE_PATH, BIBLE_SERIES, bibleIn, divisionKey, groupBible, testamentKey } from '$lib/bible';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -35,7 +35,10 @@
 	const canonical = `${SITE_URL}${localizeHref(path)}`;
 	// Exactly the languages the series has a page in (the sitemap lists the
 	// same set): no English fallback, and an error panel claims no alternates.
-	const hreflang = $derived(series ? hreflangExact(path, series.available_languages) : null);
+	// Only where the chrome links the hub too (`bibleIn`), as the sitemap does.
+	const hreflang = $derived(
+		series ? hreflangExact(path, series.available_languages.filter(bibleIn)) : null
+	);
 	const booksLd = $derived(
 		itemList(
 			t('nav.bible'),
@@ -74,8 +77,12 @@
 		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
 
-	{#if loadError || !books.length}
+	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
+	{:else if !books.length}
+		<!-- Loaded, and nothing to show: a retry could never help (the series
+		     page's own split between a failure and an empty shelf). -->
+		<EmptyState message={t('bible.none')} />
 	{:else}
 		{#each groups as testament (testament.testament)}
 			<!-- A testament is the section; its divisions are the groups under it,

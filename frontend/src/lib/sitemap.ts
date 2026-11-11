@@ -53,7 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
-import { BIBLE_PATH, BIBLE_SERIES } from '$lib/bible';
+import { BIBLE_PATH, BIBLE_SERIES, bibleIn } from '$lib/bible';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
@@ -540,13 +540,14 @@ async function build(): Promise<SitemapData> {
 
 	// The Bible hub ($lib/bible), in each advertised locale that has the Bible
 	// series — the locales where the page has books of its own; everywhere else
-	// it 404s (no English fallback). The same set its hreflang names. Dated, like
-	// the series page, by the newest of its books.
-	const bibleIn = advertisedSlices
-		.filter((x) => x.series.some((s) => s.slug === BIBLE_SERIES))
+	// it 404s (no English fallback) — AND whose chrome links it (`bibleIn`): a
+	// URL nothing links is never crawled, so never prerendered. The same set its
+	// hreflang names. Dated, like the series page, by the newest of its books.
+	const bibleLocales = advertisedSlices
+		.filter((x) => bibleIn(x.locale) && x.series.some((s) => s.slug === BIBLE_SERIES))
 		.map((x) => [x.locale, `${BIBLE_PATH}/`] as [string, string]);
-	if (bibleIn.length) {
-		const byLocale = new Map(bibleIn);
+	if (bibleLocales.length) {
+		const byLocale = new Map(bibleLocales);
 		pages.push({
 			byLocale,
 			lastmods: dated([...byLocale.keys()], (l) => dates.get(l)?.series.get(BIBLE_SERIES))

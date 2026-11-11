@@ -90,16 +90,9 @@ describe('groupBible', () => {
 });
 
 describe('biblePlans', () => {
-	const plan = (slug: string, covers: string[]) => ({ slug, covers: covers.map((s) => ({ slug: s })) });
-	it('keeps the plans that read only the series’ books', () => {
-		const plans = [
-			plan('john-in-21-days', ['gospel-of-john']),
-			plan('psalms-in-150-days', ['psalms']),
-			plan('romans-with-moule', ['romans', 'moule-on-romans']),
-			plan('articles-only', [])
-		];
-		expect(
-			biblePlans(plans, ['genesis', 'psalms', 'gospel-of-john', 'romans']).map((p) => p.slug)
-		).toEqual(['john-in-21-days', 'psalms-in-150-days']);
+	it('offers the named Bible plans that shipped, in their own order', () => {
+		const plans = [{ slug: 'psalms-in-150-days' }, { slug: 'romans-with-moule' }, { slug: 'john-in-21-days' }];
+		expect(biblePlans(plans).map((p) => p.slug)).toEqual(['john-in-21-days', 'psalms-in-150-days']);
+		expect(biblePlans([{ slug: 'romans-with-moule' }])).toEqual([]);
 	});
 });

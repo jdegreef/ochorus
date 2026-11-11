@@ -102,16 +102,16 @@ export function groupBible<T extends { series_position?: number | null }>(
 }
 
 /**
- * The plans that read only the Bible: every book a plan draws from is one of
- * the series' books. Derived rather than listed, so a new Bible plan joins the
- * hub's "Read along" row without an edit here. (`covers` names a plan's books
- * in first-appearance order; a plan with none — an articles-only plan — is not
- * a Bible plan.)
+ * The reading plans the hub's "Read along" row offers, in the order it shows
+ * them (`library/plan_seed.py`). Named rather than derived: a plan list row's
+ * `covers` stop at five books and leave out article days, so "every cover is a
+ * Bible book" cannot tell a plan that reads only the Bible from one that does
+ * not. A plan here that has not shipped in a language is simply absent.
  */
-export function biblePlans<P extends { covers: { slug: string }[] }>(
-	plans: readonly P[],
-	bookSlugs: Iterable<string>
-): P[] {
-	const inBible = new Set(bookSlugs);
-	return plans.filter((p) => p.covers.length && p.covers.every((c) => inBible.has(c.slug)));
+export const BIBLE_PLANS: readonly string[] = ['john-in-21-days', 'psalms-in-150-days'];
+
+/** The Bible's plans among `plans`, in `BIBLE_PLANS` order. */
+export function biblePlans<P extends { slug: string }>(plans: readonly P[]): P[] {
+	const bySlug = new Map(plans.map((p) => [p.slug, p]));
+	return BIBLE_PLANS.flatMap((slug) => bySlug.get(slug) ?? []);
 }

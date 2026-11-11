@@ -96,9 +96,9 @@ DISPUTED_NOTE = (
     "as here, set apart and in brackets."
 )
 
-#: Matthew's place in OWB's canonical book order (`data/books.json`): it and
+#: Matthew's number in the canon (OWB's `data/books.json` order, from 1): it and
 #: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
-FIRST_NT_INDEX = 39
+FIRST_NT_NUMBER = 40
 
 #: Books set as verse, line by line (see the module doc).
 POETRY = frozenset({"PSA"})
@@ -226,7 +226,7 @@ class Source:
         self.name = books[code][LANGUAGE]
         #: The book's place in the canon (Genesis 1, Revelation 66): OWB's own order.
         self.number = list(books).index(code) + 1
-        self.greek = self.number > FIRST_NT_INDEX
+        self.greek = self.number >= FIRST_NT_NUMBER
         self.poetry = code in POETRY
         # Source verse -> its English verses, for the verses numbered otherwise
         # in English ([] for a psalm title). See the module doc.

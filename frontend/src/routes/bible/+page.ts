@@ -34,6 +34,6 @@ export const load: PageLoad = async ({ fetch }) => {
 	]);
 	return {
 		...result,
-		plans: result.series ? biblePlans(plans, result.series.books.map((b) => b.slug)) : []
+		plans: result.series ? biblePlans(plans) : []
 	};
 };

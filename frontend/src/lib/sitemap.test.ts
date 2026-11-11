@@ -512,10 +512,14 @@ describe('build() translated articles', () => {
 describe('build() the Bible hub', () => {
 	beforeEach(() => resetSitemapData());
 
-	it('lists /bible/ only in the locales that have the Bible series', async () => {
+	it('lists /bible/ only where the series has books AND the chrome links it', async () => {
+		// The mock gives the series to Swahili alone, which is not in
+		// BIBLE_LOCALES: nothing links /sw/bible/, so the crawl would never
+		// prerender it, and the sitemap must not advertise it.
 		const bible = (await sitemapData()).pages.find((e) =>
 			[...e.byLocale.values()].includes('/bible/')
 		);
-		expect([...bible!.byLocale.keys()]).toEqual(['sw']);
+		expect(bible).toBeUndefined();
 	});
+
 });
