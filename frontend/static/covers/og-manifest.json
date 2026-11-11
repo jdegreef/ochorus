@@ -39353,6 +39353,36 @@
 				558
 			]
 		},
+		"vi/the-masters-indwelling": {
+			"ground": "9b1942de887d5b3198972360264bbde39caa6be21bcc0e2d77d1f5fb313e528c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[156, 284, 444, 372],
+					[138, 361, 462, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"vi/the-person-and-work-of-the-holy-spirit": {
 			"ground": "d28e5ef55f9d1a39153f7ebd3cb5bd659798d16b79c4a3fe3037ab74892b3bcb",
 			"style": "revival",
