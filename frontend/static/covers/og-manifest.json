@@ -38664,6 +38664,20 @@
 				595
 			]
 		},
+		"vi/cheque-book": {
+			"ground": "63f2ae3f6f803e61d8b69f0d93dc74f333935b8f1bad050727555d51aa0c64b9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false
+		},
 		"vi/clothed-with-strength-and-dignity": {
 			"ground": "cd1b81541ffc096749f870408667060443f500932a116d38f89ac878e8269a4a",
 			"style": "originals",

@@ -132,5 +132,12 @@
   "note": [
    "The title quotes the shipped vi edition faithful-with-little.vi.json verbatim (Trung Tín Trong Việc Nhỏ), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
   ]
+ },
+ "cheque-book-year": {
+  "title": "Một năm với Sổ Séc Của Ngân Hàng Đức Tin",
+  "description": "Những lời hứa hằng ngày của Charles Spurgeon: mỗi ngày trong năm một lời hứa của Đức Chúa Trời, kèm một lời ngắn về cách nhận lấy lời hứa ấy bằng đức tin. Bạn có thể bắt đầu vào bất cứ ngày nào: ngày thứ nhất là bài đọc của ngày 1 tháng Một, và mỗi ngày sau đó đọc bài kế tiếp. Mỗi ngày một hai phút.",
+  "note": [
+   "Single-book LAUNCH plan backed by the vi edition of cheque-book (queue job #7016; book title «Sổ Séc Của Ngân Hàng Đức Tin»), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title quotes the edition title so the plan card and the book agree; the description mirrors the English _BEGIN line with the day markers' own form (ngày 1 tháng Một). AI-drafted; awaiting native review."
+  ]
  }
 }
