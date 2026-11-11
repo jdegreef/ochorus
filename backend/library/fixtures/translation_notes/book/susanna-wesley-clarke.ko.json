@@ -3,7 +3,7 @@
  "slug": "susanna-wesley-clarke",
  "language": "ko",
  "job_issue": 7021,
- "pull_request": null,
+ "pull_request": 7716,
  "note": [
   "Translation queue job #7021 (2026-11-11): 16 chapters translated in 21 parts against one shared name/term table, each part checked for paragraph parity, tag shape, numerals and quote style against the English. Scripture from the 개역 (Take Root korean / ebible kor_old) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were machine-checked as verbatim substrings of that verse and of the translated block; anything adapted (re-personed, grammar bent to a letter's sentence, allusion) is self_rendered. This is a biography: most quotations are Susanna's and her family's letters, not scripture. AI-drafted, awaiting native review."
  ],
