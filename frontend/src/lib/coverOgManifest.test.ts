@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from './coverLayouts';
-import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from './coverStyles';
+import { coverStyleFor, coverVolume, scriptOf, smallCapsFor } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
@@ -120,7 +120,7 @@ const needTwins = once(() => {
 				key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
 				art,
 				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
-				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
+				volume: coverVolume(f.series_position, baseEdition(f.language), f.author[0]),
 				caps: smallCapsFor(f.slug),
 				// Whether the card sets a young edition's "— For Teens —" line, as the
 				// script decides it (`editionOf` over the cover title).
