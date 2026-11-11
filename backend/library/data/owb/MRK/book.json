@@ -1,0 +1,34 @@
+{
+ "slug": "gospel-of-mark",
+ "title": "The Gospel of Mark",
+ "cover_title": "Mark",
+ "subtitle": "Kata Markon, “According to Mark”",
+ "cover_color": "#7a3b22",
+ "description": "The shortest of the four Gospels, and probably the first to be written: “The beginning of the gospel about Jesus Christ.” Fast and vivid, it moves from the Jordan to Galilee at once, where Jesus heals, casts out unclean spirits, stills the storm and leaves his disciples asking, “Who is this?” Then the way to Jerusalem, three times foretelling his death, and the saying at the heart of the book, that the Son of Man came to serve and to give his life as the ransom price for many. The cross, where a Roman centurion is the first to call him God’s Son, and an empty tomb, where frightened women hear that he has gone ahead of them to Galilee. Traditionally the memories of Peter, written down by his interpreter Mark. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the Gospel of Mark?",
+   "answer": "The second and shortest of the four Gospels, the accounts of the life, death and resurrection of Jesus in the New Testament. It tells the story quickly and vividly, from John the Baptist at the Jordan to the empty tomb, with about a third of the book given to the last week of Jesus’s life. Its centre is the question of who Jesus is, and its answer is that he is the Son of God who came “to give his life as the ransom price for many” (10:45)."
+  },
+  {
+   "question": "Who wrote the Gospel of Mark, and when?",
+   "answer": "The Gospel does not name its author. From the earliest tradition it has been called Mark’s, identified with John Mark of Acts, a companion of Paul and Barnabas and later of Peter. Papias, early in the second century, said that Mark was Peter’s interpreter and wrote down accurately what Peter remembered of what Jesus said and did. Most scholars date it to the late 60s or around AD 70, and tradition places it in Rome."
+  },
+  {
+   "question": "Was Mark the first Gospel to be written?",
+   "answer": "Most scholars think so. Nearly all of Mark is found in Matthew and Luke, often in the same order and wording, and the usual explanation is that both of them used Mark. Others hold, as Augustine did, that Matthew came first and Mark abridged it. The question does not change what any of the Gospels says, but it helps explain why the first three are so alike."
+  },
+  {
+   "question": "What is the “messianic secret” in Mark?",
+   "answer": "A name scholars give to the way Jesus in Mark tells demons to be silent, tells people he has healed to tell no one, and orders his disciples not to say he is the Christ (8:30). Part of the reason may be that crowds would have taken him for the wrong kind of Messiah. Mark’s deeper point is that no one can understand who Jesus is until they have seen the cross, where a centurion at last says, “This man really was God’s Son!” (15:39)."
+  },
+  {
+   "question": "How does the Gospel of Mark end?",
+   "answer": "In the two oldest complete manuscripts it ends at 16:8, with women running from the empty tomb, telling no one, “for they were afraid”. Whether Mark meant to end there or his ending was lost is an open question. Most later manuscripts add a longer ending (16:9–20), and a few have a short ending; neither is in Mark’s style. Like most Bibles, this edition prints both after 16:8, set apart and in brackets, with a note."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

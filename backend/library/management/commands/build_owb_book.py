@@ -88,13 +88,36 @@ LEVEL = "B"
 SITE = "https://openwordbible.org"
 EDITORIAL = Path(settings.BASE_DIR) / "library" / "data" / "owb"
 
-#: Passages the oldest manuscripts lack, as (first verse, last verse) — OWB's
-#: own list (`build_site.DISPUTED`).
-DISPUTED = (("JHN.7.53", "JHN.8.11"),)
+#: Passages the oldest manuscripts lack, as (first verse or sentence, last
+#: verse, its own note or None for DISPUTED_NOTE) — OWB's own list
+#: (`build_site.DISPUTED`). Mark's two later endings begin inside 16:8, after
+#: its first sentence, so that entry starts at a sentence; the note is OWB's.
+DISPUTED = (
+    ("JHN.7.53", "JHN.8.11", None),
+    (
+        "MRK.16.8.s2",
+        "MRK.16.20",
+        "The earliest manuscripts of Mark end at 16:8. The two endings that follow, "
+        "a short one and the longer one in 16:9–20, were added later. Most Bibles "
+        "print them, as here, set apart and in brackets.",
+    ),
+)
 DISPUTED_NOTE = (
     "The earliest manuscripts of {book} do not have {ref}. Most Bibles print it, "
     "as here, set apart and in brackets."
 )
+
+#: The New Testament verses the SBLGNT numbers otherwise than English Bibles,
+#: source verse -> the English verses that hold its text: OWB's hand-written
+#: table (`owb/versification.py`, NEW_TESTAMENT), which `data/versification.json`
+#: does not carry. Only Revelation 12:18 crosses a chapter (English 13:1).
+NEW_TESTAMENT_ENGLISH = {
+    "ACT.19.40": ["ACT.19.40", "ACT.19.41"],
+    "2CO.13.12": ["2CO.13.12", "2CO.13.13"],
+    "2CO.13.13": ["2CO.13.14"],
+    "3JN.1.15": ["3JN.1.14"],
+    "REV.12.18": ["REV.13.1"],
+}
 
 #: Matthew's number in the canon (OWB's `data/books.json` order, from 1): it and
 #: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
@@ -145,12 +168,23 @@ def record_key(record: dict) -> tuple[int, int, int]:
     return (*verse_key(record["refs"][0]), int(record["id"].rsplit(".s", 1)[1]))
 
 
-def is_disputed(vid: str) -> bool:
-    book = vid.split(".")[0]
-    return any(
-        a.startswith(book + ".") and verse_key(a) <= verse_key(vid) <= verse_key(b)
-        for a, b in DISPUTED
-    )
+def place(rid: str) -> tuple[int, int, int]:
+    """Where a verse ("MRK.16.8", before its sentences) or a sentence
+    ("MRK.16.8.s2") stands, to compare with DISPUTED's ends."""
+    vid, _, sentence = rid.partition(".s")
+    return (*verse_key(vid), int(sentence or 0))
+
+
+def disputed_entry(record: dict) -> tuple[str, str, str | None] | None:
+    """The DISPUTED passage a sentence is part of, or None."""
+    book = record["id"].split(".")[0]
+    for entry in DISPUTED:
+        first, last, _ = entry
+        if first.startswith(book + ".") and place(first) <= place(record["id"]) and (
+            verse_key(record["refs"][0]) <= verse_key(last)
+        ):
+            return entry
+    return None
 
 
 def curl_singles(text: str) -> str:
@@ -236,7 +270,8 @@ class Source:
                 (root / "data" / "versification.json").read_text("utf-8")
             )["english"].items()
             if vid.startswith(f"{code}.")
-        }
+        } | {vid: english for vid, english in NEW_TESTAMENT_ENGLISH.items()
+             if vid.startswith(f"{code}.")}
         self.carry_headings_forward()
         self.commit = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"],
@@ -347,7 +382,7 @@ class Source:
                 title.extend(escape(text, quote=False) for _, text in verses_of(r))
                 continue
             close_title()
-            disputed = any(is_disputed(v) for v in r["refs"])
+            disputed = disputed_entry(r) is not None
             heading = self.headings.get(r["id"])
             if heading or disputed != in_disputed:
                 close()
@@ -381,13 +416,10 @@ class Source:
         return "".join(out)
 
     def disputed_note(self, record: dict) -> str:
-        first, last = next(
-            (a, b)
-            for a, b in DISPUTED
-            if a.startswith(f"{self.code}.")
-            and verse_key(a) <= verse_key(record["refs"][0]) <= verse_key(b)
-        )
-        (c1, v1), (c2, v2) = verse_key(first), verse_key(last)
+        first, last, note = disputed_entry(record)
+        if note:
+            return note
+        (c1, v1, _), (c2, v2) = place(first), verse_key(last)
         span = f"{c1}:{v1}–" + (str(v2) if c1 == c2 else f"{c2}:{v2}")
         return DISPUTED_NOTE.format(book=self.name, ref=f"{self.name} {span}")
 

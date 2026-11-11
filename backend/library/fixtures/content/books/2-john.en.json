@@ -1,0 +1,93 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "2-john",
+  "language": "en",
+  "title": "The Second Letter of John",
+  "subtitle": "Iōannou B, “Second of John”",
+  "cover_title": "2 John",
+  "cover_byline": "",
+  "description": "A single page from “the elder” to “the chosen lady and her children”, one of the two shortest books in the Bible. In thirteen verses it gathers up the message of 1 John: walk in the truth, love one another as you were commanded from the beginning, and beware of deceivers who do not confess Jesus Christ as one who has come in the flesh. Do not give such teachers your home and your blessing; and the rest, the elder says, he would rather say face to face, so that your joy may be complete. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the Second Letter of John?",
+    "answer": "The twenty-fourth book of the New Testament and one of its two shortest, thirteen verses written by “the elder” to “the chosen lady and her children”. It urges its readers to keep living in the truth and loving one another, warns them against deceivers who deny that Jesus Christ has come in the flesh, and tells them not to welcome such teachers into their homes. It closes with the hope of a visit face to face."
+   },
+   {
+    "question": "Who wrote 2 John, and who is “the chosen lady”?",
+    "answer": "The writer calls himself only “the elder”. The church has long linked him with John the apostle, author of the Gospel and of 1 John, whose language the letter shares; some ancient and modern readers think he was John the Elder, a disciple whom Papias distinguished from the apostle. “The chosen lady” may be a Christian woman in whose house a church met, but most readers take her to be a church, with its members as her children, since the letter ends with greetings from “your chosen sister’s children” (1:13)."
+   },
+   {
+    "question": "Why does 2 John say not to welcome false teachers into your home?",
+    "answer": "Early Christians met in homes, and travelling teachers relied on believers for lodging and a hearing. To receive a teacher into your house was to give him a platform in the church that met there, and to send him on with a greeting was to recommend him to the next. The elder tells the church not to do this for those who deny that Jesus Christ has come in the flesh (1:7–11). He is not forbidding ordinary kindness to people who disagree, and Christians weigh differently how the instruction applies today."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#2jn",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/2-john.jpg",
+  "pdf_url": "",
+  "cover_color": "#2a4f4a",
+  "series": null,
+  "series_position": null,
+  "sort_order": 310,
+  "is_published": true,
+  "created_at": "2026-11-11T20:30:46.495Z",
+  "updated_at": "2026-11-11T20:30:47.049Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-john",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>This is what love is: that we live by his commands. And this is the command you heard from the beginning: you are to live in love.</p><p>— 2 John 1:6</p></blockquote> <p>Second John is one of the two shortest books in the Bible. In Greek it is fewer than two hundred and fifty words, and it would have fitted on a single sheet of papyrus, rolled and tied and carried by hand. It can be read aloud in two minutes. But it was not written to be read in passing. It was written to a church in danger, by someone who loved it and could not yet come to it in person.</p> <p>Readers who have just finished 1 John will feel at home at once. The words are the same: truth, love, command, from the beginning, remain, the Father and the Son, antichrist. In a sense 2 John is the longer letter in miniature, its whole message folded into a page and sent ahead.</p> <h3>The elder and the chosen lady</h3> <p>The letter begins like an ordinary letter of its day, with sender and recipient:</p> <blockquote><p>From the elder, to the chosen lady and her children. I love you in truth, and I am not the only one: so do all who have come to know the truth. We love you because of the truth that remains in us and will be with us forever.</p><p>— 2 John 1:1–2</p></blockquote> <p>Neither is named. The writer calls himself simply “the elder”, a title that means both an old man and a leader of the church, and he expects his readers to know who he is. The one he writes to is “the chosen lady and her children”, and here readers have long been divided.</p> <p>Some take her to be a real Christian woman, perhaps a widow in whose house a church met, with her children grown in the faith. Others, probably the majority, take “the chosen lady” to be a church, personified as a woman the way Israel was called a daughter or a bride, and “her children” to be its members. The letter’s close supports this second reading: “Your chosen sister’s children send you their greetings” (1:13), which sounds like one congregation greeting another. The plural “you” that runs through the middle of the letter points the same way. Either reading makes good sense, and nothing in the letter’s message depends on the choice.</p> <h3>Truth and love</h3> <p>In the first four verses the word <em>truth</em> comes five times. The elder loves his readers “in truth”; so do “all who have come to know the truth”; they love “because of the truth that remains in us and will be with us forever”; grace, mercy and peace will be with us “in truth and love”; and he rejoices to find some of the lady’s children “living in the truth”.</p> <p>Then comes his one request, and it is about love:</p> <blockquote><p>And now, lady, I have a request for you. What I am writing to you is not a new command; it is the one we have had from the beginning. I ask that we love one another.</p><p>— 2 John 1:5</p></blockquote> <p>It is the command Jesus gave on his last night, “love one another” (John 13:34), and the elder insists it is not new. What is new is the setting. He goes straight on to say what love is: “that we live by his commands” (1:6). Love and obedience are not rivals. And love and truth belong together too, because the danger that comes next is a danger to both.</p> <h3>The deceivers</h3> <blockquote><p>For many deceivers have gone out into the world, people who do not confess Jesus Christ as one who has come in the flesh. A person like that is the deceiver and the antichrist.</p><p>— 2 John 1:7</p></blockquote> <p>This is the same trouble 1 John speaks of: teachers who would not confess that Jesus Christ had truly come in a human body. Some of them, it seems, were travelling from church to church. The elder warns his readers to be on their guard, “so that you do not lose what we have worked to bring about, but receive your reward in full” (1:8).</p> <p>He gives them a test, and it is a striking one. The false teachers no doubt presented their ideas as progress, a deeper and more advanced faith. The elder describes them as people who go “too far”:</p> <blockquote><p>Anyone who goes too far and does not remain in the teaching of Christ is without God. But the one who remains in that teaching has both the Father and the Son.</p><p>— 2 John 1:9</p></blockquote> <p>Progress in the Christian life, for the elder, is not moving beyond the teaching of Christ, but going deeper into it. Anyone who leaves it behind has left God behind with it.</p> <h3>Do not receive them</h3> <p>The hardest words in the letter come next. If anyone comes without bringing this teaching, “do not receive that person into your home, and do not give them a greeting” (1:10), because whoever greets such a person “becomes a partner in their evil deeds” (1:11).</p> <p>These verses need to be read in their own world. Christians in the first century had no church buildings; they met in homes. Travelling teachers depended on the hospitality of believers for food and lodging and for a platform. To take a teacher into your house was to take him into the church that met there, and to send him on his way with a blessing was to recommend him to the next. The elder is not telling Christians to be cold to their neighbours, or to refuse kindness to people who disagree with them. He is telling a church not to give its home and its blessing to those who are spreading a false gospel. Ignatius of Antioch, a few years later, gave the same advice to the church at Smyrna.</p> <p>Christians have weighed how far this applies today. But the elder’s point is plain: love that has no care for the truth is not love, and a church that opens its door to every teaching will soon have nothing left to protect.</p> <h3>Paper and ink</h3> <p>The letter ends almost as soon as it has begun. “There is a great deal I could write to you, but I chose not to do it with paper and ink” (1:12). The elder would rather come and speak “face to face, so that your joy may be complete”. It is a lovely, human close. Even an apostolic letter, he admits, is a poor substitute for being together.</p> <h3>Who wrote 2 John?</h3> <p>The elder does not give his name. From early times the church linked him with John the apostle, the author of the Gospel and of 1 John, and the language of the three is very close. But the short letters were slower to be accepted everywhere than 1 John; the historian Eusebius, early in the fourth century, lists them among the books disputed by some, “whether they belong to the evangelist or to another person of the same name”. Some ancient and modern readers have thought the elder was John the Elder, a disciple of the Lord whom Papias mentions as distinct from the apostle. Either way, the letter belongs with 1 and 3 John, from the same circle and probably the same years, late in the first century.</p> <h3>How to read 2 John</h3> <p>Read it with 1 John open beside it, and notice how the longer letter’s themes reappear here, compressed. Notice the plain shape of a first-century letter: greeting (1:1–3), thanksgiving and request (1:4–6), warning (1:7–11), and close (1:12–13). And notice that the warning is framed on both sides by love. The elder guards the door because he loves the people inside.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Greek and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Two of its choices in 2 John are worth knowing about.</p> <p><strong>“Goes too far.”</strong> In verse 9, where older Bibles say “transgresseth” or “runs ahead”, this translation says “goes too far”: the Greek word means to lead the way forward, and here it describes those who claim to have moved on past the teaching of Christ.</p> <p><strong>“The chosen lady.”</strong> The translation keeps the elder’s own phrase, without deciding for the reader whether he means a woman or a church. The Open Word Bible also lets a reader choose “Christ” or “the Messiah” for <em>Christos</em>; this edition prints “Christ”.</p> <p>For the reasoning behind every sentence of the translation, with the Greek beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1463
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-john",
+   "en"
+  ],
+  "order": 2,
+  "title": "2 John 1",
+  "body_html": "<h3>Greeting</h3><p>From the elder, to the chosen lady and her children. I love you in truth, and I am not the only one: so do all who have come to know the truth. We love you because of the truth that remains in us and will be with us forever. Grace, mercy, and peace will be with us from God the Father and from Jesus Christ, the Father’s Son, in truth and love.</p><h3>Live in truth and love, and beware of deceivers</h3><p>I was very glad when I found some of your children living in the truth, in keeping with the command we received from the Father. And now, lady, I have a request for you. What I am writing to you is not a new command; it is the one we have had from the beginning. I ask that we love one another. This is what love is: that we live by his commands. And this is the command you heard from the beginning: you are to live in love. For many deceivers have gone out into the world, people who do not confess Jesus Christ as one who has come in the flesh. A person like that is the deceiver and the antichrist. Be on your guard, so that you do not lose what we have worked to bring about, but receive your reward in full. Anyone who goes too far and does not remain in the teaching of Christ is without God. But the one who remains in that teaching has both the Father and the Son. If anyone comes to you without bringing this teaching, do not receive that person into your home, and do not give them a greeting. For whoever gives such a person a greeting becomes a partner in their evil deeds.</p><h3>Final words</h3><p>There is a great deal I could write to you, but I chose not to do it with paper and ink. I hope instead to come to you and speak with you face to face, so that your joy may be complete.</p><p>Your chosen sister’s children send you their greetings.</p>",
+  "study_questions": [],
+  "word_count": 351
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "2-john",
+   "en"
+  ],
+  "order": 3,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>There is a great deal I could write to you, but I chose not to do it with paper and ink. I hope instead to come to you and speak with you face to face, so that your joy may be complete.</p><p>— 2 John 1:12</p></blockquote> <p>Second John ends with a hope rather than a conclusion. The elder has said only what could not wait, and saved the rest for a visit. Whether he ever made it we do not know. But the letter he sent instead has outlasted any conversation, and it still says what he most wanted his children to hear.</p> <h3>The question the book leaves with you</h3> <p>The letter asks how truth and love belong together. Many people today assume they pull in opposite directions: that to love people is to stop insisting on what is true, or that to hold firmly to the truth is to stop loving. The elder will not accept either. He loves his readers “in truth”. He defines love as living by God’s commands. And he guards the church against false teachers precisely because he loves it.</p> <p>So the question is not whether to choose truth or love, but whether our love is truthful and our truth is loving. A church can fail on either side. It can welcome everything and stand for nothing; or it can stand for the right things with a cold heart. The elder’s little letter calls us away from both.</p> <h3>Where to go from here</h3> <p>No book in this library is given wholly to 2 John, but several of the best stand very close to it:</p> <ul> <li><strong>The longer letter.</strong> Augustine of Hippo’s <em>Homilies on the First Epistle of John</em>, on the letter whose themes 2 John gathers into a page.</li> <li><strong>On loving one another.</strong> F. B. Meyer’s <em>Thrice Bidden to Love</em> (John 13:34), on the command the elder says is not new.</li> <li><strong>On guarding the church.</strong> Gareth Evans’s <em>Guard the Truth</em>, on Paul’s farewell to the elders of Ephesus (Acts 20:17–32), with its warning of wolves who would come in among the flock.</li> <li><strong>From the generation after John.</strong> Ignatius of Antioch, in <em>The Epistles of Ignatius and His Life’s Story</em>, warns the church at Smyrna against teachers who said Christ suffered only in appearance, men “whom not only should ye not receive, but, if it were possible, not so much as meet”. <em>The Epistle and Martyrdom of Polycarp</em> repeats John’s warning about those who do not confess that Jesus Christ has come in the flesh.</li> <li><strong>On the church’s long fight for the truth.</strong> Irenaeus of Lyons’s <em>Against Heresies</em>, which quotes verse 11 of this letter, and Eusebius of Caesarea’s <em>The Church History</em>, which records how some in the early church hesitated over 2 and 3 John, and why.</li> </ul> <p>But the best next step may be to read all three of John’s letters together, at one sitting, and then this one again. Its last line, so ordinary, will sound different: a church greeting a church, one family of the truth to another.</p> <blockquote><p>Your chosen sister’s children send you their greetings.</p><p>— 2 John 1:13</p></blockquote>",
+  "study_questions": [],
+  "word_count": 521
+ }
+}
+]
+
