@@ -3,6 +3,7 @@
  "slug": "the-masters-indwelling",
  "language": "vi",
  "job_issue": 7010,
+ "pull_request": 7671,
  "note": [
   "Queue job #7010 (vi, 2026-11-11): one translator per chapter against a shared per-book CONVENTIONS file (fixed chapter titles + term table), then a whole-book term reconciliation pass (fellowship = sự thông công; tâm linh → tâm thần for 'spirit/disposition'). Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked mechanically as verbatim substrings (punctuation/case aside) of that verse. English version labels like (KJV) were dropped because the quoted wording is now Cadman's. Where Murray's English quote differs from Cadman (e.g. Ps 62:5 'wait' vs Cadman 'nghỉ an'; Isa 27:5 'protection' vs 'sức ta'), Cadman was kept verbatim or the row is self_rendered. AI-drafted, awaiting native review."
  ],
