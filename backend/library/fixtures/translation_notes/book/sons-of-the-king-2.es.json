@@ -181,9 +181,10 @@
   },
   {
    "reference": "Proverbs 16:32a",
-   "status": "self_rendered",
+   "status": "mined",
    "chapter_order": 10,
-   "block_index": 8
+   "block_index": 8,
+   "source_file": "sons-of-the-king-1.es.json"
   },
   {
    "reference": "Romans 16:19",
