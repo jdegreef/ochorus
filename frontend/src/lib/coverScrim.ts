@@ -208,6 +208,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'samuel-ajayi-crowther-a-life-children': 0.15,
 	'samuel-ajayi-crowther-a-life-teens': 0.10,
 	'selected-sermons-whitefield': 0.45,
+	'seven-times-a-day': 0.60,
 	'small-catechism': 0.80,
 	'susanna-wesley-clarke': 0.65,
 	'table-talk': 0.70,

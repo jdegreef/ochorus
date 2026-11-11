@@ -31085,6 +31085,40 @@
 			"bar": 0,
 			"caps": false
 		},
+		"seven-times-a-day": {
+			"ground": "96049a75818d961203d4d4224a3ccf1586729fbae637154b323bded5395b28c4",
+			"style": "originals",
+			"volume": "5",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[211, 328, 389, 404],
+					[118, 394, 482, 470]
+				],
+				"subtitle": [
+					[130, 528, 470, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"small-catechism": {
 			"ground": "7199cc67412be241f3a7d4403a9b830685cc09717da90cf34e08eb08708f06a4",
 			"style": "press",
