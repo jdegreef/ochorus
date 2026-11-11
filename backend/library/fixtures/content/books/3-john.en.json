@@ -28,6 +28,14 @@
     "answer": "The travelling believers had set out “for the sake of the Name” and would take nothing from unbelievers, so they relied on the churches for food, lodging and supplies. The elder tells Gaius to send them on “in a manner worthy of God” (1:6) and says that those who take in and support such people “become fellow workers with the truth” (1:8). Those who give share in the work of those who go."
    },
    {
+    "question": "Does 3 John 2 promise health and prosperity?",
+    "answer": "The elder writes, “Dear friend, my prayer is that you are doing well in every way and are in good health, just as your soul is doing well” (1:2). Some have read the verse as a promise that God wants every believer to prosper in body and goods. But it is the ordinary kind wish with which letters of the time began, much as we might write “I hope you are keeping well”. What is unusual is the comparison: the elder hopes that Gaius’s body is doing as well as his soul. And the joy he names next is not wealth but this: “to hear that my children are walking in the truth” (1:4)."
+   },
+   {
+    "question": "What does “the person who does good is from God” mean in 3 John?",
+    "answer": "Instead of telling Gaius to fight Diotrephes, the elder gives him a simple rule: “Dear friend, do not copy what is bad, but what is good. The person who does good is from God; the person who does evil has not seen God” (1:11). Gaius has two examples before him: Diotrephes, who “loves to be first” and drives the travelling believers out of the church, and Demetrius, of whom the elder says, “Everyone testifies in favor of Demetrius, and so does the truth itself” (1:12). The words echo 1 John, where doing right and loving are the signs of belonging to God. The point is not that good deeds earn a place with God, but that a life shows where it comes from."
+   },
+   {
     "question": "Which translation of the Bible is this?",
     "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
    }
@@ -39,12 +47,14 @@
   "cover_url": "/covers/art/3-john.jpg",
   "pdf_url": "",
   "cover_color": "#4a3a24",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 64,
   "sort_order": 311,
   "is_published": true,
   "created_at": "2026-11-11T20:30:49.526Z",
-  "updated_at": "2026-11-11T20:30:50.095Z"
+  "updated_at": "2026-11-11T21:11:30.670Z"
  }
 },
 {
@@ -84,9 +94,9 @@
   ],
   "order": 3,
   "title": "Conclusion",
-  "body_html": "<blockquote><p>It is our duty, then, to take in and support such people, and so become fellow workers with the truth.</p><p>— 3 John 1:8</p></blockquote> <p>Third John leaves us in the middle of a story. We never learn whether the elder came, whether Diotrephes gave way, or what became of Gaius and Demetrius. The letter survives because the church saw in it something more than one congregation’s quarrel: a picture of what the church is meant to be, and of what can spoil it.</p> <h3>The question the book leaves with you</h3> <p>The letter sets two kinds of people side by side and asks which we are. Gaius opens his door to strangers because they belong to the Name. Diotrephes shuts his door, and other people’s doors too, because he loves to be first. Both are church members. Both, presumably, would have said they served God. What divides them is not their doctrine but what they love.</p> <p>The question reaches every Christian, but especially anyone with a little authority: a pastor, an elder, a leader of anything. Are we using our place to make room for others, or to keep it for ourselves? Do we rejoice when the gospel goes forward through someone else, or only when it goes through us? The elder’s answer is as plain as it is searching: “The person who does good is from God; the person who does evil has not seen God.”</p> <h3>Where to go from here</h3> <p>No book in this library is given wholly to 3 John, but several take up its two great concerns, the support of those who go out with the gospel and the danger of loving to be first:</p> <ul> <li><strong>On ambition in the church.</strong> Gregory the Great’s <em>The Book of Pastoral Rule</em>, whose first part warns against those who “covet superiority to others” and take up leadership “through lust of pre-eminence”; Richard Baxter’s <em>The Reformed Pastor</em>, which calls ministers away from self-seeking and pride; and Andrew Murray’s <em>Humility</em>.</li> <li><strong>On those who set out for the sake of the Name.</strong> Hudson Taylor’s <em>A Retrospect</em>, the story of a missionary who resolved to depend on God alone for his support, and John R. Mott’s <em>The Evangelization of the World in This Generation</em>.</li> <li><strong>On the elder and his letters.</strong> Eusebius of Caesarea’s <em>The Church History</em>, which preserves what Papias said of the two Johns of Ephesus and records the early questions about 2 and 3 John; and Augustine of Hippo’s <em>Homilies on the First Epistle of John</em>, on the longer letter from the same hand.</li> </ul> <p>But the best next step may be simpler. Think of someone who has gone out for the sake of the Name, a missionary, a travelling preacher, a believer far from home, and do something to send them on their way “in a manner worthy of God”. That is how the elder would want his letter read. And then receive his blessing, as Gaius did:</p> <blockquote><p>Peace be with you.</p><p>— 3 John 1:14</p></blockquote>",
+  "body_html": "<blockquote><p>It is our duty, then, to take in and support such people, and so become fellow workers with the truth.</p><p>— 3 John 1:8</p></blockquote> <p>Third John leaves us in the middle of a story. We never learn whether the elder came, whether Diotrephes gave way, or what became of Gaius and Demetrius. The letter survives because the church saw in it something more than one congregation’s quarrel: a picture of what the church is meant to be, and of what can spoil it.</p> <h3>The question the book leaves with you</h3> <p>The letter sets two kinds of people side by side and asks which we are. Gaius opens his door to strangers because they belong to the Name. Diotrephes shuts his door, and other people’s doors too, because he loves to be first. Both are church members. Both, presumably, would have said they served God. What divides them is not their doctrine but what they love.</p> <p>The question reaches every Christian, but especially anyone with a little authority: a pastor, an elder, a leader of anything. Are we using our place to make room for others, or to keep it for ourselves? Do we rejoice when the gospel goes forward through someone else, or only when it goes through us? The elder’s answer is as plain as it is searching: “The person who does good is from God; the person who does evil has not seen God.”</p> <h3>Where to go from here</h3> <p>No book in this library is given wholly to 3 John, but several take up its two great concerns, the support of those who go out with the gospel and the danger of loving to be first:</p> <ul> <li><strong>On ambition in the church.</strong> Gregory the Great’s <em>The Book of Pastoral Rule</em>, whose first part warns against those who “covet superiority to others” and take up leadership “through lust of pre-eminence”; Richard Baxter’s <em>The Reformed Pastor</em>, which calls ministers away from self-seeking and pride; and Andrew Murray’s <em>Humility</em>.</li> <li><strong>On those who set out for the sake of the Name.</strong> Hudson Taylor’s <em>A Retrospect</em>, the story of a missionary who resolved to depend on God alone for his support, and John R. Mott’s <em>The Evangelization of the World in This Generation</em>.</li> <li><strong>On the elder and his letters.</strong> Eusebius of Caesarea’s <em>The Church History</em>, which preserves what Papias said of John and the elder John, with Eusebius’s own case that they were two men, and records the early questions about 2 and 3 John; and Augustine of Hippo’s <em>Homilies on the First Epistle of John</em>, on the longer letter from the same hand.</li> </ul> <p>But the best next step may be simpler. Think of someone who has gone out for the sake of the Name, a missionary, a travelling preacher, a believer far from home, and do something to send them on their way “in a manner worthy of God”. That is how the elder would want his letter read. And then receive his blessing, as Gaius did:</p> <blockquote><p>Peace be with you.</p><p>— 3 John 1:14</p></blockquote>",
   "study_questions": [],
-  "word_count": 500
+  "word_count": 509
  }
 }
 ]

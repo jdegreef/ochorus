@@ -28,6 +28,14 @@
     "answer": "Paul describes a figure who will set himself against every god, take his seat in God’s temple and present himself as God, before the Lord Jesus destroys him at his coming (2:3–8). Early Christian writers such as Irenaeus and Cyril of Jerusalem identified him with the Antichrist of the last days; the Reformers often saw the papacy; others think of a figure still to come or of a recurring pattern of rebellion against God. Paul says that something is holding him back, which the Thessalonians knew about; Augustine admitted he did not know what it was, and Christians still disagree."
    },
    {
+    "question": "Why does 2 Thessalonians say the day of the Lord had not yet come?",
+    "answer": "Someone, by a prophetic word, a spoken message or a letter claiming to come from Paul, was telling the church that the day of the Lord was already here (2:2). Paul answers that it cannot have come, because certain things must happen first: the great rebellion, and the unveiling of the man of lawlessness, who is being held back for now (2:3–7). The false claim was not that the day was near, which Paul himself taught, but that it had already arrived. His purpose is pastoral. Evil is real but on a leash, and the Lord Jesus will destroy it at his coming, so believers need not be shaken."
+   },
+   {
+    "question": "What does “Anyone who will not work should not eat” mean in 2 Thessalonians 3:10?",
+    "answer": "Paul repeats a rule he had given the church in person, because some members were living undisciplined lives, not busy working but busy with everyone else’s business, and expecting the church to feed them. The rule is about those who will not work, not those who cannot. Paul points to his own example: he worked night and day so as not to be a burden, though he had a right to support. And he is careful about how the rule is applied. The church is to keep its distance from such a person, but not to treat him as an enemy; he is to be corrected as a brother or sister."
+   },
+   {
     "question": "Which translation of the Bible is this?",
     "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
    }
@@ -39,12 +47,14 @@
   "cover_url": "/covers/art/2-thessalonians.jpg",
   "pdf_url": "",
   "cover_color": "#3a4a2e",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 53,
   "sort_order": 300,
   "is_published": true,
   "created_at": "2026-11-11T20:30:14.317Z",
-  "updated_at": "2026-11-11T20:30:14.858Z"
+  "updated_at": "2026-11-11T21:10:53.811Z"
  }
 },
 {

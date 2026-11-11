@@ -28,6 +28,14 @@
     "answer": "Verses 14–15 closely match a passage in 1 Enoch, a Jewish writing well known in the first century, and Origen says the story of Michael disputing with the devil over Moses’s body (1:9) comes from a book called the Ascension of Moses. Jude uses writings his readers knew to make his point. Some early Christians hesitated over the letter because of this, but most have understood that quoting a book does not make it Scripture, as Paul quoted Greek poets."
    },
    {
+    "question": "Why does Jude mention Cain, Balaam and Korah?",
+    "answer": "“Woe to them! They have walked in the way of Cain. For the sake of pay they have thrown themselves into the error of Balaam. They have perished in the rebellion of Korah” (1:11). All three come from the Old Testament. Cain killed his brother; Balaam, the prophet hired to curse Israel, became a byword for doing wrong for money; Korah rose up against Moses and Aaron and was swallowed by the earth. Jude uses them as portraits of the intruders, who live by their own desires, serve for pay and “reject the Lord’s authority” (1:8). They join the letter’s earlier examples of judgment: Israel in the wilderness, the angels who did not stay in their place, and Sodom and Gomorrah (1:5–7)."
+   },
+   {
+    "question": "What is the doxology at the end of Jude?",
+    "answer": "The letter closes with one of the best-loved blessings in the New Testament: “Now to the one who is able to guard you from stumbling, and to bring you into the presence of his glory without blemish and rejoicing greatly, to God alone, our Savior, through Jesus Christ our Lord, be glory, majesty, might, and authority, before time began, now, and for all the ages to come. Amen” (1:24–25). After a letter full of warnings, Jude ends not with his readers’ effort but with God’s. They are to keep themselves within God’s love (1:21), but it is God who guards them from stumbling. Churches have long used these words to close their worship."
+   },
+   {
     "question": "Which translation of the Bible is this?",
     "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. In verse 5, where manuscripts differ, it reads that “Jesus saved a people out of the land of Egypt”. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
    }
@@ -39,12 +47,14 @@
   "cover_url": "/covers/art/jude.jpg",
   "pdf_url": "",
   "cover_color": "#4f2a2a",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 65,
   "sort_order": 312,
   "is_published": true,
   "created_at": "2026-11-11T20:30:52.613Z",
-  "updated_at": "2026-11-11T20:30:53.200Z"
+  "updated_at": "2026-11-11T21:11:33.929Z"
  }
 },
 {

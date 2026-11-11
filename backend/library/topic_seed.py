@@ -73,6 +73,7 @@ TOPICS = [
             "power-from-on-high-new-testament",
             "power-from-on-high-old-testament",
             "spurgeon-on-the-holy-spirit",
+            "acts-of-the-apostles",
         ],
     ),
     (
@@ -123,6 +124,9 @@ TOPICS = [
             "key-teachings-of-george-macdonald",
             "key-teachings-of-g-k-chesterton",
             "psalms",
+            "philippians",
+            "2-corinthians",
+            "1-peter",
         ],
     ),
     (
@@ -146,6 +150,7 @@ TOPICS = [
             "in-darkest-england-and-the-way-out",
             "key-teachings-of-dwight-l-moody",
             "key-teachings-of-charles-finney",
+            "acts-of-the-apostles",
         ],
     ),
     (
@@ -188,6 +193,8 @@ TOPICS = [
             "key-teachings-of-dwight-l-moody",
             "with-and-without-christ",
             "romans",
+            "gospel-of-mark",
+            "gospel-of-luke",
         ],
     ),
     (
@@ -250,6 +257,8 @@ TOPICS = [
             "ten-commandments",
             "key-teachings-of-catherine-booth",
             "key-teachings-of-john-wesley",
+            "james",
+            "hebrews",
         ],
     ),
     (
@@ -332,6 +341,7 @@ TOPICS = [
             "working-for-god",
             "key-teachings-of-hudson-taylor",
             "the-saint-and-his-saviour",
+            "1-john",
         ],
     ),
     (
@@ -514,6 +524,8 @@ TOPICS = [
             "first-epistle-of-clement",
             "separation-and-service",
             "key-teachings-of-dietrich-bonhoeffer",
+            "1-corinthians",
+            "ephesians",
         ],
     ),
     (
@@ -534,6 +546,9 @@ TOPICS = [
             "come-ye-children",
             "lectures-to-my-students",
             "lectures-to-my-students-second-series",
+            "1-timothy",
+            "2-timothy",
+            "titus",
         ],
     ),
     (
@@ -587,6 +602,7 @@ TOPICS = [
             "the-everlasting-man",
             "what-the-bible-teaches",
             "genesis",
+            "gospel-of-matthew",
         ],
     ),
     (
@@ -624,6 +640,8 @@ TOPICS = [
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
             "romans",
+            "galatians",
+            "ephesians",
         ],
     ),
     (
