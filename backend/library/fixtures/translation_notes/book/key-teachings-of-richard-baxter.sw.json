@@ -1,0 +1,924 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-richard-baxter",
+ "language": "sw",
+ "job_issue": 6890,
+ "references": [
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "c-s-lewis-a-life-children.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:12-13",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:4-6",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Philippians 3:15-16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 4:3",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 12,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 18,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 22,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 4,
+   "source_file": "amanda-smith-autobiography.sw.json"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 6,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 9,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 11,
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:22-23",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 15
+  },
+  {
+   "reference": "Colossians 3:1-2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 20
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 23,
+   "source_file": "full-salvation.sw.json"
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 28,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 31
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 4,
+   "source_file": "god-will-have-all-men-to-be-saved.sw.json"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 11,
+   "source_file": "mortification-of-sin.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 15,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 20,
+   "source_file": "necessity-of-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 24,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 26,
+   "source_file": "aggressive-christianity.sw.json"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 29,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 34,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "Romans 3:28",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 9,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "Philippians 3:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 11,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8-10",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Timothy 2:5-6",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 22
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 24,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Romans 2:21",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 4,
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "a-castaway.sw.json"
+  },
+  {
+   "reference": "Matthew 7:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 12,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "1 Timothy 3:4-5",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 14,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "1 Timothy 4:16",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 16,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:2",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 20,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 23,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Ezekiel 3:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 24,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:14",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 28
+  },
+  {
+   "reference": "Ezekiel 34:4",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 32,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:12-13",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 35
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 38,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Colossians 1:28",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 4,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 6:7",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 10,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:13",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 16
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Timothy 3:4-5",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 6,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 9,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Psalm 78:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 13
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 16
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 20,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Acts 10:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 24
+  },
+  {
+   "reference": "1 Peter 4:9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 27,
+   "source_file": "christian-charity.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 4,
+   "source_file": "full-salvation.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:27",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 10,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 16,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 20,
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "Romans 4:20-21",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 22,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Lamentations 3:40",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 11:28",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 5,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 7,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Psalm 4:4",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 11
+  },
+  {
+   "reference": "Psalm 139:23-24",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 15,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 19,
+   "source_file": "the-pursuit-of-god.sw.json"
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 24,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Song Of Solomon 2:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 26,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 11:28",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 5,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 32,
+   "source_file": "excuses.sw.json"
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 4,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 6,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 10,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "1 Timothy 6:9",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 14
+  },
+  {
+   "reference": "1 Timothy 6:17-18",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 18
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 24,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "John 12:42-43",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 26,
+   "source_file": "heroes-and-cowards.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:15-16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 4,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "James 4:14",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 5,
+   "source_file": "the-practical-hope-of-the-lords-coming.sw.json"
+  },
+  {
+   "reference": "John 9:4",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9
+  },
+  {
+   "reference": "Ecclesiastes 9:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 12
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 15
+  },
+  {
+   "reference": "Colossians 3:23-24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 21,
+   "source_file": "rooted-3.sw.json"
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 23,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 42:11",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 0,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Kings 19:5",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 9,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "1 Kings 19:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 9,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 11,
+   "source_file": "growing-in-wisdom.sw.json"
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 12,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 130:1-2",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 20,
+   "source_file": "the-spirit-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 3:3",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 14:1",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 6
+  },
+  {
+   "reference": "James 3:17",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 10,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 14,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Psalm 133:1",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 0,
+   "source_file": "full-salvation.sw.json"
+  },
+  {
+   "reference": "Romans 5:3-4",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 1:4",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 6,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 9,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 13,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 16,
+   "source_file": "the-school-of-faith.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 21,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 4,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 7:2",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 6,
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 9,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:55-57",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 12,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "2 Timothy 4:7-8",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 16,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 18,
+   "source_file": "the-christian-pilgrim.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 22,
+   "source_file": "the-cloud-of-witnesses.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 23,
+   "source_file": "the-goal-of-faith.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 25
+  },
+  {
+   "reference": "1 Thessalonians 4:18",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 25
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 0,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "Psalm 103:14",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 4,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 10,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 0,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 18,
+   "source_file": "key-teachings-of-gareth-evans.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 13:21",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 29
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 13
+  }
+ ]
+}
