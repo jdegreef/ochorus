@@ -8783,7 +8783,7 @@
 			]
 		},
 		"es/fire-against-the-dark": {
-			"ground": "c174b01b0977aac2e79b930e49862c923ed1eea811f3f3cd50b4b58937367141",
+			"ground": "4ae00ba6c993737da3ae980baa85f94712e5080941eea4fd85c33615803452d3",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -8805,7 +8805,7 @@
 					[144, 393, 456, 468]
 				],
 				"subtitle": [
-					[94, 522, 506, 550]
+					[90, 522, 510, 550]
 				],
 				"mark": [
 					[232, 664, 368, 746]
