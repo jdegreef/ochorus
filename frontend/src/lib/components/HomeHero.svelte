@@ -193,7 +193,9 @@
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
 					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"
-					></span>{i18n.t(`liturgical.${season}`)}<span class="home-hero-hour hidden sm:inline"
+					></span>{#if season === 'advent' && getLang() === 'en'}<a href="/advent/" class="home-hero-season-link"
+							>{i18n.t('liturgical.advent')}</a
+						>{:else}{i18n.t(`liturgical.${season}`)}{/if}<span class="home-hero-hour hidden sm:inline"
 						><span class="sr-only">, </span>{i18n.t(`hours.${hour}`)}</span
 					></span
 				>
@@ -431,6 +433,13 @@
 		margin-inline-start: 0.75em;
 		padding-inline-start: 0.75em;
 		border-inline-start: 1px solid var(--hero-rule);
+	}
+	/* In Advent (English) the season's name opens the season's hub. */
+	.home-hero-season-link {
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
 	}
 	.home-hero-season-dot {
 		width: 0.55em;

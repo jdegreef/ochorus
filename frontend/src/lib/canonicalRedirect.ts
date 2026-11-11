@@ -10,6 +10,7 @@ export const RENDER_HOST = 'ochorus-web.onrender.com';
 
 /** Index pages whose route exports `trailingSlash = 'always'`. */
 const SLASHED_INDEXES = new Set([
+	'advent',
 	'articles',
 	'authors',
 	'for',
