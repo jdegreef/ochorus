@@ -1275,5 +1275,18 @@
   "created_at": "2026-11-11T00:00:00Z",
   "updated_at": "2026-11-11T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-lamplighters-of-gloamhaven"
+  ],
+  "language": "es",
+  "title": "Los Faroleros de Gloamhaven",
+  "description": "Una serie de aventuras para lectores jóvenes, ambientada en una tierra bajo un sol maldito. Dos niños, un farol que no se puede comprar ni robar, y el largo camino hacia la montaña donde comenzó la Llama: una historia de luz, de valentía y de la gracia que nadie puede ganarse.",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
 }
 ]
