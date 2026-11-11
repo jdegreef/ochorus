@@ -90,6 +90,12 @@ class ParsingTests(SimpleTestCase):
         body = "<h3>January 1</h3><p>x</p><h3>John 3:16</h3><p>y</p>"
         self.assertEqual([e.end for e in _entries(body)], [4])
 
+    def test_a_korean_month_day_line_is_a_marker(self):
+        body = "<p>1월 1일</p> <h3>성경의 첫 약속</h3> <p>x</p><p>1월 2일</p> <h3>승리</h3> <p>y</p>"
+        self.assertEqual([(e.day, e.label) for e in _entries(body, CHEQUE)], [(1, "1월 1일"), (2, "1월 2일")])
+        # Two loose numbers are still not a date.
+        self.assertEqual(_entries("<p>1장 2절</p><p>x</p>", CHEQUE), [])
+
     def test_the_cheque_books_shape(self):
         body = (
             "<p>Jan. 1</p> <h3>THE BIBLE'S FIRST PROMISE</h3> <p>\"And I will put enmity.\" Gen. 3:15</p>"

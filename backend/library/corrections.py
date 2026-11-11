@@ -8210,6 +8210,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("kw’eddiini entuufu! <i>Amiina.</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("істинної релігії! <i>Амінь.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk
@@ -24567,4 +24569,27 @@ BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacem
 # OCR slip: "whom even themselves hold to be gods".
 BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
     ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
+])
+
+# OCR slips found while translating Watson's book to Ukrainian (job #7608). Each has one
+# reading, forced by the verse quoted or by grammar: Eph 6:16 is the shield of faith; the
+# moon-in-the-water image needs the firmament; Matt 6:26 reads "not". Left as found (not
+# unambiguous): "intemperate hearts" (heats?), "he get no heat", Watson's own citation
+# ranges (2 Chron. xxxiii. 11, 12 for vv. 12-13; Job vii. 17 for vv. 17-18).
+BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
+    ("displays the skill of faith", "displays the shield of faith"),
+    ("And now be grows more modest", "And now he grows more modest"),
+    ("loves me became I am king Alexander", "loves me because I am king Alexander"),
+    ("Are ye nor much better than they", "Are ye not much better than they"),
+    ("condition is fused and unalterable", "condition is fixed and unalterable"),
+    ("look up to the Ornament", "look up to the firmament"),
+    ("God wilt make it cost you dear", "God will make it cost you dear"),
+    ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
+    ("going to execution . sin is the halter", "going to execution: sin is the halter"),
+])
+# Wrong book in a headline reference (found translating cheque-book → ko, #7015):
+# the April 19 promise "I, even I, will both search my sheep, and seek them out"
+# is Ezekiel 34:11, not Exodus (Exodus 34:11 is the covenant warning).
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
 ])
