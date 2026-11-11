@@ -5609,6 +5609,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "the intruding agency » f:My brother",
                 "the intruding agency. My brother",
             ),
+            # Two century slips (found translating vi, #7030): Susanna died in
+            # 1742, the manuscript in ch9 is dated 1711-12 in the same
+            # paragraph, and ch11's letters about the noises are dated 1716-17.
+            # The am/ar/es/fr/uk editions already read 1711/1712 and 1716; en,
+            # lg, pt and sw carried the slip. Anchored on the bare digits so the
+            # pairs match in every language (nothing else in the book reads
+            # " 1811 ", " 1812." or " 1816,").
+            (" 1811 ", " 1711 "),
+            (" 1812.", " 1712."),
+            (" 1816,", " 1716,"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
