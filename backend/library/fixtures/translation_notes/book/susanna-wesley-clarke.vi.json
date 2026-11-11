@@ -1,0 +1,1135 @@
+{
+ "kind": "book",
+ "slug": "susanna-wesley-clarke",
+ "language": "vi",
+ "job_issue": 7030,
+ "pull_request": 7728,
+ "note": [
+  "Job #7030 (2026-11-11): translated chapter by chapter (three long chapters in halves) against one shared CONVENTIONS file, then assembled, validated (paragraph parity, digits, quotes) and reconciled for terms. Scripture from the Kinh Thánh 1925 (Cadman; ebible vie_kt) via scripts/bible_mirror.py — Take Root unreachable. Every `mined` row was re-checked as a verbatim substring of that verse and of the chapter body. The book cites no references; every row is an uncited quotation or allusion in the prose. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 5:35",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 127:5",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 128:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "2 Corinthians 11:27",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 18:6",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Genesis 22:8",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 28
+  },
+  {
+   "reference": "John 18:36",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "2 Samuel 6:6-7",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 30
+  },
+  {
+   "reference": "Genesis 18:25",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:9-13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 39:3a",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 25:14-30",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 12:41",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Kings 19:12b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Proverbs 3:6a",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 9
+  },
+  {
+   "reference": "2 Peter 1:10a",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 107:30",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 10:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 25
+  },
+  {
+   "reference": "Hebrews 13:20",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ezra 7:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 33
+  },
+  {
+   "reference": "Exodus 25:38",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 12:9b",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 9:3a",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Daniel 4:35",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Corinthians 15:28b",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 21,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Numbers 22:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 21
+  },
+  {
+   "reference": "Acts 27:23",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 22:8a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 119:137",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 9
+  },
+  {
+   "reference": "Job 19:20b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ecclesiastes 12:7b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Mark 10:21",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 18
+  },
+  {
+   "reference": "Ezekiel 37:4",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 56:12a",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 23
+  },
+  {
+   "reference": "2 Corinthians 5:20a",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 16:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 23,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ephesians 5:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 29,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 12:9",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 30,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 31,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 John 2:12a",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 15:43b",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 4:7a",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 18
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 56:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 121:7",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 21
+  },
+  {
+   "reference": "Job 39:25",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 11:6a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 19:26b",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Jonah 3:9",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 25:14-30",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 3:15",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 16:2",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 27
+  },
+  {
+   "reference": "2 Corinthians 6:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 28
+  },
+  {
+   "reference": "1 Corinthians 5:3",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 0
+  },
+  {
+   "reference": "Colossians 2:5",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 29:29a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 1,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ruth 1:16b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 2
+  },
+  {
+   "reference": "Ruth 1:17a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ruth 1:17b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 6:10b",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 16:8b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 17:26b",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 10:42a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 32,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 7:12",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 34,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 13:14b",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 10:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 37
+  },
+  {
+   "reference": "Romans 8:28a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 10:13a",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 10:13b",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 39,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 13:5b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 39
+  },
+  {
+   "reference": "Psalm 67:1a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 40,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 11:26a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 139:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 25:15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 128:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 36,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 10:16b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 48,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 10:16b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 48,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 11:25",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 53,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 53,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Job 22:21",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 53
+  },
+  {
+   "reference": "Acts 10:44",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 54,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Acts 17:23",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 55
+  },
+  {
+   "reference": "Colossians 2:5",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 58
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 59,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "2 Timothy 3:5",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 20:1",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 69
+  },
+  {
+   "reference": "Matthew 25:15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 70
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 6:31",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 72
+  },
+  {
+   "reference": "2 Corinthians 5:6",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 4
+  },
+  {
+   "reference": "Habakkuk 2:2b",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 6:11",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 10:16b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 12
+  },
+  {
+   "reference": "Proverbs 18:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 2:16b",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 17
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ephesians 2:8b",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 22,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 31:20b",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ezekiel 37:4",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 26
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 26,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 19:6b",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 65:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Samuel 5:4",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 30
+  },
+  {
+   "reference": "Genesis 32:10",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 16:26",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 1
+  },
+  {
+   "reference": "2 Samuel 12:23",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 4:18",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 5,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "James 1:17b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Samuel 3:18b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Acts 11:17b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 John 3:20b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Hebrews 6:4",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "Revelation 2:4b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Ezra 10:2b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "2 Peter 3:18a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Luke 24:35",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 22
+  },
+  {
+   "reference": "Song of Solomon 2:10",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 22
+  },
+  {
+   "reference": "1 Samuel 15:32b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Luke 10:42a",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "2 Timothy 2:7b",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 12:15b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 7:32a",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 7:35b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 11:5",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 122:6a",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Psalm 122:6b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 25,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 13:46b",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 39,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 27:52",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 40,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 27:53",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 40,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "1 Corinthians 15:37",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 40
+  },
+  {
+   "reference": "Proverbs 31:26",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 44,
+   "source_file": "Kinh Thánh 1925 (Cadman; vie_kt) — ebible mirror, public domain, cleaned per scripts/bible_mirror.py"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 57
+  }
+ ]
+}

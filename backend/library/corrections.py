@@ -5609,6 +5609,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "the intruding agency » f:My brother",
                 "the intruding agency. My brother",
             ),
+            # Two century slips (found translating vi, #7030): Susanna died in
+            # 1742, the manuscript in ch9 is dated 1711-12 in the same
+            # paragraph, and ch11's letters about the noises are dated 1716-17.
+            # The am/ar/es/fr/uk editions already read 1711/1712 and 1716; en,
+            # lg, pt and sw carried the slip. Anchored on the bare digits so the
+            # pairs match in every language (nothing else in the book reads
+            # " 1811 ", " 1812." or " 1816,").
+            (" 1811 ", " 1711 "),
+            (" 1812.", " 1712."),
+            (" 1816,", " 1716,"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
@@ -7536,6 +7546,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #
         # Each seam carries the tail of the preceding sentence, so it matches
         # its one site and nowhere else in the book.
+        # Word-level OCR slips the uk translation (#7037) read through, each with
+        # one possible reading, which the uk edition already renders. Every seam
+        # carries enough context to match its one site. Punctuation losses (the
+        # dozens of dropped "?" and mismatched quote marks) are NOT repaired here —
+        # they are listed on the PR for a dedicated pass.
+        "replacements": [
+            ("<p>To my bretheren and dearly-beloved", "<p>To my reverend and dearly-beloved"),
+            ("in Jesus Christ be increase </p>", "in Jesus Christ be increased </p>"),
+            ("further means to he used.", "further means to be used."),
+            ("if he be not mused to greater", "if he be not roused to greater"),
+            ("?’ Brethen, if the saving", "?’ Brethren, if the saving"),
+            ("taken heed to all the Rock:", "taken heed to all the flock:"),
+            ("greater necessity to do or them,", "greater necessity to do for them,"),
+            ("our Master’s will by no aggravation", "our Master’s will be no aggravation"),
+            ("judge of the a affection of him", "judge of the affection of him"),
+            ("therefore, keep dose to the ancient", "therefore, keep close to the ancient"),
+            ("consideration of he blessed nature", "consideration of the blessed nature"),
+            ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+            ("did speak to us as well others.", "did speak to us as well as others."),
+            ("parliament began, bow frequent", "parliament began, how frequent"),
+            ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
+            ("For if you we’re a Christian", "For if you were a Christian"),
+        ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
             ("will not do so small a matter to attain it.", "It is a palpable error"),
@@ -24586,4 +24619,58 @@ BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements"
     ("God wilt make it cost you dear", "God will make it cost you dear"),
     ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
     ("going to execution . sin is the halter", "going to execution: sin is the halter"),
+])
+# Wrong book in a headline reference (found translating cheque-book → ko, #7015):
+# the April 19 promise "I, even I, will both search my sheep, and seek them out"
+# is Ezekiel 34:11, not Exodus (Exodus 34:11 is the covenant warning).
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
+])
+# English slips logged by the ko translators (#7015, list on PR #7686) — only the
+# unambiguous ones: OCR damage, plain typos, KJV wording the text itself quotes,
+# and quotations whose missing mark has one place to go. Spurgeon's own loose
+# quotations ("Surely God was in this place", "lying lip", "like Dan"), and the
+# hymn quotes whose close is a guess, are left as printed.
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ("Our bodies humble u5;", "Our bodies humble us;"),
+    ("thou shalt not be for gotten of me", "thou shalt not be forgotten of me"),
+    ("DESIRES OF RlGHTEOUS GRANTED", "DESIRES OF RIGHTEOUS GRANTED"),
+    ("PRESERVED TO WORKS END", "PRESERVED TO WORK'S END"),
+    ("He who forseeth evil", "He who foreseeth evil"),
+    ("Pharoah has a people", "Pharaoh has a people"),
+    ("renew their hears by His grace", "renew their hearts by His grace"),
+    ("thou are not bound to cry", "thou art not bound to cry"),
+    ("O Lord, thou has taken me down", "O Lord, thou hast taken me down"),
+    ("Born. This an equally sure way", "Born. This is an equally sure way"),
+    ("and this most desirable;", "and this is most desirable;"),
+    ("neither be barren nor fruitful", "neither be barren nor unfruitful"),  # KJV 2 Pet 1:8
+    ("there is a troubled grace;", "there is a treble grace;"),  # three graces follow
+    ("In seven there shall be no evil touch thee", "In seven there shall no evil touch thee"),  # KJV Job 5:19
+    ("those that seek me early shalt find me", "those that seek me early shall find me"),  # KJV Prov 8:17
+    ("but Only Moses and Aaron", "but only Moses and Aaron"),
+    ("It is a great Joy to me", "It is a great joy to me"),
+    ("wishes at Jesus feet!", "wishes at Jesus' feet!"),
+    ("bless it, for Jesus sake.", "bless it, for Jesus' sake."),
+    ("Bless thy servants house.", "Bless thy servant's house."),
+    # citations
+    ('taken" Prov. 3: 25,26 </p>', 'taken" Prov. 3:25,26 </p>'),
+    ('in the earth" Ps 58:11</p>', 'in the earth" Ps. 58:11</p>'),
+    # quotation marks with one place to go
+    ("helpeth our infirmities ; our expectation", 'helpeth our infirmities"; our expectation'),
+    ('certainty say, My God will hear me."', 'certainty say, "My God will hear me."'),
+    ('us; but to all men" — to all whom', 'us; but "to all men" — to all whom'),
+    ('but as "small and great. </p>', 'but as "small and great." </p>'),
+    ("at once- 'When he looketh upon it", 'at once — "When he looketh upon it'),
+    ('"the earth helped the woman. </p>', '"the earth helped the woman." </p>'),
+    ("forgives us ''all that debt.'' </p>", 'forgives us "all that debt." </p>'),
+    ("to come: all are yours.''", 'to come: all are yours."'),
+    ("nor forsake thee.'' </p>", 'nor forsake thee." </p>'),
+    ('the "forty stripes save one, which ensured', 'the "forty stripes save one," which ensured'),
+    ("saith the Lord' Jer. 15:20</p>", 'saith the Lord" Jer. 15:20</p>'),
+    ('direction! "Look unto me. How reasonable', 'direction! "Look unto me." How reasonable'),
+    ("arm could perform such a wonder; 'into the depths", 'arm could perform such a wonder; "into the depths'),
+    ("he shall serve me Ps. 101:6</p>", 'he shall serve me" Ps. 101:6</p>'),
+    ("neither shall they learn war any more Isa. 2:4</p>", 'neither shall they learn war any more" Isa. 2:4</p>'),
+    ("and he will bind us up Hosea 6:1</p>", 'and he will bind us up" Hosea 6:1</p>'),
+    ("because he hath known my name Ps. 91:14</p>", 'because he hath known my name" Ps. 91:14</p>'),
 ])
