@@ -7536,6 +7536,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #
         # Each seam carries the tail of the preceding sentence, so it matches
         # its one site and nowhere else in the book.
+        # Word-level OCR slips the uk translation (#7037) read through, each with
+        # one possible reading, which the uk edition already renders. Every seam
+        # carries enough context to match its one site. Punctuation losses (the
+        # dozens of dropped "?" and mismatched quote marks) are NOT repaired here —
+        # they are listed on the PR for a dedicated pass.
+        "replacements": [
+            ("<p>To my bretheren and dearly-beloved", "<p>To my reverend and dearly-beloved"),
+            ("in Jesus Christ be increase </p>", "in Jesus Christ be increased </p>"),
+            ("further means to he used.", "further means to be used."),
+            ("if he be not mused to greater", "if he be not roused to greater"),
+            ("?’ Brethen, if the saving", "?’ Brethren, if the saving"),
+            ("taken heed to all the Rock:", "taken heed to all the flock:"),
+            ("greater necessity to do or them,", "greater necessity to do for them,"),
+            ("our Master’s will by no aggravation", "our Master’s will be no aggravation"),
+            ("judge of the a affection of him", "judge of the affection of him"),
+            ("therefore, keep dose to the ancient", "therefore, keep close to the ancient"),
+            ("consideration of he blessed nature", "consideration of the blessed nature"),
+            ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+            ("did speak to us as well others.", "did speak to us as well as others."),
+            ("parliament began, bow frequent", "parliament began, how frequent"),
+            ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
+            ("For if you we’re a Christian", "For if you were a Christian"),
+        ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
             ("will not do so small a matter to attain it.", "It is a palpable error"),
