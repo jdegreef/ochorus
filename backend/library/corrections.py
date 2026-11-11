@@ -24702,7 +24702,6 @@ BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).ex
     ("because he hath known my name Ps. 91:14</p>", 'because he hath known my name" Ps. 91:14</p>'),
 ])
 
-
 # spurgeon-on-prayer: English-source slips logged by the vi translation (#7078,
 # PR #7727). Each is an unambiguous OCR or typesetting slip; readings the
 # translators could only guess at ("royal social worker", "pleading before the
@@ -24772,4 +24771,11 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
     ("<p>II. Maandiko yetu yanena ", "<p>I. Maandiko yetu yanena "),  # sw
     ("<p>II. Наш текст говорить пр", "<p>I. Наш текст говорить пр"),  # uk
     ("<p>II. Câu Kinh Thánh của ch", "<p>I. Câu Kinh Thánh của ch"),  # vi
+])
+
+# Found translating The Reformed Pastor to Luganda (job #7072). The uk job (#7037)
+# already repairs the other word-level slips in this book's own "replacements" above;
+# this is the one it left: a stray space inside the signature's hyphenated word.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])
