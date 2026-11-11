@@ -24593,3 +24593,51 @@ BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements"
 BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
     ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
 ])
+# English slips logged by the ko translators (#7015, list on PR #7686) — only the
+# unambiguous ones: OCR damage, plain typos, KJV wording the text itself quotes,
+# and quotations whose missing mark has one place to go. Spurgeon's own loose
+# quotations ("Surely God was in this place", "lying lip", "like Dan"), and the
+# hymn quotes whose close is a guess, are left as printed.
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ("Our bodies humble u5;", "Our bodies humble us;"),
+    ("thou shalt not be for gotten of me", "thou shalt not be forgotten of me"),
+    ("DESIRES OF RlGHTEOUS GRANTED", "DESIRES OF RIGHTEOUS GRANTED"),
+    ("PRESERVED TO WORKS END", "PRESERVED TO WORK'S END"),
+    ("He who forseeth evil", "He who foreseeth evil"),
+    ("Pharoah has a people", "Pharaoh has a people"),
+    ("renew their hears by His grace", "renew their hearts by His grace"),
+    ("thou are not bound to cry", "thou art not bound to cry"),
+    ("O Lord, thou has taken me down", "O Lord, thou hast taken me down"),
+    ("Born. This an equally sure way", "Born. This is an equally sure way"),
+    ("and this most desirable;", "and this is most desirable;"),
+    ("neither be barren nor fruitful", "neither be barren nor unfruitful"),  # KJV 2 Pet 1:8
+    ("there is a troubled grace;", "there is a treble grace;"),  # three graces follow
+    ("In seven there shall be no evil touch thee", "In seven there shall no evil touch thee"),  # KJV Job 5:19
+    ("those that seek me early shalt find me", "those that seek me early shall find me"),  # KJV Prov 8:17
+    ("but Only Moses and Aaron", "but only Moses and Aaron"),
+    ("It is a great Joy to me", "It is a great joy to me"),
+    ("wishes at Jesus feet!", "wishes at Jesus' feet!"),
+    ("bless it, for Jesus sake.", "bless it, for Jesus' sake."),
+    ("Bless thy servants house.", "Bless thy servant's house."),
+    # citations
+    ('taken" Prov. 3: 25,26 </p>', 'taken" Prov. 3:25,26 </p>'),
+    ('in the earth" Ps 58:11</p>', 'in the earth" Ps. 58:11</p>'),
+    # quotation marks with one place to go
+    ("helpeth our infirmities ; our expectation", 'helpeth our infirmities"; our expectation'),
+    ('certainty say, My God will hear me."', 'certainty say, "My God will hear me."'),
+    ('us; but to all men" — to all whom', 'us; but "to all men" — to all whom'),
+    ('but as "small and great. </p>', 'but as "small and great." </p>'),
+    ("at once- 'When he looketh upon it", 'at once — "When he looketh upon it'),
+    ('"the earth helped the woman. </p>', '"the earth helped the woman." </p>'),
+    ("forgives us ''all that debt.'' </p>", 'forgives us "all that debt." </p>'),
+    ("to come: all are yours.''", 'to come: all are yours."'),
+    ("nor forsake thee.'' </p>", 'nor forsake thee." </p>'),
+    ('the "forty stripes save one, which ensured', 'the "forty stripes save one," which ensured'),
+    ("saith the Lord' Jer. 15:20</p>", 'saith the Lord" Jer. 15:20</p>'),
+    ('direction! "Look unto me. How reasonable', 'direction! "Look unto me." How reasonable'),
+    ("arm could perform such a wonder; 'into the depths", 'arm could perform such a wonder; "into the depths'),
+    ("he shall serve me Ps. 101:6</p>", 'he shall serve me" Ps. 101:6</p>'),
+    ("neither shall they learn war any more Isa. 2:4</p>", 'neither shall they learn war any more" Isa. 2:4</p>'),
+    ("and he will bind us up Hosea 6:1</p>", 'and he will bind us up" Hosea 6:1</p>'),
+    ("because he hath known my name Ps. 91:14</p>", 'because he hath known my name" Ps. 91:14</p>'),
+])
