@@ -3,7 +3,7 @@
  "slug": "the-reformed-pastor",
  "language": "lg",
  "job_issue": 7072,
- "pull_request": null,
+ "pull_request": 7732,
  "note": [
   "Scripture source: the Open Luganda Contemporary Bible (OLCB 2017, Biblica, CC BY-SA), parsed from the ebible mirror's USX (bibles/lug_bib), all 66 books (31,104 verses). Translators looked up every quotation and close echo, cited or not, in that verse file.",
   "Translated from the English as this PR settles it: 13 OCR slips repaired in BODY_CORRECTIONS (the Luganda renders the repaired sense).",
