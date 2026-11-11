@@ -39759,6 +39759,20 @@
 			"bar": 0,
 			"caps": false
 		},
+		"vi/the-life-of-trust": {
+			"ground": "39202ce9dcb0c630cfd8532e01c7fd5b477d6d84812065faa4d2d60540902132",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"vi/the-life-of-trust-children": {
 			"ground": "ae7b2d87fa4e231f29f341550bbd5ad2a0b2c51dee688c402babc21e78686520",
 			"style": "revival",
