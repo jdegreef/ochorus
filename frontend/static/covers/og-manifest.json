@@ -18381,6 +18381,35 @@
 			"bar": 0,
 			"caps": false
 		},
+		"hi/orthodoxy": {
+			"ground": "949516fa52504e7a45390eef2cee4ac2378c73d3b422636c9d7dc11c34271cbf",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.4,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[146, 352, 454, 442]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				289,
+				506
+			]
+		},
 		"hi/pensees": {
 			"ground": "edecbb108da20ec8f60844a9d33d71541d2f1aaf3aca79472952158baf1ba593",
 			"style": "press",
