@@ -2503,103 +2503,103 @@ ORIGINAL_GROUND: dict[str, Original] = {
     ),
     "gospel-of-matthew": Original(
         "97143bd92a3c5466168dafcba2c322f8482165c4a0d086fd854ef8d116624dd9",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Kata Maththaion, 'According to Matthew', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "gospel-of-mark": Original(
         "baedb9b9077b810c5c2e23ca57210b930a3f5b6fd96a2ae9e070a777fd1596d3",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Kata Markon, 'According to Mark', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "gospel-of-luke": Original(
         "5f74829e3be707c8b6ae70b00a729e9e55dc9bb700dc2c3e1c8e6562c64e0590",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Kata Loukan, 'According to Luke', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "acts-of-the-apostles": Original(
         "d59849dc2cf62e413cce77ec0fd3eb2f66ac564be1da75763d7a07a5267dc9bb",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Praxeis Apostolōn, 'Acts of the Apostles', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "1-corinthians": Original(
-        "bb311bdf01a1e8bb643b5291206e32b789426d3e03dff5f21db3c95baa6e831d",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "dc6f436d1664008e48a13c3ccca8eecc2ab66d7dbab3e52957042b27cdd8650f",
+        "Pros Korinthious A, 'First to the Corinthians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "2-corinthians": Original(
-        "2b06942c25c3cb6f937e7b7a2f02a6e08026734baaefbf29b851c74d0ba9ccee",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "3cd267df3c5d942239cfeca8396e17befbf7de90c6b9cc390359ad343ea9509c",
+        "Pros Korinthious B, 'Second to the Corinthians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "galatians": Original(
         "4f756a84371782f581ccfdcdc99450a4562474395f9d1b0cb6d67d552fa30a90",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Galatas, 'To the Galatians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "ephesians": Original(
         "e4f62d13353c8a1c4e5f784e0f8f682a3c5256ecedecf52863499bd6aab16875",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Ephesious, 'To the Ephesians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "philippians": Original(
         "bae0dcd96f1b5a3fa746267f2a1d988c05989d7b335ba2e286a3f6df29ebcb29",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Philippēsious, 'To the Philippians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "colossians": Original(
         "ec59b087bf1b8f9f8282547665039cc5d71a76ed6897d33d31f85ae6e09e6999",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Kolossaeis, 'To the Colossians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "1-thessalonians": Original(
-        "85ced512fde08c128d8d34aaa3b1206ce9962bb0e360ab73170fe14dcea5109d",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "4af0c0d34977368a4226e83032a4a2de1b1de0b7c7c05174ee8adaccac977d39",
+        "Pros Thessalonikeis A, 'First to the Thessalonians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "2-thessalonians": Original(
-        "a9206a5a2724081980ca907b2def662c498c07ca079e87ae475646c13e8abc5e",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "097437d0b5c616135630f1eec85c76a004e720b77339fb44328f6a9a356045a3",
+        "Pros Thessalonikeis B, 'Second to the Thessalonians', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "1-timothy": Original(
-        "162a68137bf798f7e904a2ea37acd22473ced85c394930b12fe7a8429ac61d10",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "cee51af2859ae35f8fdfc7b603843620ff75349f4cf00a953c6e9af02cdbb171",
+        "Pros Timotheon A, 'First to Timothy', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "2-timothy": Original(
-        "f4f1dd14b401b6f5d80595315d1fc12701b9cb628dfa533ca94f4ffb1411fee9",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "adc3accc0d27e8c5d6af46a9c45216907dfa9bdd6f8043c55e45885afb3ab91e",
+        "Pros Timotheon B, 'Second to Timothy', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "titus": Original(
         "9bf3d48e6568e087f73acabbc4a59bb22c2d5a3e9b2a0ca0344866ff0ce38f60",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Titon, 'To Titus', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "philemon": Original(
         "fc41355ac54b5259ceb21b1814a0bf434a7aa65145b19299421826b0bea59a0d",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Philēmona, 'To Philemon', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "hebrews": Original(
         "157570844bc58a272e2558ad7e0b3ca8224dcf0b456c149200e70703101f738e",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Pros Hebraious, 'To the Hebrews', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "james": Original(
         "72cece7f64eec1fd086f9a69301812a5df37f2c40e11d96f06f7b526e8767d28",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Iakōbou, 'Of James', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "1-peter": Original(
         "9806565bc8ec10a2e520ca8416e1e01f23221ccc07a730c9245b426e50a77e24",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Petrou A, 'First of Peter', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "2-peter": Original(
         "d624469aa4c3005b47aa2a104101de38735bc4996c94a89eb4a8407a285e2942",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Petrou B, 'Second of Peter', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "1-john": Original(
         "c9c6746ad8e75d830b2b40343379dfa44de3032eef0b7b4b5ef03626edb03af0",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Iōannou A, 'First of John', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "2-john": Original(
         "e7f103f251b12856fc9793fc2d67de4d4e24fcedf2366f461c7ed37eb6cc9996",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Iōannou B, 'Second of John', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "3-john": Original(
         "6414a062ac63092fc02182f2d8f2543a4c6a68367caea0ce22a6932cd1d3c4c5",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Iōannou Γ, 'Third of John', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "jude": Original(
         "26d3be7301d687ff831cf1153bff25fd09c87fa37e600c8cb0a075b6ead9058a",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Iouda, 'Of Jude', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
     "revelation": Original(
         "5c26011b529b2f1476c29ec995f00d69d10bdef382c96e295266bac41f972819",
-        "The book's title in the Greek manuscripts, set large on a pale leaf.",
+        "Apokalypsis Iōannou, 'The Revelation of John', the title in the Greek manuscripts, set large on a pale leaf.",
     ),
 }
 

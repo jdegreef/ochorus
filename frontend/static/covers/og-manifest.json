@@ -4,7 +4,7 @@
 	"markup": "b237bed5f8b6061133c32eed4e5e47b060543c7b13502c72c43727085f257dd6",
 	"twins": {
 		"1-corinthians": {
-			"ground": "2c6e5f0802619ee8b3df3174d2ca489aa3a34966416e1f188b659a6c5d6fcedf",
+			"ground": "5590e1e653c814b1b73ce100a000be170ce08edf857ffe34e6f5e1922d6ac016",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -49,7 +49,7 @@
 			"sitemark": "OpenWordBible.org"
 		},
 		"1-thessalonians": {
-			"ground": "678403375696ff89c1d155c6a2c49d32e82373d7de6543d13900178a6b9dbf1d",
+			"ground": "e00f41d0aeaff86fa632998b996dbfb865715ada658772ff24fa2a26cf46f78c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -64,7 +64,7 @@
 			"sitemark": "OpenWordBible.org"
 		},
 		"1-timothy": {
-			"ground": "586ce1f2c42c95e22b102dd4cd960b750137f093289c29b28096f823c3c71588",
+			"ground": "82f4f1520d0168428f9d9389ace0da405175a90333ef5d99c488944947fbd090",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -79,7 +79,7 @@
 			"sitemark": "OpenWordBible.org"
 		},
 		"2-corinthians": {
-			"ground": "acfcbc4a511dbb9f47b319b1947ecf266a9000299f45249f657d1c7e4340ed80",
+			"ground": "8ecacaa7366a8a8533adf019c83b41dc670ca84b9f800a642b86d22a9ef2f5c4",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -124,7 +124,7 @@
 			"sitemark": "OpenWordBible.org"
 		},
 		"2-thessalonians": {
-			"ground": "589396d0afd2fbc3d58c0d643ec0bcd2169b1fbdb9e4a24cec6dd704f997cdd0",
+			"ground": "d60c6e7df379980185276c0f54c298024b76f8b44c1305977c297dee9c4dbd27",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -139,7 +139,7 @@
 			"sitemark": "OpenWordBible.org"
 		},
 		"2-timothy": {
-			"ground": "e303b90c9455157309f2b3d993c7df8b1fe8bbdf11a96e3fd7392d79249c9d44",
+			"ground": "9902d98f5f71be6980305ee4ba0b4f7d78b2ef8776850f4a54350f513bd97b0c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
