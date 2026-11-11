@@ -21605,6 +21605,20 @@
 				552
 			]
 		},
+		"ko/cheque-book": {
+			"ground": "bb3c7c304511d9092162357b6bb24271e29768f07334371296f0fbd64dee2360",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "241ec41d0666e13632688c6c85545f3d650eecc6db4b59ec60ae424399240465",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0.025,
+			"caps": false
+		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
 			"style": "originals",
