@@ -1973,7 +1973,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -9257,7 +9257,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -14147,7 +14147,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -20766,7 +20766,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.15,
+			"scrim": 0.25,
 			"lift": 1,
 			"medallion": null,
 			"layout": "framed-top",
@@ -31603,6 +31603,41 @@
 			"middle": [
 				173,
 				404
+			]
+		},
+		"sw/key-teachings-of-jonathan-edwards": {
+			"ground": "6c895636ee6a5bec05fc2a9bc7207c4f7ffa91ccec65af46ca1e5f62fed17872",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[147, 169, 453, 232],
+					[177, 225, 423, 288],
+					[63, 280, 537, 343]
+				],
+				"subtitle": [
+					[138, 404, 462, 432],
+					[128, 432, 472, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"sw/life-and-diary-of-david-brainerd": {

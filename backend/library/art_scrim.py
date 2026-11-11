@@ -139,7 +139,7 @@ ART_SCRIM: dict[str, float] = {
     "key-teachings-of-john-calvin": 0.10,
     "key-teachings-of-john-owen": 0.10,
     "key-teachings-of-john-wesley": 0.10,
-    "key-teachings-of-jonathan-edwards": 0.15,
+    "key-teachings-of-jonathan-edwards": 0.25,
     "key-teachings-of-julia-foote": 0.15,
     "key-teachings-of-martin-luther": 0.10,
     "key-teachings-of-martyn-lloyd-jones": 0.10,
