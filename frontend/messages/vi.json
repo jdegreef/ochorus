@@ -1633,5 +1633,17 @@
   "daily_missing_day": "Sách này không có bài đọc cho ngày này, nên đây là bài của ngày trước đó.",
   "daily_choose_date": "Chọn ngày",
   "daily_none": "Chưa có bài đọc hằng ngày bằng ngôn ngữ này.",
-  "daily_follow_plan": "Hoặc theo như một kế hoạch đọc trọn năm"
+  "daily_follow_plan": "Hoặc theo như một kế hoạch đọc trọn năm",
+  "reader_previously": "Trước đó:",
+  "reader_in_this_chapter": "Trong chương này",
+  "quiz_heading": "Câu đố ngắn",
+  "quiz_progress": "Câu %n% / %t%",
+  "quiz_correct": "Đúng rồi.",
+  "quiz_wrong": "Chưa đúng: đáp án là %a%.",
+  "quiz_next": "Câu tiếp theo",
+  "quiz_see_score": "Xem điểm của bạn",
+  "quiz_score": "Bạn đúng %n% / %t% câu",
+  "quiz_read_chapter": "Đọc chương này",
+  "quiz_again": "Làm lại",
+  "quiz_share_title": "Tôi đúng %n% / %t% câu trong câu đố về %title%"
 }

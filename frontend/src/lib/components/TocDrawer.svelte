@@ -12,6 +12,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { bookChapterPath } from '$lib/reading-schema';
+	import { partGroups, partLine } from '$lib/bookParts';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is
@@ -92,6 +93,10 @@
 	// the bookmark quoting the old text — directly above the contents list showing
 	// the new one. Read the live title instead, and keep the snapshot as the
 	// fallback: it is all there is before the book loads, and offline.
+	// A book in parts lists each part under its heading (`Book.parts`), as the
+	// book page's contents do; any other book is one run with no heading.
+	const groups = $derived(loaded ? partGroups(loaded.chapters, loaded.parts) : []);
+
 	const titleOf = (bm: Bookmark) =>
 		loaded?.chapters.find((c) => c.order === bm.order)?.title || bm.title;
 </script>
@@ -150,8 +155,12 @@
 		{#if !loaded}
 			<p class="px-5 py-4 text-small text-muted">…</p>
 		{:else}
+			{#each groups as group (group.chapters[0].order)}
+			{#if group.part}
+				<h3 class="toc-part eyebrow text-muted" dir="auto">{partLine(group.part)}</h3>
+			{/if}
 			<ol>
-				{#each loaded.chapters as ch (ch.order)}
+				{#each group.chapters as ch (ch.order)}
 					{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
 					<li>
 						<a
@@ -179,11 +188,16 @@
 					</li>
 				{/each}
 			</ol>
+			{/each}
 		{/if}
 	</nav>
 </DrawerShell>
 
 <style>
+	.toc-part {
+		margin: 0.9rem 0 0.2rem;
+		padding-inline: 1.25rem;
+	}
 	.toc-list {
 		flex: 1;
 		overflow-y: auto;

@@ -1633,5 +1633,17 @@
   "daily_missing_day": "Ce livre n’a pas de lecture pour cette date ; voici celle de la veille.",
   "daily_choose_date": "Choisir une date",
   "daily_none": "Il n’y a pas encore de lectures quotidiennes dans cette langue.",
-  "daily_follow_plan": "Ou suivez-le comme un plan sur un an"
+  "daily_follow_plan": "Ou suivez-le comme un plan sur un an",
+  "reader_previously": "Précédemment :",
+  "reader_in_this_chapter": "Dans ce chapitre",
+  "quiz_heading": "Un petit quiz",
+  "quiz_progress": "Question %n% sur %t%",
+  "quiz_correct": "Exact.",
+  "quiz_wrong": "Pas tout à fait : la réponse est %a%.",
+  "quiz_next": "Question suivante",
+  "quiz_see_score": "Voir votre score",
+  "quiz_score": "Vous avez %n% sur %t%",
+  "quiz_read_chapter": "Lire le chapitre",
+  "quiz_again": "Recommencer",
+  "quiz_share_title": "J’ai eu %n% sur %t% au quiz de %title%"
 }

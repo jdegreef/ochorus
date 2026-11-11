@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { chapterMeta } from '$lib/bookSeo';
+	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { PHONE } from '$lib/breakpoints';
@@ -105,6 +106,7 @@
 	// one speaks to the grown-up reading aloud. Any other book reads like the
 	// sermon page: its heading, its answers open.
 	const chapterQuestions = $derived(toQa(chapter.study_questions));
+	const hasBrief = $derived(Boolean(chapter.summary || chapter.previously));
 	// Which young-reader edition this is, if any — the questions' voice, and for a
 	// children's edition the young-reader layout, the story styling, the large
 	// Listen button and the gentle read-aloud speed (`childrensReading`: a young-
@@ -158,7 +160,21 @@
 		}
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
+	// The chapter's name where it stands alone — the <title> and the meta. A
+	// title another chapter shares ("The First Stage", once per part) carries
+	// its part: "The First Stage (Part Two)" (`Chapter.title_repeats`).
+	const standaloneName = $derived(
+		partQualified(
+			chapterNameIn(chapter.order, chapter.title, chapter.book_title),
+			chapter.part,
+			chapter.title_repeats
+		)
+	);
+	// The written summary (`Chapter.summary`) when there is one — a sentence
+	// about the chapter says more in a search result than its first words do —
+	// else the opening of the text, as before.
 	const metaDescription = $derived(
+		chapter.summary ||
 		chapter.body_html
 			.replace(/<[^>]+>/g, ' ')
 			// Decode the entities the sanitized body uses, else they double-escape
@@ -175,11 +191,7 @@
 	// Book and chapter lead, so two editions that open alike stay distinct.
 	const metaText = $derived(
 		truncateMeta(
-			chapterMeta(
-				chapter.book_title,
-				chapterNameIn(chapter.order, chapter.title, chapter.book_title),
-				metaDescription
-			)
+			chapterMeta(chapter.book_title, standaloneName, metaDescription)
 		)
 	);
 	// The <title> names the chapter, then the book AND its author — people search
@@ -190,7 +202,7 @@
 	// edition says so, or its tab, bookmark and result read as the original's.
 	const titleTag = $derived(
 		t('chapter.titleTag')
-			.replace('%chapter%', chapterNameIn(chapter.order, chapter.title, chapter.book_title))
+			.replace('%chapter%', standaloneName)
 			.replace(
 				'%title%',
 				edition === 'modern'
@@ -2203,7 +2215,7 @@
 		</div>
 
 		<p class="eyebrow chapter-kicker mb-1 text-muted">
-			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
+			{#if chapter.part}<span lang={contentLang(language)}>{chapter.part.title}</span>{' · '}{/if}{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
 			{#if listen.offered}
 				· {listenTime(chapter.word_count, listen.rate)}
 			{/if}
@@ -2211,7 +2223,23 @@
 				<span class="ms-1 text-accent">· {t('reader.modernEdition')}</span>
 			{/if}
 		</p>
-		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
+		<h1 bind:this={titleEl} class="text-h1" class:mb-8={!hasBrief} class:mb-4={hasBrief} dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
+
+		<!-- "Previously:" and "In this chapter" (`Chapter.previously`/`summary`):
+		     a sentence or two each, set quietly under the title — muted, a start
+		     rule, no box (nothing boxed before the first word). Plain text from
+		     the fixture, so no {@html}. Absent for most books. -->
+		{#if hasBrief}
+			<div class="chapter-brief mb-8" dir="auto" lang={contentLang(language)}>
+				{#if chapter.previously}
+					<p class="brief-previously"><span class="brief-label">{t('reader.previously')}</span> {chapter.previously}</p>
+				{/if}
+				{#if chapter.summary}
+					<p class="brief-label">{t('reader.inThisChapter')}</p>
+					<p class="brief-summary">{chapter.summary}</p>
+				{/if}
+			</div>
+		{/if}
 
 		<!-- A children's chapter offers the read-aloud up front, where a parent
 		     looks first — on a phone the footer's Listen is easy to miss. -->
@@ -2613,6 +2641,31 @@
 <NotesDrawer {slug} {edition} bind:open={notesOpen} />
 
 <style>
+	/* "Previously:" / "In this chapter" under the title: the reader's own size
+	   (so Aa scales it with the text), a step down from it, muted, behind a
+	   hairline start rule. */
+	.chapter-brief {
+		padding-inline-start: 0.9rem;
+		border-inline-start: 2px solid var(--border-strong);
+		font-size: calc(0.95rem * var(--reading-scale, 1));
+		line-height: 1.55;
+		color: var(--muted);
+	}
+	.brief-label {
+		font-size: var(--fs-eyebrow);
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	.brief-previously + .brief-label {
+		margin-top: 0.6rem;
+	}
+	.brief-summary {
+		margin-top: 0.15rem;
+		font-family: var(--font-display);
+		font-style: italic;
+	}
+
 	/* ── A children's edition: the story look ─────────────────────────────────
 	   Its chapters share one shape (the fixtures' young-reader editions): an
 	   opening verse in a <blockquote>, the story, and a closing prayer as the

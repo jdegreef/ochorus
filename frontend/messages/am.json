@@ -1633,5 +1633,17 @@
   "daily_missing_day": "ይህ መጽሐፍ ለዚህ ቀን ንባብ የለውም፤ ስለዚህ የቀደመው ቀን ንባብ ይኸውና።",
   "daily_choose_date": "ቀን ምረጥ",
   "daily_none": "በዚህ ቋንቋ እስካሁን ዕለታዊ ንባቦች የሉም።",
-  "daily_follow_plan": "ወይም የአንድ ዓመት የንባብ ዕቅድ አድርገው ይከተሉት"
+  "daily_follow_plan": "ወይም የአንድ ዓመት የንባብ ዕቅድ አድርገው ይከተሉት",
+  "reader_previously": "ቀደም ብሎ፦",
+  "reader_in_this_chapter": "በዚህ ምዕራፍ",
+  "quiz_heading": "አጭር ጥያቄዎች",
+  "quiz_progress": "ጥያቄ %n% ከ%t%",
+  "quiz_correct": "ትክክል።",
+  "quiz_wrong": "አልሆነም፦ መልሱ %a% ነው።",
+  "quiz_next": "ቀጣይ ጥያቄ",
+  "quiz_see_score": "ውጤትዎን ይመልከቱ",
+  "quiz_score": "ከ%t% %n% አግኝተዋል",
+  "quiz_read_chapter": "ምዕራፉን ያንብቡ",
+  "quiz_again": "እንደገና ይሞክሩ",
+  "quiz_share_title": "በ%title% ጥያቄዎች ከ%t% %n% አገኘሁ"
 }

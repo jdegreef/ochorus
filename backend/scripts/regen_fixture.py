@@ -94,6 +94,11 @@ DEFAULTED_OK = {
     ("library.book", "hook"),
     # Empty on every chapter outside the young-reader editions.
     ("library.chapter", "study_questions"),
+    # Blank on every chapter without a written summary (most of them).
+    ("library.chapter", "summary"),
+    # Empty on every book in one part / without a quiz (most of them).
+    ("library.book", "parts"),
+    ("library.book", "quiz"),
     ("library.sermon", "source_type"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned
     ("library.author", "faq"),

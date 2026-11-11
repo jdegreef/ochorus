@@ -184,6 +184,34 @@ export interface ChapterToc {
 	word_count: number;
 }
 
+/**
+ * One part of a book published in parts (`Book.parts`): The Pilgrim's
+ * Progress, Part One (1678) and Part Two (1684). A part runs from its
+ * `first_chapter` (a chapter `order`) to the next part's. Plain text.
+ */
+export interface BookPart {
+	title: string;
+	first_chapter: number;
+	year?: number;
+	subtitle?: string;
+}
+
+/** A part as a chapter payload names it (`Chapter.part`): no chapter number. */
+export type ChapterPart = Omit<BookPart, 'first_chapter'>;
+
+/**
+ * One end-of-book quiz question (`Book.quiz`), written from the work's own
+ * text: four options, the right one's index, a line saying why, and the
+ * chapter that answers it. Plain text.
+ */
+export interface QuizQuestion {
+	question: string;
+	options: string[];
+	answer_index: number;
+	explanation: string;
+	chapter: number;
+}
+
 export interface TopicChip {
 	slug: string;
 	title: string;
@@ -293,6 +321,11 @@ export interface BookDetail extends BookSummary {
 	 * emits FAQPage JSON-LD. Empty/absent = fall back to the derived set.
 	 */
 	qa?: { question: string; answer: string }[];
+	/** The book's parts, in reading order; empty for a book in one piece.
+	 *  Optional: an API behind this build omits it. */
+	parts?: BookPart[];
+	/** The end-of-book quiz; empty for most books. Optional, as `parts`. */
+	quiz?: QuizQuestion[];
 	/**
 	 * The passages this book returns to most, derived from its chapters'
 	 * citations — see library/scripture_graph.treated_passages. `chapters` is
@@ -420,6 +453,16 @@ export interface Chapter {
 	 * API behind this build) everywhere else.
 	 */
 	study_questions?: { question: string; answer: string }[];
+	/** One or two sentences on what happens in this chapter ("In this
+	 *  chapter"), and the previous chapter's ("Previously:"); "" when none
+	 *  has been written. Optional: an API behind this build omits them. */
+	summary?: string;
+	previously?: string;
+	/** The part of the book this chapter is in; null for a book in one piece. */
+	part?: ChapterPart | null;
+	/** Another chapter of this edition has the same title, so the page names
+	 *  this one with its part ("The First Stage (Part Two)"). */
+	title_repeats?: boolean;
 }
 
 /** Where a cited reference's scripture page lives, when one exists. */

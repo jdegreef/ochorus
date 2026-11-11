@@ -1633,5 +1633,17 @@
   "daily_missing_day": "Kitabu hiki hakina somo la tarehe hii, kwa hiyo hili ni la siku iliyotangulia.",
   "daily_choose_date": "Chagua tarehe",
   "daily_none": "Bado hakuna masomo ya kila siku katika lugha hii.",
-  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima"
+  "daily_follow_plan": "Au kifuate kama mpango wa mwaka mzima",
+  "reader_previously": "Awali:",
+  "reader_in_this_chapter": "Katika sura hii",
+  "quiz_heading": "Maswali mafupi",
+  "quiz_progress": "Swali %n% kati ya %t%",
+  "quiz_correct": "Sahihi.",
+  "quiz_wrong": "Si hivyo: jibu ni %a%.",
+  "quiz_next": "Swali linalofuata",
+  "quiz_see_score": "Ona alama zako",
+  "quiz_score": "Umepata %n% kati ya %t%",
+  "quiz_read_chapter": "Soma sura hii",
+  "quiz_again": "Jaribu tena",
+  "quiz_share_title": "Nimepata %n% kati ya %t% katika maswali ya %title%"
 }

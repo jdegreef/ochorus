@@ -1633,5 +1633,17 @@
   "daily_missing_day": "لا يحتوي هذا الكتاب على قراءة لهذا التاريخ، وهذه قراءة اليوم الذي قبله.",
   "daily_choose_date": "اختر تاريخًا",
   "daily_none": "لا توجد قراءات يومية بهذه اللغة بعد.",
-  "daily_follow_plan": "أو تابِعه خطةً لسنة كاملة"
+  "daily_follow_plan": "أو تابِعه خطةً لسنة كاملة",
+  "reader_previously": "سابقًا:",
+  "reader_in_this_chapter": "في هذا الفصل",
+  "quiz_heading": "اختبار قصير",
+  "quiz_progress": "السؤال %n% من %t%",
+  "quiz_correct": "صحيح.",
+  "quiz_wrong": "ليس تمامًا: الجواب هو %a%.",
+  "quiz_next": "السؤال التالي",
+  "quiz_see_score": "اعرض نتيجتك",
+  "quiz_score": "أجبت عن %n% من %t% إجابة صحيحة",
+  "quiz_read_chapter": "اقرأ الفصل",
+  "quiz_again": "حاول مجددًا",
+  "quiz_share_title": "حصلت على %n% من %t% في اختبار %title%"
 }

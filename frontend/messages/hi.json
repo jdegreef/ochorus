@@ -1633,5 +1633,17 @@
   "daily_missing_day": "इस पुस्तक में इस तारीख़ का कोई पाठ नहीं है, इसलिए उससे पहले के दिन का पाठ यह है।",
   "daily_choose_date": "तारीख़ चुनें",
   "daily_none": "इस भाषा में अभी कोई दैनिक पाठ नहीं हैं।",
-  "daily_follow_plan": "या इसे एक वर्ष की योजना के रूप में पढ़ें"
+  "daily_follow_plan": "या इसे एक वर्ष की योजना के रूप में पढ़ें",
+  "reader_previously": "पिछली बार:",
+  "reader_in_this_chapter": "इस अध्याय में",
+  "quiz_heading": "एक छोटी प्रश्नोत्तरी",
+  "quiz_progress": "प्रश्न %n% / %t%",
+  "quiz_correct": "सही।",
+  "quiz_wrong": "पूरी तरह नहीं: उत्तर है %a%।",
+  "quiz_next": "अगला प्रश्न",
+  "quiz_see_score": "अपना स्कोर देखें",
+  "quiz_score": "आपके %t% में से %n% सही",
+  "quiz_read_chapter": "अध्याय पढ़ें",
+  "quiz_again": "फिर से कोशिश करें",
+  "quiz_share_title": "%title% प्रश्नोत्तरी में मेरे %t% में से %n% सही आए"
 }

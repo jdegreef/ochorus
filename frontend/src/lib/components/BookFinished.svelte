@@ -18,6 +18,9 @@
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
+	import BookQuiz from '$lib/components/BookQuiz.svelte';
+	import { playableQuiz } from '$lib/bookQuiz';
+	import { contentLang } from '$lib/reading';
 
 	/**
 	 * The end of a book, once it is finished: an arrival worth marking, and
@@ -118,6 +121,8 @@
 			.reduce((n, w) => n + w.marks.length, 0)
 	);
 	const nf = $derived(new Intl.NumberFormat(language));
+	// The book's quiz (`Book.quiz`), when it has one — most do not.
+	const quiz = $derived(playableQuiz(book.quiz));
 </script>
 
 {#if finished}
@@ -170,6 +175,12 @@
 			<BookDownloadMenu {book} />
 		</div>
 	</section>
+
+	<!-- 1b. A short quiz on the book just read, when it has one: a bit of fun
+	     with a score to pass on, straight after the arrival. -->
+	{#if quiz.length}
+		<BookQuiz questions={quiz} bookTitle={book.title} slug={book.slug} {shareUrl} lang={contentLang(language)} />
+	{/if}
 
 	<!-- 2. Reflect: what the reader carries away, written into their Notebook,
 	     and the way back to what they marked on the way through. -->
