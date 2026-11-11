@@ -24587,3 +24587,22 @@ BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements"
     ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
     ("going to execution . sin is the halter", "going to execution: sin is the halter"),
 ])
+
+# OCR slips found while translating The Reformed Pastor to Luganda (job #7072). Each has one
+# reading: "all the Rock" is Acts 20:28's flock; the others are dropped/swapped letters.
+# Left as found (not unambiguous): "mused to greater faithfulness" (roused? moved?), "To my
+# bretheren and dearly-beloved brethren" (reverend?), "Take heed, therefore, to ourselves
+# first, that you be", and a dozen missing "?" / unbalanced quotes.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("Grace and Peace in Jesus Christ be increase </p>", "Grace and Peace in Jesus Christ be increased </p>"),
+    ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
+    ("Master’s will by no aggravation", "Master’s will be no aggravation"),
+    ("keep dose to the ancient simplicity", "keep close to the ancient simplicity"),
+    ("souls?’ Brethen, if the saving", "souls?’ Brethren, if the saving"),
+    ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+    ("as they judge of the a affection", "as they judge of the affection"),
+    ("consideration of he blessed nature", "consideration of the blessed nature"),
+    ("further means to he used", "further means to be used"),
+    ("taken heed to all the Rock:", "taken heed to all the flock:"),
+    ("a work of greater necessity to do or them", "a work of greater necessity to do for them"),
+])
