@@ -3,7 +3,7 @@
  "slug": "the-masters-indwelling",
  "language": "ko",
  "job_issue": 7009,
- "pull_request": null,
+ "pull_request": 7707,
  "note": [
   "Scripture is the 개역 from the ebible kor_old mirror (Take Root was egress-blocked), cleaned of the mirror's backticks/apostrophes and spaced ! / ?. Verses pasted verbatim from that 개역 but not found in a shipped ko file are listed self_rendered: the wording is the 개역's, but nothing in our corpus verifies it.",
   "Flags for the reviewer: 1 Peter 5:5 is missing from the mirror (5:5a self-rendered; 5:5b uses James 4:6's identical saying). 1 Corinthians 3:4 ends 육신에 속한 자가 아니리요 (Murray follows the KJV 'carnal'; the 개역 reads 사람이 아니리요). Psalm 78:41 'limit the Holy One' is self-rendered (개역 격동하였도다). Isaiah 27:5 (개역 의지하고) is weaker than Murray's 'take hold'.",
