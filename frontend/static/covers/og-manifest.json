@@ -17307,6 +17307,20 @@
 			"bar": 0,
 			"caps": false
 		},
+		"hi/all-things-for-good": {
+			"ground": "21521580e7028941cb828c39a7fbdc51175602ab054dcdc53e64a733acec3e2a",
+			"style": "press",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "fade/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"hi/answers-to-prayer": {
 			"ground": "173cee95d57f1cb570fc2e07f76b89398851e261e9b85e39dd4b5def32384dae",
 			"style": "revival",
