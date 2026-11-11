@@ -13622,6 +13622,20 @@
 			"bar": 0.04,
 			"caps": false
 		},
+		"fr/evening-by-evening": {
+			"ground": "58ee480c5f58a276a1118cf3aa4b2e52dfa3e04d03728e8e59a679297a871272",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false
+		},
 		"fr/ever-increasing-faith": {
 			"ground": "c86781970dab97445634de033e09eab0049aad077d20693daa3799b492813f58",
 			"style": "revival",
