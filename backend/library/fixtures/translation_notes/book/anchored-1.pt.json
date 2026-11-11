@@ -3,6 +3,7 @@
  "slug": "anchored-1",
  "language": "pt",
  "job_issue": 6872,
+ "pull_request": 7726,
  "note": [
   "Every quotation is the Bíblia Livre para o Mundo (por_bpm, ebible mirror), the library's pt Bible, pasted verbatim where it says what the English quotes (mined). Anchored keeps the BSB in English on purpose; this edition re-quotes each verse from the pt Bible rather than translating the BSB wording, and the teaching was adapted where it leaned on a BSB word the pt Bible does not use (e.g. Hebrews 11:1 'certeza … prova', Galatians 1:10 'favor', 1 Thessalonians 4:3 'santificação').",
   "Every mined row was checked by script as a substring of the BLM text. AI-translated in-session; awaiting native review."
