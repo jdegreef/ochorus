@@ -32942,6 +32942,20 @@
 				454
 			]
 		},
+		"sw/the-reformed-pastor": {
+			"ground": "cb23262b039dd47c44472ff5db40cd59b74c1bf8d3b94b196670ba240e95e305",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/rust",
+			"bar": 0.04,
+			"caps": false
+		},
 		"sw/the-secret-of-guidance": {
 			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
 			"style": "devotional",
