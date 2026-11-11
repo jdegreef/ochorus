@@ -3,6 +3,7 @@
  "slug": "godliness",
  "language": "vi",
  "job_issue": 7047,
+ "pull_request": 7730,
  "note": [
   "Job #7047 (vi, 2026-11-11): one translator per chapter against a shared per-book CONVENTIONS file, then a whole-book reconciliation pass (citation form mirrored to the English, verse ranges, terminology). Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text via scripts/bible_mirror.py (Take Root unreachable from the session); every `mined` row was checked as a verbatim substring of its cited verse. The English edition carries ESV-style wording and \", ESV\" citation tags from an earlier modernisation (export_policy.HELD_ESV); this edition quotes Cadman throughout and drops those tags. AI-drafted, awaiting native review."
  ],
