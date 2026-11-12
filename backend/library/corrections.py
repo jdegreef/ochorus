@@ -24835,3 +24835,20 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])
+
+# The Reformed Pastor: the marks #7785's pass (from the vi job's list) did not
+# reach, logged by the Luganda translators (#7072). Each has one place to go: a
+# "?" closing a question the sentence opened, a straight " closing a ‘ quote, a
+# missing space after "?", and the Acts 20 outline's two remaining lower-case gods.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("or love to the souls of men, gainsay it </p>", "or love to the souls of men, gainsay it? </p>"),
+    ("to please God best, and do most good it makes them ask", "to please God best, and do most good? it makes them ask"),
+    ("all our exhortations?It is, in my judgment", "all our exhortations? It is, in my judgment"),
+    ('‘he regard iniquity in his heart," whether', "‘he regard iniquity in his heart,’ whether"),
+    ('not where to lay his head," that he', "not where to lay his head,’ that he"),
+    ('to possess their souls," to conquer', "to possess their souls,’ to conquer"),
+    ('thou Son of David," you shall see', "thou Son of David,’ you shall see"),
+    ('his life shall lose it." – on the other', "his life shall lose it.’ – on the other"),
+    ("all the counsel of god. </p>", "all the counsel of God. </p>"),
+    ("I commend you to god and to the word", "I commend you to God and to the word"),
+])
