@@ -1,0 +1,181 @@
+{
+ "kind": "sermon",
+ "slug": "broken-before-the-throne",
+ "language": "uk",
+ "job_issue": 7851,
+ "references": [
+  {
+   "reference": "2 Chronicles 7:13-14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 17:12",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 1:15-17",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 64:1a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Exodus 32:15-35",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Exodus 32:27",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Exodus 32:34b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Exodus 33:1-3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 32
+  },
+  {
+   "reference": "Exodus 23:21b",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 33
+  },
+  {
+   "reference": "Exodus 33:4-10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 40
+  },
+  {
+   "reference": "John 14:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 71
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 75
+  },
+  {
+   "reference": "Exodus 33:12-17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Exodus 33:21b",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 95
+  },
+  {
+   "reference": "Exodus 34:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Exodus 34:3a",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 102
+  },
+  {
+   "reference": "Exodus 34:3b",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Psalm 24:4a",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 105
+  },
+  {
+   "reference": "Matthew 5:8b",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Isaiah 64:1a",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Luke 12:48b",
+   "status": "self_rendered",
+   "block_index": 115
+  }
+ ]
+}
