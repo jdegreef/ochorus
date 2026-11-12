@@ -75,11 +75,14 @@
 
 <article class="widget rounded-card border border-border bg-surface p-5" bind:this={card} aria-busy={!picks}>
 	<header class="flex items-center justify-between gap-3">
-		<a class="brand" href={out('/')}
-		target="_blank"
-		rel="noopener"
-		aria-label="Ochorus"
-		onclick={() => onopen?.('brand')}><BrandMark height={28} /></a>
+		<a
+			class="brand"
+			href={out('/')}
+			target="_blank"
+			rel="noopener"
+			aria-label="Ochorus"
+			onclick={() => onopen?.('brand')}><BrandMark height={28} /></a
+		>
 		<p class="min-w-0 truncate text-small text-muted">
 			<span class="eyebrow text-accent">{t('home.todayTitle')}</span>{#if dateLabel}{` · ${dateLabel}`}{/if}
 		</p>
@@ -99,10 +102,13 @@
 				{#if picks.reading}
 					{@const r = picks.reading}
 					<li class="part">
-						<a class="part-link" href={out(`/today/${r.book.slug}/`)}
+						<a
+							class="part-link"
+							href={out(`/today/${r.book.slug}/`)}
 							target="_blank"
 							rel="noopener"
-							onclick={() => onopen?.('reading')}>
+							onclick={() => onopen?.('reading')}
+						>
 							<span class="eyebrow block text-accent">{t('home.todayReading')}</span>
 							<span class="title mt-2 block text-h3" lang={contentLang(r.book.language)} dir="auto"
 								>{r.heading || r.book.title}</span
@@ -116,10 +122,13 @@
 				{#if picks.sermon}
 					{@const s = picks.sermon}
 					<li class="part">
-						<a class="part-link" href={out(`/sermons/${s.slug}`)}
+						<a
+							class="part-link"
+							href={out(`/sermons/${s.slug}`)}
 							target="_blank"
 							rel="noopener"
-							onclick={() => onopen?.('sermon')}>
+							onclick={() => onopen?.('sermon')}
+						>
 							<span class="eyebrow block text-accent">{t('home.sermonOfDay')}</span>
 							<span class="title mt-2 block text-h3" dir="auto">{s.title}</span>
 							<span class="mt-1 block text-small text-muted">{s.author.name} · {readingTime(s.word_count)}</span>
@@ -129,7 +138,9 @@
 			</ul>
 		{/if}
 		<p class="mt-4 text-small font-semibold">
-			<a class="text-accent hover:underline" href={out(picks.reading ? '/today/' : '/')}
+			<a
+				class="text-accent hover:underline"
+				href={out(picks.reading ? '/today/' : '/')}
 				target="_blank"
 				rel="noopener"
 				onclick={() => onopen?.('more')}
@@ -151,6 +162,12 @@
 </article>
 
 <style>
+	/* Columns by the card's own width, not the viewport's: in the iframe the
+	   two are the same, but the /for/ pages' preview is a sidebar-wide card
+	   on a wide screen, and must stack as the framed card would. */
+	.widget {
+		container-type: inline-size;
+	}
 	/* Parts parted by a hairline: above each one after the first while they
 	   stack, beside it once a wide frame lays them in a row (TodayCard's). */
 	.part + .part {
@@ -158,7 +175,9 @@
 		padding-block-start: 1rem;
 		border-block-start: 1px solid var(--border);
 	}
-	@media (min-width: 40rem) {
+	/* 37.5rem of content box = the 40rem frame the card switched at before,
+	   less its padding and border. */
+	@container (min-width: 37.5rem) {
 		.wide-2,
 		.wide-3 {
 			display: grid;
