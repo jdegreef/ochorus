@@ -2248,6 +2248,41 @@
 				480
 			]
 		},
+		"am/jesus-teacher-of-prayer": {
+			"ground": "d51feaf2eb45da62e321f126bf51296eb5af298990bfebfd79b7eb04d84d1236",
+			"style": "originals",
+			"volume": "2",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 249, 311, 293],
+					[108, 326, 492, 402],
+					[194, 392, 406, 468]
+				],
+				"subtitle": [
+					[154, 529, 446, 557]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"am/john-hyde-a-life-children": {
 			"ground": "b28f0d7362700ebcf93140caeb1a3eda19305e6710f9862fb7eb09aa0f8e1607",
 			"style": "young",
@@ -9513,6 +9548,38 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/evangelization-of-the-world": {
+			"ground": "cb47fb67255859128b9af7f46cac9490337f44aba233d75cc06bf98c7ed9f888",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[71, 223, 529, 299],
+					[122, 289, 478, 365],
+					[97, 354, 503, 430]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				482
+			]
+		},
 		"es/evening-by-evening": {
 			"ground": "506e34a5fc2577bad64019cfcf6300fdfa2cd7a48c7047162eab6b4256b7421c",
 			"style": "revival",
@@ -10042,6 +10109,41 @@
 			"middle": [
 				321,
 				474
+			]
+		},
+		"es/jesus-teacher-of-prayer": {
+			"ground": "6e2db532253a93c9888635ec646f754cc98cf64bb1da3393cffd09405bd73990",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[78, 328, 522, 404],
+					[143, 394, 457, 470]
+				],
+				"subtitle": [
+					[176, 528, 424, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
 			]
 		},
 		"es/john-hyde-a-life": {
@@ -16330,6 +16432,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/on-first-principles": {
+			"ground": "b50bd2dd41768e4e0126e10da6a1833aa11c6ce4e0b6b601edb0ba5165473754",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[86, 102, 514, 131]
+				],
+				"title": [
+					[134, 300, 466, 366],
+					[152, 349, 448, 415]
+				],
+				"subtitle": [
+					[166, 444, 434, 465],
+					[159, 465, 441, 486]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
+		},
 		"fr/on-loving-god": {
 			"ground": "b3d598cea04c02587769b124238cf9c7caab4e11539219ce6c75ba0067d13bcd",
 			"style": "inscriptional",
@@ -16378,6 +16515,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"fr/on-the-priesthood": {
+			"ground": "60919db664909b4045501b6a30e7cc3cda53bb989a20a63e519528d1cbf73f5c",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[131, 102, 469, 131]
+				],
+				"title": [
+					[181, 300, 419, 379],
+					[98, 358, 502, 437]
+				],
+				"subtitle": [
+					[71, 463, 529, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"fr/orthodoxy": {
 			"ground": "7bf559f5f20acbc58bc609d10c8bc3fc2a472fd0bfa093b47378275be55d8800",
@@ -40363,6 +40534,41 @@
 				480
 			]
 		},
+		"uk/jesus-teacher-of-prayer": {
+			"ground": "351f3048be5c870e960670382af9da09c638de7ea9c328bf9267d307ea2eaedd",
+			"style": "originals",
+			"volume": "2",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[82, 327, 518, 403],
+					[167, 393, 433, 469]
+				],
+				"subtitle": [
+					[149, 529, 451, 557]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				557
+			]
+		},
 		"uk/key-teachings-of-a-b-simpson": {
 			"ground": "75d3caf06311f035de23f09afca250efe0f54b30207112a26860d355589faac8",
 			"style": "originals",
@@ -42490,6 +42696,42 @@
 			"middle": [
 				290,
 				505
+			]
+		},
+		"vi/jesus-teacher-of-prayer": {
+			"ground": "37350cc5909bf69e858fc19c71e0417f4a5635c93aedc09ca55b6a72bea6592c",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 217, 311, 261],
+					[154, 295, 446, 371],
+					[110, 361, 490, 437],
+					[126, 427, 474, 503]
+				],
+				"subtitle": [
+					[98, 562, 502, 590]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				205,
+				590
 			]
 		},
 		"vi/key-teachings-of-gareth-evans": {
