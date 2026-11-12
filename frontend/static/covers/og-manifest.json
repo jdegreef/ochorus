@@ -355,6 +355,40 @@
 				476
 			]
 		},
+		"a-mighty-fortress": {
+			"ground": "c74156f6d8b8f735513ec999908573278d8703093e2c54b34a91fe6879fbc6fb",
+			"style": "originals",
+			"volume": "6",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[164, 328, 436, 404],
+					[174, 394, 426, 470]
+				],
+				"subtitle": [
+					[155, 528, 445, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"a-practical-view-of-christianity": {
 			"ground": "5c44018fe06cdf1a916ab0df36d8c28112f6d4f88dd548c43448c918c468c059",
 			"style": "enlightenment",

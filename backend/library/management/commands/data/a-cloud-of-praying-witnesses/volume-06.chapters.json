@@ -1,0 +1,500 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "John 17:21",
+    "themes": [],
+    "person": null,
+    "era": "c. 1500-1650",
+    "region": "Europe and Japan",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Too Busy Not to Pray",
+    "anchor": "Psalm 46:1",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Making Room for Prayer",
+      "Faith"
+    ],
+    "person": "Martin Luther",
+    "era": "c. 1530",
+    "region": "Wittenberg and Coburg (Germany)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "Men Who Prayed with a Purpose"
+      },
+      {
+        "author": "martin-luther",
+        "book": "table-talk",
+        "chapter": "Of Prayer"
+      }
+    ],
+    "read_more": [
+      "table-talk",
+      "purpose-in-prayer",
+      "key-teachings-of-martin-luther"
+    ]
+  },
+  {
+    "title": "A Simple Way to Pray",
+    "anchor": "Psalm 1:2",
+    "themes": [
+      "Learning to Pray",
+      "Thanksgiving",
+      "Faith"
+    ],
+    "person": "Martin Luther and Peter Beskendorf, his barber",
+    "era": "c. 1535",
+    "region": "Wittenberg (Germany)",
+    "voices": [
+      {
+        "author": "martin-luther",
+        "book": "table-talk",
+        "chapter": "Of Prayer"
+      },
+      {
+        "author": "martin-luther",
+        "book": "large-catechism",
+        "chapter": "The Lord’s Prayer"
+      }
+    ],
+    "read_more": [
+      "large-catechism",
+      "small-catechism",
+      "key-teachings-of-martin-luther"
+    ]
+  },
+  {
+    "title": "The Principal Exercise of Faith",
+    "anchor": "Hebrews 4:16",
+    "themes": [
+      "Faith",
+      "Humility and Mercy",
+      "Christ Who Prays for Us"
+    ],
+    "person": "John Calvin",
+    "era": "c. 1540",
+    "region": "Geneva (Switzerland)",
+    "voices": [
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 3 — The Mode of Obtaining the Grace of Christ"
+      },
+      {
+        "author": "john-calvin",
+        "book": "institutes-of-the-christian-religion",
+        "chapter": "Book 3, Chapter 20 — Of Prayer"
+      }
+    ],
+    "read_more": [
+      "institutes-of-the-christian-religion",
+      "key-teachings-of-john-calvin"
+    ]
+  },
+  {
+    "title": "Praying with the Mind Also",
+    "anchor": "1 Corinthians 14:15",
+    "themes": [
+      "Learning to Pray",
+      "Praying Together",
+      "Forgiveness"
+    ],
+    "person": "Thomas Cranmer and The Book of Common Prayer",
+    "era": "c. 1549",
+    "region": "Canterbury, London and Oxford (England)",
+    "voices": [
+      {
+        "author": "john-foxe",
+        "book": "foxes-book-of-martyrs",
+        "chapter": "Under Queen Mary: Archbishop Cranmer"
+      }
+    ],
+    "read_more": [
+      "foxes-book-of-martyrs",
+      "foxes-book-of-martyrs-teens"
+    ]
+  },
+  {
+    "title": "Give Me Scotland",
+    "anchor": "Romans 10:1",
+    "themes": [
+      "Praying for Others",
+      "Praying Together",
+      "Persistence"
+    ],
+    "person": "John Knox",
+    "era": "c. 1548-1572",
+    "region": "St Andrews and Edinburgh (Scotland)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "lectures-to-my-students",
+        "chapter": "The Preacher's Private Prayer"
+      }
+    ],
+    "read_more": [
+      "lectures-to-my-students",
+      "necessity-of-prayer",
+      "key-teachings-of-john-calvin"
+    ]
+  },
+  {
+    "title": "Prayer as Friendship",
+    "anchor": "John 15:15",
+    "themes": [
+      "The Father's Love",
+      "Humility and Mercy",
+      "Learning to Pray"
+    ],
+    "person": "Teresa of Ávila",
+    "era": "c. 1554-1582",
+    "region": "Ávila (Spain)",
+    "voices": [
+      {
+        "author": "teresa-of-avila",
+        "book": "interior-castle",
+        "chapter": "The First Mansions"
+      },
+      {
+        "author": "teresa-of-avila",
+        "book": "interior-castle",
+        "chapter": "The Fourth Mansions"
+      }
+    ],
+    "read_more": [
+      "interior-castle",
+      "the-imitation-of-christ",
+      "jesus-teacher-of-prayer"
+    ]
+  },
+  {
+    "title": "The Dark Night",
+    "anchor": "Isaiah 50:10",
+    "themes": [
+      "Faith",
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender"
+    ],
+    "person": "John of the Cross",
+    "era": "c. 1577-1578",
+    "region": "Toledo (Spain)",
+    "voices": [
+      {
+        "author": "dwight-l-moody",
+        "book": "thoughts-for-the-quiet-hour",
+        "chapter": "October"
+      }
+    ],
+    "read_more": [
+      "thoughts-for-the-quiet-hour",
+      "sermons-on-several-occasions",
+      "waiting-on-god"
+    ]
+  },
+  {
+    "title": "Search Me, O God",
+    "anchor": "Psalm 139:23-24",
+    "themes": [
+      "Thanksgiving",
+      "Humility and Mercy",
+      "Guidance and Surrender"
+    ],
+    "person": "Ignatius of Loyola and the examen",
+    "era": "c. 1521-1556",
+    "region": "Loyola and Manresa (Spain)",
+    "voices": [
+      {
+        "author": "ignatius-of-loyola",
+        "book": "the-spiritual-exercises",
+        "chapter": "First Week"
+      },
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "The Importance of Prayer"
+      }
+    ],
+    "read_more": [
+      "the-spiritual-exercises",
+      "how-to-pray",
+      "key-teachings-of-richard-baxter"
+    ]
+  },
+  {
+    "title": "Prayer for Busy People",
+    "anchor": "Colossians 3:17",
+    "themes": [
+      "Learning to Pray",
+      "Making Room for Prayer",
+      "The Father's Love"
+    ],
+    "person": "Francis de Sales",
+    "era": "c. 1594-1622",
+    "region": "Chablais and Annecy (Savoy)",
+    "voices": [
+      {
+        "author": "francis-de-sales",
+        "book": "introduction-to-the-devout-life",
+        "chapter": "Devotion is suitable to every Vocation and Profession"
+      },
+      {
+        "author": "francis-de-sales",
+        "book": "introduction-to-the-devout-life",
+        "chapter": "We must attend to the Business of Life carefully, but without Eagerness or Over-anxiety"
+      }
+    ],
+    "read_more": [
+      "introduction-to-the-devout-life",
+      "treatise-on-the-love-of-god",
+      "jesus-teacher-of-prayer"
+    ]
+  },
+  {
+    "title": "Prayer in a Secret Place",
+    "anchor": "Psalm 91:1",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Praying Together",
+      "Faith"
+    ],
+    "person": "Japan's hidden Christians (Kakure Kirishitan)",
+    "era": "c. 1549-1873",
+    "region": "Nagasaki and Urakami (Japan)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "till-he-come",
+        "chapter": "Under His Shadow"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "reality-of-prayer",
+        "chapter": "God Has Everything to Do with Prayer"
+      }
+    ],
+    "read_more": [
+      "till-he-come",
+      "reality-of-prayer",
+      "the-inner-chamber"
+    ]
+  },
+  {
+    "title": "At Midnight I Rise",
+    "anchor": "Psalm 119:62",
+    "themes": [
+      "Learning to Pray",
+      "Thanksgiving",
+      "Praying for Others"
+    ],
+    "person": "Lancelot Andrewes",
+    "era": "c. 1555-1626",
+    "region": "London and Winchester (England)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Examples of Praying Men"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "Prayer Must Be Definite"
+      }
+    ],
+    "read_more": [
+      "power-through-prayer",
+      "school-of-prayer",
+      "prayer-and-praying-men"
+    ]
+  },
+  {
+    "title": "Taste and See",
+    "anchor": "Psalm 34:8",
+    "themes": [
+      "Learning to Pray",
+      "Humility and Mercy",
+      "Guidance and Surrender"
+    ],
+    "person": "George Herbert",
+    "era": "c. 1630-1633",
+    "region": "Bemerton, near Salisbury (England)",
+    "voices": [
+      {
+        "author": "frederick-brotherton-meyer",
+        "book": "our-daily-walk",
+        "chapter": "September"
+      }
+    ],
+    "read_more": [
+      "our-daily-walk",
+      "men-who-tended-the-flock-2",
+      "evening-by-evening"
+    ]
+  },
+  {
+    "title": "The Bruised Reed",
+    "anchor": "Isaiah 42:3",
+    "themes": [
+      "The Father's Love",
+      "Christ Who Prays for Us",
+      "Learning to Pray"
+    ],
+    "person": "Richard Sibbes",
+    "era": "c. 1630",
+    "region": "London and Cambridge (England)",
+    "voices": [
+      {
+        "author": "richard-sibbes",
+        "book": "the-bruised-reed",
+        "chapter": "Set upon Duties notwithstanding Weaknesses"
+      }
+    ],
+    "read_more": [
+      "the-bruised-reed",
+      "holiness"
+    ]
+  },
+  {
+    "title": "Set Your Mind on Things Above",
+    "anchor": "Colossians 3:1-2",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Learning to Pray",
+      "Praying for Others"
+    ],
+    "person": "Richard Baxter",
+    "era": "c. 1650",
+    "region": "Rous Lench and Kidderminster, Worcestershire (England)",
+    "voices": [
+      {
+        "author": "richard-baxter",
+        "book": "the-saints-everlasting-rest",
+        "chapter": "The Nature of Heavenly Contemplation; with the Time, Place, and Temper Fittest for It"
+      },
+      {
+        "author": "richard-baxter",
+        "book": "the-saints-everlasting-rest",
+        "chapter": "The Importance of Leading a Heavenly Life upon Earth"
+      },
+      {
+        "author": "richard-baxter",
+        "book": "the-reformed-pastor",
+        "chapter": "Section 2 – the Manner of This Oversight"
+      }
+    ],
+    "read_more": [
+      "the-saints-everlasting-rest",
+      "the-reformed-pastor",
+      "key-teachings-of-richard-baxter"
+    ]
+  },
+  {
+    "title": "A Heart Without Words",
+    "anchor": "Psalm 62:8",
+    "themes": [
+      "Learning to Pray",
+      "Persistence",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "John Bunyan",
+    "era": "c. 1662",
+    "region": "Bedford (England)",
+    "voices": [
+      {
+        "author": "john-bunyan",
+        "book": "grace-abounding",
+        "chapter": "Grace Abounding to the Chief of Sinners; Or, a Brief Relation of the Exceeding Mercy of God in Christ, to His Poor Servant John Bunyan"
+      },
+      {
+        "author": "john-bunyan",
+        "book": "grace-abounding",
+        "chapter": "A Brief Account of the Author’s Imprisonment"
+      },
+      {
+        "author": "john-bunyan",
+        "book": "pilgrims-progress",
+        "chapter": "The Fourth Stage"
+      }
+    ],
+    "read_more": [
+      "grace-abounding",
+      "pilgrims-progress",
+      "key-teachings-of-john-bunyan"
+    ]
+  },
+  {
+    "title": "Among the Pots and Pans",
+    "anchor": "Psalm 16:8",
+    "themes": [
+      "Making Room for Prayer",
+      "Humility and Mercy",
+      "Persistence"
+    ],
+    "person": "Brother Lawrence (Nicolas Herman)",
+    "era": "c. 1666",
+    "region": "Paris (France)",
+    "voices": [
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "Fourth Conversation"
+      },
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "Fifth Letter"
+      },
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "First Conversation"
+      },
+      {
+        "author": "brother-lawrence",
+        "book": "the-practice-of-the-presence-of-god",
+        "chapter": "Second Conversation"
+      }
+    ],
+    "read_more": [
+      "the-practice-of-the-presence-of-god",
+      "the-practice-of-the-presence-of-god-teens"
+    ]
+  },
+  {
+    "title": "Prayer in the Fire",
+    "anchor": "Matthew 5:10",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Humility and Mercy",
+      "Forgiveness"
+    ],
+    "person": "The Anabaptist martyrs (Felix Manz, Michael and Margaretha Sattler, Leopold Schneider, Anneken Jans, Dirk Willems)",
+    "era": "c. 1527-1569",
+    "region": "Zurich (Switzerland), Rottenburg (Germany), Rotterdam and Asperen (the Netherlands)",
+    "voices": [
+      {
+        "author": "john-wesley",
+        "book": "sermons-on-several-occasions",
+        "chapter": "Discourse 3"
+      }
+    ],
+    "read_more": [
+      "sermons-on-several-occasions",
+      "foxes-book-of-martyrs-teens"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Revelation 7:9",
+    "themes": [],
+    "person": "The praying church of the Reformation age",
+    "era": "c. 1650",
+    "region": "Europe",
+    "voices": [],
+    "read_more": []
+  }
+]

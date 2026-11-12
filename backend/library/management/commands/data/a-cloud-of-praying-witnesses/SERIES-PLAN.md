@@ -187,9 +187,9 @@ told…"). Known cases are flagged ⚑ below.
 |---|---|---|---|
 | 1 | Too Busy Not to Pray | Martin Luther ★ ⚑ | Psalm 46:1 |
 | 2 | A Simple Way to Pray | Luther's letter to his barber | Psalm 1:2 |
-| 3 | The Chief Exercise of Faith | John Calvin ★ | Hebrews 4:16 |
+| 3 | The Principal Exercise of Faith | John Calvin ★ | Hebrews 4:16 |
 | 4 | Praying with the Mind Also | Thomas Cranmer and common prayer | 1 Corinthians 14:15 |
-| 5 | "Give Me Scotland" | John Knox ⚑ | Romans 10:1 |
+| 5 | Give Me Scotland | John Knox ⚑ | Romans 10:1 |
 | 6 | Prayer as Friendship | Teresa of Ávila ★ | John 15:15 |
 | 7 | The Dark Night | John of the Cross | Isaiah 50:10 |
 | 8 | Search Me, O God | Ignatius of Loyola and the examen | Psalm 139:23–24 |
@@ -200,7 +200,7 @@ told…"). Known cases are flagged ⚑ below.
 | 13 | The Bruised Reed | Richard Sibbes ★ | Isaiah 42:3 |
 | 14 | Set Your Mind on Things Above | Richard Baxter ★ | Colossians 3:1–2 |
 | 15 | A Heart Without Words | John Bunyan ★ | Psalm 62:8 |
-| 16 | Among the Pots and Pans | Brother Lawrence ★ | 1 Corinthians 10:31 |
+| 16 | Among the Pots and Pans | Brother Lawrence ★ | Psalm 16:8 |
 | 17 | Prayer in the Fire | The Anabaptist martyrs | Matthew 5:10 |
 
 ## Volume 7 — The Fire on the Altar
