@@ -452,6 +452,22 @@ export interface Chapter {
 	 */
 	scripture_refs?: { ref: string; page: ScripturePageRef | null }[];
 	/**
+	 * For a chapter of the Bible itself (the `the-bible` series): the scripture
+	 * page of the passage it is — the classics and sermons that quote it. A
+	 * Bible chapter names its own chapter page (`chapter` set); the
+	 * introduction and conclusion name the book's overview (`chapter` null).
+	 * Null where the citation floor built no page, and for every other book —
+	 * the server owns the floor. Optional: an API behind this build omits it.
+	 */
+	classics_page?: {
+		book: string;
+		chapter: number | null;
+		/** "Romans 8", or the book's name for the overview. */
+		reference: string;
+		/** How many passages treat the chapter; null for the overview. */
+		citing_count: number | null;
+	} | null;
+	/**
 	 * The young-reader editions' end-of-chapter questions — plain text, the
 	 * answers written for the adult reading along. Empty (or absent, from an
 	 * API behind this build) everywhere else.

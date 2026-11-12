@@ -388,6 +388,52 @@ def page_url(page: dict) -> str:
     return url
 
 
+#: The series whose books are the Bible itself, each at its canonical number
+#: (``build_owb_book``; the reader's ``$lib/bible`` BIBLE_SERIES).
+BIBLE_SERIES = "the-bible"
+
+
+def bible_book_of(book) -> bible.Book | None:
+    """The Bible book a library Book IS, or None for any other book.
+
+    An English edition in ``the-bible`` series at a canonical number 1-66 —
+    pythonbible numbers its books in the same canonical order, so the number
+    is the whole key (the reader slugs differ: ``gospel-of-john`` is John).
+    English only, as the scripture pages are.
+    """
+    pos = book.series_position
+    series = getattr(book.series, "slug", None) if book.series_id else None
+    if book.language != "en" or series != BIBLE_SERIES or not pos or not 1 <= pos <= 66:
+        return None
+    return bible.Book(pos)
+
+
+def classics_page(book: bible.Book, order: int, pages: list[dict]) -> dict | None:
+    """The scripture page a Bible book's reader chapter ``order`` leads to.
+
+    A Bible book is built as an introduction, one reader chapter per English
+    Bible chapter, then a conclusion (``build_owb_book``) — so reader chapter
+    ``order`` is Bible chapter ``order - 1``. That chapter's page when it earned
+    one; for the introduction and conclusion, the book's overview page when
+    any of its chapters did (``ScriptureBookView``'s own rule). None otherwise:
+    never a link to a page the floor withheld. ``pages`` is ``current_pages()``.
+    """
+    slug = book_slug(book)
+    chapters = [p for p in pages if p["verse"] is None and p["book"] == slug]
+    n = order - 1
+    if 1 <= n <= bible.get_number_of_chapters(book):
+        page = next((p for p in chapters if p["chapter"] == n), None)
+        return page and {
+            "book": slug,
+            "chapter": n,
+            "reference": reference_label(book, n, None),
+            "citing_count": page["citing_count"],
+        }
+    if chapters:
+        return {"book": slug, "chapter": None, "reference": book.title, "citing_count": None}
+    return None
+
+
 #: How many of a BOOK's own chapters must treat a passage before the book page
 #: lists it. Two, not the corpus's three: this is a different question. The
 #: corpus floors ask "do enough independent voices treat this to deserve a

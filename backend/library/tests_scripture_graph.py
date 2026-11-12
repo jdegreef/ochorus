@@ -253,6 +253,63 @@ class ChapterScriptureRowTests(TestCase):
         self.assertEqual(self._row(order=70), [])
 
 
+class ClassicsPageTests(TestCase):
+    """A chapter of the Bible itself links the scripture page of the passage it
+    is — "what the classics say" — and only one that was really built."""
+
+    def setUp(self):
+        from .models import Series
+
+        self.client = APIClient()
+        author = Author.objects.create(slug="a", name="A Writer")
+        works = Book.objects.create(author=author, slug="w", language="en", title="A Work")
+        for i in range(CHAPTER_FLOOR):
+            cite(works, i + 1, "Romans 8:28")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+        series = Series.objects.create(slug="the-bible", title="The Bible")
+        self.romans = Book.objects.create(
+            author=author, slug="romans", language="en", title="Romans",
+            series=series, series_position=45,
+        )
+        # Introduction, Romans 1-16, conclusion — as build_owb_book sets it.
+        for order, title in [(1, "Introduction"), (2, "Romans 1"), (9, "Romans 8"), (18, "Conclusion")]:
+            Chapter.objects.create(book=self.romans, order=order, title=title, body_html="<p>Text.</p>")
+        self.plain = Book.objects.create(author=author, slug="p", language="en", title="Plain")
+        Chapter.objects.create(book=self.plain, order=9, title="Nine", body_html="<p>Text.</p>")
+
+    def _page(self, slug, order):
+        res = self.client.get(f"/api/library/books/{slug}/chapters/{order}/")
+        self.assertEqual(res.status_code, 200)
+        return res.data["classics_page"]
+
+    def test_a_bible_chapter_links_its_own_page(self):
+        self.assertEqual(
+            self._page("romans", 9),
+            {"book": "romans", "chapter": 8, "reference": "Romans 8", "citing_count": CHAPTER_FLOOR},
+        )
+
+    def test_a_chapter_with_no_page_links_none(self):
+        self.assertIsNone(self._page("romans", 2))
+
+    def test_the_introduction_and_conclusion_link_the_book_overview(self):
+        for order in (1, 18):
+            self.assertEqual(self._page("romans", order)["chapter"], None)
+            self.assertEqual(self._page("romans", order)["book"], "romans")
+
+    def test_every_offered_page_really_serves(self):
+        for order in (1, 9, 18):
+            page = self._page("romans", order)
+            path = f"/api/library/scripture/{page['book']}/" + (
+                f"{page['chapter']}/" if page["chapter"] else ""
+            )
+            self.assertEqual(self.client.get(path).status_code, 200, path)
+
+    def test_any_other_book_has_none(self):
+        self.assertIsNone(self._page("p", 9))
+
+
 class BookSlugTests(TestCase):
     def test_slugs_are_readable_and_round_trip(self):
         # The URL is the name people search, not the USFM code.
