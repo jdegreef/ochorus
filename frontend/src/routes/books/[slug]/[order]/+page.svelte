@@ -2397,8 +2397,8 @@
 			     and conclusion). Where the chip row below sits, and as quiet: one line
 			     under the text that a reader in flow scrolls past, heading the chip
 			     row when there is one. Only when the server says the page was built;
-			     English only, as those pages are, so the "→" of the overview's own
-			     message is matched here rather than mirrored. -->
+			     the overview's message carries its own arrow; the chapter link's is an
+			     <Arrow /> (arrows.test). -->
 			{#if chapter.classics_page}
 				{@const cp = chapter.classics_page}
 				<div class="mt-10 flex flex-col items-start border-t border-border pt-4">
@@ -2406,9 +2406,11 @@
 						href={cp.chapter ? scripturePageHref(cp.book, cp.chapter, null) : scriptureBookHref(cp.book)}
 						class="classics-link-title"
 					>
-						{cp.chapter
-							? `${t('reader.scripturePage')} →`
-							: t('scripture.bookOverview').replace('%book%', () => cp.book_title)}
+						{#if cp.chapter}
+							{t('reader.scripturePage')} <Arrow />
+						{:else}
+							{t('scripture.bookOverview').replace('%book%', () => cp.book_title)}
+						{/if}
 					</a>
 					{#if cp.citing_count}
 						<p class="text-small text-muted">
