@@ -477,9 +477,13 @@
 	     contemporaries — and it is exactly what someone reading eleven minutes
 	     of prose wants out of the way. -->
 	{#if !readerUi.focus}
-	<!-- On the reading column like everything below it: full-width, the trail
-	     was a second left edge beside the centred page (QA, 2026-10). -->
-	<div class="mx-auto w-full max-w-[40rem]">
+	<!-- The page's layout, as the book page's: the trail, the hero, the start
+	     row and the book shelves run the full page column (they sat in a 40rem
+	     strip down the middle of a 76rem page). The prose — sermon rows, the
+	     biography, articles, the Q&A — keeps a reading measure, start-aligned
+	     on the same edge rather than centred, so the page has one left edge.
+	     Focus mode centres the biography alone, as the chapter reader is. -->
+	<div>
 		<Breadcrumb items={crumbs} />
 	</div>
 
@@ -566,7 +570,7 @@
 	     becomes "Continue reading" with the progress. Progress is client-only,
 	     so the prerendered page and a first visit show the suggestion. -->
 	{#if cardBook || authorPlan || startSermon}
-		<section class="start-row mx-auto mt-6 max-w-[40rem]" aria-labelledby="start-heading">
+		<section class="start-row mt-6" aria-labelledby="start-heading">
 			<h2 id="start-heading" class="eyebrow text-muted">{t('hubs.startReading')}</h2>
 			<div class="start-items mt-2">
 				{#if cardBook}
@@ -641,7 +645,7 @@
 			     `justify-center` on a scroller pushed the first tabs out of scroll
 			     reach). The rule spans the reading column, not the page; the nav
 			     stays full-width so its ground still covers text scrolling under. -->
-			<div class="mx-auto w-full max-w-[40rem] border-b border-border">
+			<div class="w-full border-b border-border">
 				<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
 					{#each navItems as item (item.id)}
 						<li>
@@ -663,14 +667,15 @@
 	<!-- The works come first (design #14): most visitors came for the books,
 	     which used to start some 1,500 words of biography down. -->
 	{#if author.books.length}
-		<section id="books" class="jump-anchor mx-auto mt-8 max-w-[40rem]">
+		<section id="books" class="jump-anchor mt-8">
 			<h2 class="section-heading">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
 			</h2>
-			<!-- Three across at most: the page is one reading-width column, so a
-			     writer's shelf sits as a handful of real covers, not a thumbnail grid. -->
-			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
+			<!-- The site's shelf grid across the page column, as Books, Plans and
+			     Topics run theirs: three across in a 40rem reading strip left the
+			     page's margins empty at a desktop width. -->
+			<div class="book-grid">
 				{#each author.books as book (book.slug)}
 					<BookCard {book} />
 				{/each}
@@ -684,7 +689,7 @@
 	{#if author.sermons.length}
 		<section
 			id="sermons"
-			class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]"
+			class="jump-anchor deferred mt-12 max-w-[40rem]"
 			style="contain-intrinsic-block-size: auto {4 + author.sermons.length * 6.5}rem"
 		>
 			<h2 class="section-heading">
@@ -708,12 +713,12 @@
 	     thing a reader of their page wants, so it follows their own work rather
 	     than waiting among the anthologies below. -->
 	{#if booksAbout.length}
-		<section id="about-them" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section id="about-them" class="jump-anchor deferred mt-12">
 			<h2 class="section-heading">
 				{t('author.booksAbout')} {author.name}
 				<span class="text-small font-normal count">({booksAbout.length})</span>
 			</h2>
-			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
+			<div class="book-grid">
 				{#each booksAbout as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}
@@ -725,9 +730,9 @@
 	     (BookPerson) — an anthology that features them. Book cards, not person
 	     cards, and showAuthor so it's clear whose work it is. -->
 	{#if appearsIn.length}
-		<section class="deferred mx-auto mt-12 max-w-[40rem]">
+		<section class="deferred mt-12">
 			<h2 class="section-heading">{t('author.appearsIn')}</h2>
-			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
+			<div class="book-grid">
 				{#each appearsIn as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}
@@ -744,7 +749,7 @@
 		<!-- The biography's heading carries its own reading tools — Listen, text
 		     settings, focus mode apply to the life story, not to the page, so they
 		     sit with it rather than among the page actions above. -->
-		<div class="bio-head mx-auto flex max-w-[40rem] items-center gap-3">
+		<div class="bio-head flex max-w-[40rem] items-center gap-3">
 			<h2 class="font-display text-h2 font-semibold">{t('articles.kindBiography')}</h2>
 			{#if author.bio_html}
 				<div class="reader-tools ms-auto shrink-0">
@@ -779,13 +784,16 @@
 		</div>
 
 		<!-- Lifespan timeline: their own milestones when curated, else the bare
-		     lifespan bar (see LifeTimeline). -->
-		<LifeTimeline
-			birthYear={author.birth_year}
-			deathYear={author.death_year}
-			milestones={author.milestones}
-			labels={getLang() === 'en'}
-		/>
+		     lifespan bar (see LifeTimeline). Held to the bio's start-aligned
+		     column: the bar centres itself in whatever holds it. -->
+		<div class="max-w-[40rem]">
+			<LifeTimeline
+				birthYear={author.birth_year}
+				deathYear={author.death_year}
+				milestones={author.milestones}
+				labels={getLang() === 'en'}
+			/>
+		</div>
 		{/if}
 
 		<!-- Biography. The band — not the page — carries the reader's CSS variables,
@@ -805,7 +813,8 @@
 		{#if author.bio_html}
 			<div
 				id="bio-text"
-				class="mx-auto mt-8"
+				class="mt-8"
+				class:mx-auto={readerUi.focus}
 				class:bio-folded={bioFolded}
 				style="{readerPrefs.style}; {bioLabels}; max-width: var(--reading-measure)"
 			>
@@ -841,7 +850,7 @@
 				{/if}
 			</div>
 		{:else}
-			<p class="mx-auto mt-6 max-w-[40rem] text-body leading-relaxed text-muted">{author.bio}</p>
+			<p class="mt-6 max-w-[40rem] text-body leading-relaxed text-muted">{author.bio}</p>
 		{/if}
 	</section>
 	{/if}
@@ -855,7 +864,7 @@
 
 	<!-- Topical shelves this author appears in: cross-navigation into browse. -->
 	{#if author.topics.length}
-		<div class="mx-auto mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
+		<div class="mt-8 flex max-w-[40rem] flex-wrap items-center gap-2">
 			<span class="eyebrow text-muted">
 				{t('author.themes')}
 			</span>
@@ -878,7 +887,7 @@
 	     empty list and no section at all. Below the works, because these are
 	     writing ABOUT this person, not BY them. -->
 	{#if author.articles?.length}
-		<section id="articles" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section id="articles" class="jump-anchor deferred mt-12 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.articlesAbout')}
 				{author.name}
@@ -912,7 +921,7 @@
 
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
-		<section class="deferred mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
+		<section class="deferred mt-12 max-w-[40rem] border-t border-border pt-8">
 			<h2 class="section-heading">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
@@ -928,7 +937,7 @@
 	     accordion and the FAQPage JSON-LD are built from one array, so they cannot
 	     disagree; a closed <details> still carries its answer in the HTML. -->
 	{#if showFaq}
-		<section id="faq" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
+		<section id="faq" class="jump-anchor deferred mt-12 max-w-[40rem]">
 			<!-- Localized: the API serves the Q&A per locale (AuthorTranslation.faq),
 			     so the heading follows the reader's language too. Reuses the same
 			     `qa.sectionTitle` key the book Q&A section uses, so the two read
@@ -950,7 +959,7 @@
 	     leaves `photo_attribution` blank and shows nothing here. Sits with the
 	     page context (hidden in focus mode), a quiet colophon beneath the works. -->
 	{#if author.photo_attribution}
-		<p class="mx-auto mt-12 max-w-[40rem] border-t border-border pt-4 text-micro text-muted">
+		<p class="mt-12 max-w-[40rem] border-t border-border pt-4 text-micro text-muted">
 			{t('author.portraitCredit')}:
 			{#if author.photo_source_url}
 				<a
