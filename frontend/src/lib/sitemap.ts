@@ -53,6 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
@@ -497,6 +498,10 @@ async function build(): Promise<SitemapData> {
 			byLocale: new Map([['en', '/quotes/']]),
 			lastmod: newest(quoteAuthors.map((a) => a.updated_at))
 		});
+	// "Whose words?", the daily quotation game, English-only for the same
+	// reason. Undated: its page is the same frame every day (the puzzle is
+	// drawn in the browser), so no row says when it last changed.
+	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/game/']]) });
 	// The quotes-by-topic index, English-only for the same reason. Only when a
 	// theme has actually earned a page, so the hub is never advertised empty.
 	if (quoteTopics.length)
@@ -504,6 +509,14 @@ async function build(): Promise<SitemapData> {
 			byLocale: new Map([['en', '/quotes/topics/']]),
 			lastmod: newest(quoteTopics.map((tp) => tp.updated_at))
 		});
+
+	// The Advent hub ($lib/advent), English-only like the quotes index: its plan
+	// reads books that exist only in English. Every year's Advent is one URL,
+	// so it is always advertised; dated by its plan's books.
+	pages.push({
+		byLocale: new Map([['en', '/advent/']]),
+		lastmod: dates.get('en')?.plan.get(ADVENT_PLAN)
+	});
 
 	// The "Ochorus for …" pages ($lib/forLinks): written in English and French
 	// only, so each has those two URLs. Undated: the copy lives in the

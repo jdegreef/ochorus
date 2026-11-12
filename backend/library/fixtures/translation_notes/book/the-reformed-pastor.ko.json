@@ -1,0 +1,1338 @@
+{
+ "kind": "book",
+ "slug": "the-reformed-pastor",
+ "language": "ko",
+ "job_issue": 7071,
+ "pull_request": null,
+ "note": [
+  "Scripture is 개역 (kor_old) from the ebible mirror (Take Root egress-blocked), cleaned: backticks/apostrophes and spaced !/? dropped; the mirror's 개역 already reads 세례. Each translator looked up every quotation in one shared verse index; `mined` rows were re-checked against that index by script (fragments joined by … must each be verbatim; quotations shortened mid-phrase were downgraded to self_rendered). The mirror lacks 1 Peter 2:23-25 and 4:15-5:14, so those verses are self_rendered. Prov 1 is numbered one verse off in the mirror; 1:22 was taken by text. Hebrews 12:14 reads 좆으라 in the mirror (typo for 좇으라). 2 Sam 12:7 and 2 Kings 8:13 keep 개역's 당신 inside the verse.",
+  "AI-translated (job #7071) in 28 parallel pieces, then reconciled: title 『참 목자상』 (the ko Baxter bio's title), oversight = 살핌, catechizing = 교리문답 교육; prose in 합니다체, never 당신 outside a verbatim verse. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Numbers 32:23",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Proverbs 28:13a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Proverbs 28:13b",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Colossians 3:16; Hebrews 3:13",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:19",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Colossians 1:12",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 26:50",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 7:22",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 7:23",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 50:16-17",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Revelation 3:17a",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Revelation 3:17b",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 39:6",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Revelation 21:6",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 111:2",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 39:5b-6",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 8:2",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "James 1:22a",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "James 1:22b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "James 1:25",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 12:16",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Peter 2:19",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 1:32",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 2:21a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 2:22a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 2:23",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 6:16a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 6:16b",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 12:11",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 7:22",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 7:23",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:7",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 12:47",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 23:3",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Samuel 2:17",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Samuel 2:30b",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Samuel 12:14a",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 18:7b",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Romans 2:18-20",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Romans 2:23",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Romans 2:24",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Philippians 3:18",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Philippians 3:19",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "block_index": 81,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:12",
+   "status": "mined",
+   "block_index": 86,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Colossians 1:28",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Ezekiel 33:8",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "block_index": 90,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "mined",
+   "block_index": 91,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 16:19",
+   "status": "mined",
+   "block_index": 91,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 17:16",
+   "status": "mined",
+   "block_index": 94,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "block_index": 94,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "mined",
+   "block_index": 94,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Proverbs 15:23b",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "mined",
+   "block_index": 100,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "block_index": 102,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Colossians 1:12",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 5:20",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 18:17",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 5:11",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "1 Timothy 5:20",
+   "status": "mined",
+   "block_index": 120,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "block_index": 120,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Leviticus 19:17",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Matthew 18:15-17",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Titus 2:15",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "2 Timothy 2:1",
+   "status": "mined",
+   "block_index": 123,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:16b",
+   "status": "mined",
+   "block_index": 133,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 10:42a",
+   "status": "mined",
+   "block_index": 135,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 John 3:16b",
+   "status": "mined",
+   "block_index": 141,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "block_index": 141,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:6b",
+   "status": "mined",
+   "block_index": 141,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:25",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Galatians 4:16",
+   "status": "mined",
+   "block_index": 142,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 7:28b",
+   "status": "mined",
+   "block_index": 144,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Isaiah 49:4-5",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "Titus 1:12",
+   "status": "mined",
+   "block_index": 152,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "James 5:20",
+   "status": "mined",
+   "block_index": 155,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "block_index": 156,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "mined",
+   "block_index": 158,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "block_index": 159,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "block_index": 159,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "block_index": 160,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 160,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Proverbs 14:34b",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Proverbs 28:13b",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Proverbs 28:14b",
+   "status": "mined",
+   "block_index": 163,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 173,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 173,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 6:2",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "mined",
+   "block_index": 179,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Jude 1:23a",
+   "status": "mined",
+   "block_index": 181,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:10a",
+   "status": "mined",
+   "block_index": 187,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 5:16b",
+   "status": "mined",
+   "block_index": 190,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 5:8",
+   "status": "mined",
+   "block_index": 190,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "mined",
+   "block_index": 192,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:15",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 16:19",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Romans 12:18",
+   "status": "mined",
+   "block_index": 199,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 14:26",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Luke 14:28",
+   "status": "mined",
+   "block_index": 218,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "mined",
+   "block_index": 218,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:17",
+   "status": "self_rendered",
+   "block_index": 222
+  },
+  {
+   "reference": "Acts 20:28a",
+   "status": "mined",
+   "block_index": 222,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 8:8b",
+   "status": "mined",
+   "block_index": 222,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:13",
+   "status": "mined",
+   "block_index": 233,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Samuel 12:7a",
+   "status": "mined",
+   "block_index": 234,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 2:19",
+   "status": "mined",
+   "block_index": 235,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 2:20",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "Hebrews 2:13",
+   "status": "mined",
+   "block_index": 235,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "James 5:20",
+   "status": "mined",
+   "block_index": 235,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:7",
+   "status": "mined",
+   "block_index": 236,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 11:2",
+   "status": "self_rendered",
+   "block_index": 239
+  },
+  {
+   "reference": "Acts 20:28",
+   "status": "mined",
+   "block_index": 242,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "mined",
+   "block_index": 243,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "self_rendered",
+   "block_index": 244
+  },
+  {
+   "reference": "Matthew 11:15",
+   "status": "mined",
+   "block_index": 245,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "block_index": 254,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:9b",
+   "status": "mined",
+   "block_index": 254,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Malachi 3:1b",
+   "status": "mined",
+   "block_index": 258,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Malachi 3:2",
+   "status": "mined",
+   "block_index": 258,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Malachi 3:3",
+   "status": "mined",
+   "block_index": 258,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "block_index": 280,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 16:9",
+   "status": "mined",
+   "block_index": 280,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 16:13",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:13",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 4:8",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Ezekiel 33:8",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "John 9:4",
+   "status": "mined",
+   "block_index": 282,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "block_index": 282
+  },
+  {
+   "reference": "1 Peter 5:4",
+   "status": "self_rendered",
+   "block_index": 285
+  },
+  {
+   "reference": "Hebrews 13:20",
+   "status": "mined",
+   "block_index": 285,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "self_rendered",
+   "block_index": 288
+  },
+  {
+   "reference": "John 4:35",
+   "status": "self_rendered",
+   "block_index": 288
+  },
+  {
+   "reference": "Matthew 9:37",
+   "status": "self_rendered",
+   "block_index": 288
+  },
+  {
+   "reference": "Isaiah 58:1",
+   "status": "self_rendered",
+   "block_index": 289
+  },
+  {
+   "reference": "1 John 3:20",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:28",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "block_index": 292,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:24",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Luke 13:24",
+   "status": "mined",
+   "block_index": 301,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "mined",
+   "block_index": 305,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Kings 8:13a",
+   "status": "mined",
+   "block_index": 309,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Matthew 26:33",
+   "status": "mined",
+   "block_index": 309,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 26:75",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Ecclesiastes 9:10",
+   "status": "self_rendered",
+   "block_index": 329
+  },
+  {
+   "reference": "Proverbs 26:13a",
+   "status": "mined",
+   "block_index": 335,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:26-27",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:4",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:5b",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Galatians 6:8a",
+   "status": "mined",
+   "block_index": 336,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Galatians 1:10",
+   "status": "mined",
+   "block_index": 339,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "John 6:60",
+   "status": "mined",
+   "block_index": 341,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 14:27",
+   "status": "self_rendered",
+   "block_index": 345
+  },
+  {
+   "reference": "Mark 3:21",
+   "status": "mined",
+   "block_index": 346,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 14:34-35a",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Luke 14:35b",
+   "status": "mined",
+   "block_index": 348,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:22b",
+   "status": "mined",
+   "block_index": 357,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:10",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "Jeremiah 3:15",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "John 9:4",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "Matthew 20:12",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "1 Kings 12:16",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "1 Samuel 22:7",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "Luke 21:19",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "mined",
+   "block_index": 358,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Revelation 3:21",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "block_index": 358
+  },
+  {
+   "reference": "Hebrews 11:1b",
+   "status": "mined",
+   "block_index": 359,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "Proverbs 1:22",
+   "status": "self_rendered",
+   "block_index": 363
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 368
+  },
+  {
+   "reference": "Acts 20:19",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Acts 20:28a",
+   "status": "mined",
+   "block_index": 375,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:21",
+   "status": "mined",
+   "block_index": 376,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Acts 20:31",
+   "status": "mined",
+   "block_index": 378,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "self_rendered",
+   "block_index": 379
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "mined",
+   "block_index": 379,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:33",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:34",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "block_index": 380,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "block_index": 381,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:32",
+   "status": "mined",
+   "block_index": 382,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Acts 20:26",
+   "status": "mined",
+   "block_index": 383,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:16",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 10:39a",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 384,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:25",
+   "status": "mined",
+   "block_index": 387,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Hebrews 5:12",
+   "status": "mined",
+   "block_index": 387,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:16",
+   "status": "self_rendered",
+   "block_index": 396
+  },
+  {
+   "reference": "Ezekiel 3:18",
+   "status": "self_rendered",
+   "block_index": 396
+  },
+  {
+   "reference": "1 Corinthians 13:4, 7",
+   "status": "self_rendered",
+   "block_index": 404
+  },
+  {
+   "reference": "1 Corinthians 3:10a",
+   "status": "mined",
+   "block_index": 405,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "block_index": 418,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "self_rendered",
+   "block_index": 419
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 427,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
+  }
+ ]
+}

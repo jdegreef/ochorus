@@ -101,6 +101,7 @@ export const COVER_LIFT: Record<string, number> = {
 	'rooted-4': 1.20,
 	'samuel-ajayi-crowther-a-life-children': 1.30,
 	'samuel-ajayi-crowther-a-life-teens': 1.45,
+	'seven-times-a-day': 1.45,
 	'small-catechism': 1.20,
 	'susanna-wesley-clarke': 1.05,
 	'talks-to-the-farmer-children': 1.45,

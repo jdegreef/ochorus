@@ -2330,6 +2330,79 @@ class QuoteFeaturedView(APIView):
         return Response([_quote_card_payload(q) for q in pool])
 
 
+class QuoteGameView(PublicContentCacheMixin, APIView):
+    """One day of "Whose words?" (/quotes/game/): the quotation, the four
+    writers offered, and which of them said it.
+
+    The date is the CLIENT's (``YYYY-MM-DD``), as for the dated devotionals: the
+    game turns over at the reader's midnight, and a date in the URL keeps the
+    response cacheable. The schedule itself is ``library.quote_game`` — the same
+    puzzle for every reader on a date, and no quotation twice in a cycle.
+
+    The pool is the featured pool's (``_short_quotes``: reviewed, from a
+    published work, short enough to stand alone) narrowed to writers WITH A
+    PORTRAIT — the four choices are faces, and a monogram among them gives the
+    answer away. 404 before puzzle No. 1, more than a day ahead of the server's
+    calendar (no reader's midnight is further off than that — this is not an
+    archive of tomorrow's answers), or when fewer than four writers qualify.
+    """
+
+    def get(self, request, date):
+        import datetime as dt
+
+        from django.utils import timezone
+
+        from . import quote_game
+
+        try:
+            day = dt.date.fromisoformat(date)
+        except ValueError:
+            raise Http404("Not a date (YYYY-MM-DD)") from None
+        if quote_game.puzzle_number(day) < 1 or day > timezone.now().date() + dt.timedelta(days=1):
+            raise Http404("No puzzle for this date")
+
+        rows = _short_quotes().exclude(author__photo_url="")
+        pool = [
+            quote_game.PoolQuote(slug, created.date(), author)
+            for slug, created, author in rows.values_list("slug", "created_at", "author__slug")
+        ]
+        slug = quote_game.quote_for_day(pool, day)
+        if slug is None:
+            raise Http404("No quotations to play with")
+        quote = rows.get(slug=slug)
+        authors = {
+            a.slug: a
+            for a in Author.objects.filter(pk__in=rows.values("author_id")).only(
+                "slug", "name", "photo_url", "birth_year", "death_year"
+            )
+        }
+        offered = quote_game.choices_for(
+            quote_game.Writer(quote.author.slug, quote.author.birth_year),
+            [quote_game.Writer(a.slug, a.birth_year) for a in authors.values()],
+            day,
+        )
+        if offered is None:
+            raise Http404("Too few writers with portraits")
+        return Response(
+            {
+                "number": quote_game.puzzle_number(day),
+                "date": day.isoformat(),
+                "quote": _quote_payload(quote),
+                "answer": quote.author.slug,
+                "choices": [
+                    {
+                        "slug": s,
+                        "name": authors[s].name,
+                        "photo_url": authors[s].photo_url,
+                        "birth_year": authors[s].birth_year,
+                        "death_year": authors[s].death_year,
+                    }
+                    for s in offered
+                ],
+            }
+        )
+
+
 def quote_block_text(quote) -> str | None:
     """The plain text of the block a quote's `paragraph` points at, AS SERVED
     (see `library.quote_blocks`). None if the index no longer lands — a work

@@ -262,7 +262,7 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    "Also in 5 languages" link to the Editions section (never a chip listing
    the language names: they are listed once, in Editions — design review #22),
    then the read card and the action strip. No third column or floating panel, no
-   art credit beside the cover (it sits with the source line at the page
+   art credit beside the cover (it sits in About this text at the page
    foot), no "Other titles" line (it is a muted line inside About this book).
    On a phone the cover sits beside the title block and the read card comes
    straight under it, inside the first screen. The read verb lives in a *read card*
@@ -271,7 +271,7 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    first-time reader the book card has no body — the button carries the chapter as a
    `.btn-sub` line ("Book I · 35 min") with "Free to read · No account needed" under it;
    Start over is a text link; no ministry promo inside the card — the book page's
-   `ForPromo place="book-download"` sits in the page foot, above the source line), and every other action is ONE quiet `.action-strip` row — Save,
+   `ForPromo place="book-download"` sits in the page foot, above About this text), and every other action is ONE quiet `.action-strip` row — Save,
    shelf, a single Download menu (`BookDownloadMenu`, never separate
    offline/EPUB/PDF buttons), Share/Search icon-only on desktop. When its
    host column (`.action-host`, a CSS container) is under 560px the same DOM
@@ -344,7 +344,13 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
 7. **Related** — capped at 4–6, rendered with the content type's **card
    component** (`BookCard`, `SermonCard`, `PersonCard`), headed `More …`. Never
    an unbounded `<ul>` of text links.
-8. **Source line** — `mt-8 text-small text-muted`, no rule above it.
+8. **Source line** — `mt-8 text-small text-muted`, no rule above it. **The
+   book page's is a panel now** (top-20 #18, 2026-11): `<AboutThisText>`, an
+   "About this text" `<dl>` at the foot — the edition's `attribution` note with
+   its `source_url` host, "Translated from the English edition" (never the
+   review state), the cover's `artwork_credit`, "Last updated" (`updated_at`,
+   which seed_books now moves on a chapter change too) and Rights
+   (`public_domain` + the Terms link). A row only where the API has a value.
 9. **`<Seo>`** with `ogImage` (the cover twin, a portrait, or the section's
    `/og/<section>.png`) and both the item's LD and the BreadcrumbList. Build the
    BreadcrumbList with `breadcrumbLd(crumbs)` from `$lib/seo` (feeds off the same

@@ -1299,8 +1299,13 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 
    Deliberately narrow:
    - `float: inline-start`, so it sits on the reading edge in either direction.
-   - Not in paged mode: a float cannot span CSS columns, and the initial would
-     be clipped at the column boundary.
+   - In paged mode too — the desktop spread and a phone's page-turn alike. It
+     was once kept out, for fear that a float, which cannot span CSS columns,
+     would be clipped at a column boundary. But the first paragraph sits at the
+     head of the first column, under only the kicker and the title, so the
+     three-line initial never meets a boundary; keeping it out only gave the
+     bigger screen the plainer page. (The ink-in animation below stays
+     scroll-only: the route never sets `.ink-in` in paged mode.)
    - Not for Arabic OR Devanagari, where a floated initial is not a convention
      of the script — and, for Devanagari, is not even a well-defined operation.
      A "letter" there is an AKSHARA: a consonant with its vowel signs, hung
@@ -1326,7 +1331,7 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+:is(article .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -1436,6 +1441,27 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	text-wrap: pretty;
 	orphans: 2;
 	widows: 2;
+}
+/* Verse quoted in prose — a stanza the body sets one `<p>` per line, marked by
+   $lib/verse at render time. Set as a stanza: no paragraph gap between its
+   lines (only after the last), a little tighter than the prose, ragged rather
+   than justified, and indented off the reading edge with a hanging indent, so a
+   line too long for the measure wraps visibly as one line. A source-indented
+   line (`.indent`, alternate lines of a hymn) steps in once more. */
+.reading p.verse {
+	margin: 0;
+	padding-inline-start: 4em;
+	text-indent: -2.5em; /* so a line starts 1.5em in and its wrap 4em in */
+	line-height: calc(var(--reading-leading, 1.85) - 0.3);
+	text-align: start;
+	hyphens: manual;
+	text-wrap: wrap;
+}
+.reading p.verse.indent {
+	padding-inline-start: 5em;
+}
+.reading p.verse.stanza-end {
+	margin-bottom: 1.15em; /* the prose paragraph gap, after the stanza */
 }
 /* The book page's "About this book" band renders server-sanitised `about_html`
    (multiple <p>) as `.text-body`, not `.reading`, so it misses the paragraph

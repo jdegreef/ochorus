@@ -9,21 +9,22 @@
 
 	/**
 	 * The logged-out home's hero (HomeMarketing): what the reader gets, said
-	 * in one line, beside a spread of the library's own covers — design review
-	 * #5. One search field, one solid "Start reading", About as a text link,
-	 * and the trust line as one muted line of words.
+	 * in one line, beside three of the library's own covers — design review
+	 * #5 — whole, so each title reads, and each a link to its book. One
+	 * search field, one solid "Start reading", About as a text link, and the
+	 * trust line as one muted line of words.
 	 *
 	 * The covers sit at the inline end on a wide screen and under the words on
 	 * a phone, where the padding is trimmed so the top of the spread shows in
 	 * the first screen. They come from the build's home snapshot (`hero`,
 	 * `$lib/homeShelves`), so the prerendered HTML and its hydration draw the
-	 * same five and no extra request is made for them.
+	 * same three and no extra request is made for them.
 	 */
 	let { covers }: { covers: CoverFace[] } = $props();
 	const t = i18n.t;
 
-	// Five make the spread; a language with fewer painted books gets the
-	// three-cover deck (the snapshot holds exactly what shows).
+	// Three make the spread; a language with fewer painted books gets the
+	// deck (the snapshot holds exactly what shows).
 	const tiles = $derived(covers.map(toBookTile));
 
 	// Search → the full search page. Progressive enhancement: the form is a
@@ -78,12 +79,11 @@
 			</p>
 		</div>
 		{#if tiles.length}
-			<!-- The covers are a picture of the library and a way into it; the
-			     "Start reading" link above is the same destination for a screen
-			     reader, so this one stays out of the tab order. -->
-			<a href={localizeHref('/books')} class="intro-fan" tabindex="-1" aria-hidden="true">
-				<CoverStrip covers={tiles} size="fan" max={5} priority />
-			</a>
+			<!-- The covers are a picture of the library and a way into it: each
+			     links to its own book, labelled with its title and author. -->
+			<div class="intro-fan">
+				<CoverStrip covers={tiles} size="spread" priority />
+			</div>
 		{/if}
 	</div>
 </section>

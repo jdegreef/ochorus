@@ -27,6 +27,7 @@ from .views import (
     QuoteAuthorTopicView,
     QuoteContextView,
     QuoteFeaturedView,
+    QuoteGameView,
     QuotePageView,
     QuoteResolveView,
     QuoteTopicDetailView,
@@ -65,6 +66,9 @@ urlpatterns = [
     # quotes/<author>/ (and its three-segment topic page) for the same reason.
     path("quotes/featured/", QuoteFeaturedView.as_view(), name="quote-featured"),
     path("quotes/context/<slug:quote>/", QuoteContextView.as_view(), name="quote-context"),
+    # The daily "Whose words?" puzzle, by the reader's own date (YYYY-MM-DD).
+    # Before quotes/<author>/<topic>/, which "game/<date>" would otherwise match.
+    path("quotes/game/<str:date>/", QuoteGameView.as_view(), name="quote-game"),
     # The theme vocabulary lives under its own prefix so a theme slug can never
     # be mistaken for an author under quotes/<author>/. "pages" before <topic>,
     # like scripture/pages/ — it is one segment, they are the build's page list.
