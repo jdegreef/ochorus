@@ -31,22 +31,51 @@
 	let book = $state<BookDetail | null>(null);
 	let loaded = $state(false);
 
+	// The fragment is taken off the address bar once read: Plausible's script
+	// reports `location.href`, fragment included, with every pageview and
+	// event, and the note must not leave the device that way. The tab keeps
+	// it (sessionStorage) so a reload still opens the gift.
+	const KEPT = 'ochorus:gift';
+	let request = 0;
+
+	function readGift(): Gift | null {
+		const fromHash = giftFromHash(window.location.hash);
+		if (fromHash) {
+			try {
+				sessionStorage.setItem(KEPT, window.location.hash);
+			} catch {
+				// Storage blocked: a reload just won't find the gift again.
+			}
+			history.replaceState(history.state, '', window.location.pathname + window.location.search);
+			return fromHash;
+		}
+		try {
+			return giftFromHash(sessionStorage.getItem(KEPT) ?? '');
+		} catch {
+			return null;
+		}
+	}
+
 	function load() {
-		gift = giftFromHash(window.location.hash);
+		// A gift opened over this one (hashchange) wins, whichever fetch lands last.
+		const mine = ++request;
+		const g = readGift();
+		gift = g;
 		book = null;
 		loaded = false;
-		const g = gift;
 		if (!g) {
 			loaded = true;
 			return;
 		}
 		getBook(g.slug, g.lang)
 			// getBook falls back to English on a 404: only the gift's own edition counts.
-			.then((b) => (book = b.language === g.lang && b.chapters.length ? b : null))
-			.catch(() => (book = null))
-			.finally(() => {
+			.then((b) => (b.language === g.lang && b.chapters.length ? b : null))
+			.catch(() => null)
+			.then((b) => {
+				if (mine !== request) return;
+				book = b;
 				loaded = true;
-				if (book) track(GIFT_OPENED_EVENT, { language: g.lang, step: 'viewed' });
+				if (b) track(GIFT_OPENED_EVENT, { language: g.lang, step: 'viewed' });
 			});
 	}
 
@@ -64,12 +93,15 @@
 	);
 	// The book page is the one indexable address for this book.
 	const canonical = $derived(book ? `${SITE_URL}${inLang(`/books/${book.slug}`)}` : null);
-	const fromLine = $derived(
-		gift?.name ? t('gift.from').replace('%name%', () => gift!.name) : t('gift.forYou')
-	);
-	const noteHeading = $derived(
-		gift?.name ? t('gift.noteHeading').replace('%name%', () => gift!.name) : t('gift.noteHeadingAnon')
-	);
+	/** A message around the giver's name, split so the name can sit in its
+	 *  own <bdi>: an Arabic name in a Japanese line (or a name ending in
+	 *  digits in an Arabic one) can't reorder the words around it. */
+	const around = (key: string): [string, string] => {
+		const [before, after = ''] = t(key).split('%name%');
+		return [before, after];
+	};
+	const fromLine = $derived(gift?.name ? around('gift.from') : null);
+	const noteHeading = $derived(gift?.name ? around('gift.noteHeading') : null);
 
 	function openGift() {
 		if (!book || !gift) return;
@@ -91,7 +123,9 @@
 		{#if book && gift && firstChapter}
 			<div class="gift-cover" aria-hidden="true"><BookCover {book} /></div>
 			<div class="min-w-0">
-				<p class="eyebrow text-gold" dir="auto">{fromLine}</p>
+				<p class="eyebrow text-gold">
+					{#if fromLine}{fromLine[0]}<bdi>{gift.name}</bdi>{fromLine[1]}{:else}{t('gift.forYou')}{/if}
+				</p>
 				<h1 id="gift-title" class="font-display mt-1 text-h2" lang={book.language}>{book.title}</h1>
 				<p class="text-small text-muted">
 					<a href={inLang(authorPath(book.author.slug))}>{book.author.name}</a>
@@ -100,7 +134,11 @@
 			</div>
 			{#if gift.note}
 				<figure class="gift-note">
-					<figcaption class="text-small text-muted" dir="auto">{noteHeading}</figcaption>
+					<figcaption class="text-small text-muted">
+						{#if noteHeading}{noteHeading[0]}<bdi>{gift.name}</bdi>{noteHeading[1]}{:else}{t(
+								'gift.noteHeadingAnon'
+							)}{/if}
+					</figcaption>
 					<!-- Plain text only: untrusted, from the link ($lib/gift). -->
 					<blockquote class="note font-display text-body" dir="auto">{gift.note}</blockquote>
 					<p class="text-small text-muted">{t('gift.noteDisclaimer')}</p>
