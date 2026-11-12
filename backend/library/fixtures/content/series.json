@@ -1345,6 +1345,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "am",
+  "title": "የሚጸልዩ ምስክሮች ደመና",
+  "description": "በቤተ ክርስቲያን ታሪክ ሁሉ ውስጥ ያለው ጸሎት፣ ለእያንዳንዱ ዘመን አንድ ቅጽ፦ የብሉይ ኪዳን ጸሎቶች፣ የጸሎት መምህር የሆነው ኢየሱስ፣ ሐዋርያት፣ እንዲሁም እስከ ዛሬ ድረስ በየዘመኑና በየአገሩ የኖሩ የሚጸልዩ ወንዶችና ሴቶች። እያንዳንዱ አጭር ምዕራፍ ቁልፍ ጥቅስ ያስቀምጣል፣ ታሪክ ይተርካል፣ ከቀደሙት ዘመናት አንድ ድምፅ ያሰማል፣ በእውነቶች፣ በልምምድና በጸሎትም ይፈጸማል።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "fr",
