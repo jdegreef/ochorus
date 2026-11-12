@@ -3,7 +3,7 @@
  "slug": "christ-the-healer",
  "language": "am",
  "job_issue": 7572,
- "pull_request": null,
+ "pull_request": 7915,
  "note": [
   "Scripture: New Testament quotations are pasted from the 1962 Amharic Bible (ebible amh, UBS; gracious-tech/fetch_collection mirror via scripts/bible_mirror.py amh_amh — Take Root is egress-blocked). The mirror is NT-only and withholds 254 bridged verse ranges (e.g. Matt 8:16-17, Luke 4:17-20, Rom 15:18-19, Acts 10:34): those, and all Old Testament verses, were taken verbatim from shipped *.am.json editions where one quotes the same verse (source_file names it), else rendered in the 1962 register and marked self_rendered. A row is mined only when every quoted run (split at …) is a verbatim substring of the named source, checked by script.",
   "self_rendered rows are mostly Old Testament verses no shipped Amharic book quotes (Lev 25, Deut 28, many Psalms), Bosworth's own paraphrases and insertions, person shifts, and the Young / Leeser / Rotherham / Weymouth / Moffatt renderings he quotes by name (translated from his English, attributions kept).",
