@@ -225,7 +225,12 @@ _KOR_COMMA = re.compile(r",(?=[^\s\d])")
 # and nothing before a particle or copula (`말하라'고`, `롬'이라`).
 _KOR_QUOTE_BEFORE_HA = re.compile(r"(?<=\S)[`'](?=[하한함])")
 _KOR_QUOTE = re.compile(r"[`']")
-_KOR_SPACED_MARK = re.compile(r"\s+(?=[!?])")
+# The mirror spaces off its marks (`하느냐 ?`, ~2,800 verses). A spaced `?` is a
+# real question and is glued to its word; a spaced `!` is the mirror's own
+# addition — the shipped ko books quote 개역 without it (`범사에 그를 인정하라
+# 그리하면` x11, never `인정하라!`) — so it is dropped with its space.
+_KOR_SPACED_QUESTION = re.compile(r"\s+(?=\?)")
+_KOR_SPACED_BANG = re.compile(r"\s+!")
 
 # Verses the mirror damaged beyond typography. Withheld from the index (a
 # translator self-renders them) and written to damaged.json with the reason.
@@ -243,7 +248,7 @@ def clean_kor(text: str) -> str:
     """Repair one kor_old verse's punctuation. Idempotent; no word changes."""
     text = _KOR_COMMA.sub(", ", text)
     text = _KOR_QUOTE.sub("", _KOR_QUOTE_BEFORE_HA.sub(" ", text))
-    text = _KOR_SPACED_MARK.sub("", text)
+    text = _KOR_SPACED_BANG.sub("", _KOR_SPACED_QUESTION.sub("", text))
     return re.sub(r"\s+", " ", text).strip()
 
 
