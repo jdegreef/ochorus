@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { clampPopoverLeft } from './reading';
-import glossaryData from './glossary.json';
+import { definitionOf, glossaryTermFor } from './glossary';
 
 /**
  * Tap-to-define: definitions for a single selected word.
@@ -14,18 +14,11 @@ import glossaryData from './glossary.json';
 export interface Definition {
 	word: string;
 	source: 'glossary' | 'dictionary' | 'none';
+	/** The glossary entry it came from (its /glossary/<term>/ page), when
+	 *  `source` is 'glossary' — "covenants" is defined by `covenant`. */
+	term?: string;
 	phonetic?: string;
 	entries: { partOfSpeech?: string; text: string }[];
-}
-
-const glossary = glossaryData as Record<string, string>;
-
-function glossaryLookup(word: string): string | null {
-	if (word.startsWith('_')) return null;
-	if (glossary[word]) return glossary[word];
-	// Light stemming for plurals/possessives ("covenants", "sinner's").
-	const stripped = word.replace(/['’]s$/, '').replace(/s$/, '');
-	return glossary[stripped] ?? null;
 }
 
 const cache = new Map<string, Definition>();
@@ -84,9 +77,9 @@ class Define {
 			return;
 		}
 
-		const gloss = glossaryLookup(word);
-		if (gloss) {
-			this.result = { word, source: 'glossary', entries: [{ text: gloss }] };
+		const term = glossaryTermFor(word);
+		if (term) {
+			this.result = { word, source: 'glossary', term, entries: [{ text: definitionOf(term) }] };
 			cache.set(word, this.result);
 			this.loading = false;
 			return;

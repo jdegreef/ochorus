@@ -207,6 +207,11 @@ REST_FRAMEWORK = {
         # A quote's source paragraph (QuoteContextView): one chapter parse each,
         # cached per quote. Far above a reader opening cards.
         "quote-context": "60/min",
+        # A glossary word's example passages (WordPassagesView): up to a dozen
+        # chapter parses for an uncached word, then a day in the cache. The web
+        # build asks once per glossary page (~120), so this is the build's
+        # ceiling, not a reader's.
+        "word-passages": "300/min",
         # A signed-in reader filing feedback (FeedbackView). Occasional by
         # nature — a handful a day at most — so this only catches a script
         # flooding the queue, never a genuine submitter. Per account.

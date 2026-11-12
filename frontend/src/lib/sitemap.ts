@@ -61,6 +61,7 @@ import { hubLanguages } from '$lib/audienceHubData';
 import { APP_ONLY } from '$lib/robots';
 import { withTrailingSlash } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
+import { GLOSSARY_TERMS, glossaryHref } from '$lib/glossary';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -172,6 +173,9 @@ export interface SitemapData {
 	scripture: Entry[];
 	/** Quote pages. English only, and only where a person approved them. */
 	quotes: Entry[];
+	/** The glossary index and one page per term ($lib/glossary). English only,
+	 *  like the words; undated, since the definitions live in the frontend. */
+	glossary: Entry[];
 	/** The Articles hub, each article (in every advertised locale that has it),
 	 *  and each topic-filtered shelf (English only). Its OWN child rather
 	 *  than folded into `pages` so Search Console reports article indexing on its
@@ -246,6 +250,7 @@ export const sections = (): string[] => [
 	'authors',
 	'scripture',
 	'quotes',
+	'glossary',
 	'articles',
 	'pages'
 ];
@@ -277,6 +282,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
 	if (section === 'quotes') return data.quotes;
+	if (section === 'glossary') return data.glossary;
 	if (section === 'articles') return data.articles;
 	if (section === 'pages') return data.pages;
 	return null;
@@ -914,6 +920,10 @@ async function build(): Promise<SitemapData> {
 		sermons,
 		scripture,
 		quotes,
+		// The same list the /glossary/[term] route's entries() builds from.
+		glossary: ['/glossary/', ...GLOSSARY_TERMS.map(glossaryHref)].map((path) => ({
+			byLocale: new Map([['en', path]] as [string, string][])
+		})),
 		articles: articleEntries,
 		chapters: [...byChapter.values()],
 		openings: [...byOpening.values()],
