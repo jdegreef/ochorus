@@ -1,0 +1,250 @@
+{
+ "kind": "book",
+ "slug": "tell-me-the-story-1",
+ "language": "am",
+ "job_issue": 7462,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); the mirror carries no Old Testament, so Genesis quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register. The English edition quotes the BSB; as in the other Amharic house books, this edition quotes the Amharic Bible instead.",
+  "A `mined` row was re-measured against the finished text: the quoted span is an exact byte substring both of the cited source (1962 NT verse text, or the named corpus file) and of that block. Short spans under 20 characters (Genesis 32:26, 39:2, 16:13, John 1:3) were checked the same way by hand.",
+  "Versification: the 1962 Bible numbers John 1:51 as 1:52 and carries the second half of 1 John 3:8 at 3:9; the citations keep the English numbering.",
+  "Genesis 50:20 (ch22 epigraph) quotes the whole mined verse, where the English quotes only its first half; Genesis 39:21 (ch19 epigraph) keeps the mined span's opening ግን."
+ ],
+ "references": [
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "rooted-1.am.json"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 2,
+   "source_file": "rooted-6.am.json"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 2:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Genesis 3:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "rise-up-men-of-god-2.am.json"
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "he-holds-my-tomorrows.am.json"
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 6:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Genesis 8:1",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Genesis 9:13",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 11:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Genesis 12:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 12:4",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Galatians 3:29",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 18:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "talks-to-the-farmer.am.json"
+  },
+  {
+   "reference": "Genesis 22:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "he-holds-my-tomorrows.am.json"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 24:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Genesis 25:27",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 1:51",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 17,
+   "source_file": "jesus-himself-2.am.json"
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Genesis 39:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 19,
+   "source_file": "the-christians-secret-of-a-happy-life-4.am.json"
+  },
+  {
+   "reference": "Genesis 39:2",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 19,
+   "source_file": "rooted-4.am.json"
+  },
+  {
+   "reference": "Genesis 41:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Genesis 44:33",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 22,
+   "source_file": "the-christians-secret-of-a-happy-life-4.am.json"
+  }
+ ]
+}

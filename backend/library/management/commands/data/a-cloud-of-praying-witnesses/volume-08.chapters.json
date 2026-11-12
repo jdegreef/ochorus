@@ -1,0 +1,575 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "Psalm 67:1-2",
+    "themes": [],
+    "person": null,
+    "era": "c. 1800-1900",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "A Prayer Meeting in the Rain",
+    "anchor": "Matthew 28:19",
+    "themes": [
+      "Praying for Others",
+      "Guidance and Surrender",
+      "Faith"
+    ],
+    "person": "The Haystack Prayer Meeting (Samuel J. Mills and friends)",
+    "era": "c. 1806",
+    "region": "Williamstown, Massachusetts (USA)",
+    "voices": [
+      {
+        "author": "john-r-mott",
+        "book": "evangelization-of-the-world",
+        "chapter": "Factors Essential to the Evangelization of the World in This Generation"
+      }
+    ],
+    "read_more": [
+      "evangelization-of-the-world",
+      "foxes-book-of-martyrs"
+    ]
+  },
+  {
+    "title": "The Man Who Prayed Ahead",
+    "anchor": "Isaiah 66:8",
+    "themes": [
+      "Praying Together",
+      "Praying for Others",
+      "Humility and Mercy"
+    ],
+    "person": "Daniel Nash and Charles Finney",
+    "era": "c. 1825",
+    "region": "Gouverneur and northern New York (USA)",
+    "voices": [
+      {
+        "author": "charles-finney",
+        "book": "finney-memoirs",
+        "chapter": "Preaching as a Missionary"
+      },
+      {
+        "author": "charles-finney",
+        "book": "finney-memoirs",
+        "chapter": "Revival in Rochester, 1830"
+      },
+      {
+        "author": "charles-finney",
+        "book": "revival-lectures",
+        "chapter": "Lecture IV. Prevailing Prayer"
+      }
+    ],
+    "read_more": [
+      "finney-memoirs",
+      "revival-lectures"
+    ]
+  },
+  {
+    "title": "A Covenant with God",
+    "anchor": "Jeremiah 50:5",
+    "themes": [
+      "Persistence",
+      "Guidance and Surrender",
+      "Asking Boldly"
+    ],
+    "person": "Christmas Evans",
+    "era": "c. 1800",
+    "region": "Cadair Idris and Llangefni, Anglesey (Wales)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "the-two-covenants",
+        "chapter": "A Covenant God"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-the-holy-spirit",
+        "chapter": "The Abiding of the Spirit the Glory of the Church"
+      }
+    ],
+    "read_more": [
+      "the-two-covenants",
+      "spurgeon-on-the-holy-spirit"
+    ]
+  },
+  {
+    "title": "My Soul Thirsts for You",
+    "anchor": "Psalm 63:1",
+    "themes": [
+      "Making Room for Prayer",
+      "Praying Together",
+      "The Father's Love"
+    ],
+    "person": "Robert Murray M'Cheyne",
+    "era": "c. 1839",
+    "region": "Dundee (Scotland)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "lectures-to-my-students",
+        "chapter": "The Preacher's Private Prayer"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Much Time Should Be Given to Prayer"
+      }
+    ],
+    "read_more": [
+      "power-through-prayer",
+      "lectures-to-my-students"
+    ]
+  },
+  {
+    "title": "Open Your Mouth Wide",
+    "anchor": "Psalm 81:10",
+    "themes": [
+      "Asking Boldly",
+      "Guidance and Surrender",
+      "Learning to Pray"
+    ],
+    "person": "George Müller",
+    "era": "c. 1835",
+    "region": "Bristol (England)",
+    "voices": [
+      {
+        "author": "george-muller",
+        "book": "answers-to-prayer",
+        "chapter": "Beginning and Early Days of the Orphan Work"
+      },
+      {
+        "author": "george-muller",
+        "book": "the-life-of-trust",
+        "chapter": "Faith Strengthened by Exercise"
+      },
+      {
+        "author": "arthur-t-pierson",
+        "book": "george-muller-of-bristol",
+        "chapter": "The Narrative of the Lord's Dealings"
+      }
+    ],
+    "read_more": [
+      "answers-to-prayer",
+      "the-life-of-trust"
+    ]
+  },
+  {
+    "title": "A Pilgrim Learns to Pray Without Ceasing",
+    "anchor": "1 Thessalonians 5:17",
+    "themes": [
+      "Learning to Pray",
+      "Making Room for Prayer",
+      "Humility and Mercy"
+    ],
+    "person": "The Way of a Pilgrim (anonymous Russian pilgrim)",
+    "era": "c. 1855",
+    "region": "Russia and Siberia",
+    "voices": [
+      {
+        "author": "john-henry-newman",
+        "book": "parochial-and-plain-sermons-vii",
+        "chapter": "Mental Prayer"
+      }
+    ],
+    "read_more": [
+      "parochial-and-plain-sermons-vii",
+      "spurgeon-on-prayer"
+    ]
+  },
+  {
+    "title": "A Peaceful Spirit",
+    "anchor": "Isaiah 26:3",
+    "themes": [
+      "Learning to Pray",
+      "Faith",
+      "Praying for Others"
+    ],
+    "person": "Seraphim of Sarov",
+    "era": "c. 1831",
+    "region": "Sarov (Russia)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "till-he-come",
+        "chapter": "Jesus Asleep on a Pillow"
+      },
+      {
+        "author": "frederick-brotherton-meyer",
+        "book": "our-daily-walk",
+        "chapter": "June"
+      }
+    ],
+    "read_more": [
+      "till-he-come",
+      "our-daily-walk"
+    ]
+  },
+  {
+    "title": "The Noon Prayer Meeting",
+    "anchor": "2 Chronicles 7:14",
+    "themes": [
+      "Persistence",
+      "Making Room for Prayer",
+      "Humility and Mercy"
+    ],
+    "person": "Jeremiah Lanphier and the Fulton Street prayer meeting",
+    "era": "c. 1857",
+    "region": "New York (USA)",
+    "voices": [
+      {
+        "author": "charles-finney",
+        "book": "finney-memoirs",
+        "chapter": "Revivals in Boston in 1856-57-58"
+      }
+    ],
+    "read_more": [
+      "finney-memoirs",
+      "revival-lectures"
+    ]
+  },
+  {
+    "title": "Four Young Men at Kells",
+    "anchor": "Psalm 85:6",
+    "themes": [
+      "Faith",
+      "Praying Together",
+      "Praying for Others"
+    ],
+    "person": "The Ulster Revival, 1859",
+    "era": "c. 1857-1859",
+    "region": "Kells and Connor, County Antrim (Ireland)",
+    "voices": [
+      {
+        "author": "george-muller",
+        "book": "answers-to-prayer",
+        "chapter": "Precious Answers to Prayer"
+      }
+    ],
+    "read_more": [
+      "answers-to-prayer",
+      "george-muller-of-bristol",
+      "key-teachings-of-martyn-lloyd-jones"
+    ]
+  },
+  {
+    "title": "The Boiler Room",
+    "anchor": "Psalm 50:15",
+    "themes": [
+      "Praying for Others",
+      "Praying Together",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Charles H. Spurgeon",
+    "era": "c. 1854-1892",
+    "region": "London (England)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "the-soul-winner",
+        "chapter": "How to Induce Our People to Win Souls"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "cheque-book",
+        "chapter": "The Month of July"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "the-soul-winner",
+      "key-teachings-of-charles-h-spurgeon"
+    ]
+  },
+  {
+    "title": "Move Man Through God",
+    "anchor": "Philippians 4:19",
+    "themes": [
+      "Faith",
+      "Guidance and Surrender",
+      "Asking Boldly"
+    ],
+    "person": "Hudson Taylor",
+    "era": "c. 1865",
+    "region": "Brighton (England) and inland China",
+    "voices": [
+      {
+        "author": "hudson-taylor",
+        "book": "a-retrospect",
+        "chapter": "Preparation for Service"
+      },
+      {
+        "author": "hudson-taylor",
+        "book": "a-retrospect",
+        "chapter": "The Mission in 1894"
+      }
+    ],
+    "read_more": [
+      "a-retrospect",
+      "key-teachings-of-hudson-taylor"
+    ]
+  },
+  {
+    "title": "Overcomer",
+    "anchor": "1 John 4:4",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Praying for Others",
+      "Humility and Mercy"
+    ],
+    "person": "Pastor Hsi (Xi Shengmo)",
+    "era": "c. 1879-1896",
+    "region": "Pingyang and southern Shanxi (China)",
+    "voices": [
+      {
+        "author": "a-b-simpson",
+        "book": "power-from-on-high-new-testament",
+        "chapter": "The Holy Spirit in the First Epistle of John"
+      }
+    ],
+    "read_more": [
+      "power-from-on-high-new-testament",
+      "c-t-studd-a-life",
+      "a-retrospect"
+    ]
+  },
+  {
+    "title": "The Bedridden Woman Who Prayed",
+    "anchor": "Mark 9:23",
+    "themes": [
+      "Praying for Others",
+      "Prayer in Suffering and Testing",
+      "Faith"
+    ],
+    "person": "D. L. Moody and the bedridden woman of North London (later called Marianne Adlard)",
+    "era": "c. 1872",
+    "region": "London (England)",
+    "voices": [
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "The Place of Prayer Before and During Revivals"
+      },
+      {
+        "author": "dwight-l-moody",
+        "book": "prevailing-prayer",
+        "chapter": "Answered Prayers"
+      }
+    ],
+    "read_more": [
+      "how-to-pray",
+      "prevailing-prayer",
+      "key-teachings-of-dwight-l-moody"
+    ]
+  },
+  {
+    "title": "Knee Drill",
+    "anchor": "Isaiah 61:1",
+    "themes": [
+      "Making Room for Prayer",
+      "Praying for Others",
+      "Praying Together"
+    ],
+    "person": "William and Catherine Booth and the Salvation Army",
+    "era": "c. 1880",
+    "region": "London (England)",
+    "voices": [
+      {
+        "author": "william-booth",
+        "book": "in-darkest-england-and-the-way-out",
+        "chapter": "A Practical Conclusion"
+      },
+      {
+        "author": "william-booth",
+        "book": "purity-of-heart",
+        "chapter": "How to Keep Pure"
+      },
+      {
+        "author": "catherine-booth",
+        "book": "godliness",
+        "chapter": "Conditions of Effectual Prayer"
+      }
+    ],
+    "read_more": [
+      "godliness",
+      "in-darkest-england-and-the-way-out",
+      "key-teachings-of-catherine-booth"
+    ]
+  },
+  {
+    "title": "Trust Without Fear",
+    "anchor": "Proverbs 3:5-6",
+    "themes": [
+      "Guidance and Surrender",
+      "Humility and Mercy",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Amanda Berry Smith",
+    "era": "c. 1878",
+    "region": "Philadelphia (USA), England and Calcutta (India)",
+    "voices": [
+      {
+        "author": "amanda-berry-smith",
+        "book": "amanda-smith-autobiography",
+        "chapter": "The Call to Go to England"
+      },
+      {
+        "author": "amanda-berry-smith",
+        "book": "amanda-smith-autobiography",
+        "chapter": "His Presence and My Obedience"
+      },
+      {
+        "author": "amanda-berry-smith",
+        "book": "amanda-smith-autobiography",
+        "chapter": "Introduction"
+      }
+    ],
+    "read_more": [
+      "amanda-smith-autobiography",
+      "key-teachings-of-amanda-berry-smith"
+    ]
+  },
+  {
+    "title": "A Bishop on His Knees",
+    "anchor": "Psalm 72:8",
+    "themes": [
+      "The Father's Love",
+      "Asking Boldly",
+      "Humility and Mercy"
+    ],
+    "person": "Samuel Ajayi Crowther",
+    "era": "c. 1854",
+    "region": "The Niger (Nigeria)",
+    "voices": [
+      {
+        "author": "samuel-ajayi-crowther",
+        "book": "journal-of-an-expedition-up-the-niger",
+        "chapter": "Sickness at the Confluence"
+      }
+    ],
+    "read_more": [
+      "journal-of-an-expedition-up-the-niger",
+      "samuel-ajayi-crowther-a-life"
+    ]
+  },
+  {
+    "title": "Abide in Me",
+    "anchor": "John 15:7",
+    "themes": [
+      "Asking Boldly",
+      "Learning to Pray",
+      "Guidance and Surrender"
+    ],
+    "person": "Andrew Murray",
+    "era": "c. 1860",
+    "region": "Worcester, Cape Colony (South Africa)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "abide-in-christ",
+        "chapter": "So Will You Have Power in Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Word and Prayer"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "abide-in-christ",
+        "chapter": "Preface"
+      }
+    ],
+    "read_more": [
+      "abide-in-christ",
+      "school-of-prayer",
+      "key-teachings-of-andrew-murray"
+    ]
+  },
+  {
+    "title": "He Will Not Leave You",
+    "anchor": "Deuteronomy 31:8",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender",
+      "Faith"
+    ],
+    "person": "Mary Slessor",
+    "era": "c. 1888",
+    "region": "Okoyong, Calabar (Nigeria)",
+    "voices": [
+      {
+        "author": "j-c-ryle",
+        "book": "holiness",
+        "chapter": "The Ruler of the Waves"
+      }
+    ],
+    "read_more": [
+      "mary-slessor-a-life",
+      "holiness"
+    ]
+  },
+  {
+    "title": "The Little Way",
+    "anchor": "Matthew 18:3",
+    "themes": [
+      "The Father's Love",
+      "Praying for Others",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Thérèse of Lisieux",
+    "era": "c. 1896",
+    "region": "Lisieux (France)",
+    "voices": [
+      {
+        "author": "thomas-a-kempis",
+        "book": "the-imitation-of-christ",
+        "chapter": "High Matters and the Hidden Judgments of God Are Not to Be Scrutinized"
+      }
+    ],
+    "read_more": [
+      "the-imitation-of-christ",
+      "introduction-to-the-devout-life"
+    ]
+  },
+  {
+    "title": "God Looked for an Intercessor",
+    "anchor": "Isaiah 59:16",
+    "themes": [
+      "Praying for Others",
+      "Making Room for Prayer",
+      "Christ Who Prays for Us"
+    ],
+    "person": "E. M. Bounds",
+    "era": "c. 1900",
+    "region": "Washington, Georgia (USA)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "power-through-prayer",
+        "chapter": "Men of Prayer Needed"
+      },
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "Prayer and Missions"
+      }
+    ],
+    "read_more": [
+      "power-through-prayer",
+      "essentials-of-prayer",
+      "prayer-and-praying-men",
+      "key-teachings-of-e-m-bounds"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Habakkuk 2:14",
+    "themes": [],
+    "person": "The praying church of the great century",
+    "era": "c. 1900",
+    "region": "The whole world",
+    "voices": [],
+    "read_more": []
+  }
+]

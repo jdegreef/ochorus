@@ -1733,6 +1733,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "turret and a row of houses with lit windows, and on the far hill a small "
         "fire kept burning. No particular village, no likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 8, Open Your Mouth Wide: the series ground
+    # at late morning over the sea: a sailing ship putting out, and a small chapel
+    # on the shore with a lit window (Psalm 81:10). No particular ship or place.
+    "open-your-mouth-wide": Original(
+        "5a5f13ba1c908c8d120e32e325e6e0e96904cfbcfac0d923731ff0f541dae867",
+        "Psalm 81:10: late morning over the sea, the sun well up on the right and "
+        "its light on the water; a sailing ship putting out under its sails, and on "
+        "the shore a small chapel with a cross and a lit window. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
