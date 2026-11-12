@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { chapterMeta, distinctTitle, downloadFormats, titleWithFormats } from './bookSeo';
+import {
+	bibleChapterMeta,
+	bibleChapterTitle,
+	chapterMeta,
+	distinctTitle,
+	downloadFormats,
+	isBibleChapter,
+	titleWithFormats
+} from './bookSeo';
 
 describe('downloadFormats', () => {
 	it('names what the edition offers, in search order', () => {
@@ -60,5 +68,31 @@ describe('chapterMeta', () => {
 	});
 	it('drops the colon when the chapter has no text', () => {
 		expect(chapterMeta('Book', 'Chapter 2', '  ')).toBe('Book — Chapter 2');
+	});
+});
+
+describe('Bible chapters', () => {
+	const owb = (title: string) => ({ author_slug: 'open-word-bible', title });
+
+	it('are the numbered chapters of the Open Word Bible’s books, not their introductions', () => {
+		expect(isBibleChapter(owb('Psalm 23'))).toBe(true);
+		expect(isBibleChapter(owb('John 3'))).toBe(true);
+		expect(isBibleChapter(owb('1 Corinthians 13'))).toBe(true);
+		expect(isBibleChapter(owb('Song of Songs 2'))).toBe(true);
+		expect(isBibleChapter(owb('Introduction'))).toBe(false);
+		expect(isBibleChapter(owb('Conclusion'))).toBe(false);
+		// Another writer's numbered chapter is not Scripture.
+		expect(isBibleChapter({ author_slug: 'andrew-murray', title: 'Day 3' })).toBe(false);
+	});
+
+	it('are titled the way they are searched for', () => {
+		expect(bibleChapterTitle('Psalm 23', 'Open Word Bible')).toBe('Psalm 23 — Open Word Bible — Ochorus');
+	});
+
+	it('are described by their summary, chapter first', () => {
+		expect(bibleChapterMeta('Romans 8', 'Open Word Bible', ' There is no condemnation. ')).toBe(
+			'Romans 8 (Open Word Bible): There is no condemnation.'
+		);
+		expect(bibleChapterMeta('Malachi 4', 'Open Word Bible', '')).toBe('Malachi 4 (Open Word Bible)');
 	});
 });

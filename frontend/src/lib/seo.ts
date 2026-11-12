@@ -31,6 +31,10 @@ export const publisherLd = () => ({
  *  API decides which editions may claim it (`public_domain`; library/rights). */
 export const PUBLIC_DOMAIN_MARK = 'https://creativecommons.org/publicdomain/mark/1.0/';
 
+/** CC0 1.0 — the Open Word Bible's dedication to the public domain, as a
+ *  Bible chapter's `license` (a new translation is dedicated, not expired). */
+export const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
+
 /** The `@id` of the Person (or imprint) an author page is about, from that
  *  page's absolute URL — so a book naming its author links to the same node. */
 export const personId = (authorUrl: string) => `${authorUrl}#person`;

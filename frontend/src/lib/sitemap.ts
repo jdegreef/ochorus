@@ -193,6 +193,9 @@ export interface SitemapData {
 	/** Every chapter of the Modern English edition, at its own address
 	 *  (`/books/<slug>/modern/<n>/`) — the `modern` section. */
 	modern: Entry[];
+	/** Every chapter of the Bible but each book's opening (which `openings`
+	 *  already lists) — the `bible` section; see `sections()`. */
+	bible: Entry[];
 	/** Each printable leader's guide (`/books/<slug>/guide/`), in every
 	 *  advertised locale with a guide of its own — the `guides` section. */
 	guides: Entry[];
@@ -238,6 +241,13 @@ export interface SitemapData {
  * serve, which Google reads as duplicates; the modern edition is Ochorus's own
  * wording, so every chapter of it is a page only this site has.
  *
+ * THE BIBLE IS LISTED WHOLE TOO (`bible`): "Psalm 23", "John 3" and
+ * "Romans 8" are searched for by the chapter, not the book, so a Bible
+ * chapter is the landing page — and the Open Word Bible's wording is a new
+ * translation few other sites carry, not the duplicate pile above. Each
+ * book's opening (its introduction) stays in `chapters`, so no URL is listed
+ * twice. English only, like the books.
+ *
  * The remaining order is DELIBERATELY not the reader-facing nav order
  * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
  * does a reader meet these in", so it does not track nav/footer/palette (F2).
@@ -245,6 +255,7 @@ export interface SitemapData {
 export const sections = (): string[] => [
 	'books',
 	'chapters',
+	'bible',
 	'modern',
 	'guides',
 	'sermons',
@@ -277,6 +288,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	}
 	if (section === 'books') return data.books;
 	if (section === 'chapters') return data.openings;
+	if (section === 'bible') return data.bible;
 	if (section === 'modern') return data.modern;
 	if (section === 'guides') return data.guides;
 	if (section === 'sermons') return data.sermons;
@@ -907,6 +919,22 @@ async function build(): Promise<SitemapData> {
 		}
 	}
 
+	// The Bible's chapters (see sections()): its books by their series, past the
+	// opening chapter `openings` already lists.
+	const byBibleChapter = new Map<string, Entry>();
+	for (const slice of chapterSlices) {
+		for (const b of slice.books) {
+			if (b.series?.slug !== BIBLE_SERIES) continue;
+			for (let order = 2; order <= b.chapter_count; order++) {
+				const key = `${b.slug}#${order}`;
+				let e = byBibleChapter.get(key);
+				if (!e) byBibleChapter.set(key, (e = { byLocale: new Map() }));
+				e.byLocale.set(slice.locale, `/books/${b.slug}/${order}/`);
+				if (b.updated_at) (e.lastmods ??= new Map()).set(slice.locale, b.updated_at);
+			}
+		}
+	}
+
 	// One entry per guided work, its locales the alternates; dated per locale by
 	// the edition's own row, like the book pages.
 	const byGuide = new Map<string, Entry>();
@@ -934,6 +962,9 @@ async function build(): Promise<SitemapData> {
 		articles: articleEntries,
 		chapters: [...byChapter.values()],
 		openings: [...byOpening.values()],
+		// Every chapter of the Bible's books after their opening, in each
+		// advertised locale whose Bible has it (English today), dated per edition.
+		bible: [...byBibleChapter.values()],
 		// EVERY modern chapter, not just the opening: this is the text no other
 		// library carries, so it is not the duplicate pile the original chapters
 		// are. English only, like the edition. Dated by the edition's own row.

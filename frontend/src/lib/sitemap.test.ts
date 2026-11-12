@@ -26,6 +26,10 @@ import type { Entry, SitemapData } from './sitemap';
 // vitest, so it governs `sitemapData()` everywhere in this file — harmless to
 // the pure-function tests above, which never call it.
 // Pinned, so the author test doesn't turn vacuous when the registry changes.
+// English books, empty unless a test fills it (most cases want the Swahili-only
+// library below); reset by each such test.
+const english = vi.hoisted(() => ({ books: [] as unknown[] }));
+
 vi.mock('$lib/advertised-locales', () => ({
 	ADVERTISED_LOCALES: ['en', 'es', 'sw'],
 	UNADVERTISED_LOCALES: []
@@ -85,7 +89,9 @@ vi.mock('$lib/library-public', () => {
 							series: null
 						}
 					]
-				: [],
+				: l === 'en'
+					? english.books
+					: [],
 		// A place hub in English and Swahili, none in Spanish.
 		listHubs: async (l = 'en') =>
 			l === 'en' || l === 'sw'
@@ -135,6 +141,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	chapters: [],
 	openings: [],
 	modern: [],
+	bible: [],
 	guides: [],
 	...over
 });
@@ -269,6 +276,13 @@ describe('sections', () => {
 		expect(sectionLocale('modern')).toBeUndefined();
 	});
 
+	it('gives the Bible’s chapters their own section, carrying only English', () => {
+		const d = data({ bible: [entry({ en: '/books/psalms/24/' })] });
+		expect(sections()).toContain('bible');
+		expect(sectionEntries(d, 'bible')).toHaveLength(1);
+		expect(sectionLocale('bible')).toBeUndefined();
+	});
+
 	it('gives the leader’s guides their own section', () => {
 		const d = data({ guides: [entry({ en: '/books/pilgrims-progress-children/guide/' })] });
 		expect(sections()).toContain('guides');
@@ -359,6 +373,28 @@ describe('build() chapter entries', () => {
 			[['en', '/books/humility/modern/2/']]
 		]);
 		expect(modern[0].lastmod).toBe('2026-09-10T10:00:00Z');
+	});
+
+	it('lists every chapter of a Bible book past its opening, and no other book’s', async () => {
+		const bible = { slug: 'the-bible', title: 'The Bible', position: 19, total: 66 };
+		english.books = [
+			{ slug: 'psalms', chapter_count: 3, series: bible, updated_at: '2026-11-01T00:00:00Z', topics: [], author: { slug: 'open-word-bible', name: 'Open Word Bible' } },
+			{ slug: 'humility', chapter_count: 2, series: null, topics: [], author: { slug: 'andrew-murray', name: 'Andrew Murray' } }
+		];
+		resetSitemapData();
+		try {
+			const { bible: listed, openings } = await sitemapData();
+			expect(listed.map((e) => [...e.byLocale])).toEqual([
+				[['en', '/books/psalms/2/']],
+				[['en', '/books/psalms/3/']]
+			]);
+			expect(listed[0].lastmods?.get('en')).toBe('2026-11-01T00:00:00Z');
+			// The opening is listed once, under chapters, not again here.
+			expect(openings.map((e) => e.byLocale.get('en'))).toContain('/books/psalms/1/');
+		} finally {
+			english.books = [];
+			resetSitemapData();
+		}
 	});
 
 	it('lists each leader’s guide in the locales whose hub has it', async () => {

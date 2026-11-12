@@ -398,6 +398,11 @@ export interface BookDetail extends BookSummary {
 	/** This devotional's year-long plan in this language (plan_seed.DAILY_PLANS),
 	 *  or "". Optional so an API running behind this build omits it. */
 	daily_plan?: string;
+	/** A book of the Bible: the library's sermons whose text is in it (the first
+	 *  few, in canon order), their total, and the sermons shelf's facet name for
+	 *  the book ("Psalms"). Null on any other book and where no sermon treats it;
+	 *  optional so an API behind this build omits it. */
+	bible_sermons?: { book: string; count: number; sermons: SermonSummary[] } | null;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on

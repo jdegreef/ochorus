@@ -2900,4 +2900,53 @@ class ScriptureView(APIView):
         data = lookup(ref[:120])
         if not data:
             return Response({"detail": "No such reference."}, status=404)
-        return Response(data)
+        return Response({**data, "bible_chapter": _bible_reader_chapter(ref[:120])})
+
+
+#: A Bible book's reader chapter is titled with its Bible chapter ("Romans 8",
+#: "Psalm 23"); the introduction and conclusion carry no number.
+_TRAILING_NUMBER = re.compile(r"\s(\d+)$")
+
+
+def _bible_reader_chapters() -> dict[int, tuple[str, frozenset[int]]]:
+    """{canonical number: (slug, Bible chapters it prints)} for the library's
+    published English Bible books — once per content revision, not per tap.
+
+    A Bible book is built as an introduction, one reader chapter per English
+    Bible chapter, then a conclusion (``build_owb_book``): Bible chapter ``n``
+    is reader chapter ``n + 1``, and its title says so. A chapter counts only
+    when both agree, so a drifted layout drops the link rather than open the
+    wrong chapter.
+    """
+    from .management.commands.build_owb_book import SERIES_SLUG
+    from .models import ContentRevision
+
+    revision = ContentRevision.current()
+    cached = cache.get("bible-reader-chapters")
+    if cached is not None and cached[0] == revision:
+        return cached[1]
+    found: dict[int, tuple[str, set[int]]] = {}
+    for position, slug, order, title in Chapter.objects.filter(
+        book__series__slug=SERIES_SLUG, book__language="en", book__is_published=True
+    ).values_list("book__series_position", "book__slug", "order", "title"):
+        m = _TRAILING_NUMBER.search(title or "")
+        if position and m and int(m.group(1)) == order - 1:
+            found.setdefault(position, (slug, set()))[1].add(order - 1)
+    books = {pos: (slug, frozenset(chs)) for pos, (slug, chs) in found.items()}
+    cache.set("bible-reader-chapters", (revision, books), timeout=None)
+    return books
+
+
+def _bible_reader_chapter(ref: str) -> dict | None:
+    """Where the library's own Bible prints the chapter ``ref`` is in:
+    ``{"slug", "order"}`` of that reader chapter, or None when the library has
+    no published English edition of the book (the apocrypha, or a book not yet
+    shipped) — see ``_bible_reader_chapters``."""
+    from .scripture import chapter_of
+
+    found = chapter_of(ref)
+    if found is None:
+        return None
+    book, chapter = found
+    slug, chapters = _bible_reader_chapters().get(book, (None, frozenset()))
+    return {"slug": slug, "order": chapter + 1} if chapter in chapters else None

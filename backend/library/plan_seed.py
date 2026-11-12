@@ -871,6 +871,51 @@ CURATED_PLANS = [
             chapters("revelation", 2, 2),  # Revelation 1: the living one
         ],
     ),
+    # Scripture with the classics: a Romans chapter of the Open Word Bible,
+    # then (most days after) the chapter of Luther's teaching that grew from
+    # it. A day reads one thing, so the pair is two days, not one.
+    (
+        "romans-with-luther",
+        "Romans with Luther",
+        "Four weeks through Paul's letter to the Romans in the Open Word Bible, "
+        "with Martin Luther beside it. Most chapters of Romans are followed by "
+        "the part of Luther's teaching they set alight: the righteousness of God "
+        "in Romans 1, faith alone with Abraham, baptism in Romans 6, righteous "
+        "and a sinner at once in Romans 7, no condemnation in Romans 8, the "
+        "bound will, the Word heard, the Christian's calling, the two kingdoms "
+        "and the freedom of a Christian, with a short article on justification "
+        "by faith along the way. Twenty-eight days, about five minutes each.",
+        [
+            chapters("romans", 2, 2),  # Romans 1
+            chapters("key-teachings-of-martin-luther", 3, 3),  # The Righteousness of God (Romans 1:17)
+            chapters("romans", 3, 3),  # Romans 2
+            chapters("romans", 4, 4),  # Romans 3
+            article("what-is-justification-by-faith"),  # Romans 3:28, 4:5, 5:1
+            chapters("romans", 5, 5),  # Romans 4
+            chapters("key-teachings-of-martin-luther", 4, 4),  # Faith Alone (Abraham believed, Romans 4)
+            chapters("romans", 6, 6),  # Romans 5
+            chapters("key-teachings-of-martin-luther", 5, 5),  # The Theology of the Cross
+            chapters("romans", 7, 7),  # Romans 6
+            chapters("key-teachings-of-martin-luther", 12, 12),  # I Am Baptised (Romans 6)
+            chapters("romans", 8, 8),  # Romans 7
+            chapters("key-teachings-of-martin-luther", 21, 21),  # Righteous and a Sinner at Once (Romans 7:14)
+            chapters("romans", 9, 9),  # Romans 8
+            chapters("key-teachings-of-martin-luther", 6, 6),  # Law and Gospel (Romans 8:1)
+            chapters("romans", 10, 10),  # Romans 9
+            chapters("key-teachings-of-martin-luther", 8, 8),  # The Bondage of the Will
+            chapters("romans", 11, 11),  # Romans 10
+            chapters("key-teachings-of-martin-luther", 9, 9),  # The Word Alone (faith comes by hearing, Romans 10:17)
+            chapters("romans", 12, 12),  # Romans 11
+            chapters("romans", 13, 13),  # Romans 12
+            chapters("key-teachings-of-martin-luther", 11, 11),  # Holy Work in Ordinary Places (a living sacrifice)
+            chapters("romans", 14, 14),  # Romans 13
+            chapters("key-teachings-of-martin-luther", 19, 19),  # Two Kingdoms (Romans 13:1)
+            chapters("romans", 15, 15),  # Romans 14
+            chapters("key-teachings-of-martin-luther", 7, 7),  # Lord of All, Servant of All (the weak and the strong)
+            chapters("romans", 16, 16),  # Romans 15
+            chapters("romans", 17, 17),  # Romans 16
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that
