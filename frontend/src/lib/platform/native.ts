@@ -263,7 +263,6 @@ const sessionSet = (key: string, value: string): void => {
 };
 
 export function startAppShell(hooks: AppShellHooks): void {
-
 	if (started) return;
 	started = true;
 
