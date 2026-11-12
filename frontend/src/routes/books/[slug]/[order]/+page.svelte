@@ -67,6 +67,7 @@
 	import { readingPace } from '$lib/readingPace.svelte';
 	import { readingTimer } from '$lib/readingTime.svelte';
 	import { listen, GENTLE_RATE } from '$lib/listen.svelte';
+	import { takeBookListen } from '$lib/listenBook';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
@@ -1199,7 +1200,10 @@
 		// throw later in setup can't strand it): we roll into playback only if
 		// THIS is the chapter read-aloud asked to continue into, not one the
 		// reader picked by hand in the meantime.
-		const rollInto = autoContinueOrder === order;
+		// Or the book page's "Listen to the whole book" opened this chapter to
+		// start it ($lib/listenBook) — the same pick-up, from its first chapter.
+		const fromBookPage = takeBookListen(s, order);
+		const rollInto = autoContinueOrder === order || fromBookPage;
 		autoContinueOrder = null;
 
 		// Arriving from a bookmark / notebook deep-link (?p=N): seed the scroll

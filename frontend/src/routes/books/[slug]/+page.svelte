@@ -18,6 +18,7 @@
 		contentLang,
 		readingMinutes,
 		readingTime,
+		listenTime,
 		workPercent
 	} from '$lib/reading';
 	import {
@@ -60,6 +61,8 @@
 	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { listen } from '$lib/listen.svelte';
+	import { listenBookFor, requestBookListen } from '$lib/listenBook';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import GiftBookButton from '$lib/components/GiftBookButton.svelte';
@@ -159,6 +162,9 @@
 		finishedAt == null && resumeHere != null && (resumeHere > 1 || otherPlace != null)
 	);
 	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
+	// A book of the Bible offers to be listened to straight through, where this
+	// browser can read aloud at all (`listen.offered`: always in the prerender).
+	const listenWhole = $derived(listenBookFor(book) && listen.offered);
 	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
 	/** A first-time reader (and the prerender): nothing to resume or re-read. */
 	const fresh = $derived(finishedAt == null && !resuming);
@@ -880,6 +886,23 @@
 								>{/if}</a
 						>
 						{#if !book.daily}{@render reassurance()}{/if}
+						{#if listenWhole}
+							<!-- A book of the Bible, listened to straight through: its first
+							     chapter opens already reading aloud, and the reader's roll-over
+							     carries it chapter by chapter ($lib/listenBook). A plain link to
+							     that chapter without the script, or opened in a new tab. -->
+							<a
+								href={readHref(firstOrder)}
+								class="btn btn-ghost flex-col gap-0"
+								onclick={(e) => {
+									if (!e.defaultPrevented && e.button === 0 && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey))
+										requestBookListen(book.slug, firstOrder);
+								}}
+								><span class="inline-flex items-center gap-1.5"
+									><Icon name="headphones" size={18} />{t('bible.listenBook')}</span
+								>{#if totalWords}{' '}<span class="btn-sub">{listenTime(totalWords, listen.rate)}</span>{/if}</a
+							>
+						{/if}
 						{#if book.daily_plan}
 							<!-- The self-paced way through: day one is 1 January's
 							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
