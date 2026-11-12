@@ -43,6 +43,9 @@ import type { EntryGenerator, PageLoad } from './$types';
 // /sw/books/stepping-stones-2/<order> is a new page the crawler has to bake.
 // Prerender refresh 2026-08-05 (queue job #418): Unyenyekevu (Humility, 12 ch)
 // adds twelve more /sw chapter pages that do not exist yet.
+// Prerender refresh 2026-11-12 (the Bible): every chapter of the 66 books gains
+// the Open Word Bible's chapter summary under its title, and a Bible chapter's
+// head is now "Psalm 23 — Open Word Bible" — both baked into these pages.
 export const prerender = true;
 export const trailingSlash = 'always';
 

@@ -317,3 +317,82 @@ class EmbedTests(SimpleTestCase):
         )
         with self.assertRaises(CommandError):
             source.embed("{{OWB:MAT.12.43.s1}}")
+
+
+class SummaryTests(SimpleTestCase):
+    """OWB's chapter summaries, keyed by the source chapter, land in English ones."""
+
+    def source(self, books, english, summaries) -> Source:
+        fake = FakeCheckout(books, english)
+        self.addCleanup(fake.close)
+        (fake.root / "data" / "summaries").mkdir()
+        for code, by_chapter in summaries.items():
+            (fake.root / "data" / "summaries" / f"{code}.json").write_text(
+                json.dumps({"summaries": {n: {"en": s} for n, s in by_chapter.items()}})
+            )
+        code = next(iter(books))
+        return Source(fake.root, code)
+
+    def test_each_chapter_takes_its_own_curled(self):
+        source = self.source(
+            {"PSA": {
+                "1": [record("PSA.1.1.s1", ["PSA.1.1"], "How blessed.")],
+                "2": [record("PSA.2.1.s1", ["PSA.2.1"], "Why do the nations rage?")],
+            }},
+            {},
+            {"PSA": {"1": "The one who delights in God's instruction.", "2": "The \"nations\" plot."}},
+        )
+        self.assertEqual(
+            source.chapter_summaries(),
+            {1: "The one who delights in God’s instruction.", 2: "The “nations” plot."},
+        )
+
+    def test_a_chapter_hebrew_numbers_otherwise_joins_the_english_one_holding_it(self):
+        """Hebrew Joel 3 is English 2:28-32; Hebrew 4 is English 3."""
+        source = self.source(
+            {"JOL": {
+                "2": [record("JOL.2.1.s1", ["JOL.2.1", "JOL.2.2", "JOL.2.3"], "Blow the trumpet.")],
+                "3": [record("JOL.3.1.s1", ["JOL.3.1", "JOL.3.2"], "I will pour out my Spirit.")],
+                "4": [record("JOL.4.1.s1", ["JOL.4.1"], "In those days.")],
+            }},
+            {"JOL.3.1": ["JOL.2.28"], "JOL.3.2": ["JOL.2.29"], "JOL.4.1": ["JOL.3.1"]},
+            {"JOL": {"2": "The day is coming.", "3": "The Spirit poured out.", "4": "The nations judged."}},
+        )
+        self.assertEqual(
+            source.chapter_summaries(),
+            {2: "The day is coming. The Spirit poured out.", 3: "The nations judged."},
+        )
+
+    def test_a_split_chapter_gives_its_summary_to_the_english_chapter_it_fills(self):
+        """Hebrew Malachi 3:19-24 is all of English 4; 3:1-18 stays English 3."""
+        source = self.source(
+            {"MAL": {"3": [
+                record("MAL.3.1.s1", ["MAL.3.1", "MAL.3.2"], "I am sending my messenger."),
+                record("MAL.3.19.s1", ["MAL.3.19"], "The day is coming."),
+            ]}},
+            {"MAL.3.19": ["MAL.4.1"]},
+            {"MAL": {"3": "A messenger, and the day."}},
+        )
+        self.assertEqual(
+            source.chapter_summaries(), {3: "A messenger, and the day.", 4: "A messenger, and the day."}
+        )
+
+    def test_a_one_verse_shift_moves_no_summary_and_a_book_without_any_has_none(self):
+        source = self.source(
+            {"GEN": {
+                "31": [record("GEN.31.54.s1", ["GEN.31.54"], "Jacob offered a sacrifice.")],
+                "32": [
+                    record("GEN.32.1.s1", ["GEN.32.1"], "Laban left."),
+                    record("GEN.32.2.s1", ["GEN.32.2"], "Jacob went on."),
+                    record("GEN.32.3.s1", ["GEN.32.3"], "He sent messengers."),
+                ],
+            }},
+            {"GEN.32.1": ["GEN.31.55"], "GEN.32.2": ["GEN.32.1"], "GEN.32.3": ["GEN.32.2"]},
+            {"GEN": {"31": "Jacob and Laban part.", "32": "Jacob prepares to meet Esau."}},
+        )
+        self.assertEqual(
+            source.chapter_summaries(),
+            {31: "Jacob and Laban part.", 32: "Jacob prepares to meet Esau."},
+        )
+        bare = self.source({"GEN": {"1": [record("GEN.1.1.s1", ["GEN.1.1"], "In the beginning.")]}}, {}, {})
+        self.assertEqual(bare.chapter_summaries(), {})
