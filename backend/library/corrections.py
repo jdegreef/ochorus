@@ -8346,7 +8346,27 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("antes que Deus possa usá-los.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("Đức Chúa Trời mới có thể dùng họ.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
+# Source slips found translating the book to Vietnamese (#7663). Each pair is
+# anchored on English prose, so it bites the en edition only. Two are wrong
+# references whose quoted words settle them: "believe not the record that God
+# gave" is 1 John 5:10 (2 John has one chapter), and the advocate/propitiation
+# passage offered to "too great a sinner" is 1 John 2:1-2 (John 2 is Cana). es
+# and lg already print 1 John 5:10; every edition prints John 2:1-2. The rest
+# are plain typos (Luke 24:49 reads "endued"; James 1:6 "a wave of the sea").
+BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {}).setdefault("replacements", []).extend([
+    ("according to his verse, that the Gospel", "according to this verse, that the Gospel"),  # ch4
+    ("1 Cor. xv.; 1‒4.", "1 Cor. xv. 1‒4."),                           # ch4
+    ("; John ii. 1‒2;", "; 1 John ii. 1‒2;"),                       # ch5
+    ("2 John v. 10, is very effective", "1 John v. 10, is very effective"),  # ch8
+    ("Is there some sin your life?", "Is there some sin in your life?"),    # ch8
+    ("endured with power from on high", "endued with power from on high"),  # ch13
+    ("Acts; i. 22", "Acts i. 22"),                                      # ch13
+    ("(i Cor. xii.", "(1 Cor. xii."),                                   # ch13
+    ("like a wave of sea", "like a wave of the sea"),                   # ch13
+])
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
 # fallback walk, and that walk dropped every div that was not hand-made poem
