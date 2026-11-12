@@ -5,6 +5,8 @@ import { COVER_STYLE_IDS } from './coverStyles';
 import type { BookSummary } from './library-public';
 import {
 	PLATE_FACES,
+	SANS_SCRIPT_FACE,
+	SCRIPT_SHEET,
 	finishedPlates,
 	isRtl,
 	plateDate,
@@ -12,6 +14,7 @@ import {
 	plateFontStack,
 	plateName,
 	plateStyle,
+	plateWords,
 	splitAround,
 	textScripts
 } from './bookplate';
@@ -101,6 +104,32 @@ describe('splitAround', () => {
 		expect(splitAround('読了：%title%', '%title%')).toEqual(['読了：', '']);
 		expect(splitAround('%title% を読了', '%title%')).toEqual(['', 'を読了']);
 		expect(splitAround('no token', '%title%')).toEqual(['no token', '']);
+	});
+});
+
+describe('plateWords — one reading of the catalogue for the page and the PNG', () => {
+	const catalogue = (finished: string, by: string) => (key: string) =>
+		key === 'bookplate.finished' ? finished : key === 'bookplate.by' ? by : key;
+	it('puts the words around the title and the author in the byline', () => {
+		expect(plateWords(catalogue('finished %title%', 'by %author%'), 'John Bunyan')).toEqual({
+			before: 'finished',
+			after: '',
+			byline: 'by John Bunyan'
+		});
+	});
+	it('keeps the catalogue’s word order', () => {
+		expect(plateWords(catalogue('%title% を読了', '%author% 著'), 'バニヤン')).toEqual({
+			before: '',
+			after: 'を読了',
+			byline: 'バニヤン 著'
+		});
+	});
+});
+
+describe('the young-reader plate’s sans faces', () => {
+	it('names every script’s sans face in its stack, so the PNG loads what it draws', () => {
+		for (const face of Object.values(SANS_SCRIPT_FACE)) expect(plateFontStack('young')).toContain(`'${face}'`);
+		expect(Object.keys(SANS_SCRIPT_FACE).sort()).toEqual(Object.keys(SCRIPT_SHEET).sort());
 	});
 });
 

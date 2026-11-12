@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { CoverStyleId } from '$lib/coverStyles';
-	import { splitAround } from '$lib/bookplate';
+	import { plateWords } from '$lib/bookplate';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -37,14 +37,11 @@
 		busy = true;
 		try {
 			const { saveBookplate } = await import('$lib/bookplateCard');
-			const [before, after] = splitAround(t('bookplate.finished'), '%title%');
 			const result = await saveBookplate({
 				slug,
 				name,
-				before,
 				title,
-				after,
-				byline: t('bookplate.by').replace('%author%', author),
+				...plateWords(t, author),
 				date,
 				style,
 				locale: getLang()
