@@ -25849,6 +25849,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ko/watchman-nee-a-life": {
+			"ground": "33b35316792bbf5d74585f3684e473685f8efbb17c31a7ba7e4529ee60d50eac",
+			"style": "house",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": "a168f2144f009cece5fc01c0f4bc3dc6e6bcdd22ff525f97df73af446d1362ab",
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[131, 441, 469, 543]
+				],
+				"subtitle": [
+					[71, 566, 529, 594]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				201,
+				594
+			]
+		},
 		"ko/women-who-moved-heaven-2": {
 			"ground": "bfc84ab1db4a6822e20bf5075083b120bae4ada5575eb7868588ca97aab37431",
 			"style": "originals",
