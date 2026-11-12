@@ -24,12 +24,12 @@
 // the address on the left.
 
 import { channels, inkSafe } from "$lib/coverArt";
+import { graphemes } from "$lib/gift";
 import {
   type CardShareResult,
   cardScript,
   drawMark,
   ensureFonts,
-  fitQuote,
   quoteStyle,
   shareCardImage,
   SIZE,
@@ -155,11 +155,103 @@ function clampLines(
   width: number,
   max: number,
 ): string[] {
-  const lines = wrapLines(ctx as CanvasRenderingContext2D, text, width);
+  return cutLines(ctx, wrapHard(ctx, text, width, true), width, max);
+}
+
+/** Keep the first `max` lines, closing the cut with an ellipsis that still
+ *  fits the width (trailing punctuation dropped first, then graphemes). */
+function cutLines(
+  ctx: TextMeasure,
+  lines: string[],
+  width: number,
+  max: number,
+): string[] {
   if (lines.length <= max) return lines;
   const kept = lines.slice(0, max);
-  kept[max - 1] = `${kept[max - 1].replace(/[,;:.\s]+$/, "")}…`;
+  // Strip again after every pop: a dropped character can expose a comma or
+  // an opening bracket, which must not sit against the ellipsis either.
+  const tidy = (t: string) => t.replace(/[\s,;:.、。，…「『（(—–-]+$/, "");
+  let last = tidy(kept[max - 1]);
+  while (
+    graphemes(last).length > 1 &&
+    ctx.measureText(`${last}…`).width > width
+  )
+    last = tidy(graphemes(last).slice(0, -1).join(""));
+  kept[max - 1] = `${last}…`;
   return kept;
+}
+
+/** `wrapLines`, with a way through a run it cannot break. `wrapLines` breaks
+ *  only at spaces (and per character in kana and kanji), so an unspaced run —
+ *  "Love—joy—peace—patience—kindness", a URL, Hangul written without spaces —
+ *  came back as one line and ran across the divider into the address half.
+ *  Where a line comes back too wide, the whole text is re-wrapped greedily
+ *  with each too-wide word split after its dashes and, only when
+ *  `breakWords` (the last resort), between graphemes — never inside a
+ *  cluster. The pieces flow on with the words after them. */
+function wrapHard(
+  ctx: TextMeasure,
+  text: string,
+  width: number,
+  breakWords: boolean,
+): string[] {
+  const lines = wrapLines(ctx as CanvasRenderingContext2D, text, width);
+  const fits = (t: string) => ctx.measureText(t).width <= width;
+  if (lines.every(fits)) return lines;
+  // Pieces, each marked with whether a space comes before it.
+  const pieces: { s: string; space: boolean }[] = [];
+  text.split(" ").forEach((word, i) => {
+    const parts = fits(word) ? [word] : word.split(/(?<=[—–-])/);
+    parts
+      .flatMap((p) => (breakWords && !fits(p) ? graphemes(p) : [p]))
+      .forEach((p, j) => pieces.push({ s: p, space: i > 0 && j === 0 }));
+  });
+  const out: string[] = [];
+  let cur = "";
+  for (const { s, space } of pieces) {
+    const trial = cur ? cur + (space ? " " : "") + s : s;
+    if (cur && !fits(trial)) {
+      out.push(cur);
+      cur = s;
+    } else cur = trial;
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+
+/**
+ * The quote, set as large as the message half allows (58px down to 26px).
+ * Unlike the quote card's `fitQuote` it always fits, in both directions: at
+ * the smallest size a run still too wide is broken between graphemes, and a
+ * quote still too long — a 300-character quote in a script set a full em per
+ * glyph (kana, kanji) needs ~20 lines at 26px — is cut at the last line that
+ * fits, rather than run across the divider or into the author.
+ */
+function fitMessage(
+  ctx: TextMeasure,
+  text: string,
+  style: string,
+): { lines: string[]; fontSize: number; lineHeight: number } {
+  const largest = 58;
+  const smallest = 26;
+  for (let fs = largest; fs >= smallest; fs -= 2) {
+    ctx.font = `${style} ${fs}px ${POSTCARD_SERIF}`;
+    const lines = wrapHard(ctx, text, MSG.w, false);
+    const lineHeight = fs * 1.34;
+    // A size fits when every line is inside the half both ways: a long word
+    // ("crossingsweeper" at 58px) shrinks the type before anything breaks it.
+    if (
+      lines.length * lineHeight <= MSG.h &&
+      lines.every((l) => ctx.measureText(l).width <= MSG.w)
+    )
+      return { lines, fontSize: fs, lineHeight };
+  }
+  // Nothing fits whole: break inside the runs still too wide, at the smallest
+  // size, and cut at the last line the half holds.
+  const lineHeight = smallest * 1.34;
+  const max = Math.floor(MSG.h / lineHeight);
+  const lines = cutLines(ctx, wrapHard(ctx, text, MSG.w, true), MSG.w, max);
+  return { lines, fontSize: smallest, lineHeight };
 }
 
 /** Mirror a box across the card's vertical centre line. */
@@ -176,16 +268,7 @@ export function layoutPostcard(
   const style = quoteStyle(script);
 
   const quote = trimQuote(opts.quote);
-  const fit = fitQuote(
-    ctx as CanvasRenderingContext2D,
-    quote,
-    MSG.w,
-    MSG.h,
-    style,
-    58,
-    26,
-    POSTCARD_SERIF,
-  );
+  const fit = fitMessage(ctx, quote, style);
   const blockHeight = fit.lines.length * fit.lineHeight;
   const top = MSG.y + Math.max(0, (MSG.h - blockHeight) / 2);
 
@@ -349,12 +432,14 @@ function drawStamp(ctx: CanvasRenderingContext2D, s: PostcardLayout["stamp"]) {
   const mark = 64;
   drawMark(ctx, inner.x + (inner.w - mark) / 2, inner.y + 26, mark, "#ffffff");
   ctx.fillStyle = "#ffffff";
-  ctx.font = "600 17px 'Fraunces Variable', Georgia, serif";
+  // 15px: at 17px with 3px tracking the word ran from frame line to frame
+  // line (rendered in Fraunces), its O and S touching the inner rule.
+  ctx.font = "600 15px 'Fraunces Variable', Georgia, serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "alphabetic";
   ctx.direction = "ltr";
-  ctx.letterSpacing = "3px";
-  ctx.fillText("OCHORUS", inner.x + inner.w / 2 + 1.5, inner.y + inner.h - 14);
+  ctx.letterSpacing = "2.5px";
+  ctx.fillText("OCHORUS", inner.x + inner.w / 2 + 1.25, inner.y + inner.h - 15);
   ctx.letterSpacing = "0px";
 }
 
