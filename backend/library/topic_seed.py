@@ -55,6 +55,7 @@ TOPICS = [
             "faithful-unto-death",
             "seven-times-a-day",
             "a-mighty-fortress",
+            "the-fire-on-the-altar",
             "psalms",
             "habakkuk",
         ],

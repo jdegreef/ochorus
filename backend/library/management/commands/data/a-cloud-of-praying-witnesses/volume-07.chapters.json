@@ -1,0 +1,486 @@
+[
+  {
+    "title": "Introduction: Where We Are in the Story",
+    "anchor": "2 Timothy 1:6",
+    "themes": [],
+    "person": null,
+    "era": "c. 1650-1800",
+    "region": "Europe and North America",
+    "voices": [],
+    "read_more": []
+  },
+  {
+    "title": "Be Still and Know",
+    "anchor": "Psalm 46:10",
+    "themes": [
+      "Learning to Pray",
+      "Making Room for Prayer",
+      "Guidance and Surrender"
+    ],
+    "person": "Jeanne Guyon",
+    "era": "c. 1685",
+    "region": "Montargis, Grenoble and Paris (France)",
+    "voices": [
+      {
+        "author": "jeanne-guyon",
+        "book": "a-short-and-easy-method-of-prayer",
+        "chapter": "All Are Commanded to Pray"
+      },
+      {
+        "author": "jeanne-guyon",
+        "book": "a-short-and-easy-method-of-prayer",
+        "chapter": "A Word to Preachers"
+      }
+    ],
+    "read_more": [
+      "a-short-and-easy-method-of-prayer",
+      "key-teachings-of-jeanne-guyon"
+    ]
+  },
+  {
+    "title": "Little Churches Within the Church",
+    "anchor": "Malachi 3:16",
+    "themes": [
+      "Praying Together",
+      "Humility and Mercy",
+      "Praying for Others"
+    ],
+    "person": "Philipp Jakob Spener and the collegia pietatis",
+    "era": "c. 1675",
+    "region": "Frankfurt am Main (Germany)",
+    "voices": [
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "Prayer and Love"
+      }
+    ],
+    "read_more": [
+      "school-of-prayer",
+      "prevailing-prayer"
+    ]
+  },
+  {
+    "title": "An Orphanage Built on Prayer",
+    "anchor": "Psalm 68:5",
+    "themes": [
+      "The Father's Love",
+      "Faith",
+      "Praying for Others"
+    ],
+    "person": "August Hermann Francke",
+    "era": "c. 1698",
+    "region": "Glaucha and Halle (Germany)",
+    "voices": [
+      {
+        "author": "george-muller",
+        "book": "answers-to-prayer",
+        "chapter": "Beginning and Early Days of the Orphan Work"
+      },
+      {
+        "author": "arthur-t-pierson",
+        "book": "george-muller-of-bristol",
+        "chapter": "Making Ready the Chosen Vessel"
+      }
+    ],
+    "read_more": [
+      "answers-to-prayer",
+      "george-muller-of-bristol"
+    ]
+  },
+  {
+    "title": "The Fire Shall Never Go Out",
+    "anchor": "Leviticus 6:13",
+    "themes": [
+      "Forgiveness",
+      "Praying Together",
+      "Persistence"
+    ],
+    "person": "The Moravian Brethren of Herrnhut",
+    "era": "c. 1727",
+    "region": "Herrnhut (Saxony)",
+    "voices": [
+      {
+        "author": "john-r-mott",
+        "book": "evangelization-of-the-world",
+        "chapter": "The Possibility of Evangelizing the World in This Generation in View of Some Modern Missionary Achievements"
+      },
+      {
+        "author": "andrew-murray",
+        "book": "school-of-prayer",
+        "chapter": "The Power of United Prayer"
+      }
+    ],
+    "read_more": [
+      "ministry-of-intercession",
+      "evangelization-of-the-world"
+    ]
+  },
+  {
+    "title": "Worthy Is the Lamb",
+    "anchor": "Revelation 5:9",
+    "themes": [
+      "Praying for Others",
+      "Prayer in Suffering and Testing",
+      "Guidance and Surrender"
+    ],
+    "person": "Count Zinzendorf and the Moravian missionaries",
+    "era": "c. 1732",
+    "region": "Herrnhut (Saxony), St Thomas (Caribbean) and Greenland",
+    "voices": [
+      {
+        "author": "john-wesley",
+        "book": "the-journal-of-john-wesley",
+        "chapter": "Wesley as a Missionary to Georgia"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "an-all-round-ministry",
+        "chapter": "“Forward!”"
+      }
+    ],
+    "read_more": [
+      "the-journal-of-john-wesley",
+      "an-all-round-ministry"
+    ]
+  },
+  {
+    "title": "The Apron over Her Head",
+    "anchor": "Psalm 31:20",
+    "themes": [
+      "Making Room for Prayer",
+      "Learning to Pray",
+      "Praying for Others"
+    ],
+    "person": "Susanna Wesley",
+    "era": "c. 1712",
+    "region": "Epworth (England)",
+    "voices": [
+      {
+        "author": "susanna-wesley",
+        "book": "susanna-wesley-clarke",
+        "chapter": "Fire and Peril"
+      },
+      {
+        "author": "susanna-wesley",
+        "book": "susanna-wesley-clarke",
+        "chapter": "The Home Rebuilt"
+      },
+      {
+        "author": "susanna-wesley",
+        "book": "susanna-wesley-clarke",
+        "chapter": "Teaching in Public"
+      }
+    ],
+    "read_more": [
+      "susanna-wesley-clarke",
+      "key-teachings-of-john-wesley"
+    ]
+  },
+  {
+    "title": "\"God Does Nothing but in Answer to Prayer\"",
+    "anchor": "James 4:2",
+    "themes": [
+      "Asking Boldly",
+      "Forgiveness",
+      "Guidance and Surrender"
+    ],
+    "person": "John Wesley",
+    "era": "c. 1738",
+    "region": "London (England)",
+    "voices": [
+      {
+        "author": "john-wesley",
+        "book": "the-journal-of-john-wesley",
+        "chapter": "Return to England and the Warmed Heart"
+      },
+      {
+        "author": "john-wesley",
+        "book": "plain-account-christian-perfection",
+        "chapter": "Section 25"
+      }
+    ],
+    "read_more": [
+      "the-journal-of-john-wesley",
+      "plain-account-christian-perfection"
+    ]
+  },
+  {
+    "title": "Oh, That You Would Tear the Heavens",
+    "anchor": "Isaiah 64:1",
+    "themes": [
+      "Learning to Pray",
+      "Asking Boldly",
+      "Praying for Others"
+    ],
+    "person": "George Whitefield",
+    "era": "c. 1739",
+    "region": "Kingswood, Bristol (England)",
+    "voices": [
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "Intercession Every Christian's Duty"
+      },
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "The Resurrection of Lazarus"
+      },
+      {
+        "author": "john-wesley",
+        "book": "sermons-on-several-occasions",
+        "chapter": "On the Death of the Rev. Mr. George Whitefield"
+      }
+    ],
+    "read_more": [
+      "selected-sermons-whitefield",
+      "sermons-on-several-occasions",
+      "key-teachings-of-george-whitefield"
+    ]
+  },
+  {
+    "title": "A Concert of Prayer",
+    "anchor": "Zechariah 8:21",
+    "themes": [
+      "Praying Together",
+      "Making Room for Prayer",
+      "Persistence"
+    ],
+    "person": "Jonathan Edwards",
+    "era": "c. 1747",
+    "region": "Northampton, Massachusetts (New England)",
+    "voices": [
+      {
+        "author": "jonathan-edwards",
+        "book": "religious-affections",
+        "chapter": "X. Another thing wherein those affections that are truly gracious and holy, differ from those that are false, is beautiful symmetry and proportion"
+      }
+    ],
+    "read_more": [
+      "religious-affections",
+      "key-teachings-of-jonathan-edwards"
+    ]
+  },
+  {
+    "title": "Praying in the Snow",
+    "anchor": "Galatians 4:19",
+    "themes": [
+      "Praying for Others",
+      "Prayer in Suffering and Testing",
+      "Persistence"
+    ],
+    "person": "David Brainerd",
+    "era": "c. 1743-1747",
+    "region": "Kaunaumeek (New York) and Crossweeksung (New Jersey)",
+    "voices": [
+      {
+        "author": "david-brainerd",
+        "book": "life-and-diary-of-david-brainerd",
+        "chapter": "Being part 1st of his public journal of the Rise and Progress of a remarkable work of grace among the Indians in New-Jersey and Pennsylvania, kept by order of the Society in Scotland for propagating Christian knowledge.—Commencement of his labors at Crossweeksung.—Renewal of labor at the Forks of De"
+      },
+      {
+        "author": "david-brainerd",
+        "book": "life-and-diary-of-david-brainerd",
+        "chapter": "From President Edwards’ Preface"
+      },
+      {
+        "author": "david-brainerd",
+        "book": "life-and-diary-of-david-brainerd",
+        "chapter": "From about the time when he began the study of Theology, till he was licensed to preach"
+      }
+    ],
+    "read_more": [
+      "life-and-diary-of-david-brainerd",
+      "life-and-diary-of-david-brainerd-teens"
+    ]
+  },
+  {
+    "title": "Revive Your Work",
+    "anchor": "Habakkuk 3:2",
+    "themes": [
+      "Praying Together",
+      "Asking Boldly",
+      "Humility and Mercy"
+    ],
+    "person": "The Cambuslang revival (William McCulloch and the praying societies)",
+    "era": "c. 1742",
+    "region": "Cambuslang (Scotland)",
+    "voices": [
+      {
+        "author": "george-whitefield",
+        "book": "selected-sermons-whitefield",
+        "chapter": "The Necessity and Benefits of Religious Society"
+      },
+      {
+        "author": "jonathan-edwards",
+        "book": "selected-sermons-edwards",
+        "chapter": "A Farewell Sermon"
+      }
+    ],
+    "read_more": [
+      "selected-sermons-whitefield",
+      "selected-sermons-edwards",
+      "revival-lectures"
+    ]
+  },
+  {
+    "title": "Résister",
+    "anchor": "Galatians 6:9",
+    "themes": [
+      "Prayer in Suffering and Testing",
+      "Persistence",
+      "Faith"
+    ],
+    "person": "Marie Durand and the Huguenot women of the Tour de Constance",
+    "era": "c. 1730-1768",
+    "region": "Aigues-Mortes (France)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "purpose-in-prayer",
+        "chapter": "Pray and Never Faint"
+      }
+    ],
+    "read_more": [
+      "purpose-in-prayer",
+      "letters-of-samuel-rutherford"
+    ]
+  },
+  {
+    "title": "Ask Large Petitions",
+    "anchor": "Ephesians 3:20-21",
+    "themes": [
+      "Asking Boldly",
+      "Forgiveness",
+      "Humility and Mercy"
+    ],
+    "person": "John Newton and the Olney prayer meeting",
+    "era": "c. 1764-1788",
+    "region": "Olney (England)",
+    "voices": [
+      {
+        "author": "charles-h-spurgeon",
+        "book": "spurgeon-on-prayer",
+        "chapter": "The Throne of Grace"
+      }
+    ],
+    "read_more": [
+      "spurgeon-on-prayer",
+      "possibilities-of-prayer",
+      "a-practical-view-of-christianity"
+    ]
+  },
+  {
+    "title": "Pulled from Their Knees",
+    "anchor": "Galatians 3:28",
+    "themes": [
+      "Praying Together",
+      "Faith",
+      "Forgiveness"
+    ],
+    "person": "Richard Allen and Absalom Jones",
+    "era": "c. 1792",
+    "region": "Philadelphia (Pennsylvania)",
+    "voices": [
+      {
+        "author": "richard-allen",
+        "book": "life-experience-gospel-labours",
+        "chapter": "The Life of Richard Allen"
+      },
+      {
+        "author": "richard-allen",
+        "book": "life-experience-gospel-labours",
+        "chapter": "An Address to Those Who Keep Slaves"
+      }
+    ],
+    "read_more": [
+      "life-experience-gospel-labours",
+      "they-were-young-1"
+    ]
+  },
+  {
+    "title": "All the Families of the Nations",
+    "anchor": "Psalm 22:27",
+    "themes": [
+      "Praying Together",
+      "Faith",
+      "Prayer in Suffering and Testing"
+    ],
+    "person": "Samson Occom",
+    "era": "c. 1787",
+    "region": "New Stockbridge and Brothertown (New York)",
+    "voices": [
+      {
+        "author": "e-m-bounds",
+        "book": "essentials-of-prayer",
+        "chapter": "The Universality of Prayer"
+      }
+    ],
+    "read_more": [
+      "they-were-young-1",
+      "essentials-of-prayer"
+    ]
+  },
+  {
+    "title": "The Prayer Call of 1784",
+    "anchor": "Isaiah 54:2",
+    "themes": [
+      "Praying for Others",
+      "Learning to Pray",
+      "Praying Together"
+    ],
+    "person": "The Northamptonshire Baptists (John Sutcliff, Andrew Fuller, John Ryland)",
+    "era": "c. 1784",
+    "region": "Nottingham and Kettering (England)",
+    "voices": [
+      {
+        "author": "r-a-torrey",
+        "book": "how-to-pray",
+        "chapter": "Praying unto God"
+      }
+    ],
+    "read_more": [
+      "key-teachings-of-jonathan-edwards",
+      "how-to-pray"
+    ]
+  },
+  {
+    "title": "Expect Great Things",
+    "anchor": "Isaiah 54:3",
+    "themes": [
+      "Faith",
+      "Praying for Others",
+      "Humility and Mercy"
+    ],
+    "person": "William Carey",
+    "era": "c. 1792",
+    "region": "Nottingham (England) and Serampore (Bengal, India)",
+    "voices": [
+      {
+        "author": "john-r-mott",
+        "book": "evangelization-of-the-world",
+        "chapter": "The Possibility of Evangelizing the World in This Generation in View of the Opportunities, Facilities and Resources of the Church"
+      },
+      {
+        "author": "charles-h-spurgeon",
+        "book": "morning-by-morning",
+        "chapter": "August"
+      }
+    ],
+    "read_more": [
+      "they-were-young-4",
+      "morning-by-morning"
+    ]
+  },
+  {
+    "title": "Conclusion: Passing the Torch",
+    "anchor": "Romans 12:11-12",
+    "themes": [],
+    "person": "The praying church of the awakenings",
+    "era": "c. 1793",
+    "region": "Europe, North America and India",
+    "voices": [],
+    "read_more": []
+  }
+]
