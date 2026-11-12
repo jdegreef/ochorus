@@ -1,0 +1,116 @@
+{
+    "kind": "sermon",
+    "slug": "i-am-crucified-with-christ",
+    "language": "fr",
+    "job_issue": 7924,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Galatians 2:20",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 23:1",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Matthew 12:30",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 19
+        },
+        {
+            "reference": "John 8:24",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 21
+        },
+        {
+            "reference": "Mark 16:15",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 45
+        },
+        {
+            "reference": "Romans 6:11",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 49
+        },
+        {
+            "reference": "Colossians 1:27",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 63
+        },
+        {
+            "reference": "Ephesians 1:6",
+            "status": "self_rendered",
+            "block_index": 63
+        },
+        {
+            "reference": "Colossians 2:10",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 64
+        },
+        {
+            "reference": "1 Corinthians 1:30",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 64
+        },
+        {
+            "reference": "Hebrews 13:21",
+            "status": "self_rendered",
+            "block_index": 65
+        },
+        {
+            "reference": "Hebrews 12:22-23",
+            "status": "self_rendered",
+            "block_index": 66
+        },
+        {
+            "reference": "Revelation 22:4",
+            "status": "self_rendered",
+            "block_index": 70
+        },
+        {
+            "reference": "1 John 3:2",
+            "status": "self_rendered",
+            "block_index": 70
+        },
+        {
+            "reference": "John 3:30",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 79
+        },
+        {
+            "reference": "James 1:23-24",
+            "status": "self_rendered",
+            "block_index": 84
+        },
+        {
+            "reference": "Psalm 90:17",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 88
+        },
+        {
+            "reference": "Revelation 22:11",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 92
+        },
+        {
+            "reference": "Matthew 6:10",
+            "status": "mined",
+            "source_file": "Louis Segond 1910 (fralsg) Bible text",
+            "block_index": 95
+        }
+    ]
+}
