@@ -24278,6 +24278,21 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ko/how-to-bring-men-to-christ": {
+			"ground": "e15cb5852d5862a5c1686066a6734dca1219de143ef1f4816711b8f976cbfdda",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b4567341479b65f2f109cd212c9e5c3fd904239b112eb9370a7635e6124e01fb",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/how-to-succeed-in-the-christian-life": {
 			"ground": "3ab7600f8d3d377d3b4c88eeaeb5a315e7a29532e04ad96cdba60528de3da24c",
 			"style": "revival",
@@ -31106,6 +31121,41 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"pt/key-teachings-of-a-b-simpson": {
+			"ground": "a2ee388c21cf1b3fedd1349e0a6946c3ad5aef111871bad5c904a209afb13bdc",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[126, 280, 474, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
 			]
 		},
 		"pt/key-teachings-of-gareth-evans": {
@@ -42215,6 +42265,41 @@
 				522
 			]
 		},
+		"vi/a-short-and-easy-method-of-prayer": {
+			"ground": "240ce36a8e9e734496e05e41625fda28a0abc3e5a38112ccd319f916efe4a926",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[67, 230, 533, 312],
+					[120, 302, 480, 384],
+					[86, 374, 514, 456]
+				],
+				"subtitle": [
+					[80, 532, 520, 560]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
+			]
+		},
 		"vi/absolute-surrender": {
 			"ground": "5ac32bedaef6917ef40339ac607fa725ff75bdd700ef67eece459f1afa1db9c1",
 			"style": "devotional",
@@ -42931,6 +43016,42 @@
 			"middle": [
 				205,
 				590
+			]
+		},
+		"vi/key-teachings-of-a-b-simpson": {
+			"ground": "9fa6669eaf7d78970687d556d0574e79a16c0ab14dad1d841fff626815de8f48",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[119, 169, 481, 232],
+					[134, 225, 466, 288],
+					[158, 280, 442, 343]
+				],
+				"subtitle": [
+					[151, 404, 449, 432],
+					[139, 432, 461, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"vi/key-teachings-of-gareth-evans": {

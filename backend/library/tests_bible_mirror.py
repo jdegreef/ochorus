@@ -1,4 +1,4 @@
-"""`scripts/bible_mirror.py`: the vie_kt repairs restore letters, never words.
+"""`scripts/bible_mirror.py`: its repairs restore letters and spacing, never words.
 
 The ebible mirror's Vietnamese text (Cadman, 1925) reaches worker sessions with
 encoding damage, and a translator who pastes it verbatim ships the damage to
@@ -184,3 +184,166 @@ class ParseTests(SimpleTestCase):
             verses,
             {"GEN 1:1": "one", "GEN 1:2": "two", "GEN 1:3": "three continued closing"},
         )
+
+
+# --------------------------------------------------------------------------- #
+# fra_lsg, kor_old, por_bpm, amh_amh (2026-11-12). Each defect below was
+# rediscovered and hand-patched by 2-4 translation workers on one day; the
+# samples are the mirror's own lines, shortened.
+# --------------------------------------------------------------------------- #
+
+_FRA_USFM = {
+    "jhn.usfm": "\\id JHN\n\\c 3\n"
+    '\\v 16 \\x n \\xo 3.16 \\xt Ro 5:8.\\x*\\wj \\+w Car|strong="G1063"\\+w* '
+    '\\+w Dieu|strong="G2316"\\+w* \\+w a|strong="G1519"\\+w* \\+w tant|strong="G3779"\\+w* '
+    '\\+w aimé|strong="G3588"\\+w* \\+w le|strong="G1519"\\+w* \\+w monde|strong="G2889"\\+w* '
+    '\\+w qu|strong="G2443"\\+w*’\\+w il|strong="G1063"\\+w* \\+w a|strong="G1519"\\+w* '
+    '\\+w donné|strong="G1325"\\+w* \\+w son|strong="G1519"\\+w* \\+w Fils|strong="G5207"\\+w* '
+    '\\+w unique|strong="G3439"\\+w*,\\wj*\\x o \\xo 3.16 \\xt Lu 19:10.\\x*'
+    '\\wj \\+w afin|strong="G2443"\\+w* \\+w que|strong="G2443"\\+w* '
+    '\\+w quiconque|strong="G3956"\\+w* \\+w croit|strong="G4100"\\+w*.\\wj*  \n'
+    '\\v 17 \\w Dieu|strong="G2316"\\w* \\w a|strong="G1519"\\w* \\w envoyé|strong="G649"\\w* \\p\n'
+    "\\p\n",
+}
+
+
+class FraLsgParseTests(SimpleTestCase):
+    """fra_lsg's damage is markup, so `parse` fixes it for every collection."""
+
+    def setUp(self):
+        self.verses, _ = _parse(_FRA_USFM)
+
+    def test_strong_attributes_are_not_text(self):
+        self.assertNotIn("strong", self.verses["JHN 3:16"])
+        self.assertNotIn("|", self.verses["JHN 3:16"])
+
+    def test_a_cross_reference_between_words_leaves_a_space(self):
+        self.assertIn("Fils unique, afin que", self.verses["JHN 3:16"])
+
+    def test_elisions_rejoin(self):
+        self.assertIn("monde qu’il a donné", self.verses["JHN 3:16"])
+        self.assertTrue(self.verses["JHN 3:16"].startswith("Car Dieu a tant aimé"))
+
+    def test_a_trailing_paragraph_marker_is_dropped(self):
+        self.assertEqual(self.verses["JHN 3:17"], "Dieu a envoyé")
+
+
+class KorOldRepairTests(SimpleTestCase):
+    def setUp(self):
+        self.clean = _bible_mirror().clean_kor
+
+    def test_a_glued_comma_gets_its_space(self):
+        self.assertEqual(
+            self.clean("아르난의 아들들,오바댜의 아들들"),
+            "아르난의 아들들, 오바댜의 아들들",
+        )
+
+    def test_quote_marks_are_dropped(self):
+        self.assertEqual(
+            self.clean("가로되 `원컨대 주께 고하옵소서' 하였더니"),
+            "가로되 원컨대 주께 고하옵소서 하였더니",
+        )
+        # Glued before 하다 the mark stood for a word space; before a particle, nothing.
+        self.assertEqual(self.clean("`가라'하고"), "가라 하고")
+        self.assertEqual(self.clean("`말하라'고 할"), "말하라고 할")
+
+    def test_spaced_question_mark_is_glued(self):
+        self.assertEqual(
+            self.clean("왜 달음질하려 하느냐 ? 내 주여"),
+            "왜 달음질하려 하느냐? 내 주여",
+        )
+
+    def test_spaced_exclamation_is_dropped_not_glued(self):
+        # PRO 3:6 as the shipped ko books quote it: no `!`.
+        self.assertEqual(
+            self.clean("범사에 그를 인정하라 ! 그리하면 네 길을 지도하시리라"),
+            "범사에 그를 인정하라 그리하면 네 길을 지도하시리라",
+        )
+        self.assertEqual(self.clean("내 주여 !"), "내 주여")
+        # An unspaced `!` (10 verses) is the mirror's text as printed: kept.
+        self.assertEqual(self.clean("내 주여!"), "내 주여!")
+
+    def test_idempotent_and_letters_untouched(self):
+        once = self.clean("`어찜이냐 ?' 하나님,나의 하나님이여")
+        self.assertEqual(self.clean(once), once)
+        self.assertEqual(once, "어찜이냐? 하나님, 나의 하나님이여")
+
+    def test_isa_57_15_is_withheld_not_restored(self):
+        truncated = "또한 통회하고 마음이 겸손한 자의 영을 소성케 하려 함이라"
+        verses, damaged = _bible_mirror().clean_kor_index(
+            {"ISA 57:15": truncated, "ISA 57:16": "내가 영원히"}, {}
+        )
+        self.assertNotIn("ISA 57:15", verses)
+        self.assertEqual(damaged["ISA 57:15"]["mirror_text"], truncated)
+        self.assertEqual(verses, {"ISA 57:16": "내가 영원히"})
+
+
+_POR_USFM = {
+    "jhn.usfm": "\\id JHN\n\\c 3\n"
+    "\\v 16 \\wj Porque Deus amou o mundo de tal maneira que deu o seu Filho "
+    "unigênito\\wj*\\f + \\fr 3:16 \\ft A expressão “unigênito” vem da palavra grega.\\f*"
+    "\\wj , para que todo aquele que nele crê não pereça. \\wj*  \n",
+    "heb.usfm": "\\id HEB\n\\c 13\n"
+    "\\v 15 Ofereçamos a Deus um sacrifício de louvor\\x + \\xo 13:15 \\xt Salmos 50:23\\x*, "
+    "ou seja, o fruto de lábios.  \n",
+}
+
+
+class PorBpmTests(SimpleTestCase):
+    def test_no_space_before_a_comma_where_a_footnote_sat_in_wj(self):
+        verses, _ = _parse(_POR_USFM)
+        self.assertEqual(
+            verses["JHN 3:16"],
+            "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, "
+            "para que todo aquele que nele crê não pereça.",
+        )
+        self.assertIn("de louvor, ou seja", verses["HEB 13:15"])
+        # Behind a closing marker, the reference still sits before punctuation.
+        verses, _ = _parse(
+            {
+                "heb.usfm": "\\id HEB\n\\c 1\n\\v 1 \\wj louvor\\x + \\xt Sl 50\\x*\\wj*, ou\n"
+            }
+        )
+        self.assertEqual(verses["HEB 1:1"], "louvor, ou")
+
+    def test_jeremiah_49_english_glosses_are_withheld(self):
+        verses, damaged = _bible_mirror().clean_por_index(
+            {
+                "JER 49:11": "Leave your fatherless children. “Deixe os seus órfãos.”",
+                "JER 48:47": "Contudo, nos últimos dias",
+                "JER 4:9": "E acontecerá naquele dia",
+            },
+            {},
+        )
+        self.assertEqual(list(damaged), ["JER 49:11"])
+        self.assertIn("English", damaged["JER 49:11"]["reason"])
+        self.assertEqual(set(verses), {"JER 48:47", "JER 4:9"})
+
+
+class AmhBridgedTests(SimpleTestCase):
+    def test_bridged_verses_are_flagged_and_withheld(self):
+        usfm = {
+            "heb.usfm": "\\id HEB\n\\c 12\n"
+            "\\v 1-3 በነፍሳችሁ ዝላችሁ እንዳትደክሙ፥ የጸናውን አስቡ።  \n"
+            "\\v 4 ከኃጢአት ጋር እየተጋደላችሁ ገና እስከ ደም ድረስ አልተቃወማችሁም፤\n"
+        }
+        mirror = _bible_mirror()
+        ranges = {}
+        with tempfile.TemporaryDirectory() as tmp:
+            for name, text in usfm.items():
+                (Path(tmp) / name).write_text(text, encoding="utf-8")
+            verses, _ = mirror.parse(Path(tmp), ranges)
+        self.assertEqual(ranges, {"HEB 12:1": "HEB 12:1-3"})
+        verses, damaged = mirror.clean_amh_index(verses, ranges)
+        self.assertEqual(list(verses), ["HEB 12:4"])
+        self.assertIn("HEB 12:1-3", damaged["HEB 12:1"]["reason"])
+        self.assertTrue(damaged["HEB 12:1"]["mirror_text"].startswith("በነፍሳችሁ"))
+
+
+class CleanerRegistryTests(SimpleTestCase):
+    def test_every_cleaner_returns_verses_and_damaged(self):
+        for collection, cleaner in _bible_mirror().CLEANERS.items():
+            with self.subTest(collection=collection):
+                verses, damaged = cleaner({"JHN 3:16": "x"}, {})
+                self.assertEqual(verses, {"JHN 3:16": "x"})
+                self.assertEqual(damaged, {})
