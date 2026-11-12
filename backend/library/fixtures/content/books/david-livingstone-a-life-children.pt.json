@@ -1,0 +1,377 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "david-livingstone-a-life-children",
+  "language": "pt",
+  "title": "David Livingstone (Para Crianças)",
+  "subtitle": "",
+  "cover_byline": "David Livingstone",
+  "description": "A história verdadeira de David, um menino escocês que foi trabalhar numa fábrica de algodão aos dez anos, tornou-se médico e missionário, atravessou a África inteira a pé e passou a vida lutando contra o comércio de escravos, e dos corajosos amigos africanos que ficaram ao seu lado até o fim. Esta edição para crianças reconta a vida dele em capítulos curtos, feitos para ler em voz alta: um versículo da Bíblia, uma parte da sua história, uma coisa que ela quer dizer para você e uma oração curtinha, com perguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "Sobre o que é David Livingstone (Para Crianças)?",
+    "answer": "É uma versão para crianças da biografia completa de David Livingstone. Conta como um menino que trabalhava numa fábrica de algodão na Escócia se tornou médico e missionário na África, aprendeu a ler a Bíblia com um chefe chamado Sechele, andou de um lado ao outro da África e trabalhou muito para impedir que pessoas fossem capturadas e vendidas como escravas, e como os seus amigos africanos Susi e Chuma o levaram para casa no fim."
+   },
+   {
+    "question": "Quem foi David Livingstone?",
+    "answer": "Um médico e missionário escocês que viveu de 1813 a 1873. Ele foi para o sul da África em 1841, morou no meio do povo bakwena e foi o primeiro europeu de quem se tem notícia a atravessar a África de costa a costa. Passou os seus últimos anos explorando e contando ao mundo a verdade sobre o comércio de escravos. Ele morreu no lugar que hoje é a Zâmbia e está sepultado na Abadia de Westminster, em Londres."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Todo capítulo é curto e feito para ser lido em voz alta. Começa com um versículo da Bíblia, conta uma parte da história de David, mostra uma coisa simples que ela quer dizer para você e termina com uma oração curtinha. Depois vêm três perguntas, para conversar juntos."
+   },
+   {
+    "question": "Este livro é triste ou assustador demais para crianças?",
+    "answer": "Algumas partes são tristes ou emocionantes: o ataque de um leão, pessoas sendo capturadas e vendidas como escravas, e a morte da filhinha de David, da sua esposa Mary e do próprio David. O livro não finge que essas coisas não aconteceram, mas conta tudo com delicadeza, sem detalhes assustadores. Acima de tudo, é uma história de fé, de promessas cumpridas e de amigos que não desistiram."
+   },
+   {
+    "question": "As histórias são verdadeiras?",
+    "answer": "Sim. Elas vêm dos próprios livros e diários de David Livingstone, de pessoas que o conheceram e do relato que os seus amigos Susi e Chuma fizeram depois da morte dele. Algumas coisas, como as famosas palavras “Dr. Livingstone, eu presumo?” e a maneira como David foi encontrado no fim, vêm das lembranças de apenas uma ou duas pessoas, e o livro diz isso quando as conta. Ele também diz com clareza que os lugares que ele “descobriu” já eram bem conhecidos dos povos africanos que moravam lá."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças — para um adulto ler em voz alta, ou para uma criança maior ler sozinha. Também existe uma edição para adolescentes, e a biografia completa para leitores mais velhos."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, da biografia David Livingstone, da Ochorus, da série Retratos de Coragem. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/art/david-livingstone-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 166,
+  "is_published": true,
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "Um Livro na Máquina de Fiar",
+  "body_html": "<blockquote>“Tudo o que a sua mão encontrar para fazer, faça-o com todas as suas forças.” — de Eclesiastes 9</blockquote> <p>Há muito tempo, no dia 19 de março de 1813, nasceu um menino na Escócia, numa aldeia chamada Blantyre, à beira do rio Clyde. O nome dele era David Livingstone. Quase todo mundo ali trabalhava na grande fábrica de algodão.</p> <p>A família de David morava num único cômodo, num prédio alto chamado Shuttle Row. Naquele único cômodo, a mãe e o pai dele cozinhavam, comiam, liam, oravam e dormiam, e criavam os seus cinco filhos. Era apertado, mas limpo e arrumado, e a Bíblia era lida ali todos os dias.</p> <p>O pai dele, Neil, vendia chá de porta em porta e deixava livrinhos cristãos nas casas por onde passava. A mãe dele, Agnes, era pequena, caprichosa e alegre. David adorava uma velha história da família. Muito tempo antes, na ilha de Ulva, um antepassado sábio tinha reunido os filhos no fim da vida e lhes dado uma só regra: sejam honestos. David guardou essa regra a vida inteira.</p> <p>Quando David tinha dez anos, foi trabalhar na fábrica como emendador, porque a família precisava do que ele ganhava. O emendador vigiava as máquinas de fiar e emendava depressa os fios quando eles arrebentavam. O trabalho ia das seis da manhã até as oito da noite, numa sala quente, cheia de poeira e de barulho.</p> <p>Mas David adorava aprender. Com uma parte do pagamento da sua primeira semana, ele comprou um livro para aprender latim. Depois do trabalho, ia para a escola noturna, e depois estudava em casa até a meia-noite, até que a mãe dele se levantava de um pulo e tirava os livros das mãos dele, para ele ir dormir! Na fábrica, ele colocava um livro em cima da máquina e lia uma frase cada vez que passava por ali.</p> <p>A Bíblia nos diz para fazer o nosso trabalho com todas as nossas forças. David se esforçou muito num trabalho pequeno e sem graça, e Deus o estava preparando para trabalhos grandes. Deus também pode usar o trabalho que você faz hoje.</p> <p><em>Querido Deus, obrigado pela minha casa e pelas pessoas que me amam. Ajuda-me a ser honesto e a fazer bem o meu trabalho, mesmo quando é difícil. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que trabalho David fazia quando tinha dez anos?",
+    "answer": "Ele trabalhava na fábrica de algodão como emendador, emendando os fios das máquinas de fiar quando eles arrebentavam, das seis da manhã até as oito da noite."
+   },
+   {
+    "question": "Como David conseguia estudar enquanto trabalhava?",
+    "answer": "Ele ia para a escola noturna depois do trabalho, estudava em casa até tarde da noite e colocava um livro em cima da máquina para ler uma frase cada vez que passava por ali."
+   },
+   {
+    "question": "Existe algum trabalho pequeno que você poderia fazer com todas as suas forças nesta semana?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus pode usar o nosso trabalho, até os trabalhos pequenos e sem graça, para nos preparar para o que ele planejou."
+   }
+  ],
+  "word_count": 379
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "Vendo em Cores",
+  "body_html": "<blockquote>“Os céus declaram a glória de Deus. O firmamento anuncia a obra das suas mãos.” — do Salmo 19</blockquote> <p>Nos dias de folga, David colecionava plantas, pedras e conchas. Uma vez ele perguntou a um homem que trabalhava numa pedreira como as conchas tinham ido parar dentro das pedras. O homem só olhou para ele com pena! Mas David nunca parou de fazer perguntas.</p> <p>David tinha crescido ouvindo falar de Jesus, e sabia que Jesus morreu para nos salvar. Mas, por um tempo, ele ficou preocupado. Ele amava a ciência, e algumas pessoas diziam que um cristão não devia estudar as pedras e as estrelas. Então ele leu um livro de um pastor escocês chamado Thomas Dick, que ensinava que o mundo inteiro é obra das mãos de Deus. David viu que não precisava escolher. O Deus da Bíblia era também o Deus das pedras e das estrelas.</p> <p>Quando tinha uns dezoito, dezenove anos, David começou a sentir por si mesmo o quanto precisava de Jesus, e confiou nele. Mais tarde, ele disse que foi como uma pessoa daltônica que, de repente, começa a ver as cores. Não havia nada de novo ali, mas tudo parecia diferente. Cheio do amor de Deus, ele decidiu passar a vida ajudando pessoas que sofriam.</p> <p>Então um missionário na China pediu que médicos fossem para lá curar os doentes. David se decidiu: ele ia ser médico e ir para a China! Ele trabalhava na fábrica no verão para ganhar o dinheiro e, no inverno, estudava medicina em Glasgow.</p> <p>Mas começou uma guerra entre a Grã-Bretanha e a China, e o caminho para a China se fechou. Bem nessa época, David conheceu Robert Moffat, um missionário famoso no sul da África. Anos depois, Moffat se lembrava de ter dito a ele que fosse para o norte, para terras onde nenhum missionário jamais tinha estado. David disse sim na mesma hora. Em 1840, ele se formou médico e estava pronto para partir.</p> <p>Deus fez as estrelas e as pedras, e fez você. Quando você aprende sobre o mundo dele, pode agradecer a ele por isso. E, quando uma porta se fecha, Deus continua sabendo o caminho.</p> <p><em>Querido Deus, obrigado pelas estrelas, pelas pedras, pelas plantas e pelos animais que tu fizeste. Ajuda-me a ver o teu amor em toda parte e a usar a minha vida para ajudar os outros. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que livro ajudou David a ver que ele podia amar a ciência e amar a Deus?",
+    "answer": "Um livro de um pastor escocês chamado Thomas Dick, que ensinava que o mundo inteiro é obra das mãos de Deus."
+   },
+   {
+    "question": "Por que David foi para a África em vez de ir para a China?",
+    "answer": "Uma guerra fechou o caminho para a China. Então ele conheceu Robert Moffat, que lhe disse que fosse para o norte, na África, para terras onde nenhum missionário tinha estado."
+   },
+   {
+    "question": "O que existe no mundo de Deus que faz você ter vontade de agradecer a ele?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus fez todas as coisas, e aprender sobre o mundo dele pode nos ajudar a louvá-lo."
+   }
+  ],
+  "word_count": 395
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "O Leão de Mabotsa",
+  "body_html": "<blockquote>“Mas o Senhor esteve ao meu lado e me fortaleceu … fui liberto da boca do leão.” — de 2 Timóteo 4</blockquote> <p>Na última manhã de David em casa, a família se levantou às cinco horas. David leu em voz alta o Salmo 121, que diz que o nosso socorro vem do Senhor, que fez o céu e a terra. Depois o pai dele foi a pé com ele até Glasgow, e eles se despediram. Os dois nunca mais se viram.</p> <p>Em dezembro de 1840, David partiu de navio para a África. Na viagem, o capitão lhe ensinou a encontrar o caminho pela lua e pelas estrelas. Em julho de 1841, ele chegou a Kuruman, o posto missionário de Robert Moffat.</p> <p>Para aprender a língua setswana, David foi morar por uns seis meses no meio do povo bakwena, sem ouvir nem falar nenhuma outra língua. Depois, em 1843, ele ajudou a começar uma nova missão num lugar chamado Mabotsa.</p> <p>Em fevereiro de 1844, quando leões estavam atacando o gado, David foi com os homens de Mabotsa caçá-los. Ele atirou num leão que estava sentado numa pedra. Estava carregando a arma de novo quando ouviu um grito. “Eu me assustei, olhei meio de lado”, escreveu ele, “e vi o leão bem na hora em que pulava em cima de mim.” O leão o pegou pelo ombro e o derrubou no chão. O estranho é que ele não sentiu dor nem medo, só uma espécie de sonolência, como num sonho.</p> <p>Então um corajoso professor cristão chamado Mebalwe levantou a arma para atirar no leão. A arma não disparou! O leão largou David, pulou em cima de Mebalwe e machucou a perna dele. Outro homem correu para o leão com uma lança, e também se machucou. Então, finalmente, o leão caiu morto. Pelo que sabemos, os dois homens corajosos ficaram bons.</p> <p>O braço de David ficou muito quebrado. Pelo resto da vida, ele não conseguiu levantar o braço esquerdo acima do ombro. Mas estava vivo, porque dois homens africanos tinham arriscado a vida por ele.</p> <p>Quando estamos em perigo, Deus está conosco e, muitas vezes, ele nos ajuda por meio de pessoas corajosas à nossa volta.</p> <p><em>Querido Deus, obrigado por me guardar. Obrigado pelas pessoas que me ajudam quando estou em apuros. Ajuda-me a ser corajoso e bondoso como Mebalwe. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que David foi morar no meio dos bakwena por seis meses?",
+    "answer": "Para não ouvir nem falar nada além do setswana, e aprender a conversar com as pessoas na língua delas."
+   },
+   {
+    "question": "Quem salvou David do leão?",
+    "answer": "Mebalwe, um professor cristão, que tentou atirar no leão, e outro homem que correu para ele com uma lança. Os dois se machucaram, mas, pelo que sabemos, ficaram bons."
+   },
+   {
+    "question": "Quem são algumas das pessoas que Deus deu a você para ajudar você?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus está conosco no perigo e, muitas vezes, ele nos ajuda por meio de pessoas corajosas e bondosas."
+   }
+  ],
+  "word_count": 388
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "O Chefe Que Amava Ler",
+  "body_html": "<blockquote>“Como poderei, a menos que alguém me explique?” — de Atos 8</blockquote> <p>Enquanto o braço sarava, David foi conhecendo Mary, a filha de Robert Moffat, que tinha crescido na África. Eles se casaram em 9 de janeiro de 1845. Logo se mudaram para a cidade de um chefe chamado Sechele, que tinha pedido a David que fosse para lá.</p> <p>Sechele, o chefe dos bakwena, tinha mais ou menos a idade de David. David escreveu que Sechele aprendeu o alfabeto logo no primeiro dia! Pouco tempo depois, ele já estava lendo a Bíblia, e o seu livro preferido era Isaías. Isaías, dizia ele, era um grande homem, que sabia falar.</p> <p>Sechele fazia perguntas difíceis. Quando ouviu que Deus um dia vai julgar o mundo, ele disse: “Você me assusta: essas palavras fazem todos os meus ossos tremerem.” Depois perguntou por que ninguém tinha vindo antes contar ao seu povo, porque os seus próprios antepassados tinham morrido sem nunca ouvir falar de Jesus.</p> <p>Sechele chegou a oferecer mandar os seus chefes de aldeia com chicotes para obrigar todo o seu povo a crer! David disse que não. Ninguém pode ser obrigado a crer em Jesus.</p> <p>Naquela época, os missionários não batizavam um homem que tivesse mais de uma esposa, e Sechele, como outros chefes, tinha várias. Foi muito difícil, mas ele ficou só com a primeira esposa e mandou as outras para casa com roupas novas e com as coisas delas. Ele foi batizado em 1º de outubro de 1848. Alguns meses depois, Sechele fez uma coisa errada, e David, triste, disse a ele que ele não podia mais participar da Ceia do Senhor.</p> <p>Mas Sechele não desistiu de Deus. Pelo resto da vida, ele leu a Bíblia, orou e ensinou o seu povo sobre Jesus. Em 1852, homens armados atacaram o povo dele e queimaram a sua cidade. Sechele partiu para pedir ajuda à rainha Vitória. Quando nenhuma ajuda veio, ele construiu a cidade de novo e se tornou um chefe poderoso. Muitos bakwena se tornaram cristãos por causa dele.</p> <p>Sechele foi um verdadeiro herói da fé. Todo mundo faz coisas erradas de vez em quando. Mas Deus não desiste de nós, e nós não precisamos desistir dele.</p> <p><em>Querido Deus, obrigado por me dares a tua palavra para ler. Quando eu fizer alguma coisa errada, ajuda-me a voltar para ti e a continuar te seguindo a vida inteira, como Sechele. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qual era o livro da Bíblia preferido de Sechele?",
+    "answer": "Isaías. Ele dizia que Isaías era um grande homem, que sabia falar."
+   },
+   {
+    "question": "Por que David disse não quando Sechele ofereceu obrigar o seu povo a crer?",
+    "answer": "Porque ninguém pode ser obrigado a crer em Jesus. A fé tem de ser dada livremente."
+   },
+   {
+    "question": "O que você pode fazer quando fez alguma coisa errada?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus não desiste de nós; podemos pedir desculpas, voltar para ele e continuar a segui-lo, como Sechele."
+   }
+  ],
+  "word_count": 400
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "Quatro Dias sem Água",
+  "body_html": "<blockquote>“O deserto e a terra seca se alegrarão. O ermo exultará e florescerá como uma rosa.” — de Isaías 35</blockquote> <p>Ao norte da cidade de Sechele ficava o Kalahari, uma grande terra seca de areia e arbustos, com um lago em algum lugar do outro lado. Em 1849, David atravessou o deserto com dois viajantes ingleses, guiados por Ramotobi, um homem que Sechele mandou para mostrar o caminho. Em 1º de agosto de 1849, eles chegaram ao lago Ngami. As pessoas que moravam à beira dele sempre o conheceram, mas ninguém da Europa o tinha visto antes.</p> <p>No ano seguinte, David levou Mary e os três filhos pequenos do casal, Robert, Agnes e Thomas. Sechele foi junto também. Mas as crianças pegaram febre, e eles tiveram de voltar. Pouco depois, nasceu uma menininha, Elizabeth. Ela viveu só umas seis semanas, e a mãe e o pai dela ficaram muito tristes.</p> <p>A mãe de Mary escreveu que era perigoso demais, mas em 1851 David levou a família de novo. Dessa vez, o guia deles, um homem chamado Shobo, se perdeu, e durante quatro dias eles ficaram sem água. As crianças corriam o risco de morrer de sede. Mary não disse nem uma palavra de reclamação, mas David via as lágrimas nos olhos dela. No quinto dia, alguns dos homens encontraram água. As crianças sobreviveram!</p> <p>Finalmente eles chegaram ao povo makololo. O grande chefe deles, Sebetwane, os recebeu com alegria, mas logo ficou doente e morreu, e David chorou por ele. Depois, à beira de um rio enorme chamado Zambeze, David viu uma coisa terrível: comerciantes comprando pessoas, para vendê-las como escravas, em troca de armas e tecidos. Ele decidiu ajudar a acabar com aquilo.</p> <p>David queria encontrar um caminho do meio da África até o mar. Era perigoso demais para a família, por isso, em abril de 1852, ele mandou Mary e os quatro filhos para a Grã-Bretanha. Ele só tornou a vê-los quatro anos e meio depois. Mary muitas vezes se sentia sozinha e passava necessidade.</p> <p>David era muito corajoso, mas nem sempre pensava o suficiente no quanto as suas escolhas custavam para a família. Ser corajoso por Deus nunca quer dizer esquecer as pessoas que amamos.</p> <p><em>Querido Deus, obrigado pela minha família. Ajuda-me a ser corajoso por ti e também a ser bondoso e carinhoso com as pessoas mais próximas de mim. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que aconteceu quando Shobo se perdeu no deserto?",
+    "answer": "A família ficou sem água durante quatro dias, e as crianças quase morreram de sede. No quinto dia, alguns dos homens encontraram água."
+   },
+   {
+    "question": "Que coisa terrível David viu à beira do rio Zambeze?",
+    "answer": "Comerciantes comprando pessoas para vendê-las como escravas, em troca de armas e tecidos. Ele decidiu ajudar a acabar com aquilo."
+   },
+   {
+    "question": "Como você pode mostrar amor à sua família nesta semana?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que ser corajoso por Deus nunca quer dizer esquecer as pessoas que amamos."
+   }
+  ],
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "Vinte e Sete Homens",
+  "body_html": "<blockquote>“Aquele que mantém o seu juramento mesmo quando sai prejudicado.” — do Salmo 15</blockquote> <p>Em novembro de 1853, David saiu da cidade de Linyanti para encontrar um caminho para o oeste, até o oceano Atlântico. Com ele foram vinte e sete homens escolhidos por Sekeletu, o filho de Sebetwane, o jovem chefe dos makololo. O líder deles era um homem chamado Pitsane. A viagem era tanto deles quanto de David. Sem eles, ele não teria conseguido andar nem cento e sessenta quilômetros.</p> <p>David levou muito pouca coisa, mas levou uma lanterna mágica, que mostrava figuras da Bíblia pintadas em vidro. Uma vez, quando ele mostrou uma figura de Abraão prestes a sacrificar o seu filho Isaque, as mulheres que assistiam acharam que a faca estava saindo da figura na direção delas, e saíram correndo! Depois todo mundo riu muito daquilo.</p> <p>Uma jovem chefe chamada Manenko levou o grupo pessoalmente até a cidade do seu tio, marchando na frente debaixo de uma chuva forte, tão depressa que os homens mal conseguiam acompanhá-la! Mais tarde, algumas pessoas exigiram um dos homens de David, para vendê-lo como escravo. David se sentou com a arma atravessada sobre os joelhos e se recusou. Ele não ia entregar nem um único homem. No fim, deu a eles um boi no lugar, e ninguém se machucou.</p> <p>Em 31 de maio de 1854, eles chegaram a Luanda, uma cidade à beira-mar. Os homens nunca tinham visto o oceano. Eles sempre tinham acreditado que o mundo não tinha fim, disseram, mas agora o mundo tinha dito a eles que ele acabava ali!</p> <p>David estava muito doente, e um inglês chamado senhor Gabriel cuidou dele. Depois, alguns oficiais da marinha se ofereceram para levar David de volta para a Inglaterra no navio deles. Mas ele disse não. Tinha prometido a Sekeletu levar os homens de volta para casa, e eles não conheciam o caminho de volta por aquela terra perigosa. Então ele ficou. E o navio afundou no caminho para a Inglaterra, com as cartas e os mapas que ele tinha mandado nele!</p> <p>Deus sempre cumpre as suas promessas, e ele quer que nós cumpramos as nossas, mesmo quando isso nos custa alguma coisa.</p> <p><em>Querido Deus, obrigado porque tu sempre cumpres as tuas promessas. Ajuda-me a cumprir as minhas, mesmo quando é difícil. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quem escolheu os vinte e sete homens, e quem era o líder deles?",
+    "answer": "Sekeletu, o jovem chefe dos makololo, escolheu os homens, e o líder deles era um homem chamado Pitsane."
+   },
+   {
+    "question": "Por que David se recusou a voltar para casa de navio, saindo de Luanda?",
+    "answer": "Ele tinha prometido a Sekeletu levar os homens de volta para casa, e eles não conheciam o caminho de volta por aquela terra perigosa."
+   },
+   {
+    "question": "Existe alguma promessa que você precisa cumprir, mesmo que seja difícil?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus sempre cumpre as suas promessas, e ele quer que nós cumpramos as nossas, mesmo quando isso nos custa alguma coisa."
+   }
+  ],
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "“A Fumaça Que Troveja”",
+  "body_html": "<blockquote>“Eis que estou com vocês sempre, até o fim dos tempos.” — de Mateus 28</blockquote> <p>Depois de um ano de caminhada, em setembro de 1855, os vinte e sete homens entraram de novo em Linyanti. Eles eram heróis! Durante dias, contaram a todo mundo sobre o mar e os navios.</p> <p>Agora David partiu para o leste, para seguir o rio Zambeze até o oceano Índico. Mais de cem homens de Sekeletu foram com ele, com um guia chamado Sekwebu. David tinha ouvido falar de uma grande cachoeira que o povo chamava de Mosi-oa-Tunya, “a fumaça que troveja”, por causa das suas nuvens de gotinhas de água. Em novembro de 1855, os homens de Sekeletu o levaram de canoa até uma ilha bem na beirada das quedas. Ele se deitou e olhou lá para baixo, para o desfiladeiro profundo onde o rio inteiro despenca com estrondo.</p> <p>David deu às quedas o nome da rainha Vitória. Mas as pessoas que moravam ali as conheciam fazia centenas de anos, e foram elas que o levaram até lá. Hoje o nome antigo, Mosi-oa-Tunya, é usado ao lado do nome novo.</p> <p>Em 14 de janeiro de 1856, o grupo chegou a um rio que precisava atravessar. Havia muitos homens armados reunidos do outro lado, e os homens de David tinham medo de um ataque. Naquela noite, David ficou preocupado. Então ele leu a promessa de Jesus: “Eis que estou com vocês sempre, até o fim dos tempos.” Ele escreveu que aquela era a palavra de alguém de honra perfeita, que nunca ia quebrar a sua promessa. Ele se sentiu calmo e decidiu não fugir escondido no escuro.</p> <p>Na manhã seguinte, ele levou os seus homens para o outro lado numa canoa, poucos de cada vez, e ficou ele mesmo na margem até o último deles ter passado. O povo ficou olhando, e ninguém atacou.</p> <p>Em 20 de maio de 1856, David chegou ao oceano Índico. Ele foi o primeiro europeu de quem se tem notícia a atravessar a África de um lado ao outro. Mas Sekwebu, que seguiu viagem de navio com ele, se afogou no caminho, e David chorou pelo seu guia corajoso.</p> <p>Jesus prometeu estar sempre com os seus amigos. Quando você tiver medo, pode se agarrar à promessa dele, como David fez.</p> <p><em>Querido Jesus, obrigado por prometeres estar sempre comigo. Quando eu tiver medo, ajuda-me a lembrar da tua promessa e a confiar em ti. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que quer dizer o nome Mosi-oa-Tunya?",
+    "answer": "“A fumaça que troveja”, por causa das grandes nuvens de gotinhas de água que sobem da cachoeira."
+   },
+   {
+    "question": "O que ajudou David a se sentir calmo na noite antes de atravessar o rio?",
+    "answer": "A promessa de Jesus: “Eis que estou com vocês sempre, até o fim dos tempos.” David confiou que Jesus ia cumprir a sua palavra."
+   },
+   {
+    "question": "De que você poderia se lembrar quando sentir medo?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Jesus prometeu estar sempre conosco, e podemos nos agarrar a essa promessa."
+   }
+  ],
+  "word_count": 404
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "Libertando os Cativos",
+  "body_html": "<blockquote>“Ele me enviou … para proclamar liberdade aos cativos.” — de Isaías 61</blockquote> <p>Em dezembro de 1856, David voltou para a Grã-Bretanha. Os filhos mal o conheciam, e o pai dele tinha morrido naquele ano, antes que David pudesse contar a ele sobre a sua viagem.</p> <p>Agora David era famoso. Na Universidade de Cambridge, em 1857, ele disse aos estudantes que as pessoas falavam do sacrifício que ele tinha feito. “De jeito nenhum é um sacrifício”, disse ele. “Digam, antes, que é um privilégio.” E disse também: “Eu nunca fiz um sacrifício.” Mas Mary e as crianças, que tinham esperado tanto tempo, tinham aberto mão de muita coisa. David pediu aos estudantes que continuassem o trabalho na África.</p> <p>Em 1858, David voltou para comandar uma grande expedição rio Zambeze acima. Mas umas corredeiras, que antes ele tinha contornado a pé, bloqueavam o rio, e nenhum barco conseguia passar. Então ele subiu por outro rio e, em 1859, chegou a um lago enorme, o lago Niassa, que hoje se chama lago Malawi. Ele descobriu que em volta dele passava uma das principais estradas do comércio de escravos.</p> <p>Um dia, em julho de 1861, na aldeia de um chefe chamado Mbame, chegou uma longa fila de pessoas capturadas. Os homens tinham pesadas forquilhas de madeira presas em volta do pescoço, e as mulheres e as crianças estavam amarradas umas às outras com cordas. Quando os homens que as levavam viram David e os seus amigos, fugiram.</p> <p>David e os seus amigos cortaram as cordas e serraram as pesadas forquilhas. As pessoas se ajoelharam e bateram palmas para agradecer. Eram oitenta e quatro, a maioria mulheres e crianças, e agora estavam livres! Entre as crianças libertadas naquelas semanas, como a história costuma ser contada, estava um menino de uns dez ou onze anos chamado Chuma. Ele vai ser um dos grandes heróis desta história.</p> <p>Jesus veio para libertar as pessoas. Deus se importa com as pessoas que são tratadas com crueldade, e ele quer que nós também nos importemos com elas e as defendamos.</p> <p><em>Querido Jesus, obrigado porque tu vieste para libertar as pessoas. Por favor, ajuda todos os que são tratados com crueldade hoje, e mostra-me como eu também posso ajudar. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que David disse em Cambridge sobre o sacrifício que tinha feito?",
+    "answer": "Ele disse: “De jeito nenhum é um sacrifício. Digam, antes, que é um privilégio”, e “Eu nunca fiz um sacrifício.”"
+   },
+   {
+    "question": "O que aconteceu na aldeia de Mbame em julho de 1861?",
+    "answer": "Uma fila de pessoas capturadas foi levada até lá. Os homens que as levavam fugiram, e David e os seus amigos libertaram oitenta e quatro pessoas, a maioria mulheres e crianças."
+   },
+   {
+    "question": "Como você pode defender alguém que está sendo maltratado?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus se importa com as pessoas que são tratadas com crueldade, e ele quer que nós nos importemos e ajudemos."
+   }
+  ],
+  "word_count": 370
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "Adeus Debaixo do Baobá",
+  "body_html": "<blockquote>“O SENHOR está perto dos que têm o coração quebrantado.” — do Salmo 34</blockquote> <p>Mary Livingstone também era uma missionária corajosa. Ela tinha crescido na África e falava setswana desde pequena. Ela dirigia escolas para criancinhas, fazia sabão, velas e roupas, e cuidava dos doentes. O povo a chamava de Ma-Robert, que quer dizer “mãe de Robert”, por causa do seu filho mais velho.</p> <p>Mas Mary tinha passado anos longe do marido. Em 1858, ela partiu com ele para o Zambeze, mas estava esperando um bebê e teve de ficar com os pais em Kuruman. Lá nasceu a sua filha Anna Mary. Mais tarde, Mary voltou para a Escócia, onde se sentia sozinha e infeliz sem David. Por fim, ela decidiu que precisava ficar com ele. Deixou as crianças com parentes e amigos e partiu de navio para a África.</p> <p>Ela chegou no fim de janeiro de 1862. Durante algumas semanas, num lugar chamado Shupanga, à beira do Zambeze, Mary e David moraram juntos de novo, enquanto os homens montavam um novo barco a vapor. Depois de tantos anos separados, eles tiveram um pouco de tempo lado a lado.</p> <p>Então, em abril, Mary pegou uma febre. Dessa vez, o remédio não ajudou. Na noite de 27 de abril de 1862, ela morreu, com David ao seu lado. Ela tinha quarenta e um anos. No dia seguinte, foi sepultada debaixo de um grande baobá perto da casa.</p> <p>David ficou de coração partido. Ele escreveu no seu diário que aquele era o primeiro golpe pesado da sua vida e que tinha levado embora todas as suas forças. Ele a amava quando se casou com ela, escreveu, e quanto mais tempo vivia com ela, mais a amava. Ele chorou por ela e orou pelos filhos dos dois. Ele confiava que ela tinha ido estar com Deus, um pouquinho antes dele. E começou a ver o quanto as suas longas viagens tinham custado para ela.</p> <p>Quando alguém que amamos morre, é certo chorar, e Deus não nos apressa. Ele fica bem perto das pessoas que estão de coração partido.</p> <p><em>Querido Deus, obrigado pelas pessoas que eu amo. Quando eu estiver triste, por favor, chega bem perto de mim e me consola. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Como o povo chamava Mary, e o que isso quer dizer?",
+    "answer": "Ma-Robert, que quer dizer “mãe de Robert”, por causa do seu filho mais velho."
+   },
+   {
+    "question": "Onde Mary foi sepultada?",
+    "answer": "Debaixo de um grande baobá perto da casa em Shupanga, à beira do rio Zambeze."
+   },
+   {
+    "question": "Com quem você poderia conversar quando se sentir muito triste?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que é certo chorar quando perdemos alguém, e Deus fica perto das pessoas que estão de coração partido."
+   }
+  ],
+  "word_count": 368
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "Susi e Chuma",
+  "body_html": "<blockquote>“Pela fé Abraão, quando foi chamado, obedeceu e saiu para o lugar que haveria de receber como herança. Ele saiu, sem saber para onde ia.” — de Hebreus 11</blockquote> <p>Em 1863, o governo mandou a expedição voltar, e David voltou para a Grã-Bretanha. Lá ele recebeu mais uma notícia triste. O seu filho mais velho, Robert, tinha ido para os Estados Unidos e entrado para um exército numa guerra de lá, e em 1864 Robert morreu como prisioneiro.</p> <p>Em agosto de 1865, David saiu da Grã-Bretanha pela última vez. Ele queria descobrir onde nascia o grande rio Nilo e ver com os próprios olhos as estradas do comércio de escravos, para poder contar ao mundo. Ele disse que iria como missionário e faria os seus mapas pelo caminho.</p> <p>Com ele foram Chuma e Wikatani, agora já rapazes, e um homem chamado Susi, que tinha trabalhado na expedição do Zambeze. A estrada que eles seguiram era uma estrada de escravos, e por toda parte eles viam sinais tristes de como as pessoas capturadas eram tratadas com crueldade. David escrevia tudo, para que as pessoas na sua terra ficassem sabendo. No caminho, Wikatani encontrou a sua própria família, que ele achava que tinha perdido para sempre, e David deixou que ele ficasse com ela.</p> <p>Então, em janeiro de 1867, dois carregadores fugiram de noite e levaram a caixa de remédios de David. Sem os seus remédios, escreveu ele, sentia-se como se tivesse recebido uma sentença de morte. Depois disso, ele ficou muitas vezes muito doente. Mas não voltou atrás.</p> <p>Em março de 1869, na cidade de Ujiji, ele estava quase morrendo, e Susi e Chuma cuidaram dele até ele sarar. Mais tarde, os pés dele ficaram tão feridos que ele passou meses sem conseguir andar. A maioria dos seus ajudantes tinha ido embora, mas três ficaram com ele: Susi, Chuma e um rapaz chamado Gardner. Eles arranjavam comida e cuidavam dele. Deitado numa cabana, sem mais nada para ler, David leu a Bíblia inteira quatro vezes.</p> <p>Susi e Chuma foram verdadeiros heróis. Ficar com um amigo que está fraco e doente, quando seria mais fácil ir embora, é uma linda maneira de amar a Deus e de amar as pessoas.</p> <p><em>Querido Deus, obrigado por amigos fiéis como Susi e Chuma. Ajuda-me a ser um amigo fiel e a ficar perto das pessoas que precisam de ajuda. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que roubaram de David em janeiro de 1867, e por que isso era importante?",
+    "answer": "A caixa de remédios dele. Sem os seus remédios, ele não tinha como combater as febres que o deixavam doente."
+   },
+   {
+    "question": "Quem ficou com David e cuidou dele quando os pés dele estavam feridos demais para andar?",
+    "answer": "Susi, Chuma e um rapaz chamado Gardner. Eles arranjavam comida para ele e cuidavam dele."
+   },
+   {
+    "question": "De quem você poderia ser um amigo fiel?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que ficar com alguém que está fraco ou doente é uma linda maneira de amar a Deus e as pessoas."
+   }
+  ],
+  "word_count": 395
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "“Dr. Livingstone, Eu Presumo?”",
+  "body_html": "<blockquote>“Como água fria para a alma sedenta, assim são as boas notícias de uma terra distante.” — de Provérbios 25</blockquote> <p>Em 1871, David chegou a uma grande cidade de mercado chamada Nyangwe, à beira de um rio largo. Nos dias de feira, centenas de pessoas, a maioria mulheres, vinham comprar e vender. Em 15 de julho de 1871, aconteceu uma coisa terrível ali. Homens que trabalhavam para um comerciante de escravos começaram a atirar na multidão, e muitas pessoas foram mortas. Foi a coisa mais triste que David já viu.</p> <p>Ele não conseguiu impedir aquilo. Tudo o que pôde fazer foi orar, escrever o que tinha visto e mandar para a sua terra. As pessoas na Grã-Bretanha ficaram chocadas quando leram, e isso ajudou a fechar o grande mercado de escravos de Zanzibar.</p> <p>David voltou para Ujiji, doente e muito magro. Então, um dia, Susi veio correndo o mais depressa que pôde. Ele tinha visto um inglês! Um jovem jornalista, Henry Morton Stanley, tinha marchado desde a costa para encontrar David, porque muita gente achava que ele estava morto.</p> <p>Mais tarde, Stanley contou que caminhou até o homem pálido, de barba grisalha, tirou o chapéu e disse: “Dr. Livingstone, eu presumo?” E David disse que sim, com um sorriso bondoso. Só Stanley escreveu essas palavras, e ele contou a história de jeitos um pouco diferentes, mas os dois homens realmente se encontraram em Ujiji, no fim de 1871.</p> <p>Stanley trouxe comida, remédios e cartas dos filhos de David, e David começou a melhorar. Stanley disse que o velho vivia repetindo que ele lhe tinha trazido vida nova. Eles passaram uns quatro meses juntos, e Stanley viu que a fé de David era tranquila e verdadeira.</p> <p>Stanley implorou que David voltasse para casa, mas David não queria ir embora antes de terminar o seu trabalho. Quando eles se separaram, em março de 1872, Stanley se virou chorando. Cinco dias depois, no seu aniversário, David escreveu: “Meu Jesus, meu rei, minha vida, meu tudo; outra vez eu me consagro inteiramente a Ti.”</p> <p>Deus mandou ajuda bem na hora certa. E David, velho e cansado, entregou-se inteiro a Jesus outra vez. Você também pode se entregar a Jesus de novo todos os dias.</p> <p><em>Querido Jesus, tu és o meu rei e o meu tudo. Obrigado por mandares ajuda quando eu preciso. Hoje eu me entrego inteiro a ti outra vez. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quem veio correndo contar a David que um inglês tinha chegado?",
+    "answer": "Susi. O visitante era Henry Morton Stanley, que tinha vindo encontrar David."
+   },
+   {
+    "question": "O que Stanley disse quando encontrou David, segundo o que ele mesmo contou?",
+    "answer": "“Dr. Livingstone, eu presumo?” David disse que sim, com um sorriso bondoso."
+   },
+   {
+    "question": "O que você poderia dizer a Jesus para se entregar a ele hoje?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que, como David no seu aniversário, nós podemos nos entregar inteiros a Jesus outra vez, todos os dias."
+   }
+  ],
+  "word_count": 398
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "david-livingstone-a-life-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "Levado para Casa por Mãos Fiéis",
+  "body_html": "<blockquote>“Preciosa à vista do SENHOR é a morte dos seus santos.” — do Salmo 116</blockquote> <p>Em agosto de 1872, David partiu de novo com Susi, Chuma, um menino chamado Majwara e novos ajudantes, como Jacob Wainwright, que tinha sido libertado da escravidão quando era menino. Durante semanas, eles atravessaram pântanos com água pelo corpo, às vezes até o peito. David ficou tão fraco que os seus amigos o carregavam numa cama feita de varas.</p> <p>No fim de abril de 1873, eles chegaram à aldeia de Chitambo. Por volta da meia-noite, ele chamou Susi, que o ajudou a encontrar o seu remédio. Então, como Susi se lembrava, David lhe disse que estava tudo bem e que ele já podia ir.</p> <p>Antes do amanhecer, o menino Majwara, que sempre dormia à porta de David, o viu ajoelhado ao lado da cama, com a cabeça entre as mãos, como se estivesse orando. Mais tarde, ele viu que David não tinha se mexido e foi chamar os outros. David tinha morrido durante a noite, provavelmente em 1º de maio de 1873. Os seus amigos acreditavam que ele morreu orando, como tinha orado todos os dias da sua vida.</p> <p>Os seus amigos escolheram Susi e Chuma como líderes e decidiram levar David para casa, para que o seu próprio povo o sepultasse. Eles enterraram o coração dele na África, debaixo de uma grande árvore, e Jacob gravou o nome de David nela. Depois carregaram o corpo dele, cuidadosamente embrulhado, por uns mil e seiscentos quilômetros até a costa. Quando um oficial inglês lhes disse que o enterrassem ali mesmo, eles disseram não.</p> <p>Em abril de 1874, David foi sepultado na Abadia de Westminster. Jacob Wainwright ajudou a carregar o caixão. O túmulo diz que David foi “Trazido por mãos fiéis por terra e por mar.” Em 1886, Susi foi batizado e recebeu o nome de David.</p> <p>Um mês depois da morte de David, o grande mercado de escravos de Zanzibar foi fechado, e uma igreja foi construída onde antes pessoas eram compradas e vendidas. Hoje existem grandes igrejas, lideradas por africanos, nas terras por onde ele andou.</p> <p>Jesus disse que uma semente precisa cair na terra antes de poder crescer. David não viveu para ver o fruto da sua vida, mas Deus viu.</p> <p><em>Querido Deus, obrigado por David Livingstone e por todos os seus amigos fiéis. Ajuda-me a ser fiel a ti e às pessoas que tu me dás, a vida inteira. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Majwara viu antes do amanhecer na aldeia de Chitambo?",
+    "answer": "Ele viu David ajoelhado ao lado da cama, com a cabeça entre as mãos, como se estivesse orando. Mais tarde, viu que ele não tinha se mexido e foi chamar os outros."
+   },
+   {
+    "question": "O que os amigos de David decidiram fazer depois que ele morreu?",
+    "answer": "Com Susi e Chuma como líderes, eles enterraram o coração dele na África e carregaram o corpo dele por uns mil e seiscentos quilômetros até a costa, para que o seu próprio povo pudesse sepultá-lo."
+   },
+   {
+    "question": "O que quer dizer ser fiel, como Susi e Chuma?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que amigos fiéis continuam em frente e permanecem leais mesmo quando é difícil, e Deus usa a fidelidade deles para fazer grandes coisas."
+   }
+  ],
+  "word_count": 408
+ }
+}
+]
