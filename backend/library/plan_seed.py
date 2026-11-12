@@ -847,7 +847,6 @@ CURATED_PLANS = [
         "LORD as the beginning of knowledge to the woman of strength.",
         [chapters("proverbs", 2, 32)],
     ),
-<<<<<<< HEAD
     # The seasons in Scripture (Open Word Bible, chapter order N+1 is chapter
     # N). Advent: 25 days, 1 December to Christmas Day — the promises, then the
     # birth on day 24 (Christmas Eve). The /advent/ hub offers it beside
@@ -969,7 +968,8 @@ CURATED_PLANS = [
             chapters("1-corinthians", 16, 16),  # 1 Corinthians 15: the firstfruits
             chapters("romans", 7, 7),  # Romans 6: raised to walk in newness of life
             chapters("revelation", 2, 2),  # Revelation 1: the living one
-=======
+        ],
+    ),
     # The Bible's story in sixty chapters, a chapter a day (Open Word Bible:
     # chapter order N+1 is chapter N, after each book's introduction).
     (
@@ -1043,7 +1043,6 @@ CURATED_PLANS = [
             chapters("ephesians", 3, 3),  # Ephesians 2: one new people
             chapters("revelation", 22, 22),  # Revelation 21: all things new
             chapters("revelation", 23, 23),  # Revelation 22: the river of life
->>>>>>> origin/main
         ],
     ),
     (
