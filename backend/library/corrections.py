@@ -3364,6 +3364,11 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("O nono resultado", "O oitavo resultado"),
             ("the third result of the New Birth is in outward transformation", "the third result of the New Birth is an outward transformation"),
             ("whom Jesus Christ gives to him who dwells in him", "whom Jesus Christ gives to him, who dwells in him"),
+            # ch10 (found by the ko job): "If thou shalt confess with thy mouth"
+            # is Rom 10:9-10, as the chapter cites it elsewhere (am already
+            # prints 10:9-10).
+            ("10:8, 10", "10:9, 10"),
+            ("(Gal. 3:10.).", "(Gal. 3:10)."),
         ],
     },
     "rest": {
