@@ -7,6 +7,8 @@
 	import TodayCard from '$lib/components/TodayCard.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
+	import NeedFinder from '$lib/components/NeedFinder.svelte';
+	import { NEED_MIN_CHIPS } from '$lib/needFinder';
 	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
@@ -41,12 +43,14 @@
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
 		audiences?: HubAudience[];
+		needs?: string[];
 	}
 	let { data }: { data: HomeData } = $props();
 
 	const featured = $derived<CoverBook[]>(data.discover ?? data.featured);
 	const authors = $derived<AuthorTileData[]>(data.authors);
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
+	const needs = $derived<string[]>(data.needs ?? []);
 
 	const t = i18n.t;
 
@@ -125,8 +129,17 @@
      prerendered HTML. See SignupBand. -->
 <SignupBand />
 
-<!-- Topics: eight names; the header links to all of them. -->
-<TopicChips {topics} quiet />
+<!-- Topics, by situation: "What do you need today?" — chips that open three
+     picks from a topic shelf, its header linking to all of them. It takes the
+     topic row's slot rather than adding a section (design #17 trimmed the page
+     on purpose): both are the page's one way into /topics, and a visitor from
+     a search arrives with a need more often than a subject. A language whose
+     shelves answer fewer than three situations keeps the eight topic names. -->
+{#if needs.length >= NEED_MIN_CHIPS}
+	<NeedFinder {needs} />
+{:else}
+	<TopicChips {topics} quiet />
+{/if}
 
 <!-- For young readers and teens — the hubs this language has. -->
 <HomeAudienceHubs audiences={data.audiences ?? []} />

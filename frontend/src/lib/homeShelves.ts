@@ -23,6 +23,7 @@ import { isPlateCover } from '$lib/coverArt';
 import { editionKind } from '$lib/edition';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
+import { availableNeeds } from '$lib/needFinder';
 
 /**
  * The home page's public shelves — the hero's covers, Discover, the authors grid, the topic chips
@@ -68,6 +69,12 @@ export interface HomeShelves {
 	/** The young-reader hubs with something to show in this language — the
 	 *  home page links only those (`HomeAudienceHubs`). */
 	audiences: HubAudience[];
+	/** "What do you need today?": the situations this language's topic shelves
+	 *  can answer (`availableNeeds`, from the FULL topic list — the chips above
+	 *  are capped). Ids only: the picks load when a chip is pressed. Optional:
+	 *  a snapshot from before the finder reads as none, and the home falls back
+	 *  to the topic chips. */
+	needs?: string[];
 }
 
 /**
@@ -172,7 +179,8 @@ export function deriveHomeShelves(
 		// actually has (the lists are already per-locale), so a locale with
 		// fewer works states its own honest numbers, not English's.
 		counts: { books: books.length, sermons: sermons.length },
-		audiences
+		audiences,
+		needs: availableNeeds(topics)
 	};
 }
 
