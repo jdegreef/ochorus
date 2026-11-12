@@ -52,13 +52,33 @@ BASELINE_PATH = Path(__file__).resolve().parent / "data" / "verse_consistency_ba
 
 # A quoted span, then a citation, with only closing punctuation between them.
 # The `[^«»“”]` inside the quote stops one match swallowing several quotations.
+#
+# Curly SINGLE quotes ‘ … ’ count too: works that quote Scripture that way were
+# invisible here until the pt Grace Abounding job hand-ran the check with them
+# allowed and found 8 real divergences the gate had missed. ’ is also the
+# apostrophe in most of the corpus (don’t, Luganda n’omukama, Ukrainian м’ята),
+# so the single-quote span is fenced on both ends: ‘ must open it and may not
+# follow a letter (an elision typed with the wrong mark, ‘tis), and the closing
+# ’ may not be followed by a letter — an in-word apostrophe never closes the
+# span, it just stays inside it. Straight ASCII ' is still NOT accepted: every
+# apostrophe would become a candidate boundary (see translation-worker, #514).
 PAIR = re.compile(
-    r"[«“„](?P<quote>[^«»“”]{12,600}?)[»”]"  # the quotation
+    r"(?:"
+    r"[«“„](?P<quote>[^«»“”]{12,600}?)[»”]"  # the quotation, double-quoted
+    r"|(?<!\w)‘(?P<squote>[^«»“”‘]{12,600}?)’(?!\w)"  # or single-quoted
+    r")"
     r"\s*(?:<[^>]+>\s*)?"  # an inline tag may close between the two
     r"[^()\w]{0,8}"  # a comma, dash, space — not a sentence
     r"\(\s*(?P<book>[^)]{0,40}?)(?P<chapter>\d+)\s*:\s*(?P<verse>\d+)\s*\)",
     re.S,
 )
+
+
+
+def quoted(m: re.Match) -> str:
+    """The quotation a `PAIR` match read, whichever quote marks it used."""
+    return m.group("quote") if m.group("quote") is not None else m.group("squote")
+
 
 _TAG = re.compile(r"<[^>]+>")
 _ENTITY = re.compile(r"&[a-z]+;|&#\d+;")
@@ -121,7 +141,7 @@ def scan(bodies=None) -> dict[tuple[str, str], list[Rendering]]:
     found: dict[tuple[str, str], list[Rendering]] = defaultdict(list)
     for language, where, body in bodies if bodies is not None else _fixture_bodies():
         for m in PAIR.finditer(body):
-            quote = clean(m.group("quote"))
+            quote = clean(quoted(m))
             if len(quote.split()) < MIN_WORDS:
                 continue
             book = clean(m.group("book")).strip(" .,;:")
