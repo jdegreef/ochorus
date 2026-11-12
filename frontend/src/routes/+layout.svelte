@@ -109,6 +109,25 @@
 		})
 	);
 
+	// The phone's home-screen widgets (Today, Continue) are fed from here, once
+	// the page is idle; app only — the website's bundle has none of it.
+	let widgetSync: typeof import('$lib/widgetSync') | undefined;
+	if (IS_APP) {
+		onMount(() => {
+			let stop: (() => void) | undefined;
+			const cancelIdle = onIdle(() => {
+				void import('$lib/widgetSync').then((m) => {
+					widgetSync = m;
+					stop = m.startWidgetSync();
+				});
+			});
+			return () => {
+				cancelIdle();
+				stop?.();
+			};
+		});
+	}
+
 	// ⌘K / Ctrl+K toggles the palette from anywhere. It lives here rather than
 	// in CommandPalette so the very first press works before the palette's code
 	// has loaded; flipping the flag is what loads it.
@@ -173,6 +192,8 @@
 		// across chapter-to-chapter turns (same route), drop it on anything else.
 		if (from?.route.id !== to?.route.id) readerUi.exitFocus();
 		install.touch();
+		// A chapter just opened has saved the reader's place: the Continue widget.
+		widgetSync?.syncWidgetsSoon();
 	});
 
 	// The reader's optional faces, once the reader has picked one:

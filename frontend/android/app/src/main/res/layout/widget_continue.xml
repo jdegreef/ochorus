@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Continue widget (design #46): the cover, then eyebrow, title, chapter
+     and a reading meter. The texts here are only the placeholder shown before
+     the app has sent a snapshot (and the picker's preview); WidgetRenderer
+     fills the rest. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:contentDescription="@string/widget_placeholder"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <!-- The cover's colour under its image: what shows while the image is
+         downloading, or for a plate cover the widget cannot draw. -->
+    <FrameLayout
+        android:id="@+id/continue_cover"
+        android:layout_width="56dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="14dp"
+        android:background="@color/widget_cover_ground"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/continue_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/continue_eyebrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.1"
+            android:maxLines="1"
+            android:text="@string/widget_continue_name"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@color/widget_accent"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/continue_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="serif"
+            android:maxLines="2"
+            android:text="@string/widget_placeholder"
+            android:textAlignment="viewStart"
+            android:textColor="@color/widget_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/continue_chapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/widget_muted"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/continue_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:importantForAccessibility="no"
+            android:indeterminate="false"
+            android:max="100"
+            android:progressDrawable="@drawable/widget_progress"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

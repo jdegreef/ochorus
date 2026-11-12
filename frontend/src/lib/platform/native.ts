@@ -7,7 +7,7 @@
 
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, registerPlugin } from '@capacitor/core';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 import { Share } from '@capacitor/share';
@@ -206,6 +206,28 @@ export async function offlineFileBase(): Promise<string | null> {
 	}
 }
 
+/*
+ * The home-screen widgets' data. The app's own plugin — no npm package: its
+ * Android side is `android/app/src/main/java/com/ochorus/app/widgets/`
+ * (registered in MainActivity), its iOS side `ios/App/App/Widgets/` (added in
+ * Xcode by hand, see MOBILE.md). A build without it rejects the call, which is
+ * a "no" here, never an error.
+ */
+interface OchorusWidgetsPlugin {
+	setSnapshot(options: { json: string }): Promise<void>;
+}
+
+const Widgets = registerPlugin<OchorusWidgetsPlugin>('OchorusWidgets');
+
+export async function setWidgetSnapshot(json: string): Promise<boolean> {
+	try {
+		await Widgets.setSnapshot({ json });
+		return true;
+	} catch {
+		return false;
+	}
+}
+
 export type AppShellHooks = {
 	/** Client-side navigation (SvelteKit's `goto`). */
 	navigate: (path: string) => unknown;
@@ -223,7 +245,25 @@ const wantsReload = (a: Element) => {
 
 let started = false;
 
+/** The launch URL already followed (sessionStorage: this launch only). */
+const LAUNCH_SEEN = 'ochorus:launch-url';
+const sessionGet = (key: string): string | null => {
+	try {
+		return sessionStorage.getItem(key);
+	} catch {
+		return null;
+	}
+};
+const sessionSet = (key: string, value: string): void => {
+	try {
+		sessionStorage.setItem(key, value);
+	} catch {
+		/* blocked storage: at worst a reload follows the link again */
+	}
+};
+
 export function startAppShell(hooks: AppShellHooks): void {
+
 	if (started) return;
 	started = true;
 
@@ -254,6 +294,27 @@ export function startAppShell(hooks: AppShellHooks): void {
 		if (canGoBack && !hooks.isRoot()) history.back();
 		else void App.exitApp();
 	});
+
+	// A home-screen widget's tap opens the app on an ochorus.com URL (the
+	// chapter to resume, /today): the page it names, here. Both the launch that
+	// a tap started and a tap while the app runs. Anything that is not one of
+	// the reader's own pages is ignored — the app just opens.
+	const openUrl = (url: string | undefined) => {
+		if (!url) return;
+		const to = linkTarget(url, location.href, hooks.siteUrl);
+		if (to?.kind === 'internal') hooks.navigate(to.path);
+	};
+	void App.addListener('appUrlOpen', ({ url }) => openUrl(url));
+	// The launch URL outlives a full page load (a change of language reloads
+	// the web view), so it is followed once per launch, not once per load.
+	App.getLaunchUrl()
+		.then((launch) => {
+			const url = launch?.url;
+			if (!url || sessionGet(LAUNCH_SEEN) === url) return;
+			sessionSet(LAUNCH_SEEN, url);
+			openUrl(url);
+		})
+		.catch(() => {});
 
 	// The launch splash stays up until the first frame of the reader is drawn
 	// (capacitor.config.ts keeps a time limit as a safety net).

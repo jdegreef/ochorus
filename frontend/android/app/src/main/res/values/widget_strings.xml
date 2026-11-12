@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The home-screen widgets' picker names and descriptions, and the words a widget shows
+     before the app has sent it anything. The names are the web catalogue's own
+     (home_today_verse, continue_title); once the app runs, every widget word comes
+     from the snapshot, in the reader's language. -->
+<resources>
+    <string name="widget_today_name">Verse for today</string>
+    <string name="widget_today_description">Today’s verse from Ochorus, new each day.</string>
+    <string name="widget_continue_name">Continue reading</string>
+    <string name="widget_continue_description">Your book, one tap from your place.</string>
+    <string name="widget_placeholder">Open Ochorus to begin.</string>
+</resources>

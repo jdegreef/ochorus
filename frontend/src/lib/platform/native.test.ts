@@ -4,6 +4,9 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vite
 // function asks of the phone.
 const m = vi.hoisted(() => ({
 	backButton: undefined as undefined | ((e: { canGoBack: boolean }) => void),
+	urlOpen: undefined as undefined | ((e: { url: string }) => void),
+	launchUrl: 'https://ochorus.com/books/humility/3/' as string | undefined,
+	widgetSet: vi.fn(),
 	share: vi.fn(),
 	writeFile: vi.fn(),
 	fs: {
@@ -34,10 +37,12 @@ vi.mock('@capacitor/preferences', () => ({ Preferences: m.prefs }));
 vi.mock('@capacitor/browser', () => ({ Browser: { open: m.browserOpen } }));
 vi.mock('@capacitor/app', () => ({
 	App: {
-		addListener: vi.fn((_: string, fn: (e: { canGoBack: boolean }) => void) => {
-			m.backButton = fn;
+		addListener: vi.fn((event: string, fn: never) => {
+			if (event === 'backButton') m.backButton = fn;
+			if (event === 'appUrlOpen') m.urlOpen = fn;
 			return Promise.resolve({ remove: vi.fn() });
 		}),
+		getLaunchUrl: () => Promise.resolve(m.launchUrl ? { url: m.launchUrl } : undefined),
 		exitApp: m.exitApp
 	}
 }));
@@ -47,6 +52,7 @@ vi.mock('@capacitor/status-bar', () => ({
 }));
 vi.mock('@capacitor/splash-screen', () => ({ SplashScreen: { hide: m.hide } }));
 vi.mock('@capacitor/core', () => ({
+	registerPlugin: (name: string) => (name === 'OchorusWidgets' ? { setSnapshot: m.widgetSet } : {}),
 	Capacitor: {
 		getPlatform: () => m.platform,
 		convertFileSrc: (uri: string) => uri.replace('file://', 'capacitor://localhost/_capacitor_file_')
@@ -65,6 +71,7 @@ import {
 	prefsRemove,
 	prefsSet,
 	setStatusBar,
+	setWidgetSnapshot,
 	share,
 	shareFile,
 	startAppShell
@@ -213,6 +220,19 @@ describe('native openExternal / setStatusBar', () => {
 	});
 });
 
+describe('native setWidgetSnapshot', () => {
+	it('hands the JSON to the widgets plugin', async () => {
+		m.widgetSet.mockResolvedValueOnce(undefined);
+		expect(await setWidgetSnapshot('{"v":1}')).toBe(true);
+		expect(m.widgetSet).toHaveBeenCalledWith({ json: '{"v":1}' });
+	});
+
+	it('is a "no" on a build without the plugin', async () => {
+		m.widgetSet.mockRejectedValueOnce(new Error('"OchorusWidgets" plugin is not implemented on ios'));
+		expect(await setWidgetSnapshot('{}')).toBe(false);
+	});
+});
+
 describe('startAppShell', () => {
 	const navigate = vi.fn();
 	let root = false;
@@ -223,7 +243,17 @@ describe('startAppShell', () => {
 		routerSaw.push(e.defaultPrevented);
 		e.preventDefault();
 	};
-	const hooks = { navigate, isRoot: () => root, siteUrl: 'https://ochorus.com' };
+	// Every navigation, in a plain list: the launch URL's lands as the shell
+	// starts, before any test's mock state is its own.
+	const navigated: string[] = [];
+	const hooks = {
+		navigate: (path: string) => {
+			navigated.push(path);
+			navigate(path);
+		},
+		isRoot: () => root,
+		siteUrl: 'https://ochorus.com'
+	};
 
 	beforeAll(() => {
 		startAppShell(hooks);
@@ -244,6 +274,20 @@ describe('startAppShell', () => {
 		document.body.innerHTML = html;
 		document.querySelector('a')!.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, ...init }));
 	};
+
+	it('opens the page a widget launched the app on, once per launch', () => {
+		expect(navigated[0]).toBe('/books/humility/3/');
+		expect(navigated.filter((p) => p === '/books/humility/3/')).toHaveLength(1);
+		expect(sessionStorage.getItem('ochorus:launch-url')).toBe('https://ochorus.com/books/humility/3/');
+	});
+
+	it('opens a widget tap while running in the app, and ignores anything else', () => {
+		m.urlOpen!({ url: 'https://ochorus.com/es/today/' });
+		expect(navigate).toHaveBeenCalledWith('/es/today/');
+		m.urlOpen!({ url: 'https://example.org/today/' });
+		m.urlOpen!({ url: 'https://ochorus.com/feed.xml' });
+		expect(navigate).toHaveBeenCalledTimes(1);
+	});
 
 	it('hides the splash once, on the first frame', async () => {
 		await new Promise((r) => requestAnimationFrame(() => r(null)));

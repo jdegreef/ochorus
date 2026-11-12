@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Lamplight" (frontend/src/app.css :root), for the phone's dark mode. -->
+<resources>
+    <color name="widget_ground">#201b15</color>
+    <color name="widget_text">#ece3d4</color>
+    <color name="widget_muted">#ab9f8b</color>
+    <color name="widget_accent">#9c9af2</color>
+    <color name="widget_track">#3a3228</color>
+    <color name="widget_cover_ground">#221f33</color>
+</resources>
