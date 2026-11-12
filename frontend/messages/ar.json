@@ -1780,5 +1780,6 @@
   "calendar_read": "اقرأ قراءة اليوم",
   "calendar_locked": "يُفتح في %date%",
   "calendar_open_today": "افتح باب اليوم",
-  "calendar_see_doors": "شاهد الأبواب"
+  "calendar_see_doors": "شاهد الأبواب",
+  "bible_canon_label": "أسفار الكتاب المقدس"
 }

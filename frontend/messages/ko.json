@@ -1780,5 +1780,6 @@
   "calendar_read": "오늘의 읽을거리 읽기",
   "calendar_locked": "%date%에 열립니다",
   "calendar_open_today": "오늘의 문 열기",
-  "calendar_see_doors": "문 보기"
+  "calendar_see_doors": "문 보기",
+  "bible_canon_label": "성경의 책들"
 }

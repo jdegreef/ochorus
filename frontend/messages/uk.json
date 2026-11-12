@@ -1780,5 +1780,6 @@
   "calendar_read": "Прочитати сьогоднішнє читання",
   "calendar_locked": "Відчиняться %date%",
   "calendar_open_today": "Відчинити сьогоднішні двері",
-  "calendar_see_doors": "Переглянути двері"
+  "calendar_see_doors": "Переглянути двері",
+  "bible_canon_label": "Книги Біблії"
 }

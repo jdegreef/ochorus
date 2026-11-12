@@ -1780,5 +1780,6 @@
   "calendar_read": "Leer la lectura de hoy",
   "calendar_locked": "Se abre el %date%",
   "calendar_open_today": "Abre la puerta de hoy",
-  "calendar_see_doors": "Ver las puertas"
+  "calendar_see_doors": "Ver las puertas",
+  "bible_canon_label": "Libros de la Biblia"
 }

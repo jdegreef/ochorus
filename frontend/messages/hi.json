@@ -1780,5 +1780,6 @@
   "calendar_read": "आज का पाठ पढ़ें",
   "calendar_locked": "%date% को खुलेगा",
   "calendar_open_today": "आज का द्वार खोलें",
-  "calendar_see_doors": "द्वार देखें"
+  "calendar_see_doors": "द्वार देखें",
+  "bible_canon_label": "बाइबल की पुस्तकें"
 }
