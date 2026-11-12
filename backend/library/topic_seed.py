@@ -56,6 +56,7 @@ TOPICS = [
             "seven-times-a-day",
             "a-mighty-fortress",
             "the-fire-on-the-altar",
+            "open-your-mouth-wide",
             "psalms",
             "habakkuk",
         ],
