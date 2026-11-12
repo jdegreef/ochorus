@@ -45,6 +45,7 @@
 	import Bookshelf from '$lib/components/Bookshelf.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import SealsShelf from '$lib/components/SealsShelf.svelte';
+	import BookplatesShelf from '$lib/components/BookplatesShelf.svelte';
 	import YearInBooks from '$lib/components/YearInBooks.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
@@ -423,6 +424,7 @@
 			items={shelves.finished}
 			emptyHint={t('fav.shelfFinishedEmpty')}
 		/>
+		<BookplatesShelf {progress} books={bookList} />
 		{#each mine as m (m.id)}
 			<Bookshelf
 				{view}

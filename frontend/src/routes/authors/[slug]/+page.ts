@@ -227,7 +227,9 @@ import { getAuthorWithLang, listAuthors, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import { localizeHref } from '$lib/href';
-import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { authorPath, hasBylinePage } from '$lib/originals';
+import { OWB_SLUG } from '$lib/openWordBible';
+import { bibleIn } from '$lib/bible';
 import { redirect } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
 
@@ -242,8 +244,9 @@ export const entries: EntryGenerator = async () => {
 	const slugs = new Set<string>();
 	for (const b of books) slugs.add(b.author.slug);
 	for (const a of authors) slugs.add(a.slug);
-	// The house imprint is not a person: its shelf is /originals, not a page here.
-	slugs.delete(ORIGINALS_SLUG);
+	// The house imprint and the Bible's translation are not people: each has a
+	// page of its own (/originals, /open-word-bible), not a page here.
+	for (const slug of slugs) if (hasBylinePage(slug)) slugs.delete(slug);
 	return [...slugs].map((slug) => ({ slug }));
 };
 
@@ -458,9 +461,14 @@ export const entries: EntryGenerator = async () => {
 // Prerender refresh 2026-09-26: es bios for F. F. Bosworth, John G. Lake,
 // Charles S. Price, Jesse Lyman Hurlbut (with FAQ) and Arthur T. Pierson.
 export const load: PageLoad = async ({ params, fetch }) => {
-	// Old links and bookmarks to the imprint's author page land on its shelf.
-	// (render.yaml 301s the English URL; this covers the localized ones.)
-	if (params.slug === ORIGINALS_SLUG) redirect(308, localizeHref(ORIGINALS_PATH));
+	// Old links and bookmarks to the imprint's or the translation's author page
+	// land on its own page. (render.yaml 301s the English URLs; this covers the
+	// localized ones.) The translation's page is English-only, like the Bible
+	// it describes, so a language without the Bible is sent to the English one.
+	if (hasBylinePage(params.slug)) {
+		const to = authorPath(params.slug);
+		redirect(308, params.slug === OWB_SLUG && !bibleIn(getLang()) ? `${to}/` : localizeHref(to));
+	}
 	// The RESOLVED language, not the requested one: getAuthor falls back to
 	// English on a 404, and the reader labels the bio's prose with this.
 	const { data: author, language } = await orNotFound(() =>

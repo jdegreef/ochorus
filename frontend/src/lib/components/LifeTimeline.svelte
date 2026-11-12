@@ -69,7 +69,7 @@
 	     in the prose, so it carries an aria-label summary and hides the dots from
 	     the a11y tree; each dot still names itself via <title> for pointer users. -->
 	<figure
-		class="life-events mx-auto mt-6 max-w-[40rem]"
+		class="life-events mt-6 max-w-[40rem]"
 		aria-label={labels
 			? `Timeline: ${events[0].label} (${events[0].year}) to ${events[events.length - 1].label} (${events[events.length - 1].year})`
 			: `${events[0].year}–${events[events.length - 1].year}`}
@@ -110,7 +110,7 @@
 		</ol>
 	</figure>
 {:else if domain && birthYear != null && deathYear != null}
-	<div class="life-timeline mx-auto mt-6 max-w-[40rem]" aria-hidden="true">
+	<div class="life-timeline mt-6 max-w-[40rem]" aria-hidden="true">
 		<div class="track">
 			{#each ticks as y (y)}
 				<span class="tick" style="left: {pct(y)}%">

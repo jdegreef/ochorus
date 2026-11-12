@@ -218,7 +218,7 @@
 						{#each guideRail as g (g.slug)}
 							<a href={localizeHref(`/articles/${g.slug}/`)} class="w-20 shrink-0 hover:no-underline sm:w-24">
 								<BookCover book={g.book} />
-								<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+								<div class="mt-1.5 line-clamp-2 min-h-[2lh] text-eyebrow font-medium text-text">
 									{g.book.title}
 								</div>
 								<div class="truncate text-eyebrow text-muted">{g.book.author.name}</div>

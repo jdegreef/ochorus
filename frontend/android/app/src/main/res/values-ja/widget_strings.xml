@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">今日のみことば</string>
+    <string name="widget_today_description">Ochorus の今日のみことば。毎日新しく。</string>
+    <string name="widget_continue_name">続きを読む</string>
+    <string name="widget_continue_description">読みかけの本に、ワンタップで戻れます。</string>
+    <string name="widget_placeholder">Ochorus を開いて始めましょう。</string>
+</resources>

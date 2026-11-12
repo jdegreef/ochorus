@@ -46,7 +46,19 @@ export interface ForChrome {
 	/** The church-website widget's section ($lib/embed, ForEmbed). */
 	embedHeading: string;
 	embedBody: string;
-	embed: { copy: string; copied: string; selected: string; announced: string; preview: string; options: string };
+	embed: {
+		copy: string;
+		copied: string;
+		selected: string;
+		announced: string;
+		preview: string;
+		options: string;
+		/** The plain-iframe version's fold, for builders that strip scripts. */
+		frameSummary: string;
+		frameBody: string;
+		/** Above the live card. */
+		previewLabel: string;
+	};
 	questions: string;
 	contact: string;
 	/** The /for/ index's lead, and its meta description from the groups' phrases. */
@@ -163,7 +175,11 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			announced: 'Code copied',
 			preview: 'See it live',
 			options:
-				'For a dark website, add data-theme="dark". For another language, change data-lang to its code, such as es, fr, sw or lg.'
+				'For a dark website, add data-theme="dark". For another language, change data-lang to its code, such as es, fr, sw or lg.',
+			frameSummary: 'Does your website builder remove scripts? Use this instead',
+			frameBody:
+				'The same card in a plain frame. It cannot fit its own height, so change 460px if the card is cut off or leaves a gap. For a dark website, add ?theme=dark after /embed/today.',
+			previewLabel: 'What your visitors will see today'
 		},
 		questions: 'Questions',
 		contact: 'Contact us',
@@ -313,7 +329,11 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			announced: 'Code copié',
 			preview: 'Voir l’aperçu',
 			options:
-				'Pour un site sombre, ajoutez data-theme="dark". Pour une autre langue, remplacez data-lang par son code, par exemple en, es, sw ou lg.'
+				'Pour un site sombre, ajoutez data-theme="dark". Pour une autre langue, remplacez data-lang par son code, par exemple en, es, sw ou lg.',
+			frameSummary: 'Votre outil de création de site supprime les scripts ? Utilisez plutôt ceci',
+			frameBody:
+				'La même carte dans un simple cadre. Elle ne peut pas ajuster sa propre hauteur : modifiez 460px si la carte est coupée ou laisse un vide. Pour un site sombre, ajoutez ?theme=dark après /embed/today.',
+			previewLabel: 'Ce que vos visiteurs verront aujourd’hui'
 		},
 		questions: 'Questions',
 		contact: 'Nous contacter',

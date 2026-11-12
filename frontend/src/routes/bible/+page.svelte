@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { BIBLE_PATH, BIBLE_SERIES, bibleIn, divisionKey, groupBible, testamentKey } from '$lib/bible';
+	import { OWB_PATH } from '$lib/openWordBible';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -119,6 +120,13 @@
 			<p class="text-small">
 				<a href={localizeHref(`/series/${BIBLE_SERIES}/`)} class="font-medium text-accent hover:underline"
 					>{t('bible.inOrder')} <Arrow /></a
+				>
+			</p>
+			<!-- What the translation is, and its home: English prose, like the
+			     page it opens (it exists only where the hub does). -->
+			<p class="mt-2 text-small">
+				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+					>About the Open Word Bible <Arrow /></a
 				>
 			</p>
 		</section>

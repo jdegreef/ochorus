@@ -4,6 +4,6 @@
 	"largestChunk": { "raw": 509952, "gzip": 168960 },
 	"largestCatalogue": { "raw": 181248, "gzip": 37888 },
 	"globalCss": { "raw": 162816, "gzip": 33792 },
-	"_whyAppBundle": "appBundle: the whole build-app/ folder the phone apps ship (every file, raw bytes), checked by scripts/build-app.mjs at the end of `npm run app:build`. Before Oct 2026 the app bundled all of static/ (245 MB: covers, share cards, portraits); covers, portraits, illustrations, og/ and pdfs/ now load from the website ($lib/assetUrl, app-assets.js) and the .woff font fallbacks are dropped, leaving 19.5 MB — nearly all webfonts (woff2) and JS. Budget = that + ~15%, rounded to the MB. A store app should stay small; raise it only deliberately, with the reason in the PR.",
-	"appBundle": { "raw": 25165824 }
+	"_whyAppBundle": "appBundle: the whole build-app/ folder the phone apps ship (every file, raw bytes), checked by scripts/build-app.mjs at the end of `npm run app:build`. Before Oct 2026 the app bundled all of static/ (245 MB: covers, share cards, portraits); covers, portraits, illustrations, og/ and pdfs/ now load from the website ($lib/assetUrl, app-assets.js) and the .woff font fallbacks are dropped, leaving 19.5 MB — nearly all webfonts (woff2) and JS. Budget = that + ~15%, rounded to the MB. A store app should stay small; raise it only deliberately, with the reason in the PR. Nov 2026 (Japanese): 24 -> 38 MB. The Noto Serif/Sans JP woff2 slices (400 + 700, ~14 MB) brought the bundle to 33.6 MB; they ship in the app for the reason the Korean ones do, so a Japanese book reads offline in its own face rather than the phone's. Budget = 33.6 MB + ~15%, rounded to the MB.",
+	"appBundle": { "raw": 39845888 }
 }

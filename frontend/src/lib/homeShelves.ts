@@ -25,6 +25,7 @@ import { editionKind } from '$lib/edition';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { tonightPool, type TonightItem } from '$lib/tonightShelf';
+import { availableNeeds } from '$lib/needFinder';
 
 /**
  * The home page's public shelves — the hero's covers, Discover, the authors grid, the topic chips
@@ -73,6 +74,12 @@ export interface HomeShelves {
 	/** "Tonight, under 20 minutes" — short whole works in this language; the
 	 *  browser shows them in the evening only (`$lib/tonightShelf`). */
 	tonight: TonightItem[];
+	/** "What do you need today?": the situations this language's topic shelves
+	 *  can answer (`availableNeeds`, from the FULL topic list — the chips above
+	 *  are capped). Ids only: the picks load when a chip is pressed. Optional:
+	 *  a snapshot from before the finder reads as none, and the home falls back
+	 *  to the topic chips. */
+	needs?: string[];
 }
 
 /**
@@ -179,7 +186,8 @@ export function deriveHomeShelves(
 		// fewer works states its own honest numbers, not English's.
 		counts: { books: books.length, sermons: sermons.length },
 		audiences,
-		tonight: tonightPool({ books, sermons, authors }, language, day)
+		tonight: tonightPool({ books, sermons, authors }, language, day),
+		needs: availableNeeds(topics)
 	};
 }
 

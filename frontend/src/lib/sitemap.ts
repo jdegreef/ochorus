@@ -52,8 +52,9 @@ import { ERAS, eraOf } from '$lib/eras';
 import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
-import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { ORIGINALS_PATH, ORIGINALS_SLUG, hasBylinePage } from '$lib/originals';
 import { BIBLE_PATH, BIBLE_SERIES, bibleIn } from '$lib/bible';
+import { OWB_PATH } from '$lib/openWordBible';
 import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
@@ -572,6 +573,10 @@ async function build(): Promise<SitemapData> {
 			byLocale,
 			lastmods: dated([...byLocale.keys()], (l) => dates.get(l)?.series.get(BIBLE_SERIES))
 		});
+		// The page about its translation ($lib/openWordBible), wherever the hub
+		// is: the hub links it, and so does every Bible book's byline. Undated:
+		// its prose is its own, not the books'.
+		pages.push({ byLocale: new Map(bibleLocales.map(([l]) => [l, `${OWB_PATH}/`])) });
 	}
 
 	// The young-reader hubs, in each advertised locale where the hub has
@@ -653,8 +658,9 @@ async function build(): Promise<SitemapData> {
 		])
 	);
 	const authorSlugs = new Set([...authorsIn.values()].flatMap((slugs) => [...slugs]));
-	// The imprint is not a person and has no author page — /originals above.
-	authorSlugs.delete(ORIGINALS_SLUG);
+	// The imprint and the translation are not people and have no author page —
+	// /originals and /open-word-bible above.
+	for (const slug of authorSlugs) if (hasBylinePage(slug)) authorSlugs.delete(slug);
 	// The portrait is the same image in every locale — an author is one row.
 	const portraits = new Map(authors.filter((a) => a.photo_url).map((a) => [a.slug, a.photo_url]));
 	const authorEntries: Entry[] = [...authorSlugs].map((slug) => {

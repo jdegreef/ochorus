@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { BookSummary } from './library-public';
-import { ORIGINALS_SLUG, authorPath, shelveOriginals } from './originals';
+import { ORIGINALS_SLUG, authorLdType, authorPath, hasBylinePage, isImprint, shelveOriginals } from './originals';
+import { OWB_SLUG } from './openWordBible';
 
 const book = (slug: string, word_count: number | null = 1000) =>
 	({ slug, word_count }) as BookSummary;
@@ -8,7 +9,21 @@ const book = (slug: string, word_count: number | null = 1000) =>
 describe('authorPath', () => {
 	it('sends the imprint to /originals and everyone else to their author page', () => {
 		expect(authorPath(ORIGINALS_SLUG)).toBe('/originals');
+		expect(authorPath(OWB_SLUG)).toBe('/open-word-bible');
 		expect(authorPath('john-bunyan')).toBe('/authors/john-bunyan');
+	});
+});
+
+describe('bylines that are not people', () => {
+	it('gives the imprint and the translation their own page, and Organization in JSON-LD', () => {
+		for (const slug of [ORIGINALS_SLUG, OWB_SLUG]) {
+			expect(hasBylinePage(slug)).toBe(true);
+			expect(isImprint({ slug })).toBe(true);
+			expect(authorLdType(slug)).toBe('Organization');
+		}
+		expect(hasBylinePage('john-bunyan')).toBe(false);
+		expect(isImprint({ slug: 'john-bunyan' })).toBe(false);
+		expect(authorLdType('john-bunyan')).toBe('Person');
 	});
 });
 

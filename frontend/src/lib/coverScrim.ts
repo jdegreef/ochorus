@@ -241,6 +241,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-dominion-of-sin-and-grace': 0.75,
 	'the-epistles-of-cyprian': 0.70,
 	'the-everlasting-man': 0.80,
+	'the-fire-on-the-altar': 0.60,
 	'the-first-apology': 0.65,
 	'the-glory-of-christ': 0.20,
 	'the-glowstone-bargain': 0.50,

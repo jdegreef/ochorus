@@ -363,13 +363,12 @@
 	// (French title, French passage); every other language shares the English
 	// one. A prerendered page cannot test for a file, so the card's existence is
 	// guaranteed by `SermonShareCardTests` instead, per language.
-	const ogImage = $derived(
-		absUrl(
-			hasLocalizedSermonCard(sermon.language)
-				? `/og/sermons/${sermon.language}/${sermon.slug}.png`
-				: `/og/sermons/${sermon.slug}.png`
-		)
+	const ogPath = $derived(
+		hasLocalizedSermonCard(sermon.language)
+			? `/og/sermons/${sermon.language}/${sermon.slug}.png`
+			: `/og/sermons/${sermon.slug}.png`
 	);
+	const ogImage = $derived(absUrl(ogPath));
 	// Scripture reference in the <title>/og:title: a large share of sermon
 	// searches are passage-driven ("sermon on Matthew 11:28"), and the reference
 	// lived only in the page body — never the title tag search engines weight
@@ -817,6 +816,7 @@
 			{cite}
 			listenTitle={sermon.title}
 			listenArtist={sermon.author_name}
+			listenArtwork={[ogPath]}
 			bind:body
 			bind:frac
 			finishOnEnd

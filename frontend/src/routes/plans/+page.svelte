@@ -193,7 +193,11 @@
 {/snippet}
 
 {#snippet planGrid(list: PlanSummary[], headingLevel: 2 | 3)}
-	<div class="grid items-stretch gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+	<!-- A short group the items can fill two-up (4 plans: "A week or two")
+	     stays two across on a desktop: three across left one card alone on
+	     its row. Longer groups keep three. -->
+	{@const pairs = list.length === 2 || list.length === 4}
+	<div class="grid items-stretch gap-x-6 gap-y-7 sm:grid-cols-2 {pairs ? '' : 'lg:grid-cols-3'}">
 		{#each list as plan (plan.slug)}
 			<PlanShelfCard {plan} {headingLevel} />
 		{/each}
