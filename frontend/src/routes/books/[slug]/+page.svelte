@@ -57,6 +57,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import GiftBookButton from '$lib/components/GiftBookButton.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
 	import AboutThisText from '$lib/components/AboutThisText.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
@@ -835,9 +836,9 @@
 					</div>
 				</div>
 
-				<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
+				<!-- Everything else is one quiet row of six: keep it (Save, a shelf),
 				     take it away (one Download menu for offline / EPUB / PDF), pass it on
-				     (Share) and look inside (Search). Share and Search are icon-only on
+				     (Share, Give) and look inside (Search). Share and Search are icon-only on
 				     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
 				     B's labelled icon strip. -->
 				<div class="action-strip mt-3">
@@ -846,6 +847,11 @@
 					<BookDownloadMenu {book} />
 					<div class="icon-in-row">
 						<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+					</div>
+					<!-- Give it to someone, with a note: a link that carries the gift
+					     ($lib/gift) to /gift. Icon-only in the row, like Share. -->
+					<div class="icon-in-row">
+						<GiftBookButton slug={book.slug} language={book.language} title={book.title} />
 					</div>
 					<!-- Search inside this book: the real search, scoped to the book. -->
 					<a

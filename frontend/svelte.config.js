@@ -167,7 +167,9 @@ const config = {
 					`/${l}/topics`,
 					`/${l}/about`,
 					`/${l}/contact`,
-					`/${l}/rss/`
+					`/${l}/rss/`,
+					// The gift landing shell (routes/gift/+page.ts): nothing links to it.
+					`/${l}/gift/`
 				])
 			],
 			// Routes that are prerenderable but legitimately unreached at build:
