@@ -24852,3 +24852,13 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ("all the counsel of god. </p>", "all the counsel of God. </p>"),
     ("I commend you to god and to the word", "I commend you to God and to the word"),
 ])
+
+# Three marks in *The Reformed Pastor* that #7785 and #7787 did not reach, from
+# the ko translators' list (job #7071): Hazael's question loses its "?" inside
+# the quote; the last of a series of "Are there so many …?" questions ends in a
+# full stop; and a "?" stands outside the quote it belongs to.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ('that he should do this thing’ or as Peter', 'that he should do this thing?’ or as Peter'),
+    ('seducers, and troublers of the Church. And yet', 'seducers, and troublers of the Church? And yet'),
+    ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
+])
