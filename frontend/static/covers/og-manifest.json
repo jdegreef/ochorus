@@ -9413,6 +9413,38 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/evangelization-of-the-world": {
+			"ground": "cb47fb67255859128b9af7f46cac9490337f44aba233d75cc06bf98c7ed9f888",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[71, 223, 529, 299],
+					[122, 289, 478, 365],
+					[97, 354, 503, 430]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				482
+			]
+		},
 		"es/evening-by-evening": {
 			"ground": "506e34a5fc2577bad64019cfcf6300fdfa2cd7a48c7047162eab6b4256b7421c",
 			"style": "revival",
