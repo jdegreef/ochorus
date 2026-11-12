@@ -323,10 +323,19 @@ worker specifics that shipped ~11 editions:
      art_scrim.py` + `frontend/src/lib/coverScrim.ts` (only your slug is added).
   6. `cd frontend && npm run og:covers` for the titled twin + manifest entry.
   **`og:covers` needs frontend `node_modules` (playwright + sharp)**, which a
-  fresh worktree lacks; borrow the main checkout's with a temporary
-  `ln -s <main>/frontend/node_modules node_modules`, run it, then `rm` the
-  symlink (fine for a standalone build script — the "symlink breaks hydration"
-  caveat is only about the Vite dev server).
+  fresh worktree lacks. Run `npm ci` in the worktree (~10 s) rather than
+  symlinking the main checkout's: that tree is often stale, and the script then
+  dies on a font package it lacks (`@fontsource/amatic-sc/700.css`, 2026-11-01).
+  If Playwright then says its browser "doesn't exist", the lockfile moved its
+  version: `npx playwright install chromium-headless-shell`.
+- **The scratchpad does not survive a session restart, and a stalled claim gets
+  reclaimed.** A two-book pt job (#6872/#6873, 2026-11) lost 32 finished
+  chapters twice when its session was resumed days later. Only what was already
+  in the worktree survived. Meanwhile other sessions correctly reclaimed both
+  stale claims and shipped the books (#7516, #7726), so the original session's
+  copy became a duplicate. Once a book validates, build its fixture into the
+  worktree and ship it the same day. When resuming, re-run the double-ship check
+  before doing anything else.
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and
