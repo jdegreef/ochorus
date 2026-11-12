@@ -3301,6 +3301,46 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("the cross of Cavalry", "the cross of Calvary"),
             # Acts 2:23, quoted in bold: "the determinate counsel".
             ("by the determinate council and", "by the determinate counsel and"),
+            # Further slips verified against the text from the vi (#7665), uk
+            # (#7636), sw (#7644) and hi (#7641) jobs. Numeric pairs that are
+            # unique in every edition are written once; the rest per edition.
+            ("8:57", "8:58"),          # "before Abraham was, I am" is John 8:58
+            ("3:13-17", "3:13-18"),    # the quotation runs through verse (18)
+            ("26:16-26", "26:16-21"),  # 2 Chronicles 26 has 23 verses
+            # The worship received by Jesus: Matt 14:33, not Mark 14:33
+            # (Gethsemane). am already prints Matthew.
+            ("Mark 14:33;", "Matt. 14:33;"),
+            ("Marcos 14:33;", "Mateo 14:33;"),
+            ("Marc 14:33 ;", "Matthieu 14:33 ;"),
+            ("Mc 14:33;", "Mt 14:33;"),
+            ("Makko 14:33;", "Matayo 14:33;"),
+            # "The Evil One" is 1 John 5:19, as the same chapter cites it later.
+            ("(John 5:19, R. V.)", "(1 John 5:19, R. V.)"),
+            ("(Juan 5:19, Revised", "(1 Juan 5:19, Revised"),
+            ("(Jean 5:19, version", "(1 Jean 5:19, version"),
+            ("(Jo 5:19, R. V.)", "(1 Jo 5:19, R. V.)"),
+            ("(Yokaana 5:19, R. V.)", "(1 Yokaana 5:19, R. V.)"),
+            # "Yea, hath God said" is Gen 3:1.
+            ('?"</b> (Gen. 3:2)', '?"</b> (Gen. 3:1)'),
+            ("?»</b> (Génesis 3:2)", "?»</b> (Génesis 3:1)"),
+            ("? »</b> (Genèse 3:2)", "? »</b> (Genèse 3:1)"),
+            ("?”</b> (Gn 3:2)", "?”</b> (Gn 3:1)"),
+            ('?"</b> (Olubereberye 3:2)', '?"</b> (Olubereberye 3:1)'),
+            ("?»</b> (ዘፍጥረት 3:2)", "?»</b> (ዘፍጥረት 3:1)"),
+            # Acts 17:24-28 quoted with verse 27 left out: "For in him we
+            # live" is verse 28, so only its label moves (lg already reads 28).
+            ("habitations. (27) For in him", "habitations. (28) For in him"),
+            ("habitación. (27) Porque en él", "habitación. (28) Porque en él"),
+            ("demeure; (27) car en lui", "demeure; (28) car en lui"),
+            ("habitações, (27) Pois nele", "habitações, (28) Pois nele"),
+            ("ወሰነ፤ (27) ከእናንተ", "ወሰነ፤ (28) ከእናንተ"),
+            # Wording, English only.
+            ("my Father will love him, and he will come unto him", "my Father will love him, and we will come unto him"),
+            ("for a spirit not flesh and blood", "for a spirit hath not flesh and bones"),
+            ("and he that hath abideth in love", "and he that abideth in love"),
+            ('"cannot do good neither is it in them to do evil"', '"cannot do evil neither is it in them to do good"'),
+            ("notice here is expression", "notice here is the expression"),
+            ("Father, Son and Holy Ghost .", "Father, Son and Holy Ghost."),
         ],
     },
     "rest": {
