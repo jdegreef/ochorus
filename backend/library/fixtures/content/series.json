@@ -1315,5 +1315,18 @@
   "created_at": "2026-11-11T00:00:00Z",
   "updated_at": "2026-11-11T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "sw",
+  "title": "Wingu la Mashahidi Wanaoomba",
+  "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
 }
 ]
