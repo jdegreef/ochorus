@@ -1738,6 +1738,8 @@
   "nav_bible": "The Bible",
   "bible_tagline": "The books of the Bible in the Open Word Bible, a new translation given freely to the public domain, in order from Genesis to Revelation.",
   "bible_none": "No books of the Bible in this language yet.",
+  "bible_previous_book": "Previous book",
+  "bible_next_book": "Next book",
   "bible_old_testament": "Old Testament",
   "bible_new_testament": "New Testament",
   "bible_division_law": "Law",

@@ -1738,6 +1738,8 @@
   "nav_bible": "बाइबल",
   "bible_tagline": "Open Word Bible में बाइबल की पुस्तकें — एक नया अनुवाद जो सार्वजनिक क्षेत्र को निःशुल्क दिया गया है — उत्पत्ति से प्रकाशितवाक्य तक, अपने क्रम में।",
   "bible_none": "इस भाषा में अभी बाइबल की कोई पुस्तक नहीं है।",
+  "bible_previous_book": "पिछली पुस्तक",
+  "bible_next_book": "अगली पुस्तक",
   "bible_old_testament": "पुराना नियम",
   "bible_new_testament": "नया नियम",
   "bible_division_law": "व्यवस्था",
