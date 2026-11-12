@@ -1418,7 +1418,7 @@
 	 *  where the day is marked done). */
 	const planRun = $derived.by(() => {
 		const d = plan && planDay ? planDayCovering(plan.days, slug, chapter.order, planDay) : null;
-		const step = d?.day === planDay && runStep(d, chapter.order);
+		const step = d?.day === planDay ? runStep(d, chapter.order) : null;
 		return step && { n: step.n, m: step.m, nextHref: step.next ? chapterHref(step.next) : null };
 	});
 
