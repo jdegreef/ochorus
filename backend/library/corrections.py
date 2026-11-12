@@ -8434,6 +8434,25 @@ BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault(
     # section heading lowercased "god" -> "God".
     ("Mysteries—god Gives Them", "Mysteries—God Gives Them"),
 ])
+# The preface (ch 1) ends with the 1875 two-work volume's contents page
+# leaking into the chapter: four <h3>s naming "A Short Method of Prayer",
+# "Spiritual Torrents", "Part I", "Part II". Strip them, in every edition
+# (the markup gate needs identical tags). The half-title and Gen 17:1
+# epigraph that follow are the treatise's own opening and stay.
+BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault("replacements", []).extend([
+    ("<h3>አጭር የጸሎት መንገድ</h3><hr/><h3>መንፈሳዊ ጅረቶች</h3><hr/><h3>ክፍል አንድ</h3><h3>ክፍል ሁለት</h3>", ""),  # am
+    ("<h3>طريقة قصيرة للصلاة</h3><hr/><h3>السيول الروحية</h3><hr/><h3>الجزء الأول</h3><h3>الجزء الثاني</h3>", ""),  # ar
+    ("<h3>A Short Method of Prayer</h3><hr/><h3>Spiritual Torrents</h3><hr/><h3>Part I</h3><h3>Part II</h3>", ""),  # en
+    ("<h3>Un método breve de oración</h3><hr/><h3>Torrentes espirituales</h3><hr/><h3>Parte I</h3><h3>Parte II</h3>", ""),  # es
+    ("<h3>Moyen court de faire oraison</h3><hr/><h3>Les Torrents spirituels</h3><hr/><h3>Première partie</h3><h3>Deuxième partie</h3>", ""),  # fr
+    ("<h3>प्रार्थना की एक छोटी विधि</h3><hr/><h3>आत्मिक धाराएँ</h3><hr/><h3>भाग 1</h3><h3>भाग 2</h3>", ""),  # hi
+    ("<h3>짧은 기도의 방법</h3><hr/><h3>영적 급류</h3><hr/><h3>제1부</h3><h3>제2부</h3>", ""),  # ko
+    ("<h3>Enkola Ennyimpi ey’Okusaba</h3><hr/><h3>Emigga gy’Omwoyo</h3><hr/><h3>Ekitundu I</h3><h3>Ekitundu II</h3>", ""),  # lg
+    ("<h3>Método Breve de Oração</h3><hr/><h3>Torrentes Espirituais</h3><hr/><h3>Parte I</h3><h3>Parte II</h3>", ""),  # pt
+    ("<h3>Njia Fupi ya Kuomba</h3><hr/><h3>Mafuriko ya Kiroho</h3><hr/><h3>Sehemu ya Kwanza</h3><h3>Sehemu ya Pili</h3>", ""),  # sw
+    ("<h3>Короткий спосіб молитви</h3><hr/><h3>Духовні потоки</h3><hr/><h3>Частина I</h3><h3>Частина II</h3>", ""),  # uk
+    ("<h3>Phương Pháp Cầu Nguyện Ngắn Gọn</h3><hr/><h3>Những Dòng Thác Thuộc Linh</h3><hr/><h3>Phần I</h3><h3>Phần II</h3>", ""),  # vi
+])
 # OCR slips found while translating batch 4 (Richard Allen's autobiography).
 BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("replacements", []).extend([
     # Philadelphia's Lombard Street (spelled correctly elsewhere in the text).
