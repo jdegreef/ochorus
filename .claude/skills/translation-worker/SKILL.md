@@ -1979,6 +1979,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   span, a bracketed editorial gloss the English itself carries, and quotations
   running across a verse boundary — join the chapter's verses with a single space
   before testing, or every multi-verse quote reads as a miss).
+- **The scratchpad is NOT durable, and a stalled run loses its claim** (hi
+  Brainerd #6851 / Union #6853, 2026-11). A Mac restart wiped `/private/tmp`
+  mid-run: 37 finished chunk outputs, the reports and the session's own build
+  scripts were gone. They were recovered without re-translating by REPLAYING
+  each subagent's transcript
+  (`~/.claude/projects/<project>/<session>/subagents/agent-*.jsonl`): run every
+  Write/Edit/Bash tool_use in order with cwd = scratchpad, after scanning the
+  commands for paths outside it. But the session was then down for four days,
+  the 6-hour stale-claim rule correctly let two other sessions reclaim and ship
+  both books, and the recovered work was a duplicate. So: copy `out/` +
+  `reports/` + your builder scripts to the shared notes folder as chunks land,
+  and on a run that may span more than a few hours, push a WIP branch or refresh
+  the claim with a progress comment so it does not read as stale. On resuming,
+  check `origin/main` and the issue BEFORE doing any more work.
 - **A dead agent's OUTPUT usually survives; only its report dies — and a report
   can be reconstructed by AUDIT, which is worth more than a re-translation**
   (job #764). Three translators were killed by session limits mid-run. Two had
