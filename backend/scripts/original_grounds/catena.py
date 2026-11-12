@@ -16,6 +16,7 @@ writes OUTDIR/<slug>.html; render it at 2x with headless Chromium (600x800
 window) and downscale with Pillow to the committed jpg, which is FROZEN by
 digest in curated_art.ORIGINAL_GROUND.
 """
+import itertools
 import math
 import pathlib
 import random
@@ -85,7 +86,7 @@ def chain():
     drawn as small links, alternately face-on and edge-on. The cosh term is
     normalised to run from 0 at either end to 1 at the middle."""
     out = []
-    for (x1, y1, s1), (x2, y2, s2) in zip(LAMPS, LAMPS[1:]):
+    for (x1, y1, s1), (x2, y2, s2) in itertools.pairwise(LAMPS):
         ax, ay = x1 - 15 * s1, y1 - 5 * s1
         bx, by = x2 - 15 * s2, y2 - 5 * s2
         angle = math.degrees(math.atan2(by - ay, bx - ax))

@@ -122,9 +122,10 @@ IDEAL_WORDS = 200
 _SCAN_NOISE = re.compile(r"[*|^°<>{}]")
 #: A letter run broken by ? or ! or a digit inside a word: "ma?i", "c0me".
 _MISREAD = re.compile(r"[a-z][?!][a-z]|[a-z]\d|\d[a-z]{3,}")
-_SHORT_WORDS = frozenset(
-    "a i o ah am an as at be by do go ha he ho if in is it lo me my no of oh on or ox so to up us we ye".split()
-)
+_SHORT_WORDS = frozenset({
+    "a", "i", "o", "ah", "am", "an", "as", "at", "be", "by", "do", "go", "ha", "he", "ho", "if", "in",
+    "is", "it", "lo", "me", "my", "no", "of", "oh", "on", "or", "ox", "so", "to", "up", "us", "we", "ye",
+})
 _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
@@ -290,58 +291,59 @@ class Command(BaseCommand):
         return sorted(out, key=lambda e: e["id"])
 
     def select(self, passages) -> list[list[str]]:
-        overall = Counter()
-        chosen = []
-        for _, verses in passages:
-            pool = self.candidates(verses)
-            budget = max(BUDGET_MIN, min(BUDGET_MAX, WORDS_PER_VERSE * len(verses)))
-            eras, voices, at_verse = Counter(), Counter(), Counter()
-            picks, used = [], 0
+        overall = Counter()  # each voice's excerpts so far, across the book
+        return [self.select_passage(verses, overall) for _, verses in passages]
 
-            def score(e):
-                a = e["author"]
-                era = VOICES[a][2]
-                s = 3.0 if eras[era] == 0 else -float(eras[era])
-                s += 2.0 if voices[a] == 0 else -2.0 * voices[a]
-                s -= overall[a] / 40
-                s -= abs(e["_words"] - IDEAL_WORDS) / 150
-                s -= 2.0 * at_verse[e["_start"]]
-                if _OPENS_MIDWAY.match(_LEADING_VERSE.sub("", e["text"].lstrip()).lstrip("“\"' ")):
-                    s -= 1.5  # reads as the middle of an argument
-                return s
+    def select_passage(self, verses: list[tuple[int, int]], overall: Counter) -> list[str]:
+        """The excerpt ids for one passage, in the order they were chosen."""
+        pool = self.candidates(verses)
+        budget = max(BUDGET_MIN, min(BUDGET_MAX, WORDS_PER_VERSE * len(verses)))
+        eras, voices, at_verse = Counter(), Counter(), Counter()
+        picks, used = [], 0
 
-            def take(e):
-                nonlocal used
-                pool.remove(e)
-                picks.append(e["id"])
-                used += e["_words"]
-                a = e["author"]
-                eras[VOICES[a][2]] += 1
-                voices[a] += 1
-                at_verse[e["_start"]] += 1
-                overall[a] += 1
+        def score(e):
+            a = e["author"]
+            era = VOICES[a][2]
+            s = 3.0 if eras[era] == 0 else -float(eras[era])
+            s += 2.0 if voices[a] == 0 else -2.0 * voices[a]
+            s -= overall[a] / 40
+            s -= abs(e["_words"] - IDEAL_WORDS) / 150
+            s -= 2.0 * at_verse[e["_start"]]
+            if _OPENS_MIDWAY.match(_LEADING_VERSE.sub("", e["text"].lstrip()).lstrip("“\"' ")):
+                s -= 1.5  # reads as the middle of an argument
+            return s
 
-            # First, one excerpt in each stretch of the passage, so the comment
-            # follows the text from its first verse to its last rather than
-            # pooling where the commentators wrote most. Each stretch gets its
-            # share of the budget, so a long excerpt early in the passage
-            # cannot starve the verses after it.
-            slots = max(1, min(len(verses), round(budget / IDEAL_WORDS)))
-            share = budget / slots
-            for i in range(slots):
-                window = verses[len(verses) * i // slots : len(verses) * (i + 1) // slots]
-                here = [e for e in pool if window and window[0] <= e["_start"] <= window[-1]]
-                fits = [e for e in here if e["_words"] <= share * 1.5] or here
-                if fits:
-                    take(max(fits, key=lambda e: (score(e), e["id"])))
-            # Then fill what the budget allows, wherever the best voices are.
-            while pool and used < budget:
-                best = max(pool, key=lambda e: (score(e), e["id"]))
-                if picks and used + best["_words"] > budget * 1.15:
-                    break
-                take(best)
-            chosen.append(picks)
-        return chosen
+        def take(e):
+            nonlocal used
+            pool.remove(e)
+            picks.append(e["id"])
+            used += e["_words"]
+            a = e["author"]
+            eras[VOICES[a][2]] += 1
+            voices[a] += 1
+            at_verse[e["_start"]] += 1
+            overall[a] += 1
+
+        # First, one excerpt in each stretch of the passage, so the comment
+        # follows the text from its first verse to its last rather than
+        # pooling where the commentators wrote most. Each stretch gets its
+        # share of the budget, so a long excerpt early in the passage
+        # cannot starve the verses after it.
+        slots = max(1, min(len(verses), round(budget / IDEAL_WORDS)))
+        share = budget / slots
+        for i in range(slots):
+            window = verses[len(verses) * i // slots : len(verses) * (i + 1) // slots]
+            here = [e for e in pool if window and window[0] <= e["_start"] <= window[-1]]
+            fits = [e for e in here if e["_words"] <= share * 1.5] or here
+            if fits:
+                take(max(fits, key=lambda e: (score(e), e["id"])))
+        # Then fill what the budget allows, wherever the best voices are.
+        while pool and used < budget:
+            best = max(pool, key=lambda e: (score(e), e["id"]))
+            if picks and used + best["_words"] > budget * 1.15:
+                break
+            take(best)
+        return picks
 
     # --- rendering ----------------------------------------------------------
 
@@ -449,7 +451,7 @@ class Command(BaseCommand):
                         "logia_sha256": self.logia_sha,
                         "passages": [
                             {"start": start, "title": t, "excerpts": ids}
-                            for start, (t, _), ids in zip(starts, passages, chosen)
+                            for start, (t, _), ids in zip(starts, passages, chosen, strict=True)
                         ],
                     },
                     ensure_ascii=False,
@@ -467,7 +469,7 @@ class Command(BaseCommand):
             raise CommandError(f"selection.json names excerpts this Logia file lacks: {missing[:5]}")
         unfit = [
             f"{i} ({why})"
-            for (_, verses), ids in zip(passages, chosen)
+            for (_, verses), ids in zip(passages, chosen, strict=True)
             for i in ids
             if (why := self.unfit(self.excerpts[i], verses))
         ]
@@ -475,7 +477,7 @@ class Command(BaseCommand):
             raise CommandError("selection.json names excerpts that cannot stand: " + "; ".join(unfit[:5]))
 
         chapters = defaultdict(list)
-        for (title, verses), ids in zip(passages, chosen):
+        for (title, verses), ids in zip(passages, chosen, strict=True):
             # Where most of its verses are: 7:53–8:11 belongs to John 8.
             home = Counter(c for c, _ in verses).most_common(1)[0][0]
             chapters[home].append((title, verses, ids))
