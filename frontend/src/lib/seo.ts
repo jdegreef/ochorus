@@ -55,7 +55,8 @@ export const OG_LOCALES: Record<string, string> = {
 	fr: 'fr_FR',
 	am: 'am_ET',
 	vi: 'vi_VN',
-	ko: 'ko_KR'
+	ko: 'ko_KR',
+	ja: 'ja_JP'
 };
 
 export interface Hreflang {

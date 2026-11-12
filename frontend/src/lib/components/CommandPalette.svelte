@@ -10,6 +10,7 @@
 		hubDests
 	} from '$lib/contentNav';
 	import { getLang } from '$lib/lang.svelte';
+	import { minQueryLength } from '$lib/searchHits';
 	import { FOR_EYEBROW, FOR_LINKS, forInline } from '$lib/forLinks';
 	import { promoLocale } from '$lib/forPromos';
 	import { i18n } from '$lib/i18n.svelte';
@@ -181,7 +182,7 @@
 	function runSearch() {
 		clearTimeout(timer);
 		const term = q.trim();
-		if (term.length < 2) {
+		if (term.length < minQueryLength(getLang())) {
 			// Bump the token too. `clearTimeout` only helps while the debounce
 			// hasn't fired; a request already in flight still matches `searchSeq`
 			// when it lands and repaints the results we just cleared — "prayer"'s

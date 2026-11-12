@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">آية اليوم</string>
+    <string name="widget_today_description">آية اليوم من Ochorus، جديدة كل يوم.</string>
+    <string name="widget_continue_name">تابع القراءة</string>
+    <string name="widget_continue_description">كتابك، على بُعد لمسة من حيث توقفت.</string>
+    <string name="widget_placeholder">افتح Ochorus لتبدأ.</string>
+</resources>

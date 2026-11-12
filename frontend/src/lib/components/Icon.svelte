@@ -41,6 +41,7 @@
 		| 'more'
 		| 'download'
 		| 'layers'
+		| 'columns'
 		| 'quote'
 		| 'pen'
 		| 'highlighter'
@@ -215,6 +216,10 @@
 	{:else if name === 'layers'}
 		<!-- Book spines side by side: the Bookshelf's spine view. -->
 		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
+	{:else if name === 'columns'}
+		<!-- Two facing text columns: the reader's "Side by side" mode. -->
+		<rect x="3" y="4" width="18" height="16" rx="2" />
+		<path d="M12 4v16M6 8.5h3M6 12h3M15 8.5h3M15 12h3" />
 	{:else if name === 'print'}
 		<!-- A printer with its sheet: the bulletin insert. -->
 		<path d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />

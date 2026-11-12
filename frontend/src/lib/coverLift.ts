@@ -115,6 +115,7 @@ export const COVER_LIFT: Record<string, number> = {
 	'the-divine-institutes': 1.20,
 	'the-dominion-of-sin-and-grace': 1.45,
 	'the-everlasting-man': 1.45,
+	'the-fire-on-the-altar': 1.25,
 	'the-glory-of-christ': 1.30,
 	'the-glowstone-bargain': 1.45,
 	'the-grace-and-duty-of-being-spiritually-minded': 1.10,

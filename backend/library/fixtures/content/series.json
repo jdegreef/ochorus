@@ -1289,6 +1289,83 @@
   "created_at": "2026-11-09T12:00:00Z",
   "updated_at": "2026-11-09T12:00:00Z"
  }
+},{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "sw",
+  "title": "Wingu la Mashahidi Wanaoomba",
+  "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "uk",
+  "title": "Хмара молитовних свідків",
+  "description": "Молитва впродовж усієї історії церкви, по тому на кожну добу: молитви Старого Заповіту, Ісус — Учитель молитви, апостоли, а також чоловіки й жінки молитви кожного століття і кожного краю аж до сьогодні. Кожен короткий розділ подає ключовий вірш, розповідає історію, дає почути голос із минулого й завершується думками, практикою та молитвою.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "ar",
+  "title": "سحابة من الشهود المصلّين",
+  "description": "الصلاة عبر قصة الكنيسة كلها، مجلد لكل حقبة: صلوات العهد القديم، ويسوع معلّم الصلاة، والرسل، والرجال والنساء المصلّون في كل قرن وكل أرض حتى اليوم. كل فصل قصير يضع آية محورية، ويروي قصة، ويُسمعنا صوتًا من الماضي، ويختم بأفكار رئيسية وتمرين وصلاة.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "fr",
+  "title": "Une nuée de témoins en prière",
+  "description": "La prière à travers toute l’histoire de l’Église, un volume par époque : les prières de l’Ancien Testament, Jésus maître de prière, les apôtres, et les hommes et les femmes de prière de chaque siècle et de chaque pays jusqu’à aujourd’hui. Chaque court chapitre pose un verset clé, raconte une histoire, fait entendre une voix du passé et se termine par des idées clés, un exercice et une prière.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "vi",
+  "title": "Đám Mây Nhân Chứng Cầu Nguyện",
+  "description": "Sự cầu nguyện xuyên suốt toàn bộ câu chuyện của Hội Thánh, mỗi quyển một thời kỳ: những lời cầu nguyện trong Cựu Ước, Chúa Giê-xu là Thầy Dạy Cầu Nguyện, các sứ đồ, và những người nam người nữ cầu nguyện của mọi thế kỷ, mọi xứ sở cho đến ngày nay. Mỗi chương ngắn đặt ra một câu Kinh Thánh then chốt, kể một câu chuyện, lắng nghe một tiếng nói từ quá khứ, và kết thúc bằng những điều then chốt, một việc thực hành và một lời cầu nguyện.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "am",
+  "title": "የሚጸልዩ ምስክሮች ደመና",
+  "description": "በቤተ ክርስቲያን ታሪክ ሁሉ ውስጥ ያለው ጸሎት፣ ለእያንዳንዱ ዘመን አንድ ቅጽ፦ የብሉይ ኪዳን ጸሎቶች፣ የጸሎት መምህር የሆነው ኢየሱስ፣ ሐዋርያት፣ እንዲሁም እስከ ዛሬ ድረስ በየዘመኑና በየአገሩ የኖሩ የሚጸልዩ ወንዶችና ሴቶች። እያንዳንዱ አጭር ምዕራፍ ቁልፍ ጥቅስ ያስቀምጣል፣ ታሪክ ይተርካል፣ ከቀደሙት ዘመናት አንድ ድምፅ ያሰማል፣ በእውነቶች፣ በልምምድና በጸሎትም ይፈጸማል።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
 },
 {
  "model": "library.seriestranslation",
@@ -1314,6 +1391,45 @@
   "description": "Una serie de aventuras para lectores jóvenes, ambientada en una tierra bajo un sol maldito. Dos niños, una lámpara que no se puede comprar ni robar, y el largo camino hacia la montaña donde empezó la Llama: una historia de luz, de valentía y de la gracia que nadie puede ganar.",
   "created_at": "2026-11-11T00:00:00Z",
   "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "ko",
+  "title": "구름같이 둘러싼 기도의 증인들",
+  "description": "교회의 전체 역사 속 기도를 한 시대에 한 권씩 따라갑니다. 구약의 기도, 기도의 스승 예수님, 사도들, 그리고 오늘에 이르기까지 모든 세기와 모든 땅의 기도하는 사람들. 각 장은 핵심 구절을 세우고, 이야기를 들려주고, 옛 성도의 목소리를 듣고, 깨달음과 실천과 기도로 끝납니다.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "es",
+  "title": "Una nube de testigos en oración",
+  "description": "La oración a lo largo de toda la historia de la iglesia, un volumen por época: las oraciones del Antiguo Testamento, Jesús, Maestro de oración, los apóstoles, y los hombres y mujeres de oración de cada siglo y de cada tierra hasta hoy. Cada capítulo breve presenta un versículo clave, cuenta una historia, escucha una voz del pasado y termina con ideas clave, una práctica y una oración.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "pt",
+  "title": "Uma Nuvem de Testemunhas em Oração",
+  "description": "A oração ao longo de toda a história da igreja, um volume para cada época: as orações do Antigo Testamento, Jesus, o Mestre de Oração, os apóstolos e os homens e mulheres de oração de todos os séculos e de todas as terras até hoje. Cada capítulo curto apresenta um versículo-chave, conta uma história, ouve uma voz do passado e termina com lições, uma prática e uma oração.",
+  "created_at": "2026-11-09T12:00:00Z",
+  "updated_at": "2026-11-09T12:00:00Z"
  }
 }
 ]

@@ -396,4 +396,57 @@ SEED_LANGUAGES: dict[str, dict] = {
             "surrender": "순복",
         },
     },
+    "ja": {
+        "name": "Japanese",
+        "native": "日本語",
+        # 口語訳聖書 (Colloquial Japanese Bible: NT 1954, OT 1955), the Japan
+        # Bible Society's first modern-Japanese Bible and, through the 1980s, the
+        # standard text of Japanese Protestant churches. Under Japanese law a
+        # corporate-authored work's term ran 50 years from publication, so it
+        # entered the PUBLIC DOMAIN at the end of 2005 — no credit line is owed
+        # and no bibleCredit.ts entry. It is the full 66 books, in modern
+        # spelling, and the register (である調, formal) suits the 19th-century
+        # authors this library carries.
+        #
+        # Deliberately NOT 新共同訳 (1987), 新改訳 (1970/2017) or 聖書協会共同訳
+        # (2018) — the texts most churches read today — which are all licensed.
+        # And not 文語訳 (Meiji/Taishō): public domain too, but classical
+        # Japanese that a modern reader needs help to follow. The ebible mirror
+        # carries only a 1965 New Testament (bibles/jpn_loc), which cannot
+        # answer an Old Testament reference, so it is not an option either.
+        #
+        # NOTE: `bible` is the Take Root translation code, which this (egress-
+        # blocked) session CANNOT verify — api.takeroot.bible is unreachable
+        # here. Take Root names the Korean and Vietnamese texts by their English
+        # language name ("korean", "vietnamese"), so "japanese" is the best
+        # guess. A wrong value cannot break the build (seeds/tests never hit the
+        # API) but WILL garble a networked translation run's scripture, so
+        # VERIFY — that the code resolves AND that it is the 口語訳 (John 1:1
+        # 初めに言があった。言は神と共にあった。; John 15:4 わたしにつながっていなさい)
+        # — before the first API-backed Japanese job:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests_languages.LanguageSeedTableTests
+        # from a network that can reach api.takeroot.bible.
+        "bible": "japanese",
+        # The NAME of the text, not a description: the translation prompt says
+        # "use the supplied {bible_label} wording", so this is what it quotes.
+        "bible_label": "口語訳聖書",
+        # Protestant register throughout: 神 (never the Catholic-leaning 天主),
+        # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって
+        # いなさい) and "the flesh" its Romans 8 肉. Prose is です・ます体; quoted
+        # verses keep the 口語訳's である調. A draft for native review.
+        "glossary": {
+            "justification": "義認",
+            "sanctification": "聖化",
+            "atonement": "贖い",
+            "grace": "恵み",
+            "the flesh": "肉",
+            "abide": "つながる / とどまる",
+            "the Holy Spirit": "聖霊",
+            "the Lord": "主",
+            "godliness": "敬虔",
+            "intercession": "とりなし",
+            "surrender": "献身 / 明け渡し",
+        },
+    },
 }

@@ -29,7 +29,8 @@ The app bundle is copied into two native projects, which are committed:
   `/es/books`), so a link to ochorus.com can open the same page in the app
   once Universal Links / App Links are set up.
 - `$lib/platform` today: `canShare` / `share` / `shareFile` (the OS share
-  sheet — every share action, quote and testimony cards included), `authStorage`
+  sheet — every share action, quote and testimony cards included),
+  `setWidgetSnapshot` (the home-screen widgets, see "Home-screen widgets"), `authStorage`
   (where supabase-js keeps the session, see "Sign-in in the app"), `onBack`
   (what Android's Back closes first), `openExternal` (the
   system browser), `setStatusBar` (called by `$lib/theme` beside
@@ -177,6 +178,104 @@ Founder setup (Supabase email templates must carry `{{ .Token }}`, the
 redirect allow-list, the anon key in `app-env/.env`):
 `docs/launch-checklist.md` §2.6.
 
+## Home-screen widgets
+
+Two widgets (design #46): **Today** — the day's verse, turning over at local
+midnight, tap → `/today` — and **Continue** — the current book's cover, title,
+chapter and a progress bar, tap → that chapter, where the reader restores the
+paragraph from its own saved anchor.
+
+- **The data.** The web view builds a small JSON snapshot
+  (`$lib/widgetSnapshot`: `WidgetSnapshot`, version 1) and hands it to the phone
+  through `setWidgetSnapshot` in `$lib/platform` — the app's own plugin,
+  `OchorusWidgets`, with no npm package. It holds words already in the
+  reader's UI language (the labels come from the message catalogues; the verse
+  and book in their own language), `rtl`, absolute `https://ochorus.com/…`
+  links, the next three local days' verses (each dated `YYYY-MM-DD`) and the
+  current book. No token, no account, nothing about other books.
+  `$lib/widgetSync` (app only, loaded lazily by the root layout) sends it on
+  launch, on a new day, after each navigation, after an account sync, and as
+  the app goes to the background — and only when it changed (or an hour has
+  passed, so a cover download that failed offline is retried). The verse is
+  chosen exactly as the home Today card chooses it (`loadDayVerse` in
+  `$lib/todayPicks`); the book is the home hero's (`currentBookSlug` against
+  the device's resume cache, else the shared `libraryBooks` list for a place
+  synced from another device). Fetched verses are kept in
+  localStorage (`ochorus:widget-verses`), so a day costs one shelf request (and
+  in English its OWB lookups).
+- **Midnight.** The snapshot carries three days of verses, so the widget turns
+  over on its own for two midnights after the app was last opened. Past the
+  last one it keeps showing the last verse **without** the "Verse for today"
+  eyebrow — an old verse, never one under the wrong date (`pickVerseDay`, the
+  rule both platforms copy). Android redraws on an inexact alarm just after
+  midnight (non-waking, a 10-minute window, no exact-alarm permission), on a
+  clock or time-zone change, and on a 3-hour periodic update that also re-arms
+  the alarm after a reboot. iOS gets a WidgetKit timeline entry at each
+  midnight the snapshot covers.
+- **Taps.** A tap opens the app on the snapshot's `https://ochorus.com/…` URL
+  (Android: an explicit `ACTION_VIEW` intent to `MainActivity`, so no browser
+  can take it; iOS: `widgetURL`). `startAppShell` follows it — `getLaunchUrl`
+  once per launch, `appUrlOpen` while running — through `linkTarget`, so only
+  the reader's own pages are opened. No App Links / Universal Links needed.
+- **Looks.** Paper by day, lamplight by night (the phone's dark mode, not the
+  app's theme), serif verse, eyebrow in the accent. Arabic lays out right to
+  left whatever the phone's language (`setLayoutDirection` from `rtl`). A
+  screen reader hears one sentence per widget (the snapshot's `description`
+  for Continue). The picker's names and the "Open Ochorus to begin"
+  placeholder (before the app has ever run) are Android string resources in
+  every live locale (`res/values-*/widget_strings.xml`).
+
+### Android
+
+`android/app/src/main/java/com/ochorus/app/widgets/` — `OchorusWidgetsPlugin`
+(registered in `MainActivity`; stores the snapshot in private
+SharedPreferences and downloads the cover's 320px webp, scaled to a small PNG
+in the app's files), `TodayWidgetProvider` / `ContinueWidgetProvider`
+(`AppWidgetProvider` + `RemoteViews`, no new dependency), `WidgetRenderer`,
+`VersePicker` (unit-tested: `./gradlew testDebugUnitTest`). Layouts
+`res/layout/widget_*.xml`, provider info `res/xml/widget_*_info.xml` (the
+layouts double as the Android 12+ picker preview), colours
+`res/values{,-night}/widget_colors.xml`. To try it: install, long-press the home
+screen → Widgets → Ochorus.
+
+### iOS setup (to finish in Xcode — not done yet)
+
+The Swift is written but **not in the Xcode project and never compiled**:
+a widget extension needs a new target, an App Group and signing, which only
+Xcode can set up safely. Until then the app's `setWidgetSnapshot` call is
+answered "not implemented" and ignored. On the Mac:
+
+1. `npm run app:ios`, then in Xcode **File → New → Target… → Widget
+   Extension**, product name `OchorusWidgets`, untick "Include Live Activity"
+   and "Include Configuration App Intent". Activate the scheme if asked. Set
+   its deployment target to iOS 15 or later (`containerBackground` is used only
+   where available).
+2. Delete the Swift files Xcode generated in the new `OchorusWidgets` group and
+   add `ios/widgets/OchorusWidgets/OchorusWidgets.swift` to the
+   **OchorusWidgets** target only.
+3. Add `ios/widgets/App/OchorusWidgetsPlugin.swift` and
+   `ios/widgets/App/OchorusBridgeViewController.swift` to the **App** target
+   only. Add `WidgetKit.framework` to the App target if Xcode asks.
+4. In `ios/App/App/SceneDelegate.swift` change
+   `CAPBridgeViewController()` to `OchorusBridgeViewController()` (this
+   registers the plugin).
+5. **Signing & Capabilities → + Capability → App Groups** on BOTH targets,
+   the same group: `group.com.ochorus.app` (the name is in both Swift files).
+   With a free Apple ID, App Groups may not be available; the paid Developer
+   Program has them.
+6. Build and run on a device or simulator, open the app once (it sends the
+   first snapshot), then add the widgets from the home screen. Check: the
+   verse and the book show; a tap opens `/today` and the chapter; dark mode;
+   an Arabic UI lays out right to left; set the clock past midnight and the
+   verse changes; past three days it drops the eyebrow.
+7. Localise the picker strings (`widget.today.name`,
+   `widget.today.description`, `widget.continue.name`,
+   `widget.continue.description`, `widget.placeholder` — the English is each
+   call's default; Android's `res/values-*/widget_strings.xml` has every
+   language's words) in a String Catalog on the extension, and add the
+   extension to the `PrivacyInfo.xcprivacy` work (it reads UserDefaults:
+   reason `1C8F.1`, App Group).
+
 ## One-time setup on the Mac
 
 1. **Xcode** from the App Store (the current release), opened once to install
@@ -284,6 +383,48 @@ versions are their own, the core packages stay on one version) do:
   if the image cannot go, the card's words go through the sheet instead.
 - **Splash** lifts on the reader's first frame; `capacitor.config.ts` keeps a
   3-second auto-hide as the safety net.
+
+## Listen outside the page (lock screen, notification, Control Centre)
+
+Listen reads aloud with the browser's `speechSynthesis` — no audio files, no
+native TTS plugin. `$lib/listenMedia` publishes each reading to the
+**Media Session API** while it plays: title (chapter / sermon), artist
+(author), album (book), artwork (the book's cover raster and webp variants, a
+sermon's share card, then the house icon), play state, an **estimated** clock
+(`setPositionState`, from the text's length at ~14 characters a second × the
+speed), and handlers — play/pause, stop, previous/next track and seek
+back/forward (each one paragraph), and scrub (`seekto`, to the paragraph that
+holds that time). The handlers call the Listen bar's own methods, so a pause on
+the lock screen leaves the bar, the sleep timer and the resume point in step;
+`stop()` (the bar's ×, navigation, the sleep timer, the end of the text) clears
+the metadata and handlers. Everything is feature-detected.
+
+What a reader actually SEES depends on the platform, and today it is little
+(from the browsers' documented behaviour; not yet tested on devices):
+
+| Where | Media Session API | What shows |
+|---|---|---|
+| Chrome / Edge desktop, Chrome Android | yes | Nothing for speech alone: Chromium surfaces a session only for a page playing a media element. Hardware media keys likewise. |
+| Safari macOS / iOS (and the iOS app's WKWebView) | yes (15+) | Same — Now Playing / Control Centre are claimed by `<audio>`/`<video>`, not by `speechSynthesis`. |
+| Firefox | yes | Same. |
+| Android app (WebView) | **no** `navigator.mediaSession` | Nothing; the calls are skipped. |
+
+So this is the plumbing — correct metadata and handlers, ready the moment a
+platform shows a session for the page — not yet visible lock-screen controls.
+Making them visible needs one of (follow-ups, each needing device testing):
+
+1. **A silent media anchor** on the web: a looping silent `<audio>` played
+   from the Listen tap, paused/resumed with Listen and removed on stop, which
+   claims the media session in Chrome Android / desktop. Unverified effects on
+   iOS's audio session (could duck or stop the speech), and a battery cost.
+2. **Native, in the app** (`$lib/platform`): Android needs a
+   `MediaSessionCompat` + a foreground media service with a notification
+   (and a background-safe speech engine — the WebView's `speechSynthesis` is
+   unreliable there and stops with the activity); iOS needs
+   `MPNowPlayingInfoCenter` + `MPRemoteCommandCenter` with an
+   `AVAudioSession` of category `.playback`, and a Live Activity for "time
+   left in the chapter". Either is a local plugin under `local-plugins/` and
+   a new `$lib/platform` function feeding it the same `ListenMedia`.
 
 ## What the app does not do yet (the roadmap)
 

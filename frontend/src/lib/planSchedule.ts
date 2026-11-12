@@ -60,6 +60,7 @@ export const WEEK_START_FALLBACK: Readonly<Record<string, number>> = {
 	am: 0,
 	hi: 0,
 	ko: 0,
+	ja: 0,
 	ar: 6
 };
 

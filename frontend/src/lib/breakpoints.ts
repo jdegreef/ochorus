@@ -6,3 +6,6 @@
  */
 export const PHONE = '(max-width: 639.98px)';
 export const SHORT_TOUCH = '(max-height: 499.98px) and (pointer: coarse)';
+/** Wide enough for two comfortable text columns — the desktop spread and the
+ *  "Side by side" reading mode (readerPrefs' WIDE_SCREEN_MIN). */
+export const WIDE = '(min-width: 1024px)';

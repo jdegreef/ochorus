@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">የዛሬው ጥቅስ</string>
+    <string name="widget_today_description">የዛሬው ጥቅስ ከOchorus፣ በየቀኑ አዲስ።</string>
+    <string name="widget_continue_name">ንባብዎን ይቀጥሉ</string>
+    <string name="widget_continue_description">መጽሐፍዎ፣ ካቆሙበት ቦታ በአንድ ንክኪ።</string>
+    <string name="widget_placeholder">ለመጀመር Ochorusን ይክፈቱ።</string>
+</resources>

@@ -1,0 +1,173 @@
+{
+  "welcome": {
+    "subject": "Ochorusへようこそ",
+    "preheader": "キリスト教古典の静かな図書館 — いつまでも無料です。",
+    "heading": "Ochorusへようこそ",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "Ochorusにご登録いただき、ありがとうございます。Ochorusは、パブリックドメインのキリスト教古典をあなたの言語で読める、広告のない無料の図書館です。",
+      "ここにある本はすべて、自由にお読みいただけます。アンドリュー・マーレーからトマス・ア・ケンピスまで、祈りと献身、そしてより深い霊的生活を語る偉大な著作の数々です。購入するものも、解除するものもありません。",
+      "いちばんよい始め方は、とにかく読み始めることです。心ひかれる一冊を選ぶか、一日数分の短い読書プランに導かれて歩んでみてください。"
+    ],
+    "cta_label": "読み始める",
+    "cta_path": "welcome",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "pick_plan": {
+    "subject": "一日数分で十分です",
+    "preheader": "短い読書プランが、いちばん始めやすい方法です。",
+    "heading": "あなたのリズムを見つけましょう",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "Ochorusを読み続けている方々は、ほとんど皆、同じように始めています。一日わずか数分の、短い読書プランからです。",
+      "プランに沿って古典を少しずつ読み進めるので、読む量がたまることはなく、習慣は自然に身についていきます。今のあなたの歩みに合ったプランを一つ選んでみてください。"
+    ],
+    "cta_label": "読書プランを見る",
+    "cta_path": "plans",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "finish_first_book": {
+    "subject": "中断したところから続けましょう",
+    "preheader": "最初の一冊が待っています — 一日数分で読み終えられます。",
+    "heading": "始めた本を最後まで",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "あなたはすでに読み始めています。いちばん難しい最初の一歩を、もう踏み出されたのです。開いた本は、中断したその場所に保存されています。",
+      "最初の一冊を読み終えることは、それ自体がささやかなご褒美です。必要なのは一日数分だけ。読んでいた場所は私たちが覚えておきます。"
+    ],
+    "cta_label": "続きを読む",
+    "cta_path": "reading",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "classic": {
+    "subject": "時間をかける価値のある古典",
+    "preheader": "何世紀も読み継がれてきたのには、理由があります。",
+    "heading": "読む価値のある一冊",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "どこから始めればよいか迷っているなら、あらゆる流行を越えて読み継がれてきた本から始めてみてください。何世代もの読者が繰り返し立ち返ってきた古典です。",
+      "短くても深く、静かに人生を変える本ばかりです。謙遜を語るアンドリュー・マーレー、神の臨在を語るブラザー・ローレンス、キリストにならう生き方を語るトマス・ア・ケンピス。今夜、一冊開いてみませんか。"
+    ],
+    "cta_label": "図書館を見てみる",
+    "cta_path": "books",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "comeback": {
+    "subject": "読みかけの本が待っています",
+    "preheader": "中断したところから、そのまま続けられます。",
+    "heading": "また戻ってきてください",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "しばらく間が空きましたが、大丈夫です。本は待っていてくれます。始めたものはすべて、そのままの場所にあります。",
+      "静かな数分があれば、また続きを読み始められます。読んでいた場所は保存されていますので、いつでもお戻りください。"
+    ],
+    "cta_label": "続きを読む",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "winback": {
+    "subject": "あなたの書斎はそのままです",
+    "preheader": "お久しぶりです — 読んでいた場所はそのままで、すべて今も無料です。",
+    "heading": "読んでいた場所を残してあります",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "Ochorusにお越しいただいてから少し時間が経ちましたが、大丈夫です。日々は忙しいものですから。あなたの書斎が、残していかれたそのままの形でここにあることをお知らせしたかったのです。",
+      "すべて今も無料で、広告もなく、あなたのものです。祈りとより深い霊的生活を語る偉大な著作を、あなたの言語でお読みいただけます。静かな数分ができたときにはいつでも、良い本が待っています。"
+    ],
+    "cta_label": "Ochorusに戻る",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "finish_series": {
+    "subject": "物語は続きます：{next}",
+    "preheader": "『{finished}』を読み終えられました — 次の巻が待っています。",
+    "heading": "次の巻を読んでみませんか？",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "『{finished}』を読み終えられました。実りある時間となったことを願っています。",
+      "この本はシリーズの一冊で、次の巻『{next}』も、いつでもお読みいただけるよう準備ができています。一冊が次の一冊へとつながっていきます。"
+    ],
+    "cta_label": "『{next}』を読み始める",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "plan_reminder": {
+    "subject": "{day}日目 · {plan}",
+    "preheader": "今日の箇所：{reading}",
+    "heading": "{reading}",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "{plan}({total}日間)の{day}日目の箇所をご用意しました。"
+    ],
+    "cta_label": "{day}日目を読む",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "plan_paused": {
+    "subject": "{plan}の読んでいた場所は保存されています",
+    "preheader": "準備ができたら、いつでも再開してください。",
+    "heading": "読んでいた場所は保存されています",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "{plan}の{day}日目で止まっています。焦る必要はありません。準備ができたら、いつでもそこから続けられます。",
+      "毎日のリマインダーはいったん停止しました。次の日の箇所を読まれると、また再開されます。"
+    ],
+    "cta_label": "{day}日目を読む",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "milestone": {
+    "subject": "{count}冊読了 — すばらしいですね",
+    "preheader": "本当に大きな節目です。次の一冊へ。",
+    "heading": "{count}冊を読了",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "Ochorusで{count}冊の本を読み終えられました。立ち止まって記念するにふさわしい、本当の節目です。",
+      "どの一冊も、何世代にもわたって読者を支え、奮い立たせてきた古典であり、あなたはそれを最後まで読み通されました。準備ができたら、いつでも次の一冊へ。"
+    ],
+    "cta_label": "次の本を探す",
+    "cta_path": "",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  },
+  "digest": {
+    "subject": "Ochorusでのこの一か月",
+    "preheader": "図書館の新着と、次に読みたい本をいくつか。",
+    "heading": "Ochorusでのこの一か月",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "今月図書館に新しく加わった本と、次に読む価値のある本をいくつかご紹介します。"
+    ],
+    "cta_label": "図書館を見てみる",
+    "cta_path": "books",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同",
+    "continue_heading": "続きを読む",
+    "continue_label": "第{chapter}章から続きを読む",
+    "new_heading": "今月の新着",
+    "quote_heading": "心に留めたい一節",
+    "plan_heading": "始めてみたい読書プラン"
+  },
+  "new_in_language": {
+    "subject": "Ochorusに{language}の新刊が登場",
+    "preheader": "あなたの言語で公開されたばかりです。",
+    "heading": "{language}の新刊",
+    "greeting": "{name}様、",
+    "paragraphs": [
+      "これらの古典が、Ochorusで{language}で公開されたばかりです。どれも今日から無料でお読みいただけます。"
+    ],
+    "cta_label": "図書館のすべてを見る",
+    "cta_path": "books",
+    "signoff": "恵みと平安がありますように。",
+    "signature": "Ochorus一同"
+  }
+}

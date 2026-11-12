@@ -42,7 +42,7 @@ export interface QuoteCardOptions {
  * device chose, on the one surface built to leave the site.
  */
 export const CARD_SERIF =
-	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', Georgia, 'Times New Roman', serif";
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif JP', 'Noto Serif KR', 'PT Serif', Georgia, 'Times New Roman', serif";
 
 /**
  * How the quote itself is set, per script.
@@ -74,19 +74,29 @@ export function trimQuote(q: string, max = MAX_CHARS): string {
 	return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\s]+$/, '') + '…';
 }
 
+/** A wrap unit: a space-separated word, or — in a script written without
+ *  spaces (kana, kanji) — one character, since a line may break between any two.
+ *  Closing punctuation rides with the character before it, so 。and 」 never
+ *  open a line. */
+const WRAP_UNIT =
+	/[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff][、。，．！？」』）]*|[^\s\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff]+/g;
+
 /** Greedy word-wrap for the current ctx.font. */
 export function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
-	const words = text.split(' ');
 	const lines: string[] = [];
 	let line = '';
-	for (const w of words) {
-		const trial = line ? `${line} ${w}` : w;
-		if (ctx.measureText(trial).width > maxWidth && line) {
-			lines.push(line);
-			line = w;
-		} else {
-			line = trial;
-		}
+	for (const chunk of text.split(' ')) {
+		// A space-separated word is one unit; an unspaced run, one per character.
+		const units = chunk.match(WRAP_UNIT) ?? [];
+		units.forEach((u, i) => {
+			const trial = line ? (i === 0 ? `${line} ${u}` : line + u) : u;
+			if (ctx.measureText(trial).width > maxWidth && line) {
+				lines.push(line);
+				line = u;
+			} else {
+				line = trial;
+			}
+		});
 	}
 	if (line) lines.push(line);
 	return lines;
@@ -100,15 +110,17 @@ export function fitQuote(
 	maxHeight: number,
 	style: string,
 	largest = 70,
-	smallest = 30
+	smallest = 30,
+	/** The stack to set it in — the postcard sets its quote in a classic face. */
+	family = CARD_SERIF
 ): { lines: string[]; fontSize: number; lineHeight: number } {
 	for (let fs = largest; fs >= smallest; fs -= 2) {
-		ctx.font = `${style} ${fs}px ${CARD_SERIF}`;
+		ctx.font = `${style} ${fs}px ${family}`;
 		const lines = wrapLines(ctx, text, maxWidth);
 		const lineHeight = fs * 1.34;
 		if (lines.length * lineHeight <= maxHeight) return { lines, fontSize: fs, lineHeight };
 	}
-	ctx.font = `${style} ${smallest}px ${CARD_SERIF}`;
+	ctx.font = `${style} ${smallest}px ${family}`;
 	return { lines: wrapLines(ctx, text, maxWidth), fontSize: smallest, lineHeight: smallest * 1.34 };
 }
 
@@ -156,7 +168,8 @@ export const SCRIPT_FACE: Record<string, string> = {
 	devanagari: 'Tiro Devanagari Hindi',
 	cyrillic: 'PT Serif',
 	ethiopic: 'Noto Serif Ethiopic',
-	korean: 'Noto Serif KR'
+	korean: 'Noto Serif KR',
+	japanese: 'Noto Serif JP'
 };
 
 /** Scripts a card draws that the COVER table (`scriptOf`) leaves out: covers
@@ -164,7 +177,7 @@ export const SCRIPT_FACE: Record<string, string> = {
  *  card still has to preload these faces and must not slant them. Before this,
  *  an Amharic card never preloaded Noto Serif Ethiopic: `scriptOf('am')` is
  *  null, so the entry above was unreachable. */
-const CARD_ONLY_SCRIPT: Record<string, string> = { Ethi: 'ethiopic', Kore: 'korean' };
+const CARD_ONLY_SCRIPT: Record<string, string> = { Ethi: 'ethiopic', Kore: 'korean', Jpan: 'japanese' };
 
 /** The script a card in this language is set for; null for Latin. */
 export function cardScript(language: string): string | null {
