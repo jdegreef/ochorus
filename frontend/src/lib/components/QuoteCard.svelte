@@ -55,17 +55,26 @@
 	// gap while it loads and rasterizes. Quotes are English-only, so `language`
 	// is left to its Latin default.
 	let cardBusy = $state(false);
-	async function quoteCard() {
+	// `postcard` is the second style (`$lib/postcardCard`): the stamp wears the
+	// book's cover colour. No postmark year here — a quote's source carries none,
+	// and the postmark prints only what the data says.
+	async function quoteCard(style: 'quote' | 'postcard' = 'quote') {
 		if (cardBusy) return;
 		cardBusy = true;
 		try {
-			const { shareQuoteCard } = await import('$lib/quoteCard');
-			await shareQuoteCard({
+			const card = {
 				quote: quote.text,
 				author: authorName,
 				source: sourceProse(quote.source),
 				site: 'ochorus.com'
-			});
+			};
+			if (style === 'postcard') {
+				const { sharePostcard } = await import('$lib/postcardCard');
+				await sharePostcard({ ...card, color: quote.source.cover_color });
+			} else {
+				const { shareQuoteCard } = await import('$lib/quoteCard');
+				await shareQuoteCard(card);
+			}
 		} catch {
 			// Rendering or sharing failed (or the user dismissed the sheet) — the
 			// quotation is still on the page, so there is nothing to surface.
@@ -99,8 +108,12 @@
 			<!-- The same "Quote card" the reader offers on a highlight: a branded
 			     PNG with the line and its source, built to leave the site. Reuses the
 			     reader's label so the one action reads the same in both places. -->
-			<button class="act" onclick={quoteCard} disabled={cardBusy} aria-busy={cardBusy}
+			<button class="act" onclick={() => quoteCard()} disabled={cardBusy} aria-busy={cardBusy}
 				>{t('reader.quoteCard')}</button
+			>
+			<!-- The same quote as a vintage postcard — the card's second style. -->
+			<button class="act" onclick={() => quoteCard('postcard')} disabled={cardBusy} aria-busy={cardBusy}
+				>{t('reader.postcard')}</button
 			>
 		</div>
 	</div>
