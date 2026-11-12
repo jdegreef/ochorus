@@ -26,12 +26,10 @@
 		PRIMARY_NAV,
 		SERIES_DEST,
 		AUDIENCE_DESTS,
-		ENGLISH_HUBS,
 		ORIGINALS_DEST,
 		AZ_INDEX_DEST,
-		BIBLE_DEST
+		hubDests
 	} from '$lib/contentNav';
-	import { bibleIn } from '$lib/bible';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -206,16 +204,11 @@
 					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
 				{/each}
 				<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
-				<!-- The Bible, only where its books have shipped: elsewhere the page
-				     404s, and a link would send the crawl there ($lib/bible). -->
-				{#if bibleIn(lang.current)}
-					<li><a href={pageHref(BIBLE_DEST.href)}>{t(BIBLE_DEST.labelKey)}</a></li>
-				{/if}
-				{#if lang.current === 'en'}
-					{#each ENGLISH_HUBS as d (d.href)}
-						<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
-					{/each}
-				{/if}
+				<!-- The Bible where its books have shipped, then the English-only hubs
+				     (`contentNav.hubDests`, the one gate every menu shares). -->
+				{#each hubDests(lang.current) as d (d.href)}
+					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
+				{/each}
 				<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
 				{#if forLang === lang.current}
 					<li><a href={forIndexPath(forLang)}>{FOR_FOOTER[forLang]}</a></li>

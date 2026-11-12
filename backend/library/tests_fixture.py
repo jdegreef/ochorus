@@ -162,6 +162,24 @@ def _cover_title(fields: dict) -> str:
     return fields.get("cover_title") or fields["title"]
 
 
+
+def _ts_list(ts: str, name: str) -> list[str]:
+    """The slugs of a `const NAME: readonly string[] = [...]` in coverLayouts.ts."""
+    block = re.search(rf"export const {name}[^=]*=\s*\[(.*?)\];", ts, re.S)
+    assert block, f"coverLayouts.{name} not found"
+    return re.findall(r"'([^']+)'", block.group(1))
+
+
+def _ts_set(ts: str, name: str) -> list[str]:
+    """The slugs of a `new Set([...])` in coverLayouts.ts, with the
+    `...OPEN_WORD_BIBLE` spread (the Bible's 66 books) read from its list."""
+    block = re.search(rf"{name}[^=]*=\s*new Set\(\[(.*?)\]\)", ts, re.S)
+    assert block, f"coverLayouts.{name} not found"
+    slugs = re.findall(r"'([^']+)'", block.group(1))
+    if "...OPEN_WORD_BIBLE" in block.group(1):
+        slugs += _ts_list(ts, "OPEN_WORD_BIBLE")
+    return slugs
+
 class FixtureIntegrityTests(SimpleTestCase):
     """File-level invariants every content append must preserve."""
 
@@ -1929,11 +1947,15 @@ class CoverAssetTests(SimpleTestCase):
         from library.covers import INK_DARK
 
         ts = (STATIC_DIR.parent / "src" / "lib" / "coverLayouts.ts").read_text()
-        block = re.search(r"INK_DARK[^=]*=\s*new Set\(\[(.*?)\]\)", ts, re.S)
-        self.assertIsNotNone(block, "coverLayouts.INK_DARK not found")
         self.assertEqual(
-            sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(INK_DARK),
+            sorted(_ts_set(ts, "INK_DARK")), sorted(INK_DARK),
             "covers.INK_DARK and coverLayouts.INK_DARK disagree — change both",
+        )
+        from library.covers import OPEN_WORD_BIBLE
+
+        self.assertEqual(
+            sorted(_ts_list(ts, "OPEN_WORD_BIBLE")), sorted(OPEN_WORD_BIBLE),
+            "covers.OPEN_WORD_BIBLE and coverLayouts.OPEN_WORD_BIBLE disagree — change both",
         )
         # The shared dark-ink boxes assume centred framed rows; a type-top work
         # sets its words elsewhere, and the white gate skips it. So a work is
@@ -2014,18 +2036,18 @@ class CoverAssetTests(SimpleTestCase):
         from library.covers import TYPE_TOP
 
         ts = (STATIC_DIR.parent / "src" / "lib" / "coverLayouts.ts").read_text()
-        block = re.search(r"TYPE_TOP[^=]*=\s*new Set\(\[(.*?)\]\)", ts, re.S)
-        self.assertIsNotNone(block, "coverLayouts.TYPE_TOP not found")
         self.assertEqual(
-            sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(TYPE_TOP),
+            sorted(_ts_set(ts, "TYPE_TOP")), sorted(TYPE_TOP),
             "covers.TYPE_TOP and coverLayouts.TYPE_TOP disagree — change both",
         )
         # `typeTopFor` is `!layout && TYPE_TOP.has(slug)`: a type-top work only
         # sets its type from the top while no layout applies. Python cannot run
         # the layout lookup, so hold every such work pinned to `null`.
+        spread_pinned = "...Object.fromEntries(OPEN_WORD_BIBLE.map((slug) => [slug, null]))" in ts
+        owb = set(_ts_list(ts, "OPEN_WORD_BIBLE"))
         for slug in TYPE_TOP:
-            self.assertIsNotNone(
-                re.search(rf"'{re.escape(slug)}':\s*null", ts),
+            self.assertTrue(
+                re.search(rf"'{re.escape(slug)}':\s*null", ts) or (spread_pinned and slug in owb),
                 f"{slug} is TYPE_TOP but not pinned to null in BOOK_LAYOUT — "
                 "under a layout its type is not set from the top",
             )

@@ -1,7 +1,7 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { ORIGINALS_PATH } from '$lib/originals';
 import { AUDIENCE_HUBS } from '$lib/audienceHubs';
-import { BIBLE_PATH } from '$lib/bible';
+import { BIBLE_PATH, bibleIn } from '$lib/bible';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
@@ -101,6 +101,14 @@ export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.or
  *  (`bibleIn`) — the page 404s elsewhere, so a link there would send the crawl
  *  to a 404. The trailing slash comes from `localizeHref` (isSlashedPath). */
 export const BIBLE_DEST: HubDest = { href: BIBLE_PATH, labelKey: 'nav.bible' };
+
+/** The hub links every menu offers in `locale`, in order: the Bible where its
+ *  books have shipped, then the English-only hubs. One gate for the footer, the
+ *  palette, the tablet More menu and the phone's More sheet, which each turn
+ *  these into links their own way. */
+export function hubDests(locale: string): HubDest[] {
+	return [...(bibleIn(locale) ? [BIBLE_DEST] : []), ...(locale === 'en' ? ENGLISH_HUBS : [])];
+}
 
 /** Authors & Books A–Z — the one page linking every writer and every book in
  *  a language ($lib/authorIndex), so the whole library is two clicks from any
