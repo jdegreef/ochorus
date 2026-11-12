@@ -1296,6 +1296,11 @@ export interface PlanDay {
 	day: number;
 	book_slug: string;
 	chapter_order: number | null;
+	/** How many chapters the day reads, from `chapter_order` on, in its one
+	 *  book: 1 but on a several-chapter day (Bible in a Year), whose titles and
+	 *  length are the run's. Optional: an older API omits it — read as 1
+	 *  (`$lib/planRun`). */
+	chapter_count?: number;
 	/** Optional: an API predating article days omits it (rolling-deploy skew). */
 	article_slug?: string;
 	/** A year-long devotional's day: the one dated entry ("MM-DD") it reads out

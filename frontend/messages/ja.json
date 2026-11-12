@@ -268,6 +268,7 @@
   "plans_mark_day_done_num": "%n%日目を完了にする",
   "plans_day_done_num": "%n%日目 完了",
   "plans_day_done": "今日の分 完了",
+  "plans_chapter_of_day": "今日の%m%章のうち%n%章目",
   "plans_todays_reading": "今日の朗読箇所",
   "plans_all": "すべてのプラン",
   "plans_week": "第%n%週",

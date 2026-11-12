@@ -301,22 +301,34 @@ class Command(BaseCommand):
     @staticmethod
     def _curated_days(items, by_slug) -> list[dict]:
         """Every item's days in order, as PlanDay field dicts: a whole book or a
-        span of one is a day per chapter, an article is one day.
+        span of one is a day per chapter, a ``reading`` run is one day of
+        several chapters, an article is one day.
 
-        Empty when a ``chapters(slug, first, last)`` span is not all there — an
-        edition numbered differently would otherwise yield a plan with holes
-        whose day count no longer matches its prose."""
+        Empty when a ``chapters(slug, first, last)`` span or a run is not all
+        there — an edition numbered differently would otherwise yield a plan
+        with holes whose day count no longer matches its prose."""
         days: list[dict] = []
-        for item in plan_items(items):
-            if item[0] == "article":
-                days.append({"article_slug": item[1]})
+        orders_of: dict[str, tuple[list[int], set[int]]] = {}
+        for kind, bslug, *span in plan_items(items):
+            if kind == "article":
+                days.append({"article_slug": bslug})
                 continue
-            _, bslug, first, last = item
-            chapters = by_slug[bslug].chapters.order_by("order")
+            if bslug not in orders_of:
+                found = list(
+                    by_slug[bslug].chapters.order_by("order").values_list("order", flat=True)
+                )
+                orders_of[bslug] = (found, set(found))
+            orders, have = orders_of[bslug]
+            first, last = span
             if first is not None:
-                chapters = chapters.filter(order__range=(first, last))
-            orders = list(chapters.values_list("order", flat=True))
-            if first is not None and orders != list(range(first, last + 1)):
-                return []
-            days += [{"book_slug": bslug, "chapter_order": o} for o in orders]
+                want = list(range(first, last + 1))
+                if not want or not have.issuperset(want):
+                    return []
+                orders = want
+            if kind == "reading":
+                days.append(
+                    {"book_slug": bslug, "chapter_order": first, "chapter_count": len(orders)}
+                )
+            else:
+                days += [{"book_slug": bslug, "chapter_order": o} for o in orders]
         return days
