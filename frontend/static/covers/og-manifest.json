@@ -14811,6 +14811,40 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"fr/finney-memoirs": {
+			"ground": "a00850b09da1d595525618c81a9834fe095290b61075529fee2a1ed69d0988b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.5,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[132, 305, 468, 381],
+					[70, 370, 530, 446]
+				],
+				"subtitle": [
+					[171, 520, 429, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"fr/fire-against-the-dark": {
 			"ground": "f26975b6f1fe111f7954cb153b21dd45277dcb363ee930455708d84399f9572d",
 			"style": "young",
