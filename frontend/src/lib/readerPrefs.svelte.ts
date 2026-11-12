@@ -201,6 +201,9 @@ interface Stored {
 	// value counts only once it was chosen; otherwise the default applies.
 	candlelightChosen: boolean;
 	preferModern: boolean;
+	/** Read the Original beside its Modern English edition ("Side by side"),
+	 *  where the work has one and the screen is wide ($lib/parallelReading). */
+	parallel: boolean;
 	/** The young-reader-layout settings the reader has set themselves — those
 	 *  the layer leaves alone. */
 	chosen: YoungField[];
@@ -224,6 +227,7 @@ const DEFAULTS: Stored = {
 	candlelight: true,
 	candlelightChosen: false,
 	preferModern: false,
+	parallel: false,
 	chosen: [],
 	youngLayout: true
 };
@@ -322,6 +326,7 @@ export function load(): Stored & { migrated: boolean } {
 				: DEFAULTS.candlelight,
 		candlelightChosen: raw.candlelightChosen === true,
 		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern,
+		parallel: typeof raw.parallel === 'boolean' ? raw.parallel : DEFAULTS.parallel,
 		youngLayout: typeof raw.youngLayout === 'boolean' ? raw.youngLayout : DEFAULTS.youngLayout
 	};
 	return { ...s, chosen: chosenFrom(raw, s, firstRun), migrated: !Array.isArray(raw.chosen) && Object.keys(raw).length > 0 };
@@ -351,6 +356,8 @@ class ReaderPrefs {
 	candlelightChosen = $state(DEFAULTS.candlelightChosen);
 	/** When a Modern English edition exists, open it by default (device-local). */
 	preferModern = $state(DEFAULTS.preferModern);
+	/** "Side by side": the Original beside its Modern English edition. */
+	parallel = $state(DEFAULTS.parallel);
 	#loaded = false;
 
 	/** Whether the young-reader layout is in force: a children's edition is open
@@ -390,6 +397,7 @@ class ReaderPrefs {
 		this.candlelightChosen = rest.candlelightChosen;
 		this.#applyCandle();
 		this.preferModern = rest.preferModern;
+		this.parallel = rest.parallel;
 		this.youngLayout = rest.youngLayout;
 		this.#loaded = true;
 		// Prefs saved before `chosen` existed: settle the migration's guess once,
@@ -407,6 +415,7 @@ class ReaderPrefs {
 			candlelight: this.candlelight,
 			candlelightChosen: this.candlelightChosen,
 			preferModern: this.preferModern,
+			parallel: this.parallel,
 			chosen: this.#chosen,
 			youngLayout: this.youngLayout
 		};
@@ -492,6 +501,10 @@ class ReaderPrefs {
 		this.preferModern = v;
 		this.#save();
 	}
+	setParallel(v: boolean) {
+		this.parallel = v;
+		this.#save();
+	}
 
 	/** Restore every reader comfort preference to its default (Settings → reset).
 	 *  Does not touch reading data (progress, highlights) — only preferences. */
@@ -510,6 +523,7 @@ class ReaderPrefs {
 		this.candlelightChosen = DEFAULTS.candlelightChosen;
 		this.#applyCandle();
 		this.preferModern = DEFAULTS.preferModern;
+		this.parallel = DEFAULTS.parallel;
 		this.youngLayout = DEFAULTS.youngLayout;
 		this.#save();
 	}
