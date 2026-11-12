@@ -91,6 +91,35 @@ describe('deriveHomeShelves', () => {
 		expect(discover.some((b) => heroAuthors.has(b.author.slug))).toBe(false);
 	});
 
+	it('fills the logged-out Discover with classics: no Bible book, young-reader edition or house companion', () => {
+		const odd = [
+			book('2-peter', 'open-word-bible'),
+			book('x-teens', 'q2'),
+			{ ...book('companion', 'q3'), author: { ...book('companion', 'q3').author, is_imprint: true } }
+		];
+		const { discover } = deriveHomeShelves(lists({ books: [...books, ...odd] }), 20000);
+		expect(discover).toHaveLength(6);
+		expect(discover.some((b) => ['2-peter', 'x-teens', 'companion'].includes(b.slug))).toBe(false);
+	});
+
+	it('falls back to the whole painted shelf when a language has fewer than six classics', () => {
+		// Two full texts (the hero takes both) and ten young-reader editions.
+		const teens = Array.from({ length: 10 }, (_, i) => book(`y${i}-teens`, `t${i}`));
+		const { discover } = deriveHomeShelves(lists({ books: [book('c', 'c1'), book('d', 'd1'), ...teens] }), 20000);
+		expect(discover).toHaveLength(6);
+	});
+
+	it('offers three plans, preferring ones a newcomer can finish in a month', () => {
+		const plan = (slug: string, day_count: number) => ({ slug, day_count }) as never;
+		const plans = [plan('long', 128), plan('a', 7), plan('b', 12), plan('c', 30), plan('huge', 365)];
+		const { plans: home } = deriveHomeShelves({ ...lists(), plans }, 20000);
+		expect(home?.total).toBe(5);
+		expect(home?.picks.map((p) => p.slug).sort()).toEqual(['a', 'b', 'c']);
+		// Fewer than three short ones: every plan is in the pool, so the row fills.
+		const few = deriveHomeShelves({ ...lists(), plans: [plan('a', 7), plan('long', 128), plan('huge', 365)] }, 20000);
+		expect(few.plans?.picks).toHaveLength(3);
+	});
+
 	it('never fills the hero with a young-reader edition, and holds only what there is', () => {
 		const young = [book('x-children', 'y1'), book('x-teens', 'y2')];
 		// One curated book, two young-reader editions and one other full text:

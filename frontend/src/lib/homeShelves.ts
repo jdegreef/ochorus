@@ -4,6 +4,7 @@ import {
 	listAuthors,
 	listTopics,
 	listSermons,
+	listPlans,
 	AUTHOR_TILE_KEYS,
 	pick,
 	toCoverBook,
@@ -15,6 +16,7 @@ import {
 	type CoverBook,
 	type CoverFace,
 	type HubAudience,
+	type PlanSummary,
 	type SermonSummary,
 	type TopicCount,
 	type TopicSummary
@@ -22,6 +24,8 @@ import {
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
 import { editionKind } from '$lib/edition';
+import { isImprint } from '$lib/originals';
+import { OWB_SLUG } from '$lib/openWordBible';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { tonightPool, type TonightItem } from '$lib/tonightShelf';
@@ -80,6 +84,11 @@ export interface HomeShelves {
 	 *  a snapshot from before the finder reads as none, and the home falls back
 	 *  to the topic chips. */
 	needs?: string[];
+	/** Reading plans on the logged-out home (design review 2026-11, #21):
+	 *  three, rotated per deploy like the shelves, and how many this language
+	 *  has for the "See all" link. Optional: an older snapshot has none, and
+	 *  the section hides. */
+	plans?: { picks: PlanSummary[]; total: number };
 }
 
 /**
@@ -115,6 +124,18 @@ const HERO_COUNT = HERO_SLUGS.length;
  */
 const HOME_TOPIC_LIMIT = 13;
 
+/** Plans on the logged-out home: one row of three at desktop width. */
+const HOME_PLAN_COUNT = 3;
+/** A first plan a newcomer can see the end of: a month or less. */
+const STARTER_PLAN_DAYS = 31;
+
+/** The home's plans pool: the short ones, where a language has enough of
+ *  them; otherwise every plan, so the row still fills. */
+function startablePlans(plans: PlanSummary[]): PlanSummary[] {
+	const short = plans.filter((p) => p.day_count <= STARTER_PLAN_DAYS);
+	return short.length >= HOME_PLAN_COUNT ? short : plans;
+}
+
 /**
  * Tolerate a failed shelf at RUNTIME, never while building.
  *
@@ -132,6 +153,22 @@ const shelf = <T>(pending: Promise<T[]>): Promise<T[]> =>
 const authorTile = (a: AuthorBio): AuthorTileData => pick(a, AUTHOR_TILE_KEYS);
 const topicCount = (t: TopicSummary): TopicCount => pick(t, TOPIC_COUNT_KEYS);
 
+/**
+ * The Discover shelves' pool (logged-out and dashboard alike): the CLASSICS (design review 2026-11,
+ * #12) — full texts by real authors, so "your next book" is never a book of
+ * the Bible, a young-reader edition or a house companion, which read as a
+ * random sampler under that heading (each has its own shelf and hub). None of
+ * the hero's books either. A language with fewer than six such books keeps
+ * its others in the pool, so the shelf still fills.
+ */
+function discoverPool(painted: BookSummary[], hero: BookSummary[]): BookSummary[] {
+	const rest = painted.filter((b) => !hero.includes(b));
+	const classics = rest.filter(
+		(b) => !editionKind(b.slug) && b.author.slug !== OWB_SLUG && !isImprint(b.author)
+	);
+	return classics.length >= 6 ? classics : rest;
+}
+
 /** The snapshot's derivation, pure so it can be tested without an API. */
 export function deriveHomeShelves(
 	lists: {
@@ -140,11 +177,12 @@ export function deriveHomeShelves(
 		topics: TopicSummary[];
 		sermons: SermonSummary[];
 		audiences?: HubAudience[];
+		plans?: PlanSummary[];
 	},
 	day: number,
 	language = 'en'
 ): HomeShelves {
-	const { books, authors, topics, sermons, audiences = [] } = lists;
+	const { books, authors, topics, sermons, audiences = [], plans = [] } = lists;
 	// Only books with real cover art reach the front page: a generated flat
 	// plate (the `.svg` tier — see `isPlateCover`) reads as half-finished on
 	// the front page beside a painting or a photograph.
@@ -158,13 +196,11 @@ export function deriveHomeShelves(
 		pickByDay(pool, 6, day, (b) => b.author.slug, avoid).map(toCoverBook);
 	return {
 		hero: hero.map(toCoverFace),
-		featured: pickSix(painted),
+		// The classics on the dashboard's shelf too, as on the logged-out one (#12).
+		featured: pickSix(discoverPool(painted, [])),
 		// Under the hero: none of the books it fans out, and other writers
 		// first, so the first two blocks of the page never repeat each other.
-		discover: pickSix(
-			painted.filter((b) => !hero.includes(b)),
-			hero.map((b) => b.author.slug)
-		),
+		discover: pickSix(discoverPool(painted, hero), hero.map((b) => b.author.slug)),
 		// Most-published first (name breaks ties, so the cap is stable across
 		// builds) — if only eight authors fit, they should be the substantial ones.
 		authors: authors
@@ -187,7 +223,8 @@ export function deriveHomeShelves(
 		counts: { books: books.length, sermons: sermons.length },
 		audiences,
 		tonight: tonightPool({ books, sermons, authors }, language, day),
-		needs: availableNeeds(topics)
+		needs: availableNeeds(topics),
+		plans: { picks: pickByDay(startablePlans(plans), HOME_PLAN_COUNT, day, (p) => p.slug), total: plans.length }
 	};
 }
 
@@ -211,7 +248,7 @@ function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */
 export async function homeShelves(lang: string): Promise<HomeShelves> {
-	const [books, authors, topics, sermons, audiences] = await Promise.all([
+	const [books, authors, topics, sermons, audiences, plans] = await Promise.all([
 		shelf(listBooks(lang)),
 		// The endpoint defaults to `en`, so calling it bare gave EVERY locale's
 		// home page the English roster — with English book counts, which the
@@ -231,7 +268,9 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		// building, like topics: a decorative link band that simply hides.
 		hubLanguages().then((has) =>
 			AUDIENCE_HUBS.filter((h) => has[h.audience].includes(lang)).map((h) => h.audience)
-		)
+		),
+		// Tolerant even while building, like topics: a section that hides.
+		listPlans(lang).catch(() => [] as PlanSummary[])
 	]);
-	return deriveHomeShelves({ books, authors, topics, sermons, audiences }, dayNumber(), lang);
+	return deriveHomeShelves({ books, authors, topics, sermons, audiences, plans }, dayNumber(), lang);
 }

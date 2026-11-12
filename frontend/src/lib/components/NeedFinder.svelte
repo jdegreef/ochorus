@@ -85,11 +85,18 @@
 		{:else}
 			<h2 class="section-label">{t('home.need.title')}</h2>
 		{/if}
-		<div class="flex flex-wrap gap-2" role="group" aria-label={t('home.need.title')}>
+		<!-- On home, tiles rather than filter chips (design review 2026-11, #19):
+		     the most personal way into the library, at a size a thumb finds
+		     (44px and up). /topics keeps the chips under its own header. -->
+		<div
+			class={place === 'home' ? 'need-tiles' : 'flex flex-wrap gap-2'}
+			role="group"
+			aria-label={t('home.need.title')}
+		>
 			{#each shown as need (need.id)}
 				<button
 					type="button"
-					class="chip"
+					class={place === 'home' ? 'need-tile' : 'chip'}
 					class:active={selected === need.id}
 					aria-pressed={selected === need.id}
 					aria-controls="need-finder-picks"
@@ -162,6 +169,56 @@
 {/if}
 
 <style>
+	.need-tiles {
+		display: grid;
+		/* Seven fit one row at the page's width (no tile left alone on a second). */
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+		gap: 0.625rem;
+	}
+	/* A phone fits two a row: an odd last tile takes the whole row rather
+	   than sitting alone beside a gap. */
+	@media (max-width: 39.99rem) {
+		.need-tiles {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.need-tile:last-child:nth-child(odd) {
+			grid-column: 1 / -1;
+		}
+	}
+	.need-tile {
+		display: flex;
+		align-items: center;
+		min-height: 3.25rem;
+		padding: 0.625rem 1rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		color: var(--text);
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		font-weight: 500;
+		line-height: 1.25;
+		text-align: start;
+		cursor: pointer;
+		transition:
+			border-color var(--duration-fast),
+			background-color var(--duration-fast);
+	}
+	.need-tile:hover {
+		border-color: var(--accent);
+	}
+	.need-tile.active {
+		border-color: var(--accent);
+		background: var(--accent-soft);
+		color: var(--accent);
+		box-shadow: inset 0 0 0 1px var(--accent);
+	}
+	@media (forced-colors: active) {
+		.need-tile.active {
+			outline: 2px solid Highlight;
+			outline-offset: -2px;
+		}
+	}
 	/* One row per pick: a small cover (or face) at the start, the words beside
 	   it — the resume card's recipe at a smaller cover, so three fit a row. */
 	.pick {
@@ -196,6 +253,7 @@
 		color: var(--accent);
 	}
 	@media (prefers-reduced-motion: reduce) {
+		.need-tile,
 		.pick,
 		.pick-title {
 			transition: none;
