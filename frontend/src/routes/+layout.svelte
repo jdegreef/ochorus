@@ -17,6 +17,7 @@
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { IS_APP, startAppShell } from '$lib/platform';
 	import { lang } from '$lib/lang.svelte';
+	import { heroSearch } from '$lib/heroSearch.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
@@ -400,7 +401,7 @@
 		>
 			<div class="appnav-inner chrome-col">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
-			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /><PentecostFlames /></a>
+			<a class="brand" href={localizeHref('/')}><BrandMark height={42} /><PentecostFlames /></a>
 			<button
 				class="navtoggle"
 				aria-label={t('a11y.menu')}
@@ -454,8 +455,11 @@
 				</div>
 			</div>
 			<div class="navctl">
+					<!-- Stands aside while the home hero's own search field is on
+					     screen (heroSearch): one search box at a time. -->
 					<button
 						class="navsearch"
+						class:navsearch-away={heroSearch.visible}
 						onclick={() => paletteUi.openPalette()}
 						onpointerenter={() => commandPalette.load()}
 						onfocus={() => commandPalette.load()}

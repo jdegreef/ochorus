@@ -32,6 +32,21 @@
 	}: { books: CoverBook[]; band?: 'night' | 'none'; belowHero?: boolean } = $props();
 
 	const t = i18n.t;
+
+	// The phone rail's position, as dots under it (design review 2026-11, #15):
+	// with two covers and a sliver showing, nothing said there were six. Only
+	// the phone layout scrolls; from 640px the row is a grid and the dots hide.
+	let rail = $state<HTMLDivElement>();
+	let at = $state(0);
+	function onRailScroll() {
+		if (!rail) return;
+		const first = rail.firstElementChild as HTMLElement | null;
+		const step = first ? first.offsetWidth + parseFloat(getComputedStyle(rail).columnGap || '0') : 1;
+		const max = books.length - 1;
+		// At the far end the last card can't snap to the start, so count it.
+		const end = rail.scrollLeft !== 0 && Math.abs(rail.scrollLeft) + rail.clientWidth >= rail.scrollWidth - 2;
+		at = end ? max : Math.min(max, Math.round(Math.abs(rail.scrollLeft) / step));
+	}
 </script>
 
 {#snippet shelf()}
@@ -52,7 +67,7 @@
 		                large, as a magazine leads with its pick; beside five
 		                small tinted cards it read as a layout bug — design
 		                review #1.) -->
-		<div class="discover-rail">
+		<div class="discover-rail" bind:this={rail} onscroll={onRailScroll}>
 			{#each books as book, i (book.slug)}
 				<!-- The first row starts above the fold at every breakpoint; three
 				     covers the common cases without eagerly loading a shelf
@@ -61,9 +76,17 @@
 				     `belowHero`) — on a phone the row starts
 				     at the very foot of the first screen (y≈800 of 844,
 				     measured), where three high fetches only raced the fonts. -->
-				<BookCard {book} showAuthor priority={!belowHero && i === 0} eager={!belowHero && i < 3} />
+				<BookCard {book} showAuthor showLength={band === 'none'} priority={!belowHero && i === 0} eager={!belowHero && i < 3} />
 			{/each}
 		</div>
+		{#if books.length > 2}
+			<!-- Decoration: each card is already a link the keyboard reaches. -->
+			<div class="rail-dots" aria-hidden="true">
+				{#each books as book, i (book.slug)}
+					<span class:on={i === at}></span>
+				{/each}
+			</div>
+		{/if}
 	</section>
 {/snippet}
 
@@ -79,7 +102,9 @@
 	.discover-rail {
 		display: grid;
 		grid-auto-flow: column;
-		grid-auto-columns: 42%;
+		/* Two covers and a third peeking a good way in, so the rail reads as
+		   "more this way" (#15). */
+		grid-auto-columns: 38%;
 		gap: 1rem;
 		/* Bleed to the screen edge so a card slides off it, not off the
 		   column's padding; the padding brings the first card back in line. */
@@ -98,7 +123,27 @@
 	.discover-rail > :global(*) {
 		scroll-snap-align: start;
 	}
+	.rail-dots {
+		display: flex;
+		justify-content: center;
+		gap: 0.375rem;
+		margin-block-start: 0.25rem;
+	}
+	.rail-dots span {
+		width: 0.375rem;
+		height: 0.375rem;
+		border-radius: var(--radius-pill);
+		background: var(--border-strong);
+		transition: width var(--duration-fast);
+	}
+	.rail-dots span.on {
+		width: 1.125rem;
+		background: var(--accent);
+	}
 	@media (min-width: 640px) {
+		.rail-dots {
+			display: none;
+		}
 		.discover-rail {
 			grid-auto-flow: row;
 			grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -116,6 +161,9 @@
 	}
 	/* Print lays the six out flat rather than as a clipped rail. */
 	@media print {
+		.rail-dots {
+			display: none;
+		}
 		.discover-rail {
 			grid-auto-flow: row;
 			grid-template-columns: repeat(3, minmax(0, 1fr));

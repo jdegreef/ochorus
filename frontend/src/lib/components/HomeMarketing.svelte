@@ -49,6 +49,8 @@
 		/** Absent from a snapshot built before the shelf existed. */
 		tonight?: TonightItem[];
 		needs?: string[];
+		/** This language's library counts, for the hero's numbers line. */
+		counts?: { books: number; sermons: number };
 	}
 	let { data }: { data: HomeData } = $props();
 
@@ -108,7 +110,7 @@
 	<!-- Hero: what the reader gets, beside a spread of the library's covers,
 	     on the page's own ground (HomeIntro). Hidden by the boot flag before
 	     mount for a reader the block replaces it for. -->
-	{#if !resuming}<div class="intro order-2"><HomeIntro covers={data.hero ?? []} /></div>{/if}
+	{#if !resuming}<div class="intro order-2"><HomeIntro covers={data.hero ?? []} counts={data.counts} /></div>{/if}
 	<!-- The strip's space before the app runs, for a reader app.html's boot
 	     flag knows is returning: the rest of the page shows at once, below the
 	     strip's frame, and the real strip takes the frame's place at mount

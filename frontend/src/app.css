@@ -1814,10 +1814,23 @@ nav.appnav .navlinks a:hover {
    stays muted until hover, and the active pill takes the section's own soft
    ground. Home has no section and keeps the accent. */
 nav.appnav .navlinks a.active {
-	color: var(--section-hue, var(--accent));
-	background: var(--section-hue-soft, var(--accent-soft));
+	color: var(--text);
 	font-weight: 600;
-	box-shadow: inset 0 0 0 var(--selected-edge) var(--section-hue, var(--accent));
+	/* A 2px rule under the label, inset from the pill's rounded ends. */
+	background: linear-gradient(var(--section-hue, var(--accent)), var(--section-hue, var(--accent))) no-repeat
+		center bottom / calc(100% - 1.5rem) 2px;
+}
+/* The header is navigation, not content (design review 2026-11, #27): the
+   icons rest muted, one colour across the bar, and take their section's hue
+   only on hover and on the page you are on — where the hue also draws the
+   underline that marks it, in place of the old filled pill. */
+nav.appnav .navlinks a > svg {
+	color: var(--muted);
+	transition: color var(--duration-fast);
+}
+nav.appnav .navlinks a:hover > svg,
+nav.appnav .navlinks a.active > svg {
+	color: var(--section-hue, var(--accent));
 }
 /* The logo supplies its own wordmark, so this is a frame for artwork, not a
    text style — the display font / size / gap that used to set "Ochorus"
@@ -2025,6 +2038,15 @@ nav.appnav .navsearch:hover {
 	color: var(--text);
 	border-color: var(--accent);
 }
+/* Out of sight, keeping its width so the bar doesn't shift, while the home
+   hero's search is on screen (heroSearch); fades back once it scrolls away. */
+nav.appnav .navsearch {
+	transition: opacity var(--duration-fast);
+}
+nav.appnav .navsearch.navsearch-away {
+	opacity: 0;
+	visibility: hidden;
+}
 .navsearch-kbd {
 	display: none;
 	font-family: var(--font-sans);
@@ -2125,7 +2147,8 @@ nav.appnav .navsearch:hover {
 	background: none;
 	border: 1px solid transparent;
 	border-radius: 50%;
-	color: var(--ornament);
+	/* Muted like the bar's other controls (#27); the gilt is kept for hover. */
+	color: var(--muted);
 	cursor: pointer;
 }
 .prefs-btn:hover {

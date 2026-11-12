@@ -98,8 +98,11 @@
 							     another devotional's than the reading beside it, so no one
 							     page stands for it. -->
 							<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
-							<span class="title verse mt-2 line-clamp-3 text-body" lang={v.lang} dir="auto">{v.text}</span>
-							<span class="mt-2 block truncate text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+							<!-- Whole, never clamped (design review 2026-11, #7): an ellipsis
+							     through a verse cuts off its point, and once it ran
+							     "…at the time Jesus…". -->
+							<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
+							<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
 						</li>
 					{/if}
 					{#if picks.reading}
@@ -108,7 +111,7 @@
 							<a class="today-link" href={localizeHref(`/today/${r.book.slug}/`)}>
 								<span class="eyebrow block text-accent">{t('home.todayReading')}</span>
 								<span class="title mt-2 line-clamp-2 text-h3" lang={contentLang(r.book.language)} dir="auto">{r.heading || r.book.title}</span>
-								<span class="mt-2 block truncate text-small text-muted" lang={contentLang(r.book.language)} dir="auto"
+								<span class="mt-2 line-clamp-2 text-small text-muted" lang={contentLang(r.book.language)} dir="auto"
 									>{r.heading ? `${r.book.title} · ${r.book.author.name}` : r.book.author.name}</span
 								>
 							</a>
@@ -120,7 +123,7 @@
 							<a class="today-link" href={localizeHref(`/sermons/${s.slug}`)}>
 								<span class="eyebrow block text-accent">{t('home.sermonOfDay')}</span>
 								<span class="title mt-2 line-clamp-2 text-h3" dir="auto">{s.title}</span>
-								<span class="mt-2 block truncate text-small text-muted"
+								<span class="mt-2 line-clamp-2 text-small text-muted"
 									>{s.author.name} · {readingTime(s.word_count)}</span
 								>
 							</a>
@@ -159,9 +162,9 @@
 
 <style>
 	/* Columns parted by a hairline: above each one after the first while they
-	   stack, beside it once they sit in a row. In a row the height is the
-	   tallest a column can be (eyebrow, three lines of verse, the reference),
-	   so the skeleton and every mix of columns hold the same box. Stacked, it
+	   stack, beside it once they sit in a row. In a row the floor is a typical
+	   verse column's (eyebrow, three lines of verse, the reference), so the
+	   skeleton holds that box; a longer verse, shown whole, grows the card. Stacked, it
 	   is a typical column's (eyebrow, a one-line title, the byline), which the
 	   skeleton's bars fit inside, rather than leave a gap under every short
 	   one: a two-line title on a phone still grows the card a line. */
