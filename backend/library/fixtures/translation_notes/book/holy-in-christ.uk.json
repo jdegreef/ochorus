@@ -1,0 +1,4628 @@
+{
+ "kind": "book",
+ "slug": "holy-in-christ",
+ "language": "uk",
+ "job_issue": 7465,
+ "references": [
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 1,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Peter 1:15-16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:30a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 8:28b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 1:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Thessalonians 4:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Timothy 1:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 1:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Peter 1:1-2",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 2,
+   "why": "«Вибраним» from v.1 joined to v.2 «по провидїнню Бога Отця, через осьвяченнє Духа» (Kulish puts \"elect\" in v.1 with the addressees in between); all words Kulish's"
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 4,
+   "why": "Murray's paraphrase \"chosen to be holy\" → «вибрані, щоб бути святими»"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 6
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 6,
+   "why": "Murray's paraphrase \"He hath chosen us in Christ to be holy\"; his argument hinges on \"in Christ\" (Kulish: «у Йому»)"
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 7,
+   "why": "Murray: \"There is none holy but the Lord\" — Kulish «Нема рівно сьвятого як Господь» (\"none as holy as\") does not carry his exclusive \"but\" on which the next clause hangs"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "Leviticus 22:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 8,
+   "why": "the R.V. margin \"Like the Holy One, which calleth you, be ye yourselves also holy\" — a variant reading Kulish does not have"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:15-16",
+   "status": "self_rendered",
+   "chapter": 2,
+   "block_index": 11,
+   "why": "Murray's blend \"Be holy, as I am holy\" (Kulish v.16 has «бо», not \"as\") → «Будьте сьвяті, як я сьвят» (Kulish words, бо→як, per ch03 decision)"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Thessalonians 5:23a-24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 2,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 1:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 1:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "Philippians 4:21a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 3,
+   "block_index": 6,
+   "why": "\"Be ye holy, even as I am holy\": Murray's conflation (1 Pet 1:15 \"as\" + 1:16); Kulish words with «бо» → «так само як» and «ви» added to carry his em on \"ye\"/\"even as I\""
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 3,
+   "block_index": 14,
+   "why": "\"Be holy, as I am holy\" → «Будьте сьвяті, як я сьвят»: Murray's \"as\" (likeness) where Kulish has «бо»; same in block 16 (unquoted motto line)"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 3,
+   "block_index": 15,
+   "why": "\"Be ye holy, as I am\" → «Будьте сьвяті, як я» (same adaptation, truncated as Murray truncates)"
+  },
+  {
+   "reference": "Proverbs 3:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 3,
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 31:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 4
+  },
+  {
+   "reference": "Exodus 31:17b",
+   "status": "self_rendered",
+   "chapter": 4,
+   "block_index": 5,
+   "why": "\"is refreshed\" — Kulish lacks the word (has only «спочив»); rendered «відітхнув», same verb reused in the prayer (block 12, \"to refresh\")"
+  },
+  {
+   "reference": "Hebrews 4:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Genesis 2:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Genesis 2:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 1:28b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 1:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 1:2a",
+   "status": "self_rendered",
+   "chapter": 4,
+   "block_index": 2,
+   "why": "the book's motto \"Sanctified in Christ\" / \"Made holy in Christ\" → «освячені в Христі» (Kulish reads «осьвяченим в Ісусї Христї» — dative, adds Jesus; Murray quotes it as a motto, not the verse)"
+  },
+  {
+   "reference": "Genesis 2:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Exodus 3:4-5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 3:6b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 4:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 10:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "self_rendered",
+   "chapter": 5,
+   "block_index": 8,
+   "why": "Murray's conflation \"Put off the old man; put on the Lord Jesus\" as an imperative → «Скиньте з себе давнього чоловіка; зодягніться в Господа Ісуса»; Kulish has participle/infinitive forms in two different verses (Col 3:9 «скинувши з себе давнього чоловіка», Rom 13:14 «одягнїть ся Господом нашим Ісус"
+  },
+  {
+   "reference": "Colossians 2:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 5,
+   "block_index": 10,
+   "why": "Murray's own formula \"Be holy: I am holy: I make holy\" → «Будьте сьвяті: я сьвят: я осьвячую» (Kulish words/spelling: 1 Pet 1:16, Ex 31:13 «я, Господь, осьвячую вас»); see decisions log"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 11
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 5,
+   "block_index": 13,
+   "why": "\"Be holy, as I am holy\" → «Будьте сьвяті, як я сьвят» (бо→як), per ch03 decision"
+  },
+  {
+   "reference": "Exodus 3:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 12:28b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 11:2b",
+   "status": "self_rendered",
+   "chapter": 5,
+   "block_index": 18,
+   "why": "\"The spirit of the fear of the Lord\" → «Дух страху Господнього»: Kulish has «дух знання й побожностї» — lacks \"fear\", on which Murray's point hinges"
+  },
+  {
+   "reference": "Acts 9:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 18
+  },
+  {
+   "reference": "Exodus 15:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 5:7b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 34:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 96:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 99:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 8:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Revelation 15:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 5,
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 13:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 1
+  },
+  {
+   "reference": "Numbers 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 2
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 43:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "Exodus 12:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Exodus 13:2",
+   "status": "self_rendered",
+   "chapter": 6,
+   "block_index": 5,
+   "why": "Murray inserts his gloss \"—make holy\" into the verse: «Посьвяти — зроби святими — менї всї первеньцї: мої вони будуть» (Kulish words + modern gloss)"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Numbers 8:16-17",
+   "status": "self_rendered",
+   "chapter": 6,
+   "block_index": 5,
+   "why": "Murray compresses 8:16-17 (\"The Levites are wholly given unto me; instead of the first-born…\"); Kulish words used («оддано у власність менї», «взяв я їх собі», «моє бо все первородне», «того дня, як я повбивав усїх первеньців у землї Египецькій… присьвятив я їх собі») but trimmed/reordered mid-verse"
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "self_rendered",
+   "chapter": 6,
+   "block_index": 10,
+   "why": "Murray's paraphrase stresses \"therefore\", which Kulish 11:45 lacks; «тим то» borrowed from Kulish 11:44; «Я вивів вас із Египецької землї: тим то мусите бути сьвятими, я бо сьвятий»"
+  },
+  {
+   "reference": "Exodus 13:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 11
+  },
+  {
+   "reference": "Numbers 3:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 41:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 35:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 35:9b",
+   "status": "self_rendered",
+   "chapter": 6,
+   "block_index": 13,
+   "why": "Kulish «самі лиш спасені»; Murray's argument hinges on \"the redeemed\" → «відкуплені ходитимуть нею»"
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "self_rendered",
+   "chapter": 6,
+   "block_index": 13,
+   "why": "Murray reverses the order (\"I am holy: be ye holy\"): «Я сьвят: будьте сьвяті» — both pieces Kulish words, order changed"
+  },
+  {
+   "reference": "Colossians 1:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 13:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 6,
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 15:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 15:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 3
+  },
+  {
+   "reference": "Exodus 15:13",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 4,
+   "why": "Kulish («Вивів правдою твоєю люде сї з неволї, і провів потужно в землю, в займище спасенне») lacks \"mercy\", \"redeemed\" and \"habitation of Thy holiness\", on which Murray's comment in block 10 hinges (\"the glory of Holiness in mercy and redemption… guides to the habitation of holiness\"); divine prono"
+  },
+  {
+   "reference": "Exodus 15:13b",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 5,
+   "why": "same reason; <em> on «святості Твоєї»"
+  },
+  {
+   "reference": "Exodus 15:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 6
+  },
+  {
+   "reference": "Exodus 29:43",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 9,
+   "why": "Kulish reads «сьвятити меться намет сьвятостю моєю» (\"by my HOLINESS\"); Murray's whole point is \"made holy by my GLORY\" (glory+holiness together) — rendered «І намет буде освячений моєю славою»"
+  },
+  {
+   "reference": "Leviticus 10:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 6:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 9
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 10
+  },
+  {
+   "reference": "Exodus 15:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 10
+  },
+  {
+   "reference": "Exodus 14:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 10
+  },
+  {
+   "reference": "Exodus 15:13",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 10,
+   "why": "identical to blocks 4–5 (same reason); <em> on «Твій народ» / «його»"
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 12:2b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 12:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 12:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 1:49",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Revelation 15:4a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Psalms 97:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 11
+  },
+  {
+   "reference": "Psalms 99:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 99:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 99:9",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 12,
+   "why": "Kulish verbatim except «СЬВЯТИЙ» set in capitals to carry Murray's \"HOLY\""
+  },
+  {
+   "reference": "Exodus 3:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 14
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 14
+  },
+  {
+   "reference": "Exodus 15:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 16
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 7,
+   "block_index": 17,
+   "why": "motto per ch03 decision: «Будьте сьвяті, як я сьвят» (Kulish бо→як)"
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 18
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 22:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 23
+  },
+  {
+   "reference": "Psalms 22:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 7,
+   "block_index": 25
+  },
+  {
+   "reference": "Exodus 19:4-5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 19:6a",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 1,
+   "why": "\"ye shall be unto me an holy nation\": Kulish has «царством сьвященним, народом вибраним» (no \"holy nation\"); Murray's whole chapter hinges on \"holy\" → Kulish Ex 19:6 «будете в мене ви» + «нарід сьвятий» from Kulish 1 Pet 2:9 (per ch06 decision), «царством сьвященним, народом вибраним» replaced as Mu"
+  },
+  {
+   "reference": "Exodus 19:4b",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 2,
+   "why": "\"Ye have seen how I brought you unto myself\": Murray's compression of v.4 → «Ви бачили, як я всїх поприводив до себе»"
+  },
+  {
+   "reference": "Exodus 19:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 2
+  },
+  {
+   "reference": "Numbers 15:40a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Leviticus 20:7a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Leviticus 22:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Leviticus 22:32b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Leviticus 22:33a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 3:35",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 6,
+   "why": "«Хто чинити ме волю Божу, той брат менї»: dropped Kulish's postpositive «бо» (internal word) and the trailing \"sister, mother\", as Murray quotes"
+  },
+  {
+   "reference": "Exodus 19:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 8
+  },
+  {
+   "reference": "Exodus 24:7b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 8
+  },
+  {
+   "reference": "Exodus 19:4b",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 9,
+   "why": "\"I have brought you unto myself; if ye obey, ye shall be unto me an holy nation\" → «Я всїх поприводив до себе; коли послухаєте, будете в мене ви нарід сьвятий»; also block 12 with «коли будете гласу мого послухати»"
+  },
+  {
+   "reference": "Exodus 19:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 9
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 11,
+   "why": "\"I will sanctify it by my glory\": Kulish «сьвятити меться намет сьвятостю моєю» lacks \"glory\", which Murray's sentence (glory fills the house) hinges on → «Я освячу його моєю славою» (aligned with ch07 «…освячений моєю славою», per orchestrator note)"
+  },
+  {
+   "reference": "Philippians 2:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 10:9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:34b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 8,
+   "block_index": 17
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 8,
+   "block_index": 13,
+   "why": "motto «Будьте сьвяті, як я сьвят» per ch03 decision"
+  },
+  {
+   "reference": "Exodus 25:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 29:45",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 46:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 3
+  },
+  {
+   "reference": "Exodus 25:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 8
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 8
+  },
+  {
+   "reference": "Exodus 29:45a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 8
+  },
+  {
+   "reference": "John 14:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 11
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "self_rendered",
+   "chapter": 9,
+   "block_index": 11,
+   "why": "Murray's own adaptation \"The tent, the heart, shall be sanctified by my glory; and I will dwell among them\" → «Намет, серце, сьвятити меться сьвятостю моєю; і витати му серед них» (inserted \"the heart\"; \"among them\" from Ex 25:8 wording), Kulish spelling kept"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 9,
+   "block_index": 12,
+   "why": "motto \"Be holy, as I am holy\" → «Будьте сьвяті, як я сьвят» per ch03 decision (бо→як)"
+  },
+  {
+   "reference": "John 14:21b",
+   "status": "self_rendered",
+   "chapter": 9,
+   "block_index": 13,
+   "why": "\"I will come and manifest myself to him\" → «Прийду і обявлюсь йому» (Kulish v21 lacks \"come\"; Murray conflates 14:18/21)"
+  },
+  {
+   "reference": "John 14:23b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 13
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 9,
+   "block_index": 18
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 28:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 28:38",
+   "status": "self_rendered",
+   "chapter": 10,
+   "block_index": 4,
+   "why": "Murray's own excerpt (\"to bear … hallow; that they may be accepted …\"): Kulish words, but «носити ме Арон» → «носити» and the middle of the verse elided with a dash"
+  },
+  {
+   "reference": "Psalms 51:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "Exodus 28:38b",
+   "status": "self_rendered",
+   "chapter": 10,
+   "block_index": 6,
+   "why": "Murray adapts: \"The holy crown shall always be on His forehead\" — subject «сьвята диядема» (Kulish Exod 39:30 vocabulary) put in for «вона», «в його» → «в Його»"
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 7
+  },
+  {
+   "reference": "Zechariah 14:20a",
+   "status": "self_rendered",
+   "chapter": 10,
+   "block_index": 8,
+   "why": "uncited; Kulish wording but its inscription «Господеві присьвячено» swapped for «Сьвятиня Господеві» (Exod 28:36), because Murray's point is that THE SAME words as on the holy crown reappear; Kulish also has «на кінській уздї» (bridle) where KJV/Murray has \"bells\" — Kulish kept"
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 9
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 10,
+   "block_index": 13
+  },
+  {
+   "reference": "Leviticus 20:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Leviticus 20:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Numbers 6:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 2
+  },
+  {
+   "reference": "Numbers 6:8",
+   "status": "self_rendered",
+   "chapter": 11,
+   "block_index": 2,
+   "why": "Kulish «По всї днї назарейства свого він присьвячений Господеві»; присьвячений → сьвятий. Kulish's \"consecrated\" is exactly what Murray says is NOT yet holiness (block 5), and block 7 hinges on \"he is HOLY\" (\"this separation was accepted… as holiness\")"
+  },
+  {
+   "reference": "Hebrews 13:12-13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 3
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 5
+  },
+  {
+   "reference": "Leviticus 20:24, 26",
+   "status": "self_rendered",
+   "chapter": 11,
+   "block_index": 6,
+   "why": "Murray's own conflation/reorder \"I have separated you from other people, and ye shall be holy\" — Kulish words reordered, «передо мною» dropped: «Я вилучив вас ізміж инших народів, і будете ви сьвятими»"
+  },
+  {
+   "reference": "Numbers 6:8",
+   "status": "self_rendered",
+   "chapter": 11,
+   "block_index": 7,
+   "why": "identical to block 2 (same reason)"
+  },
+  {
+   "reference": "1 Corinthians 11:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 8
+  },
+  {
+   "reference": "Leviticus 20:26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 10
+  },
+  {
+   "reference": "Leviticus 20:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 6:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 12
+  },
+  {
+   "reference": "Jeremiah 7:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "self_rendered",
+   "chapter": 11,
+   "block_index": 12,
+   "why": "unmarked but verbatim \"holy, harmless, undefiled, separate from sinners\" woven into prose; Kulish words («преподобного, безвинного, непорочного, відлученого від грішників») put into the nominative after «у Тому, Хто був»"
+  },
+  {
+   "reference": "Exodus 33:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 12
+  },
+  {
+   "reference": "Exodus 33:16b",
+   "status": "self_rendered",
+   "chapter": 11,
+   "block_index": 12,
+   "why": "Kulish «Чи не тим же, що пійдеш ти з нами, і відрізнимось ми…» with Murray's \"?\" after \"with us\" and «Так» inserted before «і відрізнимось» to carry his emphasised \"<em>so</em>\" (the separating power of the Presence); <em> on «що пійдеш ти з нами», «Так», «відрізнимось»; ends with Murray's \".\" not K"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 24:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 18
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 11,
+   "block_index": 19
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 1
+  },
+  {
+   "reference": "Leviticus 21:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 43:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 12:6",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 29:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 41:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 43:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 7,
+   "why": "Murray: \"There is none holy, but the Lord\" — Kulish «Нема рівно сьвятого як Господь» (\"none as holy as\") lacks his exclusive \"but\"; «Немає святого, крім Господа», identical to ch02"
+  },
+  {
+   "reference": "Isaiah 40:25",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 2:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 5:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 10,
+   "why": "Murray's formula \"I am holy: I make holy\" → «Я сьвят: <em>я осьвячую</em>» (Kulish words/spelling: 1 Pet 1:16, Ex 31:13), per ch05"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 11
+  },
+  {
+   "reference": "Leviticus 18:2",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 12,
+   "why": "\"I am the Lord your God: I am holy: I make holy\" → «Я Господь, Бог ваш: я сьвят: я осьвячую» (first piece = Kulish Lev 18:2 verbatim; the rest Murray's formula as in block 10)"
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 13,
+   "why": "unquoted motto line \"Be ye holy, as I am holy\" → «Будьте сьвяті, як я сьвят» (бо→як, ch03 decision)"
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 14
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 14,
+   "why": "«Будьте сьвяті, як я сьвят» (as block 13)"
+  },
+  {
+   "reference": "Exodus 31:13b",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 14,
+   "why": "\"I make you holy\" → «Я осьвячую вас» (Kulish «я, Господь, осьвячую вас» with «Господь» dropped mid-clause)"
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 15,
+   "why": "Murray reverses the order (\"The Holy One, your Redeemer\") → «Сьвятий, ваш відкупитель» (Kulish words, reordered, \"of Israel\" dropped)"
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 12,
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 17,
+   "why": "Murray's doxology \"Glory to Him who is mighty to do exceeding abundantly above all we ask or think\" → «Слава Тому, хто може зробити геть більш над усе, чого просимо або думаємо» («Слава» from 3:21 added, «ж» dropped)"
+  },
+  {
+   "reference": "Romans 6:13b",
+   "status": "self_rendered",
+   "chapter": 12,
+   "block_index": 18,
+   "why": "Murray compresses 6:13 → «І оддавайте члени ваші Богові, яко знаряддє правди» (Kulish words, reordered; Kulish «(яко)» parentheses dropped)"
+  },
+  {
+   "reference": "Isaiah 6:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 6:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 1
+  },
+  {
+   "reference": "Revelation 4:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 2
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "self_rendered",
+   "chapter": 13,
+   "block_index": 6,
+   "why": "uncited phrase woven into prose (\"declared to be the Son of God with power\"), rendered in modern Ukrainian as part of Murray's sentence"
+  },
+  {
+   "reference": "Isaiah 6:3b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 6:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 14
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 6:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 57:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 3
+  },
+  {
+   "reference": "2 Corinthians 6:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 6:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 6:10c",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 14:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 5:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 14,
+   "block_index": 9,
+   "why": "unquoted motto \"Be holy, as I am holy\" → «Будьте сьвяті, як я сьвят» (бо→як, per ch03)"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 14,
+   "block_index": 10,
+   "why": "standalone motto line, same rendering"
+  },
+  {
+   "reference": "Isaiah 57:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 14,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered",
+   "chapter": 14,
+   "block_index": 15,
+   "why": "\"The Kingdom is in the Holy Ghost\" — Murray's condensation of Rom 14:17 (righteousness, peace, joy in the Holy Ghost); rendered «Царство — в Дусї сьвятім» with Kulish's words «в Дусї сьвятім»"
+  },
+  {
+   "reference": "Luke 1:35b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 1
+  },
+  {
+   "reference": "John 6:69",
+   "status": "self_rendered",
+   "chapter": 15,
+   "block_index": 2,
+   "why": "Murray quotes the RV \"the Holy One of God\"; Kulish (TR) reads «Христос, Син Бога живого». Kulish's «ми увірували й взнали, що Ти єси» + «Сьвятий Божий» from Kulish Mark 1:24, Kulish spelling"
+  },
+  {
+   "reference": "Psalms 106:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 3
+  },
+  {
+   "reference": "Psalms 45:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 4
+  },
+  {
+   "reference": "Isaiah 65:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 10
+  },
+  {
+   "reference": "John 6:69",
+   "status": "self_rendered",
+   "chapter": 15,
+   "block_index": 9,
+   "why": "repeat of block 2, identical wording"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 15,
+   "block_index": 13,
+   "why": "book motto «Будьте сьвяті, як я сьвят» per ch03 convention"
+  },
+  {
+   "reference": "1 John 3:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 15,
+   "block_index": 20
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 1
+  },
+  {
+   "reference": "John 14:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Thessalonians 2:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 3
+  },
+  {
+   "reference": "Exodus 31:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 4
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "John 14:26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Peter 1:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "Exodus 31:13b",
+   "status": "self_rendered",
+   "chapter": 16,
+   "block_index": 10,
+   "why": "\"I make holy\" → «Я осьвячую» (ch05 formula: Kulish words, «Господь, … вас» dropped)"
+  },
+  {
+   "reference": "Isaiah 6:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 16,
+   "block_index": 10
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 16,
+   "block_index": 12,
+   "why": "standalone motto \"Be holy, as I am holy\" → «Будьте сьвяті, як я сьвят» (бо→як), per ch03/ch05"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "self_rendered",
+   "chapter": 16,
+   "block_index": 13,
+   "why": "prayer, no quote marks: «Сьвят, сьвят, сьвят Господь сил! Вся земля повна слави Твоєї!» — Kulish «його» → «Твоєї» (Murray addresses God: \"Thy glory\"); «вся» capitalised after Murray's \"!\""
+  },
+  {
+   "reference": "Exodus 31:13b",
+   "status": "self_rendered",
+   "chapter": 16,
+   "block_index": 15,
+   "why": "\"I make you holy\" → «Я осьвячую вас» (Kulish «я, Господь, осьвячую вас» with «Господь» dropped, as Murray)"
+  },
+  {
+   "reference": "1 John 2:27c",
+   "status": "self_rendered",
+   "chapter": 16,
+   "block_index": 19,
+   "why": "\"As the anointing taught you, ye abide in Him\" (RV, indicative) → «Як навчило вас помазання, перебуваєте в Ньому»; Kulish «яко ж воно навчало вас, пробувайте в тому» has the pronoun «воно» (Murray names the anointing, which carries the <strong>) and imperative \"in it\" — Murray's point is that abidin"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 17,
+   "block_index": 1
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 2,
+   "why": "«Вибрав вас Бог на спасеннє осьвяченнєм й у вірі правди» — Kulish words, Murray omits \"from the beginning\" and \"of the Spirit\" (Kulish «від початку», «духа» dropped mid-verse); Murray cites 2:12, printed as «2 Солунян 2:12» (as ch02)"
+  },
+  {
+   "reference": "John 17:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 17,
+   "block_index": 4
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 17,
+   "block_index": 7
+  },
+  {
+   "reference": "John 8:31-32",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 8,
+   "why": "«Коли пробувати мете у слові моєму, зрозумієте правду» — Kulish 8:31a + 8:32a joined, skipping «справдї ви ученики мої будете, і»"
+  },
+  {
+   "reference": "John 18:37",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 9,
+   "why": "«Коли б ви були від правди», «хто від правди, знає мене» — Murray's own loose wording (\"If ye were of the truth\" matches no verse; John 18:37 has \"heareth my voice\", Murray \"knoweth me\"); Kulish vocabulary «від правди»"
+  },
+  {
+   "reference": "John 17:11",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 10,
+   "why": "composite «Отче сьвятий! освяти їх правдою Твоєю» (both pieces verbatim, joined); also «освяти мене правдою Твоєю» and «Освяти мене правдою Твоєю» (person changed)"
+  },
+  {
+   "reference": "John 17:11",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 11,
+   "why": "composite «Отче сьвятий! освяти їх правдою Твоєю; слово Твоє правда»"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 12,
+   "why": "«Будьте сьвяті, як я сьвят» per ch03"
+  },
+  {
+   "reference": "Leviticus 21:8",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 13,
+   "why": "unquoted \"I the Lord am holy and make holy\" → «Я, Господь, сьвят і осьвячую» (ch05 formula words in Kulish spelling)"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 15,
+   "why": "«Отче, освяти їх правдою Твоєю» — Murray prefixes \"Father\"; also unquoted prayer «Отче сьвятий! освяти нас правдою Твоєю» (same composite as block 10, person changed)"
+  },
+  {
+   "reference": "John 17:11",
+   "status": "self_rendered",
+   "chapter": 17,
+   "block_index": 17,
+   "why": "«Отче сьвятий! освяти нас правдою Твоєю»"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 2
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 3
+  },
+  {
+   "reference": "John 10:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 4
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 26:42b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 5
+  },
+  {
+   "reference": "Exodus 19:13",
+   "status": "self_rendered",
+   "chapter": 18,
+   "block_index": 7,
+   "why": "two verbatim Kulish fragments joined by «…»: «Нїчия рука нехай не доторкнеться до неї… Чи скотина, чи людина, живе не буде» (Murray's \"If any touch it\" paraphrases the first clause)"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 9:26b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "Galatians 2:19",
+   "status": "self_rendered",
+   "chapter": 18,
+   "block_index": 8,
+   "why": "\"I died that I might live\" → «Я умер, щоб жити» (Kulish «Я бо через закон законові умер, щоб жити Богові» trimmed internally)"
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 10
+  },
+  {
+   "reference": "Leviticus 11:44-45",
+   "status": "self_rendered",
+   "chapter": 18,
+   "block_index": 12,
+   "why": "motto «Будьте сьвяті, бо я сьвят» per ch03/ch02 convention"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 16:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 3:14-15",
+   "status": "self_rendered",
+   "chapter": 18,
+   "block_index": 16,
+   "why": "«Сьвятого… <strong>відреклись</strong>… а Князя життя убили» — verbatim fragments; «й Праведного» and the rest of v.14 omitted as Murray does"
+  },
+  {
+   "reference": "Romans 6:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 17
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 18,
+   "block_index": 17
+  },
+  {
+   "reference": "Acts 26:18b",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 1,
+   "why": "Kulish «між сьвятими вірою в мене» → «між осьвяченими вірою в мене»: Murray's argument hinges on the PARTICIPLE \"sanctified\" (block 4: \"the participle used here… aorist\"); form «осьвяченими» taken from Kulish's parallel Acts 20:32 «наслїддє між усїма осьвяченими»"
+  },
+  {
+   "reference": "Acts 26:18b",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 4,
+   "why": "\"them that are sanctified by faith in me\" → «осьвячених вірою в мене» (same rendering)"
+  },
+  {
+   "reference": "Acts 26:18b",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 10,
+   "why": "\"Sanctified by faith in me\" ×2 → «Осьвячені вірою в мене»; \"by faith in Me\" → «вірою <em>в мене</em>» (Kulish lower-case kept)"
+  },
+  {
+   "reference": "Acts 26:18b",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 13,
+   "why": "«Осьвячені вірою в мене» ×2 (prayer)"
+  },
+  {
+   "reference": "1 Peter 1:15b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 5
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 5,
+   "why": "Murray omits wisdom/righteousness: «З Него ж і ви в Христї Ісусї, що став ся нам від Бога освяченнєм» (Kulish words, «премудростю…праведностю» dropped)"
+  },
+  {
+   "reference": "Galatians 5:6b",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 7,
+   "why": "\"faith working by love\" with <em>working</em> → «віри, що <em>дїє</em> любовю»: Kulish «віра, любовю сильна» lacks \"working\", on which the paragraph (\"Faith must work\") hinges"
+  },
+  {
+   "reference": "John 11:40",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 8
+  },
+  {
+   "reference": "Deuteronomy 3:22b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 106:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 9
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 10,
+   "why": "\"our most holy faith\" → «найсьвятїща віра наша» (Kulish «найсьвятїщою вашою вірою», case/person changed)"
+  },
+  {
+   "reference": "Jude 1:3",
+   "status": "self_rendered",
+   "chapter": 19,
+   "block_index": 10,
+   "why": "\"the faith delivered to the holy ones\" → «віра, сьвятим передана» (Kulish «віру, сьвятим раз передану»; nominative, «раз» dropped as Murray drops \"once\")"
+  },
+  {
+   "reference": "Mark 9:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 19,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 1:3",
+   "status": "self_rendered",
+   "chapter": 20,
+   "block_index": 1,
+   "why": "Murray opens \"The Son of God, who was born…\"; Kulish 1:3 has «про Сина свого (народженого…»; head «Сина Божого,» substituted, rest («народженого з насїння Давидового по тїлу,») verbatim; <em> on «по тїлу»"
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Peter 1:3b",
+   "status": "self_rendered",
+   "chapter": 20,
+   "block_index": 5,
+   "why": "uncited; Murray's passive \"have been begotten again by…\" → «знов породжені воскресеннєм Ісус-Христовим із мертвих» (Kulish active «знов породив нас … воскресеннєм…»; \"на впованнє живе\" skipped)"
+  },
+  {
+   "reference": "Colossians 3:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 5
+  },
+  {
+   "reference": "Romans 6:11b",
+   "status": "self_rendered",
+   "chapter": 20,
+   "block_index": 5,
+   "why": "uncited; Murray's \"to reckon yourself to be alive unto God in Christ Jesus\" → «думати, що ви живі Богові, у Христї Ісусї» (Kulish imperative «думайте», dead-clause and «ж» dropped)"
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians 4:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "John 7:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:18b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "chapter": 20,
+   "block_index": 9,
+   "why": "uncited; Murray \"we have put on the new man…\" (perfect) vs Kulish infinitive «одягнутись» → «одягнулись у нового чоловіка, створеного по Богу в праведности і сьвятости правди»"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 8:4b",
+   "status": "self_rendered",
+   "chapter": 20,
+   "block_index": 10,
+   "why": "uncited; \"walk after the Spirit\" → «ходити по духу» (Kulish «ходимо … по духу», infinitive)"
+  },
+  {
+   "reference": "2 Corinthians 3:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 20,
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 6:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 6:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 1
+  },
+  {
+   "reference": "Galatians 2:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 3
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 5,
+   "why": "Murray's conflation ‘stand fast in our liberty in Christ Jesus’ → «<em>стоїмо</em> у волї нашій, що маємо в Христї Ісусї» (Kulish words, person/case adapted)"
+  },
+  {
+   "reference": "Romans 6:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 6,
+   "why": "Murray's conflated ‘being made free from sin and become servants of righteousness’ → «визволившись од гріха і ставшись слугами правди» (6:22 frame + «правди» from 6:18)"
+  },
+  {
+   "reference": "Romans 6:7",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 6,
+   "why": "‘freed from sin’ → «визволились од гріха» (Kulish «визволивсь», person adapted to \"we\")"
+  },
+  {
+   "reference": "Romans 6:22a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 6:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 15:56b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 9,
+   "why": "second quotation: Kulish's «бо» dropped mid-sentence («закон духа життя…»); <em> on «визволив мене»"
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 7:22",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 9
+  },
+  {
+   "reference": "Galatians 2:4b",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 10,
+   "why": "Murray's adapted ‘We have our liberty in Christ Jesus’ → «Маємо волю нашу в Христї Ісусї»"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 10,
+   "why": "Murray's conflation → «Дякую Богові через Ісуса Христа: закон духа життя визволив мене»"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 11
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 6:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 6:22a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 1:74b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 1:75",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 14,
+   "why": "book motto «Будьте сьвяті, як я сьвят» per ch03"
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 21
+  },
+  {
+   "reference": "Galatians 5:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 21,
+   "why": "Murray's shortened ‘Where the Spirit is, there is liberty’ → «Де Дух, там воля»"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 22
+  },
+  {
+   "reference": "1 Corinthians 9:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "self_rendered",
+   "chapter": 21,
+   "block_index": 23,
+   "why": "Murray adds \"unto sanctification\" to 6:18 → «Визволивши ся ж од гріха, зробились ви <strong>слугами правди</strong> на сьвятість»"
+  },
+  {
+   "reference": "Exodus 8:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 21,
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 14:17b",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 1,
+   "why": "Kulish words, Murray's trim: \"не їжа і питтє, а правда, і впокій, і\" dropped internally → «Царство Боже — радощі в Дусї сьвятім»; identical in block 20"
+  },
+  {
+   "reference": "Acts 13:52",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 2
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 3
+  },
+  {
+   "reference": "Nehemiah 8:11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 3
+  },
+  {
+   "reference": "Nehemiah 8:12",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 3,
+   "why": "Murray omits \"to eat, drink, send portions\": «І пійшов ввесь народ сьвяткувати з великими радощами, бо втямили слова» (internal omission)"
+  },
+  {
+   "reference": "John 16:22b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 96:9a",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 6,
+   "why": "\"worship Him in the beauty of holiness\" — Kulish «у пишній сьвятинї» lacks \"beauty of holiness\" (ch09 decision) → «поклонятися Йому в красі святості»"
+  },
+  {
+   "reference": "Psalms 30:4b",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 6,
+   "why": "\"sing praise at the remembrance of His Holiness\" (= Ps 97:12b) — Kulish «прославляйте сьвяту память його» turns holiness into an adjective; Murray's point is God's holiness → «співати хвалу, згадуючи Його святість»"
+  },
+  {
+   "reference": "2 Corinthians 6:9b-10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 12:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 8,
+   "why": "Murray's paraphrase \"I glory in the cross through which I have been crucified\" — Kulish wording differs entirely → «Хвалюся хрестом, через який я розп’ятий»"
+  },
+  {
+   "reference": "Romans 7:24b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 2:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 1:9b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 35:8-10",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 10,
+   "why": "Murray's composite/reordered: \"Highway of Holiness\" → «Дорога святості» (Kulish «дорогою сьвятою»), then Kulish words from 35:10 and 35:9b («ходити ним будуть — самі лиш спасені») in Murray's order"
+  },
+  {
+   "reference": "Isaiah 41:16b",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 11,
+   "why": "«Ти будеш хвалитись Сьвятим Ізрайлевим» (Kulish «ти ж Господом будеш радоватись, хвалитись Сьвятим Ізрайлевим» — words picked out)"
+  },
+  {
+   "reference": "Isaiah 29:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 13:52",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 22,
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 14:17b",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 19,
+   "why": "Murray's short form \"The Kingdom is joy…\" → «Царство — радощі в Дусї сьвятім»"
+  },
+  {
+   "reference": "Romans 14:17b",
+   "status": "self_rendered",
+   "chapter": 22,
+   "block_index": 20,
+   "why": "= block 1"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 1:30a",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 3,
+   "why": "refrain ‘Of God are ye in Christ’ → «Від Бога ви <em>в Христї</em>»: Murray's argument hinges on \"Of God\" (Kulish «З Него ж і ви в Христї Ісусї» names God only by pronoun); «від Бога» taken from Kulish v.30, Kulish spelling kept"
+  },
+  {
+   "reference": "1 Corinthians 1:30a",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 4,
+   "why": "same refrain, identical to block 3"
+  },
+  {
+   "reference": "1 Corinthians 1:30a",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 6,
+   "why": "unquoted refrain \"<em>Of God</em> are ye <em>in Christ</em>\" → «<em>Від Бога</em> ви <em>в Христї</em>», identical wording"
+  },
+  {
+   "reference": "1 Corinthians 1:30a",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 9,
+   "why": "‘Of God you are in Him’ → «<em>Від Бога ви в Ньому.</em>» (same refrain, Him for Christ)"
+  },
+  {
+   "reference": "Romans 10:6b",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 3,
+   "why": "uncited; «Хто зійде на небо, се єсть: Христа звести додолу?» — Kulish words, but its parentheses/«?» position rearranged to Murray's single question"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 4:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 4
+  },
+  {
+   "reference": "Ephesians 1:23",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 4,
+   "why": "uncited; Murray prefixes \"The Church is\" → «Церква, котра єсть тїло Його, повня Того, хто сповняє все у всьому» (Церква added; rest verbatim)"
+  },
+  {
+   "reference": "Romans 8:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 6,
+   "why": "uncited; Murray omits \"not the spirit of the world\" → «Ми прийняли Духа, що від Бога, щоб <em>знали</em>, що нам дароване від Бога» (internal omission)"
+  },
+  {
+   "reference": "1 Corinthians 1:24b",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 9,
+   "why": "uncited ‘the Wisdom of God and the Power of God’ → «Божій премудрості й Божій силі» (Kulish order is power–wisdom, accusative; reordered to Murray, dative)"
+  },
+  {
+   "reference": "1 Corinthians 1:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 23,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 23,
+   "block_index": 11,
+   "why": "standalone motto \"Be ye holy, as I am holy.\" → «Будьте сьвяті, як я сьвят.» per ch03 convention (бо→як)"
+  },
+  {
+   "reference": "1 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "chapter": 24,
+   "block_index": 1,
+   "why": "Kulish «Тїло ж не про перелюб, а про Господа» — Murray omits \"not for fornication\", so «не про перелюб» removed mid-clause"
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 6:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 7:34b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 12:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 10:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 13
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 4:10-11",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 5
+  },
+  {
+   "reference": "Philippians 1:20b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 5
+  },
+  {
+   "reference": "Genesis 3:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "chapter": 24,
+   "block_index": 9,
+   "why": "Murray's composite with his own interpolation \"in the power of the Holy Spirit\" → «силою Духа сьвятого» (Kulish phrase from Rom 15:13); «що (живе) в вас» dropped as Murray drops it"
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Timothy 4:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 7:34b",
+   "status": "self_rendered",
+   "chapter": 24,
+   "block_index": 10,
+   "why": "«сьвятими тїлом і духом» — Kulish «сьвятою» (fem. sg.) put in plural because Murray applies it generally to believers"
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 11
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 6:18-19",
+   "status": "self_rendered",
+   "chapter": 24,
+   "block_index": 15,
+   "why": "Murray's paraphrase in his own person (\"our members\", infinitive): «визволившись од гріха, оддавали члени наші в слуги правдї на осьвяченнє» (Kulish 6:22 «визволившись од гріха», 6:19 «члени ваші в слуги правдї», «на осьвяченнє» from 6:22 because Murray says \"sanctification\")"
+  },
+  {
+   "reference": "Exodus 39:7",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 16
+  },
+  {
+   "reference": "1 Peter 3:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 17
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "self_rendered",
+   "chapter": 24,
+   "block_index": 17,
+   "why": "Kulish «у нетлїнню лагідного й тихого духа» lacks \"apparel/ornament\" on which Murray's contrast rests → «окрасою лагідного й тихого духа» (окраса from Kulish 3:3)"
+  },
+  {
+   "reference": "1 Peter 3:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 8:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 24,
+   "block_index": 18
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 5:25b-26",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Timothy 2:21a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 29:36b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 7,
+   "why": "uncited ‘Come out, and be ye separate, and touch not the unclean thing’ → «Вийдїть, і відлучіть ся, і до нечистого не приторкайтесь» (Kulish words; Murray omits \"from among them\" and \"saith the Lord\", so internal phrases dropped)"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Chronicles 29:16a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 8,
+   "why": "uncited; Murray omits \"we have fellowship one with another\" and \"his Son… us\" → «Коли ж у сьвітлї ходимо, яко ж Він сам у сьвітлї, то кров Ісуса Христа очищає од усякого гріха»"
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 9,
+   "why": "Murray's \"Christ hath perfected forever them that are sanctified\" → «Христос звершив на віки осьвячуємих» (Murray adds \"Christ\", omits \"by one offering\"). Crib mis-resolved bare \"(x. 14)\" to Titus 10:14 (no such verse; null Kulish) — Murray names \"Hebrews\" in the sentence; it is Hebrews 10:14, print"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 9
+  },
+  {
+   "reference": "James 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 13:20a",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 9,
+   "why": "uncited ‘The God of peace make you perfect in every good work to do His will’ → «Бог впокою нехай звершить вас у всякому доброму дїлї, щоб чинили волю Його» (Kulish words; «же» and the 13:20 relative clause dropped)"
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 4:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 12,
+   "why": "book motto «Будьте сьвяті, як я сьвят» per ch03"
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 19
+  },
+  {
+   "reference": "Psalms 2:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 25,
+   "block_index": 20
+  },
+  {
+   "reference": "1 John 1:7a",
+   "status": "self_rendered",
+   "chapter": 25,
+   "block_index": 21,
+   "why": "Murray's bold compression \"If we walk in the light, the blood cleanseth\" → «Коли ж у сьвітлї ходимо, кров очищає» (Kulish words, compressed; matches block 8)"
+  },
+  {
+   "reference": "1 Thessalonians 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Thessalonians 3:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Thessalonians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 3
+  },
+  {
+   "reference": "1 Thessalonians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 3
+  },
+  {
+   "reference": "1 Thessalonians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 5
+  },
+  {
+   "reference": "Ephesians 1:4b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Thessalonians 3:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Thessalonians 3:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "self_rendered",
+   "chapter": 26,
+   "block_index": 8,
+   "why": "\"love toward each other, and toward all men\" → «любов один до одного й до всїх»: Kulish «любовю» (instrumental) changed to nominative"
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "self_rendered",
+   "chapter": 26,
+   "block_index": 15,
+   "why": "\"Abounding in love\" → «Збагачені любов’ю» (Murray's participial adaptation; Kulish root збагатить)"
+  },
+  {
+   "reference": "1 Thessalonians 3:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "chapter": 26,
+   "block_index": 17,
+   "why": "\"Love seeketh not its own\" → «Любов не шукає свого»: Kulish 13:5 lacks the subject (supplied from 13:4 «любов»)"
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 13:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 17
+  },
+  {
+   "reference": "1 Corinthians 13:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 17
+  },
+  {
+   "reference": "1 Timothy 1:5a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 5:5b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 26,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 10:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 2
+  },
+  {
+   "reference": "Daniel 4:35b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 3
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Peter 1:1-2",
+   "status": "self_rendered",
+   "chapter": 27,
+   "block_index": 4,
+   "why": "‘elect in sanctification of the Spirit’ (RV) → «вибрані через осьвяченнє Духа» (Kulish 1:1 «вибраним» adapted + 1:2 «через осьвяченнє Духа»)"
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "chapter": 27,
+   "block_index": 4,
+   "why": "Murray's paraphrase ‘chosen to be holy’ → «вибрані, щоб бути святими» (= ch02)"
+  },
+  {
+   "reference": "Colossians 4:12b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 26:42b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 5:18a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 6:6b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 10
+  },
+  {
+   "reference": "Ephesians 6:7b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 10
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "chapter": 27,
+   "block_index": 10,
+   "why": "‘Labouring fervently in prayer to stand complete and fully assured in all the will of God’ (RV, applied to the believer himself) → «Подвизаючись у молитвах, щоб стояти звершеним і сповненим у всякій волї Божій» (Kulish words, person/form adapted)"
+  },
+  {
+   "reference": "Psalms 40:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 27,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 27,
+   "block_index": 13,
+   "why": "book motto «Будьте сьвяті, як я сьвят» per ch03"
+  },
+  {
+   "reference": "Ephesians 1:11b",
+   "status": "self_rendered",
+   "chapter": 27,
+   "block_index": 20,
+   "why": "bold ‘He worketh all things after the counsel of His will’ → «Він чинить усе по радї волї своєї» (Kulish «Того, хто чинить…» → «Він чинить…»)"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 2
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 2,
+   "why": "Murray skips \"a peculiar people\": «Нарід сьвятий, щоб звіщали чесноти Покликавшого вас із темряви у дивне своє сьвітло» (Kulish words, «люде прибрані» dropped internally)"
+  },
+  {
+   "reference": "Leviticus 21:8",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 3,
+   "why": "\"I the Lord am holy\" → «Я, Господь, сьвят» (formula, Kulish spelling; Kulish 21:8 reads «я сьвятий, Господь, що сьвятить вас»)"
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 3,
+   "why": "\"I am the Lord that make holy\" → «Я Господь, що осьвячую» (Kulish «Я Господь, що осьвятив вас»; present tense per ch05 «я осьвячую» formula)"
+  },
+  {
+   "reference": "Exodus 8:1b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 4
+  },
+  {
+   "reference": "John 10:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 4
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 4
+  },
+  {
+   "reference": "John 17:19b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 4
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 7,
+   "why": "Murray drops \"therefore … from these\": «Коли хто очистить себе, буде посудиною на честь, осьвяченою і потрібною владицї, на всяке дїло добре наготовленою» (Kulish words, «від сього» omitted internally); <em> on очистить/осьвяченою/потрібною/наготовленою"
+  },
+  {
+   "reference": "John 10:36",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 10,
+   "why": "Murray's paraphrase \"The Father sanctified the Son, and sent Him into the world\" → «Отець осьвятив Сина і післав Його у сьвіт» (Kulish words, reordered, «Сина»/«Його» added)"
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 10,
+   "why": "motto \"sanctified in Christ Jesus\" → modern «освячені в Христі Ісусі» per ch03/ch04 motto decision (Kulish «осьвяченим в Ісусї Христї»)"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 28,
+   "block_index": 11,
+   "why": "motto \"Be ye holy, as I am holy\" → «Будьте сьвяті, як я сьвят» (ch03 decision, бо→як)"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 17
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 19
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 28,
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 10:19-22a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 9:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 10:19a",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 2,
+   "why": "Murray's composite ‘Having therefore, brethren, boldness to enter into the Holiest, let us draw near’ → «Оце ж, браттє, маючи свободу входити у <em>сьвятиню</em>, приступаймо» (Kulish words, v.19 joined to v.22 without the intervening text)"
+  },
+  {
+   "reference": "Hebrews 10:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 10:22a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 4,
+   "why": "composite ‘Having boldness to enter into the Holiest by the blood of Jesus, let us draw near’ → «Маючи <em>свободу</em> входити у сьвятиню <em>кровю</em> Ісусовою, приступаймо»"
+  },
+  {
+   "reference": "Hebrews 10:2",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 4,
+   "why": "uncited ‘The worshippers, being once cleansed, have no more conscience of sins’ → «Ті, хто служить, раз очистившись, не мають уже нїякої совісти за гріхи» (Kulish words; Kulish's counterfactual «не мавши» turned into Murray's present statement)"
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 5,
+   "why": "composite ‘Having boldness by the blood of Jesus, let us draw near by the way which He dedicated for us’ → «Маючи свободу <em>кровю</em> Ісусовою, приступаймо <em>дорогою</em>, котру обновив нам Він» (Kulish words, reordered)"
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 6:14b",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 5,
+   "why": "‘by which I have been crucified’ (Murray applies the verse to the believer) → «котрим мене розпято» (Kulish «котрим менї сьвіт розпято, а я сьвітові» adapted)"
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 10:21",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 7,
+   "why": "‘And having a Great Priest over the House of God, let us draw near’ → «І <em>маючи Єрея великого</em> над домом Божим, приступаймо» (Kulish 10:21 has no participle of its own — «маючи» carried over from v.19 to keep Murray's stress on \"having\")"
+  },
+  {
+   "reference": "Revelation 7:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 7:14c",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 7:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 7:17a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Timothy 3:15a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 10
+  },
+  {
+   "reference": "Revelation 21:22",
+   "status": "self_rendered",
+   "chapter": 29,
+   "block_index": 14,
+   "why": "‘The Lamb is the Temple’ (Murray's summary) → «Агнець — храм» (Kulish «Господь Бог Вседержитель — його храм, і Агнець»)"
+  },
+  {
+   "reference": "Ephesians 5:25b-26a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 2:37b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 29,
+   "block_index": 19
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 1,
+   "why": "Kulish 12:10b «а Сей на користь (нашу)…» has no verb for \"He chasteneth\" (its «карали нас» belongs to the earthly fathers); Murray's chapter hinges on chastening, so «Він карає нас» supplied; «на користь нашу, щоб ми були спільниками сьвятости Його» from Kulish (parentheses dropped); <em> on «сьвято"
+  },
+  {
+   "reference": "Hebrews 12:14b",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 1,
+   "why": "Kulish «Дбайте про впокій з усїма і про сьвятість, без чого нїхто не побачить Бога» with «про впокій з усїма і» removed (Murray quotes only \"follow after sanctification…\"); <em> on «сьвятість»; Kulish «Бога» for Murray's \"the Lord\""
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 5:8-9",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 2
+  },
+  {
+   "reference": "John 17:19a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 4,
+   "why": "identical to block 1 (no <em>)"
+  },
+  {
+   "reference": "Hebrews 2:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 10:10b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 40:8a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 5
+  },
+  {
+   "reference": "Deuteronomy 8:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 6
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 11
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 13,
+   "why": "«Будьте сьвяті, як я сьвят» per ch03 convention"
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 14
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 14,
+   "why": "«Будьте сьвяті, як я сьвят» per ch03"
+  },
+  {
+   "reference": "Exodus 31:13",
+   "status": "self_rendered",
+   "chapter": 30,
+   "block_index": 14,
+   "why": "«Я осьвячую» per ch05"
+  },
+  {
+   "reference": "Hebrews 5:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 2:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 2:9a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 2:11a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Peter 4:13a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Peter 4:14b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 30,
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 2:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 1
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 29:21",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 2,
+   "why": "Murray drops the blood and the garments; Kulish words with those clauses cut out: «І возьмеш мира, та й побризкаєш на Арона й на синів його; і буде він сьвятий, і сини його з ним»"
+  },
+  {
+   "reference": "Exodus 30:31b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 2
+  },
+  {
+   "reference": "Exodus 30:32",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 2
+  },
+  {
+   "reference": "Leviticus 21:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 2
+  },
+  {
+   "reference": "Leviticus 21:12a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 89:18b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 2,
+   "why": "Murray's RV reading \"Our king is of the Holy One of Israel\" (his point: the king belongs to the Holy One); Kulish «сьвятий Ізраїля царь наш» = \"the Holy One is our king\" → «Царь наш — Сьвятого Ізраїля» (Kulish words, genitive); <em> on «Сьвятого Ізраїля»"
+  },
+  {
+   "reference": "Psalms 89:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 89:20b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 3,
+   "why": "Murray's literal \"with my holy oil I have messiahed him\" → «сьвятим миром моїм я помазав на Месію його»"
+  },
+  {
+   "reference": "Acts 10:38a",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 3,
+   "why": "\"whom God christed\" → «як помазав на Христа Його Бог Духом сьвятим і силою» (Kulish + Murray's coinage)"
+  },
+  {
+   "reference": "Psalms 45:7b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 3,
+   "why": "\"God hath messiahed thee…\" → «Помазав на Месію тебе Бог, твій Бог, миром радостї, понад товаришами твоїми»"
+  },
+  {
+   "reference": "Hebrews 1:9b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 3,
+   "why": "\"Thy God hath christed thee…\" → «Помазав на Христа тебе Бог твій єлеєм радости» (Kulish «Боже» dropped, as Murray drops \"O God\")"
+  },
+  {
+   "reference": "1 John 2:20a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 3
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 11:3a",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 6,
+   "why": "\"quick of scent in the fear of the Lord\" (RV marg.) → «чуйним на нюх у страху Господньому»; Kulish «сповниться страхом Божим» lacks the scent image Murray argues from"
+  },
+  {
+   "reference": "John 14:10",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 7,
+   "why": "conflation \"I speak not of myself; as I hear, so I speak\" → «Від себе не промовляю; як чую, так і глаголю» (Kulish 14:10 «від себе не промовляю» + 5:30 «як чую»)"
+  },
+  {
+   "reference": "John 16:13b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 7,
+   "why": "\"And ye need not that any one teach you: but the anointing teacheth you concerning all things\" → «І не потрібуєте, щоб хто учив вас; а помазаннє навчає вас про все» (Kulish «як те саме» dropped: Murray makes it a main clause)"
+  },
+  {
+   "reference": "John 6:45",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 8,
+   "why": "\"And the anointing abideth in you\" / \"The anointing abideth in you\" / \"the anointing abideth\" → «І помазаннє в вас пробуває» / «Помазаннє в вас пробуває» / «помазаннє пробуває» (relative clause cut out); \"In you.\" → «В вас.»"
+  },
+  {
+   "reference": "Psalms 92:10b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 8,
+   "why": "\"I am anointed with fresh oil\" → «Я намащений сьвіжим єлеєм» (Kulish «сьвіжим єлеєм намастиш мене» = future 2nd person); same wording in block 12"
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 11,
+   "why": "book motto «Будьте сьвяті, бо я сьвят» per ch02/ch03"
+  },
+  {
+   "reference": "Psalms 23:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 31,
+   "block_index": 12
+  },
+  {
+   "reference": "Psalms 92:10b",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 12,
+   "why": "«Я намащений сьвіжим єлеєм», identical to block 8"
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 16,
+   "why": "\"His anointing teacheth you; even as it taught you, ye abide in him\" → «те саме помазаннє навчає вас; <strong>яко ж</strong> воно навчало вас, пробувайте в тому» (middle of verse cut); <strong> on «яко ж»"
+  },
+  {
+   "reference": "Psalms 133:2",
+   "status": "self_rendered",
+   "chapter": 31,
+   "block_index": 18,
+   "why": "Murray's compression \"the precious ointment upon the head of Aaron, that went down to the skirts of his garments\" → «Як пахуще миро на голові Аарона, що спадає на край одежі його» (the beard clause cut out)"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 1,
+   "why": "Kulish words + «в усякому» inserted: Kulish lacks \"all\", and Murray's argument (block 7, 11) hinges on \"in ALL holy living\"; same wording used for every quotation of the verse in this chapter"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 2,
+   "why": "internal «впокій з усїма і» dropped (Murray quotes only the holiness clause); <em> on «сьвятість»"
+  },
+  {
+   "reference": "Revelation 22:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 3
+  },
+  {
+   "reference": "Revelation 22:21",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 3,
+   "why": "Murray reads \"with the holy ones\" (RV margin); Kulish TR «нашого Ісуса Христа з усїма вами» lacks it → «Благодать Господа Ісуса з сьвятими. Амінь.» (Kulish spelling)"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 5,
+   "why": "identical to block 2"
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 5,
+   "why": "book motto «Будьте сьвяті, як я сьвят» (ch03 convention)"
+  },
+  {
+   "reference": "Revelation 22:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 6,
+   "why": "«Якими слїд вам бути в усякому сьвятому життю і побожностї?» (see block 1)"
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 7,
+   "why": "fragment «в усякому сьвятому життю і побожностї» (twice)"
+  },
+  {
+   "reference": "Romans 16:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 7
+  },
+  {
+   "reference": "Ephesians 5:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Peter 3:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Thessalonians 1:10a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 22:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 3:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 10,
+   "why": "«якими слїд вам бути в усякому сьвятому життю і побожностї?»"
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 11
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 11,
+   "why": "fragment «в усякому сьвятому життю і побожностї»"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 12,
+   "why": "вам→нам, «в усякому» inserted"
+  },
+  {
+   "reference": "2 Peter 3:11b",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 12,
+   "why": "Murray's \"What manner of persons shall we be…!\" → «Якими ж будемо ми в усякому сьвятому життю і побожностї!»"
+  },
+  {
+   "reference": "1 Peter 1:15-16",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 12,
+   "why": "Murray's third-person paraphrase ‘Holy, as He is holy’ → «Святими, як Він святий» (modern, = the book's prose form)"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 13
+  },
+  {
+   "reference": "Revelation 22:21",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 13,
+   "why": "identical to block 3"
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "chapter": 32,
+   "block_index": 14,
+   "why": "motto «Будьте сьвяті, як я сьвят»"
+  },
+  {
+   "reference": "2 Peter 3:14a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthians 4:18a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 32,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "chapter": 33,
+   "block_index": 11,
+   "why": "Murray's motto \"Be ye holy, for I am holy, I make holy\" → «Будьте сьвяті, бо я сьвят, я осьвячую» (1 Pet 1:16 + Ex 31:13 «осьвячую» composite, per ch05/ch12 convention)"
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 22
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 31
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 35
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 35
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 35
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "self_rendered",
+   "chapter": 33,
+   "block_index": 35,
+   "why": "\"be ye also holy\" → „і ви будьте сьвяті“ (Kulish 1:15 words «і ви … сьвяті … будьте» reordered/trimmed)"
+  },
+  {
+   "reference": "Isaiah 6:3a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 41
+  },
+  {
+   "reference": "Romans 6:6a",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 48
+  },
+  {
+   "reference": "John 6:57",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 56
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 58
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "self_rendered",
+   "chapter": 33,
+   "block_index": 61,
+   "why": "Murray/Stockmayer's RV \"a people for His own possession\" (the whole Note G argues from \"possession\") → «народ на власність свою»; Kulish «людей вибраних» lacks it. Rest of verse Kulish verbatim."
+  },
+  {
+   "reference": "Exodus 7:16",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "chapter": 33,
+   "block_index": 63
+  }
+ ]
+}

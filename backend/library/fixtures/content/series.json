@@ -386,6 +386,19 @@
   "series": [
    "portraits-of-courage"
   ],
+  "language": "ko",
+  "title": "용기의 초상",
+  "description": "대가를 계산하고도 그리스도를 따른 남녀들의 온전한 기독교 전기입니다. 각 생애를 그 가르침과 함께 들려주고, 성경에 비추어 가늠하며, 감사함으로 쓰되 성인전으로 미화하지 않았습니다.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
   "language": "pt",
   "title": "Retratos de Coragem",
   "description": "Biografias cristãs completas de homens e mulheres que calcularam o custo e, mesmo assim, seguiram a Cristo — cada vida narrada ao lado do seu ensino, pesada à luz das Escrituras e escrita com gratidão, mas sem hagiografia.",
@@ -1242,6 +1255,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "tell-me-the-story"
+  ],
+  "language": "am",
+  "title": "ታሪኩን ንገረኝ",
+  "description": "ለልጆች እንደ ገና የተነገሩ የመጽሐፍ ቅዱስ የራሱ ታሪኮች፣ በሦስት ክፍሎች፦ የብሉይ ኪዳን ታሪኮች፣ የኢየሱስ ሕይወት፣ እና የአዲስ ኪዳን ታሪኮች። እያንዳንዱ ታሪክ በመኝታ ሰዓት ጮክ ብሎ ለማንበብ የሚበቃ አጭር ነው፤ በጸሎትና አብራችሁ በምትነጋገሩባቸው ጥያቄዎችም ይፈጸማል።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "they-were-young"
   ],
   "language": "es",
@@ -1298,6 +1324,18 @@
   "language": "sw",
   "title": "Wingu la Mashahidi Wanaoomba",
   "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "lg",
+  "title": "Ekibiina ky’Abajulirwa Abasaba",
+  "description": "Okusaba mu byafaayo byonna eby’ekkanisa, ekitabo kimu ku buli mulembe: essaala ez’omu Ndagaano Enkadde, Yesu Omuyigiriza w’Okusaba, abatume, n’abasajja n’abakazi abaasabanga ab’omu buli kyasa ne mu buli nsi okutuusa leero. Buli ssuula ennyimpi eteekawo olunyiriri olukulu, enyumya olugero, ewuliriza eddoboozi okuva mu biseera eby’edda, era ekoma n’amagezi, eky’okukola n’essaala.",
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }

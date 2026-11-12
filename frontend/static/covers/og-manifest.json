@@ -2419,6 +2419,40 @@
 				379
 			]
 		},
+		"am/key-teachings-of-andrew-murray": {
+			"ground": "bdda32cde2bcc11fb7bf98891d5d7cfdd39f8fa5490828c5d25a0492323d380b",
+			"style": "originals",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[106, 169, 494, 232],
+					[143, 225, 457, 288]
+				],
+				"subtitle": [
+					[94, 350, 506, 378]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				379
+			]
+		},
 		"am/key-teachings-of-gareth-evans": {
 			"ground": "180263a8b45abe6eeaaee3efbe7b6a93e709ba95296834325602dc6fd55f4559",
 			"style": "originals",
@@ -4021,6 +4055,40 @@
 			"middle": [
 				248,
 				546
+			]
+		},
+		"am/tell-me-the-story-1": {
+			"ground": "a34ea8379a03138c818cdb95509186c965617d35d5cfa451752f94046d8960bf",
+			"style": "young",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 286, 308, 330],
+					[167, 361, 433, 436]
+				],
+				"subtitle": [
+					[140, 492, 460, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
 			]
 		},
 		"am/ten-commandments": {
@@ -5763,6 +5831,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/how-to-bring-men-to-christ": {
+			"ground": "ca63e65936840f19659c887baa90077efe86b9da7877c752d8af8e7f517d34c2",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/humility-2": {
 			"ground": "fc05c52b74288e69337e1a72ac9e32aade44acd1e796f062b8626eef48169582",
 			"style": "devotional",
@@ -5855,6 +5938,42 @@
 			"middle": [
 				255,
 				540
+			]
+		},
+		"ar/key-teachings-of-a-b-simpson": {
+			"ground": "8c9acd85e7afd251ce90af509b2d307aa6ee9c3b455cf2dd2a3e7e1f0d9b678a",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[170, 180, 430, 243],
+					[171, 257, 429, 320]
+				],
+				"subtitle": [
+					[164, 388, 292, 427],
+					[292, 388, 366, 427],
+					[366, 388, 436, 427]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				425
 			]
 		},
 		"ar/key-teachings-of-gareth-evans": {
@@ -6749,6 +6868,21 @@
 				321,
 				474
 			]
+		},
+		"ar/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "26b5ae0d37c78f2374e3d89012516a98768f9678c1855913bbda00d08a115343",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ar/the-god-of-all-comfort": {
 			"ground": "2bc5ec2f48864b1abe6148e3ee7ff8966a6fe4f434511b32c238549241ff9505",
@@ -19872,6 +20006,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/how-to-bring-men-to-christ": {
+			"ground": "6b0cf37c3fd9d9fe5cb7b628a0a2151bf00d1ae6719223617896898e3749775d",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"hi/how-to-succeed-in-the-christian-life": {
 			"ground": "92a0b914372551956789a21d4351821251584d89b306d2768913e87ea559ddef",
 			"style": "revival",
@@ -21014,6 +21163,21 @@
 			"lift": 1,
 			"medallion": null,
 			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"hi/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "105e504be434dd71f171f0768c58af7cb32b9d738ff86eac9a8839ebd221bb35",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
@@ -23772,6 +23936,40 @@
 				524
 			]
 		},
+		"ko/a-short-and-easy-method-of-prayer": {
+			"ground": "d94134d627ec94141ec59650147f5c3dd399d82f7a3e0a904365c995f24fa21d",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c78490ca86c9db06d013070f8cb51612f910220f856a37d7cca86d8624c27640",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[88, 242, 512, 347],
+					[135, 334, 465, 439]
+				],
+				"subtitle": [
+					[159, 518, 441, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
 		"ko/absolute-surrender": {
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
@@ -24522,6 +24720,40 @@
 				525
 			]
 		},
+		"ko/key-teachings-of-a-b-simpson": {
+			"ground": "e9334223c6ea230598f1c68a76d906ea8821135dd4bf9b4e8493767d933a44f0",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "fa2376d13efa015ad597122a3fac95e7bdc9e896ed7cc959595ca2874fd28aeb",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[163, 169, 437, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
@@ -24713,6 +24945,21 @@
 				313,
 				482
 			]
+		},
+		"ko/ministry-of-intercession": {
+			"ground": "70182d16253c79eb2ee4736825907c99b04c5ea34255408d4341f13db4077c88",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/mortification-of-sin": {
 			"ground": "3d4cfd0977e2b90c557e84477f7f222369c0532f55c348d784a38e8f979eba35",
@@ -25439,6 +25686,21 @@
 				566
 			]
 		},
+		"ko/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "f70aeeb86be6a5dab35be4dc69f9ec0023f8b6084c9c8fb705e1a80bb9f50e1c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "dec2c7f77c94bf7c9ae431f5b06cbde17cded3a43a87bc189daf5d8bb8f95dc6",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/the-god-of-all-comfort": {
 			"ground": "aa309a6434caa648fd1df0c69fa6c326c148f876b8c6cc5b368d13c8fbdba141",
 			"style": "devotional",
@@ -25881,6 +26143,39 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"ko/watchman-nee-a-life": {
+			"ground": "33b35316792bbf5d74585f3684e473685f8efbb17c31a7ba7e4529ee60d50eac",
+			"style": "house",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": "a168f2144f009cece5fc01c0f4bc3dc6e6bcdd22ff525f97df73af446d1362ab",
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[131, 441, 469, 543]
+				],
+				"subtitle": [
+					[71, 566, 529, 594]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				201,
+				594
+			]
 		},
 		"ko/women-who-moved-heaven-2": {
 			"ground": "bfc84ab1db4a6822e20bf5075083b120bae4ada5575eb7868588ca97aab37431",
@@ -26947,6 +27242,42 @@
 			"middle": [
 				321,
 				474
+			]
+		},
+		"lg/jesus-teacher-of-prayer": {
+			"ground": "d76ee7b78efe2c05913a729d39efa89f3177cf7a0e0b58545e2703d69d19731a",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 217, 311, 261],
+					[220, 295, 380, 371],
+					[113, 361, 487, 437],
+					[134, 427, 466, 503]
+				],
+				"subtitle": [
+					[123, 562, 477, 590]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				205,
+				590
 			]
 		},
 		"lg/journal-of-an-expedition-up-the-niger": {
@@ -29499,6 +29830,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"open-your-mouth-wide": {
+			"ground": "60274179ab616ac9da32e716737118fbedf68314ab06a3e04946ad44fcabddea",
+			"style": "originals",
+			"volume": "8",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[142, 328, 458, 404],
+					[118, 394, 482, 470]
+				],
+				"subtitle": [
+					[153, 528, 447, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"orthodoxy": {
 			"ground": "39abaab47d525f963d442010561682d8df695d7d8cebe3429ba5c9548cb8e7da",
@@ -36813,6 +37179,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "9cdbca606c7605efadec8e1181651337da30959cf2c0f018c2f3d47ebb5ee4a9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"sw/the-god-of-all-comfort": {
 			"ground": "1111c61893741196ad45cb91ac13c528652f569305a7cf812c18ebb082b83f26",
 			"style": "devotional",
@@ -40891,6 +41272,21 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"uk/holy-in-christ": {
+			"ground": "e3f46567245f87cdccfa2ccf7d679a5e4a1e94880dc2759b94dd0f97d7930599",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"uk/humility-2": {
 			"ground": "74d9e5e5a0f277caeb6300e7abee6317fd48e4a00336997bf33e72e6fa2c8ae4",
 			"style": "devotional",
@@ -41884,6 +42280,21 @@
 			"lift": 1,
 			"medallion": null,
 			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"uk/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "f5fe2f525dde197fbbb9d04deed817544db88c3ba47997f827f9d0d0e9a2cbc8",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
@@ -43126,6 +43537,21 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"vi/how-to-bring-men-to-christ": {
+			"ground": "221d09cf0d94f2be4ee4dd8d0eafb303e33a4057e96aa1512d74883c0fc11bdb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"vi/how-to-succeed-in-the-christian-life": {
 			"ground": "1ca203fe63a5c2939c8c5dbb24a9082e3d0ae77a6a21edc55ccf82e0956fe6fc",
 			"style": "revival",
@@ -43473,6 +43899,21 @@
 				280,
 				515
 			]
+		},
+		"vi/ministry-of-intercession": {
+			"ground": "6d01d000720ca31e2b0ddece36e53fc87e17ae226577022f8953d7eadbdf1ad1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/mortification-of-sin": {
 			"ground": "cb1f4bf6b1f5779c4066460d7cadf6579b132cbf220dc11ff2efec50a2d60eaf",
@@ -44205,6 +44646,21 @@
 				259,
 				536
 			]
+		},
+		"vi/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "264a173304aa34f8819b507d4b72266c62be461321fdf970395366954d708983",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/the-god-of-all-comfort": {
 			"ground": "af85149cce752a220b9a74ee27966f50c1dfef7eb8e23d8afe17d7f0e9569400",

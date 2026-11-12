@@ -241,9 +241,9 @@ told…"). Known cases are flagged ⚑ below.
 | 8 | The Noon Prayer Meeting | Jeremiah Lanphier and Fulton Street, 1857 | 2 Chronicles 7:14 |
 | 9 | Four Young Men at Kells | The Ulster Revival, 1859 | Psalm 85:6 |
 | 10 | The Boiler Room | Charles Spurgeon ★ | Psalm 50:15 |
-| 11 | Move Men Through God | Hudson Taylor ★ | Philippians 4:19 |
+| 11 | Move Man Through God | Hudson Taylor ★ | Philippians 4:19 |
 | 12 | Overcomer | Pastor Hsi ★ (China) | 1 John 4:4 |
-| 13 | The Bedridden Girl Who Prayed | D. L. Moody ★ and Marianne Adlard | Mark 9:23 |
+| 13 | The Bedridden Woman Who Prayed | D. L. Moody ★ and Marianne Adlard | Mark 9:23 |
 | 14 | Knee Drill | William ★ and Catherine Booth ★ | Isaiah 61:1 |
 | 15 | Trust Without Fear | Amanda Berry Smith ★ | Proverbs 3:5–6 |
 | 16 | A Bishop on His Knees | Samuel Ajayi Crowther ★ | Psalm 72:8 |
