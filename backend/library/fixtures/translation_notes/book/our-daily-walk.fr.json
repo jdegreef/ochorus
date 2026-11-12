@@ -3069,9 +3069,10 @@
   },
   {
    "reference": "1 John 5:21",
-   "status": "self_rendered",
+   "status": "mined",
    "chapter_order": 10,
-   "block_index": 92
+   "block_index": 92,
+   "source_file": "Louis Segond (1910)"
   },
   {
    "reference": "Psalm 78:19",
