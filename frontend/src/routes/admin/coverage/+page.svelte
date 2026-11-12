@@ -589,10 +589,12 @@
 	// the language weight is only 1–2×, so one popular work would take every
 	// slot: each work gets at most NEXT_PER_WORK. Ties keep the
 	// tab's own (curated) order. Empty until the job list has loaded — before
-	// that a queued gap still looks open.
-	const NEXT_COUNT = 10;
+	// that a queued gap still looks open. The panel lists the top NEXT_SHOWN;
+	// the bulk buttons reach deeper into the same ranking (NEXT_BATCHES).
+	const NEXT_SHOWN = 10;
+	const NEXT_BATCHES = [10, 20, 50];
 	const NEXT_PER_WORK = 2;
-	const nextGaps = $derived.by(() => {
+	const rankedGaps = $derived.by(() => {
 		if (jobsConfigured !== true) return [];
 		const scored: { r: AdminCoverageRow; l: AdminCoverageLanguage; score: number }[] = [];
 		for (const r of rows)
@@ -608,16 +610,22 @@
 			if (n >= NEXT_PER_WORK) continue;
 			perWork.set(g.r, n + 1);
 			out.push(g);
-			if (out.length === NEXT_COUNT) break;
+			if (out.length === NEXT_BATCHES[NEXT_BATCHES.length - 1]) break;
 		}
 		return out;
 	});
-	const queueNext = () =>
+	const nextGaps = $derived(rankedGaps.slice(0, NEXT_SHOWN));
+	// One button per batch size, clamped to the gaps there are: 15 open gaps
+	// offer "10" and "15", not a "20" and a "50" that would both file 15.
+	const nextBatches = $derived([...new Set(NEXT_BATCHES.map((n) => Math.min(n, rankedGaps.length)))].filter(Boolean));
+	const queueNext = (n: number) => {
+		const top = rankedGaps.slice(0, n);
 		stageBulk(
-			`the ${nextGaps.length} most-wanted gap${nextGaps.length === 1 ? '' : 's'}`,
-			nextGaps.map(({ r, l }) => target(r, l.code)),
+			`the ${top.length} most-wanted gap${top.length === 1 ? '' : 's'}`,
+			top.map(({ r, l }) => target(r, l.code)),
 			'next'
 		);
+	};
 
 	// --- Legend as a lens: each state's count over the works on screen, and the
 	// one picked (if any) — every other cell fades, so the picked ones stand out
@@ -927,9 +935,18 @@
 					<div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5">
 						<h2 id="translate-next" class="font-sans text-body font-semibold">Translate next</h2>
 						<span class="text-small text-muted">open gaps ranked by readers × searches with no result</span>
-						<button type="button" class="btn btn-sm btn-primary ml-auto" disabled={busy} onclick={queueNext}
-							>Queue top {nextGaps.length}</button
-						>
+						<div class="ml-auto flex items-center gap-1.5" role="group" aria-label="Queue the most-wanted gaps">
+							<span class="text-small text-muted">Queue top</span>
+							{#each nextBatches as n (n)}
+								<button
+									type="button"
+									class="btn btn-sm btn-primary tabular-nums"
+									disabled={busy}
+									aria-label={`Queue the top ${n} gap${n === 1 ? '' : 's'}`}
+									onclick={() => queueNext(n)}>{n}</button
+								>
+							{/each}
+						</div>
 					</div>
 					<ol class="border-t border-border text-small">
 						{#each nextGaps as { r, l } (cellKey(r, l.code))}
