@@ -1757,6 +1757,10 @@
 				"content": "03dca4d6450b29cb212b40efdbd209c529c44ac28b65d54551e5960d74348c91",
 				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 			},
+			"be-filled-with-the-spirit": {
+				"content": "8b6052cbc7d9cad9be8488750d407621a38cbb6634d380879db58ce0b7d4b342",
+				"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+			},
 			"behold-the-lamb-of-god": {
 				"content": "5e4f723f298f2e6920d91cf8241a0fb25c6e078be6112fbf9fc501e894e0f350",
 				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -2123,6 +2127,10 @@
 			},
 			"the-scripture-way-of-salvation": {
 				"content": "f3552d07628ed5702fc4ccab6c92399d24ce8b147fa8f4818698aadc482eabc6",
+				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+			},
+			"the-sinners-friend": {
+				"content": "d33cd9420a29cee82386e0980247d56c680855c78ea3bb429830037e16b6dcbe",
 				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 			},
 			"the-spirit-of-prayer": {
