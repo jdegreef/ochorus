@@ -250,3 +250,83 @@ class VerseConsistencyPrecisionTests(SimpleTestCase):
 
     def test_clean_prose_produces_nothing(self):
         self.assertEqual(_find(("sw", "a.sw.json", "<p>Hakuna nukuu hapa kabisa.</p>")), {})
+
+
+def _spans(language: str, html: str) -> list[str]:
+    """Every quotation the scanner reads out of one body, as written."""
+    return [r.text for rs in vc.scan([(language, "x", html)]).values() for r in rs]
+
+
+class SingleQuoteTests(SimpleTestCase):
+    """Curly single quotes ‘ … ’ are quotations too — but ’ is also an apostrophe.
+
+    Works that quote Scripture in ‘ ’ were invisible to the ratchet until the
+    pt Grace Abounding job hand-ran it with them allowed and found 8 real
+    divergences. The risk in widening is the other job of this file: ’ is the
+    apostrophe in English (don’t), in Luganda (n’omukama, olw’ekisa) and in
+    Ukrainian (м’ята, п’ять), so a careless pattern would let every apostrophe
+    close a span. These pin the fences: ‘ must open the span and may not follow
+    a letter, and the closing ’ may not be followed by one.
+    """
+
+    def test_a_single_quoted_conflict_is_now_seen(self):
+        found = _find(
+            ("lg", "a", "<p>‘Katonda bwe yayagala ensi bw’atyo’ (Yokaana 3:16).</p>"),
+            ("lg", "b", "<p>‘Katonda yayagala nnyo ensi bw’atyo ddala’ (Yokaana 3:16).</p>"),
+        )
+        self.assertIn(("lg", "Yokaana 3:16"), found)
+
+    def test_english_apostrophes_stay_inside_the_span(self):
+        html = (
+            "<p>Don’t fear; the saints’ hope isn’t vain: ‘I’ll never leave thee, "
+            "nor forsake thee’ (Hebrews 13:5). It’s God’s word.</p>"
+        )
+        self.assertEqual(_spans("en", html), ["I’ll never leave thee, nor forsake thee"])
+
+    def test_english_apostrophes_alone_make_no_span(self):
+        html = (
+            "<p>Don’t say it’s too late, for the Lord’s mercy isn’t spent and "
+            "we’ve His word on it (John 6:37).</p>"
+        )
+        self.assertEqual(_spans("en", html), [])
+
+    def test_an_elision_typed_with_an_opening_mark_does_not_open_a_span(self):
+        html = "<p>’Tis said ‘twas the Lord’s doing, and o‘er the land it ran’ (Psalm 118:23).</p>"
+        self.assertEqual(_spans("en", html), [])
+
+    def test_ukrainian_apostrophes_make_no_span(self):
+        html = (
+            "<p>П’ять хлібів і м’ясо, сім’я в об’єднанні, пам’ять про "
+            "з’явлення (Іван 6:9).</p>"
+        )
+        self.assertEqual(_spans("uk", html), [])
+
+    def test_ukrainian_apostrophes_stay_inside_a_real_span(self):
+        html = "<p>Він сказав: ‘Пам’ятайте слово, яке я вам сказав’ (Іван 15:20).</p>"
+        self.assertEqual(_spans("uk", html), ["Пам’ятайте слово, яке я вам сказав"])
+
+    def test_luganda_apostrophes_make_no_span(self):
+        html = (
+            "<p>Olw’ekisa kya Katonda n’omukwano gwe, ab’omu nnyumba y’Omukama "
+            "baasanyuka nnyo ng’ebigambo bw’ebyali (Yokaana 3:16).</p>"
+        )
+        self.assertEqual(_spans("lg", html), [])
+
+    def test_luganda_apostrophes_stay_inside_a_real_span(self):
+        html = (
+            "<p>Yagamba nti ‘Kubanga olw’ekisa mwalokolebwa olw’okukkiriza’ "
+            "(Abaefeso 2:8), n’asanyuka.</p>"
+        )
+        self.assertEqual(
+            _spans("lg", html), ["Kubanga olw’ekisa mwalokolebwa olw’okukkiriza"]
+        )
+
+    def test_a_word_final_apostrophe_does_not_cut_the_span_short(self):
+        """`saints’ ` is followed by a space, not a letter — the span must run on
+        to the ’ the citation follows, not stop at the possessive."""
+        html = "<p>‘The saints’ rest is with the Lord for ever’ (Hebrews 4:9).</p>"
+        self.assertEqual(_spans("en", html), ["The saints’ rest is with the Lord for ever"])
+
+    def test_straight_single_quotes_are_still_not_quotations(self):
+        html = "<p>'For God so loved the world, that he gave' (John 3:16).</p>"
+        self.assertEqual(_spans("en", html), [])
