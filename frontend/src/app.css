@@ -3605,30 +3605,25 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 /* On the element itself, not as a descendant of a Korean ancestor: <html
    lang="ko"> is an ancestor of everything, so a descendant rule would also
-   strip the real Fraunces italic from a Latin island (lang="en") on the page. */
-:is(em, i, cite):lang(ko) {
-	font-style: normal;
-	font-weight: 600;
-}
-:is(blockquote, .italic):lang(ko) {
-	font-style: normal;
-}
+   strip the real Fraunces italic from a Latin island (lang="en") on the page.
+   The rules themselves sit below the Japanese block, which shares them. */
 
 /* Japanese. Unlike Korean it is written without spaces, so the browser's
    default — a break between any two characters — is right; `line-break:
    strict` adds the kinsoku rules a Japanese reader expects (no small kana or
    closing bracket at the start of a line). Like Hangul, kana and kanji have no
    italic (Noto Serif/Sans JP ship none), so emphasis keeps its weight rather
-   than taking a synthesised slant, and Japanese takes no dropped initial.
+   than taking a synthesised slant — the rules below, for both — and Japanese
+   takes no dropped initial.
    The faces load from $lib/fonts-ja.css, on Japanese pages only. */
 :lang(ja) {
 	line-break: strict;
 	overflow-wrap: break-word;
 }
-:is(em, i, cite):lang(ja) {
+:is(em, i, cite):is(:lang(ko), :lang(ja)) {
 	font-style: normal;
 	font-weight: 600;
 }
-:is(blockquote, .italic):lang(ja) {
+:is(blockquote, .italic):is(:lang(ko), :lang(ja)) {
 	font-style: normal;
 }

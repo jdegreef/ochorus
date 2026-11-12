@@ -60,6 +60,10 @@ export const SERIF =
 export const SANS =
 	'Hanken Grotesk, PT Sans, Noto Sans Arabic, Noto Sans Devanagari, Noto Sans Ethiopic, Noto Sans KR, Noto Sans JP';
 
+/** Card languages whose scripts have no italic: a synthesised slant on them
+ *  reads as a rendering fault, so their quotes and titles stay upright. */
+export const UPRIGHT = new Set(['ar', 'hi', 'am', 'ko', 'ja']);
+
 // ── Text ────────────────────────────────────────────────────────────────────
 
 export const esc = (s) =>

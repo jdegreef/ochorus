@@ -40,7 +40,8 @@ import {
 	sharp,
 	svg,
 	text,
-	wordmark
+	wordmark,
+	UPRIGHT
 } from './card-kit.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -50,7 +51,6 @@ const LOCALES = JSON.parse(
 
 const RTL = new Set(['ar']);
 /** Scripts with no italic of their own — see build-author-cards. */
-const UPRIGHT = new Set(['ar', 'hi', 'am', 'ko', 'ja']);
 
 const BADGE = { d: 150, top: 70, gold: '#b07d22', ink: '#fff8e8' };
 const TITLE_W = 820;

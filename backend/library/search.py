@@ -563,7 +563,7 @@ def _search_postgres(ctx, qs):
     return [hit for _, hit in pairs[:MAX_RESULTS]]
 
 
-# --- SQLite fallback (dev) ----------------------------------------------------
+# --- Substring search (SQLite dev, and SUBSTRING_LANGUAGES) ---------------------
 
 
 def _search_fallback(ctx, qs):
@@ -572,7 +572,7 @@ def _search_fallback(ctx, qs):
         return _match(kind, ctx, qs[kind]).order_by(*order)[: CAPS[kind]]
 
     # The snippet centres on the first word; every word is in the row somewhere.
-    lead = _terms(ctx.q, ctx.language)[0]
+    lead = _snippet_term(ctx)
     results = (
         [_author_hit(a, ctx) for a in rows("author", "name")]
         + [_book_hit(b, ctx) for b in rows("book", "sort_order", "title")]
@@ -605,10 +605,16 @@ def _search_fallback(ctx, qs):
 
 def _terms(q: str, language: str) -> list[str]:
     """What a substring match looks for: the whole query on SQLite (dev, as it
-    always has), each whitespace-separated word in a SUBSTRING_LANGUAGE."""
+    always has); in a SUBSTRING_LANGUAGE, each word the query is made OF
+    (``positive_words``: no exclusions, no "OR", no stray punctuation)."""
     if language in SUBSTRING_LANGUAGES:
-        return q.split() or [q]
+        return positive_words(q, language) or [q]
     return [q]
+
+
+def _snippet_term(ctx) -> str:
+    """The word a substring hit's snippet centres on: the first one matched."""
+    return _terms(ctx.q, ctx.language)[0]
 
 
 def _lite_match(kind: str, q: str, language: str) -> Q:
@@ -871,7 +877,7 @@ def _hit_for(kind: str, row, ctx) -> dict:
         return _plan_hit(row, ctx)
     if kind == "article":
         return _article_hit(row, ctx)
-    snippet = fallback_snippet(getattr(row, "body_text", ""), ctx.q)
+    snippet = fallback_snippet(getattr(row, "body_text", ""), _snippet_term(ctx))
     return _chapter_hit(row, snippet) if kind == "chapter" else _sermon_hit(row, snippet)
 
 

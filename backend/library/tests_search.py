@@ -1907,6 +1907,13 @@ class JapaneseSearchTests(TestCase):
         self.assertNotIn("chapter", self._types("恵み 聖霊"))
         self.assertIn("sermon", self._types("恵み 聖霊"))
 
+    def test_query_syntax_is_not_matched_literally(self):
+        # Punctuation between words, an OR and an exclusion are syntax, not text:
+        # each leaves 恵み (and 主) to match rather than finding nothing.
+        self.assertIn("chapter", self._types("恵み、主"))
+        self.assertIn("chapter", self._types("恵み OR 主"))
+        self.assertIn("sermon", self._types("恵み -謙遜"))
+
     def test_snippet_marks_the_match(self):
         [hit] = [h for h in search_library("恵み", "ja") if h["type"] == "chapter"]
         self.assertIn("⟦", hit["snippet"])

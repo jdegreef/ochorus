@@ -142,6 +142,28 @@ const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
 const KO_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ko.css'), 'utf8');
 // Japanese the same way, for the same reason (fonts-ja.css).
 const JA_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ja.css'), 'utf8');
+/**
+ * The CJK scripts whose faces ship as ~120 NUMBERED unicode-range slices per
+ * weight rather than a named subset — read from their own sheet, which the
+ * root layout links on that locale's pages only. `tag` is the slice filename's
+ * script segment (`noto-serif-kr-37-700-normal`); `glyphs` what must be served.
+ */
+const SLICED = {
+	korean: {
+		css: KO_CSS,
+		tag: 'kr',
+		label: 'Korean',
+		sheet: 'fonts-ko.css',
+		glyphs: /[\p{Script=Hangul}\p{Script=Han}]/gu
+	},
+	japanese: {
+		css: JA_CSS,
+		tag: 'jp',
+		label: 'Japanese',
+		sheet: 'fonts-ja.css',
+		glyphs: /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/gu
+	}
+};
 // The other non-Latin scripts' faces, and the reader's, moved out of app.css too
 // (each sheet is linked only where it is drawn; see $lib/fontSheets.ts) — but
 // they are a few KB, not Korean's 124 slices a weight, so their imports join
@@ -170,7 +192,7 @@ const sheetCss = (f) => readFileSync(resolve(HERE, '../src/lib', f), 'utf8');
 const FACE_IMPORTS = [
 	...importsOf(APP_CSS),
 	...readdirSync(resolve(HERE, '../src/lib'))
-		.filter((f) => /^fonts-[a-z-]+\.css$/.test(f) && !['fonts-ko.css', 'fonts-ja.css', 'fonts-reader.css'].includes(f))
+		.filter((f) => /^fonts-[a-z-]+\.css$/.test(f) && ![...Object.values(SLICED).map((x) => x.sheet), 'fonts-reader.css'].includes(f))
 		.flatMap((f) => importsOf(sheetCss(f)))
 		.sort((a, b) => rank(a) - rank(b)),
 	...importsOf(sheetCss('fonts-reader.css'))
@@ -502,40 +524,20 @@ function faceScriptOf(language) {
 }
 
 /** Does a `unicode-range` value cover any character of `text`? */
-const rangeCovers = (range, text) =>
+/** A `unicode-range` value as numeric [lo, hi] pairs — parse once, test often. */
+const parseRange = (range) =>
+	range.split(',').map((part) => {
+		const [lo, hi] = part.trim().replace(/U\+/i, '').split('-');
+		return [parseInt(lo, 16), parseInt(hi ?? lo, 16)];
+	});
+const pairsCover = (pairs, text) =>
 	[...text].some((ch) => {
 		const cp = ch.codePointAt(0);
-		return range.split(',').some((part) => {
-			const [lo, hi] = part.trim().replace(/U\+/i, '').split('-');
-			return cp >= parseInt(lo, 16) && cp <= parseInt(hi ?? lo, 16);
-		});
+		return pairs.some(([lo, hi]) => cp >= lo && cp <= hi);
 	});
 
-/**
- * The CJK scripts whose faces ship as ~120 NUMBERED unicode-range slices per
- * weight rather than a named subset — read from their own sheet, which the
- * root layout links on that locale's pages only. `tag` is the slice filename's
- * script segment (`noto-serif-kr-37-700-normal`); `glyphs` what must be served.
- */
-const SLICED = {
-	korean: {
-		css: KO_CSS,
-		tag: 'kr',
-		label: 'Korean',
-		sheet: 'fonts-ko.css',
-		glyphs: /[\p{Script=Hangul}\p{Script=Han}]/gu
-	},
-	japanese: {
-		css: JA_CSS,
-		tag: 'jp',
-		label: 'Japanese',
-		sheet: 'fonts-ja.css',
-		glyphs: /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/gu
-	}
-};
-
 /** Every upright slice a script's sheet declares for a family some cover can
- *  name, as { range, css } — read once per script; each woff2 inlined on first use. */
+ *  name, as { pairs, css } — read once per script; each woff2 inlined on first use. */
 const SLICES = new Map();
 function slicesOf(face) {
 	if (SLICES.has(face)) return SLICES.get(face);
@@ -557,7 +559,7 @@ function slicesOf(face) {
 			.map((block) => {
 				let css = null;
 				return {
-					range: /unicode-range:\s*([^;]+);/.exec(block)?.[1] ?? '',
+					pairs: parseRange(/unicode-range:\s*([^;]+);/.exec(block)?.[1] ?? ''),
 					get css() {
 						css ??= block
 							.replace(/,\s*url\(\.\/files\/[^)]+\)\s*format\('woff'\)/g, '')
@@ -590,11 +592,11 @@ function slicesOf(face) {
  */
 function slicedFaces(face, text) {
 	const { label, sheet, glyphs } = SLICED[face];
-	const slices = slicesOf(face).filter((slice) => rangeCovers(slice.range, text));
+	const slices = slicesOf(face).filter((slice) => pairsCover(slice.pairs, text));
 	// PER GLYPH, not "did any slice match": one common syllable would satisfy
 	// that while a rare one, or a Hanja, fell through to the machine's face.
 	const unserved = [...new Set(text.match(glyphs) ?? [])].filter(
-		(ch) => !slices.some((slice) => rangeCovers(slice.range, ch))
+		(ch) => !slices.some((slice) => pairsCover(slice.pairs, ch))
 	);
 	if (unserved.length) {
 		throw new Error(
