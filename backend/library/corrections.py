@@ -7910,6 +7910,15 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR slips found while translating Chrysostom's On the Priesthood to French (#7207);
+# each is forced by grammar or by the dialogue (Basil answers "But not my case").
+# (Placed mid-file, not at the tail, so parallel jobs' appends can't conflict with it.)
+BODY_CORRECTIONS.setdefault("on-the-priesthood", {}).setdefault("replacements", []).extend([
+    ("nearly all the ancient father of the Church", "nearly all the ancient fathers of the Church"),
+    ("shall we want only and inconsiderately run", "shall we wantonly and inconsiderately run"),
+    ("For my ease does not now call for wailing", "For my case does not now call for wailing"),
+])
+
 # OCR/typo slips found while translating Murray's book to Portuguese (batch 6); scattered one-word mechanical errors, each grammar- or KJV-forced.
 BODY_CORRECTIONS.setdefault('true-vine', {}).setdefault("replacements", []).extend([
     ('what as unspeakable blessedness', 'what an unspeakable blessedness'),
@@ -14552,6 +14561,10 @@ BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefau
     ("iños en sus juegos (Mat. 12:16-19", "iños en sus juegos (Mat. 11:16-19"),
     # [es] citation fix mirrored from EN
     (" de fe, es pecado” (Rom. 14:32", " de fe, es pecado” (Rom. 14:23"),
+    # [en] Acts 2:42 is the apostles' (plural) doctrine — found translating to pt (#7749)
+    ("steadfastly in the apostle’s doctrine", "steadfastly in the apostles’ doctrine"),
+    # [en] a direct question ended with a full stop — found translating to pt (#7749)
+    ("will sooner or later encounter.</p>", "will sooner or later encounter?</p>"),
     # [am] citation fix mirrored from EN
     (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
     # [am] citation fix mirrored from EN
@@ -24834,4 +24847,46 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
 # this is the one it left: a stray space inside the signature's hyphenated word.
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
+])
+
+# The Reformed Pastor: the marks #7785's pass (from the vi job's list) did not
+# reach, logged by the Luganda translators (#7072). Each has one place to go: a
+# "?" closing a question the sentence opened, a straight " closing a ‘ quote, a
+# missing space after "?", and the Acts 20 outline's two remaining lower-case gods.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("or love to the souls of men, gainsay it </p>", "or love to the souls of men, gainsay it? </p>"),
+    ("to please God best, and do most good it makes them ask", "to please God best, and do most good? it makes them ask"),
+    ("all our exhortations?It is, in my judgment", "all our exhortations? It is, in my judgment"),
+    ('‘he regard iniquity in his heart," whether', "‘he regard iniquity in his heart,’ whether"),
+    ('not where to lay his head," that he', "not where to lay his head,’ that he"),
+    ('to possess their souls," to conquer', "to possess their souls,’ to conquer"),
+    ('thou Son of David," you shall see', "thou Son of David,’ you shall see"),
+    ('his life shall lose it." – on the other', "his life shall lose it.’ – on the other"),
+    ("all the counsel of god. </p>", "all the counsel of God. </p>"),
+    ("I commend you to god and to the word", "I commend you to God and to the word"),
+])
+
+# Three marks in *The Reformed Pastor* that #7785 and #7787 did not reach, from
+# the ko translators' list (job #7071): Hazael's question loses its "?" inside
+# the quote; the last of a series of "Are there so many …?" questions ends in a
+# full stop; and a "?" stands outside the quote it belongs to.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ('that he should do this thing’ or as Peter', 'that he should do this thing?’ or as Peter'),
+    ('seducers, and troublers of the Church. And yet', 'seducers, and troublers of the Church? And yet'),
+    ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
+])
+
+# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
+# French (job #7204). Each is a one-letter misread forced by grammar or sense;
+# the French edition already renders the corrected word.
+BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
+    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
+    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
+    ("a matter requiting examination", "a matter requiring examination"),
+    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
+    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
+    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
+    ("bodies would nor possess a desire", "bodies would not possess a desire"),
+    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
+    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
 ])
