@@ -388,6 +388,75 @@ def page_url(page: dict) -> str:
     return url
 
 
+#: The series whose books are the Bible itself, each at its canonical number
+#: (``build_owb_book`` files them under it; the reader's ``$lib/bible``
+#: BIBLE_SERIES).
+BIBLE_SERIES = "the-bible"
+
+#: A Bible book's reader chapter is titled with its Bible chapter ("Romans 8",
+#: "Psalm 23"); the introduction and conclusion carry no number.
+_TRAILING_NUMBER = re.compile(r"\s(\d+)$")
+
+
+def bible_book_of(book) -> bible.Book | None:
+    """The Bible book a library Book IS, or None for any other book.
+
+    An English edition in ``the-bible`` series at a canonical number 1-66 —
+    pythonbible numbers its books in the same canonical order, so the number
+    is the whole key (the reader slugs differ: ``gospel-of-john`` is John).
+    English only, as the scripture pages are.
+    """
+    pos = book.series_position
+    series = book.series.slug if book.series_id else None
+    if book.language != "en" or series != BIBLE_SERIES or not pos or not 1 <= pos <= 66:
+        return None
+    return bible.Book(pos)
+
+
+def book_chapter_pages(book: bible.Book) -> dict[int, int]:
+    """{Bible chapter: citing count} for each chapter of ``book`` with a page.
+
+    ONE QUERY over the book's own verse range, bucketed by the rule
+    ``qualifying_pages`` uses (`bucket`, the chapter floor, the text check), so
+    it names exactly the chapter pages the list builds — without the
+    full-corpus tally on a reader's request path.
+    """
+    lo, hi = book.value * 1000000, book.value * 1000000 + 999999
+    rows = english_citation_rows().filter(start_verse_id__lte=hi, end_verse_id__gte=lo)
+    _, by_chapter = bucket(rows)
+    return {
+        key % 1000: len(cids)
+        for key, cids in by_chapter.items()
+        if key // 1000 == book.value
+        and key % 1000
+        and len(cids) >= CHAPTER_FLOOR
+        and verse_text(key * 1000 + 1)
+    }
+
+
+def classics_page(book: bible.Book, chapter, pages: dict[int, int]) -> dict | None:
+    """The scripture page a reader chapter of a Bible book leads to.
+
+    A Bible book is built as an introduction, one reader chapter per English
+    Bible chapter, then a conclusion (``build_owb_book``): reader chapter
+    ``order`` is Bible chapter ``order - 1``, and its title says so. Both must
+    agree — a drifted layout falls back rather than link the wrong chapter.
+    That chapter's page when it earned one; otherwise (and for the
+    introduction and conclusion) the book's overview page, which exists when
+    any of its chapters has one (``ScriptureBookView``'s own rule). None when
+    neither was built: never a link the floor withheld. ``pages`` is
+    ``book_chapter_pages(book)``.
+    """
+    if not pages:
+        return None
+    slug = book_slug(book)
+    m = _TRAILING_NUMBER.search(chapter.title or "")
+    n = int(m.group(1)) if m else None
+    if n is not None and n == chapter.order - 1 and n in pages:
+        return {"book": slug, "book_title": book.title, "chapter": n, "citing_count": pages[n]}
+    return {"book": slug, "book_title": book.title, "chapter": None, "citing_count": None}
+
+
 #: How many of a BOOK's own chapters must treat a passage before the book page
 #: lists it. Two, not the corpus's three: this is a different question. The
 #: corpus floors ask "do enough independent voices treat this to deserve a

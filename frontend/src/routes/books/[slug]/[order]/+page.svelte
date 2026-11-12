@@ -18,8 +18,17 @@
 	import { chapterSeedTag } from '$lib/chapterSeed';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
-	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
+	import {
+		getBook,
+		getPlan,
+		scriptureBookHref,
+		scripturePageHref,
+		type BookDetail,
+		type Chapter,
+		type PlanDetail
+	} from '$lib/library-public';
 	import { completePlanDay } from '$lib/planProgress.svelte';
+	import { planDayCovering, runStep } from '$lib/planRun';
 	import PlanDayDone from '$lib/components/PlanDayDone.svelte';
 	import PlanDayStrip from '$lib/components/PlanDayStrip.svelte';
 	import { reflectPrompt } from '$lib/journal';
@@ -1435,14 +1444,20 @@
 		return () => window.removeEventListener('resize', onResize);
 	});
 
-	/** The plan day covering a chapter of THIS book, when following a plan. */
+	/** The plan day covering a chapter of THIS book, when following a plan —
+	 *  a day of several chapters covers each of them (`$lib/planRun`). */
 	function planDayFor(order: number): number | null {
-		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
-		// Only the neighbouring day: a plan can put an article between two
-		// chapters, and the book's own Next must not jump past it.
-		if (!d || (planDay && d.day !== planDay && Math.abs(d.day - planDay) !== 1)) return null;
-		return d.day;
+		return (plan && planDayCovering(plan.days, slug, order, planDay)?.day) || null;
 	}
+
+	/** On a chapter of a several-chapter plan day: where it stands in the day,
+	 *  and the link to the day's next chapter (null on its last, which is
+	 *  where the day is marked done). */
+	const planRun = $derived.by(() => {
+		const d = plan && planDay ? planDayCovering(plan.days, slug, chapter.order, planDay) : null;
+		const step = d?.day === planDay ? runStep(d, chapter.order) : null;
+		return step && { n: step.n, m: step.m, nextHref: step.next ? chapterHref(step.next) : null };
+	});
 
 	/**
 	 * A chapter link that carries the reader's plan context (?plan=&day=) when the
@@ -2302,7 +2317,7 @@
 		<div bind:this={leadEl}>
 			<LanguageFallbackNotice {fallback} alternates={seo.hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
-				<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="mb-6" />
+				<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} run={planRun} class="mb-6" />
 			{/if}
 		</div>
 
@@ -2389,7 +2404,16 @@
 			     written straight into their Notebook — filed in a collection named for
 			     the plan, so a whole plan's reflections gather in one place. Loaded on
 			     demand: it brings the journal store, which a plain chapter never needs. -->
-			{#if plan && planDay}
+			{#if plan && planDay && planRun?.nextHref}
+				<!-- Not the day's last chapter: it goes on to the next, and the
+				     reflection and "Mark day done" wait at the end of the run. -->
+				<div class="plan-reflect mt-12 border-t border-border pt-6">
+					<p class="text-small text-muted">
+						{t('plans.chapterOfDay').replace('%n%', String(planRun.n)).replace('%m%', String(planRun.m))}
+					</p>
+					<a class="btn btn-primary mt-3" href={planRun.nextHref}>{t('reader.nextChapter')}</a>
+				</div>
+			{:else if plan && planDay}
 				<section class="plan-reflect mt-12 border-t border-border pt-6" aria-labelledby="reflect-heading">
 					<h2 id="reflect-heading" class="section-heading">{t('notebook.reflectHeading')}</h2>
 					{#await import('$lib/components/notebook/ReflectBox.svelte') then { default: ReflectBox }}
@@ -2412,6 +2436,35 @@
 				</section>
 			{/if}
 
+			<!-- A chapter of the Bible itself: where the library's classics and
+			     sermons quote it — the /scripture/ page of this very chapter, or the
+			     book's overview where the chapter has none (and from the introduction
+			     and conclusion). Where the chip row below sits, and as quiet: one line
+			     under the text that a reader in flow scrolls past, heading the chip
+			     row when there is one. Only when the server says the page was built;
+			     the overview's message carries its own arrow; the chapter link's is an
+			     <Arrow /> (arrows.test). -->
+			{#if chapter.classics_page}
+				{@const cp = chapter.classics_page}
+				<div class="mt-10 flex flex-col items-start border-t border-border pt-4">
+					<a
+						href={cp.chapter ? scripturePageHref(cp.book, cp.chapter, null) : scriptureBookHref(cp.book)}
+						class="classics-link-title"
+					>
+						{#if cp.chapter}
+							{t('reader.scripturePage')} <Arrow />
+						{:else}
+							{t('scripture.bookOverview').replace('%book%', () => cp.book_title)}
+						{/if}
+					</a>
+					{#if cp.citing_count}
+						<p class="text-small text-muted">
+							{t('scripture.treated').replace('%count%', String(cp.citing_count))}
+						</p>
+					{/if}
+				</div>
+			{/if}
+
 			<!-- Scripture index: the passages this chapter treats. Placed here — after
 			     the text, before the next-chapter nav — to match the sermon page, which
 			     has carried the same row since citations were indexed. The reading comes
@@ -2427,7 +2480,12 @@
 			     that was not built. English chapters only; `scripture_refs` is empty
 			     elsewhere, because the citations behind it are English. -->
 			{#if chapter.scripture_refs?.length}
-				<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-6">
+				<!-- Under the classics line, one block with it: one rule, not two. -->
+				<div
+					class="flex flex-wrap items-center gap-2 {chapter.classics_page
+						? 'mt-4'
+						: 'mt-10 border-t border-border pt-6'}"
+				>
 					<span class="eyebrow text-muted">{t('reader.scripture')}</span>
 					{#each chapter.scripture_refs as entry (entry.ref)}
 						<a
@@ -3164,6 +3222,20 @@
 	}
 	.end-link:hover,
 	.end-aside :global(.share-wrap > .btn:hover) {
+		text-decoration: underline;
+	}
+	/* A Bible chapter's "what the classics say" line: one
+	   quiet link, the chip row's weight — apparatus, not a call to action. */
+	.classics-link-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		min-height: 2.75rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.classics-link-title:hover {
 		text-decoration: underline;
 	}
 

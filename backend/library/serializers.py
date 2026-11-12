@@ -1,7 +1,9 @@
 import re
 from collections import Counter
+from functools import reduce
+from operator import or_
 
-from django.db.models import Count, QuerySet, Sum
+from django.db.models import Case, Count, Q, QuerySet, Sum, Value, When
 from django.db.models.functions import Substr
 from django.urls import reverse
 from django.utils.text import slugify
@@ -36,7 +38,12 @@ from .opening import opening_candidate_orders, opening_excerpt
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
-from .scripture_graph import treated_passages
+from .scripture_graph import (
+    bible_book_of,
+    book_chapter_pages,
+    classics_page,
+    treated_passages,
+)
 from .text import word_count
 
 #: A dated book's slug → its year-long plan's slug.
@@ -2192,6 +2199,14 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_related_passages(self, obj):
         return self._batch(obj).related_passages(obj)
 
+    # For a chapter of the Bible itself: the scripture page of the passage it
+    # is — the classics and sermons that quote it — or null where none was
+    # built (see scripture_graph.classics_page). Null for every other book.
+    classics_page = serializers.SerializerMethodField()
+
+    def get_classics_page(self, obj):
+        return self._batch(obj).classics_page(obj)
+
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
@@ -2240,6 +2255,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "scripture_refs",
             # A Bible chapter's cross-references — see above.
             "related_passages",
+            # A Bible chapter's "what the classics say" page — see above.
+            "classics_page",
             # The chapter's answered questions (``Chapter``): a young-reader
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
@@ -2344,6 +2361,11 @@ class ChapterBatch:
         self._is_bible = is_bible_book(book)
         self._bible_slugs = None
 
+        # A Bible book's chapters link the scripture page of the passage they
+        # ARE ("what the classics say"); every other book has none.
+        self._bible = bible_book_of(book)
+        self._bible_pages = book_chapter_pages(self._bible) if self._bible else {}
+
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
 
@@ -2362,6 +2384,11 @@ class ChapterBatch:
             return self._bible_slugs
 
         return related_passages(chapter.book, chapter, published)
+
+    def classics_page(self, chapter):
+        if self._bible is None:
+            return None
+        return classics_page(self._bible, chapter, self._bible_pages)
 
 
 class PlanListSerializer(serializers.ModelSerializer):
@@ -2452,26 +2479,32 @@ def plan_chapter_index(plans, language, with_openings=False):
     shelf, which shows no chips and would only pay to ship the text.
     """
     # Not a devotional's day: it reads its entry (plan_entry_index), never the
-    # month chapter it points into.
-    pairs = {
-        (d.book_slug, d.chapter_order)
-        for plan in plans
-        for d in plan.days.all()
-        if d.book_slug and not d.entry_date
-    }
-    if not pairs:
+    # month chapter it points into. A day of several chapters needs each, but
+    # its key verse only from its first.
+    wanted: dict[str, set[int]] = {}
+    firsts: dict[str, set[int]] = {}
+    for plan in plans:
+        for d in plan.days.all():
+            if d.book_slug and not d.entry_date:
+                wanted.setdefault(d.book_slug, set()).update(d.chapter_orders)
+                firsts.setdefault(d.book_slug, set()).add(d.chapter_order)
+    if not wanted:
         return {}
-    slugs = {slug for slug, _ in pairs}
-    # By order too: the day list reads a few chapters of books that may hold
-    # hundreds, and with openings each extra row costs a body_text read.
-    rows = Chapter.objects.filter(
-        book__slug__in=slugs,
-        book__language=language,
-        order__in={order for _, order in pairs},
-    )
+
+    def chapters_of(by_book):
+        return reduce(or_, (Q(book__slug=s, order__in=o) for s, o in by_book.items()))
+
+    # Per book and order: the day list reads a few chapters of books that may
+    # hold hundreds, and with openings each extra row costs a body_text read.
+    rows = Chapter.objects.filter(chapters_of(wanted), book__language=language)
     fields = ["book__slug", "book__title", "order", "title", "word_count"]
     if with_openings:
-        rows = rows.annotate(opening=Substr("body_text", 1, EPIGRAPH_WINDOW))
+        rows = rows.annotate(
+            opening=Case(
+                When(chapters_of(firsts), then=Substr("body_text", 1, EPIGRAPH_WINDOW)),
+                default=Value(""),
+            )
+        )
         fields.append("opening")
     return {(c["book__slug"], c["order"]): c for c in rows.values(*fields)}
 
@@ -2526,6 +2559,30 @@ def plan_day_title(title):
     return _PLAN_DAY_PREFIX.sub("", title)
 
 
+# A chapter title that ends in its number: "Genesis 1", "Psalm 119".
+_NUMBERED_TITLE = re.compile(r"^(.*\S)\s+(\d+)$")
+
+
+def plan_day_label(titles):
+    """A chapter day's title from its run's chapter titles, in order: the one
+    chapter's, or the run's ("Genesis 1–3") — without a book's "Day N — ".
+    The plan payloads and the reminder email both title a day here."""
+    first, last = plan_day_title(titles[0]), plan_day_title(titles[-1])
+    return first if len(titles) == 1 else plan_run_title(first, last)
+
+
+def plan_run_title(first, last):
+    """A multi-chapter day's title from its first and last chapters' titles:
+    "Genesis 1–3" when both are the same name and a number, else
+    "<first> – <last>". The Open Word Bible names a psalm "Psalm 23"; a run of
+    them is "Psalms 1–8"."""
+    a, b = _NUMBERED_TITLE.match(first), _NUMBERED_TITLE.match(last)
+    if a and b and a[1] == b[1]:
+        name = "Psalms" if a[1] == "Psalm" else a[1]
+        return f"{name} {a[2]}\u2013{b[2]}"
+    return f"{first} \u2013 {last}"
+
+
 def _plan_reading(day, chapters, articles, entries):
     """What one plan day reads — ``{title, book_title, word_count}`` — from the
     prebuilt indexes, or None when it doesn't resolve in this language. The one
@@ -2536,11 +2593,14 @@ def _plan_reading(day, chapters, articles, entries):
     if day.kind == "article":
         a = articles.get(day.article_slug)
         return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
-    c = chapters.get((day.book_slug, day.chapter_order))
-    return c and {
-        "title": plan_day_title(c["title"]),
+    run = [chapters.get((day.book_slug, order)) for order in day.chapter_orders]
+    if not run or None in run:
+        return None
+    c = run[0]
+    return {
+        "title": plan_day_label([r["title"] for r in run]),
         "book_title": c["book__title"],
-        "word_count": c["word_count"],
+        "word_count": sum(r["word_count"] for r in run),
         "opening": c.get("opening", ""),
     }
 
@@ -2577,7 +2637,9 @@ class PlanDaySerializer(serializers.ModelSerializer):
     or, on an article day (``article_slug`` set, ``book_slug`` empty and
     ``chapter_order`` null), the article's headline as ``chapter_title``. A
     year-long devotional's day sets ``entry_date`` ("MM-DD"): it reads that one
-    entry of its month chapter, and the titles and length are the entry's."""
+    entry of its month chapter, and the titles and length are the entry's. A
+    day of several chapters (``chapter_count`` > 1, from ``chapter_order`` on)
+    is titled for the run ("Genesis 1–3") and counts all of its words."""
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
@@ -2592,8 +2654,8 @@ class PlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanDay
         fields = [
-            "day", "book_slug", "chapter_order", "article_slug", "entry_date",
-            "book_title", "chapter_title", "word_count", "has_modern_edition", "key_verse",
+            "day", "book_slug", "chapter_order", "chapter_count", "article_slug",
+            "entry_date", "book_title", "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 

@@ -270,6 +270,7 @@
   "plans_mark_day_done_num": "Đánh dấu ngày %n% đã xong",
   "plans_day_done_num": "Đã xong ngày %n%",
   "plans_day_done": "Đã xong ngày này",
+  "plans_chapter_of_day": "Chương %n% trong %m% chương hôm nay",
   "plans_todays_reading": "Bài đọc hôm nay",
   "plans_all": "Tất cả kế hoạch",
   "plans_week": "Tuần %n%",

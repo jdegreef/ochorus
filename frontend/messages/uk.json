@@ -270,6 +270,7 @@
   "plans_mark_day_done_num": "Позначити день %n% виконаним",
   "plans_day_done_num": "День %n% виконано",
   "plans_day_done": "День завершено",
+  "plans_chapter_of_day": "%n% з %m% розділів на сьогодні",
   "plans_todays_reading": "Читання на сьогодні",
   "plans_all": "Усі плани",
   "plans_week": "Тиждень %n%",

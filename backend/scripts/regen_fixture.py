@@ -116,6 +116,8 @@ DEFAULTED_OK = {
     ("library.planday", "article_slug"),
     # Blank on every chapter and article day; only seeded devotional days set it.
     ("library.planday", "entry_date"),
+    # 1 on every day but a multi-chapter one, which only the seed builds.
+    ("library.planday", "chapter_count"),
 }
 
 # (model, field) pairs that dumpdata materializes but whose default is NOT
