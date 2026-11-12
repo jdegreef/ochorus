@@ -1892,6 +1892,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Gods seeks intercessors.", "God seeks intercessors."),
             # ch17: a dropped word ("it is to feared that").
             ("it is to feared that", "it is to be feared that"),
+            # Two citation slips, found by the Ukrainian translators (#7450).
+            # ch4: "the well-known words (i. 13)" quotes Acts 1:14 ("These all
+            # continued with one accord in prayer and supplication"); 1:13 is
+            # the list of the eleven. ch9: the epigraph "Heal me, O Lord, and I
+            # shall be healed" is Jeremiah 17:14, printed "Jer. xii. 14" (12:14
+            # is the evil neighbours). The shipped editions had split — sw/am
+            # already printed 1:14 and fr/ar 17:14, the rest the English — so
+            # each edition's own form is repaired here (the uk edition was
+            # translated with the right numbers).
+            ("words (i. 13), \u201cThese all", "words (i. 14), \u201cThese all"),
+            ("healed.\u201d\u2014Jer. xii. 14.", "healed.\u201d\u2014Jer. xvii. 14."),
+            ("palabras (1:13): \u00abTodos", "palabras (1:14): \u00abTodos"),
+            ("ser\u00e9 sano.\u00bb\u2014Jerem\u00edas 12:14.", "ser\u00e9 sano.\u00bb\u2014Jerem\u00edas 17:14."),
+            ("connues (i. 13) : \u00ab Tous", "connues (i. 14) : \u00ab Tous"),
+            ("palavras (i. 13): \u201cTodos", "palavras (i. 14): \u201cTodos"),
+            ("serei sarado.\u201d\u2014Jeremias 12:14.", "serei sarado.\u201d\u2014Jeremias 17:14."),
+            ("nitaponywa.\u201d\u2014Yer. 12:14.", "nitaponywa.\u201d\u2014Yer. 17:14."),
+            ("(\u0905\u0927\u094d\u092f\u093e\u092f 1, \u092a\u0926 13), \u201c", "(\u0905\u0927\u094d\u092f\u093e\u092f 1, \u092a\u0926 14), \u201c"),
+            ("\u2014\u092f\u093f\u0930\u094d\u092e\u092f\u093e\u0939 12:14.", "\u2014\u092f\u093f\u0930\u094d\u092e\u092f\u093e\u0939 17:14."),
+            ("\u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629 (1:13):", "\u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629 (1:14):"),
+            ("\u12a4\u122d\u121d\u12eb\u1235 12:14\u1362", "\u12a4\u122d\u121d\u12eb\u1235 17:14\u1362"),
+            ("ennyo (1:13), \u201cAbo", "ennyo (1:14), \u201cAbo"),
+            ("nnaawona.\u201d\u2014Yeremiya 12:14.", "nnaawona.\u201d\u2014Yeremiya 17:14."),
             # ch7 and ch12: the reverent capital set on a MAN — Abraham, and
             # "man" in "that God might dwell and work in Him, and be the life
             # of his life", where the next pronoun is lowercase.
