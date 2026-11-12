@@ -3377,6 +3377,24 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Matthieu 23:27", "Matthieu 23:17"),
             ("Mt 23:27", "Mt 23:17"),
             ("Matayo 23:27", "Matayo 23:17"),
+            # ch15: "the heart of the earth" is Matt 12:40 (am already prints it).
+            ("(Luke 12:40)", "(Matt. 12:40)"),
+            ("(Lucas 12:40)", "(Mateo 12:40)"),
+            ("(Luc 12:40)", "(Matthieu 12:40)"),
+            ("(Lc 12:40)", "(Mt 12:40)"),
+            ("(Lukka 12:40)", "(Matayo 12:40)"),
+            # Wording and punctuation, English only (ch10, ch13, ch15, ch16).
+            # 1 Cor 15:15-16 is requoted later in ch13 in the R.V. form these
+            # pairs restore; Phil 3:21 likewise ("working", as twice there).
+            ("confessing Him as His Lord", "confessing Him as his Lord"),
+            ("For we delivered unto you first of all", "For I delivered unto you first of all"),
+            ("whom he raised not up, if so be that he did not rise. But if the dead are not raised; neither", "whom he raised not up, if so be that the dead are not raised. For if the dead are not raised, neither"),
+            ("So also is the resurrection from the dead.", "So also is the resurrection of the dead."),
+            ("according to the work whereby", "according to the working whereby"),
+            ("(Phil. 2:6)., i.e.", "(Phil. 2:6), i.e."),
+            ("our manifestations as sons of God", "our manifestation as sons of God"),
+            ("bind them in bundles to barn them", "bind them in bundles to burn them"),
+            ("What thought do these expressions convey.", "What thought do these expressions convey?"),
         ],
     },
     "rest": {
