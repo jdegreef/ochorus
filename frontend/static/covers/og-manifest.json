@@ -34584,6 +34584,41 @@
 				474
 			]
 		},
+		"sw/jesus-teacher-of-prayer": {
+			"ground": "7af64246eab64a4083cdbb1ed64f86aa79d04431371e6c114c3d2c69e1f47ab2",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[73, 328, 527, 404],
+					[127, 394, 473, 470]
+				],
+				"subtitle": [
+					[158, 528, 442, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"sw/john-hyde-a-life-children": {
 			"ground": "824982919da0ac8625927d483ccf863dba5e28a6bd7992726d54b44766934b9d",
 			"style": "young",
