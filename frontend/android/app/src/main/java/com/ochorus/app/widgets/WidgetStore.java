@@ -40,6 +40,7 @@ final class WidgetStore {
     }
 
     static void saveSnapshot(Context context, String json) {
+        // apply() updates the in-memory copy at once, so the redraw right after sees it.
         prefs(context).edit().putString(KEY_SNAPSHOT, json).apply();
     }
 

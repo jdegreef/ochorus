@@ -22,6 +22,8 @@ public class OchorusWidgetsPlugin extends Plugin {
     /** A snapshot is a few KB; anything near this is not one. */
     private static final int MAX_LENGTH = 64 * 1024;
 
+    private static final ExecutorService WORK = Executors.newSingleThreadExecutor();
+
     @PluginMethod
     public void setSnapshot(PluginCall call) {
         String json = call.getString("json");
@@ -41,19 +43,18 @@ public class OchorusWidgetsPlugin extends Plugin {
             return;
         }
         Context context = getContext().getApplicationContext();
-        WidgetStore.saveSnapshot(context, json);
         call.resolve();
         JSONObject book = snapshot.optJSONObject("book");
         String coverUrl = book == null || book.isNull("coverUrl") ? null : book.optString("coverUrl", null);
-        // The cover may need a download, so the redraw runs off the plugin
-        // thread — one snapshot at a time, so two never race for the file. An
-        // unchanged cover returns at once; a new book's waits for its cover
-        // rather than flash the last book's.
+        // The cover may need a download, so this runs off the plugin thread,
+        // one snapshot at a time, so two never race for the file. The cover is
+        // settled BEFORE the snapshot is stored: a redraw in between (midnight,
+        // the system's) then draws the old book with no cover, never the new
+        // book with the old one's. An unchanged cover returns at once.
         WORK.execute(() -> {
             WidgetStore.syncCover(context, coverUrl);
+            WidgetStore.saveSnapshot(context, json);
             WidgetRenderer.updateAll(context);
         });
     }
-
-    private static final ExecutorService WORK = Executors.newSingleThreadExecutor();
 }

@@ -9,10 +9,15 @@ const m = vi.hoisted(() => ({
 		text: `verse ${day.getDate()}`,
 		ref: `Ps 1:${day.getDate()} · OWB`,
 		lang: 'en'
-	}))
+	})),
+	listBooks: vi.fn(async (_lang: string) => [] as unknown[])
 }));
 vi.mock('$lib/platform', () => ({ setWidgetSnapshot: m.setWidgetSnapshot }));
 vi.mock('$lib/todayPicks', () => ({ loadDayVerse: m.loadDayVerse }));
+vi.mock('$lib/library-public', async (original) => ({
+	...(await original<typeof import('$lib/library-public')>()),
+	listBooks: m.listBooks
+}));
 
 import { WIDGET_VERSES_KEY, syncWidgets, widgetBook, widgetVerses } from './widgetSync';
 import type { WidgetSnapshot } from './widgetSnapshot';
@@ -20,6 +25,17 @@ import type { WidgetSnapshot } from './widgetSnapshot';
 const NOV_12 = new Date(2026, 10, 12, 9);
 const lastSnapshot = (): WidgetSnapshot =>
 	JSON.parse(m.setWidgetSnapshot.mock.calls.at(-1)![0]) as WidgetSnapshot;
+
+const ALL_OF_GRACE = {
+	slug: 'all-of-grace',
+	language: 'en',
+	title: 'All of Grace',
+	cover_url: '/covers/art/all-of-grace.jpg',
+	cover_color: '#3f3d9a',
+	chapter_count: 20,
+	has_modern_edition: false,
+	author: { slug: 'spurgeon', name: 'C. H. Spurgeon', birth_year: 1834 }
+};
 
 function readBook(slug: string, order: number) {
 	localStorage.setItem(
@@ -30,20 +46,7 @@ function readBook(slug: string, order: number) {
 		RESUME_BOOKS_KEY,
 		JSON.stringify({
 			schema: SCHEMA,
-			books: {
-				en: [
-					{
-						slug,
-						language: 'en',
-						title: 'All of Grace',
-						cover_url: '/covers/art/all-of-grace.jpg',
-						cover_color: '#3f3d9a',
-						chapter_count: 20,
-						has_modern_edition: false,
-						author: { slug: 'spurgeon', name: 'C. H. Spurgeon', birth_year: 1834 }
-					}
-				]
-			},
+			books: { en: [{ ...ALL_OF_GRACE, slug }] },
 			absent: {}
 		})
 	);
@@ -53,6 +56,7 @@ beforeEach(() => {
 	localStorage.clear();
 	m.setWidgetSnapshot.mockClear();
 	m.loadDayVerse.mockClear();
+	m.listBooks.mockReset().mockResolvedValue([]);
 });
 
 describe('widgetVerses', () => {
@@ -88,16 +92,24 @@ describe('widgetVerses', () => {
 });
 
 describe('widgetBook', () => {
-	it('is the book the reader is in, from the device cache', () => {
+	it('is the book the reader is in, from the device cache, with no request', async () => {
 		readBook('all-of-grace', 13);
-		expect(widgetBook('en')).toMatchObject({ slug: 'all-of-grace', order: 13, chapterCount: 20 });
+		expect(await widgetBook('en')).toMatchObject({ slug: 'all-of-grace', order: 13, chapterCount: 20 });
+		expect(m.listBooks).not.toHaveBeenCalled();
 	});
 
-	it('is null with nothing in progress, or a book the cache lacks', () => {
-		expect(widgetBook('en')).toBeNull();
+	it('asks the library for a book the cache lacks (a place synced from another device)', async () => {
+		readBook('all-of-grace', 5);
+		localStorage.removeItem(RESUME_BOOKS_KEY);
+		m.listBooks.mockResolvedValue([{ ...ALL_OF_GRACE, topics: [], created_at: '', updated_at: '' }]);
+		expect(await widgetBook('en')).toMatchObject({ slug: 'all-of-grace', order: 5 });
+	});
+
+	it('is null with nothing in progress, or a book no list has', async () => {
+		expect(await widgetBook('en')).toBeNull();
 		readBook('all-of-grace', 2);
 		localStorage.removeItem(RESUME_BOOKS_KEY);
-		expect(widgetBook('en')).toBeNull();
+		expect(await widgetBook('fr')).toBeNull();
 	});
 });
 
@@ -118,6 +130,21 @@ describe('syncWidgets', () => {
 		await syncWidgets(NOV_12);
 		expect(m.setWidgetSnapshot).toHaveBeenCalledTimes(2);
 		expect(lastSnapshot().book!.chapter).toContain('14');
+	});
+
+	it('sends an unchanged snapshot again after an hour (the cover may have failed)', async () => {
+		vi.useFakeTimers({ toFake: ['Date'] });
+		try {
+			vi.setSystemTime(new Date(2026, 10, 21, 9));
+			await syncWidgets(new Date(2026, 10, 21, 9));
+			await syncWidgets(new Date(2026, 10, 21, 9));
+			expect(m.setWidgetSnapshot).toHaveBeenCalledTimes(1);
+			vi.setSystemTime(new Date(2026, 10, 21, 10, 1));
+			await syncWidgets(new Date(2026, 10, 21, 9));
+			expect(m.setWidgetSnapshot).toHaveBeenCalledTimes(2);
+		} finally {
+			vi.useRealTimers();
+		}
 	});
 
 	it('tries again next time when the phone did not take it', async () => {

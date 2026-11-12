@@ -209,7 +209,7 @@ export async function offlineFileBase(): Promise<string | null> {
 /*
  * The home-screen widgets' data. The app's own plugin — no npm package: its
  * Android side is `android/app/src/main/java/com/ochorus/app/widgets/`
- * (registered in MainActivity), its iOS side `ios/App/App/Widgets/` (added in
+ * (registered in MainActivity), its iOS side `ios/widgets/App/` (added in
  * Xcode by hand, see MOBILE.md). A build without it rejects the call, which is
  * a "no" here, never an error.
  */
@@ -304,9 +304,15 @@ export function startAppShell(hooks: AppShellHooks): void {
 		const to = linkTarget(url, location.href, hooks.siteUrl);
 		if (to?.kind === 'internal') hooks.navigate(to.path);
 	};
-	void App.addListener('appUrlOpen', ({ url }) => openUrl(url));
-	// The launch URL outlives a full page load (a change of language reloads
-	// the web view), so it is followed once per launch, not once per load.
+	// Every tap is followed (the same widget tapped twice opens twice), and
+	// noted: iOS's "launch URL" is the LAST URL the app was opened with, and
+	// both platforms keep it across a full page load (a change of language
+	// reloads the web view), so `getLaunchUrl` follows only a URL no tap or
+	// earlier load of this launch has.
+	void App.addListener('appUrlOpen', ({ url }) => {
+		sessionSet(LAUNCH_SEEN, url);
+		openUrl(url);
+	});
 	App.getLaunchUrl()
 		.then((launch) => {
 			const url = launch?.url;

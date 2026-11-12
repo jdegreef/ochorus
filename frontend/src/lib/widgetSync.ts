@@ -16,7 +16,9 @@ import { localizeHref } from '$lib/href';
 import { getLocale, getTextDirection } from '$lib/paraglide/runtime';
 import { allProgress } from '$lib/progress';
 import { buildResumeItems, type ResumeBook } from '$lib/resumeItems';
-import { cachedResumeBooks, currentBookSlug, knownAbsent } from '$lib/resumeBooks';
+import { cachedResumeBooks, currentBookSlug, knownAbsent, libraryBooks } from '$lib/resumeBooks';
+import { toCoverBook, type CoverBook } from '$lib/library-public';
+import { localToday } from '$lib/streak';
 import { loadDayVerse } from '$lib/todayPicks';
 import { watchToday } from '$lib/today';
 import {
@@ -49,9 +51,11 @@ function writeVerses(lang: string, verses: WidgetVerse[]): void {
 	}
 }
 
-/** Days already asked for this launch, so a language with no devotional (or
- *  a failing API) costs one try per day, not one per sync. */
-const asked = new Set<string>();
+/** When each day was last asked for and got nothing, so a language with no
+ *  devotional (or an API that is down) costs a try every RETRY_MS, not one
+ *  per sync. A day that got its verse is stored, and never asked again. */
+const asked = new Map<string, number>();
+const RETRY_MS = 30 * 60_000;
 
 /**
  * The next few days' verses: the stored ones, plus any day not yet stored
@@ -62,8 +66,10 @@ export async function widgetVerses(now: Date, lang: string): Promise<WidgetVerse
 	const keys = dayKeys(now);
 	const stored = readVerses(lang);
 	const have = new Set(stored.map((v) => v.date));
-	const missing = keys.filter((k) => !have.has(k) && !asked.has(`${lang}:${k}`));
-	missing.forEach((k) => asked.add(`${lang}:${k}`));
+	const askedAt = Date.now();
+	const recentlyAsked = (k: string) => askedAt - (asked.get(`${lang}:${k}`) ?? -Infinity) < RETRY_MS;
+	const missing = keys.filter((k) => !have.has(k) && !recentlyAsked(k));
+	missing.forEach((k) => asked.set(`${lang}:${k}`, askedAt));
 	const fresh = (
 		await Promise.all(
 			missing.map(async (date) => {
@@ -78,23 +84,39 @@ export async function widgetVerses(now: Date, lang: string): Promise<WidgetVerse
 }
 
 /**
- * The book the home hero resumes (`currentBook`'s answer), from the device's
- * own cache — no request: a book is cached the moment its chapter opens
- * (`rememberResumeBook`), so the book the reader is in is there.
+ * The book the home hero resumes (`currentBook`'s answer). From the device's
+ * own cache, with no request, as a rule: a book is cached the moment its
+ * chapter opens (`rememberResumeBook`). A place synced from another device in
+ * a book never opened here is not, so then the shared library list
+ * (`libraryBooks`, which fills the cache for next time).
  */
-export function widgetBook(lang: string): ResumeBook | null {
+export async function widgetBook(lang: string): Promise<ResumeBook | null> {
 	const progress = allProgress();
 	const slug = currentBookSlug(knownAbsent(lang), progress);
 	if (!slug) return null;
-	const [item] = buildResumeItems(
-		cachedResumeBooks(lang),
-		[],
-		progress.filter((p) => p.kind === 'book' && p.slug === slug)
+	const resolve = (books: CoverBook[]) => {
+		const [item] = buildResumeItems(
+			books,
+			[],
+			progress.filter((p) => p.kind === 'book' && p.slug === slug)
+		);
+		return item?.kind === 'book' ? item : null;
+	};
+	return (
+		resolve(cachedResumeBooks(lang)) ??
+		libraryBooks(lang).then(
+			(books) => resolve(books.map(toCoverBook)),
+			() => null
+		)
 	);
-	return item?.kind === 'book' ? item : null;
 }
 
+/** What the phone was last handed, and when. An unchanged snapshot is sent
+ *  again after RESEND_MS all the same: the phone fetches the cover itself, and
+ *  a cover that failed to download (offline) is retried that way. */
 let sent = '';
+let sentAt = 0;
+const RESEND_MS = 60 * 60_000;
 let queue: Promise<void> = Promise.resolve();
 
 /** Build the snapshot now and send it if it changed. Calls run one at a time. */
@@ -115,10 +137,14 @@ export function syncWidgets(now = new Date()): Promise<void> {
 				chapterOf: t('home.resumeChapter')
 			},
 			verses: await widgetVerses(now, lang),
-			book: widgetBook(lang)
+			book: await widgetBook(lang)
 		});
 		const json = JSON.stringify(snapshot);
-		if (json !== sent && (await setWidgetSnapshot(json))) sent = json;
+		if (json === sent && Date.now() - sentAt < RESEND_MS) return;
+		if (await setWidgetSnapshot(json)) {
+			sent = json;
+			sentAt = Date.now();
+		}
 	});
 	return queue.catch(() => {});
 }
@@ -133,9 +159,8 @@ export function syncWidgetsSoon(): void {
 }
 
 /**
- * Keep the widgets current while the app runs: now; on each new day (and on
- * every return to the app, which `watchToday` looks at); after a sync from the
- * account; and as the app goes to the background — the moment the home
+ * Keep the widgets current while the app runs: now; on each new day; after a
+ * sync from the account; and as the app goes to the background — the moment the home
  * screen, and so the widget, comes into view. The layout adds a
  * `syncWidgetsSoon` after each navigation. Returns the cleanup.
  */
@@ -143,7 +168,13 @@ export function startWidgetSync(): () => void {
 	const onHide = () => {
 		if (document.visibilityState === 'hidden') void syncWidgets();
 	};
-	const stopToday = watchToday((now) => void syncWidgets(now));
+	// watchToday looks every few minutes; only a new day changes anything.
+	let day = '';
+	const stopToday = watchToday((now) => {
+		if (localToday(now) === day) return;
+		day = localToday(now);
+		void syncWidgets(now);
+	});
 	window.addEventListener('ochorus:sync', syncWidgetsSoon);
 	document.addEventListener('visibilitychange', onHide);
 	return () => {

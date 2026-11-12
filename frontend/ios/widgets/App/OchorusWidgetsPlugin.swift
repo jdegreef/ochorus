@@ -40,37 +40,56 @@ public class OchorusWidgetsPlugin: CAPPlugin, CAPBridgedPlugin {
             call.reject("No App Group")
             return
         }
-        defaults.set(json, forKey: Self.snapshotKey)
         call.resolve()
 
         let book = object["book"] as? [String: Any]
         let coverURL = (book?["coverUrl"] as? String).flatMap { $0.hasPrefix("https://") ? URL(string: $0) : nil }
         let file = container.appendingPathComponent(Self.coverFile)
-        if coverURL?.absoluteString == defaults.string(forKey: Self.coverURLKey),
-           FileManager.default.fileExists(atPath: file.path) {
-            WidgetCenter.shared.reloadAllTimelines()
-            return
-        }
-        // Better no cover than another book's.
-        try? FileManager.default.removeItem(at: file)
-        defaults.removeObject(forKey: Self.coverURLKey)
-        guard let url = coverURL else {
-            WidgetCenter.shared.reloadAllTimelines()
-            return
-        }
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 15
-        URLSession.shared.dataTask(with: request) { data, response, _ in
-            if let data = data, data.count <= 4 * 1024 * 1024,
-               (response as? HTTPURLResponse)?.statusCode == 200,
-               let image = UIImage(data: data),
-               let png = Self.scaled(image, maxWidth: 240).pngData(),
-               (try? png.write(to: file, options: .atomic)) != nil {
-                defaults.set(url.absoluteString, forKey: Self.coverURLKey)
+        // One snapshot at a time, and only the newest may finish: a slow cover
+        // download for an earlier book must not land over a later one. The
+        // cover is settled BEFORE the snapshot is stored (as on Android), so a
+        // redraw in between draws the old book with no cover, never the new
+        // book with the old one's.
+        Self.queue.async {
+            Self.latest += 1
+            let ticket = Self.latest
+            let store = {
+                defaults.set(json, forKey: Self.snapshotKey)
+                WidgetCenter.shared.reloadAllTimelines()
             }
-            WidgetCenter.shared.reloadAllTimelines()
-        }.resume()
+            if coverURL?.absoluteString == defaults.string(forKey: Self.coverURLKey),
+               FileManager.default.fileExists(atPath: file.path) {
+                store()
+                return
+            }
+            // Better no cover than another book's.
+            try? FileManager.default.removeItem(at: file)
+            defaults.removeObject(forKey: Self.coverURLKey)
+            guard let url = coverURL else {
+                store()
+                return
+            }
+            var request = URLRequest(url: url)
+            request.timeoutInterval = 15
+            URLSession.shared.dataTask(with: request) { data, response, _ in
+                Self.queue.async {
+                    guard ticket == Self.latest else { return }
+                    if let data = data, data.count <= 4 * 1024 * 1024,
+                       (response as? HTTPURLResponse)?.statusCode == 200,
+                       let image = UIImage(data: data),
+                       let png = Self.scaled(image, maxWidth: 240).pngData(),
+                       (try? png.write(to: file, options: .atomic)) != nil {
+                        defaults.set(url.absoluteString, forKey: Self.coverURLKey)
+                    }
+                    store()
+                }
+            }.resume()
+        }
     }
+
+    /// Serialises snapshots; `latest` is touched only on it.
+    private static let queue = DispatchQueue(label: "com.ochorus.app.widgets")
+    private static var latest = 0
 
     /// Widgets have a tight memory budget: keep the cover small.
     private static func scaled(_ image: UIImage, maxWidth: CGFloat) -> UIImage {

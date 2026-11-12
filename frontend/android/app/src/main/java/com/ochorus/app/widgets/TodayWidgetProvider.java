@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import java.util.Calendar;
@@ -56,10 +57,18 @@ public class TodayWidgetProvider extends AppWidgetProvider {
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
-    /** An alarm a few seconds after the coming local midnight (replacing any earlier one). */
+    /** An alarm a few seconds after the coming local midnight (replacing any
+     *  earlier one) — while a Today widget is placed; with none, no alarm. */
     static void scheduleNewDay(Context context) {
         AlarmManager alarms = context.getSystemService(AlarmManager.class);
         if (alarms == null) return;
+        int[] placed = AppWidgetManager.getInstance(context).getAppWidgetIds(
+            new ComponentName(context, TodayWidgetProvider.class)
+        );
+        if (placed.length == 0) {
+            alarms.cancel(newDayIntent(context));
+            return;
+        }
         Calendar midnight = Calendar.getInstance();
         midnight.add(Calendar.DAY_OF_YEAR, 1);
         midnight.set(Calendar.HOUR_OF_DAY, 0);

@@ -195,10 +195,12 @@ paragraph from its own saved anchor.
   current book. No token, no account, nothing about other books.
   `$lib/widgetSync` (app only, loaded lazily by the root layout) sends it on
   launch, on a new day, after each navigation, after an account sync, and as
-  the app goes to the background — and only when it changed. The verse is
+  the app goes to the background — and only when it changed (or an hour has
+  passed, so a cover download that failed offline is retried). The verse is
   chosen exactly as the home Today card chooses it (`loadDayVerse` in
   `$lib/todayPicks`); the book is the home hero's (`currentBookSlug` against
-  the device's resume cache — no request). Fetched verses are kept in
+  the device's resume cache, else the shared `libraryBooks` list for a place
+  synced from another device). Fetched verses are kept in
   localStorage (`ochorus:widget-verses`), so a day costs one shelf request (and
   in English its OWB lookups).
 - **Midnight.** The snapshot carries three days of verses, so the widget turns

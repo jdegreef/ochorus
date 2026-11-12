@@ -147,16 +147,17 @@ export function buildWidgetSnapshot(input: SnapshotInput): WidgetSnapshot {
 		const chapter = strings.chapterOf
 			.replace('{order}', String(book.order))
 			.replace('{total}', String(book.chapterCount));
+		const pct = Math.max(0, Math.min(100, Math.round(book.pct)));
 		widgetBook = {
 			title: book.title,
 			author: book.author,
 			chapter,
-			pct: Math.max(0, Math.min(100, Math.round(book.pct))),
+			pct,
 			url: url(book.href),
 			coverUrl: widgetCoverUrl(book.book.cover_url, site),
 			coverColor: /^#[0-9a-f]{6}$/i.test(book.book.cover_color ?? '') ? book.book.cover_color : null,
 			lang: baseEdition(book.book.language),
-			description: `${strings.continue}: ${book.title}, ${book.author}. ${chapter}, ${Math.round(book.pct)}%`
+			description: `${strings.continue}: ${book.title}, ${book.author}. ${chapter}, ${pct}%`
 		};
 	}
 	return {

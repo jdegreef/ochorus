@@ -287,6 +287,10 @@ describe('startAppShell', () => {
 		m.urlOpen!({ url: 'https://example.org/today/' });
 		m.urlOpen!({ url: 'https://ochorus.com/feed.xml' });
 		expect(navigate).toHaveBeenCalledTimes(1);
+		// Noted, so a reload's getLaunchUrl (iOS: the last URL) does not follow it again.
+		m.urlOpen!({ url: 'https://ochorus.com/today/' });
+		expect(sessionStorage.getItem('ochorus:launch-url')).toBe('https://ochorus.com/today/');
+		expect(navigate).toHaveBeenCalledTimes(2);
 	});
 
 	it('hides the splash once, on the first frame', async () => {
