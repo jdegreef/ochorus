@@ -1,6 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+const api = vi.hoisted(() => ({ getTopic: vi.fn(), listPlans: vi.fn() }));
+vi.mock('$lib/library-public', async (importOriginal) => ({
+	...(await importOriginal<typeof import('$lib/library-public')>()),
+	getTopic: (...a: unknown[]) => api.getTopic(...a),
+	listPlans: (...a: unknown[]) => api.listPlans(...a)
+}));
 
 import en from '../../messages/en.json';
 import type { BookSummary, PlanSummary, SermonSummary, TopicDetail } from './library-public';
@@ -11,6 +18,7 @@ import {
 	SHORT_READ_WORDS,
 	availableNeeds,
 	choosePicks,
+	loadNeedPicks,
 	needLabelKey,
 	type Need
 } from './needFinder';
@@ -149,6 +157,17 @@ describe('choosePicks — pick selection', () => {
 		expect(picks[0].chapter).toBe(1);
 	});
 
+	it('without sermons, takes chapter one of a full text over a young-reader edition’s shorter chapters', () => {
+		const { picks } = choosePicks(
+			NEED,
+			topic({
+				books: [book('lead', 'x', 10000, 10), book('other', 'y', 90000, 10), book('lead-children', 'x', 5000, 10)]
+			}),
+			[]
+		);
+		expect(picks[0].href).toBe('/books/other/1');
+	});
+
 	it('leads with a full text over a young-reader edition', () => {
 		const { picks } = choosePicks(
 			NEED,
@@ -174,8 +193,60 @@ describe('choosePicks — pick selection', () => {
 		expect(withLife.picks[2]).toMatchObject({ kind: 'life', href: '/authors/bounds', byline: '1835–1913' });
 	});
 
+	it('never offers an unknown-length sermon while one has a length, and gives sermons a cover', () => {
+		const { picks } = choosePicks(
+			NEED,
+			topic({ books: [book('a', 'x')], sermons: [sermon('unknown', 0), sermon('long', 9000)] }),
+			[]
+		);
+		expect(picks[0].href).toBe('/sermons/long');
+		expect(picks[0].cover?.slug).toBe('sermon:long');
+	});
+
+	it('offers a life only by a person other than the book’s writer — never an imprint', () => {
+		const base = { books: [book('lead', 'murray')], sermons: [sermon('s', 1000)] };
+		const person = (slug: string) => ({ ...author(slug), birth_year: null, death_year: null });
+		const sameAuthor = choosePicks(NEED, topic({ ...base, authors: [person('murray')] }), []);
+		expect(sameAuthor.picks.map((p) => p.kind)).toEqual(['shortRead', 'book']);
+		const imprint = choosePicks(NEED, topic({ ...base, authors: [person('murray'), person('ochorus-originals')] }), []);
+		expect(imprint.picks.map((p) => p.kind)).toEqual(['shortRead', 'book']);
+	});
+
+	it('does not repeat the book pick’s cover on the article', () => {
+		const lead = book('lead', 'murray');
+		const article = { slug: 'why-pray', h1: 'Why pray?', word_count: 1800, language: 'en', lead_book: lead };
+		const { picks } = choosePicks(
+			NEED,
+			topic({ books: [lead], sermons: [sermon('s', 1000)], articles: [article] as unknown as TopicDetail['articles'] }),
+			[]
+		);
+		expect(picks[2]).toMatchObject({ kind: 'article' });
+		expect(picks[2].cover).toBeUndefined();
+	});
+
 	it('shows what a thinner-than-promised shelf has, never a pick twice', () => {
 		const { picks } = choosePicks(NEED, topic({ books: [book('only', 'x')] }), []);
 		expect(picks.map((p) => p.href)).toEqual(['/books/only']);
+	});
+});
+
+describe('loadNeedPicks — fetching', () => {
+	it('reads no plan list for a situation without a plan', async () => {
+		api.getTopic.mockResolvedValue(topic({ books: [book('lead', 'x')] }));
+		api.listPlans.mockReset();
+		await loadNeedPicks({ id: 'farFromGod', topic: 'abiding-in-christ' }, 'xx');
+		expect(api.listPlans).not.toHaveBeenCalled();
+	});
+
+	it('does not keep picks that lost their plan to a failed plan list', async () => {
+		api.getTopic.mockResolvedValue(topic({ books: [book('lead', 'x')], sermons: [sermon('s', 1000)] }));
+		api.listPlans.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce([plan('school-of-prayer')]);
+		const first = await loadNeedPicks(NEED, 'yy');
+		expect(first.picks.map((p) => p.kind)).not.toContain('plan');
+		const again = await loadNeedPicks(NEED, 'yy');
+		expect(again.picks.map((p) => p.kind)).toContain('plan');
+		// …and once complete, kept: no third plan-list request.
+		await loadNeedPicks(NEED, 'yy');
+		expect(api.listPlans).toHaveBeenCalledTimes(2);
 	});
 });

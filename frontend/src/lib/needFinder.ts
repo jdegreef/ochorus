@@ -11,7 +11,10 @@ import {
 	type TopicDetail
 } from '$lib/library-public';
 import { editionKind } from '$lib/edition';
-import { authorPath } from '$lib/originals';
+import { authorPath, isImprint } from '$lib/originals';
+import { sermonCoverFace } from '$lib/sermonArt';
+import { DEFAULT_WPM } from '$lib/readingPace.svelte';
+import { TONIGHT_MAX_MINUTES } from '$lib/tonightShelf';
 
 /**
  * "What do you need today?" — a situation-first way into the topic shelves.
@@ -65,15 +68,28 @@ export function availableNeeds(
 	topics: readonly { slug: string; book_count: number; sermon_count: number }[]
 ): string[] {
 	const bySlug = new Map(topics.map((t) => [t.slug, t]));
-	const ids = NEEDS.filter((n) => {
-		const t = bySlug.get(n.topic);
-		return !!t && t.book_count >= 1 && t.book_count + t.sermon_count >= NEED_MIN_WORKS;
-	}).map((n) => n.id);
-	return ids.length >= NEED_MIN_CHIPS ? ids : [];
+	return shownNeeds(
+		NEEDS.filter((n) => {
+			const t = bySlug.get(n.topic);
+			return !!t && t.book_count >= 1 && t.book_count + t.sermon_count >= NEED_MIN_WORKS;
+		}).map((n) => n.id)
+	).map((n) => n.id);
 }
 
-/** A sermon at or under this many words is a "short read" (about 20 minutes). */
-export const SHORT_READ_WORDS = 4500;
+/**
+ * The situations to draw for these ids, in `NEEDS` order — or none when fewer
+ * than `NEED_MIN_CHIPS` are real ones. The one gate both the home page (finder
+ * or topic chips?) and the finder itself read, so an id a cached snapshot
+ * carries but `NEEDS` no longer has cannot leave the page with neither.
+ */
+export function shownNeeds(ids: readonly string[]): Need[] {
+	const shown = NEEDS.filter((n) => ids.includes(n.id));
+	return shown.length >= NEED_MIN_CHIPS ? shown : [];
+}
+
+/** A sermon at or under this many words is a "short read": 20 minutes at the
+ *  default pace — the home page's other "short" rule (the Tonight shelf). */
+export const SHORT_READ_WORDS = TONIGHT_MAX_MINUTES * DEFAULT_WPM;
 
 export type NeedPickKind = 'shortRead' | 'book' | 'plan' | 'article' | 'life';
 
@@ -106,10 +122,13 @@ const wordsPerChapter = (b: BookSummary) =>
 
 function shortSermon(sermons: SermonSummary[]): SermonSummary | undefined {
 	// The shelf's own (editorial) order first: the first short one it lists.
-	// None short enough → the shortest there is.
+	// None short enough → the shortest of known length; an unknown (0) length
+	// only when no sermon has one.
+	const known = sermons.filter((s) => s.word_count > 0);
 	return (
-		sermons.find((s) => s.word_count > 0 && s.word_count <= SHORT_READ_WORDS) ??
-		[...sermons].sort((a, b) => a.word_count - b.word_count)[0]
+		known.find((s) => s.word_count <= SHORT_READ_WORDS) ??
+		[...known].sort((a, b) => a.word_count - b.word_count)[0] ??
+		sermons[0]
 	);
 }
 
@@ -141,12 +160,17 @@ export function choosePicks(need: Need, topic: TopicDetail, plans: readonly Plan
 			title: sermon.title,
 			byline: sermon.author.name,
 			words: sermon.word_count,
-			language: sermon.language
+			language: sermon.language,
+			cover: sermonCoverFace(sermon)
 		});
 	} else if (books.length > 1) {
 		// Chapter one of the book with the shortest chapters — but not the lead,
-		// which is pick two.
-		shortBook = books.slice(1).sort((a, b) => wordsPerChapter(a) - wordsPerChapter(b))[0];
+		// which is pick two. A full text over a young-reader edition: an
+		// edition's short chapters would win on length alone, and an adult
+		// shelf's short read should not be "(For Children)".
+		const rest = books.slice(1);
+		const pool = rest.some(isFullText) ? rest.filter(isFullText) : rest;
+		shortBook = pool.sort((a, b) => wordsPerChapter(a) - wordsPerChapter(b))[0];
 		picks.push({
 			kind: 'shortRead',
 			href: `/books/${shortBook.slug}/1`,
@@ -172,8 +196,8 @@ export function choosePicks(need: Need, topic: TopicDetail, plans: readonly Plan
 
 	const plan = need.plan ? plans.find((p) => p.slug === need.plan) : undefined;
 	const article = topic.articles[0];
-	const author =
-		topic.authors?.find((a) => a.slug !== book?.author.slug) ?? topic.authors?.[0];
+	// A person with a life — not an imprint byline — and not the book's writer.
+	const author = topic.authors?.find((a) => !isImprint(a) && a.slug !== book?.author.slug);
 	if (plan) {
 		const lead = plan.covers[0];
 		picks.push({
@@ -192,7 +216,8 @@ export function choosePicks(need: Need, topic: TopicDetail, plans: readonly Plan
 			byline: '',
 			words: article.word_count,
 			language: article.language,
-			cover: article.lead_book ?? undefined
+			// Not the book pick's own cover twice in a row.
+			cover: article.lead_book && article.lead_book.slug !== book?.slug ? article.lead_book : undefined
 		});
 	} else if (author) {
 		picks.push({
@@ -209,8 +234,10 @@ export function choosePicks(need: Need, topic: TopicDetail, plans: readonly Plan
 	return { topic: { slug: topic.slug, title: topic.title }, picks };
 }
 
-/** Plans per language, fetched once — every chip's third pick reads the same list. */
-const planLists = new Map<string, Promise<PlanSummary[]>>();
+/** Plans per language, fetched once — every chip's third pick reads the same
+ *  list. `null` is a failed fetch: forgotten here, and it keeps the picks it
+ *  fed out of `loaded`, so the next press asks again. */
+const planLists = new Map<string, Promise<PlanSummary[] | null>>();
 /** Picks per language and situation, so a chip clicked again answers at once. */
 const loaded = new Map<string, Promise<NeedPicks>>();
 
@@ -218,23 +245,31 @@ const loaded = new Map<string, Promise<NeedPicks>>();
  * The picks for `need` in `lang`, fetched on the chip's first press (the home
  * page is prerendered with no chip chosen, so it bakes no picks and hydration
  * waits on nothing). A failed fetch is forgotten, so pressing again retries.
- * The plan list is decoration: failing, it only drops the plan for the next pick.
+ * The plan list is decoration: failing, it only drops the plan from these picks,
+ * which are not kept, so the next press asks again.
  */
 export function loadNeedPicks(need: Need, lang: string): Promise<NeedPicks> {
 	const key = `${lang}:${need.id}`;
 	let once = loaded.get(key);
 	if (!once) {
-		let plans = planLists.get(lang);
-		if (!plans) {
-			plans = listPlans(lang).catch(() => {
-				planLists.delete(lang);
-				return [];
-			});
-			planLists.set(lang, plans);
+		// Only a situation with a plan reads the plan list.
+		let plans: Promise<PlanSummary[] | null> = Promise.resolve([]);
+		if (need.plan) {
+			let cached = planLists.get(lang);
+			if (!cached) {
+				cached = listPlans(lang).catch(() => {
+					planLists.delete(lang);
+					return null;
+				});
+				planLists.set(lang, cached);
+			}
+			plans = cached;
 		}
-		once = Promise.all([getTopic(need.topic, lang), plans]).then(([topic, list]) =>
-			choosePicks(need, topic, list)
-		);
+		once = Promise.all([getTopic(need.topic, lang), plans]).then(([topic, list]) => {
+			// Picks without the plan only because its list failed are shown, not kept.
+			if (list === null) loaded.delete(key);
+			return choosePicks(need, topic, list ?? []);
+		});
 		loaded.set(key, once);
 		once.catch(() => loaded.delete(key));
 	}

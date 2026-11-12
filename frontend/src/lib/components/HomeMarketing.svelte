@@ -11,7 +11,7 @@
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import NeedFinder from '$lib/components/NeedFinder.svelte';
-	import { NEED_MIN_CHIPS } from '$lib/needFinder';
+	import { shownNeeds } from '$lib/needFinder';
 	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
@@ -55,7 +55,8 @@
 	const featured = $derived<CoverBook[]>(data.discover ?? data.featured);
 	const authors = $derived<AuthorTileData[]>(data.authors);
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
-	const needs = $derived<string[]>(data.needs ?? []);
+	// Gated as NeedFinder gates them, so one of the two always draws.
+	const needs = $derived(shownNeeds(data.needs ?? []).map((n) => n.id));
 
 	const t = i18n.t;
 
@@ -147,7 +148,7 @@
      on purpose): both are the page's one way into /topics, and a visitor from
      a search arrives with a need more often than a subject. A language whose
      shelves answer fewer than three situations keeps the eight topic names. -->
-{#if needs.length >= NEED_MIN_CHIPS}
+{#if needs.length}
 	<NeedFinder {needs} />
 {:else}
 	<TopicChips {topics} quiet />
