@@ -3,7 +3,7 @@
  "slug": "the-imitation-of-christ",
  "language": "lg",
  "job_issue": 7657,
- "pull_request": null,
+ "pull_request": 7810,
  "note": [
   "Thomas weaves Scripture into his sentences, usually from the Latin Vulgate and almost never with a reference. Where he quotes a verse and the Open Luganda Contemporary Bible (OLCB 2017, ebible lug_bib via the GitHub mirror; Take Root unreachable) carries the same sense, the OLCB wording is pasted verbatim; where his wording follows the Vulgate, re-persons the verse, or quotes a deuterocanonical book OLCB lacks (Sirach, Wisdom, Tobit, 1 Maccabees), it is rendered from the English and marked self_rendered. Mined rows were machine-checked as verbatim substrings of the OLCB verse (case aside: a chapter's opening word is set in capitals, as in the English).",
   "AI-translated (job #7657) in fourteen parallel chapter ranges against one shared term table, then reconciled. Book IV's sacramental vocabulary (Ssakramentu, Ekijjulo Ekitukuvu, Missa, kabona, purgatoriyo) was chosen for this edition and wants a native reviewer's eye. Short allusions of a few words carry no row. Awaiting native review."
