@@ -1755,6 +1755,8 @@
   "bible_division_gospels": "福音書",
   "bible_division_acts": "使徒行伝",
   "bible_division_paul": "パウロの手紙",
+  "bible_sermons_on_book": "この書についての説教",
+  "bible_sermons_all": "%book%についての説教すべて（%count%編）",
   "bible_division_general_letters": "公同書簡",
   "bible_division_revelation": "ヨハネの黙示録",
   "bible_read_along": "順に読む",

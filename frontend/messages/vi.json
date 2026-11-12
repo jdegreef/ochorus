@@ -1755,6 +1755,8 @@
   "bible_division_gospels": "Phúc Âm",
   "bible_division_acts": "Công Vụ",
   "bible_division_paul": "Thư của Phao-lô",
+  "bible_sermons_on_book": "Bài giảng về sách này",
+  "bible_sermons_all": "Tất cả %count% bài giảng về %book%",
   "bible_division_general_letters": "Thư Tín Chung",
   "bible_division_revelation": "Khải Huyền",
   "bible_read_along": "Đọc từng bước",

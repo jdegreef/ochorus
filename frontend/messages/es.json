@@ -1755,6 +1755,8 @@
   "bible_division_gospels": "Evangelios",
   "bible_division_acts": "Hechos",
   "bible_division_paul": "Cartas de Pablo",
+  "bible_sermons_on_book": "Sermones sobre este libro",
+  "bible_sermons_all": "Los %count% sermones sobre %book%",
   "bible_division_general_letters": "Cartas generales",
   "bible_division_revelation": "Apocalipsis",
   "bible_read_along": "Léela paso a paso",

@@ -1755,6 +1755,8 @@
   "bible_division_gospels": "Enjiri",
   "bible_division_acts": "Ebikolwa by'Abatume",
   "bible_division_paul": "Ebbaluwa za Pawulo",
+  "bible_sermons_on_book": "Obubaka ku kitabo kino",
+  "bible_sermons_all": "Obubaka bwonna %count% ku %book%",
   "bible_division_general_letters": "Ebbaluwa Endala",
   "bible_division_revelation": "Okubikkulirwa",
   "bible_read_along": "Soma mpola mpola",
