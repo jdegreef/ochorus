@@ -23,8 +23,8 @@
 	 * muted trust line (design review 2026-11, #3–#6).
 	 *
 	 * The covers sit at the inline end on a wide screen and under the words on
-	 * a phone, where the padding is trimmed so the top of the spread shows in
-	 * the first screen. They come from the build's home snapshot (`hero`,
+	 * a tablet; a phone leaves them out, so the Today card reaches the first
+	 * screen (design review 2026-11, #30). They come from the build's home snapshot (`hero`,
 	 * `$lib/homeShelves`), so the prerendered HTML and its hydration draw the
 	 * same three and no extra request is made for them.
 	 */
@@ -171,10 +171,18 @@
 		gap: 1.75rem;
 		align-items: center;
 	}
+	/* Not on a phone (design review 2026-11, #30): under the words there, the
+	   fan pushed the Today card — the first thing to read — out of the first
+	   screen. The discover shelf a scroll below carries the covers. */
 	.intro-fan {
-		display: block;
+		display: none;
 		width: min(100%, 24rem);
 		margin-inline: auto;
+	}
+	@media (min-width: 640px) {
+		.intro-fan {
+			display: block;
+		}
 	}
 	@media (min-width: 768px) {
 		.intro {

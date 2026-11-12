@@ -21,7 +21,8 @@ const render = (needs: string[]) => {
 	app = mount(NeedFinder, { target: document.body, props: { needs } });
 	flushSync();
 };
-const chips = () => [...document.querySelectorAll<HTMLButtonElement>('button.chip')];
+// The situation buttons, as chips (/topics) or tiles (home) alike.
+const chips = () => [...document.querySelectorAll<HTMLButtonElement>('[role="group"] > button')];
 
 describe('NeedFinder', () => {
 	it('renders nothing below three situations', () => {

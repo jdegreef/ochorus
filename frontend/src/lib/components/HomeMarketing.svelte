@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { authorPath } from '$lib/originals';
-	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
+	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience, PlanSummary } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
@@ -16,6 +16,7 @@
 	import Portrait from '$lib/components/Portrait.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
+	import HomePlans from '$lib/components/HomePlans.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import HomeIntro from '$lib/components/HomeIntro.svelte';
 	import HomeResume, { hold as resumeHold } from '$lib/components/HomeResume.svelte';
@@ -51,6 +52,7 @@
 		needs?: string[];
 		/** This language's library counts, for the hero's numbers line. */
 		counts?: { books: number; sermons: number };
+		plans?: { picks: PlanSummary[]; total: number };
 	}
 	let { data }: { data: HomeData } = $props();
 
@@ -155,6 +157,10 @@
 {:else}
 	<TopicChips {topics} quiet />
 {/if}
+
+<!-- Reading plans (design review 2026-11, #21): after the need finder, whose
+     picks already offer one plan per situation — here, three to start. -->
+<HomePlans plans={data.plans?.picks ?? []} total={data.plans?.total ?? 0} />
 
 <!-- For young readers and teens — the hubs this language has. -->
 <HomeAudienceHubs audiences={data.audiences ?? []} />
