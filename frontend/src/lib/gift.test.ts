@@ -50,6 +50,11 @@ describe('gift link round trip', () => {
 		expect(p.length).toBeLessThan(1300);
 	});
 
+	it('still encodes a full note of family emoji, and decode accepts it', () => {
+		const gift = { ...book, name: 'Ade', note: '👨‍👩‍👧‍👦'.repeat(GIFT_NOTE_MAX) };
+		expect(decodeGift(encodeGift(gift))).toEqual(gift);
+	});
+
 	it('rejects an invalid book when encoding', () => {
 		expect(() => encodeGift({ slug: '../x', lang: 'en', name: '', note: '' })).toThrow();
 		expect(() => encodeGift({ slug: 'x', lang: 'english', name: '', note: '' })).toThrow();
@@ -62,7 +67,7 @@ describe('decodeGift on untrusted input', () => {
 		['null', null],
 		['not base64url', 'abc$%^'],
 		['not JSON', raw('x').slice(0, 3) + 'zz'],
-		['too long', 'A'.repeat(5000)],
+		['too long', 'A'.repeat(20000)],
 		['an object', raw({ slug: 'a' })],
 		['wrong version', raw([2, 'a', 'en', 'n', 'm'])],
 		['bad slug', raw([1, 'A Book', 'en', 'n', 'm'])],
@@ -127,6 +132,42 @@ describe('cleanGiftNote', () => {
 		expect(cleanGiftNote('क‌ष').text).toBe('क‌ष');
 	});
 
+	it.each([
+		['fullwidth dot', 'Read bit' + String.fromCodePoint(0xff0e) + 'ly/abc now'],
+		['ideographic dot', 'Read example' + String.fromCodePoint(0x3002) + 'com now'],
+		[
+			'fullwidth letters',
+			'Read ' + [...'www.x.com'].map((c) => String.fromCodePoint(c.charCodeAt(0) + 0xfee0)).join('') + ' now'
+		],
+		['any TLD with a path', 'Read scam.ai/login now']
+	])('removes a disguised link: %s', (_label, input) => {
+		expect(cleanGiftNote(input)).toEqual({ text: 'Read now', removedLinks: true });
+	});
+
+	it.each(['Obrigado.Eu orei por você', 'Merci.Au revoir', 'Love you.Live for Him', 'ありがとう。また読んでね'])(
+		'leaves a missing space after a full stop alone: %j',
+		(input) => {
+			expect(cleanGiftNote(input)).toEqual({ text: input, removedLinks: false });
+		}
+	);
+
+	it('strips tag characters, the Arabic letter mark and ideographic variation selectors', () => {
+		const tags = [...'evil.example'].map((c) => String.fromCodePoint(0xe0000 + c.charCodeAt(0))).join('');
+		const odd = String.fromCodePoint(0x061c) + String.fromCodePoint(0xe0100) + String.fromCodePoint(0x00ad);
+		expect(cleanGiftNote(`hi${tags}${odd} there`).text).toBe('hi there');
+		// The emoji variation selector stays (a red heart, not a text one).
+		expect(cleanGiftNote('❤️').text).toBe('❤️');
+		expect(cleanGiftNote('❤️').text.codePointAt(1)).toBe(0xfe0f);
+	});
+
+	it('collapses a pile of combining marks ("Zalgo") to four', () => {
+		// U+0316 (grave below): no precomposed letter for NFC to fold it into.
+		const zalgo = 'a' + String.fromCodePoint(0x0316).repeat(500) + 'b';
+		expect(cleanGiftNote(zalgo).text).toBe('a' + String.fromCodePoint(0x0316).repeat(4) + 'b');
+		// Ordinary stacked marks are untouched (Vietnamese, Hindi).
+		expect(cleanGiftNote('Việt क्षि').text).toBe('Việt क्षि');
+	});
+
 	it('caps by characters without splitting an emoji', () => {
 		const out = cleanGiftNote('🙏🏾'.repeat(GIFT_NOTE_MAX + 10)).text;
 		expect(giftLength(out)).toBe(GIFT_NOTE_MAX);
@@ -140,6 +181,12 @@ describe('cleanGiftName', () => {
 		expect(giftLength(cleanGiftName('x'.repeat(100)).text)).toBe(GIFT_NAME_MAX);
 	});
 
+	it('is empty when nothing in it is visible (Hangul filler, braille blank)', () => {
+		expect(cleanGiftName(String.fromCodePoint(0x3164)).text).toBe('');
+		expect(cleanGiftName(String.fromCodePoint(0x2800, 0x200b)).text).toBe('');
+		expect(cleanGiftName('🙏').text).toBe('🙏');
+	});
+
 	it('drops a link posing as a name', () => {
 		expect(cleanGiftName('Free prizes at win.com').text).toBe('Free prizes at');
 	});
@@ -150,6 +197,10 @@ describe('the gift landing page (source guard)', () => {
 	// that untrusted link text can never become markup or metadata.
 	const PAGE = readFileSync(join(import.meta.dirname, '..', 'routes/gift/+page.svelte'), 'utf8');
 	const head = PAGE.slice(PAGE.indexOf('<svelte:head>'), PAGE.indexOf('</svelte:head>'));
+
+	it('takes the gift off the address bar once read (analytics report location.href)', () => {
+		expect(PAGE).toMatch(/history\.replaceState\(history\.state, '', window\.location\.pathname/);
+	});
 
 	it('never renders link text as HTML', () => {
 		expect(PAGE).not.toMatch(/\{@html/);
