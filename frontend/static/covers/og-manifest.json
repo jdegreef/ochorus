@@ -24275,7 +24275,8 @@
 			"medallion": null,
 			"layout": "diagonal/ochre",
 			"bar": 0.055,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/how-to-succeed-in-the-christian-life": {
 			"ground": "3ab7600f8d3d377d3b4c88eeaeb5a315e7a29532e04ad96cdba60528de3da24c",
