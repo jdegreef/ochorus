@@ -91,6 +91,8 @@
   "reader_scripture": "Kinh Thánh",
   "reader_scripture_unavailable": "Không thể tải nội dung câu Kinh Thánh.",
   "reader_scripture_page": "Các tác phẩm kinh điển nói gì về đoạn này",
+  "reader_related_passages": "Các đoạn liên quan",
+  "reader_crossrefs_credit": "Tham chiếu chéo từ %source%, CC BY",
   "reader_mark_one": "dấu",
   "reader_mark_many": "dấu",
   "progress_min_left": "phút còn lại trong chương",

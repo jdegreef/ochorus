@@ -452,6 +452,14 @@ export interface Chapter {
 	 */
 	scripture_refs?: { ref: string; page: ScripturePageRef | null }[];
 	/**
+	 * For a chapter of the Bible itself: a few passages to read beside it, each
+	 * a chapter of a Bible book the library has (`book` slug, reader `order`).
+	 * From OpenBible.info's crowd-voted cross-references, CC BY — the page must
+	 * credit them wherever it lists them. [] for every other chapter; optional
+	 * so an API behind this build simply renders no row.
+	 */
+	related_passages?: { reference: string; book: string; order: number }[];
+	/**
 	 * The young-reader editions' end-of-chapter questions — plain text, the
 	 * answers written for the adult reading along. Empty (or absent, from an
 	 * API behind this build) everywhere else.

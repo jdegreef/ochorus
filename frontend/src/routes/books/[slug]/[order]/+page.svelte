@@ -2414,6 +2414,34 @@
 				</div>
 			{/if}
 
+			<!-- A chapter of the Bible itself: other passages to read beside it,
+			     from OpenBible.info's crowd-voted cross-references. After the
+			     scripture row and as quiet — the same chips, an aid to study a reader
+			     in flow scrolls straight past. Each opens that chapter of the
+			     library's own Bible. CC BY: the credit sits with the list, always.
+			     English only, as the Bible books are. -->
+			{#if chapter.related_passages?.length}
+				{@const [creditBefore, creditAfter] = t('reader.crossrefsCredit').split('%source%')}
+				<section class="mt-10 border-t border-border pt-6" aria-label={t('reader.relatedPassages')}>
+					<div class="flex flex-wrap items-center gap-2">
+						<span class="eyebrow text-muted" aria-hidden="true">{t('reader.relatedPassages')}</span>
+						{#each chapter.related_passages as passage (passage.book + passage.order)}
+							<a href={localizeHref(bookChapterPath(passage.book, passage.order, false))} class="tag"
+								>{passage.reference}</a
+							>
+						{/each}
+					</div>
+					<p class="mt-3 text-small text-muted">
+						{creditBefore}<a
+							href="https://www.openbible.info/labs/cross-references/"
+							class="underline"
+							rel="noopener"
+							target="_blank">OpenBible.info</a
+						>{creditAfter ?? ''}
+					</p>
+				</section>
+			{/if}
+
 			<!-- The end card (design #18): what was finished and where it leaves
 			     the reader in the book (this section), then ONE way on (.end-nav
 			     below). Two blocks, not one, only so page mode can keep each whole. -->

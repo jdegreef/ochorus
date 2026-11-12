@@ -310,6 +310,9 @@ services:
         # parser and neither rebuilt the reader.
         - backend/library/scripture.py
         - backend/library/scripture_graph.py
+        # A Bible chapter's related passages: which of the bundled cross-references
+        # (data/bible/crossrefs-en.json.gz) a chapter page shows.
+        - backend/library/bible_crossrefs.py
         # The bundled Open Word Bible text those two quote (scripts/build_owb_bible.py).
         - backend/library/data/bible/**
         - backend/library/readability.py

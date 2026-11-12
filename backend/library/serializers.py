@@ -2169,6 +2169,14 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         """
         return self._batch(obj).scripture_refs(obj)
 
+    # A chapter of the Bible itself: other passages to read beside it, from
+    # OpenBible.info's cross-references (CC BY; library/bible_crossrefs). []
+    # for every other book.
+    related_passages = serializers.SerializerMethodField()
+
+    def get_related_passages(self, obj):
+        return self._batch(obj).related_passages(obj)
+
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
@@ -2215,6 +2223,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
+            # A Bible chapter's cross-references — see above.
+            "related_passages",
             # The chapter's answered questions (``Chapter``): a young-reader
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
@@ -2312,12 +2322,24 @@ class ChapterBatch:
             ref: page_url(pages[ref]) for ref in candidates if pages.get(ref)
         }
         self._pages = pages
+        # A Bible chapter's related passages (library/bible_crossrefs): the
+        # published Bible books they may link, looked up once per run.
+        from .bible_crossrefs import is_bible_book, published_bible_slugs
+
+        self._bible_slugs = published_bible_slugs() if is_bible_book(book) else None
 
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
 
     def scripture_refs(self, chapter):
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
+
+    def related_passages(self, chapter):
+        from .bible_crossrefs import related_passages
+
+        if self._bible_slugs is None:
+            return []
+        return related_passages(chapter.book, chapter, self._bible_slugs)
 
 
 class PlanListSerializer(serializers.ModelSerializer):

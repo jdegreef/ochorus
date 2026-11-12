@@ -91,6 +91,8 @@
   "reader_scripture": "Ekyawandiikibwa",
   "reader_scripture_unavailable": "Ebigambo by'olunyiriri tebisoboddwa kufunibwa.",
   "reader_scripture_page": "Ebitabo eby'edda kye byogera ku kitundu kino",
+  "reader_related_passages": "Ebitundu ebikwatagana",
+  "reader_crossrefs_credit": "Ebijuliziddwa okuva ku %source%, CC BY",
   "reader_mark_one": "akabonero",
   "reader_mark_many": "obubonero",
   "progress_min_left": "eddakiika zisigadde mu ssuula",
