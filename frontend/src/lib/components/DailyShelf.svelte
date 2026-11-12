@@ -20,9 +20,13 @@
 	 * of the last deploy. Renders nothing in a language with no dated books.
 	 *
 	 * `embedded` drops the section chrome and heading, for the /today page,
-	 * which heads itself.
+	 * which heads itself. `onreadings` hands each day's readings up — the page
+	 * names them in its <head>.
 	 */
-	let { embedded = false }: { embedded?: boolean } = $props();
+	let {
+		embedded = false,
+		onreadings
+	}: { embedded?: boolean; onreadings?: (readings: DailyEntry[]) => void } = $props();
 
 	let readings = $state<DailyEntry[]>([]);
 	// What the embedded page says instead of an empty column: null until the
@@ -43,6 +47,7 @@
 			.then((r) => {
 				readings = r.readings;
 				failed = false;
+				onreadings?.(r.readings);
 			})
 			.catch(() => {
 				readings = [];
@@ -99,7 +104,7 @@
 			<SectionHeader
 				title={t('daily.title')}
 				subtitle={`${dateLabel} · ${t('daily.subtitle')}`}
-				href={localizeHref('/today/')}
+				href={localizeHref('/today')}
 				linkText={t('daily.seeAll')}
 			/>
 			{@render cards()}

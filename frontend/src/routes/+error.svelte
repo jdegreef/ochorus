@@ -4,7 +4,14 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
-	import { listBooks, listSermons, type BookSummary, type SermonSummary } from '$lib/library-public';
+	import {
+		listAuthors,
+		listBooks,
+		listSermons,
+		type BookSummary,
+		type SermonSummary
+	} from '$lib/library-public';
+	import { missedDetail, recoverSlug } from '$lib/slugMatch';
 	import { dayNumber, pickByDay } from '$lib/dailyPicks';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
@@ -49,12 +56,43 @@
 	);
 	const hasPicks = $derived(bookPicks.length > 0 || sermonPicks.length > 0);
 
+	// A near-miss slug — /authors/charles-spurgeon/ for /authors/charles-h-spurgeon/
+	// — is recovered from the shelf it should have named ($lib/slugMatch): a
+	// unique alias forwards, anything else near is offered as "Did you mean…".
+	// The book and sermon shelves are already fetched for the picks; the
+	// authors list only on an author 404.
+	type Guess = { slug: string; name: string; sub: string };
+	const missed = $derived(isNotFound ? missedDetail($page.url.pathname) : null);
+	let guesses = $state<Guess[]>([]);
+
 	onMount(async () => {
 		if (!isNotFound) return;
 		const lang = getLang();
-		const [b, s] = await Promise.allSettled([listBooks(lang), listSermons(lang)]);
+		const wantAuthors = missed?.section === 'authors';
+		const [b, s, a] = await Promise.allSettled([
+			listBooks(lang),
+			listSermons(lang),
+			wantAuthors ? listAuthors(lang) : Promise.resolve([])
+		]);
 		if (b.status === 'fulfilled') books = b.value;
 		if (s.status === 'fulfilled') sermons = s.value;
+		if (!missed) return;
+		const shelf: Guess[] =
+			missed.section === 'authors'
+				? a.status === 'fulfilled'
+					? a.value.map((x) => ({ slug: x.slug, name: x.name, sub: '' }))
+					: []
+				: (missed.section === 'books' ? books : sermons).map((x) => ({
+						slug: x.slug,
+						name: x.title,
+						sub: x.author.name
+					}));
+		const { forward, suggestions } = recoverSlug(missed.slug, shelf);
+		if (forward) {
+			location.replace(missed.withSlug(forward.slug) + $page.url.search + $page.url.hash);
+			return;
+		}
+		guesses = suggestions;
 	});
 
 </script>
@@ -99,6 +137,26 @@
 				/>
 				<button type="submit" class="btn btn-primary shrink-0">{t('nav.search')}</button>
 			</form>
+		{/if}
+		{#if missed && guesses.length}
+			<!-- Near misses of the slug asked for (see onMount); the alias case
+			     forwarded instead. A row card, the shape of DailyShelf's. -->
+			<section class="mb-6 w-full max-w-sm text-start" data-testid="notfound-guesses">
+				<h2 class="section-label">{t('error.didYouMean')}</h2>
+				<ul role="list" class="m-0 grid list-none gap-2 p-0">
+					{#each guesses as g (g.slug)}
+						<li>
+							<a
+								class="guess card-tint rounded-card border border-border bg-surface"
+								href={missed.withSlug(g.slug)}
+							>
+								<span class="block font-medium text-text" dir="auto">{g.name}</span>
+								{#if g.sub}<span class="block text-small text-muted" dir="auto">{g.sub}</span>{/if}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
 		{/if}
 		<!-- One primary per view (STYLE_GUIDE §5). The generic state offered two
 		     solid buttons side by side, so neither read as the thing to do. -->
@@ -161,3 +219,11 @@
 		{/if}
 	{/if}
 </div>
+
+<style>
+	.guess {
+		display: block;
+		padding: 0.75rem 1rem;
+		text-decoration: none;
+	}
+</style>

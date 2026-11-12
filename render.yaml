@@ -592,6 +592,16 @@ services:
       - type: redirect
         source: /authors/ochorus-originals
         destination: /originals/
+      # The two author slugs people guess most (the initial left out). Neither
+      # source is, or can become, a real page: author slugs keep the initial.
+      # Every other near-miss slug is recovered by the not-found page itself
+      # ($lib/slugMatch), so don't grow this list per author.
+      - type: redirect
+        source: /authors/charles-spurgeon
+        destination: /authors/charles-h-spurgeon/
+      - type: redirect
+        source: /authors/dwight-moody
+        destination: /authors/dwight-l-moody/
       # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
       # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
       # `/about/` (verified live — there is no build/about/ directory, only
@@ -646,9 +656,11 @@ services:
       - type: rewrite
         source: /welcome
         destination: /200.html
+      # /today prerenders to a shell (routes/today/+page.ts), like /search, so it
+      # is indexable; ahead of /today/* so the slashed /today/ lands here too.
       - type: rewrite
         source: /today
-        destination: /200.html
+        destination: /today.html
       - type: rewrite
         source: /today/*
         destination: /200.html
@@ -693,7 +705,7 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/today
-        destination: /200.html
+        destination: /:lang/today.html
       - type: rewrite
         source: /:lang/today/*
         destination: /200.html

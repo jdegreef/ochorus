@@ -4,7 +4,7 @@
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
-	import { relativeHeat } from '$lib/scriptureIndex';
+	import { citedAuthors, relativeHeat, scriptureHead } from '$lib/scriptureIndex';
 	import { authorPath } from '$lib/originals';
 	import { withTrailingSlash } from '$lib/href';
 	import Seo from '$lib/components/Seo.svelte';
@@ -36,14 +36,22 @@
 	// Drawn at build by scripts/build-verse-cards.mjs from this page's own data.
 	const ogImage = $derived(`${SITE_URL}${scriptureBookCardUrl(book.slug)}`);
 
-	const title = $derived(`${book.title} — what the classics say — Ochorus`);
+	// Named for the writers who return to the book most (its top books' counts).
+	const head = $derived(
+		scriptureHead(
+			book.title,
+			citedAuthors(page.top_books.map((w) => ({ ...w, weight: w.citing_count })))
+		)
+	);
+	const title = $derived(head.title);
 	const description = $derived(
-		page.citing_count !== null && page.books_count !== null
-			? `${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from ` +
+		head.lead +
+			(page.citing_count !== null && page.books_count !== null
+				? `${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from ` +
 					`${page.books_count} Christian classic${page.books_count === 1 ? '' : 's'} that treat ` +
 					`${book.title}, chapter by chapter, each quoted and linked to its source.`
-			: `How the Christian classics treat ${book.title}, chapter by chapter — ` +
-					'every passage quoted and linked to its source.'
+				: `How the Christian classics treat ${book.title}, chapter by chapter — ` +
+					'every passage quoted and linked to its source.')
 	);
 
 	const crumbs = $derived([

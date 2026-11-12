@@ -1,4 +1,5 @@
 import type { ScriptureBookPage, ScripturePageEntry } from '$lib/library-public';
+import { ORIGINALS_SLUG } from '$lib/originals';
 
 /**
  * The /scripture hub's shape, computed from the flat page list the API sends
@@ -221,4 +222,62 @@ export function bookFromPageList(slug: string, pages: ScripturePageEntry[]): Scr
 		prev: books[i - 1] ?? null,
 		next: books[i + 1] ?? null
 	};
+}
+
+/**
+ * The writers a scripture page quotes most, by name, most-cited first (ties in
+ * the order the page lists them). `weight` is how many citations a row stands
+ * for — a book page's `top_books` carry a count; a passage is one. The house
+ * imprint is left out: it is not a writer anyone searches for by name.
+ */
+export function citedAuthors(
+	rows: { author_slug: string; author_name: string; weight?: number }[]
+): string[] {
+	const tally = new Map<string, { name: string; n: number; at: number }>();
+	rows.forEach((r, at) => {
+		if (r.author_slug === ORIGINALS_SLUG || !r.author_name) return;
+		const t = tally.get(r.author_slug) ?? { name: r.author_name, n: 0, at };
+		t.n += r.weight ?? 1;
+		tally.set(r.author_slug, t);
+	});
+	return [...tally.values()].sort((a, b) => b.n - a.n || a.at - b.at).map((t) => t.name);
+}
+
+/** The most a scripture title spends before the brand, which `fitTitle` drops. */
+export const SCRIPTURE_TITLE_MAX = 65;
+
+/**
+ * The writers named in a scripture page's title, as a phrase: "Andrew Murray,
+ * John Owen and more", or "Andrew Murray and John Owen" when that is all of
+ * them — at most three, and only as many as keep `${head}${phrase}` within
+ * `max`. "" when not even one fits (or there are none).
+ */
+export function namedAuthors(names: string[], head = '', max = SCRIPTURE_TITLE_MAX): string {
+	let best = '';
+	for (let k = 1; k <= Math.min(3, names.length); k++) {
+		const shown = names.slice(0, k);
+		const phrase =
+			k < names.length
+				? `${shown.join(', ')} and more`
+				: k === 1
+					? shown[0]
+					: `${shown.slice(0, -1).join(', ')} and ${shown[k - 1]}`;
+		if (head.length + phrase.length > max) break;
+		best = phrase;
+	}
+	return best;
+}
+
+/**
+ * A scripture page's title and the lead of its description, naming who it
+ * quotes: "John 15 in the classics: Andrew Murray, John Owen and more". Falls
+ * back to the plain "John 15 — what the classics say" when no writer fits.
+ * English, like the scripture data itself (these pages exist only in English).
+ */
+export function scriptureHead(reference: string, names: string[]): { title: string; lead: string } {
+	const head = `${reference} in the classics: `;
+	const named = namedAuthors(names, head);
+	return named
+		? { title: `${head}${named} — Ochorus`, lead: `${named} on ${reference}. ` }
+		: { title: `${reference} — what the classics say — Ochorus`, lead: '' };
 }
