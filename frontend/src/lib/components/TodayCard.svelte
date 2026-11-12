@@ -81,7 +81,7 @@
 </script>
 
 {#if !picks || columns}
-	<section class="page-col px-5 pt-14" aria-busy={!picks}>
+	<section id="today" class="page-col px-5 pt-14" aria-busy={!picks} style:scroll-margin-top="var(--pinned-offset, 4rem)">
 		<div class="rounded-2xl border border-border bg-surface px-5 py-6 sm:px-8 sm:py-7">
 			{#if picks}
 				<SectionHeader

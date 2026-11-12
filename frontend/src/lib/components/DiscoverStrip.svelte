@@ -38,16 +38,24 @@
 	// the phone layout scrolls; from 640px the row is a grid and the dots hide.
 	let rail = $state<HTMLDivElement>();
 	let at = $state(0);
+	// One card plus the gap, measured on the first scroll rather than on
+	// every scroll event (the rail only scrolls at phone widths, where it is
+	// fixed for the life of the page bar a rotation, which re-measures).
+	let step = 0;
 	function onRailScroll() {
 		if (!rail) return;
-		const first = rail.firstElementChild as HTMLElement | null;
-		const step = first ? first.offsetWidth + parseFloat(getComputedStyle(rail).columnGap || '0') : 1;
+		if (!step) {
+			const first = rail.firstElementChild as HTMLElement | null;
+			step = first ? first.offsetWidth + parseFloat(getComputedStyle(rail).columnGap || '0') : 1;
+		}
+		const x = Math.abs(rail.scrollLeft);
 		const max = books.length - 1;
 		// At the far end the last card can't snap to the start, so count it.
-		const end = rail.scrollLeft !== 0 && Math.abs(rail.scrollLeft) + rail.clientWidth >= rail.scrollWidth - 2;
-		at = end ? max : Math.min(max, Math.round(Math.abs(rail.scrollLeft) / step));
+		at = x && x + rail.clientWidth >= rail.scrollWidth - 2 ? max : Math.min(max, Math.round(x / step));
 	}
 </script>
+
+<svelte:window onresize={() => (step = 0)} />
 
 {#snippet shelf()}
 	<section class="page-col px-5 pt-14">

@@ -41,7 +41,7 @@
 		 */
 		perChapter = false,
 		/**
-		 * A foot line with the whole book's size, "3 hr read · 10 chapters" —
+		 * A foot line with the whole book's reading time, "3 hr read" —
 		 * on the home page's discover shelf (design review 2026-11, #14), where
 		 * a first-time reader is deciding whether a classic is an evening or a
 		 * month. Pinned to the card's foot (mt-auto), so it lines up across a
@@ -106,13 +106,9 @@
 					})
 				: readingTime(book.word_count)
 	);
-	const length = $derived(
-		!showLength || !book.word_count
-			? ''
-			: book.chapter_count > 1
-				? `${readingTime(book.word_count)} · ${t('gift.chapters').replace('%n%', String(book.chapter_count))}`
-				: readingTime(book.word_count)
-	);
+	// Time only: no catalogue string counts chapters in every language (the
+	// gift page's "%n% chapters" is "Chapter %n%" in Swahili and Luganda).
+	const length = $derived(showLength && book.word_count ? readingTime(book.word_count) : '');
 </script>
 
 <a

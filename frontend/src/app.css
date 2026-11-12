@@ -1809,10 +1809,9 @@ nav.appnav .navlinks a:hover {
 	background: var(--surface);
 	text-decoration: none;
 }
-/* A section link's icon wears its hue at rest (the `[data-section] > svg`
-   rule), so the bar reads as five places rather than five words; the label
-   stays muted until hover, and the active pill takes the section's own soft
-   ground. Home has no section and keeps the accent. */
+/* The page you are on: its label in full text colour over a rule in its
+   section's hue (Home has no section and keeps the accent). The icons'
+   resting colour is set just below. */
 nav.appnav .navlinks a.active {
 	color: var(--text);
 	font-weight: 600;

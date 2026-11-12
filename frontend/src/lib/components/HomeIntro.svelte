@@ -62,17 +62,26 @@
 	const countsLine = $derived(
 		counts.books
 			? t('home.shareCounts')
-					.replace('{books}', String(counts.books))
-					.replace('{sermons}', String(counts.sermons))
-					.replace('{languages}', String(languages.length))
+					.replace('{books}', counts.books.toLocaleString(lang.current))
+					.replace('{sermons}', counts.sermons.toLocaleString(lang.current))
+					.replace('{languages}', languages.length.toLocaleString(lang.current))
 			: ''
 	);
 
 	// While this field is on screen the header's search pill hides (#5): two
-	// search boxes 150px apart read as two different searches.
+	// search boxes 150px apart read as two different searches. "On screen"
+	// starts below the sticky nav bar, which covers the field as it scrolls
+	// away; and a hero the boot flag holds hidden (a signed-in reader's page
+	// before the dashboard mounts, app.css) is not on screen at all.
 	let form: HTMLFormElement;
 	onMount(() => {
-		const io = new IntersectionObserver(([e]) => (heroSearch.visible = e.isIntersecting));
+		const bar = document.querySelector('nav.appnav')?.getBoundingClientRect().height ?? 0;
+		const io = new IntersectionObserver(
+			([e]) =>
+				(heroSearch.visible =
+					e.isIntersecting && (form.checkVisibility?.({ visibilityProperty: true }) ?? true)),
+			{ rootMargin: `-${Math.round(bar)}px 0px 0px 0px` }
+		);
 		io.observe(form);
 		return () => {
 			io.disconnect();
@@ -130,11 +139,13 @@
 				</nav>
 			{/if}
 			<!-- The one primary on the view, named for where it goes (#4): the
-			     library. Today's reading is the second way in; About lives in the
-			     footer, out of the reading path. -->
+			     library. Today's reading is the second way in — the Today card
+			     just below, not /today, which a language with no devotionals
+			     leaves empty (TodayCard drops its own link there for the same
+			     reason). About lives in the footer, out of the reading path. -->
 			<div class="flex flex-wrap items-center gap-x-6 gap-y-3">
 				<a href={localizeHref('/books')} class="btn btn-primary btn-solid">{t('home.browseLibrary')}</a>
-				<a href={localizeHref('/today')} class="text-body font-semibold">{t('home.todayReading')} <Arrow /></a>
+				<a href="#today" class="text-body font-semibold">{t('home.todayReading')} <Arrow /></a>
 			</div>
 			{#if countsLine}
 				<p class="mt-5 text-body font-semibold text-text">{countsLine}</p>
