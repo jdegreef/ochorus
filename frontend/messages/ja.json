@@ -1710,6 +1710,8 @@
   "nav_bible": "聖書",
   "bible_tagline": "パブリックドメインとして自由に公開された新しい翻訳、Open Word Bibleで読む聖書の各書を、創世記から黙示録まで順に並べています。",
   "bible_none": "この言語の聖書の書はまだありません。",
+  "bible_previous_book": "前の書",
+  "bible_next_book": "次の書",
   "bible_old_testament": "旧約聖書",
   "bible_new_testament": "新約聖書",
   "bible_division_law": "律法",

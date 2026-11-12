@@ -237,6 +237,13 @@ describe('the chapter reader: progress at the top, one end card (design #18)', (
 		expect(src).toMatch(/t\('reader\.finished'\)\.split\('%title%'\)/);
 		expect(src).toMatch(/\{finishedBefore\}<span lang=\{contentLang\(language\)\}>/);
 	});
+
+	it('ends a Bible book with the book before it as a text link beside Contents, not a second button', () => {
+		const src = read(READER);
+		const aside = src.slice(src.indexOf('<div class="end-aside'), src.indexOf('{#snippet endAsk()}'));
+		expect(src).toMatch(/!chapter\.next && bookForProgress\?\.series\?\.slug === BIBLE_SERIES/);
+		expect(aside).toMatch(/\{#if previousBibleBook\}\s*<a[\s\S]*?class="end-link"[\s\S]*?previousBibleBook\.title/);
+	});
 });
 
 describe('the phone reader: the bars fold away while reading (design #30)', () => {

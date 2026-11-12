@@ -1710,6 +1710,8 @@
   "nav_bible": "መጽሐፍ ቅዱስ",
   "bible_tagline": "የመጽሐፍ ቅዱስ መጻሕፍት በOpen Word Bible — ለሕዝብ በነጻ የተሰጠ አዲስ ትርጉም — ከዘፍጥረት እስከ ራእይ በቅደም ተከተላቸው።",
   "bible_none": "በዚህ ቋንቋ እስካሁን የመጽሐፍ ቅዱስ መጻሕፍት የሉም።",
+  "bible_previous_book": "ያለፈው መጽሐፍ",
+  "bible_next_book": "ቀጣይ መጽሐፍ",
   "bible_old_testament": "ብሉይ ኪዳን",
   "bible_new_testament": "አዲስ ኪዳን",
   "bible_division_law": "ሕግ",

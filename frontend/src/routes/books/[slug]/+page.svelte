@@ -48,6 +48,8 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import BibleBookNav from '$lib/components/BibleBookNav.svelte';
+	import { BIBLE_SERIES } from '$lib/bible';
 	import JourneyMap from '$lib/components/JourneyMap.svelte';
 	import { journeyMapFor } from '$lib/journeyMaps';
 	import type { BookSummary } from '$lib/library-public';
@@ -1143,6 +1145,11 @@
 					? t('search.showLess')
 					: t('book.contentsShowAll').replace('%n%', String(book.chapters.length))}
 			</button>
+		{/if}
+		<!-- A book of the Bible: on to the next book of the canon, or back to the
+		     one before, so the contents' end is not a dead end (Genesis → Revelation). -->
+		{#if book.series?.slug === BIBLE_SERIES}
+			<BibleBookNav series={book.series} lang={contentLang(book.language)} />
 		{/if}
 	</section>
 

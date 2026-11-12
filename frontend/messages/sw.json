@@ -1710,6 +1710,8 @@
   "nav_bible": "Biblia",
   "bible_tagline": "Vitabu vya Biblia katika Open Word Bible, tafsiri mpya iliyotolewa bure kwa umma, kwa mpangilio kutoka Mwanzo hadi Ufunuo.",
   "bible_none": "Bado hakuna vitabu vya Biblia katika lugha hii.",
+  "bible_previous_book": "Kitabu kilichotangulia",
+  "bible_next_book": "Kitabu kinachofuata",
   "bible_old_testament": "Agano la Kale",
   "bible_new_testament": "Agano Jipya",
   "bible_division_law": "Torati",

@@ -1710,6 +1710,8 @@
   "nav_bible": "La Bible",
   "bible_tagline": "Les livres de la Bible dans l’Open Word Bible, une nouvelle traduction offerte librement au domaine public, dans l’ordre, de la Genèse à l’Apocalypse.",
   "bible_none": "Aucun livre de la Bible dans cette langue pour l’instant.",
+  "bible_previous_book": "Livre précédent",
+  "bible_next_book": "Livre suivant",
   "bible_old_testament": "Ancien Testament",
   "bible_new_testament": "Nouveau Testament",
   "bible_division_law": "La Loi",

@@ -1710,6 +1710,8 @@
   "nav_bible": "Kinh Thánh",
   "bible_tagline": "Các sách Kinh Thánh trong bản Open Word Bible, một bản dịch mới được tặng tự do cho phạm vi công cộng, theo thứ tự từ Sáng Thế Ký đến Khải Huyền.",
   "bible_none": "Chưa có sách Kinh Thánh nào bằng ngôn ngữ này.",
+  "bible_previous_book": "Sách trước",
+  "bible_next_book": "Sách tiếp theo",
   "bible_old_testament": "Cựu Ước",
   "bible_new_testament": "Tân Ước",
   "bible_division_law": "Luật Pháp",
