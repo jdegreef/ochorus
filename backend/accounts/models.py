@@ -36,6 +36,12 @@ SIGNUP_VARIANTS = (
     "article",
     "quote",
     "footer",
+    # The footer card's other messages ($lib/footerSignup): a book in
+    # progress, the page's own work, and the season. The plain footer source
+    # above is its general band.
+    "footer_progress",
+    "footer_page",
+    "footer_season",
     "header",
     "menu",
     "feedback",

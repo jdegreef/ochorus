@@ -16,12 +16,11 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { FOR_FOOTER, forIndexPath, forLocale } from '$lib/forLinks';
-	import { loginHref, withSignup } from '$lib/loginHref';
+	import { loginHref } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { localizeHref, deLocalizeHref, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
-	import { openFrom } from '$lib/signInSheet.svelte';
 	import {
 		PRIMARY_NAV,
 		SERIES_DEST,
@@ -60,12 +59,8 @@
 	// the session restores) — but not on /login, where the form IS the page,
 	// nor on home, whose SignupBand already makes the pitch: one ask per page,
 	// not two (design review 2026-11, #16).
-	// The caller localizes signupHref, exactly as the header's sign-in link does.
 	const showInvite = $derived(
 		auth.enabled && !auth.expectedUser && !path.startsWith('/login') && path !== '/'
-	);
-	const signupHref = $derived(
-		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
 	);
 	// Signed in: their current book, unless this page already shows it (home's
 	// hero, their lists, the book itself — pageShowsBook). Home never resolves it.
@@ -137,22 +132,14 @@
 	{#if showInvite || resume}
 		<div class="chrome-col px-5 pt-8">
 			{#if showInvite}
-				<div class="footer-invite">
-					<span class="footer-invite-mark" aria-hidden="true"><Icon name="bookmark" size={22} /></span>
-					<div class="min-w-0">
-						<p class="footer-invite-title">{t('home.signupTitle')}</p>
-						<p class="text-small text-muted">{t('login.syncNote')}</p>
-					</div>
-					<a
-						href={localizeHref(signupHref)}
-						class="btn footer-invite-cta"
-						use:seenOnView={'footer'}
-						onclick={(e) => openFrom(e, 'footer')}
-					>
-						<span>{t('login.createAccountLink')}</span>
-						<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
-					</a>
-				</div>
+				<!-- The sign-up card: a message chosen for this reader and this page
+				     ($lib/footerSignup), loaded only for a signed-out reader. -->
+				{#await import('$lib/components/FooterSignup.svelte') then { default: FooterSignup }}
+					<FooterSignup />
+				{:catch}
+					<!-- The chunk didn't load (offline, or a deploy since this tab
+					     opened): no card, rather than an unhandled rejection. -->
+				{/await}
 			{:else if resume}
 				<!-- Lazy: WorkCard brings the cover stack ($lib/components/FooterResume). -->
 				{#await import('$lib/components/FooterResume.svelte') then { default: FooterResume }}
@@ -503,131 +490,7 @@
 		font-style: normal;
 	}
 
-	/* The personal next step: one framed row on the page ground, so it lifts
-	   off the footer's tint — mark, words, call. Stacks on a phone. */
-	.footer-invite {
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr);
-		align-items: center;
-		gap: 0.75rem 1rem;
-		padding: 1rem 1.25rem;
-		border: 1px solid var(--accent-soft-border);
-		border-radius: var(--radius-card);
-		background: var(--accent-soft);
-	}
-	.footer-invite-cta {
-		grid-column: 1 / -1;
-		justify-self: start;
-	}
-	@media (min-width: 640px) {
-		.footer-invite {
-			grid-template-columns: auto minmax(0, 1fr) auto;
-		}
-		.footer-invite-cta {
-			grid-column: auto;
-		}
-	}
-	.footer-invite-mark {
-		display: grid;
-		place-items: center;
-		inline-size: 2.75rem;
-		block-size: 2.75rem;
-		border-radius: var(--radius-sm);
-		background: var(--accent);
-		color: var(--accent-contrast);
-	}
-	.footer-invite-title {
-		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: var(--fs-h3);
-		color: var(--text);
-	}
 	.footer-resume-wrap {
 		max-inline-size: 32rem;
-	}
-
-	/* The deliberately LOUD conversion control: it wears the base .btn
-	   recipe (metrics, radius, type) via `class="btn footer-invite-cta"` and
-	   overrides only the loud bits. A .btn-primary is soft by design
-	   (STYLE_GUIDE §5) except the page's read verb (.btn-solid); this
-	   conversion CTA is the other exception — a solid
-	   indigo with a thin gold ring (the signature pairing) and a warm sweep on
-	   hover. Scoped and unlayered, so it beats @layer components and changes
-	   nothing else. */
-	.footer-invite-cta {
-		position: relative;
-		overflow: hidden;
-		isolation: isolate;
-		text-decoration: none;
-		color: var(--accent-contrast);
-		background: var(--accent);
-		box-shadow:
-			inset 0 0 0 1px var(--gold),
-			0 7px 18px -9px var(--accent);
-		transition:
-			transform var(--duration-fast) ease,
-			box-shadow var(--duration-fast) ease,
-			filter var(--duration-fast) ease;
-	}
-	.footer-invite-cta span {
-		position: relative;
-		z-index: 2;
-	}
-	.footer-invite-cta :global(.footer-invite-arrow) {
-		position: relative;
-		z-index: 2;
-		transition: transform var(--duration-fast) ease;
-	}
-	.footer-invite-cta::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		background: linear-gradient(115deg, transparent 35%, color-mix(in srgb, var(--gold) 45%, transparent) 50%, transparent 65%);
-		transform: translateX(-130%);
-		pointer-events: none;
-	}
-	.footer-invite-cta:hover {
-		text-decoration: none;
-		transform: translateY(-1px);
-		filter: brightness(1.04);
-		box-shadow:
-			inset 0 0 0 1px var(--gold),
-			0 11px 24px -9px var(--accent);
-	}
-	.footer-invite-cta:hover::after {
-		animation: footer-invite-sheen 0.85s ease;
-	}
-	/* Only the arrow nudges — the label stays put. */
-	.footer-invite-cta:hover :global(.footer-invite-arrow) {
-		transform: translateX(3px);
-	}
-	/* Arrow points into the text's reading direction, so it flips in RTL. */
-	:global([dir='rtl']) .footer-invite-cta :global(.footer-invite-arrow) {
-		transform: scaleX(-1);
-	}
-	:global([dir='rtl']) .footer-invite-cta:hover :global(.footer-invite-arrow) {
-		transform: scaleX(-1) translateX(3px);
-	}
-	@keyframes footer-invite-sheen {
-		to {
-			transform: translateX(130%);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.footer-invite-cta,
-		.footer-invite-cta :global(.footer-invite-arrow) {
-			transition: none;
-		}
-		.footer-invite-cta:hover {
-			transform: none;
-		}
-		.footer-invite-cta:hover :global(.footer-invite-arrow) {
-			transform: none;
-		}
-		.footer-invite-cta:hover::after {
-			animation: none;
-		}
 	}
 </style>
