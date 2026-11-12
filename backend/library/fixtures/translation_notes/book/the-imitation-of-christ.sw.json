@@ -1,0 +1,1882 @@
+{
+ "kind": "book",
+ "slug": "the-imitation-of-christ",
+ "language": "sw",
+ "job_issue": 7642,
+ "pull_request": null,
+ "note": [
+  "Thomas weaves Scripture into his sentences, usually from the Latin Vulgate and almost never with a reference. Swahili has no reachable public-domain Union Version text that matches the shipped corpus, so verse wording was mined from SHIPPED *.sw.json files (an aligned en↔sw corpus) and pasted verbatim where Thomas quotes a verse the way the Union Version reads it; mined rows cite the file. Where Thomas follows the Vulgate, re-persons a verse, or quotes a fragment the corpus does not carry, it is rendered in Union register and marked self_rendered.",
+  "AI-translated (job #7642) in fifteen parallel chapter ranges against one shared term table, then reconciled. Divine free pronouns are capitalized (Wewe, Yeye, Mimi for Christ in Books III–IV), possessive stems lower case, as in the shipped sw corpus. Allusions that are not quotations carry no row. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 2,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 1:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Mark 8:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalms 117:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 2:25",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Sirach 8:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalms 37:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Job 7:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 14,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "Psalms 51:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Job 22:29",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 20,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Luke 12:43",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Luke 12:37",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Matthew 24:47",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Psalms 4:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 21
+  },
+  {
+   "reference": "1 John 2:17",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 21,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalms 80:5",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalms 25:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 23
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 24,
+   "source_file": "all-of-grace-teens.sw.json"
+  },
+  {
+   "reference": "Luke 12:40",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Luke 16:9",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Hebrews 13:14",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Wisdom 11:16",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Wisdom 5:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Psalms 37:3",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 26,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Luke 17:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 27,
+   "source_file": "the-great-secret.sw.json"
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 27,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 27,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Hebrews 13:14",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 27
+  },
+  {
+   "reference": "2 Timothy 2:12",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 48:22",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 32,
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "Micah 3:11",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Corinthians 10:18",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 32,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:24",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 33
+  },
+  {
+   "reference": "John 11:28",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalms 30:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 30:7",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 30:8",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 30:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Psalms 30:11",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Job 7:18",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 35
+  },
+  {
+   "reference": "Revelation 2:7",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 35,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 22:21",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 36
+  },
+  {
+   "reference": "John 5:44",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 36
+  },
+  {
+   "reference": "Luke 17:10",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 37,
+   "source_file": "are-you-forgiven.sw.json"
+  },
+  {
+   "reference": "Psalms 25:16",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 37
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 38
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 38,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "Luke 24:46",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 38
+  },
+  {
+   "reference": "Luke 24:26",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 38
+  },
+  {
+   "reference": "Acts 9:16",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 38
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 38,
+   "source_file": "key-teachings-of-a-b-simpson.sw.json"
+  },
+  {
+   "reference": "Acts 14:22",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 38,
+   "source_file": "prayer-and-praying-men.sw.json"
+  },
+  {
+   "reference": "Psalms 85:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 39
+  },
+  {
+   "reference": "Psalms 85:8",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 39
+  },
+  {
+   "reference": "Psalms 35:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 39
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "prayer-and-praying-men.sw.json"
+  },
+  {
+   "reference": "Psalms 119:125",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 40
+  },
+  {
+   "reference": "Psalms 119:36",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 40
+  },
+  {
+   "reference": "Deuteronomy 32:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 40
+  },
+  {
+   "reference": "Exodus 20:19",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 40,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 40,
+   "source_file": "prayer-and-praying-men.sw.json"
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 40
+  },
+  {
+   "reference": "John 6:68",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 40,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Psalms 94:12",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Psalms 94:13",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Isaiah 23:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 41
+  },
+  {
+   "reference": "John 12:48",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Psalms 25:6",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Psalms 27:9",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 41,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Psalms 143:6",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Psalms 143:10",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 41
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 42
+  },
+  {
+   "reference": "John 8:36",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 42
+  },
+  {
+   "reference": "Isaiah 29:13",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 42
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 43,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalms 59:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 43
+  },
+  {
+   "reference": "1 John 4:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 43
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 43
+  },
+  {
+   "reference": "Psalms 27:1",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 44,
+   "source_file": "amanda-smith-autobiography.sw.json"
+  },
+  {
+   "reference": "Psalms 27:3",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 44,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalms 19:14",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 44
+  },
+  {
+   "reference": "2 Timothy 2:3",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 44
+  },
+  {
+   "reference": "Jeremiah 10:23",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 45
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 45
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Luke 6:35",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Lamentations 5:21",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 46
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 47
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 47
+  },
+  {
+   "reference": "Mark 10:18",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 47,
+   "source_file": "the-lord-our-righteousness.sw.json"
+  },
+  {
+   "reference": "Isaiah 62:1",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Psalms 31:19",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Psalms 116:12",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Psalms 116:12",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 48
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 50
+  },
+  {
+   "reference": "Job 15:15",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Isaiah 29:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 117:2",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 52
+  },
+  {
+   "reference": "Psalms 116:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Psalms 4:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 53
+  },
+  {
+   "reference": "Psalms 103:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 54
+  },
+  {
+   "reference": "Hebrews 12:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 57
+  },
+  {
+   "reference": "Psalms 32:5",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 58
+  },
+  {
+   "reference": "Psalms 25:18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 58
+  },
+  {
+   "reference": "Psalms 69:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 58
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 58,
+   "source_file": "a-serious-call.sw.json"
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 55:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Isaiah 58:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 106:45",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 86:8",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 19:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 145:21",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 59
+  },
+  {
+   "reference": "Psalms 119:35",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 60
+  },
+  {
+   "reference": "2 Maccabees 1:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 60
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 60
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 60
+  },
+  {
+   "reference": "Psalms 45:16",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 60
+  },
+  {
+   "reference": "Acts 5:41",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 60
+  },
+  {
+   "reference": "Psalms 71:12",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 61
+  },
+  {
+   "reference": "Isaiah 45:2",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 61
+  },
+  {
+   "reference": "Psalms 68:1",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 61
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 61
+  },
+  {
+   "reference": "Psalms 43:3",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 61
+  },
+  {
+   "reference": "Genesis 1:2",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 61
+  },
+  {
+   "reference": "John 21:22",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 62
+  },
+  {
+   "reference": "Romans 14:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 62
+  },
+  {
+   "reference": "Ecclesiastes 1:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 62
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 62
+  },
+  {
+   "reference": "1 Peter 4:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 62
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 63,
+   "source_file": "rooted-3.sw.json"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 63
+  },
+  {
+   "reference": "John 10:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 63
+  },
+  {
+   "reference": "Psalms 145:17",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 63
+  },
+  {
+   "reference": "Psalms 37:11",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 63
+  },
+  {
+   "reference": "Luke 21:34",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 64
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 64
+  },
+  {
+   "reference": "Ecclesiastes 1:14",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 65,
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "Psalms 113:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 67
+  },
+  {
+   "reference": "John 12:27",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 67
+  },
+  {
+   "reference": "John 12:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 67
+  },
+  {
+   "reference": "John 12:28",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 67
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 67
+  },
+  {
+   "reference": "Psalms 77:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 67
+  },
+  {
+   "reference": "Nahum 1:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Luke 8:25",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Matthew 8:7",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 68,
+   "source_file": "necessity-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 68
+  },
+  {
+   "reference": "John 14:1",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 68
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 68
+  },
+  {
+   "reference": "John 16:20",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 68
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 68,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Luke 8:15",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 68
+  },
+  {
+   "reference": "Psalms 55:6",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 69,
+   "source_file": "safety-fulness-and-sweet-refreshment-in-christ.sw.json"
+  },
+  {
+   "reference": "Genesis 6:12",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 69
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 70,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 70
+  },
+  {
+   "reference": "John 12:9",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 71
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 72,
+   "source_file": "key-teachings-of-richard-baxter.sw.json"
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 144:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 72
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 72
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 89:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 44:26",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 68:30",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 144:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Sirach 36:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "Psalms 118:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 72
+  },
+  {
+   "reference": "2 Corinthians 6:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 73
+  },
+  {
+   "reference": "Revelation 2:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 73
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 73
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 73
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 73,
+   "source_file": "prayer-and-praying-men.sw.json"
+  },
+  {
+   "reference": "Psalms 91:15",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 73
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 74
+  },
+  {
+   "reference": "Isaiah 51:12",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 74
+  },
+  {
+   "reference": "Matthew 16:27",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 74,
+   "source_file": "a-serious-call.sw.json"
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 76
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 77,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Psalms 8:4",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 78,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 12:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 78
+  },
+  {
+   "reference": "John 5:44",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 78
+  },
+  {
+   "reference": "1 Corinthians 4:20",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 81
+  },
+  {
+   "reference": "Psalms 94:10",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 81
+  },
+  {
+   "reference": "Zephaniah 1:12",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 81
+  },
+  {
+   "reference": "1 Corinthians 4:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 81
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 82
+  },
+  {
+   "reference": "Psalms 60:11",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Psalms 37:39",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Psalms 116:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Matthew 10:17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Matthew 10:36",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Matthew 24:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 83
+  },
+  {
+   "reference": "Luke 2:35",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 84
+  },
+  {
+   "reference": "1 Corinthians 4:4",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 84
+  },
+  {
+   "reference": "Psalms 143:2",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 84
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 85,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Psalms 120:5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 85
+  },
+  {
+   "reference": "Psalms 71:12",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 86
+  },
+  {
+   "reference": "Psalms 27:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 86
+  },
+  {
+   "reference": "Psalms 144:6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 86
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 86,
+   "source_file": "key-teachings-of-richard-baxter.sw.json"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 86
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 87,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "John 2:4",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 87
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 87
+  },
+  {
+   "reference": "1 Samuel 10:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 87
+  },
+  {
+   "reference": "Romans 13:1",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 87
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 87
+  },
+  {
+   "reference": "Philippians 1:20",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 87
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 88
+  },
+  {
+   "reference": "1 Chronicles 29:14",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 88
+  },
+  {
+   "reference": "John 17:1",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 88,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Psalms 119:71",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Psalms 69:7",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Deuteronomy 32:39",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 88
+  },
+  {
+   "reference": "1 Samuel 2:6",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Isaiah 11:3",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 88
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 89,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Genesis 41:51",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 89
+  },
+  {
+   "reference": "Psalms 119:32",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 89
+  },
+  {
+   "reference": "Job 10:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 90
+  },
+  {
+   "reference": "Job 10:21",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 90
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 90
+  },
+  {
+   "reference": "1 Peter 2:11",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 91
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 92,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 93
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 93
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 93
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 93
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 93
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 93
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 93
+  },
+  {
+   "reference": "Matthew 9:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 94
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 94
+  },
+  {
+   "reference": "John 8:31",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 94
+  },
+  {
+   "reference": "Matthew 19:17",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 94
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 94
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 94
+  },
+  {
+   "reference": "Matthew 23:12",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 94
+  },
+  {
+   "reference": "John 13:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 94
+  },
+  {
+   "reference": "John 13:17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 94
+  },
+  {
+   "reference": "John 14:21",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 94,
+   "source_file": "men-of-prayer-2.sw.json"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 95
+  },
+  {
+   "reference": "Psalms 19:10",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 95
+  },
+  {
+   "reference": "Psalms 119:103",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 95
+  },
+  {
+   "reference": "Psalms 119:137",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 96
+  },
+  {
+   "reference": "Psalms 19:9",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 96
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 96,
+   "source_file": "a-call-to-the-unconverted.sw.json"
+  },
+  {
+   "reference": "Matthew 18:4",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 96
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 98,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 98
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 98
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 98,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 15:32",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 100
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 101,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 104
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 105
+  },
+  {
+   "reference": "Leviticus 19:2",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 108
+  },
+  {
+   "reference": "Luke 22:12",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 109
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 109
+  },
+  {
+   "reference": "Psalms 102:7",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 109
+  },
+  {
+   "reference": "Isaiah 45:15",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 110
+  },
+  {
+   "reference": "Psalms 116:12",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 110
+  },
+  {
+   "reference": "2 Chronicles 15:2",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 110
+  },
+  {
+   "reference": "Psalms 31:19",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 111
+  },
+  {
+   "reference": "Isaiah 60:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112
+  },
+  {
+   "reference": "Luke 1:66",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112
+  },
+  {
+   "reference": "Psalms 119:2",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112
+  },
+  {
+   "reference": "Psalms 24:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 112
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 114,
+   "source_file": "daughters-of-the-king-1.sw.json"
+  },
+  {
+   "reference": "John 3:29",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 114,
+   "source_file": "he-must-increase.sw.json"
+  },
+  {
+   "reference": "Proverbs 25:27",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 115
+  },
+  {
+   "reference": "James 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 115
+  }
+ ]
+}
