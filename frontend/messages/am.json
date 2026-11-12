@@ -91,6 +91,8 @@
   "reader_scripture": "ቅዱሳት መጻሕፍት",
   "reader_scripture_unavailable": "የቁጥሩን ጽሑፍ መጫን አልተቻለም።",
   "reader_scripture_page": "ጥንታውያን መጻሕፍት ስለዚህ ክፍል የሚሉት",
+  "reader_related_passages": "ተዛማጅ ክፍሎች",
+  "reader_crossrefs_credit": "ማጣቀሻዎች ከ%source%፣ CC BY",
   "reader_scripture_read_chapter": "ሙሉውን ምዕራፍ ያንብቡ",
   "reader_mark_one": "ምልክት",
   "reader_mark_many": "ምልክቶች",

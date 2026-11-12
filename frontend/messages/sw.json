@@ -91,6 +91,8 @@
   "reader_scripture": "Andiko",
   "reader_scripture_unavailable": "Maandishi ya mstari hayakuweza kupakiwa.",
   "reader_scripture_page": "Vitabu vya kale vinasema nini kuhusu kifungu hiki",
+  "reader_related_passages": "Vifungu vinavyohusiana",
+  "reader_crossrefs_credit": "Marejeo mtambuka kutoka %source%, CC BY",
   "reader_scripture_read_chapter": "Soma sura nzima",
   "reader_mark_one": "alama",
   "reader_mark_many": "alama",

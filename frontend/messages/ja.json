@@ -91,6 +91,8 @@
   "reader_scripture": "聖書",
   "reader_scripture_unavailable": "聖句を読み込めませんでした。",
   "reader_scripture_page": "この箇所について古典が語ること",
+  "reader_related_passages": "関連箇所",
+  "reader_crossrefs_credit": "相互参照: %source%(CC BY)",
   "reader_scripture_read_chapter": "章全体を読む",
   "reader_mark_one": "件のマーク",
   "reader_mark_many": "件のマーク",

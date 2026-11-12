@@ -91,6 +91,8 @@
   "reader_scripture": "Escritura",
   "reader_scripture_unavailable": "Não foi possível carregar o texto do versículo.",
   "reader_scripture_page": "O que os clássicos dizem sobre esta passagem",
+  "reader_related_passages": "Passagens relacionadas",
+  "reader_crossrefs_credit": "Referências cruzadas de %source%, CC BY",
   "reader_scripture_read_chapter": "Ler o capítulo inteiro",
   "reader_mark_one": "marca",
   "reader_mark_many": "marcas",

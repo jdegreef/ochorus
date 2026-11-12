@@ -2191,6 +2191,14 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         """
         return self._batch(obj).scripture_refs(obj)
 
+    # A chapter of the Bible itself: other passages to read beside it, from
+    # OpenBible.info's cross-references (CC BY; library/bible_crossrefs). []
+    # for every other book.
+    related_passages = serializers.SerializerMethodField()
+
+    def get_related_passages(self, obj):
+        return self._batch(obj).related_passages(obj)
+
     # For a chapter of the Bible itself: the scripture page of the passage it
     # is — the classics and sermons that quote it — or null where none was
     # built (see scripture_graph.classics_page). Null for every other book.
@@ -2245,6 +2253,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
+            # A Bible chapter's cross-references — see above.
+            "related_passages",
             # A Bible chapter's "what the classics say" page — see above.
             "classics_page",
             # The chapter's answered questions (``Chapter``): a young-reader
@@ -2344,6 +2354,13 @@ class ChapterBatch:
             ref: page_url(pages[ref]) for ref in candidates if pages.get(ref)
         }
         self._pages = pages
+        # A Bible chapter's related passages (library/bible_crossrefs): the
+        # published Bible books they may link, looked up once per run.
+        from .bible_crossrefs import is_bible_book
+
+        self._is_bible = is_bible_book(book)
+        self._bible_slugs = None
+
         # A Bible book's chapters link the scripture page of the passage they
         # ARE ("what the classics say"); every other book has none.
         self._bible = bible_book_of(book)
@@ -2354,6 +2371,19 @@ class ChapterBatch:
 
     def scripture_refs(self, chapter):
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
+
+    def related_passages(self, chapter):
+        from .bible_crossrefs import published_bible_slugs, related_passages
+
+        if not self._is_bible:
+            return []
+
+        def published():
+            if self._bible_slugs is None:
+                self._bible_slugs = published_bible_slugs()
+            return self._bible_slugs
+
+        return related_passages(chapter.book, chapter, published)
 
     def classics_page(self, chapter):
         if self._bible is None:
