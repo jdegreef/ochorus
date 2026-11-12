@@ -458,7 +458,7 @@ VOLUMES: dict[int, dict[str, object]] = {
                 "simple way to pray, John Calvin, Thomas Cranmer and the first prayer book "
                 "in English, and John Knox; Teresa of Ávila, John of the Cross, Ignatius of "
                 "Loyola and Francis de Sales; the hidden Christians of Japan, who kept "
-                "praying for two hundred and fifty years without a priest; Lancelot "
+                "praying for two hundred and fifty years, most of them without a priest; Lancelot "
                 "Andrewes, George Herbert, Richard Sibbes, Richard Baxter and John Bunyan; "
                 "Brother Lawrence among the pots and pans; and the Anabaptist martyrs.</p>"
                 "<p>Every chapter tells its story from the oldest sources, says plainly "
