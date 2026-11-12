@@ -349,6 +349,8 @@ services:
         # Which books are read by the calendar: the book page bakes the
         # "Today's reading" button from it.
         - backend/library/daily_books.py
+        # Which sermons a Bible book page shelves ("Sermons on this book").
+        - backend/library/bible_sermons.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

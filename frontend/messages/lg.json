@@ -93,6 +93,7 @@
   "reader_scripture_page": "Ebitabo eby'edda kye byogera ku kitundu kino",
   "reader_related_passages": "Ebitundu ebikwatagana",
   "reader_crossrefs_credit": "Ebijuliziddwa okuva ku %source%, CC BY",
+  "reader_scripture_read_chapter": "Soma essuula yonna",
   "reader_mark_one": "akabonero",
   "reader_mark_many": "obubonero",
   "progress_min_left": "eddakiika zisigadde mu ssuula",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Enjiri",
   "bible_division_acts": "Ebikolwa by'Abatume",
   "bible_division_paul": "Ebbaluwa za Pawulo",
+  "bible_sermons_on_book": "Obubaka ku kitabo kino",
+  "bible_sermons_all": "Obubaka bwonna %count% ku %book%",
   "bible_division_general_letters": "Ebbaluwa Endala",
   "bible_division_revelation": "Okubikkulirwa",
   "bible_read_along": "Soma mpola mpola",
   "bible_in_order": "Gisome yonna mu nsengeka, okuva ku Olubereberye okutuuka ku Okubikkulirwa",
+  "bible_listen_book": "Wuliriza ekitabo kyonna",
   "journey_you_are_here": "Wano w'oli",
   "journey_passed": "Oyise mu bifo %n% ku %t%",
   "bookplate_heading": "Akabonero k’ekitabo kyo",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Soma ekisomo kya leero",
   "calendar_locked": "Lunaaggulwawo %date%",
   "calendar_open_today": "Ggulawo oluggi lwa leero",
-  "calendar_see_doors": "Laba enzigi"
+  "calendar_see_doors": "Laba enzigi",
+  "bible_canon_label": "Ebitabo bya Baibuli"
 }

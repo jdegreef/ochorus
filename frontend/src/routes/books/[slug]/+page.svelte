@@ -18,6 +18,7 @@
 		contentLang,
 		readingMinutes,
 		readingTime,
+		listenTime,
 		workPercent
 	} from '$lib/reading';
 	import {
@@ -57,9 +58,12 @@
 	import { journeyMapFor } from '$lib/journeyMaps';
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { listen } from '$lib/listen.svelte';
+	import { listenBookFor, requestBookListen } from '$lib/listenBook';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import GiftBookButton from '$lib/components/GiftBookButton.svelte';
@@ -159,6 +163,9 @@
 		finishedAt == null && resumeHere != null && (resumeHere > 1 || otherPlace != null)
 	);
 	const firstOrder = $derived(book.chapters[0]?.order ?? 1);
+	// A book of the Bible offers to be listened to straight through, where this
+	// browser can read aloud at all (`listen.offered`: always in the prerender).
+	const listenWhole = $derived(listenBookFor(book) && listen.offered);
 	const readOrder = $derived(resuming && resumeHere != null ? resumeHere : firstOrder);
 	/** A first-time reader (and the prerender): nothing to resume or re-read. */
 	const fresh = $derived(finishedAt == null && !resuming);
@@ -880,6 +887,23 @@
 								>{/if}</a
 						>
 						{#if !book.daily}{@render reassurance()}{/if}
+						{#if listenWhole}
+							<!-- A book of the Bible, listened to straight through: its first
+							     chapter opens already reading aloud, and the reader's roll-over
+							     carries it chapter by chapter ($lib/listenBook). A plain link to
+							     that chapter without the script, or opened in a new tab. -->
+							<a
+								href={readHref(firstOrder)}
+								class="btn btn-ghost flex-col gap-0"
+								onclick={(e) => {
+									if (!e.defaultPrevented && e.button === 0 && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey))
+										requestBookListen(book.slug, firstOrder);
+								}}
+								><span class="inline-flex items-center gap-1.5"
+									><Icon name="headphones" size={18} />{t('bible.listenBook')}</span
+								>{#if totalWords}{' '}<span class="btn-sub">{listenTime(totalWords, listen.rate)}</span>{/if}</a
+							>
+						{/if}
 						{#if book.daily_plan}
 							<!-- The self-paced way through: day one is 1 January's
 							     reading, whenever the reader begins (plan_seed.DAILY_PLANS). -->
@@ -1375,6 +1399,31 @@
 					<PersonCard {person} />
 				{/each}
 			</div>
+		</section>
+	{/if}
+
+	<!-- A book of the Bible: the library's sermons on it — those whose text is
+	     in this book (library/bible_sermons.py), canon order, the first few —
+	     and the rest on the sermons shelf, filtered to this book by its facet. -->
+	{#if book.bible_sermons?.sermons.length}
+		{@const shelf = book.bible_sermons}
+		<section id="sermons" class="jump-anchor mt-12" aria-labelledby="bible-sermons-heading">
+			<h2 id="bible-sermons-heading" class="section-heading no-rule">{t('bible.sermonsOnBook')}</h2>
+			<div class="sermon-list">
+				{#each shelf.sermons as sermon (sermon.slug)}
+					<SermonCard {sermon} showAuthor />
+				{/each}
+			</div>
+			{#if shelf.count > shelf.sermons.length}
+				<p class="mt-3">
+					<a
+						href={localizeHref(`/sermons?book=${encodeURIComponent(shelf.book)}`)}
+						class="text-small font-semibold text-accent hover:underline"
+						>{t('bible.sermonsAll').replace('%count%', String(shelf.count)).replace('%book%', shelf.book)}
+						<Arrow /></a
+					>
+				</p>
+			{/if}
 		</section>
 	{/if}
 

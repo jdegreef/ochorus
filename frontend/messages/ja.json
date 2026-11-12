@@ -93,6 +93,7 @@
   "reader_scripture_page": "この箇所について古典が語ること",
   "reader_related_passages": "関連箇所",
   "reader_crossrefs_credit": "相互参照: %source%(CC BY)",
+  "reader_scripture_read_chapter": "章全体を読む",
   "reader_mark_one": "件のマーク",
   "reader_mark_many": "件のマーク",
   "progress_min_left": "分（この章の残り）",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "福音書",
   "bible_division_acts": "使徒行伝",
   "bible_division_paul": "パウロの手紙",
+  "bible_sermons_on_book": "この書についての説教",
+  "bible_sermons_all": "%book%についての説教すべて（%count%編）",
   "bible_division_general_letters": "公同書簡",
   "bible_division_revelation": "ヨハネの黙示録",
   "bible_read_along": "順に読む",
   "bible_in_order": "創世記から黙示録まで、通して読む",
+  "bible_listen_book": "書全体を聴く",
   "journey_you_are_here": "現在地",
   "journey_passed": "%t%か所中%n%か所を通過",
   "bookplate_heading": "あなたの蔵書票",
@@ -1782,5 +1786,6 @@
   "calendar_read": "今日の読み物を読む",
   "calendar_locked": "%date%に開きます",
   "calendar_open_today": "今日の扉を開く",
-  "calendar_see_doors": "扉を見る"
+  "calendar_see_doors": "扉を見る",
+  "bible_canon_label": "聖書の各書"
 }

@@ -93,6 +93,7 @@
   "reader_scripture_page": "Các tác phẩm kinh điển nói gì về đoạn này",
   "reader_related_passages": "Các đoạn liên quan",
   "reader_crossrefs_credit": "Tham chiếu chéo từ %source%, CC BY",
+  "reader_scripture_read_chapter": "Đọc cả chương",
   "reader_mark_one": "dấu",
   "reader_mark_many": "dấu",
   "progress_min_left": "phút còn lại trong chương",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Phúc Âm",
   "bible_division_acts": "Công Vụ",
   "bible_division_paul": "Thư của Phao-lô",
+  "bible_sermons_on_book": "Bài giảng về sách này",
+  "bible_sermons_all": "Tất cả %count% bài giảng về %book%",
   "bible_division_general_letters": "Thư Tín Chung",
   "bible_division_revelation": "Khải Huyền",
   "bible_read_along": "Đọc từng bước",
   "bible_in_order": "Đọc trọn theo thứ tự, từ Sáng Thế Ký đến Khải Huyền",
+  "bible_listen_book": "Nghe cả sách",
   "journey_you_are_here": "Bạn đang ở đây",
   "journey_passed": "Đã qua %n% / %t% địa điểm",
   "bookplate_heading": "Ex libris của bạn",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Đọc bài đọc hôm nay",
   "calendar_locked": "Mở vào %date%",
   "calendar_open_today": "Mở cánh cửa hôm nay",
-  "calendar_see_doors": "Xem các cánh cửa"
+  "calendar_see_doors": "Xem các cánh cửa",
+  "bible_canon_label": "Các sách trong Kinh Thánh"
 }

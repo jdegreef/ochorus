@@ -93,6 +93,7 @@
   "reader_scripture_page": "ما تقوله الكتب الكلاسيكية عن هذا المقطع",
   "reader_related_passages": "مقاطع ذات صلة",
   "reader_crossrefs_credit": "الشواهد المرجعية من %source%، بترخيص CC BY",
+  "reader_scripture_read_chapter": "اقرأ الأصحاح كاملًا",
   "reader_mark_one": "علامة",
   "reader_mark_many": "علامات",
   "progress_min_left": "دقيقة متبقية في الفصل",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "الأناجيل",
   "bible_division_acts": "أعمال الرسل",
   "bible_division_paul": "رسائل بولس",
+  "bible_sermons_on_book": "عظات عن هذا السفر",
+  "bible_sermons_all": "كل العظات عن %book% (%count%)",
   "bible_division_general_letters": "الرسائل العامة",
   "bible_division_revelation": "الرؤيا",
   "bible_read_along": "اقرأ خطوة بخطوة",
   "bible_in_order": "اقرأه كاملًا بالترتيب، من التكوين إلى الرؤيا",
+  "bible_listen_book": "استمع إلى السفر كاملًا",
   "journey_you_are_here": "أنت هنا",
   "journey_passed": "اجتزت %n% من %t% أماكن",
   "bookplate_heading": "خاتم مكتبتك",
@@ -1782,5 +1786,6 @@
   "calendar_read": "اقرأ قراءة اليوم",
   "calendar_locked": "يُفتح في %date%",
   "calendar_open_today": "افتح باب اليوم",
-  "calendar_see_doors": "شاهد الأبواب"
+  "calendar_see_doors": "شاهد الأبواب",
+  "bible_canon_label": "أسفار الكتاب المقدس"
 }

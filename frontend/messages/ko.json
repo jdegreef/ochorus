@@ -93,6 +93,7 @@
   "reader_scripture_page": "이 구절에 대해 고전이 말하는 것",
   "reader_related_passages": "관련 구절",
   "reader_crossrefs_credit": "상호 참조: %source%, CC BY",
+  "reader_scripture_read_chapter": "장 전체 읽기",
   "reader_mark_one": "개 표시",
   "reader_mark_many": "개 표시",
   "progress_min_left": "분 남음 (이 장)",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "복음서",
   "bible_division_acts": "사도행전",
   "bible_division_paul": "바울 서신",
+  "bible_sermons_on_book": "이 책에 관한 설교",
+  "bible_sermons_all": "%book%에 관한 설교 %count%편 모두",
   "bible_division_general_letters": "일반 서신",
   "bible_division_revelation": "요한계시록",
   "bible_read_along": "차근차근 읽기",
   "bible_in_order": "창세기부터 요한계시록까지 순서대로 읽기",
+  "bible_listen_book": "책 전체 듣기",
   "journey_you_are_here": "현재 위치",
   "journey_passed": "%t%곳 중 %n%곳을 지났어요",
   "bookplate_heading": "나의 장서표",
@@ -1782,5 +1786,6 @@
   "calendar_read": "오늘의 읽을거리 읽기",
   "calendar_locked": "%date%에 열립니다",
   "calendar_open_today": "오늘의 문 열기",
-  "calendar_see_doors": "문 보기"
+  "calendar_see_doors": "문 보기",
+  "bible_canon_label": "성경의 책들"
 }

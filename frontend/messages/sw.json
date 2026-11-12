@@ -93,6 +93,7 @@
   "reader_scripture_page": "Vitabu vya kale vinasema nini kuhusu kifungu hiki",
   "reader_related_passages": "Vifungu vinavyohusiana",
   "reader_crossrefs_credit": "Marejeo mtambuka kutoka %source%, CC BY",
+  "reader_scripture_read_chapter": "Soma sura nzima",
   "reader_mark_one": "alama",
   "reader_mark_many": "alama",
   "progress_min_left": "dakika zimebaki katika sura",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Injili",
   "bible_division_acts": "Matendo",
   "bible_division_paul": "Nyaraka za Paulo",
+  "bible_sermons_on_book": "Mahubiri juu ya kitabu hiki",
+  "bible_sermons_all": "Mahubiri yote %count% juu ya %book%",
   "bible_division_general_letters": "Nyaraka za Jumla",
   "bible_division_revelation": "Ufunuo",
   "bible_read_along": "Soma hatua kwa hatua",
   "bible_in_order": "Isome yote kwa mpangilio, kutoka Mwanzo hadi Ufunuo",
+  "bible_listen_book": "Sikiliza kitabu kizima",
   "journey_you_are_here": "Uko hapa",
   "journey_passed": "Umepita sehemu %n% kati ya %t%",
   "bookplate_heading": "Alama yako ya kitabu",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Soma somo la leo",
   "calendar_locked": "Utafunguliwa %date%",
   "calendar_open_today": "Fungua mlango wa leo",
-  "calendar_see_doors": "Tazama milango"
+  "calendar_see_doors": "Tazama milango",
+  "bible_canon_label": "Vitabu vya Biblia"
 }

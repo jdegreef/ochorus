@@ -93,6 +93,7 @@
   "reader_scripture_page": "What the classics say on this passage",
   "reader_related_passages": "Related passages",
   "reader_crossrefs_credit": "Cross-references from %source%, CC BY",
+  "reader_scripture_read_chapter": "Read the whole chapter",
   "reader_mark_one": "mark",
   "reader_mark_many": "marks",
   "progress_min_left": "min left in chapter",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Gospels",
   "bible_division_acts": "Acts",
   "bible_division_paul": "Letters of Paul",
+  "bible_sermons_on_book": "Sermons on this book",
+  "bible_sermons_all": "All %count% sermons on %book%",
   "bible_division_general_letters": "General Letters",
   "bible_division_revelation": "Revelation",
   "bible_read_along": "Read along",
   "bible_in_order": "Read it straight through, from Genesis to Revelation",
+  "bible_listen_book": "Listen to the whole book",
   "journey_you_are_here": "You are here",
   "journey_passed": "%n% of %t% places passed",
   "bookplate_heading": "Your bookplate",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Read today’s reading",
   "calendar_locked": "Opens on %date%",
   "calendar_open_today": "Open today’s door",
-  "calendar_see_doors": "See the doors"
+  "calendar_see_doors": "See the doors",
+  "bible_canon_label": "Books of the Bible"
 }

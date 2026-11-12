@@ -93,6 +93,7 @@
   "reader_scripture_page": "Ce que disent les classiques sur ce passage",
   "reader_related_passages": "Passages liés",
   "reader_crossrefs_credit": "Références croisées de %source%, CC BY",
+  "reader_scripture_read_chapter": "Lire tout le chapitre",
   "reader_mark_one": "marque",
   "reader_mark_many": "marques",
   "progress_min_left": "min restantes dans le chapitre",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Évangiles",
   "bible_division_acts": "Actes",
   "bible_division_paul": "Lettres de Paul",
+  "bible_sermons_on_book": "Sermons sur ce livre",
+  "bible_sermons_all": "Les %count% sermons sur %book%",
   "bible_division_general_letters": "Épîtres générales",
   "bible_division_revelation": "Apocalypse",
   "bible_read_along": "Lire pas à pas",
   "bible_in_order": "Tout lire dans l’ordre, de la Genèse à l’Apocalypse",
+  "bible_listen_book": "Écouter le livre en entier",
   "journey_you_are_here": "Vous êtes ici",
   "journey_passed": "%n% lieux sur %t% traversés",
   "bookplate_heading": "Votre ex-libris",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Lire la lecture du jour",
   "calendar_locked": "S’ouvre le %date%",
   "calendar_open_today": "Ouvrir la porte du jour",
-  "calendar_see_doors": "Voir les portes"
+  "calendar_see_doors": "Voir les portes",
+  "bible_canon_label": "Livres de la Bible"
 }

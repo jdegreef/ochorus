@@ -93,6 +93,7 @@
   "reader_scripture_page": "Що кажуть класики про цей уривок",
   "reader_related_passages": "Споріднені уривки",
   "reader_crossrefs_credit": "Перехресні посилання з %source%, CC BY",
+  "reader_scripture_read_chapter": "Читати весь розділ",
   "reader_mark_one": "позначка",
   "reader_mark_many": "позначок",
   "progress_min_left": "хв до кінця розділу",
@@ -1756,10 +1757,13 @@
   "bible_division_gospels": "Євангелія",
   "bible_division_acts": "Дії",
   "bible_division_paul": "Послання Павла",
+  "bible_sermons_on_book": "Проповіді на цю книгу",
+  "bible_sermons_all": "Усі проповіді на %book% (%count%)",
   "bible_division_general_letters": "Соборні послання",
   "bible_division_revelation": "Об’явлення",
   "bible_read_along": "Читайте крок за кроком",
   "bible_in_order": "Прочитайте все по порядку, від Буття до Об’явлення",
+  "bible_listen_book": "Слухати всю книгу",
   "journey_you_are_here": "Ви тут",
   "journey_passed": "Пройдено %n% з %t% місць",
   "bookplate_heading": "Ваш екслібрис",
@@ -1782,5 +1786,6 @@
   "calendar_read": "Прочитати сьогоднішнє читання",
   "calendar_locked": "Відчиняться %date%",
   "calendar_open_today": "Відчинити сьогоднішні двері",
-  "calendar_see_doors": "Переглянути двері"
+  "calendar_see_doors": "Переглянути двері",
+  "bible_canon_label": "Книги Біблії"
 }
