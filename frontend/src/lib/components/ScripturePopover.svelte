@@ -7,13 +7,16 @@
 	import { bibleIn } from '$lib/bible';
 	import { localizeHref } from '$lib/href';
 	import { getLocale } from '$lib/paraglide/runtime';
+	import { bookChapterPath } from '$lib/reading-schema';
 
 	const t = i18n.t;
 	// The whole chapter in the library's own Bible, where this locale has one
-	// (`bibleIn`: the Bible books are English-only rows, no fallback).
+	// (`bibleIn`: the Bible books are English-only rows, no fallback). Read once:
+	// a document's locale is fixed (a cross-locale navigation is a full load).
+	const withBible = bibleIn(getLocale());
 	const chapterHref = $derived.by(() => {
 		const c = scripture.result?.bible_chapter;
-		return c && bibleIn(getLocale()) ? localizeHref(`/books/${c.slug}/${c.order}/`) : '';
+		return c && withBible ? localizeHref(bookChapterPath(c.slug, c.order, false)) : '';
 	});
 	let card = $state<HTMLDivElement>();
 

@@ -101,8 +101,17 @@ class ScriptureTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data["verses"]), 2)
 
+    def test_chapter_of_is_where_the_reader_prints_the_verse(self):
+        from library.scripture import chapter_of
+
+        self.assertEqual(chapter_of("Romans 8:38-9:2"), (45, 8))
+        self.assertEqual(chapter_of("Psalm 23"), (19, 23))
+        # OWB prints Isaiah 64:1 inside 63:19, and so does the reader.
+        self.assertEqual(chapter_of("Isaiah 64:1"), (23, 63))
+        self.assertIsNone(chapter_of("Nope 1:1"))
+
     def test_lookup_names_the_chapter_in_the_librarys_own_bible(self):
-        from library.models import Book, Chapter, Series
+        from library.models import Series
 
         series = Series.objects.create(slug="the-bible", title="The Bible")
         author = Author.objects.create(slug="owb-x", name="Open Word Bible")
@@ -111,13 +120,15 @@ class ScriptureTests(TestCase):
             series=series, series_position=45,
         )
         # Introduction, then Romans 1.. as reader chapters 2.. (build_owb_book).
-        for order in (1, 9, 10):
-            Chapter.objects.create(book=romans, order=order, title=f"C{order}", body_html="<p>x</p>")
+        for order, title in [(1, "Introduction"), (9, "Romans 8"), (10, "Romans 9"), (11, "Romans 7")]:
+            Chapter.objects.create(book=romans, order=order, title=title, body_html="<p>x</p>")
         res = self.client.get("/api/library/scripture/?ref=Romans 8:38-9:2")
         self.assertEqual(res.data["bible_chapter"], {"slug": "romans", "order": 9})
         # A chapter the edition doesn't carry, and a book the library hasn't.
         self.assertIsNone(self.client.get("/api/library/scripture/?ref=Romans 3:23").data["bible_chapter"])
         self.assertIsNone(self.client.get("/api/library/scripture/?ref=John 3:16").data["bible_chapter"])
+        # A title that disagrees with its order (a drifted layout) is no link.
+        self.assertIsNone(self.client.get("/api/library/scripture/?ref=Romans 10:1").data["bible_chapter"])
         romans.is_published = False
         romans.save()
         self.assertIsNone(self.client.get("/api/library/scripture/?ref=Romans 8:28").data["bible_chapter"])

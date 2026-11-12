@@ -46,7 +46,9 @@ describe('ScripturePopover', () => {
 
 	it('offers no chapter where the library has no edition of the book', () => {
 		expect(open(null)).toEqual([]);
-		// An API from before the field.
+	});
+
+	it('offers none from an API behind this build', () => {
 		expect(open(undefined)).toEqual([]);
 	});
 });
