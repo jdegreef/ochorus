@@ -642,12 +642,14 @@
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<!-- Tabs centred when they fit, start-aligned when they don't (plain
-			     `justify-center` on a scroller pushed the first tabs out of scroll
-			     reach). The rule spans the page column, as the shelves under it; the
-			     nav's ground covers text scrolling under. -->
+			<!-- Tabs on the page's one start edge, as the book page's: centred
+			     across the full page column they floated mid-page, away from the
+			     hero, the shelves and the prose below. The rule spans the page
+			     column, as the shelves under it; it sits on a child, not the nav,
+			     because `clientHeight` (subnavH → --pinned-offset) leaves out a
+			     border on the element it measures. -->
 			<div class="border-b border-border">
-				<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
+				<ul class="tab-strip flex gap-1" use:tabStrip={spy.active}>
 					{#each navItems as item (item.id)}
 						<li>
 							<a
@@ -1258,8 +1260,14 @@
 			border-inline-start: 1px solid var(--border);
 		}
 	}
-	/* The read button keeps a button's width when the row runs the page
-	   column alone (a lone book item would stretch it ~70rem). */
+	/* A lone item (only a book, a plan or a sermon) sits on the reading
+	   measure rather than a ~70rem slab of surface; two or three share the
+	   page column. */
+	.start-items:not(:has(> :nth-child(2))) {
+		max-width: 40rem;
+	}
+	/* The read button keeps a button's width when the book item is the
+	   widest of a row across the page column. */
 	.start-book .btn {
 		max-width: 22rem;
 	}
