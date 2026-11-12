@@ -3988,6 +3988,40 @@
 				546
 			]
 		},
+		"am/tell-me-the-story-1": {
+			"ground": "a34ea8379a03138c818cdb95509186c965617d35d5cfa451752f94046d8960bf",
+			"style": "young",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 286, 308, 330],
+					[167, 361, 433, 436]
+				],
+				"subtitle": [
+					[140, 492, 460, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
+			]
+		},
 		"am/ten-commandments": {
 			"ground": "e7d20b56522c6cfea786bc265b5d4442ddec2422633f154ee9fc4037ab67e03f",
 			"style": "press",

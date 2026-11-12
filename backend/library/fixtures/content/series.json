@@ -1242,6 +1242,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "tell-me-the-story"
+  ],
+  "language": "am",
+  "title": "ታሪኩን ንገረኝ",
+  "description": "ለልጆች እንደ ገና የተነገሩ የመጽሐፍ ቅዱስ የራሱ ታሪኮች፣ በሦስት ክፍሎች፦ የብሉይ ኪዳን ታሪኮች፣ የኢየሱስ ሕይወት፣ እና የአዲስ ኪዳን ታሪኮች። እያንዳንዱ ታሪክ በመኝታ ሰዓት ጮክ ብሎ ለማንበብ የሚበቃ አጭር ነው፤ በጸሎትና አብራችሁ በምትነጋገሩባቸው ጥያቄዎችም ይፈጸማል።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "they-were-young"
   ],
   "language": "es",
