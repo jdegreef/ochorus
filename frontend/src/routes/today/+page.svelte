@@ -28,7 +28,7 @@
 			? `${dateLabel} · ${t('daily.subtitle')}: ${readings.map((r) => r.book.title).join(', ')}.`
 			: t('daily.subtitle')
 	);
-	const canonical = $derived(`${SITE_URL}${localizeHref('/today/')}`);
+	const canonical = $derived(`${SITE_URL}${localizeHref('/today')}`);
 	const collectionLd = $derived(
 		collectionPage({
 			name: t('daily.title'),
@@ -46,13 +46,6 @@
      once the shelf has loaded in THIS one, and an alternate naming a language
      with none would point at an empty page. -->
 <Seo {title} {description} {canonical} hreflang={null} structuredData={[collectionLd]} />
-
-<svelte:head>
-	<!-- Still noindex: the page is client-only, so a crawler is served the SPA
-	     shell (200.html), whose raw HTML already says noindex ($lib/fallbackShell)
-	     before any of this head is drawn. Indexing it needs a prerendered shell. -->
-	<meta name="robots" content="noindex" />
-</svelte:head>
 
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('daily.title')} tagline={t('daily.subtitle')} />

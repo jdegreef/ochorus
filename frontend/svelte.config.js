@@ -161,6 +161,9 @@ const config = {
 					`/${l}/articles/`,
 					`/${l}/sermons`,
 					`/${l}/plans`,
+					// Prerendered shell, readings drawn client-side (routes/today/+page.ts);
+					// the home page only links it once the day's picks have loaded.
+					`/${l}/today`,
 					`/${l}/topics`,
 					`/${l}/about`,
 					`/${l}/contact`,

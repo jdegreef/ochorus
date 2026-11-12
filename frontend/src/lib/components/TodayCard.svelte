@@ -67,7 +67,7 @@
 				<SectionHeader
 					title={t('home.todayTitle')}
 					subtitle={dateLabel}
-					href={picks.reading ? localizeHref('/today/') : ''}
+					href={picks.reading ? localizeHref('/today') : ''}
 					linkText={t('daily.seeAll')}
 				/>
 				<ul role="list" class="m-0 grid list-none p-0 {GRID[columns]}">

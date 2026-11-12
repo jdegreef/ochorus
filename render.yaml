@@ -609,9 +609,11 @@ services:
       - type: rewrite
         source: /welcome
         destination: /200.html
+      # /today prerenders to a shell (routes/today/+page.ts), like /search, so it
+      # is indexable; ahead of /today/* so the slashed /today/ lands here too.
       - type: rewrite
         source: /today
-        destination: /200.html
+        destination: /today.html
       - type: rewrite
         source: /today/*
         destination: /200.html
@@ -653,7 +655,7 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/today
-        destination: /200.html
+        destination: /:lang/today.html
       - type: rewrite
         source: /:lang/today/*
         destination: /200.html

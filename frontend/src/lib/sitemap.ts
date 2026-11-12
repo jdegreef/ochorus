@@ -467,6 +467,7 @@ async function build(): Promise<SitemapData> {
 		'/sermons',
 		'/topics',
 		'/plans',
+		'/today',
 		'/biographies',
 		'/about',
 		'/contact',

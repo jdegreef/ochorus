@@ -102,7 +102,7 @@
 			<SectionHeader
 				title={t('daily.title')}
 				subtitle={`${dateLabel} · ${t('daily.subtitle')}`}
-				href={localizeHref('/today/')}
+				href={localizeHref('/today')}
 				linkText={t('daily.seeAll')}
 			/>
 			{@render cards()}
