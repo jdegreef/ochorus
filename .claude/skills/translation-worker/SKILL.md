@@ -2951,3 +2951,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   English in the same PR (a literal `—“`→`—”` swap was safe here: every hit was a
   closer — check that first). (4) `<img>` alt text stays English (the system prompt
   copies the tag verbatim); say so in the PR.
+- **`pythonbible.get_references` turns a BARE BOOK NAME in prose into a whole-book
+  reference** (sw Law/Wesley/Edwards batch, 2026-11-01). "the Acts", "Mark", "Job",
+  "Numbers", "Judges", "Ruth", "James", "Revelation" each parse as the entire book,
+  so a crib built on them fills with `<Book> 1:1-4` rows nobody quoted — it was the
+  top "repeated verse" in all three books. Drop any parsed reference spanning >3
+  verses (it points, it doesn't quote). For UNCITED quotations, a 5-gram index over
+  pythonbible's own verse text (`get_verse_text`, all 31k verses, ~2s to build;
+  ignore grams that hit >6 verses) detects them well — it surfaced Law's constant
+  uncited 1 Peter / 1 John quoting that the citation parser never sees.
+- **A BOOK can be a collection of sermons that already ship separately in your
+  language — check before translating** (selected-sermons-edwards → sw): three of
+  its chapters were already `sermons/<slug>.sw.json` (same sermon, ~90-95% word
+  similarity, different paragraphing). `grep -l '"<author-slug>"' sermons/*.<lang>.json`
+  and hand those translators the en/sw pair to reuse, re-cut to the book's blocks —
+  it keeps the two editions agreeing and halves the work.
