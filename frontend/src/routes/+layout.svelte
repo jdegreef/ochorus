@@ -71,7 +71,9 @@
 	// site's iframe. No nav, footer or tab bar, and nothing that prompts —
 	// no One Tap, install or update toasts, feedback button or service worker
 	// — and its look is the one the host page asked for (?theme=), not the
-	// reader's stored theme.
+	// reader's stored theme. No sign-in either: it shows only public picks, and
+	// a reader's session has no business restoring (or syncing) inside a
+	// church's page, so Supabase is never loaded there.
 	const embedded = $derived(isEmbedRoute($page.route.id));
 
 	// The phone app's native shell (safe areas, outside links, Android's Back,
@@ -126,7 +128,7 @@
 		readerPrefs.init();
 		pageWidth.init();
 		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
-		auth.init();
+		if (!embedded) auth.init();
 		if (!embedded) pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
