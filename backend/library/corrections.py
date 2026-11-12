@@ -3395,6 +3395,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("our manifestations as sons of God", "our manifestation as sons of God"),
             ("bind them in bundles to barn them", "bind them in bundles to burn them"),
             ("What thought do these expressions convey.", "What thought do these expressions convey?"),
+            ("heaven: as is the earth, such are they also that are earthy", "heaven: as is the earthy, such are they also that are earthy"),
         ],
     },
     "rest": {
