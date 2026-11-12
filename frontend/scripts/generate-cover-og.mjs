@@ -140,15 +140,14 @@ const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
 // pages only (it is ~100 KB of declarations; see its header). So a Korean card
 // reads its faces from here, as the page it stands in for does.
 const KO_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ko.css'), 'utf8');
+// Japanese the same way, for the same reason (fonts-ja.css).
+const JA_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ja.css'), 'utf8');
 // The other non-Latin scripts' faces, and the reader's, moved out of app.css too
 // (each sheet is linked only where it is drawn; see $lib/fontSheets.ts) — but
 // they are a few KB, not Korean's 124 slices a weight, so their imports join
 // app.css's below rather than taking Korean's separate path. fonts-reader.css
 // counts because Libre Baskerville's 700 (a cover family's bold) lives there.
-// fonts-ja.css is left out for Korean's reason (numbered CJK slices) — and
-// because joining FACE_IMPORTS would move every card's `fonts` digest. No
-// Japanese edition has a twin yet; the first one needs `hangulFaces`
-// generalised to read the kana/kanji slices from fonts-ja.css the same way.
+// fonts-ja.css takes Korean's path too (numbered CJK slices; see `SLICED`).
 //
 // IN THE ORDER app.css imported them before the split, and that is load-bearing:
 // each card's `fonts` digest (see `fontDigest`) hashes the face text in order,
@@ -314,10 +313,21 @@ function twinPath(slug, language) {
 // ── The page ────────────────────────────────────────────────────────────────
 
 /** The `--cover-face-*` and `--font-display` declarations, as written. */
-const coverTokens = () =>
+const coverTokens = (face = null) =>
 	[...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(([, decl]) =>
-		decl.trim()
+		face === 'japanese' ? decl.trim() : withoutJapanese(decl.trim())
 	);
+
+/**
+ * A token as every card but a Japanese one is set: without the JP families.
+ *
+ * They were added to the stacks after ~1,700 twins were drawn, and the tokens
+ * are re-emitted into each card's face block, so naming them everywhere moved
+ * every `fonts` digest and redrew the library for no visible change: off a
+ * Japanese card no JP face is declared, and the browser skips the name. So
+ * they stay where they draw something.
+ */
+const withoutJapanese = (decl) => decl.replace(/,\s*'Noto (?:Serif|Sans) JP'/g, '');
 
 /** EVERY quoted family in those tokens — what a cover can name, script faces
  *  included. One list for the named subsets and the Hangul slices alike. */
@@ -368,7 +378,7 @@ function buildFontCss(face) {
 	// The token block first: it is also the list of families a cover can ask
 	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
 	// out without naming either of them here.
-	const tokens = coverTokens();
+	const tokens = coverTokens(face);
 	// EVERY quoted name in the tokens, because a stack's script faces sit after
 	// its first: `--font-display` names Fraunces, then Amiri, then Tiro, then PT
 	// Serif. Taking only the first is what left every non-Latin card unserved.
@@ -385,10 +395,10 @@ function buildFontCss(face) {
 	// latin always — even an Arabic card sets its byline in it — plus the card's
 	// own. Cyrillic takes its ext too: PT Serif splits Ukrainian's ґ out of the
 	// base block, the same split that hid the gap in `--font-sans`.
-	// Korean has no NAMED subset — its faces come as numbered slices, chosen per
-	// card by `hangulFaces` — so here it is latin's case.
+	// Korean and Japanese have no NAMED subset — their faces come as numbered
+	// slices, chosen per card by `slicedFaces` — so here they are latin's case.
 	const subsets = ['latin', 'latin-ext'];
-	if (face && face !== 'korean') subsets.push(face);
+	if (face && !SLICED[face]) subsets.push(face);
 	if (face === 'cyrillic') subsets.push('cyrillic-ext');
 	const wantedSubset = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
 	// Recorded HERE, while the filenames are still filenames. The blocks are
@@ -445,7 +455,7 @@ function buildFontCss(face) {
 	// recipe's own family arrived; it cannot notice that an Arabic card carries
 	// six Latin faces and nothing that can draw an Arabic glyph, which is
 	// precisely what shipped. This asks the question the card is about.
-	if (face && face !== 'korean' && !subsetsSeen.has(face)) {
+	if (face && !SLICED[face] && !subsetsSeen.has(face)) {
 		throw new Error(
 			`no @font-face for ${face} reached the card — every ${face} twin would ` +
 				`render in whatever font the machine drawing it happens to have, and look ` +
@@ -480,7 +490,8 @@ const FACE_SUBSET = {
 	Deva: 'devanagari',
 	Cyrl: 'cyrillic',
 	Ethi: 'ethiopic',
-	Kore: 'korean'
+	Kore: 'korean',
+	Jpan: 'japanese'
 };
 function faceScriptOf(language) {
 	try {
@@ -500,22 +511,47 @@ const rangeCovers = (range, text) =>
 		});
 	});
 
-/** Every upright Hangul slice `fonts-ko.css` declares for a family some cover
- *  can name, as { range, css } — read once; each woff2 inlined on first use. */
-let HANGUL_SLICES = null;
-function hangulSlices() {
-	if (HANGUL_SLICES) return HANGUL_SLICES;
-	// The same family list `buildFontCss` serves.
-	const wanted = coverFamilies();
-	HANGUL_SLICES = [...KO_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
+/**
+ * The CJK scripts whose faces ship as ~120 NUMBERED unicode-range slices per
+ * weight rather than a named subset — read from their own sheet, which the
+ * root layout links on that locale's pages only. `tag` is the slice filename's
+ * script segment (`noto-serif-kr-37-700-normal`); `glyphs` what must be served.
+ */
+const SLICED = {
+	korean: {
+		css: KO_CSS,
+		tag: 'kr',
+		label: 'Korean',
+		sheet: 'fonts-ko.css',
+		glyphs: /[\p{Script=Hangul}\p{Script=Han}]/gu
+	},
+	japanese: {
+		css: JA_CSS,
+		tag: 'jp',
+		label: 'Japanese',
+		sheet: 'fonts-ja.css',
+		glyphs: /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/gu
+	}
+};
+
+/** Every upright slice a script's sheet declares for a family some cover can
+ *  name, as { range, css } — read once per script; each woff2 inlined on first use. */
+const SLICES = new Map();
+function slicesOf(face) {
+	if (SLICES.has(face)) return SLICES.get(face);
+	const { css: sheet, tag } = SLICED[face];
+	// The same family list `buildFontCss` serves this script.
+	const wanted = coverFamilies(coverTokens(face));
+	// Anchored to the slice NUMBER (`-kr-37-700-`), as in the home card: a bare
+	// `\d+` matches the weight too, and passes the named subsets.
+	const numbered = new RegExp(`url\\(\\./files/[^)]*-${tag}-\\d+-\\d{3}-`);
+	const slices = [...sheet.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
 		const file = sheetFile(spec);
 		return readFileSync(file, 'utf8')
 			.split('@font-face')
 			.slice(1)
 			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
-			// Anchored to the slice NUMBER (`-kr-37-700-`), as in the home card: a
-			// bare `\d+` matches the weight too, and passes the named subsets.
-			.filter((block) => /url\(\.\/files\/[^)]*-kr-\d+-\d{3}-/.test(block))
+			.filter((block) => numbered.test(block))
 			.filter((block) => !/font-style:\s*italic/.test(block))
 			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
 			.map((block) => {
@@ -535,34 +571,36 @@ function hangulSlices() {
 				};
 			});
 	});
-	return HANGUL_SLICES;
+	SLICES.set(face, slices);
+	return slices;
 }
 
 /**
- * The Hangul slices that draw THIS card's words, and no others.
+ * The slices that draw THIS card's words, and no others.
  *
- * A Hangul face ships ~120 numbered unicode-range slices per weight; inlining
+ * A CJK face ships ~120 numbered unicode-range slices per weight; inlining
  * every one is megabytes of base64 per card. Only the slices covering a glyph
  * of the title, subtitle, byline or numeral can paint anything, and that is
  * exactly the set unicode-range would have fetched in the app.
  *
  * The guard `buildFontCss` keeps for a named subset, kept here: a card with a
- * Hangul syllable on it and no slice to draw it would be photographed in the
- * machine's own Korean face (AppleMyungjo on a Mac) and look deliberate —
- * which is what every committed Korean twin was until this existed.
+ * Hangul syllable (or a kana, or a kanji) on it and no slice to draw it would
+ * be photographed in the machine's own face (AppleMyungjo on a Mac) and look
+ * deliberate — which is what every committed Korean twin was until this existed.
  */
-function hangulFaces(text) {
-	const slices = hangulSlices().filter((slice) => rangeCovers(slice.range, text));
+function slicedFaces(face, text) {
+	const { label, sheet, glyphs } = SLICED[face];
+	const slices = slicesOf(face).filter((slice) => rangeCovers(slice.range, text));
 	// PER GLYPH, not "did any slice match": one common syllable would satisfy
 	// that while a rare one, or a Hanja, fell through to the machine's face.
-	const unserved = [...new Set(text.match(/[\p{Script=Hangul}\p{Script=Han}]/gu) ?? [])].filter(
+	const unserved = [...new Set(text.match(glyphs) ?? [])].filter(
 		(ch) => !slices.some((slice) => rangeCovers(slice.range, ch))
 	);
 	if (unserved.length) {
 		throw new Error(
-			`no Korean @font-face reached the card for ${unserved.join(' ')} in "${text}" — it would render ` +
-				`in whatever Korean font the machine drawing it happens to have, and look ` +
-				`deliberate. Check that fonts-ko.css still @imports a family the cover ` +
+			`no ${label} @font-face reached the card for ${unserved.join(' ')} in "${text}" — it would render ` +
+				`in whatever ${label} font the machine drawing it happens to have, and look ` +
+				`deliberate. Check that ${sheet} still @imports a family the cover ` +
 				`tokens (--font-display, --cover-face-*) name.`
 		);
 	}
@@ -595,7 +633,7 @@ function fontCssFor(face) {
  *  the slices its own words need. The one place the page and the digest ask. */
 function cardFontCss(book) {
 	const shared = fontCssFor(book.face);
-	return book.face === 'korean' ? shared + hangulFaces(cardText(book)) : shared;
+	return SLICED[book.face] ? shared + slicedFaces(book.face, cardText(book)) : shared;
 }
 
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
@@ -899,7 +937,7 @@ function made(book, groundBytes) {
  */
 const FONT_DIGEST = new Map();
 function fontDigest(book) {
-	if (book.face === 'korean') return digest(Buffer.from(cardFontCss(book)));
+	if (SLICED[book.face]) return digest(Buffer.from(cardFontCss(book)));
 	const key = scriptKey(book.face);
 	if (!FONT_DIGEST.has(key)) FONT_DIGEST.set(key, digest(Buffer.from(fontCssFor(book.face))));
 	return FONT_DIGEST.get(key);

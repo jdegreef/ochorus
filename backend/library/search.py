@@ -37,7 +37,14 @@ from django.db.models.functions import Coalesce
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import STORED_KINDS, config_for, positive_words, search_query
+from .fts import (
+    STORED_KINDS,
+    SUBSTRING_LANGUAGES,
+    config_for,
+    positive_words,
+    search_query,
+    uses_fts,
+)
 from .http_cache import MAX_AGE
 from .models import (
     Article,
@@ -334,7 +341,7 @@ TOASTED = frozenset({"chapter", "sermon"})
 
 
 @contextmanager
-def _index_scans():
+def _index_scans(language: str):
     """Steer Postgres off sequential scans for the TOASTED kinds' queries inside.
 
     library_chapter's heap is ~20 MB and its vectors ~750 MB beside it, and the
@@ -353,7 +360,7 @@ def _index_scans():
     setting from leaking to the next request on a pooled connection. If the
     body raises, rolling the atomic block back reverts the setting with it.
     """
-    if connection.vendor != "postgresql":
+    if not uses_fts(language):  # SQLite, or a substring search: no vectors read
         yield
         return
     # Inside a caller's transaction (a test, an atomic view) SET LOCAL lasts
@@ -383,7 +390,7 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     chapters, sermons = qs["chapter"], qs["sermon"]
 
     ctx = _Ctx(q=q, language=language)
-    if connection.vendor == "postgresql":
+    if uses_fts(language):
         base = _search_postgres(ctx, qs)
     else:
         base = _search_fallback(ctx, qs)
@@ -548,7 +555,7 @@ def _search_postgres(ctx, qs):
     pairs += entity("topic", _topic_hit)
     pairs += entity("plan", _plan_hit)
     pairs += entity("article", _article_hit)
-    with _index_scans():
+    with _index_scans(ctx.language):
         pairs += passages("chapter", _chapter_hit, "book__sort_order", "order")
         pairs += passages("sermon", _sermon_hit, "sort_order")
 
@@ -560,82 +567,28 @@ def _search_postgres(ctx, qs):
 
 
 def _search_fallback(ctx, qs):
-    authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, articles = qs["plan"], qs["article"]
-    chapters, sermons = qs["chapter"], qs["sermon"]
+    """Substring search: SQLite (dev), and the SUBSTRING_LANGUAGES everywhere."""
+    def rows(kind, *order):
+        return _match(kind, ctx, qs[kind]).order_by(*order)[: CAPS[kind]]
 
-    q = ctx.q
-    author_hits = [
-        _author_hit(a, ctx)
-        for a in authors.filter(
-            Q(name__icontains=q) | Q(bio__icontains=q)
-        ).order_by("name")[: CAPS["author"]]
-    ]
-    book_hits = [
-        _book_hit(b, ctx)
-        for b in books.filter(
-            Q(title__icontains=q)
-            | Q(subtitle__icontains=q)
-            | Q(description__icontains=q)
-            | Q(author__name__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["book"]]
-    ]
-    topic_hits = [
-        _topic_hit(tp, ctx)
-        for tp in topics.filter(
-            Q(title__icontains=q)
-            | Q(description__icontains=q)
-            | Q(translations__title__icontains=q)
-            | Q(translations__description__icontains=q)
-        )
-        .distinct()
-        .order_by("title")[: CAPS["topic"]]
-    ]
-    plan_hits = [
-        _plan_hit(p, ctx)
-        for p in plans.filter(
-            Q(title__icontains=q) | Q(description__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["plan"]]
-    ]
-    article_hits = [
-        _article_hit(ar, ctx)
-        for ar in articles.filter(
-            Q(h1__icontains=q)
-            | Q(meta_title__icontains=q)
-            | Q(description__icontains=q)
-        ).order_by("sort_order", "h1")[: CAPS["article"]]
-    ]
-
-    chapter_hits = [
-        _chapter_hit(c, snippet=fallback_snippet(c.body_text, q))
-        for c in chapters.filter(
-            Q(body_text__icontains=q)
-            | Q(title__icontains=q)
-            | Q(book__title__icontains=q)
-            | Q(book__subtitle__icontains=q)
-            | Q(book__author__name__icontains=q)
-        ).order_by("book__sort_order", "book__title", "order")[: CAPS["chapter"]]
-    ]
-    sermon_hits = [
-        _sermon_hit(s, snippet=fallback_snippet(s.body_text, q))
-        for s in sermons.filter(
-            Q(body_text__icontains=q)
-            | Q(title__icontains=q)
-            | Q(scripture_ref__icontains=q)
-            | Q(author__name__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["sermon"]]
-    ]
-
-    # Entities first (navigational), then passages, capped overall.
+    # The snippet centres on the first word; every word is in the row somewhere.
+    lead = _terms(ctx.q, ctx.language)[0]
     results = (
-        author_hits
-        + book_hits
-        + topic_hits
-        + plan_hits
-        + article_hits
-        + chapter_hits
-        + sermon_hits
+        [_author_hit(a, ctx) for a in rows("author", "name")]
+        + [_book_hit(b, ctx) for b in rows("book", "sort_order", "title")]
+        + [_topic_hit(tp, ctx) for tp in rows("topic", "title")]
+        + [_plan_hit(p, ctx) for p in rows("plan", "sort_order", "title")]
+        + [_article_hit(ar, ctx) for ar in rows("article", "sort_order", "h1")]
+        + [
+            _chapter_hit(c, snippet=fallback_snippet(c.body_text, lead))
+            for c in rows("chapter", "book__sort_order", "book__title", "order")
+        ]
+        + [
+            _sermon_hit(sm, snippet=fallback_snippet(sm.body_text, lead))
+            for sm in rows("sermon", "sort_order", "title")
+        ]
     )
+    # Entities first (navigational), then passages, capped overall.
     return results[:MAX_RESULTS]
 
 
@@ -650,8 +603,24 @@ def _search_fallback(ctx, qs):
 # come from different filters.
 
 
+def _terms(q: str, language: str) -> list[str]:
+    """What a substring match looks for: the whole query on SQLite (dev, as it
+    always has), each whitespace-separated word in a SUBSTRING_LANGUAGE."""
+    if language in SUBSTRING_LANGUAGES:
+        return q.split() or [q]
+    return [q]
+
+
+def _lite_match(kind: str, q: str, language: str) -> Q:
+    """Every term of ``q`` somewhere in the row (see ``_terms``)."""
+    match = Q()
+    for term in _terms(q, language):
+        match &= _lite_q(kind, term)
+    return match
+
+
 def _lite_q(kind: str, q: str) -> Q:
-    """The SQLite (dev) match predicate for one type."""
+    """The substring match predicate for one type."""
     if kind == "author":
         return Q(name__icontains=q) | Q(bio__icontains=q)
     if kind == "book":
@@ -760,8 +729,8 @@ def _pg_vector(kind: str, config: str, language: str):
 
 def _match(kind: str, ctx, qs):
     """Rows of ``kind`` matching the query — unordered, un-paged."""
-    if connection.vendor != "postgresql":
-        matched = qs.filter(_lite_q(kind, ctx.q))
+    if not uses_fts(ctx.language):
+        matched = qs.filter(_lite_match(kind, ctx.q, ctx.language))
         return matched.distinct() if kind == "topic" else matched
 
     query = search_query(ctx.q, ctx.language)
@@ -829,7 +798,7 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     for kind in querysets:
         if kind not in TOASTED:
             tally(kind)
-    with _index_scans():
+    with _index_scans(language):
         for kind in querysets:
             if kind in TOASTED:
                 tally(kind)
@@ -881,12 +850,12 @@ def page_by_type(
 
     if sort in ("title", "newest"):
         qs = qs.order_by(*_ORDER[kind][sort])
-    elif connection.vendor == "postgresql":
+    elif uses_fts(language):
         qs = _pg_rank_order(kind, ctx, qs)
     else:
         qs = qs.order_by(*_ORDER[kind]["natural"])
 
-    with _index_scans() if kind in TOASTED else nullcontext():
+    with _index_scans(language) if kind in TOASTED else nullcontext():
         return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
 
 
