@@ -2950,3 +2950,14 @@ archaic spelling and period punctuation are the text, not defects in it.
   similarity, different paragraphing). `grep -l '"<author-slug>"' sermons/*.<lang>.json`
   and hand those translators the en/sw pair to reuse, re-cut to the book's blocks —
   it keeps the two editions agreeing and halves the work.
+- **A long batch's `/private/tmp` scratchpad does not survive a reboot — and it can be
+  rebuilt from the subagent transcripts** (sw Law/Wesley/Edwards batch, 2026-11). Two
+  wipes took ~45 finished units with them. Keep `out/`, `reports/` and the brief in a
+  durable dir (outside `/tmp`) for any multi-day batch. If it is already gone, the
+  translators' own tool calls still hold the text: replay each agent's Write / Edit /
+  Bash calls in order from `~/.claude/projects/<project>/<session>/subagents/agent-*.jsonl`
+  (rewriting the old scratchpad path), after regenerating the inputs the helpers read.
+  That recovered 29 of 31 units verbatim. **Re-validate the tag sequence afterwards**: an
+  append-mode heredoc that originally ran once can replay twice, and two units came back
+  with a duplicated tail. And before re-dispatching anything, re-check fresh `origin/main`,
+  because while this session was dead, other sessions had shipped all three books.
