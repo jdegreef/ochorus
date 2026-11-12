@@ -163,7 +163,8 @@
   "title": "Novo na Fé",
   "description": "Cinco semanas e meia para quem está apenas começando com Cristo. Charles Spurgeon vem ao seu encontro em «Junto à Porta Estreita» com a ajuda mais simples que existe para confiar em Jesus; depois R. A. Torrey, escrevendo para novos crentes, mostra como começar bem — a certeza da salvação, o Espírito Santo, a igreja, a Bíblia, a oração e o testemunho. Artigos curtos ao longo do caminho respondem às perguntas que todo novo cristão faz: o que é o evangelho, por que Jesus morreu, o que significam o batismo e a Ceia do Senhor, e como continuar crescendo.",
   "note": [
-   "Queue job #5698. AI-drafted; awaiting native review. «Junto à Porta Estreita» is the shipped pt title of around-the-wicket-gate. how-to-succeed-in-the-christian-life has no pt edition yet, so seed_plans will not create the (new-to-the-faith, pt) row until it ships; its translator should check this prose against that edition's title."
+   "Queue job #5698. AI-drafted; awaiting native review. «Junto à Porta Estreita» is the shipped pt title of around-the-wicket-gate. how-to-succeed-in-the-christian-life has no pt edition yet, so seed_plans will not create the (new-to-the-faith, pt) row until it ships; its translator should check this prose against that edition's title.",
+  "Job #7749 shipped how-to-succeed-in-the-christian-life.pt (“Como Ter Sucesso na Vida Cristã”). Checked: this prose names Torrey but not the book's title, so it agrees with the edition as written. The (new-to-the-faith, pt) row still waits on three pt articles (what-is-baptism, how-to-share-your-faith, how-to-grow-in-your-faith)."
   ]
  },
  "faithful-with-little": {
@@ -184,5 +185,13 @@
  "cheque-book-year": {
   "title": "Um ano com O Livro de Cheques do Banco da Fé",
   "description": "As promessas diárias de Charles Spurgeon: uma promessa de Deus para cada dia do ano, com uma breve palavra sobre como recebê-la pela fé. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Um ou dois minutos por dia."
+ },
+ "the-pilgrims-way": {
+  "title": "O Caminho do Peregrino",
+  "description": "O caminho de casa, em três clássicos. Charles Spurgeon vai ao encontro de quem busca junto à porta estreita, a alegoria imortal de John Bunyan acompanha o peregrino por todo o caminho até a Cidade Celestial, e o próprio testemunho de Bunyan mostra a graça que abundou para o principal dos pecadores.",
+  "note": [
+   "Book titles as shipped: «Junto à Porta Estreita» (around-the-wicket-gate.pt), «O Peregrino» (pilgrims-progress.pt), «Graça Abundante ao Principal dos Pecadores» (grace-abounding.pt, added in this PR, job #7670). The description echoes them (porta estreita / peregrino / Cidade Celestial / principal dos pecadores).",
+   "grace-abounding.pt completes the plan's three-book set in Portuguese, so seed_plans creates the (the-pilgrims-way, pt) row on the deploy that ships it — this prose must land in the SAME PR."
+  ]
  }
 }
