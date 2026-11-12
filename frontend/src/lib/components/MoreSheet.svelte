@@ -9,8 +9,7 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
-	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST, BIBLE_DEST } from '$lib/contentNav';
-	import { bibleIn } from '$lib/bible';
+	import { PRIMARY_NAV, ORIGINALS_DEST, hubDests } from '$lib/contentNav';
 	import { AUDIENCE_HUBS } from '$lib/audienceHub';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
@@ -33,13 +32,12 @@
 		withSource(localizeHref(loginHref($page.url.pathname, $page.url.search)), 'menu')
 	);
 
-	// The hub row: the Bible where its books have shipped (the footer's gate,
-	// $lib/bible), then the English-only hubs, unlocalized. Two across for an
-	// even count, so four never leave one tile alone on a row.
-	const hubTiles = $derived([
-		...(bibleIn(lang.current) ? [{ href: localizeHref(BIBLE_DEST.href), labelKey: BIBLE_DEST.labelKey }] : []),
-		...(lang.current === 'en' ? ENGLISH_HUBS.map((d) => ({ href: `${d.href}/`, labelKey: d.labelKey })) : [])
-	]);
+	// The hub row: the Bible where its books have shipped, then the English-only
+	// hubs (`contentNav.hubDests`). Two across for an even count and three for an
+	// odd one, so no row ends on a lone tile; a single tile takes the row.
+	const hubTiles = $derived(
+		hubDests(lang.current).map((d) => ({ href: localizeHref(d.href), labelKey: d.labelKey }))
+	);
 
 	/** Every link in the sheet navigates, so any link tap closes it — one
 	 *  handler rather than one per link that a new row could forget. */
@@ -95,7 +93,7 @@
 			{/each}
 		</div>
 		{#if hubTiles.length}
-			<div class="mt-2 grid gap-2" class:grid-cols-2={hubTiles.length % 2 === 0} class:grid-cols-3={hubTiles.length % 2 === 1}>
+			<div class="mt-2 grid gap-2" class:grid-cols-2={hubTiles.length % 2 === 0} class:grid-cols-3={hubTiles.length > 1 && hubTiles.length % 2 === 1}>
 				{#each hubTiles as d (d.href)}
 					<a href={d.href} class="more-tile justify-center">{t(d.labelKey)}</a>
 				{/each}

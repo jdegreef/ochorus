@@ -40,11 +40,9 @@
 	import {
 		PRIMARY_NAV,
 		SERIES_DEST,
-		ENGLISH_HUBS,
 		ORIGINALS_DEST,
-		BIBLE_DEST
+		hubDests
 	} from '$lib/contentNav';
-	import { bibleIn } from '$lib/bible';
 	import { localizeHref as localizeSlashed } from '$lib/href';
 	import type { NavSection } from '$lib/contentNav';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -228,13 +226,12 @@
 				label: t(d.labelKey)
 			})),
 			{ path: ORIGINALS_DEST.href, href: localizeHref(ORIGINALS_DEST.href), label: t(ORIGINALS_DEST.labelKey) },
-			// The Bible where its books have shipped — the footer's gate ($lib/bible).
-			...(bibleIn(lang.current)
-				? [{ path: BIBLE_DEST.href, href: localizeSlashed(BIBLE_DEST.href), label: t(BIBLE_DEST.labelKey) }]
-				: []),
-			...(lang.current === 'en'
-				? ENGLISH_HUBS.map((d) => ({ path: d.href, href: `${d.href}/`, label: t(d.labelKey) }))
-				: [])
+			// The Bible where its books have shipped, then the English-only hubs.
+			...hubDests(lang.current).map((d) => ({
+				path: d.href,
+				href: localizeSlashed(d.href),
+				label: t(d.labelKey)
+			}))
 		].map((d) => ({ ...d, active: isActive(d.path) }))
 	);
 	const navMoreActive = $derived(navMore.some((d) => d.active));
