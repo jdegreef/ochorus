@@ -1781,5 +1781,6 @@
   "calendar_read": "Read today’s reading",
   "calendar_locked": "Opens on %date%",
   "calendar_open_today": "Open today’s door",
-  "calendar_see_doors": "See the doors"
+  "calendar_see_doors": "See the doors",
+  "bible_canon_label": "Books of the Bible"
 }

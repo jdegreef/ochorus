@@ -1781,5 +1781,6 @@
   "calendar_read": "Đọc bài đọc hôm nay",
   "calendar_locked": "Mở vào %date%",
   "calendar_open_today": "Mở cánh cửa hôm nay",
-  "calendar_see_doors": "Xem các cánh cửa"
+  "calendar_see_doors": "Xem các cánh cửa",
+  "bible_canon_label": "Các sách trong Kinh Thánh"
 }

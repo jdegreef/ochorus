@@ -1781,5 +1781,6 @@
   "calendar_read": "今日の読み物を読む",
   "calendar_locked": "%date%に開きます",
   "calendar_open_today": "今日の扉を開く",
-  "calendar_see_doors": "扉を見る"
+  "calendar_see_doors": "扉を見る",
+  "bible_canon_label": "聖書の各書"
 }
