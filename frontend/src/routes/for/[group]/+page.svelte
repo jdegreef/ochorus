@@ -5,6 +5,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import ForEmbed from '$lib/components/ForEmbed.svelte';
 	import ForInvite from '$lib/components/ForInvite.svelte';
 	import ForSeries from '$lib/components/ForSeries.svelte';
 	import ForTogether from '$lib/components/ForTogether.svelte';
@@ -416,6 +417,14 @@
 						qrLabel: c.qr.alt(page.title)
 					}}
 				/>
+			</div>
+		</section>
+		{:else if section === 'embed'}
+		<section id="embed" class="jump-anchor mt-14" aria-labelledby="embed-heading">
+			<h2 id="embed-heading" class="text-h2">{c.embedHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.embedBody}</p>
+			<div class="mt-6 max-w-2xl">
+				<ForEmbed {locale} words={c.embed} onaction={report} />
 			</div>
 		</section>
 		{:else if section === 'questions'}

@@ -58,9 +58,12 @@ class Theme {
 	current = $state<ThemeApplied>('light');
 	#mql: MediaQueryList | null = null;
 
-	init() {
+	/** `pinned` applies a look for this document only, never read from or
+	 *  written to storage — the church widget (/embed/), whose host page
+	 *  chooses it in the iframe's URL ($lib/embed). */
+	init(pinned?: ThemePref) {
 		if (!browser) return;
-		this.preference = normalizePref(localStorage.getItem('theme'));
+		this.preference = pinned ?? normalizePref(localStorage.getItem('theme'));
 		// Live-follow the OS while on 'system'.
 		this.#mql = window.matchMedia('(prefers-color-scheme: dark)');
 		this.#mql.addEventListener('change', () => {

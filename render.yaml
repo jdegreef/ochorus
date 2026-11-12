@@ -370,6 +370,53 @@ services:
       - path: /*
         name: X-Frame-Options
         value: DENY
+      # ...except the church-website widget ($lib/embed, static/embed.js), which
+      # exists to sit in other sites' iframes. A <meta> CSP cannot carry
+      # frame-ancestors, so this header is what allows it: a browser that
+      # honours frame-ancestors ignores X-Frame-Options when it is present (CSP
+      # Level 2), so the DENY above still covers every other path. Any site may
+      # frame it (small churches' sites are not all https): the page has no
+      # action to click-jack, only links that open ochorus.com in a new tab.
+      # One rule per locale prefix, each written out: these paths take a `*`
+      # suffix, not a `:lang` placeholder. embed.test.ts holds the list to
+      # project.inlang. Verify after the Blueprint sync:
+      #   curl -sI https://ochorus.com/fr/embed/today | grep -i frame-ancestors
+      - path: /embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /es/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /sw/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /lg/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /pt/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /ar/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /hi/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /uk/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /fr/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /am/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /vi/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
+      - path: /ko/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
@@ -606,6 +653,9 @@ services:
         source: /today/*
         destination: /200.html
       - type: rewrite
+        source: /embed/*
+        destination: /200.html
+      - type: rewrite
         source: /login
         destination: /200.html
       - type: rewrite
@@ -646,6 +696,9 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/today/*
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/embed/*
         destination: /200.html
       - type: rewrite
         source: /:lang/login

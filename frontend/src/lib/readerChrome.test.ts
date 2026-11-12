@@ -65,9 +65,12 @@ describe('the layout publishes the nav height as a fact', () => {
 		// The one switch: a route that is a reading surface, or focus mode, has
 		// neither, so nothing can be pinned underneath a nav that is still there.
 		// An error page under a reader route (a 404 chapter) keeps the chrome: the
-		// reader's own bar never mounts there.
+		// reader's own bar never mounts there. The church widget ($lib/embed) is
+		// drawn bare too: it sits inside another site's iframe.
 		const src = read(LAYOUT);
-		expect(src).toMatch(/const siteChrome = \$derived\(!\(inReader && !\$page\.error\) && !readerUi\.focus\)/);
+		expect(src).toMatch(
+			/const siteChrome = \$derived\(!embedded && !\(inReader && !\$page\.error\) && !readerUi\.focus\)/
+		);
 		expect(src).toMatch(/\{#if siteChrome\}\s*<nav/);
 		expect(src).toMatch(/\{#if siteChrome\}\s*<SiteFooter \/>/);
 	});

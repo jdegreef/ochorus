@@ -43,6 +43,10 @@ export interface ForChrome {
 	inviteBody: string;
 	inviteSubject: string;
 	invite: { copy: string; copied: string; selected: string; announced: string; email: string };
+	/** The church-website widget's section ($lib/embed, ForEmbed). */
+	embedHeading: string;
+	embedBody: string;
+	embed: { copy: string; copied: string; selected: string; announced: string; preview: string; options: string };
 	questions: string;
 	contact: string;
 	/** The /for/ index's lead, and its meta description from the groups' phrases. */
@@ -149,6 +153,18 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			announced: 'Message copied',
 			email: 'Email'
 		},
+		embedHeading: 'Add Ochorus to your church website',
+		embedBody:
+			'Today’s verse, reading and sermon of the day, on your own site. Paste this one line where you want it to appear. It changes by itself every day and links to the full text on Ochorus, with no ads and nothing to sign up for.',
+		embed: {
+			copy: 'Copy the code',
+			copied: 'Copied',
+			selected: 'Selected: press Ctrl+C, or long-press and Copy.',
+			announced: 'Code copied',
+			preview: 'See it live',
+			options:
+				'For a dark website, add data-theme="dark". For another language, change data-lang to its code, such as es, fr, sw or lg.'
+		},
 		questions: 'Questions',
 		contact: 'Contact us',
 		indexLead:
@@ -168,6 +184,7 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			offline: 'Offline',
 			languages: 'Languages',
 			invite: 'Pass it on',
+			embed: 'Your website',
 			questions: 'Questions'
 		},
 		together: {
@@ -286,6 +303,18 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			announced: 'Message copié',
 			email: 'E-mail'
 		},
+		embedHeading: 'Ajoutez Ochorus au site de votre Église',
+		embedBody:
+			'Le verset, la lecture et le sermon du jour, sur votre propre site. Collez cette ligne à l’endroit où vous voulez les voir. Elle change d’elle-même chaque jour et renvoie au texte complet sur Ochorus, sans publicité et sans inscription.',
+		embed: {
+			copy: 'Copier le code',
+			copied: 'Copié',
+			selected: 'Sélectionné : appuyez sur Ctrl+C, ou faites un appui long puis Copier.',
+			announced: 'Code copié',
+			preview: 'Voir l’aperçu',
+			options:
+				'Pour un site sombre, ajoutez data-theme="dark". Pour une autre langue, remplacez data-lang par son code, par exemple en, es, sw ou lg.'
+		},
 		questions: 'Questions',
 		contact: 'Nous contacter',
 		indexLead:
@@ -305,6 +334,7 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 			offline: 'Hors ligne',
 			languages: 'Langues',
 			invite: 'Faire passer le mot',
+			embed: 'Votre site',
 			questions: 'Questions'
 		},
 		together: {

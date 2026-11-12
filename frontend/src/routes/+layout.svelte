@@ -30,6 +30,7 @@
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
+	import { embedTheme, isEmbedRoute } from '$lib/embed';
 	import { lazyComponent, onIdle } from '$lib/lazyComponent.svelte';
 	import { signInSheet } from '$lib/signInSheet.svelte';
 	import { ONE_TAP_ENABLED } from '$lib/oneTap';
@@ -68,6 +69,13 @@
 	let { children } = $props();
 	const t = i18n.t;
 
+	// The church-website widget ($lib/embed): a bare card inside another
+	// site's iframe. No nav, footer or tab bar, and nothing that prompts —
+	// no One Tap, install or update toasts, feedback button or service worker
+	// — and its look is the one the host page asked for (?theme=), not the
+	// reader's stored theme.
+	const embedded = $derived(isEmbedRoute($page.route.id));
+
 	// The phone app's native shell (safe areas, outside links, Android's Back,
 	// the splash) — before the first render, so <html data-app> is on when the
 	// page first paints. Compiled out of the website (IS_APP is a constant).
@@ -97,6 +105,7 @@
 	});
 	onMount(() =>
 		onIdle(() => {
+			if (embedded) return;
 			pwaToasts.load();
 			if (auth.enabled && ONE_TAP_ENABLED) oneTap.load();
 		})
@@ -113,21 +122,21 @@
 	}
 
 	onMount(() => {
-		theme.init();
+		theme.init(embedded ? embedTheme($page.url.searchParams.get('theme')) : undefined);
 		siteFont.init();
 		palette.init();
 		readerPrefs.init();
 		pageWidth.init();
 		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
 		auth.init();
-		pwa.init();
+		if (!embedded) pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
 		// Field INP attribution (`Slow tap` events) and, sampled, the first load's
 		// LCP + TTFB (`Page load`); loads after idle, off with analytics — see $lib/webVitals.
 		initWebVitals(getLocale());
-		install.init();
+		if (!embedded) install.init();
 	});
 
 	// A plan's daily email asked for while signed out is turned on here, the
@@ -256,7 +265,7 @@
 	// prerendered page paints without them — nothing comes or goes on hydrate.
 	// An ERROR under a reader route (a 404 chapter or sermon) keeps the chrome:
 	// the reader page, and its bar, never mounts there.
-	const siteChrome = $derived(!(inReader && !$page.error) && !readerUi.focus);
+	const siteChrome = $derived(!embedded && !(inReader && !$page.error) && !readerUi.focus);
 	// The app's status-bar strip matches what sits under it (app.css,
 	// `data-app-top`): the pinned nav, or the page's own ground where there is
 	// no nav.
@@ -456,7 +465,7 @@
 
 <!-- The floating feedback button — signed-in only, hidden in focus mode and over
      the admin console (it self-gates). Opens its own FeedbackDialog. -->
-<FeedbackFab />
+{#if !embedded}<FeedbackFab />{/if}
 
 <!-- Sign-out asked for with changes still on this device only (both the
      account dropdown and settings route through auth.signOut). -->

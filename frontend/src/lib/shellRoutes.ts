@@ -35,6 +35,7 @@ export const SHELL_ROUTES = [
 	'/welcome',
 	'/today',
 	'/today/*',
+	'/embed/*',
 	'/login',
 	'/reset-password',
 	'/email/preferences/*'
