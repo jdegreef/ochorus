@@ -252,8 +252,19 @@ def clean_kor(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+# Single-letter typos in the mirror that change the word. HEB 12:14 prints 좆으라
+# (a vulgarity) for 개역's 좇으라 ("follow"); three shipped ko books had quoted it.
+# Each fix names its verse and must match exactly once.
+_KOR_TYPOS = {
+    "HEB 12:14": ("좆으라", "좇으라"),
+}
+
+
 def clean_kor_index(verses, ranges):
     out = {key: clean_kor(text) for key, text in verses.items()}
+    for key, (bad, good) in _KOR_TYPOS.items():
+        if key in out and out[key].count(bad) == 1:
+            out[key] = out[key].replace(bad, good)
     return _withhold(out, _KOR_DAMAGED)
 
 

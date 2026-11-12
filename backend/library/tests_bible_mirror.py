@@ -268,6 +268,13 @@ class KorOldRepairTests(SimpleTestCase):
         self.assertEqual(self.clean(once), once)
         self.assertEqual(once, "어찜이냐? 하나님, 나의 하나님이여")
 
+    def test_heb_12_14_typo_is_repaired(self):
+        verses, _ = _bible_mirror().clean_kor_index(
+            {"HEB 12:14": "모든 사람으로 더불어 화평함과 거룩함을 좆으라 이것이 없이는"}, {}
+        )
+        self.assertIn("거룩함을 좇으라", verses["HEB 12:14"])
+        self.assertNotIn("좆", verses["HEB 12:14"])
+
     def test_isa_57_15_is_withheld_not_restored(self):
         truncated = "또한 통회하고 마음이 겸손한 자의 영을 소성케 하려 함이라"
         verses, damaged = _bible_mirror().clean_kor_index(
