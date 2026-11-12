@@ -149,12 +149,13 @@ def reading(book_slug: str, first: int, last: int) -> tuple:
     return ("reading", book_slug, first, last)
 
 
-def readings(book_slug: str, per_day, first: int = 2) -> list[tuple]:
+def readings(book_slug: str, per_day, first: int = 1) -> list[tuple]:
     """``reading`` items walking a book from chapter ``first`` on, a day per
-    entry of ``per_day`` reading that many chapters. ``first`` defaults to 2
-    because an Open Word Bible edition's chapter 1 is its introduction."""
+    entry of ``per_day`` reading that many chapters (each at least one)."""
     items = []
     for n in per_day:
+        if n < 1:
+            raise ValueError(f"{book_slug}: a plan day reads at least one chapter, not {n}")
         items.append(reading(book_slug, first, first + n - 1))
         first += n
     return items
@@ -855,7 +856,8 @@ CURATED_PLANS = [
         "keeps to one book; the Psalms come several at a time and the shortest "
         "letters take a day of their own. Through the law and the history, the "
         "poets and the prophets, the Gospels, the letters and the new creation.",
-        [item for slug, per_day in BIBLE_IN_A_YEAR for item in readings(slug, per_day)],
+        # first=2: an Open Word Bible edition's chapter 1 is its introduction.
+        [item for slug, per_day in BIBLE_IN_A_YEAR for item in readings(slug, per_day, 2)],
     ),
 ]
 

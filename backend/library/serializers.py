@@ -1,7 +1,9 @@
 import re
 from collections import Counter
+from functools import reduce
+from operator import or_
 
-from django.db.models import Count, QuerySet, Sum
+from django.db.models import Case, Count, Q, QuerySet, Sum, Value, When
 from django.db.models.functions import Substr
 from django.urls import reverse
 from django.utils.text import slugify
@@ -2408,27 +2410,32 @@ def plan_chapter_index(plans, language, with_openings=False):
     shelf, which shows no chips and would only pay to ship the text.
     """
     # Not a devotional's day: it reads its entry (plan_entry_index), never the
-    # month chapter it points into.
-    pairs = {
-        (d.book_slug, order)
-        for plan in plans
-        for d in plan.days.all()
-        if d.book_slug and not d.entry_date
-        for order in d.chapter_orders
-    }
-    if not pairs:
+    # month chapter it points into. A day of several chapters needs each, but
+    # its key verse only from its first.
+    wanted: dict[str, set[int]] = {}
+    firsts: dict[str, set[int]] = {}
+    for plan in plans:
+        for d in plan.days.all():
+            if d.book_slug and not d.entry_date:
+                wanted.setdefault(d.book_slug, set()).update(d.chapter_orders)
+                firsts.setdefault(d.book_slug, set()).add(d.chapter_order)
+    if not wanted:
         return {}
-    slugs = {slug for slug, _ in pairs}
-    # By order too: the day list reads a few chapters of books that may hold
-    # hundreds, and with openings each extra row costs a body_text read.
-    rows = Chapter.objects.filter(
-        book__slug__in=slugs,
-        book__language=language,
-        order__in={order for _, order in pairs},
-    )
+
+    def chapters_of(by_book):
+        return reduce(or_, (Q(book__slug=s, order__in=o) for s, o in by_book.items()))
+
+    # Per book and order: the day list reads a few chapters of books that may
+    # hold hundreds, and with openings each extra row costs a body_text read.
+    rows = Chapter.objects.filter(chapters_of(wanted), book__language=language)
     fields = ["book__slug", "book__title", "order", "title", "word_count"]
     if with_openings:
-        rows = rows.annotate(opening=Substr("body_text", 1, EPIGRAPH_WINDOW))
+        rows = rows.annotate(
+            opening=Case(
+                When(chapters_of(firsts), then=Substr("body_text", 1, EPIGRAPH_WINDOW)),
+                default=Value(""),
+            )
+        )
         fields.append("opening")
     return {(c["book__slug"], c["order"]): c for c in rows.values(*fields)}
 
@@ -2487,6 +2494,14 @@ def plan_day_title(title):
 _NUMBERED_TITLE = re.compile(r"^(.*\S)\s+(\d+)$")
 
 
+def plan_day_label(titles):
+    """A chapter day's title from its run's chapter titles, in order: the one
+    chapter's, or the run's ("Genesis 1–3") — without a book's "Day N — ".
+    The plan payloads and the reminder email both title a day here."""
+    first, last = plan_day_title(titles[0]), plan_day_title(titles[-1])
+    return first if len(titles) == 1 else plan_run_title(first, last)
+
+
 def plan_run_title(first, last):
     """A multi-chapter day's title from its first and last chapters' titles:
     "Genesis 1–3" when both are the same name and a number, else
@@ -2513,11 +2528,8 @@ def _plan_reading(day, chapters, articles, entries):
     if not run or None in run:
         return None
     c = run[0]
-    title = plan_day_title(c["title"])
-    if len(run) > 1:
-        title = plan_run_title(title, plan_day_title(run[-1]["title"]))
     return {
-        "title": title,
+        "title": plan_day_label([r["title"] for r in run]),
         "book_title": c["book__title"],
         "word_count": sum(r["word_count"] for r in run),
         "opening": c.get("opening", ""),

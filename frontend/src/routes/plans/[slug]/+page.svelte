@@ -56,10 +56,10 @@
 	 *  (a single-book plan) draws no section chrome — the header already says it. */
 	const groups = $derived(groupPlanDays(plan.days));
 	const grouped = $derived(groups.length > 1);
-	/** Too many books or days for a tick a day and a label a book (the Bible
-	 *  in a Year's 66 books, 365 days): the rail draws each book as one bar,
-	 *  filled as far as it is read, with no labels. */
-	const denseRail = $derived(groups.length > 12 || plan.days.length > 120);
+	/** Too many books for a label each (the Bible in a Year's 66): the rail
+	 *  draws each book as one bar, filled as far as it is read, unlabelled. A
+	 *  one-book plan keeps its ticks however long it is. */
+	const denseRail = $derived(groups.length > 12);
 	// The distinct books the plan reads through, in first-appearance order, for
 	// the ItemList JSON-LD. Article days are left out: they have no book page.
 	const planBooks = $derived([

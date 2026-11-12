@@ -577,7 +577,7 @@ class PlanReadingDayTests(TestCase):
             "runs",
             "Runs",
             "Several chapters a day.",
-            [*readings("genesis", (3, 1)), reading("exodus", 1, 2)],
+            [*readings("genesis", (3, 1), 2), reading("exodus", 1, 2)],
         )
     ]
 
@@ -627,6 +627,10 @@ class PlanReadingDayTests(TestCase):
         self.assertEqual(
             lst.data[0]["day_one"], {"book_title": "Genesis", "chapter_title": "Genesis 2\u20134"}
         )
+
+    def test_a_day_of_no_chapters_is_refused(self):
+        with self.assertRaises(ValueError):
+            readings("genesis", (3, 0, 1))
 
     def test_a_run_title_names_the_span(self):
         from .serializers import plan_run_title

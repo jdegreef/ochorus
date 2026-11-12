@@ -1417,8 +1417,8 @@
 	 *  and the link to the day's next chapter (null on its last, which is
 	 *  where the day is marked done). */
 	const planRun = $derived.by(() => {
-		const d = plan && planDay ? plan.days.find((x) => x.day === planDay && x.book_slug === slug) : undefined;
-		const step = d && runStep(d, chapter.order);
+		const d = plan && planDay ? planDayCovering(plan.days, slug, chapter.order, planDay) : null;
+		const step = d?.day === planDay && runStep(d, chapter.order);
 		return step && { n: step.n, m: step.m, nextHref: step.next ? chapterHref(step.next) : null };
 	});
 

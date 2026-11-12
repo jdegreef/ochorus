@@ -308,20 +308,21 @@ class Command(BaseCommand):
         there — an edition numbered differently would otherwise yield a plan
         with holes whose day count no longer matches its prose."""
         days: list[dict] = []
-        orders_of: dict[str, list[int]] = {}
+        orders_of: dict[str, tuple[list[int], set[int]]] = {}
         for kind, bslug, *span in plan_items(items):
             if kind == "article":
                 days.append({"article_slug": bslug})
                 continue
             if bslug not in orders_of:
-                orders_of[bslug] = list(
+                found = list(
                     by_slug[bslug].chapters.order_by("order").values_list("order", flat=True)
                 )
-            orders = orders_of[bslug]
+                orders_of[bslug] = (found, set(found))
+            orders, have = orders_of[bslug]
             first, last = span
             if first is not None:
                 want = list(range(first, last + 1))
-                if not set(want) <= set(orders):
+                if not want or not have.issuperset(want):
                     return []
                 orders = want
             if kind == "reading":

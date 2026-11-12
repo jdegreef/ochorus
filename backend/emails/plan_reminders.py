@@ -158,7 +158,7 @@ def _reading_title(day: PlanDay, language: str) -> str:
     if day.kind == "article":
         article = Article.objects.filter(slug=day.article_slug, language=language).only("h1").first()
         return article.h1 if article else ""
-    from library.serializers import plan_run_title
+    from library.serializers import plan_day_label
 
     titles = list(
         Chapter.objects.filter(
@@ -167,9 +167,10 @@ def _reading_title(day: PlanDay, language: str) -> str:
         .order_by("order")
         .values_list("title", flat=True)
     )
-    if not titles:
+    # A run with a chapter missing is unresolved, as the plan page treats it.
+    if len(titles) != len(day.chapter_orders):
         return ""
-    return plan_run_title(titles[0], titles[-1]) if len(titles) > 1 else titles[0]
+    return plan_day_label(titles)
 
 
 def _entry_title(day: PlanDay, language: str) -> str:
