@@ -49,7 +49,12 @@
 		// The Bible on the footer's gate: only where its books have shipped.
 		...(bibleIn(getLang()) ? [{ href: BIBLE_DEST.href, label: t(BIBLE_DEST.labelKey) }] : []),
 		...(getLang() === 'en'
-			? ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) }))
+			? [
+					...ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) })),
+					// The seasonal hub (English-only, $lib/advent): "advent" typed here
+					// finds it in any month.
+					{ href: '/advent/', label: t('liturgical.advent') }
+				]
 			: []),
 		{ href: ORIGINALS_DEST.href, label: t(ORIGINALS_DEST.labelKey) },
 		{ href: '/notebook', label: t('notebook.title') },

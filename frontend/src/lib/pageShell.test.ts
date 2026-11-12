@@ -60,6 +60,8 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'hub', file: 'lib/components/HubPage.svelte' },
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
+	// The seasonal hub wears the plan page's hero, so it is a leaf in shape.
+	{ label: 'advent', file: 'routes/advent/+page.svelte' },
 	{ label: 'series', file: 'routes/series/[slug]/+page.svelte' },
 	{ label: 'quotes author', file: 'routes/quotes/[author]/+page.svelte' },
 	// The [slug] route is a thin switch (article reader vs topic shelf); the

@@ -614,8 +614,15 @@
   "series_ages_from": "आयु {min}+",
   "series_more": "और पुस्तक शृंखलाएँ",
   "book_public_domain": "सार्वजनिक डोमेन। मूल पाठ का स्रोत:",
-  "book_translation_of": "सार्वजनिक डोमेन की मूल रचना का अनुवाद। मूल पाठ का स्रोत:",
   "book_original_edition": "मूल संस्करण",
+  "book_about_text": "इस पाठ के बारे में",
+  "book_about_text_source": "स्रोत",
+  "book_about_text_translation": "अनुवाद",
+  "book_about_text_from_english": "अंग्रेज़ी संस्करण से अनूदित",
+  "book_about_text_cover": "आवरण",
+  "book_about_text_updated": "अंतिम अद्यतन",
+  "book_about_text_rights": "अधिकार",
+  "book_about_text_public_domain": "यह पाठ सार्वजनिक डोमेन में है।",
   "contact_title": "Ochorus से जुड़िए",
   "contact_meta_description": "Ochorus से संपर्क कीजिए — एक सेवकाई जो क्लासिक मसीही पुस्तकें मुफ़्त पढ़ने के लिए प्रकाशित करती है और पूर्वी अफ़्रीका में पास्टर सम्मेलनों, कलीसियाओं, स्कूलों तथा जेलों में छपी हुई पुस्तकें बाँटती है।",
   "error_try_again": "फिर कोशिश करें",
@@ -1640,6 +1647,7 @@
   "daily_title": "आज भक्ति-पुस्तकों में",
   "daily_subtitle": "क्लासिक भक्ति-पुस्तकों से, वर्ष के हर दिन के लिए एक पाठ",
   "daily_see_all": "आज के सभी पाठ",
+  "daily_follow_whatsapp": "WhatsApp पर फ़ॉलो करें",
   "daily_prev_day": "पिछला दिन",
   "daily_next_day": "अगला दिन",
   "daily_back_to_today": "आज पर लौटें",
@@ -1664,5 +1672,7 @@
   "bible_division_general_letters": "सामान्य पत्र",
   "bible_division_revelation": "प्रकाशितवाक्य",
   "bible_read_along": "कदम-दर-कदम पढ़ें",
-  "bible_in_order": "उत्पत्ति से प्रकाशितवाक्य तक, क्रम से पूरी पढ़ें"
+  "bible_in_order": "उत्पत्ति से प्रकाशितवाक्य तक, क्रम से पूरी पढ़ें",
+  "journey_you_are_here": "आप यहाँ हैं",
+  "journey_passed": "%t% में से %n% स्थान पार किए"
 }

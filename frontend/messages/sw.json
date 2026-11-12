@@ -614,8 +614,15 @@
   "series_ages_from": "Umri {min} na zaidi",
   "series_more": "Mfululizo zaidi wa vitabu",
   "book_public_domain": "Mali ya umma. Maandishi ya asili kutoka",
-  "book_translation_of": "Tafsiri ya asili ya mali ya umma. Maandishi ya asili kutoka",
   "book_original_edition": "toleo la asili",
+  "book_about_text": "Kuhusu maandishi haya",
+  "book_about_text_source": "Chanzo",
+  "book_about_text_translation": "Tafsiri",
+  "book_about_text_from_english": "Imetafsiriwa kutoka toleo la Kiingereza",
+  "book_about_text_cover": "Jalada",
+  "book_about_text_updated": "Ilisasishwa mara ya mwisho",
+  "book_about_text_rights": "Haki",
+  "book_about_text_public_domain": "Maandishi haya ni mali ya umma.",
   "contact_title": "Kuwasiliana na Ochorus",
   "contact_meta_description": "Wasiliana na Ochorus — huduma inayochapisha vitabu vya Kikristo vya kale bila malipo na kusambaza vitabu vilivyochapishwa katika mikutano ya wachungaji, makanisa, shule na magereza kote Afrika Mashariki.",
   "error_try_again": "Jaribu tena",
@@ -1640,6 +1647,7 @@
   "daily_title": "Leo katika vitabu vya ibada",
   "daily_subtitle": "Somo kwa kila siku ya mwaka, kutoka vitabu vya ibada vya kale",
   "daily_see_all": "Masomo yote ya leo",
+  "daily_follow_whatsapp": "Tufuate kwenye WhatsApp",
   "daily_prev_day": "Siku iliyopita",
   "daily_next_day": "Siku inayofuata",
   "daily_back_to_today": "Rudi leo",
@@ -1664,5 +1672,7 @@
   "bible_division_general_letters": "Nyaraka za Jumla",
   "bible_division_revelation": "Ufunuo",
   "bible_read_along": "Soma hatua kwa hatua",
-  "bible_in_order": "Isome yote kwa mpangilio, kutoka Mwanzo hadi Ufunuo"
+  "bible_in_order": "Isome yote kwa mpangilio, kutoka Mwanzo hadi Ufunuo",
+  "journey_you_are_here": "Uko hapa",
+  "journey_passed": "Umepita sehemu %n% kati ya %t%"
 }

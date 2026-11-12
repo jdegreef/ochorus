@@ -614,8 +614,15 @@
   "series_ages_from": "A partir de {min} anos",
   "series_more": "Mais séries de livros",
   "book_public_domain": "Domínio público. Texto de origem de",
-  "book_translation_of": "Tradução de um original em domínio público. Texto de origem de",
   "book_original_edition": "a edição original",
+  "book_about_text": "Sobre este texto",
+  "book_about_text_source": "Fonte",
+  "book_about_text_translation": "Tradução",
+  "book_about_text_from_english": "Traduzido da edição em inglês",
+  "book_about_text_cover": "Capa",
+  "book_about_text_updated": "Última atualização",
+  "book_about_text_rights": "Direitos",
+  "book_about_text_public_domain": "O texto é de domínio público.",
   "contact_title": "Entre em contato com o Ochorus",
   "contact_meta_description": "Entre em contacto com o Ochorus — um ministério que publica livros cristãos clássicos gratuitos para ler e distribui livros impressos em conferências de pastores, igrejas, escolas e prisões da África Oriental.",
   "error_try_again": "Tentar novamente",
@@ -1640,6 +1647,7 @@
   "daily_title": "Hoje nos devocionais",
   "daily_subtitle": "Uma leitura para cada dia do ano, dos devocionais clássicos",
   "daily_see_all": "Todas as leituras de hoje",
+  "daily_follow_whatsapp": "Siga-nos no WhatsApp",
   "daily_prev_day": "Dia anterior",
   "daily_next_day": "Próximo dia",
   "daily_back_to_today": "Voltar para hoje",
@@ -1664,5 +1672,7 @@
   "bible_division_general_letters": "Cartas gerais",
   "bible_division_revelation": "Apocalipse",
   "bible_read_along": "Leia passo a passo",
-  "bible_in_order": "Leia do começo ao fim, de Gênesis a Apocalipse"
+  "bible_in_order": "Leia do começo ao fim, de Gênesis a Apocalipse",
+  "journey_you_are_here": "Você está aqui",
+  "journey_passed": "%n% de %t% lugares percorridos"
 }

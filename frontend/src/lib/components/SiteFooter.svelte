@@ -12,6 +12,7 @@
 	import { untrack } from 'svelte';
 	import { lang } from '$lib/lang.svelte';
 	import { auth } from '$lib/auth.svelte';
+	import { WHATSAPP_CHANNEL_URL } from '$lib/config';
 	import { i18n } from '$lib/i18n.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { FOR_FOOTER, forIndexPath, forLocale } from '$lib/forLinks';
@@ -288,6 +289,10 @@
 					{/if}
 				{/if}
 				<a href={localizeHref('/rss/')}>RSS</a>
+				<!-- Only once a channel exists ($lib/config). -->
+				{#if WHATSAPP_CHANNEL_URL}
+					<a href={WHATSAPP_CHANNEL_URL} target="_blank" rel="noopener">WhatsApp</a>
+				{/if}
 			</nav>
 		</div>
 	</div>

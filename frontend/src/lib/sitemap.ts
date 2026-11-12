@@ -54,6 +54,7 @@ import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
 import { BIBLE_PATH, BIBLE_SERIES, bibleIn } from '$lib/bible';
+import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
@@ -509,6 +510,14 @@ async function build(): Promise<SitemapData> {
 			byLocale: new Map([['en', '/quotes/topics/']]),
 			lastmod: newest(quoteTopics.map((tp) => tp.updated_at))
 		});
+
+	// The Advent hub ($lib/advent), English-only like the quotes index: its plan
+	// reads books that exist only in English. Every year's Advent is one URL,
+	// so it is always advertised; dated by its plan's books.
+	pages.push({
+		byLocale: new Map([['en', '/advent/']]),
+		lastmod: dates.get('en')?.plan.get(ADVENT_PLAN)
+	});
 
 	// The "Ochorus for …" pages ($lib/forLinks): written in English and French
 	// only, so each has those two URLs. Undated: the copy lives in the

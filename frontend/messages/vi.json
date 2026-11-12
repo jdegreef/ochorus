@@ -614,8 +614,15 @@
   "series_ages_from": "Từ {min} tuổi trở lên",
   "series_more": "Thêm bộ sách khác",
   "book_public_domain": "Thuộc phạm vi công cộng. Văn bản gốc từ",
-  "book_translation_of": "Bản dịch từ một nguyên tác thuộc phạm vi công cộng. Văn bản gốc từ",
   "book_original_edition": "ấn bản gốc",
+  "book_about_text": "Về văn bản này",
+  "book_about_text_source": "Nguồn",
+  "book_about_text_translation": "Bản dịch",
+  "book_about_text_from_english": "Dịch từ ấn bản tiếng Anh",
+  "book_about_text_cover": "Bìa",
+  "book_about_text_updated": "Cập nhật lần cuối",
+  "book_about_text_rights": "Bản quyền",
+  "book_about_text_public_domain": "Văn bản này thuộc phạm vi công cộng.",
   "contact_title": "Kết nối với Ochorus",
   "contact_meta_description": "Liên hệ với Ochorus — một mục vụ xuất bản các sách Cơ Đốc kinh điển để đọc miễn phí, và phân phát sách in tại các hội nghị mục sư, Hội Thánh, trường học và nhà tù khắp Đông Phi.",
   "error_try_again": "Thử lại",
@@ -1640,6 +1647,7 @@
   "daily_title": "Hôm nay trong các sách tĩnh nguyện",
   "daily_subtitle": "Một bài đọc cho mỗi ngày trong năm, từ các sách tĩnh nguyện kinh điển",
   "daily_see_all": "Tất cả bài đọc hôm nay",
+  "daily_follow_whatsapp": "Theo dõi trên WhatsApp",
   "daily_prev_day": "Ngày trước",
   "daily_next_day": "Ngày sau",
   "daily_back_to_today": "Trở về hôm nay",
@@ -1664,5 +1672,7 @@
   "bible_division_general_letters": "Thư Tín Chung",
   "bible_division_revelation": "Khải Huyền",
   "bible_read_along": "Đọc từng bước",
-  "bible_in_order": "Đọc trọn theo thứ tự, từ Sáng Thế Ký đến Khải Huyền"
+  "bible_in_order": "Đọc trọn theo thứ tự, từ Sáng Thế Ký đến Khải Huyền",
+  "journey_you_are_here": "Bạn đang ở đây",
+  "journey_passed": "Đã qua %n% / %t% địa điểm"
 }

@@ -420,6 +420,46 @@ CURATED_PLANS = [
         ],
     ),
     (
+        # The /advent/ hub's plan (frontend $lib/advent.ts names its four weeks,
+        # so keep the days in sevens: waiting, the prophets, the incarnation,
+        # the story). Four weeks, the longest Advent can be: begun on Advent
+        # Sunday, the last days fall in Christmastide, where the Presentation
+        # belongs anyway.
+        "advent-with-the-classics",
+        "Advent with the Classics",
+        "Four weeks for Advent, one reading a day. Andrew Murray teaches the "
+        "waiting heart to look for the coming of the Lord; Justin Martyr shows "
+        "how the prophets foretold the manner and the place of His birth, and the "
+        "forerunner who would go before Him; Athanasius, Gregory of Nyssa and "
+        "Sadhu Sundar Singh ask why God became man; and Jesse Lyman Hurlbut "
+        "tells the Christmas story, from the angel at the golden altar to Simeon "
+        "in the temple, with George Whitefield’s sermon on the true way of "
+        "keeping Christmas. About five minutes a day.",
+        [
+            # Week 1 — waiting for the Lord
+            chapters("waiting-on-god", 30, 30),  # For the Coming of His Son
+            chapters("waiting-on-god", 28, 28),  # In Holy Expectancy
+            chapters("waiting-on-god", 12, 13),  # In Humble Fear and Hope; Patiently
+            chapters("waiting-on-god", 27, 27),  # Quietly
+            chapters("waiting-on-god", 19, 19),  # In Times of Darkness
+            chapters("waiting-on-god", 18, 18),  # For His Light in the Heart
+            # Week 2 — promised by the prophets
+            chapters("the-first-apology", 31, 35),  # the prophets; Moses; manner, place
+            chapters("dialogue-with-trypho", 49, 49),  # Elijah, the forerunner
+            chapters("dialogue-with-trypho", 32, 32),  # two advents
+            # Week 3 — the Word made flesh
+            chapters("on-the-incarnation", 8, 9),  # the Word visits the earth
+            chapters("on-the-incarnation", 14, 14),  # the portrait restored
+            chapters("the-great-catechism", 16, 16),  # the love of God for man
+            chapters("the-great-catechism", 29, 30),  # no shame in birth; why so late
+            chapters("reality-and-religion", 4, 4),  # The Incarnation
+            # Week 4 — the Christmas story
+            chapters("hurlbuts-life-of-christ", 4, 8),  # Zechariah … the manger
+            chapters("selected-sermons-whitefield", 16, 16),  # keeping Christmas
+            chapters("hurlbuts-life-of-christ", 9, 9),  # Simeon and Anna
+        ],
+    ),
+    (
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
