@@ -3,7 +3,7 @@
  "slug": "how-to-bring-men-to-christ",
  "language": "uk",
  "job_issue": 7635,
- "pull_request": null,
+ "pull_request": 7879,
  "note": [
   "Kulish (1905, ebible ukr1871) verses pasted verbatim from the gracious-tech/fetch_collection ukr_pan USFM mirror; `mined` rows were re-checked by an 18-character verbatim substring of the Kulish verse in the translated body, and translator-reported one-word echoes that fail it are recorded self_rendered. U+201F normalised to “. Hebrews cited as Євреїв, not Kulish's Жидів.",
   "English citation slips rendered in their corrected sense per the batch ruling (the en fix is carried by the ko job #7659): 1 John 5:10 (en '2 John v. 10'), 1 John 2:1-2 (en 'John ii. 1-2'), 1 Cor 12:4-11, 1 Cor 15:1-4."
