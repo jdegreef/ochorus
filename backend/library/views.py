@@ -57,11 +57,11 @@ from .models import (
 from .search import (
     CAPS,
     MAX_RESULTS,
-    min_query_len,
     PAGE_SIZE,
     SORTS,
     count_by_type,
     memoized,
+    min_query_len,
     page_by_type,
     parse_scope,
     scope_entry,
