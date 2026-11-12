@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_DIVISIONS,
 	biblePlans,
+	canonStrip,
 	divisionKey,
 	divisionOf,
 	groupBible,
@@ -94,5 +95,53 @@ describe('biblePlans', () => {
 		const plans = [{ slug: 'psalms-in-150-days' }, { slug: 'romans-with-moule' }, { slug: 'john-in-21-days' }];
 		expect(biblePlans(plans).map((p) => p.slug)).toEqual(['john-in-21-days', 'psalms-in-150-days']);
 		expect(biblePlans([{ slug: 'romans-with-moule' }])).toEqual([]);
+	});
+});
+
+describe('canonStrip', () => {
+	const sized = (slug: string, series_position: number, word_count: number | null, chapter_count = 1) => ({
+		slug,
+		series_position,
+		word_count,
+		chapter_count
+	});
+
+	it('lays out all 66 books in canonical order, under both testaments, whatever is present', () => {
+		const strip = canonStrip([book('john', 43)]);
+		expect(strip.map((t) => t.testament)).toEqual(['old', 'new']);
+		const slots = strip.flatMap((t) => t.divisions.flatMap((d) => d.slots));
+		expect(slots.map((s) => s.position)).toEqual(Array.from({ length: 66 }, (_, i) => i + 1));
+		expect(strip.flatMap((t) => t.divisions.map((d) => d.division.id))).toEqual(
+			BIBLE_DIVISIONS.map((d) => d.id)
+		);
+		// Short canon names, not the editions' long titles.
+		expect(slots[18].name).toBe('Psalms');
+		expect(slots[42]).toMatchObject({ name: 'John', book: { slug: 'john' } });
+		expect(slots[45].name).toBe('1 Corinthians');
+		expect(slots.filter((s) => s.book)).toHaveLength(1);
+	});
+
+	it('leaves an absent book as an empty slot with no weight', () => {
+		const slots = canonStrip([]).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+		expect(slots).toHaveLength(66);
+		expect(slots.every((s) => s.book === null && s.weight === 0)).toBe(true);
+	});
+
+	it('weighs a spine by the square root of its words beside the longest book', () => {
+		const slots = canonStrip([
+			sized('psalms', 19, 40000),
+			sized('obadiah', 31, 10000),
+			sized('jude', 65, null, 2) // no count: chapters stand in
+		]).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+		expect(slots[18].weight).toBe(1);
+		expect(slots[30].weight).toBe(0.5);
+		expect(slots[64].weight).toBe(Math.round(Math.sqrt(1000 / 40000) * 100) / 100);
+	});
+
+	it('skips books with no place in the canon and keeps the first of a doubled one', () => {
+		const slots = canonStrip([book('x', null), book('y', 99), book('a', 1), book('b', 1)]).flatMap(
+			(t) => t.divisions.flatMap((d) => d.slots)
+		);
+		expect(slots.filter((s) => s.book).map((s) => s.book!.slug)).toEqual(['a']);
 	});
 });
