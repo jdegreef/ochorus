@@ -86,6 +86,7 @@ export const COVER_LIFT: Record<string, number> = {
 	'on-the-holy-spirit': 1.05,
 	'on-the-making-of-man': 1.45,
 	'on-the-priesthood': 1.05,
+	'open-your-mouth-wide': 1.15,
 	'orthodoxy-teens': 1.45,
 	'pandita-ramabai-a-life-children': 1.30,
 	'paradise-lost': 1.45,

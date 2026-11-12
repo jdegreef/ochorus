@@ -29365,6 +29365,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"open-your-mouth-wide": {
+			"ground": "60274179ab616ac9da32e716737118fbedf68314ab06a3e04946ad44fcabddea",
+			"style": "originals",
+			"volume": "8",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[142, 328, 458, 404],
+					[118, 394, 482, 470]
+				],
+				"subtitle": [
+					[153, 528, 447, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"orthodoxy": {
 			"ground": "39abaab47d525f963d442010561682d8df695d7d8cebe3429ba5c9548cb8e7da",
 			"style": "revival",
