@@ -27,6 +27,7 @@ on:
       - 'backend/library/book_export.py'
       - 'backend/library/export_policy.py'
       - 'backend/library/export_strings.json'
+      - 'backend/library/export_imprints.json'
       - 'backend/library/export_bios/**'
       - 'backend/library/export_covers/**'
       - 'backend/library/print_fonts/**'
@@ -47,7 +48,8 @@ permissions:
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # A full rebuild took 22 minutes for 462 editions; the Bible's 66 add several.
+    timeout-minutes: 50
     env:
       DJANGO_DEBUG: 'true' # local SQLite, seeded from the fixture
       PUBLIC_SITE_URL: https://ochorus.com # colophon links
@@ -65,6 +67,7 @@ jobs:
               - 'backend/library/book_export.py'
               - 'backend/library/export_policy.py'
               - 'backend/library/export_strings.json'
+              - 'backend/library/export_imprints.json'
               - 'backend/library/export_bios/**'
               - 'backend/library/export_covers/**'
               - 'backend/library/print_fonts/**'

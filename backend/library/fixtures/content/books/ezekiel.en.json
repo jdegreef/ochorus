@@ -45,7 +45,7 @@
   "source_url": "https://openwordbible.org/read/#ezk",
   "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
   "cover_url": "/covers/art/ezekiel.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/ezekiel.pdf?download=ezekiel.pdf",
   "cover_color": "#2c4a63",
   "series": [
    "the-bible"

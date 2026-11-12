@@ -14,7 +14,9 @@ in `backend/library/book_export.py`, in this order:
 2. **Title page**
 3. **About Ochorus** — `STRINGS[lang]["ochorus_html"]`
 4. **About the Author** — the edition's export bio (see Pre-flight), life
-   dates, and a link to the full bio. None for an imprint author.
+   dates, and a link to the full bio. None for an imprint author — except a
+   TRANSLATION imprint (the Open Word Bible), which prints its own page here
+   ("About the Translation", `export_imprints.json`).
 5. **Contents** (PDF page; EPUB uses the reader's nav) → About this work →
    chapters → colophon (rights, AI-review notice for `ai_unreviewed`).
 
@@ -39,6 +41,20 @@ Re-run everything by hand from the Actions tab (Book PDFs → Run workflow).
   Portraits of Courage lives and their retellings) get NO About the Author page
   and need NO export bio:** `author_bio` returns "" for `is_imprint`. That's by
   design — don't add one, and don't read its absence in the PDF as a bug.
+- **A translation imprint (the Open Word Bible, the 66 Bible books)** is an
+  imprint too, so no bio — but it has an entry in `library/export_imprints.json`:
+  its "About the Translation" page per language (no English fallback), and an
+  `edition` line. Its colophon prints the book's `attribution` (the CC0 credit)
+  as the rights statement, then that line — never the generic "This translation
+  was prepared by Ochorus" or the native-speaker review notice, which describe
+  Ochorus translating an author's book (the OWB's own per-sentence draft status
+  is admin-only, like every review state). Its `verse_lines` flag sets each
+  `<p>` with `<br/>` as verse, one hanging-indented line per `<br/>` (only
+  there: a classic's `<br/>` is as often a kept prose break — Ignatius); its
+  `run_on` flag runs the chapters on in the PDF, as a printed Bible's do,
+  between the introduction and the conclusion. A new Bible language needs its
+  page in that file (`PilotTests` holds it), and the Bible's books in
+  `EXPORT_PILOT` for that language.
 - Otherwise the author has an export bio, `backend/library/export_bios/<author-slug>.<lang>.txt`:
   3–4 paragraphs (blank-line separated), ~250–285 English words, written from
   the author's long `bio_html` — its facts and verbatim quotes only. `PilotTests`
@@ -138,7 +154,8 @@ PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> -
   Page 1 cover, 2 title, 3 About Ochorus, 4 About the Author (ONE page — the
   "Read the full biography" line must be on it), 5 Table of Contents, 6 first
   part — and the contents numbers match where chapters actually start. (An
-  imprint edition has no page 4, so everything after it moves up one.) Check the
+  imprint edition has no page 4, so everything after it moves up one; a Bible
+  book's page 4 is About the Translation.) Check the
   last page too: the colophon's `©` line, and any Scripture notice.
 - EPUB: `unzip -l` shows `OEBPS/cover.*` and `about-author.xhtml` (not for an
   imprint edition); the OPF has
