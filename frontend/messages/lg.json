@@ -1787,5 +1787,14 @@
   "calendar_locked": "Lunaaggulwawo %date%",
   "calendar_open_today": "Ggulawo oluggi lwa leero",
   "calendar_see_doors": "Laba enzigi",
-  "bible_canon_label": "Ebitabo bya Baibuli"
+  "bible_canon_label": "Ebitabo bya Baibuli",
+  "footer_cta_book_title": "Kuuma aw'otuuse mu %title%",
+  "footer_cta_book_text": "Weeyongereyo okuva ku lunyiriri lwe lumu ku kyuma kyonna.",
+  "footer_cta_sermon_title": "Tereka “%title%” olw'oluvannyuma",
+  "footer_cta_sermon_text": "Kuuma mu tterekero lyo obubaka bw'oyagala okusoma oba okuwuliriza nate.",
+  "footer_cta_author_title": "Kuuma ebitabo bya %name% mu tterekero lyo",
+  "footer_cta_author_text": "Tereka ebitabo n'obubaka ng'onyiga omulundi gumu, ku buli kyuma.",
+  "footer_cta_plan_text": "Kakasa buli lunaku ku kyuma kyonna, era ofune email buli lunaku bw'oba oyagala.",
+  "footer_cta_season_starts": "Kitandika %date%",
+  "footer_cta_season_text": "Oluggi lumu buli lunaku okutuuka ku Ssekukkulu. Akawunti eya bwereere ekuuma ennaku zo ez'okusoma eziddiriŋŋana n'aw'otuuse, ku buli kyuma."
 }
