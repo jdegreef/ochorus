@@ -1,0 +1,175 @@
+{
+ "kind": "book",
+ "slug": "talks-to-the-farmer-children",
+ "language": "ar",
+ "job_issue": 7647,
+ "note": [
+  "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for young children, cited loosely (“— from Proverbs 24”, rendered “— من أمثال 24”), and the body echoes verses in the same retold register. The Arabic renders those paraphrases in simple, unvocalised, child-friendly wording rather than pasting Van Dyck, whose register would break the edition's (as the hi, es and fr children's editions did). The whole edition carries NO tashkeel, because in the ar corpus a vocalised span inside « » signals verbatim Van Dyck. Book names follow the Van Dyck short forms (أمثال، مزمور، يوحنا، لوقا، إشعياء، متى؛ “the story of Ruth” = قصة راعوث).",
+  "References and block indices mirror the English structure exactly (tag sequence identical chapter by chapter), so they are the same rows as the hi/es/pt/am editions' notes. Translators also flagged looser echoes not listed as rows: Luke 8:6 'hot sun' (the detail is Matthew 13:6 / Mark 4:6), Psalm 147:18 at ch03 block 5, Isaiah 49:15 at ch08 block 6, Luke 15:7 at ch09 block 3, Ruth 2:2-3/2:18 in ch10, Revelation 7:9 at ch12 block 3.",
+  "Title «أحاديث إلى المزارع (للأطفال)» (28 characters) pairs with the shipped teens edition «أحاديث إلى المزارع (لليافعين)»; this is the first ar children's edition, so it sets the « (للأطفال) » suffix. Prayers open «يا ربّي الحبيب،» in all twelve chapters; the child is addressed in the masculine singular, as in the teens edition. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 24:30-31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Proverbs 24:30-31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Psalm 147:16-18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 147:16-18",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Luke 8:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 8:11",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 65:9-10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 104:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 104:14",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 6:26-30",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 9:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 9:3",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Galatians 6:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ruth 2:15-16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Ruth 2:15-16",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Isaiah 28:28",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 28:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 13:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 13:30",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Revelation 21:4",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 12
+  }
+ ]
+}

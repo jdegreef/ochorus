@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findQueryHits, queryWords } from './searchHits';
+import { findQueryHits, minQueryLength, queryWords } from './searchHits';
 import { renderMarks } from './rangeMarks';
 
 /**
@@ -166,5 +166,27 @@ describe('Korean queries', () => {
 
 	it('keeps a word whole when stripping would leave one syllable', () => {
 		expect(queryWords('기도 자는')).toEqual(['기도', '자는']);
+	});
+});
+
+describe('Japanese queries', () => {
+	it('splits at Japanese punctuation, as the server tokenises', () => {
+		expect(queryWords('恵み、主')).toEqual(['恵み', '主']);
+		expect(queryWords('アンドリュー・マーレー')).toEqual(['アンドリュー', 'マーレー']);
+	});
+
+	it('keeps a one-character kanji word, which is a whole word', () => {
+		expect(queryWords('神')).toEqual(['神']);
+		expect(queryWords('a')).toEqual([]);
+	});
+
+	it('finds an unspaced word inside a clause', () => {
+		expect(findQueryHits(['神の恵みを受けた者'], '恵み')).toHaveLength(1);
+	});
+
+	it('lets Japanese search on one character, as the API does', () => {
+		expect(minQueryLength('ja')).toBe(1);
+		expect(minQueryLength('en')).toBe(2);
+		expect(minQueryLength('ko')).toBe(2);
 	});
 });

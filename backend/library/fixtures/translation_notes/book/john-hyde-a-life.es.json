@@ -1,0 +1,1373 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life",
+ "language": "es",
+ "job_issue": 7151,
+ "note": [
+  "Scripture is quoted in modern Reina-Valera (RVR1960) register; the English's ', ASV' labels are dropped and the Preface/Appendix D scripture-policy sentences say the Spanish edition quotes Reina-Valera. 'mined' rows were checked verbatim against the cited shipped es file; everything else is self_rendered from RVR1960 wording and needs a reviewer's check.",
+  "Deliberate deviations from RVR1960 where the book's argument turns on the English word: Psalm 81:10 'Ensancha tu boca' (RV1909 verb; RVR1960 'Abre tu boca') because ch12's prayer repeats 'wide'; Isaiah 61:3 'manto de alabanza' (RVR1960 'manto de alegría') for the chapter title 'The Garment of Praise'; Isaiah 50:4 'la lengua del que aprende' (RVR1960 'lengua de sabios') because the author builds on 'the taught'; Psalm 22:21 'me has respondido' (RVR1960 has no 'answered me') because Hyde's note depends on it.",
+  "Hyde's nickname is rendered «Hyde, el que ora», matching the shipped children's edition (john-hyde-a-life-children.es)."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 26:40",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 26:41b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 2,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Thessalonians 5:20",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 2,
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "2 Timothy 1:5",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 3,
+   "block_index": 14
+  },
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "John 4:35",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 6:1a",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 6:1b",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 24
+  },
+  {
+   "reference": "Philippians 1:15",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 28
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10
+  },
+  {
+   "reference": "Proverbs 27:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 26
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 5,
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Timothy 4:16",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 6,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 6,
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 6,
+   "block_index": 23
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 25
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 6,
+   "block_index": 25
+  },
+  {
+   "reference": "Exodus 4:11-12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 0
+  },
+  {
+   "reference": "Exodus 4:10",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 12:9b",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 2:1, 3, 5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "rooted-2.es.json",
+   "chapter_order": 7,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "chapter_order": 7,
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 1:27-28",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 1:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 1:28a",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 4:18a",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 18
+  },
+  {
+   "reference": "James 2:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 18
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 8,
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Timothy 4:16a",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 9,
+   "block_index": 14
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "men-who-moved-heaven.es.json",
+   "chapter_order": 9,
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 50:4b",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 19
+  },
+  {
+   "reference": "Daniel 9:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 23
+  },
+  {
+   "reference": "Daniel 9:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 23
+  },
+  {
+   "reference": "2 Chronicles 15:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 26
+  },
+  {
+   "reference": "2 Chronicles 14:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 9,
+   "block_index": 27
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 28
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 62:6b",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 62:6c-7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 10,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 26
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 26
+  },
+  {
+   "reference": "Acts 10:9",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 31
+  },
+  {
+   "reference": "John 15:26-27",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:26-27",
+   "status": "self_rendered",
+   "chapter_order": 11
+  },
+  {
+   "reference": "Ephesians 3:18",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 148:1",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 32
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 34
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 11,
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 81:11",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 32
+  },
+  {
+   "reference": "Acts 1:14a",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 12,
+   "block_index": 41
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 41
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 13,
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 6
+  },
+  {
+   "reference": "Genesis 30:1",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 14
+  },
+  {
+   "reference": "Romans 9:2-3",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 18
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.es.json",
+   "chapter_order": 13,
+   "block_index": 20
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "men-who-moved-heaven.es.json",
+   "chapter_order": 13,
+   "block_index": 20
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Acts 9:4",
+   "status": "mined",
+   "source_file": "godliness.es.json",
+   "chapter_order": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "men-of-prayer-2.es.json",
+   "chapter_order": 13,
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 0
+  },
+  {
+   "reference": "John 10:16a",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 23
+  },
+  {
+   "reference": "Luke 15:16b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 27
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 53:11a",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 37
+  },
+  {
+   "reference": "Acts 8:36",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 40
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 32:10b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 17:8",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 10
+  },
+  {
+   "reference": "Revelation 12:10b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 15
+  },
+  {
+   "reference": "James 4:11a",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 4:8b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 19
+  },
+  {
+   "reference": "Philippians 1:6b",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 15,
+   "block_index": 21
+  },
+  {
+   "reference": "Philippians 1:7a",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 21
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 28
+  },
+  {
+   "reference": "2 Timothy 4:2b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 30
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 15,
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 0
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.es.json",
+   "chapter_order": 16,
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians 5:20",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 8:2a",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 8:20",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 19
+  },
+  {
+   "reference": "Psalm 24:7",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 20
+  },
+  {
+   "reference": "2 Chronicles 20:21",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 23
+  },
+  {
+   "reference": "2 Chronicles 20:22a",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 23
+  },
+  {
+   "reference": "Acts 16:25",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 23
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 25
+  },
+  {
+   "reference": "Proverbs 8:30b",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 29
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 30
+  },
+  {
+   "reference": "1 Thessalonians 5:18a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "chapter_order": 16,
+   "block_index": 32
+  },
+  {
+   "reference": "Acts 20:31",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 20:31b",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 10:34b",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 12:15a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 16
+  },
+  {
+   "reference": "John 11:36",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 17
+  },
+  {
+   "reference": "John 13:14",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 23
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "chapter_order": 17,
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 6:30",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 39
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 7:32",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 44
+  },
+  {
+   "reference": "1 Corinthians 7:7",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 17,
+   "block_index": 44
+  },
+  {
+   "reference": "Philippians 2:7-8",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 7:27-28",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 22:16",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 0
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 19
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 18,
+   "block_index": 23
+  },
+  {
+   "reference": "Zechariah 13:6",
+   "status": "self_rendered",
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalm 22:1",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 30
+  },
+  {
+   "reference": "Psalm 22:3",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 30
+  },
+  {
+   "reference": "Psalm 22:6",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 31
+  },
+  {
+   "reference": "Psalm 22:11b",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 31
+  },
+  {
+   "reference": "Psalm 22:17",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 32
+  },
+  {
+   "reference": "Psalm 22:21b",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 18,
+   "block_index": 37
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 37
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 0
+  },
+  {
+   "reference": "2 Corinthians 11:27",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 22
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 19,
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 19,
+   "block_index": 22
+  },
+  {
+   "reference": "1 Kings 19:5",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 19,
+   "block_index": 26
+  },
+  {
+   "reference": "1 Kings 19:7",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 19,
+   "block_index": 26
+  },
+  {
+   "reference": "Psalm 127:2b",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 26
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 26
+  },
+  {
+   "reference": "Colossians 2:23",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 26
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 20,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 20,
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 0
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 5
+  },
+  {
+   "reference": "1 Thessalonians 5:18a",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 16
+  },
+  {
+   "reference": "2 Corinthians 2:14a",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 20
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 22
+  },
+  {
+   "reference": "John 16:33b",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "chapter_order": 21,
+   "block_index": 28
+  },
+  {
+   "reference": "2 Timothy 4:7-8",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 32
+  },
+  {
+   "reference": "Hebrews 11:4",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 7:25b",
+   "status": "mined",
+   "source_file": "men-who-moved-heaven.es.json",
+   "chapter_order": 22,
+   "block_index": 33
+  },
+  {
+   "reference": "Hebrews 12:1-2a",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 34
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 26:40",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 37
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 23,
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 46:10a",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 4
+  },
+  {
+   "reference": "Proverbs 27:6a",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Timothy 4:16a",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 23,
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 6:14a",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 23,
+   "block_index": 12
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 23,
+   "block_index": 24
+  },
+  {
+   "reference": "John 15:26-27",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 6:6b",
+   "status": "mined",
+   "source_file": "women-who-moved-heaven-2.es.json",
+   "chapter_order": 23,
+   "block_index": 28
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "real-questions-1.es.json",
+   "chapter_order": 23,
+   "block_index": 32
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 36
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 38
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 40
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 42
+  },
+  {
+   "reference": "1 Thessalonians 5:18a",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json",
+   "chapter_order": 23,
+   "block_index": 42
+  },
+  {
+   "reference": "2 Corinthians 12:15a",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 44
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 23,
+   "block_index": 46
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 48
+  },
+  {
+   "reference": "Psalm 127:2",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 48
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json",
+   "chapter_order": 23,
+   "block_index": 50
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 50
+  },
+  {
+   "reference": "James 1:22",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "men-who-tended-the-flock-2.es.json",
+   "chapter_order": 24,
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 34
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 80
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 111
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 122
+  },
+  {
+   "reference": "Matthew 26:40",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 143
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 1:3-4",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 0
+  }
+ ]
+}

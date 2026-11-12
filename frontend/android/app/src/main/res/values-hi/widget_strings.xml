@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">आज का वचन</string>
+    <string name="widget_today_description">Ochorus से आज का वचन, हर दिन नया।</string>
+    <string name="widget_continue_name">पढ़ना जारी रखें</string>
+    <string name="widget_continue_description">आपकी पुस्तक, जहाँ आपने छोड़ा था वहाँ से बस एक टैप दूर।</string>
+    <string name="widget_placeholder">शुरू करने के लिए Ochorus खोलें।</string>
+</resources>

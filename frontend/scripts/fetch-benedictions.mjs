@@ -42,7 +42,8 @@ const BIBLES = {
 	fr: 'fralsg',
 	am: 'am-ulb',
 	vi: 'vietnamese',
-	ko: 'korean'
+	ko: 'korean',
+	ja: 'japanese'
 };
 
 /**

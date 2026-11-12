@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The home-screen widgets' colours: the reader's "paper" theme (frontend/src/app.css,
+     :root[data-theme='light']). values-night holds "lamplight", for the phone's dark mode. -->
+<resources>
+    <color name="widget_ground">#faf6ef</color>
+    <color name="widget_text">#221c15</color>
+    <color name="widget_muted">#6e6358</color>
+    <color name="widget_accent">#3f3d9a</color>
+    <color name="widget_track">#e8dfcf</color>
+    <color name="widget_cover_ground">#ecebf7</color>
+</resources>

@@ -54,6 +54,10 @@ export interface Cite {
 	book: string;
 	chapter: string;
 	url: string;
+	/** The book's `cover_color` and `publication_year`, for the postcard's
+	 *  stamp and postmark; absent where the work has none (sermons, bios). */
+	color?: string;
+	year?: number | null;
 }
 
 /**
@@ -83,6 +87,10 @@ export interface ReaderTextOptions {
 	topIndex: () => number;
 	listenTitle: () => string;
 	listenArtist: () => string;
+	/** The book a chapter belongs to, for the lock screen (`listenMedia`). */
+	listenAlbum?: () => string | undefined;
+	/** Site paths of the lock-screen artwork, best first (`listenMedia`). */
+	listenArtwork?: () => (string | null | undefined)[];
 	cite: () => Cite;
 	/**
 	 * What the reader searched for to get here, so their match can be marked.
@@ -158,7 +166,12 @@ export class ReaderText {
 			// The TEXT's language, not the interface's: a work shown in its English
 			// fallback to a French reader must be voiced in English.
 			lang: contentLang(this.#o.language()),
-			media: { title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
+			media: {
+				title: this.#o.listenTitle(),
+				artist: this.#o.listenArtist(),
+				album: this.#o.listenAlbum?.(),
+				artwork: this.#o.listenArtwork?.()
+			},
 			onFinish: this.#o.onListenFinish,
 			defaultRate: this.#o.listenDefaultRate?.(),
 			// The spoken paragraph IS the resume point while listening — save it (this

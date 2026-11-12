@@ -1,5 +1,15 @@
 import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
+import {
+	bindMediaSession,
+	estimatePosition,
+	mediaSession,
+	paragraphAt,
+	publishMetadata,
+	publishState,
+	unbindMediaSession,
+	type ListenMedia
+} from './listenMedia';
 
 /**
  * "Listen" mode — reads the open chapter aloud with the browser's built-in
@@ -50,8 +60,9 @@ interface Stored {
 export interface StartOptions {
 	/** Content language (BCP-47); decides the voice and utterance lang. */
 	lang?: string;
-	/** OS Media Session metadata (lock-screen / background controls). */
-	media?: { title: string; artist?: string };
+	/** OS Media Session metadata (lock-screen / background controls) — see
+	 *  `listenMedia.ts`. */
+	media?: ListenMedia;
 	/** Fires when playback runs off the end on its own — audiobook roll-over. */
 	onFinish?: () => void;
 	/** Fires as each paragraph `index` begins, driven by the audio (not a
@@ -115,7 +126,7 @@ class Listen {
 
 	#paragraphs: string[] = [];
 	#lang = 'en';
-	#media: { title: string; artist?: string } | null = null;
+	#media: ListenMedia | null = null;
 	// Called once when playback runs off the end of the paragraphs on its own —
 	// NOT on a user stop or a navigation. The book reader uses it to roll into
 	// the next chapter. Held per start() and cleared by stop().
@@ -123,7 +134,6 @@ class Listen {
 	// Called as each paragraph begins (the audio drives it) — the reader saves
 	// the resume point from it. Held per start() and cleared by stop().
 	#onAdvance: ((index: number) => void) | null = null;
-	#mediaBound = false;
 	#sleepTimer: ReturnType<typeof setTimeout> | null = null;
 	// Keep a reference to the active utterance — Chrome garbage-collects it
 	// otherwise and the onend callback (our advance mechanism) never fires.
@@ -259,7 +269,9 @@ class Listen {
 			speechSynthesis.resume();
 			this.status = 'playing';
 		}
-		this.#mediaState();
+		// The state only: the clock was set at the paragraph's start and the OS
+		// has been running it since, so re-sending that start would jump it back.
+		this.#mediaState(false);
 	}
 
 	stop() {
@@ -283,7 +295,10 @@ class Listen {
 		this.#onAdvance = null;
 		this.status = 'idle';
 		this.current = -1;
-		this.#mediaState();
+		// Nothing is playing: take the reading off the lock screen and retire the
+		// OS controls, so a stale "play" there can't revive a finished chapter.
+		const ms = mediaSession();
+		if (ms) unbindMediaSession(ms);
 	}
 
 	skip(delta: number) {
@@ -291,6 +306,12 @@ class Listen {
 		const next = this.current + delta;
 		if (next < 0 || next >= this.#paragraphs.length) return;
 		this.#speakFrom(next);
+	}
+
+	/** Jump to the paragraph holding an (estimated) time — a lock-screen scrub. */
+	seekTo(seconds: number) {
+		if (this.status === 'idle' || !(seconds >= 0)) return;
+		this.#speakFrom(paragraphAt(this.#paragraphs, seconds));
 	}
 
 	/** The listener's own speed — what the account syncs; 1 until they choose. */
@@ -407,40 +428,35 @@ class Listen {
 
 	// --- OS Media Session (lock-screen / background / headset controls) --------
 
+	// See listenMedia.ts for what each platform actually shows.
+
 	#setupMedia() {
-		if (!this.supported || !('mediaSession' in navigator)) return;
-		const ms = navigator.mediaSession;
-		if (this.#media) {
-			try {
-				ms.metadata = new MediaMetadata({
-					title: this.#media.title,
-					artist: this.#media.artist ?? 'Ochorus'
-				});
-			} catch {
-				/* MediaMetadata unavailable — the action handlers below still help */
-			}
-		}
-		if (this.#mediaBound) return; // handlers reference the singleton — bind once
-		this.#mediaBound = true;
-		const set = (action: MediaSessionAction, handler: () => void) => {
-			try {
-				ms.setActionHandler(action, handler);
-			} catch {
-				/* this action isn't supported on this browser */
-			}
-		};
-		set('play', () => this.status === 'paused' && this.toggle());
-		set('pause', () => this.status === 'playing' && this.toggle());
-		set('previoustrack', () => this.skip(-1));
-		set('nexttrack', () => this.skip(1));
-		set('stop', () => this.stop());
+		const ms = this.supported ? mediaSession() : null;
+		if (!ms) return;
+		if (this.#media) publishMetadata(ms, this.#media);
+		// Bound per reading (stop() unbinds), and every handler goes through the
+		// same methods as the Listen bar, so the bar and the lock screen can never
+		// disagree about whether Listen is playing — a play/pause that doesn't
+		// match the state is ignored rather than toggled the wrong way.
+		bindMediaSession(ms, {
+			play: () => this.status === 'paused' && this.toggle(),
+			pause: () => this.status === 'playing' && this.toggle(),
+			stop: () => this.stop(),
+			skip: (delta) => this.skip(delta),
+			seekTo: (seconds) => this.seekTo(seconds)
+		});
 	}
 
-	#mediaState() {
-		if (this.supported && 'mediaSession' in navigator) {
-			navigator.mediaSession.playbackState =
-				this.status === 'playing' ? 'playing' : this.status === 'paused' ? 'paused' : 'none';
-		}
+	#mediaState(withClock = true) {
+		const ms = this.supported ? mediaSession() : null;
+		if (!ms) return;
+		publishState(
+			ms,
+			this.status,
+			withClock && this.status !== 'idle'
+				? estimatePosition(this.#paragraphs, this.current, this.rate)
+				: null
+		);
 	}
 
 	// --- Sleep timer -----------------------------------------------------------

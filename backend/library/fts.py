@@ -50,6 +50,24 @@ def config_for(language: str) -> str:
     return FTS_CONFIGS.get(language, "simple")
 
 
+# --- Substring-matched languages ------------------------------------------------
+# Japanese is written without spaces, so Postgres's parser (no Japanese config;
+# `simple` splits on spaces and punctuation) indexes a whole clause as ONE token:
+# 神の恵みについて考えます is a single lexeme, and neither a plain nor a prefix
+# tsquery for 恵み can reach it. These languages skip the tsvector entirely and
+# match by substring (ILIKE), as the SQLite dev path already does — each
+# whitespace-separated word must occur somewhere in the field. Per-language
+# querysets keep the scan to that language's rows, and no stored vector is read,
+# so nothing needs re-indexing. A bigram/pg_bigm index is the scaling step if a
+# Japanese shelf ever grows large enough for the scan to show.
+SUBSTRING_LANGUAGES = {"ja"}
+
+
+def uses_fts(language: str) -> bool:
+    """Whether a search in ``language`` runs on the tsvectors (else substrings)."""
+    return connection.vendor == "postgresql" and language not in SUBSTRING_LANGUAGES
+
+
 # --- Prefix-matched languages ---------------------------------------------------
 # Korean writes particles ONTO the word: 은혜를, 은혜는, 은혜의 are all "grace",
 # and `simple` (Postgres ships no Korean config) indexes each as its own token.

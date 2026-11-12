@@ -124,6 +124,25 @@ describe('readerPrefs store', () => {
 		expect(stored().preferModern).toBe(false);
 	});
 
+	it('persists the side-by-side mode across a reload, and reset turns it off', async () => {
+		expect(readerPrefs.parallel).toBe(false);
+		readerPrefs.setParallel(true);
+		expect(stored().parallel).toBe(true);
+		// A fresh page load reads it back.
+		vi.resetModules();
+		({ readerPrefs } = await import('./readerPrefs.svelte'));
+		readerPrefs.init();
+		expect(readerPrefs.parallel).toBe(true);
+		readerPrefs.reset();
+		expect(readerPrefs.parallel).toBe(false);
+		expect(stored().parallel).toBe(false);
+	});
+
+	it('ignores a stored side-by-side value that is not a boolean', () => {
+		localStorage.setItem(KEY, JSON.stringify({ parallel: 'yes' }));
+		expect(load().parallel).toBe(false);
+	});
+
 	it('persists text alignment and enables hyphenation when justified', () => {
 		readerPrefs.setAlign('justify');
 		expect(stored().align).toBe('justify');
