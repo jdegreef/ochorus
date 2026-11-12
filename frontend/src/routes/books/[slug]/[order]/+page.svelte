@@ -5,7 +5,8 @@
 	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
-	import { PHONE } from '$lib/breakpoints';
+	import { PHONE, WIDE } from '$lib/breakpoints';
+	import { parallelActive, parallelOffered } from '$lib/parallelReading';
 	import { readingSync } from '$lib/readingSync';
 	import { childrensReading, splitEdition } from '$lib/edition';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
@@ -425,7 +426,22 @@
 	// This chapter's pages have been counted. Until then pageIndex/pageTotal are
 	// the last chapter's (or the initial 1), which read as "finished".
 	let pagesMeasured = $state(false);
-	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
+	// "Side by side" ($lib/parallelReading): the Original beside its Modern
+	// English edition, paragraph by paragraph. Wide screens only, and a scroll
+	// layout — it takes over from page mode while on, so the paging maths never
+	// has to lay out two texts. `wide` is false in the prerendered markup, so
+	// the mode comes on after hydration.
+	const wide = mediaFlag(WIDE);
+	const parallelGate = $derived({
+		hasModern: chapter.has_modern_edition,
+		language,
+		wide: wide.matches
+	});
+	const parallelMenu = $derived(parallelOffered(parallelGate));
+	const parallel = $derived(
+		parallelActive({ ...parallelGate, pref: readerPrefs.parallel, edition })
+	);
+	const paged = $derived(readerPrefs.paged && listen.status === 'idle' && !parallel);
 	// How far through the chapter the reader is (0..1) — the scrubber, hairline,
 	// page number and time-left figures. Derived, so it can't go stale when the
 	// page count changes without a turn (it once showed a full bar on page 1/5).
@@ -698,7 +714,7 @@
 	// to two of that measure plus a centre gutter (capped to the viewport), so
 	// each column stays near the comfort width the reader picked.
 	const articleMax = $derived(
-		cols === 2
+		cols === 2 || parallel
 			? 'min(calc(2 * var(--reading-measure) + 4rem), calc(100vw - 2rem))'
 			: 'var(--reading-measure)'
 	);
@@ -2032,7 +2048,7 @@
 					     body's plain text. -->
 					<!-- Not mounted on phones, where the bottom sheet takes over. -->
 					{#if !isPhone}
-						<ReaderControls layout margins {...rcProps} />
+						<ReaderControls layout={!parallel} margins {...rcProps} />
 					{/if}
 					{#if listen.offered}
 						<button
@@ -2117,6 +2133,32 @@
 									onclick={() => (moreOpen = false)}
 									><Icon name="layers" size={20} />{editionLabel}</a
 								>
+							{/if}
+							<!-- Side by side: a toggle on the Original; from the Modern edition
+							     it leads to the Original with the mode on (the Original's body is
+							     the left column, where marks live). -->
+							{#if parallelMenu}
+								{#if edition === 'modern'}
+									<a
+										class="account-item more-item"
+										href={editionToggleHref()}
+										data-sveltekit-noscroll
+										title={t('reader.sideBySideHint')}
+										onclick={() => {
+											moreOpen = false;
+											readerPrefs.setParallel(true);
+										}}><Icon name="columns" size={20} />{t('reader.sideBySide')}</a
+									>
+								{:else}
+									<button
+										class="account-item more-item"
+										class:text-accent={parallel}
+										aria-pressed={parallel}
+										title={t('reader.sideBySideHint')}
+										onclick={fromMore(() => readerPrefs.setParallel(!readerPrefs.parallel))}
+										><Icon name="columns" size={20} />{t('reader.sideBySide')}</button
+									>
+								{/if}
 							{/if}
 							<button class="account-item more-item" onclick={fromMore(() => readerUi.toggleFocus())}
 								><Icon name="maximize" size={20} />{readerUi.focus
@@ -2254,9 +2296,26 @@
 			</button>
 		{/if}
 
-		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(chapter.body_html))}</div>
+		<!-- Side by side: a two-column grid — the labels, then this body (the
+		     Original, left) and the Modern English column (right). Otherwise
+		     display:contents, i.e. no box at all. -->
+		<div class="par-wrap" class:par-grid={parallel}>
+			{#if parallel}
+				<p class="eyebrow par-label text-muted">{t('reader.original')}</p>
+				<p class="eyebrow par-label text-muted">
+					{t('reader.modernEdition')}<span class="par-hint">{t('reader.sideBySideMarks')}</span>
+				</p>
+			{/if}
+			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(chapter.body_html))}</div>
+			{#if parallel}
+				<!-- Loaded on demand: only wide-screen readers who turn it on need it. -->
+				{#await import('$lib/components/ParallelModern.svelte') then { default: ParallelModern }}
+					<ParallelModern {slug} order={chapter.order} originalHtml={chapter.body_html} original={body} />
+				{/await}
+			{/if}
+		</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an
@@ -3061,6 +3120,32 @@
 		padding-bottom: calc(
 			var(--foot-h, var(--listenbar-h, calc(3.1rem + env(safe-area-inset-bottom)))) + 1.4rem
 		);
+	}
+	/* Side by side ($lib/parallelReading): the labels on row 1, the Original
+	   (this page's body) and the Modern English column on row 2. Without the
+	   mode the wrapper has no box, so the body sits where it always did. */
+	.par-wrap {
+		display: contents;
+	}
+	.par-wrap.par-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		column-gap: 1.5rem;
+	}
+	.par-label {
+		margin-bottom: 1.25rem;
+	}
+	/* The Modern label sits over its column's text, past the column rule. */
+	.par-label + .par-label {
+		padding-inline-start: 1.5rem;
+	}
+	.par-hint {
+		display: block;
+		margin-top: 0.2rem;
+		font-size: var(--fs-micro);
+		font-weight: 400;
+		letter-spacing: normal;
+		text-transform: none;
 	}
 	/* Scroll mode only: give the chapter title cluster room to breathe under the
 	   breadcrumb, so it reads as the start of the chapter rather than a fourth
