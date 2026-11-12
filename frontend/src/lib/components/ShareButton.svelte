@@ -3,7 +3,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { menuShift } from '$lib/menuShift';
-	import { nativeShare, shareLinks } from '$lib/share';
+	import { nativeShare, shareLinks, type ShareLink } from '$lib/share';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -36,8 +36,11 @@
 		/** Called when the page is passed on: the OS sheet completes, the link
 		 *  is copied, or a share target is chosen — not on a dismissed sheet. */
 		onshare?: () => void;
+		/** The menu's targets, where the default page-share set is wrong — a
+		 *  private message (a gift link) must not be offered to Facebook. */
+		targets?: ShareLink[];
 	}
-	let { url, title, showLabel = false, label, size = 'sm', onshare }: Props = $props();
+	let { url, title, showLabel = false, label, size = 'sm', onshare, targets }: Props = $props();
 	const t = i18n.t;
 	const name = $derived(label ?? t('reader.share'));
 	const menuId = $props.id();
@@ -56,7 +59,7 @@
 	let copyTimer: ReturnType<typeof setTimeout> | undefined;
 	$effect(() => () => clearTimeout(copyTimer));
 
-	const links = $derived(shareLinks(title, url, t('login.email')));
+	const links = $derived(targets ?? shareLinks(title, url, t('login.email')));
 
 	async function onClick() {
 		// Any failure other than a dismissed sheet falls through to the menu.

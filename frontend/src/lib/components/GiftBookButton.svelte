@@ -6,6 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { SITE_URL } from '$lib/config';
 	import { track } from '$lib/analytics';
+	import { messageShareLinks } from '$lib/share';
 	import {
 		GIFT_CREATED_EVENT,
 		GIFT_NAME_MAX,
@@ -44,12 +45,19 @@
 	const cleanNote = $derived(cleanGiftNote(note));
 	const left = $derived(GIFT_NOTE_MAX - giftLength(note));
 	// SITE_URL, not location.origin: in the app the origin is capacitor://.
-	const link = $derived(
-		cleanName.text
-			? `${SITE_URL}${localizeHref('/gift')}${giftHash({ slug, lang: language, name: cleanName.text, note: cleanNote.text })}`
-			: ''
-	);
+	const link = $derived.by(() => {
+		if (!cleanName.text) return '';
+		try {
+			const hash = giftHash({ slug, lang: language, name: cleanName.text, note: cleanNote.text });
+			return `${SITE_URL}${localizeHref('/gift')}${hash}`;
+		} catch {
+			return ''; // Past the link's length limit (only long emoji runs get there).
+		}
+	});
 	const shareTitle = $derived(t('gift.shareTitle').replace('%t%', () => title));
+	// A message, not a page: WhatsApp and email only — never Facebook's
+	// public composer, which would also put the note in its query string.
+	const targets = $derived(messageShareLinks(shareTitle, `${shareTitle}\n${link}`, t('login.email')));
 
 	// Typing past a cap keeps what fits (graphemes, so an emoji isn't halved).
 	const capName = () => (name = giftCap(name, GIFT_NAME_MAX));
@@ -111,6 +119,7 @@
 					label={t('gift.send')}
 					showLabel
 					size="md"
+					{targets}
 					onshare={() => track(GIFT_CREATED_EVENT, { language })}
 				/>
 			{:else}
