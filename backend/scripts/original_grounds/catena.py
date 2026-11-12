@@ -75,23 +75,27 @@ def lamp(x, y, s):
     return body + flame
 
 
+#: How far the chain sags between two lamps, and how many links hang there.
+SAG, LINKS = 16, 9
+_COSH1 = math.cosh(1)
+
+
 def chain():
     """The gold chain: a catenary hung between each lamp's handle and the next's,
-    drawn as small links."""
+    drawn as small links, alternately face-on and edge-on. The cosh term is
+    normalised to run from 0 at either end to 1 at the middle."""
     out = []
     for (x1, y1, s1), (x2, y2, s2) in zip(LAMPS, LAMPS[1:]):
         ax, ay = x1 - 15 * s1, y1 - 5 * s1
         bx, by = x2 - 15 * s2, y2 - 5 * s2
-        sag = 16
-        links = 9
-        for i in range(links + 1):
-            t = i / links
+        angle = math.degrees(math.atan2(by - ay, bx - ax))
+        for i in range(LINKS + 1):
+            t = i / LINKS
             px = ax + (bx - ax) * t
-            py = ay + (by - ay) * t + sag * (math.cosh(2 * t - 1) - math.cosh(1)) / (1 - math.cosh(1))
-            angle = math.degrees(math.atan2(by - ay, bx - ax))
-            rx, ry = (2.6, 1.3) if i % 2 == 0 else (2.6, .7)
+            py = ay + (by - ay) * t + SAG * (math.cosh(2 * t - 1) - _COSH1) / (1 - _COSH1)
+            ry = 1.3 if i % 2 == 0 else .7
             out.append(
-                f'<ellipse cx="{px:.1f}" cy="{py:.1f}" rx="{rx}" ry="{ry}" fill="none" '
+                f'<ellipse cx="{px:.1f}" cy="{py:.1f}" rx="2.6" ry="{ry}" fill="none" '
                 f'stroke="#c9a14e" stroke-width=".9" opacity=".85" transform="rotate({angle:.0f} {px:.1f} {py:.1f})"/>'
             )
     return "".join(out)
@@ -144,5 +148,5 @@ SCENES = {"catena-on-john": GROUND}
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for slug in sys.argv[2:] or SCENES:
-        (OUT / f"{slug}.html").write_text(GROUND if slug in SCENES else "")
+        (OUT / f"{slug}.html").write_text(SCENES[slug])
         print(OUT / f"{slug}.html")
