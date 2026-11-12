@@ -8581,8 +8581,6 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("قبل أن يستطيع الله أن يستخدمهم.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
-    ("kabla Mungu hajaweza kuwatumia.</p>",
-     "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("반드시 새로운 세례를 받아야 합니다.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("Đức Chúa Trời mới có thể dùng họ.</p>",
