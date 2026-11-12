@@ -3990,6 +3990,40 @@
 				546
 			]
 		},
+		"am/tell-me-the-story-1": {
+			"ground": "a34ea8379a03138c818cdb95509186c965617d35d5cfa451752f94046d8960bf",
+			"style": "young",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 286, 308, 330],
+					[167, 361, 433, 436]
+				],
+				"subtitle": [
+					[140, 492, 460, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
+			]
+		},
 		"am/ten-commandments": {
 			"ground": "e7d20b56522c6cfea786bc265b5d4442ddec2422633f154ee9fc4037ab67e03f",
 			"style": "press",
@@ -5185,6 +5219,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/a-short-and-easy-method-of-prayer": {
+			"ground": "18d07c743280652c3e7c1e4a7de064de738eac2c93a31ea35b1838eb66f5962f",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[161, 245, 439, 333],
+					[160, 347, 440, 435]
+				],
+				"subtitle": [
+					[130, 519, 470, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				239,
+				555
+			]
+		},
 		"ar/absolute-surrender": {
 			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
 			"style": "devotional",
@@ -5788,6 +5856,42 @@
 			"middle": [
 				255,
 				540
+			]
+		},
+		"ar/key-teachings-of-a-b-simpson": {
+			"ground": "8c9acd85e7afd251ce90af509b2d307aa6ee9c3b455cf2dd2a3e7e1f0d9b678a",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[170, 180, 430, 243],
+					[171, 257, 429, 320]
+				],
+				"subtitle": [
+					[164, 388, 292, 427],
+					[292, 388, 366, 427],
+					[366, 388, 436, 427]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				425
 			]
 		},
 		"ar/key-teachings-of-gareth-evans": {
@@ -19914,6 +20018,40 @@
 				534
 			]
 		},
+		"hi/key-teachings-of-a-b-simpson": {
+			"ground": "a907948d6b03312dadfe7315b985453f037f2e7b2f1d41ab5f102dbcb5615d7c",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[159, 181, 441, 244],
+					[151, 261, 449, 324]
+				],
+				"subtitle": [
+					[71, 402, 529, 424]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				430
+			]
+		},
 		"hi/key-teachings-of-andrew-murray": {
 			"ground": "52b571b6b56c747efd72008822744bd5b7b621ebc52ce0e73b2edb6ff3abaaed",
 			"style": "originals",
@@ -23671,6 +23809,40 @@
 				524
 			]
 		},
+		"ko/a-short-and-easy-method-of-prayer": {
+			"ground": "d94134d627ec94141ec59650147f5c3dd399d82f7a3e0a904365c995f24fa21d",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c78490ca86c9db06d013070f8cb51612f910220f856a37d7cca86d8624c27640",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[88, 242, 512, 347],
+					[135, 334, 465, 439]
+				],
+				"subtitle": [
+					[159, 518, 441, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				546
+			]
+		},
 		"ko/absolute-surrender": {
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
@@ -24419,6 +24591,40 @@
 			"middle": [
 				269,
 				525
+			]
+		},
+		"ko/key-teachings-of-a-b-simpson": {
+			"ground": "e9334223c6ea230598f1c68a76d906ea8821135dd4bf9b4e8493767d933a44f0",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "fa2376d13efa015ad597122a3fac95e7bdc9e896ed7cc959595ca2874fd28aeb",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[163, 169, 437, 232],
+					[142, 225, 458, 288]
+				],
+				"subtitle": [
+					[61, 352, 539, 380]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				380
 			]
 		},
 		"ko/key-teachings-of-gareth-evans": {
@@ -25337,6 +25543,21 @@
 				229,
 				566
 			]
+		},
+		"ko/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "f70aeeb86be6a5dab35be4dc69f9ec0023f8b6084c9c8fb705e1a80bb9f50e1c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "dec2c7f77c94bf7c9ae431f5b06cbde17cded3a43a87bc189daf5d8bb8f95dc6",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/the-god-of-all-comfort": {
 			"ground": "aa309a6434caa648fd1df0c69fa6c326c148f876b8c6cc5b368d13c8fbdba141",
@@ -29398,6 +29619,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"open-your-mouth-wide": {
+			"ground": "60274179ab616ac9da32e716737118fbedf68314ab06a3e04946ad44fcabddea",
+			"style": "originals",
+			"volume": "8",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.15,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[142, 328, 458, 404],
+					[118, 394, 482, 470]
+				],
+				"subtitle": [
+					[153, 528, 447, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"orthodoxy": {
 			"ground": "39abaab47d525f963d442010561682d8df695d7d8cebe3429ba5c9548cb8e7da",
@@ -40548,6 +40804,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"uk/days-of-heaven-upon-earth": {
+			"ground": "613d03da45e1d3e07c68563cb726b1cb5baa22525a9a8f0fbd4f1a3b8b2d1026",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"uk/divine-healing": {
 			"ground": "1d2453716cb3bf0d448c92ecef2f279a845c359cb266db9c872072182dd2fc65",
 			"style": "devotional",
@@ -40773,6 +41044,21 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true,
+			"sitemark": null
+		},
+		"uk/holy-in-christ": {
+			"ground": "e3f46567245f87cdccfa2ccf7d679a5e4a1e94880dc2759b94dd0f97d7930599",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
 			"sitemark": null
 		},
 		"uk/humility-2": {
@@ -41160,6 +41446,21 @@
 				313,
 				482
 			]
+		},
+		"uk/ministry-of-intercession": {
+			"ground": "7ddfc15172947e2f8e83350cb1d33b7c2e288919c5c914a594318079632c52b9",
+			"style": "devotional",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/mortification-of-sin": {
 			"ground": "818017a69f9e53d574535fab8675ecced28dfad2c3b9b90c233ed5e590a28d70",
@@ -42993,6 +43294,21 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true,
+			"sitemark": null
+		},
+		"vi/how-to-bring-men-to-christ": {
+			"ground": "221d09cf0d94f2be4ee4dd8d0eafb303e33a4057e96aa1512d74883c0fc11bdb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
 			"sitemark": null
 		},
 		"vi/how-to-succeed-in-the-christian-life": {
