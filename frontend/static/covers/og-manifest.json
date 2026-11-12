@@ -6480,6 +6480,39 @@
 				504
 			]
 		},
+		"ar/talks-to-the-farmer-children": {
+			"ground": "b23ef0c5ddf6c52418fda54731d23078d8830eabc1f46298c0e6ad580b6473ed",
+			"style": "young",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[49, 312, 551, 393]
+				],
+				"edition": [
+					[273, 418, 327, 443]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				306,
+				489
+			]
+		},
 		"ar/talks-to-the-farmer-teens": {
 			"ground": "92a25e6cf5d903ffcf365cf3d42571d1efa0de0c10ff963423520cd301c6bf4a",
 			"style": "revival",
