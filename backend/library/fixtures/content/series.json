@@ -1294,6 +1294,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "fr",
+  "title": "Une nuée de témoins en prière",
+  "description": "La prière à travers toute l’histoire de l’Église, un volume par époque : les prières de l’Ancien Testament, Jésus maître de prière, les apôtres, et les hommes et les femmes de prière de chaque siècle et de chaque pays jusqu’à aujourd’hui. Chaque court chapitre pose un verset clé, raconte une histoire, fait entendre une voix du passé et se termine par des idées clés, un exercice et une prière.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "fr",
