@@ -1,3 +1,4 @@
+// prerender refresh 2026-11-11: French Key Teachings — A. B. Simpson (#7510), Jonathan Edwards (#7511), Watchman Nee (#7514).
 // prerender refresh 2026-10-05 (queue job #5123): Portuguese book — men-of-prayer-2 (Homens de Oração).
 // prerender refresh 2026-09-25: school-of-prayer (ar, #3538) and cheque-book (hi, #3541) — both web builds ran
 // before the API deploy, so their book pages shipped as empty shells. Re-crawl now the API has them.
