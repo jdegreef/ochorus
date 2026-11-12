@@ -120,6 +120,18 @@ In this order, and nothing else at the top level:
    on the English shelf with at least `CANON_MIN_BOOKS` books: its labels are
    English, and translated sermons carry localized references the backend
    can't parse. Widening it needs localized book names first.
+   **Sermons: the side rail** (top-20 #9, 2026-11): from `lg` the shelf under
+   the filter bar is a two-column grid (`.shelf-split`) — the list's 48rem
+   measure left the right of the column empty — and a sticky `<aside>` holds
+   Sermon of the Day, "Short on time?" (chips for the SAME `len` filter) and up
+   to 15 preacher faces (`<Portrait tone="hover">`) of what is shown, each a
+   link into `?group=preacher#preacher-<slug>`. The aside comes FIRST in source
+   order, so below `lg` it is just Sermon of the Day above the list, where it
+   always was (hidden while filtering there); the length and preacher blocks
+   are `hidden lg:block` — a phone has them in the Filters sheet and the
+   By-preacher view. CSS only: one prerendered layout at every width. Rows that
+   name their preacher (`SermonCard showAuthor`) wear the preacher's
+   `<Portrait>` at their start, on every shelf.
    **Books opens on curated rows, not the grid** (design review #11,
    2026-11-06). `/books` with no query shows **Browse**: a handful of named
    rows (`h2.section-label` + "See all %n%" on a topic row, one
