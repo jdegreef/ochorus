@@ -1666,6 +1666,41 @@ export const getDailyShelf = (date: string, language = 'en', f?: Fetch) =>
 		f
 	);
 
+/** A chapter the time picker suggests (`/api/library/fit/`): its book as a
+ *  cover face, and whether it carries on a book the reader is in. */
+export interface FitChapter {
+	book: CoverFace;
+	order: number;
+	title: string;
+	word_count: number;
+	continuing: boolean;
+}
+
+/** "How long do you have?" — a sermon and a chapter that fit a word window. */
+export interface TimeFit {
+	sermon: SermonSummary | null;
+	chapter: FitChapter | null;
+}
+
+/** Something to read in the time there is: the window in words (the caller
+ *  converts minutes at the reader's pace), the reader's local day as `seed`,
+ *  and their in-progress books as `slug:order` pairs (`$lib/timeFit`). */
+export const getTimeFit = (
+	q: { language: string; minWords: number; maxWords: number; seed: number; reading: string },
+	f?: Fetch
+) =>
+	apiFetch<TimeFit>(
+		`/api/library/fit/?${new URLSearchParams({
+			language: q.language,
+			min_words: String(q.minWords),
+			max_words: String(q.maxWords),
+			seed: String(q.seed),
+			...(q.reading ? { reading: q.reading } : {})
+		})}`,
+		{},
+		f
+	);
+
 /** The books the hubs list with a leader's guide, each once, in hub order (a
  *  Map keeps a key's first position). */
 export const guideBooks = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): BookSummary[] => [
