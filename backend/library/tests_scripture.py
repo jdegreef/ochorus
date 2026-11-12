@@ -101,6 +101,27 @@ class ScriptureTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data["verses"]), 2)
 
+    def test_lookup_names_the_chapter_in_the_librarys_own_bible(self):
+        from library.models import Book, Chapter, Series
+
+        series = Series.objects.create(slug="the-bible", title="The Bible")
+        author = Author.objects.create(slug="owb-x", name="Open Word Bible")
+        romans = Book.objects.create(
+            author=author, slug="romans", language="en", title="Romans",
+            series=series, series_position=45,
+        )
+        # Introduction, then Romans 1.. as reader chapters 2.. (build_owb_book).
+        for order in (1, 9, 10):
+            Chapter.objects.create(book=romans, order=order, title=f"C{order}", body_html="<p>x</p>")
+        res = self.client.get("/api/library/scripture/?ref=Romans 8:38-9:2")
+        self.assertEqual(res.data["bible_chapter"], {"slug": "romans", "order": 9})
+        # A chapter the edition doesn't carry, and a book the library hasn't.
+        self.assertIsNone(self.client.get("/api/library/scripture/?ref=Romans 3:23").data["bible_chapter"])
+        self.assertIsNone(self.client.get("/api/library/scripture/?ref=John 3:16").data["bible_chapter"])
+        romans.is_published = False
+        romans.save()
+        self.assertIsNone(self.client.get("/api/library/scripture/?ref=Romans 8:28").data["bible_chapter"])
+
     def test_lookup_endpoint_bad_and_missing(self):
         self.assertEqual(self.client.get("/api/library/scripture/").status_code, 400)
         self.assertEqual(

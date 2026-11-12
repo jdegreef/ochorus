@@ -17,6 +17,11 @@ export interface ScriptureResult {
 	version: string;
 	/** True when only the first verses came back (a whole chapter is cut). */
 	truncated?: boolean;
+	/** Where the library's own Bible prints the chapter the reference starts
+	 *  in — reader chapter `order` of book `slug` — or null when it has no
+	 *  edition of that book. English editions only; optional: an API behind
+	 *  this build omits it. */
+	bible_chapter?: { slug: string; order: number } | null;
 }
 
 const cache = new Map<string, ScriptureResult | 'none'>();

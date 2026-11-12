@@ -2900,4 +2900,39 @@ class ScriptureView(APIView):
         data = lookup(ref[:120])
         if not data:
             return Response({"detail": "No such reference."}, status=404)
-        return Response(data)
+        return Response({**data, "bible_chapter": _bible_reader_chapter(ref[:120])})
+
+
+#: The series whose books are the Bible itself (``build_owb_book``).
+_BIBLE_SERIES = "the-bible"
+
+
+def _bible_reader_chapter(ref: str) -> dict | None:
+    """Where the library's own Bible prints the chapter ``ref`` starts in.
+
+    ``{"slug", "order"}`` of that chapter in the reader, or None when the
+    library has no published English edition of the book (the apocrypha, or a
+    book not yet shipped). A Bible book is built as an introduction, then one
+    reader chapter per English Bible chapter, then a conclusion — so Bible
+    chapter ``n`` is reader chapter ``n + 1``, and the chapter row's existence
+    is the check. One indexed query.
+    """
+    from .scripture import chapter_of
+
+    found = chapter_of(ref)
+    if found is None:
+        return None
+    book, chapter = found
+    order = chapter + 1
+    slug = (
+        Chapter.objects.filter(
+            book__series__slug=_BIBLE_SERIES,
+            book__series_position=book,
+            book__language="en",
+            book__is_published=True,
+            order=order,
+        )
+        .values_list("book__slug", flat=True)
+        .first()
+    )
+    return {"slug": slug, "order": order} if slug else None

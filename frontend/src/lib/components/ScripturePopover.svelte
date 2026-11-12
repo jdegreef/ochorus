@@ -4,8 +4,17 @@
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { portal } from '$lib/actions/portal';
 	import { i18n } from '$lib/i18n.svelte';
+	import { bibleIn } from '$lib/bible';
+	import { localizeHref } from '$lib/href';
+	import { getLocale } from '$lib/paraglide/runtime';
 
 	const t = i18n.t;
+	// The whole chapter in the library's own Bible, where this locale has one
+	// (`bibleIn`: the Bible books are English-only rows, no fallback).
+	const chapterHref = $derived.by(() => {
+		const c = scripture.result?.bible_chapter;
+		return c && bibleIn(getLocale()) ? localizeHref(`/books/${c.slug}/${c.order}/`) : '';
+	});
 	let card = $state<HTMLDivElement>();
 
 	function onKey(e: KeyboardEvent) {
@@ -44,11 +53,20 @@
 		{:else}
 			<p class="mt-2 text-small text-muted">{t('reader.scriptureUnavailable')}</p>
 		{/if}
-		{#if scripture.href}
-			<!-- The tap opened this popover instead of following the href: offer it here. -->
-			<a class="mt-2 inline-block text-small font-semibold" href={scripture.href} onclick={() => scripture.close()}
-				>{t('reader.scripturePage')}</a
-			>
+		{#if chapterHref || scripture.href}
+			<div class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+				{#if chapterHref}
+					<a class="text-small font-semibold" href={chapterHref} onclick={() => scripture.close()}
+						>{t('reader.scriptureReadChapter')}</a
+					>
+				{/if}
+				{#if scripture.href}
+					<!-- The tap opened this popover instead of following the href: offer it here. -->
+					<a class="text-small font-semibold" href={scripture.href} onclick={() => scripture.close()}
+						>{t('reader.scripturePage')}</a
+					>
+				{/if}
+			</div>
 		{/if}
 	</div>
 {/if}

@@ -367,6 +367,22 @@ def lookup(ref_text: str) -> dict | None:
     }
 
 
+@lru_cache(maxsize=4096)
+def chapter_of(ref_text: str) -> tuple[int, int] | None:
+    """(canonical book number, English chapter) where a reference starts.
+
+    What the popover's "Read the whole chapter" needs: the Bible book's reader
+    chapters follow English numbering (``build_owb_book`` places each sentence
+    by ``versification.json``), and pythonbible's are English too, so the pair
+    names the reader's chapter with no remapping. "Romans 8:38-9:2" starts in
+    8. None for text that isn't a parseable English reference.
+    """
+    ref = _first_reference(ref_text)
+    if ref is None:
+        return None
+    return (ref.book.value, ref.start_chapter)
+
+
 @lru_cache(maxsize=512)
 def book_of(ref_text: str) -> tuple[str, int] | None:
     """(display name, canonical order) of the Bible book a reference is in.
