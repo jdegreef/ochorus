@@ -2,7 +2,8 @@
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
-	import { chapterMeta } from '$lib/bookSeo';
+	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
+	import { OWB_SLUG } from '$lib/openWordBible';
 	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
@@ -72,7 +73,7 @@
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId, toQa } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, CC0, bookId, personId, toQa } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, coverVariants, landscapeUrl, shareImage } from '$lib/coverArt';
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
@@ -111,7 +112,12 @@
 	// one speaks to the grown-up reading aloud. Any other book reads like the
 	// sermon page: its heading, its answers open.
 	const chapterQuestions = $derived(toQa(chapter.study_questions));
-	const hasBrief = $derived(Boolean(chapter.summary || chapter.previously));
+	// A Bible chapter is read, and searched for, on its own ("Psalm 23"): it
+	// carries its own summary under the title, as the Open Word Bible's reader
+	// sets it, and no "Previously:" recap of the psalm or chapter before it.
+	const owb = $derived(chapter.author_slug === OWB_SLUG);
+	const previously = $derived(owb ? '' : chapter.previously);
+	const hasBrief = $derived(Boolean(chapter.summary || previously));
 	// Which young-reader edition this is, if any — the questions' voice, and for a
 	// children's edition the young-reader layout, the story styling, the large
 	// Listen button and the gentle read-aloud speed (`childrensReading`: a young-
@@ -194,9 +200,14 @@
 	// Trimmed to a SERP-sized slice at a sentence/word boundary — the raw 250
 	// char cut fed search snippets a mid-word truncation.
 	// Book and chapter lead, so two editions that open alike stay distinct.
+	// A chapter of the Bible itself ("Psalm 23", not its book's introduction):
+	// named as it is searched for, by chapter and translation (`$lib/bookSeo`).
+	const bibleChapter = $derived(edition === null && isBibleChapter(chapter));
 	const metaText = $derived(
 		truncateMeta(
-			chapterMeta(chapter.book_title, standaloneName, metaDescription)
+			bibleChapter
+				? bibleChapterMeta(standaloneName, chapter.author_name, metaDescription)
+				: chapterMeta(chapter.book_title, standaloneName, metaDescription)
 		)
 	);
 	// The <title> names the chapter, then the book AND its author — people search
@@ -205,16 +216,19 @@
 	// `chapterNameIn`: a chapter named after its book is "Chapter 1", not
 	// "Absolute Surrender — Absolute Surrender by …"; and the Modern English
 	// edition says so, or its tab, bookmark and result read as the original's.
+	// A Bible chapter is "Psalm 23 — Open Word Bible — Ochorus" (bibleChapter).
 	const titleTag = $derived(
-		t('chapter.titleTag')
-			.replace('%chapter%', standaloneName)
-			.replace(
-				'%title%',
-				edition === 'modern'
-					? `${chapter.book_title} (${t('reader.modernEdition')})`
-					: chapter.book_title
-			)
-			.replace('%name%', chapter.author_name)
+		bibleChapter
+			? bibleChapterTitle(standaloneName, chapter.author_name)
+			: t('chapter.titleTag')
+					.replace('%chapter%', standaloneName)
+					.replace(
+						'%title%',
+						edition === 'modern'
+							? `${chapter.book_title} (${t('reader.modernEdition')})`
+							: chapter.book_title
+					)
+					.replace('%name%', chapter.author_name)
 	);
 	// The chapter shares its BOOK's card — the cover on its own landscape ground,
 	// which `build-share-cards.mjs` composes for every card a prerendered page
@@ -241,7 +255,16 @@
 					'@id': personId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`),
 					name: chapter.author_name
 				},
-				url: `${SITE_URL}${localizeHref(`/books/${slug}/`)}`
+				url: `${SITE_URL}${localizeHref(`/books/${slug}/`)}`,
+				// A Bible book is a volume of the Bible — the same BookSeries node
+				// the book page's own isPartOf names.
+				isPartOf: owb
+					? {
+							'@type': 'BookSeries',
+							name: t('nav.bible'),
+							url: absUrl(localizeHref(`/series/${BIBLE_SERIES}/`))
+						}
+					: undefined
 			},
 			url: canonical,
 			isAccessibleForFree: true,
@@ -259,8 +282,10 @@
 			publisher: publisherLd(),
 			// The book's card — the same picture the page hands link previews.
 			image: ogImage,
-			// The book's rights, as its own page states them (library/rights).
-			license: chapter.public_domain ? PUBLIC_DOMAIN_MARK : undefined
+			// The book's rights, as its own page states them (library/rights); a
+			// chapter of the Bible is the Open Word Bible's text, dedicated CC0
+			// (its book's introduction and conclusion are Ochorus's, so not those).
+			license: chapter.public_domain ? PUBLIC_DOMAIN_MARK : bibleChapter ? CC0 : undefined
 		})
 	);
 
@@ -2294,8 +2319,8 @@
 		     the fixture, so no {@html}. Absent for most books. -->
 		{#if hasBrief}
 			<div class="chapter-brief mb-8" dir="auto" lang={contentLang(language)}>
-				{#if chapter.previously}
-					<p class="brief-previously"><span class="brief-label">{t('reader.previously')}</span> {chapter.previously}</p>
+				{#if previously}
+					<p class="brief-previously"><span class="brief-label">{t('reader.previously')}</span> {previously}</p>
 				{/if}
 				{#if chapter.summary}
 					<p class="brief-label">{t('reader.inThisChapter')}</p>
