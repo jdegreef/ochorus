@@ -9688,6 +9688,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/devoted-to-prayer": {
+			"ground": "1a6fbec9b50e2340ddde78f6119ceff4ade918c623913d2a8d3c3da8f8ad0a2d",
+			"style": "originals",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 250, 310, 294],
+					[86, 328, 514, 404],
+					[109, 394, 491, 470]
+				],
+				"subtitle": [
+					[129, 528, 471, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"es/divine-healing": {
 			"ground": "37de9f451b8fd717a6469972bdd412bc2cde4e42e526a156cea45195eaa10da5",
 			"style": "devotional",
@@ -12945,6 +12980,42 @@
 				498
 			]
 		},
+		"es/the-prayers-jesus-learned": {
+			"ground": "dbe6159cde59faf8fadf6613c19a7c19dfd60be9643d30e8ffb7a48d510b837a",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 217, 308, 261],
+					[95, 295, 505, 371],
+					[156, 361, 444, 437],
+					[164, 427, 436, 503]
+				],
+				"subtitle": [
+					[110, 562, 490, 590]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				205,
+				590
+			]
+		},
 		"es/the-pursuit-of-god": {
 			"ground": "5ae35d914ff6519480b722318f99738155300b9c698927a92cc94d3a17201358",
 			"style": "revival",
@@ -15155,6 +15226,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"fr/devoted-to-prayer": {
+			"ground": "b77b52daf19cdf81eeb0968c7939f8cfe411ec677e58993bcb1dc1832d5bfe2b",
+			"style": "originals",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 250, 310, 294],
+					[102, 328, 498, 404],
+					[96, 394, 504, 470]
+				],
+				"subtitle": [
+					[133, 528, 467, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"fr/divine-healing": {
 			"ground": "fbd4f17761a2b74121dffa7efd286af3d76f8a379f07a743ddb56624fd0673e7",
@@ -18612,6 +18718,41 @@
 			"middle": [
 				292,
 				502
+			]
+		},
+		"fr/the-prayers-jesus-learned": {
+			"ground": "e9dc038c5a1e755d56a64bddf6f95bbb33780759dad87424fa7e2f2195752caa",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[74, 328, 526, 404],
+					[59, 394, 541, 470]
+				],
+				"subtitle": [
+					[124, 528, 476, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
 			]
 		},
 		"fr/the-pursuit-of-god": {
@@ -31254,6 +31395,39 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/christ-the-healer": {
+			"ground": "b98927ff31a96a9930c300122e2e3239cde99bf0ce7d8433d0f512eeff3c3f8e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[53, 223, 547, 305]
+				],
+				"subtitle": [
+					[114, 378, 486, 399]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				399
+			]
+		},
 		"pt/clothed-with-strength-and-dignity": {
 			"ground": "65ca57cac4a33270c66ebe26935c556ffd0c348bbd2b3e928ec2a9f985e1c5f3",
 			"style": "originals",
@@ -31411,6 +31585,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/devoted-to-prayer": {
+			"ground": "83970b09c7ef1965583d0c0d5b8225b197609ac91ad72cf7ed06c0784e54872a",
+			"style": "originals",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 250, 310, 294],
+					[143, 328, 457, 404],
+					[168, 394, 432, 470]
+				],
+				"subtitle": [
+					[137, 528, 463, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"pt/divine-healing": {
 			"ground": "698dfb5eaa879941c66e889fe2e09d02e1b96cc0c47ce6d444e4aeb88abe0ab5",
 			"style": "devotional",
@@ -31458,6 +31667,21 @@
 				327,
 				467
 			]
+		},
+		"pt/enchiridion": {
+			"ground": "478a33acca6a0a8649e80130b0b25468ec45bbc6105011126cde95e9dea9b3ed",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"pt/epistles-of-ignatius": {
 			"ground": "fdc3b28fdf5287a97580efc3d456ae90ed6569b7b5e8a510434574e4f490bcde",
@@ -32022,6 +32246,41 @@
 					[84, 169, 516, 232],
 					[137, 225, 463, 288],
 					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
+		"pt/key-teachings-of-watchman-nee": {
+			"ground": "77cb4e3897db79fb131563d78ecdc18b10f030d13557c80f3164aef5cfd859df",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[109, 280, 491, 343]
 				],
 				"subtitle": [
 					[52, 404, 548, 432]
@@ -33459,6 +33718,41 @@
 			"middle": [
 				297,
 				498
+			]
+		},
+		"pt/the-prayers-jesus-learned": {
+			"ground": "7668304313e4e2e8a3e1a15a221f2ce122b619570964908dfb117a8e98661a41",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[72, 328, 528, 404],
+					[62, 394, 538, 470]
+				],
+				"subtitle": [
+					[137, 528, 463, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
 			]
 		},
 		"pt/the-pursuit-of-god": {
