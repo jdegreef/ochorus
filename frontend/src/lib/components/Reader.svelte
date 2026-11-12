@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
+	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { readingSync } from '$lib/readingSync';
 	/**
@@ -279,10 +280,11 @@
 <svelte:window onscroll={handleScroll} />
 
 <!-- Body HTML is cleaned server-side to a safe tag subset on ingest; Bible
-     references are wrapped as tappable spans (scripture popover). -->
+     references are wrapped as tappable spans (scripture popover). Quotes are
+     curled here, at render time and length-preserving ($lib/smartQuotes). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html assetHtml(markVerse(html))}</div>
+<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html assetHtml(markVerse(smartQuotesHtml(html, language)))}</div>
 
 <ReaderOverlays {reader} container={body} {language} />
 

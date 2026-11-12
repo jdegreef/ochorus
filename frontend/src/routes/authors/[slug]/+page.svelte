@@ -18,6 +18,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { firstSentence } from '$lib/firstSentence';
+	import { smartQuotes } from '$lib/smartQuotes';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { foldBio } from '$lib/bioFold';
 	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
@@ -173,7 +174,9 @@
 	// written for the page). No summary, no line — and none where the page
 	// prints that summary itself (no long bio in this locale), which would
 	// repeat the same sentence a screen lower.
-	const identity = $derived(author.bio_html ? firstSentence(author.bio) : '');
+	const identity = $derived(
+		author.bio_html ? smartQuotes(firstSentence(author.bio), data.language as string) : ''
+	);
 
 	// The writer's hubs as key facts: their traditions, then their place, each
 	// under its own label ("Tradition", "Place") — the order the API serves.
@@ -841,7 +844,7 @@
 				{/if}
 			</div>
 		{:else}
-			<p class="mx-auto mt-6 max-w-[40rem] text-body leading-relaxed text-muted">{author.bio}</p>
+			<p class="mx-auto mt-6 max-w-[40rem] text-body leading-relaxed text-muted">{smartQuotes(author.bio, data.language as string)}</p>
 		{/if}
 	</section>
 	{/if}
