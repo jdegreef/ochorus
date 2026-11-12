@@ -103,5 +103,12 @@
     "note": [
       "The title quotes the shipped ar edition faithful-with-little.ar.json verbatim (الأمين في القليل), and the themes reuse its part and chapter titles, so the card and the book agree. Written with the translation (Ochorus Original, 2026-11)."
     ]
+  },
+  "family-devotions-pilgrims-journey": {
+    "title": "تأمّلات عائلية: سياحة المسيحي",
+    "description": "تأمّلات عائلية من خمس دقائق، للأطفال وللكبار الذين يقرأون معهم، لنحو ثلاثة أسابيع ونصف من الليالي. اقرأوا كل ليلة فصلًا قصيرًا بصوت عالٍ: أولًا سائح بنيان في طريقه إلى المدينة السماوية، ثم صور سبرجن من المزرعة. وينتهي كل فصل بصلاة وثلاثة أسئلة للحديث عنها معًا.",
+    "note": [
+      "AI-drafted (2026-11-12); awaiting native review. Job #7647 (talks-to-the-farmer-children → ar) ships one of this plan's two source books; pilgrims-progress-children has no ar edition yet, so this is prose-ahead, as hi did in #7740: seed_plans creates the ar row only once both are published. Like the English it describes the books rather than quoting their titles; the title echoes pilgrims-progress.ar «سياحة المسيحي», and السائح / بنيان / المدينة السماوية are that edition's own words; سبرجن as in talks-to-the-farmer.ar. Plural address (اقرأوا) because the plan speaks to a family. It promises the prayer and three talk-about-it questions: talks-to-the-farmer-children.ar ships study_questions (3 per chapter)."
+    ]
   }
 }
