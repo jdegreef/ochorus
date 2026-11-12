@@ -25406,6 +25406,21 @@
 				566
 			]
 		},
+		"ko/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "f70aeeb86be6a5dab35be4dc69f9ec0023f8b6084c9c8fb705e1a80bb9f50e1c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "dec2c7f77c94bf7c9ae431f5b06cbde17cded3a43a87bc189daf5d8bb8f95dc6",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/the-god-of-all-comfort": {
 			"ground": "aa309a6434caa648fd1df0c69fa6c326c148f876b8c6cc5b368d13c8fbdba141",
 			"style": "devotional",
