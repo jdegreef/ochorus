@@ -19948,6 +19948,40 @@
 				534
 			]
 		},
+		"hi/key-teachings-of-a-b-simpson": {
+			"ground": "a907948d6b03312dadfe7315b985453f037f2e7b2f1d41ab5f102dbcb5615d7c",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[159, 181, 441, 244],
+					[151, 261, 449, 324]
+				],
+				"subtitle": [
+					[71, 402, 529, 424]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				430
+			]
+		},
 		"hi/key-teachings-of-andrew-murray": {
 			"ground": "52b571b6b56c747efd72008822744bd5b7b621ebc52ce0e73b2edb6ff3abaaed",
 			"style": "originals",
