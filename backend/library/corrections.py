@@ -3341,6 +3341,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('"cannot do good neither is it in them to do evil"', '"cannot do evil neither is it in them to do good"'),
             ("notice here is expression", "notice here is the expression"),
             ("Father, Son and Holy Ghost .", "Father, Son and Holy Ghost."),
+            ("the inspiration of the apostle and prophets", "the inspiration of the apostles and prophets"),
+            ("He bare the sin of many. And made intercession", "He bare the sin of many, and made intercession"),
+            ("(e.g., Deut. 33:27): Putting", "(e.g., Deut. 33:27). Putting"),
+            ("1. The first passage in 2 Cor. 5:10:", "1. The first passage is 2 Cor. 5:10:"),
+            # The New Birth (ch11). "Born of water and the Spirit" is John 3:5-6
+            # and "Not by works done in righteousness" is Titus 3:5, so the
+            # citations move in every edition that reproduces them.
+            ("verses following, 1 John 3:5, 6:", "verses following, John 3:5, 6:"),
+            ("qui suivent, 1 Jean 3:5, 6 :", "qui suivent, Jean 3:5, 6 :"),
+            ("seguintes, 1 Jo 3:5, 6:", "seguintes, Jo 3:5, 6:"),
+            ("eziddirira, 1 Yokaana 3:5, 6:", "eziddirira, Yokaana 3:5, 6:"),
+            ("in Titus 3:4,", "in Titus 3:5,"),
+            ("en Tito 3:4:", "en Tito 3:5:"),
+            ("en Tite 3:4 :", "en Tite 3:5 :"),
+            ("em Tt 3:4:", "em Tt 3:5:"),
+            ("mu Tito 3:4,", "mu Tito 3:5,"),
+            # The list of results runs first to seventh, then "ninth"
+            # (es and am already print eighth).
+            ("The ninth result of being born again", "The eighth result of being born again"),
+            ("Le neuvième résultat", "Le huitième résultat"),
+            ("O nono resultado", "O oitavo resultado"),
+            ("the third result of the New Birth is in outward transformation", "the third result of the New Birth is an outward transformation"),
+            ("whom Jesus Christ gives to him who dwells in him", "whom Jesus Christ gives to him, who dwells in him"),
         ],
     },
     "rest": {
