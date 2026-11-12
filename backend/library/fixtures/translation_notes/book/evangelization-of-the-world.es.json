@@ -1,0 +1,348 @@
+{
+ "kind": "book",
+ "slug": "evangelization-of-the-world",
+ "language": "es",
+ "job_issue": 7147,
+ "pull_request": 7817,
+ "references": [
+  {
+   "reference": "1 Corinthians 15:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:4",
+   "status": "mined",
+   "source_file": "key-teachings-of-r-a-torrey.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:21b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 9:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 1:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "source_file": "enchiridion.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:19b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 8:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:21b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 11:24b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:48b",
+   "status": "mined",
+   "source_file": "religious-affections.es.json"
+  },
+  {
+   "reference": "Acts 13:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 14:1b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 16:5",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:12b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:34a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:4b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 18:10b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 18:8b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 19:10b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 1:8b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 20:31",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Acts 2:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:11a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:11b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:41",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:47b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:4b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 6:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 6:7b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:1",
+   "status": "mined",
+   "source_file": "sermons-on-several-occasions.es.json"
+  },
+  {
+   "reference": "Acts 9:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "source_file": "christs-boundless-compassion.es.json"
+  },
+  {
+   "reference": "Colossians 1:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:5b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "selected-sermons-whitefield.es.json"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:8a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "mined",
+   "source_file": "the-fundamental-doctrines-of-the-christian-faith.es.json"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:36b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Judges 5:23",
+   "status": "mined",
+   "source_file": "things-as-they-are.es.json"
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "mined",
+   "source_file": "ministry-of-intercession.es.json"
+  },
+  {
+   "reference": "Luke 24:47",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 6:46",
+   "status": "mined",
+   "source_file": "how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 16:15b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 6:37",
+   "status": "mined",
+   "source_file": "george-muller-of-bristol.es.json"
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:11b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:48a",
+   "status": "mined",
+   "source_file": "revival-lectures.es.json"
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "source_file": "the-possibilities-of-faith.es.json"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 1:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:8a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 114:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 68:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 15:19b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:14a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:15a",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:8b",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "source_file": "enchiridion.es.json"
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "self_rendered"
+  }
+ ]
+}

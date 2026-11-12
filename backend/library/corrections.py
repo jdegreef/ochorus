@@ -7910,6 +7910,15 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR slips found while translating Chrysostom's On the Priesthood to French (#7207);
+# each is forced by grammar or by the dialogue (Basil answers "But not my case").
+# (Placed mid-file, not at the tail, so parallel jobs' appends can't conflict with it.)
+BODY_CORRECTIONS.setdefault("on-the-priesthood", {}).setdefault("replacements", []).extend([
+    ("nearly all the ancient father of the Church", "nearly all the ancient fathers of the Church"),
+    ("shall we want only and inconsiderately run", "shall we wantonly and inconsiderately run"),
+    ("For my ease does not now call for wailing", "For my case does not now call for wailing"),
+])
+
 # OCR/typo slips found while translating Murray's book to Portuguese (batch 6); scattered one-word mechanical errors, each grammar- or KJV-forced.
 BODY_CORRECTIONS.setdefault('true-vine', {}).setdefault("replacements", []).extend([
     ('what as unspeakable blessedness', 'what an unspeakable blessedness'),
@@ -24865,4 +24874,19 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ('that he should do this thing’ or as Peter', 'that he should do this thing?’ or as Peter'),
     ('seducers, and troublers of the Church. And yet', 'seducers, and troublers of the Church? And yet'),
     ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
+])
+
+# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
+# French (job #7204). Each is a one-letter misread forced by grammar or sense;
+# the French edition already renders the corrected word.
+BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
+    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
+    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
+    ("a matter requiting examination", "a matter requiring examination"),
+    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
+    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
+    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
+    ("bodies would nor possess a desire", "bodies would not possess a desire"),
+    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
+    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
 ])

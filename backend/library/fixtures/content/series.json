@@ -1289,7 +1289,20 @@
   "created_at": "2026-11-09T12:00:00Z",
   "updated_at": "2026-11-09T12:00:00Z"
  }
+},{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "uk",
+  "title": "Хмара молитовних свідків",
+  "description": "Молитва впродовж усієї історії церкви, по тому на кожну добу: молитви Старого Заповіту, Ісус — Учитель молитви, апостоли, а також чоловіки й жінки молитви кожного століття і кожного краю аж до сьогодні. Кожен короткий розділ подає ключовий вірш, розповідає історію, дає почути голос із минулого й завершується думками, практикою та молитвою.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
 },
+
 {
  "model": "library.seriestranslation",
  "fields": {
@@ -1299,6 +1312,19 @@
   "language": "ar",
   "title": "سحابة من الشهود المصلّين",
   "description": "الصلاة عبر قصة الكنيسة كلها، مجلد لكل حقبة: صلوات العهد القديم، ويسوع معلّم الصلاة، والرسل، والرجال والنساء المصلّون في كل قرن وكل أرض حتى اليوم. كل فصل قصير يضع آية محورية، ويروي قصة، ويُسمعنا صوتًا من الماضي، ويختم بأفكار رئيسية وتمرين وصلاة.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "vi",
+  "title": "Đám Mây Nhân Chứng Cầu Nguyện",
+  "description": "Sự cầu nguyện xuyên suốt toàn bộ câu chuyện của Hội Thánh, mỗi quyển một thời kỳ: những lời cầu nguyện trong Cựu Ước, Chúa Giê-xu là Thầy Dạy Cầu Nguyện, các sứ đồ, và những người nam người nữ cầu nguyện của mọi thế kỷ, mọi xứ sở cho đến ngày nay. Mỗi chương ngắn đặt ra một câu Kinh Thánh then chốt, kể một câu chuyện, lắng nghe một tiếng nói từ quá khứ, và kết thúc bằng những điều then chốt, một việc thực hành và một lời cầu nguyện.",
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }
@@ -1348,9 +1374,9 @@
   "series": [
    "a-cloud-of-praying-witnesses"
   ],
-  "language": "sw",
-  "title": "Wingu la Mashahidi Wanaoomba",
-  "description": "Maombi katika historia yote ya kanisa, juzuu moja kwa kila kipindi: maombi ya Agano la Kale, Yesu Mwalimu wa Maombi, mitume, na wanaume na wanawake waombaji wa kila karne na kila nchi hadi leo. Kila sura fupi inaweka mstari mkuu, inasimulia kisa, inasikiliza sauti kutoka zamani, na inamalizika kwa mafunzo, zoezi na maombi.",
+  "language": "es",
+  "title": "Una nube de testigos en oración",
+  "description": "La oración a lo largo de toda la historia de la iglesia, un volumen por época: las oraciones del Antiguo Testamento, Jesús, Maestro de oración, los apóstoles, y los hombres y mujeres de oración de cada siglo y de cada tierra hasta hoy. Cada capítulo breve presenta un versículo clave, cuenta una historia, escucha una voz del pasado y termina con ideas clave, una práctica y una oración.",
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }
