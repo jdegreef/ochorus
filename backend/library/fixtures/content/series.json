@@ -1341,5 +1341,18 @@
   "created_at": "2026-11-12T00:00:00Z",
   "updated_at": "2026-11-12T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "es",
+  "title": "Una nube de testigos en oración",
+  "description": "La oración a lo largo de toda la historia de la iglesia, un volumen por época: las oraciones del Antiguo Testamento, Jesús, Maestro de oración, los apóstoles, y los hombres y mujeres de oración de cada siglo y de cada tierra hasta hoy. Cada capítulo breve presenta un versículo clave, cuenta una historia, escucha una voz del pasado y termina con ideas clave, una práctica y una oración.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
 }
 ]
