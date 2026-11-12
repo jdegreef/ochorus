@@ -158,14 +158,19 @@ def _reading_title(day: PlanDay, language: str) -> str:
     if day.kind == "article":
         article = Article.objects.filter(slug=day.article_slug, language=language).only("h1").first()
         return article.h1 if article else ""
-    chapter = (
+    from library.serializers import plan_day_label
+
+    titles = list(
         Chapter.objects.filter(
-            book__slug=day.book_slug, book__language=language, order=day.chapter_order or 1
+            book__slug=day.book_slug, book__language=language, order__in=day.chapter_orders
         )
-        .only("title")
-        .first()
+        .order_by("order")
+        .values_list("title", flat=True)
     )
-    return chapter.title if chapter else ""
+    # A run with a chapter missing is unresolved, as the plan page treats it.
+    if len(titles) != len(day.chapter_orders):
+        return ""
+    return plan_day_label(titles)
 
 
 def _entry_title(day: PlanDay, language: str) -> str:
