@@ -5824,6 +5824,42 @@
 				540
 			]
 		},
+		"ar/key-teachings-of-a-b-simpson": {
+			"ground": "8c9acd85e7afd251ce90af509b2d307aa6ee9c3b455cf2dd2a3e7e1f0d9b678a",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[170, 180, 430, 243],
+					[171, 257, 429, 320]
+				],
+				"subtitle": [
+					[164, 388, 292, 427],
+					[292, 388, 366, 427],
+					[366, 388, 436, 427]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				425
+			]
+		},
 		"ar/key-teachings-of-gareth-evans": {
 			"ground": "7b3f5df631737a2e41ea738a9aa85ab5d1ce766454a30cb625b107443bf07528",
 			"style": "originals",
