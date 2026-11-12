@@ -436,6 +436,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "portraits-of-courage"
+  ],
+  "language": "vi",
+  "title": "Chân Dung Lòng Can Đảm",
+  "description": "Những cuốn tiểu sử Cơ Đốc trọn vẹn về những người nam và người nữ đã tính cái giá phải trả mà vẫn theo Đấng Christ — mỗi cuộc đời được kể cùng với sự dạy dỗ của mình, được cân nhắc dưới ánh sáng Kinh Thánh, và được viết với lòng biết ơn nhưng không tôn sùng thái quá.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "brave-for-god"
   ],
   "language": "am",
