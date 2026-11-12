@@ -5718,6 +5718,40 @@
 				495
 			]
 		},
+		"ar/jesus-teacher-of-prayer": {
+			"ground": "c5cb3f008b5d04ad679c64608ad43f7361077703344907f23436d22afa509ce0",
+			"style": "originals",
+			"volume": "2",
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 267, 311, 311],
+					[119, 357, 481, 434]
+				],
+				"subtitle": [
+					[213, 504, 387, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"ar/key-teachings-of-gareth-evans": {
 			"ground": "7b3f5df631737a2e41ea738a9aa85ab5d1ce766454a30cb625b107443bf07528",
 			"style": "originals",
@@ -6480,6 +6514,39 @@
 				504
 			]
 		},
+		"ar/talks-to-the-farmer-children": {
+			"ground": "b23ef0c5ddf6c52418fda54731d23078d8830eabc1f46298c0e6ad580b6473ed",
+			"style": "young",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[49, 312, 551, 393]
+				],
+				"edition": [
+					[273, 418, 327, 443]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				306,
+				489
+			]
+		},
 		"ar/talks-to-the-farmer-teens": {
 			"ground": "92a25e6cf5d903ffcf365cf3d42571d1efa0de0c10ff963423520cd301c6bf4a",
 			"style": "revival",
@@ -6605,6 +6672,39 @@
 			"middle": [
 				308,
 				487
+			]
+		},
+		"ar/the-imitation-of-christ": {
+			"ground": "37aa9180e9636a4429520ef5c053ef15bc98a6bbda50b17e88f661dafe238907",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[105, 288, 495, 392]
+				],
+				"subtitle": [
+					[171, 478, 429, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				514
 			]
 		},
 		"ar/the-inner-chamber": {
@@ -9942,6 +10042,41 @@
 			"middle": [
 				321,
 				474
+			]
+		},
+		"es/john-hyde-a-life": {
+			"ground": "0de9f1e789d417c35102864a4a5da8916c488f7a9824cb0fd200896655f75493",
+			"style": "house",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": "c7295468c943e637fffcac8fee09846fd536a4643cf89c3f5bb89e839509e15d",
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[157, 393, 443, 483],
+					[168, 477, 432, 567]
+				],
+				"subtitle": [
+					[140, 586, 460, 614],
+					[92, 614, 508, 642]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				153,
+				642
 			]
 		},
 		"es/john-hyde-a-life-children": {
@@ -14811,6 +14946,40 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"fr/finney-memoirs": {
+			"ground": "a00850b09da1d595525618c81a9834fe095290b61075529fee2a1ed69d0988b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.5,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[132, 305, 468, 381],
+					[70, 370, 530, 446]
+				],
+				"subtitle": [
+					[171, 520, 429, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"fr/fire-against-the-dark": {
 			"ground": "f26975b6f1fe111f7954cb153b21dd45277dcb363ee930455708d84399f9572d",
 			"style": "young",
@@ -15362,6 +15531,41 @@
 			"middle": [
 				292,
 				502
+			]
+		},
+		"fr/journal-of-an-expedition-up-the-niger": {
+			"ground": "29e6cb7543a1871539bc206d37767c9bbd3f75be5dc83788b026150350fca790",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[124, 272, 476, 348],
+					[162, 337, 438, 413],
+					[150, 403, 450, 479]
+				],
+				"subtitle": [
+					[93, 552, 507, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
 			]
 		},
 		"fr/key-teachings-of-a-b-simpson": {
@@ -23904,6 +24108,40 @@
 				480
 			]
 		},
+		"ko/jesus-teacher-of-prayer": {
+			"ground": "61bdb2a15be97077584f6df6a950078f1e7077b8e1927403859bc7aba7babd65",
+			"style": "originals",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "65e51b9577855c852e3e7e1e87c3be24243a2717018238fbe615ff86ca19b09b",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 281, 311, 325],
+					[54, 359, 546, 435]
+				],
+				"subtitle": [
+					[105, 497, 495, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
@@ -27116,6 +27354,40 @@
 				525
 			]
 		},
+		"lg/talks-to-the-farmer-children": {
+			"ground": "da8242d73d4392b693817afb0978a51e4c19d47584ced682557bcc0eac4dc8f7",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[175, 290, 425, 365],
+					[153, 351, 447, 426]
+				],
+				"edition": [
+					[214, 435, 386, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				297,
+				498
+			]
+		},
 		"lg/talks-to-the-farmer-teens": {
 			"ground": "0ae666f91c0aa04a3e6306faf68221557658677ea804aef79af8ea1f64c098de",
 			"style": "revival",
@@ -27328,6 +27600,41 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"lg/the-imitation-of-christ": {
+			"ground": "1eef7151cf0234c788dff92987c4d05c403340db78c86f4e45499b5a21ff818e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[128, 230, 472, 335],
+					[198, 322, 402, 427]
+				],
+				"subtitle": [
+					[142, 502, 458, 530],
+					[171, 530, 429, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
 		},
 		"lg/the-inner-chamber": {
 			"ground": "2a58cf5cb54ad7c3760c89b9fab850263f594e5eacee98bc75bc0501f429a6cc",
@@ -30295,6 +30602,21 @@
 				501
 			]
 		},
+		"pt/grace-abounding": {
+			"ground": "8f9efd796b616ac9e2e2e21369d5bc1449f4d17ef50de8b2d2608d852a47f545",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/grace-for-grace-2": {
 			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
 			"style": "house",
@@ -30387,6 +30709,21 @@
 			"medallion": null,
 			"layout": "diagonal/ochre",
 			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
+		"pt/how-to-succeed-in-the-christian-life": {
+			"ground": "0c6ba34cd75f2d63b05eab770b646c34703bc0ffac42da610efe4faee21ee125",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
 			"caps": false,
 			"sitemark": null
 		},
@@ -35952,6 +36289,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/the-imitation-of-christ": {
+			"ground": "3c8625fbbc60a72331d49a1fdc31c54b463e1d4f46fb517ce03c1d74169a092e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[136, 244, 464, 349],
+					[198, 336, 402, 441]
+				],
+				"subtitle": [
+					[59, 516, 541, 544]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				544
+			]
+		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
 			"style": "devotional",
@@ -37609,6 +37980,41 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"the-fire-on-the-altar": {
+			"ground": "2b6ceeaf48b8659fc6a896aa4e95ccac5a0ef1af505f4dfb94093c41460f6b54",
+			"style": "originals",
+			"volume": "7",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[291, 250, 310, 294],
+					[131, 328, 469, 404],
+					[167, 394, 433, 470]
+				],
+				"subtitle": [
+					[63, 528, 537, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
 			]
 		},
 		"the-first-apology": {
@@ -39480,6 +39886,21 @@
 				249,
 				546
 			]
+		},
+		"uk/answers-to-prayer": {
+			"ground": "df93a615b864c0935e6e8c56259abed733e6b58345bce4254eb558169d9aca22",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0.105,
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/around-the-wicket-gate": {
 			"ground": "7a9bbc396236890871cdaa9710328036e5be3462f13395bd8429ba221e976f75",
