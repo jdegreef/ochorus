@@ -3,6 +3,7 @@
  "slug": "answers-to-prayer",
  "language": "uk",
  "job_issue": 7765,
+ "pull_request": 7795,
  "note": [
   "Kulish (1905, ebible ukr1871) verses were pasted byte-for-byte by script from the gracious-tech/fetch_collection ukr_pan USFM mirror (Kulish ‟ normalised to “). A row is mined only where the translator reported pasting Kulish AND a case-insensitive verbatim span of at least 15 characters of that Kulish verse occurs in the block (re-measured over the finished text); re-personed, adapted or unquoted echoes are self_rendered. Pure reference lists that quote no words are omitted.",
   "Block indices are per chapter (</p> split). AI-translated in-session with a per-book conventions file; awaiting native review."
