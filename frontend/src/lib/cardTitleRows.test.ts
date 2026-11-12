@@ -21,7 +21,11 @@ const CARDS = [
 describe('cover card titles', () => {
 	it.each(CARDS)('%s reserves two lines for the title', (file) => {
 		const src = read(file);
-		const clamps = [...src.matchAll(/class="[^"]*\bline-clamp-2\b[^"]*\bfont-medium\b[^"]*"/g)].map((m) => m[0]);
+		// Any static class list holding both tokens, in either order.
+		const clamps = [...src.matchAll(/class="([^"]*)"/g)]
+			.map((m) => m[1].split(/\s+/))
+			.filter((cls) => cls.includes('line-clamp-2') && cls.includes('font-medium'))
+			.map((cls) => cls.join(' '));
 		expect(clamps.length, 'a clamped title').toBeGreaterThan(0);
 		for (const c of clamps) expect(c).toMatch(/\bmin-h-\[2lh\]/);
 	});

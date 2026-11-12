@@ -1499,6 +1499,7 @@ _HOLY_IN_CHRIST_COLOPHON: list[tuple[str, str]] = [
     ("न तोड़ेगा।’</p>", "<p>समाप्त।</p>"),
     ("ختمه أبدا».</p>", "<p>النهاية.</p>"),
     ("ፈጽሞ አይሰብርም።»</p>", "<p>ተፈጸመ።</p>"),
+    ("власної печаті».</p>", "<p>КІНЕЦЬ.</p>"),
 ]
 
 
@@ -1892,6 +1893,29 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("Gods seeks intercessors.", "God seeks intercessors."),
             # ch17: a dropped word ("it is to feared that").
             ("it is to feared that", "it is to be feared that"),
+            # Two citation slips, found by the Ukrainian translators (#7450).
+            # ch4: "the well-known words (i. 13)" quotes Acts 1:14 ("These all
+            # continued with one accord in prayer and supplication"); 1:13 is
+            # the list of the eleven. ch9: the epigraph "Heal me, O Lord, and I
+            # shall be healed" is Jeremiah 17:14, printed "Jer. xii. 14" (12:14
+            # is the evil neighbours). The shipped editions had split — sw/am
+            # already printed 1:14 and fr/ar 17:14, the rest the English — so
+            # each edition's own form is repaired here (the uk edition was
+            # translated with the right numbers).
+            ("words (i. 13), \u201cThese all", "words (i. 14), \u201cThese all"),
+            ("healed.\u201d\u2014Jer. xii. 14.", "healed.\u201d\u2014Jer. xvii. 14."),
+            ("palabras (1:13): \u00abTodos", "palabras (1:14): \u00abTodos"),
+            ("ser\u00e9 sano.\u00bb\u2014Jerem\u00edas 12:14.", "ser\u00e9 sano.\u00bb\u2014Jerem\u00edas 17:14."),
+            ("connues (i. 13) : \u00ab Tous", "connues (i. 14) : \u00ab Tous"),
+            ("palavras (i. 13): \u201cTodos", "palavras (i. 14): \u201cTodos"),
+            ("serei sarado.\u201d\u2014Jeremias 12:14.", "serei sarado.\u201d\u2014Jeremias 17:14."),
+            ("nitaponywa.\u201d\u2014Yer. 12:14.", "nitaponywa.\u201d\u2014Yer. 17:14."),
+            ("(\u0905\u0927\u094d\u092f\u093e\u092f 1, \u092a\u0926 13), \u201c", "(\u0905\u0927\u094d\u092f\u093e\u092f 1, \u092a\u0926 14), \u201c"),
+            ("\u2014\u092f\u093f\u0930\u094d\u092e\u092f\u093e\u0939 12:14.", "\u2014\u092f\u093f\u0930\u094d\u092e\u092f\u093e\u0939 17:14."),
+            ("\u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629 (1:13):", "\u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629 (1:14):"),
+            ("\u12a4\u122d\u121d\u12eb\u1235 12:14\u1362", "\u12a4\u122d\u121d\u12eb\u1235 17:14\u1362"),
+            ("ennyo (1:13), \u201cAbo", "ennyo (1:14), \u201cAbo"),
+            ("nnaawona.\u201d\u2014Yeremiya 12:14.", "nnaawona.\u201d\u2014Yeremiya 17:14."),
             # ch7 and ch12: the reverent capital set on a MAN — Abraham, and
             # "man" in "that God might dwell and work in Him, and be the life
             # of his life", where the next pronoun is lowercase.
@@ -3246,6 +3270,156 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # (pt “sim”/“não”, es «si»/«no», ar «نعم»/«لا»), which is what
             # settles the intended reading.
             ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
+        ],
+    },
+    "the-fundamental-doctrines-of-the-christian-faith": {
+        # Another Torrey book. OCR slip found while translating it to Korean
+        # (#7664): chapter 2 cites "the same Spirit", "diversities of gifts",
+        # "diversities of ministrations", "diversities of workings" as
+        # "1 Cor. 12:406 R. V.". Those three clauses are 1 Corinthians
+        # 12:4-6, so the hyphen was read as a zero. The pair is numeric only, so
+        # it also matches the translations, where the book name is localized and
+        # the digits are not. The es/fr/am editions already print 12:4-6; pt
+        # and lg still carry 12:406.
+        "replacements": [
+            ("12:406", "12:4-6"),
+            # More slips verified against the text while translating it to
+            # Hindi (#7641) and Korean (#7664). Citation numbers first: each
+            # pair is written per edition, because the book name around the
+            # digits is localized (am and es already print some of these right).
+            # Phil 3:20-21 is the passage on the transformed body, not 1:20-21.
+            ("Phil. 1:20, 21", "Phil. 3:20, 21"),
+            ("Filipenses 1:20, 21", "Filipenses 3:20, 21"),  # es, pt
+            ("Philippiens 1:20, 21", "Philippiens 3:20, 21"),
+            ("Abafiripi 1:20, 21", "Abafiripi 3:20, 21"),
+            # "The head of Christ is God" is 1 Cor 11:3, "the same verse" as
+            # the head of the woman.
+            ("(1 Cor. 11:12)", "(1 Cor. 11:3)"),
+            ("(1 Corintios 11:12)", "(1 Corintios 11:3)"),
+            ("(1 Corinthiens 11:12)", "(1 Corinthiens 11:3)"),
+            ("(1 Coríntios 11:12)", "(1 Coríntios 11:3)"),
+            ("(1 Abakkolinso 11:12)", "(1 Abakkolinso 11:3)"),
+            # The Advocate with the Father is 1 John 2:1 (the same chapter
+            # cites it correctly a few paragraphs on).
+            ("(John 2:1 and Heb. 7:25)", "(1 John 2:1 and Heb. 7:25)"),
+            ("(Jean 2:1 et Hébreux 7:25)", "(1 Jean 2:1 et Hébreux 7:25)"),
+            ("(Jo 2:1 e Hb 7:25)", "(1 Jo 2:1 e Hb 7:25)"),
+            ("(Yokaana 2:1 ne Abaebbulaniya 7:25)", "(1 Yokaana 2:1 ne Abaebbulaniya 7:25)"),
+            # Four verses after Matt 16:17 is 16:21, the verse quoted.
+            ("four verses further down in the chapter, the 24th verse", "four verses further down in the chapter, the 21st verse"),
+            ("en el versículo 24, leemos", "en el versículo 21, leemos"),
+            ("au 24e verset", "au 21e verset"),
+            ("no versículo 24, lemos", "no versículo 21, lemos"),
+            ("olwa 24, tusoma", "olwa 21, tusoma"),
+            # Wording (English only). Phil 2:8 reads "he humbled himself"
+            # (R.V.), as the chapter's third quotation of it already does;
+            # Matt 26:64 reads "sitting"; Torrey's 1900s conferences were on
+            # Lake Keuka (the lg edition keeps the English name, so it is fixed
+            # by the same pair; fr/pt carry the slip as "lac/Lago Kenka").
+            ("in fashion as man, he emptied himself", "in fashion as man, he humbled himself"),
+            ("in fashion as a man, he emptied himself", "in fashion as a man, he humbled himself"),
+            ("the son of man standing at the right hand of power", "the son of man sitting at the right hand of power"),
+            ("Lake Kenka", "Lake Keuka"),
+            ("lac Kenka", "lac Keuka"),
+            ("Lago Kenka", "Lago Keuka"),
+            ("the cross of Cavalry", "the cross of Calvary"),
+            # Acts 2:23, quoted in bold: "the determinate counsel".
+            ("by the determinate council and", "by the determinate counsel and"),
+            # Further slips verified against the text from the vi (#7665), uk
+            # (#7636), sw (#7644) and hi (#7641) jobs. Numeric pairs that are
+            # unique in every edition are written once; the rest per edition.
+            ("8:57", "8:58"),          # "before Abraham was, I am" is John 8:58
+            ("3:13-17", "3:13-18"),    # the quotation runs through verse (18)
+            ("26:16-26", "26:16-21"),  # 2 Chronicles 26 has 23 verses
+            # The worship received by Jesus: Matt 14:33, not Mark 14:33
+            # (Gethsemane). am already prints Matthew.
+            ("Mark 14:33;", "Matt. 14:33;"),
+            ("Marcos 14:33;", "Mateo 14:33;"),
+            ("Marc 14:33 ;", "Matthieu 14:33 ;"),
+            ("Mc 14:33;", "Mt 14:33;"),
+            ("Makko 14:33;", "Matayo 14:33;"),
+            # "The Evil One" is 1 John 5:19, as the same chapter cites it later.
+            ("(John 5:19, R. V.)", "(1 John 5:19, R. V.)"),
+            ("(Juan 5:19, Revised", "(1 Juan 5:19, Revised"),
+            ("(Jean 5:19, version", "(1 Jean 5:19, version"),
+            ("(Jo 5:19, R. V.)", "(1 Jo 5:19, R. V.)"),
+            ("(Yokaana 5:19, R. V.)", "(1 Yokaana 5:19, R. V.)"),
+            # "Yea, hath God said" is Gen 3:1.
+            ('?"</b> (Gen. 3:2)', '?"</b> (Gen. 3:1)'),
+            ("?»</b> (Génesis 3:2)", "?»</b> (Génesis 3:1)"),
+            ("? »</b> (Genèse 3:2)", "? »</b> (Genèse 3:1)"),
+            ("?”</b> (Gn 3:2)", "?”</b> (Gn 3:1)"),
+            ('?"</b> (Olubereberye 3:2)', '?"</b> (Olubereberye 3:1)'),
+            ("?»</b> (ዘፍጥረት 3:2)", "?»</b> (ዘፍጥረት 3:1)"),
+            # Acts 17:24-28 quoted with verse 27 left out: "For in him we
+            # live" is verse 28, so only its label moves (lg already reads 28).
+            ("habitations. (27) For in him", "habitations. (28) For in him"),
+            ("habitación. (27) Porque en él", "habitación. (28) Porque en él"),
+            ("demeure; (27) car en lui", "demeure; (28) car en lui"),
+            ("habitações, (27) Pois nele", "habitações, (28) Pois nele"),
+            ("ወሰነ፤ (27) ከእናንተ", "ወሰነ፤ (28) ከእናንተ"),
+            # Wording, English only.
+            ("my Father will love him, and he will come unto him", "my Father will love him, and we will come unto him"),
+            ("for a spirit not flesh and blood", "for a spirit hath not flesh and bones"),
+            ("and he that hath abideth in love", "and he that abideth in love"),
+            ('"cannot do good neither is it in them to do evil"', '"cannot do evil neither is it in them to do good"'),
+            ("notice here is expression", "notice here is the expression"),
+            ("Father, Son and Holy Ghost .", "Father, Son and Holy Ghost."),
+            ("the inspiration of the apostle and prophets", "the inspiration of the apostles and prophets"),
+            ("He bare the sin of many. And made intercession", "He bare the sin of many, and made intercession"),
+            ("(e.g., Deut. 33:27): Putting", "(e.g., Deut. 33:27). Putting"),
+            ("1. The first passage in 2 Cor. 5:10:", "1. The first passage is 2 Cor. 5:10:"),
+            # The New Birth (ch11). "Born of water and the Spirit" is John 3:5-6
+            # and "Not by works done in righteousness" is Titus 3:5, so the
+            # citations move in every edition that reproduces them.
+            ("verses following, 1 John 3:5, 6:", "verses following, John 3:5, 6:"),
+            ("qui suivent, 1 Jean 3:5, 6 :", "qui suivent, Jean 3:5, 6 :"),
+            ("seguintes, 1 Jo 3:5, 6:", "seguintes, Jo 3:5, 6:"),
+            ("eziddirira, 1 Yokaana 3:5, 6:", "eziddirira, Yokaana 3:5, 6:"),
+            ("in Titus 3:4,", "in Titus 3:5,"),
+            ("en Tito 3:4:", "en Tito 3:5:"),
+            ("en Tite 3:4 :", "en Tite 3:5 :"),
+            ("em Tt 3:4:", "em Tt 3:5:"),
+            ("mu Tito 3:4,", "mu Tito 3:5,"),
+            # The list of results runs first to seventh, then "ninth"
+            # (es and am already print eighth).
+            ("The ninth result of being born again", "The eighth result of being born again"),
+            ("Le neuvième résultat", "Le huitième résultat"),
+            ("O nono resultado", "O oitavo resultado"),
+            ("the third result of the New Birth is in outward transformation", "the third result of the New Birth is an outward transformation"),
+            ("whom Jesus Christ gives to him who dwells in him", "whom Jesus Christ gives to him, who dwells in him"),
+            # ch10 (found by the ko job): "If thou shalt confess with thy mouth"
+            # is Rom 10:9-10, as the chapter cites it elsewhere (am already
+            # prints 10:9-10).
+            ("10:8, 10", "10:9, 10"),
+            ("(Gal. 3:10.).", "(Gal. 3:10)."),
+            # ch12 (found by the ko job): the field quoted after the house is
+            # Lev 27:16, and "which is greater, the gold, or the temple" is
+            # Matt 23:17 (es and am already print 23:17).
+            ("27:14, 17", "27:14, 16"),
+            ("Matt. 23:27", "Matt. 23:17"),
+            ("Matthieu 23:27", "Matthieu 23:17"),
+            ("Mt 23:27", "Mt 23:17"),
+            ("Matayo 23:27", "Matayo 23:17"),
+            # ch15: "the heart of the earth" is Matt 12:40 (am already prints it).
+            ("(Luke 12:40)", "(Matt. 12:40)"),
+            ("(Lucas 12:40)", "(Mateo 12:40)"),
+            ("(Luc 12:40)", "(Matthieu 12:40)"),
+            ("(Lc 12:40)", "(Mt 12:40)"),
+            ("(Lukka 12:40)", "(Matayo 12:40)"),
+            # Wording and punctuation, English only (ch10, ch13, ch15, ch16).
+            # 1 Cor 15:15-16 is requoted later in ch13 in the R.V. form these
+            # pairs restore; Phil 3:21 likewise ("working", as twice there).
+            ("confessing Him as His Lord", "confessing Him as his Lord"),
+            ("For we delivered unto you first of all", "For I delivered unto you first of all"),
+            ("whom he raised not up, if so be that he did not rise. But if the dead are not raised; neither", "whom he raised not up, if so be that the dead are not raised. For if the dead are not raised, neither"),
+            ("So also is the resurrection from the dead.", "So also is the resurrection of the dead."),
+            ("according to the work whereby", "according to the working whereby"),
+            ("(Phil. 2:6)., i.e.", "(Phil. 2:6), i.e."),
+            ("our manifestations as sons of God", "our manifestation as sons of God"),
+            ("bind them in bundles to barn them", "bind them in bundles to burn them"),
+            ("What thought do these expressions convey.", "What thought do these expressions convey?"),
+            ("heaven: as is the earth, such are they also that are earthy", "heaven: as is the earthy, such are they also that are earthy"),
         ],
     },
     "rest": {
@@ -7968,6 +8142,46 @@ BODY_CORRECTIONS.setdefault("the-shameful-sufferer", {}).setdefault("replacement
     ("<p>OH what shall I do", "<p>“OH what shall I do")
 )
 
+# The Imitation of Christ (Croft & Bolton, via CCEL): four chapters open on a
+# drop-capped quotation whose OPENING mark was lost with the drop cap — ch2
+# (John 8:12), ch27 (Luke 17:21), ch39 (Ps 85:8) and ch40 (1 Sam 3:10). The
+# closing mark is there in each, so the repair is forced. Reported by five
+# translators (uk, hi, ar, sw, lg); am/ar/fr/ko/sw/uk/vi already supplied the
+# mark, and the es/hi/pt/lg pairs below repair the editions that reproduced
+# the loss, each matching only its own language's text.
+# Checked and deliberately NOT changed, because three independent copies of
+# the Croft & Bolton text print them as we do (the translators' own wording,
+# not extraction loss): ch24 "the Son of God will come" (Luke 12:40 has "Son
+# of Man"), ch111 "which You have hidden from those who fear You" (Vulgate Ps
+# 30:20 "abscondisti timentibus te"), ch33 "trust yourself to the glory of
+# Him" (Latin "fidelitati"), ch1 "nor any attempt to solve in further
+# confusion" (likely "involve"; no printed scan reachable to settle it).
+BODY_CORRECTIONS.setdefault("the-imitation-of-christ", {}).setdefault("replacements", []).extend([
+    # en
+    ("<p>HE WHO follows Me, walks not", "<p>“HE WHO follows Me, walks not"),
+    ("<p>THE kingdom of God is within you,”", "<p>“THE kingdom of God is within you,”"),
+    ("<p>I WILL hear what the Lord God will speak in me.”", "<p>“I WILL hear what the Lord God will speak in me.”"),
+    ("<p>SPEAK, Lord, for Thy servant heareth.”", "<p>“SPEAK, Lord, for Thy servant heareth.”"),
+    # es
+    ("<p>EL QUE me sigue, no andará", "<p>«EL QUE me sigue, no andará"),
+    ("<p>EL reino de Dios dentro de vosotros está»", "<p>«EL reino de Dios dentro de vosotros está»"),
+    ("<p>ESCUCHARÉ lo que el Señor Dios hablará en mí.»", "<p>«ESCUCHARÉ lo que el Señor Dios hablará en mí.»"),
+    ("<p>HABLA, Señor, que tu siervo oye.»", "<p>«HABLA, Señor, que tu siervo oye.»"),
+    # pt
+    ("<p>AQUELE que me segue não andará", "<p>“AQUELE que me segue não andará"),
+    ("<p>O REINO de Deus está dentro de vocês”", "<p>“O REINO de Deus está dentro de vocês”"),
+    ("<p>OUVIREI o que o Senhor Deus falará em mim.”", "<p>“OUVIREI o que o Senhor Deus falará em mim.”"),
+    ("<p>FALA, Senhor, porque o Teu servo ouve.”", "<p>“FALA, Senhor, porque o Teu servo ouve.”"),
+    # hi
+    ("<p>जो मेरे पीछे हो लेगा, वह अंधकार में न चलेगा,”", "<p>“जो मेरे पीछे हो लेगा, वह अंधकार में न चलेगा,”"),
+    ("<p>परमेश्वर का राज्य तुम्हारे भीतर है,”", "<p>“परमेश्वर का राज्य तुम्हारे भीतर है,”"),
+    ("<p>मैं सुनूँगा कि प्रभु परमेश्वर मुझ में क्या कहेगा।”", "<p>“मैं सुनूँगा कि प्रभु परमेश्वर मुझ में क्या कहेगा।”"),
+    ("<p>हे प्रभु, कह, क्योंकि तेरा दास सुन रहा है।”", "<p>“हे प्रभु, कह, क्योंकि तेरा दास सुन रहा है।”"),
+    # lg (ch2/ch27 already carry the mark)
+    ("<p>Nnaawulirizanga Mukama Katonda by’agamba munda mu nze.”", "<p>“Nnaawulirizanga Mukama Katonda by’agamba munda mu nze.”"),
+    ("<p>YOGERA, Ayi Mukama kubanga omuweereza wo awulira.”", "<p>“YOGERA, Ayi Mukama kubanga omuweereza wo awulira.”"),
+])
+
 # OCR/extraction slips found while translating Watson's book to Portuguese (batch 4). Watson's text is scripture-dense and heavily OCR-damaged; each fix is forced by the KJV verse quoted or by grammar/citation. Two orphan close-quotes clear audit findings (baseline re-pinned).
 BODY_CORRECTIONS.setdefault('all-things-for-good', {}).setdefault("replacements", []).extend([
     ('The certainly of the privilege', 'The certainty of the privilege'),
@@ -8220,6 +8434,25 @@ BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault(
     # section heading lowercased "god" -> "God".
     ("Mysteries—god Gives Them", "Mysteries—God Gives Them"),
 ])
+# The preface (ch 1) ends with the 1875 two-work volume's contents page
+# leaking into the chapter: four <h3>s naming "A Short Method of Prayer",
+# "Spiritual Torrents", "Part I", "Part II". Strip them, in every edition
+# (the markup gate needs identical tags). The half-title and Gen 17:1
+# epigraph that follow are the treatise's own opening and stay.
+BODY_CORRECTIONS.setdefault("a-short-and-easy-method-of-prayer", {}).setdefault("replacements", []).extend([
+    ("<h3>አጭር የጸሎት መንገድ</h3><hr/><h3>መንፈሳዊ ጅረቶች</h3><hr/><h3>ክፍል አንድ</h3><h3>ክፍል ሁለት</h3>", ""),  # am
+    ("<h3>طريقة قصيرة للصلاة</h3><hr/><h3>السيول الروحية</h3><hr/><h3>الجزء الأول</h3><h3>الجزء الثاني</h3>", ""),  # ar
+    ("<h3>A Short Method of Prayer</h3><hr/><h3>Spiritual Torrents</h3><hr/><h3>Part I</h3><h3>Part II</h3>", ""),  # en
+    ("<h3>Un método breve de oración</h3><hr/><h3>Torrentes espirituales</h3><hr/><h3>Parte I</h3><h3>Parte II</h3>", ""),  # es
+    ("<h3>Moyen court de faire oraison</h3><hr/><h3>Les Torrents spirituels</h3><hr/><h3>Première partie</h3><h3>Deuxième partie</h3>", ""),  # fr
+    ("<h3>प्रार्थना की एक छोटी विधि</h3><hr/><h3>आत्मिक धाराएँ</h3><hr/><h3>भाग 1</h3><h3>भाग 2</h3>", ""),  # hi
+    ("<h3>짧은 기도의 방법</h3><hr/><h3>영적 급류</h3><hr/><h3>제1부</h3><h3>제2부</h3>", ""),  # ko
+    ("<h3>Enkola Ennyimpi ey’Okusaba</h3><hr/><h3>Emigga gy’Omwoyo</h3><hr/><h3>Ekitundu I</h3><h3>Ekitundu II</h3>", ""),  # lg
+    ("<h3>Método Breve de Oração</h3><hr/><h3>Torrentes Espirituais</h3><hr/><h3>Parte I</h3><h3>Parte II</h3>", ""),  # pt
+    ("<h3>Njia Fupi ya Kuomba</h3><hr/><h3>Mafuriko ya Kiroho</h3><hr/><h3>Sehemu ya Kwanza</h3><h3>Sehemu ya Pili</h3>", ""),  # sw
+    ("<h3>Короткий спосіб молитви</h3><hr/><h3>Духовні потоки</h3><hr/><h3>Частина I</h3><h3>Частина II</h3>", ""),  # uk
+    ("<h3>Phương Pháp Cầu Nguyện Ngắn Gọn</h3><hr/><h3>Những Dòng Thác Thuộc Linh</h3><hr/><h3>Phần I</h3><h3>Phần II</h3>", ""),  # vi
+])
 # OCR slips found while translating batch 4 (Richard Allen's autobiography).
 BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("replacements", []).extend([
     # Philadelphia's Lombard Street (spelled correctly elsewhere in the text).
@@ -8346,7 +8579,52 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("antes que Deus possa usá-los.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("قبل أن يستطيع الله أن يستخدمهم.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("반드시 새로운 세례를 받아야 합니다.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("Đức Chúa Trời mới có thể dùng họ.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("और वह उन्हें अवश्य मिलना चाहिए।</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("kabla Mungu hajaweza kuwatumia.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("перш ніж Бог зможе їх використати.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
+# Transcription slips the ko translators hit (#7659), each with one reading:
+# misread letters, a lost word, stray punctuation inside citations, and two
+# miscited references (2 John has one chapter and the words quoted are 1 John
+# 5:10; "John ii. 1-2" in the too-great-a-sinner list is the Advocate of 1 John
+# 2:1-2, not Cana; and Torrey's "i Cor." is the digit 1). Torrey's wording is untouched.
+BODY_CORRECTIONS["how-to-bring-men-to-christ"].setdefault("replacements", []).extend([
+    ("after that the Holy Ghost, is come upon you",
+     "after that the Holy Ghost is come upon you"),                # ch1, Acts 1:8
+    ("according to his verse,", "according to this verse,"),       # ch4
+    ("1 Cor. xv.; 1‒4", "1 Cor. xv. 1‒4"),                         # ch4
+    ("No matter how selfrighteous a man is",
+     "No matter how self-righteous a man is"),                     # ch6
+    ("1 John iv. 14; John ii. 1‒2; Isaiah xliv. 22",
+     "1 John iv. 14; 1 John ii. 1‒2; Isaiah xliv. 22"),            # ch5, the Advocate
+    ("I have a friend who always uses Amos. iv. 11, 12",
+     "I have a friend who always uses Amos iv. 11, 12"),           # ch7
+    ("2 John v. 10, is very effective", "1 John v. 10, is very effective"),  # ch8
+    ("Is there some sin your life?", "Is there some sin in your life?"),     # ch8
+    ("“endured with power from on high”", "“endued with power from on high”"),  # ch13
+    ("(i Cor. xii. 4‒11)", "(1 Cor. xii. 4‒11)"),                  # ch13
+    ("Acts; i. 22; x. 39‒41", "Acts i. 22; x. 39‒41"),             # ch13
+    ("like a wave of sea driven", "like a wave of the sea driven"),  # ch13, Jas 1:6
+    # The two miscitations as the earlier editions carried them over (ch5 and
+    # ch8), so every edition points at 1 John. Baked into each fixture.
+    ("1 Juan 4:14; Juan 2:1‒2;", "1 Juan 4:14; 1 Juan 2:1‒2;"),                    # es
+    ("1 Yokaana 4:14; Yokaana 2:1‒2;", "1 Yokaana 4:14; 1 Yokaana 2:1‒2;"),        # lg
+    ("1 Jean 4:14 ; Jean 2:1-2 ;", "1 Jean 4:14 ; 1 Jean 2:1-2 ;"),                # fr
+    ("2 Jean 5:10 est très", "1 Jean 5:10 est très"),                              # fr
+    ("1 João 4.14; João 2.1‒2;", "1 João 4.14; 1 João 2.1‒2;"),                    # pt
+    ("2 João 5.10 é muito eficaz", "1 João 5.10 é muito eficaz"),                  # pt
+    ("1ኛ ዮሐንስ 4:14፤ ዮሐንስ 2:1-2፤", "1ኛ ዮሐንስ 4:14፤ 1ኛ ዮሐንስ 2:1-2፤"),            # am
+    ("። 2ኛ ዮሐንስ 5:10 እግዚአብሔር", "። 1ኛ ዮሐንስ 5:10 እግዚአብሔር"),                  # am
+])
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
 # fallback walk, and that walk dropped every div that was not hand-made poem

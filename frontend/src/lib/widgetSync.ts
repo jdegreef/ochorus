@@ -15,9 +15,8 @@ import { i18n } from '$lib/i18n.svelte';
 import { localizeHref } from '$lib/href';
 import { getLocale, getTextDirection } from '$lib/paraglide/runtime';
 import { allProgress } from '$lib/progress';
-import { buildResumeItems, type ResumeBook } from '$lib/resumeItems';
+import { resumeBookOf, type ResumeBook } from '$lib/resumeItems';
 import { cachedResumeBooks, currentBookSlug, knownAbsent, libraryBooks } from '$lib/resumeBooks';
-import { toCoverBook, type CoverBook } from '$lib/library-public';
 import { localToday } from '$lib/streak';
 import { loadDayVerse } from '$lib/todayPicks';
 import { watchToday } from '$lib/today';
@@ -94,18 +93,10 @@ export async function widgetBook(lang: string): Promise<ResumeBook | null> {
 	const progress = allProgress();
 	const slug = currentBookSlug(knownAbsent(lang), progress);
 	if (!slug) return null;
-	const resolve = (books: CoverBook[]) => {
-		const [item] = buildResumeItems(
-			books,
-			[],
-			progress.filter((p) => p.kind === 'book' && p.slug === slug)
-		);
-		return item?.kind === 'book' ? item : null;
-	};
 	return (
-		resolve(cachedResumeBooks(lang)) ??
+		resumeBookOf(cachedResumeBooks(lang), slug, progress) ??
 		libraryBooks(lang).then(
-			(books) => resolve(books.map(toCoverBook)),
+			(books) => resumeBookOf(books, slug, progress),
 			() => null
 		)
 	);
@@ -125,6 +116,8 @@ export function syncWidgets(now = new Date()): Promise<void> {
 		const lang = getLang();
 		const locale = getLocale();
 		const t = i18n.t;
+		// Independent: the verses and the book load side by side.
+		const [verses, book] = await Promise.all([widgetVerses(now, lang), widgetBook(lang)]);
 		const snapshot = buildWidgetSnapshot({
 			locale,
 			rtl: getTextDirection(locale) === 'rtl',
@@ -136,8 +129,8 @@ export function syncWidgets(now = new Date()): Promise<void> {
 				start: t('home.startReading'),
 				chapterOf: t('home.resumeChapter')
 			},
-			verses: await widgetVerses(now, lang),
-			book: await widgetBook(lang)
+			verses,
+			book
 		});
 		const json = JSON.stringify(snapshot);
 		if (json === sent && Date.now() - sentAt < RESEND_MS) return;

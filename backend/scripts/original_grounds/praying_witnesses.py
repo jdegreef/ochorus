@@ -57,6 +57,11 @@ Vol. 7: The Fire on the Altar. A bright morning, the sun clear of the far hills
 on the left; on the near ridge, right, a village: a plain meeting hall with a
 small bell turret and a row of houses, windows lit; on the hill to the far left
 a small fire that is kept burning (Leviticus 6:13).
+
+Vol. 8: Open Your Mouth Wide. Late morning over the sea, the sun well up on the
+right and its light on the water; a sailing ship putting out to sea under its
+sails, and on the shore, low left, a small chapel with a cross and a lit window:
+the century when the church sent its missionaries out (Psalm 81:10).
 """
 import pathlib
 import random
@@ -344,6 +349,44 @@ VOL7 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL8 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#16305a"/><stop offset=".30" stop-color="#2a5386"/>
+  <stop offset=".45" stop-color="#5c82ad"/><stop offset=".54" stop-color="#b0b2a6"/>
+  <stop offset=".60" stop-color="#e9d09a"/><stop offset="1" stop-color="#e9d09a"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="400" cy="440" r="240" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fff8e2" stop-opacity=".95"/>
+  <stop offset=".2" stop-color="#f8d898" stop-opacity=".5"/>
+  <stop offset="1" stop-color="#e9d09a" stop-opacity="0"/>
+ </radialGradient>
+ <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8f8f98"/><stop offset=".25" stop-color="#4a4d60"/>
+  <stop offset="1" stop-color="#1d1f2c"/>
+ </linearGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+<circle cx="400" cy="440" r="22" fill="#fffcee" opacity=".95"/>
+<rect x="0" y="493" width="600" height="20" fill="url(#sea)"/>
+<ellipse cx="400" cy="499" rx="70" ry="5" fill="#f6e6b8" opacity=".35"/>
+<ellipse cx="400" cy="505" rx="38" ry="3" fill="#f6e6b8" opacity=".25"/>
+<g fill="#0b0a10">
+ <path d="M408 494 L452 494 L446 501 L414 501 Z"/>
+ <rect x="429" y="458" width="2" height="36"/><rect x="416" y="466" width="2" height="28"/>
+ <path d="M431 460 L431 490 L446 490 Z"/><path d="M429 462 L429 490 L420 490 Z"/>
+ <path d="M418 468 L418 490 L410 490 Z"/>
+ <path d="M0 800 L0 500 L60 497 L120 498 L170 503 L210 512 L600 512 L600 800 Z"/>
+ <rect x="62" y="486" width="30" height="12"/><path d="M58 488 L77 477 L96 488 Z"/>
+ <rect x="76" y="466" width="2" height="12"/><rect x="73" y="469" width="8" height="2"/>
+</g>
+<rect x="71" y="490" width="4" height="5" fill="#f2b66a" opacity=".7"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
@@ -352,6 +395,7 @@ SCENES = {
     "seven-times-a-day": VOL5,
     "a-mighty-fortress": VOL6,
     "the-fire-on-the-altar": VOL7,
+    "open-your-mouth-wide": VOL8,
 }
 
 if __name__ == "__main__":

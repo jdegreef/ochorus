@@ -141,8 +141,9 @@ three of them gives none of them one.
    title.
 5. **Execute** (see per-type recipes below). Work on branch
    `claude/ochorus-dev-261l92` reset from `origin/main`; commit; push
-   (force-with-lease); open a **draft PR**; wait for CI; on green mark ready
-   and **squash-merge**. **The PR body carries the job's issue title on a line
+   (force-with-lease); open a **non-draft PR**; squash-merge once the
+   self-merge gate in Guardrails holds (green `test-and-build` on your exact
+   head + a clean merge-tree into current main). **The PR body carries the job's issue title on a line
    of its own, verbatim** (`[translation] sermon:do-you-pray -> es`): it is how
    the admin Activity log finds the PR once the issue is closed and shows the
    job as *PR open* with its link (`library/job_status.py`). Without it the job
@@ -236,6 +237,14 @@ worker specifics that shipped ~11 editions:
   send ≤20, and launch the rest as running agents complete and free slots (they
   write to the scratchpad, not a branch, so staging costs nothing). Don't try to
   raise it mid-run; just queue the overflow.
+  **When many workers run at once, the ACCOUNT's concurrent-usage limit (HTTP
+  429) binds long before 20** (2026-11-11/12 batches): 50 workers × ~20
+  subagents lost 17 workers at launch; 25 workers capped at 8 mostly held, but
+  4+ still hit 429s. Cap a worker at **≤6 concurrent translator subagents**.
+  Give each translator a **private subdirectory** (`work/<unit>/`) for its
+  helper scripts — generic names (`build.py`, `check.py`) collided again — and
+  have it write each finished unit to a durable `out/` (not `/tmp`) as it goes,
+  so a 429'd agent resumes via SendMessage with nothing lost.
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.
@@ -290,8 +299,13 @@ worker specifics that shipped ~11 editions:
   without it. This is the one step that touches files outside the work's own:
   the new card, and a key in the shared `static/covers/og-manifest.json` —
   so two translation jobs running at once CAN conflict there, on one line of
-  JSON each. Rerun the script after rebasing rather than merging that file by
-  hand. Full regens only via `backend/scripts/regen_fixture.py`.
+  JSON each. **Splice only your own entry** into main's raw manifest; never
+  commit the unrelated regen churn a run leaves behind (`git checkout` the other
+  cards). Same rule for the other shared files: put your `corrections.py` block
+  or `series.json` row **mid-file beside its related entries, not at EOF** —
+  parallel jobs' EOF appends conflicted on nearly every rebase — and regenerate
+  the verse baseline with `--update-baseline` after merging main, never by
+  hand-merging it. Full regens only via `backend/scripts/regen_fixture.py`.
   Verify `seed_books` recreates the rows locally; run `manage.py test library`
   (which includes the fixture + file-coherence gates).
   **If the book has a DESIGNED English cover (a `/covers/<slug>.<ext>` raster in
@@ -723,6 +737,14 @@ So when the English does not say what it should:
    the surrounding prose is localized, use `source_fixes.py` instead.
 4. **Say so in the PR**, under a "Found, not fixed here" heading if you are not
    repairing it in this job.
+5. **Parallel sibling editions** (one work fanned out to several languages at
+   once): the orchestrator relays the fix to the siblings still running, and
+   repairs the already-shipped editions in one follow-up PR (#7819 is the model).
+6. **House Originals** (A Cloud of Praying Witnesses and kin, built by a
+   management command): an English fix must also land in the source manuscript
+   under `library/management/commands/data/<slug>/`, or `tests_praying_witnesses`
+   fails. Their quoted classics can be pasted from that language's shipped
+   editions of those works (a voices crib) instead of re-translated.
 
 The `english-qa` skill has the full triage table and the rule that matters most:
 archaic spelling and period punctuation are the text, not defects in it.
@@ -734,54 +756,35 @@ archaic spelling and period punctuation are the text, not defects in it.
   (Batched PRs have shipped before and worked: #778 carried eight Arabic
   sermons, #709 ten jobs. They are still the wrong default, because the
   per-job reconciliation pass is what a batch quietly drops.)
-- **SPAWNED workers cannot merge — but that is a fact about spawned sessions,
-  not about worker sessions in general. Know which kind you are before
-  believing this section.** The refusals below were all measured from sessions
-  created via `create_session`; an INTERACTIVE remote session measured the
-  opposite on 2026-08-19 — it undrafted three of its own PRs
-  (`update_pull_request`), squash-merged #982 into protected main
-  (`merge_pull_request`), read check runs normally, and cancelled a workflow
-  run. Same repo, same day, same tools. The restriction is per session type,
-  exactly as the error message says, and the cheap way to learn your type is
-  to TRY the call once and read the answer — this file previously stated the
-  refusal unscoped, and an interactive session repeated "I cannot merge" for
-  half a day of round trips before testing it. For a spawned worker,
-  everything below stands. A worker translates, validates, opens a green PR —
-  and then sits idle needing a human. Three sessions did exactly that on jobs
-  #425/#426/#429, and the queue jammed behind the one step that looked
-  automatable.
+- **Spawned workers CAN merge now — try the call before believing otherwise.**
+  Sessions created via `create_session` used to be refused server-side
+  ("Merging into a protected base branch is not permitted for this session
+  type", `update_pull_request` too, `/check-runs` 403), whatever
+  `extra_allowed_tools` granted. On 2026-11-11/12 spawned batch workers DID
+  squash-merge into main. Permissions are per session type and change, so the
+  cheap test is one real call. If refused: open the PR **non-draft** (undrafting
+  is the refused call), read CI from `mergeable_state` (`clean` = green,
+  `blocked`/`dirty` = stop; a 403 is not "no checks"), and hand off explicitly
+  in the close-out comment — PR number, state, "ready to merge; this session
+  type cannot". A worker that says only "done" gets read as merged.
 
-  For a spawned session it is not automatable. This skill used to say the fix was passing
-  `extra_allowed_tools: ["mcp__github__merge_pull_request", …]` at
-  `create_session`. That advice was written from the shape of the API, never
-  from a spawned session that had actually merged, and it is **wrong**: the
-  restriction is enforced server-side, on the session *type*, not by the
-  permission list. Four sessions spawned with exactly that grant were refused —
-
-      Merging into a protected base branch is not permitted for this session type
-
-  — and `update_pull_request` is refused the same way, so a worker cannot even
-  undraft its own PR. The `/actions` and `/check-runs` endpoints return **403**
-  to a worker as well, which is its own trap: 403 reads like "no checks
-  configured" if you don't check the status code, and a worker that believes CI
-  is absent will report a red PR as ready.
-
-  What actually works, and is what the later workers converged on unprompted:
-
-  1. **Open the PR non-draft** (spawned sessions). Undrafting is the call that
-     fails there; not drafting
-     costs nothing.
-  2. **Read CI from `mergeable_state`** (`clean` = green, `unstable` = a
-     non-required check failed, `blocked`/`dirty` = stop), because it is the one
-     CI signal a worker can actually see.
-  3. **Hand the merge off explicitly** in the close-out comment — PR number,
-     `mergeable_state`, and a plain "ready to merge; this session type cannot".
-     A worker that says only "done" gets read as merged.
-
-  The reason to leave the merge with a human is no longer just policy: **CI
-  tests the merge commit**, and that is what caught every collision we have had.
-  Someone reconciling the queue sees all of the open PRs at once; a worker sees
-  only its own.
+  **Self-merge gate for parallel workers.** Requiring CI green on an up-to-date
+  head never converged: main moved faster than a ~20 min CI run. Merge when all
+  four hold:
+  (a) `test-and-build` is success on your exact head, passed to
+      `merge_pull_request` as `expectedHeadSha`;
+  (b) `git merge-tree --write-tree origin/main <head>` is clean against
+      freshly fetched main;
+  (c) on that locally merged tree, `tests_verse_consistency`, `tests_fixture`,
+      `tests_translation_markup`, `tests_mined_verification` and
+      `tests_english_audit` pass, plus the cover vitests
+      (`coverOgManifest`, `coverLayouts`). In a fresh `git worktree` the vitests
+      need `npx svelte-kit sync` and a copy of the git-ignored
+      `frontend/src/lib/paraglide` from a built checkout;
+  (d) every shared JSON you touched parses, carries your entries, and has no
+      duplicate keys/rows.
+  Only if (b)–(d) fail: merge main into the branch, fix, push, and wait for CI
+  on the new head.
   Also give each spawned session an **explicit issue number**. The
   `in-progress` label is a courtesy signal, not a lock: two sessions can both
   read "nothing claimed" in the same instant and take the same job.
@@ -2760,6 +2763,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   reads 순종치 아니함** (disobedience) where KJV has "unbelief" — quote it, flag it;
   and Take Root's **Isaiah 45:22 reads 그리하며** (typo for 그리하면 — quote the mirror).
   The book Q&A (`qa`, 8 items) and `about_html` ride on the book row like other editions.
+  `about_html` allows only `<p>` (`tests_about_work` / `ShippedProseTests`): a series
+  name in `<em>` there fails CI — write it plain.
   Korean og twins are drawn in a SYSTEM font until og:covers learns Hangul (Ge'ez has the
   same gap) — commit the card, but expect it to change once that lands.
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
@@ -2784,13 +2789,14 @@ archaic spelling and period punctuation are the text, not defects in it.
   next to `coverOgManifest.test.ts` before pushing. The es/pt/sw siblings landed at
   26–27 by choosing the one-word "Retrospect" cognate.
 - **`npm run og:covers` can ask for a newer Playwright headless shell than
-  `/opt/pw-browsers` holds** (same job: wanted `chromium_headless_shell-1243`, the
-  container had `-1194`). Don't `playwright install`; point it at a scratch browsers
-  dir whose expected path links to the installed binary:
-  `mkdir -p $S/chromium_headless_shell-1243/chrome-headless-shell-linux64`, symlink
-  every file of `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/` into it
-  plus `chrome-headless-shell -> …/headless_shell`, then
-  `PLAYWRIGHT_BROWSERS_PATH=$S npm run og:covers`. It rendered the twin correctly.
+  `/opt/pw-browsers` holds** (first seen wanting `-1243` over the container's `-1194`;
+  as of 2026-11-12 it wants **`chromium_headless_shell-1254`** and the container has
+  `-1243` — read the revision from the error). Don't `playwright install`; point it
+  at a scratch browsers dir whose expected path links to the installed binary:
+  `mkdir -p $S && ln -s /opt/pw-browsers/chromium_headless_shell-1243 $S/chromium_headless_shell-1254`
+  (the 1243 install already has `chrome-headless-shell-linux64/chrome-headless-shell`;
+  the older `-1194` needed a per-file symlink farm plus `chrome-headless-shell ->
+  headless_shell`), then `PLAYWRIGHT_BROWSERS_PATH=$S npm run og:covers`.
 - **An empty queue is not full coverage. Diff the English corpus against the language
   before saying "done"** (fr, 2026-10-10). Every fr job had shipped, yet 5 of the 135 English
   articles had no `.fr.json`, because their jobs were never filed. The admin language page
@@ -2835,7 +2841,10 @@ archaic spelling and period punctuation are the text, not defects in it.
   `library.tests_bible_mirror` pins each case. Its `book_names.json` is the mirror's
   MODERNISED `\toc1` heads (La-mã, Khải thị) — cite with Cadman's traditional names
   (Rô-ma, Khải Huyền, 1 Cô-rinh-tô), which the verse text itself uses. Add a cleaner to
-  its `CLEANERS` when another collection turns out damaged (ko's (4) is not in it yet).
+  its `CLEANERS` when another collection turns out damaged. **Now also cleaned:
+  `fra_lsg`, `kor_old` (ko's (4)), `por_bpm`, `amh_amh`** (2026-11-12) — run the script
+  instead of hand-patching them. Its `damaged.json` lists verses it WITHHELD from the
+  index (ko Isa 57:15, pt Jer 49, am's 254 bridged `\v 1-3` keys): self-render those.
 - **Batch-wide naming needs a table in the brief, not a rule** (same batch). Fifty
   parallel ko translators each transliterate the OTHER people a bio mentions; without a
   mandatory name table the same person comes out three ways. Coined forms that a native
@@ -2934,7 +2943,7 @@ archaic spelling and period punctuation are the text, not defects in it.
   Ps 16:10, Ps 118:17, 1 Pet 5:6. (3) Spurgeon's references use ROMAN numerals (`II Sam.`,
   `I Peter`) and one stray `Prov. 3: 25,26`; a reference regex that expects `2 Sam` misses
   them. (4) 25 half-month chunks at once tripped an account usage limit (HTTP 429) twice;
-  ~10 concurrent translators ran clean, and a stopped agent resumes with SendMessage.
+  ~10 ran clean alone, but with other workers running cap at ≤6 (Book recipe above).
   Chapter band n=24 chunks: **0.74** of the English (`word_count`).
 - **The first translation of a house NOVEL (`fire-against-the-dark` → es, #7031,
   2026-11-11) — what fiction needs beyond a devotional book.** (1) A names-and-terms
@@ -2953,7 +2962,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   copies the tag verbatim); say so in the PR.
 - **`pythonbible.get_references` turns a BARE BOOK NAME in prose into a whole-book
   reference** (sw Law/Wesley/Edwards batch, 2026-11-01). "the Acts", "Mark", "Job",
-  "Numbers", "Judges", "Ruth", "James", "Revelation" each parse as the entire book,
+  "Numbers", "Judges", "Ruth", "James", "Revelation" each parse as the entire book
+  (and "Rev." for *Reverend* parses as Revelation),
   so a crib built on them fills with `<Book> 1:1-4` rows nobody quoted — it was the
   top "repeated verse" in all three books. Drop any parsed reference spanning >3
   verses (it points, it doesn't quote). For UNCITED quotations, a 5-gram index over
@@ -2977,3 +2987,4 @@ archaic spelling and period punctuation are the text, not defects in it.
   append-mode heredoc that originally ran once can replay twice, and two units came back
   with a duplicated tail. And before re-dispatching anything, re-check fresh `origin/main`,
   because while this session was dead, other sessions had shipped all three books.
+- **`holy-in-christ` (and any work with a `back_matter` entry) needs a colophon SEAM per edition, even though the translation has no colophon** (uk, #7465/#7903). `ShippedBackMatterTests` walks every `<slug>.*.json` of a work whose `BODY_CORRECTIONS` entry declares `back_matter` and fails "chNN does not end on a declared ending" until your edition's last-chapter ending is listed (`_HOLY_IN_CHRIST_COLOPHON`: `("<last ~20 chars of ch33>", "<p>КІНЕЦЬ.</p>")`). The other per-edition `_HOLY_IN_CHRIST_*` tables (day headings, Psalm 99) repair prod rows shipped before 2026-11-06 and need nothing for a new edition built from the settled English. Also re-measure word counts: a brief said "~42k words" for this book; it is **83k** (Notes alone 7.4k) — size the dispatch from `word_count`, not the brief. With ≤6 concurrent translators, 33 per-chapter agents took ~1h45 end to end. The mirror's KJV (`bibles/eng_kjv/usfm/`) carries Strong's `|strong="…"` attributes inside words — strip them before building a KJV n-gram detector for uncited quotations (it found ~565 candidates across the book; Murray quotes far more than he cites). Kulish's Isa 6:2 in the mirror has a split word `Кр угом` (upstream, not the parser). A per-block "≥5 consecutive Kulish words" check of `mined` rows flags one-word quotes («Звершилось») and offset-numbered verses (Gen 3:6 = Kulish 3:5, Dan 4:35 = Kulish 4:32) — review those by hand rather than downgrading them.

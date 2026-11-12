@@ -1,0 +1,88 @@
+{
+    "kind": "book",
+    "slug": "david-livingstone-a-life-children",
+    "language": "pt",
+    "job_issue": 7758,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Ecclesiastes 9:10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 19:1",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "2 Timothy 4:17",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 121:2",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 8:31",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Isaiah 35:1",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 15:4",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 28:20",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Isaiah 61:1",
+            "status": "self_rendered",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 34:18",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Hebrews 11:8",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Proverbs 25:25",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Psalm 116:15",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "John 12:24",
+            "status": "self_rendered",
+            "block_index": 7
+        }
+    ]
+}

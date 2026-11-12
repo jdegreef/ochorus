@@ -1,0 +1,563 @@
+{
+ "kind": "sermon",
+ "slug": "broken-before-the-throne",
+ "language": "hi",
+ "job_issue": 7862,
+ "pull_request": 7872,
+ "note": [
+  "Scripture came from the Indian Revised Version (IRV Hindi, irvhin) — the text `language_seed.py` records for this language — fetched whole from the ebible mirror on raw.githubusercontent.com (gracious-tech/fetch_collection, bibles/hin_irv/usx). All 66 books, 31,104 verses on disk, so translators could look up the sermon's many uncited quotations as well as its long readings of Exodus 32-34.",
+  "The English transcript carries NO quotation marks at all (speech is unmarked), so this edition mirrors it: the IRV's own “ ” marks were dropped from pasted verses, and its baked-in cross-references such as (यूह. 1:29) removed. Every other character of a mined verse is byte-identical to the IRV.",
+  "A `mined` row means an exact byte substring of the quote-stripped IRV verse, at least 45 characters long (or the whole verse when shorter), measured against the FINISHED hi body, not a translator's claim. Short verbatim phrases — the petition मुझे अपना तेज दिखा दे (Exod 33:18), Exod 23:21, Exod 34:3, John 14:9b, Acts 1:14, Isa 64:1, Matt 5:8, Lam 5:21a, Titus 1:2 — are recorded self_rendered on that rule even where the words are IRV's; a reviewer can promote them. A verse the preacher re-personed or paraphrased is self_rendered.",
+  "Reviewer note: IRV Ps 24:4 reads काम निर्दोष (blameless deeds) where the English says clean hands, so the sermon's following hands imagery loses its anchor in the verse; and IRV Exod 33:13 opens with the if-I-have-found-grace clause the English reading skips — the whole IRV verse was kept."
+ ],
+ "references": [
+  {
+   "reference": "2 Chronicles 7:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 1:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 1:28",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:12",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 1:15",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 64:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Exodus 32:15a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:15b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:19a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:19b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Exodus 32:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 32:22",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 32:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 32:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 32:25",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:27b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:29",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 32:30",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:31",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:33",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:35",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Exodus 32:27a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Exodus 32:27b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Exodus 32:34",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 33:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 33:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 33:3a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 33:3b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 33:3c",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Exodus 23:21",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Exodus 33:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:5a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:5",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:5b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Exodus 33:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Exodus 33:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Exodus 33:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Exodus 33:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Hebrews 13:12",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "John 14:9b",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Exodus 33:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Exodus 33:15",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Luke 18:5",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Exodus 33:17",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Exodus 33:21",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Exodus 17:6",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Numbers 20:8",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Numbers 20:11",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Numbers 20:12",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Exodus 34:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Exodus 34:3a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Exodus 34:3c",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Exodus 33:22",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Psalm 24:3",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Psalm 24:4a",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 5:8a",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Matthew 5:8b",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Isaiah 64:1a",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Exodus 34:3",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Exodus 19:12-13",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 116
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Luke 12:48b",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV Hindi, irvhin) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "Titus 1:2",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "2 Chronicles 32:8",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Lamentations 5:21a",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "self_rendered",
+   "block_index": 124
+  }
+ ]
+}

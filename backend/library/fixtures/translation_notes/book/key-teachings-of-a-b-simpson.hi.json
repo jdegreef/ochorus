@@ -1,0 +1,1862 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-a-b-simpson",
+ "language": "hi",
+ "job_issue": 7639,
+ "pull_request": 7881,
+ "note": [
+  "Scripture is the IRV Hindi Bible (Bridge Connectivity Solutions, CC BY-SA), spliced by script in place of the KJV the English quotes; the IRV's own quotation marks and trailing cross-reference parentheticals dropped. 'mined' = the IRV wording is present verbatim (exact substring, quote marks aside); everything else is self_rendered.",
+  "Flagged where the IRV does not carry the English's KJV sense (quoted verbatim anyway): Deut 11:21 (no 'days of heaven upon the earth'), Josh 1:3 (present tense; a bridging clause on the Hebrew perfect added in ch09), Heb 4:11 (disobedience vs unbelief), Rom 6:11, Ps 4:1 (सहारा, not 'enlarged'), Rom 10:17 (word of Christ), Ps 66:18 ('regard'), Gen 22:14, 1 Tim 6:17 (no 'living'), Acts 17:26-27 (one origin, not one blood), Prov 4:18, Matt 24:42 (day, not hour), John 6:37 (double negative).",
+  "English fixes rendered (owned by sibling pt #7634): ch02 'five years apart' → seven, 'seven children' → a family to provide for; ch05 'passive verb' → passively; ch08 Diotrephes epigraph gains 3 John 1:9; ch13 James 1:6–8; ch18 'a request' → a promise; ch20 Edwards comparison removed; ch06 Isaiah ordered the poultice; ch08 Scots-Canadian.",
+  "AI-translated (job #7639) in six parallel ranges against one CONVENTIONS file, then reconciled. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 10,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 13,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 21
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 24,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 24
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 30,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 32,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 36,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 38,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 42,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 106:15",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 47,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 49,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 60
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 61
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 63,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 66
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 67,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 5:12",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 71,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 73,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 77,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 78
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 79,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 82,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 83
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 86,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 87
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 88,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 89
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 100
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 102,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 102,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 106,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 108,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 109
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 112,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 114,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 115
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 118,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 120,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 125,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 127,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 141,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 147,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 147,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 8:16-17",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 148
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 151,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 150
+  },
+  {
+   "reference": "Matthew 14:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 152
+  },
+  {
+   "reference": "2 Timothy 4:20",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 154
+  },
+  {
+   "reference": "Philippians 2:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 154
+  },
+  {
+   "reference": "1 Timothy 5:23",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 154
+  },
+  {
+   "reference": "2 Corinthians 12:7-8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 154
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 155,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 4:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 156
+  },
+  {
+   "reference": "Luke 10:34",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 156
+  },
+  {
+   "reference": "Isaiah 38:21",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 156
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 157,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 162,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Job 2:13",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 163
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 164,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 167
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 170
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 174
+  },
+  {
+   "reference": "Acts 1:11",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 177,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 1:11",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 180
+  },
+  {
+   "reference": "Revelation 1:7",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 181,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:16",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 182,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Titus 2:13",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 185,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 186
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 187,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 191,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 24:42",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 193,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 195,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 196
+  },
+  {
+   "reference": "Acts 1:7",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 198
+  },
+  {
+   "reference": "Acts 1:7-8",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 199,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 204,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:16-17",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 205
+  },
+  {
+   "reference": "1 Thessalonians 4:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 206,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 207
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 210
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 218
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 220,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 224,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 225
+  },
+  {
+   "reference": "John 3:30",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 228,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 231
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 231
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 232,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 236,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Jude 1:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 240
+  },
+  {
+   "reference": "3 John 1:9",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 241,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 1:15",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 243,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 243,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 3:30",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 254
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 255
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 257,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 258
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 261,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 265,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 266
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 267,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 267,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 270,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 271
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 271
+  },
+  {
+   "reference": "Joshua 1:3",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 276,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Numbers 13:32",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 280,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Numbers 13:33",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 280,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 281,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 283,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 283,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Joshua 5:11-12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 284
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 285,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 291,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 292,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 293
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 293
+  },
+  {
+   "reference": "Judges 2:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 293
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 295
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 296,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 297,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 298
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 307
+  },
+  {
+   "reference": "Joshua 1:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 309
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 310
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 312,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 315
+  },
+  {
+   "reference": "Acts 5:3",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 315
+  },
+  {
+   "reference": "Acts 7:51",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 315
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 315
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 316,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 319,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 320,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 321,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 16:14",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 325,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 329,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 331,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 334,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 335
+  },
+  {
+   "reference": "1 Corinthians 12:30",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 338
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 339,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 343,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 344,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 346
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 346
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 347,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 351,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Colossians 3:15",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 352
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 356
+  },
+  {
+   "reference": "John 16:14",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 357
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 363
+  },
+  {
+   "reference": "John 16:14",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 364
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 366,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 6:11-12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 370,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 372,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 376,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 379
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 380,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 385,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 386
+  },
+  {
+   "reference": "2 Corinthians 6:13",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 387,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 394
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 397
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 399
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 401,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 4:20-21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 405,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 409,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 411,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 414,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 416
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 417,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Joshua 3:13",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 420
+  },
+  {
+   "reference": "Joshua 3:13",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 421,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 2:18",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 423,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 435,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 437,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 441,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 445,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 446
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 447,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 450,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 451
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 452,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 453
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 456,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 457,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 458,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 2:8",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 461,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 466,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 467
+  },
+  {
+   "reference": "Mark 11:25",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 468,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Peter 3:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 469
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 469
+  },
+  {
+   "reference": "James 1:6-8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 469
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 479
+  },
+  {
+   "reference": "Luke 24:27",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 482,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 24:27",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 485,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 24:44",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 486,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 488,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 489,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 491
+  },
+  {
+   "reference": "Malachi 3:1",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 491
+  },
+  {
+   "reference": "Romans 5:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 491,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 492,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 496,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Genesis 22:13",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 501
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 502,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Exodus 17:15",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Judges 6:24",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Ezekiel 48:35",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 503,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 503,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 503
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 503,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 511
+  },
+  {
+   "reference": "Luke 24:44",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 513
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 516,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 520,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 524,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 526,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 529,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 533,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 534
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 538,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 539
+  },
+  {
+   "reference": "Psalm 34:1",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 540,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 551
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 554,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 558,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 2:1",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 560,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 2:4",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 560,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 564,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 567,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 570,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:17",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 574,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:18",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 574,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 8:5",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 575
+  },
+  {
+   "reference": "2 Corinthians 8:3",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 576,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 25:31-46",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 583
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 585
+  },
+  {
+   "reference": "James 2:1",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 586
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 588
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 590
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 590
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 594,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 598,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 602,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 605,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 610,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 612,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 612
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 621
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 626,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 630,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 634,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:12",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 639,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 640
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 641,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 645,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 647,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 651,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:14-15",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 653,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 654
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 662
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 664
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 665
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 667,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 671,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 677,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 685,
+   "source_file": "IRV (irvhin) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 704,
+   "source_file": "IRV (irvhin) Bible text"
+  }
+ ]
+}
