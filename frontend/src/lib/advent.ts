@@ -15,6 +15,10 @@ import { adventStart } from './liturgical';
 /** The reading plan the hub leads with (backend `plan_seed.CURATED_PLANS`). */
 export const ADVENT_PLAN = 'advent-with-the-classics';
 
+/** The season in the Bible itself (Open Word Bible, English only — as is this
+ *  hub): offered beside the classics plan, 1 December to Christmas Day. */
+export const ADVENT_SCRIPTURE_PLAN = 'advent-in-scripture';
+
 /** The plan's four weeks, in order: its days run in sevens (plan_seed's
  *  comment on the plan holds it to that). A label for each week of days. */
 export const ADVENT_WEEKS = [

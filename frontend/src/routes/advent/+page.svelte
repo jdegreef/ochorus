@@ -5,12 +5,13 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { planDayPath } from '$lib/editionHref';
 	import { planMinutesPerDay } from '$lib/reading';
-	import type { BookSummary, PlanDetail, SermonSummary } from '$lib/library-public';
+	import type { BookSummary, PlanDetail, PlanSummary, SermonSummary } from '$lib/library-public';
 	import { adventFor, dayMonth, longDate, planWeeks, shortDate, statusLine } from '$lib/advent';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -23,6 +24,7 @@
 	const plan = $derived<PlanDetail | null>(data.plan);
 	const books = $derived<BookSummary[]>(data.books);
 	const sermons = $derived<SermonSummary[]>(data.sermons);
+	const scripturePlan = $derived<PlanSummary | null>(data.scripturePlan);
 
 	// The prerender bakes the build day's Advent; the reader's own day takes
 	// over on mount. `{#key now}` redraws the dated parts then, so a page built
@@ -67,6 +69,7 @@
 			url: path,
 			items: [
 				...(plan ? [{ name: plan.title, url: `/plans/${plan.slug}/` }] : []),
+				...(scripturePlan ? [{ name: scripturePlan.title, url: `/plans/${scripturePlan.slug}/` }] : []),
 				...books.map((b) => ({ name: b.title, url: `/books/${b.slug}/` })),
 				...sermons.map((s) => ({ name: s.title, url: `/sermons/${s.slug}/` }))
 			]
@@ -169,6 +172,18 @@
 				</div>
 			</section>
 		{/key}
+	{/if}
+
+	<!-- The season in the Bible itself: a second plan, the prophets' promises
+	     and the birth narratives a chapter a day, for a reader who wants
+	     Scripture rather than (or as well as) the classics. -->
+	{#if scripturePlan}
+		<section class="mb-10" aria-labelledby="advent-scripture">
+			<h2 id="advent-scripture" class="section-heading no-rule">Advent in the Bible</h2>
+			<div class="max-w-xl">
+				<PlanShelfCard plan={scripturePlan} headingLevel={3} />
+			</div>
+		</section>
 	{/if}
 
 	{#if books.length}
