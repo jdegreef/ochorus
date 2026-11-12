@@ -53,7 +53,7 @@ import hashlib
 import json
 import re
 from collections import Counter, defaultdict
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 
 from django.conf import settings
@@ -70,6 +70,7 @@ from library.sanitize import clean_fragment
 AUTHOR_SLUG = "ochorus-originals"
 LANGUAGE = "en"
 EDITORIAL = Path(settings.BASE_DIR) / "library" / "data" / "catena"
+FIXTURE = Path(settings.BASE_DIR) / "library" / "fixtures" / "content"
 BIBLE = Path(settings.BASE_DIR) / "library" / "data" / "bible" / "owb-en-b.json.gz"
 LOGIA = "https://logia.faith"
 
@@ -111,6 +112,13 @@ IDEAL_WORDS = 200
 #: Scan debris: stray asterisks, bars and carets, a degree sign, angle brackets,
 #: a word broken at a hyphen ("seems- to"). An excerpt carrying any is passed over.
 _SCAN_NOISE = re.compile(r"[*|^°<>{}]|\w- \w")
+#: A word, apostrophes inside it allowed ("Lord's"), for the vocabulary check.
+_WORD = re.compile(r"[A-Za-z]+(?:['’][A-Za-z]+)*")
+#: A letter run broken by ? or ! or a digit inside a word: "ma?i", "c0me".
+_MISREAD = re.compile(r"[a-z][?!][a-z]|[a-z]\d|\d[a-z]{3,}|[a-z]{2}\.[A-Z][a-z]")
+_SHORT_WORDS = frozenset(
+    "a i o ah am an as at be by do go ha he ho if in is it lo me my no of oh on or ox so to up us we ye".split()
+)
 _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
@@ -175,6 +183,7 @@ class Command(BaseCommand):
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
         self.logia_sha = hashlib.sha256(raw).hexdigest()
+        self.all_excerpts = logia["excerpts"]
         self.authors = logia["authors"]
         self.works = logia["works"]
         self.excerpts = {
@@ -219,6 +228,8 @@ class Command(BaseCommand):
             floor = MIN_WORDS_SHORT if e["author"] in SHORT_VOICES else MIN_WORDS
             if not (first <= start <= last and end <= last and floor <= n <= MAX_WORDS):
                 continue
+            if self.misread(e["text"]):
+                continue  # a word the scan misread ("ami fetl" for "and fed"): see `vocabulary`
             if _NON_LATIN.search(e["text"]):
                 continue  # Greek or Hebrew: the reader's fonts and listen mode both stumble
             if _SCAN_NOISE.search(e["text"]) or e["id"] in self.rejected:
@@ -227,6 +238,37 @@ class Command(BaseCommand):
                 continue  # an unpaired quotation mark: the scan lost one, and curling would guess
             out.append({**e, "_start": start, "_words": n})
         return sorted(out, key=lambda e: e["id"])
+
+    def vocabulary(self) -> set[str]:
+        """Every word the library already prints at least three times — the English
+        books and sermons, and Logia's excerpts from editions that were typed
+        rather than scanned (CCEL, tertullian.org) — lower-cased.
+
+        Several editions reach Logia through archive.org's OCR (Lapide, Bengel,
+        Ryle, Westcott), and the scan misreads a word now and then: "ma?i",
+        "whicli", "Tiie". english_audit's classes do not see these, so the
+        selection passes over any excerpt with a word outside this list. A rare
+        real word ("fornicatrix") is turned away too; there are twenty
+        excerpts for every one this book takes, so the cost is nil."""
+        if getattr(self, "_known", None) is None:
+            counts = Counter()
+            for folder in ("books", "sermons"):
+                for path in (FIXTURE / folder).glob("*.en.json"):
+                    for row in json.loads(path.read_text("utf-8")):
+                        body = row["fields"].get("body_html")
+                        if body:
+                            counts.update(w.lower() for w in _WORD.findall(unescape(re.sub(r"<[^>]+>", " ", body))))
+            for e in self.all_excerpts:
+                if "archive.org" not in e.get("source_url", ""):
+                    counts.update(w.lower() for w in _WORD.findall(e["text"]))
+            # Three times, and a short word only if it is a real one: scanned
+            # books elsewhere in the library carry the odd "tt" or "fid" too.
+            self._known = {w for w, n in counts.items() if n >= 3 and (len(w) > 2 or w in _SHORT_WORDS)}
+        return self._known
+
+    def misread(self, text: str) -> bool:
+        known = self.vocabulary()
+        return bool(_MISREAD.search(text)) or any(w.lower() not in known for w in _WORD.findall(text))
 
     def select(self, passages) -> list[list[str]]:
         overall = Counter()

@@ -6,7 +6,12 @@
  ],
  "reasons": {
   "bengel.JHN.4.37.1": "a quotation of Romans 5:6 that opens in Bengel's previous note: the close mark is orphaned here",
-  "bengel.JHN.19.14.2": "a citation cut short in the scan (\"Charl.... T.\")"
+  "bengel.JHN.19.14.2": "a citation cut short in the scan (\"Charl.... T.\")",
+  "cyril.JHN.14.9.1": "a quotation mark printed on the wrong side of a space (say,\" that): curling it closes the quotation instead of opening it"
  },
- "excerpts": ["bengel.JHN.4.37.1", "bengel.JHN.19.14.2"]
+ "excerpts": [
+  "bengel.JHN.4.37.1",
+  "bengel.JHN.19.14.2",
+  "cyril.JHN.14.9.1"
+ ]
 }
