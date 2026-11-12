@@ -568,6 +568,76 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    8: {
+        "slug": "open-your-mouth-wide",
+        "book": {
+            "publication_year": 2026,
+            "title": "Open Your Mouth Wide",
+            "subtitle": "The Great Century of Prayer",
+            "cover_url": "/covers/art/open-your-mouth-wide.jpg",
+            "cover_color": covers.ink_safe("#2a4c7e"),  # a late-morning blue
+            "description": (
+                "Twenty short chapters on prayer in the great century of missions, from "
+                "about 1800 to 1900: the Haystack meeting, Finney and Father Nash, "
+                "Christmas Evans, M'Cheyne, George Müller, the Russian pilgrim, Seraphim of "
+                "Sarov, the Fulton Street noon prayer meeting, the Ulster revival, "
+                "Spurgeon, Hudson Taylor, Pastor Hsi, Moody, the Booths, Amanda Berry Smith, "
+                "Samuel Ajayi Crowther, Andrew Murray, Mary Slessor, Thérèse of Lisieux and "
+                "E. M. Bounds."
+            ),
+            "about_html": (
+                "<p>In the 1800s the church prayed and the gospel went out as never before. "
+                "Students prayed under a haystack and the first American missionaries "
+                "sailed; a few young men prayed in a village schoolhouse and a revival swept "
+                "a province; a man in Bristol fed thousands of orphans by asking no one but "
+                "God. Believers in Africa and Asia rose up as preachers, bishops and "
+                "evangelists in their own right. This book follows the praying people of "
+                "that great century. It is Volume 8 of A Cloud of Praying Witnesses, an "
+                "Ochorus series that follows the people of God at prayer from the Old "
+                "Testament to the church around the world today.</p>"
+                "<p>Its twenty chapters follow the Haystack prayer meeting, Daniel Nash and "
+                "Charles Finney, Christmas Evans, Robert Murray M'Cheyne and George Müller; "
+                "the Russian pilgrim learning to pray without ceasing and Seraphim of Sarov; "
+                "the noon prayer meeting of 1857 and the Ulster revival of 1859; Charles "
+                "Spurgeon, Hudson Taylor and Pastor Hsi of China; D. L. Moody, William and "
+                "Catherine Booth, Amanda Berry Smith and Samuel Ajayi Crowther; and Andrew "
+                "Murray, Mary Slessor, Thérèse of Lisieux and E. M. Bounds.</p>"
+                "<p>Every chapter tells its story from the oldest sources and says plainly "
+                "where legend takes over. It quotes the witnesses word for word from their "
+                "books in the library where it can, and ends with three key insights, a "
+                "word for today, a practice to try, a closing prayer and questions for "
+                "reflection. Two appendices gather every insight by theme and every "
+                "Scripture in Bible order. Scripture is quoted from the Open Word Bible "
+                "(OWB), Balanced edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Open Your Mouth Wide about?",
+                    "answer": "How believers prayed in the great century of missions, from about 1800 to 1900: twenty short chapters from the Haystack prayer meeting and George Müller to Hudson Taylor, Pastor Hsi, Amanda Berry Smith, Samuel Ajayi Crowther, Mary Slessor and E. M. Bounds.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first seven volumes follow prayer from the Old Testament to the age of revival. This eighth volume follows the nineteenth century, and later volumes follow the praying men and women of the twentieth century and the church around the world today.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Why is it called Open Your Mouth Wide?",
+                    "answer": "The title comes from Psalm 81:10, where God promises to fill the mouth of anyone who opens it wide. George Müller took that verse as God's invitation to ask for great things when he began his orphan houses, and it fits a century when the church asked God for the nations.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes twenty days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
