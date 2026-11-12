@@ -8347,6 +8347,25 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("antes que Deus possa usá-los.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
+# Transcription slips the ko translators hit (#7659), each with one reading:
+# misread letters, a lost word, stray punctuation inside citations, and two
+# miscited references (2 John has one chapter; the words quoted are 1 John
+# 5:10, and Torrey's "i Cor." is the digit 1). Torrey's wording is untouched.
+BODY_CORRECTIONS["how-to-bring-men-to-christ"].setdefault("replacements", []).extend([
+    ("after that the Holy Ghost, is come upon you",
+     "after that the Holy Ghost is come upon you"),                # ch1, Acts 1:8
+    ("according to his verse,", "according to this verse,"),       # ch4
+    ("1 Cor. xv.; 1‒4", "1 Cor. xv. 1‒4"),                         # ch4
+    ("No matter how selfrighteous a man is",
+     "No matter how self-righteous a man is"),                     # ch6
+    ("I have a friend who always uses Amos. iv. 11, 12",
+     "I have a friend who always uses Amos iv. 11, 12"),           # ch7
+    ("2 John v. 10, is very effective", "1 John v. 10, is very effective"),  # ch8
+    ("Is there some sin your life?", "Is there some sin in your life?"),     # ch8
+    ("“endured with power from on high”", "“endued with power from on high”"),  # ch13
+    ("(i Cor. xii. 4‒11)", "(1 Cor. xii. 4‒11)"),                  # ch13
+    ("Acts; i. 22; x. 39‒41", "Acts i. 22; x. 39‒41"),             # ch13
+])
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
 # fallback walk, and that walk dropped every div that was not hand-made poem
