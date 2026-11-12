@@ -5764,6 +5764,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ar/how-to-bring-men-to-christ": {
+			"ground": "ca63e65936840f19659c887baa90077efe86b9da7877c752d8af8e7f517d34c2",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/humility-2": {
 			"ground": "fc05c52b74288e69337e1a72ac9e32aade44acd1e796f062b8626eef48169582",
 			"style": "devotional",
@@ -21055,6 +21070,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "105e504be434dd71f171f0768c58af7cb32b9d738ff86eac9a8839ebd221bb35",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"hi/the-god-of-all-comfort": {
 			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
 			"style": "devotional",
@@ -24819,6 +24849,21 @@
 				482
 			]
 		},
+		"ko/ministry-of-intercession": {
+			"ground": "70182d16253c79eb2ee4736825907c99b04c5ea34255408d4341f13db4077c88",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/mortification-of-sin": {
 			"ground": "3d4cfd0977e2b90c557e84477f7f222369c0532f55c348d784a38e8f979eba35",
 			"style": "press",
@@ -27067,6 +27112,42 @@
 			"middle": [
 				321,
 				474
+			]
+		},
+		"lg/jesus-teacher-of-prayer": {
+			"ground": "d76ee7b78efe2c05913a729d39efa89f3177cf7a0e0b58545e2703d69d19731a",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 217, 311, 261],
+					[220, 295, 380, 371],
+					[113, 361, 487, 437],
+					[134, 427, 466, 503]
+				],
+				"subtitle": [
+					[123, 562, 477, 590]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				205,
+				590
 			]
 		},
 		"lg/journal-of-an-expedition-up-the-niger": {
@@ -36968,6 +37049,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "9cdbca606c7605efadec8e1181651337da30959cf2c0f018c2f3d47ebb5ee4a9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"sw/the-god-of-all-comfort": {
 			"ground": "1111c61893741196ad45cb91ac13c528652f569305a7cf812c18ebb082b83f26",
 			"style": "devotional",
@@ -42054,6 +42150,21 @@
 			"lift": 1,
 			"medallion": null,
 			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"uk/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "f5fe2f525dde197fbbb9d04deed817544db88c3ba47997f827f9d0d0e9a2cbc8",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
