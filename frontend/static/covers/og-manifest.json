@@ -23869,6 +23869,40 @@
 				480
 			]
 		},
+		"ko/jesus-teacher-of-prayer": {
+			"ground": "61bdb2a15be97077584f6df6a950078f1e7077b8e1927403859bc7aba7babd65",
+			"style": "originals",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "65e51b9577855c852e3e7e1e87c3be24243a2717018238fbe615ff86ca19b09b",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 281, 311, 325],
+					[54, 359, 546, 435]
+				],
+				"subtitle": [
+					[105, 497, 495, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
