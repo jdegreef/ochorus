@@ -734,6 +734,12 @@ export interface AuthorBio {
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
 	/**
+	 * Words in that long biography in this language (0 without one) — what the
+	 * home page's "Tonight" shelf times a one-sitting read by. Optional: an API
+	 * behind this build omits it, and no biography makes that shelf.
+	 */
+	bio_word_count?: number;
+	/**
 	 * How many REVIEWED quotations /quotes/<slug>/ lists; 0 means no quote page.
 	 * Language-independent (the quote pages are English). Optional so an API
 	 * running behind this build reads as none.

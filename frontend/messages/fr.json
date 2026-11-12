@@ -772,6 +772,8 @@
   "home_nudge_view_activity": "Votre lecture",
   "home_about_ochorus": "À propos d’Ochorus",
   "home_discover_next": "Découvrez votre prochain livre",
+  "home_tonight_title": "Ce soir, en moins de %n% minutes",
+  "home_tonight_subtitle": "Des œuvres entières à lire d’une traite.",
   "home_your_plans": "Vos plans",
   "home_recommended_next": "Recommandé pour vous",
   "fav_save": "Enregistrer",

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { deriveHomeShelves, HERO_SLUGS } from './homeShelves';
 import { COVER_BOOK_KEYS, toCoverBook } from './library-public';
 import { pickByDay } from './dailyPicks';
-import type { AuthorBio, BookSummary, TopicSummary } from './library-public';
+import type { AuthorBio, BookSummary, SermonSummary, TopicSummary } from './library-public';
 
 const book = (slug: string, author: string, cover = `/covers/art/${slug}.jpg`) =>
 	({ slug, title: slug, cover_url: cover, author: { slug: author, name: author } }) as BookSummary;
@@ -16,7 +16,7 @@ const lists = (over: Partial<Parameters<typeof deriveHomeShelves>[0]> = {}) => (
 	books,
 	authors: Array.from({ length: 12 }, (_, i) => author(`a${i}`, i)),
 	topics: Array.from({ length: 16 }, (_, i) => topic(`t${i}`, i)),
-	sermons: [1, 2, 3],
+	sermons: [1, 2, 3].map((n) => ({ slug: `s${n}`, word_count: 0 }) as SermonSummary),
 	...over
 });
 

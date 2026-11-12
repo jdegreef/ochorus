@@ -748,6 +748,14 @@ file mark each slot. Rules:
   that proves finished leaves the book card in place. A boot-flag change
   re-pins the app.html hash in `csp.config.js`.
   Sermon-only (or plan-only) progress keeps the hero, with the strip above it.
+- **"Tonight, under 20 minutes"** (idea #27): `TonightShelf`, evening only
+  (19:00–04:00 on the reader's clock, decided at mount), under the book row —
+  below the first screen, so its client-side arrival shifts nothing in view.
+  Pool built into the home snapshot (`$lib/tonightShelf` `tonightPool`: short
+  books, sermons, long bios via `bio_word_count`, this language only); the
+  browser re-times at the reader's pace and hides under 4. Every card is a
+  `BookCard` with `link` (sermon and bio wear plates). On the dashboard it
+  sits above `DailyShelf`.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 
