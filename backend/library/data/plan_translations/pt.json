@@ -185,5 +185,13 @@
  "cheque-book-year": {
   "title": "Um ano com O Livro de Cheques do Banco da Fé",
   "description": "As promessas diárias de Charles Spurgeon: uma promessa de Deus para cada dia do ano, com uma breve palavra sobre como recebê-la pela fé. Comece em qualquer dia: o primeiro dia é a leitura de 1º de janeiro, e cada dia seguinte traz a próxima. Um ou dois minutos por dia."
+ },
+ "the-pilgrims-way": {
+  "title": "O Caminho do Peregrino",
+  "description": "O caminho de casa, em três clássicos. Charles Spurgeon vai ao encontro de quem busca junto à porta estreita, a alegoria imortal de John Bunyan acompanha o peregrino por todo o caminho até a Cidade Celestial, e o próprio testemunho de Bunyan mostra a graça que abundou para o principal dos pecadores.",
+  "note": [
+   "Book titles as shipped: «Junto à Porta Estreita» (around-the-wicket-gate.pt), «O Peregrino» (pilgrims-progress.pt), «Graça Abundante ao Principal dos Pecadores» (grace-abounding.pt, added in this PR, job #7670). The description echoes them (porta estreita / peregrino / Cidade Celestial / principal dos pecadores).",
+   "grace-abounding.pt completes the plan's three-book set in Portuguese, so seed_plans creates the (the-pilgrims-way, pt) row on the deploy that ships it — this prose must land in the SAME PR."
+  ]
  }
 }

@@ -30430,6 +30430,21 @@
 				501
 			]
 		},
+		"pt/grace-abounding": {
+			"ground": "8f9efd796b616ac9e2e2e21369d5bc1449f4d17ef50de8b2d2608d852a47f545",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/grace-for-grace-2": {
 			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
 			"style": "house",
