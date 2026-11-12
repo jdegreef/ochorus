@@ -784,6 +784,8 @@
   "home_nudge_view_activity": "読書の記録",
   "home_about_ochorus": "Ochorus について",
   "home_discover_next": "次に読む本を見つける",
+  "home_tonight_title": "今夜、%n%分以内で",
+  "home_tonight_subtitle": "ひと息に読み終えられる作品。",
   "home_your_plans": "あなたのプラン",
   "home_recommended_next": "あなたへのおすすめ",
   "fav_save": "保存",

@@ -2,7 +2,7 @@ import { emblemForSermon } from '$lib/emblemNames';
 import { EMBLEM_HUES } from '$lib/emblemHues';
 import { inkSafe, tintable } from '$lib/coverArt';
 import type { EmblemName } from '$lib/emblems';
-import type { CoverFace, SermonSummary } from '$lib/library-public';
+import type { Author, CoverFace, SermonSummary } from '$lib/library-public';
 
 /**
  * A sermon's art, from its slug: which emblem it wears and the hue to tint with.
@@ -22,6 +22,12 @@ export function sermonArt(slug: string): { emblem: EmblemName; hue: string } {
 	return { emblem, hue: tintable(EMBLEM_HUES[emblem]) };
 }
 
+/** What `sermonCoverFace` reads — a shelf card, or the home snapshot's slim
+ *  sermon ("Tonight", `$lib/tonightShelf`). */
+export type SermonFaceSource = Pick<SermonSummary, 'slug' | 'language' | 'title' | 'scripture_ref'> & {
+	author: Pick<Author, 'slug' | 'name' | 'birth_year'>;
+};
+
 /**
  * A sermon as a `CoverFace`, so `<BookCover>` sets it on its own plate — the
  * resume card's 3:4 slot, the one place a sermon wears a cover (STYLE_GUIDE
@@ -37,7 +43,7 @@ export function sermonArt(slug: string): { emblem: EmblemName; hue: string } {
  *   slug — `BOOK_STYLE` among them — and a sermon sharing a book's slug must
  *   not wear that book's style.
  */
-export function sermonCoverFace(sermon: SermonSummary): CoverFace {
+export function sermonCoverFace(sermon: SermonSummary | SermonFaceSource): CoverFace {
 	return {
 		slug: `sermon:${sermon.slug}`,
 		language: sermon.language,

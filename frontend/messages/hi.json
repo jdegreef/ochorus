@@ -784,6 +784,8 @@
   "home_nudge_view_activity": "आपका पठन",
   "home_about_ochorus": "Ochorus के बारे में",
   "home_discover_next": "अपनी अगली पुस्तक खोजें",
+  "home_tonight_title": "आज रात, %n% मिनट से कम में",
+  "home_tonight_subtitle": "पूरी रचनाएँ जिन्हें आप एक बैठक में पढ़ सकते हैं।",
   "home_your_plans": "आपकी योजनाएँ",
   "home_recommended_next": "आपके लिए सुझाव",
   "fav_save": "सहेजें",

@@ -15,6 +15,7 @@ import {
 	type CoverBook,
 	type CoverFace,
 	type HubAudience,
+	type SermonSummary,
 	type TopicCount,
 	type TopicSummary
 } from '$lib/library-public';
@@ -23,6 +24,7 @@ import { isPlateCover } from '$lib/coverArt';
 import { editionKind } from '$lib/edition';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
+import { tonightPool, type TonightItem } from '$lib/tonightShelf';
 import { availableNeeds } from '$lib/needFinder';
 
 /**
@@ -69,6 +71,9 @@ export interface HomeShelves {
 	/** The young-reader hubs with something to show in this language — the
 	 *  home page links only those (`HomeAudienceHubs`). */
 	audiences: HubAudience[];
+	/** "Tonight, under 20 minutes" — short whole works in this language; the
+	 *  browser shows them in the evening only (`$lib/tonightShelf`). */
+	tonight: TonightItem[];
 	/** "What do you need today?": the situations this language's topic shelves
 	 *  can answer (`availableNeeds`, from the FULL topic list — the chips above
 	 *  are capped). Ids only: the picks load when a chip is pressed. Optional:
@@ -133,10 +138,11 @@ export function deriveHomeShelves(
 		books: BookSummary[];
 		authors: AuthorBio[];
 		topics: TopicSummary[];
-		sermons: { length: number };
+		sermons: SermonSummary[];
 		audiences?: HubAudience[];
 	},
-	day: number
+	day: number,
+	language = 'en'
 ): HomeShelves {
 	const { books, authors, topics, sermons, audiences = [] } = lists;
 	// Only books with real cover art reach the front page: a generated flat
@@ -180,6 +186,7 @@ export function deriveHomeShelves(
 		// fewer works states its own honest numbers, not English's.
 		counts: { books: books.length, sermons: sermons.length },
 		audiences,
+		tonight: tonightPool({ books, sermons, authors }, language, day),
 		needs: availableNeeds(topics)
 	};
 }
@@ -216,8 +223,9 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		// cross-navigation row, and the page already hides the section when
 		// there are none.
 		listTopics(lang).catch(() => []),
-		// Fetched only for the library-breadth count /about shows — tolerant at
-		// runtime, so a 0 just drops the sermon figure rather than breaking it.
+		// For the library-breadth count /about shows and the "Tonight" pool —
+		// tolerant at runtime, so an empty list just drops the sermon figure and
+		// the sermon cards rather than breaking the page.
 		shelf(listSermons(lang)),
 		// The hubs this language has something in — tolerant even while
 		// building, like topics: a decorative link band that simply hides.
@@ -225,5 +233,5 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 			AUDIENCE_HUBS.filter((h) => has[h.audience].includes(lang)).map((h) => h.audience)
 		)
 	]);
-	return deriveHomeShelves({ books, authors, topics, sermons, audiences }, dayNumber());
+	return deriveHomeShelves({ books, authors, topics, sermons, audiences }, dayNumber(), lang);
 }
