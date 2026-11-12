@@ -1,0 +1,4626 @@
+{
+ "kind": "book",
+ "slug": "days-of-heaven-upon-earth",
+ "language": "uk",
+ "job_issue": 7469,
+ "pull_request": null,
+ "note": [
+  "Scripture is Kulish 1905 (ukr_pan, ebible mirror, public domain) verbatim wherever a row says mined; one pinned verse table served all 24 half-month translators. Kulish's nested ‟ normalised to “ (punctuation only).",
+  "Hebrews is cited as Євреїв (not Kulish's running head Жидів), following #788.",
+  "Kulish verse numbering differs from the AV in Song of Solomon (1:7→1:6, 7:10→7:11), Hosea 14:8→14:9 and Genesis 3:5→3:4: the author's printed citation is kept and the Kulish verse quoted; see the row's why.",
+  "March 28 cites Gal 5:22 but quotes Eph 5:9 ('the fruit of the Spirit is in all goodness'); the citation is kept as printed and Kulish Eph 5:9 quoted.",
+  "self_rendered rows are mostly where Simpson's reading turns on a Revised Version / KJV-margin wording Kulish lacks, or where he re-persons the verse ('us' for 'you'); those are the reviewer's to check."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 5:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1
+  },
+  {
+   "reference": "Ephesians 5:15-16",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "Author quotes the Revised Version ('Walk circumspectly ... buying up for yourselves the opportunity'); his point turns on 'opportunity' (kairos), which Kulish's 'час' lacks, so rendered from the English. Same for the earlier R.V. phrase 'Buying up for yourselves the opportunity'."
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 1:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 22,
+   "why": "Uncited quotation in point 1."
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 23,
+   "why": "Uncited quotation in point 2; Kulish's opening 'Но' omitted."
+  },
+  {
+   "reference": "Psalm 1:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 24,
+   "why": "Uncited quotation in point 3."
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 28,
+   "why": "Simpson's 'I know him that he will do the law' is a loose paraphrase, not the KJV/Kulish wording ('Знаю бо, що накаже синам своїм...'); rendered from the English."
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29,
+   "why": "Simpson's compressed in-prose quotation; 'I know him' carried in the surrounding prose."
+  },
+  {
+   "reference": "1 Corinthians 12:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 33,
+   "why": "Kulish's opening 'Бо' omitted."
+  },
+  {
+   "reference": "Jude 24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 39,
+   "why": "Kulish already has 'without stumbling', matching the R.V. reading the author praises."
+  },
+  {
+   "reference": "Mark 6:50",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 44,
+   "why": "Repeated in the prose."
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 50
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 51,
+   "why": "Kulish's bracketed supplied words kept."
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 54,
+   "why": "Uncited."
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 54,
+   "why": "Uncited; Kulish includes 'де я' (where I am), which Simpson's abridged KJV quote drops."
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 56,
+   "why": "'Любов…' prefixed by ellipsis from 13:4 to give the subject; Kulish 'не осоромлює' = 'doth not behave itself unseemly' and fits Simpson's garment/shame image."
+  },
+  {
+   "reference": "1 Corinthians 13:4-5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 58,
+   "why": "Uncited; spans vv. 4-5. The 'nots' pun works natively with Ukrainian 'не'."
+  },
+  {
+   "reference": "Revelation 2:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 60,
+   "why": "Kulish's opening 'тільки,' omitted."
+  },
+  {
+   "reference": "2 John 8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 61,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 65
+  },
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "Uncited 'Ask and ye shall receive'."
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "Uncited; initial capital adjusted in the html."
+  },
+  {
+   "reference": "Exodus 4:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 72,
+   "why": "Kulish 'thou shalt be God to him' vs KJV 'instead of God'; the prose keeps Simpson's 'instead of God' (замість Бога)."
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 78
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Uncited; Kulish's bracketed supplied words kept."
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "Kulish's opening 'Оце ж,' omitted; Kulish includes 'Господа' (the Lord), which Simpson's quote drops."
+  },
+  {
+   "reference": "Hebrews 6:1",
+   "status": "self_rendered",
+   "block_index": 84,
+   "why": "Uncited composite of Heb 6:1 and Phil 3:16 in Simpson's own blended wording; rendered from the English rather than splicing two Kulish verses."
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 89
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 95
+  },
+  {
+   "reference": "Matthew 17:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 99,
+   "why": "cited verse; repeated in prose"
+  },
+  {
+   "reference": "Matthew 17:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100,
+   "why": "uncited quote 'Jesus prevented him'; Kulish попередив keeps Simpson's 'anticipated' sense"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "self_rendered",
+   "block_index": 99,
+   "why": "uncited; Simpson's positive KJV phrasing ('able to be touched') rendered naturally rather than Kulish's double negative"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "Luke 9:55",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 115,
+   "why": "uncited; whole verse quoted incl. Kulish's 'сї троє'"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 117
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "uncited; Simpson re-persons to 'our requests' — rendered, Kulish has 'прошення ваші'"
+  },
+  {
+   "reference": "Revelation 19:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 123
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 128
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 132,
+   "why": "cited; repeated in prose with capital Д"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 139,
+   "why": "cited; repeated in last paragraph"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 144,
+   "why": "uncited 'prove all things'"
+  },
+  {
+   "reference": "Philippians 3:16",
+   "status": "self_rendered",
+   "block_index": 139,
+   "why": "uncited; Simpson's 'let us walk by the same rule, let us mind the same thing' rendered (Kulish 'одним правилом жити і те саме думати' lacks the hortative)"
+  },
+  {
+   "reference": "Isaiah 51:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 146
+  },
+  {
+   "reference": "Jeremiah 17:7-8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 148,
+   "why": "uncited; spans vv.7-8"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 150,
+   "why": "Kulish prints 'одно ж (роблю)' — editorial parentheses for a supplied word dropped typographically; letters verbatim. Repeated at end with capital О"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 156,
+   "why": "cited; full verse 'Се глаголю вам, ...' in prose"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 157
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 161
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 162,
+   "why": "Simpson quotes the verse's end first, then its start; printed as two verbatim Kulish pieces in his order"
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 162
+  },
+  {
+   "reference": "2 Corinthians 4:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 167
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 173,
+   "why": "Simpson's 'Jesus, who...' — 'Ісус,' kept outside the quote marks so the relative clause stays verbatim Kulish"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "Kulish fragment in instrumental case as printed."
+  },
+  {
+   "reference": "Matthew 20:26,27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7,
+   "why": "Spans 20:26-27; Kulish слуга/раб matches the diakonos/doulos contrast the reading draws."
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 19,
+   "why": "In-prose quotation."
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 23,
+   "why": "Author prints only (Ps. xxxvii.) without a verse; KJV 'Rest in the Lord' is 37:7. Citation kept as printed: (Псальма 37)."
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 26,
+   "why": "Uncited in-prose quotation ('labor to enter into rest'); initial capital lowered."
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 26,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "Author's short quote is two non-adjacent Kulish fragments joined with an ellipsis: «молячись всякого часу… за всїх сьвятих»."
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "Second fragment of the same quote."
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 37
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 41
+  },
+  {
+   "reference": "2 Samuel 5:17",
+   "status": "self_rendered",
+   "block_index": 41,
+   "why": "KJV 'All the Philistines came up to seek David'; Kulish has 'щоб одолїти Давида' (to overpower) — the reading turns on 'seek', so rendered: «вийшли всі филистимляни шукати Давида»."
+  },
+  {
+   "reference": "Philippians 1:28",
+   "status": "self_rendered",
+   "block_index": 41,
+   "why": "'a token of salvation' — Kulish splits 'знак погибелї, а вам спасення'; rendered «знак спасіння»."
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 46,
+   "why": "Kulish has no 'nevertheless I live'; quoted through 'а живе Христос у менї' so the clause stays whole and fits the reading's 'Christ life'."
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 50,
+   "why": "Heading quote includes the intervening 'по потузї слави Його' to stay contiguous Kulish."
+  },
+  {
+   "reference": "Colossians 1:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 50,
+   "why": "In-prose fuller quotation."
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 51
+  },
+  {
+   "reference": "Jeremiah 17:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 52,
+   "why": "Uncited; the rest of the verse ('not careful in the year of drought...') is outside the author's quote marks and translated in the prose."
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 54
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "1 Corinthians 3:21-23",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "'we are Christ's' / 'all things are ours' re-personed from Kulish's ви/ваше; rendered «ми Христові» / «все наше»."
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 59,
+   "why": "Kulish has no 'come up for a memorial'; 'спогадались' (were remembered) carries the memorial sense. Heading quote includes 'і милостинї твої' to stay contiguous; the in-prose repeat elides it: «Молитви твої… спогадались перед Богом»."
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 60,
+   "why": "Uncited 'the Lord's remembrancers' (KJV margin of Isa 62:6) — Kulish's own wording matches."
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 63,
+   "why": "Author quotes only 'with fire'; Kulish clause kept whole (Spirit and fire)."
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 69,
+   "why": "Uncited 'The flames shall not kindle upon you'."
+  },
+  {
+   "reference": "2 Timothy 2:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 71
+  },
+  {
+   "reference": "Psalm 97:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "Uncited 'Gladness is sown for the upright in heart'; whole verse quoted since the gladness clause alone dangles."
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75,
+   "why": "Initial capital lowered."
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75,
+   "why": "Initial capital lowered."
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "Two fragments joined by ellipsis: «Гаразд, слуго добрий і вірний… Увійди в радощі пана твого»."
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "Second fragment."
+  },
+  {
+   "reference": "Acts 6:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Kulish interposes 'і в служенню слова' between the author's words; whole verse quoted to stay verbatim."
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 85
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 88
+  },
+  {
+   "reference": "Romans 1:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 93
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98
+  },
+  {
+   "reference": "Job 3:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 99,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "uncited; quoted twice, second time with <em> on вповаю (trust)"
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 104
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 104,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "John 6:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 105,
+   "why": "uncited; 'It is I; be not afraid' (also Matt 14:27/Mark 6:50); John 6:20 is the exact Kulish wording; used twice"
+  },
+  {
+   "reference": "Psalm 46:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 105,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 107
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108,
+   "why": "uncited; split by the author's 'He says' — printed «Прийдїть до мене, — каже Він, — всї знеможені та отягчені, я впокою вас»"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 112
+  },
+  {
+   "reference": "3 John 2",
+   "status": "self_rendered",
+   "block_index": 112,
+   "why": "author re-persons the verse to 'we/our soul'; Kulish has 2nd sg. — rendered the author's wording"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 114,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Philippians 1:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 115,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Philippians 1:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116,
+   "why": "uncited; Kulish's 1st person fits the author's prayer"
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118
+  },
+  {
+   "reference": "Hebrews 7:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 119,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 119,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 123
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 123,
+   "why": "author re-persons to 'In Him I live…' in a prayer; Kulish has 'we' — rendered the author's wording"
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 127
+  },
+  {
+   "reference": "Hebrews 13:20-21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 128,
+   "why": "spans 13:20-21; the author's gloss 'adjust you in every good work' is rendered freely («припасує вас…»)"
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 132
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 135,
+   "why": "Kulish reads 'покликавший нас' where the English has 'called you'; kept Kulish verbatim"
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 137
+  },
+  {
+   "reference": "Psalm 108:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 139,
+   "why": "uncited; 'My heart is fixed, O God, I will sing and give praise' = Ps 108:1 (KJV) exactly; Ps 57:7 doubles 'my heart is fixed'. Superscription omitted."
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "self_rendered",
+   "block_index": 137,
+   "why": "author paraphrases and re-persons to 'we will rejoice'; rendered the author's wording"
+  },
+  {
+   "reference": "Psalm 27:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "opening; Kulish 'вповай' for KJV 'wait on'"
+  },
+  {
+   "reference": "Psalm 27:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 3,
+   "why": "'Wait, I say, on the Lord' = closing clause of the same verse; capital adjusted"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7,
+   "why": "opening"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 8,
+   "why": "full verse in body"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 13,
+   "why": "stops at 'afterward' as the author does"
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 19
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "capital adjusted"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31,
+   "why": "capital adjusted"
+  },
+  {
+   "reference": "Genesis 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "uncited in English (KJV Gen 3:5); Kulish Gen 3 is off by one, words are in GEN 3:4"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 33,
+   "why": "uncited in English; quote split by the attribution «— питав Він, —»"
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 36,
+   "why": "opening and again in body"
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "block_index": 36,
+   "why": "uncited blend of Mark 8:35 / John 12:25 ('unto life eternal'); rendered from the author's wording"
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 41,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "body"
+  },
+  {
+   "reference": "1 Thessalonians 4:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "capital adjusted"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 53,
+   "why": "leading 'І' dropped; body repeats the first clause"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 59,
+   "why": "author skips 'a royal priesthood, an holy nation' — printed as «Ви ж — рід вибраний, … люде прибрані»; 'люде прибрані' (peculiar people) is also verbatim 1PE 2:9"
+  },
+  {
+   "reference": "Psalm 107:4",
+   "status": "self_rendered",
+   "block_index": 63,
+   "why": "Kulish has 'по степових шляхах' (no 'solitary'); the reading turns on KJV 'solitary way', which the prose quotes back, so the KJV sense is rendered: «Вони блукали в пустині самотнім шляхом»"
+  },
+  {
+   "reference": "Jude 21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "capital adjusted"
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 71,
+   "why": "uncited in English; author paraphrases with 'live', Kulish 'пробувати' fits"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "opening"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74,
+   "why": "full verse in body"
+  },
+  {
+   "reference": "Hosea 2:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "uncited; author joins Hos 2:14 and 2:15"
+  },
+  {
+   "reference": "Hosea 2:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "uncited; second half of the joined quote"
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 78,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "John 15:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "body; the author's 'In the original it is, Live in My love' is rendered as his own gloss «Живіть у Моїй любові»"
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 82,
+   "why": "opening and repeated as the first words of the body"
+  },
+  {
+   "reference": "John 17:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 83,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "Psalm 57:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 83,
+   "why": "uncited 'Wake up my glory'"
+  },
+  {
+   "reference": "Psalm 105:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 87,
+   "why": "opening"
+  },
+  {
+   "reference": "Luke 1:74-75",
+   "status": "self_rendered",
+   "block_index": 87,
+   "why": "uncited; the author blends Luke 1:71 ('from the hand of all that hate us') into 1:74-75, so rendered from his wording, close to Kulish's vocabulary"
+  },
+  {
+   "reference": "Psalm 91:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "1 John 5:18",
+   "status": "self_rendered",
+   "block_index": 90,
+   "why": "uncited; author reads 'He that was begotten of God keepeth US' (R.V. sense, re-personed); Kulish has 'хоронить себе … не дотикаєть ся його', so rendered from the author's wording"
+  },
+  {
+   "reference": "Luke 5:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "opening"
+  },
+  {
+   "reference": "Romans 5:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "uncited in English"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108,
+   "why": "opening; Kulish's leading 'коли' dropped, capital adjusted"
+  },
+  {
+   "reference": "1 Kings 18:41",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 109,
+   "why": "uncited; capital adjusted"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 114,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 120,
+   "why": "opening; capital adjusted"
+  },
+  {
+   "reference": "Psalm 29:2",
+   "status": "self_rendered",
+   "block_index": 126,
+   "why": "the day turns on 'the beauty of holiness' as a trait of character; Kulish reads 'у пишній сьвятинї' (splendid sanctuary), so the KJV sense is rendered: «Краса святості»"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 128,
+   "why": "uncited; author skips 'pure' — printed as «Що праведне, … що любе, що хвалебне»; 'Що праведне' is also verbatim PHP 4:8"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 131,
+   "why": "opening; Kulish's 'дивлячись на' left off as the author does"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 132,
+   "why": "unmarked in English ('Not I; but Christ who liveth in me')"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 136,
+   "why": "opening"
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 137,
+   "why": "uncited"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 136,
+   "why": "repeated in body"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 141,
+   "why": "opening; the English words 'the fruit of the Spirit is (in) all goodness' are Eph 5:9, not Gal 5:22 — Kulish EPH 5:9 quoted, author's printed citation kept (see flag)"
+  },
+  {
+   "reference": "Romans 5:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "uncited"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "uncited"
+  },
+  {
+   "reference": "1 Samuel 2:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 146,
+   "why": "opening; Kulish 'праведних' for KJV 'saints'"
+  },
+  {
+   "reference": "1 Samuel 2:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 146,
+   "why": "repeated in body"
+  },
+  {
+   "reference": "Jude 24",
+   "status": "self_rendered",
+   "block_index": 146,
+   "why": "uncited; author has 'keep US … present US faultless' and omits 'with exceeding joy' — Kulish wording kept but re-personed ('вас' → 'нас') and 'в радостї' dropped"
+  },
+  {
+   "reference": "Jude 25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 148,
+   "why": "second half of the same uncited doxology"
+  },
+  {
+   "reference": "3 John 2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 152,
+   "why": "opening; Kulish's 'Любий,' left off as the author does"
+  },
+  {
+   "reference": "1 Peter 3:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 153,
+   "why": "uncited; Kulish's leading 'І' dropped"
+  },
+  {
+   "reference": "1 Timothy 1:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 153,
+   "why": "uncited; Kulish 'од віри відпали' (fell from faith) for KJV 'made shipwreck' — same sense, the argument does not turn on the image"
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 154,
+   "why": "uncited; author skips 'do that which is right… give ear', marked with «…»"
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 154,
+   "why": "second part of the same quotation"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 158,
+   "why": "opening"
+  },
+  {
+   "reference": "Romans 9:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 33:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 13,
+   "why": "Kulish 'hope' = KJV 'expectation'"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 18,
+   "why": "prose restatement on same day translated in modern Ukrainian (unquoted in English)"
+  },
+  {
+   "reference": "Daniel 12:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 23,
+   "why": "stopped before Kulish's '(в спокусї)'"
+  },
+  {
+   "reference": "Romans 12:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29,
+   "why": "cited Rom 12:4,5; first half, joined with ellipsis"
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29,
+   "why": "second half of the Rom 12:4,5 quotation"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32
+  },
+  {
+   "reference": "Proverbs 17:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 37,
+   "why": "quoted twice (opening + prose), same wording"
+  },
+  {
+   "reference": "John 8:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42
+  },
+  {
+   "reference": "Romans 14:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 43,
+   "why": "uncited in English, clearly quoted"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 44,
+   "why": "uncited; first fragment"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 44,
+   "why": "uncited; second fragment after ellipsis"
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "Kulish 'свободу' = confidence; opening gives the clause containing the author's words. Prose quotation of the same verse uses the same Kulish clause, framed 'Його дім — це ми, коли…' (from the verse itself) so the Kulish 1st-person-plural future fits Simpson's exhortation"
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 58,
+   "why": "prose quotation; Kulish 'він допоможе' for KJV 'He worketh' (close)"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 62,
+   "why": "Simpson quotes the KJV MARGINAL reading ('as it were, complainers') and his argument turns on 'as it were'; Kulish has no such word, so rendered: «Вони були немовби нарікальниками»"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 62,
+   "why": "prose 'When the people, as it were, murmured' (margin reading) rendered «Коли люди немовби нарікали»"
+  },
+  {
+   "reference": "Job 1:22",
+   "status": "self_rendered",
+   "block_index": 62,
+   "why": "uncited 'charge God foolishly' (KJV); Kulish 'не виповів нїчого безумного проти Бога' does not fit the phrase; rendered «безумно звинуватити Бога»"
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 67,
+   "why": "opening + repeated in prose"
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "uncited 'Again I say, rejoice'"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "margin reading again: «Коли люди немовби нарікали, це було неприємно Господеві»"
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 79
+  },
+  {
+   "reference": "1 Corinthians 16:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "KJV \"Quit you like men\" = Kulish \"мужайтесь\"."
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 93
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "uncited repeat in prose; initial capital adjusted"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "uncited, quoted in prose"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 95,
+   "why": "uncited; printed «Гаразд, слуго добрий і вірний… Увійди в радощі пана твого» — both halves verbatim Kulish, middle omitted as in the English"
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 97
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98,
+   "why": "uncited"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98,
+   "why": "uncited"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98,
+   "why": "uncited; Simpson then plays on the KJV word \"stayed\", which Kulish lacks — the wordplay is explained in prose with the English word \"stay\" kept in Latin letters"
+  },
+  {
+   "reference": "1 Chronicles 4:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 104,
+   "why": "uncited"
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "orchestrator reconciliation: Kulish fragment (his verse is a double negative), matching the June 26 quotation"
+  },
+  {
+   "reference": "Psalm 37:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 113,
+   "why": "KJV \"Fret not thyself in any wise\" = Kulish v.8 \"і не досадуй\""
+  },
+  {
+   "reference": "Psalm 37:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 114,
+   "why": "uncited, full verse"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 121
+  },
+  {
+   "reference": "Proverbs 16:21",
+   "status": "self_rendered",
+   "block_index": 125,
+   "why": "Kulish has \"красномовність\" (eloquence), but the day turns on \"sweetness\" (of spirit); rendered the KJV wording «солодкість уст»"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 131
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered",
+   "block_index": 131,
+   "why": "uncited; Simpson re-persons the verse (\"cause us to walk in His statutes\"); rendered «учинити, щоб ми ходили в заповідях Його» after Kulish \"учиню, що будете ходити в заповідях моїх\""
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 136,
+   "why": "Kulish gloss \"(гине)\" omitted"
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "printed «Любов… всьому йме віри»: Kulish v.7 has no subject; \"Любов\" supplied from v.4 with an ellipsis, as the English quotes \"Love believeth\""
+  },
+  {
+   "reference": "Isaiah 63:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 143,
+   "why": "uncited; Kulish \"не зломлять вірності\" for KJV \"will not lie\" — the following sentence \"They did lie\" adapted to \"Вони таки ламали вірність\" so the argument holds"
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "closing repeat"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "Kulish \"А овощ духа: любов, радощі, мир, довготерпіннє, добрість…\" lists the fruit; KJV \"gentleness\" (Kulish \"добрість\") is the day's whole theme, so rendered «Плід Духа — лагідність»."
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 6
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 12
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 16,
+   "why": "Capital adjusted (Kulish \"більший\")."
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 19,
+   "why": "Later in the day the fuller quote uses Kulish Col 3:1 + 3:3."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "Kulish has no contiguous \"reckon yourselves alive unto God\" — its clause runs through \"мертві вже гріху\", so the clause is quoted whole."
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 30,
+   "why": "Kulish's parentheses kept; fuller verse quoted later in the day."
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 28:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 38,
+   "why": "KJV \"All hail\"; the author's hail = health etymology is about the English word, so «hail»/«hale» are kept in Latin letters and explained as the English word."
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 41,
+   "why": "The later \"I am He that liveth and was dead\" quote uses Kulish 1:17–18 with an ellipsis (unrowed)."
+  },
+  {
+   "reference": "Luke 9:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 44
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 51,
+   "why": "Kulish numbering off by one: the words are Kulish SNG 1:6; printed citation 1:7 kept. Kulish has no \"flock\"; whole verse quoted both at the head and in the prose."
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "self_rendered",
+   "block_index": 62,
+   "why": "KJV \"But God said unto him\"; Kulish \"Рече ж йому Бог\" lacks the adversative the day turns on (\"these two great words, But God\"), so rendered «Але Бог»."
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 67,
+   "why": "Capital adjusted."
+  },
+  {
+   "reference": "Jeremiah 10:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 72,
+   "why": "opening verse; repeated verbatim in the reading"
+  },
+  {
+   "reference": "Revelation 2:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75
+  },
+  {
+   "reference": "Philippians 4:12-13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "uncited in English (\"in Philippians\"); vv. 12-13"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 79
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 85
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 88
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 88,
+   "why": "uncited \"Not I, but Christ\" — the author's abridgement of Gal 2:20; Kulish \"живу ж уже не я, а живе Христос у менї\" does not fit, rendered «Не я, а Христос»"
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 91
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 92,
+   "why": "uncited \"Who is sufficient for these things?\""
+  },
+  {
+   "reference": "Romans 15:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "\"в\" kept from Kulish so the phrase stands alone"
+  },
+  {
+   "reference": "Job 38:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 97
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100,
+   "why": "repeated in the reading"
+  },
+  {
+   "reference": "Genesis 32:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "uncited \"Tell me Thy name\"; Kulish numbering matches KJV here"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "uncited"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 104,
+   "why": "uncited"
+  },
+  {
+   "reference": "Isaiah 9:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 106,
+   "why": "uncited \"This one thing I do\"; Kulish \"одно ж (роблю)\" is elliptical, rendered «Одне я роблю»"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 109
+  },
+  {
+   "reference": "Isaiah 42:1",
+   "status": "self_rendered",
+   "block_index": 109,
+   "why": "uncited \"Behold, My Servant in whom My soul delighteth\"; Kulish words with the middle clause (\"що я за руку держу його; вибраний мій\") omitted as the author does"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "uncited \"The Son of Man came to minister\"; Kulish clause quoted whole"
+  },
+  {
+   "reference": "Luke 22:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "uncited"
+  },
+  {
+   "reference": "John 5:30",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "uncited"
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "uncited"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 111,
+   "why": "\"He became obedient unto death\""
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 113,
+   "why": "author quotes \"The body is for the Lord and the Lord for the body\"; Kulish fragments joined with … (orchestrator fix: dropped «не про перелюб», which the author omits)"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 113,
+   "why": "marked (R. V.) in English; author's wording (\"glorify God in your body, which is God's\") differs from Kulish (\"в тїлї вашому і в дусї вашому; вони Божі\"), so rendered from the English, tagged за англійським Переглянутим перекладом"
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 117
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118,
+   "why": "fuller quotation in the reading"
+  },
+  {
+   "reference": "Jeremiah 32:40",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "uncited \"I will put My fear in your hearts, and ye shall not turn away from Me\"; Kulish \"дам їм у серце страх передо мною, щоб не відвертались від мене\" re-personed to вам/ви as the author does"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118,
+   "why": "uncited; the KJV-type reading the author contrasts"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 117,
+   "why": "author's preferred \"true version\" (\"receive the power of the Holy Ghost coming upon you\") — his argument turns on it, Kulish has the other reading; rendered «Приймете силу Святого Духа, що зійде на вас»"
+  },
+  {
+   "reference": "Matthew 18:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 120
+  },
+  {
+   "reference": "John 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 121,
+   "why": "uncited \"Give me a drink of water\""
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "KJV 'righteousness of the law' = Kulish 'оправданнє закону'; prose 'God's righteousness' rendered праведність"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 2,
+   "why": "uncited"
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "repeat in prose; 'not by us, but in us' turns on 'в нас', which Kulish has"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 4
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 5,
+   "why": "uncited"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 5,
+   "why": "uncited"
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 5,
+   "why": "uncited"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 4,
+   "why": "repeat in prose"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 9,
+   "why": "KJV 'power, after that the Holy Ghost is come upon you' — Kulish wording covers the author's phrase"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 12,
+   "why": "German-Bible gloss ('off-looking') rendered in prose as «відводити погляд»"
+  },
+  {
+   "reference": "Psalm 57:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 57:7",
+   "status": "self_rendered",
+   "block_index": 15,
+   "why": "uncited repeat: author says 'Lord' for 'O God' — «Підкріпилось моє серце, Господи; заграю і засьпіваю псальми» built from Kulish with the vocative changed"
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "self_rendered",
+   "block_index": 21,
+   "why": "R.V. 'He emptied Himself' (kenosis, and Day 7 builds on 'emptied'); Kulish 'умалив себе' lacks 'emptied' → rendered «Він Самого Себе спорожнив», citation tagged за англійським Переглянутим перекладом"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 22,
+   "why": "uncited"
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 22,
+   "why": "uncited 'they that mourn' = Kulish 'сумні'"
+  },
+  {
+   "reference": "Acts 9:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 22,
+   "why": "uncited; initial capital adjusted"
+  },
+  {
+   "reference": "Exodus 3:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "uncited"
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "uncited; 'sufficiency' = Kulish 'сила'; prose disability/ability rendered неспроможність/спроможність"
+  },
+  {
+   "reference": "Isaiah 28:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "KJV 'Bread corn is bruised' — Kulish 'grain is threshed' carries the author's point (the grain gets the heavy treatment)"
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 36
+  },
+  {
+   "reference": "Psalm 110:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 39,
+   "why": "KJV 'thou hast the dew of thy youth' ≈ Kulish 'спаде тобі роса молодостї твоєї'"
+  },
+  {
+   "reference": "John 12:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "initial capital adjusted"
+  },
+  {
+   "reference": "Proverbs 16:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 45,
+   "why": "KJV 'sweetness of the lips increaseth learning' ≈ Kulish 'eloquence adds weight to learning'; the day's point (words) stands"
+  },
+  {
+   "reference": "James 3:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 46,
+   "why": "uncited"
+  },
+  {
+   "reference": "James 3:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 46,
+   "why": "uncited"
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "KJV 'secret' = Kulish 'довірність' (intimate counsel); prose 'secrets of Providence' → таємниці Провидіння"
+  },
+  {
+   "reference": "Ephesians 4:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 51,
+   "why": "KJV 'grow up into Him in all things' = Kulish 'помножаймо все в Того' (let us increase in all things into Him)"
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 54
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "Kulish 'одно ж (роблю)' has an editorial bracket; rendered 'Одне роблю'."
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55
+  },
+  {
+   "reference": "Psalm 91:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55,
+   "why": "Uncited in English; Kulish uses Hebrew numbering."
+  },
+  {
+   "reference": "Isaiah 58:8",
+   "status": "self_rendered",
+   "block_index": 59,
+   "why": "KJV 'shall be thy rereward'; Simpson prints 'reward' and builds the reading on it; Kulish has 'супроводити ме тебе слава Господня' (accompany), so the author's wording is rendered."
+  },
+  {
+   "reference": "Nehemiah 6:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 64
+  },
+  {
+   "reference": "Romans 11:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68
+  },
+  {
+   "reference": "1 Corinthians 7:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 71,
+   "why": "Also repeated in the prose."
+  },
+  {
+   "reference": "1 Corinthians 7:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 72,
+   "why": "Prose quote fuses 7:20 with 7:24 ('abide with God'), uncited."
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74,
+   "why": "Printed as «поставив Бог у церкві … помагання» like the English ellipsis; 'помагання'/'порядкування' (helps/governments) are Kulish's words and keep his order."
+  },
+  {
+   "reference": "John 6:58",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 79
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Uncited."
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 79,
+   "why": "Uncited; English reverses the order ('The Lord is for the body and the body for the Lord'), rendered from the English."
+  },
+  {
+   "reference": "Psalm 27:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Uncited."
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 82
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 83,
+   "why": "Uncited; second occurrence prints «не соромить ся братами звати» нас."
+  },
+  {
+   "reference": "Zechariah 3:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 86
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 87
+  },
+  {
+   "reference": "Colossians 3:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 87
+  },
+  {
+   "reference": "Philippians 3:8-9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 87
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90,
+   "why": "KJV 'leadeth us in triumph'; Kulish 'gives us victory' carries the day's theme of triumph, so Kulish kept."
+  },
+  {
+   "reference": "Galatians 5:16",
+   "status": "self_rendered",
+   "block_index": 90,
+   "why": "English paraphrase ('If we are led of the Spirit we shall not fulfil…', blending 5:16/5:18); Kulish is imperative, so rendered from the English."
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 91
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 95,
+   "why": "KJV 'touched'; the author's word-study is applied to Kulish's 'болїти серцем'."
+  },
+  {
+   "reference": "Hebrews 4:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 96
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 96
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98
+  },
+  {
+   "reference": "1 Corinthians 2:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "Song of Solomon 8:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 107
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "Song of Solomon 1:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108,
+   "why": "Uncited; KJV 1:7 is Kulish 1:6 (off by one)."
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 112
+  },
+  {
+   "reference": "Deuteronomy 30:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116
+  },
+  {
+   "reference": "1 Kings 3:11-13",
+   "status": "self_rendered",
+   "block_index": 116,
+   "why": "Free paraphrase by the author; rendered from the English."
+  },
+  {
+   "reference": "Matthew 6:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118,
+   "why": "Uncited."
+  },
+  {
+   "reference": "1 Peter 5:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 2,
+   "why": "uncited prose quote 'suffers long, and is kind'; also 'suffers long' = «довго терпить»"
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 3,
+   "why": "uncited prose quote 'endureth all things'"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 8,
+   "why": "later 'seated with Him … in the heavenly places' rendered in modern Ukrainian (re-personed)"
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 9,
+   "why": "uncited prose quote"
+  },
+  {
+   "reference": "Song of Solomon 4:8",
+   "status": "self_rendered",
+   "block_index": 11,
+   "why": "Kulish 4:8 has 'сьпіши з верхівя Амани' (hasten), no 'look'; the author's 'Look from the top' (KJV) rendered: «Поглянь з верхів’я»"
+  },
+  {
+   "reference": "1 John 3:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15
+  },
+  {
+   "reference": "Song of Solomon 4:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 19
+  },
+  {
+   "reference": "Song of Solomon 7:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "Kulish numbering off by one: 'I am my beloved's' is Kulish 7:11 (Kulish 7:10 = 'your mouth like the best wine'); author's printed citation 7:10 kept"
+  },
+  {
+   "reference": "Exodus 40:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 30
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 34
+  },
+  {
+   "reference": "Psalm 55:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "quoted again in day 10 prose as «знали, що нам дароване від Бога»"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 46
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "uncited prose quote"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "uncited; 'the law' placed outside the quote (Kulish 'Закон бо духа…' splits it)"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "uncited prose quote"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 46,
+   "why": "'the faith of the Son of God who loved us' — Kulish 'вірою в Сина Божого, що полюбив мене' is singular; author's plural rendered: «вірою Сина Божого, Який полюбив нас»"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 50
+  },
+  {
+   "reference": "Romans 15:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 54
+  },
+  {
+   "reference": "Luke 22:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55,
+   "why": "uncited prose quote"
+  },
+  {
+   "reference": "Hosea 3:3",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "'Thou shalt abide for Me, I also for thee' — Kulish's wording ('Довгий час сидїти й ждати меш мене…') differs; author's KJV-style wording rendered"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 59
+  },
+  {
+   "reference": "Song of Solomon 6:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 64,
+   "why": "Kulish order is 'my beloved is mine, and I am his' (reverse of KJV); the day's argument (mutual belonging) is unaffected"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 65,
+   "why": "uncited prose quote; author's 'He says' moved before the quote"
+  },
+  {
+   "reference": "Psalm 42:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 67,
+   "why": "Superscription omitted."
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "block_index": 67,
+   "why": "Simpson quotes 'The Spirit of life ... hath made me free'; Kulish reads 'Закон бо духа життя', so rendered the author's wording."
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 70
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76
+  },
+  {
+   "reference": "1 Chronicles 11:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 45:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 86,
+   "why": "English \"Forget also thine own [people]\"."
+  },
+  {
+   "reference": "Exodus 32:29",
+   "status": "self_rendered",
+   "block_index": 86,
+   "why": "Simpson re-persons the verse ('upon our son ... our brother'); rendered after Kulish's 'проти синів своїх і проти братів своїх'."
+  },
+  {
+   "reference": "Psalm 45:10",
+   "status": "self_rendered",
+   "block_index": 86,
+   "why": "Re-personed 'forget our kindred and our father's house'; follows Kulish's 'нарід твій і дім батька твого'."
+  },
+  {
+   "reference": "Mark 1:20",
+   "status": "self_rendered",
+   "block_index": 86,
+   "why": "'the hired servants' → «наймитів» (Kulish 'з наймитами')."
+  },
+  {
+   "reference": "Genesis 13:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 89
+  },
+  {
+   "reference": "Romans 12:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 93,
+   "why": "Kulish's own bracket kept."
+  },
+  {
+   "reference": "Matthew 14:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 97
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "self_rendered",
+   "block_index": 97,
+   "why": "'the rest of the oil' → «рештою олії»; Kulish 'з останку' does not fit the phrase."
+  },
+  {
+   "reference": "Matthew 14:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 97,
+   "why": "Author's gloss '(all needs)' moved after the quote so the Kulish words stay intact."
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 102,
+   "why": "Kulish has 'в вас' where Simpson has 'in us'."
+  },
+  {
+   "reference": "Romans 14:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 107
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 107,
+   "why": "Simpson's 'our faith' — Kulish 'ваша'."
+  },
+  {
+   "reference": "Hebrews 10:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "Hebrews 3:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 109
+  },
+  {
+   "reference": "Job 42:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 111
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116,
+   "why": "English tags R.V.; Kulish already reads 'збудування', so R.V. tag dropped."
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 122
+  },
+  {
+   "reference": "1 Kings 8:56",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 123,
+   "why": "Uncited; Simpson's 'Not one word hath failed of all that the Lord hath spoken' echoes 1 Kgs 8:56 / Josh 23:14; Kulish 1 Kgs 8:56 used."
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 124
+  },
+  {
+   "reference": "Romans 16:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 127
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 132,
+   "why": "Kulish fragments joined with … as Simpson skips the middle clauses (orchestrator fix: the middle clauses were first printed whole)."
+  },
+  {
+   "reference": "2 Corinthians 7:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 137
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 139
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "Stops before 'чи то добре, чи лихе' as the English stops at 'according to that he hath done'."
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 2,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "Psalm 18:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 5,
+   "why": "Kulish 'милість' for KJV 'gentleness'; also repeated in the first paragraph."
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "why": "'The fruit of the Spirit is gentleness, meekness' — Kulish's list is not contiguous (добрість ... тихість); rendered from the English."
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 17,
+   "why": "First sentence repeated verbatim in the second paragraph."
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 21:3",
+   "status": "self_rendered",
+   "block_index": 21,
+   "why": "'prevent you with the blessings of goodness' — re-personed allusion (KJV 'prevent him'); Kulish 'прийшов на зустріч йому з добром і благословеннєм' differs in person and tense, so rendered from the English."
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 27,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31,
+   "why": "'Sword of the Spirit'."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 33,
+   "why": "The keywords 'yield'/'reckon' rendered «віддати»/«вважати» in the prose (Rom 6:13/6:11 concepts)."
+  },
+  {
+   "reference": "Jeremiah 48:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 35,
+   "why": "Kulish plural 'голуби' (English 'Be like the dove')."
+  },
+  {
+   "reference": "Exodus 30:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 36,
+   "why": "Uncited; Kulish active voice vs English passive 'it shall not be poured'."
+  },
+  {
+   "reference": "Leviticus 16:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 40,
+   "why": "Kulish names 'Арон' where the English has 'He'."
+  },
+  {
+   "reference": "Song of Solomon 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 46
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 46,
+   "why": "Author cites 'the true translation' ('The Spirit that dwelleth in us loveth us to jealousy'), which Kulish ('До зависти пре Дух…') lacks; rendered from the English."
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "self_rendered",
+   "block_index": 46,
+   "why": "'every wrinkle, or any such thing' — Kulish has 'скази або пороку', no 'wrinkle', and the author's point turns on spot vs wrinkle; rendered from the English."
+  },
+  {
+   "reference": "Genesis 13:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 52
+  },
+  {
+   "reference": "Genesis 13:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55,
+   "why": "Second, fuller quotation in the prose."
+  },
+  {
+   "reference": "John 14:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 55,
+   "why": "Uncited in-prose quotation."
+  },
+  {
+   "reference": "2 Corinthians 4:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 58,
+   "why": "Table also listed 1CO 4:5 (an artefact of matching 'I. Cor.' inside 'II. Cor.'); the English cites II Cor."
+  },
+  {
+   "reference": "Psalm 97:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 64,
+   "why": "Repeated in paragraph 2, where the author blends it with Ps 89:14."
+  },
+  {
+   "reference": "Psalm 89:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 66,
+   "why": "Uncited; also 'йдуть перед лицем' (verbatim Kulish 89:14) quoted alongside."
+  },
+  {
+   "reference": "Psalm 105:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 70
+  },
+  {
+   "reference": "John 16:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 76,
+   "why": "Repeated in prose as «до всякої правди»."
+  },
+  {
+   "reference": "Ephesians 1:18-19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 77,
+   "why": "English re-persons to 'our/we'; kept Kulish's 'вашого/ви' and framed it as Paul's words («щоб здійснилося для нас Павлове»)."
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 81,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "Numbers 20:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 85,
+   "why": "Kulish \"call to the rock\" = KJV \"speak ye unto the rock\"."
+  },
+  {
+   "reference": "Judges 7:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90,
+   "why": "Kulish \"they blew three hundred trumpets\"."
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 95
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101
+  },
+  {
+   "reference": "2 Chronicles 20:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 107
+  },
+  {
+   "reference": "2 Chronicles 20:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "2 Corinthians 2:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 111,
+   "why": "Uncited in English."
+  },
+  {
+   "reference": "Isaiah 41:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 115,
+   "why": "Kulish editorial bracket kept as printed."
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 120
+  },
+  {
+   "reference": "1 John 3:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 122,
+   "why": "Uncited in English."
+  },
+  {
+   "reference": "Philippians 4:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 125,
+   "why": "Kulish \"тихість\" for KJV \"moderation\"."
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 130,
+   "why": "Whole verse."
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 137,
+   "why": "Stopped before \"а в їй трошки олїї\"."
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 138,
+   "why": "Uncited in-prose quote."
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "self_rendered",
+   "block_index": 137,
+   "why": "\"Nothing but a pot of oil\" is Simpson's paraphrase of the widow's answer; translated as written."
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 150,
+   "why": "English \"in us\"; Kulish has \"в вас\" — Kulish kept."
+  },
+  {
+   "reference": "Habakkuk 3:4",
+   "status": "self_rendered",
+   "block_index": 150,
+   "why": "\"hiding of Thy power\" re-personed as a prayer; Kulish \"там утаєна його сила\" — rendered «утаєння Твоєї сили»."
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 155
+  },
+  {
+   "reference": "John 13:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 160,
+   "why": "Stopped after the opening clause \"Коли се знаєте, то\"."
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 161,
+   "why": "Uncited in English."
+  },
+  {
+   "reference": "Psalm 139:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 164
+  },
+  {
+   "reference": "Hebrews 10:39",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 166,
+   "why": "Uncited; Kulish \"we are not…\" introduced with \"Будьмо ж\"."
+  },
+  {
+   "reference": "1 Corinthians 15:46",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1
+  },
+  {
+   "reference": "Zechariah 4:10",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Kulish 'Хто ж би маловажив день сей' lacks 'small things', on which the whole reading turns; rendered from the English."
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 7,
+   "why": "Uncited; English reverses Kulish's order ('the Lord for the body and the body for the Lord'); rendered as in chunk 06b («Господь для тіла, а тіло для Господа»)."
+  },
+  {
+   "reference": "Numbers 16:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 12
+  },
+  {
+   "reference": "Mark 6:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 16
+  },
+  {
+   "reference": "John 20:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 21,
+   "why": "Kulish has no 'on them'; only his word printed, nothing added."
+  },
+  {
+   "reference": "Philippians 3:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 26
+  },
+  {
+   "reference": "Philippians 4:18",
+   "status": "self_rendered",
+   "block_index": 26,
+   "why": "Uncited 'it is acceptable to God' — no single verse matches; rendered «вона угодна Богові»."
+  },
+  {
+   "reference": "Hebrews 13:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "Uncited."
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "Uncited; 'Let us rejoice evermore' rendered as «Будьмо ж послушні слову: …» to avoid re-personing Kulish."
+  },
+  {
+   "reference": "Habakkuk 3:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 30
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31,
+   "why": "Uncited; Kulish's 'я сим' left out as the author omits 'therein'."
+  },
+  {
+   "reference": "James 1:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31,
+   "why": "Uncited; printed «Усяку радість майте… коли впадаєте в різні спокуси» — Kulish's 'браттє моє' (which the author omits) replaced by '…'; both fragments verbatim Kulish. Later «усяку радість» also Kulish."
+  },
+  {
+   "reference": "Habakkuk 3:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "Prose 'I will rejoice in the Lord' (uncited, same verse)."
+  },
+  {
+   "reference": "John 6:57",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 10:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 39
+  },
+  {
+   "reference": "Romans 15:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 44,
+   "why": "English has 'received us'; Kulish (and the Greek majority) 'вас' — Kulish kept, the reading does not turn on it."
+  },
+  {
+   "reference": "Colossians 3:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 45,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 50,
+   "why": "Kulish's 'по всї днї' carries the author's 'all the days' point exactly; repeated twice in the prose."
+  },
+  {
+   "reference": "Proverbs 17:3",
+   "status": "self_rendered",
+   "block_index": 53,
+   "why": "Kulish 'У горнї й в огнї очищаєсь золото й срібло' adds silver and the refining verb the author leaves out; rendered «Горно — для золота, а Господь випробовує серця»."
+  },
+  {
+   "reference": "Philippians 1:28",
+   "status": "self_rendered",
+   "block_index": 53,
+   "why": "Uncited; the author drops 'to them … perdition, but', and Kulish's continuous text would restore it; rendered from the English."
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 58
+  },
+  {
+   "reference": "Isaiah 50:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 62
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 62,
+   "why": "Uncited; Kulish 'замість радости' (instead of joy) runs against the author's point (faith enduring FOR the joy set before Him), and Kulish lacks the subject 'Jesus'; rendered from the English."
+  },
+  {
+   "reference": "Hebrews 10:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 63,
+   "why": "Uncited; English 'all His enemies' — 'all' not in Kulish (nor KJV), not added."
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "Kulish's last clause 'й не зміниться' differs from KJV 'will not tarry'; Kulish kept; the prose echo translated naturally ('не забариться')."
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74,
+   "why": "Kulish's inner „“ dropped; only the quoted words used."
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 74,
+   "why": "Uncited; Simpson follows the AV ('In all their afflictions He was afflicted'); Kulish reads 'he did not forsake them' — rendered the author's wording in Kulish-like diction."
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 74,
+   "why": "Repeat at end of day."
+  },
+  {
+   "reference": "Psalm 110:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 77,
+   "why": "Kulish 'готовий' (willing) carries 'freewill'; word order is Kulish's."
+  },
+  {
+   "reference": "Song of Solomon 6:3",
+   "status": "self_rendered",
+   "block_index": 77,
+   "why": "'I am my Beloved's' (uncited); Kulish 'а я милому' too elliptical standalone — rendered 'Я — мого Милого'."
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Kulish's parentheses dropped."
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 86
+  },
+  {
+   "reference": "Psalm 31:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 86,
+   "why": "Uncited; the author's 'Oh' printed as 'О,' before the Kulish words."
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 89
+  },
+  {
+   "reference": "Judges 8:4",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "Kulish 'потомлені погонею' (wearied by the pursuit) loses 'yet pursuing', which is the watchword the day turns on; rendered 'Знесилені, але й далі в погоні' (also in the body)."
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "self_rendered",
+   "block_index": 93,
+   "why": "'mighty through God' — Kulish 'сильна Богом' (of weapons, fem.) re-inflected to plural 'сильні Богом' for the instruments."
+  },
+  {
+   "reference": "Hebrews 2:8,9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 98,
+   "why": "Spans the end of v.8 and start of v.9 continuously in Kulish."
+  },
+  {
+   "reference": "Genesis 13:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 99,
+   "why": "Uncited; initial 'Бо' dropped."
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "orchestrator reconciliation: verbatim Kulish, matching divine-healing.uk (Simpson: \"I am the Lord that healeth thee\")"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 104
+  },
+  {
+   "reference": "John 15:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 105,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 105,
+   "why": "Uncited 'no condemnation'."
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "self_rendered",
+   "block_index": 104,
+   "why": "'mighty through God to the pulling down of strongholds' — Kulish 'сильна Богом на зруйнованнє твердинь' re-inflected to 'сильні'."
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106,
+   "why": "Uncited; 'Тілько' dropped; joined to v.29 with 'бо' (the author's 'for')."
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 108,
+   "why": "Day text 'The faith of the Son of God': Simpson's point is the faith OF Christ, Kulish has 'вірою в Сина Божого' (faith IN) — rendered 'Віра Сина Божого'."
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 108,
+   "why": "'The life that I now live…' rendered with 'вірою Сина Божого' for the same reason; Kulish's 'у тїлї' (in the flesh) omitted as the author omits it; rest follows Kulish."
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 109,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Hebrews 2:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 110,
+   "why": "Uncited (Ps 22:22 via Heb 2:12, matches the AV wording \"church\")."
+  },
+  {
+   "reference": "Psalm 91:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 91:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 113
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 116,
+   "why": "Kulish 'воля слави' = 'liberty of the glory'."
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 121
+  },
+  {
+   "reference": "Acts 10:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 126,
+   "why": "Kulish 'don't call/make unclean'; the English pun on 'common' (unclean/ordinary) cannot be kept — prose says 'звичайні, буденні речі'."
+  },
+  {
+   "reference": "Romans 14:14",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 129,
+   "why": "Uncited (vv.10-11)."
+  },
+  {
+   "reference": "Song of Solomon 2:14",
+   "status": "self_rendered",
+   "block_index": 132,
+   "why": "Kulish 'схована в дупловинї' (hidden in a hollow) lacks 'stairs', on which the whole meditation turns; rendered the AV 'У потаємних місцях на сходах'."
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 133,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "uncited repeat in prose"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "uncited 'a far more exceeding and eternal weight of glory'; Kulish's clause carries its verb (приготовлює), so the noun phrase is rendered."
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "uncited; Simpson re-persons and re-tenses ('we too will have endured…', 'shall sit down'), so rendered in modern Ukrainian."
+  },
+  {
+   "reference": "Joshua 13:33",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7,
+   "why": "Kulish's subject 'поколїнню Левіїному' omitted as the author omits it; 'as He said' = Kulish 'як він й обітував'."
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 12,
+   "why": "uncited; same wording as 03a"
+  },
+  {
+   "reference": "Song of Solomon 2:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15,
+   "why": "Kulish 'наш' kept (part of the phrase)."
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "self_rendered",
+   "block_index": 19,
+   "why": "Kulish: 'замість кропиви родити ме мирт'; Simpson's verbless 'Instead of the brier, the myrtle tree' printed with Kulish's nouns and a dash, without the verb he omits."
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 22,
+   "why": "uncited; Kulish 'sons' for KJV 'children'"
+  },
+  {
+   "reference": "Exodus 15:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "Kulish's postpositive 'бо' kept (as with 'Котрі бо' in 08a)."
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "block_index": 25,
+   "why": "uncited 'more than conquerors'; Kulish has 'побіждаємо' without 'more than', rendered «більш ніж перемагають»."
+  },
+  {
+   "reference": "Joshua 1:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 27,
+   "why": "uncited; whole verse = Simpson's quote ('I will not fail thee' = Kulish 'не відхилю від тебе руки моєї')"
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 27,
+   "why": "uncited"
+  },
+  {
+   "reference": "Hosea 7:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 35,
+   "why": "Kulish has the phrase twice ('не отвирав'/'не одчиняв'); the second carries the subject 'він'. Initial capital adjusted."
+  },
+  {
+   "reference": "2 Samuel 16:11-12",
+   "status": "self_rendered",
+   "block_index": 35,
+   "why": "uncited; Simpson's 'Let him curse; it may be the Lord will requite me good for his cursing this day' skips Kulish's 'зглянеться на моє пониженнє', so rendered in modern Ukrainian."
+  },
+  {
+   "reference": "Joshua 21:45",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 41,
+   "why": "fragment 1 of 2 joined with …; Kulish 'Ізрайлевому домові' omitted as Simpson omits 'unto the house of Israel'."
+  },
+  {
+   "reference": "Joshua 21:45",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 41,
+   "why": "fragment 2 of 2"
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "uncited; fragment 1 of 2 ('Богу нашому' omitted as Simpson omits 'our God')"
+  },
+  {
+   "reference": "Revelation 7:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "fragment 2 of 2"
+  },
+  {
+   "reference": "Joshua 21:45",
+   "status": "self_rendered",
+   "block_index": 41,
+   "why": "uncited repeat as 'that He hath spoken; all came to pass' — 'He' for Kulish 'Господь', so rendered in modern Ukrainian."
+  },
+  {
+   "reference": "John 20:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 45,
+   "why": "cited John 20:19, 21; same words in both verses"
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 45,
+   "why": "repeat in prose; 'again peace' rendered «ізнов упокій» after Kulish 'ізнов'"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 45,
+   "why": "uncited 'the peace of God that passeth understanding' (Simpson drops 'all'), so «мир Божий, що вище розуму»."
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 52
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 57,
+   "why": "whole verse"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 62,
+   "why": "Kulish's postpositive 'бо' kept."
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 68,
+   "why": "Initial capital adjusted; Kulish's opening 'Тим що' left out."
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 69,
+   "why": "uncited repeat in prose"
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 70,
+   "why": "uncited repeat, whole verse ('For the carnal mind…')"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "Kulish 'Геть від мене' for KJV 'Get thee behind me'"
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "repeat in prose"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 77,
+   "why": "fragment 1 of 2 joined with …; Kulish's 'підстава того, на що вповаємо' skipped as Simpson quotes only 'the evidence of things not seen'"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 77,
+   "why": "fragment 2 of 2; Kulish's own parenthesis kept"
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "self_rendered",
+   "block_index": 77,
+   "why": "Simpson's argument turns on 'Commit… and He worketh' ('He never worketh until we commit'); Kulish has 'Відкрий… і він допоможе', so rendered «Доручи Господеві дорогу твою, і вповай на Нього, і Він діятиме»."
+  },
+  {
+   "reference": "Isaiah 60:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "Three Kulish fragments joined with … (author omits «так що тебе всї обминали», «за те ж» and «славою віків»): «Ти був покинутий і зненавиджений… я вчиню тебе… радістю»."
+  },
+  {
+   "reference": "Isaiah 60:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "Second fragment."
+  },
+  {
+   "reference": "Isaiah 60:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "Third fragment."
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 88,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Romans 4:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90
+  },
+  {
+   "reference": "Hebrews 4:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 96,
+   "why": "Initial capital adjusted; Kulish «про кого наше слово» = KJV «with whom we have to do»."
+  },
+  {
+   "reference": "Titus 2:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 101,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 113
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 114,
+   "why": "Uncited; Kulish lacks KJV «more than»; the later prose paraphrase «більш ніж переможцями» renders the author."
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "1 Kings 18:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 125,
+   "why": "Quoted twice (opening line and in prose)."
+  },
+  {
+   "reference": "2 Corinthians 8:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 130,
+   "why": "Initial capital adjusted; English cites II. Cor. — 2 Corinthians."
+  },
+  {
+   "reference": "Romans 13:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 138,
+   "why": "Initial capital adjusted."
+  },
+  {
+   "reference": "Romans 13:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 138,
+   "why": "Second fragment (v. 12) after …; cite printed as table uk_cite «Римлян 13:11,12»."
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 144,
+   "why": "Two fragments joined with … (author omits «та на загороди»)."
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 144,
+   "why": "Second fragment."
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 149
+  },
+  {
+   "reference": "Jeremiah 32:27",
+   "status": "self_rendered",
+   "block_index": 149,
+   "why": "The two \"echo\" quotations (re-personed by the author: «Oh, Lord, Thou art the God of all flesh…» / «I am the God of all flesh…») rendered in modern Ukrainian. (the wording also echoes 32:17)"
+  },
+  {
+   "reference": "Luke 19:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 153,
+   "why": "Author omits Kulish «Гаразд,»; initial capital adjusted."
+  },
+  {
+   "reference": "John 16:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 158
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 158,
+   "why": "Uncited «accepted in the Beloved»: Kulish «обдарував нас в своїм Улюбленім» lacks «accepted», which the sentence turns on; rendered «прийняті в Улюбленому»."
+  },
+  {
+   "reference": "Jeremiah 49:8",
+   "status": "self_rendered",
+   "block_index": 162,
+   "why": "KJV «Dwell deep»; Kulish has «ховайтесь глибоко» (hide deep). The devotion is about dwelling/abiding in God, so rendered «Оселяйтеся глибоко»."
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 166
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 166,
+   "why": "Second quotation in prose."
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Corinthians 10:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 6
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 11:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 11,
+   "why": "Uncited; Kulish's 'о півночі' comes later in the verse, so 'at night' is carried in the surrounding prose."
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15,
+   "why": "Author omits 'and sacrifices'; Kulish's 'і з колених жертов' dropped with …"
+  },
+  {
+   "reference": "1 Samuel 15:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 15,
+   "why": "Second fragment of the same quotation, after …"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 21
+  },
+  {
+   "reference": "Job 7:17",
+   "status": "self_rendered",
+   "block_index": 21,
+   "why": "Uncited blend of Job 7:17 / Ps 8:4 ('what is man that Thou hast set Thine heart upon him'); Kulish's wording differs, rendered from the English."
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 27,
+   "why": "Superscription 'Псальма Давидова.' left out."
+  },
+  {
+   "reference": "Psalm 103:2-5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 28,
+   "why": "Uncited; Kulish vv. 2-5 verbatim (Kulish 'старість' where KJV has 'mouth')."
+  },
+  {
+   "reference": "Psalm 103:1",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 29,
+   "why": "Author calls it the 'closing strains', but the words are v. 1 (v. 22 ends only 'Благослови Господа, душе моя!'); quoted v. 1."
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 31
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "self_rendered",
+   "block_index": 31,
+   "why": "'them that have no might … He gives more strength' (KJV 'increaseth strength'): Kulish 'підкріпляє знемощілого' lacks 'more', which the author stresses; rendered from the English."
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "Uncited."
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "Uncited."
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 32,
+   "why": "Uncited; joined to 12:9 with … (Kulish's list of hardships omitted, as the author omits it)."
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 34
+  },
+  {
+   "reference": "John 14:19",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 39
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42,
+   "why": "Repeat in prose; initial capital adjusted."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 47
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "One quotation split into rows only because the <em> tags break the string; Kulish 6:11 runs continuously."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "One quotation split into rows only because the <em> tags break the string; Kulish 6:11 runs continuously."
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "One quotation split into rows only because the <em> tags break the string; Kulish 6:11 runs continuously."
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "Uncited; joined to 6:11 with …"
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "Uncited; split into rows only because of the <em> tag; continuous in Kulish."
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48,
+   "why": "Uncited; split into rows only because of the <em> tag; continuous in Kulish."
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 49,
+   "why": "Uncited."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "block_index": 47,
+   "why": "Uncited; the author re-persons it ('We mount up… to run and not be weary'), so rendered in the first person plural rather than Kulish's 3rd person."
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 53
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 53,
+   "why": "The English puns on 'earnest' (pledge / earnestness); Kulish 'задаток' cannot carry the pun, so the prose glosses it ('дух щирої ревності')."
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 58
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 60,
+   "why": "Kulish's initial 'І' dropped."
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 64
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 70,
+   "why": "Kulish already reads the literal 'man of desires' (the KJV margin), so the '(margin)' tag is dropped from the opening citation."
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "The KJV text 'O man, greatly beloved', which the author contrasts with the margin; rendered from the English and attributed to the English version."
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 70,
+   "why": "Repeat."
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 70,
+   "why": "Uncited; the reading turns on 'desire', which Kulish ('чого молячись просите') lacks; rendered from the English."
+  },
+  {
+   "reference": "Matthew 25:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 75
+  },
+  {
+   "reference": "Numbers 10:33",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 78,
+   "why": "Joined with '… перед ними' (same verse); Kulish's 'три днї ходи', which the author omits, left out."
+  },
+  {
+   "reference": "Jeremiah 32:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Uncited quotation in the prose."
+  },
+  {
+   "reference": "Revelation 21:5,6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 85,
+   "why": "Joined with '… Стало ся!' from v. 6 (Kulish's 'It is done')."
+  },
+  {
+   "reference": "John 12:21",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 90
+  },
+  {
+   "reference": "John 21:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 95,
+   "why": "Joined with '… пригорнувсь до грудей Його' from the same verse; Kulish's 'що й на вечері' left out as the author omits it."
+  },
+  {
+   "reference": "Matthew 6:28",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100,
+   "why": "Printed 'Придивіть ся до … лилїй, як вони ростуть' — the author omits 'of the field' (польових)."
+  },
+  {
+   "reference": "Matthew 7:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 106
+  },
+  {
+   "reference": "Romans 13:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 111
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 112,
+   "why": "Uncited allusion in the prose; Kulish used."
+  },
+  {
+   "reference": "Hebrews 6:12",
+   "status": "self_rendered",
+   "block_index": 111,
+   "why": "Author quotes 'through patience, inherit the promise' (singular, no 'faith'); Kulish has 'вірою і довготерпіннєм … обітницї' — rendered from the English."
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 115
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "self_rendered",
+   "block_index": 115,
+   "why": "Author re-persons the verse to 'us … we'; Kulish has 'вас … ви' — rendered from the English."
+  },
+  {
+   "reference": "1 Corinthians 4:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 119,
+   "why": "English cites I. Cor. — 1 Corinthians, correct."
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 123
+  },
+  {
+   "reference": "Leviticus 14:18",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 128,
+   "why": "Printed 'Що ж зістанеться олїї … виллє він на голову' (both fragments from v. 18; 'що в руцї сьвященника' elided as the author's '...')."
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 135
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 138,
+   "why": "Uncited quotation in the prose."
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 138,
+   "why": "Uncited paraphrase; Kulish wording fits the author's 'we are not able to think anything, as of ourselves'."
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 139,
+   "why": "Uncited quotation in the prose."
+  },
+  {
+   "reference": "Matthew 26:40",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 143
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 146
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "self_rendered",
+   "block_index": 146,
+   "why": "Kulish 'глибокостей Божих' is a genitive governed by 'дослїджує'; after 'говорить про' rendered 'глибини Божі'."
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "self_rendered",
+   "block_index": 146,
+   "why": "'highly exalted' applied to Christ as a participle; Kulish 'високо вознїс' is a finite verb — rendered 'високо вознесеним'."
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 1,
+   "why": "Kulish lower-case opening kept (mid-verse)."
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 7,
+   "why": "Stops where Simpson stops ('lest any man fail'); Kulish continues 'од благодати Божої'."
+  },
+  {
+   "reference": "Psalm 92:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 12,
+   "why": "English prints this line without quotation marks; kept unquoted as printed."
+  },
+  {
+   "reference": "Hosea 14:8",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 20,
+   "why": "Kulish numbering off by one: the words are in Kulish HOS 14:9; author's citation 14:8 kept."
+  },
+  {
+   "reference": "1 Chronicles 12:38",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 25,
+   "why": "'perfect heart' = Kulish 'щирим сердцем'."
+  },
+  {
+   "reference": "1 Chronicles 12:38",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 26,
+   "why": "In-prose echo 'They were all of one heart to make David king'; 'Усі вони' (They all) supplied for the author's subject instead of Kulish's 'усї Ізрайлитяне'."
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 30,
+   "why": "Stops before Kulish 'свого часу', which the author omits."
+  },
+  {
+   "reference": "Luke 24:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 36
+  },
+  {
+   "reference": "Jeremiah 8:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 42
+  },
+  {
+   "reference": "Luke 5:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 48
+  },
+  {
+   "reference": "2 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 54,
+   "why": "Kulish 'по мірі мірила, що відмірив нам Бог' contains 'нам' (to us), which Simpson omits; dropped it and reordered ('що Бог відмірив'), so self_rendered in Kulish diction. Citation follows the English II. Cor."
+  },
+  {
+   "reference": "John 17:9",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 60,
+   "why": "Kulish order 'not for the world, but for those'; matches Simpson's wording."
+  },
+  {
+   "reference": "Philippians 1:24,25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 65,
+   "why": "Kulish 'певно знаю' renders 'having this confidence, I know'."
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "Kulish 'без мене' for the author's 'apart from Me' (R.V. wording, same sense)."
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 73,
+   "why": "In-prose repeat; capital adjusted."
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 79
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 80,
+   "why": "Full verse quoted in the prose; Kulish's own wording ('на славу Господню' for 'to the Lord for a name')."
+  },
+  {
+   "reference": "Psalm 61:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "Kulish has 'you will lead me' for 'lead me'; Kulish wording kept. Starts after Kulish's 'бо' (the author's 'When')."
+  },
+  {
+   "reference": "Psalm 61:2",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 84,
+   "why": "In-prose repeat ('That is David's way'); capital adjusted."
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 88
+  },
+  {
+   "reference": "Galatians 6:7",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 89,
+   "why": "uncited, inside the friend's quotation"
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 88
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 92
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 93,
+   "why": "uncited"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 94,
+   "why": "uncited"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 98,
+   "why": "Simpson's point turns on \"the faith OF the Son of God\"; Kulish has \"вірою в Сина Божого\" (faith IN), so rendered «віра Сина Божого»"
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 100,
+   "why": "uncited \"Have the faith of God\""
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 98,
+   "why": "\"I live by the faith of the Son of God\" rendered «Живу вірою Сина Божого» for the same reason as the heading verse"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 103
+  },
+  {
+   "reference": "John 13:3-5",
+   "status": "self_rendered",
+   "block_index": 103,
+   "why": "Simpson's quote spans three verses non-continuously; rendered in modern wording close to Kulish (знаючи… від Бога вийшов, і до Бога йде… обмивати ноги ученикам)"
+  },
+  {
+   "reference": "Romans 15:16",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 108
+  },
+  {
+   "reference": "Luke 11:3",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 113,
+   "why": "Kulish has \"today\" (сьогоднї) where Luke 11:3 AV has \"day by day\"; quoted only the shared words"
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "self_rendered",
+   "block_index": 113,
+   "why": "\"As thy days so shall thy strength be\" — the day theme is lost in Kulish (\"поки життя твого, поти буде сила твоя\"), so rendered"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 115,
+   "why": "Simpson's \"literal translation\" (\"all the days\") matches Kulish exactly; \"end of the age\" = Kulish \"кінця сьвіта\""
+  },
+  {
+   "reference": "Psalm 71:24",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 118
+  },
+  {
+   "reference": "1 Chronicles 26:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 124
+  },
+  {
+   "reference": "Philippians 2:17",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 126,
+   "why": "uncited"
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 129
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 129,
+   "why": "\"a life for a prey\"; the first occurrence in prose is unquoted paraphrase (життя як здобич)"
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 135
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 136
+  },
+  {
+   "reference": "James 4:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "Kulish reads \"envy\" like the English being criticised"
+  },
+  {
+   "reference": "James 4:5",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 142,
+   "why": "repeated as the \"unhappy\" translation; \"R.V.\" dropped since the printed words are Kulish"
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "block_index": 142,
+   "why": "Simpson's preferred reading \"loveth us to jealousy\" rendered «Дух, що вселився в нас, ревниво любить нас»"
+  },
+  {
+   "reference": "James 4:4",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 145,
+   "why": "uncited \"preceding passage\""
+  },
+  {
+   "reference": "Genesis 8:12",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 149
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 154
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 160
+  },
+  {
+   "reference": "Acts 20:26",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 161,
+   "why": "uncited"
+  },
+  {
+   "reference": "Luke 21:13",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 163,
+   "why": "uncited"
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 165,
+   "why": "English II. Thess. = 2 Солунян; omitted Kulish's \"сподобив вас поклику\", which the author does not quote"
+  },
+  {
+   "reference": "Genesis 18:19",
+   "status": "self_rendered",
+   "block_index": 165,
+   "why": "uncited; Simpson's words are not one continuous run in Kulish, rendered close to Kulish (правду й суд… справдив на Авраамові)"
+  },
+  {
+   "reference": "John 17:15",
+   "status": "mined",
+   "source_file": "Kulish 1905 (ukr_pan) — ebible mirror, public domain",
+   "block_index": 172
+  }
+ ]
+}

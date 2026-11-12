@@ -40616,6 +40616,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"uk/days-of-heaven-upon-earth": {
+			"ground": "613d03da45e1d3e07c68563cb726b1cb5baa22525a9a8f0fbd4f1a3b8b2d1026",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"uk/divine-healing": {
 			"ground": "1d2453716cb3bf0d448c92ecef2f279a845c359cb266db9c872072182dd2fc65",
 			"style": "devotional",
