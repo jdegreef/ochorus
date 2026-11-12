@@ -3259,6 +3259,48 @@ BODY_CORRECTIONS: dict[str, dict] = {
         # and lg still carry 12:406.
         "replacements": [
             ("12:406", "12:4-6"),
+            # More slips verified against the text while translating it to
+            # Hindi (#7641) and Korean (#7664). Citation numbers first: each
+            # pair is written per edition, because the book name around the
+            # digits is localized (am and es already print some of these right).
+            # Phil 3:20-21 is the passage on the transformed body, not 1:20-21.
+            ("Phil. 1:20, 21", "Phil. 3:20, 21"),
+            ("Filipenses 1:20, 21", "Filipenses 3:20, 21"),  # es, pt
+            ("Philippiens 1:20, 21", "Philippiens 3:20, 21"),
+            ("Abafiripi 1:20, 21", "Abafiripi 3:20, 21"),
+            # "The head of Christ is God" is 1 Cor 11:3, "the same verse" as
+            # the head of the woman.
+            ("(1 Cor. 11:12)", "(1 Cor. 11:3)"),
+            ("(1 Corintios 11:12)", "(1 Corintios 11:3)"),
+            ("(1 Corinthiens 11:12)", "(1 Corinthiens 11:3)"),
+            ("(1 Coríntios 11:12)", "(1 Coríntios 11:3)"),
+            ("(1 Abakkolinso 11:12)", "(1 Abakkolinso 11:3)"),
+            # The Advocate with the Father is 1 John 2:1 (the same chapter
+            # cites it correctly a few paragraphs on).
+            ("(John 2:1 and Heb. 7:25)", "(1 John 2:1 and Heb. 7:25)"),
+            ("(Jean 2:1 et Hébreux 7:25)", "(1 Jean 2:1 et Hébreux 7:25)"),
+            ("(Jo 2:1 e Hb 7:25)", "(1 Jo 2:1 e Hb 7:25)"),
+            ("(Yokaana 2:1 ne Abaebbulaniya 7:25)", "(1 Yokaana 2:1 ne Abaebbulaniya 7:25)"),
+            # Four verses after Matt 16:17 is 16:21, the verse quoted.
+            ("four verses further down in the chapter, the 24th verse", "four verses further down in the chapter, the 21st verse"),
+            ("en el versículo 24, leemos", "en el versículo 21, leemos"),
+            ("au 24e verset", "au 21e verset"),
+            ("no versículo 24, lemos", "no versículo 21, lemos"),
+            ("olwa 24, tusoma", "olwa 21, tusoma"),
+            # Wording (English only). Phil 2:8 reads "he humbled himself"
+            # (R.V.), as the chapter's third quotation of it already does;
+            # Matt 26:64 reads "sitting"; Torrey's 1900s conferences were on
+            # Lake Keuka (the lg edition keeps the English name, so it is fixed
+            # by the same pair; fr/pt carry the slip as "lac/Lago Kenka").
+            ("in fashion as man, he emptied himself", "in fashion as man, he humbled himself"),
+            ("in fashion as a man, he emptied himself", "in fashion as a man, he humbled himself"),
+            ("the son of man standing at the right hand of power", "the son of man sitting at the right hand of power"),
+            ("Lake Kenka", "Lake Keuka"),
+            ("lac Kenka", "lac Keuka"),
+            ("Lago Kenka", "Lago Keuka"),
+            ("the cross of Cavalry", "the cross of Calvary"),
+            # Acts 2:23, quoted in bold: "the determinate counsel".
+            ("by the determinate council and", "by the determinate counsel and"),
         ],
     },
     "rest": {
