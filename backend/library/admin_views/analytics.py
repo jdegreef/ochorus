@@ -717,6 +717,7 @@ SIGNUP_VARIANT_LABELS = {
     "menu": "Phone menu",
     "feedback": "Feedback link",
     "one_tap": "Google One Tap",
+    "bookplate": "Bookplate (book finished)",
 }
 
 

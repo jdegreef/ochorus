@@ -1704,5 +1704,16 @@
   "bible_read_along": "Lire pas à pas",
   "bible_in_order": "Tout lire dans l’ordre, de la Genèse à l’Apocalypse",
   "journey_you_are_here": "Vous êtes ici",
-  "journey_passed": "%n% lieux sur %t% traversés"
+  "journey_passed": "%n% lieux sur %t% traversés",
+  "bookplate_heading": "Votre ex-libris",
+  "bookplate_finished": "a terminé %title%",
+  "bookplate_by": "de %author%",
+  "bookplate_save": "Enregistrer l’image",
+  "bookplate_saved": "Enregistré",
+  "bookplate_keep_title": "Gardez cet ex-libris",
+  "bookplate_keep_body": "Connectez-vous et votre nom figurera sur un ex-libris pour chaque livre terminé, réunis dans votre Bibliothèque.",
+  "bookplate_name_prompt": "Inscrivez votre nom sur vos ex-libris",
+  "bookplate_your_name": "Votre nom",
+  "bookplate_shelf_title": "Ex-libris",
+  "bookplate_all": "Tous vos ex-libris"
 }

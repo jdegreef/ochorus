@@ -1704,5 +1704,16 @@
   "bible_read_along": "ደረጃ በደረጃ ያንብቡ",
   "bible_in_order": "ከዘፍጥረት እስከ ራእይ በቅደም ተከተል ሙሉውን ያንብቡ",
   "journey_you_are_here": "እዚህ ነዎት",
-  "journey_passed": "ከ%t% ቦታዎች %n% አልፈዋል"
+  "journey_passed": "ከ%t% ቦታዎች %n% አልፈዋል",
+  "bookplate_heading": "የእርስዎ የመጽሐፍ ምልክት",
+  "bookplate_finished": "ተነቦ የተጠናቀቀ፦ %title%",
+  "bookplate_by": "ደራሲ፦ %author%",
+  "bookplate_save": "እንደ ምስል ያስቀምጡ",
+  "bookplate_saved": "ተቀምጧል",
+  "bookplate_keep_title": "ይህን የመጽሐፍ ምልክት ያስቀምጡ",
+  "bookplate_keep_body": "ይግቡ፤ ለሚጨርሱት እያንዳንዱ መጽሐፍ ስምዎ በመጽሐፍ ምልክት ላይ ይጻፋል፤ ሁሉም በመጽሐፍ መደርደሪያዎ ላይ ይሰበሰባሉ።",
+  "bookplate_name_prompt": "ስምዎን በመጽሐፍ ምልክቶችዎ ላይ ይጻፉ",
+  "bookplate_your_name": "ስምዎ",
+  "bookplate_shelf_title": "የመጽሐፍ ምልክቶች",
+  "bookplate_all": "ሁሉም የመጽሐፍ ምልክቶችዎ"
 }

@@ -40,6 +40,7 @@ SIGNUP_VARIANTS = (
     "menu",
     "feedback",
     "one_tap",
+    "bookplate",
 )
 
 

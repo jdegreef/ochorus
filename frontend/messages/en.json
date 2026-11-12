@@ -1704,5 +1704,16 @@
   "bible_read_along": "Read along",
   "bible_in_order": "Read it straight through, from Genesis to Revelation",
   "journey_you_are_here": "You are here",
-  "journey_passed": "%n% of %t% places passed"
+  "journey_passed": "%n% of %t% places passed",
+  "bookplate_heading": "Your bookplate",
+  "bookplate_finished": "finished %title%",
+  "bookplate_by": "by %author%",
+  "bookplate_save": "Save as image",
+  "bookplate_saved": "Saved",
+  "bookplate_keep_title": "Keep this bookplate",
+  "bookplate_keep_body": "Sign in and your name goes on a bookplate for every book you finish, collected on your Bookshelf.",
+  "bookplate_name_prompt": "Write your name on your bookplates",
+  "bookplate_your_name": "Your name",
+  "bookplate_shelf_title": "Bookplates",
+  "bookplate_all": "All your bookplates"
 }

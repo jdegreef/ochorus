@@ -1704,5 +1704,16 @@
   "bible_read_along": "Читайте крок за кроком",
   "bible_in_order": "Прочитайте все по порядку, від Буття до Об’явлення",
   "journey_you_are_here": "Ви тут",
-  "journey_passed": "Пройдено %n% з %t% місць"
+  "journey_passed": "Пройдено %n% з %t% місць",
+  "bookplate_heading": "Ваш екслібрис",
+  "bookplate_finished": "прочитано: %title%",
+  "bookplate_by": "автор: %author%",
+  "bookplate_save": "Зберегти як зображення",
+  "bookplate_saved": "Збережено",
+  "bookplate_keep_title": "Збережіть цей екслібрис",
+  "bookplate_keep_body": "Увійдіть, і ваше ім’я з’явиться на екслібрисі для кожної прочитаної книги — вони збиратимуться на вашій Книжковій полиці.",
+  "bookplate_name_prompt": "Напишіть своє ім’я на екслібрисах",
+  "bookplate_your_name": "Ваше ім’я",
+  "bookplate_shelf_title": "Екслібриси",
+  "bookplate_all": "Усі ваші екслібриси"
 }

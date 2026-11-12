@@ -1704,5 +1704,16 @@
   "bible_read_along": "Soma hatua kwa hatua",
   "bible_in_order": "Isome yote kwa mpangilio, kutoka Mwanzo hadi Ufunuo",
   "journey_you_are_here": "Uko hapa",
-  "journey_passed": "Umepita sehemu %n% kati ya %t%"
+  "journey_passed": "Umepita sehemu %n% kati ya %t%",
+  "bookplate_heading": "Alama yako ya kitabu",
+  "bookplate_finished": "amemaliza kusoma %title%",
+  "bookplate_by": "cha %author%",
+  "bookplate_save": "Hifadhi kama picha",
+  "bookplate_saved": "Imehifadhiwa",
+  "bookplate_keep_title": "Hifadhi alama hii ya kitabu",
+  "bookplate_keep_body": "Ingia, na jina lako litaandikwa kwenye alama ya kitabu kwa kila kitabu utakachomaliza, zikikusanywa kwenye Rafu yako ya Vitabu.",
+  "bookplate_name_prompt": "Andika jina lako kwenye alama zako za vitabu",
+  "bookplate_your_name": "Jina lako",
+  "bookplate_shelf_title": "Alama za vitabu",
+  "bookplate_all": "Alama zako zote za vitabu"
 }

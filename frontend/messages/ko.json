@@ -1704,5 +1704,16 @@
   "bible_read_along": "차근차근 읽기",
   "bible_in_order": "창세기부터 요한계시록까지 순서대로 읽기",
   "journey_you_are_here": "현재 위치",
-  "journey_passed": "%t%곳 중 %n%곳을 지났어요"
+  "journey_passed": "%t%곳 중 %n%곳을 지났어요",
+  "bookplate_heading": "나의 장서표",
+  "bookplate_finished": "완독: %title%",
+  "bookplate_by": "%author% 지음",
+  "bookplate_save": "이미지로 저장",
+  "bookplate_saved": "저장됨",
+  "bookplate_keep_title": "이 장서표 간직하기",
+  "bookplate_keep_body": "로그인하면 다 읽은 책마다 내 이름이 적힌 장서표가 만들어져 내 서재에 모입니다.",
+  "bookplate_name_prompt": "장서표에 이름을 적어 주세요",
+  "bookplate_your_name": "이름",
+  "bookplate_shelf_title": "장서표",
+  "bookplate_all": "내 장서표 모두 보기"
 }

@@ -1704,5 +1704,16 @@
   "bible_read_along": "順に読む",
   "bible_in_order": "創世記から黙示録まで、通して読む",
   "journey_you_are_here": "現在地",
-  "journey_passed": "%t%か所中%n%か所を通過"
+  "journey_passed": "%t%か所中%n%か所を通過",
+  "bookplate_heading": "あなたの蔵書票",
+  "bookplate_finished": "読了：%title%",
+  "bookplate_by": "%author% 著",
+  "bookplate_save": "画像として保存",
+  "bookplate_saved": "保存しました",
+  "bookplate_keep_title": "この蔵書票を残す",
+  "bookplate_keep_body": "ログインすると、読み終えた本ごとにあなたの名前入りの蔵書票ができ、本棚に集まります。",
+  "bookplate_name_prompt": "蔵書票に名前を書きましょう",
+  "bookplate_your_name": "お名前",
+  "bookplate_shelf_title": "蔵書票",
+  "bookplate_all": "すべての蔵書票"
 }

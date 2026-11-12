@@ -1704,5 +1704,16 @@
   "bible_read_along": "Léela paso a paso",
   "bible_in_order": "Léela de principio a fin, de Génesis a Apocalipsis",
   "journey_you_are_here": "Estás aquí",
-  "journey_passed": "%n% de %t% lugares recorridos"
+  "journey_passed": "%n% de %t% lugares recorridos",
+  "bookplate_heading": "Tu ex libris",
+  "bookplate_finished": "terminó %title%",
+  "bookplate_by": "de %author%",
+  "bookplate_save": "Guardar como imagen",
+  "bookplate_saved": "Guardado",
+  "bookplate_keep_title": "Conserva este ex libris",
+  "bookplate_keep_body": "Inicia sesión y tu nombre irá en un ex libris por cada libro que termines, reunidos en tu Estantería.",
+  "bookplate_name_prompt": "Escribe tu nombre en tus ex libris",
+  "bookplate_your_name": "Tu nombre",
+  "bookplate_shelf_title": "Ex libris",
+  "bookplate_all": "Todos tus ex libris"
 }
