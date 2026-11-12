@@ -140,8 +140,9 @@ export function resolveMark(paras: string[], m: Mark): Mark | null {
  *  multi-block highlight's segments resolved together (see resolveGroup). */
 export function placeMarks(paras: string[], list: Mark[]): Mark[] {
 	// Nearly always nothing has moved: skip the grouping on every render.
-	if (list.every((m) => !m.q || foldQuotes(paras[m.p] ?? '').startsWith(foldQuotes(m.q), m.s)))
-		return list.slice();
+	const holds = (m: Mark) =>
+		!m.q || foldQuotes(paras[m.p]?.slice(m.s, m.s + m.q.length) ?? '') === foldQuotes(m.q);
+	if (list.every(holds)) return list.slice();
 	// Keyed like the server's remap (reading/anchor.py): a group is its id in
 	// one edition.
 	const groups = new Map<string, Mark[]>();

@@ -621,6 +621,15 @@ class MarkHelpersTests(TestCase):
         long = clean_mark_list([{"id": "d", "p": 0, "s": 0, "e": 5, "lang": "x" * 40}])
         self.assertEqual(len(long[0]["lang"]), MAX_LANG_LEN)
 
+    def test_merge_treats_curly_and_straight_anchors_as_one_mark(self):
+        # The reader curls quotes at render time, so the same legacy mark can be
+        # anchored "the critic's" on one device and “the critic’s” on another.
+        straight = [{**mark(0, 0, 13, id="x"), "q": "the critic's"}]
+        curly = [{**mark(0, 0, 13, id="x"), "q": "the critic’s"}]
+        self.assertEqual(len(merge_mark_lists(straight, curly)), 1)
+        moved = [{**mark(0, 6, 19, id="x"), "q": "the critic's"}]
+        self.assertEqual(len(merge_mark_lists(moved, curly)), 1)
+
     def test_clean_keeps_one_range_per_edition(self):
         # Same offsets, different texts: two highlights, not one. The dedupe key
         # used to be the offsets alone, which silently ate the second.

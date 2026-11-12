@@ -19,6 +19,8 @@ range, and a paragraph note attaches to that range (or creates one).
 
 from __future__ import annotations
 
+from reading.anchor import fold_quotes
+
 # Highlight colour keys the reader can set (mirrors HIGHLIGHT_COLORS on the
 # frontend). Gold is the default and is stored implicitly (absent), but accepted
 # here if a client sends it. Anything outside this set is dropped.
@@ -129,9 +131,11 @@ def _anchor_key(m: dict) -> tuple | None:
     """A mark's identity once it carries anchor text: its group, edition and
     words. Offsets alone stop identifying it when the text is repaired — the
     release step moves the stored copy (see ``reading.anchor``) while a device
-    that hasn't synced since still pushes the old offsets for the same mark."""
+    that hasn't synced since still pushes the old offsets for the same mark.
+    Quotes folded straight: one device may have anchored the words on the
+    reader's curled text and another on the straight (``fold_quotes``)."""
     q = m.get("q")
-    return (m.get("id"), m.get("lang"), q) if q else None
+    return (m.get("id"), m.get("lang"), fold_quotes(q)) if q else None
 
 
 def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
@@ -154,7 +158,8 @@ def merge_mark_lists(server: list[dict], incoming: list[dict]) -> list[dict]:
         existing = anchor and index.get(anchor)
         if not existing:
             existing = index.get(_range_key(m))
-            if existing and anchor and existing.get("q") not in (None, anchor[2]):
+            q = existing.get("q") if existing else None
+            if existing and anchor and q is not None and fold_quotes(q) != anchor[2]:
                 existing = None
         if not existing:
             existing = dict(m)

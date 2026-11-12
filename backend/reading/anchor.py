@@ -64,7 +64,7 @@ def _to_u16(text: str, i: int) -> int:
 _QUOTES = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"'})
 
 
-def _fold(text: str) -> str:
+def fold_quotes(text: str) -> str:
     """Curly quotes as straight, one character for one. The reader curls a
     body's quotes as it renders it (frontend ``$lib/smartQuotes``), so an
     anchor or snippet taken there can carry “ ” ‘ ’ where the stored body has
@@ -74,8 +74,8 @@ def _fold(text: str) -> str:
 
 def _nearest(text: str, q: str, near: int) -> int:
     """The UTF-16 offset of the occurrence of ``q`` in ``text`` nearest
-    ``near``, or -1. Straight and curly quotes compare equal (``_fold``)."""
-    text, q = _fold(text), _fold(q)
+    ``near``, or -1. Straight and curly quotes compare equal (``fold_quotes``)."""
+    text, q = fold_quotes(text), fold_quotes(q)
     best = -1
     i = text.find(q)
     while i != -1:
@@ -191,8 +191,8 @@ def remap_mark_list(
 def _squash(text: str) -> str:
     # innerText (what a snippet was cut from) and textContent differ in their
     # whitespace — a <br> is a newline in one and nothing in the other — so
-    # compare with all of it removed — and quotes folded straight (``_fold``).
-    return _fold(_SPACE.sub("", text))
+    # compare with all of it removed — and quotes folded straight (``fold_quotes``).
+    return fold_quotes(_SPACE.sub("", text))
 
 
 def refind_bookmark(editions: list[list[str]], p: int, snippet: str) -> int | None:
