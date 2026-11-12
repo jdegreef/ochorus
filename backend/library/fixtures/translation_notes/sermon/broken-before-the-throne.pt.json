@@ -1,0 +1,626 @@
+{
+ "kind": "sermon",
+ "slug": "broken-before-the-throne",
+ "language": "pt",
+ "job_issue": 7850,
+ "references": [
+  {
+   "reference": "2 Crônicas 7:13a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Crônicas 7:13b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Crônicas 7:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Romanos 1:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romanos 1:28b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Atos 1:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Lucas 24:49b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Lucas 24:49a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "João 17:11b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "João 17:12b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "João 17:15a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "João 17:15b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "João 17:21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "João 17:23b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 12
+  },
+  {
+   "reference": "João 17:23b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Efésios 1:15",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Efésios 1:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Isaías 64:1a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Salmos 42:1a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Êxodo 32:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:19a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:19b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:22a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:22b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:23",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:23",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:24a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:24b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Êxodo 32:25",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:26",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Êxodo 32:26b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Êxodo 32:27",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Êxodo 32:28",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Êxodo 32:29",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Êxodo 32:30a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:30b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:31",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:32",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:33",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:34",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:35",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Êxodo 32:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Êxodo 32:27",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Êxodo 32:34b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 João 1:10",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Êxodo 32:32",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Êxodo 33:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Êxodo 33:1",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Êxodo 33:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Êxodo 33:3a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Êxodo 33:3b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Êxodo 23:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Êxodo 33:2-3",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Êxodo 33:4",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Êxodo 33:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Êxodo 33:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Êxodo 33:5",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Êxodo 33:6",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 42
+  },
+  {
+   "reference": "Êxodo 33:7a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Êxodo 33:7b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Êxodo 33:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Êxodo 33:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Êxodo 33:10",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 43
+  },
+  {
+   "reference": "Êxodo 33:7",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Êxodo 33:7",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Hebreus 13:12-13",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "João 14:9",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 74
+  },
+  {
+   "reference": "Mateus 18:20",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 78
+  },
+  {
+   "reference": "Êxodo 33:18",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Êxodo 33:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:13",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:14",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:15",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:16a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:16b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:17",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 81
+  },
+  {
+   "reference": "Êxodo 33:18",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 89
+  },
+  {
+   "reference": "Apocalipse 5:12",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Lucas 18:1-8",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Êxodo 33:20",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Êxodo 33:19",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Êxodo 33:18",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Êxodo 33:21",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 99
+  },
+  {
+   "reference": "Êxodo 17:6",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Números 20:8",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Números 20:12",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Êxodo 34:2",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "Êxodo 34:2",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Êxodo 34:3a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 106
+  },
+  {
+   "reference": "Êxodo 33:22",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 107
+  },
+  {
+   "reference": "Êxodo 33:23a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 107
+  },
+  {
+   "reference": "Salmos 24:4a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Salmos 24:3b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 109
+  },
+  {
+   "reference": "Mateus 5:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 112
+  },
+  {
+   "reference": "Isaías 64:1",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Êxodo 33:15",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Mateus 16:18b",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Lucas 12:48b",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 119
+  },
+  {
+   "reference": "Tito 1:2",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "2 Crônicas 32:8a",
+   "status": "mined",
+   "source_file": "Bíblia Livre (porbrbsl) Bible text",
+   "block_index": 121
+  },
+  {
+   "reference": "Lamentações 5:21a",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "2 Crônicas 7:14a",
+   "status": "self_rendered",
+   "block_index": 124
+  }
+ ]
+}

@@ -247,11 +247,21 @@ class KorOldRepairTests(SimpleTestCase):
         self.assertEqual(self.clean("`가라'하고"), "가라 하고")
         self.assertEqual(self.clean("`말하라'고 할"), "말하라고 할")
 
-    def test_no_space_before_exclamation_or_question(self):
+    def test_spaced_question_mark_is_glued(self):
         self.assertEqual(
-            self.clean("왜 달음질하려 하느냐 ? 내 주여 !"),
-            "왜 달음질하려 하느냐? 내 주여!",
+            self.clean("왜 달음질하려 하느냐 ? 내 주여"),
+            "왜 달음질하려 하느냐? 내 주여",
         )
+
+    def test_spaced_exclamation_is_dropped_not_glued(self):
+        # PRO 3:6 as the shipped ko books quote it: no `!`.
+        self.assertEqual(
+            self.clean("범사에 그를 인정하라 ! 그리하면 네 길을 지도하시리라"),
+            "범사에 그를 인정하라 그리하면 네 길을 지도하시리라",
+        )
+        self.assertEqual(self.clean("내 주여 !"), "내 주여")
+        # An unspaced `!` (10 verses) is the mirror's text as printed: kept.
+        self.assertEqual(self.clean("내 주여!"), "내 주여!")
 
     def test_idempotent_and_letters_untouched(self):
         once = self.clean("`어찜이냐 ?' 하나님,나의 하나님이여")
