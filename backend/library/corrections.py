@@ -7576,6 +7576,59 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # Two more the vi translation (#7079) read through, same standard.
             ("alleged more than all his against the duty", "alleged more than all this against the duty"),
             ("<p>Your unworthy fellow -servant</p>", "<p>Your unworthy fellow-servant</p>"),
+            # Punctuation the transcription lost, listed by the vi job (#7079) and
+            # repaired in a follow-up: a dropped "?" closing one of Baxter's
+            # rhetorical questions, a comma for a full stop between sentences,
+            # mispaired or stray quote marks (‘ for ’, a straight " closing a ‘),
+            # a lost "(" before an aside the ")" closes, "yourselves" for the
+            # "ourselves" that clashes with "that you be", lowercase lord/god in
+            # the Acts 20 list, and Ussher's "wisest builder". Each seam carries
+            # enough context to match its one site. Left as the text: period
+            # spellings, and readings with more than one fix ("Yea, as hazard",
+            # "as trouble them", "relation,", 2 Kings 8:13 as Baxter quotes it).
+            ("where that discipline may be had For", "where that discipline may be had? For"),
+            ("This is our case, brethren, The work", "This is our case, brethren. The work"),
+            ("Take heed, therefore, to ourselves first, that you be", "Take heed, therefore, to yourselves first, that you be"),
+            ("search after, behold admire, and love", "search after, behold, admire, and love"),
+            ('should not depart from iniquity,"', "should not depart from iniquity,’"),
+            ("at least as to yourselves,’ though", "at least as to yourselves, though"),
+            ("did indeed mean them, Is that man", "did indeed mean them. Is that man"),
+            ("than I can move a mountain Then woe", "than I can move a mountain? Then woe"),
+            ("their actual reformation Much prudence", "their actual reformation? Much prudence"),
+            ('our reward is with the Lord,"', "our reward is with the Lord,’"),
+            ('What else are we overseers for "Bishop"', 'What else are we overseers for? "Bishop"'),
+            ("’labor than of honor,’", "‘labor than of honor,’"),
+            ("as carefully look to my charge?‘", "as carefully look to my charge?’"),
+            ("some of us do for our own, Too many", "some of us do for our own. Too many"),
+            ("the tailor: ‘it chooseth them", "the tailor: it chooseth them"),
+            ("under pretense of filing off’ the roughness", "under pretense of filing off the roughness"),
+            ("to do his master’s work Yet", "to do his master’s work? Yet"),
+            ("be expected of weaker men Were it not", "be expected of weaker men? Were it not"),
+            ("Might not Bradford, or Hooper, or any that were burned", "Might not Bradford, or Hooper, (or any that were burned"),
+            ("or giveth them the sacrament They consider not", "or giveth them the sacrament? They consider not"),
+            ("what good can you expect. And when you have done all", "what good can you expect? And when you have done all"),
+            ("hard-hearted sinner will you not pity one", "hard-hearted sinner? will you not pity one"),
+            ("crying to you for help, As ever you pitied", "crying to you for help, ‘As ever you pitied"),
+            ("for why was all this, but for the work of God </p>", "for why was all this, but for the work of God? </p>"),
+            ("partakers of these, but for the work of God </p>", "partakers of these, but for the work of God? </p>"),
+            ("And yet dare we imitate them Are not", "And yet dare we imitate them? Are not"),
+            ("his kingly office in his church,‘ and", "his kingly office in his church,’ and"),
+            ("<i> scientiam mediam</i>,’ or", "<i> scientiam mediam</i>, or"),
+            ('‘There is a lion in the way," nor', "‘There is a lion in the way,’ nor"),
+            ("cause to fear it of ourselves I know", "cause to fear it of ourselves? I know"),
+            ("seeking to fire it with grenades,’ which", "seeking to fire it with grenades, which"),
+            ("Or doth interlocution make it none Surely", "Or doth interlocution make it none? Surely"),
+            ("for that end ‘Faith cometh by hearing", "for that end? ‘Faith cometh by hearing"),
+            ('feed them with knowledge and understanding,"', "feed them with knowledge and understanding,’"),
+            ("business – Serving the lord with all humility", "business – Serving the Lord with all humility"),
+            ("Repentance toward god and faith toward our lord Jesus Christ", "Repentance toward God and faith toward our Lord Jesus Christ"),
+            ("remembering the words of the lord Jesus", "remembering the words of the Lord Jesus"),
+            ("which I have received of the lord Jesus", "which I have received of the Lord Jesus"),
+            ("the very masterpiece of the wisest-building.", "the very masterpiece of the wisest builder."),
+            ("for the sin that is past ‘ They will answer", "for the sin that is past?’ They will answer"),
+            ('he shed his blood for us," and', "he shed his blood for us,’ and"),
+            ("or is it not Have you", "or is it not? Have you"),
+            ("spent your time till now Did you not know", "spent your time till now? Did you not know"),
         ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
@@ -24783,65 +24836,19 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])
 
-# The Reformed Pastor: the punctuation pass the uk job (#7037) deferred, from the
-# English defects logged by the Luganda translators (#7072). Only marks with one
-# place to go: a "?" that closes a question the sentence already opened, a quote
-# closed with the wrong mark (‘…" or ‘…‘) whose close is where the stray mark is,
-# a comma or missing space between sentences, plus four word slips and the Acts 20
-# outline's lower-cased divine names. Stray closing quotes whose opening could sit
-# in more than one place (yourselves, scientiam mediam, grenades, filing off) and
-# "Yea, as hazard" / "all his against" are left as printed.
+# The Reformed Pastor: the marks #7785's pass (from the vi job's list) did not
+# reach, logged by the Luganda translators (#7072). Each has one place to go: a
+# "?" closing a question the sentence opened, a straight " closing a ‘ quote, a
+# missing space after "?", and the Acts 20 outline's two remaining lower-case gods.
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
-    # lost question marks: each closes a question already opened in the same sentence
     ("or love to the souls of men, gainsay it </p>", "or love to the souls of men, gainsay it? </p>"),
-    ("where that discipline may be had For though", "where that discipline may be had? For though"),
-    ("than I can move a mountain Then woe", "than I can move a mountain? Then woe"),
-    ("their actual reformation Much prudence", "their actual reformation? Much prudence"),
-    ("What else are we overseers for \"Bishop\"", "What else are we overseers for? \"Bishop\""),
     ("to please God best, and do most good it makes them ask", "to please God best, and do most good? it makes them ask"),
-    ("to do his master’s work Yet, alas!", "to do his master’s work? Yet, alas!"),
-    ("could be expected of weaker men Were it not", "could be expected of weaker men? Were it not"),
-    ("or giveth them the sacrament They consider not", "or giveth them the sacrament? They consider not"),
-    ("what good can you expect. And when", "what good can you expect? And when"),
-    ("hard-hearted sinner will you not pity one", "hard-hearted sinner? will you not pity one"),
-    ("but for the work of God </p> <p><b>(3)</b>", "but for the work of God? </p> <p><b>(3)</b>"),
-    ("but for the work of God </p> <p><b>(4)</b>", "but for the work of God? </p> <p><b>(4)</b>"),
-    ("And yet dare we imitate them Are not", "And yet dare we imitate them? Are not"),
-    ("cause to fear it of ourselves I know", "cause to fear it of ourselves? I know"),
-    ("doth interlocution make it none Surely", "doth interlocution make it none? Surely"),
-    ("chief ordinance for that end ‘Faith cometh", "chief ordinance for that end? ‘Faith cometh"),
-    ("for the sin that is past ‘ They will answer", "for the sin that is past?’ They will answer"),
-    ("or is it not Have you experienced", "or is it not? Have you experienced"),
-    ("spent your time till now Did you not know", "spent your time till now? Did you not know"),
-    # a sentence run on with a comma / a missing space
-    ("some of us do for our own, Too many", "some of us do for our own. Too many"),
     ("all our exhortations?It is, in my judgment", "all our exhortations? It is, in my judgment"),
-    # a quotation closed with the wrong mark (‘…" or ‘…‘) — the close has one place to go
-    ("should not depart from iniquity,\" whether", "should not depart from iniquity,’ whether"),
-    ("‘he regard iniquity in his heart,\" whether", "‘he regard iniquity in his heart,’ whether"),
-    ("our reward is with the Lord,\" and our", "our reward is with the Lord,’ and our"),
-    ("intimates more of ’labor than of honor,’", "intimates more of ‘labor than of honor,’"),
-    ("look to my charge?‘ What! sirs", "look to my charge?’ What! sirs"),
-    ("kingly office in his church,‘ and so", "kingly office in his church,’ and so"),
-    ("‘There is a lion in the way,\" nor will", "‘There is a lion in the way,’ nor will"),
-    ("knowledge and understanding,\" as men", "knowledge and understanding,’ as men"),
-    ("not where to lay his head,\" that he", "not where to lay his head,’ that he"),
-    ("to possess their souls,\" to conquer", "to possess their souls,’ to conquer"),
-    ("thou Son of David,\" you shall see", "thou Son of David,’ you shall see"),
-    ("his life shall lose it.\" – on the other", "his life shall lose it.’ – on the other"),
-    ("or he shed his blood for us,\" and will", "or he shed his blood for us,’ and will"),
-    # an opening mark with one place to go (the close, ‘pity us.’, is present)
-    ("crying to you for help, As ever you pitied", "crying to you for help, ‘As ever you pitied"),
-    # word slips with one reading
-    ("Take heed, therefore, to ourselves first, that you be", "Take heed, therefore, to yourselves first, that you be"),
-    ("by becoming our Redeemer, relation, but the work", "by becoming our Redeemer, but the work"),
-    ("to search after, behold admire, and love", "to search after, behold, admire, and love"),
-    ("‘He who everyday reminds himself", "‘He who every day reminds himself"),
-    # Acts 20 outline: the divine names lost their capitals in transcription
-    ("Serving the lord with all humility", "Serving the Lord with all humility"),
-    ("Repentance toward god and faith toward our lord Jesus Christ", "Repentance toward God and faith toward our Lord Jesus Christ"),
+    ('‘he regard iniquity in his heart," whether', "‘he regard iniquity in his heart,’ whether"),
+    ('not where to lay his head," that he', "not where to lay his head,’ that he"),
+    ('to possess their souls," to conquer', "to possess their souls,’ to conquer"),
+    ('thou Son of David," you shall see', "thou Son of David,’ you shall see"),
+    ('his life shall lose it." – on the other', "his life shall lose it.’ – on the other"),
     ("all the counsel of god. </p>", "all the counsel of God. </p>"),
-    ("remembering the words of the lord Jesus", "remembering the words of the Lord Jesus"),
-    ("which I have received of the lord Jesus.", "which I have received of the Lord Jesus."),
     ("I commend you to god and to the word", "I commend you to God and to the word"),
 ])
