@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "Escreva o seu nome nos seus ex-líbris",
   "bookplate_your_name": "O seu nome",
   "bookplate_shelf_title": "Ex-líbris",
-  "bookplate_all": "Todos os seus ex-líbris"
+  "bookplate_all": "Todos os seus ex-líbris",
+  "calendar_advent_title": "Calendário do Advento",
+  "calendar_lent_title": "Calendário da Quaresma",
+  "calendar_advent_tagline": "Uma porta para cada dia do Advento, com uma leitura curta e um versículo das Escrituras. As portas passadas ficam abertas.",
+  "calendar_lent_tagline": "Uma porta para cada um dos quarenta dias da Quaresma, com uma leitura curta e um versículo das Escrituras. As portas passadas ficam abertas.",
+  "calendar_today_door": "A porta de hoje",
+  "calendar_today": "Hoje",
+  "calendar_read": "Ler a leitura de hoje",
+  "calendar_locked": "Abre em %date%",
+  "calendar_open_today": "Abrir a porta de hoje",
+  "calendar_see_doors": "Ver as portas"
 }

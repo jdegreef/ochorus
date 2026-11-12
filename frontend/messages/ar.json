@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "اكتب اسمك على أختام كتبك",
   "bookplate_your_name": "اسمك",
   "bookplate_shelf_title": "أختام الكتب",
-  "bookplate_all": "كل أختام كتبك"
+  "bookplate_all": "كل أختام كتبك",
+  "calendar_advent_title": "تقويم زمن المجيء",
+  "calendar_lent_title": "تقويم الصوم الكبير",
+  "calendar_advent_tagline": "باب لكل يوم من أيام زمن المجيء، فيه قراءة قصيرة وآية من الكتاب المقدس. تبقى أبواب الأيام الماضية مفتوحة.",
+  "calendar_lent_tagline": "باب لكل يوم من أيام الصوم الكبير الأربعين، فيه قراءة قصيرة وآية من الكتاب المقدس. تبقى أبواب الأيام الماضية مفتوحة.",
+  "calendar_today_door": "باب اليوم",
+  "calendar_today": "اليوم",
+  "calendar_read": "اقرأ قراءة اليوم",
+  "calendar_locked": "يُفتح في %date%",
+  "calendar_open_today": "افتح باب اليوم",
+  "calendar_see_doors": "شاهد الأبواب"
 }

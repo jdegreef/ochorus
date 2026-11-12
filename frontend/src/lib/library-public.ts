@@ -970,6 +970,11 @@ export const getBook = async (slug: string, language = 'en', f?: Fetch) =>
 		BOOK_FIELDS
 	);
 
+/** A book in exactly `language` — no English fallback: a 404 means that
+ *  language has no edition (the season calendar must not stand English in). */
+export const getBookExact = async (slug: string, language: string) =>
+	requireFields<BookDetail>(`book ${slug}`, await apiFetch<BookDetail>(bookApiPath(slug, language)), BOOK_FIELDS);
+
 /** A chapter's API path. The build's chapter batcher ($lib/chapterBatch) must
  * recognise exactly this shape, so its test builds requests with it; a
  * download ($lib/offlineBooks) stores each chapter under it. */

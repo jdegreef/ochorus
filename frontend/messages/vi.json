@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "Ghi tên bạn lên các ex libris",
   "bookplate_your_name": "Tên của bạn",
   "bookplate_shelf_title": "Ex libris",
-  "bookplate_all": "Tất cả ex libris của bạn"
+  "bookplate_all": "Tất cả ex libris của bạn",
+  "calendar_advent_title": "Lịch Mùa Vọng",
+  "calendar_lent_title": "Lịch Mùa Chay",
+  "calendar_advent_tagline": "Mỗi ngày Mùa Vọng một cánh cửa, với một bài đọc ngắn và một câu Kinh Thánh. Những cánh cửa đã qua vẫn mở.",
+  "calendar_lent_tagline": "Mỗi ngày trong bốn mươi ngày Mùa Chay một cánh cửa, với một bài đọc ngắn và một câu Kinh Thánh. Những cánh cửa đã qua vẫn mở.",
+  "calendar_today_door": "Cánh cửa hôm nay",
+  "calendar_today": "Hôm nay",
+  "calendar_read": "Đọc bài đọc hôm nay",
+  "calendar_locked": "Mở vào %date%",
+  "calendar_open_today": "Mở cánh cửa hôm nay",
+  "calendar_see_doors": "Xem các cánh cửa"
 }

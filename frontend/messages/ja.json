@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "蔵書票に名前を書きましょう",
   "bookplate_your_name": "お名前",
   "bookplate_shelf_title": "蔵書票",
-  "bookplate_all": "すべての蔵書票"
+  "bookplate_all": "すべての蔵書票",
+  "calendar_advent_title": "待降節カレンダー",
+  "calendar_lent_title": "受難節カレンダー",
+  "calendar_advent_tagline": "待降節の毎日にひとつの扉。短い読み物と聖句がひとつずつ入っています。過ぎた日の扉は開いたままです。",
+  "calendar_lent_tagline": "受難節の四十日の毎日にひとつの扉。短い読み物と聖句がひとつずつ入っています。過ぎた日の扉は開いたままです。",
+  "calendar_today_door": "今日の扉",
+  "calendar_today": "今日",
+  "calendar_read": "今日の読み物を読む",
+  "calendar_locked": "%date%に開きます",
+  "calendar_open_today": "今日の扉を開く",
+  "calendar_see_doors": "扉を見る"
 }

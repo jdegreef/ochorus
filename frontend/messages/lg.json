@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "Wandiika erinnya lyo ku bubonero bwo",
   "bookplate_your_name": "Erinnya lyo",
   "bookplate_shelf_title": "Obubonero bw’ebitabo",
-  "bookplate_all": "Obubonero bwo bwonna"
+  "bookplate_all": "Obubonero bwo bwonna",
+  "calendar_advent_title": "Kalenda y'Okujja kwa Kristo",
+  "calendar_lent_title": "Kalenda y'Ekisiibo",
+  "calendar_advent_tagline": "Oluggi lwa buli lunaku olw'Okujja kwa Kristo, nga lulimu ekisomo ekimpi n'olunyiriri lw'Ebyawandiikibwa. Enzigi ez'ennaku eziyise zisigala nga nzigule.",
+  "calendar_lent_tagline": "Oluggi lwa buli lumu ku nnaku amakumi ana ez'Ekisiibo, nga lulimu ekisomo ekimpi n'olunyiriri lw'Ebyawandiikibwa. Enzigi ez'ennaku eziyise zisigala nga nzigule.",
+  "calendar_today_door": "Oluggi lwa leero",
+  "calendar_today": "Leero",
+  "calendar_read": "Soma ekisomo kya leero",
+  "calendar_locked": "Lunaaggulwawo %date%",
+  "calendar_open_today": "Ggulawo oluggi lwa leero",
+  "calendar_see_doors": "Laba enzigi"
 }

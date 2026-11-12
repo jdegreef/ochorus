@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "Write your name on your bookplates",
   "bookplate_your_name": "Your name",
   "bookplate_shelf_title": "Bookplates",
-  "bookplate_all": "All your bookplates"
+  "bookplate_all": "All your bookplates",
+  "calendar_advent_title": "Advent calendar",
+  "calendar_lent_title": "Lent calendar",
+  "calendar_advent_tagline": "A door for each day of Advent, with a short reading and a line of Scripture. Past doors stay open.",
+  "calendar_lent_tagline": "A door for each of the forty days of Lent, with a short reading and a line of Scripture. Past doors stay open.",
+  "calendar_today_door": "Today’s door",
+  "calendar_today": "Today",
+  "calendar_read": "Read today’s reading",
+  "calendar_locked": "Opens on %date%",
+  "calendar_open_today": "Open today’s door",
+  "calendar_see_doors": "See the doors"
 }

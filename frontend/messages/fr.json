@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "Inscrivez votre nom sur vos ex-libris",
   "bookplate_your_name": "Votre nom",
   "bookplate_shelf_title": "Ex-libris",
-  "bookplate_all": "Tous vos ex-libris"
+  "bookplate_all": "Tous vos ex-libris",
+  "calendar_advent_title": "Calendrier de l’Avent",
+  "calendar_lent_title": "Calendrier du Carême",
+  "calendar_advent_tagline": "Une porte pour chaque jour de l’Avent, avec une courte lecture et un verset de l’Écriture. Les portes passées restent ouvertes.",
+  "calendar_lent_tagline": "Une porte pour chacun des quarante jours du Carême, avec une courte lecture et un verset de l’Écriture. Les portes passées restent ouvertes.",
+  "calendar_today_door": "La porte du jour",
+  "calendar_today": "Aujourd’hui",
+  "calendar_read": "Lire la lecture du jour",
+  "calendar_locked": "S’ouvre le %date%",
+  "calendar_open_today": "Ouvrir la porte du jour",
+  "calendar_see_doors": "Voir les portes"
 }

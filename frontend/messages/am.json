@@ -1766,5 +1766,15 @@
   "bookplate_name_prompt": "ስምዎን በመጽሐፍ ምልክቶችዎ ላይ ይጻፉ",
   "bookplate_your_name": "ስምዎ",
   "bookplate_shelf_title": "የመጽሐፍ ምልክቶች",
-  "bookplate_all": "ሁሉም የመጽሐፍ ምልክቶችዎ"
+  "bookplate_all": "ሁሉም የመጽሐፍ ምልክቶችዎ",
+  "calendar_advent_title": "የምጽአት ቀን መቁጠሪያ",
+  "calendar_lent_title": "የዐቢይ ጾም ቀን መቁጠሪያ",
+  "calendar_advent_tagline": "ለእያንዳንዱ የምጽአት ቀን አንድ በር፣ ከአጭር ንባብና ከአንድ የመጽሐፍ ቅዱስ ጥቅስ ጋር። ያለፉት በሮች ክፍት ሆነው ይቆያሉ።",
+  "calendar_lent_tagline": "ለእያንዳንዱ የዐቢይ ጾም አርባ ቀናት አንድ በር፣ ከአጭር ንባብና ከአንድ የመጽሐፍ ቅዱስ ጥቅስ ጋር። ያለፉት በሮች ክፍት ሆነው ይቆያሉ።",
+  "calendar_today_door": "የዛሬው በር",
+  "calendar_today": "ዛሬ",
+  "calendar_read": "የዛሬውን ንባብ ያንብቡ",
+  "calendar_locked": "%date% ይከፈታል",
+  "calendar_open_today": "የዛሬውን በር ይክፈቱ",
+  "calendar_see_doors": "በሮቹን ይመልከቱ"
 }
