@@ -44,6 +44,8 @@
 	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
+	import { chapterBars, chapterRangeText } from '$lib/chapterLengths';
+	import { firstSentence } from '$lib/firstSentence';
 	import { partEnds, partGroups, partLine } from '$lib/bookParts';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
@@ -532,6 +534,20 @@
 		const [before, after = ''] = t('book.alsoInOne').split('%lang%');
 		return { loc, name: localeName(loc), before, after };
 	});
+	// "At a glance" (top-50 #3): the empty end side of a wide hero holds the
+	// book's first line, its chapters as bars and the "Also in" link — all of
+	// it from the page's own payload, no further fetch. Only from the hero's
+	// wide container step (CSS); below it the panel is hidden, since About's
+	// opening aside, Contents and the facts line's link already say the same
+	// further down a phone's page.
+	const firstLine = $derived(book.opening ? firstSentence(book.opening.text) : '');
+	const bars = $derived(
+		chapterBars(
+			book.chapters.map((c) => c.word_count),
+			readingMinutes
+		)
+	);
+	const hasGlance = $derived(!!firstLine || !!bars);
 	// No "about the author" band for a byline that is not a person (the house
 	// imprint, the Bible's translation): its name links to its own page instead.
 	const hasAuthorBand = $derived(!isImprint(book.author));
@@ -713,15 +729,75 @@
 				<p class="mt-2 text-small text-muted">
 					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
 							>{fact.text}</span
-						>{/each}{#if showLanguages}{#if heroFacts.length}{' · '}{/if}<a
-							href="#editions"
-							class="also-in-link whitespace-nowrap"
-							onclick={(e) => spy.jump(e, 'editions', { track: false })}
-							>{#if alsoInOne}{alsoInOne.before}<span lang={alsoInOne.loc} dir="auto">{alsoInOne.name}</span
-								>{alsoInOne.after}{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+						>{/each}{#if showLanguages}<span class="facts-also-in" class:in-glance={hasGlance}
+							>{#if heroFacts.length}{' · '}{/if}{@render alsoInLink()}</span
 						>{/if}
 				</p>
 			</div>
+			<!-- "Also in N languages": ONE link, which the wide hero moves from the
+			     facts line into the At-a-glance panel (CSS shows one of the two). -->
+			{#snippet alsoInLink()}
+				<a
+					href="#editions"
+					class="also-in-link whitespace-nowrap"
+					onclick={(e) => spy.jump(e, 'editions', { track: false })}
+					>{#if alsoInOne}{alsoInOne.before}<span lang={alsoInOne.loc} dir="auto">{alsoInOne.name}</span
+						>{alsoInOne.after}{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+				>
+			{/snippet}
+
+			<!-- At a glance (top-50 #3): the end side of a wide hero, which the
+			     title block and the read card leave empty. Shown only from the
+			     hero's widest container step; below it every line here is said
+			     further down the page (About's opening aside, Contents, the facts
+			     line's languages link), so a phone gets no longer for it. The
+			     first line is the server's opening excerpt (library/opening.py),
+			     cut to its first sentence. -->
+			{#if hasGlance}
+				<aside class="book-glance" aria-labelledby="glance-heading">
+					<h2 id="glance-heading" class="eyebrow text-muted">{t('book.glance')}</h2>
+					<dl class="mt-3 text-small">
+						{#if firstLine}
+							<div>
+								<dt>{t('book.firstLine')}</dt>
+								<dd class="glance-line font-display" lang={contentLang(book.language)} dir="auto">{firstLine}</dd>
+								<!-- Named, because opening.py skips front matter: the line
+								     may open chapter 2 or 3, not the book. -->
+								<dd class="text-muted" dir="auto">
+									{t('book.openingFrom').replace('%chapter%', book.opening?.chapter ?? '')}
+								</dd>
+							</div>
+						{/if}
+						{#if bars}
+							<div>
+								<dt>{t('book.chapterLengths')}</dt>
+								<dd>
+									<!-- One bar per chapter, as tall as the chapter is long. The
+									     caption carries the figures for a screen reader; the
+									     bars' tooltips name each chapter for a mouse. -->
+									<div class="glance-bars" aria-hidden="true">
+										{#each bars.heights as h, i (i)}
+											{@const ch = book.chapters[i]}
+											<span
+												style:height="{h}%"
+												title="{chapterNameIn(ch.order, ch.title, book.title)} · {readingMinutes(ch.word_count)} {t(
+													'common.min'
+												)}"
+											></span>
+										{/each}
+									</div>
+									<p class="mt-1 text-muted">
+										{chapterRangeText(t('book.chapterRange'), bars)}
+									</p>
+								</dd>
+							</div>
+						{/if}
+					</dl>
+					{#if showLanguages}
+						<p class="mt-4 text-small">{@render alsoInLink()}</p>
+					{/if}
+				</aside>
+			{/if}
 
 			<!-- The action row's container (`.action-host`): it picks strip vs row by
 			     this block's width — the full page width on a phone. -->
@@ -832,6 +908,10 @@
 									onclick={() => (modernHere = { slug: book.slug, modern: true })}>{t('reader.modern')}</button
 								>
 							</div>
+							<!-- What Modern changes (top-50 #4), so the choice is an informed
+							     one: the careful pass (contemporize-book) updates archaic forms
+							     and eases long sentences; meaning, voice and Scripture stay. -->
+							<p class="text-small text-muted">{t('book.modernExplainer')}</p>
 						{/if}
 					</div>
 				</div>
@@ -1521,6 +1601,61 @@
 			width: 13rem;
 		}
 	}
+	/* At a glance (top-50 #3): a third column only where the hero has room for
+	   it — 72rem of container leaves the middle column ~36rem, so the action
+	   strip stays a plain row (its 560px step). Narrower, the panel is hidden
+	   and its "Also in" link stays in the facts line; wider, the link moves
+	   into the panel. */
+	.book-glance {
+		display: none;
+	}
+	@container book-hero (min-width: 72rem) {
+		.book-hero:has(.book-glance) {
+			grid-template-columns: auto minmax(0, 1fr) 18rem;
+		}
+		.book-glance {
+			display: block;
+			grid-column: 3;
+			grid-row: 1 / -1;
+			padding: 1.25rem;
+			border: 1px solid var(--border);
+			border-radius: var(--radius-card);
+			background: color-mix(in srgb, var(--surface) 85%, transparent);
+		}
+		.facts-also-in.in-glance {
+			display: none;
+		}
+	}
+	.book-glance dl > div + div {
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--border);
+	}
+	.book-glance dt {
+		font-weight: 600;
+		color: var(--text);
+	}
+	.book-glance dd {
+		margin-top: 0.375rem;
+	}
+	.glance-line {
+		font-size: var(--fs-body);
+		line-height: 1.45;
+		color: var(--text);
+	}
+	.glance-bars {
+		display: flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 3rem;
+	}
+	.glance-bars span {
+		flex: 1 1 0;
+		min-width: 1px;
+		border-radius: 2px 2px 0 0;
+		background: color-mix(in srgb, var(--accent) 55%, var(--surface));
+	}
+
 	/* The edition toggle: full width under the read button, two even halves. */
 	.edition-seg button {
 		flex: 1 1 0;
