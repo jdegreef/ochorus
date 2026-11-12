@@ -1,0 +1,590 @@
+{
+ "kind": "book",
+ "slug": "a-short-and-easy-method-of-prayer",
+ "language": "hi",
+ "job_issue": 7638,
+ "references": [
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Genesis 17:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 7:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 8:24",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Proverbs 8:31",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Mark 13:33",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Mark 13:37",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Song of Solomon 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:18",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 37:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 27:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 45:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 31:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 57:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Wisdom of Solomon 7:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habakkuk 2:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 51:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 46:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 45:10",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 45:11",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Hosea 2:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 5:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 32:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 46:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 16:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Exodus 14:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Revelation 8:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Samuel 1:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:12",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Song of Songs 3:6",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sirach 3:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Sirach 24:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 5:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 4:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Luke 17:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Ezekiel 1:19",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:19",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wisdom of Solomon 7:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Wisdom of Solomon 7:24",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "John 5:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Luke 10:41",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 11:42",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 57:10",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 55:2",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Zechariah 2:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 49:15",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Joel 2:12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 30:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 40:1",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 119:130",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Psalm 116:6",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Luke 18:16",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Isaiah 40:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Amos 7:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:4",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Proverbs 9:5",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Revelation 8:1",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:49",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 75:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:20",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Romans 3:22",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "mined",
+   "source_file": "Indian Revised Version (IRV) Hindi Bible text"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered"
+  }
+ ]
+}

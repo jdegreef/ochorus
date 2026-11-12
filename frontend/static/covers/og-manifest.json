@@ -19285,6 +19285,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/a-short-and-easy-method-of-prayer": {
+			"ground": "9813e56eb2f75ca10c26788415dbfb1a6c6f0071f2b4c6f74a62d9382494605f",
+			"style": "devotional",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.9,
+			"lift": 1.3,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[113, 265, 487, 334],
+					[158, 347, 442, 416]
+				],
+				"subtitle": [
+					[149, 508, 451, 530]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
+		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
 			"style": "devotional",
