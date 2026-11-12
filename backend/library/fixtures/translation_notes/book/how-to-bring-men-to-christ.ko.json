@@ -3,7 +3,7 @@
  "slug": "how-to-bring-men-to-christ",
  "language": "ko",
  "job_issue": 7659,
- "pull_request": null,
+ "pull_request": 7887,
  "note": [
   "Batch 3 (2026-11-12): 13 chapters translated by six parallel translators against a shared per-book conventions file, then reconciled as a whole book. Scripture from the 개역 (ebible kor_old, cleaned via scripts/bible_mirror.py; Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse text. Dialogue echoes Torrey re-persons, verses kor_old lacks (1 Pet 2:24, Ps 16:11) and allusions are `self_rendered`. AI-drafted, awaiting native review."
  ],
