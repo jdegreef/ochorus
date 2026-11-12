@@ -14552,6 +14552,10 @@ BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefau
     ("iños en sus juegos (Mat. 12:16-19", "iños en sus juegos (Mat. 11:16-19"),
     # [es] citation fix mirrored from EN
     (" de fe, es pecado” (Rom. 14:32", " de fe, es pecado” (Rom. 14:23"),
+    # [en] Acts 2:42 is the apostles' (plural) doctrine — found translating to pt (#7749)
+    ("steadfastly in the apostle’s doctrine", "steadfastly in the apostles’ doctrine"),
+    # [en] a direct question ended with a full stop — found translating to pt (#7749)
+    ("will sooner or later encounter.</p>", "will sooner or later encounter?</p>"),
     # [am] citation fix mirrored from EN
     (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
     # [am] citation fix mirrored from EN
