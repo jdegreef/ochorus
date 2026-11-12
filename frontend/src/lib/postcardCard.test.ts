@@ -58,9 +58,92 @@ describe("postcard layout: text fitting", () => {
       ...base,
       quote: "I had rather bless the soul of the poorest crossing-sweeper",
     });
-    expect(l.quote.lines.join(" ")).toBe(
+    // A line may end on a hyphen it broke after; nothing else is lost.
+    expect(l.quote.lines.join(" ").replace(/- /g, "-")).toBe(
       "I had rather bless the soul of the poorest crossing-sweeper",
     );
+  });
+
+  /** The fake, with kana, kanji and the ellipsis a full em wide — as a CJK
+   *  face draws them. */
+  function wideCtx(): TextMeasure {
+    const ctx = fakeCtx();
+    const measure = ctx.measureText;
+    ctx.measureText = (t: string) => {
+      const px = Number(/(\d+)px/.exec(ctx.font)?.[1] ?? 16);
+      const wide = [...t].filter(
+        (c) => c === "…" || c.codePointAt(0)! > 0x2e80,
+      ).length;
+      return { width: measure(t).width + wide * px * 0.5 } as TextMetrics;
+    };
+    return ctx;
+  }
+  const inside = (l: ReturnType<typeof layoutPostcard>, ctx: TextMeasure) => {
+    const { box, lines, lineHeight, top, font } = l.quote;
+    expect(top + lines.length * lineHeight).toBeLessThanOrEqual(
+      box.y + box.h + 0.01,
+    );
+    ctx.font = font;
+    for (const line of lines)
+      expect(ctx.measureText(line).width, line).toBeLessThanOrEqual(box.w);
+  };
+
+  it("cuts a quote that overflows even at the smallest size, rather than run into the author", () => {
+    // Kana and kanji are a full em each and wrap per character, so a
+    // 300-character Japanese quote needs ~20 lines at 26px — more than the
+    // message half holds.
+    for (const quote of [
+      "神の恵みは尽きることがない。".repeat(30),
+      // Puts a 、 just before where the ellipsis must go once a character
+      // is dropped to make room for it.
+      "あ".repeat(8) + "主は、わが牧者なり、".repeat(30),
+    ]) {
+      const ctx = wideCtx();
+      const l = layoutPostcard(ctx, { ...base, language: "ja", quote });
+      inside(l, ctx);
+      const last = l.quote.lines.at(-1)!;
+      expect(last.endsWith("…")).toBe(true);
+      expect(last, last).not.toMatch(/[、。，]…$/);
+    }
+  });
+
+  it("breaks a dash chain at its dashes and keeps it large", () => {
+    const ctx = fakeCtx();
+    const l = layoutPostcard(ctx, {
+      ...base,
+      quote: "Love—joy—peace—patience—kindness—goodness is the fruit",
+    });
+    inside(l, ctx);
+    expect(Number(/(\d+)px/.exec(l.quote.font)![1])).toBeGreaterThan(40);
+    for (const line of l.quote.lines)
+      expect(line).toMatch(/^(?:[A-Za-z]+[—\s]?)+$/); // no word split mid-letter
+  });
+
+  it("shrinks for a long word, and breaks a run no size can fit, never past the divider", () => {
+    const word = layoutPostcard(fakeCtx(), {
+      ...base,
+      quote: "Bless the crossing-sweeper",
+    });
+    expect(word.quote.lines.join(" ")).toContain("crossing-");
+    // Hangul written without spaces: one 300-character run.
+    const ctx = fakeCtx();
+    const run = layoutPostcard(ctx, {
+      ...base,
+      language: "ko",
+      quote: "하나님의은혜는다함이없도다".repeat(30),
+    });
+    expect(run.quote.lines.length).toBeGreaterThan(1);
+    inside(run, ctx);
+  });
+
+  it("lets the words after a broken run share its last line", () => {
+    const ctx = fakeCtx();
+    const l = layoutPostcard(ctx, {
+      ...base,
+      quote: `Bless the ${"x".repeat(60)} and the poor`,
+    });
+    inside(l, ctx);
+    expect(l.quote.lines.at(-1)).toMatch(/x and the poor$/);
   });
 
   it("clamps a long source to two lines with an ellipsis", () => {

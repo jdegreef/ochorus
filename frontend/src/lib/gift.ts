@@ -98,7 +98,7 @@ const segmenter =
 
 /** Split into user-perceived characters, so a cap never cuts an emoji or an
  *  accented letter in half. */
-const graphemes = (s: string): string[] =>
+export const graphemes = (s: string): string[] =>
 	segmenter ? Array.from(segmenter.segment(s), (x) => x.segment) : (s.match(GRAPHEME_ISH) ?? []);
 
 /** Where there is no Intl.Segmenter (Firefox < 125, old WebViews): a letter
