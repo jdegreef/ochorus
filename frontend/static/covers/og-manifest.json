@@ -40225,6 +40225,41 @@
 				480
 			]
 		},
+		"uk/jesus-teacher-of-prayer": {
+			"ground": "351f3048be5c870e960670382af9da09c638de7ea9c328bf9267d307ea2eaedd",
+			"style": "originals",
+			"volume": "2",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[82, 327, 518, 403],
+					[167, 393, 433, 469]
+				],
+				"subtitle": [
+					[149, 529, 451, 557]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				557
+			]
+		},
 		"uk/key-teachings-of-a-b-simpson": {
 			"ground": "75d3caf06311f035de23f09afca250efe0f54b30207112a26860d355589faac8",
 			"style": "originals",
