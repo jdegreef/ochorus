@@ -75,7 +75,8 @@
 		book,
 		rounded = 'rounded-card',
 		priority = false,
-		eager = false
+		eager = false,
+		byline = false
 	}: {
 		/** Any `CoverBook` fits; a tile or search hit carries just these fields. */
 		book: CoverFace;
@@ -90,6 +91,10 @@
 		 * where `priority`'s high fetch would race the fonts and the page's real
 		 * LCP for an image nobody can see yet. Implied by `priority`. */
 		eager?: boolean;
+		/** Name the author in the cover's label too ("Cover of The Pilgrim's
+		 * Progress, John Bunyan") — where the cover stands for the book with no
+		 * caption beside it (the home hero), so the image says whose it is. */
+		byline?: boolean;
 	} = $props();
 
 	// Keyed by the URL they describe, not free-floating: the book page renders
@@ -163,7 +168,9 @@
 		src: assetUrl(book.cover_url),
 		srcset: assetSrcset(coverSrcset(book.cover_url)) || undefined
 	});
-	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
+	const label = $derived(
+		`${t('a11y.coverOf')} ${book.title}${byline && book.author?.name ? `, ${book.author.name}` : ''}`
+	);
 	/** Eager for the page's LCP image and a shelf's first row; lazy otherwise. */
 	const loading = $derived<'eager' | 'lazy'>(priority || eager ? 'eager' : 'lazy');
 	const setTitle = $derived(coverTitle(book));

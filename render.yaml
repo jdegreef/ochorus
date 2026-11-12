@@ -822,6 +822,13 @@ services:
       # listed in Supabase → Auth → Providers → Google → Client IDs.
       - key: PUBLIC_GOOGLE_CLIENT_ID
         sync: false
+      # Optional: the Ochorus WhatsApp channel's public link
+      # (https://whatsapp.com/channel/...). Unset = no "Follow on WhatsApp" link
+      # anywhere; set it once the channel exists and the next build shows one on
+      # /today and in the footer ($lib/config). The day's post to paste into the
+      # channel is composed at /admin/whatsapp.
+      - key: PUBLIC_WHATSAPP_CHANNEL_URL
+        sync: false
       # How long the prebuild waits for ochorus-api to serve THIS commit's
       # content before prerendering (scripts/await-api-release.mjs). A content
       # commit deploys both services at once, and the static build reaches this

@@ -1,0 +1,2082 @@
+{
+ "kind": "book",
+ "slug": "mortification-of-sin",
+ "language": "uk",
+ "job_issue": 7626,
+ "pull_request": 7743,
+ "references": [
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 1,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6,
+   "why": "Owen's 'Ye — if ye mortify' isolates the pronoun, which Kulish leaves implicit in the verb (Owen's own point)"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 13,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 14,
+   "why": "Owen paraphrases ('quickened by the Spirit of Christ'); Kulish 8:11 has no matching phrase"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 16,
+   "why": "Owen re-persons 'dwells in you' to 'in us'"
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 16,
+   "why": "Owen re-persons and abridges ('quickens us')"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 16,
+   "why": "Owen's 'the Holy Ghost' paraphrases v.14; Kulish has 'Духом Божим'"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:19",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 20,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 20,
+   "why": "Owen adapts 'the axe is laid' to 'is to be laid' (uncited)"
+  },
+  {
+   "reference": "Romans 8:6",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 21,
+   "why": "Owen glosses φρόνημα as 'wisdom'; Kulish 'Думаннє бо тїлесне' is not a contiguous match"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 21,
+   "why": "Owen's gloss of the Greek παθήματα/ἐπιθυμίαι, not the verse's wording"
+  },
+  {
+   "reference": "Romans 8:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 21,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 22,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:8",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 22,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 6:8",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 3:8",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 3,
+   "why": "Kulish 'воскресли ви з Христом' is 2nd person; Owen describes them in 3rd person"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 3,
+   "why": "Owen re-persons Kulish 'і ви з Ним явитесь у славі' to 'who should appear'"
+  },
+  {
+   "reference": "John 15:2",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "Owen re-persons to 'we' (Kulish 'щоб уже я достиг, або вже був звершений')"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "Owen adapts to 'our inward man is to be renewed'"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "Owen nominalises the imperative ('our growth in the knowledge of our Lord Jesus Christ')"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "re-personed to 'we'; Kulish's elliptical '(того що)' wording does not carry Owen's 'lusteth', which he develops into 'lust' (пожадливість)"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4,
+   "why": "Kulish has genitive 'тїла смерти' inside a question; Owen's 'We have a body of death' needs nominative"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5,
+   "why": "Owen paraphrases ('the law of the members is still rebelling against the law of the mind')"
+  },
+  {
+   "reference": "James 4:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5,
+   "why": "Kulish reads 'Дух' (the Holy Spirit) as subject; Owen applies the verse to the sinful human spirit, so Kulish would invert his argument"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5,
+   "why": "kept uniform with the other Gal 5:17 renderings (Owen's 'lusteth')"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 7:18b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5,
+   "why": "Owen's 'so that ye cannot do the things that ye would'; Kulish's '(того що)' ellipsis, kept uniform"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6,
+   "why": "uncited allusion, abridged ('Soul, take thy rest'); Kulish has 'Душе, маєш багацько добра... спочивай'"
+  },
+  {
+   "reference": "Galatians 5:19-21",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 8,
+   "why": "Owen's argument turns on the same verb 'lusteth' both ways; kept uniform with glossary 'пожадає'"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 10,
+   "why": "Owen re-casts the imperative as 'to be growing in grace'"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 10,
+   "why": "Owen re-casts actively: 'renewing our inward man day by day'"
+  },
+  {
+   "reference": "Isaiah 49:21",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Peter 2:20",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 13,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Revelation 9:6",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3,
+   "why": "Owen adapts the verse into a result clause ('that they should seek death'); Kulish's future-tense wording does not fit"
+  },
+  {
+   "reference": "Isaiah 1:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 6,
+   "why": "Owen adapts/abridges ('these things at your hand'); Kulish reads 'хто від вас вимагає, щоб топтали двори мої'"
+  },
+  {
+   "reference": "Matthew 15:9",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:7",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ezekiel 11:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 12,
+   "why": "composite paraphrase of Ezek 11:19 / 36:26-27 ('I will give my Spirit, and take away the stony heart')"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13,
+   "why": "re-personed ('Without Christ we can do nothing')"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13,
+   "why": "re-personed and adapted ('to give repentance unto us')"
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 13,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:19-21",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 17,
+   "why": "Owen's paraphrase ('are so and so')"
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 17,
+   "why": "Owen's paraphrase ('quite contrary, quite of another sort')"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 17,
+   "why": "Owen's paraphrase as participles ('By living in the Spirit and walking after the Spirit')"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Titus 3:5",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 4:4",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 18,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 21,
+   "why": "re-personed ('works in us'; Kulish 'у вас')"
+  },
+  {
+   "reference": "Isaiah 26:12",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 21,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 21,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 21,
+   "why": "Owen's phrase 'Spirit of supplication' (KJV); Kulish has 'духа ласки й побожностї', no 'supplication'"
+  },
+  {
+   "reference": "Isaiah 57:18",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5,
+   "why": "Owen paraphrases ('I will do that work … I will comfort him'); Kulish 'буду … потїшати його' is a different construction"
+  },
+  {
+   "reference": "Isaiah 57:19",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5,
+   "why": "Owen argues from KJV 'I create' (new creation); Kulish 'Я додержу слова' has no 'create'"
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 38:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 38:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 40:12",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10,
+   "why": "Kulish 40:12 lacks 'I am not able to look up'"
+  },
+  {
+   "reference": "Psalms 119:57",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 11,
+   "why": "uncited 'Thou art my portion'; generic psalm phrase (cf. Ps 119:57, 142:5, Lam 3:24), rendered 'Ти — доля моя' after Kulish's 'доля моя'"
+  },
+  {
+   "reference": "Jeremiah 46:11",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 16,
+   "why": "uncited 'they shall not be healed' (in vain … many remedies = Jer 46:11); Owen re-persons it, Kulish 'нїчим не загоіш своєї рани' is 2nd sg"
+  },
+  {
+   "reference": "Hosea 5:13",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hosea 5:15",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8,
+   "why": "Owen quotes 'complete in Christ'; Kulish has «сповнені в Ньому» — kept Kulish's «сповнені», named Христі as Owen does"
+  },
+  {
+   "reference": "Acts 8:23",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 11,
+   "why": "uncited; Owen quotes only first half and Kulish interleaves 'bond of iniquity' with reversed order (в жовчі гіркости і в увязї неправди виджу тебе)"
+  },
+  {
+   "reference": "Psalms 78:32-37",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 15,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 78:34",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 15,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Genesis 6:5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 3,
+   "why": "Kulish ('люде дбають повсячасно тільки про лихе') lacks 'imagination of the thoughts of his heart'; Owen applies it to an individual"
+  },
+  {
+   "reference": "Ecclesiastes 8:11",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 4,
+   "why": "uncited allusion 'hearts set upon evil'; Kulish wording ('не лякаєсь серце людське, чинити зло') does not carry the phrase"
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 4,
+   "why": "uncited fragment 'provision for the flesh' adapted to infinitive; Kulish 'не догоджуйте тїлу' is imperative"
+  },
+  {
+   "reference": "1 Peter 2:11",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 6:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Galatians 5:24",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 13,
+   "why": "Owen's paraphrase 'Sin is crucified; it is fastened to the cross' (Kulish: old man crucified)"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 13,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 40:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 14,
+   "why": "re-personed; Owen's 'could not look up' differs from Kulish 'що годї переглянути їх'"
+  },
+  {
+   "reference": "1 Kings 8:38",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 15,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 51:3",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:5",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 3:4",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 9:32",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 5,
+   "why": "Owen adapts the verse: 'it' = mortification (Kulish has 'righteousness' in a parenthesis) and present tense"
+  },
+  {
+   "reference": "Romans 8:9b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:8",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:9a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 7,
+   "why": "Owen's own paraphrase in quotation marks ('Ye believers, that have the Spirit of Christ...')"
+  },
+  {
+   "reference": "Romans 8:10a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Malachi 3:2b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:29",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:30",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:28",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 8,
+   "why": "uncited; Owen adapts to a participle ('looking on Him whom they had pierced'); wording follows John 19:37 Kulish 'на Того, кого прокололи' in modern spelling"
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Matthew 7:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Matthew 7:17-18",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 8,
+   "why": "Owen's dialogue paraphrase ('Yea, but he will never bear figs'), not the verse wording"
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 8,
+   "why": "Kulish 'посадите дерево добре' (plant) loses 'Make the tree good', on which Owen's point (change the tree's nature) rests"
+  },
+  {
+   "reference": "Hosea 7:12",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hosea 7:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hosea 5:13",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 12,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:22",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 16,
+   "why": "Owen re-persons to 'we purify our souls'; Kulish has participle 'Душі ваші очистивши'"
+  },
+  {
+   "reference": "Isaiah 58:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4,
+   "why": "Kulish 58:2 phrases the verse quite differently (питають про путї, допитують про справедливість судів); Owen's KJV wording rendered"
+  },
+  {
+   "reference": "Leviticus 15:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4,
+   "why": "Owen's 'running sore' (the Scripture expression) given as «течу», inflected from Kulish's теча/течиво; reference inferred, Owen cites none"
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 38:5",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 77:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8,
+   "why": "Owen 'communed with his own heart' in 3rd person; Kulish 'думав-гадав я в серцї моїм' is 1st person and differently worded"
+  },
+  {
+   "reference": "John 8:39",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 29:19",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 9,
+   "why": "Kulish has no 'adds drunkenness to thirst' wording (renders 'щоб не пропав, хто пє, і хто смагу терпить')"
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:18",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 10,
+   "why": "Owen's imagined paraphrase of Naaman's thought, not the verse text"
+  },
+  {
+   "reference": "Jude 1:4",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 10,
+   "why": "nominalised adaptation ('turning of the grace of God into wantonness'); Kulish verb form 'обертають на розпусту' reshaped"
+  },
+  {
+   "reference": "Psalms 38:5",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 11,
+   "why": "fragment re-cased/re-personed into Owen's sentence ('that man's wounds stink')"
+  },
+  {
+   "reference": "James 1:15",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 12,
+   "why": "Owen argues from KJV 'finished'; Kulish 'гріх же зроблений' lacks the noun"
+  },
+  {
+   "reference": "Genesis 39:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:14b",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 63:17a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 18,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:17",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 20,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Matthew 17:21",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 22,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Genesis 19:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 2,
+   "why": "Owen's 'Is it not a little one?' as a question; Kulish has a statement"
+  },
+  {
+   "reference": "2 Kings 5:18",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 2,
+   "why": "Owen abridges and re-words Naaman's request"
+  },
+  {
+   "reference": "Hosea 4:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 2,
+   "why": "Owen argues from 'heart' (= understanding); Kulish already has 'розум'"
+  },
+  {
+   "reference": "Proverbs 7:7",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Proverbs 7:23",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hosea 7:11",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:1",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Revelation 3:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:17",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hosea 5:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 10,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 3:12",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 13,
+   "why": "single word 'depart' inflected to fit Owen's conditional"
+  },
+  {
+   "reference": "Hebrews 10:38",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 13,
+   "why": "Owen re-persons 'my soul' to 'God's soul' and adds 'draw back'"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 16,
+   "why": "Owen nominalises 'sealing to the day of redemption'"
+  },
+  {
+   "reference": "Lamentations 3:33",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 63:10",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 16,
+   "why": "single word 'vexed'; Kulish phrases it differently"
+  },
+  {
+   "reference": "Genesis 6:6",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 6:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 17,
+   "why": "Owen nominalises 'crucify afresh ... open shame'; Kulish participial construction doesn't fit"
+  },
+  {
+   "reference": "Psalms 51:3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 11,
+   "why": "Owen re-persons the verse ('thy iniquity may ever be before thee'); Kulish 'гріх мій все передо мною'"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 12,
+   "why": "unmarked adapted allusion ('Him whom thou hast pierced', 'be in bitterness')"
+  },
+  {
+   "reference": "Deuteronomy 32:6",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 12,
+   "why": "re-personed inside the soul's soliloquy ('Do I thus requite the Lord?')"
+  },
+  {
+   "reference": "Hebrews 2:3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 12,
+   "why": "re-personed to first singular"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 12,
+   "why": "adapted to first-person question"
+  },
+  {
+   "reference": "2 Corinthians 7:11",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 20,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 9:27a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 26,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Mark 13:37",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 32,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Luke 21:34a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 32,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 18:23",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 32,
+   "why": "Kulish ('стеріг ся робити кому кривду') lacks 'mine iniquity', which Owen's point (watching one's own iniquity) depends on"
+  },
+  {
+   "reference": "Haggai 1:5",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 32,
+   "why": "Owen's gerund paraphrase 'considering our ways'"
+  },
+  {
+   "reference": "2 Kings 8:13",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 32,
+   "why": "Owen quotes KJV direct speech 'Thou shalt be king of Syria'; Kulish phrases it 'указав менї в тобі царя Сирийського'"
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 34,
+   "why": "proverbial echo 'Thus far it shall go, and no farther', put in the reader's mouth about sin"
+  },
+  {
+   "reference": "Job 37:22",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:22",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:17",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Proverbs 30:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Proverbs 30:4",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 3,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 5,
+   "why": "Owen's recurring noun 'back parts' rendered «спина»; Kulish has the adverb «ззаду»"
+  },
+  {
+   "reference": "John 1:18a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Exodus 34:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 8,
+   "why": "'back parts' as «спина» (see block 5)"
+  },
+  {
+   "reference": "2 Corinthians 3:14",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9,
+   "why": "Owen's own gloss of καταργηθήσεται ('shall be destroyed, or done away'); Kulish has «зникне»"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:12b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9,
+   "why": "re-personed to 'we' ('know as we are known')"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9,
+   "why": "adapted and re-personed ('comprehend that for which we are comprehended')"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9,
+   "why": "Owen's paraphrase 'Now we see him not'"
+  },
+  {
+   "reference": "1 Timothy 6:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 12,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 12,
+   "why": "Owen's paraphrase 'a very beast, and not to have the understanding of a man', differs from Kulish «невіжа»"
+  },
+  {
+   "reference": "Proverbs 30:2",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 15,
+   "why": "single-word allusion 'brutish' rendered «нерозумним, мов скотина»"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 18,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 18,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 18,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 18,
+   "why": "Owen's 'How can ye love him whom ye have not seen?' is a free adaptation (cf. 1 John 4:20), not a verse"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 18,
+   "why": "Owen's adapted 'seeing darkly, as in a glass'"
+  },
+  {
+   "reference": "John 1:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 John 5:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:4",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 19,
+   "why": "re-personed to 'their hearts' / 'his Son' in the objector's voice"
+  },
+  {
+   "reference": "Ephesians 5:8a",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 19,
+   "why": "re-personed 'though we were darkness'"
+  },
+  {
+   "reference": "Ephesians 5:8b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 19,
+   "why": "objector's quotation omits 'as in a glass', which Kulish's verse carries and Owen's answer turns on"
+  },
+  {
+   "reference": "1 John 1:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 1:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 21,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 28,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 9:18",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 4,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:19",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 4,
+   "why": "Owen argues from KJV 'I create (the fruit of the lips)'; Kulish reads 'Я додержу слова'"
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 6,
+   "why": "re-personed 'I am the Amen' (Kulish 'Се глаголе Амінь'); Kulish fragment 'Амінь, сьвідок вірний' kept inside"
+  },
+  {
+   "reference": "Revelation 3:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 11:3",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ezekiel 16:60",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ezekiel 16:61",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 7:11",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Job 42:6",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 8,
+   "why": "Owen's argument is self-abhorrency ('I abhor myself'); Kulish reads 'я зрекаюсь слова мого'"
+  },
+  {
+   "reference": "Psalms 78:37",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "1 John 2:15",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 8,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "John 16:8",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 9,
+   "why": "Owen argues from 'abundantly pardon' (multiply pardon); Kulish has 'на ласку пребагатий'"
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text",
+   "note": "Kulish numbers this verse 14:5; the citation keeps Owen's 14:4"
+  },
+  {
+   "reference": "Psalms 25:9",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 12,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 13,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "2 Kings 5:19",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Micah 2:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 116:7",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 14,
+   "why": "re-personed from the imperative 'Вернись, душе моя'"
+  },
+  {
+   "reference": "Psalms 85:8",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 15,
+   "why": "uncited; re-personed to the soul (Kulish 'щоб тільки вони не вернулись до нерозуму свого')"
+  },
+  {
+   "reference": "Jeremiah 6:14",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:2",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 16,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Habakkuk 1:13",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "John 10:4",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 23,
+   "why": "Owen quotes Christ's first-person 'My sheep know my voice' (cf. 10:27); Kulish 10:4 is third person 'бо знають голос його'"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Luke 24:32",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 23,
+   "why": "re-personed 'your hearts burn within you' (Kulish 'серце наше не горіло в нас')"
+  },
+  {
+   "reference": "Song of Solomon 5:4",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 23,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Genesis 49:4",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5,
+   "why": "Owen re-persons 'unstable as water, I cannot excel'; Kulish's wording differs"
+  },
+  {
+   "reference": "Isaiah 35:3",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5,
+   "why": "unmarked allusion ('hands that hang down… feeble knees') inside the soul's speech, adapted"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5,
+   "why": "unmarked allusion 'more than a conqueror'; Kulish 'побіждаємо' lacks the phrase"
+  },
+  {
+   "reference": "Isaiah 40:27",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5,
+   "why": "re-personed by Owen ('O my soul') — Kulish words reused, address changed"
+  },
+  {
+   "reference": "Isaiah 40:28-31",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 35:7",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5,
+   "why": "Owen adapts the verse to 'my soul/my heart' and 'grass'"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 5,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 123:2",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 7:9b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 6,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 9,
+   "why": "Owen recasts as purpose clause 'that of his fulness we might receive'"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 9,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 9,
+   "why": "re-personed to 'our hearts' and nominalised by Owen"
+  },
+  {
+   "reference": "Isaiah 66:13",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:17-18",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:15-16",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 11,
+   "why": "Owen's own rendering of the Greek χάριν εἰς εὔκαιρον βοήθειαν, 'grace for seasonable help'"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 11,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Jeremiah 31:36",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 12,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 12,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Psalms 9:10",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 14,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:25-27",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 17,
+   "why": "Owen abridges and re-subjects ('He gave himself for the church', omits washing of water)"
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 17,
+   "why": "re-personed and tense changed ('purges our consciences')"
+  },
+  {
+   "reference": "Romans 6:2",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:3",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 17,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "John 16:8",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 21,
+   "why": "Owen's argument turns on 'convince/conviction'; Kulish 'докорить' lacks it"
+  },
+  {
+   "reference": "Zechariah 12:10a",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 26,
+   "why": "Owen relies on KJV 'Spirit of supplications'; Kulish has 'духа ласки й побожностї'"
+  },
+  {
+   "reference": "Zechariah 12:10b",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 26,
+   "source_file": "Kulish (ukr1871) Bible text"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 26,
+   "why": "Owen paraphrases 'to pray with sighs and groans that cannot be uttered'"
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 26,
+   "source_file": "Kulish (ukr1871) Bible text"
+  }
+ ]
+}

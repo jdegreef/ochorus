@@ -245,6 +245,10 @@ export interface BookDetail extends BookSummary {
 	 *  (library/rights). Optional: absent means no claim. */
 	public_domain?: boolean;
 	source_url: string;
+	/** The edition's free-text rights and source note ("Public domain — first
+	 *  published 1898 by … Text from …", or a © credit), in its own language;
+	 *  "" for none. Shown in the book page's "About this text". */
+	attribution?: string;
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
 	/**
@@ -1943,6 +1947,32 @@ export interface SavedQuote extends Quote {
 /** The /quotes index's featured pool — short reviewed quotes, writers interleaved. */
 export const listFeaturedQuotes = (f?: Fetch) =>
 	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
+
+/** A writer offered as an answer in "Whose words?" — always with a portrait. */
+export interface QuoteGameChoice {
+	slug: string;
+	name: string;
+	photo_url: string;
+	birth_year: number | null;
+	death_year: number | null;
+}
+
+/** One day of "Whose words?" (/quotes/game/): the same for every reader on a
+ *  date. `answer` is one of `choices`' slugs; the quote is that writer's. */
+export interface QuoteGame {
+	/** Puzzle No. — 1 on the game's first day. */
+	number: number;
+	/** The date asked for, `YYYY-MM-DD`. */
+	date: string;
+	quote: Quote;
+	answer: string;
+	choices: QuoteGameChoice[];
+}
+
+/** The puzzle for `date` — the reader's LOCAL `YYYY-MM-DD` ($lib/streak
+ *  `localToday`), so the game turns over at their midnight, not the server's. */
+export const getQuoteGame = (date: string, f?: Fetch) =>
+	apiFetch<QuoteGame>(`/api/library/quotes/game/${date}/`, {}, f);
 
 /** A quotation's whole source paragraph, as plain text — "read it in context". */
 export interface QuoteContext {

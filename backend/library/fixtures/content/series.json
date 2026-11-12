@@ -1150,6 +1150,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "key-teachings"
+  ],
+  "language": "am",
+  "title": "ዋና ዋና ትምህርቶች",
+  "description": "Ochorus ያዘጋጃቸው፣ የአንድን ጥንታዊ ጸሐፊ ትምህርት እምብርት በአጭሩና በታማኝነት የሚያቀርቡ መመሪያዎች — እያንዳንዱ ምዕራፍ በጥያቄዎችና በጸሎት ይደመደማል፤ አንባቢውንም ወደ ጸሐፊው የራሱ መጻሕፍት ይመራል።",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "tell-me-the-story"
   ],
   "language": "hi",
@@ -1261,6 +1274,32 @@
   "description": "कलीसिया की पूरी कहानी में प्रार्थना, हर युग के लिये एक खण्ड: पुराने नियम की प्रार्थनाएँ, प्रार्थना के शिक्षक यीशु, प्रेरित, और हर सदी तथा हर देश के प्रार्थना करनेवाले स्त्री-पुरुष, आज तक। हर छोटा अध्याय एक मुख्य वचन रखता है, एक कहानी सुनाता है, अतीत की एक आवाज़ सुनाता है, और अन्तर्दृष्टियों, एक अभ्यास और एक प्रार्थना के साथ समाप्त होता है।",
   "created_at": "2026-11-09T12:00:00Z",
   "updated_at": "2026-11-09T12:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-lamplighters-of-gloamhaven"
+  ],
+  "language": "fr",
+  "title": "Les Allumeurs de Gloamhaven",
+  "description": "Une série d’aventures pour les jeunes lecteurs, dans un pays sous un soleil maudit. Deux enfants, une lampe qu’on ne peut ni acheter ni voler, et la longue route vers la montagne où la Flamme a commencé : une histoire de lumière, de courage et de la grâce que nul ne peut mériter.",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-lamplighters-of-gloamhaven"
+  ],
+  "language": "es",
+  "title": "Los Faroleros de Gloamhaven",
+  "description": "Una serie de aventuras para lectores jóvenes, ambientada en una tierra bajo un sol maldito. Dos niños, una lámpara que no se puede comprar ni robar, y el largo camino hacia la montaña donde empezó la Llama: una historia de luz, de valentía y de la gracia que nadie puede ganar.",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
  }
 }
 ]

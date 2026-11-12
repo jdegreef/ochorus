@@ -359,6 +359,76 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    5: {
+        "slug": "seven-times-a-day",
+        "book": {
+            "publication_year": 2026,
+            "title": "Seven Times a Day",
+            "subtitle": "Monks, Mystics and Missionaries",
+            "cover_url": "/covers/art/seven-times-a-day.jpg",
+            "cover_color": covers.ink_safe("#2a3150"),  # a morning slate
+            "description": (
+                "Seventeen short chapters on how the church prayed from about AD 500 to "
+                "1500: Benedict's hours of prayer, the praying church of Ethiopia, the "
+                "Church of the East in China, Columba's Iona, Gregory of Narek, Anselm, "
+                "Bernard, Francis and Clare of Assisi, Thomas Aquinas, The Cloud of "
+                "Unknowing, the monks of Mount Athos, Julian of Norwich, Catherine of Siena, "
+                "Wycliffe, Hus and Thomas à Kempis."
+            ),
+            "about_html": (
+                "<p>This book covers a thousand years, from the fall of the old Roman world "
+                "in the West to the eve of the Reformation. People sometimes picture those "
+                "centuries as a dark and empty time, but for the life of prayer they were "
+                "anything but empty. In monasteries and villages, on islands and mountains, "
+                "in great cities and along the trade roads of Asia, believers kept praying "
+                "and taught the next generation to pray. It is Volume 5 of A Cloud of "
+                "Praying Witnesses, an Ochorus series that follows the people of God at "
+                "prayer from the Old Testament to the church around the world today.</p>"
+                "<p>Its seventeen chapters move in four parts. With the monks and "
+                "missionaries we keep Benedict's seven hours of prayer, find the ancient "
+                "church of Ethiopia, follow the Church of the East to China and land on "
+                "Iona with Columba. Then we seek God's face with Gregory of Narek, Anselm, "
+                "Bernard, Francis and Clare; learn from teachers and mystics such as Thomas "
+                "Aquinas, the monks of Mount Athos, Julian of Norwich and Catherine of "
+                "Siena; and come back to the Word with Wycliffe, Hus and Thomas à "
+                "Kempis.</p>"
+                "<p>Every chapter tells its story from the oldest sources, says plainly "
+                "where legend takes over and when a famous prayer is not really by the "
+                "person whose name it carries. It quotes the witnesses word for word from "
+                "their books in the library where it can, and ends with three key insights, "
+                "a word for today, a practice to try, a closing prayer and questions for "
+                "reflection. Two appendices gather every insight by theme and every "
+                "Scripture in Bible order. Scripture is quoted from the Open Word Bible "
+                "(OWB), Balanced edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is Seven Times a Day about?",
+                    "answer": "How Christians prayed through the thousand years from about AD 500 to 1500: seventeen short chapters on monks and missionaries, seekers of God's face, teachers and mystics, and the first reformers, from Benedict and the church of Ethiopia to Julian of Norwich, Jan Hus and Thomas à Kempis.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first four volumes follow prayer in the Old Testament, the teaching of Jesus, the first church, and the martyrs and desert fathers. This fifth volume follows the monks, mystics and missionaries of the next thousand years, and later volumes follow the praying men and women of every century and every part of the world.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Why is it called Seven Times a Day?",
+                    "answer": "The title comes from Psalm 119:164, \"I praise you seven times every day\", the verse Benedict used in his Rule for the hours of prayer that monks kept through the day. The book asks what that rhythm can teach ordinary believers today.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes seventeen days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 
