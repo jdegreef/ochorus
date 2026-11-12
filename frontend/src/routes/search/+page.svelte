@@ -23,6 +23,7 @@
 		type TopicSummary
 	} from '$lib/library-public';
 	import { getLang } from '$lib/lang.svelte';
+	import { minQueryLength } from '$lib/searchHits';
 	import { i18n } from '$lib/i18n.svelte';
 	import { apiFetch } from '$lib/api';
 	import { readJSON, writeJSON } from '$lib/persisted';
@@ -246,7 +247,7 @@
 		const type = nav.types.get(key);
 		const position = nav.keys.indexOf(key) + 1;
 		const query = ran || q.trim();
-		if (!type || position < 1 || query.length < 2) return;
+		if (!type || position < 1 || query.length < minQueryLength(getLang())) return;
 		void recordSearchClick(query, type, position, getLang()).catch(() => {});
 	}
 	const activeKey = $derived(
@@ -465,7 +466,7 @@
 	/** Re-run the current query after an error (the retry button). */
 	function retrySearch() {
 		const term = q.trim();
-		if (term.length >= 2) runSearch(term);
+		if (term.length >= minQueryLength(getLang())) runSearch(term);
 	}
 
 	/**
@@ -507,7 +508,7 @@
 		scope = nextScope;
 		typeRows = null;
 		typeSeq++;
-		if (term.length < 2) {
+		if (term.length < minQueryLength(getLang())) {
 			clearResults();
 			// Arriving from "search inside this book" lands here with no query
 			// yet. The search itself is what usually carries the shelf's name
@@ -522,7 +523,7 @@
 
 	function onInput() {
 		const term = q.trim();
-		if (term.length < 2) {
+		if (term.length < minQueryLength(getLang())) {
 			applyTerm(term); // drops any pending search and clears the list
 			syncUrl('');
 			return;
@@ -633,7 +634,7 @@
 	/** Remember a query that led somewhere (most-recent-first, deduped, capped). */
 	function recordRecent(term: string) {
 		const t2 = term.trim();
-		if (t2.length < 2) return;
+		if (t2.length < minQueryLength(getLang())) return;
 		recent = [t2, ...recent.filter((r) => r.toLowerCase() !== t2.toLowerCase())].slice(0, 6);
 		writeJSON(RECENT_KEY, recent);
 	}
@@ -860,7 +861,7 @@
 		     loading the row stays mounted (unmounting it made the pinned bar, and
 		     everything under it, jump on every search) but is dimmed and inert:
 		     its counts, and a click on one, would belong to the previous query. -->
-		{#if hasFacets && !searchError && q.trim().length >= 2}
+		{#if hasFacets && !searchError && q.trim().length >= minQueryLength(getLang())}
 			<div
 				class="search-tabs mt-3 lg:max-w-3xl"
 				class:is-stale={stale}
@@ -1014,7 +1015,7 @@
 					{t('error.tryAgain')}
 				</button>
 			</p>
-		{:else if q.trim().length < 2}
+		{:else if q.trim().length < minQueryLength(getLang())}
 			{@render waysIn(true)}
 		{:else if ran && hits.length === 0}
 			<!-- Nothing found. The old version stopped at one line and, if the fuzzy

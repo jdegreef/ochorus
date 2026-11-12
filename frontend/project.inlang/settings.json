@@ -13,7 +13,8 @@
     "fr",
     "am",
     "vi",
-    "ko"
+    "ko",
+    "ja"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

@@ -494,8 +494,8 @@
 	}
 	/* These scripts' display faces have no italic, so the browser would fake
 	   a slant. (app.css keeps Korean upright site-wide, but this scoped italic
-	   outranks it, so Korean is named here too.) */
-	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am), :lang(ko)) .footer-blessing-text {
+	   outranks it, so Korean and Japanese are named here too.) */
+	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am), :lang(ko), :lang(ja)) .footer-blessing-text {
 		font-style: normal;
 	}
 

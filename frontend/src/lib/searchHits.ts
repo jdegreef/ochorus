@@ -27,6 +27,18 @@ import type { Segment } from './marks.svelte';
 /** Ignore one-character words: they match everywhere and highlight nothing useful. */
 const MIN_WORD = 2;
 
+/** Scripts written without spaces: a query word ends at their punctuation too,
+ *  as the server's `query_tokens` splits on any non-word character. */
+const CJK_BREAK = /[\s、。・，．！？：；「」『』（）［］【】〈〉《》…]+/;
+
+/**
+ * The shortest query worth sending, as the API's `search.min_query_len` has it:
+ * one character in Japanese, where a single kanji (神, 愛, 罪) is a whole word.
+ */
+export function minQueryLength(lang: string): number {
+	return lang === 'ja' ? 1 : 2;
+}
+
 /** A ceiling on wrapped ranges, so a short query can't split thousands of nodes. */
 const MAX_HITS = 200;
 
@@ -37,12 +49,14 @@ const MAX_HITS = 200;
  * rather than searching for them literally — a reader who typed `prayer -healing`
  * means the word prayer, not the punctuation.
  */
+const isUnspaced = (w: string) => /[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff]/.test(w);
+
 export function queryWords(query: string): string[] {
 	return (query ?? '')
 		.replace(/["']/g, ' ')
-		.split(/\s+/)
+		.split(CJK_BREAK)
 		.map((w) => w.replace(/^-+/, '').trim())
-		.filter((w) => w.length >= MIN_WORD && w.toUpperCase() !== 'OR')
+		.filter((w) => w.length >= (isUnspaced(w) ? 1 : MIN_WORD) && w.toUpperCase() !== 'OR')
 		// A Korean word loses its particle, as on the server (koParticles.ts):
 		// a search for 은혜는 matched a chapter saying 은혜를, so look for 은혜.
 		.map((w) => stripParticle(w).toLowerCase());

@@ -1380,13 +1380,13 @@ class AdminSearchGapView(APIView):
 
     def get(self, request):
         from ..languages import live_codes
-        from ..search import MIN_QUERY_LEN, count_by_type, hit_work, search_library
+        from ..search import count_by_type, hit_work, min_query_len, search_library
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
-        if len(q) < MIN_QUERY_LEN or not language:
+        if not language or len(q) < min_query_len(language):
             return Response(
-                {"detail": f"q ({MIN_QUERY_LEN}+ chars) and language are required."},
+                {"detail": f"q ({min_query_len(language)}+ chars) and language are required."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -1590,13 +1590,13 @@ class AdminSearchPreviewView(APIView):
     """
 
     def get(self, request):
-        from ..search import search_library
+        from ..search import min_query_len, search_library
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
-        if len(q) < MIN_QUERY_LEN or not language:
+        if not language or len(q) < min_query_len(language):
             return Response(
-                {"detail": f"q ({MIN_QUERY_LEN}+ chars) and language are required."},
+                {"detail": f"q ({min_query_len(language)}+ chars) and language are required."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
         return Response({"query": q, "results": search_library(q, language)})

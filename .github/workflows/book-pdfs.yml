@@ -89,11 +89,11 @@ jobs:
             echo "editions=$list" >> "$GITHUB_OUTPUT"
           fi
 
-      # Arabic, Devanagari, Ethiopic and Hangul have no glyphs in EB Garamond;
+      # Arabic, Devanagari, Ethiopic, Hangul and kana/kanji have no glyphs in EB Garamond;
       # the print CSS falls back to the system's fonts, and the runner has none
       # for them. fonts-noto-core carries Arabic, Devanagari and Ethiopic;
-      # Korean (Noto Serif CJK KR) is only in fonts-noto-cjk.
-      - name: Fonts for Arabic, Hindi, Amharic and Korean editions
+      # Korean and Japanese (Noto Serif CJK KR / JP) are only in fonts-noto-cjk.
+      - name: Fonts for Arabic, Hindi, Amharic, Korean and Japanese editions
         run: sudo apt-get install -y --no-install-recommends fonts-noto-core fonts-noto-cjk >/dev/null
 
       - name: Install uv

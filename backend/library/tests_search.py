@@ -28,6 +28,7 @@ from .models import (
     Topic,
     TopicBook,
     TopicSermon,
+    TopicTranslation,
 )
 from .search import search_library
 
@@ -642,7 +643,7 @@ class StoredSearchVectorTests(TestCase):
             search_vector=search_query("prayer", "en")
         )
         sql, params = matched.query.sql_with_params()
-        with search_module._index_scans(), connection.cursor() as cur:
+        with search_module._index_scans("en"), connection.cursor() as cur:
             cur.execute("EXPLAIN " + sql, params)
             plan = "\n".join(row[0] for row in cur.fetchall())
         self.assertNotIn("Seq Scan on library_chapter", plan)
@@ -654,7 +655,7 @@ class StoredSearchVectorTests(TestCase):
                 return cur.fetchone()[0]
 
         before = seqscan()
-        with search_module._index_scans():
+        with search_module._index_scans("en"):
             self.assertEqual(seqscan(), "off")
         # The test runs inside a transaction, where SET LOCAL would otherwise
         # outlive the block — exactly the case the restore exists for.
@@ -1870,3 +1871,94 @@ class FallbackSnippetTests(SimpleTestCase):
         )
         head = search_module.fallback_snippet("Grace, mercy, and peace from God.", "zzz", radius=7)
         self.assertEqual(head, "Grace, mercy…")
+
+
+class JapaneseSearchTests(TestCase):
+    """Japanese has no spaces between words, so it is matched by substring.
+
+    Runs on both backends: on Postgres this is the path that keeps `ja` off the
+    tsvectors, where a whole clause is one lexeme and 恵み could never match.
+    """
+
+    def setUp(self):
+        author = Author.objects.create(slug="andrew-murray", name="アンドリュー・マーレー")
+        book = Book.objects.create(
+            author=author, slug="humility", language="ja", title="謙遜", is_published=True
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="謙遜の美しさ",
+            body_html="<p>神の恵みを受けた者は、へりくだって主のうちにとどまります。</p>",
+        )
+        Sermon.objects.create(
+            author=author, slug="abide", language="ja", title="わたしにつながっていなさい",
+            scripture_ref="ヨハネによる福音書 15:4",
+            body_html="<p>聖霊によって生きる者は、恵みが日ごとに新しいことを知っています。</p>",
+        )
+
+    def _types(self, q):
+        return [h["type"] for h in search_library(q, "ja")]
+
+    def test_a_word_inside_a_clause_is_found(self):
+        types = self._types("恵み")
+        self.assertIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_every_spaced_word_must_match(self):
+        self.assertIn("chapter", self._types("恵み 主"))
+        self.assertNotIn("chapter", self._types("恵み 聖霊"))
+        self.assertIn("sermon", self._types("恵み 聖霊"))
+
+    def test_punctuation_separates_words(self):
+        self.assertIn("chapter", self._types("恵み、主"))
+
+    def test_or_matches_either_word(self):
+        # 謙遜 is only in the chapter, 聖霊 only in the sermon: OR finds both.
+        types = self._types("謙遜 OR 聖霊")
+        self.assertIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_exclusion_excludes(self):
+        # The chapter's title says 謙遜; the sermon does not.
+        types = self._types("恵み -謙遜")
+        self.assertNotIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_a_single_kanji_is_a_query(self):
+        res = APIClient().get("/api/library/search/", {"q": "神", "language": "ja"})
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["results"], "a one-kanji query returned nothing")
+
+    def test_snippet_keeps_the_text_before_the_match(self):
+        from .search import fallback_snippet
+
+        text = "あ" * 200 + "神の恵み" + "い" * 200
+        snippet = fallback_snippet(text, "恵み")
+        # Unspaced: no word boundary to back off to, so the lead is kept.
+        self.assertIn("神の⟦恵み⟧", snippet)
+        self.assertTrue(snippet.startswith("…あ"))
+
+    def test_topics_match_only_the_japanese_shelf(self):
+        topic = Topic.objects.create(slug="grace", title="Grace", is_published=True)
+        TopicTranslation.objects.create(topic=topic, language="ja", title="恵みの棚")
+        TopicTranslation.objects.create(topic=topic, language="es", title="Gracia")
+        self.assertIn("topic", self._types("恵み"))
+        self.assertNotIn("topic", self._types("Gracia"))
+        self.assertNotIn("topic", self._types("Grace"))
+
+    def test_snippet_marks_the_match(self):
+        [hit] = [h for h in search_library("恵み", "ja") if h["type"] == "chapter"]
+        self.assertIn("⟦", hit["snippet"])
+
+    def test_counts_and_pages_agree_with_results(self):
+        from .search import count_by_type, page_by_type
+
+        counts, _ = count_by_type("恵み", "ja")
+        self.assertEqual(counts.get("chapter"), 1)
+        self.assertEqual(counts.get("sermon"), 1)
+        self.assertEqual(len(page_by_type("恵み", "ja", "chapter")), 1)
+
+    def test_only_japanese_skips_the_vectors(self):
+        from .fts import uses_fts
+
+        self.assertFalse(uses_fts("ja"))
+        self.assertEqual(uses_fts("ko"), connection.vendor == "postgresql")

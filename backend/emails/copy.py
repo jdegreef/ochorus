@@ -46,6 +46,8 @@ FRIEND: dict[str, str] = {
     "vi": "bạn",
     # Not "friend": the copy greets "{name}님", so an unnamed reader is 독자님.
     "ko": "독자",
+    # The copy greets "{name}様", so an unnamed reader is 読者様.
+    "ja": "読者",
 }
 
 
