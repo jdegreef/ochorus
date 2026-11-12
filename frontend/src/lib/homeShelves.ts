@@ -223,8 +223,9 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		// cross-navigation row, and the page already hides the section when
 		// there are none.
 		listTopics(lang).catch(() => []),
-		// Fetched only for the library-breadth count /about shows — tolerant at
-		// runtime, so a 0 just drops the sermon figure rather than breaking it.
+		// For the library-breadth count /about shows and the "Tonight" pool —
+		// tolerant at runtime, so an empty list just drops the sermon figure and
+		// the sermon cards rather than breaking the page.
 		shelf(listSermons(lang)),
 		// The hubs this language has something in — tolerant even while
 		// building, like topics: a decorative link band that simply hides.

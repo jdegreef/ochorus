@@ -24,7 +24,7 @@
 	 *
 	 * Evening only (19:00–04:00 on the reader's clock), and decided at MOUNT:
 	 * the page is prerendered, so the baked HTML has no shelf and the clock is
-	 * read where the reader is. Re-checked when the tab comes back into view, so
+	 * read where the reader is. Re-checked every 5 minutes and when the tab comes back into view, so
 	 * a tab left open from the afternoon gains it at night. Every card is a
 	 * `BookCard` (the home shelves' one cover card): a book wears its cover, a
 	 * sermon the plate `sermonCoverFace` sets for it (the resume card's), and a
@@ -41,7 +41,13 @@
 			if (document.visibilityState === 'visible') now = new Date();
 		};
 		document.addEventListener('visibilitychange', onVisible);
-		return () => document.removeEventListener('visibilitychange', onVisible);
+		// A tab left in view across 19:00 / 04:00 follows the clock too, on the
+		// hero's beat (HomeHero ticks every 5 minutes for the same reason).
+		const tick = setInterval(onVisible, 5 * 60_000);
+		return () => {
+			document.removeEventListener('visibilitychange', onVisible);
+			clearInterval(tick);
+		};
 	});
 
 	const shown = $derived(now ? tonightShelf(items, now, readingMinutes) : []);

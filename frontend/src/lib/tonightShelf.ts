@@ -1,9 +1,9 @@
 import { pickByDay } from '$lib/dailyPicks';
 import { editionKind } from '$lib/edition';
 import { DEFAULT_WPM } from '$lib/readingPace.svelte';
+import type { SermonFaceSource } from '$lib/sermonArt';
 import {
 	toCoverBook,
-	type Author,
 	type AuthorBio,
 	type BookSummary,
 	type CoverBook,
@@ -19,7 +19,7 @@ import {
  *
  * - `tonightPool` runs at BUILD time inside the home snapshot (`homeShelves`),
  *   from the lists the snapshot already fetches — no request of its own. It
- *   keeps what is ≤ 20 min at the default pace in THIS language (the lists are
+ *   keeps what is under 20 min at the default pace in THIS language (the lists are
  *   per-language rows; there is no English fallback, so a locale with few short
  *   works simply has a small pool), and picks a varied handful, kinds
  *   interleaved.
@@ -31,8 +31,12 @@ import {
  *   as a gap, not an offer.
  */
 
-/** The promise in the shelf's title. */
+/** The promise in the shelf's title: "in under N minutes". */
 export const TONIGHT_MAX_MINUTES = 20;
+/** Whether a card's printed minutes keep that promise — strictly under, so a
+ *  "20 min read" never sits beneath "under 20 minutes". One rule for both
+ *  halves, so the pool and the shelf cannot disagree at the default pace. */
+const underTheLimit = (minutes: number) => minutes < TONIGHT_MAX_MINUTES;
 /** Below this many works the shelf hides rather than look half-empty. */
 export const TONIGHT_MIN_ITEMS = 4;
 /** How many cards the shelf shows: one row of six on a desktop, a rail on a phone. */
@@ -44,10 +48,7 @@ export const EVENING_FROM = 19;
 export const EVENING_UNTIL = 4;
 
 /** A sermon as the shelf draws it (`sermonCoverFace` + its time). */
-export type TonightSermon = Pick<
-	SermonSummary,
-	'slug' | 'language' | 'title' | 'scripture_ref' | 'word_count'
-> & { author: Pick<Author, 'slug' | 'name' | 'birth_year'> };
+export type TonightSermon = SermonFaceSource & Pick<SermonSummary, 'word_count'>;
 
 /** A writer whose long biography is a one-sitting read. */
 export interface TonightWriter {
@@ -87,7 +88,7 @@ export function isEvening(now: Date): boolean {
 
 /**
  * The snapshot's pool for `language`: up to `PER_KIND` books, sermons and
- * biographies of at most `TONIGHT_MAX_MINUTES` at the default pace, by
+ * biographies of under `TONIGHT_MAX_MINUTES` at the default pace, by
  * different writers where the library allows, interleaved book · sermon ·
  * biography so the first cards already show the range. Full texts before
  * young-reader editions (`<base>-children` / `-teens`): in most languages the
@@ -103,15 +104,31 @@ export function tonightPool(
 	language: string,
 	day: number
 ): TonightItem[] {
-	const cap = TONIGHT_MAX_MINUTES * DEFAULT_WPM;
-	const fits = (words: number | null | undefined) => !!words && words > 0 && words <= cap;
+	// The minutes the card will print at the default pace (`readingMinutes`'
+	// rounding), kept strictly under the title's "under N minutes".
+	const fits = (words: number | null | undefined) =>
+		!!words && words > 0 && underTheLimit(Math.max(1, Math.round(words / DEFAULT_WPM)));
 
 	const short = lists.books.filter((b) => b.language === language && fits(b.word_count));
 	const full = short.filter((b) => !editionKind(b.slug));
 	const books = pickByDay(full, PER_KIND, day, (b) => b.author.slug);
 	if (books.length < PER_KIND) {
-		const young = short.filter((b) => editionKind(b.slug));
-		books.push(...pickByDay(young, PER_KIND - books.length, day, (b) => b.author.slug));
+		// Never a young-reader edition beside its own full text (the slug
+		// convention is the link): the shelf would offer one work twice.
+		const picked = new Set(books.map((b) => b.slug));
+		const young = short.filter((b) => {
+			const kind = editionKind(b.slug);
+			return kind && !picked.has(b.slug.slice(0, -(kind.length + 1)));
+		});
+		books.push(
+			...pickByDay(
+				young,
+				PER_KIND - books.length,
+				day,
+				(b) => b.author.slug,
+				books.map((b) => b.author.slug)
+			)
+		);
 	}
 	const bookAuthors = books.map((b) => b.author.slug);
 
@@ -124,7 +141,8 @@ export function tonightPool(
 	);
 
 	const writers = pickByDay(
-		lists.authors.filter((a) => a.has_long_bio && fits(a.bio_word_count)),
+		// A count > 0 IS a long bio in this language (0 without one).
+		lists.authors.filter((a) => fits(a.bio_word_count)),
 		PER_KIND,
 		day,
 		(a) => a.slug,
@@ -176,7 +194,7 @@ export function tonightShelf(
 	if (!isEvening(now)) return [];
 	const fit = pool.filter((item) => {
 		const words = wordsOf(item);
-		return words > 0 && minutesOf(words) <= TONIGHT_MAX_MINUTES;
+		return words > 0 && underTheLimit(minutesOf(words));
 	});
 	return fit.length < TONIGHT_MIN_ITEMS ? [] : fit.slice(0, TONIGHT_SHOWN);
 }

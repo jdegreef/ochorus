@@ -52,7 +52,7 @@ describe('tonightPool', () => {
 	const lists = {
 		books: [
 			book('short-a', 'a', 3000),
-			book('short-b', 'b', 3900),
+			book('short-b', 'b', 3800),
 			book('long', 'c', 90_000),
 			book('no-count', 'd', 0),
 			book('pilgrims-progress-children', 'bunyan', 3500),
@@ -60,14 +60,15 @@ describe('tonightPool', () => {
 		],
 		sermons: [
 			sermon('s1', 'f', 2500),
-			sermon('s2', 'g', 4000),
+			sermon('s2', 'g', 3800),
+			sermon('s-twenty', 'j', 4000),
 			sermon('s-long', 'h', 8000),
 			sermon('s-es', 'i', 2000, 'es')
 		],
-		authors: [writer('w1', 2600), writer('w2', 9000), writer('w3', 2000, false), writer('w4')]
+		authors: [writer('w1', 2600), writer('w2', 9000), writer('w3', 0, false), writer('w4')]
 	};
 
-	it('keeps only works of at most 20 minutes at the default pace, in this language', () => {
+	it('keeps only works of under 20 minutes at the default pace, in this language', () => {
 		const pool = tonightPool(lists, 'en', 20000);
 		const keys = pool.map(tonightKey).sort();
 		expect(keys).toEqual(
@@ -80,7 +81,7 @@ describe('tonightPool', () => {
 				'bio:w1'
 			].sort()
 		);
-		expect(pool.every((i) => wordsOf(i) > 0 && wordsOf(i) <= 4000)).toBe(true);
+		expect(pool.every((i) => wordsOf(i) > 0 && Math.round(wordsOf(i) / 200) < 20)).toBe(true);
 	});
 
 	it('is per-language: another language gets only its own rows, never English', () => {
@@ -94,6 +95,39 @@ describe('tonightPool', () => {
 		expect(pool.slice(0, 3).map((i) => i.kind)).toEqual(['book', 'sermon', 'bio']);
 		const books = pool.filter((i) => i.kind === 'book').map(tonightKey);
 		expect(books.at(-1)).toBe('book:pilgrims-progress-children');
+	});
+
+	it('never backfills a young-reader edition beside its own full text', () => {
+		const pool = tonightPool(
+			{
+				...lists,
+				books: [
+					book('pilgrims-progress', 'bunyan', 3000),
+					book('pilgrims-progress-children', 'bunyan', 2000),
+					book('pilgrims-progress-teens', 'bunyan', 2500),
+					book('other-children', 'x', 1500)
+				]
+			},
+			'en',
+			20000
+		);
+		expect(
+			pool
+				.filter((i) => i.kind === 'book')
+				.map(tonightKey)
+				.sort()
+		).toEqual(['book:other-children', 'book:pilgrims-progress']);
+	});
+
+	it('keeps a 20-minute work off a shelf promising "under 20 minutes"', () => {
+		const keys = tonightPool(lists, 'en', 20000).map(tonightKey);
+		expect(keys).not.toContain('sermon:s-twenty');
+		const shelf = tonightShelf(
+			[...tonightPool(lists, 'en', 20000), ...tonightPool(lists, 'en', 20000)],
+			new Date(2026, 10, 12, 21),
+			() => 20
+		);
+		expect(shelf).toEqual([]);
 	});
 
 	it('skips biographies when the API does not send their length', () => {
