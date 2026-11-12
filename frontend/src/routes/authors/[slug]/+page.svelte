@@ -483,9 +483,7 @@
 	     biography, articles, the Q&A — keeps a reading measure, start-aligned
 	     on the same edge rather than centred, so the page has one left edge.
 	     Focus mode centres the biography alone, as the chapter reader is. -->
-	<div>
-		<Breadcrumb items={crumbs} />
-	</div>
+	<Breadcrumb items={crumbs} />
 
 	<!-- The masthead, laid out as the book page's hero (AuthorHero): the
 	     portrait on the start side; the era, the name and who they were in one
@@ -643,9 +641,9 @@
 		>
 			<!-- Tabs centred when they fit, start-aligned when they don't (plain
 			     `justify-center` on a scroller pushed the first tabs out of scroll
-			     reach). The rule spans the reading column, not the page; the nav
-			     stays full-width so its ground still covers text scrolling under. -->
-			<div class="w-full border-b border-border">
+			     reach). The rule spans the page column, as the shelves under it; the
+			     nav's ground covers text scrolling under. -->
+			<div class="border-b border-border">
 				<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
 					{#each navItems as item (item.id)}
 						<li>
@@ -784,16 +782,13 @@
 		</div>
 
 		<!-- Lifespan timeline: their own milestones when curated, else the bare
-		     lifespan bar (see LifeTimeline). Held to the bio's start-aligned
-		     column: the bar centres itself in whatever holds it. -->
-		<div class="max-w-[40rem]">
-			<LifeTimeline
-				birthYear={author.birth_year}
-				deathYear={author.death_year}
-				milestones={author.milestones}
-				labels={getLang() === 'en'}
-			/>
-		</div>
+		     lifespan bar (see LifeTimeline), on the bio's start-aligned column. -->
+		<LifeTimeline
+			birthYear={author.birth_year}
+			deathYear={author.death_year}
+			milestones={author.milestones}
+			labels={getLang() === 'en'}
+		/>
 		{/if}
 
 		<!-- Biography. The band — not the page — carries the reader's CSS variables,
@@ -1259,6 +1254,11 @@
 			border-block-start: 0;
 			border-inline-start: 1px solid var(--border);
 		}
+	}
+	/* The read button keeps a button's width when the row runs the page
+	   column alone (a lone book item would stretch it ~70rem). */
+	.start-book .btn {
+		max-width: 22rem;
 	}
 	.start-title {
 		margin-top: 0.15rem;

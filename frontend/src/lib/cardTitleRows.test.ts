@@ -14,7 +14,8 @@ const read = (p: string) => readFileSync(join(process.cwd(), 'src', p), 'utf-8')
 const CARDS = [
 	'lib/components/BookCard.svelte',
 	'lib/components/ShelfBook.svelte',
-	'lib/components/ArticleShelf.svelte'
+	'lib/components/ArticleShelf.svelte',
+	'routes/articles/+page.svelte'
 ];
 
 describe('cover card titles', () => {

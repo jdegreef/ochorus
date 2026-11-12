@@ -235,11 +235,16 @@
 		   loading. On a phone the bands abut, the colour change is the divide,
 		   and each keeps a short foot: the gap between two cards is the foot
 		   plus the section's top. A wide screen keeps the bare strip, where it
-		   reads as the margin between chapters. */
+		   reads as the margin between chapters. A plain section (On this day,
+		   the daily shelf) keeps that short foot itself above a band, so its
+		   last card never sits on the band's coloured edge. */
 		@media (max-width: 639.98px) {
 			.home-dash > :is(.page-band, .section-band, .night-band) {
 				margin-block-start: 0;
 				padding-block-end: 1.5rem;
+			}
+			.home-dash > :not(.page-band, .section-band, .night-band):has(+ :is(.page-band, .section-band, .night-band)) {
+				margin-block-end: 1.5rem;
 			}
 		}
 	}
