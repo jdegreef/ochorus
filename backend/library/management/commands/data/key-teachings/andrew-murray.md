@@ -896,7 +896,7 @@ What does Murray mean by waiting? Not idleness, and not simply patience in troub
 
 > I have waited for thy salvation, O LORD. GENESIS 49:18
 
-We have already met the foundation of this in his teaching on the creature. A creature lives by receiving. Waiting is simply that dependence made into a habit of the heart. In the introduction to the book Murray draws the comparison with breathing: even the regenerate man, he says, has no power of goodness in himself, and “waiting on God is just as indispensable, and must be just as continuous and unbroken, as the breathing that maintains his natural life.”
+We have already met the foundation of this in his teaching on the creature. A creature lives by receiving. Waiting is simply that dependence made into a habit of the heart. In the first day’s reading Murray draws the comparison with breathing: even the regenerate man, he says, has no power of goodness in himself, and “waiting on God is just as indispensable, and must be just as continuous and unbroken, as the breathing that maintains his natural life.”
 
 ## Praying and waiting
 

@@ -1958,8 +1958,8 @@ class BruisedReedRepairTests(SimpleTestCase):
 
 
 class IntercessionDisplayLineTests(SimpleTestCase):
-    """`ministry-of-intercession`: the opening poem's signature, in all six
-    editions. See its `wrapped_blocks` entry in `corrections.py`."""
+    """`ministry-of-intercession`: the opening poem's signature, in every
+    edition. See its `wrapped_blocks` entry in `corrections.py`."""
 
     SLUG = "ministry-of-intercession"
     HEADS = {
@@ -1969,6 +1969,7 @@ class IntercessionDisplayLineTests(SimpleTestCase):
         "hi": "एफ़. आर. हैवरगल।",
         "pt": "F. R. Havergal.",
         "sw": "F. R. Havergal.",
+        "vi": "F. R. Havergal.",
     }
 
     def _opening(self, lang):

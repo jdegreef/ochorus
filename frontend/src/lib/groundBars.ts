@@ -84,6 +84,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'mortification-of-sin-teens': 0.110,
 	'necessity-of-prayer': 0.050,
 	'on-the-making-of-man': 0.025,
+	'open-your-mouth-wide': 0.110,
 	'orthodoxy-teens': 0.110,
 	'pandita-ramabai-a-life-children': 0.110,
 	'paradise-lost': 0.110,

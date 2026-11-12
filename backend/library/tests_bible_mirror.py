@@ -57,6 +57,11 @@ class VieKtRepairTests(SimpleTestCase):
     def test_mojibake_word(self):
         self.assertEqual(self.clean("Cha ðýõòc nên"), "Cha được nên")
 
+    def test_a_genuine_capital_o_grave_is_left_alone(self):
+        # Rev 1:4, 1:8, 4:8: decoding CÒN as cp1258 would give C + U+0309.
+        text = "ĐẤNG HIỆN CÓ, ĐÃ CÓ, VÀ CÒN ĐẾN"
+        self.assertEqual(self.clean(text), text)
+
     def test_ordinary_vietnamese_is_untouched(self):
         for text in (
             "Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con một của Ngài",
@@ -267,6 +272,13 @@ class KorOldRepairTests(SimpleTestCase):
         once = self.clean("`어찜이냐 ?' 하나님,나의 하나님이여")
         self.assertEqual(self.clean(once), once)
         self.assertEqual(once, "어찜이냐? 하나님, 나의 하나님이여")
+
+    def test_heb_12_14_typo_is_repaired(self):
+        verses, _ = _bible_mirror().clean_kor_index(
+            {"HEB 12:14": "모든 사람으로 더불어 화평함과 거룩함을 좆으라 이것이 없이는"}, {}
+        )
+        self.assertIn("거룩함을 좇으라", verses["HEB 12:14"])
+        self.assertNotIn("좆", verses["HEB 12:14"])
 
     def test_isa_57_15_is_withheld_not_restored(self):
         truncated = "또한 통회하고 마음이 겸손한 자의 영을 소성케 하려 함이라"
