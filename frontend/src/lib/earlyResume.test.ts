@@ -1,4 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { EARLY_RESUME_JS } from './earlyResume';
 import { ANCHOR_KEY, PROGRESS_KEY, chapterKey } from './reading-schema';
 import { HEADER_OFFSET } from './reading';
@@ -106,5 +108,18 @@ describe('EARLY_RESUME_JS', () => {
 
 	it('never throws on storage it cannot read', () => {
 		expect(() => run('/books/humility/3/', { [ANCHOR_KEY]: '{not json' })).not.toThrow();
+	});
+});
+
+describe('the chapter reader places the tag', () => {
+	// The script finds the body as its previousElementSibling. Wrapping the body
+	// for "Side by side" once left the tag outside the wrapper, so it read the
+	// wrapper's one child and stood aside for every returning scroll reader.
+	it('straight after the chapter body, as its next element', () => {
+		const src = readFileSync(join(__dirname, '../routes/books/[slug]/[order]/+page.svelte'), 'utf8');
+		const afterBody = src.slice(src.indexOf('data-chapter-body>'));
+		const next = afterBody.slice(afterBody.indexOf('</div>') + '</div>'.length);
+		// Only comments and whitespace may sit between them (no element).
+		expect(next.replace(/\s+|<!--[\s\S]*?-->/g, '').startsWith('{@htmlEARLY_RESUME_TAG}')).toBe(true);
 	});
 });

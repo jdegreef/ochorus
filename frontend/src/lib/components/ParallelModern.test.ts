@@ -98,4 +98,18 @@ describe('ParallelModern', () => {
 		expect(first.classList.contains('par-pair')).toBe(false);
 		expect(original.innerHTML).toBe(ORIGINAL);
 	});
+
+	it('drops the levelling from BOTH columns when the rendered blocks stop matching', async () => {
+		const original = render('<p>You are.</p><p>You will.</p>');
+		await settle();
+		const modern = host.querySelector('.reading') as HTMLElement;
+		const kept = modern.children[0] as HTMLElement;
+		kept.style.minHeight = '40px';
+		// Something injected a block into the Original: the next pass unpairs.
+		original.append(document.createElement('p'));
+		await new Promise((r) => requestAnimationFrame(() => r(null)));
+		await settle();
+		expect(host.querySelector('.par-modern.free')).not.toBeNull();
+		expect(kept.style.minHeight).toBe('');
+	});
 });
