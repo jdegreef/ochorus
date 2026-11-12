@@ -841,6 +841,19 @@
 	margin-inline: auto;
 	opacity: 0.82;
 }
+/* The address a work with its own home sets in the mark's place
+   (`coverStyles.siteMarkFor`): the house serif, tracked like the byline but
+   not in capitals, which would turn "OpenWordBible.org" into a shout. Held to
+   the mark's height so the block above it sits where it sits over the mark. */
+.cover-type .sitemark {
+	font-family: var(--font-display);
+	font-size: 4.6cqw;
+	letter-spacing: 0.06em;
+	line-height: 13.7cqw;
+	text-align: center;
+	opacity: 0.86;
+	white-space: nowrap;
+}
 
 /* ── The house styles ──────────────────────────────────────────────────────
  * One block per recipe in `$lib/coverStyles.ts`, which decides WHICH of these
@@ -1641,7 +1654,8 @@
 	.cover-type .byline,
 	.cover-type .subtitle,
 	.cover-type .rule,
-	.cover-type .brandmark {
+	.cover-type .brandmark,
+	.cover-type .sitemark {
 		display: none;
 	}
 	.cover-type:not(.long-title) .title {

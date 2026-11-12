@@ -1,0 +1,34 @@
+{
+ "slug": "gospel-of-luke",
+ "title": "The Gospel of Luke",
+ "cover_title": "Luke",
+ "subtitle": "Kata Loukan, “According to Luke”",
+ "cover_color": "#5c3b1e",
+ "description": "The longest of the four Gospels, written by a careful historian “in order” so that his reader could be sure of what he had been taught: “The Son of Man came to look for what was lost and to save it.” Gabriel’s visits to Zechariah and Mary; the songs of Mary, Zechariah, the angels and Simeon; the shepherds and the manger; Jesus’s first sermon at Nazareth, good news to the poor; the long journey to Jerusalem with the good Samaritan, the lost sheep, the lost coin and the lost son, the rich man and Lazarus, and Zacchaeus up his tree. Then the prayer “Father, forgive them”, the promise of paradise to a dying criminal, and the risen Jesus made known on the road to Emmaus in the breaking of the bread. The first of Luke’s two volumes, continued in Acts. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the Gospel of Luke?",
+   "answer": "The third of the four Gospels, the accounts of the life, death and resurrection of Jesus in the New Testament, and the first of a two-part work completed by the Acts of the Apostles. It tells more of Jesus’s birth than any other Gospel, and many of his best-loved parables are found only here, among them the good Samaritan and the lost son. It shows Jesus bringing good news to the poor, the sinful and the outsider: in his own words, “The Son of Man came to look for what was lost and to save it” (19:10)."
+  },
+  {
+   "question": "Who wrote the Gospel of Luke, and when?",
+   "answer": "The Gospel does not name its author, but it and Acts are addressed to the same Theophilus and written by the same hand. From the second century the church has said the author was Luke, the doctor and companion of Paul (Colossians 4:14), and the passages in Acts told in the first person (“we”) suggest he travelled with Paul. He says he was not an eyewitness but drew on those who were (1:1–4). Suggested dates range from the early 60s to the 80s."
+  },
+  {
+   "question": "What is the parable of the prodigal son about?",
+   "answer": "It is the third of three stories in Luke 15 that Jesus tells when religious leaders complain that he welcomes sinners and eats with them: a lost sheep, a lost coin and a lost son. A younger son wastes his inheritance and comes home, and his father runs to meet him and throws a feast. Each story ends in rejoicing over what was lost and is found. The elder brother, who refuses to come in, is left outside with his father pleading with him, and the parable ends without saying whether he went in."
+  },
+  {
+   "question": "Why is Luke called the Gospel of prayer and of the Holy Spirit?",
+   "answer": "Luke shows Jesus praying more often than any other Gospel: at his baptism, before choosing the Twelve, at the transfiguration, for Peter, in Gethsemane and on the cross; and only Luke tells the parables of the friend at midnight and the persistent widow. He also tells of the Spirit filling Elizabeth, Zechariah and Simeon, coming upon Mary and resting on Jesus, and records Jesus’s promise that the Father will give the Holy Spirit to those who ask (11:13), a promise fulfilled in Acts."
+  },
+  {
+   "question": "Where does Luke 2:7 say Jesus was born?",
+   "answer": "Older Bibles say there was “no room at the inn”. The Greek word is the one Luke uses for the guest room of the last supper (22:11), a room in a house, not his word for an inn; so this translation says “the guest room had no space for them”. Joseph and Mary were probably staying in a house whose guest room was full, and the baby was laid in a feeding trough, a manger, where the animals were fed."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "slug": "esther",
+ "title": "Esther",
+ "cover_title": "",
+ "subtitle": "Ester, “Star”",
+ "cover_color": "#5a2a3a",
+ "description": "The story of a Jewish orphan who became queen of Persia and saved her people from destruction, read every year at the feast of Purim, and the one book of the Bible in which God is never named. A king’s banquets and a queen who refused to come; Mordecai at the palace gate; Haman the Agagite casting lots for the day the Jews would die; the words “Perhaps you have become queen for a time like this”, and Esther’s answer, “If I perish, I perish”; two banquets, a sleepless night, a gallows built for one man and used for another, and a month turned from grief into joy. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Esther about?",
+   "answer": "The rescue of the Jews of the Persian empire from a plot to destroy them. Esther, a Jewish orphan raised by her cousin Mordecai, becomes queen to King Ahasuerus without revealing her people. When the king’s chief official, Haman, gains a decree to kill all the Jews on a single day, Mordecai urges Esther to plead with the king, and she risks her life to do it. Haman is hanged on the gallows he built for Mordecai, a second decree allows the Jews to defend themselves, and the day of their intended destruction becomes the feast of Purim, still kept every year."
+  },
+  {
+   "question": "Who wrote the book of Esther, and when?",
+   "answer": "The book does not name its author. Jewish tradition credited it to the men of the Great Assembly, the council said to have followed Ezra, and some have suggested Mordecai, who is said to have recorded these events (9:20). The story is set in the reign of Ahasuerus, usually identified with Xerxes I, who ruled Persia from 486 to 465 BC, and most scholars date the book’s writing to the later Persian or early Greek period. Christians differ over how far to read it as straightforward history and how far as history told with a storyteller’s art."
+  },
+  {
+   "question": "Why is God not mentioned in the book of Esther?",
+   "answer": "In the Hebrew text of Esther the name of God never appears, and there is fasting but no prayer, temple or mention of the law. Most Jewish and Christian readers have seen this silence as the book’s point: God is at work behind the scenes, through a queen’s courage, a king’s sleepless night and a string of events too well timed to be coincidence, even when no one names him. Mordecai’s hope that help would come “from another place” (4:14) has often been heard as a quiet hint of his care."
+  },
+  {
+   "question": "What are the additions to Esther?",
+   "answer": "The ancient Greek translation of Esther contains six passages not found in the Hebrew, more than a hundred verses in all, including a dream of Mordecai, the texts of the king’s decrees, and prayers of Mordecai and Esther that name God freely. They are printed in Catholic and Orthodox Bibles, where they belong to the deuterocanonical books. Protestant Bibles, and this edition, follow the Hebrew text."
+  },
+  {
+   "question": "What is Purim?",
+   "answer": "The Jewish festival that celebrates the deliverance told in Esther, kept on the fourteenth of the month Adar, or the fifteenth in Jerusalem and other anciently walled cities. Its name comes from pur, “lot”, because Haman cast lots to choose the day of the Jews’ destruction (3:7; 9:24–26). The book commands it as a time of feasting and joy, of sending gifts of food to one another and gifts to the poor (9:22). The scroll of Esther is read aloud in the synagogue, and the congregation drowns out Haman’s name with noise whenever it is read."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

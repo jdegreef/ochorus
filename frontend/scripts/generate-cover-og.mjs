@@ -126,7 +126,7 @@ import { groundLift } from '../src/lib/coverLift.ts';
 import { medallionFor } from '../src/lib/coverMedallions.ts';
 import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { framedBar, groundBar } from '../src/lib/groundBars.ts';
-import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '../src/lib/coverStyles.ts';
+import { coverStyleFor, coverVolume, scriptOf, siteMarkFor, smallCapsFor } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
 import { baseEdition } from '../src/lib/reading-schema.ts';
 
@@ -250,9 +250,11 @@ function needTwins() {
 				// The card is set in the style the cover is set in — one table, read
 				// from the app's own module rather than restated here.
 				style: coverStyleFor(eraOf(author.birth_year), author.slug, fields.slug),
+				// The address set where the mark goes, for a work with its own home.
+				sitemark: siteMarkFor(author.slug),
 				// Its series numeral, in the edition's digits — the same call the
 				// component makes, so a card and a page cannot number a book apart.
-				volume: volumeNumeral(fields.series_position, baseEdition(fields.language || 'en')),
+				volume: coverVolume(fields.series_position, baseEdition(fields.language || 'en'), author.slug),
 				cover,
 				// The edition's language, and the script its type is set in — both
 				// through the app's own table. Only English books get a twin today,
@@ -684,7 +686,8 @@ html,body{margin:0}
 			layout: book.layout,
 			top: book.top,
 			dark: book.dark,
-			caps: book.caps
+			caps: book.caps,
+			sitemark: book.sitemark
 		},
 		LOCKUP
 	)}
@@ -842,6 +845,8 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              find no recorded value to disagree with, and keep its old card.
  *   `caps`   — a title in small capitals (`coverStyles.smallCapsFor`). Written
  *              as false rather than left out, for `volume`'s reason.
+ *   `sitemark` — the address set in place of the mark (`coverStyles.siteMarkFor`).
+ *              Written as null rather than left out, for `volume`'s reason.
  *
  * Add a field to `coverPage`'s call and it belongs here too, or the first card
  * that needs it will be skipped.
@@ -862,7 +867,8 @@ function made(book, groundBytes) {
 				: null,
 		layout: layoutKey(book.layout, book.top, book.dark),
 		bar: book.bar,
-		caps: book.caps
+		caps: book.caps,
+		sitemark: book.sitemark
 	};
 }
 

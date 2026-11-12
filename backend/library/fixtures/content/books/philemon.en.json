@@ -1,0 +1,103 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "philemon",
+  "language": "en",
+  "title": "The Letter to Philemon",
+  "subtitle": "Pros Philēmona, “To Philemon”",
+  "cover_title": "Philemon",
+  "cover_byline": "",
+  "description": "Paul’s shortest letter, and his most personal: a prisoner’s appeal to a friend about a slave. Onesimus has wronged his master Philemon, met Paul in chains, and become a Christian, and now Paul sends him home with this letter in his hand. With great tact and warmth Paul asks Philemon to take him back “no longer as a slave but as more than a slave, a dear brother”, to welcome him as he would welcome Paul himself, and to put anything he owes on Paul’s account. A letter that can be read in five minutes, and that has asked every generation of the church what the gospel does to the walls between people. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the letter’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the Letter to Philemon?",
+    "answer": "The eighteenth book of the New Testament and the shortest of Paul’s letters, a single chapter of twenty-five verses. Paul writes from prison to Philemon, a believer in whose home a church met, probably at Colossae, on behalf of Onesimus, Philemon’s slave, who had become a Christian through Paul. He asks Philemon to receive Onesimus back as a dear brother in the Lord (verse 16)."
+   },
+   {
+    "question": "Who wrote Philemon, and when?",
+    "answer": "The apostle Paul, writing with Timothy (verse 1), and almost all scholars agree that the letter is his. He was a prisoner at the time (verses 1, 9), and the letter was carried together with Colossians, which names the same companions and says Onesimus was travelling with Tychicus (Colossians 4:7–9). It is usually dated to Paul’s imprisonment in Rome around AD 60–62, though some scholars place it during an earlier imprisonment at Ephesus."
+   },
+   {
+    "question": "Was Onesimus a runaway slave?",
+    "answer": "The traditional reading is that he ran away from Philemon, perhaps having stolen from him (verse 18), and met Paul by God’s providence. Some scholars think instead that he went to Paul on purpose after a quarrel, to ask him to plead with his master, which Roman law did not count as running away. Either way, Paul says he was “parted from you for a little while” (verse 15) and sends him back with this letter, asking that he be received as Paul himself would be."
+   },
+   {
+    "question": "Did Paul ask Philemon to set Onesimus free?",
+    "answer": "Paul never quite says. He asks Philemon to have Onesimus back “no longer as a slave but as more than a slave, a dear brother” (verse 16), and to take him in as though he were Paul himself. Some readers think he is hinting that Onesimus should be sent back to help him; some that he is asking for his freedom, especially when he adds, “I know you will do even more than I say” (verse 21); others that he deliberately leaves the choice to Philemon. What is plain is that once a master must call his slave a dear brother, the old relationship cannot go on as it was."
+   },
+   {
+    "question": "Why is the short letter to Philemon in the Bible?",
+    "answer": "It has no hymn to Christ and no long teaching, only a request from one friend to another about a third man. But in it the gospel walks into a household and changes how a master, a slave and an apostle must look at one another. Paul appeals on the basis of love rather than command, offers to pay whatever Onesimus owes (“put it on my account”), and asks that a slave be welcomed as a brother. Many readers have also heard in it a picture of what Christ does for sinners, receiving them as his own and taking their debts on himself; Luther said we are all his Onesimus."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#phm",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/philemon.jpg",
+  "pdf_url": "",
+  "cover_color": "#5b3240",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 57,
+  "sort_order": 304,
+  "is_published": true,
+  "created_at": "2026-11-11T20:30:27.069Z",
+  "updated_at": "2026-11-11T22:14:19.405Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "philemon",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>Perhaps this is why he was parted from you for a little while: so that you might have him back for good, no longer as a slave but as more than a slave, a dear brother. He is especially dear to me, and how much more to you, both in everyday life and in the Lord.</p><p>— Philemon 1:15–16</p></blockquote> <p>Philemon is the shortest of Paul’s letters, about three hundred and thirty-five words in Greek, and the most personal. It contains no teaching on justification, no warnings against false teachers, no hymn to Christ. It is a request from one friend to another about a third man, and it can be read aloud in under five minutes. Yet the church has kept it in the Bible for nineteen centuries, because in this small letter the gospel walks into a household and changes the way three people must look at one another.</p> <h3>The people in the letter</h3> <p>Philemon was a believer, a householder, and a friend of Paul’s, who calls him “our dear friend and fellow worker.” A church met in his home. With him are greeted Apphia, “our sister”, perhaps his wife, and Archippus, “our fellow soldier”, perhaps his son. Paul seems to have brought Philemon to faith himself, since he can say, half teasing, that Philemon owes him his own self.</p> <p>Philemon most likely lived at Colossae. The letter to the Colossians names Onesimus as “one of your own” and sends a message to Archippus (Colossians 4:9, 17), and the same friends of Paul send greetings in both letters: Epaphras, Mark, Aristarchus, Demas and Luke. The two letters were very likely carried together, by Tychicus and Onesimus, from Paul’s imprisonment, probably in Rome around AD 60–62, though some place it earlier, at Ephesus.</p> <p>Onesimus was Philemon’s slave. Something had gone wrong between them; Paul speaks of Onesimus having been “useless” to Philemon, of his being “parted from you”, and of any wrong he has done or anything he owes. Then Onesimus met Paul, in prison, and became a Christian: Paul calls him “my child Onesimus, who became my son while I was in chains.”</p> <h3>What had happened?</h3> <p>The traditional answer is that Onesimus ran away, perhaps taking money with him, made his way to the city where Paul was held, and there, by God’s providence, met the apostle and believed. Many readers still find that the most natural reading.</p> <p>Others point out that Roman law did not treat a slave as a fugitive if he went to a friend of his master to plead for help after a quarrel, and suggest that Onesimus went to Paul on purpose, as someone Philemon would listen to. A letter of Pliny the Younger, written some forty years later, pleads with a friend to forgive a freedman who had offended him, and it is a close parallel. But the contrast is just as telling. Pliny asks for mercy for a penitent dependant. Paul asks Philemon to receive Onesimus as a brother.</p> <h3>The appeal</h3> <p>The letter is a small masterpiece of tact. Paul could give orders, he says, but “I would rather appeal to you on the basis of love.” He does not begin with Onesimus at all, but with thanks for Philemon’s love and faith, and with the joy it has brought him, because “through you God’s holy people have been refreshed at heart.” Only then does he name his request, and he names himself first: “an old man and now also a prisoner for Christ Jesus.”</p> <p>He plays on Onesimus’s name, which means “useful”: “Once he was useless to you, but now he is useful to you and to me.” He is sending him back, and it costs him: “he is my very heart.” He would have liked to keep him, but he wants Philemon’s goodness to come “from your own free choice and not be forced.” And then the heart of the letter, in the words that open this introduction. Onesimus is to come back “no longer as a slave but as more than a slave, a dear brother”, both in everyday life and in the Lord.</p> <p>Paul goes further. “So if I am your partner, take him in as though he were me.” If Onesimus owes anything, “put it on my account.” And at this point Paul takes the pen himself:</p> <blockquote><p>I, Paul, write this in my own hand: I will repay it. I need not remind you that you owe me your own self as well.</p><p>— Philemon 1:19</p></blockquote> <p>Many readers have heard in these verses a picture of what Christ does for sinners, receiving them as his own and taking their debts on himself. Luther put it memorably: we are all his Onesimus. That is not the letter’s first purpose, but it is not far from its heart.</p> <h3>What did Paul ask for?</h3> <p>Paul never quite says what he wants Philemon to do, beyond receiving Onesimus as a brother. Some think he is hinting that Philemon should send Onesimus back to help him, since he would have liked to keep him “so that he could serve me in your place.” Some think he is asking for Onesimus’s freedom, especially when he adds, “I know you will do even more than I say.” Others think he deliberately leaves it to Philemon. What is plain is that once a master has to call his slave “a dear brother”, and welcome him as he would the apostle himself, the old relationship cannot go on as it was.</p> <h3>How to read Philemon</h3> <p>Read it aloud, as it was first read, in the church that met in Philemon’s house, with Onesimus perhaps standing there while it was read. Imagine Philemon listening, with everyone watching him. Then read Colossians 3:11 and 4:7–9, which were heard on the same day.</p> <p>Notice the words that keep returning: love, heart, partner, brother, refresh. Notice how Paul speaks of Onesimus: my child, my son, my very heart. And notice that the letter ends, as it began, among friends, with a request to have a room ready, because Paul hopes to come and see how it has all turned out.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Greek and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. A few of its choices in Philemon are worth knowing about.</p> <p><strong>“An old man.”</strong> In verse 9 the Greek word for an old man differs by a single letter from the word for an ambassador, and some translations read “ambassador”. This translation reads “an old man”.</p> <p><strong>“Useless” and “useful”.</strong> The translation keeps Paul’s play on Onesimus’s name in verse 11, so that an English reader can hear the pun, even without the Greek.</p> <p><strong>“My very heart.”</strong> Paul’s word in verses 7, 12 and 20 is literally the inward parts, the seat of deep feeling. The translation renders it with the English word that does the same work: “heart”.</p> <p>For the reasoning behind every sentence of the translation, with the Greek beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1196
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "philemon",
+   "en"
+  ],
+  "order": 2,
+  "title": "Philemon 1",
+  "body_html": "<h3>Greeting</h3><p>From Paul, a prisoner for the sake of Christ Jesus, and from Timothy our brother, to Philemon, our dear friend and fellow worker, to Apphia our sister, to Archippus our fellow soldier, and to the church that meets in your home. Grace and peace to you from God our Father and from the Lord Jesus Christ.</p><h3>Thanks for Philemon’s love and faith</h3><p>Whenever I remember you in my prayers, I always thank my God, because I keep hearing about your love for all God’s holy people and your faith in the Lord Jesus. I pray that the generosity that flows from your faith will be put to work, as you come to know fully all the good that is ours, for the sake of Christ. Brother, your love has filled me with joy and encouragement, because through you God’s holy people have been refreshed at heart.</p><h3>Paul appeals for Onesimus</h3><p>So although in Christ I could be bold enough to order you to do what you ought, I would rather appeal to you on the basis of love. I, Paul, an old man and now also a prisoner for Christ Jesus, appeal to you for my child Onesimus, who became my son while I was in chains. Once he was useless to you, but now he is useful to you and to me. I am sending him back to you, and he is my very heart. I would have liked to keep him here with me, so that he could serve me in your place while I am in chains for the gospel. But I did not want to do anything without your consent, so that any good you do would come from your own free choice and not be forced. Perhaps this is why he was parted from you for a little while: so that you might have him back for good, no longer as a slave but as more than a slave, a dear brother. He is especially dear to me, and how much more to you, both in everyday life and in the Lord.</p><h3>Take him in as you would me</h3><p>So if I am your partner, take him in as though he were me. If he has wronged you at all, or owes you anything, put it on my account. I, Paul, write this in my own hand: I will repay it. I need not remind you that you owe me your own self as well. Yes, brother, let me have this benefit from you in the Lord. Refresh my heart in Christ. I write to you sure that you will do what I ask, and I know you will do even more than I say. Meanwhile, please also have a room ready for me, for I hope that God will answer your prayers and give me back to you.</p><h3>Final greetings</h3><p>Epaphras, my fellow prisoner in Christ Jesus, sends you greetings, and so do my fellow workers Mark, Aristarchus, Demas and Luke.</p><p>May the grace of the Lord Jesus Christ be with your spirit.</p>",
+  "study_questions": [],
+  "word_count": 510
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "philemon",
+   "en"
+  ],
+  "order": 3,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>I write to you sure that you will do what I ask, and I know you will do even more than I say. Meanwhile, please also have a room ready for me, for I hope that God will answer your prayers and give me back to you.</p><p>— Philemon 1:21–22</p></blockquote> <p>The letter ends before the story does. Paul is confident, he hopes to visit, he asks for a room. But we are never told what Philemon did when the letter had been read aloud in his house and every eye turned to him and to the slave standing beside the reader.</p> <h3>The question the letter leaves</h3> <p>That silence is the letter’s question, and it is put to every reader. What will you do with the person the gospel has made your brother or sister? Philemon was asked to welcome as an equal a man he legally owned, who had wronged him, and to do it freely. The church has always had its Philemons and its Onesimuses, people divided by money, class, race or old grievances, and this letter will not let them stay apart once both belong to Christ.</p> <p>The fact that the letter was kept at all suggests that Philemon said yes. Some fifty years later, Ignatius of Antioch wrote to the church at Ephesus and praised its bishop, a man named Onesimus, “whose love passeth utterance”. It was a common name, and no one can know whether he was the same man. But some readers have wondered whether the useless slave became a bishop, and whether that is why this little letter was treasured.</p> <h3>Where the letter points</h3> <p>It points, uncomfortably, into later history. In the American debates over slavery, some defenders of slavery cited Philemon to argue that a Christian slave should be returned to his master. Those who opposed slavery answered from the same page: “no longer as a slave but as more than a slave, a dear brother.” Paul did not write a law against slavery. He wrote a letter that made slavery between brothers impossible to defend.</p> <h3>Where to go from here</h3> <p>Philemon is short, but it has not been overlooked. A few places to go next, all in this library:</p> <ul> <li>Charles H. Spurgeon’s <em>Morning by Morning</em>, whose reading for 1 November is on “the church in thy house” (verse 2).</li> <li>John Chrysostom’s sermon <em>Concerning Lowliness of Mind</em>, where he recalls the letter Paul sent on behalf of Onesimus and insists that a runaway slave is a human being for whom Christ died.</li> <li>E. M. Bounds’s <em>Prayer and Praying Men</em>, whose chapter “Paul and His Requests for Prayer (Continued)” takes up Paul’s hope of being given back through Philemon’s prayers (verse 22).</li> <li><em>The Epistles of Ignatius and His Life’s Story</em>, for the letter to the Ephesians and its bishop Onesimus.</li> <li>Tertullian’s <em>Against Marcion</em>, whose fifth book ends with Philemon, the one letter Marcion could not shorten.</li> <li><em>Devoted to Prayer</em>, whose chapter “Always Wrestling in Prayer” is about Epaphras, Paul’s fellow prisoner in verse 23.</li> <li>Richard Allen’s <em>The Life, Experience, and Gospel Labours</em>, the story of a man born a slave whose master, convicted by a sermon, let him buy his freedom, and who went on to found the African Methodist Episcopal Church.</li> </ul> <p>But the best next step may be to read Philemon again, beside Colossians, and to ask who in your own life Paul would be writing to you about. And then to pray for that person in the words Paul used for his friend:</p> <blockquote><p>May the grace of the Lord Jesus Christ be with your spirit.</p><p>— Philemon 1:25</p></blockquote>",
+  "study_questions": [],
+  "word_count": 603
+ }
+}
+]
+

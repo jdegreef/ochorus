@@ -1,0 +1,34 @@
+{
+ "slug": "jonah",
+ "title": "Jonah",
+ "cover_title": "",
+ "subtitle": "Yonah, “Dove”",
+ "cover_color": "#2f4a55",
+ "description": "The story of a prophet who ran from God. Sent to Nineveh, the great city of Israel’s enemy Assyria, Jonah takes ship for Tarshish instead; the LORD hurls a great wind onto the sea, the sailors throw him overboard, and a great fish swallows him and gives him back. From inside the fish he prays, “It is the LORD who saves.” Then Nineveh hears five words of warning and repents, from the king to the cattle, God relents, and Jonah sits outside the city furious that God is so merciful, until a plant, a worm and a hot east wind teach him otherwise. It ends with a question for every reader. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Jonah?",
+   "answer": "The fifth of the twelve shorter prophetic books, and the only one that is almost entirely a story about the prophet rather than a collection of his messages. In four chapters God sends Jonah to warn Nineveh, Jonah runs away by sea and is swallowed by a great fish (chapters 1–2), then preaches in Nineveh, which repents and is spared (chapter 3), and finally argues with God about his mercy (chapter 4). It ends with God’s question: “should I not take pity on Nineveh, that great city?” (4:11)."
+  },
+  {
+   "question": "Who wrote the book of Jonah, and when?",
+   "answer": "The book does not name its author, and it tells its story about Jonah rather than in his voice. Its hero is the prophet Jonah son of Amittai from Gath-hepher, who 2 Kings 14:25 says prophesied in the reign of Jeroboam II of Israel, in the eighth century BC. Some readers think the book was written in or near Jonah’s own time; many scholars date it later, after the exile, on the grounds of its language and themes. Its message does not depend on settling the date."
+  },
+  {
+   "question": "Why did Jonah run away from God?",
+   "answer": "The book saves the answer until chapter 4. When Nineveh repents and God spares it, Jonah prays: “That is why I hurried to run away to Tarshish. For I knew that you are a God of grace and tender compassion, slow to grow angry, rich in faithful love, and one who relents from sending disaster” (4:2). Nineveh was a great city of Assyria, the cruel empire that threatened Israel, and Jonah did not want God to show mercy to Israel’s enemy."
+  },
+  {
+   "question": "Was Jonah swallowed by a whale?",
+   "answer": "The Hebrew says “a great fish”, and so does this translation; “whale” comes from older English versions of Jesus’s words in Matthew 12:40. Christians read the story in different ways. Many take it as an account of real events, pointing to the historical Jonah of 2 Kings and to Jesus’s words about Jonah and the people of Nineveh; others read it as an inspired teaching story built around a real prophet, pointing to its artful shape and its open ending. Both readings receive it as Scripture, and both agree that the fish is not the point: it fills three verses, and the book is about the mercy of God."
+  },
+  {
+   "question": "What is the sign of Jonah?",
+   "answer": "When some of his hearers demanded a sign, Jesus said that the only sign they would be given was “the sign of Jonah the prophet” (Matthew 12:39). He explained that as Jonah spent three days and three nights inside the great sea creature, so the Son of Man would spend three days and three nights in the earth, pointing to his death and resurrection. He added that the people of Nineveh, who repented when Jonah preached, would condemn a generation that did not repent, “Yet here is something greater than Jonah” (Matthew 12:41; compare Luke 11:29–32)."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

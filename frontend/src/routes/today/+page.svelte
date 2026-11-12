@@ -3,12 +3,14 @@
 	import { WHATSAPP_CHANNEL_URL } from '$lib/config';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import DailyShelf from '$lib/components/DailyShelf.svelte';
+	import TimePicker from '$lib/components/TimePicker.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	/** Every devotional's reading for today — where the home page's Today shelf
-	 *  leads. The cards themselves are DailyShelf's. The WhatsApp channel posts
-	 *  the day's reading each morning; its link shows only once one exists
-	 *  ($lib/config). */
+	 *  leads. The cards themselves are DailyShelf's. Under them, "How long do
+	 *  you have?" (TimePicker): a chapter and a sermon that fit the time. The
+	 *  WhatsApp channel posts the day's reading each morning; its link shows
+	 *  only once one exists ($lib/config). */
 	const t = i18n.t;
 </script>
 
@@ -26,4 +28,5 @@
 		>
 	{/if}
 	<div class="mt-8"><DailyShelf embedded /></div>
+	<div class="mt-12"><TimePicker /></div>
 </div>
