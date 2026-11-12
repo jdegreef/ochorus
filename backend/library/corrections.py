@@ -3369,6 +3369,14 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # prints 10:9-10).
             ("10:8, 10", "10:9, 10"),
             ("(Gal. 3:10.).", "(Gal. 3:10)."),
+            # ch12 (found by the ko job): the field quoted after the house is
+            # Lev 27:16, and "which is greater, the gold, or the temple" is
+            # Matt 23:17 (es and am already print 23:17).
+            ("27:14, 17", "27:14, 16"),
+            ("Matt. 23:27", "Matt. 23:17"),
+            ("Matthieu 23:27", "Matthieu 23:17"),
+            ("Mt 23:27", "Mt 23:17"),
+            ("Matayo 23:27", "Matayo 23:17"),
         ],
     },
     "rest": {
