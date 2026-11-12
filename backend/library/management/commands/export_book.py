@@ -122,10 +122,12 @@ def _check_author_page(edition, name: str, pages: dict[str, int]) -> None:
     ``author-top`` / ``author-end`` anchors) must land on the same page — a bio
     too long for it pushes the end onto the next."""
     if "author-top" in pages and pages["author-top"] != pages.get("author-end"):
-        raise AuthorPageOverflow(
-            f"{name}: About the Author runs past one page — shorten "
-            f"library/export_bios/{edition.book.author.slug}.{edition.lang}.txt."
+        source = (
+            "its page in library/export_imprints.json"
+            if edition.imprint
+            else f"library/export_bios/{edition.book.author.slug}.{edition.lang}.txt"
         )
+        raise AuthorPageOverflow(f"{name}: the page after About Ochorus runs past one page — shorten {source}.")
 
 
 def _repack(pdf: Path) -> None:

@@ -45,7 +45,7 @@
   "source_url": "https://openwordbible.org/read/#heb",
   "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
   "cover_url": "/covers/art/hebrews.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/hebrews.pdf?download=hebrews.pdf",
   "cover_color": "#4a2a1e",
   "series": [
    "the-bible"
