@@ -1,3 +1,4 @@
+import { authorPath } from '$lib/originals';
 import { allProgress } from './progress';
 import { libraryBooks } from './resumeBooks';
 import { listPlans } from './library-public';
@@ -63,7 +64,7 @@ export function sealNext(seal: Seal): { href: string; label: string } {
 	const t = i18n.t;
 	if (seal.id === 'pupil' && seal.author)
 		return {
-			href: localizeHref(`/authors/${seal.author.slug}`),
+			href: localizeHref(authorPath(seal.author.slug)),
 			label: t('seals.nextAuthor').replace('%name%', seal.author.name)
 		};
 	if (seal.id === 'centuries' && seal.missingEras?.length) {

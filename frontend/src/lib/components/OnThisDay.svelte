@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import type { Anniversary } from '$lib/authorDays';
 	import { localizeHref } from '$lib/href';
 	import { anniversaryYear } from '$lib/anniversaryFormat';
@@ -42,7 +43,7 @@
 			{#each days as a (a.slug + a.kind)}
 				<li>
 					<Candle />
-					<a href={localizeHref(`/authors/${a.slug}`)}>{said(a)}</a>
+					<a href={localizeHref(authorPath(a.slug))}>{said(a)}</a>
 				</li>
 			{/each}
 		</ul>

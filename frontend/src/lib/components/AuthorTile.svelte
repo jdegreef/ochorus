@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import type { AuthorTileData } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -15,7 +16,7 @@
 </script>
 
 <a
-	href={localizeHref(`/authors/${author.slug}`)}
+	href={localizeHref(authorPath(author.slug))}
 	class="card-tint flex flex-col items-center gap-2 rounded-card border border-border p-4 text-center sm:flex-row sm:gap-3 sm:text-start"
 >
 	<Portrait

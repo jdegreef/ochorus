@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -157,7 +158,7 @@
 			{#each authors as author (author.slug)}
 				<li>
 					<a
-						href={localizeHref(`/authors/${author.slug}`)}
+						href={localizeHref(authorPath(author.slug))}
 						class="group flex flex-col items-center gap-2.5 text-center hover:no-underline"
 					>
 						<Portrait
