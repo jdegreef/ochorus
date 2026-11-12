@@ -24681,6 +24681,21 @@
 				482
 			]
 		},
+		"ko/ministry-of-intercession": {
+			"ground": "70182d16253c79eb2ee4736825907c99b04c5ea34255408d4341f13db4077c88",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/mortification-of-sin": {
 			"ground": "3d4cfd0977e2b90c557e84477f7f222369c0532f55c348d784a38e8f979eba35",
 			"style": "press",
