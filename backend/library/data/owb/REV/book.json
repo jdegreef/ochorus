@@ -1,0 +1,34 @@
+{
+ "slug": "revelation",
+ "title": "The Revelation to John",
+ "cover_title": "Revelation",
+ "subtitle": "Apokalypsis Iōannou, “The Revelation of John”",
+ "cover_color": "#2a1f3a",
+ "description": "The last book of the Bible, a vision given to John in exile on Patmos and sent to seven churches in Asia, with a blessing on everyone who reads it aloud and everyone who listens. The risen Christ among the lampstands and his letters to the churches; the throne in heaven, and the Lion of Judah who turns out to be a Lamb that was slaughtered; seals, trumpets and bowls; the dragon, the beast and the fall of Babylon the great; the rider called the Word of God; the thousand years and the great white throne; and a new heaven and a new earth, where God wipes every tear from their eyes and makes everything new. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Revelation?",
+   "answer": "The twenty-seventh and last book of the New Testament, an account of visions given to a prophet named John. It is at once an apocalypse, a book of symbolic visions like Daniel; a prophecy; and a letter to seven churches in the Roman province of Asia. It shows the risen Jesus, the worship of heaven, God’s judgments on evil, the fall of the powers that oppose him, and a new heaven and a new earth. Its name comes from its first word in Greek, apokalypsis, an unveiling."
+  },
+  {
+   "question": "Who wrote Revelation, and when?",
+   "answer": "The writer calls himself John and says he was on the island of Patmos “because of God’s word and the testimony of Jesus” (1:9). From the second century most of the church identified him with John the apostle; Dionysius of Alexandria in the third century argued from its very different Greek that it was another John, and many scholars today agree. Irenaeus dates the vision toward the end of the emperor Domitian’s reign, around AD 95, the date most scholars accept; some date it to the late 60s, after Nero’s persecution."
+  },
+  {
+   "question": "What is the meaning of the Lamb in Revelation?",
+   "answer": "In chapter 5 John is told that the Lion of the tribe of Judah has overcome and can open the sealed scroll, but when he looks he sees “a Lamb standing, looking as though he had been slaughtered” (5:6). The image shows that Jesus, Israel’s promised King, has conquered through his death. From then on Revelation calls him the Lamb nearly thirty times, and all creation worships him, singing that he is worthy because by his blood he bought for God people from every nation."
+  },
+  {
+   "question": "What is the number of the beast, 666?",
+   "answer": "In 13:18 John invites whoever has understanding to count up the number of the beast, “for it is a human number. Its number is 666.” Many scholars think the first readers would have heard in it the name of the emperor Nero, whose name in Hebrew letters adds up to 666; a few early manuscripts read 616, which fits the same name spelled from its Latin form. Others take it as a symbol of human power that always falls short of seven, the number of completeness. Irenaeus warned in the second century that the number can be fitted to many names."
+  },
+  {
+   "question": "What are the main ways Christians interpret Revelation and the thousand years?",
+   "answer": "Preterists read Revelation chiefly as about John’s own time and the struggle with Rome; historicists as a survey of church history; futurists as describing events still to come before Christ’s return; idealists as a picture of the conflict between God and evil in every age. On the thousand years of chapter 20, premillennialists expect Christ to return and then reign on earth, amillennialists, following Augustine, take it as the present age of the church, and postmillennialists expect a long triumph of the gospel before he comes. All agree that Christ will return, the dead will be raised, and God will make all things new."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. It gives distances and measures in modern units, with the original measures available in the Open Word Bible itself. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

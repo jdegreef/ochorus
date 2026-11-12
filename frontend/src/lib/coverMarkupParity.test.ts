@@ -206,6 +206,27 @@ describe('the two cover renderers agree', () => {
 			}
 		],
 		[
+			// The Open Word Bible's books set its address where the Ochorus mark
+			// goes (`coverStyles.siteMarkFor`): a line of type, not the lockup.
+			'an address in place of the mark',
+			{
+				cover_url: '/covers/art/genesis.jpg',
+				slug: 'genesis',
+				title: 'Genesis',
+				author: { ...book().author, slug: 'open-word-bible', name: 'Open Word Bible', birth_year: null }
+			},
+			{
+				art: true,
+				scrim: scrimStrength('genesis'),
+				style: coverStyleFor(eraOf(null), 'open-word-bible', 'genesis'),
+				top: true,
+				dark: true,
+				title: 'Genesis',
+				author: 'Open Word Bible',
+				sitemark: 'OpenWordBible.org'
+			}
+		],
+		[
 			'a title in small capitals',
 			{ cover_url: PLATE, slug: 'soar-like-the-eagle-3', title: 'Soar Like the Eagle' },
 			{ title: 'Soar Like the Eagle', caps: true }

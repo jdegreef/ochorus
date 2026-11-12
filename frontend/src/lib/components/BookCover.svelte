@@ -8,7 +8,7 @@
 	import { scrimStrength } from '$lib/coverScrim';
 	import { groundLift } from '$lib/coverLift';
 	import { medallionFor } from '$lib/coverMedallions';
-	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
+	import { coverStyleFor, coverVolume, scriptOf, siteMarkFor, smallCapsFor } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
@@ -177,6 +177,8 @@
 	/** The words set large, and a young edition's edition line under them. */
 	const edition = $derived(editionOf(book.slug, setTitle));
 
+	/** The address set where the Ochorus mark goes, or null for the mark. */
+	const sitemark = $derived(siteMarkFor(book.author.slug));
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
 	const style = $derived(
 		coverStyleFor(eraOf(book.author.birth_year), book.author.slug, book.slug)
@@ -191,7 +193,7 @@
 	 *  Latin. The FACE needs no class — app.css's stacks fall back per glyph. */
 	const script = $derived(scriptOf(lang));
 	/** This book's place in its series, in its edition's digits; null outside one. */
-	const volume = $derived(volumeNumeral(book.series_position, lang));
+	const volume = $derived(coverVolume(book.series_position, lang, book.author.slug));
 	/** `dir="rtl"` on an Arabic edition's type block, and NO attribute at all
 	 *  otherwise — a spread rather than `dir={…}`, which Svelte writes as the
 	 *  `dir` property and so leaves `dir=""` behind on every other cover. */
@@ -291,8 +293,9 @@
 		     file. Paintings don't reserve it: there is no emblem under them. -->
 		{#if reserveEmblem}<div class="emblem-band" aria-hidden="true"></div>{/if}
 		<!-- The shared mark, not a second copy of the inline-the-lockup recipe:
-		     it sizes off the plate's container, hence a cq height. -->
-		<BrandMark height="13.7cqw" />
+		     it sizes off the plate's container, hence a cq height. A work with a
+		     home of its own (`siteMarkFor`) sets its address there instead. -->
+		{#if sitemark}<div class="sitemark">{sitemark}</div>{:else}<BrandMark height="13.7cqw" />{/if}
 	</div>
 {/snippet}
 

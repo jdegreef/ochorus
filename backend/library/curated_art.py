@@ -1391,13 +1391,6 @@ CURATED: dict[str, Artwork] = {
         "A ruined Roman aqueduct in the Campagna outside Rome: the city whose schools and sects Hippolytus took apart one by one.",
         focus=0.75,
     ),
-    # ── Batch 32 · the Open Word Bible's Gospel of John ─────────────────────
-    "gospel-of-john": Artwork(
-        "met", 438380, "Salomon van Ruysdael", "Fishing Boats on a River", "early 1660s",
-        "Fishing boats under sail on still water and a small boat hauling in: the Gospel closes on the lake at daybreak, the disciples towing a net full of fish to where the risen Jesus waits on the shore.",
-        focus=0.4,
-        inset=0.03,
-    ),
     # ── Batch 33 · the stacked October/November imports ─────────────────────
     "letters-of-jerome": Artwork(
         "met", 926221, "Antoine-Alphonse Montfort", "Cedars of Lebanon", "1837",
@@ -2488,6 +2481,273 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A road at night from a fruit tree in the dark foreground to a city "
         "of light on the far hill: from the garden in Genesis to the city "
         "in Revelation.",
+    ),
+    # The Open Word Bible's books: a leaf of parchment with the book's name in
+    # its own language (Hebrew or Greek), the same for every edition and drawn
+    # by scripts/original_grounds/scripture.py; the type is set live above it.
+    "genesis": Original(
+        "19d59fed9565fddf4e35592a0b8ad096b111ffd1f433c36e6b6ad71be2fc9088",
+        "Bereshit, 'In the beginning', the book's first word in Hebrew, set large on a pale leaf.",
+    ),
+    "gospel-of-john": Original(
+        "6fe81939e6d37377a6020c7864ce86920f1f72d029effb17628c45516dfe2ca6",
+        "Kata Ioannen, 'According to John', the Gospel's title in the Greek manuscripts, set large on a pale leaf. Replaced its Ruysdael river scene (2026-11-11), so the Bible's books read as one set.",
+    ),
+    "psalms": Original(
+        "85ed5eef3a2f551d1b4354fd500063b4cd9dd457273053c0b3496ec89ec56098",
+        "Tehillim, 'Praises', the Hebrew name of the book, set large on a pale leaf.",
+    ),
+    "romans": Original(
+        "954b769f175b23df206b57dc73a8980f5d85bf57687f2490cabe9264f9b4a599",
+        "Pros Rhomaious, 'To the Romans', the letter's title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "gospel-of-matthew": Original(
+        "97143bd92a3c5466168dafcba2c322f8482165c4a0d086fd854ef8d116624dd9",
+        "Kata Maththaion, 'According to Matthew', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "gospel-of-mark": Original(
+        "baedb9b9077b810c5c2e23ca57210b930a3f5b6fd96a2ae9e070a777fd1596d3",
+        "Kata Markon, 'According to Mark', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "gospel-of-luke": Original(
+        "5f74829e3be707c8b6ae70b00a729e9e55dc9bb700dc2c3e1c8e6562c64e0590",
+        "Kata Loukan, 'According to Luke', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "acts-of-the-apostles": Original(
+        "d59849dc2cf62e413cce77ec0fd3eb2f66ac564be1da75763d7a07a5267dc9bb",
+        "Praxeis Apostolōn, 'Acts of the Apostles', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "1-corinthians": Original(
+        "dc6f436d1664008e48a13c3ccca8eecc2ab66d7dbab3e52957042b27cdd8650f",
+        "Pros Korinthious A, 'First to the Corinthians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "2-corinthians": Original(
+        "3cd267df3c5d942239cfeca8396e17befbf7de90c6b9cc390359ad343ea9509c",
+        "Pros Korinthious B, 'Second to the Corinthians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "galatians": Original(
+        "4f756a84371782f581ccfdcdc99450a4562474395f9d1b0cb6d67d552fa30a90",
+        "Pros Galatas, 'To the Galatians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "ephesians": Original(
+        "e4f62d13353c8a1c4e5f784e0f8f682a3c5256ecedecf52863499bd6aab16875",
+        "Pros Ephesious, 'To the Ephesians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "philippians": Original(
+        "bae0dcd96f1b5a3fa746267f2a1d988c05989d7b335ba2e286a3f6df29ebcb29",
+        "Pros Philippēsious, 'To the Philippians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "colossians": Original(
+        "ec59b087bf1b8f9f8282547665039cc5d71a76ed6897d33d31f85ae6e09e6999",
+        "Pros Kolossaeis, 'To the Colossians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "1-thessalonians": Original(
+        "4af0c0d34977368a4226e83032a4a2de1b1de0b7c7c05174ee8adaccac977d39",
+        "Pros Thessalonikeis A, 'First to the Thessalonians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "2-thessalonians": Original(
+        "097437d0b5c616135630f1eec85c76a004e720b77339fb44328f6a9a356045a3",
+        "Pros Thessalonikeis B, 'Second to the Thessalonians', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "1-timothy": Original(
+        "cee51af2859ae35f8fdfc7b603843620ff75349f4cf00a953c6e9af02cdbb171",
+        "Pros Timotheon A, 'First to Timothy', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "2-timothy": Original(
+        "adc3accc0d27e8c5d6af46a9c45216907dfa9bdd6f8043c55e45885afb3ab91e",
+        "Pros Timotheon B, 'Second to Timothy', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "titus": Original(
+        "9bf3d48e6568e087f73acabbc4a59bb22c2d5a3e9b2a0ca0344866ff0ce38f60",
+        "Pros Titon, 'To Titus', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "philemon": Original(
+        "fc41355ac54b5259ceb21b1814a0bf434a7aa65145b19299421826b0bea59a0d",
+        "Pros Philēmona, 'To Philemon', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "hebrews": Original(
+        "157570844bc58a272e2558ad7e0b3ca8224dcf0b456c149200e70703101f738e",
+        "Pros Hebraious, 'To the Hebrews', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "james": Original(
+        "72cece7f64eec1fd086f9a69301812a5df37f2c40e11d96f06f7b526e8767d28",
+        "Iakōbou, 'Of James', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "1-peter": Original(
+        "9806565bc8ec10a2e520ca8416e1e01f23221ccc07a730c9245b426e50a77e24",
+        "Petrou A, 'First of Peter', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "2-peter": Original(
+        "d624469aa4c3005b47aa2a104101de38735bc4996c94a89eb4a8407a285e2942",
+        "Petrou B, 'Second of Peter', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "1-john": Original(
+        "c9c6746ad8e75d830b2b40343379dfa44de3032eef0b7b4b5ef03626edb03af0",
+        "Iōannou A, 'First of John', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "2-john": Original(
+        "e7f103f251b12856fc9793fc2d67de4d4e24fcedf2366f461c7ed37eb6cc9996",
+        "Iōannou B, 'Second of John', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "3-john": Original(
+        "6414a062ac63092fc02182f2d8f2543a4c6a68367caea0ce22a6932cd1d3c4c5",
+        "Iōannou Γ, 'Third of John', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "jude": Original(
+        "26d3be7301d687ff831cf1153bff25fd09c87fa37e600c8cb0a075b6ead9058a",
+        "Iouda, 'Of Jude', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "revelation": Original(
+        "5c26011b529b2f1476c29ec995f00d69d10bdef382c96e295266bac41f972819",
+        "Apokalypsis Iōannou, 'The Revelation of John', the title in the Greek manuscripts, set large on a pale leaf.",
+    ),
+    "exodus": Original(
+        "fa629392913344d4ad6931d4be623e6bc5a2c517211373389233dbc2b054b6c6",
+        "Shemot, 'Names', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "leviticus": Original(
+        "5d5d9d0d73e3fa8e36f2d2ed61ea72cc4dfe3d651727ea192837fa979ae12047",
+        "Vayikra, 'And he called', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "numbers": Original(
+        "37ee50b51e348c7760806a1ac88aa35ab08867c87e9e91133f8555588b05696f",
+        "Bemidbar, 'In the wilderness', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "deuteronomy": Original(
+        "48a2998270acc27066c5ad3d55396552421454d4aeab5be60746971cd8680c2e",
+        "Devarim, 'Words', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "joshua": Original(
+        "60538e08e36637669ac00d033082ec31e07e004d5a5325236a0fe3c7e1eccdfc",
+        "Yehoshua, 'The LORD saves', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "judges": Original(
+        "86d082855325bcc4e53b063ee924079b71e387fe299f9f23faa6b874618eafc1",
+        "Shofetim, 'Judges', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "ruth": Original(
+        "d37de9baab2ebdd7aad26691194b3891681b8cf17d5aa8e3ed95444c2cbf7803",
+        "Rut, 'The Book of Ruth', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "1-samuel": Original(
+        "0607a282fa20d41d9b537ab945ccd29d1bf291353e82b79cbbf7c2f0f64e34c0",
+        "Shemuel Alef, 'The First Book of Samuel', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "2-samuel": Original(
+        "5068a8b44be16974486c4d819413275da6a46883fab2e5c8c2b15c24b5324625",
+        "Shemuel Bet, 'The Second Book of Samuel', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "1-kings": Original(
+        "c4f9dc2aa3f35352c4815fb10c3713b5a9c35261c07a7f1cf12dfb1082f370e3",
+        "Melakhim Alef, 'Kings', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "2-kings": Original(
+        "f3fe676ca476420c53a75e2451022f0fadd1be92f7b4a3a69790c481c8918ed6",
+        "Melakhim Bet, 'Kings', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "1-chronicles": Original(
+        "97eb98f598310f82ebe4a2d8314b8af6bf9d696ff4340ad1ae290514c68d3b4f",
+        "Divrei HaYamim Alef, 'The events of the days', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "2-chronicles": Original(
+        "6da95f9f6d5bad547d4d02d81c2aa9db9902478a443ee6616f5ad08014045d29",
+        "Divrei HaYamim Bet, 'The events of the days', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "ezra": Original(
+        "6c27bb3901f9423bd7a2b28d17744f53766e2452d91effbe6ca4f1f2e9803337",
+        "Ezra, 'Help', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "nehemiah": Original(
+        "76c382534bdb87b5f8f5f7ba6d534abf7627a77758d02bd01c176143c8d96bcb",
+        "Nechemyah, 'The LORD comforts', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "esther": Original(
+        "af0c65ab5cfe1f99dd70164cee8bd0931f575a1e482626803fb1b70c178ee741",
+        "Ester, 'Star', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "job": Original(
+        "4f009082c9470988bb3286dc5d60203b3526418954dbd8eb3adba67a6f8682bc",
+        "Iyov, 'The Book of Job', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "proverbs": Original(
+        "5f3b7db0f360bd57b16393abe9f627cfba8d7bfccc8857cfbe7f43d1ebbb3c19",
+        "Mishlei, 'Proverbs', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "ecclesiastes": Original(
+        "db2c004efb1472ee9323ba76f34593395cba89adc51264b6f68a907232171640",
+        "Qohelet, 'The one who gathers', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "song-of-songs": Original(
+        "b621ff6da8d688cbf9d6605cc0d76e80767858a38304d85044c9ca910339efe7",
+        "Shir HaShirim, 'The Song of Songs', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "isaiah": Original(
+        "fe35d1da6860b31131a7208ecaa32dc07e175fad38fe1791858c959ed2c77be5",
+        "Yeshayahu, 'The LORD saves', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "jeremiah": Original(
+        "71dac8055b02e97de0bafc3ce8536499b9673344b53a04817813c934239b3f25",
+        "Yirmeyahu, 'The Book of Jeremiah', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "lamentations": Original(
+        "ce4afb9b38bef6af4b7d51d4b1368524fbfe7644c9269f2b77097db12e904188",
+        "Eikhah, 'How!', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "ezekiel": Original(
+        "0442a94a25c383c6aa1ec8562d06d355e255d15e87b4cd9c36f3418f71990abc",
+        "Yechezkel, 'God strengthens', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "daniel": Original(
+        "e60fe18ffe69c3e21a45475361a57f574dd6d20c12c8754bcd924c4704db8050",
+        "Daniyyel, 'God is my judge', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "hosea": Original(
+        "3f355028e5a4597e6aedecc2c82156be8f04f4e353a437838bce687d9c13793f",
+        "Hoshea, 'Salvation', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "joel": Original(
+        "83857ea259004c121860fb6fc6f53b348649c884a6ca7bbedf8c7248f16e325d",
+        "Yoel, 'The LORD is God', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "amos": Original(
+        "f0e18c9156ad48f2f40269990d448a176ec82986d142524ed5179662da33d173",
+        "Amos, 'Burden-bearer', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "obadiah": Original(
+        "58456b83e45b86e9fc78b335f76a9c76dbb91b5615a23c168e1684d664cb7b96",
+        "Ovadyah, 'Servant of the LORD', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "jonah": Original(
+        "8157c785daeba7c21441a0c59b6c6bdd43c22fc2bbf68ef282da552a12692a1a",
+        "Yonah, 'Dove', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "micah": Original(
+        "0359f459e2a19f2b6c1ce14bb88f432c0a7a9a50f51cacf3d35dff476522a8b8",
+        "Mikhah, 'Who is like the LORD?', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "nahum": Original(
+        "717f9026eca233c8fa33b852697bbed4ed60f74f7f73b94cb715cf43b767b47d",
+        "Nachum, 'Comfort', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "habakkuk": Original(
+        "77f444e36effc2cf2cf0c285ce4f196ff3cbaab6cc48fc38129c57ece00e9da8",
+        "Chavaqquq, 'The Book of Habakkuk', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "zephaniah": Original(
+        "406b9542d4c0a57e003c0897b105819aed44f9723f194458fa02f78e8ff0693b",
+        "Tsefanyah, 'The LORD has hidden', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "haggai": Original(
+        "1e4d57a2886553541f8d4b3d08781a9a8812811ce82ed98161f152c5479c9ea7",
+        "Chaggai, 'Festive', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "zechariah": Original(
+        "587eabddfed7e2e1d4f86fa8543d04e6e6a5cc58a14b83f27b8dd98caf6d1c46",
+        "Zekharyah, 'The LORD remembers', the book's Hebrew name, set large on a pale leaf.",
+    ),
+    "malachi": Original(
+        "ddf429001d27be3333c00c772c657733e507e811e39ab5c7bc5ee7ae77ae6539",
+        "Malakhi, 'My messenger', the book's Hebrew name, set large on a pale leaf.",
     ),
 }
 

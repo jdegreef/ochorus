@@ -1,0 +1,34 @@
+{
+ "slug": "acts-of-the-apostles",
+ "title": "The Acts of the Apostles",
+ "cover_title": "Acts",
+ "subtitle": "Praxeis Apostolōn, “Acts of the Apostles”",
+ "cover_color": "#6e5420",
+ "description": "The second volume of Luke’s two-part work, and the story of how the church began: “you will bear witness to me in Jerusalem, through all Judea and Samaria, and out to the farthest end of the earth.” The ascension and the waiting; wind and fire at Pentecost and three thousand baptized; a church devoted to the apostles’ teaching and the prayers; Stephen the first martyr; Philip and the Ethiopian on the desert road; Saul struck down on the Damascus road; Peter at the house of Cornelius, and the council at Jerusalem that opened the door to the Gentiles. Then Paul’s journeys, his speech in Athens, his arrest and trials, the storm and shipwreck, and Rome, where the book ends with the kingdom of God proclaimed “with all boldness, unhindered.” In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the Acts of the Apostles?",
+   "answer": "The fifth book of the New Testament, the sequel to the Gospel of Luke, and the only history of the first Christians in the Bible. It follows the church from the ascension of Jesus and the coming of the Holy Spirit at Pentecost, through the work of Peter in Jerusalem and the spread of the message to Samaria and the Gentiles, to Paul’s journeys and his arrival in Rome as a prisoner, about thirty years later. Its plan is given in Jesus’s words in 1:8."
+  },
+  {
+   "question": "Who wrote Acts, and when?",
+   "answer": "The book does not name its author, but it is addressed to the same Theophilus as the Gospel of Luke and refers back to that “first book” (1:1). From the second century the church has said both were written by Luke, the doctor who travelled with Paul, and several passages told in the first person (“we”) suggest he was there. Because Acts ends with Paul still awaiting trial in Rome, around AD 62, some date it soon after; many scholars date it to the 80s."
+  },
+  {
+   "question": "What happened at Pentecost in Acts 2?",
+   "answer": "Pentecost was the Jewish harvest festival fifty days after Passover. As the disciples were gathered in Jerusalem, a sound like a mighty wind filled the house, tongues like fire rested on each of them, they were filled with the Holy Spirit, and they began to speak in other languages, which pilgrims from many nations understood. Peter preached that Jesus, crucified and raised, is Lord and Christ, and about three thousand were baptized. Christians differ on whether the gift of the Spirit with tongues is a pattern for believers today or a once-for-all beginning, but all see it as the birth of the church’s mission."
+  },
+  {
+   "question": "What was the Council of Jerusalem in Acts 15?",
+   "answer": "A meeting of the apostles and elders in Jerusalem, around AD 49, to settle whether Gentile believers had to be circumcised and keep the law of Moses to be saved. Peter recalled how God had given the Spirit to the Gentiles at Cornelius’s house, and declared that Jews and Gentiles alike are saved through the grace of the Lord Jesus. James proposed, and the council agreed, to lay on Gentile believers no burden beyond a few essentials. It was a turning point in the history of the church."
+  },
+  {
+   "question": "Why does Acts end without telling of Paul’s death?",
+   "answer": "Acts closes with Paul living two years in rented lodgings in Rome, under guard, welcoming everyone and proclaiming the kingdom of God “with all boldness, unhindered” (28:31). Some think Luke wrote before Paul’s trial was decided; others that he ended deliberately with the gospel preached freely at the heart of the empire, its story still unfinished. Early tradition says Paul was put to death in Rome under Nero in the 60s."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Greek and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Greek beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

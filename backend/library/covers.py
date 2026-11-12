@@ -487,6 +487,79 @@ _FIXED_ROWS = {"byline": (102, 130), "mark": (664, 747)}
 #: does) would pass a painting the page leaves pale.
 SCRIM_MAX = 1.0
 
+#: The Open Word Bible's books (scripts/original_grounds/scripture.py): a pale
+#: leaf with the book's Hebrew or Greek name low on it, the type set above it
+#: from the top in dark ink. One composition, so they are in TYPE_TOP and
+#: INK_DARK both, and share one set of measured ink boxes below.
+OPEN_WORD_BIBLE = frozenset({
+    "1-chronicles",
+    "1-corinthians",
+    "1-john",
+    "1-kings",
+    "1-peter",
+    "1-samuel",
+    "1-thessalonians",
+    "1-timothy",
+    "2-chronicles",
+    "2-corinthians",
+    "2-john",
+    "2-kings",
+    "2-peter",
+    "2-samuel",
+    "2-thessalonians",
+    "2-timothy",
+    "3-john",
+    "acts-of-the-apostles",
+    "amos",
+    "colossians",
+    "daniel",
+    "deuteronomy",
+    "ecclesiastes",
+    "ephesians",
+    "esther",
+    "exodus",
+    "ezekiel",
+    "ezra",
+    "galatians",
+    "genesis",
+    "gospel-of-john",
+    "gospel-of-luke",
+    "gospel-of-mark",
+    "gospel-of-matthew",
+    "habakkuk",
+    "haggai",
+    "hebrews",
+    "hosea",
+    "isaiah",
+    "james",
+    "jeremiah",
+    "job",
+    "joel",
+    "jonah",
+    "joshua",
+    "jude",
+    "judges",
+    "lamentations",
+    "leviticus",
+    "malachi",
+    "micah",
+    "nahum",
+    "nehemiah",
+    "numbers",
+    "obadiah",
+    "philemon",
+    "philippians",
+    "proverbs",
+    "psalms",
+    "revelation",
+    "romans",
+    "ruth",
+    "song-of-songs",
+    "titus",
+    "zechariah",
+    "zephaniah",
+})
+
 #: The painted works whose type is set from the TOP of the cover rather than
 #: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
 #: in Python. A fixture gate holds the two sets equal.
@@ -541,7 +614,7 @@ TYPE_TOP = frozenset({
     "the-normal-christian-life",
     "the-pursuit-of-god",
     "things-as-they-are",
-})
+}) | OPEN_WORD_BIBLE
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
 #: cover is measured there rather than across the frame: its picture sits
@@ -741,7 +814,7 @@ INK_DARK = frozenset({
     "he-holds-my-tomorrows",
     "stepping-stones-2",
     "the-key-in-my-hand",
-})
+}) | OPEN_WORD_BIBLE
 
 #: `--cover-ink-dark` in `cover-type.css`.
 DARK_INK = (0x23, 0x1A, 0x24)
@@ -824,6 +897,20 @@ DARK_INK_BOXES_BY_SLUG = {
         ("mark", (228, 660, 372, 750), 0.95, 3.0),
     ),
 }
+
+#: The Open Word Bible's books share one composition (type from the top, the
+#: name low on the leaf, OpenWordBible.org at the foot), so one set of boxes,
+#: measured 2026-11-11 on the English twins plus margin. The title row allows a
+#: second line and the subtitle runs down to it, both still clear of the name's
+#: band, which starts at y=470.
+OPEN_WORD_BIBLE_INK_BOXES = (
+    ("byline", (60, 98, 540, 135), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+    ("title", (40, 160, 560, 380), 1.0, TITLE_MIN),
+    ("subtitle", (60, 350, 540, 450), 0.90, AUTHOR_MIN_CONTRAST),
+    # The address is set at 0.86 (`.cover-type .sitemark`), not the mark's 0.95.
+    ("mark", (150, 684, 450, 726), 0.86, 3.0),
+)
+DARK_INK_BOXES_BY_SLUG |= dict.fromkeys(OPEN_WORD_BIBLE, OPEN_WORD_BIBLE_INK_BOXES)
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.

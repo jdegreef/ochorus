@@ -1,0 +1,34 @@
+{
+ "slug": "job",
+ "title": "Job",
+ "cover_title": "",
+ "subtitle": "Iyov, “The Book of Job”",
+ "cover_color": "#3a2a1e",
+ "description": "The Bible’s great book about suffering, which asks its question in the first chapter: “Does Job fear God for nothing?” A blameless man in the land of Uz loses his wealth, his children and his health in a few days, and says, “The LORD gave, and the LORD has taken away.” Then three friends sit with him in silence for seven days, and then argue, chapter after chapter, that he must have sinned, while Job curses the day he was born, demands a hearing from God, and rises to the words “I know that my Redeemer lives.” A poem asking where wisdom can be found; a young man named Elihu; and at last the LORD answering Job from the storm: “Where were you when I founded the earth?” Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Job about?",
+   "answer": "A righteous man who loses everything and wrestles with God over why. In the prose prologue (chapters 1–2) the Accuser in the heavenly court claims that Job serves God only for what he gets, and God allows him to be tested: Job loses his wealth, his ten children and his health, but does not curse God. In the long poetic middle (3:1–42:6) his three friends insist that he must be suffering for his sins, Job protests his innocence and demands that God answer him, a young man named Elihu speaks, and finally the LORD answers Job from the storm. In the prose epilogue God rebukes the friends, says that Job has spoken rightly of him, and restores Job’s fortunes."
+  },
+  {
+   "question": "Who wrote the book of Job, and when?",
+   "answer": "The book does not name its author or say when it was written. One ancient Jewish tradition credited it to Moses. The story is set in a patriarchal world outside Israel, in the land of Uz, where Job offers sacrifices for his own family and counts his wealth in flocks and herds, but that tells us when the story is set rather than when the book was written. Scholars have proposed dates from the time of Solomon to after the exile, and the question remains open. Ezekiel 14:14 names Job with Noah and Daniel, and James 5:11 speaks of Job’s endurance."
+  },
+  {
+   "question": "Who is the Accuser in the book of Job?",
+   "answer": "In chapters 1–2 a figure called in Hebrew “the satan”, with the article, comes among the heavenly beings before the LORD and questions Job’s motives: “Does Job fear God for nothing?” The word is a title meaning the adversary or accuser, which this translation renders “the Accuser”. Later Scripture uses the word as a name, Satan, for God’s great enemy, and many Christians identify him with this figure. The book of Job itself presents him as an accuser in the heavenly court who can act only as far as the LORD allows, and he disappears from the story after chapter 2."
+  },
+  {
+   "question": "What does “I know that my Redeemer lives” mean in Job?",
+   "answer": "In Job 19:25–27, abandoned by his family and friends, Job declares that his Redeemer lives and will stand up for him at the last, and that he will see God for himself. The Redeemer, in Hebrew go’el, was the nearest relative who stood up for a family member in trouble, buying back his land, freeing him from slavery and defending him in court. Most interpreters think Job means God himself, who will in the end take his side. Christians have long heard in the words a hope fulfilled in Christ and in the resurrection of the body; Handel set them at the opening of the third part of Messiah."
+  },
+  {
+   "question": "Does God ever explain to Job why he suffered?",
+   "answer": "No. When the LORD answers Job from the storm (chapters 38–41), he never mentions the scene in heaven or gives a reason for Job’s suffering. Instead he asks Job a long series of questions about the making of the world and the wild creatures he cares for, from the stars to the raven, and shows him Behemoth and Leviathan. Job is answered all the same: “I had heard of you by what my ears were told, but now my own eyes have seen you.” The book does not solve the problem of suffering. It shows a man who meets God in the middle of it, and God declares that Job, who argued honestly with him, spoke rightly, while the friends who defended him with false reasons did not."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The poetry, which runs from chapter 3 to 42:6, is printed one line at a time, and “LORD” in capitals stands for God’s personal name. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}
