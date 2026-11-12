@@ -1704,5 +1704,15 @@
   "bible_read_along": "Leia passo a passo",
   "bible_in_order": "Leia do começo ao fim, de Gênesis a Apocalipse",
   "journey_you_are_here": "Você está aqui",
-  "journey_passed": "%n% de %t% lugares percorridos"
+  "journey_passed": "%n% de %t% lugares percorridos",
+  "calendar_advent_title": "Calendário do Advento",
+  "calendar_lent_title": "Calendário da Quaresma",
+  "calendar_advent_tagline": "Uma porta para cada dia do Advento, com uma leitura curta e um versículo das Escrituras. As portas passadas ficam abertas.",
+  "calendar_lent_tagline": "Uma porta para cada um dos quarenta dias da Quaresma, com uma leitura curta e um versículo das Escrituras. As portas passadas ficam abertas.",
+  "calendar_today_door": "A porta de hoje",
+  "calendar_today": "Hoje",
+  "calendar_read": "Ler a leitura de hoje",
+  "calendar_locked": "Abre em %date%",
+  "calendar_open_today": "Abrir a porta de hoje",
+  "calendar_see_doors": "Ver as portas"
 }

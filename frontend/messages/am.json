@@ -1704,5 +1704,15 @@
   "bible_read_along": "ደረጃ በደረጃ ያንብቡ",
   "bible_in_order": "ከዘፍጥረት እስከ ራእይ በቅደም ተከተል ሙሉውን ያንብቡ",
   "journey_you_are_here": "እዚህ ነዎት",
-  "journey_passed": "ከ%t% ቦታዎች %n% አልፈዋል"
+  "journey_passed": "ከ%t% ቦታዎች %n% አልፈዋል",
+  "calendar_advent_title": "የምጽአት ቀን መቁጠሪያ",
+  "calendar_lent_title": "የዐቢይ ጾም ቀን መቁጠሪያ",
+  "calendar_advent_tagline": "ለእያንዳንዱ የምጽአት ቀን አንድ በር፣ ከአጭር ንባብና ከአንድ የመጽሐፍ ቅዱስ ጥቅስ ጋር። ያለፉት በሮች ክፍት ሆነው ይቆያሉ።",
+  "calendar_lent_tagline": "ለእያንዳንዱ የዐቢይ ጾም አርባ ቀናት አንድ በር፣ ከአጭር ንባብና ከአንድ የመጽሐፍ ቅዱስ ጥቅስ ጋር። ያለፉት በሮች ክፍት ሆነው ይቆያሉ።",
+  "calendar_today_door": "የዛሬው በር",
+  "calendar_today": "ዛሬ",
+  "calendar_read": "የዛሬውን ንባብ ያንብቡ",
+  "calendar_locked": "%date% ይከፈታል",
+  "calendar_open_today": "የዛሬውን በር ይክፈቱ",
+  "calendar_see_doors": "በሮቹን ይመልከቱ"
 }

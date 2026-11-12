@@ -1704,5 +1704,15 @@
   "bible_read_along": "Soma hatua kwa hatua",
   "bible_in_order": "Isome yote kwa mpangilio, kutoka Mwanzo hadi Ufunuo",
   "journey_you_are_here": "Uko hapa",
-  "journey_passed": "Umepita sehemu %n% kati ya %t%"
+  "journey_passed": "Umepita sehemu %n% kati ya %t%",
+  "calendar_advent_title": "Kalenda ya Majilio",
+  "calendar_lent_title": "Kalenda ya Kwaresima",
+  "calendar_advent_tagline": "Mlango kwa kila siku ya Majilio, wenye somo fupi na mstari wa Maandiko. Milango ya siku zilizopita hubaki wazi.",
+  "calendar_lent_tagline": "Mlango kwa kila moja ya siku arobaini za Kwaresima, wenye somo fupi na mstari wa Maandiko. Milango ya siku zilizopita hubaki wazi.",
+  "calendar_today_door": "Mlango wa leo",
+  "calendar_today": "Leo",
+  "calendar_read": "Soma somo la leo",
+  "calendar_locked": "Utafunguliwa %date%",
+  "calendar_open_today": "Fungua mlango wa leo",
+  "calendar_see_doors": "Tazama milango"
 }

@@ -1704,5 +1704,15 @@
   "bible_read_along": "Đọc từng bước",
   "bible_in_order": "Đọc trọn theo thứ tự, từ Sáng Thế Ký đến Khải Huyền",
   "journey_you_are_here": "Bạn đang ở đây",
-  "journey_passed": "Đã qua %n% / %t% địa điểm"
+  "journey_passed": "Đã qua %n% / %t% địa điểm",
+  "calendar_advent_title": "Lịch Mùa Vọng",
+  "calendar_lent_title": "Lịch Mùa Chay",
+  "calendar_advent_tagline": "Mỗi ngày Mùa Vọng một cánh cửa, với một bài đọc ngắn và một câu Kinh Thánh. Những cánh cửa đã qua vẫn mở.",
+  "calendar_lent_tagline": "Mỗi ngày trong bốn mươi ngày Mùa Chay một cánh cửa, với một bài đọc ngắn và một câu Kinh Thánh. Những cánh cửa đã qua vẫn mở.",
+  "calendar_today_door": "Cánh cửa hôm nay",
+  "calendar_today": "Hôm nay",
+  "calendar_read": "Đọc bài đọc hôm nay",
+  "calendar_locked": "Mở vào %date%",
+  "calendar_open_today": "Mở cánh cửa hôm nay",
+  "calendar_see_doors": "Xem các cánh cửa"
 }

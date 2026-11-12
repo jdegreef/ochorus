@@ -7,7 +7,9 @@
 	import { contentLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { loadCalendar, type Calendar } from '$lib/seasonCalendar';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 
 	const t = i18n.t;
 
@@ -34,6 +36,10 @@
 	 */
 
 	let picks = $state<TodayPicks | null>(null);
+	/** In Advent or Lent: the season's calendar ($lib/seasonCalendar), for the
+	 *  row under the columns that leads to it on /today. Loaded with the picks,
+	 *  so the card is drawn once. */
+	let calendar = $state<Calendar | null>(null);
 	let dateLabel = $state('');
 	let pickedFor = '';
 
@@ -47,8 +53,9 @@
 		if (key === pickedFor) return;
 		pickedFor = key;
 		const lang = getLang();
-		const next = await loadTodayPicks(now, lang);
+		const [next, cal] = await Promise.all([loadTodayPicks(now, lang), loadCalendar(now, lang)]);
 		if (key !== pickedFor) return;
+		calendar = cal;
 		dateLabel = now.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
 		picks = next;
 	}
@@ -107,6 +114,13 @@
 						</li>
 					{/if}
 				</ul>
+				{#if calendar}
+					<a class="calendar-row mt-6 text-small font-semibold text-accent" href="{localizeHref('/today')}#calendar"
+						>{t(calendar.window.season === 'advent' ? 'calendar.adventTitle' : 'calendar.lentTitle')} · {t(
+							calendar.today ? 'calendar.openToday' : 'calendar.seeDoors'
+						)} <Arrow /></a
+					>
+				{/if}
 			{:else}
 				<!-- The card's shape while the day is picked: the header's two lines,
 				     then three columns of the same height as the real ones. -->
@@ -178,6 +192,13 @@
 	   Arabic, Amharic and Hindi have none, and a browser would slant them. */
 	.verse {
 		font-weight: 400;
+	}
+	/* The season's calendar, under the columns: a hairline, then the link. */
+	.calendar-row {
+		display: block;
+		padding-block-start: 1rem;
+		border-block-start: 1px solid var(--border);
+		text-decoration: none;
 	}
 	.today-link:hover .title,
 	.today-link:focus-visible .title {

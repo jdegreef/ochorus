@@ -1704,5 +1704,15 @@
   "bible_read_along": "Léela paso a paso",
   "bible_in_order": "Léela de principio a fin, de Génesis a Apocalipsis",
   "journey_you_are_here": "Estás aquí",
-  "journey_passed": "%n% de %t% lugares recorridos"
+  "journey_passed": "%n% de %t% lugares recorridos",
+  "calendar_advent_title": "Calendario de Adviento",
+  "calendar_lent_title": "Calendario de Cuaresma",
+  "calendar_advent_tagline": "Una puerta para cada día de Adviento, con una lectura breve y un versículo de la Escritura. Las puertas pasadas quedan abiertas.",
+  "calendar_lent_tagline": "Una puerta para cada uno de los cuarenta días de Cuaresma, con una lectura breve y un versículo de la Escritura. Las puertas pasadas quedan abiertas.",
+  "calendar_today_door": "La puerta de hoy",
+  "calendar_today": "Hoy",
+  "calendar_read": "Leer la lectura de hoy",
+  "calendar_locked": "Se abre el %date%",
+  "calendar_open_today": "Abre la puerta de hoy",
+  "calendar_see_doors": "Ver las puertas"
 }

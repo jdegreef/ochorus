@@ -1704,5 +1704,15 @@
   "bible_read_along": "اقرأ خطوة بخطوة",
   "bible_in_order": "اقرأه كاملًا بالترتيب، من التكوين إلى الرؤيا",
   "journey_you_are_here": "أنت هنا",
-  "journey_passed": "اجتزت %n% من %t% أماكن"
+  "journey_passed": "اجتزت %n% من %t% أماكن",
+  "calendar_advent_title": "تقويم زمن المجيء",
+  "calendar_lent_title": "تقويم الصوم الكبير",
+  "calendar_advent_tagline": "باب لكل يوم من أيام زمن المجيء، فيه قراءة قصيرة وآية من الكتاب المقدس. تبقى أبواب الأيام الماضية مفتوحة.",
+  "calendar_lent_tagline": "باب لكل يوم من أيام الصوم الكبير الأربعين، فيه قراءة قصيرة وآية من الكتاب المقدس. تبقى أبواب الأيام الماضية مفتوحة.",
+  "calendar_today_door": "باب اليوم",
+  "calendar_today": "اليوم",
+  "calendar_read": "اقرأ قراءة اليوم",
+  "calendar_locked": "يُفتح في %date%",
+  "calendar_open_today": "افتح باب اليوم",
+  "calendar_see_doors": "شاهد الأبواب"
 }

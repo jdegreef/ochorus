@@ -1704,5 +1704,15 @@
   "bible_read_along": "차근차근 읽기",
   "bible_in_order": "창세기부터 요한계시록까지 순서대로 읽기",
   "journey_you_are_here": "현재 위치",
-  "journey_passed": "%t%곳 중 %n%곳을 지났어요"
+  "journey_passed": "%t%곳 중 %n%곳을 지났어요",
+  "calendar_advent_title": "대림절 달력",
+  "calendar_lent_title": "사순절 달력",
+  "calendar_advent_tagline": "대림절의 하루하루마다 문이 하나씩 있고, 짧은 읽을거리와 성경 한 구절이 담겨 있습니다. 지난 날의 문은 열린 채로 남습니다.",
+  "calendar_lent_tagline": "사순절 사십 일의 하루하루마다 문이 하나씩 있고, 짧은 읽을거리와 성경 한 구절이 담겨 있습니다. 지난 날의 문은 열린 채로 남습니다.",
+  "calendar_today_door": "오늘의 문",
+  "calendar_today": "오늘",
+  "calendar_read": "오늘의 읽을거리 읽기",
+  "calendar_locked": "%date%에 열립니다",
+  "calendar_open_today": "오늘의 문 열기",
+  "calendar_see_doors": "문 보기"
 }

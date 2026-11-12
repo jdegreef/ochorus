@@ -1704,5 +1704,15 @@
   "bible_read_along": "कदम-दर-कदम पढ़ें",
   "bible_in_order": "उत्पत्ति से प्रकाशितवाक्य तक, क्रम से पूरी पढ़ें",
   "journey_you_are_here": "आप यहाँ हैं",
-  "journey_passed": "%t% में से %n% स्थान पार किए"
+  "journey_passed": "%t% में से %n% स्थान पार किए",
+  "calendar_advent_title": "आगमन कैलेंडर",
+  "calendar_lent_title": "चालीसा कैलेंडर",
+  "calendar_advent_tagline": "आगमन के हर दिन के लिए एक द्वार, एक छोटे पाठ और पवित्रशास्त्र की एक पंक्ति के साथ। बीते दिनों के द्वार खुले रहते हैं।",
+  "calendar_lent_tagline": "चालीसा के चालीस दिनों में से हर दिन के लिए एक द्वार, एक छोटे पाठ और पवित्रशास्त्र की एक पंक्ति के साथ। बीते दिनों के द्वार खुले रहते हैं।",
+  "calendar_today_door": "आज का द्वार",
+  "calendar_today": "आज",
+  "calendar_read": "आज का पाठ पढ़ें",
+  "calendar_locked": "%date% को खुलेगा",
+  "calendar_open_today": "आज का द्वार खोलें",
+  "calendar_see_doors": "द्वार देखें"
 }
