@@ -73,6 +73,13 @@ PAIR = re.compile(
     re.S,
 )
 
+
+
+def quoted(m: re.Match) -> str:
+    """The quotation a `PAIR` match read, whichever quote marks it used."""
+    return m.group("quote") if m.group("quote") is not None else m.group("squote")
+
+
 _TAG = re.compile(r"<[^>]+>")
 _ENTITY = re.compile(r"&[a-z]+;|&#\d+;")
 MIN_WORDS = 4  # below this a "quotation" is a fragment and matches everything
@@ -134,7 +141,7 @@ def scan(bodies=None) -> dict[tuple[str, str], list[Rendering]]:
     found: dict[tuple[str, str], list[Rendering]] = defaultdict(list)
     for language, where, body in bodies if bodies is not None else _fixture_bodies():
         for m in PAIR.finditer(body):
-            quote = clean(m.group("quote") or m.group("squote"))
+            quote = clean(quoted(m))
             if len(quote.split()) < MIN_WORDS:
                 continue
             book = clean(m.group("book")).strip(" .,;:")

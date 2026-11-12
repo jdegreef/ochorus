@@ -159,7 +159,7 @@ def cited_quotations(filename: str) -> dict[tuple[int, int], tuple[str, ...]]:
         if not body:
             continue
         for m in vc.PAIR.finditer(body):
-            quote = vc.clean(m.group("quote"))
+            quote = vc.clean(vc.quoted(m))
             if len(quote.split()) < vc.MIN_WORDS:
                 continue
             found[(int(m.group("chapter")), int(m.group("verse")))].append(quote)
