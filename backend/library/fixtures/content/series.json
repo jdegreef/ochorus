@@ -1294,6 +1294,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "ar",
+  "title": "سحابة من الشهود المصلّين",
+  "description": "الصلاة عبر قصة الكنيسة كلها، مجلد لكل حقبة: صلوات العهد القديم، ويسوع معلّم الصلاة، والرسل، والرجال والنساء المصلّون في كل قرن وكل أرض حتى اليوم. كل فصل قصير يضع آية محورية، ويروي قصة، ويُسمعنا صوتًا من الماضي، ويختم بأفكار رئيسية وتمرين وصلاة.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "fr",
