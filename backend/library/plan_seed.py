@@ -847,6 +847,129 @@ CURATED_PLANS = [
         "LORD as the beginning of knowledge to the woman of strength.",
         [chapters("proverbs", 2, 32)],
     ),
+    # The seasons in Scripture (Open Word Bible, chapter order N+1 is chapter
+    # N). Advent: 25 days, 1 December to Christmas Day — the promises, then the
+    # birth on day 24 (Christmas Eve). The /advent/ hub offers it beside
+    # advent-with-the-classics ($lib/advent ADVENT_SCRIPTURE_PLAN).
+    (
+        "advent-in-scripture",
+        "Advent in Scripture",
+        "Twenty-five days from 1 December to Christmas Day, one chapter a day "
+        "in the Open Word Bible. The promises come first: the serpent crushed, "
+        "the blessing to Abraham, the star out of Jacob, David's everlasting "
+        "throne, and Isaiah's child, servant and light, with Jeremiah's Branch, "
+        "Micah's Bethlehem and Malachi's messenger. Then the Word made flesh, "
+        "Gabriel and Mary, Joseph's dream, the birth on Christmas Eve and the "
+        "wise men on Christmas Day. About three minutes a day.",
+        [
+            chapters("genesis", 4, 4),  # Genesis 3: the first promise
+            chapters("genesis", 13, 13),  # Genesis 12: in you all the families of the earth
+            chapters("numbers", 25, 25),  # Numbers 24: a star out of Jacob
+            chapters("2-samuel", 8, 8),  # 2 Samuel 7: a throne forever
+            chapters("psalms", 3, 3),  # Psalm 2: you are my Son
+            chapters("isaiah", 3, 3),  # Isaiah 2: the mountain of the LORD
+            chapters("isaiah", 8, 8),  # Isaiah 7: Immanuel
+            chapters("isaiah", 10, 10),  # Isaiah 9: to us a child is born
+            chapters("isaiah", 12, 12),  # Isaiah 11: the shoot of Jesse
+            chapters("isaiah", 36, 36),  # Isaiah 35: the desert shall blossom
+            chapters("isaiah", 41, 41),  # Isaiah 40: comfort my people
+            chapters("isaiah", 43, 43),  # Isaiah 42: my chosen servant
+            chapters("isaiah", 53, 53),  # Isaiah 52: how beautiful the feet
+            chapters("isaiah", 54, 54),  # Isaiah 53: the suffering servant
+            chapters("isaiah", 61, 61),  # Isaiah 60: arise, shine
+            chapters("isaiah", 62, 62),  # Isaiah 61: good news to the poor
+            chapters("jeremiah", 24, 24),  # Jeremiah 23: the righteous Branch
+            chapters("micah", 6, 6),  # Micah 5: from Bethlehem
+            chapters("zechariah", 10, 10),  # Zechariah 9: your king comes
+            chapters("malachi", 4, 4),  # Malachi 3: my messenger
+            chapters("gospel-of-john", 2, 2),  # John 1: the Word made flesh
+            chapters("gospel-of-luke", 2, 2),  # Luke 1: Gabriel, Mary and Zechariah
+            chapters("gospel-of-matthew", 2, 2),  # Matthew 1: Joseph's dream
+            chapters("gospel-of-luke", 3, 3),  # Luke 2: the birth, the shepherds
+            chapters("gospel-of-matthew", 3, 3),  # Matthew 2: the wise men
+        ],
+    ),
+    # Lent: forty readings for the forty days, Ash Wednesday to Holy Saturday
+    # without the Sundays — read Monday to Saturday (the plan calendar's
+    # "Mon–Sat") and day 39 is Good Friday, day 40 Holy Saturday. The road to
+    # the cross, the Passion in Matthew, Mark and Luke, the letters on what it
+    # did, then Holy Week through John.
+    (
+        "lent-the-road-to-the-cross",
+        "Lent: The Road to the Cross",
+        "Forty readings for the forty days of Lent in the Open Word Bible. Begin "
+        "on Ash Wednesday and read Monday to Saturday, resting on the Sundays, "
+        "and Good Friday and Holy Saturday fall on their own chapters. From the "
+        "call to return with all your heart, through the lamb, the Passover and "
+        "the suffering servant, to Jesus setting his face toward Jerusalem; the "
+        "Passion in Matthew, Mark and Luke; what the cross accomplished, in "
+        "Hebrews, Romans, Philippians and Peter; and Holy Week day by day in "
+        "John. About five minutes a day.",
+        [
+            chapters("joel", 3, 3),  # Joel 2: rend your hearts (Ash Wednesday)
+            chapters("psalms", 52, 52),  # Psalm 51: a clean heart
+            chapters("genesis", 4, 4),  # Genesis 3: the fall
+            chapters("genesis", 23, 23),  # Genesis 22: the LORD will provide a lamb
+            chapters("exodus", 13, 13),  # Exodus 12: the Passover
+            chapters("leviticus", 17, 17),  # Leviticus 16: the Day of Atonement
+            chapters("psalms", 23, 23),  # Psalm 22: why have you forsaken me
+            chapters("isaiah", 54, 54),  # Isaiah 53: wounded for our transgressions
+            chapters("gospel-of-mark", 9, 9),  # Mark 8: take up your cross
+            chapters("gospel-of-mark", 10, 10),  # Mark 9: the transfiguration
+            chapters("gospel-of-mark", 11, 11),  # Mark 10: a ransom for many
+            chapters("gospel-of-luke", 14, 14),  # Luke 13: Jerusalem, Jerusalem
+            chapters("gospel-of-luke", 16, 16),  # Luke 15: the lost found
+            chapters("gospel-of-luke", 19, 19),  # Luke 18: going up to Jerusalem
+            chapters("gospel-of-luke", 20, 20),  # Luke 19: the King on the road
+            chapters("gospel-of-john", 11, 11),  # John 10: the good shepherd lays down his life
+            chapters("gospel-of-john", 12, 12),  # John 11: Lazarus
+            chapters("gospel-of-mark", 12, 12),  # Mark 11: the temple cleansed
+            chapters("gospel-of-mark", 13, 13),  # Mark 12: the rejected stone
+            chapters("gospel-of-mark", 14, 14),  # Mark 13: keep watch
+            chapters("gospel-of-matthew", 26, 26),  # Matthew 25: the bridegroom comes
+            chapters("gospel-of-matthew", 27, 27),  # Matthew 26: the Last Supper and Gethsemane
+            chapters("gospel-of-matthew", 28, 28),  # Matthew 27: the cross
+            chapters("gospel-of-mark", 15, 15),  # Mark 14: the anointing and the arrest
+            chapters("gospel-of-mark", 16, 16),  # Mark 15: the crucifixion
+            chapters("gospel-of-luke", 23, 23),  # Luke 22: the cup of the new covenant
+            chapters("gospel-of-luke", 24, 24),  # Luke 23: Father, forgive them
+            chapters("hebrews", 10, 10),  # Hebrews 9: once for all
+            chapters("hebrews", 11, 11),  # Hebrews 10: a new and living way
+            chapters("romans", 6, 6),  # Romans 5: while we were still sinners
+            chapters("philippians", 3, 3),  # Philippians 2: obedient to death
+            chapters("1-peter", 3, 3),  # 1 Peter 2: by his wounds
+            chapters("2-corinthians", 6, 6),  # 2 Corinthians 5: reconciled to God
+            chapters("isaiah", 51, 51),  # Isaiah 50: a face set like flint
+            chapters("gospel-of-john", 13, 13),  # John 12: the hour has come (Monday)
+            chapters("gospel-of-john", 14, 14),  # John 13: the foot-washing (Tuesday)
+            chapters("gospel-of-john", 18, 18),  # John 17: the Lord's prayer for his own (Wednesday)
+            chapters("gospel-of-john", 19, 19),  # John 18: the garden and the arrest (Maundy Thursday)
+            chapters("gospel-of-john", 20, 20),  # John 19: It is finished (Good Friday)
+            chapters("lamentations", 4, 4),  # Lamentations 3: his mercies are new (Holy Saturday)
+        ],
+    ),
+    # Easter: its octave, Easter Sunday to the Sunday after, in the
+    # resurrection chapters.
+    (
+        "easter-the-risen-lord",
+        "Easter: The Risen Lord",
+        "Eight days from Easter Sunday to the Sunday after, one resurrection "
+        "chapter a day in the Open Word Bible: the empty tomb and Mary in the "
+        "garden, the road to Emmaus, the great commission, the young man at the "
+        "tomb, breakfast by the lake, Paul on the firstfruits of the dead, "
+        "baptism into new life, and the living one among the lampstands. About "
+        "four minutes a day.",
+        [
+            chapters("gospel-of-john", 21, 21),  # John 20: the empty tomb
+            chapters("gospel-of-luke", 25, 25),  # Luke 24: the road to Emmaus
+            chapters("gospel-of-matthew", 29, 29),  # Matthew 28: go and make disciples
+            chapters("gospel-of-mark", 17, 17),  # Mark 16: he is not here
+            chapters("gospel-of-john", 22, 22),  # John 21: breakfast by the lake
+            chapters("1-corinthians", 16, 16),  # 1 Corinthians 15: the firstfruits
+            chapters("romans", 7, 7),  # Romans 6: raised to walk in newness of life
+            chapters("revelation", 2, 2),  # Revelation 1: the living one
+        ],
+    ),
     # The Bible's story in sixty chapters, a chapter a day (Open Word Bible:
     # chapter order N+1 is chapter N, after each book's introduction).
     (
