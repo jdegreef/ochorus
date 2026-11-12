@@ -19924,6 +19924,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/how-to-bring-men-to-christ": {
+			"ground": "6b0cf37c3fd9d9fe5cb7b628a0a2151bf00d1ae6719223617896898e3749775d",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"hi/how-to-succeed-in-the-christian-life": {
 			"ground": "92a0b914372551956789a21d4351821251584d89b306d2768913e87ea559ddef",
 			"style": "revival",
