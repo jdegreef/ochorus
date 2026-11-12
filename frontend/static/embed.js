@@ -9,7 +9,9 @@
  *   data-theme   light (default), dark, sepia, or auto (follows the visitor's device)
  *   data-height  the starting height in pixels; the widget then sizes itself
  *
- * No cookies, no tracking, nothing loaded from anywhere but Ochorus.
+ * No cookies, no ads and nothing personal: the widget's views and clicks are
+ * counted with the same cookieless, anonymous analytics (Plausible) as
+ * ochorus.com itself, and no sign-in or reader data is ever loaded inside it.
  * Source and documentation: frontend/src/lib/embed.ts.
  */
 (function () {

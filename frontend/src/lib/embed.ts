@@ -33,12 +33,20 @@ import type { ThemePref } from '$lib/theme.svelte';
 export const isEmbedRoute = (routeId: string | null | undefined): boolean =>
 	!!routeId?.startsWith('/embed/');
 
+/**
+ * Whether a URL path is one render.yaml lets other sites frame:
+ * `[/<lang>]/embed/…`. Unlike {@link isEmbedRoute} it also holds for a path
+ * no route matches (a 404 under /embed/ is still a framed document), and the
+ * root layout checks it to keep a framed document from turning, client-side,
+ * into the full site inside a church's page.
+ */
+export const isEmbedPath = (pathname: string): boolean => /^(\/[a-z]{2,3})?\/embed(\/|$)/.test(pathname);
+
 /** What the iframe's `?theme=` asks for, as a theme preference: `dark`,
  *  `sepia`, `auto` (the visitor's OS setting) or, by default, `light`. */
 export function embedTheme(param: string | null): ThemePref {
-	if (param === 'dark' || param === 'sepia') return param;
 	if (param === 'auto' || param === 'system') return 'system';
-	return 'light';
+	return (EMBED_THEMES as readonly (string | null)[]).includes(param) ? (param as ThemePref) : 'light';
 }
 
 /** The looks a church can ask for, as embed.js's `data-theme` / the
@@ -70,9 +78,11 @@ export const EMBED_FRAME_HEIGHT = 460;
 /**
  * The fallback for website builders that remove `<script>` tags (many
  * church-site builders' "embed" blocks take an iframe but not a script): the
- * same page in a plain iframe, sandboxed as embed.js sandboxes its own.
+ * same page in a plain iframe, sandboxed and styled as embed.js's own: with
+ * a `color-scheme` matching the page inside (light, by default), or the
+ * browser paints the frame opaque around the card's rounded corners.
  */
 export const embedFrameSnippet = (siteUrl: string, lang: string): string =>
 	`<iframe src="${embedUrl(siteUrl, lang)}" title="Today from Ochorus" loading="lazy" ` +
 	`sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" ` +
-	`style="display:block;width:100%;height:${EMBED_FRAME_HEIGHT}px;border:0"></iframe>`;
+	`style="display:block;width:100%;max-width:100%;height:${EMBED_FRAME_HEIGHT}px;border:0;color-scheme:light"></iframe>`;

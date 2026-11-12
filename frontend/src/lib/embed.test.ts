@@ -9,8 +9,10 @@ import {
 	embedSnippet,
 	embedTheme,
 	embedUrl,
+	isEmbedPath,
 	isEmbedRoute
 } from './embed';
+import { FOR_CHROME } from './forChrome';
 import { cspDirectives } from '../../csp.config.js';
 import { isShellPath } from './shellRoutes';
 
@@ -86,7 +88,8 @@ describe('the church widget page', () => {
 		// The meta CSP is not widened for the widget: the live preview on the
 		// /for/ pages is drawn inline (EmbedToday), so it needs no frame.
 		expect(cspDirectives['frame-ancestors']).toEqual(['none']);
-		expect(cspDirectives['frame-src']).toEqual(['https://accounts.google.com/gsi/']);
+		expect(cspDirectives['frame-src']).not.toContain("'self'");
+		expect(cspDirectives['frame-src'].some((s: string) => /ochorus\.com/.test(s))).toBe(false);
 	});
 
 	it('keeps sign-in, prompts and the service worker out of the framed page', () => {
@@ -96,8 +99,29 @@ describe('the church widget page', () => {
 		expect(EMBED_PAGE).toContain('<meta name="robots" content="noindex" />');
 	});
 
+	it('counts every frameable path, a 404 included, as the widget', () => {
+		// Exactly render.yaml's frame-ancestors paths: [/<lang>]/embed/*.
+		for (const p of ['/embed/today', '/fr/embed/today', '/ja/embed/nope', '/embed/'])
+			expect(isEmbedPath(p), p).toBe(true);
+		for (const p of ['/today', '/embedded', '/fr/today', '/books/embed/x', '/'])
+			expect(isEmbedPath(p), p).toBe(false);
+		expect(LAYOUT).toContain('isEmbedRoute($page.route.id) || isEmbedPath($page.url.pathname)');
+	});
+
+	it('never lets the framed page become the full site in place', () => {
+		// The palette's results navigate client-side, and so would an error
+		// page's links: no new document for X-Frame-Options to refuse.
+		expect(LAYOUT).toMatch(/function onWindowKeydown\(e: KeyboardEvent\) \{\n\t\tif \(embedded\) return;/);
+		expect(LAYOUT).toMatch(/window\.top !== window\.self &&[\s\S]{0,200}!isEmbedPath\(to\.url\.pathname\)/);
+	});
+
+	it('tells a pasted-iframe user the starting height the snippet really has', () => {
+		for (const c of Object.values(FOR_CHROME)) expect(c.embed.frameBody).toContain(`${EMBED_FRAME_HEIGHT}px`);
+	});
+
 	it('opens every link in a new tab, as a plain ochorus.com URL', () => {
-		const anchors = EMBED_CARD.match(/<a\b[^>]*>/g) ?? [];
+		// Whole tags, past the `>` of an `onclick={() => …}` arrow.
+		const anchors = EMBED_CARD.match(/<a\b(?:[^>{]|\{[^}]*\})*>/g) ?? [];
 		expect(anchors).toHaveLength(4);
 		for (const a of anchors) {
 			expect(a).toContain('target="_blank"');

@@ -178,7 +178,7 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'For a dark website, add data-theme="dark". For another language, change data-lang to its code, such as es, fr, sw or lg.',
 			frameSummary: 'Does your website builder remove scripts? Use this instead',
 			frameBody:
-				'The same card in a plain frame. It cannot fit its own height, so change 460px if the card is cut off or leaves a gap. For a dark website, add ?theme=dark after /embed/today.',
+				'The same card in a plain frame. It cannot fit its own height, so change 460px if the card is cut off or leaves a gap. For a dark website, add ?theme=dark after /embed/today and change color-scheme:light to dark.',
 			previewLabel: 'What your visitors will see today'
 		},
 		questions: 'Questions',
@@ -332,7 +332,7 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'Pour un site sombre, ajoutez data-theme="dark". Pour une autre langue, remplacez data-lang par son code, par exemple en, es, sw ou lg.',
 			frameSummary: 'Votre outil de création de site supprime les scripts ? Utilisez plutôt ceci',
 			frameBody:
-				'La même carte dans un simple cadre. Elle ne peut pas ajuster sa propre hauteur : modifiez 460px si la carte est coupée ou laisse un vide. Pour un site sombre, ajoutez ?theme=dark après /embed/today.',
+				'La même carte dans un simple cadre. Elle ne peut pas ajuster sa propre hauteur : modifiez 460px si la carte est coupée ou laisse un vide. Pour un site sombre, ajoutez ?theme=dark après /embed/today et remplacez color-scheme:light par dark.',
 			previewLabel: 'Ce que vos visiteurs verront aujourd’hui'
 		},
 		questions: 'Questions',

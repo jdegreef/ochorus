@@ -30,7 +30,7 @@
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
-	import { embedTheme, isEmbedRoute } from '$lib/embed';
+	import { embedTheme, isEmbedPath, isEmbedRoute } from '$lib/embed';
 	import { lazyComponent, onIdle } from '$lib/lazyComponent.svelte';
 	import { signInSheet } from '$lib/signInSheet.svelte';
 	import { ONE_TAP_ENABLED } from '$lib/oneTap';
@@ -73,8 +73,10 @@
 	// — and its look is the one the host page asked for (?theme=), not the
 	// reader's stored theme. No sign-in either: it shows only public picks, and
 	// a reader's session has no business restoring (or syncing) inside a
-	// church's page, so Supabase is never loaded there.
-	const embedded = $derived(isEmbedRoute($page.route.id));
+	// church's page, so Supabase is never loaded there. By path as well as by
+	// route: a 404 under /embed/ is a frameable document too (render.yaml), so
+	// it must not grow the site's nav and sign-in inside someone else's page.
+	const embedded = $derived(isEmbedRoute($page.route.id) || isEmbedPath($page.url.pathname));
 
 	// The phone app's native shell (safe areas, outside links, Android's Back,
 	// the splash) — before the first render, so <html data-app> is on when the
@@ -133,7 +135,9 @@
 	// ⌘K / Ctrl+K toggles the palette from anywhere. It lives here rather than
 	// in CommandPalette so the very first press works before the palette's code
 	// has loaded; flipping the flag is what loads it.
+	// Not in the church widget: the palette's results navigate in place.
 	function onWindowKeydown(e: KeyboardEvent) {
+		if (embedded) return;
 		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
 			e.preventDefault();
 			paletteUi.toggle();
@@ -174,6 +178,23 @@
 	// stops a hover preload running the target's load in the wrong locale.
 	beforeNavigate(({ from, to, type, cancel }) => {
 		midBook.navigated();
+		// The church widget's document may sit in any site's frame (render.yaml
+		// lets only [/<lang>]/embed/* be framed). A client-side hop out of it —
+		// an error page's link, say — would bring the full site, sign-in
+		// included, into that frame without a new document for the browser to
+		// refuse, so while framed, anything leaving /embed/ opens in a new tab.
+		if (
+			window.top !== window.self &&
+			from &&
+			isEmbedPath(from.url.pathname) &&
+			to &&
+			!isEmbedPath(to.url.pathname) &&
+			type !== 'leave'
+		) {
+			cancel();
+			if (type !== 'popstate') window.open(to.url.href, '_blank', 'noopener');
+			return;
+		}
 		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
 		cancel();
 		location.assign(to!.url.href);
