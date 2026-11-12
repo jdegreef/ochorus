@@ -8589,6 +8589,8 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("kabla Mungu hajaweza kuwatumia.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("перш ніж Бог зможе їх використати.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Transcription slips the ko translators hit (#7659), each with one reading:
 # misread letters, a lost word, stray punctuation inside citations, and two
