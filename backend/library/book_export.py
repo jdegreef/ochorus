@@ -768,6 +768,9 @@ PRINT_CSS = """
 @page :first { margin: 0; @bottom-center { content: none; } }
 @page front { @bottom-center { content: none; } }
 html { font-family: "EB Garamond", "Noto Naskh Arabic", "Noto Serif Devanagari", "Noto Serif Ethiopic", "Noto Serif CJK KR", Georgia, serif; font-size: 11.5pt; line-height: 1.45; color: #111; }
+/* Japanese takes the JP cut of Noto CJK: the KR cut above has kana and kanji
+   too, but in Korean glyph forms (直, 骨, 写 differ), and it comes first. */
+html:lang(ja) { font-family: "EB Garamond", "Noto Serif CJK JP", Georgia, serif; }
 body { margin: 0; }
 .cover { page: front; break-after: page; height: 210mm; width: 148mm; margin: 0; overflow: hidden; }
 .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }

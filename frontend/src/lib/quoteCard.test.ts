@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { CARD_SERIF, SCRIPT_FACE, cardScript, quoteStyle } from './quoteCard';
+import { CARD_SERIF, SCRIPT_FACE, cardScript, quoteStyle, wrapLines } from './quoteCard';
 
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(
 	/\/\*[\s\S]*?\*\//g,
@@ -86,5 +86,26 @@ describe('quote card type', () => {
 		expect(cardScript('ar')).toBe('arabic');
 		expect(cardScript('en')).toBeNull();
 		expect(cardScript('vi')).toBeNull();
+	});
+});
+
+describe('wrapLines', () => {
+	// One unit of width per character: enough to see where lines break.
+	const ctx = { measureText: (t: string) => ({ width: t.length }) } as unknown as CanvasRenderingContext2D;
+
+	it('wraps spaced text at spaces, as before', () => {
+		expect(wrapLines(ctx, 'grace upon grace', 11)).toEqual(['grace upon', 'grace']);
+	});
+
+	it('wraps unspaced Japanese between characters, never before closing punctuation', () => {
+		const lines = wrapLines(ctx, '初めに言があった。言は神と共にあった。', 9);
+		expect(lines.join('')).toBe('初めに言があった。言は神と共にあった。');
+		expect(lines.every((l) => l.length <= 9)).toBe(true);
+		expect(lines.some((l) => /^[。、」』]/.test(l))).toBe(false);
+		expect(lines.length).toBeGreaterThan(1);
+	});
+
+	it('keeps a Latin word whole inside Japanese', () => {
+		expect(wrapLines(ctx, 'Ochorusの本', 7)).toEqual(['Ochorus', 'の本']);
 	});
 });

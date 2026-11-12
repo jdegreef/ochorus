@@ -42,6 +42,7 @@ from .fts import (
     SUBSTRING_LANGUAGES,
     config_for,
     positive_words,
+    query_tokens,
     search_query,
     uses_fts,
 )
@@ -67,6 +68,12 @@ MAX_RESULTS = 30
 # 2-character query is a real search in e.g. Chinese; every caller that asks the
 # engine for anything applies it, so it lives here rather than at each entry.
 MIN_QUERY_LEN = 2
+
+
+def min_query_len(language: str) -> int:
+    """The shortest query worth running: one character in a SUBSTRING_LANGUAGE,
+    where a single kanji (神, 愛, 罪, 主) is a whole word."""
+    return 1 if language in SUBSTRING_LANGUAGES else MIN_QUERY_LEN
 
 # Navigational (entity) matches lead over body-text matches: a book/author/topic
 # whose title *is* the query is almost always what the reader wants.
@@ -128,6 +135,9 @@ def memoized(name: str, compute, *key):
 
 
 _SPACE = re.compile(r"\s")
+#: Scripts written without spaces (kana, kanji, full-width forms): a snippet may
+#: start mid-run there, since there is no word boundary to back off to.
+_UNSPACED = re.compile(r"[\u3000-\u30ff\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]")
 
 
 def to_word_end(text: str, end: int, floor: int) -> str:
@@ -159,7 +169,10 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     # Cut on word boundaries: "…erywhere who desire" reads as a typo.
     if start > 0 and not text[start - 1].isspace():
         space = _SPACE.search(text, start, idx)
-        start = space.end() if space else idx
+        if space:
+            start = space.end()
+        elif not _UNSPACED.match(text, start):
+            start = idx
     prefix = "…" if start > 0 else ""
     suffix = "…" if end < len(text) else ""
     excerpt = to_word_end(text, end, idx + len(query))[start:] if suffix else text[start:end]
@@ -618,15 +631,43 @@ def _snippet_term(ctx) -> str:
 
 
 def _lite_match(kind: str, q: str, language: str) -> Q:
-    """Every term of ``q`` somewhere in the row (see ``_terms``)."""
+    """The substring predicate for ``q``.
+
+    On SQLite (dev) the whole query, as it always was. In a SUBSTRING_LANGUAGE
+    the websearch reading every other language gets from Postgres: each word
+    must occur, ``OR`` joins its neighbours, ``-word`` excludes — tokenised by
+    ``fts.query_tokens``, so the two paths agree on what the words are.
+    """
+    if language not in SUBSTRING_LANGUAGES:
+        return _lite_q(kind, q, language)
+    groups: list[Q] = []
+    excluded: list[Q] = []
+    pending_or = False
+    for negated, word in query_tokens(q):
+        if word.upper() == "OR" and not negated:
+            pending_or = bool(groups)
+            continue
+        term = _lite_q(kind, word, language)
+        if negated:
+            excluded.append(term)
+        elif pending_or:
+            groups[-1] |= term
+        else:
+            groups.append(term)
+        pending_or = False
+    if not groups:
+        # Nothing to match positively (an exclusion alone): as Postgres does.
+        return _lite_q(kind, q, language)
     match = Q()
-    for term in _terms(q, language):
-        match &= _lite_q(kind, term)
+    for group in groups:
+        match &= group
+    for term in excluded:
+        match &= ~term
     return match
 
 
-def _lite_q(kind: str, q: str) -> Q:
-    """The substring match predicate for one type."""
+def _lite_q(kind: str, q: str, language: str) -> Q:
+    """The substring match predicate for one type, in ``language``."""
     if kind == "author":
         return Q(name__icontains=q) | Q(bio__icontains=q)
     if kind == "book":
@@ -637,10 +678,13 @@ def _lite_q(kind: str, q: str) -> Q:
             | Q(author__name__icontains=q)
         )
     if kind == "topic":
-        return (
-            Q(title__icontains=q)
-            | Q(description__icontains=q)
-            | Q(translations__title__icontains=q)
+        # The text the reader is shown, as `_topic_localized` builds it for the
+        # vector path: the row itself in English, else this language's
+        # translation — never another language's, which no one here can read.
+        if language == "en":
+            return Q(title__icontains=q) | Q(description__icontains=q)
+        return Q(translations__language=language) & (
+            Q(translations__title__icontains=q)
             | Q(translations__description__icontains=q)
         )
     if kind == "plan":
@@ -900,7 +944,7 @@ def _author_hit(a, ctx):
         # and the client renders text-only when they are — no placeholder, which
         # would only add noise to a row that reads fine without one.
         "photo_url": a.photo_url,
-        "snippet": fallback_snippet(a.bio_for(ctx.language), ctx.q),
+        "snippet": fallback_snippet(a.bio_for(ctx.language), _snippet_term(ctx)),
         "date": _date(a.created_at),
     }
 
@@ -919,7 +963,7 @@ def _book_hit(b, ctx):
         "cover_color": b.cover_color,
         # What the thumbnail's type needs: a plate is a wordless ground.
         "cover": cover_face(b),
-        "snippet": fallback_snippet(b.description, ctx.q),
+        "snippet": fallback_snippet(b.description, _snippet_term(ctx)),
         "date": _date(b.created_at),
     }
 
@@ -929,7 +973,7 @@ def _topic_hit(tp, ctx):
         "type": "topic",
         "topic_slug": tp.slug,
         "topic_title": tp.title_for(ctx.language),
-        "snippet": fallback_snippet(tp.description_for(ctx.language), ctx.q),
+        "snippet": fallback_snippet(tp.description_for(ctx.language), _snippet_term(ctx)),
         "date": _date(tp.created_at),
     }
 
@@ -939,7 +983,7 @@ def _plan_hit(p, ctx):
         "type": "plan",
         "plan_slug": p.slug,
         "plan_title": p.title,
-        "snippet": fallback_snippet(p.description, ctx.q),
+        "snippet": fallback_snippet(p.description, _snippet_term(ctx)),
         "date": _date(p.created_at),
     }
 
@@ -953,7 +997,7 @@ def _article_hit(a, ctx):
         "type": "article",
         "article_slug": a.slug,
         "article_title": a.h1,
-        "snippet": fallback_snippet(a.description, ctx.q),
+        "snippet": fallback_snippet(a.description, _snippet_term(ctx)),
         "date": _date(a.created_at),
     }
 

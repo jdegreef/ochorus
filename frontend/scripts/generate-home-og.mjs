@@ -284,11 +284,11 @@ function page(locale, msg, covers, ownShelf) {
 ${fontCss(script, [counts, msg.home_share_title_lead, msg.home_share_title_accent, msg.footer_tagline].join(''))}
 *{margin:0;box-sizing:border-box}
 html,body{width:${W}px;height:${H}px;overflow:hidden}
-body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','Noto Sans KR','Noto Sans JP','PT Sans',sans-serif}
+body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','Noto Sans JP','Noto Sans KR','PT Sans',sans-serif}
 .top{position:absolute;inset-inline:72px;top:58px;display:flex;justify-content:space-between;align-items:baseline}
 .k{color:#9c6f1e;letter-spacing:.32em;font-size:20px;font-weight:600;direction:ltr}
 .s{color:#6d6152;font-size:19px;font-weight:500}
-h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','Noto Serif KR','Noto Serif JP','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','Noto Serif JP','Noto Serif KR','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
 h1 em{font-style:${accentStyle};font-weight:400;color:#9c6f1e}
 .shelf{position:absolute;left:0;right:0;top:246px;height:300px;display:flex;justify-content:center;align-items:flex-end;gap:26px;direction:ltr;overflow:hidden}
 .shelf img{height:270px;border-radius:4px;box-shadow:0 14px 26px rgba(60,40,10,.32),0 2px 4px rgba(60,40,10,.3)}

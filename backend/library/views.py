@@ -57,7 +57,7 @@ from .models import (
 from .search import (
     CAPS,
     MAX_RESULTS,
-    MIN_QUERY_LEN,
+    min_query_len,
     PAGE_SIZE,
     SORTS,
     count_by_type,
@@ -1612,7 +1612,7 @@ class SearchView(APIView):
         # would be worse than no scope at all.
         scope = parse_scope(request.query_params.get("in") or "")
 
-        if len(q) < MIN_QUERY_LEN:
+        if len(q) < min_query_len(language):
             # Resolved even with nothing to search for: a reader arrives here
             # from "search inside this book" before typing anything, and the
             # page has to be able to name the shelf they are standing in.
@@ -1869,7 +1869,7 @@ class SearchClickView(APIView):
             position = 0
 
         if (
-            MIN_QUERY_LEN <= len(q) <= 200
+            min_query_len(_language(request)) <= len(q) <= 200
             and result_type in CAPS
             and 1 <= position <= self.MAX_POSITION
         ):

@@ -28,6 +28,7 @@ from .models import (
     Topic,
     TopicBook,
     TopicSermon,
+    TopicTranslation,
 )
 from .search import search_library
 
@@ -1907,12 +1908,42 @@ class JapaneseSearchTests(TestCase):
         self.assertNotIn("chapter", self._types("恵み 聖霊"))
         self.assertIn("sermon", self._types("恵み 聖霊"))
 
-    def test_query_syntax_is_not_matched_literally(self):
-        # Punctuation between words, an OR and an exclusion are syntax, not text:
-        # each leaves 恵み (and 主) to match rather than finding nothing.
+    def test_punctuation_separates_words(self):
         self.assertIn("chapter", self._types("恵み、主"))
-        self.assertIn("chapter", self._types("恵み OR 主"))
-        self.assertIn("sermon", self._types("恵み -謙遜"))
+
+    def test_or_matches_either_word(self):
+        # 謙遜 is only in the chapter, 聖霊 only in the sermon: OR finds both.
+        types = self._types("謙遜 OR 聖霊")
+        self.assertIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_exclusion_excludes(self):
+        # The chapter's title says 謙遜; the sermon does not.
+        types = self._types("恵み -謙遜")
+        self.assertNotIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_a_single_kanji_is_a_query(self):
+        res = APIClient().get("/api/library/search/", {"q": "神", "language": "ja"})
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.data["results"], "a one-kanji query returned nothing")
+
+    def test_snippet_keeps_the_text_before_the_match(self):
+        from .search import fallback_snippet
+
+        text = "あ" * 200 + "神の恵み" + "い" * 200
+        snippet = fallback_snippet(text, "恵み")
+        # Unspaced: no word boundary to back off to, so the lead is kept.
+        self.assertIn("神の⟦恵み⟧", snippet)
+        self.assertTrue(snippet.startswith("…あ"))
+
+    def test_topics_match_only_the_japanese_shelf(self):
+        topic = Topic.objects.create(slug="grace", title="Grace", is_published=True)
+        TopicTranslation.objects.create(topic=topic, language="ja", title="恵みの棚")
+        TopicTranslation.objects.create(topic=topic, language="es", title="Gracia")
+        self.assertIn("topic", self._types("恵み"))
+        self.assertNotIn("topic", self._types("Gracia"))
+        self.assertNotIn("topic", self._types("Grace"))
 
     def test_snippet_marks_the_match(self):
         [hit] = [h for h in search_library("恵み", "ja") if h["type"] == "chapter"]

@@ -7,8 +7,10 @@
    declarations are what cost.
 
    The families are still NAMED in app.css's stacks (--font-display,
-   --font-sans), after the Korean ones: off a Japanese page they are undeclared
-   and the browser skips them. fontStacks.test.ts reads this file alongside
+   --font-sans), BEFORE the Korean ones: off a Japanese page they are undeclared
+   and the browser skips them, but where both sheets are linked (admin, /for)
+   kanji and kana must not fall to Noto KR, which carries them in Korean glyph
+   forms. Hangul is not in the JP faces, so Korean text still reaches KR. fontStacks.test.ts reads this file alongside
    app.css, so the coverage and weight gates hold for Japanese too.
 
    Noto Serif/Sans JP: the same superfamily as the Korean pair, with the 700 the

@@ -42,7 +42,7 @@ export interface QuoteCardOptions {
  * device chose, on the one surface built to leave the site.
  */
 export const CARD_SERIF =
-	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'Noto Serif JP', 'PT Serif', Georgia, 'Times New Roman', serif";
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif JP', 'Noto Serif KR', 'PT Serif', Georgia, 'Times New Roman', serif";
 
 /**
  * How the quote itself is set, per script.
@@ -74,19 +74,29 @@ export function trimQuote(q: string, max = MAX_CHARS): string {
 	return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,;:.\s]+$/, '') + '…';
 }
 
+/** A wrap unit: a space-separated word, or — in a script written without
+ *  spaces (kana, kanji) — one character, since a line may break between any two.
+ *  Closing punctuation rides with the character before it, so 。and 」 never
+ *  open a line. */
+const WRAP_UNIT =
+	/[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff][、。，．！？」』）]*|[^\s\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff]+/g;
+
 /** Greedy word-wrap for the current ctx.font. */
 export function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
-	const words = text.split(' ');
 	const lines: string[] = [];
 	let line = '';
-	for (const w of words) {
-		const trial = line ? `${line} ${w}` : w;
-		if (ctx.measureText(trial).width > maxWidth && line) {
-			lines.push(line);
-			line = w;
-		} else {
-			line = trial;
-		}
+	for (const chunk of text.split(' ')) {
+		// A space-separated word is one unit; an unspaced run, one per character.
+		const units = chunk.match(WRAP_UNIT) ?? [];
+		units.forEach((u, i) => {
+			const trial = line ? (i === 0 ? `${line} ${u}` : line + u) : u;
+			if (ctx.measureText(trial).width > maxWidth && line) {
+				lines.push(line);
+				line = u;
+			} else {
+				line = trial;
+			}
+		});
 	}
 	if (line) lines.push(line);
 	return lines;
