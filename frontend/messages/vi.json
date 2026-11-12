@@ -1705,5 +1705,16 @@
   "bible_read_along": "Đọc từng bước",
   "bible_in_order": "Đọc trọn theo thứ tự, từ Sáng Thế Ký đến Khải Huyền",
   "journey_you_are_here": "Bạn đang ở đây",
-  "journey_passed": "Đã qua %n% / %t% địa điểm"
+  "journey_passed": "Đã qua %n% / %t% địa điểm",
+  "bookplate_heading": "Ex libris của bạn",
+  "bookplate_finished": "đã đọc xong %title%",
+  "bookplate_by": "của %author%",
+  "bookplate_save": "Lưu thành ảnh",
+  "bookplate_saved": "Đã lưu",
+  "bookplate_keep_title": "Giữ ex libris này",
+  "bookplate_keep_body": "Đăng nhập để tên bạn được ghi trên một ex libris cho mỗi cuốn sách bạn đọc xong, gom lại trên Kệ sách của bạn.",
+  "bookplate_name_prompt": "Ghi tên bạn lên các ex libris",
+  "bookplate_your_name": "Tên của bạn",
+  "bookplate_shelf_title": "Ex libris",
+  "bookplate_all": "Tất cả ex libris của bạn"
 }

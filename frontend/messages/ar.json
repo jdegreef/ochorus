@@ -1705,5 +1705,16 @@
   "bible_read_along": "اقرأ خطوة بخطوة",
   "bible_in_order": "اقرأه كاملًا بالترتيب، من التكوين إلى الرؤيا",
   "journey_you_are_here": "أنت هنا",
-  "journey_passed": "اجتزت %n% من %t% أماكن"
+  "journey_passed": "اجتزت %n% من %t% أماكن",
+  "bookplate_heading": "خاتم مكتبتك",
+  "bookplate_finished": "أُتمّت قراءة %title%",
+  "bookplate_by": "تأليف %author%",
+  "bookplate_save": "حفظ كصورة",
+  "bookplate_saved": "تم الحفظ",
+  "bookplate_keep_title": "احتفظ بهذا الخاتم",
+  "bookplate_keep_body": "سجّل الدخول ليُكتب اسمك على خاتم لكل كتاب تُتمّه، وتجتمع كلها في رفّ كتبك.",
+  "bookplate_name_prompt": "اكتب اسمك على أختام كتبك",
+  "bookplate_your_name": "اسمك",
+  "bookplate_shelf_title": "أختام الكتب",
+  "bookplate_all": "كل أختام كتبك"
 }

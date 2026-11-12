@@ -1705,5 +1705,16 @@
   "bible_read_along": "Soma mpola mpola",
   "bible_in_order": "Gisome yonna mu nsengeka, okuva ku Olubereberye okutuuka ku Okubikkulirwa",
   "journey_you_are_here": "Wano w'oli",
-  "journey_passed": "Oyise mu bifo %n% ku %t%"
+  "journey_passed": "Oyise mu bifo %n% ku %t%",
+  "bookplate_heading": "Akabonero k’ekitabo kyo",
+  "bookplate_finished": "yamaliriza okusoma %title%",
+  "bookplate_by": "ekya %author%",
+  "bookplate_save": "Kitereke ng’ekifaananyi",
+  "bookplate_saved": "Kiterekeddwa",
+  "bookplate_keep_title": "Kuuma akabonero kano",
+  "bookplate_keep_body": "Yingira, erinnya lyo liteekebwe ku kabonero ka buli kitabu ky’omaliriza, byonna nga bikuŋŋaanyiziddwa ku Sseddu yo ey’ebitabo.",
+  "bookplate_name_prompt": "Wandiika erinnya lyo ku bubonero bwo",
+  "bookplate_your_name": "Erinnya lyo",
+  "bookplate_shelf_title": "Obubonero bw’ebitabo",
+  "bookplate_all": "Obubonero bwo bwonna"
 }
