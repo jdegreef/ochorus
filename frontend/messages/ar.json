@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "الأناجيل",
   "bible_division_acts": "أعمال الرسل",
   "bible_division_paul": "رسائل بولس",
+  "bible_sermons_on_book": "عظات عن هذا السفر",
+  "bible_sermons_all": "كل العظات عن %book% (%count%)",
   "bible_division_general_letters": "الرسائل العامة",
   "bible_division_revelation": "الرؤيا",
   "bible_read_along": "اقرأ خطوة بخطوة",

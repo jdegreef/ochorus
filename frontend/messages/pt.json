@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "Evangelhos",
   "bible_division_acts": "Atos",
   "bible_division_paul": "Cartas de Paulo",
+  "bible_sermons_on_book": "Sermões sobre este livro",
+  "bible_sermons_all": "Todos os %count% sermões sobre %book%",
   "bible_division_general_letters": "Cartas gerais",
   "bible_division_revelation": "Apocalipse",
   "bible_read_along": "Leia passo a passo",

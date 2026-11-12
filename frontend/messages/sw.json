@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "Injili",
   "bible_division_acts": "Matendo",
   "bible_division_paul": "Nyaraka za Paulo",
+  "bible_sermons_on_book": "Mahubiri juu ya kitabu hiki",
+  "bible_sermons_all": "Mahubiri yote %count% juu ya %book%",
   "bible_division_general_letters": "Nyaraka za Jumla",
   "bible_division_revelation": "Ufunuo",
   "bible_read_along": "Soma hatua kwa hatua",

@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "Évangiles",
   "bible_division_acts": "Actes",
   "bible_division_paul": "Lettres de Paul",
+  "bible_sermons_on_book": "Sermons sur ce livre",
+  "bible_sermons_all": "Les %count% sermons sur %book%",
   "bible_division_general_letters": "Épîtres générales",
   "bible_division_revelation": "Apocalypse",
   "bible_read_along": "Lire pas à pas",

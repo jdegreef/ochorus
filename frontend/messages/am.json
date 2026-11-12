@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "ወንጌላት",
   "bible_division_acts": "የሐዋርያት ሥራ",
   "bible_division_paul": "የጳውሎስ መልእክቶች",
+  "bible_sermons_on_book": "በዚህ መጽሐፍ ላይ የተሰበኩ ስብከቶች",
+  "bible_sermons_all": "በ%book% ላይ ያሉ %count% ስብከቶች በሙሉ",
   "bible_division_general_letters": "አጠቃላይ መልእክቶች",
   "bible_division_revelation": "ራእይ",
   "bible_read_along": "ደረጃ በደረጃ ያንብቡ",

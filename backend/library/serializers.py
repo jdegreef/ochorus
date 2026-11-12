@@ -1815,6 +1815,20 @@ class BookDetailSerializer(BookListSerializer):
     # A year-long devotional read by the calendar (library/daily_readings.py):
     # the book page offers today's reading, /today/<slug>/.
     daily = serializers.SerializerMethodField()
+    # A book of the Bible: the library's sermons on it (library/bible_sermons.py)
+    # — null on every other book, which pays one in-memory check and no query.
+    bible_sermons = serializers.SerializerMethodField()
+
+    def get_bible_sermons(self, obj) -> dict | None:
+        from .bible_sermons import BIBLE_SERIES, sermons_on_book
+
+        if obj.series_id is None or obj.series_position is None or obj.series.slug != BIBLE_SERIES:
+            return None
+        found = sermons_on_book(obj.series_position, obj.language)
+        if found is None:
+            return None
+        cards = SermonListSerializer(found["sermons"], many=True, context=self.context).data
+        return {"book": found["book"], "count": found["count"], "sermons": cards}
 
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
@@ -1928,6 +1942,7 @@ class BookDetailSerializer(BookListSerializer):
             "has_leader_guide",
             "daily",
             "daily_plan",
+            "bible_sermons",
         ]
 
     def get_public_domain(self, obj) -> bool:

@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "복음서",
   "bible_division_acts": "사도행전",
   "bible_division_paul": "바울 서신",
+  "bible_sermons_on_book": "이 책에 관한 설교",
+  "bible_sermons_all": "%book%에 관한 설교 %count%편 모두",
   "bible_division_general_letters": "일반 서신",
   "bible_division_revelation": "요한계시록",
   "bible_read_along": "차근차근 읽기",

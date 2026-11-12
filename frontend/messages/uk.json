@@ -1752,6 +1752,8 @@
   "bible_division_gospels": "Євангелія",
   "bible_division_acts": "Дії",
   "bible_division_paul": "Послання Павла",
+  "bible_sermons_on_book": "Проповіді на цю книгу",
+  "bible_sermons_all": "Усі проповіді на %book% (%count%)",
   "bible_division_general_letters": "Соборні послання",
   "bible_division_revelation": "Об’явлення",
   "bible_read_along": "Читайте крок за кроком",
