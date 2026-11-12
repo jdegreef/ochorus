@@ -3,7 +3,7 @@
  "slug": "on-first-principles",
  "language": "fr",
  "job_issue": 7204,
- "pull_request": null,
+ "pull_request": 7809,
  "note": [
   "Scripture is Louis Segond 1910 wherever Origen's quotation says what Segond says: `mined` rows were re-verified by script as substrings of both the Segond verse and the French chapter (typography aside: French spacing before ; : ? ! and guillemets). `self_rendered` rows are quotations rendered from Crombie's English because Origen quotes a Septuagint/Latin wording his argument depends on, adapts or conflates verses, or quotes a non-canonical text (Wisdom, Maccabees, Hermas, the Doctrine of Peter), or because the translator's Segond paste failed verification.",
   "References use Segond's verse numbering (Psalm superscriptions count as verse 1). AI-translated in-session from Crombie's English (ANF vol. 4, 1885); awaiting native review."
