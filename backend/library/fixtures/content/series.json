@@ -1294,6 +1294,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "vi",
+  "title": "Đám Mây Nhân Chứng Cầu Nguyện",
+  "description": "Sự cầu nguyện xuyên suốt toàn bộ câu chuyện của Hội Thánh, mỗi quyển một thời kỳ: những lời cầu nguyện trong Cựu Ước, Chúa Giê-xu là Thầy Dạy Cầu Nguyện, các sứ đồ, và những người nam người nữ cầu nguyện của mọi thế kỷ, mọi xứ sở cho đến ngày nay. Mỗi chương ngắn đặt ra một câu Kinh Thánh then chốt, kể một câu chuyện, lắng nghe một tiếng nói từ quá khứ, và kết thúc bằng những điều then chốt, một việc thực hành và một lời cầu nguyện.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "fr",
