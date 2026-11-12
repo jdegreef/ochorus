@@ -662,6 +662,22 @@ class Book(models.Model):
     # section and the page emits FAQPage JSON-LD. Empty list = nothing shown. See
     # the `content-questions` skill for the generation pipeline.
     qa = models.JSONField(default=list, blank=True)
+    # The book's PARTS, when it was published in more than one (The Pilgrim's
+    # Progress: Part One, 1678; Part Two, 1684): a list of {"title",
+    # "first_chapter", and optionally "year", "subtitle"} objects, PLAIN TEXT,
+    # in reading order. A part runs from its `first_chapter` (a chapter
+    # `order`) to the next part's. The book page heads its contents with them,
+    # and a chapter whose title another chapter shares ("The First Stage" in
+    # both parts) is named with its part in its <title>. Per-language like
+    # every row field (the titles are words); empty = a book in one piece.
+    # Fixture-owned and shape-checked by tests_book_extras.
+    parts = models.JSONField(default=list, blank=True)
+    # A short end-of-book quiz: a list of {"question", "options" (four),
+    # "answer_index", "explanation", "chapter"} objects, PLAIN TEXT, written
+    # strictly from the work's own text; `chapter` is the order of the chapter
+    # that answers it. Shown where a reader finishes the book (BookFinished).
+    # Per-language, no fallback; empty = no quiz. Fixture-owned.
+    quiz = models.JSONField(default=list, blank=True)
     # Year the work was first published (e.g. 1885). Optional — many classics
     # are known only by era.
     publication_year = models.PositiveIntegerField(null=True, blank=True)
@@ -813,6 +829,11 @@ class Chapter(models.Model):
     # grounded strictly in this chapter, shipped in the book's fixture and
     # upserted by seed_books; an empty list shows nothing.
     study_questions = models.JSONField(default=list, blank=True)
+    # One or two sentences of PLAIN TEXT on what happens in this chapter,
+    # grounded strictly in it: the reader's "In this chapter" note, the next
+    # chapter's "Previously:" line and, when present, the chapter page's meta
+    # description. Fixture-owned like `study_questions`; blank shows nothing.
+    summary = models.TextField(blank=True, default="")
     # Plain text derived from body_html — what full-text search matches and
     # snippets. Kept by save(); fixture loads bypass save(), so the
     # backfill_body_text command (run on every deploy) fills any gaps.

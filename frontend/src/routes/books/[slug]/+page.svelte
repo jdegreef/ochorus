@@ -44,6 +44,7 @@
 	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
+	import { partEnds, partGroups, partLine } from '$lib/bookParts';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
@@ -187,8 +188,20 @@
 	// reader's place (see contentsWindow). Hidden rows stay in the HTML — the
 	// prerendered page links every chapter — and "⋯ N chapters" gaps mark them.
 	let showAllChapters = $state(false);
+	// A book in parts (`Book.parts`, The Pilgrim's Progress) lists each part
+	// under its own heading; any other book is one group with no heading. The
+	// collapse keeps each part's first and last chapter, so no gap runs across
+	// a part boundary and no heading stands over nothing.
+	const contentsGroups = $derived(partGroups(book.chapters, book.parts));
+	const parted = $derived(contentsGroups.some((g) => g.part));
 	const visibleOrders = $derived(
-		showAllChapters ? null : contentsWindow(book.chapters.map((c) => c.order), resumeHere)
+		showAllChapters
+			? null
+			: contentsWindow(
+					book.chapters.map((c) => c.order),
+					resumeHere,
+					partEnds(contentsGroups)
+				)
 	);
 	// How many hidden chapters precede each visible one (the gap row above it).
 	const gapBefore = $derived.by(() => {
@@ -208,7 +221,10 @@
 	// column of short titles left the page's end side empty. Filled down the
 	// first column, then the second (a contents list reads downward), so each
 	// column's first and last rows are known here: the path's line stops at them.
-	const twoColumns = $derived(book.chapters.length >= 6 && book.chapters.length <= CONTENTS_COLLAPSE_AT);
+	// Not a book in parts: each part's heading would land mid-column.
+	const twoColumns = $derived(
+		!parted && book.chapters.length >= 6 && book.chapters.length <= CONTENTS_COLLAPSE_AT
+	);
 	// A part per chapter in the place bar while the parts stay legible.
 	const SEGMENTS_MAX = 24;
 	const contentsRows = $derived(twoColumns ? Math.ceil(book.chapters.length / 2) : book.chapters.length);
@@ -1052,13 +1068,22 @@
 		<!-- The chapters as a path: a line down the markers, a filled mark with a
 		     tick for each chapter behind the reader, a ring for the one they're in
 		     (its row raised, offering to carry on), a number for the rest. -->
+		<div id="contents-list">
+		{#each contentsGroups as group (group.chapters[0].order)}
+		{#if group.part}
+			<!-- A part's heading: "Part Two · 1684" and its subtitle. Plain text
+			     from the fixture (`Book.parts`). -->
+			<h3 class="contents-part" dir="auto">
+				<span class="eyebrow text-gold">{partLine(group.part)}</span>
+				{#if group.part.subtitle}<span class="text-small text-muted">{group.part.subtitle}</span>{/if}
+			</h3>
+		{/if}
 		<ol
-			id="contents-list"
 			class="contents-path"
 			class:two-col={twoColumns}
 			style:--contents-rows={twoColumns ? contentsRows : undefined}
 		>
-			{#each book.chapters as ch, i (ch.order)}
+			{#each group.chapters as ch, i (ch.order)}
 				{@const read = isRead(ch.order)}
 				{@const current = isCurrent(ch.order)}
 				{@const gap = gapBefore.get(ch.order)}
@@ -1079,7 +1104,7 @@
 				<li
 					class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}
 					class:col-start={i === 0}
-					class:col-end={i === book.chapters.length - 1}
+					class:col-end={i === group.chapters.length - 1}
 					class:split-start={twoColumns && i === contentsRows}
 					class:split-end={twoColumns && i === contentsRows - 1}
 				>
@@ -1102,6 +1127,8 @@
 				</li>
 			{/each}
 		</ol>
+		{/each}
+		</div>
 		{#if book.chapters.length > CONTENTS_COLLAPSE_AT}
 			<button
 				type="button"
@@ -1640,6 +1667,27 @@
 	.contents-path > li {
 		position: relative;
 		display: flex;
+	}
+	/* The collapsed rows. Tailwind's `hidden` lives in @layer utilities, which
+	   the unlayered `display: flex` just above out-ranks — so a "collapsed"
+	   list used to show EVERY chapter and the "⋯ 16 chapters" marker as well
+	   (chapters 1–21, the marker, then 22). Hidden here, at this rule's rank. */
+	.contents-path > li.hidden {
+		display: none;
+	}
+	/* A part's heading over its run of chapters, set in the title column. */
+	.contents-part {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.25rem 0.6rem;
+		margin: 1.25rem 0 0.35rem;
+		padding-inline-start: 0.75rem;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+	.contents-part:first-child {
+		margin-top: 0.5rem;
 	}
 	.contents-path > li > * {
 		flex: 1 1 auto;

@@ -1913,7 +1913,7 @@ class BookDetailSerializer(BookListSerializer):
             "publication_year", "attribution", "topics", "related",
             "difficulty", "is_modern_edition", "has_modern_edition",
             "editions", "available_languages", "artwork_credit", "author_same_as",
-            "alternate_titles", "about_html", "qa", "scripture", "opening",
+            "alternate_titles", "about_html", "qa", "parts", "quiz", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
             "epub_url", "meta_description", "public_domain", "ages",
             "has_leader_guide",
@@ -2166,6 +2166,27 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_book_audience(self, obj) -> str:
         return self._batch(obj).book_audience
 
+    # The part of the book this chapter sits in (``Book.parts``), or null for
+    # a book in one piece — the reader's eyebrow names it, and a repeated title
+    # ("The First Stage", once per part) is told apart by it.
+    part = serializers.SerializerMethodField()
+    # Whether another chapter of this edition has the same title: the page then
+    # names the chapter with its part in <title> and meta (only meaningful when
+    # `part` is set — without parts there is nothing to tell them apart by).
+    title_repeats = serializers.SerializerMethodField()
+    # The previous chapter's ``summary`` — the reader's "Previously:" line.
+    previously = serializers.SerializerMethodField()
+
+    def get_part(self, obj):
+        return part_of(obj.book.parts, obj.order)
+
+    def get_title_repeats(self, obj) -> bool:
+        return bool(obj.title) and obj.title in self._batch(obj).repeated_titles
+
+    def get_previously(self, obj) -> str:
+        prev = self._batch(obj).siblings.get(obj.order - 1)
+        return (prev or {}).get("summary", "")
+
     def get_body_html(self, obj):
         return _link_scripture(obj.body_html, links=self._batch(obj).scripture_links)
 
@@ -2189,6 +2210,9 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
             "study_questions",
+            # "In this chapter" (``Chapter.summary``), and "Previously:".
+            "summary", "previously",
+            "part", "title_repeats",
         ]
 
     def _batch(self, obj):
@@ -2200,10 +2224,27 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         return batch
 
     def get_prev(self, obj):
-        return self._batch(obj).siblings.get(obj.order - 1)
+        return _nav(self._batch(obj).siblings.get(obj.order - 1))
 
     def get_next(self, obj):
-        return self._batch(obj).siblings.get(obj.order + 1)
+        return _nav(self._batch(obj).siblings.get(obj.order + 1))
+
+
+def _nav(sibling: dict | None) -> dict | None:
+    """A neighbouring chapter as prev/next carry it: its order and title (the
+    sibling row also holds its summary, for ``previously``)."""
+    return sibling and {"order": sibling["order"], "title": sibling["title"]}
+
+
+def part_of(parts: list, order: int) -> dict | None:
+    """The part (``Book.parts``) chapter ``order`` falls in: the last part
+    starting at or before it. None for a book without parts, or a chapter
+    before the first part (front matter the parts don't claim)."""
+    found = None
+    for part in parts or []:
+        if part.get("first_chapter", 0) <= order:
+            found = part
+    return found and {k: found[k] for k in ("title", "year", "subtitle") if found.get(k)}
 
 
 class ChapterBatch:
@@ -2236,11 +2277,20 @@ class ChapterBatch:
                 row["order"]: row
                 for row in Chapter.objects.filter(
                     book=book, order__gte=min(orders) - 1, order__lte=max(orders) + 1
-                ).values("order", "title")
+                ).values("order", "title", "summary")
             }
             if orders
             else {}
         )
+        # Titles more than one chapter of this edition carries — read only for
+        # a book with parts, the one case the page can tell them apart.
+        self.repeated_titles = set()
+        if book.parts:
+            seen = set()
+            for title in book.chapters.values_list("title", flat=True):
+                if title in seen:
+                    self.repeated_titles.add(title)
+                seen.add(title)
         # English only — see ChapterDetailSerializer.get_scripture_refs.
         self._cited = {
             c.pk: cited_references(c.body_html) if book.language == "en" else []

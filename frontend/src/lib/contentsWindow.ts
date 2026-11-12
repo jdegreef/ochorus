@@ -12,12 +12,20 @@
  * Returns the chapter orders to show, or `null` for "show them all" (a list
  * short enough not to collapse). A gap that would hide a single chapter is
  * filled instead: "⋯ 1 chapter" takes a row to save a row.
+ *
+ * `anchors` are orders kept in view whatever else is hidden — a book in parts
+ * keeps each part's first and last chapter, so every part heading stands over
+ * chapters of its own and no gap runs across a part boundary.
  */
 export const CONTENTS_COLLAPSE_AT = 20;
 const AROUND = 2;
 const OPENING = 5;
 
-export function contentsWindow(orders: number[], current: number | null): Set<number> | null {
+export function contentsWindow(
+	orders: number[],
+	current: number | null,
+	anchors: number[] = []
+): Set<number> | null {
 	const n = orders.length;
 	if (n <= CONTENTS_COLLAPSE_AT) return null;
 
@@ -27,6 +35,10 @@ export function contentsWindow(orders: number[], current: number | null): Set<nu
 		for (let i = at - AROUND; i <= at + AROUND; i++) if (i >= 0 && i < n) keep.add(i);
 	} else {
 		for (let i = 0; i < OPENING; i++) keep.add(i);
+	}
+	for (const order of anchors) {
+		const i = orders.indexOf(order);
+		if (i >= 0) keep.add(i);
 	}
 	// Fill one-chapter gaps.
 	for (let i = 1; i < n - 1; i++) {
