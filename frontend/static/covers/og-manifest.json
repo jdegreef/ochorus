@@ -6640,6 +6640,39 @@
 				487
 			]
 		},
+		"ar/the-imitation-of-christ": {
+			"ground": "37aa9180e9636a4429520ef5c053ef15bc98a6bbda50b17e88f661dafe238907",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[105, 288, 495, 392]
+				],
+				"subtitle": [
+					[171, 478, 429, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				514
+			]
+		},
 		"ar/the-inner-chamber": {
 			"ground": "92e412b1dfa904a4ff2c2a140ce2c1fc138eb6c1bb74659c8be8f1163d3a61e5",
 			"style": "devotional",
@@ -9975,6 +10008,41 @@
 			"middle": [
 				321,
 				474
+			]
+		},
+		"es/john-hyde-a-life": {
+			"ground": "0de9f1e789d417c35102864a4a5da8916c488f7a9824cb0fd200896655f75493",
+			"style": "house",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": "c7295468c943e637fffcac8fee09846fd536a4643cf89c3f5bb89e839509e15d",
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[157, 393, 443, 483],
+					[168, 477, 432, 567]
+				],
+				"subtitle": [
+					[140, 586, 460, 614],
+					[92, 614, 508, 642]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				153,
+				642
 			]
 		},
 		"es/john-hyde-a-life-children": {
@@ -15360,6 +15428,41 @@
 			"middle": [
 				292,
 				502
+			]
+		},
+		"fr/journal-of-an-expedition-up-the-niger": {
+			"ground": "29e6cb7543a1871539bc206d37767c9bbd3f75be5dc83788b026150350fca790",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[124, 272, 476, 348],
+					[162, 337, 438, 413],
+					[150, 403, 450, 479]
+				],
+				"subtitle": [
+					[93, 552, 507, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
 			]
 		},
 		"fr/key-teachings-of-a-b-simpson": {
@@ -30422,6 +30525,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/how-to-succeed-in-the-christian-life": {
+			"ground": "0c6ba34cd75f2d63b05eab770b646c34703bc0ffac42da610efe4faee21ee125",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/humility-2": {
 			"ground": "d4c1dcb8106b1b8773d7e6a574ed496983908a05c673d7d6ff007ff1e9fc9be6",
 			"style": "devotional",
@@ -36019,6 +36137,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/the-imitation-of-christ": {
+			"ground": "3c8625fbbc60a72331d49a1fdc31c54b463e1d4f46fb517ce03c1d74169a092e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[136, 244, 464, 349],
+					[198, 336, 402, 441]
+				],
+				"subtitle": [
+					[59, 516, 541, 544]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				544
+			]
+		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
 			"style": "devotional",
@@ -39547,6 +39699,21 @@
 				249,
 				546
 			]
+		},
+		"uk/answers-to-prayer": {
+			"ground": "df93a615b864c0935e6e8c56259abed733e6b58345bce4254eb558169d9aca22",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "split/oxblood",
+			"bar": 0.105,
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/around-the-wicket-gate": {
 			"ground": "7a9bbc396236890871cdaa9710328036e5be3462f13395bd8429ba221e976f75",

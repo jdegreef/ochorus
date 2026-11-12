@@ -14552,6 +14552,10 @@ BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefau
     ("iños en sus juegos (Mat. 12:16-19", "iños en sus juegos (Mat. 11:16-19"),
     # [es] citation fix mirrored from EN
     (" de fe, es pecado” (Rom. 14:32", " de fe, es pecado” (Rom. 14:23"),
+    # [en] Acts 2:42 is the apostles' (plural) doctrine — found translating to pt (#7749)
+    ("steadfastly in the apostle’s doctrine", "steadfastly in the apostles’ doctrine"),
+    # [en] a direct question ended with a full stop — found translating to pt (#7749)
+    ("will sooner or later encounter.</p>", "will sooner or later encounter?</p>"),
     # [am] citation fix mirrored from EN
     (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
     # [am] citation fix mirrored from EN
@@ -24851,4 +24855,14 @@ BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements"
     ('his life shall lose it." – on the other', "his life shall lose it.’ – on the other"),
     ("all the counsel of god. </p>", "all the counsel of God. </p>"),
     ("I commend you to god and to the word", "I commend you to God and to the word"),
+])
+
+# Three marks in *The Reformed Pastor* that #7785 and #7787 did not reach, from
+# the ko translators' list (job #7071): Hazael's question loses its "?" inside
+# the quote; the last of a series of "Are there so many …?" questions ends in a
+# full stop; and a "?" stands outside the quote it belongs to.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ('that he should do this thing’ or as Peter', 'that he should do this thing?’ or as Peter'),
+    ('seducers, and troublers of the Church. And yet', 'seducers, and troublers of the Church? And yet'),
+    ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
 ])

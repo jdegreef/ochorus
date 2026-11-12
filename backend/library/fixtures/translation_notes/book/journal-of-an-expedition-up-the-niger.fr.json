@@ -1,0 +1,50 @@
+{
+ "kind": "book",
+ "slug": "journal-of-an-expedition-up-the-niger",
+ "language": "fr",
+ "job_issue": 7211,
+ "note": [
+  "Crowther's journal quotes almost no Scripture: most references are the texts he preached on ('preached from 2 Tim. i. 7'), translated as references only and not listed here. The two mined rows are Louis Segond 1910 fragments pasted byte-for-byte and re-verified as substrings of both the Segond verse and the French chapter; the self_rendered rows are allusions Crowther re-persons or adapts inside his own sentence.",
+  "Daniel 4:39 (ch3, a sermon text) is printed so in the 1855 English but Daniel 4 has 37 verses in both the KJV and Segond; kept as printed. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Acts 16:9b",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "self_rendered",
+   "block_index": 41,
+   "chapter_order": 1
+  },
+  {
+   "reference": "2 Timothy 1:7a",
+   "status": "mined",
+   "block_index": 62,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Acts 16:10",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 5
+  }
+ ]
+}
