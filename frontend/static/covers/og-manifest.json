@@ -43785,6 +43785,21 @@
 				515
 			]
 		},
+		"vi/ministry-of-intercession": {
+			"ground": "6d01d000720ca31e2b0ddece36e53fc87e17ae226577022f8953d7eadbdf1ad1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
+		},
 		"vi/mortification-of-sin": {
 			"ground": "cb1f4bf6b1f5779c4066460d7cadf6579b132cbf220dc11ff2efec50a2d60eaf",
 			"style": "press",
