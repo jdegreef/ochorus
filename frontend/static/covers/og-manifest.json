@@ -37795,6 +37795,41 @@
 				525
 			]
 		},
+		"the-fire-on-the-altar": {
+			"ground": "2b6ceeaf48b8659fc6a896aa4e95ccac5a0ef1af505f4dfb94093c41460f6b54",
+			"style": "originals",
+			"volume": "7",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[291, 250, 310, 294],
+					[131, 328, 469, 404],
+					[167, 394, 433, 470]
+				],
+				"subtitle": [
+					[63, 528, 537, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
+		},
 		"the-first-apology": {
 			"ground": "a660360d61060282bcf612933c457ba72a91bfbcc4fc5ddfa14de6c5b4a3d3e8",
 			"style": "inscriptional",

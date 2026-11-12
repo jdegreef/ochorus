@@ -498,6 +498,76 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    7: {
+        "slug": "the-fire-on-the-altar",
+        "book": {
+            "publication_year": 2026,
+            "title": "The Fire on the Altar",
+            "subtitle": "Pietists, Moravians and the Great Awakenings",
+            "cover_url": "/covers/art/the-fire-on-the-altar.jpg",
+            "cover_color": covers.ink_safe("#25416c"),  # a bright morning blue
+            "description": (
+                "Seventeen short chapters on prayer in the age of revival, from about 1650 "
+                "to 1800: Jeanne Guyon, the Pietists' small groups, Francke's orphanage, "
+                "the Moravian prayer watch and missions, Susanna and John Wesley, "
+                "Whitefield, Jonathan Edwards's concert of prayer, David Brainerd, "
+                "Cambuslang, Marie Durand, John Newton, Richard Allen and Absalom Jones, "
+                "Samson Occom, the Prayer Call of 1784 and William Carey."
+            ),
+            "about_html": (
+                "<p>After a century of religious wars, many churches in Europe had settled "
+                "into right belief and good order, and it was easy to belong to a church "
+                "without knowing Christ. Then, in small prayer groups, in a refugee village "
+                "and in fields where thousands gathered to hear the gospel, a fire was lit. "
+                "This book follows the praying people of the Pietist, Moravian and "
+                "evangelical awakenings, from about 1650 to 1800. It is Volume 7 of A Cloud "
+                "of Praying Witnesses, an Ochorus series that follows the people of God at "
+                "prayer from the Old Testament to the church around the world today.</p>"
+                "<p>Its seventeen chapters follow Jeanne Guyon, Philipp Spener's little "
+                "churches within the church and August Hermann Francke's orphanage; the "
+                "Moravians at Herrnhut, whose prayer watch ran night and day, and their "
+                "missionaries; Susanna and John Wesley, George Whitefield and Jonathan "
+                "Edwards; David Brainerd praying in the snow, the Cambuslang revival and "
+                "Marie Durand in her prison tower; John Newton and the Olney prayer "
+                "meeting; Richard Allen and Absalom Jones, Samson Occom, and the prayer "
+                "meetings that sent William Carey to India.</p>"
+                "<p>Every chapter tells its story from the oldest sources, says plainly "
+                "where legend takes over, and is honest about the shadows of the age as well "
+                "as its fire. It quotes the witnesses word for word from their books in the "
+                "library where it can, and ends with three key insights, a word for today, a "
+                "practice to try, a closing prayer and questions for reflection. Two "
+                "appendices gather every insight by theme and every Scripture in Bible "
+                "order. Scripture is quoted from the Open Word Bible (OWB), Balanced "
+                "edition, which is dedicated to the public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is The Fire on the Altar about?",
+                    "answer": "How believers prayed in the age of the Pietist, Moravian and evangelical awakenings, from about 1650 to 1800: seventeen short chapters from Jeanne Guyon and the Moravian prayer watch to John Wesley, Jonathan Edwards, David Brainerd, Richard Allen and William Carey.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first six volumes follow prayer from the Old Testament to the Reformation. This seventh volume follows the age of revival, and later volumes follow the praying men and women of every century and every part of the world.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Why is it called The Fire on the Altar?",
+                    "answer": "The title comes from Leviticus 6:13, where God commands that the fire on the altar must be kept burning and never go out. The Moravians at Herrnhut are remembered for taking that verse as a picture of the prayer watch they kept night and day, and it fits the whole age of revival this book describes.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes seventeen days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 

@@ -52,6 +52,11 @@ Vol. 6: A Mighty Fortress. Full morning, the sun clear of the far ridge on the
 right; on the near hill, low left, a walled castle with its keep and a corner
 tower, one window lit in the keep where a man sits up translating and praying
 (Psalm 46:1). No particular castle.
+
+Vol. 7: The Fire on the Altar. A bright morning, the sun clear of the far hills
+on the left; on the near ridge, right, a village: a plain meeting hall with a
+small bell turret and a row of houses, windows lit; on the hill to the far left
+a small fire that is kept burning (Leviticus 6:13).
 """
 import pathlib
 import random
@@ -295,6 +300,50 @@ VOL6 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL7 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#142a52"/><stop offset=".30" stop-color="#26497a"/>
+  <stop offset=".45" stop-color="#5677a0"/><stop offset=".54" stop-color="#a9a594"/>
+  <stop offset=".60" stop-color="#e6c78c"/><stop offset="1" stop-color="#e6c78c"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="190" cy="462" r="230" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fff6da" stop-opacity=".95"/>
+  <stop offset=".2" stop-color="#f7cf88" stop-opacity=".5"/>
+  <stop offset="1" stop-color="#e6c78c" stop-opacity="0"/>
+ </radialGradient>
+ <radialGradient id="fire" cx="62" cy="478" r="16" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#ffb060" stop-opacity=".9"/>
+  <stop offset="1" stop-color="#ffb060" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+<circle cx="190" cy="458" r="21" fill="#fffbea" opacity=".95"/>
+{ridge([(0, 488), (100, 483), (200, 487), (300, 481), (410, 486), (510, 482), (600, 486)], "#6f6a76")}
+{ridge([(0, 484), (40, 481), (80, 483), (130, 492), (220, 498), (320, 497), (420, 493), (520, 496), (600, 494)], "#2d2a38")}
+<rect width="600" height="800" fill="url(#fire)"/>
+<g fill="#0b0a10">
+ <path d="M0 800 L0 507 L120 507 L230 509 L330 506 L420 503 L520 504 L600 506 L600 800 Z"/>
+ <rect x="360" y="486" width="62" height="18"/><path d="M356 488 L391 474 L426 488 Z"/>
+ <rect x="386" y="462" width="10" height="14"/><path d="M384 464 L391 455 L398 464 Z"/>
+ <rect x="432" y="490" width="22" height="14"/><path d="M430 491 L443 482 L456 491 Z"/>
+ <rect x="462" y="492" width="22" height="12"/><path d="M460 493 L473 484 L486 493 Z"/>
+ <rect x="330" y="492" width="22" height="12"/><path d="M328 493 L341 484 L354 493 Z"/>
+ <rect x="494" y="494" width="20" height="10"/><path d="M492 495 L504 487 L516 495 Z"/>
+</g>
+<path d="M58 482 L62 472 L66 482 Z" fill="#ffcf7a" opacity=".95"/>
+<path d="M60 482 L62 476 L64 482 Z" fill="#fff0c0"/>
+<rect x="372" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="388" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="404" y="492" width="4" height="6" fill="#f2b66a" opacity=".75"/>
+<rect x="441" y="495" width="3" height="5" fill="#f2b66a" opacity=".6"/>
+<rect x="471" y="496" width="3" height="4" fill="#f2b66a" opacity=".6"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
@@ -302,6 +351,7 @@ SCENES = {
     "faithful-unto-death": VOL4,
     "seven-times-a-day": VOL5,
     "a-mighty-fortress": VOL6,
+    "the-fire-on-the-altar": VOL7,
 }
 
 if __name__ == "__main__":
