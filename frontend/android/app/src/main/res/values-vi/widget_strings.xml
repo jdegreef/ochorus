@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">Câu Kinh Thánh hôm nay</string>
+    <string name="widget_today_description">Câu Kinh Thánh hôm nay từ Ochorus, mới mỗi ngày.</string>
+    <string name="widget_continue_name">Tiếp tục đọc</string>
+    <string name="widget_continue_description">Cuốn sách của bạn, chỉ một chạm là về đúng chỗ đang đọc.</string>
+    <string name="widget_placeholder">Mở Ochorus để bắt đầu.</string>
+</resources>

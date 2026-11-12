@@ -98,6 +98,16 @@ export function startAppShell(hooks: AppShellHooks): void {
 	void native().then((n) => n.startAppShell(hooks));
 }
 
+/**
+ * Hand the home-screen widgets (Today, Continue) their data: the JSON of a
+ * `WidgetSnapshot` ($lib/widgetSnapshot), kept by the phone where its widgets
+ * read it, which redraw from it. Whether the phone took it — false on the
+ * website, and on a build whose native side has no widgets yet.
+ */
+export async function setWidgetSnapshot(json: string): Promise<boolean> {
+	return IS_APP ? (await native()).setWidgetSnapshot(json) : false;
+}
+
 /*
  * The app's downloaded books ("Download for offline") on the phone's own
  * storage — the app runs no service worker, so its downloads cannot live in

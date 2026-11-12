@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">Вірш дня</string>
+    <string name="widget_today_description">Вірш дня від Ochorus, щодня новий.</string>
+    <string name="widget_continue_name">Продовжити читання</string>
+    <string name="widget_continue_description">Ваша книга — один дотик до місця, де ви зупинилися.</string>
+    <string name="widget_placeholder">Відкрийте Ochorus, щоб почати.</string>
+</resources>
