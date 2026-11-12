@@ -170,6 +170,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'on-the-holy-spirit': 0.80,
 	'on-the-making-of-man': 0.65,
 	'on-the-priesthood': 0.60,
+	'open-your-mouth-wide': 0.60,
 	'orthodoxy': 0.40,
 	'orthodoxy-teens': 0.10,
 	'our-daily-walk': 0.85,

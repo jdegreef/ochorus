@@ -1,0 +1,1819 @@
+# Open Your Mouth Wide
+
+*The Great Century of Prayer*
+
+*A Cloud of Praying Witnesses, Volume 8*
+
+Scripture quotations are from the Open Word Bible (OWB), Balanced edition, dedicated to the public domain.
+
+---
+
+## Introduction: Where We Are in the Story
+
+> "May God show us grace and bless us; may He let the light of His face shine on us. Then the earth will know Your ways, and every nation Your power to save." (Psalm 67:1-2)
+
+At the start of the 1800s, almost all the world's Christians lived in Europe and the Americas, with older churches in places like Ethiopia, Egypt, Armenia and India. By the end of the century, there were growing churches in China and Korea, in West and East Africa, across India, in the islands of the Pacific and in the Caribbean. Bibles had been translated into hundreds of new languages. Believers who had never seen a church building were praying in their own tongues.
+
+Historians sometimes call the 1800s "the great century" of Christian mission. This book shows that it was also a great century of prayer. Again and again, the advance of the gospel began on someone's knees: students under a haystack, a man in Bristol with an empty larder, four young men in an Irish schoolhouse, a bedridden woman in London, a Chinese scholar freed from opium.
+
+The psalm above was a prayer for that very thing: that God would bless His people, so that every nation would come to know Him.
+
+### Where we are in the series
+
+This is the eighth volume of *A Cloud of Praying Witnesses*, a series that follows the people of God at prayer through the whole story of the church. The name comes from Hebrews 12:1, which pictures all the faithful who went before us as "so vast a cloud of witnesses all around us."
+
+The first volumes followed prayer from the Old Testament to the age of the Reformation. Volume 7, *The Fire on the Altar*, followed the Pietists, the Moravians and the Great Awakenings, and ended with William Carey sailing for India in 1793, sent out and held up by prayer.
+
+This volume follows the century that came next, from about 1800 to 1900.
+
+### The world of these witnesses
+
+It was a century of steam and iron. Railways and steamships carried people farther and faster than ever before. Cities grew huge, full of factories and of poor families crowded into small rooms. It was also the century of great empires. Britain, France and other European powers ruled much of Africa and Asia, and missionaries often traveled on the same ships as soldiers and traders. Some missionaries stood up for the people they served; others shared the proud attitudes of their age. We will tell both sides honestly.
+
+But the story of this century is not only about missionaries from the West. Some of its greatest witnesses were Africans and Asians who heard the gospel and became preachers, pastors, translators and bishops among their own people. In this book we will meet a Yoruba boy, once sold as a slave, who became the first African bishop of his church, and a Chinese scholar who opened refuges for people trapped by opium. We will also meet a woman born into slavery in America who preached on four continents.
+
+At the same time, the old churches of the East went on praying. In Russia, an unnamed pilgrim on the roads and a monk named Seraphim in his forest showed what it means to pray without ceasing.
+
+### What we will see
+
+This volume has twenty chapters, in four movements:
+
+- **Prayer that sends** (chapters 1 to 5). Five students pray under a haystack in a storm. Daniel Nash prays ahead of Charles Finney's preaching. Christmas Evans makes a covenant with God, Robert Murray M'Cheyne thirsts for Him, and George Müller opens his mouth wide and lets God fill it.
+- **Prayer without ceasing** (chapters 6 to 9). A Russian pilgrim learns to pray at all times, and Seraphim of Sarov teaches a peaceful spirit. A businessman starts a noon prayer meeting in New York that spreads across a nation, and four young men in an Irish village pray until revival comes.
+- **Prayer that moves the world** (chapters 10 to 14). Spurgeon's church prays while he preaches, and Hudson Taylor learns to move people through God by prayer alone. Pastor Hsi overcomes opium and fear in China. A bedridden woman prays for D. L. Moody, and William and Catherine Booth teach a ragged army to start the day on its knees.
+- **Prayer that trusts** (chapters 15 to 20). Amanda Berry Smith learns to trust without fear, and Samuel Ajayi Crowther, the first African bishop of his church, prays for the peoples of the Niger. Andrew Murray teaches us to abide in Christ. Mary Slessor finds that God never leaves her in the forests of Calabar, Thérèse of Lisieux finds a little way to God, and E. M. Bounds calls the church back to its knees.
+
+### How each chapter works
+
+Every chapter in this series has the same shape:
+
+- **A key verse** opens the chapter, the Scripture it rests on.
+- **A story** sets the scene.
+- **The teaching** looks at what the story shows us about prayer.
+- **Voices from the past** quote men and women of prayer, often the witnesses themselves, word for word from their own books in the Ochorus library.
+- **Three key insights** sum up what the chapter teaches.
+- **For us today** brings the lesson into ordinary life, wherever in the world you live.
+- **Try this** gives one simple practice for the coming week.
+- **A closing prayer** and **Questions for reflection** help you respond, alone or with others.
+- **Read more on Ochorus** points you to classic books where you can go deeper.
+
+At the end of the book, two appendices gather all the key insights by theme and list every Scripture quoted, in Bible order, with the chapters where it appears.
+
+### A word about these stories
+
+Many of the people in this book wrote their own stories, and many of their books are in the Ochorus library, so we can often let them speak for themselves. But this was also a century that loved to tell and retell stories of answered prayer, and some of the best-known ones grew in the telling. In each chapter we say where a story comes from, and when a detail is only a later retelling, we say so.
+
+### How to read this book
+
+One chapter a day will carry you through the book in twenty days. With a small group, one or two chapters a week works well.
+
+Many of the people in this book were ordinary, and some were very poor. They did not wait until they had money, education or position before they asked God for great things. They believed His promises. As you read, ask yourself what God might do if you opened your mouth wide.
+
+---
+
+## A Prayer Meeting in the Rain
+
+> "Go, then, and make disciples of all the nations: baptize them into the name of the Father and of the Son and of the Holy Spirit" (Matthew 28:19)
+
+In the summer of 1806, Williams College was a small school in the green hills of western Massachusetts, in the young United States. That year a quiet revival was moving among its students, and groups of them met to pray. On Wednesday afternoons some gathered under the willow trees south of the college. On Saturday afternoons they walked north to a grove of maple trees in a field called Sloan's Meadow, about halfway to the Hoosac River.
+
+One hot, heavy afternoon in August, only five came to the maple grove: Samuel J. Mills, James Richards, Francis Robbins, Harvey Loomis and Byram Green. Dark clouds rose in the west. Thunder rolled through the hills, the lightning flashed, and the rain came down. The young men ran for the nearest shelter, which was a large haystack standing in the field, and crouched beside it.
+
+While they waited for the storm to pass, they talked. Some of them had been studying the geography of Asia in class, and their talk turned to the millions of people there who had never heard of Jesus Christ. Mills was a freshman of twenty-three, the son of a Connecticut pastor. He grew more and more earnest as he spoke. Why not send the gospel to Asia? Then, as Byram Green remembered it, he said simply, "We can do it if we will."
+
+Not everyone agreed. Harvey Loomis said that the time was not yet ripe. Missionaries sent to such lands, he argued, would only be killed. The others answered that God was always willing to see His kingdom grow, and that if His people did their part, God would do His.
+
+Then Mills said, "Come, let us make it a subject of prayer under the haystack, while the dark clouds are going and the clear sky is coming."
+
+So, there in the wet field, they prayed one by one for the world. Loomis kept silent. Mills prayed last. Remembering the warning that missionaries would be murdered, he asked God boldly to protect those who would carry the message of the cross. When they had finished, they sang a verse of a hymn by Isaac Watts about the Bible, and walked back to their rooms as the sky cleared.
+
+### How we know the story
+
+For many years no one wrote this meeting down. In 1854, nearly fifty years later, Byram Green came back to Williamstown as an old man. He was able to show the spot where the haystack had stood, and he wrote out all he could remember for a professor at the college. Thomas C. Richards, who wrote Mills's life in 1906, says plainly that this letter "is the source of all that is known about the meeting."
+
+So we should hold the details gently. We do not know the exact day in August, and later retellings differ on some small points. But Green was there, and the main lines of his memory fit everything we know about these young men. Today a stone monument stands in Mission Park at Williamstown, where Green put a stake into the ground to mark the place.
+
+### What grew from the haystack
+
+The prayer meetings went on, and Mills could not let the idea go. Two years later, in 1808, he and a few friends formed a secret society at the college called "the Brethren." Its purpose, written in their rules, was "to effect, in the persons of its members, a mission to the heathen." "Heathen" was the word then used for people who did not know the true God. They did not mean to send others. They meant to go themselves.
+
+Mills and his friends went on to study at Andover, a new school for training ministers. There they were joined by a brilliant young man named Adoniram Judson. In June 1810 four of these students, Judson and Mills among them, asked the Congregational ministers of Massachusetts, meeting at Bradford, whether American churches would send them. In answer, the ministers formed the American Board of Commissioners for Foreign Missions, the first society in America for sending missionaries overseas.
+
+In February 1812, at Salem, five young men were ordained as missionaries: Judson, Samuel Newell, Samuel Nott, Gordon Hall and Luther Rice. A few days later the first of them sailed for India. Mills was not among them. He was there at their ordination, and afterward he wrote to his sister: "Christians in this country begin to feel upon the subject of missions. They begin to contribute liberally and pray fervently. God be praised!" Of his friends he added, "They need your prayers."
+
+Adoniram and Ann Judson went on to Burma (today Myanmar), where for years they translated the Bible and suffered for the gospel. James Richards, who had prayed by the haystack, served in Ceylon (today Sri Lanka) and died there in 1822. Mills himself worked among the poor in American cities and on the frontier, and helped found the American Bible Society. At New Haven, where he studied for a time at Yale, he befriended Henry Obookiah, a young Hawaiian who had come to faith in Christ and longed to take the gospel home. Obookiah died before he could go, but his story moved many churches, and in 1819 a group of missionaries sailed for Hawaii with Hawaiian young men among them. Mills died at sea in 1818, at the age of thirty-five, on his way home from West Africa. He had gone there for a society that wanted to settle freed Black Americans in Africa, a plan that many Black Americans opposed, and which history now judges in mixed ways.
+
+### A praying church
+
+A hundred years after the haystack, the student leader John R. Mott looked back over a century of missions and gave this verdict:
+
+> "The missionary church is a praying church. The history of missions is a history of prayer. Everything vital to the success of the world's evangelization hinges on prayer."
+> John R. Mott, *The Evangelization of the World in This Generation*
+
+Jesus Himself joined prayer and mission together. Before He sent His disciples out, He told them, "The harvest is large, but there are few workers. So pray to the Lord of the harvest, and ask Him to send out workers into His harvest" (Matthew 9:37-38). The five students by the haystack did what Jesus asked. They prayed to the Lord of the harvest. Then He sent some of them, and many others after them.
+
+The command of Matthew 28:19 is large: "all the nations." But it is not given alone. Jesus ends it with a promise: "I Myself am with you every day, until the close of the age" (Matthew 28:20). Mills and his friends were young, poor and few. But they believed that the One who sent them would go with them.
+
+### Three key insights
+
+1. **Prayer turns what we learn about the world into a burden for its people.** The students had studied Asia in a geography lesson. By the haystack, their knowledge became prayer, and prayer became love for people they had never met.
+2. **The Great Commission is a promise to pray over, as well as a command to obey.** Jesus sends His people to all nations and promises to be with them every day. We can bring both the command and the promise to Him in prayer.
+3. **We do not have to wait for perfect conditions before we pray about God's work.** Loomis thought the time was not ripe. Mills prayed anyway, under a haystack in the rain, and within six years the first missionaries had sailed.
+
+### For us today
+
+The world has changed since 1806. Today the church is strong in Africa, Asia and Latin America, and many of the world's missionaries come from Korea, Nigeria, Brazil, India and the Philippines. The haystack does not belong to America alone. Wherever a few believers gather to pray for the nations, the same story can begin again.
+
+You do not need a church building or a large meeting. The haystack students had only a wet field and a storm. Perhaps you meet with two or three others in a crowded room, at a bus stop, or in secret because the church in your land is watched. God hears those prayers just as He heard theirs.
+
+And remember the students' wider family. Behind every missionary are people who pray and give. Mills watched his friends sail without him, and asked his sister to pray for them. That too is a calling.
+
+### Try this
+
+This week, pray for the nations as the students did by the haystack.
+
+- **Learn and pray.** Read about one country or people group where few have heard the gospel, and turn what you learn into prayer.
+- **Gather a few.** Invite two or three friends to pray with you for the world, even for ten minutes.
+- **Pray the harvest prayer.** Each day, pray Matthew 9:38, asking the Lord of the harvest to send out workers, and ask whether He might send you.
+- **Pray for one missionary.** Choose a missionary or church planter you know of, and pray for them by name every day this week.
+
+### A closing prayer
+
+Lord Jesus Christ, You sent Your disciples to make disciples of all the nations, and You promised to be with them every day. Thank You for Samuel Mills and his friends, who prayed for the world beside a haystack in the rain, and for all who went because they prayed. Turn what I know about the world into love for its people. When I think the time is not ripe, teach me to pray anyway. Send out workers into Your harvest, from every nation to every nation, and if You call me, make me willing to go. Amen.
+
+### Questions for reflection
+
+- The students' talk began with a geography lesson. What do you know about the world that could become a subject of prayer?
+- Harvey Loomis thought the time was not ripe. Are there things you have stopped praying about because they seem impossible?
+- Mills did not sail with his friends, but he prayed for them and asked others to pray. Whom could you support in this way?
+
+### Read more on Ochorus
+
+- John R. Mott, *The Evangelization of the World in This Generation*, especially "Factors Essential to the Evangelization of the World in This Generation"
+- John Foxe, *Fox's Book of Martyrs*, especially "The Beginnings of American Foreign Missions"
+
+---
+
+## The Man Who Prayed Ahead
+
+> "Who ever heard of anything like this? Who has seen the like? Is a country brought to birth in a single day, or a nation born in one moment? Yet Zion had barely begun her labor when she bore her children." (Isaiah 66:8)
+
+Early one clear morning in 1825, before the sun was up, an older minister left a farmhouse near the town of Gouverneur, in the far north of New York State. He walked back from the road to a grove of trees to pray alone. His name was Daniel Nash, but he was generally known as "Father Nash."
+
+That year a revival had broken out in Gouverneur. A young preacher named Charles Finney had come to preach, and Nash had come with him. Finney did the preaching. Nash, Finney wrote later, "gave himself up almost continually to prayer."
+
+Not everyone was glad. About three-quarters of a mile from the farmhouse lived a man whom Finney calls only Mr. M. He was a Universalist, one who believed that everyone would be saved in the end, whatever they did, and for a long time he had kept away from the meetings. That morning he too was up early, standing outside his house. The air was so still that sounds carried a long way. Across the fields he heard a voice.
+
+He could not make out the words, but he knew, he said afterward, who it was. It was Father Nash, praying. Finney tells what happened next: "And it lodged an arrow in his heart." The sound of that faraway voice brought over him a sense that God was real, such as he had never known. He found no peace until he came to believe in Jesus.
+
+That was not the only answer in Gouverneur. A group of young men in the town had joined together to resist the revival. Finney and Nash agreed that this "must be overcome by prayer," so the two of them went into a grove "and gave ourselves up to prayer until we prevailed." The following Sunday, at a crowded prayer meeting, Nash stood and spoke to the young men directly, warning them very sternly. By Tuesday their leader came to Finney in deep distress, gave himself to Christ, and went straight to his friends to pray with them. Before the week was out, Finney says, nearly all of them were "hoping in Christ."
+
+### Who he was
+
+Daniel Nash was born in Massachusetts, most likely in 1775, and became a pastor in northern New York. Finney first saw him in March 1824, at the meeting of ministers that examined Finney and gave him a license to preach. Nash was leading in prayer from the pulpit, and Finney was surprised. Nash was looking all around the church "as if he were talking to the people; while in fact he was praying to God." At that time, Finney adds, Nash was "in a very cold and back-slidden state," that is, he had drifted far from God.
+
+Then something changed. Soon afterward Nash fell ill with inflamed eyes, and for several weeks he had to stay in a dark room. Finney describes what happened there:
+
+> "He could neither read nor write, and, as I learned, gave himself up almost entirely to prayer. He had a terrible overhauling in his whole Christian experience; and as soon as he was able to see, with a double black veil before his face, he sallied forth to labor for souls."
+> Charles G. Finney, *Memoirs of Rev. Charles G. Finney*
+
+From then on, Finney says, Nash "was full of the power of prayer." He kept what Finney calls a "praying list": the names of people he prayed for by name, especially hard cases. One of them was a tavern keeper in the village of Evans Mills who cursed every Christian he saw. Nash heard about him, wrote his name on the list, and moved on. A few days later the man walked into a crowded evening meeting, asked if he might speak, and made a heartbroken confession before everyone. Soon a prayer meeting was being held in his bar room nearly every night.
+
+Nash died in 1831, by most accounts in December of that year, when he was in his middle fifties.
+
+### A company of praying people
+
+Finney did not think of Nash as the only praying man. He names others: deacons in country towns, many women, and especially a quiet man named Abel Clary, who had been converted in the same revival as Finney. During the great revival in Rochester in 1830, Clary stayed in a house outside the city. He never came to the meetings. Instead he prayed, day and night, sometimes lying on the floor and groaning, so that his host did not know what to think. Finney told the host to be patient: "he will surely prevail." Of Clary he wrote:
+
+> "He was a very silent man, as almost all are who have that powerful spirit of prayer."
+> Charles G. Finney, *Memoirs of Rev. Charles G. Finney*
+
+Paul wrote, "I planted, Apollos watered, but it was God who kept making it grow" (1 Corinthians 3:6). In Finney's revivals some preached and some prayed. The preacher was seen by the crowds; the praying people were mostly hidden. But Finney knew that the growth came from God, and that God gave it in answer to prayer.
+
+### Stories that grew in the telling
+
+Daniel Nash has become famous in our own day. It is often said that he always went into a town weeks before Finney, rented a room, and prayed until the revival came. It is said that Finney's great revivals ended when Nash died. Some of these stories may hold some truth, but most come from much later writers, not from people who knew him.
+
+Finney's own words are more modest. Nash, he says, "in several of my fields of labor came to me and aided me." Sometimes Finney sent him ahead, as when he asked him to go to Gouverneur "and see what is there, and come back and make your report." And Finney went on preaching in revivals for many years after 1831, in America and in Britain. The true story is wonderful enough. We do not need to make it larger.
+
+Finney was honest about Nash's faults too. When Nash warned the young men at Gouverneur, he said that within a week God would either convert some of them or send some of them to hell. Finney wrote, "For myself, I regretted that brother Nash had gone so far." Even mighty prayer, it seems, needs humility and gentleness when it turns to speak to people.
+
+### Zion in labor
+
+Isaiah 66 pictures God's people as a mother in childbirth. Her labor had barely begun, and children were already born, so many and so quickly that a whole nation seemed to appear in one day. God asks, "Would I bring on the birth and then not let the child be born?" (Isaiah 66:9). When God's people pray in earnest, He will not leave His work half done.
+
+Finney loved this verse. In his lecture on prevailing prayer he cried:
+
+> "Oh that the whole church could be so filled with the Spirit as to travail in prayer, till a nation should be born in a day!"
+> Charles G. Finney, *Lectures on Revivals of Religion*
+
+### Three key insights
+
+1. **Preaching and praying belong together, and God gives the growth through both.** At Gouverneur one man preached and another prayed. Neither could take the credit, because it was God who made the work grow.
+2. **Writing down names and praying for them one by one can open the way for people to come to God.** Nash kept a praying list, and a man whom everyone feared walked into a meeting and turned to Christ.
+3. **Strong prayer still needs humility and love when it turns to speak to others.** Nash prayed with great power, but his harsh threat troubled even Finney. The same fire that warms us in prayer must be gentle with people.
+
+### For us today
+
+Some churches today have their own Father Nash and Abel Clary: an old woman who prays every morning before dawn, a sick man who cannot come to meetings but prays for every name he hears, a group that meets in a back room while the preacher speaks. In Africa and Asia, many churches hold all-night prayer meetings before an evangelistic campaign. In places where believers cannot gather openly, prayer may be the main work the church can do. None of this is second-class service.
+
+If you preach or lead, look for the people who pray for you, and thank God for them. If you are one of the hidden ones, take heart. The man who heard Nash's voice across the fields never saw his face that morning. He only heard someone talking with God. That was enough.
+
+### Try this
+
+This week, follow Father Nash's example in small ways.
+
+- **Start a praying list.** Write down the names of three to five people who seem far from God, and pray for each one by name every day.
+- **Pray before the meeting.** Before your next church service or Bible study, spend time praying for the speaker and the people who will come.
+- **Thank a hidden helper.** Find out who prays for you or for your church, thank God for them, and then thank them too.
+- **Watch your words.** If you must warn someone, pray first, and ask God to make your words truthful and kind.
+
+### A closing prayer
+
+Lord God, You promise that when Zion labors, she will bear her children, and that You will not bring Your work to the edge of birth and then hold it back. Thank You for Daniel Nash and Abel Clary, and for all the hidden people who prayed while others preached. Teach me to pray for people by name, and to keep praying until You answer. Fill my prayers with Your power, and my words with Your gentleness. Let someone, somewhere, hear in my life the sound of a person talking with You, and come to know that You are real. Through Jesus Christ our Lord. Amen.
+
+### Questions for reflection
+
+- Nash's prayer life changed during weeks of illness in a dark room. Has a hard season ever drawn you closer to God in prayer?
+- Who might be on your "praying list," and what keeps you from praying for them by name?
+- Finney regretted that Nash "had gone so far." How can we be bold in prayer and still gentle with people?
+
+### Read more on Ochorus
+
+- Charles G. Finney, *Memoirs of Rev. Charles G. Finney*, especially "Revival at Gouverneur"
+- Charles G. Finney, *Lectures on Revivals of Religion*, especially "Lecture IV. Prevailing Prayer"
+
+---
+
+## A Covenant with God
+
+> "They will ask the way to Zion and set their faces toward it. 'Come!' they will say, and they will bind themselves to the LORD in a covenant that lasts forever and will never be forgotten." (Jeremiah 50:5)
+
+Around the year 1800, a big, plain Welsh preacher with only one good eye was riding alone through the mountains of North Wales. His name was Christmas Evans. He was on the road from Dolgellau to Machynlleth, climbing toward the great dark mountain called Cadair Idris, and his heart was cold.
+
+He wrote about that day many years later. "I was weary," he said, "of a cold heart towards Christ, and His sacrifice, and the work of His Spirit." For years he had felt his heart burning within him, like the two disciples on the road to Emmaus. Now that fire had died down, and he did not know how to light it again.
+
+On that lonely road he decided to pray anyway. "I considered it to be incumbent upon me to pray," he wrote, that is, he felt it was his duty, "however hard I felt in my heart, and however worldly the frame of my spirit was."
+
+So he began, in the name of Jesus. And something happened. "I soon felt, as it were, the fetters loosening, and the old hardness of heart softening, and, as I thought, mountains of frost and snow dissolving and melting within me." Tears came. He cried out to God to give him back the joy of His salvation. Then he began to pray for others: for the churches on the island of Anglesey that were in his care, for all the churches of Wales, and for nearly every minister in the country by name.
+
+"This struggle lasted for three hours," he wrote; "it rose again and again, like one wave after another, or a high flowing tide, driven by a strong wind, until my nature became faint by weeping and crying." At the end of it he gave himself to Christ again, body and soul, his gifts and his work, every day and every hour he had left. "The road was mountainous and lonely, and I was wholly alone, and suffered no interruption in my wrestlings with God."
+
+When he came home, he found that two of his deacons had also begun to pray with new longing that God would visit them. From that time, he said, "I had a hold of the promises of God."
+
+### Who he was
+
+Christmas Evans was born on Christmas Day 1766, near Llandysul in southwest Wales, which is how he got his unusual name. His father, a shoemaker, died when he was a boy, and he grew up poor, working on farms, unable to read. At about eighteen he came to faith during a revival. He learned to read Welsh, and later a little English at the school of the minister he worked for. Some of his old companions, angry that he had changed, attacked him one night and struck him over the eye with a stick. He lost the sight of that eye for the rest of his life.
+
+He became a Baptist preacher. On a Christmas Day in the early 1790s (the accounts differ on the year), he rode to the island of Anglesey, off the northwest coast of Wales, with his wife Catherine riding behind him on the same horse. For more than thirty years he cared for the scattered Baptist chapels of the island, for many of those years on a salary of seventeen pounds a year. He became one of the greatest preachers Wales ever heard, famous for vivid word pictures.
+
+But in the 1790s a teaching called Sandemanianism spread among the Welsh Baptists. It stressed that saving faith is simply believing the truth with the mind, and many felt that it left little room for warmth of heart. Churches quarreled and divided. Christmas Evans was drawn in for a time, and he believed it chilled his own soul. The day on the road to Machynlleth was the end of that winter.
+
+### The covenant
+
+At about this time, at home in Llangefni, Christmas Evans wrote what he called "a solemn covenant with God." His biographers printed it from his papers. It has thirteen short sections, each ending "Amen" and his initials, C. E. The date at the end gives the day, 10 April, but the year is not shown in the copies we have.
+
+Some of it is a prayer for his own soul. He offers Christ "my time, and strength, and the gifts and talents I possess." He asks, "Grant that I may experience the power of Thy Word before I deliver it." He asks God to search him now, so that he will not find himself a hypocrite on the last day.
+
+Some of it is wonderfully ordinary. He asks God to care for his food and clothing, not with the general care that feeds the birds, but "as one of Thy family, as one of Thine unworthy brethren." He asks, "Let not my days be longer than my usefulness." He even asks about his death: "leave me not long in affliction, nor to die suddenly, without bidding adieu to my brethren, and let me die in their sight, after a short illness."
+
+At the end he asks Christ to write these petitions in His own book in heaven, while he writes them in his book on earth, and to "set Thine Amen to them, as I do on my part of the covenant." Afterward, he said, he felt a deep peace, like a poor man who had been given a settled income for life, and would never again need to fear poverty.
+
+Christmas Evans knew he could not bind God. A covenant is a solemn agreement, and in the Bible it is God who first binds Himself to His people by His promises. Andrew Murray wrote:
+
+> "Blessed is the man who truly knows God as his Covenant God; who knows what the Covenant promises him; what unwavering confidence of expectation it secures, that all its terms will be fulfilled to him; what a claim and hold it gives him on the Covenant-keeping God Himself."
+> Andrew Murray, *The Two Covenants*
+
+### The answer
+
+The years that followed were the most fruitful of his life. His biographer Paxton Hood says that within two years the number of his preaching places on Anglesey grew from ten to twenty, and six hundred new believers were added. Many years later, when he was a pastor at Caerphilly in South Wales, he made a second covenant with God.
+
+He died at Swansea, in South Wales, on 19 July 1838, aged seventy-one, after a short illness, in a friend's house, with fellow ministers around his bed. He had asked God for exactly this. Hood tells how, near the end, he waved his hand as if he were back on his old horse in the mountains and said, "Good-bye! Drive on!"
+
+Years later, in London, Charles Spurgeon met a Welshman who had heard him preach. Spurgeon wrote:
+
+> "I asked him if he knew another Welsh minister who preached like Christmas Evans. 'No,' he said, 'we have no such man in Wales in our days.' So in England we have neither Wesley nor Whitefield, nor any of their order; yet, as with God is the residue of the Spirit, He can fetch out from some chimney-corner another Christmas Evans, or find in our Sunday-school another George Whitefield, who shall declare the gospel with the Holy Ghost sent down from heaven."
+> Charles H. Spurgeon, *Spurgeon on the Holy Spirit*
+
+### Three key insights
+
+1. **A cold heart is a reason to pray, not a reason to stay away from prayer.** Christmas Evans felt hard and worldly, but he prayed anyway. God met him in the praying, and the frost began to melt.
+2. **Putting our surrender to God into words can steady us for years to come.** Christmas Evans wrote his covenant down, petition by petition. He could return to it, and so can we, when our feelings change.
+3. **We may bring God the plain needs of life and death as members of His family.** Christmas Evans asked for food and clothing, for useful work, and for a gentle death among friends. Nothing in our life is too ordinary for a child to bring to the Father.
+
+### For us today
+
+Many believers know the cold heart Christmas Evans describes. It may come after years of busy service, after quarrels in the church, or after a long time of trouble. His story says: do not wait to feel warm before you pray. Begin in the name of Jesus, and keep going.
+
+Jeremiah 50:4 says that God's people would come back to Him "weeping as they go," and would bind themselves to the LORD. Christmas Evans wept on a mountain road and then bound himself to Christ in writing. Whether you live in Wales or Kenya, Peru or Indonesia, you can do the same, in your own language and your own words.
+
+### Try this
+
+This week, let Christmas Evans's mountain road guide your prayer.
+
+- **Pray when you feel cold.** The next time prayer feels dry, tell God honestly how you feel, and keep praying for at least a quarter of an hour.
+- **Pray for others by name.** Like Christmas Evans, pray for your church, for other churches near you, and for their pastors by name.
+- **Write a short covenant.** Write a few lines giving your time, gifts and cares to Christ, and sign it. Read it again at the end of the week.
+- **Bring the plain things.** Tell God about one ordinary need, such as food, rent, work or health, as a child would tell a father.
+
+### A closing prayer
+
+Lord Jesus Christ, You bound Yourself to Your people in a covenant sealed with Your own blood. Thank You for Christmas Evans, who prayed on a lonely road when his heart was cold, and found the frost melting before You. When my heart is hard, give me grace to pray anyway. Take my time, my strength and whatever gifts I have, and use them for Your church. Care for me as one of Your family. Keep me useful as long as I live, and at the end bring me home in peace. Set Your Amen to these prayers, as I set mine. Amen.
+
+### Questions for reflection
+
+- Christmas Evans prayed "however hard I felt in my heart." What do you usually do when prayer feels cold?
+- If you wrote a covenant with God, what would you want to put in it?
+- Which ordinary needs in your life have you thought were too small to bring to God?
+
+### Read more on Ochorus
+
+- Andrew Murray, *The Two Covenants*, especially "A Covenant God"
+- Charles H. Spurgeon, *Spurgeon on the Holy Spirit*, especially "The Abiding of the Spirit the Glory of the Church"
+
+---
+
+## My Soul Thirsts for You
+
+> "God, You are my God, and I search hard for You. My whole self thirsts for You; my body aches for You in a dry and worn-out land with no water." (Psalm 63:1)
+
+In May 1839 a small group of Scottish ministers rode on camels across the sandy desert between Egypt and the land of Israel. The youngest of them was Robert Murray M'Cheyne, the minister of St Peter's Church in Dundee. He was twenty-five years old, and he was not well. Earlier that year his heart had been so weak that he had to stop preaching. His doctors hoped that a long journey would restore his health. So the Church of Scotland sent him with his friend Andrew Bonar and two older ministers, Alexander Black and Alexander Keith, to visit the Jewish communities of Europe and the Middle East and to report on how the church could share the gospel with them.
+
+The desert was harder than he had imagined. Day after day there was only a circle of sand and thorny shrubs, a cloudless sky and a burning sun. The wells were few and often bitter. Sometimes the travelers were on their camels for twelve or fourteen hours a day. In a letter home he wrote that the mirage, the false picture of water that appears in the heat, "cheated us often when we were very thirsty." M'Cheyne wrote home that he now understood why Israel had grumbled in the wilderness, and that the journey had tested his own heart.
+
+Yet the desert also did something else. "It is a remarkable feeling to be quite alone in a desert place," he wrote; "it gives similar feelings to fasting; it brings God near." At night, he said, they camped alone under the stars, with none beside them but their Bedouin guides, their camels, and "our all-knowing, all-loving God."
+
+Psalm 63 was written in a place like that. Its heading says that David wrote it when he was in the wilderness of Judah, probably while running for his life. In a dry and worn-out land, David did not only long for water. He longed for God.
+
+The travelers reached Jerusalem in June. On the way home, M'Cheyne caught a fever, and near Smyrna, in what is now Turkey, he came very close to death. For days his friends watched over him in a village called Bouja. He recovered slowly, and used to say it was "his second birth-place."
+
+While he lay there in August 1839, something was happening in Dundee. A young preacher named William Burns, who was taking his place, invited people to stay behind after a prayer meeting. About a hundred stayed, and suddenly, Bonar writes, "all were bathed in tears." For weeks meetings were held every day, and the whole town was stirred. M'Cheyne heard the news on his way home. When he reached Dundee in November, his church was packed to the pulpit steps, and the people sang, he said, "as if the people felt that they were praising a present God."
+
+### Who he was
+
+Robert Murray M'Cheyne was born in Edinburgh in 1813. He was a gifted, cheerful young man who loved poetry and drawing. The death of his older brother David in 1831 turned his heart seriously to Christ. He studied at Edinburgh under the great preacher Thomas Chalmers, served as an assistant minister near Stirling, and in 1836 became the minister of a new church in a poor part of Dundee, a crowded city of mills and factories.
+
+He was a minister for less than seven years. In March 1843, after visiting people sick with typhus fever, he caught it himself. In his fever he kept praying aloud for his people: "This parish, Lord, this people, this whole place!" He died on 25 March 1843, aged twenty-nine. Bonar, who wrote his *Memoir* the next year, tells that at the end he lifted his hands "as if in the attitude of pronouncing the blessing," and then sank down.
+
+### How he prayed
+
+Bonar, who knew him well, wrote that M'Cheyne never went before his people on Sunday without much meditation and prayer. Charles Spurgeon later quoted Bonar's words to his students:
+
+> "Indeed, he could not neglect fellowship with God before entering the congregation. He needed to be bathed in the love of God."
+> Andrew Bonar, quoted in Charles H. Spurgeon, *Lectures to My Students*
+
+Near the end of his short life he wrote, for his own use, a paper he called "Reformation," about what he ought to change in his life. He never finished it. "I am persuaded," he wrote, "that I ought never to do anything without prayer, and, if possible, special, secret prayer." He also set out a plan for his day:
+
+> "I ought to spend the best hours in communion with God. It is my noblest and most fruitful employment, and is not to be thrust into a corner. The morning hours, from six to eight, are the most uninterrupted and should be thus employed. After tea is my best hour, and that should be solemnly dedicated to God."
+> Robert Murray M'Cheyne, quoted in E. M. Bounds, *Power Through Prayer*
+
+"After tea" meant the early evening meal. And when he woke in the night, he wrote, he ought to rise and pray. Psalm 63 says the same: "When I call You to mind as I lie in bed, I muse on You through the hours of the night" (Psalm 63:6).
+
+His prayers were often for holiness. In the last months of his life he wrote to a friend, "I often pray, Lord, make me as holy as a pardoned sinner can be made." Spurgeon loved a remark of his: "It is not so much great talents that God blesses, as great likeness to Christ."
+
+One famous saying is often credited to him: "What a man is on his knees before God, that he is, and nothing more." It sounds like him, and it may be his. But it has not been found in his own writings or in Bonar's *Memoir*, so we should treat it as a saying attributed to him.
+
+### Daily bread
+
+At the start of 1843, a few months before he died, M'Cheyne gave his people a plan for reading the Bible, which he called *Daily Bread*. In one year it took readers through the Old Testament once and the New Testament and Psalms twice, with chapters for the family and chapters to read in secret. He hoped that "all might be feeding in the same portion of the green pasture at the same time." Then, he said, "We shall oftener be led to agree on earth, touching something we shall ask of God." Christians all over the world still use his plan today.
+
+He knew the danger of a fixed rule. "Let the calendar perish," he wrote, "rather than this rust eat up your souls." The plan was never meant to replace thirst. It was meant to lead thirsty people to the water. "Let God's voice be the first we hear in the morning."
+
+### Thirst
+
+The OWB says, "My whole self thirsts for You." Older English Bibles say "my soul." The Hebrew word means the whole living person, so the thirst David describes is not only a feeling. It is the longing of his whole life.
+
+In 1841 M'Cheyne wrote to comfort a friend whose brother had died. "There is no true comfort to be found but in Christ," he wrote. "He is a fountain of living waters, and you must go with your thirsty soul to him and drink." Beside these words he wrote two Bible references: John 7:37, where Jesus cries, "If anyone is thirsty, they should come to Me and drink," and Psalm 63.
+
+### Three key insights
+
+1. **The best hours of the day belong to God, not only the hours left over.** M'Cheyne gave God his freshest morning hours and his best evening hour. Prayer was his most fruitful work, not something to squeeze into a corner.
+2. **A shared plan for reading Scripture helps a church agree in what it asks of God.** M'Cheyne's calendar was meant to bind his people together, so that they would feed in the same pasture and agree in what they asked of God.
+3. **Thirst for God is not a sign of failure but an invitation to come and drink.** David in the wilderness and M'Cheyne in the desert both felt their need. Jesus says that the thirsty should come to Him.
+
+### For us today
+
+Many believers today live in a dry land. Some live where water really is scarce. Others are weary from long hours of work, from sickness, or from living as the only Christian in a family or a village. Psalm 63 does not tell them to pretend they are not thirsty. It shows them where to go.
+
+M'Cheyne's life was short, but his prayers, his letters and his Bible plan have helped believers around the world for nearly two centuries. You do not need a long life or great gifts to be used by God. You need to keep coming to the fountain.
+
+### Try this
+
+This week, practice coming to God with your thirst.
+
+- **Give God your best hour.** Choose the time of day when your mind is freshest, and give part of it to prayer and the Bible.
+- **Read with others.** Try M'Cheyne's reading plan, or any plan, together with a friend or your church, and talk about what you read.
+- **Pray in the night.** If you wake in the night, use the time to remember God, as Psalm 63:6 says.
+- **Pray Psalm 63:1.** Each morning, read the verse slowly and tell God honestly what you are thirsty for.
+
+### A closing prayer
+
+God, You are my God, and I search hard for You. In a dry and worn-out land my whole self thirsts for You. Thank You for Robert Murray M'Cheyne, who gave You his best hours and led his people to feed together on Your word. Forgive me for giving You only the hours that are left over. Make me as holy as a pardoned sinner can be made. When I am weary, lead me to Jesus, the fountain of living water, and let me come to Him and drink. Amen.
+
+### Questions for reflection
+
+- What is your "best hour" of the day, and how much of it do you give to God?
+- How might reading the same Bible passages as others change the way your church prays together?
+- What dry places in your life have made you more aware of your thirst for God?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *Power Through Prayer*, especially "Much Time Should Be Given to Prayer"
+- Charles H. Spurgeon, *Lectures to My Students*, especially "The Preacher's Private Prayer"
+
+---
+
+## Open Your Mouth Wide
+
+> "I am the LORD your God, the one who led you up out of Egypt's land. Open your mouth as wide as you can, and I will fill it." (Psalm 81:10)
+
+On the evening of 5 December 1835, in the English port city of Bristol, a thirty-year-old German preacher sat reading his Bible. His name was George Müller. For two weeks a plan had been growing in his mind: to open a home for children who had lost both their father and their mother. In those days such children in England often ended up in the poorhouse or on the streets.
+
+For those two weeks Müller had prayed only one thing. If the plan was from God, let God bring it about. If not, let God take the thought away. He had not asked for money. He had not asked for helpers. He had only asked to know God's will.
+
+That evening he came to Psalm 81. In the King James Version that he read, verse 10 says, "Open thy mouth wide, and I will fill it." He later wrote down what happened next:
+
+> "I thought a few moments about these words, and then was led to apply them to the case of the Orphan-House. It struck me that I had never asked the Lord for anything concerning it, except to know His will, respecting its being established or not; and I then fell on my knees and opened my mouth wide, asking Him for much."
+> George Müller, *Answers to Prayer*
+
+He asked for a house, a thousand pounds, and the right people to care for the children. That was a very large sum for a preacher who had no salary.
+
+Two days later, someone gave him the first shilling, a small silver coin. Two days after that, the first piece of furniture arrived, a large wardrobe, and at a meeting where he took no collection a woman offered herself for the work. The next morning a letter came from a husband and wife. They offered to work in the orphan house without any salary and to give all their furniture to it.
+
+In April 1836 the first house opened in Wilson Street, Bristol, for girls. On 15 June 1837 the last of the thousand pounds came in. Fifteen years after that first evening, on 5 December 1850, Müller wrote in his journal, "I did 'open my mouth wide,' this very evening fifteen years ago, and the Lord has filled it."
+
+### Who he was
+
+In Volume 7 we met Müller as a student at Halle, staying in rooms kept by August Hermann Francke's orphan houses. He was born in 1805 in Prussia. As a teenager he lied, stole and gambled, and he once spent weeks in prison for unpaid bills. In 1825, at a small evening meeting in a home in Halle, he saw a man kneel and pray aloud, and soon afterward he gave his life to Christ.
+
+He came to England in 1829. In 1830 he married Mary Groves, and that same year he gave up his fixed salary as a pastor, deciding to tell his needs to God alone. In 1832 he moved to Bristol with his friend Henry Craik, and they shared the work of a church there for many years.
+
+Why an orphan house? He wanted to care for poor children and bring them up to know God. But his first reason, he said, was different. Many believers he knew trusted God in words but not in real life. He wanted to show them a household fed only by prayer, without asking anyone for help, so that all could see "that God is FAITHFUL STILL, and HEARS PRAYER STILL." The capital letters are his.
+
+### Asking for much
+
+Psalm 81 is a song for a festival. In it God remembers how He brought Israel out of slavery in Egypt. Then He gives a wonderful invitation: open your mouth as wide as you can. The picture is of young birds in a nest, with their beaks stretched wide, waiting for their parent to bring food. They do not earn the food. They only open wide. The sad part of the psalm comes next: "But My people refused to listen to My voice" (Psalm 81:11). God was ready to give "the finest wheat" and "honey from the rock" (Psalm 81:16), but His people did not ask.
+
+Müller's first prayers were good prayers: it is right to ask what God wants. But on 5 December he saw that he had stopped there. He had never actually asked God for anything. When he opened his mouth wide, he still prayed "in submission to His will," as he put it. Large asking and humble asking can go together.
+
+Bold asking did not make him proud. In February 1836, when the house was ready, not one child had been brought to it. He had prayed about every detail except this one. He spent a whole evening on his knees, searching his heart, until he could honestly say he would be glad even if God brought the whole plan to nothing, as long as God was honored. The next day the first application came.
+
+### How he prayed
+
+In 1841 Müller learned something that changed his mornings. For years he had begun the day by trying to pray, often with a wandering mind. Now he began by reading the Bible slowly, verse by verse, to feed his own soul. He wrote:
+
+> "The result I have found to be almost invariably this, that after a very few minutes my soul has been led to confession, or to thanksgiving, or to intercession, or to supplication; so that, though I did not, as it were, give myself to prayer, but to meditation, yet it turned almost immediately more or less into prayer."
+> George Müller, *The Life of Trust*
+
+He asked for much because he had read much of God's promises.
+
+The work grew far beyond that first rented house. By the time Müller died in 1898, aged ninety-two, five large orphan houses stood on Ashley Down outside Bristol, and more than ten thousand children had been cared for in them. He kept careful records of each gift and each answer to prayer. There were many hard days, when there was no money at all for the next meal. Late in life he told his biographer, Arthur T. Pierson:
+
+> "Not once, or five times, or five hundred times, but thousands of times in these threescore years, have we had in hand not enough for one more meal, either in food or in funds; but not once has God failed us; not once have we or the orphans gone hungry or lacked any good thing."
+> Arthur T. Pierson, *George Müller of Bristol*
+
+You may have heard a famous story about one of those mornings: the children sit at empty tables, Müller gives thanks for food they do not have, and then a baker knocks at the door with bread and a milkman's cart breaks down outside. It may be true. But it is not in Müller's own careful records, and Pierson says the orphans were never told when money was short. The story was remembered many years later by a woman who had known Müller as a girl, and it reached print through other writers. So we tell it as a story that is told. Müller's own pages hold hundreds of answers just as wonderful.
+
+### Three key insights
+
+1. **The God who has already rescued us invites us to open our mouths wide.** In Psalm 81 the invitation comes right after God reminds Israel that He led them out of Egypt. What He has done in the past is the reason to ask Him for much now.
+2. **Seeking God's will is the beginning of prayer, but not the end of it.** Müller's first prayers only asked what God wanted. When he saw that God wanted to be asked, he knelt down and made his request plainly.
+3. **Bold asking grows best from deep reading of God's Word.** Müller's prayers rose out of slow meditation on Scripture, so his large requests rested on God's own promises, not on his own wishes.
+
+### For us today
+
+Most of us will never build an orphan house. But all of us have needs too large for us: a sick child, school fees we cannot pay, a church with no building, a village with no clean water, a land where believers are in danger. Many of us have learned to pray small, careful prayers so that we will not be disappointed.
+
+Müller's story invites us to open our mouths wide. That does not mean demanding things from God or using prayer to grow rich. It means bringing our real needs, and the needs of others, honestly and fully, to a Father who loves to give.
+
+God's answers often come through ordinary people: a shilling, a wardrobe, a couple offering their furniture. If you have something to give, you may be the answer to someone's prayer.
+
+### Try this
+
+This week, practice asking God for much, humbly.
+
+- **Read first, then pray.** Each morning, read a few verses slowly and let them turn into thanks, confession or requests, as Müller did.
+- **Name one large need.** Choose one need that is too big for you, for yourself or others, and ask God for it plainly every day.
+- **Write it down.** Note the date of your request, and later write down how God answers, even if the answer is different from what you expected.
+- **Look for small beginnings.** Watch for the "first shilling," the small sign that God is at work, and thank Him for it.
+
+### A closing prayer
+
+Lord God, You led Your people out of Egypt, and You invite us to open our mouths wide so that You may fill them. Forgive me for the small and fearful prayers I have prayed. Thank You for Your servant George Müller, who believed You, asked You for much, and fed thousands of children by prayer. Teach me to read Your Word until it turns into prayer, to ask boldly and humbly, and to wait for You with a quiet heart. Fill my life, and use me to help others who are in need. In the name of Jesus Christ, who is the same yesterday, today and forever. Amen.
+
+### Questions for reflection
+
+- Müller first prayed only to know God's will. Why do you think it took him two weeks to ask God for anything?
+- What is one need in your life or community that you have never really asked God to meet?
+- How can reading the Bible slowly change the way you pray?
+
+### Read more on Ochorus
+
+- George Müller, *Answers to Prayer*, especially "Beginning and Early Days of the Orphan Work"
+- George Müller, *The Life of Trust*, especially "Home for Destitute Orphans"
+
+---
+
+## A Pilgrim Learns to Pray Without Ceasing
+
+> "Never stop praying." (1 Thessalonians 5:17)
+
+Somewhere in Russia, in the middle of the 1800s, a poor man stood in church on a Sunday and listened to the Bible being read aloud. The reading that day came from Paul's first letter to the Thessalonians. One short command stuck in his mind and would not let go: pray without ceasing.
+
+He did not own much. He had a bag on his back with some dried bread in it, and a Bible he kept close to his chest. His left arm had been crippled since childhood, so he could not do heavy work. His wife had died, and he had no home. He had become what Russians called a *strannik*, a wanderer who walked from church to church and from shrine to shrine, living on what kind people gave him.
+
+How could anyone pray without stopping? He had to eat, sleep, walk and talk. So he began to ask. He went to churches where famous preachers spoke, and he heard fine sermons about prayer: why we should pray, and what good prayer does. But no one told him how to pray all the time. He walked for many days, asking priests and devout people, and found no answer.
+
+At last, the story says, he met an old monk on the road, a *starets*, which means an elder, a man of long experience in prayer whom others go to for guidance. The old man took him to his cell, the little room where he lived and prayed, and listened to him. Then he explained.
+
+Unceasing prayer, the elder said, is calling on the name of Jesus always, with the lips, the mind and the heart, at work, at rest and on the road. He taught the pilgrim the short prayer that Orthodox Christians had prayed for centuries: "Lord Jesus Christ, have mercy on me." He read to him from a thick old book called the *Philokalia*, which gathered the teaching of many monks of the past on prayer. He gave him a prayer rope, a cord tied with many knots, to help him keep count. And he set him a simple task: say the prayer three thousand times each day.
+
+At first it was hard. The pilgrim grew bored and tired, and his mind wandered. But he kept on. After some days the elder raised the number to six thousand, and then to twelve thousand. The pilgrim spent that summer as a watchman in a vegetable garden, living in a hut and praying. Slowly the prayer stopped being a task. It became a joy. In time, he says, it seemed to go on by itself, even when he was busy, as if it had moved from his lips down into his heart.
+
+### A book with no author's name
+
+This story comes from a small Russian book usually called in English *The Way of a Pilgrim*. Its Russian title means something like "honest tales of a wanderer to his spiritual father." It was first printed in the city of Kazan in the 1880s, and English readers came to know it in the twentieth century.
+
+We do not know who wrote it. The book speaks in the first person, as a pilgrim telling his own story, and some details suggest it is set in the 1850s, before the serfs of Russia were set free in 1861. Some scholars think it is a real man's story, written down and shaped by a monk. Others think a teacher of prayer used a pilgrim's journey to explain the Jesus Prayer to ordinary readers. We cannot be sure, and the book itself does not seem to mind. Its hero never even tells us his name.
+
+The *Philokalia* the pilgrim carried was real. Its title is a Greek word meaning "love of what is beautiful" or "love of the good." Two Greek monks gathered it from older writings and printed it in Venice in 1782. In 1793 a Ukrainian-born monk named Paisius Velichkovsky published a Slavonic translation, the old church language of the Russian people, and it spread through the monasteries of Russia. Later in the 1800s a bishop named Theophan the Recluse made a fuller translation in Russian.
+
+In Volume 4, in the chapter "Lord Jesus Christ, Have Mercy," we followed the Jesus Prayer from the blind man on the Jericho road into the deserts of Egypt. In Volume 5, in "Waiting in Stillness," we sat with the monks of Mount Athos. Many of their words are in the *Philokalia*. The pilgrim shows us what happened when that old wisdom left the monastery and went walking down the roads of Russia in the bag of a poor man.
+
+### What the pilgrim learned
+
+The book is not mainly about numbers. The elder used numbers as a teacher of music uses daily practice. They trained the pilgrim's will until the prayer became his own. Orthodox teachers have often warned that no one should race to say the prayer thousands of times as if it earned something from God, and that this way of prayer is best learned with the help of a wise spiritual guide and inside the life of the church. The pilgrim himself is never alone for long: he goes to church, and he keeps asking for guidance.
+
+What the book does show is how prayer changes a person. As the Jesus Prayer settled in his heart, the pilgrim began to see the world differently. Trees, grass and birds seemed to speak to him of God's love. He felt warmth and kindness toward everyone he met. Later in the book, it tells, robbers beat him and took his bag. He grieved most of all for his precious *Philokalia*, yet he did not hate them. Unceasing prayer had made him gentle.
+
+Christians of other traditions have reached the same truth by other roads. In Oxford, years before he became a Roman Catholic in 1845, the Anglican preacher John Henry Newman preached on this same verse. He described two kinds of prayer: prayer at set times, and a constant turning to God through the day.
+
+> "The other kind of praying may also be called holding communion with God, or living in God's sight, and this may be done all through the day, wherever we are, and is commanded us as the duty, or rather the characteristic, of those who are really servants and friends of Jesus Christ."
+> John Henry Newman, *Parochial and Plain Sermons, Volume VII*
+
+In the next chapter we will meet a Russian monk of the same century who lived this kind of prayer in the forest near Sarov, and taught it to all who came to him.
+
+### Three key insights
+
+1. **Unceasing prayer is learned slowly, with a patient teacher beside us.** The pilgrim found no answer in fine sermons. He learned by practice, day after day, under the guidance of someone who had walked the road before him.
+2. **A short prayer, prayed again and again, can move from the lips into the heart.** What began as hard work became the quiet music of the pilgrim's whole life, continuing while he walked, worked and rested.
+3. **A heart that prays without stopping grows gentle toward everyone.** The pilgrim's prayer did not shut him away from people. It filled him with kindness, even toward those who hurt him.
+
+### For us today
+
+Paul wrote "Never stop praying" to ordinary believers in Thessalonica: workers, slaves, mothers and traders, not monks. The pilgrim was poor, disabled and homeless, yet he learned it. That is good news for all of us. You do not need a quiet house, a long holiday or a theology degree to pray without ceasing.
+
+A market woman in Accra can pray as she sells. A factory worker in Dhaka can pray at the machine. A grandmother in Bogotá can pray as she cooks for her grandchildren, and a believer in prison can pray when every book has been taken away. A short prayer from the heart can go with us anywhere.
+
+The pilgrim also teaches us not to try this alone. Ask an older believer you trust to help you. Keep praying with your church as well as by yourself. And be patient with yourself: the pilgrim found it hard at first, too.
+
+### Try this
+
+This week, take a few small steps toward praying without ceasing.
+
+- **Choose a short prayer.** It may be "Lord Jesus Christ, have mercy on me," or another short prayer from Scripture. Use the same one all week.
+- **Pray it at set moments.** Pray it when you wake, when you walk, when you wash, when you wait, and when you lie down.
+- **Let it be gentle.** Breathe slowly and say the words calmly. When your mind wanders, simply return without scolding yourself.
+- **Talk to a guide.** At the end of the week, tell a wise believer what you have noticed, and ask for their counsel.
+
+### A closing prayer
+
+Lord Jesus Christ, Son of God, have mercy on me. You taught Your people never to stop praying, and You know how quickly my mind wanders and my heart grows cold. Thank You for the unknown pilgrim who walked the roads of Russia calling on Your name, and for all who have taught him and us to pray. Teach me to pray as I work and as I rest, at home and on the road. Let Your name sink from my lips into my heart, and make me gentle and kind to everyone I meet today. Amen.
+
+### Questions for reflection
+
+- The pilgrim heard many sermons about prayer but no one told him how to pray. Who has taught you most about how to pray?
+- What moments in your ordinary day could become moments of prayer?
+- Why do you think unceasing prayer made the pilgrim gentler toward others, even toward people who hurt him?
+
+### Read more on Ochorus
+
+- John Henry Newman, *Parochial and Plain Sermons, Volume VII*, especially "Mental Prayer"
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "Pray Without Ceasing"
+
+---
+
+## A Peaceful Spirit
+
+> "The mind that is held steady You guard in peace, unbroken peace, for it relies on You." (Isaiah 26:3)
+
+It was a gray Thursday in November 1831, deep in the forests of central Russia. Snow lay thick on the ground, and more was falling. In a clearing near the river Sarovka, an old monk sat a young visitor down on the stump of a tree. Then he crouched in the snow in front of him to talk.
+
+The monk was Father Seraphim of the Sarov monastery. He was over seventy years old, bent almost double from an attack many years before. The visitor was Nicholas Motovilov, a young landowner of about twenty-two. Since he was twelve years old, Motovilov had been troubled by a question. He had asked many clergy, and no one had given him an answer that satisfied him. What is the true aim of the Christian life?
+
+Seraphim's answer, as Motovilov wrote it down, was simple. Prayer, fasting, staying awake in the night to pray, giving to the poor, and every good thing done for Christ's sake are good, he said. But they are not the goal. They are the means. The true aim of the Christian life is to receive the Holy Spirit of God, to gain Him as a treasure that lasts forever. And of all these means, Seraphim said, prayer is the one that is always within reach. Not everyone can fast or keep long night watches. But anyone can pray: the rich and the poor, the important and the humble, the strong and the weak, the healthy and the sick, the righteous and the sinner.
+
+Motovilov still did not understand. How could he know that the Spirit of God was with him? Seraphim took him firmly by the shoulders and said that they were both in the Spirit of God at that moment. Motovilov looked up and was afraid. Seraphim's face, he wrote, seemed brighter than the sun, so bright that his eyes hurt.
+
+The old man asked him what he felt. Motovilov said he felt a calm and peace in his soul that no words could express. He felt joy and sweetness, and he felt warm, though they were sitting in the snow and the flakes were still falling on them. Seraphim told him that this was the peace Jesus had promised His disciples: "Peace I leave with you; it is My own peace that I give you. I do not give the way the world gives" (John 14:27).
+
+Motovilov put his notes away among his papers. They were found and printed only in 1903, seventy years later. Orthodox Christians treasure this conversation as one of the great writings of their faith. Some parts are hard to explain, and we tell them simply as Motovilov told them.
+
+### Who he was
+
+Seraphim was born in the city of Kursk, in Russia, in 1754 or 1759 (the records disagree), the son of a builder and merchant. His parents named him Prokhor. As a young man he went to the monastery of Sarov, far to the east in the forests, and asked to be received. In 1786 he became a monk and was given the name Seraphim, after the burning angels who sing "Holy, holy, holy" in Isaiah's vision.
+
+In 1794 he went to live alone in a small wooden hut in the forest, a few miles from the monastery. He cut wood, grew vegetables, read the Gospels and prayed. One day robbers came looking for money. They beat him with the handle of his own axe and left him almost dead. They found nothing but an icon, a holy picture of Mary, the mother of Jesus. Seraphim recovered, but he was bent for the rest of his life. When the robbers were caught, he asked that they be forgiven and not punished.
+
+A tradition, written down after his death, says that for a thousand nights he knelt or stood on a large rock in the forest, praying the prayer of the tax collector in the Gospel: "God, be merciful to me, the sinner!" (Luke 18:13). We cannot know every detail of that story. But all who knew him agreed that he gave himself to prayer with great humility and great strength.
+
+After many years alone and in silence, Seraphim opened the door of his cell to visitors. Thousands came: peasants and nobles, nuns and soldiers, the sick and the sad. He greeted each one with a bow and the joyful words that Russian Christians say to each other at Easter, "Christ is risen!" He called everyone "my joy." He died early in January 1833, kneeling in prayer in his cell before an icon of Mary. Today he is one of the best-loved saints of the Russian Orthodox Church, and many other Christians honor him too.
+
+### The Spirit of peace
+
+Many people know Seraphim for a saying: "Acquire the Spirit of peace, and thousands around you will be saved." We do not find it in Motovilov's conversation, and we cannot be sure these are his exact words. It is a saying attributed to him, handed down by those who loved him. Yet it fits all that we know of his life.
+
+Isaiah 26:3 says that God guards the steady mind "in peace, unbroken peace." In Hebrew the word for peace, *shalom*, is simply said twice: peace, peace. It is a full peace, a peace that does not break. The verse also tells us where it comes from: the mind "relies on You." It is not a peace we make for ourselves by escaping from trouble. Seraphim lived through cold, hunger, sickness and violence. His peace was the fruit of a mind held steady on God, year after year, in prayer.
+
+That peace then spread. People came to his forest cell troubled and went home calm. A peaceful man, he seems to have believed, does more for others than a busy one. Some years later, in London, Charles Spurgeon said something very like it, in a talk on Jesus asleep in the boat during the storm:
+
+> "A calm like that which ruled within our Saviour should we be happy enough to attain to it, will give us in our measure the power to make outside matters calm. He that hath peace can make peace."
+> Charles H. Spurgeon, *Till He Come*
+
+The English preacher F. B. Meyer, writing about Paul in a storm at sea, joined that calm to the very words of our key verse:
+
+> "Holy calm and stillness rule in the heart of him whose mind is stayed on God."
+> F. B. Meyer, *Our Daily Walk*
+
+### Three key insights
+
+1. **Prayer is a way to receive the Holy Spirit, not a way to earn God's favor.** Seraphim taught that prayer and good works are means, not the goal. Jesus promised that the Father will "give the Holy Spirit to those who ask Him" (Luke 11:13).
+2. **God guards with unbroken peace the mind that keeps leaning on Him.** Isaiah does not promise a life without storms. He promises that a mind held steady on God will be kept in a peace that does not break.
+3. **Peace received in prayer flows out to the people around us.** Seraphim's visitors went home calmer than they came. When we are at peace with God, our homes, churches and towns can feel it.
+
+### For us today
+
+Many of us live with little peace. Some live in lands of war or political danger. Some live in crowded cities with noise all day and night. Some carry worry about money, sickness or children. Others, even in wealthy countries, feel restless and anxious inside.
+
+Seraphim reminds us that peace is not first a place or a situation. He lived in a cold forest, poor and wounded, yet he was at peace. It is a gift of the Holy Spirit, and prayer is the way to receive it. Seraphim said that anyone can pray, rich or poor, strong or sick, and that is true for us too.
+
+His life also says something to believers who are tempted to answer violence with violence, or anger with anger. He forgave the men who nearly killed him. Peace that comes from God can make us peacemakers, and Jesus said, "Blessed are those who make peace: they will be called children of God" (Matthew 5:9).
+
+### Try this
+
+This week, ask God for His peace, and let it reach others.
+
+- **Begin with stillness.** Before you pray in the morning, sit quietly for two or three minutes and remember that God is near.
+- **Ask for the Spirit.** Pray simply, "Father, give me Your Holy Spirit," trusting His promise in Luke 11:13.
+- **Hold your mind steady.** When worry comes during the day, say Isaiah 26:3 to yourself and turn your thoughts back to God.
+- **Carry peace to someone.** Choose one person in conflict or distress and bring them calm this week, by a visit, a kind word or a prayer.
+
+### A closing prayer
+
+Lord God, You guard in perfect peace the mind that is held steady on You. Thank You for Your servant Seraphim, who sought Your Spirit in the forest, forgave those who hurt him, and welcomed every visitor with joy. My mind is often restless and my heart is often troubled. Give me Your Holy Spirit, as You have promised to those who ask. Steady my thoughts on You, fill me with the peace that the world cannot give, and make me a peacemaker in my home and in my land. Through Jesus Christ, who is our peace. Amen.
+
+### Questions for reflection
+
+- Seraphim taught that prayer and good works are means, not the goal. What difference does that make to the way you think about prayer?
+- When have you felt God's peace in a hard situation?
+- Who around you needs the peace of God today, and how might you carry it to them?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *Till He Come*, especially "Jesus Asleep on a Pillow"
+- F. B. Meyer, *Our Daily Walk*, especially "June"
+
+---
+
+## The Noon Prayer Meeting
+
+> "and if My people who bear My name humble themselves and pray, seek My face and turn back from their evil ways, then I Myself will hear from heaven. I will forgive their sin and heal their land." (2 Chronicles 7:14)
+
+On Wednesday, 23 September 1857, just before twelve o'clock noon, a tall man climbed the stairs of an old church building in lower New York. The building stood behind the North Dutch Church, on the corner of Fulton Street and William Street, in the busiest part of the city. All around it were banks, shops, warehouses and offices. At noon thousands of businessmen, clerks and workers poured into the streets for their midday meal.
+
+The man's name was Jeremiah Lanphier. He was forty-eight years old, and he had been a cloth merchant. Since July he had worked for the church as a lay missionary, a believer who was not a pastor but was paid to visit homes, hand out Christian booklets and invite people to church. Many of the old churches of lower New York had moved uptown with their wealthier members. Lanphier stayed among the crowds who were left.
+
+One day, as he walked the streets on his rounds, an idea came to him. What if there were an hour of prayer from twelve to one, when business people took their break? No one would have to stay the whole hour. They could come for five minutes or for all sixty, as their work allowed. He printed handbills to announce it and hung a sign outside.
+
+At twelve o'clock he opened the door of a lecture room on the third floor. No one came. Lanphier sat and prayed alone. Ten minutes passed, then twenty, then thirty. In his journal he later wrote what happened next: "At half-past twelve the step of a solitary individual was heard upon the stairs." Then came another, and another, until there were six people in the room. "We had a good meeting," he wrote. "The Lord was with us to bless us."
+
+The next Wednesday twenty came. The week after, between thirty and forty. That meeting was so full of life that they agreed to meet again the very next day, and from then on the noon prayer meeting met every day. On 9 October Lanphier wrote that a large number were present, and that "it was the very gate of heaven." Within a few months three rooms in the building were full at noon, and people stood in the halls because they could not get in.
+
+### What happened in New York
+
+That autumn, something else happened in New York. For years business had been booming. Many people had grown rich quickly, often on borrowed money. Then, in the late summer of 1857, a large financial company failed, and fear spread. In October the banks of New York stopped paying out money. Businesses closed, and thousands of people lost their work. Historians call it the Panic of 1857.
+
+The prayer meeting did not begin because of the panic. It had already started. But in those anxious months many people found their way to it. A writer named Samuel Irenaeus Prime, who edited a Christian newspaper in New York, gathered the stories in a book called *The Power of Prayer*, published in 1858. He was sure where it had come from: "This revival is to be remembered through all coming ages, as simply an answer to prayer."
+
+By the spring of 1858 there were daily prayer meetings in churches, halls and even theaters all over New York. Newspapers printed reports, and the telegraph carried the news across the country. Prayer meetings began in Boston, Philadelphia, Chicago and many smaller towns. The preacher Charles Finney, whom we met in chapter 2, was in Boston that winter. He remembered a visitor from the West:
+
+> "I recollect in one of our prayer-meetings in Boston that winter, a gentleman arose and said, 'I am from Omaha, in Nebraska. On my journey East I have found a continuous prayer-meeting all the way. We call it,' said he, 'about two thousand miles from Omaha to Boston; and here was a prayer-meeting about two thousand miles in extent.'"
+> Charles G. Finney, *Memoirs of Rev. Charles G. Finney*
+
+How many people came to faith? No one knows. Finney heard estimates of fifty thousand conversions in a single week. Later writers have given much larger numbers. We should hold all such numbers loosely. We can say that very many people were changed, and that ordinary believers led most of the meetings.
+
+### How they prayed
+
+The meetings were simple. A different businessman led each day. They sang a hymn, read a passage of Scripture and prayed. People wrote requests for prayer on slips of paper, and the leader read them aloud: a sister praying for her brother seventy years old, a mother for her large family, a small church asking God not to pass it by. No one was to speak or pray for more than five minutes. Arguments about church differences were not allowed. Believers from many churches sat side by side. In Boston, Finney's wife Elizabeth led daily meetings for women so crowded that women stood outside the doors to listen.
+
+Finney noticed something about the mood of the people:
+
+> "But there was such a general confidence in the prevalence of prayer, that the people very extensively seemed to prefer meetings for prayer to meetings for preaching."
+> Charles G. Finney, *Memoirs of Rev. Charles G. Finney*
+
+### Heal their land
+
+In Volume 1, in the chapter "If My People Will Pray," we read 2 Chronicles 7:14 as God's answer to Solomon, and we saw that it is an invitation, not a guarantee. The Fulton Street story shows another side of the verse.
+
+God's promise speaks to "My people who bear My name." In New York, those people were not only pastors. They were clerks, merchants and shopkeepers, praying in the middle of their working day, a few streets from the banks that had failed. They brought prayer into the marketplace.
+
+But the verse also asks God's people to "turn back from their evil ways." The revival of 1858 did not heal every wound of the land. Finney believed that slavery kept the revival from spreading in the South as it did in the North. And in the North many who prayed still accepted a nation divided by slavery. Three years later the United States was at war with itself. Prayer opened hearts, but the land still needed its people to turn from a great evil. Humble prayer and honest repentance belong together.
+
+### Three key insights
+
+1. **One person willing to wait alone in prayer can open a door for many others.** Lanphier sat and prayed alone for half an hour before anyone came. Because he and the few who came kept meeting, a city and then a nation were touched.
+2. **Even a crowded working day has room for God when someone opens a door at noon.** The meetings fitted into a lunch hour. Busy people could come for five minutes and still meet God.
+3. **Humbling ourselves includes turning from the wrongs our whole land has accepted.** The promise to heal the land is joined to a call to turn from evil ways, and that call includes the sins of a whole society.
+
+### For us today
+
+Many cities in the world today look like New York in 1857: crowded, busy, full of people chasing money, and shaken from time to time by sudden hard times. In Lagos, São Paulo, Mumbai or Manila, millions live close together, yet many feel alone.
+
+Lanphier's idea still works. A short prayer meeting at a time when people are free, in an office, a market, a factory, a school or a home, can become a doorway to God for many. It does not need a famous preacher. It needs one person willing to open the door and wait, even if no one comes for half an hour.
+
+The prophet Jeremiah told God's people in exile, "Seek the peace of the city where I have sent you as exiles, and pray to the LORD for it" (Jeremiah 29:7). Wherever you live, your city needs your prayers. And when you pray for your land, ask God also to show you the evil ways that need to be turned from, beginning with your own.
+
+### Try this
+
+This week, bring prayer into your working day.
+
+- **Pray at noon.** Stop for five minutes at midday, wherever you are, and pray for your city.
+- **Invite one or two.** Ask a coworker, neighbor or classmate to pray with you at a set time, even once a week.
+- **Use prayer requests.** Write down the needs of people you know on slips of paper, and pray through them one by one.
+- **Pray and repent for your land.** Ask God to heal your nation, and ask Him to show you where His people need to turn from wrong.
+
+### A closing prayer
+
+Lord God, You promised that if Your people humble themselves and pray, You will hear from heaven. Thank You for Jeremiah Lanphier, who waited alone in an empty room until others came, and for the thousands who stopped in the middle of their work to seek Your face. Forgive our sins, and the sins of our land. Teach us to pray in our markets, offices and homes, and to turn from every evil way. Hear us, forgive us, and heal our land. For the sake of Jesus Christ our Lord. Amen.
+
+### Questions for reflection
+
+- Lanphier prayed alone for half an hour before anyone came. What helps you keep praying when no one else seems to join you?
+- Where and when in your working week could you meet with others to pray, even briefly?
+- What "evil ways" in your own land do God's people need to turn from today?
+
+### Read more on Ochorus
+
+- Charles G. Finney, *Memoirs of Rev. Charles G. Finney*, especially "Revivals in Boston in 1856-57-58"
+- Charles G. Finney, *Lectures on Revivals of Religion*, especially "Lecture VIII. Meetings for Prayer"
+
+---
+
+## Four Young Men at Kells
+
+> "Will You not bring us back to life once more, and let Your people be glad in You?" (Psalm 85:6)
+
+In the autumn of 1857, four young men began to walk along the country lanes of County Antrim, in the north of Ireland, to an old schoolhouse near the village of Kells. They came every Friday evening. This was farming and weaving country, where many families wove linen on looms in their own cottages. The friends lived some miles apart, so they chose a schoolhouse in the middle. There they read the Bible and prayed. For months, nothing happened that anyone else could see.
+
+The leader of the group was James McQuilkin. He had come to faith in Christ only the year before, in November 1856. Soon afterwards he saw a book advertised: the first two volumes of George Müller's *Narrative*, the story of how God had supplied an orphan house in Bristol, England, in answer to prayer alone (we met Müller in chapter 5). McQuilkin bought it early in 1857 and read it with great hunger. Then, as Müller later told the story, the young Irishman began to ask God for a friend who also knew the Lord. Soon he met one, and the two began to pray together. Then he asked for more of God's "hidden ones," and God gave him two more young men. One of them was Jeremiah Meneely. Our early sources do not name the other two; later accounts call them Robert Carlisle and John Wallace.
+
+In the autumn McQuilkin told the other three how much Müller's book had helped him. It had shown him, he said, the power of believing prayer. So he proposed that they meet each week to ask God to bless their work in the Sunday schools and prayer meetings of the parish. By then news had also come across the ocean of the great prayer meetings in America (chapter 8). McQuilkin asked himself, as Müller reports it, "Why may not we have such a blessed work here, seeing that God did such great things for Mr. Müller, simply in answer to prayer."
+
+On the first day of 1858 the first clear answer came. A young farm servant was converted, and he joined the little group. Now there were five. Soon a young man of about twenty came to faith, and there were six. Others followed. The meetings stayed very simple: the members read the Scriptures, prayed and shared a few thoughts with each other. Through all of 1858 the work grew quietly, with no crowds and no excitement. A minister from the nearby town of Ballymena, S. J. Moore, later described it as "a calm, quiet, gradual" work. By the spring of 1859, people believed that some hundreds in the parish of Connor had turned to Christ.
+
+Then the fire spread. Late in 1858 a young man who had been converted through the Connor meetings asked a few friends to pray with him for his mother and his brother, who lived some miles away near the town of Ahoghill. Then he went to tell them what God had done for him. His mother came to faith, and then his brother, a weaver. When the brother's burden of sin was lifted, the story says, he rose from his loom, fell on his knees and gave thanks. Then he ran to his minister with the words, "I am saved!" Soon the young men from Connor were invited to Ahoghill. The schoolhouse there could not hold the hundreds who came, so the meeting moved into a church. In the cold evenings of that spring, people met to pray on the roads and in the open fields.
+
+### Where the story comes from
+
+Our best source was written while the events were still fresh: *The Year of Grace* (1860), by William Gibson, a Belfast professor who was Moderator (the elected head) of the Presbyterian Church in Ireland that year. Gibson visited Connor himself and gathered the reports of local ministers. Müller also told McQuilkin's story in his *Narrative*.
+
+Gibson is careful to say that the Kells prayer meeting was not the only root. In the same parish, some young teachers had started a Sunday school prayer meeting at a place called Tannybrake, and the four young men had first met each other there. The minister of Connor had prayed and preached for revival for years. The Presbyterian Church as a whole had been talking about its own low state and calling its people to pray. So Kells was one small stream among several, but it is the one people remembered, because it shows so clearly what God can do through a few ordinary believers who keep on praying.
+
+From Connor and Ahoghill the revival spread through Ballymena, Coleraine and Belfast, and across most of Ulster. In Belfast, in the summer of 1859, a great open-air meeting for prayer was held in the Botanic Garden. Gibson says that thirty or forty thousand people came "from the crowded lanes and alleys" of the town and from the villages "all round for thirty or forty miles." Many later writers say that about a hundred thousand people came to faith in Ulster that year. No one counted them exactly, so that number should be held loosely.
+
+### A year of grace, honestly told
+
+Gibson called 1859 *The Year of Grace*, but he did not hide its difficulties. In some places, people under deep conviction of sin trembled, cried out or fell to the ground, which some ministers welcomed and others distrusted. Gibson admits there were "some questionable scenes" at the edges of the largest crowds. A Belfast minister wrote a reply to his book called *The Year of Delusion*. Historians also note that the revival was mainly a movement among Protestants, and it did not end the old divisions between Protestant and Catholic neighbors in Ulster.
+
+Yet much of the fruit was plain to see. In Connor, Gibson reports, arrests for drunkenness fell from thirty-seven in 1857 to four in 1859, and prayer meetings led by farmers and weavers met all over the countryside.
+
+Müller, looking back many years later, wanted his readers to see one thing above all:
+
+> "It is almost needless to add, that in no degree the honour is due to the instruments, but to the Holy Spirit alone; yet these facts are stated, in order that it may be seen, what delight God has in answering abundantly the believing prayer of His children."
+> George Müller, *Answers to Prayer*
+
+The prayer of Psalm 85 belongs to people who remember God's past mercies. "You were pleased with Your land, LORD," it begins (Psalm 85:1), and then it asks Him to do it again: "Will You not bring us back to life once more?" Older English Bibles say "revive" here. McQuilkin's story follows the same path. He read what God had done in Bristol, heard what God was doing in America, and asked God to do it in Antrim too.
+
+### Three key insights
+
+1. **Stories of what God has done can stir us to ask Him to do it again.** McQuilkin's prayer life began with a book about answered prayer. Psalm 85 also looks back at God's past kindness and then asks Him to act once more. Remembering God's works feeds our faith to pray.
+2. **A prayer meeting does not need a minister, a building or a crowd to be heard in heaven.** Four young laymen in a cold schoolhouse asked God for a blessing, and He gave it. Jesus promised to be present where two or three gather in His name (Matthew 18:20), and He kept His word in Kells.
+3. **Praying for our own family, and then speaking to them, can carry God's work from one home to a whole town.** The revival reached Ahoghill because one new believer prayed with his friends for his mother and his brother, and then went home to tell them what God had done.
+
+### For us today
+
+Believers in many lands long for revival in their churches, their towns and their nations. Some are discouraged because they feel small: a few students in a university room, a handful of women meeting in a village in Malawi, a family praying quietly in a crowded flat in Manila, or a small group that cannot meet openly because of persecution. The story of Kells says to all of them: do not despise a small meeting. God often begins great things in hidden places.
+
+It also shows what a good story can do. You can pass on the stories of answered prayer that have helped you, in print, by phone or aloud to a neighbor.
+
+And it shows that revival begins at home. Before we pray for the nation, we can pray for our own mother, brother, son or daughter, and then go and speak to them with love.
+
+### Try this
+
+This week, let the young men of Kells encourage your prayers.
+
+- **Read a story of answered prayer.** Choose one chapter from a book like Müller's *Answers to Prayer*, and let it lead you to ask God for something specific.
+- **Find one prayer partner.** Like McQuilkin, ask God for one friend who will pray with you, and then agree on a regular time to meet, even if only for half an hour.
+- **Pray Psalm 85:6 for your church.** Use the psalm's own words each day, and name the people and places you long to see brought back to life.
+- **Pray for one family member by name.** Then look for a simple way to tell that person what God has done for you.
+
+### A closing prayer
+
+Lord God, You have done great things for Your people in the past, and we have heard the stories. Thank You for James McQuilkin and his friends, who met in a small schoolhouse and asked You to work in their parish, and for the farmers and weavers of Ulster who learned to pray. Will You not bring us back to life once more, and let Your people be glad in You? Begin with me. Give me a friend to pray with, faith to believe that You hear, and love to speak of You to my own family. Let all the honor go to You alone, through Jesus Christ our Lord. Amen.
+
+### Questions for reflection
+
+- What story of answered prayer has strengthened your own faith? Who could you share it with?
+- Why do you think God so often begins a revival through a few ordinary people rather than through famous leaders?
+- Which member of your family or neighborhood could you begin to pray for this week, and what might you say to them?
+
+### Read more on Ochorus
+
+- George Müller, *Answers to Prayer*, especially "Precious Answers to Prayer"
+- Arthur T. Pierson, *George Müller of Bristol*, especially "God's Witness to the Work"
+- Ochorus Originals, *The Key Teachings of Martyn Lloyd-Jones*, especially "Revival"
+
+---
+
+## The Boiler Room
+
+> "Call to Me when trouble comes; I will set you free, and you will give Me glory." (Psalm 50:15)
+
+In the spring of 1854, a young man of nineteen became the pastor of New Park Street Chapel in Southwark, a crowded district of London on the south bank of the river Thames. His name was Charles Haddon Spurgeon. He had grown up in the farming country of eastern England and had been preaching in a village chapel near Cambridge. The London chapel was large and old, with a famous history, but when he first preached there most of its seats were empty.
+
+Yet the few who came knew how to pray. Many years later Spurgeon remembered it in words gathered into his *Autobiography*: "When I came to New Park Street Chapel, it was but a mere handful of people to whom I first preached; yet I can never forget how earnestly they prayed." Sometimes, he said, they pleaded as though they could see the Lord standing among them. More than once the prayer meeting grew so still and solemn that no one spoke for some moments. Then all the young pastor could do was to give the blessing and say, "Dear friends, we have had the Spirit of God here very manifestly to-night; let us go home, and take care not to lose His gracious influences."
+
+"Then down came the blessing," he wrote. Within months the chapel was full, and crowds stood in the street outside. The church borrowed larger halls, and still the people came. Spurgeon always gave the glory to God, but, he added, "I do not forget that He gave me the privilege of ministering from the first to a praying people."
+
+In 1861 the church moved into a great new building, the Metropolitan Tabernacle, which could hold about five thousand people. Beneath the main platform, in the lower part of the building, there was a lecture hall about the size of the old chapel. On one of the first Sunday evenings in the new Tabernacle, Spurgeon told his people what he hoped for. If God sent the fire of His Spirit, he said, "We shall have the lecture-hall beneath this platform crowded at each prayer-meeting." For more than thirty years, until his death in 1892, the people of the Tabernacle gathered to pray on Monday evenings.
+
+### The room below
+
+Today a story is often told about this building. Some visitors, it is said, came to hear the famous preacher. A man met them at the door and offered to show them the church's "boiler room," the room where a building's heating furnace stands. He led them down the stairs and opened a door. Inside, hundreds of people were on their knees, praying for the service above. "This is our boiler room," he said, and then the visitors learned that their guide was Spurgeon himself.
+
+We should be honest about this story. It is told in many forms, and it does not appear in Spurgeon's own books or in the *Autobiography* compiled by his wife and his secretary after his death. The phrase "boiler room" seems to come from later retellings. But the picture behind it is true. Spurgeon really did believe that the power of the pulpit came from the prayers of the people, and he said so often. Speaking to his students, he once put it this way:
+
+> "I have heard ministers say that when they have preached in the Tabernacle, there has been something in the congregation that has had a wonderfully powerful effect upon them. I think it is because we have good prayer meetings, because there is an earnest spirit of prayer among the people, and because so many of them are on the watch for souls."
+> Charles H. Spurgeon, *The Soul-Winner*
+
+At a conference of ministers and students he said that his deacons and elders prayed for him on Sunday mornings before the service, and he urged the pastors to ask their own church officers to do the same. "My officers know what a trembling creature I am," he said. A preacher with a holy people around him, he added, stands on something better than a marble pulpit: "this is a golden pulpit."
+
+### What Spurgeon taught about praying together
+
+Spurgeon called the weekly prayer meeting "the great business evening of the week," and he begged young pastors to keep it alive "whatever else flags." He wanted it to be warm and real. He gently warned against long, showy prayers, and he defended the plain prayers of poor and uneducated believers. Once he heard a poor man pray that God would watch over the young people during a holiday season, "for thou knowest, Lord, how their enemies watch for them as a cat watches for mice." Some laughed at the words, but Spurgeon thought them natural and true.
+
+He also knew that a church's prayer can grow cold when things are going well. In one sermon he reminded the Tabernacle how much God had already done among them: "We have had such results from prayer as might make a man's ears to tingle who should hear of them for the first time." Then he pleaded with them: "Pray, then, without ceasing."
+
+### Call to Me when trouble comes
+
+Spurgeon's own life was not a smooth road. In October 1856, when he was only twenty-two, he was preaching to a huge crowd in the Music Hall of the Royal Surrey Gardens. Someone shouted "Fire!" There was no fire, but in the panic people rushed for the stairs, and seven people were killed. Spurgeon was carried away from the platform in deep shock, and for days he could hardly bear to think about what had happened. Newspapers attacked him cruelly. All through his life he struggled with times of deep sadness, and in his later years with painful illness.
+
+So he knew what Psalm 50 means by "trouble." In a little book of daily promises, he wrote about this very verse:
+
+> "What a mercy to have liberty to call upon God! What wisdom to make good use of it! How foolish to go running about to men! The Lord invites us to lay our case before Him, and surely we will not hesitate to do so."
+> Charles H. Spurgeon, *The Cheque Book of the Bank of Faith*
+
+When illness kept him away from his people, he wrote letters asking them to pray for him, and he urged them to keep praying for the work: "Let the prayer-meetings be better attended than ever." The man who had been upheld by the prayers of a handful at New Park Street was upheld by the prayers of thousands in his later years.
+
+### Three key insights
+
+1. **The strength of a pulpit is often hidden in the people who pray for it.** Spurgeon was one of the greatest preachers of his age, yet he believed that much of his power came from the people on their knees. Every believer who prays for a pastor or teacher shares in that work.
+2. **God listens to the plain prayers of plain believers as gladly as to the prayers of the gifted.** Spurgeon welcomed the simple prayers of the poor and the unlearned. God listens to the heart, not to fine speech, so every believer has a place when the church gathers to pray.
+3. **The day of trouble is the very day God invites us to call on Him.** In Psalm 50 God does not say "call Me when things are going well." Spurgeon learned in grief, sadness and sickness that God's door stands open widest when life is hardest.
+
+### For us today
+
+In many churches today the services are full and the prayer meetings are nearly empty. Spurgeon's story is a gentle call to turn that around. Your pastor may be preaching to a few dozen people in a village in Ghana or to thousands in a city in Brazil. In both places the same thing is true: the sermon is helped or hindered by the prayers of the people.
+
+You do not need to be gifted to take part. A tired mother who prays for her pastor while she cooks, an old man who cannot leave his house but prays each Saturday night for the Sunday service, a student who comes early to church to pray in the back row: all of these are working in the "room below."
+
+And if you are in trouble today, through grief, fear, illness or a disaster you did not cause, God's word to you is not "wait until you feel better." It is "Call to Me."
+
+### Try this
+
+This week, take your place among the people who pray.
+
+- **Pray for your preacher by name.** Before the next service, spend a few minutes asking God to give your pastor or teacher strength, clear words and a soft heart.
+- **Go to the prayer meeting.** If your church has one, attend this week. If it does not, ask a few friends to meet and pray for the next Sunday service.
+- **Pray simply in a group.** If you are shy, pray one short sentence aloud. Remember that Spurgeon loved the plain prayers of plain people.
+- **Turn your trouble into a call.** Write down the trouble that weighs on you most, read Psalm 50:15 over it, and bring it to God each morning.
+
+### A closing prayer
+
+Lord God, You have told us to call to You when trouble comes, and You have promised to set us free. Thank You for Charles Spurgeon, and for the praying people who stood behind him, in a small chapel and in a great Tabernacle. Make me one of those who pray for others. Bless the pastors and teachers of Your church, in every land. Keep our prayer meetings warm and real, and teach us to pray simply and honestly together. And when trouble comes to me, help me not to run about to others first, but to come to You, so that when You deliver me, I may give You glory. In the name of Jesus Christ. Amen.
+
+### Questions for reflection
+
+- Spurgeon said he ministered "from the first to a praying people." Who prays for you, and for whom do you pray?
+- Why do you think prayer meetings are often smaller than other church gatherings? What could change that where you live?
+- Psalm 50:15 says, "Call to Me when trouble comes." What trouble are you most tempted to carry alone instead of bringing to God?
+
+### Read more on Ochorus
+
+- Charles H. Spurgeon, *Mighty Power in Prayer*, especially "The Power of Prayer and the Pleasure of Praise"
+- Charles H. Spurgeon, *The Soul-Winner*, especially "How to Induce Our People to Win Souls"
+- Ochorus Originals, *The Key Teachings of Charles H. Spurgeon*, especially "The Church at Work"
+
+---
+
+## Move Man Through God
+
+> "And my God will fill every need you have, in keeping with His glorious wealth in Christ Jesus." (Philippians 4:19)
+
+On Sunday, 25 June 1865, a tired and troubled man sat in a church in Brighton, a seaside town on the south coast of England. His name was Hudson Taylor. He was thirty-three years old, and he had already spent six years as a missionary in China before illness forced him to come home. He had come to Brighton to rest at the invitation of a friend. But he could not rest.
+
+Around him, more than a thousand Christians were worshiping in comfort. Taylor could not stop thinking of China. Its inland provinces were home to many millions of people, and in eleven of them there was not a single Protestant missionary. For months he had felt that God was asking him to pray for workers for those provinces and to lead them himself. But he was afraid. What if he asked for workers, and they went to China, and their faith failed in the dangers there? Would they blame him? "How inconsistent unbelief always is!" he later wrote of that time. The burden grew so heavy that his health broke down.
+
+That Sunday he could bear it no longer. In his own words, "unable to bear the sight of a congregation of a thousand or more Christian people rejoicing in their own security, while millions were perishing for lack of knowledge, I wandered out on the sands alone, in great spiritual agony." There on the beach, he says, "the Lord conquered my unbelief, and I surrendered myself to God for this service." He told God that the whole responsibility for the results must rest with Him. As God's servant, his own part was to obey and follow. God's part was to direct, to care for and to guide him and all who might go with him.
+
+Peace flowed into his heart at once. Then he prayed a very definite prayer. He asked God for twenty-four fellow workers: two for each of the eleven inland provinces without a missionary, and two for Mongolia. He wrote the request in the margin of the Bible he had with him. Then he went home "with a heart enjoying rest such as it had been a stranger to for months."
+
+Less than a year later, on 26 May 1866, Taylor sailed for China on a ship called the *Lammermuir*, with his wife and children and a party of sixteen new missionaries. A new work had begun. He called it the China Inland Mission.
+
+### Who he was
+
+James Hudson Taylor was born in 1832 in Barnsley, a town in Yorkshire in the north of England. His father was a chemist (a seller of medicines) and a Methodist lay preacher. As a teenager, on an afternoon when his mother was away from home and praying for him, he read a gospel tract and came to faith in Christ. Soon afterwards he became sure that God was calling him to China.
+
+He prepared with great care. He studied medicine and learned what Chinese he could from books. He also set out to train his faith. He wrote later:
+
+> "When I get out to China, I shall have no claim on any one for anything; my only claim will be on God. How important, therefore, to learn before leaving England to move man, through God, by prayer alone."
+> Hudson Taylor, *A Retrospect*
+
+So when he worked as a doctor's assistant in the port city of Hull, he decided not to remind his busy employer when his pay was due, but to ask God to remind him. Days passed. At one point Taylor had only one coin left, a half-crown, and he gave it away to a starving family. God supplied his need, and in time the doctor remembered. These were small tests, but Taylor believed that if he could not trust God for a few shillings in England, he could not trust Him in China.
+
+He sailed for China in 1853. There he chose to wear Chinese clothes and to live as simply as his neighbors, which many other foreigners mocked. He married Maria Dyer, a missionary teacher, in Ningbo in 1858. In 1860, worn out and ill, he returned to England, and it was there that the burden for inland China grew until that Sunday in Brighton.
+
+### Asking God alone
+
+From the start, the new mission followed a simple rule. Taylor wrote that he had "determined never to use personal solicitation, or to make collections." The workers would tell God their needs, and God would move people to give. They would not go into debt, and the mission did not promise any of its workers a salary.
+
+Early in 1866 they needed between fifteen hundred and two thousand pounds for the voyage. On 6 February a daily prayer meeting began, from twelve to one o'clock, to ask God for it. In the five weeks that followed, gifts came in totaling nearly two thousand pounds, before Taylor's printed paper about the need had even gone out. "Truly there is a Living God," he wrote, "and He is the hearer and answerer of prayer."
+
+Twenty-eight years later, when the mission had grown to more than five hundred missionaries, he could look back and say this:
+
+> "But we praise God that during the past twenty-eight years such ministry has always been possible; our God has supplied all our need, and has withheld no good thing."
+> Hudson Taylor, *A Retrospect*
+
+It would not be honest to tell this story as if it were all victory. Foreign missionaries were able to travel inland in China partly because of treaties that Britain and France had forced on China after the wars over the opium trade, and many Chinese people understandably saw the missionaries as part of that foreign power. Taylor himself hated the opium traffic and spoke against it. He also knew great sorrow: a young daughter and then his wife Maria died in China. In the Boxer uprising of 1900, fifty-eight missionaries of the mission and twenty-one of their children were killed, together with many thousands of Chinese Christians. Yet the work went on, and more and more of it passed into the hands of Chinese believers. In the next chapter we will meet one of them, Pastor Hsi.
+
+### Three key insights
+
+1. **Trusting God in small things trains us to trust Him in large ones.** Taylor practiced trusting God for his pay and his dinner before he trusted Him for a mission. Jesus said that someone who is faithful in the smallest matter is faithful in large matters too (Luke 16:10).
+2. **When we give God the weight of a work, we are free to ask Him boldly for what it needs.** Taylor's fear lifted when he gave the responsibility to God. Only then could he pray in peace for twenty-four workers.
+3. **We may ask God for definite things, because He meets every need from His own great wealth.** Paul promised that God would fill every need "in keeping with His glorious wealth." Taylor asked for a number, wrote it down, and lived to see far more than he had asked.
+
+### For us today
+
+We may never lead a mission across a continent. But we all face needs that seem larger than our faith. A widow in Uganda wonders how to pay her children's school fees. A pastor in Peru prays for a building for his growing church. A young believer in a closed country wonders how to find even one Christian friend.
+
+Taylor's story invites us to take two steps. First, give the weight of the matter to God. It is His work and His responsibility. Second, ask Him plainly for what is needed, and then watch for His answer.
+
+His phrase "move man, through God, by prayer alone" does not mean that we must never tell anyone about a need. It means that our first and strongest appeal is to God. He is able to move the hearts of employers, officials, family members and strangers. Proverbs says that even a king's heart is like streams of water in the hand of the LORD (Proverbs 21:1).
+
+### Try this
+
+This week, practice Taylor's school of trust.
+
+- **Trust God in a small thing.** Choose one small need this week, and bring it to God before you mention it to anyone else.
+- **Hand over the weight.** Name the burden that worries you most, and tell God aloud that you give Him the responsibility for the outcome.
+- **Write down a definite request.** Like Taylor in the margin of his Bible, write one specific prayer with the date, and keep it where you will see it.
+- **Pray for a place without a witness.** Choose one people group or region where few know Christ, and ask God to send workers there.
+
+### A closing prayer
+
+Father, You have promised to fill every need we have, in keeping with Your glorious wealth in Christ Jesus. Thank You for Hudson Taylor, who learned to trust You in small things and then trusted You for workers for all of inland China. Forgive me for the fear that keeps me from asking. I give You the weight of the work You have given me, and I ask You plainly for what it needs. Move the hearts of others as You see fit, and send workers into Your harvest in every land. Through Jesus Christ our Lord. Amen.
+
+### Questions for reflection
+
+- What small need could you bring to God this week, to train your trust in Him?
+- Taylor's peace came when he gave God the responsibility for the results. What responsibility are you carrying that belongs to God?
+- Why do you think Taylor chose never to ask people for money? What can we learn from that choice, even if our churches do things differently?
+
+### Read more on Ochorus
+
+- Hudson Taylor, *A Retrospect*, especially "Preparation for Service" and "A New Agency Needed"
+- Ochorus Originals, *The Key Teachings of Hudson Taylor*, especially "Moving Man through God"
+
+---
+
+## Overcomer
+
+> "As for you, dear children, you belong to God, and you have already won the victory over them, because the One in you is greater than the one in the world." (1 John 4:4)
+
+In the autumn of 1879, in the province of Shanxi in northern China, the scholars came home from the great examination in the provincial capital. They brought strange news. At the gate of the examination hall, foreigners in Chinese clothes had handed out packets of Christian books. With the books came a notice: prizes in silver would be given for the best essays on a number of subjects connected with the Christian faith.
+
+In the Western Chang village, near the city of Pingyang, a brother brought the papers to the man everyone knew as the best writer in the family. His name was Hsi (in today's spelling, Xi). He was a Confucian scholar in his early forties, proud, clever and quick-tempered. He was also a slave to opium. Years before, he had begun to smoke it during an illness. Now it ruled his life. The great famine of 1876 to 1879, in which millions in northern China had died, had left his household poor.
+
+Hsi hated foreigners and believed the dark rumors about them. But the silver was real, and to write essays in his own room seemed safe enough. So he studied the Christian books that came with the notice, and wrote his essays, mostly at night when the house was quiet. When the results came out, he had won. He went to Pingyang to collect the prize from the missionary, an English Methodist named David Hill. Hsi went in fear. But when he looked into Hill's face, everything changed. He said years later: "One look, one word, it was enough. As daylight banished darkness, so did Mr. Hill's presence dissipate all the idle rumours I had heard."
+
+Soon Hill asked Hsi to become his Chinese teacher. Hsi agreed, and went to live in the missionary's house. On the table in his room lay a New Testament, which he needed for their lessons. He began to read it for himself, for hours at a time. The life of Jesus grew more and more real to him, and the burden of his own sin grew heavier. At last he knelt on the floor with the book before him and read on with tears. When he came to Jesus praying alone in Gethsemane, he understood that the Savior had suffered for him. There, alone in that room, he gave himself to Christ.
+
+### The battle with opium
+
+At once Hsi knew that the opium must go. He stopped completely, and the struggle that followed was terrible. For about a week, his biographer tells us, he could hardly eat or sleep. His whole body ached, and medicines did not help. He came to believe that behind the craving stood a spiritual enemy who wanted to drag him back. So he fought on his knees. He cried out, as he later recalled: "Devil, what can you do against me? My life is in the hand of God. And truly I am willing to break off opium and die, but not willing to continue in sin and live!"
+
+Then he read in his Bible about the Holy Spirit, the Helper whom Jesus promised. He asked God for the Spirit's help, and peace came. "He did what man and medicine could not do," he said. He never smoked opium again.
+
+Soon afterwards he chose a new name. Chinese scholars often took an elegant literary name. Hsi chose two characters, Shengmo, which his biographer translates as "Conqueror of Demons." It was not a boast. It was his confession that the One who lived in him was stronger than the power that had enslaved him.
+
+### Where the story comes from
+
+Our main sources are two books by Mrs. Howard Taylor (Geraldine Guinness), a missionary of the China Inland Mission and the daughter-in-law of Hudson Taylor, whom we met in the last chapter. *One of China's Scholars* (1900) tells of Hsi's early life and conversion, and *Pastor Hsi* (1903) tells of his ministry. She used Hsi's own written accounts and the memories of his co-workers. Her books sometimes speak of the Chinese in ways that sound proud today, but they also show how much the missionaries came to honor him. Dixon Hoste, who worked beside him for ten years and later led the China Inland Mission, wrote that a Chinese fellow worker "may nevertheless, in other important particulars, be his spiritual superior."
+
+### A leader on his knees
+
+Hsi's home became a place of worship, and his wife, after a long and painful struggle of her own, became his partner in faith and work. His biographer tells how she suffered from fits of terror and rage that their neighbors believed were caused by evil spirits. Hsi called his household to fast and pray for three days, then laid his hands on her in the name of Jesus, and she was set free. From then on she worked beside him, helped him make his medicines, and in time opened refuges for women.
+
+Hsi knew what opium did to families, so he opened opium refuges: homes where addicts could stay while they broke the habit, receive medicine and care, and hear about Christ. They were his own work, run by Chinese Christians. He never accepted a salary, even from the mission he worked with, and the refuges had to pay their own way. He often fasted as he prayed over the work. Once, still fasting, he made up a new medicine that he believed God had shown him, and it worked. At the end of a long day with the patients, when he could hardly stand, he would step aside for a few minutes and pray, "Lord, it is Thy work. Give me Thy strength." In time his refuges spread through southern Shanxi and into the neighboring provinces, and many churches grew out of them. He also wrote dozens of hymns in the language of his own hills, which the Christians of Shanxi loved to sing.
+
+In 1886, at a conference in the city of Hongtong attended by Hudson Taylor, the missionaries and Chinese leaders of the region asked Hsi to become superintending pastor of all the churches in three districts. He refused at first. "Full of weakness and failings myself," he said, "how should I assume oversight of all the churches?" He gave himself to prayer and fasting, and at last accepted, because God had already been using him in that work for years.
+
+He was not a perfect man. Those who loved him admitted that by nature he liked to rule alone, and that he could be hard to work with. But they also said that his temper softened as the years went by. When he died on 19 February 1896, hundreds wept for him as for a father. Through her tears his wife said that she thought of Jesus, "and He is enough."
+
+A writer of Hsi's own century put the secret of his life well:
+
+> "The secret of victory is to recognize the Conqueror within and the adversary as a conquered foe. John does not say we shall overcome, but he says we have overcome them, because He that is in us is 'greater than he that is in the world.'"
+> A. B. Simpson, *The Holy Spirit, or Power from on High*
+
+### Three key insights
+
+1. **In our hardest battles we stand in the strength of the One who lives in us, not in our own.** Hsi could not break opium by willpower or medicine. He overcame because Christ in him was greater, just as John promised.
+2. **Those whom God has set free can become His instruments to set others free.** Hsi knew the chains of addiction from the inside, so he spent his life opening doors of freedom for others, with prayer as the first medicine.
+3. **A true leader in God's church serves first on his knees.** Hsi was gifted and strong-willed, yet he met every burden with prayer and fasting and accepted leadership only with a sense of his own weakness.
+
+### For us today
+
+Opium no longer rules China as it did then, but many people today are still in chains: to alcohol, drugs, gambling, pornography or anger. In some places families have been broken by addiction for generations. Hsi's story says that no chain is stronger than Christ.
+
+It also says something to churches everywhere. Hsi was not a helper standing behind a foreign missionary. He was a Chinese believer who heard God's call, led his own people and built a work that missionaries joined and learned from. Today most Christians live in Africa, Asia and Latin America, and many of the church's strongest leaders come from there. God raises up overcomers in every nation.
+
+And to anyone who feels too weak to serve, it says: Hsi's strength was never his own either.
+
+### Try this
+
+This week, let Pastor Hsi teach you to overcome on your knees.
+
+- **Name your chain.** Tell God honestly about one habit or fear that has power over you, and read 1 John 4:4 aloud over it.
+- **Ask for the Spirit's help.** Like Hsi, ask God plainly for His Holy Spirit to give you the strength you do not have (Luke 11:13).
+- **Pray for someone who is bound.** Pray daily for one person trapped by addiction, and ask God how you might help them practically.
+- **Pray for leaders from every nation.** Pray for Christian leaders in China and in your own country, that they may serve first on their knees.
+
+### A closing prayer
+
+Lord Jesus, You are greater than every power in the world. Thank You for Your servant Hsi Shengmo, who was set free from opium and spent his life setting others free. Where I am bound, set me free. Where I am weak, fill me with Your Holy Spirit. Make me humble when I lead and faithful when I serve. Bless the churches of China and all who struggle with addiction today. Raise up overcomers in every nation, who will bring others to You. In Your name, the Name above every name. Amen.
+
+### Questions for reflection
+
+- Hsi said the Holy Spirit "did what man and medicine could not do." Where do you most need that kind of help today?
+- Why do you think Hsi chose a name that spoke of victory rather than an elegant literary name?
+- How can your church honor and learn from believers whose culture and background are different from your own?
+
+### Read more on Ochorus
+
+- A. B. Simpson, *The Holy Spirit, or Power from on High*, especially "The Holy Spirit in the First Epistle of John"
+- Ochorus Originals, *Portraits of Courage – C. T. Studd*, especially "In Chinese Dress"
+- Hudson Taylor, *A Retrospect*, especially "The Mission in 1894"
+
+---
+
+## The Bedridden Woman Who Prayed
+
+> "Jesus said to him, 'If you can!' All things are possible for the one who believes." (Mark 9:23)
+
+In June 1872 an American named Dwight L. Moody crossed the Atlantic to London. He was thirty-five years old, a former shoe salesman from Chicago with very little schooling. The autumn before, the great Chicago fire had burned his church to the ground. He did not come to England to preach. He came to listen and to learn more of the Bible from English teachers.
+
+One day, after a prayer meeting in the Old Bailey, in the heart of London, a minister named Mr. Lessey asked him to preach the next Sunday at his church in the north of London. Moody agreed.
+
+The morning service was, in his son's words, "very dead and cold." The people showed little interest. Moody felt the morning had been lost. But at the evening service, at half past six, everything was different. While he preached, a hush came over the people. They listened as if every word mattered. Moody could not understand it.
+
+At the end he asked all who wanted to become Christians to stand, so that he could pray for them. People rose all over the building. Moody thought they had misunderstood him. So he put the test again and asked those who truly wanted to follow Christ to go into the inquiry room, a side room where people could talk and pray with a Christian. So many went in that extra chairs had to be carried in. The minister was amazed, and so was Moody.
+
+The next day Moody left for Dublin. On Tuesday morning a message reached him: come back, there were even more inquirers on Monday night than on Sunday. He returned and held meetings for ten days. According to his son, four hundred people were received into that church.
+
+Only later did Moody learn what had been happening behind the scenes. In that church there were two sisters. One was strong. The other was bedridden. One day, as the sick woman was sorrowing over her condition, the thought came to her that she could at least pray. She began to ask God to revive her church, day and night. Then she read in a newspaper about Moody's meetings in America. She had never met him, but she began to pray that God would send him to her church.
+
+On that Sunday her sister came home and asked, "Whom do you think preached this morning?" When she heard that it was Mr. Moody from America, the sick woman cried out, "I know what that means," and then, "God has heard my prayers!"
+
+This is how Moody's son, William R. Moody, told the story in *The Life of Dwight L. Moody* (1900). It is the earliest full account we have, and it gives the woman no name. Later retellings call her Marianne Adlard and add other details, such as her spending the whole afternoon in prayer while Moody preached that evening. The church is usually said to have been in Arundel Square, in Barnsbury. These details may be true, but they come from later tellings, and we cannot check them.
+
+### Who he was
+
+Dwight Lyman Moody was born in 1837 in Northfield, Massachusetts. His father died when he was four, and his mother raised nine children in poverty. As a young man he sold shoes in Boston, where a Sunday school teacher led him to Christ. He moved to Chicago, started a Sunday school for poor children, and later a church.
+
+By 1871 he was busy and successful. But two women in his meetings kept telling him, "We have been praying for you." When he asked why they did not pray for the people instead, they answered, "Because you need the power of the Spirit." Their words troubled him. After the fire, while he was in New York raising money, he said later, "I was crying all the time that God would fill me with His Spirit." Then one day God met him in a way he would hardly speak of. He told his son, "God revealed Himself to me, and I had such an experience of His love that I had to ask Him to stay His hand."
+
+So when Moody stood in that London pulpit, he was a man who had been prayed for. And he was being prayed for again.
+
+### The secret of that evening
+
+His son called the sick woman's prayer "perhaps, the secret" of that Sunday night. Moody himself believed that the revival in that church carried him back to Britain in 1873. With the singer Ira Sankey he spent two years preaching in Scotland, Ireland and England, and crowds of thousands came to hear the gospel.
+
+R. A. Torrey, who later led the Bible institute Moody founded in Chicago, looked back on it this way:
+
+> "Mr. Moody's wonderful work in England and Scotland and Ireland that afterwards spread to America had its origin on the manward side in prayer. Mr. Moody made little impression until men and women began to cry to God. Indeed his going to England at all was in answer to the importunate cries to God of a bed-ridden saint."
+> R. A. Torrey, *How to Pray*
+
+"Importunate" means asking again and again, without giving up.
+
+Jesus once met a father whose son was tormented. The father begged, "If you are able to do anything at all, help us." Jesus answered, "'If you can!' All things are possible for the one who believes" (Mark 9:22-23). The woman in London could do almost nothing. She could not walk to church. She could not visit the sick or teach a class. But she could believe, and she could pray.
+
+Moody himself often told stories of hidden people whose prayers reached far away. He once met a soldier in America who had been brought to tears by a letter from his sister, who prayed for him every night:
+
+> "That sister was six hundred miles away, but she had brought her brother to his knees in answer to her earnest, believing prayer."
+> D. L. Moody, *Prevailing Prayer*
+
+### Three key insights
+
+1. **A believer who can do nothing else can still pray, and that prayer can reach farther than any journey.** The sick woman could not leave her bed. Yet her prayers reached across an ocean to a man she had never met, and brought him to her church.
+2. **God often prepares a great work through people the world never notices.** Crowds saw Moody preach. Almost no one saw the woman on her bed at home. Yet those who told the story were sure that the blessing began with her prayers.
+3. **Specific, believing prayer honors God's promise that all things are possible for the one who believes.** She did not only pray for "a blessing." She asked God to revive her church and to send this preacher. When the news came, she recognized the answer at once.
+
+### For us today
+
+Some believers cannot do what they once did. Some are old. Some are sick, or disabled, or caring for a sick child at home. In many parts of the world, believers are in hospital beds, refugee camps or prisons. Some live where it is not safe to meet openly with other Christians. It is easy for them to feel useless.
+
+This story says the opposite. The bedridden woman was not on the edge of God's work. She was near its center. If you are confined, your room can become a place of prayer for your church, your city and preachers you will never meet. A grandmother in a village in Malawi, a man who cannot walk in Manila, a mother with sick children in a crowded flat in Cairo: each one can ask God for great things.
+
+And if you are strong and busy, this story asks you a question. Who is praying for you? Visit the sick and the old in your church. Tell them what you need. Ask them to pray, and then tell them when God answers.
+
+### Try this
+
+This week, learn from the woman who prayed from her bed.
+
+- **Pray for a meeting you will never attend.** Choose a church or mission far from you, perhaps one you have only read about, and pray for its next service every day this week.
+- **Pray for your own church.** Ask God plainly to bring new life to your congregation, as she did for hers.
+- **Visit someone who is confined.** Go to a sick or elderly believer, share your prayer needs, and ask them to pray with you.
+- **Watch for the answer.** Write down what you ask, and when you hear news, thank God as she did.
+
+### A closing prayer
+
+Lord Jesus, You told a desperate father that all things are possible for the one who believes. Thank You for the woman in London who could not leave her bed, but who prayed until You sent Your servant to her church. Thank You for every hidden believer who prays for others. When I feel weak or useless, remind me that I can still pray. Give me faith to ask for specific things, and patience to wait for Your answer. Bless the sick, the old and the shut-in in my church, and let their prayers bear much fruit. And when I am strong and busy, keep me humble, remembering how much I owe to the prayers of others. In Your name. Amen.
+
+### Questions for reflection
+
+- The bedridden woman thought, "I can at least pray." When have you felt that you could do nothing? How could prayer change that?
+- What could a believer who is sick, old or shut in do for your church this week, and how could you help them do it?
+- Who has prayed for you over the years? How might you thank them, or pray for others in the same way?
+
+### Read more on Ochorus
+
+- R. A. Torrey, *How to Pray*, especially "The Place of Prayer Before and During Revivals"
+- D. L. Moody, *Prevailing Prayer*, especially "Answered Prayers"
+- Ochorus Originals, *The Key Teachings of Dwight L. Moody*, especially "Power from on High"
+
+---
+
+## Knee Drill
+
+> "The Spirit of the Lord GOD rests on me, for the LORD has anointed me to carry good news to the lowly. He has sent me to bandage hearts that are broken, to announce freedom for captives and, for those in chains, eyes opened wide." (Isaiah 61:1)
+
+It is early on a Sunday morning in the 1880s, somewhere in the north of Britain. The streets are still quiet, and the working people of the town are asleep after a long week. But one man is already out, carrying a long pole. He walks from house to house and taps on the upstairs windows.
+
+He is a soldier of the Salvation Army, and he is waking his comrades for knee drill.
+
+We know about him from a single sentence. George Scott Railton, one of the Army's first leaders, wrote in 1889 that in "the far North" a soldier was found "waking up 140 of his comrades early on Sunday morning for knee-drill by tapping on their windows with a long pole." Railton gives us no name and no town. But we know what the soldiers were getting up for. Before the Sunday meetings, before the marches and the preaching in the open air, they gathered in their hall and knelt down together to pray.
+
+The Army had borrowed its words from the soldiers of Queen Victoria. Its halls were "barracks." Its members were "soldiers," and its leader was "the General." Holding up your hand in a meeting was "fixing bayonets," and shouting "Amen" all together was "firing a volley." And its prayer meeting was "knee drill."
+
+Some Christians thought this language foolish or even irreverent. When a friend wrote to Catherine Booth to object, she explained it in a letter that her son-in-law later printed in her *Life*. "'Knee-drill' is only another name for prayer-meeting," she wrote. In fact, she said, the name was "far more expressive of the purpose of a prayer-meeting, for surely that should be to get armed with the whole armour of God and qualified to endure hardness as good soldiers of Jesus Christ."
+
+A drill is the daily practice that soldiers repeat until it becomes part of them. The Army wanted prayer to be like that: not a special event, but the regular, early, ordinary work of every soldier.
+
+### Who they were
+
+William Booth was born in 1829 near Nottingham, in the English Midlands. His family became poor, and at thirteen he was sent to work for a pawnbroker, a man who lent small sums of money to the poor in exchange for their goods. There he saw hunger and debt up close. At about fifteen he gave his life to Christ, and soon he was preaching in the streets.
+
+Catherine Mumford was born the same year in Derbyshire. She was often ill as a girl and spent long months in bed, reading her Bible and serious books. She married William in 1855. At first she was shy of speaking in public. But in 1860, in a chapel in Gateshead, she stood up and asked to say a word. From then on she was one of the most powerful preachers in Britain, and she defended the right of women to preach the gospel.
+
+In 1865 the Booths began a mission in a tent in the East End of London, among dockworkers, drunkards and the very poor. It was called the Christian Mission. In 1878 it became the Salvation Army. Within a few years its soldiers were marching in the streets of Britain, America, India, Australia and South Africa, with brass bands, flags and songs.
+
+### Prayer as daily drill
+
+Isaiah 61:1 was the Army's work in one picture: good news for the lowly, healing for broken hearts, freedom for captives. Jesus read these words in the synagogue at Nazareth and said they were fulfilled in Him (Luke 4:18-21). The Booths believed that the drunkard in the gutter and the girl trapped in the streets could still be set free by Christ. But they knew that such freedom does not come by human effort. It comes from God, and so it must be asked for.
+
+In 1890 William Booth published *In Darkest England and the Way Out*, a plan to help the hungry and the homeless with shelters, work and training. Even there, in a book about food and jobs, he put prayer first:
+
+> "We have trained our soldiers to the saving of souls, we have taught them Knee-drill, we have instructed them in the art and mystery of dealing with the consciences and hearts of men; and that will ever continue the main business of their lives."
+> William Booth, *In Darkest England and the Way Out*
+
+In another book, written for his own soldiers, he gave them plain advice: "You must pray, and I strongly urge you to pray at stated hours and for given periods."
+
+Catherine was even more searching. In a sermon on the conditions of effectual prayer, she confessed a regret from her own youth:
+
+> "It was one of the things in which I grieved the Spirit of God in my early days that I would not let Him, to the extent He would have done, make me a woman of prayer; and yet, in comparison with many, perhaps, I was one."
+> Catherine Booth, *Godliness*
+
+She had seen prayer do what preaching could not. In rough halls and theaters, she said, she had watched noisy crowds grow quiet when a little woman stretched out her hands and prayed:
+
+> "I believe that more souls are convinced in real prayer than in speaking. I have noticed this many times."
+> Catherine Booth, *Godliness*
+
+### Honest about the Army
+
+The Army was not loved by everyone. In some towns, gangs calling themselves the "Skeleton Army" attacked its marches, and many soldiers, women among them, were beaten or pelted with stones. Some clergy thought the drums and flags made the gospel cheap. Others were troubled when the Army stopped holding baptism and the Lord's Supper in 1883. Thoughtful critics, among them the scientist Thomas Huxley, warned that the General held too much power. The Army's methods were often loud, and its leaders made mistakes.
+
+But even its critics saw its fruit. Drunkards became sober. Families were fed. Women were given work and dignity. And all of it began, again and again, with ordinary people on their knees early in the morning. Catherine died of cancer in 1890. William died in 1912. Their army still prays in more than a hundred countries.
+
+### Three key insights
+
+1. **Prayer grows strong through daily practice, as a soldier grows strong through daily drill.** The Army did not wait for people to feel like praying. It gathered them at set times, early, and let prayer become a habit of the whole body.
+2. **The gospel sets captives free, and prayer comes before every rescue.** Isaiah promised freedom for those in chains. The Booths fed and housed the poor, but they knew only God could break the chains of sin, so they asked Him first.
+3. **Real prayer can reach hearts that sermons do not.** Catherine Booth had seen rough crowds fall silent and turn to God while someone prayed. Prayer is not only preparation for the work; it is part of the work.
+
+### For us today
+
+Knee drill was the prayer meeting of factory workers, maids and miners. It was not for the educated or the comfortable. It was for people with very little time, who had to rise early to pray at all.
+
+Many believers today live like that. A market woman in Accra, a bus driver in Lima, a nurse working night shifts in Mumbai, a farmer in Myanmar: each has a long day and little rest. The Army's way says that an early half hour, kept faithfully, can carry a whole week. In places where believers must pray quietly or in secret, the same is true. A small group that kneels together, even in a home, is a real army in God's eyes.
+
+It also says that prayer and practical love belong together. The Army prayed, and then it opened soup kitchens and shelters. We cannot pray for the poor and ignore them.
+
+### Try this
+
+This week, try your own knee drill.
+
+- **Choose a set time.** Pick one time of day, and keep it every day this week, as a soldier keeps drill.
+- **Kneel if you can.** Let your body share in your prayer. If you cannot kneel, sit or stand quietly and give God your full attention.
+- **Gather a few others.** Ask one or two friends or family members to join you once this week, perhaps on Sunday morning before worship.
+- **Pray Isaiah 61:1.** Name the broken-hearted and the captives you know, and ask God to set them free. Then do one practical thing for one of them.
+
+### A closing prayer
+
+Lord God, Your Spirit anointed Jesus to bring good news to the lowly and freedom to captives. Thank You for William and Catherine Booth, and for every soldier who rose in the dark to kneel and pray before the day's battle. Forgive me for the times I have waited until I felt like praying. Train me to pray as a soldier trains, day by day, until prayer is part of me. Make me a person of prayer, as Catherine longed to be. Bind up broken hearts through my prayers, and use my hands to serve the poor. Set the captives free, for the sake of Jesus Christ, my Savior and King. Amen.
+
+### Questions for reflection
+
+- Catherine Booth called knee drill a way to be "armed with the whole armour of God." What battles do you face that make prayer necessary each day?
+- Why do you think the Army insisted on early, regular prayer, rather than prayer only when people felt the need?
+- Who are the "captives" in your town or city? How might your prayer for them lead to action?
+
+### Read more on Ochorus
+
+- Catherine Booth, *Godliness*, especially "Conditions of Effectual Prayer"
+- William Booth, *In Darkest England and the Way Out*, especially "A Practical Conclusion"
+- Ochorus Originals, *The Key Teachings of Catherine Booth*, especially "The Conditions of Effectual Prayer"
+
+---
+
+## Trust Without Fear
+
+> "Trust the LORD with your whole heart, and do not rely on your own insight. Keep Him in mind in everything you do, and He will clear a straight road ahead of you." (Proverbs 3:5-6)
+
+In the spring of 1878 Amanda Smith was resting in a small room at Ocean Grove, a Methodist camp meeting town on the coast of New Jersey. She was forty-one years old, a Black evangelist who had once been a washerwoman. For eight years she had traveled from one camp meeting to another, preaching and singing. Now she was tired. A friend, Miss Price, had invited her to come to England and had offered to pay her way. Amanda had prayed about it, and she believed God wanted her to go.
+
+But from her window she could see the great ocean and hear the waves rolling in. "I trembled," she wrote. She began to give herself good reasons to stay. She needed rest. How could she leave her daughter Mazie? England was three thousand miles away. So she wrote to Miss Price and said no.
+
+That evening, at home, a great darkness came over her. She locked the doors, turned the lamp down low and knelt. "Now, Lord," she prayed, "I don't know the cause of this darkness, and I must know before I sleep." She went through every conversation and every place she had preached, and found nothing wrong. She lay on the floor and wept. Then she knelt by a chair and said she would be still. After a few moments, she wrote, it was as though someone stood at her right side and said: "You are going about telling people to trust the Lord in the dark, to trust Him when they can't see Him." And then:
+
+> "And clear and distinct came these words, 'You are afraid to trust the Lord and go to England, you are afraid of the ocean.' My! it took my breath, but I said, 'Lord, that is the truth, the real truth.'"
+> Amanda Smith, *Amanda Smith: An Autobiography*
+
+She remembered how faithful God had been, "answering my prayer a thousand times," and she was ashamed. She asked God to forgive her and to give her another chance. She promised that if He did, she would go, even alone. Then her fears came at her one by one. She pictured a shipwreck. She pictured her daughter falling sick while she was far away. She pictured her brothers and sisters dying while she was across the sea. Each time she said, "Lord, help me." At last she gave her child to God, and a flood of peace came.
+
+Some weeks later, in the summer of 1878, she went on board the steamer *Ohio* at Philadelphia, a colored woman traveling alone among wealthy passengers. They asked her question after question. Why was she going? Who would meet her? So she went to her cabin, knelt, and asked the Lord to stop their questions. "Not a soul from that hour," she wrote, "asked me any more questions, not one the whole voyage." Before the crossing was over, the captain asked her to lead the Sunday service, and the same passengers thanked her for her prayer.
+
+She had planned to be gone three months. "Instead of getting back in three months, as I had thought and planned," she wrote, "I was away for over twelve years."
+
+### Who she was
+
+Amanda Berry was born a slave at Long Green, Maryland, on 23 January 1837. Her father, Samuel Berry, was allowed to buy his own freedom. He made brooms and mats at night after his day's work, and walked miles to work in the harvest fields until one or two in the morning. Then he bought his wife and children. Amanda's mother always said that they owed their freedom to the prayers of Amanda's grandmother, who "had often prayed that God would open a way so that her grandchildren might be free." The family moved to Pennsylvania, where, Amanda says, their house was one of the main stations of the Underground Railroad, the secret network that helped people escape from slavery.
+
+Amanda had little schooling. She worked as a cook and a servant, and later took in washing and ironing. She tells of standing at her washtub all night, from six in the morning to six the next morning. She married twice, and both marriages brought sorrow. By the time she was thirty-two she had lost four of her five children; only her daughter Mazie lived to grow up. She knew poverty, grief and hard work.
+
+In 1856, sitting by her ironing table, she found peace with God. In September 1868, at Green Street Methodist Church in New York, she heard John Inskip preach on a full and holy life, and she gave herself completely to God. She had always felt, she says, a deep fear of white people simply because they were white. That morning at Green Street, she heard in her heart the words, "There is neither Jew nor Greek ... for ye are all one in Christ Jesus." Looking at white people afterward, she wrote, "The great mountain had become a mole-hill."
+
+### Praying against fear
+
+Fear did not leave her all at once. For a while she was afraid of a new pastor who opposed her teaching, and afraid to speak plainly about what God had done for her. So she set a day apart to fast and pray. Her Bible opened at the words "Perfect love casteth out fear," and she prayed:
+
+> "Oh! Lord, take all the man-fearing spirit out of me. I thank Thee for what Thou hast done for me, but deliver me from fear. Take all the woman-fearing spirit out of me, and give me complete victory over this fear."
+> Amanda Smith, *Amanda Smith: An Autobiography*
+
+"Love has no room for fear," John writes, "complete love throws fear out" (1 John 4:18). Amanda did not pretend she was brave. She named her fear and asked God to take it.
+
+That trust carried her through England and Scotland, and then to India, where she preached for about a year and a half. James Thoburn, a Methodist missionary in Calcutta, later a bishop, never forgot an open-air meeting in the heart of that city. A crowd that had just broken up another preacher's meeting came rushing toward them with loud cries:
+
+> "If left to myself I should have tried to gain the box on which the speakers stood, in order to command the crowd, but at the critical moment, our good Sister Smith knelt on the grass and began to pray."
+> J. M. Thoburn, in Amanda Smith, *Amanda Smith: An Autobiography*
+
+The crowd, he wrote, stood still and silent, and the meeting went on in order.
+
+From India she went to West Africa, where she spent eight years in Liberia and nearby lands, teaching, preaching, holding temperance meetings and caring for children. When she returned to America in 1890, she wrote her life story. In 1899 she opened a home for Black orphan children near Chicago. She died in Florida in 1915.
+
+### Three key insights
+
+1. **Trusting God sometimes means admitting the fear we have hidden from ourselves.** Amanda had good reasons for staying home, but under them was a fear of the ocean. God brought it into the light so that she could give it to Him.
+2. **We cannot ask others to trust God in the dark if we will not do it ourselves.** The word that broke her heart was simple: she was telling others to do what she was unwilling to do. Prayer often begins with honesty about ourselves.
+3. **Prayer is the first answer to fear, whether the danger is a stormy sea, a cruel crowd or a cold glance.** Amanda prayed in her cabin, on her knees on the grass in Calcutta, and on the floor at home. Each time, she brought her fear to God before she acted.
+
+### For us today
+
+Many readers know fears much greater than an ocean voyage. Some live where violence breaks out without warning. Some have been treated as less than others because of their skin, their tribe or their caste. Some are called to move to a new city or country, alone, to work or to serve God. Amanda Smith was a woman, Black and poor, in a world that respected none of these. Yet she preached on four continents.
+
+Her secret was not that she was never afraid. It was that she took her fears to God, one by one, and then obeyed. Proverbs tells us not to rely on our own insight. Our own reasoning often sounds wise when it is really fear in disguise. "I need rest." "It costs too much." "Who will look after my family?" These may be real concerns. But we must bring them to God and let Him clear the road.
+
+### Try this
+
+This week, practice trusting God with your fears.
+
+- **Name your fear.** Ask God, as Amanda did, to show you what you are afraid of. Write it down.
+- **Pray her prayer.** Use her words: "Deliver me from fear." Pray them each morning for the thing you named.
+- **Take one step.** Do one thing this week that fear has kept you from doing, and ask God to go with you.
+
+### A closing prayer
+
+Lord God, You tell us to trust You with our whole heart and not to rely on our own understanding. Thank You for Your servant Amanda Smith, born a slave, who learned to trust You on the sea, in the crowds of Calcutta and in the heat of Africa. Show me the fears I have hidden behind good reasons. Take all the fear of people out of me, and give me complete victory over fear. When I tell others to trust You in the dark, help me to do it first. Keep me mindful of You in all I do, and clear a straight road before me. In the name of Jesus Christ, whose perfect love casts out fear. Amen.
+
+### Questions for reflection
+
+- Amanda Smith's reasons for staying home sounded sensible. How can we tell the difference between wisdom and fear in disguise?
+- Is there something you encourage others to trust God for that you find hard to trust Him for yourself?
+- What fear would you most like God to take away? What might change in your life if He did?
+
+### Read more on Ochorus
+
+- Amanda Berry Smith, *Amanda Smith: An Autobiography*, especially "The Call to Go to England" and "His Presence and My Obedience"
+- Ochorus Originals, *The Key Teachings of Amanda Berry Smith*, especially "Neither Bond nor Free"
+
+---
+
+## A Bishop on His Knees
+
+> "May his rule stretch from sea to sea, from the River to the far ends of the earth." (Psalm 72:8)
+
+On 3 November 1854 a small steamer called the *Pleiad* dropped anchor off Agberi, a village in the swampy delta of the river Niger, in what is now southern Nigeria. It was coming home from four months on the Niger and its branch, the Binue. On board was a Yoruba clergyman of about forty-seven named Samuel Crowther. He kept a careful journal of the voyage, and it was printed in London the next year.
+
+At Agberi the crew bought firewood for the ship's engine. While the wood was being loaded, Crowther spoke with one of the village's two headmen, a younger man named Agbekun.
+
+Agbekun had just come home from a long journey. He had no children, and he had gone a long way, to Aro, to ask the great god of the Igbo people, Tshuku, about his childlessness. He had gone through many ceremonies and made many sacrifices. He had never seen the god himself; all his questions had gone through the priests. Now he showed Crowther three small images of guardian spirits that he had brought back.
+
+Crowther wrote:
+
+> "This gave me the opportunity of speaking to him about the true God, to whom I endeavoured to turn his attention to look for blessings, both temporal and spiritual. He wanted to know how to pray to the Great God, whom he knew to be greater than Tshuku."
+> Samuel Ajayi Crowther, *Journal of an Expedition up the Niger*
+
+Crowther's answer was simple. He told Agbekun to pray just as a little child would ask his father for what he needs. Agbekun did not need a priest or a long journey to reach the true God. Jesus taught the same: "how much more will your Father in heaven give good things to those who ask Him!" (Matthew 7:11).
+
+Agbekun said that there was no hatred in the white man's country as there was in the Black man's country. Crowther answered by pointing to the men beside him: himself, a Yoruba by birth, Simon Jonas, an Igbo, and Dr. William Baikie, the British leader of the expedition. Though they came from different nations, he said, they lived together as brothers, because their God teaches all people to love one another.
+
+A few days later the *Pleiad* crossed the bar into the open sea. The expedition had lasted sixteen weeks, and not one person had died, a rare thing on that river, where fever had killed many Europeans before. Crowther closed his journal with a prayer:
+
+> "May this singular instance of God's favour and protection drive us nearer to the throne of grace, to humble ourselves before our God, whose instruments we are, and who can continue or dispense with our services, as it seems good to His unerring wisdom."
+> Samuel Ajayi Crowther, *Journal of an Expedition up the Niger*
+
+### Who he was
+
+He was born in the Yoruba town of Osogun, probably in 1807 (some accounts say 1809), and named Ajayi. In 1821, when he was a boy, raiders burned his town and carried him off with his mother and sisters. He was sold several times and at last put on a Portuguese slave ship at Lagos. In April 1822 a British navy ship stopped it, and he was taken to Sierra Leone as a free boy.
+
+There he learned to read, came to faith in Christ, and was baptized as Samuel Crowther. Years later he wrote of the day he was captured: "Thus the day of my captivity was to me a blessed day." He did not forget the grief of losing his family. But he saw that God had brought good out of evil, as Joseph once said to his brothers (Genesis 50:20).
+
+He became a teacher, then a clergyman, ordained in London in 1843. In 1846, at Abeokuta, he found his mother again after twenty-five years, and she too came to faith. For many years, working with others, he helped to translate the Bible and the Prayer Book into Yoruba, and he wrote down several other languages of the Niger. On 29 June 1864, in Canterbury Cathedral, he was consecrated bishop for the lands along the Niger, the first African bishop of his church.
+
+### How he prayed
+
+Crowther prayed in the ordinary Anglican way of his day: morning and evening prayer from the Prayer Book, family prayers and the Psalms. But he also prayed short, quick prayers in times of danger. Once, when he feared that a powerful king was about to order the mission out of Lokoja, he wrote that "the silent ejaculation of Nehemiah before Artaxerxes" (an old phrase for a short, silent prayer) was "most applicable in my case, and was frequently offered." He meant the moment when the king of Persia asked Nehemiah what he wanted, and Nehemiah "prayed to the God of heaven" before he answered (Nehemiah 2:4). To Crowther's surprise, the king himself suggested that the mission should stay. "This is an instance of an answer to prayer," he wrote.
+
+In 1883, writing to his fellow workers, he told them of "two timid requests in prayer to the God of missions." The first was like the prayer of Caleb, the old soldier of Israel who asked Joshua for the hill country God had promised him (Joshua 14:12). "The mountain prayed for to be given," Crowther wrote, "is the countries of the Niger territory." The second was that every mission station might have a good, solid church before he was laid aside. He was asking that the rule of Christ would stretch along the River, as the psalm says, to the far ends of the earth.
+
+### The hardest years
+
+The last years of his life were full of sorrow. The Niger Mission was huge, and Crowther was one man, often without a boat. Some of the African agents he had appointed were unworthy, and a few did real wrong. He was gentle by nature and slow to dismiss men he had trained. His critics in England said he was too lenient, and they were not entirely wrong.
+
+But in 1890 a group of young English missionaries, earnest and self-denying but new to Africa, went much further. At a meeting at Onitsha they suspended African workers from the mission's service. According to historians who have studied the society's records, these included clergy whom Crowther had ordained, suspended in his presence, and among them was his own son, Archdeacon Dandeson Crowther. The old bishop withdrew from the committee. He was not removed as bishop, but his authority was broken. Eugene Stock, the historian of the missionary society that sent them, wrote in 1899: "They were, indeed, too severe." He believed the young men had served God in their way. But their harshness, and the low opinion of Africans behind it, did lasting harm.
+
+Crowther did not leave his church, and he did not curse the men who had wronged him. The churches of the Niger Delta answered by paying for their own pastors. He supported their plan. He had a stroke in 1891 and died in Lagos on the last day of that year.
+
+### Three key insights
+
+1. **Anyone may come to God as a child comes to a father, without priest, journey or sacrifice.** Agbekun had traveled for months to reach a god he never saw. Crowther told him that the true God hears the simplest prayer of His children.
+2. **A wide prayer for the nations can be prayed by a humble heart.** Crowther asked God for the whole Niger country, like Caleb asking for his mountain. Yet he called his requests "timid" and feared they might be selfish.
+3. **A servant who knows he is only God's instrument can bear being set aside without bitterness.** Years before his trials, Crowther prayed that God would use or "dispense with our services" as He saw fit. When fellow Christians humiliated him, he grieved, but he did not curse them, and the churches he planted grew strong.
+
+### For us today
+
+Crowther's story belongs to Africa first. Today there are millions of Anglicans in Nigeria, and many more believers of every church across West Africa. Many trace their story back to the work he began on the river. African Christians never needed anyone's permission to lead, translate, pray or send missionaries.
+
+His story also speaks to every church where one group of believers looks down on another, by race, tribe, nation or education. The young missionaries meant well, but they did not respect an old African bishop who had served God for fifty years. We can make the same mistake.
+
+And it speaks to anyone who has been wronged inside the church. Crowther's way was to keep praying, to keep working, and to trust "His unerring wisdom."
+
+### Try this
+
+This week, pray with Samuel Crowther.
+
+- **Pray as a child.** Come to God each morning with your needs in simple words, as Crowther told Agbekun to do.
+- **Pray Psalm 72:8 for a river or region.** Choose a river, a city or a region near you, and ask God to let the rule of Christ reach every town along it.
+- **Pray a quick prayer.** When you are suddenly afraid or must answer someone important, pray silently first, as Nehemiah and Crowther did.
+
+### A closing prayer
+
+Father in heaven, You hear every child who asks You for help. Thank You for Your servant Samuel Ajayi Crowther, carried away as a slave and set free, who carried the good news up the Niger and taught others to pray to You as their Father. Let the rule of Jesus Christ stretch from sea to sea and from the River to the ends of the earth. Forgive Your church for the times we have despised one another. When I am wronged, keep me humble and faithful, and draw me nearer to the throne of grace. Use me as Your instrument for as long as it seems good to You. In the name of Jesus Christ our Lord. Amen.
+
+### Questions for reflection
+
+- Agbekun wanted to know how to pray to the Great God. If someone asked you that question, what would you say?
+- Crowther asked God for "the countries of the Niger territory." What large thing would you dare to ask God for, and with what kind of heart?
+- How should we respond when fellow Christians treat us unfairly? What does Crowther's example teach you?
+
+### Read more on Ochorus
+
+- Samuel Ajayi Crowther, *Journal of an Expedition up the Niger*, especially "Sickness at the Confluence"
+- Ochorus Originals, *Portraits of Courage – Samuel Ajayi Crowther*, especially "Onitsha, 1890" and "A Weaned Child"
+
+---
+
+## Abide in Me
+
+> "If you remain in Me and My words remain in you, ask for whatever you want, and it will be done for you." (John 15:7)
+
+On a Sunday evening in 1860, about sixty young people crowded into a little hall in the town of Worcester, in the Cape Colony of South Africa. It was a farming town among the mountains inland from Cape Town, and the young people had come for their weekly prayer meeting.
+
+One of the leaders, J. C. de Vries, later wrote down what he saw. After the opening hymn, Bible reading and prayers, a girl at the back of the hall stood up. She was about fifteen, a servant who worked for a farmer from the Hex River valley, and she was Coloured, as South Africans say: a girl of mixed descent, from a people who were often treated as less than others in that land. She asked whether she too might give out a hymn.
+
+De Vries hesitated, not sure what the meeting would think. But, he wrote, "better thoughts prevailed," and he said yes. She gave out her hymn and prayed in moving tones. While she was praying, de Vries said, they heard something like a sound in the distance, coming nearer and nearer, until the hall seemed to shake. Almost everyone in the room began to pray at once, some aloud and some in whispers.
+
+The new minister of Worcester had come to the town only that year. He was a young man of thirty-two named Andrew Murray. An elder ran to fetch him. Murray walked into the hall and called out as loudly as he could for silence. No one heard him. He called again, saying that he was their minister, sent from God. Still they prayed. At last he left, saying, "God is a God of order, and here everything is confusion."
+
+But the meetings went on every evening, sometimes until three in the morning, and soon moved into the larger school building. One Saturday Murray led the meeting himself, and again the whole room broke out in prayer. Again he walked among the people, trying to quiet them. Then a stranger who had been watching at the door touched his arm and said in English: "I think you are the minister of this congregation: be careful what you do, for it is the Spirit of God that is at work here." He had just come from America, he said, and had seen the same thing there, probably in the prayer revival of 1857 and 1858 (chapter 8).
+
+### Who he was
+
+Andrew Murray was born on 9 May 1828 at Graaff-Reinet, in the dry Karoo country of South Africa. His father, also Andrew Murray, was a Scottish minister serving the Dutch Reformed Church. At ten, Andrew and his older brother John were sent to study in Aberdeen, Scotland, and later at Utrecht in the Netherlands. He came home in 1848 as a young minister and spent many years at Bloemfontein, traveling long distances to reach scattered farmers.
+
+His biographer, J. du Plessis, tells the Worcester story in *The Life of Andrew Murray of South Africa* (1919), from the letters and memories of people who were there. The revival spread to many towns and farms. It touched "young and old, parents and children, white and coloured." One fruit lasted for many years: about fifty young men from that one congregation offered themselves for the ministry, at a time when the church badly needed pastors.
+
+The honest story has a shadow too. In 1857 the synod of the Dutch Reformed Church had decided that, where some white members were unwilling to worship beside them, converts who were not white might hold their services in a separate building. In later generations that step grew into great injustice. It is worth remembering that God poured out His Spirit at Worcester through the prayer of a Coloured servant girl. In His presence there was no back of the hall.
+
+Murray later served in Cape Town, and from 1871 he was the pastor of Wellington nearby. He started schools for training teachers and missionaries, led his church for decades, and wrote a great many books on prayer and the Christian life. He died at Wellington on 18 January 1917, at the age of eighty-eight. In his last days, du Plessis writes, he kept urging his fellow ministers to give themselves to more prayer, and "it may be truly said that he died praying."
+
+### Abiding and asking
+
+The revival left a church full of eager new believers who knew very little. How would they keep going when the meetings ended? In 1864 Murray wrote a little book for them in Dutch. It had a short reading for each day of a month, all on a saying of Jesus: "Abide in Me." Years later he put it into English, and *Abide in Christ* became one of the best-loved books of its age.
+
+*Abide* is an old word that means to stay, to make your home somewhere. The Open Word Bible says "remain": "Remain in Me, and I will remain in you" (John 15:4). Jesus spoke these words on the night before He died. A branch does not bear fruit by trying harder, but by staying joined to the vine, so that the vine's life flows into it.
+
+Then Jesus made a promise about prayer: "If you remain in Me and My words remain in you, ask for whatever you want, and it will be done for you" (John 15:7). Murray did not read this as a promise of anything we happen to want. He read it as the prayer of a branch. When we stay close to Christ, and His words live in us, our wishes slowly change until they are His wishes. Then we can ask boldly. In his chapter on this verse he wrote:
+
+> "Prayer is both one of the means and one of the fruits of union to Christ."
+> Andrew Murray, *Abide in Christ*
+
+We pray in order to stay close to Christ, and staying close to Christ makes us pray. Murray also saw how easily we miss the answer:
+
+> "Some believers pray earnestly for blessing; but when God comes and looks for them to bless them, they are not to be found."
+> Andrew Murray, *Abide in Christ*
+
+Abiding means staying where God can find us. And why does Jesus join His words to our prayers in John 15:7? Murray explained:
+
+> "Prayer is not monologue but dialogue; God's voice in response to mine in its most essential part. Listening to God's voice is the secret of the assurance that He will listen to mine."
+> Andrew Murray, *With Christ in the School of Prayer*
+
+A *monologue* is one person speaking alone; a *dialogue* is two people speaking together. In prayer, God speaks first, in His word.
+
+### Three key insights
+
+1. **The prayers God loves to answer grow out of staying close to Jesus, as fruit grows on a branch.** When we remain in Him, His life changes our wishes, and our asking becomes His asking. That is why we can ask so boldly.
+2. **God's words living in us teach us what to ask, so we should listen before we speak.** A believer who reads Scripture slowly and lets it stay in the heart will find that his prayers begin to sound like God's promises, and carry their weight.
+3. **When God answers prayer in a way we did not expect, we must be careful not to stand in His way.** Murray tried to quiet the praying young people, because he feared disorder. A stranger warned him that it was the Spirit of God at work. Wisdom still matters, but a leader's first task is to watch humbly for what God is doing.
+
+### For us today
+
+A farmer in Malawi rises before dawn to reach the fields. A factory worker in Bangladesh works long shifts. A mother in São Paulo cares for children and parents at once. How can busy people "abide"? Murray's answer was simple: it does not happen by accident, but it does not take a monastery either. In the preface to *Abide in Christ* he wrote:
+
+> "It needs time to grow into Jesus the Vine: do not expect to abide in Him unless you will give Him that time."
+> Andrew Murray, *Abide in Christ*
+
+He compared it to a meal: every worker needs time to eat each day. We need daily time to take in Christ's words, and then we carry Him into the field, the factory and the kitchen.
+
+The Worcester story also speaks to churches everywhere. Revival came through a servant girl at the back who asked if she might pray. Who sits at the back of your church, and is never asked to pray aloud? God may be waiting to hear from them.
+
+### Try this
+
+This week, practice staying close to the Vine.
+
+- **Read John 15 each day.** Read verses 1 to 12 slowly every morning this week, and notice one word or phrase each day.
+- **Let a verse stay with you.** Choose one verse from your reading and repeat it to yourself through the day, at work, on the bus, while cooking.
+- **Listen, then ask.** Before you bring your requests to God, be quiet for a minute and ask, "Lord, what have You said to me today?"
+- **Invite a quiet voice.** In your prayer group or family, ask someone who never prays aloud whether they would like to pray, and thank God for them.
+
+### A closing prayer
+
+Lord Jesus, You are the true Vine, and I am only a branch. Without You I can do nothing. Thank You for Your servant Andrew Murray, and for the servant girl of Worcester whose prayer You heard. Teach me to remain in You, day by day and hour by hour. Let Your words make their home in me, until my wishes become Your wishes and my prayers become Your prayers. When You come looking for me to bless me, let me be found waiting. And when You send Your Spirit in ways I do not expect, give me humility to recognize Your hand. Amen.
+
+### Questions for reflection
+
+- Jesus said that the branch bears fruit by remaining in the vine. What helps you "remain" in Christ during an ordinary working day, and what pulls you away?
+- Murray called prayer "not monologue but dialogue." How much of your prayer time is speaking, and how much is listening to God in His word?
+- The revival at Worcester began when a young servant was allowed to pray. Whose voice might your church or family be overlooking?
+
+### Read more on Ochorus
+
+- Andrew Murray, *Abide in Christ*, especially "So Will You Have Power in Prayer"
+- Andrew Murray, *With Christ in the School of Prayer*, especially "The Word and Prayer"
+- Ochorus Originals, *The Key Teachings of Andrew Murray*, especially "Abide in Christ"
+
+---
+
+## He Will Not Leave You
+
+> "The LORD Himself goes ahead of you, and He will be with you. He will not let you go or abandon you. Do not be afraid or lose heart." (Deuteronomy 31:8)
+
+On Saturday 4 August 1888, a Scottish woman of thirty-nine climbed into a long canoe at Creek Town, on the Calabar River in what is now southeastern Nigeria. Her name was Mary Slessor. The rain fell in torrents. The canoe was lent by Eyo Honesty VII, the Christian king of Creek Town, who came down himself to see her off. With her were five children she was raising as her own. She was going up the river to live among the Okoyong, a people the Calabar towns feared. Few people wished her well. One young man said, with a sob in his voice, "I will constantly pray for you, but you are courting death."
+
+The light was fading when they reached the landing place. The village of Ekenge was four miles inland, through the forest. The men carrying the boxes were tired and stayed behind, so Mary went ahead with the children to get them fed and asleep. Her biographer, W. P. Livingstone, who knew her and used her letters, describes that walk in *Mary Slessor of Calabar* (1915). A boy of about eleven went first, with a box of food on his head. A boy of eight followed, crying, with the pots. A boy of three and a girl of five came behind, both in tears. Mary came last, with a bundle on one arm and a baby girl on her shoulders, pulling herself along by the branches in the mud. She sang little songs to cheer the children. Her own tears were close.
+
+The forest was dark and full of the noises of night. Livingstone writes that she was afraid, and wanted to turn back. "Her heart played the coward." But she remembered that God had never once failed her. She was so frightened that she could not even move her lips in prayer. She could only look up and say, inside, one word: "Father!"
+
+At Ekenge the village was empty: everyone had gone to a funeral at the next village. When word came that the carriers would not bring the loads that night, Mary went back through the dark forest herself, without hat or boots, and roused them.
+
+### Who she was
+
+Mary Slessor was born on 2 December 1848 in Aberdeen, Scotland. Her father, a shoemaker, drank heavily, and in 1859 the family moved to Dundee, poor and struggling. At eleven Mary went to work in a jute mill as a "half-timer," half the day at the loom and half at school. Her mother, a praying woman, loved the Scottish church's mission in Calabar. In 1876 the church sent Mary to Calabar as a missionary teacher.
+
+The Efik people of the Calabar towns had heard the gospel for some thirty years before she came, and there were Efik churches with their own leaders. Mary learned to speak Efik well. King Eyo became a close friend. Then she asked to go where no missionary had gone, to the Okoyong.
+
+Quarrels were settled with guns, accused people were made to drink poison to "prove" their guilt, and when a chief died, people could be killed to go with him. Above all, twins were feared. People believed that one of them must be the child of an evil spirit. The babies were thrown away into the bush to die, and the mother was driven out. Mary rescued twin after twin. Once relatives took a rescued twin boy by a trick while she was out, and killed him. She kept his sister, named her Janie, and raised her as her daughter.
+
+These were not cruel people by nature. They lived in deep fear, and Mary knew it. A chief's sister, Ma Eme, who bore on her arms the marks of her husband's teeth, became her secret ally, bringing her news of danger at the risk of her own life. Little by little, the Okoyong began to bring their quarrels to "Ma," as they called her, instead of to their guns. When the British government took control of the region, it made her the judge of the local court, a role she accepted, Livingstone says, only "because she thought it in line with her allegiance to Christ." She was part of the British empire's spread into Africa, and we should not pretend otherwise. But she used her place to protect the weak, and the people trusted her because she lived among them.
+
+Later she moved further inland, to Itu, Ikpe and Use. She died at Use on 13 January 1915, worn out by fever, with her African daughters around her bed. One of her last prayers was in Efik: "O Abasi, sana mi yok," which means "O God, release me."
+
+### How she prayed
+
+When a friend in Dundee asked her to write about answered prayer, she sent this:
+
+"My life is one long daily, hourly, record of answered prayer." She went on to list health, guidance, dangers turned aside, and "food provided at the exact hour needed." She wrote it, she said, sitting on a log among the people, with almost no food in the house, "but I know we shall be fed, for God answers prayer."
+
+Her prayer was simple. Livingstone says she spoke to God as a child speaks to her father. A lady once asked how she came to know God so closely. "Ah, woman," she said, "when I am out there in the bush I have often no other one to speak to but my Father, and I just talk to Him." She rose at first light, about half past five, to read her Bible slowly with a pen in her hand. Among the notes she wrote in her Bibles is this: "God is never behind time."
+
+She also knew the struggle. "I am a poor exponent of faith," she admitted, meaning that she did not always show it well. Of her prayers for her father she wrote, "I know what it is to pray long years and never get the answer." But on a lonely New Year's Eve she wrote, "He hath not failed, and He is all-sufficient."
+
+Moses spoke Deuteronomy 31:8 to Joshua, who was about to lead Israel into a land full of danger. God did not promise him an easy road. He promised to go ahead, to walk beside, and never to let go. The letter to the Hebrews gives the same promise to every believer (Hebrews 13:5). J. C. Ryle, an English bishop of Mary's own century, wrote of it:
+
+> "Only let a sinner lay hold on Christ by faith and then, however feeble, Christ's word is pledged to him, “I will never leave thee nor forsake thee.” He may correct him occasionally in love. He may gently reprove him at times. But He will never, never give him up."
+> J. C. Ryle, *Holiness*
+
+That is what Mary found on the forest path. The Lord had gone ahead of her into Okoyong. And He was with her in the dark, even when all she could say was "Father!"
+
+### Three key insights
+
+1. **When fear takes away our words, one cry of "Father!" is still a whole prayer.** Mary could not move her lips on the forest path. Her one inward word was enough, because her Father already knew everything. We do not need fine words to reach Him.
+2. **God goes ahead of us into the hard places He sends us, so we never arrive anywhere alone.** Moses promised Joshua that the LORD would go before him into the new land. Mary walked into Okoyong in the dark and found that God was already at work there, even in the heart of a chief's sister.
+3. **A life of plain, daily prayer becomes a long record of God's faithfulness.** Mary did not keep a book of great miracles. She brought God the food, the fevers and the quarrels of each day. Looking back, she could see that He had answered "daily, hourly."
+
+### For us today
+
+Some readers walk their own dark forest path: a pastor in northern Nigeria serving where churches have been burned, a widow in Lima raising children alone, a young believer in Asia who is the only Christian in the family. God's promise to Joshua is for you too: He goes ahead, He walks beside, and He will not let you go.
+
+In many places babies are still abandoned, because of poverty, disability or old fears. Mary did not only pray about the twins. She picked them up and carried them home. Prayer and rescue belong together.
+
+And her story honors the people who received her. Efik and Okoyong believers became teachers, church members and leaders. At her funeral in Duke Town, African church members led the singing, and teachers of the town school lowered her coffin. An old friend, Mammy Fuller, who had come from Jamaica long before, told the women not to cry, but to "Praise God from whom all blessings flow."
+
+### Try this
+
+This week, practice trusting the God who goes ahead.
+
+- **Pray the one-word prayer.** When you are afraid or too tired to pray, simply say "Father!" and trust that He hears the rest.
+- **Keep a record.** Each evening, write down one way God helped you that day, even something small, like food at the right hour.
+- **Read with a pen.** Choose a short passage, read it slowly at first light, and write one thought in the margin or in a notebook.
+- **Carry someone.** Find one practical way to help a child, a mother or an outcast near you this week, and pray for them by name.
+
+### A closing prayer
+
+Father, You went ahead of Your servant Mary Slessor into the dark forest, and You were with her when she could only cry Your name. Thank You for her courage, and for the Efik and Okoyong believers who came to know You through her love. When I am afraid, teach me to say "Father!" and to trust that You hear. Go ahead of me into the places You send me. Walk beside me there. Do not let me go. Give me eyes to see the children and the outcasts around me, and hands to carry them. Amen.
+
+### Questions for reflection
+
+- Have you ever been too afraid or too tired to pray in words? What does Mary's one-word prayer teach you about such times?
+- Deuteronomy 31:8 says that the LORD goes ahead of us. Where do you need to trust that He has gone before you this week?
+- Mary prayed and also rescued. Is there a need near you where your prayers should lead to action?
+
+### Read more on Ochorus
+
+- Ochorus Originals, *Portraits of Courage – Mary Slessor*, especially "“Father!”" and "A Poor Exponent of Faith"
+- J. C. Ryle, *Holiness*, especially "The Ruler of the Waves"
+
+---
+
+## The Little Way
+
+> "Truly I tell you, if you do not turn around and become like children, you will not get into the kingdom of heaven at all." (Matthew 18:3)
+
+In the summer of 1887 all of France was talking about a man named Henri Pranzini. He had been condemned to death in Paris for the murder of three people, and he refused to show any sorrow at all. In the town of Lisieux, in Normandy, a girl of fourteen heard the talk. Her name was Thérèse Martin. Her father did not let his daughters read the newspapers, but she could not stop thinking about this man who seemed to be going to his death without God.
+
+She tells the story herself in *Story of a Soul*. Not long before, she wrote, she had been gazing at a picture of Jesus on the cross, and the cry "I thirst!" had begun to sound in her heart. She longed to bring people to Him. So she began to pray for Pranzini with all her strength. Then, "in all simplicity," she told God that she was sure He would pardon this unhappy man, even if he gave no sign of sorrow, because she trusted His mercy so much. "But this is my first sinner," she prayed, "and therefore I beg for just one sign of repentance to reassure me."
+
+Pranzini was executed on the last day of August. The next day Thérèse opened the Catholic newspaper *La Croix*, and read the report. He had climbed the scaffold without confessing his sins. Then, just before he died, he suddenly turned, took hold of the crucifix the priest was holding out to him, and kissed it three times. Thérèse had to run out of the room in tears. "I had obtained the sign I asked for," she wrote. She called him her "first born."
+
+Only God knows what passed between Pranzini and Him in that last moment. But a fourteen-year-old girl had learned that a child may ask her Father for great things, and trust Him completely.
+
+### Who she was
+
+Thérèse Martin was born on 2 January 1873 at Alençon, in France, the youngest of the nine children of Louis and Zélie Martin, devout Catholics. Five daughters lived to grow up. Her mother died of cancer when Thérèse was four. The family moved to Lisieux, and her older sisters became like mothers to her. One by one, two of them entered the Carmelite convent in Lisieux, a community of nuns who live a hidden life of prayer and rarely leave the convent. Thérèse longed to follow them. On a pilgrimage to Rome she even knelt before Pope Leo XIII and asked to be allowed to enter at fifteen. In April 1888, she did.
+
+She took the name Sister Thérèse of the Child Jesus and of the Holy Face. Nothing she did there would seem great to the world. She prayed, worked in the laundry and the dining room, and later helped train the younger nuns. In 1895 her sister Pauline, then in charge of the convent, asked her to write down her memories of childhood. Two more short writings followed in her last year. In the spring of 1896 she began to cough blood. She had tuberculosis, a disease of the lungs. She died on 30 September 1897, at twenty-four.
+
+A year later her writings were printed, and they spread across the world. In 1925 the Catholic Church named her a saint, and in 1997 a Doctor of the Church, a teacher for the whole Church. The quotations in this chapter come from an English translation by T. N. Taylor, first published in 1912.
+
+Christians of other traditions differ from her on some points, such as her devotion to Mary or her language of "offering" her sufferings for others. We describe these simply, as she lived them, and keep our eyes on what every believer can learn from her about prayer.
+
+### The little way
+
+Thérèse felt as small beside the great saints as a grain of sand beside a mountain. Instead of giving up, she looked for another road.
+
+"I will seek out a means of getting to Heaven by a little way," she wrote, a way "very short and very straight, a little way that is wholly new." In her day, she said, the rich no longer climbed the stairs; they had lifts, or elevators. "I am too tiny to climb the steep stairway of perfection," she wrote. She searched the Scriptures for her lift and found it in God's promise to comfort His people as a mother comforts her child. "Thine Arms, then, O Jesus, are the lift which must raise me up even unto Heaven. To get there I need not grow; on the contrary, I must remain little."
+
+This is our key verse lived out. When the disciples asked who was greatest in the kingdom, Jesus placed a child in the middle of them and said, "if you do not turn around and become like children, you will not get into the kingdom of heaven at all" (Matthew 18:3). A child does not earn her father's love. She trusts it. Thérèse read the *Imitation of Christ* so often as a girl that her aunt would open it anywhere and ask her to recite the chapter from memory. On this verse the *Imitation* says:
+
+> "Woe to those, therefore, who disdain to humble themselves willingly with the little children, for the low gate of the heavenly kingdom will not permit them to enter."
+> Thomas à Kempis, *The Imitation of Christ*
+
+### How she prayed
+
+Her prayer was the prayer of a child. She admitted that books of beautiful prayers gave her a headache. "I do as children who have not learnt to read," she wrote. "I simply tell Our Lord all that I want, and He always understands." Then she gave her famous description of prayer:
+
+"With me prayer is an uplifting of the heart; a glance towards heaven; a cry of gratitude and love, uttered equally in sorrow and in joy."
+
+She also prayed for others with a child's boldness. In 1895 and 1896 she was asked to pray for two young men preparing to serve as missionaries, one of them in China. She wrote to them and prayed for them, believing that "it is by prayer and sacrifice that we can help our missionaries." She never left her convent, yet in 1927 the Catholic Church named her a patron of missions.
+
+Then came the darkness. At Easter 1896, just after her illness began, all her joy in thinking of heaven disappeared. She wrote that she seemed to hear the mocking voice of unbelief telling her that death would bring only "a night darker still, the night of utter nothingness." It was not a veil, she wrote, but "a wall which rises to the very heavens and shuts out the starry sky." The darkness came and went until her death. Yet she did not stop praying. "I have made more acts of Faith in this last year than during all the rest of my life," she wrote. She offered her darkness in prayer for those who did not believe, and sat, in her words, at their "table of bitterness." Her last words, looking at her crucifix, were: "My God, I... love... Thee!"
+
+### Three key insights
+
+1. **The way into God's kingdom is not climbing up but being carried, as a child is carried by her father.** Thérèse knew she could not climb the stairs of holiness. She let Jesus lift her. This is the "little way," and it is open to every believer, however weak.
+2. **A child's prayer can be bold, because it trusts the Father's mercy more than its own goodness.** At fourteen Thérèse asked God for a sign for a hardened murderer, and expected it. Childlike prayer is not small prayer. It asks great things from a great Father.
+3. **We can keep praying in love even when we cannot feel God at all.** In her last eighteen months Thérèse felt only a wall between her and heaven. She went on choosing to trust and to pray for unbelievers. Faith is not a feeling; it is a child holding on in the dark.
+
+### For us today
+
+A cleaner in Dubai, a student in Nairobi or a grandmother in a village in Vietnam may think that real prayer belongs to pastors and saints. Thérèse says: tell Jesus simply what you want, as a child does, and He always understands. Your small life of faithful love is not too small for God.
+
+Some faithful Christians, in prison for their faith or in long illness, go through seasons when heaven feels shut, and fear that they have lost their faith. Thérèse shows that the darkness is not the end of faith. It can become a place where we pray for others who live in that darkness all the time.
+
+### Try this
+
+This week, walk the little way.
+
+- **Pray like a child.** Once each day, put away your usual words and tell Jesus plainly what you need, as a child would.
+- **Lift your heart.** Several times a day, stop for a moment, glance toward heaven, and say thank You.
+- **Do one small thing with great love.** Choose one ordinary task, such as washing dishes or helping a neighbor, and offer it to God as an act of love.
+- **Pray for someone others have given up on.** As Thérèse prayed for Pranzini, ask God each day to show mercy to one person whom everyone thinks is beyond hope.
+
+### A closing prayer
+
+Father, You have hidden great things from the wise and shown them to little children. Thank You for Your servant Thérèse, who learned to be little in Your arms. Turn me around, Lord, and make me like a child again. When I cannot climb, carry me. When I do not know what to say, help me simply tell You what I need. Give me a child's boldness to ask great things for others, even for those who seem lost. And when I cannot feel Your presence, keep me holding on in love, until the morning comes. Through Jesus Christ, who carries us. Amen.
+
+### Questions for reflection
+
+- Jesus said we must "turn around and become like children" (Matthew 18:3). What would it mean for you to turn around in this way?
+- Thérèse described prayer as "a glance towards heaven." How could short, simple prayers fill the gaps in your busy days?
+- Have you ever felt that heaven was shut? What does Thérèse's experience teach you about praying in such a time?
+
+### Read more on Ochorus
+
+- Thomas à Kempis, *The Imitation of Christ*, especially "High Matters and the Hidden Judgments of God Are Not to Be Scrutinized"
+- Francis de Sales, *Introduction to the Devout Life*, especially "Aspirations, Ejaculatory Prayer and Holy Thoughts"
+
+---
+
+## God Looked for an Intercessor
+
+> "He saw that no one was there, and He was dismayed that no one stepped in. So His own arm won Him the victory, and His righteousness held Him up." (Isaiah 59:16)
+
+In 1912 an old Methodist preacher from Georgia came to stay with a younger pastor, Homer W. Hodge, in Brooklyn, New York. The visitor was a small man, seventy-six years old, and almost unknown outside his own church. His name was Edward McKendree Bounds.
+
+Hodge never forgot the visit. Years later he wrote that Bounds was "so intense" that "he awoke us at 3 o'clock in the morning praying and weeping over the lost of earth." During the day the old man went into the church next door, and there he would be found on his knees until someone called him for his meals. Bounds had a name for this. He called it "the Business of Praying."
+
+Few who met this quiet old man in Brooklyn would have guessed that he would become one of the most widely read writers on prayer in the world.
+
+Back home in Washington, Georgia, he went on writing. His letters to Hodge asked again and again for prayer: "Pray for me that God will give me new nerves and new visions to finish the manuscripts." He also urged his friend to keep his own early hour with God. "Pray more and more," he wrote in July 1912; "keep at the four a. m. hour." Thirteen months later, on 24 August 1913, Bounds died. He left behind a pile of unpublished manuscripts on prayer, and a friend who promised to see them printed.
+
+### Who he was
+
+E. M. Bounds was born in August 1835 in Shelby County, Missouri, in the middle of the United States. As a young man he trained in the law and practiced as a lawyer. Then, at about twenty-four, he was called to preach, and became a minister of the Methodist Episcopal Church, South.
+
+When the American Civil War began in 1861, he was a young pastor in Missouri. According to Hodge, he was arrested and held as a prisoner because he would not take an oath of loyalty to the Federal government. After his release he walked, Hodge says, nearly a hundred miles to join the Southern army, and became chaplain of the Fifth Missouri Regiment. Near the end of the war he was captured again and held at Nashville, Tennessee. Hodge does not say where he was taken; later writers connect his capture with the terrible battle of Franklin, Tennessee, in November 1864, where thousands of men were killed or wounded in a few hours.
+
+We should be honest about this part of his story. Bounds served the Confederacy, the Southern side, whose cause was bound up with the slavery of millions of African Americans. We do not know all that he thought about it. What we do know is that the war taught him grief, loss and the shortness of life, and that after it he gave himself to prayer more and more.
+
+He served churches in Tennessee, Alabama and St. Louis, and then edited a Methodist newspaper, the *St. Louis Christian Advocate*. His first wife, Emmie, died in 1886, and he later married Hattie Barnett. For the last years of his life he lived quietly with his family in Washington, Georgia. Hodge wrote that his principal work there was "rising at 4 a. m. and praying until 7 A. M." In another book Hodge added that Bounds "was able at seventy-five in the first hour of the fourth watch to pray for three hours upon his knees." The *fourth watch* is an old way of naming the last part of the night, before dawn.
+
+Only two small books of his were printed in his lifetime, in 1907. One of them, *Preacher and Prayer*, is known today as *Power Through Prayer*. All the rest came out after his death, prepared by Hodge and another admirer, Claude Chilton. Chilton wrote of him: "He prayed because the needs of the world were upon him."
+
+### The man God looks for
+
+Bounds believed that God works through people, and above all through praying people. His most famous lines are at the start of *Power Through Prayer*:
+
+> "Men are God's method. The Church is looking for better methods; God is looking for better men."
+> E. M. Bounds, *Power Through Prayer*
+
+That is the heart of our key verse. Isaiah lived in a dark time. Truth "has gone missing," and "justice was gone" (Isaiah 59:15). God looked for someone to step in, and found no one. The older English Bibles that Bounds read put it this way: God "wondered that there was no intercessor." An *intercessor* is someone who stands between, and pleads with God on behalf of others. Ezekiel heard God say the same thing in another dark age: "I looked for someone among them who would repair the wall and stand before Me in the gap on behalf of the land... but I found no one" (Ezekiel 22:30).
+
+Bounds applied Isaiah's words to the missionary work of his own century, the great century we have followed in this book:
+
+> "The one great need in the modern missionary movement is intercessors. They were scarce in the days of Isaiah. This was his complaint: “And he saw that there was no man, and wondered that there was no intercessor.”"
+> E. M. Bounds, *The Essentials of Prayer*
+
+But notice how the verse ends. When God found no one, "His own arm won Him the victory." God was not helpless. In the end He sent His own Son. Jesus is the true Intercessor, who "is always alive to plead on their behalf" (Hebrews 7:25). So when we pray for others, we do not stand in the gap alone. We join the prayer of Christ Himself.
+
+### Three key insights
+
+1. **God is still looking for people who will stand between Him and a needy world in prayer.** In Isaiah's day He found no one. Bounds believed the greatest need of the church was not new plans but praying men and women. The invitation to stand in the gap is open to every believer.
+2. **The hours before dawn, given to God, can shape a whole life and outlast it.** Bounds rose at four for years, unseen. His prayers in a small Georgia town became books that have taught millions to pray. What is done in secret, God can use far beyond our sight.
+3. **We can stand in the gap for others because Jesus has already stood there for us.** When no one stepped in, God's own arm won the victory, and Christ now pleads for us at the Father's right hand. Our intercession is not a lonely effort but a share in His.
+
+### For us today
+
+Few of us will become famous for prayer. Bounds did not, in his lifetime. He was poor, almost unknown, and his books lay unpublished. Yet God saw. That is a word for the many believers today who pray faithfully where no one notices: the grandmother in Ghana who prays for her grandchildren every morning, the believer in Iran who prays for a country where churches are watched, the night guard in Manila who prays on his rounds, the pastor in a small town in Brazil who rises early for his flock.
+
+God is still looking for intercessors. He looks at your family, your town, your nation, and He asks: who will step in? The answer does not need to be someone else. It can be you.
+
+The century we have followed in this book was full of such people: students by a haystack, a man who prayed ahead of the preacher, orphan houses fed by prayer, a girl in a convent, a woman alone in an African forest. In Volume 9, *Revival Fires*, we will see what God did with their prayers in the next half century, beginning with a young Welshman named Evan Roberts, who prayed "Bend me" in 1904, and with Pandita Ramabai and the praying women of Mukti in India.
+
+### Try this
+
+This week, take your place in the gap.
+
+- **Keep an early hour.** Choose a time before your day begins, even fifteen minutes, and keep it each morning this week for prayer alone.
+- **Stand for a place.** Choose one place, such as your street, your city or a country where Christians suffer, and pray for it by name every day.
+- **Pray Isaiah 59:16.** Read the verse slowly and ask God to show you one place where He is looking for someone to step in.
+- **Remember the Intercessor.** Before you pray for others, thank Jesus that He is praying for you and for them.
+
+### A closing prayer
+
+LORD God, You looked for someone to step in, and when You found no one, Your own arm brought salvation. Thank You for Jesus, who stood in the gap for us and still pleads for us at Your right hand. Thank You for Your servant E. M. Bounds, who rose in the dark to pray for the lost of the earth, and for all the praying witnesses of this great century. Make me an intercessor. Wake me to pray for my family, my town and the nations. When I am tired and unseen, remind me that You see. Here I am, Lord. Let me stand where You are looking. Amen.
+
+### Questions for reflection
+
+- Isaiah says God "was dismayed that no one stepped in" (Isaiah 59:16). For whom, or for what place, might God be looking for you to step in?
+- Bounds said, "God is looking for better men." What do you think he meant, and how does it challenge you?
+- What would it cost you to give God an early hour each day? What might it change?
+
+### Read more on Ochorus
+
+- E. M. Bounds, *Power Through Prayer*, especially "Men of Prayer Needed"
+- E. M. Bounds, *The Essentials of Prayer*, especially "Prayer and Missions"
+- E. M. Bounds, *Prayer and Praying Men*, especially "Introduction"
+- Ochorus Originals, *The Key Teachings of E. M. Bounds*, especially "Before the Town Was Awake"
+
+---
+
+## Conclusion: Passing the Torch
+
+> "For the earth will be as full of knowing the glory of the LORD as the sea is full of water." (Habakkuk 2:14)
+
+When the 1800s began, five students sheltering from a summer storm beside a haystack prayed that the gospel would reach the nations. When the century ended, there were believers praying in Chinese villages and Indian cities, in the forests of Calabar and the towns along the Niger, in the Pacific islands and in the hills of Korea. Many of those who prayed had never seen a Western missionary. They had heard the gospel from their own people, and they prayed in their own languages.
+
+The prophet Habakkuk looked forward to a day when the knowledge of God's glory would fill the earth like water fills the sea. No century has seen that promise fully kept. But in the 1800s the tide rose further and faster than ever before. And underneath that rising tide, again and again, were people who prayed.
+
+### What the witnesses taught us
+
+Here, in a few lines, is some of what the witnesses of this book taught us about prayer:
+
+- Prayer turns what we learn about the world into a burden for its people (chapter 1, the Haystack prayer meeting).
+- Preaching and praying belong together, and God gives the growth through both (chapter 2, Daniel Nash and Charles Finney).
+- A cold heart is a reason to pray, not a reason to stay away from prayer (chapter 3, Christmas Evans).
+- The best hours of the day belong to God, not only the hours left over (chapter 4, Robert Murray M'Cheyne).
+- The God who has already rescued us invites us to open our mouths wide (chapter 5, George Müller).
+- Unceasing prayer is learned slowly, with a patient teacher beside us (chapter 6, the Russian pilgrim).
+- Prayer is a way to receive the Holy Spirit, not a way to earn God's favor (chapter 7, Seraphim of Sarov).
+- One person willing to wait alone in prayer can open a door for many others (chapter 8, the Fulton Street prayer meeting).
+- Stories of what God has done can stir us to ask Him to do it again (chapter 9, the Ulster revival).
+- The strength of a pulpit is often hidden in the people who pray for it (chapter 10, Charles Spurgeon).
+- Trusting God in small things trains us to trust Him in large ones (chapter 11, Hudson Taylor).
+- In our hardest battles we stand in the strength of the One who lives in us, not in our own (chapter 12, Pastor Hsi).
+- A believer who can do nothing else can still pray, and that prayer can reach farther than any journey (chapter 13, D. L. Moody and the bedridden woman).
+- Prayer grows strong through daily practice, as a soldier grows strong through daily drill (chapter 14, William and Catherine Booth).
+- Trusting God sometimes means admitting the fear we have hidden from ourselves (chapter 15, Amanda Berry Smith).
+- Anyone may come to God as a child comes to a father, without priest, journey or sacrifice (chapter 16, Samuel Ajayi Crowther).
+- The prayers God loves to answer grow out of staying close to Jesus, as fruit grows on a branch (chapter 17, Andrew Murray).
+- When fear takes away our words, one cry of "Father!" is still a whole prayer (chapter 18, Mary Slessor).
+- The way into God's kingdom is not climbing up but being carried, as a child is carried by her father (chapter 19, Thérèse of Lisieux).
+- God is still looking for people who will stand between Him and a needy world in prayer (chapter 20, E. M. Bounds).
+
+You will find every one of these lessons gathered by theme in Appendix 1, and every Scripture in this book listed in Bible order in Appendix 2.
+
+### Open your mouth wide
+
+The title of this book comes from a promise that George Müller took as his own: "Open your mouth as wide as you can, and I will fill it" (Psalm 81:10).
+
+That promise runs through every chapter. The people in this book asked God for great things: for workers for the harvest, for bread for orphans, for revival in a village, for the conversion of a nation, for freedom from opium, for the courage to go where no one else would go. Many of them were poor. Some were sick, some were enslaved or had been enslaved, some were despised because of their color or their sex. They had no power of their own. What they had was a God who invites His children to open their mouths wide.
+
+They also learned that God does not always fill our mouths in the way we expect. Müller waited, sometimes until the very last moment. Mary Slessor prayed for long years without seeing some of her prayers answered. Crowther saw his work taken from him in his old age. Thérèse prayed in darkness. Yet none of them stopped asking, because they trusted the One they were asking.
+
+### The torch is passed
+
+By 1900 the world was changing again. Cities were growing, new technologies were spreading, and many in the West believed that science and progress would soon solve the world's problems. Within a few years, two world wars would shatter that hope.
+
+In **Volume 9, *Revival Fires***, we will follow the praying people of the first half of the twentieth century. We will hear a young Welsh miner named Evan Roberts pray, "Bend me," and watch revival sweep through Wales. We will meet Pandita Ramabai and the praying women of Mukti in India, William Seymour on Azusa Street, and the Korean believers whose prayer meetings at Pyongyang and at dawn shaped a whole church. We will kneel with "Praying" John Hyde, Sadhu Sundar Singh and Amy Carmichael, and stand with Dietrich Bonhoeffer and Corrie ten Boom in the darkness of war. We will follow Gladys Aylward over the mountains of China, hear the revival songs of East Africa, and visit two old sisters praying in a cottage on the Isle of Lewis.
+
+They were the heirs of the witnesses in this book. Many of them read Müller, Murray, Spurgeon and Bounds. The torch was passed.
+
+### Your turn
+
+The witnesses of this book now pass the torch to you.
+
+So pray for the nations, as the students under the haystack did. Pray for those who preach, as Daniel Nash did. Give yourself to God in a covenant, and thirst for Him above everything else. Open your mouth wide, and ask God for what you need. Pray without ceasing, and seek a peaceful spirit. Gather a few others at noon or in the evening, and pray for revival where you live. Pray for your pastor while he preaches. Ask God to move people through prayer alone. Trust Him to overcome what you cannot. Pray for those who preach the gospel far away. Start the day on your knees. Trust without fear. Pray for the peoples of your land. Abide in Christ. Remember that He will never leave you. Take the little way of a child. And when God looks for someone to stand in the gap and pray, let Him find you.
+
+### A closing prayer
+
+Lord God, You promised that the earth will be full of the knowledge of Your glory, as the waters cover the sea. Thank You for the praying people of the great century: for the students under the haystack, for Daniel Nash and Christmas Evans, for Robert Murray M'Cheyne and George Müller, for the Russian pilgrim and Seraphim of Sarov, for Jeremiah Lanphier and the four young men of Kells, for Spurgeon and Hudson Taylor, for Pastor Hsi and Amanda Berry Smith, for Samuel Ajayi Crowther and Mary Slessor, for Andrew Murray, Thérèse and E. M. Bounds, and for all whose names only You know. Teach me to open my mouth wide and to trust You to fill it. Make me an intercessor for my family, my city and the nations. And let Your glory fill the earth. Amen.
