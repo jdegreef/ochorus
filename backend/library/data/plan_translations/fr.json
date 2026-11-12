@@ -296,7 +296,8 @@
   "title": "Une année de Notre marche quotidienne",
   "description": "Les lectures de F. B. Meyer pour chaque jour de l’année : une courte méditation, avec son titre et son passage biblique, sur la marche avec Dieu au fil des jours ordinaires. Commencez n’importe quel jour : le premier jour est la lecture du 1er janvier, et chaque jour suivant prend la suivante. Deux ou trois minutes par jour.",
   "note": [
-   "AI-drafted (2026-11-07); awaiting native review. Job #7441. our-daily-walk has no fr edition yet; « Notre marche quotidienne » is coined. Prose-ahead until the book ships."
+   "AI-drafted (2026-11-07); awaiting native review. Job #7441. our-daily-walk has no fr edition yet; « Notre marche quotidienne » is coined. Prose-ahead until the book ships.",
+   "Book shipped by job #7571 (2026-11-12) under the same title, « Notre marche quotidienne », so the card and the book agree; this PR creates the fr plan row."
   ]
  },
  "diary-of-an-old-soul-year": {

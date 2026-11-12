@@ -16944,6 +16944,40 @@
 				469
 			]
 		},
+		"fr/our-daily-walk": {
+			"ground": "80769c81f6304f94f38996c13d46993fdef9916e1006f7279f16dff8feaff80a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[112, 259, 488, 347],
+					[135, 337, 465, 425]
+				],
+				"subtitle": [
+					[109, 501, 491, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				529
+			]
+		},
 		"fr/pandita-ramabai-a-life-children": {
 			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
 			"style": "young",
