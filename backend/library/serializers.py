@@ -36,7 +36,12 @@ from .opening import opening_candidate_orders, opening_excerpt
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
-from .scripture_graph import bible_book_of, classics_page, current_pages, treated_passages
+from .scripture_graph import (
+    bible_book_of,
+    book_chapter_pages,
+    classics_page,
+    treated_passages,
+)
 
 #: A dated book's slug → its year-long plan's slug.
 DAILY_PLAN_FOR_BOOK = {book: plan for plan, book, *_ in DAILY_PLANS}
@@ -2316,7 +2321,7 @@ class ChapterBatch:
         # A Bible book's chapters link the scripture page of the passage they
         # ARE ("what the classics say"); every other book has none.
         self._bible = bible_book_of(book)
-        self._scripture_pages = current_pages() if self._bible else []
+        self._bible_pages = book_chapter_pages(self._bible) if self._bible else {}
 
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
@@ -2327,7 +2332,7 @@ class ChapterBatch:
     def classics_page(self, chapter):
         if self._bible is None:
             return None
-        return classics_page(self._bible, chapter.order, self._scripture_pages)
+        return classics_page(self._bible, chapter, self._bible_pages)
 
 
 class PlanListSerializer(serializers.ModelSerializer):

@@ -287,16 +287,25 @@ class ClassicsPageTests(TestCase):
     def test_a_bible_chapter_links_its_own_page(self):
         self.assertEqual(
             self._page("romans", 9),
-            {"book": "romans", "chapter": 8, "reference": "Romans 8", "citing_count": CHAPTER_FLOOR},
+            {"book": "romans", "book_title": "Romans", "chapter": 8, "citing_count": CHAPTER_FLOOR},
         )
 
-    def test_a_chapter_with_no_page_links_none(self):
-        self.assertIsNone(self._page("romans", 2))
+    def test_a_chapter_without_a_page_and_the_editorial_link_the_overview(self):
+        overview = {"book": "romans", "book_title": "Romans", "chapter": None, "citing_count": None}
+        for order in (1, 2, 18):
+            self.assertEqual(self._page("romans", order), overview)
 
-    def test_the_introduction_and_conclusion_link_the_book_overview(self):
-        for order in (1, 18):
-            self.assertEqual(self._page("romans", order)["chapter"], None)
-            self.assertEqual(self._page("romans", order)["book"], "romans")
+    def test_a_title_that_disagrees_with_the_order_never_links_that_chapter(self):
+        # A drifted layout (a new front-matter chapter shifting every order)
+        # must not send "Romans 7" to the Romans 8 page.
+        Chapter.objects.filter(book=self.romans, order=9).update(title="Romans 7")
+        self.assertIsNone(self._page("romans", 9)["chapter"])
+
+    def test_no_page_anywhere_in_the_book_links_nothing(self):
+        from .models import ChapterCitation
+
+        ChapterCitation.objects.all().delete()
+        self.assertIsNone(self._page("romans", 9))
 
     def test_every_offered_page_really_serves(self):
         for order in (1, 9, 18):
@@ -305,6 +314,16 @@ class ClassicsPageTests(TestCase):
                 f"{page['chapter']}/" if page["chapter"] else ""
             )
             self.assertEqual(self.client.get(path).status_code, 200, path)
+        # The same answer the full page list gives.
+        self.assertIn(
+            ("romans", 8),
+            {(p["book"], p["chapter"]) for p in current_pages() if p["verse"] is None},
+        )
+
+    def test_the_batch_agrees_with_the_single_endpoint(self):
+        res = self.client.get("/api/library/books/romans/chapters/?language=en")
+        for chapter in res.data:
+            self.assertEqual(chapter["classics_page"], self._page("romans", chapter["order"]))
 
     def test_any_other_book_has_none(self):
         self.assertIsNone(self._page("p", 9))

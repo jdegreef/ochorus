@@ -79,10 +79,11 @@ from library.corrections import settled_chapter_body
 from library.models import Author, Book, Chapter, Series
 from library.quote_marks import assert_punctuation_only, convert
 from library.sanitize import clean_fragment
+from library.scripture_graph import BIBLE_SERIES
 
 AUTHOR_SLUG = "open-word-bible"
 #: Every book is a volume of this series, numbered by its place in the canon.
-SERIES_SLUG = "the-bible"
+SERIES_SLUG = BIBLE_SERIES
 LANGUAGE = "en"
 LEVEL = "B"
 SITE = "https://openwordbible.org"

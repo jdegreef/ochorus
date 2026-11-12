@@ -2382,11 +2382,13 @@
 			{/if}
 
 			<!-- A chapter of the Bible itself: where the library's classics and
-			     sermons quote it (the /scripture/ page of this very chapter, or for
-			     the introduction and conclusion the book's overview). Where the
-			     chip row below sits, and as quiet: one line under the text that a
-			     reader in flow scrolls past, heading the chip row when there is one. Only when the server says the page was
-			     built; English only, as those pages are. -->
+			     sermons quote it — the /scripture/ page of this very chapter, or the
+			     book's overview where the chapter has none (and from the introduction
+			     and conclusion). Where the chip row below sits, and as quiet: one line
+			     under the text that a reader in flow scrolls past, heading the chip
+			     row when there is one. Only when the server says the page was built;
+			     English only, as those pages are, so the "→" of the overview's own
+			     message is matched here rather than mirrored. -->
 			{#if chapter.classics_page}
 				{@const cp = chapter.classics_page}
 				<div class="mt-10 flex flex-col items-start border-t border-border pt-4">
@@ -2394,9 +2396,9 @@
 						href={cp.chapter ? scripturePageHref(cp.book, cp.chapter, null) : scriptureBookHref(cp.book)}
 						class="classics-link-title"
 					>
-						{#if cp.chapter}{t('reader.scripturePage')}<Icon name="chevron-right" size={16} />{:else}{t(
-								'scripture.bookOverview'
-							).replace('%book%', cp.reference)}{/if}
+						{cp.chapter
+							? `${t('reader.scripturePage')} →`
+							: t('scripture.bookOverview').replace('%book%', () => cp.book_title)}
 					</a>
 					{#if cp.citing_count}
 						<p class="text-small text-muted">
@@ -3112,20 +3114,6 @@
 		align-items: center;
 	}
 	/* Under it, Contents and Share as text links: the button is the one action. */
-	/* A Bible chapter's "what the classics say" line: one
-	   quiet link, the chip row's weight — apparatus, not a call to action. */
-	.classics-link-title {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.25rem;
-		min-height: 2.75rem;
-		font-family: var(--font-display);
-		font-weight: 600;
-		color: var(--accent);
-	}
-	.classics-link-title:hover {
-		text-decoration: underline;
-	}
 	.end-link,
 	.end-aside :global(.share-wrap > .btn) {
 		display: inline-flex;
@@ -3141,6 +3129,20 @@
 	}
 	.end-link:hover,
 	.end-aside :global(.share-wrap > .btn:hover) {
+		text-decoration: underline;
+	}
+	/* A Bible chapter's "what the classics say" line: one
+	   quiet link, the chip row's weight — apparatus, not a call to action. */
+	.classics-link-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		min-height: 2.75rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.classics-link-title:hover {
 		text-decoration: underline;
 	}
 
