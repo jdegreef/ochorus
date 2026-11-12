@@ -1,0 +1,16 @@
+{
+  "open-word-bible": {
+    "url": "https://openwordbible.org",
+    "verse_lines": true,
+    "run_on": true,
+    "pages": {
+      "en": {
+        "title": "About the Translation",
+        "name": "The Open Word Bible",
+        "html": "<p>The Scripture in this book is the Open Word Bible, a new translation of the Bible made directly from the Hebrew and Greek into today’s English.</p><p>Every sentence of it is translated at three levels: <em>Literal</em>, which follows the original closely and puts any word it supplies in brackets; <em>Balanced</em>, accurate and natural; and <em>Readable</em>, plain modern language, made explicit where it helps. This book prints the Balanced level.</p><p>Behind each sentence is a record of the original words, a literal gloss, the three translations and every decision the translators made, with the reason for it. Where a reading is uncertain, the record says so.</p><p>This is a reader’s edition: chapters and paragraphs, with no verse numbers, and poetry set line by line. “LORD” in capitals stands for God’s personal name. The introduction and conclusion were written for this edition by Ochorus.</p><p>The Open Word Bible is dedicated to the public domain under CC0 1.0. Anyone may read, copy, print and share it, freely.</p>",
+        "more": "Read every sentence with its reasoning, at all three levels, at",
+        "edition": "This edition was prepared by Ochorus, a free library of Christian classics."
+      }
+    }
+  }
+}

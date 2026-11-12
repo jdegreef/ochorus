@@ -277,7 +277,18 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    Accessible` — never a ribbon of boxed stat cells) ending in one quiet
    "Also in 5 languages" link to the Editions section (never a chip listing
    the language names: they are listed once, in Editions — design review #22),
-   then the read card and the action strip. No third column or floating panel, no
+   then the read card and the action strip. Under the Original ⇄ Modern
+   toggle, one muted line says what Modern changes (top-50 #4). The ONE
+   third column is the "At a glance" panel (top-50 #3, `.book-glance`): only
+   from the hero's 72rem container step, where the end side was empty — the
+   opening line (`firstSentence(book.opening.text)`, captioned with its
+   chapter — opening.py may skip front matter), one bar per chapter
+   (`chapterBars`) and the "Also in" link, which the panel takes over from
+   the facts line (both are in the markup; CSS shows exactly one). About's
+   full opening excerpt stays: hiding it from a second container query lost
+   the paragraph on desktop and could disagree with the hero's query. Below
+   that step the panel is hidden, not stacked: everything in it is said
+   further down a phone's page. No "Good for" row — there is no such field. No other panel, no
    art credit beside the cover (it sits in About this text at the page
    foot), no "Other titles" line (it is a muted line inside About this book).
    On a phone the cover sits beside the title block and the read card comes
@@ -752,6 +763,14 @@ file mark each slot. Rules:
   that proves finished leaves the book card in place. A boot-flag change
   re-pins the app.html hash in `csp.config.js`.
   Sermon-only (or plan-only) progress keeps the hero, with the strip above it.
+- **"Tonight, under 20 minutes"** (idea #27): `TonightShelf`, evening only
+  (19:00–04:00 on the reader's clock, decided at mount), under the book row —
+  below the first screen, so its client-side arrival shifts nothing in view.
+  Pool built into the home snapshot (`$lib/tonightShelf` `tonightPool`: short
+  books, sermons, long bios via `bio_word_count`, this language only); the
+  browser re-times at the reader's pace and hides under 4. Every card is a
+  `BookCard` with `link` (sermon and bio wear plates). On the dashboard it
+  sits above `DailyShelf`.
 - **Not on Home**: "How Ochorus works" and the library-figures + mission band.
   The figures belong to `/about`'s stats band (books and sermons there).
 

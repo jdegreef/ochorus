@@ -42,6 +42,7 @@ from .scripture_graph import (
     classics_page,
     treated_passages,
 )
+from .text import word_count
 
 #: A dated book's slug → its year-long plan's slug.
 DAILY_PLAN_FOR_BOOK = {book: plan for plan, book, *_ in DAILY_PLANS}
@@ -459,17 +460,25 @@ class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     # (``AuthorQuerySet.with_quote_count``). Language-independent, like
     # AuthorDetailSerializer.quote_count: the reader decides which locales link.
     quote_count = serializers.IntegerField(source="reviewed_quotes", read_only=True)
+    # Words in that long biography (0 without one), counted by the same rule as
+    # a chapter's — so the home page's "Tonight, under 20 minutes" shelf can
+    # offer a one-sitting biography without fetching every bio's HTML.
+    bio_word_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
         fields = [
             "slug", "name", "bio", "photo_url", "birth_year", "death_year",
-            "book_count", "sermon_count", "has_long_bio", "quote_count",
+            "book_count", "sermon_count", "has_long_bio", "bio_word_count",
+            "quote_count",
         ]
 
     def get_has_long_bio(self, obj):
         # The long bio is localized like the short one; a translation counts.
         return bool(obj.bio_html_for(self._language()).strip())
+
+    def get_bio_word_count(self, obj):
+        return word_count(obj.bio_html_for(self._language()))
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())

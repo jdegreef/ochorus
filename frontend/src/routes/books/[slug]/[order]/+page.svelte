@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
+	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { chapterMeta } from '$lib/bookSeo';
 	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
@@ -88,6 +89,8 @@
 	import { dismissable } from '$lib/actions/dismissable';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
+	import { BIBLE_SERIES } from '$lib/bible';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
@@ -461,6 +464,12 @@
 	 *  Rides the book fetch above, so it appears once that lands (the button
 	 *  falls back to "Back to contents" until then, and for good offline). */
 	const nextInSeries = $derived(chapter.next ? null : (bookForProgress?.series?.next ?? null));
+	/** On a Bible book's last chapter, the book before it in the canon: the way
+	 *  back to sit beside the big button's way on, so the canon walks both ways.
+	 *  A text link under the button, not a second button (design #18). */
+	const previousBibleBook = $derived(
+		!chapter.next && bookForProgress?.series?.slug === BIBLE_SERIES ? bookForProgress.series.previous : null
+	);
 
 	// Reset the progress when the CHAPTER changes (the effect after the block
 	// below) — a fresh chapter opens at the top until the per-chapter effect
@@ -2322,9 +2331,10 @@
 					{t('reader.modernEdition')}<span class="par-hint">{t('reader.sideBySideMarks')}</span>
 				</p>
 			{/if}
-			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
+			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
+			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(chapter.body_html))}</div>
+			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
 			{#if parallel}
 				<!-- Loaded on demand: only wide-screen readers who turn it on need it. -->
 				{#await import('$lib/components/ParallelModern.svelte') then { default: ParallelModern }}
@@ -2546,6 +2556,14 @@
 				     next one), and Share always — the end of a chapter is when a
 				     reader passes one on. -->
 				<div class="end-aside mt-2 flex items-center justify-center gap-1">
+					{#if previousBibleBook}
+						<a
+							href={localizeHref(`/books/${previousBibleBook.slug}`)}
+							class="end-link"
+							aria-label="{t('bible.previousBook')}: {previousBibleBook.title}"
+							><Arrow back /><span dir="auto">{previousBibleBook.title}</span></a
+						>
+					{/if}
 					{#if chapter.next || nextInSeries}
 						<a href={localizeHref(`/books/${slug}`)} class="end-link"
 							><Icon name="list" size={16} />{t('reader.contents')}</a

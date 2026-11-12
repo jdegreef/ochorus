@@ -203,6 +203,33 @@ class RefindBookmarkTests(SimpleTestCase):
         self.assertIsNone(refind_bookmark([["x", "Amen"]], 0, "Amen"))
         self.assertIsNone(refind_bookmark([["x", "y"]], 0, self.SNIP))
 
+    def test_curly_snippet_matches_the_straight_stored_body(self):
+        # The reader curls quotes at render time; the snippet is cut from that.
+        body = ["x", "\"But,\" said he, \"the critic's word\""]
+        self.assertIsNone(refind_bookmark([body], 1, "“But,” said he, “the critic’s"))
+        self.assertEqual(refind_bookmark([["y", *body]], 1, "“But,” said he, “the critic’s"), 2)
+
+
+class CurlyQuoteAnchorTests(SimpleTestCase):
+    """The reader renders “ ” ‘ ’ where the stored body has straight quotes
+    (frontend $lib/smartQuotes) — an anchor taken either side still holds."""
+
+    STORED = ["\"But,\" said he, \"the critic's observation.\""]
+
+    def test_curly_anchor_on_straight_body_stays_put(self):
+        m = seg(0, 16, 43, "“the critic’s observation.”")
+        self.assertIs(resolve_mark(self.STORED, m), m)
+
+    def test_straight_anchor_on_curly_body_stays_put(self):
+        m = seg(0, 16, 43, "\"the critic's observation.\"")
+        curly = ["“But,” said he, “the critic’s observation.”"]
+        self.assertIs(resolve_mark(curly, m), m)
+
+    def test_curly_anchor_still_follows_a_repair(self):
+        moved = ["Then: " + self.STORED[0]]
+        found = resolve_mark(moved, seg(0, 16, 43, "“the critic’s observation.”"))
+        self.assertEqual((found["s"], found["e"]), (22, 49))
+
 
 class RemapCommandTests(TestCase):
     def setUp(self):

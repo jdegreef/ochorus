@@ -2,6 +2,7 @@
 	import { onDestroy } from 'svelte';
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
+	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getChapterExact, MODERN_EDITION, type Chapter } from '$lib/library-public';
 	import { blockCount, parallelLayout, rowHeights } from '$lib/parallelReading';
@@ -200,9 +201,9 @@
 			<p class="par-note">{t('reader.sideBySideUnaligned')}</p>
 		{/if}
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest, as the
-		     Original's is; rendered the same way (verse, illustrations). -->
+		     Original's is; rendered the same way (quotes, verse, illustrations). -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" bind:this={modernEl} dir="auto" lang="en">{@html assetHtml(markVerse(modern.body_html))}</div>
+		<div class="reading" bind:this={modernEl} dir="auto" lang="en">{@html assetHtml(markVerse(smartQuotesHtml(modern.body_html, MODERN_EDITION)))}</div>
 	{/if}
 </section>
 

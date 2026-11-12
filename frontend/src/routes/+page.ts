@@ -13,7 +13,8 @@ const EMPTY: HomeShelves = {
 	authors: [],
 	topics: [],
 	counts: { books: 0, sermons: 0 },
-	audiences: []
+	audiences: [],
+	tonight: []
 };
 
 // NOTE: this page is prerendered — only PUBLIC data belongs here. Personal

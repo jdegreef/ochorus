@@ -44,10 +44,15 @@
 	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
+	import { chapterBars, chapterRangeText } from '$lib/chapterLengths';
+	import { firstSentence } from '$lib/firstSentence';
 	import { partEnds, partGroups, partLine } from '$lib/bookParts';
+	import { chapterGridFor, chapterNumber } from '$lib/chapterGrid';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import BibleBookNav from '$lib/components/BibleBookNav.svelte';
+	import { BIBLE_SERIES } from '$lib/bible';
 	import JourneyMap from '$lib/components/JourneyMap.svelte';
 	import { journeyMapFor } from '$lib/journeyMaps';
 	import type { BookSummary } from '$lib/library-public';
@@ -57,6 +62,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import GiftBookButton from '$lib/components/GiftBookButton.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
 	import AboutThisText from '$lib/components/AboutThisText.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
@@ -188,6 +194,11 @@
 	// reader's place (see contentsWindow). Hidden rows stay in the HTML — the
 	// prerendered page links every chapter — and "⋯ N chapters" gaps mark them.
 	let showAllChapters = $state(false);
+	// A book of the Bible lists its chapters as numbered chips (1 … 150 for
+	// Psalms) — its titles are only "<Book> <n>" — with the full list a tap
+	// away for a reader who wants each chapter's length ($lib/chapterGrid).
+	let contentsAsList = $state(false);
+	const chipGrid = $derived(chapterGridFor(book) && !contentsAsList);
 	// A book in parts (`Book.parts`, The Pilgrim's Progress) lists each part
 	// under its own heading; any other book is one group with no heading. The
 	// collapse keeps each part's first and last chapter, so no gap runs across
@@ -531,6 +542,20 @@
 		const [before, after = ''] = t('book.alsoInOne').split('%lang%');
 		return { loc, name: localeName(loc), before, after };
 	});
+	// "At a glance" (top-50 #3): the empty end side of a wide hero holds the
+	// book's first line, its chapters as bars and the "Also in" link — all of
+	// it from the page's own payload, no further fetch. Only from the hero's
+	// wide container step (CSS); below it the panel is hidden, since About's
+	// opening aside, Contents and the facts line's link already say the same
+	// further down a phone's page.
+	const firstLine = $derived(book.opening ? firstSentence(book.opening.text) : '');
+	const bars = $derived(
+		chapterBars(
+			book.chapters.map((c) => c.word_count),
+			readingMinutes
+		)
+	);
+	const hasGlance = $derived(!!firstLine || !!bars);
 	// No "about the author" band for a byline that is not a person (the house
 	// imprint, the Bible's translation): its name links to its own page instead.
 	const hasAuthorBand = $derived(!isImprint(book.author));
@@ -712,15 +737,75 @@
 				<p class="mt-2 text-small text-muted">
 					{#each heroFacts as fact, i (fact.text)}{#if i}{' · '}{/if}<span class="whitespace-nowrap" title={fact.title}
 							>{fact.text}</span
-						>{/each}{#if showLanguages}{#if heroFacts.length}{' · '}{/if}<a
-							href="#editions"
-							class="also-in-link whitespace-nowrap"
-							onclick={(e) => spy.jump(e, 'editions', { track: false })}
-							>{#if alsoInOne}{alsoInOne.before}<span lang={alsoInOne.loc} dir="auto">{alsoInOne.name}</span
-								>{alsoInOne.after}{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+						>{/each}{#if showLanguages}<span class="facts-also-in" class:in-glance={hasGlance}
+							>{#if heroFacts.length}{' · '}{/if}{@render alsoInLink()}</span
 						>{/if}
 				</p>
 			</div>
+			<!-- "Also in N languages": ONE link, which the wide hero moves from the
+			     facts line into the At-a-glance panel (CSS shows one of the two). -->
+			{#snippet alsoInLink()}
+				<a
+					href="#editions"
+					class="also-in-link whitespace-nowrap"
+					onclick={(e) => spy.jump(e, 'editions', { track: false })}
+					>{#if alsoInOne}{alsoInOne.before}<span lang={alsoInOne.loc} dir="auto">{alsoInOne.name}</span
+						>{alsoInOne.after}{:else}{t('book.alsoInCount').replace('%n%', String(siblingEditions.length))}{/if}</a
+				>
+			{/snippet}
+
+			<!-- At a glance (top-50 #3): the end side of a wide hero, which the
+			     title block and the read card leave empty. Shown only from the
+			     hero's widest container step; below it every line here is said
+			     further down the page (About's opening aside, Contents, the facts
+			     line's languages link), so a phone gets no longer for it. The
+			     first line is the server's opening excerpt (library/opening.py),
+			     cut to its first sentence. -->
+			{#if hasGlance}
+				<aside class="book-glance" aria-labelledby="glance-heading">
+					<h2 id="glance-heading" class="eyebrow text-muted">{t('book.glance')}</h2>
+					<dl class="mt-3 text-small">
+						{#if firstLine}
+							<div>
+								<dt>{t('book.firstLine')}</dt>
+								<dd class="glance-line font-display" lang={contentLang(book.language)} dir="auto">{firstLine}</dd>
+								<!-- Named, because opening.py skips front matter: the line
+								     may open chapter 2 or 3, not the book. -->
+								<dd class="text-muted" dir="auto">
+									{t('book.openingFrom').replace('%chapter%', book.opening?.chapter ?? '')}
+								</dd>
+							</div>
+						{/if}
+						{#if bars}
+							<div>
+								<dt>{t('book.chapterLengths')}</dt>
+								<dd>
+									<!-- One bar per chapter, as tall as the chapter is long. The
+									     caption carries the figures for a screen reader; the
+									     bars' tooltips name each chapter for a mouse. -->
+									<div class="glance-bars" aria-hidden="true">
+										{#each bars.heights as h, i (i)}
+											{@const ch = book.chapters[i]}
+											<span
+												style:height="{h}%"
+												title="{chapterNameIn(ch.order, ch.title, book.title)} · {readingMinutes(ch.word_count)} {t(
+													'common.min'
+												)}"
+											></span>
+										{/each}
+									</div>
+									<p class="mt-1 text-muted">
+										{chapterRangeText(t('book.chapterRange'), bars)}
+									</p>
+								</dd>
+							</div>
+						{/if}
+					</dl>
+					{#if showLanguages}
+						<p class="mt-4 text-small">{@render alsoInLink()}</p>
+					{/if}
+				</aside>
+			{/if}
 
 			<!-- The action row's container (`.action-host`): it picks strip vs row by
 			     this block's width — the full page width on a phone. -->
@@ -831,13 +916,17 @@
 									onclick={() => (modernHere = { slug: book.slug, modern: true })}>{t('reader.modern')}</button
 								>
 							</div>
+							<!-- What Modern changes (top-50 #4), so the choice is an informed
+							     one: the careful pass (contemporize-book) updates archaic forms
+							     and eases long sentences; meaning, voice and Scripture stay. -->
+							<p class="text-small text-muted">{t('book.modernExplainer')}</p>
 						{/if}
 					</div>
 				</div>
 
-				<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
+				<!-- Everything else is one quiet row of six: keep it (Save, a shelf),
 				     take it away (one Download menu for offline / EPUB / PDF), pass it on
-				     (Share) and look inside (Search). Share and Search are icon-only on
+				     (Share, Give) and look inside (Search). Share and Search are icon-only on
 				     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
 				     B's labelled icon strip. -->
 				<div class="action-strip mt-3">
@@ -846,6 +935,11 @@
 					<BookDownloadMenu {book} />
 					<div class="icon-in-row">
 						<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+					</div>
+					<!-- Give it to someone, with a note: a link that carries the gift
+					     ($lib/gift) to /gift. Icon-only in the row, like Share. -->
+					<div class="icon-in-row">
+						<GiftBookButton slug={book.slug} language={book.language} title={book.title} />
 					</div>
 					<!-- Search inside this book: the real search, scoped to the book. -->
 					<a
@@ -1067,6 +1161,35 @@
 				<p class="mt-1.5 text-small text-muted">{placeLine}</p>
 			</div>
 		{/if}
+		{#if chipGrid}
+		<!-- A Bible book's chapters as chips, every one linked (the prerendered page
+		     still links each chapter): filled behind the reader, ringed where they
+		     are — the list's marks, in the list's colours. The introduction and the
+		     conclusion keep their names. Each chip's full name and length are its
+		     tooltip and its accessible name carries the name. -->
+		<ol class="chapter-grid">
+			{#each book.chapters as ch (ch.order)}
+				{@const n = chapterNumber(ch.title)}
+				{@const read = isRead(ch.order)}
+				{@const current = isCurrent(ch.order)}
+				<li class:wide={n == null}>
+					<a
+						href={readHref(ch.order)}
+						class="chapter-chip"
+						class:read
+						class:current
+						aria-current={current ? 'step' : undefined}
+						aria-label="{chapterName(ch.order, ch.title)}{read ? `, ${t('settings.heatmapRead')}` : ''}"
+						title="{chapterName(ch.order, ch.title)} · {readingMinutes(ch.word_count)} {t('common.min')}"
+						dir="auto">{n ?? chapterName(ch.order, ch.title)}</a
+					>
+				</li>
+			{/each}
+		</ol>
+		<button type="button" class="btn btn-sm btn-ghost mt-3" onclick={() => (contentsAsList = true)}>
+			<Icon name="list" size={16} />{t('bible.contentsAsList')}
+		</button>
+		{:else}
 		<!-- The chapters as a path: a line down the markers, a filled mark with a
 		     tick for each chapter behind the reader, a ring for the one they're in
 		     (its row raised, offering to carry on), a number for the rest. -->
@@ -1131,7 +1254,13 @@
 		</ol>
 		{/each}
 		</div>
-		{#if book.chapters.length > CONTENTS_COLLAPSE_AT}
+		{#if chapterGridFor(book)}
+			<button type="button" class="btn btn-sm btn-ghost mt-2" onclick={() => (contentsAsList = false)}>
+				{t('bible.contentsAsGrid')}
+			</button>
+		{/if}
+		{/if}
+		{#if !chipGrid && book.chapters.length > CONTENTS_COLLAPSE_AT}
 			<button
 				type="button"
 				class="btn btn-sm btn-ghost mt-2"
@@ -1143,6 +1272,11 @@
 					? t('search.showLess')
 					: t('book.contentsShowAll').replace('%n%', String(book.chapters.length))}
 			</button>
+		{/if}
+		<!-- A book of the Bible: on to the next book of the canon, or back to the
+		     one before, so the contents' end is not a dead end (Genesis → Revelation). -->
+		{#if book.series?.slug === BIBLE_SERIES}
+			<BibleBookNav series={book.series} lang={contentLang(book.language)} />
 		{/if}
 	</section>
 
@@ -1515,6 +1649,61 @@
 			width: 13rem;
 		}
 	}
+	/* At a glance (top-50 #3): a third column only where the hero has room for
+	   it — 72rem of container leaves the middle column ~36rem, so the action
+	   strip stays a plain row (its 560px step). Narrower, the panel is hidden
+	   and its "Also in" link stays in the facts line; wider, the link moves
+	   into the panel. */
+	.book-glance {
+		display: none;
+	}
+	@container book-hero (min-width: 72rem) {
+		.book-hero:has(.book-glance) {
+			grid-template-columns: auto minmax(0, 1fr) 18rem;
+		}
+		.book-glance {
+			display: block;
+			grid-column: 3;
+			grid-row: 1 / -1;
+			padding: 1.25rem;
+			border: 1px solid var(--border);
+			border-radius: var(--radius-card);
+			background: color-mix(in srgb, var(--surface) 85%, transparent);
+		}
+		.facts-also-in.in-glance {
+			display: none;
+		}
+	}
+	.book-glance dl > div + div {
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--border);
+	}
+	.book-glance dt {
+		font-weight: 600;
+		color: var(--text);
+	}
+	.book-glance dd {
+		margin-top: 0.375rem;
+	}
+	.glance-line {
+		font-size: var(--fs-body);
+		line-height: 1.45;
+		color: var(--text);
+	}
+	.glance-bars {
+		display: flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 3rem;
+	}
+	.glance-bars span {
+		flex: 1 1 0;
+		min-width: 1px;
+		border-radius: 2px 2px 0 0;
+		background: color-mix(in srgb, var(--accent) 55%, var(--surface));
+	}
+
 	/* The edition toggle: full width under the read button, two even halves. */
 	.edition-seg button {
 		flex: 1 1 0;
@@ -1758,6 +1947,44 @@
 		font-size: var(--fs-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--muted);
+	}
+	/* A Bible book's chapter chips: the contents marks, grown to a tap target
+	   and laid in a grid; the introduction and conclusion span a few cells. */
+	.chapter-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+		gap: 0.375rem;
+		margin-top: 0.75rem;
+	}
+	.chapter-grid > li.wide {
+		grid-column: span 4;
+	}
+	.chapter-chip {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding-inline: 0.25rem;
+		border: 1.5px solid var(--border-strong);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		font-size: var(--fs-small);
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+	}
+	.chapter-chip:not(.read):hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.chapter-chip.read {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.chapter-chip.current {
+		border: 2px solid var(--accent);
+		font-weight: 600;
+		color: var(--accent);
 	}
 	.contents-mark.read {
 		border-color: var(--accent);

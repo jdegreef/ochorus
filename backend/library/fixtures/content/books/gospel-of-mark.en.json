@@ -45,7 +45,7 @@
   "source_url": "https://openwordbible.org/read/#mrk",
   "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
   "cover_url": "/covers/art/gospel-of-mark.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/gospel-of-mark.pdf?download=gospel-of-mark.pdf",
   "cover_color": "#7a3b22",
   "series": [
    "the-bible"
