@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { compactWords, edgeSlot, lengthBuckets } from './chapterLengths';
+import { chapterBars, compactWords, edgeSlot, lengthBuckets } from './chapterLengths';
 
 const DATA = {
 	edges: [150, 500, 1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 12000, 16000],
@@ -53,5 +53,29 @@ describe('edgeSlot', () => {
 		expect(edgeSlot(DATA, 150)).toBe(1);
 		expect(edgeSlot(DATA, 8000)).toBe(9);
 		expect(edgeSlot(DATA, 7)).toBe(-1);
+	});
+});
+
+describe('chapterBars', () => {
+	const min = (w: number) => Math.max(1, Math.round(w / 200));
+
+	it('scales each chapter to the longest, with a floor for a short one', () => {
+		expect(chapterBars([1000, 4000, 2000, 50], min)).toEqual({
+			heights: [25, 100, 50, 8],
+			shortest: 1,
+			longest: 20
+		});
+	});
+
+	it('leaves an empty chapter at zero and out of the range', () => {
+		expect(chapterBars([0, 400, 800, 1600], min)?.heights).toEqual([0, 25, 50, 100]);
+		expect(chapterBars([0, 400, 800, 1600], min)?.shortest).toBe(2);
+	});
+
+	it('draws nothing for a tiny or a very long book', () => {
+		expect(chapterBars([500, 900], min)).toBeNull();
+		expect(chapterBars([0, 0, 500, 900], min)).toBeNull();
+		expect(chapterBars(Array(61).fill(500), min)).toBeNull();
+		expect(chapterBars(Array(60).fill(500), min)).not.toBeNull();
 	});
 });

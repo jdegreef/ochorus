@@ -273,7 +273,15 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    Accessible` — never a ribbon of boxed stat cells) ending in one quiet
    "Also in 5 languages" link to the Editions section (never a chip listing
    the language names: they are listed once, in Editions — design review #22),
-   then the read card and the action strip. No third column or floating panel, no
+   then the read card and the action strip. Under the Original ⇄ Modern
+   toggle, one muted line says what Modern changes (top-50 #4). The ONE
+   third column is the "At a glance" panel (top-50 #3, `.book-glance`): only
+   from the hero's 72rem container step, where the end side was empty — the
+   first line (`firstSentence(book.opening.text)`), one bar per chapter
+   (`chapterBars`) and the "Also in" link, MOVED there from the facts line
+   (CSS shows one of the two), never a second copy. Below that step it is
+   hidden, not stacked: everything in it is said further down a phone's
+   page. No "Good for" row — there is no such field. No other panel, no
    art credit beside the cover (it sits in About this text at the page
    foot), no "Other titles" line (it is a muted line inside About this book).
    On a phone the cover sits beside the title block and the read card comes

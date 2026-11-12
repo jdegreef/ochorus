@@ -53,3 +53,25 @@ export const edgeSlot = (d: ChapterLengths, value: number) => {
 	const i = d.edges.indexOf(value);
 	return i < 0 ? -1 : i + 1;
 };
+
+/**
+ * The book page's "At a glance" bars: one per chapter, its height the
+ * chapter's share of the longest (a floor keeps a two-line preface visible),
+ * and the range in reading minutes for the caption. Null when a chart would
+ * say nothing: fewer than three chapters with words, or more than `max` —
+ * past that the bars are hairlines and the contents list says it better.
+ */
+export function chapterBars(
+	words: number[],
+	minutes: (w: number) => number,
+	max = 60
+): { heights: number[]; shortest: number; longest: number } | null {
+	const counted = words.filter((w) => w > 0);
+	if (counted.length < 3 || words.length > max) return null;
+	const top = Math.max(...counted);
+	return {
+		heights: words.map((w) => (w > 0 ? Math.max(8, Math.round((w / top) * 100)) : 0)),
+		shortest: minutes(Math.min(...counted)),
+		longest: minutes(top)
+	};
+}
