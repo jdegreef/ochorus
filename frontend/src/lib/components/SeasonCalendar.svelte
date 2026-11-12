@@ -142,11 +142,18 @@
 	/* Doors in rows of whatever fits: four on a phone, six or seven wider. */
 	.doors {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 5.25rem), 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 4.25rem), 1fr));
 		gap: 0.5rem;
 		margin: 0;
 		padding: 0;
 		list-style: none;
+	}
+	/* A phone's column (~20rem) fits four only from a smaller minimum; wider,
+	   doors keep room for the reading written on them. */
+	@media (min-width: 40rem) {
+		.doors {
+			grid-template-columns: repeat(auto-fill, minmax(5.25rem, 1fr));
+		}
 	}
 	.door {
 		position: relative;
@@ -185,6 +192,15 @@
 	.door-title {
 		font-weight: 600;
 		text-wrap: balance;
+		overflow-wrap: anywhere;
+		hyphens: auto;
+	}
+	/* A phone's door is small: two lines of title leave the reference room. */
+	@media (max-width: 39.99rem) {
+		.door-title {
+			-webkit-line-clamp: 2;
+			line-clamp: 2;
+		}
 	}
 	.door-ref {
 		margin-top: auto;
