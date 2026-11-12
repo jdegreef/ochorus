@@ -7968,6 +7968,46 @@ BODY_CORRECTIONS.setdefault("the-shameful-sufferer", {}).setdefault("replacement
     ("<p>OH what shall I do", "<p>“OH what shall I do")
 )
 
+# The Imitation of Christ (Croft & Bolton, via CCEL): four chapters open on a
+# drop-capped quotation whose OPENING mark was lost with the drop cap — ch2
+# (John 8:12), ch27 (Luke 17:21), ch39 (Ps 85:8) and ch40 (1 Sam 3:10). The
+# closing mark is there in each, so the repair is forced. Reported by five
+# translators (uk, hi, ar, sw, lg); am/ar/fr/ko/sw/uk/vi already supplied the
+# mark, and the es/hi/pt/lg pairs below repair the editions that reproduced
+# the loss, each matching only its own language's text.
+# Checked and deliberately NOT changed, because three independent copies of
+# the Croft & Bolton text print them as we do (the translators' own wording,
+# not extraction loss): ch24 "the Son of God will come" (Luke 12:40 has "Son
+# of Man"), ch111 "which You have hidden from those who fear You" (Vulgate Ps
+# 30:20 "abscondisti timentibus te"), ch33 "trust yourself to the glory of
+# Him" (Latin "fidelitati"), ch1 "nor any attempt to solve in further
+# confusion" (likely "involve"; no printed scan reachable to settle it).
+BODY_CORRECTIONS.setdefault("the-imitation-of-christ", {}).setdefault("replacements", []).extend([
+    # en
+    ("<p>HE WHO follows Me, walks not", "<p>“HE WHO follows Me, walks not"),
+    ("<p>THE kingdom of God is within you,”", "<p>“THE kingdom of God is within you,”"),
+    ("<p>I WILL hear what the Lord God will speak in me.”", "<p>“I WILL hear what the Lord God will speak in me.”"),
+    ("<p>SPEAK, Lord, for Thy servant heareth.”", "<p>“SPEAK, Lord, for Thy servant heareth.”"),
+    # es
+    ("<p>EL QUE me sigue, no andará", "<p>«EL QUE me sigue, no andará"),
+    ("<p>EL reino de Dios dentro de vosotros está»", "<p>«EL reino de Dios dentro de vosotros está»"),
+    ("<p>ESCUCHARÉ lo que el Señor Dios hablará en mí.»", "<p>«ESCUCHARÉ lo que el Señor Dios hablará en mí.»"),
+    ("<p>HABLA, Señor, que tu siervo oye.»", "<p>«HABLA, Señor, que tu siervo oye.»"),
+    # pt
+    ("<p>AQUELE que me segue não andará", "<p>“AQUELE que me segue não andará"),
+    ("<p>O REINO de Deus está dentro de vocês”", "<p>“O REINO de Deus está dentro de vocês”"),
+    ("<p>OUVIREI o que o Senhor Deus falará em mim.”", "<p>“OUVIREI o que o Senhor Deus falará em mim.”"),
+    ("<p>FALA, Senhor, porque o Teu servo ouve.”", "<p>“FALA, Senhor, porque o Teu servo ouve.”"),
+    # hi
+    ("<p>जो मेरे पीछे हो लेगा, वह अंधकार में न चलेगा,”", "<p>“जो मेरे पीछे हो लेगा, वह अंधकार में न चलेगा,”"),
+    ("<p>परमेश्वर का राज्य तुम्हारे भीतर है,”", "<p>“परमेश्वर का राज्य तुम्हारे भीतर है,”"),
+    ("<p>मैं सुनूँगा कि प्रभु परमेश्वर मुझ में क्या कहेगा।”", "<p>“मैं सुनूँगा कि प्रभु परमेश्वर मुझ में क्या कहेगा।”"),
+    ("<p>हे प्रभु, कह, क्योंकि तेरा दास सुन रहा है।”", "<p>“हे प्रभु, कह, क्योंकि तेरा दास सुन रहा है।”"),
+    # lg (ch2/ch27 already carry the mark)
+    ("<p>Nnaawulirizanga Mukama Katonda by’agamba munda mu nze.”", "<p>“Nnaawulirizanga Mukama Katonda by’agamba munda mu nze.”"),
+    ("<p>YOGERA, Ayi Mukama kubanga omuweereza wo awulira.”", "<p>“YOGERA, Ayi Mukama kubanga omuweereza wo awulira.”"),
+])
+
 # OCR/extraction slips found while translating Watson's book to Portuguese (batch 4). Watson's text is scripture-dense and heavily OCR-damaged; each fix is forced by the KJV verse quoted or by grammar/citation. Two orphan close-quotes clear audit findings (baseline re-pinned).
 BODY_CORRECTIONS.setdefault('all-things-for-good', {}).setdefault("replacements", []).extend([
     ('The certainly of the privilege', 'The certainty of the privilege'),
