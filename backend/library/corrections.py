@@ -8346,11 +8346,14 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("antes que Deus possa usá-los.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("반드시 새로운 세례를 받아야 합니다.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Transcription slips the ko translators hit (#7659), each with one reading:
 # misread letters, a lost word, stray punctuation inside citations, and two
-# miscited references (2 John has one chapter; the words quoted are 1 John
-# 5:10, and Torrey's "i Cor." is the digit 1). Torrey's wording is untouched.
+# miscited references (2 John has one chapter and the words quoted are 1 John
+# 5:10; "John ii. 1-2" in the too-great-a-sinner list is the Advocate of 1 John
+# 2:1-2, not Cana; and Torrey's "i Cor." is the digit 1). Torrey's wording is untouched.
 BODY_CORRECTIONS["how-to-bring-men-to-christ"].setdefault("replacements", []).extend([
     ("after that the Holy Ghost, is come upon you",
      "after that the Holy Ghost is come upon you"),                # ch1, Acts 1:8
@@ -8358,6 +8361,8 @@ BODY_CORRECTIONS["how-to-bring-men-to-christ"].setdefault("replacements", []).ex
     ("1 Cor. xv.; 1‒4", "1 Cor. xv. 1‒4"),                         # ch4
     ("No matter how selfrighteous a man is",
      "No matter how self-righteous a man is"),                     # ch6
+    ("1 John iv. 14; John ii. 1‒2; Isaiah xliv. 22",
+     "1 John iv. 14; 1 John ii. 1‒2; Isaiah xliv. 22"),            # ch5, the Advocate
     ("I have a friend who always uses Amos. iv. 11, 12",
      "I have a friend who always uses Amos iv. 11, 12"),           # ch7
     ("2 John v. 10, is very effective", "1 John v. 10, is very effective"),  # ch8
