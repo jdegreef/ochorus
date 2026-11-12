@@ -16091,6 +16091,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/on-first-principles": {
+			"ground": "b50bd2dd41768e4e0126e10da6a1833aa11c6ce4e0b6b601edb0ba5165473754",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[86, 102, 514, 131]
+				],
+				"title": [
+					[134, 300, 466, 366],
+					[152, 349, 448, 415]
+				],
+				"subtitle": [
+					[166, 444, 434, 465],
+					[159, 465, 441, 486]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
+		},
 		"fr/on-loving-god": {
 			"ground": "b3d598cea04c02587769b124238cf9c7caab4e11539219ce6c75ba0067d13bcd",
 			"style": "inscriptional",

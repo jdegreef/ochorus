@@ -24782,3 +24782,18 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])
+
+# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
+# French (job #7204). Each is a one-letter misread forced by grammar or sense;
+# the French edition already renders the corrected word.
+BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
+    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
+    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
+    ("a matter requiting examination", "a matter requiring examination"),
+    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
+    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
+    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
+    ("bodies would nor possess a desire", "bodies would not possess a desire"),
+    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
+    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
+])
