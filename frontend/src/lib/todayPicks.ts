@@ -43,6 +43,17 @@ async function verseOf(verses: (Verse & { from: DailyEntry })[], lang: string): 
 }
 
 /**
+ * The verse alone for the local date of `day` — what the home-screen widget
+ * stores for the next few days ($lib/widgetSync), chosen exactly as
+ * `loadTodayPicks` chooses it, so the widget and the Today card agree. Null
+ * when the language has none, or the fetch failed.
+ */
+export async function loadDayVerse(day: Date, lang: string): Promise<TodayPicks['verse']> {
+	const readings = await getDailyShelf(dateKey(day), lang).then((r) => r.readings, () => []);
+	return verseOf(pickToday(readings, day).verses, lang);
+}
+
+/**
  * Today's picks in `lang` for the local date of `now`. A failed fetch leaves
  * that pick null (a language with no devotional has no verse or reading, one
  * with no sermon no sermon) rather than failing the whole day.

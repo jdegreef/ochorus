@@ -10,7 +10,7 @@
    app.html applies before first paint. The rest load as their own sheets
    ($lib/fontSheets.ts has the map):
 
-   * Each non-Latin script's faces — fonts-ar / -hi / -uk / -am / -ko.css —
+   * Each non-Latin script's faces — fonts-ar / -hi / -uk / -am / -ko / -ja.css —
      linked by the root layout on that locale's documents (the locale is fixed
      per document; a locale switch is a full load). The stacks below still NAME
      every family: off its locale a family is undeclared and the browser skips
@@ -238,9 +238,9 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif JP', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans JP', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
@@ -300,7 +300,7 @@
 	   script declares only the cover tokens and --font-display: a var() the
 	   card never declares invalidates the whole stack, and the title lands in
 	   Times with nothing to say so. */
-	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
+	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans JP', 'Noto Sans KR', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']
@@ -423,9 +423,9 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif JP', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans JP', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
@@ -1331,7 +1331,7 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+:is(article .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)):not(:lang(ja))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -1367,10 +1367,10 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 }
 @media (prefers-reduced-motion: no-preference) {
 	@supports (color: color-mix(in srgb, red calc(1 * 50%), blue)) {
-		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)) {
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)):not(:lang(ja)) {
 			animation: ink-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s backwards;
 		}
-		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+		article:not(.paged) .reading.ink-in:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko)):not(:lang(ja))::first-letter {
 			color: color-mix(in srgb, var(--initial) calc(var(--initial-ink) * 100%), transparent);
 			text-shadow:
 				0.035em 0.035em 0 color-mix(in srgb, var(--ornament) calc(var(--initial-ink) * 75%), transparent),
@@ -3605,11 +3605,25 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 /* On the element itself, not as a descendant of a Korean ancestor: <html
    lang="ko"> is an ancestor of everything, so a descendant rule would also
-   strip the real Fraunces italic from a Latin island (lang="en") on the page. */
-:is(em, i, cite):lang(ko) {
+   strip the real Fraunces italic from a Latin island (lang="en") on the page.
+   The rules themselves sit below the Japanese block, which shares them. */
+
+/* Japanese. Unlike Korean it is written without spaces, so the browser's
+   default — a break between any two characters — is right; `line-break:
+   strict` adds the kinsoku rules a Japanese reader expects (no small kana or
+   closing bracket at the start of a line). Like Hangul, kana and kanji have no
+   italic (Noto Serif/Sans JP ship none), so emphasis keeps its weight rather
+   than taking a synthesised slant — the rules below, for both — and Japanese
+   takes no dropped initial.
+   The faces load from $lib/fonts-ja.css, on Japanese pages only. */
+:lang(ja) {
+	line-break: strict;
+	overflow-wrap: break-word;
+}
+:is(em, i, cite):is(:lang(ko), :lang(ja)) {
 	font-style: normal;
 	font-weight: 600;
 }
-:is(blockquote, .italic):lang(ko) {
+:is(blockquote, .italic):is(:lang(ko), :lang(ja)) {
 	font-style: normal;
 }

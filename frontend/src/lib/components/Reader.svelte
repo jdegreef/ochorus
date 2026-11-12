@@ -70,6 +70,8 @@
 		/** Shown in the OS media session while reading aloud. */
 		listenTitle: string;
 		listenArtist: string;
+		/** Site paths of the lock-screen artwork, best first. */
+		listenArtwork?: (string | null | undefined)[];
 		/** Extra classes on the prose element, for surfaces with their own band width. */
 		class?: string;
 		/** The rendered prose, for pages that measure it (outlines, bookmarks). */
@@ -122,6 +124,7 @@
 		cite,
 		listenTitle,
 		listenArtist,
+		listenArtwork,
 		class: className = '',
 		body = $bindable(),
 		frac = $bindable(0),
@@ -267,6 +270,7 @@
 		topIndex: topVisibleIndex,
 		listenTitle: () => listenTitle,
 		listenArtist: () => listenArtist,
+		listenArtwork: () => listenArtwork ?? [],
 		cite: () => cite,
 		searchQuery: () => $page.url.searchParams.get('q') ?? ''
 	});

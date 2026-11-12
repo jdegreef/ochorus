@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">오늘의 말씀</string>
+    <string name="widget_today_description">Ochorus의 오늘의 말씀, 매일 새롭게.</string>
+    <string name="widget_continue_name">계속 읽기</string>
+    <string name="widget_continue_description">읽던 책의 그 자리로 한 번에 돌아가세요.</string>
+    <string name="widget_placeholder">Ochorus를 열어 시작하세요.</string>
+</resources>

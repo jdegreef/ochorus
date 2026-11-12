@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">Verset du jour</string>
+    <string name="widget_today_description">Le verset du jour d’Ochorus, nouveau chaque jour.</string>
+    <string name="widget_continue_name">Poursuivre la lecture</string>
+    <string name="widget_continue_description">Votre livre, à un geste de là où vous en étiez.</string>
+    <string name="widget_placeholder">Ouvrez Ochorus pour commencer.</string>
+</resources>

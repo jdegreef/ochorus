@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">Olunyiriri lwa leero</string>
+    <string name="widget_today_description">Olunyiriri lwa leero okuva mu Ochorus, olupya buli lunaku.</string>
+    <string name="widget_continue_name">Weeyongere okusoma</string>
+    <string name="widget_continue_description">Ekitabo kyo, okukwatako omulundi gumu n’oddayo w’okomye.</string>
+    <string name="widget_placeholder">Ggulawo Ochorus otandike.</string>
+</resources>

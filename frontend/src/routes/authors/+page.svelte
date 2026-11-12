@@ -9,6 +9,7 @@
 	import { SvelteSet } from 'svelte/reactivity';
 	import { tick } from 'svelte';
 	import { ORIGINALS_SLUG } from '$lib/originals';
+	import { OWB_SLUG } from '$lib/openWordBible';
 	import type { PageData } from './$types';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -31,8 +32,11 @@
 	let { data }: { data: PageData } = $props();
 	const t = i18n.t;
 
-	// The imprint is not a person and has no author page — /originals instead.
-	const groups = $derived(authorIndex(data.authors, data.books, lang.current, [ORIGINALS_SLUG]));
+	// The imprint and the translation are not people and have no author page —
+	// /originals and /open-word-bible instead.
+	const groups = $derived(
+		authorIndex(data.authors, data.books, lang.current, [ORIGINALS_SLUG, OWB_SLUG])
+	);
 	const rowGroups = $derived(indexRows(groups));
 	const writerCount = $derived(groups.reduce((n, g) => n + g.entries.length, 0));
 

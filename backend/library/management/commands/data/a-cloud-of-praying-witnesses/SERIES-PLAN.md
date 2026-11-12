@@ -213,14 +213,14 @@ told…"). Known cases are flagged ⚑ below.
 | 3 | An Orphanage Built on Prayer | August Hermann Francke | Psalm 68:5 |
 | 4 | The Fire Shall Never Go Out | Herrnhut, 1727 | Leviticus 6:13 |
 | 5 | Worthy Is the Lamb | Zinzendorf and the Moravian missions | Revelation 5:9 |
-| 6 | The Apron Over Her Head | Susanna Wesley ★ | Psalm 31:20 |
+| 6 | The Apron over Her Head | Susanna Wesley ★ | Psalm 31:20 |
 | 7 | "God Does Nothing but in Answer to Prayer" | John Wesley ★ | James 4:2 |
 | 8 | Oh, That You Would Tear the Heavens | George Whitefield ★ | Isaiah 64:1 |
 | 9 | A Concert of Prayer | Jonathan Edwards ★ | Zechariah 8:21 |
 | 10 | Praying in the Snow | David Brainerd ★ | Galatians 4:19 |
 | 11 | Revive Your Work | Cambuslang, 1742 | Habakkuk 3:2 |
-| 12 | "Résister" | Marie Durand and the Huguenot women | Galatians 6:9 |
-| 13 | Ask Large Petitions | John Newton ★ and the Olney prayer meeting | Ephesians 3:20 |
+| 12 | Résister | Marie Durand and the Huguenot women | Galatians 6:9 |
+| 13 | Ask Large Petitions | John Newton ★ and the Olney prayer meeting | Ephesians 3:20–21 |
 | 14 | Pulled from Their Knees | Richard Allen ★ and Absalom Jones ★ | Galatians 3:28 |
 | 15 | All the Families of the Nations | Samson Occom ★ | Psalm 22:27 |
 | 16 | The Prayer Call of 1784 | Northamptonshire Baptists | Isaiah 54:2 |

@@ -56,9 +56,13 @@ export const RULE = '#d9c29a';
 // Every face a card can need, in fallback order: fontconfig takes each glyph
 // from the first family that has it, so one description serves every script.
 export const SERIF =
-	'Fraunces, PT Serif, Amiri, Tiro Devanagari Hindi, Noto Serif Ethiopic, Noto Serif KR';
+	'Fraunces, PT Serif, Amiri, Tiro Devanagari Hindi, Noto Serif Ethiopic, Noto Serif JP, Noto Serif KR';
 export const SANS =
-	'Hanken Grotesk, PT Sans, Noto Sans Arabic, Noto Sans Devanagari, Noto Sans Ethiopic, Noto Sans KR';
+	'Hanken Grotesk, PT Sans, Noto Sans Arabic, Noto Sans Devanagari, Noto Sans Ethiopic, Noto Sans JP, Noto Sans KR';
+
+/** Card languages whose scripts have no italic: a synthesised slant on them
+ *  reads as a rendering fault, so their quotes and titles stay upright. */
+export const UPRIGHT = new Set(['ar', 'hi', 'am', 'ko', 'ja']);
 
 // ── Text ────────────────────────────────────────────────────────────────────
 

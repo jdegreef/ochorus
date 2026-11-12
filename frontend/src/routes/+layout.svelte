@@ -71,7 +71,9 @@
 	// site's iframe. No nav, footer or tab bar, and nothing that prompts —
 	// no One Tap, install or update toasts, feedback button or service worker
 	// — and its look is the one the host page asked for (?theme=), not the
-	// reader's stored theme.
+	// reader's stored theme. No sign-in either: it shows only public picks, and
+	// a reader's session has no business restoring (or syncing) inside a
+	// church's page, so Supabase is never loaded there.
 	const embedded = $derived(isEmbedRoute($page.route.id));
 
 	// The phone app's native shell (safe areas, outside links, Android's Back,
@@ -109,6 +111,25 @@
 		})
 	);
 
+	// The phone's home-screen widgets (Today, Continue) are fed from here, once
+	// the page is idle; app only — the website's bundle has none of it.
+	let widgetSync: typeof import('$lib/widgetSync') | undefined;
+	if (IS_APP) {
+		onMount(() => {
+			let stop: (() => void) | undefined;
+			const cancelIdle = onIdle(() => {
+				void import('$lib/widgetSync').then((m) => {
+					widgetSync = m;
+					stop = m.startWidgetSync();
+				});
+			});
+			return () => {
+				cancelIdle();
+				stop?.();
+			};
+		});
+	}
+
 	// ⌘K / Ctrl+K toggles the palette from anywhere. It lives here rather than
 	// in CommandPalette so the very first press works before the palette's code
 	// has loaded; flipping the flag is what loads it.
@@ -126,7 +147,7 @@
 		readerPrefs.init();
 		pageWidth.init();
 		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
-		auth.init();
+		if (!embedded) auth.init();
 		if (!embedded) pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
@@ -173,6 +194,8 @@
 		// across chapter-to-chapter turns (same route), drop it on anything else.
 		if (from?.route.id !== to?.route.id) readerUi.exitFocus();
 		install.touch();
+		// A chapter just opened has saved the reader's place: the Continue widget.
+		widgetSync?.syncWidgetsSoon();
 	});
 
 	// The reader's optional faces, once the reader has picked one:

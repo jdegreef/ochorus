@@ -417,6 +417,9 @@ services:
       - path: /ko/embed/*
         name: Content-Security-Policy
         value: "frame-ancestors *"
+      - path: /ja/embed/*
+        name: Content-Security-Policy
+        value: "frame-ancestors *"
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
@@ -592,6 +595,11 @@ services:
       - type: redirect
         source: /authors/ochorus-originals
         destination: /originals/
+      # The Open Word Bible is the Bible's translation, not a person: its byline
+      # links to a page about it. Localized URLs: the author page's own load.
+      - type: redirect
+        source: /authors/open-word-bible
+        destination: /open-word-bible/
       # The two author slugs people guess most (the initial left out). Neither
       # source is, or can become, a real page: author slugs keep the initial.
       # Every other near-miss slug is recovered by the not-found page itself
@@ -799,6 +807,9 @@ services:
       - type: rewrite
         source: /ko
         destination: /ko.html
+      - type: rewrite
+        source: /ja
+        destination: /ja.html
       # Each UI locale's index pages: one `:lang` rule per page (Render
       # substitutes the placeholder into the destination). A `:lang` that is not
       # a locale (`/x/books`) rewrites to a .html that does not exist and gets a

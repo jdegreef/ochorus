@@ -13,7 +13,8 @@ vi.mock('$lib/progress', () => ({
 	isFinished: (slug: string) => state.finished.has(slug),
 	allProgress: () =>
 		[...state.finished].map((slug) => ({ slug, kind: 'book', finished_at: Date.now(), at: Date.now() })),
-	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) })
+	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) }),
+	getProgressRecord: () => null
 }));
 // jsdom has no IntersectionObserver: this one reports the arrival in view at once.
 class InViewObserver {

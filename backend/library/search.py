@@ -37,7 +37,15 @@ from django.db.models.functions import Coalesce
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import STORED_KINDS, config_for, positive_words, search_query
+from .fts import (
+    STORED_KINDS,
+    SUBSTRING_LANGUAGES,
+    config_for,
+    positive_words,
+    query_tokens,
+    search_query,
+    uses_fts,
+)
 from .http_cache import MAX_AGE
 from .models import (
     Article,
@@ -60,6 +68,12 @@ MAX_RESULTS = 30
 # 2-character query is a real search in e.g. Chinese; every caller that asks the
 # engine for anything applies it, so it lives here rather than at each entry.
 MIN_QUERY_LEN = 2
+
+
+def min_query_len(language: str) -> int:
+    """The shortest query worth running: one character in a SUBSTRING_LANGUAGE,
+    where a single kanji (神, 愛, 罪, 主) is a whole word."""
+    return 1 if language in SUBSTRING_LANGUAGES else MIN_QUERY_LEN
 
 # Navigational (entity) matches lead over body-text matches: a book/author/topic
 # whose title *is* the query is almost always what the reader wants.
@@ -121,6 +135,9 @@ def memoized(name: str, compute, *key):
 
 
 _SPACE = re.compile(r"\s")
+#: Scripts written without spaces (kana, kanji, full-width forms): a snippet may
+#: start mid-run there, since there is no word boundary to back off to.
+_UNSPACED = re.compile(r"[\u3000-\u30ff\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]")
 
 
 def to_word_end(text: str, end: int, floor: int) -> str:
@@ -152,7 +169,10 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     # Cut on word boundaries: "…erywhere who desire" reads as a typo.
     if start > 0 and not text[start - 1].isspace():
         space = _SPACE.search(text, start, idx)
-        start = space.end() if space else idx
+        if space:
+            start = space.end()
+        elif not _UNSPACED.match(text, start):
+            start = idx
     prefix = "…" if start > 0 else ""
     suffix = "…" if end < len(text) else ""
     excerpt = to_word_end(text, end, idx + len(query))[start:] if suffix else text[start:end]
@@ -334,7 +354,7 @@ TOASTED = frozenset({"chapter", "sermon"})
 
 
 @contextmanager
-def _index_scans():
+def _index_scans(language: str):
     """Steer Postgres off sequential scans for the TOASTED kinds' queries inside.
 
     library_chapter's heap is ~20 MB and its vectors ~750 MB beside it, and the
@@ -353,7 +373,7 @@ def _index_scans():
     setting from leaking to the next request on a pooled connection. If the
     body raises, rolling the atomic block back reverts the setting with it.
     """
-    if connection.vendor != "postgresql":
+    if not uses_fts(language):  # SQLite, or a substring search: no vectors read
         yield
         return
     # Inside a caller's transaction (a test, an atomic view) SET LOCAL lasts
@@ -383,7 +403,7 @@ def search_library(q: str, language: str, scope=None) -> list[dict]:
     chapters, sermons = qs["chapter"], qs["sermon"]
 
     ctx = _Ctx(q=q, language=language)
-    if connection.vendor == "postgresql":
+    if uses_fts(language):
         base = _search_postgres(ctx, qs)
     else:
         base = _search_fallback(ctx, qs)
@@ -548,7 +568,7 @@ def _search_postgres(ctx, qs):
     pairs += entity("topic", _topic_hit)
     pairs += entity("plan", _plan_hit)
     pairs += entity("article", _article_hit)
-    with _index_scans():
+    with _index_scans(ctx.language):
         pairs += passages("chapter", _chapter_hit, "book__sort_order", "order")
         pairs += passages("sermon", _sermon_hit, "sort_order")
 
@@ -556,86 +576,32 @@ def _search_postgres(ctx, qs):
     return [hit for _, hit in pairs[:MAX_RESULTS]]
 
 
-# --- SQLite fallback (dev) ----------------------------------------------------
+# --- Substring search (SQLite dev, and SUBSTRING_LANGUAGES) ---------------------
 
 
 def _search_fallback(ctx, qs):
-    authors, books, topics = qs["author"], qs["book"], qs["topic"]
-    plans, articles = qs["plan"], qs["article"]
-    chapters, sermons = qs["chapter"], qs["sermon"]
+    """Substring search: SQLite (dev), and the SUBSTRING_LANGUAGES everywhere."""
+    def rows(kind, *order):
+        return _match(kind, ctx, qs[kind]).order_by(*order)[: CAPS[kind]]
 
-    q = ctx.q
-    author_hits = [
-        _author_hit(a, ctx)
-        for a in authors.filter(
-            Q(name__icontains=q) | Q(bio__icontains=q)
-        ).order_by("name")[: CAPS["author"]]
-    ]
-    book_hits = [
-        _book_hit(b, ctx)
-        for b in books.filter(
-            Q(title__icontains=q)
-            | Q(subtitle__icontains=q)
-            | Q(description__icontains=q)
-            | Q(author__name__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["book"]]
-    ]
-    topic_hits = [
-        _topic_hit(tp, ctx)
-        for tp in topics.filter(
-            Q(title__icontains=q)
-            | Q(description__icontains=q)
-            | Q(translations__title__icontains=q)
-            | Q(translations__description__icontains=q)
-        )
-        .distinct()
-        .order_by("title")[: CAPS["topic"]]
-    ]
-    plan_hits = [
-        _plan_hit(p, ctx)
-        for p in plans.filter(
-            Q(title__icontains=q) | Q(description__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["plan"]]
-    ]
-    article_hits = [
-        _article_hit(ar, ctx)
-        for ar in articles.filter(
-            Q(h1__icontains=q)
-            | Q(meta_title__icontains=q)
-            | Q(description__icontains=q)
-        ).order_by("sort_order", "h1")[: CAPS["article"]]
-    ]
-
-    chapter_hits = [
-        _chapter_hit(c, snippet=fallback_snippet(c.body_text, q))
-        for c in chapters.filter(
-            Q(body_text__icontains=q)
-            | Q(title__icontains=q)
-            | Q(book__title__icontains=q)
-            | Q(book__subtitle__icontains=q)
-            | Q(book__author__name__icontains=q)
-        ).order_by("book__sort_order", "book__title", "order")[: CAPS["chapter"]]
-    ]
-    sermon_hits = [
-        _sermon_hit(s, snippet=fallback_snippet(s.body_text, q))
-        for s in sermons.filter(
-            Q(body_text__icontains=q)
-            | Q(title__icontains=q)
-            | Q(scripture_ref__icontains=q)
-            | Q(author__name__icontains=q)
-        ).order_by("sort_order", "title")[: CAPS["sermon"]]
-    ]
-
-    # Entities first (navigational), then passages, capped overall.
+    # The snippet centres on the first word; every word is in the row somewhere.
+    lead = _snippet_term(ctx)
     results = (
-        author_hits
-        + book_hits
-        + topic_hits
-        + plan_hits
-        + article_hits
-        + chapter_hits
-        + sermon_hits
+        [_author_hit(a, ctx) for a in rows("author", "name")]
+        + [_book_hit(b, ctx) for b in rows("book", "sort_order", "title")]
+        + [_topic_hit(tp, ctx) for tp in rows("topic", "title")]
+        + [_plan_hit(p, ctx) for p in rows("plan", "sort_order", "title")]
+        + [_article_hit(ar, ctx) for ar in rows("article", "sort_order", "h1")]
+        + [
+            _chapter_hit(c, snippet=fallback_snippet(c.body_text, lead))
+            for c in rows("chapter", "book__sort_order", "book__title", "order")
+        ]
+        + [
+            _sermon_hit(sm, snippet=fallback_snippet(sm.body_text, lead))
+            for sm in rows("sermon", "sort_order", "title")
+        ]
     )
+    # Entities first (navigational), then passages, capped overall.
     return results[:MAX_RESULTS]
 
 
@@ -650,8 +616,58 @@ def _search_fallback(ctx, qs):
 # come from different filters.
 
 
-def _lite_q(kind: str, q: str) -> Q:
-    """The SQLite (dev) match predicate for one type."""
+def _terms(q: str, language: str) -> list[str]:
+    """What a substring match looks for: the whole query on SQLite (dev, as it
+    always has); in a SUBSTRING_LANGUAGE, each word the query is made OF
+    (``positive_words``: no exclusions, no "OR", no stray punctuation)."""
+    if language in SUBSTRING_LANGUAGES:
+        return positive_words(q, language) or [q]
+    return [q]
+
+
+def _snippet_term(ctx) -> str:
+    """The word a substring hit's snippet centres on: the first one matched."""
+    return _terms(ctx.q, ctx.language)[0]
+
+
+def _lite_match(kind: str, q: str, language: str) -> Q:
+    """The substring predicate for ``q``.
+
+    On SQLite (dev) the whole query, as it always was. In a SUBSTRING_LANGUAGE
+    the websearch reading every other language gets from Postgres: each word
+    must occur, ``OR`` joins its neighbours, ``-word`` excludes — tokenised by
+    ``fts.query_tokens``, so the two paths agree on what the words are.
+    """
+    if language not in SUBSTRING_LANGUAGES:
+        return _lite_q(kind, q, language)
+    groups: list[Q] = []
+    excluded: list[Q] = []
+    pending_or = False
+    for negated, word in query_tokens(q):
+        if word.upper() == "OR" and not negated:
+            pending_or = bool(groups)
+            continue
+        term = _lite_q(kind, word, language)
+        if negated:
+            excluded.append(term)
+        elif pending_or:
+            groups[-1] |= term
+        else:
+            groups.append(term)
+        pending_or = False
+    if not groups:
+        # Nothing to match positively (an exclusion alone): as Postgres does.
+        return _lite_q(kind, q, language)
+    match = Q()
+    for group in groups:
+        match &= group
+    for term in excluded:
+        match &= ~term
+    return match
+
+
+def _lite_q(kind: str, q: str, language: str) -> Q:
+    """The substring match predicate for one type, in ``language``."""
     if kind == "author":
         return Q(name__icontains=q) | Q(bio__icontains=q)
     if kind == "book":
@@ -662,10 +678,13 @@ def _lite_q(kind: str, q: str) -> Q:
             | Q(author__name__icontains=q)
         )
     if kind == "topic":
-        return (
-            Q(title__icontains=q)
-            | Q(description__icontains=q)
-            | Q(translations__title__icontains=q)
+        # The text the reader is shown, as `_topic_localized` builds it for the
+        # vector path: the row itself in English, else this language's
+        # translation — never another language's, which no one here can read.
+        if language == "en":
+            return Q(title__icontains=q) | Q(description__icontains=q)
+        return Q(translations__language=language) & (
+            Q(translations__title__icontains=q)
             | Q(translations__description__icontains=q)
         )
     if kind == "plan":
@@ -760,8 +779,8 @@ def _pg_vector(kind: str, config: str, language: str):
 
 def _match(kind: str, ctx, qs):
     """Rows of ``kind`` matching the query — unordered, un-paged."""
-    if connection.vendor != "postgresql":
-        matched = qs.filter(_lite_q(kind, ctx.q))
+    if not uses_fts(ctx.language):
+        matched = qs.filter(_lite_match(kind, ctx.q, ctx.language))
         return matched.distinct() if kind == "topic" else matched
 
     query = search_query(ctx.q, ctx.language)
@@ -829,7 +848,7 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
     for kind in querysets:
         if kind not in TOASTED:
             tally(kind)
-    with _index_scans():
+    with _index_scans(language):
         for kind in querysets:
             if kind in TOASTED:
                 tally(kind)
@@ -881,12 +900,12 @@ def page_by_type(
 
     if sort in ("title", "newest"):
         qs = qs.order_by(*_ORDER[kind][sort])
-    elif connection.vendor == "postgresql":
+    elif uses_fts(language):
         qs = _pg_rank_order(kind, ctx, qs)
     else:
         qs = qs.order_by(*_ORDER[kind]["natural"])
 
-    with _index_scans() if kind in TOASTED else nullcontext():
+    with _index_scans(language) if kind in TOASTED else nullcontext():
         return [_hit_for(kind, row, ctx) for row in qs[offset : offset + limit]]
 
 
@@ -902,7 +921,7 @@ def _hit_for(kind: str, row, ctx) -> dict:
         return _plan_hit(row, ctx)
     if kind == "article":
         return _article_hit(row, ctx)
-    snippet = fallback_snippet(getattr(row, "body_text", ""), ctx.q)
+    snippet = fallback_snippet(getattr(row, "body_text", ""), _snippet_term(ctx))
     return _chapter_hit(row, snippet) if kind == "chapter" else _sermon_hit(row, snippet)
 
 
@@ -925,7 +944,7 @@ def _author_hit(a, ctx):
         # and the client renders text-only when they are — no placeholder, which
         # would only add noise to a row that reads fine without one.
         "photo_url": a.photo_url,
-        "snippet": fallback_snippet(a.bio_for(ctx.language), ctx.q),
+        "snippet": fallback_snippet(a.bio_for(ctx.language), _snippet_term(ctx)),
         "date": _date(a.created_at),
     }
 
@@ -944,7 +963,7 @@ def _book_hit(b, ctx):
         "cover_color": b.cover_color,
         # What the thumbnail's type needs: a plate is a wordless ground.
         "cover": cover_face(b),
-        "snippet": fallback_snippet(b.description, ctx.q),
+        "snippet": fallback_snippet(b.description, _snippet_term(ctx)),
         "date": _date(b.created_at),
     }
 
@@ -954,7 +973,7 @@ def _topic_hit(tp, ctx):
         "type": "topic",
         "topic_slug": tp.slug,
         "topic_title": tp.title_for(ctx.language),
-        "snippet": fallback_snippet(tp.description_for(ctx.language), ctx.q),
+        "snippet": fallback_snippet(tp.description_for(ctx.language), _snippet_term(ctx)),
         "date": _date(tp.created_at),
     }
 
@@ -964,7 +983,7 @@ def _plan_hit(p, ctx):
         "type": "plan",
         "plan_slug": p.slug,
         "plan_title": p.title,
-        "snippet": fallback_snippet(p.description, ctx.q),
+        "snippet": fallback_snippet(p.description, _snippet_term(ctx)),
         "date": _date(p.created_at),
     }
 
@@ -978,7 +997,7 @@ def _article_hit(a, ctx):
         "type": "article",
         "article_slug": a.slug,
         "article_title": a.h1,
-        "snippet": fallback_snippet(a.description, ctx.q),
+        "snippet": fallback_snippet(a.description, _snippet_term(ctx)),
         "date": _date(a.created_at),
     }
 

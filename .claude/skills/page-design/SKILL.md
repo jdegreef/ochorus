@@ -249,7 +249,11 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
      field, so don't write one); a facts `<dl>` of only what the data holds (Born, Died,
      Tradition, Place, On Ochorus); then Follow as the one outlined button and
      Share/Search as bare icons. Quotes is a link in the facts, not a button.
-     `authorHero.test.ts` guards it.
+     `authorHero.test.ts` guards it. Width, as the book page: the trail, hero
+     (portrait ~280px from lg, facts beside it at a 44rem measure), Where to
+     start, the tab rule and the book shelves (`.book-grid`) run the full page
+     column; sermon rows, the bio, articles and the Q&A keep a 40rem measure,
+     start-aligned on the same edge (focus mode centres the bio alone).
    - **Author page below the hero (#14):** the works come before the life.
      One **Where to start** row (a book with the solid read verb — or
      Continue reading — a plan, a sermon; only what exists), then the sticky
@@ -1571,7 +1575,9 @@ From an outside tester's report (design & accessibility section). Shipped on
   around a 76rem body. Both now use `--chrome-w` / `.chrome-col` (the page
   column, never under 64rem), from sm up.
 - [x] **Q3** Author page: the breadcrumb and the tab rule now sit on the 40rem
-  reading column like the rest of the page.
+  reading column like the rest of the page. _(Superseded 2026-11: the trail,
+  hero, start row, tab rule and book shelves run the full page column; the
+  prose keeps 40rem, start-aligned on the same edge — see #13.)_
 - [x] **Q4** `BookCard` titles reserve two lines (`min-h-[2lh]`), so author and
   series lines are level across a row.
 - [x] **Q5** The book page's artwork credit hangs under the hero cover from sm
