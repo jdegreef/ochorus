@@ -3,7 +3,7 @@
  "slug": "the-fundamental-doctrines-of-the-christian-faith",
  "language": "hi",
  "job_issue": 7641,
- "pull_request": null,
+ "pull_request": 7895,
  "note": [
   "Scripture came from the Indian Revised Version (IRV Hindi, irvhin), fetched whole from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx) — all 66 books, 31,104 verses on disk, with section headings, Psalm acrostic letters, speaker labels and the IRV's own parenthetical cross-references stripped, so translators pasted verse bytes by script rather than retyping.",
   "A `mined` row is an exact byte substring of the IRV of at least 45 characters (or the whole verse, when shorter), measured against the finished chapter — not a translator's claim. Short verbatim sub-spans (e.g. \"परमेश्वर प्रेम है\") fall below that threshold and are recorded self_rendered for the reviewer to confirm.",
