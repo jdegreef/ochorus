@@ -59,9 +59,10 @@
   },
   {
    "reference": "Genesis 50:20",
-   "status": "self_rendered",
+   "status": "mined",
    "block_index": 49,
-   "chapter_order": 2
+   "chapter_order": 2,
+   "source_file": "개역 (ebible kor_old, cleaned) Bible text"
   },
   {
    "reference": "Galatians 2:20",
