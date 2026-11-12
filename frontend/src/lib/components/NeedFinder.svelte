@@ -3,7 +3,7 @@
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { contentLang, readingTime } from '$lib/reading';
-	import { NEEDS, NEED_MIN_CHIPS, needLabelKey, loadNeedPicks, type NeedPick, type NeedPicks } from '$lib/needFinder';
+	import { NEEDS, shownNeeds, needLabelKey, loadNeedPicks, type NeedPick, type NeedPicks } from '$lib/needFinder';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -27,7 +27,7 @@
 	let { needs, place = 'home' }: { needs: readonly string[]; place?: 'home' | 'topics' } = $props();
 
 	const t = i18n.t;
-	const shown = $derived(NEEDS.filter((n) => needs.includes(n.id)));
+	const shown = $derived(shownNeeds(needs));
 
 	let selected = $state<string | null>(null);
 	let result = $state<NeedPicks | null>(null);
@@ -74,7 +74,7 @@
 	}
 </script>
 
-{#if shown.length >= NEED_MIN_CHIPS}
+{#if shown.length}
 	<section class={place === 'home' ? 'page-col px-5 pt-14' : 'mb-12'}>
 		{#if place === 'home'}
 			<SectionHeader
@@ -104,7 +104,7 @@
 					{#each result.picks as pick (pick.kind)}
 						<li>
 							<a class="pick group" href={localizeHref(pick.href)}>
-								<span class="pick-art" aria-hidden="true">
+								{#if pick.portrait || pick.cover}<span class="pick-art" aria-hidden="true">
 									{#if pick.portrait}
 										<Portrait
 											slug={pick.portrait.slug}
@@ -118,7 +118,7 @@
 									{:else if pick.cover}
 										<BookCover book={pick.cover} rounded="rounded-sm" />
 									{/if}
-								</span>
+								</span>{/if}
 								<span class="min-w-0">
 									<span class="eyebrow block text-accent">{t(EYEBROW[pick.kind])}</span>
 									<span class="pick-title mt-1 line-clamp-2" lang={contentLang(pick.language) || undefined} dir="auto"
