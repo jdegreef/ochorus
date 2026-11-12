@@ -55,6 +55,7 @@
 		modern = null;
 		failed = false;
 		domMismatch = false;
+		pair = -1;
 		getChapterExact(s, o, MODERN_EDITION).then(
 			(c) => live && (modern = c),
 			() => live && (failed = true)
@@ -69,7 +70,7 @@
 			? parallelLayout(blockCount(originalHtml), blockCount(modern.body_html))
 			: 'columns'
 	);
-	const rows = $derived(!!modern && layout === 'rows');
+	const rows = $derived(layout === 'rows');
 
 	const kids = (el: HTMLElement | undefined) => (el ? ([...el.children] as HTMLElement[]) : []);
 
@@ -94,8 +95,17 @@
 		if (a.length !== b.length) {
 			domMismatch = true;
 			clear(original);
+			clear(modernEl);
 			return;
 		}
+		// Levelling resizes every block above the reader too, which would carry
+		// the paragraph they are on down the page (the Modern text arrives after
+		// the reader was placed). Hold it where it is: the first block still in
+		// view keeps its top. By hand, not by the browser's scroll anchoring,
+		// which Safari lacks — and the grid opts out of that (overflow-anchor),
+		// so the two never both correct.
+		const anchor = a.find((k) => k.getBoundingClientRect().bottom > 0);
+		const before = anchor?.getBoundingClientRect().top ?? 0;
 		for (const k of [...a, ...b]) k.style.removeProperty('min-height');
 		const heights = rowHeights(
 			a.map((k) => k.getBoundingClientRect().height),
@@ -104,6 +114,8 @@
 		heights.forEach((h, i) => {
 			a[i].style.minHeight = b[i].style.minHeight = `${h}px`;
 		});
+		const moved = anchor ? anchor.getBoundingClientRect().top - before : 0;
+		if (moved && window.scrollY > 0) window.scrollBy(0, moved);
 	}
 
 	let frame = 0;
@@ -139,6 +151,7 @@
 			a.removeEventListener('load', schedule, true);
 			b.removeEventListener('load', schedule, true);
 			clear(a);
+			clear(b);
 		};
 	});
 
@@ -156,6 +169,12 @@
 		pair = i >= 0 ? i : blockIndex(modernEl, e.target);
 	}
 	const untrack = () => (pair = -1);
+	/** Focus that leaves both columns (a link out to the chrome) takes the
+	 *  wash with it, as the pointer leaving does. */
+	function blur(e: FocusEvent) {
+		const to = e.relatedTarget instanceof Node ? e.relatedTarget : null;
+		if (!to || !(original?.contains(to) || modernEl?.contains(to))) untrack();
+	}
 
 	// Listeners, not attributes: the Original is the reader's element, not ours.
 	$effect(() => {
@@ -164,12 +183,14 @@
 			c.addEventListener('pointerover', track);
 			c.addEventListener('focusin', track);
 			c.addEventListener('pointerleave', untrack);
+			c.addEventListener('focusout', blur);
 		}
 		return () => {
 			for (const c of cols) {
 				c.removeEventListener('pointerover', track);
 				c.removeEventListener('focusin', track);
 				c.removeEventListener('pointerleave', untrack);
+				c.removeEventListener('focusout', blur);
 			}
 		};
 	});
@@ -220,7 +241,9 @@
 		position: sticky;
 		top: 4.5rem;
 		align-self: start;
-		max-height: calc(100dvh - 9rem);
+		/* Down to the progress foot (its measured height, as the article's
+		   own bottom padding uses), so its last lines never sit under it. */
+		max-height: calc(100dvh - 5.5rem - var(--foot-h, var(--listenbar-h, 3.5rem)));
 		overflow-y: auto;
 		overscroll-behavior: contain;
 		padding-inline-end: 0.5rem;

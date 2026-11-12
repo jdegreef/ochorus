@@ -1477,6 +1477,26 @@
 		return localizeHref(`${bookChapterPath(slug, order, modern)}${q ? `?${q}` : ''}`);
 	}
 
+	/** Side by side on or off, keeping the reader on the paragraph they were
+	 *  reading. On a wide screen the switch is also a page ⇄ scroll switch (page
+	 *  mode is the wide default, and the mode takes over from it), and neither
+	 *  layout's own restore runs on it — without this, turning it on from page 7
+	 *  landed at the top of the chapter, and turning it off on page 1. */
+	async function toggleParallel() {
+		// In the chapter's ending every block is above the bar, which
+		// topVisibleIndex reads as the top: keep such a reader at the last block.
+		const last = body ? body.children.length - 1 : 0;
+		const pastText = !paged && !!body?.lastElementChild && body.lastElementChild.getBoundingClientRect().bottom <= HEADER_OFFSET;
+		const at = pastText ? last : currentIndex();
+		readerPrefs.setParallel(!readerPrefs.parallel);
+		await tick();
+		const el = body?.children[at] as HTMLElement | undefined;
+		if (paged) {
+			measurePages(false);
+			goToPage(el ? pageOf(el) : 0, false);
+		} else restoreScroll(at > 0 && el ? at : null);
+	}
+
 	/** The current chapter in the opposite edition — drives the Modern ⇄ Original
 	 *  toggle. Keeps the reader's plan context on the same chapter. */
 	const editionToggleHref = () => chapterHref(chapter.order, undefined, edition !== 'modern');
@@ -2216,7 +2236,7 @@
 										class:text-accent={parallel}
 										aria-pressed={parallel}
 										title={t('reader.sideBySideHint')}
-										onclick={fromMore(() => readerPrefs.setParallel(!readerPrefs.parallel))}
+										onclick={fromMore(toggleParallel)}
 										><Icon name="columns" size={20} />{t('reader.sideBySide')}</button
 									>
 								{/if}
@@ -2371,6 +2391,15 @@
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
+			<!-- Parsed straight after the body — its previousElementSibling, so it
+			     stays INSIDE .par-wrap, next to the body — so it can put a returning
+			     reader at their paragraph before first paint (see $lib/earlyResume).
+			     A script has no box, so it takes no cell of the side-by-side grid.
+			     Runs from the prerendered HTML only: on hydration and client
+			     navigation an @html script does not execute, and the effect's
+			     restore takes over. -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html EARLY_RESUME_TAG}
 			{#if parallel}
 				<!-- Loaded on demand: only wide-screen readers who turn it on need it. -->
 				{#await import('$lib/components/ParallelModern.svelte') then { default: ParallelModern }}
@@ -2378,12 +2407,6 @@
 				{/await}
 			{/if}
 		</div>
-		<!-- Parsed straight after the body, so it can put a returning reader at
-		     their paragraph before first paint (see $lib/earlyResume). Runs from
-		     the prerendered HTML only: on hydration and client navigation an
-		     @html script does not execute, and the effect's restore takes over. -->
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		{@html EARLY_RESUME_TAG}
 
 		<!-- The chapter's ending. In page mode it starts on a fresh column, so the
 		     last page of every chapter is where to go next (see .chapter-end). -->
@@ -3256,6 +3279,8 @@
 	}
 	.par-wrap.par-grid {
 		display: grid;
+		/* ParallelModern holds the reader's place by hand when it levels rows. */
+		overflow-anchor: none;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		column-gap: 1.5rem;
 	}
