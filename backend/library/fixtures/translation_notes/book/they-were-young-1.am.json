@@ -1,0 +1,95 @@
+{
+ "kind": "book",
+ "slug": "they-were-young-1",
+ "language": "am",
+ "job_issue": 7581,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003), the text the shipped Amharic house books quote. Its New Testament is on disk whole (ebible mirror, bibles/amh_amh via scripts/bible_mirror.py); the mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "The English quotes the BSB, except where a story gives the words a person heard (Spurgeon's KJV Isaiah 45:22). The Amharic keeps the 1962 wording throughout; Isaiah 45:22 uses the shipped cheque-book.am.json form with ተመልከቱ ('look'), which the chapter's whole point turns on. The 1962 printed text reads ወደ እኔ ዘወር በሉ (as talks-to-the-farmer.am.json quotes it) — a native reviewer should confirm the 'look' form. The chapter's second, 'modern translation' rendering of the verse is self_rendered and deliberately different.",
+  "1 Timothy 4:12 is inside a bridged 4:11-13 entry in the mirror and has no shipped Amharic rendering, so it is self_rendered. Daniel 5:27 reuses Richard Allen's own Amharic edition (ጐድለህም); the 1962 Bible reads ቀልለህም.",
+  "A mined row was checked as an exact substring of the cited source (1962 NT verse or corpus file) inside the named block."
+ ],
+ "references": [
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 2,
+   "source_file": "cheque-book.am.json"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 2:7a",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Jeremiah 45:5a",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 2,
+   "source_file": "days-of-heaven-upon-earth.am.json"
+  },
+  {
+   "reference": "Jeremiah 23:6b",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 8:5b",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:26",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Daniel 5:27",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 7,
+   "source_file": "life-experience-gospel-labours.am.json"
+  }
+ ]
+}
