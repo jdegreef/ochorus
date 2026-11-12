@@ -24835,3 +24835,13 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])
+
+# Found translating The Provincial Letters to Spanish (job #7148). Letter I: the
+# English drops a "not" and so has the New Thomists say the reverse of Pascal —
+# his French reads «une grâce efficace qui n'est pas donnée à tous» (the shipped
+# provincial-letters.fr), and the dialogue turns on that grace NOT being given to
+# all (the Jansenist view the Jacobins approve). One reading; the es edition
+# renders it.
+BODY_CORRECTIONS.setdefault("provincial-letters", {}).setdefault("replacements", []).extend([
+    ("an efficacious grace bestowed upon all,", "an efficacious grace not bestowed upon all,"),
+])

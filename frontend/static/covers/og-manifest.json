@@ -11142,6 +11142,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"es/provincial-letters": {
+			"ground": "c4cf0efb21ace548071ad09e4b725b1c527b814457013bdd9b53bd1c3c7bc21e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[175, 292, 425, 370],
+					[150, 356, 450, 434]
+				],
+				"subtitle": [
+					[129, 487, 471, 508],
+					[136, 508, 464, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
+			]
+		},
 		"es/purity-of-heart": {
 			"ground": "f54d78471ea6f5e6f45de79e42791614bdcef9be5949422624d35cfb75e71003",
 			"style": "revival",
