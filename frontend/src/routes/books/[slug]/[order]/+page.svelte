@@ -71,7 +71,7 @@
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId, toQa } from '$lib/seo';
-	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, coverVariants, landscapeUrl, shareImage } from '$lib/coverArt';
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
@@ -1771,7 +1771,15 @@
 		topIndex: currentIndex,
 		reveal: (el) => (paged ? goToPage(pageOfNode(el), false) : el.scrollIntoView({ block: 'center', behavior: 'smooth' })),
 		listenTitle: () => chapterName(chapter.order, chapter.title),
-		listenArtist: () => `${chapter.author_name} · ${chapter.book_title}`,
+		listenArtist: () => chapter.author_name,
+		listenAlbum: () => chapter.book_title,
+		// The book's cover for the lock screen — its shareable raster, then the
+		// webp variants — once the book fetch above has landed; the house icon
+		// stands in before that (listenMedia appends it).
+		listenArtwork: () =>
+			bookForProgress
+				? [shareImage(bookForProgress)?.url, ...coverVariants(bookForProgress.cover_url).reverse()]
+				: [],
 		cite: () => cite,
 		searchQuery: () => $page.url.searchParams.get('q') ?? '',
 		// Audiobook roll-over: when a chapter finishes reading itself, continue

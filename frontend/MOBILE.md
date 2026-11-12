@@ -285,6 +285,48 @@ versions are their own, the core packages stay on one version) do:
 - **Splash** lifts on the reader's first frame; `capacitor.config.ts` keeps a
   3-second auto-hide as the safety net.
 
+## Listen outside the page (lock screen, notification, Control Centre)
+
+Listen reads aloud with the browser's `speechSynthesis` — no audio files, no
+native TTS plugin. `$lib/listenMedia` publishes each reading to the
+**Media Session API** while it plays: title (chapter / sermon), artist
+(author), album (book), artwork (the book's cover raster and webp variants, a
+sermon's share card, then the house icon), play state, an **estimated** clock
+(`setPositionState`, from the text's length at ~14 characters a second × the
+speed), and handlers — play/pause, stop, previous/next track and seek
+back/forward (each one paragraph), and scrub (`seekto`, to the paragraph that
+holds that time). The handlers call the Listen bar's own methods, so a pause on
+the lock screen leaves the bar, the sleep timer and the resume point in step;
+`stop()` (the bar's ×, navigation, the sleep timer, the end of the text) clears
+the metadata and handlers. Everything is feature-detected.
+
+What a reader actually SEES depends on the platform, and today it is little
+(from the browsers' documented behaviour; not yet tested on devices):
+
+| Where | Media Session API | What shows |
+|---|---|---|
+| Chrome / Edge desktop, Chrome Android | yes | Nothing for speech alone: Chromium surfaces a session only for a page playing a media element. Hardware media keys likewise. |
+| Safari macOS / iOS (and the iOS app's WKWebView) | yes (15+) | Same — Now Playing / Control Centre are claimed by `<audio>`/`<video>`, not by `speechSynthesis`. |
+| Firefox | yes | Same. |
+| Android app (WebView) | **no** `navigator.mediaSession` | Nothing; the calls are skipped. |
+
+So this is the plumbing — correct metadata and handlers, ready the moment a
+platform shows a session for the page — not yet visible lock-screen controls.
+Making them visible needs one of (follow-ups, each needing device testing):
+
+1. **A silent media anchor** on the web: a looping silent `<audio>` played
+   from the Listen tap, paused/resumed with Listen and removed on stop, which
+   claims the media session in Chrome Android / desktop. Unverified effects on
+   iOS's audio session (could duck or stop the speech), and a battery cost.
+2. **Native, in the app** (`$lib/platform`): Android needs a
+   `MediaSessionCompat` + a foreground media service with a notification
+   (and a background-safe speech engine — the WebView's `speechSynthesis` is
+   unreliable there and stops with the activity); iOS needs
+   `MPNowPlayingInfoCenter` + `MPRemoteCommandCenter` with an
+   `AVAudioSession` of category `.playback`, and a Live Activity for "time
+   left in the chapter". Either is a local plugin under `local-plugins/` and
+   a new `$lib/platform` function feeding it the same `ListenMedia`.
+
 ## What the app does not do yet (the roadmap)
 
 1. ~~**Native shell polish**~~ — done; see **The native shell** above.
