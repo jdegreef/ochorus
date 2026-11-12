@@ -3,7 +3,7 @@
  "slug": "a-short-and-easy-method-of-prayer",
  "language": "lg",
  "job_issue": 7652,
- "pull_request": null,
+ "pull_request": 7882,
  "note": [
   "AI-translated (job #7652); tag sequence identical to the English in every chapter; awaiting native review.",
   "Scripture is the Open Luganda Contemporary Bible (OLCB 2017, ebible mirror lug_bib), pasted by script; 'mined' rows were checked by substring against that text. Unquoted allusions are not listed.",
