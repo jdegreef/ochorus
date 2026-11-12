@@ -49,6 +49,9 @@ measured over all 31,102 verses on 2026-10-19:
    Matt 6:10 and the Genesis pair also lost a leading `Ý`; they are restored
    whole from Cadman.
 5. Psalm 2:8 ends with a stray word (` vãi`).
+   The mojibake pass must leave a genuine capital `Ò` alone: decoding `CÒN` (the
+   divine title of Rev 1:4, 1:8 and 4:8) as cp1258 yields `C` + a stray combining
+   hook, so a "repair" that leaves a combining mark unattached is refused.
 
 The book-name headings (`\\toc1`) in this mirror are modernised (La-mã, Khải thị);
 the verse text is classic Cadman (Rô-ma, Khải Huyền in the text itself), so cite
@@ -193,9 +196,13 @@ def _vni_capital(m: re.Match) -> str:
 def _mojibake(m: re.Match) -> str:
     word = m.group(0)
     try:
-        return unicodedata.normalize("NFC", word.encode("cp1252").decode("cp1258"))
+        fixed = unicodedata.normalize("NFC", word.encode("cp1252").decode("cp1258"))
     except (UnicodeEncodeError, UnicodeDecodeError):
         return word
+    # A genuine capital Ò (CÒN) decodes to C + U+0309, which no letter absorbs.
+    if any(unicodedata.combining(ch) for ch in fixed):
+        return word
+    return fixed
 
 
 def clean_vie(text: str) -> str:

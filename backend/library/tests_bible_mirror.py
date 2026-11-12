@@ -57,6 +57,11 @@ class VieKtRepairTests(SimpleTestCase):
     def test_mojibake_word(self):
         self.assertEqual(self.clean("Cha ðýõòc nên"), "Cha được nên")
 
+    def test_a_genuine_capital_o_grave_is_left_alone(self):
+        # Rev 1:4, 1:8, 4:8: decoding CÒN as cp1258 would give C + U+0309.
+        text = "ĐẤNG HIỆN CÓ, ĐÃ CÓ, VÀ CÒN ĐẾN"
+        self.assertEqual(self.clean(text), text)
+
     def test_ordinary_vietnamese_is_untouched(self):
         for text in (
             "Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con một của Ngài",
