@@ -129,6 +129,9 @@ _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
 _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
+#: An old elision's apostrophe ('tis, 'twas, 'em), which curl_singles would
+#: otherwise read as an opening quotation mark after a space.
+_ELISION = re.compile(r"(?<!\w)'(?=(?:tis|twas|twere|twill|twould|em|gainst|neath|mongst)\b)", re.I)
 _VERSE_REF = re.compile(r"(\d+)[.:](\d+)")
 
 
@@ -180,7 +183,7 @@ class Command(BaseCommand):
 
     # --- inputs -------------------------------------------------------------
 
-    def load(self, path: str, code: str, select: bool):
+    def load(self, path: str, code: str):
         raw = Path(path).read_bytes()
         self.logia_sha = hashlib.sha256(raw).hexdigest()
         logia = json.loads(raw)
@@ -192,7 +195,7 @@ class Command(BaseCommand):
         self.excerpts = {}
         typed = Counter()
         for e in logia["excerpts"]:
-            if select and "archive.org" not in e.get("source_url", ""):
+            if "archive.org" not in e.get("source_url", ""):
                 typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
             if e["start"].startswith(code + ".") and e["author"] in VOICES:
                 e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
@@ -264,18 +267,26 @@ class Command(BaseCommand):
         known = self.vocabulary
         return any(w.lower() not in known for w in english_audit._WORD.findall(text))
 
+    def unfit(self, e: dict, verses: list[tuple[int, int]]) -> str | None:
+        """Why an excerpt cannot stand in this passage, or None if it can. The
+        one rule for both --select and an editor's hand-edited selection.json."""
+        if not (verses[0] <= e["_start"] <= verses[-1] and e["_end"] <= verses[-1]):
+            return "it comments on verses outside the passage"
+        floor = MIN_WORDS_SHORT if e["author"] in SHORT_VOICES else MIN_WORDS
+        if not floor <= e["_words"] <= MAX_WORDS:
+            return f"it is {e['_words']} words long"
+        if e["id"] in self.rejected:
+            return "an editor turned it down (rejected.json)"
+        if _NON_LATIN.search(e["text"]):
+            return "it carries Greek or Hebrew, which the reader's fonts and listen mode stumble on"
+        if self.damaged(e["text"]):
+            return "the scan has damaged it"
+        if e["text"].count('"') % 2:
+            return "a quotation mark is unpaired: the scan lost one, and curling would guess"
+        return None
+
     def candidates(self, verses: list[tuple[int, int]]) -> list[dict]:
-        first, last = verses[0], verses[-1]
-        out = []
-        for e in self.excerpts.values():
-            floor = MIN_WORDS_SHORT if e["author"] in SHORT_VOICES else MIN_WORDS
-            if not (first <= e["_start"] <= last and e["_end"] <= last and floor <= e["_words"] <= MAX_WORDS):
-                continue
-            if e["id"] in self.rejected or _NON_LATIN.search(e["text"]) or self.damaged(e["text"]):
-                continue  # turned down by an editor; Greek or Hebrew; or the scan damaged it
-            if e["text"].count('"') % 2:
-                continue  # an unpaired quotation mark: the scan lost one, and curling would guess
-            out.append(e)
+        out = [e for e in self.excerpts.values() if not self.unfit(e, verses)]
         return sorted(out, key=lambda e: e["id"])
 
     def select(self, passages) -> list[list[str]]:
@@ -295,7 +306,7 @@ class Command(BaseCommand):
                 s -= overall[a] / 40
                 s -= abs(e["_words"] - IDEAL_WORDS) / 150
                 s -= 2.0 * at_verse[e["_start"]]
-                if _OPENS_MIDWAY.match(e["text"].lstrip("“\"' ")):
+                if _OPENS_MIDWAY.match(_LEADING_VERSE.sub("", e["text"].lstrip()).lstrip("“\"' ")):
                     s -= 1.5  # reads as the middle of an argument
                 return s
 
@@ -339,14 +350,19 @@ class Command(BaseCommand):
         passage the oldest manuscripts lack begins in it."""
         note = ""
         for first, last, _ in DISPUTED:
-            if first.startswith(code + ".") and verse_key(first) in verses:
-                where = span(code, verse_key(first), verse_key(last))
-                note = f"<p><em>{escape(DISPUTED_NOTE.format(book=GOSPELS[code][0], ref=where))}</em></p>"
+            begins = verse_key(first)
+            if not first.startswith(code + ".") or begins not in verses:
+                continue
+            if begins != verses[0]:  # the note belongs at the verse, not above the block
+                at = verses.index(begins)
+                return self.text_block(code, verses[:at]) + self.text_block(code, verses[at:])
+            where = span(code, begins, verse_key(last))
+            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=GOSPELS[code][0], ref=where))}</em></p>"
         text = " ".join(curl_singles(self.verses[v]) for v in verses)
         # A speech that runs on from the block before (Jesus to Nicodemus,
         # 3:10–21) reopens here, as a quotation running over several
-        # paragraphs reopens each one.
-        if verses[0] in self.open_at:
+        # paragraphs reopens each one — unless OWB's paragraph already does.
+        if verses[0] in self.open_at and not text.startswith('"'):
             text = '"' + text
         cite = span(code, verses[0], verses[-1])
         return f"{note}<blockquote><p>{escape(text, quote=False)}</p><p>— {cite}</p></blockquote>"
@@ -372,7 +388,7 @@ class Command(BaseCommand):
         name, work, _ = VOICES[e["author"]]
         parts = [f"<p><strong>{escape(name)}</strong> · <em>{escape(work)}</em></p>"]
         for para in tidy(e["text"]):
-            parts.append(f"<p>{escape(curl_singles(para), quote=False)}</p>")
+            parts.append(f"<p>{escape(curl_singles(_ELISION.sub('’', para)), quote=False)}</p>")
         return "\n".join(parts)
 
     def passage_html(self, code: str, title: str, verses, ids: list[str]) -> str:
@@ -410,15 +426,17 @@ class Command(BaseCommand):
             voices = ", ".join(names[:3]) + f" and {len(names) - 3} more"
         elif len(names) > 1:
             voices = ", ".join(names[:-1]) + f" and {names[-1]}"
-        else:
+        elif names:
             voices = names[0]
+        else:
+            return base
         return f"{base} With {voices}."
 
     # --- main ---------------------------------------------------------------
 
     def handle(self, *args, **opts):
         code = opts["code"]
-        self.load(opts["logia"], code, opts["select"])
+        self.load(opts["logia"], code)
         passages = self.passages()
         starts = [ref(vs[0]) for _, vs in passages]
         selection_path = self.folder / "selection.json"
@@ -444,16 +462,23 @@ class Command(BaseCommand):
         if [p["start"] for p in saved] != starts:
             raise CommandError("selection.json no longer matches the OWB sections — rerun with --select")
         chosen = [p["excerpts"] for p in saved]
-        refused = [i for ids in chosen for i in ids if i in self.rejected]
-        if refused:
-            raise CommandError(f"selection.json still names rejected excerpts: {refused[:5]} — rerun with --select")
         missing = [i for ids in chosen for i in ids if i not in self.excerpts]
         if missing:
             raise CommandError(f"selection.json names excerpts this Logia file lacks: {missing[:5]}")
+        unfit = [
+            f"{i} ({why})"
+            for (_, verses), ids in zip(passages, chosen)
+            for i in ids
+            if (why := self.unfit(self.excerpts[i], verses))
+        ]
+        if unfit:
+            raise CommandError("selection.json names excerpts that cannot stand: " + "; ".join(unfit[:5]))
 
         chapters = defaultdict(list)
         for (title, verses), ids in zip(passages, chosen):
-            chapters[verses[0][0]].append((title, verses, ids))
+            # Where most of its verses are: 7:53–8:11 belongs to John 8.
+            home = Counter(c for c, _ in verses).most_common(1)[0][0]
+            chapters[home].append((title, verses, ids))
 
         bodies = [("Introduction", (self.folder / "introduction.html").read_text("utf-8"), "")]
         used = Counter()
