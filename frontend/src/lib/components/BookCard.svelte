@@ -41,6 +41,14 @@
 		 */
 		perChapter = false,
 		/**
+		 * A foot line with the whole book's reading time, "3 hr read" —
+		 * on the home page's discover shelf (design review 2026-11, #14), where
+		 * a first-time reader is deciding whether a classic is an evening or a
+		 * month. Pinned to the card's foot (mt-auto), so it lines up across a
+		 * row whatever the title and series lines above it do (#13).
+		 */
+		showLength = false,
+		/**
 		 * A line that sells the book (`BookSummary.hook`), under the byline —
 		 * the teens hub's cards. The link's label names title and author only,
 		 * so the hook rides along as its description.
@@ -69,6 +77,7 @@
 		anchor?: string;
 		showSeries?: boolean;
 		perChapter?: boolean;
+		showLength?: boolean;
 		hook?: string;
 		link?: { href: string; cta: string; label: string; ariaLabel: string };
 		editions?: number;
@@ -97,6 +106,9 @@
 					})
 				: readingTime(book.word_count)
 	);
+	// Time only: no catalogue string counts chapters in every language (the
+	// gift page's "%n% chapters" is "Chapter %n%" in Swahili and Luganda).
+	const length = $derived(showLength && book.word_count ? readingTime(book.word_count) : '');
 </script>
 
 <a
@@ -162,6 +174,8 @@
 		{/if}
 		{#if sitting}
 			<div class="mt-auto pt-0.5 text-eyebrow text-muted">{sitting}</div>
+		{:else if length}
+			<div class="mt-auto pt-1 text-eyebrow text-muted">{length}</div>
 		{/if}
 	</div>
 </a>
@@ -176,14 +190,15 @@
 	.edition-ribbon {
 		position: absolute;
 		bottom: 1.6rem;
-		inset-inline-end: -0.25rem;
-		max-width: 85%;
+		/* Inside the cover's edge, not hanging off it (design review 2026-11,
+		   #13): the overhang read as a misplaced sticker on an even shelf. */
+		inset-inline-end: 0.4rem;
+		max-width: calc(100% - 0.8rem);
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		padding: 0.15rem 0.5rem;
-		border-start-start-radius: 3px;
-		border-end-start-radius: 3px;
+		border-radius: 3px;
 		font-size: var(--fs-micro);
 		font-weight: 700;
 		letter-spacing: 0.06em;

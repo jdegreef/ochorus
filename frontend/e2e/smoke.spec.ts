@@ -291,8 +291,9 @@ test('switching language from the footer serves that language', async ({ page })
 
 	// By its autonym, which is what the list renders: a reader who needs this
 	// control cannot read "Spanish". The link's name also carries the book
-	// count ("Español 120 books"), so match the autonym at the start.
-	const spanish = page.getByRole('link', { name: /^Español\b/ });
+	// count ("Español 120 books"), so match the autonym at the start. Scoped to
+	// the switcher's list: the home hero names the languages too (HomeIntro).
+	const spanish = page.locator('.footer-lang-list').getByRole('link', { name: /^Español\b/ });
 	await expect(spanish).toBeVisible();
 	await spanish.click();
 
