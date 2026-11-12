@@ -5718,6 +5718,40 @@
 				495
 			]
 		},
+		"ar/jesus-teacher-of-prayer": {
+			"ground": "c5cb3f008b5d04ad679c64608ad43f7361077703344907f23436d22afa509ce0",
+			"style": "originals",
+			"volume": "2",
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 267, 311, 311],
+					[119, 357, 481, 434]
+				],
+				"subtitle": [
+					[213, 504, 387, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"ar/key-teachings-of-gareth-evans": {
 			"ground": "7b3f5df631737a2e41ea738a9aa85ab5d1ce766454a30cb625b107443bf07528",
 			"style": "originals",
@@ -14947,6 +14981,40 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"fr/finney-memoirs": {
+			"ground": "a00850b09da1d595525618c81a9834fe095290b61075529fee2a1ed69d0988b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.5,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[132, 305, 468, 381],
+					[70, 370, 530, 446]
+				],
+				"subtitle": [
+					[171, 520, 429, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"fr/fire-against-the-dark": {
 			"ground": "f26975b6f1fe111f7954cb153b21dd45277dcb363ee930455708d84399f9572d",
 			"style": "young",
@@ -15463,6 +15531,41 @@
 			"middle": [
 				292,
 				502
+			]
+		},
+		"fr/journal-of-an-expedition-up-the-niger": {
+			"ground": "29e6cb7543a1871539bc206d37767c9bbd3f75be5dc83788b026150350fca790",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[124, 272, 476, 348],
+					[162, 337, 438, 413],
+					[150, 403, 450, 479]
+				],
+				"subtitle": [
+					[93, 552, 507, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
 			]
 		},
 		"fr/key-teachings-of-a-b-simpson": {
@@ -24005,6 +24108,40 @@
 				480
 			]
 		},
+		"ko/jesus-teacher-of-prayer": {
+			"ground": "61bdb2a15be97077584f6df6a950078f1e7077b8e1927403859bc7aba7babd65",
+			"style": "originals",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "65e51b9577855c852e3e7e1e87c3be24243a2717018238fbe615ff86ca19b09b",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 281, 311, 325],
+					[54, 359, 546, 435]
+				],
+				"subtitle": [
+					[105, 497, 495, 525]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				269,
+				525
+			]
+		},
 		"ko/key-teachings-of-gareth-evans": {
 			"ground": "d1a874b0ad6eb54cbdc2f1e7438c16f06dd312b8c9610461c5e4ab01996c456b",
 			"style": "originals",
@@ -27464,6 +27601,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"lg/the-imitation-of-christ": {
+			"ground": "1eef7151cf0234c788dff92987c4d05c403340db78c86f4e45499b5a21ff818e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[128, 230, 472, 335],
+					[198, 322, 402, 427]
+				],
+				"subtitle": [
+					[142, 502, 458, 530],
+					[171, 530, 429, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"lg/the-inner-chamber": {
 			"ground": "2a58cf5cb54ad7c3760c89b9fab850263f594e5eacee98bc75bc0501f429a6cc",
 			"style": "devotional",
@@ -30429,6 +30601,21 @@
 				294,
 				501
 			]
+		},
+		"pt/grace-abounding": {
+			"ground": "8f9efd796b616ac9e2e2e21369d5bc1449f4d17ef50de8b2d2608d852a47f545",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
 		},
 		"pt/grace-for-grace-2": {
 			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
@@ -36102,6 +36289,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/the-imitation-of-christ": {
+			"ground": "3c8625fbbc60a72331d49a1fdc31c54b463e1d4f46fb517ce03c1d74169a092e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[136, 244, 464, 349],
+					[198, 336, 402, 441]
+				],
+				"subtitle": [
+					[59, 516, 541, 544]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				544
+			]
+		},
 		"sw/the-inner-chamber": {
 			"ground": "f61e809f09f9599943ecc915b7631473eff9c78e20dbdbf35a0c021d057941a6",
 			"style": "devotional",
@@ -37759,6 +37980,41 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"the-fire-on-the-altar": {
+			"ground": "2b6ceeaf48b8659fc6a896aa4e95ccac5a0ef1af505f4dfb94093c41460f6b54",
+			"style": "originals",
+			"volume": "7",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.25,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[291, 250, 310, 294],
+					[131, 328, 469, 404],
+					[167, 394, 433, 470]
+				],
+				"subtitle": [
+					[63, 528, 537, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
 			]
 		},
 		"the-first-apology": {
