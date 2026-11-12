@@ -38,7 +38,12 @@ from .opening import opening_candidate_orders, opening_excerpt
 from .plan_seed import DAILY_PLANS
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
-from .scripture_graph import treated_passages
+from .scripture_graph import (
+    bible_book_of,
+    book_chapter_pages,
+    classics_page,
+    treated_passages,
+)
 from .text import word_count
 
 #: A dated book's slug → its year-long plan's slug.
@@ -2186,6 +2191,14 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         """
         return self._batch(obj).scripture_refs(obj)
 
+    # For a chapter of the Bible itself: the scripture page of the passage it
+    # is — the classics and sermons that quote it — or null where none was
+    # built (see scripture_graph.classics_page). Null for every other book.
+    classics_page = serializers.SerializerMethodField()
+
+    def get_classics_page(self, obj):
+        return self._batch(obj).classics_page(obj)
+
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
@@ -2232,6 +2245,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
+            # A Bible chapter's "what the classics say" page — see above.
+            "classics_page",
             # The chapter's answered questions (``Chapter``): a young-reader
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
@@ -2329,12 +2344,21 @@ class ChapterBatch:
             ref: page_url(pages[ref]) for ref in candidates if pages.get(ref)
         }
         self._pages = pages
+        # A Bible book's chapters link the scripture page of the passage they
+        # ARE ("what the classics say"); every other book has none.
+        self._bible = bible_book_of(book)
+        self._bible_pages = book_chapter_pages(self._bible) if self._bible else {}
 
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
 
     def scripture_refs(self, chapter):
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
+
+    def classics_page(self, chapter):
+        if self._bible is None:
+            return None
+        return classics_page(self._bible, chapter, self._bible_pages)
 
 
 class PlanListSerializer(serializers.ModelSerializer):
