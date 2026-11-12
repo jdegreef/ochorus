@@ -1294,6 +1294,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
+  "language": "pt",
+  "title": "Uma Nuvem de Testemunhas em Oração",
+  "description": "A oração ao longo de toda a história da igreja, um volume para cada época: as orações do Antigo Testamento, Jesus, o Mestre de Oração, os apóstolos e os homens e mulheres de oração de todos os séculos e de todas as terras até hoje. Cada capítulo curto apresenta um versículo-chave, conta uma história, ouve uma voz do passado e termina com lições, uma prática e uma oração.",
+  "created_at": "2026-11-09T12:00:00Z",
+  "updated_at": "2026-11-09T12:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "the-lamplighters-of-gloamhaven"
   ],
   "language": "fr",
