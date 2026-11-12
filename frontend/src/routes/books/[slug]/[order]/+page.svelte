@@ -2425,7 +2425,7 @@
 				<section class="mt-10 border-t border-border pt-6" aria-label={t('reader.relatedPassages')}>
 					<div class="flex flex-wrap items-center gap-2">
 						<span class="eyebrow text-muted" aria-hidden="true">{t('reader.relatedPassages')}</span>
-						{#each chapter.related_passages as passage (passage.book + passage.order)}
+						{#each chapter.related_passages as passage (`${passage.book}/${passage.order}`)}
 							<a href={localizeHref(bookChapterPath(passage.book, passage.order, false))} class="tag"
 								>{passage.reference}</a
 							>

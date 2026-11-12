@@ -119,6 +119,23 @@ NEW_TESTAMENT_ENGLISH = {
     "REV.12.18": ["REV.13.1"],
 }
 
+def english_versification(root: Path) -> dict[str, list[str]]:
+    """Source verse -> the English verses that hold its text ([] for a psalm
+    title), for every verse numbered otherwise in English: OWB's
+    `data/versification.json` and NEW_TESTAMENT_ENGLISH. Shared with
+    `build_owb_crossrefs`, so a verse lands in the same chapter in both."""
+    upstream = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
+    # The hand-copied table must not quietly overrule OWB's own data: if
+    # OWB ever carries one of these verses itself, refuse until they agree.
+    clash = {
+        vid for vid, english in NEW_TESTAMENT_ENGLISH.items()
+        if vid in upstream and upstream[vid] != english
+    }
+    if clash:
+        raise CommandError(f"NEW_TESTAMENT_ENGLISH disagrees with OWB's versification: {sorted(clash)}")
+    return upstream | NEW_TESTAMENT_ENGLISH
+
+
 #: Matthew's number in the canon (OWB's `data/books.json` order, from 1): it and
 #: every book after it are Greek (`data/grc/`), the ones before Hebrew (`data/hbo/`).
 FIRST_NT_NUMBER = 40
@@ -272,18 +289,9 @@ class Source:
         self.greek = self.number >= FIRST_NT_NUMBER
         # Source verse -> its English verses, for the verses numbered otherwise
         # in English ([] for a psalm title). See the module doc.
-        upstream = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
-        # The hand-copied table must not quietly overrule OWB's own data: if
-        # OWB ever carries one of these verses itself, refuse until they agree.
-        clash = {
-            vid for vid, english in NEW_TESTAMENT_ENGLISH.items()
-            if vid in upstream and upstream[vid] != english
-        }
-        if clash:
-            raise CommandError(f"NEW_TESTAMENT_ENGLISH disagrees with OWB's versification: {sorted(clash)}")
         self.english = {
             vid: english
-            for vid, english in (upstream | NEW_TESTAMENT_ENGLISH).items()
+            for vid, english in english_versification(root).items()
             if vid.startswith(f"{code}.")
         }
         self.carry_headings_forward()

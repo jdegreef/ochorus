@@ -14,14 +14,15 @@ chapter API reads for a chapter of the Bible itself (`library/bible_crossrefs`).
 
 PER CHAPTER, NOT PER VERSE. The reader prints no verse numbers (a reader's
 edition, `build_owb_book`), so a verse-by-verse margin has nowhere to stand;
-the chapter's foot does. Each chapter keeps its PER_CHAPTER best passages:
+the chapter's foot does. Each chapter keeps its KEEP best passages (the reader shows
+PER_CHAPTER):
 every verse's references vote for their target, the first-ranked worth the
 most (PER_VERSE - rank, the order OWB keeps them in — its file carries ranks,
 not vote counts), and the targets inside the chapter itself are dropped. The
 votes are then summed per TARGET CHAPTER, each shown by its best passage, so
 the list spreads across the Bible rather than repeat one neighbouring chapter
-and a chapter that answers this one through several verses rises. That caps the file at a few
-dozen KB gzipped, served with the chapter, never in the JS bundle.
+and a chapter that answers this one through several verses rises. That caps the file at under a
+hundred KB gzipped, served with the chapter, never in the JS bundle.
 
 ENGLISH NUMBERING. OWB numbers the Old Testament by its Hebrew source, the
 reader by English Bibles (`build_owb_book` places each sentence through
@@ -43,14 +44,15 @@ import subprocess
 from collections import defaultdict
 from pathlib import Path
 
-from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from library.management.commands.build_owb_book import EDITORIAL, NEW_TESTAMENT_ENGLISH
+from library.bible_crossrefs import BUNDLE, PER_CHAPTER
+from library.management.commands.build_owb_book import EDITORIAL, english_versification
 
-BUNDLE = Path(settings.BASE_DIR) / "library" / "data" / "bible" / "crossrefs-en.json.gz"
-#: How many related passages a chapter keeps: a short row, easy to ignore.
-PER_CHAPTER = 6
+#: How many related passages a chapter's row keeps in the bundle: more than
+#: the reader shows (PER_CHAPTER), so a passage in a book the library has not
+#: published gives its place to the next one rather than leave a gap.
+KEEP = PER_CHAPTER + 4
 #: OWB keeps at most this many references per verse, best first.
 PER_VERSE = 5
 CREDIT = "Cross-references from OpenBible.info (https://www.openbible.info/labs/cross-references/), CC BY."
@@ -74,8 +76,8 @@ class Command(BaseCommand):
         if not crossrefs.is_dir():
             raise CommandError(f"{crossrefs} not found — is {root} an Open Word Bible checkout?")
         books = json.loads((root / "data" / "books.json").read_text("utf-8"))["books"]
-        english = json.loads((root / "data" / "versification.json").read_text("utf-8"))["english"]
-        english = english | NEW_TESTAMENT_ENGLISH
+        english = english_versification(root)
+        position = {code: i for i, code in enumerate(books)}
 
         meta = {code: json.loads((EDITORIAL / code / "book.json").read_text("utf-8")) for code in books}
         slug = {code: meta[code]["slug"] for code in books}
@@ -104,27 +106,31 @@ class Command(BaseCommand):
         def name(first, last) -> str:
             code, c1, v1 = first
             _, c2, v2 = last
-            v1 = max(v1, 1)
+            # A psalm's title has no English verse (0): it reads as verse 1.
+            v1, v2 = max(v1, 1), max(v2, 1)
             head = f"{label[code]} {c1}:{v1}"
             if (c1, v1) == (c2, v2):
                 return head
             return f"{head}-{v2}" if c1 == c2 else f"{head}-{c2}:{v2}"
 
         out: dict[str, dict[str, list]] = {}
+        source = None
         for code in books:
             path = crossrefs / f"{code}.json"
             if not path.is_file():
                 continue
-            refs = json.loads(path.read_text("utf-8"))["refs"]
+            data = json.loads(path.read_text("utf-8"))
+            source, refs = data["source"], data["refs"]
             score: dict[int, dict] = defaultdict(lambda: defaultdict(int))
-            for source, targets in refs.items():
-                chapter = to_english(source)[1]
+            for verse, targets in refs.items():
+                chapter = to_english(verse)[1]
+                if len(targets) > PER_VERSE:
+                    raise CommandError(f"{verse}: {len(targets)} references, past PER_VERSE")
                 for rank, text in enumerate(targets):
                     first, last = target(text)
                     if first[0] == code and first[1] == chapter:
                         continue
                     score[chapter][(first, last)] += PER_VERSE - rank
-            order = list(books)
             chapters = {}
             for chapter, votes in sorted(score.items()):
                 # A target CHAPTER's weight is all its passages' votes together:
@@ -137,17 +143,18 @@ class Command(BaseCommand):
                     weight[where] += points
                     if where not in best or points > votes[best[where]]:
                         best[where] = (first, last)
-                ranked = sorted(weight, key=lambda w: (-weight[w], order.index(w[0]), w[1]))
+                ranked = sorted(weight, key=lambda w: (-weight[w], position[w[0]], w[1]))
                 # [label, reader book slug, English chapter]
                 chapters[str(chapter)] = [
-                    [name(*best[w]), slug[w[0]], w[1]] for w in ranked[:PER_CHAPTER]
+                    [name(*best[w]), slug[w[0]], w[1]] for w in ranked[:KEEP]
                 ]
             out[slug[code]] = chapters
 
         commit = subprocess.run(
             ["git", "-C", str(root), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
         ).stdout.strip()
-        source = json.loads((crossrefs / f"{next(iter(books))}.json").read_text("utf-8"))["source"]
+        if source is None:
+            raise CommandError(f"no cross-reference files in {crossrefs}")
         data = {
             "about": (
                 "Related passages for each chapter of the library's Bible, in English "

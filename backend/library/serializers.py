@@ -2324,9 +2324,10 @@ class ChapterBatch:
         self._pages = pages
         # A Bible chapter's related passages (library/bible_crossrefs): the
         # published Bible books they may link, looked up once per run.
-        from .bible_crossrefs import is_bible_book, published_bible_slugs
+        from .bible_crossrefs import is_bible_book
 
-        self._bible_slugs = published_bible_slugs() if is_bible_book(book) else None
+        self._is_bible = is_bible_book(book)
+        self._bible_slugs = None
 
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
@@ -2335,11 +2336,17 @@ class ChapterBatch:
         return [{"ref": r, "page": self._pages.get(r)} for r in self._cited[chapter.pk]]
 
     def related_passages(self, chapter):
-        from .bible_crossrefs import related_passages
+        from .bible_crossrefs import published_bible_slugs, related_passages
 
-        if self._bible_slugs is None:
+        if not self._is_bible:
             return []
-        return related_passages(chapter.book, chapter, self._bible_slugs)
+
+        def published():
+            if self._bible_slugs is None:
+                self._bible_slugs = published_bible_slugs()
+            return self._bible_slugs
+
+        return related_passages(chapter.book, chapter, published)
 
 
 class PlanListSerializer(serializers.ModelSerializer):

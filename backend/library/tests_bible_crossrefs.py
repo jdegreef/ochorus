@@ -32,7 +32,7 @@ class BundleTests(SimpleTestCase):
     def test_each_chapter_is_a_short_row_of_other_chapters(self):
         for slug, chapters in self.data["books"].items():
             for chapter, rows in chapters.items():
-                self.assertLessEqual(len(rows), 6)
+                self.assertLessEqual(len(rows), 10)
                 targets = [(b, n) for _, b, n in rows]
                 self.assertEqual(len(targets), len(set(targets)), (slug, chapter))
                 self.assertNotIn((slug, int(chapter)), targets)
@@ -75,6 +75,13 @@ class ChapterApiTests(TestCase):
         # Only the books the library has: Psalms and John here.
         self.assertTrue({r["book"] for r in related} <= {"psalms", "gospel-of-john"})
         self.assertIn({"reference": "John 10:11", "book": "gospel-of-john", "order": 11}, related)
+
+    def test_a_full_library_shows_a_short_row(self):
+        from .bible_crossrefs import PER_CHAPTER, related_passages
+
+        chapter = Chapter.objects.get(book=self.psalms, order=24)
+        everything = lambda: frozenset(json.loads(gzip.decompress(BUNDLE.read_bytes()))["books"])  # noqa: E731
+        self.assertEqual(len(related_passages(self.psalms, chapter, everything)), PER_CHAPTER)
 
     def test_the_editorial_chapters_and_a_drifted_title_have_none(self):
         self.assertEqual(self._related("psalms", 1), [])

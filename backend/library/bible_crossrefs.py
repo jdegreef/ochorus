@@ -3,8 +3,9 @@ cross-references, from OpenBible.info's crowd-voted list (CC BY).
 
 The data is ``library/data/bible/crossrefs-en.json.gz``, built from the Open
 Word Bible's ``data/crossrefs`` by ``manage.py build_owb_crossrefs`` (which
-says how a chapter's few are chosen). CC BY requires the credit, so the reader
-shows ``CREDIT`` wherever it shows the list; the file carries it too.
+says how a chapter's few are chosen). CC BY requires the credit: the file
+carries it with the data, and the reader prints it under every list
+(``reader.crossrefsCredit``).
 
 English only: the Bible books are English rows, and so are the labels.
 """
@@ -23,6 +24,9 @@ BUNDLE = Path(__file__).resolve().parent / "data" / "bible" / "crossrefs-en.json
 #: (a test holds the two together; a command module is not imported here).
 BIBLE_SERIES = "the-bible"
 
+#: How many related passages a chapter shows: a short row, easy to ignore.
+PER_CHAPTER = 6
+
 #: A Bible book's reader chapter is titled with its Bible chapter ("Romans 8",
 #: "Psalm 23"); the introduction and conclusion carry no number.
 _TRAILING_NUMBER = re.compile(r"\s(\d+)$")
@@ -40,10 +44,11 @@ def is_bible_book(book) -> bool:
     return book.language == "en" and book.series_id is not None and book.series.slug == BIBLE_SERIES
 
 
-def related_passages(book, chapter, published: frozenset[str]) -> list[dict]:
+def related_passages(book, chapter, published) -> list[dict]:
     """The passages to read beside reader chapter ``chapter`` of Bible book
     ``book``: ``[{"reference", "book", "order"}]``, each a reader chapter of a
-    published Bible book (``published``: their slugs). [] for the introduction
+    published Bible book (``published()``: their slugs, asked only when there
+    is a row to filter). [] for the introduction
     and conclusion, and for a chapter whose title disagrees with its place
     (Bible chapter n is reader chapter n + 1) — never another chapter's list.
     """
@@ -51,11 +56,14 @@ def related_passages(book, chapter, published: frozenset[str]) -> list[dict]:
     if not m or int(m.group(1)) != chapter.order - 1:
         return []
     rows = _books().get(book.slug, {}).get(m.group(1), [])
-    return [
+    if not rows:
+        return []
+    shown = [
         {"reference": label, "book": slug, "order": n + 1}
         for label, slug, n in rows
-        if slug in published
+        if slug in published()
     ]
+    return shown[:PER_CHAPTER]
 
 
 def published_bible_slugs() -> frozenset[str]:
