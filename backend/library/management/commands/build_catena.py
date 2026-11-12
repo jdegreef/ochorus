@@ -353,14 +353,19 @@ class Command(BaseCommand):
 
     @cached_property
     def open_at(self) -> set[tuple[int, int]]:
-        """The verses that begin inside a quotation: an odd count of double
-        marks in the Gospel before them. Counted across chapters, because the
-        farewell discourse runs from John 14 to the end of 16."""
-        open_at, marks = set(), 0
+        """The verses that begin inside a quotation. Each double mark is read
+        by its place, not counted: one at the start of a verse or after a
+        space or bracket opens, any other closes. OWB reopens a long speech at
+        each new paragraph without closing the last (John 14–16), so a mere
+        count drifts out of step. Read across chapters, since that discourse
+        crosses two of them."""
+        open_at, inside = set(), False
         for v in sorted(self.verses):
-            if marks % 2:
+            if inside:
                 open_at.add(v)
-            marks += self.verses[v].count('"')
+            for m in re.finditer('"', self.verses[v]):
+                before = self.verses[v][m.start() - 1] if m.start() else " "
+                inside = before in " ([—"
         return open_at
 
     def excerpt_html(self, e: dict) -> str:
