@@ -253,10 +253,19 @@ def _bundle_images(wrapper, images: dict[str, Cover]) -> None:
             img.attrib.pop(hint, None)
 
 
+#: The longest line of verse, in characters, in the Bible's four books set
+#: wholly as verse (Psalms, Proverbs, Song of Songs, Lamentations: 230). A longer
+#: run between two ``<br/>`` is prose — ``build_owb_book`` runs prose verses on
+#: in the paragraph that then breaks into quoted verse (1 Kings 22).
+MAX_VERSE_LINE = 240
+
+
 def _set_lines(p) -> None:
     """Rewrite a ``<p>`` of ``<br/>``-separated lines as ``<p class="lines">``
     with one ``<span class="line">`` per line: a ``<br/>`` can't carry the
-    hanging indent that shows where a long line wraps, a block per line can."""
+    hanging indent that shows where a long line wraps, a block per line can.
+    A run longer than any line of verse is ``<span class="prose">``, set as
+    the prose it is."""
     def span():
         return p.makeelement("span", {"class": "line"})
 
@@ -272,7 +281,10 @@ def _set_lines(p) -> None:
             cur.append(child)  # moves it, with its tail
     lines.append(cur)
     p.text = None
-    p.set("class", "lines")
+    p.set("class", "lines")  # a sanitized body's <p> has no class of its own
+    for line in lines:
+        if len("".join(line.itertext())) > MAX_VERSE_LINE:
+            line.set("class", "prose")
     p.extend(line for line in lines if (line.text or "").strip() or len(line))
 
 
@@ -441,12 +453,13 @@ def author_bio(book: Book) -> str:
 
 
 def imprint_page(book: Book) -> dict:
-    """A translation imprint's front matter for this edition (``IMPRINT_PAGES``):
-    its page for the edition's language with the imprint's own keys, or {}."""
+    """A translation imprint's export settings for this edition (``IMPRINT_PAGES``):
+    its flags, which describe its text in any language, and its page in the
+    edition's language when it has one (``title`` present); {} for none."""
     entry = IMPRINT_PAGES.get(book.author.slug) if book.author.is_imprint else None
-    page = (entry or {}).get("pages", {}).get(book.language)
-    if not page:
+    if not entry:
         return {}
+    page = entry["pages"].get(book.language, {})
     return {**{k: v for k, v in entry.items() if k != "pages"}, **page}
 
 
@@ -570,7 +583,7 @@ def _rights_key(book: Book) -> str:
 
 def _rights_text(book: Book, strings: dict, imprint: dict) -> str:
     """The one-line rights statement (also the EPUB's dc:rights)."""
-    if imprint:
+    if "edition" in imprint:
         return f"{book.attribution.strip()} {imprint['edition']}".strip()
     if is_in_copyright(book):
         return f"{book.attribution.strip()} {strings[_rights_key(book)]}"
@@ -580,7 +593,7 @@ def _rights_text(book: Book, strings: dict, imprint: dict) -> str:
 def _rights(ed: Edition) -> str:
     s = ed.strings
     parts = []
-    if ed.imprint:
+    if "edition" in ed.imprint:
         # The translation's credit and licence (the attribution), then who made the edition.
         if ed.book.attribution:
             parts.append(f'<p dir="auto">{_e(ed.book.attribution.strip())}</p>')
@@ -669,13 +682,14 @@ def _imprint_page(ed: Edition) -> str:
     return "".join(parts)
 
 
-def _front_person(ed: Edition) -> tuple[str, str] | None:
-    """The page after About Ochorus — (title, body) — or None: the author's
-    biography, else a translation imprint's page, else nothing (an Original)."""
+def _front_person(ed: Edition) -> tuple[str, str, str, str] | None:
+    """The page after About Ochorus — (EPUB id, EPUB file, title, body) — or
+    None: the author's biography, else a translation imprint's page, else
+    nothing (an Original)."""
     if ed.bio:
-        return ed.strings["author_title"], _author_page(ed)
-    if ed.imprint:
-        return ed.imprint["title"], _imprint_page(ed)
+        return "author", "about-author.xhtml", ed.strings["author_title"], _author_page(ed)
+    if "title" in ed.imprint:
+        return "translation", "about-translation.xhtml", ed.imprint["title"], _imprint_page(ed)
     return None
 
 
@@ -701,9 +715,10 @@ p { margin: 0; text-indent: 1.5em; text-align: justify; }
 h1 + p, h2 + p, h3 + p, blockquote + p, .noindent { text-indent: 0; }
 blockquote { margin: 1em 1.5em; font-style: italic; }
 blockquote p { text-indent: 0; }
-h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
+.verse-set h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
 p.lines { text-indent: 0; text-align: left; margin-bottom: 0.6em; }
 .lines .line { display: block; padding-left: 2.5em; text-indent: -1.5em; }
+.lines .prose { display: block; text-align: justify; }
 .titlepage { text-align: center; }
 .titlepage p { text-indent: 0; text-align: center; }
 .book-title { font-size: 2em; margin-top: 30%; }
@@ -763,14 +778,17 @@ def render_epub(ed: Edition) -> bytes:
     docs.append(("ochorus", "about-ochorus.xhtml", None, _xhtml(ed, s["ochorus_title"], _ochorus_page(ed), body_class="ochorus")))
     front = _front_person(ed)
     if front:
-        doc_id, href = ("author", "about-author.xhtml") if ed.bio else ("translation", "about-translation.xhtml")
-        docs.append((doc_id, href, None, _xhtml(ed, front[0], front[1], body_class="author-page")))
+        doc_id, href, title, body = front
+        docs.append((doc_id, href, None, _xhtml(ed, title, body, body_class="author-page")))
     if ed.about:
         docs.append(("about", "about.xhtml", s["about"], _xhtml(ed, s["about"], f"<h1>{_e(s['about'])}</h1>{ed.about}")))
     for ch in ed.chapters:
         docs.append((
             f"ch{ch.order:03d}", f"chapter-{ch.order:03d}.xhtml", ch.title,
-            _xhtml(ed, ch.title, f"<h1>{_e(ch.title)}</h1>{ch.body}{_talk(ed, ch)}"),
+            _xhtml(
+                ed, ch.title, f"<h1>{_e(ch.title)}</h1>{ch.body}{_talk(ed, ch)}",
+                body_class="verse-set" if ed.imprint.get("verse_lines") else "",
+            ),
         ))
     docs.append(("colophon", "colophon.xhtml", None, _xhtml(ed, "Ochorus", _colophon(ed), body_class="back")))
 
@@ -914,13 +932,18 @@ p { margin: 0; text-indent: 1.4em; text-align: justify; hyphens: auto; orphans: 
 h1 + p, h2 + p, h3 + p, blockquote + p { text-indent: 0; }
 blockquote { margin: 3mm 6mm; font-style: italic; }
 blockquote p { text-indent: 0; }
-h3 { font-size: 11.5pt; font-weight: 600; margin: 5mm 0 2mm; break-after: avoid; }
-/* Verse, line by line (to_xhtml's verse_lines): ragged, a gap between stanzas,
-   and a hanging indent so a line too long for the measure wraps visibly. */
+/* A translation imprint's text (IMPRINT_PAGES verse_lines → body.verse-set):
+   its section headings, and its verse line by line — ragged, a gap between
+   stanzas, and a hanging indent so a line too long for the measure wraps
+   visibly; a prose run inside such a paragraph stays prose. */
+.verse-set h3 { font-size: 11.5pt; font-weight: 600; margin: 5mm 0 2mm; break-after: avoid; }
 p.lines { text-indent: 0; text-align: start; hyphens: manual; margin: 0 0 2mm; }
 .lines .line { display: block; padding-inline-start: 2.5em; text-indent: -1.5em; }
-/* A Bible's chapters run on (render_print_html); the title keeps its chapter. */
+.lines .prose { display: block; text-align: justify; hyphens: auto; }
+/* A Bible's chapters run on (render_print_html) under a smaller title; the
+   first opens a page after the introduction. */
 section.part.run-on { break-before: auto; }
+section.part.run-on.opens { break-before: page; }
 .run-on h1.part-title { font-size: 14pt; margin: 9mm 0 4mm; break-after: avoid; }
 .back { padding-top: 60mm; }
 .back p { text-indent: 0; text-align: left; margin-bottom: 3mm; font-size: 10pt; }
@@ -975,7 +998,7 @@ def render_print_html(
         # The empty links make Chrome name both ends of the page as PDF
         # destinations; export_book checks they land on one page.
         parts.append(
-            f'<div class="author-page"><span id="author-top"></span>{front[1]}'
+            f'<div class="author-page"><span id="author-top"></span>{front[3]}'
             '<span id="author-end"><a href="#author-top"></a><a href="#author-end"></a></span></div>'
         )
     toc = []
@@ -995,18 +1018,22 @@ def render_print_html(
         parts.append(f'<section class="part" id="about"><h1 class="part-title">{_e(s["about"])}</h1>{ed.about}</section>')
     # A Bible's chapters run on, as a printed Bible's do (Psalm 117 is two
     # lines), between its introduction and conclusion, which keep their pages:
-    # build_owb_book always makes the first and last chapter those two.
-    run_on = {c.order for c in ed.chapters[2:-1]} if ed.imprint.get("run_on") else set()
+    # build_owb_book always makes the first and last chapter those two
+    # (PilotTests holds it).
+    run_on = [c.order for c in ed.chapters[1:-1]] if ed.imprint.get("run_on") else []
     for c in ed.chapters:
-        cls = "part run-on" if c.order in run_on else "part"
+        cls = "part"
+        if c.order in run_on:
+            cls += " run-on opens" if c.order == run_on[0] else " run-on"
         parts.append(
             f'<section class="{cls}" id="ch{c.order}"><h1 class="part-title">{_e(c.title)}</h1>'
             f"{c.body}{_talk(ed, c)}</section>"
         )
     parts.append(f'<section class="part back">{_colophon(ed)}</section>')
     dir_attr = ' dir="rtl"' if ed.rtl else ""
+    body_cls = ' class="verse-set"' if ed.imprint.get("verse_lines") else ""
     return (
         f'<!doctype html><html lang="{ed.lang}"{dir_attr}><head><meta charset="utf-8"/>'
         f"<title>{_e(b.title)} — {_e(ed.author)}</title>"
-        f"<style>{_print_fonts_css()}{PRINT_CSS}</style></head><body>{''.join(parts)}</body></html>"
+        f"<style>{_print_fonts_css()}{PRINT_CSS}</style></head><body{body_cls}>{''.join(parts)}</body></html>"
     )

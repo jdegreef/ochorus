@@ -48,7 +48,8 @@ permissions:
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
-    # A full rebuild took 22 minutes for 462 editions; the Bible's 66 add several.
+    # A full rebuild took 22 minutes for 462 editions (2026-11); the Bible's 66
+    # took 7 more locally, printed one after another.
     timeout-minutes: 50
     env:
       DJANGO_DEBUG: 'true' # local SQLite, seeded from the fixture
