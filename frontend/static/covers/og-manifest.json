@@ -35595,6 +35595,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"sw/how-to-bring-men-to-christ": {
+			"ground": "a1092e84d5681b46ddab821776929d95cf3fb8576331963cb520f74acb469dd0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0.055,
+			"caps": false,
+			"sitemark": null
+		},
 		"sw/humility-2": {
 			"ground": "e7f751b43aeb0f7b23856bfa4b613356fb6d2f815da0789adaa7a14ee23c880c",
 			"style": "devotional",
