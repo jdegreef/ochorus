@@ -368,6 +368,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[114, 102, 486, 131]
@@ -2363,6 +2364,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[168, 102, 432, 131]
@@ -4429,6 +4431,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[193, 102, 407, 131]
@@ -6431,6 +6434,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -6740,7 +6744,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"ar/the-secret-of-guidance": {
 			"ground": "2ed8745f175f68bee49d4f200a797d58cb36555e574afee3066ee061c3936144",
@@ -9536,6 +9541,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[160, 102, 440, 131]
@@ -11686,7 +11692,8 @@
 			"medallion": null,
 			"layout": "framed-light",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"es/sons-of-the-king-2": {
 			"ground": "ed6faebed6e8382a577131f57b5873fd4b7a7f5c4e4ecc78e5e5cd5ce5ee8f57",
@@ -11700,7 +11707,8 @@
 			"medallion": null,
 			"layout": "framed-light",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"es/sons-of-the-king-3": {
 			"ground": "00f2008db5a84e37141b99252d0f67b3d2ff9d42fb6bf38c0f8f051ac6df0dd9",
@@ -11941,6 +11949,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[160, 102, 440, 131]
@@ -14313,6 +14322,7 @@
 			"layout": "framed-top",
 			"bar": 0.03,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[160, 102, 440, 131]
@@ -14748,7 +14758,8 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"fr/ever-increasing-faith": {
 			"ground": "c86781970dab97445634de033e09eab0049aad077d20693daa3799b492813f58",
@@ -14824,6 +14835,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[160, 102, 440, 131]
@@ -17298,6 +17310,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[160, 102, 440, 131]
@@ -18869,7 +18882,8 @@
 			"medallion": null,
 			"layout": "fade/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"hi/answers-to-prayer": {
 			"ground": "173cee95d57f1cb570fc2e07f76b89398851e261e9b85e39dd4b5def32384dae",
@@ -19123,6 +19137,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[96, 102, 504, 131]
@@ -19736,6 +19751,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[196, 102, 404, 131]
@@ -19833,6 +19849,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[137, 102, 463, 131]
@@ -19862,6 +19879,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[167, 102, 433, 131]
@@ -20224,6 +20242,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -20286,6 +20305,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[97, 102, 503, 131]
@@ -20385,6 +20405,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[79, 102, 521, 131]
@@ -20461,6 +20482,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[139, 102, 461, 131]
@@ -20647,7 +20669,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"hi/the-secret-of-guidance": {
 			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
@@ -23479,7 +23502,8 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0.025,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
@@ -24568,7 +24592,8 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/stepping-stones-2": {
 			"ground": "5d538ddb01f746c61cc3194792e1d2dd30abcff12f808ca0b95d45ecba2dc3e8",
@@ -24598,6 +24623,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -24925,6 +24951,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[149, 102, 451, 131]
@@ -25083,7 +25110,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"ko/the-secret-of-guidance": {
 			"ground": "67a96aaf715ce04519baf1aecaac0a2e950da9e4e64244c407a4d766ecbff058",
@@ -27030,6 +27058,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -27430,7 +27459,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"lg/the-secret-of-guidance": {
 			"ground": "f6c5053e973bd775263547c50e2b86f28bb5e1a6a3782128ae55ce6efc5e5c80",
@@ -29668,6 +29698,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[114, 102, 486, 131]
@@ -30259,6 +30290,21 @@
 				294,
 				501
 			]
+		},
+		"pt/grace-abounding": {
+			"ground": "8f9efd796b616ac9e2e2e21369d5bc1449f4d17ef50de8b2d2608d852a47f545",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.02,
+			"caps": false,
+			"sitemark": null
 		},
 		"pt/grace-for-grace-2": {
 			"ground": "aa32b31a87dc2cd77445d5bdf2988042e4a2ba517c799b3ee323db6238723e4f",
@@ -33213,6 +33259,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[114, 102, 486, 131]
@@ -33547,6 +33594,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[180, 102, 420, 131]
@@ -34618,6 +34666,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[117, 102, 483, 131]
@@ -34653,6 +34702,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[147, 102, 453, 131]
@@ -34687,6 +34737,7 @@
 			"layout": "framed-top",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[161, 102, 439, 131]
@@ -35188,7 +35239,8 @@
 			"medallion": null,
 			"layout": "split/mauve",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"sw/power-through-prayer": {
 			"ground": "00a4043c9fbe2104b4ce4d782e80296b4e40b399974728afd08c5f9be3bc91a4",
@@ -35577,7 +35629,8 @@
 			"medallion": null,
 			"layout": "fade/slate",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"sw/soar-like-the-eagle-3": {
 			"ground": "c5e0f7674c522feb728fb346a7dd7e8f0a845f578caec64c427635bd900b953e",
@@ -36171,7 +36224,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"sw/the-secret-of-guidance": {
 			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
@@ -39410,7 +39464,8 @@
 			"medallion": null,
 			"layout": "fade/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/amanda-smith-autobiography-children": {
 			"ground": "6ad2f49c4878986d927d13048328ceaa8ce76782a6f68b1502f301c9b3397714",
@@ -39795,7 +39850,8 @@
 			"medallion": null,
 			"layout": "band/teal",
 			"bar": 0.02,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/growing-in-wisdom": {
 			"ground": "7172353c562c63453d90a20312ea7d626ae75691ee689b15b9bc03b4544d2640",
@@ -40022,6 +40078,7 @@
 			"layout": "framed",
 			"bar": 0.02,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[150, 102, 450, 131]
@@ -40210,6 +40267,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[196, 102, 404, 131]
@@ -40624,6 +40682,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -40819,6 +40878,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[139, 102, 461, 131]
@@ -41007,7 +41067,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
@@ -41674,7 +41735,8 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0.025,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/clothed-with-strength-and-dignity": {
 			"ground": "cd1b81541ffc096749f870408667060443f500932a116d38f89ac878e8269a4a",
@@ -41878,6 +41940,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[134, 102, 466, 131]
@@ -42749,7 +42812,8 @@
 			"medallion": null,
 			"layout": "band/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/stepping-stones-2": {
 			"ground": "817068f90b04c30057bb4af48dfaca6c54ad3f54306c9aa40b6eb27c38309246",
@@ -42779,6 +42843,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[145, 102, 455, 131]
@@ -43057,7 +43122,8 @@
 			"medallion": null,
 			"layout": "split/oxblood",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/the-life-of-trust-children": {
 			"ground": "ae7b2d87fa4e231f29f341550bbd5ad2a0b2c51dee688c402babc21e78686520",
@@ -43106,6 +43172,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[149, 102, 451, 131]
@@ -43269,7 +43336,8 @@
 			"medallion": null,
 			"layout": "box/rust",
 			"bar": 0.04,
-			"caps": false
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/the-secret-of-guidance": {
 			"ground": "84580314d5fbdef005cd147eea1e564f938b74fbf7dd522b480e10d9ec6f0dd4",
@@ -43315,6 +43383,7 @@
 			"layout": "framed",
 			"bar": 0,
 			"caps": false,
+			"sitemark": null,
 			"rows": {
 				"byline": [
 					[79, 102, 521, 131]
