@@ -865,6 +865,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "they-were-young"
+  ],
+  "language": "am",
+  "title": "ወጣቶች ነበሩ",
+  "description": "ዕድሜያቸው ከ13 እስከ 17 ለሆኑ አንባቢዎች፣ እምነታቸው ገና ሳያድጉ ስለ ጀመረ ወይም ስለ ተፈተነ ሰዎች የተጻፉ እውነተኛ ታሪኮች — ሙሉ በሙሉ የተተረኩ፣ ባሉን ቦታ በራሳቸው ቃል፣ ለማሰላሰል በሚረዱ ጥያቄዎች የታጀቡ።",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "tell-me-the-story"
   ],
   "language": "es",
