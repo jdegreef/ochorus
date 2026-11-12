@@ -848,7 +848,7 @@ class RetiredBookTests(SimpleTestCase):
             item[1]
             for _, _, _, items in CURATED_PLANS
             for item in plan_items(items)
-            if item[0] == "book"
+            if item[0] != "article"
         }
         topic_books = {s for t in TOPICS for s in t[3]}
         quoted = {q["chapter"][0] for qs in quote_seed.QUOTES.values() for q in qs if "chapter" in q}
@@ -2771,6 +2771,31 @@ class SermonBriefCoverageTests(SimpleTestCase):
             stale_tr, [],
             "TRANSLATIONS_WITHOUT_BRIEF lists a row that now HAS a brief — remove it",
         )
+
+
+class BibleInAYearTests(SimpleTestCase):
+    """``bible-in-a-year`` reads every chapter of the Bible once, in canonical
+    order, in 365 days — its prose says so, and a book re-cut with a chapter
+    more or less must fail here rather than ship a plan with a hole."""
+
+    def test_the_schedule_reads_every_chapter_once(self):
+        from library.content_fixtures import BOOKS_DIR
+        from library.plan_seed import BIBLE_IN_A_YEAR
+
+        bible = []
+        for path in BOOKS_DIR.glob("*.en.json"):
+            rows = json.loads(path.read_text(encoding="utf-8"))
+            book = rows[0]["fields"]
+            if book.get("series") == ["the-bible"]:
+                n = sum(1 for r in rows if r["model"] == "library.chapter")
+                bible.append((book["series_position"], book["slug"], n - 2))
+        bible.sort()
+        self.assertEqual(
+            [(slug, sum(per_day)) for slug, per_day in BIBLE_IN_A_YEAR],
+            [(slug, n) for _, slug, n in bible],
+        )
+        self.assertEqual(sum(len(per_day) for _, per_day in BIBLE_IN_A_YEAR), 365)
+        self.assertEqual(sum(sum(per_day) for _, per_day in BIBLE_IN_A_YEAR), 1189)
 
 
 class PlanTranslationCoverageTests(SimpleTestCase):

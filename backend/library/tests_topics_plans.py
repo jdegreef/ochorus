@@ -29,7 +29,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
-from .plan_seed import article, chapters
+from .plan_seed import article, chapters, reading, readings
 
 
 class PlanTests(TestCase):
@@ -566,6 +566,89 @@ class PlanArticleDayTests(TestCase):
             with self.subTest(fields=fields), self.assertRaises(IntegrityError):
                 with transaction.atomic():
                     PlanDay.objects.create(plan=plan, day=i, **fields)
+
+
+class PlanReadingDayTests(TestCase):
+    """A curated plan's day can read a run of one book's chapters (Bible in a
+    Year): one PlanDay with ``chapter_count``, titled and timed for the run."""
+
+    RUNS = [
+        (
+            "runs",
+            "Runs",
+            "Several chapters a day.",
+            [*readings("genesis", (3, 1)), reading("exodus", 1, 2)],
+        )
+    ]
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="owb", name="Open Word Bible")
+        for slug, title, n in (("genesis", "Genesis", 5), ("exodus", "Exodus", 2)):
+            book = Book.objects.create(author=author, slug=slug, language="en", title=title)
+            for i in range(1, n + 1):
+                Chapter.objects.create(
+                    book=book, order=i, title=f"{title} {i}", body_html=body_of(100)
+                )
+
+    def _seed(self):
+        with (
+            patch("library.management.commands.seed_plans.LAUNCH_PLANS", []),
+            patch("library.management.commands.seed_plans.DAILY_PLANS", []),
+            patch("library.management.commands.seed_plans.CURATED_PLANS", self.RUNS),
+        ):
+            call_command("seed_plans", verbosity=0)
+
+    def test_seed_builds_one_day_per_run(self):
+        self._seed()
+        days = Plan.objects.get(slug="runs", language="en").days.all()
+        self.assertEqual(
+            [(d.day, d.book_slug, d.chapter_order, d.chapter_count) for d in days],
+            [(1, "genesis", 2, 3), (2, "genesis", 5, 1), (3, "exodus", 1, 2)],
+        )
+        self.assertEqual(list(days[0].chapter_orders), [2, 3, 4])
+
+    def test_seed_skips_a_run_that_does_not_resolve(self):
+        Chapter.objects.filter(book__slug="genesis", order=3).delete()
+        self._seed()
+        self.assertFalse(Plan.objects.filter(slug="runs").exists())
+
+    def test_api_titles_and_times_the_run(self):
+        self._seed()
+        res = self.client.get("/api/library/plans/runs/?language=en")
+        first, second, third = res.data["days"]
+        self.assertEqual(first["chapter_count"], 3)
+        self.assertEqual(first["chapter_title"], "Genesis 2\u20134")
+        self.assertEqual(first["word_count"], 300)
+        self.assertEqual(second["chapter_title"], "Genesis 5")
+        self.assertEqual(third["chapter_title"], "Exodus 1\u20132")
+        self.assertEqual(res.data["total_words"], 600)
+        lst = self.client.get("/api/library/plans/?language=en")
+        self.assertEqual(
+            lst.data[0]["day_one"], {"book_title": "Genesis", "chapter_title": "Genesis 2\u20134"}
+        )
+
+    def test_a_run_title_names_the_span(self):
+        from .serializers import plan_run_title
+
+        self.assertEqual(plan_run_title("Psalm 1", "Psalm 8"), "Psalms 1\u20138")
+        self.assertEqual(plan_run_title("Genesis 49", "Genesis 50"), "Genesis 49\u201350")
+        self.assertEqual(plan_run_title("Preface", "Chapter 2"), "Preface \u2013 Chapter 2")
+
+    def test_only_a_plain_chapter_day_reads_several(self):
+        from django.db import IntegrityError, transaction
+
+        plan = Plan.objects.create(slug="p", language="en", title="P")
+        bad = [
+            {"article_slug": "a", "chapter_count": 2},
+            {"book_slug": "genesis", "chapter_order": 1, "entry_date": "01-01", "chapter_count": 2},
+            {"book_slug": "genesis", "chapter_order": 1, "chapter_count": 0},
+        ]
+        for i, fields in enumerate(bad, start=1):
+            with self.subTest(fields=fields), self.assertRaises(IntegrityError):
+                with transaction.atomic():
+                    PlanDay.objects.create(plan=plan, day=i, **fields)
+        PlanDay.objects.create(plan=plan, day=9, book_slug="genesis", chapter_order=1, chapter_count=3)
 
 
 class TopicTests(TestCase):

@@ -19,6 +19,7 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
 	import { completePlanDay } from '$lib/planProgress.svelte';
+	import { planDayCovering, runStep } from '$lib/planRun';
 	import PlanDayDone from '$lib/components/PlanDayDone.svelte';
 	import PlanDayStrip from '$lib/components/PlanDayStrip.svelte';
 	import { reflectPrompt } from '$lib/journal';
@@ -1406,14 +1407,20 @@
 		return () => window.removeEventListener('resize', onResize);
 	});
 
-	/** The plan day covering a chapter of THIS book, when following a plan. */
+	/** The plan day covering a chapter of THIS book, when following a plan —
+	 *  a day of several chapters covers each of them (`$lib/planRun`). */
 	function planDayFor(order: number): number | null {
-		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
-		// Only the neighbouring day: a plan can put an article between two
-		// chapters, and the book's own Next must not jump past it.
-		if (!d || (planDay && d.day !== planDay && Math.abs(d.day - planDay) !== 1)) return null;
-		return d.day;
+		return (plan && planDayCovering(plan.days, slug, order, planDay)?.day) || null;
 	}
+
+	/** On a chapter of a several-chapter plan day: where it stands in the day,
+	 *  and the link to the day's next chapter (null on its last, which is
+	 *  where the day is marked done). */
+	const planRun = $derived.by(() => {
+		const d = plan && planDay ? plan.days.find((x) => x.day === planDay && x.book_slug === slug) : undefined;
+		const step = d && runStep(d, chapter.order);
+		return step && { n: step.n, m: step.m, nextHref: step.next ? chapterHref(step.next) : null };
+	});
 
 	/**
 	 * A chapter link that carries the reader's plan context (?plan=&day=) when the
@@ -2273,7 +2280,7 @@
 		<div bind:this={leadEl}>
 			<LanguageFallbackNotice {fallback} alternates={seo.hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
-				<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="mb-6" />
+				<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} run={planRun} class="mb-6" />
 			{/if}
 		</div>
 
@@ -2360,7 +2367,16 @@
 			     written straight into their Notebook — filed in a collection named for
 			     the plan, so a whole plan's reflections gather in one place. Loaded on
 			     demand: it brings the journal store, which a plain chapter never needs. -->
-			{#if plan && planDay}
+			{#if plan && planDay && planRun?.nextHref}
+				<!-- Not the day's last chapter: it goes on to the next, and the
+				     reflection and "Mark day done" wait at the end of the run. -->
+				<div class="plan-reflect mt-12 border-t border-border pt-6">
+					<p class="text-small text-muted">
+						{t('plans.chapterOfDay').replace('%n%', String(planRun.n)).replace('%m%', String(planRun.m))}
+					</p>
+					<a class="btn btn-primary mt-3" href={planRun.nextHref}>{t('reader.nextChapter')}</a>
+				</div>
+			{:else if plan && planDay}
 				<section class="plan-reflect mt-12 border-t border-border pt-6" aria-labelledby="reflect-heading">
 					<h2 id="reflect-heading" class="section-heading">{t('notebook.reflectHeading')}</h2>
 					{#await import('$lib/components/notebook/ReflectBox.svelte') then { default: ReflectBox }}

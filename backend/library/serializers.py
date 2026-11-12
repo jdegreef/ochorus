@@ -2410,10 +2410,11 @@ def plan_chapter_index(plans, language, with_openings=False):
     # Not a devotional's day: it reads its entry (plan_entry_index), never the
     # month chapter it points into.
     pairs = {
-        (d.book_slug, d.chapter_order)
+        (d.book_slug, order)
         for plan in plans
         for d in plan.days.all()
         if d.book_slug and not d.entry_date
+        for order in d.chapter_orders
     }
     if not pairs:
         return {}
@@ -2482,6 +2483,22 @@ def plan_day_title(title):
     return _PLAN_DAY_PREFIX.sub("", title)
 
 
+# A chapter title that ends in its number: "Genesis 1", "Psalm 119".
+_NUMBERED_TITLE = re.compile(r"^(.*\S)\s+(\d+)$")
+
+
+def plan_run_title(first, last):
+    """A multi-chapter day's title from its first and last chapters' titles:
+    "Genesis 1–3" when both are the same name and a number, else
+    "<first> – <last>". The Open Word Bible names a psalm "Psalm 23"; a run of
+    them is "Psalms 1–8"."""
+    a, b = _NUMBERED_TITLE.match(first), _NUMBERED_TITLE.match(last)
+    if a and b and a[1] == b[1]:
+        name = "Psalms" if a[1] == "Psalm" else a[1]
+        return f"{name} {a[2]}\u2013{b[2]}"
+    return f"{first} \u2013 {last}"
+
+
 def _plan_reading(day, chapters, articles, entries):
     """What one plan day reads — ``{title, book_title, word_count}`` — from the
     prebuilt indexes, or None when it doesn't resolve in this language. The one
@@ -2492,11 +2509,17 @@ def _plan_reading(day, chapters, articles, entries):
     if day.kind == "article":
         a = articles.get(day.article_slug)
         return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
-    c = chapters.get((day.book_slug, day.chapter_order))
-    return c and {
-        "title": plan_day_title(c["title"]),
+    run = [chapters.get((day.book_slug, order)) for order in day.chapter_orders]
+    if not run or None in run:
+        return None
+    c = run[0]
+    title = plan_day_title(c["title"])
+    if len(run) > 1:
+        title = plan_run_title(title, plan_day_title(run[-1]["title"]))
+    return {
+        "title": title,
         "book_title": c["book__title"],
-        "word_count": c["word_count"],
+        "word_count": sum(r["word_count"] for r in run),
         "opening": c.get("opening", ""),
     }
 
@@ -2533,7 +2556,9 @@ class PlanDaySerializer(serializers.ModelSerializer):
     or, on an article day (``article_slug`` set, ``book_slug`` empty and
     ``chapter_order`` null), the article's headline as ``chapter_title``. A
     year-long devotional's day sets ``entry_date`` ("MM-DD"): it reads that one
-    entry of its month chapter, and the titles and length are the entry's."""
+    entry of its month chapter, and the titles and length are the entry's. A
+    day of several chapters (``chapter_count`` > 1, from ``chapter_order`` on)
+    is titled for the run ("Genesis 1–3") and counts all of its words."""
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
@@ -2548,8 +2573,8 @@ class PlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanDay
         fields = [
-            "day", "book_slug", "chapter_order", "article_slug", "entry_date",
-            "book_title", "chapter_title", "word_count", "has_modern_edition", "key_verse",
+            "day", "book_slug", "chapter_order", "chapter_count", "article_slug",
+            "entry_date", "book_title", "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 

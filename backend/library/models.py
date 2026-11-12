@@ -1281,8 +1281,10 @@ class PlanDay(models.Model):
     Both are soft references in the plan's own language (see ``Plan``). A book
     day sets ``book_slug`` + ``chapter_order``; an article day sets
     ``article_slug`` and leaves the other two empty; an entry day is a chapter
-    day that also sets ``entry_date``. The check constraints hold those shapes
-    in the DB, and ``kind`` names them, so nothing downstream has to guess.
+    day that also sets ``entry_date``. A chapter day may read a run of its
+    book's chapters (``chapter_count``, ``chapter_orders``). The check
+    constraints hold those shapes in the DB, and ``kind`` names them, so
+    nothing downstream has to guess.
     """
 
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
@@ -1295,6 +1297,11 @@ class PlanDay(models.Model):
     # entry, as "MM-DD", that this day reads out of ``chapter_order``'s month
     # chapter. Blank on every other day, which reads the whole chapter.
     entry_date = models.CharField(max_length=5, blank=True, default="")
+    # How many chapters the day reads, from ``chapter_order`` on, in its one
+    # book: 1 everywhere but a plan that reads several a day (Bible in a Year,
+    # three or four chapters of Genesis on day 1). A day never spans two books,
+    # so one book slug and a run of orders say all of it.
+    chapter_count = models.PositiveSmallIntegerField(default=1)
 
     objects = PlanDayManager()
 
@@ -1325,6 +1332,16 @@ class PlanDay(models.Model):
                 ),
                 name="planday_entry_is_a_chapter_day",
             ),
+            # Several chapters only on a plain chapter day: an article or a
+            # devotional's entry is one reading, and no day reads none.
+            models.CheckConstraint(
+                condition=models.Q(chapter_count=1)
+                | (
+                    models.Q(chapter_count__gt=1, article_slug="", entry_date="")
+                    & ~models.Q(book_slug="")
+                ),
+                name="planday_chapter_run_is_a_chapter_day",
+            ),
         ]
 
     @property
@@ -1334,6 +1351,14 @@ class PlanDay(models.Model):
         if self.entry_date:
             return "entry"
         return "article" if self.article_slug else "chapter"
+
+    @property
+    def chapter_orders(self) -> range:
+        """The chapter orders this day reads, in order — empty on an article
+        day. One for every day but a multi-chapter one (``chapter_count``)."""
+        if self.chapter_order is None:
+            return range(0)
+        return range(self.chapter_order, self.chapter_order + self.chapter_count)
 
     def natural_key(self):
         return self.plan.natural_key() + (self.day,)

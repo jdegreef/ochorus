@@ -267,6 +267,7 @@
   "plans_mark_day_done_num": "Marcar o dia %n% como feito",
   "plans_day_done_num": "Dia %n% concluído",
   "plans_day_done": "Dia concluído",
+  "plans_chapter_of_day": "%n% de %m% capítulos de hoje",
   "plans_todays_reading": "Leitura de hoje",
   "plans_all": "Todos os planos",
   "plans_week": "Semana %n%",

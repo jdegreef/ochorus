@@ -267,6 +267,7 @@
   "plans_mark_day_done_num": "ቀን %n%ን እንደተጠናቀቀ ምልክት ያድርጉ",
   "plans_day_done_num": "ቀን %n% ተጠናቋል",
   "plans_day_done": "ቀኑ ተጠናቅቋል",
+  "plans_chapter_of_day": "ከዛሬዎቹ %m% ምዕራፎች %n%ኛው",
   "plans_todays_reading": "የዛሬው ንባብ",
   "plans_all": "ሁሉም ዕቅዶች",
   "plans_week": "ሳምንት %n%",

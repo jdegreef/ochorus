@@ -158,14 +158,18 @@ def _reading_title(day: PlanDay, language: str) -> str:
     if day.kind == "article":
         article = Article.objects.filter(slug=day.article_slug, language=language).only("h1").first()
         return article.h1 if article else ""
-    chapter = (
+    from library.serializers import plan_run_title
+
+    titles = list(
         Chapter.objects.filter(
-            book__slug=day.book_slug, book__language=language, order=day.chapter_order or 1
+            book__slug=day.book_slug, book__language=language, order__in=day.chapter_orders
         )
-        .only("title")
-        .first()
+        .order_by("order")
+        .values_list("title", flat=True)
     )
-    return chapter.title if chapter else ""
+    if not titles:
+        return ""
+    return plan_run_title(titles[0], titles[-1]) if len(titles) > 1 else titles[0]
 
 
 def _entry_title(day: PlanDay, language: str) -> str:

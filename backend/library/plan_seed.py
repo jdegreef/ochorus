@@ -142,10 +142,30 @@ def chapters(book_slug: str, first: int, last: int) -> tuple:
     return ("book", book_slug, first, last)
 
 
+def reading(book_slug: str, first: int, last: int) -> tuple:
+    """A curated-plan item: ONE day reading this book's chapters
+    ``first``..``last`` together (``PlanDay.chapter_count``). A day never
+    spans two books."""
+    return ("reading", book_slug, first, last)
+
+
+def readings(book_slug: str, per_day, first: int = 2) -> list[tuple]:
+    """``reading`` items walking a book from chapter ``first`` on, a day per
+    entry of ``per_day`` reading that many chapters. ``first`` defaults to 2
+    because an Open Word Bible edition's chapter 1 is its introduction."""
+    items = []
+    for n in per_day:
+        items.append(reading(book_slug, first, first + n - 1))
+        first += n
+    return items
+
+
 def plan_items(items) -> list[tuple]:
-    """A curated plan's items in one shape: ``("article", slug)`` or
-    ``("book", slug, first, last)``, where a bare book slug (the whole book)
-    has ``first``/``last`` of None. The one place that reads the item forms."""
+    """A curated plan's items in one shape: ``("article", slug)``,
+    ``("book", slug, first, last)`` (a day per chapter), where a bare book slug
+    (the whole book) has ``first``/``last`` of None, or
+    ``("reading", slug, first, last)`` (one day for the run). The one place
+    that reads the item forms."""
     return [("book", i, None, None) if isinstance(i, str) else i for i in items]
 
 
@@ -157,10 +177,88 @@ def plan_sources(items) -> tuple[list[str], list[str]]:
     """
     sources: dict[str, list[str]] = {"book": [], "article": []}
     for kind, slug, *_ in plan_items(items):
-        if slug not in sources[kind]:
-            sources[kind].append(slug)
+        source = sources["article" if kind == "article" else "book"]
+        if slug not in source:
+            source.append(slug)
     return sources["book"], sources["article"]
 
+
+# Bible in a Year: the Open Word Bible from Genesis to Revelation, all 1,189
+# chapters in 365 days. Each entry is a book and the number of chapters each of
+# its days reads (summing to the book's chapters, its introduction and
+# conclusion left out), in canonical order. The runs were cut once to even the
+# days' length by word count — about 2,150 words a day — without a day ever
+# crossing from one book into the next, so the short letters are short days.
+# A literal, not computed at seed time: day N is a public contract (readers'
+# progress is keyed by it), so it must not move when a chapter's text does.
+BIBLE_IN_A_YEAR = (
+    ("genesis", (3, 4, 4, 5, 3, 4, 2, 2, 3, 2, 3, 2, 3, 2, 2, 3, 3)),
+    ("exodus", (3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 2)),
+    ("leviticus", (4, 2, 2, 3, 2, 2, 3, 3, 2, 2, 2)),
+    ("numbers", (3, 2, 2, 3, 3, 2, 3, 3, 3, 3, 3, 2, 4)),
+    ("deuteronomy", (2, 2, 3, 3, 3, 3, 4, 3, 4, 1, 3, 3)),
+    ("joshua", (3, 3, 2, 2, 4, 4, 3, 3)),
+    ("judges", (3, 3, 2, 2, 3, 3, 3, 2)),
+    ("ruth", (4,)),
+    ("1-samuel", (3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 4)),
+    ("2-samuel", (3, 4, 4, 2, 2, 3, 2, 2, 2)),
+    ("1-kings", (2, 3, 2, 1, 2, 2, 2, 2, 2, 2, 2)),
+    ("2-kings", (3, 2, 3, 2, 3, 2, 2, 2, 3, 3)),
+    ("1-chronicles", (4, 2, 3, 3, 4, 4, 3, 4, 2)),
+    ("2-chronicles", (4, 2, 3, 5, 4, 3, 3, 3, 2, 3, 2, 2)),
+    ("ezra", (4, 3, 3)),
+    ("nehemiah", (4, 3, 3, 3)),
+    ("esther", (3, 4, 3)),
+    ("job", (5, 5, 5, 6, 7, 4, 5, 5)),
+    ("psalms", (10, 8, 8, 7, 5, 7, 8, 8, 7, 5, 5, 8, 5, 10, 4, 4, 9, 2, 10, 10, 10)),
+    ("proverbs", (4, 5, 5, 5, 4, 4, 4)),
+    ("ecclesiastes", (4, 4, 4)),
+    ("song-of-songs", (8,)),
+    ("isaiah", (4, 3, 3, 4, 6, 4, 4, 3, 4, 3, 3, 3, 4, 3, 5, 3, 4, 3)),
+    ("jeremiah", (3, 2, 3, 3, 3, 3, 4, 2, 3, 3, 2, 2, 3, 3, 3, 3, 3, 2, 2)),
+    ("lamentations", (2, 3)),
+    ("ezekiel", (3, 4, 4, 3, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2, 3, 2, 3)),
+    ("daniel", (2, 2, 2, 3, 3)),
+    ("hosea", (7, 7)),
+    ("joel", (3,)),
+    ("amos", (5, 4)),
+    ("obadiah", (1,)),
+    ("jonah", (4,)),
+    ("micah", (7,)),
+    ("nahum", (3,)),
+    ("habakkuk", (3,)),
+    ("zephaniah", (3,)),
+    ("haggai", (2,)),
+    ("zechariah", (6, 4, 4)),
+    ("malachi", (4,)),
+    ("gospel-of-matthew", (4, 3, 3, 2, 2, 3, 3, 2, 2, 2, 2)),
+    ("gospel-of-mark", (3, 2, 2, 2, 2, 2, 1, 2)),
+    ("gospel-of-luke", (2, 2, 2, 2, 1, 2, 2, 3, 2, 2, 2, 2)),
+    ("gospel-of-john", (3, 2, 2, 2, 2, 2, 3, 2, 3)),
+    ("acts-of-the-apostles", (3, 2, 2, 2, 3, 2, 2, 3, 2, 2, 3, 2)),
+    ("romans", (3, 4, 2, 4, 3)),
+    ("1-corinthians", (4, 4, 3, 3, 2)),
+    ("2-corinthians", (4, 5, 4)),
+    ("galatians", (3, 3)),
+    ("ephesians", (3, 3)),
+    ("philippians", (4,)),
+    ("colossians", (4,)),
+    ("1-thessalonians", (5,)),
+    ("2-thessalonians", (3,)),
+    ("1-timothy", (6,)),
+    ("2-timothy", (4,)),
+    ("titus", (3,)),
+    ("philemon", (1,)),
+    ("hebrews", (6, 4, 3)),
+    ("james", (5,)),
+    ("1-peter", (5,)),
+    ("2-peter", (3,)),
+    ("1-john", (5,)),
+    ("2-john", (1,)),
+    ("3-john", (1,)),
+    ("jude", (1,)),
+    ("revelation", (3, 5, 5, 5, 4)),
+)
 
 # Curated plans that walk through SEVERAL works in order. An item is a book
 # slug (the whole book, chapter by chapter), ``chapters(slug, first, last)``
@@ -747,6 +845,17 @@ CURATED_PLANS = [
         "thirty-one chapters of wisdom for ordinary life, from the fear of the "
         "LORD as the beginning of knowledge to the woman of strength.",
         [chapters("proverbs", 2, 32)],
+    ),
+    (
+        "bible-in-a-year",
+        "The Bible in a Year",
+        "The whole Bible in the Open Word Bible, Genesis to Revelation in "
+        "order: all 1,189 chapters in 365 days. Most days read two to four "
+        "chapters, about ten minutes, cut so each day is a similar length and "
+        "keeps to one book; the Psalms come several at a time and the shortest "
+        "letters take a day of their own. Through the law and the history, the "
+        "poets and the prophets, the Gospels, the letters and the new creation.",
+        [item for slug, per_day in BIBLE_IN_A_YEAR for item in readings(slug, per_day)],
     ),
 ]
 

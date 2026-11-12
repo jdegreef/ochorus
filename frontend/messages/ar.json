@@ -267,6 +267,7 @@
   "plans_mark_day_done_num": "تحديد اليوم %n% كمكتمل",
   "plans_day_done_num": "اكتمل اليوم %n%",
   "plans_day_done": "اكتمل اليوم",
+  "plans_chapter_of_day": "الفصل %n% من %m% فصول اليوم",
   "plans_todays_reading": "قراءة اليوم",
   "plans_all": "كل الخطط",
   "plans_week": "الأسبوع %n%",
