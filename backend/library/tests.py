@@ -1133,6 +1133,22 @@ class DiscoveryQuickWinsTests(TestCase):
         self.assertEqual(row["sermon_count"], 1)
         self.assertTrue(row["has_long_bio"])
 
+    def test_biographies_list_carries_long_bio_word_count(self):
+        # The home page's "Tonight" shelf times a one-sitting biography by it;
+        # a writer with no long bio counts 0, never the short bio's words.
+        Author.objects.filter(slug="cs").update(
+            bio_html="<p>A <i>long</i> life, well lived.</p>"
+        )
+        Author.objects.create(slug="no", name="No Bio", bio="a short line only")
+        Sermon.objects.create(
+            author=Author.objects.get(slug="no"), slug="n", language="en",
+            title="N", body_html="<p>n</p>",
+        )
+        res = self.client.get("/api/library/authors/?language=en")
+        rows = {a["slug"]: a for a in res.data}
+        self.assertEqual(rows["cs"]["bio_word_count"], 5)
+        self.assertEqual(rows["no"]["bio_word_count"], 0)
+
     def test_sermon_only_author_appears_on_biographies_list(self):
         # An author with only a sermon (no book, no bio) is still library
         # content and must not be filtered out or read as empty.

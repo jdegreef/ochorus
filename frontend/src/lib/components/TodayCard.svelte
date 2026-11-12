@@ -7,7 +7,9 @@
 	import { contentLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { loadCalendar, type Calendar } from '$lib/seasonCalendar';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 
 	const t = i18n.t;
 
@@ -34,8 +36,25 @@
 	 */
 
 	let picks = $state<TodayPicks | null>(null);
+	/** In Advent or Lent: the season's calendar ($lib/seasonCalendar), for the
+	 *  row under the columns that leads to it on /today. Loaded beside the
+	 *  picks, not with them: its book fetches must not hold the card back. */
+	let calendar = $state<Calendar | null>(null);
 	let dateLabel = $state('');
 	let pickedFor = '';
+	let calendarFor = '';
+
+	async function loadSeason(now: Date, lang: string) {
+		const key = dateKey(now);
+		if (key === calendarFor) return;
+		calendarFor = key;
+		const cal = await loadCalendar(now, lang);
+		if (key !== calendarFor) return;
+		calendar = cal;
+		// No calendar costs no fetch to ask again (out of season, or a cached
+		// shelf), and a failed fetch must be asked again — so look next time.
+		if (!cal) calendarFor = '';
+	}
 
 	// Re-picks only when the calendar day has moved: watchToday looks again on
 	// a return to the tab and every few minutes while it is in view, so a page
@@ -43,10 +62,11 @@
 	// new day — the sermon list too, as SermonOfTheDay does, so a failed fetch
 	// is retried and the pick matches the sermons shelf's.
 	async function loadToday(now: Date) {
+		const lang = getLang();
+		void loadSeason(now, lang);
 		const key = dateKey(now);
 		if (key === pickedFor) return;
 		pickedFor = key;
-		const lang = getLang();
 		const next = await loadTodayPicks(now, lang);
 		if (key !== pickedFor) return;
 		dateLabel = now.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
@@ -107,6 +127,13 @@
 						</li>
 					{/if}
 				</ul>
+				{#if calendar}
+					<a class="calendar-row mt-6 text-small font-semibold text-accent" href="{localizeHref('/today')}#calendar"
+						>{t(calendar.window.season === 'advent' ? 'calendar.adventTitle' : 'calendar.lentTitle')} · {t(
+							calendar.today ? 'calendar.openToday' : 'calendar.seeDoors'
+						)} <Arrow /></a
+					>
+				{/if}
 			{:else}
 				<!-- The card's shape while the day is picked: the header's two lines,
 				     then three columns of the same height as the real ones. -->
@@ -178,6 +205,13 @@
 	   Arabic, Amharic and Hindi have none, and a browser would slant them. */
 	.verse {
 		font-weight: 400;
+	}
+	/* The season's calendar, under the columns: a hairline, then the link. */
+	.calendar-row {
+		display: block;
+		padding-block-start: 1rem;
+		border-block-start: 1px solid var(--border);
+		text-decoration: none;
 	}
 	.today-link:hover .title,
 	.today-link:focus-visible .title {

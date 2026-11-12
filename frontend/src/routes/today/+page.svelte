@@ -8,6 +8,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import DailyShelf from '$lib/components/DailyShelf.svelte';
+	import SeasonCalendar from '$lib/components/SeasonCalendar.svelte';
 	import TimePicker from '$lib/components/TimePicker.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -57,6 +58,9 @@
 			><Icon name="share" size={15} /> {t('daily.followWhatsapp')}</a
 		>
 	{/if}
+	<!-- In Advent and Lent the season's calendar leads; out of season it draws
+	     nothing (it carries its own top margin, so nothing is left behind). -->
+	<SeasonCalendar />
 	<div class="mt-8"><DailyShelf embedded onreadings={(r) => (readings = r)} /></div>
 	<div class="mt-12"><TimePicker /></div>
 </div>

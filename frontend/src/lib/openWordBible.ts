@@ -2,7 +2,7 @@
  * The Open Word Bible — the translation the library's Bible is printed in.
  *
  * Like Ochorus Originals (`$lib/originals`) it is a byline, not a person
- * (`Author.is_imprint`): the Bible's 66 books are 'by' it, but it has no life
+ * (`Author.is_imprint`): the Bible's 66 books are "by" it, but it has no life
  * to tell, so its name links to a page about the translation, /open-word-bible,
  * rather than to an author page with a monogram (`authorPath`). The books
  * themselves live on the Bible hub, /bible ($lib/bible).

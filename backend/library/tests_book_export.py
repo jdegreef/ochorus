@@ -278,6 +278,76 @@ class EpubTests(TestCase):
         self.book.author.save()
         self.assertNotIn("OEBPS/about-author.xhtml", self._zip(self._get()).namelist())
 
+    def test_a_translation_imprint_has_its_page_and_its_own_rights(self):
+        # The Open Word Bible is a byline, not a person: no About the Author,
+        # but a page about the translation in its place, and a colophon that
+        # credits its licence rather than calling the edition Ochorus's
+        # translation awaiting a native speaker's review.
+        imprint = self.book.author
+        imprint.slug, imprint.name, imprint.is_imprint = "open-word-bible", "Open Word Bible", True
+        imprint.save()
+        self.book.source_type = Book.SourceType.AI_UNREVIEWED
+        self.book.attribution = "Scripture from the Open Word Bible: dedicated to the public domain under CC0 1.0."
+        self.book.save()
+        z = self._zip(self._get())
+        names = z.namelist()
+        self.assertNotIn("OEBPS/about-author.xhtml", names)
+        page = z.read("OEBPS/about-translation.xhtml").decode()
+        self.assertIn("About the Translation", page)
+        self.assertIn('href="https://openwordbible.org/"', page)
+        opf = z.read("OEBPS/content.opf").decode()
+        self.assertLess(opf.index('idref="ochorus"'), opf.index('idref="translation"'))
+        self.assertLess(opf.index('idref="translation"'), opf.index('idref="about"'))
+        self.assertIn("<dc:rights>Scripture from the Open Word Bible", opf)
+        colophon = z.read("OEBPS/colophon.xhtml").decode()
+        self.assertIn("CC0 1.0", colophon)
+        self.assertIn("This edition was prepared by Ochorus", colophon)
+        self.assertNotIn("awaiting review", colophon)
+        self.assertNotIn("This translation was prepared by Ochorus", colophon)
+        html = book_export.render_print_html(book_export.build_edition(self.book))
+        self.assertLess(html.index('class="ochorus"'), html.index('id="author-top"'))
+        self.assertLess(html.index('id="author-end"'), html.index('class="contents"'))
+        # No English fallback: a language it has no page in gets no page and the
+        # generic back matter — but its text is still set as the imprint's.
+        es = Book.objects.create(author=imprint, slug="pilot-book", language="es", title="Libro")
+        settings = book_export.imprint_page(es)
+        self.assertNotIn("title", settings)
+        self.assertNotIn("edition", settings)
+        self.assertTrue(settings["verse_lines"])
+
+    def test_a_translation_imprints_verse_is_set_line_by_line(self):
+        ch = self.book.chapters.get(order=1)
+        prose = "And the king said to him, " * 12
+        ch.body_html = (
+            "<h3>Two ways</h3><p>How blessed is the one<br/>who walks <em>not</em> astray,</p><p>Prose.</p>"
+            f"<p>{prose}<br/>A line of song.</p>"
+        )
+        ch.save()
+        Chapter.objects.create(book=self.book, order=3, title="Last", body_html="<p>End.</p>")
+        Chapter.objects.create(book=self.book, order=4, title="Conclusion", body_html="<p>Fin.</p>")
+        plain = book_export.build_edition(self.book)
+        self.assertNotIn('class="lines"', plain.chapters[0].body)  # a classic's <br/> stays a <br/>
+        self.book.author.slug, self.book.author.is_imprint = "open-word-bible", True
+        self.book.author.save()
+        ed = book_export.build_edition(self.book)
+        self.assertIn(
+            '<p class="lines"><span class="line">How blessed is the one</span>'
+            '<span class="line">who walks <em>not</em> astray,</span></p><p>Prose.</p>',
+            ed.chapters[0].body,
+        )
+        # A run longer than any line of verse is the prose leading into it.
+        self.assertIn(
+            f'<span class="prose">{prose}</span><span class="line">A line of song.</span>',
+            ed.chapters[0].body,
+        )
+        # Its chapters run on between the first two and the last, which keep their page.
+        html = book_export.render_print_html(ed)
+        self.assertIn('<body class="verse-set">', html)
+        self.assertIn('<section class="part" id="ch1">', html)
+        self.assertIn('<section class="part run-on opens" id="ch2">', html)
+        self.assertIn('<section class="part run-on" id="ch3">', html)
+        self.assertIn('<section class="part" id="ch4">', html)
+
     def test_an_author_page_that_spills_onto_a_second_page_fails_the_pdf(self):
         from .management.commands import export_book
 
@@ -354,6 +424,27 @@ class PilotTests(TestCase):
             # title like divine-songs-for-children has no such sibling.
             base = _edition_base_slug(slug)
             self.assertFalse(base != slug and (base, "en") in editions, f"{slug} is an Ochorus retelling")
+
+    def test_every_translation_imprint_edition_has_its_page(self):
+        # An imprint in IMPRINT_PAGES prints its page in place of a biography:
+        # each exportable edition by it needs one in its own language, complete.
+        from .content_fixtures import authors_by_slug
+
+        authors = authors_by_slug()
+        for slug, entry in book_export.IMPRINT_PAGES.items():
+            self.assertTrue(authors[slug].get("is_imprint"), f"{slug} is not an imprint")
+            for page in entry["pages"].values():
+                self.assertEqual(set(page), {"title", "name", "html", "more", "edition"}, slug)
+        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
+            author = _fixture_fields(slug, lang)["author"][0]
+            if author not in book_export.IMPRINT_PAGES:
+                continue
+            self.assertIn(lang, book_export.IMPRINT_PAGES[author]["pages"], f"{slug} ({lang})")
+            if book_export.IMPRINT_PAGES[author].get("run_on") and lang == "en":
+                # The PDF runs on every chapter but the first and last, which
+                # build_owb_book makes the introduction and the conclusion.
+                titles = [r["fields"]["title"] for r in _fixture_rows(slug, lang) if r["model"] == "library.chapter"]
+                self.assertEqual((titles[0], titles[-1]), ("Introduction", "Conclusion"), slug)
 
     def test_held_works_stay_out(self):
         self.assertFalse(export_policy.HELD_ESV & export_policy.ENGLISH_CLASSICS)
@@ -466,13 +557,16 @@ class CoverTests(TestCase):
             )
 
 
-def _fixture_fields(slug: str, language: str) -> dict:
+def _fixture_rows(slug: str, language: str) -> list[dict]:
     import json
 
     from .content_fixtures import book_fixture_path
 
-    rows = json.loads(book_fixture_path(slug, language).read_text(encoding="utf-8"))
-    return next(r["fields"] for r in rows if r["model"] == "library.book")
+    return json.loads(book_fixture_path(slug, language).read_text(encoding="utf-8"))
+
+
+def _fixture_fields(slug: str, language: str) -> dict:
+    return next(r["fields"] for r in _fixture_rows(slug, language) if r["model"] == "library.book")
 
 
 def _fixture_cover_url(slug: str, language: str) -> str:
