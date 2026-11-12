@@ -2835,7 +2835,10 @@ archaic spelling and period punctuation are the text, not defects in it.
   `library.tests_bible_mirror` pins each case. Its `book_names.json` is the mirror's
   MODERNISED `\toc1` heads (La-mã, Khải thị) — cite with Cadman's traditional names
   (Rô-ma, Khải Huyền, 1 Cô-rinh-tô), which the verse text itself uses. Add a cleaner to
-  its `CLEANERS` when another collection turns out damaged (ko's (4) is not in it yet).
+  its `CLEANERS` when another collection turns out damaged. **Now also cleaned:
+  `fra_lsg`, `kor_old` (ko's (4)), `por_bpm`, `amh_amh`** (2026-11-12) — run the script
+  instead of hand-patching them. Its `damaged.json` lists verses it WITHHELD from the
+  index (ko Isa 57:15, pt Jer 49, am's 254 bridged `\v 1-3` keys): self-render those.
 - **Batch-wide naming needs a table in the brief, not a rule** (same batch). Fifty
   parallel ko translators each transliterate the OTHER people a bio mentions; without a
   mandatory name table the same person comes out three ways. Coined forms that a native
