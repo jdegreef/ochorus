@@ -18,7 +18,15 @@
 	import { chapterSeedTag } from '$lib/chapterSeed';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
-	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
+	import {
+		getBook,
+		getPlan,
+		scriptureBookHref,
+		scripturePageHref,
+		type BookDetail,
+		type Chapter,
+		type PlanDetail
+	} from '$lib/library-public';
 	import { completePlanDay } from '$lib/planProgress.svelte';
 	import { planDayCovering, runStep } from '$lib/planRun';
 	import PlanDayDone from '$lib/components/PlanDayDone.svelte';
@@ -2428,6 +2436,35 @@
 				</section>
 			{/if}
 
+			<!-- A chapter of the Bible itself: where the library's classics and
+			     sermons quote it — the /scripture/ page of this very chapter, or the
+			     book's overview where the chapter has none (and from the introduction
+			     and conclusion). Where the chip row below sits, and as quiet: one line
+			     under the text that a reader in flow scrolls past, heading the chip
+			     row when there is one. Only when the server says the page was built;
+			     the overview's message carries its own arrow; the chapter link's is an
+			     <Arrow /> (arrows.test). -->
+			{#if chapter.classics_page}
+				{@const cp = chapter.classics_page}
+				<div class="mt-10 flex flex-col items-start border-t border-border pt-4">
+					<a
+						href={cp.chapter ? scripturePageHref(cp.book, cp.chapter, null) : scriptureBookHref(cp.book)}
+						class="classics-link-title"
+					>
+						{#if cp.chapter}
+							{t('reader.scripturePage')} <Arrow />
+						{:else}
+							{t('scripture.bookOverview').replace('%book%', () => cp.book_title)}
+						{/if}
+					</a>
+					{#if cp.citing_count}
+						<p class="text-small text-muted">
+							{t('scripture.treated').replace('%count%', String(cp.citing_count))}
+						</p>
+					{/if}
+				</div>
+			{/if}
+
 			<!-- Scripture index: the passages this chapter treats. Placed here — after
 			     the text, before the next-chapter nav — to match the sermon page, which
 			     has carried the same row since citations were indexed. The reading comes
@@ -2443,7 +2480,12 @@
 			     that was not built. English chapters only; `scripture_refs` is empty
 			     elsewhere, because the citations behind it are English. -->
 			{#if chapter.scripture_refs?.length}
-				<div class="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-6">
+				<!-- Under the classics line, one block with it: one rule, not two. -->
+				<div
+					class="flex flex-wrap items-center gap-2 {chapter.classics_page
+						? 'mt-4'
+						: 'mt-10 border-t border-border pt-6'}"
+				>
 					<span class="eyebrow text-muted">{t('reader.scripture')}</span>
 					{#each chapter.scripture_refs as entry (entry.ref)}
 						<a
@@ -3152,6 +3194,20 @@
 	}
 	.end-link:hover,
 	.end-aside :global(.share-wrap > .btn:hover) {
+		text-decoration: underline;
+	}
+	/* A Bible chapter's "what the classics say" line: one
+	   quiet link, the chip row's weight — apparatus, not a call to action. */
+	.classics-link-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		min-height: 2.75rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.classics-link-title:hover {
 		text-decoration: underline;
 	}
 
