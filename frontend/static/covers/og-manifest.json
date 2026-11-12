@@ -21070,6 +21070,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"hi/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "105e504be434dd71f171f0768c58af7cb32b9d738ff86eac9a8839ebd221bb35",
+			"style": "revival",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"hi/the-god-of-all-comfort": {
 			"ground": "62853c4d1c1bb49a274203abde9a9e12f269287f82b0ec2f2d3dd3521b7527cb",
 			"style": "devotional",
