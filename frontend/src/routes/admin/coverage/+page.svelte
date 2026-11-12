@@ -593,6 +593,7 @@
 	// the bulk buttons reach deeper into the same ranking (NEXT_BATCHES).
 	const NEXT_SHOWN = 10;
 	const NEXT_BATCHES = [10, 20, 50];
+	const NEXT_MAX = Math.max(...NEXT_BATCHES);
 	const NEXT_PER_WORK = 2;
 	const rankedGaps = $derived.by(() => {
 		if (jobsConfigured !== true) return [];
@@ -610,22 +611,20 @@
 			if (n >= NEXT_PER_WORK) continue;
 			perWork.set(g.r, n + 1);
 			out.push(g);
-			if (out.length === NEXT_BATCHES[NEXT_BATCHES.length - 1]) break;
+			if (out.length === NEXT_MAX) break;
 		}
 		return out;
 	});
 	const nextGaps = $derived(rankedGaps.slice(0, NEXT_SHOWN));
 	// One button per batch size, clamped to the gaps there are: 15 open gaps
 	// offer "10" and "15", not a "20" and a "50" that would both file 15.
-	const nextBatches = $derived([...new Set(NEXT_BATCHES.map((n) => Math.min(n, rankedGaps.length)))].filter(Boolean));
-	const queueNext = (n: number) => {
-		const top = rankedGaps.slice(0, n);
+	const nextBatches = $derived([...new Set(NEXT_BATCHES.map((n) => Math.min(n, rankedGaps.length)))]);
+	const queueNext = (n: number) =>
 		stageBulk(
-			`the ${top.length} most-wanted gap${top.length === 1 ? '' : 's'}`,
-			top.map(({ r, l }) => target(r, l.code)),
+			`the ${plural(n, 'most-wanted gap')}`,
+			rankedGaps.slice(0, n).map(({ r, l }) => target(r, l.code)),
 			'next'
 		);
-	};
 
 	// --- Legend as a lens: each state's count over the works on screen, and the
 	// one picked (if any) — every other cell fades, so the picked ones stand out
@@ -942,7 +941,7 @@
 									type="button"
 									class="btn btn-sm btn-primary tabular-nums"
 									disabled={busy}
-									aria-label={`Queue the top ${n} gap${n === 1 ? '' : 's'}`}
+									aria-label={`Queue the top ${plural(n, 'gap')}`}
 									onclick={() => queueNext(n)}>{n}</button
 								>
 							{/each}
