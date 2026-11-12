@@ -748,6 +748,81 @@ CURATED_PLANS = [
         "LORD as the beginning of knowledge to the woman of strength.",
         [chapters("proverbs", 2, 32)],
     ),
+    # The Bible's story in sixty chapters, a chapter a day (Open Word Bible:
+    # chapter order N+1 is chapter N, after each book's introduction).
+    (
+        "the-story-of-the-bible",
+        "The Story of the Bible",
+        "Two months through the one story the whole Bible tells, a single "
+        "chapter a day in the Open Word Bible: creation and the fall, the "
+        "promise to Abraham, the Passover and the sea, the law and the land, "
+        "David and the promise of a king, the prophets, exile and return; then "
+        "Jesus born, teaching, crucified and risen, the Spirit poured out on "
+        "the church, and the new creation where God dwells with his people. "
+        "Sixty key chapters, about four minutes each.",
+        [
+            chapters("genesis", 2, 2),  # Genesis 1: creation
+            chapters("genesis", 3, 3),  # Genesis 2: the garden
+            chapters("genesis", 4, 4),  # Genesis 3: the fall, and the first promise
+            chapters("genesis", 8, 8),  # Genesis 7: the flood
+            chapters("genesis", 12, 12),  # Genesis 11: Babel
+            chapters("genesis", 13, 13),  # Genesis 12: the call of Abram
+            chapters("genesis", 16, 16),  # Genesis 15: the covenant with Abram
+            chapters("genesis", 23, 23),  # Genesis 22: the LORD will provide
+            chapters("genesis", 29, 29),  # Genesis 28: Jacob's ladder
+            chapters("genesis", 38, 38),  # Genesis 37: Joseph sold
+            chapters("genesis", 51, 51),  # Genesis 50: God meant it for good
+            chapters("exodus", 4, 4),  # Exodus 3: the burning bush
+            chapters("exodus", 13, 13),  # Exodus 12: the Passover
+            chapters("exodus", 15, 15),  # Exodus 14: through the sea
+            chapters("exodus", 21, 21),  # Exodus 20: the Ten Commandments
+            chapters("exodus", 41, 41),  # Exodus 40: glory fills the tabernacle
+            chapters("leviticus", 17, 17),  # Leviticus 16: the Day of Atonement
+            chapters("numbers", 15, 15),  # Numbers 14: the refusal at the border
+            chapters("deuteronomy", 7, 7),  # Deuteronomy 6: Hear, O Israel
+            chapters("joshua", 2, 2),  # Joshua 1: be strong and courageous
+            chapters("joshua", 7, 7),  # Joshua 6: Jericho
+            chapters("judges", 3, 3),  # Judges 2: the cycle of the judges
+            chapters("ruth", 2, 2),  # Ruth 1: where you go I will go
+            chapters("1-samuel", 9, 9),  # 1 Samuel 8: give us a king
+            chapters("1-samuel", 17, 17),  # 1 Samuel 16: David anointed
+            chapters("1-samuel", 18, 18),  # 1 Samuel 17: David and Goliath
+            chapters("2-samuel", 8, 8),  # 2 Samuel 7: the promise to David
+            chapters("psalms", 24, 24),  # Psalm 23: the LORD is my shepherd
+            chapters("psalms", 52, 52),  # Psalm 51: David's confession
+            chapters("1-kings", 9, 9),  # 1 Kings 8: the temple dedicated
+            chapters("1-kings", 19, 19),  # 1 Kings 18: Elijah on Carmel
+            chapters("2-kings", 18, 18),  # 2 Kings 17: Israel exiled
+            chapters("isaiah", 54, 54),  # Isaiah 53: the suffering servant
+            chapters("2-kings", 26, 26),  # 2 Kings 25: Jerusalem falls
+            chapters("jeremiah", 32, 32),  # Jeremiah 31: the new covenant
+            chapters("ezekiel", 38, 38),  # Ezekiel 37: the valley of dry bones
+            chapters("daniel", 7, 7),  # Daniel 6: the lions' den
+            chapters("ezra", 2, 2),  # Ezra 1: the return
+            chapters("nehemiah", 9, 9),  # Nehemiah 8: the law read again
+            chapters("malachi", 5, 5),  # Malachi 4: the sun of righteousness
+            chapters("gospel-of-luke", 2, 2),  # Luke 1: the angel's announcements
+            chapters("gospel-of-luke", 3, 3),  # Luke 2: the birth of Jesus
+            chapters("gospel-of-matthew", 4, 4),  # Matthew 3: the baptism
+            chapters("gospel-of-matthew", 5, 5),  # Matthew 4: the temptation
+            chapters("gospel-of-matthew", 6, 6),  # Matthew 5: the Sermon on the Mount
+            chapters("gospel-of-john", 4, 4),  # John 3: born again
+            chapters("gospel-of-luke", 16, 16),  # Luke 15: the lost found
+            chapters("gospel-of-john", 12, 12),  # John 11: Lazarus raised
+            chapters("gospel-of-luke", 23, 23),  # Luke 22: the Last Supper
+            chapters("gospel-of-mark", 16, 16),  # Mark 15: the cross
+            chapters("gospel-of-john", 21, 21),  # John 20: the empty tomb
+            chapters("gospel-of-luke", 25, 25),  # Luke 24: the road to Emmaus
+            chapters("acts-of-the-apostles", 2, 2),  # Acts 1: the ascension
+            chapters("acts-of-the-apostles", 3, 3),  # Acts 2: Pentecost
+            chapters("acts-of-the-apostles", 10, 10),  # Acts 9: Saul on the Damascus road
+            chapters("romans", 9, 9),  # Romans 8: no condemnation
+            chapters("1-corinthians", 16, 16),  # 1 Corinthians 15: the resurrection hope
+            chapters("ephesians", 3, 3),  # Ephesians 2: one new people
+            chapters("revelation", 22, 22),  # Revelation 21: all things new
+            chapters("revelation", 23, 23),  # Revelation 22: the river of life
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that
