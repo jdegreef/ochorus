@@ -555,7 +555,7 @@ VOLUMES: dict[int, dict[str, object]] = {
                 },
                 {
                     "question": "Why is it called The Fire on the Altar?",
-                    "answer": "The title comes from Leviticus 6:13, where God commands that the fire on the altar must be kept burning and never go out. The Moravians at Herrnhut took that verse as a picture of the prayer watch they kept night and day, and it fits the whole age of revival this book describes.",
+                    "answer": "The title comes from Leviticus 6:13, where God commands that the fire on the altar must be kept burning and never go out. The Moravians at Herrnhut are remembered for taking that verse as a picture of the prayer watch they kept night and day, and it fits the whole age of revival this book describes.",
                 },
                 {
                     "question": "Can I read it with a small group?",
