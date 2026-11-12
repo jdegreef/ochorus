@@ -3,11 +3,11 @@
  "slug": "key-teachings-of-a-b-simpson",
  "language": "hi",
  "job_issue": 7639,
- "pull_request": null,
+ "pull_request": 7881,
  "note": [
   "Scripture is the IRV Hindi Bible (Bridge Connectivity Solutions, CC BY-SA), spliced by script in place of the KJV the English quotes; the IRV's own quotation marks and trailing cross-reference parentheticals dropped. 'mined' = the IRV wording is present verbatim (exact substring, quote marks aside); everything else is self_rendered.",
   "Flagged where the IRV does not carry the English's KJV sense (quoted verbatim anyway): Deut 11:21 (no 'days of heaven upon the earth'), Josh 1:3 (present tense; a bridging clause on the Hebrew perfect added in ch09), Heb 4:11 (disobedience vs unbelief), Rom 6:11, Ps 4:1 (सहारा, not 'enlarged'), Rom 10:17 (word of Christ), Ps 66:18 ('regard'), Gen 22:14, 1 Tim 6:17 (no 'living'), Acts 17:26-27 (one origin, not one blood), Prov 4:18, Matt 24:42 (day, not hour), John 6:37 (double negative).",
-  "English fixes rendered (owned by sibling pt #7634): ch02 'five years apart' → seven, 'seven children' → a family to provide for; ch05 'passive verb' → passively; ch08 Diotrephes epigraph gains 3 John 1:9; ch13 James 1:6–8; ch18 'a request' → a promise; ch20 Edwards comparison removed.",
+  "English fixes rendered (owned by sibling pt #7634): ch02 'five years apart' → seven, 'seven children' → a family to provide for; ch05 'passive verb' → passively; ch08 Diotrephes epigraph gains 3 John 1:9; ch13 James 1:6–8; ch18 'a request' → a promise; ch20 Edwards comparison removed; ch06 Isaiah ordered the poultice; ch08 Scots-Canadian.",
   "AI-translated (job #7639) in six parallel ranges against one CONVENTIONS file, then reconciled. Awaiting native review."
  ],
  "references": [
