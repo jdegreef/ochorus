@@ -1,3 +1,4 @@
+// prerender refresh 2026-11-11: fr key-teachings-four-teachers — activated by #7514 (Watchman Nee, the last of its four books in French).
 // prerender refresh 2026-09-25: school-of-prayer-31-days (ar) — #3538's web build ran before the API had the
 // Arabic plan, so /ar/plans/school-of-prayer-31-days/ shipped as an empty shell. Re-crawl now the API has it.
 // prerender refresh 2026-09-25: Arabic jesus-himself-2, the-masters-indwelling and union-and-communion complete
