@@ -1746,6 +1746,8 @@
   "bible_new_testament": "New Testament",
   "bible_division_law": "Law",
   "bible_division_history": "History",
+  "bible_contents_as_list": "Show as a list",
+  "bible_contents_as_grid": "Show as a grid",
   "bible_division_wisdom": "Wisdom and Poetry",
   "bible_division_major_prophets": "Major Prophets",
   "bible_division_minor_prophets": "Minor Prophets",

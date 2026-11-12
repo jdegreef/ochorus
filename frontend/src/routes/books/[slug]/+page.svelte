@@ -47,6 +47,7 @@
 	import { chapterBars, chapterRangeText } from '$lib/chapterLengths';
 	import { firstSentence } from '$lib/firstSentence';
 	import { partEnds, partGroups, partLine } from '$lib/bookParts';
+	import { chapterGridFor, chapterNumber } from '$lib/chapterGrid';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
@@ -193,6 +194,11 @@
 	// reader's place (see contentsWindow). Hidden rows stay in the HTML — the
 	// prerendered page links every chapter — and "⋯ N chapters" gaps mark them.
 	let showAllChapters = $state(false);
+	// A book of the Bible lists its chapters as numbered chips (1 … 150 for
+	// Psalms) — its titles are only "<Book> <n>" — with the full list a tap
+	// away for a reader who wants each chapter's length ($lib/chapterGrid).
+	let contentsAsList = $state(false);
+	const chipGrid = $derived(chapterGridFor(book) && !contentsAsList);
 	// A book in parts (`Book.parts`, The Pilgrim's Progress) lists each part
 	// under its own heading; any other book is one group with no heading. The
 	// collapse keeps each part's first and last chapter, so no gap runs across
@@ -1155,6 +1161,35 @@
 				<p class="mt-1.5 text-small text-muted">{placeLine}</p>
 			</div>
 		{/if}
+		{#if chipGrid}
+		<!-- A Bible book's chapters as chips, every one linked (the prerendered page
+		     still links each chapter): filled behind the reader, ringed where they
+		     are — the list's marks, in the list's colours. The introduction and the
+		     conclusion keep their names. Each chip's full name and length are its
+		     tooltip and its accessible name carries the name. -->
+		<ol class="chapter-grid">
+			{#each book.chapters as ch (ch.order)}
+				{@const n = chapterNumber(ch.title)}
+				{@const read = isRead(ch.order)}
+				{@const current = isCurrent(ch.order)}
+				<li class:wide={n == null}>
+					<a
+						href={readHref(ch.order)}
+						class="chapter-chip"
+						class:read
+						class:current
+						aria-current={current ? 'step' : undefined}
+						aria-label="{chapterName(ch.order, ch.title)}{read ? `, ${t('settings.heatmapRead')}` : ''}"
+						title="{chapterName(ch.order, ch.title)} · {readingMinutes(ch.word_count)} {t('common.min')}"
+						dir="auto">{n ?? chapterName(ch.order, ch.title)}</a
+					>
+				</li>
+			{/each}
+		</ol>
+		<button type="button" class="btn btn-sm btn-ghost mt-3" onclick={() => (contentsAsList = true)}>
+			<Icon name="list" size={16} />{t('bible.contentsAsList')}
+		</button>
+		{:else}
 		<!-- The chapters as a path: a line down the markers, a filled mark with a
 		     tick for each chapter behind the reader, a ring for the one they're in
 		     (its row raised, offering to carry on), a number for the rest. -->
@@ -1219,7 +1254,13 @@
 		</ol>
 		{/each}
 		</div>
-		{#if book.chapters.length > CONTENTS_COLLAPSE_AT}
+		{#if chapterGridFor(book)}
+			<button type="button" class="btn btn-sm btn-ghost mt-2" onclick={() => (contentsAsList = false)}>
+				{t('bible.contentsAsGrid')}
+			</button>
+		{/if}
+		{/if}
+		{#if !chipGrid && book.chapters.length > CONTENTS_COLLAPSE_AT}
 			<button
 				type="button"
 				class="btn btn-sm btn-ghost mt-2"
@@ -1906,6 +1947,44 @@
 		font-size: var(--fs-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--muted);
+	}
+	/* A Bible book's chapter chips: the contents marks, grown to a tap target
+	   and laid in a grid; the introduction and conclusion span a few cells. */
+	.chapter-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+		gap: 0.375rem;
+		margin-top: 0.75rem;
+	}
+	.chapter-grid > li.wide {
+		grid-column: span 4;
+	}
+	.chapter-chip {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding-inline: 0.25rem;
+		border: 1.5px solid var(--border-strong);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		font-size: var(--fs-small);
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+	}
+	.chapter-chip:not(.read):hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.chapter-chip.read {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.chapter-chip.current {
+		border: 2px solid var(--accent);
+		font-weight: 600;
+		color: var(--accent);
 	}
 	.contents-mark.read {
 		border-color: var(--accent);

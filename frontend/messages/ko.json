@@ -1746,6 +1746,8 @@
   "bible_new_testament": "신약",
   "bible_division_law": "율법서",
   "bible_division_history": "역사서",
+  "bible_contents_as_list": "목록으로 보기",
+  "bible_contents_as_grid": "격자로 보기",
   "bible_division_wisdom": "시가서",
   "bible_division_major_prophets": "대선지서",
   "bible_division_minor_prophets": "소선지서",
