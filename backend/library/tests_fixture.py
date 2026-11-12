@@ -1935,12 +1935,16 @@ class CoverAssetTests(SimpleTestCase):
             sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(INK_DARK),
             "covers.INK_DARK and coverLayouts.INK_DARK disagree — change both",
         )
-        # The dark-ink boxes assume centred framed rows; a type-top work sets
-        # its words elsewhere, and the white gate would skip it. Neither gate
-        # measures such a work correctly, so hold the sets apart.
-        from library.covers import DARK_INK, TYPE_TOP
+        # The shared dark-ink boxes assume centred framed rows; a type-top work
+        # sets its words elsewhere, and the white gate skips it. So a work is
+        # both only with boxes measured where ITS words land (the Open Word
+        # Bible's books, `DARK_INK_BOXES_BY_SLUG`).
+        from library.covers import DARK_INK, DARK_INK_BOXES_BY_SLUG, TYPE_TOP
 
-        self.assertEqual(sorted(INK_DARK & TYPE_TOP), [], "a work is both INK_DARK and TYPE_TOP")
+        self.assertEqual(
+            sorted((INK_DARK & TYPE_TOP) - DARK_INK_BOXES_BY_SLUG.keys()), [],
+            "a work is both INK_DARK and TYPE_TOP with no boxes of its own",
+        )
         # The ink the gate measures is the ink the stylesheet sets.
         css = (STATIC_DIR.parent / "src" / "lib" / "components" / "cover-type.css").read_text()
         ink = re.search(r"--cover-ink-dark:\s*#([0-9a-fA-F]{6})", css)

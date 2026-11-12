@@ -32,6 +32,11 @@ describe('seriesLabel', () => {
 		expect(seriesLabel(rooted, 'en')).toBe('Book 2 of 6 in Rooted');
 	});
 
+	it('names an unnumbered series without a number (the Bible: positions are canon order)', () => {
+		const bible = { ...rooted, slug: 'the-bible', title: 'The Bible', position: 1, total: 4 };
+		expect(seriesLabel(bible, 'en')).toBe('Part of The Bible');
+	});
+
 	it('names a collection without a number', () => {
 		const collection = { ...rooted, title: 'The Key Teachings', position: null, total: 4 };
 		expect(seriesLabel(collection, 'en')).toBe('Part of The Key Teachings');

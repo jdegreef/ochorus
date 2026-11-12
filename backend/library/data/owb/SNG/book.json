@@ -1,0 +1,34 @@
+{
+ "slug": "song-of-songs",
+ "title": "The Song of Songs",
+ "cover_title": "Song of Songs",
+ "subtitle": "Shir HaShirim, “The Song of Songs”",
+ "cover_color": "#6a2a44",
+ "description": "The greatest of songs, as its title says: a love poem between a woman and a man, set in the middle of the Bible. It begins with longing — “May he kiss me with the kisses of his mouth!” — and moves through vineyards and gardens, gazelles and doves, a voice calling “Get up, my darling, my beautiful one, and come away”, two searches through the city at night and a wedding day, to the great saying that love is as strong as death and that mighty waters cannot put it out. Read by Jews as the love of God and Israel, by Christians as the love of Christ and his church, and by all as God’s blessing on faithful human love. Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the Song of Songs?",
+   "answer": "A book of the Old Testament, eight chapters of love poetry in which a woman and a man speak of their longing for each other and their delight in each other, with a group of friends, “the women of Jerusalem”, listening and answering. Its Hebrew title, Shir HaShirim, is a superlative meaning “the greatest of songs”. It is also called the Song of Solomon, and, from its Latin title, Canticles. It mentions God by name at most once, in the last word of 8:6, and is read in the synagogue at Passover."
+  },
+  {
+   "question": "Who wrote the Song of Songs?",
+   "answer": "The title calls it the Song “which is Solomon’s” (1:1), and the small Hebrew word before his name can mean by, for, about or belonging to Solomon, as the psalm titles say “of David”. Solomon was remembered for composing 1,005 songs (1 Kings 4:32), and tradition received the Song as his, written in the tenth century BC. He also appears in the poem as a figure (3:7–11; 8:11–12), and some scholars think it was written about him, or dedicated to him, by a later poet. Its date is debated."
+  },
+  {
+   "question": "Why is a love poem in the Bible?",
+   "answer": "Because the Bible honours the love of a man and a woman as God’s gift. Genesis tells of the first man’s joy at the first woman and of the two becoming one flesh (Genesis 2:23–25), and Proverbs urges a husband to find his joy in the wife of his youth (5:18–19). The Song celebrates desire held within faithfulness — “I am my beloved’s, and my beloved is mine” (6:3) — and warns three times not to stir up love before its time (2:7; 3:5; 8:4). Its climax says that love is “as strong as death” and that “Mighty waters cannot put out love” (8:6–7)."
+  },
+  {
+   "question": "Is the Song of Songs an allegory of Christ and the church?",
+   "answer": "Christians have read it in different ways. Jewish tradition long read it as the love between God and Israel; from Origen in the third century through Bernard of Clairvaux and the Puritans to Hudson Taylor, the church read it as the love of Christ for his church or for the believing soul. Many readers today begin with the plain sense, a celebration of human love. These readings need not compete: the Bible pictures God’s love for his people as a marriage (Isaiah 62:5), and Paul, writing of husband and wife, says, “There is a great mystery here, but I am speaking about Christ and the church” (Ephesians 5:32). Many have found that the Song, read truly as a song of human love, points beyond itself."
+  },
+  {
+   "question": "Who is speaking in the Song of Songs?",
+   "answer": "The Hebrew gives no names or stage directions, but its verbs and pronouns show whether a man or a woman is speaking and to whom, so the voices can usually be told apart: the woman, whose voice is heard most and who speaks the first and last words; the man, who calls her “my darling” and “my sister, my bride”; and the women of Jerusalem, who ask questions and sometimes reply. Readers differ over whether the poem tells a single story or gathers several love songs, and some have seen two men in it, King Solomon and a shepherd."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Each line of the poetry is set on its own. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

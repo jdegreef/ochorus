@@ -1,0 +1,34 @@
+{
+ "slug": "judges",
+ "title": "Judges",
+ "cover_title": "",
+ "subtitle": "Shofetim, “Judges”",
+ "cover_color": "#5a4a2e",
+ "description": "The book of the generation that grew up “who did not know the LORD or what he had done for Israel”, and of the God who kept rescuing them anyway. Again and again Israel turns to other gods, falls under its enemies, cries out, and is saved by a deliverer God raises up: Othniel; left-handed Ehud; Deborah the prophet and Jael with her tent peg; Gideon, the least in his family, with three hundred men, torches and jars; Jephthah and his terrible vow; and Samson, set apart from the womb, who pulled down a temple at the last. Each time the rescue lasts only as long as the deliverer lives, and the book ends in civil war with its haunting refrain: “In those days there was no king in Israel; everyone did what they thought was right.” In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Judges about?",
+   "answer": "The history of Israel between the death of Joshua and the rise of the monarchy. It traces a repeated pattern, set out in chapter 2: the people turn to other gods, God gives them over to their enemies, they cry out, and God raises up a judge who rescues them, until the judge dies and the people fall back further than before. Its central chapters (3–16) tell the stories of twelve judges, and its last chapters (17–21) show how far Israel fell, under the refrain “In those days there was no king in Israel.”"
+  },
+  {
+   "question": "Who wrote the book of Judges, and when?",
+   "answer": "The book does not name its author. Jewish tradition assigned it to the prophet Samuel. Many scholars see it as part of a longer history running from Deuteronomy to Kings, drawing on older sources such as the Song of Deborah and completed later, perhaps around the time of the exile. Its refrain about there being no king suggests it was written, at least in its final form, after the monarchy had begun. The events it describes span the centuries between Joshua and Saul, though their exact dates are debated."
+  },
+  {
+   "question": "Who were the judges of Israel?",
+   "answer": "Leaders God raised up to rescue Israel from its oppressors and to govern it afterward; the Hebrew word means more than a judge in a law court. The book names twelve: Othniel, Ehud, Shamgar, Deborah (with Barak), Gideon, Tola, Jair, Jephthah, Ibzan, Elon, Abdon and Samson. Six are given fuller accounts (the “major” judges) and six are mentioned only briefly. None was a king, and none founded a lasting line; Gideon’s son Abimelech, who made himself king, is the book’s picture of what bad rule looks like."
+  },
+  {
+   "question": "Did Jephthah really sacrifice his daughter?",
+   "answer": "Readers have disagreed since ancient times. Jephthah vowed to offer as a burnt offering whatever came out of his house to meet him, and his only daughter came out first. The text says that after two months “he did to her what he had vowed” (11:39). Many, ancient and modern, take this to mean that he sacrificed her, a tragic sign of how far Israel had absorbed the religion of Canaan; others, noting the stress on her never marrying, read it as a lifelong dedication to the LORD’s service. Either way, the book does not approve the vow, and it records that Israel’s young women mourned her every year."
+  },
+  {
+   "question": "Why is Samson in the Hall of Faith in Hebrews 11?",
+   "answer": "Hebrews 11:32 names Samson alongside Gideon, Barak, Jephthah, David and Samuel among those who “found strength when they were weak”. The letter does not praise his character, which Judges shows to be deeply flawed. It honours the moments when he trusted God, above all his last prayer in the Philistine temple: “Lord GOD, please remember me” (16:28). His inclusion, like the others’, shows that God works through weak and failing people who turn to him."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. “LORD” in capitals stands for God’s personal name, and the Song of Deborah in chapter 5 is set out line by line as poetry. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

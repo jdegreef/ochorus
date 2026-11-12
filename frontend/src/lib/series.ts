@@ -1,5 +1,5 @@
 import * as m from '$lib/paraglide/messages.js';
-import { volumeNumeral } from '$lib/coverStyles';
+import { UNNUMBERED_SERIES, volumeNumeral } from '$lib/coverStyles';
 import type {
 	BookSeriesLine,
 	BookSummary,
@@ -26,7 +26,9 @@ import { contentLang } from '$lib/reading';
  * series instead until the earlier volumes arrive.
  */
 export function seriesLabel(series: BookSeriesLine, language: string): string {
-	const position = volumeNumeral(series.position, language);
+	const position = UNNUMBERED_SERIES.has(series.slug)
+		? null
+		: volumeNumeral(series.position, language);
 	if (!position || series.total < (series.position ?? 0))
 		return m.book_series_member({ series: series.title });
 	return m.book_series_volume({

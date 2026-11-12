@@ -1,6 +1,7 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { ORIGINALS_PATH } from '$lib/originals';
 import { AUDIENCE_HUBS } from '$lib/audienceHubs';
+import { BIBLE_PATH } from '$lib/bible';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
@@ -90,6 +91,14 @@ export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
  *  locale (the page lists only that language's books). Sits after the hubs, so
  *  English readers meet Articles · Scripture · Quotes · Originals · RSS. */
 export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.originals' };
+
+/** The Bible — the Open Word Bible's books in canonical order (/bible/,
+ *  `$lib/bible`). Not a top-nav slot: the footer's More column, the palette,
+ *  the tablet More menu and the phone's More sheet offer it right before the
+ *  English-only hubs, but only in the locales whose Bible books have shipped
+ *  (`bibleIn`) — the page 404s elsewhere, so a link there would send the crawl
+ *  to a 404. The trailing slash comes from `localizeHref` (isSlashedPath). */
+export const BIBLE_DEST: HubDest = { href: BIBLE_PATH, labelKey: 'nav.bible' };
 
 /** Authors & Books A–Z — the one page linking every writer and every book in
  *  a language ($lib/authorIndex), so the whole library is two clicks from any

@@ -54,6 +54,8 @@ TOPICS = [
             "devoted-to-prayer",
             "faithful-unto-death",
             "seven-times-a-day",
+            "psalms",
+            "habakkuk",
         ],
     ),
     (
@@ -72,6 +74,9 @@ TOPICS = [
             "power-from-on-high-new-testament",
             "power-from-on-high-old-testament",
             "spurgeon-on-the-holy-spirit",
+            "acts-of-the-apostles",
+            "joel",
+            "ezekiel",
         ],
     ),
     (
@@ -121,6 +126,13 @@ TOPICS = [
             "revelations-of-divine-love",
             "key-teachings-of-george-macdonald",
             "key-teachings-of-g-k-chesterton",
+            "psalms",
+            "philippians",
+            "2-corinthians",
+            "1-peter",
+            "job",
+            "lamentations",
+            "isaiah",
         ],
     ),
     (
@@ -144,6 +156,10 @@ TOPICS = [
             "in-darkest-england-and-the-way-out",
             "key-teachings-of-dwight-l-moody",
             "key-teachings-of-charles-finney",
+            "acts-of-the-apostles",
+            "2-chronicles",
+            "ezra",
+            "jonah",
         ],
     ),
     (
@@ -165,6 +181,8 @@ TOPICS = [
             "christ-the-healer",
             "key-teachings-of-frederick-brotherton-meyer",
             "faithful-with-little",
+            "numbers",
+            "joshua",
         ],
     ),
     (
@@ -185,6 +203,11 @@ TOPICS = [
             "how-to-bring-men-to-christ",
             "key-teachings-of-dwight-l-moody",
             "with-and-without-christ",
+            "romans",
+            "gospel-of-mark",
+            "gospel-of-luke",
+            "hosea",
+            "jeremiah",
         ],
     ),
     (
@@ -247,6 +270,9 @@ TOPICS = [
             "ten-commandments",
             "key-teachings-of-catherine-booth",
             "key-teachings-of-john-wesley",
+            "james",
+            "hebrews",
+            "leviticus",
         ],
     ),
     (
@@ -306,6 +332,8 @@ TOPICS = [
             "selected-sermons-edwards",
             "key-teachings-of-john-bunyan",
             "key-teachings-of-john-owen",
+            "zechariah",
+            "malachi",
         ],
     ),
     (
@@ -329,6 +357,7 @@ TOPICS = [
             "working-for-god",
             "key-teachings-of-hudson-taylor",
             "the-saint-and-his-saviour",
+            "1-john",
         ],
     ),
     (
@@ -362,6 +391,8 @@ TOPICS = [
             "revelations-of-divine-love",
             "the-dialogue-of-catherine-of-siena",
             "key-teachings-of-elisabeth-elliot",
+            "ruth",
+            "esther",
         ],
     ),
     (
@@ -424,6 +455,7 @@ TOPICS = [
             "days-of-heaven-upon-earth",
             "cheque-book",
             "diary-of-an-old-soul",
+            "proverbs",
         ],
     ),
     (
@@ -480,6 +512,8 @@ TOPICS = [
             "the-practice-of-the-presence-of-god",
             "at-the-masters-feet",
             "reality-and-religion",
+            "ecclesiastes",
+            "song-of-songs",
         ],
     ),
     (
@@ -511,6 +545,8 @@ TOPICS = [
             "first-epistle-of-clement",
             "separation-and-service",
             "key-teachings-of-dietrich-bonhoeffer",
+            "1-corinthians",
+            "ephesians",
         ],
     ),
     (
@@ -531,6 +567,9 @@ TOPICS = [
             "come-ye-children",
             "lectures-to-my-students",
             "lectures-to-my-students-second-series",
+            "1-timothy",
+            "2-timothy",
+            "titus",
         ],
     ),
     (
@@ -583,6 +622,10 @@ TOPICS = [
             "key-teachings-of-g-k-chesterton",
             "the-everlasting-man",
             "what-the-bible-teaches",
+            "genesis",
+            "gospel-of-matthew",
+            "exodus",
+            "deuteronomy",
         ],
     ),
     (
@@ -619,6 +662,9 @@ TOPICS = [
             "key-teachings-of-john-bunyan",
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
+            "romans",
+            "galatians",
+            "ephesians",
         ],
     ),
     (
@@ -669,6 +715,8 @@ TOPICS = [
             "cheque-book",
             "days-of-heaven-upon-earth",
             "ever-increasing-faith",
+            "judges",
+            "daniel",
         ],
     ),
     (
@@ -682,6 +730,9 @@ TOPICS = [
             "men-who-tended-the-flock-2",
             "rise-up-men-of-god-2",
             "men-and-women-who-gave-everything-2",
+            "1-samuel",
+            "2-samuel",
+            "nehemiah",
         ],
     ),
     (

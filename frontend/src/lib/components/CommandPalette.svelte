@@ -7,8 +7,10 @@
 		AUDIENCE_DESTS,
 		ENGLISH_HUBS,
 		ORIGINALS_DEST,
-		AZ_INDEX_DEST
+		AZ_INDEX_DEST,
+		BIBLE_DEST
 	} from '$lib/contentNav';
+	import { bibleIn } from '$lib/bible';
 	import { getLang } from '$lib/lang.svelte';
 	import { FOR_EYEBROW, FOR_LINKS, forInline } from '$lib/forLinks';
 	import { promoLocale } from '$lib/forPromos';
@@ -44,6 +46,8 @@
 		{ href: SERIES_DEST.href, label: t(SERIES_DEST.labelKey) },
 		...AUDIENCE_DESTS.map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		{ href: AZ_INDEX_DEST.href, label: t(AZ_INDEX_DEST.labelKey) },
+		// The Bible on the footer's gate: only where its books have shipped.
+		...(bibleIn(getLang()) ? [{ href: BIBLE_DEST.href, label: t(BIBLE_DEST.labelKey) }] : []),
 		...(getLang() === 'en'
 			? [
 					...ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) })),

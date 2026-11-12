@@ -125,6 +125,9 @@ export const AUTHOR_STYLE: Record<string, CoverStyleId> = {
 	// house voice with every other living writer — and a publisher's imprint
 	// that looks like everyone else's books is not an imprint.
 	'ochorus-originals': 'originals',
+	// The Open Word Bible: its books are set in the devotional hand, the
+	// Garamond of the printed Bibles, in dark ink on their leaf.
+	'open-word-bible': 'devotional',
 	// His English editions wear the covers his ministry designed, all set in
 	// hand-lettered small caps; without this his translations were the only
 	// editions of those books in a different voice.
@@ -284,6 +287,51 @@ export const TITLE_SMALL_CAPS: ReadonlySet<string> = new Set([
 /** Is this book's title set in small capitals? */
 export function smallCapsFor(bookSlug: string): boolean {
 	return TITLE_SMALL_CAPS.has(bookSlug);
+}
+
+/**
+ * The authors whose covers carry the publisher's address where the Ochorus mark
+ * goes, by author slug.
+ *
+ * The Open Word Bible is its own work with its own home: its books in this
+ * library are its text in our reader, and the cover says where the translation
+ * lives, not who is showing it. Set as a line of type (`.sitemark` in
+ * `cover-type.css`), in the place and the ink of the mark it replaces. Both
+ * renderers read this.
+ */
+export const COVER_SITE_MARK: Readonly<Record<string, string>> = {
+	'open-word-bible': 'OpenWordBible.org'
+};
+
+/**
+ * The series whose positions are an ORDER, not volume numbers. The Bible's
+ * books sit in `the-bible` at their place in the canon (Genesis 1, John 43) so
+ * the series reads Genesis to Revelation; "Book 43 of 29" on John's page, or a
+ * ring saying "43" over its title, would read as a volume count. The book
+ * page's series line reads this (`series.seriesLabel`).
+ */
+export const UNNUMBERED_SERIES: ReadonlySet<string> = new Set(['the-bible']);
+
+/**
+ * The same fact for the covers, by author, because a cover is drawn from fields
+ * that do not carry the series: every book by these authors is in a series
+ * above (`coverStyles.test.ts` holds the fixture to it). Both renderers read it.
+ */
+export const UNNUMBERED_AUTHORS: ReadonlySet<string> = new Set(['open-word-bible']);
+
+/** The numeral a cover sets over its title: `volumeNumeral`, except for the
+ *  authors above. */
+export function coverVolume(
+	position: number | null | undefined,
+	language: string,
+	authorSlug: string
+): string | null {
+	return UNNUMBERED_AUTHORS.has(authorSlug) ? null : volumeNumeral(position, language);
+}
+
+/** The address a cover sets in place of the Ochorus mark, or null for the mark. */
+export function siteMarkFor(authorSlug: string): string | null {
+	return COVER_SITE_MARK[authorSlug] ?? null;
 }
 
 /**
