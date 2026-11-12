@@ -1,0 +1,44 @@
+{
+ "slug": "catena-on-john",
+ "title": "A Catena on John",
+ "subtitle": "The Gospel of John, verse by verse, with the Church’s great commentators",
+ "cover_title": "",
+ "cover_byline": "Augustine to Westcott",
+ "cover_color": "#2f4a5c",
+ "description": "The whole Gospel of John, read slowly, the way the Church has read it for sixteen centuries: under each verse, the great commentators speak one after another, oldest first. Augustine preaching to his people in Hippo, John Chrysostom in Antioch, Cyril of Alexandria, Calvin in Geneva, the Jesuit Cornelius a Lapide, Matthew Henry, Bengel, Wesley, J. C. Ryle and B. F. Westcott, eleven voices in all, each quoted word for word from a public-domain edition. The Gospel itself is the Open Word Bible, a new translation given freely to the public domain. A catena (Latin for “chain”) is one of the oldest ways of studying Scripture; this one is arranged in John’s own passages, a passage a day, with an introduction on how to read it and a closing chapter on the voices and their books.",
+ "qa": [
+  {
+   "question": "What is a catena?",
+   "answer": "A catena, from the Latin for “chain”, is a commentary built from other commentaries: under each verse of Scripture, excerpts from earlier interpreters are linked one after another, so the reader hears several voices on the same words. The form goes back to the early Church; the best known is the Catena Aurea, the “Golden Chain” that Thomas Aquinas compiled on the four Gospels in the thirteenth century."
+  },
+  {
+   "question": "Whose commentary is in this catena on John?",
+   "answer": "Eleven commentators, from the early Church to the late 1800s: Origen, John Chrysostom, Augustine, Cyril of Alexandria, John Calvin, Cornelius a Lapide, Matthew Henry, J. A. Bengel, John Wesley, J. C. Ryle and B. F. Westcott. Every excerpt is copied word for word from a public-domain English edition, as gathered by the open collection Logia."
+  },
+  {
+   "question": "Which Bible translation does this catena use?",
+   "answer": "The Gospel text is the Open Word Bible, English, Balanced level, a new translation dedicated to the public domain. Inside the excerpts, the commentators quote Scripture in the older English of their own editions, usually the King James Version."
+  },
+  {
+   "question": "How is this catena arranged?",
+   "answer": "One chapter for each chapter of John, divided into the Gospel’s own passages, eighty-six in all. Within a passage the Gospel comes first, a verse or a few verses at a time, followed by the commentators who wrote on those words, in the order they lived. Every verse of John appears once, in order, so the book can also be read straight through as the Gospel."
+  },
+  {
+   "question": "Is every word of the commentators included?",
+   "answer": "No. Between them the eleven commentators wrote millions of words on John. This catena is a selection of roughly one excerpt in twenty, chosen so that each passage is heard from more than one century and more than one tradition. Each excerpt is given whole, in the words of its edition."
+  },
+  {
+   "question": "Do the commentators agree with one another?",
+   "answer": "Not always. Calvin sometimes argues with the Fathers, Cornelius a Lapide reads as a Catholic where Calvin and Henry read as Protestants, and Westcott weighs the Greek more closely than anyone. A catena keeps these differences side by side, so readers can see where the Church has spoken with one voice and where it has not."
+  },
+  {
+   "question": "How should I read a catena?",
+   "answer": "Slowly. A passage a day takes you through John in under three months. Read the Gospel first, then the voices beneath it, then the Gospel again, noticing what each commentator sees that the others miss."
+  },
+  {
+   "question": "Why do the commentators quote different Bible wording?",
+   "answer": "They wrote long before the Open Word Bible, and their English editions quote Scripture in the translation of their own day, usually the King James Version. So a verse may read “the Word was made flesh” in a commentator and “the Word became flesh” in the Gospel text above it. Both render the same Greek."
+  }
+ ],
+ "cover_url": "/covers/art/catena-on-john.jpg"
+}

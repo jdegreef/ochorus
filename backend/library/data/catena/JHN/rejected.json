@@ -1,0 +1,12 @@
+{
+ "_note": [
+  "Excerpts an editor has turned down, with the reason. build_catena --select never",
+  "chooses one, and a plain build refuses a selection.json that still names one.",
+  "Add an id here (and rerun --select) to drop an excerpt that reads badly."
+ ],
+ "reasons": {
+  "bengel.JHN.4.37.1": "a quotation of Romans 5:6 that opens in Bengel's previous note: the close mark is orphaned here",
+  "bengel.JHN.19.14.2": "a citation cut short in the scan (\"Charl.... T.\")"
+ },
+ "excerpts": ["bengel.JHN.4.37.1", "bengel.JHN.19.14.2"]
+}
