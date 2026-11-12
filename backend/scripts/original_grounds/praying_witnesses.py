@@ -47,6 +47,11 @@ Vol. 5: Seven Times a Day. A clear morning over the hills: the sun risen low
 on the left, and on the near ridge, low right, a monastery church with its bell
 tower and cross, a cloister wall and two cypresses, its windows lit for the
 morning office (Psalm 119:164).
+
+Vol. 6: A Mighty Fortress. Full morning, the sun clear of the far ridge on the
+right; on the near hill, low left, a walled castle with its keep and a corner
+tower, one window lit in the keep where a man sits up translating and praying
+(Psalm 46:1). No particular castle.
 """
 import pathlib
 import random
@@ -256,12 +261,47 @@ VOL5 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL6 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#12254a"/><stop offset=".30" stop-color="#22406e"/>
+  <stop offset=".46" stop-color="#4f6b92"/><stop offset=".55" stop-color="#a49a8a"/>
+  <stop offset=".61" stop-color="#e2bf82"/><stop offset="1" stop-color="#e2bf82"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="430" cy="470" r="220" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fff4d2" stop-opacity=".95"/>
+  <stop offset=".2" stop-color="#f6c97e" stop-opacity=".5"/>
+  <stop offset="1" stop-color="#e2bf82" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+<circle cx="430" cy="466" r="20" fill="#fffbe8" opacity=".95"/>
+{ridge([(0, 489), (110, 484), (210, 489), (320, 483), (430, 488), (520, 484), (600, 488)], "#6d6470")}
+{ridge([(0, 497), (60, 492), (110, 486), (170, 484), (220, 490), (300, 498), (400, 499), (500, 495), (600, 498)], "#2c2836")}
+<g fill="#0b0a10">
+ <path d="M0 800 L0 504 L40 500 L80 494 L120 490 L170 489 L210 493 L250 500 L330 506 L450 507 L600 505 L600 800 Z"/>
+ <rect x="96" y="478" width="90" height="14"/>
+ <rect x="96" y="474" width="8" height="5"/><rect x="110" y="474" width="8" height="5"/><rect x="124" y="474" width="8" height="5"/>
+ <rect x="150" y="474" width="8" height="5"/><rect x="164" y="474" width="8" height="5"/><rect x="178" y="474" width="8" height="5"/>
+ <rect x="134" y="462" width="18" height="18"/>
+ <rect x="132" y="458" width="5" height="5"/><rect x="140.5" y="458" width="5" height="5"/><rect x="149" y="458" width="5" height="5"/>
+ <rect x="84" y="468" width="14" height="24"/><path d="M82 470 L91 458 L100 470 Z"/>
+</g>
+<rect x="141" y="467" width="4" height="6" fill="#f2b66a" opacity=".85"/>
+<rect x="114" y="482" width="3" height="5" fill="#f2b66a" opacity=".6"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
     "devoted-to-prayer": VOL3,
     "faithful-unto-death": VOL4,
     "seven-times-a-day": VOL5,
+    "a-mighty-fortress": VOL6,
 }
 
 if __name__ == "__main__":

@@ -323,10 +323,19 @@ worker specifics that shipped ~11 editions:
      art_scrim.py` + `frontend/src/lib/coverScrim.ts` (only your slug is added).
   6. `cd frontend && npm run og:covers` for the titled twin + manifest entry.
   **`og:covers` needs frontend `node_modules` (playwright + sharp)**, which a
-  fresh worktree lacks; borrow the main checkout's with a temporary
-  `ln -s <main>/frontend/node_modules node_modules`, run it, then `rm` the
-  symlink (fine for a standalone build script — the "symlink breaks hydration"
-  caveat is only about the Vite dev server).
+  fresh worktree lacks. Run `npm ci` in the worktree (~10 s) rather than
+  symlinking the main checkout's: that tree is often stale, and the script then
+  dies on a font package it lacks (`@fontsource/amatic-sc/700.css`, 2026-11-01).
+  If Playwright then says its browser "doesn't exist", the lockfile moved its
+  version: `npx playwright install chromium-headless-shell`.
+- **The scratchpad does not survive a session restart, and a stalled claim gets
+  reclaimed.** A two-book pt job (#6872/#6873, 2026-11) lost 32 finished
+  chapters twice when its session was resumed days later. Only what was already
+  in the worktree survived. Meanwhile other sessions correctly reclaimed both
+  stale claims and shipped the books (#7516, #7726), so the original session's
+  copy became a duplicate. Once a book validates, build its fixture into the
+  worktree and ship it the same day. When resuming, re-run the double-ship check
+  before doing anything else.
 - Scripture: if `api.takeroot.bible` is reachable, use `scripture_context()`
   for authoritative wording; if egress-blocked (the current default), render
   quotations conservatively in the language's reverent biblical register and
@@ -799,6 +808,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 
 ## Known failure modes (append as we learn)
 
+- **The Skill tool loads THIS file from the main checkout, which is often a stale detached HEAD — re-read it from your worktree** (lg batch, 2026-11-01). The copy loaded still required a dated `+page.ts` prerender touch that origin/main had retired weeks earlier, and lacked the lg word-level MT error list. After `git checkout -B … origin/main`, `diff` the main checkout's copy against the worktree's and follow the worktree copy.
+- **A reboot wipes the `/tmp` scratchpad, and with it every finished chunk of a fan-out** (lg batch, 2026-11-06: ~45 translated chunks gone). The words survive in the subagent transcripts (`~/.claude/projects/<project>/<session>/subagents/agent-*.jsonl`), because translators write through Bash heredocs: rebuild the inputs, then replay each agent's Bash/Write/Edit tool calls in order — no retranslation. Cheaper still: for a run that will outlive one sitting, keep `out/` somewhere durable (e.g. under the worktree, git-ignored), not in `/tmp`. And re-check `origin/main` before resuming — here other sessions had shipped all three books in the meantime.
 - Batch subagents that "orchestrate" instead of translating: they spawn nested
   agents and return early. Mitigate with the explicit no-delegation line; the
   per-chapter validation + gap re-dispatch catches whatever still slips.
@@ -1970,6 +1981,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   span, a bracketed editorial gloss the English itself carries, and quotations
   running across a verse boundary — join the chapter's verses with a single space
   before testing, or every multi-verse quote reads as a miss).
+- **The scratchpad is NOT durable, and a stalled run loses its claim** (hi
+  Brainerd #6851 / Union #6853, 2026-11). A Mac restart wiped `/private/tmp`
+  mid-run: 37 finished chunk outputs, the reports and the session's own build
+  scripts were gone. They were recovered without re-translating by REPLAYING
+  each subagent's transcript
+  (`~/.claude/projects/<project>/<session>/subagents/agent-*.jsonl`): run every
+  Write/Edit/Bash tool_use in order with cwd = scratchpad, after scanning the
+  commands for paths outside it. But the session was then down for four days,
+  the 6-hour stale-claim rule correctly let two other sessions reclaim and ship
+  both books, and the recovered work was a duplicate. So: copy `out/` +
+  `reports/` + your builder scripts to the shared notes folder as chunks land,
+  and on a run that may span more than a few hours, push a WIP branch or refresh
+  the claim with a progress comment so it does not read as stale. On resuming,
+  check `origin/main` and the issue BEFORE doing any more work.
 - **A dead agent's OUTPUT usually survives; only its report dies — and a report
   can be reconstructed by AUDIT, which is worth more than a re-translation**
   (job #764). Three translators were killed by session limits mid-run. Two had
@@ -2926,3 +2951,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   English in the same PR (a literal `—“`→`—”` swap was safe here: every hit was a
   closer — check that first). (4) `<img>` alt text stays English (the system prompt
   copies the tag verbatim); say so in the PR.
+- **`pythonbible.get_references` turns a BARE BOOK NAME in prose into a whole-book
+  reference** (sw Law/Wesley/Edwards batch, 2026-11-01). "the Acts", "Mark", "Job",
+  "Numbers", "Judges", "Ruth", "James", "Revelation" each parse as the entire book,
+  so a crib built on them fills with `<Book> 1:1-4` rows nobody quoted — it was the
+  top "repeated verse" in all three books. Drop any parsed reference spanning >3
+  verses (it points, it doesn't quote). For UNCITED quotations, a 5-gram index over
+  pythonbible's own verse text (`get_verse_text`, all 31k verses, ~2s to build;
+  ignore grams that hit >6 verses) detects them well — it surfaced Law's constant
+  uncited 1 Peter / 1 John quoting that the citation parser never sees.
+- **A BOOK can be a collection of sermons that already ship separately in your
+  language — check before translating** (selected-sermons-edwards → sw): three of
+  its chapters were already `sermons/<slug>.sw.json` (same sermon, ~90-95% word
+  similarity, different paragraphing). `grep -l '"<author-slug>"' sermons/*.<lang>.json`
+  and hand those translators the en/sw pair to reuse, re-cut to the book's blocks —
+  it keeps the two editions agreeing and halves the work.

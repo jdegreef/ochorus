@@ -1713,6 +1713,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "cross, a cloister wall and two cypresses, its windows lit for the morning "
         "office. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 6, A Mighty Fortress: the series ground at
+    # full morning: a walled castle with its keep and corner tower on the near
+    # hill, one window lit (Psalm 46:1). No particular castle. Same generator.
+    "a-mighty-fortress": Original(
+        "e6b5ea835e17a5b66f04923f465b227ec4e5971777d9e10bcbaba56c1062e328",
+        "Psalm 46:1: full morning over the hills, the sun clear of the far ridge on "
+        "the right, and on the near hill a walled castle with its keep and a corner "
+        "tower, one window lit in the keep. No particular castle, no likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair

@@ -429,6 +429,75 @@ VOLUMES: dict[int, dict[str, object]] = {
             ],
         },
     },
+    6: {
+        "slug": "a-mighty-fortress",
+        "book": {
+            "publication_year": 2026,
+            "title": "A Mighty Fortress",
+            "subtitle": "Prayer and the Reformation",
+            "cover_url": "/covers/art/a-mighty-fortress.jpg",
+            "cover_color": covers.ink_safe("#22355a"),  # a morning blue
+            "description": (
+                "Seventeen short chapters on how believers prayed in the age of the "
+                "Reformation, from about 1500 to 1650: Luther and his simple way to pray, "
+                "Calvin, Cranmer's common prayer, Knox, Teresa of Ávila, John of the Cross, "
+                "Ignatius and the examen, Francis de Sales, the hidden Christians of Japan, "
+                "Lancelot Andrewes, George Herbert, Richard Sibbes, Richard Baxter, John "
+                "Bunyan, Brother Lawrence and the Anabaptist martyrs."
+            ),
+            "about_html": (
+                "<p>In the 1500s the church in the West was torn apart and renewed at the "
+                "same time. Reformers called believers back to the Bible and to faith in "
+                "Christ alone; within the Catholic church, too, men and women sought a "
+                "deeper life of prayer. Christians of that age sometimes persecuted one "
+                "another, and many died for their faith. Yet on every side there were people "
+                "who prayed, and who taught others to pray. It is Volume 6 of A Cloud of "
+                "Praying Witnesses, an Ochorus series that follows the people of God at "
+                "prayer from the Old Testament to the church around the world today.</p>"
+                "<p>Its seventeen chapters follow Martin Luther, who wrote his barber a "
+                "simple way to pray, John Calvin, Thomas Cranmer and the first prayer book "
+                "in English, and John Knox; Teresa of Ávila, John of the Cross, Ignatius of "
+                "Loyola and Francis de Sales; the hidden Christians of Japan, who kept "
+                "praying for two hundred and fifty years, most of them without a priest; Lancelot "
+                "Andrewes, George Herbert, Richard Sibbes, Richard Baxter and John Bunyan; "
+                "Brother Lawrence among the pots and pans; and the Anabaptist martyrs.</p>"
+                "<p>Every chapter tells its story from the oldest sources, says plainly "
+                "where legend takes over, and is fair to every church. It quotes the "
+                "witnesses word for word from their books in the library where it can, and "
+                "ends with three key insights, a word for today, a practice to try, a "
+                "closing prayer and questions for reflection. Two appendices gather every "
+                "insight by theme and every Scripture in Bible order. Scripture is quoted "
+                "from the Open Word Bible (OWB), Balanced edition, which is dedicated to the "
+                "public domain.</p>"
+            ),
+            "qa": [
+                {
+                    "question": "What is A Mighty Fortress about?",
+                    "answer": "How believers prayed in the age of the Reformation, from about 1500 to 1650: seventeen short chapters on Protestant reformers, Catholic renewal, Anglican and Puritan pastors, the hidden Christians of Japan and the Anabaptist martyrs, from Martin Luther and Teresa of Ávila to John Bunyan and Brother Lawrence.",
+                },
+                {
+                    "question": "What is A Cloud of Praying Witnesses?",
+                    "answer": "A series of books on prayer through the whole story of the church, named for Hebrews 12:1. The first five volumes follow prayer in the Old Testament, the teaching of Jesus, the first church, the martyrs and desert fathers, and the monks, mystics and missionaries of the Middle Ages. This sixth volume follows the age of the Reformation, and later volumes follow the praying men and women of every century and every part of the world.",
+                },
+                {
+                    "question": "Do I need to read the volumes in order?",
+                    "answer": "No. Each volume stands on its own. Reading them in order follows the story from Abraham to today, but you can begin with any volume.",
+                },
+                {
+                    "question": "Does the book take sides between Protestants and Catholics?",
+                    "answer": "It tells the history honestly, including the harm Christians did to one another in that age, and listens to praying believers on every side. Where churches still differ, it describes their practice simply and keeps its focus on what every believer can learn about prayer.",
+                },
+                {
+                    "question": "Can I read it with a small group?",
+                    "answer": "Yes. One chapter a day takes seventeen days on your own, and with a group one or two chapters a week works well. The questions at the end of every chapter are written to start a conversation.",
+                },
+                {
+                    "question": "Which Bible translation does it use?",
+                    "answer": "Every Scripture is quoted from the Open Word Bible (OWB), Balanced edition, a new translation from the Hebrew and Greek that is dedicated to the public domain.",
+                },
+            ],
+        },
+    },
 }
 
 

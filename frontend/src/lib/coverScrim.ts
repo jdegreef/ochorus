@@ -12,6 +12,7 @@
 export const COVER_SCRIM: Record<string, number> = {
 	'a-brand-plucked-from-the-fire': 0.75,
 	'a-hidden-fire': 0.75,
+	'a-mighty-fortress': 0.60,
 	'a-practical-view-of-christianity': 0.50,
 	'a-retrospect-children': 0.15,
 	'a-retrospect-teens': 0.15,

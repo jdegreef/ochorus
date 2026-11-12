@@ -12,6 +12,7 @@ every entry; `coverLift.test.ts` holds `frontend/src/lib/coverLift.ts` to it.
 ART_LIFT: dict[str, float] = {
     "a-brand-plucked-from-the-fire": 1.05,
     "a-hidden-fire": 1.45,
+    "a-mighty-fortress": 1.35,
     "a-short-and-easy-method-of-prayer": 1.30,
     "absolute-surrender-teens": 1.45,
     "against-marcion": 1.25,
