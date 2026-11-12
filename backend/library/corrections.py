@@ -3248,6 +3248,19 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("positively, “yes, “or” no, &#x27; &#x27; to the question", "positively, “yes” or “no” to the question"),
         ],
     },
+    "the-fundamental-doctrines-of-the-christian-faith": {
+        # Another Torrey book. OCR slip found while translating it to Korean
+        # (#7664): chapter 2 cites "the same Spirit", "diversities of gifts",
+        # "diversities of ministrations", "diversities of workings" as
+        # "1 Cor. 12:406 R. V.". Those three clauses are 1 Corinthians
+        # 12:4-6, so the hyphen was read as a zero. The pair is numeric only, so
+        # it also matches the translations, where the book name is localized and
+        # the digits are not. The es/fr/am editions already print 12:4-6; pt
+        # and lg still carry 12:406.
+        "replacements": [
+            ("12:406", "12:4-6"),
+        ],
+    },
     "rest": {
         # Two OCR slips in Moody's "Rest" (Gutenberg #33015), each found
         # independently by the Swahili AND Luganda translators, and each with a
