@@ -123,5 +123,20 @@
     "note": [
       "Queue batch 5: necessity-of-prayer.uk completes the plan's uk sources (power-through-prayer.uk, purpose-in-prayer.uk shipped). Баундс is the commoner uk spelling (53× vs Баундз 28×). AI-drafted."
     ]
+  },
+  "the-pilgrims-way": {
+    "title": "Дорога пілігрима",
+    "description": "Дорога додому в трьох класичних книжках. Чарльз Сперджен зустрічає шукача біля Тісної брами, безсмертна алегорія Джона Беньяна веде пілігрима аж до Небесного Міста, а власне свідчення Беньяна показує благодать, що рясно зійшла на першого з грішників.",
+    "note": [
+      "Book titles as shipped: «Біля Тісної Брами» (around-the-wicket-gate.uk), «Мандрівка пілігрима» (pilgrims-progress.uk), «Рясна благодать першому з грішників» (grace-abounding.uk, added in this PR, job #7621). The description echoes them (Тісна брама / пілігрим / Небесне Місто / перший із грішників).",
+      "grace-abounding.uk completes the plan's three-book set in Ukrainian, so seed_plans creates the (the-pilgrims-way, uk) row on the deploy that ships it — this prose must land in the SAME PR."
+    ]
+  },
+  "the-puritan-heart": {
+    "title": "Пуританське серце",
+    "description": "Вісім тижнів із трьома майстрами внутрішнього життя. Річард Сіббс перев’язує надламану тростину, Джон Овен веде війну з гріхом, що досі живе всередині, а Томас Ватсон спирає всю боротьбу на обітницю, що все допомагає до доброго.",
+    "note": [
+      "Job #7626 (book:mortification-of-sin -> uk) wrote this: mortification-of-sin is one of the plan's three source books, so the plan prose ships with it. all-things-for-good.uk («Усе на добро») has shipped; the plan row will not appear in uk until the-bruised-reed.uk also ships, and that job should keep or deliberately revise this wording. «усе допомагає до доброго» is Kulish Rom 8:28 as all-things-for-good.uk quotes it (9×); Ватсон is that edition's spelling; Овен matches «Про умертвіння гріха у віруючих». AI-drafted."
+    ]
   }
 }

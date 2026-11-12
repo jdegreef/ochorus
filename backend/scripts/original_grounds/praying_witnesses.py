@@ -42,6 +42,11 @@ monks of the fourth century went out to pray: the sun just clear of the far
 dunes, a flat-topped mountain in silhouette like Antony's, and on the near
 ground, low left, a domed mud-brick cell with a small cross and a lit doorway,
 a palm beside it (Hosea 2:14).
+
+Vol. 5: Seven Times a Day. A clear morning over the hills: the sun risen low
+on the left, and on the near ridge, low right, a monastery church with its bell
+tower and cross, a cloister wall and two cypresses, its windows lit for the
+morning office (Psalm 119:164).
 """
 import pathlib
 import random
@@ -214,11 +219,49 @@ VOL4 = f'''<!doctype html><html><body style="margin:0;background:#000">
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
+VOL5 = f'''<!doctype html><html><body style="margin:0;background:#000">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#10203f"/><stop offset=".32" stop-color="#1f3561"/>
+  <stop offset=".48" stop-color="#4a5a82"/><stop offset=".56" stop-color="#a08470"/>
+  <stop offset=".61" stop-color="#dcae6e"/><stop offset="1" stop-color="#dcae6e"/>
+ </linearGradient>
+ <radialGradient id="sun" cx="150" cy="478" r="210" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fff0c4" stop-opacity=".95"/>
+  <stop offset=".2" stop-color="#f4bd72" stop-opacity=".5"/>
+  <stop offset="1" stop-color="#dcae6e" stop-opacity="0"/>
+ </radialGradient>
+ {GRAIN}
+</defs>
+<rect width="600" height="800" fill="url(#sky)"/>
+<rect width="600" height="800" fill="url(#sun)"/>
+<circle cx="150" cy="474" r="19" fill="#fff6dc" opacity=".95"/>
+{ridge([(0, 490), (90, 486), (180, 491), (270, 484), (360, 488), (470, 482), (600, 487)], "#6e5a64")}
+{ridge([(0, 500), (80, 497), (170, 500), (260, 496), (330, 490), (400, 484), (470, 482), (540, 488), (600, 492)], "#2e2633")}
+<g fill="#0b0a10">
+ <path d="M0 800 L0 508 L90 505 L200 508 L300 507 L360 504 L420 502 L520 502 L600 504 L600 800 Z"/>
+ <rect x="404" y="490" width="84" height="13"/>
+ <path d="M400 492 L446 476 L492 492 Z"/>
+ <rect x="468" y="472" width="14" height="22"/>
+ <path d="M466 474 L475 465 L484 474 Z"/>
+ <rect x="474" y="456" width="2" height="10"/><rect x="471" y="459" width="8" height="2"/>
+ <rect x="378" y="494" width="28" height="9"/><rect x="486" y="494" width="32" height="9"/>
+ <path d="M352 505 C349 494 350 482 354 471 C358 482 359 494 356 505 Z"/>
+ <path d="M532 503 C529 492 530 480 534 470 C538 480 539 492 536 503 Z"/>
+</g>
+<rect x="473" y="478" width="4" height="6" fill="#f2b66a" opacity=".8"/>
+<rect x="422" y="494" width="4" height="5" fill="#f2b66a" opacity=".6"/>
+<rect x="440" y="494" width="4" height="5" fill="#f2b66a" opacity=".6"/>
+<rect width="600" height="800" fill="url(#grain)"/>
+</svg></body></html>'''
+
 SCENES = {
     "the-prayers-jesus-learned": VOL1,
     "jesus-teacher-of-prayer": VOL2,
     "devoted-to-prayer": VOL3,
     "faithful-unto-death": VOL4,
+    "seven-times-a-day": VOL5,
 }
 
 if __name__ == "__main__":

@@ -155,5 +155,21 @@
   "note": [
    "Queue batch 5: first-epistle-of-clement.ko completes the plan's three ko sources (epistles-of-ignatius.ko, on-the-incarnation.ko already shipped). Book title quoted as shipped (『성육신에 관하여』); names follow the ko editions (클레멘스, 이그나티우스, 아타나시우스). AI-drafted, ai_unreviewed in spirit."
   ]
+ },
+ "cheque-book-year": {
+  "title": "『믿음 은행의 수표책』과 함께하는 한 해",
+  "description": "찰스 스펄전이 날마다 전하는 약속: 한 해의 하루하루에 하나님의 약속 하나씩, 그 약속을 믿음으로 받는 법에 관한 짧은 말씀과 함께. 어느 날에 시작하셔도 됩니다. 첫째 날은 1월 1일의 말씀이고, 그다음 날마다 이어지는 말씀을 읽습니다. 하루 1~2분.",
+  "note": [
+   "Daily plan backed by the ko edition of cheque-book (queue job #7015, the edition's title 『믿음 은행의 수표책』, quoted on the card). Ships in the same PR as the book so seed_plans does not publish an English-titled card in Korean.",
+   "“1월 1일” is the edition's own date-marker form (M월 D일)."
+  ]
+ },
+ "deeper-life-in-christ": {
+  "title": "더 깊은 삶: 너희 안에 계신 그리스도",
+  "description": "더 많은 애씀이 아니라 한 인격이십니다. 더 깊은 삶의 비결은 우리 안에 사시는 그리스도 자신입니다. 앤드류 머레이는 『예수님 자신』의 경이로 시작하여 『내주하시는 주님』에서 그리스도께서 내주하시는 삶을 펼쳐 보이고, 허드슨 테일러가 『연합과 교제』에서 사랑하는 분과 누리는 연합과 교제의 안식으로 마무리합니다.",
+  "note": [
+   "Written with the-masters-indwelling.ko (queue job #7009), the plan's second source book in Korean. Book titles are quoted as shipped or already coined: 『예수님 자신』 (jesus-himself-2.ko), 『내주하시는 주님』 (this job), 『연합과 교제』 (the title a-retrospect.ko and the ko Hudson Taylor FAQ already use). '너희 안에 계신 그리스도' is Colossians 1:27 in the 개역; names follow the ko shelf (앤드류 머레이, 허드슨 테일러).",
+   "NOTE this row cannot appear yet: seed_plans only creates a plan in a language where EVERY source book is published in it, and union-and-communion has no ko edition. The prose waits for that book, as the sw entry did."
+  ]
  }
 }

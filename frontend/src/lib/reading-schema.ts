@@ -58,6 +58,10 @@ export const SESSION_KEY = 'ochorus:reading-session';
 // of this one outside the sign-out wipe. It says what someone is reading, so
 // it is wiped on sign-out with the rest.
 export const RESUME_BOOKS_KEY = 'ochorus:resume-books';
+// The reader's "Whose words?" results, by local date (see $lib/quoteGame).
+// Device-local, never synced, like the pace — but it says what someone has
+// played and guessed, so it is wiped on sign-out with the rest.
+export const QUOTE_GAME_KEY = 'ochorus:whose-words';
 // Legacy device-local sermon stores, folded into MARKS_KEY / ANCHOR_KEY under
 // `sermon:`-prefixed keys when sermons joined the synced reading layer
 // (roadmap #10). Kept only so the one-time migrations and the sign-out wipe
@@ -100,6 +104,7 @@ export const READING_DATA_KEYS = [
 	PACE_KEY,
 	SESSION_KEY,
 	RESUME_BOOKS_KEY,
+	QUOTE_GAME_KEY,
 	LEGACY_SERMON_MARKS_KEY,
 	LEGACY_SERMON_ANCHOR_KEY,
 	SYNC_OWED_KEY

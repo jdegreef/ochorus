@@ -1,0 +1,397 @@
+{
+ "kind": "book",
+ "slug": "orthodoxy",
+ "language": "hi",
+ "job_issue": 7540,
+ "pull_request": null,
+ "note": [
+  "Scripture source: the Indian Revised Version (IRV Hindi, CC BY-SA 4.0, Bridge Connectivity Solutions) — the Bible language_seed.py records for hi — fetched as USX from the ebible mirror (gracious-tech/fetch_collection, bibles/hin_irv/usx), all 66 books / 31,104 verses, with section-heading paras, notes and trailing editorial cross-references stripped. Every span marked mined was lifted from that text with a script, never typed.",
+  "Chesterton quotes the KJV almost always without citing it, and mostly bends it into his own sentence (parody, re-personing, a phrase inside an argument). So most rows are self_rendered: the translator spliced IRV fragments where they fit and adjusted the grammar around them, which makes the sentence ours, not the Bible's. A row is mined only when the translator reported the quotation verbatim AND a run of 12+ characters of that IRV verse is a byte substring of the block. Unquoted echoes and bare names (the New Jerusalem, Armageddon, 'the image of God', camel and needle) are prose and are not recorded. block_index is per chapter (</p>|</li>|</blockquote>|</h*> split); chapter_order names the chapter.",
+  "Editorial items for the reviewer: Acts 26:28 is self-rendered on purpose — the IRV turns Agrippa's line into a question and loses the 'almost' Chesterton's joke rests on. Isaiah 11:6 is the popular misquote 'the lion shall lie down with the lamb', which the IRV verse does not contain; it is rendered as Chesterton wrote it. Song of Songs 6:10: Chesterton swaps the sun and the moon; mirrored. Ezekiel 1:22 keeps 'crystal' as स्फटिक where the IRV has बर्फ, because the paragraph is about glass. Luke 10:27 supplies the IRV wording for 'Thou shalt love the Lord thy God' (Matthew 22:37's IRV wording does not fit the sentence)."
+ ],
+ "references": [
+  {
+   "reference": "Mark 9:43",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 15,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Hebrews 11:38",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 19:14",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalms 85:10",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 19:24",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 19:23",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 27,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Luke 1:52",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ezekiel 1:22",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Matthew 4:2",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalms 121:1",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Job 3:16",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 10,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Song of Songs 6:10",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Genesis 49:26",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalms 104:21",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 20:15",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 13,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 5:39",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 15,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 17:33",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 18:4",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ecclesiastes 3:19",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 22,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 1:28",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 11:6",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Revelation 9:1",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 19:40",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 21:2",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 85:10",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 14:4",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalms 146:3",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Luke 14:10",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 30,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 21:2",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 13:34",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Revelation 20:2",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Mark 8:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 19:23",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 18,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 20,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Genesis 2:18",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 4:7",
+   "status": "mined",
+   "source_file": "IRV (irvhin) Bible text",
+   "block_index": 25,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 1:53",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 15:31",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Ecclesiastes 12:13",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 19:41",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 2:15",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 23:33",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 14:23",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 10
+  }
+ ]
+}

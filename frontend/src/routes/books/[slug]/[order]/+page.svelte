@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
+	import { markVerse } from '$lib/verse';
 	import { chapterMeta } from '$lib/bookSeo';
 	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
@@ -2252,7 +2253,7 @@
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(chapter.body_html)}</div>
+		<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(chapter.body_html))}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an

@@ -52,9 +52,9 @@ import { hubLanguages } from '$lib/audienceHubData';
  * disagrees with itself, rotated per deploy rather than per calendar day.
  */
 export interface HomeShelves {
-	/** The logged-out hero's fan of covers (`HomeIntro`): five — the curated
-	 *  `HERO_SLUGS` this language has, filled from its other painted books — or,
-	 *  in a language with fewer, at most three (`CoverStrip`'s deck). */
+	/** The logged-out hero's covers (`HomeIntro`): three — the curated
+	 *  `HERO_SLUGS` this language has, filled from its other painted books
+	 *  (`CoverStrip`'s spread; fewer to be had → the deck). */
 	hero: CoverFace[];
 	/** The signed-in dashboard's Discover shelf (it has no hero). */
 	featured: CoverBook[];
@@ -84,13 +84,7 @@ const AUTHOR_LIMIT = 8;
  * language without one of them fills its place from its own painted books
  * (different authors first), so every locale's hero has a full fan.
  */
-export const HERO_SLUGS = [
-	'the-pursuit-of-god',
-	'confessions',
-	'pilgrims-progress',
-	'the-inner-chamber',
-	'the-imitation-of-christ'
-] as const;
+export const HERO_SLUGS = ['confessions', 'pilgrims-progress', 'the-imitation-of-christ'] as const;
 const HERO_COUNT = HERO_SLUGS.length;
 
 /**
@@ -182,11 +176,10 @@ export function deriveHomeShelves(
 	};
 }
 
-/** The hero's five: the curated classics this language has, in their places,
+/** The hero's three: the curated classics this language has, in their places,
  *  each missing one filled by another painted full-text book (never a
  *  young-reader edition) — by an author the fan does not have yet where it
- *  can. Fewer than five to be had → the first three (the deck), so the
- *  snapshot holds exactly what the hero shows. */
+ *  can. The snapshot holds exactly what the hero shows. */
 function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
 	const bySlug = new Map(painted.map((b) => [b.slug, b]));
 	const curated = HERO_SLUGS.map((slug) => bySlug.get(slug));
@@ -198,8 +191,7 @@ function heroBooks(painted: BookSummary[], day: number): BookSummary[] {
 		(b) => b.author.slug,
 		have.map((b) => b.author.slug)
 	);
-	const five = curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
-	return five.length === HERO_COUNT ? five : five.slice(0, 3);
+	return curated.map((b) => b ?? fill.shift()).filter((b): b is BookSummary => !!b);
 }
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */

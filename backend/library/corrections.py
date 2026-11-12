@@ -5609,6 +5609,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
                 "the intruding agency » f:My brother",
                 "the intruding agency. My brother",
             ),
+            # Two century slips (found translating vi, #7030): Susanna died in
+            # 1742, the manuscript in ch9 is dated 1711-12 in the same
+            # paragraph, and ch11's letters about the noises are dated 1716-17.
+            # The am/ar/es/fr/uk editions already read 1711/1712 and 1716; en,
+            # lg, pt and sw carried the slip. Anchored on the bare digits so the
+            # pairs match in every language (nothing else in the book reads
+            # " 1811 ", " 1812." or " 1816,").
+            (" 1811 ", " 1711 "),
+            (" 1812.", " 1712."),
+            (" 1816,", " 1716,"),
         ],
     },
     "the-person-and-work-of-the-holy-spirit": {
@@ -7536,6 +7546,37 @@ BODY_CORRECTIONS: dict[str, dict] = {
         #
         # Each seam carries the tail of the preceding sentence, so it matches
         # its one site and nowhere else in the book.
+        # Word-level OCR slips the uk translation (#7037) read through, each with
+        # one possible reading, which the uk edition already renders. Every seam
+        # carries enough context to match its one site. Punctuation losses (the
+        # dozens of dropped "?" and mismatched quote marks) are NOT repaired here —
+        # they are listed on the PR for a dedicated pass.
+        "replacements": [
+            ("<p>To my bretheren and dearly-beloved", "<p>To my reverend and dearly-beloved"),
+            ("in Jesus Christ be increase </p>", "in Jesus Christ be increased </p>"),
+            ("further means to he used.", "further means to be used."),
+            ("if he be not mused to greater", "if he be not roused to greater"),
+            ("?’ Brethen, if the saving", "?’ Brethren, if the saving"),
+            ("taken heed to all the Rock:", "taken heed to all the flock:"),
+            ("greater necessity to do or them,", "greater necessity to do for them,"),
+            ("our Master’s will by no aggravation", "our Master’s will be no aggravation"),
+            ("judge of the a affection of him", "judge of the affection of him"),
+            ("therefore, keep dose to the ancient", "therefore, keep close to the ancient"),
+            ("consideration of he blessed nature", "consideration of the blessed nature"),
+            ("if not unfaithulness in the work", "if not unfaithfulness in the work"),
+            ("did speak to us as well others.", "did speak to us as well as others."),
+            ("parliament began, bow frequent", "parliament began, how frequent"),
+            ("seem uncourteous courteous and morose", "seem uncourteous and morose"),
+            ("For if you we’re a Christian", "For if you were a Christian"),
+            # Four more the ar translation (#7063) read through, same standard.
+            ("If it be no, then", "If it be not, then"),
+            ("To this answer, ‘Is it necessity", "To this I answer, ‘Is it necessity"),
+            ("your flesh and family, then undertake", "your flesh and family, than undertake"),
+            ("and had rather than his carnal hearers", "and had rather that his carnal hearers"),
+            # Two more the vi translation (#7079) read through, same standard.
+            ("alleged more than all his against the duty", "alleged more than all this against the duty"),
+            ("<p>Your unworthy fellow -servant</p>", "<p>Your unworthy fellow-servant</p>"),
+        ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
             ("will not do so small a matter to attain it.", "It is a palpable error"),
@@ -8209,6 +8250,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
     ("एक सुखद साधन सिद्ध हो! <i>आमीन।</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("kw’eddiini entuufu! <i>Amiina.</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
+    ("істинної релігії! <i>Амінь.</i></p>",
      "<p>The frequent dated quotations from Brainerd’s diaries"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
@@ -11727,6 +11770,26 @@ BODY_CORRECTIONS.setdefault("plain-account-christian-perfection", {}).setdefault
     ("(Mateo 12:37.)", "(Mateo 22:37.)"),
     # [am] citation follows EN fix
     ("(ማቴዎስ 12:37።)", "(ማቴዎስ 22:37።)"),
+])
+
+# Found while translating to Swahili (#6895, 2026-11-11): OCR slips in the
+# English only (none reached the es/fr/lg/am/sw editions). Period punctuation
+# (Wesley's semicolons, emphatic capitals) is left as printed.
+BODY_CORRECTIONS.setdefault("plain-account-christian-perfection", {}).setdefault("replacements", []).extend([
+    # [en] stray capital
+    ("how can we be Said to be", "how can we be said to be"),
+    # [en] stray capital
+    ("desires of those Who are justified", "desires of those who are justified"),
+    # [en] stray capital
+    ("crying in their Inmost soul", "crying in their inmost soul"),
+    # [en] line-break hyphen left in
+    ("If, there-fore, such a one", "If, therefore, such a one"),
+    # [en] stray comma
+    ("I have no sin to be cleansed, from.", "I have no sin to be cleansed from."),
+    # [en] dropped comma in a three-item list
+    ("the health strength, and vigour", "the health, strength, and vigour"),
+    # [en] article typo
+    ("who seek a entire circumcision", "who seek an entire circumcision"),
 ])
 
 # Found while translating to French (2026-10-14): Selected Sermons of George
@@ -19536,6 +19599,8 @@ BODY_CORRECTIONS.setdefault("ever-increasing-faith", {}).setdefault("replacement
     ("if yoq, will but", "if you will but"),
     ("God's hands", "God’s hands"),
     ("the Lord that 1 would", "the Lord that I would"),
+    # Found translating to Hindi (job #7547): the same 1-for-I scanner slip.
+    ("After 1 had received the Baptism", "After I had received the Baptism"),
     ("cabin and sa:d,", "cabin and said,"),
     ("Right there lie opened", "Right there he opened"),
     ("compassion ior his", "compassion for his"),
@@ -24567,4 +24632,153 @@ BODY_CORRECTIONS.setdefault("first-epistle-of-clement", {}).setdefault("replacem
 # OCR slip: "whom even themselves hold to be gods".
 BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
     ('whom even themselves bold to be gods', 'whom even themselves hold to be gods'),
+])
+
+# OCR slips found while translating Watson's book to Ukrainian (job #7608). Each has one
+# reading, forced by the verse quoted or by grammar: Eph 6:16 is the shield of faith; the
+# moon-in-the-water image needs the firmament; Matt 6:26 reads "not". Left as found (not
+# unambiguous): "intemperate hearts" (heats?), "he get no heat", Watson's own citation
+# ranges (2 Chron. xxxiii. 11, 12 for vv. 12-13; Job vii. 17 for vv. 17-18).
+BODY_CORRECTIONS.setdefault("all-things-for-good", {}).setdefault("replacements", []).extend([
+    ("displays the skill of faith", "displays the shield of faith"),
+    ("And now be grows more modest", "And now he grows more modest"),
+    ("loves me became I am king Alexander", "loves me because I am king Alexander"),
+    ("Are ye nor much better than they", "Are ye not much better than they"),
+    ("condition is fused and unalterable", "condition is fixed and unalterable"),
+    ("look up to the Ornament", "look up to the firmament"),
+    ("God wilt make it cost you dear", "God will make it cost you dear"),
+    ("fall in to any scandalous enormity", "fall into any scandalous enormity"),
+    ("going to execution . sin is the halter", "going to execution: sin is the halter"),
+])
+# Wrong book in a headline reference (found translating cheque-book → ko, #7015):
+# the April 19 promise "I, even I, will both search my sheep, and seek them out"
+# is Ezekiel 34:11, not Exodus (Exodus 34:11 is the covenant warning).
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ('seek them out" Exod. 34:11', 'seek them out" Ezek. 34:11'),
+])
+# English slips logged by the ko translators (#7015, list on PR #7686) — only the
+# unambiguous ones: OCR damage, plain typos, KJV wording the text itself quotes,
+# and quotations whose missing mark has one place to go. Spurgeon's own loose
+# quotations ("Surely God was in this place", "lying lip", "like Dan"), and the
+# hymn quotes whose close is a guess, are left as printed.
+BODY_CORRECTIONS.setdefault("cheque-book", {}).setdefault("replacements", []).extend([
+    ("Our bodies humble u5;", "Our bodies humble us;"),
+    ("thou shalt not be for gotten of me", "thou shalt not be forgotten of me"),
+    ("DESIRES OF RlGHTEOUS GRANTED", "DESIRES OF RIGHTEOUS GRANTED"),
+    ("PRESERVED TO WORKS END", "PRESERVED TO WORK'S END"),
+    ("He who forseeth evil", "He who foreseeth evil"),
+    ("Pharoah has a people", "Pharaoh has a people"),
+    ("renew their hears by His grace", "renew their hearts by His grace"),
+    ("thou are not bound to cry", "thou art not bound to cry"),
+    ("O Lord, thou has taken me down", "O Lord, thou hast taken me down"),
+    ("Born. This an equally sure way", "Born. This is an equally sure way"),
+    ("and this most desirable;", "and this is most desirable;"),
+    ("neither be barren nor fruitful", "neither be barren nor unfruitful"),  # KJV 2 Pet 1:8
+    ("there is a troubled grace;", "there is a treble grace;"),  # three graces follow
+    ("In seven there shall be no evil touch thee", "In seven there shall no evil touch thee"),  # KJV Job 5:19
+    ("those that seek me early shalt find me", "those that seek me early shall find me"),  # KJV Prov 8:17
+    ("but Only Moses and Aaron", "but only Moses and Aaron"),
+    ("It is a great Joy to me", "It is a great joy to me"),
+    ("wishes at Jesus feet!", "wishes at Jesus' feet!"),
+    ("bless it, for Jesus sake.", "bless it, for Jesus' sake."),
+    ("Bless thy servants house.", "Bless thy servant's house."),
+    # citations
+    ('taken" Prov. 3: 25,26 </p>', 'taken" Prov. 3:25,26 </p>'),
+    ('in the earth" Ps 58:11</p>', 'in the earth" Ps. 58:11</p>'),
+    # quotation marks with one place to go
+    ("helpeth our infirmities ; our expectation", 'helpeth our infirmities"; our expectation'),
+    ('certainty say, My God will hear me."', 'certainty say, "My God will hear me."'),
+    ('us; but to all men" — to all whom', 'us; but "to all men" — to all whom'),
+    ('but as "small and great. </p>', 'but as "small and great." </p>'),
+    ("at once- 'When he looketh upon it", 'at once — "When he looketh upon it'),
+    ('"the earth helped the woman. </p>', '"the earth helped the woman." </p>'),
+    ("forgives us ''all that debt.'' </p>", 'forgives us "all that debt." </p>'),
+    ("to come: all are yours.''", 'to come: all are yours."'),
+    ("nor forsake thee.'' </p>", 'nor forsake thee." </p>'),
+    ('the "forty stripes save one, which ensured', 'the "forty stripes save one," which ensured'),
+    ("saith the Lord' Jer. 15:20</p>", 'saith the Lord" Jer. 15:20</p>'),
+    ('direction! "Look unto me. How reasonable', 'direction! "Look unto me." How reasonable'),
+    ("arm could perform such a wonder; 'into the depths", 'arm could perform such a wonder; "into the depths'),
+    ("he shall serve me Ps. 101:6</p>", 'he shall serve me" Ps. 101:6</p>'),
+    ("neither shall they learn war any more Isa. 2:4</p>", 'neither shall they learn war any more" Isa. 2:4</p>'),
+    ("and he will bind us up Hosea 6:1</p>", 'and he will bind us up" Hosea 6:1</p>'),
+    ("because he hath known my name Ps. 91:14</p>", 'because he hath known my name" Ps. 91:14</p>'),
+])
+
+# spurgeon-on-prayer: English-source slips logged by the vi translation (#7078,
+# PR #7727). Each is an unambiguous OCR or typesetting slip; readings the
+# translators could only guess at ("royal social worker", "pleading before the
+# Truth of God", "shall have irrespective of character") and Spurgeon's own slips
+# (Daniel's "seven times", Solomon's feast) are left as printed.
+BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements", []).extend([
+    ("covenant, not alter the word", "covenant, nor alter the word"),
+    ("ho hallelujahs", "no hallelujahs"),
+    ("Did your ever notice", "Did you ever notice"),
+    ("He steers for which he thinks", "He steers for what he thinks"),
+    ("ship is well-near wrecked", "ship is well-nigh wrecked"),
+    ("ofyourself", "of yourself"),
+    ("with honey out the rock", "with honey out of the rock"),
+    ("by mourning and complaining", "by murmuring and complaining"),
+    ("may he judged and condemned", "may be judged and condemned"),
+    ("in the town were she lived", "in the town where she lived"),
+    ("supposing she must; have lost", "supposing she must have lost"),
+    ("as much time as be should", "as much time as he should"),
+    ("so much time for pray on ordinary days", "so much time for prayer on ordinary days"),
+    ("without God you cannot; prosper", "without God you cannot prosper"),
+    ("he gives us moor?", "he gives us more?"),
+    ("until the-last moment", "until the last moment"),
+    ("Through all hours are alike to me", "Though all hours are alike to me"),
+    ("Give me than your attention", "Give me then your attention"),
+    ("qualification of pray is", "qualification of prayer is"),
+    ("a blessed thing to allowed to draw near", "a blessed thing to be allowed to draw near"),
+    ("when they came before. king George", "when they came before King George"),
+    ("as invariable and influence", "as invariable an influence"),
+    ("not what it: should be", "not what it should be"),
+    ("a fancy of fiction", "a fancy or fiction"),
+    ("that l cannot obey", "that I cannot obey"),
+    ("three minutes prayer like that, that thirty minutes", "three minutes prayer like that, than thirty minutes"),
+    ("the ophir of your own", "the Ophir of your own"),
+    ("the wall mighty cry out", "the wall might cry out"),
+    ("in your prayers that heretofore", "in your prayers than heretofore"),
+    ("the servants of the louse", "the servants of the house"),
+    ("There is always already hand", "There is always a ready hand"),
+    ("no loner as a romantic fiction", "no longer as a romantic fiction"),
+    ("would be renumerative", "would be remunerative"),
+    ("a mightier power that ever was wielded", "a mightier power than ever was wielded"),
+    ("1 throw down the gauntlet", "I throw down the gauntlet"),
+    ("deserve to he pardoned", "deserve to be pardoned"),
+    ("to he ashamed or confounded", "to be ashamed or confounded"),
+    ("a lie in they right hand", "a lie in thy right hand"),
+    ("worthless on they lip", "worthless on thy lip"),
+    ("duty of INTERCESSORY FOR THE PEOPLE", "duty of INTERCESSION FOR THE PEOPLE"),
+    ("Our Father which are in Heaven", "Our Father which art in Heaven"),
+    ("better that gold and silver", "better than gold and silver"),
+    ("the golden censor", "the golden censer"),
+    ("If there are no other who needs", "If there are no others who need"),
+    ("We cannot chance his heart", "We cannot change his heart"),
+    ("Pit follow then", "Pit follow them"),
+    ("helping together byprayer", "helping together by prayer"),
+    ("a censor full of frankincense", "a censer full of frankincense"),
+    ("our bounded duty", "our bounden duty"),
+    ("made kno wn unto God", "made known unto God"),
+    ("the beasthis food", "the beast his food"),
+    # ch2 "The Throne of Grace": the first head is misnumbered "II." (II, II,
+    # III, IV) in the print and in every edition; renumbered per language.
+    ("<p>II. Our text speaks of A ", "<p>I. Our text speaks of A "),  # en
+    ("<p>II. Nuestro texto habla d", "<p>I. Nuestro texto habla d"),  # es
+    ("<p>II. Notre texte parle d’U", "<p>I. Notre texte parle d’U"),  # fr
+    ("<p>II. हमारा पाठ एक सिंहासन ", "<p>I. हमारा पाठ एक सिंहासन "),  # hi
+    ("<p>II. 본문은 보좌를 말합니다. 곧 “은혜의 ", "<p>I. 본문은 보좌를 말합니다. 곧 “은혜의 "),  # ko
+    ("<p>II. Ekyawandiikibwa kyaff", "<p>I. Ekyawandiikibwa kyaff"),  # lg
+    ("<p>II. O nosso texto fala de", "<p>I. O nosso texto fala de"),  # pt
+    ("<p>II. Maandiko yetu yanena ", "<p>I. Maandiko yetu yanena "),  # sw
+    ("<p>II. Наш текст говорить пр", "<p>I. Наш текст говорить пр"),  # uk
+    ("<p>II. Câu Kinh Thánh của ch", "<p>I. Câu Kinh Thánh của ch"),  # vi
+])
+
+# Found translating The Reformed Pastor to Luganda (job #7072). The uk job (#7037)
+# already repairs the other word-level slips in this book's own "replacements" above;
+# this is the one it left: a stray space inside the signature's hyphenated word.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
 ])

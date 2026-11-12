@@ -1,0 +1,3328 @@
+{
+ "kind": "book",
+ "slug": "christ-the-healer",
+ "language": "fr",
+ "job_issue": 7088,
+ "pull_request": 7693,
+ "note": [
+  "Scripture is Louis Segond 1910 (fra_lsg), fetched whole from the ebible mirror (raw.githubusercontent.com, gracious-tech/fetch_collection, bibles/fra_lsg/usfm; Take Root is egress-blocked). Translators quoted it through a lookup over all 66 books, and a row is mined only when every quoted run (split at …) is a verbatim substring of that verse in the mirror, compared case- and punctuation-insensitively; Psalms and Jonah were checked at Segond's +1 verse numbering where it differs from the KJV the English cites. 4 claimed-mined rows failed that check and ship self_rendered.",
+  "412 of 585 rows mined; self_rendered rows are Young's, Leeser's, Rotherham's, Weymouth's and Moffatt's renderings that Bosworth quotes (translated from his English, attributions kept), his paraphrases and insertions, person shifts, bare citations, and verses where Segond does not carry his argument from the KJV wording.",
+  "Judgement calls a reviewer should check: 2 Chroniques 30:20 is rendered « il guérit le peuple » (KJV healed) where Segond says « il pardonna au peuple »; Psaume 86:5 is « plein de miséricorde » where Bosworth argues from 'mercy' (Segond: « plein d’amour »), quoted as Segond where the word is not his point; Ésaïe 53:4 names both the KJV words and Segond's « souffrances / douleurs » so his Hebrew argument reads against the French verse; « Il les guérit tous » is Bosworth's own refrain, not a single verse; Paul's 'buffet' runs on Segond's « souffleter ».",
+  "AI-translated (job #7088) in seven parallel chapters against one conventions brief, then reconciled: one form per term (expiation, rédemption, Jéhovah-Rapha, serpent d’airain, écharde dans la chair), « » quotation marks, reader addressed as vous. English slips are rendered as printed and listed in the PR."
+ ],
+ "references": [
+  {
+   "reference": "Romans 5:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 2
+  },
+  {
+   "reference": "Ephesians 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 3
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Chronicles 30:20",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 11:29",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 9
+  },
+  {
+   "reference": "Leviticus 25:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 103
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 13
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 4:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 17
+  },
+  {
+   "reference": "Joel 2:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 18
+  },
+  {
+   "reference": "1 Corinthians 15:26",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 19
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 8:16-17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 21
+  },
+  {
+   "reference": "Hebrews 8:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 22
+  },
+  {
+   "reference": "Numbers 16:48",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 23
+  },
+  {
+   "reference": "Numbers 21:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Job 33:24-25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalms 103:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 3:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Ephesians 2:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 28
+  },
+  {
+   "reference": "Ezekiel 48:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 34
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 34
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 35
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalms 23:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 36
+  },
+  {
+   "reference": "John 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 36
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Exodus 17:15",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 36
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 36
+  },
+  {
+   "reference": "Romans 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 36
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Exodus 15:25",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 8:16-17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 43
+  },
+  {
+   "reference": "Isaiah 53:3-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:3-10",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Leviticus 16:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 58
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 58
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 59
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 62
+  },
+  {
+   "reference": "Revelation 13:8",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Hebrews 9:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 66
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 72
+  },
+  {
+   "reference": "John 14:12-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 75
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Deuteronomy 28:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Deuteronomy 28:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Deuteronomy 28:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Deuteronomy 28:60",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Deuteronomy 28:61",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 78
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 80
+  },
+  {
+   "reference": "Romans 3:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 80
+  },
+  {
+   "reference": "Matthew 12:15",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 82
+  },
+  {
+   "reference": "1 Corinthians 15:45",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 83
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 87
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 88
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 91
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 92
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 92
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 93
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 94
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 102
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 103
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 104
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 106
+  },
+  {
+   "reference": "1 Corinthians 11:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 107
+  },
+  {
+   "reference": "1 Corinthians 11:23-24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 107
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 108
+  },
+  {
+   "reference": "John 1:12-13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "Mark 6:56",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 111
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 126
+  },
+  {
+   "reference": "Isaiah 53:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 127
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 128
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 128
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 128
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 133
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 133
+  },
+  {
+   "reference": "Exodus 23:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 135
+  },
+  {
+   "reference": "Exodus 23:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 135
+  },
+  {
+   "reference": "Psalms 90:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 135
+  },
+  {
+   "reference": "Psalms 102:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 135
+  },
+  {
+   "reference": "Ecclesiastes 7:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 136
+  },
+  {
+   "reference": "Psalms 104:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 138
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "self_rendered",
+   "block_index": 149
+  },
+  {
+   "reference": "Psalms 105:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 149
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 149
+  },
+  {
+   "reference": "Psalms 119:89",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 149
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 151
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 151
+  },
+  {
+   "reference": "Numbers 16:46-50",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 153
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 154
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 154
+  },
+  {
+   "reference": "Psalms 103:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 154
+  },
+  {
+   "reference": "Psalms 91:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "Psalms 91:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 155
+  },
+  {
+   "reference": "1 Peter 1:10",
+   "status": "self_rendered",
+   "block_index": 155
+  },
+  {
+   "reference": "Hebrews 11:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 158
+  },
+  {
+   "reference": "John 6:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "John 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "Luke 4:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 160
+  },
+  {
+   "reference": "Psalms 107:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 162
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 162
+  },
+  {
+   "reference": "Proverbs 4:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 162
+  },
+  {
+   "reference": "Luke 4:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "Matthew 8:16b-17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 165
+  },
+  {
+   "reference": "Matthew 4:23-25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 168
+  },
+  {
+   "reference": "Matthew 9:35-10:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 169
+  },
+  {
+   "reference": "Matthew 12:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 171
+  },
+  {
+   "reference": "Matthew 14:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 172
+  },
+  {
+   "reference": "Matthew 14:34-36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 173
+  },
+  {
+   "reference": "Luke 6:17-19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 174
+  },
+  {
+   "reference": "Mark 9:14-29",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 175
+  },
+  {
+   "reference": "Matthew 12:15-16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 178
+  },
+  {
+   "reference": "Acts 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 179
+  },
+  {
+   "reference": "John 16:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 180
+  },
+  {
+   "reference": "John 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 182
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "block_index": 182
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 186
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 189
+  },
+  {
+   "reference": "Acts 5:15-16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 189
+  },
+  {
+   "reference": "Acts 1:1",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "Ephesians 1:22-23",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 193
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 200
+  },
+  {
+   "reference": "John 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 200
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 202
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 203
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "self_rendered",
+   "block_index": 205
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 206
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 208
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 208
+  },
+  {
+   "reference": "James 5:16-18",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 210
+  },
+  {
+   "reference": "Luke 9:11",
+   "status": "self_rendered",
+   "block_index": 213
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 214
+  },
+  {
+   "reference": "Psalms 103:17",
+   "status": "self_rendered",
+   "block_index": 216
+  },
+  {
+   "reference": "Luke 1:50",
+   "status": "self_rendered",
+   "block_index": 216
+  },
+  {
+   "reference": "Leviticus 25:10",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 218
+  },
+  {
+   "reference": "Ephesians 1:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 220
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "self_rendered",
+   "block_index": 220
+  },
+  {
+   "reference": "John 15:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 220
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 220
+  },
+  {
+   "reference": "2 John 1:8",
+   "status": "self_rendered",
+   "block_index": 220
+  },
+  {
+   "reference": "1 Corinthians 11:31-32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 225
+  },
+  {
+   "reference": "1 Corinthians 11:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 225
+  },
+  {
+   "reference": "Psalms 25:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 225
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 12:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "Titus 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 227
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 14:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 229
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 231
+  },
+  {
+   "reference": "Psalms 145:8-9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 235
+  },
+  {
+   "reference": "Luke 9:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 236
+  },
+  {
+   "reference": "Acts 1:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 236
+  },
+  {
+   "reference": "John 16:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 236
+  },
+  {
+   "reference": "Hebrews 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 236
+  },
+  {
+   "reference": "Psalms 145:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 240
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 240
+  },
+  {
+   "reference": "Psalms 145:8a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 240
+  },
+  {
+   "reference": "Mark 1:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 243
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 244
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 244
+  },
+  {
+   "reference": "Acts 10:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 247
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "2 Chronicles 16:9a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Psalms 145:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 248
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Psalms 145:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 250
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 250
+  },
+  {
+   "reference": "Luke 10:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "1 Peter 1:12",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 103:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 103:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "2 Chronicles 6:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Psalms 25:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 251
+  },
+  {
+   "reference": "Mark 1:40-42",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 254
+  },
+  {
+   "reference": "Mark 1:45b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 254
+  },
+  {
+   "reference": "Matthew 14:13-14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 256
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "self_rendered",
+   "block_index": 257
+  },
+  {
+   "reference": "Matthew 20:29-34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 258
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 260
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "Job 42:10",
+   "status": "self_rendered",
+   "block_index": 261
+  },
+  {
+   "reference": "James 5:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "Matthew 20:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 261
+  },
+  {
+   "reference": "Mark 5:19-20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 262
+  },
+  {
+   "reference": "Matthew 15:30-31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 264
+  },
+  {
+   "reference": "Psalms 105:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 267
+  },
+  {
+   "reference": "Matthew 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 268
+  },
+  {
+   "reference": "Matthew 9:35-10:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 276
+  },
+  {
+   "reference": "Matthew 9:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 276
+  },
+  {
+   "reference": "Acts 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 277
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 277
+  },
+  {
+   "reference": "John 14:12-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "block_index": 279
+  },
+  {
+   "reference": "John 16:7",
+   "status": "self_rendered",
+   "block_index": 279
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 280
+  },
+  {
+   "reference": "John 16:13-14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 282
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "block_index": 282
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 282
+  },
+  {
+   "reference": "Revelation 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 283
+  },
+  {
+   "reference": "Hebrews 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 284
+  },
+  {
+   "reference": "Acts 1:1-2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 285
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 286
+  },
+  {
+   "reference": "Hebrews 10:34",
+   "status": "self_rendered",
+   "block_index": 286
+  },
+  {
+   "reference": "Hebrews 5:2",
+   "status": "self_rendered",
+   "block_index": 286
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 286
+  },
+  {
+   "reference": "Matthew 14:14",
+   "status": "self_rendered",
+   "block_index": 286
+  },
+  {
+   "reference": "Psalms 107:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 23:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 287
+  },
+  {
+   "reference": "Acts 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 288
+  },
+  {
+   "reference": "Luke 9:11",
+   "status": "self_rendered",
+   "block_index": 288
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 289
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Isaiah 50:7",
+   "status": "self_rendered",
+   "block_index": 292
+  },
+  {
+   "reference": "Matthew 26:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "Deuteronomy 7:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 292
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "self_rendered",
+   "block_index": 296
+  },
+  {
+   "reference": "Psalms 136:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 296
+  },
+  {
+   "reference": "Psalms 103:17",
+   "status": "self_rendered",
+   "block_index": 296
+  },
+  {
+   "reference": "James 5:11",
+   "status": "self_rendered",
+   "block_index": 296
+  },
+  {
+   "reference": "Psalms 145:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 296
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 296
+  },
+  {
+   "reference": "Exodus 23:25-26",
+   "status": "self_rendered",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 6:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 12:15",
+   "status": "self_rendered",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 304
+  },
+  {
+   "reference": "Psalms 107:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 306
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 307
+  },
+  {
+   "reference": "Proverbs 4:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 307
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 308
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "self_rendered",
+   "block_index": 300
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 312
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 313
+  },
+  {
+   "reference": "Psalms 23:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 314
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 316
+  },
+  {
+   "reference": "Exodus 17:15",
+   "status": "self_rendered",
+   "block_index": 317
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 318
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 319
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 319
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 320
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 320
+  },
+  {
+   "reference": "Romans 15:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 321
+  },
+  {
+   "reference": "Psalms 119:89",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 322
+  },
+  {
+   "reference": "1 Peter 1:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 322
+  },
+  {
+   "reference": "Romans 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 323
+  },
+  {
+   "reference": "Psalms 105:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 324
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 324
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered",
+   "block_index": 324
+  },
+  {
+   "reference": "James 5:15",
+   "status": "self_rendered",
+   "block_index": 324
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 326
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 327
+  },
+  {
+   "reference": "Mark 1:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 329
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 329
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 329
+  },
+  {
+   "reference": "Psalms 66:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 329
+  },
+  {
+   "reference": "1 John 3:21",
+   "status": "self_rendered",
+   "block_index": 330
+  },
+  {
+   "reference": "James 5:14",
+   "status": "self_rendered",
+   "block_index": 330
+  },
+  {
+   "reference": "Exodus 7:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 331
+  },
+  {
+   "reference": "Leviticus 8:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 334
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 334
+  },
+  {
+   "reference": "3 John 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 335
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 336
+  },
+  {
+   "reference": "Deuteronomy 28:47",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 337
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "block_index": 339
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 339
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 339
+  },
+  {
+   "reference": "Deuteronomy 7:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 339
+  },
+  {
+   "reference": "Proverbs 3:7-8",
+   "status": "self_rendered",
+   "block_index": 341
+  },
+  {
+   "reference": "Ephesians 6:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 342
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "self_rendered",
+   "block_index": 343
+  },
+  {
+   "reference": "Psalms 84:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "Matthew 22:38",
+   "status": "self_rendered",
+   "block_index": 343
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "Psalms 91:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "Deuteronomy 7:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 343
+  },
+  {
+   "reference": "Proverbs 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 344
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 345
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 345
+  },
+  {
+   "reference": "Proverbs 14:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 346
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 346
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 347
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 347
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 350
+  },
+  {
+   "reference": "Matthew 14:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 352
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 354
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 354
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 357
+  },
+  {
+   "reference": "John 16:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 357
+  },
+  {
+   "reference": "Hebrews 11:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 361
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 361
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 363
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 363
+  },
+  {
+   "reference": "1 Peter 1:25",
+   "status": "self_rendered",
+   "block_index": 364
+  },
+  {
+   "reference": "John 11:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 367
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 368
+  },
+  {
+   "reference": "Hebrews 11:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 371
+  },
+  {
+   "reference": "Hebrews 11:21-23",
+   "status": "self_rendered",
+   "block_index": 371
+  },
+  {
+   "reference": "Hebrews 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 371
+  },
+  {
+   "reference": "Hebrews 11:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jonah 2:8",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Jonah 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 374
+  },
+  {
+   "reference": "2 Corinthians 6:1",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "John 4:50",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "John 4:52",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 376
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 377
+  },
+  {
+   "reference": "1 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 377
+  },
+  {
+   "reference": "Mark 6:5",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 377
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "self_rendered",
+   "block_index": 379
+  },
+  {
+   "reference": "Psalms 119:89",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 379
+  },
+  {
+   "reference": "James 2:18",
+   "status": "self_rendered",
+   "block_index": 379
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 383
+  },
+  {
+   "reference": "Hebrews 9:26",
+   "status": "self_rendered",
+   "block_index": 384
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 384
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 384
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 384
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 384
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "self_rendered",
+   "block_index": 384
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 387
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 387
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered",
+   "block_index": 388
+  },
+  {
+   "reference": "John 11:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 389
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 391
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 391
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 392
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 394
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 396
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "self_rendered",
+   "block_index": 397
+  },
+  {
+   "reference": "James 2:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 397
+  },
+  {
+   "reference": "1 Thessalonians 1:3",
+   "status": "self_rendered",
+   "block_index": 399
+  },
+  {
+   "reference": "Luke 17:14",
+   "status": "self_rendered",
+   "block_index": 400
+  },
+  {
+   "reference": "Jonah 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 400
+  },
+  {
+   "reference": "Hebrews 13:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 400
+  },
+  {
+   "reference": "Psalms 50:14-15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 400
+  },
+  {
+   "reference": "Psalms 74:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 401
+  },
+  {
+   "reference": "Psalms 95:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 401
+  },
+  {
+   "reference": "Psalms 100:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 401
+  },
+  {
+   "reference": "Psalms 22:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 402
+  },
+  {
+   "reference": "Isaiah 60:18",
+   "status": "self_rendered",
+   "block_index": 402
+  },
+  {
+   "reference": "Joel 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 402
+  },
+  {
+   "reference": "Luke 24:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 402
+  },
+  {
+   "reference": "2 Chronicles 5:13",
+   "status": "self_rendered",
+   "block_index": 402
+  },
+  {
+   "reference": "2 Chronicles 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 402
+  },
+  {
+   "reference": "Psalms 106:12",
+   "status": "self_rendered",
+   "block_index": 402
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 402
+  },
+  {
+   "reference": "Psalms 150:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "John 14:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 405
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 405
+  },
+  {
+   "reference": "James 2:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 34:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Hebrews 13:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 50:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 63:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 92:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 97:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 33:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 407
+  },
+  {
+   "reference": "Psalms 22:3",
+   "status": "self_rendered",
+   "block_index": 407
+  },
+  {
+   "reference": "Acts 16:25-26",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Chronicles 20:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 409
+  },
+  {
+   "reference": "2 Chronicles 20:22",
+   "status": "self_rendered",
+   "block_index": 409
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 409
+  },
+  {
+   "reference": "2 Peter 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 409
+  },
+  {
+   "reference": "Genesis 2:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Genesis 3:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 410
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered",
+   "block_index": 410
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered",
+   "block_index": 412
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 412
+  },
+  {
+   "reference": "Matthew 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 414
+  },
+  {
+   "reference": "Ephesians 4:27",
+   "status": "self_rendered",
+   "block_index": 414
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 414
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 421
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 423
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 423
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "self_rendered",
+   "block_index": 423
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 425
+  },
+  {
+   "reference": "Joshua 6:5",
+   "status": "self_rendered",
+   "block_index": 425
+  },
+  {
+   "reference": "2 Corinthians 12:7-10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 427
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 429
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 432
+  },
+  {
+   "reference": "2 Corinthians 12:9b",
+   "status": "self_rendered",
+   "block_index": 432
+  },
+  {
+   "reference": "Numbers 33:55",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 433
+  },
+  {
+   "reference": "Joshua 23:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 436
+  },
+  {
+   "reference": "2 Samuel 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 437
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 437
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 437
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 439
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 439
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 439
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Acts 9:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "2 Corinthians 12:9-10",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Philippians 1:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 442
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 444
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 444
+  },
+  {
+   "reference": "Numbers 33:55",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 445
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 447
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "self_rendered",
+   "block_index": 447
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "1 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Corinthians 6:5",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 6:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "2 Corinthians 11:23-27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "1 Corinthians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 450
+  },
+  {
+   "reference": "Romans 15:29",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Acts 19:11-12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 455
+  },
+  {
+   "reference": "Acts 14:9-10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 457
+  },
+  {
+   "reference": "Romans 15:18-19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 458
+  },
+  {
+   "reference": "Acts 28:8-9",
+   "status": "self_rendered",
+   "block_index": 458
+  },
+  {
+   "reference": "2 Corinthians 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 461
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 461
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 463
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 464
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "Titus 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 467
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 468
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 468
+  },
+  {
+   "reference": "Galatians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 471
+  },
+  {
+   "reference": "Acts 20:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 474
+  },
+  {
+   "reference": "Romans 15:18-19",
+   "status": "self_rendered",
+   "block_index": 475
+  },
+  {
+   "reference": "1 Corinthians 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 476
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "Ephesians 5:30",
+   "status": "self_rendered",
+   "block_index": 477
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 477
+  },
+  {
+   "reference": "Romans 8:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 477
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "self_rendered",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 477
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "1 Corinthians 12:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "Romans 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 479
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 480
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "Galatians 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "Galatians 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "Galatians 3:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 480
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "2 Timothy 4:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 483
+  },
+  {
+   "reference": "Philippians 2:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 483
+  },
+  {
+   "reference": "1 Timothy 5:23",
+   "status": "self_rendered",
+   "block_index": 483
+  },
+  {
+   "reference": "Acts 14:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 484
+  },
+  {
+   "reference": "Acts 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 484
+  },
+  {
+   "reference": "Mark 6:5",
+   "status": "self_rendered",
+   "block_index": 484
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 489
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 490
+  },
+  {
+   "reference": "Leviticus 25:9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 21:8-9",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:4",
+   "status": "self_rendered",
+   "block_index": 496
+  },
+  {
+   "reference": "Isaiah 53:11-12",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 498
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 500
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "block_index": 502
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 502
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 502
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "self_rendered",
+   "block_index": 502
+  },
+  {
+   "reference": "Psalms 86:5",
+   "status": "self_rendered",
+   "block_index": 503
+  },
+  {
+   "reference": "Hebrews 8:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 504
+  },
+  {
+   "reference": "John 14:12-13",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 510
+  },
+  {
+   "reference": "1 John 3:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 511
+  },
+  {
+   "reference": "1 Corinthians 6:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 511
+  },
+  {
+   "reference": "Mark 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 516
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 518
+  },
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "self_rendered",
+   "block_index": 518
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 518
+  },
+  {
+   "reference": "Acts 28:9",
+   "status": "self_rendered",
+   "block_index": 518
+  },
+  {
+   "reference": "Romans 15:18-19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 518
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 520
+  },
+  {
+   "reference": "Acts 9:35",
+   "status": "self_rendered",
+   "block_index": 523
+  },
+  {
+   "reference": "Acts 4:4",
+   "status": "self_rendered",
+   "block_index": 523
+  },
+  {
+   "reference": "Romans 15:18-19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 523
+  },
+  {
+   "reference": "Matthew 8:16-17",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 568
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 573
+  },
+  {
+   "reference": "Isaiah 53:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)",
+   "block_index": 563
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 564
+  }
+ ]
+}

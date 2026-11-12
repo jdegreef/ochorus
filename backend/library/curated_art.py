@@ -1710,6 +1710,16 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "silhouette, and a domed mud-brick cell with a small cross, its doorway lit, "
         "a palm beside it. No likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 5, Seven Times a Day: the series ground
+    # on a clear morning: a monastery church with its bell tower, a cloister wall
+    # and two cypresses, windows lit for the office (Psalm 119:164). Same generator.
+    "seven-times-a-day": Original(
+        "7c487b7e75a44e0bef193fbfbd164fe054809e5a7180928c53fd48d961072877",
+        "Psalm 119:164: a clear morning over the hills, the sun risen low on the "
+        "left, and on the near ridge a monastery church with its bell tower and "
+        "cross, a cloister wall and two cypresses, its windows lit for the morning "
+        "office. No likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
