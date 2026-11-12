@@ -808,6 +808,8 @@ archaic spelling and period punctuation are the text, not defects in it.
 
 ## Known failure modes (append as we learn)
 
+- **The Skill tool loads THIS file from the main checkout, which is often a stale detached HEAD — re-read it from your worktree** (lg batch, 2026-11-01). The copy loaded still required a dated `+page.ts` prerender touch that origin/main had retired weeks earlier, and lacked the lg word-level MT error list. After `git checkout -B … origin/main`, `diff` the main checkout's copy against the worktree's and follow the worktree copy.
+- **A reboot wipes the `/tmp` scratchpad, and with it every finished chunk of a fan-out** (lg batch, 2026-11-06: ~45 translated chunks gone). The words survive in the subagent transcripts (`~/.claude/projects/<project>/<session>/subagents/agent-*.jsonl`), because translators write through Bash heredocs: rebuild the inputs, then replay each agent's Bash/Write/Edit tool calls in order — no retranslation. Cheaper still: for a run that will outlive one sitting, keep `out/` somewhere durable (e.g. under the worktree, git-ignored), not in `/tmp`. And re-check `origin/main` before resuming — here other sessions had shipped all three books in the meantime.
 - Batch subagents that "orchestrate" instead of translating: they spawn nested
   agents and return early. Mitigate with the explicit no-delegation line; the
   per-chapter validation + gap re-dispatch catches whatever still slips.
