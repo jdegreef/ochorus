@@ -1722,6 +1722,17 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "the right, and on the near hill a walled castle with its keep and a corner "
         "tower, one window lit in the keep. No particular castle, no likeness.",
     ),
+    # A Cloud of Praying Witnesses, Vol. 7, The Fire on the Altar: the series ground
+    # on a bright morning: a village meeting hall with a bell turret and a row of
+    # houses, windows lit, and a small fire kept burning on the far hill
+    # (Leviticus 6:13). No particular village. Same generator.
+    "the-fire-on-the-altar": Original(
+        "1cd218781e6c6ec9b89e59bef0caca38fe3b1699bc7a4c61f2a366fd8b269fc1",
+        "Leviticus 6:13: a bright morning over the hills, the sun clear of the far "
+        "hills on the left; on the near ridge a plain meeting hall with a small bell "
+        "turret and a row of houses with lit windows, and on the far hill a small "
+        "fire kept burning. No particular village, no likeness.",
+    ),
     # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
     # the same slate dark and the Flame's gold, now underground. A vast cavern
     # under faint stalactites; low on the left, Tobin climbs the Black Stair
