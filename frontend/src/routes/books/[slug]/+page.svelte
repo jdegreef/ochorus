@@ -44,7 +44,7 @@
 	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
-	import { chapterBars } from '$lib/chapterLengths';
+	import { chapterBars, chapterRangeText } from '$lib/chapterLengths';
 	import { firstSentence } from '$lib/firstSentence';
 	import { partEnds, partGroups, partLine } from '$lib/bookParts';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -760,6 +760,11 @@
 							<div>
 								<dt>{t('book.firstLine')}</dt>
 								<dd class="glance-line font-display" lang={contentLang(book.language)} dir="auto">{firstLine}</dd>
+								<!-- Named, because opening.py skips front matter: the line
+								     may open chapter 2 or 3, not the book. -->
+								<dd class="text-muted" dir="auto">
+									{t('book.openingFrom').replace('%chapter%', book.opening?.chapter ?? '')}
+								</dd>
 							</div>
 						{/if}
 						{#if bars}
@@ -781,9 +786,7 @@
 										{/each}
 									</div>
 									<p class="mt-1 text-muted">
-										{t('book.chapterRange')
-											.replace('%min%', String(bars.shortest))
-											.replace('%max%', String(bars.longest))}
+										{chapterRangeText(t('book.chapterRange'), bars)}
 									</p>
 								</dd>
 							</div>
@@ -1099,7 +1102,7 @@
 	     owns that judgement (library/opening.py). -->
 	{#snippet openingLines()}
 		{#if book.opening}
-			<figure class="about-quote" class:in-glance={!!firstLine}>
+			<figure class="about-quote">
 				<blockquote class="font-display leading-snug" dir="auto">
 					{book.opening.text}
 				</blockquote>
@@ -1669,18 +1672,6 @@
 	}
 	.about-quote blockquote {
 		font-size: var(--fs-h3);
-	}
-	/* Where the hero's At-a-glance panel shows (the same 72rem step: this
-	   layout spans the same column as the hero), it already opens with the
-	   book's first line — the aside would print that sentence again a few
-	   inches lower, so it gives way and the prose keeps its measure. */
-	.about-layout {
-		container: book-about / inline-size;
-	}
-	@container book-about (min-width: 72rem) {
-		.about-quote.in-glance {
-			display: none;
-		}
 	}
 	@media (min-width: 1024px) {
 		.about-layout {

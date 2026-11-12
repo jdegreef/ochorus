@@ -605,7 +605,7 @@
   "book_first_line": "Câu mở đầu",
   "book_chapter_lengths": "Độ dài các chương",
   "book_chapter_range": "%min%–%max% phút mỗi chương",
-  "book_modern_explainer": "Bản hiện đại thay các từ cổ như “thee” và “hath” và làm gọn những câu dài. Ý nghĩa và giọng văn của tác giả được giữ nguyên.",
+  "book_modern_explainer": "Bản hiện đại thay các từ cổ như “thee” và “hath”. Ý nghĩa và giọng văn của tác giả được giữ nguyên.",
   "book_series_volume": "Quyển {position} / {total} trong bộ {series}",
   "book_series_member": "Thuộc bộ {series}",
   "book_series_next": "Tiếp theo trong bộ",
