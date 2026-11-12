@@ -45,7 +45,7 @@
   "source_url": "https://openwordbible.org/read/#2jn",
   "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
   "cover_url": "/covers/art/2-john.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/2-john.pdf?download=2-john.pdf",
   "cover_color": "#2a4f4a",
   "series": [
    "the-bible"
@@ -82,7 +82,8 @@
   "title": "2 John 1",
   "body_html": "<h3>Greeting</h3><p>From the elder, to the chosen lady and her children. I love you in truth, and I am not the only one: so do all who have come to know the truth. We love you because of the truth that remains in us and will be with us forever. Grace, mercy, and peace will be with us from God the Father and from Jesus Christ, the Father’s Son, in truth and love.</p><h3>Live in truth and love, and beware of deceivers</h3><p>I was very glad when I found some of your children living in the truth, in keeping with the command we received from the Father. And now, lady, I have a request for you. What I am writing to you is not a new command; it is the one we have had from the beginning. I ask that we love one another. This is what love is: that we live by his commands. And this is the command you heard from the beginning: you are to live in love. For many deceivers have gone out into the world, people who do not confess Jesus Christ as one who has come in the flesh. A person like that is the deceiver and the antichrist. Be on your guard, so that you do not lose what we have worked to bring about, but receive your reward in full. Anyone who goes too far and does not remain in the teaching of Christ is without God. But the one who remains in that teaching has both the Father and the Son. If anyone comes to you without bringing this teaching, do not receive that person into your home, and do not give them a greeting. For whoever gives such a person a greeting becomes a partner in their evil deeds.</p><h3>Final words</h3><p>There is a great deal I could write to you, but I chose not to do it with paper and ink. I hope instead to come to you and speak with you face to face, so that your joy may be complete.</p><p>Your chosen sister’s children send you their greetings.</p>",
   "study_questions": [],
-  "word_count": 351
+  "word_count": 351,
+  "summary": "The elder writes to the chosen lady and her children, urging them to live in truth and love by keeping God’s command. Many deceivers deny that Jesus came in the flesh, and they must not be welcomed."
  }
 },
 {

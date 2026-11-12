@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import type { CoverBook, CoverFace, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
 	import TodayCard from '$lib/components/TodayCard.svelte';
+	import TonightShelf from '$lib/components/TonightShelf.svelte';
+	import type { TonightItem } from '$lib/tonightShelf';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import NeedFinder from '$lib/components/NeedFinder.svelte';
@@ -43,6 +46,8 @@
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
 		audiences?: HubAudience[];
+		/** Absent from a snapshot built before the shelf existed. */
+		tonight?: TonightItem[];
 		needs?: string[];
 	}
 	let { data }: { data: HomeData } = $props();
@@ -123,6 +128,13 @@
 <!-- Books -->
 <DiscoverStrip books={featured} band="none" belowHero />
 
+<!-- Tonight, under 20 minutes (idea #27): whole works to finish in one
+     sitting, in the evening only. It appears at mount (the clock is the
+     reader's), so it sits under the book row — below the first screen on
+     every width — where its arrival moves nothing the reader is looking at;
+     above the row it would push the books down after first paint. -->
+<TonightShelf items={data.tonight ?? []} />
+
 <!-- Create-an-account band. Four bands run behind one component (three A/B
      arms + a progress-targeted one); it self-gates on `auth.enabled`, so it
      stays hidden where accounts don't work and never bakes into the
@@ -157,7 +169,7 @@
 			{#each authors as author (author.slug)}
 				<li>
 					<a
-						href={localizeHref(`/authors/${author.slug}`)}
+						href={localizeHref(authorPath(author.slug))}
 						class="group flex flex-col items-center gap-2.5 text-center hover:no-underline"
 					>
 						<Portrait

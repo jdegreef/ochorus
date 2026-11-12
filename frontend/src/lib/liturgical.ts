@@ -26,7 +26,7 @@ export const SEASON_COLOUR: Record<Season, SeasonColour> = {
 };
 
 /** A calendar day as a whole number, so a season boundary is a comparison. */
-const dayNumber = (y: number, m: number, d: number) => Date.UTC(y, m, d) / 86_400_000;
+export const dayNumber = (y: number, m: number, d: number) => Date.UTC(y, m, d) / 86_400_000;
 
 /** Easter Sunday of `year` (Gregorian; the anonymous "Meeus/Jones/Butcher"
  *  computus), as a day number. */

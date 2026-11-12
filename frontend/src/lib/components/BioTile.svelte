@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import { formatLifespan, type AuthorBio } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -18,7 +19,7 @@
 
 <a
 	id={author.slug}
-	href={localizeHref(`/authors/${author.slug}`)}
+	href={localizeHref(authorPath(author.slug))}
 	data-sveltekit-preload-data="hover"
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 	class="bio-tile card-tint group flex flex-col items-center gap-2 rounded-card border border-border px-3 pb-4 pt-5 text-center text-text hover:no-underline"

@@ -9,6 +9,8 @@
  * a book, and is pure so it can be tested without a page.
  */
 
+import { CANON } from '$lib/sermonCanon';
+
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';
 /** The hub's path; prerenders to bible/index.html (isSlashedPath). */
@@ -87,18 +89,91 @@ export function groupBible<T extends { series_position?: number | null }>(
 	const sorted = books
 		.filter((b) => divisionOf(b.series_position))
 		.sort((a, b) => a.series_position! - b.series_position!);
-	const out: TestamentGroup<T>[] = [];
-	for (const division of BIBLE_DIVISIONS) {
-		const here = sorted.filter((b) => divisionOf(b.series_position) === division);
-		if (!here.length) continue;
+	return byTestament(
+		BIBLE_DIVISIONS.flatMap((division) => {
+			const here = sorted.filter((b) => divisionOf(b.series_position) === division);
+			return here.length ? [{ division, books: here }] : [];
+		})
+	);
+}
+
+/** Division groups, in canonical order, under the testament each falls in. */
+function byTestament<G extends { division: BibleDivision }>(
+	groups: readonly G[]
+): { testament: Testament; divisions: G[] }[] {
+	const out: { testament: Testament; divisions: G[] }[] = [];
+	for (const group of groups) {
 		let testament = out.at(-1);
-		if (testament?.testament !== division.testament) {
-			testament = { testament: division.testament, divisions: [] };
+		if (testament?.testament !== group.division.testament) {
+			testament = { testament: group.division.testament, divisions: [] };
 			out.push(testament);
 		}
-		testament.divisions.push({ division, books: here });
+		testament.divisions.push(group);
 	}
 	return out;
+}
+
+export interface CanonSlot<T> {
+	/** Canonical number, 1 Genesis … 66 Revelation. */
+	position: number;
+	/** The book's short English name ("Psalms", "1 Corinthians", "John"). */
+	name: string;
+	/** The library's edition at this place, or null where this language has none. */
+	book: T | null;
+	/**
+	 * 0–1: how long the book is beside the longest one here (square root of its
+	 * words, so Obadiah stays a spine and the Psalms don't fill the band). 0 for
+	 * an absent book. The strip draws it as the spine's thickness.
+	 */
+	weight: number;
+}
+
+export interface CanonDivision<T> {
+	division: BibleDivision;
+	slots: CanonSlot<T>[];
+}
+
+export interface CanonTestament<T> {
+	testament: Testament;
+	divisions: CanonDivision<T>[];
+}
+
+/**
+ * The hub's canon strip: ALL 66 books in canonical order, by testament and
+ * division, each slot holding the library's edition or null. Unlike
+ * `groupBible`, nothing is dropped — the strip's point is the whole shape of the
+ * canon, with the books a language lacks shown as gaps. The names are the
+ * canon's short English names (`CANON`): the hub is drawn only in
+ * BIBLE_LOCALES, all English today; a translated Bible would bring its own.
+ */
+export function canonStrip<
+	T extends { series_position?: number | null; word_count?: number | null; chapter_count?: number }
+>(books: readonly T[]): CanonTestament<T>[] {
+	const at = new Map<number, T>();
+	for (const b of books) {
+		const p = b.series_position;
+		if (divisionOf(p) && !at.has(p!)) at.set(p!, b);
+	}
+	// Words where the API sends them; chapters stand in for a book without a count.
+	const size = (b: T) => Math.sqrt(b.word_count || (b.chapter_count ?? 0) * 500);
+	const largest = Math.max(0, ...[...at.values()].map(size));
+	const slot = (position: number): CanonSlot<T> => {
+		const book = at.get(position) ?? null;
+		return {
+			position,
+			name: CANON[position - 1][0],
+			book,
+			weight: book && largest ? Math.round((size(book) / largest) * 100) / 100 : 0
+		};
+	};
+	return byTestament(
+		BIBLE_DIVISIONS.map((division) => ({
+			division,
+			slots: Array.from({ length: division.last - division.first + 1 }, (_, i) =>
+				slot(division.first + i)
+			)
+		}))
+	);
 }
 
 /**

@@ -45,7 +45,7 @@
   "source_url": "https://openwordbible.org/read/#jon",
   "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
   "cover_url": "/covers/art/jonah.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/jonah.pdf?download=jonah.pdf",
   "cover_color": "#2f4a55",
   "series": [
    "the-bible"
@@ -82,7 +82,8 @@
   "title": "Jonah 1",
   "body_html": "<h3>Jonah runs away from the LORD</h3><p>The word of the LORD came to Jonah son of Amittai: “Get up, go to Nineveh, that great city, and call out against it, because their wickedness has come up before me.” But Jonah got up to run away to Tarshish, out of the presence of the LORD. He went down to Joppa, and there he found a ship bound for Tarshish. He paid the fare and went down into the ship to sail with them to Tarshish, away from the presence of the LORD. But the LORD hurled a great wind onto the sea, and such a great storm arose on the sea that the ship was about to break apart. The sailors were terrified, and each of them cried out to his own god. They hurled the cargo into the sea to lighten their load. But Jonah had gone down into the hold of the ship, where he had lain down and fallen into a deep sleep. The captain came to him and said, “How can you sleep? Get up, call out to your god! Perhaps that god will take notice of us, and we will not perish.” Then the sailors said to one another, “Come, let us cast lots to find out who is to blame for this disaster that has struck us.” So they cast lots, and the lot fell on Jonah. So they said to him, “Tell us, who is to blame for this disaster that has come on us? What is your work? Where do you come from? What is your country? What people do you belong to?” He answered them, “I am a Hebrew, and I fear the LORD, the God of heaven, who made the sea and the dry land.” Then the men were seized with great fear, and they said to him, “What is this that you have done?” For the men knew that he was running away from the presence of the LORD, because he had told them. So they asked him, “What should we do to you to make the sea calm down for us?” For the sea was getting rougher and rougher. He answered them, “Pick me up and hurl me into the sea, and the sea will calm down for you. For I know that it is my fault that this great storm has come upon you.” Instead, the men rowed hard to bring the ship back to dry land, but they were unable to, because the sea grew rougher and rougher against them. Then they cried out to the LORD, “Please, LORD, do not let us perish for taking this man’s life! Do not hold us guilty of innocent blood. For you, LORD, have done as you pleased.” Then they picked Jonah up and hurled him into the sea, and the sea stopped its raging. Then the men were filled with great fear of the LORD, and they offered a sacrifice to the LORD and made vows. But the LORD appointed a great fish to swallow Jonah, and Jonah was inside the fish for three days and three nights.</p>",
   "study_questions": [],
-  "word_count": 519
+  "word_count": 519,
+  "summary": "God sends Jonah to Nineveh, but he flees by ship toward Tarshish. In a great storm the sailors throw Jonah overboard, and God provides a great fish to swallow him."
  }
 },
 {
@@ -96,7 +97,8 @@
   "title": "Jonah 2",
   "body_html": "<h3>The great fish and Jonah’s prayer</h3><p>Then Jonah prayed to the LORD his God from inside the fish.<br/>He said:<br/>“When I was in trouble I cried out to the LORD, and he gave me an answer;<br/>from deep in Sheol I called for help, and you heard my voice.<br/>You threw me into the depths, into the heart of the seas,<br/>and the current swirled around me;<br/>all your breaking waves and rollers have gone over my head.<br/>I said, ‘I have been driven away from your sight;<br/>still, I will look again toward your holy temple.’<br/>The waters closed over me up to my throat;<br/>the deep was all around me;<br/>seaweed was wrapped around my head.<br/>I went down to the roots of the mountains;<br/>the earth’s bars closed behind me forever.<br/>But you brought my life up from the pit, LORD my God.<br/>As my life was ebbing away,<br/>I remembered the LORD,<br/>and my prayer came to you,<br/>into your holy temple.<br/>Those who devote themselves to useless idols<br/>abandon their loyal love.<br/>But I will sacrifice to you with a song of thanksgiving;<br/>what I have vowed I will make good.<br/>It is the LORD who saves.”</p><p>Then the LORD spoke to the fish, and it vomited Jonah out onto dry land.</p>",
   "study_questions": [],
-  "word_count": 218
+  "word_count": 218,
+  "summary": "From inside the fish Jonah prays to God, who answers him, and the fish spits him out on dry land."
  }
 },
 {
@@ -110,7 +112,8 @@
   "title": "Jonah 3",
   "body_html": "<h3>Nineveh turns from its evil</h3><p>The word of the LORD came to Jonah a second time: “Get up, go to Nineveh, that great city, and call out to it the message that I am giving you.” So Jonah got up and went to Nineveh, as the LORD had told him. Now Nineveh was an exceedingly great city, a three days’ walk across. Jonah began by going a day’s walk into the city, and he called out, “Forty more days, and Nineveh will be overthrown!” The people of Nineveh believed God. They called for a fast and dressed in sackcloth, from the greatest to the least of them. When the news reached the king of Nineveh, he rose from his throne, laid aside his royal robe, covered himself with sackcloth and sat down in the ashes. Then he had a proclamation made in Nineveh: “By order of the king and his nobles: Let no person or animal, herd or flock, taste anything at all. They must not graze, and they must not drink water. People and animals alike must be covered with sackcloth. Let them call out to God with all their might, and let each one turn from their evil ways and from the violence they do. Who knows? God may yet turn and change his mind; he may turn back from his fierce anger, and we will not perish.” When God saw what they did, how they turned from their evil ways, God relented of the disaster he had said he would bring on them, and he did not do it.</p>",
   "study_questions": [],
-  "word_count": 262
+  "word_count": 262,
+  "summary": "Jonah goes to Nineveh and announces that it will be overthrown in forty days. The people and their king repent, and God relents from the disaster."
  }
 },
 {
@@ -124,7 +127,8 @@
   "title": "Jonah 4",
   "body_html": "<h3>Jonah’s anger</h3><p>But to Jonah this seemed a great wrong, and he became angry. He prayed to the LORD, “Please, LORD, did I not say this while I was still in my own country? That is why I hurried to run away to Tarshish. For I knew that you are a God of grace and tender compassion, slow to grow angry, rich in faithful love, and one who relents from sending disaster. So now, LORD, please take my life from me, for death is better for me than life.”</p><h3>The plant and the great city</h3><p>But the LORD said, “Are you right to be angry?” Jonah went out of the city and sat down to the east of it. He made himself a shelter there and sat under it in the shade, waiting to see what would become of the city. The LORD God appointed a leafy plant, and it grew up over Jonah to give shade over his head and to save him from his misery. Jonah was overjoyed about the plant. But at dawn the next day God appointed a worm, which attacked the plant so that it withered. When the sun came up, God appointed a scorching wind from the east, and the sun beat down on Jonah’s head until he grew faint. He prayed that he might die, and he said, “Death is better for me than life.” But God said to Jonah, “Are you right to be angry about the plant?” “I am right to be angry,” he said, “angry enough to die!” Then the LORD said, “You took pity on the plant, though you did not work for it or make it grow. It sprang up in a night and died in a night. And should I not take pity on Nineveh, that great city, with more than 120,000 people in it who cannot tell their right hand from their left, and many animals as well?”</p>",
   "study_questions": [],
-  "word_count": 322
+  "word_count": 322,
+  "summary": "Jonah is angry that God spared Nineveh. God gives him a plant for shade and then takes it away, and asks whether God should not care about the great city of Nineveh."
  }
 },
 {

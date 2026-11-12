@@ -6,8 +6,11 @@
  * name and their note — rides in the URL's FRAGMENT (`/gift#g=<payload>`):
  *
  *   * a fragment is never sent to a server, so a note never lands in Render's
- *     access logs, the API, or Plausible (which counts the path only); Sentry
- *     drops the hash too ($lib/sentryScrub);
+ *     access logs or the API; Sentry drops the hash ($lib/sentryScrub); and the
+ *     landing page takes it off the address bar as soon as it is read, before
+ *     Plausible's script (which reports `location.href`, fragment and all)
+ *     sends anything. The gift's share menu is WhatsApp + email only — never
+ *     Facebook's sharer, which would carry the link in a query string;
  *   * the static host only ever sees `/gift`, one client-only shell route, so
  *     there is nothing per-gift to prerender, crawl or put in a sitemap;
  *   * the payload is UTF-8 JSON in base64url: ~1.33 bytes per byte, where
@@ -25,8 +28,10 @@
 export const GIFT_NAME_MAX = 40;
 /** The note, in graphemes — one text message's worth. */
 export const GIFT_NOTE_MAX = 280;
-/** Longer than any honest payload (the caps above, base64url) — refused unread. */
-const PAYLOAD_MAX = 4096;
+/** Longer than any honest payload — the caps above, even in emoji ZWJ
+ *  sequences (~25 UTF-8 bytes a character), in base64url. Refused unread;
+ *  `encodeGift` refuses to make one. */
+const PAYLOAD_MAX = 16384;
 const VERSION = 1;
 
 export type Gift = { slug: string; lang: string; name: string; note: string };
@@ -36,44 +41,70 @@ const LANG = /^[a-z]{2,3}$/;
 
 /**
  * Links, written any of the ways a note might carry one: with a scheme
- * (`https://…`, `ftp://…`), `www.…`, an email address, or a bare host on a
- * common TLD (`bit.ly/x`, `example.com`). A bare `word.word` is not enough —
- * "Mr.Smith" or a missing space after a full stop is not a link — so a bare
- * host needs a TLD from the list — and a TLD that is also a common word
- * ("me", "to", "it", "in": "Read it.It changed me") only counts with a path
- * after it (`wa.me/123`). The note is a personal message on ochorus.com's
- * page: it must not become a way to send someone elsewhere.
+ * (`https://…`, `ftp://…`), `www.…`, an email address, a host with a path on
+ * any TLD (`bit.ly/x`, `scam.ai/login`), or a bare host on a TLD from the
+ * list (`example.com`). A bare `word.word` is not enough — a missing space
+ * after a full stop is not a link ("Obrigado.Eu orei", "Love you.Live for
+ * Him") — so the list leaves out every TLD that is also a word in a locale we
+ * serve; those count only with a path. Matching runs on a copy with
+ * fullwidth letters and look-alike dots (`bit．ly`, `example。com`) folded to
+ * ASCII (`foldForLinks`). The note is a personal message on ochorus.com's
+ * page: it must not become a way to send someone elsewhere. (It is shown as
+ * plain text, never linked, so this is the second line, not the first.)
  */
 const TLDS =
-	'com|org|net|io|ly|co|info|biz|xyz|app|link|site|online|shop|store|top|click|live|club|dev|gg|tv|cc|ws|gl|gd|tk|ml|ga|cf|ru|cn|uk|fr|pt|br|ng|ke|ug|tz|za|ua|jp|kr|vn|ae|sa|eg|et|ca|au|nz|ch|nl|pl|eu|asia|church|bible';
-const WORD_TLDS = 'me|to|it|in|be|us|de|es|at|is|am|so|no|my|do|id|la|im';
+	'com|org|net|io|ly|co|biz|xyz|ru|cn|uk|br|ng|ke|ug|tz|za|ua|jp|kr|vn|ae|sa|eg|nz|nl|pl|asia|tk|ml|ga|cf|gg|tv|ws|gd|gl';
 const LINK = new RegExp(
 	[
 		String.raw`\b[a-z][a-z0-9+.-]*:\/\/\S*`,
 		String.raw`\bwww\.\S*`,
 		String.raw`[^\s@]+@[^\s@]+\.[^\s@]+`,
 		String.raw`\b(?:[a-z0-9-]+\.)+(?:${TLDS})\b(?:[/?#]\S*)?`,
-		String.raw`\b(?:[a-z0-9-]+\.)+(?:${WORD_TLDS})\/\S*`
+		String.raw`\b(?:[a-z0-9-]+\.)+[a-z]{2,}\/\S*`
 	].join('|'),
 	'gi'
 );
 
-/** Bidi overrides/embeddings/isolates and the invisible characters a name
- *  could hide behind. Not the joiners: ZWJ builds emoji, ZWNJ is load-bearing
- *  in Hindi and Persian script. RTL text needs none of these — the page sets
- *  `dir="auto"` on it. */
-// eslint-disable-next-line no-control-regex
-const INVISIBLE = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f\u200b\u200e\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff\ufff9-\ufffb]/g;
+/** `s` with fullwidth ASCII and the dots that read as "." (ideographic,
+ *  fullwidth, halfwidth, one-dot leader, small full stop) mapped to ASCII.
+ *  Every mapping is one UTF-16 unit to one, so match offsets line up with
+ *  `s` and only the link itself is cut — a Japanese "。" stays. */
+const foldForLinks = (s: string): string =>
+	s
+		.replace(/[\uff01-\uff5e]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+		.replace(/[\u3002\uff61\u2024\ufe52]/g, '.');
+
+/** Control and format characters — bidi overrides, embeddings, isolates and
+ *  marks (incl. U+061C), zero-width spaces, tag characters (the invisible
+ *  "ASCII smuggling" alphabet), soft hyphens — plus the blank-looking
+ *  letters a name could be made of (Hangul fillers, braille blank) and the
+ *  variation selectors outside the emoji block. Kept: tab and newline (tidied later), ZWJ
+ *  (builds emoji), ZWNJ (load-bearing in Hindi and Persian), and the emoji
+ *  variation selectors U+FE00–FE0F (❤️). RTL text needs none of the bidi
+ *  controls — the page sets `dir="auto"` on it. */
+const INVISIBLE =
+	/(?![\t\n\u200c\u200d])[\p{Cc}\p{Cf}\u115f\u1160\u3164\uffa0\u2800\u180e]|\u034f|(?![\ufe00-\ufe0f])\p{Variation_Selector}/gu;
+
+/** More than this many combining marks in a row is "Zalgo" (marks stacked
+ *  until they paint over the page around the note); no script we serve stacks
+ *  more than three on one letter. */
+const MARK_RUN = /(\p{M}{4})\p{M}+/gu;
+
+// Built once: the sheet counts and caps on every keystroke.
+const segmenter =
+	typeof Intl !== 'undefined' && 'Segmenter' in Intl
+		? new Intl.Segmenter(undefined, { granularity: 'grapheme' })
+		: null;
 
 /** Split into user-perceived characters, so a cap never cuts an emoji or an
  *  accented letter in half. */
-function graphemes(s: string): string[] {
-	if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
-		const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
-		return Array.from(seg.segment(s), (x) => x.segment);
-	}
-	return Array.from(s);
-}
+const graphemes = (s: string): string[] =>
+	segmenter ? Array.from(segmenter.segment(s), (x) => x.segment) : (s.match(GRAPHEME_ISH) ?? []);
+
+/** Where there is no Intl.Segmenter (Firefox < 125, old WebViews): a letter
+ *  with its marks, skin tone and ZWJ-joined partners — close enough that the
+ *  receiver's re-cap doesn't cut a note a Segmenter-equipped sender wrote. */
+const GRAPHEME_ISH = /\P{M}[\p{M}\u{1f3fb}-\u{1f3ff}]*(?:\u200d\P{M}[\p{M}\u{1f3fb}-\u{1f3ff}]*)*|\p{M}+/gsu;
 
 /** How many characters `s` counts as against a cap. */
 export const giftLength = (s: string): number => graphemes(s).length;
@@ -87,26 +118,34 @@ export const giftCap = (s: string, max: number): string => {
 
 export type Cleaned = { text: string; removedLinks: boolean };
 
-/** Strip links, invisible/control characters and stray whitespace. */
-function scrub(raw: string): Cleaned {
-	let text = String(raw ?? '')
+/** Strip links, invisible/control characters and mark pile-ups. `max`
+ *  pre-cuts the raw text (to twice the cap, room for what tidying removes)
+ *  so a hand-made payload never makes the link scan work on kilobytes. */
+function scrub(raw: string, max: number): Cleaned {
+	const text = giftCap(String(raw ?? ''), max * 2)
 		.normalize('NFC')
 		.replace(/\r\n?|[\u2028\u2029]/g, '\n')
-		.replace(INVISIBLE, '');
-	const before = text;
-	text = text.replace(LINK, '');
-	return { text, removedLinks: text !== before };
+		.replace(INVISIBLE, '')
+		.replace(MARK_RUN, '$1');
+	const links = [...foldForLinks(text).matchAll(LINK)];
+	let out = text;
+	for (const m of links.reverse()) out = out.slice(0, m.index) + out.slice(m.index + m[0].length);
+	return { text: out, removedLinks: links.length > 0 };
 }
+
+/** A name needs something to see: a letter, digit or symbol (emoji). */
+const VISIBLE = /[\p{L}\p{N}\p{S}]/u;
 
 /** The giver's first name: one line, links and invisibles gone, capped. */
 export function cleanGiftName(raw: string): Cleaned {
-	const { text, removedLinks } = scrub(raw);
-	return { text: giftCap(text.replace(/\s+/g, ' ').trim(), GIFT_NAME_MAX), removedLinks };
+	const { text, removedLinks } = scrub(raw, GIFT_NAME_MAX);
+	const name = giftCap(text.replace(/\s+/g, ' ').trim(), GIFT_NAME_MAX);
+	return { text: VISIBLE.test(name) ? name : '', removedLinks };
 }
 
 /** The note: plain text, at most one blank line between paragraphs, capped. */
 export function cleanGiftNote(raw: string): Cleaned {
-	const { text, removedLinks } = scrub(raw);
+	const { text, removedLinks } = scrub(raw, GIFT_NOTE_MAX);
 	const tidy = text
 		.split('\n')
 		.map((line) => line.replace(/[^\S\n]+/g, ' ').trim())
@@ -138,7 +177,10 @@ export function encodeGift(gift: Gift): string {
 	if (!validSlug(gift.slug) || !validLang(gift.lang)) throw new Error('invalid gift book');
 	const name = cleanGiftName(gift.name).text;
 	const note = cleanGiftNote(gift.note).text;
-	return toBase64Url(JSON.stringify([VERSION, gift.slug, gift.lang, name, note]));
+	const payload = toBase64Url(JSON.stringify([VERSION, gift.slug, gift.lang, name, note]));
+	// decodeGift would refuse it unread: say so here, not on the recipient's screen.
+	if (payload.length > PAYLOAD_MAX) throw new Error('gift too long');
+	return payload;
 }
 
 /** The gift a payload carries, or null for anything that isn't one. */

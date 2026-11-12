@@ -11,6 +11,7 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import BibleCanonStrip from '$lib/components/BibleCanonStrip.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 
@@ -85,6 +86,9 @@
 		     page's own split between a failure and an empty shelf). -->
 		<EmptyState message={t('bible.none')} />
 	{:else}
+		<!-- The whole canon at a glance, each spine a link to its book page; the
+		     grouped cards below are the shelf proper. -->
+		<BibleCanonStrip books={series?.books ?? []} />
 		{#each groups as testament (testament.testament)}
 			<!-- A testament is the section; its divisions are the groups under it,
 			     so their headings are h3s (the topic page's nested-group recipe). -->

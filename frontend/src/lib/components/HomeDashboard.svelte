@@ -19,6 +19,8 @@
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
 	import DailyShelf from '$lib/components/DailyShelf.svelte';
+	import TonightShelf from '$lib/components/TonightShelf.svelte';
+	import type { TonightItem } from '$lib/tonightShelf';
 	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import HomeHighlight from '$lib/components/HomeHighlight.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
@@ -45,6 +47,7 @@
 	interface HomeData {
 		featured: CoverBook[];
 		topics?: TopicCount[];
+		tonight?: TonightItem[];
 	}
 	let { data }: { data: HomeData } = $props();
 
@@ -131,6 +134,10 @@
 		<PlansProgress />
 	</div>
 </div>
+
+<!-- Tonight, under 20 minutes: whole works to finish in one sitting —
+     evening only, so in the day this is the devotionals' place. -->
+<TonightShelf items={data.tonight ?? []} />
 
 <!-- Today in the devotionals: each dated devotional's entry for today. -->
 <DailyShelf />

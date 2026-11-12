@@ -734,6 +734,12 @@ export interface AuthorBio {
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
 	/**
+	 * Words in that long biography in this language (0 without one) — what the
+	 * home page's "Tonight" shelf times a one-sitting read by. Optional: an API
+	 * behind this build omits it, and no biography makes that shelf.
+	 */
+	bio_word_count?: number;
+	/**
 	 * How many REVIEWED quotations /quotes/<slug>/ lists; 0 means no quote page.
 	 * Language-independent (the quote pages are English). Optional so an API
 	 * running behind this build reads as none.
@@ -969,6 +975,11 @@ export const getBook = async (slug: string, language = 'en', f?: Fetch) =>
 		await localized<BookDetail>((l) => bookApiPath(slug, l), language, f),
 		BOOK_FIELDS
 	);
+
+/** A book in exactly `language` — no English fallback: a 404 means that
+ *  language has no edition (the season calendar must not stand English in). */
+export const getBookExact = async (slug: string, language: string) =>
+	requireFields<BookDetail>(`book ${slug}`, await apiFetch<BookDetail>(bookApiPath(slug, language)), BOOK_FIELDS);
 
 /** A chapter's API path. The build's chapter batcher ($lib/chapterBatch) must
  * recognise exactly this shape, so its test builds requests with it; a

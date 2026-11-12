@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -91,7 +92,7 @@
 					item: {
 						'@type': 'Person',
 						name: a.name,
-						url: absUrl(localizeHref(`/authors/${a.slug}`)),
+						url: absUrl(localizeHref(authorPath(a.slug))),
 						image: a.photo_url ? absUrl(a.photo_url) : undefined,
 						birthDate: a.birth_year ? String(a.birth_year) : undefined,
 						deathDate: a.death_year ? String(a.death_year) : undefined

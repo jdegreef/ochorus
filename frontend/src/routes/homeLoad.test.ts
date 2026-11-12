@@ -31,7 +31,8 @@ const SNAPSHOT: HomeShelves = {
 	authors: [{ slug: 'a', name: 'A', photo_url: '', book_count: 1 }],
 	topics: [],
 	counts: { books: 1, sermons: 0 },
-	audiences: ['young_readers']
+	audiences: ['young_readers'],
+	tonight: []
 };
 
 // The load reads only `fetch`; the rest of the event is irrelevant to it.
@@ -57,7 +58,8 @@ describe('home load', () => {
 			authors: [],
 			topics: [],
 			counts: { books: 0, sermons: 0 },
-			audiences: []
+			audiences: [],
+			tonight: []
 		};
 		expect(await run(async () => new Response('', { status: 404 }))).toEqual(empty);
 		expect(await run(async () => new Response('<!doctype html>', { status: 200 }))).toEqual(empty);

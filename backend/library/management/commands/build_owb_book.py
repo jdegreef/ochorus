@@ -12,7 +12,9 @@ then serialize the row to `fixtures/content/books/<slug>.en.json` (book-import
 skill, "Write its fixture file yourself").
 
 SOURCE. Only OWB's DATA is read — `content/<CODE>/*.json` (the sentence
-records), `data/headings/<CODE>.json`, and the Greek / Hebrew word extracts
+records), `data/headings/<CODE>.json`, `data/summaries/<CODE>.json` (each
+chapter's one-sentence summary, which becomes `Chapter.summary`: the reader's
+"In this chapter" under the title and the page's meta description), and the Greek / Hebrew word extracts
 under `data/grc|hbo/` for paragraphing — never its code, so the rules below are
 a small port of the ones its site builder (`scripts/build_site.py`) applies:
 
@@ -67,6 +69,7 @@ from __future__ import annotations
 import json
 import re
 import subprocess
+from collections import Counter
 from html import escape
 from pathlib import Path
 
@@ -265,6 +268,19 @@ class Source:
             if headings.exists()
             else {}
         )
+        # Source chapter -> its English summary, curled the house way as the
+        # text is. Keyed by the SOURCE numbering; `chapter_summaries` places
+        # each in its English chapter.
+        summaries = root / "data" / "summaries" / f"{code}.json"
+        self.summaries = (
+            {
+                int(n): convert(curl_singles(s[LANGUAGE]), outer_guillemets=False)[0]
+                for n, s in json.loads(summaries.read_text("utf-8"))["summaries"].items()
+                if s.get(LANGUAGE)
+            }
+            if summaries.exists()
+            else {}
+        )
         books = json.loads((root / "data" / "books.json").read_text("utf-8"))["books"]
         self.name = books[code][LANGUAGE]
         #: The book's place in the canon (Genesis 1, Revelation 66): OWB's own order.
@@ -347,6 +363,39 @@ class Source:
         out: dict[int, list[dict]] = {}
         for r in self.records:
             out.setdefault(self.english_chapter(r["refs"][0]), []).append(r)
+        return out
+
+    def chapter_summaries(self) -> dict[int, str]:
+        """{English chapter: its summary}. OWB keys a summary by the SOURCE
+        chapter, so where the Hebrew numbers chapters otherwise an English
+        chapter takes the summary of the source chapter most of its verses come
+        from, then that of any source chapter printed wholly inside it:
+
+        * Hebrew Numbers 17:1-15 is English 16:36-50 and 17:16-28 English 17,
+          so English 16 keeps Numbers 16's and English 17 takes Hebrew 17's;
+        * Hebrew Joel 3 is English 2:28-32, so Joel 2 carries both its own
+          summary and Hebrew 3's, and English Joel 3 is Hebrew 4;
+        * Hebrew Malachi 3:19-24 is all of English Malachi 4, which takes
+          Hebrew 3's summary, as English 3 does;
+        * a one-verse shift (Hebrew Genesis 32:1 is English 31:55) moves nothing.
+        """
+        # English chapter -> Counter(source chapter -> verses), and back.
+        into: dict[int, Counter] = {}
+        spread: dict[int, set[int]] = {}
+        for r in self.records:
+            for vid in r["refs"]:
+                if self.english.get(vid) == []:
+                    continue  # a psalm title: no English verse to count
+                source, english = verse_key(vid)[0], self.english_chapter(vid)
+                into.setdefault(english, Counter())[source] += 1
+                spread.setdefault(source, set()).add(english)
+        out: dict[int, str] = {}
+        for english, sources in sorted(into.items()):
+            main = sources.most_common(1)[0][0]
+            whole = sorted(s for s in sources if s != main and spread[s] == {english})
+            parts = [self.summaries[s] for s in sorted([main, *whole]) if s in self.summaries]
+            if parts:
+                out[english] = " ".join(parts)
         return out
 
     def _words(self, chapter: int) -> list[dict]:
@@ -513,28 +562,37 @@ class Command(BaseCommand):
         meta = json.loads((editorial / "book.json").read_text("utf-8"))
         source = Source(opts["owb"].resolve(), code)
 
+        # (title, body, summary): the introduction and conclusion are Ochorus's
+        # own and carry no summary; each Bible chapter carries OWB's.
         bodies = [
             (
                 "Introduction",
                 source.embed((editorial / "introduction.html").read_text("utf-8")),
+                "",
             )
         ]
         # "Psalm 23", not "Psalms 23": a chapter of the book can have its own label.
         label = meta.get("chapter_label", source.name)
+        summaries = source.chapter_summaries()
         bodies += [
-            (f"{label} {chapter}", source.chapter_html(chapter, records))
+            (
+                f"{label} {chapter}",
+                source.chapter_html(chapter, records),
+                summaries.get(chapter, ""),
+            )
             for chapter, records in sorted(source.chapters().items())
         ]
         bodies.append(
             (
                 "Conclusion",
                 source.embed((editorial / "conclusion.html").read_text("utf-8")),
+                "",
             )
         )
         with transaction.atomic():
             self._write(meta, source, bodies)
 
-    def _write(self, meta: dict, source: Source, bodies: list[tuple[str, str]]) -> None:
+    def _write(self, meta: dict, source: Source, bodies: list[tuple[str, str, str]]) -> None:
         try:
             author = Author.objects.get(slug=AUTHOR_SLUG)
         except Author.DoesNotExist:
@@ -578,7 +636,7 @@ class Command(BaseCommand):
         )
         book.chapters.all().delete()
         total = 0
-        for order, (title, body) in enumerate(bodies, start=1):
+        for order, (title, body, summary) in enumerate(bodies, start=1):
             cleaned = clean_fragment(body)
             curled, _ = convert(cleaned, outer_guillemets=False)
             assert_punctuation_only(cleaned, curled, f"{slug} {title}")
@@ -587,6 +645,7 @@ class Command(BaseCommand):
                 order=order,
                 title=title,
                 body_html=settled_chapter_body(slug, order, curled),
+                summary=summary,
             )
             total += chapter.word_count
         self.stdout.write(

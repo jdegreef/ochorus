@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { authorPath } from '$lib/originals';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -52,7 +53,7 @@
 	     the text and the bio gets the full card width. -->
 	<div class="bio-row flex flex-col gap-4 sm:flex-row sm:gap-5">
 		<a
-			href={localizeHref(`/authors/${author.slug}`)}
+			href={localizeHref(authorPath(author.slug))}
 			data-sveltekit-preload-data="hover"
 			class="bio-pic shrink-0 hover:no-underline"
 		>
@@ -72,7 +73,7 @@
 				     space between the name and the CTA is clickable too. Links that
 				     go SOMEWHERE ELSE (the book covers) sit above it with z-10. -->
 				<a
-					href={localizeHref(`/authors/${author.slug}`)}
+					href={localizeHref(authorPath(author.slug))}
 					data-sveltekit-preload-data="hover"
 					class="text-text after:absolute after:inset-0 after:content-[''] hover:underline"
 					>{author.name}</a
@@ -102,7 +103,7 @@
 					</span>
 				{/if}
 			</h2>
-			<a href={localizeHref(`/authors/${author.slug}`)} class="text-small font-semibold text-accent">
+			<a href={localizeHref(authorPath(author.slug))} class="text-small font-semibold text-accent">
 				{#if author.book_count > 0}
 					{author.book_count}
 					{author.book_count === 1 ? t('bios.booksInLibraryOne') : t('bios.booksInLibraryMany')}
@@ -140,7 +141,7 @@
 	     actually a biography to go and read. -->
 	{#if author.book_count > 0 && author.bio}
 		<a
-			href={localizeHref(`/authors/${author.slug}`)}
+			href={localizeHref(authorPath(author.slug))}
 			class="mt-1.5 hidden text-small font-semibold text-accent sm:inline-block"
 		>
 			{t('bios.readMore')} <Arrow />
@@ -178,7 +179,7 @@
 				{/each}
 				{#if shelf.length > SHELF_MAX}
 					<a
-						href={localizeHref(`/authors/${author.slug}`)}
+						href={localizeHref(authorPath(author.slug))}
 						class="relative z-10 flex w-16 shrink-0 items-center justify-center rounded-card border border-dashed border-border text-small font-semibold text-muted transition-colors hover:border-accent hover:text-accent hover:no-underline"
 						style="aspect-ratio: 3 / 4"
 						title={t('bios.moreBooks')}
