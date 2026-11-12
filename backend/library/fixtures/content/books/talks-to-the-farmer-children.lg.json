@@ -1,0 +1,376 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "lg",
+  "title": "Ebigambo eri Omulimi (Eri Abaana)",
+  "subtitle": "",
+  "description": "Charles Spurgeon yalaba amazima ga Katonda nga gakwese mu nnimiro ey’abulijjo — ennimiro ejjudde omuddo, ensigo z’omusizi, akamera akasooka mu kiseera ky’okumera, endiga nga zisalibwa ebyoya, n’etterekero mu kiseera ky’amakungula. Ekitabo kino eky’abaana kizzaawo ebifaananyi bye eby’oku nnimiro mu ssuula ennyimpi era ennyangu, ez’okusomera abaana mu ddoboozi: olunyiriri lwa Bayibuli, akagero akatono okuva ku nnimiro, ekintu kimu kye kitegeeza gy’oli, n’essaala ennyimpi okumaliriza.",
+  "qa": [
+   {
+    "question": "Ekitabo Ebigambo eri Omulimi (Eri Abaana) kyogera ku ki?",
+    "answer": "Kye kitabo kya Charles Spurgeon, Ebigambo eri Omulimi, ekyategekebwa abaana. Buli ssuula ennyimpi etwala ekifaananyi kimu okuva mu bulamu bw’oku nnimiro — olukomera olumenyese, omusizi ng’asiga ensigo, akamera akasooka, endiga nga zisalibwa ebyoya, amakungula — n’eraga mpola kye kituyigiriza ku Katonda, mu bigambo ebyangu eri abaana abato."
+   },
+   {
+    "question": "Charles Spurgeon yali ani?",
+    "answer": "Yali mubuulizi omumanyifu eyabeeranga mu London edda ennyo. Yali ayagala nnyo okunnyonnyola amazima amanene agakwata ku Katonda ng’akozesa ebintu eby’abulijjo nga ennimiro, obudde n’amakungula. Eyo y’ensonga lwaki engero ze ez’oku nnimiro zikwata bulungi nnyo ku baana."
+   },
+   {
+    "question": "Buli ssuula etegekeddwa etya?",
+    "answer": "Buli ssuula nnyimpi era ekoleddwa okusomebwa mu ddoboozi. Etandika n’olunyiriri lwa Bayibuli, n’enyumya akagero akatono okuva ku nnimiro, n’eraga ekintu kimu ekyangu kye kitegeeza gy’oli, n’ekomekkereza n’essaala ennyimpi."
+   },
+   {
+    "question": "Ekitabo kino kya baani?",
+    "answer": "Kya baana — okusomerwa omukulu mu ddoboozi, oba okusomebwa omwana omukulu ku lulwe. Ekitabo kya Spurgeon ekijjuvu, Ebigambo eri Omulimi, nakyo kiriwo eri abasomi abakulu, wamu n’ekitabo ekyategekebwa abavubuka."
+   },
+   {
+    "question": "Lwaki kikozesa engero z’oku nnimiro okuyigiriza ku Katonda?",
+    "answer": "Kubanga ne Yesu bwe yakola — olugero lwe olw’omusizi eyasiga ensigo lwe lumu ku ngero ezisinga okumanyibwa mu Bayibuli. Ekifaananyi ky’osobola okulaba, gamba ensigo oba endiga oba amakungula, kiyamba omwana okujjukira amazima okusinga ennyo okunnyonnyola okuwanvu."
+   },
+   {
+    "question": "Engero ezimu eziri mu kitabo kino ze ziruwa?",
+    "answer": "Kigoberera omwaka gw’okulima. Mulimu ennimiro ejjudde omuddo omusajja omugayaavu gye yaleka awo, omulimi ng’asiga ensigo ze, omusulo nga gusaanuuka ne kujja ekiseera ky’okumera, akamera akasooka nga kasindika okuva mu ttaka, endiga nga zisalibwa ebyoya, Luusi omwavu ng’alonda ebisigalira by’eŋŋaano, n’amakungula nga gakuŋŋaanyizibwa bulungi mu tterekero. Buli kagero kayigiriza ekintu kimu ekyangu ku Katonda."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Charles H. Spurgeon’s Talks to the Farmer, which is in the public domain. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 1,
+  "title": "Ennimiro y’Omugayaavu",
+  "body_html": "<blockquote>“Nayita ku nnimiro y’omugayaavu, nga yonna ejjudde omuddo n’amaggwa.” — okuva mu Engero 24</blockquote> <p>Lumu Kabaka Sulemaani omugezi yagenda okutambulako, n’ayimirira okutunuulira ennimiro entono. Woowe — nga yali eyonoonese! Omuddo n’amaggwa ebisoya byali bimeze buli wamu. Ettaka lyali terikyalabika bulungi.</p> <p>Kaakano, omusajja eyali nannyini nnimiro eyo teyali mubi. Teyasigamu wadde akamuddo kamu. Kale lwaki yajjula omuddo bw’etyo?</p> <p>Kino kye ky’okuddamu, era kijja kukwewuunyisa katono. Teyakola kintu kyonna! Yali mugayaavu. Teyakoolanga muddo, era teyasiganga nsigo nnungi. Era omanyi ki? Ennimiro tesigala nkalu. Bw’otasigamu bimera birungi, omuddo gumeramu gwokka. Tewali yeetaaga kusiga muddo — gujja bujja.</p> <p>Omutima gwo gufaanana katono n’ennimiro eyo. Ebirungi by’okola — okusaba, okuba ow’ekisa, okwogera amazima, okugondera — biringa ebimera ebirungi ebikula. Naye bw’olekera awo okukola ebirungi n’otuula buti, ebintu ebirala bimeramu, nga bimera byokka. Okunyiiga. Ebigambo ebitali bya kisa. Okwerabira Katonda.</p> <p>N’olwekyo tolinda! Toyogera nti, “Nja kuba mulungi enkya.” Omugayaavu bulijjo yagambanga nti “enkya,” ennimiro ye yonna n’ejjula omuddo. Siga ensigo ennungi leero — ekigambo eky’ekisa, essaala entono — ogireke ekule.</p> <p><em>Katonda omwagalwa, nnyamba obutaba mugayaavu. Nnyamba okusiga ebirungi mu mutima gwange leero, nneme kulinda okutuusa enkya. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kabaka Sulemaani yalaba ki bwe yayita ku nnimiro y’omugayaavu?",
+    "answer": "Ennimiro eyonoonese, ejjudde omuddo n’amaggwa ebisoya, nga bingi nnyo ne kiba nti ettaka lyali terikyalabika."
+   },
+   {
+    "question": "Omugayaavu teyasigangamu muddo na gumu. Kale lwaki ennimiro ye yali ejjudde omuddo?",
+    "answer": "Kubanga teyakola kintu kyonna. Teyakoolanga muddo era teyasiganga nsigo nnungi, era ennimiro tesigala nkalu — omuddo gumeramu gwokka."
+   },
+   {
+    "question": "Nsigo ki ennungi gy’oyinza okusiga mu mutima gwo leero, mu kifo ky’okulinda okutuusa enkya?",
+    "answer": "Essuula eno etuyigiriza nti: toyogera nti “Nja kuba mulungi enkya.” Siga ensigo ennungi leero — ekigambo eky’ekisa oba essaala entono — ogireke ekule."
+   }
+  ],
+  "word_count": 181
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 2,
+  "title": "Olukomera Olumenyese",
+  "body_html": "<blockquote>“Nayita ku nnimiro y’omugayaavu, nga ejjudde omuddo, n’olukomera lwayo olw’amayinja nga lugudde.” — okuva mu Engero 24</blockquote> <p>Lumu Kabaka Sulemaani omugezi yagenda okutambulako. N’ayimirira ku mabbali g’ennimiro entono, n’agitunuulira okumala akaseera kanene.</p> <p>Yali eyonoonese! Omuddo n’amaggwa ebisoya byali bimeze buli wamu. Era olukomera olw’amayinja olwali lwetoolodde ennimiro lwali lugudde, nga lulimu ebituli ebinene.</p> <p>Kaakano, omusajja eyali nannyini nnimiro eyo teyali mubi. Olukomera <em>teyalumenya</em>. Ekyo kye kintu ekisesa. Yali mugayaavu bugayaavu. Ejjinja bwe lyagwangamu, ng’agamba nti, “Nja kululongoosa enkya.” Naye enkya bwe yatuukanga, ng’addamu nate nti, “Nja kululongoosa enkya.” Olukomera ne lusigala nga lumenyese.</p> <p>Era omanyi ekituuka ku nnimiro olukomera lwayo bwe lumenyeka? Buli kimu kiyingira! Endiga n’embuzi zitaayaaya ne ziyita mu bituli, ne zirya ebimera byonna ebirungi. Empewo ereeta omuddo, ne gubuna wonna. Era enkuba bw’etonnya ennyo, tewaba lukomera lukwata ttaka eddungi, ne litwalibwa amazzi.</p> <p>Woowe, omusajja oyo omugayaavu yafiirwa ennimiro ye yonna — si lwa kuba nti yakola ekibi, wabula lwa kuba nti <em>teyakola kintu kyonna n’akatono.</em></p> <p>Omutima gwo nagwo gulina olukomera. Lukoleddwa mu bintu ebirungi ebikukuuma: okusaba, okuwuliriza abantu abakuyigiriza ebya Katonda, n’okuba omuvumu okugamba nti “nedda” ekintu bwe kiba nga kikyamu.</p> <p>Bwe tugayaala ne tuleka ebirungi ebyo, olukomera lufunamu ebituli. Olwo ebintu ebibi ebya buli ngeri ne biyinza okuyingira.</p> <p>N’olwekyo kuuma olukomera lwo nga lunywevu! Era ejjinja bwe liba liguddemu, tekikwetaagisa kuddaabiriza buli kimu leero. Londa ejjinja limu bulimu, olizzeeyo mu kifo kyalyo.</p> <p><em>Katonda omwagalwa, nnyamba okukuuma olukomera olulungi olwetoolodde omutima gwange. Ejjinja bwe ligwamu, nnyamba okulizzaayo amangu ddala. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyali kitali bulungi ku lukomera olwali lwetoolodde ennimiro y’omugayaavu?",
+    "answer": "Lwali lugudde, nga lulimu ebituli ebinene, kubanga buli ejjinja lwe lyagwangamu ng’agamba nti, “Nja kululongoosa enkya.”"
+   },
+   {
+    "question": "Kiki ekyatuuka ku nnimiro olukomera bwe lwamenyeka?",
+    "answer": "Endiga n’embuzi zaayingira ne zirya ebimera ebirungi, omuddo ne guyingira, era enkuba ey’amaanyi n’etwala ettaka eddungi."
+   },
+   {
+    "question": "Kiki ekiyamba “olukomera” olwetoolodde omutima gwo okuba olunywevu?",
+    "answer": "Essuula eyogera ku kusaba, okuwuliriza abantu abakuyigiriza ebya Katonda, n’okuba omuvumu okugamba nti “nedda” ku kikyamu. Ejjinja bwe ligwamu, lizzeeyo limu bulimu."
+   }
+  ],
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 3,
+  "title": "Omusulo n’Okusaanuuka",
+  "body_html": "<blockquote>“Ye aleeta omuzira. Aweereza ekigambo kye, omuzira ne gusaanuuka.” — okuva mu Zabbuli 147</blockquote> <p>Wali olabye ku nsi ku makya ag’obutiti obungi? Buli kimu kiba kikaluba, kyeru, era nga kikutte omusulo. Ebidiba by’amazzi bifuuka bbalaafu. Ettaka likaluba ng’ejjinja.</p> <p>Oluvannyuma lw’akaseera, empewo ey’ebbugumu n’ekunta. Enjuba n’evaayo. Era mu ssaawa ntono zokka, bbalaafu yonna n’omusulo bisaanuuka ne bifuuka amazzi, ne kiba nga tebyaliwo n’akatono!</p> <p>Ani akola ekyo? Bayibuli egamba nti Katonda y’akikola. Ye aleeta omusulo, era ye aweereza empewo ey’ebbugumu egusaanuusa. Byombi biva gy’ali.</p> <p>Ekintu ekifaanana bwe kityo kiyinza okubaawo ne munda mu ffe. Oluusi tukola ekintu ekikyamu, oluvannyuma ne tukiwulira. Omutima gwaffe ne gunnyogoga, ne gunakuwala, ne gwejjusa. Okuwulira okwo okw’ennaku n’okwejjusa kufaanana katono n’omusulo.</p> <p>Naye olugero terukoma awo! Bwe tugamba Katonda nti twejjusa, atuweereza okwagala kwe ng’empewo ey’ebbugumu ey’omu kiseera ky’okumera. Kusaanuusa ennaku ennyogovu, n’atusonyiwa, era omutima gwaffe ne guddamu okusanyuka n’okubuguma.</p> <p>Katonda yekka y’ayinza okusaanuusa omutima bwe gutyo. Ffe tetuyinza kukikola ffekka. N’olwekyo bw’onoowuliranga ng’onnyogoga era nga weejjusa munda olw’ekintu kye wakola, tosigala ng’okaluba ng’omusulo. Tegeeza Katonda. Ayagala nnyo okuweereza empewo ey’ebbugumu.</p> <p><em>Katonda omwagalwa, omutima gwange bwe gunnyogoga ne gwejjusa, nkwegayiridde, weereza okwagala kwo okw’ebbugumu kugusaanuuse, era onsonyiwe. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekituuka ku musulo empewo ey’ebbugumu bw’ekunta n’enjuba n’evaayo?",
+    "answer": "Mu ssaawa ntono zokka, bbalaafu yonna n’omusulo bisaanuuka ne bifuuka amazzi, ne kiba nga tebyaliwo n’akatono."
+   },
+   {
+    "question": "Ani aleeta omusulo n’empewo ey’ebbugumu egusaanuusa?",
+    "answer": "Katonda. Essuula egamba nti byombi biva gy’ali."
+   },
+   {
+    "question": "Bw’owulira ng’onnyogoga era nga weejjusa munda olw’ekintu kye wakola, oyinza kukola ki?",
+    "answer": "Essuula eno etuyigiriza nti: tosigala ng’okaluba ng’omusulo — gamba Katonda nti weejjusa. Ayagala nnyo okuweereza okwagala kwe okw’ebbugumu okusaanuusa ennaku n’okukusonyiwa."
+   }
+  ],
+  "word_count": 190
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 4,
+  "title": "Empeke Ekula",
+  "body_html": "<blockquote>“Empeke bw’etagwa mu ttaka, esigala empeke emu yokka. Naye bw’egwa mu ttaka, ekula n’ebala ebibala bingi.” — okuva mu Yokaana 12</blockquote> <p>Teebereza ng’okutte akasigo kamu akatono mu ngalo zo. Kamu kokka.</p> <p>Kati, singa okateeka mu ccupa n’ogiteeka ku kabada, kaleme kubaako kintu kyonna kikatuukako? Oluvannyuma lw’omwaka gumu, wandibadde n’ensigo mmeka? Akasigo kamu kokka! Kandisigadde akasigo kamu akatono, nga kali kokka, emirembe gyonna.</p> <p>Naye singa mu kifo ky’ekyo okasimba mu ttaka? Waliwo ekintu ekyewuunyisa ekibaawo wansi mu ttaka. Akasigo akatono kayatika ne kakyuka — awo ne wamera ekimera ekiwanvu, nga kiriko ensigo empya nnyingi nnyo nnyo! Akasigo kamu kaafuuka ensigo nnyingi, kubanga kaasimbibwa.</p> <p>Yesu yagamba nti afaanana ng’ensigo eyo. Yali mwetegefu okuwaayo obulamu bwe, ng’ensigo egenda mu ttaka — era kubanga yakikola, abantu bangi nnyo nnyo kati basobola okufuna obulamu obuggya ne Katonda. Teyakuuma bulamu bwe ku lulwe yekka. Yabuwaayo, ne bukula ne bufuuka amakungula amanene ennyo ag’abantu abamwagala.</p> <p>Era Yesu yagamba nti naffe tusobola okuba bwe tutyo. Bw’okwata buli kintu ku lulwo wekka — buli kiseera ng’oyagala okusooka, nga togabana na balala — osigala mutono, ng’akasigo akamu mu ccupa. Naye bw’ogaba, n’ogabana, n’olowooza ku balala, obulamu bwo bukula ne bufuuka ekintu ekinene era ekirungi ennyo.</p> <p>Okugaba si kufiirwa. Okugaba kye kireetera ebintu ebirungi okukula.</p> <p><em>Katonda omwagalwa, weebale olwa Yesu, eyawaayo obulamu bwe ku lwange. Nnyamba okugaba n’okugabana, ebintu ebirungi bisobole okukula. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Singa okuuma akasigo kamu bulungi mu ccupa, oluvannyuma lw’omwaka gumu wandibadde n’ensigo mmeka?",
+    "answer": "Akasigo kamu kokka. Kandisigadde akasigo kamu akatono, nga kali kokka, emirembe gyonna."
+   },
+   {
+    "question": "Lwaki akasigo akaasimbibwa mu ttaka kaafuuka ensigo nnyingi?",
+    "answer": "Kubanga kaasimbibwa. Kayatika ne kakyuka, awo ne wamera ekimera ekiwanvu nga kiriko ensigo empya nnyingi."
+   },
+   {
+    "question": "Kintu ki kimu ky’oyinza okukola okugaba oba okugabana n’abalala wiiki eno?",
+    "answer": "Essuula eno etuyigiriza nti: bw’okwata buli kintu ku lulwo wekka, osigala mutono ng’akasigo mu ccupa, naye okugaba n’okugabana biyamba ebintu ebirungi okukula. “Okugaba si kufiirwa.”"
+   }
+  ],
+  "word_count": 222
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 5,
+  "title": "Omusizi",
+  "body_html": "<blockquote>“Omulimi yagenda okusiga ensigo ze.” — okuva mu Lukka 8</blockquote> <p>Waaliwo omulimi eyagenda okusiga ensigo. Yayingiza omukono mu nsawo ye, n’akwata olubatu olunene, n’azimansa mu nnimiro ye. Ka tugoberere ensigo ezo tulabe gye zaagwa!</p> <p>Ensigo ezimu zaagwa ku <strong>kkubo eggumu</strong>, abantu bonna we baatambuliranga. Ekkubo lyali ggumu nnyo, ensigo ne zitasobola kuyingira mu ttaka. Awo ebinyonyi ne bikka wansi mangu — ne bizinoga, ne bizinoga — ne bizirya zonna!</p> <p>Ensigo endala zaagwa ku <strong>ttaka ery’amayinja</strong>, awaali ettaka ettono. Ensigo zino zaamera mangu! Naye emirandira gyazo tegyasobola kukka wansi wala. Kale omusana ogwokya bwe gwavaayo, ebimera ebitono ne bikala ne bifa.</p> <p>Ensigo endala zaagwa awaali <strong>amaggwa n’omuddo</strong>. Ensigo zaatandika okumera — naye omuddo ne gumera mangu okuzisinga era ne guwanvuwa okuzisinga, ne guzinyigiriza, okutuusa ebimera ebitono lwe byasigala nga tebirina we bikulira wadde omusana.</p> <p>Naye ensigo endala zaagwa mu <strong>ttaka eddungi era eggonvu.</strong> Ensigo zino ne zisimba emirandira wansi wala, ne ziwanvuwa waggulu, ne zibala empeke empya nnyingi nnyo nnyo. Nga gaali makungula malungi!</p> <p>Yesu yagera olugero luno, n’oluvannyuma n’atubuulira amakulu gaalwo. Ensigo ky’ekigambo kya Katonda. Era ettaka ery’enjawulo lifaanana ng’emitima egy’enjawulo.</p> <p>Omutima gwo gufaanana ng’ekkubo eggumu, nga gulina ebirala bingi nnyo ne gutafuna budde kuwuliriza? Oba ng’ettaka ery’amayinja, ne gusanyuka akaseera katono, oluvannyuma ne gwerabira? Oba ng’ettaka eririmu omuddo, nga gujjudde ebintu ebirala bingi? Oba gufaanana ng’ettaka eddungi, nga gwetegefu okuwuliriza n’okukula?</p> <p>Wuuno ekyama ekisanyusa: n’ettaka eggumu lisobola okulimibwa ne lifuuka eggonvu era eddungi. Bw’omusaba, Katonda ajja kuteekateeka omutima gwo, ekigambo kye kisobole okukula ne kiba kinene era kya maanyi munda yo.</p> <p><em>Katonda omwagalwa, nkwegayiridde fuula omutima gwange ng’ettaka eddungi, nga gwetegefu okukuwuliriza n’okukula. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekyatuuka ku nsigo ezaagwa ku kkubo eggumu?",
+    "answer": "Ekkubo lyali ggumu nnyo ensigo ne zitasobola kuyingira mu ttaka, awo ebinyonyi ne bikka wansi mangu ne bizirya zonna."
+   },
+   {
+    "question": "Kiki ekyatuuka ku nsigo ezaagwa mu ttaka eddungi era eggonvu?",
+    "answer": "Zaasimba emirandira wansi wala, ne ziwanvuwa waggulu, ne zibala empeke empya nnyingi nnyo nnyo — amakungula amangi ennyo."
+   },
+   {
+    "question": "Ttaka lya ngeri ki ly’oyagala omutima gwo gubeere, era gusobola gutya okwetegeka?",
+    "answer": "Essuula eno etuyigiriza nti: ensigo ky’ekigambo kya Katonda, era n’ettaka eggumu lisobola okufuuka eggonvu. Bwe tumusaba, Katonda ajja kuteekateeka emitima gyaffe, ekigambo kye kisobole okukula."
+   }
+  ],
+  "word_count": 268
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 6,
+  "title": "Ekiseera ky’Okumera mu Mutima",
+  "body_html": "<blockquote>“Ensi ogirabirira n’ogifukirira. Ebimera ebito ebikula obiwa omukisa.” — okuva mu Zabbuli 65</blockquote> <p>Ekiseera ky’obutiti kiba kinnyogovu, era ettaka liba lya kitaka, nga lyereere, nga temuli kantu. Kirabika nga tewali kibaawo n’akatono.</p> <p>Naye oluvannyuma ekiseera ky’okumera ne kituuka. Era lumu, bw’otunuulira bulungi nnyo, ojja kukiraba — akamera akatono akakiragala, nga kasindika okuyita mu ttaka erinnyogovu era eggumu. Katono nnyo ddala. Oyinza n’okukalinnyako nga tokalabye. Naye kalamu! Era akamera ako akatono akakiragala ye ntandikwa ddala ey’ennimiro yonna ey’eŋŋaano.</p> <p>Bw’otandika okwagala Katonda, okwagala okwo kuyinza okuba okutono bwe kutyo. Oboolyawo osaba essaala entono. Oboolyawo oyagala okuba omulungi. Oboolyawo okkiriza Yesu katono nnyo. Kiyinza okukuwulikika nga kitono nnyo nga tekirina makulu.</p> <p>Naye kirina amakulu mangi nnyo! Katonda alaba akamera ako akatono akakiragala mu mutima gwo, era kimusanyusa nnyo. Omulimi talinnyirira kamera katono olw’okuba tekannaba kufuuka kimera kinene — akalabirira, n’akafukirira, n’akayamba okukula. Ekyo kyennyini Katonda ky’akola gy’oli.</p> <p>Kale tolowoozanga nti okwagala kwo eri Katonda kutono nnyo nga tekulina mugaso. Eŋŋaano esinga obunene n’obuwanvu mu nnimiro yonna yatandika ng’akamera kamu akatono akakiragala. Weeyongere okukyukira Katonda, ng’ekimera ekitono bwe kikyukira omusana, era ajja kukuyamba okukula.</p> <p><em>Katonda omwagalwa, weebale kubanga n’okwagala kwange okutono ennyo gy’oli kulina amakulu. Nkwegayiridde, kuyambe kukule, kweyongere okuba okunene era okw’amaanyi. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kantu ki akatono k’oyinza okulaba mu nnimiro ng’ekiseera ky’okumera kituuse?",
+    "answer": "Akamera akatono akakiragala nga kasindika okuyita mu ttaka erinnyogovu era eggumu — ye ntandikwa ddala ey’ennimiro yonna ey’eŋŋaano."
+   },
+   {
+    "question": "Omulimi omulungi akola ki ku kamera akatono akatannaba kufuuka kimera kinene?",
+    "answer": "Takalinnyirira. Akalabirira, n’akafukirira, n’akayamba okukula."
+   },
+   {
+    "question": "Wali owuliddeko ng’okwagala kwo eri Katonda kutono nnyo nga tekulina mugaso?",
+    "answer": "Essuula eno etuyigiriza nti: n’essaala entono oba okukkiriza okutono birina amakulu era bisanyusa Katonda. Eŋŋaano esinga obuwanvu yatandika ng’akamera kamu akatono, era Katonda akuyamba okukula."
+   }
+  ],
+  "word_count": 200
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 7,
+  "title": "Endiga mu Maaso g’Abasala Ebyoya",
+  "body_html": "<blockquote>“Yasirika, ng’endiga entono.” — okuva mu Isaaya 53</blockquote> <p>Wali olabye ku ndiga erina ebyoya ebingi ebinene? Omulundi gumu buli mwaka, omulimi asala buli ndiga enviiri. Kino kiyitibwa okusala ebyoya. Asalako ebyoya byonna ebizito, endiga ewulire obunnyogovu era ebeere bulungi mu kiseera eky’ebbugumu.</p> <p>Kaakano, endiga ey’amagezi ekola ekintu eky’amagezi ng’esalibwa ebyoya. Egalamira nga ekkakkanye nnyo, nnyo — <em>tenyeenya.</em> Era olw’okuba tenyeenya, makansi ensongovu tezigirumya n’akatono. Naye endiga bw’esamba, n’eyeenyeenya, n’erwana — woowe! — olwo w’esobolera okusalibwako. Okweyenyeenya kwe kulumya, so si makansi.</p> <p>Bayibuli egamba nti oluusi Katonda aba ng’omulimi oyo omukkakkamu, ffe ne tuba ng’endiga. Oluusi Katonda atuggyako ekintu kye twagala. Kiyinza okutunakuwaza ennyo, ng’endiga bw’eggyibwako ebyoya byayo ebibuguma.</p> <p>Naye wuliriza — waliwo ebintu bisatu by’olina okujjukira.</p> <p>Katonda asala ebyoya mu kiseera <em>eky’ebbugumu</em> kyokka, tasala mu mpewo ey’obunnyogovu obungi. Kino kitegeeza nti Katonda amanyi ekiseera ekituufu, era tajja kukuleetera kintu kisinga ky’osobola okugumira.</p> <p>Ebyoya bulijjo <em>bikula nate.</em> Katonda taggyawo kintu nga talina kirungi kya kukuwa.</p> <p>Era kikulumira kitono nnyo bw’osigala <em>ng’osirise</em> n’omwesiga, mu kifo ky’okusamba n’okulwana.</p> <p>Era omanyi ani eyagalamira ng’asirise ddala, ng’endiga entono? Yesu! Abantu bwe baamuyisa obubi, yasirika, n’aba muteefu, byonna olw’okuba yatwagala. Kale ekintu ekizibu bwe kijja, oyinza okuba omuzira n’osirika, nga Yesu bwe yali.</p> <p><em>Katonda omwagalwa, ekintu bwe kinnakuwaza, nnyamba nsirike nkwesige, kubanga mmanyi nti onjagala. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki omulimi asala ebyoya by’endiga omulundi gumu buli mwaka?",
+    "answer": "Endiga ewulire obunnyogovu era ebeere bulungi mu kiseera eky’ebbugumu, nga tekyalina byoya bizito."
+   },
+   {
+    "question": "Lwaki endiga ey’amagezi egalamira nga tenyeenya ng’esalibwa ebyoya?",
+    "answer": "Kubanga bw’esigala nga tenyeenya, makansi tezigirumya. Okweyenyeenya n’okusamba bye birumya, so si makansi."
+   },
+   {
+    "question": "Ekintu ekinakuwaza bwe kibaawo n’ofiirwa ekintu ky’oyagala, kiki ky’oyinza okujjukira?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda amanyi ekiseera ekituufu, ebyoya bulijjo bikula nate, era kirumya kitono nnyo bwe tusirika ne tumwesiga — nga Yesu, eyasirika n’aba muteefu."
+   }
+  ],
+  "word_count": 210
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 8,
+  "title": "Mu Nnimiro y’Essubi",
+  "body_html": "<blockquote>“Akuza omuddo okuliisa ensolo.” — okuva mu Zabbuli 104</blockquote> <p>Lowooza ku muddo. Gumera buli wamu — mu nnimiro, mu bifo eby’okuzannyiramu, ku mabbali g’ekkubo. Ogutambulirako buli lunaku, era oboolyawo tolowoozangako ku gwo n’akatono.</p> <p>Naye wuuno ekibuuzo: ani akuza omuddo? Tuyinza okugamba nti, “Aa, gumera gwokka.” Naye mu butuufu si bwe kiri. Katonda ye akuza buli kasubi kamu ku kamu. Ali kumpi n’ensi bw’atyo, era akola nnyo bw’atyo okugirabirira.</p> <p>Era lwaki akuza omuddo gwonna ogwo? Bayibuli egamba nti agukuza “okuliisa ensolo” — ente n’endiga, zibeere n’emmere nnyingi. Lowooza ku kino. Katonda akuza emmere y’ensolo, so nga tezisobola na kugamba nti weebale!</p> <p>Kale wuuno ekintu ekyewuunyisa eky’okujjukira: Katonda bw’alabirira obulungi bw’atyo omuddo, n’ente, n’endiga, talisingawo nnyo okulabirira <em>ggwe?</em></p> <p>Wali okimanyi nti buli kasubi akatono kafuna ettondo lyako ery’omusulo ku makya? Si ttondo limu ddene ery’ennimiro yonna — wabula ettondo ttono eri buli kamu. Bw’atyo Katonda bw’awa ebintu bye byetaaga n’obwegendereza. Era naawe amanyi bulungi ddala ky’oyetaaga.</p> <p>Ne bw’owulira ng’oli muto, oba ng’olowooza nti tewali akulaba, Katonda akulaba. Tewali lunaku na lumu lwe yali akwerabidde.</p> <p><em>Katonda omwagalwa, weebale okulabirira n’omuddo. Weebale okundabirira. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ani akuza omuddo?",
+    "answer": "Katonda. Essuula egamba nti omuddo tegumera gwokka mu butuufu — Katonda ye akuza buli kasubi kamu ku kamu."
+   },
+   {
+    "question": "Katonda akuza omuddo ku lwa ani?",
+    "answer": "Ku lw’ensolo — ente n’endiga — zibeere n’emmere nnyingi, wadde nga tezisobola na kugamba nti weebale."
+   },
+   {
+    "question": "Katonda bw’awa buli kasubi ettondo lyako ery’omusulo, kino kikulaga ki ku ngeri gy’akulabiriramu?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda bw’alabirira obulungi bw’atyo omuddo n’ensolo, talisingawo nnyo okukulabirira ggwe? Akulaba, era tewali lunaku na lumu lwe yali akwerabidde."
+   }
+  ],
+  "word_count": 180
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 9,
+  "title": "Essanyu ly’Amakungula",
+  "body_html": "<blockquote>“Basanyuka ng’abantu bwe basanyuka mu biseera eby’amakungula.” — okuva mu Isaaya 9</blockquote> <p>Ekiseera kyonna eky’ebbugumu, omulimi akola nnyo. Asiga ensigo. Akoola omuddo. Alinda, alinda, empeke zikule. Kitwala ekiseera kiwanvu nnyo nnyo.</p> <p>Awo, ku nkomerero, ne wajja olunaku olusinga ennaku zonna obulungi — amakungula! Empeke zifuuse za kyenvu, era zengedde. Buli muntu ayamba okuzikungula. Etterekero lijjula nnyo. Era omulimo bwe guggwa, wabaawo embaga ennene ey’essanyu ey’amakungula, era bonna ne bajaguza wamu.</p> <p>Bayibuli egamba nti abantu ba Katonda nabo bafuna ebiseera eby’essanyu ng’ekiseera ky’amakungula. Era omanyi ekisinga byonna okuleeta essanyu? Kwe kuba nti omuntu atandise okwagala Katonda.</p> <p>Omusajja eyasooka okunyumya engero zino ez’omu nnimiro, Spurgeon, yagamba nti olunaku olwamusanyusa okusinga zonna mu bulamu bwe bwonna lwe lunaku lwe yayamba omuntu omu yekka okumanya Yesu. Yagamba nti yali musanyufu okusinga singa omuntu yali amuwadde obugagga bwonna obw’omu nsi!</p> <p>Era waliwo etteeka ly’abalimi ery’okumanya: <strong>ky’osiga kye okungula.</strong> Omulimi bw’asiga ensigo ennungi ez’eŋŋaano, akungula eŋŋaano ennungi. Kale bw’osiga ebintu ebirungi mu bulamu bwo kaakano — obulungi eri abalala, essaala, n’okwagala Katonda — lumu ojja kufuna amakungula ag’ekitalo era ag’essanyu.</p> <p>Kiki ky’onoosiga leero?</p> <p><em>Katonda omwagalwa, nnyamba buli lunaku okusiga ebintu ebirungi n’okuba omulungi eri abalala, era weebale olw’amakungula ag’essanyu g’okuza mu nze. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kiki ekibaawo ku lunaku lw’amakungula, omulimi bw’amala omulimu gwe?",
+    "answer": "Buli muntu ayamba okukungula empeke eza kyenvu, etterekero lijjula, era wabaawo embaga ennene ey’essanyu ey’amakungula."
+   },
+   {
+    "question": "Spurgeon yagamba nti lunaku ki olwali olusinga essanyu mu bulamu bwe bwonna?",
+    "answer": "Olunaku lwe yayamba omuntu omu yekka okumanya Yesu. Yali musanyufu okusinga singa yali aweereddwa obugagga bwonna obw’omu nsi."
+   },
+   {
+    "question": "Bintu ki ebirungi by’oyinza okusiga mu bulamu bwo leero?",
+    "answer": "Essuula eno etuyigiriza nti: ky’osiga kye okungula. Bw’osiga obulungi eri abalala, essaala, n’okwagala Katonda kaakano, ojja kufuna amakungula ag’ekitalo era ag’essanyu."
+   }
+  ],
+  "word_count": 197
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 10,
+  "title": "Okulonda Ebisigalira",
+  "body_html": "<blockquote>“Mumuleke alonde empeke, era mumuyise bulungi.” — okuva mu lugero lwa Luusi</blockquote> <p>Edda ennyo waaliwo omukazi omuvubuka erinnya lye Luusi. Yali mwavu, era nga talina mmere. Kyeyava akola ekyo abaavu kye baakolanga mu biseera ebyo: yagenda mu nnimiro <em>okulonda ebisigalira.</em></p> <p>Okulonda ebisigalira kwali kutegeeza okutambula emabega w’abakozi b’omu nnimiro, ng’olondawo obutundutundu bw’empeke bwe baasuulanga nga bakola. Ebyo ebisigadde. Gwali mulimu muzibu nnyo: okukutama, n’okukutama nate, okusobola okukuŋŋaanya akatono kokka.</p> <p>Kale, ennimiro Luusi gye yagendamu yali ya musajja mulungi era ow’ekisa, erinnya lye Bowaazi. Bowaazi bwe yalaba Luusi ng’akola nnyo bw’atyo, yakola ekintu ekirungi ennyo ddala. Yagamba abakozi be mu kasirise nti, “Musuulenga empeke endala mu bugenderevu, awo w’anaazisanga. Era mumuyise bulungi.” Yakakasa nti ajja kufuna nnyingi nnyo — era teyamubuulira n’akatono nti ye yali akikoze.</p> <p>Katonda ali nga Bowaazi ow’ekisa. Oboolyawo owulira ng’oli mutono, oba olowooza nti tolina bingi. Naye Katonda alina ebirungi bingi nnyo by’akuterekedde, era ayagala ojje obikuŋŋaanye. Ky’olina okukola kyokka kwe kukutama n’obironda — kwe kugamba, okujja gy’ali, okumuwuliriza, n’okusaba.</p> <p>Era wano waliwo akantu akalungi ennyo: Luusi bwe yamala okukuŋŋaanya ebimala, yatwalako ewaka n’agabirako omuntu eyali alumwa enjala. Katonda bw’ajjuza omutima gwo ebirungi, naawe osobola okubigabirako abalala.</p> <p><em>Katonda omwagalwa, weebale kubanga ondaga ekisa kingi era ompa bingi. Nnyamba okujja gy’oli, n’okugabirako abalala ebirabo byo ebirungi. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Luusi yakola ki mu nnimiro okufuna emmere?",
+    "answer": "Yalonda ebisigalira — ng’atambula emabega w’abakozi, ng’alondawo obutundutundu bw’empeke bwe baasuulanga."
+   },
+   {
+    "question": "Bowaazi yakolera Luusi kintu ki eky’ekisa?",
+    "answer": "Yagamba abakozi be basuule empeke endala mu bugenderevu w’anaazisanga, era bamuyise bulungi — era teyamubuulira nti ye yali akikoze."
+   },
+   {
+    "question": "Oyinza otya “okukuŋŋaanya” ebirabo bya Katonda ebirungi, era ani gw’oyinza okubigabirako?",
+    "answer": "Essuula eno etuyigiriza nti: Katonda wa kisa nga Bowaazi. Tukuŋŋaanya nga tujja gy’ali, nga tumuwuliriza era nga tusaba — era, nga Luusi bwe yatwala emmere ewaka, naffe tusobola okugabirako abalala ebirabo bye ebirungi."
+   }
+  ],
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 11,
+  "title": "Okuwuula",
+  "body_html": "<blockquote>“Tawuula mpeke butamala.” — okuva mu Isaaya 28</blockquote> <p>Eŋŋaano bw’emala okukuŋŋaanyizibwa, wabaawo omulimu omulala gumu ogusigadde, era gulabika ng’ogw’amaanyi katono. Laba, buli mpeke y’eŋŋaano eba esibiddwa munda mu kisusunku ekikalubo ekitalina mugaso. Okuggyamu empeke ennungi, omulimi ateekwa okugikuba — ku! ku! ku! — n’omuggo. Kino kye bayita okuwuula.</p> <p>Kiyinza okulabika ng’omulimi tayisa bulungi eŋŋaano. Naye si bwe kiri! Aba asumulula empeke ennungi, ng’agiggya mu kisusunku ekigyetoolodde. Ateekwa okukikola; bw’atakikola, empeke ennungi yandisigadde nga esibiddwa munda.</p> <p>Oluusi ebintu ebizibu oba eby’ennaku bitutuukako, era oyinza okuwulira katono ng’eŋŋaano ewuulibwa. Naye wano waliwo ebintu bibiri by’olina okujjukira, era byombi bijjudde okubudaabudibwa.</p> <p>Ekisooka: omulimi afaayo okuwuula empeke <em>ennungi</em> zokka. Omuddo aguleka. N’olwekyo ekiseera ekizibu bwe kijja, tekitegeeza nti Katonda akwerabidde. Kitegeeza nti oli wa muwendo nnyo gy’ali, ng’eŋŋaano ennungi.</p> <p>Eky’okubiri: omulimi takuba mpeke butamala, n’akatono! Bulijjo akoma! N’ebiseera ebizibu nabyo tebibeerawo lubeerera. Katonda mukkakkamu era mwegendereza, era tajja kukuleetera kintu kisinga ky’osobola okugumira. Mangu ddala okukuba kukoma, era empeke ennungi n’ebeera mu mirembe.</p> <p><em>Katonda omwagalwa, ebintu ebizibu bwe bintuukako, nnyamba okujjukira nti tonneerabidde, era nti tebijja kubeerawo lubeerera. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lwaki omulimi akuba eŋŋaano n’omuggo?",
+    "answer": "Okusumulula empeke ennungi, ng’agiggya mu kisusunku ekikalubo ekitalina mugaso ekigyetoolodde. Kino kye bayita okuwuula."
+   },
+   {
+    "question": "Omulimi awuula n’omuddo?",
+    "answer": "Nedda. Afaayo okuwuula empeke ennungi zokka, omuddo aguleka."
+   },
+   {
+    "question": "Ekiseera ekizibu oba eky’ennaku bwe kijja, bintu ki bibiri ebiyinza okukuyamba okuwulira obulungi?",
+    "answer": "Ebibudaabuda ebibiri eby’essuula: ekiseera ekizibu tekitegeeza nti Katonda akwerabidde — oli wa muwendo, ng’eŋŋaano ennungi — era tekijja kubeerawo lubeerera, kubanga omulimi bulijjo akoma."
+   }
+  ],
+  "word_count": 175
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "lg"
+  ],
+  "order": 12,
+  "title": "Eŋŋaano mu Tterekero",
+  "body_html": "<blockquote>“Eŋŋaano mugikuŋŋaanyize mu tterekero lyange.” — okuva mu Matayo 13</blockquote> <p>Kino kye kitundu ekisembayo ddala eky’amakungula, era kye kisinga byonna okuba eky’essanyu.</p> <p>Eŋŋaano ennungi bw’eba nga kyaddaaki etuuse, omulimi agikuŋŋaanya yonna n’agitwala mu tterekero, mu bukuumi. Era bw’emala okuyingira munda, tewali kintu kiyinza kugikolako kabi nate. Tewali nkuba. Tewali musulo. Tewali mpewo nnyogovu. Eba mu bukuumi, nkalu era ebuguma, mu kifo kyayo ddala.</p> <p>Yesu yagera olugero olufaanana bwe lutyo. Yagamba nti lumu Katonda alikuŋŋaanya abantu be bonna wamu — abantu okuva mu buli nsi ey’omu nsi yonna, abanene n’abato, abaana n’abakadde — n’abaleeta eka mu mirembe okubeera naye. Ng’eŋŋaano ekuŋŋaanyizibwa mu tterekero.</p> <p>Amaka ago ag’emirembe, ag’essanyu, ag’olubeerera gayitibwa eggulu. Kifo nga tewakyali kukaaba wadde ennaku — wabula okubeera ne Katonda, n’okubeera mu mirembe, emirembe gyonna.</p> <p>N’olwekyo tekitwetaagisa kutya nkomerero n’akatono. Eri buli muntu ayagala Katonda, enkomerero si kintu kya nnaku n’akatono. Efaanana ng’eŋŋaano eyingira mu tterekero kyaddaaki. Kwe kuddayo eka.</p> <p>Onoobeera kitundu ku makungula ga Katonda? Osobola okubeera! Mugambe bugambi nti oyagala kuba wuwe. Olwo, lumu, olikuŋŋaanyizibwa n’otwalibwa eka mu mirembe.</p> <p><em>Katonda omwagalwa, weebale kubanga okuŋŋaanya abantu bo n’obaleeta eka mu mirembe. Njagala kuba wuwo. Nkwegayiridde, nkuumanga kumpi naawe, leero n’emirembe gyonna. Amiina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Omulimi ateeka wa eŋŋaano ennungi bw’eba etuuse?",
+    "answer": "Agitwala mu tterekero mu bukuumi, enkuba, omusulo oba empewo ennyogovu we bitasobola kugikolako kabi."
+   },
+   {
+    "question": "Mu lugero lwa Yesu, baani Katonda b’alikuŋŋaanya wamu ng’eŋŋaano mu tterekero?",
+    "answer": "Abantu be bonna, okuva mu buli nsi — abanene n’abato, abaana n’abakadde — abaleetebwa eka mu mirembe okubeera naye."
+   },
+   {
+    "question": "Lwaki abantu abaagala Katonda tebeetaaga kutya nkomerero?",
+    "answer": "Essuula eno etuyigiriza nti: eri buli muntu ayagala Katonda, enkomerero efaanana ng’eŋŋaano eyingira mu tterekero — kwe kuddayo eka mu ggulu, mu mirembe emirembe gyonna. Buli muntu asobola okugamba Katonda nti ayagala kuba wuwe."
+   }
+  ],
+  "word_count": 193
+ }
+}
+]
