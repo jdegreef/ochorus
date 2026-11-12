@@ -26,9 +26,10 @@
  * client-side — a prerender would freeze on the build day.
  */
 import { localDayNumber } from './dailyArticles';
-import { adventStart, easterDay } from './liturgical';
+import { adventStart, dayNumber, easterDay } from './liturgical';
 import { chapterPath } from './editionHref';
-import { getBook, listSermons } from './library-public';
+import { ApiError } from './api';
+import { getBookExact, listSermons } from './library-public';
 
 export type CalendarSeason = 'advent' | 'lent';
 
@@ -120,7 +121,7 @@ export interface SeasonWindow {
 /** Advent Sunday to Christmas Eve, a door every day. */
 export function adventWindow(year: number): SeasonWindow {
 	const start = adventStart(year);
-	return { season: 'advent', year, days: range(start, Date.UTC(year, 11, 24) / DAY_MS) };
+	return { season: 'advent', year, days: range(start, dayNumber(year, 11, 24)) };
 }
 
 /** Ash Wednesday (Easter − 46) to Holy Saturday, without the Sundays: forty. */
@@ -162,14 +163,17 @@ export const doorState = (day: number, today: number): DoorState =>
 	day < today ? 'open' : day === today ? 'today' : 'locked';
 
 /** What the reader's language has, for resolving doors: its sermons, and the
- *  books asked for (only an edition truly in that language — `getBook` falls
- *  back to English, which must not stand in for it). */
+ *  books asked for (only an edition truly in that language — no English
+ *  fallback stands in for it). */
 export interface Shelf {
 	sermons: ReadonlyMap<string, { title: string; scripture_ref: string }>;
 	books: ReadonlyMap<
 		string,
 		{ title: string; has_modern_edition?: boolean; chapters: readonly { order: number; title: string }[] }
 	>;
+	/** A book fetch failed for a reason other than "not in this language":
+	 *  the shelf is used, but not kept, so the next look retries it. */
+	partial?: boolean;
 }
 
 export interface Door {
@@ -208,6 +212,7 @@ export function resolveDoors(
 	today: number
 ): Door[] {
 	const fitted = fitEntries(entries, w.days.length);
+	const en = lang === 'en';
 	const doors: Door[] = [];
 	w.days.forEach((day, i) => {
 		const r = fitted[i]?.reading;
@@ -221,7 +226,7 @@ export function resolveDoors(
 				title: s.title,
 				source: '',
 				ref: s.scripture_ref,
-				owbRef: lang === 'en' ? s.scripture_ref : '',
+				owbRef: en ? s.scripture_ref : '',
 				kind: 'sermon',
 				slug: r.slug,
 				chapter: 0,
@@ -232,7 +237,6 @@ export function resolveDoors(
 		const b = shelf.books.get(r.book);
 		const c = b?.chapters.find((ch) => ch.order === r.chapter);
 		if (!b || !c) return;
-		const en = lang === 'en';
 		doors.push({
 			...base,
 			title: c.title,
@@ -273,13 +277,24 @@ export interface Calendar {
 const shelves = new Map<string, Promise<Shelf>>();
 
 async function fetchShelf(lang: string, books: string[]): Promise<Shelf> {
+	let partial = false;
 	const [sermons, editions] = await Promise.all([
 		listSermons(lang),
-		Promise.all(books.map((slug) => getBook(slug, lang).catch(() => null)))
+		Promise.all(
+			books.map((slug) =>
+				getBookExact(slug, lang).catch((e) => {
+					// A 404 is an answer (no edition in this language); anything
+					// else is a failure worth asking again.
+					if (!(e instanceof ApiError && e.status === 404)) partial = true;
+					return null;
+				})
+			)
+		)
 	]);
 	return {
 		sermons: new Map(sermons.filter((s) => s.language === lang).map((s) => [s.slug, s])),
-		books: new Map(editions.flatMap((b) => (b && b.language === lang ? [[b.slug, b] as const] : [])))
+		books: new Map(editions.flatMap((b) => (b && b.language === lang ? [[b.slug, b] as const] : []))),
+		partial
 	};
 }
 
@@ -287,7 +302,8 @@ async function fetchShelf(lang: string, books: string[]): Promise<Shelf> {
  * The calendar for the reader's local `now` in `lang`, or null out of season,
  * or when the language has too few of the season's readings. A failed
  * sermon fetch shows no calendar and is not cached, so it is retried; a
- * book that fails drops only its own doors.
+ * book that fails drops only its own doors, and the shelf is not kept, so
+ * the next call asks for it again.
  */
 export async function loadCalendar(now: Date, lang: string): Promise<Calendar | null> {
 	const w = seasonWindowOn(now);
@@ -306,6 +322,7 @@ export async function loadCalendar(now: Date, lang: string): Promise<Calendar | 
 		shelves.delete(key);
 		return null;
 	}
+	if (got.partial && shelves.get(key) === shelf) shelves.delete(key);
 	const doors = resolveDoors(w, entries, got, lang, localDayNumber(now));
 	if (!enoughDoors(w, doors)) return null;
 	return { window: w, doors, today: doors.find((d) => d.state === 'today') ?? null };

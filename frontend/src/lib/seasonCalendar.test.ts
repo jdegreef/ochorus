@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
 	ADVENT_DOORS,
 	adventWindow,
@@ -160,5 +160,45 @@ describe('resolveDoors', () => {
 		const many = Array.from({ length: 8 }, () => mk(1)[0]);
 		expect(enoughDoors(long, many)).toBe(true);
 		expect(enoughDoors(long, many.slice(0, 7))).toBe(false);
+	});
+});
+
+describe('loadCalendar', () => {
+	const book = (slug: string, lang: string) => ({
+		slug,
+		language: lang,
+		title: slug,
+		chapters: Array.from({ length: 40 }, (_, i) => ({ order: i + 1, title: `${slug} ${i + 1}` }))
+	});
+
+	it('keeps a shelf whose books answered (a 404 included), and asks again after a failure', async () => {
+		vi.resetModules();
+		// The module graph is fresh, so its ApiError is too: throw that one.
+		const { ApiError } = await import('./api');
+		const calls: string[] = [];
+		let hurlbutFails = true;
+		vi.doMock('./library-public', () => ({
+			listSermons: async () => [],
+			getBookExact: async (slug: string, lang: string) => {
+				calls.push(slug);
+				if (slug === 'the-first-apology') throw new ApiError(404, null);
+				if (slug === 'hurlbuts-life-of-christ' && hurlbutFails) throw new ApiError(503, null);
+				return book(slug, lang);
+			}
+		}));
+		const { loadCalendar } = await import('./seasonCalendar');
+		const day = on(2026, 12, 6);
+		await loadCalendar(day, 'en');
+		const first = calls.length;
+		hurlbutFails = false;
+		const cal = await loadCalendar(day, 'en');
+		// The failed shelf was not kept: every book is asked for again.
+		expect(calls.length).toBe(first * 2);
+		expect(cal?.doors.some((d) => d.slug === 'hurlbuts-life-of-christ')).toBe(true);
+		const after = calls.length;
+		await loadCalendar(day, 'en');
+		// A 404 is an answer, so a shelf without that book is kept.
+		expect(calls.length).toBe(after);
+		vi.doUnmock('./library-public');
 	});
 });

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { watchToday } from '$lib/today';
 	import { dateKey } from '$lib/dailyDate';
 	import { getLang } from '$lib/lang.svelte';
@@ -32,8 +32,18 @@
 		shownFor = key;
 		const next = await loadCalendar(now, lang);
 		if (key !== shownFor) return;
+		// No calendar costs no fetch to ask again (out of season, or a cached
+		// shelf), and a failed fetch must be asked again — so look next time.
+		if (!next) shownFor = '';
+		const first = !cal && next;
 		cal = next;
 		verse = '';
+		// The Today card links here as /today#calendar, but the section is drawn
+		// only now, after the browser and the router looked for the anchor.
+		if (first && location.hash === '#calendar') {
+			await tick();
+			document.getElementById('calendar')?.scrollIntoView();
+		}
 		const ref = next?.today?.owbRef;
 		if (ref) {
 			const hit = await lookupScripture(ref);
@@ -48,12 +58,13 @@
 	const LONG = fmt({ weekday: 'long', day: 'numeric', month: 'long' });
 	const NUM = fmt({ day: 'numeric' });
 	const longDate = (d: Door) => LONG.format(d.day * DAY_MS);
+	const dayNum = (d: Door) => NUM.format(d.day * DAY_MS);
 
 	const isAdvent = $derived(cal?.window.season === 'advent');
 	const href = (d: Door) => localizeHref(doorPath(d));
-	/** The reference, tagged with the Bible its words are read in when that
-	 *  is the house Bible (English only). */
-	const refLine = (d: Door) => (d.ref && d.owbRef ? `${d.ref} · OWB` : d.ref);
+	/** The reference, tagged with the Bible its words are read in when the
+	 *  house Bible's words are shown under it (English only). */
+	const refLine = (d: Door) => (d.ref && verse ? `${d.ref} · OWB` : d.ref);
 </script>
 
 {#if cal}
@@ -85,7 +96,7 @@
 				<li>
 					{#if d.state === 'open'}
 						<a class="door open" href={href(d)} aria-label="{longDate(d)}: {d.title}">
-							<span class="num" aria-hidden="true">{NUM.format(d.day * DAY_MS)}</span>
+							<span class="num" aria-hidden="true">{dayNum(d)}</span>
 							<span class="door-title line-clamp-3" dir="auto" aria-hidden="true">{d.title}</span>
 							{#if d.ref}<span class="door-ref truncate" dir="auto" aria-hidden="true">{d.ref}</span>{/if}
 						</a>
@@ -96,12 +107,12 @@
 							aria-current="date"
 							aria-label="{t('calendar.today')}, {longDate(d)}: {d.title}"
 						>
-							<span class="big-num" aria-hidden="true">{NUM.format(d.day * DAY_MS)}</span>
+							<span class="big-num" aria-hidden="true">{dayNum(d)}</span>
 							<span class="today-label" aria-hidden="true">{t('calendar.today')}</span>
 						</a>
 					{:else}
 						<span class="door locked">
-							<span class="big-num" aria-hidden="true">{NUM.format(d.day * DAY_MS)}</span>
+							<span class="big-num" aria-hidden="true">{dayNum(d)}</span>
 							<span class="sr-only">{t('calendar.locked').replace('%date%', longDate(d))}</span>
 						</span>
 					{/if}

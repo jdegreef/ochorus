@@ -37,11 +37,24 @@
 
 	let picks = $state<TodayPicks | null>(null);
 	/** In Advent or Lent: the season's calendar ($lib/seasonCalendar), for the
-	 *  row under the columns that leads to it on /today. Loaded with the picks,
-	 *  so the card is drawn once. */
+	 *  row under the columns that leads to it on /today. Loaded beside the
+	 *  picks, not with them: its book fetches must not hold the card back. */
 	let calendar = $state<Calendar | null>(null);
 	let dateLabel = $state('');
 	let pickedFor = '';
+	let calendarFor = '';
+
+	async function loadSeason(now: Date, lang: string) {
+		const key = dateKey(now);
+		if (key === calendarFor) return;
+		calendarFor = key;
+		const cal = await loadCalendar(now, lang);
+		if (key !== calendarFor) return;
+		calendar = cal;
+		// No calendar costs no fetch to ask again (out of season, or a cached
+		// shelf), and a failed fetch must be asked again — so look next time.
+		if (!cal) calendarFor = '';
+	}
 
 	// Re-picks only when the calendar day has moved: watchToday looks again on
 	// a return to the tab and every few minutes while it is in view, so a page
@@ -49,13 +62,13 @@
 	// new day — the sermon list too, as SermonOfTheDay does, so a failed fetch
 	// is retried and the pick matches the sermons shelf's.
 	async function loadToday(now: Date) {
+		const lang = getLang();
+		void loadSeason(now, lang);
 		const key = dateKey(now);
 		if (key === pickedFor) return;
 		pickedFor = key;
-		const lang = getLang();
-		const [next, cal] = await Promise.all([loadTodayPicks(now, lang), loadCalendar(now, lang)]);
+		const next = await loadTodayPicks(now, lang);
 		if (key !== pickedFor) return;
-		calendar = cal;
 		dateLabel = now.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
 		picks = next;
 	}
