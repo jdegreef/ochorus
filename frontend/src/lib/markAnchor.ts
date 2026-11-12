@@ -1,4 +1,5 @@
 import type { Mark } from './reading-schema';
+import { foldQuotes } from './smartQuotes';
 
 /**
  * Keeping a highlight on its words when the chapter's text is repaired.
@@ -37,8 +38,17 @@ export function quoteOf(text: string, s: number, e: number): string {
 	return textRange(text, s, e).slice(0, QUOTE_MAX);
 }
 
-/** The occurrence of `q` in `text` nearest offset `near`, or -1. */
+/**
+ * The occurrence of `q` in `text` nearest offset `near`, or -1. Straight and
+ * curly quotes compare equal: the reader curls a body's quotes as it renders
+ * it ($lib/smartQuotes), so an anchor taken before that (or by the server,
+ * from the stored body) must still find its words, and one taken after it
+ * must still find them in the stored text. One character for one, so offsets
+ * are unchanged.
+ */
 function nearest(text: string, q: string, near: number): number {
+	text = foldQuotes(text);
+	q = foldQuotes(q);
 	let best = -1;
 	for (let at = text.indexOf(q); at !== -1; at = text.indexOf(q, at + 1)) {
 		if (best === -1 || Math.abs(at - near) < Math.abs(best - near)) best = at;
@@ -130,7 +140,9 @@ export function resolveMark(paras: string[], m: Mark): Mark | null {
  *  multi-block highlight's segments resolved together (see resolveGroup). */
 export function placeMarks(paras: string[], list: Mark[]): Mark[] {
 	// Nearly always nothing has moved: skip the grouping on every render.
-	if (list.every((m) => !m.q || paras[m.p]?.startsWith(m.q, m.s))) return list.slice();
+	const holds = (m: Mark) =>
+		!m.q || foldQuotes(paras[m.p]?.slice(m.s, m.s + m.q.length) ?? '') === foldQuotes(m.q);
+	if (list.every(holds)) return list.slice();
 	// Keyed like the server's remap (reading/anchor.py): a group is its id in
 	// one edition.
 	const groups = new Map<string, Mark[]>();

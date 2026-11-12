@@ -156,6 +156,32 @@ describe('resolveGroup', () => {
 	});
 });
 
+describe('curly quotes (render-time smartQuotes)', () => {
+	const stored = ['"But," said he, "the critic\'s observation."'];
+	const rendered = ['“But,” said he, “the critic’s observation.”'];
+
+	it('keeps a mark anchored on straight quotes in place on the curled text', () => {
+		const m = mark(0, 16, 43, '"the critic\'s observation."');
+		expect(resolveMark(rendered, m)).toBe(m);
+		expect(placeMarks(rendered, [m])).toEqual([m]);
+	});
+
+	it('keeps a mark anchored on curly quotes in place on the stored text', () => {
+		const m = mark(0, 16, 43, '“the critic’s observation.”');
+		expect(resolveMark(stored, m)).toBe(m);
+		expect(placeMarks(stored, [m])).toEqual([m]);
+	});
+
+	it('still follows a curly anchor when a repair moves its words', () => {
+		const moved = ['Then: ' + stored[0]];
+		expect(resolveMark(moved, mark(0, 16, 43, '“the critic’s observation.”'))).toMatchObject({
+			p: 0,
+			s: 22,
+			e: 49
+		});
+	});
+});
+
 describe('quoteOf', () => {
 	it('caps the stored anchor text', () => {
 		const long = 'a'.repeat(QUOTE_MAX + 50);

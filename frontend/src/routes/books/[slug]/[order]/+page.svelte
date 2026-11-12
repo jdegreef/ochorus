@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
 	import { markVerse } from '$lib/verse';
+	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { chapterMeta } from '$lib/bookSeo';
 	import { partQualified } from '$lib/bookParts';
 	import { onPageHidden } from '$lib/pageHidden';
@@ -2314,9 +2315,10 @@
 					{t('reader.modernEdition')}<span class="par-hint">{t('reader.sideBySideMarks')}</span>
 				</p>
 			{/if}
-			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
+			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
+			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(chapter.body_html))}</div>
+			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
 			{#if parallel}
 				<!-- Loaded on demand: only wide-screen readers who turn it on need it. -->
 				{#await import('$lib/components/ParallelModern.svelte') then { default: ParallelModern }}
