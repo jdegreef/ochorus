@@ -1,0 +1,34 @@
+{
+ "slug": "ruth",
+ "title": "Ruth",
+ "cover_title": "",
+ "subtitle": "Rut, “The Book of Ruth”",
+ "cover_color": "#6b5a2e",
+ "description": "A short story from the dark days of the judges, told with rare tenderness. Famine drives a family from Bethlehem to Moab, and ten years later Naomi comes home a widow, without her sons, saying “I went away full, but the LORD has brought me home empty.” With her comes her Moabite daughter-in-law, who would not leave her: “Your people are now my people, and your God is now my God.” Then the barley harvest, the field of Boaz, a night on the threshing floor, and a family redeemer at the town gate, until the empty are filled and a baby is born who will be the grandfather of David. A book about faithful love, human and divine, and about God at work in ordinary days. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Ruth about?",
+   "answer": "A Moabite widow, Ruth, who refuses to leave her Israelite mother-in-law Naomi after both their husbands die, and goes with her to Bethlehem, taking Naomi’s people and God as her own. Gleaning in the harvest fields, she meets Boaz, a relative of Naomi’s husband, who treats her with great kindness and, as family redeemer, marries her and restores the family’s land and name. Their son Obed is the grandfather of King David (4:17). Its four chapters move Naomi from emptiness to fullness, and show God’s care working through ordinary people’s faithfulness."
+  },
+  {
+   "question": "Who wrote the book of Ruth, and when?",
+   "answer": "The book does not name its author. Jewish tradition assigned it to Samuel. Because its closing genealogy ends with David, it was written no earlier than his time. Some scholars date it to the period of the kings; others to the time after the exile, when its warm welcome of a foreign wife would have spoken into debates about marriage outside Israel. The story itself is set “in the days when the judges judged” (1:1), probably a few generations before David."
+  },
+  {
+   "question": "What is a kinsman-redeemer in Ruth?",
+   "answer": "A close relative with the right and duty to rescue a family member in trouble: to buy back land a poor relative had been forced to sell (Leviticus 25:25), and, by a related custom (Deuteronomy 25:5–6), to raise up an heir for a man who died childless. This translation calls him a “family redeemer”. In Ruth 4, a nearer relative declines the role for fear of harming his own inheritance, and Boaz takes it on, buying Elimelech’s land and marrying Ruth. Christians have long seen in him a picture of Christ, who redeems his people at his own cost."
+  },
+  {
+   "question": "What does “hesed” mean in the book of Ruth?",
+   "answer": "Hesed is the Hebrew word for loyal, committed kindness that goes beyond what duty requires; this translation renders it “faithful love”. It appears at three turning points in the book: Naomi’s prayer for her daughters-in-law (1:8), her praise of the LORD when she learns where Ruth has gleaned (2:20), and Boaz’s praise of Ruth on the threshing floor (3:10). Ruth shows it to Naomi, Boaz shows it to Ruth, and behind them both the LORD shows it to all."
+  },
+  {
+   "question": "Why is Ruth in the genealogy of Jesus?",
+   "answer": "Because she was the great-grandmother of King David, from whose line the Messiah was promised. Matthew’s Gospel names her in its list of Jesus’s ancestors, “Boaz was the father of Obed by Ruth” (Matthew 1:5), alongside Tamar, Rahab and the wife of Uriah. That a Moabite woman, from a people Deuteronomy barred from Israel’s assembly, should be an ancestor of the Messiah has long been read as a sign that God’s promise to bless all the families of the earth was meant for every nation."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. “LORD” in capitals stands for God’s personal name. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

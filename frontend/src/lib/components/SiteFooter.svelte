@@ -12,6 +12,7 @@
 	import { untrack } from 'svelte';
 	import { lang } from '$lib/lang.svelte';
 	import { auth } from '$lib/auth.svelte';
+	import { WHATSAPP_CHANNEL_URL } from '$lib/config';
 	import { i18n } from '$lib/i18n.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { FOR_FOOTER, forIndexPath, forLocale } from '$lib/forLinks';
@@ -27,8 +28,10 @@
 		AUDIENCE_DESTS,
 		ENGLISH_HUBS,
 		ORIGINALS_DEST,
-		AZ_INDEX_DEST
+		AZ_INDEX_DEST,
+		BIBLE_DEST
 	} from '$lib/contentNav';
+	import { bibleIn } from '$lib/bible';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -203,6 +206,11 @@
 					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
 				{/each}
 				<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
+				<!-- The Bible, only where its books have shipped: elsewhere the page
+				     404s, and a link would send the crawl there ($lib/bible). -->
+				{#if bibleIn(lang.current)}
+					<li><a href={pageHref(BIBLE_DEST.href)}>{t(BIBLE_DEST.labelKey)}</a></li>
+				{/if}
 				{#if lang.current === 'en'}
 					{#each ENGLISH_HUBS as d (d.href)}
 						<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
@@ -281,6 +289,10 @@
 					{/if}
 				{/if}
 				<a href={localizeHref('/rss/')}>RSS</a>
+				<!-- Only once a channel exists ($lib/config). -->
+				{#if WHATSAPP_CHANNEL_URL}
+					<a href={WHATSAPP_CHANNEL_URL} target="_blank" rel="noopener">WhatsApp</a>
+				{/if}
 			</nav>
 		</div>
 	</div>

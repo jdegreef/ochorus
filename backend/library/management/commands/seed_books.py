@@ -517,6 +517,12 @@ class Command(BaseCommand):
                     self.stdout.write(
                         f"  ~ {book.slug} [{language}] ({', '.join(changed)})"
                     )
+                elif added or retouched:
+                    # The text moved but the book row didn't: re-date the book
+                    # anyway. Chapters carry no date of their own, so the book's
+                    # updated_at is the page's "Last updated" and the sitemap's
+                    # lastmod — a corrected text should say so.
+                    book.save(update_fields=["updated_at"])
 
         if created or updated or chapters_synced:
             self.stdout.write(

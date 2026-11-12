@@ -245,6 +245,10 @@ export interface BookDetail extends BookSummary {
 	 *  (library/rights). Optional: absent means no claim. */
 	public_domain?: boolean;
 	source_url: string;
+	/** The edition's free-text rights and source note ("Public domain — first
+	 *  published 1898 by … Text from …", or a © credit), in its own language;
+	 *  "" for none. Shown in the book page's "About this text". */
+	attribution?: string;
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
 	/**
@@ -1658,6 +1662,41 @@ export const getDailyReading = (slug: string, date: string, language = 'en', f?:
 export const getDailyShelf = (date: string, language = 'en', f?: Fetch) =>
 	apiFetch<{ readings: DailyEntry[] }>(
 		`/api/library/daily/${date}/?language=${encodeURIComponent(language)}`,
+		{},
+		f
+	);
+
+/** A chapter the time picker suggests (`/api/library/fit/`): its book as a
+ *  cover face, and whether it carries on a book the reader is in. */
+export interface FitChapter {
+	book: CoverFace;
+	order: number;
+	title: string;
+	word_count: number;
+	continuing: boolean;
+}
+
+/** "How long do you have?" — a sermon and a chapter that fit a word window. */
+export interface TimeFit {
+	sermon: SermonSummary | null;
+	chapter: FitChapter | null;
+}
+
+/** Something to read in the time there is: the window in words (the caller
+ *  converts minutes at the reader's pace), the reader's local day as `seed`,
+ *  and their in-progress books as `slug:order` pairs (`$lib/timeFit`). */
+export const getTimeFit = (
+	q: { language: string; minWords: number; maxWords: number; seed: number; reading: string },
+	f?: Fetch
+) =>
+	apiFetch<TimeFit>(
+		`/api/library/fit/?${new URLSearchParams({
+			language: q.language,
+			min_words: String(q.minWords),
+			max_words: String(q.maxWords),
+			seed: String(q.seed),
+			...(q.reading ? { reading: q.reading } : {})
+		})}`,
 		{},
 		f
 	);

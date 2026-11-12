@@ -1,0 +1,34 @@
+{
+ "slug": "1-chronicles",
+ "title": "1 Chronicles",
+ "cover_title": "",
+ "subtitle": "Divrei HaYamim Alef, “The events of the days”",
+ "cover_color": "#2e3a4a",
+ "description": "The first half of Chronicles, the history of God’s people retold for those who came home from exile. It opens with a family tree that runs from Adam through the tribes of Israel, with Jabez’s prayer tucked among the names, and then tells the story of David: made king by all Israel, pouring out the water his warriors risked their lives to bring him, dancing as the ark comes up to Jerusalem, and hearing God’s promise, “I will make his throne firm forever.” It ends with David preparing for a temple he will never see and praying, “Everything comes from you; what we have given you came from your own hand.” In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of 1 Chronicles?",
+   "answer": "The first half of Chronicles, which in Hebrew is a single book called Divrei HaYamim, “the events of the days”; the ancient Greek translation divided it in two, and the English name comes from Jerome. Its twenty-nine chapters begin with genealogies from Adam through all the tribes of Israel (1–9), then tell of the death of Saul (10) and the reign of David (11–29): his anointing by all Israel, the bringing of the ark to Jerusalem, God’s covenant promise of an everlasting kingdom, and David’s preparations for the temple Solomon would build."
+  },
+  {
+   "question": "Who wrote 1 and 2 Chronicles, and when?",
+   "answer": "The books do not name their author. Jewish tradition, recorded in the Talmud, credited them to Ezra the scribe, and the last verses of 2 Chronicles are repeated at the start of the book of Ezra. Many scholars speak simply of “the Chronicler”, writing after the return from exile in Babylon, in the Persian period, perhaps around 400 BC, since the line of David in 1 Chronicles 3 runs several generations past Zerubbabel; some date the book earlier. Whether the same writer produced Ezra and Nehemiah is debated."
+  },
+  {
+   "question": "How is Chronicles different from Samuel and Kings?",
+   "answer": "Chronicles retells much of the same history, often word for word, but for a different purpose and audience: the community that returned from exile with a temple but no king. It begins with Adam, leaves out most of the history of the northern kingdom and much of David’s family tragedy, such as his sin with Bathsheba and Absalom’s revolt, and adds a great deal about the ark, the temple, the priests, Levites and singers, and the prayers of kings and people. Its first readers knew Samuel and Kings; Chronicles is less a correction of them than a second witness, preaching the same history to a new generation."
+  },
+  {
+   "question": "What is the prayer of Jabez?",
+   "answer": "A short prayer recorded in the middle of the genealogy of Judah (1 Chronicles 4:9–10). Jabez, whose mother named him for the pain of his birth, “called on the God of Israel”, asking God to bless him, enlarge his border, keep his hand with him and keep him from harm, “And God gave him what he had asked.” It is one of several places in Chronicles’ lists where the book pauses to show that God hears those who call on him, as with the tribes east of the Jordan who “called out to God during the battle” (5:20)."
+  },
+  {
+   "question": "Why does 1 Chronicles 21 say that Satan moved David to count Israel?",
+   "answer": "In 1 Chronicles 21:1, “Satan rose up against Israel and stirred David up to count Israel,” while the parallel in 2 Samuel 24:1 says that the anger of the LORD stirred David up. Many interpreters see two sides of one event, God permitting what the adversary intended, as in the opening of Job; some note that the Hebrew word has no article and may mean simply “an adversary”. Both accounts hold David responsible, and in both he confesses his sin. Chronicles goes on to show the place of his repentance, Ornan’s threshing floor, becoming the site of the temple."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. “LORD” in capitals stands for God’s personal name, and the psalm of chapter 16 is set out line by line as poetry. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

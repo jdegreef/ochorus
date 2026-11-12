@@ -8,8 +8,8 @@
   "slug": "gospel-of-john",
   "language": "en",
   "title": "The Gospel of John",
-  "subtitle": "The Open Word Bible, with an Introduction and Conclusion",
-  "cover_title": "",
+  "subtitle": "Kata Iōannēn, “According to John”",
+  "cover_title": "John",
   "cover_byline": "",
   "description": "The fourth Gospel, which begins before the beginning — “In the beginning was the Word” — and says plainly why it was written: so that you may believe Jesus is the Christ, the Son of God, and by believing have life in his name. Seven signs, from water turned to wine to Lazarus called out of the tomb; seven “I am” sayings; Nicodemus by night and the Samaritan woman at noon; the farewell in the upper room; the cross as the hour of glory; and breakfast by the lake. In the Open Word Bible, a new translation from the Greek given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
   "hook": "",
@@ -47,8 +47,10 @@
   "cover_url": "/covers/art/gospel-of-john.jpg",
   "pdf_url": "",
   "cover_color": "#2f4a5c",
-  "series": null,
-  "series_position": null,
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 43,
   "sort_order": 242,
   "is_published": true,
   "created_at": "2026-10-31T03:41:33.833Z",

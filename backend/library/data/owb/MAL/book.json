@@ -1,0 +1,34 @@
+{
+ "slug": "malachi",
+ "title": "Malachi",
+ "cover_title": "",
+ "subtitle": "Malakhi, “My messenger”",
+ "cover_color": "#4a2a5a",
+ "description": "The last of the twelve Minor Prophets and the last book of the Old Testament, spoken to the people of Judah a few generations after the temple was rebuilt, when worship had become a chore and faithfulness seemed to bring no reward. It is a book of arguments: God says “I have loved you”, and the people ask, “In what way have you loved us?” Blind and lame offerings, priests who cause many to stumble, broken marriages and withheld tithes are answered by a God who says “I am the LORD, and I do not change”, who keeps a book of remembrance for those who fear him, and who promises a messenger to clear the way, a refiner’s fire, the sun of righteousness rising, “bringing healing in its wings”, and Elijah the prophet before the great day of the LORD. Set out line by line, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Malachi about?",
+   "answer": "A people who had grown weary of God. After the exile, with the temple rebuilt, the priests offered blemished sacrifices, men broke faith with their wives, tithes went unpaid, and many said it was useless to serve God. Malachi answers in six disputes in which God makes a statement, the people question it, and God replies. The book ends by calling the people to remember the law of Moses and promising that Elijah the prophet will come before the great day of the LORD."
+  },
+  {
+   "question": "Who wrote Malachi, and when?",
+   "answer": "The book is “the word of the LORD to Israel through Malachi” (1:1). The name means “my messenger”, and scholars differ over whether it is the prophet’s personal name or a title taken from 3:1; the ancient Greek translation read it as “his messenger”, and one Jewish tradition identified the author as Ezra. The book mentions a governor and a working temple, and deals with the same problems as Ezra and Nehemiah, so it is usually dated to the Persian period, around the middle of the fifth century BC."
+  },
+  {
+   "question": "What does “I loved Jacob, but Esau I hated” mean?",
+   "answer": "In Malachi 1:2–3 God answers the people’s doubt of his love by pointing to the different histories of Jacob’s descendants, Israel, and Esau’s, Edom, which lay in ruins. In the language of covenant, “love” and “hate” here mean choosing one to carry the promise and not the other. Paul quotes the words in Romans 9:13 in his argument that God’s promises rest on his choice rather than human birth or effort. Christians have long disagreed about how far that argument extends to individual salvation."
+  },
+  {
+   "question": "Who is the messenger in Malachi 3:1?",
+   "answer": "God promises to send “my messenger” to clear the way, after which “the Lord you are seeking will come to his temple”. Malachi 4:5 names this forerunner as Elijah the prophet. The New Testament identifies him with John the Baptist: Mark 1:2 quotes the verse at the start of John’s ministry, Jesus applies it to John in Matthew 11:10, and an angel says John will go ahead of the Lord “in the spirit and power of Elijah” (Luke 1:17). The Lord who comes to his temple is, for the New Testament, Jesus."
+  },
+  {
+   "question": "Why does Malachi have four chapters in English Bibles but three in Hebrew?",
+   "answer": "The difference is only in numbering. Hebrew Bibles count the last six verses as Malachi 3:19–24; English Bibles, following the Latin tradition, make them a separate chapter 4. This edition uses the English numbering. In synagogue reading, the verse promising Elijah (4:5 in English) is read again after the last verse, so that the prophets do not end on a word of destruction."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

@@ -47,6 +47,8 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import JourneyMap from '$lib/components/JourneyMap.svelte';
+	import { journeyMapFor } from '$lib/journeyMaps';
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -55,6 +57,7 @@
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import CitePanel from '$lib/components/CitePanel.svelte';
+	import AboutThisText from '$lib/components/AboutThisText.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -550,6 +553,15 @@
 	// The chapter they're in wins over "read" (a reader who went back to
 	// reread is IN that chapter), and only a reader with a place (`resuming`,
 	// the read verb's own test) has one.
+	// An allegory's road, for the books that have one drawn ($lib/journeyMaps):
+	// the reader's place on it is the same saved place the contents mark.
+	const journeyMap = $derived(journeyMapFor(book.slug, book.language));
+	const journeyPlace = $derived({
+		current: resumeHere,
+		furthest: furthestHere,
+		finished: finishedAt != null
+	});
+
 	const isCurrent = (order: number) => resuming && order === resumeHere;
 	const isRead = (order: number) =>
 		!isCurrent(order) && (finishedAt != null || (furthestHere != null && order < furthestHere));
@@ -1105,6 +1117,16 @@
 		{/if}
 	</section>
 
+	<!-- The road (The Pilgrim's Progress, Part One): each place a stop linked
+	     to its chapter, the reader's place on it from this device. Only for a
+	     book with a map drawn ($lib/journeyMaps), and only in its language. -->
+	{#if journeyMap}
+		<section id="journey" class="jump-anchor mt-10" aria-labelledby="journey-heading">
+			<h2 id="journey-heading" class="section-heading no-rule">{journeyMap.title}</h2>
+			<JourneyMap map={journeyMap} place={journeyPlace} chapterHref={readHref} lang={contentLang(book.language)} />
+		</section>
+	{/if}
+
 	<!-- Editions (design review #22): the other forms this work takes, once.
 	     It used to say so three times — a languages chip in the hero, "Grow with
 	     the story" and "Read in your language" — so it is one section now: the
@@ -1311,26 +1333,11 @@
 		<ForPromo place="book-download" class="mt-8" />
 	{/if}
 
-	{#if book.source_url && book.source_type === 'public_domain'}
-		<p class="mt-8 text-small text-muted">
-			{t('book.publicDomain')}
-			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
-		</p>
-	{:else if book.source_url}
-		<p class="mt-8 text-small text-muted">
-			{t('book.translationOf')}
-			<a href={book.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
-		</p>
-	{/if}
+	<!-- Where this edition came from — its source note and link, translation,
+	     cover credit, last update and rights — in one panel at the foot, where
+	     the source line and cover credit used to sit (AboutThisText). -->
+	<AboutThisText {book} />
 
-	{#if book.artwork_credit}
-		<!-- The painter, for the covers that wear a real painting. This used to sit
-		     in the composited SVG's <desc>, where nothing surfaced it. The art is
-		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
-		     and it is the provenance a reader would otherwise have to take on
-		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-small text-muted">{book.artwork_credit}</p>
-	{/if}
 	<!-- A translated edition did not appear in the original's year, so it is
 	     cited without one rather than as a reprint of it. -->
 	<CitePanel

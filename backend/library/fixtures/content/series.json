@@ -224,6 +224,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "the-bible",
+  "title": "The Bible",
+  "description": "The books of the Bible in the Open Word Bible, a new translation from the Hebrew and Greek given freely to the public domain, in their order from Genesis to Revelation. Each book has an introduction to its shape and meaning and a conclusion on where to read next.",
+  "sort_order": 5,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [

@@ -1,0 +1,131 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "open-word-bible"
+  ],
+  "slug": "zephaniah",
+  "language": "en",
+  "title": "Zephaniah",
+  "subtitle": "Tsefanyah, “The LORD has hidden”",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "The ninth of the twelve Minor Prophets, spoken in the days of King Josiah to a Jerusalem that had grown comfortable and said, “The LORD will do nothing, neither good nor bad.” Zephaniah answers with the Bible’s fullest picture of the day of the LORD, “a day of fury, a day of distress and anguish”, the passage that gave the Latin hymn Dies irae its name. Judgement sweeps from Judah to the nations on every side. Then the book turns: the speech of the peoples is purified, a humble remnant takes refuge in the LORD, and God himself “will rejoice over you with singing.” Set out line by line as the poetry it is, in the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "What is the book of Zephaniah about?",
+    "answer": "The day of the LORD: the day when God comes to judge and to save. Its first chapter announces judgement on the whole earth and especially on idolatrous, complacent Jerusalem. Chapter 2 calls the humble to seek the LORD and pronounces judgement on the nations around Judah, from Philistia to Assyria. Chapter 3 rebukes Jerusalem again and then turns to promise: the peoples purified, a humble remnant left in the city, and the LORD rejoicing over his people with singing."
+   },
+   {
+    "question": "Who was Zephaniah, and when did he prophesy?",
+    "answer": "The book names him as Zephaniah son of Cushi, and traces his family back four generations to a Hezekiah (1:1), very probably King Hezekiah, which would make him a member of the royal family. He prophesied during the reign of Josiah (640–609 BC). Because he describes Baal worship and star worship still flourishing in Jerusalem, many date his preaching before Josiah’s great reform of 622 BC, though some place it later in the reign. He was a contemporary of the young Jeremiah."
+   },
+   {
+    "question": "What is the day of the LORD in Zephaniah?",
+    "answer": "A day when God acts decisively in history to judge evil and set things right. Zephaniah describes it as near, “close and coming very fast” (1:14), and as “a day of fury, a day of distress and anguish” (1:15), falling both on Judah and on the nations. It came in part when Babylon destroyed Jerusalem in 586 BC, but the book’s language reaches beyond that event, and Christians have long read it alongside the New Testament’s teaching on the final judgement. Its Latin wording in 1:15, dies irae, gave its name to a famous medieval hymn."
+   },
+   {
+    "question": "What does Zephaniah 3:17 mean?",
+    "answer": "After two chapters of judgement, the prophet tells Jerusalem that “The LORD your God is in your midst, a mighty warrior who saves”, who “will rejoice over you with singing.” In verse 14 the people are called to sing for joy; in verse 17 God himself sings over them. The middle line, “be quiet in his love”, translates a Hebrew verb meaning “be silent”, which has been taken as a love too deep for words or a love that no longer mentions past sins; others read it “he will quiet you by his love”."
+   },
+   {
+    "question": "Why does Zephaniah speak of purifying the speech of the peoples?",
+    "answer": "In 3:9 God promises to “purify the speech of the peoples, so that all of them may call on the name of the LORD and serve him shoulder to shoulder.” Many readers see in it a reversal of the tower of Babel, where human language was confused and the peoples scattered (Genesis 11). Christians have seen its fulfilment beginning at Pentecost, when people of many nations heard God’s works declared in their own languages (Acts 2)."
+   },
+   {
+    "question": "Which translation of the Bible is this?",
+    "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "https://openwordbible.org/read/#zep",
+  "attribution": "Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, commit 64b913d623d6: dedicated to the public domain under CC0 1.0. The introduction and conclusion are by Ochorus.",
+  "cover_url": "/covers/art/zephaniah.jpg",
+  "pdf_url": "",
+  "cover_color": "#40302f",
+  "series": [
+   "the-bible"
+  ],
+  "series_position": 36,
+  "sort_order": 344,
+  "is_published": true,
+  "created_at": "2026-11-11T21:47:41.277Z",
+  "updated_at": "2026-11-11T22:13:08.103Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "zephaniah",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction",
+  "body_html": "<blockquote><p>The LORD your God is in your midst, a mighty warrior who saves; he will delight in you with gladness and be quiet in his love; he will rejoice over you with singing.</p><p>— Zephaniah 3:17</p></blockquote> <p>No book in the Bible travels further in three chapters than Zephaniah. It begins with God sweeping away everything on the face of the earth, people and animals, birds and fish. It ends with God singing. In between lies the fullest description of “the day of the LORD” in all the prophets, and one of the tenderest promises in the Old Testament.</p> <h3>The prophet and his time</h3> <p>Zephaniah gives us more of his family tree than any other prophet: he is the son of Cushi, son of Gedaliah, son of Amariah, “son of Hezekiah”. Since he traces his line back four generations, the Hezekiah he names is very probably the good king of that name, which would make Zephaniah a distant member of the royal house, and may explain how well he knows the officials and “the king’s sons” of Jerusalem.</p> <p>He prophesied “during the reign of Josiah son of Amon, king of Judah” (640–609 BC). Josiah is remembered as the king who turned to the LORD “with his whole heart” and swept away the idols of Judah (2 Kings 22–23). Zephaniah describes a Jerusalem where that has not yet happened: Baal is still worshipped, people bow on the rooftops to the stars, and they swear by the LORD “while they also swear by their king”, probably the god Milcom. So many think he preached before Josiah’s reform of 622 BC, and may have helped prepare the way for it. Jeremiah began his ministry in the same years.</p> <h3>The shape of the book</h3> <ul> <li><strong>1:1–2:3: the day of the LORD.</strong> Judgement on the whole earth, and especially on Judah and Jerusalem, with a call to seek the LORD before it comes.</li> <li><strong>2:4–15: the nations.</strong> Philistia to the west, Moab and Ammon to the east, Cush to the south, and Assyria to the north.</li> <li><strong>3:1–8: Jerusalem.</strong> Woe to the city that would not listen.</li> <li><strong>3:9–20: the day after.</strong> The peoples purified, a humble remnant, and the LORD rejoicing over his people.</li> </ul> <h3>The day of the LORD</h3> <p>Amos and Isaiah had spoken of the day of the LORD before, but no one paints it as Zephaniah does. “The great day of the LORD is close at hand”, he cries, and then strikes the word “day” like a bell:</p> <blockquote><p>That day will be a day of fury, a day of distress and anguish, a day of ruin and devastation, a day of darkness and gloom, a day of clouds and deep darkness, a day of the ram’s horn and the battle cry against the fortified cities and against the lofty corner towers.</p><p>— Zephaniah 1:15–16</p></blockquote> <p>In the Latin Bible the first words of verse 15 are <em>dies irae</em>, “day of wrath”, and they gave their name to a famous medieval hymn on the Last Judgement, sung for centuries at funerals in the Western church.</p> <p>The sin Zephaniah exposes most sharply is not open rebellion but complacency. God will search Jerusalem “with lamps” for those who are “like wine left to thicken on its dregs”, people who have settled into comfort and say to themselves:</p> <blockquote><p>At that time I will search Jerusalem with lamps and punish those who are complacent, like wine left to thicken on its dregs, who say to themselves, “The LORD will do nothing, neither good nor bad.”</p><p>— Zephaniah 1:12</p></blockquote> <p>They do not deny God; they simply expect nothing from him. Zephaniah’s answer is that wealth will not shelter them: “Neither their silver nor their gold will be able to save them on the day of the LORD’s fury.”</p> <h3>“Seek the LORD”</h3> <p>Yet even here a door stands open. Before the decree takes effect, the prophet calls:</p> <blockquote><p>Seek the LORD, all you humble people of the land, you who carry out his commands. Seek righteousness; seek humility. It may be that you will find shelter on the day of the LORD’s anger.</p><p>— Zephaniah 2:3</p></blockquote> <p>“It may be” is honest. Zephaniah does not promise an easy escape. But the people he addresses, the humble, are the ones the whole book is moving toward. At the end, God will leave in Jerusalem “a people humble and lowly, who will take refuge in the name of the LORD.”</p> <h3>The nations, and the proud city</h3> <p>Zephaniah’s judgement reaches in every direction from Judah, and ends with the greatest power of the day. Nineveh, still standing when he spoke, is pictured as a ruin where owls roost on the pillars. Her sin is the oldest one: she “thought in her heart, ‘I am, and there is no other but me.’” But the oracles against the nations also carry a surprise. The LORD will make the gods of the earth waste away, and “Then they will bow down to him, each in its own place, all the coastlands of the nations.”</p> <h3>From judgement to song</h3> <p>The turn comes at 3:9, and it is a reversal of Babel. There the human race was scattered by the confusion of its language. Here God says, “Then I will purify the speech of the peoples, so that all of them may call on the name of the LORD and serve him shoulder to shoulder.” His scattered people will come home from beyond the rivers of Cush.</p> <p>Then the prophet calls Jerusalem to sing, “Sing for joy, Daughter Zion”, because the LORD, the King of Israel, is with her. And in the verse at the head of this introduction the singing changes sides. The God who began the book sweeping the earth clean ends it rejoicing over his people “with singing”. Between two lines of loud joy stands a quiet one: “be quiet in his love”. Some hear in it a love too deep for words; others, a love that no longer speaks of the city’s sins.</p> <h3>How to read Zephaniah</h3> <p>Read it in one sitting, and let the first chapter be as dark as it is, so that the last can be as bright. Notice the repeated phrases: “on that day”, “the day of the LORD”, “at that time”. Watch how the judgement that seemed to swallow everything leaves a remnant, and how the humble, who have nothing to boast of, are the ones who remain.</p> <h3>About this translation</h3> <p>The text in this edition is the Open Word Bible, a new translation made directly from the Hebrew and given freely to the public domain. It is printed here at its Balanced level, which aims to be accurate and to read naturally aloud. Zephaniah is mainly poetry, and it is printed here one line per line, as the poetry it is. Two of the translation’s choices are worth knowing.</p> <p><strong>“The LORD.”</strong> Where the Hebrew uses God’s personal name, the four letters often written Yahweh, this translation follows long Jewish and Christian custom and writes “the LORD”, and “the LORD of Armies” for the title older Bibles render “the LORD of hosts”.</p> <p><strong>“Be quiet in his love.”</strong> In 3:17 the Hebrew verb means “be silent”. The translation keeps that sense; others read the line as “he will quiet you by his love”.</p> <p>For the reasoning behind every sentence of the translation, with the Hebrew beside it, see the Open Word Bible itself at openwordbible.org.</p>",
+  "study_questions": [],
+  "word_count": 1229
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "zephaniah",
+   "en"
+  ],
+  "order": 2,
+  "title": "Zephaniah 1",
+  "body_html": "<h3>The LORD will sweep away everything</h3><p>The LORD’s word came to Zephaniah son of Cushi, son of Gedaliah, son of Amariah, son of Hezekiah, during the reign of Josiah son of Amon, king of Judah. I will sweep away everything, all that is on the face of the earth, declares the LORD.<br/>I will sweep away people and animals; I will sweep away the birds of the sky and the fish of the sea,<br/>and the idols that make people fall, together with the wicked.<br/>I will cut off humankind from the face of the earth, declares the LORD.<br/>I will stretch out my hand against Judah<br/>and against everyone who lives in Jerusalem.<br/>From this place I will cut off every trace of Baal,<br/>the very name of the idol-priests along with the priests,<br/>those who bow down on the rooftops to the host of heaven,<br/>and those who bow down and swear by the LORD<br/>while they also swear by their king,<br/>and those who have turned away from following the LORD,<br/>who do not seek the LORD or ask for his guidance.<br/>Be silent before the Lord GOD,<br/>for the day of the LORD is close at hand.<br/>The LORD has prepared a sacrifice;<br/>he has set apart the guests he invited.<br/>On the day of the LORD’s sacrifice<br/>I will punish the officials and the king’s sons,<br/>and all who dress in foreign clothes.<br/>On that day I will punish all who leap across the threshold,<br/>and who fill their master’s house with violence and deceit.</p><h3>The great day of the LORD</h3><p>On that day, declares the LORD, a cry will rise from the Fish Gate,<br/>wailing from the Second Quarter,<br/>and a loud crash from the hills.<br/>Wail, you who live in the Mortar,<br/>for all the merchants are destroyed;<br/>all who trade with silver are cut off.<br/>At that time I will search Jerusalem with lamps<br/>and punish those who are complacent,<br/>like wine left to thicken on its dregs,<br/>who say to themselves,<br/>“The LORD will do nothing, neither good nor bad.”<br/>Their wealth will be plundered<br/>and their houses left in ruins.<br/>They will build houses but not live in them;<br/>they will plant vineyards but not drink their wine.<br/>The great day of the LORD is close at hand,<br/>close and coming very fast.<br/>Listen! The day of the LORD!<br/>There the warrior cries out in bitter anguish.<br/>That day will be a day of fury,<br/>a day of distress and anguish, a day of ruin and devastation,<br/>a day of darkness and gloom,<br/>a day of clouds and deep darkness,<br/>a day of the ram’s horn and the battle cry<br/>against the fortified cities<br/>and against the lofty corner towers.<br/>I will bring such distress on people that they will grope like the blind,<br/>for they have sinned against the LORD.<br/>Their blood will be spilled out like dust<br/>and their flesh like dung.<br/>Neither their silver nor their gold<br/>will be able to save them on the day of the LORD’s fury.<br/>In the fire of his jealous anger the whole earth will be consumed,<br/>for he will make an end, a sudden and terrible end,<br/>of all who live on the earth.</p>",
+  "study_questions": [],
+  "word_count": 544
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "zephaniah",
+   "en"
+  ],
+  "order": 3,
+  "title": "Zephaniah 2",
+  "body_html": "<h3>Seek the LORD</h3><p>Gather yourselves together, come together,<br/>you nation without shame,<br/>before the decree takes effect<br/>and the day blows away like chaff,<br/>before the LORD’s fierce anger falls on you,<br/>before the day of the LORD’s anger overtakes you.<br/>Seek the LORD, all you humble people of the land,<br/>you who carry out his commands.<br/>Seek righteousness; seek humility.<br/>It may be that you will find shelter<br/>on the day of the LORD’s anger.<br/>For Gaza will be deserted<br/>and Ashkelon left in ruins;<br/>Ashdod’s people will be driven out at noon,<br/>and Ekron will be torn up by the roots.</p><h3>The nations around Judah</h3><p>Woe to you who live by the sea, you nation of Cherethites!<br/>The word of the LORD is against you, Canaan, land of the Philistines:<br/>I will destroy you until no one is left.<br/>The land by the sea will become pastureland, with meadows for shepherds and pens for sheep.<br/>The coast will belong to what is left of the house of Judah; there they will pasture their flocks.<br/>In the evening they will lie down in the houses of Ashkelon,<br/>for the LORD their God will care for them and restore their fortunes.<br/>I have heard the taunts of Moab<br/>and the insults of the Ammonites,<br/>how they mocked my people<br/>and made boasts against their land.<br/>Therefore, as I live, declares the LORD of Armies, the God of Israel, Moab will become like Sodom and the Ammonites like Gomorrah,<br/>a land overrun by weeds, a pit of salt, a wasteland forever.<br/>What is left of my people will plunder them;<br/>the survivors of my nation will take their land.<br/>This is what they will get for their pride,<br/>because they mocked and boasted<br/>against the people of the LORD of Armies.<br/>The LORD will be fearsome to them<br/>when he makes all the gods of the earth waste away.<br/>Then they will bow down to him, each in its own place,<br/>all the coastlands of the nations.<br/>You too, Cushites,<br/>will be slain by my sword.<br/>He will raise his hand against the north<br/>and destroy Assyria;<br/>he will turn Nineveh into a wasteland,<br/>as dry as the desert.<br/>Flocks will lie down in her, animals of every kind;<br/>the desert owl and the hedgehog<br/>will roost on the tops of her pillars.<br/>Their call will sound through the windows, rubble will lie on the doorsteps,<br/>for her cedar paneling has been stripped bare.<br/>This is the city that exulted,<br/>that lived without a care,<br/>that thought in her heart, “I am, and there is no other but me.”<br/>What a ruin she has become, a place where wild animals lie down!<br/>Everyone who passes by her<br/>hisses and shakes their fist.</p>",
+  "study_questions": [],
+  "word_count": 461
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "zephaniah",
+   "en"
+  ],
+  "order": 4,
+  "title": "Zephaniah 3",
+  "body_html": "<h3>The rebellious city</h3><p>Woe to the rebellious and defiled,<br/>the city of oppression!<br/>She has not listened to the voice that called her;<br/>she has not accepted correction.<br/>She has not trusted in the LORD;<br/>she has not drawn near to her God.<br/>Her officials in her midst<br/>are roaring lions;<br/>her judges are wolves at evening<br/>that leave nothing for the morning.<br/>Her prophets are arrogant,<br/>treacherous men;<br/>her priests profane what is holy<br/>and do violence to the instruction.<br/>The LORD within her is righteous;<br/>he does no wrong.<br/>Morning after morning he brings his justice to light and never fails;<br/>yet the unjust know no shame.<br/>I have cut off nations; their towers lie in ruins.<br/>I have left their streets deserted, with no one walking through them.<br/>Their cities are laid waste; no one is left, no one lives there.<br/>I said, “Surely now you will fear me<br/>and accept correction.”<br/>Then her dwelling would not be cut off<br/>for all the punishment I had decided for her.<br/>But they were all the more eager to make all their deeds corrupt.<br/>So wait for me, declares the LORD,<br/>for the day when I rise up to seize the plunder.<br/>For I have decided to gather the nations and assemble the kingdoms, to pour out on them my fury, all my burning anger;<br/>for in the fire of my jealous anger<br/>the whole earth will be consumed.<br/>Then I will purify the speech of the peoples,<br/>so that all of them may call on the name of the LORD<br/>and serve him shoulder to shoulder.<br/>From beyond the rivers of Cush<br/>those who pray to me, my scattered people,<br/>will bring me offerings.<br/>On that day you will not be put to shame for all the deeds<br/>by which you rebelled against me,<br/>for then I will take away from among you those who proudly exult,<br/>and never again will you be haughty on my holy mountain.<br/>I will leave within you<br/>a people humble and lowly,<br/>who will take refuge in the name of the LORD.<br/>The remnant of Israel will do no wrong and tell no lies;<br/>no deceitful tongue will be found in their mouths.<br/>They will graze and lie down, with no one to make them afraid.</p><h3>Sing for joy, Daughter Zion</h3><p>Sing for joy, Daughter Zion;<br/>shout aloud, Israel!<br/>Be glad and rejoice with all your heart,<br/>Daughter Jerusalem!<br/>The LORD has taken away the judgments against you;<br/>he has turned back your enemy.<br/>The King of Israel, the LORD, is with you;<br/>you will never again fear disaster.<br/>On that day<br/>they will say to Jerusalem, “Do not be afraid;<br/>Zion, do not let your hands hang limp.”<br/>The LORD your God is in your midst, a mighty warrior who saves;<br/>he will delight in you with gladness and be quiet in his love;<br/>he will rejoice over you with singing.<br/>I will gather those who grieve because they are kept from the appointed feasts;<br/>they are your own, and the disgrace has been a burden on them.<br/>At that time I will deal with all who oppress you.<br/>I will rescue the lame and gather the scattered;<br/>I will give them praise and honor<br/>in every land where they were disgraced.<br/>At that time I will bring you home,<br/>at the time when I gather you.<br/>I will make you honored and praised among all the peoples of the earth<br/>as I restore your fortunes before your very eyes, says the LORD.</p>",
+  "study_questions": [],
+  "word_count": 592
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "zephaniah",
+   "en"
+  ],
+  "order": 5,
+  "title": "Conclusion",
+  "body_html": "<blockquote><p>At that time I will bring you home, at the time when I gather you. I will make you honored and praised among all the peoples of the earth as I restore your fortunes before your very eyes, says the LORD.</p><p>— Zephaniah 3:20</p></blockquote> <p>Zephaniah ends with a homecoming. The book that opened with the LORD sweeping away everything on the face of the earth closes with him gathering the scattered, rescuing the lame, and turning disgrace into honour “before your very eyes”. The last words belong to God: “says the LORD”.</p> <h3>The question the book leaves with you</h3> <p>Zephaniah’s first readers lived in a prosperous city that had grown used to God. They had not stopped believing in him; they had stopped expecting him to do anything. The book’s question is whether we have done the same. Do we live as if the LORD “will do nothing, neither good nor bad”?</p> <p>Its answer is that he will do both. He will come in judgement, and no wealth will shelter anyone from it. And he will come to save, and his joy over his people will be greater than theirs over him. The way between the two is the narrow one the prophet pointed to in 2:3: seek the LORD, seek righteousness, seek humility. The people who are left at the end are not the strong or the clever, but “a people humble and lowly”.</p> <h3>Where it points</h3> <p>The day of the LORD did come on Jerusalem, a generation later, when Babylon burned the city in 586 BC. But Zephaniah’s day is larger than any one disaster, and the New Testament still looks ahead to it. And the promise that God would purify the speech of the peoples, “so that all of them may call on the name of the LORD”, began to be kept at Pentecost, when people from every nation heard the apostles speak in their own languages, and Peter declared that “whoever calls on the name of the Lord will be saved”. The God who sings over his people is the Father of the parable, who runs to meet his returning son and fills the house with music and dancing.</p> <h3>Where to go from here</h3> <p>A few places in this library to take Zephaniah further:</p> <ul> <li><strong>On the God who sings (3:17).</strong> <em>Daughters of the King – 30 Days with God for Girls – Book 1</em>, an Ochorus Original, whose “Day 6 — He Sings over You” is on Zephaniah 3:17; and Alexander Maclaren’s sermon <em>The Prodigal and His Father</em> (Luke 15:11–24).</li> <li><strong>On seeking humility (2:3; 3:12).</strong> Andrew Murray’s <em>Humility</em>, and Dwight L. Moody’s sermon <em>Humility</em> (Matthew 11:29).</li> <li><strong>On divided loyalty (1:5).</strong> Charles H. Spurgeon’s <em>Morning by Morning</em>, the reading for November 14, on Zephaniah 1:5.</li> <li><strong>On turning before the day comes (2:1–3).</strong> R. A. Torrey’s sermon <em>The Day of Golden Opportunity</em> (Hebrews 3:7).</li> <li><strong>On Zephaniah and Christ.</strong> Augustine’s <em>The City of God</em>, Book XVIII, chapter 33, on what Jeremiah and Zephaniah foretold of Christ and the calling of the nations.</li> </ul> <p>And read Acts 2 in this same edition, where the speech of the peoples is made new.</p> <p>Every reference to Zephaniah in this library can be tapped to read the verse. But the best next step may be to read the book again, and to hear its last chapter as it was meant to be heard, as words spoken to people afraid of what was coming:</p> <blockquote><p>On that day they will say to Jerusalem, “Do not be afraid; Zion, do not let your hands hang limp.”</p><p>— Zephaniah 3:16</p></blockquote>",
+  "study_questions": [],
+  "word_count": 596
+ }
+}
+]
+

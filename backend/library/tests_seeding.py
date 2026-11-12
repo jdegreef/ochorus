@@ -7,6 +7,7 @@ code; these tests are where it lives."""
 
 import json
 import re
+from datetime import timedelta
 from io import StringIO
 from unittest import skipUnless
 from unittest.mock import patch  # noqa: E402
@@ -14,6 +15,7 @@ from unittest.mock import patch  # noqa: E402
 from django.core.management import call_command
 from django.db import connection
 from django.test import TestCase
+from django.utils import timezone
 
 from .models import (
     Article,
@@ -183,6 +185,19 @@ class SeedBooksUpsertTests(NamedWorksSeedMixin, TestCase):
         self.assertEqual(book.cover_url, fixture["cover_url"])
         self.assertEqual(book.description, fixture["description"])
         self.assertEqual(book.sort_order, fixture["sort_order"])
+
+    def test_a_text_change_re_dates_the_book(self):
+        # The book page's "Last updated" and the sitemap's lastmod read the
+        # book's updated_at; a chapter fix with no book-row change must move it.
+        book = Book.objects.get(slug="the-way-to-god", language="en")
+        old = timezone.now() - timedelta(days=30)
+        Book.objects.filter(pk=book.pk).update(updated_at=old)
+        Chapter.objects.filter(book=book, order=1).update(body_html="<p>stale</p>")
+
+        call_command("seed_books", verbosity=0)  # the next deploy
+
+        book.refresh_from_db()
+        self.assertGreater(book.updated_at, old)
 
     def test_seed_never_reverts_an_approved_translation(self):
         # source_type is create-only. It ships in the fixture as ai_unreviewed,

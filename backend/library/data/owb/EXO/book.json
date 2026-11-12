@@ -1,0 +1,34 @@
+{
+ "slug": "exodus",
+ "title": "Exodus",
+ "cover_title": "",
+ "subtitle": "Shemot, “Names”",
+ "cover_color": "#6b3a26",
+ "description": "The second book of the Bible, called in Hebrew Shemot from its opening words, “These are the names”, and in Greek Exodus, “the way out”. A new king who had never heard of Joseph turns Jacob’s family into slaves, and God hears their groaning and remembers his covenant. Then the great story of rescue: the baby hidden among the reeds of the Nile, the bush that burns and does not burn away, the name “I AM WHO I AM”, the plagues, the Passover lamb, and the sea split open. In the wilderness come manna and water from the rock; at Sinai, the Ten Commandments and the covenant sealed in blood; and after the golden calf, Moses’ prayer, the LORD passing by and proclaiming his name, and the glory filling the tabernacle. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of Exodus?",
+   "answer": "The second book of the Bible and of the five books of Moses, the Torah. Its Hebrew name, Shemot, “Names”, comes from its opening words; the name Exodus, Greek for “going out”, comes from the ancient Greek translation. Its forty chapters tell how God rescued Jacob’s descendants from slavery in Egypt (chapters 1–15), led them through the wilderness (15–18), and at Mount Sinai made a covenant with them, gave them his law and came to live among them in the tabernacle (19–40)."
+  },
+  {
+   "question": "Who wrote the book of Exodus, and when did the exodus happen?",
+   "answer": "Exodus does not name its author, though it says that Moses wrote down some of its words (17:14; 24:4; 34:27), and Jewish and Christian tradition has received it as one of the five books of Moses. Many scholars think it drew on older sources and reached its final form much later. The date of the exodus is also debated: some place it in the fifteenth century BC, from the 480 years of 1 Kings 6:1; many place it in the thirteenth, from the city of Rameses named in Exodus 1:11. Christians hold a range of views on both questions."
+  },
+  {
+   "question": "What are the Ten Commandments?",
+   "answer": "The words God spoke from Mount Sinai in Exodus 20:1–17, repeated in Deuteronomy 5; the Hebrew calls them “the Ten Words” (34:28). They begin not with a command but with a reminder of rescue: “I am the LORD your God. I brought you out of the land of Egypt, out of the house where you were slaves.” Then come no other gods, no idols, no misuse of God’s name, the Sabbath, honour to parents, and no murder, adultery, theft, false evidence or coveting. Jewish, Catholic and Lutheran, and Orthodox and Reformed traditions divide the same words into ten in slightly different ways."
+  },
+  {
+   "question": "What does “I AM WHO I AM” mean in Exodus 3:14?",
+   "answer": "It is God’s answer when Moses asks his name at the burning bush. The words come from the Hebrew verb “to be”, and God’s personal name, written in English Bibles as “the LORD”, is closely related to them. They have been understood as a promise of faithful presence (“I will be who I will be”, echoing “I will be with you” in 3:12), as a statement of God’s freedom, and as a declaration that God simply is, depending on nothing. In John 8:58 Jesus says, “before Abraham was, I am”, and many readers hear this name behind it."
+  },
+  {
+   "question": "Why does Exodus spend so many chapters on the tabernacle?",
+   "answer": "Because the tabernacle is the goal of the rescue. God tells Moses, “They are to make me a sanctuary, so that I may dwell among them” (25:8), and says he brought Israel out of Egypt “to make my home among them” (29:46). The plans are given in chapters 25–31 and the building is described in chapters 35–40, with the golden calf in between, and the book ends with the glory of the LORD filling the tent. The New Testament takes up the picture: John says the Word “made his home among us”, and the letter to the Hebrews reads the tabernacle as a copy and shadow of the heavenly sanctuary that Christ has entered."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

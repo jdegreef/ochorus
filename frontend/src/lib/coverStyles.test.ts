@@ -550,3 +550,15 @@ describe('cover scripts', () => {
 		}
 	});
 });
+
+describe('unnumbered covers', () => {
+	it('every book by an UNNUMBERED author is in an UNNUMBERED series', async () => {
+		const { UNNUMBERED_AUTHORS, UNNUMBERED_SERIES } = await import('./coverStyles');
+		const { allBookRows } = await import('../test/bookRows');
+		const stray = allBookRows()
+			.filter((b) => UNNUMBERED_AUTHORS.has(b.author[0]))
+			.filter((b) => !UNNUMBERED_SERIES.has((b.series ?? [])[0]))
+			.map((b) => `${b.slug}.${b.language}`);
+		expect(stray, 'a cover would hide a real volume number').toEqual([]);
+	});
+});

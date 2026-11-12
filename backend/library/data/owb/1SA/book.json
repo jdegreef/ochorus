@@ -1,0 +1,34 @@
+{
+ "slug": "1-samuel",
+ "title": "1 Samuel",
+ "cover_title": "",
+ "subtitle": "Shemuel Alef, “The First Book of Samuel”",
+ "cover_color": "#3f4a2e",
+ "description": "The book in which Israel gets a king, and learns what kind of king God wants. It opens with Hannah pouring out her soul in the sanctuary at Shiloh and singing of a God who lifts the poor from the dust, and with the boy Samuel answering in the night, “Speak, for your servant is listening.” Then the ark captured and Dagon fallen on his face, the people demanding a king like all the nations, and tall Saul, who began well and could not obey. And then the shepherd boy no one sent for, because “the LORD looks at the heart”: David with his sling before Goliath, Jonathan’s friendship, Saul’s spear, the years in caves and deserts, and the LORD’s anointed spared twice by the man who would take his throne. In the Open Word Bible, a new translation from the Hebrew given freely to the public domain, with an introduction to the book’s shape and meaning and a conclusion on where to read next.",
+ "qa": [
+  {
+   "question": "What is the book of 1 Samuel about?",
+   "answer": "The change from the time of the judges to the monarchy in Israel, told through three lives. Samuel, born in answer to his mother Hannah’s prayer, becomes prophet and the last of the judges (chapters 1–7). The people demand a king, and Samuel anoints Saul, who is later rejected for disobedience (chapters 8–15). God then chooses David, a shepherd from Bethlehem, who defeats Goliath, is befriended by Saul’s son Jonathan, and is hunted by the jealous Saul until Saul dies in battle on Mount Gilboa (chapters 16–31)."
+  },
+  {
+   "question": "Who wrote 1 Samuel, and when?",
+   "answer": "The book does not name its author, and Samuel dies before it ends (25:1). 1 Chronicles 29:29 mentions records kept by the prophets Samuel, Nathan and Gad, and Jewish tradition held that Samuel wrote the part up to his death, with the rest completed by others. Many scholars think the book drew on several older sources and reached its final form, together with 2 Samuel, as part of a longer history in the time of the kings or later. 1 and 2 Samuel were originally a single book."
+  },
+  {
+   "question": "Why did God reject Saul as king?",
+   "answer": "Because he would not obey the LORD’s command. In 1 Samuel 13 he offered a sacrifice himself instead of waiting for Samuel, and in chapter 15 he spared the Amalekite king and the best of the livestock that God had told him to devote to destruction, then claimed he had obeyed. Samuel told him that “to obey is better than sacrifice” (15:22) and that because he had rejected the word of the LORD, the LORD had rejected him as king. God chose instead “a man after his own heart” (13:14)."
+  },
+  {
+   "question": "Did God change his mind about Saul?",
+   "answer": "1 Samuel 15 says twice that the LORD regretted making Saul king (15:11, 15:35), and in between Samuel says that God “will not lie or change his mind, for he is not a mortal, that he should change his mind” (15:29). Most interpreters read the two together: God is not fickle or caught by surprise as human beings are, and his purposes stand; yet he truly responds to human choices, and his grief over Saul’s disobedience is real. Theologians differ on how best to describe this, but the chapter itself holds both truths side by side."
+  },
+  {
+   "question": "What does “the LORD looks at the heart” mean?",
+   "answer": "When Samuel came to Bethlehem to anoint one of Jesse’s sons, he was impressed by the eldest, Eliab, but God told him: “Pay no attention to his looks or to how tall he is… A person looks at what is there for the eyes, but the LORD looks at the heart” (16:7). God chose instead the youngest son, David, who had been left out with the sheep. The saying sums up a theme that runs through the book, from Hannah’s song onward: God lifts up the humble and is not impressed by outward strength, as Saul, the tallest man in Israel, and Goliath both show."
+  },
+  {
+   "question": "Which translation of the Bible is this?",
+   "answer": "The Open Word Bible, a new translation made directly from the Hebrew and dedicated to the public domain, printed here at its Balanced level, which aims to be accurate and to read naturally aloud. “LORD” in capitals stands for God’s personal name, and Hannah’s song is set out line by line as poetry. The reasoning behind each of its sentences, with the Hebrew beside it, is published at openwordbible.org. The introduction and conclusion were written for this edition."
+  }
+ ]
+}

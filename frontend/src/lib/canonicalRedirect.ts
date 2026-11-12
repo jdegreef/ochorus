@@ -13,6 +13,7 @@ const SLASHED_INDEXES = new Set([
 	'advent',
 	'articles',
 	'authors',
+	'bible',
 	'for',
 	'glossary',
 	'originals',
