@@ -534,7 +534,7 @@ And God promises to answer:
 
 > "The testing that has gripped you is only what all people face. But God is faithful, and He will not allow the testing to go past your strength. Along with the testing He will also make the way out, so that you are able to hold up under it." (1 Corinthians 10:13)
 
-In Gethsemane, Jesus told His sleepy disciples, "Stay alert and pray that you will not come into testing" (Matthew 26:41). Then, a few hours later, He prayed for them to His Father: "Keep them safe from the evil one" (John 17:15). He is still praying that prayer for us.
+In Gethsemane, Jesus told His sleepy disciples, "Stay alert and pray that you will not come into testing" (Matthew 26:41). Earlier that same night, a few hours before, He had prayed for them to His Father: "Keep them safe from the evil one" (John 17:15). He is still praying that prayer for us.
 
 ### "For Yours is the kingdom"
 
