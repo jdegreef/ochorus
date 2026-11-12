@@ -16276,6 +16276,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/on-the-priesthood": {
+			"ground": "60919db664909b4045501b6a30e7cc3cda53bb989a20a63e519528d1cbf73f5c",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.05,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[131, 102, 469, 131]
+				],
+				"title": [
+					[181, 300, 419, 379],
+					[98, 358, 502, 437]
+				],
+				"subtitle": [
+					[71, 463, 529, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"fr/orthodoxy": {
 			"ground": "7bf559f5f20acbc58bc609d10c8bc3fc2a472fd0bfa093b47378275be55d8800",
 			"style": "revival",

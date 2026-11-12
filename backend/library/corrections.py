@@ -7910,6 +7910,15 @@ BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", [])
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
 
+# OCR slips found while translating Chrysostom's On the Priesthood to French (#7207);
+# each is forced by grammar or by the dialogue (Basil answers "But not my case").
+# (Placed mid-file, not at the tail, so parallel jobs' appends can't conflict with it.)
+BODY_CORRECTIONS.setdefault("on-the-priesthood", {}).setdefault("replacements", []).extend([
+    ("nearly all the ancient father of the Church", "nearly all the ancient fathers of the Church"),
+    ("shall we want only and inconsiderately run", "shall we wantonly and inconsiderately run"),
+    ("For my ease does not now call for wailing", "For my case does not now call for wailing"),
+])
+
 # OCR/typo slips found while translating Murray's book to Portuguese (batch 6); scattered one-word mechanical errors, each grammar- or KJV-forced.
 BODY_CORRECTIONS.setdefault('true-vine', {}).setdefault("replacements", []).extend([
     ('what as unspeakable blessedness', 'what an unspeakable blessedness'),
