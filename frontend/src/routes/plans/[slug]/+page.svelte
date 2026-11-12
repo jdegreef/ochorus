@@ -56,6 +56,10 @@
 	 *  (a single-book plan) draws no section chrome — the header already says it. */
 	const groups = $derived(groupPlanDays(plan.days));
 	const grouped = $derived(groups.length > 1);
+	/** Too many books or days for a tick a day and a label a book (the Bible
+	 *  in a Year's 66 books, 365 days): the rail draws each book as one bar,
+	 *  filled as far as it is read, with no labels. */
+	const denseRail = $derived(groups.length > 12 || plan.days.length > 120);
 	// The distinct books the plan reads through, in first-appearance order, for
 	// the ItemList JSON-LD. Article days are left out: they have no book page.
 	const planBooks = $derived([
@@ -484,9 +488,17 @@
 			     run — read, today, still to come, in the series segments' colours.
 			     Decorative: the read card's progress bar says it in words. -->
 			{#if started}
-				<div class="plan-rail" aria-hidden="true">
+				<div class="plan-rail" class:dense={denseRail} aria-hidden="true">
 					{#each groups as g, gi (g.key)}
 						<div class="rail-seg" style="flex-grow: {g.days.length}">
+							{#if denseRail}
+								<div
+									class="rail-bar stage-mark"
+									class:reading={next !== null && next >= g.first && next <= g.last}
+								>
+									<span class="stage-mark done" style="width: {(readIn(g.days) / g.days.length) * 100}%"></span>
+								</div>
+							{:else}
 							<div class="rail-ticks">
 								{#each g.days as d (d.day)}
 									<span
@@ -501,6 +513,7 @@
 									>{readIn(g.days)}/{g.days.length}</span
 								>
 							</div>
+							{/if}
 						</div>
 					{/each}
 				</div>
@@ -970,6 +983,15 @@
 	}
 	.rail-tick.reading {
 		height: 2rem;
+	}
+	.plan-rail.dense {
+		gap: 2px;
+	}
+	.rail-bar {
+		display: flex;
+		height: 1.25rem;
+		overflow: hidden;
+		border-radius: 2px;
 	}
 	.rail-label {
 		display: flex;
