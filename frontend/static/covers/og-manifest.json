@@ -30355,6 +30355,21 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/how-to-succeed-in-the-christian-life": {
+			"ground": "0c6ba34cd75f2d63b05eab770b646c34703bc0ffac42da610efe4faee21ee125",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "diagonal/ochre",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/humility-2": {
 			"ground": "d4c1dcb8106b1b8773d7e6a574ed496983908a05c673d7d6ff007ff1e9fc9be6",
 			"style": "devotional",
