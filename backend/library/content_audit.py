@@ -640,14 +640,19 @@ def _broken_plan_days() -> list[dict]:
         "day",
         "book_slug",
         "chapter_order",
+        "chapter_count",
         "article_slug",
     )
     for d in days:
         if d["article_slug"]:
             ok = (d["article_slug"], d["plan__language"]) in articles
         else:
-            key = (d["book_slug"], d["plan__language"], d["chapter_order"])
-            ok = key in valid
+            # Every chapter of a multi-chapter day must be there, not just its first.
+            first = d["chapter_order"]
+            ok = all(
+                (d["book_slug"], d["plan__language"], order) in valid
+                for order in range(first, first + d["chapter_count"])
+            )
         if not ok:
             out.append(
                 {

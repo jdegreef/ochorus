@@ -398,6 +398,11 @@ export interface BookDetail extends BookSummary {
 	/** This devotional's year-long plan in this language (plan_seed.DAILY_PLANS),
 	 *  or "". Optional so an API running behind this build omits it. */
 	daily_plan?: string;
+	/** A book of the Bible: the library's sermons whose text is in it (the first
+	 *  few, in canon order), their total, and the sermons shelf's facet name for
+	 *  the book ("Psalms"). Null on any other book and where no sermon treats it;
+	 *  optional so an API behind this build omits it. */
+	bible_sermons?: { book: string; count: number; sermons: SermonSummary[] } | null;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1291,6 +1296,11 @@ export interface PlanDay {
 	day: number;
 	book_slug: string;
 	chapter_order: number | null;
+	/** How many chapters the day reads, from `chapter_order` on, in its one
+	 *  book: 1 but on a several-chapter day (Bible in a Year), whose titles and
+	 *  length are the run's. Optional: an older API omits it — read as 1
+	 *  (`$lib/planRun`). */
+	chapter_count?: number;
 	/** Optional: an API predating article days omits it (rolling-deploy skew). */
 	article_slug?: string;
 	/** A year-long devotional's day: the one dated entry ("MM-DD") it reads out
