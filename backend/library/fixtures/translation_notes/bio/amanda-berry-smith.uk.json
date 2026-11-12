@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "amanda-berry-smith",
+ "language": "uk",
+ "job_issue": 7860,
+ "pull_request": 7870,
+ "references": [
+  {
+   "reference": "Isaiah 41:13b",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text — ebible ukr_pan, public domain",
+   "block_index": 17
+  }
+ ],
+ "note": [
+  "The bio's only scripture is the prayer-answered callout's \"Fear thou not, I will help thee\" (KJV Isa 41:13 'Fear not; I will help thee', echoing 41:10 'Fear thou not'). Rendered as Kulish Isa 41:13b verbatim — «Не лякайся, я помагаю тобі!» — fetched byte-for-byte from the ebible mirror (gracious-tech/fetch_collection, bibles/ukr_pan/usfm/isa.usfm); only the first letter is capitalised. Same verse, same wording, in FAQ item 9.",
+  "No Book C:V citations in the English bio or FAQ; every other quotation is the subject's own words."
+ ]
+}
