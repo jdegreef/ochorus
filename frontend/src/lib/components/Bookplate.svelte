@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { CoverStyleId } from '$lib/coverStyles';
-	import { EX_LIBRIS, PLATE_FACES, SCRIPT_SHEET, splitAround, textScripts } from '$lib/bookplate';
+	import { EX_LIBRIS, PLATE_FACES, SCRIPT_SHEET, plateWords, textScripts } from '$lib/bookplate';
 	import { linkScriptFonts } from '$lib/fontSheets';
 	import { i18n } from '$lib/i18n.svelte';
 	import Fleuron from '$lib/components/Fleuron.svelte';
@@ -40,8 +40,7 @@
 	} = $props();
 	const t = i18n.t;
 
-	const finished = $derived(splitAround(t('bookplate.finished'), '%title%'));
-	const byline = $derived(t('bookplate.by').replace('%author%', author));
+	const words = $derived(plateWords(t, author));
 
 	// A name or title in another script than the page's: link that script's
 	// faces, or the per-glyph fallback reaches a face nobody loaded.
@@ -65,10 +64,10 @@
 			<div class="owner-blank">{@render blank?.()}</div>
 		{/if}
 		<p class="words">
-			{#if finished[0]}<span class="block">{finished[0]}</span>{/if}
+			{#if words.before}<span class="block">{words.before}</span>{/if}
 			<span class="book" dir="auto" {lang}>{title}</span>
-			{#if finished[1]}<span class="block">{finished[1]}</span>{/if}
-			<span class="block" dir="auto">{byline}</span>
+			{#if words.after}<span class="block">{words.after}</span>{/if}
+			<span class="block" dir="auto">{words.byline}</span>
 		</p>
 		<p class="date">{date}</p>
 	</div>

@@ -86,8 +86,19 @@ export const PLATE_FACES: Record<CoverStyleId, { family: string; weight: number 
  *  Arabic name on an IM Fell plate lands on Amiri, not the device serif. */
 const SERIF_SCRIPTS =
 	"'Amiri', 'Tiro Devanagari Hindi', 'PT Serif', 'Noto Serif Ethiopic', 'Noto Serif KR', 'Noto Serif JP', Georgia, 'Times New Roman', serif";
-const SANS_SCRIPTS =
-	"'Noto Sans Arabic', 'Noto Sans Devanagari', 'PT Sans', 'Noto Sans Ethiopic', 'Noto Sans KR', 'Noto Sans JP', system-ui, sans-serif";
+/** The young-reader plate's sans face for each script — named once, for its
+ *  stack below and for the PNG, which has to load the face it draws in. */
+export const SANS_SCRIPT_FACE: Record<PlateScript, string> = {
+	arabic: 'Noto Sans Arabic',
+	devanagari: 'Noto Sans Devanagari',
+	cyrillic: 'PT Sans',
+	ethiopic: 'Noto Sans Ethiopic',
+	korean: 'Noto Sans KR',
+	japanese: 'Noto Sans JP'
+};
+const SANS_SCRIPTS = `${Object.values(SANS_SCRIPT_FACE)
+	.map((f) => `'${f}'`)
+	.join(', ')}, system-ui, sans-serif`;
 
 /** The canvas font stack a plate in this recipe is lettered in. */
 export function plateFontStack(style: CoverStyleId): string {
@@ -140,6 +151,17 @@ export function splitAround(template: string, token: string): [string, string] {
 	const i = template.indexOf(token);
 	if (i < 0) return [template.trim(), ''];
 	return [template.slice(0, i).trim(), template.slice(i + token.length).trim()];
+}
+
+/** The plate's words around the book, from the catalogue: the connecting words
+ *  before and after the title, and the byline. One reading for the page and
+ *  the PNG, so they cannot word the plate differently. */
+export function plateWords(
+	t: (key: string) => string,
+	author: string
+): { before: string; after: string; byline: string } {
+	const [before, after] = splitAround(t('bookplate.finished'), '%title%');
+	return { before, after, byline: t('bookplate.by').replace('%author%', author) };
 }
 
 export interface Plate {
