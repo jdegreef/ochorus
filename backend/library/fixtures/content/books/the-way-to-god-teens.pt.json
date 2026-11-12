@@ -1,0 +1,360 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "dwight-l-moody"
+  ],
+  "slug": "the-way-to-god-teens",
+  "language": "pt",
+  "title": "O Caminho para Deus (Para Adolescentes)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "D. L. Moody estudou só uns cinco anos na escola e vendia sapatos em Boston quando o seu professor da escola dominical lhe falou do amor de Cristo. Mais tarde, ele pregou para milhões de pessoas em dois continentes. O Caminho para Deus é a sua explicação simples e cheia de histórias de como uma pessoa chega a Deus. Esta edição para adolescentes reconta o livro com palavras do dia a dia: que Deus ama você de verdade, o que significa nascer de novo, quem é Jesus, o que o arrependimento realmente é, como consertar as coisas, como você pode saber que pertence a Deus e como voltar se você se afastou. As frases do próprio Moody foram mantidas onde dizem melhor.",
+  "hook": "Um vendedor de sapatos que virou um pregador famoso no mundo inteiro explica, com histórias reais, como qualquer pessoa pode encontrar o caminho para Deus.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Quem foi D. L. Moody?",
+    "answer": "Dwight Lyman Moody foi um evangelista norte-americano, nascido em 1837 numa fazenda em Northfield, Massachusetts. O pai morreu quando ele tinha quatro anos, e ele estudou só uns cinco anos na escola. Tornou-se cristão aos dezoito anos, quando trabalhava na loja de sapatos do tio em Boston, começou uma enorme escola dominical em Chicago e chegou a pregar para milhões de pessoas nos Estados Unidos e na Grã-Bretanha. Fundou escolas e o Instituto Bíblico Moody, e morreu em 1899."
+   },
+   {
+    "question": "O que significa “nascer de novo”?",
+    "answer": "A expressão vem das palavras de Jesus a Nicodemos em João 3: “se alguém não nascer de novo, não pode ver o Reino de Deus.” Moody explica que significa uma vida nova dada pelo Espírito de Deus, e não só ir à igreja, esforçar-se mais ou virar uma nova página. É algo que Deus faz em nós quando nos voltamos para ele e confiamos em Jesus."
+   },
+   {
+    "question": "Eu preciso ter uma história de conversão dramática para ser cristão de verdade?",
+    "answer": "Não. Moody diz que é perigoso ficar esperando a experiência de outra pessoa. Algumas pessoas chegam a Deus de repente; outras, tão aos poucos que não conseguem dizer quando começou, como o amanhecer. O que importa não é a história, mas se você realmente pertence a Cristo."
+   },
+   {
+    "question": "O que é arrependimento?",
+    "answer": "Moody o chama de “meia-volta volver!”: dar meia-volta, deixando de seguir o seu próprio caminho para seguir o caminho de Deus. Não é só se sentir mal, ter medo ou largar um pecado. É uma mudança de mente que aparece numa mudança de direção."
+   },
+   {
+    "question": "Eu posso mesmo saber que vou para o céu?",
+    "answer": "Moody diz que sim: João escreveu a sua primeira carta para que os que creem “saibam” que têm a vida eterna. A certeza não depende dos seus sentimentos, mas do que Jesus fez e do que Deus prometeu."
+   },
+   {
+    "question": "E se eu sentir que ninguém me ama?",
+    "answer": "O primeiro capítulo de Moody fala só do amor de Deus, que não muda quando falhamos. Se você se sente sem amor, muito para baixo, ou tem pensamentos de se machucar ou de não querer mais viver, por favor, conte imediatamente a um adulto de confiança ou procure um serviço de apoio emocional da sua região. Você importa, e existe ajuda."
+   },
+   {
+    "question": "Este é o texto completo?",
+    "answer": "Não. É uma recontagem para adolescentes, em palavras simples e atuais, tirada dos nove capítulos de Moody, mantendo as suas próprias frases e histórias onde elas dizem melhor. O texto completo de O Caminho para Deus também está disponível."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, de O Caminho para Deus (The Way to God, 1884), de D. L. Moody, obra de domínio público. A forma de contar é nossa, livre para ler e compartilhar. As citações bíblicas desta edição em português são da Bíblia Livre para o Mundo, que é de domínio público.",
+  "cover_url": "/covers/art/the-way-to-god-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 163,
+  "is_published": true,
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 1,
+  "title": "O Menino da Loja de Sapatos",
+  "body_html": "<blockquote>“Ao verem a ousadia de Pedro e João, e percebendo que eram homens iletrados e incultos, eles se maravilharam. E reconheceram que eles haviam estado com Jesus.” — Atos 4:13</blockquote> <p>Dwight Lyman Moody nasceu em 1837, numa pequena fazenda em Northfield, Massachusetts. Era o sexto de nove filhos. Quando ele tinha quatro anos, o pai morreu, e a família ficou muito pobre. Dwight estudou só uns cinco anos na escola.</p> <p>Aos dezessete anos, mudou-se para Boston para trabalhar na loja de sapatos do tio. Era cheio de energia, ambicioso e meio bruto no jeito.</p> <p>O professor dele na escola dominical, um homem chamado Edward Kimball, resolveu visitá-lo. No dia 21 de abril de 1855, encontrou Dwight nos fundos da loja, embrulhando sapatos, e lhe falou do amor de Cristo. Ali mesmo, no meio das prateleiras, Moody entregou o coração a Jesus.</p> <p>Pouco tempo depois, Moody se mudou para Chicago. Começou uma escola dominical numa das partes mais violentas da cidade, uma região que o povo chamava de “Pequeno Inferno”, e ela cresceu até chegar a mil e quinhentas crianças. Com o tempo, ele largou um negócio de sucesso para poder dedicar todo o seu tempo a Deus.</p> <p>Em 1873, ele viajou de navio para a Grã-Bretanha com um cantor chamado Ira Sankey. Os dois fizeram reuniões que lotavam salões enormes, e Moody voltou para casa como o evangelista mais conhecido do mundo. Ele nunca foi ordenado pastor. Calcula-se que, ao longo da vida, ele tenha pregado para até cem milhões de pessoas.</p> <p>O menino que estudou só cinco anos também fundou escolas para jovens, o Instituto Bíblico Moody, em Chicago, e um projeto que imprimia livros cristãos tão baratos que qualquer pessoa podia comprar.</p> <p>Moody falava com palavras simples e adorava contar histórias verdadeiras. O Caminho para Deus é a explicação que ele dá para a pergunta mais importante que existe: como uma pessoa pode chegar a Deus? O livro está cheio de histórias de gente real que ele conheceu: um homem que passava em frente a uma igreja à noite, um comerciante cheio de justiça própria, um homem atormentado por um crime que tinha cometido, um preso que amava flores.</p> <p>Neste livro, você vai ouvir essas histórias e as respostas simples de Moody. Como os primeiros discípulos, ele não tinha estudo, mas as pessoas percebiam que ele tinha estado com Jesus.</p> <p><strong>Uma coisa para fazer esta semana:</strong> pense em quem foi a primeira pessoa a falar de Jesus para você: um pai ou uma mãe, um professor, um amigo, um líder de jovens. Nesta semana, agradeça a Deus por essa pessoa e, se puder, mande uma mensagem para ela dizendo obrigado.</p>",
+  "study_questions": [
+   {
+    "question": "Onde Moody estava quando se tornou cristão?",
+    "answer": "Na loja de sapatos do tio, em Boston, onde o seu professor da escola dominical, Edward Kimball, o encontrou embrulhando sapatos."
+   },
+   {
+    "question": "O que Moody começou em Chicago?",
+    "answer": "Uma escola dominical numa favela chamada “Pequeno Inferno”, que cresceu até chegar a mil e quinhentas crianças."
+   },
+   {
+    "question": "Por que Atos 4:13 é um bom versículo para a vida de Moody?",
+    "answer": "Porque, como Pedro e João, Moody tinha pouco estudo, mas as pessoas viam que ele tinha estado com Jesus."
+   }
+  ],
+  "word_count": 442
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 2,
+  "title": "Deus É Amor",
+  "body_html": "<blockquote>“Nisto consiste o amor, não em que nós tenhamos amado a Deus, mas em que ele nos amou e enviou o seu Filho como propiciação pelos nossos pecados.” — 1 João 4:10</blockquote> <p>Moody começa o seu livro com a verdade mais importante de todas:</p> <blockquote>“Se eu pudesse ao menos fazer os homens compreenderem o verdadeiro significado das palavras do apóstolo João—“Deus é amor”, eu tomaria esse único texto e percorreria o mundo proclamando essa gloriosa verdade.”</blockquote> <p>Moody diz que o problema é que as pessoas pensam que Deus as odeia, e por isso vivem fugindo dele.</p> <p>Ele conta uma história. A igreja dele em Chicago colocou as palavras “Deus é Amor” acima do púlpito, em luzes de gás. Certa noite, um homem que passava pela rua deu uma olhada pela porta e as viu. Ele pensou: “Deus é Amor! Não! Ele não me ama; pois sou um pobre e miserável pecador.” Tentou esquecer aquelas palavras, mas elas pareciam erguer-se bem diante dele em letras de fogo. Ele deu meia-volta, entrou e ficou depois da reunião, chorando. Quando Moody lhe mostrou na Bíblia que Deus o tinha amado o tempo todo, ele foi embora cheio de alegria.</p> <p>De onde vem a ideia de que Deus não nos ama? Moody diz que muitas vezes ela vem de nos ensinarem que Deus só nos ama quando somos bons. Mas não é isso que a Bíblia diz. Pais bons não deixam de amar os filhos quando eles se comportam mal. Moody diz: “É o pecado que Ele odeia”, e não a pessoa.</p> <p>Para ver o tamanho do amor de Deus, diz Moody, olhe para a cruz. Jesus deu a vida não só pelos seus amigos, mas também pelos seus inimigos, pelas pessoas que zombaram dele e o mataram. Na cruz, ele orou: “Pai, perdoa-lhes, pois eles não sabem o que estão fazendo.”</p> <p>E o amor de Deus não muda. Pessoas que um dia amaram você talvez tenham esfriado. Mas Jesus, na noite antes de morrer, “tendo amado os seus que estavam no mundo, amou-os até o fim”. Ele amava Pedro, sabendo que Pedro o negaria. Ele amava até Judas.</p> <p>Moody também responde a uma pergunta que muita gente faz: se Deus me ama, por que ele simplesmente não me faz bom? Porque, diz ele, “Deus quer filhos e filhas no céu; Ele não quer máquinas nem escravos.” Ele nos atrai com amor.</p> <p>Moody sabia que sentir-se sem amor pode ser esmagador. Se você sente que ninguém ama você, ou se tem pensamentos de se machucar ou de não querer viver, por favor, conte hoje mesmo a um adulto de confiança ou procure um serviço de apoio emocional. Deus ama você, e as pessoas ao seu redor querem ajudar.</p> <p><strong>Uma coisa para fazer esta semana:</strong> escreva “Deus é amor” num lugar onde você vai ver todos os dias nesta semana: no espelho, na tela de bloqueio do celular, na sua agenda. Cada vez que você vir, diga a Deus: “Obrigado por me amar, mesmo hoje.”</p>",
+  "study_questions": [
+   {
+    "question": "Por que Moody achava que as pessoas fogem de Deus?",
+    "answer": "Porque elas pensam que Deus as odeia."
+   },
+   {
+    "question": "O que aconteceu com o homem que viu “Deus é Amor” em luzes de gás?",
+    "answer": "Ele não conseguiu esquecer aquelas palavras, entrou na reunião e, pelas Escrituras, descobriu que Deus o tinha amado o tempo todo."
+   },
+   {
+    "question": "Segundo Moody, por que Deus simplesmente não nos faz bons?",
+    "answer": "Porque Deus quer filhos e filhas, e não máquinas nem escravos; ele nos atrai com amor."
+   }
+  ],
+  "word_count": 500
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Nascer de Novo",
+  "body_html": "<blockquote>“Jesus lhe respondeu: ‘Em verdade, em verdade lhe digo que, se alguém não nascer de novo, não pode ver o Reino de Deus.’” — João 3:3</blockquote> <p>O capítulo seguinte de Moody fala da conversa de Jesus com um homem chamado Nicodemos. Nicodemos era um mestre religioso respeitado, provavelmente uma das melhores pessoas de Jerusalém. Ele foi falar com Jesus à noite, e Jesus lhe disse que, “se alguém não nascer de novo, não pode ver o Reino de Deus.”</p> <p>Moody diz que fica contente por Jesus ter dito isso a um homem respeitável como Nicodemos, e não só a cobradores de impostos ou a pessoas rejeitadas pela sociedade. Do contrário, as pessoas pensariam: “Aquela gente precisa nascer de novo, mas eu sou uma pessoa boa.” Todo mundo precisa.</p> <p>Moody chama o novo nascimento de “o A B C da religião cristã.” Depois ele explica o que ele não é.</p> <p>Não é ir à igreja. Não é procurar fazer o que é certo. Não é “virar uma nova página” com uma nova resolução. Não é fazer as suas orações com regularidade. Moody também diz que não é algo que acontece só porque você foi batizado ou participou da ceia do Senhor. Ele chama essas coisas de boas e importantes, mas adverte contra colocá-las no lugar de nascer do Espírito.</p> <p>Cristãos de tradições diferentes entendem o batismo de maneiras diferentes. Mas todos concordam com o ponto principal de Moody: passar por cerimônias religiosas não substitui confiar de verdade em Jesus e receber de Deus uma vida nova.</p> <p>Então, o que é nascer de novo? É o Espírito de Deus nos dando uma vida nova, vinda do alto. É algo que Deus faz, e não algo que conseguimos sozinhos. Não podemos fazer a nós mesmos nascer, nem no corpo nem no espírito.</p> <p>Moody conta de um homem que levou uma longa lista de perguntas a um amigo dele e disse: “Se o senhor puder responder satisfatoriamente a estas perguntas, estou decidido a ser cristão.” O amigo sugeriu que ele viesse primeiro a Cristo e olhasse as perguntas depois. O homem fez isso e, quando olhou a sua lista mais tarde, parecia que todas tinham sido respondidas.</p> <p>Perguntas são boas, e você deve fazê-las. Mas às vezes usamos as perguntas para manter Deus à distância. Moody diz que aquela noite foi “a noite mais abençoada” da vida de Nicodemos, porque ele conheceu aquele que podia lhe dar um novo começo.</p> <p><strong>Uma coisa para fazer esta semana:</strong> leia João 3:1–17 com calma nesta semana. Faça a si mesmo, com sinceridade, a pergunta de Moody: “Eu nasci de novo?” Se você não tiver certeza, diga isso a Deus e peça que ele lhe dê uma vida nova pelo seu Espírito.</p>",
+  "study_questions": [
+   {
+    "question": "Por que Moody ficou contente por Jesus ter falado do novo nascimento a Nicodemos?",
+    "answer": "Porque Nicodemos era um homem religioso e respeitável, o que mostra que todo mundo precisa nascer de novo, e não só os pecadores evidentes."
+   },
+   {
+    "question": "Cite três coisas que, segundo Moody, nascer de novo não é.",
+    "answer": "Quaisquer três destas: ir à igreja, procurar fazer o que é certo, virar uma nova página, fazer as suas orações, ser batizado ou participar da ceia do Senhor."
+   },
+   {
+    "question": "O que aconteceu com o homem da lista de perguntas?",
+    "answer": "Ele veio primeiro a Cristo e, depois, descobriu que as suas perguntas pareciam ter sido respondidas."
+   }
+  ],
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 4,
+  "title": "O Homem Orgulhoso e o Homem Sincero",
+  "body_html": "<blockquote>“Mas o publicano, estando em pé de longe, nem mesmo ousava levantar os olhos ao céu, mas batia no peito, dizendo: ‘Deus, sê misericordioso para comigo, um pecador!’” — Lucas 18:13</blockquote> <p>Certa vez, Jesus contou uma história sobre dois homens que foram ao templo para orar. Um era fariseu, um homem muito religioso, que agradecia a Deus por não ser como as outras pessoas. O outro era cobrador de impostos (um “publicano”), que sabia que era pecador e só conseguia dizer: “Deus, sê misericordioso para comigo, um pecador!” Jesus disse que foi o segundo homem que voltou para casa em paz com Deus.</p> <p>Moody diz que todo mundo que está buscando conhecer o cristianismo tem o espírito de um desses dois homens. Ou não sente que precisa de um Salvador, ou sabe que precisa.</p> <p>Para o tipo orgulhoso, Moody aponta versículos como Romanos 3:23: “todos pecaram e carecem da glória de Deus”. Não algumas pessoas. Todos.</p> <p>Depois ele conta uma história. Durante umas reuniões numa cidade de Vermont, uma mulher lhe pediu que orasse pelo marido dela. Moody diz que o homem era tão cheio de justiça própria que “não se conseguia introduzir nele a ponta da agulha da convicção em parte alguma.” Moody disse à esposa que achava que não conseguiriam chegar perto dele. Ela respondeu: “O senhor precisa conseguir! Meu coração se partirá se estas reuniões terminarem sem a conversão dele.”</p> <p>Ela continuou a trazê-lo. Perto do fim de trinta dias de reuniões, o homem se aproximou de Moody, pôs no ombro dele uma mão trêmula e pediu para falar com ele numa sala lateral. Moody pensou que ele estivesse tremendo de frio. Mas o homem disse:</p> <blockquote>“Sou o pior homem do Estado de Vermont. Quero que ore por mim.”</blockquote> <p>Moody pensou que ele tivesse cometido algum crime terrível e perguntou se algum pecado em particular o afligia. O homem disse: “Toda a minha vida tem sido um pecado. Tenho sido um fariseu presunçoso e cheio de justiça própria.”</p> <p>Naquela noite, por volta das duas horas da manhã, a luz raiou na alma dele. Ele percorreu de cima a baixo a rua principal contando às pessoas o que Deus tinha feito por ele, e daí em diante foi um cristão cheio de entusiasmo.</p> <p>Repare em duas coisas. Primeiro, a pessoa mais difícil de alcançar muitas vezes não é a que é claramente má, mas a que acha que está tudo bem com ela. Segundo, nunca desista de orar por alguém. A oração persistente e o amor daquela esposa fizeram diferença.</p> <p><strong>Uma coisa para fazer esta semana:</strong> leia Lucas 18:9–14 nesta semana e pergunte a si mesmo, com sinceridade, com qual dos dois homens você se parece mais. Depois ore a oração do cobrador de impostos: “Deus, sê misericordioso para comigo, um pecador!” E escolha uma pessoa por quem você vai continuar orando, como a mulher de Vermont.</p>",
+  "study_questions": [
+   {
+    "question": "Quais são as “duas classes” de pessoas de Moody?",
+    "answer": "As que têm o espírito do fariseu, que não sentem que precisam de um Salvador, e as que têm o espírito do publicano, que sabem que são pecadoras."
+   },
+   {
+    "question": "O que o homem cheio de justiça própria de Vermont finalmente disse?",
+    "answer": "“Sou o pior homem do Estado de Vermont. Quero que ore por mim.”"
+   },
+   {
+    "question": "Que papel a esposa teve na conversão dele?",
+    "answer": "Ela continuou orando por ele e levando-o às reuniões, mesmo quando parecia não haver esperança."
+   }
+  ],
+  "word_count": 479
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 5,
+  "title": "A Sua Própria História",
+  "body_html": "<blockquote>“Pois o salário do pecado é a morte, mas o dom gratuito de Deus é a vida eterna em Cristo Jesus, nosso Senhor.” — Romanos 6:23</blockquote> <p>Moody tinha um conselho para quem queria chegar a Deus, mas estava travado: não fique esperando a experiência de outra pessoa.</p> <p>Ele diz que algumas pessoas esperam que aconteça com elas exatamente a mesma coisa que aconteceu com os avós. Ele tinha um amigo que se converteu num campo, “e ele acha que a cidade inteira deveria descer àquele prado para se converter.” Outro se converteu debaixo de uma ponte e achava que todo mundo deveria ir lá também.</p> <p>Deus não trabalha assim. A sua história não precisa ser parecida com a de mais ninguém. O melhor a fazer, diz Moody, é ir direto à Bíblia. Se você disser: “Não tenho forças”, a Bíblia diz que Cristo morreu por nós “enquanto ainda éramos fracos”. Se você disser: “Não consigo enxergar”, Jesus diz: “Eu sou a luz do mundo.”</p> <p>Moody também fala de quanto tempo leva para alguém se tornar cristão. Romanos 6:23 chama a vida eterna de “o dom gratuito de Deus”. Moody pergunta: “Quanto tempo é preciso para aceitar um dom?” Existe um momento em que ele não é seu, e no momento seguinte ele é.</p> <p>Ao mesmo tempo, diz ele, algumas pessoas chegam a Deus tão aos poucos que, “como acontece com a luz da manhã, é impossível dizer quando a aurora começou.” Outras chegam de repente, como um clarão. Moody diz: “Eu não atravessaria a rua para provar quando me converti; mas o importante para mim é saber que realmente me converti.”</p> <p>Isso traz muita liberdade, principalmente se você cresceu numa família cristã e não consegue lembrar de um momento em que “se tornou” cristão. Está tudo bem. O que importa não é se você consegue dizer o dia, mas se você confia em Jesus agora.</p> <p>Moody dá um exemplo divertido de uma conversão repentina: Zaqueu, o cobrador de impostos baixinho que subiu numa árvore para ver Jesus. Jesus lhe disse que descesse, e Moody diz: “A sua conversão deve ter acontecido em algum ponto entre o galho e o chão.” Zaqueu desceu um homem transformado.</p> <p>Moody compara o evangelho a um remédio. Se um amigo de confiança tivesse sido curado de uma doença mortal e oferecesse a você o mesmo remédio de graça, você seria tolo se não o tomasse. Jesus oferece uma vida nova como presente. Você não precisa entender tudo, nem ter a mesma história que outra pessoa. Só precisa recebê-la.</p> <p><strong>Uma coisa para fazer esta semana:</strong> se você é cristão, escreva a sua história em algumas frases, por mais comum que ela pareça. Se você não tem certeza, leia Romanos 6:23 e pergunte a si mesmo: “Eu já recebi esse presente?” Se ainda não, você pode recebê-lo hoje, dizendo a Deus que quer confiar em Jesus.</p>",
+  "study_questions": [
+   {
+    "question": "Por que Moody adverte contra ficar esperando a experiência de outra pessoa?",
+    "answer": "Porque Deus não age da mesma maneira com todo mundo; devemos ir à Bíblia em vez de copiar a história de outra pessoa."
+   },
+   {
+    "question": "Como Moody descreve as conversões graduais?",
+    "answer": "Como a luz da manhã, em que é impossível dizer quando a aurora começou."
+   },
+   {
+    "question": "Onde Moody diz que aconteceu a conversão de Zaqueu?",
+    "answer": "Em algum ponto entre o galho e o chão."
+   }
+  ],
+  "word_count": 479
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 6,
+  "title": "Quem É Jesus?",
+  "body_html": "<blockquote>“Ele lhes perguntou: ‘E vocês, quem dizem que eu sou?’ Simão Pedro respondeu: ‘Tu és o Cristo, o Filho do Deus vivo.’” — Mateus 16:15–16</blockquote> <p>Moody conheceu pessoas que gostavam de Jesus, mas não acreditavam que ele fosse Deus. Achavam que ele era um grande mestre ou um homem muito bom. Moody já tinha pensado assim.</p> <p>Ele conta que, quando era menino, pensava que Jesus era um bom homem, como Moisés, José ou Abraão, talvez o melhor homem que já viveu. Mas depois percebeu que Jesus afirmava muito mais do que isso. Jesus dizia coisas como: “antes que Abraão existisse, EU SOU.” Ele afirmava ter vindo do céu e ser um com Deus.</p> <p>Isso deixou Moody com um problema:</p> <blockquote>“Eu não sabia onde colocar Cristo, nem o que fazer com Ele, se Ele não fosse divino.”</blockquote> <p>Ele chegou à conclusão de que Jesus ou é um enganador, ou é Deus que veio em carne humana. Moody argumentava que, se Jesus fosse só um homem, não poderia nem ser chamado de homem bom, porque reivindicou uma honra que não era dele. E, se ele acreditasse de verdade que era Deus sem ser, estaria iludido. Moody não conseguia aceitar nenhuma dessas opções. Tudo na vida, no ensino e no caráter de Jesus mostra que ele não era nem mentiroso nem confuso.</p> <p>Moody também observa que cristãos do mundo inteiro adoram Jesus. Se ele não é Deus, isso seria quebrar o primeiro mandamento: “Você não terá outros deuses diante de mim.” Mas, se ele é Deus, adorá-lo é exatamente o certo.</p> <p>Ele olha também para o julgamento de Jesus. Quando o sumo sacerdote lhe perguntou diretamente: “Você é o Cristo, o Filho do Bendito?”, Jesus respondeu: “Eu sou.” Foi por isso que o condenaram à morte. Jesus morreu porque afirmou ser Deus.</p> <p>Esta é a pergunta mais importante que você vai responder na vida. Jesus perguntou aos seus discípulos: “E vocês, quem dizem que eu sou?” Pedro respondeu: “Tu és o Cristo, o Filho do Deus vivo.” Cada pessoa tem de responder a essa pergunta por si mesma.</p> <p>Talvez você ainda não tenha uma resposta completa, e tudo bem. Continue olhando para Jesus nos Evangelhos. Leia o que ele disse e fez. Moody acreditava que quem olha com sinceridade vai descobrir que Jesus é quem ele disse que era.</p> <p><strong>Uma coisa para fazer esta semana:</strong> leia o Evangelho de Marcos neste mês, um capítulo por dia. Enquanto lê, anote cada vez que Jesus diz ou faz algo que só Deus poderia dizer ou fazer. No fim, responda você mesmo à pergunta de Jesus: “E vocês, quem dizem que eu sou?”</p>",
+  "study_questions": [
+   {
+    "question": "O que Moody pensava de Jesus quando era menino?",
+    "answer": "Que ele era um bom homem, como Moisés, José ou Abraão, talvez o melhor homem que já viveu."
+   },
+   {
+    "question": "Por que Moody concluiu que Jesus não podia ser apenas um bom homem?",
+    "answer": "Porque Jesus afirmou ser divino; se essa afirmação fosse falsa, ele seria um enganador ou um iludido, e não simplesmente um homem bom."
+   },
+   {
+    "question": "Que resposta Jesus deu ao sumo sacerdote quando lhe perguntou se ele era o Cristo?",
+    "answer": "“Eu sou.”"
+   }
+  ],
+  "word_count": 437
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 7,
+  "title": "Meia-Volta Volver!",
+  "body_html": "<blockquote>“Arrependam-se, portanto, e convertam-se, para que os seus pecados sejam apagados, a fim de que venham tempos de refrigério da presença do Senhor.” — Atos 3:19</blockquote> <p>Arrependimento é uma das palavras mais importantes da Bíblia, e Moody diz que é uma das mais mal-entendidas. Por isso ele começa dizendo o que o arrependimento não é.</p> <p>Não é medo. Ele fala de marinheiros que vivem praguejando, mas oram em voz alta durante uma tempestade e, quando a tempestade passa, voltam direto aos palavrões. Eles ficaram com medo, mas não se arrependeram.</p> <p>Não é só se sentir mal. Moody costumava pregar numa prisão em Baltimore. Ele conta que quase todos os presos se sentiam miseráveis no começo, e muitos choravam durante dias, mas, quando saíam, a maioria voltava direto aos velhos caminhos. “Eles se sentiam muito mal porque haviam sido apanhados; era só isso.”</p> <p>Não é castigar a si mesmo. Moody diz que jejuar ou maltratar o próprio corpo não faz ninguém se arrepender de um único pecado. Isso nunca é o que Deus pede.</p> <p>Não é só largar um pecado. Moody diz que romper com um pecado é como cortar um galho da árvore, “quando a árvore inteira tem de vir abaixo.” Ou como tapar um vazamento num navio que tem três ou quatro buracos.</p> <p>Então, o que é arrependimento? Moody dá uma definição simples:</p> <blockquote>“Vou lhe dar uma boa definição: é “meia-volta volver!””</blockquote> <p>Essa é a ordem que se dá a um soldado para girar e ficar de frente para o lado oposto. Arrepender-se significa que você estava andando numa direção, para longe de Deus, e dá meia-volta e passa a andar na outra direção, em direção a ele.</p> <p>Moody lembra a história que Jesus contou sobre dois filhos. Um pai pediu ao primeiro filho que fosse trabalhar na vinha, e ele respondeu: “Não quero”. Mas depois mudou de ideia e foi. Isso, diz Moody, é arrependimento: não só pensar “Eu estava errado”, mas ir de fato.</p> <p>E isso não leva meses. “Não se leva muito tempo para dar meia-volta.” Moody conta de um navio que seguia em direção às rochas na costa da Terra Nova. Houve um momento em que o capitão poderia ter revertido as máquinas e salvado o navio. Depois o momento passou. Moody diz que há um momento na vida de cada pessoa em que ela pode dizer: “Pela graça de Deus, não irei mais adiante.” Ele insiste com os seus leitores para que não esperem.</p> <p><strong>Uma coisa para fazer esta semana:</strong> pense numa área da sua vida em que você sabe que está andando na direção errada. Nesta semana, faça uma “meia-volta volver”: diga a Deus que você está dando meia-volta e dê um passo concreto na direção oposta.</p>",
+  "study_questions": [
+   {
+    "question": "Cite três coisas que, segundo Moody, o arrependimento não é.",
+    "answer": "Quaisquer três destas: medo, só se sentir mal, castigar a si mesmo, apenas a convicção do pecado, apenas orar, ou largar só um pecado."
+   },
+   {
+    "question": "Qual é a definição de arrependimento de Moody?",
+    "answer": "“Meia-volta volver!”: dar meia-volta, deixando de ir para longe de Deus e passando a ir em direção a ele."
+   },
+   {
+    "question": "O que a história dos dois filhos ensina sobre o arrependimento?",
+    "answer": "Que arrependimento não é só admitir que você estava errado, mas mudar de fato de direção e fazer o que é certo."
+   }
+  ],
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 8,
+  "title": "Acertando as Coisas",
+  "body_html": "<blockquote>“Zaqueu levantou-se e disse ao Senhor: ‘Eis que, Senhor, dou a metade dos meus bens aos pobres. Se defraudei alguém em alguma coisa, restituo quatro vezes mais.’” — Lucas 19:8</blockquote> <p>Moody diz que o arrependimento verdadeiro muitas vezes aparece no desejo de acertar as coisas com as pessoas que prejudicamos. A palavra antiga para isso é “restituição”. Quando Zaqueu encontrou Jesus, prometeu na mesma hora devolver quatro vezes mais a qualquer pessoa que ele tivesse enganado.</p> <p>Moody conta uma história marcante. Um homem veio até ele muito angustiado. Quando era jovem, disse ele, a sua mãe viúva estava afundando na pobreza. Eles tinham um prédio que estava no seguro por mil dólares e, quando ele tinha vinte anos, pôs fogo no prédio e deu o dinheiro do seguro à mãe.</p> <p>Durante doze anos, aquele pecado o assombrou. “Tenho tentado afogá-lo entregando-me ao prazer e ao pecado”, ele contou a Moody. “Tenho amaldiçoado a Deus; tenho me lançado na incredulidade; tenho tentado provar que a Bíblia não é verdadeira.” Nada adiantou. Ele vivia atormentado.</p> <p>Moody lhe disse que havia uma saída: fazer restituição. Calcular quanto era, com os juros, e devolver o dinheiro à companhia de seguros.</p> <blockquote>“Teria feito bem a você ver o rosto daquele homem iluminar-se quando descobriu que havia misericórdia para ele.”</blockquote> <p>Repare que o homem não foi perdoado porque devolveu o dinheiro. Jesus perdoa de graça. Mas um coração que realmente se voltou para Deus quer consertar o que puder.</p> <p>Moody diz que algumas pessoas continuam “em trevas e escravidão” porque não estão dispostas a se afastar dos seus pecados e confessá-los. Ser sincero, pedir desculpas, devolver o que você pegou ou contar a verdade sobre uma mentira pode dar medo. Mas muitas vezes traz uma liberdade enorme.</p> <p>Uma palavra de sabedoria aqui: acertar as coisas deve ser feito com sabedoria. Se envolver algo sério, converse antes com um adulto de confiança. E acertar as coisas nunca significa se colocar em perigo, nem voltar para alguém que machucou você. Às vezes, a coisa certa é simplesmente ser sincero com Deus e buscar um bom conselho.</p> <p>Moody termina esta parte com uma história de uma prisão no Colorado. Um governador que visitava a prisão encontrou um jovem preso cuja janela da cela estava cheia de flores muito bem cuidadas. O rapaz disse que a mãe dele amava flores, e que elas o faziam lembrar dela. O governador ficou tão comovido que o perdoou ali mesmo. Moody diz que, quando Deus vê “essa bela flor do verdadeiro arrependimento” no coração de alguém, a salvação chega a essa pessoa.</p> <p><strong>Uma coisa para fazer esta semana:</strong> peça a Deus que traga à sua mente alguém com quem você precisa acertar as coisas: um pedido de desculpas, devolver alguma coisa, admitir uma mentira. Escolha uma, converse com um adulto sábio se precisar, e faça isso nesta semana.</p>",
+  "study_questions": [
+   {
+    "question": "O que é restituição?",
+    "answer": "Acertar as coisas com as pessoas que prejudicamos, por exemplo devolvendo o que pegamos."
+   },
+   {
+    "question": "O que o homem da história de Moody tinha feito, e como encontrou paz?",
+    "answer": "Ele tinha posto fogo num prédio que estava no seguro para ficar com o dinheiro; encontrou paz quando descobriu que havia misericórdia e decidiu devolver o dinheiro com os juros."
+   },
+   {
+    "question": "O que você deve fazer antes de acertar as coisas numa situação séria?",
+    "answer": "Conversar com um adulto de confiança, e nunca se colocar em perigo nem voltar para alguém que machucou você."
+   }
+  ],
+  "word_count": 475
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 9,
+  "title": "Você Pode Saber",
+  "body_html": "<blockquote>“Escrevi-lhes estas coisas, a vocês que creem no nome do Filho de Deus, para que saibam que têm a vida eterna, e para que continuem a crer no nome do Filho de Deus.” — 1 João 5:13</blockquote> <p>Um cristão pode realmente saber que pertence a Deus e que vai para o céu? Algumas pessoas acham que ter certeza é orgulho. Moody discordava. Ele diz que saber é “privilégio de todo filho de Deus”.</p> <p>Ele observa que João escreveu o seu Evangelho para que as pessoas cressem, e a sua primeira carta para que os que creem soubessem. Moody diz que, nessa carta curta de cinco capítulos, a palavra “saber” aparece mais de quarenta vezes. “É ‘Saber! Saber!! SABER!!!’”</p> <p>Moody diz que as dúvidas não só nos deixam infelizes; elas nos impedem de ajudar outras pessoas. “Se pareço estar em perigo de afogar-me e não sei se algum dia alcançarei a margem, não posso socorrer outro.” Você precisa estar firme na rocha sólida antes de poder puxar alguém para fora da água.</p> <p>Moody cita outro pregador famoso, Charles Spurgeon, falando de animais. A cegonha nunca pergunta se tem o direito de construir o seu ninho num pinheiro. A cabra montesa nunca pergunta se tem permissão para ficar no penhasco que combina com ela. Elas simplesmente usam o que Deus providenciou. Spurgeon diz:</p> <blockquote>“Contudo, embora essas criaturas mudas conheçam a provisão do seu Deus, o pecador não reconhece a provisão do seu Salvador.”</blockquote> <p>Nós dizemos: “Receio que não seja para mim”, ou “É bom demais para ser verdade.” Mas ninguém jamais prometeu à cegonha que o seu ninho nunca seria derrubado. Jesus prometeu: “o que vem a mim, de modo nenhum o lançarei fora.”</p> <p>Moody conta que, quando descia o rio Mississippi, via pessoas acendendo todas as tardes as luzes que guiavam os barcos ao longo das margens, para que os pilotos pudessem navegar em segurança. Ele diz que Deus nos deu “luzes” na Bíblia para mostrar se somos seus filhos. Em 1 João 3 ele encontra várias: Jesus veio para tirar os nossos pecados; nós amamos os outros cristãos; e outras mais.</p> <p>A certeza não depende de como você se sente hoje. Depende do que Jesus fez e do que Deus disse. Os sentimentos sobem e descem. As promessas de Deus, não.</p> <p>Se você luta muitas vezes com dúvidas sobre se é mesmo salvo, você não está sozinho. Converse com um pastor ou um líder de jovens em quem você confia. Às vezes ajuda ter alguém que nos lembre das promessas de Deus.</p> <p><strong>Uma coisa para fazer esta semana:</strong> leia 1 João nesta semana, um capítulo por dia. Cada vez que você vir a palavra “saber” (ou “conhecer”), sublinhe ou anote. No fim da semana, escreva uma pequena lista: “Coisas que Deus diz que eu posso saber.”</p>",
+  "study_questions": [
+   {
+    "question": "Segundo 1 João 5:13, por que João escreveu a sua primeira carta?",
+    "answer": "Para que os que creem no nome do Filho de Deus saibam que têm a vida eterna."
+   },
+   {
+    "question": "Por que Moody diz que as dúvidas nos impedem de ajudar os outros?",
+    "answer": "Porque, como um homem que está se afogando e não consegue salvar ninguém, precisamos estar em terreno firme antes de poder ajudar os outros."
+   },
+   {
+    "question": "Em que a certeza se apoia?",
+    "answer": "Não em sentimentos que mudam, mas no que Jesus fez e no que Deus prometeu."
+   }
+  ],
+  "word_count": 466
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 10,
+  "title": "Conhecendo Jesus Melhor",
+  "body_html": "<blockquote>“onde não pode haver grego nem judeu, circuncisão nem incircuncisão, bárbaro, cita, escravo ou livre; mas Cristo é tudo, e em todos.” — Colossenses 3:11</blockquote> <p>O capítulo seguinte de Moody fala de tudo o que Jesus quer ser para nós. Ele começa com uma frase impressionante: “Cristo é para nós tudo aquilo que O fazemos ser.” Alguns cristãos, diz ele, “têm um Salvador muito pequeno”, porque não o deixam fazer coisas grandes na vida deles.</p> <p>Antes de tudo, e mais importante, Jesus é o nosso Salvador do pecado. O anjo disse a José que lhe desse o nome de Jesus, “pois é ele quem salvará o seu povo dos pecados deles.” Moody repara na palavra: “Ele não veio para nos salvar nos nossos pecados, mas dos nossos pecados.”</p> <p>Depois Moody diz que há três maneiras de conhecer uma pessoa. Algumas você conhece só de ouvir falar. Outras você encontrou uma vez e conhece de leve. Outras você conhece há anos e conhece bem. As pessoas conhecem Jesus dessas três maneiras também: algumas só sabem dele pela história, algumas têm um leve conhecimento pessoal dele, e algumas desejam, como Paulo, “conhecê-lo e ao poder da sua ressurreição”.</p> <p>Moody diz: “Quanto mais conhecermos a Cristo, mais O amaremos, e melhor O serviremos.”</p> <p>Ele também diz que Jesus é mais do que alguém que resgata. “Eu poderia salvar um homem de afogar-se”, diz ele, mas depois não conseguir fazer mais nada por ele. Jesus é diferente. Quando Deus resgatou Israel do Egito, ele não só o salvou da morte na noite da Páscoa; também o tirou da escravidão. Do mesmo modo, Jesus não só nos perdoa e nos deixa presos aos nossos maus hábitos.</p> <blockquote>“Não; Ele veio para nos libertar e nos dar vitória sobre o nosso mau gênio, as nossas paixões e as nossas concupiscências.”</blockquote> <p>O conselho de Moody para quem está preso a um pecado é simples: “prossiga em conhecer a Cristo mais intimamente.” A resposta para os pecados que nos assediam não é só se esforçar mais. É conhecer Jesus melhor.</p> <p>Em qual dos três níveis de Moody você está? Você conhece Jesus só de ouvir falar, de leve, ou bem? Onde quer que você esteja, pode conhecê-lo mais.</p> <p><strong>Uma coisa para fazer esta semana:</strong> escolha uma maneira de conhecer Jesus melhor nesta semana: ler um trecho dos Evangelhos por dia, passar dez minutos em oração, ou conversar com um cristão mais velho sobre como ele o conhece. No fim da semana, escreva uma coisa nova que você aprendeu sobre ele.</p>",
+  "study_questions": [
+   {
+    "question": "O que Moody quer dizer com um “Salvador muito pequeno”?",
+    "answer": "Um Salvador a quem não deixamos fazer coisas grandes na nossa vida, porque não queremos recebê-lo plenamente."
+   },
+   {
+    "question": "Quais são as três maneiras de conhecer uma pessoa, segundo Moody?",
+    "answer": "De ouvir falar, por um leve conhecimento, e conhecendo-a bem ao longo de muitos anos."
+   },
+   {
+    "question": "Qual é o conselho de Moody para alguém preso a um pecado?",
+    "answer": "Prosseguir em conhecer a Cristo mais intimamente."
+   }
+  ],
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "pt"
+  ],
+  "order": 11,
+  "title": "Voltando",
+  "body_html": "<blockquote>“Eu curarei a sua rebeldia. Eu os amarei livremente; pois a minha ira se afastou deles.” — Oseias 14:4</blockquote> <p>O último capítulo de Moody é para quem se afastou de Deus. A palavra antiga para isso é “desvio”. Talvez um dia você tenha se sentido perto de Deus, orava, lia a Bíblia e adorava ir à igreja, mas agora tudo parece distante. Moody tem uma boa notícia para você.</p> <p>Ele mostra algo importante no profeta Jeremias: Deus nunca deixou o seu povo; foram eles que o deixaram. Deus pergunta: “Que injustiça os seus pais encontraram em mim, para que se afastassem de mim?” Moody faz a mesma pergunta aos seus leitores: Deus mudou? “Os homens são inclinados a pensar que Deus mudou; mas a culpa é deles.”</p> <p>Jeremias também usa a imagem de “cisternas rachadas que não retêm água.” Uma cisterna era um tanque para guardar água. Deus é “a fonte de águas vivas”, mas o seu povo cavou os seus próprios tanques furados em vez dele. Moody diz que os prazeres do mundo, o dinheiro e a popularidade são assim. Não conseguem satisfazer quem já provou de Deus.</p> <p>Ele dá um exemplo meio atrevido. Ele costumava dizer às moças: “Minha amiga, você pensa mais nos seus brincos do que no Senhor.” Elas negavam. Então ele perguntava: se você perdesse um brinco, não ficaria aflita e não sairia procurando? Elas admitiam que sim. Mas tinham se afastado de Deus sem que isso as incomodasse nem um pouco.</p> <p>Hoje podem ser o nosso celular, um jogo ou um time. O que você sairia procurando se perdesse? E você procura Deus desse jeito?</p> <p>Moody diz que Deus suplica aos desviados como um pai ou uma mãe que sente falta de um filho que foi embora e nunca escreve para casa. Ele cita um versículo que, segundo ele, trouxe de volta mais desgarrados do que qualquer outro: “Saiba, portanto, e veja que é uma coisa má e amarga, que você tenha abandonado o SENHOR, seu Deus”. Moody diz que viu centenas voltarem, e todos admitiram que deixar Deus tinha sido amargo.</p> <p>Mas o versículo no alto deste capítulo é a promessa de Deus: “Eu curarei a sua rebeldia. Eu os amarei livremente”. Você não precisa merecer a volta. Só precisa dar meia-volta, como o filho pródigo, e voltar para casa.</p> <p>Moody morreu em 1899, no mesmo quarto em Northfield onde tinha nascido. Alguns meses antes, ele tinha dito:</p> <blockquote>“Algum dia você vai ler nos jornais que D. L. Moody, de East Northfield, morreu. Não acredite em uma só palavra! Nesse momento, estarei mais vivo do que estou agora.”</blockquote> <p>Esse é o caminho para Deus: não ser bom o bastante, mas Jesus, que dá uma vida nova que nem a morte consegue acabar. Quer você esteja vindo a ele pela primeira vez, quer esteja voltando depois de se afastar, a porta está aberta.</p> <p><strong>Uma coisa para fazer esta semana:</strong> se você se afastou de Deus, volte nesta semana. Leia Lucas 15:11–24 e depois diga a Deus, com sinceridade, por onde você andou. Se você está perto de Deus, ore por um amigo que se afastou e pense numa maneira de mostrar que você se importa com ele.</p>",
+  "study_questions": [
+   {
+    "question": "Segundo Moody, quando alguém se desvia, quem deixa quem?",
+    "answer": "Nós deixamos Deus; Deus nunca nos deixa, e ele não mudou."
+   },
+   {
+    "question": "O que são as “cisternas rachadas” de Jeremias?",
+    "answer": "Tanques de água furados que não retêm água, uma imagem das coisas a que as pessoas recorrem em vez de Deus, que não conseguem satisfazer."
+   },
+   {
+    "question": "O que Moody disse que as pessoas deveriam acreditar quando lessem que ele tinha morrido?",
+    "answer": "Nem uma só palavra; nesse momento ele estaria mais vivo do que nunca."
+   }
+  ],
+  "word_count": 533
+ }
+}
+]

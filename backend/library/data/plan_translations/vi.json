@@ -139,5 +139,12 @@
   "note": [
    "Single-book LAUNCH plan backed by the vi edition of cheque-book (queue job #7016; book title «Sổ Séc Của Ngân Hàng Đức Tin»), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title quotes the edition title so the plan card and the book agree; the description mirrors the English _BEGIN line with the day markers' own form (ngày 1 tháng Một). AI-drafted; awaiting native review."
   ]
+ },
+ "voices-of-the-early-church": {
+  "title": "Tiếng Nói Của Hội Thánh Đầu Tiên",
+  "description": "Những thế kỷ Cơ Đốc đầu tiên qua chính lời của họ. Clement thành Rô-ma viết thay cho Hội Thánh tại Rô-ma khi thế hệ các sứ đồ vẫn còn sống, Ignatius thành An-ti-ốt gửi các bức thư của ông trên đường đến sự tử đạo, và Athanasius thành A-léc-xan-đơ-ri trình bày cốt lõi của đức tin — vì sao chính Đức Chúa Trời đã trở nên người — trong “Về Sự Nhập Thể”. Những bài đọc ngắn mỗi ngày trong khoảng bốn tháng.",
+  "note": [
+   "Translation-queue batch (job #7633): first-epistle-of-clement.vi («Thư Thứ Nhất Của Clement Gửi Tín Hữu Cô-rinh-tô») completes the plan's three vi sources; epistles-of-ignatius.vi and on-the-incarnation.vi already ship. Book title quoted as shipped («Về Sự Nhập Thể»); names in Latin script as the vi editions write them. AI-drafted; awaiting native review."
+  ]
  }
 }

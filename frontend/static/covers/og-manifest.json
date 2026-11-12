@@ -6904,6 +6904,21 @@
 				474
 			]
 		},
+		"ar/the-fourfold-gospel": {
+			"ground": "f7f828c71d772612d5e649180f4dc3a697b8c90d2c9b684737b3486dc91fe75d",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ar/the-fundamental-doctrines-of-the-christian-faith": {
 			"ground": "26b5ae0d37c78f2374e3d89012516a98768f9678c1855913bbda00d08a115343",
 			"style": "revival",
@@ -25721,6 +25736,21 @@
 				566
 			]
 		},
+		"ko/the-fourfold-gospel": {
+			"ground": "81ed16f2f0bdf201cec904e7668ce1e20524cad85e0bc6327e1a52291a1cd40f",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "29f0d4a52bb108c252d23235991bcf13da7340faaac59b33d163bb85b2cb87d4",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/the-fundamental-doctrines-of-the-christian-faith": {
 			"ground": "f70aeeb86be6a5dab35be4dc69f9ec0023f8b6084c9c8fb705e1a80bb9f50e1c",
 			"style": "revival",
@@ -31251,6 +31281,54 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/daughters-of-the-king-2": {
+			"ground": "75940c0bac27c195b27c34a3e1794469f2d8fcd4f30cc9ebe486ff818113e4ed",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"pt/david-livingstone-a-life-children": {
+			"ground": "adba932b546eb5c5db1719f53647a8a61d47b80dd56d4f1b52ece7411d4d74e9",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[78, 320, 522, 395]
+				],
+				"edition": [
+					[187, 404, 413, 429]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				327,
+				467
+			]
+		},
 		"pt/days-of-heaven-upon-earth": {
 			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
 			"style": "revival",
@@ -31750,6 +31828,41 @@
 				432
 			]
 		},
+		"pt/key-teachings-of-andrew-murray": {
+			"ground": "cc128d5d7203cd71510ed4f894ffd9dd3200f4f157d282524c73511906d2892b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[98, 280, 502, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
 		"pt/key-teachings-of-gareth-evans": {
 			"ground": "0ccb00225f218fbb3a6fd99383459a03a6530f1d8b5e419725c9a08ca5d90762",
 			"style": "originals",
@@ -31772,6 +31885,41 @@
 					[84, 169, 516, 232],
 					[137, 225, 463, 288],
 					[131, 280, 469, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
+		"pt/key-teachings-of-r-a-torrey": {
+			"ground": "8a805153c12c7e584e62a810b0c6f56fd2bcc1fb9898f2fb7862cf27a89d2a43",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-top",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[149, 280, 451, 343]
 				],
 				"subtitle": [
 					[52, 404, 548, 432]
@@ -32392,6 +32540,42 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/real-questions-1": {
+			"ground": "e03e9b9ebfe7a3683a8b66b564e302acd50d8453c8e250eaee6220df13d6b3ad",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 236, 308, 280],
+					[145, 314, 455, 390],
+					[134, 380, 466, 456]
+				],
+				"subtitle": [
+					[112, 514, 488, 542],
+					[130, 542, 470, 570]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				224,
+				570
+			]
 		},
 		"pt/revival-lectures": {
 			"ground": "46329a6f87b3f24be85da1d42487335ae28ea3455bcd7e45635575b2e4fd7f57",
@@ -33332,6 +33516,40 @@
 			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/the-way-to-god-teens": {
+			"ground": "bdd03dcdbd40494d279d88f32d9bf4385e049d731383acbaf3a5df8ed1fbf8e8",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[133, 287, 467, 363],
+					[149, 354, 451, 430]
+				],
+				"edition": [
+					[148, 440, 452, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				502
+			]
 		},
 		"pt/they-were-young-1": {
 			"ground": "20d7ff84d7d84a40079c7207fd7353a1583cc0a4110507decae68c1ea9ef35dc",
@@ -43477,6 +43695,43 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"vi/first-epistle-of-clement": {
+			"ground": "8bab0f954fb7e7fb2598bfd585115ba8d56b84ab43171ef8e7908d85b66d246a",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[88, 257, 512, 319],
+					[109, 303, 491, 365],
+					[120, 348, 480, 410],
+					[136, 394, 464, 456]
+				],
+				"subtitle": [
+					[167, 485, 433, 506],
+					[158, 507, 442, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				266,
+				529
+			]
+		},
 		"vi/gleanings-among-the-sheaves": {
 			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",
 			"style": "revival",
@@ -44696,6 +44951,21 @@
 				259,
 				536
 			]
+		},
+		"vi/the-fourfold-gospel": {
+			"ground": "4b05878aee91e2c81850f2ba36bfc659602a6cf275123a0a8333f0b2ca44eb7f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "box/teal",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"vi/the-fundamental-doctrines-of-the-christian-faith": {
 			"ground": "264a173304aa34f8819b507d4b72266c62be461321fdf970395366954d708983",

@@ -1,0 +1,828 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "clement-of-rome"
+  ],
+  "slug": "first-epistle-of-clement",
+  "language": "vi",
+  "title": "Thư Thứ Nhất Của Clement Gửi Tín Hữu Cô-rinh-tô",
+  "subtitle": "Hội Thánh Rô-ma gửi Hội Thánh Cô-rinh-tô",
+  "description": "Được Hội Thánh tại Rô-ma gửi cho Hội Thánh tại Cô-rinh-tô vào khoảng năm 96 SCN, đây là tác phẩm Cơ Đốc sớm nhất còn lại ngoài Tân Ước. Nhân danh Hội Thánh Rô-ma, Clement tha thiết nài xin tín hữu Cô-rinh-tô chấm dứt một cuộc chia rẽ cay đắng, trong đó một số thành viên trẻ tuổi đã truất bỏ các trưởng lão trung tín của họ, và kêu gọi họ trở về với sự khiêm nhường, trật tự, sự ăn năn và sự bình an của Đấng Christ. Thấm đẫm Cựu Ước và chỉ cách các sứ đồ một thế hệ, bức thư là một khung cửa nhìn vào Hội Thánh lúc thời đại các sứ đồ khép lại.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Thư Thứ Nhất Của Clement Gửi Tín Hữu Cô-rinh-tô là gì?",
+    "answer": "Đó là một bức thư được Hội Thánh tại Rô-ma gửi cho Hội Thánh tại Cô-rinh-tô vào khoảng năm 96 SCN — tác phẩm Cơ Đốc sớm nhất mà chúng ta còn có ngoài Tân Ước. Nhân danh Hội Thánh Rô-ma, Clement tha thiết nài xin tín hữu Cô-rinh-tô chấm dứt một cuộc chia rẽ cay đắng, trong đó một số thành viên trẻ tuổi đã truất bỏ các trưởng lão của họ, và kêu gọi họ sống khiêm nhường, giữ trật tự và yêu thương nhau."
+   },
+   {
+    "question": "Clement thành Rô-ma là ai?",
+    "answer": "Clement là một người lãnh đạo Hội Thánh tại Rô-ma vào cuối thế kỷ thứ nhất, theo truyền thống được kể vào hàng những giám mục đầu tiên của Hội Thánh ấy, và đôi khi được đồng nhất với người tên Clement mà Phao-lô nhắc đến trong thư Phi-líp. Ông viết bức thư này thay mặt Hội Thánh Rô-ma, và các Cơ Đốc nhân thời đầu quý trọng nó đến nỗi một số Hội Thánh đã đọc nó công khai bên cạnh Kinh Thánh."
+   },
+   {
+    "question": "Vì sao bức thư này quan trọng về mặt lịch sử?",
+    "answer": "Vì đây là văn kiện Cơ Đốc sớm nhất còn lưu lại ngoài Tân Ước, được viết khi thời đại các sứ đồ vừa mới khép lại — có thể khi sứ đồ Giăng vẫn còn sống. Bức thư mở ra một khung cửa hiếm hoi nhìn vào đời sống, trật tự và đức tin của Hội Thánh rất sơ khai, và cho thấy một Hội Thánh khuyên bảo một Hội Thánh khác về sự hiệp một và sự lãnh đạo, chỉ trong vòng một thế hệ sau các sứ đồ."
+   },
+   {
+    "question": "Vấn đề tại Cô-rinh-tô mà Clement đề cập là gì?",
+    "answer": "Đó là một cuộc chia rẽ, trong đó một số thành viên trẻ tuổi đã nổi lên chống lại các trưởng lão của Hội Thánh và truất họ khỏi chức vụ. Clement viết thư để hàn gắn cuộc tranh cạnh này: ông quở trách sự kiêu ngạo và lòng ganh tị đằng sau nó, và khuyên những kẻ phạm lỗi hãy thuận phục, ăn năn và phục hồi các người lãnh đạo đã bị truất, để sự bình an và trật tự được trở lại trong Hội Thánh."
+   },
+   {
+    "question": "Clement dạy gì về trật tự và sự lãnh đạo trong Hội Thánh?",
+    "answer": "Rằng sự lãnh đạo trong Hội Thánh không được tùy ý lật đổ, nhưng đặt nền trên một sự lập lên có trật tự, truy nguyên qua các sứ đồ đến Đấng Christ và Đức Chúa Trời. Clement dựa vào trật tự ấy để lập luận rằng tín hữu Cô-rinh-tô không có quyền truất bỏ các trưởng lão trung tín của mình, và bức thư của ông là một chứng cớ sớm và đầy ảnh hưởng về mối quan tâm của Hội Thánh đối với một chức vụ có trật tự, do Đức Chúa Trời ban cho."
+   },
+   {
+    "question": "Ngoài trật tự, bức thư còn có những chủ đề nào khác?",
+    "answer": "Sự khiêm nhường, sự ăn năn, tình yêu thương và sự hòa thuận. Clement rút ra rất nhiều từ Cựu Ước và từ gương của Đấng Christ để khuyên người ta sống khiêm nhu thay vì kiêu ngạo, và ông viết một đoạn nổi tiếng về tình yêu thương, vang vọng lời Phao-lô gửi cho chính Hội Thánh ấy. Ông cũng chỉ về trật tự của công cuộc sáng tạo và sự sống lại như những nền tảng cho sự vững lòng và bình an giữa các tín hữu."
+   },
+   {
+    "question": "Ngày nay ai nên đọc bức thư này?",
+    "answer": "Bất cứ ai quan tâm đến Hội Thánh ngay sau thời các sứ đồ, đến cội rễ của sự dạy dỗ Cơ Đốc về sự hiệp một và sự lãnh đạo, hoặc đến các tác phẩm của các Giáo Phụ Thời Sứ Đồ. Bức thư cho người đọc cảm nhận sống động, trực tiếp về đời sống Hội Thánh ngay sau thời Tân Ước, và lời khuyên của nó về sự khiêm nhường và bình an vẫn còn nói với những Hội Thánh đang chia rẽ."
+   },
+   {
+    "question": "Người đọc nên bắt đầu từ đâu?",
+    "answer": "Từ đầu, và đọc nó như một bức thư đúng như bản chất của nó, từ lời chào thăm ấm áp của Rô-ma gửi Cô-rinh-tô cho đến lời nài xin cho các trưởng lão bị truất. Đây là một lời kêu gọi liền mạch, tốt nhất nên đọc một mạch từ đầu đến cuối, để người đọc theo được lập luận của Clement, từ cuộc tranh cạnh mà ông than tiếc cho đến sự khiêm nhường, trật tự và tình yêu thương mà ông khuyên dùng để hàn gắn nó."
+   }
+  ],
+  "publication_year": 96,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "Thuộc phạm vi công cộng. Bản dịch tiếng Anh của Alexander Roberts và James Donaldson, trong bộ Ante-Nicene Fathers, Tập 1 (ấn bản Hoa Kỳ, A. Cleveland Coxe biên tập, 1885).",
+  "cover_url": "/covers/art/first-epistle-of-clement.jpg",
+  "pdf_url": "",
+  "cover_color": "#734b2e",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Lời chào thăm",
+  "body_html": "<p>Hội Thánh của Đức Chúa Trời kiều ngụ tại Rô-ma, gửi Hội Thánh của Đức Chúa Trời kiều ngụ tại Cô-rinh-tô, là những người được kêu gọi và được nên thánh bởi ý muốn của Đức Chúa Trời, qua Chúa Giê-xu Christ của chúng ta: nguyện ân điển và bình an từ Đức Chúa Trời Toàn Năng, qua Chúa Giê-xu Christ, được gia thêm cho anh em. </p> <p>Thưa anh em yêu dấu, vì những tai họa bất ngờ và dồn dập đã xảy đến cho chính chúng tôi, nên chúng tôi cảm thấy mình đã có phần chậm trễ trong việc lưu tâm đến những điều anh em đã hỏi ý chúng tôi; nhất là đến cuộc dấy loạn đáng hổ thẹn và đáng ghê tởm ấy, là điều hoàn toàn gớm ghiếc đối với những người được chọn của Đức Chúa Trời, mà một vài kẻ hấp tấp và tự phụ đã nhen lên đến mức điên cuồng, đến nỗi danh tiếng đáng kính và lừng lẫy của anh em, vốn xứng đáng được mọi người yêu mến, đã bị tổn hại nặng nề. Vì có ai từng ở giữa anh em dù chỉ một thời gian ngắn mà không thấy đức tin của anh em vừa sinh nhiều bông trái nhân đức, vừa được vững lập? Ai lại không khâm phục sự tiết độ và nết điềm đạm trong sự tin kính của anh em trong Đấng Christ? Ai lại không đồn ra lòng hiếu khách rộng rãi mà anh em vẫn thường bày tỏ? Và ai lại không vui mừng về sự hiểu biết trọn vẹn và vững vàng của anh em? Vì anh em đã làm mọi việc chẳng thiên vị ai, bước đi trong các điều răn của Đức Chúa Trời, vâng phục những người lãnh đạo anh em, và dành cho các trưởng lão giữa anh em mọi sự tôn kính xứng hợp. Anh em đã khuyên bảo các thanh niên phải có tâm trí tiết độ và nghiêm trang; anh em đã dạy dỗ vợ mình làm mọi việc với một lương tâm không chỗ trách được, đoan trang và trong sạch, yêu thương chồng mình như bổn phận đòi hỏi; và anh em đã dạy họ rằng, khi sống trong khuôn phép của sự vâng phục, họ phải quản lý việc nhà cách đoan trang và tỏ ra khôn ngoan, thận trọng trong mọi sự. </p>",
+  "word_count": 403
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Tiếp tục lời khen ngợi tín hữu Cô-rinh-tô",
+  "body_html": "<p>Hơn nữa, hết thảy anh em đều nổi bật về sự khiêm nhường, chẳng hề tự cao kiêu ngạo chút nào, nhưng thà vâng phục hơn là bắt người khác phải phục mình, và vui lòng cho hơn là nhận. Thỏa lòng với những gì Đức Chúa Trời đã ban cho anh em, và chăm chú lắng nghe lời Ngài, anh em được đầy dẫy sự dạy dỗ của Ngài trong lòng, và những sự thương khó của Ngài luôn ở trước mắt anh em. Nhờ vậy, hết thảy anh em được ban cho một sự bình an sâu xa và dư dật, và anh em có một lòng khao khát làm điều lành không bao giờ thỏa, trong khi Đức Thánh Linh được tuôn đổ dồi dào trên hết thảy anh em. Đầy dẫy những ý định thánh, anh em đã giơ tay lên cùng Đức Chúa Trời Toàn Năng với tấm lòng thật sự sốt sắng và sự tin cậy tin kính, nài xin Ngài thương xót anh em nếu anh em đã vô tình phạm điều gì. Ngày đêm anh em lo lắng cho cả đoàn thể anh em, để số những người được chọn của Đức Chúa Trời được cứu với lòng thương xót và một lương tâm tốt lành. Anh em thành thật, không chút gian tà, và quên đi những điều xúc phạm lẫn nhau. Mọi thứ bè đảng và chia rẽ đều là điều gớm ghiếc trước mắt anh em. Anh em than khóc vì những vi phạm của người lân cận mình, và coi những thiếu sót của họ như của chính mình. Anh em chẳng bao giờ tiếc một việc nhân từ nào, luôn “sẵn sàng làm mọi việc lành.” Được trang sức bằng một đời sống hoàn toàn nhân đức và kính sợ Đức Chúa Trời, anh em đã làm mọi việc trong sự kính sợ Đức Chúa Trời. Các điều răn và mạng lệnh của Chúa đã được ghi khắc trên bảng lòng anh em.</p>",
+  "word_count": 336
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Tình trạng đáng buồn của Hội Thánh sau khi sự dấy loạn nảy sinh từ lòng ganh tị",
+  "body_html": "<p>Anh em đã được ban cho mọi thứ vinh dự và hạnh phúc, và bấy giờ điều đã chép được ứng nghiệm: “Kẻ yêu dấu của ta đã ăn và uống, được nở nang, trở nên mập béo, rồi cất đá.” Từ đó tuôn ra sự ganh đua và lòng ganh tị, sự tranh cạnh và sự dấy loạn, sự bắt bớ và sự hỗn loạn, chiến tranh và cảnh tù đày. Thế là kẻ hèn kém nổi lên chống lại người được tôn trọng, kẻ vô danh chống lại người có danh tiếng, kẻ dại dột chống lại người khôn ngoan, kẻ trẻ chống lại người cao tuổi. Vì cớ đó, sự công chính và sự bình an nay đã lìa xa anh em, bởi ai nấy đều bỏ sự kính sợ Đức Chúa Trời, trở nên mù lòa trong đức tin nơi Ngài, chẳng bước đi theo các mạng lệnh Ngài đã định, cũng chẳng cư xử cho xứng đáng với một Cơ Đốc nhân, nhưng đi theo những dục vọng xấu xa của riêng mình, quay lại nuôi dưỡng một lòng ganh tị bất chính và vô đạo, là điều mà bởi nó, chính sự chết đã vào trong thế gian.</p>",
+  "word_count": 204
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Từ nguồn ấy, nhiều điều ác đã tuôn ra từ thời xưa",
+  "body_html": "<p>Vì có chép như vầy: “Vả, cách ít lâu, Ca-in dùng thổ sản làm của lễ dâng cho Đức Chúa Trời. A-bên cũng dâng chiên đầu lòng trong bầy mình cùng mỡ nó. Đức Chúa Trời đoái xem A-bên và các lễ vật của người, nhưng chẳng đoái đến Ca-in và các của lễ của người. Ca-in buồn rầu lắm, và nét mặt gằm xuống. Đức Chúa Trời phán cùng Ca-in rằng: Cớ sao ngươi buồn rầu, và cớ sao nét mặt ngươi gằm xuống? Nếu ngươi dâng cách phải lẽ mà chẳng phân chia cách phải lẽ, há chẳng phải ngươi đã phạm tội sao? Hãy yên lặng: lễ vật ngươi trở về cùng ngươi, và ngươi sẽ lại được nó. Ca-in nói cùng A-bên, em mình, rằng: Chúng ta hãy ra ngoài đồng. Vả, khi hai người đương ở ngoài đồng, thì Ca-in xông đến A-bên là em mình, và giết đi.” Thưa anh em, anh em thấy đó, lòng ganh tị và sự ghen ghét đã dẫn đến việc giết em mình thể nào. Cũng vì lòng ganh tị mà tổ phụ chúng ta là Gia-cốp đã phải chạy trốn khỏi mặt Ê-sau, anh mình. Lòng ganh tị đã khiến Giô-sép bị bắt bớ đến chết và bị sa vào cảnh nô lệ. Lòng ganh tị đã buộc Môi-se phải trốn khỏi mặt Pha-ra-ôn, vua Ê-díp-tô, khi người nghe chính đồng bào mình nói những lời nầy: “Ai đặt ngươi làm vua, làm quan án cho chúng ta? Có phải ngươi muốn giết ta như hôm qua đã giết người Ê-díp-tô kia chăng?” Vì lòng ganh tị, A-rôn và Mi-ri-am phải ở ngoài trại quân. Lòng ganh tị đã khiến Đa-than và A-bi-ram phải sa xuống Âm phủ khi đang còn sống, vì cuộc dấy loạn họ đã xúi giục chống lại Môi-se, đầy tớ của Đức Chúa Trời. Vì lòng ganh tị, Đa-vít không những phải chịu sự thù ghét của dân ngoại, mà còn bị Sau-lơ, vua Y-sơ-ra-ên, bắt bớ nữa.</p>",
+  "word_count": 336
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Từ cùng một nguồn ấy, chẳng kém những điều ác đã nảy sinh trong thời gần đây nhất",
+  "body_html": "<p>Nhưng thôi, chẳng nói mãi về những gương xưa, chúng ta hãy đến với những bậc anh hùng thuộc linh gần đây nhất. Chúng ta hãy xem những gương cao quý mà chính thế hệ chúng ta đã có. Vì lòng ganh tị và sự ghen ghét, những cột trụ vĩ đại nhất và công chính nhất [của Hội Thánh] đã bị bắt bớ và bị giết. Chúng ta hãy đặt trước mắt mình các sứ đồ lừng lẫy. Vì lòng ganh tị bất chính, Phi-e-rơ đã chịu đựng không phải một hai, mà là rất nhiều gian lao; và sau cùng, khi đã chịu tử đạo, ông đã ra đi đến nơi vinh hiển dành cho ông. Cũng vì lòng ganh tị, Phao-lô đã đoạt được phần thưởng của sự nhẫn nại bền bỉ, sau khi bảy lần bị xiềng xích, bị buộc phải chạy trốn, và bị ném đá. Sau khi rao giảng cả ở phương đông lẫn phương tây, ông đã được tiếng tăm lừng lẫy xứng với đức tin mình, vì đã dạy sự công chính cho cả thế gian, đã đến tận cùng giới hạn của phương tây, và đã chịu tử đạo dưới quyền các quan cai trị. Như vậy, ông đã được cất khỏi thế gian và đi vào nơi thánh, sau khi đã tỏ ra là một tấm gương nhẫn nại nổi bật. </p>",
+  "word_count": 231
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Tiếp theo",
+  "body_html": "<p>Cùng với những người đã dùng trọn đời mình để thực hành sự thánh khiết ấy, còn phải kể thêm một đoàn đông những người được chọn, là những người vì lòng ganh tị đã chịu nhiều sỉ nhục và cực hình, và đã để lại cho chúng ta một tấm gương tuyệt vời nhất. Vì lòng ganh tị, những người phụ nữ ấy, tức các bà Danaid và Dirce, đã bị bắt bớ, và sau khi chịu những cực hình khủng khiếp không sao tả xiết, họ đã kiên định chạy trọn cuộc đua đức tin của mình, và dầu yếu đuối về thân thể, đã nhận lãnh một phần thưởng cao quý. Lòng ganh tị đã làm cho vợ xa cách chồng, và làm thay đổi lời của tổ phụ chúng ta là A-đam: “Người nầy là xương bởi xương tôi, thịt bởi thịt tôi.” Lòng ganh tị và sự tranh cạnh đã lật đổ những thành lớn và nhổ tận gốc những dân tộc hùng mạnh. </p>",
+  "word_count": 169
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Lời khuyên ăn năn",
+  "body_html": "<p>Hỡi anh em yêu dấu, chúng tôi viết những điều nầy cho anh em, không chỉ để nhắc nhở anh em về bổn phận mình, mà còn để tự nhắc nhở chính mình nữa. Vì chúng ta đang tranh đấu trên cùng một đấu trường, và cùng một cuộc chiến được giao cho cả hai bên. Vậy, chúng ta hãy từ bỏ những mối lo hão huyền và vô ích, mà đến gần với khuôn phép vinh hiển và đáng tôn kính của sự kêu gọi thánh của chúng ta. Chúng ta hãy chú tâm vào điều gì tốt lành, đẹp lòng và được chấp nhận trước mặt Đấng đã dựng nên chúng ta. Chúng ta hãy chăm chú nhìn xem huyết của Đấng Christ, và thấy huyết ấy quý báu biết bao đối với Đức Chúa Trời, là huyết đã đổ ra vì sự cứu rỗi của chúng ta, và đã đặt ân điển của sự ăn năn trước cả thế gian. Chúng ta hãy nhìn lại mọi thời đại đã qua, và học biết rằng từ đời nầy sang đời kia, Chúa đã ban chỗ ăn năn cho hết thảy những ai muốn quay về cùng Ngài. Nô-ê đã giảng sự ăn năn, và hễ ai nghe lời ông đều được cứu. Giô-na đã rao sự hủy diệt cho dân Ni-ni-ve; nhưng họ ăn năn tội lỗi mình, cầu nguyện mà làm nguôi lòng Đức Chúa Trời, và được cứu, dầu họ là những người xa lạ [với giao ước] của Đức Chúa Trời. </p>",
+  "word_count": 256
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Tiếp theo về sự ăn năn",
+  "body_html": "<p>Những người phục vụ ân điển của Đức Chúa Trời, bởi Đức Thánh Linh, đã nói về sự ăn năn; và chính Chúa của muôn vật cũng đã thề mà phán về điều ấy rằng: “Chúa phán: Thật như ta hằng sống, ta chẳng muốn kẻ có tội phải chết, nhưng thà nó ăn năn;” lại còn thêm lời tuyên phán đầy ân điển nầy: “Hỡi nhà Y-sơ-ra-ên, hãy ăn năn khỏi sự gian ác mình. Hãy nói cùng con cái dân ta rằng: Dầu tội lỗi các ngươi cao từ đất thấu trời, dầu đỏ hơn hồng điều và đen hơn bao gai, nhưng nếu các ngươi hết lòng trở lại cùng ta mà thưa rằng: Cha ôi! thì ta sẽ nghe các ngươi như nghe một dân thánh.” Và ở một chỗ khác, Ngài phán như vầy: “Hãy rửa đi, hãy làm cho sạch! Hãy cất bỏ sự gian ác khỏi linh hồn các ngươi, khỏi trước mắt ta; hãy thôi những đường lối xấu xa của mình. Hãy học làm lành, tìm kiếm sự công bình; hãy đỡ đần kẻ bị hà hiếp, làm công bình cho kẻ mồ côi, binh vực lẽ của người góa bụa. Rồi hãy đến, cho chúng ta biện luận cùng nhau. Ngài phán: Dầu tội các ngươi như hồng điều, ta sẽ làm cho trắng như tuyết; dầu đỏ như son, ta sẽ làm cho trắng như lông chiên. Nếu các ngươi sẵn lòng vâng lời, sẽ ăn được sản vật tốt nhứt của đất. Nhược bằng các ngươi chẳng khứng và bạn nghịch, sẽ bị nuốt bởi gươm; vì miệng Đức Giê-hô-va đã phán.” Vậy, vì muốn cho hết thảy những người yêu dấu của Ngài được dự phần vào sự ăn năn, nên bởi ý muốn toàn năng của Ngài, Ngài đã lập vững [những lời tuyên phán ấy]. </p>",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Gương của các thánh đồ",
+  "body_html": "<p>Vậy, chúng ta hãy vâng phục ý muốn tuyệt hảo và vinh hiển của Ngài; và trong khi nài xin sự thương xót và lòng nhân từ của Ngài, lìa bỏ mọi công việc vô ích, sự tranh cạnh và lòng ganh tị là điều dẫn đến sự chết, chúng ta hãy quay về nương cậy nơi lòng thương xót của Ngài. Chúng ta hãy chăm chú nhìn xem những người đã phục vụ cách trọn vẹn cho vinh quang tuyệt hảo của Ngài. Chẳng hạn, chúng ta hãy xem Hê-nóc, là người được thấy là công chính trong sự vâng phục, đã được cất lên, và chẳng hề biết đến sự chết. Nô-ê, được thấy là trung tín, đã qua chức vụ mình mà rao giảng sự tái sinh cho thế gian; và Chúa đã nhờ ông cứu các loài vật đồng lòng vào trong tàu. </p>",
+  "word_count": 147
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Tiếp theo đoạn trên",
+  "body_html": "<p>Áp-ra-ham, người được gọi là “bạn,” đã được thấy là trung tín, bởi người đã vâng theo lời Đức Chúa Trời. Trong sự vâng phục, người đã ra khỏi xứ sở mình, khỏi bà con mình, và khỏi nhà cha mình, để khi lìa bỏ một miền đất nhỏ hẹp, một gia tộc yếu ớt và một nhà tầm thường, người có thể hưởng được các lời hứa của Đức Chúa Trời. Vì Đức Chúa Trời phán cùng người rằng: “Ngươi hãy ra khỏi quê hương, vòng bà con và nhà cha ngươi, mà đi đến xứ ta sẽ chỉ cho. Ta sẽ làm cho ngươi nên một dân lớn; ta sẽ ban phước cho ngươi, cùng làm nổi danh ngươi, và ngươi sẽ được phước. Ta sẽ ban phước cho người nào chúc phước cho ngươi, rủa sả kẻ nào rủa sả ngươi; và các chi tộc nơi thế gian sẽ nhờ ngươi mà được phước.” Lại nữa, khi người lìa khỏi Lót, Đức Chúa Trời phán cùng người rằng: “Hãy nhướng mắt lên, nhìn từ chỗ ngươi cho đến phương bắc, phương nam, phương đông và phương tây: Vì cả xứ nào ngươi thấy, ta sẽ ban cho ngươi và cho dòng dõi ngươi đời đời. Ta sẽ làm cho dòng dõi ngươi như bụi trên đất, [đến nỗi] nếu có ai đếm được bụi trên đất, thì dòng dõi ngươi cũng sẽ đếm được.” Lại nữa, [Kinh Thánh] phán: “Đức Chúa Trời dẫn Áp-ram ra ngoài và phán cùng người rằng: Ngươi hãy ngó lên trời, và nếu ngươi đếm được các ngôi sao thì hãy đếm đi. Dòng dõi ngươi cũng sẽ như vậy. Áp-ram tin Đức Chúa Trời, và điều đó kể là công bình cho người.” Vì đức tin và lòng hiếu khách của người, người được ban cho một con trai trong lúc tuổi già; và trong sự vâng phục, người đã dâng con ấy làm của lễ cho Đức Chúa Trời trên một trong những ngọn núi mà Ngài đã chỉ cho người.</p>",
+  "word_count": 341
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Tiếp theo",
+  "body_html": "<p>Vì lòng hiếu khách và sự tin kính, Lót đã được cứu ra khỏi Sô-đôm khi cả miền chung quanh bị hình phạt bằng lửa và diêm sinh; như thế Chúa tỏ ra rằng Ngài không lìa bỏ những ai trông cậy Ngài, nhưng phó những kẻ lìa xa Ngài cho hình phạt và khổ hình. Vì vợ Lót, là người đã cùng đi ra với ông, có lòng khác với ông và chẳng giữ sự đồng lòng với ông [về mạng lệnh đã ban cho họ], nên đã bị làm gương, trở thành một trụ muối cho đến ngày nay. Việc ấy xảy ra để mọi người biết rằng những kẻ hai lòng và nghi ngờ quyền năng của Đức Chúa Trời thì chuốc lấy sự đoán phạt cho mình, và trở nên một dấu hiệu cho mọi thế hệ về sau. </p>",
+  "word_count": 143
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Phần thưởng của đức tin và lòng hiếu khách",
+  "body_html": "<p>Vì đức tin và lòng hiếu khách, kỵ nữ Ra-háp đã được cứu. Vì khi Giô-suê, con trai của Nun, sai những người do thám đến Giê-ri-cô, vua xứ ấy biết được rằng họ đã đến để do thám đất mình, bèn sai người đi bắt họ, để khi bắt được thì giết đi. Nhưng Ra-háp hiếu khách đã tiếp rước họ, giấu họ trên mái nhà mình dưới những cọng gai. Khi những người vua sai đến nơi và nói: “Có những người đã đến nhà ngươi để do thám đất chúng ta; hãy đem họ ra, vì vua truyền như vậy,” thì nàng đáp: “Hai người các ông tìm quả có đến nhà tôi, nhưng đã vội đi rồi, và nay không còn ở đây nữa,” như thế nàng chẳng chỉ những người do thám cho họ. Rồi nàng nói cùng hai người kia: “Tôi biết chắc rằng Chúa, Đức Chúa Trời của các ông, đã ban thành nầy cho các ông, vì sự kinh hãi và sợ sệt các ông đã giáng trên dân cư thành nầy. Vậy, khi các ông đã chiếm được thành, xin hãy giữ tôi và nhà cha tôi được an toàn.” Họ đáp cùng nàng: “Sẽ y như lời nàng đã nói với chúng ta. Vậy, hễ khi nào nàng biết chúng ta đã đến gần, thì nàng hãy nhóm cả nhà nàng lại dưới mái nhà mình, và họ sẽ được giữ gìn; còn hết thảy những ai bị gặp ở ngoài nhà nàng sẽ phải chết.” Hơn nữa, họ còn cho nàng một dấu hiệu, là nàng phải treo một sợi chỉ điều ra từ nhà mình. Như vậy, họ tỏ ra rằng sự cứu chuộc sẽ tuôn chảy qua huyết của Chúa cho hết thảy những ai tin cậy và trông cậy nơi Đức Chúa Trời. Hỡi anh em yêu dấu, anh em thấy đó, nơi người đàn bà nầy không chỉ có đức tin mà còn có cả lời tiên tri nữa. </p>",
+  "word_count": 334
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 13,
+  "title": "Lời khuyên sống khiêm nhường",
+  "body_html": "<p>Vậy, thưa anh em, chúng ta hãy có lòng khiêm nhường, dẹp bỏ mọi sự kiêu căng, kiêu ngạo, dại dột và nóng giận; và hãy làm theo điều đã chép (vì Đức Thánh Linh phán: “Người khôn chớ khoe sự khôn mình; người mạnh chớ khoe sự mạnh mình; người giàu chớ khoe sự giàu mình; nhưng kẻ nào khoe, hãy khoe về Chúa, là chuyên cần tìm kiếm Ngài, và làm sự chánh trực và công bình”), đặc biệt ghi nhớ những lời Chúa Giê-xu đã phán khi dạy chúng ta sự nhu mì và nhịn nhục. Vì Ngài đã phán như vầy: “Hãy thương xót, để các ngươi được thương xót; hãy tha thứ, để các ngươi được tha thứ; các ngươi làm cho người ta thể nào, thì các ngươi cũng sẽ được làm lại thể ấy; các ngươi đoán xét thể nào, thì các ngươi cũng sẽ bị đoán xét thể ấy; các ngươi nhân từ thể nào, thì các ngươi cũng sẽ được đãi nhân từ thể ấy; các ngươi lường mực nào, thì họ cũng lường lại cho các ngươi mực ấy.” Bởi mạng lệnh nầy và bởi những quy tắc nầy, chúng ta hãy làm cho mình vững vàng, để bước đi trong mọi sự khiêm nhường mà vâng theo những lời thánh của Ngài. Vì lời thánh phán: “Ta sẽ đoái đến ai, nếu chẳng phải là kẻ nhu mì và hiền hòa, là kẻ nghe lời nói ta mà run?”</p>",
+  "word_count": 250
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 14,
+  "title": "Chúng ta phải vâng phục Đức Chúa Trời hơn là những kẻ gây dấy loạn",
+  "body_html": "<p>Vậy, hỡi anh em, điều phải lẽ và thánh khiết là vâng phục Đức Chúa Trời hơn là theo những kẻ, bởi sự kiêu ngạo và sự dấy loạn, đã trở thành những người cầm đầu một sự ganh đua đáng ghê tởm. Vì chúng ta sẽ chuốc lấy chẳng phải một tổn hại nhỏ, mà là một hiểm họa lớn, nếu chúng ta liều lĩnh phó mình cho ý muốn của những người nhắm vào việc khơi dậy sự tranh cạnh và rối loạn, hầu kéo chúng ta xa khỏi điều lành. Chúng ta hãy đối đãi nhân từ với nhau theo gương lòng thương xót dịu dàng và sự nhân hậu của Đấng Tạo Hóa chúng ta. Vì có chép rằng: “Người có lòng nhân từ sẽ được ở trên đất, và người vô tội sẽ còn lại ở đó; nhưng kẻ phạm pháp sẽ bị diệt khỏi mặt đất.” Lại nữa, [Kinh Thánh] phán: “Tôi từng thấy kẻ ác được tôn lên cao, vươn lên như cây hương nam trên Li-ban; tôi đi qua, kìa, hắn chẳng còn nữa; tôi chuyên cần tìm chỗ hắn, nhưng không gặp. Hãy giữ sự vô tội, và nhìn xem điều ngay thẳng; vì người hòa bình sẽ còn có dòng dõi.”</p>",
+  "word_count": 211
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 15,
+  "title": "Chúng ta phải gắn bó với những người vun trồng sự bình an",
+  "body_html": "<p>Vậy, chúng ta hãy gắn bó với những người vun trồng sự bình an trong sự tin kính, chứ không phải với những kẻ giả hình xưng rằng mình muốn có nó. Vì ở một chỗ kia, [Kinh Thánh] phán: “Dân nầy lấy môi miếng thờ kính ta; Nhưng lòng chúng nó xa ta lắm.” Lại nữa: “Lấy miệng mình chúc phước, Nhưng trong lòng thì rủa sả.” Lại nữa, Kinh Thánh phán: “Chúng nó lấy miệng mình yêu mến Ngài, Dùng lưỡi mình nói dối với Ngài. Vì lòng chúng nó chẳng khắn khít cùng Ngài, Chúng nó cũng không trung tín trong sự giao ước Ngài.” “Nguyện các môi dối trá phải câm đi,” [và “nguyện Chúa diệt hết thảy các môi dối trá,] và lưỡi khoe khoang của những kẻ đã nói rằng: Chúng ta hãy làm cho lưỡi mình ra lớn; Môi chúng ta thuộc về chúng ta: Ai là Chúa của chúng ta? Nhơn vì người khốn cùng bị hà hiếp, và kẻ thiếu thốn rên siết, Chúa phán: Bây giờ ta sẽ chổi dậy, ta sẽ đặt người tại nơi yên ổn; ta sẽ đối đãi vững vàng với người.”</p>",
+  "word_count": 196
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 16,
+  "title": "Đấng Christ, tấm gương khiêm nhường",
+  "body_html": "<p>Vì Đấng Christ thuộc về những người có lòng khiêm nhường, chứ không thuộc về những kẻ tự tôn mình lên trên bầy chiên của Ngài. Chúa Giê-xu Christ của chúng ta, là cây phủ việt của sự uy nghiêm Đức Chúa Trời, đã không đến trong vẻ phô trương của sự kiêu căng hay ngạo mạn, dầu Ngài có thể làm như vậy, nhưng Ngài đã đến trong thân phận thấp hèn, như Đức Thánh Linh đã phán về Ngài. Vì Ngài phán: “Lạy Chúa, Ai tin điều đã rao truyền cho chúng ta, và cánh tay Đức Giê-hô-va đã được tỏ ra cho ai? Chúng ta đã rao truyền [sứ điệp] trước mặt Ngài: người như một đứa trẻ, như cái rễ ra từ đất khô; người chẳng có hình dung, chẳng có vinh hiển; phải, chúng ta đã thấy người, và người chẳng có hình dung, chẳng có sự đẹp đẽ; nhưng hình dung người chẳng có gì nổi bật, phải, còn kém hơn hình dung [thông thường] của loài người. Người là người chịu đòn vọt và đau đớn, từng trải sự buồn bực: vì mặt người đã bị ngoảnh đi; người bị khinh dể, và chẳng ai coi ra gì. Người mang tội lỗi chúng ta, và vì chúng ta mà chịu buồn bực; mà chúng ta lại tưởng rằng [vì chính mình] người phải chịu lao khổ, đòn vọt và khốn khổ. Nhưng người đã vì tội lỗi chúng ta mà bị vết, vì sự gian ác chúng ta mà bị thương. Bởi sự sửa phạt người chịu chúng ta được bình an, bởi lằn roi người chúng ta được lành bịnh. Chúng ta thảy đều như chiên đi lạc, ai theo đường nấy; và Chúa đã phó người vì tội lỗi chúng ta, còn người, khi chịu sự khốn khổ chẳng hề mở miệng. Như chiên con bị dắt đến hàng làm thịt, như chiên câm ở trước mặt kẻ hớt lông, người chẳng từng mở miệng. Trong sự hạ mình của người, sự xét đoán người đã bị cất đi; ai sẽ thuật lại dòng dõi người? vì sự sống người đã bị cất khỏi đất. Vì tội lỗi của dân ta mà người bị đưa đến sự chết. Ta sẽ phó kẻ ác thay cho mồ mả người, và kẻ giàu thay cho sự chết người, vì người chẳng hề làm điều gian ác, và trong miệng người chẳng có sự dối trá. Chúa lấy làm vừa ý mà dùng đòn vọt tẩy sạch người. Nếu các ngươi dâng của lễ chuộc tội, linh hồn các ngươi sẽ thấy một dòng dõi sống lâu. Chúa lại lấy làm vừa ý mà cất khỏi người sự khốn khổ của linh hồn người, tỏ cho người thấy ánh sáng, và nắn nên người với sự thông sáng, để xưng công bình cho Đấng Công Bình, là Đấng hầu việc nhiều người cách tốt lành; và chính người sẽ gánh lấy tội lỗi họ. Vậy nên người sẽ hưởng được nhiều người làm cơ nghiệp, và sẽ chia của bắt của kẻ mạnh; vì linh hồn người đã bị phó cho sự chết, người đã bị kể vào hàng kẻ phạm tội, đã mang lấy tội lỗi nhiều người, và vì tội lỗi họ mà người bị phó.” Lại nữa, Ngài phán: “Tôi là một con trùng, chớ chẳng phải người đâu, Là điều ô nhục của loài người, và vật khinh dể của dân sự. Hễ kẻ nào thấy tôi đều nhạo cười tôi; chúng nó lấy môi mà nói, lắc đầu [mà rằng]: Người đã trông cậy Đức Chúa Trời, Ngài khá giải cứu người, Ngài khá cứu người, vì Ngài ưa thích người.” Hỡi anh em yêu dấu, anh em thấy gương đã được ban cho chúng ta là thể nào; vì nếu Chúa đã tự hạ mình như vậy, thì chúng ta, là những người nhờ Ngài mà đã đến dưới ách ân điển của Ngài, sẽ phải làm gì? </p>",
+  "word_count": 670
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 17,
+  "title": "Các thánh đồ, những tấm gương khiêm nhường",
+  "body_html": "<p>Chúng ta cũng hãy bắt chước những người đã mặc da dê da chiên đi khắp nơi rao báo sự đến của Đấng Christ; tôi muốn nói đến Ê-li, Ê-li-sê và Ê-xê-chi-ên trong vòng các đấng tiên tri, cùng với những người khác cũng được [Kinh Thánh] làm chứng tốt như vậy. Áp-ra-ham được tôn trọng cách đặc biệt, và được gọi là bạn của Đức Chúa Trời; thế mà người, khi chăm chú nhìn xem vinh quang của Đức Chúa Trời, đã khiêm nhường thưa rằng: “Tôi chỉ là tro bụi mà thôi.” Hơn nữa, về Gióp có chép như vầy: “Gióp là người công bình, trọn vẹn, chơn thật, kính sợ Đức Chúa Trời, và giữ mình khỏi mọi điều ác.” Nhưng chính người đã tự cáo mình mà nói rằng: “Chẳng ai được sạch khỏi sự ô uế, dầu đời mình chỉ dài một ngày.” Môi-se được gọi là trung tín trong cả nhà Đức Chúa Trời; và qua tay người, Đức Chúa Trời đã hình phạt Ê-díp-tô bằng các tai vạ và cực hình. Thế mà người, dầu được tôn trọng lớn lao như vậy, đã chẳng dùng lời lẽ cao kỳ, nhưng khi lời phán của Đức Chúa Trời đến cùng người từ trong bụi gai, người thưa rằng: “Tôi là ai, mà Chúa sai tôi đi? Tôi là người có giọng nói yếu ớt và lưỡi chậm chạp.” Người lại nói: “Tôi chỉ như làn khói bốc lên từ nồi mà thôi.”</p>",
+  "word_count": 248
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 18,
+  "title": "Đa-vít, tấm gương khiêm nhường",
+  "body_html": "<p>Nhưng chúng ta sẽ nói gì về Đa-vít, là người đã được làm chứng tốt như thế, và về người, Đức Chúa Trời đã phán rằng: “Ta đã tìm thấy một người vừa lòng ta, là Đa-vít con của Gie-sê; ta đã lấy sự thương xót đời đời mà xức dầu cho người?” Thế mà chính người ấy lại thưa cùng Đức Chúa Trời rằng: “Đức Chúa Trời ôi! xin hãy thương xót tôi tùy lòng nhơn từ của Chúa; Xin hãy xóa các sự vi phạm tôi theo sự từ bi rất lớn của Chúa. Xin hãy rửa tôi cho sạch hết trọi gian ác, Và làm tôi được thanh khiết về tội lỗi tôi. Vì tôi nhận biết các sự vi phạm tôi, Tội lỗi tôi hằng ở trước mặt tôi. Tôi đã phạm tội cùng Chúa, chỉ cùng một mình Chúa thôi, Và làm điều ác trước mặt Chúa; Hầu cho Chúa sẽ được xưng công bình trong lời phán của Ngài, Và sẽ được thắng khi chịu xét đoán. Kìa, tôi sanh ra trong sự gian ác, Mẹ tôi đã hoài thai tôi trong tội lỗi. Vì, nầy, Chúa đã yêu mến sự chơn thật; Chúa đã tỏ cho tôi những điều kín nhiệm và giấu kín của sự khôn ngoan. Xin hãy lấy chùm kinh giới tẩy sạch tội lỗi tôi, thì tôi sẽ được tinh sạch; Cầu Chúa hãy rửa tôi, thì tôi sẽ nên trắng hơn tuyết. Hãy cho tôi nghe sự vui vẻ mừng rỡ, Để các xương cốt mà Chúa đã bẻ gãy được khoái lạc. Xin Chúa ngảnh mặt khỏi các tội lỗi tôi, Và xóa hết thảy sự gian ác tôi. Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, Và làm cho mới lại trong tôi một thần linh ngay thẳng. Xin chớ từ bỏ tôi khỏi trước mặt Chúa, Cũng đừng cất khỏi tôi Thánh Linh Chúa. Xin hãy ban lại cho tôi sự vui vẻ về sự cứu rỗi của Chúa, Và lấy Thần cai trị của Chúa mà làm cho tôi vững vàng. Bấy giờ tôi sẽ dạy đường lối Chúa cho kẻ vi phạm, Và kẻ có tội sẽ trở về cùng Chúa. Hỡi Đức Chúa Trời, là Đức Chúa Trời về sự cứu rỗi tôi, Xin giải tôi khỏi tội làm đổ huyết, Thì lưỡi tôi sẽ hát ngợi khen sự công bình của Chúa. Lạy Chúa, Chúa sẽ mở miệng tôi, Và môi tôi sẽ truyền ra sự ngợi khen Chúa. Vì Chúa không ưa thích của lễ, bằng vậy, tôi chắc đã dâng; Của lễ thiêu cũng không đẹp lòng Chúa. Của lễ đẹp lòng Đức Chúa Trời, ấy là tâm thần đau thương: Đức Chúa Trời ôi! lòng đau thương thống hối Chúa không khinh dể đâu.”</p>",
+  "word_count": 472
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 19,
+  "title": "Noi theo những tấm gương ấy, chúng ta hãy tìm kiếm sự bình an",
+  "body_html": "<p>Như vậy, sự khiêm nhường và sự thuận phục tin kính của những bậc vĩ đại và lừng lẫy dường ấy đã làm cho không những chúng ta, mà cả mọi thế hệ trước chúng ta, được trở nên tốt hơn, tức là hết thảy những ai đã nhận lãnh lời phán của Ngài trong sự kính sợ và chân thật. Vậy, vì có biết bao tấm gương lớn lao và vinh hiển như thế đặt trước mặt chúng ta, chúng ta hãy quay trở lại thực hành sự bình an, là mục tiêu đã được đặt trước mặt chúng ta từ ban đầu; chúng ta hãy chăm chú nhìn xem Đức Chúa Cha và Đấng Tạo Hóa của cả vũ trụ, và gắn bó với những ân tứ và ơn lành bình an quyền năng và lớn lao tột bậc của Ngài. Chúng ta hãy dùng trí hiểu mà chiêm ngưỡng Ngài, và dùng con mắt của linh hồn mà nhìn xem ý muốn nhịn nhục của Ngài. Chúng ta hãy suy nghĩ xem Ngài chẳng hề giận dữ đối với mọi loài thọ tạo của Ngài là thể nào. </p>",
+  "word_count": 191
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 20,
+  "title": "Sự bình an và hòa hợp của vũ trụ",
+  "body_html": "<p>Các tầng trời, xoay vần dưới sự cai trị của Ngài, thuận phục Ngài trong sự bình an. Ngày và đêm chạy theo lộ trình Ngài đã định, chẳng hề ngăn trở nhau. Mặt trời và mặt trăng, cùng các đoàn tinh tú, vận hành hòa hợp theo mạng lệnh Ngài, trong giới hạn đã định cho chúng, không hề sai lệch. Đất phì nhiêu, theo ý muốn Ngài, sinh ra lương thực dồi dào đúng mùa cho loài người, loài thú và mọi sinh vật trên đất, chẳng hề do dự, cũng chẳng thay đổi điều nào trong các mạng lệnh Ngài đã lập. Những nơi không dò được của vực sâu, và những trật tự không sao tả xiết của cõi dưới, đều bị kiềm giữ bởi cùng những luật ấy. Biển cả mênh mông không đo lường được, bởi công việc Ngài mà được gom lại thành nhiều vùng trũng, chẳng bao giờ vượt qua những bờ cõi đã đặt quanh nó, nhưng làm đúng như Ngài đã truyền. Vì Ngài phán: “Mầy đến đây thôi, và các lượn sóng mầy sẽ phải tan vỡ trong lòng mầy.” Đại dương, là nơi loài người không vượt qua được, cùng các thế giới ở bên kia nó, đều được điều khiển bởi cùng những mạng lệnh ấy của Chúa. Các mùa xuân, hạ, thu, đông lần lượt nhường chỗ cho nhau trong sự bình an. Các luồng gió từ mọi phương, đúng thời kỳ, chu toàn công việc mình không chút ngăn trở. Các nguồn nước chảy mãi không ngừng, được dựng nên vừa để vui hưởng vừa để bồi dưỡng sức khỏe, chẳng bao giờ thôi dâng bầu sữa của mình cho sự sống loài người. Ngay cả những sinh vật nhỏ bé nhất cũng họp nhau trong sự bình an và hòa thuận. Đấng Tạo Hóa vĩ đại và là Chúa của muôn vật đã định cho mọi loài ấy được tồn tại trong sự bình an và hòa hợp; Ngài làm ơn cho muôn loài, nhưng dồi dào hơn hết là cho chúng ta, là những người đã chạy đến nương náu nơi lòng thương xót của Ngài qua Chúa Giê-xu Christ, Chúa chúng ta; nguyện vinh hiển và uy nghiêm thuộc về Ngài đời đời vô cùng. A-men. </p>",
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 21,
+  "title": "Chúng ta hãy vâng phục Đức Chúa Trời, chứ không theo những kẻ gây dấy loạn",
+  "body_html": "<p>Hỡi anh em yêu dấu, hãy coi chừng, kẻo nhiều ơn lành của Ngài lại trở thành sự đoán phạt cho hết thảy chúng ta. [Vì ắt sẽ như vậy] nếu chúng ta không bước đi cách xứng đáng với Ngài, và đồng lòng làm những điều tốt lành và đẹp lòng Ngài. Vì ở một chỗ kia, [Kinh Thánh] phán: “Thần của Chúa là ngọn đèn dò thấu các nơi ẩn bí của lòng.” Chúng ta hãy suy nghĩ xem Ngài ở gần dường nào, và chẳng có tư tưởng hay lý lẽ nào của chúng ta mà giấu được Ngài. Vậy, điều phải lẽ là chúng ta đừng bỏ vị trí mà ý muốn Ngài đã giao cho chúng ta. Chúng ta thà làm mếch lòng những kẻ dại dột, thiếu suy xét, tự cao, và khoe khoang trong sự kiêu ngạo của lời nói mình, hơn là [làm mếch lòng] Đức Chúa Trời. Chúng ta hãy tôn kính Chúa Giê-xu Christ, là Đấng mà huyết Ngài đã đổ ra vì chúng ta; chúng ta hãy kính trọng những người lãnh đạo chúng ta; chúng ta hãy tôn trọng những bậc cao niên giữa vòng chúng ta; chúng ta hãy dạy dỗ các thanh niên trong sự kính sợ Đức Chúa Trời; chúng ta hãy hướng dẫn vợ mình đến điều lành. Họ hãy bày tỏ nết đáng yêu của sự trong sạch [trong mọi cách cư xử]; họ hãy tỏ ra một tâm tính nhu mì thành thật; họ hãy dùng cách ăn nói của mình mà cho thấy rằng họ biết cầm giữ lưỡi mình; họ hãy bày tỏ tình yêu thương của mình, không phải bằng cách thiên vị người nầy hơn người kia, nhưng bằng tình thương đồng đều đối với hết thảy những ai kính sợ Đức Chúa Trời cách tin kính. Con cái anh em hãy được dự phần vào sự dạy dỗ Cơ Đốc chân chính; chúng hãy học biết sự khiêm nhường có giá trị lớn dường nào trước mặt Đức Chúa Trời—tinh thần yêu thương trong sạch có sức mạnh trước mặt Ngài dường nào—sự kính sợ Ngài tốt đẹp và lớn lao dường nào, và sự kính sợ ấy cứu hết thảy những ai bước đi trong đó với tấm lòng trong sạch thể nào. Vì Ngài là Đấng dò xét các tư tưởng và ước muốn [của lòng]: hơi thở của Ngài ở trong chúng ta; và khi Ngài muốn, Ngài sẽ cất nó đi. </p>",
+  "word_count": 418
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 22,
+  "title": "Những lời khuyên nầy được đức tin Cơ Đốc xác nhận",
+  "body_html": "<p>Vả, đức tin trong Đấng Christ xác nhận hết thảy những [lời khuyên] nầy. Vì chính Ngài, bởi Đức Thánh Linh, đã phán cùng chúng ta như vầy: “Hỡi các con, hãy đến nghe ta; Ta sẽ dạy các con sự kính sợ Đức Giê-hô-va. Ai là người ưa thích sự sống, và mến ngày lâu dài để hưởng phước lành? Khá giữ lưỡi mình khỏi lời ác, Và môi mình khỏi nói sự dối gạt. Hãy tránh sự ác, và làm điều lành, Hãy tìm kiếm sự hòa bình, và đeo đuổi sự ấy. Mắt Đức Giê-hô-va đoái xem người công bình, Lỗ tai Ngài nghe tiếng kêu cầu của họ. Mặt Đức Giê-hô-va làm nghịch cùng kẻ làm ác, Đặng diệt kỷ niệm chúng nó khỏi đất. Người công bình kêu cầu, Đức Giê-hô-va bèn nghe, Và giải cứu người khỏi các sự gian truân.” “Kẻ ác có nhiều roi vọt [dành sẵn]; Nhưng người nào tin cậy nơi Đức Giê-hô-va, sự nhơn từ vây phủ người ấy.”</p>",
+  "word_count": 170
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 23,
+  "title": "Hãy khiêm nhường, và tin rằng Đấng Christ sẽ trở lại",
+  "body_html": "<p>Đức Chúa Cha đầy lòng thương xót và nhân lành có lòng [thương cảm] đối với những ai kính sợ Ngài, và lấy sự nhân từ và yêu thương mà ban ơn cho những người đến cùng Ngài với tấm lòng đơn sơ. Vậy, chúng ta đừng hai lòng; linh hồn chúng ta cũng đừng tự cao vì những ân tứ vô cùng lớn lao và vinh hiển của Ngài. Nguyện điều đã chép nầy cách xa chúng ta: “Khốn khổ thay cho những kẻ hai lòng và có lòng nghi ngờ, là những kẻ nói rằng: Những điều nầy chúng ta đã nghe từ thời tổ phụ chúng ta; nhưng kìa, chúng ta đã già rồi mà chẳng điều nào xảy đến cho chúng ta cả.” Hỡi những kẻ dại dột kia! hãy so sánh mình với một cái cây: [chẳng hạn] hãy lấy cây nho mà xem. Trước hết, nó rụng lá, rồi nó nảy chồi, kế đó nó ra lá, rồi nó trổ hoa; sau đó là trái nho còn chua, rồi đến trái chín. Anh em thấy đó, chỉ trong ít lâu trái cây đã chín muồi. Thật vậy, ý muốn của Ngài sẽ sớm được thành tựu cách thình lình, như Kinh Thánh cũng làm chứng rằng: “Ngài sẽ kíp đến, không chậm trễ;” và: “Chúa sẽ thình lình vào trong đền thờ Ngài, tức là Đấng Thánh mà các ngươi trông mong.”</p>",
+  "word_count": 238
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 24,
+  "title": "Đức Chúa Trời không ngừng tỏ cho chúng ta trong thiên nhiên rằng sẽ có sự sống lại",
+  "body_html": "<p>Hỡi anh em yêu dấu, chúng ta hãy suy xem Chúa không ngừng chứng tỏ cho chúng ta thấy rằng sẽ có sự sống lại trong tương lai thể nào, là sự sống lại mà Ngài đã làm cho Chúa Giê-xu Christ trở nên trái đầu mùa, khi khiến Ngài từ kẻ chết sống lại. Hỡi anh em yêu dấu, chúng ta hãy chiêm ngưỡng sự sống lại vẫn đang diễn ra mọi lúc. Ngày và đêm tỏ cho chúng ta một sự sống lại. Đêm chìm vào giấc ngủ, và ngày trỗi dậy; ngày [lại] qua đi, và đêm kéo đến. Chúng ta hãy nhìn xem các hoa trái [của đất], xem việc gieo hạt diễn ra thể nào. Người gieo đi ra và vãi hạt xuống đất; và hạt giống được rải ra như vậy, dầu khô khan và trơ trụi khi rơi xuống đất, dần dần bị tan rữa. Rồi từ sự tan rữa ấy, quyền năng lớn lao của sự quan phòng của Chúa làm cho nó trỗi dậy, và từ một hạt, nhiều hạt mọc lên và kết quả. </p>",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 25,
+  "title": "Chim phượng hoàng, hình bóng về sự sống lại của chúng ta",
+  "body_html": "<p>Chúng ta hãy suy xem dấu lạ kỳ diệu [về sự sống lại] diễn ra ở các xứ phương Đông, tức là ở A-ra-bi và các miền chung quanh. Có một loài chim gọi là chim phượng hoàng. Đó là con duy nhất trong loài của nó, và sống năm trăm năm. Khi kỳ tan rã của nó gần đến, lúc nó phải chết, nó tự làm cho mình một cái tổ bằng nhũ hương, một dược và các thứ hương liệu khác, và khi đã đến kỳ, nó vào trong tổ ấy mà chết. Nhưng khi thịt nó rữa ra, thì sinh ra một loài sâu, và con sâu ấy, nhờ được nuôi bằng chất dịch của con chim đã chết, mọc lông ra. Rồi khi đã có sức, nó mang lấy cái tổ có xương của chim mẹ nó, và mang những thứ ấy bay từ xứ A-ra-bi sang Ê-díp-tô, đến thành gọi là Heliopolis. Giữa ban ngày, bay trước mắt mọi người, nó đặt những thứ ấy lên bàn thờ mặt trời, và làm xong việc đó, nó vội vã bay về chỗ ở cũ. Bấy giờ các thầy tế lễ xem xét sổ sách ghi niên đại, và thấy rằng nó đã trở lại đúng khi năm thứ năm trăm vừa trọn.</p>",
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 26,
+  "title": "Vậy, chúng ta sẽ sống lại, như Kinh Thánh cũng làm chứng",
+  "body_html": "<p>Vậy, há chúng ta lại cho là điều lớn lao và lạ lùng khi Đấng dựng nên muôn vật khiến những người đã phụng sự Ngài cách tin kính, trong sự vững tin của một đức tin tốt lành, được sống lại, trong khi ngay cả qua một con chim, Ngài cũng tỏ cho chúng ta thấy quyền năng lớn lao của Ngài để làm trọn lời hứa của Ngài sao? Vì ở một chỗ kia, [Kinh Thánh] phán: “Chúa sẽ khiến tôi sống lại, và tôi sẽ ngợi khen Chúa;” lại nữa: “Tôi nằm xuống mà ngủ; Tôi tỉnh thức, vì Chúa ở cùng tôi;” lại nữa, Gióp nói: “Chúa sẽ khiến xác thịt nầy của tôi, là xác thịt đã chịu mọi điều ấy, được sống lại.”</p>",
+  "word_count": 129
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 27,
+  "title": "Trong niềm hy vọng về sự sống lại",
+  "body_html": "<p>Vậy, đã có niềm hy vọng nầy, linh hồn chúng ta hãy gắn chặt với Đấng thành tín trong các lời hứa Ngài và công bình trong sự xét đoán của Ngài. Đấng đã truyền cho chúng ta chớ nói dối, thì chính Ngài lại càng chẳng nói dối; vì đối với Đức Chúa Trời chẳng có điều gì là không thể được, ngoại trừ sự nói dối. Vậy, đức tin nơi Ngài hãy được nhen lại trong chúng ta, và chúng ta hãy suy xem rằng mọi sự đều ở gần Ngài. Bởi lời quyền năng của Ngài, Ngài đã lập nên muôn vật, và bởi lời Ngài, Ngài có thể lật đổ chúng. “Ai sẽ nói cùng Ngài rằng: Ngài đã làm gì vậy? hay là: Ai sẽ chống cự được quyền năng sức mạnh của Ngài?” Khi nào Ngài muốn và theo cách Ngài muốn, Ngài sẽ làm mọi sự, và chẳng điều nào Ngài đã định lại qua đi. Mọi sự đều bày tỏ trước mặt Ngài, và chẳng có gì giấu được ý định của Ngài. “Các từng trời rao truyền sự vinh hiển của Đức Chúa Trời, Bầu trời giải tỏ công việc tay Ngài làm. Ngày nầy giảng cho ngày kia, Đêm nầy tỏ sự tri thức cho đêm nọ. Chẳng có tiếng nói hay lời lẽ nào mà âm thanh của chúng nó không được nghe thấy.”</p>",
+  "word_count": 235
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 28,
+  "title": "Đức Chúa Trời thấy mọi sự: vậy chúng ta hãy tránh sự vi phạm",
+  "body_html": "<p>Vậy, vì mọi sự đều được [Đức Chúa Trời] thấy và nghe, chúng ta hãy kính sợ Ngài, và lìa bỏ những việc gian ác phát sinh từ những ham muốn xấu xa, để nhờ lòng thương xót của Ngài, chúng ta được che chở khỏi những sự đoán phạt sắp đến. Vì có ai trong chúng ta trốn khỏi bàn tay quyền năng của Ngài được? Hay có thế giới nào sẽ tiếp nhận kẻ nào trốn khỏi Ngài? Vì ở một chỗ kia, Kinh Thánh phán: “Tôi sẽ đi đâu? Tôi sẽ trốn đâu khỏi mặt Chúa? Nếu tôi lên trời, Chúa ở tại đó, nếu tôi đi đến tận cùng đất, tay hữu Chúa ở đó; nếu tôi nằm dưới vực sâu, Thần Chúa ở đó.” Vậy, có ai sẽ đi đâu, hay trốn ở đâu cho khỏi Đấng bao trùm muôn vật? </p>",
+  "word_count": 146
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 29,
+  "title": "Chúng ta cũng hãy đến gần Đức Chúa Trời với tấm lòng trong sạch",
+  "body_html": "<p>Vậy, chúng ta hãy đến gần Ngài với linh hồn thánh khiết, giơ lên cùng Ngài những bàn tay tinh sạch, không ô uế, yêu mến Cha nhân từ và thương xót của chúng ta, là Đấng đã cho chúng ta được dự phần vào các phước lành của những người được chọn của Ngài. Vì có chép như vầy: “Khi Đấng Chí Cao phân phát sản nghiệp cho muôn dân, Phân rẽ những con cái A-đam, Thì Ngài định bờ cõi của các dân, Cứ theo số các thiên sứ của Đức Chúa Trời. Dân Ngài là Gia-cốp đã trở nên phần của Chúa, và Y-sơ-ra-ên là phần cơ nghiệp của Ngài.” Và ở một chỗ khác, [Kinh Thánh] phán: “Nầy, Chúa chọn lấy cho mình một dân từ giữa các dân, như người ta lấy hoa lợi đầu mùa nơi sân đạp lúa mình; và từ dân ấy sẽ ra Đấng Chí Thánh.”</p>",
+  "word_count": 155
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 30,
+  "title": "Chúng ta hãy làm những điều đẹp lòng Đức Chúa Trời",
+  "body_html": "<p>Vậy, vì chúng ta là phần của Đấng Thánh, chúng ta hãy làm mọi điều thuộc về sự thánh khiết, tránh mọi lời nói xấu, mọi sự ôm ấp gớm ghiếc và ô uế, cùng mọi sự say sưa, sự ham thích đổi mới, mọi dục vọng gớm ghiếc, tội ngoại tình đáng ghét, và sự kiêu ngạo đáng rủa sả. [Kinh Thánh] phán: “Vì Đức Chúa Trời chống cự kẻ kiêu ngạo, nhưng ban ơn cho kẻ khiêm nhường.” Vậy, chúng ta hãy gắn bó với những người đã được Đức Chúa Trời ban ân điển. Chúng ta hãy mặc lấy sự hòa thuận và khiêm nhường, luôn luôn tự chủ, tránh xa mọi lời thì thầm nói hành và nói xấu, được xưng công bình bởi việc làm của mình, chứ không phải bởi lời nói. Vì [Kinh Thánh] phán: “Kẻ nói nhiều cũng sẽ phải nghe đáp lại nhiều. Người già miệng há tự cho mình là công bình sao? Phước cho người do người nữ sanh ra, là kẻ sống ít ngày: chớ nói nhiều lời.” Sự khen ngợi của chúng ta hãy ở nơi Đức Chúa Trời, chứ không phải từ chính mình; vì Đức Chúa Trời ghét những kẻ tự khen mình. Lời làm chứng về những việc lành của chúng ta hãy đến từ người khác, như đã từng có đối với các tổ phụ công chính của chúng ta. Sự liều lĩnh, ngạo mạn và xấc xược thuộc về những kẻ bị Đức Chúa Trời rủa sả; còn sự tiết độ, khiêm nhường và nhu mì thuộc về những người được Ngài ban phước. </p>",
+  "word_count": 272
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 31,
+  "title": "Chúng ta hãy xem bởi những cách nào mà chúng ta có thể nhận được phước lành của Đức Chúa Trời",
+  "body_html": "<p>Vậy, chúng ta hãy gắn bó với phước lành của Ngài, và suy xem đâu là những đường lối để được phước ấy. Chúng ta hãy nghĩ lại những việc đã xảy ra từ ban đầu. Vì cớ gì mà tổ phụ chúng ta là Áp-ra-ham được phước? há chẳng phải vì người đã bởi đức tin mà làm sự công chính và chân thật sao? Y-sác, với lòng tin cậy trọn vẹn, như thể biết trước điều sẽ xảy ra, đã vui lòng dâng mình làm của lễ. Gia-cốp, vì cớ anh mình, đã khiêm nhường ra khỏi xứ mình, đến cùng La-ban và phục dịch người; và tại đó, người được ban cho cây phủ việt của mười hai chi phái Y-sơ-ra-ên. </p>",
+  "word_count": 124
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 32,
+  "title": "Chúng ta được xưng công bình không phải bởi việc làm của mình, nhưng bởi đức tin",
+  "body_html": "<p>Ai thành thật suy xét từng điều một, sẽ nhận biết sự lớn lao của những ân tứ đã được ban qua người. Vì từ người đã sinh ra các thầy tế lễ và hết thảy người Lê-vi phục vụ nơi bàn thờ của Đức Chúa Trời. Cũng từ người mà Chúa Giê-xu Christ của chúng ta [đã ra đời] theo xác thịt. Từ người [đã ra] các vua, các quan trưởng và các bậc cai trị thuộc dòng Giu-đa. Các chi phái khác của người cũng chẳng kém vinh hiển, vì Đức Chúa Trời đã hứa: “Dòng dõi ngươi sẽ nhiều như sao trên trời.” Vậy, hết thảy những người ấy đều được tôn trọng cao và được làm nên lớn, chẳng phải vì chính họ, hay vì việc làm của họ, hay vì sự công chính họ đã làm, nhưng bởi công việc của ý muốn Ngài. Còn chúng ta cũng vậy, đã được kêu gọi bởi ý muốn Ngài trong Đấng Christ Giê-xu, thì chẳng phải được xưng công bình bởi chính mình, hay bởi sự khôn ngoan, sự hiểu biết, sự tin kính của mình, hay bởi những việc chúng ta đã làm trong sự thánh khiết của lòng, nhưng bởi đức tin, là phương cách mà từ ban đầu Đức Chúa Trời Toàn Năng đã dùng để xưng công bình cho mọi người; nguyện vinh hiển thuộc về Ngài đời đời vô cùng. A-men. </p>",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 33,
+  "title": "Nhưng chúng ta đừng từ bỏ việc thực hành các việc lành và tình yêu thương",
+  "body_html": "<p>Vậy thì, thưa anh em, chúng ta sẽ làm gì? Chúng ta có nên biếng nhác trong việc lành, và thôi thực hành tình yêu thương chăng? Nguyện Đức Chúa Trời đừng để chúng ta đi theo đường lối ấy! Trái lại, chúng ta hãy hết sức hăng hái và sẵn lòng mà vội vàng làm mọi việc lành. Vì chính Đấng Tạo Hóa và là Chúa của muôn vật cũng vui mừng trong các công việc của Ngài. Vì bởi quyền năng vô cùng lớn lao của Ngài, Ngài đã lập nên các tầng trời, và bởi sự khôn ngoan không thể hiểu thấu của Ngài, Ngài đã trang hoàng chúng. Ngài cũng phân rẽ đất khỏi nước bao quanh nó, và đặt nó trên nền vững chắc không lay chuyển của chính ý muốn Ngài. Các loài vật trên đất, Ngài cũng đã dùng chính lời Ngài mà truyền cho có. Cũng vậy, khi Ngài đã dựng nên biển và các sinh vật ở trong đó, Ngài đã dùng quyền năng mình mà giới hạn chúng [trong bờ cõi riêng]. Trên hết mọi sự, bằng đôi tay thánh khiết và không ô uế của Ngài, Ngài đã nắn nên loài người, là [loài thọ tạo] tuyệt hảo nhất, và thật lớn lao nhờ sự hiểu biết đã được ban cho—là hình ảnh rõ nét của chính hình Ngài. Vì Đức Chúa Trời phán như vầy: “Chúng ta hãy làm nên loài người như hình ta và theo tượng ta. Vậy, Đức Chúa Trời dựng nên loài người; Ngài dựng nên người nam cùng người nữ.” Khi đã hoàn tất mọi điều ấy như vậy, Ngài khen chúng là tốt, ban phước cho chúng và phán: “Hãy sanh sản, thêm nhiều.” Vậy, chúng ta thấy hết thảy những người công chính đã được trang sức bằng việc lành thể nào, và chính Chúa, khi tự trang sức bằng các công việc của Ngài, đã vui mừng thể nào. Vậy, đã có một tấm gương như thế, chúng ta hãy không chậm trễ mà thuận theo ý muốn Ngài, và hãy dốc hết sức mình làm công việc của sự công chính. </p>",
+  "word_count": 362
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 34,
+  "title": "Phần thưởng của việc lành nơi Đức Chúa Trời thật lớn lao",
+  "body_html": "<p>Người đầy tớ tốt lãnh bánh công khó của mình cách vững lòng; còn kẻ biếng nhác và lười biếng thì không dám nhìn thẳng vào mặt chủ mình. Vậy, chúng ta phải mau mắn trong việc làm lành; vì muôn vật đều do Ngài mà có. Và Ngài đã báo trước cho chúng ta như vầy: “Nầy, Chúa [đến], và phần thưởng Ngài ở trước mặt Ngài, để trả cho mỗi người tùy theo công việc họ làm.” Vậy, Ngài khuyên chúng ta hết lòng chú tâm vào điều nầy, để chúng ta chẳng biếng nhác hay lười biếng trong bất cứ việc lành nào. Chúng ta hãy đặt sự khoe mình và lòng tin cậy của mình nơi Ngài. Chúng ta hãy thuận phục ý muốn Ngài. Chúng ta hãy suy xét cả muôn vàn thiên sứ của Ngài, xem họ luôn đứng sẵn sàng thể nào để hầu việc theo ý muốn Ngài. Vì Kinh Thánh phán: “Muôn muôn đứng chung quanh Ngài, và ngàn ngàn hầu hạ Ngài, và kêu lên rằng: Thánh thay, thánh thay, thánh thay là Đức Giê-hô-va vạn quân! Cả muôn vật thọ tạo đều đầy dẫy sự vinh hiển Ngài.” Vậy, chúng ta cũng hãy, với lương tâm ngay thẳng, nhóm lại trong sự hòa thuận, như một miệng mà sốt sắng kêu cầu Ngài, để chúng ta được dự phần vào những lời hứa lớn lao và vinh hiển của Ngài. Vì [Kinh Thánh] phán: “Mắt chưa thấy, tai chưa nghe, Và lòng người chưa nghĩ đến, những điều Ngài đã sắm sẵn cho những kẻ trông đợi Ngài.”</p>",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 35,
+  "title": "Phần thưởng ấy thật vô lượng",
+  "body_html": "<p>Hỡi anh em yêu dấu, các ân tứ của Đức Chúa Trời thật phước hạnh và lạ lùng biết bao! Sự sống trong sự bất tử, sự rực rỡ trong sự công chính, lẽ thật trong lòng tin cậy trọn vẹn, đức tin trong sự vững tin, sự tiết độ trong sự thánh khiết! Và hết thảy những điều ấy [ngay bây giờ] đã ở trong tầm hiểu biết của chúng ta; vậy thì những điều đã sắm sẵn cho những kẻ trông đợi Ngài sẽ ra thể nào? Chỉ một mình Đấng Tạo Hóa và là Cha của mọi thế giới, Đấng Chí Thánh, biết được số lượng và vẻ đẹp của chúng. Vậy, chúng ta hãy hết sức gắng gỏi để được ở trong số những kẻ trông đợi Ngài, hầu cho chúng ta được dự phần vào các ân tứ Ngài đã hứa. Nhưng, hỡi anh em yêu dấu, điều ấy sẽ được thực hiện thể nào? Ấy là nếu tâm trí chúng ta bởi đức tin mà vững lòng hướng về Đức Chúa Trời; nếu chúng ta sốt sắng tìm kiếm những điều đẹp lòng và được Ngài chấp nhận; nếu chúng ta làm những điều hòa hợp với ý muốn không chỗ trách được của Ngài; và nếu chúng ta theo con đường lẽ thật, ném bỏ khỏi mình mọi sự không công chính và gian ác, cùng với mọi sự tham lam, tranh cạnh, việc làm xấu xa, dối trá, lời thầm thì và nói hành, mọi sự ghét Đức Chúa Trời, sự kiêu ngạo và ngạo mạn, sự hư vinh và tham vọng. Vì những kẻ làm các điều như thế là đáng ghét trước mặt Đức Chúa Trời; mà chẳng những kẻ làm các điều ấy, lại cũng những kẻ ưa thích người làm các điều ấy nữa. Vì Kinh Thánh phán: “Nhưng Đức Chúa Trời phán cùng kẻ ác rằng: Nhơn sao ngươi thuật lại các luật lệ ta? Vì cớ gì miệng ngươi nói về sự giao ước ta? Thật ngươi ghét sự sửa dạy, Bỏ sau lưng ngươi các lời phán ta. Khi ngươi thấy kẻ ăn trộm, bèn ưng lòng hiệp với họ, Ngươi đã chia phần cùng kẻ ngoại tình. Ngươi thả miệng mình nói xấu, Buông lưỡi mình thêu dệt sự dối gạt. Ngươi ngồi nói chuyện hành anh em ngươi, Gièm chê con trai của mẹ ngươi. Đó là điều ngươi đã làm, còn ta nín lặng; Hỡi kẻ ác, ngươi tưởng rằng ta thật y như ngươi; Nhưng ta sẽ trách phạt ngươi, và đặt chính ngươi ra trước mặt ngươi. Vậy, hỡi các người quên Đức Chúa Trời, khá suy xét điều đó, Kẻo Ngài xé nát các ngươi như sư tử, không ai giải cứu chăng. Của lễ ngợi khen sẽ tôn vinh ta; Và có một con đường, mà bởi đó ta sẽ cho người thấy sự cứu rỗi của Đức Chúa Trời.”</p>",
+  "word_count": 492
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 36,
+  "title": "Mọi phước lành đều được ban cho chúng ta qua Đấng Christ",
+  "body_html": "<p>Hỡi anh em yêu dấu, ấy là con đường mà trong đó chúng ta gặp được Cứu Chúa của chúng ta, tức là Chúa Giê-xu Christ, Thầy Tế Lễ Thượng Phẩm của mọi của lễ chúng ta dâng, Đấng bênh vực và giúp đỡ sự yếu đuối của chúng ta. Nhờ Ngài, chúng ta ngước nhìn lên các nơi cao của thiên đàng. Nhờ Ngài, chúng ta được thấy, như trong gương, dung nhan không tì vết và tuyệt hảo của Ngài. Nhờ Ngài, con mắt của lòng chúng ta được mở ra. Nhờ Ngài, tâm trí ngu dại và tối tăm của chúng ta lại nở hoa hướng về ánh sáng lạ lùng của Ngài. Nhờ Ngài, Chúa đã muốn cho chúng ta được nếm biết sự hiểu biết bất diệt, “là Đấng, vốn là sự chói sáng của sự uy nghiêm Ngài, được hưởng danh cao hơn danh thiên sứ bao nhiêu, thì trở nên cao trọng hơn thiên sứ bấy nhiêu.” Vì có chép như vầy: “Đức Chúa Trời làm cho thiên sứ Ngài như gió, Và tôi tớ Ngài như ngọn lửa.” Còn về Con Ngài thì Chúa phán như vầy: “Ngươi là Con ta; Ngày nay ta đã sanh Ngươi. Hãy cầu ta, ta sẽ ban cho Con các ngoại bang làm cơ nghiệp, Và các đầu cùng đất làm của cải.” Lại nữa, Ngài phán cùng Con rằng: “Hãy ngồi bên hữu ta, Cho đến chừng ta đặt kẻ thù nghịch ngươi làm bệ chơn cho ngươi.” Nhưng ai là kẻ thù nghịch của Ngài? Ấy là hết thảy những kẻ gian ác, và những kẻ chống cự ý muốn của Đức Chúa Trời.</p>",
+  "word_count": 280
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 37,
+  "title": "Đấng Christ là vị tướng của chúng ta, và chúng ta là quân lính của Ngài",
+  "body_html": "<p>Vậy, hỡi anh em, chúng ta hãy hết sức hăng hái làm phận sự người lính, theo các điều răn thánh của Ngài. Chúng ta hãy xem những người phục vụ dưới quyền các tướng lãnh của chúng ta, họ thi hành những điều được truyền cho họ với biết bao trật tự, vâng lời và thuận phục. Chẳng phải hết thảy đều là quan thống đốc, hay là người chỉ huy một ngàn, một trăm, hoặc năm mươi quân, hay những chức tương tự; nhưng mỗi người, ở đúng hàng ngũ của mình, thi hành những điều vua và các tướng lãnh truyền dạy. Kẻ lớn không thể tồn tại nếu không có kẻ nhỏ, và kẻ nhỏ cũng không thể tồn tại nếu không có kẻ lớn. Trong mọi sự đều có một sự pha trộn nào đó, và nhờ đó mà sinh ra lợi ích cho nhau. Chúng ta hãy lấy thân thể mình làm ví dụ. Cái đầu chẳng là gì nếu không có chân, và chân cũng chẳng là gì nếu không có đầu; phải, ngay cả những chi thể nhỏ nhất của thân thể chúng ta cũng cần thiết và hữu ích cho cả thân thể. Nhưng hết thảy đều cùng nhau hoạt động cách hòa hợp, và cùng ở dưới một sự điều khiển chung để gìn giữ cả thân thể. </p>",
+  "word_count": 228
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 38,
+  "title": "Các chi thể của Hội Thánh hãy thuận phục nhau",
+  "body_html": "<p>Vậy, cả thân thể chúng ta hãy được gìn giữ trong Đấng Christ Giê-xu; và mỗi người hãy thuận phục người lân cận mình, tùy theo ân tứ riêng đã ban cho người. Kẻ mạnh chớ khinh dể kẻ yếu, và kẻ yếu hãy tôn trọng kẻ mạnh. Người giàu hãy cung cấp cho sự thiếu thốn của người nghèo; còn người nghèo hãy chúc tạ Đức Chúa Trời, vì Ngài đã ban cho mình một người để đáp ứng sự cần dùng của mình. Người khôn ngoan hãy tỏ sự khôn ngoan mình ra, chẳng phải bằng lời nói [suông], nhưng bằng việc lành. Người khiêm nhường chớ tự làm chứng cho mình, nhưng hãy để người khác làm chứng về mình. Người thanh sạch trong xác thịt chớ vì thế mà kiêu căng và khoe khoang, vì biết rằng ấy là Đấng khác đã ban cho mình ân tứ tiết dục. Vậy, thưa anh em, chúng ta hãy suy xét xem mình đã được dựng nên bằng chất gì,—chúng ta là ai và là loài thể nào khi vào đời, như thể từ trong mồ mả và từ chốn tối tăm mù mịt mà ra. Đấng đã dựng nên và nắn nên chúng ta, sau khi đã sắm sẵn các ân tứ dư dật của Ngài cho chúng ta trước khi chúng ta sinh ra, đã đưa chúng ta vào thế gian của Ngài. Vậy, vì chúng ta nhận mọi điều ấy từ nơi Ngài, chúng ta phải cảm tạ Ngài về mọi sự; nguyện vinh hiển thuộc về Ngài đời đời vô cùng. A-men. </p>",
+  "word_count": 267
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 39,
+  "title": "Không có lý do gì để tự phụ",
+  "body_html": "<p>Những người ngu dại và thiếu suy xét, chẳng có sự khôn ngoan cũng chẳng có sự dạy dỗ, chế giễu và nhạo báng chúng ta, vì họ nóng lòng tự tôn mình lên theo những ý tưởng tự phụ của mình. Vì một người phải chết thì làm được gì? hay là kẻ được dựng nên từ bụi đất thì có sức lực gì? Vì có chép rằng: “Chẳng có hình dạng nào ở trước mắt tôi; tôi chỉ nghe một tiếng động và một tiếng nói [rằng]: Thế thì sao? Loài người há được trong sạch trước mặt Chúa ư? Hay là người như thế há được [kể là] không chỗ trách trong việc làm mình sao, Khi Ngài không tin cậy các tôi tớ Ngài, Và đã trách cả các thiên sứ Ngài về sự gian tà? Các từng trời cũng chẳng trong sạch trước mặt Ngài; Phương chi những kẻ ở chòi đất sét, là chất mà chính chúng ta cũng được nắn nên! Ngài đánh họ như đánh con mọt; Từ sáng đến chiều, họ chẳng còn tồn tại. Vì họ không thể tự giúp mình, nên họ bị hư mất. Ngài thổi hơi trên họ, thì họ chết, vì họ chẳng có khôn ngoan. Vậy, hãy kêu la đi, xem có ai đáp lời ông chăng, Hoặc ông có ngó đến một vị nào trong các thiên sứ thánh chăng; Vì cơn giận giết người ngu muội, Và sự đố kỵ làm chết kẻ lầm lạc. Tôi có thấy kẻ ngu muội châm rễ ra, Nhưng chỗ ở của họ liền bị thiêu nuốt. Nguyện con cái họ cách xa sự an toàn; Nguyện chúng bị khinh dể trước cửa của những kẻ thấp hèn hơn mình, và chẳng có ai giải cứu. Vì điều đã sắm sẵn cho họ, người công bình sẽ ăn; Còn họ sẽ chẳng được cứu khỏi tai họa.”</p>",
+  "word_count": 320
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 40,
+  "title": "Chúng ta hãy giữ trong Hội Thánh trật tự mà Đức Chúa Trời đã định",
+  "body_html": "<p>Vậy, vì những điều nầy đã được tỏ rõ cho chúng ta, và vì chúng ta đã nhìn vào những chiều sâu của sự hiểu biết thiên thượng, chúng ta phải làm mọi việc theo [đúng] trật tự, là những việc Chúa đã truyền cho chúng ta phải làm vào những thời kỳ đã định. Ngài đã truyền phải dâng các của lễ và thi hành sự thờ phượng [cho Ngài], chẳng phải cách cẩu thả hay vô trật tự, nhưng vào những kỳ và những giờ đã định. Làm những điều ấy ở đâu và bởi ai, chính Ngài đã định bởi ý muốn tối cao của Ngài, hầu cho mọi sự được làm cách tin kính theo ý tốt lành của Ngài, đều được Ngài chấp nhận. Vậy, những người dâng của lễ mình vào những kỳ đã định thì được chấp nhận và được phước; vì họ theo luật pháp của Chúa, nên họ không phạm tội. Vì thầy tế lễ thượng phẩm có những chức vụ riêng được giao cho mình, các thầy tế lễ có chỗ riêng đã được chỉ định cho họ, và người Lê-vi có những công việc phục vụ riêng thuộc về họ. Còn người giáo dân thì bị ràng buộc bởi những luật lệ dành cho giáo dân. </p>",
+  "word_count": 217
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 41,
+  "title": "Tiếp theo cùng đề tài",
+  "body_html": "<p>Thưa anh em, mỗi người trong anh em hãy cảm tạ Đức Chúa Trời theo đúng thứ bậc của mình, sống với lương tâm tốt lành trọn vẹn, với sự nghiêm trang xứng hợp, và không vượt quá quy tắc của chức vụ đã định cho mình. Thưa anh em, chẳng phải ở mọi nơi đều dâng của lễ hằng ngày, hoặc của lễ thù ân, hoặc của lễ chuộc tội và của lễ chuộc sự mắc lỗi, nhưng chỉ tại Giê-ru-sa-lem mà thôi. Và ngay tại đó cũng chẳng phải dâng ở bất cứ chỗ nào, nhưng chỉ tại bàn thờ trước đền thờ, sau khi vật dâng lên đã được thầy tế lễ thượng phẩm và các chức viên đã nói trên xem xét kỹ lưỡng trước. Vậy, những ai làm điều gì vượt ngoài điều đẹp ý Ngài thì bị phạt đến chết. Thưa anh em, anh em thấy đó, sự hiểu biết được ban cho chúng ta càng lớn bao nhiêu, thì mối nguy hiểm chúng ta phải đối diện cũng càng lớn bấy nhiêu. </p>",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 42,
+  "title": "Thứ bậc các chức viên trong Hội Thánh",
+  "body_html": "<p>Các sứ đồ đã rao giảng Tin Lành cho chúng ta từ nơi Chúa Giê-xu Christ; còn Chúa Giê-xu Christ [đã rao giảng] từ nơi Đức Chúa Trời. Vậy, Đấng Christ được Đức Chúa Trời sai đến, và các sứ đồ được Đấng Christ sai đi. Như thế, cả hai sự chỉ định ấy đều đã được thực hiện cách có trật tự, theo ý muốn của Đức Chúa Trời. Vậy, sau khi đã nhận mệnh lệnh, và được hoàn toàn tin chắc bởi sự sống lại của Chúa Giê-xu Christ chúng ta, lại được vững vàng trong lời Đức Chúa Trời, với sự tin chắc trọn vẹn của Đức Thánh Linh, các sứ đồ đã ra đi rao truyền rằng nước Đức Chúa Trời đã đến gần. Và như thế, khi rao giảng khắp các miền và các thành, họ đã lập những trái đầu mùa [của công lao mình], sau khi đã thử nghiệm họ bởi Đức Thánh Linh, làm giám mục và chấp sự cho những người sẽ tin về sau. Đó cũng chẳng phải là điều gì mới mẻ, vì thật ra nhiều thời đại trước đó đã có chép về các giám mục và chấp sự. Vì ở một chỗ kia, Kinh Thánh phán như vầy: “Ta sẽ lập các giám mục của họ trong sự công bình, và các chấp sự của họ trong đức tin.”</p>",
+  "word_count": 232
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 43,
+  "title": "Môi-se đã dẹp yên sự tranh chấp về chức tế lễ",
+  "body_html": "<p>Vậy, có gì lạ đâu nếu những người trong Đấng Christ, đã được Đức Chúa Trời giao phó một phận sự như thế, đã lập nên những [chức viên] đã nói trên, khi chính Môi-se đầy phước, là “kẻ tôi tớ trung tín trong cả nhà Ngài,” cũng đã ghi chép vào các sách thánh mọi điều răn đã được truyền cho người, và khi các đấng tiên tri khác cũng theo người, đồng lòng làm chứng cho các luật lệ mà người đã thiết lập? Vì khi sự ganh đua nổi lên về chức tế lễ, và các chi phái tranh chấp nhau xem chi phái nào sẽ được tôn vinh bằng danh hiệu vinh hiển ấy, thì người truyền cho mười hai quan trưởng của các chi phái đem gậy mình đến cho người, trên mỗi cây gậy có khắc tên của chi phái mình. Người lấy các gậy ấy, buộc [lại với nhau], niêm phong bằng nhẫn của các quan trưởng chi phái, rồi đặt trong Trại bảng chứng, trên bàn của Đức Chúa Trời. Sau khi đóng các cửa của Trại, người niêm phong các chìa khóa, như đã làm với các cây gậy, rồi nói cùng họ rằng: Hỡi anh em, chi phái nào có cây gậy trổ hoa, ấy là chi phái Đức Chúa Trời đã chọn để giữ chức tế lễ và hầu việc Ngài. Đến sáng hôm sau, người nhóm hết thảy Y-sơ-ra-ên lại, sáu trăm ngàn người, chỉ cho các quan trưởng chi phái xem các dấu niêm phong, mở Trại bảng chứng ra, và đem các cây gậy ra. Thì thấy cây gậy của A-rôn chẳng những đã trổ hoa, mà lại còn kết trái nữa. Hỡi anh em yêu dấu, anh em nghĩ sao? Há Môi-se chẳng biết trước điều sẽ xảy ra sao? Chắc chắn người đã biết; nhưng người làm như vậy để trong Y-sơ-ra-ên chẳng có sự dấy loạn, và để danh của Đức Chúa Trời chân thật và duy nhất được tôn vinh; nguyện vinh hiển thuộc về Ngài đời đời vô cùng. A-men. </p>",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 44,
+  "title": "Các quy định của các sứ đồ",
+  "body_html": "<p>Các sứ đồ của chúng ta cũng đã biết, qua Chúa Giê-xu Christ của chúng ta, rằng sẽ có sự tranh cạnh về chức giám mục. Vậy, vì cớ ấy, bởi đã được biết trước cách trọn vẹn về điều nầy, họ đã lập những [chức viên] đã nói trên, rồi sau đó lại truyền dặn rằng khi những người ấy đã an giấc, thì những người khác đã được thử nghiệm sẽ kế tiếp họ trong chức vụ. Vậy, chúng tôi cho rằng những người đã được các sứ đồ lập lên, hoặc về sau được những người lỗi lạc khác lập lên với sự đồng ý của cả Hội Thánh, là những người đã hầu việc bầy chiên của Đấng Christ cách không chỗ trách được, với tinh thần khiêm nhường, hòa nhã và vô tư lợi, và từ lâu đã được mọi người quý trọng, thì không thể bị cách khỏi chức vụ cách công bằng được. Vì tội chúng ta sẽ chẳng nhỏ, nếu chúng ta truất khỏi chức giám mục những người đã chu toàn bổn phận của chức ấy cách không chỗ trách được và thánh khiết. Phước cho những trưởng lão đã xong cuộc đời mình từ trước, đã được một sự ra đi [khỏi thế gian nầy] đầy kết quả và trọn vẹn; vì họ chẳng còn sợ ai cất mất chỗ đã định cho họ bây giờ. Nhưng chúng tôi thấy anh em đã cách chức một số người có nếp sống tốt đẹp, là những người đã thi hành chức vụ ấy cách không chỗ trách được và đáng tôn trọng. </p>",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 45,
+  "title": "Ấy là việc của kẻ ác khi làm khổ người công chính",
+  "body_html": "<p>Thưa anh em, anh em ưa tranh cạnh, và đầy lòng sốt sắng về những điều chẳng liên quan gì đến sự cứu rỗi. Hãy cẩn thận tra xem Kinh Thánh, là những lời chân thật của Đức Thánh Linh. Hãy nhận thấy rằng trong đó chẳng có chép điều gì bất công hay giả mạo. Ở đó anh em sẽ chẳng thấy người công chính bị những người thánh khiết loại bỏ. Người công chính quả thật đã bị bắt bớ, nhưng chỉ bởi kẻ gian ác. Họ bị bỏ tù, nhưng chỉ bởi những kẻ không tin kính; họ bị ném đá, nhưng chỉ bởi những kẻ phạm pháp; họ bị giết, nhưng chỉ bởi những kẻ đáng rủa sả, và những kẻ đã mang lòng ganh tị bất chính đối với họ. Khi phải chịu những khổ nạn như thế, họ đã chịu đựng cách vinh hiển. Vì, thưa anh em, chúng ta sẽ nói làm sao? Có phải Đa-ni-ên đã bị những người kính sợ Đức Chúa Trời quăng vào hang sư tử chăng? Có phải Ha-na-nia, A-xa-ria và Mi-sa-ên đã bị những người giữ sự thờ phượng lớn lao và vinh hiển của Đấng Chí Cao nhốt vào lò lửa chăng? Chúng ta chớ hề có ý tưởng như thế! Vậy thì ai là những kẻ đã làm các điều ấy? Ấy là những kẻ đáng ghét, đầy mọi sự gian ác, đã nổi cơn giận dữ đến cực độ, đến nỗi hành hạ những người hầu việc Đức Chúa Trời với tâm ý [của lòng] thánh khiết và không chỗ trách được, mà không biết rằng Đấng Chí Cao là Đấng Bênh Vực và Che Chở mọi người lấy lương tâm trong sạch mà tôn kính danh rất tuyệt hảo của Ngài; nguyện vinh hiển thuộc về Ngài đời đời vô cùng. A-men. Còn những người đã chịu đựng [các điều ấy] với lòng vững tin, thì nay là những kẻ kế tự sự vinh hiển và tôn trọng, và đã được Đức Chúa Trời tôn cao và làm cho rạng danh trong sự ghi nhớ đời đời vô cùng. A-men. </p>",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 46,
+  "title": "Chúng ta hãy gắn bó với người công chính: sự tranh cạnh của anh em thật tai hại",
+  "body_html": "<p>Vậy, thưa anh em, chúng ta phải noi theo những gương như thế; vì có chép rằng: “Hãy gắn bó với những người thánh, vì những ai gắn bó với họ thì [chính mình] sẽ được nên thánh.” Lại nữa, ở một chỗ khác, [Kinh Thánh] phán: “Đối cùng kẻ vô tội, ngươi sẽ tỏ mình vô tội; đối cùng kẻ được chọn, ngươi sẽ là kẻ được chọn; còn đối cùng kẻ gian tà, ngươi sẽ tỏ mình gian tà lại.” Vậy, chúng ta hãy gắn bó với những người vô tội và công chính, vì họ là những người được chọn của Đức Chúa Trời. Cớ sao giữa anh em có những sự tranh cạnh, những cơn náo loạn, những sự phân rẽ, những sự chia rẽ và chiến tranh? Há chẳng phải chúng ta [hết thảy] có một Đức Chúa Trời và một Đấng Christ sao? Há chẳng phải chỉ có một Thánh Linh của ân điển đã được đổ ra trên chúng ta sao? Và há chẳng phải chúng ta có một sự kêu gọi trong Đấng Christ sao? Cớ sao chúng ta phân rẽ và xé nát các chi thể của Đấng Christ, dấy sự tranh cạnh chống lại chính thân thể mình, và điên cuồng đến mức quên rằng “chúng ta đều là các phần chi thể của nhau” sao? Hãy nhớ lại lời của Chúa Giê-xu Christ chúng ta, thể nào Ngài đã phán: “Khốn nạn thay cho người đó [là kẻ gây nên sự vấp phạm]! Thà nó chẳng sanh ra còn hơn là làm cho một người trong những kẻ được chọn của ta vấp ngã. Phải, thà buộc cối đá vào [cổ] nó, mà nhận chìm nó xuống đáy biển, còn hơn là để nó làm cho một đứa trong những đứa nhỏ của ta vấp ngã.” Sự chia rẽ của anh em đã làm cho nhiều người bị lung lạc [đức tin], làm cho nhiều người ngã lòng, làm cho nhiều người sinh nghi, và gây buồn rầu cho hết thảy chúng tôi. Thế mà sự dấy loạn của anh em vẫn còn tiếp diễn. </p>",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 47,
+  "title": "Sự bất hòa gần đây của anh em còn tệ hơn sự bất hòa trong thời Phao-lô",
+  "body_html": "<p>Hãy lấy thư của sứ đồ Phao-lô đầy phước mà đọc. Lúc Tin Lành mới bắt đầu được rao giảng, người đã viết gì cho anh em? Thật vậy, dưới sự soi dẫn của Đức Thánh Linh, người đã viết cho anh em về chính mình người, về Sê-pha và A-bô-lô, vì ngay khi ấy giữa anh em đã có những bè đảng. Nhưng sự thiên vị người nầy hơn người kia lúc đó khiến anh em ít mắc tội hơn, vì khi ấy anh em thiên về các sứ đồ, là những người vốn đã có danh tiếng lớn, và về một người đã được các sứ đồ tán thành. Nhưng nay, hãy suy xem ai là những kẻ đã làm cho anh em bị lầm lạc, và làm giảm đi danh tiếng của tình yêu thương anh em vốn lừng lẫy khắp nơi. Hỡi anh em yêu dấu, thật là điều đáng hổ thẹn, phải, rất đáng hổ thẹn, và không xứng đáng với lời tuyên xưng Cơ Đốc của anh em, khi người ta nghe nói rằng Hội Thánh Cô-rinh-tô rất vững vàng và lâu đời, chỉ vì một hai người, mà dấy loạn chống lại các trưởng lão của mình. Và tin đồn nầy đã đến chẳng những với chúng tôi, mà còn đến cả với những người không liên hệ gì với chúng tôi; đến nỗi vì sự mê muội của anh em, danh Chúa bị nói phạm, trong khi anh em cũng chuốc lấy nguy hiểm cho chính mình. </p>",
+  "word_count": 255
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 48,
+  "title": "Chúng ta hãy trở lại thực hành tình yêu thương anh em",
+  "body_html": "<p>Vậy, chúng ta hãy hết sức mau chóng chấm dứt [tình trạng] nầy; chúng ta hãy sấp mình trước mặt Chúa, khóc lóc nài xin Ngài thương xót mà giải hòa cùng chúng ta, và phục hồi chúng ta trở lại nếp thực hành tình yêu thương anh em đẹp đẽ và thánh khiết như trước. Vì [cách cư xử như thế] là cửa của sự công chính, được mở ra để đạt đến sự sống, như có chép rằng: “Hãy mở cho tôi các cửa công bình, Tôi sẽ vào ngợi khen Đức Giê-hô-va. Đây là cửa của Đức Giê-hô-va; Những người công bình sẽ vào đó.” Vậy, dẫu có nhiều cửa đã được mở ra, thì cửa công chính nầy chính là cửa ở trong Đấng Christ; phước cho hết thảy những ai đã bước vào cửa ấy, và đã hướng bước đường mình trong sự thánh khiết và công chính, làm mọi việc không chút rối loạn. Dẫu một người có trung tín; dẫu người có quyền năng trong việc nói ra sự hiểu biết; dẫu người có khôn ngoan trong việc phân biện lời nói; dẫu người có thanh sạch trong mọi việc mình làm; thì người càng tỏ ra trổi hơn kẻ khác [về những điều ấy] bao nhiêu, càng phải khiêm nhường bấy nhiêu, và phải tìm lợi ích chung cho mọi người, chứ chẳng phải chỉ tìm lợi riêng cho mình. </p>",
+  "word_count": 238
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 49,
+  "title": "Lời ca ngợi tình yêu thương",
+  "body_html": "<p>Ai có tình yêu thương trong Đấng Christ, hãy giữ các điều răn của Đấng Christ. Ai có thể mô tả [phước hạnh] của mối dây tình yêu thương của Đức Chúa Trời? Ai có thể nói ra cho xứng đáng sự tuyệt mỹ của vẻ đẹp ấy? Chiều cao mà tình yêu thương nâng chúng ta lên thật không thể nói ra được. Tình yêu thương hiệp chúng ta với Đức Chúa Trời. Tình yêu thương che đậy vô số tội lỗi. Tình yêu thương dung thứ mọi sự, nhịn nhục trong mọi sự. Trong tình yêu thương chẳng có điều gì hèn hạ, chẳng có điều gì kiêu căng. Tình yêu thương không chấp nhận sự chia rẽ; tình yêu thương không gây ra sự dấy loạn; tình yêu thương làm mọi sự trong sự hòa thuận. Bởi tình yêu thương mà hết thảy những người được chọn của Đức Chúa Trời đã được nên trọn vẹn; không có tình yêu thương thì chẳng có điều gì đẹp lòng Đức Chúa Trời. Trong tình yêu thương, Chúa đã nhận chúng ta về cùng Ngài. Vì tình yêu thương Ngài dành cho chúng ta, Chúa Giê-xu Christ, Chúa chúng ta, theo ý muốn của Đức Chúa Trời, đã ban huyết Ngài vì chúng ta; xác thịt Ngài vì xác thịt chúng ta, và linh hồn Ngài vì linh hồn chúng ta.</p>",
+  "word_count": 232
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 50,
+  "title": "Chúng ta hãy cầu nguyện để được kể là xứng đáng với tình yêu thương",
+  "body_html": "<p>Hỡi anh em yêu dấu, anh em thấy đó, tình yêu thương là điều lớn lao và lạ lùng biết bao, và sự trọn vẹn của nó không sao nói hết được. Ai xứng đáng được ở trong tình yêu thương ấy, ngoại trừ những người mà Đức Chúa Trời đã ban ơn làm cho xứng đáng? Vậy, chúng ta hãy cầu nguyện và nài xin lòng thương xót của Ngài, để chúng ta được sống không chỗ trách được trong tình yêu thương, khỏi mọi sự thiên vị của loài người, kẻ nầy hơn kẻ kia. Mọi thế hệ từ A-đam cho đến ngày nay đều đã qua đi; nhưng những ai, bởi ân điển của Đức Chúa Trời, đã được nên trọn vẹn trong tình yêu thương, thì nay có chỗ ở giữa những người tin kính, và sẽ được tỏ ra khi nước của Đấng Christ hiện đến. Vì có chép rằng: “Hãy vào buồng kín của ngươi một lát, cho đến chừng nào cơn giận và cơn thạnh nộ của ta đã qua; rồi ta sẽ nhớ đến một ngày thuận tiện, và sẽ làm cho các ngươi lại lên khỏi mồ mả.” Hỡi anh em yêu dấu, phước cho chúng ta nếu chúng ta giữ các điều răn của Đức Chúa Trời trong sự hòa thuận của tình yêu thương, hầu cho nhờ tình yêu thương mà tội lỗi chúng ta được tha. Vì có chép rằng: “Phước thay cho người nào được tha sự vi phạm mình! Được khỏa lấp tội lỗi mình! Phước thay cho người nào Đức Giê-hô-va không kể gian ác cho, Và trong miệng không có sự giả dối!” Phước hạnh nầy đến trên những người đã được Đức Chúa Trời chọn qua Chúa Giê-xu Christ, Chúa chúng ta; nguyện vinh hiển thuộc về Ngài đời đời vô cùng. A-men. </p>",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 51,
+  "title": "Những kẻ dự phần vào sự tranh cạnh hãy nhận tội mình",
+  "body_html": "<p>Vậy, chúng ta hãy nài xin sự tha thứ cho mọi sự vi phạm mà chúng ta đã phạm bởi bất cứ [sự xui giục] nào của kẻ thù nghịch. Còn những kẻ đã cầm đầu sự dấy loạn và bất hòa thì phải quan tâm đến niềm hy vọng chung. Vì những ai sống trong sự kính sợ và tình yêu thương thì thà chính mình chịu khổ, hơn là để người lân cận mình phải chịu. Họ thà chính mình chịu trách móc, hơn là để sự hòa thuận đã được truyền lại cho chúng ta cách tốt đẹp và tin kính phải bị tổn hại. Vì thà một người nhận biết các sự vi phạm mình, còn hơn là để lòng mình cứng cỏi, như lòng của những kẻ đã dấy loạn chống lại Môi-se, tôi tớ của Đức Chúa Trời, đã bị cứng cỏi, và sự đoán phạt họ đã được tỏ ra [cho mọi người]. Vì họ còn sống mà đi xuống Âm phủ, và sự chết đã nuốt lấy họ. Pha-ra-ôn cùng đạo binh mình và hết thảy các quan trưởng xứ Ê-díp-tô, cùng các xe binh với người cỡi xe, đều bị chìm dưới đáy Biển Đỏ và bị diệt mất, chẳng vì cớ gì khác hơn là lòng ngu dại của họ đã cứng cỏi, sau khi biết bao dấu lạ và phép lạ đã được Môi-se, tôi tớ của Đức Chúa Trời, làm ra trong xứ Ê-díp-tô. </p>",
+  "word_count": 246
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 52,
+  "title": "Sự xưng nhận như thế đẹp lòng Đức Chúa Trời",
+  "body_html": "<p>Thưa anh em, Chúa chẳng cần đến điều gì; và Ngài chẳng đòi hỏi gì nơi ai, ngoại trừ việc xưng nhận cùng Ngài. Vì Đa-vít, người được chọn, có nói: “Tôi sẽ xưng nhận cùng Đức Giê-hô-va; điều ấy sẽ đẹp lòng Ngài hơn con bò tơ có sừng và móng rẽ ra. Những người khốn cùng sẽ thấy điều đó và vui mừng.” Lại nữa, người nói: “Hãy dâng sự cảm tạ làm của lễ cho Đức Chúa Trời, Và trả sự hứa nguyện ngươi cho Đấng Chí cao. Trong ngày gian truân hãy kêu cầu cùng ta: Ta sẽ giải cứu ngươi, và ngươi sẽ ngợi khen ta.” Vì “Của lễ đẹp lòng Đức Chúa Trời, ấy là tâm thần đau thương.”</p>",
+  "word_count": 125
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 53,
+  "title": "Tình yêu thương của Môi-se đối với dân mình",
+  "body_html": "<p>Hỡi anh em yêu dấu, anh em hiểu biết, anh em hiểu biết rõ Kinh Thánh thiêng liêng, và anh em đã hết sức chăm chú tra xem các lời phán của Đức Chúa Trời. Vậy, hãy nhớ lại những điều nầy. Khi Môi-se lên núi và ở tại đó bốn mươi ngày và bốn mươi đêm trong sự kiêng ăn và hạ mình, thì Chúa phán cùng người rằng: “Hỡi Môi-se, Môi-se, hãy mau mau xuống khỏi đây, vì dân của ngươi mà ngươi đã đem ra khỏi xứ Ê-díp-tô đã phạm tội ác. Chúng nó đã vội bỏ con đường mà ta đã truyền cho chúng nó đi, và đã đúc cho mình những tượng đúc.” Chúa lại phán cùng người rằng: “Ta đã phán cùng ngươi một lần, hai lần, rằng: Ta nhìn xem dân nầy, kìa là một dân cứng cổ. Hãy để mặc ta diệt chúng nó, và xóa tên chúng nó khỏi dưới trời; rồi ta sẽ làm cho ngươi thành một dân tộc lớn và lạ lùng, đông hơn dân nầy bội phần.” Nhưng Môi-se thưa rằng: “Lạy Chúa, chớ hề như vậy! Xin tha tội cho dân nầy; bằng không, xin cũng xóa tên tôi khỏi sách của những kẻ sống.” Ôi, tình yêu thương lạ lùng thay! Ôi, sự trọn vẹn không ai vượt qua được! Người đầy tớ dạn dĩ thưa cùng Chúa mình, xin tha thứ cho dân sự, bằng không thì xin cho chính mình cũng bị diệt mất cùng với họ. </p>",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 54,
+  "title": "Người đầy dẫy tình yêu thương sẵn lòng chịu mọi mất mát",
+  "body_html": "<p>Vậy, trong anh em ai là người có tấm lòng cao thượng? ai là người có lòng thương xót? ai là người đầy dẫy tình yêu thương? Người ấy hãy tuyên bố rằng: “Nếu vì cớ tôi mà có sự dấy loạn, bất hòa và chia rẽ, thì tôi xin rời đi, tôi sẽ đi bất cứ nơi nào anh em muốn, và tôi sẽ làm mọi điều mà số đông truyền bảo; miễn là bầy chiên của Đấng Christ được sống trong sự bình an với các trưởng lão đã được lập trên mình.” Ai làm như vậy sẽ tự chuốc lấy cho mình vinh hiển lớn trong Chúa; và mọi nơi sẽ tiếp đón người. Vì “Đất và mọi vật chứa trong đất đều thuộc về Chúa.” Những điều ấy, những người sống đời tin kính, là đời sống không bao giờ phải hối tiếc, đã làm và sẽ luôn luôn làm. </p>",
+  "word_count": 154
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 55,
+  "title": "Những tấm gương về tình yêu thương như thế",
+  "body_html": "<p>Để nêu ra vài tấm gương từ giữa dân ngoại: Nhiều vua chúa và quan trưởng, trong thời có dịch lệ, khi đã được lời sấm bảo cho, đã phó mình cho sự chết, hầu cho bởi chính huyết mình mà giải cứu đồng bào mình [khỏi sự hủy diệt]. Nhiều người đã rời bỏ chính thành mình, để sự dấy loạn trong thành được chấm dứt. Chúng ta biết nhiều người ở giữa chúng ta đã tự phó mình vào xiềng xích, để chuộc người khác ra. Cũng có nhiều người đã tự bán mình làm nô lệ, để lấy giá tiền bán mình mà nuôi người khác. Nhiều phụ nữ cũng vậy, được thêm sức bởi ân điển của Đức Chúa Trời, đã làm nên nhiều việc anh dũng như bậc nam nhi. Bà Giu-đít đầy phước, khi thành của bà bị vây hãm, đã xin các trưởng lão cho phép mình ra đi vào trại quân ngoại bang; và liều mình trước hiểm nguy, bà đã ra đi vì lòng yêu thương đối với quê hương và dân tộc mình lúc ấy đang bị vây hãm; và Chúa đã phó Holofernes vào tay một người đàn bà. Ê-xơ-tê cũng vậy, trọn vẹn trong đức tin, đã liều mình trước hiểm nguy chẳng kém, để giải cứu mười hai chi phái Y-sơ-ra-ên khỏi sự hủy diệt sắp đến. Vì bà đã kiêng ăn và hạ mình mà nài xin Đức Chúa Trời đời đời, là Đấng thấy mọi sự; và Ngài, thấy sự khiêm nhường trong tâm thần bà, đã giải cứu dân sự mà vì cớ họ bà đã liều mình trước hiểm nguy. </p>",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 56,
+  "title": "Chúng ta hãy khuyên răn và sửa trị lẫn nhau",
+  "body_html": "<p>Vậy, chúng ta cũng hãy cầu nguyện cho những người đã sa vào bất cứ tội lỗi nào, để họ được ban cho sự nhu mì và khiêm nhường, hầu cho họ thuận phục, chẳng phải thuận phục chúng ta, nhưng thuận phục ý muốn của Đức Chúa Trời. Vì như vậy, họ sẽ được chúng ta ghi nhớ cách đầy kết quả và trọn vẹn, với lòng cảm thông đối với họ, cả trong những lời cầu nguyện của chúng ta dâng lên Đức Chúa Trời, lẫn khi chúng ta nhắc đến họ với các thánh đồ. Hỡi anh em yêu dấu, chúng ta hãy nhận lấy sự sửa trị, là điều chẳng ai nên lấy làm phật lòng. Những lời khuyên răn mà chúng ta dùng để khuyên bảo nhau vừa là tốt [tự nó] vừa rất bổ ích, vì chúng có khuynh hướng hiệp chúng ta với ý muốn của Đức Chúa Trời. Vì Lời thánh phán như vầy: “Đức Giê-hô-va đã sửa phạt tôi cách nghiêm trang. Nhưng không phó tôi vào sự chết.” “Vì Chúa sửa phạt kẻ Ngài yêu, Hễ ai mà Ngài nhận làm con, thì cho roi cho vọt.” “Người công bình,” lời ấy phán, “sẽ lấy lòng thương xót mà sửa phạt tôi và quở trách tôi; nhưng chớ để dầu của kẻ có tội làm béo đầu tôi.” Lại nữa, Ngài phán: “Người mà Đức Chúa Trời quở trách lấy làm phước thay! Vậy, chớ khinh sự sửa phạt của Đấng Toàn năng. Vì Ngài làm cho đau đớn, rồi lại phục hồi [cho vui mừng]; Ngài đánh hại, rồi tay Ngài chữa lành cho. Trong sáu cơn hoạn nạn, Ngài sẽ giải cứu cho, Qua cơn thứ bảy, tai hại cũng sẽ không đụng đến mình. Trong cơn đói kém, Ngài sẽ giải cứu cho khỏi chết, Và đương lúc giặc giã, cứu khỏi lưỡi gươm. Ông sẽ được ẩn núp khỏi tai hại của lưỡi; Cũng sẽ chẳng sợ chi khi tai vạ xảy đến. Ông sẽ cười kẻ bất công và kẻ gian ác, Cũng chẳng sợ các thú vật của đất. Vì các thú rừng sẽ hòa thuận với ông: Bấy giờ ông sẽ biết rằng nhà mình sẽ được hòa bình, Và chỗ ở của trại mình sẽ chẳng thiếu mất chi. Ông cũng sẽ biết rằng dòng dõi mình sẽ nhiều, Và con cháu mình đông như cỏ ngoài đồng. Ông sẽ vào trong phần mộ như lúa chín mà người ta gặt phải thì, Hoặc như đống lúa nơi sân đạp lúa được thâu chứa đúng kỳ.” Hỡi anh em yêu dấu, anh em thấy đó, những ai được Chúa sửa phạt thì được che chở; vì Đức Chúa Trời là tốt lành, nên Ngài sửa trị chúng ta, để chúng ta được khuyên răn bởi sự sửa phạt thánh của Ngài. </p>",
+  "word_count": 479
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 57,
+  "title": "Những kẻ gây dấy loạn hãy thuận phục",
+  "body_html": "<p>Vậy, anh em là những kẻ đã đặt nền cho sự dấy loạn nầy, hãy thuận phục các trưởng lão, và nhận lấy sự sửa trị để ăn năn, quỳ gối của lòng mình xuống. Hãy học tập thuận phục, bỏ đi sự tự tin kiêu căng và ngạo mạn của lưỡi mình. Vì thà anh em giữ một chỗ thấp hèn nhưng đáng trọng trong bầy chiên của Đấng Christ, còn hơn là được tôn lên cao mà bị loại ra khỏi niềm hy vọng của dân Ngài. Vì Sự Khôn Ngoan toàn đức phán như vầy: “Nầy, ta sẽ tuôn ra cho các ngươi lời của Thần ta, Và ta sẽ dạy các ngươi lời nói của ta. Bởi vì ta kêu gọi, mà các ngươi không khứng nghe; Ta giơ lời ta ra, mà các ngươi chẳng chủ ý, nhưng các ngươi đã bỏ hết lời khuyên dạy ta, Không chịu lời quở trách ta; Nên trong lúc các ngươi bị tai nạn, ta cũng sẽ chê cười; Phải, ta sẽ vui mừng khi sự hủy diệt giáng trên các ngươi, Khi sự rối loạn thình lình xảy đến cho các ngươi, Khi sự đổ nát xông vào như gió bão, Hoặc khi sự ngặt nghèo, khốn cực giáng trên các ngươi. Vì sẽ xảy ra rằng khi các ngươi kêu cầu cùng ta, ta sẽ không nghe các ngươi; Kẻ ác sẽ tìm ta, nhưng không gặp được. Vì chúng nó ghét sự khôn ngoan, Không chọn lấy sự kính sợ Đức Giê-hô-va, Cũng không muốn theo sự khuyên dạy ta, Và chê bai các lời quở trách ta. Vì vậy chúng nó sẽ ăn bông trái của đường lối mình, Và sẽ được no nê sự không tin kính của mình riêng.” …</p>",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 58,
+  "title": "Phước lành cầu xin cho hết thảy những ai kêu cầu Đức Chúa Trời",
+  "body_html": "<p>Nguyện Đức Chúa Trời, là Đấng thấy mọi sự, là Đấng cai trị mọi thần linh và là Chúa của mọi xác thịt—Đấng đã chọn Chúa Giê-xu Christ chúng ta, và bởi Ngài chọn chúng ta làm một dân thuộc riêng về Ngài—ban cho mọi linh hồn kêu cầu danh vinh hiển và thánh của Ngài đức tin, sự kính sợ, sự bình an, sự kiên nhẫn, sự nhịn nhục, sự tiết độ, sự thanh sạch và sự tỉnh thức, để đẹp lòng danh Ngài, qua Thầy Tế Lễ Thượng Phẩm và Đấng Che Chở của chúng ta là Chúa Giê-xu Christ; bởi Ngài, nguyện vinh hiển, uy nghiêm, quyền năng và tôn trọng thuộc về Đức Chúa Trời, từ nay cho đến đời đời. A-men. </p>",
+  "word_count": 126
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "vi"
+  ],
+  "order": 59,
+  "title": "Tín hữu Cô-rinh-tô được khuyên gửi tin về rằng sự bình an đã được phục hồi",
+  "body_html": "<p>Xin anh em mau gửi trả lại cho chúng tôi trong sự bình an và vui mừng những sứ giả nầy mà chúng tôi đã sai đến cùng anh em: Claudius Ephebus và Valerius Bito, cùng với Fortunatus; để họ sớm báo tin cho chúng tôi về sự bình an và hòa thuận [giữa anh em] mà chúng tôi hằng sốt sắng ước ao và mong mỏi, và để chúng tôi mau được vui mừng về trật tự tốt đẹp đã được tái lập giữa anh em. Nguyện ân điển của Chúa Giê-xu Christ chúng ta ở cùng anh em, và cùng hết thảy mọi người ở khắp mọi nơi đã được Đức Chúa Trời kêu gọi qua Ngài; bởi Ngài, nguyện vinh hiển, tôn trọng, quyền năng, uy nghiêm và quyền cai trị đời đời thuộc về Đức Chúa Trời, từ đời đời cho đến đời đời. A-men.</p>",
+  "word_count": 149
+ }
+}
+]
