@@ -57,9 +57,13 @@
 
 	// The personal next step. Signed out: the invitation (by `expectedUser`, so
 	// a member's stored session keeps it off the dashboard home draws before
-	// the session restores) — but not on /login, where the form IS the page.
+	// the session restores) — but not on /login, where the form IS the page,
+	// nor on home, whose SignupBand already makes the pitch: one ask per page,
+	// not two (design review 2026-11, #16).
 	// The caller localizes signupHref, exactly as the header's sign-in link does.
-	const showInvite = $derived(auth.enabled && !auth.expectedUser && !path.startsWith('/login'));
+	const showInvite = $derived(
+		auth.enabled && !auth.expectedUser && !path.startsWith('/login') && path !== '/'
+	);
 	const signupHref = $derived(
 		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
 	);
