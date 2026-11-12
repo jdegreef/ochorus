@@ -47,7 +47,8 @@
 		| 'share'
 		| 'favorite'
 		| 'print'
-		| 'qr';
+		| 'qr'
+		| 'gift';
 
 	let {
 		name,
@@ -173,6 +174,11 @@
 	{:else if name === 'mountain'}
 		<path d="M3 20h18L14 6l-3.2 6-2.3-3z" />
 		<path d="m10.8 12 1.2-2 2 4" />
+	{:else if name === 'gift'}
+		<!-- "Give this book" (GiftBookButton): a box with a bow. -->
+		<rect x="3.5" y="8" width="17" height="4" rx="1" />
+		<path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7M12 8v13" />
+		<path d="M12 8C11 5 9.5 3.5 8 3.5a2.25 2.25 0 0 0 0 4.5M12 8c1-3 2.5-4.5 4-4.5a2.25 2.25 0 0 1 0 4.5" />
 	{:else if name === 'share'}
 		<circle cx="6" cy="12" r="2.6" />
 		<circle cx="17" cy="6" r="2.6" />
