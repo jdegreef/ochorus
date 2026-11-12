@@ -444,8 +444,8 @@ describe('font stacks', () => {
 		const rule = /\.reading[^{]*> p:first-of-type([^{]*)::first-letter/.exec(APP_CSS);
 		expect(rule, 'the drop-cap rule is gone').not.toBeNull();
 		// Korean too: Korean book typography has no dropped initial, and a floated
-		// syllable block reads as a layout fault, not an ornament.
-		for (const lang of ['ar', 'hi', 'ko']) {
+		// syllable block reads as a layout fault, not an ornament. Japanese likewise.
+		for (const lang of ['ar', 'hi', 'ko', 'ja']) {
 			expect(rule![1], `${lang} is not excluded from the floated initial`).toContain(
 				`:not(:lang(${lang}))`
 			);

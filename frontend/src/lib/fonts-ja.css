@@ -1,0 +1,19 @@
+/* Kana and kanji, for Japanese — loaded ONLY on Japanese pages (the root layout
+   links this sheet when the locale is `ja`), for the same reason as
+   fonts-ko.css: a CJK face is split into ~120 numbered unicode-range slices, so
+   each weight entrypoint declares over a hundred @font-face rules. Carried in
+   app.css, that would charge every reader in every language for glyphs only a
+   Japanese page draws. The woff2 slices are unicode-range gated either way; the
+   declarations are what cost.
+
+   The families are still NAMED in app.css's stacks (--font-display,
+   --font-sans), after the Korean ones: off a Japanese page they are undeclared
+   and the browser skips them. fontStacks.test.ts reads this file alongside
+   app.css, so the coverage and weight gates hold for Japanese too.
+
+   Noto Serif/Sans JP: the same superfamily as the Korean pair, with the 700 the
+   display stack's headings reach. */
+@import '@fontsource/noto-serif-jp/400.css';
+@import '@fontsource/noto-serif-jp/700.css';
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-jp/700.css';

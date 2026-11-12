@@ -81,6 +81,7 @@ describe('quote card type', () => {
 		// Neither is in the cover table (`scriptOf` is null for both), which once
 		// meant a Korean card asked for `italic 600` and preloaded nothing.
 		expect(cardScript('ko')).toBe('korean');
+		expect(cardScript('ja')).toBe('japanese');
 		expect(cardScript('am')).toBe('ethiopic');
 		expect(cardScript('ar')).toBe('arabic');
 		expect(cardScript('en')).toBeNull();

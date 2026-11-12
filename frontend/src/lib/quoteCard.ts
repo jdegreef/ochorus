@@ -42,7 +42,7 @@ export interface QuoteCardOptions {
  * device chose, on the one surface built to leave the site.
  */
 export const CARD_SERIF =
-	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', Georgia, 'Times New Roman', serif";
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'Noto Serif JP', 'PT Serif', Georgia, 'Times New Roman', serif";
 
 /**
  * How the quote itself is set, per script.
@@ -156,7 +156,8 @@ export const SCRIPT_FACE: Record<string, string> = {
 	devanagari: 'Tiro Devanagari Hindi',
 	cyrillic: 'PT Serif',
 	ethiopic: 'Noto Serif Ethiopic',
-	korean: 'Noto Serif KR'
+	korean: 'Noto Serif KR',
+	japanese: 'Noto Serif JP'
 };
 
 /** Scripts a card draws that the COVER table (`scriptOf`) leaves out: covers
@@ -164,7 +165,7 @@ export const SCRIPT_FACE: Record<string, string> = {
  *  card still has to preload these faces and must not slant them. Before this,
  *  an Amharic card never preloaded Noto Serif Ethiopic: `scriptOf('am')` is
  *  null, so the entry above was unreachable. */
-const CARD_ONLY_SCRIPT: Record<string, string> = { Ethi: 'ethiopic', Kore: 'korean' };
+const CARD_ONLY_SCRIPT: Record<string, string> = { Ethi: 'ethiopic', Kore: 'korean', Jpan: 'japanese' };
 
 /** The script a card in this language is set for; null for Latin. */
 export function cardScript(language: string): string | null {

@@ -145,6 +145,10 @@ const KO_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ko.css'), 'utf8');
 // they are a few KB, not Korean's 124 slices a weight, so their imports join
 // app.css's below rather than taking Korean's separate path. fonts-reader.css
 // counts because Libre Baskerville's 700 (a cover family's bold) lives there.
+// fonts-ja.css is left out for Korean's reason (numbered CJK slices) — and
+// because joining FACE_IMPORTS would move every card's `fonts` digest. No
+// Japanese edition has a twin yet; the first one needs `hangulFaces`
+// generalised to read the kana/kanji slices from fonts-ja.css the same way.
 //
 // IN THE ORDER app.css imported them before the split, and that is load-bearing:
 // each card's `fonts` digest (see `fontDigest`) hashes the face text in order,
@@ -167,7 +171,7 @@ const sheetCss = (f) => readFileSync(resolve(HERE, '../src/lib', f), 'utf8');
 const FACE_IMPORTS = [
 	...importsOf(APP_CSS),
 	...readdirSync(resolve(HERE, '../src/lib'))
-		.filter((f) => /^fonts-[a-z-]+\.css$/.test(f) && !['fonts-ko.css', 'fonts-reader.css'].includes(f))
+		.filter((f) => /^fonts-[a-z-]+\.css$/.test(f) && !['fonts-ko.css', 'fonts-ja.css', 'fonts-reader.css'].includes(f))
 		.flatMap((f) => importsOf(sheetCss(f)))
 		.sort((a, b) => rank(a) - rank(b)),
 	...importsOf(sheetCss('fonts-reader.css'))

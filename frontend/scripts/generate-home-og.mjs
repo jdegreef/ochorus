@@ -98,7 +98,8 @@ const SUBSET = {
 	Deva: 'devanagari',
 	Cyrl: 'cyrillic',
 	Ethi: 'ethiopic',
-	Kore: 'korean'
+	Kore: 'korean',
+	Jpan: 'japanese'
 };
 const scriptOf = (locale) => SUBSET[new Intl.Locale(locale).maximize().script] ?? null;
 
@@ -205,13 +206,14 @@ function faces(sheet, subsets, text) {
 	const file = resolve(MODULES, sheet);
 	// Hangul faces ship ~120 NUMBERED slices (`noto-serif-kr-37-700-normal`)
 	// rather than named subsets, and inlining all of them is megabytes of base64
-	// per card. So `korean` takes only the slices that draw this card's text.
-	const korean = subsets.includes('korean');
+	// per card. So `korean` takes only the slices that draw this card's text;
+	// Japanese (`noto-serif-jp-37-700-`) is sliced the same way.
+	const cjk = subsets.includes('korean') || subsets.includes('japanese');
 	const subsetPart = `-(${subsets.join('|')})-`;
 	// Anchored to the slice NUMBER (`-kr-37-700-`): a bare `\d+` would also match
 	// the weight segment, and pass every named subset of these sheets unfiltered.
 	const want = new RegExp(
-		`url\\(\\./files/[^)]*(${subsetPart}${korean ? '|-kr-\\d+-\\d{3}-' : ''})`
+		`url\\(\\./files/[^)]*(${subsetPart}${cjk ? '|-(kr|jp)-\\d+-\\d{3}-' : ''})`
 	);
 	const numbered = /url\(\.\/files\/[^)]*-\d+-\d{3}-/;
 	return readFileSync(file, 'utf8')
@@ -258,6 +260,8 @@ function fontCss(script, text) {
 		sheets.push('@fontsource/pt-serif/700.css', '@fontsource/pt-sans/400.css');
 	if (script === 'korean')
 		sheets.push('@fontsource/noto-serif-kr/700.css', '@fontsource/noto-sans-kr/400.css');
+	if (script === 'japanese')
+		sheets.push('@fontsource/noto-serif-jp/700.css', '@fontsource/noto-sans-jp/400.css');
 	return sheets.map((s) => faces(s, subsets, text)).join('');
 }
 
@@ -280,11 +284,11 @@ function page(locale, msg, covers, ownShelf) {
 ${fontCss(script, [counts, msg.home_share_title_lead, msg.home_share_title_accent, msg.footer_tagline].join(''))}
 *{margin:0;box-sizing:border-box}
 html,body{width:${W}px;height:${H}px;overflow:hidden}
-body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','Noto Sans KR','PT Sans',sans-serif}
+body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','Noto Sans KR','Noto Sans JP','PT Sans',sans-serif}
 .top{position:absolute;inset-inline:72px;top:58px;display:flex;justify-content:space-between;align-items:baseline}
 .k{color:#9c6f1e;letter-spacing:.32em;font-size:20px;font-weight:600;direction:ltr}
 .s{color:#6d6152;font-size:19px;font-weight:500}
-h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','Noto Serif KR','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','Noto Serif KR','Noto Serif JP','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
 h1 em{font-style:${accentStyle};font-weight:400;color:#9c6f1e}
 .shelf{position:absolute;left:0;right:0;top:246px;height:300px;display:flex;justify-content:center;align-items:flex-end;gap:26px;direction:ltr;overflow:hidden}
 .shelf img{height:270px;border-radius:4px;box-shadow:0 14px 26px rgba(60,40,10,.32),0 2px 4px rgba(60,40,10,.3)}
