@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Today widget (design #46): eyebrow, the day's verse, its reference.
+     The texts here are only the placeholder shown before the app has sent a
+     snapshot (and the picker's preview); WidgetRenderer fills the rest. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:contentDescription="@string/widget_placeholder"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/today_eyebrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/widget_today_name"
+        android:textAlignment="viewStart"
+        android:textAllCaps="true"
+        android:textColor="@color/widget_accent"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/today_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:fontFamily="serif"
+        android:lineSpacingMultiplier="1.15"
+        android:maxLines="4"
+        android:text="@string/widget_placeholder"
+        android:textAlignment="viewStart"
+        android:textColor="@color/widget_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/today_ref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="@color/widget_muted"
+        android:textSize="13sp"
+        android:visibility="gone" />
+</LinearLayout>

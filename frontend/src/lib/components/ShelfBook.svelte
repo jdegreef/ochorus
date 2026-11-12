@@ -133,9 +133,11 @@
 		</div>
 		<div class="shelf-plank plank" aria-hidden="true"></div>
 		<div class="label">
+			<!-- min-h-[2lh]: the title takes its two lines whether it wraps or not,
+			     as BookCard's does, so the author lines along a shelf sit level. -->
 			<a
 				href={localizeHref(shelfHref(item))}
-				class="line-clamp-2 text-small font-medium leading-snug text-text hover:no-underline"
+				class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text hover:no-underline"
 				title={book.title}
 				tabindex="-1">{edition ? edition.base : book.title}</a
 			>

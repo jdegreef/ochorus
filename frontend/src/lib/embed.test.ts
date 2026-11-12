@@ -1,12 +1,25 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { EMBED_HEIGHT_MESSAGE, embedSnippet, embedTheme, isEmbedRoute } from './embed';
+import {
+	EMBED_FRAME_HEIGHT,
+	EMBED_HEIGHT_MESSAGE,
+	EMBED_THEMES,
+	embedFrameSnippet,
+	embedSnippet,
+	embedTheme,
+	embedUrl,
+	isEmbedRoute
+} from './embed';
+import { cspDirectives } from '../../csp.config.js';
 import { isShellPath } from './shellRoutes';
 
 const FRONTEND = process.cwd();
 const EMBED_JS = readFileSync(join(FRONTEND, 'static', 'embed.js'), 'utf8');
 const RENDER_YAML = readFileSync(join(FRONTEND, '..', 'render.yaml'), 'utf8');
+const LAYOUT = readFileSync(join(FRONTEND, 'src', 'routes', '+layout.svelte'), 'utf8');
+const EMBED_PAGE = readFileSync(join(FRONTEND, 'src', 'routes', 'embed', 'today', '+page.svelte'), 'utf8');
+const EMBED_CARD = readFileSync(join(FRONTEND, 'src', 'lib', 'components', 'EmbedToday.svelte'), 'utf8');
 const LOCALES: string[] = JSON.parse(readFileSync(join(FRONTEND, 'project.inlang/settings.json'), 'utf8')).locales;
 
 /** Put `<script>` tags (not run — jsdom loads no src) in the body, then run embed.js. */
@@ -57,11 +70,70 @@ describe('the church widget page', () => {
 		expect(RENDER_YAML).toMatch(/- path: \/\*\n\s+name: X-Frame-Options\n\s+value: DENY/);
 	});
 
+	it('leaves every other path, and the site-wide policy, unframeable', () => {
+		// One X-Frame-Options rule, DENY on everything: nothing loosens it to
+		// SAMEORIGIN / ALLOW-FROM for some other path.
+		const xfo = [...RENDER_YAML.matchAll(/- path: (\S+)\n\s+name: X-Frame-Options\n\s+value: (\S+)/g)];
+		expect(xfo.map((m) => [m[1], m[2]])).toEqual([['/*', 'DENY']]);
+		// Every CSP header is an /embed/ path's frame-ancestors, nothing else:
+		// never a header on `/*` that would replace the meta policy everywhere.
+		const csp = [...RENDER_YAML.matchAll(/- path: (\S+)\n\s+name: Content-Security-Policy\n\s+value: "([^"]*)"/g)];
+		expect(csp.length).toBe(LOCALES.length);
+		for (const [, path, value] of csp) {
+			expect(path).toMatch(/\/embed\/\*$/);
+			expect(value).toBe('frame-ancestors *');
+		}
+		// The meta CSP is not widened for the widget: the live preview on the
+		// /for/ pages is drawn inline (EmbedToday), so it needs no frame.
+		expect(cspDirectives['frame-ancestors']).toEqual(['none']);
+		expect(cspDirectives['frame-src']).toEqual(['https://accounts.google.com/gsi/']);
+	});
+
+	it('keeps sign-in, prompts and the service worker out of the framed page', () => {
+		expect(LAYOUT).toContain('if (!embedded) auth.init();');
+		expect(LAYOUT).toContain('if (!embedded) pwa.init();');
+		expect(LAYOUT).toContain('if (!embedded) install.init();');
+		expect(EMBED_PAGE).toContain('<meta name="robots" content="noindex" />');
+	});
+
+	it('opens every link in a new tab, as a plain ochorus.com URL', () => {
+		const anchors = EMBED_CARD.match(/<a\b[^>]*>/g) ?? [];
+		expect(anchors).toHaveLength(4);
+		for (const a of anchors) {
+			expect(a).toContain('target="_blank"');
+			expect(a).toContain('rel="noopener"');
+			// No tagging: the framed pageview's referrer attributes the visit.
+			expect(a).not.toMatch(/utm_|[?&]ref=/);
+		}
+	});
+
 	it('gives churches a tag embed.js will mount', () => {
 		expect(embedSnippet('https://ochorus.com', 'fr')).toBe(
 			'<script src="https://ochorus.com/embed.js" data-widget="today" data-lang="fr" async></script>'
 		);
 		expect(EMBED_JS).toContain(`'${EMBED_HEIGHT_MESSAGE}'`);
+	});
+
+	it('builds the widget URL per language and look', () => {
+		expect(embedUrl('https://ochorus.com', 'en')).toBe('https://ochorus.com/embed/today');
+		expect(embedUrl('https://ochorus.com', 'sw', 'light')).toBe('https://ochorus.com/sw/embed/today');
+		expect(embedUrl('https://ochorus.com', 'fr', 'dark')).toBe('https://ochorus.com/fr/embed/today?theme=dark');
+		// Every look a church can ask for reads back as itself (auto = the OS's).
+		expect(EMBED_THEMES.map((th) => embedTheme(th))).toEqual(['light', 'dark', 'sepia', 'system']);
+	});
+
+	it('gives builders that strip scripts a sandboxed iframe of the same page', () => {
+		const host = document.createElement('div');
+		host.innerHTML = embedFrameSnippet('https://ochorus.com', 'fr');
+		const frame = host.querySelector('iframe')!;
+		expect(frame.getAttribute('src')).toBe(embedUrl('https://ochorus.com', 'fr'));
+		expect(frame.getAttribute('loading')).toBe('lazy');
+		expect(frame.getAttribute('title')).toBeTruthy();
+		expect(frame.style.height).toBe(`${EMBED_FRAME_HEIGHT}px`);
+		// The same sandbox as embed.js's own frame: links may open tabs, never
+		// navigate the church's page.
+		const [mounted] = runEmbed({ src: 'https://ochorus.com/embed.js', 'data-widget': 'today' });
+		expect(frame.getAttribute('sandbox')).toBe(mounted.getAttribute('sandbox'));
 	});
 });
 
@@ -74,6 +146,7 @@ describe('embed.js', () => {
 			'data-theme': 'dark'
 		});
 		expect(frame.src).toBe('https://ochorus.com/sw/embed/today?theme=dark');
+		expect(frame.src).toBe(embedUrl('https://ochorus.com', 'sw', 'dark'));
 		expect(frame.getAttribute('loading')).toBe('lazy');
 		expect(frame.getAttribute('sandbox')).not.toContain('allow-top-navigation');
 		expect(frame.previousElementSibling?.tagName).toBe('SCRIPT');

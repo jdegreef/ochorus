@@ -7576,6 +7576,59 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # Two more the vi translation (#7079) read through, same standard.
             ("alleged more than all his against the duty", "alleged more than all this against the duty"),
             ("<p>Your unworthy fellow -servant</p>", "<p>Your unworthy fellow-servant</p>"),
+            # Punctuation the transcription lost, listed by the vi job (#7079) and
+            # repaired in a follow-up: a dropped "?" closing one of Baxter's
+            # rhetorical questions, a comma for a full stop between sentences,
+            # mispaired or stray quote marks (‘ for ’, a straight " closing a ‘),
+            # a lost "(" before an aside the ")" closes, "yourselves" for the
+            # "ourselves" that clashes with "that you be", lowercase lord/god in
+            # the Acts 20 list, and Ussher's "wisest builder". Each seam carries
+            # enough context to match its one site. Left as the text: period
+            # spellings, and readings with more than one fix ("Yea, as hazard",
+            # "as trouble them", "relation,", 2 Kings 8:13 as Baxter quotes it).
+            ("where that discipline may be had For", "where that discipline may be had? For"),
+            ("This is our case, brethren, The work", "This is our case, brethren. The work"),
+            ("Take heed, therefore, to ourselves first, that you be", "Take heed, therefore, to yourselves first, that you be"),
+            ("search after, behold admire, and love", "search after, behold, admire, and love"),
+            ('should not depart from iniquity,"', "should not depart from iniquity,’"),
+            ("at least as to yourselves,’ though", "at least as to yourselves, though"),
+            ("did indeed mean them, Is that man", "did indeed mean them. Is that man"),
+            ("than I can move a mountain Then woe", "than I can move a mountain? Then woe"),
+            ("their actual reformation Much prudence", "their actual reformation? Much prudence"),
+            ('our reward is with the Lord,"', "our reward is with the Lord,’"),
+            ('What else are we overseers for "Bishop"', 'What else are we overseers for? "Bishop"'),
+            ("’labor than of honor,’", "‘labor than of honor,’"),
+            ("as carefully look to my charge?‘", "as carefully look to my charge?’"),
+            ("some of us do for our own, Too many", "some of us do for our own. Too many"),
+            ("the tailor: ‘it chooseth them", "the tailor: it chooseth them"),
+            ("under pretense of filing off’ the roughness", "under pretense of filing off the roughness"),
+            ("to do his master’s work Yet", "to do his master’s work? Yet"),
+            ("be expected of weaker men Were it not", "be expected of weaker men? Were it not"),
+            ("Might not Bradford, or Hooper, or any that were burned", "Might not Bradford, or Hooper, (or any that were burned"),
+            ("or giveth them the sacrament They consider not", "or giveth them the sacrament? They consider not"),
+            ("what good can you expect. And when you have done all", "what good can you expect? And when you have done all"),
+            ("hard-hearted sinner will you not pity one", "hard-hearted sinner? will you not pity one"),
+            ("crying to you for help, As ever you pitied", "crying to you for help, ‘As ever you pitied"),
+            ("for why was all this, but for the work of God </p>", "for why was all this, but for the work of God? </p>"),
+            ("partakers of these, but for the work of God </p>", "partakers of these, but for the work of God? </p>"),
+            ("And yet dare we imitate them Are not", "And yet dare we imitate them? Are not"),
+            ("his kingly office in his church,‘ and", "his kingly office in his church,’ and"),
+            ("<i> scientiam mediam</i>,’ or", "<i> scientiam mediam</i>, or"),
+            ('‘There is a lion in the way," nor', "‘There is a lion in the way,’ nor"),
+            ("cause to fear it of ourselves I know", "cause to fear it of ourselves? I know"),
+            ("seeking to fire it with grenades,’ which", "seeking to fire it with grenades, which"),
+            ("Or doth interlocution make it none Surely", "Or doth interlocution make it none? Surely"),
+            ("for that end ‘Faith cometh by hearing", "for that end? ‘Faith cometh by hearing"),
+            ('feed them with knowledge and understanding,"', "feed them with knowledge and understanding,’"),
+            ("business – Serving the lord with all humility", "business – Serving the Lord with all humility"),
+            ("Repentance toward god and faith toward our lord Jesus Christ", "Repentance toward God and faith toward our Lord Jesus Christ"),
+            ("remembering the words of the lord Jesus", "remembering the words of the Lord Jesus"),
+            ("which I have received of the lord Jesus", "which I have received of the Lord Jesus"),
+            ("the very masterpiece of the wisest-building.", "the very masterpiece of the wisest builder."),
+            ("for the sin that is past ‘ They will answer", "for the sin that is past?’ They will answer"),
+            ('he shed his blood for us," and', "he shed his blood for us,’ and"),
+            ("or is it not Have you", "or is it not? Have you"),
+            ("spent your time till now Did you not know", "spent your time till now? Did you not know"),
         ],
         "paragraph_breaks": [
             ("riches of the gospel from their own experience.", "Alas!"),
@@ -7856,6 +7909,15 @@ BODY_CORRECTIONS: dict[str, dict] = {
 BODY_CORRECTIONS.setdefault("waiting-on-god", {}).setdefault("replacements", []).append(
     ("<p> 'I SPOKE of an army", "<p> I SPOKE of an army")
 )
+
+# OCR slips found while translating Chrysostom's On the Priesthood to French (#7207);
+# each is forced by grammar or by the dialogue (Basil answers "But not my case").
+# (Placed mid-file, not at the tail, so parallel jobs' appends can't conflict with it.)
+BODY_CORRECTIONS.setdefault("on-the-priesthood", {}).setdefault("replacements", []).extend([
+    ("nearly all the ancient father of the Church", "nearly all the ancient fathers of the Church"),
+    ("shall we want only and inconsiderately run", "shall we wantonly and inconsiderately run"),
+    ("For my ease does not now call for wailing", "For my case does not now call for wailing"),
+])
 
 # OCR/typo slips found while translating Murray's book to Portuguese (batch 6); scattered one-word mechanical errors, each grammar- or KJV-forced.
 BODY_CORRECTIONS.setdefault('true-vine', {}).setdefault("replacements", []).extend([
@@ -14499,6 +14561,10 @@ BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefau
     ("iños en sus juegos (Mat. 12:16-19", "iños en sus juegos (Mat. 11:16-19"),
     # [es] citation fix mirrored from EN
     (" de fe, es pecado” (Rom. 14:32", " de fe, es pecado” (Rom. 14:23"),
+    # [en] Acts 2:42 is the apostles' (plural) doctrine — found translating to pt (#7749)
+    ("steadfastly in the apostle’s doctrine", "steadfastly in the apostles’ doctrine"),
+    # [en] a direct question ended with a full stop — found translating to pt (#7749)
+    ("will sooner or later encounter.</p>", "will sooner or later encounter?</p>"),
     # [am] citation fix mirrored from EN
     (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
     # [am] citation fix mirrored from EN
@@ -24776,9 +24842,61 @@ BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements",
     ("<p>II. Câu Kinh Thánh của ch", "<p>I. Câu Kinh Thánh của ch"),  # vi
 ])
 
+# Found translating The Provincial Letters to Spanish (job #7148). Letter I: the
+# English drops a "not" and so has the New Thomists say the reverse of Pascal —
+# his French reads «une grâce efficace qui n'est pas donnée à tous» (the shipped
+# provincial-letters.fr), and the dialogue turns on that grace NOT being given to
+# all (the Jansenist view the Jacobins approve). One reading; the es edition
+# renders it.
+BODY_CORRECTIONS.setdefault("provincial-letters", {}).setdefault("replacements", []).extend([
+    ("an efficacious grace bestowed upon all,", "an efficacious grace not bestowed upon all,"),
+])
+
 # Found translating The Reformed Pastor to Luganda (job #7072). The uk job (#7037)
 # already repairs the other word-level slips in this book's own "replacements" above;
 # this is the one it left: a stray space inside the signature's hyphenated word.
 BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
     ("Your unworthy fellow -servant", "Your unworthy fellow-servant"),
+])
+
+# The Reformed Pastor: the marks #7785's pass (from the vi job's list) did not
+# reach, logged by the Luganda translators (#7072). Each has one place to go: a
+# "?" closing a question the sentence opened, a straight " closing a ‘ quote, a
+# missing space after "?", and the Acts 20 outline's two remaining lower-case gods.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ("or love to the souls of men, gainsay it </p>", "or love to the souls of men, gainsay it? </p>"),
+    ("to please God best, and do most good it makes them ask", "to please God best, and do most good? it makes them ask"),
+    ("all our exhortations?It is, in my judgment", "all our exhortations? It is, in my judgment"),
+    ('‘he regard iniquity in his heart," whether', "‘he regard iniquity in his heart,’ whether"),
+    ('not where to lay his head," that he', "not where to lay his head,’ that he"),
+    ('to possess their souls," to conquer', "to possess their souls,’ to conquer"),
+    ('thou Son of David," you shall see', "thou Son of David,’ you shall see"),
+    ('his life shall lose it." – on the other', "his life shall lose it.’ – on the other"),
+    ("all the counsel of god. </p>", "all the counsel of God. </p>"),
+    ("I commend you to god and to the word", "I commend you to God and to the word"),
+])
+
+# Three marks in *The Reformed Pastor* that #7785 and #7787 did not reach, from
+# the ko translators' list (job #7071): Hazael's question loses its "?" inside
+# the quote; the last of a series of "Are there so many …?" questions ends in a
+# full stop; and a "?" stands outside the quote it belongs to.
+BODY_CORRECTIONS.setdefault("the-reformed-pastor", {}).setdefault("replacements", []).extend([
+    ('that he should do this thing’ or as Peter', 'that he should do this thing?’ or as Peter'),
+    ('seducers, and troublers of the Church. And yet', 'seducers, and troublers of the Church? And yet'),
+    ('or what is forgiveness of sin’?, how many', 'or what is forgiveness of sin?’ how many'),
+])
+
+# OCR slips in Crombie's De Principiis (CCEL scan), found while translating it to
+# French (job #7204). Each is a one-letter misread forced by grammar or sense;
+# the French edition already renders the corrected word.
+BODY_CORRECTIONS.setdefault("on-first-principles", {}).setdefault("replacements", []).extend([
+    ("Enoch, Noe, Sere, Abraham", "Enoch, Noe, Sem, Abraham"),
+    ("mortal yet clothed with immorality", "mortal yet clothed with immortality"),
+    ("a matter requiting examination", "a matter requiring examination"),
+    ("understood that them is no dissimilarity", "understood that there is no dissimilarity"),
+    ("knowledge to be confined from the sacred Scriptures", "knowledge to be confirmed from the sacred Scriptures"),
+    ("Creator and Legislator of the word is not called good", "Creator and Legislator of the world is not called good"),
+    ("bodies would nor possess a desire", "bodies would not possess a desire"),
+    ("is shown by Eccelesiastes", "is shown by Ecclesiastes"),
+    ("an uncertain event, council is taken", "an uncertain event, counsel is taken"),
 ])

@@ -83,10 +83,10 @@
 </header>
 
 <style>
-	/* On the reading column, as the read card and every section below it. */
+	/* On the page column, as the book page's hero: the portrait on the start
+	   edge and the facts beside it. It sat in a 40rem strip down the middle
+	   of a 76rem page; only the prose below keeps that reading column. */
 	.author-hero {
-		max-width: 40rem;
-		margin-inline: auto;
 		margin-top: 1.25rem;
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr);
@@ -147,6 +147,26 @@
 		}
 		.author-hero-details {
 			grid-column: 2;
+		}
+	}
+	/* A desktop: the portrait at the size a photograph wants on a wide page
+	   (~280px), and the text beside it held to a measure, so the one line of
+	   who they were never runs the column's full width. */
+	@media (min-width: 64rem) {
+		.author-hero {
+			grid-template-columns: auto minmax(0, 44rem);
+			/* Packed to the start edge: a spare auto track would stretch and
+			   push the facts away from the portrait. */
+			justify-content: start;
+			column-gap: 2.5rem;
+		}
+		.author-hero-print {
+			width: 17.5rem;
+			padding: 0.45rem;
+		}
+		.author-hero-print img,
+		.author-hero-initials {
+			border-radius: calc(var(--radius-sm) - 0.45rem);
 		}
 	}
 	@media print {

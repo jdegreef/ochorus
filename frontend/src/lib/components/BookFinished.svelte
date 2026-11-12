@@ -19,6 +19,7 @@
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
 	import BookQuiz from '$lib/components/BookQuiz.svelte';
+	import BookplatePanel from '$lib/components/BookplatePanel.svelte';
 	import { playableQuiz } from '$lib/bookQuiz';
 	import { contentLang } from '$lib/reading';
 
@@ -174,6 +175,8 @@
 			<ShareButton url={shareUrl} title={book.title} showLabel />
 			<BookDownloadMenu {book} />
 		</div>
+		<!-- The reader's ex libris for this book: kept on the Bookshelf. -->
+		<BookplatePanel {book} {ticks} />
 	</section>
 
 	<!-- 1b. A short quiz on the book just read, when it has one: a bit of fun

@@ -1,4 +1,5 @@
 import type { BookSummary, OriginalsSeries } from './library-public';
+import { OWB_PATH, OWB_SLUG } from './openWordBible';
 
 /**
  * Ochorus Originals — the house imprint.
@@ -11,22 +12,34 @@ import type { BookSummary, OriginalsSeries } from './library-public';
  */
 export const ORIGINALS_SLUG = 'ochorus-originals';
 
-/** A house byline rather than a person: the API's flag, or the Originals slug
- *  for a payload that predates the flag (the app can meet an older API). */
-export const isImprint = (a: { slug: string; is_imprint?: boolean }): boolean =>
-	a.is_imprint === true || a.slug === ORIGINALS_SLUG;
-
 export const ORIGINALS_PATH = '/originals';
 
-/** The page a writer's name links to: their author page, or /originals for
- * the imprint. Unlocalized — pass it through `localizeHref` as usual. */
+/** The bylines that are not people, and the page each one's name links to in
+ *  place of an author page: the imprint's shelf, the translation's page. */
+const BYLINE_PAGES: ReadonlyMap<string, string> = new Map([
+	[ORIGINALS_SLUG, ORIGINALS_PATH],
+	[OWB_SLUG, OWB_PATH]
+]);
+
+/** Whether `slug` has a page of its own instead of an author page — the
+ *  author route redirects it there and lists no page for it. */
+export const hasBylinePage = (slug: string): boolean => BYLINE_PAGES.has(slug);
+
+/** A byline rather than a person: the API's flag (which only some payloads
+ *  carry, and an older API not at all), or one of the slugs with a page. */
+export const isImprint = (a: { slug: string; is_imprint?: boolean }): boolean =>
+	a.is_imprint === true || hasBylinePage(a.slug);
+
+/** The page a writer's name links to: their author page, or the byline's own
+ * page (above). Unlocalized — pass it through `localizeHref` as usual. */
 export function authorPath(slug: string): string {
-	return slug === ORIGINALS_SLUG ? ORIGINALS_PATH : `/authors/${slug}`;
+	return BYLINE_PAGES.get(slug) ?? `/authors/${slug}`;
 }
 
-/** The schema.org type of a work's author: the imprint is a publisher. */
+/** The schema.org type of a work's author: the imprint and the translation
+ *  are organizations, not people. */
 export function authorLdType(slug: string): 'Organization' | 'Person' {
-	return slug === ORIGINALS_SLUG ? 'Organization' : 'Person';
+	return hasBylinePage(slug) ? 'Organization' : 'Person';
 }
 
 /**

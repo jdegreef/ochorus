@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_today_name">Mstari wa leo</string>
+    <string name="widget_today_description">Mstari wa leo kutoka Ochorus, mpya kila siku.</string>
+    <string name="widget_continue_name">Endelea kusoma</string>
+    <string name="widget_continue_description">Kitabu chako, mguso mmoja hadi ulipoachia.</string>
+    <string name="widget_placeholder">Fungua Ochorus ili kuanza.</string>
+</resources>

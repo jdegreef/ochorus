@@ -17,6 +17,7 @@ const SLASHED_INDEXES = new Set([
 	'for',
 	'gift',
 	'glossary',
+	'open-word-bible',
 	'originals',
 	'quotes',
 	'rss',

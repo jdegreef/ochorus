@@ -269,9 +269,11 @@
 					<div class="rounded-card border border-dashed border-border" style="aspect-ratio: 3 / 4"></div>
 				{/if}
 				<div class="mt-2 flex flex-1 flex-col px-0.5">
+					<!-- min-h-[2lh]: the title takes its two lines whether it wraps or
+					     not, as BookCard's does, so the author lines sit level. -->
 					<svelte:element
 						this={heading}
-						class="line-clamp-2 font-display text-small font-medium leading-snug text-text"
+						class="line-clamp-2 min-h-[2lh] font-display text-small font-medium leading-snug text-text"
 					>
 						{a.lead_book?.title ?? a.h1}
 					</svelte:element>

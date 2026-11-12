@@ -12,6 +12,8 @@
 	import { groupTopics, topicGroupKey } from '$lib/topicGroups';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import NeedFinder from '$lib/components/NeedFinder.svelte';
+	import { availableNeeds } from '$lib/needFinder';
 
 	let { data } = $props();
 	const topics = $derived<TopicSummary[]>(data.topics);
@@ -24,6 +26,9 @@
 	// hub fits in a few screens, and a filter emptying families under their
 	// headings read worse than the map it was searching.
 	const groups = $derived(groupTopics(topics));
+	// The situations these shelves can answer in this language — the same
+	// chips as the home page, above the families they lead into.
+	const needs = $derived(availableNeeds(topics));
 
 	// The three book covers a card fans out. Sermon tiles are dropped: a fan is
 	// books (CoverStrip takes `BookTile[]`), and a shelf that holds only sermons
@@ -92,6 +97,7 @@
 	{:else if topics.length === 0}
 		<EmptyState art="language" message={t('topics.none')} />
 	{:else}
+		<NeedFinder {needs} place="topics" />
 		{#each groups as group (group.id)}
 			<section class="topic-group">
 				<GroupHeading name={t(topicGroupKey(group.id))} />

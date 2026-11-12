@@ -44,7 +44,8 @@ export const PROMPT_SOURCES = [
 	'header',
 	'menu',
 	'feedback',
-	'one_tap'
+	'one_tap',
+	'bookplate'
 ] as const;
 
 export const SIGNUP_SOURCES = [...SIGNUP_VARIANTS, ...PROMPT_SOURCES] as const;

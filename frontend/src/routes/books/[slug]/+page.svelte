@@ -5,7 +5,7 @@
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { authorLdType, authorPath, ORIGINALS_SLUG } from '$lib/originals';
+	import { authorLdType, authorPath, isImprint } from '$lib/originals';
 	import { type BookDetail, formatLifespan, isTranslated } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
 	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
@@ -532,7 +532,9 @@
 		const [before, after = ''] = t('book.alsoInOne').split('%lang%');
 		return { loc, name: localeName(loc), before, after };
 	});
-	const hasAuthorBand = $derived(book.author.slug !== ORIGINALS_SLUG);
+	// No "about the author" band for a byline that is not a person (the house
+	// imprint, the Bible's translation): its name links to its own page instead.
+	const hasAuthorBand = $derived(!isImprint(book.author));
 	// What About's foot carries (the guide link, other titles, topics,
 	// scripture) — shown on its own when the book has no prose to sit under.
 	const hasAboutFoot = $derived(
@@ -1378,7 +1380,7 @@
 		work={{
 			kind: 'book',
 			author: book.author.name,
-			corporate: book.author.slug === ORIGINALS_SLUG,
+			corporate: isImprint(book.author),
 			title: book.title,
 			year: isTranslated(book.source_type) ? null : book.publication_year,
 			url: canonical

@@ -26,6 +26,8 @@
 		book: string;
 		chapter: string;
 		url: string;
+		color?: string;
+		year?: number | null;
 	}
 
 	let {
@@ -222,7 +224,9 @@
 		if ((await shareSheet(data)) === 'unavailable') await copy();
 	}
 
-	async function quoteCard() {
+	/** `postcard` picks the card's second style (`$lib/postcardCard`); the
+	 *  plain quote card stays the default the first button makes. */
+	async function quoteCard(style: 'quote' | 'postcard' = 'quote') {
 		if (cardBusy) return;
 		// The quote card is the one artifact built to leave the site, so strip the
 		// footnote markers (a `<sup>4</sup>`, an inline `[4]`) the selection carries
@@ -236,13 +240,21 @@
 		if (!quote) return; // a selection of nothing but a marker — no card to make
 		cardBusy = true;
 		try {
-			await shareQuoteCard({
+			const card = {
 				quote,
 				author: cite.author,
 				source: cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book,
 				site: 'ochorus.com',
 				language
-			});
+			};
+			if (style === 'postcard') {
+				// Imported on tap: most readers never send one, so it stays out of
+				// the reader's bundle.
+				const { sharePostcard } = await import('$lib/postcardCard');
+				await sharePostcard({ ...card, color: cite.color, year: cite.year });
+			} else {
+				await shareQuoteCard(card);
+			}
 		} catch {
 			/* rendering/sharing failed — nothing to surface, the quote is still selected */
 		} finally {
@@ -348,8 +360,12 @@
 			<span class="selbar-sep"></span>
 			<button class="selbar-btn" onclick={share}>{t('reader.share')}</button>
 			<span class="selbar-sep"></span>
-			<button class="selbar-btn" onclick={quoteCard} disabled={cardBusy}>
+			<button class="selbar-btn" onclick={() => quoteCard()} disabled={cardBusy}>
 				{t('reader.quoteCard')}
+			</button>
+			<span class="selbar-sep"></span>
+			<button class="selbar-btn" onclick={() => quoteCard('postcard')} disabled={cardBusy}>
+				{t('reader.postcard')}
 			</button>
 			{#if onHighlight && segments.length > 0}
 				<span class="selbar-sep"></span>

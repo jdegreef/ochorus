@@ -595,6 +595,11 @@ services:
       - type: redirect
         source: /authors/ochorus-originals
         destination: /originals/
+      # The Open Word Bible is the Bible's translation, not a person: its byline
+      # links to a page about it. Localized URLs: the author page's own load.
+      - type: redirect
+        source: /authors/open-word-bible
+        destination: /open-word-bible/
       # The two author slugs people guess most (the initial left out). Neither
       # source is, or can become, a real page: author slugs keep the initial.
       # Every other near-miss slug is recovered by the not-found page itself
