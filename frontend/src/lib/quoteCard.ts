@@ -110,15 +110,17 @@ export function fitQuote(
 	maxHeight: number,
 	style: string,
 	largest = 70,
-	smallest = 30
+	smallest = 30,
+	/** The stack to set it in — the postcard sets its quote in a classic face. */
+	family = CARD_SERIF
 ): { lines: string[]; fontSize: number; lineHeight: number } {
 	for (let fs = largest; fs >= smallest; fs -= 2) {
-		ctx.font = `${style} ${fs}px ${CARD_SERIF}`;
+		ctx.font = `${style} ${fs}px ${family}`;
 		const lines = wrapLines(ctx, text, maxWidth);
 		const lineHeight = fs * 1.34;
 		if (lines.length * lineHeight <= maxHeight) return { lines, fontSize: fs, lineHeight };
 	}
-	ctx.font = `${style} ${smallest}px ${CARD_SERIF}`;
+	ctx.font = `${style} ${smallest}px ${family}`;
 	return { lines: wrapLines(ctx, text, maxWidth), fontSize: smallest, lineHeight: smallest * 1.34 };
 }
 

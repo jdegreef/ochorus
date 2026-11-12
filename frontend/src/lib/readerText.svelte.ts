@@ -54,6 +54,10 @@ export interface Cite {
 	book: string;
 	chapter: string;
 	url: string;
+	/** The book's `cover_color` and `publication_year`, for the postcard's
+	 *  stamp and postmark; absent where the work has none (sermons, bios). */
+	color?: string;
+	year?: number | null;
 }
 
 /**

@@ -1746,7 +1746,10 @@
 		author: chapter.author_name,
 		book: chapter.book_title,
 		chapter: chapterName(chapter.order, chapter.title),
-		url: $page.url.href
+		url: $page.url.href,
+		// The postcard's stamp colour and postmark year, once the book has loaded.
+		color: bookForProgress?.cover_color,
+		year: bookForProgress?.publication_year
 	});
 
 	// Everything attached to the TEXT — highlights, notes, the selection bar,
