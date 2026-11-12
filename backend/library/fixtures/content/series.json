@@ -1307,6 +1307,18 @@
   "series": [
    "a-cloud-of-praying-witnesses"
   ],
+  "language": "lg",
+  "title": "Ekibiina ky’Abajulirwa Abasaba",
+  "description": "Okusaba mu byafaayo byonna eby’ekkanisa, ekitabo kimu ku buli mulembe: essaala ez’omu Ndagaano Enkadde, Yesu Omuyigiriza w’Okusaba, abatume, n’abasajja n’abakazi abaasabanga ab’omu buli kyasa ne mu buli nsi okutuusa leero. Buli ssuula ennyimpi eteekawo olunyiriri olukulu, enyumya olugero, ewuliriza eddoboozi okuva mu biseera eby’edda, era ekoma n’amagezi, eky’okukola n’essaala.",
+  "created_at": "2026-11-12T00:00:00Z",
+  "updated_at": "2026-11-12T00:00:00Z"
+ }
+},{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "a-cloud-of-praying-witnesses"
+  ],
   "language": "uk",
   "title": "Хмара молитовних свідків",
   "description": "Молитва впродовж усієї історії церкви, по тому на кожну добу: молитви Старого Заповіту, Ісус — Учитель молитви, апостоли, а також чоловіки й жінки молитви кожного століття і кожного краю аж до сьогодні. Кожен короткий розділ подає ключовий вірш, розповідає історію, дає почути голос із минулого й завершується думками, практикою та молитвою.",
