@@ -1,0 +1,376 @@
+{
+  "kind": "book",
+  "slug": "provincial-letters",
+  "language": "es",
+  "job_issue": 7148,
+  "references": [
+    {
+      "reference": "John 1:29",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Psalm 147:20",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Acts 14:16",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Psalm 107:10",
+      "status": "mined",
+      "block_index": 27,
+      "source_file": "sermons-on-several-occasions.es.json"
+    },
+    {
+      "reference": "Luke 1:79",
+      "status": "mined",
+      "block_index": 27,
+      "source_file": "sermons-on-several-occasions.es.json"
+    },
+    {
+      "reference": "1 Timothy 1:15",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "1 Timothy 1:13",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "John 16:2",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Luke 12:47-48",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Philippians 2:12",
+      "status": "self_rendered",
+      "block_index": 32
+    },
+    {
+      "reference": "Isaiah 18:2",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Psalm 19:7",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Luke 11:41",
+      "status": "self_rendered",
+      "block_index": 3
+    },
+    {
+      "reference": "Romans 12:17,19",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Romans 12:17",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Sirach 28:1",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Exodus 20:13",
+      "status": "self_rendered",
+      "block_index": 50
+    },
+    {
+      "reference": "Matthew 7:6",
+      "status": "self_rendered",
+      "block_index": 15
+    },
+    {
+      "reference": "Matthew 5:29-30",
+      "status": "self_rendered",
+      "block_index": 42
+    },
+    {
+      "reference": "Romans 1:32",
+      "status": "self_rendered",
+      "block_index": 56
+    },
+    {
+      "reference": "Matthew 22:40",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "2 Corinthians 3:6",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "John 3:16",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "1 Corinthians 16:22",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "1 John 3:14",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "John 14:24",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "2 Thessalonians 2:7",
+      "status": "self_rendered",
+      "block_index": 57
+    },
+    {
+      "reference": "Proverbs 1:26",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Psalm 52:6",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Job 22:19",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Genesis 3:22",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Jeremiah 10:15",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "John 3:10",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Job 13:7",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Ecclesiastes 3:4",
+      "status": "self_rendered",
+      "block_index": 36
+    },
+    {
+      "reference": "Proverbs 29:9",
+      "status": "self_rendered",
+      "block_index": 36
+    },
+    {
+      "reference": "Matthew 19:24",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Matthew 15:14",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Acts 8:19",
+      "status": "self_rendered",
+      "block_index": 17
+    },
+    {
+      "reference": "Exodus 20:13",
+      "status": "self_rendered",
+      "block_index": 19
+    },
+    {
+      "reference": "John 3:19",
+      "status": "self_rendered",
+      "block_index": 24
+    },
+    {
+      "reference": "Sirach 2:12",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Genesis 9:5",
+      "status": "self_rendered",
+      "block_index": 3
+    },
+    {
+      "reference": "Genesis 9:6",
+      "status": "self_rendered",
+      "block_index": 3
+    },
+    {
+      "reference": "Romans 13:4",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Romans 13:3-4",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Matthew 12:30",
+      "status": "self_rendered",
+      "block_index": 24
+    },
+    {
+      "reference": "Luke 6:26",
+      "status": "self_rendered",
+      "block_index": 24
+    },
+    {
+      "reference": "Revelation 11:8",
+      "status": "self_rendered",
+      "block_index": 25
+    },
+    {
+      "reference": "John 8:44",
+      "status": "self_rendered",
+      "block_index": 25
+    },
+    {
+      "reference": "Psalm 116:11",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Psalm 83:16",
+      "status": "self_rendered",
+      "block_index": 5
+    },
+    {
+      "reference": "Sirach 10:10",
+      "status": "self_rendered",
+      "block_index": 12
+    },
+    {
+      "reference": "Sirach 4:25",
+      "status": "self_rendered",
+      "block_index": 18
+    },
+    {
+      "reference": "John 8:32",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Isaiah 28:15",
+      "status": "mined",
+      "block_index": 26,
+      "source_file": "the-god-of-all-comfort.es.json"
+    },
+    {
+      "reference": "Isaiah 30:12-14",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Ezekiel 13:22-23",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Galatians 6:7",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Hebrews 13:21",
+      "status": "self_rendered",
+      "block_index": 9
+    },
+    {
+      "reference": "Philippians 2:13",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Zechariah 1:3",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Joel 2:13",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Lamentations 5:21",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Ezekiel 18:31",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Micah 7:18",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Matthew 3:8",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Acts 26:20",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Isaiah 26:12",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Ezekiel 36:26",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "1 John 4:1",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Romans 10:17",
+      "status": "self_rendered",
+      "block_index": 29
+    },
+    {
+      "reference": "Genesis 1:16",
+      "status": "self_rendered",
+      "block_index": 32
+    }
+  ]
+}
