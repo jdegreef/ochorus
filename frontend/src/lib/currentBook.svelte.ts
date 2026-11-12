@@ -1,7 +1,6 @@
 import { allProgress } from './progress';
-import { buildResumeItems, type ResumeBook } from './resumeItems';
+import { resumeBookOf, type ResumeBook } from './resumeItems';
 import { cachedResumeBooks, currentBookSlug, knownAbsent, libraryBooks } from './resumeBooks';
-import type { CoverBook } from './library-public';
 import { workSlugKey } from './reading-schema';
 import { getLang } from './lang.svelte';
 
@@ -30,18 +29,6 @@ class CurrentBook {
 	#generation = 0;
 	#lang = '';
 
-	/** `slug` resolved against `books`; null when they lack it. */
-	#resolve(books: CoverBook[], slug: string, progress = allProgress()): ResumeBook | null {
-		const book = books.find((b) => b.slug === slug);
-		if (!book) return null;
-		const [item] = buildResumeItems(
-			[book],
-			[],
-			progress.filter((p) => p.kind === 'book' && p.slug === slug)
-		);
-		return item?.kind === 'book' ? item : null;
-	}
-
 	/** Re-resolve from the cache now and from the full list when it lands. */
 	refresh() {
 		const lang = getLang();
@@ -58,7 +45,7 @@ class CurrentBook {
 			this.pending = false;
 			return;
 		}
-		this.item = this.#resolve(cachedResumeBooks(lang), slug, progress) ?? kept;
+		this.item = resumeBookOf(cachedResumeBooks(lang), slug, progress) ?? kept;
 		this.pending = true;
 		libraryBooks(lang)
 			.then((books) => {
@@ -66,7 +53,7 @@ class CurrentBook {
 				// The list has marked what this language lacks: ask again.
 				const now = currentBookSlug(knownAbsent(lang));
 				this.key = now ? workSlugKey('book', now) : undefined;
-				this.item = now ? this.#resolve(books, now) : null;
+				this.item = now ? resumeBookOf(books, now) : null;
 			})
 			.catch(() => {})
 			.finally(() => {

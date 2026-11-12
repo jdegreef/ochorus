@@ -59,6 +59,26 @@ export type ResumeSermon = ResumeBase & {
 };
 
 /**
+ * The one book `slug` from `books` as its resume card; null when they lack it.
+ * The book the home hero resumes ($lib/currentBook) and the Continue widget
+ * ($lib/widgetSync) both resolve it this way.
+ */
+export function resumeBookOf(
+	books: CoverBook[],
+	slug: string,
+	progress: ReturnType<typeof allProgress> = allProgress()
+): ResumeBook | null {
+	const book = books.find((b) => b.slug === slug);
+	if (!book) return null;
+	const [item] = buildResumeItems(
+		[book],
+		[],
+		progress.filter((p) => p.kind === 'book' && p.slug === slug)
+	);
+	return item?.kind === 'book' ? item : null;
+}
+
+/**
  * Resolve device-local reading progress into resume cards, newest first.
  * `books`/`sermons` are the current-language catalogs the caller already has.
  * No slicing — the strip takes its own head; /reading shows them all.
