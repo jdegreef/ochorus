@@ -35,6 +35,16 @@ ALLOWED_TAGS = {"p"}
 #: heading that promises an essay is the failure mode worth catching.
 MIN_WORDS = 150
 
+#: Japanese is written without spaces, so splitting on whitespace counts a
+#: whole paragraph as a word or two. Count its kana and kanji instead, at the
+#: usual reading-speed ratio of about two characters to an English word.
+_CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
+
+
+def word_units(text: str) -> int:
+    cjk = len(_CJK.findall(text))
+    return len(_CJK.sub(" ", text).split()) + cjk // 2
+
 
 def shipped() -> list[tuple[str, str, str]]:
     """``(slug, language, about_html)`` for every edition that carries one."""
@@ -77,7 +87,7 @@ class ShippedProseTests(SimpleTestCase):
 
     def test_no_piece_is_a_stub(self):
         for slug, language, html in shipped():
-            words = len(re.sub(r"<[^>]+>", " ", html).split())
+            words = word_units(re.sub(r"<[^>]+>", " ", html))
             with self.subTest(slug=slug, language=language, words=words):
                 self.assertGreaterEqual(words, MIN_WORDS)
 
