@@ -1,0 +1,89 @@
+{
+ "slug": "catena-on-romans",
+ "title": "A Catena on Romans",
+ "subtitle": "Paul’s letter to the Romans, verse by verse, with the Church’s great commentators",
+ "cover_title": "",
+ "cover_byline": "Chrysostom to Hodge",
+ "cover_color": "#5c2f2c",
+ "description": "The whole of Paul’s letter to the Romans, read slowly, the way the Church has read it for fifteen centuries: under each verse, the great commentators speak one after another, oldest first. John Chrysostom preaching in Antioch, John Calvin in Geneva, John Evans finishing Matthew Henry’s commentary, Bengel, Wesley, the Catholic priest George Leo Haydock and Charles Hodge of Princeton, seven voices in all, each quoted word for word from a public-domain edition. The letter itself is the Open Word Bible, a new translation given freely to the public domain. A catena (Latin for “chain”) is one of the oldest ways of studying Scripture; this one is arranged in the letter’s own passages, a passage a day, with an introduction on how to read it and a closing chapter on the voices and their books.",
+ "qa": [
+  {
+   "question": "What is a catena?",
+   "answer": "A catena, from the Latin for “chain”, is a commentary built from other commentaries: under each verse of Scripture, excerpts from earlier interpreters are linked one after another, so the reader hears several voices on the same words. The form goes back to the early Church; the best known is the Catena Aurea, the “Golden Chain” that Thomas Aquinas compiled on the four Gospels in the thirteenth century."
+  },
+  {
+   "question": "Whose commentary is in this catena on Romans?",
+   "answer": "Seven commentators, from the early Church to the 1800s: John Chrysostom, John Calvin, John Evans, J. A. Bengel, John Wesley, George Leo Haydock and Charles Hodge. Every excerpt is copied word for word from a public-domain English edition, as gathered by the open collection Logia."
+  },
+  {
+   "question": "Why is John Evans here instead of Matthew Henry?",
+   "answer": "Matthew Henry died in 1714 having written his commentary only as far as the end of Acts. Other ministers finished it from his notes, and the exposition of Romans in “Matthew Henry’s Commentary” was written by John Evans, a Presbyterian minister in London. So this book names him as its author."
+  },
+  {
+   "question": "Which Bible translation does this catena use?",
+   "answer": "The text of Romans is the Open Word Bible, English, Balanced level, a new translation dedicated to the public domain. Inside the excerpts, the commentators quote Scripture in the older English of their own editions, usually the King James Version, and for Haydock the Catholic Douay version."
+  },
+  {
+   "question": "How is this catena arranged?",
+   "answer": "One chapter for each chapter of Romans, divided into the letter’s own passages, sixty-one in all. Within a passage the text comes first, a verse or a few verses at a time, followed by the commentators who wrote on those words, in the order they lived. Every verse of Romans appears once, in order, so the book can also be read straight through as the letter."
+  },
+  {
+   "question": "Is every word of the commentators included?",
+   "answer": "No. Between them the seven commentators wrote nearly three-quarters of a million words on Romans. This catena is a selection of roughly one excerpt in thirteen, chosen so that each passage is heard from more than one century and more than one tradition. Each excerpt is given whole, in the words of its edition."
+  },
+  {
+   "question": "Do the commentators agree with one another?",
+   "answer": "Not always. Romans is the letter of justification, election and the future of Israel, and a Greek preacher of the fourth century, a Reformer, a Methodist, a Catholic priest and a Princeton theologian do not read those chapters in quite the same way. A catena keeps these differences side by side, so readers can see where the Church has spoken with one voice and where it has not."
+  },
+  {
+   "question": "How should I read a catena?",
+   "answer": "Slowly. A passage a day takes you through Romans in about two months. Read Paul first, then the voices beneath him, then Paul again, noticing what each commentator sees that the others miss."
+  }
+ ],
+ "cover_url": "/covers/art/catena-on-romans.jpg",
+ "text_named": "The text of Romans",
+ "voices": [
+  {
+   "id": "chrysostom",
+   "name": "John Chrysostom",
+   "work": "Homilies on Romans",
+   "era": 0
+  },
+  {
+   "id": "calvin",
+   "name": "John Calvin",
+   "work": "Commentary on Romans",
+   "era": 1
+  },
+  {
+   "id": "evans",
+   "name": "John Evans",
+   "work": "Matthew Henry’s Commentary",
+   "era": 2
+  },
+  {
+   "id": "bengel",
+   "name": "J. A. Bengel",
+   "work": "Gnomon of the New Testament",
+   "era": 2
+  },
+  {
+   "id": "wesley",
+   "name": "John Wesley",
+   "work": "Explanatory Notes",
+   "era": 2
+  },
+  {
+   "id": "haydock",
+   "name": "George Leo Haydock",
+   "work": "Catholic Family Bible",
+   "era": 3
+  },
+  {
+   "id": "hodge",
+   "name": "Charles Hodge",
+   "work": "Commentary on Romans",
+   "era": 3
+  }
+ ]
+}

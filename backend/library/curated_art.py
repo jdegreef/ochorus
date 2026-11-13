@@ -2787,6 +2787,21 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "The book's own image: a chain of voices drawn as a chain of lamps. Drawn "
         "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
     ),
+    # A Catena on Romans and A Catena on Matthew: the same series, each its own
+    # picture. Romans: seven lamps under a wine-dark sky before dawn, the
+    # morning star high (Romans 13:12) and a Roman aqueduct on the far hills.
+    # Matthew: four lamps on a lakeshore, a town on a hill across the water
+    # (Matthew 5:14–15). Same generator, same frame as John's.
+    "catena-on-romans": Original(
+        "30702de9b3fe8c4f7289ce77aac500a28351b55666ba656f4e5775783c62b38d",
+        "The catena series' chain of lamps, one for each voice, below a road to Rome. Drawn "
+        "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
+    "catena-on-matthew": Original(
+        "6da8bebd4055f92d8fefc251c35fa243fe8d24f53134be5345da8c16856962a3",
+        "The catena series' chain of lamps, one for each voice, before a town on a hill. Drawn "
+        "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
 }
 
 

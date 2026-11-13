@@ -5,8 +5,12 @@ A *catena* ("chain") is the old way of reading Scripture slowly: under every
 verse, excerpts from the great commentators, one after another. This command
 builds one as a library book from two CC0 sources. Which commentators speak,
 under what short work title and from which era, is the book's own editorial
-choice, listed in `data/catena/<CODE>/book.json` ("voices"); a new book is a new
-folder there (`--vendor-owb` writes its passages) and an entry in BOOKS.
+choice, listed in `data/catena/<CODE>/book.json` ("voices", one Logia work each);
+a new book is a new folder there (`--vendor-owb` writes its passages) and an
+entry in BOOKS. Two optional keys there: "text_named", how the back chapter
+names the Bible text ("The Gospel text" by default; "The text of Romans"), and
+"words_per_verse", the selection's budget (WORDS_PER_VERSE by default), for a
+book whose commentators run so long its chapters would grow too big to read.
 
 * **The text**: the Open Word Bible, English Balanced (`data/bible/owb-en-b.json.gz`,
   the wording the Scripture popover and `build_owb_book` use), cut into the
@@ -37,8 +41,8 @@ itself a chain of the Fathers, and would repeat Augustine and Chrysostom.
 
 TEXT. Each excerpt is the source's words in the source's order. Only
 typography is touched: whitespace collapsed, the scan's spaces before
-punctuation and inside quotation marks closed up, a leading verse number
-dropped, quotation marks curled the house way. Old spelling and the
+punctuation and inside quotation marks closed up, a stray byte-order mark and a leading verse number dropped, quotation marks
+curled the house way. Old spelling and the
 commentators' own Bible wording (usually the King James) stand as printed.
 
 LAYOUT. One chapter per Bible chapter, between an introduction and a back
@@ -125,6 +129,15 @@ _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
 #: otherwise read as an opening quotation mark after a space.
 _ELISION = re.compile(r"(?<!\w)'(?=(?:tis|twas|twere|twill|twould|em|gainst|neath|mongst)\b)", re.I)
 _VERSE_REF = re.compile(r"(\d+)[.:](\d+)")
+#: What an edition prints on purpose that the vocabulary check would read as a
+#: misread word, set aside before it: a possessive's s ("God's"), "&c.", "i.e.",
+#: a reference's abbreviation ("v. 6", "ch. xv. 22", "Ps. lxxxix. 3", "St.",
+#: Haydock's "Wi." for Witham), a roman chapter number before its verse, and a
+#: capital roman numeral heading a point ("II. The").
+_NOT_A_WORD = re.compile(
+    r"(?<=[A-Za-z])['’]s\b|&c\.|\bi\.\s?e\.|\b(?:v|vv|ver|ch|Ch|chap|Ps|cf|ib|ibid|St|Dr|Mr|Wi)\."
+    r"|\b[ivxlc]+\.(?=\s*\d)|\b[IVXLC]+\."
+)
 
 
 def verse_key(ref: str) -> tuple[int, int]:
@@ -153,7 +166,8 @@ def tidy(text: str) -> list[str]:
     TEXT in the module docstring). The words and their order are untouched."""
     paragraphs = []
     for raw in re.split(r"\n\s*\n", text.strip()):
-        para = _SPACE_BEFORE.sub(r"\1", " ".join(raw.split()))
+        # CCEL's Ryle sets an invisible byte-order mark, and a space, before a reference.
+        para = _SPACE_BEFORE.sub(r"\1", " ".join(re.sub("\ufeff\\s*", "", raw).split()))
         para = space_quotes(para).replace(" - ", " — ")  # a spaced hyphen is the edition's dash
         if para:
             paragraphs.append(para)
@@ -229,6 +243,9 @@ class Command(BaseCommand):
         self.authors = logia["authors"]
         self.works = logia["works"]
         self.excerpts = {}
+        #: Logia author id -> the id of their work on this book, whose edition
+        #: the back chapter names (John's are keyed by author, Romans's are not).
+        self.work_of = {}
         typed = Counter()
         for e in logia["excerpts"]:
             if "archive.org" not in e.get("source_url", ""):
@@ -237,6 +254,8 @@ class Command(BaseCommand):
                 e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
+                if self.work_of.setdefault(e["author"], e["work"]) != e["work"]:
+                    raise CommandError(f"{e['author']} has two works on {code}; voices name one each")
         self.typed_counts = typed
         number = BOOKS[code][1]
         verses, joined = _owb()
@@ -258,7 +277,7 @@ class Command(BaseCommand):
         starts = [(verse_key(s["start"]), s["title"]) for s in self.owb["sections"]]
         ordered = sorted(self.verses)
         if ordered[0] < starts[0][0]:
-            raise CommandError("the OWB sections start after the Gospel does")
+            raise CommandError("the OWB sections start after the book does")
         out = [(title, []) for _, title in starts]
         section = 0
         for v in ordered:
@@ -299,7 +318,7 @@ class Command(BaseCommand):
         ):
             return True
         known = self.vocabulary
-        return any(w.lower() not in known for w in english_audit._WORD.findall(text))
+        return any(w.lower() not in known for w in english_audit._WORD.findall(_NOT_A_WORD.sub(" ", text)))
 
     def unfit(self, e: dict, verses: list[tuple[int, int]]) -> str | None:
         """Why an excerpt cannot stand in this passage, or None if it can. The
@@ -330,7 +349,8 @@ class Command(BaseCommand):
     def select_passage(self, verses: list[tuple[int, int]], overall: Counter) -> list[str]:
         """The excerpt ids for one passage, in the order they were chosen."""
         pool = self.candidates(verses)
-        budget = max(BUDGET_MIN, min(BUDGET_MAX, WORDS_PER_VERSE * len(verses)))
+        per_verse = self.meta.get("words_per_verse", WORDS_PER_VERSE)
+        budget = max(BUDGET_MIN, min(BUDGET_MAX, per_verse * len(verses)))
         eras, voices, at_verse = Counter(), Counter(), Counter()
         picks, used = [], 0
 
@@ -381,7 +401,7 @@ class Command(BaseCommand):
     # --- rendering ----------------------------------------------------------
 
     def text_block(self, code: str, verses: list[tuple[int, int]]) -> str:
-        """Verses of the Gospel as one quoted block, after OWB's note where a
+        """Verses of the text as one quoted block, after OWB's note where a
         passage the oldest manuscripts lack begins in it."""
         note = ""
         for first, last, _ in DISPUTED:
@@ -538,7 +558,7 @@ class Command(BaseCommand):
         for a in self.voices:
             if not used[a]:
                 continue
-            work = self.works[a]
+            work = self.works[self.work_of[a]]
             detail = (work.get("translation") or work.get("edition") or "").rstrip(".")
             rows.append(
                 f"<p><strong>{escape(self.authors[a]['name'])}</strong>, <em>{escape(work['title'])}</em>. "
@@ -546,8 +566,9 @@ class Command(BaseCommand):
             )
         rows.append(
             "<p>Every excerpt was gathered by Logia (logia.faith), which copies each one word for word "
-            "from the public-domain edition above and offers the collection under CC0. The Gospel text is "
-            "the Open Word Bible (openwordbible.org), English, Balanced level, also CC0.</p>"
+            "from the public-domain edition above and offers the collection under CC0. "
+            f"{self.meta.get('text_named', 'The Gospel text')} is the Open Word Bible (openwordbible.org), "
+            "English, Balanced level, also CC0.</p>"
         )
         return intro + "\n" + "\n".join(rows)
 

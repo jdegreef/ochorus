@@ -1,0 +1,71 @@
+{
+ "slug": "catena-on-matthew",
+ "title": "A Catena on Matthew",
+ "subtitle": "The Gospel of Matthew, verse by verse, with the Church’s great commentators",
+ "cover_title": "",
+ "cover_byline": "Chrysostom to Ryle",
+ "cover_color": "#2c4a3c",
+ "description": "The whole Gospel of Matthew, read slowly, the way the Church has read it for fifteen centuries: under each verse, the great commentators speak one after another, oldest first. John Chrysostom preaching in Antioch, John Calvin in Geneva, Matthew Henry at Chester and J. C. Ryle writing for English families, one voice from each age of the Church’s reading, each quoted word for word from a public-domain edition. The Gospel itself is the Open Word Bible, a new translation given freely to the public domain. A catena (Latin for “chain”) is one of the oldest ways of studying Scripture; this one is arranged in Matthew’s own passages, a passage a day, with an introduction on how to read it and a closing chapter on the voices and their books.",
+ "qa": [
+  {
+   "question": "What is a catena?",
+   "answer": "A catena, from the Latin for “chain”, is a commentary built from other commentaries: under each verse of Scripture, excerpts from earlier interpreters are linked one after another, so the reader hears several voices on the same words. The form goes back to the early Church; the best known is the Catena Aurea, the “Golden Chain” that Thomas Aquinas compiled on the four Gospels in the thirteenth century."
+  },
+  {
+   "question": "Whose commentary is in this catena on Matthew?",
+   "answer": "Four commentators, one from each age of the Church’s reading: John Chrysostom from the early Church, John Calvin from the Reformation, Matthew Henry from the 1700s and J. C. Ryle from the 1800s. Every excerpt is copied word for word from a public-domain English edition, as gathered by the open collection Logia."
+  },
+  {
+   "question": "Why is Thomas Aquinas not one of the voices?",
+   "answer": "Aquinas’s Catena Aurea on Matthew is itself a chain, built from the Fathers, so quoting it here would mostly repeat older voices at second hand. It is a book in its own right."
+  },
+  {
+   "question": "Which Bible translation does this catena use?",
+   "answer": "The Gospel text is the Open Word Bible, English, Balanced level, a new translation dedicated to the public domain. Inside the excerpts, the commentators quote Scripture in the older English of their own editions, usually the King James Version."
+  },
+  {
+   "question": "How is this catena arranged?",
+   "answer": "One chapter for each chapter of Matthew, divided into the Gospel’s own passages, a hundred and forty-nine in all. Within a passage the Gospel comes first, a verse or a few verses at a time, followed by the commentators who wrote on those words, in the order they lived. Every verse of Matthew appears once, in order, so the book can also be read straight through as the Gospel."
+  },
+  {
+   "question": "Is every word of the commentators included?",
+   "answer": "No. Between them the four commentators wrote more than a million words on Matthew. This catena is a selection of roughly one excerpt in eleven, chosen so that each passage is heard from more than one century. Each excerpt is given whole, in the words of its edition."
+  },
+  {
+   "question": "Why does Calvin comment on Matthew through a harmony?",
+   "answer": "Calvin did not write a separate commentary on Matthew. He expounded Matthew, Mark and Luke together, as one harmony of the three Gospels, published in 1555. The excerpts here are the parts of that harmony that comment on Matthew’s verses."
+  },
+  {
+   "question": "How should I read a catena?",
+   "answer": "Slowly. A passage a day takes you through Matthew in about five months. Read the Gospel first, then the voices beneath it, then the Gospel again, noticing what each commentator sees that the others miss."
+  }
+ ],
+ "cover_url": "/covers/art/catena-on-matthew.jpg",
+ "words_per_verse": 65,
+ "voices": [
+  {
+   "id": "chrysostom",
+   "name": "John Chrysostom",
+   "work": "Homilies on Matthew",
+   "era": 0
+  },
+  {
+   "id": "calvin",
+   "name": "John Calvin",
+   "work": "Harmony of the Evangelists",
+   "era": 1
+  },
+  {
+   "id": "henry",
+   "name": "Matthew Henry",
+   "work": "Commentary on the Whole Bible",
+   "era": 2
+  },
+  {
+   "id": "ryle",
+   "name": "J. C. Ryle",
+   "work": "Expository Thoughts on Matthew",
+   "era": 3
+  }
+ ]
+}

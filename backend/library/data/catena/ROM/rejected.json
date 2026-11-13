@@ -1,0 +1,49 @@
+{
+ "_note": [
+  "Excerpts an editor has turned down, with the reason. build_catena --select never",
+  "chooses one, and a plain build refuses a selection.json that still names one.",
+  "Add an id here (and rerun --select) to drop an excerpt that reads badly."
+ ],
+ "reasons": {
+  "hodge-romans.ROM.1.3-4.1": "the scan prints a single quotation mark to open a reading and a double one to close it: the close is orphaned",
+  "hodge-romans.ROM.1.13.1": "the scan garbled a quotation mark or stop (', 22, “what fruit had ye,”’ i. e')",
+  "hodge-romans.ROM.3.24.1": "the scan garbled a quotation mark or stop ('that is in Christ Jesus,’”’ tha')",
+  "hodge-romans.ROM.5.2.2": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis ('“Paul does not say access ... but introdu')",
+  "hodge-romans.ROM.7.10.1": "the scan garbled a quotation mark or stop ('uces “the motions of sin,’’ or s')",
+  "hodge-romans.ROM.8.5.1": "the scan garbled a quotation mark or stop ('ffection on things above.”’? See')",
+  "hodge-romans.ROM.8.17.2": "the scan garbled a quotation mark or stop ('through much tribulation,”’ i. e')",
+  "hodge-romans.ROM.8.23.9": "the scan garbled a quotation mark or stop ('s the earth for thy sake,’? Gen.')",
+  "hodge-romans.ROM.8.27.2": "the scan garbled a quotation mark or stop ('his will, he heareth us,’’ 1 Jo')",
+  "hodge-romans.ROM.9.23.1": "the scan garbled a quotation mark or stop ('of the glory of God, &c.’? Such')",
+  "hodge-romans.ROM.11.23.1": "the scan garbled a quotation mark or stop ('e to graff them in again.”’ That')",
+  "hodge-romans.ROM.12.11.1": "the scan garbled a quotation mark or stop ('ke and taught diligently.’’- Thi')",
+  "hodge-romans.ROM.13.8.1": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis ('rs, however, take the verb ... as in the i')",
+  "hodge-romans.ROM.15.5.1": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis ('to cherish. The expression ... to be like')",
+  "hodge-romans.ROM.15.10.1": "the scan garbled a quotation mark or stop ('is people, O ye Gentiles,’’ at l')",
+  "hodge-romans.ROM.15.23.1": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis ('gion. Others take the word ... rendered pl')",
+  "hodge-romans.ROM.16.20.2": "the scan garbled a quotation mark or stop ('children of disobedience,”’ the')",
+  "hodge-romans.ROM.12.14.1": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis ('ards our enemies. The word ... rendered to')",
+  "hodge-romans.ROM.15.25.1": "a Greek word the edition printed is dropped mid-sentence, leaving an ellipsis (', in which places the word ... signifies t')"
+ },
+ "excerpts": [
+  "hodge-romans.ROM.1.3-4.1",
+  "hodge-romans.ROM.1.13.1",
+  "hodge-romans.ROM.3.24.1",
+  "hodge-romans.ROM.5.2.2",
+  "hodge-romans.ROM.7.10.1",
+  "hodge-romans.ROM.8.5.1",
+  "hodge-romans.ROM.8.17.2",
+  "hodge-romans.ROM.8.23.9",
+  "hodge-romans.ROM.8.27.2",
+  "hodge-romans.ROM.9.23.1",
+  "hodge-romans.ROM.11.23.1",
+  "hodge-romans.ROM.12.11.1",
+  "hodge-romans.ROM.13.8.1",
+  "hodge-romans.ROM.15.5.1",
+  "hodge-romans.ROM.15.10.1",
+  "hodge-romans.ROM.15.23.1",
+  "hodge-romans.ROM.16.20.2",
+  "hodge-romans.ROM.12.14.1",
+  "hodge-romans.ROM.15.25.1"
+ ]
+}
