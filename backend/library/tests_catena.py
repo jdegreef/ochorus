@@ -102,7 +102,9 @@ class ShippedCatenaTests(SimpleTestCase):
         its first verse (the last commented block at or before it), within its
         own passage, attributed to its voice — and nothing else is there."""
         for code, meta, rows in shipped_catenas():
-            voices = {v["id"]: (v["name"], v["work"]) for v in meta["voices"]}
+            # Keyed by the Logia work id an excerpt id begins with ("work");
+            # the catena prints the voice's name and short work title ("title").
+            voices = {v["work"]: (v["name"], v["title"]) for v in meta["voices"]}
             selection = json.loads((EDITORIAL / code / "selection.json").read_text("utf-8"))["passages"]
             blocks = [
                 b

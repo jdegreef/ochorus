@@ -37,7 +37,9 @@ LANGUAGE = "en"
 #: {canonical number of a book of the Bible: the slug of its catena}. A catena
 #: built with ``build_catena`` and shipped as a fixture gets a line here.
 CATENAS: dict[int, str] = {
+    40: "catena-on-matthew",
     43: "catena-on-john",
+    45: "catena-on-romans",
 }
 
 #: How much of an excerpt (and of the quoted verses) the panel shows, in words:
