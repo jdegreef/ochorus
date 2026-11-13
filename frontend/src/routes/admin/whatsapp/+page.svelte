@@ -44,16 +44,17 @@
 		copied = false;
 		void (async () => {
 			try {
-				const [picks, reading, sermon] = await Promise.all([
+				const [picks, reading, sermon, chapter] = await Promise.all([
 					loadTodayPicks(when, lang),
 					tIn(lang, 'home.todayReading'),
-					tIn(lang, 'home.sermonOfDay')
+					tIn(lang, 'home.sermonOfDay'),
+					tIn(lang, 'home.todayChapter')
 				]);
 				if (ticket !== asked) return;
 				const date = when.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long' });
 				post =
-					picks.verse || picks.reading || picks.sermon
-						? whatsappPost({ date, picks, labels: { reading, sermon }, href: href(lang) })
+					picks.verse || picks.reading || picks.sermon || picks.chapter
+						? whatsappPost({ date, picks, labels: { reading, sermon, chapter }, href: href(lang) })
 						: '';
 			} catch {
 				if (ticket === asked) failed = true;

@@ -93,6 +93,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import CatenaPanel from '$lib/components/CatenaPanel.svelte';
 	import { BIBLE_SERIES } from '$lib/bible';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -2531,6 +2532,17 @@
 						</a>
 					{/each}
 				</div>
+			{/if}
+
+			<!-- A chapter of a Bible book with a catena: what the Church has said
+			     on its verses, a span at a time — the catena's own choice of two or
+			     three commentators, and a way into the catena at that block. Keyed,
+			     so the next chapter (the same page component) starts closed and
+			     fetches its own excerpts. -->
+			{#if chapter.catena}
+				{#key `${slug}/${chapter.order}`}
+					<CatenaPanel book={slug} order={chapter.order} catena={chapter.catena} />
+				{/key}
 			{/if}
 
 			<!-- A chapter of the Bible itself: other passages to read beside it,
