@@ -46,25 +46,29 @@
   {
    "id": "chrysostom",
    "name": "John Chrysostom",
-   "work": "Homilies on Matthew",
+   "title": "Homilies on Matthew",
+   "work": "chrysostom-matthew",
    "era": 0
   },
   {
    "id": "calvin",
    "name": "John Calvin",
-   "work": "Harmony of the Evangelists",
+   "title": "Harmony of the Evangelists",
+   "work": "calvin-matthew",
    "era": 1
   },
   {
    "id": "henry",
    "name": "Matthew Henry",
-   "work": "Commentary on the Whole Bible",
+   "title": "Commentary on the Whole Bible",
+   "work": "henry-matthew",
    "era": 2
   },
   {
    "id": "ryle",
    "name": "J. C. Ryle",
-   "work": "Expository Thoughts on Matthew",
+   "title": "Expository Thoughts on Matthew",
+   "work": "ryle-matthew",
    "era": 3
   }
  ]

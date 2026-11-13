@@ -53,7 +53,7 @@ ART_SCRIM: dict[str, float] = {
     "catechetical-lectures": 0.75,
     "catena-on-john": 0.70,
     "catena-on-matthew": 0.75,
-    "catena-on-romans": 0.20,
+    "catena-on-romans": 0.15,
     "christ-the-healer": 0.75,
     "church-history": 0.65,
     "clothed-with-strength-and-dignity": 0.10,

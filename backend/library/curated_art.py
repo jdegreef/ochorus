@@ -2793,7 +2793,7 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # Matthew: four lamps on a lakeshore, a town on a hill across the water
     # (Matthew 5:14–15). Same generator, same frame as John's.
     "catena-on-romans": Original(
-        "30702de9b3fe8c4f7289ce77aac500a28351b55666ba656f4e5775783c62b38d",
+        "abf40fbfd2b3f32cc1aba58c4f810cf77d31f9b81d13c6da365a4acb810f8c8c",
         "The catena series' chain of lamps, one for each voice, below a road to Rome. Drawn "
         "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
     ),

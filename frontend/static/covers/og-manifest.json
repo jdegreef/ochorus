@@ -7942,13 +7942,13 @@
 			]
 		},
 		"catena-on-romans": {
-			"ground": "4c08b5266f00ee93fc2533de20f2905c6d65e077933baa70299258ba31953efb",
+			"ground": "e89cf8a229bc3f8e1ca191d782a7d0f6fb3001ddaa5a0d5b96b60032ea459af1",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.2,
+			"scrim": 0.15,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",

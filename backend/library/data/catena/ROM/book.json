@@ -41,48 +41,54 @@
   }
  ],
  "cover_url": "/covers/art/catena-on-romans.jpg",
- "text_named": "The text of Romans",
  "voices": [
   {
    "id": "chrysostom",
    "name": "John Chrysostom",
-   "work": "Homilies on Romans",
+   "title": "Homilies on Romans",
+   "work": "chrysostom-romans",
    "era": 0
   },
   {
    "id": "calvin",
    "name": "John Calvin",
-   "work": "Commentary on Romans",
+   "title": "Commentary on Romans",
+   "work": "calvin-romans",
    "era": 1
   },
   {
    "id": "evans",
    "name": "John Evans",
-   "work": "Matthew Henry’s Commentary",
+   "title": "Matthew Henry’s Commentary",
+   "work": "henry-romans",
    "era": 2
   },
   {
    "id": "bengel",
    "name": "J. A. Bengel",
-   "work": "Gnomon of the New Testament",
+   "title": "Gnomon of the New Testament",
+   "work": "bengel-romans",
    "era": 2
   },
   {
    "id": "wesley",
    "name": "John Wesley",
-   "work": "Explanatory Notes",
+   "title": "Explanatory Notes",
+   "work": "wesley-romans",
    "era": 2
   },
   {
    "id": "haydock",
    "name": "George Leo Haydock",
-   "work": "Catholic Family Bible",
+   "title": "Catholic Family Bible",
+   "work": "haydock-romans",
    "era": 3
   },
   {
    "id": "hodge",
    "name": "Charles Hodge",
-   "work": "Commentary on Romans",
+   "title": "Commentary on Romans",
+   "work": "hodge-romans",
    "era": 3
   }
  ]
