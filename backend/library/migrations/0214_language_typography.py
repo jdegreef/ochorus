@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("library", "0212_planday_chapter_count"),
+        ("library", "0213_author_bio_language_en"),
     ]
 
     operations = [
