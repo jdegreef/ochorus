@@ -102,7 +102,7 @@ def chain(lamps=LAMPS, sag=SAG, links=LINKS, link_every=None):
         ax, ay = x1 - 15 * s1, y1 - 5 * s1
         bx, by = x2 - 15 * s2, y2 - 5 * s2
         angle = math.degrees(math.atan2(by - ay, bx - ax))
-        n = round(math.dist((ax, ay), (bx, by)) / link_every) if link_every else links
+        n = max(1, round(math.dist((ax, ay), (bx, by)) / link_every)) if link_every else links
         for i in range(n + 1):
             t = i / n
             px = ax + (bx - ax) * t
@@ -176,12 +176,14 @@ JOHN_RIDGES = "\n".join((
           "#161624"),
     ridge([(0, 508), (100, 503), (200, 506), (300, 510), (400, 505), (500, 502), (600, 506)], "#0a0a10"),
 ))
-JOHN = scene(
-    sky=("#050812", "#0b1428", "#14203a", "#22283f"),
-    dawn=(530, 230, ("#b8875a", ".55"), ("#6a4e52", ".30")),
-    seed=43, star=(476, 58, 2.1),
-    landscape=JOHN_RIDGES,
-)
+#: John's deep blue night going to dawn, and its bright star, which the Psalms
+#: ground shares too.
+JOHN_NIGHT = {
+    "sky": ("#050812", "#0b1428", "#14203a", "#22283f"),
+    "dawn": (530, 230, ("#b8875a", ".55"), ("#6a4e52", ".30")),
+    "seed": 43, "star": (476, 58, 2.1),
+}
+JOHN = scene(**JOHN_NIGHT, landscape=JOHN_RIDGES)
 
 
 def aqueduct(x0, x1, top, span, pier, fill):
@@ -271,20 +273,21 @@ def lyre(cx=300, top=553, foot=626):
     yoke across their tips, and seven strings catching the lamplight."""
     box_top = foot - 26
     left_tip, right_tip = (cx - 40, top + 9), (cx + 42, top)
+    # The two arms: each drawn once in wood, and again later as a thin lit edge.
+    arms = (
+        f"M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}",
+        f"M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}",
+    )
+    wood = "".join(f'<path d="{d}" fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>' for d in arms)
+    lit = "".join(f'<path d="{d}" fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>' for d in arms)
     frame = (
         f'<path d="M{cx - 30} {foot} Q{cx - 34} {box_top} {cx - 24} {box_top} L{cx + 24} {box_top} '
         f'Q{cx + 34} {box_top} {cx + 30} {foot} Z" fill="url(#clay)"/>'
-        f'<path d="M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}" '
-        f'fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>'
-        f'<path d="M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}" '
-        f'fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>'
-        f'<path d="M{left_tip[0] - 5} {left_tip[1] + 1} L{right_tip[0] + 5} {right_tip[1] - 1}" '
+        + wood
+        + f'<path d="M{left_tip[0] - 5} {left_tip[1] + 1} L{right_tip[0] + 5} {right_tip[1] - 1}" '
         f'stroke="#6e4728" stroke-width="4.5" stroke-linecap="round"/>'
-        f'<path d="M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}" '
-        f'fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>'
-        f'<path d="M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}" '
-        f'fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>'
-        f'<ellipse cx="{cx}" cy="{box_top + 12}" rx="7" ry="4" fill="#1c120c"/>'
+        + lit
+        + f'<ellipse cx="{cx}" cy="{box_top + 12}" rx="7" ry="4" fill="#1c120c"/>'
     )
     strings = []
     for i in range(7):
@@ -301,11 +304,7 @@ def lyre(cx=300, top=553, foot=626):
 
 
 PSALMS = scene(
-    sky=("#050812", "#0b1428", "#14203a", "#22283f"),
-    dawn=(530, 230, ("#b8875a", ".55"), ("#6a4e52", ".30")),
-    seed=43, star=(476, 58, 2.1),
-    landscape=JOHN_RIDGES,
-    lamps=PSALM_LAMPS, figure=lyre(), link_every=6,
+    **JOHN_NIGHT, landscape=JOHN_RIDGES, lamps=PSALM_LAMPS, figure=lyre(), link_every=6,
 )
 
 SCENES = {

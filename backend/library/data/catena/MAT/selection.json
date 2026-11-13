@@ -11,7 +11,7 @@
     "calvin-matthew.MAT.1.6.2",
     "henry-matthew.MAT.1.11.1",
     "chrysostom-matthew.MAT.1.17.7",
-    "ryle-matthew.MAT.1.1-17.1"
+    "ryle-matthew.MAT.1.1-17.3"
    ]
   },
   {
@@ -617,11 +617,11 @@
    "start": "13:44",
    "title": "Treasure, a pearl and a net",
    "excerpts": [
+    "ryle-matthew.MAT.13.44-50.4",
     "henry-matthew.MAT.13.49-50.1",
     "calvin-matthew.MAT.13.51.1",
     "chrysostom-matthew.MAT.13.54.3",
-    "calvin-matthew.MAT.13.57.1",
-    "ryle-matthew.MAT.13.44-50.1"
+    "calvin-matthew.MAT.13.57.1"
    ]
   },
   {
@@ -667,26 +667,26 @@
    "excerpts": [
     "henry-matthew.MAT.15.4.2",
     "calvin-matthew.MAT.15.9.2",
-    "chrysostom-matthew.MAT.15.3-6.7"
+    "ryle-matthew.MAT.15.1-9.2"
    ]
   },
   {
    "start": "15:10",
    "title": "What makes a person unclean",
    "excerpts": [
+    "ryle-matthew.MAT.15.10-20.4",
     "calvin-matthew.MAT.15.14.1",
     "henry-matthew.MAT.15.15.1",
-    "henry-matthew.MAT.15.18.2",
-    "ryle-matthew.MAT.15.10-20.3"
+    "henry-matthew.MAT.15.18.2"
    ]
   },
   {
    "start": "15:21",
    "title": "A Canaanite mother’s faith",
    "excerpts": [
+    "ryle-matthew.MAT.15.21-28.2",
     "calvin-matthew.MAT.15.24.1",
-    "chrysostom-matthew.MAT.15.26.1",
-    "ryle-matthew.MAT.15.21-28.3"
+    "chrysostom-matthew.MAT.15.26.1"
    ]
   },
   {
@@ -933,8 +933,8 @@
    "start": "20:24",
    "title": "Great ones and servants",
    "excerpts": [
-    "chrysostom-matthew.MAT.20.28.1",
-    "ryle-matthew.MAT.20.24-28.4"
+    "ryle-matthew.MAT.20.24-28.1",
+    "chrysostom-matthew.MAT.20.28.1"
    ]
   },
   {
@@ -1040,17 +1040,17 @@
    "start": "22:41",
    "title": "Whose son is the Christ?",
    "excerpts": [
-    "henry-matthew.MAT.22.46.1",
-    "calvin-matthew.MAT.22.42.2"
+    "calvin-matthew.MAT.22.43.1",
+    "henry-matthew.MAT.22.46.1"
    ]
   },
   {
    "start": "23:1",
    "title": "The teachers who sit in Moses’ seat",
    "excerpts": [
+    "ryle-matthew.MAT.23.1-12.5",
     "chrysostom-matthew.MAT.23.4.10",
     "calvin-matthew.MAT.23.11.1",
-    "ryle-matthew.MAT.23.1-12.4",
     "henry-matthew.MAT.23.9.1"
    ]
   },
@@ -1097,11 +1097,11 @@
    "start": "24:15",
    "title": "Flee to the mountains",
    "excerpts": [
+    "ryle-matthew.MAT.24.15-28.3",
     "henry-matthew.MAT.24.17-18.2",
     "chrysostom-matthew.MAT.24.22.2",
     "calvin-matthew.MAT.24.23.2",
-    "calvin-matthew.MAT.24.26.3",
-    "henry-matthew.MAT.24.15.4"
+    "calvin-matthew.MAT.24.26.3"
    ]
   },
   {
@@ -1153,12 +1153,12 @@
    "start": "25:14",
    "title": "Servants entrusted with their master’s money",
    "excerpts": [
+    "ryle-matthew.MAT.25.14-30.3",
     "henry-matthew.MAT.25.16-18.2",
     "calvin-matthew.MAT.25.20.2",
     "calvin-matthew.MAT.25.24.1",
     "henry-matthew.MAT.25.26-27.3",
-    "henry-matthew.MAT.25.30.2",
-    "henry-matthew.MAT.25.14-30.1"
+    "henry-matthew.MAT.25.30.2"
    ]
   },
   {
@@ -1216,9 +1216,9 @@
    "start": "26:47",
    "title": "Judas’s kiss and the arrest",
    "excerpts": [
+    "ryle-matthew.MAT.26.47-56.3",
     "chrysostom-matthew.MAT.26.51-54.5",
-    "calvin-matthew.MAT.26.56.2",
-    "ryle-matthew.MAT.26.47-56.4"
+    "calvin-matthew.MAT.26.56.2"
    ]
   },
   {
@@ -1228,9 +1228,9 @@
     "chrysostom-matthew.MAT.26.60-61.3",
     "calvin-matthew.MAT.26.64.2",
     "henry-matthew.MAT.26.67-68.3",
+    "ryle-matthew.MAT.26.69-75.4",
     "calvin-matthew.MAT.26.72.2",
-    "ryle-matthew.MAT.26.57-68.4",
-    "ryle-matthew.MAT.26.69-75.1"
+    "ryle-matthew.MAT.26.57-68.4"
    ]
   },
   {
@@ -1303,10 +1303,10 @@
    "start": "28:1",
    "title": "The tomb is empty",
    "excerpts": [
+    "ryle-matthew.MAT.28.1-10.4",
     "chrysostom-matthew.MAT.28.6.1",
     "calvin-matthew.MAT.28.8.3",
-    "henry-matthew.MAT.28.9-10.1",
-    "ryle-matthew.MAT.28.1-10.6"
+    "henry-matthew.MAT.28.9-10.1"
    ]
   },
   {

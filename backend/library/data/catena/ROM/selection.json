@@ -42,9 +42,7 @@
     "calvin-romans.ROM.1.31.1",
     "hodge-romans.ROM.1.21.1",
     "henry-romans.ROM.1.28.3",
-    "wesley-romans.ROM.1.32.1",
-    "hodge-romans.ROM.1.18.4",
-    "calvin-romans.ROM.1.26.1"
+    "wesley-romans.ROM.1.32.1"
    ]
   },
   {
@@ -113,7 +111,7 @@
     "haydock-romans.ROM.3.9.1",
     "bengel-romans.ROM.3.13-14.1",
     "chrysostom-romans.ROM.3.19.2",
-    "wesley-romans.ROM.3.20.1",
+    "henry-romans.ROM.3.18.1",
     "chrysostom-romans.ROM.3.9-18.1"
    ]
   },
@@ -131,8 +129,8 @@
    "title": "No room for boasting",
    "excerpts": [
     "calvin-romans.ROM.3.28.1",
-    "henry-romans.ROM.3.27.1",
-    "chrysostom-romans.ROM.3.30.1"
+    "haydock-romans.ROM.3.30.1",
+    "henry-romans.ROM.3.27.1"
    ]
   },
   {
@@ -409,7 +407,7 @@
     "hodge-romans.ROM.11.9-10.2",
     "calvin-romans.ROM.11.2.6",
     "henry-romans.ROM.11.7.1",
-    "chrysostom-romans.ROM.11.1.2"
+    "hodge-romans.ROM.11.3.1"
    ]
   },
   {
@@ -456,8 +454,8 @@
    "start": "12:1",
    "title": "A living sacrifice",
    "excerpts": [
-    "calvin-romans.ROM.12.2.2",
-    "henry-romans.ROM.12.1.5"
+    "bengel-romans.ROM.12.1.2",
+    "calvin-romans.ROM.12.2.2"
    ]
   },
   {
