@@ -40,5 +40,73 @@
    "answer": "They wrote long before the Open Word Bible, and their English editions quote Scripture in the translation of their own day, usually the King James Version. So a verse may read “the Word was made flesh” in a commentator and “the Word became flesh” in the Gospel text above it. Both render the same Greek."
   }
  ],
- "cover_url": "/covers/art/catena-on-john.jpg"
+ "cover_url": "/covers/art/catena-on-john.jpg",
+ "voices": [
+  {
+   "id": "origen",
+   "name": "Origen",
+   "work": "Commentary on John",
+   "era": 0
+  },
+  {
+   "id": "chrysostom",
+   "name": "John Chrysostom",
+   "work": "Homilies on John",
+   "era": 0
+  },
+  {
+   "id": "augustine",
+   "name": "Augustine",
+   "work": "Tractates on John",
+   "era": 0
+  },
+  {
+   "id": "cyril",
+   "name": "Cyril of Alexandria",
+   "work": "Commentary on John",
+   "era": 0
+  },
+  {
+   "id": "calvin",
+   "name": "John Calvin",
+   "work": "Commentary on John",
+   "era": 1
+  },
+  {
+   "id": "lapide",
+   "name": "Cornelius a Lapide",
+   "work": "The Great Commentary",
+   "era": 1
+  },
+  {
+   "id": "henry",
+   "name": "Matthew Henry",
+   "work": "Commentary on the Whole Bible",
+   "era": 2
+  },
+  {
+   "id": "bengel",
+   "name": "J. A. Bengel",
+   "work": "Gnomon of the New Testament",
+   "era": 2
+  },
+  {
+   "id": "wesley",
+   "name": "John Wesley",
+   "work": "Explanatory Notes",
+   "era": 2
+  },
+  {
+   "id": "ryle",
+   "name": "J. C. Ryle",
+   "work": "Expository Thoughts on John",
+   "era": 3
+  },
+  {
+   "id": "westcott",
+   "name": "B. F. Westcott",
+   "work": "The Gospel According to St. John",
+   "era": 3
+  }
+ ]
 }

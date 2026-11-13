@@ -1,11 +1,12 @@
-"""Build a catena on John: its text, passage by passage, with the Church's
+"""Build a catena on a book of the Bible: its text, passage by passage, with the Church's
 commentators speaking under each verse, oldest first.
 
 A *catena* ("chain") is the old way of reading Scripture slowly: under every
 verse, excerpts from the great commentators, one after another. This command
-builds one as a library book from two CC0 sources. Only John so far: the voices
-(VOICES) and their short work titles are John's, so another Gospel starts by
-adding its own.
+builds one as a library book from two CC0 sources. Which commentators speak,
+under what short work title and from which era, is the book's own editorial
+choice, listed in `data/catena/<CODE>/book.json` ("voices"); a new book is a new
+folder there (`--vendor-owb` writes its passages) and an entry in BOOKS.
 
 * **The text**: the Open Word Bible, English Balanced (`data/bible/owb-en-b.json.gz`,
   the wording the Scripture popover and `build_owb_book` use), cut into the
@@ -81,26 +82,16 @@ LANGUAGE = "en"
 EDITORIAL = Path(settings.BASE_DIR) / "library" / "data" / "catena"
 LOGIA = "https://logia.faith"
 
-#: The Gospels this command can build: code -> (English name, OWB book number).
-GOSPELS = {"JHN": ("John", 43)}
-
-#: The voices, keyed by Logia's author id: (name on an excerpt, short work
-#: title, era). Listed in the order they lived, which is the order they speak
-#: under a verse; the era spreads a passage's excerpts across the centuries.
-VOICES = {
-    "origen": ("Origen", "Commentary on John", 0),
-    "chrysostom": ("John Chrysostom", "Homilies on John", 0),
-    "augustine": ("Augustine", "Tractates on John", 0),
-    "cyril": ("Cyril of Alexandria", "Commentary on John", 0),
-    "calvin": ("John Calvin", "Commentary on John", 1),
-    "lapide": ("Cornelius a Lapide", "The Great Commentary", 1),
-    "henry": ("Matthew Henry", "Commentary on the Whole Bible", 2),
-    "bengel": ("J. A. Bengel", "Gnomon of the New Testament", 2),
-    "wesley": ("John Wesley", "Explanatory Notes", 2),
-    "ryle": ("J. C. Ryle", "Expository Thoughts on John", 3),
-    "westcott": ("B. F. Westcott", "The Gospel According to St. John", 3),
+#: The books this command can build: code -> (English name as a reference
+#: begins, OWB book number, a chapter's title with {n} for its number).
+BOOKS = {
+    "PSA": ("Psalm", 19, "Psalm {n}"),
+    "MAT": ("Matthew", 40, "Matthew {n}"),
+    "MRK": ("Mark", 41, "Mark {n}"),
+    "LUK": ("Luke", 42, "Luke {n}"),
+    "JHN": ("John", 43, "John {n}"),
+    "ROM": ("Romans", 45, "Romans {n}"),
 }
-RANK = {a: i for i, a in enumerate(VOICES)}
 
 #: OWB's note on a passage the oldest manuscripts lack (build_owb_book.DISPUTED
 #: lists them), worded for this book, which does not bracket it.
@@ -149,7 +140,7 @@ def ref(verse: tuple[int, int]) -> str:
 
 def span(code: str, first: tuple[int, int], last: tuple[int, int]) -> str:
     """'John 1:1–5', 'John 1:1', 'John 7:53–8:11'."""
-    name = GOSPELS[code][0]
+    name = BOOKS[code][0]
     if first == last:
         return f"{name} {ref(first)}"
     if first[0] == last[0]:
@@ -171,12 +162,49 @@ def tidy(text: str) -> list[str]:
     return paragraphs
 
 
+def vendor_owb(checkout: Path, code: str) -> None:
+    """Write data/catena/<CODE>/owb_sections.json from an open-word-bible
+    checkout: its English section headings (the passages) and chapter
+    summaries, settings at their defaults, with the commit they came from."""
+    import subprocess
+
+    from library.management.commands.build_owb_book import heading_text, plain
+
+    commit = subprocess.run(
+        ["git", "-C", str(checkout), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
+    ).stdout.strip()
+    headings = json.loads((checkout / "data" / "headings" / f"{code}.json").read_text("utf-8"))["headings"]
+    summaries = json.loads((checkout / "data" / "summaries" / f"{code}.json").read_text("utf-8"))["summaries"]
+    sections = [
+        {"start": ref(verse_key(rid)), "title": heading_text(h["en"])}
+        for rid, h in sorted(headings.items(), key=lambda kv: verse_key(kv[0]))
+    ]
+    out = {
+        "_note": [
+            "Vendored from the Open Word Bible (CC0, https://github.com/jdegreef/open-word-bible)",
+            f"at commit {commit}: data/headings/{code}.json (English section headings, settings at their",
+            f"defaults) and data/summaries/{code}.json (English chapter summaries). The catena's passages",
+            "follow these sections; build_catena reads this file, never the OWB checkout.",
+        ],
+        "owb_commit": commit,
+        "sections": sections,
+        "summaries": {n: plain(s["en"] if isinstance(s, dict) else s) for n, s in summaries.items()},
+    }
+    folder = EDITORIAL / code
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "owb_sections.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), "utf-8")
+
+
 class Command(BaseCommand):
-    help = "Build a verse-by-verse catena on John from Logia's excerpts and the Open Word Bible."
+    help = "Build a verse-by-verse catena on a book of the Bible from Logia's excerpts and the Open Word Bible."
 
     def add_arguments(self, parser):
         parser.add_argument("logia", help="path to logia-en.json (https://logia.faith/downloads/logia-en.json)")
-        parser.add_argument("code", choices=sorted(GOSPELS), help="the Gospel, e.g. JHN")
+        parser.add_argument("code", choices=sorted(BOOKS), help="the book, e.g. JHN")
+        parser.add_argument(
+            "--vendor-owb", metavar="CHECKOUT",
+            help="first write data/catena/<CODE>/owb_sections.json from an open-word-bible checkout",
+        )
         parser.add_argument(
             "--select", action="store_true",
             help="choose the excerpts afresh and rewrite selection.json (otherwise it is read)",
@@ -191,6 +219,13 @@ class Command(BaseCommand):
         del raw
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        folder = EDITORIAL / code
+        self.meta = json.loads((folder / "book.json").read_text("utf-8"))
+        #: Logia author id -> (name on an excerpt, short work title, era), in the
+        #: order they lived, which is the order they speak under a verse; the
+        #: era spreads a passage's excerpts across the centuries.
+        self.voices = {v["id"]: (v["name"], v["work"], v["era"]) for v in self.meta["voices"]}
+        self.rank = {a: i for i, a in enumerate(self.voices)}
         self.authors = logia["authors"]
         self.works = logia["works"]
         self.excerpts = {}
@@ -198,12 +233,12 @@ class Command(BaseCommand):
         for e in logia["excerpts"]:
             if "archive.org" not in e.get("source_url", ""):
                 typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
-            if e["start"].startswith(code + ".") and e["author"] in VOICES:
+            if e["start"].startswith(code + ".") and e["author"] in self.voices:
                 e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
         self.typed_counts = typed
-        number = GOSPELS[code][1]
+        number = BOOKS[code][1]
         verses, joined = _owb()
         # A verse OWB prints together with the one before it is quoted there.
         self.verses = {
@@ -213,9 +248,7 @@ class Command(BaseCommand):
         }
         with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
             self.bible_commit = json.load(fh)["meta"]["commit"]
-        folder = EDITORIAL / code
         self.owb = json.loads((folder / "owb_sections.json").read_text("utf-8"))
-        self.meta = json.loads((folder / "book.json").read_text("utf-8"))
         self.folder = folder
         rejected = folder / "rejected.json"
         self.rejected = set(json.loads(rejected.read_text("utf-8"))["excerpts"]) if rejected.exists() else set()
@@ -303,7 +336,7 @@ class Command(BaseCommand):
 
         def score(e):
             a = e["author"]
-            era = VOICES[a][2]
+            era = self.voices[a][2]
             s = 3.0 if eras[era] == 0 else -float(eras[era])
             s += 2.0 if voices[a] == 0 else -2.0 * voices[a]
             s -= overall[a] / 40
@@ -319,7 +352,7 @@ class Command(BaseCommand):
             picks.append(e["id"])
             used += e["_words"]
             a = e["author"]
-            eras[VOICES[a][2]] += 1
+            eras[self.voices[a][2]] += 1
             voices[a] += 1
             at_verse[e["_start"]] += 1
             overall[a] += 1
@@ -359,7 +392,7 @@ class Command(BaseCommand):
                 at = verses.index(begins)
                 return self.text_block(code, verses[:at]) + self.text_block(code, verses[at:])
             where = span(code, begins, verse_key(last))
-            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=GOSPELS[code][0], ref=where))}</em></p>"
+            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=BOOKS[code][0], ref=where))}</em></p>"
         text = " ".join(curl_singles(self.verses[v]) for v in verses)
         # A speech that runs on from the block before (Jesus to Nicodemus,
         # 3:10–21) reopens here, as a quotation running over several
@@ -387,7 +420,7 @@ class Command(BaseCommand):
         return open_at
 
     def excerpt_html(self, e: dict) -> str:
-        name, work, _ = VOICES[e["author"]]
+        name, work, _ = self.voices[e["author"]]
         parts = [f"<p><strong>{escape(name)}</strong> · <em>{escape(work)}</em></p>"]
         for para in tidy(e["text"]):
             parts.append(f"<p>{escape(curl_singles(_ELISION.sub('’', para)), quote=False)}</p>")
@@ -406,7 +439,7 @@ class Command(BaseCommand):
         position = 0
         starts = sorted(by_start)
         for k, start in enumerate(starts):
-            group = sorted(by_start[start], key=lambda e: (RANK[e["author"]], e["id"]))
+            group = sorted(by_start[start], key=lambda e: (self.rank[e["author"]], e["id"]))
             # Quote the verses a group comments on, but never past the verse
             # before the next group's: an overview of 3:9–21 must not carry
             # 3:16 above Calvin's note on it.
@@ -438,6 +471,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         code = opts["code"]
+        if opts["vendor_owb"]:
+            vendor_owb(Path(opts["vendor_owb"]), code)
         self.load(opts["logia"], code)
         passages = self.passages()
         starts = [ref(vs[0]) for _, vs in passages]
@@ -488,8 +523,9 @@ class Command(BaseCommand):
             html = "\n".join(self.passage_html(code, *p) for p in chapters[number])
             authors = Counter(self.excerpts[i]["author"] for _, _, ids in chapters[number] for i in ids)
             used.update(authors)
-            names = [VOICES[a][0] for a in VOICES if a in authors]
-            bodies.append((f"{GOSPELS[code][0]} {number}", html, self.summary(number, names)))
+            names = [self.voices[a][0] for a in self.voices if a in authors]
+            title = BOOKS[code][2].format(n=number)
+            bodies.append((title, html, self.summary(number, names)))
         bodies.append(("The Voices and Their Books", self.voices_html(used), ""))
         book = self.write(bodies)
         english_audit.report(self, english_audit.audit_book(book), book.slug)
@@ -499,7 +535,7 @@ class Command(BaseCommand):
         edition every excerpt was copied from."""
         intro = (self.folder / "voices.html").read_text("utf-8")
         rows = ["<h2>The editions</h2>"]
-        for a in VOICES:
+        for a in self.voices:
             if not used[a]:
                 continue
             work = self.works[a]
