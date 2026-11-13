@@ -1,0 +1,93 @@
+{
+    "kind": "sermon",
+    "slug": "the-infinite-god",
+    "language": "pt",
+    "job_issue": 7971,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 147:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Isaiah 40:25",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "John 17:3",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "1 Corinthians 2:9-10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 12
+        },
+        {
+            "reference": "1 Corinthians 2:11",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "Malachi 3:6",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Acts 4:24",
+            "status": "self_rendered",
+            "block_index": 65
+        },
+        {
+            "reference": "Jeremiah 31:3",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 98
+        },
+        {
+            "reference": "Genesis 3:19",
+            "status": "self_rendered",
+            "block_index": 101
+        },
+        {
+            "reference": "Jeremiah 23:24",
+            "status": "self_rendered",
+            "block_index": 104
+        },
+        {
+            "reference": "1 John 4:8",
+            "status": "self_rendered",
+            "block_index": 95
+        },
+        {
+            "reference": "Romans 5:20",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 105
+        },
+        {
+            "reference": "Isaiah 6:2",
+            "status": "self_rendered",
+            "block_index": 123
+        },
+        {
+            "reference": "Matthew 11:28",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 123
+        },
+        {
+            "reference": "Matthew 6:9",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 124
+        }
+    ]
+}
