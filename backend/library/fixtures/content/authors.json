@@ -9890,5 +9890,24 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "thomas-aquinas",
+      "name": "Thomas Aquinas",
+      "bio": "Thomas Aquinas (1225–1274) was an Italian Dominican friar, priest and theologian, the most influential teacher of the medieval Church. He taught in Paris, Naples and Rome, and his Summa Theologiae became a standard of Catholic theology. For Pope Urban IV he compiled the Catena Aurea, a chain of the Fathers’ words on the four Gospels. He was canonized in 1323.",
+      "tagline": "Dominican theologian of the Summa Theologiae, and compiler of the Catena Aurea on the Gospels.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1225,
+      "death_year": 1274,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-11-13T12:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Thomas_Aquinas"
+      ]
+    }
   }
 ]

@@ -238,6 +238,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "the-golden-chain",
+  "title": "The Golden Chain",
+  "description": "Thomas Aquinas’s Catena Aurea, the Fathers of the Church on the four Gospels, one volume for each Gospel: under every verse, the words of Chrysostom, Augustine, Jerome, Ambrose, Bede and many more, linked into a single chain. In the Oxford translation edited by John Henry Newman, with the Gospel text from the Open Word Bible.",
+  "sort_order": 150,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-11-13T00:00:00Z",
+  "updated_at": "2026-11-13T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [

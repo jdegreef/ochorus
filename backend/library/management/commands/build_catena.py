@@ -238,6 +238,13 @@ class Command(BaseCommand):
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
         self.typed_counts = typed
+        self.load_owb(code)
+        self.folder = folder
+        rejected = folder / "rejected.json"
+        self.rejected = set(json.loads(rejected.read_text("utf-8"))["excerpts"]) if rejected.exists() else set()
+
+    def load_owb(self, code: str) -> None:
+        """The book's OWB verses, the Bible's commit, and its vendored sections."""
         number = BOOKS[code][1]
         verses, joined = _owb()
         # A verse OWB prints together with the one before it is quoted there.
@@ -248,17 +255,14 @@ class Command(BaseCommand):
         }
         with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
             self.bible_commit = json.load(fh)["meta"]["commit"]
-        self.owb = json.loads((folder / "owb_sections.json").read_text("utf-8"))
-        self.folder = folder
-        rejected = folder / "rejected.json"
-        self.rejected = set(json.loads(rejected.read_text("utf-8"))["excerpts"]) if rejected.exists() else set()
+        self.owb = json.loads((EDITORIAL / code / "owb_sections.json").read_text("utf-8"))
 
     def passages(self) -> list[tuple[str, list[tuple[int, int]]]]:
         """[(section title, its verses in order)] — every verse in one passage."""
         starts = [(verse_key(s["start"]), s["title"]) for s in self.owb["sections"]]
         ordered = sorted(self.verses)
-        if ordered[0] < starts[0][0]:
-            raise CommandError("the OWB sections start after the Gospel does")
+        # A book's opening line may stand before OWB's first heading (Mark 1:1,
+        # "The beginning of the good news…"); it opens the first passage.
         out = [(title, []) for _, title in starts]
         section = 0
         for v in ordered:
@@ -419,6 +423,10 @@ class Command(BaseCommand):
                 inside = before in " ([—"
         return open_at
 
+    def order_key(self, e: dict):
+        """Where an excerpt stands among those on the same verse: oldest voice first."""
+        return (self.rank[e["author"]], e["id"])
+
     def excerpt_html(self, e: dict) -> str:
         name, work, _ = self.voices[e["author"]]
         parts = [f"<p><strong>{escape(name)}</strong> · <em>{escape(work)}</em></p>"]
@@ -439,7 +447,7 @@ class Command(BaseCommand):
         position = 0
         starts = sorted(by_start)
         for k, start in enumerate(starts):
-            group = sorted(by_start[start], key=lambda e: (self.rank[e["author"]], e["id"]))
+            group = sorted(by_start[start], key=self.order_key)
             # Quote the verses a group comments on, but never past the verse
             # before the next group's: an overview of 3:9–21 must not carry
             # 3:16 above Calvin's note on it.
@@ -551,13 +559,31 @@ class Command(BaseCommand):
         )
         return intro + "\n" + "\n".join(rows)
 
+    author_slug = AUTHOR_SLUG
+
+    def attribution(self) -> str:
+        return (
+            f"Commentary excerpts from Logia ({LOGIA}, CC0), each from a public-domain edition; "
+            f"{self.scripture_credit()}"
+        )
+
+    def scripture_credit(self) -> str:
+        return (
+            f"Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, "
+            f"commit {self.bible_commit[:12]}: dedicated to the public domain under CC0"
+        )
+
+    def extra_fields(self) -> dict:
+        """Book fields a subclass sets beyond the shared ones (a series, say)."""
+        return {}
+
     @transaction.atomic
     def write(self, bodies):
         meta = self.meta
         try:
-            author = Author.objects.get(slug=AUTHOR_SLUG)
+            author = Author.objects.get(slug=self.author_slug)
         except Author.DoesNotExist as exc:
-            raise CommandError(f"author {AUTHOR_SLUG!r} not in the DB — loaddata authors.json first.") from exc
+            raise CommandError(f"author {self.author_slug!r} not in the DB — loaddata authors.json first.") from exc
         slug = meta["slug"]
         content = {
             "author": author,
@@ -570,11 +596,8 @@ class Command(BaseCommand):
             "cover_url": meta.get("cover_url", ""),
             "cover_color": meta["cover_color"],
             "source_url": f"{LOGIA}/",
-            "attribution": (
-                f"Commentary excerpts from Logia ({LOGIA}, CC0), each from a public-domain edition; "
-                f"Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, "
-                f"commit {self.bible_commit[:12]}: dedicated to the public domain under CC0"
-            ),
+            "attribution": self.attribution(),
+            **self.extra_fields(),
         }
         book, _ = Book.objects.update_or_create(
             slug=slug,

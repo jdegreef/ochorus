@@ -2787,6 +2787,31 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "The book's own image: a chain of voices drawn as a chain of lamps. Drawn "
         "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
     ),
+    # The Golden Chain, Vols. 1-4 (Aquinas's Catena Aurea): one family, a heavy
+    # gold chain hung in a catenary across a dark foreground under a starry
+    # sky, each volume under its own sky (Matthew violet, Mark sea-green, Luke
+    # oxblood, John night-blue). The chain sits between the subtitle band and
+    # the mark zone. Generator: scripts/original_grounds/golden_chain.py.
+    "catena-aurea-matthew": Original(
+        "64142ebbafae129ab42780a01b33813e9a26bc2269a8056dab002f1305c8242e",
+        "The series' own image, the Golden Chain, under a violet night. Drawn as SVG "
+        "and rendered with Chrome; generator scripts/original_grounds/golden_chain.py.",
+    ),
+    "catena-aurea-mark": Original(
+        "f58494dea273acbeeae71c6e92a40f50a4724e28613eb8723c2222498b90db38",
+        "The series' own image, the Golden Chain, under a sea-green night. Drawn as SVG "
+        "and rendered with Chrome; generator scripts/original_grounds/golden_chain.py.",
+    ),
+    "catena-aurea-luke": Original(
+        "782240b3e161f1702d4825a2376bbd5bf02af1ab564f71dba4d92ba13e778375",
+        "The series' own image, the Golden Chain, under an oxblood night. Drawn as SVG "
+        "and rendered with Chrome; generator scripts/original_grounds/golden_chain.py.",
+    ),
+    "catena-aurea-john": Original(
+        "c393a59d6e0887ead1095c446c4ffc368707661995542c3de94418c58c1660a3",
+        "The series' own image, the Golden Chain, under a night-blue sky. Drawn as SVG "
+        "and rendered with Chrome; generator scripts/original_grounds/golden_chain.py.",
+    ),
 }
 
 
