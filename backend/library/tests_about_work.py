@@ -22,6 +22,8 @@ from django.test import SimpleTestCase, TestCase
 
 from .models import Author, Book
 from .sanitize import clean_fragment
+from .search import _UNSPACED
+from .text import text_of
 
 BOOKS = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
 
@@ -35,19 +37,28 @@ ALLOWED_TAGS = {"p"}
 #: heading that promises an essay is the failure mode worth catching.
 MIN_WORDS = 150
 
-#: How much of its English edition a translation must keep, when a faithful
-#: rendering of a short English essay falls under MIN_WORDS.
+#: How much of its English edition a translation must keep.
 TRANSLATION_SHARE = 0.6
 
-#: Japanese is written without spaces, so splitting on whitespace counts a
-#: whole paragraph as a word or two. Count its kana and kanji instead, at the
-#: usual reading-speed ratio of about two characters to an English word.
-_CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
+#: Languages whose words run longer than English's, so that a faithful
+#: rendering of a short English essay lands under MIN_WORDS: Amharic packs
+#: prepositions and possessives into the word (~0.77 of the English count
+#: across the shipped am editions). Measured, not assumed — add one only with
+#: its ratio.
+LONG_WORD_LANGUAGES = {"am"}
 
 
-def word_units(text: str) -> int:
-    cjk = len(_CJK.findall(text))
-    return len(_CJK.sub(" ", text).split()) + cjk // 2
+def word_units(html: str) -> int:
+    """``text.word_count``'s count, made fair to unspaced scripts.
+
+    Japanese is written without spaces, so splitting on whitespace reads a
+    paragraph as a word or two. Its kana and kanji count instead, at about two
+    characters to an English word (~500 a minute against ~250); its
+    punctuation (、。「」) counts as nothing, rather than as a word per run.
+    """
+    text = text_of(html)
+    letters = sum(1 for ch in _UNSPACED.findall(text) if ch.isalpha())
+    return len(_UNSPACED.sub(" ", text).split()) + letters // 2
 
 
 def shipped() -> list[tuple[str, str, str]]:
@@ -90,25 +101,22 @@ class ShippedProseTests(SimpleTestCase):
                 self.assertEqual(html.count("<p>"), html.count("</p>"))
 
     def test_no_piece_is_a_stub(self):
-        """English carries the floor. A translation is held to it too, unless
-        its own English edition is short enough that a faithful rendering in a
-        language of longer words (Amharic packs prepositions and possessives
-        into the word: ~0.77 of the English count) lands under it — then it
-        must keep TRANSLATION_SHARE of the English, which a stub or a
-        half-translated essay still fails."""
-        pieces = shipped()
-        english = {
-            slug: word_units(re.sub(r"<[^>]+>", " ", html))
-            for slug, language, html in pieces
-            if language == "en"
-        }
-        for slug, language, html in pieces:
-            words = word_units(re.sub(r"<[^>]+>", " ", html))
-            floor = MIN_WORDS
+        """Every piece reaches MIN_WORDS, and every translation keeps
+        TRANSLATION_SHARE of its English edition, which catches a half-
+        translated essay however long the English is. A LONG_WORD_LANGUAGES
+        edition of a short English essay may sit under MIN_WORDS, but only as
+        far as the share allows."""
+        pieces = [(slug, lang, word_units(html)) for slug, lang, html in shipped()]
+        english = {slug: words for slug, lang, words in pieces if lang == "en"}
+        for slug, language, words in pieces:
+            share = 0
             if language != "en" and slug in english:
-                floor = min(MIN_WORDS, int(english[slug] * TRANSLATION_SHARE))
+                share = int(english[slug] * TRANSLATION_SHARE)
+            floor = MIN_WORDS
+            if language in LONG_WORD_LANGUAGES and share:
+                floor = min(floor, share)
             with self.subTest(slug=slug, language=language, words=words, floor=floor):
-                self.assertGreaterEqual(words, floor)
+                self.assertGreaterEqual(words, max(floor, share))
 
     def test_no_piece_merely_restates_the_description(self):
         """The two fields have different jobs — one is the SERP snippet, one is
