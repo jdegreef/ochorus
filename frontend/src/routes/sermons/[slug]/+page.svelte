@@ -31,6 +31,8 @@
 	import { listen } from '$lib/listen.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { page } from '$app/stores';
+	import { replaceState } from '$app/navigation';
+	import { wantsListen, withoutListen } from '$lib/listenOnArrival';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, toQa, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
@@ -230,6 +232,26 @@
 		else if (listen.status === 'paused') listen.toggle();
 		else listen.stop();
 	}
+
+	// Arrived from a "Listen" link (the home page's sermon rows,
+	// $lib/listenOnArrival): start once the reader is ready, as its own button
+	// would, then drop the request from the URL so a reload or a copied link
+	// doesn't start speaking again. Keyed by slug, so a later sermon reached in
+	// the same page instance gets its own start.
+	let listenAskedFor = '';
+	$effect(() => {
+		if (!reader || listenAskedFor === sermon.slug || !wantsListen($page.url)) return;
+		listenAskedFor = sermon.slug;
+		if (listen.offered && listen.status === 'idle') reader.startListening();
+		// Before the client router is ready (a fresh load of the link) SvelteKit
+		// refuses to rewrite the URL; the request then stays in it, which only
+		// means a reload asks again.
+		try {
+			replaceState(withoutListen($page.url), $page.state);
+		} catch {
+			/* leave the URL as it is */
+		}
+	});
 
 	/** Scroll to a fraction of the sermon — drives the footer's scrubber. */
 	function scrubTo(to: number) {
