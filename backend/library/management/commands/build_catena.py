@@ -30,7 +30,10 @@ SELECTION. Logia holds about two million words on John alone, so the book is a
 choice: roughly one excerpt in twenty. `--select` makes it, deterministically,
 and writes the excerpt ids to `data/catena/<CODE>/selection.json`; a plain run
 reads that file, so a later Logia download cannot reshuffle the book, and an
-editor can swap an excerpt by editing one id. The rule, per passage: a word
+editor can swap an excerpt by editing one id. `--refill` mends a shipped
+book instead of reshuffling it: it drops only the pinned excerpts that can no
+longer stand (a tightened filter, a new rejected.json entry) and tops up just
+the passages that lost one. The rule, per passage: a word
 budget in proportion to its verses; then, greedily, the excerpt that adds an
 era and a voice the passage does not have yet, reads at a comfortable length,
 spreads across the passage's verses, and keeps any one commentator from
@@ -370,6 +373,10 @@ class Command(BaseCommand):
             help="first write data/catena/<CODE>/owb_sections.json from an open-word-bible checkout",
         )
         parser.add_argument(
+            "--refill", action="store_true",
+            help="mend selection.json: drop the excerpts that can no longer stand, top up only those passages",
+        )
+        parser.add_argument(
             "--select", action="store_true",
             help="choose the excerpts afresh and rewrite selection.json (otherwise it is read)",
         )
@@ -574,13 +581,39 @@ class Command(BaseCommand):
         overall = Counter()  # each voice's excerpts so far, across the book
         return [self.select_passage(verses, overall) for _, verses in passages]
 
-    def select_passage(self, verses: list[tuple[int, int]], overall: Counter) -> list[str]:
-        """The excerpt ids for one passage, in the order they were chosen."""
-        pool = self.candidates(verses)
+    def refill(self, passages, pinned: list[list[str]]) -> tuple[list[list[str]], list[int]]:
+        """The committed selection, mended: every pinned excerpt that can no
+        longer stand (the damage filter, rejected.json) is dropped, and a
+        passage that lost one is topped up to its budget by the same rule,
+        counting the picks it keeps and the voices the whole book already
+        has. Every other passage is left exactly as it was. Returns the new
+        selection and the indexes of the passages it touched."""
+        kept = [[i for i in ids if i in self.excerpts and not self.unfit(self.excerpts[i], vs)]
+                for (_, vs), ids in zip(passages, pinned, strict=True)]
+        overall = Counter(self.excerpts[i]["author"] for ids in kept for i in ids)
+        out, touched = [], []
+        for n, ((_, verses), ids, keep) in enumerate(zip(passages, pinned, kept, strict=True)):
+            if keep == ids:
+                out.append(ids)
+                continue
+            touched.append(n)
+            out.append(self.select_passage(verses, overall, keep))
+        return out, touched
+
+    def select_passage(self, verses: list[tuple[int, int]], overall: Counter, kept: list[str] = ()) -> list[str]:
+        """The excerpt ids for one passage, in the order they were chosen,
+        after any `kept` (already counted in `overall`), which stand first."""
+        pool = [e for e in self.candidates(verses) if e["id"] not in kept]
         per_verse = self.meta.get("words_per_verse", WORDS_PER_VERSE)
         budget = max(BUDGET_MIN, min(BUDGET_MAX, per_verse * len(verses)))
         eras, voices, at_verse = Counter(), Counter(), Counter()
-        picks, used = [], 0
+        picks, used = list(kept), 0
+        for i in kept:
+            e = self.excerpts[i]
+            used += e["_words"]
+            eras[self.voices[e["author"]][2]] += 1
+            voices[e["author"]] += 1
+            at_verse[e["_start"]] += 1
 
         def score(e):
             a = e["author"]
@@ -616,6 +649,8 @@ class Command(BaseCommand):
         share = budget / slots
         for i in range(slots):
             window = verses[len(verses) * i // slots : len(verses) * (i + 1) // slots]
+            if any(window and window[0] <= self.excerpts[i]["_start"] <= window[-1] for i in kept):
+                continue  # a kept pick already speaks here
             here = [e for e in pool if window and window[0] <= e["_start"] <= window[-1]]
             fits = [e for e in here if e["_words"] <= share * 1.5] or here
             if fits:
@@ -732,6 +767,15 @@ class Command(BaseCommand):
                 + "\n",
                 "utf-8",
             )
+        elif opts["refill"]:
+            pinned = json.loads(selection_path.read_text("utf-8"))
+            if [p["start"] for p in pinned["passages"]] != starts:
+                raise CommandError("selection.json no longer matches the OWB sections — rerun with --select")
+            chosen, touched = self.refill(passages, [p["excerpts"] for p in pinned["passages"]])
+            for p, ids in zip(pinned["passages"], chosen, strict=True):
+                p["excerpts"] = ids
+            selection_path.write_text(json.dumps(pinned, ensure_ascii=False, indent=1) + "\n", "utf-8")
+            self.stdout.write(f"refilled {len(touched)} of {len(passages)} passages")
         saved = json.loads(selection_path.read_text("utf-8"))["passages"]
         if [p["start"] for p in saved] != starts:
             raise CommandError("selection.json no longer matches the OWB sections — rerun with --select")
