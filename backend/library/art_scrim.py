@@ -82,7 +82,7 @@ ART_SCRIM: dict[str, float] = {
     "expository-thoughts-on-matthew": 0.70,
     "faithful-unto-death": 0.55,
     "finney-memoirs": 0.50,
-    "fire-against-the-dark": 0.10,
+    "fire-against-the-dark": 0.20,
     "first-epistle-of-clement": 0.65,
     "first-principles-of-the-reformation": 0.75,
     "foxes-book-of-martyrs": 0.35,

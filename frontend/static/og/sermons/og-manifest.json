@@ -1841,6 +1841,14 @@
 				"content": "c19da5811578d56bf2d920a8c3a29655e770e95cbca1303fd368e4bba1399743",
 				"art": "c39302ffa9bde15ef0ab0c9d088df6bf54644d908823c85967a66691fa363585"
 			},
+			"consolation-in-the-furnace": {
+				"content": "09d61c5ee596b923f59d170d2d2e574675314db7745da5f362cc21a31edf2097",
+				"art": "ba3780b144eca2376ec3495cd7f7da52760b679831a1739d402b7022e777786e"
+			},
+			"counterfeits": {
+				"content": "e889f63b55d07c91a66a8e083378aa594d8d6189192547d59cd9d7fc49f00dae",
+				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+			},
 			"do-you-pray": {
 				"content": "fbfd77100916333a6e81ae6f07b30a096f805c96fa182a6d93f1b500afdd345a",
 				"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -1924,6 +1932,10 @@
 			"how-to-forgive": {
 				"content": "225d0b3d4d55f69e3ecc139c0f96a9eca5d9400092c4f66014844fa619002926",
 				"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+			},
+			"i-am-crucified-with-christ": {
+				"content": "aaa17eca669f9d17d65013061ef202a62bc7e8aef699639608f30bb64a7cf0e0",
+				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 			},
 			"i-keep-a-quiet-heart": {
 				"content": "b15156d10b71feca117db3fea39c9361d20f48f4a5c1ebdee61f73272e78f4ce",

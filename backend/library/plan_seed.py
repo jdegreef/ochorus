@@ -830,6 +830,24 @@ CURATED_PLANS = [
         "breakfast by the lake.",
         [chapters("gospel-of-john", 2, 22)],
     ),
+    # The same 21 days through A Catena on John, which already sets each
+    # passage of the Open Word Bible above its commentators, so no day pairs it
+    # with gospel-of-john. A chapter of the catena is a whole chapter of John
+    # (2,800–7,700 words, median ~5,000): long days, and the description says
+    # so. The Introduction (order 1) and "The Voices and Their Books" (23) are
+    # left out, as with the Bible plans, so day N reads John N.
+    (
+        "john-with-the-great-commentators",
+        "John with the Great Commentators",
+        "Three weeks in the Gospel of John, a chapter a day, with the readers of "
+        "sixteen centuries. In A Catena on John each passage of the Open Word "
+        "Bible is followed by the great commentators, oldest first: Augustine, "
+        "John Chrysostom, Cyril of Alexandria, Calvin, Matthew Henry, Wesley, "
+        "J. C. Ryle and B. F. Westcott among them, from “The Word became flesh” "
+        "to breakfast by the lake. These are long days: about twenty minutes a "
+        "day, and half an hour for the longest chapters.",
+        [chapters("catena-on-john", 2, 22)],
+    ),
     (
         "psalms-in-150-days",
         "The Psalms in 150 Days",

@@ -15,6 +15,13 @@ from django.core.management.base import CommandError
 from django.test import SimpleTestCase
 
 from library.management.commands.build_owb_book import Source
+from library.text import without_verse_numbers
+
+
+def layout(source: Source, chapter: int, records: list[dict]) -> str:
+    """A chapter as set, verse numbers aside: what the paragraphing, line and
+    heading tests are about. `VerseNumberTests` checks the numbers."""
+    return without_verse_numbers(source.chapter_html(chapter, records))
 
 
 def record(rid: str, refs: list[str], text: str) -> dict:
@@ -100,8 +107,8 @@ class EnglishChapterTests(SimpleTestCase):
         )
         source = Source(fake.root, "GEN")
         chapters = source.chapters()
-        self.assertEqual(source.chapter_html(31, chapters[31]), "<p>Early in the morning Laban left.</p>")
-        self.assertTrue(source.chapter_html(32, chapters[32]).startswith("<h3>Angels meet Jacob</h3>"))
+        self.assertEqual(layout(source, 31, chapters[31]), "<p>Early in the morning Laban left.</p>")
+        self.assertTrue(layout(source, 32, chapters[32]).startswith("<h3>Angels meet Jacob</h3>"))
 
 
 class PsalmTests(SimpleTestCase):
@@ -125,7 +132,7 @@ class PsalmTests(SimpleTestCase):
     def html(self) -> str:
         chapter, records = next(iter(self.source.chapters().items()))
         self.assertEqual(chapter, 3, "a title stays in its own psalm")
-        return self.source.chapter_html(chapter, records)
+        return layout(self.source, chapter, records)
 
     def test_the_title_follows_the_heading_and_opens_the_psalm_in_italics(self):
         self.assertTrue(self.html().startswith(
@@ -152,7 +159,7 @@ class PsalmTests(SimpleTestCase):
         (fake.root / "data" / "books.json").write_text(json.dumps({"books": {"JOB": {"en": "Job"}}}))
         prose = Source(fake.root, "JOB")
         self.assertEqual(
-            prose.chapter_html(3, prose.chapters()[3]),
+            layout(prose, 3, prose.chapters()[3]),
             "<p>After this Job spoke. He cursed the day.</p>",
         )
         verse = FakeCheckout(
@@ -166,7 +173,7 @@ class PsalmTests(SimpleTestCase):
         (verse.root / "data" / "books.json").write_text(json.dumps({"books": {"JOB": {"en": "Job"}}}))
         poem = Source(verse.root, "JOB")
         self.assertEqual(
-            poem.chapter_html(3, poem.chapters()[3]),
+            layout(poem, 3, poem.chapters()[3]),
             "<p>Let the day perish,<br>and the night.<br>Let it be darkness.</p>",
         )
 
@@ -180,7 +187,7 @@ class FusedTitleTests(SimpleTestCase):
         )
         self.addCleanup(fake.close)
         source = Source(fake.root, "PSA")
-        return source.chapter_html(23, source.chapters()[23])
+        return layout(source, 23, source.chapters()[23])
 
     def test_the_title_sentences_are_peeled_into_italics(self):
         self.assertEqual(
@@ -233,7 +240,7 @@ class NewTestamentTests(SimpleTestCase):
             json.dumps({"books": {"MRK": {"en": "Mark"}}})
         )
         source = Source(fake.root, "MRK")
-        html = source.chapter_html(16, source.chapters()[16])
+        html = layout(source, 16, source.chapters()[16])
         self.assertTrue(html.startswith("<p>They were afraid.</p><p><em>The earliest manuscripts of Mark end at 16:8."))
         self.assertTrue(html.endswith("</blockquote>"))
         self.assertIn("<blockquote><p>[They gave Peter a short report.]", html)
@@ -254,7 +261,7 @@ class HeadingIntoNextChapterTests(SimpleTestCase):
         )
         source = Source(fake.root, "REV")
         self.assertTrue(
-            source.chapter_html(13, source.chapters()[13]).startswith(
+            layout(source, 13, source.chapters()[13]).startswith(
                 "<h3>The beast from the sea</h3><p>It stood on the sand."
             )
         )
@@ -267,7 +274,7 @@ class VerseInProseTests(SimpleTestCase):
         fake = FakeCheckout({code: {"3": records}}, {})
         self.addCleanup(fake.close)
         source = Source(fake.root, code)
-        return source.chapter_html(3, source.chapters()[3])
+        return layout(source, 3, source.chapters()[3])
 
     def test_narrative_runs_on_and_the_song_after_it_is_set_in_lines(self):
         self.assertEqual(
@@ -396,3 +403,58 @@ class SummaryTests(SimpleTestCase):
         )
         bare = self.source({"GEN": {"1": [record("GEN.1.1.s1", ["GEN.1.1"], "In the beginning.")]}}, {}, {})
         self.assertEqual(bare.chapter_summaries(), {})
+
+
+class VerseNumberTests(SimpleTestCase):
+    """Each ENGLISH verse is numbered once, before its first words."""
+
+    def build(self, code: str, chapters: dict[str, list[dict]], english: dict, chapter: int) -> str:
+        fake = FakeCheckout({code: chapters}, english)
+        self.addCleanup(fake.close)
+        source = Source(fake.root, code)
+        return source.chapter_html(chapter, source.chapters()[chapter])
+
+    def test_each_verse_is_numbered_once_with_an_anchor(self):
+        html = self.build("JHN", {"3": [
+                record("JHN.3.16.s1", ["JHN.3.16"], "God loved the world."),
+                # A second sentence of the same verse: no second number.
+                record("JHN.3.16.s2", ["JHN.3.16"], "He gave his Son."),
+                # A sentence over two verses: the second numbered mid-sentence.
+                record("JHN.3.17.s1", ["JHN.3.17", "JHN.3.18"], "He came \\v 18 to save."),
+            ]}, {}, 3)
+        self.assertTrue(html.startswith('<p><sup class="v" id="v16">16</sup>God loved the world.'))
+        self.assertEqual(html.count('<sup class="v"'), 3)
+        self.assertIn('<sup class="v" id="v17">17</sup>He came <sup class="v" id="v18">18</sup>to save.', html)
+
+    def test_english_numbering_ranges_and_other_chapters(self):
+        html = self.build("ISA", {"63": [
+            record("ISA.63.18.s1", ["ISA.63.18"], "Our enemies trampled it."),
+            # Hebrew 63:19 holds English 63:19 and 64:1.
+            record("ISA.63.19.s1", ["ISA.63.19"], "Tear open the heavens."),
+        ]}, {"ISA.63.19": ["ISA.63.19", "ISA.64.1"]}, 63)
+        self.assertIn('<sup class="v" id="v19">19\u2013' + '64:1</sup>Tear', html)
+
+    def test_two_source_verses_english_prints_as_one_are_numbered_once(self):
+        """SBLGNT Revelation 12:18 and 13:1 are both English 13:1."""
+        html = self.build("REV", {
+            "12": [record("REV.12.18.s1", ["REV.12.18"], "It stood on the sand.")],
+            "13": [record("REV.13.1.s1", ["REV.13.1"], "A beast rose from the sea.")],
+        }, {}, 13)
+        self.assertEqual(html.count('<sup class="v"'), 1)
+        self.assertTrue(html.startswith('<p><sup class="v" id="v1">1</sup>It stood'))
+
+    def test_a_verse_spilling_into_the_next_is_numbered_by_the_new_one(self):
+        """Hebrew 1 Kings 18:34 is English 18:33b-34: it carries the 34."""
+        html = self.build("1KI", {"18": [
+            record("1KI.18.33.s1", ["1KI.18.33"], "He laid the wood."),
+            record("1KI.18.34.s1", ["1KI.18.34"], "Fill four jars."),
+        ]}, {"1KI.18.34": ["1KI.18.33", "1KI.18.34"]}, 18)
+        self.assertIn('<sup class="v" id="v33">33</sup>He laid', html)
+        self.assertIn('<sup class="v" id="v34">34</sup>Fill', html)
+
+    def test_a_psalm_title_has_no_number(self):
+        html = self.build("PSA", {"3": [
+            record("PSA.3.1.s1", ["PSA.3.1"], "A psalm of David."),
+            record("PSA.3.2.s1", ["PSA.3.2"], "LORD, how many are my foes!"),
+        ]}, {"PSA.3.1": [], "PSA.3.2": ["PSA.3.1"]}, 3)
+        self.assertTrue(html.startswith('<p><em>A psalm of David.</em></p><p><sup class="v" id="v1">1</sup>LORD'))
