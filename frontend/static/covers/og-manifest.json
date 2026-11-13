@@ -7871,6 +7871,154 @@
 				494
 			]
 		},
+		"catena-aurea-john": {
+			"ground": "24a1992c40c55891c48422f62e59747c4ee7b732378f4e58527d87bd72329fcc",
+			"style": "inscriptional",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.45,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[289, 263, 311, 307],
+					[110, 337, 490, 403],
+					[108, 386, 492, 452]
+				],
+				"subtitle": [
+					[137, 480, 463, 501],
+					[109, 501, 491, 522],
+					[120, 522, 480, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				543
+			]
+		},
+		"catena-aurea-luke": {
+			"ground": "4dbb88b98f26db6b5d9e4ffa84c9b01973ead102f9d4551c07a4e92c8c179d6b",
+			"style": "inscriptional",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[290, 263, 310, 307],
+					[110, 337, 490, 403],
+					[113, 386, 487, 452]
+				],
+				"subtitle": [
+					[137, 480, 463, 501],
+					[110, 501, 490, 522],
+					[120, 522, 480, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				543
+			]
+		},
+		"catena-aurea-mark": {
+			"ground": "77baf95ad23ca6bb1ce44085123cade778d7c9ddc2804dfe5210ac0e53f75f7b",
+			"style": "inscriptional",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[289, 263, 311, 307],
+					[110, 337, 490, 403],
+					[104, 386, 496, 452]
+				],
+				"subtitle": [
+					[137, 480, 463, 501],
+					[107, 501, 493, 522],
+					[120, 522, 480, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				543
+			]
+		},
+		"catena-aurea-matthew": {
+			"ground": "79d4cad0da8b7bed1faa1e7a4446f59f7e64a2923f2245dedf7e6db70183b377",
+			"style": "inscriptional",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[292, 267, 308, 311],
+					[124, 341, 476, 403],
+					[63, 386, 537, 448]
+				],
+				"subtitle": [
+					[95, 477, 505, 498],
+					[125, 498, 475, 519],
+					[120, 519, 480, 540]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				255,
+				540
+			]
+		},
 		"catena-on-john": {
 			"ground": "9c5e7b1fec7d31047bd92d3b0cd26c97a579e88347a687e3309c0eeb5548ddbf",
 			"style": "originals",
