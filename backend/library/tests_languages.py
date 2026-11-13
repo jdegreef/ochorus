@@ -1244,6 +1244,21 @@ class AdminLanguageSettingsTests(TestCase):
     def test_unknown_language_is_404(self):
         self.assertEqual(self._patch("zz", {"name": "X"}).status_code, 404)
 
+    def test_typography_is_settable_from_the_admin_and_reaches_the_prompt(self):
+        # The reason it is a field rather than a dict in translation.py: a
+        # language added here (say Chinese, which also sets 「 」) must be able
+        # to carry a typography rule without a deploy.
+        from .translation import system_prompt
+
+        self._create_invented()
+        rule = "Quotations in 「 」."
+        res = self._patch("zz", {"typography": f"  {rule}  "})
+        self.assertEqual(res.status_code, 200, res.data)
+        self.assertEqual(res.data["settings"]["typography"], rule)
+        self.assertIn(f"TYPOGRAPHY: {rule}", system_prompt("zz"))
+        self._patch("zz", {"typography": ""})  # blank clears it: no rule
+        self.assertNotIn("TYPOGRAPHY", system_prompt("zz"))
+
     def test_the_deploy_leaves_an_admin_created_language_alone(self):
         # The other half of the create-only rule: the seed re-asserts identity
         # for languages IT defines. A language the admin invented isn't in the

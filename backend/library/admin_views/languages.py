@@ -390,6 +390,7 @@ class AdminLanguageCreateView(AdminAudited, APIView):
             bible_attribution=str(data.get("bible_attribution", "")).strip(),
             rtl=bool(data.get("rtl")),
             glossary=glossary,
+            typography=str(data.get("typography", "")).strip(),
             is_source=False,
             status=Language.Status.DRAFT,
             sort_order=(last.sort_order + 1) if last else 0,
@@ -502,6 +503,12 @@ class AdminLanguageSettingsView(AdminAudited, APIView):
             lang.rtl = bool(data["rtl"])
             changed.append("rtl")
 
+        # Free text with no column limit (a TextField), so it stays out of the
+        # length-checked loop above; blank is allowed and means "no rule".
+        if "typography" in data:
+            lang.typography = str(data["typography"]).strip()
+            changed.append("typography")
+
         try:
             if "glossary" in data:
                 lang.glossary = _clean_glossary(data["glossary"])
@@ -560,6 +567,7 @@ def language_settings(lang: Language) -> dict:
         "rtl": lang.rtl,
         "glossary": dict(lang.glossary or {}),
         "glossary_terms": list(GLOSSARY_TERMS),
+        "typography": lang.typography,
         "missing_glossary_terms": missing_glossary_terms(lang.glossary),
         "repo_managed": lang.code in SEED_LANGUAGES or lang.is_source,
     }

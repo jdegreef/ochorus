@@ -1027,6 +1027,18 @@ archaic spelling and period punctuation are the text, not defects in it.
   transform is punctuation-only, and that assertion is what makes it safe to run
   over scripture, whose WORDING the byte-for-byte rule protects — quotation
   marks are typography the API supplies, not the text.
+- **A language with NO shipped books has nothing to measure — its convention
+  is written down instead.** Japanese is the case: until its first edition
+  ships, the house typography is its `Language.typography` (seeded from
+  `library/language_seed.py`). The API path appends it to the system prompt;
+  an in-session fan-out must paste that string **verbatim** into every
+  translator's brief, or the first Japanese book sets ten conventions at once
+  and becomes the precedent every later job measures. The reader will not
+  repair it (`smartQuotes.ts` leaves Japanese marks alone by design), and
+  `tests_fixture.QuoteStyleTests` fails any Japanese text — work rows, bios
+  under `author_bios_ja/`, topic and plan prose — carrying a `&quot;`,
+  straight, curly or guillemet mark. Once the first `ja` book ships, measure
+  from it as above.
 - **Fan-out guarantees cross-chapter divergence, so budget a RECONCILIATION
   pass** (#756). One-subagent-per-chapter means no translator ever sees another
   chapter, and per-chapter validation is blind to it by construction: every one
