@@ -48,6 +48,7 @@
 	} from '$lib/contentNav';
 	import { localizeHref as localizeSlashed } from '$lib/href';
 	import type { NavSection } from '$lib/contentNav';
+	import { BIBLE_PATH, isBibleBook } from '$lib/bible';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
 	import PentecostFlames from '$lib/components/PentecostFlames.svelte';
@@ -268,9 +269,17 @@
 	// is the canonical path ("/books", "/books/[slug]") — compare against that.
 	// Book Series hangs off Books (its breadcrumb and the Books page's rail) and
 	// has no nav slot of its own, so its pages keep Books lit.
+	// A book of the Bible's page belongs to the Bible tab, not Books: its book
+	// is off the Books shelves (`splitBible`). Read off the page's own data.
+	const onBibleBook = $derived(
+		($page.route.id ?? '').startsWith('/books/[slug]') &&
+			!!($page.data as { book?: { series?: { slug: string } | null } }).book &&
+			isBibleBook(($page.data as { book: { series?: { slug: string } | null } }).book)
+	);
 	const isActive = (href: string) => {
 		const route = $page.route.id ?? '';
 		if (href === '/') return route === '/';
+		if (onBibleBook) return href === BIBLE_PATH;
 		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
 	};
 

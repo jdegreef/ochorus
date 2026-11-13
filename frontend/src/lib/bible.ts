@@ -56,6 +56,16 @@ export function splitBible<T extends { series?: { slug: string } | null }>(
 	return { classics, bible };
 }
 
+/** `splitBible` for a reader in `locale`: where the hub exists (`bibleIn`) the
+ *  Bible's books come out of the general shelves; elsewhere nothing does. The
+ *  one gate the /books route and its shelf share. */
+export function shelfSplit<T extends { series?: { slug: string } | null }>(
+	books: readonly T[],
+	locale: string
+): { classics: T[]; bible: T[] } {
+	return bibleIn(locale) ? splitBible(books) : { classics: [...books], bible: [] };
+}
+
 export type Testament = 'old' | 'new';
 
 export interface BibleDivision {

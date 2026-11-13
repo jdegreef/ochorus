@@ -47,7 +47,7 @@
 	import { groupBySeries, seriesAmong } from '$lib/series';
 	import { browseRows } from '$lib/browseRows';
 	import { collapseEditions, editionFamilies } from '$lib/edition';
-	import { BIBLE_PATH, bibleIn, splitBible } from '$lib/bible';
+	import { BIBLE_PATH, shelfSplit } from '$lib/bible';
 
 	let {
 		books,
@@ -145,9 +145,7 @@
 	// slot — the row a reader sees. Only where the hub exists (`bibleIn`); any
 	// filter or query searches the whole shelf again, so "Psalms" or the Prayer
 	// topic still finds its book, as site search and the topic pages do.
-	const split = $derived(
-		bibleIn(getLang()) ? splitBible(books) : { classics: books, bible: [] as BookSummary[] }
-	);
+	const split = $derived(shelfSplit(books, getLang()));
 	const classics = $derived(split.classics);
 	const bibleBooks = $derived(split.bible);
 	/** The pinned row's book: the first book of the canon present, retitled —
@@ -585,9 +583,11 @@
 			     once showed nothing here at all, so a query matching nine of
 			     fifty-nine books looked exactly like a library of nine. -->
 			{#if searching}
+				<!-- A filter searches the whole shelf, the Bible's books one by one
+				     (`filtered`), so "of y" counts them that way too. -->
 				<FilterSummary
 					shown={sorted.length}
-					total={slotCount}
+					total={fold(books).length}
 					template={t('books.showing')}
 					onClear={clearFilters}
 					chips={activeChips}

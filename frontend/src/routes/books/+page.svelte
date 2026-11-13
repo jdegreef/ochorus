@@ -7,7 +7,7 @@
 	import { localizeHref } from '$lib/href';
 	import BooksShelf from '$lib/components/BooksShelf.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import { bibleIn, splitBible } from '$lib/bible';
+	import { shelfSplit } from '$lib/bible';
 	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
@@ -19,7 +19,7 @@
 	// crawler sees the works, not an opaque grid. Built from the full set — the
 	// classics the shelf lists, so not the Bible's books, which the shelf stands
 	// one pinned row for (BooksShelf; the /bible/ hub lists them).
-	const listed = $derived(bibleIn(getLang()) ? splitBible(books).classics : books);
+	const listed = $derived(shelfSplit(books, getLang()).classics);
 	const booksLd = $derived(
 		itemList(
 			t('nav.books'),

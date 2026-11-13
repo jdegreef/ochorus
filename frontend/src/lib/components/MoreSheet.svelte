@@ -9,8 +9,7 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
-	import { PRIMARY_NAV, BIBLE_NAV, ORIGINALS_DEST, hubDests } from '$lib/contentNav';
-	import { bibleIn } from '$lib/bible';
+	import { PRIMARY_NAV, BIBLE_NAV, ORIGINALS_DEST, hubDests, primaryNav } from '$lib/contentNav';
 	import { AUDIENCE_HUBS } from '$lib/audienceHub';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
@@ -40,7 +39,12 @@
 	// end it on a lone one. Two across for an even count and three for an odd
 	// one, so no row ends on a lone tile; a single tile takes the row.
 	const hubTiles = $derived(
-		[...(bibleIn(lang.current) ? [{ href: BIBLE_NAV.href, labelKey: 'nav.bible' }] : []), ...hubDests(lang.current)].map(
+		// Gated by `primaryNav`, the one list the other menus read, so the sheet
+		// offers the Bible exactly where they do.
+		[
+			...(primaryNav(lang.current).includes(BIBLE_NAV) ? [{ href: BIBLE_NAV.href, labelKey: 'nav.bible' }] : []),
+			...hubDests(lang.current)
+		].map(
 			(d) => ({ href: localizeHref(d.href), labelKey: d.labelKey })
 		)
 	);
