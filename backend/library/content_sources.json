@@ -46,7 +46,8 @@
     "library/leader_guides.py",
     "library/data/leader_guides",
     "library/daily_books.py",
-    "library/bible_sermons.py"
+    "library/bible_sermons.py",
+    "library/catena.py"
   ],
   "_reader_exempt_note": [
     "Modules the serializers import that carry NO reader prose, so a change to",
@@ -64,6 +65,7 @@
     "library/translation.py": "The translate pipeline. What it produces ships as fixture rows under library/fixtures/content, which is already a root.",
     "library/contemporize.py": "The modern-English pipeline. The serializers take only its MODERN_LANGUAGE key; the prose itself ships as fixture rows.",
     "library/localization.py": "Resolves which language a request asked for. Routing, not prose.",
+    "library/content_fixtures.py": "The fixture's format and its digest. catena.py reads only content_digest(), as the key of a per-deploy cache; the prose it fingerprints is the fixture rows, already a root.",
     "library/languages.py": "The Language registry accessor. The registry's DATA is DB-owned (an admin can add a language without a deploy) and seeded from language_seed.py; which locales are live reaches the build through fetch-live-locales.mjs, not through this digest."
   }
 }

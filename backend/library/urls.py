@@ -14,6 +14,7 @@ from .views import (
     BookGuideView,
     BookListView,
     ChapterBatchView,
+    ChapterCatenaView,
     ChapterDetailView,
     DailyReadingView,
     DailyShelfView,
@@ -135,5 +136,11 @@ urlpatterns = [
         "books/<slug:slug>/chapters/<int:order>/",
         ChapterDetailView.as_view(),
         name="chapter-detail",
+    ),
+    # A Bible chapter's catena, verse by verse (library/catena).
+    path(
+        "books/<slug:slug>/chapters/<int:order>/catena/",
+        ChapterCatenaView.as_view(),
+        name="chapter-catena",
     ),
 ]
