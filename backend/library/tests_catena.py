@@ -13,7 +13,7 @@ from django.test import SimpleTestCase, TestCase
 from rest_framework.test import APIClient
 
 from .catena import CATENAS, _chapter_map, first_chapter, passages
-from .management.commands.build_catena import BOOKS
+from .management.commands.build_catena import BOOKS, Command
 from .models import Author, Book, Chapter, Series
 
 LIBRARY = Path(settings.BASE_DIR) / "library"
@@ -105,6 +105,12 @@ class ShippedCatenaTests(SimpleTestCase):
             # Keyed by the Logia work id an excerpt id begins with ("work");
             # the catena prints the voice's name and short work title ("title").
             voices = {v["work"]: (v["name"], v["title"]) for v in meta["voices"]}
+            # An excerpt id carries its work's own verse numbering (the Psalms'
+            # Hebrew); build_catena placed it by the English (VERSIFICATION).
+            reader = Command()
+            reader.meta = meta
+            reader.owb = json.loads((EDITORIAL / code / "owb_sections.json").read_text("utf-8"))
+            to_english = reader.versification(code)
             selection = json.loads((EDITORIAL / code / "selection.json").read_text("utf-8"))["passages"]
             blocks = [
                 b
@@ -119,7 +125,8 @@ class ShippedCatenaTests(SimpleTestCase):
                 lo = verse(passage["start"])
                 hi = verse(selection[k + 1]["start"]) if k + 1 < len(selection) else (999, 999)
                 for excerpt_id in passage["excerpts"]:
-                    at = verse(excerpt_id)
+                    first = f"{code}.{'.'.join(map(str, verse(excerpt_id)))}"
+                    at = to_english(excerpt_id.split(".")[0], first, first)[0]
                     home = max(i for i, s in enumerate(starts) if s <= max(at, lo))
                     self.assertTrue(lo <= starts[home] < hi, (code, excerpt_id, blocks[home]["ref"]))
                     expected[(blocks[home]["ref"], *voices[excerpt_id.split(".")[0]])] += 1

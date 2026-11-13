@@ -47,6 +47,7 @@
 	import { groupBySeries, seriesAmong } from '$lib/series';
 	import { browseRows } from '$lib/browseRows';
 	import { collapseEditions, editionFamilies } from '$lib/edition';
+	import { BIBLE_PATH, shelfSplit } from '$lib/bible';
 
 	let {
 		books,
@@ -139,9 +140,30 @@
 	const fold = (list: readonly BookSummary[]): readonly BookSummary[] =>
 		folding ? collapseEditions(list) : list;
 	const editionsOf = (b: BookSummary) => (folding ? (family.get(b.slug) ?? 1) : 1);
+	// The Bible's books stay off the unfiltered roster ($lib/bible splitBible):
+	// one pinned row stands for them and opens the hub, and they count as ONE
+	// slot — the row a reader sees. Only where the hub exists (`bibleIn`); any
+	// filter or query searches the whole shelf again, so "Psalms" or the Prayer
+	// topic still finds its book, as site search and the topic pages do.
+	const split = $derived(shelfSplit(books, getLang()));
+	const classics = $derived(split.classics);
+	const bibleBooks = $derived(split.bible);
+	/** The pinned row's book: the first book of the canon present, retitled —
+	 *  its cover is a wordless painted ground, so BookCover sets "The Bible"
+	 *  over Genesis' painting. */
+	const biblePin = $derived.by((): BookSummary | null => {
+		if (!bibleBooks.length) return null;
+		const first = bibleBooks.reduce((a, b) =>
+			(b.series_position ?? Infinity) < (a.series_position ?? Infinity) ? b : a
+		);
+		return { ...first, title: t('nav.bible'), subtitle: '', series: null, series_position: null };
+	});
 	/** The unfiltered shelf, one slot per card — what "N books", the "All N
-	 *  books" tab and "of y" count. */
-	const slots = $derived(fold(books));
+	 *  books" tab and "of y" count; the Bible's pinned row is one more. */
+	const slots = $derived(fold(classics));
+	const slotCount = $derived(slots.length + (biblePin ? 1 : 0));
+	/** Every edition on the unfiltered shelf, the Bible again as one. */
+	const editionCount = $derived(classics.length + (biblePin ? 1 : 0));
 	// The query, the topic and the length narrow the shelf; `shelf` picks the view.
 	const searching = $derived(
 		!!(filters.values.q.trim() || filters.values.topic || filters.values.len)
@@ -214,7 +236,7 @@
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		const len = filters.values.len;
-		return books.filter((b) => {
+		return (searching ? books : classics).filter((b) => {
 			const topic = filters.values.topic;
 			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
 			if (len && lengthOf(b) !== len) return false;
@@ -296,8 +318,8 @@
 			'@context': 'https://schema.org',
 			'@type': 'ItemList',
 			name: 'Ochorus Library',
-			numberOfItems: books.length,
-			itemListElement: books.slice(0, 60).map((b, i) => ({
+			numberOfItems: classics.length,
+			itemListElement: classics.slice(0, 60).map((b, i) => ({
 				'@type': 'ListItem',
 				position: i + 1,
 				url: `${SITE_URL}${localizeHref(`/books/${b.slug}`)}`,
@@ -381,11 +403,11 @@
 	{#snippet bookCounts()}
 		<!-- Works, as the grid shows them; and, where young-reader editions fold
 		     into their full texts, every edition too, so neither number hides. -->
-		{slots.length}
-		{slots.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-		{#if slots.length < books.length}
+		{slotCount}
+		{slotCount === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{#if slotCount < editionCount}
 			<span class="sep" aria-hidden="true">·</span>
-			{t('books.editionsCount').replace('%n%', String(books.length))}
+			{t('books.editionsCount').replace('%n%', String(editionCount))}
 		{/if}
 		<!-- No author count: its own (book writers, the imprint among them) ran
 		     beside the library's on the home page and the A–Z as a second,
@@ -397,7 +419,7 @@
 	<LibraryTabs
 		current="books"
 		series={series.length > 0}
-		browse={hasBrowse ? { count: slots.length, all: showAll } : undefined}
+		browse={hasBrowse ? { count: slotCount, all: showAll } : undefined}
 	/>
 
 	{#if loadError}
@@ -561,9 +583,11 @@
 			     once showed nothing here at all, so a query matching nine of
 			     fifty-nine books looked exactly like a library of nine. -->
 			{#if searching}
+				<!-- A filter searches the whole shelf, the Bible's books one by one
+				     (`filtered`), so "of y" counts them that way too. -->
 				<FilterSummary
 					shown={sorted.length}
-					total={slots.length}
+					total={fold(books).length}
 					template={t('books.showing')}
 					onClear={clearFilters}
 					chips={activeChips}
@@ -584,6 +608,18 @@
 			<!-- Results — in a size container, so the library grid steps to seven
 			     across by the shelf's own width (.book-shelf-room in app.css). -->
 			<div class="book-shelf-room">
+				{#if biblePin && !searching}
+					<!-- The Bible, pinned above the classics in every view and grouping
+					     (a row, not a 57th card, so the grid's full rows and pages
+					     stay as they are). -->
+					<div class="mb-6">
+						<BookListRow
+							book={biblePin}
+							href={`${BIBLE_PATH}/`}
+							meta={`${bibleBooks.length} ${bibleBooks.length === 1 ? t('common.bookOne') : t('common.bookMany')}`}
+						/>
+					</div>
+				{/if}
 				{#if sorted.length === 0}
 					<!-- Books exist in this language but the filters removed them all — a
 					     filtered-to-nothing state, so offer to clear (not the bare <p> that

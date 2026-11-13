@@ -211,6 +211,35 @@ export function foldEditions<B extends IndexBook<IndexAuthor>>(books: B[]): Inde
 		}));
 }
 
+/**
+ * File one extra, non-author entry into the index — a pinned link the A–Z
+ * stands in place of a shelf it does not list (the Bible's books, under "Bible,
+ * The", linking the hub). It goes under the initial of `pin.key` (a
+ * `filingKey`), at its place among that letter's writers in `locale`
+ * collation; a letter with no writers gets a group of its own, in order. A null
+ * pin returns the groups unchanged.
+ */
+export function withPin<E, P extends { key: string }>(
+	groups: { letter: string; entries: E[] }[],
+	pin: P | null,
+	keyOf: (entry: E) => string,
+	locale = 'en'
+): { letter: string; entries: (E | P)[] }[] {
+	const out: { letter: string; entries: (E | P)[] }[] = groups.map((g) => ({ ...g, entries: [...g.entries] }));
+	if (!pin) return out;
+	const collator = new Intl.Collator(locale, { sensitivity: 'base' });
+	const letter = initialOf(pin.key);
+	let group = out.find((g) => g.letter === letter);
+	if (!group) {
+		group = { letter, entries: [] };
+		const at = out.findIndex((g) => letter !== '#' && (g.letter === '#' || g.letter > letter));
+		out.splice(at === -1 ? out.length : at, 0, group);
+	}
+	const at = group.entries.findIndex((e) => collator.compare(keyOf(e as E), pin.key) > 0);
+	group.entries.splice(at === -1 ? group.entries.length : at, 0, pin);
+	return out;
+}
+
 /** `authorIndex` groups, with each writer's books folded into rows. */
 export function indexRows<A extends IndexAuthor, B extends IndexBook<IndexAuthor>>(
 	groups: IndexGroup<A, B>[]

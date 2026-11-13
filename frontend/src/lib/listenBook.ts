@@ -11,11 +11,10 @@
  * reader opens consumes it, matching or not, so a link opened in a new tab
  * (whose click never navigated this one) can't make a later visit surprise-play.
  */
-import { BIBLE_SERIES } from '$lib/bible';
+import { isBibleBook } from '$lib/bible';
 
 /** Whether the book page offers "Listen to the whole book": a book of the Bible. */
-export const listenBookFor = (book: { series?: { slug: string } | null }) =>
-	book.series?.slug === BIBLE_SERIES;
+export const listenBookFor = (book: { series?: { slug: string } | null }) => isBibleBook(book);
 
 let pending: string | null = null;
 

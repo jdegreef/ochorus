@@ -13,7 +13,7 @@
 		ENGLISH_HUBS,
 		ORIGINALS_DEST,
 		AZ_INDEX_DEST,
-		BIBLE_DEST
+		BIBLE_NAV
 	} from '$lib/contentNav';
 	import { holdFlag, TABBAR_FLAG } from '$lib/presenceFlag';
 
@@ -41,7 +41,7 @@
 		...ENGLISH_HUBS,
 		ORIGINALS_DEST,
 		AZ_INDEX_DEST,
-		BIBLE_DEST
+		BIBLE_NAV
 	].map((d) => d.href);
 	const routeId = $derived($page.route.id ?? '');
 	const under = (prefixes: string[]) => prefixes.some((p) => routeId === p || routeId.startsWith(`${p}/`));

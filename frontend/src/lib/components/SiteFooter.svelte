@@ -22,7 +22,7 @@
 	import { localizeHref, deLocalizeHref, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import { isUnmodifiedPrimaryClick } from '$lib/plainClick';
 	import {
-		PRIMARY_NAV,
+		primaryNav,
 		SERIES_DEST,
 		AUDIENCE_DESTS,
 		ORIGINALS_DEST,
@@ -169,12 +169,13 @@
 			<p class="mt-1 text-small text-muted">{t('footer.ministry')}</p>
 		</div>
 
-		<!-- Read: the primary five, in PRIMARY_NAV order (shared with the top nav
-		     and the command palette so the three can't drift — F2). -->
+		<!-- Read: the primary journeys, in `primaryNav` order (shared with the top
+		     nav and the command palette so the three can't drift — F2), the Bible
+		     among them where its books have shipped. pageHref: /bible/ is slashed. -->
 		{#snippet readList()}
 			<ul class="footer-links">
-				{#each PRIMARY_NAV as d (d.href)}
-					<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
+				{#each primaryNav(lang.current) as d (d.href)}
+					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
 				{/each}
 			</ul>
 		{/snippet}
@@ -195,8 +196,8 @@
 					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
 				{/each}
 				<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
-				<!-- The Bible where its books have shipped, then the English-only hubs
-				     (`contentNav.hubDests`, the one gate every menu shares). -->
+				<!-- The English-only hubs (`contentNav.hubDests`, the one gate every
+				     menu shares). -->
 				{#each hubDests(lang.current) as d (d.href)}
 					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
 				{/each}
