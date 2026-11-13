@@ -415,19 +415,14 @@ SEED_LANGUAGES: dict[str, dict] = {
         # carries only a 1965 New Testament (bibles/jpn_loc), which cannot
         # answer an Old Testament reference, so it is not an option either.
         #
-        # NOTE: `bible` is the Take Root translation code, which this (egress-
-        # blocked) session CANNOT verify — api.takeroot.bible is unreachable
-        # here. Take Root names the Korean and Vietnamese texts by their English
-        # language name ("korean", "vietnamese"), so "japanese" is the best
-        # guess. A wrong value cannot break the build (seeds/tests never hit the
-        # API) but WILL garble a networked translation run's scripture, so
-        # VERIFY — that the code resolves AND that it is the 口語訳 (John 1:1
-        # 初めに言があった。言は神と共にあった。; John 15:4 わたしにつながっていなさい)
-        # — before the first API-backed Japanese job:
-        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        # `bible` is the Take Root translation code. Verified 2026-11-13 against
+        # api.takeroot.bible/api/bible/translations/: the 口語訳 is `japkougo`
+        # ("Japanese Kougo-yaku 口語訳「聖書」(1954/1955年版)", public domain) —
+        # not "japanese", which 404s. Its John 1:1 reads 初めに言があった。言は神と
+        # 共にあった。 and John 15:4 わたしにつながっていなさい, as expected. Re-check
+        # with CHECK_BIBLE_CODES=1 uv run python manage.py test \
         #     library.tests_languages.LanguageSeedTableTests
-        # from a network that can reach api.takeroot.bible.
-        "bible": "japanese",
+        "bible": "japkougo",
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
         "bible_label": "口語訳聖書",
