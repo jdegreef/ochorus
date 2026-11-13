@@ -9,7 +9,8 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
-	import { PRIMARY_NAV, ORIGINALS_DEST, hubDests } from '$lib/contentNav';
+	import { PRIMARY_NAV, BIBLE_NAV, ORIGINALS_DEST, hubDests } from '$lib/contentNav';
+	import { bibleIn } from '$lib/bible';
 	import { AUDIENCE_HUBS } from '$lib/audienceHub';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
@@ -33,10 +34,15 @@
 	);
 
 	// The hub row: the Bible where its books have shipped, then the English-only
-	// hubs (`contentNav.hubDests`). Two across for an even count and three for an
-	// odd one, so no row ends on a lone tile; a single tile takes the row.
+	// hubs (`contentNav.hubDests`). The Bible is a primary section on the wider
+	// menus (`primaryNav`), but here it stays in this row, labelled in full ("The
+	// Bible"): the Explore grid above is two across, and an odd ninth tile would
+	// end it on a lone one. Two across for an even count and three for an odd
+	// one, so no row ends on a lone tile; a single tile takes the row.
 	const hubTiles = $derived(
-		hubDests(lang.current).map((d) => ({ href: localizeHref(d.href), labelKey: d.labelKey }))
+		[...(bibleIn(lang.current) ? [{ href: BIBLE_NAV.href, labelKey: 'nav.bible' }] : []), ...hubDests(lang.current)].map(
+			(d) => ({ href: localizeHref(d.href), labelKey: d.labelKey })
+		)
 	);
 
 	/** Every link in the sheet navigates, so any link tap closes it — one

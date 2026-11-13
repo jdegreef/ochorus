@@ -605,6 +605,12 @@
 .night-band {
 	--section-books: var(--hue-indigo);
 	--section-books-soft: var(--hue-indigo-soft);
+	/* The Bible shares Books' indigo on purpose: its 66 are Book rows, its tab
+	   sits right beside Books, and the palette has no seventh hue that is not
+	   a neighbour's (teal falls between cypress and slate, orange between
+	   oxblood and ochre). Its own alias, so giving it one later is one line. */
+	--section-bible: var(--hue-indigo);
+	--section-bible-soft: var(--hue-indigo-soft);
 	--section-sermons: var(--hue-oxblood);
 	--section-sermons-soft: var(--hue-oxblood-soft);
 	--section-plans: var(--hue-cypress);
@@ -632,6 +638,10 @@
 [data-section='books'] {
 	--section-hue: var(--section-books);
 	--section-hue-soft: var(--section-books-soft);
+}
+[data-section='bible'] {
+	--section-hue: var(--section-bible);
+	--section-hue-soft: var(--section-bible-soft);
 }
 [data-section='sermons'] {
 	--section-hue: var(--section-sermons);
@@ -1907,8 +1917,9 @@ nav.appnav .navmore {
    the brand and controls need ~892px with their icons, so here the bar sheds
    what it can spare rather than growing a second row: the link icons go (the
    section hue still marks the active pill), and Home goes because the logo
-   beside it already goes home. What's left — five words — fits a portrait
-   iPad in English; a longer-label locale scrolls the links sideways inside
+   beside it already goes home. Biographies and (in English) the Bible go to
+   the More menu (TABLET_MORE_SECTIONS). What's left — four words — fits a
+   portrait iPad in English; a longer-label locale scrolls the links sideways inside
    their own track (the grid's middle column is minmax(0, 1fr), so it can
    shrink below its content) instead of wrapping or pushing the controls off. */
 @media (min-width: 768px) and (max-width: 1023.98px) {
@@ -1937,12 +1948,32 @@ nav.appnav .navmore {
 	nav.appnav .navlinks a > svg {
 		display: none;
 	}
+	/* TABLET_MORE_SECTIONS (contentNav.ts): the More menu lists these. */
 	nav.appnav .navlinks a[data-home],
+	nav.appnav .navlinks a[data-section='bible'],
 	nav.appnav .navlinks a[data-section='biographies'] {
 		display: none;
 	}
 	nav.appnav .navmore {
 		display: block;
+	}
+}
+/* Small desktops (1024–1279px): the full bar — seven links with their icons
+   since the Bible joined it (~715px) — left the 1fr side rails ~120px each at
+   1024px, and the search pill's ⌘K and "Sign in" wrapped onto a second line
+   (they already did at 1024–1110px with six). So here the rails take what the
+   brand and the controls need (auto) and the links centre in what is left,
+   and Home goes as on a tablet (the logo beside it goes home). From 1280px
+   the symmetric 1fr | auto | 1fr grid has room again. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+	nav.appnav .appnav-inner {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+	}
+	nav.appnav .navlinks a {
+		padding-inline: 0.6rem;
+	}
+	nav.appnav .navlinks a[data-home] {
+		display: none;
 	}
 }
 nav.appnav .navmore-btn {

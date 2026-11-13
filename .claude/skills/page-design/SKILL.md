@@ -660,8 +660,14 @@ description (unclamped), the verse as a quiet epigraph; the ministry cross-link
 A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
-- [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Library** column (PRIMARY_NAV, automatic) or **More** column
+- [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot). A
+      section that only some locales have (the Bible) is a `NavDest` gated in
+      `primaryNav(locale)`, not a hub — the nav, footer Library column, palette
+      and reader links all map `primaryNav`, so it appears once, in one place.
+      Its marks go in `SECTION_DESTS` (marks.test.ts), its hue alias in
+      app.css (libraryPalette.test.ts `SECTIONS`). Check the bar still fits
+      at 1024px and in the tablet band (`TABLET_MORE_SECTIONS`).
+- [ ] footer **Library** column (`primaryNav`, automatic) or **More** column
       (`lib/components/SiteFooter.svelte`) — see "The footer is one band" below
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's kind tabs

@@ -9,7 +9,7 @@
  * ends in no number (the introduction, the conclusion) keeps its title as the
  * chip's label.
  */
-import { BIBLE_SERIES } from '$lib/bible';
+import { isBibleBook } from '$lib/bible';
 
 /** The Bible chapter number a chapter title ends in ("Psalm 23" → 23), or null. */
 export function chapterNumber(title: string | null | undefined): number | null {
@@ -23,5 +23,4 @@ export function chapterNumber(title: string | null | undefined): number | null {
  * long classic keeps its titled list — its chapter titles ARE its contents,
  * where a Bible book's are only "<Book> <n>".
  */
-export const chapterGridFor = (book: { series?: { slug: string } | null }) =>
-	book.series?.slug === BIBLE_SERIES;
+export const chapterGridFor = (book: { series?: { slug: string } | null }) => isBibleBook(book);

@@ -30,6 +30,31 @@ export const BIBLE_LOCALES: readonly string[] = ['en'];
 /** Whether the chrome links the hub for a reader in `locale`. */
 export const bibleIn = (locale: string) => BIBLE_LOCALES.includes(locale);
 
+/** Whether `book` is one of the Bible's books (the `the-bible` series). */
+export const isBibleBook = (book: { series?: { slug: string } | null }) =>
+	book.series?.slug === BIBLE_SERIES;
+
+/**
+ * The general Books shelves (/books's "All N books" and its counts, the A–Z)
+ * keep the Bible's books out of the classics' roster and stand ONE pinned entry
+ * for the hub in their place — sixty-six books of Scripture sorted among
+ * Spurgeon and Tozer read as a catalogue accident, and the hub is where they
+ * are in canonical order. Split here so both shelves draw the line the same
+ * way. Everything else (search, topics, series, the book pages, the curated
+ * Browse rows) keeps them.
+ *
+ * `bible` is empty where this language has no Bible book; the hub link is then
+ * not drawn (the page would 404).
+ */
+export function splitBible<T extends { series?: { slug: string } | null }>(
+	books: readonly T[]
+): { classics: T[]; bible: T[] } {
+	const classics: T[] = [];
+	const bible: T[] = [];
+	for (const b of books) (isBibleBook(b) ? bible : classics).push(b);
+	return { classics, bible };
+}
+
 export type Testament = 'old' | 'new';
 
 export interface BibleDivision {

@@ -2,7 +2,7 @@
 	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
 	import {
-		PRIMARY_NAV,
+		primaryNav,
 		SERIES_DEST,
 		AUDIENCE_DESTS,
 		ORIGINALS_DEST,
@@ -35,17 +35,18 @@
 	let searchSeq = 0;
 
 	// Quick-nav destinations — the app's primary pages, jumpable by name.
-	// Home, then the content types in PRIMARY_NAV order (shared with the top nav
-	// and footer so the three can't drift — F2), then the English-only hubs on
+	// Home, then the content types in `primaryNav` order (shared with the top nav
+	// and footer so the three can't drift — F2; the Bible among them where its
+	// books have shipped), then the English-only hubs on
 	// the same gate as the footer (in another locale they would jump to a page
 	// with nothing on it; ungate when translated), then the utility pages.
 	const COMMANDS = $derived([
 		{ href: '/', label: t('nav.home') },
-		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey) })),
+		...primaryNav(getLang()).map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		{ href: SERIES_DEST.href, label: t(SERIES_DEST.labelKey) },
 		...AUDIENCE_DESTS.map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		{ href: AZ_INDEX_DEST.href, label: t(AZ_INDEX_DEST.labelKey) },
-		// The Bible where its books have shipped, then the English-only hubs.
+		// The English-only hubs.
 		...hubDests(getLang()).map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		...(getLang() === 'en'
 			? [

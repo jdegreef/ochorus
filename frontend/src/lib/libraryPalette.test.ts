@@ -17,7 +17,7 @@ import { contrastRatio } from './coverArt';
 // can never stand in for the real one.
 const CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '');
 const HUES = ['indigo', 'oxblood', 'cypress', 'ochre', 'slate', 'plum'];
-const SECTIONS = ['books', 'sermons', 'plans', 'topics', 'biographies', 'originals'];
+const SECTIONS = ['books', 'bible', 'sermons', 'plans', 'topics', 'biographies', 'originals'];
 
 const PAPER = ":root[data-theme='light']";
 const SEPIA = ":root[data-theme='sepia']";
