@@ -3118,6 +3118,29 @@ class QuoteStyleTests(SimpleTestCase):
             "leaves a quotation open across a paragraph can still fool it.",
         )
 
+    def test_japanese_works_set_only_japanese_quotation_marks(self):
+        """A ja work quotes in 「 」 / 『 』 — none of the marks counted above.
+
+        The mixing guard cannot see this: a Japanese book with straight marks
+        AND 「 」 counts as (n, 0), wholly straight, and passes. Japanese also
+        gets no help from the reader (smartQuotes.ts leaves it alone), so the
+        convention in `Language.typography` is enforced here or nowhere.
+        """
+        offenders = [
+            f"{name}: {straight} straight, {curly} curly/guillemet"
+            for name, work in work_bodies()
+            if name.endswith(".ja.json")
+            for straight, curly in [mark_counts(work)]
+            if straight or curly
+        ]
+        self.assertEqual(
+            offenders,
+            [],
+            "Japanese quotes in 「 」 (nested and titles 『 』), never \" “ ” « ». "
+            "Convert the marks — punctuation only, letters and tags unchanged — "
+            "and re-brief the translators with the ja `Language.typography`.",
+        )
+
     def test_no_quotation_closes_with_the_wrong_mark(self):
         """A quotation opened curly must close curly, and close with a CLOSER.
 

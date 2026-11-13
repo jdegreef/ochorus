@@ -431,6 +431,16 @@ SEED_LANGUAGES: dict[str, dict] = {
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
         "bible_label": "口語訳聖書",
+        # The reader cannot produce 「 」 (see Language.typography), so the
+        # translation must set it. The convention every later ja book measures
+        # from, until a shipped ja book exists to measure.
+        "typography": (
+            "Set Japanese typography in the text itself: quotations in 「 」, a "
+            "quotation inside a quotation in 『 』, and a book title in 『 』 — never "
+            "straight or curly quotes. Full-width 。、！？ and （ ）, no spaces between "
+            "words or after punctuation, the ellipsis as …… and the dash as ——. "
+            "Western digits for verse references (ヨハネによる福音書 15:4)."
+        ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
         # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって
         # いなさい) and "the flesh" its Romans 8 肉. Prose is です・ます体; quoted

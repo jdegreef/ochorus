@@ -675,13 +675,10 @@ class TranslationPreflightTests(TestCase):
         self.assertIn("grace", missing_glossary_terms({"grace": "   "}))
 
     def test_japanese_prompt_carries_its_typography_and_no_one_elses_does(self):
-        # The reader cannot supply 「 」 at render time (smartQuotes.ts only
-        # swaps one straight mark for one curly one), so Japanese must get its
-        # marks from the translation. The rule is keyed by language, and adding
-        # it must not change any other language's prompt.
+        # See Language.typography.
         call_command("seed_languages", verbosity=0)
         ja = system_prompt("ja")
-        self.assertIn("7. TYPOGRAPHY:", ja)
+        self.assertIn("TYPOGRAPHY:", ja)
         self.assertIn("「 」", ja)
         for code in ("ko", "pt"):
             with self.subTest(language=code):

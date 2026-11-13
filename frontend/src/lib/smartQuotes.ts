@@ -27,7 +27,7 @@
  *   『 』), not curly quotes, so “ ” would be the wrong guess; and swapping a
  *   straight mark for 「 」 here would also need `foldQuotes` and the backend
  *   anchor fold to learn them. Instead the translator is told to set 「 」 in
- *   the stored text (`library/translation.py`, TYPOGRAPHY), where they belong.
+ *   the stored text (`Language.typography`), where they belong.
  *
  * Never inside `<code>`/`<pre>`/`<kbd>`/`<samp>`/`<script>`/`<style>`, never
  * in a tag's attributes, and never inside a URL written out in the text.

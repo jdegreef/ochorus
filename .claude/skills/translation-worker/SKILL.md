@@ -1029,15 +1029,15 @@ archaic spelling and period punctuation are the text, not defects in it.
   marks are typography the API supplies, not the text.
 - **A language with NO shipped books has nothing to measure — its convention
   is written down instead.** Japanese is the case: until its first edition
-  ships, the house typography is `library/translation.py` `TYPOGRAPHY["ja"]`
-  (「 」, nested 『 』, book titles in 『 』, full-width 。、！？（ ）, no
-  spaces, …… and ——, Western-digit references). The API path appends it to
-  the system prompt; an in-session fan-out must paste it **verbatim** into
-  every translator's brief, or the first Japanese book sets ten conventions at
-  once and becomes the precedent every later job measures. The reader will not
-  repair it: `smartQuotes.ts` leaves Japanese marks untouched by design. Check
-  before building the fixture that `&quot;`, “ and ” are all zero in the `ja`
-  bodies. Once the first `ja` book ships, measure from it as above.
+  ships, the house typography is its `Language.typography` (seeded from
+  `library/language_seed.py`). The API path appends it to the system prompt;
+  an in-session fan-out must paste that string **verbatim** into every
+  translator's brief, or the first Japanese book sets ten conventions at once
+  and becomes the precedent every later job measures. The reader will not
+  repair it (`smartQuotes.ts` leaves Japanese marks alone by design), and
+  `tests_fixture.QuoteStyleTests` fails a `ja` work carrying any `&quot;`,
+  straight, curly or guillemet mark. Once the first `ja` book ships, measure
+  from it as above.
 - **Fan-out guarantees cross-chapter divergence, so budget a RECONCILIATION
   pass** (#756). One-subagent-per-chapter means no translator ever sees another
   chapter, and per-chapter validation is blind to it by construction: every one
