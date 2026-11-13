@@ -265,7 +265,7 @@
 		align-items: center;
 		height: 100%;
 		padding: 0.6rem;
-		border-radius: var(--radius-card, 0.75rem);
+		border-radius: var(--radius-card);
 		color: inherit;
 		text-decoration: none;
 	}
@@ -281,7 +281,7 @@
 		min-width: 0;
 	}
 	.start-step {
-		font-size: var(--fs-eyebrow, 0.72rem);
+		font-size: var(--fs-eyebrow);
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		color: var(--accent);
