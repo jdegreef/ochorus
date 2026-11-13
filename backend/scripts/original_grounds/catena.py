@@ -92,17 +92,19 @@ SAG, LINKS = 16, 9
 _COSH1 = math.cosh(1)
 
 
-def chain(lamps=LAMPS, sag=SAG, links=LINKS):
+def chain(lamps=LAMPS, sag=SAG, links=LINKS, link_every=None):
     """The gold chain: a catenary hung between each lamp's handle and the next's,
     drawn as small links, alternately face-on and edge-on. The cosh term is
-    normalised to run from 0 at either end to 1 at the middle."""
+    normalised to run from 0 at either end to 1 at the middle. With
+    `link_every` (pixels), a span's links follow its length instead of `links`."""
     out = []
     for (x1, y1, s1), (x2, y2, s2) in itertools.pairwise(lamps):
         ax, ay = x1 - 15 * s1, y1 - 5 * s1
         bx, by = x2 - 15 * s2, y2 - 5 * s2
         angle = math.degrees(math.atan2(by - ay, bx - ax))
-        for i in range(links + 1):
-            t = i / links
+        n = max(1, round(math.dist((ax, ay), (bx, by)) / link_every)) if link_every else links
+        for i in range(n + 1):
+            t = i / n
             px = ax + (bx - ax) * t
             py = ay + (by - ay) * t + sag * (math.cosh(2 * t - 1) - _COSH1) / (1 - _COSH1)
             ry = 1.3 if i % 2 == 0 else .7
@@ -113,14 +115,15 @@ def chain(lamps=LAMPS, sag=SAG, links=LINKS):
     return "".join(out)
 
 
-def scene(sky, dawn, seed, star, landscape, lamps=LAMPS, sag=SAG, links=LINKS, n_stars=110):
+def scene(sky, dawn, seed, star, landscape, lamps=LAMPS, sag=SAG, links=LINKS, n_stars=110, figure="", link_every=None):
     """A catena ground: a night sky going to dawn, stars, one bright star, the
     book's own `landscape` (SVG, all of it below the title band), a warm pool
     on the ground, and the chain of `lamps` along the dark foreground.
 
     `sky` is the gradient's four colours, top to horizon; `dawn` is the low
     glow: (centre y, radius, (colour, opacity) at its heart, (colour, opacity)
-    halfway out); it fades into the horizon colour. `star` is (x, y, r)."""
+    halfway out); it fades into the horizon colour. `star` is (x, y, r).
+    `figure` is SVG drawn on the foreground, behind the chain (the Psalms' lyre)."""
     top, high, low, horizon = sky
     dawn_y, dawn_r, (heart, heart_o), (mid, mid_o) = dawn
     return f'''<!doctype html><html><body style="margin:0;background:#000">
@@ -158,25 +161,29 @@ def scene(sky, dawn, seed, star, landscape, lamps=LAMPS, sag=SAG, links=LINKS, n
 <circle cx="{star[0]}" cy="{star[1]}" r="{star[2]}" fill="#fff" opacity=".95"/>
 {landscape}
 <rect x="0" y="560" width="600" height="90" fill="url(#pool)"/>
-{chain(lamps, sag, links)}
+{figure}{chain(lamps, sag, links, link_every)}
 {"".join(lamp(*p) for p in lamps)}
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
 
 #: A Catena on John: eleven lamps under a deep blue night (John 1:5).
-JOHN = scene(
-    sky=("#050812", "#0b1428", "#14203a", "#22283f"),
-    dawn=(530, 230, ("#b8875a", ".55"), ("#6a4e52", ".30")),
-    seed=43, star=(476, 58, 2.1),
-    landscape="\n".join((
-        ridge([(0, 478), (80, 470), (160, 476), (240, 466), (310, 472), (380, 480), (450, 470), (530, 476), (600, 468)],
-              "#2a2a3d"),
-        ridge([(0, 494), (70, 489), (150, 486), (220, 492), (300, 496), (380, 492), (460, 487), (540, 491), (600, 488)],
-              "#161624"),
-        ridge([(0, 508), (100, 503), (200, 506), (300, 510), (400, 505), (500, 502), (600, 506)], "#0a0a10"),
-    )),
-)
+#: John's three dark ridges, which the Psalms ground shares.
+JOHN_RIDGES = "\n".join((
+    ridge([(0, 478), (80, 470), (160, 476), (240, 466), (310, 472), (380, 480), (450, 470), (530, 476), (600, 468)],
+          "#2a2a3d"),
+    ridge([(0, 494), (70, 489), (150, 486), (220, 492), (300, 496), (380, 492), (460, 487), (540, 491), (600, 488)],
+          "#161624"),
+    ridge([(0, 508), (100, 503), (200, 506), (300, 510), (400, 505), (500, 502), (600, 506)], "#0a0a10"),
+))
+#: John's deep blue night going to dawn, and its bright star, which the Psalms
+#: ground shares too.
+JOHN_NIGHT = {
+    "sky": ("#050812", "#0b1428", "#14203a", "#22283f"),
+    "dawn": (530, 230, ("#b8875a", ".55"), ("#6a4e52", ".30")),
+    "seed": 43, "star": (476, 58, 2.1),
+}
+JOHN = scene(**JOHN_NIGHT, landscape=JOHN_RIDGES)
 
 
 def aqueduct(x0, x1, top, span, pier, fill):
@@ -251,7 +258,59 @@ MATTHEW = scene(
     sag=30, links=21,
 )
 
-SCENES = {"catena-on-john": JOHN, "catena-on-romans": ROMANS, "catena-on-matthew": MATTHEW}
+#: A Catena on the Psalms: seven lamps, one for each of its commentators, three
+#: either side of David's lyre and the seventh at its foot, with the first light
+#: behind it: "Come awake, harp and lyre! I will wake up the dawn" (Psalm 57:8).
+#: Lyre and lamps keep below the subtitle band (their tops under y=550).
+PSALM_LAMPS = [
+    (46, 600, .9), (130, 608, .95), (214, 614, 1.0), (300, 640, 1.08),
+    (386, 614, 1.0), (470, 608, .95), (554, 600, .9),
+]
+
+
+def lyre(cx=300, top=553, foot=626):
+    """A kinnor: a wooden sound box, two arms curving up and apart, a slanting
+    yoke across their tips, and seven strings catching the lamplight."""
+    box_top = foot - 26
+    left_tip, right_tip = (cx - 40, top + 9), (cx + 42, top)
+    # The two arms: each drawn once in wood, and again later as a thin lit edge.
+    arms = (
+        f"M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}",
+        f"M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}",
+    )
+    wood = "".join(f'<path d="{d}" fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>' for d in arms)
+    lit = "".join(f'<path d="{d}" fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>' for d in arms)
+    frame = (
+        f'<path d="M{cx - 30} {foot} Q{cx - 34} {box_top} {cx - 24} {box_top} L{cx + 24} {box_top} '
+        f'Q{cx + 34} {box_top} {cx + 30} {foot} Z" fill="url(#clay)"/>'
+        + wood
+        + f'<path d="M{left_tip[0] - 5} {left_tip[1] + 1} L{right_tip[0] + 5} {right_tip[1] - 1}" '
+        f'stroke="#6e4728" stroke-width="4.5" stroke-linecap="round"/>'
+        + lit
+        + f'<ellipse cx="{cx}" cy="{box_top + 12}" rx="7" ry="4" fill="#1c120c"/>'
+    )
+    strings = []
+    for i in range(7):
+        t = (i + 1) / 8
+        x_top = left_tip[0] + (right_tip[0] - left_tip[0]) * t
+        y_top = left_tip[1] + (right_tip[1] - left_tip[1]) * t + 2
+        x_foot = cx - 16 + 32 * t
+        strings.append(
+            f'<line x1="{x_top:.1f}" y1="{y_top:.1f}" x2="{x_foot:.1f}" y2="{box_top + 4}" '
+            f'stroke="#f2d9a0" stroke-width=".7" opacity=".8"/>'
+        )
+    return frame + "".join(strings)
+
+
+
+PSALMS = scene(
+    **JOHN_NIGHT, landscape=JOHN_RIDGES, lamps=PSALM_LAMPS, figure=lyre(), link_every=6,
+)
+
+SCENES = {
+    "catena-on-john": JOHN, "catena-on-romans": ROMANS, "catena-on-matthew": MATTHEW,
+    "catena-on-the-psalms": PSALMS,
+}
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)

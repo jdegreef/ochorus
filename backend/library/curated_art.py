@@ -2802,6 +2802,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "The catena series' chain of lamps, one for each voice, before a town on a hill. Drawn "
         "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
     ),
+    # A Catena on the Psalms (Ochorus Original): the John ground's family (night
+    # going to dawn, lamps on a gold chain), with seven lamps for its seven
+    # commentators and David's lyre at the middle of the chain (Psalm 57:8).
+    # Lyre and lamps sit below the subtitle band.
+    "catena-on-the-psalms": Original(
+        "f99ab680b9c1eceb5e7dfded18794cbf6e4d04f2755c379f39b176762f5b191f",
+        "The catena family's chain of lamps, here seven, around David's lyre at dawn. "
+        "Drawn as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
 }
 
 
