@@ -1,4 +1,4 @@
-"""The ground for A Catena on John.
+"""The grounds for the catenas: A Catena on John, and (SCENES) its siblings.
 
 A catena is a chain of voices, and this ground draws one: eleven small clay
 lamps along a dark ridge, one for each commentator in the book, joined by a
@@ -81,17 +81,18 @@ SAG, LINKS = 16, 9
 _COSH1 = math.cosh(1)
 
 
-def chain():
+def chain(lamps=LAMPS, link_every=None):
     """The gold chain: a catenary hung between each lamp's handle and the next's,
     drawn as small links, alternately face-on and edge-on. The cosh term is
     normalised to run from 0 at either end to 1 at the middle."""
     out = []
-    for (x1, y1, s1), (x2, y2, s2) in itertools.pairwise(LAMPS):
+    for (x1, y1, s1), (x2, y2, s2) in itertools.pairwise(lamps):
         ax, ay = x1 - 15 * s1, y1 - 5 * s1
         bx, by = x2 - 15 * s2, y2 - 5 * s2
         angle = math.degrees(math.atan2(by - ay, bx - ax))
-        for i in range(LINKS + 1):
-            t = i / LINKS
+        links = round(math.dist((ax, ay), (bx, by)) / link_every) if link_every else LINKS
+        for i in range(links + 1):
+            t = i / links
             px = ax + (bx - ax) * t
             py = ay + (by - ay) * t + SAG * (math.cosh(2 * t - 1) - _COSH1) / (1 - _COSH1)
             ry = 1.3 if i % 2 == 0 else .7
@@ -102,7 +103,10 @@ def chain():
     return "".join(out)
 
 
-GROUND = f'''<!doctype html><html><body style="margin:0;background:#000">
+def ground(lamps, figure="", link_every=None):
+    """The family's night: sky going to dawn, three ridges, a pool of lamplight,
+    the chain and its lamps, and a book's own figure (drawn under the chain)."""
+    return f'''<!doctype html><html><body style="margin:0;background:#000">
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
 <defs>
  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -139,12 +143,59 @@ GROUND = f'''<!doctype html><html><body style="margin:0;background:#000">
 {ridge([(0, 494), (70, 489), (150, 486), (220, 492), (300, 496), (380, 492), (460, 487), (540, 491), (600, 488)], "#161624")}
 {ridge([(0, 508), (100, 503), (200, 506), (300, 510), (400, 505), (500, 502), (600, 506)], "#0a0a10")}
 <rect x="0" y="560" width="600" height="90" fill="url(#pool)"/>
-{chain()}
-{"".join(lamp(*p) for p in LAMPS)}
+{figure}{chain(lamps, link_every)}
+{"".join(lamp(*p) for p in lamps)}
 <rect width="600" height="800" fill="url(#grain)"/>
 </svg></body></html>'''
 
-SCENES = {"catena-on-john": GROUND}
+GROUND = ground(LAMPS)
+
+#: A Catena on the Psalms: seven lamps, one for each of its commentators, three
+#: either side of David's lyre and the seventh at its foot, with the first light
+#: behind it: "Come awake, harp and lyre! I will wake up the dawn" (Psalm 57:8).
+#: Lyre and lamps keep below the subtitle band (their tops under y=550).
+PSALM_LAMPS = [
+    (46, 600, .9), (130, 608, .95), (214, 614, 1.0), (300, 640, 1.08),
+    (386, 614, 1.0), (470, 608, .95), (554, 600, .9),
+]
+
+
+def lyre(cx=300, top=553, foot=626):
+    """A kinnor: a wooden sound box, two arms curving up and apart, a slanting
+    yoke across their tips, and seven strings catching the lamplight."""
+    box_top = foot - 26
+    left_tip, right_tip = (cx - 40, top + 9), (cx + 42, top)
+    frame = (
+        f'<path d="M{cx - 30} {foot} Q{cx - 34} {box_top} {cx - 24} {box_top} L{cx + 24} {box_top} '
+        f'Q{cx + 34} {box_top} {cx + 30} {foot} Z" fill="url(#clay)"/>'
+        f'<path d="M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}" '
+        f'fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>'
+        f'<path d="M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}" '
+        f'fill="none" stroke="#5e3b22" stroke-width="5" stroke-linecap="round"/>'
+        f'<path d="M{left_tip[0] - 5} {left_tip[1] + 1} L{right_tip[0] + 5} {right_tip[1] - 1}" '
+        f'stroke="#6e4728" stroke-width="4.5" stroke-linecap="round"/>'
+        f'<path d="M{cx - 20} {box_top + 1} C{cx - 30} {box_top - 18} {cx - 44} {top + 34} {left_tip[0]} {left_tip[1]}" '
+        f'fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>'
+        f'<path d="M{cx + 20} {box_top + 1} C{cx + 30} {box_top - 18} {cx + 46} {top + 28} {right_tip[0]} {right_tip[1]}" '
+        f'fill="none" stroke="#c98a4e" stroke-width="1" opacity=".55"/>'
+        f'<ellipse cx="{cx}" cy="{box_top + 12}" rx="7" ry="4" fill="#1c120c"/>'
+    )
+    strings = []
+    for i in range(7):
+        t = (i + 1) / 8
+        x_top = left_tip[0] + (right_tip[0] - left_tip[0]) * t
+        y_top = left_tip[1] + (right_tip[1] - left_tip[1]) * t + 2
+        x_foot = cx - 16 + 32 * t
+        strings.append(
+            f'<line x1="{x_top:.1f}" y1="{y_top:.1f}" x2="{x_foot:.1f}" y2="{box_top + 4}" '
+            f'stroke="#f2d9a0" stroke-width=".7" opacity=".8"/>'
+        )
+    return frame + "".join(strings)
+
+
+PSALMS = ground(PSALM_LAMPS, figure=lyre(), link_every=6)
+
+SCENES = {"catena-on-john": GROUND, "catena-on-the-psalms": PSALMS}
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
