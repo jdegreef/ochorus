@@ -8124,6 +8124,41 @@
 				523
 			]
 		},
+		"catena-on-the-psalms": {
+			"ground": "664b736cb262948cd96a48241ff035dc5a025f4a285e47545d331ec34fe4609d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[121, 267, 479, 343],
+					[136, 333, 464, 409]
+				],
+				"subtitle": [
+					[133, 467, 467, 495],
+					[126, 495, 474, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
@@ -10274,7 +10309,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.1,
+			"scrim": 0.2,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -14066,7 +14101,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.1,
+			"scrim": 0.2,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -15778,7 +15813,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.1,
+			"scrim": 0.2,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -32001,6 +32036,42 @@
 			"bar": 0,
 			"caps": true,
 			"sitemark": null
+		},
+		"pt/fire-against-the-dark": {
+			"ground": "aef4dcf6550fb5a2b8a43d4182719921ff2cf2178469bfe847718943f6ca90b3",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.2,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 243, 308, 287],
+					[142, 318, 458, 393],
+					[151, 379, 449, 454]
+				],
+				"subtitle": [
+					[148, 508, 452, 536],
+					[165, 536, 435, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
 		},
 		"pt/first-epistle-of-clement": {
 			"ground": "bdee7ceea0d52cca16494f3ed067de72d9fcbd53385b25630af4fdadd0d33319",

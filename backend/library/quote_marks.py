@@ -20,6 +20,8 @@ from __future__ import annotations
 import re
 from html import unescape
 
+from library.text import VERSE_MARKER
+
 TAG = re.compile(r"<[^>]+>")
 STRAIGHT = '"'
 ENTITY = "&quot;"
@@ -173,6 +175,13 @@ def convert(html: str, *, outer_guillemets: bool) -> tuple[str, int]:
     while i < n:
         # Never touch anything inside a tag: attribute values are quoted too.
         if html[i] == "<":
+            # A Bible verse number is invisible to the decision, digits and
+            # all: `<sup class="v">2</sup>"Who…` opens after whatever came
+            # before the number, as it would with no number there.
+            if verse := VERSE_MARKER.match(html, i):
+                out.append(verse[0])
+                i = verse.end()
+                continue
             j = html.find(">", i)
             j = n if j == -1 else j + 1
             if _BLOCK.match(html, i):

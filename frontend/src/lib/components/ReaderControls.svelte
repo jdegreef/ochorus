@@ -360,6 +360,11 @@
 		{/if}
 	</div>
 	{/if}
+	<!-- A book of the Bible only: its verse numbers (on by default). Outside the
+	     layout group, so every mount of the panel offers it. -->
+	{#if readerPrefs.scripture}
+		{@render onOff(readerPrefs.verseNumbers, (v) => readerPrefs.setVerseNumbers(v), t('reader.verseNumbers'))}
+	{/if}
 {/snippet}
 
 {#if sheet}

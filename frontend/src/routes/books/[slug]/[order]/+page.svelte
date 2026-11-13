@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
-	import { markVerse } from '$lib/verse';
+	import { hasVerseNumbers, markVerse } from '$lib/verse';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
 	import { OWB_SLUG } from '$lib/openWordBible';
@@ -93,6 +93,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import CatenaPanel from '$lib/components/CatenaPanel.svelte';
 	import { BIBLE_SERIES } from '$lib/bible';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -1927,6 +1928,15 @@
 		readerPrefs.youngEdition = childrens;
 	});
 
+	// A chapter of the Bible carries verse numbers (build_owb_book); only then does
+	// the Aa panel offer to hide them. Read off the body itself, so it is right
+	// before the book fetch lands — and on the introduction, which has none.
+	const verseNumbered = $derived(hasVerseNumbers(chapter.body_html));
+	$effect.pre(() => {
+		readerPrefs.scripture = verseNumbered;
+	});
+	onDestroy(() => (readerPrefs.scripture = false));
+
 	// Shared by both <ReaderControls> mounts (popover, phone sheet). `layout`
 	// and `margins` stay literal on each tag — readerSurfaces.test.ts reads them.
 	const rcProps = $derived({
@@ -2390,7 +2400,7 @@
 			<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. Quotes
 			     are curled at render time, length-preserving ($lib/smartQuotes). -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="reading" class:story={childrens} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
+			<div class="reading" class:story={childrens} class:no-verse-numbers={!readerPrefs.verseNumbers} class:ink-in={inkIn} onanimationend={inkDried} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html assetHtml(markVerse(smartQuotesHtml(chapter.body_html, language)))}</div>
 			<!-- Parsed straight after the body — its previousElementSibling, so it
 			     stays INSIDE .par-wrap, next to the body — so it can put a returning
 			     reader at their paragraph before first paint (see $lib/earlyResume).
@@ -2522,6 +2532,17 @@
 						</a>
 					{/each}
 				</div>
+			{/if}
+
+			<!-- A chapter of a Bible book with a catena: what the Church has said
+			     on its verses, a span at a time — the catena's own choice of two or
+			     three commentators, and a way into the catena at that block. Keyed,
+			     so the next chapter (the same page component) starts closed and
+			     fetches its own excerpts. -->
+			{#if chapter.catena}
+				{#key `${slug}/${chapter.order}`}
+					<CatenaPanel book={slug} order={chapter.order} catena={chapter.catena} />
+				{/key}
 			{/if}
 
 			<!-- A chapter of the Bible itself: other passages to read beside it,

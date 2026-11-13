@@ -58,6 +58,7 @@ from library.management.commands import build_catena
 from library.management.commands.build_catena import (
     _ELISION,
     _NON_LATIN,
+    _NOT_A_WORD,
     BOOKS,
     EDITORIAL,
     LOGIA,
@@ -369,16 +370,22 @@ class Command(build_catena.Command):
         m = _ARCHAIC.match(w)
         return bool(m) and len(m[1]) > 2 and any(stem in self.vocabulary for stem in (m[1], m[1] + "e"))
 
-    def damaged(self, text: str) -> bool:
-        """`debris` for a typed volume; for a scanned one, also any word the
-        library does not know, since that is how the OCR's misreadings show."""
+    def passage_damaged(self, text: str) -> bool:
+        """build_catena's damage filter, read on one Father's passage rather
+        than a whole excerpt: `debris` in any volume; in a scanned one also
+        `scan_slips` and any word the library does not know (`known`, which
+        also accepts the translators' old verb forms). Logia cuts these
+        excerpts at each verse's lemma, so an excerpt that stops mid-sentence
+        is the work's own shape, not damage (build_catena's _ENDS_WHOLE)."""
         if self.debris(text):
             return True
         # A rare old form the audit reads as two words run together ("shewest",
         # she + west) cannot be told from a real fusion here either.
         if any(english_audit._word_fusion(text, english_audit.library_word_counts())):
             return True
-        return self.scanned and not all(map(self.known, english_audit._WORD.findall(text)))
+        if not self.scanned:
+            return False
+        return self.scan_slips(text) or not all(map(self.known, english_audit._WORD.findall(_NOT_A_WORD.sub(" ", text))))
 
     def unsound(self, paras: list[str]) -> str | None:
         """Why one Father's passage cannot stand, or None if it can. A straight
@@ -387,7 +394,7 @@ class Command(build_catena.Command):
         text = " ".join(paras)
         if _NON_LATIN.search(text):
             return "Greek or Hebrew"
-        if self.damaged(text):
+        if self.passage_damaged(text):
             return "a misread or broken word" if not self.scanned else "the scan has damaged it"
         if _STRAY_CAPS.search(text):
             return "a stray capitalised word (a broken siglum or margin debris)"

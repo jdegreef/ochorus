@@ -13,8 +13,10 @@
  * not the same kind of thing:
  *
  *  - `<sup>` footnote residue is stripped at IMPORT, not here. In this corpus a
- *    `<sup>` is only ever a footnote marker (numbered or empty) pointing at a
- *    note that is gone, so the backend removes the lone ones from the stored
+ *    bare `<sup>` is only ever a footnote marker (numbered or empty) pointing at
+ *    a note that is gone — the one classed `<sup class="v">` is a Bible verse
+ *    number, for the eye only and dropped here like any other `<sup>` — so the
+ *    backend removes the lone bare ones from the stored
  *    body outright — junk for the eye as much as the ear
  *    (`library/corrections.py` `strip_footnote_markers`). Dropping `<sup>` below
  *    is now a FALLBACK: it covers un-migrated content and the welded-footnote

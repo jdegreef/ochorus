@@ -41,9 +41,8 @@
     "wesley-romans.ROM.1.29.1",
     "calvin-romans.ROM.1.31.1",
     "hodge-romans.ROM.1.21.1",
-    "bengel-romans.ROM.1.24.1",
     "henry-romans.ROM.1.28.3",
-    "chrysostom-romans.ROM.1.30.1"
+    "wesley-romans.ROM.1.32.1"
    ]
   },
   {
@@ -52,11 +51,11 @@
    "excerpts": [
     "henry-romans.ROM.2.1.1",
     "calvin-romans.ROM.2.4.1",
-    "chrysostom-romans.ROM.2.6.1",
     "wesley-romans.ROM.2.8.1",
     "hodge-romans.ROM.2.10.1",
     "haydock-romans.ROM.2.9-10.1",
-    "bengel-romans.ROM.2.9-10.1"
+    "bengel-romans.ROM.2.9-10.1",
+    "chrysostom-romans.ROM.2.5.1"
    ]
   },
   {
@@ -64,9 +63,9 @@
    "title": "The law and those without it",
    "excerpts": [
     "calvin-romans.ROM.2.12.1",
-    "bengel-romans.ROM.2.14.1",
     "chrysostom-romans.ROM.2.16.3",
-    "hodge-romans.ROM.2.12.2"
+    "hodge-romans.ROM.2.12.2",
+    "wesley-romans.ROM.2.15.1"
    ]
   },
   {
@@ -83,11 +82,11 @@
    "start": "2:25",
    "title": "Circumcision of the heart",
    "excerpts": [
-    "henry-romans.ROM.2.25-29.1",
     "calvin-romans.ROM.2.29.2",
-    "chrysostom-romans.ROM.2.27.2",
     "hodge-romans.ROM.2.25.2",
-    "bengel-romans.ROM.2.28-29.1"
+    "bengel-romans.ROM.2.28-29.1",
+    "chrysostom-romans.ROM.2.26.1",
+    "wesley-romans.ROM.2.27.1"
    ]
   },
   {
@@ -96,15 +95,14 @@
    "excerpts": [
     "henry-romans.ROM.3.2.6",
     "calvin-romans.ROM.3.4.2",
-    "hodge-romans.ROM.3.5.2",
-    "chrysostom-romans.ROM.3.7.1"
+    "chrysostom-romans.ROM.3.7.1",
+    "wesley-romans.ROM.3.6.1"
    ]
   },
   {
    "start": "3:9",
    "title": "No one is righteous",
    "excerpts": [
-    "chrysostom-romans.ROM.3.9-18.2",
     "calvin-romans.ROM.3.12.1",
     "henry-romans.ROM.3.15-17.1",
     "calvin-romans.ROM.3.16.1",
@@ -112,7 +110,9 @@
     "wesley-romans.ROM.3.10.1",
     "haydock-romans.ROM.3.9.1",
     "bengel-romans.ROM.3.13-14.1",
-    "chrysostom-romans.ROM.3.20.1"
+    "chrysostom-romans.ROM.3.19.2",
+    "henry-romans.ROM.3.18.1",
+    "chrysostom-romans.ROM.3.9-18.1"
    ]
   },
   {
@@ -121,7 +121,7 @@
    "excerpts": [
     "calvin-romans.ROM.3.21.5",
     "chrysostom-romans.ROM.3.24.3",
-    "hodge-romans.ROM.3.25.1"
+    "henry-romans.ROM.3.25-26.3"
    ]
   },
   {
@@ -177,7 +177,6 @@
    "title": "At peace with God through faith",
    "excerpts": [
     "bengel-romans.ROM.5.2.1",
-    "chrysostom-romans.ROM.5.4.2",
     "calvin-romans.ROM.5.3.1"
    ]
   },
@@ -205,7 +204,6 @@
    "start": "6:1",
    "title": "Dead to sin, alive to God",
    "excerpts": [
-    "hodge-romans.ROM.6.1.1",
     "calvin-romans.ROM.6.3.1",
     "chrysostom-romans.ROM.6.6.1",
     "calvin-romans.ROM.6.9.1",
@@ -213,7 +211,8 @@
     "henry-romans.ROM.6.14.2",
     "haydock-romans.ROM.6.12.1",
     "bengel-romans.ROM.6.6-7.1",
-    "chrysostom-romans.ROM.6.2.1"
+    "chrysostom-romans.ROM.6.2.1",
+    "hodge-romans.ROM.6.4.1"
    ]
   },
   {
@@ -242,7 +241,8 @@
    "excerpts": [
     "henry-romans.ROM.7.7.3",
     "calvin-romans.ROM.7.10.1",
-    "hodge-romans.ROM.7.13.1"
+    "chrysostom-romans.ROM.7.12.2",
+    "haydock-romans.ROM.7.7.1"
    ]
   },
   {
@@ -264,10 +264,12 @@
    "excerpts": [
     "calvin-romans.ROM.8.1.1",
     "henry-romans.ROM.8.3.1",
-    "chrysostom-romans.ROM.8.6.1",
     "calvin-romans.ROM.8.7.1",
-    "hodge-romans.ROM.8.11.1",
-    "wesley-romans.ROM.8.5.1"
+    "wesley-romans.ROM.8.5.1",
+    "chrysostom-romans.ROM.8.10.2",
+    "haydock-romans.ROM.8.2.1",
+    "haydock-romans.ROM.8.4.1",
+    "chrysostom-romans.ROM.8.11.2"
    ]
   },
   {
@@ -285,8 +287,9 @@
    "excerpts": [
     "chrysostom-romans.ROM.8.19.3",
     "bengel-romans.ROM.8.21.1",
-    "hodge-romans.ROM.8.22.1",
-    "calvin-romans.ROM.8.25.1"
+    "calvin-romans.ROM.8.25.1",
+    "hodge-romans.ROM.8.23.13",
+    "wesley-romans.ROM.8.20.1"
    ]
   },
   {
@@ -313,15 +316,16 @@
     "calvin-romans.ROM.8.33.2",
     "haydock-romans.ROM.8.35.1",
     "chrysostom-romans.ROM.8.38.2",
-    "bengel-romans.ROM.8.34.1"
+    "hodge-romans.ROM.8.31.2"
    ]
   },
   {
    "start": "9:1",
    "title": "Paul’s grief for Israel",
    "excerpts": [
-    "henry-romans.ROM.9.1-5.1",
-    "haydock-romans.ROM.9.4-5.1"
+    "haydock-romans.ROM.9.4-5.1",
+    "henry-romans.ROM.9.1.1",
+    "calvin-romans.ROM.9.5.1"
    ]
   },
   {
@@ -346,11 +350,11 @@
    "start": "9:19",
    "title": "The potter and the clay",
    "excerpts": [
-    "henry-romans.ROM.9.19.1",
     "calvin-romans.ROM.9.21.1",
     "wesley-romans.ROM.9.23.1",
     "hodge-romans.ROM.9.25.2",
-    "chrysostom-romans.ROM.9.27.1"
+    "chrysostom-romans.ROM.9.27.1",
+    "henry-romans.ROM.9.20.1"
    ]
   },
   {
@@ -367,13 +371,14 @@
    "title": "The righteousness that comes by faith",
    "excerpts": [
     "henry-romans.ROM.10.2.1",
-    "hodge-romans.ROM.10.3.2",
     "calvin-romans.ROM.10.6.3",
     "haydock-romans.ROM.10.8.1",
     "bengel-romans.ROM.10.9.1",
     "wesley-romans.ROM.10.12.1",
     "chrysostom-romans.ROM.10.11.1",
-    "calvin-romans.ROM.10.1.1"
+    "calvin-romans.ROM.10.1.1",
+    "haydock-romans.ROM.10.3.1",
+    "chrysostom-romans.ROM.10.4.2"
    ]
   },
   {
@@ -397,11 +402,12 @@
    "start": "11:1",
    "title": "The remnant of Israel",
    "excerpts": [
-    "hodge-romans.ROM.11.1.2",
     "wesley-romans.ROM.11.5.1",
     "chrysostom-romans.ROM.11.6.2",
     "hodge-romans.ROM.11.9-10.2",
-    "calvin-romans.ROM.11.2.6"
+    "calvin-romans.ROM.11.2.6",
+    "henry-romans.ROM.11.7.1",
+    "hodge-romans.ROM.11.3.1"
    ]
   },
   {
@@ -409,8 +415,8 @@
    "title": "Israel’s stumbling and the Gentiles’ salvation",
    "excerpts": [
     "wesley-romans.ROM.11.12.1",
-    "chrysostom-romans.ROM.11.13.2",
-    "hodge-romans.ROM.11.16.4"
+    "hodge-romans.ROM.11.16.4",
+    "calvin-romans.ROM.11.14.1"
    ]
   },
   {
@@ -432,7 +438,6 @@
     "bengel-romans.ROM.11.27-28.1",
     "calvin-romans.ROM.11.29.2",
     "wesley-romans.ROM.11.32.1",
-    "chrysostom-romans.ROM.11.28.1",
     "hodge-romans.ROM.11.26.2"
    ]
   },
@@ -462,7 +467,7 @@
     "chrysostom-romans.ROM.12.7.1",
     "haydock-romans.ROM.12.3.1",
     "wesley-romans.ROM.12.8.1",
-    "chrysostom-romans.ROM.12.4-5.2"
+    "bengel-romans.ROM.12.6.2"
    ]
   },
   {
@@ -477,7 +482,7 @@
     "haydock-romans.ROM.12.21.1",
     "bengel-romans.ROM.12.12.1",
     "calvin-romans.ROM.12.20.2",
-    "chrysostom-romans.ROM.12.10.1"
+    "chrysostom-romans.ROM.12.16.2"
    ]
   },
   {
@@ -515,7 +520,7 @@
     "haydock-romans.ROM.14.2.1",
     "henry-romans.ROM.14.4.5",
     "calvin-romans.ROM.14.5.1",
-    "chrysostom-romans.ROM.14.9.2"
+    "hodge-romans.ROM.14.7.1"
    ]
   },
   {
@@ -588,18 +593,17 @@
    "title": "A request for prayer",
    "excerpts": [
     "henry-romans.ROM.15.30-32.2",
-    "bengel-romans.ROM.15.33.1",
-    "chrysostom-romans.ROM.15.31.1"
+    "chrysostom-romans.ROM.15.31.1",
+    "wesley-romans.ROM.15.32.1"
    ]
   },
   {
    "start": "16:1",
    "title": "Paul commends Phoebe",
    "excerpts": [
-    "henry-romans.ROM.16.1-2.1",
-    "chrysostom-romans.ROM.16.2.3",
     "calvin-romans.ROM.16.1.2",
-    "wesley-romans.ROM.16.2.1"
+    "wesley-romans.ROM.16.2.1",
+    "chrysostom-romans.ROM.16.1.1"
    ]
   },
   {
@@ -609,14 +613,14 @@
     "bengel-romans.ROM.16.3.1",
     "haydock-romans.ROM.16.5.1",
     "calvin-romans.ROM.16.7.1",
-    "chrysostom-romans.ROM.16.11.1",
     "henry-romans.ROM.16.13.1",
     "hodge-romans.ROM.16.16.1",
     "wesley-romans.ROM.16.14.1",
     "chrysostom-romans.ROM.16.4.1",
     "wesley-romans.ROM.16.15.1",
     "calvin-romans.ROM.16.4.1",
-    "henry-romans.ROM.16.10.1"
+    "henry-romans.ROM.16.10.1",
+    "chrysostom-romans.ROM.16.12.1"
    ]
   },
   {
