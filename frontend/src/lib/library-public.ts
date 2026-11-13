@@ -1099,7 +1099,11 @@ export interface CatenaPassage {
 	reference: string;
 	/** The opening of the verses' text (Open Word Bible). */
 	text: string;
-	/** The block's paragraph index in the catena chapter — its `?p=` link. */
+	/** The catena chapter the block is in — usually `CatenaPointer.chapter`,
+	 *  but a span the catena files with the next chapter (John 7:53–8:11) is
+	 *  in that one. */
+	chapter: number;
+	/** The block's paragraph index in that chapter — its `?p=` link. */
 	p: number;
 	excerpts: { author: string; work: string; text: string }[];
 }

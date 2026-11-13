@@ -14,6 +14,7 @@
 	import { getChapterCatena, type CatenaPassage, type CatenaPointer } from '$lib/library-public';
 	import { catenaPassageHref, passageFor, spanId } from '$lib/catena';
 	import { localizeHref } from '$lib/href';
+	import { prefersReducedMotion } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 
@@ -52,20 +53,42 @@
 		}
 	}
 
+	/** Fetch if need be, then take the reader — and a screen reader — to what
+	 *  opened: focus the panel (it stays put whatever state it shows, so focus
+	 *  never drops to the page) and bring it on screen. */
+	async function reveal() {
+		await load();
+		await tick();
+		if (!panel) return;
+		panel.focus({ preventScroll: true });
+		// Not in page mode, whose columns a scroll would knock sideways: the
+		// chapter's ending keeps each block whole on its page there.
+		const box = panel.getBoundingClientRect();
+		if (!panel.closest('.paged') && (box.top < 0 || box.bottom > window.innerHeight)) {
+			panel.scrollIntoView({ block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+		}
+	}
+
 	async function toggle(ref: string) {
 		if (open === ref) {
 			open = null;
 			return;
 		}
 		open = ref;
-		await load();
-		// Take the reader (and a screen reader) to what opened.
-		await tick();
-		panel?.focus({ preventScroll: true });
+		await reveal();
+	}
+
+	function retry() {
+		failed = false;
+		void reveal();
 	}
 
 	function close(event: KeyboardEvent) {
 		if (event.key !== 'Escape' || open === null) return;
+		// Escape is this panel's: the route's window handler would otherwise also
+		// leave focus mode on the same key press.
+		event.preventDefault();
+		event.stopPropagation();
 		const ref = open;
 		open = null;
 		document.getElementById(`${panelId}-chip-${spanId(ref)}`)?.focus();
@@ -94,10 +117,18 @@
 		{/each}
 	</div>
 
-	<div id={panelId} class="catena-panel" hidden={open === null}>
+	<div
+		id={panelId}
+		class="catena-panel"
+		hidden={open === null}
+		tabindex="-1"
+		role="region"
+		aria-label={open ?? undefined}
+		bind:this={panel}
+	>
 		{#if open !== null}
 			{#if passage}
-				<h3 class="font-display text-h3" tabindex="-1" bind:this={panel}>{passage.reference}</h3>
+				<h3 class="font-display text-h3">{passage.reference}</h3>
 				<blockquote class="verse">{passage.text}</blockquote>
 				<ul class="excerpts">
 					{#each passage.excerpts as e, i (i)}
@@ -111,23 +142,21 @@
 				</ul>
 				<a
 					class="text-small text-accent hover:underline"
-					href={localizeHref(catenaPassageHref(catena.slug, catena.chapter, passage.p))}
+					href={localizeHref(catenaPassageHref(catena.slug, passage.chapter, passage.p))}
 					>{t('reader.catenaRead').replace('%title%', () => catena.title)} <Arrow /></a
 				>
 			{:else if failed}
-				<p class="text-small text-muted" tabindex="-1" bind:this={panel}>
+				<p class="text-small text-muted">
 					{t('reader.catenaError')}
-					<button type="button" class="underline" onclick={load}>{t('error.tryAgain')}</button>
+					<button type="button" class="underline" onclick={retry}>{t('error.tryAgain')}</button>
 				</p>
 			{:else if loading}
-				<p class="text-small text-muted" tabindex="-1" bind:this={panel}>…</p>
+				<p class="text-small text-muted">…</p>
 			{:else}
 				<!-- The served index lacks this span (a prerendered chip racing a
 				     newer API): the catena chapter itself still has it. -->
 				<a
 					class="text-small text-accent hover:underline"
-					tabindex="-1"
-					bind:this={panel}
 					href={localizeHref(catenaPassageHref(catena.slug, catena.chapter, 0))}
 					>{t('reader.catenaRead').replace('%title%', () => catena.title)} <Arrow /></a
 				>
@@ -142,11 +171,13 @@
 		padding: 1rem 1.1rem;
 		border-radius: var(--radius-card);
 		background: var(--surface-2);
+		/* Clear the reader's fixed header when brought on screen. */
+		scroll-margin-top: 5rem;
 	}
 	.catena-panel[hidden] {
 		display: none;
 	}
-	.catena-panel h3:focus {
+	.catena-panel:focus {
 		outline: none;
 	}
 	.verse {

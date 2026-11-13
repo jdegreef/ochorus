@@ -6,6 +6,7 @@ const passage = (ref: string, p: number): CatenaPassage => ({
 	ref,
 	reference: `John ${ref}`,
 	text: 'In the beginning was the Word.',
+	chapter: 2,
 	p,
 	excerpts: [{ author: 'Augustine', work: 'Tractates on John', text: 'Hear, brethren.' }]
 });

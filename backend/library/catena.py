@@ -8,10 +8,9 @@ Bible book itself (``build_owb_book``'s ``gospel-of-john``) can open, under a
 verse, the two or three excerpts the catena gives it, and step into the catena
 at that very block.
 
-Nothing is stored twice. The pairing of a Bible book with its catena is the two
-editorial folders that share a book code — ``data/owb/<CODE>/book.json`` and
-``data/catena/<CODE>/book.json`` — so a catena on Romans is wired to the reader's
-Romans the day its fixture ships, with no list to update here. The excerpts are
+The pairing of a Bible book with its catena is ``CATENAS`` below — here, in a
+content root, so a new pairing rebuilds the reader (``tests_catena`` fails when a
+shipped catena is missing from it). The excerpts are not stored twice: they are
 read from the catena chapter's own HTML, which ``build_catena`` lays out as:
 
     <h3>passage title</h3>
@@ -23,16 +22,23 @@ English only, as the Bible books and their catenas are.
 
 from __future__ import annotations
 
-import json
+import copy
+import hashlib
 import re
 from functools import lru_cache
-from pathlib import Path
 
 from bs4 import BeautifulSoup, Tag
-from django.conf import settings
 
-DATA = Path(settings.BASE_DIR) / "library" / "data"
+from .content_fixtures import content_digest
+from .scripture_graph import bible_book_of, bible_chapter_number
+
 LANGUAGE = "en"
+
+#: {canonical number of a book of the Bible: the slug of its catena}. A catena
+#: built with ``build_catena`` and shipped as a fixture gets a line here.
+CATENAS: dict[int, str] = {
+    43: "catena-on-john",
+}
 
 #: How much of an excerpt (and of the quoted verses) the panel shows, in words:
 #: an opening to decide by, not the excerpt — the catena itself is one tap away.
@@ -42,34 +48,38 @@ VERSE_WORDS = 40
 #: The verse span at the end of a block's citation: "John 3:14–16" -> "3:14–16",
 #: "John 7:53–8:11" -> "7:53–8:11".
 _SPAN = re.compile(r"(\d+:\d+(?:–\d+(?::\d+)?)?)$")
-#: A Bible book's reader chapter is titled with its chapter number ("John 3",
-#: "Psalm 23"), as is the catena's chapter on it.
-_TRAILING_NUMBER = re.compile(r"\s(\d+)$")
+#: A catena chapter is titled with the Bible chapter it is on ("John 3").
+_CATENA_TITLE = re.compile(r"\s(\d+)$")
 
 
-@lru_cache(maxsize=1)
-def catena_slugs() -> dict[str, str]:
-    """{Bible book slug: its catena's slug}, from the editorial folders that
-    share a book code (see the module docstring)."""
-    pairs = {}
-    root = DATA / "catena"
-    for meta in sorted(root.glob("*/book.json")) if root.is_dir() else ():
-        bible = DATA / "owb" / meta.parent.name / "book.json"
-        if bible.is_file():
-            pairs[json.loads(bible.read_text("utf-8"))["slug"]] = json.loads(
-                meta.read_text("utf-8")
-            )["slug"]
-    return pairs
+def catena_slug(book) -> str | None:
+    """The slug of the catena on a library Book, when it is a Bible book that
+    has one (``CATENAS``); None for every other book."""
+    bible = bible_book_of(book)
+    return CATENAS.get(bible.value) if bible is not None else None
 
 
-def bible_chapter_number(chapter) -> int | None:
-    """The Bible chapter a reader chapter of a Bible book is, or None for its
-    introduction and conclusion. ``build_owb_book`` sets reader chapter
-    ``order`` as Bible chapter ``order - 1`` and titles it so; both must agree
-    (as ``scripture_graph.classics_page`` requires) or nothing is linked."""
-    m = _TRAILING_NUMBER.search(chapter.title or "")
-    n = int(m.group(1)) if m else None
-    return n if n is not None and n == chapter.order - 1 else None
+@lru_cache(maxsize=16)
+def _chapter_map(slug: str, digest: str) -> tuple[str, dict[int, int]] | None:
+    """A catena's title and {Bible chapter: its chapter order} — read once per
+    deploy (``digest`` is the shipped content's): the titles and layout come
+    from the fixture. Whether it is published is asked live, with its bodies."""
+    from .models import Book
+
+    book = Book.objects.filter(slug=slug, language=LANGUAGE).only("title").first()
+    if book is None:
+        return None
+    orders: dict[int, int] = {}
+    for order, title in book.chapters.order_by("order").values_list("order", "title"):
+        m = _CATENA_TITLE.search(title or "")
+        if m:
+            orders.setdefault(int(m.group(1)), order)
+    return book.title, orders
+
+
+def first_chapter(ref: str) -> int:
+    """The Bible chapter a span begins in: "7:53–8:11" -> 7."""
+    return int(ref.split(":", 1)[0])
 
 
 def opening(text: str, words: int) -> str:
@@ -86,7 +96,6 @@ def _text(el: Tag) -> str:
     return " ".join(el.get_text(" ").split())
 
 
-@lru_cache(maxsize=64)
 def passages(body_html: str) -> tuple[dict, ...]:
     """A catena chapter's blocks that carry commentary, in order: each the span
     it quotes, the opening of its verses, ``p`` (the block's index among the
@@ -130,70 +139,94 @@ def passages(body_html: str) -> tuple[dict, ...]:
     return tuple(p for p in out if p["excerpts"])
 
 
+#: Parsed catena chapters, keyed by (slug, order, a hash of the body) — so an
+#: edited body is parsed afresh, and the cache holds no body text.
+_PARSED: dict[tuple[str, int, str], tuple[dict, ...]] = {}
+_PARSED_MAX = 256
+
+
+def _parsed(slug: str, order: int, body_html: str) -> tuple[dict, ...]:
+    key = (slug, order, hashlib.sha256(body_html.encode()).hexdigest())
+    if key not in _PARSED:
+        if len(_PARSED) >= _PARSED_MAX:
+            _PARSED.clear()
+        _PARSED[key] = passages(body_html)
+    return _PARSED[key]
+
+
 class CatenaLookup:
-    """One Bible book's catena, looked up once for a run of its chapters
-    (``serializers.ChapterBatch``) or a single request."""
+    """One Bible book's catena, for a run of its chapters
+    (``serializers.ChapterBatch``) or a single request: at most one query,
+    for the catena chapters the run needs (the chapter map is per deploy).
+
+    A span belongs to the reader chapter its first verse is in, wherever the
+    catena put it: John 7:53–8:11 sits in the catena's "John 8" (most of its
+    verses are there) but is a chip under the reader's John 7, and its link
+    opens the catena's John 8 at that block. So a reader chapter reads the
+    catena's chapters on it and on either side.
+    """
 
     def __init__(self, book):
-        from .models import Book
-
-        self.book = None
-        self._chapters: dict[int, int] = {}
+        self.slug = catena_slug(book) if book.language == LANGUAGE else None
+        found = _chapter_map(self.slug, content_digest()) if self.slug else None
+        self.title, self._orders = found or ("", {})
         self._bodies: dict[int, str] = {}
-        slug = catena_slugs().get(book.slug) if book.language == LANGUAGE else None
-        if not slug:
-            return
-        self.book = (
-            Book.objects.filter(slug=slug, language=LANGUAGE, is_published=True)
-            .only("slug", "title")
-            .first()
-        )
-        if self.book is None:
-            return
-        for order, title in self.book.chapters.values_list("order", "title"):
-            m = _TRAILING_NUMBER.search(title or "")
-            if m:
-                self._chapters.setdefault(int(m.group(1)), order)
+        self._fetched: set[int] = set()
 
-    def _order_for(self, chapter) -> int | None:
-        if self.book is None:
-            return None
-        n = bible_chapter_number(chapter)
-        return self._chapters.get(n) if n is not None else None
+    def _candidates(self, chapter) -> list[int]:
+        n = bible_chapter_number(chapter) if self._orders else None
+        if n is None:
+            return []
+        return [self._orders[k] for k in (n - 1, n, n + 1) if k in self._orders]
 
     def prefetch(self, chapters) -> None:
-        """Read the catena chapters a run needs in one query."""
-        wanted = {o for c in chapters if (o := self._order_for(c)) is not None}
-        if wanted:
-            self._bodies.update(
-                self.book.chapters.filter(order__in=wanted).values_list("order", "body_html")
-            )
+        """Read the catena chapters a run needs, in one query."""
+        wanted = {o for c in chapters for o in self._candidates(c)} - self._fetched
+        if not wanted:
+            return
+        from .models import Chapter
 
-    def passages(self, chapter) -> tuple[int, tuple[dict, ...]] | None:
-        """(the catena's chapter order, its commented blocks) for a reader
-        chapter, or None when its catena has nothing on it."""
-        order = self._order_for(chapter)
-        if order is None:
+        self._bodies.update(
+            Chapter.objects.filter(
+                book__slug=self.slug,
+                book__language=LANGUAGE,
+                book__is_published=True,
+                order__in=wanted,
+            ).values_list("order", "body_html")
+        )
+        self._fetched |= wanted
+
+    def passages(self, chapter) -> tuple[int, list[dict]] | None:
+        """(the catena's chapter on this one, the spans that begin in it —
+        each a fresh dict carrying the catena ``chapter`` it is in) for a
+        reader chapter, or None when its catena has nothing on it."""
+        candidates = self._candidates(chapter)
+        if not candidates:
             return None
-        if order not in self._bodies:
-            self._bodies[order] = (
-                self.book.chapters.filter(order=order).values_list("body_html", flat=True).first()
-                or ""
-            )
-        found = passages(self._bodies[order])
-        return (order, found) if found else None
+        self.prefetch([chapter])
+        n = bible_chapter_number(chapter)
+        found = [
+            {**copy.deepcopy(block), "chapter": order}
+            for order in candidates
+            if order in self._bodies
+            for block in _parsed(self.slug, order, self._bodies[order])
+            if first_chapter(block["ref"]) == n
+        ]
+        if not found:
+            return None
+        return self._orders.get(n, found[0]["chapter"]), found
 
     def summary(self, chapter) -> dict | None:
-        """The chapter payload's pointer: which catena, which of its chapters,
-        and the spans it comments on (the reader's verse chips). The excerpts
-        themselves are fetched when a reader opens one (``ChapterCatenaView``)."""
+        """The chapter payload's pointer: which catena, its chapter on this
+        one, and the spans it comments on (the reader's verse chips). The
+        excerpts are fetched when a reader opens one (``ChapterCatenaView``)."""
         found = self.passages(chapter)
         if found is None:
             return None
         order, blocks = found
         return {
-            "slug": self.book.slug,
-            "title": self.book.title,
+            "slug": self.slug,
+            "title": self.title,
             "chapter": order,
             "verses": [b["ref"] for b in blocks],
         }

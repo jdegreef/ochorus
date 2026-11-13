@@ -386,7 +386,9 @@ class ChapterCatenaView(PublicContentCacheMixin, APIView):
     def get(self, request, slug, order):
         from .catena import CatenaLookup
 
-        book = get_object_or_404(Book, slug=slug, language="en", is_published=True)
+        book = get_object_or_404(
+            Book.objects.select_related("series"), slug=slug, language="en", is_published=True
+        )
         chapter = get_object_or_404(Chapter.objects.only("order", "title"), book=book, order=order)
         catena = CatenaLookup(book)
         found = catena.passages(chapter)
@@ -396,11 +398,11 @@ class ChapterCatenaView(PublicContentCacheMixin, APIView):
         return Response(
             {
                 "catena": {
-                    "slug": catena.book.slug,
-                    "title": catena.book.title,
+                    "slug": catena.slug,
+                    "title": catena.title,
                     "chapter": catena_order,
                 },
-                "passages": list(passages),
+                "passages": passages,
             }
         )
 
