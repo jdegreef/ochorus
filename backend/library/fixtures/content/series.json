@@ -1021,6 +1021,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "straight-talk"
+  ],
+  "language": "am",
+  "title": "ግልጽ ንግግር",
+  "description": "ለወጣት አንባቢዎች በቅንነትና በቀላል ቃላት እንደገና የተነገሩ የክርስትና ጥንታውያን መጻሕፍትና እውነተኛ የሕይወት ታሪኮች፦ ወደ ሰማያዊቱ ከተማ የሚጓዘው የቡኒያን መንገደኛ፣ ስፐርጀን ከእርሻ ቦታ የሚናገረው ግልጽ ንግግር፣ ሁሉንም ነገር በእግዚአብሔር ላይ የጣሉ ወንዶችና ሴቶችም።",
+  "created_at": "2026-11-13T00:00:00Z",
+  "updated_at": "2026-11-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "daughters-of-the-king"
   ],
   "language": "uk",
@@ -1346,6 +1359,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "real-questions"
+  ],
+  "language": "am",
+  "title": "እውነተኛ ጥያቄዎች",
+  "description": "ከ13 እስከ 17 ዓመት ለሆኑ አንባቢዎች፣ ወጣቶች ስለ እግዚአብሔር፣ ስለ መጽሐፍ ቅዱስ፣ ስለ ኢየሱስና ስለ ሕይወት በእውነት ለሚጠይቋቸው ጥያቄዎች የተሰጡ ቅንና አጭር መልሶች፤ ክርስቲያኖች በሚስማሙበት ግልጽ፣ በሚለያዩበት ሚዛናዊ፣ ወደ ጥንታውያን መጻሕፍትም የሚመሩ።",
+  "created_at": "2026-11-13T00:00:00Z",
+  "updated_at": "2026-11-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "a-cloud-of-praying-witnesses"
   ],
   "language": "hi",
@@ -1479,6 +1505,19 @@
   "language": "pt",
   "title": "Os Acendedores de Lampiões de Gloamhaven",
   "description": "Uma série de aventuras para jovens leitores, numa terra sob um sol amaldiçoado. Duas crianças, uma lamparina que não se pode comprar nem roubar, e o longo caminho até a montanha onde a Chama começou: uma história de luz, de coragem e da graça que ninguém pode merecer.",
+  "created_at": "2026-11-13T00:00:00Z",
+  "updated_at": "2026-11-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "the-lamplighters-of-gloamhaven"
+  ],
+  "language": "am",
+  "title": "የግሎምሄቨን ፋኖስ አብሪዎች",
+  "description": "በተረገመ ፀሐይ ሥር ባለች ምድር ውስጥ የሚፈጸም፣ ለወጣት አንባቢዎች የተዘጋጀ የጀብዱ ተከታታይ መጽሐፍ። ሁለት ልጆች፣ ሊገዛም ሊሰረቅም የማይችል ፋኖስ፣ ነበልባሉ ወደ ጀመረበት ተራራ የሚወስደውም ረጅም መንገድ፦ ስለ ብርሃን፣ ስለ ድፍረትና ማንም በሥራው ሊያገኘው ስለማይችል ጸጋ የሚናገር ታሪክ።",
   "created_at": "2026-11-13T00:00:00Z",
   "updated_at": "2026-11-13T00:00:00Z"
  }

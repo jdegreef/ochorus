@@ -1,0 +1,123 @@
+{
+    "kind": "sermon",
+    "slug": "pauls-first-prayer",
+    "language": "am",
+    "job_issue": 7950,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Acts 9:11",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "Acts 9:4",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 1
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 9
+        },
+        {
+            "reference": "Isaiah 65:24",
+            "status": "mined",
+            "source_file": "the-life-of-trust-teens.am.json",
+            "block_index": 9
+        },
+        {
+            "reference": "Luke 10:21",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 15:10",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 10
+        },
+        {
+            "reference": "Matthew 11:28",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Isaiah 53:1",
+            "status": "mined",
+            "source_file": "talks-to-the-farmer.am.json",
+            "block_index": 12
+        },
+        {
+            "reference": "Hebrews 2:13",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Matthew 3:9",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 13
+        },
+        {
+            "reference": "Luke 18:11-12",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Matthew 7:15",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Acts 9:15",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 49:4",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Isaiah 66:8",
+            "status": "self_rendered",
+            "block_index": 28
+        },
+        {
+            "reference": "Psalm 7:11",
+            "status": "mined",
+            "source_file": "till-he-come.am.json",
+            "block_index": 29
+        },
+        {
+            "reference": "Luke 16:24",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Ezekiel 33:11",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 145:8",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Hosea 14:4",
+            "status": "self_rendered",
+            "block_index": 34
+        },
+        {
+            "reference": "Psalm 115:1",
+            "status": "self_rendered",
+            "block_index": 34
+        }
+    ]
+}

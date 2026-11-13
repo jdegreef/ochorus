@@ -1688,6 +1688,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/devoted-to-prayer": {
+			"ground": "67bd03600028b0400f40b27f071bc9d5e5279475c878c04ca82fb3bde3ce2798",
+			"style": "originals",
+			"volume": "3",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 282, 310, 326],
+					[137, 359, 463, 435]
+				],
+				"subtitle": [
+					[139, 496, 461, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
 			"style": "devotional",
@@ -1913,6 +1947,40 @@
 			"middle": [
 				247,
 				547
+			]
+		},
+		"am/fire-against-the-dark": {
+			"ground": "fe88a580af4e9bcf4a66710fba1773ab577a52d3e4f94cc5be90f6d4149a0b09",
+			"style": "young",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.35,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 286, 308, 330],
+					[111, 361, 489, 436]
+				],
+				"subtitle": [
+					[126, 492, 474, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
 			]
 		},
 		"am/first-epistle-of-clement": {
@@ -3368,6 +3436,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/real-questions-1": {
+			"ground": "ff6309736b0af144f839854fc2bb19d9ea62ef3772e6438014a2877f4b0206ed",
+			"style": "originals",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 282, 308, 326],
+					[70, 359, 530, 435]
+				],
+				"subtitle": [
+					[51, 496, 549, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"am/reality-of-prayer": {
 			"ground": "9d83d9b8465bb0094752a5ab8c32a3255f338f97f6f3474769a695e046b6a9c1",
 			"style": "devotional",
@@ -4588,6 +4690,41 @@
 				499
 			]
 		},
+		"am/the-prayers-jesus-learned": {
+			"ground": "16594d3ec1e85b79a3a1cb42c24a1d415e4046d696a488d985717aec934e9c5d",
+			"style": "originals",
+			"volume": "1",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 249, 308, 293],
+					[65, 326, 535, 402],
+					[203, 392, 397, 468]
+				],
+				"subtitle": [
+					[215, 529, 385, 557]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"am/the-pursuit-of-god": {
 			"ground": "9c656faaf9c16395795192ae6f4ffe77df0126c5ec1e3cb74c7c429bd37869d8",
 			"style": "revival",
@@ -4710,6 +4847,40 @@
 			"bar": 0.015,
 			"caps": false,
 			"sitemark": null
+		},
+		"am/the-way-to-god-teens": {
+			"ground": "c612328e4d3034ede2602402f017b79170b4d93f599e58ed17da8d1c8c9c55b0",
+			"style": "originals",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[84, 286, 516, 362],
+					[53, 352, 547, 428]
+				],
+				"edition": [
+					[251, 441, 349, 466]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				291,
+				504
+			]
 		},
 		"am/they-were-young-1": {
 			"ground": "3ada5cb61952593da70a900256991d79fc39105aa58a4fde7b43991270f93530",
@@ -10161,7 +10332,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.2,
+			"scrim": 0.35,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -13953,7 +14124,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.2,
+			"scrim": 0.35,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -15665,7 +15836,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.2,
+			"scrim": 0.35,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -31896,7 +32067,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.2,
+			"scrim": 0.35,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
@@ -33510,6 +33681,41 @@
 			"middle": [
 				275,
 				520
+			]
+		},
+		"pt/the-black-stair": {
+			"ground": "3c6c880792a944d27dfd1dfc6ccdebca271d37158b099e82a355f1dda7d6502d",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[99, 348, 501, 423]
+				],
+				"subtitle": [
+					[148, 478, 452, 506],
+					[160, 506, 440, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
 			]
 		},
 		"pt/the-bruised-reed": {
