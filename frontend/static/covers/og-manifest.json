@@ -7906,6 +7906,76 @@
 				523
 			]
 		},
+		"catena-on-matthew": {
+			"ground": "4728aded7438a436e7b53c9b90b943a42d5d7819fb718cc2054896e5d86a6dc7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[166, 267, 434, 343],
+					[122, 333, 478, 409]
+				],
+				"subtitle": [
+					[100, 467, 500, 495],
+					[100, 495, 500, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
+		},
+		"catena-on-romans": {
+			"ground": "e89cf8a229bc3f8e1ca191d782a7d0f6fb3001ddaa5a0d5b96b60032ea459af1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.15,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[87, 102, 513, 131]
+				],
+				"title": [
+					[166, 267, 434, 343],
+					[131, 333, 469, 409]
+				],
+				"subtitle": [
+					[80, 467, 520, 495],
+					[100, 495, 500, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",

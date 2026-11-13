@@ -1,0 +1,17 @@
+{
+ "_note": [
+  "Excerpts an editor has turned down, with the reason. build_catena --select never",
+  "chooses one, and a plain build refuses a selection.json that still names one.",
+  "Add an id here (and rerun --select) to drop an excerpt that reads badly."
+ ],
+ "reasons": {
+  "calvin-matthew.MAT.4.4.2": "the edition lost the mark opening a quotation of Ephesians 6:17 (\"that, the sword of the Spirit is the word of God,\"): the close is orphaned",
+  "calvin-matthew.MAT.9.11.1": "a closing quotation mark with no opening one (\"base and shameful.\"): the edition lost it",
+  "ryle-matthew.MAT.14.1-12.2": "the source sets an invisible mark inside a quotation (\"find them out.\" then a byte-order mark), and the audit reads the close as orphaned; turned away to keep the audit clean"
+ },
+ "excerpts": [
+  "calvin-matthew.MAT.4.4.2",
+  "calvin-matthew.MAT.9.11.1",
+  "ryle-matthew.MAT.14.1-12.2"
+ ]
+}
