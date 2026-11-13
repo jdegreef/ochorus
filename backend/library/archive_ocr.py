@@ -246,10 +246,10 @@ def _tidy(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     text = text.replace("''", '"')  # a closing double mark read as two singles
     text = re.sub(r" +([,.;:?!])", r"\1", text)  # "mortal ;" → "mortal;"
-    return _space_quotes(text)
+    return space_quotes(text)
 
 
-def _space_quotes(text: str) -> str:
+def space_quotes(text: str) -> str:
     """Seat each straight double mark against its quotation.
 
     The OCR spaces them at random ('"beatitude "in addition'). In a paragraph
