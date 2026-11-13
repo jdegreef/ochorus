@@ -1688,6 +1688,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/devoted-to-prayer": {
+			"ground": "67bd03600028b0400f40b27f071bc9d5e5279475c878c04ca82fb3bde3ce2798",
+			"style": "originals",
+			"volume": "3",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.75,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 282, 310, 326],
+					[137, 359, 463, 435]
+				],
+				"subtitle": [
+					[139, 496, 461, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
+		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
 			"style": "devotional",
