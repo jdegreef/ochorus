@@ -30,6 +30,9 @@ import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { tonightPool, type TonightItem } from '$lib/tonightShelf';
 import { availableNeeds } from '$lib/needFinder';
+import { startWith } from '$lib/sermonPicks';
+import { lengthBucket } from '$lib/sermonLength';
+import { DEFAULT_WPM } from '$lib/readingPace.svelte';
 
 /**
  * The home page's public shelves — the hero's covers, Discover, the authors grid, the topic chips
@@ -89,6 +92,25 @@ export interface HomeShelves {
 	 *  has for the "See all" link. Optional: an older snapshot has none, and
 	 *  the section hides. */
 	plans?: { picks: PlanSummary[]; total: number };
+	/** "The Preached Word" on the logged-out home (design review 2026-11,
+	 *  #24): three sermons for each tab — the sermons page's own "Start with
+	 *  these", three under 10 minutes, the three newest — and the shelf's size.
+	 *  Optional: an older snapshot has none, and the section hides. */
+	sermons?: HomeSermons;
+}
+
+/** A sermon row's fields — no topics, no dates: the row needs only these. */
+export type SermonTile = Pick<
+	SermonSummary,
+	'slug' | 'language' | 'title' | 'scripture_ref' | 'summary' | 'word_count'
+> & {
+	author: Pick<SermonSummary['author'], 'slug' | 'name' | 'photo_url'>;
+};
+export interface HomeSermons {
+	start: SermonTile[];
+	short: SermonTile[];
+	recent: SermonTile[];
+	total: number;
 }
 
 /**
@@ -126,6 +148,60 @@ const HOME_TOPIC_LIMIT = 13;
 
 /** Plans on the logged-out home: one row of three at desktop width. */
 const HOME_PLAN_COUNT = 3;
+/** Sermons per tab on the home shelf. */
+const HOME_SERMON_COUNT = 3;
+
+const sermonTile = (s: SermonSummary): SermonTile => ({
+	slug: s.slug,
+	language: s.language,
+	title: s.title,
+	scripture_ref: s.scripture_ref,
+	summary: s.summary,
+	word_count: s.word_count,
+	author: { slug: s.author.slug, name: s.author.name, photo_url: s.author.photo_url }
+});
+
+/**
+ * The home shelf's three tabs. "Start with these" is the sermons page's own
+ * row (`startWith`), so the two pages agree; "Under 10 minutes" uses the
+ * page's length rule at the default pace, rotated per deploy and one per
+ * preacher; "Recent" is the newest. Each tab leaves out what an earlier tab
+ * shows. Undefined when the language has too few sermons to fill the tabs.
+ */
+function homeSermons(sermons: SermonSummary[], day: number): HomeSermons | undefined {
+	if (sermons.length < HOME_SERMON_COUNT * 3) return undefined;
+	const start = startWith(sermons);
+	if (!start.length) return undefined;
+	const taken = new Set(start.map((s) => s.slug));
+	const shortPool = sermons.filter(
+		(s) => !taken.has(s.slug) && lengthBucket(Math.round(s.word_count / DEFAULT_WPM)) === 'short'
+	);
+	const short = pickByDay(shortPool, HOME_SERMON_COUNT, day, (s) => s.author.slug);
+	for (const s of short) taken.add(s.slug);
+	// Newest first, one per preacher: sermons arrive in per-preacher batches
+	// sharing a date, and three from one batch would read as that preacher's
+	// page rather than what's new. ISO timestamps compare as strings; the slug
+	// breaks ties so the build is stable.
+	const recent: SermonSummary[] = [];
+	const preachers = new Set<string>();
+	for (const s of sermons
+		.filter((x) => !taken.has(x.slug))
+		.sort((a, b) =>
+			a.created_at < b.created_at ? 1 : a.created_at > b.created_at ? -1 : a.slug < b.slug ? -1 : 1
+		)) {
+		if (preachers.has(s.author.slug)) continue;
+		preachers.add(s.author.slug);
+		recent.push(s);
+		if (recent.length === HOME_SERMON_COUNT) break;
+	}
+	return {
+		start: start.map(sermonTile),
+		short: short.map(sermonTile),
+		recent: recent.map(sermonTile),
+		total: sermons.length
+	};
+}
+
 /** A first plan a newcomer can see the end of: a month or less. */
 const STARTER_PLAN_DAYS = 31;
 
@@ -223,6 +299,7 @@ export function deriveHomeShelves(
 		counts: { books: books.length, sermons: sermons.length },
 		audiences,
 		tonight: tonightPool({ books, sermons, authors }, language, day),
+		sermons: homeSermons(sermons, day),
 		needs: availableNeeds(topics),
 		plans: { picks: pickByDay(startablePlans(plans), HOME_PLAN_COUNT, day, (p) => p.slug), total: plans.length }
 	};
