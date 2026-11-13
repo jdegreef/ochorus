@@ -15,6 +15,7 @@ from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -367,6 +368,40 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             Chapter.objects.select_related("book__author", "book__series").defer(*_CHAPTER_UNSERVED),
             book=book,
             order=self.kwargs["order"],
+        )
+
+
+class ChapterCatenaView(PublicContentCacheMixin, APIView):
+    """What the Church has said on one chapter of a Bible book: each verse span
+    its catena comments on, with the opening of the verses and of the two or
+    three excerpts the catena chose for them (``library/catena``). The reader
+    fetches it when a reader opens a verse under the chapter; the chapter
+    payload's ``catena`` already names the spans.
+
+    404 for a chapter of any other book, or one its catena has nothing on.
+    """
+
+    permission_classes = [AllowAny]
+
+    def get(self, request, slug, order):
+        from .catena import CatenaLookup
+
+        book = get_object_or_404(Book, slug=slug, language="en", is_published=True)
+        chapter = get_object_or_404(Chapter.objects.only("order", "title"), book=book, order=order)
+        catena = CatenaLookup(book)
+        found = catena.passages(chapter)
+        if found is None:
+            raise Http404("No catena on this chapter.")
+        catena_order, passages = found
+        return Response(
+            {
+                "catena": {
+                    "slug": catena.book.slug,
+                    "title": catena.book.title,
+                    "chapter": catena_order,
+                },
+                "passages": list(passages),
+            }
         )
 
 

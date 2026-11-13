@@ -480,6 +480,14 @@ export interface Chapter {
 		citing_count: number | null;
 	} | null;
 	/**
+	 * For a chapter of a Bible book that has a catena (`catena-on-john` for
+	 * `gospel-of-john`): the catena, its chapter on this one, and the verse
+	 * spans it comments on ("3:14–16") — the "What the Church has said" chips.
+	 * The excerpts come from `getChapterCatena` when a reader opens one. Null
+	 * for every other chapter; optional: an API behind this build omits it.
+	 */
+	catena?: CatenaPointer | null;
+	/**
 	 * The young-reader editions' end-of-chapter questions — plain text, the
 	 * answers written for the adult reading along. Empty (or absent, from an
 	 * API behind this build) everywhere else.
@@ -1070,6 +1078,39 @@ export const getChapterExact = async (slug: string, order: number, language: str
 		`chapter ${slug}/${order}`,
 		await apiFetch<Chapter>(chapterApiPath(slug, order, language), {}, f),
 		CHAPTER_FIELDS
+	);
+
+/** A Bible chapter's catena: which book, and its chapter on this one. */
+export interface CatenaPointer {
+	slug: string;
+	title: string;
+	/** The catena's chapter order (its reader URL), not the Bible chapter. */
+	chapter: number;
+	/** The verse spans it comments on, in order ("3:1–2", "7:53–8:11"). */
+	verses: string[];
+}
+
+/** One span of verses the catena quotes, and the openings of the excerpts it
+ *  gives them, oldest commentator first. */
+export interface CatenaPassage {
+	/** "3:14–16" — matches an entry of `CatenaPointer.verses`. */
+	ref: string;
+	/** "John 3:14–16". */
+	reference: string;
+	/** The opening of the verses' text (Open Word Bible). */
+	text: string;
+	/** The block's paragraph index in the catena chapter — its `?p=` link. */
+	p: number;
+	excerpts: { author: string; work: string; text: string }[];
+}
+
+/** What the Church has said on one chapter of a Bible book (404 where its
+ *  catena has nothing — the chapter's `catena` field says when to ask). */
+export const getChapterCatena = (slug: string, order: number, f?: Fetch) =>
+	apiFetch<{ catena: Omit<CatenaPointer, 'verses'>; passages: CatenaPassage[] }>(
+		`/api/library/books/${slug}/chapters/${order}/catena/`,
+		{},
+		f
 	);
 
 /** The queries readers search most (aggregate, public). Empty when the log is
