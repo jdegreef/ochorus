@@ -2744,7 +2744,7 @@ nav.appnav .navsearch.navsearch-away {
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
-       variants, .tag, .text-display.
+       variants, .tag, .text-display, .chapter-grid, .chapter-chip.
    The button family being layered is why the `!` on `!py-1` / `!text-small`
    was never doing anything a plain `py-1` wouldn't. */
 

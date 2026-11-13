@@ -133,9 +133,9 @@ describe('bibleChapters', () => {
 		expect(chs[3].href).toBe(bookChapterPath('ruth', 5, false));
 	});
 
-	it('names a chip by the canon short name, or the title off the canon', () => {
+	it('names a chip as the chapter is titled: the canon short name, "Psalm", or the title off the canon', () => {
 		const psalms = bibleChapters({ slug: 'psalms', title: 'The Psalms', chapter_count: 152, series_position: 19 });
-		expect(psalms[22].name).toBe('Psalms 23');
+		expect(psalms[22].name).toBe('Psalm 23');
 		expect(bibleChapters({ slug: 'x', title: 'Stray', chapter_count: 3, series_position: null })[0].name).toBe(
 			'Stray 1'
 		);

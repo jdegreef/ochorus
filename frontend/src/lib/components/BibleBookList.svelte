@@ -25,8 +25,9 @@
 <ul class="bible-list">
 	{#each books as book (book.slug)}
 		{@const count = bibleChapterCount([book])}
+		{@const countLabel = chapterCount(count)}
 		{@const isOpen = open === book.slug}
-		<li class="bible-row">
+		<li class="bible-row" class:open={isOpen}>
 			<a class="bible-row-link" href={localizeHref(`/books/${book.slug}`)}>
 				<span class="bible-row-swatch" style:--swatch={book.cover_color || null} aria-hidden="true"></span>
 				<span class="bible-row-text">
@@ -39,11 +40,11 @@
 					type="button"
 					class="bible-row-chapters"
 					aria-expanded={isOpen}
-					aria-controls="chapters-{book.slug}"
-					aria-label="{book.title}: {chapterCount(count)}"
+					aria-controls={isOpen ? `chapters-${book.slug}` : undefined}
+					aria-label="{book.title}: {countLabel}"
 					onclick={() => (open = isOpen ? null : book.slug)}
 				>
-					{chapterCount(count)}
+					{countLabel}
 					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
 				</button>
 				{#if isOpen}
@@ -63,8 +64,8 @@
 </ul>
 
 <style>
-	/* One column on a phone, two from the tablet up; a row's open chapter grid
-	   stays in its own column. */
+	/* One column on a phone, two from the tablet up, read across in canon
+	   order as the covers grid is. */
 	.bible-list {
 		display: grid;
 		gap: 0 2rem;
@@ -72,10 +73,15 @@
 		margin: 0;
 		padding: 0;
 	}
+	/* An open book takes the whole width, so its chips never stretch a
+	   neighbour's row into a gap; the books after it reflow below. */
 	@media (min-width: 768px) {
 		.bible-list {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 			align-items: start;
+		}
+		.bible-row.open {
+			grid-column: 1 / -1;
 		}
 	}
 	.bible-row {

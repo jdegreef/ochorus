@@ -218,11 +218,13 @@
 					<h2 class="section-label">{t(testamentKey(testament.testament))}</h2>
 					{#if ti === 0}
 						<!-- Covers or the compact index, for the whole list: on the first
-						     heading's row, where the list begins. -->
+						     heading's row, where the list begins. English, like the page's
+						     other own copy: the hub exists only in BIBLE_LOCALES. Not the book
+						     page's "Show as a grid", which here would read as the chapters. -->
 						<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
 							<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
-								? t('bible.contentsAsList')
-								: t('bible.contentsAsGrid')}
+								? 'Show as a list'
+								: 'Show covers'}
 						</button>
 					{/if}
 				</div>

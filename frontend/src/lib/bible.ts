@@ -336,6 +336,9 @@ export const bibleChapterCount = (books: readonly { chapter_count?: number }[]):
 		0
 	);
 
+/** The Psalms' place in the canon. */
+const PSALMS = 19;
+
 /** The canon's short English name for a position (1 Genesis … 66 Revelation), or null off the canon. */
 export const canonName = (position: number | null | undefined): string | null =>
 	divisionOf(position) ? CANON[position! - 1][0] : null;
@@ -363,7 +366,10 @@ export function bibleChapters(book: {
 	chapter_count?: number;
 	series_position?: number | null;
 }): BibleChapterLink[] {
-	const short = canonName(book.series_position) ?? book.title;
+	// Psalms is the one book whose chapters are titled in the singular
+	// ("Psalm 23", as `build_owb_book` titles them and `dailyChapter` names them).
+	const pos = book.series_position;
+	const short = pos === PSALMS ? 'Psalm' : (canonName(pos) ?? book.title);
 	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
 		n: i + 1,
 		name: `${short} ${i + 1}`,
