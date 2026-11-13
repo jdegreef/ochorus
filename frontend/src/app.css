@@ -1429,6 +1429,35 @@ html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	color: var(--accent);
 	text-decoration-style: solid;
 }
+/* Bible verse numbers — `<sup class="v" id="v16">16</sup>`, set by
+   build_owb_book before each verse of a Bible book (backend `text.VERSE_MARKER`).
+   Small, muted, never selected with the prose (a copied verse carries no "16"),
+   and skipped by listen, search and quote cards like every <sup>. The number
+   at the head of a chapter (verse 1; Isaiah 64 opens on 2, its 64:1 being the
+   end of Hebrew 63:19) is left unprinted, as a printed Bible lets the chapter
+   opening stand for it — which also keeps the drop initial on the first word,
+   not on a digit. The reader can hide them all (readerPrefs.verseNumbers). */
+.reading sup.v {
+	font-family: var(--font-sans);
+	font-size: 0.58em;
+	font-weight: 600;
+	font-variant-numeric: lining-nums;
+	color: var(--muted);
+	vertical-align: 0.6em;
+	line-height: 0;
+	margin-inline-end: 0.22em;
+	user-select: none;
+	-webkit-user-select: none;
+	scroll-margin-top: 6rem;
+}
+.reading > p:first-of-type > sup.v:first-child,
+.reading.no-verse-numbers sup.v {
+	display: none;
+}
+/* A verse linked to (`#v16`): its number lit in the accent, the landing spot. */
+.reading sup.v:target {
+	color: var(--accent);
+}
 .reading p {
 	margin: 0 0 1.15em;
 	hanging-punctuation: first;

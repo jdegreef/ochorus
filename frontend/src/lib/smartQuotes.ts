@@ -264,7 +264,9 @@ const TOKEN =
  */
 export function smartQuotesHtml(html: string, language: string | null | undefined): string {
 	const style = quoteStyle(language);
-	if (!style || !html || !/["']|&(quot|apos|#34|#39|#x2[27]);/i.test(html)) return html;
+	// Nothing to do unless a straight mark sits in TEXT: a quote inside a tag is
+	// an attribute's (a Bible verse number's class="v" on every verse).
+	if (!style || !html || !/(?:^|>)[^<]*(?:["']|&(?:quot|apos|#34|#39|#x2[27]);)/i.test(html)) return html;
 
 	// Pass 1: the text as the reader sees it — an entity as its one character, a
 	// '\n' at each block boundary — and where each piece of it came from. A
