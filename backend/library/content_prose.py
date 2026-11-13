@@ -28,6 +28,11 @@ from __future__ import annotations
 import json
 import re
 
+#: A Bible verse number (`library.text.VERSE_MARKER`), dropped so a verse reads
+#: "For God…", not "16For God…". Restated, not imported: this module runs as a
+#: git textconv (scripts/fixture-textconv.py) with no Django to import.
+_VERSE_NUMBER = re.compile(r'<sup class="v"[^>]*>[^<]*</sup>')
+
 #: Block-level tags that end a paragraph. Splitting on these is what gives one
 #: reviewable line per paragraph; inline tags (<em>, <a>, the scripture spans)
 #: are simply stripped, since their text is what a reviewer is reading.
@@ -54,7 +59,7 @@ def paragraphs(body_html: str) -> list[str]:
     if not body_html:
         return []
     out = []
-    for chunk in _BLOCK_END.split(body_html):
+    for chunk in _BLOCK_END.split(_VERSE_NUMBER.sub("", body_html)):
         text = _WS.sub(" ", _unescape(_TAG.sub("", chunk))).strip()
         if text:
             out.append(text)

@@ -53,6 +53,7 @@ from library.content_fixtures import (
     SERMONS_DIR,
     authors_by_slug,
 )
+from library.text import without_verse_numbers
 
 # NOT `library.text.html_to_text`, which collapses runs of whitespace. Two of
 # the checks here are ABOUT whitespace — `space-before-punct` and `hyphen-space`
@@ -426,7 +427,7 @@ WELDED_FOOTNOTE = re.compile(r"<sup>(\d{1,3})</sup>\s*<sup>(\1)</sup>")
 
 
 def text(fragment: str) -> str:
-    return html.unescape(TAG.sub(" ", INLINE_TAG.sub("", fragment)))
+    return html.unescape(TAG.sub(" ", INLINE_TAG.sub("", without_verse_numbers(fragment))))
 
 
 def excerpt(t: str, i: int, w: int = 65) -> str:

@@ -31,12 +31,17 @@ a small port of the ones its site builder (`scripts/build_site.py`) applies:
   chapter as an italic paragraph of their own. Where the Hebrew counts a short
   title as part of verse 1 ("A psalm of David. The LORD is my shepherd"), the
   title's sentences are told by their words (`PSALM_TITLE`) and set the same way.
-* **No verse numbers**: a reader's edition, chapters and paragraphs only. A bare
-  `<sup>16</sup>` is footnote residue to this library — the deploy's
-  `corrections.strip_footnote_markers` removes every one, and listen mode would
-  read it aloud — and verse lookup already has the Scripture popover and the
-  /scripture/ pages. A sentence that runs into the next chapter (John 7:53-8:1)
-  stays in the chapter it starts in.
+* **Verse numbers**, in the ENGLISH numbering, before each verse's words:
+  `<sup class="v" id="v16">16</sup>` (`text.VERSE_MARKER`, the one `<sup>`
+  shape the sanitizer keeps attributes on). The class is what tells it from a
+  bare `<sup>16</sup>`, which is footnote residue to this library and which
+  `corrections.strip_footnote_markers` removes; `body_text`, `word_count`,
+  listen mode, in-chapter search and quote cards all read the prose without
+  it, and the reader can hide them (a reading setting). The id makes
+  `/books/<slug>/<n>#v16` land on the verse. A sentence that runs into the next
+  chapter (John 7:53-8:1) stays in the chapter it starts in, so its later
+  verse is labelled "8:1", with no id; a source verse English prints as two
+  (Acts 19:40-41) is labelled "40–41"; a psalm title has none.
 * **Single quotation marks and apostrophes** are curled here (`curl_singles`);
   `quote_marks.convert` curls only the double ones.
 * **Paragraphs** open where the source text opens one: SBLGNT capitalises the
@@ -451,6 +456,8 @@ class Source:
         every_line = self.code in VERSE
 
         title: list[str] = []
+        #: English (chapter, verse)s already numbered — see `verse_number`.
+        numbered: set[tuple[int, int]] = set()
 
         def close():
             """End the paragraph in hand, if any. Two verses run on only when
@@ -495,7 +502,8 @@ class Source:
                     f"<p><em>{escape(self.disputed_note(r), quote=False)}</em></p><blockquote>"
                 )
             in_disputed = disputed
-            texts = [text for _, text in verses_of(r, lines=True)]
+            verses = verses_of(r, lines=True)
+            texts = [text for _, text in verses]
             if peel:
                 peel = False
                 heading_title, texts[0] = split_psalm_title(texts[0])
@@ -511,12 +519,39 @@ class Source:
             line = every_line or any("\n" in t for t in texts)
             # A verse the peeled title used up whole leaves nothing to set.
             para.extend(
-                (escape(text, quote=False).replace("\n", "<br>"), line) for text in texts if text
+                (self.verse_number(vid, chapter, numbered) + escape(text, quote=False).replace("\n", "<br>"), line)
+                for (vid, _), text in zip(verses, texts, strict=True)
+                if text
             )
         close()
         if in_disputed:
             out.append("</blockquote>")
         return "".join(out)
+
+    def verse_number(self, vid: str, chapter: int, numbered: set[tuple[int, int]]) -> str:
+        """The marker set before a source verse's words in English `chapter`:
+        its English number, "c:v" where that is another chapter (no anchor
+        then), a range where English prints it as more than one verse, nothing
+        for a psalm title. See the module doc."""
+        # Once per ENGLISH verse: a verse of two sentences, or two source
+        # verses English prints as one (SBLGNT Revelation 12:18 and 13:1 are
+        # both English 13:1), is numbered where it starts; a source verse that
+        # spills into the next English one (Hebrew 1 Kings 18:34 is English
+        # 18:33b-34) is numbered by the verses it starts.
+        english = [
+            key for key in map(verse_key, self.english.get(vid, [vid])) if key not in numbered
+        ]
+        if not english:
+            return ""
+        numbered.update(english)
+        (c, v), (c2, last) = english[0], english[-1]
+        label = f"{v}" if c == chapter else f"{c}:{v}"
+        if c2 != c:  # Hebrew Isaiah 63:19b is English 64:1
+            label += f"\u2013{c2}:{last}"
+        elif last != v:
+            label += f"\u2013{last}"
+        anchor = f' id="v{v}"' if c == chapter else ""
+        return f'<sup class="v"{anchor}>{label}</sup>'
 
     def disputed_note(self, record: dict) -> str:
         first, last, note = disputed_entry(record)
