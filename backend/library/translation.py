@@ -319,6 +319,8 @@ _BODY_RE = re.compile(r"<chapter_body>\s*(.*?)\s*</chapter_body>", re.S)
 def system_prompt(language: str) -> str:
     cfg = language_config(language)
     glossary = "\n".join(f"- {en} → {tr}" for en, tr in cfg["glossary"].items())
+    typography = cfg.get("typography")
+    typography_rule = f"\n7. TYPOGRAPHY: {typography}" if typography else ""
     return f"""You are an expert literary translator of classic Christian devotional literature \
 (Andrew Murray, Charles Spurgeon, Watchman Nee and their contemporaries) from English into \
 {cfg['name']} ({cfg['native']}).
@@ -342,7 +344,7 @@ Translate only the human-readable text inside them — a <figcaption> is text, s
 an <img> tag is copied character for character, attributes and all. Never add, remove, or \
 reorder tags. Preserve HTML entities where needed.
 6. Proper names keep their conventional {cfg['name']} biblical forms where one exists; \
-otherwise keep the English form.
+otherwise keep the English form.{typography_rule}
 
 You receive a chapter wrapped in <chapter_title> and <chapter_body> tags. Respond with ONLY \
 the translated chapter in the exact same wrapper tags — no preamble, no notes, no commentary."""

@@ -2002,6 +2002,11 @@ class Language(models.Model):
     # work. Repo-defined languages have theirs re-asserted from
     # library/language_seed.py each deploy.
     glossary = models.JSONField(default=dict, blank=True)
+    # Typography the translation must set in the stored text itself, appended to
+    # the translator's prompt. Only for a language whose marks the reader cannot
+    # supply: smartQuotes.ts swaps one straight mark for one curly one, so
+    # Japanese 「 」 has to come from the translation. Blank adds no rule.
+    typography = models.TextField(blank=True)
     # Right-to-left script (Arabic, Hebrew…). The reader's paged mode honours it.
     rtl = models.BooleanField(default=False)
     # The language content is authored in — English. Exempt from every readiness

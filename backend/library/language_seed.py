@@ -426,6 +426,23 @@ SEED_LANGUAGES: dict[str, dict] = {
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
         "bible_label": "口語訳聖書",
+        # The reader cannot produce 「 」 (see Language.typography), so the
+        # translation must set it. The convention every later ja book measures
+        # from, until a shipped ja book exists to measure.
+        "typography": (
+            "Set Japanese typography in the text itself. It overrides the rules "
+            "above on preserving HTML entities and keeping English name forms "
+            "wherever they conflict. Every quotation is set in 「 」 — "
+            "including each &quot; entity or straight or curly quote in the "
+            "source, which are quotation marks, not entities to preserve — a "
+            "quotation inside a quotation in 『 』, and a book title in 『 』; "
+            "never leave &quot;, \" or “ ” in the Japanese. Full-width 。、！？ "
+            "and （ ）, no spaces between words or after punctuation, the "
+            "ellipsis as …… and the dash as ——. Verse references in Western "
+            "digits with no space: ヨハネによる福音書15:4. Personal names with "
+            "no conventional Japanese form are written in katakana "
+            "(スポルジョン, アンドリュー・マーレー), never left in Latin letters."
+        ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
         # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって
         # いなさい) and "the flesh" its Romans 8 肉. Prose is です・ます体; quoted

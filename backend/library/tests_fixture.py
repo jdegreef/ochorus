@@ -3104,6 +3104,18 @@ class ChapterTitleNumberingTests(SimpleTestCase):
         )
 
 
+def _joined_strings(value) -> str:
+    """Every string inside a parsed JSON value, joined — its PROSE, without the
+    straight quotes JSON itself writes around keys and values."""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, dict):
+        value = list(value.values())
+    if isinstance(value, list):
+        return "\n".join(_joined_strings(v) for v in value)
+    return ""
+
+
 class QuoteStyleTests(SimpleTestCase):
     """No single work may mix straight and curly quotation marks.
 
@@ -3141,6 +3153,55 @@ class QuoteStyleTests(SimpleTestCase):
             "marks, then re-read the diff: the opening/closing decision is made "
             "from context, and a source that sets a space inside its marks or "
             "leaves a quotation open across a paragraph can still fool it.",
+        )
+
+    def test_japanese_text_sets_only_japanese_quotation_marks(self):
+        """Japanese quotes in 「 」 / 『 』 — none of the marks `mark_counts` counts.
+
+        The mixing guard above cannot see this: a Japanese book with straight
+        marks AND 「 」 counts as (n, 0), wholly straight, and passes. Japanese
+        also gets no help from the reader (smartQuotes.ts leaves it alone), so
+        the convention in `Language.typography` is enforced here or nowhere.
+
+        Covers every place Japanese reader prose ships, not only work bodies:
+        each string field of a `*.ja.json` row (titles, descriptions, summaries
+        — except `attribution`, which may quote an English publisher's notice
+        verbatim), the bios under `author_bios_ja/`, and the topic and plan
+        prose files (their `note` / `_note` are maintainer notes, not shown).
+        """
+        library = Path(__file__).resolve().parent
+        texts: list[tuple[str, str]] = []
+        for path, rows in files_by_path().items():
+            if path.name.endswith(".ja.json"):
+                for row in rows:
+                    for field, value in row["fields"].items():
+                        if isinstance(value, str) and field != "attribution":
+                            texts.append((f"{path.name} {field}", value))
+        for path in sorted((library / "migrations/data/author_bios_ja").glob("*")):
+            if path.suffix in (".html", ".txt"):
+                texts.append((path.name, path.read_text(encoding="utf-8")))
+            elif path.suffix == ".json":
+                texts.append((path.name, _joined_strings(json.loads(path.read_text()))))
+        for kind in ("topic_translations", "plan_translations"):
+            path = library / "data" / kind / "ja.json"
+            if path.exists():
+                for key, entry in json.loads(path.read_text(encoding="utf-8")).items():
+                    if not key.startswith("_"):
+                        prose = {k: v for k, v in entry.items() if k != "note"}
+                        texts.append((f"{kind}/ja.json {key}", _joined_strings(prose)))
+        offenders = [
+            f"{name}: {straight} straight, {curly} curly/guillemet"
+            for name, text in texts
+            for straight, curly in [mark_counts(text)]
+            if straight or curly
+        ]
+        self.assertEqual(
+            offenders[:20],
+            [],
+            f"{len(offenders)} Japanese text(s) carry \" “ ” « » or &quot;. Japanese "
+            "quotes in 「 」 (nested and titles 『 』). Convert the marks — "
+            "punctuation only, letters and tags unchanged — and re-brief the "
+            "translators with the ja `Language.typography`.",
         )
 
     def test_no_quotation_closes_with_the_wrong_mark(self):

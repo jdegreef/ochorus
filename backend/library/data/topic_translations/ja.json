@@ -1,0 +1,139 @@
+{
+  "_note": [
+    "Japanese shelf prose in です・ます体, Protestant register (神, 聖霊, 主イエス, 恵み), using the glossary language_seed.py names for ja. Typography per the ja Language.typography (language_seed.py): 「 」 for quotations, 『 』 for titles, full-width punctuation, no spaces.",
+    "Names follow the forms Japanese Protestant publishing uses: スポルジョン, ウェスレー, ホイットフィールド, エドワーズ, バニヤン, オーエン, バクスター, トマス・ア・ケンピス, アウグスティヌス, アタナシオス, ギュイヨン夫人, ウィリアム・ロー, ブレイナード, ハドソン・テイラー, エミー・カーマイケル, ジョージ・ミュラー, フィニー, クラウザー, リチャード・アレン.",
+    "NO scripture on any shelf yet: a shelf's verse must come verbatim from the 口語訳聖書 via Take Root (fetch_verse_text), and api.takeroot.bible was unreachable from the writing session. The page renders no verse block when scripture is absent, so every shelf is complete without one; add verses from Take Root later, never from memory. Written ahead of Japanese's first book, while the language is not yet live. AI-drafted, for native review."
+  ],
+  "prayer": {
+    "title": "祈りについて",
+    "description": "祈ることを学び、祈り続けることを学ぶ。密室での祈りから、勝利をもたらすとりなしまで、祈りの内なる生活を語る古典です。"
+  },
+  "holy-spirit": {
+    "title": "聖霊",
+    "description": "聖霊のバプテスマ、内住、そしてその働き。キリスト者の生活のために約束された力について。"
+  },
+  "deeper-life": {
+    "title": "より深い生活",
+    "description": "聖さ、献身、そしてキリストと共に隠された豊かな命。さらに深く進みたい人のための本です。"
+  },
+  "grace-and-comfort": {
+    "title": "恵みと慰め",
+    "description": "決して尽きることのない神の恵みと、あらゆる試練の中での神の慰め。疲れた人への良い知らせです。"
+  },
+  "revival-and-missions": {
+    "title": "リバイバルと宣教",
+    "description": "福音のために注ぎ出された生涯と、霊的覚醒の季節。燃える心を養う糧です。"
+  },
+  "faith-and-guidance": {
+    "title": "信仰と導き",
+    "description": "日ごとの糧も、進むべき道も、あらゆる約束も神に信頼する。見えるところによらず、信仰によって歩む生活です。"
+  },
+  "the-gospel-call": {
+    "title": "福音の招き",
+    "description": "最も古い招き、「来なさい、悔い改めなさい、信じなさい」。回心していない人々に懇願する説教者たちと、罪人のかしらが見いだした恵みの証しです。"
+  },
+  "enduring-classics": {
+    "title": "色あせない古典",
+    "description": "何世紀にもわたって巡礼者と共に歩んできた本。アウグスティヌスの告白、バニヤンの夢、トマス・ア・ケンピスの勧め。古い道は、今もなお良い道です。"
+  },
+  "the-way-of-holiness": {
+    "title": "聖さの道",
+    "description": "神のために聖別されること。戒めを深く探り、完全を誠実に求め、心の思いが試されて真実とされる道です。"
+  },
+  "the-preached-word": {
+    "title": "語られたみことば",
+    "description": "ページに残された偉大な説教。声を張り上げるホイットフィールドとウェスレー、農夫たちに語るスポルジョン、そして魂の牧者すべてに向けたバクスターの勧めです。"
+  },
+  "christ-and-the-cross": {
+    "title": "キリストと十字架",
+    "description": "救い主の人格とみわざ。ほふられた小羊、十字架の恥と勝利、キリストのすばらしさ、そして空になった墓です。"
+  },
+  "the-puritans": {
+    "title": "ピューリタン",
+    "description": "平明で、心を探るピューリタンの神学。バニヤンの巡礼者、内に住む罪についてのオーエン、ワトソンのあたたかさ、エドワーズの炎。教理が心に深く迫ります。"
+  },
+  "abiding-in-christ": {
+    "title": "キリストにつながる",
+    "description": "ぶどうの木につながる枝。主イエスとの結びつきと交わり、そして主のそば近くにとどまることからだけ流れ出る命です。"
+  },
+  "women-of-faith": {
+    "title": "信仰の女性たち",
+    "description": "母、宣教師、神秘家。祈り、苦しみ、勇気をもって踏み出した女性たちの信仰を、ギュイヨン夫人の獄中から、解放された奴隷の説教壇まで。"
+  },
+  "voices-of-the-early-church": {
+    "title": "初代教会の声",
+    "description": "最初の数世紀の信仰を、その時代の言葉で。心をさらけ出したアウグスティヌス、肉となったみことばについてのアタナシオス、殉教者と牧者たちの手紙です。"
+  },
+  "day-by-day": {
+    "title": "日ごとに",
+    "description": "朝ごと夕ごとの読みもの。スポルジョンの愛された古典から静かなひとときのための本まで、魂を養う日ごとの糧です。"
+  },
+  "the-east-african-revival": {
+    "title": "東アフリカ・リバイバル",
+    "description": "「トゥクテンデレザ・イエス」（Tukutendereza Yesu）。カンパラの丘から始まり、六つの国と一世紀近くにわたって続いた覚醒と、それが教えた光の中を歩む生活です。"
+  },
+  "contemporary-voices": {
+    "title": "現代の声",
+    "description": "古い道には、今を生きる案内人がいます。東アフリカとその先の地のために書く現代の教師たちが、今ここにある問いのただ中で弟子たちに出会います。"
+  },
+  "the-inner-life": {
+    "title": "内なる生活",
+    "description": "内へと向かう道。トマス・ア・ケンピス、ウィリアム・ロー、ギュイヨン夫人。神への愛と、戸を閉じた密室で、ただ神とだけ向き合う魂です。"
+  },
+  "the-great-awakening": {
+    "title": "大覚醒",
+    "description": "二つの大陸を揺り動かした説教。野外で語るホイットフィールドとウェスレー、自分の会衆の中のエドワーズ、リバイバルを論じるフィニー。そして、その炎の下にあった教理です。"
+  },
+  "the-body-of-christ": {
+    "title": "キリストのからだ",
+    "description": "生きた一つのからだとしての教会。互いに器官であり、かしらに結ばれた者たちと、そこから流れ出る奉仕と牧会です。"
+  },
+  "for-those-who-lead": {
+    "title": "導く人のために",
+    "description": "牧者と、魂を勝ち取る人々への勧め。牧師の配慮、祈りによる説教者の力、そして人々をキリストに導く方法です。"
+  },
+  "the-wesleys-and-early-methodism": {
+    "title": "ウェスレー兄弟と初期メソジスト",
+    "description": "運動となった覚醒。ジョン・ウェスレーの説教と平明な説明、彼を育てた母、そしてその後に続いた熱心です。"
+  },
+  "foundations-of-the-faith": {
+    "title": "信仰の土台",
+    "description": "古くからの教理を、平明に。受肉、神の恵みとみこころ、戒め、そしてただ一度伝えられた信仰の根本です。"
+  },
+  "saints-of-the-african-diaspora": {
+    "title": "アフリカン・ディアスポラの聖徒たち",
+    "description": "黒人の声によって運ばれた福音。リチャード・アレンと自由人の説教者たち、黙らされることを拒んだホーリネスの女性たち、そしてニジェール川のクラウザーです。"
+  },
+  "the-grace-of-god": {
+    "title": "神の恵み",
+    "description": "初めから終わりまで恵み。価なしに与えられ、主権的で、十分な恵みが、罪人のかしらにあふれ、最も弱い聖徒を支えます。"
+  },
+  "victory-over-sin": {
+    "title": "罪に打ち勝つ",
+    "description": "聖さを求める内なる戦い。罪を殺すこと、心のきよさ、正しく整えられた心の思い、そして至聖所に入る道です。"
+  },
+  "to-the-ends-of-the-earth": {
+    "title": "地の果てまで",
+    "description": "宣教の日誌。森の中のブレイナード、中国のハドソン・テイラー、インドのエミー・カーマイケル、ニジェール川のクラウザー。どんな犠牲を払ってでも運ばれた福音です。"
+  },
+  "faith-for-the-impossible": {
+    "title": "不可能を信じる信仰",
+    "description": "神のことばをそのまま信じること。祈りだけで養われたジョージ・ミュラーの孤児たち、神を待ち望む恵み、そして決して破綻しない信仰の銀行です。"
+  },
+  "men-of-valour": {
+    "title": "勇士たち",
+    "description": "男性たちへの呼びかけ。祈り、導き、すべてをささげ、群れを養うこと。神の子らのための勇気ある生涯です。"
+  },
+  "for-teens": {
+    "title": "十代のために",
+    "description": "十代のための信仰。キリストのもとに来ること、神の民に加わること、そして従う勇気。短く、平明で、正直な本と、主のためにささげられた生涯の実話です。若い読者のために書かれた本や、十代でも十分に読める本を集めました。"
+  },
+  "soar-like-the-eagle": {
+    "title": "わしのように翔ける",
+    "description": "主を待ち望む者は新たなる力を得る。自分の力が尽きたときに神から力を汲む古典です。疲れた人のための本。待ち望み、休み、そしてもう一度、わしのように翼をはって上るために。"
+  },
+  "for-young-readers": {
+    "title": "子どもたちのために",
+    "description": "子どもたちと、子どもと一緒に読む人のために、やさしく語られた信仰。家路をたどる旅の偉大な物語を、子どもにもわかる言葉で。若い読者のための再話や書き下ろしが増えるにつれて育っていく本棚です。"
+  }
+}
