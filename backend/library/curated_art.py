@@ -2787,6 +2787,21 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "The book's own image: a chain of voices drawn as a chain of lamps. Drawn "
         "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
     ),
+    # A Catena on Romans and A Catena on Matthew: the same series, each its own
+    # picture. Romans: seven lamps under a wine-dark sky before dawn, the
+    # morning star high (Romans 13:12) and a Roman aqueduct on the far hills.
+    # Matthew: four lamps on a lakeshore, a town on a hill across the water
+    # (Matthew 5:14–15). Same generator, same frame as John's.
+    "catena-on-romans": Original(
+        "abf40fbfd2b3f32cc1aba58c4f810cf77d31f9b81d13c6da365a4acb810f8c8c",
+        "The catena series' chain of lamps, one for each voice, below a road to Rome. Drawn "
+        "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
+    "catena-on-matthew": Original(
+        "6da8bebd4055f92d8fefc251c35fa243fe8d24f53134be5345da8c16856962a3",
+        "The catena series' chain of lamps, one for each voice, before a town on a hill. Drawn "
+        "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
     # The Golden Chain, Vols. 1-4 (Aquinas's Catena Aurea): one family, a heavy
     # gold chain hung in a catenary across a dark foreground under a starry
     # sky, each volume under its own sky (Matthew violet, Mark sea-green, Luke

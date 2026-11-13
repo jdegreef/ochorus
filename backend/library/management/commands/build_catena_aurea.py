@@ -31,7 +31,11 @@ which each build rewrites.
 
 LAYOUT. As `build_catena`: one chapter per chapter of the Gospel, OWB's
 section headings as `<h3>`, each verse (or run of verses) quoted once, then
-the chain on it, in Aquinas's order. An introduction opens the volume
+the chain on it, in Aquinas's order. The chain is long, so a Gospel chapter
+that would pass PART_WORDS is cut into parts at OWB's section breaks, each
+titled by its verses ("Matthew 5:1–12"); a single section longer than that
+stays whole. Mark is built here though `build_catena` leaves it out: its
+endings begin inside 16:8 (`text_block`). An introduction opens the volume
 (`data/catena/aurea/introduction.html`, shared by the four) and a chapter
 on the Fathers and the edition closes it.
 """
@@ -58,9 +62,12 @@ from library.management.commands.build_catena import (
     EDITORIAL,
     LOGIA,
     curl_singles,
+    span,
     tidy,
     verse_key,
 )
+from library.management.commands.build_owb_book import DISPUTED
+from library.text import word_count
 
 #: Gospel code -> (Logia work, volume in the series).
 VOLUMES = {
@@ -69,6 +76,13 @@ VOLUMES = {
     "LUK": ("catena-luke", 3),
     "JHN": ("catena", 4),
 }
+#: build_catena's books, and Mark, which that command leaves out until its
+#: disputed endings are handled; this one handles them (`text_block`).
+GOSPELS = {**BOOKS, "MRK": ("Mark", 41, "Mark {n}", "The Gospel text")}
+#: OWB's note on Mark's endings, which begin at the second sentence of 16:8.
+MARK_ENDINGS = next(note for first, _, note in DISPUTED if first == "MRK.16.8.s2")
+#: A volume's chapter is cut into parts, at OWB's section breaks, near this many words.
+PART_WORDS = 8000
 AUTHOR = "aquinas"
 SERIES = "the-golden-chain"
 FOLDER = EDITORIAL / "aurea"
@@ -258,6 +272,7 @@ class Command(build_catena.Command):
     help = "Build one volume of The Golden Chain (Aquinas's Catena Aurea) from Logia and the Open Word Bible."
 
     author_slug = "thomas-aquinas"
+    books = GOSPELS
 
     def add_arguments(self, parser):
         parser.add_argument("logia", help="path to logia-en.json (https://logia.faith/downloads/logia-en.json)")
@@ -272,6 +287,7 @@ class Command(build_catena.Command):
         del raw
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        self.code = code
         work_id, self.volume = VOLUMES[code]
         self.folder = FOLDER / code
         self.meta = json.loads((self.folder / "book.json").read_text("utf-8"))
@@ -287,6 +303,7 @@ class Command(build_catena.Command):
         self.load_owb(code)
         # OWB's one spaced ellipsis in the Gospels (Mark 11:32), set as one mark.
         self.verses = {v: t.replace(" . . .", " …") for v, t in self.verses.items()}
+        _ = self.open_at  # read from the whole verses, before text_block cuts Mark 16:8 in two
         scanned = "archive.org" in mine[0]["source_url"]
         self.scanned = scanned
         # Logia lists a work's excerpts in the work's order; hold it to that.
@@ -371,6 +388,45 @@ class Command(build_catena.Command):
 
     # --- rendering ----------------------------------------------------------
 
+    def passages(self) -> list[tuple[str, list[tuple[int, int]]]]:
+        """build_catena's passages, except that OWB's section for Mark's short
+        ending begins inside 16:8, at its second sentence: 16:8 stays with the
+        passage before, and the section's heading moves into the verse
+        (`text_block`)."""
+        out = super().passages()
+        self.short_ending = None
+        if self.code == "MRK":
+            at = next(i for i, (_, vs) in enumerate(out) if vs[0] == (16, 8))
+            self.short_ending, verses = out.pop(at)
+            out[at - 1][1].extend(verses)
+        return out
+
+    def text_block(self, code: str, verses: list[tuple[int, int]]) -> str:
+        """build_catena's quoted block, except at Mark 16:8: its first sentences
+        are the Gospel as the earliest manuscripts end it, and its bracketed
+        rest is the short ending. OWB's own note on the endings stands between
+        them, then the short ending's own heading, so 16:8 itself is not
+        called disputed; 16:9-20 follow in their brackets as OWB prints them."""
+        end = (16, 8)
+        if code != "MRK" or end not in verses:
+            return super().text_block(code, verses)
+        at = verses.index(end)
+        before, after = verses[:at], verses[at + 1 :]
+        whole = self.verses[end]
+        cut = whole.index(" [")
+        out = [super().text_block(code, before)] if before else []
+        try:
+            self.verses[end] = whole[:cut]
+            out.append(super().text_block(code, [end]))
+            out.append(f"<p><em>{escape(MARK_ENDINGS)}</em></p><h3>{escape(self.short_ending)}</h3>")
+            self.verses[end] = whole[cut + 1 :]
+            out.append(super().text_block(code, [end]))
+        finally:
+            self.verses[end] = whole
+        if after:
+            out.append(super().text_block(code, after))
+        return "".join(out)
+
     def order_key(self, e: dict):
         return self.order[e["id"]]
 
@@ -408,23 +464,30 @@ class Command(build_catena.Command):
             home = Counter(c for c, _ in verses).most_common(1)[0][0]
             chapters[home].append((title, verses, sorted(homes[n], key=self.order.get)))
 
-        name = BOOKS[code][0]
+        name = self.books[code][0]
         intro = (FOLDER / "introduction.html").read_text("utf-8").replace("{gospel}", name)
         bodies = [("Introduction", intro, "")]
         used = Counter()
-        flagged = []
+        self.whole_sections = []
         for number in sorted(chapters):
-            html = "\n".join(self.passage_html(code, *p) for p in chapters[number])
             here = self.fathers(i for _, _, ids in chapters[number] for i in ids)
             used.update(here)
-            names = [f for f, _ in here.most_common()]
-            title = BOOKS[code][2].format(n=number)
-            bodies.append((title, html, self.summary(number, names)))
+            summary = self.summary(number, [f for f, _ in here.most_common()])
+            parts = self.parts(code, chapters[number])
+            for verses, html in parts:
+                title = (
+                    self.books[code][2].format(n=number)
+                    if len(parts) == 1
+                    else span(code, verses[0], verses[-1], self.books)
+                )
+                bodies.append((title, html, summary))
         bodies.append(("The Fathers and the Edition", self.edition_html(used), ""))
         book = self.write(bodies)
-        for ch in book.chapters.order_by("order"):
-            if ch.word_count > 8000:
-                flagged.append(f"{ch.title} ({ch.word_count:,})")
+        flagged = [
+            f"{ch.title} ({ch.word_count:,})"
+            for ch in book.chapters.order_by("order")
+            if ch.word_count > PART_WORDS
+        ]
         self.write_dropped()
         english_audit.report(self, english_audit.audit_book(book), book.slug)
         kept = sum(len(e["_segments"]) for e in self.excerpts.values())
@@ -433,7 +496,27 @@ class Command(build_catena.Command):
             f"{len(self.dropped)} left out (dropped.json)"
         )
         if flagged:
-            self.stdout.write("chapters over 8,000 words: " + ", ".join(flagged))
+            self.stdout.write(f"chapters over {PART_WORDS:,} words: " + ", ".join(flagged))
+        for title in self.whole_sections:
+            self.stdout.write(f"one OWB section alone passes {PART_WORDS:,} words: {title}")
+
+    def parts(self, code: str, passages: list) -> list[tuple[list, str]]:
+        """A Gospel chapter as one or more parts, [(its verses, html)], cut at
+        OWB's section breaks: sections are added to a part until the next would
+        take it past PART_WORDS. A section longer than that is a part of its
+        own, whole (noted in self.whole_sections)."""
+        out: list[tuple[list, list[str], int]] = []
+        for title, verses, ids in passages:
+            html = self.passage_html(code, title, verses, ids)
+            words = word_count(html)
+            if words > PART_WORDS:
+                self.whole_sections.append(f"{span(code, verses[0], verses[-1], self.books)} ({words:,})")
+            if out and out[-1][2] + words <= PART_WORDS:
+                vs, htmls, total = out[-1]
+                out[-1] = (vs + verses, [*htmls, html], total + words)
+            else:
+                out.append((list(verses), [html], words))
+        return [(vs, "\n".join(htmls)) for vs, htmls, _ in out]
 
     def write_dropped(self) -> None:
         (self.folder / "dropped.json").write_text(
@@ -477,8 +560,7 @@ class Command(build_catena.Command):
             f"{self.dropped_note()}</p>"
         )
         rows.append(
-            "<p>The Gospel text is the Open Word Bible (openwordbible.org), English, Balanced level, "
-            "also dedicated to the public domain.</p>"
+            f"<p>{self.bible_note()}</p>"
         )
         return intro + "\n" + "\n".join(rows)
 

@@ -5,8 +5,12 @@ A *catena* ("chain") is the old way of reading Scripture slowly: under every
 verse, excerpts from the great commentators, one after another. This command
 builds one as a library book from two CC0 sources. Which commentators speak,
 under what short work title and from which era, is the book's own editorial
-choice, listed in `data/catena/<CODE>/book.json` ("voices"); a new book is a new
-folder there (`--vendor-owb` writes its passages) and an entry in BOOKS.
+choice, listed in `data/catena/<CODE>/book.json` ("voices": Logia author id,
+name, short title, Logia work id, era); a new book is a new folder there
+(`--vendor-owb` writes its passages) and an entry in BOOKS. An optional
+"words_per_verse" there sets the selection's budget (WORDS_PER_VERSE by
+default), for a book whose commentators run so long its chapters would grow
+too big to read.
 
 * **The text**: the Open Word Bible, English Balanced (`data/bible/owb-en-b.json.gz`,
   the wording the Scripture popover and `build_owb_book` use), cut into the
@@ -37,8 +41,8 @@ itself a chain of the Fathers, and would repeat Augustine and Chrysostom.
 
 TEXT. Each excerpt is the source's words in the source's order. Only
 typography is touched: whitespace collapsed, the scan's spaces before
-punctuation and inside quotation marks closed up, a leading verse number
-dropped, quotation marks curled the house way. Old spelling and the
+punctuation and inside quotation marks closed up, a stray byte-order mark and a leading verse number dropped, quotation marks
+curled the house way. Old spelling and the
 commentators' own Bible wording (usually the King James) stand as printed.
 
 LAYOUT. One chapter per Bible chapter, between an introduction and a back
@@ -83,14 +87,16 @@ EDITORIAL = Path(settings.BASE_DIR) / "library" / "data" / "catena"
 LOGIA = "https://logia.faith"
 
 #: The books this command can build: code -> (English name as a reference
-#: begins, OWB book number, a chapter's title with {n} for its number).
+#: begins, OWB book number, a chapter's title with {n} for its number, how the
+#: back chapter names the Bible text). Mark is left out until its disputed
+#: endings are handled: DISPUTED's entry for them begins mid-verse (16:8.s2),
+#: which text_block would read as the whole of 16:8.
 BOOKS = {
-    "PSA": ("Psalm", 19, "Psalm {n}"),
-    "MAT": ("Matthew", 40, "Matthew {n}"),
-    "MRK": ("Mark", 41, "Mark {n}"),
-    "LUK": ("Luke", 42, "Luke {n}"),
-    "JHN": ("John", 43, "John {n}"),
-    "ROM": ("Romans", 45, "Romans {n}"),
+    "PSA": ("Psalm", 19, "Psalm {n}", "The text of the Psalms"),
+    "MAT": ("Matthew", 40, "Matthew {n}", "The Gospel text"),
+    "LUK": ("Luke", 42, "Luke {n}", "The Gospel text"),
+    "JHN": ("John", 43, "John {n}", "The Gospel text"),
+    "ROM": ("Romans", 45, "Romans {n}", "The text of Romans"),
 }
 
 #: OWB's note on a passage the oldest manuscripts lack (build_owb_book.DISPUTED
@@ -121,10 +127,23 @@ _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
 _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
+BOM = "\ufeff"
+#: A byte-order mark just inside a bracket or a curled quotation mark, with
+#: the space it carries.
+_BOM_INSIDE = re.compile(r"([(\[“‘])\ufeff\s*|\s*\ufeff\s*([”’])")
 #: An old elision's apostrophe ('tis, 'twas, 'em), which curl_singles would
 #: otherwise read as an opening quotation mark after a space.
 _ELISION = re.compile(r"(?<!\w)'(?=(?:tis|twas|twere|twill|twould|em|gainst|neath|mongst)\b)", re.I)
 _VERSE_REF = re.compile(r"(\d+)[.:](\d+)")
+#: What an edition prints on purpose that the vocabulary check would read as a
+#: misread word, set aside before it: a possessive's s ("God's"), "&c.", "i.e.",
+#: a reference's abbreviation ("v. 6", "ch. xv. 22", "Ps. lxxxix. 3", "St.",
+#: Haydock's "Wi." for Witham), a roman chapter number before its verse, and a
+#: capital roman numeral heading a point ("II. The").
+_NOT_A_WORD = re.compile(
+    r"(?<=[A-Za-z])['’]s\b|&c\.|\bi\.\s?e\.|\b(?:v|vv|ver|ch|Ch|chap|Ps|cf|ib|ibid|St|Dr|Mr|Wi)\."
+    r"|\b[ivxlc]+\.(?=\s*\d)|\b[IVXLC]+\."
+)
 
 
 def verse_key(ref: str) -> tuple[int, int]:
@@ -138,9 +157,9 @@ def ref(verse: tuple[int, int]) -> str:
     return f"{verse[0]}:{verse[1]}"
 
 
-def span(code: str, first: tuple[int, int], last: tuple[int, int]) -> str:
+def span(code: str, first: tuple[int, int], last: tuple[int, int], books: dict = BOOKS) -> str:
     """'John 1:1–5', 'John 1:1', 'John 7:53–8:11'."""
-    name = BOOKS[code][0]
+    name = books[code][0]
     if first == last:
         return f"{name} {ref(first)}"
     if first[0] == last[0]:
@@ -148,11 +167,52 @@ def span(code: str, first: tuple[int, int], last: tuple[int, int]) -> str:
     return f"{name} {ref(first)}–{ref(last)}"
 
 
+def open_at(verses: dict[tuple[int, int], str]) -> set[tuple[int, int]]:
+    """The verses that begin inside a double-quoted speech. Each mark is read by
+    its place, not counted, on a stack of the quotations open. A double mark
+    at the start of a verse or after a space or bracket opens; any other
+    closes the innermost double quotation (and a single one open inside it).
+    A single mark opens after a space, bracket or double mark and before a
+    letter, and closes only a single quotation that is open, so an apostrophe
+    ("king's") is never read as one. So a double mark inside a single inside a
+    double is nested (Matthew 22:4, John 10:34) and closes only itself. OWB
+    reopens a long speech at each new paragraph without closing the last
+    (John 14–16): a double mark opening while a double quotation is innermost
+    reopens it rather than nesting. Read across chapters, since that
+    discourse crosses two of them."""
+    out, stack = set(), []
+    for v in sorted(verses):
+        if '"' in stack:
+            out.add(v)
+        text = verses[v]
+        for i, mark in enumerate(text):
+            if mark not in "\"'":
+                continue
+            before = text[i - 1] if i else " "
+            after = text[i + 1] if i + 1 < len(text) else " "
+            if mark == '"':
+                if before in " ([—":
+                    if not stack or stack[-1] == "'":
+                        stack.append('"')
+                elif '"' in stack:
+                    while stack.pop() != '"':
+                        pass
+            elif before in " ([—\"" and (after.isalnum() or after == '"'):
+                stack.append("'")
+            elif stack and stack[-1] == "'" and not after.isalnum():
+                stack.pop()
+    return out
+
+
 def tidy(text: str) -> list[str]:
     """An excerpt's paragraphs, with only the scan's typography repaired (see
     TEXT in the module docstring). The words and their order are untouched."""
     paragraphs = []
     for raw in re.split(r"\n\s*\n", text.strip()):
+        # CCEL's Ryle sets an invisible byte-order mark beside a reference or a
+        # quotation: just inside a bracket or quotation mark it goes, with its
+        # space; anywhere else it stands for a space ("leprosy<BOM> was").
+        raw = _BOM_INSIDE.sub(r"\1\2", raw).replace(BOM, " ")
         para = _SPACE_BEFORE.sub(r"\1", " ".join(raw.split()))
         para = space_quotes(para).replace(" - ", " — ")  # a spaced hyphen is the edition's dash
         if para:
@@ -219,21 +279,28 @@ class Command(BaseCommand):
         del raw
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        self.code = code
         folder = EDITORIAL / code
         self.meta = json.loads((folder / "book.json").read_text("utf-8"))
         #: Logia author id -> (name on an excerpt, short work title, era), in the
         #: order they lived, which is the order they speak under a verse; the
         #: era spreads a passage's excerpts across the centuries.
-        self.voices = {v["id"]: (v["name"], v["work"], v["era"]) for v in self.meta["voices"]}
+        self.voices = {v["id"]: (v["name"], v["title"], v["era"]) for v in self.meta["voices"]}
+        #: Logia author id -> the Logia work their excerpts come from, whose
+        #: edition the back chapter names.
+        self.work_of = {v["id"]: v["work"] for v in self.meta["voices"]}
         self.rank = {a: i for i, a in enumerate(self.voices)}
         self.authors = logia["authors"]
         self.works = logia["works"]
+        missing = sorted(set(self.work_of.values()) - set(self.works))
+        if missing:
+            raise CommandError(f"book.json names works Logia lacks: {missing}")
         self.excerpts = {}
         typed = Counter()
         for e in logia["excerpts"]:
             if "archive.org" not in e.get("source_url", ""):
                 typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
-            if e["start"].startswith(code + ".") and e["author"] in self.voices:
+            if e["start"].startswith(code + ".") and self.work_of.get(e["author"]) == e["work"]:
                 e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
@@ -245,7 +312,7 @@ class Command(BaseCommand):
 
     def load_owb(self, code: str) -> None:
         """The book's OWB verses, the Bible's commit, and its vendored sections."""
-        number = BOOKS[code][1]
+        number = self.books[code][1]
         verses, joined = _owb()
         # A verse OWB prints together with the one before it is quoted there.
         self.verses = {
@@ -256,6 +323,20 @@ class Command(BaseCommand):
         with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
             self.bible_commit = json.load(fh)["meta"]["commit"]
         self.owb = json.loads((EDITORIAL / code / "owb_sections.json").read_text("utf-8"))
+        if self.owb["owb_commit"] != self.bible_commit:
+            # Sections vendored from another OWB commit than the bundled text:
+            # harmless while every passage still starts on a verse it has.
+            have = {(vid // 1000 % 1000, vid % 1000) for vid in verses if vid // 1_000_000 == number}
+            lost = [s["start"] for s in self.owb["sections"] if verse_key(s["start"]) not in have]
+            if lost:
+                raise CommandError(
+                    f"owb_sections.json (OWB {self.owb['owb_commit'][:12]}) starts passages at verses the "
+                    f"bundled text (OWB {self.bible_commit[:12]}) lacks: {lost[:5]}; re-vendor with --vendor-owb"
+                )
+            self.stderr.write(
+                f"note: owb_sections.json is from OWB {self.owb['owb_commit'][:12]}, the bundled text from "
+                f"{self.bible_commit[:12]}; every passage starts on a verse the text has"
+            )
 
     def passages(self) -> list[tuple[str, list[tuple[int, int]]]]:
         """[(section title, its verses in order)] — every verse in one passage."""
@@ -303,7 +384,7 @@ class Command(BaseCommand):
         ):
             return True
         known = self.vocabulary
-        return any(w.lower() not in known for w in english_audit._WORD.findall(text))
+        return any(w.lower() not in known for w in english_audit._WORD.findall(_NOT_A_WORD.sub(" ", text)))
 
     def unfit(self, e: dict, verses: list[tuple[int, int]]) -> str | None:
         """Why an excerpt cannot stand in this passage, or None if it can. The
@@ -334,7 +415,8 @@ class Command(BaseCommand):
     def select_passage(self, verses: list[tuple[int, int]], overall: Counter) -> list[str]:
         """The excerpt ids for one passage, in the order they were chosen."""
         pool = self.candidates(verses)
-        budget = max(BUDGET_MIN, min(BUDGET_MAX, WORDS_PER_VERSE * len(verses)))
+        per_verse = self.meta.get("words_per_verse", WORDS_PER_VERSE)
+        budget = max(BUDGET_MIN, min(BUDGET_MAX, per_verse * len(verses)))
         eras, voices, at_verse = Counter(), Counter(), Counter()
         picks, used = [], 0
 
@@ -385,43 +467,32 @@ class Command(BaseCommand):
     # --- rendering ----------------------------------------------------------
 
     def text_block(self, code: str, verses: list[tuple[int, int]]) -> str:
-        """Verses of the Gospel as one quoted block, after OWB's note where a
+        """Verses of the text as one quoted block, after OWB's note where a
         passage the oldest manuscripts lack begins in it."""
         note = ""
         for first, last, _ in DISPUTED:
             begins = verse_key(first)
-            if not first.startswith(code + ".") or begins not in verses:
+            # An entry that begins inside a verse ("MRK.16.8.s2") is not a
+            # whole verse to set a note above; build_catena_aurea places Mark's.
+            if not first.startswith(code + ".") or first.count(".") > 2 or begins not in verses:
                 continue
             if begins != verses[0]:  # the note belongs at the verse, not above the block
                 at = verses.index(begins)
                 return self.text_block(code, verses[:at]) + self.text_block(code, verses[at:])
-            where = span(code, begins, verse_key(last))
-            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=BOOKS[code][0], ref=where))}</em></p>"
+            where = span(code, begins, verse_key(last), self.books)
+            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=self.books[code][0], ref=where))}</em></p>"
         text = " ".join(curl_singles(self.verses[v]) for v in verses)
         # A speech that runs on from the block before (Jesus to Nicodemus,
         # 3:10–21) reopens here, as a quotation running over several
         # paragraphs reopens each one — unless OWB's paragraph already does.
         if verses[0] in self.open_at and not text.startswith('"'):
             text = '"' + text
-        cite = span(code, verses[0], verses[-1])
+        cite = span(code, verses[0], verses[-1], self.books)
         return f"{note}<blockquote><p>{escape(text, quote=False)}</p><p>— {cite}</p></blockquote>"
 
     @cached_property
     def open_at(self) -> set[tuple[int, int]]:
-        """The verses that begin inside a quotation. Each double mark is read
-        by its place, not counted: one at the start of a verse or after a
-        space or bracket opens, any other closes. OWB reopens a long speech at
-        each new paragraph without closing the last (John 14–16), so a mere
-        count drifts out of step. Read across chapters, since that discourse
-        crosses two of them."""
-        open_at, inside = set(), False
-        for v in sorted(self.verses):
-            if inside:
-                open_at.add(v)
-            for m in re.finditer('"', self.verses[v]):
-                before = self.verses[v][m.start() - 1] if m.start() else " "
-                inside = before in " ([—"
-        return open_at
+        return open_at(self.verses)
 
     def order_key(self, e: dict):
         """Where an excerpt stands among those on the same verse: oldest voice first."""
@@ -532,7 +603,7 @@ class Command(BaseCommand):
             authors = Counter(self.excerpts[i]["author"] for _, _, ids in chapters[number] for i in ids)
             used.update(authors)
             names = [self.voices[a][0] for a in self.voices if a in authors]
-            title = BOOKS[code][2].format(n=number)
+            title = self.books[code][2].format(n=number)
             bodies.append((title, html, self.summary(number, names)))
         bodies.append(("The Voices and Their Books", self.voices_html(used), ""))
         book = self.write(bodies)
@@ -546,20 +617,32 @@ class Command(BaseCommand):
         for a in self.voices:
             if not used[a]:
                 continue
-            work = self.works[a]
+            work = self.works[self.work_of[a]]
             detail = (work.get("translation") or work.get("edition") or "").rstrip(".")
             rows.append(
-                f"<p><strong>{escape(self.authors[a]['name'])}</strong>, <em>{escape(work['title'])}</em>. "
-                f"{escape(detail)}. {used[a]} excerpt{'s' if used[a] != 1 else ''} in this book.</p>"
+                f"<p><strong>{escape(self.authors[a]['name'])}</strong>, "
+                f"<em>{escape(curl_singles(work['title']), quote=False)}</em>. "
+                f"{escape(curl_singles(detail), quote=False)}. "
+                f"{used[a]} excerpt{'s' if used[a] != 1 else ''} in this book.</p>"
             )
         rows.append(
             "<p>Every excerpt was gathered by Logia (logia.faith), which copies each one word for word "
-            "from the public-domain edition above and offers the collection under CC0. The Gospel text is "
-            "the Open Word Bible (openwordbible.org), English, Balanced level, also CC0.</p>"
+            "from the public-domain edition above and offers the collection under CC0. "
+            f"{self.bible_note()}</p>"
         )
         return intro + "\n" + "\n".join(rows)
 
+    #: The books this command builds (a subclass may add one, as
+    #: build_catena_aurea adds Mark).
+    books = BOOKS
     author_slug = AUTHOR_SLUG
+
+    def bible_note(self) -> str:
+        """The back chapter's sentence on the Bible text, named per book (BOOKS)."""
+        return (
+            f"{self.books[self.code][3]} is the Open Word Bible (openwordbible.org), "
+            "English, Balanced level, also CC0."
+        )
 
     def attribution(self) -> str:
         return (

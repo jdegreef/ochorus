@@ -36,6 +36,8 @@ export const GROUND_BARS: Record<string, number> = {
 	'catena-aurea-mark': 0.110,
 	'catena-aurea-matthew': 0.110,
 	'catena-on-john': 0.110,
+	'catena-on-matthew': 0.110,
+	'catena-on-romans': 0.110,
 	'cheque-book': 0.025,
 	'christ-the-healer': 0.030,
 	'church-history': 0.015,
