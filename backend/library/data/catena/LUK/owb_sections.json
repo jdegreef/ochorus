@@ -1,0 +1,649 @@
+{
+ "_note": [
+  "Vendored from the Open Word Bible (CC0, https://github.com/jdegreef/open-word-bible)",
+  "at commit b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092: data/headings/LUK.json (English section headings, settings at their",
+  "defaults) and data/summaries/LUK.json (English chapter summaries). The catena's passages",
+  "follow these sections; build_catena reads this file, never the OWB checkout."
+ ],
+ "owb_commit": "b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092",
+ "sections": [
+  {
+   "start": "1:1",
+   "title": "An orderly account for Theophilus"
+  },
+  {
+   "start": "1:5",
+   "title": "Gabriel comes to Zechariah in the temple"
+  },
+  {
+   "start": "1:26",
+   "title": "Gabriel comes to Mary in Nazareth"
+  },
+  {
+   "start": "1:39",
+   "title": "Elizabeth greets the mother of her Lord"
+  },
+  {
+   "start": "1:46",
+   "title": "Mary praises the Mighty One"
+  },
+  {
+   "start": "1:57",
+   "title": "John is born and named"
+  },
+  {
+   "start": "1:67",
+   "title": "Zechariah blesses the God of Israel"
+  },
+  {
+   "start": "2:1",
+   "title": "The birth of Jesus in David’s town"
+  },
+  {
+   "start": "2:8",
+   "title": "Good news for shepherds"
+  },
+  {
+   "start": "2:21",
+   "title": "Jesus is named and presented in the temple"
+  },
+  {
+   "start": "2:25",
+   "title": "Simeon sees God’s salvation"
+  },
+  {
+   "start": "2:36",
+   "title": "Anna speaks of the child"
+  },
+  {
+   "start": "2:39",
+   "title": "The child grows in Nazareth"
+  },
+  {
+   "start": "2:41",
+   "title": "In his Father’s house"
+  },
+  {
+   "start": "3:1",
+   "title": "The word of God comes to John"
+  },
+  {
+   "start": "3:7",
+   "title": "Fruit that shows repentance"
+  },
+  {
+   "start": "3:15",
+   "title": "One stronger than John is coming"
+  },
+  {
+   "start": "3:21",
+   "title": "The Spirit comes down on Jesus"
+  },
+  {
+   "start": "3:23",
+   "title": "The family line of Jesus, back to Adam"
+  },
+  {
+   "start": "4:1",
+   "title": "The devil tests Jesus in the wilderness"
+  },
+  {
+   "start": "4:14",
+   "title": "Teaching in Galilee"
+  },
+  {
+   "start": "4:16",
+   "title": "Jesus reads Isaiah in Nazareth"
+  },
+  {
+   "start": "4:31",
+   "title": "An unclean spirit driven out at Capernaum"
+  },
+  {
+   "start": "4:38",
+   "title": "Simon’s mother-in-law healed"
+  },
+  {
+   "start": "4:40",
+   "title": "Many healed at sunset"
+  },
+  {
+   "start": "4:42",
+   "title": "Good news for the other towns"
+  },
+  {
+   "start": "5:1",
+   "title": "The great catch of fish and the call of Simon"
+  },
+  {
+   "start": "5:12",
+   "title": "Jesus makes a man with leprosy clean"
+  },
+  {
+   "start": "5:17",
+   "title": "Authority on earth to forgive sins"
+  },
+  {
+   "start": "5:27",
+   "title": "Levi leaves his tax booth"
+  },
+  {
+   "start": "5:29",
+   "title": "Eating with tax collectors and sinners"
+  },
+  {
+   "start": "5:33",
+   "title": "Bridegroom, patches and wineskins"
+  },
+  {
+   "start": "6:1",
+   "title": "Grain picked on the Sabbath"
+  },
+  {
+   "start": "6:6",
+   "title": "A withered hand healed on the Sabbath"
+  },
+  {
+   "start": "6:12",
+   "title": "Jesus chooses the twelve"
+  },
+  {
+   "start": "6:17",
+   "title": "Crowds come to hear and be healed"
+  },
+  {
+   "start": "6:20",
+   "title": "The poor are blessed, the rich warned"
+  },
+  {
+   "start": "6:27",
+   "title": "Love your enemies"
+  },
+  {
+   "start": "6:39",
+   "title": "Blind guides, splinters and beams"
+  },
+  {
+   "start": "6:43",
+   "title": "Known by the fruit"
+  },
+  {
+   "start": "6:46",
+   "title": "Building on rock"
+  },
+  {
+   "start": "7:1",
+   "title": "A centurion’s servant is healed"
+  },
+  {
+   "start": "7:11",
+   "title": "The widow’s son at Nain"
+  },
+  {
+   "start": "7:18",
+   "title": "John asks about the one who is to come"
+  },
+  {
+   "start": "7:24",
+   "title": "Jesus speaks about John"
+  },
+  {
+   "start": "7:36",
+   "title": "The woman with the alabaster flask"
+  },
+  {
+   "start": "8:1",
+   "title": "Women who traveled with Jesus"
+  },
+  {
+   "start": "8:4",
+   "title": "Seed scattered on four kinds of ground"
+  },
+  {
+   "start": "8:9",
+   "title": "Why Jesus speaks in parables"
+  },
+  {
+   "start": "8:16",
+   "title": "A lamp set where it can be seen"
+  },
+  {
+   "start": "8:19",
+   "title": "Those who hear and do God’s word"
+  },
+  {
+   "start": "8:22",
+   "title": "Jesus commands the wind and the water"
+  },
+  {
+   "start": "8:40",
+   "title": "A dying girl and a woman who touched Jesus"
+  },
+  {
+   "start": "9:1",
+   "title": "The Twelve sent out with power"
+  },
+  {
+   "start": "9:7",
+   "title": "Herod hears about Jesus"
+  },
+  {
+   "start": "9:10",
+   "title": "Bread for five thousand"
+  },
+  {
+   "start": "9:18",
+   "title": "Peter says who Jesus is"
+  },
+  {
+   "start": "9:23",
+   "title": "Taking up the cross every day"
+  },
+  {
+   "start": "9:28",
+   "title": "Jesus is changed on the mountain"
+  },
+  {
+   "start": "9:37",
+   "title": "A father’s only son is set free"
+  },
+  {
+   "start": "9:43",
+   "title": "Jesus speaks again of being handed over"
+  },
+  {
+   "start": "9:46",
+   "title": "Who is the greatest"
+  },
+  {
+   "start": "9:49",
+   "title": "Not against you, but for you"
+  },
+  {
+   "start": "9:51",
+   "title": "A Samaritan village turns Jesus away"
+  },
+  {
+   "start": "9:57",
+   "title": "Would-be followers on the road"
+  },
+  {
+   "start": "10:1",
+   "title": "Seventy-two sent ahead in pairs"
+  },
+  {
+   "start": "10:17",
+   "title": "The seventy-two come back rejoicing"
+  },
+  {
+   "start": "10:21",
+   "title": "Hidden from the wise, shown to little children"
+  },
+  {
+   "start": "10:25",
+   "title": "Who is my neighbor?"
+  },
+  {
+   "start": "10:38",
+   "title": "Martha serves, Mary listens"
+  },
+  {
+   "start": "11:1",
+   "title": "Lord, teach us to pray"
+  },
+  {
+   "start": "11:5",
+   "title": "The friend at midnight"
+  },
+  {
+   "start": "11:9",
+   "title": "Ask, search, knock"
+  },
+  {
+   "start": "11:14",
+   "title": "By the finger of God"
+  },
+  {
+   "start": "11:24",
+   "title": "The unclean spirit returns"
+  },
+  {
+   "start": "11:27",
+   "title": "Hearing and keeping God’s word"
+  },
+  {
+   "start": "11:29",
+   "title": "Something greater than Jonah"
+  },
+  {
+   "start": "11:33",
+   "title": "Light within"
+  },
+  {
+   "start": "11:37",
+   "title": "The inside of the cup"
+  },
+  {
+   "start": "11:42",
+   "title": "How terrible for you"
+  },
+  {
+   "start": "11:45",
+   "title": "Loads too heavy to carry"
+  },
+  {
+   "start": "12:1",
+   "title": "The leaven of the Pharisees"
+  },
+  {
+   "start": "12:4",
+   "title": "The one to fear"
+  },
+  {
+   "start": "12:13",
+   "title": "A rich man and his barns"
+  },
+  {
+   "start": "12:22",
+   "title": "Life is more than food"
+  },
+  {
+   "start": "12:35",
+   "title": "Servants waiting for their master"
+  },
+  {
+   "start": "12:49",
+   "title": "Fire on the earth"
+  },
+  {
+   "start": "12:54",
+   "title": "Reading the time"
+  },
+  {
+   "start": "13:1",
+   "title": "Unless you repent"
+  },
+  {
+   "start": "13:6",
+   "title": "A fig tree with no fruit"
+  },
+  {
+   "start": "13:10",
+   "title": "A daughter of Abraham set free"
+  },
+  {
+   "start": "13:18",
+   "title": "Like a mustard seed, like yeast"
+  },
+  {
+   "start": "13:22",
+   "title": "Strive to enter"
+  },
+  {
+   "start": "13:31",
+   "title": "A message for Herod"
+  },
+  {
+   "start": "14:1",
+   "title": "A Sabbath meal and a man with dropsy"
+  },
+  {
+   "start": "14:7",
+   "title": "Taking the lowest place"
+  },
+  {
+   "start": "14:12",
+   "title": "Guests who cannot repay"
+  },
+  {
+   "start": "14:15",
+   "title": "The dinner the guests refused"
+  },
+  {
+   "start": "14:25",
+   "title": "Counting the cost of following"
+  },
+  {
+   "start": "14:34",
+   "title": "Salt that loses its taste"
+  },
+  {
+   "start": "15:1",
+   "title": "One sheep out of a hundred"
+  },
+  {
+   "start": "15:8",
+   "title": "A coin swept for and found"
+  },
+  {
+   "start": "15:11",
+   "title": "A father and his two sons"
+  },
+  {
+   "start": "15:25",
+   "title": "The older son"
+  },
+  {
+   "start": "16:1",
+   "title": "A manager who acted shrewdly"
+  },
+  {
+   "start": "16:14",
+   "title": "Lovers of money"
+  },
+  {
+   "start": "16:19",
+   "title": "A rich man and a poor man named Lazarus"
+  },
+  {
+   "start": "17:1",
+   "title": "Stumbling, forgiveness and faith"
+  },
+  {
+   "start": "17:7",
+   "title": "Servants who only did their duty"
+  },
+  {
+   "start": "17:11",
+   "title": "Ten healed, one returns"
+  },
+  {
+   "start": "17:20",
+   "title": "Where the kingdom of God is"
+  },
+  {
+   "start": "17:22",
+   "title": "The day the Son of Man is revealed"
+  },
+  {
+   "start": "18:1",
+   "title": "A widow who kept coming"
+  },
+  {
+   "start": "18:15",
+   "title": "Children and the kingdom"
+  },
+  {
+   "start": "18:18",
+   "title": "A rich leader’s question"
+  },
+  {
+   "start": "18:31",
+   "title": "Going up to Jerusalem"
+  },
+  {
+   "start": "18:35",
+   "title": "A blind man at Jericho sees"
+  },
+  {
+   "start": "19:1",
+   "title": "Zacchaeus climbs a tree"
+  },
+  {
+   "start": "19:11",
+   "title": "Ten servants and ten minas"
+  },
+  {
+   "start": "19:28",
+   "title": "The king comes riding on a colt"
+  },
+  {
+   "start": "19:41",
+   "title": "Jesus weeps over Jerusalem"
+  },
+  {
+   "start": "19:45",
+   "title": "A house of prayer"
+  },
+  {
+   "start": "20:1",
+   "title": "A question about authority"
+  },
+  {
+   "start": "20:9",
+   "title": "The tenant farmers and the owner’s son"
+  },
+  {
+   "start": "20:20",
+   "title": "Paying tribute to Caesar"
+  },
+  {
+   "start": "20:27",
+   "title": "A question about the resurrection"
+  },
+  {
+   "start": "20:41",
+   "title": "David’s son and David’s Lord"
+  },
+  {
+   "start": "21:1",
+   "title": "A poor widow’s gift"
+  },
+  {
+   "start": "21:5",
+   "title": "Not one stone on another"
+  },
+  {
+   "start": "21:20",
+   "title": "Jerusalem surrounded"
+  },
+  {
+   "start": "21:25",
+   "title": "The Son of Man comes in a cloud"
+  },
+  {
+   "start": "21:29",
+   "title": "Learn from the fig tree"
+  },
+  {
+   "start": "21:34",
+   "title": "Stay awake and pray"
+  },
+  {
+   "start": "22:1",
+   "title": "The leaders plot, and Judas joins them"
+  },
+  {
+   "start": "22:7",
+   "title": "Preparing the Passover"
+  },
+  {
+   "start": "22:14",
+   "title": "The Passover meal with the apostles"
+  },
+  {
+   "start": "22:24",
+   "title": "The greatest is the one who serves"
+  },
+  {
+   "start": "22:35",
+   "title": "Purse, bag and sword"
+  },
+  {
+   "start": "22:39",
+   "title": "Not my will but yours"
+  },
+  {
+   "start": "22:47",
+   "title": "Judas comes with a crowd"
+  },
+  {
+   "start": "22:54",
+   "title": "Peter’s three denials"
+  },
+  {
+   "start": "22:63",
+   "title": "Blindfolded and mocked"
+  },
+  {
+   "start": "22:66",
+   "title": "Questioned by the council"
+  },
+  {
+   "start": "23:1",
+   "title": "Jesus is brought to Pilate"
+  },
+  {
+   "start": "23:18",
+   "title": "The crowd asks for Barabbas"
+  },
+  {
+   "start": "23:26",
+   "title": "On the way to the Skull"
+  },
+  {
+   "start": "23:39",
+   "title": "The two criminals"
+  },
+  {
+   "start": "23:44",
+   "title": "Darkness at midday and Jesus’ last words"
+  },
+  {
+   "start": "23:50",
+   "title": "Joseph lays Jesus in a tomb"
+  },
+  {
+   "start": "24:13",
+   "title": "Two disciples walk to Emmaus"
+  },
+  {
+   "start": "24:36",
+   "title": "Flesh and bones"
+  },
+  {
+   "start": "24:44",
+   "title": "Everything written about him"
+  },
+  {
+   "start": "24:50",
+   "title": "Blessing at Bethany"
+  }
+ ],
+ "summaries": {
+  "1": "The writer sets out an orderly account for Theophilus. The angel Gabriel announces the birth of John to Zechariah in the temple and the birth of Jesus to Mary in Nazareth; Mary visits Elizabeth and praises God, and at John’s birth Zechariah blesses the God of Israel.",
+  "2": "Jesus is born in Bethlehem, the town of David, and angels bring the good news to shepherds. Presented in the temple, the child is welcomed by Simeon and Anna, and at twelve Jesus stays behind in the temple, in the Father’s house.",
+  "3": "The word of God comes to John in the wilderness, who calls the crowds to bear fruit that shows repentance and promises one stronger than himself. The Spirit comes down on Jesus at baptism, and Jesus’s family line is traced back to Adam.",
+  "4": "The devil tests Jesus in the wilderness. In the synagogue at Nazareth Jesus reads from Isaiah and is driven out of town; in Capernaum Jesus drives out an unclean spirit, heals Simon’s mother-in-law and many others, and goes on to bring the good news to other towns.",
+  "5": "After a great catch of fish Simon and his partners leave everything to follow Jesus. Jesus makes a man with leprosy clean, forgives and heals a paralyzed man, calls Levi from his tax booth and answers a question about fasting with sayings about the bridegroom, patches and wineskins.",
+  "6": "Jesus is challenged over the Sabbath and heals a withered hand, then chooses the twelve. In a sermon to the crowds Jesus blesses the poor, warns the rich, commands love for enemies and ends with the builder who sets a house on rock.",
+  "7": "Jesus heals a centurion’s servant and raises a widow’s son at Nain. Jesus answers John’s question and speaks about John, and at a Pharisee’s table a woman with an alabaster flask is forgiven much and loves much.",
+  "8": "Women who traveled with Jesus support the work. Jesus tells the parable of the sower and of the lamp, calms the wind and the water, frees a man from many demons, heals a woman who touched Jesus’s clothes and raises the daughter of Jairus.",
+  "9": "Jesus sends out the Twelve and feeds five thousand, and Peter says who Jesus is. Jesus speaks of the cross, is changed in appearance on the mountain, frees a boy from a spirit, and sets out for Jerusalem; a Samaritan village turns Jesus away.",
+  "10": "Jesus sends seventy-two ahead in pairs, and they come back rejoicing. Answering an expert in the law, Jesus tells of a Samaritan who stops to help a wounded man, and at the house of Martha and Mary praises Mary for listening.",
+  "11": "Jesus teaches the disciples to pray and urges them to ask, search and knock. Accused of driving out demons by Beelzebul, Jesus speaks of the finger of God and the sign of Jonah, and denounces the Pharisees and the experts in the law at a meal.",
+  "12": "Jesus warns against the leaven of the Pharisees and tells of a rich fool who built bigger barns. The disciples are not to worry but to seek God’s kingdom and to be like servants ready for their master’s return.",
+  "13": "Jesus calls all to repent and tells of a fig tree given one more year. On the Sabbath Jesus heals a woman bent over for eighteen years, compares the kingdom to a mustard seed and yeast, urges striving to enter the narrow door, and laments over Jerusalem.",
+  "14": "At a Sabbath meal Jesus heals a man with dropsy and teaches guests to take the lowest place and hosts to invite those who cannot repay. The parable of the great dinner is followed by a call to count the cost of following.",
+  "15": "When Pharisees and scribes grumble that Jesus welcomes sinners, Jesus tells of a lost sheep, a lost coin and a lost son. The father welcomes the younger son home and pleads with the resentful older son.",
+  "16": "Jesus tells of a shrewd manager and teaches that no one can serve both God and money. The Pharisees, who love money, are warned, and Jesus tells of a rich man and a poor man named Lazarus.",
+  "17": "Jesus teaches about causing others to stumble, forgiveness and faith. Of ten men healed of leprosy only a Samaritan returns to give thanks, and Jesus speaks of the kingdom of God and the day the Son of Man is revealed.",
+  "18": "Jesus tells of a widow who would not stop asking and of a Pharisee and a tax collector praying in the temple. Jesus welcomes the children, answers a rich leader, foretells death and rising, and gives sight to a blind man near Jericho.",
+  "19": "In Jericho Zacchaeus climbs a tree to see Jesus and becomes a changed man. Jesus tells of ten servants entrusted with minas, rides into Jerusalem on a colt, weeps over the city and drives the traders out of the temple.",
+  "20": "The leaders question Jesus’s authority, and Jesus tells of the tenant farmers who killed the owner’s son. Jesus answers questions about paying tribute to Caesar and about the resurrection, and asks how David’s son can be David’s Lord.",
+  "21": "Jesus praises a poor widow’s gift and foretells the temple’s fall, Jerusalem surrounded by armies, and the Son of Man coming in a cloud. The disciples are to learn from the fig tree and stay awake and pray.",
+  "22": "Judas agrees to hand Jesus over, and at the Passover meal Jesus gives the bread and the cup to the apostles and teaches that the greatest is the one who serves. Jesus prays on the Mount of Olives, is arrested, denied three times by Peter, mocked and questioned by the council.",
+  "23": "Pilate and Herod find no guilt in Jesus, but the crowd asks for Barabbas, and Jesus is crucified at the Skull between two criminals, promising one of them paradise. Darkness falls, Jesus dies, and Joseph of Arimathea lays the body in a tomb.",
+  "24": "Women find the tomb empty and are told that Jesus has been raised. The risen Jesus walks with two disciples to Emmaus, appears to the others with flesh and bones, opens the Scriptures to them, and is taken up near Bethany."
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "_note": [
+  "Passages of the Catena Aurea that build_catena_aurea leaves out, with the reason:",
+  "each is one Father's words within a Logia excerpt (passage = its place there).",
+  "Rewritten by every build; the scan's text is kept so an editor can repair one."
+ ],
+ "logia_sha256": "f9ac2745bc769c4749199f1f30aa51557761ecfc6c465bf0880b8b1bae09a90a",
+ "dropped": [
+  {
+   "excerpt": "catena-mark.MRK.1.5.1",
+   "passage": 1,
+   "father": "Bede",
+   "why": "an unpaired quotation mark",
+   "text": "An example of confessing their sins and of promising to lead a new life, is held out to those who desire to be baptized, by those words which follow, “confessing their sins.” Chrys.” Because indeed John preached repentance, he wore the marks of repentance in his garment and in his food."
+  },
+  {
+   "excerpt": "catena-mark.MRK.1.43.1",
+   "passage": 1,
+   "father": "Bede",
+   "why": "an unpaired quotation mark",
+   "text": "There follows: “And He straitly charged him, and forthwith, &c.” See thou tell no man.”"
+  },
+  {
+   "excerpt": "catena-mark.MRK.6.2.1",
+   "passage": 1,
+   "father": "Bede",
+   "why": "an unpaired quotation mark",
+   "text": "It goes on: “And when the sabbath day was come, He began to teach in the synagogue; and many hearing Him were astonished, saying, From whence hath this man these things? and what wisdom is this which is given unto him, that even such mighty works are wrought by his hands?” By wisdom is meant His doctrine, by powers, the cures and miracles which He did. It goes on: Is not this the carpenter, the son of Mary?”"
+  },
+  {
+   "excerpt": "catena-mark.MRK.15.26.1",
+   "passage": 1,
+   "father": "Augustine",
+   "why": "a stray capitalised word (a broken siglum or margin debris)",
+   "text": "It goes on: “And the superscription of His accusation was written over, THE KING OF THE JEWS.”"
+  },
+  {
+   "excerpt": "catena-mark.MRK.15.32.1",
+   "passage": 2,
+   "father": "Pseudo-Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "Afterwards they saw Him arise from the grave, though they would not believe that He could come down from the tree of the Cross. Where, O Jews, is your lack of faith? Your own selves I appeal to; your own selves I bring as judges. How much more wonderful is it that a dead man should arise, than that one yet living should choose to come down from the cross. Ye asked but small things, till greater should have come to pass; but your want of faith could not be healed by signs much greater than those for which you sought. Here “all have gone out of the way, all are become abominable.” [Ps 13:3] Wherefore it goes on: And they that were crucified with Him reviled.”"
+  }
+ ]
+}

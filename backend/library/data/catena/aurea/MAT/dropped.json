@@ -1,0 +1,402 @@
+{
+ "_note": [
+  "Passages of the Catena Aurea that build_catena_aurea leaves out, with the reason:",
+  "each is one Father's words within a Logia excerpt (passage = its place there).",
+  "Rewritten by every build; the scan's text is kept so an editor can repair one."
+ ],
+ "logia_sha256": "f9ac2745bc769c4749199f1f30aa51557761ecfc6c465bf0880b8b1bae09a90a",
+ "dropped": [
+  {
+   "excerpt": "catena-matthew.MAT.1.1.8",
+   "passage": 1,
+   "father": "Augustine",
+   "why": "an unpaired quotation mark",
+   "text": "Nay, so far is this genealogy from being part of the Gospel, that the writer does not venture so to entitle it; beginning, ‘The book of the generation,’ not ‘The book of the Gospel.’ Mark again, who cared not to write of the generation, but only of the preaching of the Son of God, which is properly The Gospel, begins thus accordingly, 'The Gospel of Jesus Christ the Son of God.' Thus then, all that we read in Matthew before the words, 'Jesus began to preach the Gospel of the kingdom,' [Matt 4:17] is a part of the genealogy, not of the Gospel. I therefore betook myself to Mark and John, with whose prefaces I had good reason to be satisfied, as they introduce neither David, nor Mary, nor Joseph.” To which Augustine replies, What will he say then to the Apostle’s words, “Remember the resurrection of Jesus Christ of the seed of David according to my Gospel.” [2 Tim 2:8] But the Gospel of the Apostle Paul was likewise that of the other Apostles, and of all the faithful, as he says, “Whether I, or they, thus have we preached the Gospel.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.7.1",
+   "passage": 4,
+   "father": "\u0000unread",
+   "why": "an opening siglum this build cannot read (dropped, not given to the Father before)",
+   "text": "And it is to tempt God, in any thing to expose one’s self to danger without cause."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.17.1",
+   "passage": 6,
+   "father": "Pseudo-Chrysostom",
+   "why": "an unpaired quotation mark",
+   "text": "He does not straightway preach righteousness which all knew, but repentance, which all needed. Who then dared to say, ‘I desire to be good, but am not able?” For repentance corrects the will; and if ye will not repent through fear of evil, at least ye may for the pleasure of good things; hence He says, “the kingdom of heaven is at hand;” that is, the blessings of the heavenly kingdom. As if He has said, Prepare yourselves by repentance, for the time of eternal reward is at hand."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.22.4",
+   "passage": 2,
+   "father": "Augustine",
+   "why": "Greek or Hebrew",
+   "text": "And there is this same distinction between the first case here put by the Saviour and the second: in the first case there is one thing, the passion; in the second two, anger and speech following thereupon, “He who saith to his brother, Raca, is in danger of the council.” Some seek the interpretation of this word in the Greek, and think that “Raca” means ragged, from the Greek ῥάχος, a rag. But more probably it is not a word of any meaning, but a mere sound expressing the passion of the mind, which grammarians call an interjection, such as the cry of pain, ‘hen.’"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.25.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "The word here in our Latin books is ‘consentiens,’ in Greek, εὐνοῶν, which means, ‘kind,’ ‘benevolent.’"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.28.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "Between πάθος and προπάθεια, that is between actual passion and the first spontaneous movement of the mind, there is this difference: passion is at once a sin; the spontaneous movement of the mind, though it partakes of the evil of sin, is yet not held for an offence committed."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.33.2",
+   "passage": 1,
+   "father": "Augustine",
+   "why": "Greek or Hebrew",
+   "text": "This precept also confirms the righteousness of the Pharisees, not to forswear; inasmuch as he who swears not at all cannot forswear himself. But as to call God to witness is to swear, does not the Apostle break this commandment when he says several times to the Galatians, “The things which I write unto you, behold, before God, I lie not.” [Gal 1:20] So the Romans, “God is my witness, whom I serve in my spirit.” [Rom 1:9] Unless perhaps some one may say, it is no oath unless I use the form of swearing by some object; and that the Apostle did not swear in saying, “God is my witness.” It is ridiculous to make such a distinction; yet the Apostle has used even this form, “I die daily, by your boasting.” [1 Cor 15:31] That this does not mean, your boasting has caused my dying daily, but is an oath, is clear from the Greek, which is νὴ τὴν ὑμετέραν χαύχησιν."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.47.1",
+   "passage": 3,
+   "father": "Rabanus",
+   "why": "Greek or Hebrew",
+   "text": "Ethnici, that is, the Gentiles, for the Greek word ἔθνος is translated ‘gens’ in Latin; those, that is, who abide such as they were born, to wit, under sin."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.11.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "The Greek word here which we render, ‘supersubstantialis,’ is ἐπιούσιος. The LXX often make use of the word, περιούσιος, by which we find, on reference to the Hebrew, they always render the word, sogola."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.11.2",
+   "passage": 1,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "Symmachus translates it ἐξαίρετος, that is, ‘chief,’ or ‘excellent,’ though in one place he has interpreted ‘peculiar.’ When then we pray God to give us our ‘peculiar’ or ‘chief’ bread, we mean Him who says in the Gospel, “I am the living bread which came down from heaven.” [John 6:51]"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.13.1",
+   "passage": 2,
+   "father": "Augustine",
+   "why": "Greek or Hebrew",
+   "text": "Some copies read, “Carry us not,”... an equivalent word, both being a translation of one Greek word, εἰσενέγκῃς. Many in interpreting say, ‘Suffer us not to be led into temptation,’ as being what is implied in the word, “lead.” For God does not of Himself lead a man, but suffer him to be led from whom He has withdrawn His aid."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.16.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "The word, “exterminare,” so often used in the ecclesiastical Scriptures though a blunder of the translators, has a quite different meaning from that in which it is commonly understood. It is properly said of exiles who are sent beyond the boundry of their country. Instead of this word, it would seem better to use the word, “demoliri,” ‘to destroy,’ in translating the Greek ἀφανίζειν. The hypocrite destroys his face, in order that he may feign sorrow, and with a heart full of joy wears sorrow in his countenance."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.7.3",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "a stray capitalised word (a broken siglum or margin debris)",
+   "text": "And in that He adds “seek,” and “knock,” HE bids us ask with much importunateness and strength. For one who seeks, casts forth all other things from his mind, and is turned to that thing singly which he seeks; and he that knocks comes with vehemence and warm soul."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.23.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "Note that He says, “I never knew you,” as being against some that say that all men have always been among rational creatures.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.19.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "This Scribe of the Law who knew but the perishing letter, would not have been turned away had his address been, ‘Lord, I will follow Thee.’ But because he esteemed the Saviour only as one of many masters, and was a ‘man of the letter’... (which is better expressed in Greek, γραμματεὺς) not a spiritual hearer, therefore he had no place where Jesus might lay His head. It is suggested to us that he sought to follow the Lord, because of His great miracles, for the sake of the gain to be derived from them; and was therefore rejected; seeking the same thing as did Simon Magus when he would have given Peter money."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.27.1",
+   "passage": 1,
+   "father": "Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "The miracles that had gone before of the ruler’s daughter, and the woman with the issue of blood, are now followed by that of two blind men, that what death and disease had there witnessed, that blindness might now witness. “And as Jesus passed thence,” that is, from the ruler’s house, there followed him two blind men, crying, and saying, Have mercy on us, thou Son of David.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.2.1",
+   "passage": 3,
+   "father": "Remigius",
+   "why": "a stray capitalised word (a broken siglum or margin debris)",
+   "text": "There have been some who in this name Peter, which is Greek and Latin, have sought a Hebrew interpretation, and would have it to signify, ‘Taking off the shoe,’, ‘or unloosing,’ or ‘acknowledging.’ But those that say this are contradicted by the facts. First, that the Hebrew has no letter P, but uses PH instead. Thus Pilate they call, Philate. Secondly, that one of the Evangelists has used the word as an interpretation of Cephas; The Lord said, “Thou shalt be called Cephas,” [John 1:42] on which the Evangelist adds, “which being interpreted is Petrus.” Simon in interpreted ‘obedient,’ for he obeyed the words of Andrew, and with him came to Christ, or because he obeyed the divine commands, and at one word of bidding followed the Lord. Or as some will have it, it is to be interpreted, ‘Laying aside grief,’ and, ‘hearing painful things;’ for that on the Lord’s resurrection he laid aside the grief he had for His death; and he heard sorrowful things when the Lord said to him, “Another shall gird thee, and shall carry thee whither thou wouldest not.” [John 21:18] “And Andrew his brother.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.2.2",
+   "passage": 2,
+   "father": "Remigius",
+   "why": "Greek or Hebrew",
+   "text": "Andrew is interpreted ‘manly;’ for as in Latin ‘virilis’ is derived from, ‘vir,’ so in Greek, Andrew is derived from ἀνήρ. Rightly is he called manly, who left all and followed Christ, and manfully persevered in His commands."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.13.1",
+   "passage": 1,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "Here is a latent allusion to the form of salutation in Hebrew and Syriac; they say Salemalach, or Salamalach, for the Greek, χαῖρε, or Latin, Ave; that is, ‘Peace be with you.’ The command then is, that on entering any house they should pray for peace for their host; and, as far as they may be able, to still all discords, so that if any quarrel should arise, they, who had prayed for peace should have it — others should have the discord; as it follows, “And if that house be worthy, your peace shall rest upon it; but if it be not worthy, your peace shall return to you again.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.7.1",
+   "passage": 3,
+   "father": "Chrysostom",
+   "why": "a misread or broken word",
+   "text": "“As they departed,” that He should not seem to speak flattery of the man; and in correcting the error of the multitude, He does not openly expose their secret suspicions, but by framing his words against what was in their hearts, He shews that He knows hidden things. But He said not as to the Jews, “Why think ye evil in your hearts? though indeed it was evil that they had thought; yet it proceeded not from wickedness, but from ignorance; there- fore He spake not to them harshly, but answered for John, shewing that he had not fallen from his former opinion. This He teaches them, not by His word only, but by their own witness, the witness of their own actions, as well as their own words. “What went ye out into the wilderness to see?” As much as to say, Why did ye leave the towns and go out into the wilderness? So great multitudes would not have gone with such haste into the desert, if they had not thought that they should see one great, and wonderful, one more stable than the rock."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.7.3",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "a misread or broken word",
+   "text": "Otherwise; That John is not as a waving reed, yourselves have shewn by going out unto the desert to him. Nor can any say that John was once firm, but has since become wilful and wavering; for as some are prone to anger by natural disposition, others become so by long weakness and indu1gence, so in inconstancy, some are by nature inconstant, some become so by yielding to their own humour and self-indulgence. But John was neither inconstant by natural disposition; this he means by saying, “What went ye out for to see, a reed shaken by the wind?” Neither had he corrupted an excellent nature by self-indulgence, for that he had not served the flesh is shewn by his raiment, his abode in the desert, his prison. Had he sought soft raiment, he would not have dwelt in the desert, but in kings’ houses; “Lo they that are clothed in soft raiment, are in kings’ houses.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.11.1",
+   "passage": 2,
+   "father": "Rabanus",
+   "why": "an unpaired quotation mark",
+   "text": "As much as to say; What need to recount one by one the praises of John the Baptist; “I say verily unto you, Among them that are born of women, &c.” He says women, not virgins. If the same word, mulier, which denotes a married person, is any where in the Gospels applied to Mary, it should be known that the translator has there used ‘ mulier’ for ‘femina;” as in that, “Woman, behold thy son!” [John 19:26]"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.21.1",
+   "passage": 3,
+   "father": "Rabanus",
+   "why": "an unpaired quotation mark",
+   "text": "Tyre and Sidon are cities of Phoenicia. Tyre is interpreted ‘narrowness,’ and Sidon ‘hunting,” and denote the Gentiles whom the Devil as a hunter drives into the straits of sin; but Jesus the Saviour sets them free by the Gospel."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.19.1",
+   "passage": 3,
+   "father": "Remigius",
+   "why": "Greek or Hebrew",
+   "text": "The Greek πλατεῖα, is in Latin called ‘latitudo.’ No one therefore has heard His voice in the streets, because He has not promised pleasant things in this world to those that love Him, but hardships."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.22.2",
+   "passage": 2,
+   "father": "Augustine",
+   "why": "a misread or broken word",
+   "text": "For he that believes not, is truly demoniac, b1ind, and dumb; and he that has not understanding of the faith, nor confesses, nor gives praise to God, is subject to the devil."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.23.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "a misread or broken word",
+   "text": "And it is to be noted, that as in the bad ground there were three degrees of difference, to wit, that by the way side, the stony and the thorny ground; so in the good soil there is a three-fold difference, the hundred-fold, the sixty-fold, and the thirty- fold. And in this as in that, not the substance but the will is changed, and the hearts as well of the unbelieving as the believing receive seed; as in the first case He said, “Then cometh the wicked one, and carrieth off that which is sown in the heart;” and in the second and third case of the bad soil He said, “This is he that heareth the word.” So also in the exposition of the good soil, “This is he that heareth the word.” Therefore we ought first to hear, then to understand, and after understanding to bring forth the fruits of teaching, either an hundred-fold, or sixty, or thirty."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.45.1",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "a misread or broken word",
+   "text": "The Gospel preaching not only offers manifold gain as a treasure, but is precious as a pearl; wherefore after the parable concerning the treasure, He gives that concerning the pearl. And in preaching, two things are required, namely, to be detached from the business of this life, and to be watchful, which are denoted by this merchant- man. Truth moreover is one, and not manifold, and for this reason it is one pearl that is said to be found. And as one who is possessed of a pearl, himself indeed knows of his wealth, but is not known to others, ofttimes concealing it in his hand because of its small bulk, so it is in the preaching of the Gospel; they who possess it know that they are rich, the unbelievers, not knowing of this treasure, know not of our wealth."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.33.4",
+   "passage": 1,
+   "father": "Hilary",
+   "why": "a misread or broken word",
+   "text": "That when Peter was seized with fear, the Lord gave him not power of coming to Him, but held him by the hand and sustained him, this is the signification thereof; that He who alone was to suffer for all alone forgave the sins of a11; and no partner is admitted into that which was bestowed upon mankind by one."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.30.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "What the Latin translator calls ‘debiles’ (maimed), is in the Greek χυλλοὺς, which is not a general term for a maimed person, but a peculiar species, as he that is lame in one foot is called ‘claudus,’ so he that is crippled in one hand is called, χυλλός."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.31.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "He said nothing concerning the maimed, because there was no one word which was the opposite of this.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.22.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "We have often said that Peter had too hot a zeal, and a very great affection towards the Lord the Saviour. Therefore after that his confession, and the reward of which he had heard from the Saviour, he would not have that his confession destroyed, and thought it impossible that the Son of God could be put to death, but takes Him to him affectionately, or takes Him aside that he may not seem to be rebuking his Master in the presence of his fellow disciples, and begins to chide Him with the feeling of one that loved Him, and to contradict Him, and say, “Be it far from thee, Lord;” or as it is better in the Greek, ἵλεώς σοι Κύριε, οὐ μὴ ἔσται σοι τοῦτο, that is, Be propitious to Thyself, Lord, this shall not be unto Thee."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.20.3",
+   "passage": 3,
+   "father": "Gloss",
+   "why": "an unpaired quotation mark",
+   "text": "So that the sense then is, “Ye shall say to this mountain,” that is to the proud devil, “Remove hence,” that is from the possessed body into the sea, that is into the depths of hell, “and it shall remove, and nothing shall be impossible to you,” that is, no sickness shall be incurable.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.25.1",
+   "passage": 1,
+   "father": "Gloss",
+   "why": "a misread or broken word",
+   "text": "Otherwise; Peter answered, Yea; meaning, yea, He does not pay. And Peter sought to acquaint the Lord that the Herodians had demanded tribute, but the Lord prevented him; as it follows, “And when he had entered into the house, Jesus prevented him, saying, Of whom do the kings of the earth receive custom or tribute,” (i. e. head- money,) “of their children, or of strangers?”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.18.1",
+   "passage": 3,
+   "father": "Hilary",
+   "why": "an unpaired quotation mark",
+   "text": "To hold out a great and terrible fear, by which all men should be reached in this present life, He pronounces that the judgment of the Apostles should be ratified, so that whosoever they bound on earth, i.e. left entangled in the noose of sin, and whosoever they loosed, i.e. accorded the pardon of God’s mercy to their salvation, that these should be bound and loosed in heaven.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.27.1",
+   "passage": 4,
+   "father": "Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "Because to forsake is not enough, he adds that which makes perfection, “and have followed thee.” We have done what thou commandedst us, what reward wilt thou then give us? What shall we have?”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.16.11",
+   "passage": 2,
+   "father": "Chrysostom",
+   "why": "an unpaired quotation mark",
+   "text": "When He says, The first shall be last, and the last first,” He alludes secretly to such as were at the first eminent, and afterwards set at nought virtue; and to others who have been reclaimed from wickedness, and have surpassed many. So that this parable was made to quicken the zeal of those who are converted in extreme old age, that they should not suppose that they shall have less than others."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.17.2",
+   "passage": 1,
+   "father": "Origen",
+   "why": "an unpaired quotation mark",
+   "text": "Meditating then of this, we ought to know that often even when there is certain trial to be undergone, we ought to offer ourselves to it. But forasmuch as it was said above, When they persecute you in one city, flee ye to another,” [Matt 10:23] it belongs to the wise in Christ to judge when the season requires that he shun, and when that he go to meet dangers."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.9.1",
+   "passage": 1,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "And when all that could be done was done, they added also the tribute of the tongue, as it follows, “And the multitudes that went before, and that followed, cried, saying, Hosannna to the Son of David.” I shall shortly examine what is the meaning of this word, Hosanna. In the hundred and seventeenth Psalm, which is clearly written of the Saviour’s coming, we read this among other things; “Save me now, O Lord, send now prosperity. Blessed art thou that art to come in the name of the Lord.” [Ps 118:25] For that which the LXX give Ω Κύριε σῶσον δὴ, “Save now, O Lord;” we read in the Hebrew, ‘Anna, adonai osianna,’ which Symmachus renders more plainly, “I pray thee, O Lord, save, I pray thee.” Let none think that it is a word made up of two words, one Greek and one Hebrew, for it is pure Hebrew."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.9.1",
+   "passage": 2,
+   "father": "Remigius",
+   "why": "an unpaired quotation mark",
+   "text": "And it is confounded of one perfect and one imperfect word. For ‘Hosi’ signifies ‘save,” ‘anna’ is an interjection used in entreating."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.9.2",
+   "passage": 2,
+   "father": "Pseudo-Chrysostom",
+   "why": "an unpaired quotation mark",
+   "text": "“Hosanna,” some interpret ‘glory,’ some ‘redemption,” and glory is His due, and redemption belongs to Him who has redeemed all men."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.19.1",
+   "passage": 4,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "“For ever,” (in sempiternum,) or, “To the end of the world,” (in saeculum,) for the Greek word, αἰῶν, signifies both."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.28.1",
+   "passage": 2,
+   "father": "Pseudo-Chrysostom",
+   "why": "an unpaired quotation mark",
+   "text": "Those who are to be judged in this cause, He applies to as judges, that condemning themselves they might be shewn to be unworthy to be acquitted by any other. It is high confidence of the justness of a cause, that will entrust it to the decision of an adversary. But He veils the allusion to them in a parable, that they might not perceive that they were passing sentence upon themselves; “A certain man had two sons.” Who is he but God, who created all men, who being by nature Lord of all, yet would rather be loved as a father, than feared as a Lord. The elder son was the Gentile people, the younger the Jews, since from the time of Noah there had been Gentiles. And he came to the first, and said, Son, go work to day in my vineyard. To day,” i.e. during this age. He spoke with him, not face to face as man, but to his heart as God, instilling understanding through the senses. To work in the vineyard is to do righteousness; for to cultivate the whole thereof, I know not that any one man is sufficient."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.31.1",
+   "passage": 3,
+   "father": "Jerome",
+   "why": "an unpaired quotation mark",
+   "text": "It should be known that in the correct copies it is read not “The last,” but The first,” that they might be condemned by their own sentence. But should we prefer to read, as some have it, “The last,” the explanation is obvious, to say that the Jews understood the truth, but dissembled, and would not say what they thought; just as though they knew that the baptism of John was from heaven, they would not say so."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.1.1",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "an unpaired quotation mark",
+   "text": "Forasmuch as He had said, And it shall be given to a nation bringing forth the fruits thereof,” He now proceeds to shew what nation that is."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.13.1",
+   "passage": 5,
+   "father": "Pseudo-Chrysostom",
+   "why": "a misread or broken word",
+   "text": "Or, it points to the difference of punishment inflicted on sinners. Outer darkness being the deepest, inward darkness the lesser, as it were the out- skirts of the place."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.15.1",
+   "passage": 3,
+   "father": "Jerome",
+   "why": "a misread or broken word",
+   "text": "Lately under Caesar Augustus, Judaea, which was subject to the Romans, had been made tributary when the census was held of the whole world; and there was a great division among the people, some saying that tribute ought to be paid to the Romans in return for the security and quiet which their arms maintained for all. The Pharisees on the other hand, self- satisfied in their own righteousness, contended that the people of God who paid tithes and gave first-fruits, and did all the other things which are written in the Law, ought not to be subject to human laws. But Augustus had given the Jews as king, Herod, son of Antipater, a foreigner and proselyte; he was to exact the tribute, yet to be subject to the Roman dominion. The Pharisees therefore send their disciples with the Herodians, that is, with Herod’s soldiers, or those whom the Pharisees in mockery called Herodians, because they paid tribute to the Romans, and were not devoted to the worship of God."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.14.1",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "a misread or broken word",
+   "text": "Next the Lord rebukes them for their g1uttony, and what was the worst, that not from the rich but from widows they took wherewith to fill their bellies, thus burdening the poverty of those whom they should have relieved."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.22.1",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "Greek or Hebrew",
+   "text": "I ask the Jews, whence came upon them so grievous wrath from heaven more woeful than all that had come upon them before? Plainly it was because of the desperate crime [τολμήμα] and the denial of the Cross. But He shews that they deserved still heavier punishment than they received, when He adds, “And except those days should be shortened, there should no flesh be saved;” that is, If the siege by the Romans should be continued longer, all the Jews would perish; for by “all flesh,” He means all the Jewish nation, those within and those without; for the Romans were at war not only with those in Judaea, but with the whole race wherever dispersed."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.28.1",
+   "passage": 2,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "By an instance from nature, which we daily see, we are instructed in a sacrament of Christ. Eagles and vultures are said to scent dead bodies even beyond sea, and to flock to feed upon them. If then birds, not having the gift of reason, by instinct alone find out where lays a dead body, separated by so great space of country, how much more ought the whole multitude of believers to hasten to Christ, whose lightning goeth forth out of the east, and shines even to the west? We may understand by the carcase here, or corpse [πτῶμα], which in the Latin is more expressively ‘cadaver,’ an allusion to the passion of Christ’s death."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.49.1",
+   "passage": 1,
+   "father": "Augustine",
+   "why": "an unpaired quotation mark",
+   "text": "The temper of this servant is shewn in his behaviour, which is thus expressed by his good Master; his tyranny, “and shall begin to beat his fellow servants,” his sensuality, “and to eat and drink with the drunken.” So that when be said, “My Lord delayeth His coming,” he is not to be supposed to speak from desire to see the Lord, such as was that of him who said,?My soul is athirst for the living God; when shall I come?” [Ps 42:2] This shews that he was grieved at the delay, seeing that what was hastening towards him seemed to his longing desires to be coming slowly."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.26.1",
+   "passage": 4,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "But what he thought would be his excuse is turned into his condemnation. He calls him “wicked servant,” because he cavilled against his Lord; and “slothful,” because he would not double his talent; condemning his pride in the one, and his idleness in the other. If you knew me to be hard and austere, and to seek after other men’s goods, you should also have known that I exact with the more rigour that is mine own, and should have given my money to the bankers; for the Greek word here (ἀργύριον) means money."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.1.2",
+   "passage": 1,
+   "father": "Jerome",
+   "why": "Greek or Hebrew",
+   "text": "The Passover, called in Hebrew Phase, does not come as most think from πασχεῖν ‘to suffer,’ but from the Hebrew word signifying ‘to pass over;’ because the destroyer passed over when he saw the blood on the doors of the Israelites, and smote them not; or the Lord Himself walked on high, succouring His people."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.6.2",
+   "passage": 1,
+   "father": "Rabanus",
+   "why": "Greek or Hebrew",
+   "text": "From the Greek, πίστις, faith, whence ‘pisticus,’ faithful. For this ointment was pure, unadulterated."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.17.2",
+   "passage": 1,
+   "father": "Chrysostom",
+   "why": "a stray capitalised word (a broken siglum or margin debris)",
+   "text": "REMIG. But perhaps some one will say, If that typical lamb bore a type of this the true lamb, how did not Christ suffer on the night on which this was always killed? It is to be noted, that on this night, He committed to His disciples the mysteries of His flesh and blood to be celebrated, and then also being seized and bound by the Jews, He hallowed the commencement of His sacrifice, i.e. His Passion. “The disciples came” unto him;” among these no doubt was the traitor Judas."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.42.3",
+   "passage": 2,
+   "father": "Leo",
+   "why": "an unpaired quotation mark",
+   "text": "From what source of error, O Jews, have ye sucked in the poison of such blasphemies? What teacher delivered it to you? What learning moved you to think that the true King of Israel, that the veritable Son of God, would be He who would not suffer Himself to be crucified, and would set free His body from the fastenings of the nails? Not the bidden meaning of the Law, not the mouths of the Prophets. Had ye indeed ever read, “I hid not my face from the shame of spitting;” [Is 50:6] or that again,:They pierced my hands and my feet, they told all my bones.” [Ps 22:16] Where have ye ever read that the Lord came down from the cross? But ye have read, “The Lord hath reigned from the tree.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.51.1",
+   "passage": 3,
+   "father": "Origen",
+   "why": "a stray capitalised word (a broken siglum or margin debris)",
+   "text": "It is understood that there were two veils; one veiling the Holy of Holies, the other, the outer part of the tabernacle or temple. In the Passion then of our Lord and Saviour, it was the outer veil which was rent from the top to the bottom, that by the rending of the veil from the beginning to the end of the world, the mysteries might be published which had been hid with good reason until the Lord’s coming. “But when that which is perfect is come,” [1 Cor 13:10] then the second veil also shall be taken away, that we may see the things that are hidden within, to wit, the true Ark of the Testament, and behold the Cherubim and the rest in their real nature. HILARY; Or, The veil of the temple is rent, because from this time the nation was dispersed, and the honour of the veil is taken away with the guardianship of the protecting Angel."
+  }
+ ]
+}
