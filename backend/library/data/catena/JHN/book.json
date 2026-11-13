@@ -45,67 +45,78 @@
   {
    "id": "origen",
    "name": "Origen",
-   "work": "Commentary on John",
+   "title": "Commentary on John",
+   "work": "origen",
    "era": 0
   },
   {
    "id": "chrysostom",
    "name": "John Chrysostom",
-   "work": "Homilies on John",
+   "title": "Homilies on John",
+   "work": "chrysostom",
    "era": 0
   },
   {
    "id": "augustine",
    "name": "Augustine",
-   "work": "Tractates on John",
+   "title": "Tractates on John",
+   "work": "augustine",
    "era": 0
   },
   {
    "id": "cyril",
    "name": "Cyril of Alexandria",
-   "work": "Commentary on John",
+   "title": "Commentary on John",
+   "work": "cyril",
    "era": 0
   },
   {
    "id": "calvin",
    "name": "John Calvin",
-   "work": "Commentary on John",
+   "title": "Commentary on John",
+   "work": "calvin",
    "era": 1
   },
   {
    "id": "lapide",
    "name": "Cornelius a Lapide",
-   "work": "The Great Commentary",
+   "title": "The Great Commentary",
+   "work": "lapide",
    "era": 1
   },
   {
    "id": "henry",
    "name": "Matthew Henry",
-   "work": "Commentary on the Whole Bible",
+   "title": "Commentary on the Whole Bible",
+   "work": "henry",
    "era": 2
   },
   {
    "id": "bengel",
    "name": "J. A. Bengel",
-   "work": "Gnomon of the New Testament",
+   "title": "Gnomon of the New Testament",
+   "work": "bengel",
    "era": 2
   },
   {
    "id": "wesley",
    "name": "John Wesley",
-   "work": "Explanatory Notes",
+   "title": "Explanatory Notes",
+   "work": "wesley",
    "era": 2
   },
   {
    "id": "ryle",
    "name": "J. C. Ryle",
-   "work": "Expository Thoughts on John",
+   "title": "Expository Thoughts on John",
+   "work": "ryle",
    "era": 3
   },
   {
    "id": "westcott",
    "name": "B. F. Westcott",
-   "work": "The Gospel According to St. John",
+   "title": "The Gospel According to St. John",
+   "work": "westcott",
    "era": 3
   }
  ]

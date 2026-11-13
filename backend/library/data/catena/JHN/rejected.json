@@ -8,12 +8,18 @@
   "bengel.JHN.4.37.1": "a quotation of Romans 5:6 that opens in Bengel's previous note: the close mark is orphaned here",
   "bengel.JHN.19.14.2": "a citation cut short in the scan (\"Charl.... T.\")",
   "cyril.JHN.14.9.1": "a quotation mark printed on the wrong side of a space (say,\" that): curling it closes the quotation instead of opening it",
-  "chrysostom.JHN.6.30-31.1": "english_audit's word-fusion check reads the archaic \"shewest\" as two words; sound text, turned away to keep the audit clean"
+  "chrysostom.JHN.6.30-31.1": "english_audit's word-fusion check reads the archaic \"shewest\" as two words; sound text, turned away to keep the audit clean",
+  "westcott.JHN.16.14.1": "the scan reads \"he shall\" as \"be shall\" and garbles a Greek word (\"(TO (pots')\")",
+  "bengel.JHN.5.26-27.1": "the scan garbles a word where the Greek was (\"ate He is\")",
+  "westcott.JHN.20.31.2": "the Greek it discusses is gone, leaving a run of ellipses: reads as fragments"
  },
  "excerpts": [
-  "bengel.JHN.4.37.1",
   "bengel.JHN.19.14.2",
+  "bengel.JHN.4.37.1",
+  "bengel.JHN.5.26-27.1",
+  "chrysostom.JHN.6.30-31.1",
   "cyril.JHN.14.9.1",
-  "chrysostom.JHN.6.30-31.1"
+  "westcott.JHN.16.14.1",
+  "westcott.JHN.20.31.2"
  ]
 }

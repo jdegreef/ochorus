@@ -41,25 +41,81 @@
   }
  ],
  "cover_url": "/covers/art/catena-on-the-psalms.jpg",
- "scripture_credit": "The text of the Psalms",
  "words_per_verse": 35,
- "scan_filter": 2,
  "versification": {
   "augustine-psalms": "hebrew",
   "calvin-psalms": "hebrew",
-  "bellarmine-psalms": {"scheme": "hebrew", "chapters": {"72": "skip"}},
+  "bellarmine-psalms": {
+   "scheme": "hebrew",
+   "chapters": {
+    "72": "skip"
+   }
+  },
   "henry-psalms": "hebrew",
   "delitzsch-psalms": "hebrew",
   "jfb-psalms": "hebrew",
-  "spurgeon-psalms": {"scheme": "hebrew", "chapters": {"15": "english+1", "29": "english+1", "44": "english+2", "68": "english"}}
+  "spurgeon-psalms": {
+   "scheme": "hebrew",
+   "chapters": {
+    "15": "english+1",
+    "29": "english+1",
+    "44": "english+2",
+    "68": "english"
+   }
+  }
  },
  "voices": [
-  {"id": "augustine", "name": "Augustine", "work": "Expositions on the Psalms", "era": 0},
-  {"id": "calvin", "name": "John Calvin", "work": "Commentary on the Psalms", "era": 1},
-  {"id": "bellarmine", "name": "Robert Bellarmine", "work": "Commentary on the Psalms", "era": 1, "edition": "Translated by John O'Sullivan, Archdeacon of Kerry (Dublin: James Duffy, 1866), from Bellarmine's Explanatio in Psalmos (Rome, 1611); the translation leaves out the purely philological passages"},
-  {"id": "henry", "name": "Matthew Henry", "work": "Commentary on the Whole Bible", "era": 2},
-  {"id": "delitzsch", "name": "Franz Delitzsch", "work": "Commentary on the Psalms", "era": 3},
-  {"id": "fausset", "name": "A. R. Fausset", "work": "Commentary, Critical and Explanatory", "era": 3},
-  {"id": "spurgeon", "name": "C. H. Spurgeon", "work": "The Treasury of David", "era": 3, "lead": true, "edition": "London: Passmore and Alabaster, 1869–85; Volumes I to IV and VI of the 1881 printing, from the University of Toronto's scans at archive.org"}
+  {
+   "id": "augustine",
+   "name": "Augustine",
+   "era": 0,
+   "title": "Expositions on the Psalms",
+   "work": "augustine-psalms"
+  },
+  {
+   "id": "calvin",
+   "name": "John Calvin",
+   "era": 1,
+   "title": "Commentary on the Psalms",
+   "work": "calvin-psalms"
+  },
+  {
+   "id": "bellarmine",
+   "name": "Robert Bellarmine",
+   "era": 1,
+   "edition": "Translated by John O'Sullivan, Archdeacon of Kerry (Dublin: James Duffy, 1866), from Bellarmine's Explanatio in Psalmos (Rome, 1611); the translation leaves out the purely philological passages",
+   "title": "Commentary on the Psalms",
+   "work": "bellarmine-psalms"
+  },
+  {
+   "id": "henry",
+   "name": "Matthew Henry",
+   "era": 2,
+   "title": "Commentary on the Whole Bible",
+   "work": "henry-psalms"
+  },
+  {
+   "id": "delitzsch",
+   "name": "Franz Delitzsch",
+   "era": 3,
+   "title": "Commentary on the Psalms",
+   "work": "delitzsch-psalms"
+  },
+  {
+   "id": "fausset",
+   "name": "A. R. Fausset",
+   "era": 3,
+   "title": "Commentary, Critical and Explanatory",
+   "work": "jfb-psalms"
+  },
+  {
+   "id": "spurgeon",
+   "name": "C. H. Spurgeon",
+   "era": 3,
+   "lead": true,
+   "edition": "London: Passmore and Alabaster, 1869–85; Volumes I to IV and VI of the 1881 printing, from the University of Toronto's scans at archive.org",
+   "title": "The Treasury of David",
+   "work": "spurgeon-psalms"
+  }
  ]
 }

@@ -32,6 +32,8 @@ export const GROUND_BARS: Record<string, number> = {
 	'c-t-studd-a-life': 0.110,
 	'catechetical-lectures': 0.020,
 	'catena-on-john': 0.110,
+	'catena-on-matthew': 0.110,
+	'catena-on-romans': 0.110,
 	'catena-on-the-psalms': 0.110,
 	'cheque-book': 0.025,
 	'christ-the-healer': 0.030,

@@ -1,0 +1,1329 @@
+{
+ "_note": "Excerpt ids chosen by `build_catena --select`; edit one to swap an excerpt.",
+ "logia_sha256": "f9ac2745bc769c4749199f1f30aa51557761ecfc6c465bf0880b8b1bae09a90a",
+ "passages": [
+  {
+   "start": "1:1",
+   "title": "The ancestors of Jesus",
+   "excerpts": [
+    "henry-matthew.MAT.1.1-17.3",
+    "chrysostom-matthew.MAT.1.3.4",
+    "calvin-matthew.MAT.1.6.2",
+    "henry-matthew.MAT.1.11.1",
+    "chrysostom-matthew.MAT.1.17.7",
+    "ryle-matthew.MAT.1.1-17.1"
+   ]
+  },
+  {
+   "start": "1:18",
+   "title": "The birth of Jesus",
+   "excerpts": [
+    "henry-matthew.MAT.1.18-25.8",
+    "calvin-matthew.MAT.1.21.3",
+    "henry-matthew.MAT.1.24.1"
+   ]
+  },
+  {
+   "start": "2:1",
+   "title": "The magi visit the child",
+   "excerpts": [
+    "ryle-matthew.MAT.2.1-12.2",
+    "calvin-matthew.MAT.2.4.1",
+    "chrysostom-matthew.MAT.2.7.3",
+    "henry-matthew.MAT.2.11.2"
+   ]
+  },
+  {
+   "start": "2:13",
+   "title": "The escape to Egypt",
+   "excerpts": [
+    "chrysostom-matthew.MAT.2.13.5",
+    "calvin-matthew.MAT.2.15.2"
+   ]
+  },
+  {
+   "start": "2:16",
+   "title": "Herod kills the boys of Bethlehem",
+   "excerpts": [
+    "calvin-matthew.MAT.2.16.2",
+    "henry-matthew.MAT.2.17-18.1"
+   ]
+  },
+  {
+   "start": "2:19",
+   "title": "The return to Nazareth",
+   "excerpts": [
+    "chrysostom-matthew.MAT.2.19-20.2",
+    "henry-matthew.MAT.2.22-23.1"
+   ]
+  },
+  {
+   "start": "3:1",
+   "title": "John the Baptist prepares the way",
+   "excerpts": [
+    "calvin-matthew.MAT.3.3.1",
+    "henry-matthew.MAT.3.6.2",
+    "chrysostom-matthew.MAT.3.9.14",
+    "calvin-matthew.MAT.3.11-12.4"
+   ]
+  },
+  {
+   "start": "3:13",
+   "title": "The baptism of Jesus",
+   "excerpts": [
+    "henry-matthew.MAT.3.13-17.1",
+    "chrysostom-matthew.MAT.3.16.5"
+   ]
+  },
+  {
+   "start": "4:1",
+   "title": "The testing of Jesus",
+   "excerpts": [
+    "chrysostom-matthew.MAT.4.1.2",
+    "henry-matthew.MAT.4.4.11",
+    "calvin-matthew.MAT.4.6.2",
+    "henry-matthew.MAT.4.9.2"
+   ]
+  },
+  {
+   "start": "4:12",
+   "title": "Jesus begins in Galilee",
+   "excerpts": [
+    "calvin-matthew.MAT.4.13.3",
+    "henry-matthew.MAT.4.16.2"
+   ]
+  },
+  {
+   "start": "4:18",
+   "title": "The first disciples",
+   "excerpts": [
+    "henry-matthew.MAT.4.19.2",
+    "calvin-matthew.MAT.4.22.1"
+   ]
+  },
+  {
+   "start": "4:23",
+   "title": "Teaching and healing in Galilee",
+   "excerpts": [
+    "henry-matthew.MAT.4.23-25.5",
+    "henry-matthew.MAT.4.23-25.6"
+   ]
+  },
+  {
+   "start": "5:1",
+   "title": "The Sermon on the Mount",
+   "excerpts": [
+    "ryle-matthew.MAT.5.1-12.4",
+    "calvin-matthew.MAT.5.5.2",
+    "chrysostom-matthew.MAT.5.8.1",
+    "henry-matthew.MAT.5.12.1"
+   ]
+  },
+  {
+   "start": "5:13",
+   "title": "Salt and light",
+   "excerpts": [
+    "calvin-matthew.MAT.5.13.1",
+    "chrysostom-matthew.MAT.5.15-16.5"
+   ]
+  },
+  {
+   "start": "5:17",
+   "title": "Jesus and the law",
+   "excerpts": [
+    "chrysostom-matthew.MAT.5.17.8",
+    "henry-matthew.MAT.5.19.2"
+   ]
+  },
+  {
+   "start": "5:21",
+   "title": "Anger",
+   "excerpts": [
+    "chrysostom-matthew.MAT.5.23-24.1",
+    "calvin-matthew.MAT.5.25.3",
+    "henry-matthew.MAT.5.22.3"
+   ]
+  },
+  {
+   "start": "5:27",
+   "title": "Adultery",
+   "excerpts": [
+    "chrysostom-matthew.MAT.5.27.5",
+    "calvin-matthew.MAT.5.29.1"
+   ]
+  },
+  {
+   "start": "5:31",
+   "title": "Divorce",
+   "excerpts": [
+    "calvin-matthew.MAT.5.31.1",
+    "chrysostom-matthew.MAT.5.32.1"
+   ]
+  },
+  {
+   "start": "5:33",
+   "title": "Oaths",
+   "excerpts": [
+    "calvin-matthew.MAT.5.34.3",
+    "chrysostom-matthew.MAT.5.37.3"
+   ]
+  },
+  {
+   "start": "5:38",
+   "title": "Do not take revenge",
+   "excerpts": [
+    "calvin-matthew.MAT.5.39.1",
+    "henry-matthew.MAT.5.40.1",
+    "chrysostom-matthew.MAT.5.38-40.5"
+   ]
+  },
+  {
+   "start": "5:43",
+   "title": "Love your enemies",
+   "excerpts": [
+    "henry-matthew.MAT.5.44.2",
+    "calvin-matthew.MAT.5.46.1",
+    "chrysostom-matthew.MAT.5.43-45.1"
+   ]
+  },
+  {
+   "start": "6:1",
+   "title": "Not for show",
+   "excerpts": [
+    "henry-matthew.MAT.6.1-4.4",
+    "calvin-matthew.MAT.6.4.2"
+   ]
+  },
+  {
+   "start": "6:5",
+   "title": "Prayer",
+   "excerpts": [
+    "calvin-matthew.MAT.6.5.1",
+    "chrysostom-matthew.MAT.6.7.1"
+   ]
+  },
+  {
+   "start": "6:9",
+   "title": "The Lord’s Prayer",
+   "excerpts": [
+    "calvin-matthew.MAT.6.11.6",
+    "chrysostom-matthew.MAT.6.12.1"
+   ]
+  },
+  {
+   "start": "6:16",
+   "title": "Fasting",
+   "excerpts": [
+    "henry-matthew.MAT.6.16-18.2",
+    "henry-matthew.MAT.6.17-18.1"
+   ]
+  },
+  {
+   "start": "6:19",
+   "title": "Treasure in heaven",
+   "excerpts": [
+    "henry-matthew.MAT.6.21.1",
+    "calvin-matthew.MAT.6.24.1"
+   ]
+  },
+  {
+   "start": "6:25",
+   "title": "Do not worry",
+   "excerpts": [
+    "ryle-matthew.MAT.6.25-34.1",
+    "calvin-matthew.MAT.6.29.1",
+    "chrysostom-matthew.MAT.6.33.7"
+   ]
+  },
+  {
+   "start": "7:1",
+   "title": "Judging others",
+   "excerpts": [
+    "henry-matthew.MAT.7.3-5.3",
+    "chrysostom-matthew.MAT.7.6.3"
+   ]
+  },
+  {
+   "start": "7:7",
+   "title": "Ask, seek, knock",
+   "excerpts": [
+    "henry-matthew.MAT.7.7.2",
+    "chrysostom-matthew.MAT.7.12.4"
+   ]
+  },
+  {
+   "start": "7:13",
+   "title": "The narrow gate",
+   "excerpts": [
+    "henry-matthew.MAT.7.13-14.4",
+    "calvin-matthew.MAT.7.13.2"
+   ]
+  },
+  {
+   "start": "7:15",
+   "title": "Known by their fruit",
+   "excerpts": [
+    "calvin-matthew.MAT.7.15.2",
+    "henry-matthew.MAT.7.19.2"
+   ]
+  },
+  {
+   "start": "7:21",
+   "title": "I never knew you",
+   "excerpts": [
+    "henry-matthew.MAT.7.21.2",
+    "calvin-matthew.MAT.7.23.2"
+   ]
+  },
+  {
+   "start": "7:24",
+   "title": "Two builders",
+   "excerpts": [
+    "henry-matthew.MAT.7.24-27.8",
+    "chrysostom-matthew.MAT.7.26.2"
+   ]
+  },
+  {
+   "start": "7:28",
+   "title": "Teaching with authority",
+   "excerpts": [
+    "chrysostom-matthew.MAT.7.28.4",
+    "henry-matthew.MAT.7.28-29.1"
+   ]
+  },
+  {
+   "start": "8:1",
+   "title": "Jesus heals a man with leprosy",
+   "excerpts": [
+    "henry-matthew.MAT.8.1-4.5",
+    "calvin-matthew.MAT.8.4.2"
+   ]
+  },
+  {
+   "start": "8:5",
+   "title": "The centurion’s faith",
+   "excerpts": [
+    "calvin-matthew.MAT.8.5.2",
+    "henry-matthew.MAT.8.10-12.1",
+    "chrysostom-matthew.MAT.8.13.1"
+   ]
+  },
+  {
+   "start": "8:14",
+   "title": "Healing at Peter’s house",
+   "excerpts": [
+    "chrysostom-matthew.MAT.8.15.3",
+    "henry-matthew.MAT.8.16.1"
+   ]
+  },
+  {
+   "start": "8:18",
+   "title": "The cost of following Jesus",
+   "excerpts": [
+    "henry-matthew.MAT.8.18.1",
+    "calvin-matthew.MAT.8.22.1"
+   ]
+  },
+  {
+   "start": "8:23",
+   "title": "Jesus calms the storm",
+   "excerpts": [
+    "calvin-matthew.MAT.8.25.1",
+    "ryle-matthew.MAT.8.28-34.3",
+    "chrysostom-matthew.MAT.8.29.12",
+    "henry-matthew.MAT.8.33.1",
+    "henry-matthew.MAT.8.26.2"
+   ]
+  },
+  {
+   "start": "9:1",
+   "title": "Jesus forgives and heals a paralyzed man",
+   "excerpts": [
+    "calvin-matthew.MAT.9.1.1",
+    "henry-matthew.MAT.9.5-6.1",
+    "chrysostom-matthew.MAT.9.8.2"
+   ]
+  },
+  {
+   "start": "9:9",
+   "title": "The call of Matthew",
+   "excerpts": [
+    "henry-matthew.MAT.9.9-13.2",
+    "chrysostom-matthew.MAT.9.13.4"
+   ]
+  },
+  {
+   "start": "9:14",
+   "title": "A question about fasting",
+   "excerpts": [
+    "calvin-matthew.MAT.9.14.2",
+    "henry-matthew.MAT.9.16.2"
+   ]
+  },
+  {
+   "start": "9:18",
+   "title": "A leader’s daughter and a woman’s faith",
+   "excerpts": [
+    "calvin-matthew.MAT.9.18.2",
+    "chrysostom-matthew.MAT.9.21-22.2",
+    "henry-matthew.MAT.9.24.2"
+   ]
+  },
+  {
+   "start": "9:27",
+   "title": "Two blind men",
+   "excerpts": [
+    "henry-matthew.MAT.9.27.1",
+    "calvin-matthew.MAT.9.29.1",
+    "chrysostom-matthew.MAT.9.30-31.1",
+    "henry-matthew.MAT.9.31.1"
+   ]
+  },
+  {
+   "start": "9:32",
+   "title": "A man who could not speak",
+   "excerpts": [
+    "henry-matthew.MAT.9.32.1",
+    "calvin-matthew.MAT.9.34.1",
+    "chrysostom-matthew.MAT.9.33.1"
+   ]
+  },
+  {
+   "start": "9:35",
+   "title": "The harvest is large",
+   "excerpts": [
+    "henry-matthew.MAT.9.35.2",
+    "calvin-matthew.MAT.9.37.1"
+   ]
+  },
+  {
+   "start": "10:1",
+   "title": "Jesus names twelve apostles",
+   "excerpts": [
+    "chrysostom-matthew.MAT.10.2.1",
+    "henry-matthew.MAT.10.3.1"
+   ]
+  },
+  {
+   "start": "10:5",
+   "title": "The twelve sent to the lost sheep of Israel",
+   "excerpts": [
+    "chrysostom-matthew.MAT.10.5-6.1",
+    "calvin-matthew.MAT.10.8.1",
+    "henry-matthew.MAT.10.10.1",
+    "calvin-matthew.MAT.10.14.2"
+   ]
+  },
+  {
+   "start": "10:16",
+   "title": "Sheep among wolves",
+   "excerpts": [
+    "ryle-matthew.MAT.10.16-23.2",
+    "chrysostom-matthew.MAT.10.21.7",
+    "calvin-matthew.MAT.10.24.1"
+   ]
+  },
+  {
+   "start": "10:26",
+   "title": "Fear God, not people",
+   "excerpts": [
+    "calvin-matthew.MAT.10.26.2",
+    "henry-matthew.MAT.10.30.1",
+    "chrysostom-matthew.MAT.10.32-33.1"
+   ]
+  },
+  {
+   "start": "10:34",
+   "title": "A sword that divides households",
+   "excerpts": [
+    "chrysostom-matthew.MAT.10.36.1",
+    "calvin-matthew.MAT.10.39.2"
+   ]
+  },
+  {
+   "start": "10:40",
+   "title": "Welcome and its reward",
+   "excerpts": [
+    "calvin-matthew.MAT.10.40.1",
+    "henry-matthew.MAT.10.42.1"
+   ]
+  },
+  {
+   "start": "11:2",
+   "title": "John’s question from prison",
+   "excerpts": [
+    "chrysostom-matthew.MAT.11.2-3.8",
+    "calvin-matthew.MAT.11.4.1"
+   ]
+  },
+  {
+   "start": "11:7",
+   "title": "Jesus speaks about John",
+   "excerpts": [
+    "calvin-matthew.MAT.11.7.1",
+    "henry-matthew.MAT.11.11.1",
+    "chrysostom-matthew.MAT.11.13.2"
+   ]
+  },
+  {
+   "start": "11:16",
+   "title": "Children in the marketplace",
+   "excerpts": [
+    "chrysostom-matthew.MAT.11.16-17.3",
+    "henry-matthew.MAT.11.16-19.1"
+   ]
+  },
+  {
+   "start": "11:20",
+   "title": "Woe to the towns that did not repent",
+   "excerpts": [
+    "calvin-matthew.MAT.11.20.1",
+    "chrysostom-matthew.MAT.11.22-24.10"
+   ]
+  },
+  {
+   "start": "11:25",
+   "title": "Hidden from the wise, shown to little children",
+   "excerpts": [
+    "calvin-matthew.MAT.11.25.2",
+    "henry-matthew.MAT.11.27.1"
+   ]
+  },
+  {
+   "start": "11:28",
+   "title": "Come to me and find rest",
+   "excerpts": [
+    "calvin-matthew.MAT.11.28.1",
+    "henry-matthew.MAT.11.29.3"
+   ]
+  },
+  {
+   "start": "12:1",
+   "title": "Lord of the Sabbath",
+   "excerpts": [
+    "chrysostom-matthew.MAT.12.1.3",
+    "calvin-matthew.MAT.12.3.1",
+    "henry-matthew.MAT.12.7.1"
+   ]
+  },
+  {
+   "start": "12:9",
+   "title": "Doing good on the Sabbath",
+   "excerpts": [
+    "chrysostom-matthew.MAT.12.9-10.6",
+    "henry-matthew.MAT.12.14.1"
+   ]
+  },
+  {
+   "start": "12:15",
+   "title": "God’s chosen servant",
+   "excerpts": [
+    "calvin-matthew.MAT.12.16.1",
+    "henry-matthew.MAT.12.20.2"
+   ]
+  },
+  {
+   "start": "12:22",
+   "title": "By the Spirit of God",
+   "excerpts": [
+    "ryle-matthew.MAT.12.22-37.3",
+    "calvin-matthew.MAT.12.25.2",
+    "henry-matthew.MAT.12.30.1",
+    "chrysostom-matthew.MAT.12.33.1",
+    "chrysostom-matthew.MAT.12.35.1",
+    "calvin-matthew.MAT.12.31.2"
+   ]
+  },
+  {
+   "start": "12:38",
+   "title": "The sign of Jonah",
+   "excerpts": [
+    "chrysostom-matthew.MAT.12.38-39.2",
+    "calvin-matthew.MAT.12.42.1",
+    "henry-matthew.MAT.12.39.2"
+   ]
+  },
+  {
+   "start": "12:43",
+   "title": "The unclean spirit returns",
+   "excerpts": [
+    "calvin-matthew.MAT.12.43.4",
+    "calvin-matthew.MAT.12.45.1"
+   ]
+  },
+  {
+   "start": "12:46",
+   "title": "Those who do the Father’s will",
+   "excerpts": [
+    "chrysostom-matthew.MAT.12.46-49.1",
+    "henry-matthew.MAT.12.48-50.2"
+   ]
+  },
+  {
+   "start": "13:1",
+   "title": "Parables by the lake: the sower",
+   "excerpts": [
+    "henry-matthew.MAT.13.3-9.1",
+    "henry-matthew.MAT.13.5-6.3",
+    "calvin-matthew.MAT.13.9.1"
+   ]
+  },
+  {
+   "start": "13:10",
+   "title": "Why Jesus speaks in parables",
+   "excerpts": [
+    "calvin-matthew.MAT.13.10.1",
+    "henry-matthew.MAT.13.13.1",
+    "chrysostom-matthew.MAT.13.17.1"
+   ]
+  },
+  {
+   "start": "13:18",
+   "title": "The sower explained",
+   "excerpts": [
+    "calvin-matthew.MAT.13.19.2",
+    "calvin-matthew.MAT.13.23.2"
+   ]
+  },
+  {
+   "start": "13:24",
+   "title": "Weeds among the wheat",
+   "excerpts": [
+    "chrysostom-matthew.MAT.13.24-30.4",
+    "henry-matthew.MAT.13.29.1"
+   ]
+  },
+  {
+   "start": "13:31",
+   "title": "The mustard seed and the yeast",
+   "excerpts": [
+    "calvin-matthew.MAT.13.31-35.1",
+    "chrysostom-matthew.MAT.13.33.8"
+   ]
+  },
+  {
+   "start": "13:36",
+   "title": "The weeds explained",
+   "excerpts": [
+    "henry-matthew.MAT.13.36.6",
+    "calvin-matthew.MAT.13.39.2",
+    "calvin-matthew.MAT.13.41.1"
+   ]
+  },
+  {
+   "start": "13:44",
+   "title": "Treasure, a pearl and a net",
+   "excerpts": [
+    "ryle-matthew.MAT.13.44-50.1",
+    "henry-matthew.MAT.13.49-50.1",
+    "calvin-matthew.MAT.13.51.1",
+    "chrysostom-matthew.MAT.13.54.3",
+    "calvin-matthew.MAT.13.57.1"
+   ]
+  },
+  {
+   "start": "14:1",
+   "title": "Herod and the death of John",
+   "excerpts": [
+    "chrysostom-matthew.MAT.14.1.3",
+    "henry-matthew.MAT.14.5.5",
+    "henry-matthew.MAT.14.7.1",
+    "henry-matthew.MAT.14.11.4"
+   ]
+  },
+  {
+   "start": "14:13",
+   "title": "Five loaves for a great crowd",
+   "excerpts": [
+    "ryle-matthew.MAT.14.13-21.3",
+    "calvin-matthew.MAT.14.16.1",
+    "chrysostom-matthew.MAT.14.19.10"
+   ]
+  },
+  {
+   "start": "14:22",
+   "title": "Jesus comes to them across the water",
+   "excerpts": [
+    "calvin-matthew.MAT.14.24.2",
+    "henry-matthew.MAT.14.27.1",
+    "chrysostom-matthew.MAT.14.28.1",
+    "henry-matthew.MAT.14.32.1"
+   ]
+  },
+  {
+   "start": "14:34",
+   "title": "Healing at Gennesaret",
+   "excerpts": [
+    "chrysostom-matthew.MAT.14.34-36.2",
+    "henry-matthew.MAT.14.36.1"
+   ]
+  },
+  {
+   "start": "15:1",
+   "title": "The elders’ tradition and God’s command",
+   "excerpts": [
+    "calvin-matthew.MAT.15.3.1",
+    "henry-matthew.MAT.15.4.2",
+    "henry-matthew.MAT.15.7.4"
+   ]
+  },
+  {
+   "start": "15:10",
+   "title": "What makes a person unclean",
+   "excerpts": [
+    "ryle-matthew.MAT.15.10-20.3",
+    "calvin-matthew.MAT.15.14.1",
+    "henry-matthew.MAT.15.15.1",
+    "henry-matthew.MAT.15.20.1"
+   ]
+  },
+  {
+   "start": "15:21",
+   "title": "A Canaanite mother’s faith",
+   "excerpts": [
+    "ryle-matthew.MAT.15.21-28.3",
+    "calvin-matthew.MAT.15.24.1",
+    "chrysostom-matthew.MAT.15.26.1"
+   ]
+  },
+  {
+   "start": "15:29",
+   "title": "Healing on the mountain by the lake",
+   "excerpts": [
+    "chrysostom-matthew.MAT.15.29-31.3",
+    "henry-matthew.MAT.15.30.2",
+    "calvin-matthew.MAT.15.29.1"
+   ]
+  },
+  {
+   "start": "15:32",
+   "title": "Bread for four thousand",
+   "excerpts": [
+    "henry-matthew.MAT.15.32.4",
+    "henry-matthew.MAT.15.35.1",
+    "henry-matthew.MAT.15.39.1",
+    "calvin-matthew.MAT.15.33.1"
+   ]
+  },
+  {
+   "start": "16:1",
+   "title": "Asked for a sign from heaven",
+   "excerpts": [
+    "calvin-matthew.MAT.16.1.1",
+    "henry-matthew.MAT.16.4.1"
+   ]
+  },
+  {
+   "start": "16:5",
+   "title": "Watch out for their yeast",
+   "excerpts": [
+    "calvin-matthew.MAT.16.5.1",
+    "henry-matthew.MAT.16.7.1",
+    "henry-matthew.MAT.16.12.1"
+   ]
+  },
+  {
+   "start": "16:13",
+   "title": "Peter’s answer at Caesarea Philippi",
+   "excerpts": [
+    "ryle-matthew.MAT.16.13-20.6",
+    "calvin-matthew.MAT.16.17.2",
+    "henry-matthew.MAT.16.19.4"
+   ]
+  },
+  {
+   "start": "16:21",
+   "title": "Jesus speaks of his coming death",
+   "excerpts": [
+    "ryle-matthew.MAT.16.21-23.1",
+    "calvin-matthew.MAT.16.22.1"
+   ]
+  },
+  {
+   "start": "16:24",
+   "title": "Taking up the cross",
+   "excerpts": [
+    "ryle-matthew.MAT.16.24-28.2",
+    "calvin-matthew.MAT.16.28.1"
+   ]
+  },
+  {
+   "start": "17:1",
+   "title": "Jesus transfigured on the mountain",
+   "excerpts": [
+    "chrysostom-matthew.MAT.17.1.2",
+    "calvin-matthew.MAT.17.5.3",
+    "henry-matthew.MAT.17.8.1"
+   ]
+  },
+  {
+   "start": "17:9",
+   "title": "Elijah has already come",
+   "excerpts": [
+    "henry-matthew.MAT.17.9-13.1",
+    "chrysostom-matthew.MAT.17.12-13.2"
+   ]
+  },
+  {
+   "start": "17:14",
+   "title": "A boy with seizures is healed",
+   "excerpts": [
+    "chrysostom-matthew.MAT.17.14-16.5",
+    "calvin-matthew.MAT.17.17.1"
+   ]
+  },
+  {
+   "start": "17:22",
+   "title": "Jesus speaks again of his death and raising",
+   "excerpts": [
+    "calvin-matthew.MAT.17.22.3",
+    "henry-matthew.MAT.17.22-23.2",
+    "calvin-matthew.MAT.17.22.2"
+   ]
+  },
+  {
+   "start": "17:24",
+   "title": "The tax for God’s house",
+   "excerpts": [
+    "calvin-matthew.MAT.17.25.1",
+    "henry-matthew.MAT.17.27.1"
+   ]
+  },
+  {
+   "start": "18:1",
+   "title": "Who is greatest in the kingdom",
+   "excerpts": [
+    "henry-matthew.MAT.18.2.1",
+    "calvin-matthew.MAT.18.4.1",
+    "henry-matthew.MAT.18.1.1"
+   ]
+  },
+  {
+   "start": "18:6",
+   "title": "Woe to those who trip up the little ones",
+   "excerpts": [
+    "chrysostom-matthew.MAT.18.7.8",
+    "henry-matthew.MAT.18.8-9.3"
+   ]
+  },
+  {
+   "start": "18:10",
+   "title": "The Father seeks the sheep that strays",
+   "excerpts": [
+    "chrysostom-matthew.MAT.18.11.3",
+    "henry-matthew.MAT.18.14.1"
+   ]
+  },
+  {
+   "start": "18:15",
+   "title": "When a fellow believer sins against you",
+   "excerpts": [
+    "ryle-matthew.MAT.18.15-20.3",
+    "calvin-matthew.MAT.18.20.2",
+    "henry-matthew.MAT.18.19.1"
+   ]
+  },
+  {
+   "start": "18:21",
+   "title": "How many times to forgive",
+   "excerpts": [
+    "chrysostom-matthew.MAT.18.21.12",
+    "calvin-matthew.MAT.18.21.2"
+   ]
+  },
+  {
+   "start": "18:23",
+   "title": "The servant who would not forgive",
+   "excerpts": [
+    "henry-matthew.MAT.18.23-27.3",
+    "henry-matthew.MAT.18.28-30.1",
+    "calvin-matthew.MAT.18.31.1",
+    "calvin-matthew.MAT.18.34.1",
+    "henry-matthew.MAT.18.35.1"
+   ]
+  },
+  {
+   "start": "19:1",
+   "title": "Jesus leaves Galilee for Judea",
+   "excerpts": [
+    "henry-matthew.MAT.19.1-2.2",
+    "chrysostom-matthew.MAT.19.2.2"
+   ]
+  },
+  {
+   "start": "19:3",
+   "title": "A question about divorce",
+   "excerpts": [
+    "calvin-matthew.MAT.19.4.1",
+    "henry-matthew.MAT.19.7.1"
+   ]
+  },
+  {
+   "start": "19:10",
+   "title": "Those who do not marry",
+   "excerpts": [
+    "henry-matthew.MAT.19.10.1",
+    "calvin-matthew.MAT.19.11.1"
+   ]
+  },
+  {
+   "start": "19:13",
+   "title": "Jesus blesses the children",
+   "excerpts": [
+    "calvin-matthew.MAT.19.13.1",
+    "henry-matthew.MAT.19.14.2",
+    "chrysostom-matthew.MAT.19.13-15.1",
+    "henry-matthew.MAT.19.15.1"
+   ]
+  },
+  {
+   "start": "19:16",
+   "title": "A young man asks about eternal life",
+   "excerpts": [
+    "ryle-matthew.MAT.19.16-22.4",
+    "calvin-matthew.MAT.19.22.1"
+   ]
+  },
+  {
+   "start": "19:23",
+   "title": "Hard for the rich",
+   "excerpts": [
+    "chrysostom-matthew.MAT.19.24.2",
+    "henry-matthew.MAT.19.26.2"
+   ]
+  },
+  {
+   "start": "19:27",
+   "title": "What the Twelve will receive",
+   "excerpts": [
+    "chrysostom-matthew.MAT.19.27.2",
+    "calvin-matthew.MAT.19.29.1"
+   ]
+  },
+  {
+   "start": "20:1",
+   "title": "Workers hired at every hour",
+   "excerpts": [
+    "ryle-matthew.MAT.20.1-16.2",
+    "henry-matthew.MAT.20.9-10.1",
+    "henry-matthew.MAT.20.11-12.2",
+    "calvin-matthew.MAT.20.16.1",
+    "chrysostom-matthew.MAT.20.1.6"
+   ]
+  },
+  {
+   "start": "20:17",
+   "title": "A third warning of death and rising",
+   "excerpts": [
+    "chrysostom-matthew.MAT.20.17-19.4",
+    "calvin-matthew.MAT.20.18.1"
+   ]
+  },
+  {
+   "start": "20:20",
+   "title": "A mother’s request for her sons",
+   "excerpts": [
+    "calvin-matthew.MAT.20.21.1",
+    "chrysostom-matthew.MAT.20.22.5"
+   ]
+  },
+  {
+   "start": "20:24",
+   "title": "Great ones and servants",
+   "excerpts": [
+    "ryle-matthew.MAT.20.24-28.4",
+    "chrysostom-matthew.MAT.20.28.1"
+   ]
+  },
+  {
+   "start": "20:29",
+   "title": "Two blind men by the Jericho road",
+   "excerpts": [
+    "ryle-matthew.MAT.20.29-34.4",
+    "calvin-matthew.MAT.20.32.1"
+   ]
+  },
+  {
+   "start": "21:1",
+   "title": "The king comes to Jerusalem on a donkey",
+   "excerpts": [
+    "ryle-matthew.MAT.21.1-11.1",
+    "henry-matthew.MAT.21.4-5.3",
+    "calvin-matthew.MAT.21.8.1",
+    "calvin-matthew.MAT.21.10.1"
+   ]
+  },
+  {
+   "start": "21:12",
+   "title": "Jesus clears the temple",
+   "excerpts": [
+    "henry-matthew.MAT.21.12.2",
+    "calvin-matthew.MAT.21.15.3"
+   ]
+  },
+  {
+   "start": "21:18",
+   "title": "The fig tree with nothing but leaves",
+   "excerpts": [
+    "chrysostom-matthew.MAT.21.18.9",
+    "henry-matthew.MAT.21.21-22.2"
+   ]
+  },
+  {
+   "start": "21:23",
+   "title": "Who gave Jesus this authority?",
+   "excerpts": [
+    "calvin-matthew.MAT.21.23.4",
+    "henry-matthew.MAT.21.24-25.3"
+   ]
+  },
+  {
+   "start": "21:28",
+   "title": "Two sons and their father’s will",
+   "excerpts": [
+    "henry-matthew.MAT.21.28-32.5",
+    "calvin-matthew.MAT.21.30.1",
+    "henry-matthew.MAT.21.31.1"
+   ]
+  },
+  {
+   "start": "21:33",
+   "title": "The tenants who killed the owner’s son",
+   "excerpts": [
+    "ryle-matthew.MAT.21.33-46.4",
+    "calvin-matthew.MAT.21.35.1",
+    "henry-matthew.MAT.21.39.1",
+    "calvin-matthew.MAT.21.42.2",
+    "calvin-matthew.MAT.21.45.1"
+   ]
+  },
+  {
+   "start": "22:1",
+   "title": "The king’s wedding banquet",
+   "excerpts": [
+    "ryle-matthew.MAT.22.1-14.4",
+    "calvin-matthew.MAT.22.4.2",
+    "chrysostom-matthew.MAT.22.7-14.10",
+    "henry-matthew.MAT.22.11.2",
+    "henry-matthew.MAT.22.13.2"
+   ]
+  },
+  {
+   "start": "22:15",
+   "title": "A question about paying Caesar",
+   "excerpts": [
+    "ryle-matthew.MAT.22.15-22.4",
+    "calvin-matthew.MAT.22.18.1",
+    "henry-matthew.MAT.22.22.1"
+   ]
+  },
+  {
+   "start": "22:23",
+   "title": "Marriage and the resurrection",
+   "excerpts": [
+    "ryle-matthew.MAT.22.23-33.1",
+    "henry-matthew.MAT.22.25-27.1",
+    "calvin-matthew.MAT.22.29.1",
+    "chrysostom-matthew.MAT.22.33.1"
+   ]
+  },
+  {
+   "start": "22:34",
+   "title": "The command that ranks highest",
+   "excerpts": [
+    "chrysostom-matthew.MAT.22.34-36.8",
+    "calvin-matthew.MAT.22.37.2"
+   ]
+  },
+  {
+   "start": "22:41",
+   "title": "Whose son is the Christ?",
+   "excerpts": [
+    "calvin-matthew.MAT.22.42.2",
+    "henry-matthew.MAT.22.45.1",
+    "calvin-matthew.MAT.22.44.1"
+   ]
+  },
+  {
+   "start": "23:1",
+   "title": "The teachers who sit in Moses’ seat",
+   "excerpts": [
+    "ryle-matthew.MAT.23.1-12.4",
+    "chrysostom-matthew.MAT.23.4.10",
+    "henry-matthew.MAT.23.9.1",
+    "calvin-matthew.MAT.23.11.1"
+   ]
+  },
+  {
+   "start": "23:13",
+   "title": "Woe to you, hypocrites",
+   "excerpts": [
+    "calvin-matthew.MAT.23.16.1",
+    "calvin-matthew.MAT.23.18.1",
+    "henry-matthew.MAT.23.20-22.1",
+    "chrysostom-matthew.MAT.23.23.1",
+    "henry-matthew.MAT.23.27-28.2"
+   ]
+  },
+  {
+   "start": "23:29",
+   "title": "The blood of the prophets",
+   "excerpts": [
+    "chrysostom-matthew.MAT.23.29.1",
+    "calvin-matthew.MAT.23.32.1",
+    "ryle-matthew.MAT.23.34-39.4",
+    "henry-matthew.MAT.23.38-39.2"
+   ]
+  },
+  {
+   "start": "24:1",
+   "title": "Not one stone on another",
+   "excerpts": [
+    "chrysostom-matthew.MAT.24.1-2.1",
+    "calvin-matthew.MAT.24.2.1"
+   ]
+  },
+  {
+   "start": "24:3",
+   "title": "The first birth pains",
+   "excerpts": [
+    "chrysostom-matthew.MAT.24.3.12",
+    "henry-matthew.MAT.24.6-7.3",
+    "calvin-matthew.MAT.24.9.3",
+    "henry-matthew.MAT.24.14.1"
+   ]
+  },
+  {
+   "start": "24:15",
+   "title": "Flee to the mountains",
+   "excerpts": [
+    "calvin-matthew.MAT.24.15.1",
+    "henry-matthew.MAT.24.17-18.2",
+    "chrysostom-matthew.MAT.24.22.2",
+    "calvin-matthew.MAT.24.23.2",
+    "henry-matthew.MAT.24.27-28.1"
+   ]
+  },
+  {
+   "start": "24:29",
+   "title": "The Son of Man on the clouds of heaven",
+   "excerpts": [
+    "henry-matthew.MAT.24.29-31.5",
+    "chrysostom-matthew.MAT.24.30.6",
+    "calvin-matthew.MAT.24.29.2"
+   ]
+  },
+  {
+   "start": "24:32",
+   "title": "Summer is near",
+   "excerpts": [
+    "chrysostom-matthew.MAT.24.33-34.2",
+    "henry-matthew.MAT.24.34.1"
+   ]
+  },
+  {
+   "start": "24:36",
+   "title": "Keep watch, for the day is unknown",
+   "excerpts": [
+    "calvin-matthew.MAT.24.37.1",
+    "henry-matthew.MAT.24.40-41.4",
+    "chrysostom-matthew.MAT.24.43-44.6"
+   ]
+  },
+  {
+   "start": "24:45",
+   "title": "The servant the master finds at work",
+   "excerpts": [
+    "calvin-matthew.MAT.24.45.2",
+    "henry-matthew.MAT.24.50.1"
+   ]
+  },
+  {
+   "start": "25:1",
+   "title": "Ten bridesmaids wait for the bridegroom",
+   "excerpts": [
+    "ryle-matthew.MAT.25.1-13.1",
+    "henry-matthew.MAT.25.6.2",
+    "calvin-matthew.MAT.25.9.1",
+    "chrysostom-matthew.MAT.25.13.3"
+   ]
+  },
+  {
+   "start": "25:14",
+   "title": "Servants entrusted with their master’s money",
+   "excerpts": [
+    "henry-matthew.MAT.25.14-30.1",
+    "henry-matthew.MAT.25.16-18.2",
+    "calvin-matthew.MAT.25.20.2",
+    "calvin-matthew.MAT.25.24.1",
+    "henry-matthew.MAT.25.26-27.1",
+    "henry-matthew.MAT.25.30.2"
+   ]
+  },
+  {
+   "start": "25:31",
+   "title": "The Son of Man judges the nations",
+   "excerpts": [
+    "calvin-matthew.MAT.25.31.1",
+    "henry-matthew.MAT.25.35-36.3",
+    "henry-matthew.MAT.25.37-39.1",
+    "calvin-matthew.MAT.25.41.1",
+    "henry-matthew.MAT.25.46.1"
+   ]
+  },
+  {
+   "start": "26:1",
+   "title": "The plot against Jesus",
+   "excerpts": [
+    "henry-matthew.MAT.26.1-2.1",
+    "calvin-matthew.MAT.26.3.1"
+   ]
+  },
+  {
+   "start": "26:6",
+   "title": "A woman anoints Jesus at Bethany",
+   "excerpts": [
+    "chrysostom-matthew.MAT.26.6-7.2",
+    "henry-matthew.MAT.26.10-11.2",
+    "calvin-matthew.MAT.26.11.1",
+    "calvin-matthew.MAT.26.14.1"
+   ]
+  },
+  {
+   "start": "26:17",
+   "title": "The Passover with the Twelve",
+   "excerpts": [
+    "chrysostom-matthew.MAT.26.17-18.1",
+    "henry-matthew.MAT.26.22.1",
+    "calvin-matthew.MAT.26.24.4",
+    "ryle-matthew.MAT.26.26-35.2",
+    "calvin-matthew.MAT.26.29.2",
+    "chrysostom-matthew.MAT.26.33.4"
+   ]
+  },
+  {
+   "start": "26:36",
+   "title": "Jesus prays in Gethsemane",
+   "excerpts": [
+    "ryle-matthew.MAT.26.36-46.5",
+    "calvin-matthew.MAT.26.39.9",
+    "henry-matthew.MAT.26.43.2",
+    "chrysostom-matthew.MAT.26.46.2"
+   ]
+  },
+  {
+   "start": "26:47",
+   "title": "Judas’s kiss and the arrest",
+   "excerpts": [
+    "ryle-matthew.MAT.26.47-56.4",
+    "chrysostom-matthew.MAT.26.51-54.5",
+    "calvin-matthew.MAT.26.56.2"
+   ]
+  },
+  {
+   "start": "26:57",
+   "title": "Jesus before the council",
+   "excerpts": [
+    "ryle-matthew.MAT.26.57-68.4",
+    "chrysostom-matthew.MAT.26.60-61.3",
+    "calvin-matthew.MAT.26.64.2",
+    "henry-matthew.MAT.26.67-68.3",
+    "ryle-matthew.MAT.26.69-75.1",
+    "calvin-matthew.MAT.26.72.2"
+   ]
+  },
+  {
+   "start": "27:1",
+   "title": "Jesus handed over to Pilate",
+   "excerpts": [
+    "chrysostom-matthew.MAT.27.1-2.6",
+    "calvin-matthew.MAT.27.1.1"
+   ]
+  },
+  {
+   "start": "27:3",
+   "title": "Judas and the thirty pieces of silver",
+   "excerpts": [
+    "calvin-matthew.MAT.27.4.1",
+    "henry-matthew.MAT.27.6-10.2",
+    "calvin-matthew.MAT.27.9.3"
+   ]
+  },
+  {
+   "start": "27:11",
+   "title": "Jesus before the governor",
+   "excerpts": [
+    "ryle-matthew.MAT.27.11-26.4",
+    "calvin-matthew.MAT.27.15.1",
+    "chrysostom-matthew.MAT.27.19.4",
+    "henry-matthew.MAT.27.21.1",
+    "chrysostom-matthew.MAT.27.26.4"
+   ]
+  },
+  {
+   "start": "27:27",
+   "title": "The soldiers mock the King of the Jews",
+   "excerpts": [
+    "chrysostom-matthew.MAT.27.27-29.12",
+    "henry-matthew.MAT.27.29.3",
+    "henry-matthew.MAT.27.28.1"
+   ]
+  },
+  {
+   "start": "27:32",
+   "title": "Jesus is crucified",
+   "excerpts": [
+    "calvin-matthew.MAT.27.34.2",
+    "henry-matthew.MAT.27.37.1",
+    "henry-matthew.MAT.27.38.2",
+    "calvin-matthew.MAT.27.42.1"
+   ]
+  },
+  {
+   "start": "27:45",
+   "title": "The death of Jesus",
+   "excerpts": [
+    "ryle-matthew.MAT.27.45-56.3",
+    "calvin-matthew.MAT.27.50.1",
+    "calvin-matthew.MAT.27.51.6",
+    "chrysostom-matthew.MAT.27.55-56.1"
+   ]
+  },
+  {
+   "start": "27:57",
+   "title": "The burial and the guard at the tomb",
+   "excerpts": [
+    "ryle-matthew.MAT.27.57-66.3",
+    "chrysostom-matthew.MAT.27.61.5",
+    "henry-matthew.MAT.27.66.1"
+   ]
+  },
+  {
+   "start": "28:1",
+   "title": "The tomb is empty",
+   "excerpts": [
+    "ryle-matthew.MAT.28.1-10.6",
+    "chrysostom-matthew.MAT.28.6.1",
+    "calvin-matthew.MAT.28.8.3",
+    "henry-matthew.MAT.28.9-10.1"
+   ]
+  },
+  {
+   "start": "28:11",
+   "title": "The guards’ story",
+   "excerpts": [
+    "chrysostom-matthew.MAT.28.11-14.1",
+    "calvin-matthew.MAT.28.15.2"
+   ]
+  },
+  {
+   "start": "28:16",
+   "title": "Sent to all the nations",
+   "excerpts": [
+    "chrysostom-matthew.MAT.28.16-17.4",
+    "calvin-matthew.MAT.28.20.3",
+    "henry-matthew.MAT.28.18-20.5"
+   ]
+  }
+ ]
+}
