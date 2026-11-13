@@ -1,0 +1,75 @@
+{
+    "kind": "sermon",
+    "slug": "be-filled-with-the-spirit",
+    "language": "am",
+    "job_issue": 7849,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Ephesians 5:18",
+            "status": "mined",
+            "source_file": "baptism-with-the-holy-spirit.am.json"
+        },
+        {
+            "reference": "Luke 11:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 9
+        },
+        {
+            "reference": "Proverbs 28:13",
+            "status": "self_rendered",
+            "block_index": 25
+        },
+        {
+            "reference": "Luke 14:11",
+            "status": "mined",
+            "source_file": "revival-lectures.am.json",
+            "block_index": 25
+        },
+        {
+            "reference": "Acts 26:25",
+            "status": "self_rendered",
+            "block_index": 39
+        },
+        {
+            "reference": "2 Corinthians 4:10",
+            "status": "self_rendered",
+            "block_index": 41
+        },
+        {
+            "reference": "1 Corinthians 15:31",
+            "status": "self_rendered",
+            "block_index": 41
+        },
+        {
+            "reference": "Romans 9:1-3",
+            "status": "self_rendered",
+            "block_index": 41
+        },
+        {
+            "reference": "Galatians 5:17",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 45
+        },
+        {
+            "reference": "Romans 8:9",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 55
+        },
+        {
+            "reference": "2 Corinthians 13:5",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 55
+        },
+        {
+            "reference": "Luke 18:8",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 76
+        }
+    ]
+}

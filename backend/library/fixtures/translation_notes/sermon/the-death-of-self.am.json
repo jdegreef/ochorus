@@ -1,0 +1,197 @@
+{
+    "kind": "sermon",
+    "slug": "the-death-of-self",
+    "language": "am",
+    "job_issue": 7848,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Galatians 2:20",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 9
+        },
+        {
+            "reference": "John 15:14",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 12
+        },
+        {
+            "reference": "2 Corinthians 3:5",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 14
+        },
+        {
+            "reference": "1 Samuel 15:22-23",
+            "status": "mined",
+            "source_file": "the-key-in-my-hand.am.json",
+            "block_index": 15
+        },
+        {
+            "reference": "Acts 13:22",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 15
+        },
+        {
+            "reference": "Luke 22:42",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 15
+        },
+        {
+            "reference": "Matthew 26:33",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Daniel 4:30",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Daniel 4:31-32",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Genesis 3:5",
+            "status": "mined",
+            "source_file": "divine-songs-for-children.am.json",
+            "block_index": 26
+        },
+        {
+            "reference": "Exodus 20:3",
+            "status": "mined",
+            "source_file": "divine-songs-for-children.am.json",
+            "block_index": 26
+        },
+        {
+            "reference": "Ephesians 4:13",
+            "status": "mined",
+            "source_file": "key-teachings-of-watchman-nee.am.json",
+            "block_index": 27
+        },
+        {
+            "reference": "Ephesians 4:2",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 29
+        },
+        {
+            "reference": "Ephesians 4:3",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Romans 12:10",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Proverbs 28:26",
+            "status": "mined",
+            "source_file": "how-to-bring-men-to-christ.am.json",
+            "block_index": 32
+        },
+        {
+            "reference": "Proverbs 14:12",
+            "status": "mined",
+            "source_file": "how-to-bring-men-to-christ.am.json",
+            "block_index": 32
+        },
+        {
+            "reference": "1 Corinthians 1:29",
+            "status": "self_rendered",
+            "block_index": 32
+        },
+        {
+            "reference": "1 Corinthians 15:28",
+            "status": "mined",
+            "source_file": "how-to-bring-men-to-christ.am.json",
+            "block_index": 32
+        },
+        {
+            "reference": "Isaiah 42:8",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Ephesians 2:21",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "Ephesians 4:16",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "Galatians 6:2",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 36
+        },
+        {
+            "reference": "Philippians 4:3",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "1 Chronicles 12:38",
+            "status": "self_rendered",
+            "block_index": 36
+        },
+        {
+            "reference": "2 Corinthians 5:14-15",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 37
+        },
+        {
+            "reference": "Romans 5:5",
+            "status": "self_rendered",
+            "block_index": 37
+        },
+        {
+            "reference": "Isaiah 62:4",
+            "status": "mined",
+            "source_file": "men-and-women-who-gave-everything-2.am.json",
+            "block_index": 37
+        },
+        {
+            "reference": "Luke 11:21-22",
+            "status": "self_rendered",
+            "block_index": 39
+        },
+        {
+            "reference": "Job 42:5-6",
+            "status": "mined",
+            "source_file": "key-teachings-of-jonathan-edwards.am.json",
+            "block_index": 40
+        },
+        {
+            "reference": "Philippians 2:7-9",
+            "status": "self_rendered",
+            "block_index": 42
+        },
+        {
+            "reference": "Philippians 2:10",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 42
+        },
+        {
+            "reference": "Song of Solomon 2:16",
+            "status": "self_rendered",
+            "block_index": 49
+        },
+        {
+            "reference": "Song of Solomon 6:3",
+            "status": "self_rendered",
+            "block_index": 49
+        }
+    ]
+}
