@@ -1746,6 +1746,7 @@
   "quiz_again": "다시 풀기",
   "quiz_share_title": "%title% 퀴즈에서 %t%문제 중 %n%개를 맞혔어요",
   "nav_bible": "성경",
+  "nav_bible_tab": "성경",
   "bible_tagline": "오픈 워드 바이블(Open Word Bible)로 읽는 성경의 책들입니다. 퍼블릭 도메인으로 자유롭게 공개된 새 번역을 창세기부터 요한계시록까지 순서대로 담았습니다.",
   "bible_none": "아직 이 언어로 된 성경책이 없습니다.",
   "bible_previous_book": "이전 책",

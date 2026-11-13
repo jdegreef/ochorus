@@ -7,7 +7,7 @@
 	 * pages mark a title or a break this way; the site used empty space for both.
 	 *
 	 * The house leaf is drawn inline. A library section's own device (its
-	 * `ornament` in PRIMARY_NAV) is a static file, `/marks/ornament-<name>.svg`,
+	 * `ornament` in SECTION_DESTS) is a static file, `/marks/ornament-<name>.svg`,
 	 * painted in that metal through a CSS mask, so the home hero carries none of
 	 * their paths. No page draws a section device today: the shelves' header is
 	 * plain since design review #4 (2026-11-06), and must stay so.

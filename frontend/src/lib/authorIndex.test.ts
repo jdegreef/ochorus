@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { authorIndex, countWriters, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
+import { authorIndex, countWriters, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf, withPin } from './authorIndex';
 
 const author = (slug: string, name: string) => ({
 	slug,
@@ -196,5 +196,40 @@ describe('countWriters', () => {
 
 	it('never counts a house byline as a person', () => {
 		expect(countWriters([person('a')], [book('house', true), book('ochorus-originals')])).toBe(1);
+	});
+});
+
+describe('withPin', () => {
+	const g = (letter: string, ...names: string[]) => ({ letter, entries: names.map((name) => ({ name })) });
+	const keyOf = (e: { name: string }) => filingKey(e.name);
+	const pin = { key: filingKey('The Bible'), href: '/bible/' };
+	const shape = (groups: { letter: string; entries: ({ name: string } | { key: string })[] }[]) =>
+		groups.map((x) => [x.letter, x.entries.map((e) => ('name' in e ? e.name : 'PIN'))]);
+
+	it('files "The Bible" under B, at its place among the writers', () => {
+		expect(pin.key).toBe('Bible, The');
+		const groups = [g('A', 'Athanasius'), g('B', 'Richard Baxter', 'E. M. Bounds'), g('C', 'John Calvin')];
+		expect(shape(withPin(groups, pin, keyOf))).toEqual([
+			['A', ['Athanasius']],
+			['B', ['Richard Baxter', 'PIN', 'E. M. Bounds']],
+			['C', ['John Calvin']]
+		]);
+	});
+
+	it('opens a letter of its own, in order, where no writer files there', () => {
+		expect(shape(withPin([g('A', 'Athanasius'), g('C', 'John Calvin'), g('#', 'Ω')], pin, keyOf))).toEqual([
+			['A', ['Athanasius']],
+			['B', ['PIN']],
+			['C', ['John Calvin']],
+			['#', ['Ω']]
+		]);
+		expect(shape(withPin([], pin, keyOf))).toEqual([['B', ['PIN']]]);
+	});
+
+	it('leaves the groups as they were without a pin, and never mutates them', () => {
+		const groups = [g('B', 'Richard Baxter')];
+		expect(shape(withPin(groups, null, keyOf))).toEqual([['B', ['Richard Baxter']]]);
+		withPin(groups, pin, keyOf);
+		expect(groups[0].entries).toHaveLength(1);
 	});
 });

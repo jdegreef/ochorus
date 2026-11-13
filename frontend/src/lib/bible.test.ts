@@ -11,6 +11,8 @@ import {
 	divisionKey,
 	divisionOf,
 	groupBible,
+	isBibleBook,
+	splitBible,
 	testamentKey
 } from './bible';
 import en from '../../messages/en.json';
@@ -148,6 +150,28 @@ describe('canonStrip', () => {
 			(t) => t.divisions.flatMap((d) => d.slots)
 		);
 		expect(slots.filter((s) => s.book).map((s) => s.book!.slug)).toEqual(['a']);
+	});
+});
+
+describe('splitBible', () => {
+	const inSeries = (slug: string, series: string | null) => ({ slug, series: series ? { slug: series } : null });
+
+	it("tells the Bible's books by their series", () => {
+		expect(isBibleBook(inSeries('genesis', 'the-bible'))).toBe(true);
+		expect(isBibleBook(inSeries('rooted-1', 'rooted'))).toBe(false);
+		expect(isBibleBook({})).toBe(false);
+	});
+
+	it('splits a shelf into the classics and the Bible, keeping each in order', () => {
+		const shelf = [
+			inSeries('confessions', null),
+			inSeries('genesis', 'the-bible'),
+			inSeries('rooted-1', 'rooted'),
+			inSeries('psalms', 'the-bible')
+		];
+		const { classics, bible } = splitBible(shelf);
+		expect(classics.map((b) => b.slug)).toEqual(['confessions', 'rooted-1']);
+		expect(bible.map((b) => b.slug)).toEqual(['genesis', 'psalms']);
 	});
 });
 

@@ -38,14 +38,15 @@ export interface NavDest {
 	ornament: Ornament;
 }
 
-export type NavSection = 'books' | 'topics' | 'plans' | 'sermons' | 'biographies';
+export type NavSection = 'books' | 'bible' | 'topics' | 'plans' | 'sermons' | 'biographies';
 
 /** A section's ornament, in gold like every ornament (STYLE_GUIDE §1): a lamp
- *  for Books ("Thy word is a lamp", Ps 119:105), an anchor for Topics (hope,
+ *  for Books ("Thy word is a lamp", Ps 119:105), a scroll for the Bible ("in
+ *  the volume of the book it is written of me", Heb 10:7), an anchor for Topics (hope,
  *  Heb 6:19), a vine for Plans (abiding, day by day, John 15), a descending
  *  dove for Sermons, a laurel for Biographies. 'leaf' is the house ornament,
  *  for every page that is not a section's. */
-export type Ornament = 'leaf' | 'lamp' | 'anchor' | 'vine' | 'dove' | 'laurel';
+export type Ornament = 'leaf' | 'lamp' | 'scroll' | 'anchor' | 'vine' | 'dove' | 'laurel';
 
 /** An English-only hub: the footer's More column and the palette, gated to
  *  English, and never the top nav (an entry point for search, not a primary
@@ -56,7 +57,9 @@ export interface HubDest {
 	labelKey: string;
 }
 
-/** Books · Topics · Plans · Sermons · Biographies — the primary journeys. */
+/** Books · Topics · Plans · Sermons · Biographies — the primary journeys every
+ *  locale has. The chrome draws `primaryNav(locale)`, which adds the Bible where
+ *  its books have shipped. */
 export const PRIMARY_NAV: NavDest[] = [
 	{ href: '/books', labelKey: 'nav.books', icon: 'book', section: 'books', ornament: 'lamp' },
 	{ href: '/topics', labelKey: 'nav.topics', icon: 'tag', section: 'topics', ornament: 'anchor' },
@@ -65,8 +68,43 @@ export const PRIMARY_NAV: NavDest[] = [
 	{ href: '/biographies', labelKey: 'nav.biographies', icon: 'users', section: 'biographies', ornament: 'laurel' }
 ];
 
-/** A section's entry in PRIMARY_NAV — its icon, ornament and the rest. */
-export const sectionDest = (section: NavSection): NavDest => PRIMARY_NAV.find((d) => d.section === section)!;
+/** The Bible — the Open Word Bible's books in canonical order (/bible/,
+ *  `$lib/bible`). A primary section, but only in the locales whose Bible books
+ *  have shipped (`bibleIn`): the page 404s elsewhere, so a link there would
+ *  send the prerender crawl to a 404. It sits between Books and Topics — its 66
+ *  books are kept off the Books shelves (`splitBible`), and this tab is where a
+ *  reader finds them. The label is the tab's short word ("Bible"); the page's
+ *  own title stays "The Bible" (`nav.bible`). The trailing slash comes from
+ *  `localizeHref` (isSlashedPath). */
+export const BIBLE_NAV: NavDest = {
+	href: BIBLE_PATH,
+	labelKey: 'nav.bibleTab',
+	icon: 'scroll',
+	section: 'bible',
+	ornament: 'scroll'
+};
+
+/** Every section any locale can show — for what belongs to a section rather
+ *  than to a menu (its marks, `sectionDest`). Menus draw `primaryNav`. */
+export const SECTION_DESTS: NavDest[] = [PRIMARY_NAV[0], BIBLE_NAV, ...PRIMARY_NAV.slice(1)];
+
+/** The primary journeys a reader in `locale` is offered, in order: Books, the
+ *  Bible where its books have shipped, Topics, Plans, Sermons, Biographies. One
+ *  gate for the top nav, the footer's Library column, the palette and the
+ *  reader's site links, so the Bible is listed once, in the same place, on all
+ *  of them. */
+export function primaryNav(locale: string): NavDest[] {
+	return bibleIn(locale) ? SECTION_DESTS : PRIMARY_NAV;
+}
+
+/** The sections the tablet bar (768–1023px) folds into its "More ▾" menu,
+ *  their links hidden there by app.css (`a[data-section=…]`): the bar fits five
+ *  words in one row, and these are the two it can spare. The Bible's tab is a
+ *  desktop slot; a tablet reader meets it one tap away, first in More. */
+export const TABLET_MORE_SECTIONS: readonly NavSection[] = ['bible', 'biographies'];
+
+/** A section's entry — its icon, ornament and the rest. */
+export const sectionDest = (section: NavSection): NavDest => SECTION_DESTS.find((d) => d.section === section)!;
 
 /* Not listed here on purpose: the "Ochorus for …" landing pages ($lib/forLinks)
  * are pitches to a group of readers, not content destinations, so they sit in
@@ -84,7 +122,7 @@ export const ENGLISH_HUBS: HubDest[] = [
 /** Book Series — every series in this language, hanging off Books. Not a top-nav
  *  slot (the Books page's rail and count link are its way in there), but every
  *  locale's footer More column and the palette offer it right after the
- *  primary five: a series is translated content, so each locale has its own
+ *  primary journeys: a series is translated content, so each locale has its own
  *  index. The trailing slash is added by `localizeHref` ($lib/canonicalRedirect isSlashedPath). */
 export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
 
@@ -94,20 +132,12 @@ export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
  *  English readers meet Articles · Scripture · Quotes · Originals · RSS. */
 export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.originals' };
 
-/** The Bible — the Open Word Bible's books in canonical order (/bible/,
- *  `$lib/bible`). Not a top-nav slot: the footer's More column, the palette,
- *  the tablet More menu and the phone's More sheet offer it right before the
- *  English-only hubs, but only in the locales whose Bible books have shipped
- *  (`bibleIn`) — the page 404s elsewhere, so a link there would send the crawl
- *  to a 404. The trailing slash comes from `localizeHref` (isSlashedPath). */
-export const BIBLE_DEST: HubDest = { href: BIBLE_PATH, labelKey: 'nav.bible' };
-
-/** The hub links every menu offers in `locale`, in order: the Bible where its
- *  books have shipped, then the English-only hubs. One gate for the footer, the
- *  palette, the tablet More menu and the phone's More sheet, which each turn
- *  these into links their own way. */
+/** The hub links every menu offers in `locale`: the English-only hubs. (The
+ *  Bible was one until it became a primary section — `primaryNav`.) One gate
+ *  for the footer, the palette, the tablet More menu and the phone's More
+ *  sheet, which each turn these into links their own way. */
 export function hubDests(locale: string): HubDest[] {
-	return [...(bibleIn(locale) ? [BIBLE_DEST] : []), ...(locale === 'en' ? ENGLISH_HUBS : [])];
+	return locale === 'en' ? ENGLISH_HUBS : [];
 }
 
 /** Authors & Books A–Z — the one page linking every writer and every book in
