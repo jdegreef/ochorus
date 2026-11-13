@@ -1,0 +1,52 @@
+{
+ "slug": "catena-aurea-mark",
+ "title": "The Golden Chain: Mark",
+ "subtitle": "Thomas Aquinas’s Catena Aurea on the Gospel of Mark, gathered from the Fathers",
+ "cover_title": "",
+ "cover_byline": "",
+ "cover_color": "#1d3038",
+ "description": "The Gospel of Mark, verse by verse, with the Fathers of the Church speaking under every line. In the 1260s Thomas Aquinas went through the Gospels and, under each verse, linked the words of the Greek and Latin Fathers into a single chain: Bede, Theophylact, Chrysostom, Augustine and Gregory the Great, and many more. Later readers named it the Catena Aurea, the Golden Chain. This is its volume on Mark, nearly whole, in the Oxford translation edited by John Henry Newman (1841–45), with the Gospel itself in the Open Word Bible, a passage at a time, and an introduction on how to read it.",
+ "qa": [
+  {
+   "question": "What is the Catena Aurea?",
+   "answer": "The Catena Aurea, Latin for “Golden Chain”, is a commentary on the four Gospels that Thomas Aquinas compiled in the 1260s at the request of Pope Urban IV. Under each verse he set passages from the Fathers of the Church, Greek and Latin, linked one after another so that they read as a continuous exposition. Aquinas called it a continuous gloss; the name Golden Chain was given to it later."
+  },
+  {
+   "question": "Who speaks in The Golden Chain: Mark?",
+   "answer": "The Fathers of the Church and the medieval writers Aquinas trusted most, chiefly Bede, Theophylact, Chrysostom, Augustine and Gregory the Great. Each passage opens with the name of the one speaking. The closing chapter lists every voice in the volume and how often each is heard."
+  },
+  {
+   "question": "Which translation is this?",
+   "answer": "The English translation published at Oxford between 1841 and 1845 under the editorship of John Henry Newman, in four volumes, one for each Gospel. The Gospel text set above the Fathers is the Open Word Bible, English, Balanced level, a new translation dedicated to the public domain."
+  },
+  {
+   "question": "How is the book arranged?",
+   "answer": "One chapter for each of the 16 chapters of Mark, divided into the Gospel’s own passages; where a chapter runs long it is given in parts, each named by its verses. Within a passage the Gospel comes first, a verse or a few verses at a time, followed by Aquinas’s chain on those words. Every verse of Mark appears once, in order, between an introduction and a closing chapter on the Fathers and the edition."
+  },
+  {
+   "question": "Is the whole Catena Aurea on this Gospel included?",
+   "answer": "Nearly all of it, in Aquinas’s own order. Only where the old text could not be read with confidence, or where a passage turns on Greek or Hebrew letters, has a Father’s passage been left out rather than guessed at. The closing chapter says how many."
+  },
+  {
+   "question": "Why does the Bible wording differ between the Gospel text and the Fathers?",
+   "answer": "The Fathers quoted Scripture as they knew it, and the Oxford translators rendered those quotations in the English of the older Bibles. The Gospel set above them is a modern translation. Both render the same Gospel, so a verse may read one way above and another way below."
+  },
+  {
+   "question": "What is the Gloss?",
+   "answer": "The Gloss is the Glossa Ordinaria, the standard notes that medieval Bibles carried in their margins and between the lines. Aquinas quotes it beside the Fathers, and it is named simply Gloss."
+  },
+  {
+   "question": "How should I read it?",
+   "answer": "Slowly. Read a passage of Mark first, then the Fathers beneath it, then the Gospel again. A passage a day is a good pace. The chapters are long, so a reader may take one Gospel passage at a sitting rather than a whole chapter."
+  },
+  {
+   "question": "Who is Pseudo-Jerome?",
+   "answer": "Many passages on Mark come from a commentary that circulated under Jerome’s name in Aquinas’s day but is not his. Aquinas quoted it as Jerome’s; the Oxford translators mark it Pseudo-Jerome."
+  },
+  {
+   "question": "Who was the volume dedicated to?",
+   "answer": "Aquinas dedicated this volume, with those on Luke and John, to his friend Cardinal Annibaldo degli Annibaldi, after the death of Pope Urban IV."
+  }
+ ],
+ "cover_url": "/covers/art/catena-aurea-mark.jpg"
+}

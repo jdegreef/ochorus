@@ -40,13 +40,15 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import {
-		PRIMARY_NAV,
+		primaryNav,
 		SERIES_DEST,
 		ORIGINALS_DEST,
+		TABLET_MORE_SECTIONS,
 		hubDests
 	} from '$lib/contentNav';
 	import { localizeHref as localizeSlashed } from '$lib/href';
 	import type { NavSection } from '$lib/contentNav';
+	import { BIBLE_PATH, isBibleBook } from '$lib/bible';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
 	import PentecostFlames from '$lib/components/PentecostFlames.svelte';
@@ -248,39 +250,53 @@
 
 	// App destinations only — About Us and Contact live in the footer (matching
 	// Take Root, whose app nav carries five primary destinations).
-	// Home (chrome) then the five content types, whose order is shared with the
-	// footer and command palette via PRIMARY_NAV so the three can't drift (F2).
+	// Home (chrome) then the content types, whose order is shared with the
+	// footer and command palette via `primaryNav` so the three can't drift (F2):
+	// the Bible sits between Books and Topics where its books have shipped.
 	// Home is chrome, not a section, so it has no hue and keeps the accent.
+	// localizeSlashed: /bible/ is a slashed page (the others are unchanged by it).
 	const NAV = $derived<{ href: string; label: string; icon: IconName; section?: NavSection }[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid' },
-		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon, section: d.section }))
+		...primaryNav(lang.current).map((d) => ({
+			href: d.href,
+			label: t(d.labelKey),
+			icon: d.icon,
+			section: d.section
+		}))
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
 	// is the canonical path ("/books", "/books/[slug]") — compare against that.
 	// Book Series hangs off Books (its breadcrumb and the Books page's rail) and
 	// has no nav slot of its own, so its pages keep Books lit.
+	// A book of the Bible's page belongs to the Bible tab, not Books: its book
+	// is off the Books shelves (`splitBible`). Read off the page's own data.
+	const onBibleBook = $derived(
+		($page.route.id ?? '').startsWith('/books/[slug]') &&
+			!!($page.data as { book?: { series?: { slug: string } | null } }).book &&
+			isBibleBook(($page.data as { book: { series?: { slug: string } | null } }).book)
+	);
 	const isActive = (href: string) => {
 		const route = $page.route.id ?? '';
 		if (href === '/') return route === '/';
+		if (onBibleBook) return href === BIBLE_PATH;
 		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
 	};
 
 	// Tablet "More ▾" (768–1023px only, by app.css): the destinations the
-	// one-row bar has no room for — Biographies, whose link is hidden there,
-	// then Originals and (in English) the hubs the footer carries.
+	// one-row bar has no room for — the sections whose links are hidden there
+	// (the Bible where it is in the bar, and Biographies), then Originals and
+	// (in English) the hubs the footer carries.
 	let navMoreOpen = $state(false);
 	// English-only hubs stay unlocalized (the footer's rule), so each item
 	// carries its final href; `active` is matched on the route path.
 	const navMore = $derived(
 		[
-			...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({
-				path: d.href,
-				href: localizeHref(d.href),
-				label: t(d.labelKey)
-			})),
+			...primaryNav(lang.current)
+				.filter((d) => TABLET_MORE_SECTIONS.includes(d.section))
+				.map((d) => ({ path: d.href, href: localizeSlashed(d.href), label: t(d.labelKey) })),
 			{ path: ORIGINALS_DEST.href, href: localizeHref(ORIGINALS_DEST.href), label: t(ORIGINALS_DEST.labelKey) },
-			// The Bible where its books have shipped, then the English-only hubs.
+			// The English-only hubs.
 			...hubDests(lang.current).map((d) => ({
 				path: d.href,
 				href: localizeSlashed(d.href),
@@ -422,7 +438,7 @@
 				<div class="navlinks">
 					{#each NAV as item (item.href)}
 						<a
-							href={localizeHref(item.href)}
+							href={localizeSlashed(item.href)}
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
 							data-section={item.section}

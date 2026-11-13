@@ -1,0 +1,182 @@
+{
+    "kind": "book",
+    "slug": "the-way-to-god-teens",
+    "language": "am",
+    "job_issue": 7586,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Acts 4:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "1 John 4:10",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "1 John 4:8",
+            "status": "mined",
+            "source_file": "the-way-to-god.am.json",
+            "block_index": 4
+        },
+        {
+            "reference": "Luke 23:34",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 6
+        },
+        {
+            "reference": "John 13:1",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 7
+        },
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "Romans 3:23",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 3
+        },
+        {
+            "reference": "Romans 6:23",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "Romans 5:6",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "John 8:12",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Matthew 16:15-16",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "John 8:58",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 2
+        },
+        {
+            "reference": "Exodus 20:3",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Mark 14:61",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 7
+        },
+        {
+            "reference": "Mark 14:62",
+            "status": "self_rendered",
+            "block_index": 7
+        },
+        {
+            "reference": "Matthew 16:15",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 8
+        },
+        {
+            "reference": "Matthew 16:16",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 8
+        },
+        {
+            "reference": "Acts 3:19",
+            "status": "mined",
+            "source_file": "the-fundamental-doctrines-of-the-christian-faith.am.json",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 21:29",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "Luke 19:8",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "1 John 5:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "John 6:37",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 6
+        },
+        {
+            "reference": "Colossians 3:11",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 1:21",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 2
+        },
+        {
+            "reference": "Philippians 3:10",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "Hosea 14:4",
+            "status": "mined",
+            "source_file": "evening-by-evening.am.json",
+            "block_index": 0
+        },
+        {
+            "reference": "Jeremiah 2:5",
+            "status": "mined",
+            "source_file": "the-way-to-god.am.json",
+            "block_index": 2
+        },
+        {
+            "reference": "Jeremiah 2:13",
+            "status": "mined",
+            "source_file": "the-way-to-god.am.json",
+            "block_index": 3
+        },
+        {
+            "reference": "Jeremiah 2:19",
+            "status": "self_rendered",
+            "block_index": 6
+        }
+    ]
+}

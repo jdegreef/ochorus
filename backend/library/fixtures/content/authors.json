@@ -7902,7 +7902,7 @@
       "photo_url": "/portraits/francis-de-sales.jpg",
       "birth_year": 1567,
       "death_year": 1622,
-      "original_language": "fr",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -7962,7 +7962,7 @@
       "photo_url": "/portraits/catherine-of-siena.jpg",
       "birth_year": 1347,
       "death_year": 1380,
-      "original_language": "it",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8202,7 +8202,7 @@
       "photo_url": "/portraits/cyril-of-jerusalem.jpg",
       "birth_year": 313,
       "death_year": 386,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8262,7 +8262,7 @@
       "photo_url": "/portraits/ignatius-of-loyola.jpg",
       "birth_year": 1491,
       "death_year": 1556,
-      "original_language": "es",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8322,7 +8322,7 @@
       "photo_url": "/portraits/boethius.jpg",
       "birth_year": 480,
       "death_year": 524,
-      "original_language": "la",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8382,7 +8382,7 @@
       "photo_url": "/portraits/basil-of-caesarea.jpg",
       "birth_year": 330,
       "death_year": 379,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8442,7 +8442,7 @@
       "photo_url": "/portraits/gregory-of-nazianzus.jpg",
       "birth_year": 329,
       "death_year": 390,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8502,7 +8502,7 @@
       "photo_url": "/portraits/justin-martyr.jpg",
       "birth_year": 100,
       "death_year": 165,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8562,7 +8562,7 @@
       "photo_url": "/portraits/clement-of-alexandria.jpg",
       "birth_year": 150,
       "death_year": 215,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8622,7 +8622,7 @@
       "photo_url": "/portraits/gregory-of-nyssa.jpg",
       "birth_year": 335,
       "death_year": 394,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8682,7 +8682,7 @@
       "photo_url": "/portraits/tertullian.jpg",
       "birth_year": 155,
       "death_year": 220,
-      "original_language": "la",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8802,7 +8802,7 @@
       "photo_url": "/portraits/irenaeus-of-lyons.jpg",
       "birth_year": 130,
       "death_year": 202,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8862,7 +8862,7 @@
       "photo_url": "/portraits/origen-of-alexandria.jpg",
       "birth_year": 185,
       "death_year": 253,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8922,7 +8922,7 @@
       "photo_url": "/portraits/eusebius-of-caesarea.jpg",
       "birth_year": 260,
       "death_year": 339,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -8982,7 +8982,7 @@
       "photo_url": "/portraits/lactantius.jpg",
       "birth_year": 250,
       "death_year": 325,
-      "original_language": "la",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9042,7 +9042,7 @@
       "photo_url": "",
       "birth_year": null,
       "death_year": null,
-      "original_language": "la",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9102,7 +9102,7 @@
       "photo_url": "/portraits/polycarp.jpg",
       "birth_year": 69,
       "death_year": 155,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9162,7 +9162,7 @@
       "photo_url": "",
       "birth_year": null,
       "death_year": null,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9222,7 +9222,7 @@
       "photo_url": "/portraits/theophilus-of-antioch.jpg",
       "birth_year": null,
       "death_year": 183,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9282,7 +9282,7 @@
       "photo_url": "",
       "birth_year": 170,
       "death_year": 235,
-      "original_language": "el",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9358,7 +9358,7 @@
       "photo_url": "/portraits/jerome.jpg",
       "birth_year": 342,
       "death_year": 420,
-      "original_language": "la",
+      "original_language": "en",
       "is_imprint": false,
       "created_at": "2026-10-30T12:00:00Z",
       "same_as": [
@@ -9888,6 +9888,27 @@
           "q": "How did Frances Ridley Havergal die?",
           "a": "She died at Caswell Bay near Swansea, where she was living with her sister Maria, on Whit Tuesday, 3 June 1879, aged forty-two, after a short and painful illness. She spoke often of how “splendid” it was to be so near the gates of heaven, sang a verse of “Jesus, I will trust Thee” at the end, and was buried at Astley; Kept for the Master’s Use, whose proofs she had just finished, was published later that year."
         }
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "thomas-aquinas",
+      "name": "Thomas Aquinas",
+      "bio": "Thomas Aquinas (1225–1274) was an Italian Dominican friar, priest and theologian, the most influential teacher of the medieval Church. He taught in Paris, Naples and Rome, and his Summa Theologiae became a standard of Catholic theology. For Pope Urban IV he compiled the Catena Aurea, a chain of the Fathers’ words on the four Gospels. He was canonized in 1323.",
+      "tagline": "Dominican theologian of the Summa Theologiae, and compiler of the Catena Aurea on the Gospels.",
+      "bio_html": "",
+      "photo_url": "/portraits/thomas-aquinas.jpg",
+      "photo_attribution": "Carlo Crivelli, Saint Thomas Aquinas (1476), National Gallery, London; public domain, via Wikimedia Commons — adapted (cropped, black-and-white)",
+      "photo_source_url": "https://commons.wikimedia.org/wiki/File:Saint_Thomas_Aquinas_(Crivelli,_15th-century).jpg",
+      "birth_year": 1225,
+      "death_year": 1274,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-11-13T12:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Thomas_Aquinas"
       ]
     }
   }

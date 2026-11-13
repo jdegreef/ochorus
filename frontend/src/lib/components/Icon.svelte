@@ -8,6 +8,7 @@
 		| 'info'
 		| 'grid'
 		| 'book'
+		| 'scroll'
 		| 'calendar'
 		| 'mic'
 		| 'users'
@@ -103,6 +104,11 @@
 		<path d="M12 6.5C10.5 5 8 4.5 5 5v12c3-.5 5.5 0 7 1.5" />
 		<path d="M12 6.5C13.5 5 16 4.5 19 5v12c-3-.5-5.5 0-7 1.5" />
 		<path d="M12 6.5v12" />
+	{:else if name === 'scroll'}
+		<!-- A rolled scroll — the Bible's section (after Lucide's "scroll", ISC). -->
+		<path d="M15 12h-5M15 8h-5" />
+		<path d="M19 17V5a2 2 0 0 0-2-2H4" />
+		<path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
 	{:else if name === 'calendar'}
 		<rect x="4" y="5" width="16" height="15" rx="2" />
 		<path d="M8 3v4M16 3v4M4 10h16" />

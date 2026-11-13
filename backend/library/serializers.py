@@ -2207,6 +2207,14 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_classics_page(self, obj):
         return self._batch(obj).classics_page(obj)
 
+    # For a chapter of a Bible book that has a catena (``library/catena``):
+    # which catena chapter is on it and the verse spans it comments on — the
+    # reader's "What the Church has said" chips. Null for every other chapter.
+    catena = serializers.SerializerMethodField()
+
+    def get_catena(self, obj):
+        return self._batch(obj).catena(obj)
+
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
@@ -2257,6 +2265,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "related_passages",
             # A Bible chapter's "what the classics say" page — see above.
             "classics_page",
+            # A Bible chapter's catena pointer — see above.
+            "catena",
             # The chapter's answered questions (``Chapter``): a young-reader
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
@@ -2366,6 +2376,13 @@ class ChapterBatch:
         self._bible = bible_book_of(book)
         self._bible_pages = book_chapter_pages(self._bible) if self._bible else {}
 
+        # A Bible book with a catena: its commentary on each chapter of the run,
+        # read in one query (library/catena).
+        from .catena import CatenaLookup
+
+        self._catena = CatenaLookup(book)
+        self._catena.prefetch(chapters)
+
     def holds(self, chapter) -> bool:
         return chapter.pk in self._cited
 
@@ -2389,6 +2406,9 @@ class ChapterBatch:
         if self._bible is None:
             return None
         return classics_page(self._bible, chapter, self._bible_pages)
+
+    def catena(self, chapter):
+        return self._catena.summary(chapter)
 
 
 class PlanListSerializer(serializers.ModelSerializer):

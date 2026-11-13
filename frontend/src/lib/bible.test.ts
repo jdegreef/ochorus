@@ -1,11 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_DIVISIONS,
+	BIBLE_STARTS,
+	bibleChapterCount,
 	biblePlans,
+	bibleStarts,
+	mayBePassage,
+	passageHref,
 	canonStrip,
 	divisionKey,
 	divisionOf,
 	groupBible,
+	isBibleBook,
+	splitBible,
 	testamentKey
 } from './bible';
 import en from '../../messages/en.json';
@@ -143,5 +150,86 @@ describe('canonStrip', () => {
 			(t) => t.divisions.flatMap((d) => d.slots)
 		);
 		expect(slots.filter((s) => s.book).map((s) => s.book!.slug)).toEqual(['a']);
+	});
+});
+
+describe('splitBible', () => {
+	const inSeries = (slug: string, series: string | null) => ({ slug, series: series ? { slug: series } : null });
+
+	it("tells the Bible's books by their series", () => {
+		expect(isBibleBook(inSeries('genesis', 'the-bible'))).toBe(true);
+		expect(isBibleBook(inSeries('rooted-1', 'rooted'))).toBe(false);
+		expect(isBibleBook({})).toBe(false);
+	});
+
+	it('splits a shelf into the classics and the Bible, keeping each in order', () => {
+		const shelf = [
+			inSeries('confessions', null),
+			inSeries('genesis', 'the-bible'),
+			inSeries('rooted-1', 'rooted'),
+			inSeries('psalms', 'the-bible')
+		];
+		const { classics, bible } = splitBible(shelf);
+		expect(classics.map((b) => b.slug)).toEqual(['confessions', 'rooted-1']);
+		expect(bible.map((b) => b.slug)).toEqual(['genesis', 'psalms']);
+	});
+});
+
+describe('passageHref', () => {
+	const at = { slug: 'gospel-of-john', order: 4 };
+	it('opens a verse at its anchor, a range at its first verse', () => {
+		expect(passageHref({ reference: 'John 3:16', verses: [{ number: 16 }], bible_chapter: at })).toBe(
+			'/books/gospel-of-john/4#v16'
+		);
+		expect(
+			passageHref({ reference: 'Romans 8:28-30', verses: [{ number: 28 }, { number: 29 }], bible_chapter: { slug: 'romans', order: 9 } })
+		).toBe('/books/romans/9#v28');
+	});
+	it('opens a whole chapter at its top', () => {
+		expect(
+			passageHref({ reference: 'Psalms 23:1-6', verses: [{ number: 1 }], bible_chapter: { slug: 'psalms', order: 24 } })
+		).toBe('/books/psalms/24');
+		expect(passageHref({ reference: 'John 3', verses: [{ number: 1 }], bible_chapter: at })).toBe(
+			'/books/gospel-of-john/4'
+		);
+	});
+	it('opens a bare book at its page, a numbered book too', () => {
+		expect(passageHref({ reference: 'John', verses: [{ number: 1 }], bible_chapter: { slug: 'gospel-of-john', order: 2 } })).toBe(
+			'/books/gospel-of-john'
+		);
+		expect(
+			passageHref({ reference: '1 Corinthians', verses: [{ number: 1 }], bible_chapter: { slug: '1-corinthians', order: 2 } })
+		).toBe('/books/1-corinthians');
+	});
+	it('is null where the library prints none of it', () => {
+		expect(passageHref({ reference: 'Tobit 1:1', verses: [{ number: 1 }], bible_chapter: null })).toBeNull();
+		expect(passageHref({ reference: 'John 3:16', verses: [{ number: 16 }] })).toBeNull();
+	});
+});
+
+describe('bibleStarts', () => {
+	it('keeps the curated order and drops a book the series lacks', () => {
+		const books = ['romans', 'genesis', 'gospel-of-mark'].map((slug) => ({ slug }));
+		expect(bibleStarts(books).map((s) => s.book.slug)).toEqual(['gospel-of-mark', 'genesis', 'romans']);
+	});
+	it('names five books, each with a reason', () => {
+		expect(BIBLE_STARTS).toHaveLength(5);
+		for (const s of BIBLE_STARTS) expect(s.why.length).toBeGreaterThan(20);
+	});
+});
+
+describe('bibleChapterCount', () => {
+	it('counts the Bible chapters, not the introduction and conclusion', () => {
+		expect(bibleChapterCount([{ chapter_count: 30 }, { chapter_count: 6 }, {}])).toBe(28 + 4);
+	});
+});
+
+describe('mayBePassage', () => {
+	it('asks the resolver for a chapter or a book named alone', () => {
+		for (const q of ['John 3:16', 'Ps 23', 'Romans', ' 1 john ', 'Psalm', 'Song of Solomon', 'Rom.'])
+			expect(mayBePassage(q), q).toBe(true);
+	});
+	it('sends any other word to search', () => {
+		for (const q of ['grace', 'John Bunyan', 'prayer']) expect(mayBePassage(q), q).toBe(false);
 	});
 });

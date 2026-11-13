@@ -14,7 +14,9 @@
 		showAuthor = true,
 		anchor,
 		showSeries = true,
-		editions = 1
+		editions = 1,
+		href,
+		meta
 	}: {
 		book: BookSummary;
 		showAuthor?: boolean;
@@ -22,6 +24,11 @@
 		showSeries?: boolean;
 		/** How many editions this row stands for on /books (see BookCard). */
 		editions?: number;
+		/** A row that opens something other than the book's page (canonical, a
+		 *  `localizeHref` path) — /books's pinned Bible row opens the hub. */
+		href?: string;
+		/** Replaces the chapters-and-time column ("66 books" on that row). */
+		meta?: string;
 	} = $props();
 	const t = i18n.t;
 
@@ -34,7 +41,7 @@
 </script>
 
 <a
-	href={localizeHref(`/books/${book.slug}`)}
+	href={localizeHref(href ?? `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
 	class="card-tint group flex flex-wrap items-center gap-x-4 rounded-card border border-transparent px-2 py-2.5"
 	style={anchor ? 'scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
@@ -71,10 +78,14 @@
 	<div
 		class="mt-0.5 w-full shrink-0 ps-16 text-small text-muted sm:mt-0 sm:w-auto sm:ps-0 sm:text-end"
 	>
-		<span class="sm:block">{chapters}</span>
-		{#if book.word_count}
-			<span class="sep sm:hidden" aria-hidden="true">·</span>
-			<span class="sm:block">{readingTime(book.word_count)}</span>
+		{#if meta}
+			<span class="sm:block">{meta}</span>
+		{:else}
+			<span class="sm:block">{chapters}</span>
+			{#if book.word_count}
+				<span class="sep sm:hidden" aria-hidden="true">·</span>
+				<span class="sm:block">{readingTime(book.word_count)}</span>
+			{/if}
 		{/if}
 	</div>
 </a>

@@ -30,7 +30,10 @@ SELECTION. Logia holds about two million words on John alone, so the book is a
 choice: roughly one excerpt in twenty. `--select` makes it, deterministically,
 and writes the excerpt ids to `data/catena/<CODE>/selection.json`; a plain run
 reads that file, so a later Logia download cannot reshuffle the book, and an
-editor can swap an excerpt by editing one id. The rule, per passage: a word
+editor can swap an excerpt by editing one id. `--refill` mends a shipped
+book instead of reshuffling it: it drops only the pinned excerpts that can no
+longer stand (a tightened filter, a new rejected.json entry) and tops up just
+the passages that lost one. The rule, per passage: a word
 budget in proportion to its verses; then, greedily, the excerpt that adds an
 era and a voice the passage does not have yet, reads at a comfortable length,
 spreads across the passage's verses, and keeps any one commentator from
@@ -38,18 +41,50 @@ crowding the book. An excerpt is never chosen if the scan has damaged it
 (see `vocabulary`), if it carries Greek or Hebrew, or if an editor has turned
 it down in `rejected.json`. Aquinas's Catena Aurea is left out on purpose — it is
 itself a chain of the Fathers, and would repeat Augustine and Chrysostom.
+A voice marked "lead": true in book.json is leaned towards (Spurgeon in the
+Psalms).
 
 TEXT. Each excerpt is the source's words in the source's order. Only
 typography is touched: whitespace collapsed, the scan's spaces before
-punctuation and inside quotation marks closed up, a stray byte-order mark and a leading verse number dropped, quotation marks
-curled the house way. Old spelling and the
-commentators' own Bible wording (usually the King James) stand as printed.
+punctuation and inside quotation marks (straight or curled) closed up, a
+stray byte-order mark and a leading verse number dropped, quotation marks
+curled the house way. Old spelling and the commentators' own Bible wording (usually the King James) stand as printed.
+
+VERSIFICATION. The text is numbered as English Bibles number it. A commentary
+need not be: Logia keys each excerpt as its source edition did, and in the
+Psalms that is usually the HEBREW numbering, where a psalm's title is verse 1
+(or verses 1–2), so every verse after it runs one or two ahead of the English.
+book.json's "versification" names each work's scheme — "english" (the
+default), "hebrew" (read through OWB's own WLC-to-English map, vendored into
+owb_sections.json as `english_versification`; a ref that maps to no English
+verse, a title, attaches to verse 1), "english+N" (a slip: keys N ahead of the
+English) or "skip" (leave the work out) — and may override it per chapter
+(`{"scheme": "hebrew", "chapters": {"68": "english"}}`). `_start`/`_end` are the
+English verses; the scheme is applied when the excerpts are loaded. What Logia
+did for the Psalms, checked work by work against the verse numbers the
+excerpts print and against the words they quote (data/catena/PSA/book.json):
+
+* every work: Hebrew/English PSALM numbers, already normalised — Augustine's
+  and Bellarmine's Vulgate "Psalm 22" is keyed PSA.23, and the Vulgate's joined
+  Psalm 9 is split again (Augustine's "Why, O Lord, hast Thou withdrawn afar
+  off?" is PSA.10.1).
+* every work: HEBREW VERSE numbers. Spurgeon's PSA.46.2 prints "1. God is our
+  refuge" (English 46:1); Augustine's PSA.3.2 quotes "(ver. 1)"; Calvin's
+  PSA.3.5 prints "4."; Fausset's PSA.42.6 prints "5."; Henry's PSA.3.6 cites
+  "(v. 5)"; Bellarmine's PSA.46.2 is headed "Our God is our refuge and
+  strength"; Delitzsch prints the Hebrew number himself ("Ver. 9" for 4:8).
+* the exceptions, by chapter: Spurgeon's Psalm 68 is keyed in English (PSA.68.1
+  is "1. Let God arise"); his Psalms 15 and 29 run one ahead of the English
+  (PSA.29.2 is "1. Give") and 44 two ahead (PSA.44.3 is "1. We have heard");
+  Bellarmine's Psalm 72 is keyed one behind from verse 3 on, so it is skipped.
 
 LAYOUT. One chapter per Bible chapter, between an introduction and a back
 chapter on the voices and their editions (both Ochorus's own writing, in
 `data/catena/<CODE>/`). In a chapter, each OWB section is an `<h3>`; under it
 the verses run in order as quoted blocks, each followed by the excerpts that
-comment on it. Every verse is quoted exactly once.
+comment on it. Every verse is quoted exactly once. In the back chapter's
+list of editions, a voice's "edition" in book.json may reword Logia's
+catalogue note (scan identifiers, a translator's apology).
 
 An English original, like the house's other compiled books, so it is created
 `public_domain` (the review state is for translations). Idempotent.
@@ -114,11 +149,69 @@ MIN_WORDS, MIN_WORDS_SHORT, MAX_WORDS = 40, 20, 450
 SHORT_VOICES = frozenset({"wesley", "bengel"})
 #: A comfortable excerpt length, which the score leans towards.
 IDEAL_WORDS = 200
+#: The score's lean towards a book's leading voice: enough to be heard in most
+#: passages, not enough to outweigh a fresh era.
+LEAD_BONUS = 1.5
 
 #: Scan debris: stray asterisks, bars and carets, a degree sign, angle brackets.
 _SCAN_NOISE = re.compile(r"[*|^°<>{}]")
 #: A letter run broken by ? or ! or a digit inside a word: "ma?i", "c0me".
 _MISREAD = re.compile(r"[a-z][?!][a-z]|[a-z]\d|\d[a-z]{3,}")
+#: A mark misread in any edition: a "0" for "O" ("Thou, 0 Lord"), or a figure
+#: or capital I for an exclamation mark just before a closing quotation
+#: ("Holy, holy, holy 1 "").
+_MISREAD_MARK = re.compile(r"""(?<!\d[.,]) 0 (?=[A-Za-z])|(?<=[a-z]) [1I7] (?=["“”])""")
+#: The same, sought in scanned editions alone, where typed English would
+#: trip it ("Behold, I Paul say", "in 1 Reg."): a lone figure between a word
+#: and a capitalised one ("O sinner 1 Take heed", "weepest thou 7 This"),
+#: unless it numbers a book or begins an abbreviation; or a lone I before a
+#: word that opens a sentence ("the Mount I The word", "enlarged I There").
+_SCAN_MARK = re.compile(
+    r"(?<=[a-z,;:]) \d (?=[A-Z][a-z]+\b(?!\.))"
+    r"(?!Sam|Kings?\b|Kgs|Chr|Cor|Thes|Tim|Pet|John|Jn|Joh|Macc|Esd|Reg|Par|Esdr|Mac)"
+    r"|(?<=[a-z,;:]) [Il] (?=(?:The|There|It|What|How|Who|We|They|This|That|Let|Oh|But|And|Yet|Ye|Is|Our"
+    r"|In|If|So|No|Not)\b)"
+)
+#: A quotation mark the scan has broken: a doubled single mark for a double
+#: one ("‘‘ Happy,” says he").
+_BROKEN_MARK = re.compile(r"‘‘|’’|''|``")
+#: A closing single mark (not an apostrophe inside a word): more opening marks
+#: than these means the scan read a double mark as a single (‘hell, ‘here).
+_CLOSING_SINGLE = re.compile(r"’(?![A-Za-z])")
+#: An excerpt that ends a sentence, not one Logia cut at a comma: a stop and
+#: its closing marks, perhaps followed by a bracketed citation ("…became
+#: poor.” (2 Corinthians 8:9)", "…abolished, (Psalm 110:4)"). Read on the
+#: tidied text, so a byte-order mark before the close does not hide it.
+_ENDS_WHOLE = re.compile(r"""(?:[.!?…][”’")\]]*|[.!?…,;:][”’"]*\s*\([^()]{1,60}\)\.?)\s*$""")
+#: Slips only a scan makes, sought in scanned editions alone: a stop or comma
+#: glued between two words ("goes.on", "especially;.and"), a lower-case word
+#: after a full stop that ends no abbreviation ("lays. low", "to. no. one"),
+#: a figure for a word ("had 80 often", but not "verses 5 and 6"), a dollar sign, an accent no English
+#: word has ("theréat"), a hyphen joining two lower-case words ("and-crime"),
+#: a running head ("ON THE PSALMS.", not "the LORD JEHOVAH."), doubled
+#: punctuation ("xiii,,"), a figure for a letter ("7'o thee", "saying, 1 pray"),
+#: a stray bullet, a doubled word that never doubles in English ("the the"),
+#: a full stop set before a word ("the .Evangelist", which tidy would glue).
+_SCAN_SLIP = re.compile(
+    r"[a-z][.;:,]{1,2}[a-z]{2,}"
+    r"|(?<![A-Za-z])(?!(?:cf|viz|ver|vers|ch|chap|sq|sqq|comp|ib|ibid|al|etc|ed|vol|p|pp|v|vv|cap|sess|art|lib|[ivxlc]+|i\.e|e\.g)\.)"
+    r"[a-z]{2,}\. [a-z]{2,}"
+    r"|[a-z](?<!\bverses)(?<!\bverse)(?<!\bchapters)(?<!\bchapter)(?<!\bpsalms)(?<!\bpsalm)(?<!\d and)(?<!\d or)(?<!\d to) \d+ [a-z]{2,}\b(?<!\bto)"
+    r"|\$|[a-z][éèêëàâîïôûç][a-z]|\b(?:and|or|the)-[a-z]|[a-z]-(?:and|or|the)\b"
+    r"|\b(?:(?!(?:LORD|GOD|JEHOVAH|JAH|HOSTS)\b)[A-Z]{2,} )+(?!(?:LORD|GOD|JEHOVAH|JAH|HOSTS)\b)[A-Z]{2,}\."
+    r"|,[,.]|\d'[a-z]|(?<=[,;:] )[1l] (?=[a-z])"
+    r"|[•■□▪]|\b(?P<word>the|of|and|to|a|an|in|is|we|he|it|for|by) (?P=word)\b| \.[A-Za-z]"
+)
+#: A word a scan broke in two at the end of a line ("faith fulness", "con
+#: founding", "them selves"): two pieces that make a known word, one of them a
+#: piece no one writes alone in these books.
+_PAIR = re.compile(r"\b([A-Za-z]+) (?=([a-z]+)\b)")
+_SUFFIXES = frozenset({
+    "ness", "ship", "ment", "ments", "tion", "tions", "sion", "sions", "ance", "ence", "ing", "ings",
+    "ful", "fully", "fulness", "selves", "ly", "ity", "ous", "ously", "hood", "dom", "able", "ible",
+    "tude", "haps", "fore", "kind", "standing", "hanging", "vidence", "fidence", "tended",
+})
+_PREFIXES = frozenset({"con", "com", "pre", "pro", "sub", "extra", "per", "dis", "inter", "trans", "salva"})
 _SHORT_WORDS = frozenset({
     "a", "i", "o", "ah", "am", "an", "as", "at", "be", "by", "do", "go", "ha", "he", "ho", "if", "in",
     "is", "it", "lo", "me", "my", "no", "of", "oh", "on", "or", "ox", "so", "to", "up", "us", "we", "ye",
@@ -127,6 +220,8 @@ _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
 _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
+#: A space the scan put inside a curled double mark (“ prevented,” in Bellarmine).
+_SPACE_IN_CURLED = re.compile(r"“\s+|\s+”")
 BOM = "\ufeff"
 #: A byte-order mark just inside a bracket or a curled quotation mark, with
 #: the space it carries.
@@ -135,14 +230,19 @@ _BOM_INSIDE = re.compile(r"([(\[“‘])\ufeff\s*|\s*\ufeff\s*([”’])")
 #: otherwise read as an opening quotation mark after a space.
 _ELISION = re.compile(r"(?<!\w)'(?=(?:tis|twas|twere|twill|twould|em|gainst|neath|mongst)\b)", re.I)
 _VERSE_REF = re.compile(r"(\d+)[.:](\d+)")
+#: A versification scheme in book.json: "english", "hebrew", "english+1" or "skip".
+_SCHEME = re.compile(r"(english|hebrew|skip)(?:\+(\d+))?")
 #: What an edition prints on purpose that the vocabulary check would read as a
 #: misread word, set aside before it: a possessive's s ("God's"), "&c.", "i.e.",
 #: a reference's abbreviation ("v. 6", "ch. xv. 22", "Ps. lxxxix. 3", "St.",
 #: Haydock's "Wi." for Witham), a roman chapter number before its verse, and a
 #: capital roman numeral heading a point ("II. The").
 _NOT_A_WORD = re.compile(
-    r"(?<=[A-Za-z])['’]s\b|&c\.|\bi\.\s?e\.|\b(?:v|vv|ver|ch|Ch|chap|Ps|cf|ib|ibid|St|Dr|Mr|Wi)\."
-    r"|\b[ivxlc]+\.(?=\s*\d)|\b[IVXLC]+\."
+    r"(?<=[A-Za-z])['’](?:s|t|d|ll|ve|re|st)\b|&c\.|\bi\.\s?e\.|\b(?:v|vv|ver|vers|ch|Ch|chap|Ps|Pss|cf|comp|"
+    r"sq|sqq|ib|ibid|viz|St|Dr|Mr|Wi|Ge|Gen|Ex|Le|Nu|Num|De|Deut|Jos|Sa|Sam|Ki|Kgs|Chr|Ne|Neh|Es|Pr|Prov|Ec|"
+    r"Eccl|Isa|Jer|La|Eze|Ezek|Da|Dan|Ho|Hos|Joe|Am|Ob|Jon|Mic|Na|Hab|Zep|Hag|Zec|Zech|Mal|Mt|Matt|Mr|Mk|Lu|"
+    r"Lk|Joh|Jn|Ac|Ro|Rom|Co|Cor|Ga|Gal|Eph|Php|Phil|Col|Thess|Ti|Tim|Tit|Heb|Jas|Pe|Pet|Jud|Rev)\."
+    r"|\b[ivxlc]+[.,;:)]|\b[IVXLC]+\."
 )
 
 
@@ -157,9 +257,9 @@ def ref(verse: tuple[int, int]) -> str:
     return f"{verse[0]}:{verse[1]}"
 
 
-def span(code: str, first: tuple[int, int], last: tuple[int, int]) -> str:
+def span(code: str, first: tuple[int, int], last: tuple[int, int], books: dict = BOOKS) -> str:
     """'John 1:1–5', 'John 1:1', 'John 7:53–8:11'."""
-    name = BOOKS[code][0]
+    name = books[code][0]
     if first == last:
         return f"{name} {ref(first)}"
     if first[0] == last[0]:
@@ -215,6 +315,7 @@ def tidy(text: str) -> list[str]:
         raw = _BOM_INSIDE.sub(r"\1\2", raw).replace(BOM, " ")
         para = _SPACE_BEFORE.sub(r"\1", " ".join(raw.split()))
         para = space_quotes(para).replace(" - ", " — ")  # a spaced hyphen is the edition's dash
+        para = _SPACE_IN_CURLED.sub(lambda m: m[0].strip(), para)
         if para:
             paragraphs.append(para)
     if paragraphs:
@@ -228,7 +329,11 @@ def vendor_owb(checkout: Path, code: str) -> None:
     summaries, settings at their defaults, with the commit they came from."""
     import subprocess
 
-    from library.management.commands.build_owb_book import heading_text, plain
+    from library.management.commands.build_owb_book import (
+        english_versification,
+        heading_text,
+        plain,
+    )
 
     commit = subprocess.run(
         ["git", "-C", str(checkout), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
@@ -250,6 +355,17 @@ def vendor_owb(checkout: Path, code: str) -> None:
         "sections": sections,
         "summaries": {n: plain(s["en"] if isinstance(s, dict) else s) for n, s in summaries.items()},
     }
+    # Where the book's source numbering is not the English (a psalm's title is
+    # its first verse in Hebrew), the map from one to the other (VERSIFICATION).
+    english = {
+        k: v for k, v in sorted(english_versification(checkout).items(), key=lambda kv: verse_key(kv[0]))
+        if k.startswith(code + ".")
+    }
+    if english:
+        out["_note"].append(
+            f"english_versification: data/versification.json's \"english\" map (WLC verse -> English verses) for {code}."
+        )
+        out["english_versification"] = english
     folder = EDITORIAL / code
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "owb_sections.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), "utf-8")
@@ -266,19 +382,40 @@ class Command(BaseCommand):
             help="first write data/catena/<CODE>/owb_sections.json from an open-word-bible checkout",
         )
         parser.add_argument(
+            "--refill", action="store_true",
+            help="mend selection.json: drop the excerpts that can no longer stand, top up only those passages",
+        )
+        parser.add_argument(
             "--select", action="store_true",
             help="choose the excerpts afresh and rewrite selection.json (otherwise it is read)",
         )
 
     # --- inputs -------------------------------------------------------------
 
-    def load(self, path: str, code: str):
+    def read_logia(self, path: str) -> dict:
+        """Logia's file, its digest noted and its licence checked; every
+        excerpt kept for `typed_counts`."""
         raw = Path(path).read_bytes()
         self.logia_sha = hashlib.sha256(raw).hexdigest()
         logia = json.loads(raw)
         del raw
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        self.logia_excerpts = logia["excerpts"]
+        return logia
+
+    @cached_property
+    def typed_counts(self) -> Counter:
+        """Word counts over Logia's excerpts from typed (not scanned) editions,
+        for `vocabulary`; tallied only when a build needs it."""
+        typed = Counter()
+        for e in self.logia_excerpts:
+            if "archive.org" not in e.get("source_url", ""):
+                typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
+        return typed
+
+    def load(self, path: str, code: str):
+        logia = self.read_logia(path)
         self.code = code
         folder = EDITORIAL / code
         self.meta = json.loads((folder / "book.json").read_text("utf-8"))
@@ -289,23 +426,33 @@ class Command(BaseCommand):
         #: Logia author id -> the Logia work their excerpts come from, whose
         #: edition the back chapter names.
         self.work_of = {v["id"]: v["work"] for v in self.meta["voices"]}
+        #: The voice the book leads with, and editions book.json words itself.
+        self.lead = {v["id"] for v in self.meta["voices"] if v.get("lead")}
+        self.editions = {v["id"]: v["edition"] for v in self.meta["voices"] if v.get("edition")}
         self.rank = {a: i for i, a in enumerate(self.voices)}
         self.authors = logia["authors"]
         self.works = logia["works"]
         missing = sorted(set(self.work_of.values()) - set(self.works))
         if missing:
             raise CommandError(f"book.json names works Logia lacks: {missing}")
+        self.load_owb(code)
+        to_english = self.versification(code)
         self.excerpts = {}
-        typed = Counter()
         for e in logia["excerpts"]:
-            if "archive.org" not in e.get("source_url", ""):
-                typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
             if e["start"].startswith(code + ".") and self.work_of.get(e["author"]) == e["work"]:
-                e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
+                e["_start"], e["_end"] = to_english(e["work"], e["start"], e["end"])
+                if e["_start"] is None or e["_end"] is None:
+                    continue
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
-        self.typed_counts = typed
-        number = BOOKS[code][1]
+        self.folder = folder
+        rejected = folder / "rejected.json"
+        self.rejected = set(json.loads(rejected.read_text("utf-8"))["excerpts"]) if rejected.exists() else set()
+
+    def load_owb(self, code: str) -> None:
+        """The book's vendored sections, its OWB verses and the Bible's commit."""
+        self.owb = json.loads((EDITORIAL / code / "owb_sections.json").read_text("utf-8"))
+        number = self.books[code][1]
         verses, joined = _owb()
         # A verse OWB prints together with the one before it is quoted there.
         self.verses = {
@@ -315,7 +462,6 @@ class Command(BaseCommand):
         }
         with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
             self.bible_commit = json.load(fh)["meta"]["commit"]
-        self.owb = json.loads((folder / "owb_sections.json").read_text("utf-8"))
         if self.owb["owb_commit"] != self.bible_commit:
             # Sections vendored from another OWB commit than the bundled text:
             # harmless while every passage still starts on a verse it has.
@@ -330,16 +476,64 @@ class Command(BaseCommand):
                 f"note: owb_sections.json is from OWB {self.owb['owb_commit'][:12]}, the bundled text from "
                 f"{self.bible_commit[:12]}; every passage starts on a verse the text has"
             )
-        self.folder = folder
-        rejected = folder / "rejected.json"
-        self.rejected = set(json.loads(rejected.read_text("utf-8"))["excerpts"]) if rejected.exists() else set()
+
+    def versification(self, code: str):
+        """A function (work id, start ref, end ref) -> an excerpt's first and
+        last verse in English numbering, or None for a work skipped there, by
+        the scheme book.json names for its work (VERSIFICATION in the module
+        docstring). A work's value is a scheme, or {"scheme": ..., "chapters":
+        {"68": ...}} for a work whose keys change scheme in a few chapters."""
+        schemes = self.meta.get("versification", {})
+        english = self.owb.get("english_versification", {})
+        works = {v["work"] for v in self.meta["voices"]}
+        named = []
+        for work, s in schemes.items():
+            if work not in works:
+                raise CommandError(f"book.json versification names {work!r}, which is no voice's work")
+            if isinstance(s, dict):
+                if "scheme" not in s:
+                    raise CommandError(f"book.json versification for {work!r} has no \"scheme\"")
+                named += [s["scheme"], *s.get("chapters", {}).values()]
+            else:
+                named.append(s)
+        for s in named:
+            m = _SCHEME.fullmatch(s) if isinstance(s, str) else None
+            if not m or (m[1] != "english" and m[2]):
+                raise CommandError(f"book.json names an unknown versification {s!r}")
+        if not english and any(_SCHEME.fullmatch(s)[1] == "hebrew" for s in named):
+            raise CommandError("book.json reads a work as Hebrew but owb_sections.json has no map: --vendor-owb")
+
+        def scheme(work: str, chapter: int) -> tuple[str, int]:
+            s = schemes.get(work, "english")
+            if isinstance(s, dict):
+                s = s.get("chapters", {}).get(str(chapter), s["scheme"])
+            m = _SCHEME.fullmatch(s)
+            if not m or (m[1] != "english" and m[2]):
+                raise CommandError(f"unknown versification {s!r} for {work}")
+            return m[1], int(m[2] or 0)
+
+        def convert(work: str, ref_: str, last: bool) -> tuple[int, int] | None:
+            verse = verse_key(ref_)
+            name, ahead = scheme(work, verse[0])
+            if name == "skip":
+                return None
+            if name == "english":
+                return (verse[0], max(1, verse[1] - ahead))
+            mapped = english.get(f"{code}.{verse[0]}.{verse[1]}")
+            if mapped is None:
+                return verse  # numbered alike in both
+            if not mapped:
+                return (verse[0], 1)  # a psalm's title: it belongs with the first verse
+            return verse_key(mapped[-1] if last else mapped[0])
+
+        return lambda work, start, end: (convert(work, start, False), convert(work, end, True))
 
     def passages(self) -> list[tuple[str, list[tuple[int, int]]]]:
         """[(section title, its verses in order)] — every verse in one passage."""
         starts = [(verse_key(s["start"]), s["title"]) for s in self.owb["sections"]]
         ordered = sorted(self.verses)
-        if ordered[0] < starts[0][0]:
-            raise CommandError("the OWB sections start after the book does")
+        # A book's opening line may stand before OWB's first heading (Mark 1:1,
+        # "The beginning of the good news…"); it opens the first passage.
         out = [(title, []) for _, title in starts]
         section = 0
         for v in ordered:
@@ -369,18 +563,55 @@ class Command(BaseCommand):
         counts = english_audit.library_word_counts() + self.typed_counts
         return {w for w, n in counts.items() if n >= 3 and (len(w) > 2 or w in _SHORT_WORDS)}
 
-    def damaged(self, text: str) -> bool:
-        """The scan has broken something: a misread word, debris, a word split
-        at a hyphen or two run together across a full stop."""
+    def damaged(self, e: dict) -> bool:
+        """The scan has broken something: a misread word or mark (_MISREAD,
+        _MISREAD_MARK; in a scan also _SCAN_MARK), debris, a broken or unpaired quotation mark, a word split
+        at a hyphen or two run together across a full stop — or Logia cut the
+        excerpt off mid-sentence. In a scanned edition also the slips only a
+        scan makes (_SCAN_SLIP), a word broken in two at a line's end
+        (_SUFFIXES, _PREFIXES), and any word outside the vocabulary; a typed
+        edition (CCEL) is spared that last, which mostly turns away its
+        abbreviations and rare real words."""
+        text = e["text"]
         if (
-            _MISREAD.search(text)
-            or _SCAN_NOISE.search(text)
-            or english_audit.HYPHEN_SPACE.search(text)
-            or english_audit.RUN_TOGETHER.search(text)
+            self.debris(text)
+            or text.count("“") != text.count("”")
+            or text.count("‘") > len(_CLOSING_SINGLE.findall(text))
+            or not _ENDS_WHOLE.search(" ".join(tidy(text)))
         ):
+            return True
+        if "archive.org" not in e.get("source_url", ""):
+            return False
+        if self.scan_slips(text):
             return True
         known = self.vocabulary
         return any(w.lower() not in known for w in english_audit._WORD.findall(_NOT_A_WORD.sub(" ", text)))
+
+    @staticmethod
+    def debris(text: str) -> bool:
+        """Damage any edition can carry, typed or scanned: a misread word or
+        mark, a broken quotation mark, debris, a word split at a hyphen or two
+        run together across a full stop."""
+        return bool(
+            _MISREAD.search(text)
+            or _MISREAD_MARK.search(text)
+            or _BROKEN_MARK.search(text)
+            or _SCAN_NOISE.search(text)
+            or english_audit.HYPHEN_SPACE.search(text)
+            or english_audit.RUN_TOGETHER.search(text)
+        )
+
+    def scan_slips(self, text: str) -> bool:
+        """The slips only a scan makes (_SCAN_SLIP, _SCAN_MARK), or a word it
+        broke in two at a line's end (_SUFFIXES, _PREFIXES)."""
+        if _SCAN_SLIP.search(text) or _SCAN_MARK.search(text):
+            return True
+        known = self.vocabulary
+        for m in _PAIR.finditer(text):
+            first, second = m[1].lower(), m[2]
+            if (second in _SUFFIXES or first in _PREFIXES) and first + second in known:
+                return True
+        return False
 
     def unfit(self, e: dict, verses: list[tuple[int, int]]) -> str | None:
         """Why an excerpt cannot stand in this passage, or None if it can. The
@@ -394,7 +625,7 @@ class Command(BaseCommand):
             return "an editor turned it down (rejected.json)"
         if _NON_LATIN.search(e["text"]):
             return "it carries Greek or Hebrew, which the reader's fonts and listen mode stumble on"
-        if self.damaged(e["text"]):
+        if self.damaged(e):
             return "the scan has damaged it"
         if e["text"].count('"') % 2:
             return "a quotation mark is unpaired: the scan lost one, and curling would guess"
@@ -408,13 +639,46 @@ class Command(BaseCommand):
         overall = Counter()  # each voice's excerpts so far, across the book
         return [self.select_passage(verses, overall) for _, verses in passages]
 
-    def select_passage(self, verses: list[tuple[int, int]], overall: Counter) -> list[str]:
-        """The excerpt ids for one passage, in the order they were chosen."""
-        pool = self.candidates(verses)
+    def refill(self, passages, pinned: list[list[str]]) -> tuple[list[list[str]], list[int]]:
+        """The committed selection, mended: every pinned excerpt that can no
+        longer stand (the damage filter, rejected.json) is dropped, and a
+        passage that lost one is topped up to its budget by the same rule,
+        counting the picks it keeps and the voices the whole book already
+        has. Every other passage is left exactly as it was. Returns the new
+        selection and the indexes of the passages it touched."""
+        missing = [i for ids in pinned for i in ids if i not in self.excerpts]
+        if missing:
+            raise CommandError(f"selection.json names excerpts this Logia file lacks: {missing[:5]}")
+        kept = [[i for i in ids if not self.unfit(self.excerpts[i], vs)]
+                for (_, vs), ids in zip(passages, pinned, strict=True)]
+        overall = Counter(self.excerpts[i]["author"] for ids in kept for i in ids)
+        out, touched = [], []
+        for n, ((_, verses), ids, keep) in enumerate(zip(passages, pinned, kept, strict=True)):
+            if keep == ids:
+                out.append(ids)
+                continue
+            touched.append(n)
+            out.append(self.select_passage(verses, overall, keep, refilling=True))
+        return out, touched
+
+    def select_passage(
+        self, verses: list[tuple[int, int]], overall: Counter, kept: list[str] = (), refilling: bool = False
+    ) -> list[str]:
+        """The excerpt ids for one passage, in the order they were chosen,
+        after any `kept` (already counted in `overall`), which stand first.
+        `refilling` mends a shipped passage: its empty stretches are filled
+        best-scoring first, and only while the budget allows."""
+        pool = [e for e in self.candidates(verses) if e["id"] not in kept]
         per_verse = self.meta.get("words_per_verse", WORDS_PER_VERSE)
         budget = max(BUDGET_MIN, min(BUDGET_MAX, per_verse * len(verses)))
         eras, voices, at_verse = Counter(), Counter(), Counter()
-        picks, used = [], 0
+        picks, used = list(kept), 0
+        for i in kept:
+            e = self.excerpts[i]
+            used += e["_words"]
+            eras[self.voices[e["author"]][2]] += 1
+            voices[e["author"]] += 1
+            at_verse[e["_start"]] += 1
 
         def score(e):
             a = e["author"]
@@ -422,6 +686,8 @@ class Command(BaseCommand):
             s = 3.0 if eras[era] == 0 else -float(eras[era])
             s += 2.0 if voices[a] == 0 else -2.0 * voices[a]
             s -= overall[a] / 40
+            if a in self.lead:
+                s += LEAD_BONUS
             s -= abs(e["_words"] - IDEAL_WORDS) / 150
             s -= 2.0 * at_verse[e["_start"]]
             if _OPENS_MIDWAY.match(_LEADING_VERSE.sub("", e["text"].lstrip()).lstrip("“\"' ")):
@@ -446,12 +712,26 @@ class Command(BaseCommand):
         # cannot starve the verses after it.
         slots = max(1, min(len(verses), round(budget / IDEAL_WORDS)))
         share = budget / slots
-        for i in range(slots):
-            window = verses[len(verses) * i // slots : len(verses) * (i + 1) // slots]
-            here = [e for e in pool if window and window[0] <= e["_start"] <= window[-1]]
+        windows = [verses[len(verses) * i // slots : len(verses) * (i + 1) // slots] for i in range(slots)]
+        empty = [w for w in windows if w and not any(w[0] <= self.excerpts[k]["_start"] <= w[-1] for k in kept)]
+
+        def best_in(window):
+            here = [e for e in pool if window[0] <= e["_start"] <= window[-1]]
             fits = [e for e in here if e["_words"] <= share * 1.5] or here
-            if fits:
-                take(max(fits, key=lambda e: (score(e), e["id"])))
+            return max(fits, key=lambda e: (score(e), e["id"])) if fits else None
+
+        if refilling:
+            while empty and used < budget:
+                options = [(e, w) for w in empty if (e := best_in(w))]
+                if not options:
+                    break
+                e, w = max(options, key=lambda o: (score(o[0]), o[0]["id"]))
+                take(e)
+                empty.remove(w)
+        else:
+            for window in empty:
+                if e := best_in(window):
+                    take(e)
         # Then fill what the budget allows, wherever the best voices are.
         while pool and used < budget:
             best = max(pool, key=lambda e: (score(e), e["id"]))
@@ -468,25 +748,31 @@ class Command(BaseCommand):
         note = ""
         for first, last, _ in DISPUTED:
             begins = verse_key(first)
-            if not first.startswith(code + ".") or begins not in verses:
+            # An entry that begins inside a verse ("MRK.16.8.s2") is not a
+            # whole verse to set a note above; build_catena_aurea places Mark's.
+            if not first.startswith(code + ".") or first.count(".") > 2 or begins not in verses:
                 continue
             if begins != verses[0]:  # the note belongs at the verse, not above the block
                 at = verses.index(begins)
                 return self.text_block(code, verses[:at]) + self.text_block(code, verses[at:])
-            where = span(code, begins, verse_key(last))
-            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=BOOKS[code][0], ref=where))}</em></p>"
+            where = span(code, begins, verse_key(last), self.books)
+            note = f"<p><em>{escape(DISPUTED_NOTE.format(book=self.books[code][0], ref=where))}</em></p>"
         text = " ".join(curl_singles(self.verses[v]) for v in verses)
         # A speech that runs on from the block before (Jesus to Nicodemus,
         # 3:10–21) reopens here, as a quotation running over several
         # paragraphs reopens each one — unless OWB's paragraph already does.
         if verses[0] in self.open_at and not text.startswith('"'):
             text = '"' + text
-        cite = span(code, verses[0], verses[-1])
+        cite = span(code, verses[0], verses[-1], self.books)
         return f"{note}<blockquote><p>{escape(text, quote=False)}</p><p>— {cite}</p></blockquote>"
 
     @cached_property
     def open_at(self) -> set[tuple[int, int]]:
         return open_at(self.verses)
+
+    def order_key(self, e: dict):
+        """Where an excerpt stands among those on the same verse: oldest voice first."""
+        return (self.rank[e["author"]], e["id"])
 
     def excerpt_html(self, e: dict) -> str:
         name, work, _ = self.voices[e["author"]]
@@ -508,7 +794,7 @@ class Command(BaseCommand):
         position = 0
         starts = sorted(by_start)
         for k, start in enumerate(starts):
-            group = sorted(by_start[start], key=lambda e: (self.rank[e["author"]], e["id"]))
+            group = sorted(by_start[start], key=self.order_key)
             # Quote the verses a group comments on, but never past the verse
             # before the next group's: an overview of 3:9–21 must not carry
             # 3:16 above Calvin's note on it.
@@ -524,8 +810,11 @@ class Command(BaseCommand):
             out.append(self.text_block(code, verses[position:]))
         return "\n".join(out)
 
-    def summary(self, number: int, names: list[str]) -> str:
-        base = self.owb["summaries"][str(number)]
+    #: How a chapter summary introduces the voices heard in it.
+    voices_label = "With"
+
+    def voices_sentence(self, names: list[str]) -> str:
+        """'With Augustine, Chrysostom, Calvin and 4 more.', or '' for none."""
         if len(names) > 3:
             voices = ", ".join(names[:3]) + f" and {len(names) - 3} more"
         elif len(names) > 1:
@@ -533,8 +822,13 @@ class Command(BaseCommand):
         elif names:
             voices = names[0]
         else:
-            return base
-        return f"{base} With {voices}."
+            return ""
+        return f"{self.voices_label} {voices}."
+
+    def summary(self, number: int, names: list[str]) -> str:
+        base = self.owb["summaries"][str(number)]
+        sentence = self.voices_sentence(names)
+        return f"{base} {sentence}" if sentence else base
 
     # --- main ---------------------------------------------------------------
 
@@ -564,6 +858,16 @@ class Command(BaseCommand):
                 + "\n",
                 "utf-8",
             )
+        elif opts["refill"]:
+            pinned = json.loads(selection_path.read_text("utf-8"))
+            if [p["start"] for p in pinned["passages"]] != starts:
+                raise CommandError("selection.json no longer matches the OWB sections — rerun with --select")
+            chosen, touched = self.refill(passages, [p["excerpts"] for p in pinned["passages"]])
+            for p, ids in zip(pinned["passages"], chosen, strict=True):
+                p["excerpts"] = ids
+            pinned["logia_sha256"] = self.logia_sha
+            selection_path.write_text(json.dumps(pinned, ensure_ascii=False, indent=1) + "\n", "utf-8")
+            self.stdout.write(f"refilled {len(touched)} of {len(passages)} passages")
         saved = json.loads(selection_path.read_text("utf-8"))["passages"]
         if [p["start"] for p in saved] != starts:
             raise CommandError("selection.json no longer matches the OWB sections — rerun with --select")
@@ -593,7 +897,7 @@ class Command(BaseCommand):
             authors = Counter(self.excerpts[i]["author"] for _, _, ids in chapters[number] for i in ids)
             used.update(authors)
             names = [self.voices[a][0] for a in self.voices if a in authors]
-            title = BOOKS[code][2].format(n=number)
+            title = self.books[code][2].format(n=number)
             bodies.append((title, html, self.summary(number, names)))
         bodies.append(("The Voices and Their Books", self.voices_html(used), ""))
         book = self.write(bodies)
@@ -608,7 +912,7 @@ class Command(BaseCommand):
             if not used[a]:
                 continue
             work = self.works[self.work_of[a]]
-            detail = (work.get("translation") or work.get("edition") or "").rstrip(".")
+            detail = (self.editions.get(a) or work.get("translation") or work.get("edition") or "").rstrip(".")
             rows.append(
                 f"<p><strong>{escape(self.authors[a]['name'])}</strong>, "
                 f"<em>{escape(curl_singles(work['title']), quote=False)}</em>. "
@@ -618,18 +922,45 @@ class Command(BaseCommand):
         rows.append(
             "<p>Every excerpt was gathered by Logia (logia.faith), which copies each one word for word "
             "from the public-domain edition above and offers the collection under CC0. "
-            f"{BOOKS[self.code][3]} is the Open Word Bible (openwordbible.org), "
-            "English, Balanced level, also CC0.</p>"
+            f"{self.bible_note()}</p>"
         )
         return intro + "\n" + "\n".join(rows)
+
+    #: The books this command builds (a subclass may add one, as
+    #: build_catena_aurea adds Mark).
+    books = BOOKS
+    author_slug = AUTHOR_SLUG
+
+    def bible_note(self) -> str:
+        """The back chapter's sentence on the Bible text, named per book (BOOKS)."""
+        return (
+            f"{self.books[self.code][3]} is the Open Word Bible (openwordbible.org), "
+            "English, Balanced level, also CC0."
+        )
+
+    def attribution(self) -> str:
+        return (
+            f"Commentary excerpts from Logia ({LOGIA}, CC0), each from a public-domain edition; "
+            f"{self.scripture_credit()}"
+        )
+
+    def scripture_credit(self) -> str:
+        return (
+            f"Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, "
+            f"commit {self.bible_commit[:12]}: dedicated to the public domain under CC0"
+        )
+
+    def extra_fields(self) -> dict:
+        """Book fields a subclass sets beyond the shared ones (a series, say)."""
+        return {}
 
     @transaction.atomic
     def write(self, bodies):
         meta = self.meta
         try:
-            author = Author.objects.get(slug=AUTHOR_SLUG)
+            author = Author.objects.get(slug=self.author_slug)
         except Author.DoesNotExist as exc:
-            raise CommandError(f"author {AUTHOR_SLUG!r} not in the DB — loaddata authors.json first.") from exc
+            raise CommandError(f"author {self.author_slug!r} not in the DB — loaddata authors.json first.") from exc
         slug = meta["slug"]
         content = {
             "author": author,
@@ -642,11 +973,8 @@ class Command(BaseCommand):
             "cover_url": meta.get("cover_url", ""),
             "cover_color": meta["cover_color"],
             "source_url": f"{LOGIA}/",
-            "attribution": (
-                f"Commentary excerpts from Logia ({LOGIA}, CC0), each from a public-domain edition; "
-                f"Scripture from the Open Word Bible (https://openwordbible.org), English, Balanced level, "
-                f"commit {self.bible_commit[:12]}: dedicated to the public domain under CC0"
-            ),
+            "attribution": self.attribution(),
+            **self.extra_fields(),
         }
         book, _ = Book.objects.update_or_create(
             slug=slug,

@@ -1057,6 +1057,31 @@ class FileCoherenceTests(SimpleTestCase):
         )
 
 
+class AuthorBioLanguageTests(SimpleTestCase):
+    """``Author.original_language`` is the language the base bio, bio_html and
+    tagline are WRITTEN in — ``Author._localized`` serves them only to a reader
+    in that language. Every bio in the fixture is English, so a native-tongue
+    value ("la" for Boethius) hides the English bio from English readers and
+    hands it, untranslated, to readers of that language. 21 authors shipped
+    that way in November 2026 (migration 0213 repaired the live rows). An
+    author whose base bio really is in another language goes in
+    NON_ENGLISH_BIOS with that language."""
+
+    NON_ENGLISH_BIOS: dict[str, str] = {}
+
+    def test_original_language_is_the_language_of_the_bio(self):
+        wrong = sorted(
+            f"{slug} ({f.get('original_language', 'en')})"
+            for slug, f in authors_by_slug().items()
+            if f.get("original_language", "en") != self.NON_ENGLISH_BIOS.get(slug, "en")
+        )
+        self.assertEqual(
+            wrong, [],
+            "original_language is the language the author's bio is written in, not "
+            "the language the author wrote in; these bios are English: " + ", ".join(wrong),
+        )
+
+
 class AuthorBioDataIntegrityTests(SimpleTestCase):
     """The translated author bios (migrations/data/author_bios_<lang>/) are
     delivered by the seed_author_translations deploy step, which soft-skips a

@@ -1,0 +1,425 @@
+{
+ "_note": [
+  "Vendored from the Open Word Bible (CC0, https://github.com/jdegreef/open-word-bible)",
+  "at commit b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092: data/headings/MRK.json (English section headings, settings at their",
+  "defaults) and data/summaries/MRK.json (English chapter summaries). The catena's passages",
+  "follow these sections; build_catena reads this file, never the OWB checkout."
+ ],
+ "owb_commit": "b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092",
+ "sections": [
+  {
+   "start": "1:2",
+   "title": "The messenger in the wilderness"
+  },
+  {
+   "start": "1:9",
+   "title": "Jesus is baptized"
+  },
+  {
+   "start": "1:12",
+   "title": "Forty days in the wilderness"
+  },
+  {
+   "start": "1:14",
+   "title": "The kingdom of God has come near"
+  },
+  {
+   "start": "1:16",
+   "title": "Four fishermen follow Jesus"
+  },
+  {
+   "start": "1:21",
+   "title": "A new teaching, with authority"
+  },
+  {
+   "start": "1:29",
+   "title": "Simon’s mother-in-law"
+  },
+  {
+   "start": "1:32",
+   "title": "The whole town at the door"
+  },
+  {
+   "start": "1:35",
+   "title": "On to the nearby towns"
+  },
+  {
+   "start": "1:40",
+   "title": "A man with a skin disease is made clean"
+  },
+  {
+   "start": "2:1",
+   "title": "Let down through the roof"
+  },
+  {
+   "start": "2:13",
+   "title": "Levi leaves his tax office"
+  },
+  {
+   "start": "2:15",
+   "title": "A meal with tax collectors and sinners"
+  },
+  {
+   "start": "2:18",
+   "title": "While the bridegroom is with them"
+  },
+  {
+   "start": "2:23",
+   "title": "The Sabbath was made for people"
+  },
+  {
+   "start": "3:1",
+   "title": "A withered hand on the Sabbath"
+  },
+  {
+   "start": "3:7",
+   "title": "Crowds from every region"
+  },
+  {
+   "start": "3:13",
+   "title": "Twelve chosen to be with him"
+  },
+  {
+   "start": "3:20",
+   "title": "The strong man is bound"
+  },
+  {
+   "start": "3:31",
+   "title": "Whoever does the will of God"
+  },
+  {
+   "start": "4:1",
+   "title": "A farmer goes out to sow"
+  },
+  {
+   "start": "4:10",
+   "title": "Why Jesus speaks in parables"
+  },
+  {
+   "start": "4:13",
+   "title": "The seed is the word"
+  },
+  {
+   "start": "4:21",
+   "title": "Nothing hidden that will not come to light"
+  },
+  {
+   "start": "4:26",
+   "title": "Seed that grows by itself"
+  },
+  {
+   "start": "4:30",
+   "title": "The smallest of seeds"
+  },
+  {
+   "start": "4:35",
+   "title": "Even the wind and the sea obey him"
+  },
+  {
+   "start": "5:1",
+   "title": "A man called Legion"
+  },
+  {
+   "start": "5:21",
+   "title": "Jairus pleads for his daughter"
+  },
+  {
+   "start": "5:24",
+   "title": "Twelve years of bleeding"
+  },
+  {
+   "start": "5:35",
+   "title": "Little girl, get up"
+  },
+  {
+   "start": "6:1",
+   "title": "Rejected in his hometown"
+  },
+  {
+   "start": "6:6",
+   "title": "The Twelve sent out two by two"
+  },
+  {
+   "start": "6:14",
+   "title": "Herod hears about Jesus"
+  },
+  {
+   "start": "6:17",
+   "title": "The death of John the Baptizer"
+  },
+  {
+   "start": "6:30",
+   "title": "Five loaves and two fish"
+  },
+  {
+   "start": "6:45",
+   "title": "Across the lake at night"
+  },
+  {
+   "start": "6:53",
+   "title": "Healing at Gennesaret"
+  },
+  {
+   "start": "7:1",
+   "title": "Washed hands and the tradition of the elders"
+  },
+  {
+   "start": "7:14",
+   "title": "What makes a person unclean"
+  },
+  {
+   "start": "7:24",
+   "title": "Even the little dogs eat the crumbs"
+  },
+  {
+   "start": "7:31",
+   "title": "Ephphatha: be opened"
+  },
+  {
+   "start": "8:1",
+   "title": "Seven loaves in a deserted place"
+  },
+  {
+   "start": "8:11",
+   "title": "No sign for this generation"
+  },
+  {
+   "start": "8:14",
+   "title": "Do you still not understand?"
+  },
+  {
+   "start": "8:27",
+   "title": "You are Christ"
+  },
+  {
+   "start": "8:31",
+   "title": "The Son of Man must suffer"
+  },
+  {
+   "start": "8:34",
+   "title": "Take up your cross"
+  },
+  {
+   "start": "9:2",
+   "title": "Transfigured on the mountain"
+  },
+  {
+   "start": "9:9",
+   "title": "Elijah has come"
+  },
+  {
+   "start": "9:14",
+   "title": "I believe; help my unbelief"
+  },
+  {
+   "start": "9:30",
+   "title": "Handed over, killed, and raised"
+  },
+  {
+   "start": "9:33",
+   "title": "Who is the greatest?"
+  },
+  {
+   "start": "9:38",
+   "title": "Whoever is not against us"
+  },
+  {
+   "start": "9:42",
+   "title": "Better to enter life maimed"
+  },
+  {
+   "start": "10:1",
+   "title": "What God has joined"
+  },
+  {
+   "start": "10:13",
+   "title": "Let the children come"
+  },
+  {
+   "start": "10:17",
+   "title": "A rich man’s question"
+  },
+  {
+   "start": "10:32",
+   "title": "On the road up to Jerusalem"
+  },
+  {
+   "start": "10:35",
+   "title": "Not to be served but to serve"
+  },
+  {
+   "start": "10:46",
+   "title": "Blind Bartimaeus"
+  },
+  {
+   "start": "11:1",
+   "title": "Hosanna on the road to Jerusalem"
+  },
+  {
+   "start": "11:12",
+   "title": "A fig tree with nothing but leaves"
+  },
+  {
+   "start": "11:15",
+   "title": "A house of prayer for all the nations"
+  },
+  {
+   "start": "11:20",
+   "title": "Have faith in God"
+  },
+  {
+   "start": "11:27",
+   "title": "By what authority?"
+  },
+  {
+   "start": "12:1",
+   "title": "The tenants of the vineyard"
+  },
+  {
+   "start": "12:13",
+   "title": "Give back to Caesar"
+  },
+  {
+   "start": "12:18",
+   "title": "The God of the living"
+  },
+  {
+   "start": "12:28",
+   "title": "The first commandment of all"
+  },
+  {
+   "start": "12:35",
+   "title": "David’s son and David’s Lord"
+  },
+  {
+   "start": "12:38",
+   "title": "Beware of the scribes"
+  },
+  {
+   "start": "12:41",
+   "title": "A widow gives everything"
+  },
+  {
+   "start": "13:1",
+   "title": "Not one stone left on another"
+  },
+  {
+   "start": "13:14",
+   "title": "When you see the abomination"
+  },
+  {
+   "start": "13:24",
+   "title": "The Son of Man coming in the clouds"
+  },
+  {
+   "start": "13:28",
+   "title": "Learn from the fig tree"
+  },
+  {
+   "start": "13:32",
+   "title": "Keep awake"
+  },
+  {
+   "start": "14:1",
+   "title": "A plot two days before the Passover"
+  },
+  {
+   "start": "14:3",
+   "title": "Anointed at Bethany"
+  },
+  {
+   "start": "14:10",
+   "title": "Judas goes to the chief priests"
+  },
+  {
+   "start": "14:12",
+   "title": "Preparing the Passover"
+  },
+  {
+   "start": "14:17",
+   "title": "One of you will hand me over"
+  },
+  {
+   "start": "14:22",
+   "title": "My body, my blood of the covenant"
+  },
+  {
+   "start": "14:27",
+   "title": "Peter’s denial foretold"
+  },
+  {
+   "start": "14:32",
+   "title": "Gethsemane"
+  },
+  {
+   "start": "14:43",
+   "title": "Arrested with a kiss"
+  },
+  {
+   "start": "14:53",
+   "title": "Before the council"
+  },
+  {
+   "start": "14:66",
+   "title": "Peter denies knowing him"
+  },
+  {
+   "start": "15:1",
+   "title": "Before Pilate"
+  },
+  {
+   "start": "15:16",
+   "title": "The soldiers mock the king"
+  },
+  {
+   "start": "15:21",
+   "title": "Crucified at Golgotha"
+  },
+  {
+   "start": "15:33",
+   "title": "Darkness at noon and the torn curtain"
+  },
+  {
+   "start": "15:40",
+   "title": "The women watching from a distance"
+  },
+  {
+   "start": "15:42",
+   "title": "Laid in a tomb cut from rock"
+  },
+  {
+   "start": "16:1",
+   "title": "He has been raised"
+  },
+  {
+   "start": "16:8",
+   "title": "The shorter ending"
+  },
+  {
+   "start": "16:9",
+   "title": "The longer ending: Jesus appears"
+  },
+  {
+   "start": "16:19",
+   "title": "Taken up into heaven"
+  }
+ ],
+ "summaries": {
+  "1": "John the Baptizer prepares the way in the wilderness, and Jesus is baptized, tested for forty days, and begins to proclaim that the kingdom of God has come near. Jesus calls four fishermen, teaches with authority in Capernaum, drives out unclean spirits and heals many, among them Simon’s mother-in-law and a man with a serious skin disease.",
+  "2": "Jesus forgives and heals a paralyzed man let down through a roof, calls Levi from his tax office and eats with tax collectors and sinners. Questioned about fasting and the Sabbath, Jesus answers that the Sabbath was made for people and that the Son of Man is lord even of the Sabbath.",
+  "3": "Jesus heals a withered hand on the Sabbath, and the Pharisees begin to plot with the Herodians. Crowds come from every region; Jesus chooses the Twelve, answers the charge of driving out demons by Beelzebul, and says that whoever does the will of God is brother, sister and mother.",
+  "4": "From a boat Jesus teaches in parables: the sower, the lamp, the seed that grows by itself and the mustard seed. That evening on the lake Jesus calms a great storm, and the disciples ask who this is, that even the wind and the sea obey.",
+  "5": "Across the lake Jesus frees a man possessed by a legion of demons, which go into a herd of pigs. A woman who had bled for twelve years is healed by touching Jesus’s clothes, and the daughter of Jairus is raised from death.",
+  "6": "Jesus is rejected in Nazareth and sends the Twelve out two by two. Herod, who had John the Baptizer beheaded, hears about Jesus; Jesus feeds five thousand with five loaves and two fish, walks on the lake at night and heals the sick at Gennesaret.",
+  "7": "Jesus rebukes the Pharisees for setting aside God’s command for human tradition and teaches that what makes a person unclean comes from within. A Gentile woman from Syrian Phoenicia wins healing for her daughter, and a deaf man is healed with the word \"Ephphatha\", \"Be opened.\"",
+  "8": "Jesus feeds four thousand with seven loaves, refuses the Pharisees a sign, warns about their yeast and heals a blind man at Bethsaida. At Caesarea Philippi Peter declares who Jesus is, and Jesus begins to teach that the Son of Man must suffer, die and rise, and that followers must take up their cross.",
+  "9": "Jesus is transfigured on a mountain before Peter, James and John, and afterward frees a boy from an unclean spirit when his father cries, \"I believe; help my unbelief.\" Jesus again foretells death and rising, and teaches that whoever wants to be first must be servant of all.",
+  "10": "Jesus teaches that what God has joined no one should separate, welcomes the children and tells a rich man to sell everything and follow. On the road to Jerusalem Jesus foretells death a third time, says the Son of Man came not to be served but to serve, and gives sight to blind Bartimaeus.",
+  "11": "Jesus enters Jerusalem to shouts of \"Hosanna\", curses a fig tree that has nothing but leaves and drives the traders out of the temple, a house of prayer for all the nations. Jesus urges faith in God and answers the leaders’ question about authority with a question about John’s baptism.",
+  "12": "Jesus tells the parable of the tenants of the vineyard and answers questions about paying taxes to Caesar, the resurrection and the first commandment of all. Jesus warns against the scribes and praises a poor widow who gives everything she has.",
+  "13": "Jesus foretells that not one stone of the temple will be left on another and warns of wars, persecution and the abomination, before the Son of Man comes in the clouds. Since no one knows the day or the hour, the disciples must keep awake.",
+  "14": "The chief priests plot, a woman anoints Jesus at Bethany, and Judas agrees to hand Jesus over. At the Passover meal Jesus gives the bread and the cup of the covenant, prays in Gethsemane, is arrested and condemned by the council, while Peter denies knowing Jesus three times.",
+  "15": "Pilate hands Jesus over to be crucified, and the soldiers mock Jesus as king. At Golgotha Jesus dies after darkness falls at noon, the temple curtain is torn in two, and Joseph of Arimathea lays the body in a tomb cut from rock.",
+  "16": "Women come to the tomb and are told that Jesus has been raised, and they flee in fear. Two later endings follow; in the longer, the risen Jesus appears to Mary Magdalene and the disciples, sends them to proclaim the good news and is taken up into heaven."
+ }
+}
