@@ -56,12 +56,12 @@
 
 	// The personal next step. Signed out: the invitation (by `expectedUser`, so
 	// a member's stored session keeps it off the dashboard home draws before
-	// the session restores) — but not on /login, where the form IS the page,
-	// nor on home, whose SignupBand already makes the pitch: one ask per page,
-	// not two (design review 2026-11, #16).
-	const showInvite = $derived(
-		auth.enabled && !auth.expectedUser && !path.startsWith('/login') && path !== '/'
-	);
+	// the session restores) — but not on /login, where the form IS the page.
+	// Home keeps it too, beside its SignupBand: sign-ups matter most there, and
+	// the footer's card is chosen for the reader ($lib/footerSignup), so it
+	// isn't the band's pitch repeated (founder call, 2026-11-13, reversing
+	// design review #16).
+	const showInvite = $derived(auth.enabled && !auth.expectedUser && !path.startsWith('/login'));
 	// Signed in: their current book, unless this page already shows it (home's
 	// hero, their lists, the book itself — pageShowsBook). Home never resolves it.
 	const wantResume = $derived(!!auth.user && path !== '/');
