@@ -17,11 +17,13 @@
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
 	import HomePlans from '$lib/components/HomePlans.svelte';
+	import HomeSermons from '$lib/components/HomeSermons.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import HomeIntro from '$lib/components/HomeIntro.svelte';
 	import HomeResume, { hold as resumeHold } from '$lib/components/HomeResume.svelte';
 	import { currentBook } from '$lib/currentBook.svelte';
 	import { onMount } from 'svelte';
+	import type { HomeSermons as HomeSermonsData } from '$lib/homeShelves';
 
 	/**
 	 * The logged-OUT home page: what a first-time visitor and every crawler sees.
@@ -53,6 +55,7 @@
 		/** This language's library counts, for the hero's numbers line. */
 		counts?: { books: number; sermons: number };
 		plans?: { picks: PlanSummary[]; total: number };
+		sermons?: HomeSermonsData;
 	}
 	let { data }: { data: HomeData } = $props();
 
@@ -161,6 +164,10 @@
 <!-- Reading plans (design review 2026-11, #21): after the need finder, whose
      picks already offer one plan per situation — here, three to start. -->
 <HomePlans plans={data.plans?.picks ?? []} total={data.plans?.total ?? 0} />
+
+<!-- Sermons (design review 2026-11, #24): three under three tabs, each with
+     Listen. Before the young readers' hubs, after the plans. -->
+<HomeSermons sermons={data.sermons} />
 
 <!-- For young readers and teens — the hubs this language has. -->
 <HomeAudienceHubs audiences={data.audiences ?? []} />
