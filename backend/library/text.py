@@ -33,9 +33,9 @@ _TAG = re.compile(r"<[^>]+>")
 #: the reader's listen/search/quote surfaces (which drop every `<sup>`) all read
 #: the text as if it were not there. The sanitizer keeps exactly this shape and
 #: no other attribute on a chapter's `<sup>`.
-VERSE_LABEL = re.compile(r"\d{1,3}(?:[:\u2013]\d{1,3}){0,2}")
+VERSE_LABEL = re.compile(r"[0-9]{1,3}(?:[:\u2013][0-9]{1,3}){0,2}")
 VERSE_MARKER = re.compile(
-    r'<sup class="v"(?: id="v\d{1,3}")?>' + VERSE_LABEL.pattern + r"</sup>"
+    r'<sup class="v"(?: id="v[0-9]{1,3}")?>' + VERSE_LABEL.pattern + r"</sup>"
 )
 
 

@@ -40,7 +40,11 @@ const MIN_RUN = 3;
 
 const PARA = /<p>([\s\S]*?)<\/p>/g;
 const TAG = /<[^>]+>/g;
+/** A Bible verse number as build_owb_book sets it (backend `text.VERSE_MARKER`). */
 const VERSE_NUMBER = /<sup class="v"[^>]*>[^<]*<\/sup>/g;
+
+/** Whether a chapter body carries Bible verse numbers. */
+export const hasVerseNumbers = (html: string): boolean => html.includes('<sup class="v"');
 const ENTITY: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 /** A trailing scripture citation, "(1 Corinthians 1:2)": not part of the line. */
 const CITATION = /\s*\([^)]*\d[^)]*\)$/;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { assetHtml } from '$lib/assetUrl';
-	import { markVerse } from '$lib/verse';
+	import { hasVerseNumbers, markVerse } from '$lib/verse';
 	import { smartQuotesHtml } from '$lib/smartQuotes';
 	import { bibleChapterMeta, bibleChapterTitle, chapterMeta, isBibleChapter } from '$lib/bookSeo';
 	import { OWB_SLUG } from '$lib/openWordBible';
@@ -1930,9 +1930,9 @@
 	// A chapter of the Bible carries verse numbers (build_owb_book); only then does
 	// the Aa panel offer to hide them. Read off the body itself, so it is right
 	// before the book fetch lands — and on the introduction, which has none.
-	const hasVerseNumbers = $derived(chapter.body_html.includes('<sup class="v"'));
+	const verseNumbered = $derived(hasVerseNumbers(chapter.body_html));
 	$effect.pre(() => {
-		readerPrefs.scripture = hasVerseNumbers;
+		readerPrefs.scripture = verseNumbered;
 	});
 	onDestroy(() => (readerPrefs.scripture = false));
 

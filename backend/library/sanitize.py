@@ -323,7 +323,7 @@ def _is_verse_number(tag: Tag) -> bool:
     return (
         cls == "v"
         and set(tag.attrs) <= {"class", "id"}
-        and (anchor is None or bool(re.fullmatch(r"v\d{1,3}", anchor)))
+        and (anchor is None or bool(re.fullmatch(r"v[0-9]{1,3}", anchor)))
         and len(tag.contents) == 1
         and isinstance(tag.contents[0], str)
         and bool(VERSE_LABEL.fullmatch(tag.contents[0]))
@@ -339,10 +339,8 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
     if tag.name == "img":
         return
     if tag.name == "sup" and _is_verse_number(tag):
-        # A Bible verse number keeps its class (and anchor id) — see
-        # `text.VERSE_MARKER`, the one shape allowed.
-        tag.attrs = {k: tag.attrs[k] for k in ("class", "id") if k in tag.attrs}
-        tag["class"] = "v"
+        # A Bible verse number keeps its class (and anchor id) as they are —
+        # `_is_verse_number` admits `text.VERSE_MARKER`'s shape and no other.
         return
     if not allow_bio_attrs:
         tag.attrs = {}
