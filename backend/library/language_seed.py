@@ -435,11 +435,18 @@ SEED_LANGUAGES: dict[str, dict] = {
         # translation must set it. The convention every later ja book measures
         # from, until a shipped ja book exists to measure.
         "typography": (
-            "Set Japanese typography in the text itself: quotations in 「 」, a "
-            "quotation inside a quotation in 『 』, and a book title in 『 』 — never "
-            "straight or curly quotes. Full-width 。、！？ and （ ）, no spaces between "
-            "words or after punctuation, the ellipsis as …… and the dash as ——. "
-            "Western digits for verse references (ヨハネによる福音書 15:4)."
+            "Set Japanese typography in the text itself. It overrides the rules "
+            "above on preserving HTML entities and keeping English name forms "
+            "wherever they conflict. Every quotation is set in 「 」 — "
+            "including each &quot; entity or straight or curly quote in the "
+            "source, which are quotation marks, not entities to preserve — a "
+            "quotation inside a quotation in 『 』, and a book title in 『 』; "
+            "never leave &quot;, \" or “ ” in the Japanese. Full-width 。、！？ "
+            "and （ ）, no spaces between words or after punctuation, the "
+            "ellipsis as …… and the dash as ——. Verse references in Western "
+            "digits with no space: ヨハネによる福音書15:4. Personal names with "
+            "no conventional Japanese form are written in katakana "
+            "(スポルジョン, アンドリュー・マーレー), never left in Latin letters."
         ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
         # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって

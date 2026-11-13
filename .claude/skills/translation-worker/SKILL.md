@@ -1035,7 +1035,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   translator's brief, or the first Japanese book sets ten conventions at once
   and becomes the precedent every later job measures. The reader will not
   repair it (`smartQuotes.ts` leaves Japanese marks alone by design), and
-  `tests_fixture.QuoteStyleTests` fails a `ja` work carrying any `&quot;`,
+  `tests_fixture.QuoteStyleTests` fails any Japanese text — work rows, bios
+  under `author_bios_ja/`, topic and plan prose — carrying a `&quot;`,
   straight, curly or guillemet mark. Once the first `ja` book ships, measure
   from it as above.
 - **Fan-out guarantees cross-chapter divergence, so budget a RECONCILIATION

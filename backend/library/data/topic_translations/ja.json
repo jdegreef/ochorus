@@ -1,6 +1,6 @@
 {
   "_note": [
-    "Japanese shelf prose in です・ます体, Protestant register (神, 聖霊, 主イエス, 恵み), using the glossary language_seed.py names for ja. Typography per translation.py TYPOGRAPHY['ja']: 「 」 for quotations, 『 』 for titles, full-width punctuation, no spaces.",
+    "Japanese shelf prose in です・ます体, Protestant register (神, 聖霊, 主イエス, 恵み), using the glossary language_seed.py names for ja. Typography per the ja Language.typography (language_seed.py): 「 」 for quotations, 『 』 for titles, full-width punctuation, no spaces.",
     "Names follow the forms Japanese Protestant publishing uses: スポルジョン, ウェスレー, ホイットフィールド, エドワーズ, バニヤン, オーエン, バクスター, トマス・ア・ケンピス, アウグスティヌス, アタナシオス, ギュイヨン夫人, ウィリアム・ロー, ブレイナード, ハドソン・テイラー, エミー・カーマイケル, ジョージ・ミュラー, フィニー, クラウザー, リチャード・アレン.",
     "NO scripture on any shelf yet: a shelf's verse must come verbatim from the 口語訳聖書 via Take Root (fetch_verse_text), and api.takeroot.bible was unreachable from the writing session. The page renders no verse block when scripture is absent, so every shelf is complete without one; add verses from Take Root later, never from memory. Written ahead of Japanese's first book, while the language is not yet live. AI-drafted, for native review."
   ],
