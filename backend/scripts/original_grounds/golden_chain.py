@@ -18,8 +18,11 @@ digest in curated_art.ORIGINAL_GROUND.
 """
 import math
 import pathlib
-import random
 import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import catena  # noqa: E402  (its stars() and ridge(), shared by the series' grounds)
+from catena import ridge  # noqa: E402
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path.cwd()
 
@@ -32,21 +35,8 @@ SKIES = {
 }
 
 
-def stars(seed, n=120, ymax=440):
-    r = random.Random(seed)
-    out = []
-    for _ in range(n):
-        x, y = r.uniform(6, 594), r.uniform(6, ymax)
-        out.append(
-            f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r.choice([0.6, 0.8, 1.0, 1.3]):.1f}" '
-            f'fill="#fff" opacity="{r.uniform(.25, .7) * (1 - y / (ymax * 1.5)):.2f}"/>'
-        )
-    return "".join(out)
-
-
-def ridge(points, fill):
-    d = "M0 800 L" + " L".join(f"{x} {y}" for x, y in points) + " L600 800 Z"
-    return f'<path d="{d}" fill="{fill}"/>'
+def stars(seed):
+    return catena.stars(seed, n=120, ymax=440)
 
 
 #: The chain: hung from just outside either edge, sagging to its lowest point

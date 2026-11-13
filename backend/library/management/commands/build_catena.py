@@ -272,13 +272,30 @@ class Command(BaseCommand):
 
     # --- inputs -------------------------------------------------------------
 
-    def load(self, path: str, code: str):
+    def read_logia(self, path: str) -> dict:
+        """Logia's file, its digest noted and its licence checked; every
+        excerpt kept for `typed_counts`."""
         raw = Path(path).read_bytes()
         self.logia_sha = hashlib.sha256(raw).hexdigest()
         logia = json.loads(raw)
         del raw
         if logia.get("licence") != "CC0-1.0":
             raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        self.logia_excerpts = logia["excerpts"]
+        return logia
+
+    @cached_property
+    def typed_counts(self) -> Counter:
+        """Word counts over Logia's excerpts from typed (not scanned) editions,
+        for `vocabulary`; tallied only when a build needs it."""
+        typed = Counter()
+        for e in self.logia_excerpts:
+            if "archive.org" not in e.get("source_url", ""):
+                typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
+        return typed
+
+    def load(self, path: str, code: str):
+        logia = self.read_logia(path)
         self.code = code
         folder = EDITORIAL / code
         self.meta = json.loads((folder / "book.json").read_text("utf-8"))
@@ -296,15 +313,11 @@ class Command(BaseCommand):
         if missing:
             raise CommandError(f"book.json names works Logia lacks: {missing}")
         self.excerpts = {}
-        typed = Counter()
         for e in logia["excerpts"]:
-            if "archive.org" not in e.get("source_url", ""):
-                typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
             if e["start"].startswith(code + ".") and self.work_of.get(e["author"]) == e["work"]:
                 e["_start"], e["_end"] = verse_key(e["start"]), verse_key(e["end"])
                 e["_words"] = word_count(e["text"])
                 self.excerpts[e["id"]] = e
-        self.typed_counts = typed
         self.load_owb(code)
         self.folder = folder
         rejected = folder / "rejected.json"
@@ -373,15 +386,20 @@ class Command(BaseCommand):
         counts = english_audit.library_word_counts() + self.typed_counts
         return {w for w, n in counts.items() if n >= 3 and (len(w) > 2 or w in _SHORT_WORDS)}
 
-    def damaged(self, text: str) -> bool:
-        """The scan has broken something: a misread word, debris, a word split
-        at a hyphen or two run together across a full stop."""
-        if (
+    @staticmethod
+    def debris(text: str) -> bool:
+        """A misread letter, scan debris, a word split at a hyphen or two run
+        together across a full stop: damage a typed edition can carry too."""
+        return bool(
             _MISREAD.search(text)
             or _SCAN_NOISE.search(text)
             or english_audit.HYPHEN_SPACE.search(text)
             or english_audit.RUN_TOGETHER.search(text)
-        ):
+        )
+
+    def damaged(self, text: str) -> bool:
+        """The scan has broken something: `debris`, or a word outside `vocabulary`."""
+        if self.debris(text):
             return True
         known = self.vocabulary
         return any(w.lower() not in known for w in english_audit._WORD.findall(_NOT_A_WORD.sub(" ", text)))
@@ -534,8 +552,11 @@ class Command(BaseCommand):
             out.append(self.text_block(code, verses[position:]))
         return "\n".join(out)
 
-    def summary(self, number: int, names: list[str]) -> str:
-        base = self.owb["summaries"][str(number)]
+    #: How a chapter summary introduces the voices heard in it.
+    voices_label = "With"
+
+    def voices_sentence(self, names: list[str]) -> str:
+        """'With Augustine, Chrysostom, Calvin and 4 more.', or '' for none."""
         if len(names) > 3:
             voices = ", ".join(names[:3]) + f" and {len(names) - 3} more"
         elif len(names) > 1:
@@ -543,8 +564,13 @@ class Command(BaseCommand):
         elif names:
             voices = names[0]
         else:
-            return base
-        return f"{base} With {voices}."
+            return ""
+        return f"{self.voices_label} {voices}."
+
+    def summary(self, number: int, names: list[str]) -> str:
+        base = self.owb["summaries"][str(number)]
+        sentence = self.voices_sentence(names)
+        return f"{base} {sentence}" if sentence else base
 
     # --- main ---------------------------------------------------------------
 

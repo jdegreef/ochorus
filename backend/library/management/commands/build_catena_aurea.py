@@ -25,7 +25,10 @@ since a verse of the Gospel now stands between.
 DAMAGE. Each Father's passage is read on its own and left out if the scan has
 damaged it (`build_catena`'s `damaged`), if it carries Greek or Hebrew, if
 its straight quotation marks do not pair, or if a stray capitalised word is
-left in it (a siglum the OCR broke, or margin debris such as "SUP-").
+left in it (a siglum the OCR broke, or margin debris such as "SUP-"). A
+CCEL paragraph that opens with a siglum the tables cannot read ("Theod. non
+occ.:", which may be Theodotus or Theodoret) is left out too, never given to
+the Father before it.
 Every passage left out is listed in `data/catena/aurea/<CODE>/dropped.json`,
 which each build rewrites.
 
@@ -42,7 +45,6 @@ on the Fathers and the edition closes it.
 
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 from collections import Counter, defaultdict
@@ -55,15 +57,14 @@ from library import english_audit
 from library.management.commands import build_catena
 from library.management.commands.build_catena import (
     _ELISION,
-    _MISREAD,
     _NON_LATIN,
-    _SCAN_NOISE,
     BOOKS,
     EDITORIAL,
     LOGIA,
     curl_singles,
     span,
     tidy,
+    vendor_owb,
     verse_key,
 )
 from library.management.commands.build_owb_book import DISPUTED
@@ -196,7 +197,16 @@ _ARCHIVE_TAG = re.compile(
     + r")\s+(?=[A-Z\"'])"
 )
 #: A CCEL paragraph's opening: the siglum, its margin reference, the colon.
-_CCEL_OPENING = re.compile(r"^(?P<name>[A-Z][^,:]{0,40}?)(?:,(?P<cite>[^:]{0,200}))?:\s+")
+_CCEL_OPENING = re.compile(
+    r"^(?P<name>[A-Z][^,:]{0,40}?)(?:,(?P<cite>(?:[^:]|(?<=\d):(?=\d)){0,200}))?:(?:\s+|$)"
+)
+#: A second margin reference after the siglum's colon ("Chrys.: Hom., xxii:",
+#: "Jerome: Hierom. ad Pammach, Epist 57:"): abbreviations, numerals and
+#: short words only, up to its own colon, and a numeral or an abbreviation's
+#: stop among them, so that "Otherwise:" or "The sense therefore is:" stays.
+_SECOND_CITE = re.compile(
+    r"^(?=[^:]*(?:\d|\b[ivxlc]+\b|\w\.))(?:(?:[A-Z]\w*\.?|[ivxlc]+\.?|\d+|[a-z]{1,3}\.?),?\s*){1,8}:\s+"
+)
 #: Letter runs that are not words but read true in this edition: the "s" of a
 #: possessive, and the abbreviations of its references ("i. e.", "c.", "Ps.",
 #: "St.", "ap.", "Ex.", "Ki.").
@@ -212,6 +222,11 @@ _STRAY_WORD = re.compile(r"(?<=[a-z]{3}[.?!] )(?<!viz\. )[a-z]+\.(?= [A-Z]|$)")
 _STRAY_SIGLUM = re.compile(
     r"\b(?:Chrys|Aug|Theophyl|Greg|Orig|Didym)\.|\b(?:ubi|ut) sup\b|\bnon occ\b|\b(?!LXX\b)[IVXLC]{2,}\b"
 )
+#: A CCEL opening that is a siglum (an abbreviated name) even when the table
+#: cannot read it: its first word ends in a stop.
+_SIGLUM_LIKE = re.compile(r"[A-Z][\w-]*\.(?:\s|$)")
+#: The speaker of a passage whose siglum could not be read.
+UNREAD = "\0unread"
 #: A reference CCEL wrote as a range of one verse, "[Tit 3:11-11]" -> "3:11".
 _ONE_VERSE_RANGE = re.compile(r"\b(\d+:(\d+))-\2\b")
 #: A capitalised word the sigla did not account for: a broken siglum or margin debris.
@@ -223,7 +238,8 @@ def ccel_name(opening: str) -> str | None:
     The siglum may carry the rest of its reference before the colon ("Gloss.
     ord.", "Augustine ...", "Bede; see Ambr. in Luc. 6"); a phrase that only
     looks like an opening ("It goes on:") names no one."""
-    opening = opening.split(";")[0].strip()
+    # "Cyril ... :" — the scan's ellipsis for a lost reference, closed up by tidy
+    opening = re.sub(r"\s*(?:\.\.\.|…)$", "", opening.split(";")[0].strip())
     if opening in CCEL_TAGS:
         return CCEL_TAGS[opening]
     words = opening.split()
@@ -235,13 +251,18 @@ def ccel_name(opening: str) -> str | None:
 
 
 def ccel_segments(text: str) -> list[tuple[str | None, list[str]]]:
-    """[(Father or None for a run-on, [paragraphs])] from a CCEL excerpt."""
+    """[(Father or None for a run-on, [paragraphs])] from a CCEL excerpt. An
+    opening that is a siglum this table cannot read ("Theod. non occ.:") names
+    UNREAD, so its passage is left out rather than joined to the Father
+    before it."""
     out: list[tuple[str | None, list[str]]] = []
     for para in tidy(text):
         m = _CCEL_OPENING.match(para)
         name = ccel_name(m["name"]) if m else None
+        if not name and m and _SIGLUM_LIKE.match(m["name"]):
+            name = UNREAD
         if name:
-            out.append((name, [para[m.end() :]]))
+            out.append((name, [_SECOND_CITE.sub("", para[m.end() :], count=1)]))
         elif out:
             out[-1][1].append(para)
         else:
@@ -277,29 +298,21 @@ class Command(build_catena.Command):
     def add_arguments(self, parser):
         parser.add_argument("logia", help="path to logia-en.json (https://logia.faith/downloads/logia-en.json)")
         parser.add_argument("code", choices=sorted(VOLUMES), help="the Gospel, e.g. MAT")
+        parser.add_argument(
+            "--vendor-owb", metavar="CHECKOUT",
+            help="first write data/catena/<CODE>/owb_sections.json from an open-word-bible checkout",
+        )
 
     # --- inputs -------------------------------------------------------------
 
     def load(self, path: str, code: str):
-        raw = Path(path).read_bytes()
-        self.logia_sha = hashlib.sha256(raw).hexdigest()
-        logia = json.loads(raw)
-        del raw
-        if logia.get("licence") != "CC0-1.0":
-            raise CommandError(f"unexpected Logia licence {logia.get('licence')!r}")
+        logia = self.read_logia(path)
         self.code = code
         work_id, self.volume = VOLUMES[code]
         self.folder = FOLDER / code
         self.meta = json.loads((self.folder / "book.json").read_text("utf-8"))
         self.work = logia["works"][work_id]
-        typed = Counter()
-        mine = []
-        for e in logia["excerpts"]:
-            if "archive.org" not in e.get("source_url", ""):
-                typed.update(map(str.lower, english_audit._WORD.findall(e["text"])))
-            if e["work"] == work_id and e["author"] == AUTHOR:
-                mine.append(e)
-        self.typed_counts = typed
+        mine = [e for e in logia["excerpts"] if e["work"] == work_id and e["author"] == AUTHOR]
         self.load_owb(code)
         # OWB's one spaced ellipsis in the Gospels (Mark 11:32), set as one mark.
         self.verses = {v: t.replace(" . . .", " …") for v, t in self.verses.items()}
@@ -327,7 +340,13 @@ class Command(build_catena.Command):
                 if idem:
                     name = speaker
                 speaker = name or speaker
-                why = self.unsound(paras)
+                if not "".join(paras).strip():
+                    continue  # a siglum alone at an excerpt's end: its words open the next
+                why = (
+                    "an opening siglum this build cannot read (dropped, not given to the Father before)"
+                    if speaker == UNREAD
+                    else self.unsound(paras)
+                )
                 if why:
                     self.dropped.append({"excerpt": e["id"], "passage": k + 1, "father": speaker,
                                          "why": why, "text": " ".join(paras)})
@@ -349,14 +368,6 @@ class Command(build_catena.Command):
             return True
         m = _ARCHAIC.match(w)
         return bool(m) and len(m[1]) > 2 and any(stem in self.vocabulary for stem in (m[1], m[1] + "e"))
-
-    @staticmethod
-    def debris(text: str) -> bool:
-        """build_catena's damage marks short of its vocabulary test (a misread
-        letter, scan debris, a word split at a hyphen or run together across a
-        full stop), which a typed edition can carry too."""
-        marks = (_MISREAD, _SCAN_NOISE, english_audit.HYPHEN_SPACE, english_audit.RUN_TOGETHER)
-        return any(m.search(text) for m in marks)
 
     def damaged(self, text: str) -> bool:
         """`debris` for a typed volume; for a scanned one, also any word the
@@ -402,30 +413,36 @@ class Command(build_catena.Command):
         return out
 
     def text_block(self, code: str, verses: list[tuple[int, int]]) -> str:
-        """build_catena's quoted block, except at Mark 16:8: its first sentences
-        are the Gospel as the earliest manuscripts end it, and its bracketed
-        rest is the short ending. OWB's own note on the endings stands between
-        them, then the short ending's own heading, so 16:8 itself is not
-        called disputed; 16:9-20 follow in their brackets as OWB prints them."""
+        """build_catena's quoted block, except at Mark 16:8. Its first sentences
+        are the Gospel as the earliest manuscripts end it, quoted here, and the
+        Fathers on them follow; its bracketed rest is the short ending, which
+        `passage_html` sets after them, under OWB's own note on the endings and
+        the short ending's heading. So 16:8 itself is not called disputed, and
+        16:9-20 follow in their brackets as OWB prints them."""
         end = (16, 8)
         if code != "MRK" or end not in verses:
             return super().text_block(code, verses)
-        at = verses.index(end)
-        before, after = verses[:at], verses[at + 1 :]
+        if verses[-1] != end:
+            raise CommandError("Mark 16:8 must close its passage (see passages)")
         whole = self.verses[end]
         cut = whole.index(" [")
-        out = [super().text_block(code, before)] if before else []
         try:
             self.verses[end] = whole[:cut]
-            out.append(super().text_block(code, [end]))
-            out.append(f"<p><em>{escape(MARK_ENDINGS)}</em></p><h3>{escape(self.short_ending)}</h3>")
+            block = super().text_block(code, verses)
             self.verses[end] = whole[cut + 1 :]
-            out.append(super().text_block(code, [end]))
+            self.endings = (
+                f"<p><em>{escape(MARK_ENDINGS)}</em></p><h3>{escape(self.short_ending)}</h3>"
+                + super().text_block(code, [end])
+            )
         finally:
             self.verses[end] = whole
-        if after:
-            out.append(super().text_block(code, after))
-        return "".join(out)
+        return block
+
+    def passage_html(self, code: str, title: str, verses, ids: list[str]) -> str:
+        """build_catena's passage, then Mark's short ending if 16:8 closed it."""
+        self.endings = ""
+        html = super().passage_html(code, title, verses, ids)
+        return html + "\n" + self.endings if self.endings else html
 
     def order_key(self, e: dict):
         return self.order[e["id"]]
@@ -444,19 +461,22 @@ class Command(build_catena.Command):
     def fathers(self, ids) -> Counter:
         return Counter(name for i in ids for name, _ in self.excerpts[i]["_segments"] if name)
 
-    def summary(self, number: int, names: list[str]) -> str:
-        return super().summary(number, names).replace(" With ", " The chain: ", 1)
+    voices_label = "The chain:"
 
     # --- main ---------------------------------------------------------------
 
     def handle(self, *args, **opts):
         code = opts["code"]
+        if opts["vendor_owb"]:
+            vendor_owb(Path(opts["vendor_owb"]), code)
         self.load(opts["logia"], code)
         passages = self.passages()
         firsts = [vs[0] for _, vs in passages]
         homes = defaultdict(list)
         for i, e in self.excerpts.items():
-            at = max(n for n, v in enumerate(firsts) if v <= e["_start"]) if e["_start"] >= firsts[0] else 0
+            # One keyed before the first verse (a heading, "MRK.1.0") opens the book.
+            e["_start"], e["_end"] = max(e["_start"], firsts[0]), max(e["_end"], firsts[0])
+            at = max(n for n, v in enumerate(firsts) if v <= e["_start"])
             homes[at].append(i)
 
         chapters = defaultdict(list)
@@ -470,16 +490,16 @@ class Command(build_catena.Command):
         used = Counter()
         self.whole_sections = []
         for number in sorted(chapters):
-            here = self.fathers(i for _, _, ids in chapters[number] for i in ids)
-            used.update(here)
-            summary = self.summary(number, [f for f, _ in here.most_common()])
+            used.update(self.fathers(i for _, _, ids in chapters[number] for i in ids))
             parts = self.parts(code, chapters[number])
-            for verses, html in parts:
-                title = (
-                    self.books[code][2].format(n=number)
-                    if len(parts) == 1
-                    else span(code, verses[0], verses[-1], self.books)
-                )
+            for k, (verses, html, ids) in enumerate(parts):
+                names = [f for f, _ in self.fathers(ids).most_common()]
+                if len(parts) == 1:
+                    title = self.books[code][2].format(n=number)
+                else:
+                    title = span(code, verses[0], verses[-1], self.books)
+                # The chapter's summary heads its first part; each part names its own voices.
+                summary = self.summary(number, names) if k == 0 else self.voices_sentence(names)
                 bodies.append((title, html, summary))
         bodies.append(("The Fathers and the Edition", self.edition_html(used), ""))
         book = self.write(bodies)
@@ -500,23 +520,23 @@ class Command(build_catena.Command):
         for title in self.whole_sections:
             self.stdout.write(f"one OWB section alone passes {PART_WORDS:,} words: {title}")
 
-    def parts(self, code: str, passages: list) -> list[tuple[list, str]]:
-        """A Gospel chapter as one or more parts, [(its verses, html)], cut at
+    def parts(self, code: str, passages: list) -> list[tuple[list, str, list]]:
+        """A Gospel chapter as one or more parts, [(its verses, html, excerpt ids)], cut at
         OWB's section breaks: sections are added to a part until the next would
         take it past PART_WORDS. A section longer than that is a part of its
         own, whole (noted in self.whole_sections)."""
-        out: list[tuple[list, list[str], int]] = []
+        out: list[tuple[list, list[str], list, int]] = []
         for title, verses, ids in passages:
             html = self.passage_html(code, title, verses, ids)
             words = word_count(html)
             if words > PART_WORDS:
                 self.whole_sections.append(f"{span(code, verses[0], verses[-1], self.books)} ({words:,})")
-            if out and out[-1][2] + words <= PART_WORDS:
-                vs, htmls, total = out[-1]
-                out[-1] = (vs + verses, [*htmls, html], total + words)
+            if out and out[-1][3] + words <= PART_WORDS:
+                vs, htmls, part_ids, total = out[-1]
+                out[-1] = (vs + verses, [*htmls, html], part_ids + ids, total + words)
             else:
-                out.append((list(verses), [html], words))
-        return [(vs, "\n".join(htmls)) for vs, htmls, _ in out]
+                out.append((list(verses), [html], list(ids), words))
+        return [(vs, "\n".join(htmls), part_ids) for vs, htmls, part_ids, _ in out]
 
     def write_dropped(self) -> None:
         (self.folder / "dropped.json").write_text(
