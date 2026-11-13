@@ -75,7 +75,11 @@
 
 	onMount(() => watchToday((now) => void loadToday(now)));
 
-	const columns = $derived(picks ? [picks.verse, picks.reading, picks.sermon].filter(Boolean).length : 3);
+	// The verse and the chapter of the day share a column: the chapter is where
+	// the verse leads, so either one keeps it.
+	const columns = $derived(
+		picks ? [picks.verse || picks.chapter, picks.reading, picks.sermon].filter(Boolean).length : 3
+	);
 	// Static class names, so Tailwind sees each one.
 	const GRID = ['', '', 'md:grid-cols-2', 'md:grid-cols-3'];
 </script>
@@ -91,18 +95,35 @@
 					linkText={t('daily.seeAll')}
 				/>
 				<ul role="list" class="m-0 grid list-none p-0 {GRID[columns]}">
-					{#if picks.verse}
-						{@const v = picks.verse}
+					{#if picks.verse || picks.chapter}
 						<li class="col">
-							<!-- Not a link: in English its words are the OWB's, elsewhere
-							     another devotional's than the reading beside it, so no one
-							     page stands for it. -->
-							<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
-							<!-- Whole, never clamped (design review 2026-11, #7): an ellipsis
-							     through a verse cuts off its point, and once it ran
-							     "…at the time Jesus…". -->
-							<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
-							<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+							{#if picks.verse}
+								{@const v = picks.verse}
+								<!-- Not a link: in English its words are the OWB's, elsewhere
+								     another devotional's than the reading beside it, so no one
+								     page stands for it. -->
+								<span class="eyebrow block text-accent">{t('home.todayVerse')}</span>
+								<!-- Whole, never clamped (design review 2026-11, #7): an ellipsis
+								     through a verse cuts off its point, and once it ran
+								     "…at the time Jesus…". -->
+								<span class="title verse mt-2 block text-body" lang={v.lang} dir="auto">{v.text}</span>
+								<span class="mt-2 block text-small text-muted" lang={v.lang} dir="auto">{v.ref}</span>
+							{/if}
+							{#if picks.chapter}
+								{@const c = picks.chapter}
+								<!-- The chapter of the day ($lib/dailyChapter): one Bible
+								     chapter everyone reads today, under the verse. English
+								     only, where the Bible is (`bibleIn`). -->
+								<a class="today-link chapter" class:after-verse={picks.verse} href={localizeHref(c.href)}>
+									<span class="eyebrow block text-accent">{t('home.todayChapter')}</span>
+									<span class="title mt-1 block text-body font-semibold" lang="en">{c.title}
+										<Arrow /></span
+									>
+									{#if c.word_count}
+										<span class="block text-small text-muted">{readingTime(c.word_count)}</span>
+									{/if}
+								</a>
+							{/if}
 						</li>
 					{/if}
 					{#if picks.reading}
@@ -208,6 +229,14 @@
 	   Arabic, Amharic and Hindi have none, and a browser would slant them. */
 	.verse {
 		font-weight: 400;
+	}
+	/* The chapter of the day under the verse: a short hairline between them, so
+	   it reads as the verse's next step, not a fourth column. */
+	.chapter.after-verse {
+		height: auto;
+		margin-block-start: 1rem;
+		padding-block-start: 0.85rem;
+		border-block-start: 1px solid var(--border);
 	}
 	/* The season's calendar, under the columns: a hairline, then the link. */
 	.calendar-row {
