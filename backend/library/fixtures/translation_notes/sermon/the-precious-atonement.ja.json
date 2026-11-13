@@ -1,0 +1,77 @@
+{
+    "kind": "sermon",
+    "slug": "the-precious-atonement",
+    "language": "ja",
+    "job_issue": 7999,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Hebrews 13:12",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Hebrews 2:11",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 2
+        },
+        {
+            "reference": "Ephesians 2:6",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Isaiah 53:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 3
+        },
+        {
+            "reference": "John 10:36",
+            "status": "self_rendered",
+            "block_index": 3
+        },
+        {
+            "reference": "1 John 3:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 4
+        },
+        {
+            "reference": "Exodus 15:26",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 103:1",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Psalms 103:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Isaiah 53:4",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "Hebrews 2:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Mark 16:20",
+            "status": "self_rendered",
+            "block_index": 8
+        }
+    ]
+}
