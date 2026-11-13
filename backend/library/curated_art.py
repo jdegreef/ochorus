@@ -2778,6 +2778,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "ddf429001d27be3333c00c772c657733e507e811e39ab5c7bc5ee7ae77ae6539",
         "Malakhi, 'My messenger', the book's Hebrew name, set large on a pale leaf.",
     ),
+    # A Catena on John (Ochorus Original): eleven small clay lamps along a dark
+    # ridge, one for each commentator in the book, joined by a fine gold chain
+    # (a catena) under a night sky going to dawn (John 1:5). Lamps and chain sit
+    # wholly below the title band; the ridge top stays above the subtitle band.
+    "catena-on-john": Original(
+        "3e0d936b45c4dc050bcf1dbd540270a6a8c742659b36336f8878afb9b90eb019",
+        "The book's own image: a chain of voices drawn as a chain of lamps. Drawn "
+        "as SVG and rendered with Chrome; generator scripts/original_grounds/catena.py.",
+    ),
 }
 
 
