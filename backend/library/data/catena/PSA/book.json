@@ -1,0 +1,121 @@
+{
+ "slug": "catena-on-the-psalms",
+ "title": "A Catena on the Psalms",
+ "subtitle": "The Psalms, verse by verse, with the Church’s great commentators",
+ "cover_title": "",
+ "cover_byline": "Augustine to Spurgeon",
+ "cover_color": "#3b3a5c",
+ "description": "All hundred and fifty Psalms, read slowly, the way the Church has prayed them for centuries: under each verse, the great commentators speak one after another, oldest first. Augustine preaching on the Psalms in Hippo, John Calvin in Geneva, the Jesuit cardinal Robert Bellarmine, Matthew Henry, the Hebrew scholar Franz Delitzsch, A. R. Fausset, and C. H. Spurgeon, whose Treasury of David is the voice heard most often, each quoted word for word from a public-domain edition. The Psalms themselves are the Open Word Bible, a new translation given freely to the public domain. A catena (Latin for “chain”) is one of the oldest ways of studying Scripture; this one gives a chapter to each psalm, a psalm a day, with an introduction on how to read it and a closing chapter on the voices and their books.",
+ "qa": [
+  {
+   "question": "What is a catena on the Psalms?",
+   "answer": "A catena, from the Latin for “chain”, is a commentary built from other commentaries: under each verse of Scripture, excerpts from earlier interpreters are linked one after another, so the reader hears several voices on the same words. This one does that for the whole Book of Psalms, from Psalm 1 to Psalm 150."
+  },
+  {
+   "question": "Whose commentary is in this catena on the Psalms?",
+   "answer": "Seven commentators, from the early Church to the late 1800s: Augustine, John Calvin, Robert Bellarmine, Matthew Henry, Franz Delitzsch, A. R. Fausset and C. H. Spurgeon. Spurgeon’s Treasury of David is quoted most often. Every excerpt is copied word for word from a public-domain English edition, as gathered by the open collection Logia."
+  },
+  {
+   "question": "Which Bible translation does this catena use?",
+   "answer": "The text of the Psalms is the Open Word Bible, English, Balanced level, a new translation dedicated to the public domain. Inside the excerpts, the commentators quote the Psalms in the English of their own editions: usually the King James Version, though Augustine and Bellarmine read the Psalms in Latin and their translators rendered that."
+  },
+  {
+   "question": "How is this catena arranged?",
+   "answer": "One chapter for each psalm, in order. Within a chapter the psalm comes first, a verse or a few verses at a time, followed by the commentators who wrote on those words, in the order they lived. Every verse of the Psalms appears once, in order, so the book can also be read straight through as the Psalter."
+  },
+  {
+   "question": "Why do some commentators number the psalms or verses differently?",
+   "answer": "In the Hebrew Bible a psalm’s title often counts as its first verse, so Delitzsch, who worked from the Hebrew, often numbers a verse one higher than English Bibles do. Augustine and Bellarmine read a Latin Bible that joins Psalms 9 and 10, so most of their psalm numbers are one lower: their Psalm 22 is the English Psalm 23. This book uses the English numbers throughout and places every excerpt under the verse it discusses."
+  },
+  {
+   "question": "Is every word of the commentators included?",
+   "answer": "No. Between them the seven commentators wrote millions of words on the Psalms. This catena is a selection, chosen so that each psalm is heard from more than one century and more than one tradition. Each excerpt is given whole, in the words of its edition."
+  },
+  {
+   "question": "Do the commentators agree with one another?",
+   "answer": "Not always. Augustine hears Christ and his Church in nearly every psalm, Calvin looks first for David’s own meaning, Bellarmine reads as a Catholic where Calvin, Henry and Spurgeon read as Protestants, and Delitzsch weighs the Hebrew more closely than anyone. A catena keeps these differences side by side."
+  },
+  {
+   "question": "How should I read a catena on the Psalms?",
+   "answer": "Slowly. A psalm a day takes you through the Psalter in five months, and the longest, Psalm 119, can be spread over several days. Read the psalm first, then the voices beneath it, then the psalm again as a prayer."
+  }
+ ],
+ "cover_url": "/covers/art/catena-on-the-psalms.jpg",
+ "words_per_verse": 35,
+ "versification": {
+  "augustine-psalms": "hebrew",
+  "calvin-psalms": "hebrew",
+  "bellarmine-psalms": {
+   "scheme": "hebrew",
+   "chapters": {
+    "72": "skip"
+   }
+  },
+  "henry-psalms": "hebrew",
+  "delitzsch-psalms": "hebrew",
+  "jfb-psalms": "hebrew",
+  "spurgeon-psalms": {
+   "scheme": "hebrew",
+   "chapters": {
+    "15": "english+1",
+    "29": "english+1",
+    "44": "english+2",
+    "68": "english"
+   }
+  }
+ },
+ "voices": [
+  {
+   "id": "augustine",
+   "name": "Augustine",
+   "era": 0,
+   "title": "Expositions on the Psalms",
+   "work": "augustine-psalms"
+  },
+  {
+   "id": "calvin",
+   "name": "John Calvin",
+   "era": 1,
+   "title": "Commentary on the Psalms",
+   "work": "calvin-psalms"
+  },
+  {
+   "id": "bellarmine",
+   "name": "Robert Bellarmine",
+   "era": 1,
+   "edition": "Translated by John O'Sullivan, Archdeacon of Kerry (Dublin: James Duffy, 1866), from Bellarmine's Explanatio in Psalmos (Rome, 1611); the translation leaves out the purely philological passages",
+   "title": "Commentary on the Psalms",
+   "work": "bellarmine-psalms"
+  },
+  {
+   "id": "henry",
+   "name": "Matthew Henry",
+   "era": 2,
+   "title": "Commentary on the Whole Bible",
+   "work": "henry-psalms"
+  },
+  {
+   "id": "delitzsch",
+   "name": "Franz Delitzsch",
+   "era": 3,
+   "title": "Commentary on the Psalms",
+   "work": "delitzsch-psalms"
+  },
+  {
+   "id": "fausset",
+   "name": "A. R. Fausset",
+   "era": 3,
+   "title": "Commentary, Critical and Explanatory",
+   "work": "jfb-psalms"
+  },
+  {
+   "id": "spurgeon",
+   "name": "C. H. Spurgeon",
+   "era": 3,
+   "lead": true,
+   "edition": "London: Passmore and Alabaster, 1869–85; Volumes I to IV and VI of the 1881 printing, from the University of Toronto's scans at archive.org",
+   "title": "The Treasury of David",
+   "work": "spurgeon-psalms"
+  }
+ ]
+}
