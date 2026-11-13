@@ -33,6 +33,7 @@ from .models import (
 )
 from .translation import (
     missing_glossary_terms,
+    system_prompt,
     verify_bible_code,
     verify_glossary,
 )
@@ -672,6 +673,19 @@ class TranslationPreflightTests(TestCase):
         # A term present but empty is not a term — it would render as nothing in
         # the prompt, which is the same failure as leaving it out.
         self.assertIn("grace", missing_glossary_terms({"grace": "   "}))
+
+    def test_japanese_prompt_carries_its_typography_and_no_one_elses_does(self):
+        # The reader cannot supply 「 」 at render time (smartQuotes.ts only
+        # swaps one straight mark for one curly one), so Japanese must get its
+        # marks from the translation. The rule is keyed by language, and adding
+        # it must not change any other language's prompt.
+        call_command("seed_languages", verbosity=0)
+        ja = system_prompt("ja")
+        self.assertIn("7. TYPOGRAPHY:", ja)
+        self.assertIn("「 」", ja)
+        for code in ("ko", "pt"):
+            with self.subTest(language=code):
+                self.assertNotIn("TYPOGRAPHY", system_prompt(code))
 
 
 class TopicTranslationJobTests(TestCase):

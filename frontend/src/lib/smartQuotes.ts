@@ -23,6 +23,11 @@
  *   carry those, so straight doubles are left as they are.
  * - Anything else (Arabic, Amharic, a language added later): unchanged. A
  *   wrong guess at a language's marks is worse than a straight one.
+ * - Japanese is deliberately in that last group. Its marks are 「 」 (nested
+ *   『 』), not curly quotes, so “ ” would be the wrong guess; and swapping a
+ *   straight mark for 「 」 here would also need `foldQuotes` and the backend
+ *   anchor fold to learn them. Instead the translator is told to set 「 」 in
+ *   the stored text (`library/translation.py`, TYPOGRAPHY), where they belong.
  *
  * Never inside `<code>`/`<pre>`/`<kbd>`/`<samp>`/`<script>`/`<style>`, never
  * in a tag's attributes, and never inside a URL written out in the text.

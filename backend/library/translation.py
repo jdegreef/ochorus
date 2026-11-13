@@ -316,9 +316,28 @@ _TITLE_RE = re.compile(r"<chapter_title>\s*(.*?)\s*</chapter_title>", re.S)
 _BODY_RE = re.compile(r"<chapter_body>\s*(.*?)\s*</chapter_body>", re.S)
 
 
+# Typography the model must set IN the stored text, for a language whose marks
+# the reader cannot supply at render time. `smartQuotes.ts` only swaps one
+# straight mark for one curly one, so a language whose quotation marks are not
+# “ ” — Japanese 「 」 — has to receive them from the translation itself. Keyed
+# by language code; a language with no entry gets no extra rule, so adding one
+# here changes no other language's prompt.
+TYPOGRAPHY: dict[str, str] = {
+    "ja": (
+        "Set Japanese typography in the text itself: quotations in 「 」, a "
+        "quotation inside a quotation in 『 』, and a book title in 『 』 — never "
+        "straight or curly quotes. Full-width 。、！？ and （ ）, no spaces between "
+        "words or after punctuation, the ellipsis as …… and the dash as ——. "
+        "Western digits for verse references (ヨハネによる福音書 15:4)."
+    ),
+}
+
+
 def system_prompt(language: str) -> str:
     cfg = language_config(language)
     glossary = "\n".join(f"- {en} → {tr}" for en, tr in cfg["glossary"].items())
+    typography = TYPOGRAPHY.get(language)
+    typography_rule = f"\n7. TYPOGRAPHY: {typography}" if typography else ""
     return f"""You are an expert literary translator of classic Christian devotional literature \
 (Andrew Murray, Charles Spurgeon, Watchman Nee and their contemporaries) from English into \
 {cfg['name']} ({cfg['native']}).
@@ -342,7 +361,7 @@ Translate only the human-readable text inside them — a <figcaption> is text, s
 an <img> tag is copied character for character, attributes and all. Never add, remove, or \
 reorder tags. Preserve HTML entities where needed.
 6. Proper names keep their conventional {cfg['name']} biblical forms where one exists; \
-otherwise keep the English form.
+otherwise keep the English form.{typography_rule}
 
 You receive a chapter wrapped in <chapter_title> and <chapter_body> tags. Respond with ONLY \
 the translated chapter in the exact same wrapper tags — no preamble, no notes, no commentary."""
