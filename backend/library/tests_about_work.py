@@ -35,6 +35,10 @@ ALLOWED_TAGS = {"p"}
 #: heading that promises an essay is the failure mode worth catching.
 MIN_WORDS = 150
 
+#: How much of its English edition a translation must keep, when a faithful
+#: rendering of a short English essay falls under MIN_WORDS.
+TRANSLATION_SHARE = 0.6
+
 #: Japanese is written without spaces, so splitting on whitespace counts a
 #: whole paragraph as a word or two. Count its kana and kanji instead, at the
 #: usual reading-speed ratio of about two characters to an English word.
@@ -86,10 +90,25 @@ class ShippedProseTests(SimpleTestCase):
                 self.assertEqual(html.count("<p>"), html.count("</p>"))
 
     def test_no_piece_is_a_stub(self):
-        for slug, language, html in shipped():
+        """English carries the floor. A translation is held to it too, unless
+        its own English edition is short enough that a faithful rendering in a
+        language of longer words (Amharic packs prepositions and possessives
+        into the word: ~0.77 of the English count) lands under it — then it
+        must keep TRANSLATION_SHARE of the English, which a stub or a
+        half-translated essay still fails."""
+        pieces = shipped()
+        english = {
+            slug: word_units(re.sub(r"<[^>]+>", " ", html))
+            for slug, language, html in pieces
+            if language == "en"
+        }
+        for slug, language, html in pieces:
             words = word_units(re.sub(r"<[^>]+>", " ", html))
-            with self.subTest(slug=slug, language=language, words=words):
-                self.assertGreaterEqual(words, MIN_WORDS)
+            floor = MIN_WORDS
+            if language != "en" and slug in english:
+                floor = min(MIN_WORDS, int(english[slug] * TRANSLATION_SHARE))
+            with self.subTest(slug=slug, language=language, words=words, floor=floor):
+                self.assertGreaterEqual(words, floor)
 
     def test_no_piece_merely_restates_the_description(self):
         """The two fields have different jobs — one is the SERP snippet, one is
