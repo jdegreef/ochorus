@@ -5,7 +5,9 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { lang } from '$lib/lang.svelte';
 	import { hreflangAll, itemList } from '$lib/seo';
-	import { authorIndex, filterIndex, indexRows } from '$lib/authorIndex';
+	import { authorIndex, filingKey, filterIndex, indexRows, withPin } from '$lib/authorIndex';
+	import { BIBLE_PATH, bibleIn, isBibleBook } from '$lib/bible';
+	import { foldText } from '$lib/searchNormalize';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { tick } from 'svelte';
 	import { ORIGINALS_SLUG } from '$lib/originals';
@@ -47,6 +49,22 @@
 	const filtering = $derived(query.trim() !== '');
 	const shownWriters = $derived(shownGroups.reduce((n, g) => n + g.entries.length, 0));
 
+	// The Bible: its books have no writer here (the translation is skipped, like
+	// the imprint), so its place in the A–Z is ONE pinned entry, filed as "Bible,
+	// The" among the writers, opening the hub ($lib/bible splitBible — the /books
+	// shelf keeps them out the same way). Only where the hub exists (`bibleIn`);
+	// the filter keeps it for a query its name matches.
+	const bibleCount = $derived(bibleIn(lang.current) ? data.books.filter(isBibleBook).length : 0);
+	const biblePin = $derived.by(() => {
+		const name = t('nav.bible');
+		const q = foldText(query.trim());
+		if (!bibleCount || (q && !foldText(name).includes(q))) return null;
+		return { key: filingKey(name), name, count: bibleCount };
+	});
+	const listedGroups = $derived(
+		withPin(shownGroups, biblePin, (e) => filingKey(e.author.name), lang.current)
+	);
+
 	// A long list shows its first ROWS_SHOWN lines, the rest behind "Show N more".
 	// Only collapsed when that hides at least two — "Show 1 more" saves nothing.
 	// The hidden lines stay in the markup (`hidden`), so every book is still
@@ -69,11 +87,11 @@
 	// language or the filter; letters with nobody under them are dimmed.
 	const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 	const anchor = (letter: string) => `letter-${letter === '#' ? 'other' : letter}`;
-	const present = $derived(new Set(shownGroups.map((g) => g.letter)));
+	const present = $derived(new Set(listedGroups.map((g) => g.letter)));
 	const rail = $derived(present.has('#') ? [...AZ, '#'] : AZ);
 	// Joined so the effect below re-binds only when the SET of letters changes,
 	// not on every keystroke that rebuilds `shownGroups`.
-	const letterIds = $derived(shownGroups.map((g) => anchor(g.letter)).join(' '));
+	const letterIds = $derived(listedGroups.map((g) => anchor(g.letter)).join(' '));
 
 	/** Height of the pinned controls bar — jumps land below it. */
 	let pinnedH = $state(0);
@@ -207,18 +225,34 @@
 			/>
 		</FilterBar>
 
-		{#if shownGroups.length === 0}
+		{#if listedGroups.length === 0}
 			<EmptyState art="search" message={t('bios.noResults')} action={clearAction} />
 		{/if}
 
-		{#each shownGroups as g (g.letter)}
+		{#each listedGroups as g (g.letter)}
 			<section id={anchor(g.letter)} class="az-group mb-10">
 				<GroupHeading name={g.letter} count={g.entries.length} />
 				<!-- Columns, not a grid: a grid row is as tall as its longest writer,
 				     so one long list left blank cells beside it. Each writer flows
 				     straight under the one above, reading down then across. -->
 				<ul class="gap-x-10 sm:columns-2 lg:columns-3">
-					{#each g.entries as { author, rows } (author.slug)}
+					{#each g.entries as entry ('author' in entry ? entry.author.slug : ' bible')}
+						{#if !('author' in entry)}
+							<!-- The Bible's pinned entry: the hub, and how many books it holds. -->
+							<li class="mb-5 flex break-inside-avoid gap-3">
+								<span class="emblem-chip" style="--chip-size: 2rem; --chip-hue: var(--section-bible)" aria-hidden="true"
+									><img src="/marks/emblem-bible.svg" alt="" width="21" height="21" /></span
+								>
+								<div class="min-w-0 flex-1">
+									<a class="font-semibold hover:text-accent" href={localizeHref(BIBLE_PATH)}>{entry.name}</a>
+									<span class="text-small text-muted">
+										· {entry.count}
+										{entry.count === 1 ? t('common.bookOne') : t('common.bookMany')}</span
+									>
+								</div>
+							</li>
+						{:else}
+						{@const { author, rows } = entry}
 						{@const life = formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}
 						{@const collapsed = collapses(author.slug, rows.length)}
 						{@const w = data.works[author.slug]}
@@ -317,6 +351,7 @@
 								{/if}
 							</div>
 						</li>
+						{/if}
 					{/each}
 				</ul>
 			</section>

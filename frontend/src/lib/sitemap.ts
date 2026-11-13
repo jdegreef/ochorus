@@ -53,7 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG, hasBylinePage } from '$lib/originals';
-import { BIBLE_PATH, BIBLE_SERIES, bibleIn } from '$lib/bible';
+import { BIBLE_PATH, BIBLE_SERIES, bibleIn, isBibleBook } from '$lib/bible';
 import { OWB_PATH } from '$lib/openWordBible';
 import { ADVENT_PLAN } from '$lib/advent';
 import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
@@ -924,7 +924,7 @@ async function build(): Promise<SitemapData> {
 	const byBibleChapter = new Map<string, Entry>();
 	for (const slice of chapterSlices) {
 		for (const b of slice.books) {
-			if (b.series?.slug !== BIBLE_SERIES) continue;
+			if (!isBibleBook(b)) continue;
 			for (let order = 2; order <= b.chapter_count; order++) {
 				const key = `${b.slug}#${order}`;
 				let e = byBibleChapter.get(key);

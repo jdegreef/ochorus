@@ -7,6 +7,8 @@
 	import { localizeHref } from '$lib/href';
 	import BooksShelf from '$lib/components/BooksShelf.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import { shelfSplit } from '$lib/bible';
+	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
 
@@ -14,11 +16,14 @@
 	const books = $derived<BookSummary[]>(data.books ?? []);
 
 	// schema.org ItemList of the shelf — an ordered roster of the library so a
-	// crawler sees the works, not an opaque grid. Built from the full set.
+	// crawler sees the works, not an opaque grid. Built from the full set — the
+	// classics the shelf lists, so not the Bible's books, which the shelf stands
+	// one pinned row for (BooksShelf; the /bible/ hub lists them).
+	const listed = $derived(shelfSplit(books, getLang()).classics);
 	const booksLd = $derived(
 		itemList(
 			t('nav.books'),
-			books.map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}`) }))
+			listed.map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}`) }))
 		)
 	);
 
@@ -44,7 +49,7 @@
 	{canonical}
 	{hreflang}
 	ogImage={`${SITE_URL}/og/books.png`}
-	structuredData={books.length ? [booksLd] : []}
+	structuredData={listed.length ? [booksLd] : []}
 />
 
 <BooksShelf bind:this={shelf} books={data.books} series={data.series} loadError={data.loadError} />
