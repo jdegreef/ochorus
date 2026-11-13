@@ -3,7 +3,8 @@ import type { TodayPicks } from '$lib/todayPicks';
 /**
  * The day's post for an Ochorus WhatsApp channel, composed in the admin
  * (/admin/whatsapp) so running a channel is a copy and a paste each morning:
- * the date, the verse, today's devotional reading and the sermon of the day
+ * the date, the verse, the chapter of the day, today's devotional reading and
+ * the sermon of the day
  * (the home Today card's picks, $lib/todayPicks), each with a plain link.
  *
  * WhatsApp's own markup: *bold*, _italic_, and URLs bare on their own line so
@@ -16,7 +17,7 @@ export interface WhatsAppPostInput {
 	date: string;
 	picks: TodayPicks;
 	/** The section labels in the post's language. */
-	labels: { reading: string; sermon: string };
+	labels: { reading: string; sermon: string; chapter: string };
 	/** An absolute ochorus.com URL for a site path, in the post's language. */
 	href: (path: string) => string;
 }
@@ -27,6 +28,10 @@ const plain = (s: string) => s.replace(/[*_~`]/g, '').replace(/\s+/g, ' ').trim(
 export function whatsappPost({ date, picks, labels, href }: WhatsAppPostInput): string {
 	const blocks: string[] = [`*${plain(date)}*`];
 	if (picks.verse) blocks.push(`_${plain(picks.verse.text)}_\n${picks.verse.ref}`);
+	if (picks.chapter) {
+		const c = picks.chapter;
+		blocks.push(`*${plain(labels.chapter)}:* ${c.title}\n${href(`${c.href}/`)}`);
+	}
 	if (picks.reading) {
 		const r = picks.reading;
 		const title = r.heading ? `${r.heading} (${r.book.title})` : r.book.title;

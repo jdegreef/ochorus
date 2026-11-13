@@ -11,7 +11,9 @@
 // `pickDailySermon`'s. Chosen with the caller's LOCAL date: every caller is
 // client-side for that reason.
 
-import { getDailyShelf, listSermons, type DailyEntry, type SermonSummary } from '$lib/library-public';
+import { getBook, getDailyShelf, listSermons, type DailyEntry, type SermonSummary } from '$lib/library-public';
+import { bibleIn } from '$lib/bible';
+import { pickDailyChapter, type DailyChapter } from '$lib/dailyChapter';
 import { dateKey } from '$lib/dailyDate';
 import { pickDailySermon } from '$lib/dailySermon';
 import { pickToday, type Verse } from '$lib/todayCard';
@@ -23,6 +25,9 @@ export type TodayPicks = {
 	/** The verse, and the language its words are in. */
 	verse: (Verse & { lang: string }) | null;
 	sermon: SermonSummary | null;
+	/** The chapter of the day ($lib/dailyChapter), where the language has the
+	 *  Bible (`bibleIn`); `word_count` when the book's contents could be fetched. */
+	chapter: (DailyChapter & { word_count?: number }) | null;
 };
 
 /** How many of the shelf's references English tries in the OWB. */
@@ -59,10 +64,22 @@ export async function loadDayVerse(day: Date, lang: string): Promise<TodayPicks[
  * with no sermon no sermon) rather than failing the whole day.
  */
 export async function loadTodayPicks(now: Date, lang: string): Promise<TodayPicks> {
-	const [readings, sermons] = await Promise.all([
+	const [readings, sermons, chapter] = await Promise.all([
 		getDailyShelf(dateKey(now), lang).then((r) => r.readings, () => []),
-		listSermons(lang).catch(() => [])
+		listSermons(lang).catch(() => []),
+		chapterOf(now, lang)
 	]);
 	const { reading, verses } = pickToday(readings, now);
-	return { reading, verse: await verseOf(verses, lang), sermon: pickDailySermon(sermons, now) };
+	return { reading, verse: await verseOf(verses, lang), sermon: pickDailySermon(sermons, now), chapter };
+}
+
+/** The chapter of the day where `lang` has the Bible, with its length from the
+ *  book's contents. The pick never waits on that fetch's success: without it
+ *  the chapter is still offered, only with no reading time. */
+async function chapterOf(now: Date, lang: string): Promise<TodayPicks['chapter']> {
+	if (!bibleIn(lang)) return null;
+	const pick = pickDailyChapter(now);
+	const toc = await getBook(pick.slug, lang).then((b) => b.chapters, () => []);
+	const word_count = toc.find((c) => c.order === pick.order)?.word_count;
+	return word_count ? { ...pick, word_count } : pick;
 }
