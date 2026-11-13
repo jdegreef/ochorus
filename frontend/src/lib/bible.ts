@@ -220,6 +220,8 @@ export function canonStrip<
  * not. A plan here that has not shipped in a language is simply absent.
  */
 export const BIBLE_PLANS: readonly string[] = [
+	'the-story-of-the-bible',
+	'bible-in-a-year',
 	'john-in-21-days',
 	'psalms-in-150-days',
 	'proverbs-in-a-month'
@@ -320,3 +322,35 @@ export function bibleStarts<T extends { slug: string }>(
  */
 export const bibleChapterCount = (books: readonly { chapter_count?: number }[]): number =>
 	books.reduce((n, b) => n + Math.max(0, (b.chapter_count ?? 0) - 2), 0);
+
+/** One chip of the hub's chapter picker. */
+export interface BibleChapterLink {
+	/** The Bible's own chapter number (1 … 150 for Psalms). */
+	n: number;
+	/** The chip's accessible name and tooltip: "Psalms 23". */
+	name: string;
+	/** The reader chapter, unlocalized. */
+	href: string;
+}
+
+/**
+ * A Bible book's chapters for the hub's picker, from the book's summary alone:
+ * Bible chapter n is reader chapter n + 1 (the introduction is order 1, the
+ * conclusion comes last: `bibleChapterCount`'s two). The name is the canon's
+ * short English name, as the canon strip's spines are; a book with no place in
+ * the canon falls back to its title.
+ */
+export function bibleChapters(book: {
+	slug: string;
+	title: string;
+	chapter_count?: number;
+	series_position?: number | null;
+}): BibleChapterLink[] {
+	const pos = book.series_position;
+	const short = pos != null && pos >= 1 && pos <= CANON.length ? CANON[pos - 1][0] : book.title;
+	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
+		n: i + 1,
+		name: `${short} ${i + 1}`,
+		href: bookChapterPath(book.slug, i + 2, false)
+	}));
+}
