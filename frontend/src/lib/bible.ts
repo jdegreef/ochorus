@@ -10,6 +10,7 @@
  */
 
 import { CANON } from '$lib/sermonCanon';
+import { bookChapterPath } from '$lib/reading-schema';
 
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';
@@ -219,3 +220,93 @@ export function biblePlans<P extends { slug: string }>(plans: readonly P[]): P[]
 	const bySlug = new Map(plans.map((p) => [p.slug, p]));
 	return BIBLE_PLANS.flatMap((slug) => bySlug.get(slug) ?? []);
 }
+
+/** What the hub's passage box needs of a `/api/library/scripture/` answer. */
+export interface PassageLookup {
+	/** The parsed reference, as the API prints it ("John 3:16", "Psalms 23:1-6", "John"). */
+	reference: string;
+	verses: readonly { number: number }[];
+	/** The library chapter that prints it, or null where the library has no edition. */
+	bible_chapter?: { slug: string; order: number } | null;
+}
+
+/**
+ * Where the hub's "Go to a passage" box sends a reader for a looked-up
+ * reference (unlocalized), or null when the library prints none of it.
+ *
+ * The API does the parsing — book names, abbreviations ("Jn", "1 Cor"), ranges —
+ * and says which reader chapter holds the reference (`bible_chapter`):
+ *  - a bare book ("Romans": its reference ends in no number) opens the book's
+ *    page, its introduction and contents, not chapter 1;
+ *  - a verse or a range ("John 3:16", "Romans 8:28-30") opens the chapter at its
+ *    first verse — the `#v<n>` anchor `build_owb_book` sets on each verse number;
+ *  - a chapter ("Psalm 23", which the API prints as "Psalms 23:1-6") or a
+ *    passage from verse 1 opens the chapter at its top.
+ */
+export function passageHref(found: PassageLookup): string | null {
+	const at = found.bible_chapter;
+	if (!at) return null;
+	if (!/\d$/.test(found.reference.trim())) return `/books/${at.slug}`;
+	const chapter = bookChapterPath(at.slug, at.order, false);
+	// Verse 1 is the chapter's top (and its number is not printed there).
+	const verse = found.verses[0]?.number ?? 1;
+	return verse > 1 ? `${chapter}#v${verse}` : chapter;
+}
+
+/** Every name and abbreviation the canon goes by, lower-cased, plus the
+ *  singular "Psalm" and the "Song of Solomon" the resolver also knows. */
+const BOOK_NAMES = new Set(
+	[...CANON.flat(), 'Psalm', 'Song of Solomon'].map((n) => n.toLowerCase())
+);
+
+/**
+ * Whether the hub's passage box should ask the resolver: anything naming a
+ * chapter (`mayBeReference`: it has a digit), or a book named on its own
+ * ("Romans", "1 John", "Ps") — which opens that book's page. Any other word
+ * ("grace") goes straight to search.
+ */
+export const mayBePassage = (q: string): boolean =>
+	/\d/.test(q) || BOOK_NAMES.has(q.trim().replace(/\.$/, '').replace(/\s+/g, ' ').toLowerCase());
+
+/** One step of the hub's "Where to start" path. */
+export interface BibleStart {
+	/** The Bible book's slug (its `the-bible` series volume). */
+	slug: string;
+	/** Why this book, and why now — English, as the hub is (BIBLE_LOCALES). */
+	why: string;
+}
+
+/**
+ * The hub's "Where to start": five books for a first reader, in reading order.
+ * A Gospel first, the shortest; then the one written "that you may believe";
+ * then the beginning; then the prayer book; then the gospel explained. The
+ * reasons are English prose like the rest of the hub's own copy: the hub exists
+ * only where the Bible does, English today. A step whose book is missing in the
+ * series (`bibleStarts`) is left out.
+ */
+export const BIBLE_STARTS: readonly BibleStart[] = [
+	{ slug: 'gospel-of-mark', why: 'The shortest Gospel, and the quickest: the life of Jesus in one sitting.' },
+	{ slug: 'gospel-of-john', why: 'Written “so that you may believe”: who Jesus is, in his own words.' },
+	{ slug: 'genesis', why: 'The beginning: creation, the fall, and God’s promise to Abraham.' },
+	{ slug: 'psalms', why: 'The Bible’s prayer book. Read one a day, aloud if you can.' },
+	{ slug: 'romans', why: 'The gospel set out step by step: sin, grace, faith and new life.' }
+];
+
+/** The "Where to start" steps the series has, each with its book, in order. */
+export function bibleStarts<T extends { slug: string }>(
+	books: readonly T[]
+): { book: T; why: string }[] {
+	const bySlug = new Map(books.map((b) => [b.slug, b]));
+	return BIBLE_STARTS.flatMap((s) => {
+		const book = bySlug.get(s.slug);
+		return book ? [{ book, why: s.why }] : [];
+	});
+}
+
+/**
+ * The Bible chapters among `books` (1,189 for the 66): each book's reader
+ * chapters less its introduction and conclusion, the two `build_owb_book` sets
+ * around the Bible's own.
+ */
+export const bibleChapterCount = (books: readonly { chapter_count?: number }[]): number =>
+	books.reduce((n, b) => n + Math.max(0, (b.chapter_count ?? 0) - 2), 0);
