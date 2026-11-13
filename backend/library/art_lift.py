@@ -33,6 +33,7 @@ ART_LIFT: dict[str, float] = {
     "c-t-studd-a-life-children": 1.30,
     "c-t-studd-a-life-teens": 1.40,
     "catena-on-john": 1.45,
+    "catena-on-the-psalms": 1.45,
     "christ-the-healer": 1.45,
     "confessions-teens": 1.45,
     "corrie-ten-boom-a-life-children": 1.45,
