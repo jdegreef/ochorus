@@ -1,0 +1,273 @@
+{
+ "_note": [
+  "Vendored from the Open Word Bible (CC0, https://github.com/jdegreef/open-word-bible)",
+  "at commit b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092: data/headings/ROM.json (English section headings, settings at their",
+  "defaults) and data/summaries/ROM.json (English chapter summaries). The catena's passages",
+  "follow these sections; build_catena reads this file, never the OWB checkout."
+ ],
+ "owb_commit": "b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092",
+ "sections": [
+  {
+   "start": "1:1",
+   "title": "Greeting"
+  },
+  {
+   "start": "1:8",
+   "title": "Paul longs to visit Rome"
+  },
+  {
+   "start": "1:16",
+   "title": "The power of the gospel"
+  },
+  {
+   "start": "1:18",
+   "title": "Humanity turns from the Creator"
+  },
+  {
+   "start": "2:1",
+   "title": "God judges without favor"
+  },
+  {
+   "start": "2:12",
+   "title": "The law and those without it"
+  },
+  {
+   "start": "2:17",
+   "title": "Teaching others, not yourself"
+  },
+  {
+   "start": "2:25",
+   "title": "Circumcision of the heart"
+  },
+  {
+   "start": "3:1",
+   "title": "God is faithful"
+  },
+  {
+   "start": "3:9",
+   "title": "No one is righteous"
+  },
+  {
+   "start": "3:21",
+   "title": "God’s righteousness through faith"
+  },
+  {
+   "start": "3:27",
+   "title": "No room for boasting"
+  },
+  {
+   "start": "4:1",
+   "title": "Abraham counted righteous by faith"
+  },
+  {
+   "start": "4:13",
+   "title": "The promise comes through faith"
+  },
+  {
+   "start": "4:16",
+   "title": "Abraham, the father of us all"
+  },
+  {
+   "start": "4:23",
+   "title": "Written for us too"
+  },
+  {
+   "start": "5:1",
+   "title": "At peace with God through faith"
+  },
+  {
+   "start": "5:6",
+   "title": "God’s love shown while we were sinners"
+  },
+  {
+   "start": "5:12",
+   "title": "Through one man sin, through one man grace"
+  },
+  {
+   "start": "6:1",
+   "title": "Dead to sin, alive to God"
+  },
+  {
+   "start": "6:15",
+   "title": "Slaves of righteousness"
+  },
+  {
+   "start": "7:1",
+   "title": "Free from the law"
+  },
+  {
+   "start": "7:7",
+   "title": "The law and sin"
+  },
+  {
+   "start": "7:14",
+   "title": "Wanting the good, not doing it"
+  },
+  {
+   "start": "8:1",
+   "title": "Set free by the Spirit of life"
+  },
+  {
+   "start": "8:12",
+   "title": "God’s children by the Spirit"
+  },
+  {
+   "start": "8:18",
+   "title": "Creation waits to be set free"
+  },
+  {
+   "start": "8:26",
+   "title": "The Spirit pleads for us"
+  },
+  {
+   "start": "8:28",
+   "title": "Called according to God’s purpose"
+  },
+  {
+   "start": "8:31",
+   "title": "If God is on our side"
+  },
+  {
+   "start": "9:1",
+   "title": "Paul’s grief for Israel"
+  },
+  {
+   "start": "9:6",
+   "title": "God’s word has not failed"
+  },
+  {
+   "start": "9:14",
+   "title": "Is God unjust?"
+  },
+  {
+   "start": "9:19",
+   "title": "The potter and the clay"
+  },
+  {
+   "start": "9:30",
+   "title": "Israel and the stone of stumbling"
+  },
+  {
+   "start": "10:1",
+   "title": "The righteousness that comes by faith"
+  },
+  {
+   "start": "10:14",
+   "title": "How will they hear?"
+  },
+  {
+   "start": "10:18",
+   "title": "Israel heard and refused"
+  },
+  {
+   "start": "11:1",
+   "title": "The remnant of Israel"
+  },
+  {
+   "start": "11:11",
+   "title": "Israel’s stumbling and the Gentiles’ salvation"
+  },
+  {
+   "start": "11:17",
+   "title": "The olive tree and its branches"
+  },
+  {
+   "start": "11:25",
+   "title": "All Israel will be saved"
+  },
+  {
+   "start": "11:33",
+   "title": "Praise to God’s wisdom"
+  },
+  {
+   "start": "12:1",
+   "title": "A living sacrifice"
+  },
+  {
+   "start": "12:3",
+   "title": "One body, many gifts"
+  },
+  {
+   "start": "12:9",
+   "title": "Love without pretense"
+  },
+  {
+   "start": "13:1",
+   "title": "Living under governing authorities"
+  },
+  {
+   "start": "13:8",
+   "title": "Love fulfills the law"
+  },
+  {
+   "start": "13:11",
+   "title": "The day is near"
+  },
+  {
+   "start": "14:1",
+   "title": "The weak and the strong"
+  },
+  {
+   "start": "14:10",
+   "title": "We will all stand before God"
+  },
+  {
+   "start": "14:13",
+   "title": "Do not make another believer stumble"
+  },
+  {
+   "start": "15:1",
+   "title": "Bearing with the weak, as Christ did"
+  },
+  {
+   "start": "15:7",
+   "title": "The Gentiles glorify God for his mercy"
+  },
+  {
+   "start": "15:14",
+   "title": "Paul’s work as a minister to the Gentiles"
+  },
+  {
+   "start": "15:22",
+   "title": "Paul’s plans: Jerusalem, Rome and Spain"
+  },
+  {
+   "start": "15:30",
+   "title": "A request for prayer"
+  },
+  {
+   "start": "16:1",
+   "title": "Paul commends Phoebe"
+  },
+  {
+   "start": "16:3",
+   "title": "Greetings to believers in Rome"
+  },
+  {
+   "start": "16:17",
+   "title": "A warning against those who divide"
+  },
+  {
+   "start": "16:21",
+   "title": "Greetings from Paul’s companions"
+  }
+ ],
+ "summaries": {
+  "1": "Paul greets the believers in Rome, longs to visit them, and declares that the gospel is the power of God for salvation to everyone who believes. Humanity has turned from the Creator to idols, and God has given people over to what they desire.",
+  "2": "God judges everyone without favor, Jews and Gentiles alike, by what they have done. Those who teach the law must keep it, and true circumcision is a matter of the heart, by the Spirit.",
+  "3": "God remains faithful even when people are not, and no one is righteous; all have sinned. Now God’s righteousness has been shown apart from the law, through faith in Jesus, for all who believe, which leaves no room for boasting.",
+  "4": "Abraham was counted righteous by faith before he was circumcised, so he is the father of all who believe. The promise comes through faith, and Abraham’s story was written for us too, who believe in God who raised Jesus from the dead.",
+  "5": "Made righteous by faith, we have peace with God, and God’s love is shown in that Jesus died for us while we were still sinners. As sin and death came into the world through one man, Adam, so grace and life come through one man, Jesus.",
+  "6": "Believers have died to sin with Jesus in baptism and been raised to live a new life for God. Once slaves of sin, they are now slaves of righteousness, for the wages of sin is death but God’s gift is eternal life.",
+  "7": "Believers have been set free from the law as a widow is free to marry again. The law is holy, but sin uses it to bring death, and Paul describes the struggle of wanting the good and not doing it.",
+  "8": "There is no condemnation for those who belong to Jesus, for the Spirit of life has set them free. The Spirit makes them God’s children, creation waits to be set free, the Spirit pleads for them, and nothing can separate them from the love of God.",
+  "9": "Paul grieves for Israel, his own people, and shows that God’s word has not failed, for God chooses freely, as a potter shapes the clay. Israel pursued righteousness by works and stumbled over the stone God laid in Zion.",
+  "10": "The righteousness that comes by faith is near: whoever confesses that Jesus is Lord and believes that God raised Jesus will be saved. Since people cannot call on one they have not heard of, messengers must be sent, though Israel heard and refused.",
+  "11": "God has not rejected Israel; a remnant remains, and Israel’s stumbling has brought salvation to the Gentiles. Paul pictures an olive tree with branches broken off and others grafted in, declares that all Israel will be saved, and ends in praise of God’s wisdom.",
+  "12": "Paul urges the believers to offer themselves as a living sacrifice and to be transformed. They are one body with many gifts, and their love must be without pretense, overcoming evil with good.",
+  "13": "Believers are to submit to the governing authorities and pay what they owe. Love fulfills the law, and since the day is near, they are to put on the Lord Jesus.",
+  "14": "The strong and the weak in faith must not judge one another over food or special days, since all will stand before God. No one should make another believer stumble, for the kingdom of God is righteousness, peace and joy in the Holy Spirit.",
+  "15": "The strong are to bear with the weak, as Jesus did, so that Jews and Gentiles together glorify God for mercy shown. Paul describes his work as a minister to the Gentiles, his plans to visit Rome on the way to Spain, and asks for prayer.",
+  "16": "Paul commends Phoebe and greets many believers in Rome by name. He warns against those who cause divisions, sends greetings from his companions, and closes with praise to God."
+ }
+}

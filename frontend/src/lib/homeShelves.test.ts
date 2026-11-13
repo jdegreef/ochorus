@@ -120,6 +120,51 @@ describe('deriveHomeShelves', () => {
 		expect(few.plans?.picks).toHaveLength(3);
 	});
 
+	it('fills three sermon tabs without repeats: the sermons page picks, short ones, then the newest', () => {
+		const sermon = (slug: string, preacher: string, word_count: number, created_at: string) =>
+			({
+				slug,
+				title: slug,
+				word_count,
+				created_at,
+				summary: '',
+				scripture_ref: '',
+				language: 'en',
+				topics: [],
+				author: { slug: preacher, name: preacher, photo_url: '' }
+			}) as unknown as SermonSummary;
+		const shelf = [
+			...Array.from({ length: 6 }, (_, i) => sermon(`short${i}`, `p${i}`, 1000, '2026-01-01')),
+			...Array.from({ length: 6 }, (_, i) => sermon(`long${i}`, `q${i}`, 9000, `2026-10-0${i + 1}`))
+		];
+		const home = deriveHomeShelves(lists({ sermons: shelf }), 20000).sermons;
+		expect(home?.total).toBe(12);
+		const all = [...(home?.start ?? []), ...(home?.short ?? []), ...(home?.recent ?? [])].map((s) => s.slug);
+		expect(new Set(all).size).toBe(all.length);
+		// Under 10 minutes at the default pace: only the 1,000-word sermons.
+		expect(home?.short.length).toBeGreaterThan(0);
+		expect(home?.short.every((s) => s.word_count === 1000)).toBe(true);
+		// The newest first, by date added, of what the other tabs left.
+		const added = new Map(shelf.map((s) => [s.slug, s.created_at]));
+		const recent = home?.recent.map((s) => added.get(s.slug) ?? '') ?? [];
+		expect(recent.length).toBeGreaterThan(0);
+		expect(recent).toEqual([...recent].sort().reverse());
+		// A row carries only what it draws.
+		expect(Object.keys(home!.start[0]).sort()).toEqual([
+			'author',
+			'language',
+			'scripture_ref',
+			'slug',
+			'summary',
+			'title',
+			'word_count'
+		]);
+	});
+
+	it('leaves the sermon shelf out where a language has too few sermons', () => {
+		expect(deriveHomeShelves(lists(), 20000).sermons).toBeUndefined();
+	});
+
 	it('never fills the hero with a young-reader edition, and holds only what there is', () => {
 		const young = [book('x-children', 'y1'), book('x-teens', 'y2')];
 		// One curated book, two young-reader editions and one other full text:

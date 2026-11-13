@@ -1790,5 +1790,14 @@
   "calendar_locked": "يُفتح في %date%",
   "calendar_open_today": "افتح باب اليوم",
   "calendar_see_doors": "شاهد الأبواب",
-  "bible_canon_label": "أسفار الكتاب المقدس"
+  "bible_canon_label": "أسفار الكتاب المقدس",
+  "footer_cta_book_title": "احفظ موضعك في %title%",
+  "footer_cta_book_text": "تابع من السطر نفسه على أي جهاز.",
+  "footer_cta_sermon_title": "احفظ «%title%» لوقت لاحق",
+  "footer_cta_sermon_text": "اجمع على رفّك العظات التي تريد قراءتها أو سماعها مجددًا.",
+  "footer_cta_author_title": "احفظ كتب %name% على رفّك",
+  "footer_cta_author_text": "احفظ الكتب والعظات بلمسة واحدة، على كل أجهزتك.",
+  "footer_cta_plan_text": "علّم على كل يوم من أي جهاز، مع بريد يومي إن شئت.",
+  "footer_cta_season_starts": "يبدأ %date%",
+  "footer_cta_season_text": "باب كل يوم حتى عيد الميلاد. الحساب المجاني يحفظ سلسلتك وموضع قراءتك على كل أجهزتك."
 }

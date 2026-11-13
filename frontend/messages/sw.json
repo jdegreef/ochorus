@@ -1790,5 +1790,14 @@
   "calendar_locked": "Utafunguliwa %date%",
   "calendar_open_today": "Fungua mlango wa leo",
   "calendar_see_doors": "Tazama milango",
-  "bible_canon_label": "Vitabu vya Biblia"
+  "bible_canon_label": "Vitabu vya Biblia",
+  "footer_cta_book_title": "Hifadhi mahali ulipofikia katika %title%",
+  "footer_cta_book_text": "Endelea kwenye mstari uleule kwenye kifaa chochote.",
+  "footer_cta_sermon_title": "Hifadhi “%title%” kwa ajili ya baadaye",
+  "footer_cta_sermon_text": "Weka kwenye rafu yako mahubiri unayotaka kusoma au kusikiliza tena.",
+  "footer_cta_author_title": "Weka vitabu vya %name% kwenye rafu yako",
+  "footer_cta_author_text": "Hifadhi vitabu na mahubiri kwa mguso mmoja, kwenye kila kifaa.",
+  "footer_cta_plan_text": "Weka alama kila siku kwenye kifaa chochote, na barua pepe ya kila siku ukipenda.",
+  "footer_cta_season_starts": "Inaanza %date%",
+  "footer_cta_season_text": "Mlango mmoja kila siku hadi Krismasi. Akaunti ya bila malipo huhifadhi mfululizo wako na mahali ulipofikia kwenye kila kifaa."
 }

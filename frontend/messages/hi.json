@@ -1790,5 +1790,14 @@
   "calendar_locked": "%date% को खुलेगा",
   "calendar_open_today": "आज का द्वार खोलें",
   "calendar_see_doors": "द्वार देखें",
-  "bible_canon_label": "बाइबल की पुस्तकें"
+  "bible_canon_label": "बाइबल की पुस्तकें",
+  "footer_cta_book_title": "%title% में अपनी जगह सहेजें",
+  "footer_cta_book_text": "किसी भी डिवाइस पर उसी पंक्ति से आगे पढ़ें।",
+  "footer_cta_sermon_title": "“%title%” को बाद के लिए सहेजें",
+  "footer_cta_sermon_text": "जिन उपदेशों को आप पढ़ना या फिर से सुनना चाहते हैं, उन्हें अपनी बुकशेल्फ़ पर रखें।",
+  "footer_cta_author_title": "%name% की किताबें अपनी बुकशेल्फ़ पर रखें",
+  "footer_cta_author_text": "एक टैप में किताबें और उपदेश सहेजें, हर डिवाइस पर।",
+  "footer_cta_plan_text": "हर दिन किसी भी डिवाइस पर टिक करें, और चाहें तो रोज़ ईमेल पाएँ।",
+  "footer_cta_season_starts": "%date% से शुरू",
+  "footer_cta_season_text": "क्रिसमस तक हर दिन एक द्वार। एक मुफ़्त खाता आपकी स्ट्रीक और पढ़ने की जगह हर डिवाइस पर सहेजता है।"
 }

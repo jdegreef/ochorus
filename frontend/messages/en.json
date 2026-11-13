@@ -1790,5 +1790,14 @@
   "calendar_locked": "Opens on %date%",
   "calendar_open_today": "Open today’s door",
   "calendar_see_doors": "See the doors",
-  "bible_canon_label": "Books of the Bible"
+  "bible_canon_label": "Books of the Bible",
+  "footer_cta_book_title": "Keep your place in %title%",
+  "footer_cta_book_text": "Pick up at the same line on any device.",
+  "footer_cta_sermon_title": "Save “%title%” for later",
+  "footer_cta_sermon_text": "Keep the sermons you want to read or hear again on your shelf.",
+  "footer_cta_author_title": "Keep %name%’s books on your shelf",
+  "footer_cta_author_text": "Save books and sermons with one tap, on every device.",
+  "footer_cta_plan_text": "Tick off each day on any device, with a daily email if you want one.",
+  "footer_cta_season_starts": "Begins %date%",
+  "footer_cta_season_text": "A door a day until Christmas. A free account keeps your streak and your place on every device."
 }

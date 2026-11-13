@@ -1,0 +1,26 @@
+{
+    "kind": "sermon",
+    "slug": "breaking-up-the-fallow-ground",
+    "language": "pt",
+    "job_issue": 7972,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Hosea 10:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Matthew 7:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 40
+        },
+        {
+            "reference": "Revelation 2:5",
+            "status": "self_rendered",
+            "block_index": 55
+        }
+    ]
+}

@@ -1,0 +1,637 @@
+{
+ "_note": [
+  "Vendored from the Open Word Bible (CC0, https://github.com/jdegreef/open-word-bible)",
+  "at commit b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092: data/headings/MAT.json (English section headings, settings at their",
+  "defaults) and data/summaries/MAT.json (English chapter summaries). The catena's passages",
+  "follow these sections; build_catena reads this file, never the OWB checkout."
+ ],
+ "owb_commit": "b96d04726de9e1b1c10a8dbf6c0a7e9e7f3a1092",
+ "sections": [
+  {
+   "start": "1:1",
+   "title": "The ancestors of Jesus"
+  },
+  {
+   "start": "1:18",
+   "title": "The birth of Jesus"
+  },
+  {
+   "start": "2:1",
+   "title": "The magi visit the child"
+  },
+  {
+   "start": "2:13",
+   "title": "The escape to Egypt"
+  },
+  {
+   "start": "2:16",
+   "title": "Herod kills the boys of Bethlehem"
+  },
+  {
+   "start": "2:19",
+   "title": "The return to Nazareth"
+  },
+  {
+   "start": "3:1",
+   "title": "John the Baptist prepares the way"
+  },
+  {
+   "start": "3:13",
+   "title": "The baptism of Jesus"
+  },
+  {
+   "start": "4:1",
+   "title": "The testing of Jesus"
+  },
+  {
+   "start": "4:12",
+   "title": "Jesus begins in Galilee"
+  },
+  {
+   "start": "4:18",
+   "title": "The first disciples"
+  },
+  {
+   "start": "4:23",
+   "title": "Teaching and healing in Galilee"
+  },
+  {
+   "start": "5:1",
+   "title": "The Sermon on the Mount"
+  },
+  {
+   "start": "5:13",
+   "title": "Salt and light"
+  },
+  {
+   "start": "5:17",
+   "title": "Jesus and the law"
+  },
+  {
+   "start": "5:21",
+   "title": "Anger"
+  },
+  {
+   "start": "5:27",
+   "title": "Adultery"
+  },
+  {
+   "start": "5:31",
+   "title": "Divorce"
+  },
+  {
+   "start": "5:33",
+   "title": "Oaths"
+  },
+  {
+   "start": "5:38",
+   "title": "Do not take revenge"
+  },
+  {
+   "start": "5:43",
+   "title": "Love your enemies"
+  },
+  {
+   "start": "6:1",
+   "title": "Not for show"
+  },
+  {
+   "start": "6:5",
+   "title": "Prayer"
+  },
+  {
+   "start": "6:9",
+   "title": "The Lord’s Prayer"
+  },
+  {
+   "start": "6:16",
+   "title": "Fasting"
+  },
+  {
+   "start": "6:19",
+   "title": "Treasure in heaven"
+  },
+  {
+   "start": "6:25",
+   "title": "Do not worry"
+  },
+  {
+   "start": "7:1",
+   "title": "Judging others"
+  },
+  {
+   "start": "7:7",
+   "title": "Ask, seek, knock"
+  },
+  {
+   "start": "7:13",
+   "title": "The narrow gate"
+  },
+  {
+   "start": "7:15",
+   "title": "Known by their fruit"
+  },
+  {
+   "start": "7:21",
+   "title": "I never knew you"
+  },
+  {
+   "start": "7:24",
+   "title": "Two builders"
+  },
+  {
+   "start": "7:28",
+   "title": "Teaching with authority"
+  },
+  {
+   "start": "8:1",
+   "title": "Jesus heals a man with leprosy"
+  },
+  {
+   "start": "8:5",
+   "title": "The centurion’s faith"
+  },
+  {
+   "start": "8:14",
+   "title": "Healing at Peter’s house"
+  },
+  {
+   "start": "8:18",
+   "title": "The cost of following Jesus"
+  },
+  {
+   "start": "8:23",
+   "title": "Jesus calms the storm"
+  },
+  {
+   "start": "9:1",
+   "title": "Jesus forgives and heals a paralyzed man"
+  },
+  {
+   "start": "9:9",
+   "title": "The call of Matthew"
+  },
+  {
+   "start": "9:14",
+   "title": "A question about fasting"
+  },
+  {
+   "start": "9:18",
+   "title": "A leader’s daughter and a woman’s faith"
+  },
+  {
+   "start": "9:27",
+   "title": "Two blind men"
+  },
+  {
+   "start": "9:32",
+   "title": "A man who could not speak"
+  },
+  {
+   "start": "9:35",
+   "title": "The harvest is large"
+  },
+  {
+   "start": "10:1",
+   "title": "Jesus names twelve apostles"
+  },
+  {
+   "start": "10:5",
+   "title": "The twelve sent to the lost sheep of Israel"
+  },
+  {
+   "start": "10:16",
+   "title": "Sheep among wolves"
+  },
+  {
+   "start": "10:26",
+   "title": "Fear God, not people"
+  },
+  {
+   "start": "10:34",
+   "title": "A sword that divides households"
+  },
+  {
+   "start": "10:40",
+   "title": "Welcome and its reward"
+  },
+  {
+   "start": "11:2",
+   "title": "John’s question from prison"
+  },
+  {
+   "start": "11:7",
+   "title": "Jesus speaks about John"
+  },
+  {
+   "start": "11:16",
+   "title": "Children in the marketplace"
+  },
+  {
+   "start": "11:20",
+   "title": "Woe to the towns that did not repent"
+  },
+  {
+   "start": "11:25",
+   "title": "Hidden from the wise, shown to little children"
+  },
+  {
+   "start": "11:28",
+   "title": "Come to me and find rest"
+  },
+  {
+   "start": "12:1",
+   "title": "Lord of the Sabbath"
+  },
+  {
+   "start": "12:9",
+   "title": "Doing good on the Sabbath"
+  },
+  {
+   "start": "12:15",
+   "title": "God’s chosen servant"
+  },
+  {
+   "start": "12:22",
+   "title": "By the Spirit of God"
+  },
+  {
+   "start": "12:38",
+   "title": "The sign of Jonah"
+  },
+  {
+   "start": "12:43",
+   "title": "The unclean spirit returns"
+  },
+  {
+   "start": "12:46",
+   "title": "Those who do the Father’s will"
+  },
+  {
+   "start": "13:1",
+   "title": "Parables by the lake: the sower"
+  },
+  {
+   "start": "13:10",
+   "title": "Why Jesus speaks in parables"
+  },
+  {
+   "start": "13:18",
+   "title": "The sower explained"
+  },
+  {
+   "start": "13:24",
+   "title": "Weeds among the wheat"
+  },
+  {
+   "start": "13:31",
+   "title": "The mustard seed and the yeast"
+  },
+  {
+   "start": "13:36",
+   "title": "The weeds explained"
+  },
+  {
+   "start": "13:44",
+   "title": "Treasure, a pearl and a net"
+  },
+  {
+   "start": "14:1",
+   "title": "Herod and the death of John"
+  },
+  {
+   "start": "14:13",
+   "title": "Five loaves for a great crowd"
+  },
+  {
+   "start": "14:22",
+   "title": "Jesus comes to them across the water"
+  },
+  {
+   "start": "14:34",
+   "title": "Healing at Gennesaret"
+  },
+  {
+   "start": "15:1",
+   "title": "The elders’ tradition and God’s command"
+  },
+  {
+   "start": "15:10",
+   "title": "What makes a person unclean"
+  },
+  {
+   "start": "15:21",
+   "title": "A Canaanite mother’s faith"
+  },
+  {
+   "start": "15:29",
+   "title": "Healing on the mountain by the lake"
+  },
+  {
+   "start": "15:32",
+   "title": "Bread for four thousand"
+  },
+  {
+   "start": "16:1",
+   "title": "Asked for a sign from heaven"
+  },
+  {
+   "start": "16:5",
+   "title": "Watch out for their yeast"
+  },
+  {
+   "start": "16:13",
+   "title": "Peter’s answer at Caesarea Philippi"
+  },
+  {
+   "start": "16:21",
+   "title": "Jesus speaks of his coming death"
+  },
+  {
+   "start": "16:24",
+   "title": "Taking up the cross"
+  },
+  {
+   "start": "17:1",
+   "title": "Jesus transfigured on the mountain"
+  },
+  {
+   "start": "17:9",
+   "title": "Elijah has already come"
+  },
+  {
+   "start": "17:14",
+   "title": "A boy with seizures is healed"
+  },
+  {
+   "start": "17:22",
+   "title": "Jesus speaks again of his death and raising"
+  },
+  {
+   "start": "17:24",
+   "title": "The tax for God’s house"
+  },
+  {
+   "start": "18:1",
+   "title": "Who is greatest in the kingdom"
+  },
+  {
+   "start": "18:6",
+   "title": "Woe to those who trip up the little ones"
+  },
+  {
+   "start": "18:10",
+   "title": "The Father seeks the sheep that strays"
+  },
+  {
+   "start": "18:15",
+   "title": "When a fellow believer sins against you"
+  },
+  {
+   "start": "18:21",
+   "title": "How many times to forgive"
+  },
+  {
+   "start": "18:23",
+   "title": "The servant who would not forgive"
+  },
+  {
+   "start": "19:1",
+   "title": "Jesus leaves Galilee for Judea"
+  },
+  {
+   "start": "19:3",
+   "title": "A question about divorce"
+  },
+  {
+   "start": "19:10",
+   "title": "Those who do not marry"
+  },
+  {
+   "start": "19:13",
+   "title": "Jesus blesses the children"
+  },
+  {
+   "start": "19:16",
+   "title": "A young man asks about eternal life"
+  },
+  {
+   "start": "19:23",
+   "title": "Hard for the rich"
+  },
+  {
+   "start": "19:27",
+   "title": "What the Twelve will receive"
+  },
+  {
+   "start": "20:1",
+   "title": "Workers hired at every hour"
+  },
+  {
+   "start": "20:17",
+   "title": "A third warning of death and rising"
+  },
+  {
+   "start": "20:20",
+   "title": "A mother’s request for her sons"
+  },
+  {
+   "start": "20:24",
+   "title": "Great ones and servants"
+  },
+  {
+   "start": "20:29",
+   "title": "Two blind men by the Jericho road"
+  },
+  {
+   "start": "21:1",
+   "title": "The king comes to Jerusalem on a donkey"
+  },
+  {
+   "start": "21:12",
+   "title": "Jesus clears the temple"
+  },
+  {
+   "start": "21:18",
+   "title": "The fig tree with nothing but leaves"
+  },
+  {
+   "start": "21:23",
+   "title": "Who gave Jesus this authority?"
+  },
+  {
+   "start": "21:28",
+   "title": "Two sons and their father’s will"
+  },
+  {
+   "start": "21:33",
+   "title": "The tenants who killed the owner’s son"
+  },
+  {
+   "start": "22:1",
+   "title": "The king’s wedding banquet"
+  },
+  {
+   "start": "22:15",
+   "title": "A question about paying Caesar"
+  },
+  {
+   "start": "22:23",
+   "title": "Marriage and the resurrection"
+  },
+  {
+   "start": "22:34",
+   "title": "The command that ranks highest"
+  },
+  {
+   "start": "22:41",
+   "title": "Whose son is the Christ?"
+  },
+  {
+   "start": "23:1",
+   "title": "The teachers who sit in Moses’ seat"
+  },
+  {
+   "start": "23:13",
+   "title": "Woe to you, hypocrites"
+  },
+  {
+   "start": "23:29",
+   "title": "The blood of the prophets"
+  },
+  {
+   "start": "24:1",
+   "title": "Not one stone on another"
+  },
+  {
+   "start": "24:3",
+   "title": "The first birth pains"
+  },
+  {
+   "start": "24:15",
+   "title": "Flee to the mountains"
+  },
+  {
+   "start": "24:29",
+   "title": "The Son of Man on the clouds of heaven"
+  },
+  {
+   "start": "24:32",
+   "title": "Summer is near"
+  },
+  {
+   "start": "24:36",
+   "title": "Keep watch, for the day is unknown"
+  },
+  {
+   "start": "24:45",
+   "title": "The servant the master finds at work"
+  },
+  {
+   "start": "25:1",
+   "title": "Ten bridesmaids wait for the bridegroom"
+  },
+  {
+   "start": "25:14",
+   "title": "Servants entrusted with their master’s money"
+  },
+  {
+   "start": "25:31",
+   "title": "The Son of Man judges the nations"
+  },
+  {
+   "start": "26:1",
+   "title": "The plot against Jesus"
+  },
+  {
+   "start": "26:6",
+   "title": "A woman anoints Jesus at Bethany"
+  },
+  {
+   "start": "26:17",
+   "title": "The Passover with the Twelve"
+  },
+  {
+   "start": "26:36",
+   "title": "Jesus prays in Gethsemane"
+  },
+  {
+   "start": "26:47",
+   "title": "Judas’s kiss and the arrest"
+  },
+  {
+   "start": "26:57",
+   "title": "Jesus before the council"
+  },
+  {
+   "start": "27:1",
+   "title": "Jesus handed over to Pilate"
+  },
+  {
+   "start": "27:3",
+   "title": "Judas and the thirty pieces of silver"
+  },
+  {
+   "start": "27:11",
+   "title": "Jesus before the governor"
+  },
+  {
+   "start": "27:27",
+   "title": "The soldiers mock the King of the Jews"
+  },
+  {
+   "start": "27:32",
+   "title": "Jesus is crucified"
+  },
+  {
+   "start": "27:45",
+   "title": "The death of Jesus"
+  },
+  {
+   "start": "27:57",
+   "title": "The burial and the guard at the tomb"
+  },
+  {
+   "start": "28:1",
+   "title": "The tomb is empty"
+  },
+  {
+   "start": "28:11",
+   "title": "The guards’ story"
+  },
+  {
+   "start": "28:16",
+   "title": "Sent to all the nations"
+  }
+ ],
+ "summaries": {
+  "1": "The genealogy of Jesus runs from Abraham through David to Joseph, the husband of Mary. An angel tells Joseph in a dream that the child conceived in Mary is from the Holy Spirit, and Joseph names the child Jesus.",
+  "2": "Magi from the east follow a star to Bethlehem and worship the child. Warned in a dream, Joseph takes the family to Egypt while Herod kills the boys of Bethlehem, and after Herod dies they settle in Nazareth.",
+  "3": "John the Baptist preaches repentance in the wilderness of Judea and baptizes in the Jordan. When Jesus is baptized, the Spirit of God comes down like a dove and a voice from heaven names Jesus as God’s beloved Son.",
+  "4": "The devil tests Jesus in the wilderness, and Jesus answers each time from Scripture. In Galilee Jesus begins to proclaim the kingdom of heaven, calls four fishermen, and teaches and heals throughout the region.",
+  "5": "On a mountain Jesus begins the Sermon on the Mount with the blessings, calls the disciples salt and light, and says the law is not abolished but fulfilled. Jesus goes deeper than the commandments on anger, adultery, divorce, oaths and revenge, and commands love for enemies.",
+  "6": "Jesus warns against giving, praying and fasting for show and teaches the Lord’s Prayer. Treasure in heaven matters more than wealth, and those who seek God’s kingdom first need not worry about tomorrow.",
+  "7": "Jesus warns against judging others, urges asking, seeking and knocking, and points to the narrow gate and to prophets known by their fruit. The sermon ends with two builders, one on rock and one on sand, and the crowds are amazed at teaching with authority.",
+  "8": "Jesus heals a man with leprosy, a centurion’s servant and Peter’s mother-in-law, and speaks of the cost of following. Jesus calms a storm on the lake and frees two men from demons, which go into a herd of pigs.",
+  "9": "Jesus forgives and heals a paralyzed man, calls Matthew from the tax office and answers a question about fasting. A leader’s daughter is raised, a woman is healed by touching Jesus’s cloak, two blind men see and a man who could not speak talks; the harvest is large, but the workers are few.",
+  "10": "Jesus names the twelve apostles and sends them to the lost sheep of Israel with authority to heal. Jesus warns that they go as sheep among wolves, tells them to fear God rather than people, and promises a reward to whoever welcomes them.",
+  "11": "From prison John the Baptist asks whether Jesus is the one who is to come, and Jesus answers and then speaks about John. Jesus reproaches the towns that did not repent and invites all who are weary to come and find rest.",
+  "12": "Jesus is Lord of the Sabbath and heals a man on the Sabbath, fulfilling Isaiah’s words about God’s chosen servant. Accused of driving out demons by Beelzebul, Jesus answers that it is by the Spirit of God, offers only the sign of Jonah, and names as family those who do the Father’s will.",
+  "13": "By the lake Jesus tells parables of the kingdom: the sower, the weeds among the wheat, the mustard seed, the yeast, the hidden treasure, the pearl and the net. Jesus explains them to the disciples, but in Nazareth the people take offense.",
+  "14": "Herod has John the Baptist beheaded. Jesus feeds a great crowd with five loaves and two fish, comes to the disciples across the water, where Peter starts to sink, and heals the sick at Gennesaret.",
+  "15": "Jesus tells the Pharisees and scribes that their tradition sets aside God’s command and that what makes a person unclean comes from the heart. A Canaanite mother’s faith wins healing for her daughter, and Jesus heals many by the lake and feeds four thousand.",
+  "16": "Jesus refuses the leaders a sign and warns against the yeast of the Pharisees and Sadducees. At Caesarea Philippi Peter declares who Jesus is, and Jesus begins to speak of suffering, death and rising, and of taking up the cross.",
+  "17": "Jesus is transfigured on the mountain and explains that Elijah has already come. Jesus heals a boy with seizures, speaks again of death and raising, and provides the tax for God’s house from the mouth of a fish.",
+  "18": "Jesus teaches that the greatest in the kingdom is the one who becomes like a child, warns against tripping up the little ones and tells of the Father seeking a sheep that strays. Jesus teaches how to deal with a fellow believer’s sin and to forgive without limit, telling of a servant who would not forgive.",
+  "19": "In Judea Jesus answers a question about divorce, blesses the children and tells a young man who asks about eternal life to sell what he has. It is hard for the rich to enter the kingdom, but the Twelve will receive a great reward.",
+  "20": "Jesus tells of workers hired at every hour and paid the same, and warns a third time of death and rising. When a mother asks for places of honor for her sons, Jesus says the great must be servants, and two blind men near Jericho receive their sight.",
+  "21": "Jesus comes into Jerusalem on a donkey, clears the temple and curses a fig tree with nothing but leaves. When the leaders question Jesus’s authority, Jesus answers with the parables of the two sons and of the tenants who killed the owner’s son.",
+  "22": "Jesus tells of a king’s wedding banquet and answers questions about paying Caesar, marriage at the resurrection and the command that ranks highest. Then Jesus asks the Pharisees how David’s son can also be David’s Lord, and no one can answer.",
+  "23": "Jesus warns the crowds and disciples about the scribes and Pharisees, who sit in Moses’ seat but do not practice what they teach. A series of woes against the hypocrites ends in a lament over Jerusalem, which kills the prophets.",
+  "24": "Jesus foretells the temple’s destruction and speaks of the first birth pains, the call to flee to the mountains and the coming of the Son of Man on the clouds of heaven. No one knows the day, so the servants must keep watch.",
+  "25": "Jesus tells of ten bridesmaids waiting for the bridegroom and of servants entrusted with their master’s money. The Son of Man will judge the nations, and what was done for the least of these was done for the king.",
+  "26": "The leaders plot against Jesus, a woman anoints Jesus at Bethany, and Judas agrees to hand Jesus over for thirty pieces of silver. At the Passover with the Twelve Jesus gives the bread and the cup, prays in Gethsemane, and is arrested and condemned by the council, while Peter denies Jesus three times.",
+  "27": "Jesus is handed over to Pilate, and Judas, seized with remorse, hangs himself. The crowd chooses Barabbas, the soldiers mock Jesus as King of the Jews, and Jesus is crucified and dies; Joseph of Arimathea buries the body and a guard is set at the tomb.",
+  "28": "At dawn the women find the tomb empty and meet the risen Jesus, while the guards are paid to spread a false story. On a mountain in Galilee Jesus sends the eleven disciples to make disciples of all the nations."
+ }
+}

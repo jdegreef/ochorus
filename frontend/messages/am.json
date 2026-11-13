@@ -1790,5 +1790,14 @@
   "calendar_locked": "%date% ይከፈታል",
   "calendar_open_today": "የዛሬውን በር ይክፈቱ",
   "calendar_see_doors": "በሮቹን ይመልከቱ",
-  "bible_canon_label": "የመጽሐፍ ቅዱስ መጻሕፍት"
+  "bible_canon_label": "የመጽሐፍ ቅዱስ መጻሕፍት",
+  "footer_cta_book_title": "በ%title% ያሉበትን ቦታ ይያዙ",
+  "footer_cta_book_text": "በማንኛውም መሣሪያ ላይ ከዚያው መስመር ይቀጥሉ።",
+  "footer_cta_sermon_title": "«%title%»ን ለበኋላ ያስቀምጡ",
+  "footer_cta_sermon_text": "ማንበብ ወይም ደግመው መስማት የሚፈልጉትን ስብከቶች በመደርደሪያዎ ላይ ያስቀምጡ።",
+  "footer_cta_author_title": "የ%name%ን መጻሕፍት በመደርደሪያዎ ላይ ያስቀምጡ",
+  "footer_cta_author_text": "መጻሕፍትንና ስብከቶችን በአንድ ንክኪ ያስቀምጡ፣ በሁሉም መሣሪያዎ ላይ።",
+  "footer_cta_plan_text": "በማንኛውም መሣሪያ ላይ እያንዳንዱን ቀን ምልክት ያድርጉ፣ ከፈለጉም በየቀኑ ኢሜይል ይቀበሉ።",
+  "footer_cta_season_starts": "%date% ይጀምራል",
+  "footer_cta_season_text": "እስከ ገና ድረስ በየቀኑ አንድ በር። በነጻ የሚከፍቱት መለያ ተከታታይ የንባብ ቀናትዎንና ያሉበትን ቦታ በሁሉም መሣሪያ ላይ ይጠብቃል።"
 }

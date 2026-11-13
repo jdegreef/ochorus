@@ -1790,5 +1790,14 @@
   "calendar_locked": "Se abre el %date%",
   "calendar_open_today": "Abre la puerta de hoy",
   "calendar_see_doors": "Ver las puertas",
-  "bible_canon_label": "Libros de la Biblia"
+  "bible_canon_label": "Libros de la Biblia",
+  "footer_cta_book_title": "Guarda tu punto de lectura en %title%",
+  "footer_cta_book_text": "Retoma en la misma línea desde cualquier dispositivo.",
+  "footer_cta_sermon_title": "Guarda «%title%» para más tarde",
+  "footer_cta_sermon_text": "Reúne en tu estantería los sermones que quieras leer o volver a escuchar.",
+  "footer_cta_author_title": "Guarda los libros de %name% en tu estantería",
+  "footer_cta_author_text": "Guarda libros y sermones con un toque, en todos tus dispositivos.",
+  "footer_cta_plan_text": "Marca cada día desde cualquier dispositivo, con un correo diario si lo deseas.",
+  "footer_cta_season_starts": "Comienza el %date%",
+  "footer_cta_season_text": "Una puerta cada día hasta Navidad. Una cuenta gratis conserva tu racha y tu punto de lectura en todos tus dispositivos."
 }
