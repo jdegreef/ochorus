@@ -434,6 +434,20 @@ def book_chapter_pages(book: bible.Book) -> dict[int, int]:
     }
 
 
+def bible_chapter_number(chapter) -> int | None:
+    """The Bible chapter a reader chapter of a Bible book IS, or None.
+
+    A Bible book is built as an introduction, one reader chapter per English
+    Bible chapter, then a conclusion (``build_owb_book``): reader chapter
+    ``order`` is Bible chapter ``order - 1``, and its title says so. Both must
+    agree — a drifted layout links nothing rather than the wrong chapter. None
+    for the introduction and conclusion.
+    """
+    m = _TRAILING_NUMBER.search(chapter.title or "")
+    n = int(m.group(1)) if m else None
+    return n if n is not None and n == chapter.order - 1 else None
+
+
 def classics_page(book: bible.Book, chapter, pages: dict[int, int]) -> dict | None:
     """The scripture page a reader chapter of a Bible book leads to.
 
@@ -450,9 +464,8 @@ def classics_page(book: bible.Book, chapter, pages: dict[int, int]) -> dict | No
     if not pages:
         return None
     slug = book_slug(book)
-    m = _TRAILING_NUMBER.search(chapter.title or "")
-    n = int(m.group(1)) if m else None
-    if n is not None and n == chapter.order - 1 and n in pages:
+    n = bible_chapter_number(chapter)
+    if n is not None and n in pages:
         return {"book": slug, "book_title": book.title, "chapter": n, "citing_count": pages[n]}
     return {"book": slug, "book_title": book.title, "chapter": None, "citing_count": None}
 
