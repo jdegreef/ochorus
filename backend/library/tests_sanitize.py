@@ -28,7 +28,7 @@ import json
 import re
 from pathlib import Path
 
-from django.test import TestCase
+from django.test import SimpleTestCase, TestCase
 
 from library.sanitize import clean_bio_html, clean_fragment
 
@@ -589,3 +589,21 @@ class StoredContentIsSafeTests(TestCase):
             "Biographies contain tags the sanitizer would strip — the file and "
             "the allowlist disagree about what a biography may contain.",
         )
+
+
+class VerseNumberTests(SimpleTestCase):
+    """A Bible verse number is the one `<sup>` that keeps attributes."""
+
+    def test_a_verse_number_keeps_its_class_and_anchor(self):
+        html = '<p><sup class="v" id="v16">16</sup>God so loved. <sup class="v">8:1</sup>At dawn</p>'
+        self.assertEqual(clean_fragment(html), html)
+
+    def test_anything_else_on_a_sup_is_stripped(self):
+        for html in (
+            '<p>A<sup class="v" onclick="x()">16</sup></p>',
+            '<p>A<sup class="v" id="top">16</sup></p>',
+            '<p>A<sup class="v">note</sup></p>',
+            '<p>A<sup class="v"><b>16</b></sup></p>',
+            '<p>A<sup class="fn">16</sup></p>',
+        ):
+            self.assertNotIn("class=", clean_fragment(html), html)

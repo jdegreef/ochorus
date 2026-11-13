@@ -38,6 +38,8 @@ from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup, Tag
 
+from library.text import VERSE_LABEL
+
 # --- chapter / sermon profile ----------------------------------------------
 
 # Tags kept in chapter bodies; everything else is unwrapped (text kept) or
@@ -312,6 +314,22 @@ def _settle_figures(node: Tag) -> None:
             cap.unwrap()
 
 
+def _is_verse_number(tag: Tag) -> bool:
+    """A `<sup>` that is exactly a Bible verse number (`text.VERSE_MARKER`):
+    class "v", an optional `id="v<n>"`, a verse label for its only content."""
+    cls = tag.get("class")
+    cls = " ".join(cls) if isinstance(cls, list) else cls
+    anchor = tag.get("id")
+    return (
+        cls == "v"
+        and set(tag.attrs) <= {"class", "id"}
+        and (anchor is None or bool(re.fullmatch(r"v\d{1,3}", anchor)))
+        and len(tag.contents) == 1
+        and isinstance(tag.contents[0], str)
+        and bool(VERSE_LABEL.fullmatch(tag.contents[0]))
+    )
+
+
 def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
     """Strip every attribute, keeping only the biography profile's two.
 
@@ -319,6 +337,12 @@ def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
     exactly what that allowed — in either profile.
     """
     if tag.name == "img":
+        return
+    if tag.name == "sup" and _is_verse_number(tag):
+        # A Bible verse number keeps its class (and anchor id) — see
+        # `text.VERSE_MARKER`, the one shape allowed.
+        tag.attrs = {k: tag.attrs[k] for k in ("class", "id") if k in tag.attrs}
+        tag["class"] = "v"
         return
     if not allow_bio_attrs:
         tag.attrs = {}

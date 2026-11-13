@@ -40,6 +40,7 @@ const MIN_RUN = 3;
 
 const PARA = /<p>([\s\S]*?)<\/p>/g;
 const TAG = /<[^>]+>/g;
+const VERSE_NUMBER = /<sup class="v"[^>]*>[^<]*<\/sup>/g;
 const ENTITY: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 /** A trailing scripture citation, "(1 Corinthians 1:2)": not part of the line. */
 const CITATION = /\s*\([^)]*\d[^)]*\)$/;
@@ -52,6 +53,8 @@ const CLOSE_QUOTE = /[”"][\s.,;:!?—-]*$/;
 
 function plain(inner: string): string {
 	return inner
+		// A Bible verse number (`<sup class="v">16</sup>`) is not part of the line.
+		.replace(VERSE_NUMBER, '')
 		.replace(TAG, '')
 		.replace(/&(#x[\da-f]+|#\d+|\w+);/gi, (m, e: string) =>
 			e[0] === '#' ? String.fromCodePoint(Number('0' + e.slice(1))) : (ENTITY[e] ?? m)

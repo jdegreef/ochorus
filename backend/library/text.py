@@ -26,6 +26,23 @@ _BLOCK_BREAK = re.compile(r"</(p|div|h[1-6]|li|blockquote|br|figcaption|figure)>
 _WS = re.compile(r"\s+")
 _TAG = re.compile(r"<[^>]+>")
 
+#: A Bible verse number, as `build_owb_book` sets one: `<sup class="v"
+#: id="v16">16</sup>`, or "8:1" / "33–34" with no id where the verse sits in
+#: another chapter or OWB prints two verses as one. It is for the eye and for a
+#: `#v16` link, never part of the prose: `body_text` (search), `word_count` and
+#: the reader's listen/search/quote surfaces (which drop every `<sup>`) all read
+#: the text as if it were not there. The sanitizer keeps exactly this shape and
+#: no other attribute on a chapter's `<sup>`.
+VERSE_LABEL = re.compile(r"\d{1,3}(?:[:\u2013]\d{1,3}){0,2}")
+VERSE_MARKER = re.compile(
+    r'<sup class="v"(?: id="v\d{1,3}")?>' + VERSE_LABEL.pattern + r"</sup>"
+)
+
+
+def without_verse_numbers(body_html: str) -> str:
+    """``body_html`` with every verse number taken out (see VERSE_MARKER)."""
+    return VERSE_MARKER.sub("", body_html) if '<sup class="v"' in body_html else body_html
+
 
 # What renders as nothing: whitespace, control and format characters (zero-width
 # spaces and joiners, the BOM, bidi marks — which `str.strip()` keeps), plus the
@@ -60,6 +77,7 @@ def is_blank_title(title) -> bool:
 
 
 def html_to_text(body_html: str) -> str:
+    body_html = without_verse_numbers(body_html)
     spaced = _BLOCK_BREAK.sub(" \\g<0>", body_html)
     # `" ".join(s.split())` is `_WS.sub(" ", s).strip()` exactly — `str.split()`
     # and `re`'s `\s` agree on every code point — but runs in C, where the
@@ -81,7 +99,7 @@ def text_of(html_str: str) -> str:
     the rule a stored count has to match; deriving one with ``html_to_text``
     instead undercounts every body that leans on inline markup.
     """
-    return _WS.sub(" ", _TAG.sub(" ", html_str)).strip()
+    return _WS.sub(" ", _TAG.sub(" ", without_verse_numbers(html_str))).strip()
 
 
 def word_count(html_str: str) -> int:
@@ -92,4 +110,4 @@ def word_count(html_str: str) -> int:
     verified equal on every stored chapter and sermon, and 4.8x faster, which
     is worth having in a rule ``save()` now runs on every write.
     """
-    return len(_TAG.sub(" ", html_str).split())
+    return len(_TAG.sub(" ", without_verse_numbers(html_str)).split())

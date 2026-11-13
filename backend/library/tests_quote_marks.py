@@ -431,3 +431,33 @@ class Migration0085Tests(TestCase):
 
         sermon.refresh_from_db()
         self.assertEqual(sermon.body_text, "«Ven», dijo.")
+
+
+class VerseNumberQuoteTests(SimpleTestCase):
+    """A Bible verse number is invisible to the open/close decision."""
+
+    def test_a_quotation_after_a_verse_number_opens(self):
+        out, _ = convert(
+            '<p>at his feet! <sup class="v" id="v9">9</sup>"Who are you?" he asked.</p>'
+            '<p><sup class="v" id="v1">1</sup>"Come," he said.</p>',
+            outer_guillemets=False,
+        )
+        self.assertIn('<sup class="v" id="v9">9</sup>“Who are you?”', out)
+        self.assertIn('<sup class="v" id="v1">1</sup>“Come,”', out)
+
+    def test_a_quotation_closing_before_a_verse_number_closes(self):
+        out, _ = convert('<p>"Go."<sup class="v" id="v2">2</sup>He went.</p>', outer_guillemets=False)
+        self.assertIn("“Go.”", out)
+
+
+class VerseNumberTextTests(SimpleTestCase):
+    """Search text and word counts read a chapter as if it had no verse numbers."""
+
+    def test_body_text_and_word_count_skip_verse_numbers(self):
+        from library.text import html_to_text, text_of
+        from library.text import word_count as count
+
+        html = '<p><sup class="v" id="v1">1</sup>In the beginning. <sup class="v">8:1</sup>God</p>'
+        self.assertEqual(html_to_text(html), "In the beginning. God")
+        self.assertEqual(text_of(html), "In the beginning. God")
+        self.assertEqual(count(html), 4)
