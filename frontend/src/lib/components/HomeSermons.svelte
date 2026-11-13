@@ -74,9 +74,9 @@
 					<a class="row-link min-w-0" {href}>
 						<span class="row-title block" lang={contentLang(s.language) || undefined} dir="auto">{s.title}</span>
 						<span class="block text-small text-muted"
-							>{s.author.name}{#if s.scripture_ref}<span class="sep" aria-hidden="true">·</span><span class="passage"
+							>{s.author.name}{#if s.scripture_ref}<span class="sep meta-sep" aria-hidden="true">·</span><span class="passage"
 									>{s.scripture_ref}</span
-								>{/if}<span class="sep" aria-hidden="true">·</span>{readingTime(s.word_count)}</span
+								>{/if}<span class="sep meta-sep" aria-hidden="true">·</span>{readingTime(s.word_count)}</span
 						>
 						{#if s.summary}
 							<span class="mt-0.5 line-clamp-1 text-small text-text" lang={contentLang(s.language) || undefined}
@@ -134,7 +134,8 @@
 	.row-link:focus-visible .row-title {
 		color: var(--accent);
 	}
-	.sep {
+	/* The house separator (app.css .sep) with room either side. */
+	.meta-sep {
 		margin-inline: 0.35em;
 	}
 	.passage {
