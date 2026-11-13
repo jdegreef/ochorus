@@ -193,6 +193,8 @@ interface Stored {
 	margin: Margin;
 	paged: boolean;
 	tapToScroll: boolean;
+	/** Verse numbers in a book of the Bible (on unless the reader hides them). */
+	verseNumbers: boolean;
 	/** A candle's warm glow over the top of the page, in Lamplight (on unless
 	 *  the reader turns it off). */
 	candlelight: boolean;
@@ -224,6 +226,7 @@ const DEFAULTS: Stored = {
 	// of the sibling idea (edge-tap to change chapter) was a footgun on phones
 	// and was removed; this one only turns on when a reader asks for it.
 	tapToScroll: false,
+	verseNumbers: true,
 	candlelight: true,
 	candlelightChosen: false,
 	preferModern: false,
@@ -320,6 +323,8 @@ export function load(): Stored & { migrated: boolean } {
 		paged: typeof raw.paged === 'boolean' ? raw.paged : firstRun.paged,
 		tapToScroll:
 			typeof raw.tapToScroll === 'boolean' ? raw.tapToScroll : DEFAULTS.tapToScroll,
+		verseNumbers:
+			typeof raw.verseNumbers === 'boolean' ? raw.verseNumbers : DEFAULTS.verseNumbers,
 		candlelight:
 			raw.candlelightChosen === true && typeof raw.candlelight === 'boolean'
 				? raw.candlelight
@@ -352,6 +357,10 @@ class ReaderPrefs {
 	margin = $state<Margin>(DEFAULTS.margin);
 	/** Opt-in: in scroll mode, a tap in the lower part of the screen pages down. */
 	tapToScroll = $state(DEFAULTS.tapToScroll);
+	verseNumbers = $state(DEFAULTS.verseNumbers);
+	/** The open text is a book of the Bible — set by the chapter reader, never
+	 *  stored. It is what offers the Verse numbers switch. */
+	scripture = $state(false);
 	candlelight = $state(DEFAULTS.candlelight);
 	candlelightChosen = $state(DEFAULTS.candlelightChosen);
 	/** When a Modern English edition exists, open it by default (device-local). */
@@ -393,6 +402,7 @@ class ReaderPrefs {
 		this.alignChosen = rest.alignChosen;
 		this.margin = rest.margin;
 		this.tapToScroll = rest.tapToScroll;
+		this.verseNumbers = rest.verseNumbers;
 		this.candlelight = rest.candlelight;
 		this.candlelightChosen = rest.candlelightChosen;
 		this.#applyCandle();
@@ -412,6 +422,7 @@ class ReaderPrefs {
 			alignChosen: this.alignChosen,
 			margin: this.margin,
 			tapToScroll: this.tapToScroll,
+			verseNumbers: this.verseNumbers,
 			candlelight: this.candlelight,
 			candlelightChosen: this.candlelightChosen,
 			preferModern: this.preferModern,
@@ -487,6 +498,10 @@ class ReaderPrefs {
 		this.tapToScroll = v;
 		this.#save();
 	}
+	setVerseNumbers(v: boolean) {
+		this.verseNumbers = v;
+		this.#save();
+	}
 	setCandlelight(v: boolean) {
 		this.candlelight = v;
 		this.candlelightChosen = true;
@@ -519,6 +534,7 @@ class ReaderPrefs {
 		this.alignChosen = DEFAULTS.alignChosen;
 		this.margin = DEFAULTS.margin;
 		this.tapToScroll = DEFAULTS.tapToScroll;
+		this.verseNumbers = DEFAULTS.verseNumbers;
 		this.candlelight = DEFAULTS.candlelight;
 		this.candlelightChosen = DEFAULTS.candlelightChosen;
 		this.#applyCandle();

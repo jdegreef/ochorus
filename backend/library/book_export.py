@@ -749,6 +749,7 @@ nav li { margin: 0.4em 0; }
 figure { margin: 1.5em 0; text-align: center; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 90vh; height: auto; }
 figcaption { font-style: italic; font-size: 0.9em; margin-top: 0.5em; text-indent: 0; }
+sup.v { font-size: 0.6em; font-weight: bold; color: #777; vertical-align: super; line-height: 0; margin-right: 0.15em; }
 """.strip()
 
 
@@ -929,6 +930,7 @@ section.part { break-before: page; }
 h1.part-title { font-size: 17pt; font-weight: 600; text-align: center; margin: 22mm 0 10mm; line-height: 1.2; }
 h2 { font-size: 13pt; margin: 6mm 0 3mm; break-after: avoid; }
 p { margin: 0; text-indent: 1.4em; text-align: justify; hyphens: auto; orphans: 2; widows: 2; }
+sup.v { font-size: 6pt; font-weight: bold; color: #777; vertical-align: super; line-height: 0; margin-right: 0.6mm; }
 h1 + p, h2 + p, h3 + p, blockquote + p { text-indent: 0; }
 blockquote { margin: 3mm 6mm; font-style: italic; }
 blockquote p { text-indent: 0; }
