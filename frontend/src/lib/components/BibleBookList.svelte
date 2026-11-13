@@ -1,57 +1,56 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library-public';
-	import { bibleChapters } from '$lib/bible';
-	import { i18n } from '$lib/i18n.svelte';
+	import { bibleChapterCount, bibleChapters } from '$lib/bible';
+	import { chapterCount } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
-	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	/**
-	 * One division of the /bible hub as a compact index: a row per book (a small
-	 * cover, the title, its Hebrew or Greek name) linking to the book, and a
-	 * chapter-count button that opens the book's chapters in place as the book
-	 * page's chips, so any chapter is two taps from the hub. The chips are drawn
-	 * only while open: 1,189 links on every load would bloat the prerendered page,
-	 * and the book pages already link each chapter for crawlers.
+	 * One division of the /bible hub as a compact index: a row per book (its
+	 * spine colour, the title, its Hebrew or Greek name) linking to the book,
+	 * and a chapter-count button that opens the book's chapters in place as the
+	 * book page's chips (`.chapter-grid` in app.css), so any chapter is two taps
+	 * from the hub.
+	 *
+	 * No cover image: at list size a cover's type is unreadable, and 66 of them
+	 * cost ~400 KB on a retina phone. The swatch is the book's `cover_color`, the
+	 * colour its spine wears in the canon strip above. The chips are built and
+	 * drawn only for the open book: 1,189 links on every load would bloat the
+	 * prerendered page, and the book pages already link each chapter.
 	 */
 	let { books, open = $bindable(null) }: { books: readonly BookSummary[]; open?: string | null } =
 		$props();
-	const t = i18n.t;
 </script>
 
 <ul class="bible-list">
 	{#each books as book (book.slug)}
-		{@const chapters = bibleChapters(book)}
+		{@const count = bibleChapterCount([book])}
 		{@const isOpen = open === book.slug}
-		{@const word = chapters.length === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
 		<li class="bible-row">
 			<a class="bible-row-link" href={localizeHref(`/books/${book.slug}`)}>
-				<!-- The title beside it names the link; the cover's own label would
-				     only repeat it. -->
-				<span class="bible-row-cover" aria-hidden="true"><BookCover {book} rounded="rounded-sm" /></span>
+				<span class="bible-row-swatch" style:--swatch={book.cover_color || null} aria-hidden="true"></span>
 				<span class="bible-row-text">
 					<span class="bible-row-title">{book.title}</span>
 					{#if book.subtitle}<span class="bible-row-sub">{book.subtitle}</span>{/if}
 				</span>
 			</a>
-			{#if chapters.length}
+			{#if count}
 				<button
 					type="button"
 					class="bible-row-chapters"
 					aria-expanded={isOpen}
 					aria-controls="chapters-{book.slug}"
-					aria-label="{book.title}: {chapters.length} {word}"
+					aria-label="{book.title}: {chapterCount(count)}"
 					onclick={() => (open = isOpen ? null : book.slug)}
 				>
-					<span class="tabular-nums">{chapters.length}</span>
-					<span>{word}</span>
-					<span class="bible-row-chevron" class:open={isOpen}><Icon name="chevron-right" size={16} /></span>
+					{chapterCount(count)}
+					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
 				</button>
 				{#if isOpen}
-					<ol class="bible-chapter-grid" id="chapters-{book.slug}">
-						{#each chapters as ch (ch.n)}
+					<ol class="chapter-grid bible-row-grid" id="chapters-{book.slug}">
+						{#each bibleChapters(book) as ch (ch.n)}
 							<li>
-								<a class="bible-chapter-chip" href={localizeHref(ch.href)} aria-label={ch.name} title={ch.name}
+								<a class="chapter-chip" href={localizeHref(ch.href)} aria-label={ch.name} title={ch.name}
 									>{ch.n}</a
 								>
 							</li>
@@ -95,10 +94,14 @@
 		color: inherit;
 		text-decoration: none;
 	}
-	.bible-row-cover {
-		display: block;
+	/* The book's spine, standing on its end: the canon strip's colour. */
+	.bible-row-swatch {
 		flex: none;
-		width: 2.5rem;
+		align-self: stretch;
+		width: 0.375rem;
+		min-height: 2.25rem;
+		border-radius: 2px;
+		background: var(--swatch, var(--border-strong));
 	}
 	.bible-row-text {
 		display: flex;
@@ -128,6 +131,7 @@
 		border-radius: var(--radius-sm);
 		background: var(--surface);
 		font-size: var(--fs-small);
+		font-variant-numeric: tabular-nums;
 		color: var(--muted);
 		white-space: nowrap;
 	}
@@ -138,9 +142,9 @@
 	}
 	.bible-row-chevron {
 		display: inline-flex;
-		transition: transform 0.15s ease;
+		transition: transform var(--duration-base) ease;
 	}
-	.bible-row-chevron.open {
+	.bible-row-chapters[aria-expanded='true'] .bible-row-chevron {
 		transform: rotate(90deg);
 	}
 	@media (prefers-reduced-motion: reduce) {
@@ -148,31 +152,8 @@
 			transition: none;
 		}
 	}
-	/* The book page's chapter chips (`.chapter-chip` there), at the same tap size. */
-	.bible-chapter-grid {
+	.bible-row-grid {
 		grid-column: 1 / -1;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
-		gap: 0.375rem;
-		list-style: none;
-		margin: 0.6rem 0 0.25rem;
-		padding: 0;
-	}
-	.bible-chapter-chip {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.75rem;
-		border: 1.5px solid var(--border-strong);
-		border-radius: var(--radius-sm);
-		background: var(--surface);
-		font-size: var(--fs-small);
-		font-variant-numeric: tabular-nums;
-		color: var(--text);
-		text-decoration: none;
-	}
-	.bible-chapter-chip:hover {
-		border-color: var(--accent);
-		color: var(--accent);
+		margin-block: 0.6rem 0.25rem;
 	}
 </style>

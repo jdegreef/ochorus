@@ -197,7 +197,7 @@ export function canonStrip<
 		const book = at.get(position) ?? null;
 		return {
 			position,
-			name: CANON[position - 1][0],
+			name: canonName(position) ?? '',
 			book,
 			weight: book && largest ? Math.round((size(book) / largest) * 100) / 100 : 0
 		};
@@ -316,12 +316,29 @@ export function bibleStarts<T extends { slug: string }>(
 }
 
 /**
+ * The reader chapters `build_owb_book` sets around a Bible book's own: an
+ * introduction before (order 1) and a conclusion after. Stated once here, so the
+ * count and the chapter links cannot disagree about it.
+ */
+const BIBLE_INTRO_CHAPTERS = 1;
+const BIBLE_CLOSING_CHAPTERS = 1;
+
+/** The reader chapter (`order`) that prints Bible chapter `n` of a book. */
+export const bibleChapterOrder = (n: number): number => n + BIBLE_INTRO_CHAPTERS;
+
+/**
  * The Bible chapters among `books` (1,189 for the 66): each book's reader
- * chapters less its introduction and conclusion, the two `build_owb_book` sets
- * around the Bible's own.
+ * chapters less its introduction and conclusion.
  */
 export const bibleChapterCount = (books: readonly { chapter_count?: number }[]): number =>
-	books.reduce((n, b) => n + Math.max(0, (b.chapter_count ?? 0) - 2), 0);
+	books.reduce(
+		(n, b) => n + Math.max(0, (b.chapter_count ?? 0) - BIBLE_INTRO_CHAPTERS - BIBLE_CLOSING_CHAPTERS),
+		0
+	);
+
+/** The canon's short English name for a position (1 Genesis … 66 Revelation), or null off the canon. */
+export const canonName = (position: number | null | undefined): string | null =>
+	divisionOf(position) ? CANON[position! - 1][0] : null;
 
 /** One chip of the hub's chapter picker. */
 export interface BibleChapterLink {
@@ -334,11 +351,11 @@ export interface BibleChapterLink {
 }
 
 /**
- * A Bible book's chapters for the hub's picker, from the book's summary alone:
- * Bible chapter n is reader chapter n + 1 (the introduction is order 1, the
- * conclusion comes last: `bibleChapterCount`'s two). The name is the canon's
- * short English name, as the canon strip's spines are; a book with no place in
- * the canon falls back to its title.
+ * A Bible book's chapters for the hub's picker, from the book's summary alone.
+ * A summary carries no chapter titles, so where the book page reads each
+ * chip's number off its title (`chapterNumber`), this counts them and places
+ * each by `bibleChapterOrder`. The name is the canon's short English name, as
+ * the canon strip's spines are; a book off the canon falls back to its title.
  */
 export function bibleChapters(book: {
 	slug: string;
@@ -346,11 +363,10 @@ export function bibleChapters(book: {
 	chapter_count?: number;
 	series_position?: number | null;
 }): BibleChapterLink[] {
-	const pos = book.series_position;
-	const short = pos != null && pos >= 1 && pos <= CANON.length ? CANON[pos - 1][0] : book.title;
+	const short = canonName(book.series_position) ?? book.title;
 	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
 		n: i + 1,
 		name: `${short} ${i + 1}`,
-		href: bookChapterPath(book.slug, i + 2, false)
+		href: bookChapterPath(book.slug, bibleChapterOrder(i + 1), false)
 	}));
 }

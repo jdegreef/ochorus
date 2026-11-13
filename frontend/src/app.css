@@ -2748,6 +2748,53 @@ nav.appnav .navsearch.navsearch-away {
    The button family being layered is why the `!` on `!py-1` / `!text-small`
    was never doing anything a plain `py-1` wouldn't. */
 
+/* A Bible book's chapters as tap-sized numbered chips: the book page's
+   contents (filled behind the reader, ringed where they are) and the /bible
+   hub's chapter picker. One rule so the two cannot drift; the introduction and
+   conclusion span a few cells (`li.wide`). In `@layer components`, so a spacing
+   utility on the grid wins. */
+@layer components {
+	.chapter-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+		gap: 0.375rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.chapter-grid > li.wide {
+		grid-column: span 4;
+	}
+	.chapter-chip {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding-inline: 0.25rem;
+		border: 1.5px solid var(--border-strong);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		font-size: var(--fs-small);
+		font-variant-numeric: tabular-nums;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.chapter-chip:not(.read):hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.chapter-chip.read {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.chapter-chip.current {
+		border: 2px solid var(--accent);
+		font-weight: 600;
+		color: var(--accent);
+	}
+}
+
 /* The shelf grid the book cards sit in.
 
    The same six-across ramp was written out twice inside BooksShelf (the

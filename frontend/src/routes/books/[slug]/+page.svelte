@@ -1191,7 +1191,7 @@
 		     are — the list's marks, in the list's colours. The introduction and the
 		     conclusion keep their names. Each chip's full name and length are its
 		     tooltip and its accessible name carries the name. -->
-		<ol class="chapter-grid">
+		<ol class="chapter-grid mt-3">
 			{#each book.chapters as ch (ch.order)}
 				{@const n = chapterNumber(ch.title)}
 				{@const read = isRead(ch.order)}
@@ -1996,44 +1996,6 @@
 		font-size: var(--fs-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--muted);
-	}
-	/* A Bible book's chapter chips: the contents marks, grown to a tap target
-	   and laid in a grid; the introduction and conclusion span a few cells. */
-	.chapter-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
-		gap: 0.375rem;
-		margin-top: 0.75rem;
-	}
-	.chapter-grid > li.wide {
-		grid-column: span 4;
-	}
-	.chapter-chip {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 2.75rem;
-		padding-inline: 0.25rem;
-		border: 1.5px solid var(--border-strong);
-		border-radius: var(--radius-sm);
-		background: var(--surface);
-		font-size: var(--fs-small);
-		font-variant-numeric: tabular-nums;
-		color: var(--text);
-	}
-	.chapter-chip:not(.read):hover {
-		border-color: var(--accent);
-		color: var(--accent);
-	}
-	.chapter-chip.read {
-		border-color: var(--accent);
-		background: var(--accent);
-		color: var(--accent-contrast);
-	}
-	.chapter-chip.current {
-		border: 2px solid var(--accent);
-		font-weight: 600;
-		color: var(--accent);
 	}
 	.contents-mark.read {
 		border-color: var(--accent);

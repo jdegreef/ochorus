@@ -191,7 +191,7 @@
 		<!-- The ways to read the whole of it, or a book of it, a day at a time:
 		     the Bible-only plans, then the series page, which reads Genesis to
 		     Revelation and keeps the reader's place. -->
-		<section class="read-along" aria-labelledby="read-along-heading">
+		<section class="mb-12" aria-labelledby="read-along-heading">
 			<h2 id="read-along-heading" class="section-label mb-5">{t('bible.readAlong')}</h2>
 			{#if plans.length}
 				<div class="mb-6 grid items-stretch gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
@@ -210,18 +210,22 @@
 		<!-- The whole canon at a glance, each spine a link to its book page; the
 		     grouped index below is the shelf proper. -->
 		<BibleCanonStrip books={series?.books ?? []} />
-		<div class="view-toggle">
-			<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
-				<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
-					? t('bible.contentsAsList')
-					: t('bible.contentsAsGrid')}
-			</button>
-		</div>
-		{#each groups as testament (testament.testament)}
+		{#each groups as testament, ti (testament.testament)}
 			<!-- A testament is the section; its divisions are the groups under it,
 			     so their headings are h3s (the topic page's nested-group recipe). -->
 			<section class="bible-testament">
-				<h2 class="section-label mb-5">{t(testamentKey(testament.testament))}</h2>
+				<div class="testament-head mb-5">
+					<h2 class="section-label">{t(testamentKey(testament.testament))}</h2>
+					{#if ti === 0}
+						<!-- Covers or the compact index, for the whole list: on the first
+						     heading's row, where the list begins. -->
+						<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
+							<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
+								? t('bible.contentsAsList')
+								: t('bible.contentsAsGrid')}
+						</button>
+					{/if}
+				</div>
 				{#each testament.divisions as group (group.division.id)}
 					<section class="bible-division">
 						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
@@ -243,7 +247,7 @@
 
 		<!-- What the translation is, and its home: English prose, like the page
 		     it opens (it exists only where the hub does). -->
-		<p class="owb-link text-small">
+		<p class="mt-12 text-small">
 			<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
 				>About the Open Word Bible <Arrow /></a
 			>
@@ -331,16 +335,14 @@
 			width: 5.5rem;
 		}
 	}
-	.read-along {
-		margin-bottom: 3rem;
-	}
-	.view-toggle {
+	.testament-head {
 		display: flex;
-		justify-content: flex-end;
-		margin: -1.75rem 0 1rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
 	}
-	.owb-link {
-		margin-top: 3rem;
+	.testament-head h2 {
+		margin-bottom: 0;
 	}
 	.bible-testament + .bible-testament {
 		margin-top: 3rem;

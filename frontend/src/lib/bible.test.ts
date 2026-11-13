@@ -4,6 +4,7 @@ import {
 	BIBLE_STARTS,
 	bibleChapterCount,
 	bibleChapters,
+	canonName,
 	biblePlans,
 	bibleStarts,
 	mayBePassage,
@@ -113,6 +114,14 @@ describe('biblePlans', () => {
 			'bible-in-a-year',
 			'john-in-21-days'
 		]);
+	});
+});
+
+describe('canonName', () => {
+	it('names a canon position, and nothing off it', () => {
+		expect(canonName(1)).toBe('Genesis');
+		expect(canonName(66)).toBe('Revelation');
+		expect([canonName(0), canonName(67), canonName(null)]).toEqual([null, null, null]);
 	});
 });
 
