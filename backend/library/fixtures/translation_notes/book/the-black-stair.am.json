@@ -1,0 +1,14 @@
+{
+    "kind": "book",
+    "slug": "the-black-stair",
+    "language": "am",
+    "job_issue": 7588,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Psalm 23:4",
+            "status": "self_rendered",
+            "block_index": 49
+        }
+    ]
+}

@@ -4242,6 +4242,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/the-black-stair": {
+			"ground": "f56ba4df9fbf80508de5f0cfc847a1969d467f57d0ba39216a203035a8166de5",
+			"style": "young",
+			"volume": "2",
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.25,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 286, 311, 330],
+					[178, 361, 422, 436]
+				],
+				"subtitle": [
+					[125, 492, 475, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				274,
+				521
+			]
+		},
 		"am/the-bruised-reed": {
 			"ground": "cfb6bb36379a9615b164376ba1a7c3202c43a64c597bf2f60056913b2e0483d8",
 			"style": "press",
@@ -22970,6 +23004,36 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
+		},
+		"ja/faithful-with-little": {
+			"ground": "46244d5fadf5ea506c2f01ca80bb9924daa8e5b46b7b3fa80c22b9d2e6e13bdc",
+			"style": "originals",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "052517916879ee96e1e98b22bd1a5c7127369b95075930244af8e136a401f95d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed-light",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/the-inner-chamber": {
+			"ground": "9b47207feef7f6b9a43c870838feae07fcd9290c9236070e411ded3afb6315ad",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "8b78516d7980f5654d38d273f944727d80f6480d0b1377844aac2ed9f33b285d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
 		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",

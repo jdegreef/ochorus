@@ -43,7 +43,7 @@ const BIBLES = {
 	am: 'am-ulb',
 	vi: 'vietnamese',
 	ko: 'korean',
-	ja: 'japanese'
+	ja: 'japkougo'
 };
 
 /**
@@ -68,6 +68,10 @@ function clean(text, locale) {
 	let s = text.replace(locale === 'en' ? STRAIGHT : QUOTES, '');
 	if (locale === 'fr') s = s.replace(/’ /g, '’').replace(/ ’/g, '’');
 	if (locale === 'vi') s = s.replace(/Ð/g, 'Đ');
+	// Japanese: the 口語訳 sets the Aaronic blessing inside the speech that
+	// frames it (「…」』。), and writes no spaces (its verses also join with
+	// none — see the join below).
+	if (locale === 'ja') s = s.replace(/^[\s「『]+|[\s」』]+。?$/g, '').replace(/\s+/g, '');
 	return s.replace(/\s{2,}/g, ' ');
 }
 
@@ -129,7 +133,7 @@ for (const [locale, bible] of Object.entries(BIBLES)) {
 				const nums = p.last ? picked.map((v) => v.n) : p.verses;
 				return p.usfm === 'JUD' ? span(nums) : `${p.chapter}:${span(nums)}`;
 			})(),
-			text: picked.map((v) => clean(v.text, locale)).join(' ')
+			text: picked.map((v) => clean(v.text, locale)).join(locale === 'ja' ? '' : ' ')
 		};
 	}
 	console.log(`✓ ${locale} (${bible})`);
