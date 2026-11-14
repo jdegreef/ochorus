@@ -72,7 +72,7 @@ describe('weekStart', () => {
 
 	// The site's languages (project.inlang). Where an engine has no Intl week
 	// info, the fallback must give what Intl gives where it does.
-	const SITE = ['en', 'es', 'sw', 'lg', 'fr', 'pt', 'am', 'ar', 'hi', 'ko', 'uk', 'vi', 'ja'];
+	const SITE = ['en', 'es', 'sw', 'lg', 'fr', 'pt', 'am', 'ar', 'hi', 'ko', 'uk', 'vi', 'ja', 'ru'];
 
 	it('falls back, without Intl week info, to the day Intl would have given', () => {
 		const withIntl = Object.fromEntries(SITE.map((l) => [l, weekStart(l)]));

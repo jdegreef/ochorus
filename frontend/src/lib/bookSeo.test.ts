@@ -35,7 +35,7 @@ describe('titleWithFormats', () => {
 
 	it("fits every locale's title template", () => {
 		// The suffix it strips must be how each catalogue actually ends the title.
-		for (const l of ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr', 'am', 'vi', 'ko', 'ja']) {
+		for (const l of ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr', 'am', 'vi', 'ko', 'ja', 'ru']) {
 			const msgs = JSON.parse(readFileSync(resolve(process.cwd(), `messages/${l}.json`), 'utf8'));
 			expect(msgs.book_title_tag, l).toMatch(/ — Ochorus$/);
 			expect(titleWithFormats(msgs.book_title_tag, 'EPUB'), l).not.toContain('Ochorus');
