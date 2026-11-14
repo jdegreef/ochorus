@@ -19391,6 +19391,38 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"fr/the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "b4c11eae05bb89336156092ad02552e156de41f555908dd97018dd213a25fef2",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[129, 102, 471, 131]
+				],
+				"title": [
+					[140, 285, 460, 348],
+					[131, 347, 469, 410],
+					[52, 409, 548, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"fr/the-secret-of-guidance": {
 			"ground": "33fd3482db54613b285864550cb2c83d65bd10d3c89507ea5d4e91c7bf811008",
 			"style": "devotional",
@@ -34685,6 +34717,38 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"pt/the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "df11d3fed3c86f7e8c3c15fdc3215aafe62d44818929bd8863dccd9b99de1f17",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[129, 102, 471, 131]
+				],
+				"title": [
+					[126, 285, 474, 348],
+					[133, 347, 467, 410],
+					[79, 409, 521, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"pt/the-secret-of-guidance": {
 			"ground": "f3af40eb8611ef08eb13f1698ec3e7523a33f6155067304e85ab824f10b935fa",
 			"style": "devotional",
@@ -43469,6 +43533,41 @@
 			"bar": 0.02,
 			"caps": false,
 			"sitemark": null
+		},
+		"uk/revival-lectures": {
+			"ground": "a2640902a293e5d92ef0a9825e2c797fe6b23470b05fe2f057105c6b4016b57b",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[156, 271, 444, 347],
+					[176, 336, 424, 412],
+					[115, 402, 485, 478]
+				],
+				"subtitle": [
+					[129, 552, 471, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				220,
+				574
+			]
 		},
 		"uk/rise-up-men-of-god-2": {
 			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
