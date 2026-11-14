@@ -1,0 +1,163 @@
+{
+    "kind": "sermon",
+    "slug": "the-way-of-salvation-made-plain",
+    "language": "pt",
+    "job_issue": 8066,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Acts 16:29-31",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "Acts 16:30",
+            "status": "self_rendered",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Acts 10:43",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 1
+        },
+        {
+            "reference": "Matthew 20:28",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "Isaiah 53:6",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "1 Peter 2:24",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 5
+        },
+        {
+            "reference": "John 8:34",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "John 8:36",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 6
+        },
+        {
+            "reference": "Luke 11:21-22",
+            "status": "self_rendered",
+            "block_index": 6
+        },
+        {
+            "reference": "John 14:11",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "John 14:10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 7
+        },
+        {
+            "reference": "John 15:14",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "John 8:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 9
+        },
+        {
+            "reference": "John 13:13",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "John 20:28",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 10
+        },
+        {
+            "reference": "John 20:29",
+            "status": "self_rendered",
+            "block_index": 10
+        },
+        {
+            "reference": "Luke 7:48",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "James 2:10",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 16
+        },
+        {
+            "reference": "1 Corinthians 15:1-4",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 16
+        },
+        {
+            "reference": "1 Corinthians 15:3-4",
+            "status": "self_rendered",
+            "block_index": 17
+        },
+        {
+            "reference": "Matthew 28:18",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 17
+        },
+        {
+            "reference": "1 John 2:6",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Romans 10:9-10",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 25
+        },
+        {
+            "reference": "Luke 6:46",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 23
+        },
+        {
+            "reference": "Matthew 12:34",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 26
+        }
+    ]
+}
