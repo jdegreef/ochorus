@@ -227,6 +227,7 @@ export function canonStrip<
 export const BIBLE_PLANS: readonly string[] = [
 	'the-story-of-the-bible',
 	'bible-in-a-year',
+	'new-testament-in-90-days',
 	'john-in-21-days',
 	'psalms-in-150-days',
 	'proverbs-in-a-month'
