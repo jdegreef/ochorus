@@ -10,7 +10,12 @@
  */
 
 import { CANON } from '$lib/sermonCanon';
-import { bookChapterPath } from '$lib/reading-schema';
+import {
+	bookChapterPath,
+	furthestOf,
+	resumeOrderOf,
+	type ProgressRecord
+} from '$lib/reading-schema';
 
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';
@@ -375,4 +380,80 @@ export function bibleChapters(book: {
 		name: `${short} ${i + 1}`,
 		href: bookChapterPath(book.slug, bibleChapterOrder(i + 1), false)
 	}));
+}
+
+/**
+ * Where a reader is in one Bible book, in the Bible's own chapter numbers, from
+ * their progress record (the book page's marks, read the same way): chapters
+ * 1 … `behind` are behind them, `current` is the one Continue opens (null when
+ * that is the introduction or the book is finished). A record whose place lies
+ * outside this edition reads as no progress, as on the book page.
+ */
+export interface BiblePlace {
+	behind: number;
+	current: number | null;
+	finished: boolean;
+}
+
+export function biblePlace(
+	book: { chapter_count?: number },
+	rec: Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at'> | null | undefined
+): BiblePlace | null {
+	if (!rec) return null;
+	const count = bibleChapterCount([book]);
+	const inEdition = (order: number) => order >= 1 && order <= (book.chapter_count ?? 0);
+	if (rec.finished_at != null) return { behind: count, current: null, finished: true };
+	const resume = resumeOrderOf(rec);
+	if (!inEdition(resume)) return null;
+	const furthest = inEdition(furthestOf(rec)) ? furthestOf(rec) : resume;
+	const n = resume - BIBLE_INTRO_CHAPTERS;
+	return {
+		behind: Math.min(count, Math.max(0, furthest - BIBLE_INTRO_CHAPTERS - 1)),
+		current: n >= 1 && n <= count ? n : null,
+		finished: false
+	};
+}
+
+/** One row of the hub's "Continue reading". */
+export interface BibleContinue<T, R> {
+	book: T;
+	/** The reader's progress record, for the shared percent (`workPercent`). */
+	record: R;
+	/** The Bible chapter Continue opens, and its reader `order` (for `chapterPath`). */
+	chapter: number;
+	order: number;
+	/** The book's Bible chapters. */
+	count: number;
+}
+
+/**
+ * The Bible books a reader is partway through, most recently read first, at
+ * most `max`: a book they have finished, or only opened at its introduction, is
+ * not one to continue. `records` is `allProgress()` (any work; non-books and
+ * books outside `books` are skipped).
+ */
+export function bibleToContinue<
+	T extends { slug: string; chapter_count?: number },
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & { slug: string; kind: string }
+>(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
+	const bySlug = new Map(books.map((b) => [b.slug, b]));
+	return records
+		.filter((r) => r.kind === 'book' && bySlug.has(r.slug))
+		// filter() made a copy, so the sort leaves the caller's list alone.
+		.sort((a, b) => b.at - a.at)
+		.flatMap((r) => {
+			const book = bySlug.get(r.slug)!;
+			const place = biblePlace(book, r);
+			if (!place || place.current == null) return [];
+			return [
+				{
+					book,
+					record: r,
+					chapter: place.current,
+					order: bibleChapterOrder(place.current),
+					count: bibleChapterCount([book])
+				}
+			];
+		})
+		.slice(0, max);
 }
