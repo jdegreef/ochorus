@@ -13,9 +13,11 @@ import {
 	restoreWork,
 	getScrollAnchor,
 	saveProgressPercent,
-	markReached
+	markReached,
+	restartWork,
+	startsAgain
 } from './progress';
-import { resumeOrderOf } from './reading-schema';
+import { furthestOf, isFinishedNow, resumeOrderOf } from './reading-schema';
 import { pendingAt } from './removals';
 import { undo } from './undo.svelte';
 
@@ -101,7 +103,7 @@ describe('finishing a work', () => {
 		expect(getProgressRecord('never-opened')).toBeNull();
 	});
 
-	it('reopening a finished work and reading on does NOT un-finish it', () => {
+	it('reopening one chapter of a finished work (a peek) does NOT un-finish it', () => {
 		saveProgress('humility', 34, 'en');
 		markFinished('humility');
 		// Reopen at another chapter and move — position advances, finish stays.
@@ -125,6 +127,94 @@ describe('finishing a work', () => {
 		markFinished('humility', 'sermon');
 		expect(isFinished('humility', 'sermon')).toBe(true);
 		expect(isFinished('humility', 'book')).toBe(false);
+	});
+});
+
+describe('starting a finished book again (a reread)', () => {
+	beforeEach(() => {
+		localStorage.clear();
+		vi.useFakeTimers();
+	});
+	afterEach(() => vi.useRealTimers());
+
+	/** Mark: read to chapter 16 and finished at t=1000. */
+	function finishMark() {
+		vi.setSystemTime(500);
+		saveProgress('mark', 16, 'en');
+		vi.setSystemTime(1_000);
+		markFinished('mark');
+	}
+
+	it('reading on from a chapter opened after the finish restarts it', () => {
+		finishMark();
+		vi.setSystemTime(2_000);
+		saveProgress('mark', 1, 'en'); // a peek so far
+		expect(isFinished('mark')).toBe(true);
+		vi.setSystemTime(3_000);
+		saveProgress('mark', 2, 'en'); // reading on: a reread
+		const rec = getProgressRecord('mark')!;
+		expect(isFinished('mark')).toBe(false);
+		expect(rec).toMatchObject({ order: 2, finished_at: 1_000, restarted_at: 3_000 });
+		// A new read-through: its furthest is where it is, not chapter 16.
+		expect(furthestOf(rec)).toBe(2);
+		expect(resumeOrderOf(rec)).toBe(2);
+		expect(bookProgressReader()('mark')).toEqual({ started: true, finished: false });
+	});
+
+	it('a look-up of any one chapter, or jumping about, leaves it finished', () => {
+		finishMark();
+		vi.setSystemTime(2_000);
+		saveProgress('mark', 9, 'en');
+		vi.setSystemTime(3_000);
+		saveProgress('mark', 4, 'en');
+		vi.setSystemTime(4_000);
+		saveProgress('mark', 12, 'en');
+		expect(isFinished('mark')).toBe(true);
+		expect(getProgressRecord('mark')?.restarted_at).toBeUndefined();
+	});
+
+	it('the chapter after one opened BEFORE the finish is not a restart', () => {
+		vi.setSystemTime(500);
+		saveProgress('mark', 3, 'en');
+		vi.setSystemTime(1_000);
+		markFinished('mark'); // marked done at chapter 3
+		expect(startsAgain(getProgressRecord('mark')!, 4)).toBe(false);
+	});
+
+	it('finishing the reread records it beside the first completion', () => {
+		finishMark();
+		vi.setSystemTime(2_000);
+		saveProgress('mark', 1, 'en');
+		vi.setSystemTime(3_000);
+		saveProgress('mark', 2, 'en');
+		vi.setSystemTime(9_000);
+		expect(markFinished('mark')).toBe(true);
+		expect(getProgressRecord('mark')).toMatchObject({ finished_at: 1_000, last_finished_at: 9_000 });
+		expect(isFinished('mark')).toBe(true);
+		// Undo goes back to rereading; the first completion stands.
+		unmarkFinished('mark');
+		expect(isFinished('mark')).toBe(false);
+		expect(getProgressRecord('mark')).toMatchObject({ finished_at: 1_000, last_finished_at: null });
+	});
+
+	it('"Read again" restarts at once, from the chapter it opens', () => {
+		finishMark();
+		vi.setSystemTime(2_000);
+		restartWork('mark', 1);
+		const rec = getProgressRecord('mark')!;
+		expect(rec).toMatchObject({ order: 1, paragraph_index: 0, furthest: 1, restarted_at: 2_000, finished_at: 1_000 });
+		expect(isFinishedNow(rec)).toBe(false);
+		// Opening that chapter is then not news.
+		saveProgress('mark', 1, 'en');
+		expect(getProgressRecord('mark')?.at).toBe(2_000);
+	});
+
+	it('"Read again" is a no-op for a book not finished now', () => {
+		vi.setSystemTime(500);
+		saveProgress('mark', 5, 'en');
+		restartWork('mark', 1);
+		expect(getProgressRecord('mark')).toMatchObject({ order: 5 });
+		expect(getProgressRecord('mark')?.restarted_at).toBeUndefined();
 	});
 });
 

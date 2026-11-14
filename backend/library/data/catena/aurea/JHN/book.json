@@ -48,5 +48,12 @@
    "answer": "Aquinas dedicated this volume, with those on Mark and Luke, to his friend Cardinal Annibaldo degli Annibaldi, after the death of Pope Urban IV."
   }
  ],
- "cover_url": "/covers/art/catena-aurea-john.jpg"
+ "cover_url": "/covers/art/catena-aurea-john.jpg",
+ "rejected": [
+  {
+   "excerpt": "catena.JHN.16.8-10.1",
+   "father": "Chrysostom",
+   "why": "scan slip: \"sin, i. cut off all excuse\" (\"i. e.\" with its \"e.\" lost)"
+  }
+ ]
 }

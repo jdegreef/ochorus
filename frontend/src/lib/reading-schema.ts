@@ -378,8 +378,28 @@ export interface ProgressRecord {
 	 * history shelf. Reopening it does not clear this — only an explicit
 	 * un-finish does. Synced with the account: finishing unions across devices
 	 * (earliest wins), like the streak; see readingSync / reading views.
+	 *
+	 * It is the FIRST completion, and it is history: seals, the year in books,
+	 * bookplates and the "finished" count read it, so starting the book again
+	 * never takes a completion away. Whether the work is finished NOW — the
+	 * Continue lists, the shelves, the book page's verb — is `isFinishedNow`,
+	 * which also weighs `restarted_at` and `last_finished_at`.
 	 */
 	finished_at?: number | null;
+	/**
+	 * When the reader started this finished work AGAIN (epoch ms) — a reread
+	 * (see `saveProgress` for what counts). While it is later than the last
+	 * finish the work is in progress again. Synced; the account keeps the
+	 * latest any device reports, so a device still holding the old finish
+	 * can't re-mark it finished.
+	 */
+	restarted_at?: number | null;
+	/**
+	 * When a REREAD was finished (epoch ms): a finish after `restarted_at`.
+	 * `finished_at` keeps the first completion (earliest wins), so the latest
+	 * one lives here. Synced; the account keeps the latest.
+	 */
+	last_finished_at?: number | null;
 	/**
 	 * How far through the whole book this place is, 0–100, by words (the
 	 * reader's own "N% through" figure, stored when it saves the place). The
@@ -412,6 +432,26 @@ export function furthestOf(rec: Pick<ProgressRecord, 'order' | 'furthest'>): num
  */
 export function resumeOrderOf(rec: Pick<ProgressRecord, 'order' | 'furthest'>): number {
 	return Math.min(rec.order, furthestOf(rec));
+}
+
+export type FinishFields = Pick<ProgressRecord, 'finished_at' | 'restarted_at' | 'last_finished_at'>;
+
+/** When the reader most recently finished this work (ms), or null if never. */
+export function lastFinishOf(rec: FinishFields): number | null {
+	const first = rec.finished_at ?? null;
+	const last = rec.last_finished_at ?? null;
+	if (first == null) return last;
+	return last == null ? first : Math.max(first, last);
+}
+
+/**
+ * Is the work finished NOW — finished, and not started again since? The
+ * status every "where am I" surface reads (Continue, shelves, the book page).
+ * History (seals, the year in books, counts) reads `finished_at` instead.
+ */
+export function isFinishedNow(rec: FinishFields): boolean {
+	const finished = lastFinishOf(rec);
+	return finished != null && !(rec.restarted_at != null && rec.restarted_at > finished);
 }
 
 /** `workSlugKey(kind, slug)` -> ProgressRecord. */

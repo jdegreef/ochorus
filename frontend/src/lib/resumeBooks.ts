@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { listBooks, toCoverBook, type BookSummary, type CoverBook } from '$lib/library-public';
 import { allProgress } from '$lib/progress';
-import { RESUME_BOOKS_KEY, workSlugKey } from '$lib/reading-schema';
+import { RESUME_BOOKS_KEY, isFinishedNow, workSlugKey } from '$lib/reading-schema';
 
 /**
  * The book list the home page's personal blocks (Continue reading, Recommended
@@ -46,7 +46,7 @@ import { RESUME_BOOKS_KEY, workSlugKey } from '$lib/reading-schema';
 
 /** Slugs of the books the reader has started and not finished. */
 export function unfinishedBookSlugs(progress = allProgress()): string[] {
-	return progress.filter((p) => p.kind === 'book' && p.finished_at == null).map((p) => p.slug);
+	return progress.filter((p) => p.kind === 'book' && !isFinishedNow(p)).map((p) => p.slug);
 }
 
 /**
@@ -90,7 +90,7 @@ function readStored(): Store {
 function inProgressKeys(): Set<string> {
 	return new Set(
 		allProgress()
-			.filter((p) => (p.kind === 'book' || p.kind === 'sermon') && p.finished_at == null)
+			.filter((p) => (p.kind === 'book' || p.kind === 'sermon') && !isFinishedNow(p))
 			.map((p) => workSlugKey(p.kind, p.slug))
 	);
 }

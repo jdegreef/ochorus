@@ -10,7 +10,14 @@
  */
 
 import { CANON } from '$lib/sermonCanon';
-import { bookChapterPath } from '$lib/reading-schema';
+import {
+	bookChapterPath,
+	furthestOf,
+	isFinishedNow,
+	resumeOrderOf,
+	type FinishFields,
+	type ProgressRecord
+} from '$lib/reading-schema';
 
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';
@@ -222,6 +229,7 @@ export function canonStrip<
 export const BIBLE_PLANS: readonly string[] = [
 	'the-story-of-the-bible',
 	'bible-in-a-year',
+	'new-testament-in-90-days',
 	'john-in-21-days',
 	'psalms-in-150-days',
 	'proverbs-in-a-month'
@@ -339,6 +347,16 @@ export const bibleChapterCount = (books: readonly { chapter_count?: number }[]):
 /** The Psalms' place in the canon. */
 const PSALMS = 19;
 
+/**
+ * How a Bible chapter is named ("Romans 8"), or null off the canon. Psalms is
+ * the one book whose chapters are titled in the singular ("Psalm 23", as
+ * `build_owb_book` titles them and `dailyChapter` names them).
+ */
+export function chapterLabel(position: number | null | undefined, n: number): string | null {
+	const name = position === PSALMS ? 'Psalm' : canonName(position);
+	return name ? `${name} ${n}` : null;
+}
+
 /** The canon's short English name for a position (1 Genesis … 66 Revelation), or null off the canon. */
 export const canonName = (position: number | null | undefined): string | null =>
 	divisionOf(position) ? CANON[position! - 1][0] : null;
@@ -366,13 +384,106 @@ export function bibleChapters(book: {
 	chapter_count?: number;
 	series_position?: number | null;
 }): BibleChapterLink[] {
-	// Psalms is the one book whose chapters are titled in the singular
-	// ("Psalm 23", as `build_owb_book` titles them and `dailyChapter` names them).
 	const pos = book.series_position;
-	const short = pos === PSALMS ? 'Psalm' : (canonName(pos) ?? book.title);
 	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
 		n: i + 1,
-		name: `${short} ${i + 1}`,
+		name: chapterLabel(pos, i + 1) ?? `${book.title} ${i + 1}`,
 		href: bookChapterPath(book.slug, bibleChapterOrder(i + 1), false)
 	}));
+}
+
+/**
+ * Where a reader is in one Bible book, in the Bible's own chapter numbers, from
+ * their progress record (the book page's marks, read the same way): chapters
+ * 1 … `behind` are behind them, `current` is the one Continue opens (null when
+ * that is the introduction or the book is finished). A record whose place lies
+ * outside this edition reads as no progress, as on the book page.
+ */
+export interface BiblePlace {
+	behind: number;
+	current: number | null;
+	finished: boolean;
+}
+
+export function biblePlace(
+	book: { chapter_count?: number },
+	rec: (Pick<ProgressRecord, 'order' | 'furthest'> & FinishFields) | null | undefined
+): BiblePlace | null {
+	if (!rec) return null;
+	const count = bibleChapterCount([book]);
+	const inEdition = (order: number) => order >= 1 && order <= (book.chapter_count ?? 0);
+	// Finished NOW: a book read again after finishing is in progress again.
+	if (isFinishedNow(rec)) return { behind: count, current: null, finished: true };
+	const resume = resumeOrderOf(rec);
+	if (!inEdition(resume)) return null;
+	const furthest = inEdition(furthestOf(rec)) ? furthestOf(rec) : resume;
+	const n = resume - BIBLE_INTRO_CHAPTERS;
+	return {
+		behind: Math.min(count, Math.max(0, furthest - BIBLE_INTRO_CHAPTERS - 1)),
+		current: n >= 1 && n <= count ? n : null,
+		finished: false
+	};
+}
+
+/** One row of the hub's "Continue reading". */
+export interface BibleContinue<T, R> {
+	book: T;
+	/** The reader's progress record, for the shared percent (`workPercent`). */
+	record: R;
+	/** The Bible chapter Continue opens, and its reader `order` (for `chapterPath`). */
+	chapter: number;
+	order: number;
+	/** The book's Bible chapters. */
+	count: number;
+}
+
+/**
+ * The Bible books a reader is partway through, most recently read first, at
+ * most `max`: a book they have finished, or only opened at its introduction, is
+ * not one to continue. `records` is `allProgress()` (any work; non-books and
+ * books outside `books` are skipped).
+ */
+export function bibleToContinue<
+	T extends { slug: string; chapter_count?: number },
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'at'> & FinishFields & { slug: string; kind: string }
+>(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
+	const bySlug = new Map(books.map((b) => [b.slug, b]));
+	return records
+		.filter((r) => r.kind === 'book' && bySlug.has(r.slug))
+		// filter() made a copy, so the sort leaves the caller's list alone.
+		.sort((a, b) => b.at - a.at)
+		.flatMap((r) => {
+			const book = bySlug.get(r.slug)!;
+			const place = biblePlace(book, r);
+			if (!place || place.current == null) return [];
+			return [
+				{
+					book,
+					record: r,
+					chapter: place.current,
+					order: bibleChapterOrder(place.current),
+					count: bibleChapterCount([book])
+				}
+			];
+		})
+		.slice(0, max);
+}
+
+/**
+ * The hub's Continue rows, plans and books together, at most `max`: the
+ * reader's open Bible plans first (a plan is the reading they committed to),
+ * then the books they are partway through. A plan that reads a single book
+ * ("John in 21 Days") already carries that book, so the book's own row is
+ * dropped rather than shown twice.
+ */
+export function bibleContinueRows<
+	P extends { covers: readonly { slug: string }[] },
+	B extends { book: { slug: string } }
+>(plans: readonly P[], books: readonly B[], max = 3): { plans: P[]; books: B[] } {
+	const carried = new Set(plans.flatMap((p) => (p.covers.length === 1 ? [p.covers[0].slug] : [])));
+	const shownPlans = plans.slice(0, max);
+	return {
+		plans: shownPlans,
+		books: books.filter((r) => !carried.has(r.book.slug)).slice(0, max - shownPlans.length)
+	};
 }

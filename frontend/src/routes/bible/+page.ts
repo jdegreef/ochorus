@@ -1,5 +1,12 @@
 import { isHttpError } from '@sveltejs/kit';
-import { getSeries, listPlans, type PlanSummary, type SeriesDetail } from '$lib/library-public';
+import {
+	getBibleLinks,
+	getSeries,
+	listPlans,
+	type BibleBookLinks,
+	type PlanSummary,
+	type SeriesDetail
+} from '$lib/library-public';
 import { BIBLE_SERIES, biblePlans } from '$lib/bible';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
@@ -20,9 +27,10 @@ export const load: PageLoad = async ({ fetch }) => {
 	// failure (a 404 included: a web build that runs ahead of the API release
 	// that seeds the series) bakes the error panel instead of failing the build,
 	// and its Try again re-runs this against the live API (loadShelf's reason).
-	// The plans are decoration: their own silent catch, costing only the row.
+	// The plans and the per-book links (sermons, the classics) are decoration:
+	// each has its own silent catch, costing only what it draws.
 	const fetchSeries = () => getSeries(BIBLE_SERIES, lang);
-	const [result, plans] = await Promise.all([
+	const [result, plans, links] = await Promise.all([
 		(lang === 'en' ? fetchSeries() : orNotFound(fetchSeries)).then(
 			(series): { series: SeriesDetail | null; loadError: boolean } => ({ series, loadError: false }),
 			(e) => {
@@ -30,10 +38,12 @@ export const load: PageLoad = async ({ fetch }) => {
 				return { series: null, loadError: true };
 			}
 		),
-		listPlans(lang, fetch).catch((): PlanSummary[] => [])
+		listPlans(lang, fetch).catch((): PlanSummary[] => []),
+		getBibleLinks(lang, fetch).catch((): BibleBookLinks[] => [])
 	]);
 	return {
 		...result,
-		plans: result.series ? biblePlans(plans) : []
+		plans: result.series ? biblePlans(plans) : [],
+		links
 	};
 };

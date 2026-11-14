@@ -59,3 +59,24 @@ def sermons_on_book(position: int, language: str, limit: int = SHELF_SIZE) -> di
         .defer(*SERMON_CARD_DEFER)
     }
     return {"book": name, "count": len(hits), "sermons": [rows[pk] for pk in wanted]}
+
+
+def sermon_counts(language: str) -> dict[int, tuple[str, int]]:
+    """``{position: (book name, count)}`` for every Bible book the library has
+    a sermon on in ``language``: the /bible hub's "N sermons" links, counted
+    the way ``sermons_on_book`` counts (the sermon's own text, ``book_of``), so
+    a hub count and the book page's shelf agree. One query of the refs.
+    """
+    counts: dict[int, tuple[str, int]] = {}
+    refs = (
+        Sermon.objects.filter(is_published=True, language=language)
+        .exclude(scripture_ref="")
+        .values_list("scripture_ref", flat=True)
+    )
+    for ref in refs:
+        info = book_of(ref)
+        if info is None:
+            continue
+        name, position = info
+        counts[position] = (name, counts.get(position, (name, 0))[1] + 1)
+    return counts

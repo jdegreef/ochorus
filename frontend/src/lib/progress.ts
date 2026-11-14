@@ -12,6 +12,8 @@ import {
 	workSlugKey,
 	baseEdition,
 	furthestOf,
+	isFinishedNow,
+	lastFinishOf,
 	parseWorkSlugKey,
 	type WorkKind,
 	type ProgressRecord,
@@ -97,19 +99,25 @@ export function saveProgress(
 		readingActivity.recordToday();
 		return;
 	}
+	const now = Date.now();
+	const restarting = prev != null && startsAgain(prev, order);
 	// Opening the NEXT chapter (or any before it) is reading on and moves the
 	// furthest; jumping further ahead is a peek, which only reading that chapter
-	// to its end (`markReached`) turns into progress.
-	const before = prev ? furthestOf(prev) : order;
+	// to its end (`markReached`) turns into progress. A reread starts a new
+	// read-through, so its furthest starts again at the chapter it is on.
+	const before = prev && !restarting ? furthestOf(prev) : order;
 	const furthest = order <= before + 1 ? Math.max(before, order) : before;
-	// Carry a finished stamp forward: reopening a finished work and reading on
-	// does not un-finish it (only an explicit un-finish clears it).
+	// The finish stamps ride forward unchanged — the first completion is
+	// history and is never cleared by reading. Starting again only adds
+	// `restarted_at`, which is what makes the work in progress again.
 	const rec: ProgressRecord = {
 		order,
 		paragraph_index,
 		language,
-		at: Date.now(),
+		at: now,
 		finished_at: prev?.finished_at ?? null,
+		...(prev?.last_finished_at != null ? { last_finished_at: prev.last_finished_at } : {}),
+		...(restarting ? { restarted_at: now } : prev?.restarted_at != null ? { restarted_at: prev.restarted_at } : {}),
 		furthest
 	};
 	map[key] = rec;
@@ -117,6 +125,57 @@ export function saveProgress(
 	readingSync.pushProgress(kind, slug, rec);
 	// Opening/advancing a chapter is the "read today" signal for the streak.
 	readingActivity.recordToday();
+}
+
+/**
+ * Does opening chapter `order` start a finished work AGAIN?
+ *
+ * Only reading on does: the work is finished now, the chapter the reader last
+ * opened was opened AFTER that finish, and this is the chapter straight after
+ * it. So a reread from chapter 1 turns into "in progress" the moment the
+ * reader goes on to chapter 2 — while opening any one chapter of a finished
+ * book (looking something up, a link from search, a verse) leaves it
+ * finished. (Reading on is the same signal that moves `furthest`; a jump is a
+ * peek there too.) A single-document work (a sermon, a bio) has no next
+ * chapter, so it is never restarted this way; the book page's "Read again"
+ * restarts explicitly (`restartWork`).
+ */
+export function startsAgain(
+	prev: Pick<ProgressRecord, 'order' | 'at' | 'finished_at' | 'restarted_at' | 'last_finished_at'>,
+	order: number
+): boolean {
+	if (!isFinishedNow(prev)) return false;
+	const finished = lastFinishOf(prev) ?? 0;
+	return prev.at > finished && order === prev.order + 1;
+}
+
+/**
+ * "Read again" — the reader chose to start a finished work over from chapter
+ * `order`. Its place moves there, a new read-through begins (`restarted_at`,
+ * `furthest` back to that chapter) and it is in progress again everywhere.
+ * The first completion (`finished_at`) is kept: seals, the year in books and
+ * the finished count don't lose it. A no-op unless the work is finished now.
+ */
+export function restartWork(slug: string, order: number, kind: WorkKind = 'book'): void {
+	if (!browser) return;
+	const map = read();
+	const key = workSlugKey(kind, slug);
+	const prev = map[key];
+	if (!prev || !isFinishedNow(prev)) return;
+	const now = Date.now();
+	const rec: ProgressRecord = {
+		...prev,
+		order,
+		paragraph_index: 0,
+		at: now,
+		restarted_at: now,
+		furthest: order
+	};
+	delete rec.pct;
+	map[key] = rec;
+	write(map);
+	readingSync.pushProgress(kind, slug, rec);
+	window.dispatchEvent(new CustomEvent('ochorus:sync'));
 }
 
 /**
@@ -155,7 +214,7 @@ export function bookProgressReader(): (slug: string) => { started: boolean; fini
 	const map = read();
 	return (slug) => {
 		const r = map[workSlugKey('book', slug)];
-		return { started: r != null, finished: r?.finished_at != null };
+		return { started: r != null, finished: r != null && isFinishedNow(r) };
 	};
 }
 
@@ -165,8 +224,10 @@ export function bookReadTimes(): (slug: string) => number {
 	return (slug) => map[workSlugKey('book', slug)]?.at ?? 0;
 }
 
+/** Is this work finished NOW (finished, and not started again since)? */
 export function isFinished(slug: string, kind: WorkKind = 'book'): boolean {
-	return getProgressRecord(slug, kind)?.finished_at != null;
+	const rec = getProgressRecord(slug, kind);
+	return rec != null && isFinishedNow(rec);
 }
 
 /**
@@ -182,8 +243,11 @@ export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	const map = read();
 	const key = workSlugKey(kind, slug);
 	const rec = map[key];
-	if (!rec || rec.finished_at != null) return false;
-	rec.finished_at = Date.now();
+	if (!rec || isFinishedNow(rec)) return false;
+	// The first completion stays in `finished_at` (history); finishing a
+	// reread records the new one beside it.
+	if (rec.finished_at == null) rec.finished_at = Date.now();
+	else rec.last_finished_at = Date.now();
 	write(map);
 	// Not debounced: a discrete action, and coalescing it with scroll saves is a
 	// hazard for the un-finish direction (see readingSync.setFinished).
@@ -302,14 +366,17 @@ export function restoreWork(slug: string, rec: ProgressRecord, kind: WorkKind = 
 
 /** Un-finish a work — an explicit "not done after all" / Undo. Clears the stamp
  *  and, while online, tells the server to clear it too (a live-only signal, like
- *  un-favoriting; the sign-in merge never carries it). */
+ *  un-favoriting; the sign-in merge never carries it). On a reread it clears
+ *  only the reread's finish, back to reading again — the first completion
+ *  stands (the server applies the same rule; see _upsert_progress). */
 export function unmarkFinished(slug: string, kind: WorkKind = 'book'): void {
 	if (!browser) return;
 	const map = read();
 	const key = workSlugKey(kind, slug);
 	const rec = map[key];
-	if (!rec || rec.finished_at == null) return;
-	rec.finished_at = null;
+	if (!rec || !isFinishedNow(rec)) return;
+	if (rec.restarted_at != null) rec.last_finished_at = null;
+	else rec.finished_at = rec.last_finished_at = null;
 	write(map);
 	readingSync.setFinished(kind, slug, rec, false);
 	window.dispatchEvent(new CustomEvent('ochorus:sync'));

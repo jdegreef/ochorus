@@ -4,6 +4,8 @@ import {
 	MARKS_KEY,
 	FAVORITES_KEY,
 	BOOKMARKS_KEY,
+	isFinishedNow,
+	lastFinishOf,
 	resumeOrderOf,
 	type MarksStore,
 	type BookmarksStore,
@@ -23,7 +25,12 @@ import { loadWorkTitles, unslug } from './workTitles';
  * (a book whose last-opened chapter was its last), which only worked for books,
  * double-counted finished books as "in progress", and re-broke when a book was
  * re-imported at a different length. `inProgress` therefore EXCLUDES finished
- * works, and the two counts no longer overlap.
+ * works.
+ *
+ * A REREAD is the one overlap, on purpose: `finished` counts every work ever
+ * finished (the first completion, `finished_at`, is history — starting a book
+ * again must not take a finish away), while `inProgress` counts what is being
+ * read now (`isFinishedNow`), and a book started again is being read.
  */
 
 export interface ReadingStats {
@@ -68,8 +75,9 @@ export function readingCounts(): ReadingStats {
 	const progress = allProgress();
 	const finished = progress.filter((p) => p.finished_at != null).length;
 	return {
-		// "In progress" is what's still being read — finished works have left it.
-		inProgress: progress.length - finished,
+		// "In progress" is what's still being read — finished works have left it,
+		// unless they are being read again.
+		inProgress: progress.filter((p) => !isFinishedNow(p)).length,
 		finished,
 		highlights,
 		notes,
@@ -99,8 +107,9 @@ export async function collectReadingActivity(
 			author: m?.author ?? '',
 			order: resumeOrderOf(p),
 			at: p.at,
-			finished: p.finished_at != null,
-			finishedAt: p.finished_at ?? null
+			// Where it stands now: a reread is on the reading list again.
+			finished: isFinishedNow(p),
+			finishedAt: isFinishedNow(p) ? lastFinishOf(p) : null
 		};
 	});
 

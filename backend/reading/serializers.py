@@ -97,6 +97,10 @@ class ReadingProgressSerializer(serializers.ModelSerializer):
             # client field — the PUT carries `finished_at` / `unfinish` in its
             # body instead — so it is read-only here.
             "finished_at",
+            # A reread: when the finished work was started again, and when that
+            # reread was finished (null = never). Resolved by _upsert_progress.
+            "restarted_at",
+            "last_finished_at",
             # The furthest chapter reached (0 = unknown) and the percent through
             # the work, by words (null = unmeasured). Both resolved by
             # _upsert_progress, never deserialized directly.
@@ -107,6 +111,8 @@ class ReadingProgressSerializer(serializers.ModelSerializer):
             "updated_at",
             "client_updated_at",
             "finished_at",
+            "restarted_at",
+            "last_finished_at",
             "furthest_order",
             "pct",
         ]

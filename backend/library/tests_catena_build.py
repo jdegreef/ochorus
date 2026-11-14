@@ -69,6 +69,27 @@ class TidyTests(SimpleTestCase):
     def test_a_space_inside_a_curled_mark_is_closed_up(self):
         self.assertEqual(tidy("he said, “ prevented, ” and went"), ["he said, “prevented,” and went"])
 
+    def test_the_mark_left_by_a_cut_lemma_goes(self):
+        self.assertEqual(tidy("... He remained there"), ["He remained there"])
+        self.assertEqual(tidy("— Then said Jesus, &c."), ["Then said Jesus, &c."])
+        self.assertEqual(tidy("Ver. 53, — And every one"), ["And every one"])
+        self.assertEqual(tidy("Ver. 26.— Jesus saith"), ["Jesus saith"])
+        self.assertEqual(tidy("... — odd"), ["odd"])
+        # Only at the opening: a dash or ellipsis inside the text stays.
+        self.assertEqual(tidy("He said — and so... went"), ["He said — and so... went"])
+
+    def test_a_spaced_opening_bracket_or_mark_is_closed_up(self):
+        self.assertEqual(tidy("[ Went backward.] This"), ["[Went backward.] This"])
+        self.assertEqual(tidy('Hall remarks, " He could"'), ['Hall remarks, "He could"'])
+
+    def test_a_lone_single_mark_is_seated_by_its_neighbours(self):
+        self.assertEqual(
+            tidy("when Christ saith, ' I can of my own self do nothing,' the"),
+            ["when Christ saith, 'I can of my own self do nothing,' the"],
+        )
+        self.assertEqual(tidy("said, ' What is truth? ' the Jews"), ["said, 'What is truth?' the Jews"])
+        self.assertEqual(tidy("the Lord's work, the sons' and"), ["the Lord's work, the sons' and"])
+
     def test_only_typography_is_touched(self):
         self.assertEqual(
             tidy("12. He  said , as - it were ,\nthis .\n\nA second   paragraph ."),
@@ -230,4 +251,15 @@ class ShippedVerseBlockTests(SimpleTestCase):
                         if depth < 0:
                             bad.append(f"{path.name}: {cite}")
                             break
+        self.assertEqual(bad, [])
+
+    def test_no_voice_speaks_an_empty_passage(self):
+        """A passage that is only the mark of a cut ("**Gregory**: ...") says
+        nothing: five shipped once in the Golden Chain on John."""
+        bad = []
+        for path in sorted(BOOKS.glob("catena-*.en.json")):
+            for row in json.loads(path.read_text("utf-8"))[1:]:
+                body = row["fields"]["body_html"]
+                for hit in re.findall(r"<p>(?:<strong>[^<]*</strong>[^<]*?:\s*)?(?:\.\.\.|…|—)\s*</p>", body):
+                    bad.append(f"{path.name} {row['fields']['title']}: {hit}")
         self.assertEqual(bad, [])

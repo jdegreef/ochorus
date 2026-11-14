@@ -1,5 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { BookSummary, PlanSummary, SeriesDetail } from '$lib/library-public';
+	import { allProgress } from '$lib/progress';
+	import { planProgress } from '$lib/planProgress.svelte';
+	import { planMeta } from '$lib/emblemNames';
+	import { chapterPath } from '$lib/editionHref';
+	import { workPercent } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -9,6 +15,9 @@
 		BIBLE_SERIES,
 		bibleChapterCount,
 		bibleIn,
+		biblePlace,
+		bibleToContinue,
+		bibleContinueRows,
 		bibleStarts,
 		divisionKey,
 		groupBible,
@@ -18,6 +27,7 @@
 	} from '$lib/bible';
 	import { goto } from '$app/navigation';
 	import { lookupScripture } from '$lib/scripture.svelte';
+	import { passageSuggestions, quickPassages } from '$lib/biblePassage';
 	import { searchHref } from '$lib/searchState';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import { OWB_PATH } from '$lib/openWordBible';
@@ -31,6 +41,9 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ContinueShelf from '$lib/components/ContinueShelf.svelte';
+	import ContinueRow from '$lib/components/ContinueRow.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	/**
 	 * The Bible hub: the Open Word Bible's books in the library, in canonical
@@ -48,6 +61,10 @@
 	let { data } = $props();
 	const series = $derived<SeriesDetail | null>(data.series);
 	const plans = $derived<PlanSummary[]>(data.plans);
+	// Each book's sermons and classics, by its place in the canon.
+	const linksAt = $derived(new Map(data.links.map((l) => [l.position, l])));
+	const linksOf = (book: BookSummary) =>
+		book.series_position != null ? linksAt.get(book.series_position) : undefined;
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
@@ -56,6 +73,36 @@
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
 	const starts = $derived(bibleStarts(series?.books ?? []));
+	// The reader's place in the Bible: device-local progress (synced when signed
+	// in), read after mount and again on `ochorus:sync`, as the hubs' Continue
+	// rows are. The prerender, and a first visit, have none: no Continue shelf,
+	// no marked chapters.
+	let ticks = $state(0);
+	onMount(() => {
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+	const records = $derived(ticks ? allProgress().filter((r) => r.kind === 'book') : []);
+	// The Bible plans the reader has started and not finished, most recently
+	// started first (the /plans page's "Continue your plans", read the same way).
+	const openPlans = $derived.by(() => {
+		if (!ticks) return [];
+		void planProgress.ticks;
+		const bySlug = new Map(plans.map((p) => [p.slug, p]));
+		return planProgress
+			.started()
+			.map((s) => bySlug.get(s.slug))
+			.filter((p): p is PlanSummary => !!p && planProgress.nextDay(p.slug, p.day_count) !== null);
+	});
+	const continues = $derived(bibleContinueRows(openPlans, bibleToContinue(books, records)));
+	const placeOf = $derived.by(() => {
+		if (!records.length) return undefined;
+		const bySlug = new Map(records.map((r) => [r.slug, r]));
+		return (book: BookSummary) => biblePlace(book, bySlug.get(book.slug));
+	});
+
 	let asCovers = $state(false);
 	// The one book whose chapters are open, across the whole index.
 	let openBook = $state<string | null>(null);
@@ -68,15 +115,46 @@
 	let jumpQ = $state('');
 	let jumping = $state(false);
 	let jumpSeq = 0;
+	// Suggestions as the reader types (`passageSuggestions`: the hub's own books,
+	// so each is a chapter the library prints), a combobox's listbox under the
+	// box. `active` is the one the arrow keys are on (-1: none).
+	const suggestions = $derived(passageSuggestions(jumpQ, series?.books ?? []));
+	const quick = $derived(quickPassages(series?.books ?? []));
+	let listOpen = $state(false);
+	let active = $state(-1);
+	const showList = $derived(listOpen && suggestions.length > 0);
+	function onJumpKey(e: KeyboardEvent) {
+		if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+			if (!suggestions.length) return;
+			e.preventDefault();
+			listOpen = true;
+			const step = e.key === 'ArrowDown' ? 1 : -1;
+			active = (active + step + suggestions.length + 1) % (suggestions.length + 1);
+			if (active === suggestions.length) active = -1;
+		} else if (e.key === 'Escape' && showList) {
+			e.preventDefault();
+			listOpen = false;
+			active = -1;
+		}
+	}
 	async function jump(e: SubmitEvent) {
 		e.preventDefault();
+		// A suggestion the arrow keys are on is what Enter means.
+		const picked = showList && active >= 0 ? suggestions[active] : null;
+		if (picked) {
+			listOpen = false;
+			await goto(localizeHref(picked.href));
+			return;
+		}
 		const q = jumpQ.trim();
 		if (q.length < 2) return;
 		const seq = ++jumpSeq;
 		jumping = true;
 		const found = mayBePassage(q) ? await lookupScripture(q) : null;
 		if (seq !== jumpSeq) return;
-		const href = found ? passageHref(found) : null;
+		// The resolver's reading first; then the best suggestion (a typo the
+		// resolver refused, "Roamns 8"); then search, so nothing dead-ends.
+		const href = (found ? passageHref(found) : null) ?? suggestions[0]?.href ?? null;
 		// Kept busy until the navigation lands, so Read can't fire it twice.
 		await goto(localizeHref(href ?? searchHref(q)));
 		if (seq === jumpSeq) jumping = false;
@@ -155,16 +233,104 @@
 					enterkeyhint="go"
 					placeholder={t('bible.jumpPlaceholder')}
 					bind:value={jumpQ}
+					role="combobox"
+					aria-autocomplete="list"
+					aria-expanded={showList}
+					aria-controls="bible-jump-list"
+					aria-activedescendant={showList && active >= 0 ? `bible-jump-opt-${active}` : undefined}
 					oninput={() => {
 						jumpSeq++;
 						jumping = false;
+						listOpen = true;
+						active = -1;
 					}}
+					onkeydown={onJumpKey}
+					onfocus={() => (listOpen = true)}
+					onblur={() => (listOpen = false)}
 				/>
 				<button type="submit" class="btn btn-primary" disabled={jumping} aria-busy={jumping}>
 					{t('bible.jumpGo')}
 				</button>
 			</div>
+			<!-- Always in the DOM (empty when closed), so aria-controls names it. The
+			     options are links: a click is a plain navigation, and mousedown keeps
+			     the box's focus so the list isn't torn down before the click lands. -->
+			<ul id="bible-jump-list" class="jump-list" role="listbox" aria-label={t('bible.jumpLabel')} hidden={!showList}>
+				{#if showList}
+					{#each suggestions as s, i (s.href)}
+						<li id="bible-jump-opt-{i}" role="option" aria-selected={i === active}>
+							<a
+								href={localizeHref(s.href)}
+								class="jump-opt"
+								class:active={i === active}
+								tabindex="-1"
+								onmousedown={(e) => e.preventDefault()}
+								onclick={() => (listOpen = false)}>{s.label}</a
+							>
+						</li>
+					{/each}
+				{/if}
+			</ul>
+
 		</form>
+		{#if quick.length}
+			<!-- One tap to the chapters most looked for: the placeholder's own
+			     examples first, so they also show what the box takes. -->
+			<ul class="quick" aria-label={t('bible.jumpLabel')}>
+				{#each quick as p (p.href)}
+					<li><a class="chip quick-chip" href={localizeHref(p.href)}>{p.label}</a></li>
+				{/each}
+			</ul>
+		{/if}
+
+		{#if continues.plans.length || continues.books.length}
+			<!-- A returning reader's way back in: the books they are partway
+			     through, the chapter Continue opens named in the Bible's numbers. -->
+			<div class="mb-11">
+				<ContinueShelf heading={t('books.continue')}>
+					{#each continues.plans as plan (plan.slug)}
+						{@const done = planProgress.doneDays(plan.slug).length}
+						{@const next = planProgress.nextDay(plan.slug, plan.day_count)}
+						{@const meta = planMeta(plan.slug)}
+						{@const caption = `${t('plans.day')} ${next} ${t('plans.of')} ${plan.day_count}`}
+						<ContinueRow
+							href={localizeHref(`/plans/${plan.slug}`)}
+							title={plan.title}
+							{caption}
+							verb={t('plans.continue')}
+							hue={meta.accent}
+							emblem={meta.emblem}
+						>
+							{#snippet progress()}
+								<ProgressBar
+									percent={(done / plan.day_count) * 100}
+									label={`${plan.title}: ${done} ${t('plans.of')} ${plan.day_count} ${t('plans.days')}`}
+								/>
+							{/snippet}
+						</ContinueRow>
+					{/each}
+					{#each continues.books as row (row.book.slug)}
+						{@const caption = `${t('continue.chapter')} ${row.chapter} ${t('plans.of')} ${row.count}`}
+						<ContinueRow
+							href={localizeHref(chapterPath(row.book.slug, row.order, row.book.has_modern_edition))}
+							title={row.book.title}
+							{caption}
+							verb={t('plans.continue')}
+						>
+							{#snippet visual()}
+								<span class="w-10 shrink-0"><BookCover book={row.book} /></span>
+							{/snippet}
+							{#snippet progress()}
+								<ProgressBar
+									percent={workPercent(row.record, row.book.chapter_count)}
+									label={`${row.book.title}: ${caption}`}
+								/>
+							{/snippet}
+						</ContinueRow>
+					{/each}
+				</ContinueShelf>
+			</div>
+		{/if}
 
 		{#if starts.length}
 			<!-- For a first reader: a short path in, each step a book and why. -->
@@ -240,7 +406,7 @@
 								{/each}
 							</div>
 						{:else}
-							<BibleBookList books={group.books} bind:open={openBook} />
+							<BibleBookList books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{/if}
 					</section>
 				{/each}
@@ -259,8 +425,42 @@
 
 <style>
 	.jump {
-		margin: 0.25rem 0 2.25rem;
+		position: relative;
+		margin: 0.25rem 0 0.75rem;
 		max-width: 32rem;
+	}
+	.jump-list {
+		position: absolute;
+		inset-inline: 0;
+		top: 100%;
+		z-index: var(--z-popover);
+		margin: 0.25rem 0 0;
+		padding: 0.25rem;
+		list-style: none;
+		border: 1px solid var(--border-strong);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+	.jump-opt {
+		display: block;
+		padding: 0.5rem 0.75rem;
+		border-radius: var(--radius-sm);
+		color: var(--text);
+		text-decoration: none;
+	}
+	.jump-opt:hover,
+	.jump-opt.active {
+		background: var(--accent-soft);
+		color: var(--accent);
+	}
+	.quick {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0 0 2.25rem;
+		padding: 0;
+		list-style: none;
 	}
 	.jump-label {
 		display: block;
