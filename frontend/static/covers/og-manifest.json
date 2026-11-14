@@ -43534,6 +43534,41 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"uk/revival-lectures": {
+			"ground": "a2640902a293e5d92ef0a9825e2c797fe6b23470b05fe2f057105c6b4016b57b",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.8,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[156, 271, 444, 347],
+					[176, 336, 424, 412],
+					[115, 402, 485, 478]
+				],
+				"subtitle": [
+					[129, 552, 471, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				220,
+				574
+			]
+		},
 		"uk/rise-up-men-of-god-2": {
 			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
 			"style": "originals",
