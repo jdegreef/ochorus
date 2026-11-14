@@ -61,7 +61,7 @@ const LOCALES = JSON.parse(
 const RTL = new Set(['ar']);
 /** Locales whose "Read …" line carries its own quotation marks; the rest
  *  italicise the title instead. */
-const MARKED = new Set(['ar', 'hi', 'uk', 'am']);
+const MARKED = new Set(['ar', 'hi', 'uk', 'am', 'ru']);
 
 // The arch the portrait sits in, and the column beside it.
 const ARCH = { w: 330, h: 430, top: 72, edge: 72 };

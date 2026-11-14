@@ -1,0 +1,12 @@
+/* Cyrillic, for Russian — linked ONLY on Russian documents by the root layout
+   (and by the pages that draw every language's content: /for, admin; see
+   $lib/fontSheets.ts). The same faces as fonts-uk.css, for the same reasons —
+   that file explains why each is here and why both PT Serif weights are. Its
+   own sheet rather than a second key on Ukrainian's, so each locale's sheet
+   stays `fonts-<locale>.css` (fontStacks.test). */
+@import '@fontsource/old-standard-tt/400.css';
+@import '@fontsource/old-standard-tt/700.css';
+@import '@fontsource/pt-serif/400.css';
+@import '@fontsource/pt-serif/700.css';
+@import '@fontsource/pt-sans/400.css';
+@import '@fontsource/pt-sans/700.css';

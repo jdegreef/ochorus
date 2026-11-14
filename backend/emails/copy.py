@@ -48,6 +48,8 @@ FRIEND: dict[str, str] = {
     "ko": "독자",
     # The copy greets "{name}様", so an unnamed reader is 読者様.
     "ja": "読者",
+    # "Здравствуйте, {name}!" — an unnamed reader is addressed as a reader.
+    "ru": "дорогой читатель",
 }
 
 

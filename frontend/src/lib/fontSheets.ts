@@ -6,6 +6,7 @@ import hiFonts from './fonts-hi.css?url';
 import jaFonts from './fonts-ja.css?url';
 import koFonts from './fonts-ko.css?url';
 import ukFonts from './fonts-uk.css?url';
+import ruFonts from './fonts-ru.css?url';
 import readerFonts from './fonts-reader.css?url';
 
 /**
@@ -23,7 +24,8 @@ export const SCRIPT_FONTS: Readonly<Record<string, string>> = {
 	uk: ukFonts,
 	am: amFonts,
 	ko: koFonts,
-	ja: jaFonts
+	ja: jaFonts,
+	ru: ruFonts
 };
 
 /** The reader's optional faces (fonts-reader.css). */

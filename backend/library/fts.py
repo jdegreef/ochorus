@@ -43,6 +43,7 @@ FTS_CONFIGS = {
     "fr": "french",
     "es": "spanish",
     "pt": "portuguese",
+    "ru": "russian",
 }
 
 
