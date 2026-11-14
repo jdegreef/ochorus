@@ -1,7 +1,7 @@
 import type { BookSummary } from './library-public';
 import { chapterPath } from './editionHref';
 import type { FavoriteEntry } from './favorites.svelte';
-import { resumeOrderOf, type ProgressRecord, type WorkKind } from './reading-schema';
+import { isFinishedNow, lastFinishOf, resumeOrderOf, type ProgressRecord, type WorkKind } from './reading-schema';
 import { workPercent } from './reading';
 import { authorPath } from './originals';
 import { unslug } from './strings';
@@ -13,7 +13,7 @@ import { unslug } from './strings';
  * (progress).
  *
  * A book lands on exactly one shelf, and the reading state outranks the heart:
- *   - a stored `finished_at`            → Finished
+ *   - finished now (`isFinishedNow`)    → Finished (a reread is Reading)
  *   - any other reading position        → Reading (the same rule as /reading's
  *                                         "In progress", so the two pages agree)
  *   - hearted, never opened             → To read
@@ -90,7 +90,7 @@ export function buildShelves(
 		const book = bySlug.get(p.slug);
 		if (!book) continue;
 		placed.add(p.slug);
-		const finished = p.finished_at != null;
+		const finished = isFinishedNow(p);
 		const paused = !finished && isPaused(p.at, now);
 		(finished ? shelves.finished : paused ? shelves.paused : shelves.reading).push({
 			book,
@@ -98,7 +98,7 @@ export function buildShelves(
 			saved: savedAt.has(p.slug),
 			...resumePlace(p),
 			pct: workPercent(p, book.chapter_count),
-			at: (finished ? p.finished_at : p.at) ?? p.at,
+			at: (finished ? lastFinishOf(p) : p.at) ?? p.at,
 			paused,
 			lastRead: p.at
 		});
@@ -213,7 +213,7 @@ export function customShelfItems(
 		const book = bySlug.get(slug);
 		if (!book) continue;
 		const p = recOf.get(slug);
-		const status: ShelfStatus = !p ? 'toRead' : p.finished_at != null ? 'finished' : 'reading';
+		const status: ShelfStatus = !p ? 'toRead' : isFinishedNow(p) ? 'finished' : 'reading';
 		items.push({
 			book,
 			status,

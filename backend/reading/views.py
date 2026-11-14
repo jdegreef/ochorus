@@ -432,10 +432,15 @@ def _removed_at(value) -> datetime:
 
 
 def _progress_extras(data: dict) -> dict:
-    """The optional progress fields a newer client sends — `furthest_order`
-    and `pct` — validated; absent (an older client) stays None, which the
-    upsert reads as "not reported"."""
+    """The optional progress fields a newer client sends — `furthest_order`,
+    `pct` and the reread stamps `restarted_at` / `last_finished_at` (epoch ms)
+    — validated; absent (an older client) stays None, which the upsert reads as
+    "not reported"."""
     out = {}
+    for field in ("restarted_at", "last_finished_at"):
+        dt = _ms_to_dt(data.get(field))
+        if dt is not None:
+            out[field] = dt
     if data.get("furthest_order") is not None:
         out["furthest_order"] = clamp_int(
             data.get("furthest_order"), default=0, low=0, high=MAX_CHAPTER_ORDER
@@ -443,6 +448,18 @@ def _progress_extras(data: dict) -> dict:
     if data.get("pct") is not None:
         out["pct"] = clamp_int(data.get("pct"), default=0, low=0, high=100)
     return out
+
+
+def _latest(a, b):
+    """The later of two optional datetimes (None = not reported)."""
+    if a is None:
+        return b
+    return a if b is None else max(a, b)
+
+
+def _is_later(a, b) -> bool:
+    """Is optional datetime ``a`` strictly later than ``b`` (None = never)?"""
+    return a is not None and (b is None or a > b)
 
 
 def _upsert_progress(
@@ -459,6 +476,8 @@ def _upsert_progress(
     clear_finished=False,
     furthest_order=None,
     pct=None,
+    restarted_at=None,
+    last_finished_at=None,
 ):
     """Upsert one reading-position row, keeping the server's when it is newer.
 
@@ -491,6 +510,16 @@ def _upsert_progress(
     one thing that clears it; like un-favoriting it is a live-only signal the
     merge never carries.
 
+    ``finished_at`` is therefore the FIRST completion — history, which a reread
+    never takes away. Starting a finished work again is ``restarted_at`` and
+    finishing that reread is ``last_finished_at``; each keeps the LATEST any
+    device reports and an omitted one never clears, so the work's status is
+    whichever came last (the client's ``isFinishedNow``). A device still
+    holding only the old finish can't re-mark a reread finished: its
+    ``finished_at`` is older than the restart. An un-finish on a work that was
+    restarted clears only the reread's finish (back to rereading); on one never
+    restarted it clears the finish outright, as before.
+
     ``furthest_order`` (the furthest chapter reached) is resolved apart from
     the position too, and only GROWS: the highest any device reports wins, and
     a write that omits it (an older client) leaves it alone. A peek ahead is
@@ -516,16 +545,31 @@ def _upsert_progress(
 
     # Resolve the finished state first, independently of the position below.
     server_finished = existing.finished_at if existing else None
-    if clear_finished:
-        resolved_finished = None
-    elif server_finished and finished_at:
+    server_restarted = existing.restarted_at if existing else None
+    server_last_finished = existing.last_finished_at if existing else None
+    resolved_restarted = _latest(server_restarted, restarted_at)
+    resolved_last_finished = _latest(server_last_finished, last_finished_at)
+    if server_finished and finished_at:
         resolved_finished = min(server_finished, finished_at)
     else:
         resolved_finished = server_finished or finished_at
+    if clear_finished:
+        # Undo a reread's finish, or — never restarted — the finish itself.
+        resolved_last_finished = None
+        if resolved_restarted is None:
+            resolved_finished = None
 
-    # The furthest chapter reached: the higher of the two, never lowered.
+    # The furthest chapter reached: the higher of the two, never lowered —
+    # within one read-through. A write reporting a NEWER restart begins a new
+    # one, so its furthest replaces the server's; a write from an EARLIER
+    # read-through (a device that never saw the restart) can't raise it.
     server_furthest = existing.furthest_order if existing else 0
-    resolved_furthest = max(server_furthest, furthest_order or 0)
+    if _is_later(restarted_at, server_restarted):
+        resolved_furthest = furthest_order if furthest_order is not None else server_furthest
+    elif _is_later(server_restarted, restarted_at):
+        resolved_furthest = server_furthest
+    else:
+        resolved_furthest = max(server_furthest, furthest_order or 0)
 
     # Is the incoming POSITION stale (the stored one is at least as new)? Either
     # the stored client-clock is at or ahead of the incoming one, or the incoming
@@ -544,9 +588,14 @@ def _upsert_progress(
         # `position_stale` is only ever set inside `if existing:`, so it's here.
         # The furthest chapter unions the same way.
         changed = []
-        if resolved_finished != server_finished:
-            existing.finished_at = resolved_finished
-            changed.append("finished_at")
+        for field, server_value, resolved in (
+            ("finished_at", server_finished, resolved_finished),
+            ("restarted_at", server_restarted, resolved_restarted),
+            ("last_finished_at", server_last_finished, resolved_last_finished),
+        ):
+            if resolved != server_value:
+                setattr(existing, field, resolved)
+                changed.append(field)
         if resolved_furthest != server_furthest:
             existing.furthest_order = resolved_furthest
             changed.append("furthest_order")
@@ -569,6 +618,8 @@ def _upsert_progress(
             "paragraph_index": paragraph_index,
             "client_updated_at": client_dt,
             "finished_at": resolved_finished,
+            "restarted_at": resolved_restarted,
+            "last_finished_at": resolved_last_finished,
             "furthest_order": resolved_furthest,
             "pct": pct,
         },

@@ -26,7 +26,7 @@
 		recordSermonList,
 		unfinishedBookSlugs
 	} from '$lib/resumeBooks';
-	import { workSlugKey } from '$lib/reading-schema';
+	import { isFinishedNow, workSlugKey } from '$lib/reading-schema';
 	import { allProgress } from '$lib/progress';
 	import { buildResumeItems, type ResumeItem } from '$lib/resumeItems';
 	import { getLang } from '$lib/lang.svelte';
@@ -94,7 +94,7 @@
 					loadingBooks = false;
 				});
 		}
-		if (sermonList === null && progress.some((p) => p.kind === 'sermon' && p.finished_at == null)) {
+		if (sermonList === null && progress.some((p) => p.kind === 'sermon' && !isFinishedNow(p))) {
 			loadingSermons = true;
 			listSermons(lang)
 				.then((l) => {
@@ -141,7 +141,7 @@
 		}
 		const byKey = new Map(drawable.map((i) => [i.key, i]));
 		return allProgress()
-			.filter((p) => p.finished_at == null && (p.kind === 'book' || p.kind === 'sermon'))
+			.filter((p) => !isFinishedNow(p) && (p.kind === 'book' || p.kind === 'sermon'))
 			.map((p) => ({ kind: p.kind as 'book' | 'sermon', key: workSlugKey(p.kind, p.slug) }))
 			.filter(({ key }) => !absent.has(key) && key !== exclude)
 			.slice(0, limit)

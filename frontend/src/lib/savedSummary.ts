@@ -5,7 +5,7 @@ import { bookmarks } from './bookmarks.svelte';
 import { journal } from './journal.svelte';
 import { journalStats, type JournalStore } from './journal';
 import { planProgress } from './planProgress.svelte';
-import type { Mark } from './reading-schema';
+import { isFinishedNow, type Mark } from './reading-schema';
 
 /**
  * What a signed-out reader has already saved on this device, counted for the
@@ -95,7 +95,7 @@ export function readSavedSummary(kind: 'shelf' | 'notebook'): SavedSummary {
 	return summarizeSaved(kind, {
 		favorites: favorites.all(),
 		booksInProgress: allProgress()
-			.filter((p) => p.kind === 'book' && p.finished_at == null)
+			.filter((p) => p.kind === 'book' && !isFinishedNow(p))
 			.map((p) => p.slug),
 		plansStarted: planProgress.started().map((p) => p.slug),
 		marks: marks

@@ -66,4 +66,16 @@ describe('readingCounts', () => {
 		expect(c.inProgress).toBe(1); // only the unfinished book
 		expect(c.finished).toBe(2); // the finished book AND the finished sermon
 	});
+
+	it('a book being reread is in progress AND still counts as finished', () => {
+		localStorage.setItem(
+			PROGRESS_KEY,
+			JSON.stringify({
+				mark: { order: 2, paragraph_index: 0, language: 'en', at: 5, finished_at: 1700, restarted_at: 1900 }
+			})
+		);
+		const c = readingCounts();
+		expect(c.inProgress).toBe(1); // being read again
+		expect(c.finished).toBe(1); // the completion is history; a reread doesn't take it away
+	});
 });

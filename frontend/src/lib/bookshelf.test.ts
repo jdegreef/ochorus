@@ -45,6 +45,15 @@ describe('buildShelves', () => {
 		expect(s.reading[0].saved).toBe(true);
 	});
 
+	it('a book started again leaves the Finished shelf for Reading', () => {
+		const s = buildShelves(catalog, [], [{ ...rec('b', 2, 30, 20), restarted_at: 25 }], T);
+		expect(s.reading.map((x) => x.book.slug)).toEqual(['b']);
+		expect(s.finished).toHaveLength(0);
+		// ...and back, sorted by its latest finish, once the reread is finished.
+		const done = buildShelves(catalog, [], [{ ...rec('b', 10, 40, 20), restarted_at: 25, last_finished_at: 40 }], T);
+		expect(done.finished.map((x) => [x.book.slug, x.at])).toEqual([['b', 40]]);
+	});
+
 	it('shelves a started book that was never hearted', () => {
 		const s = buildShelves(catalog, [], [rec('d', 2, 5)], T);
 		expect(s.reading).toHaveLength(1);

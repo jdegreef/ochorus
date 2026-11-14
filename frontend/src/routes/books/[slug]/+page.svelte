@@ -7,8 +7,15 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath, isImprint } from '$lib/originals';
 	import { type BookDetail, formatLifespan, isTranslated } from '$lib/library-public';
-	import { getProgressRecord } from '$lib/progress';
-	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
+	import { getProgressRecord, restartWork } from '$lib/progress';
+	import {
+		bookChapterPath,
+		furthestOf,
+		isFinishedNow,
+		lastFinishOf,
+		resumeOrderOf,
+		type ProgressRecord
+	} from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import {
 		bookTimeLeft,
@@ -103,7 +110,7 @@
 	// Continue took the reader back from a peek; the furthest reached, when
 	// they went back to reread.
 	const otherPlace = $derived.by(() => {
-		if (!record || furthest == null || record.finished_at != null) return null;
+		if (!record || furthest == null || finishedAt != null) return null;
 		if (record.order > furthest && inEdition(record.order))
 			return { order: record.order, label: t('book.lastOpened') };
 		if (record.order < furthest && inEdition(furthest))
@@ -111,8 +118,16 @@
 		return null;
 	});
 	// Finished (the end reached, or marked done): the card says so and offers
-	// the book again from the start, not "Continue · chapter N of N".
-	const finishedAt = $derived(record?.finished_at ?? null);
+	// the book again from the start, not "Continue · chapter N of N". A book
+	// being read AGAIN is not finished here — it has a place to continue from
+	// (isFinishedNow); the date shown is the latest finish.
+	const finishedAt = $derived(record && isFinishedNow(record) ? lastFinishOf(record) : null);
+	/** "Read again" starts a new read-through (restartWork) as it opens the
+	 *  first chapter, so the book is in progress again everywhere at once —
+	 *  not only once the reader goes on to the next chapter. */
+	const readAgain = () => {
+		if (finishedAt != null) restartWork(book.slug, firstOrder);
+	};
 
 	// The saved place clamped to THIS edition. Progress is keyed by the bare slug
 	// (workSlugKey), so it is shared across language editions — which can have
@@ -879,6 +894,7 @@
 						     container drops it visually. -->
 						<a
 							href={readHref(readOrder)}
+							onclick={readAgain}
 							class="btn {book.daily ? 'btn-ghost' : 'btn-primary btn-solid'} flex-col gap-0"
 							>{readLabel}{#if fresh && readChapter}{' '}<span class="btn-sub" dir="auto"
 									>{chapterNameIn(readOrder, readChapter.title, book.title)}{readChapter.word_count
@@ -1023,7 +1039,7 @@
 			     card is on screen put two "Continue" buttons in view. It appears
 			     only once the card has scrolled away. -->
 			{#if !cardSeen.visible}
-				<a href={readHref(readOrder)} class="btn btn-primary btn-solid subnav-cta shrink-0"
+				<a href={readHref(readOrder)} onclick={readAgain} class="btn btn-primary btn-solid subnav-cta shrink-0"
 					>{resuming ? `${t('book.continueCh')} ${readOrder}` : readLabel}</a
 				>
 			{/if}
@@ -1575,6 +1591,7 @@
 	title={chapterNameIn(readOrder, readChapter?.title, book.title)}
 	href={readHref(readOrder)}
 	label={readLabel}
+	onread={readAgain}
 />
 
 <style>
