@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library-public';
-	import { bibleChapterCount, bibleChapters } from '$lib/bible';
+	import type { BibleBookLinks, BookSummary } from '$lib/library-public';
+	import { bibleChapterCount, bibleChapters, type BiblePlace } from '$lib/bible';
 	import { chapterCount } from '$lib/reading';
+	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -17,22 +18,48 @@
 	 * colour its spine wears in the canon strip above. The chips are built and
 	 * drawn only for the open book: 1,189 links on every load would bloat the
 	 * prerendered page, and the book pages already link each chapter.
+	 *
+	 * `placeOf` is where the reader is in each book (`biblePlace`), read in the
+	 * browser after mount: the chips behind them fill and the one Continue opens
+	 * is ringed, as on the book page, and a started book's row says where they
+	 * are. The prerender, and a first visit, pass none.
 	 */
-	let { books, open = $bindable(null) }: { books: readonly BookSummary[]; open?: string | null } =
-		$props();
+	let {
+		books,
+		open = $bindable(null),
+		placeOf,
+		linksOf
+	}: {
+		books: readonly BookSummary[];
+		open?: string | null;
+		placeOf?: (book: BookSummary) => BiblePlace | null;
+		/** Where the book leads in the rest of the library: its sermons, and the
+		 *  classics' passages on it (`/scripture/<book>/`). */
+		linksOf?: (book: BookSummary) => BibleBookLinks | undefined;
+	} = $props();
+	const t = i18n.t;
 </script>
 
 <ul class="bible-list">
 	{#each books as book (book.slug)}
 		{@const count = bibleChapterCount([book])}
 		{@const countLabel = chapterCount(count)}
+		{@const place = placeOf?.(book) ?? null}
 		{@const isOpen = open === book.slug}
+		{@const links = linksOf?.(book)}
 		<li class="bible-row" class:open={isOpen}>
 			<a class="bible-row-link" href={localizeHref(`/books/${book.slug}`)}>
 				<span class="bible-row-swatch" style:--swatch={book.cover_color || null} aria-hidden="true"></span>
 				<span class="bible-row-text">
 					<span class="bible-row-title">{book.title}</span>
 					{#if book.subtitle}<span class="bible-row-sub">{book.subtitle}</span>{/if}
+					{#if place?.finished}
+						<span class="bible-row-place">{t('fav.shelfFinished')}</span>
+					{:else if place?.current}
+						<span class="bible-row-place"
+							>{t('continue.chapter')} {place.current} {t('plans.of')} {count}</span
+						>
+					{/if}
 				</span>
 			</a>
 			{#if count}
@@ -47,12 +74,37 @@
 					{countLabel}
 					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
 				</button>
+			{/if}
+			{#if links && (links.sermons || links.scripture)}
+				<!-- Beside the row's own link, not inside it (a link can't hold a link).
+				     English, like the hub's other own copy. -->
+				<p class="bible-row-more">
+					{#if links.sermons}
+						<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
+							>{links.sermons} {links.sermons === 1 ? 'sermon' : 'sermons'}</a
+						>
+					{/if}
+					{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}
+					{#if links.scripture}
+						<a href={localizeHref(`/scripture/${links.scripture}/`)}>In the classics</a>
+					{/if}
+				</p>
+			{/if}
+			{#if count}
 				{#if isOpen}
 					<ol class="chapter-grid bible-row-grid" id="chapters-{book.slug}">
 						{#each bibleChapters(book) as ch (ch.n)}
+							{@const current = !place?.finished && ch.n === place?.current}
+							{@const read = !current && ch.n <= (place?.behind ?? 0)}
 							<li>
-								<a class="chapter-chip" href={localizeHref(ch.href)} aria-label={ch.name} title={ch.name}
-									>{ch.n}</a
+								<a
+									class="chapter-chip"
+									class:read
+									class:current
+									href={localizeHref(ch.href)}
+									aria-current={current ? 'step' : undefined}
+									aria-label="{ch.name}{read ? `, ${t('settings.heatmapRead')}` : ''}"
+									title={ch.name}>{ch.n}</a
 								>
 							</li>
 						{/each}
@@ -126,6 +178,23 @@
 		font-size: var(--fs-small);
 		color: var(--muted);
 		line-height: 1.4;
+	}
+	.bible-row-place {
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.bible-row-more {
+		grid-column: 1;
+		margin: 0.2rem 0 0;
+		padding-inline-start: calc(0.375rem + 0.85rem);
+		font-size: var(--fs-small);
+	}
+	.bible-row-more a {
+		color: var(--accent);
+	}
+	.bible-row-more a:hover {
+		text-decoration: underline;
 	}
 	.bible-row-chapters {
 		display: inline-flex;

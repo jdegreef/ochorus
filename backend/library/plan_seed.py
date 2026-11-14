@@ -261,6 +261,42 @@ BIBLE_IN_A_YEAR = (
     ("revelation", (3, 5, 5, 5, 4)),
 )
 
+# The New Testament in 90 Days: the Open Word Bible from Matthew to
+# Revelation, all 260 chapters, in the same shape as BIBLE_IN_A_YEAR (a book
+# and the chapters each of its days reads, introduction and conclusion left
+# out). Cut once by word count to even the days — about 2,200 words a day —
+# without a day crossing from one book into the next. A literal for the same
+# reason: day N is a public contract.
+NEW_TESTAMENT_IN_90_DAYS = (
+    ("gospel-of-matthew", (4, 3, 3, 2, 2, 3, 3, 2, 2, 2, 2)),
+    ("gospel-of-mark", (3, 2, 2, 2, 2, 2, 1, 2)),
+    ("gospel-of-luke", (2, 2, 2, 2, 2, 2, 3, 3, 2, 2, 2)),
+    ("gospel-of-john", (3, 2, 2, 2, 2, 2, 3, 2, 3)),
+    ("acts-of-the-apostles", (3, 3, 2, 2, 3, 3, 3, 2, 2, 3, 2)),
+    ("romans", (3, 4, 2, 4, 3)),
+    ("1-corinthians", (4, 4, 3, 3, 2)),
+    ("2-corinthians", (4, 5, 4)),
+    ("galatians", (3, 3)),
+    ("ephesians", (3, 3)),
+    ("philippians", (4,)),
+    ("colossians", (4,)),
+    ("1-thessalonians", (5,)),
+    ("2-thessalonians", (3,)),
+    ("1-timothy", (6,)),
+    ("2-timothy", (4,)),
+    ("titus", (3,)),
+    ("philemon", (1,)),
+    ("hebrews", (6, 4, 3)),
+    ("james", (5,)),
+    ("1-peter", (5,)),
+    ("2-peter", (3,)),
+    ("1-john", (5,)),
+    ("2-john", (1,)),
+    ("3-john", (1,)),
+    ("jude", (1,)),
+    ("revelation", (3, 5, 5, 5, 4)),
+)
+
 # Curated plans that walk through SEVERAL works in order. An item is a book
 # slug (the whole book, chapter by chapter), ``chapters(slug, first, last)``
 # (a span of one book) or ``article(slug)`` (one day reading that article).
@@ -1074,6 +1110,22 @@ CURATED_PLANS = [
         "poets and the prophets, the Gospels, the letters and the new creation.",
         # first=2: an Open Word Bible edition's chapter 1 is its introduction.
         [item for slug, per_day in BIBLE_IN_A_YEAR for item in readings(slug, per_day, 2)],
+    ),
+    (
+        "new-testament-in-90-days",
+        "The New Testament in 90 Days",
+        "The whole New Testament in the Open Word Bible, Matthew to Revelation "
+        "in order: all 260 chapters in 90 days. Most days read two to four "
+        "chapters, about ten minutes, cut so each day is a similar length and "
+        "keeps to one book; the shortest letters take a day of their own. "
+        "Through the four Gospels, the church's first days in Acts, the letters "
+        "of Paul and the apostles, and the new heaven and new earth.",
+        # first=2: an Open Word Bible edition's chapter 1 is its introduction.
+        [
+            item
+            for slug, per_day in NEW_TESTAMENT_IN_90_DAYS
+            for item in readings(slug, per_day, 2)
+        ],
     ),
     # Scripture with the classics: a Romans chapter of the Open Word Bible,
     # then (most days after) the chapter of Luther's teaching that grew from

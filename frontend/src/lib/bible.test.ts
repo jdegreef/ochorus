@@ -4,6 +4,9 @@ import {
 	BIBLE_STARTS,
 	bibleChapterCount,
 	bibleChapters,
+	biblePlace,
+	bibleToContinue,
+	bibleContinueRows,
 	canonName,
 	biblePlans,
 	bibleStarts,
@@ -108,10 +111,16 @@ describe('biblePlans', () => {
 	});
 
 	it('leads with the whole-Bible plans', () => {
-		const plans = [{ slug: 'john-in-21-days' }, { slug: 'bible-in-a-year' }, { slug: 'the-story-of-the-bible' }];
+		const plans = [
+			{ slug: 'john-in-21-days' },
+			{ slug: 'new-testament-in-90-days' },
+			{ slug: 'bible-in-a-year' },
+			{ slug: 'the-story-of-the-bible' }
+		];
 		expect(biblePlans(plans).map((p) => p.slug)).toEqual([
 			'the-story-of-the-bible',
 			'bible-in-a-year',
+			'new-testament-in-90-days',
 			'john-in-21-days'
 		]);
 	});
@@ -273,5 +282,107 @@ describe('mayBePassage', () => {
 	});
 	it('sends any other word to search', () => {
 		for (const q of ['grace', 'John Bunyan', 'prayer']) expect(mayBePassage(q), q).toBe(false);
+	});
+});
+
+describe('biblePlace', () => {
+	// Ruth: an introduction, four chapters, a conclusion (orders 1-6).
+	const ruth = { chapter_count: 6 };
+	const rec = (order: number, furthest?: number, finished_at: number | null = null) => ({
+		order,
+		furthest,
+		finished_at
+	});
+
+	it('reads nothing for no record, or a place outside the edition', () => {
+		expect(biblePlace(ruth, null)).toBeNull();
+		expect(biblePlace(ruth, rec(9))).toBeNull();
+	});
+
+	it('puts the chapters before the furthest reached behind the reader', () => {
+		// On Ruth 3 (order 4), having reached it: Ruth 1-2 behind.
+		expect(biblePlace(ruth, rec(4))).toEqual({ behind: 2, current: 3, finished: false });
+		// Back in Ruth 1 after reaching Ruth 4: Continue goes to Ruth 1, 1-3 behind.
+		expect(biblePlace(ruth, rec(2, 5))).toEqual({ behind: 3, current: 1, finished: false });
+	});
+
+	it('has no current chapter at the introduction or the conclusion', () => {
+		expect(biblePlace(ruth, rec(1))).toEqual({ behind: 0, current: null, finished: false });
+		expect(biblePlace(ruth, rec(6))).toEqual({ behind: 4, current: null, finished: false });
+	});
+
+	it('marks every chapter behind a finished reader', () => {
+		expect(biblePlace(ruth, rec(3, 3, 1))).toEqual({ behind: 4, current: null, finished: true });
+	});
+
+	it('reads a book started again after finishing as in progress', () => {
+		const reread = { order: 3, furthest: 3, finished_at: 1, restarted_at: 5 };
+		expect(biblePlace(ruth, reread)).toEqual({ behind: 1, current: 2, finished: false });
+		// ...and finished again once the reread is.
+		expect(biblePlace(ruth, { ...reread, last_finished_at: 9 })?.finished).toBe(true);
+	});
+});
+
+describe('bibleToContinue', () => {
+	const books = [
+		{ slug: 'ruth', chapter_count: 6 },
+		{ slug: 'jonah', chapter_count: 6 },
+		{ slug: 'mark', chapter_count: 18 }
+	];
+	const at = (slug: string, order: number, when: number, extra: object = {}) => ({
+		slug,
+		kind: 'book',
+		order,
+		furthest: order,
+		finished_at: null,
+		at: when,
+		...extra
+	});
+
+	it('lists the books partway through, newest first, linking the chapter to read', () => {
+		const rows = bibleToContinue(books, [at('ruth', 3, 1), at('mark', 8, 5)]);
+		expect(rows.map((r) => [r.book.slug, r.chapter, r.order, r.count])).toEqual([
+			['mark', 7, 8, 16],
+			['ruth', 2, 3, 4]
+		]);
+		expect(rows[0].record.slug).toBe('mark');
+	});
+
+	it('skips finished books, introductions, other works and books off the shelf', () => {
+		const rows = bibleToContinue(books, [
+			at('ruth', 3, 1, { finished_at: 9 }),
+			at('jonah', 1, 2),
+			at('mark', 3, 3, { kind: 'sermon' }),
+			at('pilgrims-progress', 3, 4)
+		]);
+		expect(rows).toEqual([]);
+	});
+
+	it('keeps at most three', () => {
+		const many = [...books, { slug: 'joel', chapter_count: 5 }];
+		const recs = many.map((b, i) => at(b.slug, 2, i));
+		expect(bibleToContinue(many, recs).map((r) => r.book.slug)).toEqual(['joel', 'mark', 'jonah']);
+	});
+});
+
+describe('bibleContinueRows', () => {
+	const plan = (slug: string, ...covers: string[]) => ({ slug, covers: covers.map((c) => ({ slug: c })) });
+	const row = (slug: string) => ({ book: { slug } });
+
+	it('puts plans first and drops the book a one-book plan already reads', () => {
+		const out = bibleContinueRows([plan('john-in-21-days', 'gospel-of-john')], [row('gospel-of-john'), row('ruth')]);
+		expect(out.plans.map((p) => p.slug)).toEqual(['john-in-21-days']);
+		expect(out.books.map((r) => r.book.slug)).toEqual(['ruth']);
+	});
+
+	it('keeps a book a many-book plan also reads', () => {
+		const out = bibleContinueRows([plan('bible-in-a-year', 'genesis', 'exodus')], [row('genesis')]);
+		expect(out.books.map((r) => r.book.slug)).toEqual(['genesis']);
+	});
+
+	it('shows at most `max` rows in all', () => {
+		const out = bibleContinueRows([plan('a', 'x'), plan('b', 'y')], [row('c'), row('d')], 3);
+		expect([out.plans.length, out.books.length]).toEqual([2, 1]);
+		expect(bibleContinueRows([plan('a'), plan('b'), plan('c'), plan('d')], [row('e')]).plans).toHaveLength(3);
 	});
 });

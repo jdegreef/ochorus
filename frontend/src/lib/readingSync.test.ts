@@ -779,3 +779,44 @@ describe('a merge brings back the furthest chapter and the percent (review bug #
 	});
 });
 
+
+describe('a reread rides the merge both ways', () => {
+	it("carries restarted_at / last_finished_at up, and the account's back down", async () => {
+		localStorage.setItem(
+			'ochorus:progress',
+			JSON.stringify({
+				mark: { order: 2, paragraph_index: 0, language: 'en', at: 3_000, finished_at: 1_000, restarted_at: 2_000 }
+			})
+		);
+		const reply = new Response(
+			JSON.stringify({
+				progress: [
+					{ kind: 'book', book_slug: 'mark', language: 'en', chapter_order: 2, paragraph_index: 0,
+					  updated_at: '2026-01-01T00:00:00Z', client_updated_at: '2026-01-01T00:00:00Z',
+					  finished_at: '2025-01-01T00:00:00Z', restarted_at: '2025-06-01T00:00:00Z',
+					  last_finished_at: null, furthest_order: 2 }
+				],
+				marks: [],
+				favorites: []
+			}),
+			{ status: 200, headers: { 'content-type': 'application/json' } }
+		);
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply);
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const sent = JSON.parse(String((fetchSpy.mock.calls[0][1] as RequestInit).body));
+			expect(sent.progress[0]).toMatchObject({ finished_at: 1_000, restarted_at: 2_000 });
+			expect(sent.progress[0].last_finished_at).toBeUndefined();
+			const map = JSON.parse(localStorage.getItem('ochorus:progress') ?? '{}');
+			expect(map.mark).toMatchObject({
+				finished_at: Date.parse('2025-01-01T00:00:00Z'),
+				restarted_at: Date.parse('2025-06-01T00:00:00Z')
+			});
+			expect(map.mark.last_finished_at).toBeUndefined();
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
+		}
+	});
+});

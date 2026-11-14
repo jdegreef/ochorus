@@ -6,6 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { allProgress } from '$lib/progress';
+	import { isFinishedNow } from '$lib/reading-schema';
 	import { buildResumeItems } from '$lib/resumeItems';
 	import { chooseVariant, type SignupVariant } from '$lib/signupBand';
 	import { seenOnView, withSource } from '$lib/signupSource';
@@ -54,7 +55,7 @@
 		// opening one records a resume point — so counting it would move every
 		// first-time visitor out of the first-visit arms into 'progress' (and a
 		// "save your place" pitch with no book to name).
-		const hasProgress = progress.some((p) => p.finished_at == null && p.kind !== 'article');
+		const hasProgress = progress.some((p) => !isFinishedNow(p) && p.kind !== 'article');
 		variant = chooseVariant(hasProgress);
 		// The caption names the reader's book, and it is drawn ONCE: from the
 		// cached summaries of their in-progress books when those have it, else

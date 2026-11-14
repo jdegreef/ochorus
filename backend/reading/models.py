@@ -80,6 +80,15 @@ class ReadingProgress(models.Model):
     # is a live-only signal the sign-in merge deliberately does not carry.
     finished_at = models.DateTimeField(null=True, blank=True)
 
+    # A REREAD. `finished_at` is the first completion and stays — it is history
+    # (seals, the year in books, the finish-the-series sweep, the analytics).
+    # When the reader starts a finished work again, `restarted_at` records it;
+    # finishing that reread is `last_finished_at`. Each keeps the latest any
+    # device reports (see `_upsert_progress`), and the work is finished NOW when
+    # its latest finish is later than its latest restart. Null = never.
+    restarted_at = models.DateTimeField(null=True, blank=True)
+    last_finished_at = models.DateTimeField(null=True, blank=True)
+
     # The furthest chapter the reader has REACHED, as opposed to the one they
     # last opened (`chapter_order`): opening the next chapter or reading one to
     # its end advances it; peeking ahead from the contents or a search does not.

@@ -14,5 +14,13 @@
    "Shipping with the-inner-chamber.ja (queue job #7992), the sole source book of this plan.",
    "The title opens with the shipped ja edition's own title (密室), so the plan card and the book on the shelf agree. です・ます体. AI-written; for native review with the book."
   ]
+ },
+ "school-of-prayer-31-days": {
+  "title": "祈りの学び舎で過ごす31日",
+  "description": "ただひとりの教師の足もとで、アンドリュー・マーレーとともに過ごすひと月。毎日、祈りについてのイエスご自身のことばを一つ開き、「主よ、祈ることを教えてください」から最後の夜の約束にいたるまでを学び、その日の祈りで閉じます。1日1課、約10分。とりなしと祈りの生活へと成長していきます。",
+  "note": [
+   "Single-book plan backed by the ja edition of school-of-prayer (queue job #7993; book title 『キリストと共に祈りの学び舎で』); PlanTranslationCoverageTests required it once the book exists in ja.",
+   "「祈りの学び舎」 echoes the book title; 「ただひとりの教師」 is the ja book's ch02 title; the refrain 「主よ、祈ることを教えてください」 is the form the ja book uses throughout. です・ます体. AI-written; for native review with the book."
+  ]
  }
 }

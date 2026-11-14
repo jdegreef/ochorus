@@ -2822,6 +2822,20 @@ class BibleInAYearTests(SimpleTestCase):
         self.assertEqual(sum(len(per_day) for _, per_day in BIBLE_IN_A_YEAR), 365)
         self.assertEqual(sum(sum(per_day) for _, per_day in BIBLE_IN_A_YEAR), 1189)
 
+    def test_the_new_testament_reads_every_chapter_once_in_90_days(self):
+        """``new-testament-in-90-days`` is the same cut of the New Testament
+        alone: Matthew to Revelation, every chapter once, in 90 days."""
+        from library.plan_seed import BIBLE_IN_A_YEAR, NEW_TESTAMENT_IN_90_DAYS
+
+        nt_books = [slug for slug, _ in BIBLE_IN_A_YEAR][-27:]
+        self.assertEqual(nt_books[0], "gospel-of-matthew")
+        self.assertEqual([slug for slug, _ in NEW_TESTAMENT_IN_90_DAYS], nt_books)
+        whole = dict(BIBLE_IN_A_YEAR)
+        for slug, per_day in NEW_TESTAMENT_IN_90_DAYS:
+            self.assertEqual(sum(per_day), sum(whole[slug]), slug)
+        self.assertEqual(sum(len(per_day) for _, per_day in NEW_TESTAMENT_IN_90_DAYS), 90)
+        self.assertEqual(sum(sum(per_day) for _, per_day in NEW_TESTAMENT_IN_90_DAYS), 260)
+
 
 class PlanTranslationCoverageTests(SimpleTestCase):
     """Every plan row a deploy could CREATE must have prose in its language.

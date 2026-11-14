@@ -3,7 +3,7 @@
 	import type { AudienceShelf, BookSummary, SeriesSummary } from '$lib/library-public';
 	import { hubBooks } from '$lib/audienceHub';
 	import { allProgress, bookProgressReader, bookReadTimes } from '$lib/progress';
-	import { resumeOrderOf } from '$lib/reading-schema';
+	import { isFinishedNow, resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import {
 		seriesCardProgressLabel,
@@ -54,7 +54,7 @@
 		).map((r) => ({ kind: 'series', key: `series:${r.series.slug}`, ...r }));
 		const bySlug = new Map(hubBooks(shelf).map((b) => [b.slug, b]));
 		const books: Row[] = allProgress()
-			.filter((p) => p.kind === 'book' && p.finished_at == null && bySlug.has(p.slug))
+			.filter((p) => p.kind === 'book' && !isFinishedNow(p) && bySlug.has(p.slug))
 			.map((p) => ({
 				kind: 'book',
 				key: `book:${p.slug}`,

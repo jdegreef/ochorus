@@ -81,8 +81,12 @@ interface ServerProgress {
 	updated_at: string;
 	/** The writing device's own clock; null only from a client that sent none. */
 	client_updated_at?: string | null;
-	/** When the reader finished this work; null while in progress. */
+	/** When the reader FIRST finished this work; null if never. */
 	finished_at?: string | null;
+	/** When a finished work was started again (latest wins); absent from an older API. */
+	restarted_at?: string | null;
+	/** When a reread was finished (latest wins); absent from an older API. */
+	last_finished_at?: string | null;
 	/** Furthest chapter reached (0 = unknown); absent from an older API. */
 	furthest_order?: number;
 	/** Percent through the work, by words; null when no device measured it. */
@@ -144,6 +148,31 @@ const MERGE_JOURNAL_CHARS = 1_000_000;
 /** A nullable server ISO datetime → epoch ms, or null (unset, or unparseable). */
 function msOrNull(s?: string | null): number | null {
 	return s ? Date.parse(s) || null : null;
+}
+
+/** A record's reread stamps for the account (epoch ms), only those it carries:
+ *  the account keeps the latest of each and an omitted one never clears. */
+export function rereadStamps(
+	rec: Pick<ProgressRecord, 'restarted_at' | 'last_finished_at'>
+): { restarted_at?: number; last_finished_at?: number } {
+	return {
+		...(rec.restarted_at ? { restarted_at: rec.restarted_at } : {}),
+		...(rec.last_finished_at ? { last_finished_at: rec.last_finished_at } : {})
+	};
+}
+
+/** The account's reread stamps as local record fields — none when it has none
+ *  (or is an API from before them), so a record stays as small as before. */
+export function rereadFromServer(p: {
+	restarted_at?: string | null;
+	last_finished_at?: string | null;
+}): Pick<ProgressRecord, 'restarted_at' | 'last_finished_at'> {
+	const restarted = msOrNull(p.restarted_at);
+	const lastFinished = msOrNull(p.last_finished_at);
+	return {
+		...(restarted != null ? { restarted_at: restarted } : {}),
+		...(lastFinished != null ? { last_finished_at: lastFinished } : {})
+	};
 }
 
 function readJson<T>(key: string, fallback: T): T {
@@ -358,6 +387,7 @@ class ReadingSync {
 				// when a stale tab flushes a late push (recency is judged against the
 				// client's own clock — see reading/views _upsert_progress).
 				updated_at: rec.at,
+				...rereadStamps(rec),
 				...extra
 			})
 		})
@@ -411,6 +441,8 @@ class ReadingSync {
 				updated_at: string;
 				client_updated_at: string | null;
 				finished_at?: string | null;
+				restarted_at?: string | null;
+				last_finished_at?: string | null;
 			}>(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`);
 			const at = Date.parse(r.client_updated_at ?? r.updated_at);
 			if (!Number.isFinite(at)) return null;
@@ -419,7 +451,8 @@ class ReadingSync {
 				paragraph_index: r.paragraph_index,
 				language: r.language,
 				at,
-				finished_at: msOrNull(r.finished_at)
+				finished_at: msOrNull(r.finished_at),
+				...rereadFromServer(r)
 			};
 		} catch {
 			return null;
@@ -787,7 +820,9 @@ class ReadingSync {
 					furthest_order: furthestOf(r),
 					...(r.pct != null ? { pct: r.pct } : {}),
 					// Carry a local finish up to the account (the merge unions it).
-					...(r.finished_at ? { finished_at: r.finished_at } : {})
+					...(r.finished_at ? { finished_at: r.finished_at } : {}),
+					// A reread rides up too (the account keeps the latest of each).
+					...rereadStamps(r)
 				};
 			}),
 			marks: Object.entries(localMarks)
@@ -1023,7 +1058,8 @@ class ReadingSync {
 				// receive time is always later, and a local record stamped with it
 				// would out-date every other device's genuine reading.
 				at: Date.parse(p.client_updated_at ?? p.updated_at) || Date.now(),
-				finished_at: msOrNull(p.finished_at)
+				finished_at: msOrNull(p.finished_at),
+				...rereadFromServer(p)
 			};
 		}
 		const marks: MarksStore = {};

@@ -1,6 +1,6 @@
 import { allProgress } from './progress';
 import { chapterPath } from './editionHref';
-import { resumeOrderOf, workSlugKey } from './reading-schema';
+import { isFinishedNow, resumeOrderOf, workSlugKey } from './reading-schema';
 import { workPercent } from './reading';
 import type { CoverBook, SermonSummary } from './library-public';
 
@@ -30,10 +30,11 @@ type ResumeBase = {
 	title: string;
 	author: string;
 	/**
-	 * Whether the reader has FINISHED this work — the stored `finished_at` stamp
-	 * (reaching the end, or an explicit mark), the same fact the "Finished" total
-	 * counts, so the tile and the /reading section agree. Works for sermons too,
-	 * not just books. The strip drops finished works; /reading splits on this.
+	 * Whether the work is finished NOW (`isFinishedNow`: the end reached or an
+	 * explicit mark, and not started again since). Works for sermons too, not
+	 * just books. The strip drops finished works; /reading splits on this — so
+	 * a book being reread is back on the reading list, though the "Finished"
+	 * total (history) still counts it.
 	 */
 	finished: boolean;
 };
@@ -109,7 +110,7 @@ export function buildResumeItems(
 					author: sermon.author.name,
 					sermon,
 					pct: null,
-					finished: p.finished_at != null
+					finished: isFinishedNow(p)
 				};
 			}
 			// Only books past this point — a biography's position has no resume card.
@@ -127,7 +128,7 @@ export function buildResumeItems(
 				pct: workPercent(p, book.chapter_count),
 				order: resumeOrderOf(p),
 				chapterCount: book.chapter_count,
-				finished: p.finished_at != null
+				finished: isFinishedNow(p)
 			};
 		})
 		.filter((x): x is ResumeItem => x !== null);
