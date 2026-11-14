@@ -43,7 +43,8 @@ const BIBLES = {
 	am: 'am-ulb',
 	vi: 'vietnamese',
 	ko: 'korean',
-	ja: 'japkougo'
+	ja: 'japkougo',
+	ru: 'synodal'
 };
 
 /**
@@ -72,6 +73,13 @@ function clean(text, locale) {
 	// frames it (「…」』。), and writes no spaces (its verses also join with
 	// none — see the join below).
 	if (locale === 'ja') s = s.replace(/^[\s「『]+|[\s」』]+。?$/g, '').replace(/\s+/g, '');
+	// Russian: the Synodal brackets words its editors supplied (Иисуса
+	// [Христа], Heb 13:20) — print them as text, as Russian Bibles read aloud
+	// do; and Numbers 6:24 opens mid-sentence in lower case (да благословит).
+	if (locale === 'ru') {
+		s = s.replace(/[[\]]/g, '');
+		s = s.charAt(0).toUpperCase() + s.slice(1);
+	}
 	return s.replace(/\s{2,}/g, ' ');
 }
 
