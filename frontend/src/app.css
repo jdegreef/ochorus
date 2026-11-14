@@ -10,7 +10,7 @@
    app.html applies before first paint. The rest load as their own sheets
    ($lib/fontSheets.ts has the map):
 
-   * Each non-Latin script's faces — fonts-ar / -hi / -uk / -am / -ko / -ja.css —
+   * Each non-Latin script's faces — fonts-ar / -hi / -uk / -ru / -am / -ko / -ja.css —
      linked by the root layout on that locale's documents (the locale is fixed
      per document; a locale switch is a full load). The stacks below still NAME
      every family: off its locale a family is undeclared and the browser skips

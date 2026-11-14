@@ -109,7 +109,9 @@ describe('render.yaml routing rules', () => {
 		// `:lang` rule, never a copy per locale, and retire old-site redirects once
 		// Search Console shows no traffic to them. Removing a rule here also means
 		// deleting it in the dashboard (ochorus-web → Redirects/Rewrites).
-		expect(all.length).toBeLessThanOrEqual(70);
+		// 70 -> 71 for Russian's landing rewrite (/ru -> /ru.html): a locale's
+		// landing page is the one per-locale rule, and Render's cap is 200.
+		expect(all.length).toBeLessThanOrEqual(71);
 	});
 
 	it('has no catch-all, so a missing page answers 404', () => {
