@@ -7,20 +7,20 @@
    "title": "The ancestors of Jesus",
    "excerpts": [
     "henry-matthew.MAT.1.1-17.3",
-    "chrysostom-matthew.MAT.1.3.4",
-    "calvin-matthew.MAT.1.6.2",
     "henry-matthew.MAT.1.11.1",
     "chrysostom-matthew.MAT.1.17.7",
-    "ryle-matthew.MAT.1.1-17.3"
+    "calvin-matthew.MAT.1.3.1",
+    "henry-matthew.MAT.1.8.1",
+    "ryle-matthew.MAT.1.1-17.1"
    ]
   },
   {
    "start": "1:18",
    "title": "The birth of Jesus",
    "excerpts": [
-    "henry-matthew.MAT.1.18-25.5",
     "calvin-matthew.MAT.1.21.3",
-    "henry-matthew.MAT.1.24.1"
+    "ryle-matthew.MAT.1.18-25.5",
+    "calvin-matthew.MAT.1.24.1"
    ]
   },
   {
@@ -39,15 +39,16 @@
    "title": "The escape to Egypt",
    "excerpts": [
     "calvin-matthew.MAT.2.15.2",
-    "chrysostom-matthew.MAT.2.13.5"
+    "henry-matthew.MAT.2.13.4"
    ]
   },
   {
    "start": "2:16",
    "title": "Herod kills the boys of Bethlehem",
    "excerpts": [
-    "calvin-matthew.MAT.2.16.2",
-    "henry-matthew.MAT.2.17-18.1"
+    "henry-matthew.MAT.2.17-18.1",
+    "chrysostom-matthew.MAT.2.16.2",
+    "calvin-matthew.MAT.2.18.2"
    ]
   },
   {
@@ -62,18 +63,18 @@
    "start": "3:1",
    "title": "John the Baptist prepares the way",
    "excerpts": [
-    "calvin-matthew.MAT.3.3.1",
-    "henry-matthew.MAT.3.6.2",
     "chrysostom-matthew.MAT.3.9.14",
-    "calvin-matthew.MAT.3.11-12.4"
+    "calvin-matthew.MAT.3.11-12.4",
+    "henry-matthew.MAT.3.3.1",
+    "calvin-matthew.MAT.3.4.1"
    ]
   },
   {
    "start": "3:13",
    "title": "The baptism of Jesus",
    "excerpts": [
-    "ryle-matthew.MAT.3.13-17.1",
-    "henry-matthew.MAT.3.16-17.7"
+    "chrysostom-matthew.MAT.3.16.5",
+    "calvin-matthew.MAT.3.14.1"
    ]
   },
   {
@@ -81,9 +82,9 @@
    "title": "The testing of Jesus",
    "excerpts": [
     "chrysostom-matthew.MAT.4.1.2",
-    "henry-matthew.MAT.4.4.11",
     "calvin-matthew.MAT.4.6.2",
-    "henry-matthew.MAT.4.9.2"
+    "henry-matthew.MAT.4.3.4",
+    "henry-matthew.MAT.4.9.3"
    ]
   },
   {
@@ -91,7 +92,7 @@
    "title": "Jesus begins in Galilee",
    "excerpts": [
     "calvin-matthew.MAT.4.13.3",
-    "henry-matthew.MAT.4.16.2"
+    "henry-matthew.MAT.4.15.1"
    ]
   },
   {
@@ -133,7 +134,7 @@
    "title": "Jesus and the law",
    "excerpts": [
     "chrysostom-matthew.MAT.5.17.8",
-    "calvin-matthew.MAT.5.19.1"
+    "henry-matthew.MAT.5.19.2"
    ]
   },
   {
@@ -141,8 +142,7 @@
    "title": "Anger",
    "excerpts": [
     "chrysostom-matthew.MAT.5.23-24.1",
-    "calvin-matthew.MAT.5.25.3",
-    "henry-matthew.MAT.5.22.3"
+    "henry-matthew.MAT.5.25-26.2"
    ]
   },
   {
@@ -174,8 +174,8 @@
    "title": "Do not take revenge",
    "excerpts": [
     "chrysostom-matthew.MAT.5.39.6",
-    "henry-matthew.MAT.5.40.1",
-    "calvin-matthew.MAT.5.38.1"
+    "calvin-matthew.MAT.5.38.1",
+    "henry-matthew.MAT.5.41.1"
    ]
   },
   {
@@ -192,7 +192,7 @@
    "title": "Not for show",
    "excerpts": [
     "chrysostom-matthew.MAT.6.1.2",
-    "calvin-matthew.MAT.6.4.2"
+    "calvin-matthew.MAT.6.4.1"
    ]
   },
   {
@@ -215,25 +215,25 @@
    "start": "6:16",
    "title": "Fasting",
    "excerpts": [
-    "henry-matthew.MAT.6.16-18.2",
-    "henry-matthew.MAT.6.17-18.1"
+    "henry-matthew.MAT.6.17-18.1",
+    "chrysostom-matthew.MAT.6.16.5"
    ]
   },
   {
    "start": "6:19",
    "title": "Treasure in heaven",
    "excerpts": [
-    "henry-matthew.MAT.6.21.1",
-    "chrysostom-matthew.MAT.6.24.1"
+    "chrysostom-matthew.MAT.6.24.1",
+    "henry-matthew.MAT.6.21.2"
    ]
   },
   {
    "start": "6:25",
    "title": "Do not worry",
    "excerpts": [
-    "ryle-matthew.MAT.6.25-34.1",
-    "calvin-matthew.MAT.6.29.1",
-    "chrysostom-matthew.MAT.6.33.7"
+    "chrysostom-matthew.MAT.6.33.7",
+    "henry-matthew.MAT.6.25-34.3",
+    "chrysostom-matthew.MAT.6.28-29.5"
    ]
   },
   {
@@ -266,16 +266,16 @@
    "start": "7:15",
    "title": "Known by their fruit",
    "excerpts": [
-    "calvin-matthew.MAT.7.15.2",
-    "henry-matthew.MAT.7.19.2"
+    "calvin-matthew.MAT.7.16.3",
+    "chrysostom-matthew.MAT.7.20.1"
    ]
   },
   {
    "start": "7:21",
    "title": "I never knew you",
    "excerpts": [
-    "henry-matthew.MAT.7.21.2",
-    "calvin-matthew.MAT.7.23.2"
+    "calvin-matthew.MAT.7.23.2",
+    "chrysostom-matthew.MAT.7.21.1"
    ]
   },
   {
@@ -309,15 +309,15 @@
    "excerpts": [
     "henry-matthew.MAT.8.7.2",
     "calvin-matthew.MAT.8.8.1",
-    "chrysostom-matthew.MAT.8.13.7"
+    "chrysostom-matthew.MAT.8.13.10"
    ]
   },
   {
    "start": "8:14",
    "title": "Healing at Peter’s house",
    "excerpts": [
-    "chrysostom-matthew.MAT.8.15.3",
-    "henry-matthew.MAT.8.16.1"
+    "henry-matthew.MAT.8.16.1",
+    "chrysostom-matthew.MAT.8.15.2"
    ]
   },
   {
@@ -325,27 +325,27 @@
    "title": "The cost of following Jesus",
    "excerpts": [
     "henry-matthew.MAT.8.18.1",
-    "calvin-matthew.MAT.8.22.1"
+    "chrysostom-matthew.MAT.8.20.1"
    ]
   },
   {
    "start": "8:23",
    "title": "Jesus calms the storm",
    "excerpts": [
-    "calvin-matthew.MAT.8.25.1",
     "ryle-matthew.MAT.8.28-34.3",
     "chrysostom-matthew.MAT.8.29.12",
     "henry-matthew.MAT.8.26.2",
-    "henry-matthew.MAT.8.33.1"
+    "henry-matthew.MAT.8.33.1",
+    "chrysostom-matthew.MAT.8.23-24.2"
    ]
   },
   {
    "start": "9:1",
    "title": "Jesus forgives and heals a paralyzed man",
    "excerpts": [
-    "calvin-matthew.MAT.9.1.1",
     "henry-matthew.MAT.9.5-6.1",
-    "chrysostom-matthew.MAT.9.8.2"
+    "chrysostom-matthew.MAT.9.8.2",
+    "calvin-matthew.MAT.9.2.3"
    ]
   },
   {
@@ -361,16 +361,16 @@
    "title": "A question about fasting",
    "excerpts": [
     "calvin-matthew.MAT.9.14.2",
-    "henry-matthew.MAT.9.16.2"
+    "henry-matthew.MAT.9.16.1"
    ]
   },
   {
    "start": "9:18",
    "title": "A leader’s daughter and a woman’s faith",
    "excerpts": [
-    "calvin-matthew.MAT.9.22.1",
     "henry-matthew.MAT.9.24.2",
-    "chrysostom-matthew.MAT.9.18.1"
+    "chrysostom-matthew.MAT.9.18.1",
+    "chrysostom-matthew.MAT.9.21-22.2"
    ]
   },
   {
@@ -395,15 +395,16 @@
    "title": "The harvest is large",
    "excerpts": [
     "henry-matthew.MAT.9.35.2",
-    "calvin-matthew.MAT.9.37.1"
+    "calvin-matthew.MAT.9.38.1",
+    "chrysostom-matthew.MAT.9.36-38.1"
    ]
   },
   {
    "start": "10:1",
    "title": "Jesus names twelve apostles",
    "excerpts": [
-    "chrysostom-matthew.MAT.10.2.1",
-    "calvin-matthew.MAT.10.1.2"
+    "chrysostom-matthew.MAT.10.2.2",
+    "henry-matthew.MAT.10.3.1"
    ]
   },
   {
@@ -411,27 +412,27 @@
    "title": "The twelve sent to the lost sheep of Israel",
    "excerpts": [
     "chrysostom-matthew.MAT.10.5-6.1",
-    "henry-matthew.MAT.10.8.2",
     "calvin-matthew.MAT.10.12.1",
-    "calvin-matthew.MAT.10.14.2"
+    "calvin-matthew.MAT.10.14.2",
+    "henry-matthew.MAT.10.7.2"
    ]
   },
   {
    "start": "10:16",
    "title": "Sheep among wolves",
    "excerpts": [
-    "ryle-matthew.MAT.10.16-23.2",
     "chrysostom-matthew.MAT.10.21.7",
-    "henry-matthew.MAT.10.22.1"
+    "henry-matthew.MAT.10.22.1",
+    "calvin-matthew.MAT.10.16-20.1"
    ]
   },
   {
    "start": "10:26",
    "title": "Fear God, not people",
    "excerpts": [
-    "calvin-matthew.MAT.10.26.2",
     "henry-matthew.MAT.10.30.1",
-    "chrysostom-matthew.MAT.10.32-33.1"
+    "chrysostom-matthew.MAT.10.32-33.1",
+    "chrysostom-matthew.MAT.10.27.2"
    ]
   },
   {
@@ -456,7 +457,7 @@
    "title": "John’s question from prison",
    "excerpts": [
     "chrysostom-matthew.MAT.11.2-3.8",
-    "henry-matthew.MAT.11.6.1"
+    "calvin-matthew.MAT.11.4.1"
    ]
   },
   {
@@ -521,8 +522,9 @@
    "start": "12:15",
    "title": "God’s chosen servant",
    "excerpts": [
-    "calvin-matthew.MAT.12.16.1",
-    "henry-matthew.MAT.12.20.2"
+    "henry-matthew.MAT.12.20.2",
+    "calvin-matthew.MAT.12.17.1",
+    "henry-matthew.MAT.12.19-20.1"
    ]
   },
   {
@@ -531,10 +533,10 @@
    "excerpts": [
     "ryle-matthew.MAT.12.22-37.3",
     "calvin-matthew.MAT.12.25.2",
-    "henry-matthew.MAT.12.30.1",
     "chrysostom-matthew.MAT.12.33.1",
     "chrysostom-matthew.MAT.12.35.1",
-    "calvin-matthew.MAT.12.31.2"
+    "calvin-matthew.MAT.12.31.2",
+    "henry-matthew.MAT.12.30.2"
    ]
   },
   {
@@ -566,8 +568,7 @@
    "title": "Parables by the lake: the sower",
    "excerpts": [
     "henry-matthew.MAT.13.3-9.1",
-    "henry-matthew.MAT.13.5-6.3",
-    "calvin-matthew.MAT.13.9.1"
+    "henry-matthew.MAT.13.5-6.3"
    ]
   },
   {
@@ -583,8 +584,8 @@
    "start": "13:18",
    "title": "The sower explained",
    "excerpts": [
-    "calvin-matthew.MAT.13.19.2",
-    "calvin-matthew.MAT.13.23.2"
+    "calvin-matthew.MAT.13.23.2",
+    "chrysostom-matthew.MAT.13.18.3"
    ]
   },
   {
@@ -617,11 +618,12 @@
    "start": "13:44",
    "title": "Treasure, a pearl and a net",
    "excerpts": [
-    "ryle-matthew.MAT.13.44-50.4",
-    "henry-matthew.MAT.13.49-50.1",
     "calvin-matthew.MAT.13.51.1",
-    "chrysostom-matthew.MAT.13.54.3",
-    "calvin-matthew.MAT.13.57.1"
+    "calvin-matthew.MAT.13.57.1",
+    "henry-matthew.MAT.13.55-56.2",
+    "chrysostom-matthew.MAT.13.44-46.2",
+    "calvin-matthew.MAT.13.47.2",
+    "ryle-matthew.MAT.13.51-58.1"
    ]
   },
   {
@@ -650,7 +652,8 @@
     "calvin-matthew.MAT.14.24.2",
     "henry-matthew.MAT.14.27.1",
     "chrysostom-matthew.MAT.14.28.1",
-    "henry-matthew.MAT.14.32.1"
+    "calvin-matthew.MAT.14.31.1",
+    "henry-matthew.MAT.14.30.4"
    ]
   },
   {
@@ -658,7 +661,7 @@
    "title": "Healing at Gennesaret",
    "excerpts": [
     "chrysostom-matthew.MAT.14.34-36.2",
-    "henry-matthew.MAT.14.36.1"
+    "calvin-matthew.MAT.14.34.2"
    ]
   },
   {
@@ -667,17 +670,17 @@
    "excerpts": [
     "henry-matthew.MAT.15.4.2",
     "calvin-matthew.MAT.15.9.2",
-    "ryle-matthew.MAT.15.1-9.2"
+    "chrysostom-matthew.MAT.15.1.2"
    ]
   },
   {
    "start": "15:10",
    "title": "What makes a person unclean",
    "excerpts": [
-    "ryle-matthew.MAT.15.10-20.4",
     "calvin-matthew.MAT.15.14.1",
     "henry-matthew.MAT.15.15.1",
-    "henry-matthew.MAT.15.18.2"
+    "henry-matthew.MAT.15.20.1",
+    "calvin-matthew.MAT.15.10.3"
    ]
   },
   {
@@ -702,7 +705,6 @@
    "start": "15:32",
    "title": "Bread for four thousand",
    "excerpts": [
-    "henry-matthew.MAT.15.32.4",
     "henry-matthew.MAT.15.34.2",
     "henry-matthew.MAT.15.39.1",
     "calvin-matthew.MAT.15.33.1"
@@ -729,25 +731,26 @@
    "start": "16:13",
    "title": "Peter’s answer at Caesarea Philippi",
    "excerpts": [
-    "ryle-matthew.MAT.16.13-20.6",
     "calvin-matthew.MAT.16.17.2",
-    "henry-matthew.MAT.16.19.4"
+    "henry-matthew.MAT.16.19.4",
+    "chrysostom-matthew.MAT.16.13.6"
    ]
   },
   {
    "start": "16:21",
    "title": "Jesus speaks of his coming death",
    "excerpts": [
-    "ryle-matthew.MAT.16.21-23.1",
-    "calvin-matthew.MAT.16.22.1"
+    "calvin-matthew.MAT.16.22.1",
+    "ryle-matthew.MAT.16.21-23.2"
    ]
   },
   {
    "start": "16:24",
    "title": "Taking up the cross",
    "excerpts": [
-    "ryle-matthew.MAT.16.24-28.2",
-    "calvin-matthew.MAT.16.28.1"
+    "calvin-matthew.MAT.16.28.1",
+    "chrysostom-matthew.MAT.16.25.11",
+    "henry-matthew.MAT.16.27.3"
    ]
   },
   {
@@ -755,16 +758,16 @@
    "title": "Jesus transfigured on the mountain",
    "excerpts": [
     "chrysostom-matthew.MAT.17.1.2",
-    "calvin-matthew.MAT.17.5.3",
-    "henry-matthew.MAT.17.8.1"
+    "henry-matthew.MAT.17.8.1",
+    "calvin-matthew.MAT.17.5.1"
    ]
   },
   {
    "start": "17:9",
    "title": "Elijah has already come",
    "excerpts": [
-    "henry-matthew.MAT.17.9-13.1",
-    "chrysostom-matthew.MAT.17.12-13.2"
+    "chrysostom-matthew.MAT.17.12-13.2",
+    "henry-matthew.MAT.17.9.1"
    ]
   },
   {
@@ -772,8 +775,7 @@
    "title": "A boy with seizures is healed",
    "excerpts": [
     "chrysostom-matthew.MAT.17.14-16.5",
-    "calvin-matthew.MAT.17.17.1",
-    "henry-matthew.MAT.17.16.1"
+    "calvin-matthew.MAT.17.17.1"
    ]
   },
   {
@@ -781,7 +783,6 @@
    "title": "Jesus speaks again of his death and raising",
    "excerpts": [
     "calvin-matthew.MAT.17.22.3",
-    "henry-matthew.MAT.17.22-23.2",
     "calvin-matthew.MAT.17.22.2"
    ]
   },
@@ -790,7 +791,7 @@
    "title": "The tax for God’s house",
    "excerpts": [
     "calvin-matthew.MAT.17.25.1",
-    "henry-matthew.MAT.17.27.1"
+    "henry-matthew.MAT.17.27.2"
    ]
   },
   {
@@ -831,7 +832,7 @@
    "title": "How many times to forgive",
    "excerpts": [
     "chrysostom-matthew.MAT.18.21.12",
-    "calvin-matthew.MAT.18.21.2"
+    "calvin-matthew.MAT.18.21.5"
    ]
   },
   {
@@ -839,9 +840,9 @@
    "title": "The servant who would not forgive",
    "excerpts": [
     "calvin-matthew.MAT.18.25.1",
-    "henry-matthew.MAT.18.28-30.1",
     "calvin-matthew.MAT.18.31.1",
-    "henry-matthew.MAT.18.35.1"
+    "henry-matthew.MAT.18.35.1",
+    "henry-matthew.MAT.18.27.1"
    ]
   },
   {
@@ -857,7 +858,7 @@
    "title": "A question about divorce",
    "excerpts": [
     "calvin-matthew.MAT.19.4.1",
-    "henry-matthew.MAT.19.7.1"
+    "henry-matthew.MAT.19.6.2"
    ]
   },
   {
@@ -882,8 +883,8 @@
    "start": "19:16",
    "title": "A young man asks about eternal life",
    "excerpts": [
-    "ryle-matthew.MAT.19.16-22.4",
-    "calvin-matthew.MAT.19.22.1"
+    "calvin-matthew.MAT.19.22.1",
+    "ryle-matthew.MAT.19.16-22.2"
    ]
   },
   {
@@ -907,10 +908,10 @@
    "title": "Workers hired at every hour",
    "excerpts": [
     "ryle-matthew.MAT.20.1-16.2",
-    "henry-matthew.MAT.20.9-10.1",
-    "henry-matthew.MAT.20.11-12.2",
-    "calvin-matthew.MAT.20.16.1",
-    "chrysostom-matthew.MAT.20.1.6"
+    "chrysostom-matthew.MAT.20.1.6",
+    "henry-matthew.MAT.20.16.2",
+    "henry-matthew.MAT.20.11-12.1",
+    "calvin-matthew.MAT.20.1-16.1"
    ]
   },
   {
@@ -918,7 +919,7 @@
    "title": "A third warning of death and rising",
    "excerpts": [
     "chrysostom-matthew.MAT.20.17-19.4",
-    "calvin-matthew.MAT.20.18.1"
+    "henry-matthew.MAT.20.18-19.1"
    ]
   },
   {
@@ -933,8 +934,8 @@
    "start": "20:24",
    "title": "Great ones and servants",
    "excerpts": [
-    "ryle-matthew.MAT.20.24-28.1",
-    "chrysostom-matthew.MAT.20.28.1"
+    "chrysostom-matthew.MAT.20.28.1",
+    "ryle-matthew.MAT.20.24-28.4"
    ]
   },
   {
@@ -950,17 +951,17 @@
    "title": "The king comes to Jerusalem on a donkey",
    "excerpts": [
     "ryle-matthew.MAT.21.1-11.1",
-    "henry-matthew.MAT.21.4-5.3",
     "calvin-matthew.MAT.21.6.1",
-    "calvin-matthew.MAT.21.10.1"
+    "calvin-matthew.MAT.21.10.1",
+    "henry-matthew.MAT.21.4-5.2"
    ]
   },
   {
    "start": "21:12",
    "title": "Jesus clears the temple",
    "excerpts": [
-    "calvin-matthew.MAT.21.13.2",
-    "henry-matthew.MAT.21.15-16.1"
+    "henry-matthew.MAT.21.15-16.1",
+    "chrysostom-matthew.MAT.21.12-13.1"
    ]
   },
   {
@@ -975,8 +976,8 @@
    "start": "21:23",
    "title": "Who gave Jesus this authority?",
    "excerpts": [
-    "calvin-matthew.MAT.21.23.4",
-    "henry-matthew.MAT.21.24-25.3"
+    "henry-matthew.MAT.21.24-25.3",
+    "calvin-matthew.MAT.21.23.1"
    ]
   },
   {
@@ -984,7 +985,6 @@
    "title": "Two sons and their father’s will",
    "excerpts": [
     "henry-matthew.MAT.21.28-32.4",
-    "calvin-matthew.MAT.21.30.1",
     "henry-matthew.MAT.21.31.1"
    ]
   },
@@ -1003,11 +1003,11 @@
    "start": "22:1",
    "title": "The king’s wedding banquet",
    "excerpts": [
-    "ryle-matthew.MAT.22.1-14.4",
     "calvin-matthew.MAT.22.4.2",
     "chrysostom-matthew.MAT.22.7-14.10",
     "henry-matthew.MAT.22.11.2",
-    "henry-matthew.MAT.22.13.2"
+    "henry-matthew.MAT.22.13.2",
+    "ryle-matthew.MAT.22.1-14.5"
    ]
   },
   {
@@ -1015,8 +1015,8 @@
    "title": "A question about paying Caesar",
    "excerpts": [
     "ryle-matthew.MAT.22.15-22.4",
-    "calvin-matthew.MAT.22.18.1",
-    "henry-matthew.MAT.22.22.1"
+    "henry-matthew.MAT.22.22.1",
+    "calvin-matthew.MAT.22.19.1"
    ]
   },
   {
@@ -1032,37 +1032,37 @@
    "start": "22:34",
    "title": "The command that ranks highest",
    "excerpts": [
-    "chrysostom-matthew.MAT.22.34-36.8",
-    "calvin-matthew.MAT.22.37.2"
+    "calvin-matthew.MAT.22.37.2",
+    "chrysostom-matthew.MAT.22.34-36.12"
    ]
   },
   {
    "start": "22:41",
    "title": "Whose son is the Christ?",
    "excerpts": [
-    "calvin-matthew.MAT.22.43.1",
-    "henry-matthew.MAT.22.46.1"
+    "henry-matthew.MAT.22.46.1",
+    "calvin-matthew.MAT.22.42.1"
    ]
   },
   {
    "start": "23:1",
    "title": "The teachers who sit in Moses’ seat",
    "excerpts": [
-    "ryle-matthew.MAT.23.1-12.5",
     "chrysostom-matthew.MAT.23.4.10",
     "calvin-matthew.MAT.23.11.1",
-    "henry-matthew.MAT.23.9.1"
+    "henry-matthew.MAT.23.9.2",
+    "chrysostom-matthew.MAT.23.1-3.2"
    ]
   },
   {
    "start": "23:13",
    "title": "Woe to you, hypocrites",
    "excerpts": [
-    "calvin-matthew.MAT.23.16.1",
     "calvin-matthew.MAT.23.18.1",
     "henry-matthew.MAT.23.20-22.2",
     "chrysostom-matthew.MAT.23.23.1",
-    "henry-matthew.MAT.23.27-28.2"
+    "henry-matthew.MAT.23.27-28.2",
+    "calvin-matthew.MAT.23.13.2"
    ]
   },
   {
@@ -1071,16 +1071,16 @@
    "excerpts": [
     "chrysostom-matthew.MAT.23.29.1",
     "calvin-matthew.MAT.23.32.1",
-    "ryle-matthew.MAT.23.34-39.4",
-    "henry-matthew.MAT.23.37.4"
+    "henry-matthew.MAT.23.37.4",
+    "ryle-matthew.MAT.23.34-39.5"
    ]
   },
   {
    "start": "24:1",
    "title": "Not one stone on another",
    "excerpts": [
-    "chrysostom-matthew.MAT.24.1-2.1",
-    "calvin-matthew.MAT.24.2.1"
+    "calvin-matthew.MAT.24.2.1",
+    "henry-matthew.MAT.24.2.1"
    ]
   },
   {
@@ -1088,20 +1088,20 @@
    "title": "The first birth pains",
    "excerpts": [
     "chrysostom-matthew.MAT.24.3.12",
-    "henry-matthew.MAT.24.6-7.4",
     "calvin-matthew.MAT.24.9.3",
-    "henry-matthew.MAT.24.14.1"
+    "henry-matthew.MAT.24.14.1",
+    "henry-matthew.MAT.24.6-7.3"
    ]
   },
   {
    "start": "24:15",
    "title": "Flee to the mountains",
    "excerpts": [
-    "ryle-matthew.MAT.24.15-28.3",
     "henry-matthew.MAT.24.17-18.2",
     "chrysostom-matthew.MAT.24.22.2",
     "calvin-matthew.MAT.24.23.2",
-    "calvin-matthew.MAT.24.26.3"
+    "calvin-matthew.MAT.24.26.3",
+    "ryle-matthew.MAT.24.15-28.4"
    ]
   },
   {
@@ -1118,7 +1118,7 @@
    "title": "Summer is near",
    "excerpts": [
     "chrysostom-matthew.MAT.24.33-34.2",
-    "calvin-matthew.MAT.24.34.2"
+    "henry-matthew.MAT.24.34.1"
    ]
   },
   {
@@ -1153,12 +1153,12 @@
    "start": "25:14",
    "title": "Servants entrusted with their master’s money",
    "excerpts": [
-    "ryle-matthew.MAT.25.14-30.3",
     "henry-matthew.MAT.25.16-18.2",
     "calvin-matthew.MAT.25.20.2",
-    "calvin-matthew.MAT.25.24.1",
     "henry-matthew.MAT.25.26-27.3",
-    "henry-matthew.MAT.25.30.2"
+    "henry-matthew.MAT.25.30.2",
+    "henry-matthew.MAT.25.24-25.1",
+    "ryle-matthew.MAT.25.14-30.4"
    ]
   },
   {
@@ -1176,8 +1176,8 @@
    "start": "26:1",
    "title": "The plot against Jesus",
    "excerpts": [
-    "henry-matthew.MAT.26.1-2.1",
-    "calvin-matthew.MAT.26.3.1"
+    "calvin-matthew.MAT.26.3.1",
+    "henry-matthew.MAT.26.1-2.2"
    ]
   },
   {
@@ -1196,20 +1196,20 @@
    "excerpts": [
     "chrysostom-matthew.MAT.26.17-18.1",
     "henry-matthew.MAT.26.22.1",
-    "calvin-matthew.MAT.26.24.4",
     "ryle-matthew.MAT.26.26-35.5",
-    "calvin-matthew.MAT.26.29.2",
-    "chrysostom-matthew.MAT.26.33.4"
+    "chrysostom-matthew.MAT.26.33.4",
+    "calvin-matthew.MAT.26.29.3",
+    "henry-matthew.MAT.26.25.1"
    ]
   },
   {
    "start": "26:36",
    "title": "Jesus prays in Gethsemane",
    "excerpts": [
-    "ryle-matthew.MAT.26.36-46.5",
-    "calvin-matthew.MAT.26.39.9",
     "henry-matthew.MAT.26.43.2",
-    "chrysostom-matthew.MAT.26.46.2"
+    "calvin-matthew.MAT.26.45.1",
+    "chrysostom-matthew.MAT.26.38.3",
+    "henry-matthew.MAT.26.36-46.4"
    ]
   },
   {
@@ -1229,15 +1229,14 @@
     "calvin-matthew.MAT.26.64.2",
     "henry-matthew.MAT.26.67-68.3",
     "ryle-matthew.MAT.26.69-75.4",
-    "calvin-matthew.MAT.26.72.2",
-    "ryle-matthew.MAT.26.57-68.4"
+    "ryle-matthew.MAT.26.57-68.4",
+    "henry-matthew.MAT.26.74.1"
    ]
   },
   {
    "start": "27:1",
    "title": "Jesus handed over to Pilate",
    "excerpts": [
-    "chrysostom-matthew.MAT.27.1-2.6",
     "calvin-matthew.MAT.27.1.1",
     "chrysostom-matthew.MAT.27.1-2.2"
    ]
@@ -1255,11 +1254,11 @@
    "start": "27:11",
    "title": "Jesus before the governor",
    "excerpts": [
-    "ryle-matthew.MAT.27.11-26.4",
     "calvin-matthew.MAT.27.15.1",
     "chrysostom-matthew.MAT.27.19.4",
     "henry-matthew.MAT.27.21.1",
-    "chrysostom-matthew.MAT.27.26.4"
+    "chrysostom-matthew.MAT.27.26.4",
+    "ryle-matthew.MAT.27.11-26.2"
    ]
   },
   {
@@ -1277,17 +1276,17 @@
     "calvin-matthew.MAT.27.34.2",
     "henry-matthew.MAT.27.37.1",
     "henry-matthew.MAT.27.38.2",
-    "calvin-matthew.MAT.27.42.1"
+    "calvin-matthew.MAT.27.42.2"
    ]
   },
   {
    "start": "27:45",
    "title": "The death of Jesus",
    "excerpts": [
-    "ryle-matthew.MAT.27.45-56.3",
-    "calvin-matthew.MAT.27.50.1",
     "calvin-matthew.MAT.27.51.6",
-    "henry-matthew.MAT.27.54.1"
+    "chrysostom-matthew.MAT.27.46.2",
+    "calvin-matthew.MAT.27.55.2",
+    "henry-matthew.MAT.27.50.1"
    ]
   },
   {
@@ -1303,10 +1302,10 @@
    "start": "28:1",
    "title": "The tomb is empty",
    "excerpts": [
-    "ryle-matthew.MAT.28.1-10.4",
     "chrysostom-matthew.MAT.28.6.1",
     "calvin-matthew.MAT.28.8.3",
-    "henry-matthew.MAT.28.9-10.1"
+    "ryle-matthew.MAT.28.1-10.6",
+    "henry-matthew.MAT.28.3.1"
    ]
   },
   {
@@ -1322,8 +1321,7 @@
    "title": "Sent to all the nations",
    "excerpts": [
     "chrysostom-matthew.MAT.28.16-17.4",
-    "calvin-matthew.MAT.28.20.3",
-    "henry-matthew.MAT.28.18-20.5"
+    "calvin-matthew.MAT.28.20.3"
    ]
   }
  ]
