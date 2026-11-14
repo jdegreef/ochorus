@@ -344,6 +344,16 @@ export const bibleChapterCount = (books: readonly { chapter_count?: number }[]):
 /** The Psalms' place in the canon. */
 const PSALMS = 19;
 
+/**
+ * How a Bible chapter is named ("Romans 8"), or null off the canon. Psalms is
+ * the one book whose chapters are titled in the singular ("Psalm 23", as
+ * `build_owb_book` titles them and `dailyChapter` names them).
+ */
+export function chapterLabel(position: number | null | undefined, n: number): string | null {
+	const name = position === PSALMS ? 'Psalm' : canonName(position);
+	return name ? `${name} ${n}` : null;
+}
+
 /** The canon's short English name for a position (1 Genesis … 66 Revelation), or null off the canon. */
 export const canonName = (position: number | null | undefined): string | null =>
 	divisionOf(position) ? CANON[position! - 1][0] : null;
@@ -371,13 +381,10 @@ export function bibleChapters(book: {
 	chapter_count?: number;
 	series_position?: number | null;
 }): BibleChapterLink[] {
-	// Psalms is the one book whose chapters are titled in the singular
-	// ("Psalm 23", as `build_owb_book` titles them and `dailyChapter` names them).
 	const pos = book.series_position;
-	const short = pos === PSALMS ? 'Psalm' : (canonName(pos) ?? book.title);
 	return Array.from({ length: bibleChapterCount([book]) }, (_, i) => ({
 		n: i + 1,
-		name: `${short} ${i + 1}`,
+		name: chapterLabel(pos, i + 1) ?? `${book.title} ${i + 1}`,
 		href: bookChapterPath(book.slug, bibleChapterOrder(i + 1), false)
 	}));
 }
