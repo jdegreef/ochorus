@@ -150,7 +150,6 @@
    "start": "18:1",
    "title": "David’s song of rescue and victory",
    "excerpts": [
-    "spurgeon-psalms.PSA.18.2.1",
     "calvin-psalms.PSA.18.8.4",
     "henry-psalms.PSA.18.16.1",
     "augustine-psalms.PSA.18.19.1",
@@ -162,7 +161,8 @@
     "bellarmine-psalms.PSA.18.19.1",
     "henry-psalms.PSA.18.20.1",
     "jfb-psalms.PSA.18.50-51.1",
-    "henry-psalms.PSA.18.26-27.1"
+    "henry-psalms.PSA.18.26-27.1",
+    "spurgeon-psalms.PSA.18.4.1"
    ]
   },
   {
@@ -278,9 +278,9 @@
    "excerpts": [
     "henry-psalms.PSA.31.2.4",
     "calvin-psalms.PSA.31.8.1",
-    "spurgeon-psalms.PSA.31.19.1",
     "augustine-psalms.PSA.31.23.1",
-    "bellarmine-psalms.PSA.31.5.1"
+    "bellarmine-psalms.PSA.31.5.1",
+    "henry-psalms.PSA.31.16.3"
    ]
   },
   {
@@ -299,8 +299,7 @@
     "spurgeon-psalms.PSA.33.6.1",
     "henry-psalms.PSA.33.12-22.7",
     "augustine-psalms.PSA.33.19.1",
-    "jfb-psalms.PSA.33.1-22.1",
-    "delitzsch-psalms.PSA.33.6-9.1"
+    "jfb-psalms.PSA.33.1-22.1"
    ]
   },
   {
@@ -341,9 +340,9 @@
     "augustine-psalms.PSA.37.8.1",
     "henry-psalms.PSA.37.14-15.1",
     "calvin-psalms.PSA.37.20-22.2",
-    "spurgeon-psalms.PSA.37.26.1",
     "augustine-psalms.PSA.37.29.1",
-    "henry-psalms.PSA.37.38.4"
+    "henry-psalms.PSA.37.38.4",
+    "calvin-psalms.PSA.37.27-29.6"
    ]
   },
   {
@@ -351,9 +350,10 @@
    "title": "Prayer of a sick and guilty sufferer",
    "excerpts": [
     "augustine-psalms.PSA.38.4.2",
-    "delitzsch-psalms.PSA.38.10-15.1",
     "calvin-psalms.PSA.38.16-21.7",
-    "henry-psalms.PSA.38.22-23.1"
+    "henry-psalms.PSA.38.22-23.1",
+    "spurgeon-psalms.PSA.38.8.1",
+    "jfb-psalms.PSA.38.1-23.1"
    ]
   },
   {
@@ -361,8 +361,8 @@
    "title": "My life is only a breath",
    "excerpts": [
     "augustine-psalms.PSA.39.1.1",
-    "spurgeon-psalms.PSA.39.10.1",
-    "henry-psalms.PSA.39.8.1"
+    "henry-psalms.PSA.39.8.1",
+    "jfb-psalms.PSA.39.5-8.1"
    ]
   },
   {
@@ -500,8 +500,7 @@
    "title": "God, save me by your name",
    "excerpts": [
     "calvin-psalms.PSA.54.1-2.1",
-    "augustine-psalms.PSA.54.8.2",
-    "delitzsch-psalms.PSA.54.6-9.1"
+    "augustine-psalms.PSA.54.8.2"
    ]
   },
   {
@@ -624,13 +623,13 @@
    "title": "God marches from Sinai to Zion",
    "excerpts": [
     "bellarmine-psalms.PSA.68.3.1",
-    "spurgeon-psalms.PSA.68.11.1",
     "augustine-psalms.PSA.68.13.2",
     "henry-psalms.PSA.68.22.1",
     "jfb-psalms.PSA.68.27.1",
     "calvin-psalms.PSA.68.31.3",
     "delitzsch-psalms.PSA.68.2-3.1",
-    "henry-psalms.PSA.68.25.1"
+    "henry-psalms.PSA.68.25.1",
+    "spurgeon-psalms.PSA.68.8.1"
    ]
   },
   {
@@ -651,9 +650,10 @@
    "start": "70:1",
    "title": "Hurry, God, and help me",
    "excerpts": [
-    "spurgeon-psalms.PSA.70.2.1",
     "augustine-psalms.PSA.70.5.3",
-    "henry-psalms.PSA.70.3-4.1"
+    "henry-psalms.PSA.70.3-4.1",
+    "jfb-psalms.PSA.70.1-6.1",
+    "calvin-psalms.PSA.70.1.1"
    ]
   },
   {
@@ -684,8 +684,9 @@
     "augustine-psalms.PSA.73.7.3",
     "calvin-psalms.PSA.73.15.2",
     "henry-psalms.PSA.73.21-28.1",
-    "delitzsch-psalms.PSA.73.27-28.1",
-    "jfb-psalms.PSA.73.1-28.1"
+    "jfb-psalms.PSA.73.1-28.1",
+    "delitzsch-psalms.PSA.73.23-26.1",
+    "calvin-psalms.PSA.73.20.3"
    ]
   },
   {
@@ -740,13 +741,13 @@
     "henry-psalms.PSA.78.33.1",
     "spurgeon-psalms.PSA.78.34.1",
     "calvin-psalms.PSA.78.44.1",
-    "delitzsch-psalms.PSA.78.49-59.1",
     "augustine-psalms.PSA.78.51.4",
     "henry-psalms.PSA.78.56-58.1",
     "calvin-psalms.PSA.78.61.2",
     "augustine-psalms.PSA.78.72.2",
     "jfb-psalms.PSA.78.12-14.1",
-    "spurgeon-psalms.PSA.78.14.1"
+    "spurgeon-psalms.PSA.78.14.1",
+    "augustine-psalms.PSA.78.49.1"
    ]
   },
   {
@@ -833,9 +834,9 @@
    "start": "88:1",
    "title": "A prayer from the darkness",
    "excerpts": [
-    "spurgeon-psalms.PSA.88.5.1",
     "calvin-psalms.PSA.88.11.2",
-    "augustine-psalms.PSA.88.15.1"
+    "augustine-psalms.PSA.88.15.1",
+    "jfb-psalms.PSA.88.1-19.1"
    ]
   },
   {
@@ -851,9 +852,9 @@
     "spurgeon-psalms.PSA.89.36.1",
     "augustine-psalms.PSA.89.46.1",
     "henry-psalms.PSA.89.49.1",
-    "delitzsch-psalms.PSA.89.24-38.1",
     "calvin-psalms.PSA.89.41.2",
-    "jfb-psalms.PSA.89.9-15.1"
+    "jfb-psalms.PSA.89.9-15.1",
+    "delitzsch-psalms.PSA.89.6-9.1"
    ]
   },
   {
@@ -861,7 +862,6 @@
    "title": "Teach us to count our days",
    "excerpts": [
     "spurgeon-psalms.PSA.90.3.1",
-    "bellarmine-psalms.PSA.90.7.1",
     "henry-psalms.PSA.90.13.1",
     "augustine-psalms.PSA.90.10.3"
    ]
@@ -1015,7 +1015,6 @@
    "start": "106:1",
    "title": "Israel’s unfaithfulness and God’s mercy",
    "excerpts": [
-    "spurgeon-psalms.PSA.106.2.1",
     "henry-psalms.PSA.106.8-11.2",
     "calvin-psalms.PSA.106.14.2",
     "augustine-psalms.PSA.106.24.1",
@@ -1024,7 +1023,8 @@
     "henry-psalms.PSA.106.40.3",
     "delitzsch-psalms.PSA.106.44-46.1",
     "augustine-psalms.PSA.106.1.2",
-    "spurgeon-psalms.PSA.106.16.1"
+    "spurgeon-psalms.PSA.106.16.1",
+    "spurgeon-psalms.PSA.106.43.1"
    ]
   },
   {
@@ -1166,9 +1166,9 @@
     "augustine-psalms.PSA.119.151.1",
     "henry-psalms.PSA.119.164.1",
     "delitzsch-psalms.PSA.119.49-56.1",
-    "bellarmine-psalms.PSA.119.100.1",
     "calvin-psalms.PSA.119.174.3",
-    "augustine-psalms.PSA.119.147.1"
+    "augustine-psalms.PSA.119.147.1",
+    "bellarmine-psalms.PSA.119.54.1"
    ]
   },
   {
@@ -1315,13 +1315,14 @@
    "start": "136:1",
    "title": "His loyal love lasts forever",
    "excerpts": [
-    "spurgeon-psalms.PSA.136.1.1",
     "bellarmine-psalms.PSA.136.9.1",
     "calvin-psalms.PSA.136.13.2",
     "spurgeon-psalms.PSA.136.18.1",
     "augustine-psalms.PSA.136.26.1",
     "henry-psalms.PSA.136.10-22.3",
-    "jfb-psalms.PSA.136.1-26.1"
+    "jfb-psalms.PSA.136.1-26.1",
+    "bellarmine-psalms.PSA.136.24.1",
+    "augustine-psalms.PSA.136.3.1"
    ]
   },
   {
@@ -1374,8 +1375,8 @@
    "title": "A prayer from the cave",
    "excerpts": [
     "spurgeon-psalms.PSA.142.4.1",
-    "bellarmine-psalms.PSA.142.8.2",
-    "augustine-psalms.PSA.142.2.1"
+    "augustine-psalms.PSA.142.2.1",
+    "henry-psalms.PSA.142.5.4"
    ]
   },
   {

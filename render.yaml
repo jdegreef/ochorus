@@ -354,6 +354,8 @@ services:
         # Which verse spans a Bible chapter's "What the Church has said" chips
         # name: read from its catena's chapters at serialize time.
         - backend/library/catena.py
+        # Which classics a Bible book and its chapters list to "Read alongside".
+        - backend/library/bible_companions.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

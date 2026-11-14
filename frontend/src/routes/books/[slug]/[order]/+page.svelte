@@ -94,6 +94,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import CatenaPanel from '$lib/components/CatenaPanel.svelte';
+	import SermonCard from '$lib/components/SermonCard.svelte';
 	import { BIBLE_SERIES } from '$lib/bible';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -2545,6 +2546,54 @@
 				{/key}
 			{/if}
 
+			<!-- A chapter of the Bible itself: the classics written on it that treat
+			     THIS chapter (library/bible_companions) — Calvin's "Romans 8",
+			     Chrysostom's homily on it — each opening that chapter of the
+			     classic; a book on this one passage opens at its start. Quiet rows
+			     under the text, like the chips around them. -->
+			{#if chapter.read_alongside?.length}
+				<section class="mt-10 border-t border-border pt-6" aria-labelledby="read-alongside-heading">
+					<h2 id="read-alongside-heading" class="eyebrow text-muted">{t('bible.readAlongside')}</h2>
+					<ul class="alongside mt-3" role="list">
+						{#each chapter.read_alongside as c (`${c.book}/${c.order}`)}
+							<li>
+								<a
+									class="alongside-link"
+									href={localizeHref(c.order ? bookChapterPath(c.book, c.order, false) : `/books/${c.book}`)}
+								>
+									<span class="alongside-title" dir="auto">{c.title || c.book_title}</span>
+									<span class="text-small text-muted" dir="auto"
+										>{c.title ? `${c.book_title} · ${c.author_name}` : c.author_name}</span
+									>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
+
+			<!-- A chapter of the Bible itself: the sermons preached on it, the
+			     first few in verse order, and the rest of the book's on the
+			     sermons shelf (its book facet). -->
+			{#if chapter.chapter_sermons?.sermons.length}
+				{@const shelf = chapter.chapter_sermons}
+				<section class="mt-10 border-t border-border pt-6" aria-labelledby="chapter-sermons-heading">
+					<h2 id="chapter-sermons-heading" class="eyebrow text-muted">{t('bible.sermonsOnChapter')}</h2>
+					<div class="sermon-list mt-3">
+						{#each shelf.sermons as sermon (sermon.slug)}
+							<SermonCard {sermon} showAuthor />
+						{/each}
+					</div>
+					<p class="mt-3">
+						<a
+							href={localizeHref(`/sermons?book=${encodeURIComponent(shelf.book)}`)}
+							class="text-small font-semibold text-accent hover:underline"
+							>{t('bible.sermonsBookLink').replace('%book%', () => shelf.book)} <Arrow /></a
+						>
+					</p>
+				</section>
+			{/if}
+
 			<!-- A chapter of the Bible itself: other passages to read beside it,
 			     from OpenBible.info's crowd-voted cross-references. After the
 			     scripture row and as quiet — the same chips, an aid to study a reader
@@ -3625,5 +3674,33 @@
 		border-radius: 4px;
 		box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
 		transition: background var(--duration-base) ease;
+	}
+	/* Read alongside (a Bible chapter): one line a companion chapter, its
+	   title then whose it is, hairlines between — a list to scan, not cards. */
+	.alongside {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.alongside li + li {
+		border-top: 1px solid var(--border);
+	}
+	.alongside-link {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.15rem 0.6rem;
+		padding-block: 0.6rem;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.alongside-title {
+		font-family: var(--font-display);
+		font-weight: 600;
+		transition: color var(--duration-fast);
+	}
+	.alongside-link:hover .alongside-title,
+	.alongside-link:focus-visible .alongside-title {
+		color: var(--accent);
 	}
 </style>

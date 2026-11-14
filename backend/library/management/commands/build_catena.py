@@ -223,13 +223,18 @@ _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
 #: a verse number with its stop or comma ("Ver. 53, —"), then a dash or an
 #: ellipsis standing where the lemma was ("— Then said Jesus", "... He
 #: remained"). It marks an omission the reader cannot see, so it goes.
-_LEADING_LEMMA = re.compile(r"^(?:(?:(?:Ver|Verse)\.?\s*)?\d+[.,]\s*)?(?:—|\.\.\.|…)\s*(?=\S)")
+_LEADING_LEMMA = re.compile(
+    r"^(?:(?:(?:(?:Ver|Verse)\.?\s*)?\d+[.,]\s*)?(?:—|\.\.\.|…)"
+    # Hodge's verse number in brackets, "(12)", "(17—24)", "(20, 21)"; Haydock's "&c."
+    r"|\(\d+(?:\s*[—–,-]\s*\d+)?\)|&c\.)\s*(?=\S)"
+)
 #: A bracket or straight double mark the scan spaced from its word ("[ Went
 #: backward", "remarks, \" He could").
 _SPACE_AFTER_OPENER = re.compile(r"(^|[\s(“])([\[\"])\s+(?=\w)")
 _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
 #: A space the scan put inside a curled double mark (“ prevented,” in Bellarmine).
-_SPACE_IN_CURLED = re.compile(r"“\s+|\s+”")
+_GLUED_ELISION = re.compile(r"([\"”])(['’](?:tis|twas|twere|twill|twould)\b)", re.I)
+_SPACE_IN_CURLED = re.compile(r"“\s+|\s+”|(?<![^\s(\[—])‘\s+")
 BOM = "\ufeff"
 #: A byte-order mark just inside a bracket or a curled quotation mark, with
 #: the space it carries.
@@ -343,6 +348,9 @@ def tidy(text: str) -> list[str]:
         raw = _BOM_INSIDE.sub(r"\1\2", raw).replace(BOM, " ")
         para = _SPACE_BEFORE.sub(r"\1", " ".join(raw.split()))
         para = space_quotes(para).replace(" - ", " — ")  # a spaced hyphen is the edition's dash
+        # space_quotes seats a closing mark against a following apostrophe; an
+        # elision after it ("majesty.\" 'Tis fit") keeps its space.
+        para = _GLUED_ELISION.sub(r"\1 \2", para)
         para = _SPACE_IN_CURLED.sub(lambda m: m[0].strip(), para)
         para = _SPACE_AFTER_OPENER.sub(r"\1\2", para)
         para = seat_lone_singles(para)

@@ -75,12 +75,20 @@ class TidyTests(SimpleTestCase):
         self.assertEqual(tidy("Ver. 53, — And every one"), ["And every one"])
         self.assertEqual(tidy("Ver. 26.— Jesus saith"), ["Jesus saith"])
         self.assertEqual(tidy("... — odd"), ["odd"])
+        # Hodge sets the verse in brackets; Haydock's cut lemma leaves "&c.".
+        self.assertEqual(tidy("(12) That is"), ["That is"])
+        self.assertEqual(tidy("(17—24) Paul now"), ["Paul now"])
+        self.assertEqual(tidy("&c. Or how"), ["Or how"])
         # Only at the opening: a dash or ellipsis inside the text stays.
         self.assertEqual(tidy("He said — and so... went"), ["He said — and so... went"])
 
     def test_a_spaced_opening_bracket_or_mark_is_closed_up(self):
         self.assertEqual(tidy("[ Went backward.] This"), ["[Went backward.] This"])
         self.assertEqual(tidy('Hall remarks, " He could"'), ['Hall remarks, "He could"'])
+        self.assertEqual(tidy("he cries, ‘ As the hart"), ["he cries, ‘As the hart"])
+
+    def test_an_elision_after_a_closing_mark_keeps_its_space(self):
+        self.assertEqual(tidy('his majesty." \'Tis well'), ['his majesty." \'Tis well'])
 
     def test_a_lone_single_mark_is_seated_by_its_neighbours(self):
         self.assertEqual(

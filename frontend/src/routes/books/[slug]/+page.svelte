@@ -1418,6 +1418,21 @@
 		</section>
 	{/if}
 
+	<!-- A book of the Bible: the classics written on it — commentaries,
+	     catenas, a book on one of its passages (library/bible_companions) —
+	     before the sermons on it: the long reading first, then the preached. -->
+	{#if book.read_alongside?.length}
+		<section id="read-alongside" class="jump-anchor mt-12" aria-labelledby="read-alongside-heading">
+			<h2 id="read-alongside-heading" class="section-heading no-rule">{t('bible.readAlongside')}</h2>
+			<p class="-mt-2 mb-5 text-small text-muted">{t('bible.readAlongsideLede')}</p>
+			<div class="book-grid">
+				{#each book.read_alongside as companion (companion.slug)}
+					<BookCard book={companion} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- A book of the Bible: the library's sermons on it — those whose text is
 	     in this book (library/bible_sermons.py), canon order, the first few —
 	     and the rest on the sermons shelf, filtered to this book by its facet. -->

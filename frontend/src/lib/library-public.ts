@@ -403,6 +403,10 @@ export interface BookDetail extends BookSummary {
 	 *  the book ("Psalms"). Null on any other book and where no sermon treats it;
 	 *  optional so an API behind this build omits it. */
 	bible_sermons?: { book: string; count: number; sermons: SermonSummary[] } | null;
+	/** A book of the Bible: the classics written on it — commentaries, catenas,
+	 *  an exposition of one passage (library/bible_companions) — as cards. []
+	 *  on every other book; optional so an API behind this build omits it. */
+	read_alongside?: BookSummary[];
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -487,6 +491,24 @@ export interface Chapter {
 	 * for every other chapter; optional: an API behind this build omits it.
 	 */
 	catena?: CatenaPointer | null;
+	/**
+	 * A chapter of the Bible itself: the chapters of the classics written on it
+	 * that treat it (library/bible_companions). `order` is null for a book on
+	 * this one passage (Watson's Beatitudes on Matthew 5), which opens at its
+	 * start. [] for every other chapter; optional: an API behind this build
+	 * omits it.
+	 */
+	read_alongside?: {
+		book: string;
+		book_title: string;
+		author_name: string;
+		order: number | null;
+		title: string;
+	}[];
+	/** A chapter of the Bible itself: the sermons preached on it, the first few,
+	 *  with how many there are and the book's name on the sermons shelf's book
+	 *  facet. Null for every other chapter and one no sermon is on. */
+	chapter_sermons?: { book: string; count: number; sermons: SermonSummary[] } | null;
 	/**
 	 * The young-reader editions' end-of-chapter questions — plain text, the
 	 * answers written for the adult reading along. Empty (or absent, from an

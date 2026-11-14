@@ -40,6 +40,7 @@ from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference, opens_with_text
 from .scripture_graph import (
     bible_book_of,
+    bible_chapter_number,
     book_chapter_pages,
     classics_page,
     treated_passages,
@@ -1837,6 +1838,20 @@ class BookDetailSerializer(BookListSerializer):
         cards = SermonListSerializer(found["sermons"], many=True, context=self.context).data
         return {"book": found["book"], "count": found["count"], "sermons": cards}
 
+    # A book of the Bible: the classics written on it — commentaries, catenas,
+    # an exposition of one passage (library/bible_companions) — as cards. []
+    # on every other book.
+    read_alongside = serializers.SerializerMethodField()
+
+    def get_read_alongside(self, obj) -> list:
+        from .bible_companions import companion_books
+        from .bible_sermons import BIBLE_SERIES
+
+        if obj.series_id is None or obj.series_position is None or obj.series.slug != BIBLE_SERIES:
+            return []
+        books = companion_books(obj.series_position, obj.language)
+        return BookListSerializer(books, many=True, context=self.context).data if books else []
+
     def get_daily(self, obj) -> bool:
         return obj.slug in DATED_BOOKS
 
@@ -1950,6 +1965,7 @@ class BookDetailSerializer(BookListSerializer):
             "daily",
             "daily_plan",
             "bible_sermons",
+            "read_alongside",
         ]
 
     def get_public_domain(self, obj) -> bool:
@@ -2207,6 +2223,27 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_classics_page(self, obj):
         return self._batch(obj).classics_page(obj)
 
+    # A chapter of the Bible itself: the chapters of the classics written on it
+    # that treat it (library/bible_companions) — "Read alongside". [] for every
+    # other chapter.
+    read_alongside = serializers.SerializerMethodField()
+
+    def get_read_alongside(self, obj):
+        return self._batch(obj).read_alongside(obj)
+
+    # A chapter of the Bible itself: the sermons preached on it
+    # (library/bible_sermons.sermons_on_chapter) as cards, with how many there
+    # are and the book's facet name for "all on this book". Null for every
+    # other chapter, and for one no sermon is on.
+    chapter_sermons = serializers.SerializerMethodField()
+
+    def get_chapter_sermons(self, obj):
+        found = self._batch(obj).chapter_sermons(obj)
+        if found is None:
+            return None
+        cards = SermonListSerializer(found["sermons"], many=True, context=self.context).data
+        return {"book": found["book"], "count": found["count"], "sermons": cards}
+
     # For a chapter of a Bible book that has a catena (``library/catena``):
     # which catena chapter is on it and the verse spans it comments on — the
     # reader's "What the Church has said" chips. Null for every other chapter.
@@ -2267,6 +2304,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "classics_page",
             # A Bible chapter's catena pointer — see above.
             "catena",
+            # A Bible chapter's companion chapters and sermons — see above.
+            "read_alongside", "chapter_sermons",
             # The chapter's answered questions (``Chapter``): a young-reader
             # edition's "Talk about it", any other book's "Questions for
             # reflection"; [] when it has none.
@@ -2409,6 +2448,21 @@ class ChapterBatch:
 
     def catena(self, chapter):
         return self._catena.summary(chapter)
+
+    def _bible_chapter(self, chapter) -> int | None:
+        return bible_chapter_number(chapter) if self._bible is not None else None
+
+    def read_alongside(self, chapter) -> list[dict]:
+        from .bible_companions import companion_chapters
+
+        n = self._bible_chapter(chapter)
+        return companion_chapters(self._bible.value, n, chapter.book.language) if n else []
+
+    def chapter_sermons(self, chapter) -> dict | None:
+        from .bible_sermons import sermons_on_chapter
+
+        n = self._bible_chapter(chapter)
+        return sermons_on_chapter(self._bible.value, n, chapter.book.language) if n else None
 
 
 class PlanListSerializer(serializers.ModelSerializer):
