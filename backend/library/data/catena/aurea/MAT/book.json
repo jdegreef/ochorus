@@ -48,5 +48,4017 @@
    "answer": "Aquinas finished this volume first, and dedicated it to Pope Urban IV, who had asked him for the work."
   }
  ],
- "cover_url": "/covers/art/catena-aurea-matthew.jpg"
+ "cover_url": "/covers/art/catena-aurea-matthew.jpg",
+ "rejected": [
+  {
+   "excerpt": "catena-matthew.MAT.4.17.2",
+   "father": "Remigius",
+   "why": "proofread 2026-11-14: typo: the → but (doubled the); mend not certain ('but' is one guess; deleting the doubled 'the' or another conjunction equally plausible)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.8.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: typo: they → these; mend not certain ('these' vs 'those' (eyes) is a guess among plausible readings)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.8.1",
+   "father": "Jerome",
+   "why": "proofread 2026-11-14: typo: Or → On; mend not certain (intended word uncertain (On/Upon/From this))"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.9.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: typo: truly → lowly; mend not certain (truly->lowly is a guess (lowly/low/meanly born all plausible))"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.10.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: typo: know → knew; mend not certain (know -> knew vs knows ambiguous)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.30.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: typo: injunction → enjoins; mend not certain (injunction -> enjoins vs gives injunction ambiguous)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.33.2",
+   "father": "Hilary",
+   "why": "proofread 2026-11-14: misread: uncover → under cover of; mend not certain (\"under cover of\" adds words; a guess among readings)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.42.1",
+   "father": "Remigius",
+   "why": "proofread 2026-11-14: typo: honours → knows; mend not certain (honours->knows not certain from the letters; a guess)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.18.4",
+   "father": "Origen",
+   "why": "proofread 2026-11-14: passage is only the stray attribution \"Cyril\" with no text"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.31.1",
+   "father": "Pseudo-Chrysostom",
+   "why": "proofread 2026-11-14: hole: \"they have first sentence upon themselves\" (verb lost)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.9.2",
+   "father": "Pseudo-Chrysostom",
+   "why": "proofread 2026-11-14: translator's footnote debris, not the Father's text: \"Ep. 15, ad Turrib... Hieron. in Eccles. xii. 7.]\" with unbalanced bracket"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.11.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: hole: paragraph begins mid-sentence \"which befel now;\" with its antecedent lost"
+  }
+ ],
+ "corrections": [
+  {
+   "excerpt": "catena-matthew.MAT.1.1.3",
+   "father": "Hilary",
+   "old": "make both one.” Orat. 5. fin]",
+   "new": "make both one.” Orat. 5. fin.",
+   "why": "proofread 2026-11-14: stray unbalanced bracket"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.1.4",
+   "father": "Pseudo-Chrysostom",
+   "old": "yet David is honour.",
+   "new": "yet David is first in honour.",
+   "why": "proofread 2026-11-14: dropped word: first in honour"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.1.6",
+   "father": "Augustine",
+   "old": "a disciple of Noctus,",
+   "new": "a disciple of Noetus,",
+   "why": "proofread 2026-11-14: typo: Noctus → Noetus"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.1.7",
+   "father": "Gloss",
+   "old": "Other denied the reality",
+   "new": "Others denied the reality",
+   "why": "proofread 2026-11-14: typo: Other → Others"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.1.7",
+   "father": "Augustine",
+   "old": "to have been born of men.",
+   "new": "to have been born of men.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.2.1",
+   "father": "Chrysostom",
+   "old": "“Isaac began Jacob;”",
+   "new": "“Isaac begat Jacob;”",
+   "why": "proofread 2026-11-14: typo: began → begat"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.3-6.8",
+   "father": "Gloss",
+   "old": "David (ie. ‘of a strong",
+   "new": "David (i.e. ‘of a strong",
+   "why": "proofread 2026-11-14: typo: ie. → i.e."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.6-8.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "Roboam in interpreted",
+   "new": "Roboam is interpreted",
+   "why": "proofread 2026-11-14: typo: in → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.8-11.1",
+   "father": "Jerome",
+   "old": "Joram, moveover, begot",
+   "new": "Joram, moreover, begot",
+   "why": "proofread 2026-11-14: typo: moveover → moreover"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.8-11.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "Ahab and Jazebel,",
+   "new": "Ahab and Jezebel,",
+   "why": "proofread 2026-11-14: typo: Jazebel → Jezebel"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.8-11.11",
+   "father": "Gloss",
+   "old": "for Josias in intepreted",
+   "new": "for Josias is interpreted",
+   "why": "proofread 2026-11-14: typos: in → is, intepreted → interpreted"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.8-11.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "but Pharoah by his might",
+   "new": "but Pharaoh by his might",
+   "why": "proofread 2026-11-14: typo: Pharoah → Pharaoh"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.8-11.9",
+   "father": "Remigius",
+   "old": "His is also Ezekias",
+   "new": "He is also Ezekias",
+   "why": "proofread 2026-11-14: typo: His → He"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.12-15.6",
+   "father": "Remigius",
+   "old": "‘aided,’ according of that",
+   "new": "‘aided,’ according to that",
+   "why": "proofread 2026-11-14: typo: of → to"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.12-15.6",
+   "father": "Remigius",
+   "old": "‘the just,’, or,",
+   "new": "‘the just,’ or,",
+   "why": "proofread 2026-11-14: doubled punctuation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.16.3",
+   "father": "Chrysostom",
+   "old": "declaring that is was for",
+   "new": "declaring that it was for",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.18.4",
+   "father": "Bede",
+   "old": "Mary in interpreted",
+   "new": "Mary is interpreted",
+   "why": "proofread 2026-11-14: typo: in → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.18.6",
+   "father": "Chrysostom",
+   "old": "could say any futher.",
+   "new": "could say any further.",
+   "why": "proofread 2026-11-14: typo: futher → further"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.21.1",
+   "father": "Chrysostom",
+   "old": "not only be revealing",
+   "new": "not only by revealing",
+   "why": "proofread 2026-11-14: typo: be → by"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.21.2",
+   "father": "Jerome",
+   "old": "His people from this sins",
+   "new": "His people from their sins",
+   "why": "proofread 2026-11-14: typo: this → their"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.1.23.3",
+   "father": "Augustine",
+   "old": "not to believe i Christ",
+   "new": "not to believe in Christ",
+   "why": "proofread 2026-11-14: dropped letter: i → in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.2.1",
+   "father": "Gregory",
+   "old": "some planet. cite this text",
+   "new": "some planet, cite this text",
+   "why": "proofread 2026-11-14: stray stop mid-sentence"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.9.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "to their now condemnation",
+   "new": "to their own condemnation",
+   "why": "proofread 2026-11-14: typo: now → own"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.10.1",
+   "father": "Leo",
+   "old": "most certainly that was the Eternal",
+   "new": "most certainly that it was the Eternal",
+   "why": "proofread 2026-11-14: dropped word: it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.11.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "or laying on a golden couch",
+   "new": "or lying on a golden couch",
+   "why": "proofread 2026-11-14: typo: laying → lying"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.16.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "“was exceeding wrath,”",
+   "new": "“was exceeding wroth,”",
+   "why": "proofread 2026-11-14: typo: wrath → wroth"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.16.1",
+   "father": "Augustine",
+   "old": "an army (or martyrs)",
+   "new": "an army (of martyrs)",
+   "why": "proofread 2026-11-14: typo: or → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.19.1",
+   "father": "Eusebius",
+   "old": "Antipater,(besides",
+   "new": "Antipater, (besides",
+   "why": "proofread 2026-11-14: missing space before bracket"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.21.1",
+   "father": "Augustine",
+   "old": "Here is may be asked",
+   "new": "Here it may be asked",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.22.2",
+   "father": "Hilary",
+   "old": "figurative intepretation holds",
+   "new": "figurative interpretation holds",
+   "why": "proofread 2026-11-14: typo: intepretation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.2.23.1",
+   "father": "Gloss",
+   "old": "“That is might be fulfilled",
+   "new": "“That it might be fulfilled",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.1.2",
+   "father": "Chrysostom",
+   "old": "[John 8:!3]",
+   "new": "[John 8:13]",
+   "why": "proofread 2026-11-14: stray mark: ! for 1"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.3.2",
+   "father": "Bede",
+   "old": "others shewed after off",
+   "new": "others shewed afar off",
+   "why": "proofread 2026-11-14: typo: after → afar"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.4.2",
+   "father": "Rabanus",
+   "old": "was sweet tot he multitude",
+   "new": "was sweet to the multitude",
+   "why": "proofread 2026-11-14: split: tot he → to the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.5.1",
+   "father": "Chrysostom",
+   "old": "old prophets had must effect",
+   "new": "old prophets had much effect",
+   "why": "proofread 2026-11-14: typo: must → much"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.7.2",
+   "father": "Augustine",
+   "old": "not that god suffers",
+   "new": "not that God suffers",
+   "why": "proofread 2026-11-14: capitalisation: god → God"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.8.1",
+   "father": "Gloss",
+   "old": "If they ye would",
+   "new": "If then ye would",
+   "why": "proofread 2026-11-14: typo: they → then"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.8.1",
+   "father": "Gregory",
+   "old": "use of all thing lawful",
+   "new": "use of all things lawful",
+   "why": "proofread 2026-11-14: typo: thing → things"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.9.1",
+   "father": "Chrysostom",
+   "old": "might even how happen",
+   "new": "might even now happen",
+   "why": "proofread 2026-11-14: typo: how → now"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.9.2",
+   "father": "Rabanus",
+   "old": "Abraham’s seed, because his sons",
+   "new": "Abraham’s seed, became his sons",
+   "why": "proofread 2026-11-14: typo: because → became"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.9.3",
+   "father": "Gregory",
+   "old": "an axe of halt and blade",
+   "new": "an axe of haft and blade",
+   "why": "proofread 2026-11-14: typo: halt → haft"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.11.5",
+   "father": "Pseudo-Chrysostom",
+   "old": "of the Spirit. for Christ is Spirit",
+   "new": "of the Spirit. For Christ is Spirit",
+   "why": "proofread 2026-11-14: lowercase after full stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.11.6",
+   "father": "Pseudo-Chrysostom",
+   "old": "Here were must be threshed",
+   "new": "Here we must be threshed",
+   "why": "proofread 2026-11-14: typo: were → we"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.11.8",
+   "father": "Augustine",
+   "old": "though he have not hid,",
+   "new": "though he have not lied,",
+   "why": "proofread 2026-11-14: typo: hid → lied"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.14.1",
+   "father": "Hilary",
+   "old": "John reject Him from baptism",
+   "new": "John rejects Him from baptism",
+   "why": "proofread 2026-11-14: typo: reject → rejects"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.16.3",
+   "father": "Augustine",
+   "old": "Chris after He had been",
+   "new": "Christ after He had been",
+   "why": "proofread 2026-11-14: typo: Chris → Christ"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.16.5",
+   "father": "Augustine",
+   "old": "doubted that is was seen",
+   "new": "doubted that it was seen",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.16.5",
+   "father": "Augustine",
+   "old": "“that Rock was Christ.)",
+   "new": "“that Rock was Christ.”)",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.3.17.1",
+   "father": "Jerome",
+   "old": "in this baptism. the Lord is baptized",
+   "new": "in this baptism. The Lord is baptized",
+   "why": "proofread 2026-11-14: lowercase after full stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.1.3",
+   "father": "Pseudo-Chrysostom",
+   "old": "fast, be fasted forty days",
+   "new": "fast, he fasted forty days",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.3.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "man; not be hungry belongs",
+   "new": "man; not to be hungry belongs",
+   "why": "proofread 2026-11-14: dropped word: not to be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.8.2",
+   "father": "Jerome",
+   "old": "been make kings of God",
+   "new": "been made kings of God",
+   "why": "proofread 2026-11-14: typo: make → made"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.15.2",
+   "father": "Gloss",
+   "old": "the remained, of the Jews",
+   "new": "the remainder, of the Jews",
+   "why": "proofread 2026-11-14: typo: remained → remainder"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.16.1",
+   "father": "Chrysostom",
+   "old": "did not walk but safe in darkness",
+   "new": "did not walk but sat in darkness",
+   "why": "proofread 2026-11-14: typo: safe → sat"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.17.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "would have been though superfluous",
+   "new": "would have been thought superfluous",
+   "why": "proofread 2026-11-14: typo: though → thought"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.17.2",
+   "father": "Chrysostom",
+   "old": "condemned tree, and the lie;",
+   "new": "condemned tree, and the like;",
+   "why": "proofread 2026-11-14: typo: lie → like"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.20.1",
+   "father": "Gregory",
+   "old": "He does not weight the sacrifice",
+   "new": "He does not weigh the sacrifice",
+   "why": "proofread 2026-11-14: typo: weight → weigh"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.21.3",
+   "father": "Augustine",
+   "old": "write that is was said to both",
+   "new": "write that it was said to both",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.24.1",
+   "father": "Rabanus",
+   "old": "from Cappodocia to Egypt",
+   "new": "from Cappadocia to Egypt",
+   "why": "proofread 2026-11-14: typo: Cappodocia"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.24.1",
+   "father": "Jerome",
+   "old": "that is might redound",
+   "new": "that it might redound",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.1.2",
+   "father": "Augustine",
+   "old": "that they who is spirit approached",
+   "new": "that they who in spirit approached",
+   "why": "proofread 2026-11-14: typo: is → in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.1.3",
+   "father": "Augustine",
+   "old": "It cause a thought how",
+   "new": "It causes a thought how",
+   "why": "proofread 2026-11-14: typo: cause → causes"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.4.2",
+   "father": "Augustine",
+   "old": "“Comforter;’ so that",
+   "new": "“Comforter;” so that",
+   "why": "proofread 2026-11-14: mismatched closing quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.6.1",
+   "father": "Ambrose",
+   "old": "afficted with any sort disease, hath ho hunger",
+   "new": "afflicted with any sort of disease, hath no hunger",
+   "why": "proofread 2026-11-14: typos: afficted, missing of, ho → no"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.4.23.2",
+   "father": "Remigius",
+   "old": "Chrys.:... By which too",
+   "new": "By which too",
+   "why": "proofread 2026-11-14: stray attribution debris \"Chrys.:...\""
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.14.5",
+   "father": "Bede",
+   "old": "limits of any one oration",
+   "new": "limits of any one nation",
+   "why": "proofread 2026-11-14: typo: oration → nation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.14.6",
+   "father": "Augustine",
+   "old": "sought the praised of men",
+   "new": "sought the praise of men",
+   "why": "proofread 2026-11-14: typo: praised → praise"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.17.3",
+   "father": "Augustine",
+   "old": "that not Matthew’s Gospel, but also",
+   "new": "that not only Matthew’s Gospel, but also",
+   "why": "proofread 2026-11-14: dropped word: not → not only"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.17.4",
+   "father": "Augustine",
+   "old": "Old Testament were figure of things",
+   "new": "Old Testament were figures of things",
+   "why": "proofread 2026-11-14: typo: figure → figures"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.17.7",
+   "father": "Faustus",
+   "old": "which Faustus draw between",
+   "new": "which Faustus draws between",
+   "why": "proofread 2026-11-14: typo: draw → draws"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.17.8",
+   "father": "Remigius",
+   "old": "and my be rendered",
+   "new": "and may be rendered",
+   "why": "proofread 2026-11-14: typo: my → may"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.18.1",
+   "father": "Rabanus",
+   "old": "not the Hebrew job,",
+   "new": "not the Hebrew jod,",
+   "why": "proofread 2026-11-14: typo: job → jod (Hebrew letter)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.19.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "Thou shalt not lust,’ as ‘the least;’",
+   "new": "Thou shalt not lust,” as ‘the least;’",
+   "why": "proofread 2026-11-14: unbalanced quote: ’ closes a “ quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.20.1",
+   "father": "Chrysostom",
+   "old": "And see how ever herein",
+   "new": "And see how even herein",
+   "why": "proofread 2026-11-14: typo: ever → even"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.20.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "yet the least of them. but he who",
+   "new": "yet the least of them. But he who",
+   "why": "proofread 2026-11-14: lowercase after full stop: but → But"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.22.7",
+   "father": "Chrysostom",
+   "old": "denote punishment in this word;",
+   "new": "denote punishment in this world;",
+   "why": "proofread 2026-11-14: typo: word → world"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.23.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "in deeds by reconciled",
+   "new": "in deeds be reconciled",
+   "why": "proofread 2026-11-14: typo: by → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.25.1",
+   "father": "Hilary",
+   "old": "before peace by joined between us",
+   "new": "before peace be joined between us",
+   "why": "proofread 2026-11-14: typo: by → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.27.1",
+   "father": "Augustine",
+   "old": "you know what you eat and what your drink",
+   "new": "you know what you eat and what you drink",
+   "why": "proofread 2026-11-14: typo: your → you"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.32.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "in obedience to that of the Apostles,",
+   "new": "in obedience to that of the Apostle,",
+   "why": "proofread 2026-11-14: typo: Apostles → Apostle (Paul, Gal 6:2)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.34.2",
+   "father": "Jerome",
+   "old": "For he who swears, shew either",
+   "new": "For he who swears, shews either",
+   "why": "proofread 2026-11-14: typo: shew → shews"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.38.2",
+   "father": "Augustine",
+   "old": "Between that first manner than,",
+   "new": "Between that first manner then,",
+   "why": "proofread 2026-11-14: typo: than → then"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.39.1",
+   "father": "Augustine",
+   "old": "why smitest thou me? [John 18:23]",
+   "new": "why smitest thou me?” [John 18:23]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.39.4",
+   "father": "Augustine",
+   "old": "be not foregone by Him who has right",
+   "new": "be not foregone by him who has right",
+   "why": "proofread 2026-11-14: mid-sentence capital: Him → him (not God)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.40.1",
+   "father": "Augustine",
+   "old": "to be observed in al things",
+   "new": "to be observed in all things",
+   "why": "proofread 2026-11-14: typo: al → all"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.44.2",
+   "father": "Augustine",
+   "old": "his human spirit to this tempter",
+   "new": "his human spirit to this temper",
+   "why": "proofread 2026-11-14: typo: tempter → temper"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.44.3",
+   "father": "Augustine",
+   "old": "as a difficulty that John say,",
+   "new": "as a difficulty that John says,",
+   "why": "proofread 2026-11-14: typo: say → says"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.5.45.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "“On the righteous and the unrighteous;’",
+   "new": "“On the righteous and the unrighteous;”",
+   "why": "proofread 2026-11-14: unbalanced quote: ’ closes a “ quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.1.1",
+   "father": "Chrysostom",
+   "old": "is near a kin to virtue",
+   "new": "is near akin to virtue",
+   "why": "proofread 2026-11-14: split word: a kin → akin"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.1.3",
+   "father": "Augustine",
+   "old": "“I please all men in all things. [1 Cor 10:33]",
+   "new": "“I please all men in all things.” [1 Cor 10:33]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.1.3",
+   "father": "Augustine",
+   "old": "in reward of our words.",
+   "new": "in reward of our works.",
+   "why": "proofread 2026-11-14: typo: words → works"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.1.4",
+   "father": "Pseudo-Chrysostom",
+   "old": "But that wisdom is it,",
+   "new": "But what wisdom is it,",
+   "why": "proofread 2026-11-14: typo: that → what"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.1.4",
+   "father": "Pseudo-Chrysostom",
+   "old": "rather reproach then command you",
+   "new": "rather reproach than commend you",
+   "why": "proofread 2026-11-14: typos: then → than, command → commend"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.4.1",
+   "father": "Augustine",
+   "old": "“And you Father which seeth",
+   "new": "“And your Father which seeth",
+   "why": "proofread 2026-11-14: typo: you → your"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.5.3",
+   "father": "Augustine",
+   "old": "without are al worldly things, which, enter",
+   "new": "without are all worldly things, which enter",
+   "why": "proofread 2026-11-14: typo: al → all; stray comma after which"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.7.1",
+   "father": "Augustine",
+   "old": "enduring warmth the heart Him",
+   "new": "enduring warmth of the heart Him",
+   "why": "proofread 2026-11-14: dropped word: of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.9.4",
+   "father": "Augustine",
+   "old": "that are prayed for it,",
+   "new": "that are prayed for is,",
+   "why": "proofread 2026-11-14: typo: it → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.10.4",
+   "father": "Cyprian",
+   "old": "but it safe in the indulgence",
+   "new": "but is safe in the indulgence",
+   "why": "proofread 2026-11-14: typo: it → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.11.3",
+   "father": "Augustine",
+   "old": "over the Churches, But not",
+   "new": "over the Churches. But not",
+   "why": "proofread 2026-11-14: comma for full stop before capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.13.1",
+   "father": "Augustine",
+   "old": "the forcible might, or any temptation",
+   "new": "the forcible might, of any temptation",
+   "why": "proofread 2026-11-14: typo: or → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.13.6",
+   "father": "Pseudo-Chrysostom",
+   "old": "on earth. The power,” answers",
+   "new": "on earth.” “The power,” answers",
+   "why": "proofread 2026-11-14: unbalanced quote: closing quote lost after \"earth.\""
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.14.1",
+   "father": "Rabanus",
+   "old": "By the word, “Amen.” He shews",
+   "new": "By the word, “Amen,” He shews",
+   "why": "proofread 2026-11-14: stop for comma: \"Amen.\" He → \"Amen,\" He"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.16.2",
+   "father": "Augustine",
+   "old": "pains taken with her person, or his apparel",
+   "new": "pains taken with his person, or his apparel",
+   "why": "proofread 2026-11-14: typo: her → his"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.24.2",
+   "father": "Jerome",
+   "old": "despenses them as a master",
+   "new": "dispenses them as a master",
+   "why": "proofread 2026-11-14: typo: despenses → dispenses"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.25.2",
+   "father": "Augustine",
+   "old": "by his example when he delivered in precept",
+   "new": "by his example what he delivered in precept",
+   "why": "proofread 2026-11-14: typo: when → what"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.26.1",
+   "father": "Augustine",
+   "old": "“neither gather into barns? Why do they",
+   "new": "“neither gather into barns?” Why do they",
+   "why": "proofread 2026-11-14: unclosed quotation mark"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.29.1",
+   "father": "Chrysostom",
+   "old": "so widely so our clothes differ",
+   "new": "so widely do our clothes differ",
+   "why": "proofread 2026-11-14: typo: so → do"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.31.1",
+   "father": "Rabanus",
+   "old": "for, food drink, and raiment",
+   "new": "for, food, drink, and raiment",
+   "why": "proofread 2026-11-14: missing comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.6.33.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "if you consider that is the righteousness of God",
+   "new": "if you consider what is the righteousness of God",
+   "why": "proofread 2026-11-14: typo: that → what"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.1.2",
+   "father": "Augustine",
+   "old": "Wherefore he should neither blame",
+   "new": "Wherefore we should neither blame",
+   "why": "proofread 2026-11-14: typo: he → we"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.2.1",
+   "father": "Augustine",
+   "old": "there is difficulty is what follows",
+   "new": "there is difficulty in what follows",
+   "why": "proofread 2026-11-14: typo: is → in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.3.1",
+   "father": "Augustine",
+   "old": "a fault that spring either from pride",
+   "new": "a fault that springs either from pride",
+   "why": "proofread 2026-11-14: typo: spring → springs"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.5.1",
+   "father": "Chrysostom",
+   "old": "the things that be great, then the things",
+   "new": "the things that be great, than the things",
+   "why": "proofread 2026-11-14: typo: then → than"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.5.1",
+   "father": "Augustine",
+   "old": "clearly to cast the beam out of our brother’s eye",
+   "new": "clearly to cast the mote out of our brother’s eye",
+   "why": "proofread 2026-11-14: slip: beam → mote (the text it glosses)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.6.1",
+   "father": "Augustine",
+   "old": "because it is not be contemned",
+   "new": "because it is not to be contemned",
+   "why": "proofread 2026-11-14: missing word: not be → not to be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.6.4",
+   "father": "Augustine",
+   "old": "has despised things god by great toil",
+   "new": "has despised things got by great toil",
+   "why": "proofread 2026-11-14: typo: god → got"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.6.4",
+   "father": "Pseudo-Chrysostom",
+   "old": "are they to be withhold from dogs",
+   "new": "are they to be withheld from dogs",
+   "why": "proofread 2026-11-14: typo: withhold → withheld"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.7.1",
+   "father": "Augustine",
+   "old": "when as yet I see not that I have any holy thing",
+   "new": "when as yet I see not that I have any holy thing?",
+   "why": "proofread 2026-11-14: lost question mark at end of question"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.7.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "whatever seems to your shut",
+   "new": "whatever seems to you shut",
+   "why": "proofread 2026-11-14: typo: your → you"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.8.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "which is displayed is doing good",
+   "new": "which is displayed in doing good",
+   "why": "proofread 2026-11-14: typo: is → in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.12.3",
+   "father": "Pseudo-Chrysostom",
+   "old": "For whosoever the Law and the Prophets contain",
+   "new": "For whatsoever the Law and the Prophets contain",
+   "why": "proofread 2026-11-14: typo: whosoever → whatsoever"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.15.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "But his form of warning",
+   "new": "But this form of warning",
+   "why": "proofread 2026-11-14: typo: his → this"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.15.3",
+   "father": "Pseudo-Chrysostom",
+   "old": "for he who utter according to God",
+   "new": "for he who utters according to God",
+   "why": "proofread 2026-11-14: typo: utter → utters"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.15.4",
+   "father": "Augustine",
+   "old": "sought to attain by this evil, then",
+   "new": "sought to attain by this veil, then",
+   "why": "proofread 2026-11-14: typo: evil → veil (the sheep's clothing)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.17.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "instanced in particular tress, as the fig",
+   "new": "instanced in particular trees, as the fig",
+   "why": "proofread 2026-11-14: typo: tress → trees"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.17.1",
+   "father": "Augustine",
+   "old": "countenance from these two tree;",
+   "new": "countenance from these two trees;",
+   "why": "proofread 2026-11-14: typo: tree → trees"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.22.1",
+   "father": "Chrysostom",
+   "old": "He thus secretly bring in Himself",
+   "new": "He thus secretly brings in Himself",
+   "why": "proofread 2026-11-14: typo: bring → brings"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.22.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "but Angles speaking the truth",
+   "new": "but Angels speaking the truth",
+   "why": "proofread 2026-11-14: typo: Angles → Angels"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.22.1",
+   "father": "Hilary",
+   "old": "for their casting our daemons",
+   "new": "for their casting out daemons",
+   "why": "proofread 2026-11-14: typo: our → out"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.22.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "But not that He says, “in my name,”",
+   "new": "But note that He says, “in my name,”",
+   "why": "proofread 2026-11-14: typo: not → note"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.24.3",
+   "father": "Augustine",
+   "old": "noted, that when he said, “He that heareth",
+   "new": "noted, that when He said, “He that heareth",
+   "why": "proofread 2026-11-14: case slip: he → He (the Lord)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.28.2",
+   "father": "Augustine",
+   "old": "He delivered on and the same Sermon",
+   "new": "He delivered one and the same Sermon",
+   "why": "proofread 2026-11-14: typo: on → one"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.29.2",
+   "father": "Augustine",
+   "old": "who goes to the opening His Father’s will",
+   "new": "who goes to the opening of His Father’s will",
+   "why": "proofread 2026-11-14: missing word: opening His → opening of His"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.7.29.2",
+   "father": "Augustine",
+   "old": "implore the aid of the counsoler, whence",
+   "new": "implore the aid of the consoler, whence",
+   "why": "proofread 2026-11-14: typo: counsoler → consoler"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.1.1",
+   "father": "Pseudo-Origen",
+   "old": "altogether unable to ascent into the mount",
+   "new": "altogether unable to ascend into the mount",
+   "why": "proofread 2026-11-14: typo: ascent → ascend"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.1.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "were not able to ascent into the mount",
+   "new": "were not able to ascend into the mount",
+   "why": "proofread 2026-11-14: typo: ascent → ascend"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.2.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "“he make adoration to him, saying;”",
+   "new": "“he made adoration to him, saying;”",
+   "why": "proofread 2026-11-14: typo: make → made"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.2.1",
+   "father": "Pseudo-Origen",
+   "old": "“if thou will, canst make me clean.”",
+   "new": "“if thou wilt, canst make me clean.”",
+   "why": "proofread 2026-11-14: typo: will → wilt"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.2.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "In that he say, “If thou wilt,”",
+   "new": "In that he says, “If thou wilt,”",
+   "why": "proofread 2026-11-14: typo: say → says"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.3.2",
+   "father": "Chrysostom",
+   "old": "the Purifier with proper sped",
+   "new": "the Purifier with proper speed",
+   "why": "proofread 2026-11-14: typo: sped → speed"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.4.1",
+   "father": "Chrysostom",
+   "old": "that they might, not through malice distrust",
+   "new": "that they might not through malice distrust",
+   "why": "proofread 2026-11-14: misplaced comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.4.1",
+   "father": "Chrysostom",
+   "old": "to another to whom He had healed",
+   "new": "to another whom He had healed",
+   "why": "proofread 2026-11-14: stray word: to whom → whom"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.4.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "Or; He command the oblation",
+   "new": "Or; He commands the oblation",
+   "why": "proofread 2026-11-14: typo: command → commands"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.6.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "tormented, thought it be but slightly",
+   "new": "tormented, though it be but slightly",
+   "why": "proofread 2026-11-14: typo: thought → though"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.9.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "much more Thou who are under the authority",
+   "new": "much more Thou who art under the authority",
+   "why": "proofread 2026-11-14: typo: are → art"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.9.1",
+   "father": "Gloss",
+   "old": "Thou are able without Thy bodily presence",
+   "new": "Thou art able without Thy bodily presence",
+   "why": "proofread 2026-11-14: typo: are → art"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.9.2",
+   "father": "Chrysostom",
+   "old": "Of Him in Luke it is said",
+   "new": "Of him in Luke it is said",
+   "why": "proofread 2026-11-14: mid-sentence capital: Him (the centurion) → him"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.9.2",
+   "father": "Chrysostom",
+   "old": "then be sent to say",
+   "new": "then he sent to say",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.9.2",
+   "father": "Chrysostom",
+   "old": "thither, repeated it Himself.",
+   "new": "thither, repeated it himself.",
+   "why": "proofread 2026-11-14: mid-sentence capital: Himself (the centurion) → himself"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.10.1",
+   "father": "Chrysostom",
+   "old": "“If thou will, thou canst cleanse me,”",
+   "new": "“If thou wilt, thou canst cleanse me,”",
+   "why": "proofread 2026-11-14: typo: will → wilt"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.12.2",
+   "father": "Remigius",
+   "old": "By “other darkness,” He means",
+   "new": "By “outer darkness,” He means",
+   "why": "proofread 2026-11-14: typo: other → outer"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.15.2",
+   "father": "Bede",
+   "old": "which is at it were",
+   "new": "which is as it were",
+   "why": "proofread 2026-11-14: typo: at → as"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.15.2",
+   "father": "Remigius",
+   "old": "because the minister of life",
+   "new": "became the minister of life",
+   "why": "proofread 2026-11-14: typo: because → became"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.20.1",
+   "father": "Chrysostom",
+   "old": "Jerome:.. Why do you",
+   "new": "Jerome: Why do you",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.20.1",
+   "father": "Augustine",
+   "old": "“The foxes have hole,”",
+   "new": "“The foxes have holes,”",
+   "why": "proofread 2026-11-14: typo: hole → holes"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.18.1",
+   "father": "Chrysostom",
+   "old": "He did say to them, Depart ye",
+   "new": "He did not say to them, Depart ye",
+   "why": "proofread 2026-11-14: dropped 'not' (contradicts sense)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.24.1",
+   "father": "Pseudo-Origen",
+   "old": "He cause the sea to rise",
+   "new": "He caused the sea to rise",
+   "why": "proofread 2026-11-14: typo: cause → caused"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.24.1",
+   "father": "Pseudo-Origen",
+   "old": "“And, to, there arose",
+   "new": "“And, lo, there arose",
+   "why": "proofread 2026-11-14: typo: to → lo"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.26.1",
+   "father": "Pseudo-Origen",
+   "old": "it because a great calm",
+   "new": "it became a great calm",
+   "why": "proofread 2026-11-14: typo: because → became"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.27.1",
+   "father": "Jerome",
+   "old": "if any shall content that",
+   "new": "if any shall contend that",
+   "why": "proofread 2026-11-14: typo: content → contend"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.28.2",
+   "father": "Chrysostom",
+   "old": "wander to and for on",
+   "new": "wander to and fro on",
+   "why": "proofread 2026-11-14: typo: for → fro"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.28.3",
+   "father": "Chrysostom",
+   "old": "“And, to, they cried out",
+   "new": "“And, lo, they cried out",
+   "why": "proofread 2026-11-14: typo: to → lo"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.29.2",
+   "father": "Augustine",
+   "old": "send us into the swine.",
+   "new": "send us into the swine.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.8.29.2",
+   "father": "Remigius",
+   "old": "‘spurens,’ filthy",
+   "new": "‘spurcus,’ filthy",
+   "why": "proofread 2026-11-14: Latin misread: spurens → spurcus"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.1.2",
+   "father": "Augustine",
+   "old": "“And, to, they bring unto him a paralytic laying on a bed.”",
+   "new": "“And, lo, they bring unto him a paralytic lying on a bed.”",
+   "why": "proofread 2026-11-14: typos: to → lo, laying → lying"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.6.1",
+   "father": "Gloss",
+   "old": "remit sins” = the sentence",
+   "new": "remit sins” — the sentence",
+   "why": "proofread 2026-11-14: stray mark: = for dash"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.9.2",
+   "father": "Jerome",
+   "old": "Prophyry and the Emperor",
+   "new": "Porphyry and the Emperor",
+   "why": "proofread 2026-11-14: typo: Prophyry → Porphyry"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.9.2",
+   "father": "Augustine",
+   "old": "whom He also name Apostles",
+   "new": "whom He also named Apostles",
+   "why": "proofread 2026-11-14: typo: name → named"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.9.2",
+   "father": "Gloss",
+   "old": "Matthew places his called among",
+   "new": "Matthew places his call among",
+   "why": "proofread 2026-11-14: typo: called → call"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.10.1",
+   "father": "Augustine",
+   "old": "shew that is was in Levi’s",
+   "new": "shew that it was in Levi’s",
+   "why": "proofread 2026-11-14: typo: is → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.11.1",
+   "father": "Chrysostom",
+   "old": "hearts of the disciple from the Master",
+   "new": "hearts of the disciples from the Master",
+   "why": "proofread 2026-11-14: typo: disciple → disciples"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.13.2",
+   "father": "Chrysostom",
+   "old": "and need glory of God",
+   "new": "and need the glory of God",
+   "why": "proofread 2026-11-14: dropped word: the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.14.1",
+   "father": "Chrysostom",
+   "old": "What they say come to this",
+   "new": "What they say comes to this",
+   "why": "proofread 2026-11-14: typo: come → comes"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.14.1",
+   "father": "Augustine",
+   "old": "Through Matthew mentions only",
+   "new": "Though Matthew mentions only",
+   "why": "proofread 2026-11-14: typo: Through → Though"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.18.1",
+   "father": "Augustine",
+   "old": "no other act of speech of his",
+   "new": "no other act or speech of his",
+   "why": "proofread 2026-11-14: typo: of → or"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.21.1",
+   "father": "Remigius",
+   "old": "seeing her, said, “Be of good cheer",
+   "new": "seeing her, said, Be of good cheer",
+   "why": "proofread 2026-11-14: stray doubled opening quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.26.1",
+   "father": "Jerome",
+   "old": "the damsel lays dead",
+   "new": "the damsel lies dead",
+   "why": "proofread 2026-11-14: typo: lays → lies"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.27.1",
+   "father": "Jerome",
+   "old": "Marcion and Manichaeaus,",
+   "new": "Marcion and Manichaeus,",
+   "why": "proofread 2026-11-14: typo: Manichaeaus → Manichaeus"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.28.1",
+   "father": "Remigius",
+   "old": "“By the mouth of confession is made",
+   "new": "“By the mouth confession is made",
+   "why": "proofread 2026-11-14: stray word: of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.28.1",
+   "father": "Chrysostom",
+   "old": "They say unto him, Yea. Lord.”",
+   "new": "They say unto him, Yea, Lord.”",
+   "why": "proofread 2026-11-14: stop for comma: Yea. Lord"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.33.1",
+   "father": "Hilary",
+   "old": "and there the functions",
+   "new": "and then the functions",
+   "why": "proofread 2026-11-14: typo: there → then"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.34.1",
+   "father": "Remigius",
+   "old": "multitude of they excellency",
+   "new": "multitude of thy excellency",
+   "why": "proofread 2026-11-14: typo: they → thy"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.34.1",
+   "father": "Rabanus",
+   "old": "As is the two blind men",
+   "new": "As in the two blind men",
+   "why": "proofread 2026-11-14: typo: is → in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.36.1",
+   "father": "Chrysostom",
+   "old": "daemons by the “Prince of the daemons",
+   "new": "daemons by the Prince of the daemons",
+   "why": "proofread 2026-11-14: stray opening quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.9.36.2",
+   "father": "Remigius",
+   "old": "because there were troubled, and sick as sheep that have no shepherd —",
+   "new": "because they were troubled, and sick as sheep that have no shepherd” —",
+   "why": "proofread 2026-11-14: typo: there → they; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.2.2",
+   "father": "Remigius",
+   "old": "John in interpreted",
+   "new": "John is interpreted",
+   "why": "proofread 2026-11-14: typo: in → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.3.1",
+   "father": "Remigius",
+   "old": "son of Alphaeaus, and",
+   "new": "son of Alphaeus, and",
+   "why": "proofread 2026-11-14: typo: Alphaeaus → Alphaeus"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.9.1",
+   "father": "Chrysostom",
+   "old": "teaches there their excellence",
+   "new": "teaches them their excellence",
+   "why": "proofread 2026-11-14: typo: there → them"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.10.6",
+   "father": "Hilary",
+   "old": "“a scrip by the way, that is",
+   "new": "“a scrip by the way,” that is",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.10.6",
+   "father": "Hilary",
+   "old": "treasure on earth in hurtful",
+   "new": "treasure on earth is hurtful",
+   "why": "proofread 2026-11-14: typo: in → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.13.1",
+   "father": "Remigius",
+   "old": "chosen a hose that is worthy",
+   "new": "chosen a host that is worthy",
+   "why": "proofread 2026-11-14: typo: hose → host"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.13.1",
+   "father": "Remigius",
+   "old": "may indeed by referred",
+   "new": "may indeed be referred",
+   "why": "proofread 2026-11-14: typo: by → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.14.1",
+   "father": "Hilary",
+   "old": "not hear your words, “when ye go",
+   "new": "nor hear your words, when ye go",
+   "why": "proofread 2026-11-14: typo: not → nor; stray opening quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.14.1",
+   "father": "Hilary",
+   "old": "within the Apostles own bosom",
+   "new": "within the Apostles’ own bosom",
+   "why": "proofread 2026-11-14: missing apostrophe"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.16.2",
+   "father": "Chrysostom",
+   "old": "He add, “Be ye",
+   "new": "He adds, “Be ye",
+   "why": "proofread 2026-11-14: typo: add → adds"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.16.3",
+   "father": "Remigius",
+   "old": "unites these two thing;",
+   "new": "unites these two things;",
+   "why": "proofread 2026-11-14: typo: thing → things"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.18.1",
+   "father": "Chrysostom",
+   "old": "did not straighway depart",
+   "new": "did not straightway depart",
+   "why": "proofread 2026-11-14: typo: straighway → straightway"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.18.1",
+   "father": "Gregory",
+   "old": "they had presented to the death",
+   "new": "they had persecuted to the death",
+   "why": "proofread 2026-11-14: typo: presented → persecuted"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.27.1",
+   "father": "Gloss",
+   "old": "raised above you bodies",
+   "new": "raised above your bodies",
+   "why": "proofread 2026-11-14: typo: you → your"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.32.2",
+   "father": "Remigius",
+   "old": "either the Son of the Father",
+   "new": "either the Son or the Father",
+   "why": "proofread 2026-11-14: typo: of → or"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.35.3",
+   "father": "Gloss",
+   "old": "Otherwise; He mean,",
+   "new": "Otherwise; He means,",
+   "why": "proofread 2026-11-14: typo: mean → means"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.37.1",
+   "father": "Chrysostom",
+   "old": "obey in such things are not hurtful",
+   "new": "obey in such things as are not hurtful",
+   "why": "proofread 2026-11-14: dropped word: as"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.10.41.1",
+   "father": "Gregory",
+   "old": "what bounty be shewed him",
+   "new": "what bounty he shewed him",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.2.1",
+   "father": "Gloss",
+   "old": "or look we for another?",
+   "new": "or look we for another?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.2.1",
+   "father": "Gregory",
+   "old": "taketh away the sine of the world! — why",
+   "new": "taketh away the sin of the world!” — why",
+   "why": "proofread 2026-11-14: typo: sine → sin; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.2.2",
+   "father": "Chrysostom",
+   "old": "that taketh. away the sins",
+   "new": "that taketh away the sins",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.3.1",
+   "father": "Chrysostom",
+   "old": "forerunnner",
+   "new": "forerunner",
+   "why": "proofread 2026-11-14: typo: forerunnner"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.3.2",
+   "father": "Jerome",
+   "old": "“Why do thee and the Pharisees fast oft, but thy disciples fast not?",
+   "new": "“Why do we and the Pharisees fast oft, but thy disciples fast not?”",
+   "why": "proofread 2026-11-14: typo: thee → we; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.6.1",
+   "father": "Gregory",
+   "old": "suffer humble things, Because then",
+   "new": "suffer humble things. Because then",
+   "why": "proofread 2026-11-14: comma for stop: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.7.1",
+   "father": "Chrysostom",
+   "old": "hath jealousy against Jesus!",
+   "new": "hath jealousy against Jesus?",
+   "why": "proofread 2026-11-14: ! for ? in question"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.7.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "in the deaert,",
+   "new": "in the desert,",
+   "why": "proofread 2026-11-14: typo: deaert"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.7.2",
+   "father": "Jerome",
+   "old": "a man clothed in soft raiment?",
+   "new": "a man clothed in soft raiment?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.11.1",
+   "father": "Chrysostom",
+   "old": "is greater than he.",
+   "new": "is greater than he.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.12.1",
+   "father": "Gregory",
+   "old": "the heavenly throne, wither when",
+   "new": "the heavenly throne, whither when",
+   "why": "proofread 2026-11-14: typo: wither → whither"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.16.1",
+   "father": "Chrysostom",
+   "old": "shall I liken this generation?",
+   "new": "shall I liken this generation?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.19.1",
+   "father": "Chrysostom",
+   "old": "fall into, the hands",
+   "new": "fall into the hands",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.19.1",
+   "father": "Chrysostom",
+   "old": "forty days;- but",
+   "new": "forty days; but",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.19.2",
+   "father": "Jerome",
+   "old": "satisfied with John!",
+   "new": "satisfied with John?",
+   "why": "proofread 2026-11-14: ! for ? in question"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.20.1",
+   "father": "Gloss",
+   "old": "most of hie mighty works",
+   "new": "most of his mighty works",
+   "why": "proofread 2026-11-14: typo: hie → his"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.20.1",
+   "father": "Rabanus",
+   "old": "The Lord herefore mourns",
+   "new": "The Lord therefore mourns",
+   "why": "proofread 2026-11-14: typo: herefore → therefore"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.24.2",
+   "father": "Augustine",
+   "old": "Tyre and Simon would fall",
+   "new": "Tyre and Sidon would fall",
+   "why": "proofread 2026-11-14: typo: Simon → Sidon"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.24.2",
+   "father": "Augustine",
+   "old": "through which. they",
+   "new": "through which they",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.25.1",
+   "father": "Gloss",
+   "old": "leavest in earthlinees",
+   "new": "leavest in earthliness",
+   "why": "proofread 2026-11-14: typo: earthlinees"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.26.1",
+   "father": "Chrysostom",
+   "old": "hast hid thee things",
+   "new": "hast hid these things",
+   "why": "proofread 2026-11-14: typo: thee → these"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.27.4",
+   "father": "Augustine",
+   "old": "the Father bet the Son",
+   "new": "the Father but the Son",
+   "why": "proofread 2026-11-14: typo: bet → but"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.29.1",
+   "father": "Chrysostom",
+   "old": "tberefore He adds",
+   "new": "therefore He adds",
+   "why": "proofread 2026-11-14: typo: tberefore"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.11.29.2",
+   "father": "Augustine",
+   "old": "boils or swellinga.",
+   "new": "boils or swellings.",
+   "why": "proofread 2026-11-14: typo: swellinga"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.3.1",
+   "father": "Jerome",
+   "old": "which you approve in others!",
+   "new": "which you approve in others?",
+   "why": "proofread 2026-11-14: ! for ? in question"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.9.1",
+   "father": "Hilary",
+   "old": "Is it lawful to heal on the sabbath day?",
+   "new": "Is it lawful to heal on the sabbath day?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.10.1",
+   "father": "Augustine",
+   "old": "to do good or to or evil? [Luke 6:9]",
+   "new": "to do good or to do evil?” [Luke 6:9]",
+   "why": "proofread 2026-11-14: doubled word: or to or → or to do; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.10.1",
+   "father": "Augustine",
+   "old": "“Is it lawful to heal on the sabbath day? Then",
+   "new": "“Is it lawful to heal on the sabbath day?” Then",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.14.1",
+   "father": "Hilary",
+   "old": "how they ought destroy him",
+   "new": "how they might destroy him",
+   "why": "proofread 2026-11-14: typo: ought → might"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.18.1",
+   "father": "Chrysostom",
+   "old": "break the lair,",
+   "new": "break the law,",
+   "why": "proofread 2026-11-14: typo: lair → law"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.20.1",
+   "father": "Jerome",
+   "old": "he benches a smoking flax",
+   "new": "he quenches a smoking flax",
+   "why": "proofread 2026-11-14: typo: benches → quenches"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.20.1",
+   "father": "Hilary",
+   "old": "quench a smoking flax, shews",
+   "new": "quench a smoking flax,” shews",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.20.2",
+   "father": "Hilary",
+   "old": "Until he shalt send forth",
+   "new": "Until he shall send forth",
+   "why": "proofread 2026-11-14: typo: shalt → shall"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.20.2",
+   "father": "Rabanus",
+   "old": "on the right, hand of the Father",
+   "new": "on the right hand of the Father",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.21.1",
+   "father": "Augustine",
+   "old": "begun to have in Him!",
+   "new": "begun to have in Him?",
+   "why": "proofread 2026-11-14: ! for ? in question"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.24.1",
+   "father": "Remigius",
+   "old": "but with, b.",
+   "new": "but with b.",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.25.1",
+   "father": "Chrysostom",
+   "old": "jealousy reeks not",
+   "new": "jealousy recks not",
+   "why": "proofread 2026-11-14: typo: reeks → recks"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.25.3",
+   "father": "Hilary",
+   "old": "how then shall hie kingdom stand?",
+   "new": "how then shall his kingdom stand?”",
+   "why": "proofread 2026-11-14: typo: hie → his; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.25.3",
+   "father": "Jerome",
+   "old": "and, daemon be an enemy",
+   "new": "and daemon be an enemy",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.27.1",
+   "father": "Chrysostom",
+   "old": "an impudent excuse, And the Apostles",
+   "new": "an impudent excuse. And the Apostles",
+   "why": "proofread 2026-11-14: comma for stop: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.28.1",
+   "father": "Jerome",
+   "old": "is among you; [Luke 17:21]",
+   "new": "is among you;” [Luke 17:21]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.29.1",
+   "father": "Chrysostom",
+   "old": "strong man’s house? For that",
+   "new": "strong man’s house?” For that",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.29.1",
+   "father": "Chrysostom",
+   "old": "yea but the prince, also of",
+   "new": "yea but the prince also of",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.30.1",
+   "father": "Chrysostom",
+   "old": "of whom it is, said",
+   "new": "of whom it is said",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.31.3",
+   "father": "Augustine",
+   "old": "before He become a Christian",
+   "new": "before he become a Christian",
+   "why": "proofread 2026-11-14: mid-sentence capital: He → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.32.1",
+   "father": "Augustine",
+   "old": "opposes Himself against the brotherhood",
+   "new": "opposes himself against the brotherhood",
+   "why": "proofread 2026-11-14: mid-sentence capital: Himself → himself"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.32.5",
+   "father": "Augustine",
+   "old": "“Forgive us our sins; And hereby we know:” speaks John,",
+   "new": "“Forgive us our sins.” “And hereby we know,” speaks John,",
+   "why": "proofread 2026-11-14: unbalanced quotation marks / mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.34.1",
+   "father": "Chrysostom",
+   "old": "being evil speak good things? He calls",
+   "new": "being evil speak good things?” He calls",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.37.1",
+   "father": "Remigius",
+   "old": "shall he condemned",
+   "new": "shall be condemned",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.37.1",
+   "father": "Remigius",
+   "old": "from a entire purpose",
+   "new": "from an entire purpose",
+   "why": "proofread 2026-11-14: typo: a → an"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.39.1",
+   "father": "Chrysostom",
+   "old": "He had a deamon",
+   "new": "He had a daemon",
+   "why": "proofread 2026-11-14: typo: deamon"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.39.2",
+   "father": "Chrysostom",
+   "old": "I have shewn yon many",
+   "new": "I have shewn you many",
+   "why": "proofread 2026-11-14: typo: yon → you"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.40.1",
+   "father": "Augustine",
+   "old": "those thee hours",
+   "new": "those three hours",
+   "why": "proofread 2026-11-14: typo: thee → three"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.41.1",
+   "father": "Remigius",
+   "old": "“And shall condemn it.",
+   "new": "“And shall condemn it.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.43.1",
+   "father": "Chrysostom",
+   "old": "“When, the unclean spirit",
+   "new": "“When the unclean spirit",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.43.2",
+   "father": "Rabanus",
+   "old": "but lying from the chaste spirit",
+   "new": "but flying from the chaste spirit",
+   "why": "proofread 2026-11-14: typo: lying → flying"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.44.1",
+   "father": "Jerome",
+   "old": "vices should he poured forth",
+   "new": "vices should be poured forth",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.46.2",
+   "father": "Jerome",
+   "old": "between thee and we, for",
+   "new": "between thee and me, for",
+   "why": "proofread 2026-11-14: typo: we → me"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.48.1",
+   "father": "Chrysostom",
+   "old": "Who in my mother?",
+   "new": "Who is my mother?",
+   "why": "proofread 2026-11-14: typo: in → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.12.50.1",
+   "father": "Chrysostom",
+   "old": "Father which it in heaven",
+   "new": "Father which is in heaven",
+   "why": "proofread 2026-11-14: typo: it → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.1.1",
+   "father": "Chrysostom",
+   "old": "and not down by the sea aide.",
+   "new": "and sat down by the sea side.”",
+   "why": "proofread 2026-11-14: typos: not → sat, aide → side; unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.3.1",
+   "father": "Rabanus",
+   "old": "Or, He event forth",
+   "new": "Or, He went forth",
+   "why": "proofread 2026-11-14: typo: event → went"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.4.1",
+   "father": "Chrysostom",
+   "old": "that I have not done? [Isa 5:4]",
+   "new": "that I have not done?” [Isa 5:4]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.9.1",
+   "father": "Remigius",
+   "old": "These care to hear, are",
+   "new": "These ears to hear, are",
+   "why": "proofread 2026-11-14: typo: care → ears"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.13.1",
+   "father": "Chrysostom",
+   "old": "“Thai there might be",
+   "new": "“That there might be",
+   "why": "proofread 2026-11-14: typo: Thai → That"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.15.1",
+   "father": "Chrysostom",
+   "old": "and 1 should heal them",
+   "new": "and I should heal them",
+   "why": "proofread 2026-11-14: digit for letter: 1 → I"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.15.2",
+   "father": "Augustine",
+   "old": "blindness was not indicted",
+   "new": "blindness was not inflicted",
+   "why": "proofread 2026-11-14: typo: indicted → inflicted"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.15.3",
+   "father": "Augustine",
+   "old": "because that Elias said again",
+   "new": "because that Esaias said again",
+   "why": "proofread 2026-11-14: typo: Elias → Esaias (Isaiah, as quoted above)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.22.1",
+   "father": "Jerome",
+   "old": "thou shalt eat they bread",
+   "new": "thou shalt eat thy bread",
+   "why": "proofread 2026-11-14: typo: they → thy"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.25.1",
+   "father": "Chrysostom",
+   "old": "in the midst of he wheat",
+   "new": "in the midst of the wheat",
+   "why": "proofread 2026-11-14: typo: he → the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.25.2",
+   "father": "Augustine",
+   "old": "may move fitly be likened",
+   "new": "may more fitly be likened",
+   "why": "proofread 2026-11-14: typo: move → more"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.26.1",
+   "father": "Augustine",
+   "old": "whence then hath it tares?",
+   "new": "whence then hath it tares?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.28.1",
+   "father": "Jerome",
+   "old": "Up, Lord, and Let not man",
+   "new": "Up, Lord, and let not man",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.28.2",
+   "father": "Jerome",
+   "old": "ye root out the wheat also.",
+   "new": "ye root out the wheat also.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.30.4",
+   "father": "Augustine",
+   "old": "But who is there Of you",
+   "new": "But who is there of you",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.33.1",
+   "father": "Jerome",
+   "old": "The ‘saturn’ is",
+   "new": "The ‘satum’ is",
+   "why": "proofread 2026-11-14: typo: saturn → satum"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.33.2",
+   "father": "Hilary",
+   "old": "But 1 hardly think",
+   "new": "But I hardly think",
+   "why": "proofread 2026-11-14: digit for letter: 1 → I"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.34.1",
+   "father": "Augustine",
+   "old": "this is said, not in Matt that He",
+   "new": "this is said, not that He",
+   "why": "proofread 2026-11-14: stray debris: \"in Matt\""
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.35.1",
+   "father": "Augustine",
+   "old": "open my mouth. in parables",
+   "new": "open my mouth in parables",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.36.1",
+   "father": "Chrysostom",
+   "old": "from is which it is clear",
+   "new": "from which it is clear",
+   "why": "proofread 2026-11-14: stray word: is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.39.1",
+   "father": "Chrysostom",
+   "old": "two significations;, as",
+   "new": "two significations, as",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.44.1",
+   "father": "Chrysostom",
+   "old": "and if, you do not sell",
+   "new": "and if you do not sell",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.44.1",
+   "father": "Gregory",
+   "old": "protect from, human praises",
+   "new": "protect from human praises",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.44.3",
+   "father": "Augustine",
+   "old": "two testaments in The Church",
+   "new": "two testaments in the Church",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.48.1",
+   "father": "Chrysostom",
+   "old": "“These shall it be in the end",
+   "new": "“So shall it be in the end",
+   "why": "proofread 2026-11-14: typo: These → So"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.52.1",
+   "father": "Augustine",
+   "old": "desire to shew Aug. whom He",
+   "new": "desire to shew whom He",
+   "why": "proofread 2026-11-14: stray debris: \"Aug.\""
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.52.3",
+   "father": "Gregory",
+   "old": "live in the kingdom, First, He",
+   "new": "live in the kingdom. First, He",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.54.1",
+   "father": "Remigius",
+   "old": "His mighty works to His miracles",
+   "new": "His mighty works to His miracles.",
+   "why": "proofread 2026-11-14: missing final stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.55.1",
+   "father": "Chrysostom",
+   "old": "but of divine grace",
+   "new": "but of divine grace.",
+   "why": "proofread 2026-11-14: missing final stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.55.1",
+   "father": "Jerome",
+   "old": "are they not all with us?",
+   "new": "are they not all with us?”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.57.1",
+   "father": "Remigius",
+   "old": "of your brethren. [Deut 18:18]",
+   "new": "of your brethren.” [Deut 18:18]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.13.57.1",
+   "father": "Hilary",
+   "old": "abstained from worlds of divine power",
+   "new": "abstained from works of divine power",
+   "why": "proofread 2026-11-14: typo: worlds → works"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.2.1",
+   "father": "Chrysostom",
+   "old": "as it followers;",
+   "new": "as it follows;",
+   "why": "proofread 2026-11-14: typo: followers → follows"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.2.1",
+   "father": "Augustine",
+   "old": "of whom I hear such things? [Luke 9:9]",
+   "new": "of whom I hear such things?” [Luke 9:9]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.6.1",
+   "father": "Gloss",
+   "old": "Herodias danced in the midst.",
+   "new": "Herodias danced in the midst.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.12.1",
+   "father": "Hilary",
+   "old": "warned Israel that, he should",
+   "new": "warned Israel that he should",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.15.1",
+   "father": "Chrysostom",
+   "old": "They need not depart, Give ye them",
+   "new": "They need not depart; give ye them",
+   "why": "proofread 2026-11-14: lost stop / mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.17.1",
+   "father": "Chrysostom",
+   "old": "and fishes like manner",
+   "new": "and fishes in like manner",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.19.1",
+   "father": "Chrysostom",
+   "old": "took they five loaves",
+   "new": "took the five loaves",
+   "why": "proofread 2026-11-14: typo: they → the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.19.2",
+   "father": "Jerome",
+   "old": "loaves to hie disciples",
+   "new": "loaves to his disciples",
+   "why": "proofread 2026-11-14: typo: hie → his"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.21.1",
+   "father": "Rabanus",
+   "old": "pasture of the Divine books",
+   "new": "pasture of the Divine books.",
+   "why": "proofread 2026-11-14: missing final stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.21.2",
+   "father": "Hilary",
+   "old": "the flood of eternal life",
+   "new": "the food of eternal life",
+   "why": "proofread 2026-11-14: typo: flood → food"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.22.1",
+   "father": "Jerome",
+   "old": "from Him even for a moment",
+   "new": "from Him even for a moment.",
+   "why": "proofread 2026-11-14: missing final stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.23.1",
+   "father": "Chrysostom",
+   "old": "whence if, follows",
+   "new": "whence it follows",
+   "why": "proofread 2026-11-14: typo: if, → it"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.23.1",
+   "father": "Chrysostom",
+   "old": "sent the multitude array",
+   "new": "sent the multitude away",
+   "why": "proofread 2026-11-14: typo: array → away"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.23.2",
+   "father": "Augustine",
+   "old": "when we have cause for Right.",
+   "new": "when we have cause for flight.",
+   "why": "proofread 2026-11-14: typo: Right → flight"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.28.1",
+   "father": "Jerome",
+   "old": "that the Lords body",
+   "new": "that the Lord’s body",
+   "why": "proofread 2026-11-14: missing apostrophe"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.14.33.1",
+   "father": "Jerome",
+   "old": "confessed them to be truly",
+   "new": "confessed Him to be truly",
+   "why": "proofread 2026-11-14: typo: them → Him"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.1.1",
+   "father": "Rabanus",
+   "old": "“Then, came to him from Jerusalem Scribes and Pharisee.”",
+   "new": "“Then came to him from Jerusalem Scribes and Pharisees.”",
+   "why": "proofread 2026-11-14: stray comma; typo: Pharisee → Pharisees"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.2.1",
+   "father": "Jerome",
+   "old": "wonderful infatuation of the Pharisees",
+   "new": "Wonderful infatuation of the Pharisees",
+   "why": "proofread 2026-11-14: lowercase sentence start"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.2.1",
+   "father": "Jerome",
+   "old": "are to he washed",
+   "new": "are to be washed",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.2.2",
+   "father": "Chrysostom",
+   "old": "did not eat, with washen hands",
+   "new": "did not eat with washen hands",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.4.1",
+   "father": "Chrysostom",
+   "old": "And he that, curseth father",
+   "new": "And he that curseth father",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.7.1",
+   "father": "Chrysostom",
+   "old": "is far frost me",
+   "new": "is far from me",
+   "why": "proofread 2026-11-14: typo: frost → from"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.11.1",
+   "father": "Augustine",
+   "old": "Not that which, entereth",
+   "new": "Not that which entereth",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.19.1",
+   "father": "Gloss",
+   "old": "“Thou, shalt not commit adultery",
+   "new": "“Thou shalt not commit adultery",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.28.1",
+   "father": "Jerome",
+   "old": "Chrys.:. This was the cause",
+   "new": "This was the cause",
+   "why": "proofread 2026-11-14: margin debris: Chrys.:."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.28.1",
+   "father": "Jerome",
+   "old": "firmament.” [Gen 1:6] and it was made",
+   "new": "firmament,” [Gen 1:6] and it was made",
+   "why": "proofread 2026-11-14: stop before lowercase continuation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.28.2",
+   "father": "Remigius",
+   "old": "submits itself. humbly to",
+   "new": "submits itself humbly to",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.28.2",
+   "father": "Jerome",
+   "old": "have come about me; [Ps 22:16]",
+   "new": "have come about me;” [Ps 22:16]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.28.2",
+   "father": "Jerome",
+   "old": "hath made thee whole.",
+   "new": "hath made thee whole.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.29.1",
+   "father": "Remigius",
+   "old": "the sea at Galilee, because",
+   "new": "the sea of Galilee, because",
+   "why": "proofread 2026-11-14: typo: at → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.31.2",
+   "father": "Rabanus",
+   "old": "the Gentiles, Ho came into Judaea",
+   "new": "the Gentiles, He came into Judaea",
+   "why": "proofread 2026-11-14: typo: Ho → He"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.35.1",
+   "father": "Chrysostom",
+   "old": "It is a either that",
+   "new": "It is either that",
+   "why": "proofread 2026-11-14: stray word 'a'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.35.2",
+   "father": "Augustine",
+   "old": "Gloss., ap. Anselm:. It should be noted",
+   "new": "It should be noted",
+   "why": "proofread 2026-11-14: margin debris: Gloss., ap. Anselm:."
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.35.2",
+   "father": "Augustine",
+   "old": "removes their sicknessess,",
+   "new": "removes their sicknesses,",
+   "why": "proofread 2026-11-14: typo: sicknessess"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.15.35.3",
+   "father": "Gloss",
+   "old": "but a fewer, that is",
+   "new": "but a few, that is",
+   "why": "proofread 2026-11-14: typo: fewer → few"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.1.1",
+   "father": "Rabanus",
+   "old": "[Song of Songs 4:!2]",
+   "new": "[Song of Songs 4:12]",
+   "why": "proofread 2026-11-14: ! for 1 in reference"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.4.1",
+   "father": "Chrysostom",
+   "old": "no sign he given it",
+   "new": "no sign be given it",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.7.1",
+   "father": "Chrysostom",
+   "old": "on occasion banished by themselves",
+   "new": "on occasion furnished by themselves",
+   "why": "proofread 2026-11-14: misread: banished → furnished"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.13.1",
+   "father": "Jerome",
+   "old": "Tiberias Caesar",
+   "new": "Tiberius Caesar",
+   "why": "proofread 2026-11-14: typo: Tiberias → Tiberius (the emperor)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.18.1",
+   "father": "Chrysostom",
+   "old": "than of the Feather",
+   "new": "than of the Father",
+   "why": "proofread 2026-11-14: typo: Feather → Father"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.18.1",
+   "father": "Augustine",
+   "old": "[John 1:42] Chrys.: And pursuing",
+   "new": "[John 1:42] And pursuing",
+   "why": "proofread 2026-11-14: margin debris: Chrys.:"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.18.2",
+   "father": "Augustine",
+   "old": "was built. but I know",
+   "new": "was built. But I know",
+   "why": "proofread 2026-11-14: lowercase after stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.18.2",
+   "father": "Augustine",
+   "old": "the living God;: and so",
+   "new": "the living God;” and so",
+   "why": "proofread 2026-11-14: colon for closing quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.20.1",
+   "father": "Origen",
+   "old": "be may say that now",
+   "new": "he may say that now",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.20.1",
+   "father": "Origen",
+   "old": "that the fairer relation concerning",
+   "new": "that the former relation concerning",
+   "why": "proofread 2026-11-14: misread: fairer → former"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.20.1",
+   "father": "Origen",
+   "old": "be silent conceiving His cross",
+   "new": "be silent concerning His cross",
+   "why": "proofread 2026-11-14: typo: conceiving → concerning"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.21.1",
+   "father": "Jerome",
+   "old": "this is only any explanation",
+   "new": "this is only my explanation",
+   "why": "proofread 2026-11-14: typo: any → my"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.24.2",
+   "father": "Chrysostom",
+   "old": "beaten or addicted in any other way",
+   "new": "beaten or afflicted in any other way",
+   "why": "proofread 2026-11-14: typo: addicted → afflicted"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.26.2",
+   "father": "Origen",
+   "old": "might he supposed",
+   "new": "might be supposed",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.16.28.1",
+   "father": "Remigius",
+   "old": "to whom the in Lord, when",
+   "new": "to whom the Lord, when",
+   "why": "proofread 2026-11-14: stray word 'in'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.2.1",
+   "father": "Jerome",
+   "old": "ethereal Body, How His transfiguration",
+   "new": "ethereal Body. How His transfiguration",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.2.2",
+   "father": "Origen",
+   "old": "as the Son of righteousness",
+   "new": "as the Sun of righteousness",
+   "why": "proofread 2026-11-14: typo: Son → Sun (Mal 4:2)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.3.1",
+   "father": "Chrysostom",
+   "old": "There are inane reasons",
+   "new": "There are many reasons",
+   "why": "proofread 2026-11-14: misread: inane → many"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.3.2",
+   "father": "Jerome",
+   "old": "whiter he was gone up",
+   "new": "whither he was gone up",
+   "why": "proofread 2026-11-14: typo: whiter → whither"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.5.1",
+   "father": "Jerome",
+   "old": "bright cloud and overshadowed them.",
+   "new": "bright cloud and overshadowed them.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.10.1",
+   "father": "Jerome",
+   "old": "must first come? As though",
+   "new": "must first come?” As though",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.11.1",
+   "father": "Augustine",
+   "old": "those whore He ought",
+   "new": "those whom He ought",
+   "why": "proofread 2026-11-14: typo: whore → whom"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.11.2",
+   "father": "Jerome",
+   "old": "It followers,",
+   "new": "It follows,",
+   "why": "proofread 2026-11-14: typo: followers → follows"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.13.1",
+   "father": "Origen",
+   "old": "in the spirit and spirit of Elias",
+   "new": "in the spirit and power of Elias",
+   "why": "proofread 2026-11-14: doubled word: spirit and spirit → spirit and power (Luke 1:17)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.17.17.1",
+   "father": "Jerome",
+   "old": "that The meek and gentle",
+   "new": "that the meek and gentle",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.1.1",
+   "father": "Chrysostom",
+   "old": "saying, “Who pray thee,",
+   "new": "saying, Who pray thee,",
+   "why": "proofread 2026-11-14: doubled opening quotation mark"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.1.1",
+   "father": "Chrysostom",
+   "old": "But do yon remember",
+   "new": "But do you remember",
+   "why": "proofread 2026-11-14: typo: yon → you"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.8.1",
+   "father": "Jerome",
+   "old": "drawling thee into hell",
+   "new": "drawing thee into hell",
+   "why": "proofread 2026-11-14: typo: drawling → drawing"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.14.1",
+   "father": "Jerome",
+   "old": "little ones;: and so",
+   "new": "little ones;” and so",
+   "why": "proofread 2026-11-14: stray colon for closing quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.17.1",
+   "father": "Gloss",
+   "old": "the whole Chinch,",
+   "new": "the whole Church,",
+   "why": "proofread 2026-11-14: typo: Chinch → Church"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.17.2",
+   "father": "Origen",
+   "old": "sin any or those sins",
+   "new": "sin any of those sins",
+   "why": "proofread 2026-11-14: typo: or → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.18.1",
+   "father": "Chrysostom",
+   "old": "the Primate... of the Church",
+   "new": "the Primate of the Church",
+   "why": "proofread 2026-11-14: stray footnote ellipsis mid-phrase"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.22.1",
+   "father": "Augustine",
+   "old": "seven times, and you have seventy.",
+   "new": "seven times, and you have seventy-seven.",
+   "why": "proofread 2026-11-14: dropped word: 11×7 = seventy-seven (as the passage concludes)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.24.1",
+   "father": "Origen",
+   "old": "that any shouldst think",
+   "new": "that any should think",
+   "why": "proofread 2026-11-14: typo: shouldst → should"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.25.1",
+   "father": "Remigius",
+   "old": "loose himself frown his sins",
+   "new": "loose himself from his sins",
+   "why": "proofread 2026-11-14: typo: frown → from"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.32.1",
+   "father": "Remigius",
+   "old": "and said. unto him",
+   "new": "and said unto him",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.18.32.1",
+   "father": "Chrysostom",
+   "old": "the whole debt.: He said",
+   "new": "the whole debt.” He said",
+   "why": "proofread 2026-11-14: stray colon for closing quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.3.1",
+   "father": "Chrysostom",
+   "old": "the Pharisees cause to him",
+   "new": "the Pharisees came to him",
+   "why": "proofread 2026-11-14: typo: cause → came"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.5.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "that they shouldst seek",
+   "new": "that they should seek",
+   "why": "proofread 2026-11-14: typo: shouldst → should"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.5.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "this is what, is said",
+   "new": "this is what is said",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.5.3",
+   "father": "Remigius",
+   "old": "The Apostle says... that",
+   "new": "The Apostle says that",
+   "why": "proofread 2026-11-14: stray footnote ellipsis mid-sentence"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.8.1",
+   "father": "Jerome",
+   "old": "or treated. ill,",
+   "new": "or treated ill,",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.9.1",
+   "father": "Chrysostom",
+   "old": "and marrieth another, committeth adultery.",
+   "new": "and marrieth another, committeth adultery.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.14.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "as the Apostle speaks...,",
+   "new": "as the Apostle speaks,",
+   "why": "proofread 2026-11-14: stray footnote ellipsis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.14.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "the whole world lieth in wickedness;",
+   "new": "the whole world lieth in wickedness;”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.17.1",
+   "father": "Augustine",
+   "old": "Mark and Luke’s have",
+   "new": "Mark and Luke have",
+   "why": "proofread 2026-11-14: stray possessive"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.17.2",
+   "father": "Jerome",
+   "old": "for he is good; [Ps. 118:1]",
+   "new": "for he is good;” [Ps. 118:1]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.17.3",
+   "father": "Origen",
+   "old": "“What good thing shall I do? For",
+   "new": "“What good thing shall I do?” For",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.17.3",
+   "father": "Augustine",
+   "old": "“If thou desirest life eternal; but",
+   "new": "“If thou desirest life eternal;” but",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.20.1",
+   "father": "Chrysostom",
+   "old": "“What lack I yet? which",
+   "new": "“What lack I yet?” which",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.21.3",
+   "father": "Origen",
+   "old": "in the Gospel... according",
+   "new": "in the Gospel according",
+   "why": "proofread 2026-11-14: stray footnote ellipsis mid-phrase"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.21.4",
+   "father": "Origen",
+   "old": "returns to them again,... unless",
+   "new": "returns to them again, unless",
+   "why": "proofread 2026-11-14: stray footnote ellipsis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.24.1",
+   "father": "Chrysostom",
+   "old": "rich man to eater into",
+   "new": "rich man to enter into",
+   "why": "proofread 2026-11-14: typo: eater → enter"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.28.3",
+   "father": "Chrysostom",
+   "old": "When the Soul of Man",
+   "new": "When the Son of Man",
+   "why": "proofread 2026-11-14: typo: Soul → Son"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.28.3",
+   "father": "Chrysostom",
+   "old": "and upon, the kingdom",
+   "new": "and upon the kingdom",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.28.3",
+   "father": "Chrysostom",
+   "old": "do evil in, my sight",
+   "new": "do evil in my sight",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.29.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "so Peter tests upon his faith",
+   "new": "so Peter rests upon his faith",
+   "why": "proofread 2026-11-14: typo: tests → rests"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.19.29.1",
+   "father": "Chrysostom",
+   "old": "because they where already",
+   "new": "because they were already",
+   "why": "proofread 2026-11-14: typo: where → were"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.16.7",
+   "father": "Pseudo-Chrysostom",
+   "old": "is to be weaned through a life",
+   "new": "is to be wearied through a life",
+   "why": "proofread 2026-11-14: typo: weaned → wearied"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.16.9",
+   "father": "Gregory",
+   "old": "“It is not lawful for me",
+   "new": "“Is it not lawful for me",
+   "why": "proofread 2026-11-14: transposition: question reads Is it not"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.19.1",
+   "father": "Rabanus",
+   "old": "the Lord to the Jesus,",
+   "new": "the Lord to the Jews,",
+   "why": "proofread 2026-11-14: typo: Jesus → Jews"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.19.1",
+   "father": "Rabanus",
+   "old": "xviii, 49 In His Passion",
+   "new": "xviii, 49. In His Passion",
+   "why": "proofread 2026-11-14: run-on after inline citation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.20.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "another Evangelist,... herself",
+   "new": "another Evangelist, herself",
+   "why": "proofread 2026-11-14: stray footnote ellipsis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.21.1",
+   "father": "Augustine",
+   "old": "Mark’s brief notice... it",
+   "new": "Mark’s brief notice it",
+   "why": "proofread 2026-11-14: stray footnote ellipsis mid-sentence"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.21.3",
+   "father": "Pseudo-Chrysostom",
+   "old": "she be to be blame",
+   "new": "she be to blame",
+   "why": "proofread 2026-11-14: doubled word: to be blame → to blame"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.22.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "“Or He says, Ye know not",
+   "new": "Or He says, Ye know not",
+   "why": "proofread 2026-11-14: stray opening quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.25.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "who abuses His ecclesiastical",
+   "new": "who abuses his ecclesiastical",
+   "why": "proofread 2026-11-14: mid-sentence capital (refers to the man)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.25.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "so that He converts",
+   "new": "so that he converts",
+   "why": "proofread 2026-11-14: mid-sentence capital (refers to the man)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.28.1",
+   "father": "Origen",
+   "old": "but to minister;... yea",
+   "new": "but to minister; yea",
+   "why": "proofread 2026-11-14: stray footnote ellipsis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.30.1",
+   "father": "Augustine",
+   "old": "two blind linen",
+   "new": "two blind men",
+   "why": "proofread 2026-11-14: typo: linen → men"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.20.30.1",
+   "father": "Augustine",
+   "old": "his account... is",
+   "new": "his account is",
+   "why": "proofread 2026-11-14: stray footnote ellipsis mid-sentence"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.5.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "but Caesar. He cometh",
+   "new": "but Caesar.” “He cometh",
+   "why": "proofread 2026-11-14: misplaced quotation marks"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.5.2",
+   "father": "Augustine",
+   "old": "by John..., nor",
+   "new": "by John, nor",
+   "why": "proofread 2026-11-14: stray footnote ellipsis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.9.1",
+   "father": "Jerome",
+   "old": "in my John Father’s name",
+   "new": "in my Father’s name",
+   "why": "proofread 2026-11-14: stray word: John"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.9.5",
+   "father": "Remigius",
+   "old": "though any opposition he made",
+   "new": "though any opposition be made",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.13.1",
+   "father": "Origen",
+   "old": "It is written, My shall be called",
+   "new": "It is written, My house shall be called",
+   "why": "proofread 2026-11-14: dropped word: house"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.19.1",
+   "father": "Chrysostom",
+   "old": "it behaved that He should",
+   "new": "it behoved that He should",
+   "why": "proofread 2026-11-14: typo: behaved → behoved"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.19.1",
+   "father": "Hilary",
+   "old": "grow on, thee henceforward",
+   "new": "grow on thee henceforward",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.21.1",
+   "father": "Jerome",
+   "old": "or do they not! And",
+   "new": "or do they not? And",
+   "why": "proofread 2026-11-14: punctuation: ! → ?"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.23.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "corporal or spiritual! as though",
+   "new": "corporal or spiritual; as though",
+   "why": "proofread 2026-11-14: punctuation: ! before lowercase → ;"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.23.1",
+   "father": "Jerome",
+   "old": "doest thou thee things?",
+   "new": "doest thou these things?",
+   "why": "proofread 2026-11-14: typo: thee → these"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.33.3",
+   "father": "Origen",
+   "old": "fruits which are bid in it",
+   "new": "fruits which are hid in it",
+   "why": "proofread 2026-11-14: typo: bid → hid"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.21.44.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "from a great height So a Christian",
+   "new": "from a great height. So a Christian",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.11.2",
+   "father": "Jerome",
+   "old": "but if ’servants,’ then",
+   "new": "but if ‘servants,’ then",
+   "why": "proofread 2026-11-14: wrong opening quote mark"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.11.7",
+   "father": "Jerome",
+   "old": "we understand that Romans",
+   "new": "we understand the Romans",
+   "why": "proofread 2026-11-14: typo: that → the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.11.8",
+   "father": "Remigius",
+   "old": "righteousness God, and going",
+   "new": "righteousness of God, and going",
+   "why": "proofread 2026-11-14: dropped word: of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.11.8",
+   "father": "Remigius",
+   "old": "righteousness of God. [Rom 10:3]",
+   "new": "righteousness of God.” [Rom 10:3]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.11.9",
+   "father": "Origen",
+   "old": "When the Gentile which have not",
+   "new": "When the Gentiles which have not",
+   "why": "proofread 2026-11-14: typo: Gentile → Gentiles"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.12.1",
+   "father": "Jerome",
+   "old": "invited to the shredding as",
+   "new": "invited to the wedding as",
+   "why": "proofread 2026-11-14: typo: shredding → wedding"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.13.1",
+   "father": "Gregory",
+   "old": "we express blindness, of heart",
+   "new": "we express blindness of heart",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.17.1",
+   "father": "Jerome",
+   "old": "not disciples but tempter.",
+   "new": "not disciples but tempters.",
+   "why": "proofread 2026-11-14: typo: tempter → tempters"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.32.1",
+   "father": "Jerome",
+   "old": "only the five boots of Moses",
+   "new": "only the five books of Moses",
+   "why": "proofread 2026-11-14: typo: boots → books"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.22.32.1",
+   "father": "Jerome",
+   "old": "“He it not the God",
+   "new": "“He is not the God",
+   "why": "proofread 2026-11-14: typo: it → is"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.3.3",
+   "father": "Chrysostom",
+   "old": "set others right, be himself halts",
+   "new": "set others right, he himself halts",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.4.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "were able to bear? [Acts 15:10]",
+   "new": "were able to bear?” [Acts 15:10]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.4.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "more than be can bear, be must needs",
+   "new": "more than he can bear, he must needs",
+   "why": "proofread 2026-11-14: typo: be → he (x2)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.4.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "or if be submit himself",
+   "new": "or if he submit himself",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.5.1",
+   "father": "Chrysostom",
+   "old": "The Lord bad charged",
+   "new": "The Lord had charged",
+   "why": "proofread 2026-11-14: typo: bad → had"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.5.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "and garments the moth so the Devil",
+   "new": "and garments the moth; so the Devil",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.6.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "For some vain men bearing that",
+   "new": "For some vain man hearing that",
+   "why": "proofread 2026-11-14: typo: bearing → hearing; men → man (agrees with himself/chooses)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.6.1",
+   "father": "Pseudo-Chrysostom",
+   "old": "bow low our bead;",
+   "new": "bow low our head;",
+   "why": "proofread 2026-11-14: typo: bead → head"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.13.1",
+   "father": "Origen",
+   "old": "desire that be should become",
+   "new": "desire that he should become",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.14.1",
+   "father": "Chrysostom",
+   "old": "but be who takes occasion",
+   "new": "but he who takes occasion",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.14.2",
+   "father": "Gloss",
+   "old": "knew his Lords will",
+   "new": "knew his Lord’s will",
+   "why": "proofread 2026-11-14: missing apostrophe"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.15.1",
+   "father": "Hilary",
+   "old": "And be becomes the child",
+   "new": "And he becomes the child",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.15.2",
+   "father": "Gregory",
+   "old": "cease not to speak light things",
+   "new": "cease not to speak right things",
+   "why": "proofread 2026-11-14: typo: light → right"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.15.2",
+   "father": "Augustine",
+   "old": "whom He bad prohibited",
+   "new": "whom He had prohibited",
+   "why": "proofread 2026-11-14: typo: bad → had"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.15.2",
+   "father": "Augustine",
+   "old": "not by bearing the words",
+   "new": "not by hearing the words",
+   "why": "proofread 2026-11-14: typo: bearing → hearing"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.16.1",
+   "father": "Jerome",
+   "old": "be owes nothing, But if",
+   "new": "he owes nothing. But if",
+   "why": "proofread 2026-11-14: typo: be → he; comma → stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.16.1",
+   "father": "Jerome",
+   "old": "by which be had sworn",
+   "new": "by which he had sworn",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.16.2",
+   "father": "Jerome",
+   "old": "but if be swore by the gift",
+   "new": "but if he swore by the gift",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.22.1",
+   "father": "Origen",
+   "old": "gifts that are bid upon the altar",
+   "new": "gifts that are laid upon the altar",
+   "why": "proofread 2026-11-14: typo: bid → laid"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.22.1",
+   "father": "Origen",
+   "old": "because be has rightly",
+   "new": "because he has rightly",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.36.1",
+   "father": "Chrysostom",
+   "old": "He bad threatened",
+   "new": "He had threatened",
+   "why": "proofread 2026-11-14: typo: bad → had"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.37.1",
+   "father": "Chrysostom",
+   "old": "instruct His bearers thereby",
+   "new": "instruct His hearers thereby",
+   "why": "proofread 2026-11-14: typo: bearers → hearers"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.37.2",
+   "father": "Origen",
+   "old": "as though be had refused",
+   "new": "as though he had refused",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.23.37.2",
+   "father": "Rabanus",
+   "old": "Euch. 97:. Where",
+   "new": "Euch. 97. Where",
+   "why": "proofread 2026-11-14: stray mark ':.'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.2.1",
+   "father": "Chrysostom",
+   "old": "How means He Hom. this, “that one stone shalt not",
+   "new": "How means He this, “that one stone shall not",
+   "why": "proofread 2026-11-14: margin debris 'Hom.'; typo: shalt → shall"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.2.1",
+   "father": "Origen",
+   "old": "after sinning be yet retains",
+   "new": "after sinning he yet retains",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.2.1",
+   "father": "Origen",
+   "old": "which be has not thrown down",
+   "new": "which he has not thrown down",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.5.1",
+   "father": "Jerome",
+   "old": "all heresiarchs. to be",
+   "new": "all heresiarchs to be",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.8.2",
+   "father": "Jerome",
+   "old": "the beginnings Of sorrows",
+   "new": "the beginnings of sorrows",
+   "why": "proofread 2026-11-14: mid-sentence capital: Of → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.10.1",
+   "father": "Hilary",
+   "old": "Such Was Nicolaus",
+   "new": "Such was Nicolaus",
+   "why": "proofread 2026-11-14: mid-sentence capital: Was → was"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.14.1",
+   "father": "Chrysostom",
+   "old": "“And then shalt the consummation come,”",
+   "new": "“And then shall the consummation come,”",
+   "why": "proofread 2026-11-14: typo: shalt → shall"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.16.1",
+   "father": "Chrysostom",
+   "old": "let them which, are in Judaea",
+   "new": "let them which are in Judaea",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.21.1",
+   "father": "Jerome",
+   "old": "Chrys.:. Note how",
+   "new": "Chrys. Note how",
+   "why": "proofread 2026-11-14: stray mark ':.'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.22.1",
+   "father": "Augustine",
+   "old": "prayer of Jesus Name. [?]",
+   "new": "prayer of Jesus Nave.",
+   "why": "proofread 2026-11-14: typo: Name → Nave (Joshua son of Nave); stray editorial [?]"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.22.3",
+   "father": "Hilary",
+   "old": "in which be once was clothed",
+   "new": "in which he once was clothed",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.22.4",
+   "father": "Hilary",
+   "old": "the frost of sins., or",
+   "new": "the frost of sins, or",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.24.2",
+   "father": "Augustine",
+   "old": "which are bidden from us",
+   "new": "which are hidden from us",
+   "why": "proofread 2026-11-14: typo: bidden → hidden"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.28.3",
+   "father": "Augustine",
+   "old": "in the clouds, of heaven",
+   "new": "in the clouds of heaven",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.28.4",
+   "father": "Origen",
+   "old": "the coming or the Son of Man",
+   "new": "the coming of the Son of Man",
+   "why": "proofread 2026-11-14: typo: or → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.28.4",
+   "father": "Jerome",
+   "old": "in Scripture it read of",
+   "new": "in Scripture it is read of",
+   "why": "proofread 2026-11-14: dropped word: it read → it is read"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.30.2",
+   "father": "Origen",
+   "old": "that the Jews. may see",
+   "new": "that the Jews may see",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.30.5",
+   "father": "Augustine",
+   "old": "received Him out their sight",
+   "new": "received Him out of their sight",
+   "why": "proofread 2026-11-14: dropped word: out their → out of their"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.30.7",
+   "father": "Origen",
+   "old": "the Son of Man. sitting",
+   "new": "the Son of Man sitting",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.31.2",
+   "father": "Origen",
+   "old": "that they who bear and attend",
+   "new": "that they who hear and attend",
+   "why": "proofread 2026-11-14: typo: bear → hear"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.34.1",
+   "father": "Chrysostom",
+   "old": "Christ’s coming, That He said",
+   "new": "Christ’s coming. That He said",
+   "why": "proofread 2026-11-14: lost stop: comma → full stop before 'That'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.34.1",
+   "father": "Chrysostom",
+   "old": "“This, is the generation",
+   "new": "“This is the generation",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.36.1",
+   "father": "Chrysostom",
+   "old": "the Angels Of heaven",
+   "new": "the Angels of heaven",
+   "why": "proofread 2026-11-14: mid-sentence capital: Of → of"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.36.1",
+   "father": "Jerome",
+   "old": "made that was made, [1 John 1:3])",
+   "new": "made that was made,” [1 John 1:3])",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.36.2",
+   "father": "Augustine",
+   "old": "because be does not make",
+   "new": "because he does not make",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.37.1",
+   "father": "Rabanus",
+   "old": "Marcion and Manicheaus teaches",
+   "new": "Marcion and Manichaeus teaches",
+   "why": "proofread 2026-11-14: typo: Manicheaus → Manichaeus"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.41.1",
+   "father": "Jerome",
+   "old": "Hilary:; The “two in one bed”",
+   "new": "Hilary: The “two in one bed”",
+   "why": "proofread 2026-11-14: stray mark ':;'"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.42.1",
+   "father": "Augustine",
+   "old": "unless be is illuminated",
+   "new": "unless he is illuminated",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.42.3",
+   "father": "Gregory",
+   "old": "if he had watched be would",
+   "new": "if he had watched he would",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.42.3",
+   "father": "Gregory",
+   "old": "unawares, be would meet",
+   "new": "unawares, he would meet",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.45.1",
+   "father": "Chrysostom",
+   "old": "because be appropriates",
+   "new": "because he appropriates",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.24.45.2",
+   "father": "Chrysostom",
+   "old": "whatever else be has",
+   "new": "whatever else he has",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.4.1",
+   "father": "Origen",
+   "old": "The, “foolish” took",
+   "new": "The “foolish” took",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.6.1",
+   "father": "Augustine",
+   "old": "she maybe held",
+   "new": "she may be held",
+   "why": "proofread 2026-11-14: fused word: maybe → may be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.7.1",
+   "father": "Gregory",
+   "old": "works that ye have seen.",
+   "new": "works that ye have seen.”",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.10.1",
+   "father": "Hilary",
+   "old": "shews that even, if we",
+   "new": "shews that even if we",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.10.2",
+   "father": "Gloss",
+   "old": "this title of, “Lord;”",
+   "new": "this title of “Lord;”",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.14.1",
+   "father": "Origen",
+   "old": "will He also he with us",
+   "new": "will He also be with us",
+   "why": "proofread 2026-11-14: typo: he → be"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.32.2",
+   "father": "Jerome",
+   "old": "from the washing. [Song",
+   "new": "from the washing.” [Song",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.41.1",
+   "father": "Origen",
+   "old": "there is afire which",
+   "new": "there is a fire which",
+   "why": "proofread 2026-11-14: split: afire → a fire"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.42.2",
+   "father": "Gregory",
+   "old": "These at least bear the words",
+   "new": "These at least hear the words",
+   "why": "proofread 2026-11-14: typo: bear → hear"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.2",
+   "father": "Augustine",
+   "old": "when they, are inflicted",
+   "new": "when they are inflicted",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.3",
+   "father": "Augustine",
+   "old": "which might have eternal.",
+   "new": "which might have been eternal.",
+   "why": "proofread 2026-11-14: dropped word: might have been eternal"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.3",
+   "father": "Gregory",
+   "old": "But they Say, no just",
+   "new": "But they say, no just",
+   "why": "proofread 2026-11-14: mid-sentence capital: Say → say"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.5",
+   "father": "Augustine",
+   "old": "[Matt 24:!3]",
+   "new": "[Matt 24:13]",
+   "why": "proofread 2026-11-14: typo: !3 → 13"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.6",
+   "father": "Augustine",
+   "old": "which be does to others",
+   "new": "which he does to others",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.6",
+   "father": "Augustine",
+   "old": "when be has heard",
+   "new": "when he has heard",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.7",
+   "father": "Origen",
+   "old": "commands, be gives Christ",
+   "new": "commands, he gives Christ",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.25.46.1",
+   "father": "Augustine",
+   "old": "the only true God. [John 17:3]",
+   "new": "the only true God.” [John 17:3]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.3.1",
+   "father": "Origen",
+   "old": "whole creation, [Col 1:15]",
+   "new": "whole creation,” [Col 1:15]",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.6.1",
+   "father": "Gloss",
+   "old": "but be first shews",
+   "new": "but he first shews",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.6.1",
+   "father": "Jerome",
+   "old": "Saviour, be retained",
+   "new": "Saviour, he retained",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.6.1",
+   "father": "Jerome",
+   "old": "‘alabastruin’",
+   "new": "‘alabastrum’",
+   "why": "proofread 2026-11-14: typo: alabastruin → alabastrum"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.18.1",
+   "father": "Augustine",
+   "old": "or “the I master of",
+   "new": "or “the master of",
+   "why": "proofread 2026-11-14: stray letter: I"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.22.1",
+   "father": "Jerome",
+   "old": "bid away the food from their months",
+   "new": "hid away the food from their mouths",
+   "why": "proofread 2026-11-14: typos: bid → hid, months → mouths"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.24.2",
+   "father": "Origen",
+   "old": "while be holds Him",
+   "new": "while he holds Him",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.26.2",
+   "father": "Augustine",
+   "old": "the Lord`s Body",
+   "new": "the Lord’s Body",
+   "why": "proofread 2026-11-14: stray backtick for apostrophe"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.26.6",
+   "father": "Ambrose",
+   "old": "Next he illustrates the change by our own change in regeneration. “Tu ipse eras, sed eras vetus creatura; postea quam consecratus es, nova creatura esse cepisti.”\n\n3. There is no introduction of the word “substance,” i.e. no assertion of transubstantiation.]\n\nDost thou",
+   "new": "Dost thou",
+   "why": "proofread 2026-11-14: translator's footnote debris (numbered note, unbalanced ]) before Ambrose's text"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.26.6",
+   "father": "Paschasius",
+   "old": "by the Lords word",
+   "new": "by the Lord’s word",
+   "why": "proofread 2026-11-14: missing apostrophe"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.26.8",
+   "father": "Chrysostom",
+   "old": "John shews when be says",
+   "new": "John shews when he says",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.28.2",
+   "father": "Gloss",
+   "old": "together With the Blood",
+   "new": "together with the Blood",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.28.2",
+   "father": "Ambrosiaster",
+   "old": "also in do we celebrate",
+   "new": "also do we celebrate",
+   "why": "proofread 2026-11-14: stray word: in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.28.4",
+   "father": "Remigius",
+   "old": "shew that the bead and",
+   "new": "shew that the head and",
+   "why": "proofread 2026-11-14: typo: bead → head"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.30.2",
+   "father": "Origen",
+   "old": "[Bede, in Luc., 22, 39: Beautifully",
+   "new": "Beautifully",
+   "why": "proofread 2026-11-14: unclosed editorial bracket (note: text is Bede's per the bracket; header says Origen)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.30.2",
+   "father": "Rabanus",
+   "old": "the Lord.” Ps 22:26]",
+   "new": "the Lord.” [Ps 22:26]",
+   "why": "proofread 2026-11-14: unbalanced bracket"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.33.1",
+   "father": "Remigius",
+   "old": "not that be was driven",
+   "new": "not that he was driven",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.34.1",
+   "father": "Augustine",
+   "old": "if be had made all three",
+   "new": "if he had made all three",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.34.2",
+   "father": "Origen",
+   "old": "“All ye shalt be offended in me.”",
+   "new": "“All ye shall be offended in me.”",
+   "why": "proofread 2026-11-14: typo: shalt → shall"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.34.2",
+   "father": "Origen",
+   "old": "when he, said,",
+   "new": "when he said,",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.34.3",
+   "father": "Chrysostom",
+   "old": "[I suppose also that Peter",
+   "new": "I suppose also that Peter",
+   "why": "proofread 2026-11-14: editorial bracket around passage"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.34.3",
+   "father": "Chrysostom",
+   "old": "[Acts 3:12]]",
+   "new": "[Acts 3:12]",
+   "why": "proofread 2026-11-14: editorial bracket around passage (closing)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.42.1",
+   "father": "Hilary",
+   "old": "because be had most loudly",
+   "new": "because he had most loudly",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.42.1",
+   "father": "Origen",
+   "old": "careful that He does not run",
+   "new": "careful that he does not run",
+   "why": "proofread 2026-11-14: mid-sentence capital (refers to the man, not Christ)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.47.2",
+   "father": "Origen",
+   "old": "because He desired to keep up",
+   "new": "because he desired to keep up",
+   "why": "proofread 2026-11-14: capital He refers to Judas"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.47.2",
+   "father": "Origen",
+   "old": "enemy, be might be the cause",
+   "new": "enemy, he might be the cause",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.55.1",
+   "father": "Origen",
+   "old": "which waS an instance",
+   "new": "which was an instance",
+   "why": "proofread 2026-11-14: typo: waS → was"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.58.1",
+   "father": "Chrysostom",
+   "old": "fled not when He saw the others",
+   "new": "fled not when he saw the others",
+   "why": "proofread 2026-11-14: capital He refers to Peter"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.63.2",
+   "father": "Origen",
+   "old": "on the right band of power",
+   "new": "on the right hand of power",
+   "why": "proofread 2026-11-14: typo: band → hand"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.64.1",
+   "father": "Chrysostom",
+   "old": "This He did to give weight to the accusation, and to confirm by deeds what He taught",
+   "new": "This he did to give weight to the accusation, and to confirm by deeds what he taught",
+   "why": "proofread 2026-11-14: capital He refers to the High Priest"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.73.1",
+   "father": "Augustine",
+   "old": "one hour after, [Luke 22:59])",
+   "new": "one hour after,” [Luke 22:59])",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.73.1",
+   "father": "Remigius",
+   "old": "whom be had before",
+   "new": "whom he had before",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.73.2",
+   "father": "Rabanus",
+   "old": "[1 Cor 15:14]",
+   "new": "[1 Cor 15:34]",
+   "why": "proofread 2026-11-14: wrong digit: 'Awake… sin not' is 1 Cor 15:34"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.75.1",
+   "father": "Jerome",
+   "old": "and thee cock-crow",
+   "new": "and the cock-crow",
+   "why": "proofread 2026-11-14: typo: thee → the"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.75.1",
+   "father": "Jerome",
+   "old": "[Luke 22,61]",
+   "new": "[Luke 22:61]",
+   "why": "proofread 2026-11-14: comma for colon in reference"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.4.1",
+   "father": "Origen",
+   "old": "whereupon be repented",
+   "new": "whereupon he repented",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.4.1",
+   "father": "Origen",
+   "old": "that be then perceived",
+   "new": "that he then perceived",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.4.2",
+   "father": "Origen",
+   "old": "when the Devil leave any one",
+   "new": "when the Devil leaves any one",
+   "why": "proofread 2026-11-14: typo: leave → leaves"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.9.1",
+   "father": "Augustine",
+   "old": "and that be would have",
+   "new": "and that he would have",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.11.1",
+   "father": "Chrysostom",
+   "old": "not of this world [John 18:36],",
+   "new": "not of this world” [John 18:36],",
+   "why": "proofread 2026-11-14: unclosed quotation"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.12.1",
+   "father": "Origen",
+   "old": "as be had no fixed",
+   "new": "as he had no fixed",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.17.1",
+   "father": "Chrysostom",
+   "old": "wont to petition. for the",
+   "new": "wont to petition for the",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.19.1",
+   "father": "Rabanus",
+   "old": "as be had at the first",
+   "new": "as he had at the first",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.21.1",
+   "father": "Origen",
+   "old": "beasts that rage the open plains",
+   "new": "beasts that range the open plains",
+   "why": "proofread 2026-11-14: typo: rage → range"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.22.1",
+   "father": "Origen",
+   "old": "to their impiety, They all say",
+   "new": "to their impiety. They all say",
+   "why": "proofread 2026-11-14: lost stop before capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.24.1",
+   "father": "Jerome",
+   "old": "“I Will wash my hands",
+   "new": "“I will wash my hands",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.25.1",
+   "father": "Jerome",
+   "old": "as though be had said",
+   "new": "as though he had said",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.31.1",
+   "father": "Origen",
+   "old": "upon HiS revered head",
+   "new": "upon His revered head",
+   "why": "proofread 2026-11-14: typo: HiS → His"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.34.1",
+   "father": "Augustine",
+   "old": "myrrh.” [Mark 16:23]",
+   "new": "myrrh.” [Mark 15:23]",
+   "why": "proofread 2026-11-14: reference: Mark 16:23 does not exist → Mark 15:23"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.34.1",
+   "father": "Jerome",
+   "old": "[Ps 69:12]",
+   "new": "[Ps 69:21]",
+   "why": "proofread 2026-11-14: reference: gall for my meat is Ps 69:21"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.34.1",
+   "father": "Hilary",
+   "old": "“wine mingled with gall, because",
+   "new": "“wine mingled with gall,” because",
+   "why": "proofread 2026-11-14: unclosed quotation mark"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.44.1",
+   "father": "Augustine",
+   "old": "when be describes one",
+   "new": "when he describes one",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.45.3",
+   "father": "Origen",
+   "old": "meaning that be had been",
+   "new": "meaning that he had been",
+   "why": "proofread 2026-11-14: typo: be → he"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.46.3",
+   "father": "Origen",
+   "old": "[Mic 9:1]",
+   "new": "[Mic 7:1]",
+   "why": "proofread 2026-11-14: reference: Micah has 7 chapters; quote is Mic 7:1"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.47.1",
+   "father": "Remigius",
+   "old": "letters which the seed produces",
+   "new": "letters which the reed produces",
+   "why": "proofread 2026-11-14: typo: seed → reed"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.47.2",
+   "father": "Rabanus",
+   "old": "He had in ever inseparably",
+   "new": "He had ever inseparably",
+   "why": "proofread 2026-11-14: stray word: in"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.51.1",
+   "father": "Augustine",
+   "old": "temple was rent,: it would",
+   "new": "temple was rent,” it would",
+   "why": "proofread 2026-11-14: typo: colon for closing quote"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.53.2",
+   "father": "Origen",
+   "old": "The earthquakes, that is, all flesh",
+   "new": "The earth quakes, that is, all flesh",
+   "why": "proofread 2026-11-14: fused words: earthquakes → earth quakes"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.53.2",
+   "father": "Origen",
+   "old": "spiritual mysteries bid in",
+   "new": "spiritual mysteries hid in",
+   "why": "proofread 2026-11-14: typo: bid → hid"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.54.1",
+   "father": "Leo",
+   "old": "punishment of it Redeemer",
+   "new": "punishment of its Redeemer",
+   "why": "proofread 2026-11-14: typo: it → its"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.27.57.3",
+   "father": "Origen",
+   "old": "rolled to the month",
+   "new": "rolled to the mouth",
+   "why": "proofread 2026-11-14: typo: month → mouth"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.1.2",
+   "father": "Bede",
+   "old": "“when the sabbath was past,” that they",
+   "new": "“when the sabbath was past,”) that they",
+   "why": "proofread 2026-11-14: unclosed parenthesis"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.7.1",
+   "father": "Jerome",
+   "old": "the wallowing style...",
+   "new": "the wallowing stye...",
+   "why": "proofread 2026-11-14: typo: style → stye (volutabrum)"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.10.2",
+   "father": "Augustine",
+   "old": "[John 3:2]",
+   "new": "[1 John 3:2]",
+   "why": "proofread 2026-11-14: reference: “we shall be like him” is 1 John 3:2"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.15.1",
+   "father": "Chrysostom",
+   "old": "with a disciple. so far",
+   "new": "with a disciple so far",
+   "why": "proofread 2026-11-14: stray stop mid-sentence"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.16.2",
+   "father": "Augustine",
+   "old": "from the dead. [John 21:14]",
+   "new": "from the dead.” [John 21:14]",
+   "why": "proofread 2026-11-14: unclosed quotation mark"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.20.1",
+   "father": "Bede",
+   "old": "[Jon 16:5]",
+   "new": "[John 16:5]",
+   "why": "proofread 2026-11-14: reference typo: Jon → John"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.28.20.2",
+   "father": "Bede",
+   "old": "abides With His disciples",
+   "new": "abides with His disciples",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  }
+ ]
 }

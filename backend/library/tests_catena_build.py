@@ -299,3 +299,10 @@ class AureaMendTests(SimpleTestCase):
         self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
         with self.assertRaises(CommandError):  # the same Father again in the excerpt
             self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
+
+    def test_a_mend_can_rejoin_a_split_sentence(self):
+        self.cmd.corrections[("x.1", "Bede")] = [{"old": "interpreted.\n\n‘One", "new": "interpreted, ‘one"}]
+        self.assertEqual(
+            self.cmd.mend("x.1", "Bede", ["Mary, which is interpreted.", "‘One who works.’ And so"], set()),
+            ["Mary, which is interpreted, ‘one who works.’ And so"],
+        )

@@ -385,14 +385,17 @@ class Command(build_catena.Command):
 
     def mend(self, excerpt: str, father: str | None, paras: list[str], mended: set) -> list[str]:
         """`paras` with book.json's corrections for this Father's passage made."""
+        # Matched across the paragraph breaks, so a mend can rejoin a sentence
+        # a stray stop split in two ("interpreted.\n\n‘One who works …").
+        text = "\n\n".join(paras)
         for c in self.corrections.get((excerpt, father), ()):
-            hits = sum(p.count(c["old"]) for p in paras)
+            hits = text.count(c["old"])
             if hits > 1 or (hits == 1 and id(c) in mended):
                 raise CommandError(f"{excerpt} ({father}): correction {c['old']!r} is ambiguous")
             if hits:
-                paras = [p.replace(c["old"], c["new"]) for p in paras]
+                text = text.replace(c["old"], c["new"])
                 mended.add(id(c))
-        return paras
+        return text.split("\n\n")
 
     def known(self, word: str) -> bool:
         """A word the library prints (`vocabulary`), a reference's abbreviation,
