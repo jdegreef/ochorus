@@ -67,3 +67,27 @@ class BibleSermonsTests(TestCase):
         self.assertIsNone(self.detail("anchored-1")["bible_sermons"])
         Sermon.objects.filter(slug="love").delete()
         self.assertIsNone(self.detail("gospel-of-john")["bible_sermons"])
+
+
+class BibleLinksTests(BibleSermonsTests):
+    """The /bible hub's per-book links (views.BibleLinksView): one request for
+    all 66, counted the way the book page's shelf counts."""
+
+    def links(self, language="en"):
+        return self.client.get(f"/api/library/bible/links/?language={language}").json()["books"]
+
+    def test_counts_each_books_sermons_by_its_own_text(self):
+        books = {b["position"]: b for b in self.links()}
+        # Psalms: three published English sermons (the draft and the Swahili
+        # one left out), the shelf's own count; John: one.
+        self.assertEqual(books[19]["sermons"], 3)
+        self.assertEqual(books[19]["sermon_book"], "Psalms")
+        self.assertEqual(books[43]["sermons"], 1)
+        self.assertEqual(books[19]["sermons"], self.detail("psalms")["bible_sermons"]["count"])
+
+    def test_lists_only_books_with_something_and_in_canon_order(self):
+        positions = [b["position"] for b in self.links()]
+        self.assertEqual(positions, [19, 43])
+
+    def test_counts_in_the_language_asked(self):
+        self.assertEqual(self.links("sw"), [{"position": 19, "sermons": 1, "sermon_book": "Psalms", "scripture": None}])
