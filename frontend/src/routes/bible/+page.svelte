@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { BookSummary, PlanSummary, SeriesDetail } from '$lib/library-public';
+	import { allProgress } from '$lib/progress';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -9,6 +11,8 @@
 		BIBLE_SERIES,
 		bibleChapterCount,
 		bibleIn,
+		biblePlace,
+		bibleToContinue,
 		bibleStarts,
 		divisionKey,
 		groupBible,
@@ -31,6 +35,9 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ContinueShelf from '$lib/components/ContinueShelf.svelte';
+	import ContinueRow from '$lib/components/ContinueRow.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	/**
 	 * The Bible hub: the Open Word Bible's books in the library, in canonical
@@ -56,6 +63,25 @@
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
 	const starts = $derived(bibleStarts(series?.books ?? []));
+	// The reader's place in the Bible: device-local progress (synced when signed
+	// in), read after mount and again on `ochorus:sync`, as the hubs' Continue
+	// rows are. The prerender, and a first visit, have none: no Continue shelf,
+	// no marked chapters.
+	let ticks = $state(0);
+	onMount(() => {
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+	const records = $derived(ticks ? allProgress().filter((r) => r.kind === 'book') : []);
+	const continues = $derived(bibleToContinue(books, records));
+	const placeOf = $derived.by(() => {
+		if (!records.length) return undefined;
+		const bySlug = new Map(records.map((r) => [r.slug, r]));
+		return (book: BookSummary) => biblePlace(book, bySlug.get(book.slug));
+	});
+
 	let asCovers = $state(false);
 	// The one book whose chapters are open, across the whole index.
 	let openBook = $state<string | null>(null);
@@ -166,6 +192,34 @@
 			</div>
 		</form>
 
+		{#if continues.length}
+			<!-- A returning reader's way back in: the books they are partway
+			     through, the chapter Continue opens named in the Bible's numbers. -->
+			<div class="mb-11">
+				<ContinueShelf heading={t('books.continue')}>
+					{#each continues as row (row.book.slug)}
+						{@const caption = `${t('continue.chapter')} ${row.chapter} ${t('plans.of')} ${row.count}`}
+						<ContinueRow
+							href={localizeHref(row.href)}
+							title={row.book.title}
+							{caption}
+							verb={t('plans.continue')}
+						>
+							{#snippet visual()}
+								<span class="w-10 shrink-0"><BookCover book={row.book} /></span>
+							{/snippet}
+							{#snippet progress()}
+								<ProgressBar
+									percent={(row.behind / row.count) * 100}
+									label={`${row.book.title}: ${caption}`}
+								/>
+							{/snippet}
+						</ContinueRow>
+					{/each}
+				</ContinueShelf>
+			</div>
+		{/if}
+
 		{#if starts.length}
 			<!-- For a first reader: a short path in, each step a book and why. -->
 			<section class="starts" aria-labelledby="starts-heading">
@@ -240,7 +294,7 @@
 								{/each}
 							</div>
 						{:else}
-							<BibleBookList books={group.books} bind:open={openBook} />
+							<BibleBookList books={group.books} bind:open={openBook} {placeOf} />
 						{/if}
 					</section>
 				{/each}
