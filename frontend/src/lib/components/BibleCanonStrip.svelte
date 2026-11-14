@@ -197,8 +197,9 @@
 	.spine::after {
 		content: '';
 		position: absolute;
-		left: 0;
-		right: 0;
+		/* Across the spine: in its vertical writing the block axis is the
+		   horizontal one (inset-inline would run top to bottom). */
+		inset-block: 0 0;
 		height: 1px;
 		background: rgb(224 180 92 / 0.6);
 	}
@@ -215,8 +216,9 @@
 	   has read, under a gilt line. */
 	.spine-fill {
 		position: absolute;
-		left: 0;
-		right: 0;
+		/* Across the spine: in its vertical writing the block axis is the
+		   horizontal one (inset-inline would run top to bottom). */
+		inset-block: 0 0;
 		bottom: 0;
 		background: rgb(255 255 255 / 0.2);
 		border-top: 1px solid rgb(224 180 92 / 0.85);
@@ -248,7 +250,7 @@
 		flex: 1 1 12rem;
 		max-width: 22rem;
 		height: 6px;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background: var(--border);
 		overflow: hidden;
 	}
