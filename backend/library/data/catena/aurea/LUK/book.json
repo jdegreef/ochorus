@@ -48,5 +48,5137 @@
    "answer": "Aquinas dedicated this volume, with those on Mark and John, to his friend Cardinal Annibaldo degli Annibaldi, after the death of Pope Urban IV."
   }
  ],
- "cover_url": "/covers/art/catena-aurea-luke.jpg"
+ "cover_url": "/covers/art/catena-aurea-luke.jpg",
+ "rejected": [
+  {
+   "excerpt": "catena-luke.LUK.1.21.1",
+   "father": "Greek Expositor",
+   "why": "proofread 2026-11-14: scan hole: \"while various were going about\" (noun lost)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.25.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: \"Tints hath\" plus an embedded \"CHRYs.\" passage merged into Ambrose; attribution unsure (this excerpt/father has two passages; the one containing \"Tints hath the Lord\")"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.25.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: holes: \"Her therefore is twofold\", stray \"Anna\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"for Christ could virginity alone\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.36.1",
+   "father": "Gregory of Nazianzus",
+   "why": "proofread 2026-11-14: holes: \"How Christ related to David\", \"her woman\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.50.1",
+   "father": "Greek Expositor",
+   "why": "proofread 2026-11-14: garbled: \"According to Victor the mercy ... conceive, and\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.58.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: hole: \"being by the rejoicing of the neighbours\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.74.1",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: hole \"passion punishment\" and appended verse debris \"7-1. That we...\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.1.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan hole: \"when was sent into Syria\" (name lost)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.4.3",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"the first public of souls\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.7.2",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: \"He have come\" (lost word, uncertain) plus \"site laid him\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.9.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: holes: \"came the day time\", \"kept for this when\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.10.2",
+   "father": "Maximus",
+   "why": "proofread 2026-11-14: \"the moan things\", hole \"If thou about those\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.21.3",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: scan hole: \"and con-to us a spiritual circumcision\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.22.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: hole: \"she who has seed and brought forth\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.23.3",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: scan hole: \"The Truth preserves the of the law\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.4",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: \"The sign is spoken against\" (lost word), \"Numb.\" debris, \"for sign\" (this excerpt/father has two passages; the one containing \"The sign is spoken against\")"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.36.2",
+   "father": "Origen",
+   "why": "proofread 2026-11-14: \"at this very gave thanks\" (lost word) plus \"how-she\" (this excerpt/father has two passages; the one containing \"at this very gave\")"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.48.1",
+   "father": "Gloss",
+   "why": "proofread 2026-11-14: holes: subject lost at start, \"find an of putting Him to death\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.6.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: scan hole: \"That is, of the sent His Son\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.7.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: margin debris \"Horn, in\" plus hole \"lions and for their ravening\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.13.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: misread: \"In the manner\" → \"In like manner\"; mend not certain ('the'->'like' is a guess; 'In the same manner' equally plausible)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.16.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"There cometh after me one mightier than those words, mightier than I, he makes no comparison\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.21.4",
+   "father": "Cyprian",
+   "why": "proofread 2026-11-14: scan hole: \"when they have young them together\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.4.1",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: scan hole: \"while He vanquishes temptation, not hunger from our nature\" plus unclosed bracket"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.4.1",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: margin debris \"Numb,\" and garbled \"Elisha fed his com-on\", missing subject for the crows"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.8.1",
+   "father": "Origen",
+   "why": "proofread 2026-11-14: scan hole: \"I give Thee the kingdom hold\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.8.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost Greek: \"In the signifies a common service ... but... is the service\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.10.2",
+   "father": "Origen",
+   "why": "proofread 2026-11-14: scan hole: \"upon the asp and the except that\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.18.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"shewn to be a when in a bodily form\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.33.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"the Creator, who His works one within another\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.13.2",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: lost names: \"He touches, for... But\" and garbled \"abstain not only from gaining even favour\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.14.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"He always keep God before his eyes\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.16.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost name: \"not that according to there is a double person\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.26.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan holes: \"the sick of we may understand\" and \"hindered by the crowds, that is to say, unless it discovers\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.33.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"Now Luke evidently was spoken not by men of themselves\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.34.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: garbled: \"say, so.\" and \"sorrow must not Up with it\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.3.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: stray \"i\" and lost word \"the com-of Moses\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.13.3",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"The soul is then the very darkness\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.21.1",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: typo: desire → desired; mend not certain ('desired' vs 'they desire' etc. - several readings)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.21.2",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: garbled: \"He pro-laughing\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.25.2",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: fragment: \"But tell me, in Matt!\" (margin debris, text lost)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.29.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: scan hole: \"beyond the measure of the but the fulfilling\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.31.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"what is virtue, and what is Hence it follows\" plus debris \"Ant.\" and \"lie\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.34.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: garbled opening: \"confer more upon thyself than he is beloved by a fellow servant\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.35.2",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: lost Greek: \"rightly called in the... from producing, because of the fruitfulness the evil\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.44.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"put forth their green that is, the unripe and worthless fruit came first Synagogue\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.46.1",
+   "father": "Athanasius",
+   "why": "proofread 2026-11-14: scan hole: \"born of the alone\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.10.3",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: dropped word: \"irascible\"; mend not certain (restored adjective is a guess at translators' wording)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.24.1",
+   "father": "Titus of Bostra",
+   "why": "proofread 2026-11-14: garbled: \"except as caring Simeon for this man\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.25.1",
+   "father": "Greek Expositor",
+   "why": "proofread 2026-11-14: scan holes: \"they who are and live delicately\" / \"he signifies men luxuriously\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.25.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: garbled: \"neither rally nor easily shaken\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.33.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: dropped word: \"John,\"; mend not certain (inserted 'John,' is a guess ('him' etc. equally possible))"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.1.1",
+   "father": "Gregory of Nazianzus",
+   "why": "proofread 2026-11-14: scan hole: \"that He may exalt His For He who descends\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.1.1",
+   "father": "Isidore of Pelusium",
+   "why": "proofread 2026-11-14: scan hole: \"this kingdom of some think\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.14.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: scan hole: \"for they the mind by the prickings\" and \"entice to see\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.21.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"for His ing had already begun\" plus debris \"Matt!\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.24.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: lost text: \"Thou... the raging of the sea\" and \"as He sailed, Lord manifested\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.31.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"He would not time of their punishment\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.39.4",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"saw this they For neither the teachers\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.41.1",
+   "father": "Titus of Bostra",
+   "why": "proofread 2026-11-14: garbled: \"The name Ant. in is inserted\" (name lost)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.45.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: garbled: \"escaped not the Lord, but victor.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.2.2",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"the Gospel of the of God\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.22.2",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: scan hole: \"the cross and tion\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.23.2",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: scan hole: \"or the touched by sympathy\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.28.2",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: garbled: \"going up, into stooping to earthly things\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.31.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"are written,( for the or perhaps\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.31.2",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: lost numerals: \"after years ... more than years are reckoned\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.36.2",
+   "father": "Damascene",
+   "why": "proofread 2026-11-14: scan hole: i → Lord; mend not certain (scan hole 'i' could be Lord/Saviour - guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.41.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: margin debris Mat? over lost In (first of the two 9.41.1 Chrysostom passages); mend not certain (lost word before 'that place' is a guess (In/As in/For in))"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.46.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: garbled: \"Mat. Matthew relates\" for Mark's text"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.3",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: hole: \"does so the accident of the journey\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.10.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: OCR: gone → undergone; mend not certain ('undergone' vs 'gone through' etc. - guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.19.2",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: hole: \"pleasure is called Scripture a serpent\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.24.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: hole: \"by angels or any other of vision\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.27.2",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: garbled: \"whom by nature we here\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.30.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"the devil and his through the disobedience\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.30.3",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: garbled: \"But that Adam had sinned death entered in the world\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.34.2",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: several slips: \"lie poured\", \"chrism, Horn,\", \"placing him upon least,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.37.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: missing word: he; mend not certain (missing subject could be 'He' or 'he' - uncertain)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.40.3",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: upon the; mend not certain (two lost words; preposition (upon/on) is a guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.42.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: missing word: her; mend not certain (lost word could be her/the; guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.3.1",
+   "father": "Pseudo-Augustine",
+   "why": "proofread 2026-11-14: lost Greek: \"the word is... that is\"; debris \"Christ Heb rises\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.4",
+   "father": "Gloss",
+   "why": "proofread 2026-11-14: garbled: \"which must have to the difficulty of obtaining\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.14.1",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: lost Greek: \"Now he is called... as commonly meaning\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.22.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: hole: \"a long time by him into ignorance\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.23.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: hole: \"as if He says, I to present men to God\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.30.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: broken hyphenation: con- → confidence.; mend not certain (con- completion (confidence/consolation) is a guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.15.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: dropped word: for; mend not certain (sighed for/after both plausible)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.16.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: broken hyphenation: pre- → prepared; mend not certain (pre- completion (prepared/presented) is a guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.26.1",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: dropped word: in; mend not certain (preposition (in/by/when) is a guess)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.51.1",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: scan garble: \"in no wise Nat;. rated her\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.20.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: holes: \"But the night the soul ... which had gone forth the darkness\" (passage beginning 'But the night')"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.21.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: lost word: \"For in vain he wealth\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.35.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: lost word: \"that thing may be done\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.38.1",
+   "father": "Greek Expositor",
+   "why": "proofread 2026-11-14: lost word: \"a good rewarder out to every man\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.48.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost word reverses sense: \"but the punishment of all will be theirs\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.50.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost Greek: \"And how am I that is, grieved\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.16.2",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: hole: \"man was made on the sixth on the same sixth day\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.19.2",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: hole: \"rested in his that is\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.24.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: hole: \"There is indeed no con-but\" plus margin debris"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.1",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: garbled: \"to birds in as too weak to defend thyself\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.12.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: holes: \"thank have ye?\", \"certain mutual of brothers\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: garbled: \"offers what he ought to be asked for, not ask others to receive\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: hole: \"of which it is added, said unto him\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.28.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: hole: \"giving high and lofty pre-immediately follows\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.29.1",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: several slips incl. \"went ward\", \"i. c.\", \"onward we may reach\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.4.3",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"solitude as it were in their in that\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.7.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole \"serve as an to goodness\" plus \"joy shall he in heaven\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.17.1",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: garble: \"hardship, cat-having become\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.20.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: garble: \"For he sup \\\"was lying down\" with stray quotes"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.20.3",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: Father-label debris; mend not certain (Nyss. is a Father siglum in speaker position)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.22.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"not to touch earthly Or he bids\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.18.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan hole: \"the perpetual of the Law\" (+ \"who soever\")"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.21.2",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"keeps not its to a friend\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.6",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: scan hole: \"fire and the torments of hell; the parched tongue\" (lost \"for ...\" clauses)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.7",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: several holes: \"If take not\", \"to cool tongue\", \"in the of the tongue\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.8",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"forget not that thou thy riches\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.31.5",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"Marcion and... who destroy\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.6.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan hole: \"lowly in appearance, but in heart\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.7.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: dropped word: things; mend not certain (unclear whether word lost or in is a misread of is)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.23.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan hole: \"let us not vision to ourselves\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.24.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: dropped word: says; mend not certain (says/saith both plausible)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.11.3",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan hole: \"He who at others does much harm\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.17.1",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: scan hole: \"Who when He reviled not again\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.25.1",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: lost Greek: \"The word in the answers equally\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.43.3",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: scan hole: \"the moon, and fore death\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.10.3",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan holes: \"Your be left unto yOU desolate\", \"though we known Christ\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.13.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost Greek: \"which the Greeks call... is equal\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.29.1",
+   "father": "Basil",
+   "why": "proofread 2026-11-14: hole: \"even the est works\" (least/meanest?)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.36.2",
+   "father": "Origen",
+   "why": "proofread 2026-11-14: margin debris \"I Mat.\", \"Ye Eph. i,\" and hole \"in the tion\"; too many to mend"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.38.1",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: garbled opening \"Or the reason above given\" plus \"shared\" (shewed), \"lam\"; uncertain"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.20.1",
+   "father": "Eusebius",
+   "why": "proofread 2026-11-14: hole: \"its legal rites to be so that\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.26.3",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: hole: \"common to both the of Christ and the Devil\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.28.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: hole: \"When the... of the world multiply\"; \"against reprobate\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.29.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: \"Be the fig tree\" and hole \"the days of life up under\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.33.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: hole: \"seems ing, does not abide\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.30.2",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: garbled: \"Therefore is, lo! speaking\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.35.1",
+   "father": "Cyril",
+   "why": "proofread 2026-11-14: hole: \"sent the holy to preach\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.42.3",
+   "father": "Gregory of Nyssa",
+   "why": "proofread 2026-11-14: garbled: \"that Christ exists only the will of God\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.59.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: hole \"for thy speech thee\", debris \"sup.\", lost stop \"after but\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.61.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: text is Chrysostom's (\"CHRYs.\" heading in passage, misattributed) plus debris \"Joan,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.8.1",
+   "father": "Gregory",
+   "why": "proofread 2026-11-14: garbled: \"wish as if by praising us to knowledge from us\" (verb lost)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.26.2",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: lost Greek: \"a village is in Greek called from whence\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.33.5",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: scan holes: \"And He thieves one on his right hand\", \"the cross Such things\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.38.1",
+   "father": "Theophylact",
+   "why": "proofread 2026-11-14: scan holes: \"In Latin, and Hebrew\", \"(as the who most worshipped God\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.43.3",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: hole: \"They wandered goat-skins\" (lost words)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.49.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: scan hole: \"that com-which the Lord makes to His Father, neighbour and friend\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.36.2",
+   "father": "Ambrose",
+   "why": "proofread 2026-11-14: dropped word: Therefore think → Therefore I think; mend not certain (I vs we is a guess; subject not forced)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.38.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: garbled: \"What I have planted there, shall find\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.21.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.6.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)"
+  }
+ ],
+ "corrections": [
+  {
+   "excerpt": "catena-luke.LUK.1.1.2",
+   "father": "Origen",
+   "old": "The effect uPon his",
+   "new": "The effect upon his",
+   "why": "proofread 2026-11-14: typo: uPon → upon"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.1.2",
+   "father": "Chrysostom",
+   "old": "his words; If and therefore",
+   "new": "his words; and therefore",
+   "why": "proofread 2026-11-14: margin debris: If"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.5.1",
+   "father": "Chrysostom",
+   "old": "relating marvellous event before",
+   "new": "relating one marvellous event before",
+   "why": "proofread 2026-11-14: lost word: one"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.5.1",
+   "father": "Chrysostom",
+   "old": "In the days of Herod ', and",
+   "new": "In the days of Herod, and",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.5.1",
+   "father": "Chrysostom",
+   "old": "Therein was another Herod",
+   "new": "There was another Herod",
+   "why": "proofread 2026-11-14: misread: Therein → There"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.5.2",
+   "father": "Bede",
+   "old": "with the more Job. authority",
+   "new": "with the more authority",
+   "why": "proofread 2026-11-14: margin debris: Job."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.5.2",
+   "father": "Bede",
+   "old": "(from which i Zacharias was descended]",
+   "new": "(from which Zacharias was descended)",
+   "why": "proofread 2026-11-14: stray i, unbalanced bracket"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.13.2",
+   "father": "Chrysostom",
+   "old": "who from Joann. their earliest",
+   "new": "who from their earliest",
+   "why": "proofread 2026-11-14: margin debris: Joann."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.13.2",
+   "father": "Bede",
+   "old": "he shall he a joy",
+   "new": "he shall be a joy",
+   "why": "proofread 2026-11-14: misread: he → be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.15.2",
+   "father": "Ambrose",
+   "old": "to times arid seasons",
+   "new": "to times and seasons",
+   "why": "proofread 2026-11-14: misread: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.23.1",
+   "father": "Bede",
+   "old": "by the see John mouth of John",
+   "new": "by the mouth of John",
+   "why": "proofread 2026-11-14: margin debris: see John"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.1",
+   "father": "Bede",
+   "old": "Arid in the sixth month, We must",
+   "new": "And in the sixth month. We must",
+   "why": "proofread 2026-11-14: misread arid → And; lost stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.1",
+   "father": "Basil",
+   "old": "hence it follows., The angel",
+   "new": "hence it follows, The angel",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Gregory",
+   "old": "upon this Evan, service",
+   "new": "upon this service",
+   "why": "proofread 2026-11-14: margin debris: Evan,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Bede",
+   "old": "to consecrate a virgin a divine birth",
+   "new": "to consecrate a virgin to a divine birth",
+   "why": "proofread 2026-11-14: lost word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Jerome",
+   "old": "Hieron. And rightly an angel",
+   "new": "And rightly an angel",
+   "why": "proofread 2026-11-14: margin debris: Hieron."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Jerome",
+   "old": "is riot a life",
+   "new": "is not a life",
+   "why": "proofread 2026-11-14: misread: riot → not"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.26.2",
+   "father": "Chrysostom",
+   "old": "not in Horn. a dream",
+   "new": "not in a dream",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.28.2",
+   "father": "Greek Expositor",
+   "old": "among women. i. c. Alone",
+   "new": "among women. i. e. Alone",
+   "why": "proofread 2026-11-14: misread: i. c. → i. e."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.30.1",
+   "father": "Chrysostom",
+   "old": "God giveth James grace",
+   "new": "God giveth grace",
+   "why": "proofread 2026-11-14: margin debris: James"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.30.1",
+   "father": "Greek Expositor",
+   "old": "thou shall conceive in thy womb",
+   "new": "thou shalt conceive in thy womb",
+   "why": "proofread 2026-11-14: misread: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.30.1",
+   "father": "Greek Expositor",
+   "old": "By the word beheld, he",
+   "new": "By the word behold, he",
+   "why": "proofread 2026-11-14: misread: beheld → behold"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.31.1",
+   "father": "Gregory of Nyssa",
+   "old": "his name Nat. Jesus",
+   "new": "his name Jesus",
+   "why": "proofread 2026-11-14: margin debris: Nat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.31.1",
+   "father": "Cyril",
+   "old": "this name was given anew",
+   "new": "This name was given anew",
+   "why": "proofread 2026-11-14: lost capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.31.1",
+   "father": "Cyril",
+   "old": "Thou shalt called by a new name",
+   "new": "Thou shalt be called by a new name",
+   "why": "proofread 2026-11-14: lost word: be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.33.1",
+   "father": "Chrysostom",
+   "old": "as Paul Matt-says",
+   "new": "as Paul says",
+   "why": "proofread 2026-11-14: margin debris: Matt-"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.33.1",
+   "father": "Greek Expositor",
+   "old": "And, his kingdom shall",
+   "new": "And his kingdom shall",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.35.1",
+   "father": "Chrysostom",
+   "old": "seeing I know not a Nay rather",
+   "new": "seeing I know not a man? Nay rather",
+   "why": "proofread 2026-11-14: scan hole: lost man?"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.35.1",
+   "father": "Gregory of Nyssa",
+   "old": "in others Nat. scarcely",
+   "new": "in others scarcely",
+   "why": "proofread 2026-11-14: margin debris: Nat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.35.1",
+   "father": "Gregory of Nyssa",
+   "old": "creating aM body",
+   "new": "creating a body",
+   "why": "proofread 2026-11-14: misread: aM → a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.35.2",
+   "father": "Gregory of Nyssa",
+   "old": "those bodies Nat. which go",
+   "new": "those bodies which go",
+   "why": "proofread 2026-11-14: margin debris: Nat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.36.1",
+   "father": "Chrysostom",
+   "old": "had overcome mind of the virgin",
+   "new": "had overcome the mind of the virgin",
+   "why": "proofread 2026-11-14: lost word: the"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.36.1",
+   "father": "Chrysostom",
+   "old": "old age; arid the natural",
+   "new": "old age; and the natural",
+   "why": "proofread 2026-11-14: misread: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.38.1",
+   "father": "Ambrose",
+   "old": "But Mary said. Behold",
+   "new": "But Mary said, Behold",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.38.1",
+   "father": "Eusebius",
+   "old": "what vel he wished",
+   "new": "what he wished",
+   "why": "proofread 2026-11-14: margin debris: vel"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.40.1",
+   "father": "Theophylact",
+   "old": "And site saluted Elisabeth",
+   "new": "And she saluted Elisabeth",
+   "why": "proofread 2026-11-14: misread: site → she"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.40.1",
+   "father": "Chrysostom",
+   "old": "Or in Matt! else the Virgin",
+   "new": "Or else the Virgin",
+   "why": "proofread 2026-11-14: margin debris: in Matt!"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.42.1",
+   "father": "Theophylact",
+   "old": "in the name ps Of the Lord",
+   "new": "in the name of the Lord",
+   "why": "proofread 2026-11-14: margin debris: ps; stray capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.42.1",
+   "father": "Titus of Bostra",
+   "old": "Bos. Now she rightly",
+   "new": "Now she rightly",
+   "why": "proofread 2026-11-14: margin debris: Bos."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.43.1",
+   "father": "Bede",
+   "old": "Of the of thy body",
+   "new": "Of the fruit of thy body",
+   "why": "proofread 2026-11-14: lost word: fruit"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.48.1",
+   "father": "Greek Expositor",
+   "old": "for tes what room",
+   "new": "for what room",
+   "why": "proofread 2026-11-14: margin debris: tes"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.48.1",
+   "father": "Bede",
+   "old": "Fork was fitting",
+   "new": "For it was fitting",
+   "why": "proofread 2026-11-14: misread: Fork → For it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.50.1",
+   "father": "Theophylact",
+   "old": "the generation Matt, which is to come",
+   "new": "the generation which is to come",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.52.1",
+   "father": "Cyril",
+   "old": "who humbled i themselves",
+   "new": "who humbled themselves",
+   "why": "proofread 2026-11-14: stray i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.52.1",
+   "father": "Cyril",
+   "old": "and every Luke power",
+   "new": "and every power",
+   "why": "proofread 2026-11-14: margin debris: Luke"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.54.1",
+   "father": "Gloss",
+   "old": "mercy and 'holiness",
+   "new": "mercy and holiness",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.55.1",
+   "father": "Bede",
+   "old": "cannot be saved.,",
+   "new": "cannot be saved.",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.63.1",
+   "father": "Ambrose",
+   "old": "of utterance E and hearing",
+   "new": "of utterance and hearing",
+   "why": "proofread 2026-11-14: stray E"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.63.1",
+   "father": "Ambrose",
+   "old": "wrote, saying. His name is John",
+   "new": "wrote, saying, His name is John",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.70.1",
+   "father": "Theophylact",
+   "old": "not the least Micah in the city",
+   "new": "not the least in the city",
+   "why": "proofread 2026-11-14: margin debris: Micah"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.70.1",
+   "father": "Greek Expositor",
+   "old": "victor Whereby he means",
+   "new": "Whereby he means",
+   "why": "proofread 2026-11-14: margin debris: victor"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.71.1",
+   "father": "Bede",
+   "old": "goes on lo explain",
+   "new": "goes on to explain",
+   "why": "proofread 2026-11-14: misread: lo → to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.71.1",
+   "father": "Bede",
+   "old": "raised up tons a horn",
+   "new": "raised up to us a horn",
+   "why": "proofread 2026-11-14: fused/misread: tons → to us"
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.79.1",
+   "father": "Gregory",
+   "old": "taken to mean Moral.... forgetfulness",
+   "new": "taken to mean forgetfulness",
+   "why": "proofread 2026-11-14: margin debris: Moral...."
+  },
+  {
+   "excerpt": "catena-luke.LUK.1.80.1",
+   "father": "Bede",
+   "old": "And the child grew. i. e.",
+   "new": "And the child grew, i. e.",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.4.1",
+   "father": "Greek Expositor",
+   "old": "a king for Sam ever",
+   "new": "a king for ever",
+   "why": "proofread 2026-11-14: margin debris: Sam"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.4.1",
+   "father": "Gregory",
+   "old": "for appeared in the flesh Who",
+   "new": "for He appeared in the flesh Who",
+   "why": "proofread 2026-11-14: lost word: He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.4.2",
+   "father": "Theophylact",
+   "old": "Because it fit also",
+   "new": "Because it was fit also",
+   "why": "proofread 2026-11-14: lost word: was"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.6.1",
+   "father": "Gregory",
+   "old": "lam, the bread life",
+   "new": "I am the bread of life",
+   "why": "proofread 2026-11-14: misread lam → I am; lost of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.7.2",
+   "father": "Bede",
+   "old": "in His John Father's house",
+   "new": "in His Father's house",
+   "why": "proofread 2026-11-14: margin debris: John"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.7.2",
+   "father": "Bede",
+   "old": "by which John to bring us",
+   "new": "by which to bring us",
+   "why": "proofread 2026-11-14: margin debris: John"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.10.1",
+   "father": "Greek Expositor",
+   "old": "their rising ter-fears",
+   "new": "their rising fears",
+   "why": "proofread 2026-11-14: scan debris: ter-"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.10.3",
+   "father": "Bede",
+   "old": "for lie was born",
+   "new": "for he was born",
+   "why": "proofread 2026-11-14: misread: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.10.3",
+   "father": "Bede",
+   "old": "I am the good John Shepherd",
+   "new": "I am the good Shepherd",
+   "why": "proofread 2026-11-14: margin debris: John"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.13.2",
+   "father": "Gregory",
+   "old": "At same time they",
+   "new": "At the same time they",
+   "why": "proofread 2026-11-14: lost word: the"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.13.2",
+   "father": "Gregory",
+   "old": "their voices of i i Job gladness",
+   "new": "their voices of gladness",
+   "why": "proofread 2026-11-14: margin debris: i i Job"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.13.2",
+   "father": "Origen",
+   "old": "will 'ask, How",
+   "new": "will ask, How",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.20.1",
+   "father": "Athanasius",
+   "old": "Divine light.'... For",
+   "new": "Divine light.... For",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.20.1",
+   "father": "Bede",
+   "old": "after the example these shepherds",
+   "new": "after the example of these shepherds",
+   "why": "proofread 2026-11-14: lost word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.20.1",
+   "father": "Bede",
+   "old": "heavenly Bethlehem, house of the living bread,)",
+   "new": "heavenly Bethlehem, (house of the living bread,)",
+   "why": "proofread 2026-11-14: unbalanced bracket"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.20.2",
+   "father": "Bede",
+   "old": "explain to Bearers",
+   "new": "explain to hearers",
+   "why": "proofread 2026-11-14: misread: Bearers → hearers"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.21.3",
+   "father": "Athanasius",
+   "old": "And was done at that time",
+   "new": "And it was done at that time",
+   "why": "proofread 2026-11-14: lost word: it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.23.1",
+   "father": "Gregory of Nyssa",
+   "old": "incarnate God, very remarkable",
+   "new": "incarnate God, in a very remarkable",
+   "why": "proofread 2026-11-14: lost words: in a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.23.4",
+   "father": "Cyril",
+   "old": "filling a His garden",
+   "new": "filling His garden",
+   "why": "proofread 2026-11-14: stray a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.27.1",
+   "father": "Origen",
+   "old": "took he him tip in",
+   "new": "took he him up in",
+   "why": "proofread 2026-11-14: misread: tip → up"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.29.1",
+   "father": "Ambrose",
+   "old": "longing to be Phil, i, loosed",
+   "new": "longing to be loosed",
+   "why": "proofread 2026-11-14: margin debris: Phil, i,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.30.1",
+   "father": "Gregory of Nyssa",
+   "old": "the eyes, sup' both of",
+   "new": "the eyes, both of",
+   "why": "proofread 2026-11-14: margin debris: sup'"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.31.1",
+   "father": "Athanasius",
+   "old": "That is to 'say,",
+   "new": "That is to say,",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.32.1",
+   "father": "Cyril",
+   "old": "them that sat darkness",
+   "new": "them that sat in darkness",
+   "why": "proofread 2026-11-14: lost word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.32.1",
+   "father": "Cyril",
+   "old": "knowledge Of His Son",
+   "new": "knowledge of His Son",
+   "why": "proofread 2026-11-14: stray capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.32.1",
+   "father": "Gregory of Nyssa",
+   "old": "For a although some",
+   "new": "For although some",
+   "why": "proofread 2026-11-14: stray a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.32.1",
+   "father": "Gregory of Nyssa",
+   "old": "signifying that only was He",
+   "new": "signifying that not only was He",
+   "why": "proofread 2026-11-14: lost word: not"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.32.1",
+   "father": "Bede",
+   "old": "come in, Rom-then shall",
+   "new": "come in, then shall",
+   "why": "proofread 2026-11-14: margin debris: Rom-"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.2",
+   "father": "Gregory of Nyssa",
+   "old": "distinction here 'c' observed",
+   "new": "distinction here observed",
+   "why": "proofread 2026-11-14: margin debris: 'c'"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.3",
+   "father": "Origen",
+   "old": "He says, kill, and I make alive",
+   "new": "He says, I kill, and I make alive",
+   "why": "proofread 2026-11-14: lost word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.4",
+   "father": "Chrysostom",
+   "old": "And for sign which",
+   "new": "And for a sign which",
+   "why": "proofread 2026-11-14: lost word: a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.5",
+   "father": "Augustine",
+   "old": "signified that also, through whom",
+   "new": "signified that she also, through whom",
+   "why": "proofread 2026-11-14: lost word: she"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.35.5",
+   "father": "Augustine",
+   "old": "mystery of Test, the incarnation",
+   "new": "mystery of the incarnation",
+   "why": "proofread 2026-11-14: margin debris: Test,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.40.1",
+   "father": "Athanasius",
+   "old": "A than. But if",
+   "new": "But if",
+   "why": "proofread 2026-11-14: margin debris: A than."
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.42.1",
+   "father": "Bede",
+   "old": "the journey His mortal life",
+   "new": "the journey of His mortal life",
+   "why": "proofread 2026-11-14: lost word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.46.2",
+   "father": "Greek Expositor",
+   "old": "cause vel astonishment",
+   "new": "cause astonishment",
+   "why": "proofread 2026-11-14: margin debris: vel"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.46.2",
+   "father": "Bede",
+   "old": "unto us a is. Child is born",
+   "new": "unto us a Child is born",
+   "why": "proofread 2026-11-14: margin debris: is."
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.48.2",
+   "father": "Greek Expositor",
+   "old": "the Lord i Himself",
+   "new": "the Lord Himself",
+   "why": "proofread 2026-11-14: stray i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.51.2",
+   "father": "Gregory of Nyssa",
+   "old": "a more feet state",
+   "new": "a more perfect state",
+   "why": "proofread 2026-11-14: scan slip: feet → perfect"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.52.1",
+   "father": "Theophylact",
+   "old": "an increase wisdom.",
+   "new": "an increase in wisdom.",
+   "why": "proofread 2026-11-14: lost word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.2.52.3",
+   "father": "Gregory of Nyssa",
+   "old": "degrees in Horn. those",
+   "new": "degrees in those",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.1.1",
+   "father": "Origen",
+   "old": "governor of and Herod",
+   "new": "governor of Judaea, and Herod",
+   "why": "proofread 2026-11-14: scan hole: lost Judaea"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.2.1",
+   "father": "Chrysostom",
+   "old": "The word Hom. of God",
+   "new": "The word of God",
+   "why": "proofread 2026-11-14: margin debris: Hom."
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.3.1",
+   "father": "Ambrose",
+   "old": "And lie went into",
+   "new": "And he went into",
+   "why": "proofread 2026-11-14: misread: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.5.2",
+   "father": "Chrysostom",
+   "old": "he declares Horn, the difficulties",
+   "new": "he declares the difficulties",
+   "why": "proofread 2026-11-14: margin debris: \"Horn,\" (Hom.)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.5.2",
+   "father": "Gregory",
+   "old": "crooked places are become when",
+   "new": "crooked places are become straight when",
+   "why": "proofread 2026-11-14: dropped word: \"become straight\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.6.1",
+   "father": "Gregory",
+   "old": "i. e. Every man can not",
+   "new": "i. e. every man can not",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.7.2",
+   "father": "Chrysostom",
+   "old": "the foetus as A increases",
+   "new": "the foetus as it increases",
+   "why": "proofread 2026-11-14: OCR: A → it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.8.2",
+   "father": "Chrysostom",
+   "old": "coming forth of i a son",
+   "new": "coming forth of a son",
+   "why": "proofread 2026-11-14: stray \"i\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.9.2",
+   "father": "Gregory",
+   "old": "in this way; represents the whole",
+   "new": "in this way; the tree represents the whole",
+   "why": "proofread 2026-11-14: dropped subject \"the tree\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.16.2",
+   "father": "Augustine",
+   "old": "I am not worthy to hear.",
+   "new": "I am not worthy to bear.",
+   "why": "proofread 2026-11-14: typo: hear → bear"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.16.2",
+   "father": "Augustine",
+   "old": "any difference these expressions",
+   "new": "any difference in these expressions",
+   "why": "proofread 2026-11-14: dropped \"in\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.17.1",
+   "father": "Greek Expositor",
+   "old": "/chose fan is in his hand",
+   "new": "Whose fan is in his hand",
+   "why": "proofread 2026-11-14: OCR: /chose → Whose"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.17.2",
+   "father": "Origen",
+   "old": "the light chaff', (i. e.",
+   "new": "the light chaff, (i. e.",
+   "why": "proofread 2026-11-14: stray apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.20.1",
+   "father": "Eusebius",
+   "old": "And lie added this",
+   "new": "And he added this",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.21.2",
+   "father": "Chrysostom",
+   "old": "baptized and praying-,",
+   "new": "baptized and praying,",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.21.3",
+   "father": "Augustine",
+   "old": "the Holy Luke i, Spirit",
+   "new": "the Holy Spirit",
+   "why": "proofread 2026-11-14: margin debris \"Luke i,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.21.4",
+   "father": "Ambrose",
+   "old": "requires innocence.,",
+   "new": "requires innocence,",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.23.1",
+   "father": "Gregory of Nazianzus",
+   "old": "therefore 'consider who",
+   "new": "therefore consider who",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.34.2",
+   "father": "Ambrose",
+   "old": "that Matt has, who",
+   "new": "that Matthan, who",
+   "why": "proofread 2026-11-14: OCR: \"Matt has\" → Matthan"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.38.6",
+   "father": "Gloss",
+   "old": "or being« named. \"Who was the son of Noe, i. e. rest.\"",
+   "new": "or \"being named.\" Who was the son of Noe, i. e. \"rest.\"",
+   "why": "proofread 2026-11-14: stray « and misplaced quotation marks"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.38.7",
+   "father": "Bede",
+   "old": "put off' death",
+   "new": "put off death",
+   "why": "proofread 2026-11-14: stray apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.3.38.9",
+   "father": "Augustine",
+   "old": "Behold, who taketh away",
+   "new": "Behold the Lamb of God, who taketh away",
+   "why": "proofread 2026-11-14: dropped words of John 1:29"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.2.2",
+   "father": "Basil",
+   "old": "use the flesh? that",
+   "new": "use the flesh, that",
+   "why": "proofread 2026-11-14: stray question mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.2.2",
+   "father": "Chrysostom",
+   "old": "be thought Matt, to have come",
+   "new": "be thought to have come",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.4.1",
+   "father": "Gregory of Nazianzus",
+   "old": "nourishes not Mor. x. our",
+   "new": "nourishes not our",
+   "why": "proofread 2026-11-14: margin debris \"Mor. x.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.5.1",
+   "father": "Theophylact",
+   "old": "did Adam, lie next tempts",
+   "new": "did Adam, he next tempts",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.5.2",
+   "father": "Ambrose",
+   "old": "from God. from God",
+   "new": "from God. From God",
+   "why": "proofread 2026-11-14: lowercase after stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.12.1",
+   "father": "Chrysostom",
+   "old": "instead of troubled",
+   "new": "instead of being troubled",
+   "why": "proofread 2026-11-14: dropped word \"being\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.12.3",
+   "father": "Maximus",
+   "old": "places event first",
+   "new": "places this event first",
+   "why": "proofread 2026-11-14: dropped \"this\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.15.1",
+   "father": "Bede",
+   "old": "rendered in Latin By this name",
+   "new": "rendered in Latin congregation. By this name",
+   "why": "proofread 2026-11-14: lost word and stop (congregation, as later in the passage)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.17.1",
+   "father": "Athanasius",
+   "old": "human nature. Arian. For as",
+   "new": "human nature. For as",
+   "why": "proofread 2026-11-14: margin debris \"Arian.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.18.2",
+   "father": "Chrysostom",
+   "old": "The word caPtivity",
+   "new": "The word captivity",
+   "why": "proofread 2026-11-14: OCR case: caPtivity"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.18.2",
+   "father": "Cyril",
+   "old": "has i Thess. removed",
+   "new": "has removed",
+   "why": "proofread 2026-11-14: margin debris \"i Thess.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.19.1",
+   "father": "Bede",
+   "old": "retribution a; that is",
+   "new": "retribution; that is",
+   "why": "proofread 2026-11-14: stray \"a\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.22.1",
+   "father": "Chrysostom",
+   "old": "the people to Matt, greater malice",
+   "new": "the people to greater malice",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.22.1",
+   "father": "Chrysostom",
+   "old": "power of WOrds",
+   "new": "power of words",
+   "why": "proofread 2026-11-14: OCR case: WOrds"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.22.1",
+   "father": "Chrysostom",
+   "old": "And they said. Is not",
+   "new": "And they said, Is not",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.23.1",
+   "father": "Chrysostom",
+   "old": "miracles, came to them",
+   "new": "miracles, He came to them",
+   "why": "proofread 2026-11-14: dropped subject \"He\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.23.1",
+   "father": "Gloss",
+   "old": "many cures Capernaum",
+   "new": "many cures in Capernaum",
+   "why": "proofread 2026-11-14: dropped \"in\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.24.1",
+   "father": "Cyril",
+   "old": "As if He says. You wish",
+   "new": "As if He says, You wish",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.32.1",
+   "father": "Bede",
+   "old": "his actions be lies what",
+   "new": "his actions belies what",
+   "why": "proofread 2026-11-14: split word: be lies"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.38.1",
+   "father": "Cyril",
+   "old": "a poor Matt, man",
+   "new": "a poor man",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.43.1",
+   "father": "Greek Expositor",
+   "old": "other cities also, Mark says",
+   "new": "other cities also. Mark says",
+   "why": "proofread 2026-11-14: run-on: missing stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.4.44.1",
+   "father": "Chrysostom",
+   "old": "to go Matt-about",
+   "new": "to go about",
+   "why": "proofread 2026-11-14: margin debris \"Matt-\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.1.1",
+   "father": "Ambrose",
+   "old": "And if came to pass",
+   "new": "And it came to pass",
+   "why": "proofread 2026-11-14: OCR: if → it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.3.2",
+   "father": "Bede",
+   "old": "there one heart",
+   "new": "there was one heart",
+   "why": "proofread 2026-11-14: dropped \"was\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.4.1",
+   "father": "Cyril",
+   "old": "left off speaking-,",
+   "new": "left off speaking,",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.5.2",
+   "father": "Ambrose",
+   "old": "that is which holds Judas",
+   "new": "that is shaken which holds Judas",
+   "why": "proofread 2026-11-14: dropped \"shaken\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.7.1",
+   "father": "Ambrose",
+   "old": "both ships. -For at",
+   "new": "both ships. For at",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.7.2",
+   "father": "Cyril",
+   "old": "heads and' shepherds",
+   "new": "heads and shepherds",
+   "why": "proofread 2026-11-14: stray apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.9.1",
+   "father": "Gregory of Nyssa",
+   "old": "Peter he was astonished",
+   "new": "Peter was astonished",
+   "why": "proofread 2026-11-14: stray \"he\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.9.1",
+   "father": "Augustine",
+   "old": "who thought to have been",
+   "new": "who is thought to have been",
+   "why": "proofread 2026-11-14: dropped \"is\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.11.1",
+   "father": "Chrysostom",
+   "old": "eagerly Matt, engaged",
+   "new": "eagerly engaged",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.11.4",
+   "father": "Augustine",
+   "old": "when they troubled",
+   "new": "when they are troubled",
+   "why": "proofread 2026-11-14: dropped \"are\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.12.1",
+   "father": "Ambrose",
+   "old": "any par-city",
+   "new": "any particular city",
+   "why": "proofread 2026-11-14: OCR hyphen break: par-city → particular city"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.12.1",
+   "father": "Athanasius",
+   "old": "the lePer worshipped",
+   "new": "the leper worshipped",
+   "why": "proofread 2026-11-14: OCR case: lePer"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.12.2",
+   "father": "Ambrose",
+   "old": "his handy and touched",
+   "new": "his hand, and touched",
+   "why": "proofread 2026-11-14: OCR: handy → hand,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.13.1",
+   "father": "Gregory of Nyssa",
+   "old": "when by ing it",
+   "new": "when by touching it",
+   "why": "proofread 2026-11-14: lost word: \"by ing\" → \"by touching\" (touch named in next lines)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.14.1",
+   "father": "Cyril",
+   "old": "divine power, Numb. declared",
+   "new": "divine power, declared",
+   "why": "proofread 2026-11-14: margin debris \"Numb.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.20.1",
+   "father": "Chrysostom",
+   "old": "faith also of sufferer",
+   "new": "faith also of the sufferer",
+   "why": "proofread 2026-11-14: dropped \"the\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.20.1",
+   "father": "Chrysostom",
+   "old": "submitted to Matt, be let down",
+   "new": "submitted to be let down",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.21.1",
+   "father": "Chrysostom",
+   "old": "in their hearts Hence it follows",
+   "new": "in their hearts. Hence it follows",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.21.1",
+   "father": "Chrysostom",
+   "old": "saying ', Who is this",
+   "new": "saying, Who is this",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.24.2",
+   "father": "Chrysostom",
+   "old": "Take up led.",
+   "new": "Take up thy bed.",
+   "why": "proofread 2026-11-14: OCR: \"led\" → \"thy bed\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.26.1",
+   "father": "Ambrose",
+   "old": "casteth out fear, But this",
+   "new": "casteth out fear. But this",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.27.1",
+   "father": "Augustine",
+   "old": "goes on lo mention",
+   "new": "goes on to mention",
+   "why": "proofread 2026-11-14: OCR: lo → to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.27.1",
+   "father": "Augustine",
+   "old": "things, lie went forth",
+   "new": "things, he went forth",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.27.1",
+   "father": "Chrysostom",
+   "old": "in Matt Here mark",
+   "new": "Here mark",
+   "why": "proofread 2026-11-14: margin debris \"in Matt\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.29.1",
+   "father": "Chrysostom",
+   "old": "by the Pharisees, were envious",
+   "new": "by the Pharisees, who were envious",
+   "why": "proofread 2026-11-14: dropped \"who\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.30.1",
+   "father": "Augustine",
+   "old": "the other con. Evangelists",
+   "new": "the other Evangelists",
+   "why": "proofread 2026-11-14: margin debris \"con.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.32.1",
+   "father": "Chrysostom",
+   "old": "It follows, came not to call",
+   "new": "It follows, I came not to call",
+   "why": "proofread 2026-11-14: dropped \"I\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.34.1",
+   "father": "Augustine",
+   "old": "one is tribulation",
+   "new": "one in tribulation",
+   "why": "proofread 2026-11-14: OCR: is → in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.34.1",
+   "father": "Cyril",
+   "old": "shadow of tire law",
+   "new": "shadow of the law",
+   "why": "proofread 2026-11-14: OCR: tire → the"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.35.1",
+   "father": "Basil",
+   "old": "fast, i. c. refuse",
+   "new": "fast, i. e. refuse",
+   "why": "proofread 2026-11-14: OCR: i. c. → i. e."
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.38.1",
+   "father": "Augustine",
+   "old": "are com-to old skins",
+   "new": "are compared to old skins",
+   "why": "proofread 2026-11-14: OCR hyphen break: com-to → compared to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.5.38.1",
+   "father": "Gregory",
+   "old": "doctrine, and Sap. i, cause",
+   "new": "doctrine, and cause",
+   "why": "proofread 2026-11-14: margin debris \"Sap. i,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.1.1",
+   "father": "Bede",
+   "old": "ears of com they",
+   "new": "ears of corn they",
+   "why": "proofread 2026-11-14: OCR: com → corn"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.1.1",
+   "father": "Theophylact",
+   "old": "after the first, cause the Jews",
+   "new": "after the first, because the Jews",
+   "why": "proofread 2026-11-14: OCR: cause → because"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.1.1",
+   "father": "Isidore",
+   "old": "the second-first, i. i. Ep. because",
+   "new": "the second-first, because",
+   "why": "proofread 2026-11-14: margin debris \"i. i. Ep.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.1.1",
+   "father": "Epiphanius",
+   "old": "were 'loosened",
+   "new": "were loosened",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.2.1",
+   "father": "Cyril",
+   "old": "said unto them. Why do ye",
+   "new": "said unto them, Why do ye",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.3.1",
+   "father": "Ambrose",
+   "old": "said to them. Have ye not",
+   "new": "said to them, Have ye not",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.3.1",
+   "father": "Chrysostom",
+   "old": "whenever the Speaks for",
+   "new": "whenever He speaks for",
+   "why": "proofread 2026-11-14: OCR: \"the Speaks\" → \"He speaks\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.5.1",
+   "father": "Chrysostom",
+   "old": "for lie said",
+   "new": "for he said",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.5.1",
+   "father": "Bede",
+   "old": "ears in their bands",
+   "new": "ears in their hands",
+   "why": "proofread 2026-11-14: OCR: bands → hands"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.11.1",
+   "father": "Cyril",
+   "old": "thou breath est forth",
+   "new": "thou breathest forth",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.11.2",
+   "father": "Ambrose",
+   "old": "the hand is i Kings stretched",
+   "new": "the hand is stretched",
+   "why": "proofread 2026-11-14: margin debris \"i Kings\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.13.1",
+   "father": "Gloss",
+   "old": "as defenders witnesses",
+   "new": "as defenders and witnesses",
+   "why": "proofread 2026-11-14: dropped \"and\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.13.4",
+   "father": "Ambrose",
+   "old": "And it was day, he called",
+   "new": "And when it was day, he called",
+   "why": "proofread 2026-11-14: dropped \"when\" (Luke 6:13)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.17.1",
+   "father": "Bede",
+   "old": "states being-Gentile",
+   "new": "states being Gentile",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.20.3",
+   "father": "Basil",
+   "old": "deserves a blessing-,",
+   "new": "deserves a blessing,",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.21.1",
+   "father": "Bede",
+   "old": "shall made manifest",
+   "new": "shall be made manifest",
+   "why": "proofread 2026-11-14: dropped \"be\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.22.1",
+   "father": "Bede",
+   "old": "beloved by Christ, It follows",
+   "new": "beloved by Christ. It follows",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.22.1",
+   "father": "Bede",
+   "old": "and weep for joy",
+   "new": "and leap for joy",
+   "why": "proofread 2026-11-14: OCR: weep → leap (Luke 6:23)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.27.1",
+   "father": "Basil",
+   "old": "harm in any way tOb any one",
+   "new": "harm in any way to any one",
+   "why": "proofread 2026-11-14: OCR: tOb → to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.27.1",
+   "father": "Chrysostom",
+   "old": "Do Matt-good to them",
+   "new": "Do good to them",
+   "why": "proofread 2026-11-14: margin debris \"Matt-\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.29.1",
+   "father": "Basil",
+   "old": "suffered insult, in App. but if",
+   "new": "suffered insult, but if",
+   "why": "proofread 2026-11-14: margin debris \"in App.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.32.1",
+   "father": "Chrysostom",
+   "old": "regarding it sOlely as",
+   "new": "regarding it solely as",
+   "why": "proofread 2026-11-14: OCR: sOlely → solely"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.35.3",
+   "father": "Ambrose",
+   "old": "kind to the unthankful) and to",
+   "new": "kind to the unthankful, and to",
+   "why": "proofread 2026-11-14: stray bracket for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.38.1",
+   "father": "Basil",
+   "old": "in doing good works sinning, will",
+   "new": "in doing good works or sinning, will",
+   "why": "proofread 2026-11-14: dropped word: \"or\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.41.1",
+   "father": "Theophylact",
+   "old": "in thy brothers eye",
+   "new": "in thy brother's eye",
+   "why": "proofread 2026-11-14: lost apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.6.45.1",
+   "father": "Chrysostom",
+   "old": "that wicked Matt, words are",
+   "new": "that wicked words are",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.3.1",
+   "father": "Augustine",
+   "old": "centurion came tou him",
+   "new": "centurion came to him",
+   "why": "proofread 2026-11-14: OCR: tou → to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.4.1",
+   "father": "Chrysostom",
+   "old": "tell us that the Horn. centurion said",
+   "new": "tell us that the centurion said",
+   "why": "proofread 2026-11-14: margin debris \"Horn.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.4.1",
+   "father": "Chrysostom",
+   "old": "saying that lie was worthy",
+   "new": "saying that he was worthy",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.7.1",
+   "father": "Ambrose",
+   "old": "my servant sit all be",
+   "new": "my servant shall be",
+   "why": "proofread 2026-11-14: OCR: sit all → shall"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.8.1",
+   "father": "Chrysostom",
+   "old": "to the Only-begotten, Hom. \"Make man,\"",
+   "new": "to the Only-begotten, \"Make man,\"",
+   "why": "proofread 2026-11-14: margin debris \"Hom.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.13.1",
+   "father": "Chrysostom",
+   "old": "And lie came.",
+   "new": "And he came.",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.14.1",
+   "father": "Titus of Bostra",
+   "old": "laid his own i Kings body",
+   "new": "laid his own body",
+   "why": "proofread 2026-11-14: margin debris \"i Kings\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.19.2",
+   "father": "Cyril",
+   "old": "alter Ho had tasted death",
+   "new": "after He had tasted death",
+   "why": "proofread 2026-11-14: OCR: alter Ho → after He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.20.1",
+   "father": "Cyril",
+   "old": "said unto them., Go your way",
+   "new": "said unto them, Go your way",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.20.2",
+   "father": "Theophylact",
+   "old": "also the words of Elias, saying",
+   "new": "also the words of Esaias, saying",
+   "why": "proofread 2026-11-14: misread: Elias → Esaias (Isaiah 35)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.24.1",
+   "father": "Cyril",
+   "old": "concerning John, what ye out for to see?",
+   "new": "concerning John, What went ye out for to see?",
+   "why": "proofread 2026-11-14: dropped word: \"went\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.24.1",
+   "father": "Cyril",
+   "old": "For such he appeal's to be",
+   "new": "For such he appears to be",
+   "why": "proofread 2026-11-14: OCR: appeal's → appears"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.27.1",
+   "father": "Titus of Bostra",
+   "old": "because be was by nature",
+   "new": "because he was by nature",
+   "why": "proofread 2026-11-14: OCR: be → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.28.1",
+   "father": "Isidore of Pelusium",
+   "old": "John 'was also",
+   "new": "John was also",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.29.1",
+   "father": "Cyril",
+   "old": "Pharisees and lawyers, who Matt, would not",
+   "new": "Pharisees and lawyers, who would not",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.30.1",
+   "father": "Eusebius",
+   "old": "words of the prophet. That thou mightest",
+   "new": "words of the prophet, That thou mightest",
+   "why": "proofread 2026-11-14: stray stop before quotation"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.35.1",
+   "father": "Ambrose",
+   "old": "may be taken Up? the unbelievers",
+   "new": "may be taken up, the unbelievers",
+   "why": "proofread 2026-11-14: OCR: \"Up?\" → \"up,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.36.1",
+   "father": "Gregory of Nyssa",
+   "old": "being puffed Up with",
+   "new": "being puffed up with",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.44.1",
+   "father": "Gregory",
+   "old": "As it follows. And she wiped",
+   "new": "As it follows, And she wiped",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.44.2",
+   "father": "Gregory",
+   "old": "who had bidden him saw if, he spake",
+   "new": "who had bidden him saw it, he spake",
+   "why": "proofread 2026-11-14: OCR: if → it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.47.1",
+   "father": "Chrysostom",
+   "old": "Wherefore I say unto you. Her sins",
+   "new": "Wherefore I say unto you, Her sins",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.47.1",
+   "father": "Titus of Bostra",
+   "old": "But Evan. it more frequently",
+   "new": "But it more frequently",
+   "why": "proofread 2026-11-14: margin debris \"Evan.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.48.1",
+   "father": "Chrysostom",
+   "old": "be self -confident",
+   "new": "be self-confident",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.49.3",
+   "father": "Augustine",
+   "old": "before he John came to Bethany",
+   "new": "before he came to Bethany",
+   "why": "proofread 2026-11-14: margin debris \"John\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.49.5",
+   "father": "Ambrose",
+   "old": "Wherever thou nearest the name",
+   "new": "Wherever thou hearest the name",
+   "why": "proofread 2026-11-14: OCR: nearest → hearest"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.49.5",
+   "father": "Ambrose",
+   "old": "but the s refreshing of",
+   "new": "but the refreshing of",
+   "why": "proofread 2026-11-14: stray letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.49.5",
+   "father": "Ambrose",
+   "old": "is not to i be despised",
+   "new": "is not to be despised",
+   "why": "proofread 2026-11-14: stray letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.7.49.8",
+   "father": "Ambrose",
+   "old": "His death. His resurrection",
+   "new": "His death, His resurrection",
+   "why": "proofread 2026-11-14: stray stop in list"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.3.1",
+   "father": "Jerome",
+   "old": "It was i a Jewish custom",
+   "new": "It was a Jewish custom",
+   "why": "proofread 2026-11-14: stray letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.5.1",
+   "father": "Bede",
+   "old": "that He Horn, might bear witness",
+   "new": "that He might bear witness",
+   "why": "proofread 2026-11-14: margin debris \"Horn,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.1",
+   "father": "Eusebius",
+   "old": "for they i, were not sowers",
+   "new": "for they were not sowers",
+   "why": "proofread 2026-11-14: stray mark \"i,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.1",
+   "father": "Titus of Bostra",
+   "old": "having never learned'?",
+   "new": "having never learned?",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.3",
+   "father": "Eusebius",
+   "old": "are also some who through covetousness",
+   "new": "There are also some who through covetousness",
+   "why": "proofread 2026-11-14: lost first word \"There\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.4",
+   "father": "Bede",
+   "old": "asked him, 8?c.",
+   "new": "asked him, &c.",
+   "why": "proofread 2026-11-14: OCR: 8?c. → &c."
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.5",
+   "father": "Origen",
+   "old": "yet not Prov. done",
+   "new": "yet not done",
+   "why": "proofread 2026-11-14: margin debris \"Prov.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.10.5",
+   "father": "Origen",
+   "old": "Book of Judges, Judges that the trees",
+   "new": "Book of Judges, that the trees",
+   "why": "proofread 2026-11-14: margin debris \"Judges\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.15.1",
+   "father": "Chrysostom",
+   "old": "careless hearers, Matt, some as weak",
+   "new": "careless hearers, some as weak",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.17.2",
+   "father": "Chrysostom",
+   "old": "view of all men, Matt, and fighting",
+   "new": "view of all men, and fighting",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.23.2",
+   "father": "Augustine",
+   "old": "save us, we Perish' Mark,",
+   "new": "save us, we perish; Mark,",
+   "why": "proofread 2026-11-14: OCR: \"Perish'\" → \"perish;\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.25.1",
+   "father": "Augustine",
+   "old": "Why ye so fearful?",
+   "new": "Why are ye so fearful?",
+   "why": "proofread 2026-11-14: dropped word: \"are\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.25.1",
+   "father": "Cyril",
+   "old": "being afraid wondered, Now the disciples",
+   "new": "being afraid wondered. Now the disciples",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.25.3",
+   "father": "Bede",
+   "old": "after His death Mark to His disciples",
+   "new": "after His death to His disciples",
+   "why": "proofread 2026-11-14: margin debris \"Mark\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.26.1",
+   "father": "Bede",
+   "old": "'; For Geraza",
+   "new": "For Geraza",
+   "why": "proofread 2026-11-14: stray marks at start"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.27.1",
+   "father": "Chrysostom",
+   "old": "there met him out city a certain man",
+   "new": "there met him out of the city a certain man",
+   "why": "proofread 2026-11-14: dropped words: \"of the\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.27.1",
+   "father": "Chrysostom",
+   "old": "neither abode Matt-in any house",
+   "new": "neither abode in any house",
+   "why": "proofread 2026-11-14: margin debris \"Matt-\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.35.1",
+   "father": "Titus of Bostra",
+   "old": "When they that Ant. fed them",
+   "new": "When they that fed them",
+   "why": "proofread 2026-11-14: margin debris \"Ant.\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.37.1",
+   "father": "Chrysostom",
+   "old": "But sup' observe the humility",
+   "new": "But observe the humility",
+   "why": "proofread 2026-11-14: margin debris \"sup'\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.39.1",
+   "father": "Theophylact",
+   "old": "sent him away, saying. Return",
+   "new": "sent him away, saying, Return",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.42.1",
+   "father": "Greek Expositor",
+   "old": "grave instead her nuptial bed",
+   "new": "grave instead of her nuptial bed",
+   "why": "proofread 2026-11-14: dropped word: \"of\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.42.1",
+   "father": "Chrysostom",
+   "old": "but lie knew that He would",
+   "new": "but He knew that He would",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.42.1",
+   "father": "Cyril",
+   "old": "had really put our flesh",
+   "new": "had really put on our flesh",
+   "why": "proofread 2026-11-14: dropped word: \"on\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.43.1",
+   "father": "Chrysostom",
+   "old": "she had not Matt-yet a right",
+   "new": "she had not yet a right",
+   "why": "proofread 2026-11-14: margin debris \"Matt-\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.48.1",
+   "father": "Origen",
+   "old": "Thy faith, hath made thee whole",
+   "new": "Thy faith hath made thee whole",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.48.2",
+   "father": "Bede",
+   "old": "far preferred to them, For if the head",
+   "new": "far preferred to them. For if the head",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.48.4",
+   "father": "Ambrose",
+   "old": "Thou shall walk after",
+   "new": "Thou shalt walk after",
+   "why": "proofread 2026-11-14: OCR: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.49.1",
+   "father": "Chrysostom",
+   "old": "might be made Matt, public",
+   "new": "might be made public",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.8.56.1",
+   "father": "Greek Expositor",
+   "old": "He gives the whole, But he who",
+   "new": "He gives the whole. But he who",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.1.1",
+   "father": "Cyril",
+   "old": "who once said. There is none",
+   "new": "who once said, There is none",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.2.1",
+   "father": "Chrysostom",
+   "old": "received competent Matt, proofs",
+   "new": "received competent proofs",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.5.1",
+   "father": "Ambrose",
+   "old": "for a testimony., &c.",
+   "new": "for a testimony, &c.",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.7.1",
+   "father": "Chrysostom",
+   "old": "Now Herod heard, Herod was the son",
+   "new": "Now Herod heard. Herod was the son",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.7.1",
+   "father": "Chrysostom",
+   "old": "And lie was perplexed",
+   "new": "And he was perplexed",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.9.1",
+   "father": "Chrysostom",
+   "old": "he says, John have beheaded",
+   "new": "he says, John have I beheaded",
+   "why": "proofread 2026-11-14: dropped word: \"I\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.10.1",
+   "father": "Bede",
+   "old": "which John suffered Matt, while",
+   "new": "which John suffered while",
+   "why": "proofread 2026-11-14: margin debris \"Matt,\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.13.1",
+   "father": "Cyril",
+   "old": "And they said. We have no more",
+   "new": "And they said, We have no more",
+   "why": "proofread 2026-11-14: stray stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.13.1",
+   "father": "Cyril",
+   "old": "except we go and meat for",
+   "new": "except we go and buy meat for",
+   "why": "proofread 2026-11-14: dropped word: \"buy\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.17.3",
+   "father": "Bede",
+   "old": "compose the one Catholic.",
+   "new": "compose the one Catholic Church.",
+   "why": "proofread 2026-11-14: dropped word: \"Church\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.18.2",
+   "father": "Augustine",
+   "old": "say that am, at",
+   "new": "say that I am, at",
+   "why": "proofread 2026-11-14: missing word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.23.1",
+   "father": "Cyril",
+   "old": "And lie said unto all",
+   "new": "And he said unto all",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.23.1",
+   "father": "Basil",
+   "old": "example of 'blameless",
+   "new": "example of blameless",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.23.2",
+   "father": "Greek Expositor",
+   "old": "these two, Isaac. Let",
+   "new": "these two, Let",
+   "why": "proofread 2026-11-14: margin debris: Isaac."
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.23.3",
+   "father": "Basil",
+   "old": "answer of death a, that",
+   "new": "answer of death, that",
+   "why": "proofread 2026-11-14: stray footnote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.26.2",
+   "father": "Cyril",
+   "old": "glory, and his Fathers,",
+   "new": "glory, and his Father's,",
+   "why": "proofread 2026-11-14: missing apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.26.2",
+   "father": "Cyril",
+   "old": "to he branded",
+   "new": "to be branded",
+   "why": "proofread 2026-11-14: OCR: he → be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.28.2",
+   "father": "Ambrose",
+   "old": "Peter went John i, up,",
+   "new": "Peter went up,",
+   "why": "proofread 2026-11-14: margin debris: John i,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.29.1",
+   "father": "Damascene",
+   "old": "the Father as His ning;",
+   "new": "the Father as His beginning;",
+   "why": "proofread 2026-11-14: scan hole: ning → beginning"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.31.1",
+   "father": "Chrysostom",
+   "old": "distinction in Matt, between",
+   "new": "distinction between",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.31.1",
+   "father": "Chrysostom",
+   "old": "exposed Himself to death",
+   "new": "exposed himself to death",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.32.1",
+   "father": "Chrysostom",
+   "old": "exceeding Matt, brightness",
+   "new": "exceeding brightness",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.33.2",
+   "father": "Chrysostom",
+   "old": "heard that sup' it was",
+   "new": "heard that it was",
+   "why": "proofread 2026-11-14: margin debris: sup'"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.36.1",
+   "father": "Cyril",
+   "old": "beloved Son I as if",
+   "new": "beloved Son! as if",
+   "why": "proofread 2026-11-14: OCR: I → !"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.43.2",
+   "father": "Bede",
+   "old": "deaf Matt and dumb",
+   "new": "deaf and dumb",
+   "why": "proofread 2026-11-14: margin debris: Matt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.43.2",
+   "father": "Bede",
+   "old": "brought upon His kingdom",
+   "new": "brought upon his kingdom",
+   "why": "proofread 2026-11-14: wrong capital (the devil's kingdom)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.46.1",
+   "father": "Theophylact",
+   "old": "Arid while they",
+   "new": "And while they",
+   "why": "proofread 2026-11-14: OCR: Arid → And"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.47.1",
+   "father": "Cyril",
+   "old": "their heart, Let him",
+   "new": "their heart. Let him",
+   "why": "proofread 2026-11-14: missing stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.49.1",
+   "father": "Cyril",
+   "old": "Christ's Matt, gifts",
+   "new": "Christ's gifts",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.50.2",
+   "father": "Ambrose",
+   "old": "to these, never knew you?",
+   "new": "to these, I never knew you?",
+   "why": "proofread 2026-11-14: missing word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.53.1",
+   "father": "Ambrose",
+   "old": "who were under cut.",
+   "new": "who were undevout.",
+   "why": "proofread 2026-11-14: OCR: under cut → undevout"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.54.1",
+   "father": "Ambrose",
+   "old": "for Numb, righteousness",
+   "new": "for righteousness",
+   "why": "proofread 2026-11-14: margin debris: Numb,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.54.2",
+   "father": "Titus of Bostra",
+   "old": "juster that the should",
+   "new": "juster that they should",
+   "why": "proofread 2026-11-14: OCR: the → they"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.55.1",
+   "father": "Ambrose",
+   "old": "thrust out., but",
+   "new": "thrust out, but",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.57.1",
+   "father": "Athanasius",
+   "old": "saying, will follow thee",
+   "new": "saying, I will follow thee",
+   "why": "proofread 2026-11-14: missing word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.57.1",
+   "father": "Cyril",
+   "old": "says to him. The foxes",
+   "new": "says to him, The foxes",
+   "why": "proofread 2026-11-14: stop for comma before quoted words"
+  },
+  {
+   "excerpt": "catena-luke.LUK.9.60.1",
+   "father": "Chrysostom",
+   "old": "becomes Matt us",
+   "new": "becomes us",
+   "why": "proofread 2026-11-14: margin debris: Matt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.1.1",
+   "father": "Augustine",
+   "old": "enlightening the by the Gospel",
+   "new": "enlightening the world by the Gospel",
+   "why": "proofread 2026-11-14: scan hole: world"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.1.2",
+   "father": "Gregory",
+   "old": "highway for isa. 40, our God",
+   "new": "highway for our God",
+   "why": "proofread 2026-11-14: margin debris: isa. 40,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.2.2",
+   "father": "Chrysostom",
+   "old": "to them Matt, power",
+   "new": "to them power",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.3.1",
+   "father": "Chrysostom",
+   "old": "This will Matt, suffice",
+   "new": "This will suffice",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.3.1",
+   "father": "Chrysostom",
+   "old": "the disciples Christ, when",
+   "new": "the disciples of Christ, when",
+   "why": "proofread 2026-11-14: missing word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.3.1",
+   "father": "Chrysostom",
+   "old": "among Matt, wolves",
+   "new": "among wolves",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.1",
+   "father": "Gregory",
+   "old": "engaged in His temporal",
+   "new": "engaged in his temporal",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.2",
+   "father": "Cyril",
+   "old": "when He said, send you",
+   "new": "when He said, I send you",
+   "why": "proofread 2026-11-14: missing word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.2",
+   "father": "Cyril",
+   "old": "straight on to Kings your work",
+   "new": "straight on to your work",
+   "why": "proofread 2026-11-14: margin debris: Kings"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.3",
+   "father": "Ambrose",
+   "old": "why in -Egypt",
+   "new": "why in Egypt",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.4.3",
+   "father": "Ambrose",
+   "old": "fears no poison..",
+   "new": "fears no poison.",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.5.1",
+   "father": "Chrysostom",
+   "old": "as a Matt, sign",
+   "new": "as a sign",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.6.1",
+   "father": "Titus of Bostra",
+   "old": "Bos. But it is said",
+   "new": "But it is said",
+   "why": "proofread 2026-11-14: running-head debris: Bos."
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.6.1",
+   "father": "Titus of Bostra",
+   "old": "Peace he to this house",
+   "new": "Peace be to this house",
+   "why": "proofread 2026-11-14: OCR: he → be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.6.1",
+   "father": "Titus of Bostra",
+   "old": "return unto again",
+   "new": "return unto you again",
+   "why": "proofread 2026-11-14: missing word: you"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.9.1",
+   "father": "Theophylact",
+   "old": "say to them. The kingdom",
+   "new": "say to them, The kingdom",
+   "why": "proofread 2026-11-14: stop for comma before quoted words"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.13.1",
+   "father": "Bede",
+   "old": "David and Kings Solomon",
+   "new": "David and Solomon",
+   "why": "proofread 2026-11-14: margin debris: Kings"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.14.1",
+   "father": "Chrysostom",
+   "old": "lending A both",
+   "new": "lending both",
+   "why": "proofread 2026-11-14: stray letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.16.2",
+   "father": "Bede",
+   "old": "despiseth we, Matt, (refusing",
+   "new": "despiseth me, (refusing",
+   "why": "proofread 2026-11-14: OCR we → me; margin debris Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.17.1",
+   "father": "Cyril",
+   "old": "saying. Lord, even",
+   "new": "saying, Lord, even",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.17.1",
+   "father": "Cyril",
+   "old": "subject unto iis",
+   "new": "subject unto us",
+   "why": "proofread 2026-11-14: OCR: iis → us"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.18.1",
+   "father": "Gregory",
+   "old": "in order put down",
+   "new": "in order to put down",
+   "why": "proofread 2026-11-14: missing word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.18.1",
+   "father": "Gregory",
+   "old": "disciples, Mor. Himself",
+   "new": "disciples, Himself",
+   "why": "proofread 2026-11-14: margin debris: Mor."
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.18.1",
+   "father": "Gregory",
+   "old": "the teacher pride suffered",
+   "new": "the teacher of pride suffered",
+   "why": "proofread 2026-11-14: missing word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.18.1",
+   "father": "Bede",
+   "old": "I see now,' but",
+   "new": "I see now, but",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.19.1",
+   "father": "Cyril",
+   "old": "only -begotten",
+   "new": "only-begotten",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.19.1",
+   "father": "Titus of Bostra",
+   "old": "arid kill them",
+   "new": "and kill them",
+   "why": "proofread 2026-11-14: OCR: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.19.1",
+   "father": "Titus of Bostra",
+   "old": "those Numb, serpents",
+   "new": "those serpents",
+   "why": "proofread 2026-11-14: margin debris: Numb,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.21.2",
+   "father": "Titus of Bostra",
+   "old": "[give thanks to thee",
+   "new": "I give thanks to thee",
+   "why": "proofread 2026-11-14: OCR: [ → I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.21.2",
+   "father": "Athanasius",
+   "old": "of evil, tes but form",
+   "new": "of evil, but form",
+   "why": "proofread 2026-11-14: margin debris: tes"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.21.2",
+   "father": "Athanasius",
+   "old": "affirming the word Moses",
+   "new": "affirming the word of Moses",
+   "why": "proofread 2026-11-14: missing word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.21.4",
+   "father": "Chrysostom",
+   "old": "Pharisees, Matt, (for",
+   "new": "Pharisees, (for",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.22.3",
+   "father": "Athanasius",
+   "old": "saying, Arian. that",
+   "new": "saying, that",
+   "why": "proofread 2026-11-14: margin debris: Arian."
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.22.3",
+   "father": "Origen",
+   "old": "the darkness which He is, has made",
+   "new": "the darkness which He has made",
+   "why": "proofread 2026-11-14: stray words: is,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.22.3",
+   "father": "Ambrose",
+   "old": "to whom lie will",
+   "new": "to whom He will",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.24.1",
+   "father": "Chrysostom",
+   "old": "from this Joan. Horn. saying",
+   "new": "from this saying",
+   "why": "proofread 2026-11-14: margin debris: Joan. Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.27.1",
+   "father": "Basil",
+   "old": "with all My mind",
+   "new": "with all thy mind",
+   "why": "proofread 2026-11-14: OCR: My → thy"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.27.1",
+   "father": "Gregory of Nyssa",
+   "old": "found i plants",
+   "new": "found in plants",
+   "why": "proofread 2026-11-14: OCR: i → in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.27.3",
+   "father": "Basil",
+   "old": "He Horn, gave us",
+   "new": "He gave us",
+   "why": "proofread 2026-11-14: margin debris: Horn,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.27.3",
+   "father": "Gregory",
+   "old": "as thyself, Moral how",
+   "new": "as thyself, how",
+   "why": "proofread 2026-11-14: margin debris: Moral"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.34.1",
+   "father": "Augustine",
+   "old": "as them art",
+   "new": "as thou art",
+   "why": "proofread 2026-11-14: OCR: them → thou"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.34.1",
+   "father": "Augustine",
+   "old": "punishment arid the guilt",
+   "new": "punishment and the guilt",
+   "why": "proofread 2026-11-14: OCR: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.34.2",
+   "father": "Ambrose",
+   "old": "therefore Ps. placed us",
+   "new": "therefore He placed us",
+   "why": "proofread 2026-11-14: margin debris Ps. over He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.35.1",
+   "father": "Ambrose",
+   "old": "the day us, of our",
+   "new": "the day of our",
+   "why": "proofread 2026-11-14: stray word: us,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.37.1",
+   "father": "Augustine",
+   "old": "clear, that Matt in this",
+   "new": "clear, that in this",
+   "why": "proofread 2026-11-14: margin debris: Matt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.40.3",
+   "father": "Basil",
+   "old": "suPPort",
+   "new": "support",
+   "why": "proofread 2026-11-14: OCR case slip"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.40.3",
+   "father": "Basil",
+   "old": "Oar Lord did",
+   "new": "Our Lord did",
+   "why": "proofread 2026-11-14: OCR: Oar → Our"
+  },
+  {
+   "excerpt": "catena-luke.LUK.10.40.4",
+   "father": "Theophylact",
+   "old": "hurry arid anxiety",
+   "new": "hurry and anxiety",
+   "why": "proofread 2026-11-14: OCR: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.1.2",
+   "father": "Gregory of Nyssa",
+   "old": "to His dis-who wisely",
+   "new": "to His disciples, who wisely",
+   "why": "proofread 2026-11-14: broken hyphenation"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.2",
+   "father": "Gregory of Nyssa",
+   "old": "saying, 'Whereas thou",
+   "new": "saying, Whereas thou",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.2",
+   "father": "Gregory of Nyssa",
+   "old": "as when He sees",
+   "new": "as when he sees",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.2",
+   "father": "Chrysostom",
+   "old": "Glory be thee, God",
+   "new": "Glory be to thee, God",
+   "why": "proofread 2026-11-14: missing word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.2",
+   "father": "Chrysostom",
+   "old": "likewise when He beholds",
+   "new": "likewise when he beholds",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.3",
+   "father": "Origen",
+   "old": "Thy dom come",
+   "new": "Thy kingdom come",
+   "why": "proofread 2026-11-14: scan hole: kingdom"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.3",
+   "father": "Cyril",
+   "old": "according to Matthew, a Thy will",
+   "new": "according to Matthew, Thy will",
+   "why": "proofread 2026-11-14: stray footnote letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.2.4",
+   "father": "Gregory of Nyssa",
+   "old": "like to of Angels",
+   "new": "like to that of Angels",
+   "why": "proofread 2026-11-14: missing word: that"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.3.1",
+   "father": "Augustine",
+   "old": "that Cord's prayer",
+   "new": "that the Lord's prayer",
+   "why": "proofread 2026-11-14: OCR: Cord's → the Lord's"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.4.1",
+   "father": "Gregory of Nyssa",
+   "old": "through Dom. good works",
+   "new": "through good works",
+   "why": "proofread 2026-11-14: margin debris: Dom."
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.4.3",
+   "father": "Maximus",
+   "old": "My brethren, James count",
+   "new": "My brethren, count",
+   "why": "proofread 2026-11-14: margin debris: James"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.5.1",
+   "father": "Cyril",
+   "old": "unto them. Which of you",
+   "new": "unto them, Which of you",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.1",
+   "father": "Ambrose",
+   "old": "shall go into him at midnight",
+   "new": "shall go unto him at midnight",
+   "why": "proofread 2026-11-14: OCR: into → unto"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.2",
+   "father": "Augustine",
+   "old": "some friend yours comes",
+   "new": "some friend of yours comes",
+   "why": "proofread 2026-11-14: missing word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.2",
+   "father": "Augustine",
+   "old": "answer and say. Trouble",
+   "new": "answer and say, Trouble",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.3",
+   "father": "Gloss",
+   "old": "praying, by or showing",
+   "new": "praying, by showing",
+   "why": "proofread 2026-11-14: stray word: or"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.7.5",
+   "father": "Augustine",
+   "old": "Or else, the to whom",
+   "new": "Or else, the friend to whom",
+   "why": "proofread 2026-11-14: scan hole: friend"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.9.1",
+   "father": "Augustine",
+   "old": "And I say unto you. Ask",
+   "new": "And I say unto you, Ask",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.9.2",
+   "father": "Greek Expositor",
+   "old": "perhaps he Antioch. means",
+   "new": "perhaps he means",
+   "why": "proofread 2026-11-14: margin debris: Antioch."
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.11.1",
+   "father": "Cyril",
+   "old": "hinder est him",
+   "new": "hinderest him",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.13.1",
+   "father": "Athanasius",
+   "old": "A than Now unless",
+   "new": "Now unless",
+   "why": "proofread 2026-11-14: margin debris: A than"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.13.1",
+   "father": "Augustine",
+   "old": "seekest thou.? or",
+   "new": "seekest thou? or",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.14.1",
+   "father": "Titus of Bostra",
+   "old": "when lie had cast",
+   "new": "when he had cast",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.15.1",
+   "father": "Bede",
+   "old": "some of them said. He casteth",
+   "new": "some of them said, He casteth",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.15.1",
+   "father": "Bede",
+   "old": "was the God Accaron",
+   "new": "was the god of Accaron",
+   "why": "proofread 2026-11-14: missing word: of; wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.17.1",
+   "father": "Cyril",
+   "old": "but Matt, pondered",
+   "new": "but pondered",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.19.1",
+   "father": "Chrysostom",
+   "old": "if I by zebub cast",
+   "new": "if I by Beelzebub cast",
+   "why": "proofread 2026-11-14: scan hole: zebub → Beelzebub"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.20.1",
+   "father": "Cyril",
+   "old": "if by the finger of God cast",
+   "new": "if I by the finger of God cast",
+   "why": "proofread 2026-11-14: missing word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.20.1",
+   "father": "Augustine",
+   "old": "whether he of men",
+   "new": "whether he be of men",
+   "why": "proofread 2026-11-14: missing word: be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.20.2",
+   "father": "Athanasius",
+   "old": "Himself as Arian. inferior",
+   "new": "Himself as inferior",
+   "why": "proofread 2026-11-14: margin debris: Arian."
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.24.1",
+   "father": "Cyril",
+   "old": "relates to Matt, the Jews",
+   "new": "relates to the Jews",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.27.2",
+   "father": "Chrysostom",
+   "old": "if it Matt, profited",
+   "new": "if it profited",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.29.1",
+   "father": "Ambrose",
+   "old": "no sign, be given",
+   "new": "no sign be given",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.31.1",
+   "father": "Bede",
+   "old": "For site came",
+   "new": "For she came",
+   "why": "proofread 2026-11-14: OCR: site → she"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.32.1",
+   "father": "Chrysostom",
+   "old": "from men 'like",
+   "new": "from men like",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.32.1",
+   "father": "Chrysostom",
+   "old": "be the Horn, more",
+   "new": "be the more",
+   "why": "proofread 2026-11-14: margin debris: Horn,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.34.1",
+   "father": "Bede",
+   "old": "should he given",
+   "new": "should be given",
+   "why": "proofread 2026-11-14: OCR: he → be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.34.2",
+   "father": "Theophylact",
+   "old": "light of I he body",
+   "new": "light of the body",
+   "why": "proofread 2026-11-14: split word: I he → the"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.34.2",
+   "father": "Origen",
+   "old": "guile? or division",
+   "new": "guile, or division",
+   "why": "proofread 2026-11-14: stray mark: ? → ,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.41.2",
+   "father": "Bede",
+   "old": "our quod necessary food",
+   "new": "our necessary food",
+   "why": "proofread 2026-11-14: stray word: quod"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.42.1",
+   "father": "Augustine",
+   "old": "explains it to us. E For",
+   "new": "explains it to us. For",
+   "why": "proofread 2026-11-14: stray letter: E"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.43.1",
+   "father": "Cyril",
+   "old": "for which lie blames",
+   "new": "for which he blames",
+   "why": "proofread 2026-11-14: misread: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.45.1",
+   "father": "Cyril",
+   "old": "thus saying thou us also",
+   "new": "thus saying thou reproachest us also",
+   "why": "proofread 2026-11-14: dropped word: reproachest (Luke 11:45)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.11.50.1",
+   "father": "Chrysostom",
+   "old": "undeserved, for Matt, they have",
+   "new": "undeserved, for they have",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.3.1",
+   "father": "Chrysostom",
+   "old": "your virtue. Matt. Therefore",
+   "new": "your virtue. Therefore",
+   "why": "proofread 2026-11-14: margin debris: Matt."
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.6.1",
+   "father": "Ambrose",
+   "old": "how can He man?",
+   "new": "how can He forget man?",
+   "why": "proofread 2026-11-14: dropped word: forget"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.7.1",
+   "father": "Ambrose",
+   "old": "than a sparrow;9-but",
+   "new": "than a sparrow; but",
+   "why": "proofread 2026-11-14: stray debris: 9-"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.7.1",
+   "father": "Origen",
+   "old": "being-lightly esteemed",
+   "new": "being lightly esteemed",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.7.3",
+   "father": "Bede",
+   "old": "Ye are more., which",
+   "new": "Ye are more, which",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.8.1",
+   "father": "Chrysostom",
+   "old": "useful for all. He speaks",
+   "new": "useful for all, He speaks",
+   "why": "proofread 2026-11-14: stop for comma mid-sentence"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.8.1",
+   "father": "Cyril",
+   "old": "thou shall be saved",
+   "new": "thou shalt be saved",
+   "why": "proofread 2026-11-14: typo: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.9.1",
+   "father": "Eusebius",
+   "old": "bears witness, For not as abiding",
+   "new": "bears witness. For not as abiding",
+   "why": "proofread 2026-11-14: comma for stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.9.1",
+   "father": "Eusebius",
+   "old": "lie rightly declares",
+   "new": "He rightly declares",
+   "why": "proofread 2026-11-14: misread: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.10.5",
+   "father": "Athanasius",
+   "old": "Nevertheless., in the day",
+   "new": "Nevertheless, in the day",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.10.6",
+   "father": "Bede",
+   "old": "the fruits 'themselves of",
+   "new": "the fruits themselves of",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.10.7",
+   "father": "Augustine",
+   "old": "but only james of a certain",
+   "new": "but only of a certain",
+   "why": "proofread 2026-11-14: margin debris: james"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.15.1",
+   "father": "Cyril",
+   "old": "hewn stone, Amos and shall",
+   "new": "hewn stone, and shall",
+   "why": "proofread 2026-11-14: margin debris: Amos"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.17.1",
+   "father": "Gregory",
+   "old": "What shall I he surely",
+   "new": "What shall I do? he surely",
+   "why": "proofread 2026-11-14: dropped words: do? (Luke 12:17)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.27.1",
+   "father": "Chrysostom",
+   "old": "Consider the of the field",
+   "new": "Consider the lilies of the field",
+   "why": "proofread 2026-11-14: dropped word: lilies"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.29.2",
+   "father": "Augustine",
+   "old": "should to boast",
+   "new": "should boast",
+   "why": "proofread 2026-11-14: stray word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.32.1",
+   "father": "Chrysostom",
+   "old": "but -with all matters",
+   "new": "but with all matters",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.32.2",
+   "father": "Gregory of Nazianzus",
+   "old": "lest yOU should",
+   "new": "lest you should",
+   "why": "proofread 2026-11-14: case slip: yOU"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.37.1",
+   "father": "Cyril",
+   "old": "gird himself '; from which",
+   "new": "gird himself; from which",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.37.1",
+   "father": "Cyril",
+   "old": "gird Him-self with",
+   "new": "gird Himself with",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.40.1",
+   "father": "Gregory",
+   "old": "in order as we cannot",
+   "new": "in order that as we cannot",
+   "why": "proofread 2026-11-14: dropped word: that"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.43.1",
+   "father": "Isidore",
+   "old": "because a 'benefit",
+   "new": "because a benefit",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.46.2",
+   "father": "Bede",
+   "old": "who have i never attained",
+   "new": "who have never attained",
+   "why": "proofread 2026-11-14: stray letter: i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.48.1",
+   "father": "Theophylact",
+   "old": "saying, lie is deservedly",
+   "new": "saying, He is deservedly",
+   "why": "proofread 2026-11-14: misread: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.49.1",
+   "father": "Ambrose",
+   "old": "charge of tHeir Lord's",
+   "new": "charge of their Lord's",
+   "why": "proofread 2026-11-14: case slip: tHeir"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.52.1",
+   "father": "Cyril",
+   "old": "and things heaven.",
+   "new": "and things in heaven.",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.12.52.3",
+   "father": "Ambrose",
+   "old": "say, that the house there are",
+   "new": "say, that in the house there are",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.1.1",
+   "father": "Gloss",
+   "old": "told him of the... whose blood",
+   "new": "told him of the Galilaeans, whose blood",
+   "why": "proofread 2026-11-14: lost word: Galilaeans (Luke 13:1)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.2.1",
+   "father": "Cyril",
+   "old": "Judas Acts of Galilee",
+   "new": "Judas of Galilee",
+   "why": "proofread 2026-11-14: margin debris: Acts"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.7.1",
+   "father": "Ambrose",
+   "old": "Cut it down., why cumber eth it",
+   "new": "Cut it down, why cumbereth it",
+   "why": "proofread 2026-11-14: doubled stop + split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.7.2",
+   "father": "Ambrose",
+   "old": "thou shall cut it down",
+   "new": "thou shalt cut it down",
+   "why": "proofread 2026-11-14: typo: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.9.1",
+   "father": "Augustine",
+   "old": "after that sup' thou shalt",
+   "new": "after that thou shalt",
+   "why": "proofread 2026-11-14: margin debris: sup'"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.10.1",
+   "father": "Chrysostom",
+   "old": "not separately, I but in",
+   "new": "not separately, but in",
+   "why": "proofread 2026-11-14: stray letter: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.21.2",
+   "father": "Theophylact",
+   "old": "he will make? the whole",
+   "new": "he will make the whole",
+   "why": "proofread 2026-11-14: stray ?"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.24.2",
+   "father": "Gregory",
+   "old": "Mor. when He was about",
+   "new": "When He was about",
+   "why": "proofread 2026-11-14: margin debris: Mor."
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.24.2",
+   "father": "Cyril",
+   "old": "nothing iii answer",
+   "new": "nothing in answer",
+   "why": "proofread 2026-11-14: misread: iii → in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.24.2",
+   "father": "Augustine",
+   "old": "and Matt few there are",
+   "new": "and few there are",
+   "why": "proofread 2026-11-14: margin debris: Matt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.25.1",
+   "father": "Bede",
+   "old": "say to you, know you not",
+   "new": "say to you, I know you not",
+   "why": "proofread 2026-11-14: dropped word: I (Luke 13:25)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.27.1",
+   "father": "Bede",
+   "old": "for explanation, hast taught",
+   "new": "for explanation, Thou hast taught",
+   "why": "proofread 2026-11-14: dropped word: Thou (Luke 13:26)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.31.1",
+   "father": "Cyril",
+   "old": "And, he said unto them",
+   "new": "And he said unto them",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.32.1",
+   "father": "Cyril",
+   "old": "I cast, out devils",
+   "new": "I cast out devils",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.33.1",
+   "father": "Theophylact",
+   "old": "many days? as we also",
+   "new": "many days, as we also",
+   "why": "proofread 2026-11-14: stray ? for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.33.2",
+   "father": "Chrysostom",
+   "old": "or very Matt, great love",
+   "new": "or very great love",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.1",
+   "father": "Theophylact",
+   "old": "shews that Psalm it was",
+   "new": "shews that it was",
+   "why": "proofread 2026-11-14: margin debris: Psalm"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.1",
+   "father": "Augustine",
+   "old": "said when Cons. our Lord",
+   "new": "said when our Lord",
+   "why": "proofread 2026-11-14: margin debris: Cons."
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.1",
+   "father": "Augustine",
+   "old": "who cometh the name of the Lord",
+   "new": "who cometh in the name of the Lord",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.1",
+   "father": "Augustine",
+   "old": "come thither, Mat. nor had",
+   "new": "come thither, nor had",
+   "why": "proofread 2026-11-14: margin debris: Mat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.35.2",
+   "father": "Augustine",
+   "old": "at that time, sup. (for when",
+   "new": "at that time, (for when",
+   "why": "proofread 2026-11-14: margin debris: sup."
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.14.2",
+   "father": "Chrysostom",
+   "old": "admit Christ Act. below",
+   "new": "admit Christ below",
+   "why": "proofread 2026-11-14: margin debris: Act."
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.3",
+   "father": "Ambrose",
+   "old": "that she i may be holy",
+   "new": "that she may be holy",
+   "why": "proofread 2026-11-14: stray letter: i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.4",
+   "father": "Augustine",
+   "old": "and the pride life",
+   "new": "and the pride of life",
+   "why": "proofread 2026-11-14: dropped word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.4",
+   "father": "Origen",
+   "old": "a lover of i Tim; pleasure",
+   "new": "a lover of pleasure",
+   "why": "proofread 2026-11-14: margin debris: i Tim;"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.21.6",
+   "father": "Cyril",
+   "old": "Jewish multitude., and of",
+   "new": "Jewish multitude, and of",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.23.2",
+   "father": "Ambrose",
+   "old": "keeps off' the incursion",
+   "new": "keeps off the incursion",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.25.1",
+   "father": "Ambrose",
+   "old": "For if for thy Lord renounces",
+   "new": "For if thy Lord renounces",
+   "why": "proofread 2026-11-14: doubled word: for"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.26.1",
+   "father": "Gregory",
+   "old": "relations proceeds from inclination",
+   "new": "relations proceeds not from inclination",
+   "why": "proofread 2026-11-14: dropped word: not"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.26.1",
+   "father": "Chrysostom",
+   "old": "and despised death, i",
+   "new": "and despised death,",
+   "why": "proofread 2026-11-14: stray letter: i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.33.1",
+   "father": "Augustine",
+   "old": "against 'the king who",
+   "new": "against the king who",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.34.1",
+   "father": "Bede",
+   "old": "lie had said above",
+   "new": "He had said above",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.14.34.1",
+   "father": "Theophylact",
+   "old": "where with shall it be seasoned.'",
+   "new": "wherewith shall it be seasoned.",
+   "why": "proofread 2026-11-14: split word + stray quote"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.4.2",
+   "father": "Cyril",
+   "old": "composed often decades",
+   "new": "composed of ten decades",
+   "why": "proofread 2026-11-14: fused words: often → of ten"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.5.1",
+   "father": "Gregory of Nyssa",
+   "old": "it, lie layeth it",
+   "new": "it, he layeth it",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.6.1",
+   "father": "Theophylact",
+   "old": "friends arid neighbours",
+   "new": "friends and neighbours",
+   "why": "proofread 2026-11-14: OCR: arid → and"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.8.2",
+   "father": "Gregory",
+   "old": "doth site not light",
+   "new": "doth she not light",
+   "why": "proofread 2026-11-14: OCR: site → she"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.16.1",
+   "father": "Cyril",
+   "old": "brought back by repent-to righteousness",
+   "new": "brought back by repentance to righteousness",
+   "why": "proofread 2026-11-14: OCR: repent- → repentance"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.16.1",
+   "father": "Basil",
+   "old": "it belongs more the character",
+   "new": "it belongs more to the character",
+   "why": "proofread 2026-11-14: dropped word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.16.2",
+   "father": "Chrysostom",
+   "old": "journey into afar country",
+   "new": "journey into a far country",
+   "why": "proofread 2026-11-14: fused: afar → a far"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.17.2",
+   "father": "Gregory of Nyssa",
+   "old": "former hap-pin ess before",
+   "new": "former happiness before",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.24.1",
+   "father": "Augustine",
+   "old": "throughout whole world",
+   "new": "throughout the whole world",
+   "why": "proofread 2026-11-14: dropped word: the"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.25.2",
+   "father": "Augustine",
+   "old": "not sup... indeed gone",
+   "new": "not indeed gone",
+   "why": "proofread 2026-11-14: margin debris: sup..."
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.31.3",
+   "father": "Augustine",
+   "old": "Thou possesses! all things",
+   "new": "Thou possessest all things",
+   "why": "proofread 2026-11-14: OCR: possesses! → possessest"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.31.5",
+   "father": "Jerome",
+   "old": "were Matt, the Apostles",
+   "new": "were the Apostles",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.15.31.5",
+   "father": "Theophylact",
+   "old": "enjoy myself for Kings a little",
+   "new": "enjoy myself for a little",
+   "why": "proofread 2026-11-14: margin debris: Kings"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.1.1",
+   "father": "Bede",
+   "old": "There... a certain rich man",
+   "new": "There was a certain rich man",
+   "why": "proofread 2026-11-14: scan hole in Scripture: was"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.3.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "gain Matt, any thing",
+   "new": "gain any thing",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.9.1",
+   "father": "Gregory",
+   "old": "And I say to you. Make",
+   "new": "And I say to you, Make",
+   "why": "proofread 2026-11-14: wrong stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.9.1",
+   "father": "Augustine",
+   "old": "See how Luke he runs",
+   "new": "See how he runs",
+   "why": "proofread 2026-11-14: margin debris: Luke"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.9.1",
+   "father": "Augustine",
+   "old": "he says, / If have taken",
+   "new": "he says, If I have taken",
+   "why": "proofread 2026-11-14: OCR: / → I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.9.2",
+   "father": "Augustine",
+   "old": "so called, cause they are",
+   "new": "so called, because they are",
+   "why": "proofread 2026-11-14: lost syllable: because"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.9.3",
+   "father": "Augustine",
+   "old": "we wish be received",
+   "new": "we wish to be received",
+   "why": "proofread 2026-11-14: dropped word: to"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.13.2",
+   "father": "Bede",
+   "old": "reward of his John iniquity",
+   "new": "reward of his iniquity",
+   "why": "proofread 2026-11-14: margin debris: John"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.14.1",
+   "father": "Bede",
+   "old": "who were covetous., heard",
+   "new": "who were covetous, heard",
+   "why": "proofread 2026-11-14: doubled stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.18.1",
+   "father": "Theophylact",
+   "old": "and rejoiced blood",
+   "new": "and rejoiced in blood",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.20.1",
+   "father": "Chrysostom",
+   "old": "our clothing be Hence it follows",
+   "new": "our clothing be. Hence it follows",
+   "why": "proofread 2026-11-14: lost stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.21.1",
+   "father": "Gregory",
+   "old": "full Hom. of sores",
+   "new": "full of sores",
+   "why": "proofread 2026-11-14: margin debris: Hom."
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.2",
+   "father": "Chrysostom",
+   "old": "He died then 'indeed in body",
+   "new": "He died then indeed in body",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.3",
+   "father": "Chrysostom",
+   "old": "nature of His own torments",
+   "new": "nature of his own torments",
+   "why": "proofread 2026-11-14: wrong capital (the rich man)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.4",
+   "father": "Chrysostom",
+   "old": "observed, Phil-that all",
+   "new": "observed, that all",
+   "why": "proofread 2026-11-14: margin debris: Phil-"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.4",
+   "father": "Gregory",
+   "old": "rich man Horn, forsooth",
+   "new": "rich man, forsooth",
+   "why": "proofread 2026-11-14: margin debris: Horn"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.8",
+   "father": "Augustine",
+   "old": "said to Him because",
+   "new": "said to him because",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.9",
+   "father": "Chrysostom",
+   "old": "This is indeed hard thing",
+   "new": "This is indeed a hard thing",
+   "why": "proofread 2026-11-14: dropped word: a"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.9",
+   "father": "Chrysostom",
+   "old": "can no! be saved",
+   "new": "can not be saved",
+   "why": "proofread 2026-11-14: OCR: no! → not"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.9",
+   "father": "Gregory",
+   "old": "evil men receive this life good things",
+   "new": "evil men receive in this life good things",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.9",
+   "father": "Gregory",
+   "old": "whole joy transitory happiness",
+   "new": "whole joy in transitory happiness",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.26.9",
+   "father": "Chrysostom",
+   "old": "between tin and you",
+   "new": "between us and you",
+   "why": "proofread 2026-11-14: OCR: tin → us"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.29.1",
+   "father": "Gregory",
+   "old": "For addition to his punishment",
+   "new": "For in addition to his punishment",
+   "why": "proofread 2026-11-14: dropped word: in"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.30.1",
+   "father": "Ambrose",
+   "old": "supposed 'that his followers",
+   "new": "supposed that his followers",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.16.31.3",
+   "father": "Gregory",
+   "old": "Gentile people, Horn. who",
+   "new": "Gentile people, who",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.3.1",
+   "father": "Theophylact",
+   "old": "curable,) lie therefore adds",
+   "new": "curable,) he therefore adds",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.4.1",
+   "father": "Ambrose",
+   "old": "his fault Mat. between him",
+   "new": "his fault between him",
+   "why": "proofread 2026-11-14: margin debris: Mat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.4.1",
+   "father": "Bede",
+   "old": "And if lie trespass",
+   "new": "And if he trespass",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.5.1",
+   "father": "Gregory",
+   "old": "'That is, that the faith",
+   "new": "That is, that the faith",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.8.1",
+   "father": "Augustine",
+   "old": "And ward thou shalt eat",
+   "new": "And afterward thou shalt eat",
+   "why": "proofread 2026-11-14: lost syllables: afterward"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.10.1",
+   "father": "Bede",
+   "old": "compared to the 'glory",
+   "new": "compared to the glory",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.14.1",
+   "father": "Theophylact",
+   "old": "go to the he meant",
+   "new": "go to the priests he meant",
+   "why": "proofread 2026-11-14: dropped word: priests"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.17.1",
+   "father": "Theophylact",
+   "old": "answering him said. Were there",
+   "new": "answering him said, Were there",
+   "why": "proofread 2026-11-14: wrong stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.29.1",
+   "father": "Theophylact",
+   "old": "rather than lovers God",
+   "new": "rather than lovers of God",
+   "why": "proofread 2026-11-14: dropped word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.29.2",
+   "father": "Bede",
+   "old": "interpreted' turning aside,'",
+   "new": "interpreted 'turning aside,'",
+   "why": "proofread 2026-11-14: misplaced quote/space"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.29.2",
+   "father": "Bede",
+   "old": "the wicked from Matt, among the just",
+   "new": "the wicked from among the just",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.17.36.3",
+   "father": "Ambrose",
+   "old": "every eye shall him?",
+   "new": "every eye shall see him?",
+   "why": "proofread 2026-11-14: dropped word: see"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.1.1",
+   "father": "Chrysostom",
+   "old": "the blessings them art praying for",
+   "new": "the blessings thou art praying for",
+   "why": "proofread 2026-11-14: OCR: them → thou"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.11.2",
+   "father": "Augustine",
+   "old": "a fresh occasion pride",
+   "new": "a fresh occasion of pride",
+   "why": "proofread 2026-11-14: dropped word: of"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.11.2",
+   "father": "Chrysostom",
+   "old": "a wound on Horn. him",
+   "new": "a wound on him",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.14.3",
+   "father": "Chrysostom",
+   "old": "even from e heaven",
+   "new": "even from heaven",
+   "why": "proofread 2026-11-14: stray letter"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.14.3",
+   "father": "Bede",
+   "old": "the one for His pride",
+   "new": "the one for his pride",
+   "why": "proofread 2026-11-14: wrong capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.15.1",
+   "father": "Augustine",
+   "old": "The Apostle says. By one man",
+   "new": "The Apostle says, By one man",
+   "why": "proofread 2026-11-14: wrong stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.20.1",
+   "father": "Cyril",
+   "old": "Thou shall not kill, Thou shall not commit",
+   "new": "Thou shalt not kill, Thou shalt not commit",
+   "why": "proofread 2026-11-14: OCR: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.21.1",
+   "father": "Ambrose",
+   "old": "And he said. All these",
+   "new": "And he said, All these",
+   "why": "proofread 2026-11-14: wrong stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.22.1",
+   "father": "Jerome",
+   "old": "Thou shall love thy",
+   "new": "Thou shalt love thy",
+   "why": "proofread 2026-11-14: OCR: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.22.1",
+   "father": "Bede",
+   "old": "in outward Mark things",
+   "new": "in outward things",
+   "why": "proofread 2026-11-14: margin debris: Mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.22.2",
+   "father": "Basil",
+   "old": "He does riot tell",
+   "new": "He does not tell",
+   "why": "proofread 2026-11-14: OCR: riot → not"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.22.2",
+   "father": "Chrysostom",
+   "old": "feed the poor Horn, without",
+   "new": "feed the poor without",
+   "why": "proofread 2026-11-14: margin debris: Horn,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.25.3",
+   "father": "Chrysostom",
+   "old": "Horn. There is no profit",
+   "new": "There is no profit",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.25.3",
+   "father": "Chrysostom",
+   "old": "poverty, Matt, no hurt",
+   "new": "poverty, no hurt",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.25.3",
+   "father": "Augustine",
+   "old": "opposed the c. poor in spirit",
+   "new": "opposed the poor in spirit",
+   "why": "proofread 2026-11-14: margin debris: c."
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.31.1",
+   "father": "Gregory",
+   "old": "hearts of His pies",
+   "new": "hearts of His disciples",
+   "why": "proofread 2026-11-14: lost syllables: pies → disciples"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.31.1",
+   "father": "Chrysostom",
+   "old": "to His pies He foretold",
+   "new": "to His disciples He foretold",
+   "why": "proofread 2026-11-14: lost syllables: pies → disciples"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.33.1",
+   "father": "Isidore",
+   "old": "until sun set",
+   "new": "until sunset",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.41.2",
+   "father": "Pseudo-Chrysostom",
+   "old": "unto him, tie wished",
+   "new": "unto him, He wished",
+   "why": "proofread 2026-11-14: OCR: tie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.18.43.2",
+   "father": "Gregory",
+   "old": "interpreted' the moon,'",
+   "new": "interpreted 'the moon,'",
+   "why": "proofread 2026-11-14: misplaced quote/space"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.8.1",
+   "father": "Ambrose",
+   "old": "in the good. Horn.",
+   "new": "in the good.",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.12.1",
+   "father": "Eusebius",
+   "old": "clouds of i, heaven",
+   "new": "clouds of heaven",
+   "why": "proofread 2026-11-14: stray debris: i,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.17.1",
+   "father": "Greek Expositor",
+   "old": "Be cause he receives",
+   "new": "Because he receives",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.20.1",
+   "father": "Augustine",
+   "old": "thy pound ', which",
+   "new": "thy pound, which",
+   "why": "proofread 2026-11-14: stray quotation mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.24.1",
+   "father": "Chrysostom",
+   "old": "lie says then to",
+   "new": "He says then to",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.43.1",
+   "father": "Gregory",
+   "old": "emperors Vespasian and",
+   "new": "emperors Vespasian and Titus.",
+   "why": "proofread 2026-11-14: name lost at cut: Vespasian and [Titus]"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.44.1",
+   "father": "Gregory",
+   "old": "upon another ', is now",
+   "new": "upon another, is now",
+   "why": "proofread 2026-11-14: stray quote mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.47.1",
+   "father": "Gregory",
+   "old": "daily in, the temple",
+   "new": "daily in the temple",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.42.1",
+   "father": "Origen",
+   "old": "that weep. He Himself",
+   "new": "that weep, He Himself",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.45.2",
+   "father": "Augustine",
+   "old": "inasmuch as He the Head",
+   "new": "inasmuch as He is the Head",
+   "why": "proofread 2026-11-14: dropped word: is"
+  },
+  {
+   "excerpt": "catena-luke.LUK.19.48.1",
+   "father": "Origen",
+   "old": "For of those things",
+   "new": "For if of those things",
+   "why": "proofread 2026-11-14: dropped word: if"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.1.1",
+   "father": "Augustine",
+   "old": "came to pans, tit at on",
+   "new": "came to pass, that on",
+   "why": "proofread 2026-11-14: OCR: pans, tit at → pass, that"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.2.1",
+   "father": "Eusebius",
+   "old": "after the order of who offers",
+   "new": "after the order of Melchisedec, who offers",
+   "why": "proofread 2026-11-14: lost name: Melchisedec"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.2.2",
+   "father": "Bede",
+   "old": "And lie answered",
+   "new": "And he answered",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.5.1",
+   "father": "Bede",
+   "old": "As if He should say, lie whom",
+   "new": "As if He should say, He whom",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.5.1",
+   "father": "Bede",
+   "old": "But if ice shall say",
+   "new": "But if we shall say",
+   "why": "proofread 2026-11-14: OCR: ice → we"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.5.1",
+   "father": "Bede",
+   "old": "for they he persuaded",
+   "new": "for they be persuaded",
+   "why": "proofread 2026-11-14: OCR: he → be"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.9.1",
+   "father": "Eusebius",
+   "old": "went into afar country",
+   "new": "went into a far country",
+   "why": "proofread 2026-11-14: fused: afar → a far"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.10.1",
+   "father": "Cyril",
+   "old": "He no Exod, longer vouchsafed",
+   "new": "He no longer vouchsafed",
+   "why": "proofread 2026-11-14: margin debris: Exod,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.11.1",
+   "father": "Bede",
+   "old": "on the i contrary",
+   "new": "on the contrary",
+   "why": "proofread 2026-11-14: stray i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.13.1",
+   "father": "Cyril",
+   "old": "son: if may be they",
+   "new": "son: it may be they",
+   "why": "proofread 2026-11-14: OCR: if → it"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.38.2",
+   "father": "Chrysostom",
+   "old": "of such a man,' but",
+   "new": "of such a man, but",
+   "why": "proofread 2026-11-14: unbalanced quote"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.42.1",
+   "father": "Ambrose",
+   "old": "for the Luke blind man",
+   "new": "for the blind man",
+   "why": "proofread 2026-11-14: margin debris: Luke"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.42.1",
+   "father": "Ambrose",
+   "old": "Both the Ps. no, Father is Lord",
+   "new": "Both the Father is Lord",
+   "why": "proofread 2026-11-14: margin debris: Ps. no,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.42.1",
+   "father": "Cyril",
+   "old": "putteth not off' His",
+   "new": "putteth not off His",
+   "why": "proofread 2026-11-14: stray apostrophe"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.45.1",
+   "father": "Chrysostom",
+   "old": "to argue Horn. from the",
+   "new": "to argue from the",
+   "why": "proofread 2026-11-14: margin debris: Horn."
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.45.1",
+   "father": "Chrysostom",
+   "old": "weight than Joann. miracles",
+   "new": "weight than miracles",
+   "why": "proofread 2026-11-14: margin debris: Joann."
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.47.1",
+   "father": "Bede",
+   "old": "He-does not forbid",
+   "new": "He does not forbid",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.27.1",
+   "father": "Bede",
+   "old": "by the people, separated the other",
+   "new": "by the people, separated; the other",
+   "why": "proofread 2026-11-14: lost stop: run-on"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.27.1",
+   "father": "Origen",
+   "old": "Master, Moses to us",
+   "new": "Master, Moses wrote unto us",
+   "why": "proofread 2026-11-14: dropped words: wrote unto"
+  },
+  {
+   "excerpt": "catena-luke.LUK.20.34.1",
+   "father": "Augustine",
+   "old": "marriages are the sake of",
+   "new": "marriages are for the sake of",
+   "why": "proofread 2026-11-14: dropped word: for"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.1.1",
+   "father": "Gloss",
+   "old": "as it is said. And he looked",
+   "new": "as it is said, And he looked",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.8.2",
+   "father": "Athanasius",
+   "old": "we have received, A than, delivered",
+   "new": "we have received, delivered",
+   "why": "proofread 2026-11-14: margin debris: A than,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.8.2",
+   "father": "Athanasius",
+   "old": "heavenly life, Arian. power",
+   "new": "heavenly life, power",
+   "why": "proofread 2026-11-14: margin debris: Arian."
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.8.2",
+   "father": "Athanasius",
+   "old": "children not His own",
+   "new": "children not his own",
+   "why": "proofread 2026-11-14: mid-sentence capital: His → his"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.8.3",
+   "father": "Bede",
+   "old": "Many Anti christs also",
+   "new": "Many Antichrists also",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.15.1",
+   "father": "Gregory",
+   "old": "it is that fight;",
+   "new": "it is I that fight;",
+   "why": "proofread 2026-11-14: dropped word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.15.1",
+   "father": "Ambrose",
+   "old": "Spirit of the Mat. Father",
+   "new": "Spirit of the Father",
+   "why": "proofread 2026-11-14: margin debris: Mat."
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.18.1",
+   "father": "Gregory",
+   "old": "because of the thingS foretold",
+   "new": "because of the things foretold",
+   "why": "proofread 2026-11-14: stray capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.18.1",
+   "father": "Gregory",
+   "old": "to hold in sub-every motion",
+   "new": "to hold in subjection every motion",
+   "why": "proofread 2026-11-14: broken word: sub- → subjection"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.21.1",
+   "father": "Bede",
+   "old": "who were in Ecc. Judaea",
+   "new": "who were in Judaea",
+   "why": "proofread 2026-11-14: margin debris: Ecc."
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.24.2",
+   "father": "Ambrose",
+   "old": "When then the -Devil",
+   "new": "When then the Devil",
+   "why": "proofread 2026-11-14: stray hyphen"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.24.3",
+   "father": "Ambrose",
+   "old": "nations which i, shall believe",
+   "new": "nations which shall believe",
+   "why": "proofread 2026-11-14: stray i,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.26.2",
+   "father": "Theophylact",
+   "old": "distress of nations, As if He said",
+   "new": "distress of nations. As if He said",
+   "why": "proofread 2026-11-14: comma for stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.26.4",
+   "father": "Bede",
+   "old": "at his reproof\\ What",
+   "new": "at his reproof. What",
+   "why": "proofread 2026-11-14: stray backslash for stop"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.31.1",
+   "father": "Titus of Bostra",
+   "old": "the kingdom, of God",
+   "new": "the kingdom of God",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.32.1",
+   "father": "Bede",
+   "old": "foretels. And. if one",
+   "new": "foretels. And, if one",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.33.1",
+   "father": "Bede",
+   "old": "not the set he real or",
+   "new": "not the ethereal or",
+   "why": "proofread 2026-11-14: OCR split: set he real → ethereal"
+  },
+  {
+   "excerpt": "catena-luke.LUK.21.33.1",
+   "father": "Bede",
+   "old": "standeth Ecc. for ever",
+   "new": "standeth for ever",
+   "why": "proofread 2026-11-14: margin debris: Ecc."
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.1.1",
+   "father": "Chrysostom",
+   "old": "darkness Of Satan",
+   "new": "darkness of Satan",
+   "why": "proofread 2026-11-14: mid-sentence capital"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.5.1",
+   "father": "Chrysostom",
+   "old": "By covetousness then became",
+   "new": "By covetousness then he became",
+   "why": "proofread 2026-11-14: dropped word: he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.9.1",
+   "father": "Theophylact",
+   "old": "same fifth clay",
+   "new": "same fifth day",
+   "why": "proofread 2026-11-14: OCR: clay → day"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.19.1",
+   "father": "Bede",
+   "old": "Hence it is And he took",
+   "new": "Hence it is added, And he took",
+   "why": "proofread 2026-11-14: dropped word: added"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.19.3",
+   "father": "Chrysostom",
+   "old": "toward Joan, us",
+   "new": "toward us",
+   "why": "proofread 2026-11-14: margin debris: Joan,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.20.2",
+   "father": "Chrysostom",
+   "old": "This Joan. Blood",
+   "new": "This Blood",
+   "why": "proofread 2026-11-14: margin debris: Joan."
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.21.1",
+   "father": "Augustine",
+   "old": "His disciples, again spoke",
+   "new": "His disciples, He again spoke",
+   "why": "proofread 2026-11-14: dropped word: He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.25.1",
+   "father": "Chrysostom",
+   "old": "For it is Matt, of the Gentiles",
+   "new": "For it is of the Gentiles",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.31.1",
+   "father": "Bede",
+   "old": "may sift, thee as wheat",
+   "new": "may sift thee as wheat",
+   "why": "proofread 2026-11-14: stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.32.2",
+   "father": "Theophylact",
+   "old": "thou boldest stored up, a seed",
+   "new": "thou holdest stored up a seed",
+   "why": "proofread 2026-11-14: OCR: boldest → holdest; stray comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.32.2",
+   "father": "Bede",
+   "old": "As if to say. As I",
+   "new": "As if to say, As I",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.32.2",
+   "father": "Ambrose",
+   "old": "followed., thee",
+   "new": "followed thee",
+   "why": "proofread 2026-11-14: stray marks"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.34.1",
+   "father": "Theophylact",
+   "old": "deny Him; tell thee, Peter",
+   "new": "deny Him; I tell thee, Peter",
+   "why": "proofread 2026-11-14: dropped word: I"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.40.1",
+   "father": "Theophylact",
+   "old": "he said unto them. Pray",
+   "new": "he said unto them, Pray",
+   "why": "proofread 2026-11-14: stop for comma"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.40.1",
+   "father": "Bede",
+   "old": "enter not into allot!, that is",
+   "new": "enter not into temptation, that is",
+   "why": "proofread 2026-11-14: OCR: allot! → temptation"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.40.1",
+   "father": "Cyril",
+   "old": "He went for ward a little",
+   "new": "He went forward a little",
+   "why": "proofread 2026-11-14: split word"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.42.3",
+   "father": "Athanasius",
+   "old": "refuses cont the Passion",
+   "new": "refuses the Passion",
+   "why": "proofread 2026-11-14: stray fragment: cont"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.43.1",
+   "father": "Theophylact",
+   "old": "power of prayer A that",
+   "new": "power of prayer, that",
+   "why": "proofread 2026-11-14: stray A"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.44.1",
+   "father": "Chrysostom",
+   "old": "in an agony lie prayed",
+   "new": "in an agony he prayed",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.45.1",
+   "father": "Theophylact",
+   "old": "intensely, that He blood;",
+   "new": "intensely, that he sweated blood;",
+   "why": "proofread 2026-11-14: lost word: sweated"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.46.1",
+   "father": "Bede",
+   "old": "Why sleep ye/ Rise",
+   "new": "Why sleep ye? Rise",
+   "why": "proofread 2026-11-14: OCR: / → ?"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.46.1",
+   "father": "Theophylact",
+   "old": "When ye Jam. i, are fallen, count It all joy",
+   "new": "When ye are fallen, count it all joy",
+   "why": "proofread 2026-11-14: margin debris: Jam. i,; mid-sentence capital It"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.48.1",
+   "father": "Chrysostom",
+   "old": "still How on",
+   "new": "still flow on",
+   "why": "proofread 2026-11-14: OCR: How → flow"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.51.1",
+   "father": "Augustine",
+   "old": "with the sword He then answered",
+   "new": "with the sword? He then answered",
+   "why": "proofread 2026-11-14: lost question mark"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.54.1",
+   "father": "Chrysostom",
+   "old": "For thither Matt, had they",
+   "new": "For thither had they",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.55.1",
+   "father": "Ambrose",
+   "old": "they had kindled afire",
+   "new": "they had kindled a fire",
+   "why": "proofread 2026-11-14: fused: afire → a fire"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.58.1",
+   "father": "Ambrose",
+   "old": "Again, a 17.second time",
+   "new": "Again, a second time",
+   "why": "proofread 2026-11-14: margin debris: 17."
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.58.1",
+   "father": "Augustine",
+   "old": "second denial was addressed",
+   "new": "second denial he was addressed",
+   "why": "proofread 2026-11-14: dropped word: he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.59.1",
+   "father": "Ambrose",
+   "old": "confidently saying i Of a truth",
+   "new": "confidently saying, Of a truth",
+   "why": "proofread 2026-11-14: stray i"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.60.1",
+   "father": "Bede",
+   "old": "The error lie committed",
+   "new": "The error he committed",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.61.2",
+   "father": "Ambrose",
+   "old": "thou shall deny me thrice",
+   "new": "thou shalt deny me thrice",
+   "why": "proofread 2026-11-14: OCR: shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.22.71.1",
+   "father": "Cyril",
+   "old": "Then said they. What",
+   "new": "Then said they, What",
+   "why": "proofread 2026-11-14: stop: said they. → said they,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.1.1",
+   "father": "Augustine",
+   "old": "when he says. And the whole",
+   "new": "when he says, And the whole",
+   "why": "proofread 2026-11-14: stop: says. → says,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.2.1",
+   "father": "Augustine",
+   "old": "accused Him? but Luke",
+   "new": "accused Him; but Luke",
+   "why": "proofread 2026-11-14: OCR: ? → ;"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.3.1",
+   "father": "Bede",
+   "old": "Render unto... the things",
+   "new": "Render unto Caesar the things",
+   "why": "proofread 2026-11-14: lost word: unto... → unto Caesar"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.30.1",
+   "father": "Gregory",
+   "old": "called Him-c. 4.' ' self the",
+   "new": "called Himself the",
+   "why": "proofread 2026-11-14: margin debris: Him-c. 4.' ' self → Himself"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.33.4",
+   "father": "Eusebius",
+   "old": "every kind of death As then",
+   "new": "every kind of death. As then",
+   "why": "proofread 2026-11-14: lost stop: death As → death. As"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.34.1",
+   "father": "Bede",
+   "old": "fruit of His prayers? It must",
+   "new": "fruit of His prayers. It must",
+   "why": "proofread 2026-11-14: OCR: ? → ."
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.34.2",
+   "father": "Augustine",
+   "old": "explains how was done.",
+   "new": "explains how it was done.",
+   "why": "proofread 2026-11-14: dropped word: how was → how it was"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.42.1",
+   "father": "Chrysostom",
+   "old": "then proclaim est the dignity",
+   "new": "then proclaimest the dignity",
+   "why": "proofread 2026-11-14: split word: proclaim est → proclaimest"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.43.2",
+   "father": "Chrysostom",
+   "old": "Tit is day shall thou be",
+   "new": "This day shalt thou be",
+   "why": "proofread 2026-11-14: OCR: Tit is → This, shall → shalt"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.43.3",
+   "father": "Bede",
+   "old": "were baptized Christ Jesus",
+   "new": "were baptized into Christ Jesus",
+   "why": "proofread 2026-11-14: dropped word: baptized Christ → baptized into Christ"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.44.1",
+   "father": "Cyril",
+   "old": "given up to Amos be crucified",
+   "new": "given up to be crucified",
+   "why": "proofread 2026-11-14: OCR debris: Amos"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.46.2",
+   "father": "Damascene",
+   "old": "He was the grave",
+   "new": "He was in the grave",
+   "why": "proofread 2026-11-14: dropped word: was the grave → was in the grave"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.47.1",
+   "father": "Ambrose",
+   "old": "gave Up the ghost",
+   "new": "gave up the ghost",
+   "why": "proofread 2026-11-14: capital: Up → up"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.55.1",
+   "father": "Augustine",
+   "old": "waited for kingdom of God",
+   "new": "waited for the kingdom of God",
+   "why": "proofread 2026-11-14: dropped word: for kingdom → for the kingdom"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.55.1",
+   "father": "Augustine",
+   "old": "surprise how who for fear",
+   "new": "surprise how he who for fear",
+   "why": "proofread 2026-11-14: dropped word: how who → how he who"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.55.1",
+   "father": "Augustine",
+   "old": "seems to 'have cared",
+   "new": "seems to have cared",
+   "why": "proofread 2026-11-14: stray mark: 'have"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.3.1",
+   "father": "Chrysostom",
+   "old": "that they might Matt, believe",
+   "new": "that they might believe",
+   "why": "proofread 2026-11-14: margin debris: Matt,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.4.1",
+   "father": "Cyril",
+   "old": "much perplexed there about,",
+   "new": "much perplexed thereabout,",
+   "why": "proofread 2026-11-14: split word: there about → thereabout"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.7.1",
+   "father": "Bede",
+   "old": "He is not here, hut is risen",
+   "new": "He is not here, but is risen",
+   "why": "proofread 2026-11-14: OCR: hut → but"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.16.1",
+   "father": "Theophylact",
+   "old": "spiritually and supernatural Hence",
+   "new": "spiritually and supernaturally. Hence",
+   "why": "proofread 2026-11-14: OCR: supernatural Hence → supernaturally. Hence"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.19.1",
+   "father": "Bede",
+   "old": "lie remained foreign",
+   "new": "He remained foreign",
+   "why": "proofread 2026-11-14: OCR: lie → He"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.22.1",
+   "father": "Greek Expositor",
+   "old": "For they did consider as established",
+   "new": "For they did not consider as established",
+   "why": "proofread 2026-11-14: dropped word: did consider → did not consider"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.28.1",
+   "father": "Greek Expositor",
+   "old": "as if lie was going further",
+   "new": "as if he was going further",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.29.1",
+   "father": "Gloss",
+   "old": "saying. Abide with us",
+   "new": "saying, Abide with us",
+   "why": "proofread 2026-11-14: stop: saying. → saying,"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.30.1",
+   "father": "Gregory",
+   "old": "through Himself for it follows",
+   "new": "through Himself; for it follows",
+   "why": "proofread 2026-11-14: lost stop: Himself for → Himself; for"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.46.1",
+   "father": "Theophylact",
+   "old": "And said unto them. Thus",
+   "new": "And said unto them, Thus",
+   "why": "proofread 2026-11-14: stop: them. Thus → them, Thus"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.47.3",
+   "father": "Chrysostom",
+   "old": "abandoning Act. their acquaintances",
+   "new": "abandoning their acquaintances",
+   "why": "proofread 2026-11-14: margin debris: Act."
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.50.1",
+   "father": "Bede",
+   "old": "And lie lifted up his hands",
+   "new": "And he lifted up his hands",
+   "why": "proofread 2026-11-14: OCR: lie → he"
+  },
+  {
+   "excerpt": "catena-luke.LUK.24.53.1",
+   "father": "Theophylact",
+   "old": "as it follows, i, Praising",
+   "new": "as it follows, Praising",
+   "why": "proofread 2026-11-14: stray mark: i,"
+  }
+ ]
 }
