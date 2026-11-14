@@ -25540,6 +25540,21 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ko/holy-in-christ": {
+			"ground": "322093e90cfe49fea4b5cc290655d783dcb068fb1b0ddbafa08c99b2d1f1c4c3",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d22536ff39ad6866a3e8dda1cbbd1ca48f79bb47afc4ddcea3c3fc968629b605",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/how-to-bring-men-to-christ": {
 			"ground": "e15cb5852d5862a5c1686066a6734dca1219de143ef1f4816711b8f976cbfdda",
 			"style": "revival",
@@ -32405,6 +32420,21 @@
 				517
 			]
 		},
+		"pt/evening-by-evening": {
+			"ground": "e7ac243321b51bef5168aa3ebdf0870cc536a520719c59d012659ac7fbfe94ef",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/faithful-with-little": {
 			"ground": "e01f3bad37ef3e2c589e7888c794a5702b2bb02e46a00201e372cd5c1a2cccd5",
 			"style": "originals",
@@ -33352,6 +33382,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/our-daily-walk": {
+			"ground": "c0b74e9227c022d75c6173165e5b3b2d662532b397c7aa12a9834b7a1fe99f05",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[55, 259, 545, 347],
+					[215, 337, 385, 425]
+				],
+				"subtitle": [
+					[86, 501, 514, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				529
+			]
 		},
 		"pt/pandita-ramabai-a-life-children": {
 			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
@@ -44973,6 +45037,21 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true,
+			"sitemark": null
+		},
+		"vi/holy-in-christ": {
+			"ground": "5f0b68ea99c835fbdb948baf1715c1acf6f3df59e9b3c92393c0c8dd7cde11a1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
 			"sitemark": null
 		},
 		"vi/how-to-bring-men-to-christ": {
