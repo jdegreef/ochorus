@@ -330,6 +330,13 @@ class Command(build_catena.Command):
         """Split every excerpt into its Fathers' passages, keep the sound
         ones, and note the rest in self.dropped."""
         self.excerpts, self.dropped, self.order = {}, [], {}
+        #: A Father's passage an editor has turned down by hand: book.json's
+        #: "rejected", [{"excerpt", "father", "why"}], for a slip no check can
+        #: see ("sin, i. cut off" for "i. e.").
+        self.refused = {
+            (r["excerpt"], r["father"]): f"rejected by an editor: {r['why']}"
+            for r in self.meta.get("rejected", [])
+        }
         speaker = None
         for n, e in enumerate(excerpts):
             kept = []
@@ -346,7 +353,7 @@ class Command(build_catena.Command):
                 why = (
                     "an opening siglum this build cannot read (dropped, not given to the Father before)"
                     if speaker == UNREAD
-                    else self.unsound(paras)
+                    else self.refused.get((e["id"], speaker)) or self.unsound(paras)
                 )
                 if why:
                     self.dropped.append({"excerpt": e["id"], "passage": k + 1, "father": speaker,
