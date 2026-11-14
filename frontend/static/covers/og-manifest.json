@@ -4805,6 +4805,37 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"am/the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "3bfda76de175f9dd93c8520956bccb91ccabdd30a726178dd5a3010b2c0b8dbc",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[129, 102, 471, 131]
+				],
+				"title": [
+					[63, 316, 537, 379],
+					[137, 378, 463, 441]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
@@ -13554,6 +13585,38 @@
 			"bar": 0.04,
 			"caps": false,
 			"sitemark": null
+		},
+		"es/the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "79c164ac7f3fe6dab946854ff0075bb819ea47b93c8bbc842b82855cf85d7971",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1.35,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[129, 102, 471, 131]
+				],
+				"title": [
+					[124, 285, 476, 348],
+					[115, 347, 485, 410],
+					[57, 409, 543, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"es/the-secret-of-guidance": {
 			"ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
@@ -25540,6 +25603,21 @@
 			"caps": true,
 			"sitemark": null
 		},
+		"ko/holy-in-christ": {
+			"ground": "322093e90cfe49fea4b5cc290655d783dcb068fb1b0ddbafa08c99b2d1f1c4c3",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d22536ff39ad6866a3e8dda1cbbd1ca48f79bb47afc4ddcea3c3fc968629b605",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ko/how-to-bring-men-to-christ": {
 			"ground": "e15cb5852d5862a5c1686066a6734dca1219de143ef1f4816711b8f976cbfdda",
 			"style": "revival",
@@ -32405,6 +32483,21 @@
 				517
 			]
 		},
+		"pt/evening-by-evening": {
+			"ground": "e7ac243321b51bef5168aa3ebdf0870cc536a520719c59d012659ac7fbfe94ef",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"pt/faithful-with-little": {
 			"ground": "e01f3bad37ef3e2c589e7888c794a5702b2bb02e46a00201e372cd5c1a2cccd5",
 			"style": "originals",
@@ -33352,6 +33445,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"pt/our-daily-walk": {
+			"ground": "c0b74e9227c022d75c6173165e5b3b2d662532b397c7aa12a9834b7a1fe99f05",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[55, 259, 545, 347],
+					[215, 337, 385, 425]
+				],
+				"subtitle": [
+					[86, 501, 514, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				529
+			]
 		},
 		"pt/pandita-ramabai-a-life-children": {
 			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
@@ -44973,6 +45100,21 @@
 			"layout": "framed-light",
 			"bar": 0,
 			"caps": true,
+			"sitemark": null
+		},
+		"vi/holy-in-christ": {
+			"ground": "5f0b68ea99c835fbdb948baf1715c1acf6f3df59e9b3c92393c0c8dd7cde11a1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0,
+			"caps": false,
 			"sitemark": null
 		},
 		"vi/how-to-bring-men-to-christ": {
