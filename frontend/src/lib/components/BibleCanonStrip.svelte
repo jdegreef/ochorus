@@ -1,16 +1,20 @@
 <script lang="ts">
 	import type { BookSummary } from '$lib/library-public';
 	import {
+		bibleChapterOrder,
 		canonReading,
 		canonStrip,
 		divisionKey,
 		spineLabel,
 		testamentKey,
-		type BiblePlace
+		type BiblePlace,
+		type CanonSlot
 	} from '$lib/bible';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
+	import { chapterCount, readingTime } from '$lib/reading';
+	import { bookChapterPath } from '$lib/reading-schema';
 
 	/**
 	 * The /bible hub's canon strip: all 66 books as a shelf of slim spines, one
@@ -32,6 +36,17 @@
 	 * under way fills from the shelf up as far as they have read, and a line
 	 * above counts them. Nothing personal before mount — the prerender and a
 	 * first visit draw the plain shelf.
+	 *
+	 * Each division is bracketed under its spines with its name, its books and
+	 * its reading time; each testament heads its row with its books and
+	 * chapters. Pointing at a spine, or reaching it from the keyboard, raises a
+	 * card beside it — the book's division, title and subtitle, its chapters
+	 * and time, where the reader is, and a way straight in (Begin / Continue).
+	 * The card adds nothing a screen reader lacks (the spine's own link and
+	 * label carry the book), so it is aria-hidden and its links take no tab
+	 * stop. Below 40rem of width (a container query: the strip, not the
+	 * window) the spines become wrapped colour tiles under their division's
+	 * name: the whole canon in one short scroll, nothing off to the side.
 	 */
 	let {
 		books,
@@ -47,9 +62,62 @@
 		if (place.finished) return { done: true, fill: 1 };
 		return place.behind > 0 && chapters ? { done: false, fill: place.behind / chapters } : null;
 	}
+
+	/** A division's or testament's books present, their words and chapters. */
+	function totals(slots: readonly CanonSlot<BookSummary>[]) {
+		const here = slots.filter((s) => s.book);
+		return {
+			books: here.length,
+			words: here.reduce((n, s) => n + (s.book!.word_count ?? 0), 0),
+			chapters: here.reduce((n, s) => n + s.chapters, 0)
+		};
+	}
+	const booksLabel = (n: number) => `${n} ${n === 1 ? t('common.bookOne') : t('common.bookMany')}`;
+
+	// --- The card: one, beside whichever spine is pointed at or focused. ---
+	let nav = $state<HTMLElement | null>(null);
+	let card = $state<{
+		slot: CanonSlot<BookSummary>;
+		division: string;
+		left: number;
+		top: number;
+	} | null>(null);
+	let hideTimer: ReturnType<typeof setTimeout> | undefined;
+	/** The card's width (rem) — kept in step with `.canon-card` below. */
+	const CARD_REM = 17;
+	/** Under this strip width the spines are tiles, with no room for a card. */
+	const TILES_PX = 640;
+
+	function show(e: Event, slot: CanonSlot<BookSummary>, division: string) {
+		if (!nav) return;
+		// The card belongs to a mouse or a keyboard: a touch opens the book.
+		const el = e.currentTarget as HTMLElement;
+		if (e.type === 'mouseenter' && !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+		if (e.type === 'focus' && !el.matches(':focus-visible')) return;
+		if (nav.clientWidth < TILES_PX) return;
+		clearTimeout(hideTimer);
+		const r = el.getBoundingClientRect();
+		const n = nav.getBoundingClientRect();
+		const w = CARD_REM * parseFloat(getComputedStyle(document.documentElement).fontSize);
+		const left = Math.min(Math.max(r.left - n.left + r.width / 2 - w / 2, 0), Math.max(0, n.width - w));
+		card = { slot, division, left, top: r.bottom - n.top + 10 };
+	}
+	/** Hidden a beat after the pointer leaves, so it can cross to the card. */
+	function hideSoon() {
+		clearTimeout(hideTimer);
+		hideTimer = setTimeout(() => (card = null), 140);
+	}
+	function keep() {
+		clearTimeout(hideTimer);
+	}
+	function onKey(e: KeyboardEvent) {
+		if (e.key === 'Escape') card = null;
+	}
+	const cardPlace = $derived(card?.slot.book ? (placeOf?.(card.slot.book) ?? null) : null);
 </script>
 
-<nav class="canon" aria-label={t('bible.canonLabel')}>
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<nav class="canon" aria-label={t('bible.canonLabel')} bind:this={nav} onkeydown={onKey}>
 	{#if reading && (reading.finished || reading.started)}
 		<!-- The reader's Bible at a glance: what the ticks and fills below add up to. -->
 		<div class="canon-meter">
@@ -65,10 +133,18 @@
 		</div>
 	{/if}
 	{#each testaments as testament (testament.testament)}
+		{@const all = totals(testament.divisions.flatMap((d) => d.slots))}
 		<div class="canon-row">
-			<p class="canon-testament eyebrow-micro text-muted">{t(testamentKey(testament.testament))}</p>
+			<p class="canon-testament">
+				<span class="eyebrow-micro text-muted">{t(testamentKey(testament.testament))}</span>
+				{#if all.books}
+					<span class="canon-totals">{booksLabel(all.books)} · {chapterCount(all.chapters)}</span>
+				{/if}
+			</p>
 			<ol class="canon-shelf cover-rail" use:scrollEdges>
 				{#each testament.divisions as group (group.division.id)}
+					{@const sum = totals(group.slots)}
+					{@const divisionName = t(divisionKey(group.division.id))}
 					<li class="canon-division">
 						<ol class="canon-spines" aria-label={t(divisionKey(group.division.id))}>
 							{#each group.slots as slot (slot.position)}
@@ -85,11 +161,17 @@
 											aria-label={read?.done
 												? `${slot.book.title} · ${t('bible.canonFinished')}`
 												: slot.book.title}
+											onmouseenter={(e) => show(e, slot, divisionName)}
+											onmouseleave={hideSoon}
+											onfocus={(e) => show(e, slot, divisionName)}
+											onblur={hideSoon}
 											style:--spine-w={slot.weight}
 											style:--spine-t={slot.tall}
 											style:--spine-c={slot.book.cover_color || null}
-											>{#if read && !read.done}<span class="spine-fill" style:height="{read.fill * 100}%"
-												></span>{/if}<span class="spine-name">{spineLabel(slot)}</span></a
+											>{#if read && !read.done}<span class="spine-fill" style:height="{read.fill * 100}%" style:--fill-w="{read.fill * 100}%"
+												></span>{/if}<span class="spine-name long">{spineLabel(slot)}</span><span
+												class="spine-name short">{slot.abbr}</span
+											></a
 										>
 									{:else}
 										<span class="spine absent" title={slot.name}><span class="spine-name">{slot.abbr}</span></span>
@@ -97,31 +179,76 @@
 								</li>
 							{/each}
 						</ol>
-						<!-- A one-book division (Acts, Revelation) is named by its spine.
+						<!-- The division, bracketed: its name, then its books and time. A
+						     one-book division (Acts, Revelation) is named by its spine, so
+						     on the shelf its label keeps only its height (its spine still
+						     stands on the row's one shelf line); the phone's tiles name it.
 						     Visual only: the list's aria-label names it for a screen reader. -->
-						{#if group.slots.length > 1}
-							<span class="canon-label" aria-hidden="true">{t(divisionKey(group.division.id))}</span>
-						{:else}
-							<!-- An empty label's height, so its spine stands on the row's one
-							     shelf line (the row aligns to the bottom). -->
-							<span class="canon-label" aria-hidden="true">&nbsp;</span>
-						{/if}
+						<span class="canon-label" class:single={group.slots.length === 1} aria-hidden="true">
+							<span class="canon-label-name">{divisionName}</span>
+							<span class="canon-label-meta"
+								>{#if sum.books > 1}{booksLabel(sum.books)}{#if sum.words}{` · ${readingTime(sum.words)}`}{/if}{:else}&nbsp;{/if}</span
+							>
+						</span>
 					</li>
 				{/each}
 			</ol>
 		</div>
 	{/each}
+	{#if card?.slot.book}
+		{@const b = card.slot.book}
+		{@const into = cardPlace?.current != null ? bibleChapterOrder(cardPlace.current) : 1}
+		<!-- Beside the spine: what a reader decides by, and a way in. aria-hidden,
+		     no tab stops: the spine's own link already carries the book. -->
+		<div
+			class="canon-card"
+			style:left="{card.left}px"
+			style:top="{card.top}px"
+			aria-hidden="true"
+			role="presentation"
+			onmouseenter={keep}
+			onmouseleave={hideSoon}
+		>
+			<span class="eyebrow-micro text-muted">{card.division}</span>
+			<a class="canon-card-title" href={localizeHref(`/books/${b.slug}`)} tabindex="-1">{b.title}</a>
+			{#if b.subtitle}<span class="canon-card-sub">{b.subtitle}</span>{/if}
+			<span class="text-small text-muted"
+				>{chapterCount(card.slot.chapters)}{#if b.word_count}{` · ${readingTime(b.word_count)}`}{/if}</span
+			>
+			{#if cardPlace?.finished}
+				<span class="text-small font-semibold text-accent">{t('bible.canonFinished')}</span>
+			{:else if cardPlace?.current != null}
+				<span class="text-small font-semibold text-accent"
+					>{t('book.chapterOf').replace('%n%', String(cardPlace.current)).replace('%t%', String(card.slot.chapters))}</span
+				>
+			{/if}
+			<a class="btn btn-primary btn-solid mt-2" href={localizeHref(bookChapterPath(b.slug, into, false))} tabindex="-1"
+				>{cardPlace?.current != null ? t('book.continue') : t('book.beginReading')}</a
+			>
+		</div>
+	{/if}
 </nav>
 
 <style>
 	.canon {
+		position: relative;
 		margin-bottom: 3rem;
+		/* The phone layout keys off the strip's own width (see the end). */
+		container-type: inline-size;
 	}
 	.canon-row + .canon-row {
 		margin-top: 1.25rem;
 	}
 	.canon-testament {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.15rem 0.6rem;
 		margin-bottom: 0.5rem;
+	}
+	.canon-totals {
+		font-size: var(--fs-micro);
+		color: var(--muted);
 	}
 	.canon-shelf {
 		display: flex;
@@ -150,12 +277,90 @@
 		border-bottom: 1px solid var(--border-strong);
 		padding-bottom: 1px;
 	}
+	/* The division's bracket: short ticks down from the shelf line at both
+	   ends, then its name and, under it, its books and time — set within the
+	   division's own width (`width: 0; min-width: 100%`), never widening it. */
 	.canon-label {
-		margin-top: 0.375rem;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 0;
+		min-width: 100%;
+		margin-top: 0.3rem;
+		padding: 0.45rem 0.3rem 0;
 		font-size: var(--fs-micro);
 		line-height: 1.3;
 		color: var(--muted);
+	}
+	.canon-label::before,
+	.canon-label::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		width: 1px;
+		height: 0.4rem;
+		background: var(--border-strong);
+	}
+	.canon-label::before {
+		inset-inline-start: 0;
+	}
+	.canon-label::after {
+		inset-inline-end: 0;
+	}
+	.canon-label-name {
+		font-weight: 600;
+		color: var(--text);
 		white-space: nowrap;
+	}
+	.canon-label-meta {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	/* A one-book division: no bracket or name on the shelf (its spine names
+	   it), only the label's height, so the spine stands on the shelf line. */
+	.canon-label.single::before,
+	.canon-label.single::after {
+		display: none;
+	}
+	.canon-label.single .canon-label-name {
+		visibility: hidden;
+	}
+	.spine-name.short {
+		display: none;
+	}
+	/* The card beside a spine. */
+	.canon-card {
+		position: absolute;
+		z-index: 5;
+		display: grid;
+		gap: 0.2rem;
+		width: 17rem;
+		padding: 0.8rem 0.95rem 0.9rem;
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		box-shadow: var(--shadow-popover);
+	}
+	.canon-card-title {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.2;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.canon-card-title:hover {
+		color: var(--accent);
+	}
+	.canon-card-sub {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
+	.canon-card .btn {
+		justify-self: start;
 	}
 	.spine {
 		position: relative;
@@ -227,7 +432,10 @@
 	.spine.done::after {
 		content: '✓';
 		height: auto;
-		bottom: 0.3rem;
+		/* In the tick's OWN writing (horizontal), where block is top and bottom:
+		   the shared rule's inset-block would pin it to the top as well. */
+		inset-block: auto 0.3rem;
+		inset-inline: 0;
 		background: none;
 		writing-mode: horizontal-tb;
 		text-align: center;
@@ -282,6 +490,97 @@
 	@media (prefers-reduced-motion: reduce) {
 		.spine {
 			transition: none;
+		}
+	}
+
+	/* --- Phone: wrapped colour tiles, grouped by division. ---
+	   Under 40rem of strip the side-scrolling shelf hid most of the canon off
+	   to the side. Here every division is a block — its name, its books and
+	   time, then its books as tiles that wrap — so all 66 fit one short
+	   scroll. The same links, restyled: a tile is a spine laid flat. */
+	@container (max-width: 40rem) {
+		.canon-shelf {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+			gap: 1rem 0.9rem;
+			overflow: visible;
+			padding: 0;
+		}
+		.canon-division {
+			min-width: 0;
+		}
+		/* A division of more than five books takes the row. */
+		.canon-division:has(.canon-spines > li:nth-child(6)) {
+			grid-column: 1 / -1;
+		}
+		.canon-label {
+			order: -1;
+			width: auto;
+			min-width: 0;
+			margin: 0 0 0.35rem;
+			padding: 0;
+		}
+		.canon-label::before,
+		.canon-label::after {
+			display: none;
+		}
+		.canon-label.single .canon-label-name {
+			visibility: visible;
+		}
+		.canon-label.single .canon-label-meta {
+			display: none;
+		}
+		.canon-spines {
+			flex-wrap: wrap;
+			align-items: stretch;
+			gap: 4px;
+			border: 0;
+			padding: 0;
+		}
+		.spine {
+			writing-mode: horizontal-tb;
+			width: auto;
+			min-width: 2.9rem;
+			height: 2.1rem;
+			padding: 0 0.5rem;
+			border-radius: 4px;
+		}
+		.spine.done {
+			padding: 0 1.1rem 0 0.5rem;
+		}
+		.spine::before,
+		.spine:not(.done)::after {
+			display: none;
+		}
+		.spine.done::after {
+			top: 50%;
+			bottom: auto;
+			inset-inline: auto 0.3rem;
+			transform: translateY(-50%);
+		}
+		/* Read so far: from the tile's start, as far as the reader has read. */
+		.spine-fill {
+			inset-block: 0;
+			inset-inline-start: 0;
+			width: var(--fill-w);
+			height: auto !important;
+			border-top: 0;
+			border-inline-end: 1px solid rgb(224 180 92 / 0.85);
+		}
+		.spine-name.long {
+			display: none;
+		}
+		.spine-name.short {
+			display: inline;
+		}
+		a.spine:hover,
+		a.spine:focus-visible {
+			transform: none;
+		}
+		.spine.absent {
+			width: auto;
+			height: 2.1rem;
 		}
 	}
 </style>
