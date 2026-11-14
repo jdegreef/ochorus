@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import type { BookSummary, PlanSummary, SeriesDetail } from '$lib/library-public';
 	import { allProgress } from '$lib/progress';
+	import { planProgress } from '$lib/planProgress.svelte';
+	import { planMeta } from '$lib/emblemNames';
 	import { chapterPath } from '$lib/editionHref';
 	import { workPercent } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
@@ -15,6 +17,7 @@
 		bibleIn,
 		biblePlace,
 		bibleToContinue,
+		bibleContinueRows,
 		bibleStarts,
 		divisionKey,
 		groupBible,
@@ -82,7 +85,18 @@
 		return () => window.removeEventListener('ochorus:sync', bump);
 	});
 	const records = $derived(ticks ? allProgress().filter((r) => r.kind === 'book') : []);
-	const continues = $derived(bibleToContinue(books, records));
+	// The Bible plans the reader has started and not finished, most recently
+	// started first (the /plans page's "Continue your plans", read the same way).
+	const openPlans = $derived.by(() => {
+		if (!ticks) return [];
+		void planProgress.ticks;
+		const bySlug = new Map(plans.map((p) => [p.slug, p]));
+		return planProgress
+			.started()
+			.map((s) => bySlug.get(s.slug))
+			.filter((p): p is PlanSummary => !!p && planProgress.nextDay(p.slug, p.day_count) !== null);
+	});
+	const continues = $derived(bibleContinueRows(openPlans, bibleToContinue(books, records)));
 	const placeOf = $derived.by(() => {
 		if (!records.length) return undefined;
 		const bySlug = new Map(records.map((r) => [r.slug, r]));
@@ -269,12 +283,33 @@
 			</ul>
 		{/if}
 
-		{#if continues.length}
+		{#if continues.plans.length || continues.books.length}
 			<!-- A returning reader's way back in: the books they are partway
 			     through, the chapter Continue opens named in the Bible's numbers. -->
 			<div class="mb-11">
 				<ContinueShelf heading={t('books.continue')}>
-					{#each continues as row (row.book.slug)}
+					{#each continues.plans as plan (plan.slug)}
+						{@const done = planProgress.doneDays(plan.slug).length}
+						{@const next = planProgress.nextDay(plan.slug, plan.day_count)}
+						{@const meta = planMeta(plan.slug)}
+						{@const caption = `${t('plans.day')} ${next} ${t('plans.of')} ${plan.day_count}`}
+						<ContinueRow
+							href={localizeHref(`/plans/${plan.slug}`)}
+							title={plan.title}
+							{caption}
+							verb={t('plans.continue')}
+							hue={meta.accent}
+							emblem={meta.emblem}
+						>
+							{#snippet progress()}
+								<ProgressBar
+									percent={(done / plan.day_count) * 100}
+									label={`${plan.title}: ${done} ${t('plans.of')} ${plan.day_count} ${t('plans.days')}`}
+								/>
+							{/snippet}
+						</ContinueRow>
+					{/each}
+					{#each continues.books as row (row.book.slug)}
 						{@const caption = `${t('continue.chapter')} ${row.chapter} ${t('plans.of')} ${row.count}`}
 						<ContinueRow
 							href={localizeHref(chapterPath(row.book.slug, row.order, row.book.has_modern_edition))}
