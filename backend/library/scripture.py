@@ -313,9 +313,13 @@ def reference_verse_ids(text: str) -> frozenset:
     Used by search to match a scripture query against a sermon's ``scripture_ref``
     by verse *overlap* — so "John 3:16" finds a sermon on "John 3:14-21", and
     abbreviations ("Jn 3:16") and chapter-only queries ("John 3") resolve too.
+    An en dash reads as a hyphen: pythonbible takes only a hyphen for a range,
+    and "John 1:29–51" (a title, or a query a phone has typed) would otherwise
+    be its first verse alone. Not an em dash, which in prose is a pause ("John
+    3:16—God so loved"), never a range.
     """
     try:
-        refs = bible.get_references(text)
+        refs = bible.get_references(text.replace("\u2013", "-"))
     except Exception:
         return frozenset()
     ids: set[int] = set()
