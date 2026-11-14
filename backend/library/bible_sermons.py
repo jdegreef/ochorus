@@ -59,3 +59,48 @@ def sermons_on_book(position: int, language: str, limit: int = SHELF_SIZE) -> di
         .defer(*SERMON_CARD_DEFER)
     }
     return {"book": name, "count": len(hits), "sermons": [rows[pk] for pk in wanted]}
+
+
+#: Sermons a Bible chapter lists; the rest are on the book's shelf.
+CHAPTER_SIZE = 4
+
+
+def sermons_on_chapter(
+    position: int, chapter: int, language: str, limit: int = CHAPTER_SIZE
+) -> dict | None:
+    """``{"book", "count", "sermons"}`` for Bible chapter ``chapter`` of the book
+    at canonical ``position``: the sermons whose text lies in it (a text that
+    runs on into the next chapter counts in each it touches), or None when
+    there is none. The rule ``sermons_on_book`` applies to the book, narrowed
+    to the chapter; ``book`` is the facet name for the "all on this book" link,
+    ``count`` the chapter's own."""
+    lo = position * 1_000_000 + chapter * 1000
+    hi = lo + 999
+    refs = (
+        Sermon.objects.filter(is_published=True, language=language)
+        .exclude(scripture_ref="")
+        .values_list("pk", "title", "scripture_ref")
+    )
+    name = None
+    hits = []
+    for pk, title, ref in refs:
+        info = book_of(ref)
+        if info is None or info[1] != position:
+            continue
+        ids = [v for v in reference_verse_ids(ref) if lo <= v <= hi]
+        if not ids:
+            continue
+        name = info[0]
+        hits.append((min(ids), title, pk))
+    if not hits:
+        return None
+    hits.sort()
+    wanted = [pk for _, _, pk in hits[:limit]]
+    rows = {
+        s.pk: s
+        for s in Sermon.objects.filter(pk__in=wanted)
+        .select_related("author")
+        .prefetch_related("author__translations")
+        .defer(*SERMON_CARD_DEFER)
+    }
+    return {"book": name, "count": len(hits), "sermons": [rows[pk] for pk in wanted]}
