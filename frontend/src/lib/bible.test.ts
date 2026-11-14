@@ -6,6 +6,7 @@ import {
 	bibleChapters,
 	biblePlace,
 	bibleToContinue,
+	bibleContinueRows,
 	canonName,
 	biblePlans,
 	bibleStarts,
@@ -354,5 +355,27 @@ describe('bibleToContinue', () => {
 		const many = [...books, { slug: 'joel', chapter_count: 5 }];
 		const recs = many.map((b, i) => at(b.slug, 2, i));
 		expect(bibleToContinue(many, recs).map((r) => r.book.slug)).toEqual(['joel', 'mark', 'jonah']);
+	});
+});
+
+describe('bibleContinueRows', () => {
+	const plan = (slug: string, ...covers: string[]) => ({ slug, covers: covers.map((c) => ({ slug: c })) });
+	const row = (slug: string) => ({ book: { slug } });
+
+	it('puts plans first and drops the book a one-book plan already reads', () => {
+		const out = bibleContinueRows([plan('john-in-21-days', 'gospel-of-john')], [row('gospel-of-john'), row('ruth')]);
+		expect(out.plans.map((p) => p.slug)).toEqual(['john-in-21-days']);
+		expect(out.books.map((r) => r.book.slug)).toEqual(['ruth']);
+	});
+
+	it('keeps a book a many-book plan also reads', () => {
+		const out = bibleContinueRows([plan('bible-in-a-year', 'genesis', 'exodus')], [row('genesis')]);
+		expect(out.books.map((r) => r.book.slug)).toEqual(['genesis']);
+	});
+
+	it('shows at most `max` rows in all', () => {
+		const out = bibleContinueRows([plan('a', 'x'), plan('b', 'y')], [row('c'), row('d')], 3);
+		expect([out.plans.length, out.books.length]).toEqual([2, 1]);
+		expect(bibleContinueRows([plan('a'), plan('b'), plan('c'), plan('d')], [row('e')]).plans).toHaveLength(3);
 	});
 });

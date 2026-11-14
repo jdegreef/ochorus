@@ -465,3 +465,22 @@ export function bibleToContinue<
 		})
 		.slice(0, max);
 }
+
+/**
+ * The hub's Continue rows, plans and books together, at most `max`: the
+ * reader's open Bible plans first (a plan is the reading they committed to),
+ * then the books they are partway through. A plan that reads a single book
+ * ("John in 21 Days") already carries that book, so the book's own row is
+ * dropped rather than shown twice.
+ */
+export function bibleContinueRows<
+	P extends { covers: readonly { slug: string }[] },
+	B extends { book: { slug: string } }
+>(plans: readonly P[], books: readonly B[], max = 3): { plans: P[]; books: B[] } {
+	const carried = new Set(plans.flatMap((p) => (p.covers.length === 1 ? [p.covers[0].slug] : [])));
+	const shownPlans = plans.slice(0, max);
+	return {
+		plans: shownPlans,
+		books: books.filter((r) => !carried.has(r.book.slug)).slice(0, max - shownPlans.length)
+	};
+}
