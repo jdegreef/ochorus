@@ -219,6 +219,14 @@ _SHORT_WORDS = frozenset({
 _NON_LATIN = re.compile(r"[Ͱ-Ͽἀ-῿֐-׿]")
 _OPENS_MIDWAY = re.compile(r"^(?:and|but|or|nor|so|for|yet|then|thus|hence|therefore)\b", re.I)
 _LEADING_VERSE = re.compile(r"^(?:(?:Ver|Verse)\.?\s*)?\d+\.\s+(?=\S)")
+#: What an excerpt may open on where Logia cut the edition's verse lemma away:
+#: a verse number with its stop or comma ("Ver. 53, —"), then a dash or an
+#: ellipsis standing where the lemma was ("— Then said Jesus", "... He
+#: remained"). It marks an omission the reader cannot see, so it goes.
+_LEADING_LEMMA = re.compile(r"^(?:(?:(?:Ver|Verse)\.?\s*)?\d+[.,]\s*)?(?:—|\.\.\.|…)\s*(?=\S)")
+#: A bracket or straight double mark the scan spaced from its word ("[ Went
+#: backward", "remarks, \" He could").
+_SPACE_AFTER_OPENER = re.compile(r"(^|[\s(“])([\[\"])\s+(?=\w)")
 _SPACE_BEFORE = re.compile(r"\s+([,;:.?!)\]])")
 #: A space the scan put inside a curled double mark (“ prevented,” in Bellarmine).
 _SPACE_IN_CURLED = re.compile(r"“\s+|\s+”")
@@ -304,6 +312,26 @@ def open_at(verses: dict[tuple[int, int], str]) -> set[tuple[int, int]]:
     return out
 
 
+def seat_lone_singles(para: str) -> str:
+    """Close up a straight single mark the scan set apart from both its
+    neighbours ("saith, ' I can", "is truth? ' the"). Before a capital, after
+    a comma, colon, dash or the start, it opens: the space after it goes.
+    After a word or a stop, before a small letter, it closes: the space before
+    it goes. Anything else is left alone, and an apostrophe ("the Lord's"),
+    never spaced on both sides, is never touched."""
+
+    def seat(m: re.Match) -> str:
+        before, after = m["before"], m["after"]
+        if (not before.strip() or before.strip()[-1] in ",:;—(“") and after[:1].isupper():
+            return f"{before}'{after}"
+        closes_after = before.rstrip()[-1:].isalnum() or before.rstrip()[-1:] in ".?!,;:"
+        if closes_after and after[:1].islower():
+            return f"{before.rstrip()}' {after}"
+        return m[0]
+
+    return re.sub(r"(?P<before>(?:^|.)\s)'\s(?P<after>\S)", seat, para)
+
+
 def tidy(text: str) -> list[str]:
     """An excerpt's paragraphs, with only the scan's typography repaired (see
     TEXT in the module docstring). The words and their order are untouched."""
@@ -316,10 +344,15 @@ def tidy(text: str) -> list[str]:
         para = _SPACE_BEFORE.sub(r"\1", " ".join(raw.split()))
         para = space_quotes(para).replace(" - ", " — ")  # a spaced hyphen is the edition's dash
         para = _SPACE_IN_CURLED.sub(lambda m: m[0].strip(), para)
+        para = _SPACE_AFTER_OPENER.sub(r"\1\2", para)
+        para = seat_lone_singles(para)
         if para:
             paragraphs.append(para)
     if paragraphs:
-        paragraphs[0] = _LEADING_VERSE.sub("", paragraphs[0])
+        first = paragraphs[0]
+        while (bare := _LEADING_VERSE.sub("", _LEADING_LEMMA.sub("", first))) != first:
+            first = bare
+        paragraphs[0] = first
     return paragraphs
 
 

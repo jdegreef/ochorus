@@ -9,6 +9,7 @@ from .views import (
     AuthorDetailView,
     AuthorEraPresenceView,
     AuthorListView,
+    BibleLinksView,
     BookDetailView,
     BookEpubView,
     BookGuideView,
@@ -90,6 +91,7 @@ urlpatterns = [
     # BEFORE scripture/<slug:book>/: that pattern is one segment too, so
     # "pages" would otherwise be read as a book of the Bible (and 404).
     path("scripture/pages/", ScripturePagesView.as_view(), name="scripture-pages"),
+    path("bible/links/", BibleLinksView.as_view(), name="bible-links"),
     path("scripture/<slug:book>/", ScriptureBookView.as_view(), name="scripture-book"),
     path(
         "scripture/<slug:book>/<int:chapter>/",

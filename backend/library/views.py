@@ -2587,6 +2587,46 @@ class ScripturePagesView(APIView):
         return Response(current_pages())
 
 
+class BibleLinksView(APIView):
+    """Where each book of the Bible leads in the rest of the library — the
+    /bible hub's per-book links, one small request for all 66.
+
+    ``{"books": [{"position", "sermons", "sermon_book", "scripture"}]}``, one
+    entry per canonical position that has either: ``sermons`` is how many
+    sermons in ``language`` preach from the book (``bible_sermons.sermon_counts``,
+    the book page's shelf count) and ``sermon_book`` the sermons shelf's
+    ``?book=`` name for it; ``scripture`` is the book's ``/scripture/<slug>/``
+    page — the classics' passages that treat it — where one exists
+    (``current_pages``, so never a page that would 404), else null. The
+    scripture pages are English only (``scripture_graph``), so other languages
+    get sermons alone.
+    """
+
+    def get(self, request):
+        from .bible_sermons import sermon_counts
+        from .scripture_graph import current_pages
+
+        language = request.query_params.get("language", "en")
+        sermons = sermon_counts(language)
+        scripture: dict[int, str] = {}
+        if language == "en":
+            for p in current_pages():
+                # A book's page exists once one of its chapters has a page
+                # (ScriptureBookView's own rule).
+                if p["verse"] is None:
+                    scripture.setdefault(p["book_order"], p["book"])
+        books = [
+            {
+                "position": pos,
+                "sermons": sermons.get(pos, ("", 0))[1],
+                "sermon_book": sermons.get(pos, ("", 0))[0],
+                "scripture": scripture.get(pos),
+            }
+            for pos in sorted(set(sermons) | set(scripture))
+        ]
+        return Response({"books": books})
+
+
 class ScriptureGraphView(APIView):
     """The passages in the library that cite a verse, or a Bible chapter.
 

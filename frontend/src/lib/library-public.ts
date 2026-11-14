@@ -1422,6 +1422,25 @@ export interface PlanDetail extends PlanSummary {
 	authors?: { slug: string; name: string; photo_url?: string }[];
 }
 
+/**
+ * Where a book of the Bible leads in the rest of the library (the /bible hub's
+ * per-book links): how many sermons preach from it, the sermons shelf's
+ * `?book=` name for it, and its `/scripture/<slug>/` page (the classics'
+ * passages on it) where one exists. Only books with either are listed.
+ */
+export interface BibleBookLinks {
+	/** Canonical position: 1 Genesis … 66 Revelation (`series_position`). */
+	position: number;
+	sermons: number;
+	sermon_book: string;
+	scripture: string | null;
+}
+
+export const getBibleLinks = (language = 'en', f?: Fetch) =>
+	apiFetch<{ books: BibleBookLinks[] }>(`/api/library/bible/links/?language=${language}`, {}, f).then(
+		(r) => r.books
+	);
+
 export const listPlans = (language = 'en', f?: Fetch) =>
 	apiFetch<PlanSummary[]>(`/api/library/plans/?language=${language}`, {}, f);
 
