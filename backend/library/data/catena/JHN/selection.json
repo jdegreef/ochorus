@@ -8,14 +8,14 @@
    "excerpts": [
     "augustine.JHN.1.1-4.1",
     "ryle.JHN.1.5.2",
-    "henry.JHN.1.10.1",
     "chrysostom.JHN.1.12.2",
     "westcott.JHN.1.14.5",
     "wesley.JHN.1.18.1",
     "cyril.JHN.1.8.1",
     "origen.JHN.1.4.4",
     "calvin.JHN.1.7-8.1",
-    "bengel.JHN.1.15.1"
+    "bengel.JHN.1.15.1",
+    "henry.JHN.1.11.2"
    ]
   },
   {
@@ -32,10 +32,10 @@
    "start": "1:29",
    "title": "The Lamb of God",
    "excerpts": [
-    "calvin.JHN.1.30.1",
     "cyril.JHN.1.31.1",
     "wesley.JHN.1.34.1",
-    "ryle.JHN.1.32.1"
+    "ryle.JHN.1.32.1",
+    "origen.JHN.1.29.4"
    ]
   },
   {
@@ -43,9 +43,10 @@
    "title": "The first disciples",
    "excerpts": [
     "augustine.JHN.1.35-36.1",
-    "calvin.JHN.1.38.1",
     "lapide.JHN.1.40.1",
-    "ryle.JHN.1.42.1"
+    "ryle.JHN.1.42.1",
+    "chrysostom.JHN.1.41.1",
+    "henry.JHN.1.37.1"
    ]
   },
   {
@@ -53,10 +54,10 @@
    "title": "Philip and Nathanael",
    "excerpts": [
     "calvin.JHN.1.43.1",
-    "cyril.JHN.1.46.1",
     "augustine.JHN.1.48.1",
     "henry.JHN.1.51.1",
-    "ryle.JHN.1.45.1"
+    "ryle.JHN.1.45.1",
+    "chrysostom.JHN.1.46-47.1"
    ]
   },
   {
@@ -80,11 +81,12 @@
     "wesley.JHN.2.18.1",
     "calvin.JHN.2.22.1",
     "origen.JHN.2.25.1",
-    "henry.JHN.2.19.2",
     "westcott.JHN.2.14.1",
     "lapide.JHN.2.23.1",
-    "chrysostom.JHN.2.13-16.1",
-    "bengel.JHN.2.17.1"
+    "bengel.JHN.2.17.1",
+    "chrysostom.JHN.2.19-22.1",
+    "henry.JHN.2.16.1",
+    "ryle.JHN.2.22.2"
    ]
   },
   {
@@ -95,14 +97,13 @@
     "wesley.JHN.3.8.1",
     "cyril.JHN.3.11.1",
     "bengel.JHN.3.12.1",
-    "chrysostom.JHN.3.16.2",
     "henry.JHN.3.17.2",
     "westcott.JHN.3.19.2",
     "augustine.JHN.3.13.1",
     "ryle.JHN.3.18.3",
     "calvin.JHN.3.2.1",
-    "calvin.JHN.3.7.1",
-    "westcott.JHN.3.6.1"
+    "westcott.JHN.3.6.1",
+    "chrysostom.JHN.3.16.1"
    ]
   },
   {
@@ -130,24 +131,24 @@
    "start": "4:1",
    "title": "Jesus and the Samaritan woman",
    "excerpts": [
-    "calvin.JHN.4.5.1",
     "henry.JHN.4.7.2",
     "cyril.JHN.4.11.1",
     "wesley.JHN.4.12.1",
-    "augustine.JHN.4.18.1",
     "ryle.JHN.4.25.2",
     "wesley.JHN.4.27.1",
     "chrysostom.JHN.4.28-29.1",
     "cyril.JHN.4.16.1",
-    "calvin.JHN.4.10.2",
     "augustine.JHN.4.2.1",
     "westcott.JHN.4.19.1",
-    "henry.JHN.4.3.1",
     "lapide.JHN.4.30.1",
     "lapide.JHN.4.26.1",
     "bengel.JHN.4.17-18.1",
     "westcott.JHN.4.23.1",
-    "ryle.JHN.4.29.1"
+    "ryle.JHN.4.29.1",
+    "chrysostom.JHN.4.6.1",
+    "calvin.JHN.4.21.1",
+    "augustine.JHN.4.4-6.1",
+    "calvin.JHN.4.22.1"
    ]
   },
   {
@@ -165,7 +166,9 @@
    "title": "Many Samaritans believe",
    "excerpts": [
     "cyril.JHN.4.40-41.1",
-    "calvin.JHN.4.42.1"
+    "lapide.JHN.4.39.1",
+    "henry.JHN.4.41.1",
+    "ryle.JHN.4.42.1"
    ]
   },
   {
@@ -175,7 +178,6 @@
     "augustine.JHN.4.43-44.1",
     "calvin.JHN.4.45.1",
     "bengel.JHN.4.49-50.1",
-    "chrysostom.JHN.4.54.1",
     "wesley.JHN.4.52.1",
     "cyril.JHN.4.51.1",
     "calvin.JHN.4.48.1",
@@ -188,7 +190,6 @@
    "title": "The healing at the pool",
    "excerpts": [
     "chrysostom.JHN.5.2-4.1",
-    "henry.JHN.5.4.3",
     "calvin.JHN.5.7.1",
     "augustine.JHN.5.9-10.1",
     "ryle.JHN.5.11.1",
@@ -196,19 +197,20 @@
     "cyril.JHN.5.10.1",
     "calvin.JHN.5.3.3",
     "ryle.JHN.5.16.1",
-    "lapide.JHN.5.15.1"
+    "lapide.JHN.5.15.1",
+    "henry.JHN.5.12.1"
    ]
   },
   {
    "start": "5:19",
    "title": "What the Son does",
    "excerpts": [
-    "augustine.JHN.5.19.2",
-    "calvin.JHN.5.21.1",
     "wesley.JHN.5.23.1",
     "chrysostom.JHN.5.27.1",
     "ryle.JHN.5.30.1",
-    "cyril.JHN.5.24.1"
+    "cyril.JHN.5.24.1",
+    "calvin.JHN.5.19.2",
+    "augustine.JHN.5.21.2"
    ]
   },
   {
@@ -235,13 +237,13 @@
    "title": "Jesus feeds five thousand",
    "excerpts": [
     "chrysostom.JHN.6.2-3.1",
-    "calvin.JHN.6.3.1",
     "wesley.JHN.6.5.1",
     "ryle.JHN.6.9.1",
     "ryle.JHN.6.11.2",
     "cyril.JHN.6.14.1",
     "augustine.JHN.6.10-13.1",
-    "calvin.JHN.6.15.1"
+    "calvin.JHN.6.15.1",
+    "henry.JHN.6.3.1"
    ]
   },
   {
@@ -259,8 +261,6 @@
    "excerpts": [
     "augustine.JHN.6.22-24.1",
     "ryle.JHN.6.27.1",
-    "calvin.JHN.6.31.1",
-    "wesley.JHN.6.37.1",
     "henry.JHN.6.42.1",
     "lapide.JHN.6.48.1",
     "calvin.JHN.6.51.2",
@@ -270,11 +270,12 @@
     "cyril.JHN.6.53.1",
     "bengel.JHN.6.52.1",
     "henry.JHN.6.23-24.3",
-    "chrysostom.JHN.6.35-36.1",
-    "cyril.JHN.6.47.1",
     "ryle.JHN.6.24.1",
     "bengel.JHN.6.44.1",
-    "ryle.JHN.6.39.2"
+    "ryle.JHN.6.39.2",
+    "calvin.JHN.6.46.1",
+    "chrysostom.JHN.6.30-31.2",
+    "cyril.JHN.6.33.1"
    ]
   },
   {
@@ -282,11 +283,12 @@
    "title": "Many disciples turn back",
    "excerpts": [
     "augustine.JHN.6.60.1",
-    "calvin.JHN.6.63.3",
     "ryle.JHN.6.66.1",
     "wesley.JHN.6.68.1",
-    "chrysostom.JHN.6.70-71.1",
-    "cyril.JHN.6.67.1"
+    "calvin.JHN.6.62.1",
+    "chrysostom.JHN.6.70.1",
+    "westcott.JHN.6.65.1",
+    "henry.JHN.6.63.1"
    ]
   },
   {
@@ -296,12 +298,11 @@
     "westcott.JHN.7.2.1",
     "lapide.JHN.7.5.1",
     "cyril.JHN.7.8.1",
-    "calvin.JHN.7.9.1",
-    "augustine.JHN.7.13.1",
     "wesley.JHN.7.1.1",
     "chrysostom.JHN.7.6.1",
     "ryle.JHN.7.13.1",
-    "henry.JHN.7.3-4.1"
+    "henry.JHN.7.3-4.1",
+    "ryle.JHN.7.10.2"
    ]
   },
   {
@@ -328,9 +329,9 @@
     "westcott.JHN.7.34.1",
     "ryle.JHN.7.37.2",
     "wesley.JHN.7.38.1",
-    "calvin.JHN.7.40.1",
     "henry.JHN.7.33-34.4",
-    "chrysostom.JHN.7.35-36.1"
+    "chrysostom.JHN.7.35-36.1",
+    "calvin.JHN.7.41.1"
    ]
   },
   {
@@ -348,12 +349,12 @@
    "start": "7:53",
    "title": "The woman caught in adultery",
    "excerpts": [
-    "calvin.JHN.8.3.1",
     "wesley.JHN.8.6.1",
     "augustine.JHN.8.7.1",
     "ryle.JHN.8.10.1",
     "henry.JHN.8.9.3",
-    "henry.JHN.8.1.1"
+    "henry.JHN.8.1.1",
+    "ryle.JHN.8.2.1"
    ]
   },
   {
@@ -363,8 +364,8 @@
     "augustine.JHN.8.12.2",
     "calvin.JHN.8.17.1",
     "westcott.JHN.8.19.1",
-    "chrysostom.JHN.8.20.1",
-    "henry.JHN.8.14.2"
+    "henry.JHN.8.15.1",
+    "chrysostom.JHN.8.13-14.1"
    ]
   },
   {
@@ -385,15 +386,15 @@
    "excerpts": [
     "henry.JHN.8.32.2",
     "cyril.JHN.8.36.1",
-    "calvin.JHN.8.38.1",
     "augustine.JHN.8.39.1",
     "wesley.JHN.8.41.1",
     "westcott.JHN.8.44.3",
-    "calvin.JHN.8.46.2",
     "chrysostom.JHN.8.34-35.1",
     "lapide.JHN.8.31.1",
     "ryle.JHN.8.35.1",
-    "westcott.JHN.8.43.1"
+    "westcott.JHN.8.43.1",
+    "henry.JHN.8.45.1",
+    "calvin.JHN.8.42.1"
    ]
   },
   {
@@ -435,9 +436,10 @@
     "calvin.JHN.9.29.1",
     "augustine.JHN.9.30-33.1",
     "bengel.JHN.9.34.1",
-    "chrysostom.JHN.9.19.1",
     "cyril.JHN.9.31.1",
-    "henry.JHN.9.22-23.2"
+    "henry.JHN.9.22-23.2",
+    "chrysostom.JHN.9.28-29.1",
+    "augustine.JHN.9.24-27.1"
    ]
   },
   {
@@ -453,22 +455,23 @@
    "start": "10:1",
    "title": "The shepherd and the sheep",
    "excerpts": [
-    "calvin.JHN.10.1.3",
     "ryle.JHN.10.4.1",
-    "augustine.JHN.10.7.1",
     "wesley.JHN.10.9.1",
     "chrysostom.JHN.10.6-9.1",
-    "westcott.JHN.10.7.1"
+    "westcott.JHN.10.7.1",
+    "cyril.JHN.10.8.1",
+    "henry.JHN.10.1-3.1"
    ]
   },
   {
    "start": "10:11",
    "title": "The good shepherd",
    "excerpts": [
-    "calvin.JHN.10.11.1",
-    "chrysostom.JHN.10.14-15.1",
     "wesley.JHN.10.17.1",
-    "ryle.JHN.10.15.1"
+    "ryle.JHN.10.15.1",
+    "augustine.JHN.10.11.1",
+    "calvin.JHN.10.13.1",
+    "cyril.JHN.10.14.1"
    ]
   },
   {
@@ -527,7 +530,6 @@
    "start": "11:17",
    "title": "The resurrection and the life",
    "excerpts": [
-    "calvin.JHN.11.18.1",
     "westcott.JHN.11.20.2",
     "ryle.JHN.11.26.2",
     "wesley.JHN.11.22.1",
@@ -579,13 +581,13 @@
    "title": "Mary anoints Jesus",
    "excerpts": [
     "henry.JHN.12.1.2",
-    "calvin.JHN.12.4.1",
     "chrysostom.JHN.12.8.1",
     "wesley.JHN.12.10.1",
     "bengel.JHN.12.2.1",
     "augustine.JHN.12.8.1",
     "westcott.JHN.12.7.1",
-    "ryle.JHN.12.6.1"
+    "ryle.JHN.12.6.1",
+    "ryle.JHN.12.4.2"
    ]
   },
   {
@@ -609,11 +611,11 @@
     "augustine.JHN.12.26.1",
     "chrysostom.JHN.12.29-30.1",
     "calvin.JHN.12.31.2",
-    "henry.JHN.12.34.3",
     "westcott.JHN.12.24.1",
     "wesley.JHN.12.27.1",
     "ryle.JHN.12.20.2",
-    "chrysostom.JHN.12.28.1"
+    "chrysostom.JHN.12.28.1",
+    "henry.JHN.12.33.2"
    ]
   },
   {
@@ -637,10 +639,10 @@
     "wesley.JHN.13.1.1",
     "augustine.JHN.13.4-5.1",
     "westcott.JHN.13.6.1",
-    "calvin.JHN.13.7.1",
     "lapide.JHN.13.10.1",
-    "chrysostom.JHN.13.5-6.1",
-    "henry.JHN.13.3.1"
+    "henry.JHN.13.3.1",
+    "calvin.JHN.13.8.1",
+    "cyril.JHN.13.9.1"
    ]
   },
   {
@@ -690,7 +692,7 @@
     "ryle.JHN.14.4.2",
     "calvin.JHN.14.7.1",
     "wesley.JHN.14.1.1",
-    "chrysostom.JHN.14.3-4.1"
+    "cyril.JHN.14.2-3.1"
    ]
   },
   {
@@ -698,7 +700,6 @@
    "title": "Whoever has seen me has seen the Father",
    "excerpts": [
     "calvin.JHN.14.8.1",
-    "augustine.JHN.14.10.1",
     "wesley.JHN.14.11.1",
     "cyril.JHN.14.10.1",
     "ryle.JHN.14.13.1"
@@ -709,11 +710,11 @@
    "title": "The promise of the Advocate",
    "excerpts": [
     "calvin.JHN.14.15.1",
-    "cyril.JHN.14.18.1",
     "henry.JHN.14.20.2",
     "bengel.JHN.14.24.1",
     "ryle.JHN.14.19.1",
-    "augustine.JHN.14.22.1"
+    "augustine.JHN.14.22.1",
+    "cyril.JHN.14.23.1"
    ]
   },
   {
@@ -722,8 +723,8 @@
    "excerpts": [
     "henry.JHN.14.28.3",
     "westcott.JHN.14.30.1",
-    "calvin.JHN.14.27.1",
-    "augustine.JHN.14.26.1"
+    "calvin.JHN.14.25.1",
+    "chrysostom.JHN.14.27.1"
    ]
   },
   {
@@ -732,11 +733,10 @@
    "excerpts": [
     "henry.JHN.15.4-5.2",
     "ryle.JHN.15.5.1",
-    "calvin.JHN.15.8.1",
     "augustine.JHN.15.9.1",
     "wesley.JHN.15.6.1",
     "cyril.JHN.15.11.1",
-    "chrysostom.JHN.15.1.1"
+    "chrysostom.JHN.15.8-9.1"
    ]
   },
   {
@@ -744,8 +744,8 @@
    "title": "I have called you friends",
    "excerpts": [
     "calvin.JHN.15.13.1",
-    "cyril.JHN.15.14-15.1",
-    "henry.JHN.15.16.3"
+    "henry.JHN.15.16.3",
+    "augustine.JHN.15.14.1"
    ]
   },
   {
@@ -753,10 +753,11 @@
    "title": "The world’s hatred",
    "excerpts": [
     "cyril.JHN.15.19.1",
-    "calvin.JHN.15.20.1",
     "henry.JHN.15.22.2",
     "westcott.JHN.15.25.1",
-    "lapide.JHN.15.23.1"
+    "lapide.JHN.15.23.1",
+    "wesley.JHN.15.21.1",
+    "augustine.JHN.15.24.3"
    ]
   },
   {
@@ -771,9 +772,9 @@
    "start": "16:1",
    "title": "Warning of persecution",
    "excerpts": [
-    "augustine.JHN.16.1.1",
     "wesley.JHN.16.2.1",
-    "calvin.JHN.16.3.1"
+    "calvin.JHN.16.3.1",
+    "ryle.JHN.16.1.1"
    ]
   },
   {
@@ -815,7 +816,7 @@
    "excerpts": [
     "chrysostom.JHN.17.1.1",
     "henry.JHN.17.2-3.1",
-    "calvin.JHN.17.4.1"
+    "calvin.JHN.17.3.3"
    ]
   },
   {
@@ -836,9 +837,9 @@
    "start": "17:20",
    "title": "Jesus prays for all who will believe",
    "excerpts": [
-    "augustine.JHN.17.20.2",
     "ryle.JHN.17.23.2",
-    "calvin.JHN.17.24.1"
+    "cyril.JHN.17.26.1",
+    "henry.JHN.17.21-23.1"
    ]
   },
   {
@@ -860,7 +861,6 @@
    "title": "Peter denies Jesus",
    "excerpts": [
     "cyril.JHN.18.15.1",
-    "calvin.JHN.18.17.2",
     "cyril.JHN.18.16.1",
     "ryle.JHN.18.18.2"
    ]
@@ -869,9 +869,9 @@
    "start": "18:19",
    "title": "Jesus before the high priest",
    "excerpts": [
-    "henry.JHN.18.20-21.3",
     "cyril.JHN.18.22.1",
-    "ryle.JHN.18.24.1"
+    "ryle.JHN.18.24.1",
+    "calvin.JHN.18.19.1"
    ]
   },
   {
@@ -888,8 +888,7 @@
    "excerpts": [
     "augustine.JHN.18.29-30.1",
     "bengel.JHN.18.30-31.1",
-    "ryle.JHN.18.29.1",
-    "calvin.JHN.18.30.1"
+    "ryle.JHN.18.29.1"
    ]
   },
   {
@@ -897,11 +896,11 @@
    "title": "My kingdom is not of this world",
    "excerpts": [
     "wesley.JHN.18.36.1",
-    "calvin.JHN.18.39.2",
-    "cyril.JHN.18.35.1",
-    "henry.JHN.18.34.2",
     "chrysostom.JHN.18.37.1",
-    "ryle.JHN.18.33.1"
+    "ryle.JHN.18.33.1",
+    "bengel.JHN.18.39.1",
+    "calvin.JHN.18.38.2",
+    "cyril.JHN.18.34.1"
    ]
   },
   {
@@ -925,7 +924,7 @@
     "cyril.JHN.19.16.1",
     "ryle.JHN.19.18.1",
     "henry.JHN.19.20.2",
-    "calvin.JHN.19.23.2"
+    "calvin.JHN.19.23.1"
    ]
   },
   {
@@ -933,7 +932,7 @@
    "title": "Jesus’s mother at the cross",
    "excerpts": [
     "augustine.JHN.19.27.1",
-    "henry.JHN.19.25.1"
+    "calvin.JHN.19.26.1"
    ]
   },
   {
@@ -950,7 +949,8 @@
    "excerpts": [
     "cyril.JHN.19.31.1",
     "henry.JHN.19.34.2",
-    "calvin.JHN.19.36.1"
+    "calvin.JHN.19.37.2",
+    "ryle.JHN.19.31.1"
    ]
   },
   {
@@ -967,7 +967,6 @@
    "title": "The empty tomb",
    "excerpts": [
     "henry.JHN.20.1.3",
-    "calvin.JHN.20.3.1",
     "augustine.JHN.20.5-7.1",
     "ryle.JHN.20.7.2",
     "westcott.JHN.20.10.1",
@@ -976,16 +975,19 @@
     "lapide.JHN.20.12.1",
     "chrysostom.JHN.20.13.1",
     "ryle.JHN.20.16.1",
-    "calvin.JHN.20.17.1"
+    "calvin.JHN.20.3.2",
+    "calvin.JHN.20.15.1",
+    "henry.JHN.20.8.1",
+    "chrysostom.JHN.20.2-7.1"
    ]
   },
   {
    "start": "20:19",
    "title": "Jesus appears to the disciples",
    "excerpts": [
-    "calvin.JHN.20.20.1",
-    "cyril.JHN.20.21.1",
-    "ryle.JHN.20.25.2"
+    "ryle.JHN.20.25.2",
+    "chrysostom.JHN.20.21-23.1",
+    "henry.JHN.20.19.2"
    ]
   },
   {
@@ -1010,13 +1012,13 @@
    "excerpts": [
     "chrysostom.JHN.21.1.1",
     "ryle.JHN.21.4.1",
-    "calvin.JHN.21.10.1",
     "henry.JHN.21.12.1",
     "augustine.JHN.21.14.1",
     "westcott.JHN.21.2.1",
     "wesley.JHN.21.6.1",
     "calvin.JHN.21.3.1",
-    "westcott.JHN.21.8.1"
+    "westcott.JHN.21.8.1",
+    "bengel.JHN.21.10.1"
    ]
   },
   {
@@ -1031,10 +1033,10 @@
    "start": "21:20",
    "title": "The disciple whom Jesus loved",
    "excerpts": [
-    "chrysostom.JHN.21.20-21.1",
     "wesley.JHN.21.22.1",
     "calvin.JHN.21.24.1",
-    "cyril.JHN.21.24.1"
+    "cyril.JHN.21.24.1",
+    "bengel.JHN.21.20.1"
    ]
   }
  ]
