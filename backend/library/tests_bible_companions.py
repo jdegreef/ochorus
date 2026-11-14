@@ -23,6 +23,14 @@ class TitleChaptersTests(SimpleTestCase):
         self.assertEqual(title_chapters("John 3", 45), ())
         self.assertEqual(title_chapters("", 45), ())
 
+    def test_every_declared_work_ships_as_an_english_book(self):
+        """A typo or a renamed book would silently drop from both shelves."""
+        from .content_fixtures import book_fixture_path
+
+        for slugs in COMPANIONS.values():
+            for slug in slugs:
+                self.assertTrue(book_fixture_path(slug, "en").exists(), slug)
+
     def test_every_passage_work_is_declared_on_its_book(self):
         for slug, (position, _) in PASSAGES.items():
             self.assertIn(slug, COMPANIONS[position], slug)
@@ -90,6 +98,13 @@ class ReadAlongsideTests(TestCase):
             ],
         )
         self.assertEqual(data["read_alongside"][0]["author_name"], "John Calvin")
+
+    def test_an_unpublished_companion_drops_from_the_chapter_at_once(self):
+        self.client.get("/api/library/books/romans/chapters/9/?language=en")  # warm the index
+        self.commentary.is_published = False
+        self.commentary.save()
+        data = self.client.get("/api/library/books/romans/chapters/9/?language=en").json()
+        self.assertEqual([c["book"] for c in data["read_alongside"]], ["homilies-on-romans"])
 
     def test_the_introduction_lists_none(self):
         data = self.client.get("/api/library/books/romans/chapters/1/?language=en").json()

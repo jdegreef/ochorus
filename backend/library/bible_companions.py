@@ -120,7 +120,8 @@ def title_chapters(title: str, position: int) -> tuple[int, ...]:
 def _index(language: str, digest: str) -> dict[tuple[int, int], tuple[dict, ...]]:
     """{(canonical number, Bible chapter): the companion chapters on it} for
     ``language`` — built once per deploy (``digest`` is the shipped content's)
-    from every companion's chapter titles. Catenas are left out (see the module
+    from every companion's chapter titles, published or not (that is asked
+    live, in ``companion_chapters``). Catenas are left out (see the module
     doc); a passage work is one entry on its passage."""
     from .models import Book, Chapter
 
@@ -130,7 +131,6 @@ def _index(language: str, digest: str) -> dict[tuple[int, int], tuple[dict, ...]
         for b in Book.objects.filter(
             slug__in=[s for slugs in COMPANIONS.values() for s in slugs if s not in catenas],
             language=language,
-            is_published=True,
         ).select_related("author")
     }
     position_of = {s: pos for pos, slugs in COMPANIONS.items() for s in slugs}
@@ -167,6 +167,18 @@ def companion_chapters(position: int, chapter: int, language: str) -> list[dict]
     ``position``: ``[{book, book_title, author_name, order, title}]``, at most
     ``CHAPTER_LIMIT``. ``order`` is None (and ``title`` "") for a passage
     work, which opens at its start."""
+    from .models import Book
+
     if not any(s not in CATENAS.values() for s in companion_slugs(position)):
         return []
-    return list(_index(language, content_digest()).get((position, chapter), ())[:CHAPTER_LIMIT])
+    entries = _index(language, content_digest()).get((position, chapter), ())
+    if not entries:
+        return []
+    # The layout is the deploy's; whether each work is published is asked now,
+    # as catena does, so an unpublished one drops out at once, not next deploy.
+    live = set(
+        Book.objects.filter(
+            slug__in={e["book"] for e in entries}, language=language, is_published=True
+        ).values_list("slug", flat=True)
+    )
+    return [e for e in entries if e["book"] in live][:CHAPTER_LIMIT]
