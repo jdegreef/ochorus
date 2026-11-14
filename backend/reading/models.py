@@ -135,6 +135,31 @@ class ReadingProgress(models.Model):
     def __str__(self) -> str:
         return f"{self.profile_id}:{self.kind}:{self.book_slug} → ch{self.chapter_order}"
 
+    @property
+    def is_finished_now(self) -> bool:
+        """Finished, and not started again since — the reader's current status
+        (the frontend's ``isFinishedNow``). ``finished_at`` alone is history."""
+        finishes = [d for d in (self.finished_at, self.last_finished_at) if d is not None]
+        if not finishes:
+            return False
+        return self.restarted_at is None or max(finishes) > self.restarted_at
+
+    @staticmethod
+    def in_progress_q() -> models.Q:
+        """The rows being read NOW: never finished, or started again after the
+        latest finish (a reread). Written as positive conditions only, so the
+        nullable comparisons never meet a NOT."""
+        never_finished = models.Q(finished_at__isnull=True, last_finished_at__isnull=True)
+        restarted_after_all = (
+            models.Q(restarted_at__isnull=False)
+            & (models.Q(finished_at__isnull=True) | models.Q(restarted_at__gt=models.F("finished_at")))
+            & (
+                models.Q(last_finished_at__isnull=True)
+                | models.Q(restarted_at__gt=models.F("last_finished_at"))
+            )
+        )
+        return never_finished | restarted_after_all
+
 
 class FavoriteKind(models.TextChoices):
     """What a favorite's ``slug`` names.

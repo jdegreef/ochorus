@@ -437,10 +437,14 @@ def _progress_extras(data: dict) -> dict:
     — validated; absent (an older client) stays None, which the upsert reads as
     "not reported"."""
     out = {}
+    # Clamped to now: these stamps keep the LATEST any device reports, so one
+    # from a fast clock would otherwise outrank every honest stamp for as long
+    # as the clock was ahead (a restart no device could finish).
+    now = datetime.now(UTC)
     for field in ("restarted_at", "last_finished_at"):
         dt = _ms_to_dt(data.get(field))
         if dt is not None:
-            out[field] = dt
+            out[field] = min(dt, now)
     if data.get("furthest_order") is not None:
         out["furthest_order"] = clamp_int(
             data.get("furthest_order"), default=0, low=0, high=MAX_CHAPTER_ORDER
@@ -580,6 +584,10 @@ def _upsert_progress(
         position_stale = (stored is not None and client_dt is not None and stored >= client_dt) or (
             client_dt is None and keep_server_when_unknown
         )
+        # A write that STARTS a new read-through carries its position: keeping
+        # the old read-through's place beside the new furthest would mix the two.
+        if _is_later(restarted_at, server_restarted):
+            position_stale = False
 
     if position_stale:
         # Keep the server's newer position, but still apply a finished change —

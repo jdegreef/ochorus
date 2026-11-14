@@ -236,12 +236,12 @@ class AdminUserDetailView(APIView):
             }
 
         in_progress = sorted(
-            (progress_row(p) for p in progress if p.finished_at is None),
+            (progress_row(p) for p in progress if not p.is_finished_now),
             key=lambda r: r["updated_at"] or "",
             reverse=True,
         )
         finished = sorted(
-            (progress_row(p) for p in progress if p.finished_at is not None),
+            (progress_row(p) for p in progress if p.is_finished_now),
             key=lambda r: r["finished_at"] or "",
             reverse=True,
         )

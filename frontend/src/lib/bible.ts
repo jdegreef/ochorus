@@ -15,15 +15,13 @@ import {
 	furthestOf,
 	isFinishedNow,
 	resumeOrderOf,
+	type FinishFields,
 	type ProgressRecord
 } from '$lib/reading-schema';
 
 /** The fields of a progress record the hub reads — the finish stamps included,
  *  since a book started again (a reread) is in progress, not finished. */
-type PlaceFields = Pick<
-	ProgressRecord,
-	'order' | 'furthest' | 'finished_at' | 'restarted_at' | 'last_finished_at'
->;
+type PlaceFields = Pick<ProgressRecord, 'order' | 'furthest'> & FinishFields;
 
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';

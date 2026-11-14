@@ -15,6 +15,7 @@ import {
 	isFinishedNow,
 	lastFinishOf,
 	parseWorkSlugKey,
+	type FinishFields,
 	type WorkKind,
 	type ProgressRecord,
 	type ProgressMap
@@ -141,7 +142,7 @@ export function saveProgress(
  * restarts explicitly (`restartWork`).
  */
 export function startsAgain(
-	prev: Pick<ProgressRecord, 'order' | 'at' | 'finished_at' | 'restarted_at' | 'last_finished_at'>,
+	prev: Pick<ProgressRecord, 'order' | 'at'> & FinishFields,
 	order: number
 ): boolean {
 	if (!isFinishedNow(prev)) return false;
@@ -246,8 +247,11 @@ export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	if (!rec || isFinishedNow(rec)) return false;
 	// The first completion stays in `finished_at` (history); finishing a
 	// reread records the new one beside it.
+	// finishing a reread records the new one beside it — always later than
+	// the restart, even when the restart came from a device whose clock runs
+	// ahead of this one's (else the reread could never be finished here).
 	if (rec.finished_at == null) rec.finished_at = Date.now();
-	else rec.last_finished_at = Date.now();
+	else rec.last_finished_at = Math.max(Date.now(), (rec.restarted_at ?? 0) + 1);
 	write(map);
 	// Not debounced: a discrete action, and coalescing it with scroll saves is a
 	// hazard for the un-finish direction (see readingSync.setFinished).

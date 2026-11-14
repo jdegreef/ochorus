@@ -446,13 +446,14 @@ def image_url(url: str) -> str:
 
 
 def _latest_progress(profile_ids) -> dict:
-    """``{profile_id: progress}`` — each reader's most recent unfinished book."""
+    """``{profile_id: progress}`` — each reader's most recent unfinished book
+    (a book being reread counts: ``in_progress_q``)."""
     from reading.models import ReadingProgress, WorkKind
 
     latest: dict = {}
     rows = (
         ReadingProgress.objects.filter(
-            profile_id__in=profile_ids, kind=WorkKind.BOOK, finished_at__isnull=True
+            ReadingProgress.in_progress_q(), profile_id__in=profile_ids, kind=WorkKind.BOOK
         )
         .order_by("profile_id", "-updated_at")
         .values("profile_id", "book_slug", "language", "chapter_order")
