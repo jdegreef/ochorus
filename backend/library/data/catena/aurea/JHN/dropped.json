@@ -1676,8 +1676,8 @@
    "excerpt": "catena.JHN.11.15-16.1",
    "passage": 2,
    "father": "Chrysostom",
-   "why": "the scan has damaged it",
-   "text": "The disciples all dreaded the Jews; and especially Thomas; Then said Thomas, which is called Didymus, unto his fellowdisciples, Let us also go, that we may die with him. But he who was now the most weak and unbelieving of all the disciples, afterwards became stronger than any. And he who dared not go to Bethany, afterwards went over the whole earth, in the midst of those who wished his death, with a spirit indomitable."
+   "why": "rejected by an editor: proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)",
+   "text": "The disciples all dreaded the Jews; and especially Thomas; Then said Thomas, which is called Didymus, unto his Let us also go, that we may die with him, But he who was now the most weak and unbelieving of all the disciples, afterwards became stronger than any. And he who dared not go to Bethany, afterwards went over the whole earth, in the midst of those who wished his death, with a spirit indomitable."
   },
   {
    "excerpt": "catena.JHN.11.17-18.1",

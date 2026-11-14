@@ -500,8 +500,15 @@
    "excerpt": "catena-matthew.MAT.26.73.1",
    "passage": 1,
    "father": "Augustine",
-   "why": "an unpaired quotation mark",
-   "text": "Let us now come to the third denial; “And after a while came they that stood by, and said to Peter, Surely thou also art one of them,” (Luke’s words are, “About the space of one hour after,” [Luke 22:59]) for thy speech bewrayeth thee.”"
+   "why": "rejected by an editor: proofread 2026-11-14: mended, but still fails the build's check (an unpaired quotation mark)",
+   "text": "Let us now come to the third denial; “And after a while came they that stood by, and said to Peter, Surely thou also art one of them,” (Luke’s words are, “About the space of one hour after, [Luke 22:59]) for thy speech bewrayeth thee.”"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.73.1",
+   "passage": 7,
+   "father": "Augustine",
+   "why": "rejected by an editor: proofread 2026-11-14: mended, but still fails the build's check (an unpaired quotation mark)",
+   "text": "Also Peter thrice denied, because heretical error concerning Christ is limited to three kinds; they are in error respecting His divinity, His humanity, or both."
   },
   {
    "excerpt": "catena-matthew.MAT.27.42.3",
