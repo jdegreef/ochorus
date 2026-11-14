@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BookSummary } from '$lib/library-public';
+	import type { BibleBookLinks, BookSummary } from '$lib/library-public';
 	import { bibleChapterCount, bibleChapters, type BiblePlace } from '$lib/bible';
 	import { chapterCount } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -27,11 +27,15 @@
 	let {
 		books,
 		open = $bindable(null),
-		placeOf
+		placeOf,
+		linksOf
 	}: {
 		books: readonly BookSummary[];
 		open?: string | null;
 		placeOf?: (book: BookSummary) => BiblePlace | null;
+		/** Where the book leads in the rest of the library: its sermons, and the
+		 *  classics' passages on it (`/scripture/<book>/`). */
+		linksOf?: (book: BookSummary) => BibleBookLinks | undefined;
 	} = $props();
 	const t = i18n.t;
 </script>
@@ -42,6 +46,7 @@
 		{@const countLabel = chapterCount(count)}
 		{@const place = placeOf?.(book) ?? null}
 		{@const isOpen = open === book.slug}
+		{@const links = linksOf?.(book)}
 		<li class="bible-row" class:open={isOpen}>
 			<a class="bible-row-link" href={localizeHref(`/books/${book.slug}`)}>
 				<span class="bible-row-swatch" style:--swatch={book.cover_color || null} aria-hidden="true"></span>
@@ -69,6 +74,23 @@
 					{countLabel}
 					<span class="bible-row-chevron"><Icon name="chevron-right" size={16} /></span>
 				</button>
+			{/if}
+			{#if links && (links.sermons || links.scripture)}
+				<!-- Beside the row's own link, not inside it (a link can't hold a link).
+				     English, like the hub's other own copy. -->
+				<p class="bible-row-more">
+					{#if links.sermons}
+						<a href={localizeHref(`/sermons?book=${encodeURIComponent(links.sermon_book)}`)}
+							>{links.sermons} {links.sermons === 1 ? 'sermon' : 'sermons'}</a
+						>
+					{/if}
+					{#if links.sermons && links.scripture}<span class="sep" aria-hidden="true"> · </span>{/if}
+					{#if links.scripture}
+						<a href={localizeHref(`/scripture/${links.scripture}/`)}>In the classics</a>
+					{/if}
+				</p>
+			{/if}
+			{#if count}
 				{#if isOpen}
 					<ol class="chapter-grid bible-row-grid" id="chapters-{book.slug}">
 						{#each bibleChapters(book) as ch (ch.n)}
@@ -161,6 +183,18 @@
 		font-size: var(--fs-small);
 		font-weight: 600;
 		color: var(--accent);
+	}
+	.bible-row-more {
+		grid-column: 1;
+		margin: 0.2rem 0 0;
+		padding-inline-start: calc(0.375rem + 0.85rem);
+		font-size: var(--fs-small);
+	}
+	.bible-row-more a {
+		color: var(--accent);
+	}
+	.bible-row-more a:hover {
+		text-decoration: underline;
 	}
 	.bible-row-chapters {
 		display: inline-flex;

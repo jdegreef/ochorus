@@ -58,6 +58,10 @@
 	let { data } = $props();
 	const series = $derived<SeriesDetail | null>(data.series);
 	const plans = $derived<PlanSummary[]>(data.plans);
+	// Each book's sermons and classics, by its place in the canon.
+	const linksAt = $derived(new Map(data.links.map((l) => [l.position, l])));
+	const linksOf = (book: BookSummary) =>
+		book.series_position != null ? linksAt.get(book.series_position) : undefined;
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
@@ -367,7 +371,7 @@
 								{/each}
 							</div>
 						{:else}
-							<BibleBookList books={group.books} bind:open={openBook} {placeOf} />
+							<BibleBookList books={group.books} bind:open={openBook} {placeOf} {linksOf} />
 						{/if}
 					</section>
 				{/each}
