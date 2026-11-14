@@ -13,7 +13,9 @@ import { CANON } from '$lib/sermonCanon';
 import {
 	bookChapterPath,
 	furthestOf,
+	isFinishedNow,
 	resumeOrderOf,
+	type FinishFields,
 	type ProgressRecord
 } from '$lib/reading-schema';
 
@@ -405,12 +407,13 @@ export interface BiblePlace {
 
 export function biblePlace(
 	book: { chapter_count?: number },
-	rec: Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at'> | null | undefined
+	rec: (Pick<ProgressRecord, 'order' | 'furthest'> & FinishFields) | null | undefined
 ): BiblePlace | null {
 	if (!rec) return null;
 	const count = bibleChapterCount([book]);
 	const inEdition = (order: number) => order >= 1 && order <= (book.chapter_count ?? 0);
-	if (rec.finished_at != null) return { behind: count, current: null, finished: true };
+	// Finished NOW: a book read again after finishing is in progress again.
+	if (isFinishedNow(rec)) return { behind: count, current: null, finished: true };
 	const resume = resumeOrderOf(rec);
 	if (!inEdition(resume)) return null;
 	const furthest = inEdition(furthestOf(rec)) ? furthestOf(rec) : resume;
@@ -442,7 +445,7 @@ export interface BibleContinue<T, R> {
  */
 export function bibleToContinue<
 	T extends { slug: string; chapter_count?: number },
-	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & { slug: string; kind: string }
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'at'> & FinishFields & { slug: string; kind: string }
 >(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	return records

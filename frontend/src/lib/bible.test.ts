@@ -314,6 +314,13 @@ describe('biblePlace', () => {
 	it('marks every chapter behind a finished reader', () => {
 		expect(biblePlace(ruth, rec(3, 3, 1))).toEqual({ behind: 4, current: null, finished: true });
 	});
+
+	it('reads a book started again after finishing as in progress', () => {
+		const reread = { order: 3, furthest: 3, finished_at: 1, restarted_at: 5 };
+		expect(biblePlace(ruth, reread)).toEqual({ behind: 1, current: 2, finished: false });
+		// ...and finished again once the reread is.
+		expect(biblePlace(ruth, { ...reread, last_finished_at: 9 })?.finished).toBe(true);
+	});
 });
 
 describe('bibleToContinue', () => {
