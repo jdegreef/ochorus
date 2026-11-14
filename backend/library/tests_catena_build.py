@@ -5,6 +5,7 @@ open."""
 
 import json
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from django.conf import settings
@@ -12,6 +13,7 @@ from django.core.management.base import CommandError
 from django.test import SimpleTestCase
 
 from library.management.commands.build_catena import Command, open_at, tidy
+from library.management.commands.build_catena_aurea import Command as Aurea
 
 BOOKS = Path(settings.BASE_DIR) / "library" / "fixtures" / "content" / "books"
 _VERSE_BLOCK = re.compile(r"<blockquote><p>(.*?)</p><p>— ([^<]+)</p></blockquote>", re.S)
@@ -271,3 +273,32 @@ class ShippedVerseBlockTests(SimpleTestCase):
                 for hit in re.findall(r"<p>(?:<strong>[^<]*</strong>[^<]*?:\s*)?(?:\.\.\.|…|—)\s*</p>", body):
                     bad.append(f"{path.name} {row['fields']['title']}: {hit}")
         self.assertEqual(bad, [])
+
+
+class AureaMendTests(SimpleTestCase):
+    def setUp(self):
+        self.cmd = Aurea()
+        self.fix = {"excerpt": "x.1", "father": "Bede", "old": "ye heave received", "new": "ye have received"}
+        self.cmd.corrections = defaultdict(list, {("x.1", "Bede"): [self.fix]})
+
+    def test_a_slip_is_mended_in_its_own_passage_only(self):
+        mended = set()
+        paras = ["Freely ye heave received, freely give."]
+        self.assertEqual(self.cmd.mend("x.1", "Bede", paras, mended), ["Freely ye have received, freely give."])
+        self.assertEqual(self.cmd.mend("x.1", "Jerome", paras, set()), paras)
+        self.assertIn(id(self.fix), mended)
+
+    def test_an_ambiguous_correction_fails(self):
+        with self.assertRaises(CommandError):
+            self.cmd.mend("x.1", "Bede", ["ye heave received; ye heave received"], set())
+        mended = set()
+        self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
+        with self.assertRaises(CommandError):  # the same Father again in the excerpt
+            self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
+
+    def test_a_mend_can_rejoin_a_split_sentence(self):
+        self.cmd.corrections[("x.1", "Bede")] = [{"old": "interpreted.\n\n‘One", "new": "interpreted, ‘one"}]
+        self.assertEqual(
+            self.cmd.mend("x.1", "Bede", ["Mary, which is interpreted.", "‘One who works.’ And so"], set()),
+            ["Mary, which is interpreted, ‘one who works.’ And so"],
+        )
