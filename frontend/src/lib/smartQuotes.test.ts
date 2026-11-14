@@ -97,6 +97,8 @@ describe('quote conventions per language', () => {
 		expect(quoteStyle('uk')).toBe('apostrophe');
 		expect(quoteStyle('ar')).toBeNull();
 		expect(quoteStyle('am')).toBeNull();
+		// Japanese sets 「 」 in the stored text; curly quotes would be wrong.
+		expect(quoteStyle('ja')).toBeNull();
 		expect(quoteStyle('de')).toBeNull();
 		expect(quoteStyle(undefined)).toBeNull();
 	});

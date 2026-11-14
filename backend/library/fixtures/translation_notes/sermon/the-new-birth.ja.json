@@ -1,0 +1,132 @@
+{
+    "kind": "sermon",
+    "slug": "the-new-birth",
+    "language": "ja",
+    "job_issue": 8006,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "John 3:3",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 0
+        },
+        {
+            "reference": "John 4:24",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 13
+        },
+        {
+            "reference": "John 3:4",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "John 3:5",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 16
+        },
+        {
+            "reference": "John 3:8",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 20
+        },
+        {
+            "reference": "Luke 7:14",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 33
+        },
+        {
+            "reference": "Romans 6:23",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 35
+        },
+        {
+            "reference": "John 3:14-15",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 37
+        },
+        {
+            "reference": "John 1:29",
+            "status": "mined",
+            "source_file": "口語訳聖書 (japkougo) Bible text",
+            "block_index": 37
+        },
+        {
+            "reference": "Mark 8:24",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "John 3:6",
+            "status": "self_rendered",
+            "block_index": 4
+        },
+        {
+            "reference": "Matthew 13:19",
+            "status": "self_rendered",
+            "block_index": 5
+        },
+        {
+            "reference": "John 5:24",
+            "status": "self_rendered",
+            "block_index": 11
+        },
+        {
+            "reference": "Matthew 11:30",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Romans 8:7",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "John 10:1",
+            "status": "self_rendered",
+            "block_index": 13
+        },
+        {
+            "reference": "Revelation 7:14",
+            "status": "self_rendered",
+            "block_index": 14
+        },
+        {
+            "reference": "1 Corinthians 2:14",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "2 Corinthians 5:17",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "Jeremiah 13:23",
+            "status": "self_rendered",
+            "block_index": 33
+        },
+        {
+            "reference": "Ephesians 2:1",
+            "status": "self_rendered",
+            "block_index": 33
+        },
+        {
+            "reference": "Isaiah 55:1",
+            "status": "self_rendered",
+            "block_index": 35
+        },
+        {
+            "reference": "Luke 19:10",
+            "status": "self_rendered",
+            "block_index": 38
+        }
+    ]
+}

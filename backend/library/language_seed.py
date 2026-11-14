@@ -415,22 +415,34 @@ SEED_LANGUAGES: dict[str, dict] = {
         # carries only a 1965 New Testament (bibles/jpn_loc), which cannot
         # answer an Old Testament reference, so it is not an option either.
         #
-        # NOTE: `bible` is the Take Root translation code, which this (egress-
-        # blocked) session CANNOT verify — api.takeroot.bible is unreachable
-        # here. Take Root names the Korean and Vietnamese texts by their English
-        # language name ("korean", "vietnamese"), so "japanese" is the best
-        # guess. A wrong value cannot break the build (seeds/tests never hit the
-        # API) but WILL garble a networked translation run's scripture, so
-        # VERIFY — that the code resolves AND that it is the 口語訳 (John 1:1
-        # 初めに言があった。言は神と共にあった。; John 15:4 わたしにつながっていなさい)
-        # — before the first API-backed Japanese job:
-        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        # `bible` is the Take Root translation code. Verified 2026-11-13 against
+        # api.takeroot.bible/api/bible/translations/: the 口語訳 is `japkougo`
+        # ("Japanese Kougo-yaku 口語訳「聖書」(1954/1955年版)", public domain) —
+        # not "japanese", which 404s. Its John 1:1 reads 初めに言があった。言は神と
+        # 共にあった。 and John 15:4 わたしにつながっていなさい, as expected. Re-check
+        # with CHECK_BIBLE_CODES=1 uv run python manage.py test \
         #     library.tests_languages.LanguageSeedTableTests
-        # from a network that can reach api.takeroot.bible.
-        "bible": "japanese",
+        "bible": "japkougo",
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
         "bible_label": "口語訳聖書",
+        # The reader cannot produce 「 」 (see Language.typography), so the
+        # translation must set it. The convention every later ja book measures
+        # from, until a shipped ja book exists to measure.
+        "typography": (
+            "Set Japanese typography in the text itself. It overrides the rules "
+            "above on preserving HTML entities and keeping English name forms "
+            "wherever they conflict. Every quotation is set in 「 」 — "
+            "including each &quot; entity or straight or curly quote in the "
+            "source, which are quotation marks, not entities to preserve — a "
+            "quotation inside a quotation in 『 』, and a book title in 『 』; "
+            "never leave &quot;, \" or “ ” in the Japanese. Full-width 。、！？ "
+            "and （ ）, no spaces between words or after punctuation, the "
+            "ellipsis as …… and the dash as ——. Verse references in Western "
+            "digits with no space: ヨハネによる福音書15:4. Personal names with "
+            "no conventional Japanese form are written in katakana "
+            "(スポルジョン, アンドリュー・マーレー), never left in Latin letters."
+        ),
         # Protestant register throughout: 神 (never the Catholic-leaning 天主),
         # 聖霊, 主. "abide" is the 口語訳's own John 15:4 (わたしにつながって
         # いなさい) and "the flesh" its Romans 8 肉. Prose is です・ます体; quoted

@@ -1,0 +1,18 @@
+{
+ "faithful-with-little": {
+  "title": "わずかなものに忠実に――お金と心",
+  "description": "お金について聖書全体が語ることを、1日1章ずつ短く読みながら3週間を過ごします。すべては神のものであること、財布の奥にある心、誠実な労働と計画と借金、神のように惜しみなくささげる生き方、そして朽ちない宝を、ジョン・ウェスレー、ジョージ・ミュラー、C. H. スポルジョン、A. W. トウザーとともにたどります。毎日、実践することを一つ携えて一日を終えます。本に収められた30の鍵となる聖句は、ひと月かけて読むもう一つの計画にもなります。",
+  "note": [
+   "Japanese's FIRST plan prose, shipping with faithful-with-little.ja (queue job #7991); without it PlanTranslationCoverageTests fails, because every source book of this plan now exists in ja.",
+   "The title opens with the shipped ja edition's own title (わずかなものに忠実に, Matthew 25:21 口語訳) and the ―― dash that edition uses; names follow its renderings (ウェスレー, ミュラー, スポルジョン, トウザー). です・ます体, the ja house register. AI-written; for native review with the book."
+  ]
+ },
+ "the-inner-chamber-month": {
+  "title": "密室で過ごすひと月",
+  "description": "祈りとみことばの毎日の習慣を身につけましょう。アンドリュー・マーレーとともに過ごす36の朝。1日1章ずつ読み進めます。",
+  "note": [
+   "Shipping with the-inner-chamber.ja (queue job #7992), the sole source book of this plan.",
+   "The title opens with the shipped ja edition's own title (密室), so the plan card and the book on the shelf agree. です・ます体. AI-written; for native review with the book."
+  ]
+ }
+}

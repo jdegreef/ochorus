@@ -41,6 +41,7 @@ SOURCE = {
     "bible_licence": "",
     "bible_attribution": "",
     "glossary": {},
+    "typography": "",
     "rtl": False,
     "is_source": True,
 }
@@ -74,6 +75,7 @@ def _rows() -> list[dict]:
                 "rtl": code in RTL_CODES,
                 "is_source": False,
                 "glossary": cfg["glossary"],
+                "typography": cfg.get("typography", ""),
             }
         )
     return rows
@@ -95,6 +97,7 @@ class Command(BaseCommand):
                 "bible_licence": row["bible_licence"],
                 "bible_attribution": row["bible_attribution"],
                 "glossary": row["glossary"],
+                "typography": row["typography"],
                 "rtl": row["rtl"],
                 "is_source": row["is_source"],
                 "sort_order": ORDER.index(code) if code in ORDER else 99,

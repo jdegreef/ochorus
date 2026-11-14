@@ -1,0 +1,340 @@
+{
+    "kind": "sermon",
+    "slug": "compel-them-to-come-in",
+    "language": "am",
+    "job_issue": 7953,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Luke 14:23",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 0
+        },
+        {
+            "reference": "1 Peter 3:18",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 2
+        },
+        {
+            "reference": "Acts 16:31",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Romans 10:13",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 2
+        },
+        {
+            "reference": "1 Timothy 1:15",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 2
+        },
+        {
+            "reference": "John 6:37",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Hebrews 7:25",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "all-of-grace.am.json",
+            "block_index": 2
+        },
+        {
+            "reference": "Ezekiel 18:31",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Matthew 20:28",
+            "status": "self_rendered",
+            "block_index": 2
+        },
+        {
+            "reference": "Luke 14:21",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 5
+        },
+        {
+            "reference": "Acts 13:26",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 5
+        },
+        {
+            "reference": "Luke 7:22",
+            "status": "mined",
+            "source_file": "selected-sermons-whitefield.am.json",
+            "block_index": 5
+        },
+        {
+            "reference": "Revelation 22:17",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 5
+        },
+        {
+            "reference": "Isaiah 64:6",
+            "status": "mined",
+            "source_file": "selected-sermons-whitefield.am.json",
+            "block_index": 5
+        },
+        {
+            "reference": "Romans 7:21",
+            "status": "self_rendered",
+            "block_index": 9
+        },
+        {
+            "reference": "1 Kings 18:21",
+            "status": "mined",
+            "source_file": "sons-of-the-king-1.am.json",
+            "block_index": 15
+        },
+        {
+            "reference": "Haggai 1:5",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Isaiah 38:1",
+            "status": "mined",
+            "source_file": "sons-of-the-king-1.am.json",
+            "block_index": 15
+        },
+        {
+            "reference": "Amos 4:12",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Isaiah 5:20",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Isaiah 53:2",
+            "status": "self_rendered",
+            "block_index": 16
+        },
+        {
+            "reference": "Zechariah 4:7",
+            "status": "mined",
+            "source_file": "evening-by-evening.am.json",
+            "block_index": 17
+        },
+        {
+            "reference": "Ezekiel 33:11",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Isaiah 1:18",
+            "status": "mined",
+            "source_file": "prayer-and-praying-men.am.json",
+            "block_index": 27
+        },
+        {
+            "reference": "John 19:30",
+            "status": "mined",
+            "source_file": "all-of-grace.am.json",
+            "block_index": 18
+        },
+        {
+            "reference": "Revelation 1:18",
+            "status": "self_rendered",
+            "block_index": 19
+        },
+        {
+            "reference": "Mark 16:15",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 20
+        },
+        {
+            "reference": "Mark 16:16",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 20
+        },
+        {
+            "reference": "Hebrews 10:28",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 20
+        },
+        {
+            "reference": "Hebrews 10:29",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 20
+        },
+        {
+            "reference": "2 Timothy 4:2",
+            "status": "self_rendered",
+            "block_index": 20
+        },
+        {
+            "reference": "Luke 15:20",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Luke 15:24",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Psalm 34:5",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Psalm 34:8",
+            "status": "self_rendered",
+            "block_index": 21
+        },
+        {
+            "reference": "Isaiah 55:2",
+            "status": "mined",
+            "source_file": "salvation-by-faith.am.json",
+            "block_index": 22
+        },
+        {
+            "reference": "Genesis 19:17",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "1 John 1:7",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "1 Corinthians 3:11",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 22
+        },
+        {
+            "reference": "Acts 4:12",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 22
+        },
+        {
+            "reference": "Hebrews 2:3",
+            "status": "self_rendered",
+            "block_index": 22
+        },
+        {
+            "reference": "2 Corinthians 5:20",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 22
+        },
+        {
+            "reference": "Matthew 25:41",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "Acts 17:31",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "Isaiah 33:14",
+            "status": "self_rendered",
+            "block_index": 23
+        },
+        {
+            "reference": "1 Timothy 6:12",
+            "status": "mined",
+            "source_file": "sermons-on-several-occasions.am.json",
+            "block_index": 23
+        },
+        {
+            "reference": "John 6:27",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 23
+        },
+        {
+            "reference": "2 Timothy 4:5",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Proverbs 1:24",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Proverbs 1:26",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Hebrews 3:15",
+            "status": "mined",
+            "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+            "block_index": 27
+        },
+        {
+            "reference": "Hebrews 3:7",
+            "status": "self_rendered",
+            "block_index": 27
+        },
+        {
+            "reference": "Hosea 4:17",
+            "status": "self_rendered",
+            "block_index": 27
+        },
+        {
+            "reference": "Titus 2:10",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Ezekiel 9:4",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Philemon 1:10",
+            "status": "self_rendered",
+            "block_index": 30
+        },
+        {
+            "reference": "Galatians 4:19",
+            "status": "self_rendered",
+            "block_index": 30
+        },
+        {
+            "reference": "Isaiah 55:11",
+            "status": "self_rendered",
+            "block_index": 30
+        },
+        {
+            "reference": "Revelation 3:20",
+            "status": "self_rendered",
+            "block_index": 30
+        },
+        {
+            "reference": "Revelation 3:7",
+            "status": "self_rendered",
+            "block_index": 30
+        }
+    ]
+}

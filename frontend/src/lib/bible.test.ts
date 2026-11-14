@@ -3,6 +3,8 @@ import {
 	BIBLE_DIVISIONS,
 	BIBLE_STARTS,
 	bibleChapterCount,
+	bibleChapters,
+	canonName,
 	biblePlans,
 	bibleStarts,
 	mayBePassage,
@@ -15,6 +17,7 @@ import {
 	splitBible,
 	testamentKey
 } from './bible';
+import { bookChapterPath } from './reading-schema';
 import en from '../../messages/en.json';
 
 const book = (slug: string, series_position: number | null) => ({ slug, series_position });
@@ -102,6 +105,45 @@ describe('biblePlans', () => {
 		const plans = [{ slug: 'psalms-in-150-days' }, { slug: 'romans-with-moule' }, { slug: 'john-in-21-days' }];
 		expect(biblePlans(plans).map((p) => p.slug)).toEqual(['john-in-21-days', 'psalms-in-150-days']);
 		expect(biblePlans([{ slug: 'romans-with-moule' }])).toEqual([]);
+	});
+
+	it('leads with the whole-Bible plans', () => {
+		const plans = [{ slug: 'john-in-21-days' }, { slug: 'bible-in-a-year' }, { slug: 'the-story-of-the-bible' }];
+		expect(biblePlans(plans).map((p) => p.slug)).toEqual([
+			'the-story-of-the-bible',
+			'bible-in-a-year',
+			'john-in-21-days'
+		]);
+	});
+});
+
+describe('canonName', () => {
+	it('names a canon position, and nothing off it', () => {
+		expect(canonName(1)).toBe('Genesis');
+		expect(canonName(66)).toBe('Revelation');
+		expect([canonName(0), canonName(67), canonName(null)]).toEqual([null, null, null]);
+	});
+});
+
+describe('bibleChapters', () => {
+	it('numbers the Bible chapters, past the introduction', () => {
+		const chs = bibleChapters({ slug: 'ruth', title: 'Ruth', chapter_count: 6, series_position: 8 });
+		expect(chs.map((c) => c.n)).toEqual([1, 2, 3, 4]);
+		expect(chs[0]).toEqual({ n: 1, name: 'Ruth 1', href: bookChapterPath('ruth', 2, false) });
+		expect(chs[3].href).toBe(bookChapterPath('ruth', 5, false));
+	});
+
+	it('names a chip as the chapter is titled: the canon short name, "Psalm", or the title off the canon', () => {
+		const psalms = bibleChapters({ slug: 'psalms', title: 'The Psalms', chapter_count: 152, series_position: 19 });
+		expect(psalms[22].name).toBe('Psalm 23');
+		expect(bibleChapters({ slug: 'x', title: 'Stray', chapter_count: 3, series_position: null })[0].name).toBe(
+			'Stray 1'
+		);
+	});
+
+	it('is empty for a book with no Bible chapters', () => {
+		expect(bibleChapters({ slug: 'x', title: 'X', chapter_count: 2, series_position: 1 })).toEqual([]);
+		expect(bibleChapters({ slug: 'x', title: 'X', series_position: 1 })).toEqual([]);
 	});
 });
 

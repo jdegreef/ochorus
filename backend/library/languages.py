@@ -161,6 +161,7 @@ def config(code: str) -> dict:
         "bible": lang.bible_code,
         "bible_label": lang.bible_label,
         "glossary": dict(lang.glossary or {}),
+        "typography": lang.typography,
     }
 
 

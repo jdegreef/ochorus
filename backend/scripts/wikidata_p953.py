@@ -77,6 +77,7 @@ LANGUAGE_QIDS: dict[str, str] = {
     "am": "Q28244",  # Amharic
     "vi": "Q9199",  # Vietnamese
     "ko": "Q9176",  # Korean
+    "ja": "Q5287",  # Japanese
 }
 
 #: Slug suffixes of the house's young-reader retellings (CLAUDE.md: the slug
