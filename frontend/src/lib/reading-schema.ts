@@ -434,7 +434,7 @@ export function resumeOrderOf(rec: Pick<ProgressRecord, 'order' | 'furthest'>): 
 	return Math.min(rec.order, furthestOf(rec));
 }
 
-type FinishFields = Pick<ProgressRecord, 'finished_at' | 'restarted_at' | 'last_finished_at'>;
+export type FinishFields = Pick<ProgressRecord, 'finished_at' | 'restarted_at' | 'last_finished_at'>;
 
 /** When the reader most recently finished this work (ms), or null if never. */
 export function lastFinishOf(rec: FinishFields): number | null {

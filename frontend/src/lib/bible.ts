@@ -13,7 +13,9 @@ import { CANON } from '$lib/sermonCanon';
 import {
 	bookChapterPath,
 	furthestOf,
+	isFinishedNow,
 	resumeOrderOf,
+	type FinishFields,
 	type ProgressRecord
 } from '$lib/reading-schema';
 
@@ -405,12 +407,13 @@ export interface BiblePlace {
 
 export function biblePlace(
 	book: { chapter_count?: number },
-	rec: Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at'> | null | undefined
+	rec: (Pick<ProgressRecord, 'order' | 'furthest'> & FinishFields) | null | undefined
 ): BiblePlace | null {
 	if (!rec) return null;
 	const count = bibleChapterCount([book]);
 	const inEdition = (order: number) => order >= 1 && order <= (book.chapter_count ?? 0);
-	if (rec.finished_at != null) return { behind: count, current: null, finished: true };
+	// Finished NOW: a book read again after finishing is in progress again.
+	if (isFinishedNow(rec)) return { behind: count, current: null, finished: true };
 	const resume = resumeOrderOf(rec);
 	if (!inEdition(resume)) return null;
 	const furthest = inEdition(furthestOf(rec)) ? furthestOf(rec) : resume;
@@ -442,7 +445,7 @@ export interface BibleContinue<T, R> {
  */
 export function bibleToContinue<
 	T extends { slug: string; chapter_count?: number },
-	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & { slug: string; kind: string }
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'at'> & FinishFields & { slug: string; kind: string }
 >(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	return records
@@ -464,4 +467,23 @@ export function bibleToContinue<
 			];
 		})
 		.slice(0, max);
+}
+
+/**
+ * The hub's Continue rows, plans and books together, at most `max`: the
+ * reader's open Bible plans first (a plan is the reading they committed to),
+ * then the books they are partway through. A plan that reads a single book
+ * ("John in 21 Days") already carries that book, so the book's own row is
+ * dropped rather than shown twice.
+ */
+export function bibleContinueRows<
+	P extends { covers: readonly { slug: string }[] },
+	B extends { book: { slug: string } }
+>(plans: readonly P[], books: readonly B[], max = 3): { plans: P[]; books: B[] } {
+	const carried = new Set(plans.flatMap((p) => (p.covers.length === 1 ? [p.covers[0].slug] : [])));
+	const shownPlans = plans.slice(0, max);
+	return {
+		plans: shownPlans,
+		books: books.filter((r) => !carried.has(r.book.slug)).slice(0, max - shownPlans.length)
+	};
 }
