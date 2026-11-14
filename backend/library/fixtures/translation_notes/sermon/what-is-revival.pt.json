@@ -1,0 +1,74 @@
+{
+    "kind": "sermon",
+    "slug": "what-is-revival",
+    "language": "pt",
+    "job_issue": 8069,
+    "pull_request": null,
+    "references": [
+        {
+            "reference": "Isaiah 6:5",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 8
+        },
+        {
+            "reference": "Luke 18:13",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 11
+        },
+        {
+            "reference": "Philippians 3:8",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "Isaiah 64:6",
+            "status": "self_rendered",
+            "block_index": 12
+        },
+        {
+            "reference": "John 3:16",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 14
+        },
+        {
+            "reference": "Galatians 2:20",
+            "status": "self_rendered",
+            "block_index": 15
+        },
+        {
+            "reference": "Genesis 32:26",
+            "status": "self_rendered",
+            "block_index": 18
+        },
+        {
+            "reference": "Deuteronomy 11:21",
+            "status": "self_rendered",
+            "block_index": 24
+        },
+        {
+            "reference": "Psalms 68:24",
+            "status": "self_rendered",
+            "block_index": 27
+        },
+        {
+            "reference": "Joshua 4:24",
+            "status": "self_rendered",
+            "block_index": 29
+        },
+        {
+            "reference": "Acts 2:12",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 31
+        },
+        {
+            "reference": "Acts 2:2",
+            "status": "mined",
+            "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+            "block_index": 32
+        }
+    ]
+}
