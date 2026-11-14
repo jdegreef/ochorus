@@ -23005,6 +23005,36 @@
 			"caps": false,
 			"sitemark": "OpenWordBible.org"
 		},
+		"ja/abide-in-christ": {
+			"ground": "180ea3920cc09d2827eb350c4924d17d8af2a1df79e4bcc8f9cdcdac1e1c9801",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f138d0df3dee213095e89cd6cbeb3669cbcd1c3ee2cfb8a2fe69d31d2b33d12f",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/all-of-grace": {
+			"ground": "ac729450372743669bed1cff78be7e34a6503a3086290262cb59e007853a81f9",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "94f8cc547fb1800344aee4db53012f62a415b5ba68f854f6e05c7ae03884565a",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/oxblood",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null
+		},
 		"ja/faithful-with-little": {
 			"ground": "46244d5fadf5ea506c2f01ca80bb9924daa8e5b46b7b3fa80c22b9d2e6e13bdc",
 			"style": "originals",
@@ -23020,6 +23050,105 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"ja/how-i-became-a-christian": {
+			"ground": "db014814ef5bb0776aa9537a9839c634731e72119ea2a4126efca579eb2d8057",
+			"style": "revival",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "372bde621c835db01e4abba329aa6ec39de6979faba60e46ffc7fece33f52038",
+			"art": true,
+			"scrim": 0.7,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[118, 241, 482, 338],
+					[81, 325, 519, 422],
+					[118, 409, 482, 506]
+				],
+				"subtitle": [
+					[238, 581, 362, 602]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				192,
+				603
+			]
+		},
+		"ja/pilgrims-progress": {
+			"ground": "d7aa3d996830d95b331d5efea0e1c516cfec332142c46eb9b5efb866fe870589",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "6135453ab3cce642bf4be8fce43af4f1018093c7f362a387e7b078bb601847db",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "band/teal",
+			"bar": 0.03,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/school-of-prayer": {
+			"ground": "ca319df79b35e2c1ba2a3c5152fb600a889505ae2acda130f0b29ccdeefb648a",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "f194fc571115ac7a0d4395c2366de71a365a7f17d84b89b568555a8a3cbb2cda",
+			"art": true,
+			"scrim": 1,
+			"lift": 1,
+			"medallion": null,
+			"layout": "wash/sage",
+			"bar": 0.04,
+			"caps": false,
+			"sitemark": null
+		},
+		"ja/the-imitation-of-christ": {
+			"ground": "79fbd618b62370d9bf9b08747b06311ebb4dd2071c2eaa0fd45686da5ae95f80",
+			"style": "devotional",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "7ab8c1387c91bc132dda09f9d6f4a9087b596c18128b95bef14adfade10f5590",
+			"art": true,
+			"scrim": 0.65,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[73, 229, 528, 348],
+					[117, 333, 483, 452]
+				],
+				"subtitle": [
+					[167, 530, 433, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
+			]
+		},
 		"ja/the-inner-chamber": {
 			"ground": "9b47207feef7f6b9a43c870838feae07fcd9290c9236070e411ded3afb6315ad",
 			"style": "devotional",
@@ -23034,6 +23163,40 @@
 			"bar": 0,
 			"caps": false,
 			"sitemark": null
+		},
+		"ja/the-practice-of-the-presence-of-god": {
+			"ground": "a9c2bdc774f77bc5ba3fd13bd4ab77b44a08c0c18d70aa6d34d86afd98fb4a7e",
+			"style": "press",
+			"volume": null,
+			"script": "japanese",
+			"fonts": "01a9bc2267e75e6a597481f38acaf8561bb56adc7aa9dea594365b7ab57a0dfa",
+			"art": true,
+			"scrim": 0.6,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[176, 276, 424, 381],
+					[135, 362, 465, 467]
+				],
+				"subtitle": [
+					[187, 520, 413, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				253,
+				542
+			]
 		},
 		"james": {
 			"ground": "063d330a75164dead466f10646bd7392fdfd7e4da3f18daabace1377db3b150c",
