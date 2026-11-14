@@ -327,11 +327,11 @@ describe('bibleToContinue', () => {
 
 	it('lists the books partway through, newest first, linking the chapter to read', () => {
 		const rows = bibleToContinue(books, [at('ruth', 3, 1), at('mark', 8, 5)]);
-		expect(rows.map((r) => [r.book.slug, r.chapter, r.behind, r.count])).toEqual([
-			['mark', 7, 6, 16],
-			['ruth', 2, 1, 4]
+		expect(rows.map((r) => [r.book.slug, r.chapter, r.order, r.count])).toEqual([
+			['mark', 7, 8, 16],
+			['ruth', 2, 3, 4]
 		]);
-		expect(rows[0].href).toBe(bookChapterPath('mark', 8, false));
+		expect(rows[0].record.slug).toBe('mark');
 	});
 
 	it('skips finished books, introductions, other works and books off the shelf', () => {

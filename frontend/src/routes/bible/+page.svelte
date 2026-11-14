@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import type { BookSummary, PlanSummary, SeriesDetail } from '$lib/library-public';
 	import { allProgress } from '$lib/progress';
+	import { chapterPath } from '$lib/editionHref';
+	import { workPercent } from '$lib/reading';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -200,7 +202,7 @@
 					{#each continues as row (row.book.slug)}
 						{@const caption = `${t('continue.chapter')} ${row.chapter} ${t('plans.of')} ${row.count}`}
 						<ContinueRow
-							href={localizeHref(row.href)}
+							href={localizeHref(chapterPath(row.book.slug, row.order, row.book.has_modern_edition))}
 							title={row.book.title}
 							{caption}
 							verb={t('plans.continue')}
@@ -210,7 +212,7 @@
 							{/snippet}
 							{#snippet progress()}
 								<ProgressBar
-									percent={(row.behind / row.count) * 100}
+									percent={workPercent(row.record, row.book.chapter_count)}
 									label={`${row.book.title}: ${caption}`}
 								/>
 							{/snippet}

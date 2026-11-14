@@ -415,15 +415,15 @@ export function biblePlace(
 }
 
 /** One row of the hub's "Continue reading". */
-export interface BibleContinue<T> {
+export interface BibleContinue<T, R> {
 	book: T;
-	/** The Bible chapter Continue opens. */
+	/** The reader's progress record, for the shared percent (`workPercent`). */
+	record: R;
+	/** The Bible chapter Continue opens, and its reader `order` (for `chapterPath`). */
 	chapter: number;
-	/** Its reader path (unlocalized). */
-	href: string;
-	/** The book's Bible chapters, and how many are behind the reader. */
+	order: number;
+	/** The book's Bible chapters. */
 	count: number;
-	behind: number;
 }
 
 /**
@@ -432,14 +432,10 @@ export interface BibleContinue<T> {
  * not one to continue. `records` is `allProgress()` (any work; non-books and
  * books outside `books` are skipped).
  */
-export function bibleToContinue<T extends { slug: string; chapter_count?: number }>(
-	books: readonly T[],
-	records: readonly (Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & {
-		slug: string;
-		kind: string;
-	})[],
-	max = 3
-): BibleContinue<T>[] {
+export function bibleToContinue<
+	T extends { slug: string; chapter_count?: number },
+	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & { slug: string; kind: string }
+>(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	return records
 		.filter((r) => r.kind === 'book' && bySlug.has(r.slug))
@@ -452,10 +448,10 @@ export function bibleToContinue<T extends { slug: string; chapter_count?: number
 			return [
 				{
 					book,
+					record: r,
 					chapter: place.current,
-					href: bookChapterPath(book.slug, bibleChapterOrder(place.current), false),
-					count: bibleChapterCount([book]),
-					behind: place.behind
+					order: bibleChapterOrder(place.current),
+					count: bibleChapterCount([book])
 				}
 			];
 		})
