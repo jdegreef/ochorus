@@ -337,6 +337,15 @@ class Command(build_catena.Command):
             (r["excerpt"], r["father"]): f"rejected by an editor: {r['why']}"
             for r in self.meta.get("rejected", [])
         }
+        #: A slip an editor has mended by hand: book.json's "corrections",
+        #: [{"excerpt", "father", "old", "new", "why"}]. The chain is Aquinas's
+        #: whole work, with nothing to refill a dropped passage from, so a
+        #: plain typing slip ("heave received") is mended rather than lost.
+        #: `old` is matched in the tidied passage and must occur exactly once.
+        self.corrections = defaultdict(list)
+        for c in self.meta.get("corrections", []):
+            self.corrections[(c["excerpt"], c["father"])].append(c)
+        mended = set()
         speaker = None
         for n, e in enumerate(excerpts):
             kept = []
@@ -350,6 +359,7 @@ class Command(build_catena.Command):
                 speaker = name or speaker
                 if not "".join(paras).strip():
                     continue  # a siglum alone at an excerpt's end: its words open the next
+                paras = self.mend(e["id"], speaker, paras, mended)
                 why = (
                     "an opening siglum this build cannot read (dropped, not given to the Father before)"
                     if speaker == UNREAD
@@ -366,6 +376,23 @@ class Command(build_catena.Command):
                 self.excerpts[e["id"]] = e
                 self.order[e["id"]] = n
         self.total = len(excerpts)
+        stale = [c for cs in self.corrections.values() for c in cs if id(c) not in mended]
+        if stale:
+            raise CommandError(
+                f"{len(stale)} correction(s) in book.json match no passage; the first: "
+                f"{stale[0]['excerpt']} ({stale[0]['father']}) {stale[0]['old']!r}"
+            )
+
+    def mend(self, excerpt: str, father: str | None, paras: list[str], mended: set) -> list[str]:
+        """`paras` with book.json's corrections for this Father's passage made."""
+        for c in self.corrections.get((excerpt, father), ()):
+            hits = sum(p.count(c["old"]) for p in paras)
+            if hits > 1 or (hits == 1 and id(c) in mended):
+                raise CommandError(f"{excerpt} ({father}): correction {c['old']!r} is ambiguous")
+            if hits:
+                paras = [p.replace(c["old"], c["new"]) for p in paras]
+                mended.add(id(c))
+        return paras
 
     def known(self, word: str) -> bool:
         """A word the library prints (`vocabulary`), a reference's abbreviation,

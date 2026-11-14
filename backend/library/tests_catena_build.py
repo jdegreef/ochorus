@@ -271,3 +271,31 @@ class ShippedVerseBlockTests(SimpleTestCase):
                 for hit in re.findall(r"<p>(?:<strong>[^<]*</strong>[^<]*?:\s*)?(?:\.\.\.|…|—)\s*</p>", body):
                     bad.append(f"{path.name} {row['fields']['title']}: {hit}")
         self.assertEqual(bad, [])
+
+
+class AureaMendTests(SimpleTestCase):
+    def setUp(self):
+        from collections import defaultdict
+
+        from library.management.commands.build_catena_aurea import Command as Aurea
+
+        self.cmd = Aurea()
+        self.fix = {"excerpt": "x.1", "father": "Bede", "old": "ye heave received", "new": "ye have received"}
+        self.cmd.corrections = defaultdict(list, {("x.1", "Bede"): [self.fix]})
+
+    def test_a_slip_is_mended_in_its_own_passage_only(self):
+        mended = set()
+        paras = ["Freely ye heave received, freely give."]
+        self.assertEqual(self.cmd.mend("x.1", "Bede", paras, mended), ["Freely ye have received, freely give."])
+        self.assertEqual(self.cmd.mend("x.1", "Jerome", paras, set()), paras)
+        self.assertIn(id(self.fix), mended)
+
+    def test_an_ambiguous_correction_fails(self):
+        from django.core.management import CommandError
+
+        with self.assertRaises(CommandError):
+            self.cmd.mend("x.1", "Bede", ["ye heave received; ye heave received"], set())
+        mended = set()
+        self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
+        with self.assertRaises(CommandError):  # the same Father again in the excerpt
+            self.cmd.mend("x.1", "Bede", ["ye heave received"], mended)
