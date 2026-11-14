@@ -307,6 +307,18 @@ describe('biblePlace', () => {
 	it('marks every chapter behind a finished reader', () => {
 		expect(biblePlace(ruth, rec(3, 3, 1))).toEqual({ behind: 4, current: null, finished: true });
 	});
+
+	it('a book started again after finishing is in progress, at its place', () => {
+		// Finished at t=1, restarted at t=2, now on Ruth 2 (order 3).
+		const reread = { ...rec(3, 3, 1), restarted_at: 2 };
+		expect(biblePlace(ruth, reread)).toEqual({ behind: 1, current: 2, finished: false });
+		// ...and finished again once the reread is.
+		expect(biblePlace(ruth, { ...reread, last_finished_at: 3 })).toEqual({
+			behind: 4,
+			current: null,
+			finished: true
+		});
+	});
 });
 
 describe('bibleToContinue', () => {
@@ -342,6 +354,11 @@ describe('bibleToContinue', () => {
 			at('pilgrims-progress', 3, 4)
 		]);
 		expect(rows).toEqual([]);
+	});
+
+	it('lists a book being read again (restarted after finishing)', () => {
+		const rows = bibleToContinue(books, [at('mark', 4, 5, { finished_at: 1, restarted_at: 3 })]);
+		expect(rows.map((r) => [r.book.slug, r.chapter, r.order])).toEqual([['mark', 3, 4]]);
 	});
 
 	it('keeps at most three', () => {

@@ -13,9 +13,17 @@ import { CANON } from '$lib/sermonCanon';
 import {
 	bookChapterPath,
 	furthestOf,
+	isFinishedNow,
 	resumeOrderOf,
 	type ProgressRecord
 } from '$lib/reading-schema';
+
+/** The fields of a progress record the hub reads — the finish stamps included,
+ *  since a book started again (a reread) is in progress, not finished. */
+type PlaceFields = Pick<
+	ProgressRecord,
+	'order' | 'furthest' | 'finished_at' | 'restarted_at' | 'last_finished_at'
+>;
 
 /** The series whose books the hub lists. */
 export const BIBLE_SERIES = 'the-bible';
@@ -386,7 +394,8 @@ export function bibleChapters(book: {
  * Where a reader is in one Bible book, in the Bible's own chapter numbers, from
  * their progress record (the book page's marks, read the same way): chapters
  * 1 … `behind` are behind them, `current` is the one Continue opens (null when
- * that is the introduction or the book is finished). A record whose place lies
+ * that is the introduction or the book is finished now — `isFinishedNow`, so a
+ * book being read again has its place, not a finished mark). A record whose place lies
  * outside this edition reads as no progress, as on the book page.
  */
 export interface BiblePlace {
@@ -397,12 +406,12 @@ export interface BiblePlace {
 
 export function biblePlace(
 	book: { chapter_count?: number },
-	rec: Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at'> | null | undefined
+	rec: PlaceFields | null | undefined
 ): BiblePlace | null {
 	if (!rec) return null;
 	const count = bibleChapterCount([book]);
 	const inEdition = (order: number) => order >= 1 && order <= (book.chapter_count ?? 0);
-	if (rec.finished_at != null) return { behind: count, current: null, finished: true };
+	if (isFinishedNow(rec)) return { behind: count, current: null, finished: true };
 	const resume = resumeOrderOf(rec);
 	if (!inEdition(resume)) return null;
 	const furthest = inEdition(furthestOf(rec)) ? furthestOf(rec) : resume;
@@ -434,7 +443,7 @@ export interface BibleContinue<T, R> {
  */
 export function bibleToContinue<
 	T extends { slug: string; chapter_count?: number },
-	R extends Pick<ProgressRecord, 'order' | 'furthest' | 'finished_at' | 'at'> & { slug: string; kind: string }
+	R extends PlaceFields & Pick<ProgressRecord, 'at'> & { slug: string; kind: string }
 >(books: readonly T[], records: readonly R[], max = 3): BibleContinue<T, R>[] {
 	const bySlug = new Map(books.map((b) => [b.slug, b]));
 	return records
