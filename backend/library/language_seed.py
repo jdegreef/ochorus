@@ -461,4 +461,50 @@ SEED_LANGUAGES: dict[str, dict] = {
             "surrender": "献身 / 明け渡し",
         },
     },
+    "ru": {
+        "name": "Russian",
+        "native": "Русский",
+        # The Synodal translation (Синодальный перевод: NT 1862, whole Bible
+        # 1876) — PUBLIC DOMAIN, and still the Bible of nearly every Russian-
+        # speaking church, Orthodox and Protestant alike, so the verses a reader
+        # meets in a Spurgeon or Moody translation are the ones they already
+        # know. No credit line is owed and no bibleCredit.ts entry.
+        #
+        # Pre-1918 in origin, but Take Root serves it in modern spelling (no ѣ,
+        # no hard signs), which is how it is printed today.
+        #
+        # An Open Word Bible in Russian is in progress (2026-11). If it should
+        # become the authoritative text for translations, that is a one-line
+        # change here — make it BEFORE the first Russian content job, since every
+        # job quotes scripture verbatim from this code and a later switch means
+        # re-quoting what has shipped.
+        #
+        # `bible` is the Take Root code, verified 2026-11-14 against
+        # api.takeroot.bible/api/bible/translations/ ("Synodal Translation
+        # (1876)", public domain): JHN 1 returns 51 verses, and John 15:4 reads
+        # «Пребудьте во Мне, и Я в вас», as expected. Re-check with
+        # CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests_languages.LanguageSeedTableTests
+        "bible": "synodal",
+        # The NAME of the text, not a description: the translation prompt says
+        # "use the supplied {bible_label} wording", so this is what it quotes.
+        "bible_label": "Синодальный перевод",
+        # Protestant register, but in the shared Synodal vocabulary every
+        # Russian church uses: Бог, Господь, Святой Дух. "abide" is the Synodal's
+        # own John 15:4 (пребудьте) and "the flesh" its Romans 8 плоть. A draft
+        # for native review.
+        "glossary": {
+            "justification": "оправдание",
+            "sanctification": "освящение",
+            "atonement": "искупление",
+            "grace": "благодать",
+            "the flesh": "плоть",
+            "abide": "пребывать",
+            "the Holy Spirit": "Святой Дух",
+            "the Lord": "Господь",
+            "godliness": "благочестие",
+            "intercession": "ходатайство / заступничество",
+            "surrender": "предание себя Богу / посвящение",
+        },
+    },
 }

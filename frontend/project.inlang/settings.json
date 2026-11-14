@@ -14,7 +14,8 @@
     "am",
     "vi",
     "ko",
-    "ja"
+    "ja",
+    "ru"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

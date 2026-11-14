@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
 	BIBLE_DIVISIONS,
+	THIN_SPINE,
+	canonReading,
+	spineLabel,
 	BIBLE_STARTS,
 	bibleChapterCount,
 	bibleChapters,
@@ -384,5 +387,46 @@ describe('bibleContinueRows', () => {
 		const out = bibleContinueRows([plan('a', 'x'), plan('b', 'y')], [row('c'), row('d')], 3);
 		expect([out.plans.length, out.books.length]).toEqual([2, 1]);
 		expect(bibleContinueRows([plan('a'), plan('b'), plan('c'), plan('d')], [row('e')]).plans).toHaveLength(3);
+	});
+});
+
+describe('canon strip: names, height, reading', () => {
+	const sized = (slug: string, pos: number, word_count: number, chapter_count: number) => ({
+		slug,
+		series_position: pos,
+		word_count,
+		chapter_count
+	});
+	const slots = canonStrip([
+		sized('psalms', 19, 50000, 152),
+		sized('obadiah', 31, 2500, 3),
+		sized('romans', 45, 15000, 18)
+	]).flatMap((t) => t.divisions.flatMap((d) => d.slots));
+	const at = (pos: number) => slots.find((s) => s.position === pos)!;
+
+	it('carries each book its abbreviation, its Bible chapters and its height', () => {
+		expect(at(31).abbr).toBe('Obad');
+		expect(at(19).chapters).toBe(150);
+		expect(at(19).tall).toBe(1);
+		expect(at(31).tall).toBe(Math.round((1 / Math.sqrt(150)) * 100) / 100);
+		expect(at(1)).toMatchObject({ book: null, chapters: 0, tall: 0 });
+	});
+
+	it('labels a thin spine with its abbreviation, a wide one with its name', () => {
+		expect(at(31).weight).toBeLessThan(THIN_SPINE);
+		expect(spineLabel(at(31))).toBe('Obad');
+		expect(spineLabel(at(19))).toBe('Psalms');
+		// An absent book has no width to save: its own label is the strip's to choose.
+		expect(spineLabel(at(1))).toBe('Genesis');
+	});
+
+	it('counts the books finished and under way', () => {
+		const places = {
+			psalms: { behind: 150, current: null, finished: true },
+			romans: { behind: 3, current: 4, finished: false },
+			obadiah: null
+		} as const;
+		const books = [{ slug: 'psalms' }, { slug: 'romans' }, { slug: 'obadiah' }] as const;
+		expect(canonReading(books, (b) => places[b.slug])).toEqual({ finished: 1, started: 1, total: 3 });
 	});
 });

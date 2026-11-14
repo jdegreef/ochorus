@@ -161,6 +161,8 @@ export interface CanonSlot<T> {
 	position: number;
 	/** The book's short English name ("Psalms", "1 Corinthians", "John"). */
 	name: string;
+	/** Its abbreviation ("Obad", "Phlm", "2 John") — what a thin spine shows. */
+	abbr: string;
 	/** The library's edition at this place, or null where this language has none. */
 	book: T | null;
 	/**
@@ -169,6 +171,15 @@ export interface CanonSlot<T> {
 	 * an absent book. The strip draws it as the spine's thickness.
 	 */
 	weight: number;
+	/** The book's Bible chapters (introduction and conclusion aside); 0 absent. */
+	chapters: number;
+	/**
+	 * 0–1: its chapters beside the most here (square root again: Psalms' 150
+	 * stand tallest, Obadiah's one still a spine). The strip draws it as the
+	 * spine's height, so a book's two kinds of length both show: words across,
+	 * chapters up. 0 for an absent book.
+	 */
+	tall: number;
 }
 
 export interface CanonDivision<T> {
@@ -200,13 +211,19 @@ export function canonStrip<
 	// Words where the API sends them; chapters stand in for a book without a count.
 	const size = (b: T) => Math.sqrt(b.word_count || (b.chapter_count ?? 0) * 500);
 	const largest = Math.max(0, ...[...at.values()].map(size));
+	const chaptersOf = (b: T) => bibleChapterCount([b]);
+	const most = Math.max(0, ...[...at.values()].map(chaptersOf));
 	const slot = (position: number): CanonSlot<T> => {
 		const book = at.get(position) ?? null;
+		const chapters = book ? chaptersOf(book) : 0;
 		return {
 			position,
 			name: canonName(position) ?? '',
+			abbr: CANON[position - 1][1],
 			book,
-			weight: book && largest ? Math.round((size(book) / largest) * 100) / 100 : 0
+			weight: book && largest ? Math.round((size(book) / largest) * 100) / 100 : 0,
+			chapters,
+			tall: chapters && most ? Math.round((Math.sqrt(chapters) / Math.sqrt(most)) * 100) / 100 : 0
 		};
 	};
 	return byTestament(
@@ -486,4 +503,28 @@ export function bibleContinueRows<
 		plans: shownPlans,
 		books: books.filter((r) => !carried.has(r.book.slug)).slice(0, max - shownPlans.length)
 	};
+}
+
+/** Under this `weight` a spine is too thin for the book's name: it shows the
+ *  abbreviation ("Obad", "2 John"), set whole rather than clipped. */
+export const THIN_SPINE = 0.33;
+
+/** What a spine is labelled: its name, or its abbreviation when thin. */
+export const spineLabel = (slot: { name: string; abbr: string; weight: number; book: unknown }): string =>
+	slot.book && slot.weight < THIN_SPINE ? slot.abbr : slot.name;
+
+/** The canon strip's reading summary: books finished and books under way,
+ *  from each present book's place (`biblePlace`; null = not started). */
+export function canonReading<T>(
+	books: readonly T[],
+	placeOf: (book: T) => BiblePlace | null
+): { finished: number; started: number; total: number } {
+	let finished = 0;
+	let started = 0;
+	for (const b of books) {
+		const place = placeOf(b);
+		if (place?.finished) finished++;
+		else if (place && (place.behind > 0 || place.current != null)) started++;
+	}
+	return { finished, started, total: books.length };
 }
