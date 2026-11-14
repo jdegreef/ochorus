@@ -5,6 +5,7 @@ open."""
 
 import json
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from django.conf import settings
@@ -12,6 +13,7 @@ from django.core.management.base import CommandError
 from django.test import SimpleTestCase
 
 from library.management.commands.build_catena import Command, open_at, tidy
+from library.management.commands.build_catena_aurea import Command as Aurea
 
 BOOKS = Path(settings.BASE_DIR) / "library" / "fixtures" / "content" / "books"
 _VERSE_BLOCK = re.compile(r"<blockquote><p>(.*?)</p><p>— ([^<]+)</p></blockquote>", re.S)
@@ -275,10 +277,6 @@ class ShippedVerseBlockTests(SimpleTestCase):
 
 class AureaMendTests(SimpleTestCase):
     def setUp(self):
-        from collections import defaultdict
-
-        from library.management.commands.build_catena_aurea import Command as Aurea
-
         self.cmd = Aurea()
         self.fix = {"excerpt": "x.1", "father": "Bede", "old": "ye heave received", "new": "ye have received"}
         self.cmd.corrections = defaultdict(list, {("x.1", "Bede"): [self.fix]})
@@ -291,8 +289,6 @@ class AureaMendTests(SimpleTestCase):
         self.assertIn(id(self.fix), mended)
 
     def test_an_ambiguous_correction_fails(self):
-        from django.core.management import CommandError
-
         with self.assertRaises(CommandError):
             self.cmd.mend("x.1", "Bede", ["ye heave received; ye heave received"], set())
         mended = set()

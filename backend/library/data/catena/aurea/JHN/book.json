@@ -644,6 +644,11 @@
    "excerpt": "catena.JHN.21.12-13.1",
    "father": "Chrysostom",
    "why": "proofread 2026-11-14: misread: word → tree (Augustine, City of God); mend not certain ('word'->'tree' is not a letter slip; translators may have printed 'wood'/'tree', a guess)"
+  },
+  {
+   "excerpt": "catena.JHN.11.15-16.1",
+   "father": "Chrysostom",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)"
   }
  ],
  "corrections": [
@@ -3404,20 +3409,6 @@
    "old": "I go that may awake him",
    "new": "I go that I may awake him",
    "why": "proofread 2026-11-14: lost word: I"
-  },
-  {
-   "excerpt": "catena.JHN.11.15-16.1",
-   "father": "Chrysostom",
-   "old": "unto his Let us also go",
-   "new": "unto his fellowdisciples, Let us also go",
-   "why": "proofread 2026-11-14: scan hole: fellowdisciples (John 11:16)"
-  },
-  {
-   "excerpt": "catena.JHN.11.15-16.1",
-   "father": "Chrysostom",
-   "old": "die with him, But he",
-   "new": "die with him. But he",
-   "why": "proofread 2026-11-14: comma for stop"
   },
   {
    "excerpt": "catena.JHN.11.17-18.1",

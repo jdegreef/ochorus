@@ -345,7 +345,7 @@ class Command(build_catena.Command):
         self.corrections = defaultdict(list)
         for c in self.meta.get("corrections", []):
             self.corrections[(c["excerpt"], c["father"])].append(c)
-        mended = set()
+        mended, wasted = set(), []
         speaker = None
         for n, e in enumerate(excerpts):
             kept = []
@@ -359,15 +359,21 @@ class Command(build_catena.Command):
                 speaker = name or speaker
                 if not "".join(paras).strip():
                     continue  # a siglum alone at an excerpt's end: its words open the next
-                paras = self.mend(e["id"], speaker, paras, mended)
+                scan, before = paras, len(mended)
+                paras = [p for p in self.mend(e["id"], speaker, paras, mended) if p.strip()]
+                if not paras:
+                    continue
                 why = (
                     "an opening siglum this build cannot read (dropped, not given to the Father before)"
                     if speaker == UNREAD
                     else self.refused.get((e["id"], speaker)) or self.unsound(paras)
                 )
                 if why:
+                    if len(mended) > before:
+                        wasted.append(f"{e['id']} ({speaker}): {why}")
+                    # The scan's own words, not the mended ones: dropped.json is the record of what was lost.
                     self.dropped.append({"excerpt": e["id"], "passage": k + 1, "father": speaker,
-                                         "why": why, "text": " ".join(paras)})
+                                         "why": why, "text": " ".join(scan)})
                 else:
                     kept.append((speaker, paras))
             if kept:
@@ -382,9 +388,16 @@ class Command(build_catena.Command):
                 f"{len(stale)} correction(s) in book.json match no passage; the first: "
                 f"{stale[0]['excerpt']} ({stale[0]['father']}) {stale[0]['old']!r}"
             )
+        if wasted:
+            raise CommandError(
+                f"{len(wasted)} corrected passage(s) are left out all the same; drop the correction "
+                f"or reject the passage: " + "; ".join(wasted)
+            )
 
     def mend(self, excerpt: str, father: str | None, paras: list[str], mended: set) -> list[str]:
         """`paras` with book.json's corrections for this Father's passage made."""
+        if (excerpt, father) not in self.corrections:
+            return paras
         # Matched across the paragraph breaks, so a mend can rejoin a sentence
         # a stray stop split in two ("interpreted.\n\n‘One who works …").
         text = "\n\n".join(paras)

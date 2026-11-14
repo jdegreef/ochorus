@@ -799,6 +799,16 @@
    "excerpt": "catena-luke.LUK.24.38.1",
    "father": "Bede",
    "why": "proofread 2026-11-14: garbled: \"What I have planted there, shall find\""
+  },
+  {
+   "excerpt": "catena-luke.LUK.13.21.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)"
+  },
+  {
+   "excerpt": "catena-luke.LUK.23.6.1",
+   "father": "Bede",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (the scan has damaged it)"
   }
  ],
  "corrections": [
@@ -3722,13 +3732,6 @@
    "why": "proofread 2026-11-14: stray letter: I"
   },
   {
-   "excerpt": "catena-luke.LUK.13.21.1",
-   "father": "Bede",
-   "old": "The Saturn is a kind",
-   "new": "The Satum is a kind",
-   "why": "proofread 2026-11-14: misread: Saturn → Satum"
-  },
-  {
    "excerpt": "catena-luke.LUK.13.21.2",
    "father": "Theophylact",
    "old": "he will make? the whole",
@@ -4994,13 +4997,6 @@
    "old": "Render unto... the things",
    "new": "Render unto Caesar the things",
    "why": "proofread 2026-11-14: lost word: unto... → unto Caesar"
-  },
-  {
-   "excerpt": "catena-luke.LUK.23.6.1",
-   "father": "Bede",
-   "old": "whether the man were a... And lest",
-   "new": "whether the man were a Galilaean. And lest",
-   "why": "proofread 2026-11-14: lost word: were a... → were a Galilaean."
   },
   {
    "excerpt": "catena-luke.LUK.23.30.1",

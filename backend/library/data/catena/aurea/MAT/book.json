@@ -109,6 +109,11 @@
    "excerpt": "catena-matthew.MAT.28.11.1",
    "father": "Chrysostom",
    "why": "proofread 2026-11-14: hole: paragraph begins mid-sentence \"which befel now;\" with its antecedent lost"
+  },
+  {
+   "excerpt": "catena-matthew.MAT.26.73.1",
+   "father": "Augustine",
+   "why": "proofread 2026-11-14: mended, but still fails the build's check (an unpaired quotation mark)"
   }
  ],
  "corrections": [
@@ -3793,13 +3798,6 @@
    "old": "This He did to give weight to the accusation, and to confirm by deeds what He taught",
    "new": "This he did to give weight to the accusation, and to confirm by deeds what he taught",
    "why": "proofread 2026-11-14: capital He refers to the High Priest"
-  },
-  {
-   "excerpt": "catena-matthew.MAT.26.73.1",
-   "father": "Augustine",
-   "old": "one hour after, [Luke 22:59])",
-   "new": "one hour after,” [Luke 22:59])",
-   "why": "proofread 2026-11-14: unclosed quotation"
   },
   {
    "excerpt": "catena-matthew.MAT.26.73.1",
