@@ -375,7 +375,7 @@
 
 		<!-- The whole canon at a glance, each spine a link to its book page; the
 		     grouped index below is the shelf proper. -->
-		<BibleCanonStrip books={series?.books ?? []} />
+		<BibleCanonStrip books={series?.books ?? []} {placeOf} />
 		{#each groups as testament, ti (testament.testament)}
 			<!-- A testament is the section; its divisions are the groups under it,
 			     so their headings are h3s (the topic page's nested-group recipe). -->
