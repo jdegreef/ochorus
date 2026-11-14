@@ -396,6 +396,104 @@ class FinishedProgressTests(TestCase):
         self.assertTrue(state["progress"][0]["finished_at"].startswith("2023-11-14"))
 
 
+class RereadProgressTests(TestCase):
+    """Starting a finished work again (``restarted_at``) and finishing that
+    reread (``last_finished_at``): both keep the latest any device reports,
+    ``finished_at`` keeps the first completion, and a device that never saw the
+    restart can neither re-mark the work finished nor raise its furthest."""
+
+    FINISH = 1_700_000_000_000
+    RESTART = 1_700_000_100_000
+
+    def setUp(self):
+        self.user = User.objects.create(username="00000000-0000-0000-0000-000000000011")
+        self.profile = UserProfile.objects.create(
+            user=self.user, supabase_uid=self.user.username, email="reread@example.com"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(self.user)
+        # Finished, at the last chapter.
+        self._progress(
+            chapter_order=16, furthest_order=16, finished_at=self.FINISH, updated_at=self.FINISH
+        )
+
+    def _progress(self, **body):
+        return self.client.put("/api/reading/progress/mark/", body, format="json")
+
+    def _restart(self):
+        return self._progress(
+            chapter_order=2,
+            furthest_order=2,
+            finished_at=self.FINISH,
+            restarted_at=self.RESTART,
+            updated_at=self.RESTART,
+        )
+
+    def test_restart_keeps_the_first_finish_and_resets_furthest(self):
+        res = self._restart()
+        self.assertTrue(res.data["finished_at"].startswith("2023-11-14"))
+        self.assertIsNotNone(res.data["restarted_at"])
+        self.assertIsNone(res.data["last_finished_at"])
+        self.assertEqual(res.data["furthest_order"], 2)
+        self.assertEqual(res.data["chapter_order"], 2)
+
+    def test_a_device_from_before_the_restart_cannot_undo_it(self):
+        self._restart()
+        payload = {
+            "progress": [
+                {
+                    "book_slug": "mark",
+                    "chapter_order": 16,
+                    "furthest_order": 16,
+                    "finished_at": self.FINISH,
+                    "updated_at": self.FINISH,
+                }
+            ]
+        }
+        row = self.client.post("/api/reading/merge/", payload, format="json").data["progress"][0]
+        self.assertIsNotNone(row["restarted_at"])  # still being reread
+        self.assertEqual(row["furthest_order"], 2)  # the old read-through can't raise it
+        self.assertEqual(row["chapter_order"], 2)
+
+    def test_furthest_grows_within_the_reread(self):
+        self._restart()
+        res = self._progress(
+            chapter_order=3, furthest_order=3, restarted_at=self.RESTART, updated_at=self.RESTART + 1000
+        )
+        self.assertEqual(res.data["furthest_order"], 3)
+
+    def test_restart_keeps_the_latest(self):
+        self._restart()
+        # An older restart reported later (a stale device) doesn't move it back.
+        res = self._progress(chapter_order=2, restarted_at=self.FINISH + 1, updated_at=self.RESTART + 1)
+        self.assertTrue(res.data["restarted_at"].startswith("2023-11-14T22:15:00"))
+
+    def test_finishing_the_reread_is_recorded_beside_the_first(self):
+        self._restart()
+        res = self._progress(
+            chapter_order=16,
+            restarted_at=self.RESTART,
+            last_finished_at=self.RESTART + 5000,
+            finished_at=self.FINISH,
+            updated_at=self.RESTART + 5000,
+        )
+        self.assertTrue(res.data["finished_at"].startswith("2023-11-14T22:13:20"))
+        self.assertIsNotNone(res.data["last_finished_at"])
+
+    def test_unfinish_after_a_restart_clears_only_the_reread_finish(self):
+        self._restart()
+        self._progress(chapter_order=16, restarted_at=self.RESTART, last_finished_at=self.RESTART + 5000)
+        res = self._progress(chapter_order=16, restarted_at=self.RESTART, unfinish=True)
+        self.assertIsNone(res.data["last_finished_at"])
+        self.assertIsNotNone(res.data["finished_at"])  # the first completion stands
+        self.assertIsNotNone(res.data["restarted_at"])
+
+    def test_unfinish_never_restarted_clears_the_finish(self):
+        res = self._progress(chapter_order=16, unfinish=True)
+        self.assertIsNone(res.data["finished_at"])
+        self.assertIsNone(res.data["restarted_at"])
+
+
 class FavoriteTests(TestCase):
     def setUp(self):
         self.user = User.objects.create(username="00000000-0000-0000-0000-000000000002")

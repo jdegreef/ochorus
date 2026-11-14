@@ -6,7 +6,7 @@
  * choice. The selection itself is the API's (`/api/library/fit/`).
  */
 import type { ProgressRecord, WorkKind } from './reading-schema';
-import { resumeOrderOf } from './reading-schema';
+import { isFinishedNow, resumeOrderOf } from './reading-schema';
 
 /** The choices, in minutes. */
 export const TIME_CHOICES = [5, 15, 30, 60] as const;
@@ -37,7 +37,7 @@ export function readingPlaces(
 	limit = 3
 ): string {
 	return progress
-		.filter((p) => p.kind === 'book' && !p.finished_at && p.language === language)
+		.filter((p) => p.kind === 'book' && !isFinishedNow(p) && p.language === language)
 		.slice(0, limit)
 		.map((p) => `${p.slug}:${resumeOrderOf(p)}`)
 		.join(',');

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+	isFinishedNow,
+	lastFinishOf,
 	chapterKey,
 	parseChapterKey,
 	workSlugKey,
@@ -66,5 +68,27 @@ describe('work keys across kinds', () => {
 	it('round-trips chapter-scoped work keys for bios', () => {
 		const key = workKey('bio', 'c-h-spurgeon', 1);
 		expect(parseWorkKey(key)).toEqual({ kind: 'bio', slug: 'c-h-spurgeon', order: 1 });
+	});
+});
+
+describe('isFinishedNow / lastFinishOf (a reread)', () => {
+	it('never finished: not finished, no finish', () => {
+		expect(isFinishedNow({})).toBe(false);
+		expect(lastFinishOf({ finished_at: null })).toBeNull();
+	});
+	it('finished once: finished', () => {
+		expect(isFinishedNow({ finished_at: 10 })).toBe(true);
+		expect(lastFinishOf({ finished_at: 10 })).toBe(10);
+	});
+	it('started again after the finish: in progress', () => {
+		expect(isFinishedNow({ finished_at: 10, restarted_at: 20 })).toBe(false);
+	});
+	it('the reread finished: finished again, at its latest finish', () => {
+		const rec = { finished_at: 10, restarted_at: 20, last_finished_at: 30 };
+		expect(isFinishedNow(rec)).toBe(true);
+		expect(lastFinishOf(rec)).toBe(30);
+	});
+	it('a stale finish older than the restart cannot re-finish it', () => {
+		expect(isFinishedNow({ finished_at: 10, restarted_at: 20, last_finished_at: 15 })).toBe(false);
 	});
 });

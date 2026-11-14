@@ -6,7 +6,7 @@ import {
 	type BookTile,
 	type EditionRung
 } from './library-public';
-import { furthestOf, resumeOrderOf, type ProgressRecord } from './reading-schema';
+import { furthestOf, isFinishedNow, resumeOrderOf, type ProgressRecord } from './reading-schema';
 
 import { AUDIENCE_HUBS, type AudienceHubConfig, type HubPathConfig } from './audienceHubs';
 export {
@@ -110,7 +110,10 @@ export function challengeState(
 	recordOf: (slug: string) => ProgressRecord | null
 ): ChallengeState | null {
 	if (!volumes.length) return null;
-	const open = volumes.find((slug) => recordOf(slug)?.finished_at == null);
+	const open = volumes.find((slug) => {
+		const rec = recordOf(slug);
+		return !rec || !isFinishedNow(rec);
+	});
 	const done = !open;
 	const slug = open ?? volumes[volumes.length - 1];
 	const rec = recordOf(slug);
