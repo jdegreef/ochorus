@@ -144,7 +144,21 @@
   "chrysostom-matthew.MAT.15.3-6.7": "proofread 2026-11-14: misreads: \"their months are stopped\" (mouths); \"bring for ward\"",
   "chrysostom-matthew.MAT.22.34-36.9": "proofread 2026-11-14: lost question mark: \"what dost thou think it is to publish them even to many others.\"",
   "chrysostom-matthew.MAT.8.13.1": "proofread 2026-11-14: hole/splice: \"bearing witness to his character.... nothing; for the question is\"",
-  "chrysostom-matthew.MAT.9.17.1": "proofread 2026-11-14: splice debris: \"But Luke the same words, a second and a third time ... but sport ively, and do thou now turn from her\""
+  "chrysostom-matthew.MAT.9.17.1": "proofread 2026-11-14: splice debris: \"But Luke the same words, a second and a third time ... but sport ively, and do thou now turn from her\"",
+  "calvin-matthew.MAT.13.47.2": "proofread 2026-11-14: opens mid-sentence on a fragment: \"and, therefore, recommends to us discipline\"",
+  "calvin-matthew.MAT.20.1-16.1": "proofread 2026-11-14: stray stop: \"the glory of all; will be equal\"",
+  "calvin-matthew.MAT.3.4.1": "proofread 2026-11-14: lost stop after lemma, run-on: \"camel’s hair The Evangelist\"",
+  "chrysostom-matthew.MAT.13.18.3": "proofread 2026-11-14: split word: \"giv ing with thine own hand\"",
+  "chrysostom-matthew.MAT.8.20.1": "proofread 2026-11-14: typo: \"His disciples also He choses out of Galilee\"",
+  "henry-matthew.MAT.16.27.3": "proofread 2026-11-14: garbled reference: \"judge nothing before the time, 2 Tim. iv. 6-8\" (is 1 Cor. iv. 5)",
+  "henry-matthew.MAT.28.3.1": "proofread 2026-11-14: extra word: \"the court of heaven went into keep mourning\"",
+  "henry-matthew.MAT.9.16.1": "proofread 2026-11-14: ends on debris: \"babes in Christ and grown men....\"",
+  "ryle-matthew.MAT.13.51-58.1": "proofread 2026-11-14: multiple slips: \"heart-seaching\", \"the seeds the seeds of new thoughts..\", \"Without this he hears is in vain\", \"of great important\"",
+  "ryle-matthew.MAT.16.21-23.2": "proofread 2026-11-14: missing word: \"What sees not now, he may see hereafter\"",
+  "ryle-matthew.MAT.20.24-28.4": "proofread 2026-11-14: unclosed parenthesis/truncated reference: \"(1 Peter\" (also \"himself, He died\")",
+  "ryle-matthew.MAT.25.14-30.4": "proofread 2026-11-14: stray comma: \"“cast, into outer darkness.”\"",
+  "henry-matthew.MAT.16.21-23.5": "proofread 2026-11-14: misread: \"great things Christ had how said unto him\" (now); lost stop \"took at this he said\"",
+  "henry-matthew.MAT.16.27.2": "proofread 2026-11-14: dropped letter: \"too hard to suffer, or him\" (for him)"
  },
  "excerpts": [
   "calvin-matthew.MAT.4.4.2",
@@ -286,6 +300,20 @@
   "chrysostom-matthew.MAT.15.3-6.7",
   "chrysostom-matthew.MAT.22.34-36.9",
   "chrysostom-matthew.MAT.8.13.1",
-  "chrysostom-matthew.MAT.9.17.1"
+  "chrysostom-matthew.MAT.9.17.1",
+  "calvin-matthew.MAT.13.47.2",
+  "calvin-matthew.MAT.20.1-16.1",
+  "calvin-matthew.MAT.3.4.1",
+  "chrysostom-matthew.MAT.13.18.3",
+  "chrysostom-matthew.MAT.8.20.1",
+  "henry-matthew.MAT.16.27.3",
+  "henry-matthew.MAT.28.3.1",
+  "henry-matthew.MAT.9.16.1",
+  "ryle-matthew.MAT.13.51-58.1",
+  "ryle-matthew.MAT.16.21-23.2",
+  "ryle-matthew.MAT.20.24-28.4",
+  "ryle-matthew.MAT.25.14-30.4",
+  "henry-matthew.MAT.16.21-23.5",
+  "henry-matthew.MAT.16.27.2"
  ]
 }
