@@ -27,6 +27,8 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BibleCanonStrip from '$lib/components/BibleCanonStrip.svelte';
+	import BibleBookList from '$lib/components/BibleBookList.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 
@@ -35,8 +37,13 @@
 	 * order, under Old Testament / New Testament and then their divisions — a
 	 * grouped browse shelf on the Topics model. Only the divisions that have a
 	 * book are drawn (`groupBible`), so it reads well with any part of the 66.
-	 * The books are the `the-bible` series; its page (reading straight through,
-	 * with the reader's place kept) and the Bible-only plans close the list.
+	 * The books are the `the-bible` series. The Bible-only plans and the series
+	 * page (reading straight through, with the reader's place kept) come right
+	 * after "Where to start", where a reader choosing a way in still is.
+	 *
+	 * The divisions draw as a compact index (`BibleBookList`: a row per book, its
+	 * chapters a tap away) — 66 full covers made a phone page ~14,000px tall. The
+	 * covers stay one tap away, as the book page's contents keep their list.
 	 */
 	let { data } = $props();
 	const series = $derived<SeriesDetail | null>(data.series);
@@ -49,6 +56,9 @@
 	const books = $derived(groups.flatMap((g) => g.divisions.flatMap((d) => d.books)));
 	const chapters = $derived(bibleChapterCount(books));
 	const starts = $derived(bibleStarts(series?.books ?? []));
+	let asCovers = $state(false);
+	// The one book whose chapters are open, across the whole index.
+	let openBook = $state<string | null>(null);
 
 	// "Go to a passage": the API parses the reference (names, abbreviations,
 	// ranges) and says which reader chapter prints it (`passageHref`); a book
@@ -178,34 +188,11 @@
 			</section>
 		{/if}
 
-		<!-- The whole canon at a glance, each spine a link to its book page; the
-		     grouped cards below are the shelf proper. -->
-		<BibleCanonStrip books={series?.books ?? []} />
-		{#each groups as testament (testament.testament)}
-			<!-- A testament is the section; its divisions are the groups under it,
-			     so their headings are h3s (the topic page's nested-group recipe). -->
-			<section class="bible-testament">
-				<h2 class="section-label mb-5">{t(testamentKey(testament.testament))}</h2>
-				{#each testament.divisions as group (group.division.id)}
-					<section class="bible-division">
-						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
-						<!-- No author line: every book is the Open Word Bible's. No series
-						     line: every book is in the one series this page is. -->
-						<div class="book-grid">
-							{#each group.books as book (book.slug)}
-								<BookCard {book} showSeries={false} />
-							{/each}
-						</div>
-					</section>
-				{/each}
-			</section>
-		{/each}
-
-		<!-- The cross-links at the end of the list, as other shelves keep them:
-		     the plans that read only these books, then the series page, which
-		     reads Genesis to Revelation and keeps the reader's place. -->
-		<section class="bible-testament">
-			<h2 class="section-label mb-5">{t('bible.readAlong')}</h2>
+		<!-- The ways to read the whole of it, or a book of it, a day at a time:
+		     the Bible-only plans, then the series page, which reads Genesis to
+		     Revelation and keeps the reader's place. -->
+		<section class="mb-12" aria-labelledby="read-along-heading">
+			<h2 id="read-along-heading" class="section-label mb-5">{t('bible.readAlong')}</h2>
 			{#if plans.length}
 				<div class="mb-6 grid items-stretch gap-x-6 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
 					{#each plans as plan (plan.slug)}
@@ -218,14 +205,55 @@
 					>{t('bible.inOrder')} <Arrow /></a
 				>
 			</p>
-			<!-- What the translation is, and its home: English prose, like the
-			     page it opens (it exists only where the hub does). -->
-			<p class="mt-2 text-small">
-				<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
-					>About the Open Word Bible <Arrow /></a
-				>
-			</p>
 		</section>
+
+		<!-- The whole canon at a glance, each spine a link to its book page; the
+		     grouped index below is the shelf proper. -->
+		<BibleCanonStrip books={series?.books ?? []} />
+		{#each groups as testament, ti (testament.testament)}
+			<!-- A testament is the section; its divisions are the groups under it,
+			     so their headings are h3s (the topic page's nested-group recipe). -->
+			<section class="bible-testament">
+				<div class="testament-head mb-5">
+					<h2 class="section-label">{t(testamentKey(testament.testament))}</h2>
+					{#if ti === 0}
+						<!-- Covers or the compact index, for the whole list: on the first
+						     heading's row, where the list begins. English, like the page's
+						     other own copy: the hub exists only in BIBLE_LOCALES. Not the book
+						     page's "Show as a grid", which here would read as the chapters. -->
+						<button type="button" class="btn btn-sm btn-ghost" onclick={() => (asCovers = !asCovers)}>
+							<Icon name={asCovers ? 'list' : 'grid'} size={16} />{asCovers
+								? 'Show as a list'
+								: 'Show covers'}
+						</button>
+					{/if}
+				</div>
+				{#each testament.divisions as group (group.division.id)}
+					<section class="bible-division">
+						<GroupHeading as="h3" name={t(divisionKey(group.division.id))} count={group.books.length} />
+						{#if asCovers}
+							<!-- No author line: every book is the Open Word Bible's. No series
+							     line: every book is in the one series this page is. -->
+							<div class="book-grid">
+								{#each group.books as book (book.slug)}
+									<BookCard {book} showSeries={false} />
+								{/each}
+							</div>
+						{:else}
+							<BibleBookList books={group.books} bind:open={openBook} />
+						{/if}
+					</section>
+				{/each}
+			</section>
+		{/each}
+
+		<!-- What the translation is, and its home: English prose, like the page
+		     it opens (it exists only where the hub does). -->
+		<p class="mt-12 text-small">
+			<a href={localizeHref(`${OWB_PATH}/`)} class="font-medium text-accent hover:underline"
+				>About the Open Word Bible <Arrow /></a
+			>
+		</p>
 	{/if}
 </div>
 
@@ -308,6 +336,15 @@
 		.start-cover {
 			width: 5.5rem;
 		}
+	}
+	.testament-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.testament-head h2 {
+		margin-bottom: 0;
 	}
 	.bible-testament + .bible-testament {
 		margin-top: 3rem;

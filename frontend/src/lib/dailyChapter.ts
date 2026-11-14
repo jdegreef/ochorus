@@ -14,6 +14,7 @@
 
 import { localDayNumber } from '$lib/dailyArticles';
 import { bookChapterPath } from '$lib/reading-schema';
+import { bibleChapterOrder } from '$lib/bible';
 
 /** The path, as (Bible book slug, the label its chapters carry, chapters). A
  *  book's chapter `n` is reader chapter `n + 1`: `build_owb_book` sets an
@@ -45,7 +46,7 @@ export function pickDailyChapter(date: Date): DailyChapter {
 	let day = localDayNumber(date) % DAILY_CHAPTER_CYCLE;
 	for (const [slug, label, chapters] of DAILY_CHAPTER_PATH) {
 		if (day < chapters) {
-			const order = day + 2;
+			const order = bibleChapterOrder(day + 1);
 			return { slug, order, title: `${label} ${day + 1}`, href: bookChapterPath(slug, order, false) };
 		}
 		day -= chapters;
