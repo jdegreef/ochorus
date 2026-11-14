@@ -108,10 +108,16 @@ describe('biblePlans', () => {
 	});
 
 	it('leads with the whole-Bible plans', () => {
-		const plans = [{ slug: 'john-in-21-days' }, { slug: 'bible-in-a-year' }, { slug: 'the-story-of-the-bible' }];
+		const plans = [
+			{ slug: 'john-in-21-days' },
+			{ slug: 'new-testament-in-90-days' },
+			{ slug: 'bible-in-a-year' },
+			{ slug: 'the-story-of-the-bible' }
+		];
 		expect(biblePlans(plans).map((p) => p.slug)).toEqual([
 			'the-story-of-the-bible',
 			'bible-in-a-year',
+			'new-testament-in-90-days',
 			'john-in-21-days'
 		]);
 	});
