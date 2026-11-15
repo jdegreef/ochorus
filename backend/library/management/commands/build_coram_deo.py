@@ -124,7 +124,7 @@ BOOK: dict[str, object] = {
         },
         {
             "question": "Which men and women of God does Coram Deo tell about?",
-            "answer": "Witnesses from every century and continent: Augustine, Athanasius and Cyprian of North Africa, Polycarp, Martin Luther, Brother Lawrence, Susanna and John Wesley, George Müller, Hudson Taylor, Andrew Murray, Pandita Ramabai, Sadhu Sundar Singh, Bakht Singh, Watchman Nee, Wang Mingdao, Toyohiko Kagawa, Corrie ten Boom and Alexander Mackay of Uganda, among others. Many of their own books are in the Ochorus library.",
+            "answer": "Witnesses from every century and continent: Augustine, Athanasius and Cyprian of North Africa, Polycarp, Martin Luther, Brother Lawrence, Susanna and John Wesley, George Müller, Hudson Taylor, Andrew Murray, Pandita Ramabai, Sadhu Sundar Singh, Bakht Singh, Watchman Nee, Wang Mingdao, Toyohiko Kagawa, Corrie ten Boom and Alexander Mackay of Uganda, among others. Many of their own books are free to read here in full.",
         },
         {
             "question": "How does the book handle questions on which Christians disagree?",
