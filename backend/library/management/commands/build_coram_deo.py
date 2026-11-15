@@ -96,6 +96,15 @@ BOOK: dict[str, object] = {
         "quoted from the Open Word Bible (OWB), Balanced edition, which is "
         "dedicated to the public domain.</p>"
     ),
+    # The five parts head the contents; the Introduction stands before them.
+    "parts": [
+        {"title": "Part One: Foundations", "first_chapter": 2},
+        {"title": "Part Two: Walking with God", "first_chapter": 5},
+        {"title": "Part Three: Becoming Like Christ", "first_chapter": 11},
+        {"title": "Part Four: Living as God’s People", "first_chapter": 18},
+        {"title": "Part Five: Living for God’s Purposes", "first_chapter": 25},
+        {"title": "Appendix", "first_chapter": 30},
+    ],
     "qa": [
         {
             "question": "What does Coram Deo mean?",
