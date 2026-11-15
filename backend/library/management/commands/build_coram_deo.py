@@ -121,6 +121,10 @@ BOOK: dict[str, object] = {
             "answer": "Each chapter opens with a key Scripture, teaches from the Bible with several passages woven through it, tells in depth the story of one man or woman of God from church history, and ends with questions for reflection and one practical step to take in the week ahead.",
         },
         {
+            "question": "Which men and women of God does Coram Deo tell about?",
+            "answer": "Witnesses from every century and continent: Augustine, Athanasius and Cyprian of North Africa, Polycarp, Martin Luther, Brother Lawrence, Susanna and John Wesley, George Müller, Hudson Taylor, Andrew Murray, Pandita Ramabai, Sadhu Sundar Singh, Bakht Singh, Watchman Nee, Wang Mingdao, Toyohiko Kagawa, Corrie ten Boom and Alexander Mackay of Uganda, among others. Many of their own books are in the Ochorus library.",
+        },
+        {
             "question": "How does the book handle questions on which Christians disagree?",
             "answer": "Where faithful Christians differ, on baptism in the Spirit, the gifts of the Spirit or the Sabbath for example, it presents the main positions fairly and then lands on the common ground all share. Where it takes a view of its own it says so plainly, and the Appendix explains how to tell primary beliefs from secondary and tertiary ones.",
         },

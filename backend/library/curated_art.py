@@ -1315,10 +1315,10 @@ CURATED: dict[str, Artwork] = {
         glow=((0.5, 0.42, 1.05, 0.44, 0.70), (0.5, 1.0, 1.2, 0.26, 0.5)),
     ),
     "coram-deo": Artwork(
-        "aic", 64729, "George Inness", "Early Morning, Tarpon Springs", "1892",
-        "One small figure standing alone in an open field at first light, under "
-        "tall pines and a wide sky: a life lived every day before the face of "
-        "God, which is the book's whole idea, and the morning watch it teaches.",
+        "cma", 169614, "Sanford Robinson Gifford", "Haverstraw Bay", "1868",
+        "Morning haze over still water and one man alone in a small boat, the "
+        "whole sky lit and nothing between him and it: a life lived every day "
+        "before the face of God, which is the book's whole idea.",
     ),
     # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
     "epistle-and-martyrdom-of-polycarp": Artwork(
