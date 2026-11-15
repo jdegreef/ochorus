@@ -58,7 +58,9 @@ BOOK: dict[str, object] = {
     "publication_year": 2026,
     "title": "Coram Deo",
     "subtitle": "Living every day before the face of God",
-    # George Inness's Early Morning, Tarpon Springs (curated_art.CURATED); the page sets the title over it.
+    # The joint byline doesn't fit a cover's line; the founder's name does (as on The Lamplighters).
+    "cover_byline": "James DeGreef",
+    # Sanford Robinson Gifford's Haverstraw Bay (curated_art.CURATED); the page sets the title over it.
     "cover_url": f"/covers/art/{SLUG}.jpg",
     "description": (
         "Coram Deo is Latin for “before the face of God.” This teaching book "

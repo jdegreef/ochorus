@@ -10,7 +10,7 @@
   "title": "Coram Deo",
   "subtitle": "Living every day before the face of God",
   "cover_title": "",
-  "cover_byline": "",
+  "cover_byline": "James DeGreef",
   "description": "Coram Deo is Latin for “before the face of God.” This teaching book for every Christian, from new believers to those who have walked with God for decades, shows how all of life is lived in His presence: knowing Father, Son and Holy Spirit; meeting Him daily in the Word, prayer and the morning watch; becoming like Christ; marriage, family, work and church; and mission, stewardship and the hope of glory. Each chapter tells the story of a man or woman of God and ends with questions and a step for the week.",
   "hook": "",
   "about_html": "<p>Every one of us lives before someone’s face: parents, employers, neighbours, the crowd. The Reformers had a phrase for a different way to live: <em>coram Deo</em>, “before the face of God.” This book is about that face, and what it means to live every day in His presence. It is not about earning God’s favour. We walk with Him because, in Christ, He has already accepted us.</p><p>The book moves in five parts. <em>Foundations</em> asks who God is: Father, Son and Holy Spirit. <em>Walking with God</em> begins with love and shows how we meet Him daily, in His Word, in prayer, in the morning watch, in abiding in Christ and in the spiritual disciplines. <em>Becoming Like Christ</em> covers discipleship, the Sermon on the Mount, faith, holiness, the healing of the soul, spiritual warfare and suffering. <em>Living as God’s People</em> turns to marriage and singleness, children, work, the Church, its ministries and gifts, and serving one another. <em>Living for God’s Purposes</em> looks to the Great Commission, stewardship, finishing well and the new heavens and new earth.</p><p>Each chapter opens with Scripture, teaches from the Bible, tells the story of one man or woman of God, from Augustine of North Africa and Martin Luther to George Müller, Amy Carmichael, Andrew Murray and Festo Kivengere of Uganda, and ends with questions for reflection and one practical step for the week ahead. Where faithful Christians differ, the book sets out the main views fairly; an appendix explains how to hold firm on the essentials and extend grace on the rest. Scripture is quoted from the Open Word Bible (OWB), Balanced edition, which is dedicated to the public domain.</p>",
@@ -26,6 +26,10 @@
    {
     "question": "How is each chapter laid out?",
     "answer": "Each chapter opens with a key Scripture, teaches from the Bible with several passages woven through it, tells in depth the story of one man or woman of God from church history, and ends with questions for reflection and one practical step to take in the week ahead."
+   },
+   {
+    "question": "Which men and women of God does Coram Deo tell about?",
+    "answer": "Witnesses from every century and continent: Augustine, Athanasius and Cyprian of North Africa, Polycarp, Martin Luther, Brother Lawrence, Susanna and John Wesley, George Müller, Hudson Taylor, Andrew Murray, Pandita Ramabai, Sadhu Sundar Singh, Bakht Singh, Watchman Nee, Wang Mingdao, Toyohiko Kagawa, Corrie ten Boom and Alexander Mackay of Uganda, among others. Many of their own books are in the Ochorus library."
    },
    {
     "question": "How does the book handle questions on which Christians disagree?",
@@ -75,7 +79,7 @@
   "sort_order": 353,
   "is_published": true,
   "created_at": "2026-11-15T00:33:08.141Z",
-  "updated_at": "2026-11-15T00:41:40.083Z"
+  "updated_at": "2026-11-15T01:21:37.065Z"
  }
 },
 {

@@ -8656,6 +8656,39 @@
 				469
 			]
 		},
+		"coram-deo": {
+			"ground": "8034462cfc6148503e5c2f64c926d4f8bc07ceba1dc1235a64c920666c34154b",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.55,
+			"lift": 1,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[75, 337, 525, 439]
+				],
+				"subtitle": [
+					[99, 457, 501, 485]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				310,
+				485
+			]
+		},
 		"corrie-ten-boom-a-life": {
 			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
 			"style": "house",
