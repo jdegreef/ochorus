@@ -1314,6 +1314,12 @@ CURATED: dict[str, Artwork] = {
         # weakest pair that clears every `DARK_INK_BOXES_BY_SLUG` bar by 8%.
         glow=((0.5, 0.42, 1.05, 0.44, 0.70), (0.5, 1.0, 1.2, 0.26, 0.5)),
     ),
+    "coram-deo": Artwork(
+        "aic", 64729, "George Inness", "Early Morning, Tarpon Springs", "1892",
+        "One small figure standing alone in an open field at first light, under "
+        "tall pines and a wide sky: a life lived every day before the face of "
+        "God, which is the book's whole idea, and the morning watch it teaches.",
+    ),
     # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
     "epistle-and-martyrdom-of-polycarp": Artwork(
         "cma", 122351, "Joseph Mallord William Turner", "The Burning of the Houses of Lords and Commons, 16 October 1834", "1835",
