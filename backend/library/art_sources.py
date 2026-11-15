@@ -38,6 +38,7 @@ ART_SOURCES: dict[str, str] = {
     "commentary-on-romans": "cma-95284@0.50",
     "communion-with-god": "cma-139815@0.50",
     "confessions": "met-436455@0.50",
+    "coram-deo": "cma-169614@0.50",
     "corrie-ten-boom-a-life": "wikidata-17275831@0.30",
     "days-of-heaven-upon-earth": "cma-141639@0.40",
     "dialogue-with-trypho": "met-437102@0.50",

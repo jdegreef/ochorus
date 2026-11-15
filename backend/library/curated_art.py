@@ -1314,6 +1314,12 @@ CURATED: dict[str, Artwork] = {
         # weakest pair that clears every `DARK_INK_BOXES_BY_SLUG` bar by 8%.
         glow=((0.5, 0.42, 1.05, 0.44, 0.70), (0.5, 1.0, 1.2, 0.26, 0.5)),
     ),
+    "coram-deo": Artwork(
+        "cma", 169614, "Sanford Robinson Gifford", "Haverstraw Bay", "1868",
+        "Morning haze over still water and one man alone in a small boat, the "
+        "whole sky lit and nothing between him and it: a life lived every day "
+        "before the face of God, which is the book's whole idea.",
+    ),
     # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
     "epistle-and-martyrdom-of-polycarp": Artwork(
         "cma", 122351, "Joseph Mallord William Turner", "The Burning of the Houses of Lords and Commons, 16 October 1834", "1835",
