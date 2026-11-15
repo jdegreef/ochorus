@@ -122,7 +122,7 @@ BOOK: dict[str, object] = {
         },
         {
             "question": "How does the book handle questions on which Christians disagree?",
-            "answer": "Where faithful Christians differ, on baptism in the Spirit, the gifts of the Spirit or the Sabbath for example, it presents the main positions fairly and then lands on the common ground all share. Where it takes a view of its own it says so plainly, and Appendix A explains how to tell primary beliefs from secondary and tertiary ones.",
+            "answer": "Where faithful Christians differ, on baptism in the Spirit, the gifts of the Spirit or the Sabbath for example, it presents the main positions fairly and then lands on the common ground all share. Where it takes a view of its own it says so plainly, and the Appendix explains how to tell primary beliefs from secondary and tertiary ones.",
         },
         {
             "question": "Which Bible translation does it use?",
