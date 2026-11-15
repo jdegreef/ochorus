@@ -58,6 +58,8 @@ BOOK: dict[str, object] = {
     "publication_year": 2026,
     "title": "Coram Deo",
     "subtitle": "Living every day before the face of God",
+    # George Inness's Early Morning, Tarpon Springs (curated_art.CURATED); the page sets the title over it.
+    "cover_url": f"/covers/art/{SLUG}.jpg",
     "description": (
         "Coram Deo is Latin for “before the face of God.” This teaching book "
         "for every Christian, from new believers to those who have walked with "
