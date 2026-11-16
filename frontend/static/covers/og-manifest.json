@@ -30474,6 +30474,40 @@
 			"caps": false,
 			"sitemark": null
 		},
+		"morning-comes": {
+			"ground": "e930f0df9872628c89df36ef89bfbc04da27bb9982199957ae2c509e8dd73be3",
+			"style": "young",
+			"volume": "6",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[99, 362, 501, 437]
+				],
+				"subtitle": [
+					[76, 492, 524, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"mortification-of-sin": {
 			"ground": "de28580f404afa0c2638547e87244c1f31e0c0aa6d019a6e4f83d210ead382c0",
 			"style": "press",
@@ -41219,6 +41253,41 @@
 			"middle": [
 				256,
 				539
+			]
+		},
+		"the-midsummer-flame": {
+			"ground": "9e9755ad3b96107d65ba6c9d54644b818598f4f9a01a7b63dc6803e48ce12473",
+			"style": "young",
+			"volume": "5",
+			"script": "latin",
+			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
+			"art": true,
+			"scrim": 0.1,
+			"lift": 1.45,
+			"medallion": null,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false,
+			"sitemark": null,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 257, 311, 301],
+					[94, 332, 506, 407],
+					[222, 393, 378, 468]
+				],
+				"subtitle": [
+					[70, 522, 530, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
 			]
 		},
 		"the-normal-christian-life": {
