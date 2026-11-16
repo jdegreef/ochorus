@@ -143,11 +143,11 @@
      above the row it would push the books down after first paint. -->
 <TonightShelf items={data.tonight ?? []} />
 
-<!-- Create-an-account band. Four bands run behind one component (three A/B
+<!-- Create-an-account band. Five bands run behind one component (four A/B
      arms + a progress-targeted one); it self-gates on `auth.enabled`, so it
      stays hidden where accounts don't work and never bakes into the
      prerendered HTML. See SignupBand. -->
-<SignupBand />
+<SignupBand books={featured} />
 
 <!-- Topics, by situation: "What do you need today?" — chips that open three
      picks from a topic shelf, its header linking to all of them. It takes the
