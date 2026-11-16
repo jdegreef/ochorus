@@ -616,7 +616,7 @@ And it was cold.
 
 It was colder than the Sunless Sea, colder than the rocks, colder than anything. It came out of the black glass walls like the cold comes out of the walls of an ice-house, and went into their hands and feet and faces, and into their bones; and their breath went up white in front of them in the lamp-light, and their fingers on the black glass wall went numb. Even the lamp felt it. Wren could feel the lamp, against her ribs, under her coat, working; burning steadily, warm, but working at it, the way your heart works when you are climbing.
 
-They had to hide it. Aren had said so, at the door. The Spire drank light, the way the Sunless Sea did; and if they went up its stairs with their lamps held up, the Queen would feel it, the way you feel a draught. So Wren carried the lamp inside her coat, against her ribs, buttoned in. Mira carried hers in the Chronicle's flour-sack, with the book. Tobin had wrapped Ash's pole in his coat. Sister Hale kept her hands inside her shawl. And Aren went first with his scarred palm shut tight in a fist, so that only a thin gold line showed between his fingers, enough to put his feet by.
+They had to hide it. Aren had said so, at the door. The Spire drank light, the way the Sunless Sea did; and if they went up its stairs with their lamps held up, the Queen would feel it, the way you feel a draught. So Wren carried the lamp inside her coat, against her ribs, fastened in. Mira carried hers in the Chronicle's flour-sack, with the book. Tobin had wrapped Ash's pole in his coat. Sister Hale kept her hands inside her shawl. And Aren went first with his scarred palm shut tight in a fist, so that only a thin gold line showed between his fingers, enough to put his feet by.
 
 It was very dark.
 
@@ -686,7 +686,7 @@ They were not dead. Wren could see that, after a while. If you looked very hard 
 
 Thousands of them.
 
-Wren stood in the doorway of the Hall of Sleepers with the lamp buttoned inside her coat against her ribs, and her mouth open, and could not move.
+Wren stood in the doorway of the Hall of Sleepers with the lamp fastened inside her coat against her ribs, and her mouth open, and could not move.
 
 ---
 
@@ -906,7 +906,7 @@ A Knight's step.
 
 "Lamps," hissed Aren. "Hide them. *Now*—"
 
-There was no time to think. Linnet pushed the blazing lamp back into Wren's hands — she did not even have to be told; she was a Lamplighter's wife and a singer on the wall, and she knew — and Wren crammed it inside her coat and buttoned it, burning, against her ribs. Mira's went into the flour-sack. Aren shut his fist. The gold went out of the hall as if a door had been shut on it.
+There was no time to think. Linnet pushed the blazing lamp back into Wren's hands — she did not even have to be told; she was a Lamplighter's wife and a singer on the wall, and she knew — and Wren crammed it inside her coat and fastened it, burning, against her ribs. Mira's went into the flour-sack. Aren shut his fist. The gold went out of the hall as if a door had been shut on it.
 
 "Stand still," whispered Aren. "All of you. *Stand*. Like them."
 
@@ -922,7 +922,7 @@ It came down the row behind them. Slowly. Metal on glass. *Clink … clink … c
 
 It stopped. Right behind her.
 
-She did not breathe. She did not move. She felt the lamp burning against her ribs under her buttoned coat, warm, so warm, the only warm thing in the whole Spire; and she thought, *it'll show. It'll show through. He'll see the light through my coat*—
+She did not breathe. She did not move. She felt the lamp burning against her ribs under her fastened coat, warm, so warm, the only warm thing in the whole Spire; and she thought, *it'll show. It'll show through. He'll see the light through my coat*—
 
 And then her mother's hand, very slowly, without her mother's face moving at all, found her hand in the grey, and held it.
 
@@ -968,7 +968,7 @@ She did not argue. That was how Wren knew how tired she was. She sat on the blac
 
 "I'll stay with her," said Mira. "Somebody should. And I can hear the stair from here, both ways, if I'm careful about the lying." She looked at Tobin. "You go. It's your father. Wren — go with him."
 
-So it was three of them who went on up, and a fox: Aren in front with his fist shut, and Tobin with Ash's pole wrapped in his coat, and Wren, with the lamp buttoned against her ribs and her mother's hand still warm in hers, though it was not there any more.
+So it was three of them who went on up, and a fox: Aren in front with his fist shut, and Tobin with Ash's pole wrapped in his coat, and Wren, with the lamp fastened against her ribs and her mother's hand still warm in hers, though it was not there any more.
 
 ---
 
@@ -1348,7 +1348,7 @@ The Queen looked at her.
 
 "*Keep it*," she said. "He said *keep it. You'll want it. You've a long way to carry it yet*."
 
-She put the lamp back inside her coat, against her ribs, and buttoned it.
+She put the lamp back inside her coat, against her ribs, and fastened it.
 
 "So no," said Wren.
 
@@ -1498,7 +1498,7 @@ And then she was not frightened of him any more.
 
 She went across the round room to the throne.
 
-It was a long way. The cold came off the crown so strongly that it was like walking into a wind. Her eyes ran. Her fingers went numb. The lamp, against her ribs, under her buttoned coat, was working hard — she could feel it — burning steadily, warm, against all that cold, the way your heart works when you are climbing a hill. She went up the black glass steps of the dais. She stopped in front of the throne.
+It was a long way. The cold came off the crown so strongly that it was like walking into a wind. Her eyes ran. Her fingers went numb. The lamp, against her ribs, under her fastened coat, was working hard — she could feel it — burning steadily, warm, against all that cold, the way your heart works when you are climbing a hill. She went up the black glass steps of the dais. She stopped in front of the throne.
 
 Close to, he was even smaller. His feet, in white slippers, did not reach the floor. They dangled.
 
