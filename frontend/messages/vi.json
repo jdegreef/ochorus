@@ -454,7 +454,7 @@
   "about_title": "Giới thiệu Ochorus",
   "about_meta_description": "Ochorus là một mục vụ có trụ sở tại Victoria BC, Canada và Kampala, Uganda, xuất bản các sách Cơ Đốc kinh điển để đọc miễn phí trực tuyến và trao sách in tận tay độc giả khắp Đông Phi.",
   "about_heading": "Rao truyền Phúc Âm qua văn phẩm",
-  "about_p1": "Có trụ sở tại Victoria BC, Canada và Kampala, Uganda, Ochorus là một mục vụ tận tâm với một sứ mạng sâu sắc: cung cấp miễn phí những tác phẩm và tài liệu Cơ Đốc kinh điển xuất sắc cho độc giả ở khắp mọi nơi.",
+  "about_p1": "Ochorus là một thư viện trực tuyến miễn phí gồm sách, bài giảng và tiểu sử Cơ Đốc kinh điển, bằng nhiều ngôn ngữ. Đặt tại Victoria BC, Canada và Kampala, Uganda, chúng tôi là một mục vụ với một sứ mạng: đưa những tác phẩm Cơ Đốc kinh điển vĩ đại đến tay độc giả khắp nơi, hoàn toàn miễn phí.",
   "about_p2": "Được thành lập năm 2021, Ochorus được thúc đẩy bởi một cam kết không lay chuyển là đem Phúc Âm đến mọi góc của thế giới, giúp mọi người tiếp cận được qua nhiều ngôn ngữ và thiết bị.",
   "about_p3": "Nhận biết quyền năng biến đổi của văn phẩm, chúng tôi chọn lọc những cuốn sách Cơ Đốc vĩ đại thuộc phạm vi công cộng, biên tập kỹ lưỡng để dễ đọc hơn và xuất bản trên nền tảng này — đọc miễn phí và giữ miễn phí.",
   "about_p4": "Hòa nhịp với ý muốn của Đức Chúa Trời là mọi người được cứu, chúng tôi tha thiết mong góp phần vào mục đích thiêng liêng ấy, để nhiều người được đọc, suy ngẫm và được biến đổi.",
@@ -1818,5 +1818,16 @@
   "footer_cta_author_text": "Lưu sách và bài giảng chỉ với một chạm, trên mọi thiết bị.",
   "footer_cta_plan_text": "Đánh dấu từng ngày trên bất kỳ thiết bị nào, kèm email mỗi ngày nếu bạn muốn.",
   "footer_cta_season_starts": "Bắt đầu %date%",
-  "footer_cta_season_text": "Mỗi ngày một cánh cửa cho đến Giáng Sinh. Tài khoản miễn phí giữ chuỗi ngày đọc và vị trí đang đọc của bạn trên mọi thiết bị."
+  "footer_cta_season_text": "Mỗi ngày một cánh cửa cho đến Giáng Sinh. Tài khoản miễn phí giữ chuỗi ngày đọc và vị trí đang đọc của bạn trên mọi thiết bị.",
+  "home_qa_title": "Câu hỏi về Ochorus",
+  "home_qa_what_q": "Ochorus là gì?",
+  "home_qa_what_a": "Ochorus là một thư viện trực tuyến miễn phí gồm sách, bài giảng và tiểu sử Cơ Đốc kinh điển của những tác giả như Andrew Murray, Charles H. Spurgeon và E. M. Bounds, được trình bày để dễ đọc trên điện thoại hoặc máy tính. Đây là một mục vụ thành lập năm 2021, đặt tại Victoria (Canada) và Kampala (Uganda).",
+  "home_qa_free_q": "Ochorus có thật sự miễn phí không?",
+  "home_qa_free_a": "Có. Mọi cuốn sách, bài giảng và tiểu sử đều được đọc miễn phí, và bạn không cần tài khoản. Đăng nhập là tùy chọn: nó giữ chỗ bạn đang đọc, dấu trang và ghi chú trên mọi thiết bị của bạn.",
+  "home_qa_lang_q": "Tôi có thể đọc bằng những ngôn ngữ nào?",
+  "home_qa_lang_a": "%languages%. Mỗi cuốn sách có mặt bằng những ngôn ngữ mà nó đã được xuất bản, và các bản dịch mới liên tục được bổ sung.",
+  "home_qa_pd_q": "Những cuốn sách này có thuộc phạm vi công cộng không?",
+  "home_qa_pd_a": "Có. Các văn bản kinh điển thuộc phạm vi công cộng, nên bạn có thể tự do đọc và chia sẻ. Ochorus cũng xuất bản những cuốn sách mới của riêng mình, Ochorus Originals.",
+  "home_qa_start_q": "Tôi nên bắt đầu từ đâu?",
+  "home_qa_start_a": "Hãy chọn một chủ đề bạn cần hôm nay, như sự cầu nguyện, hoặc bắt đầu với một tác phẩm kinh điển ngắn như Sự khiêm nhường của Andrew Murray, đọc chưa tới hai giờ."
 }

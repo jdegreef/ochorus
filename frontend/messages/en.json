@@ -454,7 +454,7 @@
   "about_title": "About Ochorus",
   "about_meta_description": "Ochorus is a ministry based in Victoria BC, Canada and Kampala, Uganda, publishing classic Christian books free to read online and placing printed books into hands across East Africa.",
   "about_heading": "Spreading the Gospel Through Literature",
-  "about_p1": "Based in Victoria BC, Canada and Kampala, Uganda, Ochorus is a dedicated ministry with a profound mission: providing exceptional classic Christian literature and resources at no cost, to readers everywhere.",
+  "about_p1": "Ochorus is a free online library of classic Christian books, sermons and biographies, in many languages. Based in Victoria BC, Canada and Kampala, Uganda, we are a ministry with one mission: to put the great Christian classics in the hands of readers everywhere, at no cost.",
   "about_p2": "Established in 2021, Ochorus is fueled by an unwavering commitment to spreading the gospel to every corner of the world, ensuring accessibility across many languages and devices.",
   "about_p3": "Recognizing the transformative power of literature, we identify great Christian books within the public domain, thoroughly edit them for enhanced readability, and publish them on this platform — free to read and free to keep.",
   "about_p4": "Aligned with God's desire for the salvation of all people, it is our fervent aspiration to contribute to this divine purpose, that many would read, reflect, and be transformed.",
@@ -1818,5 +1818,16 @@
   "footer_cta_author_text": "Save books and sermons with one tap, on every device.",
   "footer_cta_plan_text": "Tick off each day on any device, with a daily email if you want one.",
   "footer_cta_season_starts": "Begins %date%",
-  "footer_cta_season_text": "A door a day until Christmas. A free account keeps your streak and your place on every device."
+  "footer_cta_season_text": "A door a day until Christmas. A free account keeps your streak and your place on every device.",
+  "home_qa_title": "Questions about Ochorus",
+  "home_qa_what_q": "What is Ochorus?",
+  "home_qa_what_a": "Ochorus is a free online library of classic Christian books, sermons and biographies by writers such as Andrew Murray, Charles H. Spurgeon and E. M. Bounds, set for easy reading on your phone or computer. It is a ministry founded in 2021 and based in Victoria, Canada and Kampala, Uganda.",
+  "home_qa_free_q": "Is Ochorus really free?",
+  "home_qa_free_a": "Yes. Every book, sermon and biography is free to read, and you do not need an account. Signing in is optional: it keeps your place, bookmarks and notes across your devices.",
+  "home_qa_lang_q": "What languages can I read in?",
+  "home_qa_lang_a": "%languages%. Each book appears in the languages it has been published in, and more translations are added all the time.",
+  "home_qa_pd_q": "Are these books in the public domain?",
+  "home_qa_pd_a": "Yes. The classic texts are in the public domain, so you can read and share them freely. Ochorus also publishes new books of its own, the Ochorus Originals.",
+  "home_qa_start_q": "Where should I start?",
+  "home_qa_start_a": "Pick a topic you need today, such as prayer, or begin with a short classic like Humility by Andrew Murray, which takes under two hours to read."
 }
