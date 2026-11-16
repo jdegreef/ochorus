@@ -13,15 +13,23 @@
 	import { withSignup } from '$lib/loginHref';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import { toBookTile, type CoverFace } from '$lib/library-public';
+
+	/** The home page's own books (its discover row), for the `covers` arm's
+	 *  fan — already in the prerendered page data, so it costs no request and
+	 *  is always this language's editions. */
+	let { books = [] }: { books?: CoverFace[] } = $props();
+	const fanTiles = $derived(books.slice(0, 3).map(toBookTile));
 
 	/**
 	 * The logged-out home's sign-up band — the site's one conversion prompt and
 	 * the only place an email is captured (there is no separate newsletter).
 	 *
-	 * It runs FOUR bands at once, on purpose (see the PR's design note):
+	 * It runs FIVE bands at once, on purpose (see the PR's design note):
 	 *  - a reader who already has local reading is TARGETED with the
 	 *    progress-aware band ("don't lose what you've read");
-	 *  - a first-time visitor is dropped into one of three A/B arms, uniformly and
+	 *  - a first-time visitor is dropped into one of four A/B arms, uniformly and
 	 *    stickily, so the arms stay comparable without an exposure denominator.
 	 * Which arm was shown is remembered and attached to the sign-up (see
 	 * `signupBand.ts` + `auth.signUp`), so the admin Users page can report which
@@ -140,6 +148,40 @@
 						<p class="max-w-xl text-body text-muted">{t('home.signupHabitText')}</p>
 					</div>
 					{@render cta('home.signupHabitCta', 'home.signupMicroFree')}
+				</div>
+			{:else if variant === 'covers'}
+				<!-- Option 5 · the real books, a solid ask (design ideas #2, 2026-11-16):
+				     the library arm's promise with the shelf drawn from actual covers,
+				     a benefit headline, and the band's one solid, large button. -->
+				<div
+					class="grid gap-6 sm:items-center {fanTiles.length
+						? 'sm:grid-cols-[9rem_1fr_auto]'
+						: 'sm:grid-cols-[1fr_auto]'}"
+				>
+					{#if fanTiles.length}
+						<div class="mx-auto w-36 sm:w-full">
+							<CoverStrip covers={fanTiles} size="fan" />
+						</div>
+					{/if}
+					<div>
+						<p class="eyebrow mb-2 text-gold">{t('home.signupMicroFree')}</p>
+						<h2 class="text-h2 mb-2 text-balance">{t('home.signupCoversTitle')}</h2>
+						<p class="max-w-xl text-body text-muted">{t('home.signupCoversText')}</p>
+					</div>
+					<div class="flex flex-col items-stretch gap-2 text-center">
+						<a
+							class="btn btn-primary btn-solid btn-lg"
+							href={signupHref}
+							use:seenOnView={variant}
+							onclick={(e) => openFrom(e, variant)}
+						>
+							{t('home.signupCoversCta')}
+							<Icon name="chevron-right" size={18} />
+						</a>
+						<span class="text-small text-muted">
+							{t(auth.googleEnabled ? 'home.signupMicroWays' : 'home.signupMicroSeconds')}
+						</span>
+					</div>
 				</div>
 			{:else if variant === 'library'}
 				<!-- Option 4 · the whole library, kept -->

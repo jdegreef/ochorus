@@ -5,15 +5,15 @@ beforeEach(() => localStorage.clear());
 
 describe('firstVisitArm — sticky uniform A/B assignment', () => {
 	it('assigns the arm the draw selects and persists it', () => {
-		// pick() = 0.5 → floor(0.5*3) = index 1 → "habit".
-		expect(firstVisitArm(() => 0.5)).toBe('habit');
+		// pick() = 0.3 → floor(0.3*4) = index 1 → "habit".
+		expect(firstVisitArm(() => 0.3)).toBe('habit');
 		// Sticky: a later call ignores a different draw and returns the stored arm.
 		expect(firstVisitArm(() => 0.99)).toBe('habit');
 	});
 
 	it('covers every arm across the draw range, and never falls off the end', () => {
 		const seen = new Set<string>();
-		for (const p of [0, 0.34, 0.67, 0.999]) {
+		for (const p of [0, 0.26, 0.51, 0.76, 0.999]) {
 			localStorage.clear();
 			seen.add(firstVisitArm(() => p));
 		}
@@ -34,7 +34,7 @@ describe('chooseVariant — targeting beats A/B', () => {
 	});
 
 	it('shows a sticky random arm to a first-time visitor', () => {
-		expect(chooseVariant(false, () => 0.8)).toBe('library');
+		expect(chooseVariant(false, () => 0.6)).toBe('library');
 	});
 
 	it('does not let a stored A/B arm override live progress targeting', () => {

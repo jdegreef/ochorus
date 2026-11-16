@@ -702,6 +702,7 @@ SIGNUP_VARIANT_LABELS = {
     "keep": "Keep what you find",
     "habit": "Reading rhythm",
     "library": "Build your shelf",
+    "covers": "Shelf of covers",
     "progress": "Progress-targeted",
     "bookshelf": "Bookshelf page",
     "notebook": "Notebook page",
