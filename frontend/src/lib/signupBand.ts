@@ -11,10 +11,14 @@ import { readJSON, writeJSON } from './persisted';
  *    obvious reason to sign up (don't lose what you've read). It is not an A/B
  *    arm and is never compared head-to-head with the random ones.
  *  - A/B. Everyone else (a first-time visitor, no local progress) is assigned
- *    ONE of the three random arms, uniformly and STICKILY — the same visitor
+ *    ONE of the four random arms, uniformly and STICKILY — the same visitor
  *    keeps their arm across visits, so returning doesn't reshuffle the band or
  *    pollute the counts. The even split is what makes raw signup counts fair to
  *    compare without an exposure denominator.
+ *
+ *    An arm ADDED later (`covers`, 2026-11-16) only ever draws visitors who
+ *    have no sticky arm yet, so until the older arms' stored visitors age out
+ *    its totals start behind: compare sign-ups since its launch, not all-time.
  *
  * The band's button carries the arm it shows as its sign-up source
  * (`$lib/signupSource`), so the arm the reader clicked is the one Django
@@ -25,15 +29,15 @@ import { readJSON, writeJSON } from './persisted';
  * degrade to a safe default, so attribution is best-effort by design.
  */
 
-/** The four bands, and the single source of the variant type. Kept in step with
+/** The five bands, and the single source of the variant type. Kept in step with
  *  backend `accounts.models.SIGNUP_VARIANTS`. */
-export const SIGNUP_VARIANTS = ['keep', 'habit', 'library', 'progress'] as const satisfies string[];
+export const SIGNUP_VARIANTS = ['keep', 'habit', 'library', 'covers', 'progress'] as const satisfies string[];
 export type SignupVariant = (typeof SIGNUP_VARIANTS)[number];
 
 /** The random A/B arms shown to a first-time visitor (no local progress) — a
  *  subset of {@link SIGNUP_VARIANTS}, so dropping a variant there fails to
  *  compile here rather than drifting. */
-export const FIRST_VISIT_ARMS = ['keep', 'habit', 'library'] as const satisfies readonly SignupVariant[];
+export const FIRST_VISIT_ARMS = ['keep', 'habit', 'library', 'covers'] as const satisfies readonly SignupVariant[];
 type FirstVisitArm = (typeof FIRST_VISIT_ARMS)[number];
 
 /** Sticky first-visit assignment: the same visitor keeps their arm across visits. */

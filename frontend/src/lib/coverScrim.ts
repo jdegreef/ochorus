@@ -58,7 +58,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'commentary-on-romans': 0.55,
 	'communion-with-god': 0.75,
 	'confessions-teens': 0.75,
-	'coram-deo': 0.55,
+	'coram-deo': 0.45,
 	'corrie-ten-boom-a-life': 0.75,
 	'corrie-ten-boom-a-life-children': 0.80,
 	'corrie-ten-boom-a-life-teens': 0.75,

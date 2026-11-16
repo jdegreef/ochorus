@@ -1314,12 +1314,6 @@ CURATED: dict[str, Artwork] = {
         # weakest pair that clears every `DARK_INK_BOXES_BY_SLUG` bar by 8%.
         glow=((0.5, 0.42, 1.05, 0.44, 0.70), (0.5, 1.0, 1.2, 0.26, 0.5)),
     ),
-    "coram-deo": Artwork(
-        "cma", 169614, "Sanford Robinson Gifford", "Haverstraw Bay", "1868",
-        "Morning haze over still water and one man alone in a small boat, the "
-        "whole sky lit and nothing between him and it: a life lived every day "
-        "before the face of God, which is the book's whole idea.",
-    ),
     # ── Batch 30 · eight imports of 2026-10-31 / 11-01 ──────────────────────
     "epistle-and-martyrdom-of-polycarp": Artwork(
         "cma", 122351, "Joseph Mallord William Turner", "The Burning of the Houses of Lords and Commons, 16 October 1834", "1835",
@@ -1667,6 +1661,16 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # Coram Deo (Ochorus Original): a doorway of light standing alone under a
+    # night sky, one figure on the path toward it. Chosen by the founder
+    # 2026-11-16 from twenty open-door variations, replacing Gifford's Haverstraw
+    # Bay. Generator: scripts/original_grounds/coram_deo.py.
+    "coram-deo": Original(
+        "1f0b79bdf743843ba26e98800d0960866071f9de12d0ae869ebb6a7b329da6f8",
+        "Revelation 3:20 and the book's title, 'before the face of God': a lit "
+        "doorway standing on its own under a starry night, not set in any building, "
+        "and a small figure on the path that bends toward it. No likeness.",
+    ),
     # A Cloud of Praying Witnesses, Vol. 2: Jesus, Teacher of Prayer (Ochorus
     # Original). The series has no museum painting yet: the session that
     # shipped this volume could reach no collection host (the museum APIs,

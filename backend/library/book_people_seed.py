@@ -107,6 +107,26 @@ BOOK_PEOPLE: list[tuple[str, list[Member]]] = [
             ("sadhu-sundar-singh", "subject", 7),
         ],
     ),
+    (
+        "they-were-young-3",
+        [
+            ("augustine-of-hippo", "subject", 2),
+            ("blaise-pascal", "subject", 3),
+            ("isaac-watts", "subject", 4),
+            ("jonathan-edwards", "subject", 5),
+            ("c-s-lewis", "subject", 6),
+            ("dietrich-bonhoeffer", "subject", 7),
+        ],
+    ),
+    (
+        "they-were-young-4",
+        [
+            ("david-brainerd", "subject", 2),
+            ("william-carey", "subject", 3),
+            ("amy-carmichael", "subject", 5),
+            ("jim-elliot", "subject", 7),
+        ],
+    ),
     # Pierson's authorised memoir of Müller — like A Hidden Fire, a single
     # biography, so its subject is its lone member.
     ("george-muller-of-bristol", [("george-muller", "subject")]),

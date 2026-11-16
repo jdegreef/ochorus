@@ -12,7 +12,7 @@ def split_providers(value: str) -> list[str]:
 
 
 #: Every sign-up source (``UserProfile.signup_variant``): the logged-out home
-#: band's arms — three random A/B arms shown to first-time visitors, plus
+#: band's arms — four random A/B arms shown to first-time visitors, plus
 #: ``progress``, the progress-targeted variant shown only to readers who already
 #: have local reading — and every other prompt that asks for an account. Kept
 #: here so the JWT capture (``accounts.authentication``) and the
@@ -23,6 +23,7 @@ SIGNUP_VARIANTS = (
     "keep",
     "habit",
     "library",
+    "covers",
     "progress",
     # Every other prompt that asks for an account (frontend $lib/signupSource,
     # PROMPT_SOURCES — signupSource.test.ts fails if the two drift).
