@@ -315,6 +315,31 @@ def _available_languages(model, slug: str) -> list[str]:
     return sorted(_published_languages(model, slug=slug))
 
 
+#: The editions whose chapters are offered to search besides English.
+_INDEXED_SOURCES = (Book.SourceType.AI_REVIEWED, Book.SourceType.PUBLIC_DOMAIN)
+
+
+def _book_languages(slug: str) -> tuple[list[str], list[str]]:
+    """(available, indexed) locales of book ``slug``, in ONE query.
+
+    ``available`` is ``_available_languages(Book, slug)``. ``indexed`` is the
+    subset whose CHAPTER pages are offered to search engines: English, plus any
+    edition a person stood behind — reviewed (``ai_reviewed``, set only by
+    ``approve_translation``) or written in its language (``public_domain``).
+    The chapter page's hreflang follows it, as the sitemap's chapter rule does
+    (frontend ``advertisesChapters``). Admin-only state, never shown to readers.
+    """
+    rows = set(
+        Book.objects.filter(is_published=True, slug=slug)
+        .exclude(language=MODERN_LANGUAGE)
+        .order_by()
+        .values_list("language", "source_type")
+    )
+    available = sorted({lang for lang, _ in rows})
+    indexed = sorted({lang for lang, src in rows if lang == "en" or src in _INDEXED_SOURCES})
+    return available, indexed
+
+
 def _topic_membership_map(
     language: str, *, entries_attr: str, slug_attr: str
 ) -> dict[str, list[dict]]:
@@ -2255,6 +2280,13 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
+    # The subset of `available_languages` whose chapters are offered to search
+    # (English + reviewed or native editions) — the chapter page's hreflang.
+    indexed_languages = serializers.SerializerMethodField()
+
+    def get_indexed_languages(self, obj):
+        return self._batch(obj).indexed_languages
+
     def get_book_audience(self, obj) -> str:
         return self._batch(obj).book_audience
 
@@ -2294,6 +2326,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
+            "indexed_languages",
             "source_type", "public_domain", "book_audience",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
@@ -2363,7 +2396,8 @@ class ChapterBatch:
         from .scripture import cited_references, reference_candidates
         from .scripture_graph import page_url, pages_for
 
-        self.available_languages = _available_languages(Book, book.slug)
+        # Both from one query: the batch's query count is pinned by a test.
+        self.available_languages, self.indexed_languages = _book_languages(book.slug)
         self.book_audience = getattr(book.series, "audience", "")
         if book.language == MODERN_LANGUAGE:
             self.has_modern_edition = True
