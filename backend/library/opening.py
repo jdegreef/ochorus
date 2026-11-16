@@ -178,7 +178,13 @@ def opening_excerpt(chapters) -> tuple[str, str]:
     the book or something plucked from the middle, and saying which chapter it
     came from costs a line and removes the doubt.
     """
-    for _order, title, body_html in _non_apparatus(chapters):
+    text, title, _order = _opening(chapters)
+    return text, title
+
+
+def _opening(chapters) -> tuple[str, str, int | None]:
+    """``opening_excerpt`` plus the order of the chapter it came from."""
+    for order, title, body_html in _non_apparatus(chapters):
         collected: list[str] = []
         words = 0
         for para in _paragraphs(body_html):
@@ -190,5 +196,23 @@ def opening_excerpt(chapters) -> tuple[str, str]:
                 break
         text = " ".join(collected)
         if _reads_as_prose(text):
-            return _clip(text), (title or "").strip()
-    return "", ""
+            return _clip(text), (title or "").strip(), order
+    return "", "", None
+
+
+def book_opening(chapters, meta) -> dict | None:
+    """``{text, chapter, order}`` for one book, or None — shared by the book
+    page and the series page.
+
+    ``chapters`` is the book's chapter manager; ``meta`` its ``[(order,
+    title)]`` in reading order, which the caller may already hold from a
+    prefetch. Bodies are read for the few candidate chapters ALONE, never the
+    whole book: dragging every chapter's HTML out of Postgres to render one
+    paragraph was the shape of the 2026-08-14 OOM.
+    """
+    wanted = opening_candidate_orders(meta)
+    if not wanted:
+        return None
+    rows = chapters.filter(order__in=wanted).order_by("order").values_list("order", "title", "body_html")
+    text, chapter, order = _opening(list(rows))
+    return {"text": text, "chapter": chapter, "order": order} if text else None
