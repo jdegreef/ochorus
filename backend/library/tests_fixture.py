@@ -57,6 +57,7 @@ from library.content_fixtures import (
 from library.covers import (
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
+    WASH_WIDTH,
     OG_MANIFEST,
     RASTER_SUFFIXES,
     H,
@@ -1696,7 +1697,7 @@ class CoverAssetTests(SimpleTestCase):
             cover = _cover(f)
             if not cover.endswith(RASTER_SUFFIXES):
                 continue
-            for width in COVER_WIDTHS:
+            for width in (*COVER_WIDTHS, WASH_WIDTH):
                 variant = variant_url(cover, width)
                 if not (STATIC_DIR / variant.lstrip("/")).is_file():
                     missing.append(variant)

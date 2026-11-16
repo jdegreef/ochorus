@@ -50,6 +50,7 @@ sys.path.insert(0, str(BACKEND))
 from library.content_fixtures import book_editions, persist_field  # noqa: E402
 from library.covers import (  # noqa: E402
     COVER_WIDTHS,
+    WASH_WIDTH,
     RASTER_SUFFIXES,
     art_url,
     shares_a_ground,
@@ -78,7 +79,7 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
     # it stands in for. webp carries alpha.
     im = Image.open(source)
     im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
-    for width in COVER_WIDTHS:
+    for width in (*COVER_WIDTHS, WASH_WIDTH):
         # NEVER upscale. Every committed cover is 600px wide or less, so a
         # literal 640 would invent pixels — measured at 18% more bytes and a
         # third more encode time for no detail. The FILENAME keeps the nominal
