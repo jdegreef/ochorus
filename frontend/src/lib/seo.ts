@@ -1,6 +1,6 @@
-import { SITE_URL } from "./config";
-import { localizeHref, withTrailingSlash } from "$lib/href";
-import { ADVERTISED_LOCALES } from "$lib/advertised-locales";
+import { SITE_URL } from './config';
+import { localizeHref, withTrailingSlash } from '$lib/href';
+import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
 
 /**
  * The publisher's node in every page's structured data. One `@id` for the one
@@ -15,16 +15,16 @@ export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const publisherLd = () => ({
-  "@type": "Organization",
-  "@id": ORG_ID,
-  name: "Ochorus",
-  url: `${SITE_URL}/`,
-  logo: {
-    "@type": "ImageObject",
-    url: `${SITE_URL}/icons/icon-512.png`,
-    width: 512,
-    height: 512,
-  },
+	'@type': 'Organization',
+	'@id': ORG_ID,
+	name: 'Ochorus',
+	url: `${SITE_URL}/`,
+	logo: {
+		'@type': 'ImageObject',
+		url: `${SITE_URL}/icons/icon-512.png`,
+		width: 512,
+		height: 512
+	}
 });
 
 /**
@@ -43,36 +43,31 @@ export const ORG_SAME_AS: string[] = [];
  * `publisherLd()`, which stays light because it rides on every page.
  */
 export const organizationLd = (description: string, contactEmail: string) => ({
-  ...publisherLd(),
-  description,
-  foundingDate: "2021",
-  address: [
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Victoria",
-      addressRegion: "BC",
-      addressCountry: "CA",
-    },
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Kampala",
-      addressCountry: "UG",
-    },
-  ],
-  areaServed: "Worldwide",
-  knowsLanguage: [...ADVERTISED_LOCALES],
-  email: contactEmail,
-  ...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {}),
+	...publisherLd(),
+	description,
+	foundingDate: '2021',
+	address: [
+		{
+			'@type': 'PostalAddress',
+			addressLocality: 'Victoria',
+			addressRegion: 'BC',
+			addressCountry: 'CA'
+		},
+		{ '@type': 'PostalAddress', addressLocality: 'Kampala', addressCountry: 'UG' }
+	],
+	areaServed: 'Worldwide',
+	knowsLanguage: [...ADVERTISED_LOCALES],
+	email: contactEmail,
+	...(ORG_SAME_AS.length ? { sameAs: ORG_SAME_AS } : {})
 });
 
 /** The Public Domain Mark — a public-domain work's `license` in JSON-LD. The
  *  API decides which editions may claim it (`public_domain`; library/rights). */
-export const PUBLIC_DOMAIN_MARK =
-  "https://creativecommons.org/publicdomain/mark/1.0/";
+export const PUBLIC_DOMAIN_MARK = 'https://creativecommons.org/publicdomain/mark/1.0/';
 
 /** CC0 1.0 — the Open Word Bible's dedication to the public domain, as a
  *  Bible chapter's `license` (a new translation is dedicated, not expired). */
-export const CC0 = "https://creativecommons.org/publicdomain/zero/1.0/";
+export const CC0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
 
 /** The `@id` of the Person (or imprint) an author page is about, from that
  *  page's absolute URL — so a book naming its author links to the same node. */
@@ -87,27 +82,27 @@ export const bookId = (bookUrl: string) => `${bookUrl}#book`;
  * the text is regional.
  */
 export const OG_LOCALES: Record<string, string> = {
-  en: "en_US",
-  es: "es_ES",
-  sw: "sw_KE",
-  lg: "lg_UG",
-  pt: "pt_PT",
-  ar: "ar_AR",
-  hi: "hi_IN",
-  uk: "uk_UA",
-  fr: "fr_FR",
-  am: "am_ET",
-  vi: "vi_VN",
-  ko: "ko_KR",
-  ja: "ja_JP",
-  ru: "ru_RU",
+	en: 'en_US',
+	es: 'es_ES',
+	sw: 'sw_KE',
+	lg: 'lg_UG',
+	pt: 'pt_PT',
+	ar: 'ar_AR',
+	hi: 'hi_IN',
+	uk: 'uk_UA',
+	fr: 'fr_FR',
+	am: 'am_ET',
+	vi: 'vi_VN',
+	ko: 'ko_KR',
+	ja: 'ja_JP',
+	ru: 'ru_RU'
 };
 
 export interface Hreflang {
-  /** One alternate per locale the work actually exists in. */
-  alternates: { loc: string; href: string }[];
-  /** The x-default target: English when present, else the first available. */
-  xDefault: string;
+	/** One alternate per locale the work actually exists in. */
+	alternates: { loc: string; href: string }[];
+	/** The x-default target: English when present, else the first available. */
+	xDefault: string;
 }
 
 /**
@@ -129,22 +124,19 @@ export interface Hreflang {
  * name fallback.)
  */
 export function hreflangFor(path: string, available: string[]): Hreflang {
-  const has = new Set(available);
-  // Intersected with ADVERTISED_LOCALES on both paths: a locale that is wired
-  // in the UI but has nothing to read must never be offered as an alternate,
-  // and the empty-`available` fallback below used to advertise EVERY locale —
-  // exactly the case where we know least about what exists.
-  const langs = ADVERTISED_LOCALES.filter((l) => has.has(l));
-  const emit = langs.length ? langs : [...ADVERTISED_LOCALES];
-  const alternates = emit.map((loc) => ({
-    loc,
-    href: `${SITE_URL}${localizeHref(path, { locale: loc })}`,
-  }));
-  const def = emit.includes("en") ? "en" : emit[0];
-  return {
-    alternates,
-    xDefault: `${SITE_URL}${localizeHref(path, { locale: def })}`,
-  };
+	const has = new Set(available);
+	// Intersected with ADVERTISED_LOCALES on both paths: a locale that is wired
+	// in the UI but has nothing to read must never be offered as an alternate,
+	// and the empty-`available` fallback below used to advertise EVERY locale —
+	// exactly the case where we know least about what exists.
+	const langs = ADVERTISED_LOCALES.filter((l) => has.has(l));
+	const emit = langs.length ? langs : [...ADVERTISED_LOCALES];
+	const alternates = emit.map((loc) => ({
+		loc,
+		href: `${SITE_URL}${localizeHref(path, { locale: loc })}`
+	}));
+	const def = emit.includes('en') ? 'en' : emit[0];
+	return { alternates, xDefault: `${SITE_URL}${localizeHref(path, { locale: def })}` };
 }
 
 /**
@@ -154,13 +146,8 @@ export function hreflangFor(path: string, available: string[]): Hreflang {
  * outside it is noindexed (an author page), so that falling back to every
  * locale would name nothing but noindexed pages.
  */
-export function hreflangExact(
-  path: string,
-  available: string[],
-): Hreflang | null {
-  return ADVERTISED_LOCALES.some((l) => available.includes(l))
-    ? hreflangFor(path, available)
-    : null;
+export function hreflangExact(path: string, available: string[]): Hreflang | null {
+	return ADVERTISED_LOCALES.some((l) => available.includes(l)) ? hreflangFor(path, available) : null;
 }
 
 /**
@@ -174,19 +161,19 @@ export function hreflangExact(
  * gate — one on every page of the site.
  */
 export function hreflangAll(path: string): Hreflang {
-  return hreflangFor(path, [...ADVERTISED_LOCALES]);
+	return hreflangFor(path, [...ADVERTISED_LOCALES]);
 }
 
 /** Make a path absolute against the site origin (pass-through for full URLs). */
 export function absUrl(path: string): string {
-  if (!path) return SITE_URL;
-  if (/^https?:\/\//.test(path)) return path;
-  // Normalize here rather than at each call site: breadcrumb items are built
-  // from raw paths (`/books/${slug}`) that never pass through localizeHref, so
-  // the BreadcrumbList was advertising the non-slash form — the empty shell —
-  // as the canonical position of every detail page. Asset paths carry a file
-  // extension and are left untouched (see withTrailingSlash).
-  return SITE_URL + withTrailingSlash(path.startsWith("/") ? path : `/${path}`);
+	if (!path) return SITE_URL;
+	if (/^https?:\/\//.test(path)) return path;
+	// Normalize here rather than at each call site: breadcrumb items are built
+	// from raw paths (`/books/${slug}`) that never pass through localizeHref, so
+	// the BreadcrumbList was advertising the non-slash form — the empty shell —
+	// as the canonical position of every detail page. Asset paths carry a file
+	// extension and are left untouched (see withTrailingSlash).
+	return SITE_URL + withTrailingSlash(path.startsWith('/') ? path : `/${path}`);
 }
 
 /**
@@ -195,8 +182,8 @@ export function absUrl(path: string): string {
  * break out of the script tag.
  */
 export function jsonLd(data: unknown): string {
-  const json = JSON.stringify(data).replace(/</g, "\\u003c");
-  return `<script type="application/ld+json">${json}</script>`;
+	const json = JSON.stringify(data).replace(/</g, '\\u003c');
+	return `<script type="application/ld+json">${json}</script>`;
 }
 
 /**
@@ -207,7 +194,7 @@ export function jsonLd(data: unknown): string {
  * the same one-liner recurs across the reader/article/import surfaces.
  */
 export function stripHtml(html: string): string {
-  return (html ?? "").replace(/<[^>]+>/g, " ");
+	return (html ?? '').replace(/<[^>]+>/g, ' ');
 }
 
 /**
@@ -222,19 +209,19 @@ export function stripHtml(html: string): string {
  * safe to wrap a short fallback string in it too.
  */
 export function truncateMeta(text: string, max = 160): string {
-  const clean = (text ?? "").replace(/\s+/g, " ").trim();
-  if (clean.length <= max) return clean;
-  const slice = clean.slice(0, max);
-  const sentence = Math.max(
-    slice.lastIndexOf(". "),
-    slice.lastIndexOf("! "),
-    slice.lastIndexOf("? "),
-  );
-  // Only honour a sentence end in the back half; an early one would throw away
-  // most of the budget.
-  if (sentence >= max * 0.6) return slice.slice(0, sentence + 1).trim();
-  const word = slice.lastIndexOf(" ");
-  return (word > 0 ? slice.slice(0, word) : slice).trim() + "…";
+	const clean = (text ?? '').replace(/\s+/g, ' ').trim();
+	if (clean.length <= max) return clean;
+	const slice = clean.slice(0, max);
+	const sentence = Math.max(
+		slice.lastIndexOf('. '),
+		slice.lastIndexOf('! '),
+		slice.lastIndexOf('? ')
+	);
+	// Only honour a sentence end in the back half; an early one would throw away
+	// most of the budget.
+	if (sentence >= max * 0.6) return slice.slice(0, sentence + 1).trim();
+	const word = slice.lastIndexOf(' ');
+	return (word > 0 ? slice.slice(0, word) : slice).trim() + '…';
 }
 
 /** Where a search result's title stops being shown (~600px of Arial). */
@@ -256,8 +243,8 @@ const BRAND_SUFFIX = /\s+[—|-]\s+Ochorus$/;
  * the display.
  */
 export function fitTitle(title: string, max = TITLE_BUDGET): string {
-  const clean = (title ?? "").replace(/\s+/g, " ").trim();
-  return clean.length > max ? clean.replace(BRAND_SUFFIX, "") : clean;
+	const clean = (title ?? '').replace(/\s+/g, ' ').trim();
+	return clean.length > max ? clean.replace(BRAND_SUFFIX, '') : clean;
 }
 
 /**
@@ -266,20 +253,16 @@ export function fitTitle(title: string, max = TITLE_BUDGET): string {
  * title that names what is on the page ("Today in the devotionals: Charles H.
  * Spurgeon, F. B. Meyer") without running past what a result shows.
  */
-export function fitList(
-  head: string,
-  names: string[],
-  max = TITLE_BUDGET,
-): string {
-  let out = head;
-  let sep = ": ";
-  for (const n of new Set(names.filter(Boolean))) {
-    const next = `${out}${sep}${n}`;
-    if (next.length > max) break;
-    out = next;
-    sep = ", ";
-  }
-  return out;
+export function fitList(head: string, names: string[], max = TITLE_BUDGET): string {
+	let out = head;
+	let sep = ': ';
+	for (const n of new Set(names.filter(Boolean))) {
+		const next = `${out}${sep}${n}`;
+		if (next.length > max) break;
+		out = next;
+		sep = ', ';
+	}
+	return out;
 }
 
 /**
@@ -289,17 +272,17 @@ export function fitList(
  * is authored once. `name` is omitted when embedded (the CollectionPage names it).
  */
 function itemListObject(items: { name: string; url: string }[], name?: string) {
-  return {
-    "@type": "ItemList",
-    ...(name ? { name } : {}),
-    numberOfItems: items.length,
-    itemListElement: items.map((it, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: it.name,
-      url: absUrl(it.url),
-    })),
-  };
+	return {
+		'@type': 'ItemList',
+		...(name ? { name } : {}),
+		numberOfItems: items.length,
+		itemListElement: items.map((it, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			name: it.name,
+			url: absUrl(it.url)
+		}))
+	};
 }
 
 /**
@@ -308,14 +291,8 @@ function itemListObject(items: { name: string; url: string }[], name?: string) {
  * of the works instead of an opaque grid. `items` are {name, url} in display
  * order; urls are made absolute. Mirrors the biographies page's people list.
  */
-export function itemList(
-  name: string,
-  items: { name: string; url: string }[],
-): string {
-  return jsonLd({
-    "@context": "https://schema.org",
-    ...itemListObject(items, name),
-  });
+export function itemList(name: string, items: { name: string; url: string }[]): string {
+	return jsonLd({ '@context': 'https://schema.org', ...itemListObject(items, name) });
 }
 
 /**
@@ -326,21 +303,21 @@ export function itemList(
  * same {name, url} display-order pairs itemList() takes, made absolute.
  */
 export function collectionPage(opts: {
-  name: string;
-  description: string;
-  url: string;
-  items: { name: string; url: string }[];
+	name: string;
+	description: string;
+	url: string;
+	items: { name: string; url: string }[];
 }): string {
-  const { name, description, url, items } = opts;
-  return jsonLd({
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name,
-    description,
-    url: absUrl(url),
-    isAccessibleForFree: true,
-    mainEntity: itemListObject(items),
-  });
+	const { name, description, url, items } = opts;
+	return jsonLd({
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name,
+		description,
+		url: absUrl(url),
+		isAccessibleForFree: true,
+		mainEntity: itemListObject(items)
+	});
 }
 
 /**
@@ -350,27 +327,27 @@ export function collectionPage(opts: {
  * for an empty list — an omitted property rather than an empty array in the markup.
  */
 export function topicThings(topics: { slug: string; title: string }[]) {
-  return topics.length
-    ? topics.map((t) => ({
-        "@type": "Thing",
-        name: t.title,
-        url: absUrl(localizeHref(`/topics/${t.slug}`)),
-      }))
-    : undefined;
+	return topics.length
+		? topics.map((t) => ({
+				'@type': 'Thing',
+				name: t.title,
+				url: absUrl(localizeHref(`/topics/${t.slug}`))
+			}))
+		: undefined;
 }
 
 /** schema.org BreadcrumbList from [name, url] pairs (urls made absolute). */
 export function breadcrumb(items: { name: string; url: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((it, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: it.name,
-      item: absUrl(it.url),
-    })),
-  };
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: items.map((it, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			name: it.name,
+			item: absUrl(it.url)
+		}))
+	};
 }
 
 /**
@@ -380,7 +357,7 @@ export function breadcrumb(items: { name: string; url: string }[]) {
  * schema's `url`) in a single place, so a page can never hand-retype it wrong.
  */
 export function breadcrumbLd(items: { name: string; href: string }[]): string {
-  return jsonLd(breadcrumb(items.map((c) => ({ name: c.name, url: c.href }))));
+	return jsonLd(breadcrumb(items.map((c) => ({ name: c.name, url: c.href }))));
 }
 
 /**
@@ -393,7 +370,7 @@ export function breadcrumbLd(items: { name: string; href: string }[]): string {
  * gate on it, so adding a reviewed locale is one edit, not two that drift. Add a
  * locale here once a native speaker has checked its keys.
  */
-export const REVIEWED_UI_LOCALES = new Set(["en", "es", "pt", "fr"]);
+export const REVIEWED_UI_LOCALES = new Set(['en', 'es', 'pt', 'fr']);
 
 /**
  * A schema.org FAQPage as a ready-to-inject JSON-LD script, built from the same
@@ -405,27 +382,22 @@ export const REVIEWED_UI_LOCALES = new Set(["en", "es", "pt", "fr"]);
  * Answers are plain text — callers strip any HTML before passing them in.
  */
 export function faqPage(items: { q: string; a: string }[]): string {
-  return jsonLd({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((it) => ({
-      "@type": "Question",
-      name: it.q,
-      acceptedAnswer: { "@type": "Answer", text: it.a },
-    })),
-  });
+	return jsonLd({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: items.map((it) => ({
+			'@type': 'Question',
+			name: it.q,
+			acceptedAnswer: { '@type': 'Answer', text: it.a }
+		}))
+	});
 }
 
 /** Stored Q&A (`{question, answer}` — book/topic `qa`, sermon and chapter
  *  `study_questions`) in the `{q, a}` shape `pickQa`, `faqPage()` and `<QandA>`
  *  take. One mapping, rather than one per page. */
-export function toQa(
-  stored: { question: string; answer: string }[] | null | undefined,
-) {
-  return (stored ?? []).map(({ question, answer }) => ({
-    q: question,
-    a: answer,
-  }));
+export function toQa(stored: { question: string; answer: string }[] | null | undefined) {
+	return (stored ?? []).map(({ question, answer }) => ({ q: question, a: answer }));
 }
 
 /**
@@ -438,9 +410,9 @@ export function toQa(
  * `faqPage()` wiring per page (docs/questions-and-answers-plan.md §3.2–3.4).
  */
 export function pickQa(
-  editorial: { q: string; a: string }[],
-  derived: { q: string; a: string }[],
+	editorial: { q: string; a: string }[],
+	derived: { q: string; a: string }[]
 ): { items: { q: string; a: string }[]; ld: string } {
-  const items = editorial.length >= 2 ? editorial : derived;
-  return { items, ld: items.length ? faqPage(items) : "" };
+	const items = editorial.length >= 2 ? editorial : derived;
+	return { items, ld: items.length ? faqPage(items) : '' };
 }
