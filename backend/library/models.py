@@ -1183,6 +1183,15 @@ class Article(models.Model):
     # re-import, exactly like TopicBook.book_slug.
     related = models.JSONField(default=list, blank=True)
 
+    # Answer-first Questions and Answers: a list of {"question", "answer"}
+    # objects, both PLAIN TEXT (rendered escaped, so no sanitize path), each
+    # answer a short 40–60 word reply drawn strictly from the article's own body.
+    # The page shows them under the standfirst-led body as "Questions and
+    # Answers" and emits FAQPage JSON-LD, the same contract as Book.qa. Per
+    # language like every other field: a translation without its own set shows
+    # none. Empty list = nothing shown.
+    qa = models.JSONField(default=list, blank=True)
+
     # Provenance / translation status — shares Book's vocabulary (as Sermon does)
     # so a machine translation carries the same "awaiting native review" trust
     # badge and the approve command can flip it. English originals stay

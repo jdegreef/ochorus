@@ -1404,6 +1404,8 @@ class ArticleDetailSerializer(ArticleListSerializer):
             # The cited passages, and their scripture pages where they exist.
             "scripture_refs",
             "scripture_links",
+            # Answer-first Q&A (plain text): the page's Q&A section + FAQPage.
+            "qa",
         ]
 
 

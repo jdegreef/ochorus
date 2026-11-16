@@ -9,7 +9,8 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitSrcset } from '$lib/portraits';
-	import { absUrl, jsonLd, breadcrumbLd, publisherLd } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, publisherLd, pickQa, toQa } from '$lib/seo';
+	import QandA from '$lib/components/QandA.svelte';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { shareCard, shareImage } from '$lib/coverArt';
@@ -206,6 +207,10 @@
 	});
 
 	const more = $derived(article.more_articles ?? []);
+
+	// Answer-first Q&A (article.qa, plain text): the visible section and the
+	// FAQPage JSON-LD come from the one pickQa result, so they cannot disagree.
+	const qa = $derived(pickQa(toQa(article.qa), []));
 </script>
 
 <Seo
@@ -219,7 +224,7 @@
 	ogImageWidth={share?.width}
 	ogImageHeight={share?.height}
 	ogImageAlt={lead ? `${t('a11y.coverOf')} ${lead.title}` : ''}
-	structuredData={[articleLd, crumbsLd]}
+	structuredData={[articleLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
 <!-- How far through the article you are: the shared scroll hairline the
@@ -352,6 +357,11 @@
 			/>
 
 			{#if plan && planDay}<PlanDayStrip {plan} day={planDay} oncomplete={completeDay} class="my-6" />{/if}
+
+			<!-- Questions and Answers: short answers drawn from the article itself
+			     (plain text, so no {@html}). Outside the Reader on purpose, so the
+			     body's paragraph indexes are unchanged. -->
+			<QandA items={qa.items} title={t('qa.sectionTitle')} headingClass="section-label" openFirst={false} />
 
 			<!-- "Read it in full": the classic the article was written to send you
 			     to, at the moment you have finished reading about it. (It sat
