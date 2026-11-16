@@ -5,6 +5,7 @@
 	import { readerProse } from '$lib/listenText';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
+	import { paragraphUrl } from '$lib/paragraphAnchor';
 	import { onBack, share as shareSheet } from '$lib/platform';
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
@@ -101,9 +102,13 @@
 	 */
 	const DEFINE_SETTLE_MS = 250;
 
+	/** The page's address pointed at the paragraph the selection starts in, so
+	 *  a copied or shared quote lands on its own words (`$lib/paragraphAnchor`). */
+	const quoteUrl = () => paragraphUrl(cite.url, segments[0]?.p);
+
 	function attribution(): string {
 		const where = cite.chapter ? `${cite.book}, ${cite.chapter}` : cite.book;
-		return `“${selectedText}”\n— ${cite.author}, ${where}\n${cite.url}`;
+		return `“${selectedText}”\n— ${cite.author}, ${where}\n${quoteUrl()}`;
 	}
 
 	/**
@@ -218,7 +223,7 @@
 	}
 
 	async function share() {
-		const data = { title: cite.book, text: `“${selectedText}” — ${cite.author}`, url: cite.url };
+		const data = { title: cite.book, text: `“${selectedText}” — ${cite.author}`, url: quoteUrl() };
 		// The OS sheet (the app's native one, or the browser's); a dismissed
 		// sheet does nothing, no sheet at all copies instead.
 		if ((await shareSheet(data)) === 'unavailable') await copy();
