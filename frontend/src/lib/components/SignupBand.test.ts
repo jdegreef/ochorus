@@ -1,6 +1,7 @@
 import { flushSync, mount, unmount } from 'svelte';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { BookSummary } from '$lib/library-public';
+import { FIRST_VISIT_ARMS } from '$lib/signupBand';
 
 /**
  * The progress band names the reader's book, and draws that caption ONCE: from
@@ -89,6 +90,6 @@ describe('SignupBand progress caption', () => {
 		flushSync();
 		// The band's button carries the arm it shows as its sign-up source.
 		const href = target.querySelector('a.btn-primary')?.getAttribute('href') ?? '';
-		expect(href).toMatch(/src=(keep|habit|library)\b/);
+		expect(href).toMatch(new RegExp(`src=(${FIRST_VISIT_ARMS.join('|')})\\b`));
 	});
 });
