@@ -56,7 +56,7 @@ def stars():
 def wind():
     """Long, soft, warm streaks of wind coming in low off the hills, right to left."""
     out = []
-    for i in range(9):
+    for _ in range(9):
         y = rnd.uniform(552, 596)
         x0 = rnd.uniform(140, 420)
         w = rnd.uniform(120, 260)
