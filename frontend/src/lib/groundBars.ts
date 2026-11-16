@@ -45,6 +45,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'communion-with-god': 0.110,
 	'confessions-teens': 0.110,
 	'confessions': 0.015,
+	'coram-deo': 0.050,
 	'corrie-ten-boom-a-life-children': 0.020,
 	'corrie-ten-boom-a-life-teens': 0.110,
 	'david-livingstone-a-life-teens': 0.050,

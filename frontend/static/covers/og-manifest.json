@@ -8657,14 +8657,14 @@
 			]
 		},
 		"coram-deo": {
-			"ground": "8034462cfc6148503e5c2f64c926d4f8bc07ceba1dc1235a64c920666c34154b",
+			"ground": "8b198f1868779a0625dcbc0ae86f2fc7e27c6f5d3b7e38f0538e66bf2045ceea",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
 			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
 			"art": true,
-			"scrim": 0.55,
-			"lift": 1,
+			"scrim": 0.45,
+			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",
 			"bar": 0,
