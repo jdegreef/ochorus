@@ -4,7 +4,7 @@ A teaching book for every Christian, from new believers to those who have
 walked with God for decades, written from James DeGreef's outline: an
 Introduction, twenty-seven chapters in five parts (Foundations, Walking with
 God, Becoming Like Christ, Living as God's People, Living for God's Purposes), a
-Conclusion and an appendix on unity in essentials. Every chapter opens with a
+Conclusion, an appendix on unity in essentials and a glossary. Every chapter opens with a
 key Scripture, teaches from the Bible, tells the story of one man or woman of
 God in depth, and ends with "Questions for reflection" and "A step for this
 week".
@@ -15,7 +15,7 @@ Originals — and is dedicated to the public domain (CC0). The classic writers a
 quoted verbatim from their books in the library.
 
 The prose is committed as Markdown under ``data/coram-deo/`` — one file per
-chapter, ``NN.md`` (00 the Introduction … 29 the appendix), each opening with its
+chapter, ``NN.md`` (00 the Introduction … 29 the appendix, 30 the glossary), each opening with its
 ``## Title``, in the closed Markdown subset of ``build_rooted.parse`` — with
 each chapter's answered questions beside it as ``NN.questions.json``.
 
@@ -45,6 +45,8 @@ SLUG = "coram-deo"
 AUTHOR_SLUG = "james-degreef-and-ochorus"
 CHAPTERS = 27
 APPENDICES = 1
+#: The glossary after the appendix: plain-language help for a newcomer.
+GLOSSARY = 1
 #: How every chapter (and the Conclusion) ends; a chapter missing one is a broken page.
 REQUIRED = ("Questions for reflection", "A step for this week")
 
@@ -96,7 +98,8 @@ BOOK: dict[str, object] = {
         "Kivengere of Uganda, and ends with questions for reflection and one "
         "practical step for the week ahead. Where faithful Christians differ, "
         "the book sets out the main views fairly; an appendix explains how to "
-        "hold firm on the essentials and extend grace on the rest. Scripture is "
+        "hold firm on the essentials and extend grace on the rest, and a glossary "
+        "explains the words a newcomer may not know. Scripture is "
         "quoted from the Open Word Bible (OWB), Balanced edition, which is "
         "dedicated to the public domain.</p>"
     ),
@@ -108,6 +111,7 @@ BOOK: dict[str, object] = {
         {"title": "Part Four: Living as God’s People", "first_chapter": 18},
         {"title": "Part Five: Living for God’s Purposes", "first_chapter": 25},
         {"title": "Appendix", "first_chapter": 30},
+        {"title": "Glossary", "first_chapter": 31},
     ],
     "qa": [
         {
@@ -117,6 +121,10 @@ BOOK: dict[str, object] = {
         {
             "question": "Who is Coram Deo written for?",
             "answer": "For every Christian: new believers taking their first steps, believers who hold the right beliefs but feel far from God or have grown dry, and those who have walked with God for decades and want to finish well. It was written with the fast-growing churches of Africa, Asia and Latin America in mind.",
+        },
+        {
+            "question": "Is Coram Deo suitable for a new Christian?",
+            "answer": "Yes. The Introduction gives a new believer a shorter path through the book, four first steps to take, a guide to finding your way around the Bible and a short map of church history. Discussions of questions on which Christians differ are marked “Going deeper” and can wait for a later reading, and a glossary at the end explains unfamiliar words in plain language.",
         },
         {
             "question": "How is each chapter laid out?",
@@ -142,7 +150,7 @@ def manuscript() -> tuple[str, dict[str, list]]:
     """The chapter files joined in order, and every chapter's questions by order."""
     folder = DATA_DIR / SLUG
     files = sorted(folder.glob("[0-9][0-9].md"))
-    want = [f"{n:02d}.md" for n in range(CHAPTERS + 2 + APPENDICES)]
+    want = [f"{n:02d}.md" for n in range(CHAPTERS + 2 + APPENDICES + GLOSSARY)]
     if [f.name for f in files] != want:
         raise CommandError(f"data/{SLUG}/ must hold exactly {want[0]}…{want[-1]}: {[f.name for f in files]}")
     questions: dict[str, list] = {}
@@ -158,15 +166,19 @@ def manuscript() -> tuple[str, dict[str, list]]:
 
 
 def check_shape(chapters: list[tuple[str, str]]) -> None:
-    """Introduction, twenty-seven chapters, Conclusion, the appendix — each chapter in full shape."""
+    """Introduction, twenty-seven chapters, Conclusion, the appendix, the glossary — each chapter in full shape."""
     titles = [title for title, _ in chapters]
+    back = 2 + CHAPTERS + APPENDICES
     if (
-        len(titles) != CHAPTERS + 2 + APPENDICES
+        len(titles) != back + GLOSSARY
         or not titles[0].startswith("Introduction")
         or not titles[1 + CHAPTERS].startswith("Conclusion")
-        or not all(t.startswith("Appendix") for t in titles[2 + CHAPTERS :])
+        or not all(t.startswith("Appendix") for t in titles[2 + CHAPTERS : back])
+        or not all(t.startswith("Glossary") for t in titles[back:])
     ):
-        raise CommandError(f"manuscript is not Introduction, {CHAPTERS} chapters, Conclusion, {APPENDICES} appendix: {titles}")
+        raise CommandError(
+            f"manuscript is not Introduction, {CHAPTERS} chapters, Conclusion, {APPENDICES} appendix, glossary: {titles}"
+        )
     for title, html in chapters[: 2 + CHAPTERS]:
         missing = [label for label in REQUIRED if f"<h2>{label}</h2>" not in html]
         if missing:
