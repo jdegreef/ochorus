@@ -277,7 +277,7 @@ ART_SCRIM: dict[str, float] = {
     "the-life-of-trust-teens": 0.45,
     "the-masters-indwelling": 0.35,
     "the-method-of-grace": 0.75,
-    "the-midsummer-flame": 0.10,
+    "the-midsummer-flame": 0.30,
     "the-normal-christian-life": 0.40,
     "the-octavius": 0.65,
     "the-person-and-work-of-the-holy-spirit": 0.85,

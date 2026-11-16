@@ -30475,7 +30475,7 @@
 			"sitemark": null
 		},
 		"morning-comes": {
-			"ground": "e930f0df9872628c89df36ef89bfbc04da27bb9982199957ae2c509e8dd73be3",
+			"ground": "0f1e2bc3e1fa9029162bfc69cc48e4e2b109431515cc00acbcb44eae6e8a19a5",
 			"style": "young",
 			"volume": "6",
 			"script": "latin",
@@ -41262,7 +41262,7 @@
 			"script": "latin",
 			"fonts": "67ca80b3d0add450af4848e579b7b1d4d64ad8222bef3305aac6010eed6a4104",
 			"art": true,
-			"scrim": 0.1,
+			"scrim": 0.3,
 			"lift": 1.45,
 			"medallion": null,
 			"layout": "framed",

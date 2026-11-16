@@ -1778,7 +1778,7 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # the summit, a small figure holding the lamp up as the sun breaks the horizon.
     # The last night stays deep blue above; gold only below the subtitle row.
     "morning-comes": Original(
-        "086259eb0fd9d4b4d2400fa2afbeb3fad947667d8784308d08c7218675ca8669",
+        "d1da4d94f2256a2b407703c6eb65d756b2d69a101282b445b65bf87160be60bb",
         "Book 6's own image, the last of the set: the sun golden again over the "
         "Bright Mountain. Drawn as SVG and rendered with headless Chromium; "
         "generator scripts/original_grounds/lamplighters_6.py redraws it.",

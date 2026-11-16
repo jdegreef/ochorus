@@ -80,12 +80,13 @@ def waystones():
     """The road up the face in zigzags, a lit waystone at every turn: a line of gold."""
     px, py = PEAK
     # turns of the road, from the foot (low left) to just under the summit
-    # (the lowest turns swing wide round the Ochorus mark, x232-368 y664-747)
-    turns = [(120, 716), (212, 698), (392, 680), (250, 658), (340, 640), (262, 622),
-             (332, 606), (278, 592), (320, 581), (302, 574)]
-    road = "M" + " L".join(f"{x},{y}" for x, y in turns) + f" L{px - 4},{py + 4}"
-    out = [f'<path d="{road}" stroke="#d8a85e" stroke-width="0.7" fill="none" opacity="0.28" stroke-dasharray="2 3"/>']
-    for i, (x, y) in enumerate(turns):
+    # The lit stones start above the band the Ochorus mark sits in (y664-747);
+    # below it the road runs on unlit, down into the dark the company climbed out of.
+    below = [(120, 716), (212, 698), (392, 680)]
+    turns = [(250, 658), (340, 640), (262, 622), (332, 606), (278, 592), (320, 581), (302, 574)]
+    road = "M" + " L".join(f"{x},{y}" for x, y in below + turns) + f" L{px - 4},{py + 4}"
+    out = [f'<path d="{road}" stroke="#d8a85e" stroke-width="0.7" fill="none" opacity="0.22" stroke-dasharray="2 3"/>']
+    for i, (x, y) in enumerate(turns, start=2):
         s = 1.0 - i * 0.06
         out.append(f'<circle cx="{x}" cy="{y}" r="{9 * s:.1f}" fill="url(#halo)"/>')
         out.append(f'<rect x="{x - 1.6 * s:.1f}" y="{y - 6 * s:.1f}" width="{3.2 * s:.1f}" height="{7 * s:.1f}" fill="{INK}"/>')
