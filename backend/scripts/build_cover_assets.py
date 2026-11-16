@@ -50,8 +50,8 @@ sys.path.insert(0, str(BACKEND))
 from library.content_fixtures import book_editions, persist_field  # noqa: E402
 from library.covers import (  # noqa: E402
     COVER_WIDTHS,
-    WASH_WIDTH,
     RASTER_SUFFIXES,
+    WASH_WIDTH,
     art_url,
     shares_a_ground,
     variant_url,

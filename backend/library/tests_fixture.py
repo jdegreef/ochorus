@@ -57,9 +57,9 @@ from library.content_fixtures import (
 from library.covers import (
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
-    WASH_WIDTH,
     OG_MANIFEST,
     RASTER_SUFFIXES,
+    WASH_WIDTH,
     H,
     W,
     art_url,
