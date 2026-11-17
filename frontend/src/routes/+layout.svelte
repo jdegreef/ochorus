@@ -22,6 +22,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { initAnalytics } from '$lib/analytics';
+	import { reportAiReferral } from '$lib/aiReferral';
 	import { initWebVitals, notePageView } from '$lib/webVitals';
 	import { install } from '$lib/install.svelte';
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
@@ -159,6 +160,9 @@
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+		// A visit an AI assistant sent (ChatGPT, Perplexity…) is counted as its
+		// own channel, once per load — $lib/aiReferral.
+		if (!embedded) reportAiReferral();
 		// Field INP attribution (`Slow tap` events) and, sampled, the first load's
 		// LCP + TTFB (`Page load`); loads after idle, off with analytics — see $lib/webVitals.
 		initWebVitals(getLocale());

@@ -373,6 +373,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'the-black-stair': 'young',
 	'the-glowstone-bargain': 'young',
 	'the-hill-of-cinders': 'young',
+	'the-midsummer-flame': 'young',
+	'morning-comes': 'young',
 	'hurlbuts-life-of-christ': 'young',
 	'rooted-1': 'young',
 	'rooted-2': 'young',

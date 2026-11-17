@@ -124,6 +124,7 @@ DEFAULTED_OK = {
     ("library.series", "verse_text"),
     ("library.series", "verse_ref"),
     ("library.series", "planned_count"),
+    ("library.series", "days_per_book"),
     ("library.series", "hero_image"),
     ("library.series", "hero_tone"),
     ("library.series", "map"),

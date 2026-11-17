@@ -617,12 +617,34 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
 
 
 
+def epub_url(book) -> str:
+    """The API path of an edition's EPUB, or "" where export_policy does not
+    list it — the twin of ``pdf_url``. The book page and the series rows."""
+    if not is_exportable(book):
+        return ""
+    return f"{reverse('book-epub', args=[book.slug])}?language={book.language}"
+
+
 class SeriesBookSerializer(BookListSerializer):
-    """A volume on its series page: the shelf card plus the blurb its row
-    pitches the book with (``Book.description``, in the edition's language)."""
+    """A volume on its series page: the shelf card plus what its row pitches
+    the book with — the blurb (``Book.description``, in the edition's
+    language), its free downloads, and its chapter titles (``toc``, in order),
+    which name the chapter a returning reader is on and a daily series' day.
+
+    ``toc`` reads ``context["book_toc"]`` (book pk → titles), built once for the
+    whole series by the view, so the rows cost no query each."""
+
+    epub_url = serializers.SerializerMethodField()
+    toc = serializers.SerializerMethodField()
 
     class Meta(BookListSerializer.Meta):
-        fields = [*BookListSerializer.Meta.fields, "description"]
+        fields = [*BookListSerializer.Meta.fields, "description", "pdf_url", "epub_url", "toc"]
+
+    def get_epub_url(self, obj) -> str:
+        return epub_url(obj)
+
+    def get_toc(self, obj) -> list[str]:
+        return self.context.get("book_toc", {}).get(obj.pk, [])
 
 
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
@@ -1982,9 +2004,7 @@ class BookDetailSerializer(BookListSerializer):
         return meta_description(obj.slug, obj.language)
 
     def get_epub_url(self, obj) -> str:
-        if not is_exportable(obj):
-            return ""
-        return f"{reverse('book-epub', args=[obj.slug])}?language={obj.language}"
+        return epub_url(obj)
 
     def get_editions(self, obj):
         """Sibling audience editions (full ⇄ teens ⇄ children) as cover cards,

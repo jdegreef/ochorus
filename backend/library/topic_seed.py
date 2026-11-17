@@ -846,6 +846,8 @@ TOPICS = [
             "the-black-stair",
             "the-glowstone-bargain",
             "the-hill-of-cinders",
+            "the-midsummer-flame",
+            "morning-comes",
             "hurlbuts-life-of-christ",
             "rooted-1",
             "rooted-2",

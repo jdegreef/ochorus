@@ -1,7 +1,7 @@
 /**
  * What the Pango-drawn share cards share: the font setup, text blocks, shapes,
- * portraits, the JPEG settings and the run loop. Used by
- * `build-author-cards.mjs` and `build-quote-cards.mjs`.
+ * portraits, a collection's shelf, the JPEG settings and the run loop. Used by
+ * the `build-*-cards.mjs` scripts.
  *
  * WHY PANGO, NOT SATORI
  * Some of these cards are drawn in every interface language, Arabic and
@@ -177,6 +177,113 @@ export const shadowOf = async (w, h, body, blur) =>
 		.blur(blur)
 		.png()
 		.toBuffer();
+
+// ── The shelf ───────────────────────────────────────────────────────────────
+// A collection's card (a reading plan, a book series): its books standing on
+// the ledge the home card uses, and a gold badge with its count.
+
+export const BADGE = { d: 150, top: 70, gold: '#b07d22', ink: '#fff8e8' };
+const LEDGE_Y = 544;
+const SHELF = { max: 6, tall: 250, short: 234, gap: 26 };
+
+/** The gold badge: a number, its label in spaced capitals, and an optional
+ *  line under them (a plan's "~9 min/day"). */
+export async function badge(locale, n, label, sub = '') {
+	// Spaced capitals are a Latin idea: spacing Arabic letters breaks the joins
+	// between them, and Devanagari's headline, so those scripts set it plain.
+	const spacing = UPRIGHT.has(locale) ? '' : ' letter_spacing="2800"';
+	const d = BADGE.d;
+	const line = (markup) => text(markup, { width: d, align: 'centre' });
+	const stack = [
+		[await line(`<span font_desc="${SERIF} Semi-Bold 58" foreground="${BADGE.ink}">${n}</span>`), 10],
+		[
+			await line(
+				`<span font_desc="${SANS} Semi-Bold 14" foreground="${BADGE.ink}"${spacing}>${esc(label.toLocaleUpperCase())}</span>`
+			),
+			6
+		],
+		...(sub
+			? [[await line(`<span font_desc="${SANS} Medium 13" foreground="${BADGE.ink}">${esc(sub)}</span>`), 0]]
+			: [])
+	];
+	// sharp crops each text block to its ink, so the gaps are real gaps.
+	const height = stack.reduce((h, [b, gap]) => h + b.height + gap, 0);
+	let y = Math.round((d - height) / 2);
+	const layers = [];
+	for (const [b, gap] of stack) {
+		layers.push({ input: b.data, left: Math.round((d - b.width) / 2), top: y });
+		y += b.height + gap;
+	}
+	return sharp(svg(d, d, `<circle cx="${d / 2}" cy="${d / 2}" r="${d / 2}" fill="${BADGE.gold}"/>`))
+		.composite(layers)
+		.png()
+		.toBuffer();
+}
+
+/** Books standing on the ledge: each at its own aspect, rounded and shadowed,
+ *  alternating tall and short like the home card's shelf. */
+export async function shelf(files) {
+	const books = await Promise.all(
+		files.slice(0, SHELF.max).map(async (file, i) => {
+			const h = i % 2 ? SHELF.short : SHELF.tall;
+			const { width = 3, height = 4 } = await sharp(file).metadata();
+			const w = Math.round((h * width) / height);
+			const round = svg(w, h, `<rect width="${w}" height="${h}" rx="4" fill="#fff"/>`);
+			const data = await sharp(file)
+				.resize(w, h, { fit: 'fill' })
+				.composite([{ input: round, blend: 'dest-in' }])
+				.png()
+				.toBuffer();
+			return { data, w, h };
+		})
+	);
+	const total = books.reduce((s, b) => s + b.w, 0) + SHELF.gap * (books.length - 1);
+	let x = Math.round((W - total) / 2);
+	const shadows = [];
+	const layers = [];
+	for (const b of books) {
+		shadows.push(
+			`<rect x="${x}" y="${LEDGE_Y - b.h + 12}" width="${b.w}" height="${b.h}" rx="4" fill="rgb(60,40,10)" fill-opacity=".32"/>`
+		);
+		layers.push({ input: b.data, left: x, top: LEDGE_Y - b.h });
+		x += b.w + SHELF.gap;
+	}
+	const shadow = await sharp(svg(W, H, shadows.join('')))
+		.blur(12)
+		.png()
+		.toBuffer();
+	return [{ input: shadow, left: 0, top: 0 }, ...layers];
+}
+
+let ledgeLayer;
+/** The ledge the books stand on, with a soft shadow under it, as a composite
+ *  layer — drawn once per run. */
+export const ledge = async () => ({
+	input: await (ledgeLayer ??= sharp(
+		svg(
+			W,
+			H,
+			`<rect x="40" y="${LEDGE_Y + 10}" width="${W - 80}" height="16" rx="3" fill="rgb(60,40,10)" fill-opacity=".28"/>`
+		)
+	)
+		.blur(9)
+		.composite([
+			{
+				input: svg(
+					W,
+					H,
+					`<defs><linearGradient id="l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b58a52"/><stop offset="1" stop-color="#7d5a2e"/></linearGradient></defs>` +
+						`<rect x="40" y="${LEDGE_Y}" width="${W - 80}" height="16" rx="3" fill="url(#l)"/>`
+				),
+				left: 0,
+				top: 0
+			}
+		])
+		.png()
+		.toBuffer()),
+	left: 0,
+	top: 0
+});
 
 // ── Output ──────────────────────────────────────────────────────────────────
 
