@@ -63,6 +63,8 @@
 		author: publisherLd(),
 		publisher: publisherLd()
 	});
+	/** Which "Read on" links this language has (+page.ts). */
+	let { data } = $props();
 </script>
 
 <Seo
@@ -138,10 +140,13 @@
 		</ol>
 	</section>
 
-	<!-- The same story read a chapter a day, and told for teens. -->
+	<!-- The same story read a chapter a day, and told for teens: each only
+	     where the API serves it (+page.ts). -->
 	<section class="mt-14" aria-labelledby="story-read-on">
 		<h2 id="story-read-on" class="section-label mb-5">{t('bible.storyReadOn')}</h2>
+		{#if data.plan || data.book}
 		<ul class="read-on">
+			{#if data.plan}
 			<li>
 				<a class="read-card card-lift" href={localizeHref(`/plans/${STORY_PLAN_SLUG}`)}>
 					<span class="font-display text-body font-semibold text-text">{t('bible.storyTitle')}</span>
@@ -149,6 +154,8 @@
 					<span class="mt-2 block text-small font-semibold text-accent">{t('plans.title')} <Arrow /></span>
 				</a>
 			</li>
+			{/if}
+			{#if data.book}
 			<li>
 				<a class="read-card card-lift" href={localizeHref(`/books/${STORY_BOOK.slug}`)}>
 					<span class="font-display text-body font-semibold text-text">{STORY_BOOK.title}</span>
@@ -156,7 +163,9 @@
 					<span class="mt-2 block text-small font-semibold text-accent">{t('home.startReading')} <Arrow /></span>
 				</a>
 			</li>
+			{/if}
 		</ul>
+		{/if}
 		<p class="mt-8 text-small">
 			<a href={localizeHref(`${BIBLE_PATH}/`)} class="font-medium text-accent hover:underline"
 				><Arrow back /> {t('nav.bible')}</a
