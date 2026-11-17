@@ -528,3 +528,34 @@ export function canonReading<T>(
 	}
 	return { finished, started, total: books.length };
 }
+
+/** The canon strip's quick filters. */
+export type CanonFilter = 'short' | 'gospels' | 'poetry' | 'letters' | 'unread';
+export const CANON_FILTERS: readonly CanonFilter[] = ['short', 'gospels', 'poetry', 'letters', 'unread'];
+/** "Short": a book read in this many minutes or fewer, at the reader's pace. */
+export const SHORT_BOOK_MINUTES = 20;
+
+/**
+ * Whether a book on the strip matches a quick filter: by its reading time
+ * (`minutes`, null when unknown), its division, or — for "Not started" — the
+ * reader's place in it (`biblePlace`; null = no record).
+ */
+export function matchesCanonFilter(
+	filter: CanonFilter,
+	divisionId: string,
+	minutes: number | null,
+	place: BiblePlace | null | undefined
+): boolean {
+	switch (filter) {
+		case 'short':
+			return minutes != null && minutes <= SHORT_BOOK_MINUTES;
+		case 'gospels':
+			return divisionId === 'gospels';
+		case 'poetry':
+			return divisionId === 'wisdom';
+		case 'letters':
+			return divisionId === 'paul' || divisionId === 'general-letters';
+		case 'unread':
+			return !place || (!place.finished && place.behind === 0 && place.current == null);
+	}
+}
