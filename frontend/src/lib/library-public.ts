@@ -1652,7 +1652,23 @@ export interface SeriesSummary extends SeriesFor {
 	languages: string[];
 }
 
-/** One series page: see `SeriesDetailView` in the API. */
+/** A volume on its series page: the shelf card plus the blurb its row pitches
+ *  it with. Optional: an API behind this build omits it, and the row draws
+ *  only the hook. */
+export interface SeriesBook extends BookSummary {
+	description?: string;
+}
+
+/** A volume's place on a series' map, in percent of the image. */
+export interface SeriesMapMarker {
+	position: number;
+	x: number;
+	y: number;
+}
+
+/** One series page: see `SeriesDetailView` in the API. Everything after
+ *  `available_languages` is the selling head (2026-11) and is optional: an API
+ *  behind this build omits it, and the page draws the plain head. */
 export interface SeriesDetail extends SeriesFor {
 	slug: string;
 	/** Name and description in the requested language (no English fallback). */
@@ -1660,10 +1676,27 @@ export interface SeriesDetail extends SeriesFor {
 	description: string;
 	/** False for a collection (no volume numbers, no reading order). */
 	ordered: boolean;
+	/** Ordered and short enough (≤ 12) to pitch one row per volume, with its
+	 *  blurb; otherwise the page keeps the cover grid. */
+	pitched?: boolean;
 	/** Its published books in this language, in volume order. */
-	books: BookSummary[];
+	books: SeriesBook[];
 	/** Languages the series has a page in — for hreflang. */
 	available_languages: string[];
+	/** One line that promises what the series is; "" where it has none here. */
+	tagline?: string;
+	/** The verse the series is built on, in this language; null without one. */
+	verse?: { text: string; ref: string } | null;
+	/** Wordless art behind the head and which way its type reads. */
+	hero?: { image: string; tone: 'dark' | 'light' } | null;
+	/** Volumes planned in all, when more are to come; null when not stated. */
+	planned_count?: number | null;
+	/** A map of the series' world with each volume's place on it. */
+	map?: { image: string; markers: SeriesMapMarker[] } | null;
+	/** Volume one's first paragraph of prose and the chapter it opens. */
+	opening?: { text: string; chapter: string; order: number } | null;
+	/** The real people the volumes tell, one face per story chapter. */
+	people?: HubPerson[];
 }
 
 export const listSeries = (language = 'en', f?: Fetch) =>

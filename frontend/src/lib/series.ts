@@ -11,6 +11,7 @@ import type {
 } from '$lib/library-public';
 import { toBookTile } from '$lib/library-public';
 import { contentLang } from '$lib/reading';
+import { i18n } from '$lib/i18n.svelte';
 
 /**
  * The book page's one-line series label: "Book 2 of 6 in Rooted" for an
@@ -340,4 +341,69 @@ export function seriesOrder(
 ): 'inOrder' | 'anyOrder' | null {
 	if (s.ordered === undefined || s.book_count < 2) return null;
 	return s.ordered ? 'inOrder' : 'anyOrder';
+}
+
+/** A title's tail after its last colon ("They Were Young – Book 1: Called" →
+ *  "Called"), when the part before it numbers the volume (has a digit) — so
+ *  "Brave for God: Book Two" keeps its title: its tail is the number. */
+const NUMBERED_TAIL = /^(.*\d.*?)\s*[:：]\s*([^:：]+)$/;
+/** A subtitle's lead before its colon, when it reads as a name ("Beloved: who
+ *  you are…" → "Beloved"): at most three words. */
+const SUBTITLE_LEAD = /^([^:：፦]{1,32})[:：፦]\s*\S/;
+
+/**
+ * A volume's own name on its series page — "Called", "Beloved", "The Black
+ * Stair" — so a row and the start button stop repeating the series' name
+ * ("Start with Book 1 · Called", not "Start with They Were Young – Book 1:
+ * Called"). Read from the title the edition already has, in its language:
+ * the tail of a numbered title, else a short lead on the subtitle, else the
+ * title itself when it is not just the series' name with a number. "" when the
+ * volume has no name of its own (Brave for God: Book Two) — then the number
+ * says it all.
+ */
+export function volumeName(
+	book: Pick<BookSummary, 'title' | 'subtitle'>,
+	seriesTitle: string
+): string {
+	const tail = NUMBERED_TAIL.exec(book.title.trim());
+	if (tail) return tail[2].trim();
+	const lead = SUBTITLE_LEAD.exec((book.subtitle ?? '').trim())?.[1].trim();
+	if (lead && lead.split(/\s+/).length <= 3) return lead;
+	const title = book.title.trim();
+	const name = splitSeriesTitle(seriesTitle).name.trim();
+	if (!title.toLocaleLowerCase().startsWith(name.toLocaleLowerCase())) return title;
+	// The series' name, then the volume's own: "Portraits of Courage – Amy
+	// Carmichael", "The Golden Chain: Matthew". Only a number after it
+	// or the word for one ("They Were Young – Book 1", "Brave for God: Book
+	// Two") leaves the volume unnamed.
+	const rest = title.slice(name.length).replace(/^[\s:：፦–—-]+/, '');
+	const volume = i18n.t('originals.volume').split('%n%')[0].trim().toLocaleLowerCase();
+	const numbered = /\d/.test(rest) || (!!volume && rest.toLocaleLowerCase().startsWith(volume));
+	return numbered ? '' : rest;
+}
+
+/** How many books a series holds, as its head says it: "4 of 6 books" while
+ *  more are planned, else "4 books" — numerals in the page's digits. */
+export function seriesCountLabel(count: number, planned: number | null | undefined, language: string): string {
+	const n = numeral(count, language);
+	if (volumesToCome(count, planned)) {
+		return i18n.t('series.booksPlanned').replace('%n%', n).replace('%total%', numeral(planned!, language));
+	}
+	return `${n} ${count === 1 ? i18n.t('common.bookOne') : i18n.t('common.bookMany')}`;
+}
+
+/** A number in the page's digits (`volumeNumeral`), or plain digits where the
+ *  language has no numeral of its own for it. */
+export function numeral(n: number, language: string): string {
+	return volumeNumeral(n, language) ?? String(n);
+}
+
+/** "Book 2" in the page's digits; "" for a book with no place in an order. */
+export function volumeLabel(position: number | null | undefined, language: string): string {
+	return position ? i18n.t('originals.volume').replace('%n%', numeral(position, language)) : '';
+}
+
+/** The books a series still has to come: its plan less what is published. */
+export function volumesToCome(count: number, planned: number | null | undefined): number {
+	return planned && planned > count ? planned - count : 0;
 }
