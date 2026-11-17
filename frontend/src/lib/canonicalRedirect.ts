@@ -30,6 +30,7 @@ const SLASHED_INDEXES = new Set([
 const SLASHED_SECTIONS = new Set([
 	'articles',
 	'authors',
+	'bible',
 	'books',
 	'for',
 	'glossary',

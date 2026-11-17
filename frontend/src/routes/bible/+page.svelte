@@ -13,6 +13,7 @@
 	import {
 		BIBLE_PATH,
 		BIBLE_SERIES,
+		BIBLE_STORY_PATH,
 		bibleChapterCount,
 		bibleIn,
 		biblePlace,
@@ -335,7 +336,13 @@
 		{#if starts.length}
 			<!-- For a first reader: a short path in, each step a book and why. -->
 			<section class="starts" aria-labelledby="starts-heading">
-				<h2 id="starts-heading" class="section-label">{t('bible.startHeading')}</h2>
+				<div class="starts-head">
+					<h2 id="starts-heading" class="section-label">{t('bible.startHeading')}</h2>
+					<!-- The whole Bible in story order, for a reader who wants the shape first. -->
+					<a href={localizeHref(`${BIBLE_STORY_PATH}/`)} class="text-small font-medium text-accent hover:underline"
+						>{t('bible.storyTitle')} <Arrow /></a
+					>
+				</div>
 				<p class="mb-4 text-small text-muted">{t('bible.startLede')}</p>
 				<ol class="start-list">
 					{#each starts as { book, why }, i (book.slug)}
@@ -478,6 +485,13 @@
 	}
 	.starts {
 		margin-bottom: 2.75rem;
+	}
+	.starts-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.25rem 1rem;
 	}
 	/* Five steps: a column on a phone, a row of five from the desktop up. */
 	.start-list {

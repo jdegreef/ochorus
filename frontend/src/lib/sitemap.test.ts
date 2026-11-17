@@ -584,6 +584,11 @@ describe('build() the Bible hub', () => {
 			[...e.byLocale.values()].includes('/bible/')
 		);
 		expect(bible).toBeUndefined();
+		// Nor the story page the hub links, which lives where the hub does.
+		const story = (await sitemapData()).pages.find((e) =>
+			[...e.byLocale.values()].includes('/bible/story/')
+		);
+		expect(story).toBeUndefined();
 	});
 
 });
