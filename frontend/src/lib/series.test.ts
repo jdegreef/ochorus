@@ -14,7 +14,10 @@ import {
 	type BookStage,
 	seriesLabel,
 	groupByAudience,
-	seriesAges
+	seriesAges,
+	volumeName,
+	volumesToCome,
+	volumeLabel
 } from './series';
 import { tileFace, type BookSeries, type BookSummary } from './library-public';
 
@@ -328,5 +331,53 @@ describe('seriesOrder', () => {
 	it('says nothing for one book, or when the API sends no order', () => {
 		expect(seriesOrder({ ordered: true, book_count: 1 })).toBeNull();
 		expect(seriesOrder({ book_count: 6 })).toBeNull();
+	});
+});
+
+describe('volumeName', () => {
+	const v = (title: string, subtitle = '') => ({ title, subtitle });
+	it('takes the name after a numbered title', () => {
+		expect(volumeName(v('They Were Young – Book 1: Called', 'Six who met God'), 'They Were Young')).toBe('Called');
+		expect(volumeName(v('이야기를 들려주세요 – 제1권: 태초에'), '이야기를 들려주세요')).toBe('태초에');
+	});
+	it('takes a short lead from the subtitle', () => {
+		expect(
+			volumeName(
+				v('Daughters of the King – 30 Days with God for Girls – Book 1', 'Beloved: who you are, whose you are'),
+				'Daughters of the King – 30 Days with God for Girls'
+			)
+		).toBe('Beloved');
+	});
+	it('keeps a title of its own', () => {
+		expect(
+			volumeName(v('The Black Stair', 'The Lamplighters of Gloamhaven, Book Two'), 'The Lamplighters of Gloamhaven')
+		).toBe('The Black Stair');
+	});
+	it('takes the name that follows the series name', () => {
+		expect(volumeName(v('Portraits of Courage – Amy Carmichael'), 'Portraits of Courage')).toBe('Amy Carmichael');
+		expect(volumeName(v('The Golden Chain: Matthew'), 'The Golden Chain')).toBe('Matthew');
+	});
+	it('gives nothing when the title is the series and its number', () => {
+		expect(volumeName(v('Brave for God: Book Two', 'Six more who followed Jesus'), 'Brave for God')).toBe('');
+		expect(volumeName(v('Valientes por Dios'), 'Valientes por Dios')).toBe('');
+		// A long subtitle lead is a sentence, not a name.
+		expect(volumeName(v('Rooted 1', 'Where it all begins and grows: notes'), 'Rooted')).toBe('');
+	});
+});
+
+describe('volumesToCome', () => {
+	it('counts the planned volumes not yet published', () => {
+		expect(volumesToCome(4, 6)).toBe(2);
+		expect(volumesToCome(4, 4)).toBe(0);
+		expect(volumesToCome(4, null)).toBe(0);
+		expect(volumesToCome(5, 3)).toBe(0);
+	});
+});
+
+describe('volumeLabel', () => {
+	it('numbers a placed volume and says nothing for an unplaced one', () => {
+		expect(volumeLabel(2, 'en')).toMatch(/2/);
+		expect(volumeLabel(null, 'en')).toBe('');
+		expect(volumeLabel(0, 'en')).toBe('');
 	});
 });

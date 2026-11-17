@@ -12,7 +12,7 @@ from __future__ import annotations
 from django.test import TestCase
 
 from .cover_face import COVER_AUTHOR_FIELDS, COVER_FACE_FIELDS
-from .models import Author, Book, Chapter, Series, SeriesTranslation
+from .models import Author, Book, BookPerson, Chapter, Series, SeriesTranslation
 from .serializers import BookDetailSerializer, series_block
 
 
@@ -279,6 +279,88 @@ class BookCardSeriesTests(TestCase):
         self.assertIsNone(body["books"][0]["series"])
 
 
+class SeriesPageHeadTests(TestCase):
+    """The series page's selling head (2026-11): promise line, verse, hero art,
+    volumes still to come, the map, the first page of volume one, the faces of
+    the lives the volumes tell, and each volume's blurb. Every one is optional
+    and per-language — absent draws nothing, and nothing falls back to English.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="ochorus-originals", name="Ochorus")
+        self.series = Series.objects.create(
+            slug="they-were-young", title="They Were Young",
+            tagline="Every person here was once young.",
+            verse_text="Let no one despise your youth", verse_ref="1 Timothy 4:12",
+            hero_image="/covers/art/twy.jpg", hero_tone=Series.HeroTone.DARK,
+            planned_count=6,
+            map={"image": "/illustrations/series/m.webp",
+                 "markers": [{"position": 2, "x": 10, "y": 20}, {"position": 1, "x": 30, "y": 40}]},
+        )
+        self.book = Book.objects.create(
+            author=self.author, slug="twy-1", language="en", title="They Were Young 1",
+            description="Six true stories.", series=self.series, series_position=1,
+        )
+        Chapter.objects.create(book=self.book, order=1, title="Introduction: Before You Were Grown",
+                               body_html="<p>" + "Front matter words. " * 30 + "</p>")
+        Chapter.objects.create(book=self.book, order=2, title="Charles Spurgeon: The Boy Who Looked",
+                               body_html="<p>" + "It snowed hard that Sunday morning in Colchester. " * 8 + "</p>")
+        spurgeon = Author.objects.create(slug="charles-h-spurgeon", name="C. H. Spurgeon",
+                                         photo_url="/portraits/charles-h-spurgeon.jpg")
+        BookPerson.objects.create(book_slug="twy-1", person=spurgeon, role="subject", chapter=2)
+
+    def _get(self, language="en"):
+        return self.client.get(
+            f"/api/library/series/they-were-young/?language={language}", HTTP_HOST="localhost"
+        ).json()
+
+    def test_the_head_carries_promise_verse_art_and_plan(self):
+        body = self._get()
+        self.assertEqual(body["tagline"], "Every person here was once young.")
+        self.assertEqual(body["verse"], {"text": "Let no one despise your youth", "ref": "1 Timothy 4:12"})
+        self.assertEqual(body["hero"], {"image": "/covers/art/twy.jpg", "tone": "dark"})
+        self.assertEqual(body["planned_count"], 6)
+        # Markers come back in volume order whatever order they were written in.
+        self.assertEqual([m["position"] for m in body["map"]["markers"]], [1, 2])
+
+    def test_volumes_carry_their_blurb_and_volume_one_its_first_page(self):
+        body = self._get()
+        self.assertEqual(body["books"][0]["description"], "Six true stories.")
+        # The introduction is apparatus: the first page is the first story.
+        self.assertEqual(body["opening"]["order"], 2)
+        self.assertEqual(body["opening"]["chapter"], "Charles Spurgeon: The Boy Who Looked")
+        self.assertTrue(body["opening"]["text"].startswith("It snowed hard"))
+
+    def test_the_lives_inside_are_faces_named_by_their_chapter(self):
+        people = self._get()["people"]
+        self.assertEqual(
+            [(p["slug"], p["name"], p["hook"], p["book"], p["chapter"]) for p in people],
+            [("charles-h-spurgeon", "Charles Spurgeon", "The Boy Who Looked", "twy-1", 2)],
+        )
+
+    def test_nothing_is_shown_in_english_on_another_languages_page(self):
+        SeriesTranslation.objects.create(series=self.series, language="es", title="Eran jóvenes")
+        Book.objects.create(author=self.author, slug="twy-1", language="es", title="Eran jóvenes 1",
+                            series=self.series, series_position=1)
+        es = self._get("es")
+        self.assertEqual((es["tagline"], es["verse"]), ("", None))
+        self.assertEqual(es["people"], [])  # no chapters in Spanish, so no faces
+        tr = SeriesTranslation.objects.get(language="es")
+        tr.verse_text, tr.verse_ref = "Ninguno tenga en poco tu juventud", "1 Timoteo 4:12"
+        tr.save()
+        self.assertEqual(self._get("es")["verse"]["ref"], "1 Timoteo 4:12")
+
+    def test_a_plain_series_has_an_empty_head(self):
+        plain = Series.objects.create(slug="plain", title="Plain")
+        Book.objects.create(author=self.author, slug="p-1", language="en", title="P", series=plain)
+        body = self.client.get("/api/library/series/plain/?language=en", HTTP_HOST="localhost").json()
+        self.assertEqual(
+            (body["tagline"], body["verse"], body["hero"], body["planned_count"], body["map"],
+             body["opening"], body["people"]),
+            ("", None, None, None, None, None, []),
+        )
+
+
 class SeriesAudienceTests(TestCase):
     """The index groups by audience and prints an age range — both from the
     series row, the same in every language."""
@@ -329,3 +411,37 @@ class SeriesAudienceTests(TestCase):
         self.assertEqual(get("tell-me-the-story-1/chapters/")[0]["book_audience"], "young_readers")
         self.assertEqual(get("solo/chapters/1/")["book_audience"], "")
         self.assertEqual(get("solo/chapters/")[0]["book_audience"], "")
+
+
+class SeriesHeadFixtureTests(TestCase):
+    """The series fixture's art and maps, checked at build time rather than
+    at request time. A hero sits behind every edition's title, so it must be
+    wordless (never a designed cover, which carries one language's lettering)
+    and must exist; a map's markers must name a volume and sit on the picture."""
+
+    def test_heroes_and_maps_are_well_formed(self):
+        import json
+
+        from django.conf import settings
+
+        from .designed_covers import is_designed
+
+        static = settings.BASE_DIR.parent / "frontend" / "static"
+        path = settings.BASE_DIR / "library" / "fixtures" / "content" / "series.json"
+        for row in json.loads(path.read_text()):
+            if row["model"] != "library.series":
+                continue
+            f = row["fields"]
+            slug = f["slug"]
+            if hero := f.get("hero_image"):
+                self.assertFalse(is_designed(hero), f"{slug}: hero is a designed cover")
+                self.assertTrue((static / hero.lstrip("/")).is_file(), f"{slug}: {hero} missing")
+            if m := f.get("map"):
+                self.assertTrue((static / m["image"].lstrip("/")).is_file(), f"{slug}: map missing")
+                positions = [mk["position"] for mk in m["markers"]]
+                self.assertEqual(len(positions), len(set(positions)), slug)
+                for mk in m["markers"]:
+                    self.assertIsInstance(mk["position"], int, slug)
+                    self.assertGreaterEqual(mk["position"], 1, slug)
+                    for axis in ("x", "y"):
+                        self.assertTrue(0 <= mk[axis] <= 100, f"{slug}: marker {axis} off the map")
