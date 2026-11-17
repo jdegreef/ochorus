@@ -1,11 +1,12 @@
 import { SITE_URL } from '$lib/config';
-import { appOnlyDisallows } from '$lib/robots';
+import { appOnlyDisallows, userAgentLines } from '$lib/robots';
 
 export const prerender = true;
 
 export function GET() {
 	const body = [
-		'User-agent: *',
+		// One group for every crawler, AI agents named — see $lib/robots.
+		...userAgentLines(),
 		'Allow: /',
 		// Account/admin shells and search results, in every locale — see $lib/robots.
 		...appOnlyDisallows(),
@@ -28,6 +29,8 @@ export function GET() {
 		'Disallow: /*/feed/',
 		'',
 		`Sitemap: ${SITE_URL}/sitemap.xml`,
+		// A plain-Markdown map of the site for AI assistants (llmstxt.org).
+		`# LLMs: ${SITE_URL}/llms.txt`,
 		// The Atom feed is discovered via the <link rel="alternate"> in the app
 		// shell, not here: `Feed:` is not a robots.txt directive, so a validator
 		// (and Lighthouse) flags the file as invalid, which risks the whole file
