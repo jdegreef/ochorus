@@ -33,7 +33,7 @@ def forwards(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0215_series_page_head"),
+        ("library", "0216_article_qa"),
     ]
 
     operations = [

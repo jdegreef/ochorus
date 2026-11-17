@@ -45,7 +45,7 @@ FTS_CONFIGS = {
     "pt": "portuguese",
     "ru": "russian",
     # Postgres ships `arabic` (Snowball) since 13. Arabic rows indexed before it
-    # was listed were built with `simple`; migration 0216 NULLs them so the
+    # was listed were built with `simple`; migration 0217 NULLs them so the
     # release chain's backfill_search_vectors rebuilds them with this config.
     "ar": "arabic",
 }
